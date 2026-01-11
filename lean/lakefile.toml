@@ -1,0 +1,12 @@
+name = "entropy"
+version = "0.1.0"
+defaultTargets = ["Entropy"]
+
+[[lean_lib]]
+name = "Entropy"
+srcDir = "."
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+
