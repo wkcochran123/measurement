@@ -1,0 +1,764 @@
+\chapter{The Continuum of Experiment}
+\label{chap:continuum}
+
+The fundamental data of this framework are discrete: a ledger of
+distinguishable events ordered by refinement.  Yet many of the tools used to
+describe coherence, comparison, and extrapolation rely on continuous
+structure—curves, interpolants, and differentiable functions.  This presents a
+tension between the discrete nature of the record and the continuous nature of
+the explanations constructed from it.
+
+The resolution is not to assume a continuum \emph{a priori}.  Instead, the continuum
+arises from the informational requirements imposed by the ledger itself.  It is
+not a background space in which events occur but a representational device that
+permits admissible histories to be compared, merged, and extended without
+introducing unrecorded distinctions.  It is the smooth shadow cast by the
+requirement that discrete histories contain no informational gaps.
+
+In Chapter~\ref{chap:phenomena}, a \emph{phenomenon} was defined as the ordered union
+of the silent intervals separating distinguishable events.  To represent these
+intervals in a manner consistent with the axioms, one must specify how such
+silences are continued analytically without asserting structure absent from the
+ledger.  The event imposes boundary data; the silence imposes minimality.  The
+resulting continuum is therefore a piecewise–polynomial structure with global
+$C^2$ compatibility, the most refined representation that remains faithful to
+the observational content of the ledger.
+
+This continuum is not posited.  It is constructed from the informational
+limitations inherent in the record.
+
+\section{The Emergent Continuum}
+\label{sec:emergent-continuum}
+
+A classical presentation begins with a smooth background and places observations
+within it.  The informational framework reverses this order: it begins with the
+ledger and derives smooth structure only where the ledger is silent.  The
+continuum emerges precisely where the observer lacks the resolution to specify
+anything else.
+
+\subsection{The Moment as Analytic Shadow}
+\label{subsec:moment-shadow}
+
+Consider two successive events $e_i \prec e_{i+1}$.  The ledger records no
+further distinctions within this interval.  No refinement occurs, and no new
+structure is committed.  The representational task is to continue the history
+across this interval without attributing unmeasured information to it.
+
+While the underlying truth between events may be analytic, such detail is not
+admissible for a finite observer.  To specify higher--order structure absent
+from the record would violate the Axiom of Ockham.  The admissible surrogate is
+therefore the minimal analytic continuation consistent with the boundary data
+provided by the events themselves.
+
+Definition~\ref{def:moment} identifies a \emph{moment} as precisely this
+surrogate: the projection of the unobserved interval onto the simplest analytic
+form consistent with its endpoints.  The Laws of Measurement determine that this
+minimal analytic continuation is a polynomial segment, and minimality forces the
+use of cubic polynomials.  Such functions are analytic on their interiors yet
+carry only the finite degrees of freedom permitted by the ledger.
+
+A moment is thus the analytic shadow of the interval: smooth where the record is
+silent and constrained entirely by what the record does not forbid.
+
+\subsection{The Phenomenon as Ordered Union}
+\label{subsec:phenomenon-union}
+
+A single moment represents the admissible surrogate for the silence between two
+events.  A \emph{phenomenon} is the ordered union of such surrogates.
+
+If $E = \{e_1 \prec e_2 \prec \cdots \prec e_n\}$ is a chain of events, the
+associated phenomenon $\Phi$ is the union of the intervals
+$M(e_k, e_{k+1})$.  Each moment is internally analytic, but the union is not
+necessarily globally smooth.  Each event supplies boundary data at which the
+observer's information changes.
+
+The construction of the continuum is the process of gluing these analytic
+segments together at their event--boundaries in a manner that preserves the
+informational content of the ledger and introduces no new distinguishable
+features.
+
+\subsection{The {$C^2$} Constraint}
+\label{subsec:C2-constraint}
+
+The smoothness required at event boundaries is determined by distinguishability.
+A break in the value of a function or its lower--order derivatives constitutes a
+new feature that could, in principle, be observed.  Since no such additional
+distinctions appear in the ledger, they cannot appear in the constructed
+continuum.
+
+In particular, the admissible interpolant must be continuous in value, first
+derivative, and second derivative at every event.  These conditions eliminate
+all discontinuities that would correspond to unrecorded refinements.
+
+The emergent continuum is therefore globally $C^2$, the minimal smoothness level
+consistent with the observational content of the ledger.
+
+\subsection{The Free Variable of the Spline}
+\label{subsec:free-variable}
+
+Once the $C^2$ constraints are satisfied at the event boundaries, the cubic
+polynomial on each interval is nearly determined.  Exactly one degree of freedom
+remains: the constant third derivative on that interval, identified as the free
+parameter of information.
+
+This parameter expresses the residual freedom permitted by the absence of
+refinements.  Each moment contributes one such free variable, and the collection
+of all of them forms the integrable $C^2$ space of admissible continuations.
+
+The continuum remains a constructed surrogate: smooth on intervals where the
+ledger is silent and precisely articulated where the ledger provides
+distinguishable data.
+
+\section{The Anchoring of History}
+\label{sec:anchoring}
+
+The continuum described in Section~\ref{sec:emergent-continuum} is a space of
+admissible interpolants: smooth shadows connecting one event to the next.  To
+obtain a specific history, this shadow must be constrained by the discrete data
+recorded in the ledger.  These constraints are supplied by \emph{anchor points},
+the events at which the observer has committed to a distinguishable value.
+
+Anchors do not determine how the history behaves between events.  Rather, they
+identify the locations where all admissible histories must agree.  The continuum
+between anchors is free to take any form that is consistent with these
+constraints and with the minimality requirements of the axioms.
+
+\subsection{Anchor Points}
+\label{subsec:anchor-points}
+
+Anchors serve as the interface between the discrete ledger and the constructed
+continuum.  They record the values that every admissible history must honor.
+
+\begin{definition}[Anchor Points]
+A finite set of anchor points is the collection of recorded events at which
+admissible histories must coincide.  Two histories $\psi$ and $\phi$ are said to
+share the same anchor set if they assign identical distinguishable values to
+each event in this set.
+\end{definition}
+
+Anchors supply two structural constraints:
+
+\begin{enumerate}
+    \item \textbf{Fidelity.}  
+    They fix the value of the interpolant at the recorded events.
+
+    \item \textbf{Compatibility.}  
+    They impose the smoothness conditions of Section~\ref{subsec:C2-constraint},
+    ensuring that no unrecorded distinguishable feature is introduced at an
+    anchor.
+\end{enumerate}
+
+\subsection{Recursive Construction of the Record}
+\label{subsec:recursive-construction}
+
+The experimental record does not arise as a complete object.  It is accumulated
+incrementally, one distinction at a time.  If $S_n$ denotes the partial record
+given by the first $n$ anchors, the addition of a new event $e_{n+1}$ enlarges
+the record to
+\[
+    S_{n+1} = S_n \cup \{e_{n+1}\}.
+\]
+
+This update is not a rule of evolution; it is an informational refinement.  The
+new anchor provides additional boundary data that every admissible history must
+now satisfy.  Between anchors, the interpolant adjusts according to the minimal
+analytic continuation of Section~\ref{subsec:moment-shadow}.
+
+The recursive nature of this accumulation reflects only the way information is
+recorded.  It does not assume or impose any causal mechanism beyond the ordering
+of admissible refinements.
+
+\subsection{Uniqueness Along a Single Record}
+\label{subsec:single-record}
+
+When a single experimental record is considered in isolation, the ordering of
+its anchors determines a linear refinement structure.  For such a record, the
+constraints provided by the anchors select a unique admissible continuation up
+to the free variables of the minimal interpolant.
+
+\begin{phenomenon}[The Laplace Effect]
+Under the axioms of measurement, a single experimental record admits a unique
+sequence of admissible refinements consistent with its anchors.  Relative to
+this record, each extension appears uniquely determined by its predecessors.
+\end{phenomenon}
+
+This phenomenon reflects only the internal structure of a single record.  When
+multiple records are considered simultaneously, admissible histories are governed
+instead by the compatibility conditions of
+Section~\ref{sec:compatibility}, and uniqueness need not hold.
+
+\section{The Experimental Record as a Count of Counts}
+\label{sec:count-of-counts}
+
+The continuum constructed in Section~\ref{sec:anchoring} is determined by the
+anchor points of the ledger.  We now describe the ledger itself.  The
+informational framework treats a measurement not as the assignment of a real
+number, but as the recording of a distinguishable outcome.  Physical
+instruments do not output elements of $\mathbb{R}$; they output finite
+increments, ticks, and tallies.  Every observation is therefore a count.
+
+Let $\Sigma = \{c_1,\dots,c_M\}$ denote the finite set of distinguishable
+outcomes available to an observer.\footnote{This alphabet is determined by the
+observer's resolving power and may differ between observers.}  Each recorded
+event selects exactly one element of $\Sigma$.
+
+\subsection{The Histogram of History}
+\label{subsec:histogram}
+
+At ordinal rank $n$, the experimental record consists of the $n$ outcomes
+recorded so far.  These outcomes may be summarized by the histogram
+\[
+    \psi_n =
+    \begin{pmatrix}
+        k_1 \\
+        k_2 \\
+        \vdots \\
+        k_M
+    \end{pmatrix},
+\]
+where $k_i$ is the number of times outcome $c_i$ has been recorded.  This vector
+is the complete informational state of the record.  It contains no hidden
+variables, no unmeasured parameters, and no continuous structure.  It is a
+\emph{count of counts}.
+
+Two records with the same histogram encode identical observational content,
+regardless of the order in which their outcomes were registered.
+
+\subsection{The Laws of the Ledger}
+\label{subsec:laws-ledger}
+
+The evolution of the histogram $\psi_n$ is governed not by differential
+equations but by the combinatorial constraints inherent to counting.  These
+constraints follow directly from the act of recording a distinguishable event.
+
+\begin{enumerate}
+    \item \textbf{Integer Normality.}
+    Each entry satisfies $k_i \in \mathbb{N}$.  Distinctions are discrete; the
+    ledger cannot record fractional or negative counts.
+
+    \item \textbf{Conservation of Count.}
+    The $L_1$ norm of the histogram equals the number of events recorded:
+    \[
+        \|\psi_n\|_1 = \sum_{i=1}^M k_i = n.
+    \]
+    The ordinal $n$ therefore serves as a measure of the size of the record.
+
+    \item \textbf{Irreversibility.}
+    The ledger is append--only:
+    \[
+        k_i(n+1) \ge k_i(n).
+    \]
+    Once a distinction has been recorded, it cannot be removed.  Each new event
+    adds exactly one count to exactly one entry of the histogram.
+\end{enumerate}
+
+These constraints define the admissible region of the record space
+$\mathbb{N}^M$.  The record advances by moving from $\psi_n$ to $\psi_{n+1}$ by
+incrementing a single coordinate; no other update is possible.
+
+\subsection{The Basis of Measurement}
+\label{subsec:basis-measurement}
+
+The basis vectors of the record space correspond to the distinguishable outcomes
+the observer is capable of resolving.  A measurement is therefore the selection
+of a basis element, and the histogram $\psi_n$ is the tally of such selections.
+
+In this representation, the record is not a point in a continuous phase space
+but an integer vector summarizing the observer's accumulated distinctions.
+Every admissible refinement of the record corresponds to a unit increment in one
+of the basis directions of $\mathbb{N}^M$.  The structure introduced in
+Section~\ref{sec:anchoring} constrains how these refinements are embedded into
+the continuum constructed from the anchor points.
+
+\section{Variation as Informational Trade-Off}
+\label{sec:variation}
+
+With the histogram representation of the experimental record in place, we now
+describe how variations of the record may be represented.  Classical treatments
+allow an arbitrary perturbation of a state variable.  In the informational
+setting, such perturbations are not admissible: the record at ordinal rank $n$
+contains exactly $n$ distinguishable outcomes, no more and no fewer.
+
+A variation of the record at fixed rank must therefore preserve the total count.
+Variation is not an addition.  It is a reallocation of distinctness among the
+outcomes the observer is capable of resolving.
+
+\subsection{The Zero-Sum Constraint}
+\label{subsec:zero-sum}
+
+Let $\psi_n = (k_1,\dots,k_M)^T$ denote the experimental record at rank $n$.  A
+variation $\delta \psi$ at this same rank is admissible only if it preserves the
+total count:
+\[
+    \sum_{i=1}^M \delta k_i = 0.
+\]
+We call this the \emph{Zero-Sum Constraint}.  Any increase in one component of
+the histogram must be offset by a decrease in another.  The observer's finite
+informational budget at rank $n$ cannot be exceeded.
+
+This reflects the fact that $\psi_n$ is a point on the discrete simplex
+\[
+    \Delta_n = \left\{ (k_1,\dots,k_M) \in \mathbb{N}^M : \sum_{i=1}^M k_i = n \right\}.
+\]
+Variations explore only the admissible directions tangent to this simplex.
+
+\subsection{Trade-Off Structure}
+\label{subsec:tradeoff}
+
+A variation $\delta \psi$ represents a hypothetical redistribution of recorded
+distinctions.  It answers the question: how might the record have differed,
+consistent with the same total amount of observational effort?
+
+Let $A$ and $B$ be two disjoint subsets of $\Sigma$.  Any attempt to increase
+the resolution associated with outcomes in $A$---represented by increasing
+$\sum_{c_i \in A} \delta k_i$---must be compensated by decreasing the
+resolution associated with outcomes in $B$.  The structure of variation is
+therefore competitive: an observer cannot refine all distinctions
+simultaneously within a fixed informational budget.
+
+This competition is purely combinatorial.  It does not depend on any specific
+interpretation of the outcomes.  Conjugate behavior observed in physical
+settings arises from this bookkeeping constraint rather than from any
+assumption of underlying continuum variables.
+
+\subsection{The Tangent Space of the Ledger}
+\label{subsec:tangent}
+
+The admissible variations form a subspace of $\mathbb{R}^M$ orthogonal to the
+vector of all ones.  Writing $\mathbf{1} = (1,\dots,1)^T$, the Zero-Sum
+Constraint may be expressed as
+\[
+    \langle \delta \psi, \mathbf{1} \rangle = 0.
+\]
+This hyperplane constitutes the \emph{tangent space} to the simplex $\Delta_n$.
+It is the space of virtual adjustments of the record that preserve the total
+amount of information at rank $n$.
+
+These admissible variations play the role traditionally occupied by ``virtual
+displacements'' in variational calculus.  In the informational framework,
+however, they arise not from geometry but from the conservation of recorded
+distinction.  Chapter~\ref{chap:calculus} will show how the selection of an
+actual refinement from among these virtual redistributions yields the calculus
+of dynamics.
+
+
+\subsection{Minimal Refinement Operators}
+\label{subsec:minimal-U}
+
+Dynamics is the rule governing the update $\boldsymbol{\psi}_n \to
+\boldsymbol{\psi}_{n+1}$. Because the record grows one event at a time, the
+update must be sparse.
+
+A \emph{minimal refinement} is an operator $\hat{R}_j$ that increments the
+count of outcome $c_j$ by exactly one unit, leaving all other components
+invariant:
+\[
+  \hat{R}_j \boldsymbol{\psi}_n = \boldsymbol{\psi}_n + \mathbf{e}_j,
+\]
+where $\mathbf{e}_j$ is the $j$th standard basis vector in $\mathbb{N}^M$.
+
+Two principles characterize these operators:
+
+\begin{enumerate}
+\item
+\textbf{Unit step.}
+The operator adds one, never fractions: information is discretized.
+\item
+\textbf{Non-triviality.}
+The zero operator is inadmissible: a measurement that records nothing is
+indistinguishable from the absence of measurement.
+\end{enumerate}
+
+Thus, the evolution of the system is a path on the integer lattice
+$\mathbb{N}^M$, driven by the sequential application of minimal refinement
+operators.
+
+\subsection{Variation as a Change in Count Structure}
+\label{subsec:variation-counts}
+
+In classical calculus, variation is defined as a perturbation of a continuous
+variable. Here, variation is defined as a \emph{change in count distribution}
+between two admissible histories of the same length.
+
+Consider two histories $A$ and $B$ that have reached the same ordinal rank
+$n$. Their records $\boldsymbol{\psi}_n^A$ and $\boldsymbol{\psi}_n^B$ may
+differ. The \emph{variation} is
+\[
+  \delta\boldsymbol{\psi}
+  =
+  \boldsymbol{\psi}_n^A
+  -
+  \boldsymbol{\psi}_n^B.
+\]
+Because both vectors sum to $n$, the components of
+$\delta\boldsymbol{\psi}$ must sum to zero. Variation is therefore a
+\emph{trade-off}: increasing one count requires decreasing another relative to
+a baseline.
+
+\begin{phenomenon}[The Heisenberg Effect as Trade-off]
+\label{ph:heisenberg-tradeoff}
+A ledger with fixed capacity $n$ cannot refine all outcome classes
+simultaneously. Allocating refinements to one group of outcomes consumes the
+budget available to resolve the remainder. The variation
+$\delta\boldsymbol{\psi}$ expresses this pivot between mutually exclusive
+informational descriptions.
+\end{phenomenon}
+
+Variation is therefore not a derivative; it is a \emph{reallocation of
+counts}. The calculus of dynamics that follows is the study of which
+reallocations are admissible while preserving the coherence of the global
+ledger.
+
+\section{Exhaustion of Distinguishability}
+\label{sec:exhaustion}
+
+The experimental record advances only when a new distinguishable event is
+successfully observed. Distance, defined internally as the tally of repeated
+outcomes, is therefore meaningful only while new increments are possible.
+If a proposed refinement yields no observable event, the history cannot
+continue.
+
+Let $\{c_1,\dots,c_M\}$ denote the current outcome labels available to the
+observer. At ordinal step $n+1$, the observer attempts to refine the
+experimental record. If no admissible outcome occurs, then
+\[
+  \boldsymbol{\psi}_{n+1}
+  \text{ is undefined},
+\]
+and the admissible history terminates at step $n$.
+
+\begin{phenomenon}[The Malus Effect~\cite{malus1810}]
+\label{ph:polarization-termination}
+Consider a beam of light that has passed through a linear polarizing filter.
+All subsequent photons are aligned to that axis. If the observer introduces a
+second polarizer oriented at $90^\circ$ to the first, no photon passes. There
+is no new distinguishable event. The count of counts cannot increase, and
+the experimental record ends. The light can no longer be observed.
+\end{phenomenon}
+
+In this setting, the attempt to extend the record fails. The observer has
+exhausted the available structure. Without a new admissible event, no component of
+$\boldsymbol{\psi}_n$ can grow, and no distance can be defined beyond this
+point.
+
+\begin{center}
+\emph{If a refinement produces no observable outcome, the history stops.}
+\end{center}
+
+The failure to propagate the experimental record marks a fundamental limit:
+progress requires either additional distinguishable outcomes or an expanded
+basis of measurement. As long as only one observer is present, such limits
+are absolute. A new source of distinction is needed for the universe to
+continue unfolding.
+
+
+\section{Change of Frame}
+\label{sec:change-of-frame}
+
+The experimental record $\psi_n$ is a tally of distinguishable outcomes defined
+relative to the observer's measurement procedure.  Different observers may adopt
+different alphabets of outcomes, different groupings of distinctions, or
+different conventions for assigning symbols to events.  To compare records or to
+formulate observer--independent statements, we must describe how one
+representation is translated into another.
+
+A \emph{frame} in this setting is a repeatable procedure for assigning
+distinguishable labels to events.  The ability to translate between frames
+follows from the requirement that repeated applications of the same procedure
+yield compatible records; this is the operational content of repeatability.
+
+\subsection{Translation of the Primal Record}
+\label{subsec:translation}
+
+Let $\Sigma_A$ and $\Sigma_B$ be the outcome alphabets used by two observers.
+Let $\psi_A \in \mathbb{N}^{|\Sigma_A|}$ be the experimental record in frame~A.
+A change of frame is represented by a linear map
+\[
+    L : \mathbb{R}^{|\Sigma_A|} \to \mathbb{R}^{|\Sigma_B|}
+\]
+that translates $\psi_A$ into the corresponding record in frame~B,
+\[
+    \psi_B = L\,\psi_A.
+\]
+
+The entries of $L$ describe how each outcome recorded in frame~A contributes to
+the outcomes used in frame~B.  For the translation to be admissible, it must
+preserve the total number of recorded distinctions:
+\[
+    \sum_j (\psi_B)_j = \sum_i (\psi_A)_i.
+\]
+This ensures that the translation neither creates nor deletes events.  It merely
+reallocates the counts among different outcome classes.
+
+\subsection{Translation of the Dual Ledger}
+\label{subsec:dual-translation}
+
+A dual vector $\phi_B \in \mathbb{R}^{|\Sigma_B|}$ represents a test applied to
+the record in frame~B.  Consistency of comparisons across frames requires that
+testing after translation be equivalent to translating the test before applying
+it.  Formally, for all $\psi_A$ and all $\phi_B$,
+\[
+    \langle \phi_B,\, L \psi_A \rangle
+    = \langle L^T \phi_B,\, \psi_A \rangle.
+\]
+
+The map
+\[
+    L^T : \mathbb{R}^{|\Sigma_B|} \to \mathbb{R}^{|\Sigma_A|}
+\]
+is therefore the induced transformation of the dual ledger.  It plays the role
+of a pullback: it expresses a test formulated in frame~B in the language of
+frame~A.
+
+This reciprocity guarantees that translations act compatibly on both the record
+and the tests of the record.
+
+\subsection{Invariance and the Kernel}
+\label{subsec:kernel}
+
+Variations that lie in the kernel of $L$,
+\[
+    \eta \in \ker L \quad\text{iff}\quad L\eta = 0,
+\]
+represent changes to the record in frame~A that have no effect when expressed in
+frame~B.  These are distinctions that frame~A is capable of resolving but frame~B
+is not.
+
+Such variations are \emph{unobservable} in frame~B.  They correspond to
+structure that is erased by the translation map.  If two frames are compatible
+representations of the same underlying record, no physically meaningful
+statement should depend on components of a variation that lie in the kernel of
+an admissible translation.
+
+This observation leads to the following requirement:
+Frame Invariance of Admissible Variation:
+A variation is admissible if and only if its projection onto every frame's
+observable subspace yields no unaccounted-for structure.
+
+Equivalently, if a variation produces a nonzero component in the kernel of some
+admissible translation, then that variation introduces structure that is not
+robust across frames and therefore cannot be used to define an admissible
+refinement.
+
+This criterion provides the foundation for the weak form developed in the next
+section.  In that formulation, admissible histories are characterized by having
+no component of their residual that survives when tested against all dual
+vectors arising from all admissible frames.
+
+\section{Change of Frame}
+\label{sec:change-of-frame}
+
+The experimental record $\psi$ is a tally of distinguishable outcomes defined
+relative to an observer’s measurement procedure. Different observers may group
+outcomes differently or use distinct labeling conventions. To compare their
+records, we introduce the notion of a change of frame.
+
+A \emph{frame} is a repeatable procedure for assigning labels to events.
+ A change of frame is represented by a linear map
+\[
+    L : \mathbb{R}^{|\Sigma_A|} \to \mathbb{R}^{|\Sigma_B|}
+\]
+that expresses the same underlying history in a different observational
+representation. If $\psi_A$ is the record in frame~A, its translation into
+frame~B is
+\[
+    \psi_B = L \psi_A.
+\]
+No invertibility, symmetry, or metric structure is assumed; only the total
+event count must be preserved.
+
+\subsection{Invariance of Total Count}
+\label{subsec:count-invariance}
+
+A change of frame must not alter the total number of recorded events. This is
+the sole algebraic requirement for admissibility:
+\[
+    \|\psi_B\|_1 = \|L \psi_A\|_1,
+    \qquad
+    \|L^T \psi_B\|_1 = \|\psi_A\|_1.
+\]
+
+The forward map $L$ preserves the total count of the translated record, and the
+transpose map $L^T$ preserves the total count when translating a record back.
+This double conservation ensures that the \emph{proper time} of the system—the
+count of irreducible updates---is invariant under both
+translation and reciprocity.
+
+\subsection{Dual Translation and Reciprocity}
+\label{subsec:dual-translation}
+
+A dual vector $\phi_B$ represents a test or admissible variation expressed in
+frame~B. Consistency requires that applying a test after translation is
+equivalent to translating the test before applying it:
+\[
+    \langle \phi_B,\, L \psi_A \rangle
+    =
+    \langle L^T \phi_B,\, \psi_A \rangle.
+\]
+
+The transpose $L^T$ is thus the induced pullback on the dual ledger.
+This reciprocity ensures that inner products between
+records and tests are frame–independent.
+
+\subsection{Kernel and Observational Indistinguishability}
+\label{subsec:kernel}
+
+If a variation $\eta$ satisfies $L \eta = 0$, then that variation is
+indistinguishable in frame~B; it leaves no trace after translation. Such kernel
+directions represent structure that is unobservable in that frame.
+
+These directions are precisely those changes to a history that produce no new
+distinguishable events. Only variations that remain distinguishable under all
+admissible changes of frame are physically meaningful. This principle leads
+directly to the \emph{Weak Form} developed in the next section, where physical
+histories are selected by orthogonality to these unobservable directions.
+
+
+\section{The Weak Form}
+\label{sec:weak-form}
+
+The experimental record fixes a finite set of discrete constraints (the
+anchors). Between these anchors, the state of the system is not directly
+measured. However, the Axiom of Ockham prohibits the introduction of structure
+that cannot be justified by observation.
+
+To formalize this prohibition, we distinguish between the \emph{trial space} of
+candidate histories consistent with the anchors and the \emph{test space} of
+admissible queries. A history is selected not by a differential equation but by
+an orthogonality condition: the physical trajectory is the unique candidate
+whose informational residue is invisible to all admissible tests.
+
+\subsection{Test Functions as Admissible Queries}
+\label{subsec:test-functions}
+
+Let $\mathcal{H}$ denote the linear space of candidate histories determined by
+the recorded anchor points. A candidate $\psi \in \mathcal{H}$ may possess
+arbitrary structure between anchors; such structure is not yet ruled out by the
+record.
+
+A \emph{test function} $\phi$ represents an admissible variation or query. An
+observer cannot formulate tests that exceed the resolution of their frame. From
+Section~\ref{sec:change-of-frame}, the admissible tests in a given frame are
+generated by the rows of the associated change-of-frame operator $L$. Thus the
+test space is
+
+\[
+    V_{\mathrm{test}} = \mathrm{range}(L^T).
+\]
+
+A vector $\phi \notin V_{\mathrm{test}}$ represents a query that cannot be
+expressed operationally within the frame; such queries are excluded from the
+weak formulation.
+
+\subsection{The Orthogonality Principle}
+\label{subsec:orthogonality}
+
+Let $R(\psi)$ denote the residual structure of a candidate history $\psi$,
+representing any component of the trajectory not fixed by the anchors. For a
+history to be physically admissible, this residue must be undetectable by every
+admissible test.
+
+The \emph{Weak Form} is the requirement that
+
+\[
+    \langle R(\psi),\, \phi \rangle = 0
+    \qquad \text{for all } \phi \in V_{\mathrm{test}}.
+\]
+
+Substituting $V_{\mathrm{test}} = \mathrm{range}(L^T)$, we obtain the
+frame-equivalent condition
+
+\[
+    \langle R(\psi),\, L^T \eta \rangle = 0
+    \qquad \text{for all variations } \eta.
+\]
+
+By reciprocity of the inner product
+(Section~\ref{subsec:dual-translation}), this is equivalent to
+
+\[
+    \langle L R(\psi),\, \eta \rangle = 0
+    \qquad \text{for all } \eta,
+\]
+
+which implies
+
+\[
+    L R(\psi) = 0.
+\]
+
+Thus the informational residue must lie entirely in the kernel of~$L$.
+
+\subsection{Projection and Physicality}
+\label{subsec:projection}
+
+The Weak Form decomposes the trial space into two orthogonal components:
+
+\begin{enumerate}
+    \item the \textbf{observable component}, visible under the admissible tests
+    generated by $L$;
+
+    \item the \textbf{unobservable component}, contained in $\ker(L)$.
+\end{enumerate}
+
+The Axiom of Ockham is realized by eliminating all unobservable components from
+the physical description. The physical history $\Psi$ is the unique candidate
+that satisfies both the anchor constraints and
+
+\[
+    R(\Psi) \in \ker(L).
+\]
+
+In this formulation, “smoothness” is not an imposed geometric property but the
+absence of detectable residue. The physical trajectory is the projection of the
+trial history onto the subspace of variations detectable by admissible tests.
+
+\section{Spline Sufficiency}
+
+We have demonstrated that a continuum can be manufactured from moments.
+We now consider the variations of the values that can appear on that
+continuum, expressed through the sequence $\{\psi_n\}$.
+
+In this final section, our goal is to examine how the discrete variables
+$\psi_n$ may change from moment to moment, and to determine which
+variations are admissible once the continuum has been constructed from
+the record. Because each $\psi_n$ represents a count derived from a
+count, any change in its value, its first difference, or any higher
+difference must respect the combinatorial limits imposed by the ledger.
+
+To proceed, we treat each $\psi_n$ as a variable defined on the
+manufactured continuum and analyze its successive variations---first,
+second, third, and higher---subject to the requirement that each
+variation remain constant within a moment and compatible across adjacent
+moments. This allows us to identify exactly which higher variations must
+vanish and why the structure of the record forces that outcome.
+
+\subsection{Stride}
+
+We define the first variation as expected
+\begin{equation}
+\delta \psi_n = \psi_n - \psi_{n-1} = e_i.
+\end{equation}
+In order to isolate just this label for variation, we introduce the weak variation with respect
+to phenomenon labeled $i$. Assuming this is not the first recording of label $i$, 
+\begin{equation}
+{}^i\delta_k\psi_n = \langle\psi_n - \psi_{n-k}, e_i\rangle
+\end{equation}
+for \emph{stride length} k.  From this we can define the 
+current unit stride for phenomonen $i$ as $k$ such that ${}^i\delta_{k}\psi_n = 1$.
+
+The second variation requires comparing the slopes across two distinct ranges of moments and
+is fixed to be constant, not just across each moment, but across the entire
+span of moments.  Since in the current moment ${}^i\delta_{k}\psi_n = 1$, this implies
+\begin{equation}
+{}^i\delta^2_k\psi_n = {}^i\delta_k\psi_n - {}^i\delta_k\psi_{n-k} = (1-r) e_i \quad r>0, r\in\mathbb{N}
+\end{equation}
+In this case, the second variation depends solely $r$, the number of changes in the
+set of events between $n-2k$ and $n-k$.
+
+And, similarly we can derive the third variation
+\begin{equation}
+{}^i\delta^3_k\psi_n = {}^i\delta^2_k\psi_n - {}^i\delta^2_k\psi_{n-k} = (s-r) e_i \quad r,s>0, r,s\in\mathbb{N}.
+\end{equation}
+This directly implies that a spline can be constructed through the anchor points of phenomenon $i$ that is $C^2$
+everywhere. When the first variation is exactly 0, the spline is a solution to the Euler-Lagrange equations.

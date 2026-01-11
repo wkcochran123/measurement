@@ -1,0 +1,202 @@
+% ======================================================================
+% INSTRUCTIONS WHEN EDITING THIS PROJECT
+% ======================================================================
+%
+% 1. Do not guess labels or numbers.
+%    Always use \ref{...} exactly as requested. Never invent labels.
+%
+% 2. When asked to insert a reference, write it literally as
+%       Thought Experiment~\ref{te:lorentz}
+%    or whichever label is given, without adding chapter, section, or numbers.
+%
+% 3. Use exact hierarchy:
+%       \chapter{...}
+%       \section{...}
+%       \subsection{...}
+%       \subsubsection{...}
+%    Never invent section names or change levels.
+%
+% 4. Single, clean LaTeX block output only.
+%    No prose, no explanation, no commentary outside the code block.
+%
+% 5. ASCII only in body text. No Unicode punctuation.
+%
+% 6. BibTeX citation keys are lastnameYYYY and must be sorted alphabetically
+%    inside each citation command.
+%
+% 7. SOFT MARGINS OF 100 characters for all generated prose.
+%
+% 8. Never write explanations, apologies, or meta-text unless the user asks.
+%    Do not self-justify, speculate, question instructions, or add commentary.
+%    The output should assume the user already knows what they want and expects
+%    exact compliance, not discussion.
+%
+% 9. Add labels to all equations, definitions, sections, chapters, and thought experiments:
+%      \label{eq:[SHORT-NAME-WITH-DASHES]}
+%      \label{def:[SHORT-NAME-WITH-DASHES]}
+%      \label{se:[SHORT-NAME-WITH-DASHES]}
+%      \label{chap:[SHORT-NAME-WITH-DASHES]}
+%      \label{te:[SHORT-NAME-WITH-DASHES]}
+%
+%10. The theorem phenomenon is being replaced by phenom. When asked to write a phenomenon
+%    phenom theorem.
+%
+%11. Do not gloss words
+% ======================================================================
+% END OF INSTRUCTIONS
+% ======================================================================
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{example}{Thought Experiment}
+\makeatletter
+\def\@noftheorem#1#2{}
+\makeatother
+\newtheorem{axiom}{Axiom}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{equivalence}{Equivalence}
+\newtheorem{law}{Law}
+\newcommand{\Top}{\operatorname{Top}}
+\newcommand{\J}{\mathbf{J}}        % Universe tensor
+\newcommand{\U}{\mathbf{U}}        % Universe tensor
+\newcommand{\T}{\mathbf{T}}        % Universe tensor
+\newcommand{\E}{\mathbf{E}}        % Event tensor
+\newcommand{\R}{\mathbf{R}}        % Event tensor
+\newcommand{\V}{\mathcal{V}}       % Variation space
+\newcommand{\Ledger}{\mathcal{L}}       % Ledger
+\newcommand{\Refine}{\mathcal{R}}       % Ledger
+\newcommand{\Rhat}{\hat{R}}       % Measurement space
+\newcommand{\Talg}{\mathcal{T}(\V)}    % Tensor algebra
+\newcommand{\Eset}{\mathcal{E}}    % Event set
+\newcommand{\Part}{\mathsf{Part}}
+% Entropy operator / functional
+\newcommand{\Entropy}{\mathcal{S}}
+\newcommand{\Blocks}[1]{\mathrm{Bl}(#1)}
+\newcommand{\fold}{\mathop{\bigcirc}}
+
+
+
+% --- House style for N.B. callouts (inline, bold, em-dash) ---
+\newcommand{\NB}[1]{%
+  \par\noindent\textbf{N.B.---}#1\hfill$\square$\par
+  }
+
+
+\newlistof{lotexp}{tex}{List of Thought Experiments}
+\newcommand{\thoughtexp}[1]{%
+  \refstepcounter{lotexp}%
+  \par\noindent\textbf{Thought Experiment~\thelotexp. #1}\addcontentsline{tex}{lotexp}{\protect\numberline{\thelotexp}#1}\par
+}
+
+\newcommand{\addfiletotoc}[1]{%
+\addcontentsline{toc}{section}{#1}%
+}
+
+% Proof (Sketch) environment
+\newcommand{\psklabel}{}
+\newenvironment{proofsketch}[1]{%
+  \renewcommand{\psklabel}{#1}%
+  \begin{proof}[Proof (Sketch)]%
+}{%
+  \end{proof}%
+  \medskip
+  \noindent\textit{A full proof is provided in Appendix~\ref{app:\psklabel}.}%
+}
+
+
+
+\newenvironment{coda}[1]{
+  \section*{Coda: #1}
+  \addcontentsline{toc}{section}{Coda: #1}
+}{
+}
+
+\hyphenation{treat-ed}
+
+% Length operator (number of folded factors)
+\DeclareMathOperator{\len}{len}
+
+% Common boundary notation and restriction to boundary
+\newcommand{\Boundary}[2]{\partial(#1,#2)} % usage: \Boundary{\U^A}{\U^B}
+\newcommand{\RestrictToBoundary}[2]{#1\!\upharpoonright_{\Boundary{#2}{#1}}}
+% Example: \U^A\!\upharpoonright_{\partial(\U^A,\U^B)}
+
+\makeatletter
+\renewcommand{\l@chapter}{\@dottedtocline{0}{0em}{1.5em}}
+\makeatother
+
+% Usage: \PropositionSection{universe-tensor}
+% Produces:
+%   \section{Proposition~\ref{prop:universe-tensor}}
+%   \label{app:universe-tensor}
+%
+\newcommand{\propproof}[1]{%
+\section{Proposition~\ref{prop:#1}}%
+\label{app:#1}%
+}
+
+\newtheorem{phenomenon}{Phenomenon (old)}
+\newtheorem{phenomthm}{Phenomenon} % New structured phenomenon theorem
+
+
+\makeatletter
+
+\newif\ifph@statement
+\newif\ifph@origin
+\newif\ifph@observation
+\newif\ifph@constraint
+\newif\ifph@consequence
+
+\newcommand{\ph@resetflags}{%
+  \global\ph@statementfalse
+  \global\ph@originfalse
+  \global\ph@observationfalse
+  \global\ph@constraintfalse
+  \global\ph@consequencefalse
+}
+
+\newcommand{\ph@requireflags}{%
+  \ifph@statement\else
+    \PackageError{phenom}{Missing required block: Statement}{}%
+  \fi
+  \ifph@origin\else
+    \PackageError{phenom}{Missing required block: Origin}{}%
+  \fi
+  \ifph@observation\else
+    \PackageError{phenom}{Missing required block: Observation}{}%
+  \fi
+  \ifph@constraint\else
+    \PackageError{phenom}{Missing required block: Operational Constraint}{}%
+  \fi
+  \ifph@consequence\else
+    \PackageError{phenom}{Missing required block: Consequence}{}%
+  \fi
+}
+
+\newenvironment{phenom}[1]%
+{%
+  \ph@resetflags
+  \begin{phenomthm}[#1]%
+  $\quad$
+
+  \begin{list}{}{\leftmargin=1.5em \rightmargin=0pt \itemsep=0.5ex}%
+}%
+{%
+  \end{list}%
+  \ph@requireflags
+  \end{phenomthm}%
+  \medskip
+}
+
+\newcommand{\PhStatement}{\global\ph@statementtrue\item[\textbf{Statement.}]}
+\newcommand{\PhOrigin}{\global\ph@origintrue\item[\textbf{Origin.}]}
+\newcommand{\PhObservation}{\global\ph@observationtrue\item[\textbf{Observation.}]}
+\newcommand{\PhConstraint}{\global\ph@constrainttrue\item[\textbf{Operational Constraint.}]}
+\newcommand{\PhConsequence}{\global\ph@consequencetrue\item[\textbf{Consequence.}]}
+
+\makeatother
+

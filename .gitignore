@@ -1,2 +1,13 @@
 .*.swp
 lean/.lake
+tex/front
+tex/appendix
+*aux
+*bbl
+*blg
+*fdb*
+*fls
+*loe
+*.log
+*toc
+
