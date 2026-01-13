@@ -30,16 +30,22 @@ can grow in many ways, but the ability to compare those accumulated marks
 is what allows us to speak about speed without adding new assumptions
 ahead of the trace itself.
 
-The speedometer does not produce numbers; it produces symbols shown on the
+A speedometer does not produce numbers; it produces symbols displayed on the
 dashboard of the car. A radar gun does something similar: measurements of
-electromagnetic pulses are combined to produce symbols on the readout.  Sometimes the
-symbols match, like when both displays use the same units and the same style of
-markings. Sometimes they don’t, like when one display shows speed in km/h and the
-other uses a different set of units. What matters for now is not the units, or
-what the symbols mean later, but the key idea hiding in plain sight: every
-instrument that shows speed is restricted to a finite collection of possible
-symbols. That finite collection, whatever its design, is what we call an
+electromagnetic pulses are combined to produce symbols on a readout. Sometimes
+those symbols match, as when both displays use the same units and markings.
+Sometimes they do not, as when one display reports speed in kilometers per hour
+and another uses a different scale. In every case, what is presented is not a
+number in the abstract, but a \emph{gauge}.
+
+That gauge may take different forms. An LCD speedometer presents speed as a
+finite set of digit strings. An analog dial presents speed as the position of a
+needle against a finite collection of tick marks, often with two superimposed
+graduations. The form differs, but the constraint is the same: each instrument
+admits only a finite collection of distinguishable symbols. That finite
+collection, regardless of how it is rendered, is what we call an
 \emph{alphabet}.
+
 
 The alphabet is not a number system. It is a scheme for showing and sharing
 marks that stand for readings. When the dashboard shows ``100 km/h,'' it is not
@@ -74,15 +80,20 @@ and measurements.  In the case of the speedometer, rather than
 counting entire rotations,
 it may be possible to count quarter rotations, or some other fraction of a rotation.  
 
-Other refinements come not from sharper counting, but from switching the way we
-notice the same kind of change. An radar gun measures speed by registering bouncing 
-photons their specular reflection off of the car's body panels,
-not wheels turning. The wheel still turns again and again, but the instrument
-is paying attention to something else entirely.  The wheels rotate on an axle that
-rotates in a mount attached to a frame with body panels attached.  It is the
-body panels being measured by the radar being conveyed by the wheels---all of which
-having been engineered with physical models. Refinement can therefore mean
-changing how we witness a measurement, not changing the measurement being witnessed.
+Other refinements do not arise from sharper counting, but from changing what
+aspect of a phenomenon is registered. A radar gun, for example, measures speed
+not by counting wheel rotations, but by detecting the Doppler shift of photons
+reflected from the vehicle's body panels. The wheels still turn, just as before,
+but the instrument is attending to a different manifestation of the same motion.
+
+
+The rotating wheels drive an axle, which is fixed to a frame, which carries the
+body panels that reflect the radar signal. The motion conveyed through this
+mechanical chain is real in all cases, but the refinement lies in which aspect of
+that motion is rendered observable. Refinement can therefore consist not in
+measuring more finely, but in changing the mode of observation itself, while
+leaving the underlying phenomenon unchanged.
+
 
 There are many ways to notice the same kind of happening, and each method is a
 different path to adding marks to the ledger. The car does not move differently
@@ -98,7 +109,7 @@ The ledger is not calibrated to the present; it is an immutable
 history of what refinement was able to log after that origin event.
 
 A ledger is self-contained and immutable in the following sense:
-it is the set of instrument-symbol 2-tuples that survived all justified
+it is the set of instrument-symbol three-tuples that survived all justified
 refinements without collapsing distinctions or introducing unlogged
 structure. What makes records comparable across observers is not
 the act of counting itself, but the ability to compare the
@@ -122,7 +133,7 @@ observed, but it carries no information about the temporal ordering of those
 observations beyond their total count.  It is a derived object, constructed
 from the ledger, not an event that occurred within it.
 
-The familiar, colloquial sense of "a period of time" enters only as a
+The familiar, colloquial sense of ``a period of time'' enters only as a
 comparison aid, not a calibration primitive. Because the ledger
 extends by finite, ordered symbol transitions, its total refinement
 depth can later be compared to the elapsed duration required to
@@ -182,14 +193,14 @@ narrows its own possibilities. Every new datum reduces the space of
 consistent histories while preserving the interpretation of all previous
 measurements---for instance, the speed of the car was indicated by the
 symbol 100km/h, not, say, the symbol ``150km/h,'' nor the symbol ``99km/h,''
-nor the symbol ``$99.\overline{9}km/h$'' despite its equality with 100. The result 
+nor the symbol ``$99.\overline{9}$km/h,'' despite its equality with 100. The result 
 of this narrowing is a refinement of the
 history. From such refinements the notion of an event emerges
 naturally as an irreducible refinement step, the smallest possible increase
 in distinguishability for an instrument.
 
 \begin{phenom}{The Maxwell--Yang--Mills Effect~\cite{maxwell1865,yang1954}}
-\label{ph:maxwell-yang-mills}
+\label{ph:maxwell}
 
 \PhStatement
 Distinct recorded symbols may correspond to the same observable physical
@@ -241,7 +252,8 @@ symbols refine the ledger by increasing distinguishability relative to earlier
 records.  However, the appearance of a new symbol does not, by itself, guarantee
 that a corresponding physical distinction has been resolved.  Distinct symbols
 may correspond to the same observable state under a given model, and no
-admissible experiment may exist that can discriminate between them.
+admissible experiment may exist that can discriminate between them 
+(see Phenomenon~\ref{ph:maxwell}).
 
 Refinement therefore describes a property of the record, not of the underlying
 model.  It is the act by which the ledger becomes more detailed, whether or not
@@ -318,7 +330,7 @@ the record
 \Ledger_{t+1} = R_t \Ledger_{t}.
 \end{equation}
 See Definition~\ref{def:refinement-operator} for the precise construction of the
-operator and Proposition~\ref{prop:refinement-operator} for demonstration of
+operator and Proposition~\ref{prop:refinement} for demonstration of
 existence.
 
 As a minimal example, consider a light meter instrument labeled $m, m\in\mathbb{N}$ 
@@ -375,7 +387,7 @@ Phenomenon~\ref{ph:kant-effect} names this asymmetry: the world becomes more inf
 only when something is noticed again, and the ordering of these noticings
 is the primitive substrate from which temporal parameters are later
 reconstructed. Clocks are engineered to track event succession, but their
-readings earn meaning only through persistence in the experiment ledger.
+readings earn meaning only through persistence in the experimental ledger.
 Time, in this view, is the index that labels stable progression of
 distinctions, not a value returned by the instrument.
 
@@ -431,22 +443,23 @@ contains no warrant to assert additional structure.
 
 \begin{definition}[Moment~\cite{einstein1905}]
 \label{def:moment}
-A \emph{moment} is the implied continuous function between two states of a
-ledger $\Ledger_t$ and $\Ledger_{t+1}$.
-Any theoretical (though not necessarily physical) observation between the events 
-would be the appropriate image
-of the interpolated range.  It is not a primitive atom of time, but the continuous
-domain on which the continuous completion of the record is defined when no new
-distinguishable refinements occur.  Concretely, the moment corresponds to the
-interval
-\begin{equation}
-(i,i+1] \subset \mathbb{R},
-\end{equation}
-of a function $M$ determined by physical law from the state of the
-universe at record $i$. 
-It represents the smooth surrogate of informational
-silence: the continuous interpolation of the ledger's discrete gaps.
+A \emph{moment} is the implied continuous interpolation between two successive
+states of a ledger $\Ledger_t$ and $\Ledger_{t+1}$ for an instrument $i$ in the
+universe of instruments $I$. Any theoretical, though not necessarily physical,
+observation between the corresponding events is represented as an image of this
+interpolated domain. A moment is not a primitive atom of time, but the continuous
+domain on which completion of the record is defined when no new distinguishable
+refinements occur.
+
+Concretely, a moment is a function
+\[
+M_i(t) : (\lfloor t\rfloor, \lfloor t \rfloor+1] \to \mathbb{R},
+\]
+determined by physical law inferred from the lifetime ledger event of instrument
+$i$. It represents the smooth surrogate of informational silence: the continuous
+interpolation spanning the discrete gaps of the ledger.
 \end{definition}
+
 
 Physical laws model behavior \emph{in the moment} (such as parabolic or hyperbolic partial 
 differential equations) or \emph{at that moment} (such as eliptic partial differential equations), but 
@@ -478,8 +491,10 @@ outcome has occurred under comparable conditions.
 This accumulation introduces the first genuinely statistical object of the
 theory. It does not presume continuity, distributional form, or underlying
 mechanism. It records only what the ledger itself can support: integer
-increments assigned to distinguishable outcomes. Any further structure must be
-constructed from, and remain consistent with, this accumulated record.
+increments assigned to distinguishable outcomes.
+Any further construction must be derived from, and remain consistent with, this
+accumulated record.
+
 
 The necessity of this step is operational rather than philosophical. Without
 accumulation, there is nothing to compare, no persistence to test, and no
@@ -557,7 +572,7 @@ first by what may be counted, and only second by how those counts are modeled.
 
 
 Thus, since time is not primal, time must arise as an 
-ordering relation on refinements: a phenomena to be measured. The observer may 
+ordering relation on refinements: a phenomenon to be measured. The observer may 
 annotate these refinements with 
 integers, or by reference to another refinement, or by any auxiliary mechanism that itself 
 produces discrete, ledger-licensed events. What survives is not a temporal coordinate 
@@ -573,16 +588,19 @@ into successor labels that encode nothing more or less than ordinal position. Ti
 feels like dynamics, but it is recorded as structure: the ordered tally of the 
 moments that proved distinguishable.
 
-As an example, let's return to how Einsten described simultaneity.  Einstein rejected a
-universal ordering and instead treated only the causal structure of refinement
-as invariant under comparison: different observers may record events in
-different orders, but must be able to translate their ledgers into one another
-without contradiction. Both views can be understood as interpretations of the
-same underlying history, differing only in how much structure is declared
-observer--independent. Modern GPS systems today use this principle as well as
-the ledger itself to compute positions.
+As an example, consider Einstein’s treatment of simultaneity. Einstein rejected
+any universal ordering of events and instead identified only the causal
+structure of refinement as invariant under comparison. Different observers may
+record events in different orders, yet their ledgers must admit translation into
+one another without contradiction. Each observer’s record can therefore be
+understood as an interpretation of the same underlying history, differing only
+in how much structure is declared observer--independent. This independence does
+not arise from agreement on timing, but from the fact that different observers
+may employ different instruments to measure the same phenomena in distinct
+ways. Modern GPS systems exploit precisely this principle, using both the
+recorded ledger and the causal structure it encodes to compute position.
 
-\begin{phenom}{The Parkinson--Spilker Effect~\cite{parkinson1996}}
+\begin{phenom}{The Dirichlet--Parkinson--Spilker Effect~\cite{dirichlet1850,parkinson1996}}
 \label{ph:gps}
 
 \PhStatement
@@ -599,6 +617,10 @@ coherent family of signal-propagation completions, but they do not
 identify which completion corresponds to the realized experimental
 record. Any decision among compatible solutions must therefore come
 from the structure of the ledger, not from the equations alone.
+In this sense, GPS localization is a Dirichlet problem over causal histories:
+the ledger supplies boundary data, while the physical equations admit multiple
+self-consistent completions.
+
 
 \PhObservation
 In GPS, a receiver collects timestamped satellite broadcasts and solves
@@ -624,7 +646,9 @@ completions satisfy the same timing tuples, yet only one can be promoted to
 fact without implying unlogged successor symbols. GPS favors the near-Earth
 branch at ordinary speeds not because it measures a present coordinate,
 but because that branch preserves every clock tick that was actually logged
-and requires no additional unobserved symbol transitions.
+and requires no additional unobserved symbol transitions.  One cannot suddenly
+appear in space, one must travel there. This takes time, allowing the introduction
+of events that did not take place.
 
 The ledger's inability to certify a unique contiguous spacetime region
 from finite symbol histories is not a limitation GPS must resolve here,
@@ -665,7 +689,7 @@ have can either extend their lifetime ledger to encode that fact explicitly,
 or, if queried by a separate instrument, refine the ledger to distinguish
 Earth-bound coordinate intersections from space-bound ones. The hypothesis
 does not assert where the instrument must be, only where it
-almost always has been given the precedence of its own recorded
+almost always has been, given the precedence of its own recorded
 histories.
 
 In practice, many receivers also implement an unproven but operationally
@@ -681,7 +705,7 @@ macro, non-relativistic regime.
 Instruments themselves are not purely theoretical devices and require some
 calibration, some comparison against a correct value, in order to be interpreted
 correctly.  For instance, the GPS implementing the ``closest to Earth''
-strategy for noise reduction, it needs to know exactly where earth is.
+strategy for noise reduction needs to know exactly where Earth is.
 To do this, we use measurements.
 
 \subsection{Measurement}
@@ -692,16 +716,27 @@ act and not an inquiry about a pre--existing quantity.  It is the creation of a
 distinction that did not previously appear in the record.  A measurement is an
 operation that describes an observation to the exclusion of all others.
 
-The experimental ledger that does not grow is not being measured.  Silence cannot
+An experimental ledger that does not grow is not being measured. Silence cannot
 be distinguished from absence, and absence cannot participate in causal
-structure.  For this reason, the null act cannot be admitted as a measurement.
+structure. For this reason, a null act cannot be admitted as a measurement.
+Physical laws tend to prohibit transitions that cross from the presence of a
+record to its absence, since such a crossing would imply the erasure of a logged
+distinction.
 
-This has an important structural consequence.  Measurement is not reversible.
-Later observations may refine, reinterpret, or contextualize earlier ones, but
-they cannot erase the fact that a distinction was recorded.  The ledger may be
-extended, but it cannot be undone.  This irreversibility is not a postulate of
-physics or a law of social science; it is a logical consequence of what it 
-means to record anything at all.
+If a physical law is continuous, then any reversal of a recorded quantity must
+pass through a zero of that quantity. However, there is no such thing as a zero
+measurement. An instrument either records a symbol or it does not, and the
+absence of a record cannot be distinguished from the absence of the phenomenon
+itself. Continuity therefore cannot be used to justify the undoing of a
+measurement, because the intermediate state required for reversal is not
+admissible to the ledger.
+
+This has a direct structural consequence: measurement is not reversible. Later
+observations may refine, reinterpret, or contextualize earlier ones, but they
+cannot erase the fact that a distinction was recorded. The ledger may be
+extended, but it cannot be undone. This irreversibility is not a postulate of
+physics or a convention of social practice; it follows logically from what it
+means to record a distinction.  Events cannot be undone.
 
 This idea was first written down by Plato in his telling of Zeno's 
 paradoxes~\cite{plato1996}.
@@ -709,7 +744,7 @@ Zeno's concern was not with mechanics, but with how motion is decomposed.  His
 argument begins from a simple observation: a path may be subdivided into
 segments, and each segment has a strictly positive length.
 
-In the familiar example, Achilles, the fastest runner of all, has
+In the familiar example, Achilles, the fastest of all, has
 a foot race with a tortoise\footnote{For a more robust treatment, see Hofstadter~\cite{hofstadter1979}}.  
 In order to make the race fair, Achilles gives the 
 tortoise a head start.  To overtake the
@@ -735,11 +770,11 @@ experimental ledger. A zero measurement is not an event and produces no
 extension of the ledger.
 
 \PhOrigin
-Zeno’s arguments draw attention to the tension between discrete acts of
-measurement and continuous descriptions of motion. When refinement is treated
-as infinitely divisible, the accumulation of progress appears to stall. The
-difficulty arises from conflating geometric subdivision with recorded
-distinctions.
+Zeno’s arguments highlight a tension between discrete acts of measurement and
+continuous descriptions of motion. When refinement is treated as infinitely
+divisible, the accumulation of progress appears to halt. The difficulty comes
+from confusing geometric subdivision with recorded distinction.
+
 
 \PhObservation
 In the ledger, events occur only when a distinguishable outcome is recorded.
@@ -777,13 +812,17 @@ refinement is possible within the ledger, regardless of how the motion is
 modeled mathematically.
 
 In the case of Achilles, the physical model assigns a definite time to the
-traversal of each segment of the path.  Because Achilles is the fastest of all,
-the time associated with the final distinguishable segment is correspondingly
-the smallest---it should be next as a time segment between would imply a faster
-Achilles could exist.  When refinement reaches the limit imposed by the ruler, the remaining
-motion occurs without generating additional ledger distinctions and therefore
-appears to take place almost instantaneously. So the paradox is resolved
-by the statement: either Achilles is not the fastest or the tortoise must lose.
+traversal of each distinguishable segment of the path. Because Achilles is
+the fastest of all, the time associated with the final distinguishable segment
+is correspondingly the smallest: no further subdivision can be resolved
+without exceeding the precision of the ruler itself. Once refinement reaches
+this limit, the remaining motion produces no additional ledger distinctions.
+The model therefore records no further events, even though physical motion
+continues. The paradox is resolved not by denying motion, nor by altering the
+outcome of the race, but by recognizing that the ledger of distinguishable
+events is finite. Achilles overtakes the tortoise in the interval beyond the
+final recorded distinction, where the model is silent.
+
 
 The apparent paradox arises only if one assumes that refinement must continue
 without bound.  When refinement is correctly understood as a ledger--based
@@ -809,7 +848,7 @@ later observations, as they constitute distinctions that were actually logged,
 never deduced from instantaneous state.
 
 To produce a sorted list of such relations, the ledger must grow sufficiently
-long for enough successor symbols to exist that the ordering becomes uniquely
+long for enough successor relations to exist that the ordering becomes uniquely
 recoverable. Time does not act as an input parameter to the refinement operator;
 rather, time is the output evidence of ledger extension itself. In order to
 sort temporal relations, the system must advance through refinement depth until
@@ -850,48 +889,48 @@ instrument in the universe of instruments $I$.
 These events are coordinated by a precedence relation $\prec$ that is assumed to be a strict
 partial ordering: irreflexive and transitive, but not necessarily total as
 different ledgers may record the same events out of order but still causally
-correct
+correct (see Phenomenon~\ref{ph:aspect}).
 
-The speedometer, GPS, and radar gun's individual events are independent of the
-others up to the model of the car yet agree in time when the speed of the car changed.
-From the point of view of the car's speedometer, the particular ticks of the atomic
-clocks in orbit around the earth do not matter in the computation of speed.  Yet, they
-have to happen for the GPS and speedometer to agree on when the car changed speed.
-Temporal ambiguity between ledgers is the main subject of this text. For now, we
-stipulate the existence of temporal ambiguity between ledgers as a consequence of 
-assuming physical laws exist.
+The speedometer, GPS receiver, and radar gun each generate events that are
+independent of one another, except through a shared physical model of the car.
+Each instrument attends to a different aspect of the same motion, yet their
+records agree on when the car's speed changes.
 
-This makes hypothesis testing straightforward at human scales. With three GPS
-satellites, the receiver computes two algebraically consistent coordinate
-branches; introducing a fourth satellite removes the ambiguity without adding
-new conceptual structure. The practical fix is trivial, but the lesson is not:
-even ordinary instruments infer time and order only from witnessed transitions,
-and may carry temporal noise whenever their resolution is insufficient to
-forbid branching, a fact that the monograph characterizes but does not assume
-to eliminate.
+From the point of view of the car's speedometer, the individual ticks of the
+atomic clocks in orbit around the Earth are irrelevant to the computation of
+speed. Those ticks nevertheless occur, and must occur, for the GPS receiver and
+the speedometer to agree on the timing of a change in velocity.
 
-We characterize a \emph{hypothesis} not as a proof about a system, but as a
-method for describing a population of admissible readings that instruments
-could emit. Let instruments be labeled by natural indices
-$i \in \mathbb{N}$, let $\Sigma_i$ be the finite or countable alphabet of
-symbols each instrument can emit, and let a reading be a 2-tuple,
-the primitive
-instrument--symbol outcomes $(i,j), i,j\in\mathbb{N}$. A hypothesis is then 
-the rule
-that maps a time parameter $t > 0$ to a \emph{set} of such readings that
-remain compatible with the experimental record, leaving existence open
-while forbidding contradictions.
+Temporal ambiguity between ledgers is a central theme of this text. For now, we
+stipulate the existence of such ambiguity as a consequence of assuming that
+physical laws exist and are applied independently by distinct instruments.
+
+We use the word \emph{hypothesis} not to mean a proof about a system, but a way of
+describing which instrument readings could occur, given the temporal ambiguity
+present in the record. A hypothesis specifies what remains admissible, not what
+must exist.
+
+Instruments are labeled by natural numbers $i \in \mathbb{N}$. Each instrument
+has an associated finite or countable alphabet of symbols $\Sigma_i$. A reading
+is a primitive outcome, written as a pair $(i,j)$, indicating that instrument
+$i$ emitted symbol $j$.
+
+A hypothesis is a rule that assigns, to each time parameter $t > 0$, a set of
+such readings that are compatible with the experimental ledger up to that time.
+It constrains possibility by excluding contradictions, while leaving unresolved
+which admissible readings, if any, will occur.
 
 It is always possible to assign numerical representatives to the symbols of an
 instrument by convention.  Such assignments do not arise from physical initial
 conditions or from refinement of the ledger, but from the selection of
 reference distinctions and the interpolation between them, as in the
-construction of temperature scales such as Fahrenheit and Celsius.  The
+construction of temperature scales Fahrenheit, Celsius, and their related
+units, re-calibrated to a phenomenon with higher resolution.  The
 numerical values themselves are therefore arbitrary, encoding relative order
 rather than intrinsic magnitude.
 
-\begin{phenom}{The Fahrenheit--Celsius Effect~\ref{celcius1742,farenehit1724}}
-\label{ph:fahrenheit-celsius}
+\begin{phenom}{The Lagrange--Fahrenheit--Celsius Effect~\cite{celcius1742,farenehit1724,lagrange1788}}
+\label{ph:lagrange}
 
 \PhStatement
 Distinct numerical scales may be constructed to represent the same ordered
@@ -899,13 +938,23 @@ physical distinctions, such that each scale preserves relative ordering while
 differing by an arbitrary choice of reference points and interpolation.  The
 resulting symbols are related by a simple order--preserving transformation,
 but neither scale is privileged by the underlying phenomenon.
+This reflects a Lagrangian freedom of description: the same physical distinctions
+are preserved under smooth reparameterizations of the measurement scale.
 
 \PhOrigin
-Early temperature scales were constructed by selecting two reproducible
-physical reference conditions and assigning numerical values to them by
-convention.  Both Fahrenheit and Celsius fixed symbols to relative thermal
-states and interpolated between them, without appeal to a primitive count,
-an intrinsic zero, or a dynamical law governing temperature itself.
+Early temperature scales were constructed by selecting two reproducible physical
+reference conditions and assigning numerical values to them by convention. Both
+Fahrenheit and Celsius fixed symbols to relative thermal states and interpolated
+between them, without appeal to a primitive count, an intrinsic zero, or a
+dynamical law governing temperature itself.
+
+Lagrange later formalized the principle underlying this practice by showing that
+physical laws need not depend on any particular choice of coordinates. By
+treating admissible descriptions related by smooth reparameterizations as
+equivalent, he separated physical content from numerical representation. The
+temperature scale thus becomes a coordinate choice on the space of thermal
+states, not a property of the states themselves.
+
 
 \PhObservation
 For any physical situation, the symbols reported on the Fahrenheit and Celsius
@@ -921,7 +970,7 @@ transformation of the symbols is observationally admissible, and no recorded
 measurement can privilege one such assignment over another.
 
 \PhConsequence
-The Fahrenheit--Celsius Effect demonstrates that numerical representation may
+Phenomenon~\ref{ph:lagrange} demonstrates that numerical representation may
 be constructed from relative distinctions without refinement of the ledger.
 Multiple symbol systems can encode the same observational content, differing
 only by arbitrary conventions fixed at construction.  This effect motivates
@@ -949,32 +998,62 @@ required to discuss ordering and refinement without attributing physical
 significance to the chosen numerical scale.
 
 For clarity, we also introduce trivial versions of these mappings,
-$\tilde{\sigma}$ and $\tilde{\sigma}^*$.  Using the enumeration of symbols
-itself, let $\tau(t)$ denote the Lagrange interpolant of the identity function
-$y = t$ through the integer sample points
+$\tilde{\sigma}$ and $\tilde{\sigma}^*$. These constructions are purely
+auxiliary and impose no additional physical structure.
+
+Using the enumeration $\rho_i : \Sigma_i \to \mathbb{N}$, we may embed the
+discrete symbol indices into the real line by interpolation. In particular,
+there exists a function
 \[
-(\lfloor t \rfloor,\;\lfloor t \rfloor)
-\quad\text{and}\quad
-(\lfloor t \rfloor+1,\;\lfloor t \rfloor+1).
+w : \mathbb{N} \to \mathbb{R}^+
 \]
-This construction fixes a numerical representation without introducing any new
-observational content.
+obtained by Lagrange interpolation~\cite{lagrange1788}, with the interval
+$(0,1)$ extrapolated from the values on $[1,2]$. This provides a continuous
+parameterization of symbol indices without assigning them metric meaning.
 
-Then $\sigma(\xi) = \tau(j_\xi)$ for $r_{\lfloor t \rfloor} = (i,j_\xi,k)$ the record labeled
-by the observer as $\xi$.  This is just a linear interpolation of the symbol numbers allowing expression of sortability.
-Should a different sorting of the symbols be required for interpretation, this can be substituted for $\tau$.
-The inverse function, however, is limited to what was recorded for that moment.  
-$\sigma^*(t) = \sigma_{j_{\lfloor t \rfloor}}$
+The inverse map $\tilde{\sigma}^*$ is defined by discretization: for a real
+parameter $t$, the selected symbol is the one whose index is given by the
+integer part of $t$,
+\begin{equation}
+\tilde{\sigma}^*(t) = \sigma \quad \text{such that} \quad j_\sigma = \lfloor t \rfloor .
+\end{equation}
+For $t \in [0,1]$, we define $\tilde{\sigma}^*(t) = 0$ by convention.
+We define $\sigma$ and $\sigma^*$ as representational maps.
 
+\begin{definition}[Representational Maps]
+\label{def:sigma}
+Let $\Sigma$ be a finite or countable measurement alphabet. A
+\emph{representational map} is a function
+\[
+\sigma : \Sigma \to X,
+\]
+where $X$ is a potentially uncountable space used for representation, such as
+$\mathbb{R}$ or $\mathbb{R}^n$. The map $\sigma$ assigns each symbol a
+representative element of $X$ without asserting that $X$ carries intrinsic
+physical meaning.
 
-Nothing in the ledger of observations guarantees the ability to invert
-time order from equal-valued measurements alone. Even if two instruments
-emit the same symbol index, the record does not authorize the inference
-that one occurred before the other without a new distinguishing event
-that witnesses a valid refinement. The hypothesis does not claim that
-such a witness must always exist, only that if it did exist, it would
-exclude contradictory reorderings and thereby restrict the null space
-of admissible histories.
+A corresponding \emph{projection map}
+\[
+\sigma^* : X \to \Sigma
+\]
+assigns to each representative element a symbol in $\Sigma$. The composition
+$\sigma^* \circ \sigma$ recovers the original symbol, while $\sigma \circ
+\sigma^*$ need not be the identity on $X$.
+
+These maps serve only to relate discrete recorded distinctions to continuous
+representations. They impose no ordering, metric, or dynamical structure beyond
+that required for representation.
+\end{definition}
+
+Nothing in an observational ledger guarantees the ability to infer temporal
+order from equal-valued measurements alone. When two instruments emit the same
+symbol, the ledger records agreement but not precedence. In the absence of a
+new distinguishing event, this interval is one of verified silence: nothing was
+recorded that would justify an ordering.
+A hypothesis does not assert that such silence must eventually be broken. It
+asserts only that, if a distinguishing event were to occur, it would exclude
+contradictory reorderings and thereby restrict the null space of admissible
+histories. Until then, silence remains admissible and unresolved.
 
 We therefore define a prediction map as
 \begin{definition}[Prediction Map]
@@ -988,6 +1067,24 @@ any general rule.  As such, we shall refer to this as the \emph{Bayes predictor}
 \end{definition}
 This prediction map allows us to explore hypothetical events for a phenomena in time
 from various perspectives.
+
+The distinction between the phenomenal and Bayesian predictors is not one of
+correctness, but of perspective. The phenomenal predictor encodes expectations
+derived from a generalized description of the phenomenon itself. It treats the
+phenomenon as if its observed regularities may persist, projecting those
+regularities forward across intervals of verified silence.
+
+The Bayes predictor, by contrast, makes no appeal to a general model of the
+phenomenon. It conditions its predictions solely on the historical record that
+has already been logged. In doing so, it treats the past as sufficient context
+for admissible expectation, without asserting that any particular pattern must
+continue.
+
+Both predictors operate within the same constraints of admissibility. Neither
+asserts that a predicted event will occur, nor that silence must be broken. They
+serve instead to delimit the space of hypothetical continuations of the ledger,
+clarifying which extensions are consistent with what has already been recorded.
+
 
 \section{Phenomena}
 The physical world does not grant an observer direct access to its governing
@@ -1056,16 +1153,16 @@ the circumstance that caused the reading of an instrument to change.
 A phenomenon is frequently narrated, in hindsight, as a chain of events that
 appear causally related when the record is reconstructed: ``this symbol
 followed that symbol often enough that the relation appears to survive refinement.''
-The narrative may suggest "this happened because that happened," but the
+The narrative may suggest ``this happened because that happened,'' but the
 ledger itself does not assert mechanisms, only the historical ordering of
 distinguishable instrument--symbol pairs.
 
 An event is not a mechanism, nor an instantaneous state, but the minimal
-unit of recorded distinction. For the set of all instruments I, 
-it is the set of all 2--tuples that names the symbols and 
-instruments that the event will trigger:
+unit of recorded distinction. For the universe of all instruments $I$, 
+it is the set of all 3--tuples that names the symbols, instruments, and 
+histograms that the event will trigger:
 \begin{equation}
-e = \{(i, j) | i \in I \text{ and } j \in \Sigma_i\}.
+e = \{(i, j, k) | i \in I \text{,} j \in \Sigma_i \text{ and } k\in\mathbb{N}\}.
 \end{equation}
 The event exists only when a measurement has been appended to the ledger, and its only
 authority is retrospective: it certifies that incompatible continuations were
@@ -1088,26 +1185,28 @@ instrument-symbol distinctions that would have been necessary to preserve
 agreement across observers.
 
 
+
 \begin{definition}[Event]
 \label{def:event}
 
-Let $p$ be a phenomenon (Definition~\ref{def:phenomenon}) and let $I_p \subset I$
-be the set of instruments capable of measuring $p$.  An \emph{event}
-participating in phenomenon $p$ is a finite configuration of measurement
-outcomes, consisting of a set of admissible records for each instrument in $I_p$.
+Let $p$ be a phenomenon and let $I_p \subset I$ denote the set of instruments
+capable of measuring $p$. An \emph{event} participating in phenomenon $p$ is the
+finite configuration of marks left by those instruments: the admissible
+measurement outcomes that were recorded.
 
 Formally, an event is a finite set
 \begin{equation}
 e_p = \{\, r_i = (i, j_i, k_i) \mid i \in I_p \,\},
 \end{equation}
-where each $r_i$ records the symbol $j_i$ produced by instrument $i$ together
-with its cumulative count $k_i$.
+where each record $r_i$ consists of an instrument label $i$, the symbol $j_i$
+produced by that instrument, and its cumulative count $k_i \in \mathbb{N}$, with
+$0 < k_i \le t$ and $|\Ledger_i| \ge |\Sigma_i| + t$.
 
-An event represents the current state of distinguishability achieved by the
-instruments measuring $p$.  It encodes the accumulated measurement counts but
-carries no intrinsic ordering information beyond what is induced by refinement.
-Events exist only as admissible configurations under the phenomenon $p$ and do
-not presuppose a particular ledger history.
+An event represents the state of distinguishability achieved at that point by the
+instruments measuring $p$. It is described entirely by the marks it leaves in the
+record: accumulated symbols and counts. An event carries no intrinsic temporal
+ordering beyond what is later induced by refinement, and it does not presuppose
+a particular ledger history.
 \end{definition}
 
 
@@ -1203,7 +1302,7 @@ construct a finite difference.
 In this case, the forward Euler process permits prediction arbitrarily far
 forward, or near, in time, subject only to the chosen discretization.
 
-From the perspective of numerical analysis, the limitations of the forward Euler
+The limitations of the forward Euler
 method are well understood. Its error bounds and convergence properties are
 formulated in terms of long-horizon behavior: global truncation error, absolute
 convergence, and stability are assessed by examining the accumulation of local
@@ -1242,14 +1341,18 @@ instrument appends when refining a measurement.
 
 \PhObservation
 Microscopic models may negate velocity fields or evolve trajectories backward in
-simulation without violating the dynamical law. The law, however, never records a
-reversal. It records only consistency conditions on aggregates of symbols. The moment
-a refined instrument emits a new distinguishable symbol, the experimental ledger
-extends,
-and any completion that interpolates every such extension into a differentiable path
-would impose an unobserved ordering in time. That ordering would imply that the law
-itself
-had selected a direction in time, which it did not.
+simulation without violating their dynamical laws. The laws themselves, however,
+do not record reversals. They impose only consistency conditions on aggregates of
+symbols. Once a refined instrument emits a new distinguishable symbol, the
+experimental ledger extends, and that extension cannot be undone.
+
+Any completion that interpolates every such extension into a single
+differentiable path would necessarily impose an ordering between records that
+was never observed. Such an ordering would amount to selecting a direction of
+time from the law itself, rather than from the ledger. 
+This is Phenomenon~\ref{ph:loschmidt-effect}: time-reversal symmetry of the
+equations does not license time-reversal of recorded history.
+
 
 \PhConstraint
 A physical law may compare records at a coarse level and restrict admissible futures
@@ -1260,18 +1363,21 @@ record,
 as doing so would conflate population--level invariance with a parameterization of time.
 
 \PhConsequence
-The Boltzmann–Loschmidt Effect therefore warns us that physical laws act on
-populations of successor symbols, summarizing consistent patterns without completing
-the refinement of any single record. Laws summarize, but do not uniquely refine
-individual ledger entries into smooth, time-parameterized trajectories.  
+The Boltzmann--Loschmidt Effect therefore warns us that physical laws act on
+populations of successor symbols, summarizing consistent patterns without
+completing the refinement of any single record. A law compresses extensive
+histories of recorded symbols into compact mathematical descriptions, but that
+compression necessarily discards the information required to uniquely refine an
+individual ledger entry into a smooth, time-parameterized trajectory.
 
-If a law fully refined each record, it would introduce a linear parameter of time,
-which would in turn impose a monotone arrow of temporal extension. The dynamical law
-does not select or return such a parameter. We therefore do not assume it, even though
-coarse models, constructed for prediction, may evolve symbol populations in a manner
-that appears to respect a time direction in representation. Apparent arrows of time
-belong to models, not to recorded symbols in the ledger itself (see
+If a law fully refined each record, it would introduce a linear parameter of
+time, which would in turn impose a monotone arrow of temporal extension. No
+dynamical law selects or returns such a parameter. We therefore do not assume it,
+even though coarse predictive models may evolve populations of symbols in ways
+that appear to respect a time direction in representation. Apparent arrows of
+time belong to models, not to recorded symbols in the ledger itself (see
 Phenomenon~\ref{ph:hume}).
+
 \end{phenom}
 
 Instruments can always be redesigned to distinguish a richer finite alphabet,
@@ -1296,7 +1402,7 @@ exclusionary weight. Mathematical design rules refine models. The ledger
 refines only what was actually recorded, at a finite resolution that is never
 computed, only encountered.
 
-\subsection{The Process of Refinement}
+\section{The Process of Refinement}
 
 As explored in the previous chapter, all instruments are noisy and the universe
 does not present crisp algebraic objects for inspection, despite the best
@@ -1326,7 +1432,7 @@ occur, are symbolically crisp enough to be counted, ordered, and compared withou
 ambiguity. Precision is a property of the alphabet and the causal chain of its
 transitions, and it can be evaluated directly from a ledger because it depends only
 on distinguishability, not on external standards.  This improves how well a presence
-of an event can be encoded
+of an event can be encoded.
 
 The sensitivity of the instrument increases the number of
 events recorded, allowing for a richer description of the phenomenon during the moment.
@@ -1353,6 +1459,8 @@ events populate the complement. Sensitivity therefore licenses a richer
 description of the same phenomenon at a finer moment of inspection, not by altering
 what was recorded, but by increasing how many times the ledger was permitted to
 record a finite trace before formalization.
+
+\subsection{Sampling}
 
 Yet another way to refine an instrument would be to use an entirely different set of
 measurement events.  For instance, using photons to measure the speed of a car is very
@@ -1401,18 +1509,22 @@ distinct underlying crankshaft positions produce the same coarse perceived
 alignment.
 
 \PhOrigin
-Portable ignition timing lights were developed in the mid twentieth century
-to allow mechanics to visualize engine phase by freezing motion with a flash
-triggered from the ignition signal.  
-The effect arises from
-bounded strobe interrogation of continuous mechanical motion.
+Portable ignition timing lights were developed in the mid twentieth century to
+allow mechanics to observe engine phase by synchronizing brief flashes of light
+with the ignition signal. Each flash samples the continuous rotation of the
+engine at a discrete phase, causing the motion to appear stationary when the
+sampling frequency matches the ignition cycle.
+
+The effect arises from bounded interrogation of continuous mechanical motion:
+the strobe does not track the motion itself, but repeatedly witnesses the same
+phase under controlled timing.
 
 \PhObservation
-When the engine speed exceeds the strobe’s ability to resolve every tooth
-or marker uniquely, the recorded alignment symbols are indistinguishable
-for many distinct underlying rotations. The reportable sequence collapses
-finer cycles into a coarse symbol progression with aliasing ambiguity,
-a periodic coarsening map.
+When the engine speed exceeds the strobe’s ability to resolve individual teeth
+or markers, the same alignment symbol is recorded across many distinct
+rotations. Multiple underlying cycles therefore map to a single reported
+observation. The recorded sequence collapses finer periodic motion into a
+coarser progression of symbols, producing aliasing through periodic coarsening.
 
 \PhConstraint
 No finite set of discrete strobe measurements can certify a unique inverse
@@ -1421,57 +1533,138 @@ rotation function. The recorded symbols only constrain the form of any
 putative inverse; they do not prove its existence.
 
 \PhConsequence
-The Farmater Effect shows that bounded interrogation naturally imposes a
-coarsening map: many dense physical microstates are collapsed into the same
-observational records, and the inability to recover uniqueness from the
-coarse ledger is itself an observable phenomenon. This reinforces the
-axiomatic posture that physical law emerges from recorded distinctions,
-not from assumed continuous reconstructions.  Again, the photon appears
-as an information carrier in a model. Again, the abscence of a
-photon carries information by excluding temporal noise.
+The Farmater Effect shows that bounded interrogation naturally induces a
+coarsening map: many distinct physical microstates are collapsed into the same
+observational record. The resulting loss of uniqueness is not a defect of the
+measurement, but an observable consequence of finite resolution. The inability
+to recover a unique underlying history from a coarse ledger is itself a physical
+fact.
+
+This reinforces the axiomatic posture that physical law emerges from recorded
+distinctions, not from assumed continuous reconstructions. In the model, the
+photon appears as an information carrier because it produces a recorded symbol.
+Its absence also carries information, by delimiting intervals of verified
+silence and excluding unobserved temporal variation.
 \end{phenom}
 
-There are yet other ways to refine an instrument.  
-While there are myriad ways to improve
-a measurement, at least this one has left evidence in the physical record.  While we 
-never demonstrate that such a mapping
-\emph{must} exist, we only examine the implications existence.  
+There are other ways in which an instrument may be refined. While many
+improvements are possible in principle, only those that leave evidence in the
+physical record are relevant here. We do not assume that any particular
+refinement must exist. We examine only the consequences that follow if such a
+refinement does exist.
 
-No matter how the instrument is improved, the ledgers can only increase precision
-by using a larger alphabet and they can only increase the count of measurements by increasing
-sensitivity to the phenomenon.  We formalize these ideas as a \emph{refined instrument}
+\subsection{Intervalization}
+
+The timing belt provides a concrete example of how discrete correspondence can be
+enforced on continuous motion. In an engine, both the crankshaft and camshaft
+rotate smoothly, but their coordination is not maintained by tracking angle or
+velocity directly. Instead, each shaft carries a toothed pulley, and engagement
+is permitted only at discrete tooth positions. Continuous rotation is therefore
+mediated through a finite set of admissible alignments.
+
+Between successive teeth, many distinct microstates of rotation are treated as
+equivalent. The belt does not interpolate motion or measure phase continuously.
+It preserves correspondence by admitting only those distinctions that can be
+expressed by tooth alignment. When the belt advances by one tooth, a new
+distinction is registered; between teeth, no new distinction exists. The loss of
+information is deliberate, and the resulting correspondence is many-to-one.
+
+This pattern recurs whenever a refined description must remain compatible with a
+coarser one. Fine distinctions are collapsed, cumulative alignment is preserved,
+and only admissible configurations are retained. We refer to a mapping with this
+role as a \emph{grid map}.
+
+\begin{definition}[Grid Map]
+\label{def:grid-map}
+A \emph{grid map} is a function
+\[
+\upsilon : \mathbb{N} \rightarrow \mathbb{N} \cup \{\varnothing\},
+\]
+interpreted as a representational correspondence between refined and coarse
+counting indices. For a refined index $n \in \mathbb{N}$, the value $\upsilon(n)$
+is either a coarse index that represents it, or $\varnothing$ if no admissible
+coarse representative exists.
+
+The grid map preserves cumulative count structure while allowing refined
+distinctions to be collapsed or suppressed. No algebraic, metric, or dynamical
+structure on $\upsilon$ is assumed beyond this admissibility constraint.
+\end{definition}
+
+Regardless of how an instrument is improved, a ledger can increase precision
+only by expanding its measurement alphabet, and it can increase the number of
+distinctions only by increasing its sensitivity to the phenomenon. We formalize
+these constraints in the notion of a \emph{refined instrument}.
 
 \begin{definition}[Refined Instrument]
 \label{def:refined-instrument}
-Consider two hypothetical instruments, \emph{i.e.} these are plans or schemes to construct
-two instruments, $i$ and $i'$ such that there is a coarsening map $f: \Ledger' \rightarrow \Ledger$.
+Let $i$ and $i'$ be two hypothetical instruments, understood as admissible plans
+for construction, with corresponding ledgers $\Ledger$ and $\Ledger'$. Suppose
+there exists a coarsening map
+\[
+f : \Ledger' \rightarrow \Ledger .
+\]
 
-We say that $i'$ is a \emph{refined instrument} of $i$ if
+We say that $i'$ is a \emph{refined instrument} of $i$ if there exist maps
+\[
+\rho : \Sigma_i \to \mathbb{N}, \qquad
+\tau : E \to \mathbb{N}, \qquad
+\upsilon : \mathbb{N} \to \mathbb{N} \cup \{\varnothing\},
+\]
+satisfying the following conditions.
 \begin{enumerate}
-\item \textbf{Monotone order extension:} The coarse ledger order is the induced order on the
-   filtered subset of the refined ledger:
-   \[
-   \forall r', s' \in \Ledger',\;
-     r' \prec_{\Ledger'} s' 
-     \implies f(r') \prec_{\Ledger} f(s')
-   \]
+\item \textbf{Order compatibility on admissible distinctions:}  
+For all records $r', s' \in \Ledger'$, if
+\[
+r' \prec_{\Ledger'} s'
+\quad \text{and} \quad
+\upsilon(\rho(r')) \neq \varnothing
+\quad \text{and} \quad
+\upsilon(\rho(s')) \neq \varnothing,
+\]
+then
+\[
+f(r') \prec_{\Ledger} f(s') .
+\]
 
-\item \textbf{Sensitivity growth:} The refined ledger may contain more records
-   than the coarse ledger, but it cannot have fewer:
-   \[
-   |\Ledger'| \geq |\Ledger|
-   \]
+\item \textbf{Grid compatibility:}  
+Cumulative symbol counts in the refined ledger are related to those of the coarse
+ledger through the grid map $\upsilon$. Refined distinctions may be collapsed or
+suppressed, but no admissible coarse distinction is fabricated.
+
+\item \textbf{Sensitivity increase:}  
+The refined instrument may register additional distinguishable records, but it
+cannot erase distinctions already recorded by the coarse instrument:
+\[
+|\Ledger'| \ge |\Ledger| .
+\]
 \end{enumerate}
 
-The function $f$ therefore expresses the coarse view of a refined instrument by
-collapsing only inexpressible distinctions while embedding the original ledger as
-a monotone subsequence.
+A refined instrument therefore produces records that are compatible with the
+coarse description when viewed through $f$ and $\upsilon$, while allowing
+additional distinctions to be recorded at higher resolution.
 \end{definition}
 
-The refined instrument is a mathematical creation that captures the fact that a 
-more informative record is more informative in two ways: \emph{more records} distinguished
-into \emph{finer bins}.  The accuracy of the refined instrument is not covered in this
-manuscript.
+In ordinary terms, a refined instrument is simply a more detailed way of making
+the same kind of measurement. It is like replacing a ruler marked in centimeters
+with one marked in millimeters, or replacing a coarse timing light with one that
+flashes more frequently. The refined instrument can register distinctions that
+the coarse instrument cannot, but it does not change what was already observed.
+
+When a refined measurement is viewed through the lens of the original
+instrument, many of its finer distinctions are invisible. Those distinctions
+either collapse into the same coarse reading or disappear entirely at that
+resolution. The original ordering and counts are preserved wherever the coarse
+instrument is able to express them, and no new coarse distinctions are invented.
+
+This definition formalizes that intuition. Refinement adds resolution, not
+revision. It records more detail without rewriting the past.
+Our concern in introducing refinement is not increased accuracy for its own
+sake, but the structure of noise. Noise appears precisely when refined
+distinctions cannot be expressed at a coarser level and therefore map to the
+null case. In such situations, information is not destroyed; it is rendered
+inexpressible at the resolution of the instrument. The absence of a coarse
+symbol is itself informative, because it certifies that no admissible distinction
+was recorded at that scale.
 
 \subsection{Dense Embeddings and Approximations}
 
@@ -1507,11 +1700,11 @@ any previously recorded distinctions.
 
 A \emph{dense response} is a function
 \[
-\phi : \mathbb{R}^+ \times L \to \mathbb{R}
+\phi : \mathbb{R}^ \to \mathbb{R}
 \]
 defined as the pointwise limit of the prediction maps,
 \[
-\phi(t,L) = \lim_{n \to \infty} \phi_n(t,L_n),
+\phi(t) = \lim_{n \to \infty} \phi_n(t,L_n),
 \]
 whenever this limit exists, subject to the admissibility condition that
 refinement introduces no new distinctions beyond those expressible at finite
@@ -1530,7 +1723,7 @@ limit of numerical prediction rather than a stored measurement.
 The dense response, being a recursively defined mathematical construction, may be
 viewed as a map
 \[
-  \phi : \mathbb{Q}^+ \rightarrow \mathbb{Q},
+  \phi_\Ledger : \mathbb{Q}^+ \rightarrow \mathbb{Q},
 \]
 where \(\mathbb{Q}^+\) denotes the positive rational numbers.  If one assumes the
 unbounded recursion suggested by a hypothetically refined instrument, then any
@@ -1806,7 +1999,8 @@ to record.
 A hypothetical refined instrument, therefore, may predict an ordering of events 
 that may or may not reflect the ordering produced by an instrument actually created
 to measure the same refinement.  Therefore, the experimental ledger is free to
-evolve by ordering events during the refinement step of an instrument as well 
+evolve by ordering the set of events along any permutation of the events during the 
+refinement step of an instrument as well 
 as the symbol those events produce.  Given these ledger restrictions, we now
 provide the axioms of measurement that enforce these same characteristics.
 
@@ -1851,13 +2045,18 @@ countable set of distinguishable symbols that the instrument can record. The
 \begin{equation}
 \Sigma = \bigcup_i \Sigma_i .
 \end{equation}
-Elements of $\Sigma$ are symbols, not numerical values, and carry no intrinsic
-ordering or metric structure. 
 
+Elements of $\Sigma$ are symbols, not numerical values, and carry no intrinsic
+ordering or metric structure. For purposes of reference only, there exists a
+function $\rho : \Sigma \rightarrow \mathbb{N}$ that enumerates the symbols. This
+enumeration imposes no physical meaning and serves solely to index recorded
+distinctions.
+ 
 Historically, this notion of a measurement alphabet follows Shannon's separation
 of information into distinguishable symbols, independent of their semantic or
 physical interpretation.
 \end{definition}
+
 
 It is important to distinguish symbols from the events they indicate. A symbol records which
 outcome was distinguished by an instrument, but it does not uniquely identify
@@ -2298,9 +2497,9 @@ absolute measure of the event, but just relative difference of the two.  We coun
 For $(E,\prec)$ satisfying the Axiom~\ref{ax:causal},
 there exists an injective, order-preserving map
 \[
-\tau : E \longrightarrow \omega
+\tau : E \longrightarrow \mathbb{N}
 \]
-into the von Neumann naturals $\mathbb{N}$ such that
+into the natural numbers $\mathbb{N}$ such that
 \[
 e \prec f \;\Longleftrightarrow\; \tau(e) < \tau(f).
 \]
@@ -2583,13 +2782,12 @@ without violating Ockham minimality or precedence preservation.
 A model may score one extra successor, but may not assert new predicates
 in the interior nor rewrite any ordering that has already been recorded.
 
-The next chapter therefore proceeds from the repaired ledger
-forward, taking as primitive only the irreversible extension
-operator $\texttt{extend} : \text{Ledger} \to \text{Ledger}$,
-whose repeated application certifies that \emph{some} invariants
-can be estimated only by expending time to accumulate sufficient
-refinements, while others remain forever silent until the next
-distinction is logged.
+  The next chapter therefore proceeds from the repaired ledger forward,
+    taking as primitive only the irreversible extension operator
+      \texttt{extend} : $\text{Ledger} \to \text{Ledger}$.
+        Repeated application of this operator certifies that some invariants can be
+          estimated only by expending time to accumulate sufficient refinements, while
+            others remain forever silent until the next distinction is logged.
 
 \begin{center}
 \textbf{N.B.} Instruments are constructed, not discovered.
