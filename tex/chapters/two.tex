@@ -30,22 +30,6 @@ can grow in many ways, but the ability to compare those accumulated marks
 is what allows us to speak about speed without adding new assumptions
 ahead of the trace itself.
 
-A speedometer does not produce numbers; it produces symbols displayed on the
-dashboard of the car. A radar gun does something similar: measurements of
-electromagnetic pulses are combined to produce symbols on a readout. Sometimes
-those symbols match, as when both displays use the same units and markings.
-Sometimes they do not, as when one display reports speed in kilometers per hour
-and another uses a different scale. In every case, what is presented is not a
-number in the abstract, but a \emph{gauge}.
-
-That gauge may take different forms. An LCD speedometer presents speed as a
-finite set of digit strings. An analog dial presents speed as the position of a
-needle against a finite collection of tick marks, often with two superimposed
-graduations. The form differs, but the constraint is the same: each instrument
-admits only a finite collection of distinguishable symbols. That finite
-collection, regardless of how it is rendered, is what we call an
-\emph{alphabet}.
-
 
 The alphabet is not a number system. It is a scheme for showing and sharing
 marks that stand for readings. When the dashboard shows ``100 km/h,'' it is not
@@ -193,8 +177,9 @@ narrows its own possibilities. Every new datum reduces the space of
 consistent histories while preserving the interpretation of all previous
 measurements---for instance, the speed of the car was indicated by the
 symbol 100km/h, not, say, the symbol ``150km/h,'' nor the symbol ``99km/h,''
-nor the symbol ``$99.\overline{9}$km/h,'' despite its equality with 100. The result 
-of this narrowing is a refinement of the
+nor the symbol ``$99.\overline{9}$km/h,'' despite the fact that
+$99.\overline{9} = 100.$ 
+The result of this narrowing is a refinement of the
 history. From such refinements the notion of an event emerges
 naturally as an irreducible refinement step, the smallest possible increase
 in distinguishability for an instrument.
@@ -269,10 +254,11 @@ equivalence, or an unresolvable ambiguity depends on the structure of the model
 and the limitations of available instruments.
 
 Accordingly, refinement is treated here as a primitive feature of recorded
-change.  It captures how observations advance the ledger without presuming that
-every symbolic distinction corresponds to a distinct physical state.  This
-distinction between recorded refinement and modeled distinction will play a
-central role in the analysis that follows.
+change. It describes how observations advance the ledger, without assuming that
+every new symbol marks a new physical state. The difference between what is
+recorded and what is later modeled will play a central role in the analysis that
+follows.
+
 
 \begin{definition}[Refinement~\cite{dirichlet1850}]
 \label{def:refinement}
@@ -672,23 +658,23 @@ resolution instruments carry no such branching uncertainty. The noise is not
 resolved by the model, only exposed by the resolution at which it operates.
 
 Because the predictor cannot collapse this uncertainty from timing data alone,
-the GPS receiver appeals to a different primitive: its own lifetime
+the GPS receiver instrument appeals to a different primitive: its own lifetime
 ledger of prior coordinate solutions. It selects the unique branch that
 extends its longest non--contradictory prefix by choosing the intersection
 closest to the most recently witnessed position in that ledger. This branch
 promotion is not inferred from the satellite equations, but from the
-append--only event record the receiver has refined over its operational life.
+append--only ledger the receiver has refined over its operational life.
 The method carries forward ambiguity when resolution is insufficient, but
 forbids contradiction, consulting the lifetime ledger event to stabilize the
 continuation.
 
-Since the overwhelming majority of GPS devices have been observed operating on
+Since the overwhelming majority of GPS receiver instruments have been observed operating on
 Earth, the branch selected by this rule is almost always the Earth--bound
 solution. Very few receivers have been witnessed in space, and those that
 have can either extend their lifetime ledger to encode that fact explicitly,
 or, if queried by a separate instrument, refine the ledger to distinguish
 Earth-bound coordinate intersections from space-bound ones. The hypothesis
-does not assert where the instrument must be, only where it
+does not assert where the GPS receiver instrument must be, only where it
 almost always has been, given the precedence of its own recorded
 histories.
 
@@ -1094,12 +1080,16 @@ retrospective question: what structure would be forced if a consistent model
 existed that explained the experimental ledger without introducing
 unrecoverable distinctions?
 
-All claims about dynamics, ordering, and geometry are developed as consequences
-of ledger consistency and refinement, never as assertions about present
-physical ontology. The model is a hypothetical construct constrained only by
-what a finite or countable observer could have logged. If the construct fails
-to exist, no further structure is implied. If it exists, its implications must
-flow solely from distinctions already written in the historical record.
+All claims about dynamics, ordering, and geometry are developed here as
+consequences of ledger consistency and refinement, never as assertions about
+present physical ontology. These features appear only as phenomena modeled by
+measurement theory, not as primitive facts.
+
+The model itself is a hypothetical construct constrained solely by what a
+finite or countable observer could have logged. If such a construct fails to
+exist, no additional structure is implied. If it does exist, its implications
+must follow entirely from distinctions already written into the historical
+record, including those shaped by instrumental noise.
 
 We begin by assuming only the \emph{possibility} of a physical law that, if it
 existed, could be recovered from the experimental ledger by measurement
@@ -1108,8 +1098,8 @@ fundamental or already known; its authority would have to arise solely from
 distinctions that a finite or countable observer could have logged.
 
 The assumption is not about ontology, it is about measurability under
-perturbation: a law is admissible to this monograph only if its implications
-could have been certified through finite, noise-tolerant refinement of a
+perturbation: a law is \emph{admissible} only if its implications
+could have been certified through at least one finite, noise-tolerant refinement of a
 historical record. The world offers symbols, gaps, and thresholds; any law we
 recognize later must be a survivor of those constraints, not their cause.
 
@@ -1150,8 +1140,8 @@ the circumstance that caused the reading of an instrument to change.
 
 \subsection{Events}
 
-A phenomenon is frequently narrated, in hindsight, as a chain of events that
-appear causally related when the record is reconstructed: ``this symbol
+A phenomenon is frequently narrated in hindsight, as a chain of events that
+appear causally related when the record is reconstructed. ``This symbol
 followed that symbol often enough that the relation appears to survive refinement.''
 The narrative may suggest ``this happened because that happened,'' but the
 ledger itself does not assert mechanisms, only the historical ordering of
@@ -1291,35 +1281,46 @@ imposed on it.
 
 \subsection{Subdivision of Measurements}
 
-Returning to the example of the speedometer, we can contrive a process by which we 
-can subdivide the wheel
-rotations and improve the precision of the measurement.  This, ultimately, relies on a
-mathematical model that can be computed with paper and pencil---records from the ledger
-are translated into a mathematical concept that is then transformed into another concept that is
-comparable to the original value being computed.  In the simplified cased of
-the speedometer, we can apply a process called the forward Euler method~\cite{butcher2008} and 
-construct a finite difference.  
-In this case, the forward Euler process permits prediction arbitrarily far
-forward, or near, in time, subject only to the chosen discretization.
+Returning to the example of the speedometer, we can imagine subdividing wheel
+rotations in order to improve the precision of the measurement. This refinement
+does not rely on a dynamical law of motion, but on a mathematical procedure that
+can be carried out with paper and pencil. Records from the ledger are translated
+into numerical tokens, combined according to a fixed rule, and then mapped back
+to symbols comparable to the original reading.
 
-The limitations of the forward Euler
-method are well understood. Its error bounds and convergence properties are
-formulated in terms of long-horizon behavior: global truncation error, absolute
-convergence, and stability are assessed by examining the accumulation of local
-errors over extended intervals. These notions are asymptotic in nature, presuming
-that the model remains informative as the step size is refined and the time
-interval is extended. In this sense, the guarantees provided by the forward Euler
-method are statements about behavior in the large, rather than assurances of
-reliable refinement at arbitrarily fine temporal scales.
+In the simplified case of the speedometer, this procedure takes the form of
+numerical quadrature: discrete rotation counts are accumulated to approximate a
+continuous quantity. Although this construction resembles the Fundamental
+Theorem of Calculus in its outcome, it does not assume the existence of a smooth
+function or an underlying continuum. The structure is combinatorial. The
+continuum appears only as a representational convenience used to summarize the
+results.
 
-However, there is evidence to suggest that the forward Euler method cannot
-take smaller slices of time \emph{ad infinitum}. Beyond 
-the familiar limitations of power
-consumption and sensor design, there appears to be a more fundamental
-constraint: a limit to how finely one may extrapolate forward in time before
-the model itself ceases to yield additional informative resolution. In this
-sense, Phenomenon~\ref{ph:hume-effect} may be refined to impose a constraint on
-admissible mathematical models.
+Such constructions permit interpolation or extrapolation across intervals of
+verified silence, subject only to the chosen discretization. They operate on a
+mathematical surrogate derived from recorded distinctions, not on the physical
+record itself.
+
+
+The limitations of numerical quadrature are well understood. Error bounds and
+convergence guarantees are formulated in terms of accumulation: how discrete
+contributions combine to approximate a total quantity. These guarantees are
+asymptotic in nature, presuming that the integrand remains informative as the
+partition is refined and the interval of accumulation is extended. In this
+sense, quadrature provides statements about behavior in the large, rather than
+assurances that refinement at arbitrarily fine scales will continue to yield new
+distinguishable information.
+
+There is, however, reason to believe that quadrature cannot be refined
+\emph{ad infinitum} and maintain physicality. Beyond familiar practical 
+limitations of sensor resolution
+and energy consumption, a more fundamental constraint appears: a limit to how
+finely discrete contributions can be subdivided before additional refinement
+ceases to produce new ledger distinctions. When further partitioning yields no
+new recorded symbols, the quadrature sum stabilizes not because the continuum has
+been resolved, but because the record has reached its limit of expressibility.
+In this sense, Phenomenon~\ref{ph:hume-effect} imposes a constraint on admissible
+mathematical models.
 
 
 \begin{phenom}{The Boltzmann-Loschmidt Effect~\cite{boltzmann1872,loschmidt1876}}
@@ -2524,7 +2525,7 @@ Attempts to synchronize distant clocks inevitably rely on signals---light
 pulses, exchanged measurements, or other physical carriers of information.
 But signals themselves are events in each observer’s ledger, and their
 records of reception and transmission occupy different ordinal positions.
-Thus “simultaneity’’ becomes frame-dependent: it is a relation defined by the
+Thus ``simultaneity'' becomes frame-dependent: it is a relation defined by the
 rules each observer uses to assign labels 
 to their own causal interval, not a global partition of the universe.
 
@@ -2564,7 +2565,7 @@ Events can only leave a finite trace.
 Thus, the axioms of measurement enforce coherence of all ledgers for all
 finite observers using finite instruments.
 
-\section{Refinement}
+\section{Refinement of a Ledger}
 Instruments do not refine phenomena by producing smoother numbers, but by
 emitting new distinguishable symbols that extend the measurement record
 without contradicting what has already been witnessed. Before a later event
@@ -2674,124 +2675,326 @@ in which these measurements are taken are not specified by the model.
 We begin our examination and characterization of temporal noise.
 
 \begin{coda}{Temporal Noise}
-Axiom~\ref{ax:ockham} bounds epistemic growth by forbidding the
-introduction of distinctions that cannot be certified by finite
-refinement and by prohibiting reversal of any recorded precedence
-relation.  By stating $a$ comes before $b$, one can no longer model
-a situation where $b$ would come before $a$ without contradiction.  
+We begin the coda with an example from computation: speculative execution. Modern
+processors do not wait for every condition to be resolved before proceeding.
+Instead, they guess which path a computation is likely to take and begin
+executing instructions along that path. These speculative steps are not yet
+committed to the architectural state of the machine. They are provisional,
+pending later verification.
 
-In a discrete measurement ledger, this axiom induces a
-specific structural geometry of continuation: from any recorded event
-$e_t$, the observer may consult at most one additional successor in the
-space of admissible continuations, a minimal slack that provides
-freedom to score, but not invent, the next branch.
+Crucially, speculative execution does not overwrite the ledger of completed
+instructions. The committed architectural state remains unchanged until the
+speculation is either confirmed or discarded. What changes during speculation is
+a shadow state: registers, cache lines, and intermediate values that exist only
+under the assumption that a particular branch will turn out to be correct. If
+the assumption fails, these provisional updates are rolled back. The record of
+what actually occurred is preserved.
 
-This single successor freedom is not ornamental but functional.
-It defines a frontier of reasoning licensed to range over
-\emph{existing} admissible next events without asserting any unrecorded
-interior structure.  The axiom does not impose a dynamical law on the
-future, but restricts what a model may assume about it.  It is therefore
-a constraint on representation rather than an assertion about ontology.
+Speculation therefore introduces additional structure without asserting it as
+fact. A guessed continuation must remain consistent with everything already
+recorded. It cannot contradict the committed ledger; it can only extend it
+hypothetically. This constraint is what makes speculation powerful. The guessed
+state is not arbitrary. It is restricted by prior history, and its eventual
+acceptance or rejection is determined entirely by whether it remains compatible
+with what is later observed.
 
-\subsection*{Epistemic Noise from Algorithmic Silence}
+This structure mirrors the single-bit ambiguity encountered in GPS localization.
+With three satellites, two algebraically consistent positions satisfy the timing
+constraints. Introducing a provisional guess does not overwrite the recorded
+signals. Instead, it selects one admissible continuation and explores its
+implications. That guess must remain consistent with every clock tick already
+logged. When additional information arrives, only the continuation that preserves
+ledger consistency survives. The ambiguity is resolved not by randomness, but by
+constraint.
 
-The Chaitin Effect (Phenomenon~6) identifies a fundamental methodological
-boundary: a finite ledger may be composed entirely of precise,
-verifiable entries, and yet admit no compressed dynamical law that is
-more concise than the record itself.  The absence of such a mandate
-is not a deficiency but a certificate: when a refinement process records
-no new distinguishable event between steps $k$ and $k+1$, the ledger
-asserts only silence, which excludes the elevation of any unobserved
-intermediate predicates to physical constraint.
+What was previously treated as random choice is therefore reinterpreted as
+conditional extension. Speculative states must satisfy more than the original
+conditions; they must also remain stable under future refinement. This additional
+requirement sharply restricts admissible outcomes. Apparent randomness is reduced
+because guessed states inherit obligations from the ledger. The system does not
+choose freely among possibilities. It carries forward only those guesses that can
+continue to coexist with everything that has already been recorded.
 
-This silence creates \emph{temporal slack}: a gap in which multiple
-successor branches remain admissible, but whose ordering cannot be
-predicted by any rule simpler than the record itself.  The noise term
-in a predictive model is therefore not a physical error but the
-structural consequence of algorithmic incompressibility.  Where the
-axioms are silent on \emph{which} admissible continuation will manifest,
-any agent operating on the ledger must estimate, rather than extract, a
-parameter governing the next branch.
+\subsection*{Ledger Consistency and Speculative Cache Attacks}
 
-\subsection*{Successor Scoring and Branch Prediction}
+Speculative cache-timing attacks exploit a mismatch between ledger consistency
+and ledger visibility. Modern processors execute instructions speculatively,
+guessing the outcome of conditional branches in order to improve performance.
+These speculative instructions are not committed to the architectural state of
+the machine. If a branch prediction fails, the architectural effects are rolled
+back, preserving ledger consistency at the level of program semantics.
 
-In computing architecture, branch prediction is often motivated by
-latency reduction and speculative execution.  In the measurement-first
-framework developed here, it acquires a more foundational reading:
-prediction is the act of \emph{ranking successor events already
-admissible under the axioms}, using exactly one consultable degree of
-freedom, the $+1$ successor permitted by Ockham, prior to committing
-irreversibly to a branch.
+However, speculative execution does modify microarchitectural state. Cache lines
+may be loaded, predictors updated, and timing behavior altered. These changes are
+not treated as part of the committed ledger, yet they persist long enough to be
+observed indirectly. The processor assumes that such state carries no meaningful
+historical content, and therefore does not require it to be certified before
+being exposed through timing.
 
-Formally, let $\mathcal{A}(e_k)$ denote the finite set of admissible
-successor events extending the ledger without contradiction.
-The branch predictor is a scoring function
-\[
-  s : \mathcal{A}(e_k) \to \mathbb{R},
-\]
-evaluated at most one step beyond the current index.  The predictor
-does not assert that the maximal-scoring branch \emph{will} occur,
-only that it is \emph{currently coherent with the ledger's recorded
-past}.  A misprediction is evidence that the scoring function
-selected a branch that later violated global reconciliation
-constraints, meaning that the predicted successor could not be
-certified by further refinement of the record.
+In cache-timing attacks, an adversary arranges for speculative execution to
+access memory conditionally, even when the architectural condition fails. The
+speculative access loads a cache line. Although the speculative path is later
+discarded, the cache state remains altered. By measuring access times afterward,
+the attacker can infer which speculative path was taken, and therefore recover
+information that was never intended to be observable.
 
-The axioms guarantee that once the branch is committed,
-no precedence relation among previously recorded events may be altered,
-and no unobserved intermediate state may be inserted as a new
-distinguishability coordinate.  The predictor therefore operates only
-within the null space left open by necessity, and must accept the
-irreversible commit of the ledger as soon as a successor branch is
-certified by the record.
+From the perspective of the ledger, no overwrite occurs. The program state is
+unchanged, and the conditional branch is correctly resolved. What fails is the
+assumption that speculative extensions leave no record. The cache encodes a
+partial, unresolved history that survives rollback. Timing measurements then act
+as instruments that refine this hidden ledger, extracting information from what
+was assumed to be silent.
 
-\subsection*{Physical Analogue: Alpha Decay as Irreversible Branch Elimination}
+\begin{phenom}{The Speculative Execution Effect~\cite{kocher2019,smith1985}}
+\label{ph:speculative}
 
-A parallel structure appears in nuclear measurement.
-An unstable nucleus supports two nearly indistinguishable
-boundary completions of its internal record, $\Psi_{\text{bound}}$
-and $\Psi_{\text{unbound}}$, each agreeing on all external anchors
-and differing only within a finite internal neighborhood.
-Over successive refinement steps, internal asymmetry may accumulate
-until one branch violates global reconciliation.
+\PhStatement
+Speculative extension of a record may remain consistent with all verified
+entries while nonetheless leaving measurable traces. When such traces are
+treated as silent, refinement can recover information that was never certified
+as observation.
 
-At that moment, the universe performs the only admissible repair by
-eliminating the inconsistent branch through the Causal Folding Operator,
-\[
-  f : \Psi_{\text{bound}} \to \Psi_{\text{unbound}} + \alpha,
-\]
-and the emission is logged as a new distinguishable fact $e_{k+1}$.
-This is the physical \emph{branch commit}: the irreversible update that
-advances the ledger index, preserves all prior precedence relations, and
-records the prune without asserting any unobserved interior structure.
+\PhOrigin
+Modern computational systems improve performance by executing instructions
+speculatively, advancing provisional states before all conditions are resolved.
+These speculative states are designed to preserve consistency with the committed
+record: if a speculation fails, architectural state is rolled back and no
+contradiction is introduced. This separation between provisional extension and
+committed history is assumed to leave no observable residue.
 
-Unlike computing systems engineered for performance, the universe does
-not guarantee that a predictor converges to a unique rule.  It guarantees
-only that any prediction must be \emph{scored inside the one successor
-freedom allowed by necessity}, and that the eventual commit is
-\emph{irreversible} once a branch is certified by refinement of the
-ledger.  The alpha particle is therefore interpreted not as a tunneling
-object but as the finite trace of a branch elimination event that was
-forced by reconciliation constraints.
+\PhObservation
+In practice, speculative execution modifies microarchitectural structures such
+as caches and predictors. Although these modifications are not part of the
+committed record, they persist long enough to be detected indirectly through
+timing measurements. By repeatedly probing execution paths that ultimately fail
+their conditions, an observer can refine these residual traces and infer values
+that were never certified as outputs of the computation.
 
-\subsection*{Methodological Consequence}
+\PhConstraint
+Ledger consistency does not imply ledger silence.  Any provisional extension
+that produces persistent structure must be treated as a potential source of
+distinguishable events.  A system that carries speculative state without
+recording it as history implicitly assumes the absence of temporal noise.
+Instruments that suppress such structure therefore do not describe a quieter
+world, but one in which unresolved distinctions are being ignored rather than
+excluded.
 
-Prediction is not an additional dynamical axiom but the only behavior
-that may occur in the null space left open by the $+1$ successor slack
-without violating Ockham minimality or precedence preservation.
-A model may score one extra successor, but may not assert new predicates
-in the interior nor rewrite any ordering that has already been recorded.
+\PhConsequence
+This effect demonstrates that apparent leakage need not arise from error or
+randomness, but from unmodeled refinement of provisional state. Speculative
+execution introduces additional admissible histories that must remain consistent
+with the record. When these histories leave measurable traces, refinement can
+recover information that was not intended to be observable. The phenomenon
+illustrates how failure to account for temporal noise converts provisional
+structure into unintended evidence.
+\end{phenom}
 
-  The next chapter therefore proceeds from the repaired ledger forward,
-    taking as primitive only the irreversible extension operator
-      \texttt{extend} : $\text{Ledger} \to \text{Ledger}$.
-        Repeated application of this operator certifies that some invariants can be
-          estimated only by expending time to accumulate sufficient refinements, while
-            others remain forever silent until the next distinction is logged.
+The same structure appears in radioactive decay. An alpha-emitting nucleus
+occupies a metastable configuration that admits multiple admissible
+continuations. Most attempted refinements fail to complete and leave no recorded
+trace. Occasionally, however, a provisional continuation accumulates sufficient
+interaction to be certified, and a decay event is written into the ledger. Until
+that moment, the system evolves speculatively.
 
-\begin{center}
-\textbf{N.B.} Instruments are constructed, not discovered.
-Prediction consults one successor, then commits irreversibly.
-Silence is evidence, not permission.
-\end{center}
+As in speculative execution, these provisional continuations must remain
+consistent with the historical record. They do not overwrite it. When a decay
+occurs, the event is not selected by chance, but by the completion of a
+refinement that overcomes friction. 
+
+As with frictional thresholds in measurement, alpha decay presents a sharp
+distinction between a before and an after. Prior to decay, multiple instruments
+agree on the state of the nucleus; after decay, they again agree on the new
+configuration. The transition itself is unmistakable once recorded, yet no
+instrument can certify in advance when it will occur. The absence of prediction
+does not signal randomness in the law, but the impossibility of resolving the
+moment of transition without completing the refinement. The event is definite,
+the ordering is irreversible, and the timing remains silent until it is written
+into the ledger.
+
+\subsection*{Alpha Decay in a Cloud Chamber}
+
+Before turning to cloud chambers, it is helpful to begin with a measurement
+device that most people rely on daily: a household smoke detector. A smoke
+detector does not observe smoke as a continuous substance, nor does it model the
+detailed dynamics of particle motion in air. Instead, it monitors a small
+chamber in which a radioactive source produces a steady pattern of ionization.
+Under ordinary conditions, this ionization supports a stable electrical signal,
+and the device remains silent. Measurement occurs not when nothing happens, but
+when the recorded pattern of discrete electrical events changes.
+
+Inside the detector, a small radioactive source continuously emits alpha
+particles into the surrounding air. These particles collide with gas molecules,
+ionizing them and producing free charge carriers. Electrodes within the chamber
+collect this charge, establishing a steady electrical current whose magnitude is
+set by the rate of ionization. This process is governed by well-understood
+radiochemistry: alpha decay, ion production, recombination, and charge
+collection. None of these stages is observed in isolation. Each contributes
+discrete electrical effects that together define the internal state of the
+device.
+
+The detector is designed so that this internal activity is tolerated up to a
+well-defined threshold. Under normal conditions, the air in the chamber allows
+ions produced by alpha decay to drift freely between electrodes, sustaining a
+stable current. When smoke enters the chamber, suspended particles intercept and
+neutralize those ions. The air is no longer an effectively continuous medium for
+charge transport; particulate matter interrupts the ion flow, reducing the
+measured current.
+
+Once this reduction exceeds a fixed threshold, the comparator registers a
+transition and the alarm is triggered. The threshold functions as a friction
+condition: ordinary ionization fluctuations are absorbed without consequence,
+but the presence of particulates produces a sustained deviation that forces a
+new, irreversible entry in the device’s internal record.
+
+
+In the low-battery regime, the failure is not a cessation of alpha decay or
+ionization, but a failure of certification. The radioactive source continues to
+produce ionization events, yet the power supply can no longer sustain the signal
+processing required to aggregate those events into a stable voltage reading.
+Individual detections still occur, but there are not enough recorded transitions
+to certify a persistent state above or below the alarm threshold.
+
+As a result, the detector may chirp intermittently. These chirps do not indicate
+random behavior in the source, but temporal noise in the record: the ledger lacks
+sufficient accumulated evidence to maintain a definitive measurement state.
+The device oscillates between admissible interpretations because refinement can
+no longer be completed.
+
+The effect arises in the study of alpha particle emission from radioactive
+sources, particularly as observed in cloud chambers. Quantum mechanically, the
+emitted alpha particle is described by a spherically symmetric wavefunction,
+suggesting no preferred direction of motion. Yet when the particle passes through
+a cloud chamber, the observed ionization events align along a narrow, nearly
+straight track. The apparent contradiction is striking: how does a directional
+record emerge from a rotationally symmetric description?
+
+\begin{phenom}{The Rutherford--Mott Effect~\cite{mott1929,rutherford1899}}
+\label{ph:mott}
+
+\PhStatement
+A definite, directed record may emerge from a symmetric physical description
+without invoking intrinsic randomness.  Apparent selection arises from the
+irreversible accumulation of recorded events under temporal noise, not from
+stochastic dynamics.
+
+\PhOrigin
+Rutherford established that alpha decay produces ionizing radiation emitted
+without a preferred direction.  Later, cloud chamber experiments revealed that
+these emissions appear as narrow, linear tracks rather than diffuse patterns.
+Mott showed that this behavior follows from standard quantum mechanics: a
+spherically symmetric wavefunction can give rise to directional sequences of
+ionization events once environmental interactions are taken into account.  No
+modification of the underlying dynamical law is required.
+
+\PhObservation
+A cloud chamber does not record wavefunctions or probability amplitudes.  It
+records discrete ionization events as localized condensations in a
+supersaturated vapor.  Each droplet formation is a distinguishable mark written
+into the experimental ledger.  As these marks accumulate, alternative
+continuations become inadmissible, and a single linear track emerges.  The
+observed direction is not chosen in advance, but is revealed through successive
+refinement of the record.
+
+\PhConstraint
+No physical description may attribute randomness to the selection of a recorded
+history when the same outcome is accounted for by irreversible refinement under
+unresolved ordering.  Symmetry of the governing equations does not license
+symmetry of the experimental ledger (see Phenomenon~\ref{ph:loschmmidt-effect}).  Once a distinction is recorded, it may be
+used to resolve temporal noise and exclude symmetric alternatives
+(see Phenomenon~\ref{ph:gps}).
+
+\PhConsequence
+The Rutherford--Mott Effect demonstrates that apparent indeterminacy may arise
+from temporal noise rather than stochastic physical law.  Directionality and
+definiteness emerge when refinement resolves silence, not when randomness is
+introduced.  This supports Einstein's objection that probabilistic description
+reflects limits of observation rather than intrinsic chance, and reinforces the
+view that physical laws summarize admissible histories without writing the
+record itself.
+\end{phenom}
+
+Mott showed that no modification of the underlying quantum dynamics is required
+to explain Phenomenon~\ref{ph:mott}.  Naively, the spherical symmetry of the
+outgoing alpha wave would seem to predict diffuse, isotropic ionization in a
+cloud chamber.  The appearance of narrow, linear tracks therefore appears to
+demand either stochastic collapse or an explicit symmetry-breaking mechanism.
+
+Mott’s analysis demonstrated that this conclusion is unwarranted.  Interactions
+between the alpha particle and atoms in the chamber correlate successive
+ionization events.  Once an initial ionization occurs at some location, the joint
+state of the alpha particle and the environment is altered in such a way that
+subsequent ionizations are strongly favored along a line extending from the
+source through that point.  The first recorded event acts as an admissible anchor
+that constrains future refinements.
+
+In this way, linear tracks emerge from unitary evolution alone.  The apparent
+selection of a direction reflects the accumulation of correlant interactions,
+not a stochastic collapse of the wavefunction.  What is observed as a definite
+trajectory is the experimental record of a refinement process in which early
+distinctions restrict later admissible events.
+
+What the chamber records, however, is not a wavefunction or a probability
+amplitude. It records discrete ionization events. Each droplet formation is a
+distinguishable mark written into the experimental ledger. The track is not a
+continuous object observed all at once, but a sequence of recorded events that
+refine the ledger incrementally. Directionality appears only after enough such
+refinements accumulate to exclude alternative orderings.
+
+In the framework developed here, the Mott effect is not a story about randomness,
+but about refinement under noise. The spherical symmetry of the wavefunction
+describes a space of admissible histories prior to observation. The ledger,
+however, can record only one history at a time. Each ionization appends a new
+distinction, restricting the set of admissible continuations without appealing to
+chance.
+
+From this perspective, the observed asymmetry of a single track reflects temporal
+noise rather than indeterminacy in the law. Early in the process, multiple
+continuations remain admissible, and the ledger cannot distinguish among them. As
+refinement proceeds, silence about alternative orderings is broken and a definite
+sequence emerges. The Mott effect thus exemplifies a central theme of this work:
+definite structure arises from the irreversible accumulation of recorded
+distinctions, not from randomness in the underlying dynamics.
+
+This places alpha decay in direct correspondence with Phenomenon~\ref{ax:chaitin}.  Just
+as there exists no finite procedure for deciding, in advance, whether a given
+computation will halt, there exists no admissible method for certifying the
+occurrence of an alpha decay event prior to its recording.  The uncertainty does
+not arise from stochastic choice, but from the impossibility of resolving the
+outcome without allowing the refinement process to run to completion.  Until a
+decay is recorded, silence persists, and multiple continuations of the ledger
+remain admissible.
+
+The nuclear barrier enters as the structural source of this limitation.  Most
+attempted refinements are absorbed without producing a distinguishable event.
+Only when sufficient interaction accumulates does the ledger advance.  The
+resulting transition is irreversible and final.  As in the Mott effect, the
+appearance of chance marks the boundary between unresolved silence and recorded
+distinction, not a failure of determinism in the governing equations.
+
+Phenomenon~\ref{ph:mott} illustrates the same principle two ways.
+Physical laws constrain the space of admissible histories, but they do not select
+which history is realized.  Definiteness emerges only through refinement, and
+apparent randomness reflects temporal noise and finite resolution in the
+recording process.  What is observed as probability is the shadow cast by an
+irreversible ledger viewed at finite precision.
+
+The preceding chapter has established the minimal conditions under which
+measurement may be discussed without contradiction.  Events, records, and
+refinement were introduced not as physical postulates, but as bookkeeping
+necessities forced by distinguishability and irreversibility.  At this level,
+no assumptions have been made about dynamics, probability, or scale.  The ledger
+records what has occurred, refinement restricts what may follow, and admissible
+events provide the only anchors for comparison across records.
+
+What remains unresolved is how these local constraints combine.  When multiple
+instruments participate in a measurement, and when refinement proceeds through
+many admissible events, the ledger acquires structure that is not visible at the
+level of individual records.  Chapter~3 addresses this accumulation.  It
+introduces the experimental state as a coherent summary of correlant records and
+shows how admissible events act upon it as operators.  In doing so, it derives
+the algebraic structure governing refinement, including commutation,
+noncommutation, and the emergence of ambiguity.  These results prepare the way
+for quantitative description, which will be taken up only after the structural
+content of measurement has been fully characterized.
+
 \end{coda}
