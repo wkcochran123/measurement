@@ -1,5 +1,5 @@
 
-MAIN = measurement 
+MAIN = measurement
 TEXBIN = /Library/TeX/texbin
 
 all:

@@ -49,7 +49,6 @@
 
 
 \newtheorem{theorem}{Theorem}
-\newtheorem{example}{Thought Experiment}
 \makeatletter
 \def\@noftheorem#1#2{}
 \makeatother
@@ -85,12 +84,6 @@
   \par\noindent\textbf{N.B.---}#1\hfill$\square$\par
   }
 
-
-\newlistof{lotexp}{tex}{List of Thought Experiments}
-\newcommand{\thoughtexp}[1]{%
-  \refstepcounter{lotexp}%
-  \par\noindent\textbf{Thought Experiment~\thelotexp. #1}\addcontentsline{tex}{lotexp}{\protect\numberline{\thelotexp}#1}\par
-}
 
 \newcommand{\addfiletotoc}[1]{%
 \addcontentsline{toc}{section}{#1}%
