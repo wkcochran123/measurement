@@ -67,13 +67,20 @@ body panels, which in turn scatter the photons measured by the radar gun. The
 matching here is not abstract, but causal: the same force that accelerates the
 car produces distinguishable marks in both ledgers.
 
-The third correspondence is indirect but essential. The speedometer and GPS
-ledgers may be aligned even without direct physical interaction, because the
-existence of the radar gun ledger constrains both. Once the radar and GPS ledgers
-are identified with a common coarse event, and the radar and speedometer ledgers
-are likewise identified, the speedometer and GPS ledgers inherit comparability.
-This correspondence arises not from shared mechanism, but from ledger consistency
-under transitive refinement.
+The third correspondence is indirect but essential.  The speedometer and GPS
+ledgers may be aligned even without direct physical interaction, because both are
+constrained by a third record: the observer’s watch.  Once the radar gun ledger
+is identified with a coarse temporal event on the watch, and the GPS ledger is
+likewise identified with that same temporal marker, the radar and GPS ledgers
+become comparable.  The same identification aligns the speedometer ledger with
+the watch, and comparability is inherited transitively.
+
+This correspondence does not arise from any shared mechanism among the
+instruments, nor from the dynamics of the vehicle itself.  The car plays no
+special role beyond providing a setting in which the observer happens to be a
+passenger.  What enforces comparability is ledger consistency under refinement:
+distinct instruments, when anchored to a common temporal record, may be aligned
+without ever interacting with one another.
 
 These three operations are sufficient. Simultaneity does not require a shared
 clock, a global time parameter, or instantaneous coordination. It requires only
@@ -250,10 +257,29 @@ appeal to dynamics or probability.
 
 In particular, uncorrelance identifies situations in which no refinement of the
 experimental ledger can supply a shared anchor for comparison.  In such cases,
-any attempt to complete the description by introducing intermediate structure is
-a representational choice rather than an observational consequence.  The ledger
+any completion of the description that introduces intermediate structure is a
+representational choice rather than an observational consequence.  The ledger
 alone cannot decide between competing completions, because no admissible event
-exists to mediate them.
+exists to mediate them.  Calculus, gauges, and related mathematical constructions
+have long been employed as convenient representations of such uncorrelant
+behavior.
+
+For instance, spinors arise precisely in situations where no refinement can
+supply a globally consistent orientation.  A spinor does not represent an object
+with a definite direction in space, but a rule governing how locally admissible
+descriptions transform when compared.  A $2\pi$ rotation leaves all recorded
+local measurements unchanged, yet does not return the spinor to its original
+value.  The missing distinction is not dynamical but structural: the ledger
+records relative outcomes but admits no event that anchors a global phase.  The
+rotation itself is a coarse event, and as such is inadmissible, since no ledger
+measuring the phenomenon can record it as a distinguishable refinement.
+
+In this sense, spinorial behavior reflects uncorrelance.  Local refinements are
+individually admissible, but no admissible event exists that renders all such
+refinements jointly correlant under composition.  The resulting non-commutative
+structure is therefore not imposed by physics, but introduced to consistently
+represent the absence of a shared anchor in the experimental record.
+
 
 This observation has immediate mathematical consequences.  When refinement
 cannot be uniquely anchored to admissible events, the question of whether
@@ -367,27 +393,64 @@ microscopic configurations may therefore project onto the same experimental
 state.  This coarsening is not a defect, but the mechanism by which coherent
 comparison between instruments becomes possible.
 
-A familiar illustration is provided by the use of a colored indicator in a
-titration experiment.  At the microscopic level, quantities such as the relative
-populations of $\mathrm{H^+}$ and $\mathrm{OH^-}$ vary continuously as titrant is
-added.  A sufficiently refined ledger could, in principle, record these changes
-directly.  The indicator, however, reports only a coarse symbol, typically a
-binary color change.  Many distinct internal configurations are therefore
-rendered indistinguishable and correspond to the same experimental state.
 
-As titration proceeds, successive drops may alter the internal composition of
-the solution without producing any new recorded distinction.  During this
-interval, the experimental state remains unchanged, even though refinement
-continues at the level of the ledger.  The absence of a color change reflects
-ledger silence rather than physical stasis.  Only when a tolerance threshold is
-crossed does an admissible event occur and the state transition to a new value.
+A familiar macroscopic example is provided by an acid--base titration using a
+colored indicator.  The experimental state consists of the accumulated titrant
+volume, the observed color of the indicator, and the protocol governing
+addition.  Many successive additions of titrant may leave the observed color
+unchanged.  During this interval the experimental state repeats, despite
+continuous chemical change at the microscopic level.
 
-The experimental state thus functions as a coherent description rather than a
-complete history.  It records exactly those distinctions that have survived
-refinement and comparison, and no more.  In subsequent sections, admissible
-events will be treated as operators acting on this state, and the accumulation
-of such actions will give rise to the algebraic structure that governs causal
-ordering.
+The equivalence point itself is not an admissible event.  It cannot be recorded
+as a distinguishable refinement of the ledger.  Only the color change of the
+indicator constitutes an admissible event, and it occurs after the chemical
+transition has already taken place.  The apparent sharpness of the endpoint
+therefore reflects a coarse projection of many unresolved refinements onto a
+single recorded distinction.
+
+This behavior is not stochastic.  It arises from finite resolution in the
+recording instrument and from the protocol by which refinement is applied.  The
+titration illustrates how state repetition and aliasing emerge naturally in
+measurement, and why definitive outcomes appear only when refinement produces a
+new admissible state.
+
+A single instrument producing a single reading on a single event yields only a
+minimal record.  Such a record may be internally consistent, yet it provides no
+basis for comparison.  Without an additional reading, instrument, or event,
+there is no means to distinguish between instrumental idiosyncrasy,
+environmental influence, or genuine structure in the phenomenon.  The ledger
+contains a symbol, but it does not yet contain a pattern.
+
+This limitation is not one of accuracy, but of structure.  A solitary record
+cannot establish stability, repeatability, or invariance.  Even an instrument of
+arbitrary resolution does not resolve this difficulty.  In the absence of
+comparison, notions such as error, deviation, or law are undefined.  The record
+is admissible, but it is not yet informative.
+
+A common mitigation strategy is to employ multiple instruments to measure the
+same phenomenon in distinct ways.  When the resulting records can be rendered
+mutually consistent, shared structure begins to emerge.  Agreement across
+instruments identifies features of the phenomenon that are invariant under
+changes of measurement protocol, while disagreement isolates effects specific to
+individual instruments.  Phenomena are thus identified not by isolated readings,
+but by the correlance of many.
+This process---the refinement of description through the comparison of
+independent records---is what is ordinarily called \emph{experimental science}.
+
+
+This strategy does not require identical instruments or synchronized operation.
+What matters is that the ledgers admit at least one shared interpretation.
+Comparison restricts the space of admissible events by excluding descriptions
+that cannot simultaneously account for all records.  In this way, the
+introduction of multiple instruments refines the experimental state even when no
+single instrument increases its resolution.
+
+The reliance on comparison rather than precision reflects a general feature of
+measurement.  Structure is not revealed by isolated observation, but by the
+constraints imposed when multiple records must be reconciled.  Phenomena
+therefore emerge as collective objects, arising from the mutual refinement of
+ledgers rather than from any privileged measurement alone.
+
 
 \subsection{Events as Operators on State}
 
@@ -464,22 +527,428 @@ construction that follows.  The accumulation of event operators records not a
 total ordering of events, but a pattern of partial orders enforced by
 admissibility.
 
+\subsection{State as Coherent Description}
+
+The experimental state is defined as the collection of instruments whose ledgers
+are mutually correlant at a given stage of refinement.  It is not a physical
+configuration of the system, nor a record of how that configuration was reached,
+but the maximal description that can be maintained without contradiction under
+the current ledger.
+
+A defining feature of the experimental state is that it may be strictly coarser
+than the underlying physical description.  Instruments generally do not report
+the finest distinctions available in principle, but only those distinctions they
+are designed to resolve.  The state therefore reflects not what exists, but what
+can be jointly said by the available instruments.
+
+A simple illustration is provided by the use of a colored indicator in solution.
+At the microscopic level, the relative populations of species such as
+$\mathrm{H^+}$ and $\mathrm{IH^-}$ vary continuously as the underlying process
+advances.  A sufficiently refined ledger could, in principle, record these
+populations directly.  The indicator, however, reports only a coarse symbol,
+typically a binary color change.  Many distinct microscopic configurations are
+therefore rendered mutually indistinguishable by the instrument and correspond
+to the same experimental state.
+
+This coarsening is not a loss of coherence.  On the contrary, it is what permits
+coherence across instruments.  The indicator ledger remains correlant with other
+records, such as volume added or protocol followed, precisely because it
+suppresses distinctions that cannot be reliably compared.  The experimental
+state is thus stabilized by ignoring fine-grained variation that would otherwise
+destroy correlance.
+
+In this sense, the experimental state is a description held together by mutual
+constraint rather than by completeness.  It persists so long as no admissible
+event distinguishes between alternatives at the level of the ledger.  Refinement
+advances the underlying process continuously, but the state changes only when a
+new distinction becomes jointly recordable.  The state is therefore not a mirror
+of reality, but a coherent summary of what has been resolved so far.
+
+\subsection{Inevitable Noise}
+
+The persistence of silence under unresolved refinement gives rise to an
+inevitable form of noise.  This noise does not originate in faulty instruments,
+random choice, or external disturbance.  It arises from the fact that many
+distinct underlying processes may project onto the same experimental state when
+the ledger cannot distinguish between them.
+
+As refinement proceeds, admissible events exclude incompatible continuations,
+but they do not uniquely select a single history.  When multiple refinement
+pathways remain consistent with the recorded distinctions, they are aliased by
+the experimental state.  The resulting ambiguity is not eliminated by further
+analysis unless a new admissible event occurs.  Noise therefore appears whenever
+the ledger is forced to summarize unresolved structure.
+
+This form of noise is unavoidable.  It follows directly from the finiteness of
+records and the irreversibility of refinement.  Even in an ideal experiment,
+with perfectly functioning instruments, unresolved ordering and coarse
+observation produce ambiguity in the interpretation of state.  The experimental
+state may repeat under successive refinements, masking ongoing activity beneath
+a stable description.
+
+Importantly, this noise is structural rather than stochastic.  No randomness is
+introduced into the refinement process itself.  The ambiguity reflects the
+multiplicity of admissible histories consistent with the same record.  What is
+observed as variability or uncertainty is the shadow cast by this multiplicity
+on a finite ledger.
+
+This notion of noise precedes both measurement error and communication failure.
+It arises before any metric is imposed and before any signal is transmitted.
+Later chapters will introduce quantitative measures of deviation and loss, but
+the present ambiguity is more primitive.  It marks the boundary between what has
+been resolved and what remains silent.
+
+In the titration experiment, successive drops of titrant may be added without
+producing any change in the recorded indication.  During this interval, the
+experimental state remains unchanged, even though the internal state of the
+solution has evolved.  The ledger records silence, not because nothing has
+happened, but because no admissible event distinguishes the alternatives at the
+resolution of the instrument.
+
+This disparity highlights the separation between internal evolution and recorded
+state.  Refinement proceeds continuously beneath the ledger, but the experimental
+state advances only when a new distinction becomes recordable.  The unchanged
+indication therefore represents an aliasing of many distinct internal
+configurations onto a single observable state.
 
 
+\subsection{Events as Operators on State}
+
+An admissible event acts on the experimental state by excluding incompatible
+continuations.  This action is the dual of refinement on the ledger and induces a
+well-defined map from states to states.  The experimental state evolves through
+successive applications of such operators.
+
+In a titration experiment, each drop of titrant constitutes an admissible event.
+The protocol governing addition ensures that each drop is recorded, even when it
+produces no change in the observed indication.  As an operator on state, the
+addition of a drop restricts the space of admissible continuations, ruling out
+descriptions inconsistent with the accumulated additions.
+
+When successive drops do not alter the recorded indication, the corresponding
+operators act trivially on the experimental state.  The state remains fixed,
+despite the continued application of refinement.  This behavior illustrates
+that an operator may be nontrivial at the level of the ledger while acting as the
+identity on the state. \emph{I.e.,} The pH decreases monotonically under the 
+addition protocol, yet resists coloration. Only when a tolerance
+condition is met does the final refining drop generate a recorded transition
+(see Phenomenon~\ref{ph:mott}).
+
+Only when the addition of a drop produces a new recorded distinction does the
+state change.  At that point, the operator maps the prior state to a new one,
+excluding a large class of previously admissible continuations.  The apparent
+discontinuity of the transition reflects the coarseness of the state, not a
+discontinuity in the underlying process.
+
+The titration therefore provides a concrete example of how events act as
+operators on state.  Refinement proceeds incrementally, but the experimental
+state evolves only when an admissible event produces a distinguishable change.
+Individual drops alter the internal state of the solution, but not the state of
+the experiment.  The color change of the indicator marks the transition to a new
+experimental state.
+
+\subsection{Commutation as a State-Relative Property}
+
+Whether two event operators commute is determined by their correlance with
+respect to the state on which they act.  Uncorrelant refinements commute, while
+correlant refinements need not.  Commutation is therefore relational rather than
+intrinsic.
+
+When two admissible events are uncorrelant relative to a state, no admissible
+event exists that anchors a causal ordering between them.  In this case, the
+experimental state cannot distinguish their order of application.  The
+corresponding operators therefore commute: applying them in either order
+produces the same restriction of admissible continuations.
+
+Correlance changes this situation.  When two events share an admissible event,
+their relative ordering may carry information.  The experimental state can, in
+principle, distinguish between different orderings, and the corresponding
+operators need not commute.  Noncommutation thus reflects the presence of
+potential causal structure, not a failure of algebraic regularity.
+
+The titration experiment again provides a concrete illustration.  Successive
+drops of titrant that do not alter the recorded indication are uncorrelant with
+respect to the experimental state.  No admissible event distinguishes their
+order, and the corresponding operators commute freely.  The state aliases their
+effects, and ordering carries no experimental meaning.
+
+Once a drop produces a change in the recorded indication, correlance is
+introduced.  The color change anchors a new admissible event, and the ordering of
+refinements relative to this event becomes meaningful.  Operators that commute
+in the uncorrelant regime may fail to commute across the state transition, not
+because the events themselves have changed, but because the state relative to
+which they act has changed.
+
+Commutation therefore signals the absence of correlance, while noncommutation
+signals its presence.  The algebraic structure of event operators reflects the
+experimental state and its admissible events, rather than any intrinsic
+properties of the refinements themselves.
+
+This manuscript therefore emphasizes the characterization of uncorrelant
+behavior.  Uncorrelance identifies situations in which no admissible event exists
+to anchor a shared ordering or interpretation across records.  In such cases,
+the ledger alone cannot license causal inference, and the resulting descriptions
+remain ambiguous under refinement.  This ambiguity is not a defect of
+measurement, but a structural feature of finite records and unresolved
+comparison.
+
+By contrast, science advances precisely where correlance can be established.
+When independent instruments admit a shared event, their records may be
+reconciled into a coherent description, and causal structure becomes
+discernible.  Correlant behavior supports prediction, exclusion of incompatible
+models, and the accumulation of lawlike regularities.  The distinction between
+correlant and uncorrelant regimes therefore marks the boundary between mere
+observation and experimental science.
+
+\section{Language}
+
+The refinement structure developed in the preceding sections admits a further
+reinterpretation.  Admissible events act sequentially, restrict future
+continuations, and may or may not commute depending on correlance.  These
+features do not describe a dynamical law, but a system of constraints on
+sequences.  What has been constructed is therefore not a model of motion, but a
+description of which event sequences may be formed without contradiction.
+
+The idea that physical description may be constrained by rules governing
+allowable sequences has a long history.  In the development of formal languages,
+logicians and computer scientists sought representations that distinguished
+well-formed expressions from arbitrary strings.  Backus--Naur form was introduced
+to specify such rules compositionally, separating syntax from semantics and
+local admissibility from global meaning.  Similar concerns appear implicitly in
+physics whenever one distinguishes between kinematically allowed configurations
+and those that can be realized through admissible processes.
+
+Viewed through this lens, the refinement structure developed above is most
+naturally understood as a \emph{language}.  Events play the role of symbols,
+experimental states define contexts, and admissibility determines which symbols
+may legally follow a given context.  The experimental ledger does not enumerate
+all possible histories, but enforces rules governing which sequences of
+refinement may be recorded without contradiction.  These rules are compositional,
+state-dependent, and insensitive to unresolved ordering.
+
+This observation is not an analogy.  Refinement already possesses the defining
+features of a formal grammar.  Some event sequences are forbidden outright,
+others are permitted but observationally indistinguishable, and still others
+produce new admissible distinctions.  Distinct refinement histories may collapse
+to the same experimental state, giving rise to ambiguity.  Silence corresponds
+to the absence of a producible symbol, not the absence of underlying activity.
+
+The causal universe tensor introduced in the previous section records these
+constraints algebraically.  It specifies which event operators may be composed,
+which compositions commute, and which introduce ordering dependence.  In doing
+so, it defines a generative structure over admissible events.  The tensor does
+not generate trajectories; it generates well-formed sequences.
+
+Backus--Naur form provides a canonical representation for such generative
+structures.  It describes how symbols may be combined, how sequences may be
+extended, and where ambiguity or termination may occur.  When refinement is
+viewed through this lens, admissible events correspond to terminal symbols,
+experimental states function as nonterminal contexts, and refinement rules
+specify productions.  The grammar is not imposed on the experiment; it is read
+off from the admissibility constraints already present.
+
+This grammatical perspective marks a shift in emphasis.  The question is no
+longer which events occur, but which sequences are meaningful.  Once this shift
+is made, the remaining structure of the theory follows without further
+interpretive assumptions.  The grammar of refinement admits a faithful linear
+representation, and its properties may be analyzed using algebraic and
+variational tools.
+
+\subsection{Admissibility as Grammar}
+
+An admissible event is one that may appear in at least one ledger measuring the
+phenomenon.  When events are viewed as symbols, admissibility rules specify the
+allowable concatenations of these symbols under refinement.  Some sequences are
+forbidden outright, others are permitted but observationally indistinguishable,
+and still others produce new recorded distinctions.  These rules are
+compositional and depend only on the current experimental state.
+
+Unresolved refinement corresponds to grammatical ambiguity.  Multiple distinct
+sequences of events may be consistent with the same experimental state, and the
+ledger provides no means of distinguishing between them.  Such ambiguity is not
+an error or a failure of description, but a direct consequence of finite
+resolution.  The language of refinement is therefore inherently many-to-one.
+
+Silence admits a grammatical interpretation as well.  When no admissible event
+may follow a given state, refinement cannot extend the sequence in a
+distinguishable way.  This does not imply termination of the underlying process,
+but the absence of a producible symbol.  In grammatical terms, the state admits
+no legal production at the level of the ledger, and the description must remain
+unchanged.
+
+Taken together, admissibility, ambiguity, and silence define a grammar over
+events that is enforced by refinement itself.  The experimental state functions
+as a context that determines which productions are allowed, which collapse into
+equivalence, and which are excluded.  This grammar is not imposed externally, nor
+chosen for convenience; it is the minimal structure required to describe
+measurement without contradiction.
 
 
+\subsection{Aliasing and Ambiguity}
+
+Distinct refinement histories may map to the same experimental state.  When this
+occurs, the corresponding sequences are aliased by the ledger and become
+observationally equivalent.  This many-to-one mapping gives rise to ambiguity in
+the grammatical description: multiple parses correspond to the same observable
+outcome.
+
+This ambiguity reflects unresolved structure rather than indeterminism.  The
+ledger records only those distinctions that refinement has made admissible.  Any
+additional structure present in the underlying process but absent from the
+record is silent.  The grammar therefore encodes not what may have happened, but
+what can be said to have happened.
+
+Aliasing is not an incidental feature of the description; it is unavoidable
+under finite resolution.  Whenever refinement proceeds without producing a new
+admissible distinction, histories accumulate within a single equivalence class.
+The experimental state summarizes these histories by collapsing them to a common
+symbolic form, and the grammar reflects this collapse as ambiguity.
+
+From the grammatical perspective, aliasing introduces equivalence relations on
+strings of events.  Sequences that differ in length, ordering, or internal
+structure may nonetheless be observationally indistinguishable.  The grammar
+must therefore be interpreted modulo these equivalences, and any attempt to
+resolve them without new admissible events constitutes a representational choice
+rather than an experimental fact.
+
+\subsection{The Markov Property of Refinement}
+
+A crucial feature of the grammar of refinement is that admissibility depends
+only on the current experimental state.  Past refinements influence future
+admissibility only insofar as they are summarized by the present state.  No
+additional historical memory is required.
+
+This locality licenses a Markovian description.  The grammar governing admissible
+sequences is fully determined by the current state and the set of admissible
+events.  The detailed path by which the state was reached carries no further
+operational content.  This is not an assumption, but a consequence of ledger
+irreversibility and the definition of admissibility.
+
+From the perspective of the ledger, any information not encoded in the present
+state is operationally inaccessible.  Refinement histories that differ only in
+unrecorded detail cannot be distinguished and therefore cannot affect future
+admissibility.  The state thus functions as a sufficient statistic for the
+grammar of refinement.
+
+This Markov property does not imply simplicity of behavior.  Long-range
+constraints may still arise through the accumulation of admissible events, and
+nontrivial structure may be encoded in the state itself.  What is excluded is
+only the need to reference unrecorded history.  All admissible structure must be
+carried forward explicitly by the state or be lost to silence.
+
+The Markov property therefore justifies the representation of refinement as a
+state-transition system.  In the following section, this representation will be
+made explicit by expressing the grammar of admissible sequences as a linear
+operator acting on the space of experimental states.
+
+\subsection{Linear Representation of Grammar}
+
+The Markov property of refinement permits a linear representation of the grammar
+of admissible sequences.  Because admissibility depends only on the current
+experimental state, refinement may be modeled as a state-transition operation
+that acts locally and composes sequentially.  The space of experimental states
+therefore admits an operator structure that faithfully encodes the grammar.
+
+In this representation, admissible events act as linear operators on the space
+of states.  Applying an operator corresponds to extending a sequence by a single
+symbol and then projecting onto the resulting experimental state.  Composition
+of operators corresponds to concatenation of admissible sequences, while the
+identity operator represents refinement that produces no new distinguishable
+state.
+
+Noncommutation arises naturally in this framework.  Operators corresponding to
+uncorrelant events commute, reflecting the absence of an admissible ordering.
+Operators associated with correlant events may fail to commute, encoding the
+presence of state-dependent ordering constraints.  The algebra of operators thus
+records exactly the same admissibility structure previously described in
+grammatical terms.
+
+Aliasing appears as degeneracy in the linear representation.  Distinct operator
+products may act identically on the state space, reflecting the collapse of
+multiple refinement histories into a single experimental state.  The kernel of
+the operator representation therefore captures unresolved structure that the
+ledger cannot distinguish.
+
+The causal universe tensor introduced earlier may now be interpreted as the
+accumulated action of these operators.  It is a linear encoding of the grammar of
+refinement, retaining all admissible ordering information while discarding
+unobservable detail.  This representation does not generate dynamics; it encodes
+syntax.
+
+At this stage, no notion of scale, distance, or likelihood has been introduced.
+The linear representation captures only which sequences are admissible and how
+they compose.  Quantitative distinctions require additional structure.  The next
+chapter introduces a norm and inner product on the space of states, allowing
+measurement noise to be expressed geometrically and preparing the ground for
+optimization and consequence.
+
+\subsection{The Markov--Conway Effect}
+
+The final interpretive step required by the present framework is the acceptance
+of a Markov--Conway principle.  Admissibility of refinement depends only on the
+current experimental state, not on the detailed history by which that state was
+reached.  Local refinement rules, when iterated, suffice to generate the full
+structure of admissible sequences.
+
+This principle is not introduced as an axiom.  It follows directly from the
+definitions of ledger, refinement, and admissibility given in Chapter~2.  Once
+adopted, the grammar of experiment admits a faithful representation as a linear
+operator, and no further philosophical assumptions are required.
+
+The content of the principle is that all operationally relevant information must
+be carried forward explicitly by the experimental state.  Any putative dependence
+on unrecorded history is indistinguishable and therefore inadmissible as part of
+the description.  The state is thus sufficient for determining future
+admissibility, and refinement becomes a closed generative system.
+
+The Conway aspect of the effect is that global structure emerges from the
+iteration of local rules without additional explanatory machinery.  The grammar
+may be rich, ambiguous, and state-dependent, yet it is generated entirely by
+repeated application of admissibility constraints.  Apparent complexity is
+therefore not evidence of hidden variables, but the natural consequence of
+iterated local refinement under finite resolution.
+
+Taken together, these observations justify treating the causal universe tensor
+as a syntactic object: a linear encoding of the grammar of admissible
+refinements.  It records which sequences are well-formed, which are equivalent
+under aliasing, and where ordering becomes meaningful.  It does not assert what
+is real beyond the record; it asserts what the record permits.
+
+This is the final appeal to interpretation.  Beyond this point the development
+is purely constructive.  The remaining chapters introduce quantitative structure
+on the space of states and derive consequences.  Having fixed the grammar, the
+problem becomes one of geometry, residual, and normalization.
 
 
+\subsection{Limits of the Representation}
 
+The grammatical representation captures admissibility and ordering, but does not
+assign scale, distance, or likelihood.  All admissible sequences are treated
+equally, and no notion of proximity or error has yet been introduced.  To
+quantify deviation, stability, and noise, a norm and inner product must be
+defined on the space of states.
 
+These quantitative structures are introduced in the following chapter.  There,
+measurement noise emerges as a geometric property of the state space, and the
+grammar of refinement acquires weight and scale.
 
+\subsection{Limits of the Representation}
 
+The grammatical representation captures admissibility and ordering, but does not
+assign scale, distance, or likelihood.  All admissible sequences are treated
+equally, and no notion of proximity or error has yet been introduced.  To
+quantify deviation, stability, and noise, a norm and inner product must be
+defined on the space of states.
 
+These quantitative structures are introduced in the following chapter.  There,
+measurement noise emerges as a geometric property of the state space, and the
+grammar of refinement acquires weight and scale.
 
-
-
-
-
+The present chapter therefore completes the structural analysis of measurement.
+It has shown that refinement induces a grammar of admissible sequences and that
+this grammar admits a faithful linear representation.  What remains is not to
+reinterpret the framework, but to endow it with geometry.  From this point
+forward, the development concerns measurement, optimization, and consequence.
 
 \section{Refinement of the Causal Universe Tensor}
 

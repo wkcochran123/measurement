@@ -1,6 +1,5 @@
 .*.swp
 lean/.lake
-tex/front
 tex/appendix
 *aux
 *bbl

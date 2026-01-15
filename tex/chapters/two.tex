@@ -1152,7 +1152,7 @@ unit of recorded distinction. For the universe of all instruments $I$,
 it is the set of all 3--tuples that names the symbols, instruments, and 
 histograms that the event will trigger:
 \begin{equation}
-e = \{(i, j, k) | i \in I \text{,} j \in \Sigma_i \text{ and } k\in\mathbb{N}\}.
+e = \{(i, j, k) | i \in I \text{,} j \in \mathbf{N}, j \leq |\Sigma_i|, \text{ and } k\in\mathbb{N}\}.
 \end{equation}
 The event exists only when a measurement has been appended to the ledger, and its only
 authority is retrospective: it certifies that incompatible continuations were
@@ -1211,7 +1211,7 @@ inadmissible.
 Events are the abstract distinctions that mechanisms generate
 and the primitives that models reason about. A mechanism is
 not an event, but a hypothetical process that, if it existed, would
-have produced the logged 2-tuples. Models study mechanisms to
+have produced the logged 3-tuples. Models study mechanisms to
 understand which event populations are stable under refinement,
 but the ledger itself contains only the records, never the machinery
 that emitted them.
@@ -1364,7 +1364,7 @@ record,
 as doing so would conflate population--level invariance with a parameterization of time.
 
 \PhConsequence
-The Boltzmann--Loschmidt Effect therefore warns us that physical laws act on
+Phenomenon~\ref{ph:loschmidt-effect} therefore warns us that physical laws act on
 populations of successor symbols, summarizing consistent patterns without
 completing the refinement of any single record. A law compresses extensive
 histories of recorded symbols into compact mathematical descriptions, but that
@@ -1377,7 +1377,7 @@ dynamical law selects or returns such a parameter. We therefore do not assume it
 even though coarse predictive models may evolve populations of symbols in ways
 that appear to respect a time direction in representation. Apparent arrows of
 time belong to models, not to recorded symbols in the ledger itself (see
-Phenomenon~\ref{ph:hume}).
+Phenomenon~\ref{ph:hume-effect}).
 
 \end{phenom}
 
@@ -1405,13 +1405,23 @@ computed, only encountered.
 
 \section{The Process of Refinement}
 
-As explored in the previous chapter, all instruments are noisy and the universe
-does not present crisp algebraic objects for inspection, despite the best
-efforts of researchers.  Yet, an argument can be made that, in general, 
-instruments tend to improve over time.  Our ability to distinguish events refines
-and our ability to differentiate evolves.  Unfortunately, accuracy is not an evaluation that can be
-made of an independent ledger of records.  Precision, however, is
-a tangible measure of the instrument.
+As explored in the previous chapter, all instruments are noisy, and the universe
+does not present crisp algebraic objects for inspection---despite the best efforts
+of engineers of instruments.  Measurement proceeds under finite resolution, incomplete
+ordering, and unavoidable aliasing.  What appears as variability in outcomes
+often reflects not indeterminacy of the phenomenon, but the limited capacity of
+an instrument to resolve distinctions.  The experimental record is therefore
+always shaped by the constraints of the apparatus that produces it.
+
+Yet instruments are not static.  Over time, methods refine, tolerances narrow,
+and the ability to distinguish events improves.  Our capacity to differentiate
+evolves even when the underlying phenomena do not.  Accuracy, however, is not a
+property that can be assessed from an independent ledger of records alone, since
+it presumes access to an external truth against which comparison may be made.
+Precision, by contrast, is intrinsic to the instrument.  It measures the
+instrument’s internal consistency and resolving power and can be evaluated
+purely from the structure of the record it produces.
+
 
 Instruments are engineered, not revealed. 
 The purpose of instrumentation is to detect and re-detect
@@ -1423,7 +1433,7 @@ unobserved continua. Better instruments are built by understanding how to
 measure sameness more sharply, query phenomena more sensitively, and encode
 their distinctions without contradiction. The ledger stores only the
 distinctions earned by these comparisons; the engineering process that improves
-them lives outside the ledger, in the physics that inspires its refinement.
+them lives outside the ledger, in the physical law that inspires its refinement.
 
 The aspiration of measurement is therefore not ontological, but architectural.
 A well-built instrument is one that maximizes the distinctions it is capable of
@@ -1453,7 +1463,7 @@ recordings.
 A more sensitive instrument may not merely speak a
 richer alphabet; it may speak more often, resolving a greater number of
 distinguishable events during the same underlying physical episode. This can produce a
-longer ledger \(L_{i'}\) in which the coarse ledger \(L_i\) appears as an
+longer ledger \(\Ledger_{i'}\) in which the coarse ledger \(\Ledger_i\) appears as an
 order-preserving subsequence (after transform to coarser precision), unaltered in symbol and 
 successor index, while new
 events populate the complement. Sensitivity therefore licenses a richer
@@ -1472,31 +1482,38 @@ It is enough to postulate that a disjoint set of events may measure the same phe
 This disjoint set can also be refined as well. But, this is also just another instrument
 and the logic also applies there.
 
-Photons do not require specialized detectors to leave this evidence in
-the experimental record.
-For instance, consider the timing light of a reciprocating engine.
-A timing light is a deliberately coarsened chronometer that leverages
-periodicity to reveal structure a coarse instrument cannot isolate from
-its own successor ticks. The device does not measure time directly.
-It measures the recurrence of a finite event: ignition pulses in an
-engine, each drawn from a minimal alphabet of ``flash'' or ``no flash.''
-By phase-locking flashes to a rotating crankshaft, the timing light
-samples a periodic process using a coarser clock, then exploits
-periodicity to infer a refined local ordering of sub-events that the
-coarse instrument never recorded.
+Photons do not require specialized detectors to leave evidence in the
+experimental record.  In many cases, their presence is revealed indirectly,
+through the structured response of ordinary mechanical or electrical systems.
+The key requirement is not sensitivity to individual quanta, but the existence
+of a repeatable event that can be correlated across refinements.
 
-The refinement arises because periodic flashes prune histories in
-phase space rather than in absolute clock index. Even though the
-observer's clock may advance uniformly, the flashes align to the
-engine's internal periodic attractor, granting a view at one level
-of logical refinement higher than the clock alone provides. The
-instrument certifies only flash events, but from their stable phase
-recurrence, the observer infers ignition alignment, cylinder offset,
-and rotational ordering without assuming a linear arrow of time
-inside the law itself. Refinement is not infinite, but periodicity
-provides the computational leverage to design instruments that see
-deeper into the successor structure than the coarse clock could,
-on its own, defend against noise.
+A familiar example is provided by the timing light used to adjust a
+reciprocating engine.  A timing light is a deliberately coarsened chronometer.
+Rather than measuring time directly, it exploits periodicity to reveal structure
+that a coarse clock cannot isolate from its own successive ticks.  The device
+operates precisely by refusing to resolve fine temporal detail.
+
+The timing light measures the recurrence of a finite event: ignition pulses in
+the engine.  Each pulse is drawn from a minimal alphabet of outcomes, typically
+``flash'' or ``no flash.''  On its own, this binary record contains very little
+information.  Individual flashes are not timestamped with high precision, nor
+are they ordered beyond their appearance in the record.
+
+Refinement enters through periodicity.  By phase-locking the flashes to a
+rotating crankshaft, the timing light repeatedly samples the same point in a
+cyclic process using a coarse clock.  Across many cycles, small variations that
+would be invisible in a single pass accumulate into a stable pattern.  The
+instrument thereby infers a refined local ordering of sub-events that were never
+recorded individually.
+
+Crucially, this refinement is not achieved by improving the clock.  It is
+achieved by correlating repeated coarse measurements under a known periodic
+constraint.  The refined structure appears not because finer distinctions were
+measured directly, but because admissible comparisons became available through
+repetition.  The timing light thus exemplifies how coarsened instruments, when
+embedded in a correlant process, may recover structure beyond their nominal
+resolution.
 
 \begin{phenom}{The Farmater Effect~\cite{us2959711a}}
 \label{ph:farmater-effect}
@@ -1536,23 +1553,53 @@ putative inverse; they do not prove its existence.
 \PhConsequence
 The Farmater Effect shows that bounded interrogation naturally induces a
 coarsening map: many distinct physical microstates are collapsed into the same
-observational record. The resulting loss of uniqueness is not a defect of the
-measurement, but an observable consequence of finite resolution. The inability
-to recover a unique underlying history from a coarse ledger is itself a physical
-fact.
+observational record.  This loss of uniqueness is not a defect of measurement,
+but an observable consequence of finite resolution.  The inability to recover a
+unique underlying history from a coarse ledger is itself a physical fact.
 
-This reinforces the axiomatic posture that physical law emerges from recorded
-distinctions, not from assumed continuous reconstructions. In the model, the
-photon appears as an information carrier because it produces a recorded symbol.
-Its absence also carries information, by delimiting intervals of verified
-silence and excluding unobserved temporal variation.
+This reinforces the axiomatic posture adopted here: physical law emerges from
+recorded distinctions, not from assumed continuous reconstructions.  Within this
+model, the photon appears as an information carrier because it produces a
+recorded symbol.  Its absence also carries information, by delimiting intervals
+of verified silence and excluding unobserved temporal variation.
+
 \end{phenom}
 
-There are other ways in which an instrument may be refined. While many
-improvements are possible in principle, only those that leave evidence in the
-physical record are relevant here. We do not assume that any particular
-refinement must exist. We examine only the consequences that follow if such a
-refinement does exist.
+The significance of the Farmater Effect lies in how bounded measurement reshapes
+the experimental record.  When refinement proceeds faster than an instrument can
+distinguish, the ledger accumulates a dense chain of fine events whose internal
+ordering cannot be resolved.  From the perspective of the instrument, this chain
+appears blurred.  Distinctions that occur within the response time of the device
+are collapsed into a single record, not because they fail to occur, but because
+they cannot be separated.
+
+This blurring is not a failure of the experiment.  It is a direct consequence of
+finite interrogation.  A fine ledger may contain many successive events, yet a
+coarse instrument records only their aggregate effect.  The experimental record
+therefore reflects the resolving power of the instrument rather than the pace of
+the underlying process.  What appears as continuity or silence is often the
+compression of unresolved distinctions.
+
+The timing light exploits this compression deliberately.  It is tuned to a
+periodic mechanism whose internal dynamics evolve more rapidly than the light’s
+own sampling rate.  By synchronizing flashes to a repeating cycle, the device
+allows fine variations to recur against the same coarse temporal frame.  The
+blurred chain is not eliminated; it is made repeatable.
+
+Through repetition, structure emerges.  Although each individual flash carries
+little information, the accumulation of many flashes aligned to the same phase
+reveals a stable pattern.  The timing light therefore achieves precision not by
+sampling faster, but by sampling more slowly in a controlled way.  It trades
+temporal resolution for repeatability, allowing fine structure to be inferred
+from coarse records.
+
+This example illustrates a general principle.  When the fine ledger blurs under
+bounded interrogation, periodicity can be used to recover order without
+resolving individual events.  Precision arises not from eliminating blur, but
+from shaping it.  The next subsection formalizes this idea by treating the
+intervals of unresolved refinement themselves as meaningful components of the
+experimental record.
+
 
 \subsection{Intervalization}
 
@@ -1693,15 +1740,15 @@ experimental ledger.
 \begin{definition}[Dense Response~\cite{cantor1895}]
 \label{def:dense-response}
 
-Let $\phi_n : \mathbb{Q}^+ \times L_n \to \mathbb{Q}$ be the prediction map
+Let $\phi_n : \mathbb{Q}^+ \times \Ledger_n \to \mathbb{Q}$ be the prediction map
 associated with an instrument of refinement depth $n$, producing a numerical
 symbol in response to a hypothetical query at parameter $t \in \mathbb{Q}^+$.
-Assume that each refined ledger $L_{n+1}$ extends $L_n$ without invalidating
+Assume that each refined ledger $\Ledger_{n+1}$ extends $\Ledger_n$ without invalidating
 any previously recorded distinctions.
 
 A \emph{dense response} is a function
 \[
-\phi : \mathbb{R}^ \to \mathbb{R}
+\phi : \mathbb{R}^+ \to \mathbb{R}
 \]
 defined as the pointwise limit of the prediction maps,
 \[
@@ -1721,27 +1768,41 @@ space into which the refinement process converges, representing an idealized
 limit of numerical prediction rather than a stored measurement.
 \end{definition}
 
-The dense response, being a recursively defined mathematical construction, may be
+The dense response is a recursively defined mathematical construction.  It may be
 viewed as a map
 \[
-  \phi_\Ledger : \mathbb{Q}^+ \rightarrow \mathbb{Q},
+  \phi_{\Ledger} : \mathbb{Q}^+ \rightarrow \mathbb{Q},
 \]
-where \(\mathbb{Q}^+\) denotes the positive rational numbers.  If one assumes the
-unbounded recursion suggested by a hypothetically refined instrument, then any
-finite subset \(S \subset \mathbb{Q}^+\) can be reconciled to produce an arbitrary
-finite rational number in the dense limit.  The instrument’s output is not a
-function of hidden intermediate values, but of which ordered chain of symbol
-selections is committed to the ledger during refinement.  Distinct orderings of the
-recursive reconciliation operators can therefore yield distinct values of
-\(\phi(S)\), even though all such values remain admissible within the axiomatic
-framework.  This demonstrates that infinite recursion does not force unique
-numerical resolution: it only guarantees that every finite query to the dense
-completion returns a finite rational result conditioned on the order of the
-recorded distinctions.
+where \(\mathbb{Q}^+\) denotes the positive rational numbers.  This map summarizes
+the outcome of a refinement process in which symbols are selected and committed
+to the ledger through successive stages of reconciliation.
+
+If one assumes the unbounded recursion suggested by a hypothetically refined
+instrument, then any finite subset \(S \subset \mathbb{Q}^+\) may be reconciled to
+produce a finite rational number in the dense limit.  The existence of such a
+limit reflects the completeness of the recursive construction, not the presence
+of a uniquely determined underlying value.
+
+Crucially, the instrument’s output is not a function of hidden intermediate
+values.  It depends only on which ordered chain of symbol selections is
+ultimately committed to the ledger during refinement.  The ledger records a
+sequence of admissible distinctions, not an underlying continuum of states.
+
+Distinct orderings of the recursive reconciliation operators may therefore yield
+distinct values of \(\phi(S)\).  All such values remain admissible within the
+axiomatic framework, as each corresponds to a refinement history consistent with
+the rules of reconciliation.  The dense completion admits many valid outcomes,
+distinguished only by the ordering of recorded distinctions.
+
+This demonstrates that infinite recursion does not force unique numerical
+resolution.  It guarantees only that every finite query to the dense completion
+returns a finite rational result, conditioned on the order in which distinctions
+are recorded.  Numerical definiteness emerges from refinement, not from the
+assumption of an underlying continuous value.
 
 Once a dense response operator $\phi$ has been
 constructed as the refinement limit, the rationals form a countable dense subset
-of its image. Axiom of Choice then permits the selection of a single
+of its image. The Axiom of Choice then permits the selection of a single
 reconstruction function $\psi : \mathbb{R}^+ \to \mathbb{R}$ that interpolates
 $\phi$ by agreeing with it on all rational points:
 \begin{equation}
@@ -1807,7 +1868,9 @@ the record. This work therefore does not prove its existence, nor does it seek
 to. Instead, we treat the function as a hypothetical completion strategy one 
 might attempt to engineer. The laws of physics arise precisely as we tighten the 
 admissible space of completions that such a function would need to respect in 
-order to remain consistent with ledgered observations. Paradoxically, the monograph’s 
+order to remain consistent with ledgered observations. 
+
+Paradoxically, the monograph’s 
 hierarchy is not derived by affirming the function, but by forbidding it from 
 asserting more than instruments could ever certify. In this sense, the function 
 earns no axiomatic standing. We never prove anything about its existence, and we 
@@ -1843,8 +1906,8 @@ The record stores only moments that instruments could operationally
 distinguish, while $\epsilon$ measures the analytic room that remains
 when the sampling regime has not yet excluded ambiguity. Predictive
 power arises not by promoting smoothness, but by forbidding
-continuations that would contradict witnessed precedence relations in
-signal space. The approximation $p(t)$ is the reconstruction; $\epsilon$
+continuations that would contradict witnessed precedence relations. 
+The approximation $p(t)$ is the reconstruction; $\epsilon$
 is the invariant target of characterization.
 
 Accordingly, minimizing $\epsilon$ is not a claim that the shadow
@@ -2014,9 +2077,9 @@ reality.  We assume that the outcomes of measurement are finite or
 countable collections of distinguishable results recorded in time.
 This is standard across probability theory and information theory:
 Shannon formalized information as distinguishable symbols drawn from a
-finite or countable alphabet \cite{shannon1948} (see Phenomenon~\ref{ph:shannon}) and Kolmogorov showed
+finite or countable alphabet \cite{shannon1948} and Kolmogorov showed
 that empirical outcomes can be represented as elements of measurable
-sets within standard set theory~\cite{kolmogorov1933} (see Phenomenon~\ref{ph:spc}).  
+sets within standard set theory~\cite{kolmogorov1933}.  
 In this view, observations produce measurements,
 measurements produce data, and data are mathematical objects.
 Everything that follows concerns the admissible transformations among
@@ -2028,8 +2091,18 @@ records which outcome occurred. Any numerical interpretation assigned to these
 outcomes is secondary and inferential. At the level of the experimental ledger,
 only distinguishability matters: that one symbol was recorded rather than
 another.
+
 We say that the \emph{universe of instruments} is the set of instruments $I$ that
-are mutually consistent.
+are mutually consistent.  Mutual consistency means that the records produced by
+these instruments may be compared and refined without contradiction: there
+exists at least one admissible history in which all their recorded distinctions
+can coexist.  This assumption does not assert completeness, accuracy, or
+agreement in detail.  It asserts only that the instruments participate in a
+shared experimental domain, so that their ledgers may be aligned through
+coarsening and refinement.  Instruments that cannot be made mutually consistent
+do not describe different aspects of the same phenomenon; they describe
+different universes of discourse.
+
 
 For this reason, all measurement outcomes are treated uniformly as elements of
 an alphabet. The alphabet does not encode magnitude, units, or physical meaning.
@@ -2097,12 +2170,13 @@ constructed by aggregating and comparing these selections.
 \end{phenom}
 
 Phenomenon~\ref{ph:pascal} identifies the atomic informational act underlying all
-measurement: the selection of a symbol from an alphabet. An event does not
-reveal a preexisting value, but commits the record to one of several
-distinguishable alternatives. Once recorded, this selection cannot be revised,
-and all subsequent admissible reasoning must condition on it. Repetition does
-not strengthen the content of an individual selection; it only produces
-additional instances of the same symbol at different positions in the ledger.
+measurement: the selection of a symbol from an alphabet.  An event does not
+reveal a preexisting value, but commits the experimental history to one of
+several distinguishable alternatives.  Once made, this commitment cannot be
+reversed, and all subsequent admissible reasoning must condition on it.
+Repetition does not amplify the content of an individual selection; it merely
+introduces additional instances of the same symbol at different locations in
+the ledger.
 
 This perspective unifies the treatment of uncertainty, probability, and
 information within the framework. Probabilistic structure arises only when
@@ -2211,16 +2285,47 @@ spaces, in which empirical outcomes are represented as measurable sets
 mathematical object whose structure is defined entirely within ZFC. 
 
 
-\section{The Axioms of Informational Structure}
+\section{The Axioms of Information}
 
-The previous section established that a physical record is a set of
-distinguishable observations, representable within ZFC, and ordered
-by position on a ledger. 
-In this section, we introduce two informational axioms that
-restrict how such a record may be interpreted independent of a predictive law. These axioms express constraints
-on descriptions of the world, independent of any particular model
-of physical phenomena. Measurements, while not bound by physical law, 
-are bound by what came before.
+In this section, we introduce two informational axioms that restrict how a record
+may be interpreted independent of any predictive law.  These axioms express
+constraints on description itself, rather than on the behavior of any particular
+physical system.  Measurements may violate expectations, defy models, or resist
+prediction, but they are nevertheless bound by what has already been committed.
+Information accumulates irreversibly.
+
+Long before the development of physical theory, Euclid identified a foundational 
+feature of
+reasoning about the world: once an object is introduced, it persists as an object
+of discourse.  A point, once named, may be related to other points, transformed,
+or constrained, but it cannot be retroactively denied.  Euclid’s geometry does
+not describe motion or causation; it describes permanence under reference.  The
+objects of the theory endure so that reasoning may proceed.
+
+This permanence is not a claim about physical existence.  It is a constraint on
+description.  Euclid’s constructions succeed because they forbid revision of
+what has already been established.  A line drawn remains available for further
+argument, regardless of how it is later used.  The force of the argument lies
+not in prediction, but in the irrevocability of introduction.
+
+Measurement shares this structure.  An event does not reveal a hidden value; it
+introduces a distinction into the experimental history.  Once introduced, that
+distinction becomes part of the domain on which all subsequent reasoning must
+condition.  Just as Euclid does not permit the erasure of a constructed point,
+measurement does not permit the erasure of a recorded symbol.
+
+This constraint is independent of physical law.  Even in the absence of a model,
+even when predictions fail, recorded distinctions persist.  One may revise
+interpretations, introduce new hypotheses, or discover contradictions, but the
+fact that a distinction was made remains fixed.  Information, once introduced,
+becomes part of the logical substrate of description.
+
+The Euclid Effect thus identifies a minimal informational invariant: object
+permanence under refinement.  What is recorded remains available for comparison,
+restriction, and inference, even as theories evolve.  This effect does not
+describe the world as it is, but the world as it must be spoken about once
+measurement has occurred.
+
 
 \begin{phenom}{The Euclid Effect~\cite{euclid300bc}}
 \label{ph:object-permanence}
@@ -2231,7 +2336,8 @@ removed by any extension. All subsequent measurements must remain
 consistent with the accumulated record.
 
 \PhOrigin
-Euclid’s geometric constructions proceed by the irreversible introduction of
+Euclid’s geometric constructions, both physical and hypothetical, proceed by the 
+irreversible introduction of
 relations that must be preserved throughout all subsequent steps. Once a point,
 line, or relation is constructed, it remains available to every later argument
 and cannot be erased without contradiction.
@@ -2264,7 +2370,7 @@ Information durability is the nature of scientific records to be comparable.
 For this reason, we consider the universe of all instruments $I$.  Any record measured
 by one of these instruments cannot be contradicted by any other instrument.
 
-There are only a finite number of possible instruments.
+There are only a finite number of possible instruments an observer can use.
 That implies the existence of a map
 \begin{equation}
 g:I\times\Sigma \rightarrow I\times\Sigma.
@@ -2307,49 +2413,59 @@ instrument-symbol tuples. It characterizes which events necessarily had to
 precede others, without describing the unobserved interior between them.
 
 These finite precedence constraints are most naturally represented as a
-directed graph $G_p = (V_p, E_p)$ on the set of all admissible
+directed acyclic graph $G_p = (V_p, A_p)$ on the set of all admissible
 events for phenomenon $p$, where each vertex corresponds to a possible
-instrument-symbol tuple $(i,j)$ and each edge $u \to v$ asserts only that
+instrument-symbol tuple $(i,j)$ and each arc $u \to v$ asserts only that
 $u$ was a required predecessor of $v$ in any ledger that could have produced
-the same refinement-preserving record. This graph expresses necessity,
+the same refinement-preserving record.  This graph expresses necessity,
 not simultaneity, and is itself a historical object derived from the
-comparability of logged distinctions.  
+comparability of logged distinctions.
 
-A dense response is a finite operator on the experimental ledger. It maps each
-recorded event to the boundary of admissible next measurements, tracing every edge
-that could extend the record without contradiction. The map is combinatorial:
-a graph of allowed continuations, pruned by each act of refinement according to
-Ockham's demand for necessity~\cite{ockham1323}.
+A dense response is a finite operator acting on the experimental ledger.
+It maps each recorded event to the boundary of admissible next measurements,
+tracing every arc that could extend the record without contradiction.
+Crucially, it traces no more than this.  The response does not speculate
+about hidden intermediates or unrealized alternatives; it enumerates only
+those continuations that are required by what has already been recorded.
+
+In this sense, the dense response is Ockhamian by construction.
+Each act of refinement prunes the space of admissible continuations, retaining
+only those distinctions that are necessary to preserve consistency with the
+ledger.  Complexity is not minimized globally, nor is structure assumed to be
+simple.  Rather, unnecessary structure is excluded locally, at each stage,
+because it is not warranted by the record.
 
 Each instrument emits symbols from a finite alphabet, but the ledger is not owned
-by the instrument. The ledger is the invariant substrate: a coordinate system for
-distinctions, not a container for values. A dense response respects this economy
-by identifying all admissible successor events while refusing to speculate beyond
-what the record requires.
+by the instrument.  The ledger is the invariant substrate: a coordinate system
+for distinctions, not a container for values.  A dense response respects this
+economy by identifying all admissible successor events while refusing to encode
+anything the record does not force.
 
-The events maintain a finite combinatorial map that identifies exactly which
-rationals are sufficient to encode the domain response of the ledger. This map does not
-depend on sensor shape, clock rate, or readout circuit. It depends only on the
-pattern of distinctions that have been activated in the record itself. Rationals
-appear here as a minimal coding basis: a countable alphabet for approximation, not
-a claim about continuity.
+The resulting structure is finite and combinatorial.  It identifies exactly
+which rational values are sufficient to encode the domain response of the ledger
+under refinement.  This encoding does not depend on sensor geometry, clock rate,
+or readout mechanism.  It depends only on the pattern of distinctions that have
+been activated.  Rational numbers appear here as a minimal coding basis: a
+countable alphabet for approximation, not a commitment to underlying continuity.
 
-\begin{axiom}[The Axiom of Ockham~\cite{ockham1323})]
+\begin{axiom}[The Axiom of Ockham~\cite{ockham1323}]
 \label{ax:ockham}
 \emph{[Order Coherence]}
-Let $E=\{e_0 \prec e_1 \prec \cdots \prec e_n\}$ be a finite or countable
-ordered set of events recorded in a ledger $\Ledger$ giving rise to precedence 
-constraints.  The domain responses are
-order--respecting in the following sense: for any two events $e_i,e_j \in E$,
+Let $E = \{ e_0 \prec e_1 \prec \cdots \prec e_n \}$ be a finite or countable
+ordered set of events recorded in a ledger $\Ledger$, giving rise to precedence
+constraints.  Domain responses are order-respecting in the following sense: for
+any two events $e_a, e_b \in E$,
 \[
-e_i \prec e_j \;\;\Longrightarrow\;\; \forall i\in I, \quad r_j \nprec r_i.
+e_a \prec e_b \;\;\Longrightarrow\;\; \forall\, k < k_a, \quad r_b^{(k)} \nprec r_a^{(k)} .
 \]
 
-If one instrument recorded one event before another, then there 
-can be no ledger where their order is switched nor can it be assumed that
-the another instrument has already recorded this event, even if they have
-already recorded $e_j$.
+That is, if an event is recorded as preceding another, then no admissible ledger
+may reverse that order.  Nor may it be assumed that a distinct instrument has
+already recorded an event solely because it has recorded a later one.  Once a
+precedence relation is established in the ledger, it constrains all admissible
+comparisons.
 \end{axiom}
+
 
 A ledger either cares about the order of events, in which case that order
 is unique, or it records only that the events took place. In the latter
@@ -2370,7 +2486,15 @@ distinguishable outcome was resolved at the instrument’s available resolution.
 From the perspective of the ledger, these are legitimate measurements whose
 symbols happen to coincide.
 
-More subtly, there may be events that produce no change in the readings of a
+Crucially, the act of measurement is often driven by the instrument’s use rather
+than by changes in the phenomenon itself.  Instruments are operated according to
+protocols, schedules, or control signals that may be independent of whether a
+new admissible distinction is present.  As a result, repeated interrogation is
+the norm rather than the exception.  The ledger therefore records not only what
+changes, but also the persistence of indistinguishability under continued
+measurement.
+
+More subtly, there may be related events that produce no change in the readings of a
 given observer’s instruments at all.  This occurs not because nothing
 happened, but because the observer lacks instruments capable of resolving the
 relevant distinction.  The event exists as a possible configuration under the
@@ -2404,7 +2528,7 @@ ledger of measurement, the instruction is more precise: do not multiply
 \emph{distinctions} faster than they can be demonstrated.
 
 In this framework, the ``entity'' is an event recorded by an instrument, and the
-``necessity'' is the minimum set of rationals required to encode a state that still
+``necessity'' is the symbol set required to encode a state that still
 admits coherent continuation. Ockham did not deny the usefulness of structure.
 He denied the license to assert it when no finite procedure could recover a
 trace that forced it. Our dense response operator is Ockham's idea rewritten in
@@ -2418,16 +2542,6 @@ invitation to speculate an uncountable zoo of intermediate states. It is a
 certificate of non-distinction. The axiom that precedence cannot be reversed is
 Ockham's logic depth bound applied to history itself: once a distinction is
 written, it may constrain the future, but it may never be rewritten by a model.
-
-By tying admissible continuation to a minimal rational basis, the axiom becomes
-predictive without becoming extravagant. Ockham's name is therefore not an
-ornament but a constraint: the ledger grows by appending what is forced, and
-refuses what is not. In doing so, it inherits his original project, translated from
-the disputation hall to the measurement graph: finitely encoded, order coherent,
-and forever verified by the durability of the record itself.
-We will demonstrate Axiom~\ref{ax:ockham} limits the edges in the directed graph of events that
-make up a phenomenon, populating it only with those that are necessary to maintain 
-coherence and no others.
 
 \subsection{Causal Set Theory}
 The previous axiom imposed an informational constraint on admissible
@@ -2452,7 +2566,7 @@ encodes discrete causal volume.
 \emph{[Events are Discrete]}
 
 The distinguishability relations among events admit a representation
-as a locally finite partially ordered set $(E,\prec)$, where
+as a locally finite partially ordered set $(E,\prec)$ with $e,f \in E$ where
 \begin{enumerate}
 \item $e\prec f$ means that the record of $e$ is incorporated before the record of $f$,
 \item $(E,\prec)$ is acyclic and transitive,
@@ -2604,7 +2718,7 @@ any event that meets the following criteria.
 \begin{enumerate}
 \item \textbf{Precedence of Events} $e_a \prec e_b$. The phenomenon asserts $e_b$ must follow $e_a$.
 \item \textbf{Change in Measurement} $j_a \neq j_b$. The symbol on the instrument must change.
-\item \textbf{Identification of an Adissible Record} $r_b$ exists.
+\item \textbf{Identification of an Admissible Record} $r_b$ exists.
 \item \textbf{Precedence of Records} $r_b \notin \Ledger$.  We cannot expect to have
 more $b$'s than $a$'s otherwise a $b$ must have come before $a$ violating the model $e_a \prec e_b$.  
 If $a$ and $b$ have the same value, it may not be possible to refine the ledger to tell which value came first.
@@ -2672,7 +2786,7 @@ computation is unimportant and all measurements can be presumed
 to be taken at the same time.  Since this violates the condition of
 an instrument only presenting one measurement at a time, the order
 in which these measurements are taken are not specified by the model.
-We begin our examination and characterization of temporal noise.
+We begin our examination with a characterization of temporal noise.
 
 \begin{coda}{Temporal Noise}
 We begin the coda with an example from computation: speculative execution. Modern
@@ -2799,7 +2913,7 @@ that moment, the system evolves speculatively.
 As in speculative execution, these provisional continuations must remain
 consistent with the historical record. They do not overwrite it. When a decay
 occurs, the event is not selected by chance, but by the completion of a
-refinement that overcomes friction. 
+refinement that overcomes temporal friction (see Phenomenon~\ref{ph:mott}). 
 
 As with frictional thresholds in measurement, alpha decay presents a sharp
 distinction between a before and an after. Prior to decay, multiple instruments
@@ -2899,7 +3013,7 @@ refinement of the record.
 No physical description may attribute randomness to the selection of a recorded
 history when the same outcome is accounted for by irreversible refinement under
 unresolved ordering.  Symmetry of the governing equations does not license
-symmetry of the experimental ledger (see Phenomenon~\ref{ph:loschmmidt-effect}).  Once a distinction is recorded, it may be
+symmetry of the experimental ledger (see Phenomenon~\ref{ph:loschmidt-effect}).  Once a distinction is recorded, it may be
 used to resolve temporal noise and exclude symmetric alternatives
 (see Phenomenon~\ref{ph:gps}).
 
@@ -2951,11 +3065,11 @@ From this perspective, the observed asymmetry of a single track reflects tempora
 noise rather than indeterminacy in the law. Early in the process, multiple
 continuations remain admissible, and the ledger cannot distinguish among them. As
 refinement proceeds, silence about alternative orderings is broken and a definite
-sequence emerges. The Mott effect thus exemplifies a central theme of this work:
+sequence emerges. Phenomenon~\ref{ph:mott} thus exemplifies a central theme of this work:
 definite structure arises from the irreversible accumulation of recorded
 distinctions, not from randomness in the underlying dynamics.
 
-This places alpha decay in direct correspondence with Phenomenon~\ref{ax:chaitin}.  Just
+This places alpha decay in direct correspondence with Phenomenon~\ref{ph:static-friction}.  Just
 as there exists no finite procedure for deciding, in advance, whether a given
 computation will halt, there exists no admissible method for certifying the
 occurrence of an alpha decay event prior to its recording.  The uncertainty does
@@ -2967,7 +3081,7 @@ remain admissible.
 The nuclear barrier enters as the structural source of this limitation.  Most
 attempted refinements are absorbed without producing a distinguishable event.
 Only when sufficient interaction accumulates does the ledger advance.  The
-resulting transition is irreversible and final.  As in the Mott effect, the
+resulting transition is irreversible and final.  As in Phenomenon~\ref{ph:mott}, the
 appearance of chance marks the boundary between unresolved silence and recorded
 distinction, not a failure of determinism in the governing equations.
 
@@ -2978,23 +3092,24 @@ apparent randomness reflects temporal noise and finite resolution in the
 recording process.  What is observed as probability is the shadow cast by an
 irreversible ledger viewed at finite precision.
 
-The preceding chapter has established the minimal conditions under which
-measurement may be discussed without contradiction.  Events, records, and
-refinement were introduced not as physical postulates, but as bookkeeping
-necessities forced by distinguishability and irreversibility.  At this level,
-no assumptions have been made about dynamics, probability, or scale.  The ledger
-records what has occurred, refinement restricts what may follow, and admissible
-events provide the only anchors for comparison across records.
+This chapter has established the minimal conditions under which measurement may
+be discussed without contradiction.  Events, records, and refinement were
+introduced not as physical postulates, but as bookkeeping necessities forced by
+distinguishability and irreversibility.  At this level, no assumptions have been
+made about dynamics, probability, or scale.  The ledger records what has
+occurred, refinement restricts what may be said next, and consistency across
+records provides the only basis for comparison.
 
 What remains unresolved is how these local constraints combine.  When multiple
 instruments participate in a measurement, and when refinement proceeds through
-many admissible events, the ledger acquires structure that is not visible at the
-level of individual records.  Chapter~3 addresses this accumulation.  It
-introduces the experimental state as a coherent summary of correlant records and
-shows how admissible events act upon it as operators.  In doing so, it derives
-the algebraic structure governing refinement, including commutation,
-noncommutation, and the emergence of ambiguity.  These results prepare the way
-for quantitative description, which will be taken up only after the structural
-content of measurement has been fully characterized.
+many recorded distinctions, the ledger acquires structure that is not visible at
+the level of individual records.  Chapter~3 addresses this accumulation.  It
+introduces the experimental state as a coherent summary of mutually consistent
+records and shows how recorded distinctions act upon it to constrain future
+description.  In doing so, it derives the structural rules governing refinement,
+including when order matters, when it does not, and how ambiguity arises.  These
+results prepare the way for quantitative description, which will be taken up
+only after the structural content of measurement has been fully characterized.
+
 
 \end{coda}
