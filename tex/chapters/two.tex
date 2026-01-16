@@ -227,7 +227,7 @@ such configurations.
 
 \PhConstraint
 No physical description may treat distinct symbolic representations as
-distinct physical states unless an admissible observation can discriminate
+distinct physical states unless an observation can discriminate
 between them.  Symbolic distinctions unsupported by observation impose no
 additional constraint on the space of consistent histories.
 
@@ -254,13 +254,13 @@ symbols refine the ledger by increasing distinguishability relative to earlier
 records.  However, the appearance of a new symbol does not, by itself, guarantee
 that a corresponding physical distinction has been resolved.  Distinct symbols
 may correspond to the same observable state under a given model, and no
-admissible experiment may exist that can discriminate between them 
+experiment may exist that can discriminate between them 
 (see Phenomenon~\ref{ph:maxwell}).
 
 Refinement therefore describes a property of the record, not of the underlying
 model.  It is the act by which the ledger becomes more detailed, whether or not
 that detail translates into additional predictive power.  The ledger may
-continue to refine even when the space of admissible physical descriptions
+continue to refine even when the space of physical descriptions
 remains unchanged.
 
 This possibility places an essential constraint on how refinement should be
@@ -921,7 +921,7 @@ $i$ emitted symbol $j$.
 A hypothesis is a rule that assigns, to each time parameter $t > 0$, a set of
 such readings that are compatible with the experimental ledger up to that time.
 It constrains possibility by excluding contradictions, while leaving unresolved
-which admissible readings, if any, will occur.
+which readings, if any, will occur.
 
 It is always possible to assign numerical representatives to the symbols of an
 instrument by convention.  Such assignments do not arise from physical initial
@@ -953,7 +953,7 @@ dynamical law governing temperature itself.
 
 Lagrange later formalized the principle underlying this practice by showing that
 physical laws need not depend on any particular choice of coordinates. By
-treating admissible descriptions related by smooth reparameterizations as
+treating descriptions related by smooth reparameterizations as
 equivalent, he separated physical content from numerical representation. The
 temperature scale thus becomes a coordinate choice on the space of thermal
 states, not a property of the states themselves.
@@ -1053,18 +1053,20 @@ order from equal-valued measurements alone. When two instruments emit the same
 symbol, the ledger records agreement but not precedence. In the absence of a
 new distinguishing event, this interval is one of verified silence: nothing was
 recorded that would justify an ordering.
-A hypothesis does not assert that such silence must eventually be broken. It
-asserts only that, if a distinguishing event were to occur, it would exclude
-contradictory reorderings and thereby restrict the null space of admissible
-histories. Until then, silence remains admissible and unresolved.
+A hypothesis does not assert that such silence must eventually be broken.  It
+makes no claim about when, or even whether, a distinguishing event will occur.
+It asserts only that, if such an event were to occur, it would rule out certain
+possibilities and thereby narrow what may consistently be said about what
+happened.  Until then, silence remains admissible and unresolved.
+
 
 We therefore define a prediction map as
 \begin{definition}[Prediction Map]
 A \emph{prediction map} for some instrument $i$ is any function $g_i:\R^+\rightarrow\Sigma_i$.
 One example of a prediction map is, given a phenomenon $p(t)$ measured by instrument $i$, 
-$g_i(t) = r_{\Sigma_i} \circ p(t)$.  This is the \emph{phenomenal predictor} and it characterizes
+$g_i(t) = \tilde\rho^*_{\Sigma_i} \circ p(t)$.  This is the \emph{phenomenal predictor} and it characterizes
 what generalized patterns may imply about coming behavior.  Another prediction
-map is $b_i(t) = r_{\Sigma_i} \circ \psi(t)$.  Note that $b$ takes on a Bayesian character
+map is $b_i(t) = \tilde\rho^*_{\Sigma_i} \circ \psi(t)$.  Note that $b$ takes on a Bayesian character
 in that the prediction is biased only by what has come before in the circumstance, not by 
 any general rule.  As such, we shall refer to this as the \emph{Bayes predictor}.
 \end{definition}
@@ -1158,8 +1160,7 @@ the circumstance that caused the reading of an instrument to change.
 \subsection{Events}
 
 A phenomenon is frequently narrated in hindsight, as a chain of events that
-appear causally related when the record is reconstructed. ``This symbol
-followed that symbol often enough that the relation appears to survive refinement.''
+appear causally related when the record is reconstructed. 
 The narrative may suggest ``this happened because that happened,'' but the
 ledger itself does not assert mechanisms, only the historical ordering of
 distinguishable instrument--symbol pairs.
@@ -1169,7 +1170,7 @@ unit of recorded distinction. For the universe of all instruments $I$,
 it is the set of all 3--tuples that names the symbols, instruments, and 
 histograms that the event will trigger:
 \begin{equation}
-e = \{(i, j, k) | i \in I \text{,} j \in \mathbf{N}, j \leq |\Sigma_i|, \text{ and } k\in\mathbb{N}\}.
+e = \{(i, j, k) | i \in I \text{,} j \in \mathbb{N}, j \leq |\Sigma_i|, \text{ and } k\in\mathbb{N}\}.
 \end{equation}
 The event exists only when a measurement has been appended to the ledger, and its only
 authority is retrospective: it certifies that incompatible continuations were
@@ -1186,11 +1187,10 @@ a single reported value may correspond to multiple underlying instrument
 readings. What observers agree on is not a privileged present state,
 but the historical consistency of symbol transitions written to their
 respective ledgers. When a car accelerates, many instruments could have
-logged compatible successor symbols reflecting the same coarse-grained
+logged compatible symbols reflecting the same coarse-grained
 interpretation of speed. We therefore define an event by the set of
-instrument-symbol distinctions that would have been necessary to preserve
+instrument-symbol distinctions that would be necessary to preserve
 agreement across observers.
-
 
 
 \begin{definition}[Event]
@@ -1198,8 +1198,8 @@ agreement across observers.
 
 Let $p$ be a phenomenon and let $I_p \subset I$ denote the set of instruments
 capable of measuring $p$. An \emph{event} participating in phenomenon $p$ is the
-finite configuration of marks left by those instruments: the admissible
-measurement outcomes that were recorded.
+finite configuration of marks left by those instruments: the measurement outcomes 
+that were recorded.
 
 Formally, an event is a finite set
 \begin{equation}
@@ -1225,19 +1225,26 @@ no presumed ordering. The ledger is strictly historical, and ordering
 is recognized only when the recorded distinctions make alternatives
 inadmissible.
 
-Events are the abstract distinctions that mechanisms generate
-and the primitives that models reason about. A mechanism is
-not an event, but a hypothetical process that, if it existed, would
-have produced the logged 3-tuples. Models study mechanisms to
-understand which event populations are stable under refinement,
-but the ledger itself contains only the records, never the machinery
-that emitted them.
+Events are the abstract distinctions that mechanisms generate and the primitives
+that models reason about. A mechanism is not an event, but a hypothetical process
+that, if it existed, would have produced the logged 3-tuples. Models study
+mechanisms to understand which event populations are stable under refinement, but
+the ledger itself contains only the records, never the machinery that emitted
+them.
+
+Before introducing any dynamics or laws, it is useful to consider events in
+aggregate. Individual events establish isolated distinctions, but scientific
+claims rarely concern single occurrences. Instead, they concern which patterns
+of events may coexist without contradiction, and which arrangements remain
+stable as observations are refined.
 
 \subsection{Collections of Events}
-This assumption is not a claim that a model already governs the world,
-but that a model, if it existed, could not outrun what the ledger
-could have logged. The instrument supplies the symbols; the theory
-supplies only the rules for how those symbols must remain comparable
+
+A collection of events is not itself a claim about how the world operates, but a
+way of organizing what has been recorded. The assumption is not that a model
+already governs the world, but that any model, if it existed, could not outrun
+what the ledger could have logged. The instrument supplies the symbols; the
+theory supplies only the rules by which those symbols must remain comparable
 across refinement-compatible observers.
 
 \begin{definition}[Phenomenon~\cite{hume1748}]
@@ -1368,8 +1375,8 @@ Any completion that interpolates every such extension into a single
 differentiable path would necessarily impose an ordering between records that
 was never observed. Such an ordering would amount to selecting a direction of
 time from the law itself, rather than from the ledger. 
-This is Phenomenon~\ref{ph:loschmidt-effect}: time-reversal symmetry of the
-equations does not license time-reversal of recorded history.
+Time--reversal symmetry of the equations does not license time--reversal of recorded 
+history.
 
 
 \PhConstraint
@@ -1382,11 +1389,12 @@ as doing so would conflate population--level invariance with a parameterization 
 
 \PhConsequence
 Phenomenon~\ref{ph:loschmidt-effect} therefore warns us that physical laws act on
-populations of successor symbols, summarizing consistent patterns without
+populations of symbols, summarizing consistent patterns without
 completing the refinement of any single record. A law compresses extensive
 histories of recorded symbols into compact mathematical descriptions, but that
 compression necessarily discards the information required to uniquely refine an
 individual ledger entry into a smooth, time-parameterized trajectory.
+\end{phenom}
 
 If a law fully refined each record, it would introduce a linear parameter of
 time, which would in turn impose a monotone arrow of temporal extension. No
@@ -1395,8 +1403,6 @@ even though coarse predictive models may evolve populations of symbols in ways
 that appear to respect a time direction in representation. Apparent arrows of
 time belong to models, not to recorded symbols in the ledger itself (see
 Phenomenon~\ref{ph:hume-effect}).
-
-\end{phenom}
 
 Instruments can always be redesigned to distinguish a richer finite alphabet,
 but only while those distinctions remain operationally defensible above noise.
@@ -1467,14 +1473,15 @@ This richer description can often mean the instrument uses a different alphabet.
 For an instrument $i$ that measures $p$ and a more sensitive instrument $i'$ that
 also measures $p$, there often exists a coarsening map.
 \begin{definition}[Coarsening Map~\cite{brandt1977}]
-A \emph{coarsening map} is a map the translates the symbols of a more sensitive
+A \emph{coarsening map} is a map that translates the symbols of a more sensitive
 instrument $i'$ to those of a less sensitive instrument $i$.
 \begin{equation}
-f: \Sigma_{i'} \to \Sigma_{i}
+f: \Sigma_{i'} \to \Sigma_{i} \cup \{\varnothing\}
 \end{equation}
-such that any finer symbol maps to one and only one of the coarser instrument's 
-recordings.
+such that any finer symbol maps to one and only one of the coarser instrument's
+recordings, or to $\varnothing$ when no corresponding coarse symbol exists.
 \end{definition}
+
 
 A more sensitive instrument may not merely speak a
 richer alphabet; it may speak more often, resolving a greater number of
@@ -2426,28 +2433,33 @@ finitely many distinctions can occur between any two recorded observations.
 
 \subsection{Information Durability}
 
-Information durability is the nature of scientific records to be comparable.
-For this reason, we consider the universe of all instruments $I$.  Any record measured
-by one of these instruments cannot be contradicted by any other instrument.
+Information durability refers to the ability of scientific records to remain
+comparable across instruments and over time.  A recorded outcome is durable if
+it cannot be overturned by the use of another admissible instrument.  For this
+reason, we consider the universe of all instruments $I$: any record produced by
+one instrument must remain consistent with the records produced by others when
+they are brought into comparison.
 
-There are only a finite number of possible instruments an observer can use.
-That implies the existence of a map
+An observer has access to only finitely many instruments at any given time.
+This implies the existence of a transformation
 \begin{equation}
-g:I\times\Sigma \rightarrow I\times\Sigma.
+g : I \times \Sigma \rightarrow I \times \Sigma,
 \end{equation}
-for $\Sigma$ the measurement alphabet. It may be possible that an event cannot
-be registered by a particular instrument $i$. In this case, the event is capable
-of returning any of the symbols the instrument is capable of displaying.  This
-is the source of \emph{noise}.  Durability is the opposite.
+which relates how symbols produced by one instrument may be interpreted by
+another.  Not every event is registrable by every instrument.  When an event
+lies outside an instrument's sensitivity, the instrument may emit any symbol it
+is capable of displaying.  This indeterminacy is the source of \emph{noise}.
+Durability is the opposite condition: the persistence of agreement despite such
+instrumental limitations.
 
-The experimental ledger is defined only by the distinguishable events it
-contains. Between two events $e_t$ and $e_{t+1}$, no additional
-structure is present in the data: only the mark in the ledger that seperates them
-in time.  Set theory alone does not forbid a
-hypothetical refinement that inserts additional structure between $e_t$ and
-$e_{t+1}$, but any such refinement asserts 
-observations that did not occur.  To prevent unrecorded structure from being introduced by 
-assumption, we impose an informational constraint.
+Durability therefore constrains not only comparison across instruments, but also
+refinement across time.  The experimental ledger is defined solely by the
+distinguishable events it contains.  Between two successive events $e_t$ and
+$e_{t+1}$, the data contain no additional structure beyond their recorded order.
+Set theory alone permits the hypothetical insertion of intermediate distinctions,
+but any such refinement would assert observations that did not occur.  To
+prevent unrecorded structure from being introduced by assumption, we impose an
+informational constraint.
 
 Up to this point, our construction of the ledger has relied on a total ordering of
 events. This ordering reflects the sequence in which a finite observer records
@@ -2512,29 +2524,38 @@ economy by identifying successor events consistent with the recorded
 precedence constraints, while refusing to encode anything the record does not
 force.
 
-The resulting structure is finite and combinatorial.  It identifies exactly
-which rational values are sufficient to encode the domain response of the ledger
-under refinement.  This encoding does not depend on sensor geometry, clock rate,
-or readout mechanism.  It depends only on the pattern of distinctions that have
-been activated.  Rational numbers appear here as a minimal coding basis: a
-countable alphabet for approximation, not a commitment to underlying continuity.
+The resulting structure is finite and combinatorial.  We will show that it
+identifies exactly which rational values are sufficient to encode the domain
+response of the ledger under refinement.  This encoding does not depend on
+sensor geometry, clock rate, or readout mechanism.  It depends only on the
+pattern of distinctions that have been activated. 
+
+The significance of this result is not numerical, but ordinal.  If one
+distinction is recorded before another, that order is not a feature of the
+instrument, the representation, or the encoding scheme.  It is a constraint on
+consistency itself.  Any refinement must preserve the relative order
+of recorded distinctions, and any encoding that reverses this order introduces a
+contradiction.  If
+$e_a\prec e_b$ for some $\Ledger$, then it always does in that ledger, and every 
+measurement in that ledger must reflect that precedence.
 
 \begin{axiom}[The Axiom of Ockham~\cite{ockham1323}]
 \label{ax:ockham}
 \emph{[Order Coherence]}
 Let $E = \{ e_0 \prec e_1 \prec \cdots \prec e_n \}$ be a finite or countable
-ordered set of events recorded in a ledger $\Ledger$, giving rise to precedence
-constraints.  Domain responses are order-respecting in the following sense: for
-any two events $e_a, e_b \in E$,
+ordered set of events recorded in a ledger $\Ledger$.  For any two events
+$e_a, e_b \in E$ and any histogram value $k$,
 \[
-e_a \prec e_b \;\;\Longrightarrow\;\; \forall\, k < k_a, \quad r_b^{(k)} \nprec r_a^{(k)} .
+e_a \prec e_b
+\;\;\Longrightarrow\;\;
+\bigl( r_b^{(k)} \in \Ledger \;\Rightarrow\; r_a^{(k)} \in \Ledger \bigr).
 \]
 
-That is, if an event is recorded as preceding another, then no ledger
-may reverse that order.  Nor may it be assumed that a distinct instrument has
-already recorded an event solely because it has recorded a later one.  Once a
-precedence relation is established in the ledger, it constrains all comparisons.
+That is, if an event is recorded as preceding another, then no ledger may contain
+a record of the later event at a given histogram value unless it also contains
+the corresponding record of the earlier event at that same value. 
 \end{axiom}
+
 
 
 A ledger either cares about the order of events, in which case that order
@@ -2655,6 +2676,15 @@ $\tau(e)$ provide a canonical indexing of events in a ledger by their place in t
 refinement sequence.
 \end{axiom}
 
+The map $\tau$ assigns an ordinal position to each event, not to each recorded
+measurement.  Distinct events may share the same ordinal label when no
+instrument is capable of distinguishing their order.  In this sense, the map
+$\tau$ need not be injective at the level of recorded symbols, even though it is
+injective on the abstract event set.  The appearance of simultaneity therefore
+reflects a limitation of observation rather than a failure of ordering: multiple
+events may occupy the same recorded moment because no measurement
+separates them.
+
 Once temporal duration is understood as the ordinal count of refinements
 between events, there is no mechanism by which two spatially separated
 observers can enforce a global notion of “now.”  Their clocks are simply
@@ -2685,10 +2715,11 @@ recursive: the $(k+1)$ step is constructed from the $k$ steps that
 precede it.
 
 The recursive description of physical reality is meaningful only within the
-finite causal domain of an observer. Each step in such a description corre-
-sponds to a distinct measurement or recorded event. Observation is therefore
-bounded not by the universe itself, but by the observer’s own proper time and
-capacity to distinguish events within it.
+finite causal domain accessible to an observer.  Each step in such a description
+corresponds to a distinct measurement or recorded event.  Observation is
+therefore bounded not by the universe itself, but by the observer’s ability to
+register and distinguish events within a finite record.
+
 
 \begin{axiom}[The Axiom of Planck~\cite{planck1901}]
 \label{ax:planck}
@@ -2711,7 +2742,7 @@ Taken together, these axioms do not describe the behavior of physical systems,
 but the minimal conditions under which measurements may be recorded, compared,
 and refined without contradiction. They place no restrictions on the values
 that instruments may display, nor do they assume that any particular ordering,
-metric, or numerical structure is present a priori. Instead, they constrain the
+metric, or numerical structure is present \emph{a priori}. Instead, they constrain the
 process by which distinctions accumulate in a ledger and limit the inferences
 that may be drawn from those distinctions alone.
 
@@ -2756,23 +2787,26 @@ analysis without assuming more structure than the ledger has yet earned.
 
 \begin{definition}[Refinement Operator]
 \label{def:refinement-operator}
-Let $E$ be the set of events. A \emph{refinement operator} is a map
+Let the set of ledgers be $\mathbb{L}$.
+Let $i$ be an instrument with ledger $\Ledger_t \in \mathbb{L}$ at refinement step
+$t$, equipped with a prediction map $f$ and an associated representation map
+$\tilde\rho$.
+A \emph{refinement operator} is a map
 \[
-\widehat{R} : E \to E
+\widehat{R} : \mathbb{L} \to \mathbb{L}
 \]
-satisfying the following witness condition. For any $e_a \in E$, there exists an
-    instrument $i$, record $r_a = (i,j_a,k_a)$, $r_a \in \Ledger_t$ at step $t$, a prediction map $f$ such that 
-    $\{(j_b,k_b)\} = f(t+1)$ and record $r_b \in \{(i,j_b,k_b+1)\}$ or null otherwise.
-We write $e_b = \widehat{R}(e_a)$ and define $e_b$ as
-any event that meets the following criteria.
+satisfying the following conditions:
 \begin{enumerate}
-\item \textbf{Precedence of Events} $e_a \prec e_b$. The phenomenon asserts $e_b$ must follow $e_a$.
-\item \textbf{Change in Measurement} $j_a \neq j_b$. The symbol on the instrument must change.
-\item \textbf{Identification of an Admissible Record} $r_b$ exists.
-\item \textbf{Precedence of Records} $r_b \notin \Ledger$.  We cannot expect to have
-more $b$'s than $a$'s otherwise a $b$ must have come before $a$ violating the model $e_a \prec e_b$.  
-If $a$ and $b$ have the same value, it may not be possible to refine the ledger to tell which value came first.
-Instruments operate in the presence of noise.
+\item \textbf{Ledger extension:}
+$\Ledger_{t+1} = \widehat{R}\Ledger_t$.
+\item \textbf{Ledger growth:}
+$|\Ledger_{t+1}| = |\Ledger_t| + 1$.
+\item \textbf{Ledger coherence:}
+For the unique element $e \in (\Ledger_{t+1} \setminus \Ledger_t)$,
+there exists $e' \in \Ledger_t$ such that
+\[
+e = f(\tilde\rho(e')).
+\]
 \end{enumerate}
 \end{definition}
 
@@ -2784,22 +2818,34 @@ a ledger can be constructed from a set of measurements.
 There exists a refinement operator under the axioms of measurement.
 \end{proposition}
 \begin{proofsketch}{refinement}
-Fix $e_a \in E$.  By definition of event, choose a witnessing instrument--symbol
-pair $(i,j_a) \in e_a$ with corresponding record $r_a=(i,j_a,k_a)\in \Ledger_a$.
-Assume the experimental ledger continues beyond $\Ledger_a$ so that some later
-event again carries a mark from the same instrument $i$.  Consider
+Let $\Ledger_t$ be a ledger and let $e_a$ be its terminal event.  By definition of
+event, choose a witnessing instrument--symbol pair $(i,j_a) \in e_a$ with
+corresponding record $r_a=(i,j_a,k_a)\in \Ledger_t$.
+
+Assume the experimental ledger continues beyond $\Ledger_t$ so that some later
+event again carries a mark from the same instrument $i$.  Consider the set
 \[
 S := \{ e \in E : e_a \prec e \text{ and } \exists j\ ((i,j)\in e)\}.
 \]
-By local finiteness and discreteness of $(E,\prec)$, $S$ admits a $\prec$-minimal
-element; call it $e_b$.  Define $\widehat{R}(e_a):=e_b$.  Then there exists
-$(i,j_b)\in e_b$ and a record $r_b=(i,j_b,k_b)\in \Ledger_b$ for some
-$\Ledger_a \prec \Ledger_b$, establishing the witness condition.
+By local finiteness and discreteness of $(E,\prec)$, the set $S$ admits a
+$\prec$-minimal element; call it $e_b$.
 
-If $e_a \prec e_c$, the corresponding set $S_c$ of $i$-events after $e_c$ is a
-subset of the $i$-events after $e_a$, so its $\prec$-minimal element cannot occur
-before $\widehat{R}(e_a)$.  Hence $\widehat{R}$ is order-preserving.
+Let $(i,j_b)\in e_b$ be the corresponding symbol, and let
+$r_b=(i,j_b,k_a+1)$ be the associated record.  Define
+\[
+\Ledger_{t+1} := \Ledger_t \cup \{r_b\}.
+\]
+This extension increases the ledger by exactly one record and satisfies the
+coherence condition $r_b = f(\tilde\rho(r_a))$.
+
+Thus, whenever such an $e_b$ exists, a refinement operator
+$\widehat{R}\Ledger_t = \Ledger_{t+1}$ exists.
+
+Order preservation follows immediately: if $e_a \prec e_c$, then the set of
+$i$-events after $e_c$ is a subset of those after $e_a$, so the minimal successor
+chosen after $e_c$ cannot precede the one chosen after $e_a$.
 \end{proofsketch}
+
 
 Thus, we identify the first physical law of measurement: a statement distilled
 from the ledger of observed distinctions.  A law is not an external authority
@@ -2977,60 +3023,30 @@ into the ledger.
 
 \subsection*{Alpha Decay in a Cloud Chamber}
 
-Before turning to cloud chambers, it is helpful to begin with a measurement
-device that most people rely on daily: a household smoke detector. A smoke
-detector does not observe smoke as a continuous substance, nor does it model the
-detailed dynamics of particle motion in air. Instead, it monitors a small
-chamber in which a radioactive source produces a steady pattern of ionization.
-Under ordinary conditions, this ionization supports a stable electrical signal,
-and the device remains silent. Measurement occurs not when nothing happens, but
-when the recorded pattern of discrete electrical events changes.
+Alpha decay sharpens a tension already present throughout this chapter. The
+laws governing the nucleus describe a symmetric space of admissible
+continuations, yet the experimental ledger records a single, irreversible
+history. Prior to decay, all observers agree on the state of the source; after
+decay, they again agree on the outcome. What remains unresolved is how a
+definite, directed record can arise when the governing description admits no
+preferred direction at all. If the law does not select a trajectory, and if no
+instrument can certify one in advance, then directionality cannot be imposed by
+assumption. It must emerge through the same refinement process that resolves
+silence into fact.
 
-Inside the detector, a small radioactive source continuously emits alpha
-particles into the surrounding air. These particles collide with gas molecules,
-ionizing them and producing free charge carriers. Electrodes within the chamber
-collect this charge, establishing a steady electrical current whose magnitude is
-set by the rate of ionization. This process is governed by well-understood
-radiochemistry: alpha decay, ion production, recombination, and charge
-collection. None of these stages is observed in isolation. Each contributes
-discrete electrical effects that together define the internal state of the
-device.
-
-The detector is designed so that this internal activity is tolerated up to a
-well-defined threshold. Under normal conditions, the air in the chamber allows
-ions produced by alpha decay to drift freely between electrodes, sustaining a
-stable current. When smoke enters the chamber, suspended particles intercept and
-neutralize those ions. The air is no longer an effectively continuous medium for
-charge transport; particulate matter interrupts the ion flow, reducing the
-measured current.
-
-Once this reduction exceeds a fixed threshold, the comparator registers a
-transition and the alarm is triggered. The threshold functions as a friction
-condition: ordinary ionization fluctuations are absorbed without consequence,
-but the presence of particulates produces a sustained deviation that forces a
-new, irreversible entry in the device’s internal record.
+The cloud chamber exposes this tension in its most concrete form. The emitted
+alpha particle is described, at the level of law, by a spherically symmetric
+state. Yet the chamber does not record symmetry. It records a sequence of
+localized ionization events, written one at a time into the ledger, that align
+along a narrow track. The question is therefore not why the law is asymmetric,
+but why the record becomes so. Any account that appeals to intrinsic randomness,
+collapse, or hidden selection introduces structure not present in the ledger
+itself. The Rutherford--Mott Effect shows that no such appeal is required: a
+definite direction emerges solely because early recorded distinctions constrain
+later admissible refinements. The symmetry is not broken by the dynamics, but by
+the accumulation of irreversible records under temporal noise.
 
 
-In the low-battery regime, the failure is not a cessation of alpha decay or
-ionization, but a failure of certification. The radioactive source continues to
-produce ionization events, yet the power supply can no longer sustain the signal
-processing required to aggregate those events into a stable voltage reading.
-Individual detections still occur, but there are not enough recorded transitions
-to certify a persistent state \emph{above or below} the alarm threshold.
-
-As a result, the detector may chirp intermittently. These chirps do not indicate
-random behavior in the source, but temporal noise in the record: the ledger lacks
-sufficient accumulated evidence to maintain a definitive measurement state.
-The device oscillates between admissible interpretations because refinement can
-no longer be completed.
-
-The effect arises in the study of alpha particle emission from radioactive
-sources, particularly as observed in cloud chambers. Quantum mechanically, the
-emitted alpha particle is described by a spherically symmetric wavefunction,
-suggesting no preferred direction of motion. Yet when the particle passes through
-a cloud chamber, the observed ionization events align along a narrow, nearly
-straight track. The apparent contradiction is striking: how does a directional
-record emerge from a rotationally symmetric description?
 
 \begin{phenom}{The Rutherford--Mott Effect~\cite{mott1929,rutherford1899}}
 \label{ph:mott}
