@@ -1,7 +1,5 @@
 import Std
 import Mathlib.Data.Fintype.Basic
-import Measurement.Chapter1.Interfaces
-import Measurement.Chapter2.Interfaces
 import Measurement.Chapter2.Definitions
 
 namespace Measurement

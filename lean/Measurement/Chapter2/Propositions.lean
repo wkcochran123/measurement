@@ -1,5 +1,4 @@
 import Std
-import Measurement.Chapter2.Interfaces
 import Measurement.Chapter2.Definitions
 import Measurement.Chapter2.Axioms
 
