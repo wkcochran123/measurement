@@ -4,18 +4,20 @@ namespace Measurement
 
 universe u v w
 
-/-- Poset-like: a type equipped with a precedence relation. -/
-class PosetLike (α : Type u) where
-  prec : α -> α -> Prop
-
-notation:50 a " ≺ " b => PosetLike.prec a b
-
-/-- Ledger-like: a finite ordered record of readings. -/
-class LedgerLike (L : Type u) (R : Type v) where
+/-- Definition 1: Ledger
+-/
+class Ledger (L : Type u) (R : Type v) where
   entries : L -> Array R
 
-/-- Time-series-like: values indexed by a time or index type. -/
-class TimeSeriesLike (S : Type u) (T : Type v) (α : Type w) where
-  get : S -> T -> α
+
+/-- Definition 2: Partially Ordered Set -/
+class Poset (L : Type u) (R : Type v) [Ledger L R] where
+  prec : L -> R -> R -> Prop
+
+notation:50 a " ≺ " b => Poset a b
+
+/-- Definition 3: Time Series -/
+class TimeSeries (S : Type u) (T : Type v) (α : Type w) where
+  get : S -> Nat -> Option α
 
 end Measurement
