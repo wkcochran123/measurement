@@ -18,6 +18,6 @@ notation:50 a " ≺ " b => Poset a b
 
 /-- Definition 3: Time Series -/
 class TimeSeries (S : Type u) (T : Type v) (α : Type w) where
-  get : S -> Nat -> Option α
+  get? : S -> Nat -> Option α
 
 end Measurement

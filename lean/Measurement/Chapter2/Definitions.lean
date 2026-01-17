@@ -1,9 +1,44 @@
 import Std
 import Measurement.Chapter1.Definitions
+import Measurement.Chapter2.Axioms
+import Mathlib.Data.Real.Basic
+import Mathlib.Data.Set.Intervals.Basic
+
 
 namespace Measurement
 
 universe u v
+
+/-- Definition 4: Alphabet -/
+class Alphabet (S : Type u) (T : Type v) (σ : Type w) where
+  get : S -> Nat -> σ
+  index : S -> σ -> Nat
+
+
+/-- Definition 5: Refinement -/
+class Refinement (S: Type u) (T : Type u) where
+  next: S -> T
+
+
+/-- Definition 6: Structure -/
+structure Record where
+  a : Nat
+  b : Nat
+  c : Nat
+
+
+
+/-- A moment at time t: a function (floor t, floor t + 1] -> Real. -/
+abbrev Moment (t : Real) : Type :=
+  { u : Real // u.1 ∈ momentInterval t } -> Real
+
+
+/-- Definition 8: Representation Map-/
+/-- An invertible representational alphabet between symbols and values. -/
+class Representation (σ : Type u) (X : Type v) where
+  encode : X -> σ
+  decode : σ -> X
+
 
 /-- A hash/encoding of values into Nat. No laws yet. -/
 class HashCount (α : Type u) where

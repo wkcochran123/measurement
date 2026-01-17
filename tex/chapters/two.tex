@@ -279,14 +279,14 @@ follows.
 
 \begin{definition}[Refinement~\cite{dirichlet1850}]
 \label{def:refinement}
-A refinement is a transformation of a ledger $\Ledger_t$ that produces another
-ledger $\Ledger_{t+1}$ by incorporating a new recorded distinction. In general,
-\begin{equation}
-\Ledger_{t+1} = R_t \Ledger_t ,
-\end{equation}
-where $R_t$ preserves all previously recorded distinctions.
+Let $X$ be any object that admits successive distinguishable states.
+A \emph{refinement} is an operation
+\[
+R : X \to X
+\]
+that advances the object to a strictly more informative state.
 
-For a sequence of refinements
+For a sequence of refinements on a Ledger, for instance,
 \[
 R = R_t R_{t-1} R_{t-2} \cdots R_{t-k},
 \qquad 0 < k < t,\; k \in \mathbb{N},

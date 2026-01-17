@@ -12,7 +12,7 @@ Axiom 1 (Peano)
 Lean already provides Nat. We name it to align with the text.
 -/
 
-abbrev ω := Nat
+import Measurement.Chapter2.ZFC
 
 
 /-
