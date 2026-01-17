@@ -9,11 +9,8 @@ universe u v w
 /-
 Axiom 1 (Peano)
 ---------------
-Lean already provides Nat. We name it to align with the text.
+The use of ZFC is assumed and included in Definitions.lean.
 -/
-
-import Measurement.Chapter2.ZFC
-
 
 /-
 Axiom 2 (Kolmogorov)

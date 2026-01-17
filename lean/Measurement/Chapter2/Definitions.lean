@@ -1,23 +1,21 @@
 import Std
-import Measurement.Chapter1.Definitions
-import Measurement.Chapter2.Axioms
-import Mathlib.Data.Real.Basic
-import Mathlib.Data.Set.Intervals.Basic
 
+import Measurement.Chapter1.Definitions
+import Measurement.Chapter2.Constructions
 
 namespace Measurement
 
 universe u v
 
 /-- Definition 4: Alphabet -/
-class Alphabet (S : Type u) (T : Type v) (σ : Type w) where
+class Alphabet (S : Type u) (σ : Type v) where
   get : S -> Nat -> σ
   index : S -> σ -> Nat
 
 
 /-- Definition 5: Refinement -/
-class Refinement (S: Type u) (T : Type u) where
-  next: S -> T
+structure Refinement (S: Type u) where
+  refine: S -> S
 
 
 /-- Definition 6: Structure -/
@@ -28,82 +26,81 @@ structure Record where
 
 
 
-/-- A moment at time t: a function (floor t, floor t + 1] -> Real. -/
+/-- Definition 7: Moment -/
 abbrev Moment (t : Real) : Type :=
-  { u : Real // u.1 ∈ momentInterval t } -> Real
+  { u : Real // u ∈ ZFC.unitIocAt t } -> Real
 
 
-/-- Definition 8: Representation Map-/
-/-- An invertible representational alphabet between symbols and values. -/
+/-- Definition 8: Representational Map -/
 class Representation (σ : Type u) (X : Type v) where
   encode : X -> σ
   decode : σ -> X
 
 
-/-- A hash/encoding of values into Nat. No laws yet. -/
-class HashCount (α : Type u) where
-  hash : α -> Nat
-
-/-- Records are instrument-symbol pairs (counting comes later). -/
-class RecordLike (R : Type u) (I : Type v) (sigma : Type w) where
-  instrument : R -> I
-  symbol     : R -> sigma
-
-class RecordOrder (R : Type u) where
-  prec : R -> R -> Prop
-
-/-- Events are finite bundles of records. -/
-class EventLike (E : Type u) (R : outParam (Type v)) where
-  records : E -> Array R
-
-/-- A causal precedence relation on events. -/
-class EventOrder (E : Type u) where
-  prec : E -> E -> Prop
-
-structure RefinementOperator (E : Type u) where
-  refine : E → E
-
-notation "R̂" => RefinementOperator.refine
+/-- Definition 9: Predition Map -/
+class Prediction (X : Type u) (Y : Type v) where
+  predict : X -> Y
 
 
-/-- A concrete record with a count index. -/
-structure Record (I : Type u) (J : Type v) where
-  instrument : I
-  symbol     : J
-  count      : Nat
+/-- Definition 10: Event -/
+structure Event where
+  records : ZFC.FiniteSet Record
 
--- This is your statement: instrument and symbol are HashCount
--- expressed as constraints where you use Record:
-variable {I : Type u} {J : Type v} [HashCount I] [HashCount J]
+/-- Definition 11: Phenomenon -/
+structure Phenomenon where
+  events : ZFC.FiniteSet Event
 
--- And the record itself can be HashCount too:
-def pairNat (a b : Nat) : Nat :=
-  let s := a + b
-  (s * (s + 1)) / 2 + b
+/-- Definition 12: Coarsening map-/
+structure CoarseningMap (σ : Type u) where
+  coarsen : σ -> Option σ
 
-instance {I : Type u} {J : Type v} [HashCount I] [HashCount J] :
-  HashCount (Record I J) where
-  hash r :=
-    pairNat (HashCount.hash r.instrument)
-      (pairNat (HashCount.hash r.symbol) r.count)
+/-- Definition 13: Grid map. -/
+structure GridMap where
+  grid : Nat -> Option Nat
+
+/-- Definition 14: A record coarsening map. -/
+def RecordCoarseningMap (R : Type u) :=
+  R -> Option R
+
+/-- Definition 15: Dense response. -/
+def DenseResponse : Type :=
+  ZFC.Qpos -> Rat
+
+/-- Definition 16: Domain response. -/
+def DomainResponse : Type :=
+  ZFC.Rpos -> Real
+
+/-- Definition 17: History -/
+structure History where
+  events : Array Event
+
+structure RefinementOperator
+    (L : Type u) (R : Type v) (X : Type w) [Ledger L R] where
+  /-- The underlying refinement (Definition 5). -/
+  Rhat : Refinement L
+
+  /-- Prediction map f. -/
+  f : X -> R
+
+  /-- Representation map rhoTilde. -/
+  rhoTilde : R -> X
+
+/-- Growth: refinement adds exactly one new ledger entry. -/
+ledger_growth :
+  forall Lt : L,
+    Ledger.size (Rhat.refine Lt) = Ledger.size Lt + 1
 
 
-/-- An event is a finite array of records. -/
-structure Event (R : Type) where
-  records : Array R
+  /-- Coherence: the new entry is predicted from some prior entry. -/
 
-instance (R) : EventLike (Event R) R where
-  records := Event.records
-
-/-- A ledger is a finite ordered array of records. -/
-structure Ledger (R : Type) where
-  entries : Array R
-
-instance (R) : LedgerLike (Ledger R) R where
-  entries := Ledger.entries
-
-/-- An event-indexing into a ledger. -/
-structure EventIndexing (E : Type u) (L : Type v) where
-  idx : E → Nat
+ledger_coherence :
+  forall Lt : L,
+    exists e : R,
+      Ledger.entry (L := L) (R := R) (Rhat.refine Lt) = some e /\
+      exists i : Nat,
+        i < Ledger.size (L := L) (R := R) Lt /\
+        exists e' : R,
+          Ledger.get (L := L) (R := R) Lt i = some e' /\
+          e = f (rhoTilde e')
 
 end Measurement
