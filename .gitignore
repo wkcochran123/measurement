@@ -10,4 +10,4 @@ tex/appendix
 *loe
 *.log
 *toc
-
+tex/go.sh
