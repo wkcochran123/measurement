@@ -1,8 +1,8 @@
 import Std
-import Entropy.Chapter1.Interfaces
-import Entropy.Chapter2.Interfaces
+import Measurement.Chapter1.Interfaces
+import Measurement.Chapter2.Interfaces
 
-namespace Entropy
+namespace Measurement
 
 universe u v
 
@@ -46,4 +46,4 @@ instance (R) : LedgerLike (Ledger R) R where
 structure EventIndexing (E : Type u) (L : Type v) where
   idx : E → Nat
 
-end Entropy
+end Measurement

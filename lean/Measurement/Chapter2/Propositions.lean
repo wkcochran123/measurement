@@ -1,9 +1,9 @@
 import Std
-import Entropy.Chapter2.Interfaces
-import Entropy.Chapter2.Definitions
-import Entropy.Chapter2.Axioms
+import Measurement.Chapter2.Interfaces
+import Measurement.Chapter2.Definitions
+import Measurement.Chapter2.Axioms
 
-namespace Entropy
+namespace Measurement
 
 open Classical
 noncomputable section
@@ -56,4 +56,4 @@ theorem proposition1_refinement_operator_exists
   intro e
   exact (refineFun_spec e).1
 end
-end Entropy
+end Measurement

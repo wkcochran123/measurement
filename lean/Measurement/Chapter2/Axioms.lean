@@ -1,10 +1,10 @@
 import Std
 import Mathlib.Data.Fintype.Basic
-import Entropy.Chapter1.Interfaces
-import Entropy.Chapter2.Interfaces
-import Entropy.Chapter2.Definitions
+import Measurement.Chapter1.Interfaces
+import Measurement.Chapter2.Interfaces
+import Measurement.Chapter2.Definitions
 
-namespace Entropy
+namespace Measurement
 
 universe u v w
 
@@ -117,4 +117,4 @@ axiom cantor_embedding
 
 
 
-end Entropy
+end Measurement

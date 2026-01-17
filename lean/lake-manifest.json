@@ -5,7 +5,7 @@
    "type": "git",
    "subDir": null,
    "scope": "leanprover-community",
-   "rev": "c2ac49c165a4c4075c4716ea2deb90b594b6900a",
+   "rev": "2451869ab4d7f71828a89edf3745ecdf21cf3c79",
    "name": "mathlib",
    "manifestFile": "lake-manifest.json",
    "inputRev": "master",
@@ -91,5 +91,5 @@
    "inputRev": "v4.27.0-rc1",
    "inherited": true,
    "configFile": "lakefile.toml"}],
- "name": "entropy",
+ "name": "measurement",
  "lakeDir": ".lake"}

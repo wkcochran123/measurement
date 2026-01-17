@@ -1,9 +1,9 @@
-name = "entropy"
+name = "measurement"
 version = "0.1.0"
-defaultTargets = ["Entropy"]
+defaultTargets = ["Measurement"]
 
 [[lean_lib]]
-name = "Entropy"
+name = "Measurement"
 srcDir = "."
 
 [[require]]

@@ -1,4 +1,4 @@
-import Entropy
+import Measurement
 
 def main : IO Unit :=
   IO.println s!"Hello, {hello}!"

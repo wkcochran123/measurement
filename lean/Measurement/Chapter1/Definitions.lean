@@ -1,6 +1,6 @@
 import Std
 
-namespace Entropy
+namespace Measurement
 
 universe u v w
 
@@ -18,4 +18,4 @@ class LedgerLike (L : Type u) (R : Type v) where
 class TimeSeriesLike (S : Type u) (T : Type v) (α : Type w) where
   get : S -> T -> α
 
-end Entropy
+end Measurement
