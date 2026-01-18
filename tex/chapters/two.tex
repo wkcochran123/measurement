@@ -2821,35 +2821,46 @@ a ledger can be constructed from a set of measurements.
 
 \begin{proposition}[Ledger Coherence Under Extension]
 \label{prop:refinement}
-There exists a refinement operator under the axioms of measurement.
+If the domain response exists, then a refinement operator can be constructed.
 \end{proposition}
-\begin{proofsketch}{refinement}
-Let $\Ledger_t$ be a ledger and let $e_a$ be its terminal event.  By definition of
-event, choose a witnessing instrument--symbol pair $(i,j_a) \in e_a$ with
-corresponding record $r_a=(i,j_a,k_a)\in \Ledger_t$.
-
-Assume the experimental ledger continues beyond $\Ledger_t$ so that some later
-event again carries a mark from the same instrument $i$.  Consider the set
+\begin{proofsketch}
+Assume that a domain response $\psi(t)$ exists at refinement time $t$.
+By Chapter~2, the existence of $\psi(t)$ permits the construction of a
+Bayes predictor by composition with the induced inverse representational map,
 \[
-S := \{ e \in E : e_a \prec e \text{ and } \exists j\ ((i,j)\in e)\}.
+b(t) := \tilde\rho^* \circ \psi(t),
 \]
-By local finiteness and discreteness of $(E,\prec)$, the set $S$ admits a
-$\prec$-minimal element; call it $e_b$.
+where $\tilde\rho^*$ maps domain responses to symbols in the indexed
+measurement alphabet.
 
-Let $(i,j_b)\in e_b$ be the corresponding symbol, and let
-$r_b=(i,j_b,k_a+1)$ be the associated record.  Define
+Let $L_t$ be the experimental ledger at time $t$, and let
+$r_t = (r_t.i, r_t.j, r_t.k)$ denote its final record.
+Using the predicted symbol $b(t)$, construct a successor record by walking
+the ledger: keep the instrument label fixed, insert the predicted symbol,
+and set the count to one greater than the largest count previously appearing
+in $L_t$ for the same instrument--symbol pair. Denote this record by
+$r_{t+1}$.
+
+Define the refined ledger by appending exactly this record,
 \[
-\Ledger_{t+1} := \Ledger_t \cup \{r_b\}.
+RL_t := [L_t, r_{t+1}].
 \]
-This extension increases the ledger by exactly one record and satisfies the
-coherence condition $r_b = f(\tilde\rho(r_a))$.
+By construction, the ledger difference satisfies
+\[
+RL_t - L_t = \{ r_{t+1} \},
+\]
+which is a singleton event and therefore a valid event in the sense of
+Chapter~1.
 
-Thus, whenever such an $e_b$ exists, a refinement operator
-$\widehat{R}\Ledger_t = \Ledger_{t+1}$ exists.
+Define the refinement operator $R_t$ by $R_t(L_t) := RL_t$.
+This operator appends exactly one new record, is determined uniquely by
+$\psi(t)$, and produces an event that is recovered by subtracting the
+original ledger from its refinement.
 
-Order preservation follows immediately: if $e_a \prec e_c$, then the set of
-$i$-events after $e_c$ is a subset of those after $e_a$, so the minimal successor
-chosen after $e_c$ cannot precede the one chosen after $e_a$.
+Therefore, whenever the domain response $\psi(t)$ exists, a refinement
+operator exists at time $t$. This establishes the claimed sufficiency and
+provides the operational content formerly attributed to the law of spline
+sufficiency.
 \end{proofsketch}
 
 

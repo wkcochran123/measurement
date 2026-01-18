@@ -1,5 +1,6 @@
 import Std
 import Mathlib.Data.Fintype.Basic
+import Measurement.Chapter1.Definitions
 import Measurement.Chapter2.Definitions
 
 namespace Measurement
@@ -14,100 +15,76 @@ The use of ZFC is assumed and included in Definitions.lean.
 
 /-
 Axiom 2 (Kolmogorov)
--------------------
-Each instrument has a finite alphabet of symbols.
-In the "pure traits" design, the alphabet is a type `Symbol i` attached
-to each instrument value `i`, and finiteness is given by `Fintype`.
 -/
 
--- Instruments are a type; we do not assume a global Symbol type.
-axiom Instrument : Type u
-
--- The symbol alphabet depends on the instrument value.
-axiom Symbol : Instrument → Type v
-
--- Finiteness of each instrument's alphabet.
-axiom symbolFintype : (i : Instrument) → Fintype (Symbol i)
+axiom axiom_kolmogorov :
+  ∀ i : Nat, ∃ n : Nat,
+    (∀ r : Record, r.a = i → r.b < n)
 
 
+/--
+Axiom 3 (Causal Sets)
 
-/-
-Axiom (Ockham) [Order Coherence]
---------------------------------
-If e₁ ≺ e₂ as events, then for every instrument i, the record response
-attached to e₂ for i cannot precede the record response attached to e₁ for i.
+The warning of unused variable appears to be an interesting
+quirk that should be investigated by those who want to have
+their mind blown about nothing at all.
 -/
-axiom ockham_order_coherence
-  {E : Type u} {I : Type v} {R : Type w}
-  [EventOrder E] [RecordOrder R]
-  (resp : E → I → R) :
-  ∀ {e₁ e₂ : E},
-    EventOrder.prec e₁ e₂ →
-    ∀ i : I, ¬ RecordOrder.prec (resp e₂ i) (resp e₁ i)
+axiom axiom_causal_sets :
+  ∃ (L : Type u) (R : Type v) (led : Ledger L R),
+    letI : Ledger L R := led
+    ∃ (pos : Poset L R) (meas : R -> Nat),
+      (∀ (Lt : L) {a b c : R},
+          Poset.prec (L := L) (R := R) Lt a b ->
+          Poset.prec (L := L) (R := R) Lt b c ->
+          Poset.prec (L := L) (R := R) Lt a c) ∧
+      (∀ (Lt : L) (a : R),
+          ¬ Poset.prec (L := L) (R := R) Lt a a) ∧
+      (∀ (Lt : L) (a b : R),
+          Poset.prec (L := L) (R := R) Lt a b ->
+            Set.Finite { e : R |
+              Poset.prec (L := L) (R := R) Lt a e ∧
+              Poset.prec (L := L) (R := R) Lt e b }) ∧
+      (∀ e : R, 0 < meas e)
 
 
 
-
-
-/-
-Axiom 4 (Causal Sets) [Events are Discrete]
-
-The distinguishability relations among events admit a representation
-as a locally finite partially ordered set (E, ≺), where
-
-1) e ≺ f means e is incorporated before f in the record,
-2) (E, ≺) is acyclic and transitive,
-3) for any a ≺ b, the interval { e | a ≺ e ∧ e ≺ b } is finite, and
-4) every event causes at least one measurement: |e| > 0.
+/--
+Axiom 4 (Ockham)
 -/
+axiom axiom_ockham_counts :
+  forall (L : Type u) (led : Ledger L Record),
+    letI : Ledger L Record := led
+    forall (pos : Poset L Record),
+      forall (Lt : L) (r s : Record),
+        pos.prec Lt r s -> r.c < s.c
 
-/-- A notion of "cardinality" (e.g. number of measurements in an event). -/
-class HasCard (E : Type u) where
-  card : E → Nat
+
+
+/--
+Axiom 5 (Cantor)
+-/
+axiom axiom_cantor :
+  ∀ (L : Type u) (R : Type v) (led : Ledger L R),
+    letI : Ledger L R := led
+    ∀ (pos : Poset L R) (Lt : L),
+      ∃ (tau : R -> Nat),
+        Function.Injective tau ∧
+        (∀ e f : R,
+          (pos.prec Lt e f) ↔ (tau e < tau f))
 
 
 
 
 /--
-Convenience: if an event is presented as a finite bundle of records,
-we can take its "cardinality" to be the number of records it contains.
+Axiom 6 (Planck): Observations are finite and immutable.
 -/
-instance {E : Type u} {R : Type v} [EventLike E R] : HasCard E where
-  card e := (EventLike.records e).size
-
-/--
-A causal set structure on events:
-- `prec` is the causal precedence (record incorporation order),
-- transitive and acyclic,
-- locally finite (finite open intervals).
--/
-class CausalSet (E : Type u) extends EventOrder E where
-  trans : Transitive prec
-  irrefl : Irreflexive prec
-  locallyFinite :
-    ∀ {a b : E}, prec a b → Finite {e : E // prec a e ∧ prec e b}
-
-/--
-Every event causes at least one measurement on one instrument: |e| > 0.
-(We keep this as an axiom, since it is a physical requirement, not definitional.)
--/
-axiom causal_nonempty
-  {E : Type u} [HasCard E] [CausalSet E] :
-  ∀ e : E, HasCard.card e > 0
-
-
-/-
-Axiom 5 (Cantor) [Time is an Ordinal Labeling]
-
-Events map to the natural numbers such that
-
-if e ≺ f then t(e) < t(f).
-
--/
-
-axiom cantor_embedding
-  (E : Type u) [EventOrder E] :
-  ∃ t : E → Nat, ∀ {e f : E}, EventOrder.prec e f → t e < t f
+axiom axiom_planck :
+  ∀ (L : Type u) (R : Type v) (led : Ledger L R),
+    letI : Ledger L R := led
+    ∀ (pos : Poset L R) (meas : R -> Nat),
+      ∃ (Eps : Nat),
+        0 < Eps ∧
+        (∀ e : R, 0 < meas e ∧ meas e ≤ Eps)
 
 
 

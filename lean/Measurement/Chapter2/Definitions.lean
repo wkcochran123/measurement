@@ -74,6 +74,10 @@ def DomainResponse : Type :=
 structure History where
   events : Array Event
 
+
+/-- Definition 18: Refinement Operator -/
+
+
 structure RefinementOperator
     (L : Type u) (R : Type v) (X : Type w) [Ledger L R] where
   /-- The underlying refinement (Definition 5). -/
@@ -85,22 +89,17 @@ structure RefinementOperator
   /-- Representation map rhoTilde. -/
   rhoTilde : R -> X
 
-/-- Growth: refinement adds exactly one new ledger entry. -/
-ledger_growth :
-  forall Lt : L,
-    Ledger.size (Rhat.refine Lt) = Ledger.size Lt + 1
+  /-- Growth: refinement adds exactly one new ledger entry. -/
+  ledger_growth :
+    forall Lt : L,
+      Ledger.size (L := L) (R := R) (Rhat.refine Lt) =
+        Ledger.size (L := L) (R := R) Lt + 1
+
+  ledger_coherence :
+    forall Lt : L,
+      exists e : R,
+        Ledger.entry (L := L) (R := R) (Rhat.refine Lt) = some e
 
 
-  /-- Coherence: the new entry is predicted from some prior entry. -/
-
-ledger_coherence :
-  forall Lt : L,
-    exists e : R,
-      Ledger.entry (L := L) (R := R) (Rhat.refine Lt) = some e /\
-      exists i : Nat,
-        i < Ledger.size (L := L) (R := R) Lt /\
-        exists e' : R,
-          Ledger.get (L := L) (R := R) Lt i = some e' /\
-          e = f (rhoTilde e')
 
 end Measurement

@@ -57,6 +57,9 @@ class Ledger (L : Type u) (R : Type v) where
             | none   => none
       go_get Lt n
 
+  push : L -> R -> L
+
+
 
 
 
