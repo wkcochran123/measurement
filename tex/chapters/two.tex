@@ -1,3 +1,219 @@
+\chapter{Instruments}
+\label{ch:instruments}
+
+Measurement does not begin with records or histories, but with instruments. An
+instrument specifies the distinctions an observer is capable of making and the
+expectations under which those distinctions are produced. Before a ledger may
+be formed or refinement discussed, the instrument itself must be defined as a
+static object, independent of time or accumulation. Without an instrument,
+there is nothing that can be said to have been measured, recorded, or compared.
+
+An instrument encodes the current understanding of a phenomenon. It reflects
+what distinctions are believed to matter and which variations are to be treated
+as irrelevant. This understanding may be incomplete or even incorrect, but it
+is always explicit in the structure of the instrument. The instrument therefore
+represents a commitment: it declares in advance what counts as an observable
+difference.
+
+In this sense, an instrument is deterministic. If the history of the world were
+replayed exactly as before, the instrument would produce the same reading. The
+phrase ``exactly as before'' is operational rather than metaphysical. It refers
+to any initial orientation or configuration of the instrument that yields the
+same response when presented with the same triggering conditions. Determinism
+here is a property of construction, not of the underlying phenomenon.
+
+For the purposes of this work, an instrument is composed of two conceptual
+components: a sensor and a reading. The sensor is the part of the instrument
+that physically interacts with the phenomenon. It is constructed using
+well-established engineering practices and calibrated against known standards.
+The reading is the symbolic output presented to the observer, drawn from a
+finite and well-defined set of possible indications.
+
+The separation between sensor and reading is not merely descriptive. It encodes
+a causal ordering. The sensor is triggered first, responding to the phenomenon,
+and only afterward is a reading produced. This ordering is irreversible: a
+reading cannot occur without a prior sensor interaction. In this way, the
+instrument itself embodies an arrow of time, even before any notion of history
+or record is introduced.
+
+Returning to the speedometer in an automobile, the sensor measures rotational motion
+of the drivetrain, while the reading displays a discrete marking on a dial or a
+digital display. If the same physical motion occurs again under the same
+conditions, the speedometer produces the same reading. The instrument does not
+store past speeds; it merely reacts according to its design.
+
+A radar gun illustrates the same structure more explicitly. The sensor emits a
+signal and receives a reflected response, while the reading reports a discrete
+speed value. The emission and reception occur before the display is updated.
+Even though the underlying physical interaction involves continuous quantities,
+the instrument reports only a finite symbol. The arrow of time is enforced by
+the sequence sensor--then--reading, not by any assumption about temporal
+continuity.
+
+In both cases, the instrument is built with a model in mind. The speedometer
+assumes a relationship between rotation and linear velocity. The radar gun
+assumes a relationship between frequency shift and relative motion. These models
+are not inferred at the moment of measurement; they are compiled into the
+instrument. The instrument therefore carries a predictor implicitly, even when
+no explicit prediction is displayed.
+
+This predictor need not be probabilistic. It may be a fixed rule determined by
+geometry, mechanics, or electronics. What matters is that the instrument is
+designed to map admissible physical interactions to symbols in a consistent way.
+The predictor expresses what the instrument expects to observe next, given its
+construction and calibration.
+
+In this chapter we formalize instruments as symbolic and predictive structures.
+We do not assume that the predictor is correct, optimal, or even well-matched to
+the phenomenon. Those questions belong to later chapters. Here we require only
+that the instrument specifies a finite set of symbols and a rule for producing
+one of those symbols in response to interaction.
+
+The purpose of this chapter is therefore foundational. By identifying the
+minimal structure required for an instrument to exist, we isolate what must be
+in place before measurement can proceed at all. Ledgers, refinement, causality,
+and probability will be introduced later. They all depend on instruments, but
+instruments depend only on distinguishability and construction.
+
+
+\section{Symbol Alphabets}
+\label{sec:alphabets}
+
+Every instrument communicates through a finite set of distinguishable symbols.
+These symbols represent the total expressive capacity of the instrument: no
+measurement performed by the instrument may produce information outside this
+alphabet.  Whatever structure the underlying phenomenon may possess, the
+instrument can report only distinctions drawn from this fixed symbolic set.
+Any claim that cannot be expressed in the instrument’s alphabet is, by
+definition, unmeasurable by that instrument.
+
+The restriction to a finite alphabet is not a limitation imposed for
+convenience, but a structural requirement.  An instrument that could emit an
+unbounded or continuously varying symbol would be incapable of calibration,
+comparison, or repetition.  Finiteness ensures that every possible output of the
+instrument can, in principle, be listed, indexed, and exhaustively compared
+against past outputs.  It is this finiteness that makes measurement stable under
+repetition.
+
+A symbol alphabet enforces a discrete notion of distinguishability.  Two outputs
+are either the same symbol or they are not; there is no intermediate symbolic
+state.  Any apparent continuity in measurement arises from refinement of the
+instrument or reinterpretation of its outputs, not from the alphabet itself.
+By fixing the alphabet in advance, the instrument rules out the introduction of
+unrecordable intermediate structure.
+
+Formally, a symbol alphabet is a finite, totally ordered, enumerable set.  The
+total order provides a canonical way to compare symbols, allowing one to speak
+of one reading being greater than, less than, or equal to another.  This order
+is intrinsic to the alphabet and does not depend on time, frequency of use, or
+any statistical interpretation.
+
+Enumerability supplies the mechanism by which symbols may be indexed.  Each
+symbol is assigned a unique ordinal position within the alphabet, enabling
+random access, iteration, and successor operations.  These operations are
+purely structural and do not presuppose any notion of temporal sequence or
+measurement history.  They are properties of the alphabet as a combinatorial
+object.
+
+The combination of finiteness, ordering, and enumerability ensures that symbol
+alphabets may be manipulated without ambiguity.  Symbols may be stored,
+compared, transmitted, and reconstructed exactly.  This is essential for later
+constructions in which records and ledgers will depend on symbol indices rather
+than on symbolic labels themselves.
+
+It is important to emphasize that symbol alphabets carry no probabilistic or
+temporal meaning on their own.  A symbol does not represent an event having
+occurred at a particular time, nor does it encode likelihood or frequency.  Such
+interpretations arise only after symbols are placed into records and histories.
+At this stage, the alphabet is simply the grammar of what the instrument can
+say.
+
+Different instruments may employ different symbol alphabets even when designed
+to interact with the same phenomenon.  One instrument may report coarse-grained
+symbols, while another reports finer distinctions.  Neither alphabet is more
+fundamental than the other; each reflects a design choice about which
+distinctions are to be made explicit.
+
+By isolating symbol alphabets as independent, static objects, we separate the
+problem of representation from the problems of prediction and refinement.  The
+alphabet fixes the space of possible readings in advance.  How those readings
+are produced, ordered in time, or updated in light of new information will be
+addressed in subsequent sections.
+
+
+\section{Predictors}
+\label{sec:predictors}
+
+An instrument is not defined solely by what it can say, but also by what it
+expects to say next.  This expectation is captured by a predictor: a function
+that maps admissible contextual information to a symbol in the instrument's
+alphabet.  The predictor represents the internal logic or model under which the
+instrument operates.
+
+Importantly, the predictor need not be correct.  It need only be compatible with
+the instrument's alphabet.  Predictors are not empirical claims about the world,
+but structural components of the instrument itself.  Their existence reflects
+the fact that instruments are constructed with specific behaviors and responses
+in mind.
+
+\section{Instruments}
+\label{sec:instruments}
+
+An instrument is defined as a pair consisting of a finite symbol alphabet and a
+predictor compatible with that alphabet.  This definition is intentionally
+minimal: it includes exactly the structure required for an instrument to produce
+a sequence of symbols and nothing more.
+
+At this stage, instruments are static objects.  They do not evolve, they do not
+refine, and they do not accumulate records.  The instrument merely specifies
+what symbols may be produced and how the next symbol is anticipated, independent
+of any ledger or history.
+
+\section{Phenomena and Models}
+\label{sec:phenomena}
+
+Instruments are constructed to interact with phenomena.  A phenomenon specifies
+the constraints under which events may occur and measurements may be taken.  It
+encodes the admissible behaviors of the system being measured, without selecting
+which behavior is realized.
+
+Each phenomenon carries a model.  This model need not be complete or correct, but
+it provides a structured description against which instruments are designed.
+The model associated with a phenomenon determines which predictors are
+meaningful and which instruments may be said to measure the phenomenon at all.
+
+\section{Modeled and Bayesian Instruments}
+\label{sec:instrument_types}
+
+Instruments may be classified by the origin of their predictors.  A modeled
+instrument has a predictor fixed by construction, derived directly from a
+physical or geometric model embedded in the instrument's design.  Such
+instruments implement their expectations rather than infer them.
+
+A Bayesian instrument, by contrast, updates its predictor through inference over
+admissible possibilities.  Its expectations are revised in light of new
+information, subject to consistency with the underlying phenomenon.  This
+distinction concerns only the source of the predictor and does not yet invoke
+records, probabilities, or refinement.
+
+\section{Compatibility}
+\label{sec:compatibility}
+
+An instrument is compatible with a phenomenon if its predictor respects the
+constraints imposed by the phenomenon's model.  Compatibility does not require
+accuracy, only admissibility: the instrument must not predict symbols that are
+inconsistent with the phenomenon it is intended to measure.
+
+Different instruments may be compatible with the same phenomenon while employing
+different alphabets or predictors.  This multiplicity reflects the fact that
+measurement depends on representational choices rather than unique physical
+descriptions.  Questions of comparison and consistency are deferred until
+ledgers and refinement are introduced.
+
+
+
+
+
 \chapter{The Experimental Ledger}
 \label{chap:experimental}
 
@@ -7,212 +223,28 @@ reading is recorded. Nothing more is required.
 Consider the speedometer introduced earlier. As the car moves along the road, the
 instrument performs a simple physical task: it registers recurring, distinguishable
 changes. One counter advances each time the wheel completes a full rotation, while a
-second counter advances each time the clock ticks, each counter a \emph{record} of 
-events: wheels turning and clocks ticking.  The device is not reporting a
-measurement as a number. It is recording that a new, countable mark of change has
-occurred, and that these marks arrive in a definite order. When the dashboard later
-displays a symbol such as ``100 km/h,'' that display is an interpretation layered on top
-of the steady, repeatable evidence of motion and time. The purpose of the example is
-not the speed’s value, but the motivation it provides: any stable conclusion we draw
-later can only stand on distinctions that exist because they were noticed, marked,
-and re-marked in the record itself, never on properties assumed before the marks
-were made.
+second counter advances each time the clock ticks. Each counter is a record of events:
+wheels turning and clocks ticking. What the device preserves is not speed itself, but
+the fact that certain changes occurred and that they occurred in a definite order.
 
-This simple example shows how two familiar rhythms of measurement, a full turn of
-the wheel and the ticking of a clock, can be paired to produce a single dashboard
-symbol we call speed. That symbol is not special because of how it looks, but because
-many different devices, generating their own sets of repeatable marks, can display a
-matching speed symbol even when the underlying marks differ. One instrument may tally
-rotations and ticks mechanically, another may sample motion with radio pulses, yet
-both arrive at a speed symbol we can treat as reliably comparable because it was built
-only after the marks that made the comparison possible were accumulated. The ledger
-can grow in many ways, but the ability to compare those accumulated marks
-is what allows us to speak about speed without adding new assumptions
-ahead of the trace itself.
+At no point does the instrument measure a quantity in the abstract sense of assigning
+a number to a property. It merely notes that another mark has been made. The familiar
+dashboard display, showing a symbol such as “100 km/h,” is an interpretation layered on
+top of this accumulated record. It is a convention applied after the fact, translating
+patterns in counted events into a statement we have agreed to call a measurement.
 
-\section{The Axioms of Mathematic}
-\label{se:mathaxiom}
+Seen this way, the stability of any later conclusion rests entirely on what was actually
+distinguished and recorded. Nothing enters the account except what was noticed,
+marked, and re-marked as the process unfolded. The record does not support inferences
+drawn from properties assumed in advance; it supports only those distinctions that
+exist because the instrument, and not the theory, made them.
 
-The starting point of this framework is methodological rather than
-ontological.  We do not assume anything about the substance of physical
-reality.  We assume that the outcomes of measurement are finite or
-countable collections of distinguishable results recorded in time.
-This is standard across probability theory and information theory:
-Shannon formalized information as distinguishable symbols drawn from a
-finite or countable alphabet \cite{shannon1948} and Kolmogorov showed
-that empirical outcomes can be represented as elements of measurable
-sets within standard set theory~\cite{kolmogorov1933}.  
-In this view, observations produce measurements,
-measurements produce data, and data are mathematical objects.
-Everything that follows concerns the admissible transformations among
-such records.
+What, then, is it that gives rise to a new mark in the first place? If the record is the
+permanent trace, there must be some circumstance that causes the trace to be made.
+Before speaking about numbers, laws, or dynamics, we must isolate the minimal notion
+that connects change in the world to change in the ledger. That notion is the event.
 
-Instruments do not produce numbers; they produce symbols. A measurement
-device distinguishes among a finite or countable set of possible outcomes and
-records which outcome occurred. Any numerical interpretation assigned to these
-outcomes is secondary and inferential. At the level of the experimental ledger,
-only distinguishability matters: that one symbol was recorded rather than
-another.
-
-We say that the \emph{universe of instruments} is the set of instruments $I$ that
-are mutually consistent.  Mutual consistency means that the records produced by
-these instruments may be compared and refined without contradiction: there
-exists at least one history in which all their recorded distinctions
-can coexist.  This assumption does not assert completeness, accuracy, or
-agreement in detail.  It asserts only that the instruments participate in a
-shared experimental domain, so that their ledgers may be aligned through
-coarsening and refinement.  Instruments that cannot be made mutually consistent
-do not describe different aspects of the same phenomenon; they describe
-different universes of discourse.
-
-For this reason, all measurement outcomes are treated uniformly as elements of
-an alphabet. The alphabet does not encode magnitude, units, or physical meaning.
-It encodes only the set of outcomes an instrument can distinguish. Numerical
-values, scales, and continuous representations arise only when additional
-structure is imposed on this alphabet for the purposes of modeling or
-prediction.
-
-\begin{definition}[Alphabet]
-Let $\Sigma$ denote a finite set of distinguishable marks produced by an
-instrument. Each measurement made by the instrument corresponds to the
-selection of one element of $\Sigma$. The alphabet $\Sigma$ specifies which
-symbols may be recorded or displayed, but does not by itself assign numerical
-or semantic meaning to those symbols.
-\end{definition}
-
-Elements of $\Sigma$ are symbols, not numerical values, and carry no intrinsic
-ordering or metric structure. For purposes of reference only, there exists a
-function $\eta : \Sigma \rightarrow \mathbb{N}$ that enumerates the symbols. This
-enumeration imposes no physical meaning and serves solely to index recorded
-distinctions.
- 
-Historically, this notion of a measurement alphabet follows Shannon's separation
-of information into distinguishable symbols, independent of their semantic or
-physical interpretation.
-
-It is important to distinguish symbols from the events they indicate. A symbol records which
-outcome was distinguished by an instrument, but it does not uniquely identify
-the act of distinction itself. The same symbol may be produced by many distinct
-events. Symbols therefore stand in a one-to-many relation with events.
-
-\begin{phenom}{The Pascal Effect~\cite{pascal1654}}
-\label{ph:pascal}
-
-\PhStatement
-Every measurement consists of the selection of a single symbol from a finite or
-countable alphabet. Once selected and recorded, this symbol conditions all
-subsequent admissible reasoning.
-
-\PhOrigin
-In his correspondence on games of chance, Pascal recognized that uncertainty is
-resolved not by accessing hidden magnitudes but by committing to discrete
-outcomes. Reasoning proceeds by conditioning on the result of such selections,
-rather than by appealing to an underlying continuum.
-
-\PhObservation
-An instrument distinguishes among possible outcomes and records exactly one of
-them. The act of measurement therefore produces a symbol, not a value. Repeated
-measurements may yield the same symbol, but each occurrence constitutes a
-distinct event in the ledger.
-
-\PhConstraint
-No admissible description may depend on distinctions that were not selected and
-recorded. Reasoning may condition on the symbol produced by a measurement, but
-may not appeal to unobserved alternatives.
-
-\PhConsequence
-Probability, expectation, and information arise as secondary structures defined
-over repeated symbol selections. The fundamental informational act is not
-numerical evaluation but discrete choice. All higher mathematical structure is
-constructed by aggregating and comparing these selections.
-\end{phenom}
-
-Phenomenon~\ref{ph:pascal} identifies the atomic informational act underlying all
-measurement: the selection of a symbol from an alphabet.  An event does not
-reveal a preexisting value, but commits the experimental history to one of
-several distinguishable alternatives.  Once made, this commitment cannot be
-reversed, and all subsequent admissible reasoning must condition on it.
-Repetition does not amplify the content of an individual selection; it merely
-introduces additional instances of the same symbol at different locations in
-the ledger.
-
-All structure is generated by the accumulation and comparison of
-discrete symbol selections recorded in the ledger.
-Such a ledger forms the only durable evidence available to the observer.  It is
-the structure from which ordinal time emerges, the substrate on which
-refinement acts.  To
-develop the theory, we therefore need a precise object that captures this
-accumulating, non-erasable, finitely generated sequence of distinctions.
-We now build the experimental ledger mathematically.
-
-\subsection{Mathematics is the Language of Measurement}
-
-Mathematics enters this framework not as an external interpretive layer
-but as the minimal language in which measurement can be expressed. A
-record of observation is a finite collection of distinguishable outcomes,
-and the relations among those outcomes---order, refinement, exclusion,
-and compatibility---require a precise symbolic setting. The purpose of this
-subsection is therefore methodological: to state explicitly the mathematical
-rules under which every subsequent construction is carried out.
-
-The axioms of Zermelo-Fraenkel
-Set Theory with the Axiom of Choice (ZFC)~\cite{fraenkel1922,jech2003,zermelo1908}
-provide the machinery for forming sets of records and events, for defining relations
-among them, and for building the tensor algebra in which their dense
-responses will appear. Within this system, counting becomes the first
-and most fundamental operation: to measure is to distinguish, and to
-distinguish is to enumerate the outcomes. 
-The natural numbers supply the
-ordinal scaffold upon which every causal record is indexed.
-
-With this in mind, we begin by stating the formal principle that makes
-counting available as a tool of measurement.
-
-\begin{axiom}[The Axiom of Peano~\cite{fraenkel1922,zermelo1908}]
-\label{ax:peano}
-\emph{[Counting as the Tool of Information]}
-All reasoning in this work is confined to the framework of ZFC.
-Every object---sets, relations, functions, and tensors---is
-constructible within that system, and every statement is interpretable
-as a theorem or definition of ZFC.  No additional logical principles
-are assumed beyond those required for standard analysis and algebra.
-
-Formally,
-\[
-\mathrm{Measurement} \;\subseteq\; \mathrm{Mathematics} \;\subseteq\; \mathrm{ZFC} \;\subseteq\; \mathrm{Counting}.
-\]
-Thus, the language of mathematics is taken to be the entire ontology of
-the theory: the physical statements that follow are expressions of
-relationships among countable sets of distinguishable events, each
-derivable within ordinary mathematical logic.
-\end{axiom}
-
-Axiom~\ref{ax:peano} supplies the successor structure that every 
-record inherits: refinements arrive one at a time, each indexed by the next
-natural number.  
-
-
-The alphabet is not a number system. It is a scheme for showing and sharing
-marks that stand for readings. When the dashboard shows ``100 km/h,'' it is not
-presenting the abstract number 100. It is presenting one entry from a limited
-catalog of possible display marks. A radar device also selects its marks from
-its own limited catalog. Because each instrument can only choose from a fixed,
-finite collection of display marks, the pair of instruments together defines a
-larger, still finite catalog of everything they could ever show. Only after
-those marks exist, and are agreed upon, can we later attach numerical meaning
-to them.
-
-The ledger of readings---\emph{i.e.} the ordered list of markings---grows one entry at a time. 
-Each entry appears because a
-recognizable physical change happened again: a wheel turned, a clock ticked, a display
-moved to its next mark. Those marks can be written down in a list, and because the list
-has an order, it can also be counted. Counting is not decoration here, it is the reason
-the whole story works. If you could not tally how often the wheel signaled a turn, or
-how often the clock signaled a tick, you could never justify calling any later speed
-readout a reliable thing to compare across different instruments. The record of a single
-reading is therefore not a bare number, but a labeled entry that says which instrument
-noticed the change, which mark it selected, and how many times that same mark has appeared
-before in that same list.
+\section{Events}
 
 An \emph{event} is the circumstance that makes an
 instrument register a new mark. When a car accelerates, the digits change because the
@@ -310,6 +342,242 @@ establishes ordinal evidence through append-only refinement, and (iii) supplies
 the only constraints from which physical law may later be inferred.
 A record is therefore not an assumption about the world, but the minimal
 structure that survives the act of distinguishing something.
+
+This simple example shows how two familiar rhythms of measurement, a full turn of
+the wheel and the ticking of a clock, can be paired to produce a single dashboard
+symbol we call speed. That symbol is not special because of how it looks, but because
+many different devices, generating their own sets of repeatable marks, can display a
+matching speed symbol even when the underlying marks differ. One instrument may tally
+rotations and ticks mechanically, another may sample motion with radio pulses, yet
+both arrive at a speed symbol we can treat as reliably comparable because it was built
+only after the marks that made the comparison possible were accumulated. The ledger
+can grow in many ways, but the ability to compare those accumulated marks
+is what allows us to speak about speed without adding new assumptions
+ahead of the trace itself.
+
+The same pattern appears whenever measurements are abstracted into theory.
+Instruments produce finite or countable records; symbols are introduced to make
+those records comparable; and only then are mathematical structures placed on
+top of the record to support inference. What mathematics contributes is not new
+observations, but disciplined rules for transforming and relating what has
+already been recorded.
+
+\section{The Axioms of Mathematics}
+\label{se:mathaxiom}
+
+The starting point of this framework is methodological rather than
+ontological.  We do not assume anything about the substance of physical
+reality.  We assume that the outcomes of measurement are finite or
+countable collections of distinguishable results recorded in time.
+This is standard across probability theory and information theory:
+Shannon formalized information as distinguishable symbols drawn from a
+finite or countable alphabet \cite{shannon1948} and Kolmogorov showed
+that empirical outcomes can be represented as elements of measurable
+sets within standard set theory~\cite{kolmogorov1933}.  
+In this view, observations produce measurements,
+measurements produce data, and data are mathematical objects.
+Everything that follows concerns the admissible transformations among
+such records.
+
+Instruments do not produce numbers; they produce symbols. A measurement
+device distinguishes among a finite or countable set of possible outcomes and
+records which outcome occurred. Any numerical interpretation assigned to these
+outcomes is secondary and inferential. At the level of the experimental ledger,
+only distinguishability matters: that one symbol was recorded rather than
+another.
+
+Once multiple instruments are considered, an additional constraint enters. For
+their records to be meaningfully compared, the symbols they produce must be
+capable of being placed into a common account without contradiction. This
+requirement does not concern how the symbols are interpreted, but whether the
+distinctions they represent can coexist within a single history.
+
+We say that the \emph{universe of instruments} is the set of instruments $I$ that
+are mutually consistent.  Mutual consistency means that the records produced by
+these instruments may be compared and refined without contradiction: there
+exists at least one history in which all their recorded distinctions
+can coexist.  This assumption does not assert completeness, accuracy, or
+agreement in detail.  It asserts only that the instruments participate in a
+shared experimental domain, so that their ledgers may be aligned through
+coarsening and refinement.  Instruments that cannot be made mutually consistent
+do not describe different aspects of the same phenomenon; they describe
+different universes of discourse.
+
+For this reason, all measurement outcomes are treated uniformly as elements of
+an alphabet. The alphabet does not encode magnitude, units, or physical meaning.
+It encodes only the set of outcomes an instrument can distinguish. Numerical
+values, scales, and continuous representations arise only when additional
+structure is imposed on this alphabet for the purposes of modeling or
+prediction.
+
+\begin{definition}[Alphabet]
+Let $\Sigma_i$ denote a finite set of distinguishable marks produced by an
+instrument $i$. Each measurement made by the instrument corresponds to the
+selection of one element of $\Sigma_i$. The alphabet $\Sigma_i$ specifies which
+symbols may be recorded or displayed, but does not by itself assign numerical
+or semantic meaning to those symbols.
+\end{definition}
+
+The alphabet is not a number system. It is a scheme for showing and sharing
+marks that stand for readings. When the dashboard shows ``100 km/h,'' it is not
+presenting the abstract number 100.  It is merely a symbol that we understand
+to mean the magnitude of the velocity.
+It is presenting one entry from a limited
+catalog of possible display marks. A radar device also selects its marks from
+its own limited catalog. Because each instrument can only choose from a fixed,
+finite collection of display marks, the pair of instruments together defines a
+larger, still finite catalog of everything they could ever show. Only after
+those marks exist, and are agreed upon, can we later attach numerical meaning
+to them.
+
+Elements of $\Sigma$ are symbols, not numerical values, and carry no intrinsic
+ordering or metric structure. For purposes of reference only, there exists a
+function $\eta : \Sigma \rightarrow \mathbb{N}$ that enumerates the symbols. This
+enumeration imposes no physical meaning and serves solely to index recorded
+distinctions.
+
+\begin{definition}[Alphabet Enumeration]
+    Let $\Sigma$ be a finite set of symbols. An \emph{enumeration} of $\Sigma$ is an
+    injective function $\eta : \Sigma \to \mathbb{N}$. Two symbols
+    $\sigma_1, \sigma_2 \in \Sigma$ are distinct if and only if
+    $\eta(\sigma_1) \neq \eta(\sigma_2)$. No additional structure is implied or
+    assumed.
+\end{definition}
+
+The existence of such an enumeration follows from finiteness alone and does not
+depend on any ordering intrinsic to the symbols themselves. Different choices of
+$\eta$ correspond to different labels for the same recorded distinctions and are
+observationally equivalent.
+Historically, this notion of a measurement alphabet follows Shannon's separation
+of information into distinguishable symbols, independent of their semantic or
+physical interpretation.
+
+It is important to distinguish symbols from the events they indicate. A symbol
+indicates which outcome an instrument has distinguished, but it does not identify
+the particular act of distinction itself. What is preserved in the ledger is the
+mark, not the circumstance that caused it.
+
+The same symbol may therefore be produced by many distinct events. Repeated wheel
+rotations, successive clock ticks, or separate radar returns may all leave
+indistinguishable marks in the record, even though each arose from a different
+physical situation. Symbols thus stand in a one-to-many relation with events: a
+single mark may correspond to many possible underlying causes.
+
+This asymmetry is not a defect of measurement but a structural feature of it. The
+ledger necessarily collapses diverse circumstances into a finite set of
+distinguishable outcomes. It is this collapse, rather than any ambiguity in the
+events themselves, that gives rise to the phenomena explored next.
+
+
+\begin{phenom}{The Pascal Effect~\cite{pascal1654}}
+\label{ph:pascal}
+
+\PhStatement
+Every measurement consists of the selection of a single symbol from a finite or
+countable alphabet. Once selected and recorded, this symbol conditions all
+subsequent admissible reasoning.
+
+\PhOrigin
+In his correspondence on games of chance, Pascal recognized that uncertainty is
+resolved not by accessing hidden magnitudes but by committing to discrete
+outcomes. Reasoning proceeds by conditioning on the result of such selections,
+rather than by appealing to an underlying continuum.
+
+\PhObservation
+An instrument distinguishes among possible outcomes and records exactly one of
+them. The act of measurement therefore produces a symbol, not a value. Repeated
+measurements may yield the same symbol, but each occurrence constitutes a
+distinct event in the ledger.
+
+\PhConstraint
+No admissible description may depend on distinctions that were not selected and
+recorded. Reasoning may condition on the symbol produced by a measurement, but
+may not appeal to unobserved alternatives.
+
+\PhConsequence
+Probability, expectation, and information arise as secondary structures defined
+over repeated symbol selections. The fundamental informational act is not
+numerical evaluation but discrete choice. All higher mathematics is
+constructed by aggregating and comparing these selections.
+\end{phenom}
+
+Phenomenon~\ref{ph:pascal} identifies the atomic informational act underlying all
+measurement: the selection of a symbol from an alphabet.  An event does not
+reveal a preexisting value, but commits the experimental history to one of
+several distinguishable alternatives.  Once made, this commitment cannot be
+reversed, and all subsequent admissible reasoning must condition on it.
+Repetition does not amplify the content of an individual selection; it merely
+introduces additional instances of the same symbol at different locations in
+the ledger.
+
+All structure is generated by the accumulation and comparison of
+discrete symbol selections.
+Such a ledger forms the only durable evidence available to the observer.  It is
+the structure from which ordinal time emerges, the substrate on which
+refinement acts.  To
+develop the theory, we therefore need a precise object that captures this
+accumulating, non-erasable, finitely generated sequence of distinctions.
+We now build the experimental ledger mathematically.
+
+\subsection{Mathematics is the Language of Measurement}
+
+Mathematics enters this framework not as an external interpretive layer
+but as the minimal language in which measurement can be expressed. A
+record of observation is a finite collection of distinguishable outcomes,
+and the relations among those outcomes---order, refinement, exclusion,
+and compatibility---require a precise symbolic setting. The purpose of this
+subsection is to state explicitly the mathematical
+rules under which every subsequent construction is carried out.
+
+The axioms of Zermelo-Fraenkel
+Set Theory with the Axiom of Choice (ZFC)~\cite{fraenkel1922,jech2003,zermelo1908}
+provide the machinery for forming sets of records and events, for defining relations
+among them, and for building the tensor algebra in which their dense
+responses will appear. Within this system, counting becomes the first
+and most fundamental operation: to measure is to distinguish, and to
+distinguish is to enumerate the outcomes. 
+The natural numbers supply the
+ordinal scaffold upon which every causal record is indexed.
+
+With this in mind, we begin by stating the formal principle that makes
+counting available as a tool of measurement.
+
+\begin{axiom}[The Axiom of Peano~\cite{fraenkel1922,zermelo1908}]
+\label{ax:peano}
+\emph{[Counting as the Tool of Information]}
+All reasoning in this work is confined to the framework of ZFC.
+Every object---sets, relations, functions, and tensors---is
+constructible within that system, and every statement is interpretable
+as a theorem or definition of ZFC.  No additional logical principles
+are assumed beyond those required for standard analysis and algebra.
+
+Formally,
+\[
+\mathrm{Measurement} \;\subseteq\; \mathrm{Mathematics} \;\subseteq\; \mathrm{ZFC} \;\subseteq\; \mathrm{Counting}.
+\]
+Thus, the language of mathematics is taken to be the entire ontology of
+the theory: the physical statements that follow are expressions of
+relationships among countable sets of distinguishable events, each
+derivable within ordinary mathematical logic.
+\end{axiom}
+
+Axiom~\ref{ax:peano} supplies the successor structure that every 
+record inherits: refinements arrive one at a time, each indexed by the next
+natural number.  
+
+
+The ledger of readings---\emph{i.e.} the ordered list of markings---grows one entry at a time. 
+Each entry appears because a
+recognizable physical change happened again: a wheel turned, a clock ticked, a display
+moved to its next mark. Those marks can be written down in a list, and because the list
+has an order, it can also be counted. Counting is not decoration here, it is the reason
+the whole story works. If you could not tally how often the wheel signaled a turn, or
+how often the clock signaled a tick, you could never justify calling any later speed
+readout a reliable thing to compare across different instruments. The record of a single
+reading is therefore not a bare number, but a labeled entry that says which instrument
+noticed the change, which mark it selected, and how many times that same mark has appeared
+before in that same list.
+
 
 \section{Observation}
 \label{sec:observation}
@@ -685,38 +953,6 @@ The histogram records the
 multiplicity of observed outcomes, from which an ordering of a phenomenon across
 measurements may be derived.  Its existence is not established by fact or truth,
 but by assumption: that measurements return outcomes which may be counted.
-
-\begin{phenom}{The Peano Effect~\cite{peano1889}}
-\label{ph:peano}
-
-\PhStatement
-Measurement admits existence by counting.  An outcome is taken to exist if and
-only if it increments the experimental ledger.
-
-\PhOrigin
-Peano grounded arithmetic in axioms that assume the existence of the natural
-numbers rather than deriving them from prior structure.  In doing so, he
-separated existence from construction and made counting primitive.
-
-\PhObservation
-Experimental ledgers consist of repeated distinctions returned by finite
-instruments.  Each  measurement produces a symbol from a finite
-alphabet and increments the corresponding entry in the histogram.  No further
-structure is observed at the moment of measurement.
-
-\PhConstraint
-Only unit increments of the histogram are admissible.  No fractional,
-negative, or compensating updates may be introduced.  Any description that
-requires unrecorded subdivisions or intermediate refinements exceeds what the
-measurement admits.
-
-\PhConsequence
-Once counting is assumed, existence follows axiomatically.  Time, continuity,
-and geometric structure are not primitives but representations imposed on the
-evolution of the histogram.  Physical description is therefore constrained
-first by what may be counted, and only second by how those counts are modeled.
-\end{phenom}
-
 
 Thus, since time is not primal, time must arise as an 
 ordering relation on refinements: a phenomenon to be measured. The observer may 
@@ -2359,39 +2595,6 @@ restriction, and inference, even as theories evolve.  This effect does not
 describe the world as it is, but the world as it must be spoken about once
 measurement has occurred.
 
-
-\begin{phenom}{The Euclid Effect~\cite{euclid300bc}}
-\label{ph:object-permanence}
-
-\PhStatement
-Once a distinction has been recorded in the experimental ledger, it cannot be
-removed by any extension. All subsequent measurements must remain
-consistent with the accumulated record.
-
-\PhOrigin
-Euclid’s geometric constructions, both physical and hypothetical, proceed by the 
-irreversible introduction of
-relations that must be preserved throughout all subsequent steps. Once a point,
-line, or relation is constructed, it remains available to every later argument
-and cannot be erased without contradiction.
-
-\PhObservation
-Each measurement refines the history by excluding incompatible
-outcomes. Because refinements cannot be undone, later observations are
-constrained to respect all previously recorded distinctions. The ledger
-therefore accumulates stable patterns of correlated events and causal relations.
-
-\PhConstraint
-No extension of the experimental ledger may negate, erase, or reverse
-a prior refinement. Any description that allows recorded distinctions to
-disappear violates consistency of the ledger.
-
-\PhConsequence
-The persistence of recorded distinctions gives rise to the appearance of
-enduring objects. What is perceived as permanence is not a primitive
-feature of the world, but the invariance of certain refinements across all
-extensions of the record.
-\end{phenom}
 
 Together, Axioms~\ref{ax:ockham} and~\ref{ax:causal} define the informational 
 content of the observable world: a causal set with no unrecorded structure and 
