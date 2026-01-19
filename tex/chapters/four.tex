@@ -1,764 +1,956 @@
-\chapter{The Continuum of Experiment}
-\label{chap:continuum}
+\chapter{The Algebra of Events}
+\label{chap:algebra}
 
-The fundamental data of this framework are discrete: a ledger of
-distinguishable events ordered by refinement.  Yet many of the tools used to
-describe coherence, comparison, and extrapolation rely on continuous
-structure—curves, interpolants, and differentiable functions.  This presents a
-tension between the discrete nature of the record and the continuous nature of
-the explanations constructed from it.
+Measurements allow comparison of material values of phenomena. 
+If two observers
+measure the same phenomenon, then their recorded values must be comparable, no
+matter the mechanism by which those measurements were obtained.
 
-The resolution is not to assume a continuum \emph{a priori}.  Instead, the continuum
-arises from the informational requirements imposed by the ledger itself.  It is
-not a background space in which events occur but a representational device that
-permits admissible histories to be compared, merged, and extended without
-introducing unrecorded distinctions.  It is the smooth shadow cast by the
-requirement that discrete histories contain no informational gaps.
+A car accelerates, and three different instruments respond. The speedometer needle
+moves, the radar gun updates its readout, and the GPS velocity estimate changes.
+These instruments rely on different physical mechanisms, different models, and
+different internal clocks. Yet they all register a change in speed at roughly the
+same time. This agreement, and nothing more, is what we mean by comparability.
 
-In Chapter~\ref{chap:phenomena}, a \emph{phenomenon} was defined as the ordered union
-of the silent intervals separating distinguishable events.  To represent these
-intervals in a manner consistent with the axioms, one must specify how such
-silences are continued analytically without asserting structure absent from the
-ledger.  The event imposes boundary data; the silence imposes minimality.  The
-resulting continuum is therefore a piecewise–polynomial structure with global
-$C^2$ compatibility, the most refined representation that remains faithful to
-the observational content of the ledger.
+Comparability is not a relation between instruments taken pairwise, nor is it a
+statement about shared internal dynamics. It is a property of their records.
+Two ledgers are comparable when there exists a third ledger to which both may be
+coarsened without contradiction. In the present example, the coarse ledger
+records only that the car’s speed changed, without committing to how that change
+was detected or which internal transitions produced the mark.
 
-This continuum is not posited.  It is constructed from the informational
-limitations inherent in the record.
+Each instrument refines this coarse description in its own way. The speedometer
+records wheel rotations filtered through mechanical linkages and damping. The
+radar gun records Doppler shifts accumulated over reflected electromagnetic
+pulses. The GPS receiver infers velocity from timing differences across satellite
+signals and relativistic corrections. None of these refinements agree in detail,
+and none need to. What matters is that each admits a projection onto the same
+coarse event: the driver pressed the accelerator pedal.
 
-\section{The Emergent Continuum}
-\label{sec:emergent-continuum}
+Simultaneity enters only at this level. The three instruments do not record their
+updates at the same instant, nor do they agree on a precise ordering of internal
+events. Mechanical compliance in bushings and bearings, signal propagation
+delays, and electromagnetic reaction forces governed by Newton’s third law all
+introduce temporal noise. These effects ensure that exact coincidence is neither
+expected nor meaningful. Instead, simultaneity is the assertion that the recorded
+refinements lie close enough in each ledger that no additional distinctions are
+required to align them.
 
-A classical presentation begins with a smooth background and places observations
-within it.  The informational framework reverses this order: it begins with the
-ledger and derives smooth structure only where the ledger is silent.  The
-continuum emerges precisely where the observer lacks the resolution to specify
-anything else.
+Thus, to say that the measurements are simultaneous is to say that their
+respective records may be identified with the same coarse event without forcing
+a contradiction. The comparison is made after the fact, by examining how far
+apart the marks appear in each ledger. If that separation is bounded, the
+measurements may be treated as witnessing the same occurrence. Simultaneity is
+therefore not a primitive temporal notion, but a constraint on how distinct
+records may be consistently related.
 
-\subsection{The Moment as Analytic Shadow}
-\label{subsec:moment-shadow}
+\section{Simultaneity}
+We can now state simultaneity in operational terms. Consider three ledgers,
+corresponding to a speedometer, a radar gun, and a GPS receiver. Each ledger
+contains its own set of events, generated by distinct mechanisms and subject to
+independent sources of temporal noise. No two ledgers agree pointwise in time,
+and no global ordering is presumed. Simultaneity arises only through the ability
+to relate these records without contradiction.
 
-Consider two successive events $e_i \prec e_{i+1}$.  The ledger records no
-further distinctions within this interval.  No refinement occurs, and no new
-structure is committed.  The representational task is to continue the history
-across this interval without attributing unmeasured information to it.
+The first correspondence is kinematic---a truth we live by. The GPS and radar gun ledgers align
+because both encode change in distance over time. The GPS infers velocity from
+changes in position relative to orbiting clocks, while the radar gun infers it
+from Doppler shifts of reflected photons. Although the physical mechanisms are
+entirely different, both ledgers refine a common coarse description: the car’s
+velocity changed.
 
-While the underlying truth between events may be analytic, such detail is not
-admissible for a finite observer.  To specify higher--order structure absent
-from the record would violate the Axiom of Ockham.  The admissible surrogate is
-therefore the minimal analytic continuation consistent with the boundary data
-provided by the events themselves.
+The second correspondence is mechanical---facts that are unassailable. The speedometer 
+ledger aligns with the
+radar gun ledger because the acceleration of the car is conveyed through friction
+at the tires and, depending on conditions, through gravitational interaction
+with the road surface. Wheel rotations are mechanically coupled to the vehicle’s
+body panels, which in turn scatter the photons measured by the radar gun. The
+matching here is not abstract, but causal: the same force that accelerates the
+car produces distinguishable marks in both ledgers.
 
-Definition~\ref{def:moment} identifies a \emph{moment} as precisely this
-surrogate: the projection of the unobserved interval onto the simplest analytic
-form consistent with its endpoints.  The Laws of Measurement determine that this
-minimal analytic continuation is a polynomial segment, and minimality forces the
-use of cubic polynomials.  Such functions are analytic on their interiors yet
-carry only the finite degrees of freedom permitted by the ledger.
+The third correspondence is indirect but essential, and it is not made by the
+instruments themselves.  It is made by the observer.  The speedometer and GPS
+ledgers may be aligned even without direct physical interaction, because the
+observer identifies both with a third record: the markings on their watch.
+Once the observer associates the radar gun ledger with a coarse temporal event
+on the watch, and likewise associates the GPS ledger with that same temporal
+marker, the radar and GPS ledgers become comparable.  The same act of
+identification aligns the speedometer ledger with the watch, and comparability
+is inherited transitively through the observer’s comparison.
 
-A moment is thus the analytic shadow of the interval: smooth where the record is
-silent and constrained entirely by what the record does not forbid.
+This correspondence does not arise from any shared mechanism among the
+instruments, nor from the dynamics of the vehicle itself.  The car plays no
+special role beyond providing a setting in which the observer happens to be a
+passenger.  What enforces comparability is ledger consistency under refinement:
+distinct instruments, when anchored to a common temporal record, may be aligned
+without ever interacting with one another.
 
-\subsection{The Phenomenon as Ordered Union}
-\label{subsec:phenomenon-union}
+These three operations are sufficient. Simultaneity does not require a shared
+clock, a global time parameter, or instantaneous coordination. It requires only
+that each ledger admit a refinement or coarsening that identifies the same coarse
+event, and that these identifications be mutually consistent. In this sense,
+simultaneity is not an additional structure imposed on events, but a property of
+how multiple records can be jointly reconciled.
 
-A single moment represents the admissible surrogate for the silence between two
-events.  A \emph{phenomenon} is the ordered union of such surrogates.
+The discussion of simultaneity implicitly assumes more than coincidence in
+recorded order. To say that measurements are simultaneous is to say that they
+can be compared without contradiction. This comparability does not arise from
+shared mechanisms or synchronized clocks, but from the existence of a common
+description to which the records may be related.
 
-If $E = \{e_1 \prec e_2 \prec \cdots \prec e_n\}$ is a chain of events, the
-associated phenomenon $\Phi$ is the union of the intervals
-$M(e_k, e_{k+1})$.  Each moment is internally analytic, but the union is not
-necessarily globally smooth.  Each event supplies boundary data at which the
-observer's information changes.
+In this sense, comparability marks the transition from recorded refinement to
+phenomenal structure. When two or more ledgers are comparable, there exists a
+coarse description under which their respective refinements may be identified
+as referring to the same occurrence. The nature of that occurrence has not yet
+been specified; only its admissibility is asserted. This observation motivates
+the introduction of admissible events.
 
-The construction of the continuum is the process of gluing these analytic
-segments together at their event--boundaries in a manner that preserves the
-informational content of the ledger and introduces no new distinguishable
-features.
 
-\subsection{The {$C^2$} Constraint}
-\label{subsec:C2-constraint}
+\subsection{Admissible Events}
 
-The smoothness required at event boundaries is determined by distinguishability.
-A break in the value of a function or its lower--order derivatives constitutes a
-new feature that could, in principle, be observed.  Since no such additional
-distinctions appear in the ledger, they cannot appear in the constructed
-continuum.
+The discussion of simultaneity and comparability points to a common underlying
+requirement. When multiple ledgers are said to record the same occurrence, there
+must exist a description under which those records can be reconciled without
+contradiction. This requirement does not assert that such a description is known
+in advance, nor that it is uniquely realized. It asserts only that comparison is
+possible.
 
-In particular, the admissible interpolant must be continuous in value, first
-derivative, and second derivative at every event.  These conditions eliminate
-all discontinuities that would correspond to unrecorded refinements.
+We therefore introduce the notion of an \emph{admissible event}. An admissible
+event is not a primitive object in time, nor a moment shared by all observers.
+It is a phenomenal configuration whose existence is implied by the ability to
+compare distinct records. An event is admissible if there exists at least one
+coarse description under which the refinements recorded in multiple ledgers may
+be identified as referring to the same occurrence.
 
-The emergent continuum is therefore globally $C^2$, the minimal smoothness level
-consistent with the observational content of the ledger.
+Admissibility is a consistency condition, not a claim of observation. An
+admissible event need not appear explicitly in any single ledger, and it need
+not be recorded by all instruments. It exists only insofar as it can support
+mutually consistent refinements. If no such description exists, the records
+cannot be compared without introducing unrecorded assumptions, and no event is
+admissible.
 
-\subsection{The Free Variable of the Spline}
-\label{subsec:free-variable}
+This definition deliberately avoids assigning temporal location, causal
+direction, or mechanism to events. Those structures may be introduced later, but
+they are not required for admissibility. At this stage, an event is nothing more
+than a minimal anchor for comparison: a condition whose existence permits
+distinct ledgers to be related without contradiction.
 
-Once the $C^2$ constraints are satisfied at the event boundaries, the cubic
-polynomial on each interval is nearly determined.  Exactly one degree of freedom
-remains: the constant third derivative on that interval, identified as the free
-parameter of information.
-
-This parameter expresses the residual freedom permitted by the absence of
-refinements.  Each moment contributes one such free variable, and the collection
-of all of them forms the integrable $C^2$ space of admissible continuations.
-
-The continuum remains a constructed surrogate: smooth on intervals where the
-ledger is silent and precisely articulated where the ledger provides
-distinguishable data.
-
-\section{The Anchoring of History}
-\label{sec:anchoring}
-
-The continuum described in Section~\ref{sec:emergent-continuum} is a space of
-admissible interpolants: smooth shadows connecting one event to the next.  To
-obtain a specific history, this shadow must be constrained by the discrete data
-recorded in the ledger.  These constraints are supplied by \emph{anchor points},
-the events at which the observer has committed to a distinguishable value.
-
-Anchors do not determine how the history behaves between events.  Rather, they
-identify the locations where all admissible histories must agree.  The continuum
-between anchors is free to take any form that is consistent with these
-constraints and with the minimality requirements of the axioms.
-
-\subsection{Anchor Points}
-\label{subsec:anchor-points}
-
-Anchors serve as the interface between the discrete ledger and the constructed
-continuum.  They record the values that every admissible history must honor.
-
-\begin{definition}[Anchor Points]
-A finite set of anchor points is the collection of recorded events at which
-admissible histories must coincide.  Two histories $\psi$ and $\phi$ are said to
-share the same anchor set if they assign identical distinguishable values to
-each event in this set.
+\begin{definition}[Admissible Event]
+\label{def:admissible-event}
+Let $p$ be a phenomenon and let $\{\Ledger_i\}_{i \in I_p}$ denote the ledgers of
+instruments capable of measuring $p$.  An event $e$ is said to be
+\emph{admissible} for $p$ if there exists at least one ledger $\Ledger_i$ in which
+$e$ may be appended by refinement without introducing a contradiction with the
+recorded distinctions in $\Ledger_i$.
 \end{definition}
 
-Anchors supply two structural constraints:
+Admissible events therefore occupy an intermediate role between raw records and
+phenomenal models. They do not arise from physical law alone, nor from individual
+measurements in isolation. They arise from the requirement that multiple records
+be jointly intelligible. In this sense, admissible events are not assumed by the
+theory; they are forced by the practice of measurement itself.
 
-\begin{enumerate}
-    \item \textbf{Fidelity.}  
-    They fix the value of the interpolant at the recorded events.
+\subsection{Correlance}
 
-    \item \textbf{Compatibility.}  
-    They impose the smoothness conditions of Section~\ref{subsec:C2-constraint},
-    ensuring that no unrecorded distinguishable feature is introduced at an
-    anchor.
-\end{enumerate}
+The Monty Hall problem entered popular culture not as a theorem, but as a minor
+television ritual~\cite{selvin1975}.  A contestant stands before three closed doors.  Behind one
+is a prize; behind the others, goats.  The contestant selects a door.  The host,
+who knows where the prize is hidden, opens one of the remaining doors to reveal
+a goat, and then offers the contestant a choice: remain with the original door
+or switch to the other unopened one.
 
-\subsection{Recursive Construction of the Record}
-\label{subsec:recursive-construction}
+The puzzle is famous because the correct strategy appears to violate common
+sense.  Switching doors improves the chance of winning, even though only one
+door has been eliminated.  Decades of explanations have framed this result as a
+lesson in conditional probability, and the problem is now a staple of Bayesian
+reasoning.
 
-The experimental record does not arise as a complete object.  It is accumulated
-incrementally, one distinction at a time.  If $S_n$ denotes the partial record
-given by the first $n$ anchors, the addition of a new event $e_{n+1}$ enlarges
-the record to
-\[
-    S_{n+1} = S_n \cup \{e_{n+1}\}.
-\]
+For our purposes, the interest of the Monty Hall problem lies elsewhere.  The
+essential feature is not the numerical value of any probability, but the way
+distinct records of the same game are permitted to be combined.
 
-This update is not a rule of evolution; it is an informational refinement.  The
-new anchor provides additional boundary data that every admissible history must
-now satisfy.  Between anchors, the interpolant adjusts according to the minimal
-analytic continuation of Section~\ref{subsec:moment-shadow}.
+The contestant's notebook records only what is directly observed: the initial
+choice, the door opened by the host, and the symbol revealed.  The host's
+notebook records additional structure: the placement of the prize and the rule
+governing which door may be opened.  These two ledgers are not identical, nor do
+they contain the same information.  Nevertheless, in the standard formulation
+of the game, they are understood to describe the same trial.
 
-The recursive nature of this accumulation reflects only the way information is
-recorded.  It does not assume or impose any causal mechanism beyond the ordering
-of admissible refinements.
+This shared understanding is not automatic.  It relies on the existence of at
+least one way to interpret both records as refinements of a single underlying
+occurrence.  The contestant may not know where the prize is, but the host's
+action is constrained by that hidden fact.  Because the host is forbidden from
+opening the prize door, the observation that a goat is revealed is not neutral.
+It restricts which phenomenal configurations remain admissible.
 
-\subsection{Uniqueness Along a Single Record}
-\label{subsec:single-record}
+Now consider a slight alteration of the story.  Suppose the host follows no fixed
+rule and opens a door at random among those not chosen by the contestant.  The
+contestant’s recorded observations may be identical: a goat is revealed and a
+switch is offered.  What has changed is not the ledger entry, but its
+interpretation.  The same observation no longer supports the same inference,
+because it is no longer guaranteed to be compatible with the host’s record under
+a single phenomenal description.  Without a shared rule governing the host’s
+action, the two ledgers cannot be aligned consistently, and the apparent
+evidence loses its force.
 
-When a single experimental record is considered in isolation, the ordering of
-its anchors determines a linear refinement structure.  For such a record, the
-constraints provided by the anchors select a unique admissible continuation up
-to the free variables of the minimal interpolant.
+Nothing probabilistic has changed.  What has changed is whether the two ledgers
+can be jointly embedded into a common event without contradiction.  In the
+first case they can; in the second they cannot without introducing an
+unrecorded assumption about the host's behavior.
 
-\begin{phenomenon}[The Laplace Effect]
-Under the axioms of measurement, a single experimental record admits a unique
-sequence of admissible refinements consistent with its anchors.  Relative to
-this record, each extension appears uniquely determined by its predecessors.
-\end{phenomenon}
+This distinction motivates the notion of correlance.  Two records may be
+individually admissible and yet fail to describe the same phenomenon.  Joint
+inference is permitted only when a shared admissible event exists that is
+consistent with both ledgers.  The Monty Hall problem is not, at its core, a
+paradox of probability.  It is a demonstration that interpretation depends on
+the structure of admissible events.
 
-This phenomenon reflects only the internal structure of a single record.  When
-multiple records are considered simultaneously, admissible histories are governed
-instead by the compatibility conditions of
-Section~\ref{sec:compatibility}, and uniqueness need not hold.
+We now formalize the notion of correlance.
+Correlance expresses when two records may be understood as referring to the same
+phenomenal occurrence. It does not assert a causal mechanism, a temporal order,
+or a shared instrument. It asserts only that the records can be reconciled
+without contradiction.
 
-\section{The Experimental Record as a Count of Counts}
-\label{sec:count-of-counts}
+Two ledgers are said to be \emph{correlant} if there exists at least one
+admissible event for the phenomenon under study that is consistent with both
+records. In this case, each ledger may be viewed as a refinement of a common
+phenomenal configuration, even if the refinements differ in detail, ordering, or
+resolution. Correlance therefore depends on the existence of a shared admissible
+event, not on agreement between the ledgers themselves.
 
-The continuum constructed in Section~\ref{sec:anchoring} is determined by the
-anchor points of the ledger.  We now describe the ledger itself.  The
-informational framework treats a measurement not as the assignment of a real
-number, but as the recording of a distinguishable outcome.  Physical
-instruments do not output elements of $\mathbb{R}$; they output finite
-increments, ticks, and tallies.  Every observation is therefore a count.
+Conversely, two ledgers are \emph{uncorrelant} if no admissible event exists with
+which both records are consistent. In this case, no coarsening can reconcile the
+records without introducing unrecorded assumptions. The absence of correlance
+does not indicate error or contradiction within either ledger; it indicates only
+that the records do not participate in a common phenomenal description.
 
-Let $\Sigma = \{c_1,\dots,c_M\}$ denote the finite set of distinguishable
-outcomes available to an observer.\footnote{This alphabet is determined by the
-observer's resolving power and may differ between observers.}  Each recorded
-event selects exactly one element of $\Sigma$.
+Correlance is a relational property of records, not a property of events. It may
+hold between ledgers that differ widely in mechanism, precision, and temporal
+structure. It may also fail even when records are individually consistent and
+well formed. In this sense, correlance marks the boundary between joint
+interpretability and independent description.
 
-\subsection{The Histogram of History}
-\label{subsec:histogram}
+This definition deliberately avoids probabilistic language. Correlance does not
+measure the strength of association, nor does it quantify uncertainty. It is a
+binary condition expressing whether joint refinement is admissible at all.
+Quantitative notions of dependence, when they appear, will be introduced later
+as derived constructs built atop this minimal foundation.
 
-At ordinal rank $n$, the experimental record consists of the $n$ outcomes
-recorded so far.  These outcomes may be summarized by the histogram
-\[
-    \psi_n =
-    \begin{pmatrix}
-        k_1 \\
-        k_2 \\
-        \vdots \\
-        k_M
-    \end{pmatrix},
-\]
-where $k_i$ is the number of times outcome $c_i$ has been recorded.  This vector
-is the complete informational state of the record.  It contains no hidden
-variables, no unmeasured parameters, and no continuous structure.  It is a
-\emph{count of counts}.
+\begin{definition}[Correlant Records]
+\label{def:correlant}
+Let $p$ be a phenomenon and let $\Ledger_i$ and $\Ledger_j$ be two ledgers
+measuring $p$. The ledgers are said to be \emph{correlant} if there exists an
+admissible event $e$ for $p$ such that both $\Ledger_i$ and $\Ledger_j$ admit
+refinements consistent with $e$.
+\end{definition}
 
-Two records with the same histogram encode identical observational content,
-regardless of the order in which their outcomes were registered.
+\begin{definition}[Uncorrelant Records]
+\label{def:uncorrelant}
+Let $p$ be a phenomenon and let $\Ledger_i$ and $\Ledger_j$ be two ledgers
+measuring $p$. The ledgers are said to be \emph{uncorrelant} if no admissible
+event exists for $p$ with which both records are consistent.
+\end{definition}
+The definitions above mark the point at which the framework becomes predictive.
+Correlance and uncorrelance do not describe physical mechanisms; they delimit the
+domain in which joint interpretation is even meaningful.  Once this boundary is
+fixed, entire classes of inference are either licensed or forbidden without
+appeal to dynamics or probability.
 
-\subsection{The Laws of the Ledger}
-\label{subsec:laws-ledger}
+In particular, uncorrelance identifies situations in which no refinement of the
+experimental ledger can supply a shared anchor for comparison.  In such cases,
+any completion of the description that introduces intermediate structure is a
+representational choice rather than an observational consequence.  The ledger
+alone cannot decide between competing completions, because no admissible event
+exists to mediate them.  Calculus, gauges, and related mathematical constructions
+have long been employed as convenient representations of such uncorrelant
+behavior.
 
-The evolution of the histogram $\psi_n$ is governed not by differential
-equations but by the combinatorial constraints inherent to counting.  These
-constraints follow directly from the act of recording a distinguishable event.
+For instance, spinors arise precisely in situations where no refinement can
+supply a globally consistent orientation.  A spinor does not represent an object
+with a definite direction in space, but a rule governing how locally admissible
+descriptions transform when compared.  A $2\pi$ rotation leaves all recorded
+local measurements unchanged, yet does not return the spinor to its original
+value.  The missing distinction is not dynamical but structural: the ledger
+records relative outcomes but admits no event that anchors a global phase.  The
+rotation itself is a coarse event, and as such is inadmissible, since no ledger
+measuring the phenomenon can record it as a distinguishable refinement.
 
-\begin{enumerate}
-    \item \textbf{Integer Normality.}
-    Each entry satisfies $k_i \in \mathbb{N}$.  Distinctions are discrete; the
-    ledger cannot record fractional or negative counts.
-
-    \item \textbf{Conservation of Count.}
-    The $L_1$ norm of the histogram equals the number of events recorded:
-    \[
-        \|\psi_n\|_1 = \sum_{i=1}^M k_i = n.
-    \]
-    The ordinal $n$ therefore serves as a measure of the size of the record.
-
-    \item \textbf{Irreversibility.}
-    The ledger is append--only:
-    \[
-        k_i(n+1) \ge k_i(n).
-    \]
-    Once a distinction has been recorded, it cannot be removed.  Each new event
-    adds exactly one count to exactly one entry of the histogram.
-\end{enumerate}
-
-These constraints define the admissible region of the record space
-$\mathbb{N}^M$.  The record advances by moving from $\psi_n$ to $\psi_{n+1}$ by
-incrementing a single coordinate; no other update is possible.
-
-\subsection{The Basis of Measurement}
-\label{subsec:basis-measurement}
-
-The basis vectors of the record space correspond to the distinguishable outcomes
-the observer is capable of resolving.  A measurement is therefore the selection
-of a basis element, and the histogram $\psi_n$ is the tally of such selections.
-
-In this representation, the record is not a point in a continuous phase space
-but an integer vector summarizing the observer's accumulated distinctions.
-Every admissible refinement of the record corresponds to a unit increment in one
-of the basis directions of $\mathbb{N}^M$.  The structure introduced in
-Section~\ref{sec:anchoring} constrains how these refinements are embedded into
-the continuum constructed from the anchor points.
-
-\section{Variation as Informational Trade-Off}
-\label{sec:variation}
-
-With the histogram representation of the experimental record in place, we now
-describe how variations of the record may be represented.  Classical treatments
-allow an arbitrary perturbation of a state variable.  In the informational
-setting, such perturbations are not admissible: the record at ordinal rank $n$
-contains exactly $n$ distinguishable outcomes, no more and no fewer.
-
-A variation of the record at fixed rank must therefore preserve the total count.
-Variation is not an addition.  It is a reallocation of distinctness among the
-outcomes the observer is capable of resolving.
-
-\subsection{The Zero-Sum Constraint}
-\label{subsec:zero-sum}
-
-Let $\psi_n = (k_1,\dots,k_M)^T$ denote the experimental record at rank $n$.  A
-variation $\delta \psi$ at this same rank is admissible only if it preserves the
-total count:
-\[
-    \sum_{i=1}^M \delta k_i = 0.
-\]
-We call this the \emph{Zero-Sum Constraint}.  Any increase in one component of
-the histogram must be offset by a decrease in another.  The observer's finite
-informational budget at rank $n$ cannot be exceeded.
-
-This reflects the fact that $\psi_n$ is a point on the discrete simplex
-\[
-    \Delta_n = \left\{ (k_1,\dots,k_M) \in \mathbb{N}^M : \sum_{i=1}^M k_i = n \right\}.
-\]
-Variations explore only the admissible directions tangent to this simplex.
-
-\subsection{Trade-Off Structure}
-\label{subsec:tradeoff}
-
-A variation $\delta \psi$ represents a hypothetical redistribution of recorded
-distinctions.  It answers the question: how might the record have differed,
-consistent with the same total amount of observational effort?
-
-Let $A$ and $B$ be two disjoint subsets of $\Sigma$.  Any attempt to increase
-the resolution associated with outcomes in $A$---represented by increasing
-$\sum_{c_i \in A} \delta k_i$---must be compensated by decreasing the
-resolution associated with outcomes in $B$.  The structure of variation is
-therefore competitive: an observer cannot refine all distinctions
-simultaneously within a fixed informational budget.
-
-This competition is purely combinatorial.  It does not depend on any specific
-interpretation of the outcomes.  Conjugate behavior observed in physical
-settings arises from this bookkeeping constraint rather than from any
-assumption of underlying continuum variables.
-
-\subsection{The Tangent Space of the Ledger}
-\label{subsec:tangent}
-
-The admissible variations form a subspace of $\mathbb{R}^M$ orthogonal to the
-vector of all ones.  Writing $\mathbf{1} = (1,\dots,1)^T$, the Zero-Sum
-Constraint may be expressed as
-\[
-    \langle \delta \psi, \mathbf{1} \rangle = 0.
-\]
-This hyperplane constitutes the \emph{tangent space} to the simplex $\Delta_n$.
-It is the space of virtual adjustments of the record that preserve the total
-amount of information at rank $n$.
-
-These admissible variations play the role traditionally occupied by ``virtual
-displacements'' in variational calculus.  In the informational framework,
-however, they arise not from geometry but from the conservation of recorded
-distinction.  Chapter~\ref{chap:calculus} will show how the selection of an
-actual refinement from among these virtual redistributions yields the calculus
-of dynamics.
+In this sense, spinorial behavior reflects uncorrelance.  Local refinements are
+individually admissible, but no admissible event exists that renders all such
+refinements jointly correlant under composition.  The resulting non-commutative
+structure is therefore not imposed by physics, but introduced to consistently
+represent the absence of a shared anchor in the experimental record.
 
 
-\subsection{Minimal Refinement Operators}
-\label{subsec:minimal-U}
+This observation has immediate mathematical consequences.  When refinement
+cannot be uniquely anchored to admissible events, the question of whether
+intermediate distinctions exist becomes undecidable within the ledger framework
+itself.  The resulting ambiguity is not a defect of logic, but a reflection of
+the fact that multiple completions are compatible with the same finite record.
 
-Dynamics is the rule governing the update $\boldsymbol{\psi}_n \to
-\boldsymbol{\psi}_{n+1}$. Because the record grows one event at a time, the
-update must be sparse.
+The first phenomenon we examine under this lens is the status of the continuum
+itself.
 
-A \emph{minimal refinement} is an operator $\hat{R}_j$ that increments the
-count of outcome $c_j$ by exactly one unit, leaving all other components
-invariant:
-\[
-  \hat{R}_j \boldsymbol{\psi}_n = \boldsymbol{\psi}_n + \mathbf{e}_j,
-\]
-where $\mathbf{e}_j$ is the $j$th standard basis vector in $\mathbb{N}^M$.
 
-Two principles characterize these operators:
+\begin{phenom}{The Hall--Einstein--Podolsky--Rosen Effect~\cite{einstein1935,selvin1975}}
+\label{ph:hall-epr}
 
-\begin{enumerate}
-\item
-\textbf{Unit step.}
-The operator adds one, never fractions: information is discretized.
-\item
-\textbf{Non-triviality.}
-The zero operator is inadmissible: a measurement that records nothing is
-indistinguishable from the absence of measurement.
-\end{enumerate}
+\PhStatement
+Inferences drawn from one experimental ledger about another are admissible only
+when the two ledgers are correlant.  When correlance fails, Bayesian
+conditioning and causal explanation alike introduce unrecorded structure.  The
+Monty Hall problem and EPR--type correlation experiments exhibit the same
+failure mode at different scales.
 
-Thus, the evolution of the system is a path on the integer lattice
-$\mathbb{N}^M$, driven by the sequential application of minimal refinement
-operators.
+\PhOrigin
+The Monty Hall problem entered the public consciousness as a paradox of
+probability, while the Einstein--Podolsky--Rosen argument challenged the
+completeness of quantum mechanics.  Though historically distinct, both expose a
+common assumption: that distinct records may always be embedded into a single
+underlying event.  The Hall--EPR Effect identifies the breakdown of this
+assumption as structural rather than probabilistic or dynamical.
 
-\subsection{Variation as a Change in Count Structure}
-\label{subsec:variation-counts}
+\PhObservation
+In the classical Monty Hall game, the contestant's ledger records only observable
+actions: an initial choice and the opening of a door revealing a goat.  The
+host's ledger records additional constraints, including the placement of the
+prize and the rule forbidding the opening of the prize door.  Because these
+constraints exist, there is at least one admissible event consistent with both
+ledgers.  The records are correlant, and joint inference is meaningful.
 
-In classical calculus, variation is defined as a perturbation of a continuous
-variable. Here, variation is defined as a \emph{change in count distribution}
-between two admissible histories of the same length.
+If the host's constraint is removed, the contestant's ledger may remain
+unchanged, yet no admissible event exists that is consistent with both ledgers
+under the standard interpretation of the game.  The records become uncorrelant,
+and the same observation loses its inferential force.
 
-Consider two histories $A$ and $B$ that have reached the same ordinal rank
-$n$. Their records $\boldsymbol{\psi}_n^A$ and $\boldsymbol{\psi}_n^B$ may
-differ. The \emph{variation} is
-\[
-  \delta\boldsymbol{\psi}
-  =
-  \boldsymbol{\psi}_n^A
-  -
-  \boldsymbol{\psi}_n^B.
-\]
-Because both vectors sum to $n$, the components of
-$\delta\boldsymbol{\psi}$ must sum to zero. Variation is therefore a
-\emph{trade-off}: increasing one count requires decreasing another relative to
-a baseline.
+EPR--type experiments realize the same structure at the microscopic scale.
+Spatially separated detectors record locally consistent outcomes, each producing
+a well-formed ledger.  However, no single admissible event exists that can be
+decomposed into independent local components while preserving the observed
+correlations under classical assumptions.  The ledgers are locally admissible
+but globally uncorrelant.
 
-\begin{phenomenon}[The Heisenberg Effect as Trade-off]
-\label{ph:heisenberg-tradeoff}
-A ledger with fixed capacity $n$ cannot refine all outcome classes
-simultaneously. Allocating refinements to one group of outcomes consumes the
-budget available to resolve the remainder. The variation
-$\delta\boldsymbol{\psi}$ expresses this pivot between mutually exclusive
-informational descriptions.
-\end{phenomenon}
+In both cases, the apparent paradox arises when one attempts to condition one
+ledger on another without first establishing correlance.  The inference fails
+not because the records are contradictory, but because no shared admissible
+event exists to anchor their joint interpretation.
 
-Variation is therefore not a derivative; it is a \emph{reallocation of
-counts}. The calculus of dynamics that follows is the study of which
-reallocations are admissible while preserving the coherence of the global
+\PhConstraint
+No extension of the experimental ledger may condition, merge, or update one
+record using another unless the two are correlant.  Any inference that presumes
+a shared event in the absence of correlance introduces unrecorded structure and
+violates admissibility.
+
+\PhConsequence
+The Hall--EPR Effect reframes both classical and quantum paradoxes as failures of
+correlance rather than failures of probability, locality, or realism.  Bayesian
+prediction remains valid, but only within domains where a shared admissible event
+exists.  When correlance fails, numerical conditioning and causal explanation
+remain algebraically consistent but physically meaningless.
+
+This effect motivates the search for representational structures that restore
+correlance without contradiction.  Later constructions---including geometric
+identification in ER=EPR---may be understood as attempts to repair correlance at
+the level of admissible events, rather than as explanations of causal influence.
+\end{phenom}
+
+An important asymmetry follows immediately from the definition.  Correlance is
+stable under refinement.  If two ledgers are correlant at some stage of
+observation, then any admissible extension of either ledger preserves that
+correlance.  Once a shared admissible event exists, no further refinement may
+eliminate it without contradicting the recorded distinctions.
+
+By contrast, uncorrelance is provisional.  Two ledgers may fail to share an
+admissible event at an early stage simply because insufficient structure has
+been recorded.  Subsequent refinement may introduce new admissible events that
+render the ledgers correlant.  Uncorrelant records may therefore become
+correlant, but the reverse transition is forbidden.
+
+This monotonicity reflects the irreversibility of measurement.  Refinement can
+exclude incompatible descriptions, but it cannot revoke the existence of an
+admissible event once established.
+
+
+\section{The Experimental State}
+
+The experimental ledger records a sequence of distinguishable events in the
+order they are observed.  The experimental state, by contrast, summarizes the
+informational content of that record without regard to the particular sequence
+by which it was obtained.  Different sequences of refinement may therefore
+correspond to the same state whenever their distinctions commute.  Physical
+description concerns the state, not the order of discovery.
+
+The experimental state is defined as the collection of instruments whose ledgers
+are mutually correlant at a given stage of refinement.  It is not a physical
+configuration of the system, nor a hypothesis about unobserved structure, but
+the maximal description that can be maintained without contradiction under the
+current record.  The state persists so long as no admissible event distinguishes
+between alternative refinements.
+
+In practice, the experimental state is often far coarser than the underlying
+physical processes that generate it.  Instruments do not record all possible
+distinctions, but only those they are designed to resolve.  Many distinct
+microscopic configurations may therefore project onto the same experimental
+state.  This coarsening is not a defect, but the mechanism by which coherent
+comparison between instruments becomes possible.
+
+
+A familiar macroscopic example is provided by an acid--base titration using a
+colored indicator.  The experimental state consists of the accumulated titrant
+volume, the observed color of the indicator, and the protocol governing
+addition.  Many successive additions of titrant may leave the observed color
+unchanged.  During this interval the experimental state repeats, despite
+continuous chemical change at the microscopic level.
+
+The equivalence point itself is not an admissible event.  It cannot be recorded
+as a distinguishable refinement of the ledger.  Only the color change of the
+indicator constitutes an admissible event, and it occurs after the chemical
+transition has already taken place.  The apparent sharpness of the endpoint
+therefore reflects a coarse projection of many unresolved refinements onto a
+single recorded distinction.
+
+This behavior is not stochastic.  It arises from finite resolution in the
+recording instrument and from the protocol by which refinement is applied.  The
+titration illustrates how state repetition and aliasing emerge naturally in
+measurement, and why definitive outcomes appear only when refinement produces a
+new admissible state.
+
+A single instrument producing a single reading on a single event yields only a
+minimal record.  Such a record may be internally consistent, yet it provides no
+basis for comparison.  Without an additional reading, instrument, or event,
+there is no means to distinguish between instrumental idiosyncrasy,
+environmental influence, or genuine structure in the phenomenon.  The ledger
+contains a symbol, but it does not yet contain a pattern.
+
+This limitation is not one of accuracy, but of structure.  A solitary record
+cannot establish stability, repeatability, or invariance.  Even an instrument of
+arbitrary resolution does not resolve this difficulty.  In the absence of
+comparison, notions such as error, deviation, or law are undefined.  The record
+is admissible, but it is not yet informative.
+
+A common mitigation strategy is to employ multiple instruments to measure the
+same phenomenon in distinct ways.  When the resulting records can be rendered
+mutually consistent, shared structure begins to emerge.  Agreement across
+instruments identifies features of the phenomenon that are invariant under
+changes of measurement protocol, while disagreement isolates effects specific to
+individual instruments.  Phenomena are thus identified not by isolated readings,
+but by the correlance of many.
+This process---the refinement of description through the comparison of
+independent records---is what is ordinarily called \emph{experimental science}.
+
+
+This strategy does not require identical instruments or synchronized operation.
+What matters is that the ledgers admit at least one shared interpretation.
+Comparison restricts the space of admissible events by excluding descriptions
+that cannot simultaneously account for all records.  In this way, the
+introduction of multiple instruments refines the experimental state even when no
+single instrument increases its resolution.
+
+The reliance on comparison rather than precision reflects a general feature of
+measurement.  Structure is not revealed by isolated observation, but by the
+constraints imposed when multiple records must be reconciled.  Phenomena
+therefore emerge as collective objects, arising from the mutual refinement of
+ledgers rather than from any privileged measurement alone.
+
+
+\subsection{Events as Operators on State}
+
+An admissible event acts on the experimental state by restricting the set of
+continuations consistent with the ledger.  This action is not a refinement of
+the ledger itself, but a transformation of the state it represents.  Each
+admissible event therefore induces a well-defined operator on the space of
+experimental states.
+
+This operator does not generate motion or dynamics.  It encodes exclusion.
+When an event is recorded, all histories incompatible with that record are
+discarded.  The resulting state is the maximal description that remains
+consistent with the enlarged ledger.  In this sense, events act by subtraction
+rather than construction.
+
+The distinction between refinement and state evolution is essential.  A
+refinement may add a new record without altering the experimental state if no
+new distinction is resolved at the level of the instruments under comparison.
+In such cases, the corresponding operator acts trivially on the state, even
+though the ledger has grown.
+
+The titration experiment again provides a concrete illustration.  Each drop of
+titrant is recorded as an event in the ledger.  As long as the indicator color
+remains unchanged, these events induce operators that act as the identity on the
+experimental state.  The internal composition of the solution evolves, but the
+state of the experiment does not.  Only when a drop produces a color change does
+the associated operator map the state to a distinct successor.
+
+This separation clarifies the role of silence.  Ledger silence does not imply
+the absence of events, but the absence of state transitions.  Operators may be
+applied repeatedly without effect until a tolerance condition is met and a new
+admissible distinction is recorded.
+
+In the sections that follow, we examine how such operators compose.  Whether
+their order matters depends not on the events themselves, but on their
+correlance relative to the state on which they act.  This leads naturally to a
+state-relative notion of commutation and, ultimately, to the accumulated
+structure encoded by the Causal Universe Tensor.
+
+\subsection{Commutation as a State-Relative Property}
+
+Whether two event operators commute is determined by their correlance with
+respect to the state on which they act.  Uncorrelant refinements commute, while
+correlant refinements need not.  Commutation is therefore a relational property,
+not an intrinsic one.
+
+When two admissible events are uncorrelant relative to a given experimental
+state, no admissible event exists that anchors a causal ordering between them.
+The state cannot distinguish the order in which they are applied, and the
+corresponding operators commute.  In such cases, ordering carries no
+experimental content, even though refinement continues at the level of the
 ledger.
 
-\section{Exhaustion of Distinguishability}
-\label{sec:exhaustion}
-
-The experimental record advances only when a new distinguishable event is
-successfully observed. Distance, defined internally as the tally of repeated
-outcomes, is therefore meaningful only while new increments are possible.
-If a proposed refinement yields no observable event, the history cannot
-continue.
-
-Let $\{c_1,\dots,c_M\}$ denote the current outcome labels available to the
-observer. At ordinal step $n+1$, the observer attempts to refine the
-experimental record. If no admissible outcome occurs, then
-\[
-  \boldsymbol{\psi}_{n+1}
-  \text{ is undefined},
-\]
-and the admissible history terminates at step $n$.
-
-\begin{phenomenon}[The Malus Effect~\cite{malus1810}]
-\label{ph:polarization-termination}
-Consider a beam of light that has passed through a linear polarizing filter.
-All subsequent photons are aligned to that axis. If the observer introduces a
-second polarizer oriented at $90^\circ$ to the first, no photon passes. There
-is no new distinguishable event. The count of counts cannot increase, and
-the experimental record ends. The light can no longer be observed.
-\end{phenomenon}
-
-In this setting, the attempt to extend the record fails. The observer has
-exhausted the available structure. Without a new admissible event, no component of
-$\boldsymbol{\psi}_n$ can grow, and no distance can be defined beyond this
-point.
-
-\begin{center}
-\emph{If a refinement produces no observable outcome, the history stops.}
-\end{center}
-
-The failure to propagate the experimental record marks a fundamental limit:
-progress requires either additional distinguishable outcomes or an expanded
-basis of measurement. As long as only one observer is present, such limits
-are absolute. A new source of distinction is needed for the universe to
-continue unfolding.
-
-
-\section{Change of Frame}
-\label{sec:change-of-frame}
-
-The experimental record $\psi_n$ is a tally of distinguishable outcomes defined
-relative to the observer's measurement procedure.  Different observers may adopt
-different alphabets of outcomes, different groupings of distinctions, or
-different conventions for assigning symbols to events.  To compare records or to
-formulate observer--independent statements, we must describe how one
-representation is translated into another.
-
-A \emph{frame} in this setting is a repeatable procedure for assigning
-distinguishable labels to events.  The ability to translate between frames
-follows from the requirement that repeated applications of the same procedure
-yield compatible records; this is the operational content of repeatability.
-
-\subsection{Translation of the Primal Record}
-\label{subsec:translation}
-
-Let $\Sigma_A$ and $\Sigma_B$ be the outcome alphabets used by two observers.
-Let $\psi_A \in \mathbb{N}^{|\Sigma_A|}$ be the experimental record in frame~A.
-A change of frame is represented by a linear map
-\[
-    L : \mathbb{R}^{|\Sigma_A|} \to \mathbb{R}^{|\Sigma_B|}
-\]
-that translates $\psi_A$ into the corresponding record in frame~B,
-\[
-    \psi_B = L\,\psi_A.
-\]
-
-The entries of $L$ describe how each outcome recorded in frame~A contributes to
-the outcomes used in frame~B.  For the translation to be admissible, it must
-preserve the total number of recorded distinctions:
-\[
-    \sum_j (\psi_B)_j = \sum_i (\psi_A)_i.
-\]
-This ensures that the translation neither creates nor deletes events.  It merely
-reallocates the counts among different outcome classes.
-
-\subsection{Translation of the Dual Ledger}
-\label{subsec:dual-translation}
-
-A dual vector $\phi_B \in \mathbb{R}^{|\Sigma_B|}$ represents a test applied to
-the record in frame~B.  Consistency of comparisons across frames requires that
-testing after translation be equivalent to translating the test before applying
-it.  Formally, for all $\psi_A$ and all $\phi_B$,
-\[
-    \langle \phi_B,\, L \psi_A \rangle
-    = \langle L^T \phi_B,\, \psi_A \rangle.
-\]
-
-The map
-\[
-    L^T : \mathbb{R}^{|\Sigma_B|} \to \mathbb{R}^{|\Sigma_A|}
-\]
-is therefore the induced transformation of the dual ledger.  It plays the role
-of a pullback: it expresses a test formulated in frame~B in the language of
-frame~A.
-
-This reciprocity guarantees that translations act compatibly on both the record
-and the tests of the record.
-
-\subsection{Invariance and the Kernel}
-\label{subsec:kernel}
-
-Variations that lie in the kernel of $L$,
-\[
-    \eta \in \ker L \quad\text{iff}\quad L\eta = 0,
-\]
-represent changes to the record in frame~A that have no effect when expressed in
-frame~B.  These are distinctions that frame~A is capable of resolving but frame~B
-is not.
-
-Such variations are \emph{unobservable} in frame~B.  They correspond to
-structure that is erased by the translation map.  If two frames are compatible
-representations of the same underlying record, no physically meaningful
-statement should depend on components of a variation that lie in the kernel of
-an admissible translation.
-
-This observation leads to the following requirement:
-Frame Invariance of Admissible Variation:
-A variation is admissible if and only if its projection onto every frame's
-observable subspace yields no unaccounted-for structure.
-
-Equivalently, if a variation produces a nonzero component in the kernel of some
-admissible translation, then that variation introduces structure that is not
-robust across frames and therefore cannot be used to define an admissible
-refinement.
-
-This criterion provides the foundation for the weak form developed in the next
-section.  In that formulation, admissible histories are characterized by having
-no component of their residual that survives when tested against all dual
-vectors arising from all admissible frames.
-
-\section{Change of Frame}
-\label{sec:change-of-frame}
-
-The experimental record $\psi$ is a tally of distinguishable outcomes defined
-relative to an observer’s measurement procedure. Different observers may group
-outcomes differently or use distinct labeling conventions. To compare their
-records, we introduce the notion of a change of frame.
-
-A \emph{frame} is a repeatable procedure for assigning labels to events.
- A change of frame is represented by a linear map
-\[
-    L : \mathbb{R}^{|\Sigma_A|} \to \mathbb{R}^{|\Sigma_B|}
-\]
-that expresses the same underlying history in a different observational
-representation. If $\psi_A$ is the record in frame~A, its translation into
-frame~B is
-\[
-    \psi_B = L \psi_A.
-\]
-No invertibility, symmetry, or metric structure is assumed; only the total
-event count must be preserved.
-
-\subsection{Invariance of Total Count}
-\label{subsec:count-invariance}
-
-A change of frame must not alter the total number of recorded events. This is
-the sole algebraic requirement for admissibility:
-\[
-    \|\psi_B\|_1 = \|L \psi_A\|_1,
-    \qquad
-    \|L^T \psi_B\|_1 = \|\psi_A\|_1.
-\]
-
-The forward map $L$ preserves the total count of the translated record, and the
-transpose map $L^T$ preserves the total count when translating a record back.
-This double conservation ensures that the \emph{proper time} of the system—the
-count of irreducible updates---is invariant under both
-translation and reciprocity.
-
-\subsection{Dual Translation and Reciprocity}
-\label{subsec:dual-translation}
-
-A dual vector $\phi_B$ represents a test or admissible variation expressed in
-frame~B. Consistency requires that applying a test after translation is
-equivalent to translating the test before applying it:
-\[
-    \langle \phi_B,\, L \psi_A \rangle
-    =
-    \langle L^T \phi_B,\, \psi_A \rangle.
-\]
-
-The transpose $L^T$ is thus the induced pullback on the dual ledger.
-This reciprocity ensures that inner products between
-records and tests are frame–independent.
-
-\subsection{Kernel and Observational Indistinguishability}
-\label{subsec:kernel}
-
-If a variation $\eta$ satisfies $L \eta = 0$, then that variation is
-indistinguishable in frame~B; it leaves no trace after translation. Such kernel
-directions represent structure that is unobservable in that frame.
-
-These directions are precisely those changes to a history that produce no new
-distinguishable events. Only variations that remain distinguishable under all
-admissible changes of frame are physically meaningful. This principle leads
-directly to the \emph{Weak Form} developed in the next section, where physical
-histories are selected by orthogonality to these unobservable directions.
-
-
-\section{The Weak Form}
-\label{sec:weak-form}
-
-The experimental record fixes a finite set of discrete constraints (the
-anchors). Between these anchors, the state of the system is not directly
-measured. However, the Axiom of Ockham prohibits the introduction of structure
-that cannot be justified by observation.
-
-To formalize this prohibition, we distinguish between the \emph{trial space} of
-candidate histories consistent with the anchors and the \emph{test space} of
-admissible queries. A history is selected not by a differential equation but by
-an orthogonality condition: the physical trajectory is the unique candidate
-whose informational residue is invisible to all admissible tests.
-
-\subsection{Test Functions as Admissible Queries}
-\label{subsec:test-functions}
-
-Let $\mathcal{H}$ denote the linear space of candidate histories determined by
-the recorded anchor points. A candidate $\psi \in \mathcal{H}$ may possess
-arbitrary structure between anchors; such structure is not yet ruled out by the
-record.
-
-A \emph{test function} $\phi$ represents an admissible variation or query. An
-observer cannot formulate tests that exceed the resolution of their frame. From
-Section~\ref{sec:change-of-frame}, the admissible tests in a given frame are
-generated by the rows of the associated change-of-frame operator $L$. Thus the
-test space is
-
-\[
-    V_{\mathrm{test}} = \mathrm{range}(L^T).
-\]
-
-A vector $\phi \notin V_{\mathrm{test}}$ represents a query that cannot be
-expressed operationally within the frame; such queries are excluded from the
-weak formulation.
-
-\subsection{The Orthogonality Principle}
-\label{subsec:orthogonality}
-
-Let $R(\psi)$ denote the residual structure of a candidate history $\psi$,
-representing any component of the trajectory not fixed by the anchors. For a
-history to be physically admissible, this residue must be undetectable by every
-admissible test.
-
-The \emph{Weak Form} is the requirement that
-
-\[
-    \langle R(\psi),\, \phi \rangle = 0
-    \qquad \text{for all } \phi \in V_{\mathrm{test}}.
-\]
-
-Substituting $V_{\mathrm{test}} = \mathrm{range}(L^T)$, we obtain the
-frame-equivalent condition
-
-\[
-    \langle R(\psi),\, L^T \eta \rangle = 0
-    \qquad \text{for all variations } \eta.
-\]
-
-By reciprocity of the inner product
-(Section~\ref{subsec:dual-translation}), this is equivalent to
-
-\[
-    \langle L R(\psi),\, \eta \rangle = 0
-    \qquad \text{for all } \eta,
-\]
-
-which implies
-
-\[
-    L R(\psi) = 0.
-\]
-
-Thus the informational residue must lie entirely in the kernel of~$L$.
-
-\subsection{Projection and Physicality}
-\label{subsec:projection}
-
-The Weak Form decomposes the trial space into two orthogonal components:
-
-\begin{enumerate}
-    \item the \textbf{observable component}, visible under the admissible tests
-    generated by $L$;
-
-    \item the \textbf{unobservable component}, contained in $\ker(L)$.
-\end{enumerate}
-
-The Axiom of Ockham is realized by eliminating all unobservable components from
-the physical description. The physical history $\Psi$ is the unique candidate
-that satisfies both the anchor constraints and
-
-\[
-    R(\Psi) \in \ker(L).
-\]
-
-In this formulation, “smoothness” is not an imposed geometric property but the
-absence of detectable residue. The physical trajectory is the projection of the
-trial history onto the subspace of variations detectable by admissible tests.
-
-\section{Spline Sufficiency}
-
-We have demonstrated that a continuum can be manufactured from moments.
-We now consider the variations of the values that can appear on that
-continuum, expressed through the sequence $\{\psi_n\}$.
-
-In this final section, our goal is to examine how the discrete variables
-$\psi_n$ may change from moment to moment, and to determine which
-variations are admissible once the continuum has been constructed from
-the record. Because each $\psi_n$ represents a count derived from a
-count, any change in its value, its first difference, or any higher
-difference must respect the combinatorial limits imposed by the ledger.
-
-To proceed, we treat each $\psi_n$ as a variable defined on the
-manufactured continuum and analyze its successive variations---first,
-second, third, and higher---subject to the requirement that each
-variation remain constant within a moment and compatible across adjacent
-moments. This allows us to identify exactly which higher variations must
-vanish and why the structure of the record forces that outcome.
-
-\subsection{Stride}
-
-We define the first variation as expected
-\begin{equation}
-\delta \psi_n = \psi_n - \psi_{n-1} = e_i.
-\end{equation}
-In order to isolate just this label for variation, we introduce the weak variation with respect
-to phenomenon labeled $i$. Assuming this is not the first recording of label $i$, 
-\begin{equation}
-{}^i\delta_k\psi_n = \langle\psi_n - \psi_{n-k}, e_i\rangle
-\end{equation}
-for \emph{stride length} k.  From this we can define the 
-current unit stride for phenomonen $i$ as $k$ such that ${}^i\delta_{k}\psi_n = 1$.
-
-The second variation requires comparing the slopes across two distinct ranges of moments and
-is fixed to be constant, not just across each moment, but across the entire
-span of moments.  Since in the current moment ${}^i\delta_{k}\psi_n = 1$, this implies
-\begin{equation}
-{}^i\delta^2_k\psi_n = {}^i\delta_k\psi_n - {}^i\delta_k\psi_{n-k} = (1-r) e_i \quad r>0, r\in\mathbb{N}
-\end{equation}
-In this case, the second variation depends solely $r$, the number of changes in the
-set of events between $n-2k$ and $n-k$.
-
-And, similarly we can derive the third variation
-\begin{equation}
-{}^i\delta^3_k\psi_n = {}^i\delta^2_k\psi_n - {}^i\delta^2_k\psi_{n-k} = (s-r) e_i \quad r,s>0, r,s\in\mathbb{N}.
-\end{equation}
-This directly implies that a spline can be constructed through the anchor points of phenomenon $i$ that is $C^2$
-everywhere. When the first variation is exactly 0, the spline is a solution to the Euler-Lagrange equations.
+This situation is common in practice.  In the titration experiment, successive
+drops of titrant that do not alter the recorded indication are uncorrelant with
+respect to the experimental state.  Their order of application is immaterial:
+the resulting state is unchanged regardless of ordering.  The operators commute
+because the state aliases their effects.
+
+Correlance alters this behavior.  When two events share an admissible anchor,
+their relative ordering may constrain future refinements.  The experimental
+state may distinguish between different orderings, and the corresponding
+operators need not commute.  Noncommutation thus reflects the presence of
+potential causal structure, not a failure of algebraic regularity.
+
+Importantly, commutation may change as the state evolves.  Operators that commute
+in one state may fail to commute in another once new distinctions are recorded.
+The algebra of event operators is therefore state-dependent, reflecting the
+resolving power of the experimental description rather than intrinsic properties
+of the events themselves.
+
+This state-relative view of commutation will play a central role in the
+construction that follows.  The accumulation of event operators records not a
+total ordering of events, but a pattern of partial orders enforced by
+admissibility.
+
+\subsection{State as Coherent Description}
+
+The experimental state is defined as the collection of instruments whose ledgers
+are mutually correlant at a given stage of refinement.  It is not a physical
+configuration of the system, nor a record of how that configuration was reached,
+but the maximal description that can be maintained without contradiction under
+the current ledger.
+
+A defining feature of the experimental state is that it may be strictly coarser
+than the underlying physical description.  Instruments generally do not report
+the finest distinctions available in principle, but only those distinctions they
+are designed to resolve.  The state therefore reflects not what exists, but what
+can be jointly said by the available instruments.
+
+At the microscopic level of titration, for example, the relative populations of species such as
+$\mathrm{H^+}$ and $\mathrm{OH^-}$ vary continuously as the underlying process
+advances.  A sufficiently refined ledger could, in principle, record these
+populations directly.  The indicator, however, reports only a coarse symbol,
+typically a binary color change.  Many distinct microscopic configurations are
+therefore rendered mutually indistinguishable by the instrument and correspond
+to the same experimental state.
+
+This coarsening is not a loss of coherence.  On the contrary, it is what permits
+coherence across instruments.  The indicator ledger remains correlant with other
+records, such as volume added or protocol followed, precisely because it
+suppresses distinctions that cannot be reliably compared.  The experimental
+state is thus stabilized by ignoring fine-grained variation that would otherwise
+destroy correlance.
+
+In this sense, the experimental state is a description held together by mutual
+constraint rather than by completeness.  It persists so long as no admissible
+event distinguishes between alternatives at the level of the ledger.  Refinement
+advances the underlying process continuously, but the state changes only when a
+new distinction becomes jointly recordable.  The state is therefore not a mirror
+of reality, but a coherent summary of what has been resolved so far.
+
+\subsection{Inevitable Noise}
+
+The persistence of silence under unresolved refinement gives rise to an
+inevitable form of noise.  This noise does not originate in faulty instruments,
+random choice, or external disturbance.  It arises from the fact that many
+distinct underlying processes may project onto the same experimental state when
+the ledger cannot distinguish between them.
+
+As refinement proceeds, admissible events exclude incompatible continuations,
+but they do not uniquely select a single history.  When multiple refinement
+pathways remain consistent with the recorded distinctions, they are aliased by
+the experimental state.  The resulting ambiguity is not eliminated by further
+analysis unless a new admissible event occurs.  Noise therefore appears whenever
+the ledger is forced to summarize unresolved structure.
+
+This form of noise is unavoidable.  It follows directly from the finiteness of
+records and the irreversibility of refinement.  Even in an ideal experiment,
+with perfectly functioning instruments, unresolved ordering and coarse
+observation produce ambiguity in the interpretation of state.  The experimental
+state may repeat under successive refinements, masking ongoing activity beneath
+a stable description.
+
+Importantly, this noise is structural rather than stochastic.  No randomness is
+introduced into the refinement process itself.  The ambiguity reflects the
+multiplicity of admissible histories consistent with the same record.  What is
+observed as variability or uncertainty is the shadow cast by this multiplicity
+on a finite ledger.
+
+This notion of noise precedes both measurement error and communication failure.
+It arises before any metric is imposed and before any signal is transmitted.
+Later chapters will introduce quantitative measures of deviation and loss, but
+the present ambiguity is more primitive.  It marks the boundary between what has
+been resolved and what remains silent.
+
+In the titration experiment, successive drops of titrant may be added without
+producing any change in the recorded indication.  During this interval, the
+experimental state remains unchanged, even though the internal state of the
+solution has evolved.  The ledger records silence, not because nothing has
+happened, but because no admissible event distinguishes the alternatives at the
+resolution of the instrument.
+
+This disparity highlights the separation between internal evolution and recorded
+state.  Refinement proceeds continuously beneath the ledger, but the experimental
+state advances only when a new distinction becomes recordable.  The unchanged
+indication therefore represents an aliasing of many distinct internal
+configurations onto a single observable state.
+
+
+\subsection{Events as Operators on State}
+
+An admissible event acts on the experimental state by excluding incompatible
+continuations.  This action is the dual of refinement on the ledger and induces a
+well-defined map from states to states.  The experimental state evolves through
+successive applications of such operators.
+
+In a titration experiment, each drop of titrant constitutes an admissible event.
+The protocol governing addition ensures that each drop is recorded, even when it
+produces no change in the observed indication.  As an operator on state, the
+addition of a drop restricts the space of admissible continuations, ruling out
+descriptions inconsistent with the accumulated additions.
+
+When successive drops do not alter the recorded indication, the corresponding
+operators act trivially on the experimental state.  The state remains fixed,
+despite the continued application of refinement.  This behavior illustrates
+that an operator may be nontrivial at the level of the ledger while acting as the
+identity on the state. \emph{I.e.,} The pH decreases monotonically under the 
+addition protocol, yet resists coloration. Only when a tolerance
+condition is met does the final refining drop generate a recorded transition
+(see Phenomenon~\ref{ph:mott}).
+
+Only when the addition of a drop produces a new recorded distinction does the
+state change.  At that point, the operator maps the prior state to a new one,
+excluding a large class of previously admissible continuations.  The apparent
+discontinuity of the transition reflects the coarseness of the state, not a
+discontinuity in the underlying process.
+
+The titration therefore provides a concrete example of how events act as
+operators on state.  Refinement proceeds incrementally, but the experimental
+state evolves only when an admissible event produces a distinguishable change.
+Individual drops alter the internal state of the solution, but not the state of
+the experiment.  The color change of the indicator marks the transition to a new
+experimental state.
+
+\subsection{Commutation as a State-Relative Property}
+
+Whether two event operators commute is determined by their correlance with
+respect to the state on which they act.  Uncorrelant refinements commute, while
+correlant refinements need not.  Commutation is therefore relational rather than
+intrinsic.
+
+When two admissible events are uncorrelant relative to a state, no admissible
+event exists that anchors a causal ordering between them.  In this case, the
+experimental state cannot distinguish their order of application.  The
+corresponding operators therefore commute: applying them in either order
+produces the same restriction of admissible continuations.
+
+Correlance changes this situation.  When two events share an admissible event,
+their relative ordering may carry information.  The experimental state can, in
+principle, distinguish between different orderings, and the corresponding
+operators need not commute.  Noncommutation thus reflects the presence of
+potential causal structure, not a failure of algebraic regularity.
+
+The titration experiment again provides a concrete illustration.  Successive
+drops of titrant that do not alter the recorded indication are uncorrelant with
+respect to the experimental state.  No admissible event distinguishes their
+order, and the corresponding operators commute freely.  The state aliases their
+effects, and ordering carries no experimental meaning.
+
+Once a drop produces a change in the recorded indication, correlance is
+introduced.  The color change anchors a new admissible event, and the ordering of
+refinements relative to this event becomes meaningful.  Operators that commute
+in the uncorrelant regime may fail to commute across the state transition, not
+because the events themselves have changed, but because the state relative to
+which they act has changed.
+
+Commutation therefore signals the absence of correlance, while noncommutation
+signals its presence.  The algebraic structure of event operators reflects the
+experimental state and its admissible events, rather than any intrinsic
+properties of the refinements themselves.
+
+This manuscript therefore emphasizes the characterization of uncorrelant
+behavior.  Uncorrelance identifies situations in which no admissible event exists
+to anchor a shared ordering or interpretation across records.  In such cases,
+the ledger alone cannot license causal inference, and the resulting descriptions
+remain ambiguous under refinement.  This ambiguity is not a defect of
+measurement, but a structural feature of finite records and unresolved
+comparison.
+
+By contrast, science advances precisely where correlance can be established.
+When independent instruments admit a shared event, their records may be
+reconciled into a coherent description, and causal structure becomes
+discernible.  Correlant behavior supports prediction, exclusion of incompatible
+models, and the accumulation of lawlike regularities.  The distinction between
+correlant and uncorrelant regimes therefore marks the boundary between mere
+observation and experimental science.
+
+\section{Language}
+
+The refinement structure developed in the preceding sections admits a further
+reinterpretation.  Admissible events act sequentially, restrict future
+continuations, and may or may not commute depending on correlance.  These
+features do not describe a dynamical law, but a system of constraints on
+sequences.  What has been constructed is therefore not a model of motion, but a
+description of which event sequences may be formed without contradiction.
+
+The idea that physical description may be constrained by rules governing
+allowable sequences has a long history.  In the development of formal languages,
+logicians and computer scientists sought representations that distinguished
+well-formed expressions from arbitrary strings.  Backus--Naur form was introduced
+to specify such rules compositionally, separating syntax from semantics and
+local admissibility from global meaning.  Similar concerns appear implicitly in
+physics whenever one distinguishes between kinematically allowed configurations
+and those that can be realized through admissible processes.
+
+Viewed through this lens, the refinement structure developed above is most
+naturally understood as a \emph{language}.  Events play the role of symbols,
+experimental states define contexts, and admissibility determines which symbols
+may legally follow a given context.  The experimental ledger does not enumerate
+all possible histories, but enforces rules governing which sequences of
+refinement may be recorded without contradiction.  These rules are compositional,
+state-dependent, and insensitive to unresolved ordering.
+
+This observation is not an analogy.  Refinement already possesses the defining
+features of a formal grammar.  Some event sequences are forbidden outright,
+others are permitted but observationally indistinguishable, and still others
+produce new admissible distinctions.  Distinct refinement histories may collapse
+to the same experimental state, giving rise to ambiguity.  Silence corresponds
+to the absence of a producible symbol, not the absence of underlying activity.
+
+The causal universe tensor introduced in the previous section records these
+constraints algebraically.  It specifies which event operators may be composed,
+which compositions commute, and which introduce ordering dependence.  In doing
+so, it defines a generative structure over admissible events.  The tensor does
+not generate trajectories; it generates well-formed sequences.
+
+Backus--Naur form provides a canonical representation for such generative
+structures.  It describes how symbols may be combined, how sequences may be
+extended, and where ambiguity or termination may occur.  When refinement is
+viewed through this lens, admissible events correspond to terminal symbols,
+experimental states function as nonterminal contexts, and refinement rules
+specify productions.  The grammar is not imposed on the experiment; it is read
+off from the admissibility constraints already present.
+
+This grammatical perspective marks a shift in emphasis.  The question is no
+longer which events occur, but which sequences are meaningful.  Once this shift
+is made, the remaining structure of the theory follows without further
+interpretive assumptions.  The grammar of refinement admits a faithful linear
+representation, and its properties may be analyzed using algebraic and
+variational tools.
+
+\subsection{Admissibility as Grammar}
+
+An admissible event is one that may appear in at least one ledger measuring the
+phenomenon.  When events are viewed as symbols, admissibility rules specify the
+allowable concatenations of these symbols under refinement.  Some sequences are
+forbidden outright, others are permitted but observationally indistinguishable,
+and still others produce new recorded distinctions.  These rules are
+compositional and depend only on the current experimental state.
+
+Unresolved refinement corresponds to grammatical ambiguity.  Multiple distinct
+sequences of events may be consistent with the same experimental state, and the
+ledger provides no means of distinguishing between them.  Such ambiguity is not
+an error or a failure of description, but a direct consequence of finite
+resolution.  The language of refinement is therefore inherently many-to-one.
+
+Silence admits a grammatical interpretation as well.  When no admissible event
+may follow a given state, refinement cannot extend the sequence in a
+distinguishable way.  This does not imply termination of the underlying process,
+but the absence of a producible symbol.  In grammatical terms, the state admits
+no legal production at the level of the ledger, and the description must remain
+unchanged.
+
+Taken together, admissibility, ambiguity, and silence define a grammar over
+events that is enforced by refinement itself.  The experimental state functions
+as a context that determines which productions are allowed, which collapse into
+equivalence, and which are excluded.  This grammar is not imposed externally, nor
+chosen for convenience; it is the minimal structure required to describe
+measurement without contradiction.
+
+
+\subsection{Aliasing and Ambiguity}
+
+Distinct refinement histories may map to the same experimental state.  When this
+occurs, the corresponding sequences are aliased by the ledger and become
+observationally equivalent.  This many-to-one mapping gives rise to ambiguity in
+the grammatical description: multiple parses correspond to the same observable
+outcome.
+
+This ambiguity reflects unresolved structure rather than indeterminism.  The
+ledger records only those distinctions that refinement has made admissible.  Any
+additional structure present in the underlying process but absent from the
+record is silent.  The grammar therefore encodes not what may have happened, but
+what can be said to have happened.
+
+Aliasing is not an incidental feature of the description; it is unavoidable
+under finite resolution.  Whenever refinement proceeds without producing a new
+admissible distinction, histories accumulate within a single equivalence class.
+The experimental state summarizes these histories by collapsing them to a common
+symbolic form, and the grammar reflects this collapse as ambiguity.
+
+From the grammatical perspective, aliasing introduces equivalence relations on
+strings of events.  Sequences that differ in length, ordering, or internal
+structure may nonetheless be observationally indistinguishable.  The grammar
+must therefore be interpreted modulo these equivalences, and any attempt to
+resolve them without new admissible events constitutes a representational choice
+rather than an experimental fact.
+
+\subsection{The Markov Property of Refinement}
+
+A crucial feature of the grammar of refinement is that admissibility depends
+only on the current experimental state.  Past refinements influence future
+admissibility only insofar as they are summarized by the present state.  No
+additional historical memory is required.
+
+This locality licenses a Markovian description.  The grammar governing admissible
+sequences is fully determined by the current state and the set of admissible
+events.  The detailed path by which the state was reached carries no further
+operational content.  This is not an assumption, but a consequence of ledger
+irreversibility and the definition of admissibility.
+
+From the perspective of the ledger, any information not encoded in the present
+state is operationally inaccessible.  Refinement histories that differ only in
+unrecorded detail cannot be distinguished and therefore cannot affect future
+admissibility.  The state thus functions as a sufficient statistic for the
+grammar of refinement.
+
+This Markov property does not imply simplicity of behavior.  Long-range
+constraints may still arise through the accumulation of admissible events, and
+nontrivial structure may be encoded in the state itself.  What is excluded is
+only the need to reference unrecorded history.  All admissible structure must be
+carried forward explicitly by the state or be lost to silence.
+
+The Markov property therefore justifies the representation of refinement as a
+state-transition system.  In the following section, this representation will be
+made explicit by expressing the grammar of admissible sequences as a linear
+operator acting on the space of experimental states.
+
+\subsection{Linear Representation of Grammar}
+
+The Markov property of refinement permits a linear representation of the grammar
+of admissible sequences.  Because admissibility depends only on the current
+experimental state, refinement may be modeled as a state-transition operation
+that acts locally and composes sequentially.  The space of experimental states
+therefore admits an operator structure that faithfully encodes the grammar.
+
+In this representation, admissible events act as linear operators on the space
+of states.  Applying an operator corresponds to extending a sequence by a single
+symbol and then projecting onto the resulting experimental state.  Composition
+of operators corresponds to concatenation of admissible sequences, while the
+identity operator represents refinement that produces no new distinguishable
+state.
+
+Noncommutation arises naturally in this framework.  Operators corresponding to
+uncorrelant events commute, reflecting the absence of an admissible ordering.
+Operators associated with correlant events may fail to commute, encoding the
+presence of state-dependent ordering constraints.  The algebra of operators thus
+records exactly the same admissibility structure previously described in
+grammatical terms.
+
+Aliasing appears as degeneracy in the linear representation.  Distinct operator
+products may act identically on the state space, reflecting the collapse of
+multiple refinement histories into a single experimental state.  The kernel of
+the operator representation therefore captures unresolved structure that the
+ledger cannot distinguish.
+
+The causal universe tensor introduced earlier may now be interpreted as the
+accumulated action of these operators.  It is a linear encoding of the grammar of
+refinement, retaining all admissible ordering information while discarding
+unobservable detail.  This representation does not generate dynamics; it encodes
+syntax.
+
+At this stage, no notion of scale, distance, or likelihood has been introduced.
+The linear representation captures only which sequences are admissible and how
+they compose.  Quantitative distinctions require additional structure.  The next
+chapter introduces a norm and inner product on the space of states, allowing
+measurement noise to be expressed geometrically and preparing the ground for
+optimization and consequence.
+
+\subsection{The Markov--Conway Effect}
+
+The final interpretive step required by the present framework is the acceptance
+of a Markov--Conway principle.  Admissibility of refinement depends only on the
+current experimental state, not on the detailed history by which that state was
+reached.  Local refinement rules, when iterated, suffice to generate the full
+structure of admissible sequences.
+
+This principle is not introduced as an axiom.  It follows directly from the
+definitions of ledger, refinement, and admissibility given in Chapter~2.  Once
+adopted, the grammar of experiment admits a faithful representation as a linear
+operator, and no further philosophical assumptions are required.
+
+The content of the principle is that all operationally relevant information must
+be carried forward explicitly by the experimental state.  Any putative dependence
+on unrecorded history is indistinguishable and therefore inadmissible as part of
+the description.  The state is thus sufficient for determining future
+admissibility, and refinement becomes a closed generative system.
+
+The Conway aspect of the effect is that global structure emerges from the
+iteration of local rules without additional explanatory machinery.  The grammar
+may be rich, ambiguous, and state-dependent, yet it is generated entirely by
+repeated application of admissibility constraints.  Apparent complexity is
+therefore not evidence of hidden variables, but the natural consequence of
+iterated local refinement under finite resolution.
+
+Taken together, these observations justify treating the causal universe tensor
+as a syntactic object: a linear encoding of the grammar of admissible
+refinements.  It records which sequences are well-formed, which are equivalent
+under aliasing, and where ordering becomes meaningful.  It does not assert what
+is real beyond the record; it asserts what the record permits.
+
+This is the final appeal to interpretation.  Beyond this point the development
+is purely constructive.  The remaining chapters introduce quantitative structure
+on the space of states and derive consequences.  Having fixed the grammar, the
+problem becomes one of geometry, residual, and normalization.
+
+
+The present chapter therefore completes the structural analysis of measurement.
+It has shown that refinement induces a grammar of admissible sequences and that
+this grammar admits a faithful linear representation.  What remains is not to
+reinterpret the framework, but to endow it with geometry.  From this point
+forward, the development concerns measurement, optimization, and consequence.
+
+\section{Refinement of the Causal Universe Tensor}
+
+We now present the \emph{Causal Universe Tensor}.
+
+\begin{proposition}[The Existence of a Causal Universe Tensor]
+\label{prop:universe-tensor}
+\end{proposition}
+
+Categorically, the structure underlying this result is the
+naturality of a monoidal functor in the sense of
+Mac~Lane~\cite{maclane1971}, with further development in
+Kelly~\cite{kelly1982} and Leinster~\cite{leinster2014}.  The proof sketch
+below follows this diagrammatic perspective; the fully explicit ZFC
+realization appears in Appendix~\ref{app:proofs}.
+
+\begin{proofsketch}{universe-tensor}
+\end{proofsketch}
+
+The existence of the Causal Universe Tensor gives rise to the appearance of
+stability in long sequences of refinement.  Because each admissible update is
+not free to evolve arbitrarily, but must remain compatible with the unique
+globally coherent extension of the record, deviations cannot accumulate
+without bound.  Local inconsistencies are absorbed through restriction and
+embedding, producing the observable effect of bounded variation in the
+measurement ledger.  This structural stability is not enforced by physical
+feedback or control, but by the logical necessity of coherent refinement
+itself.  This gives rise to the following informational phenomenon.
+
