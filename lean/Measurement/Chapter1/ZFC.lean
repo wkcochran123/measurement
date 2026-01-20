@@ -1,24 +1,11 @@
 import Std
 
 namespace Measurement
+namespace ZFC
 
-/--
-Definition 1: Enumeration Map.
+/-
+ZFC has not been assumed yet.
 -/
-class EnumerationMap (S : Type u) (X : Type v) where
-  index : S -> X -> Nat
 
-/--
-Definition 2: Symbol Map.
--/
-abbrev SymbolMap (X : Type u) : Type u :=
-  Nat -> Option X
-
-/--
-Axiom 1 : Enumeration.
--/
-inductive Enumeration (X : Type u) : Type u
-  | nil  : Enumeration X
-  | cons : X -> Enumeration X -> Enumeration X
-
+end ZFC
 end Measurement

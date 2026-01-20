@@ -6,35 +6,6 @@ namespace Measurement
 
 universe u v w
 
-
-namespace Enumeration
-
-variable {A : Type u}
-
-def nth : Enumeration A -> Nat -> Option A
-  | .nil,      _     => none
-  | .cons a _, 0     => some a
-  | .cons _ t, n + 1 => nth t n
-
-def last : Enumeration A -> Option A
-  | .nil        => none
-  | .cons a .nil => some a
-  | .cons _ t   => last t
-
-def len : Enumeration A -> Nat
-  | .nil      => 0
-  | .cons _ t => len t + 1
-
-def append : Enumeration A -> Enumeration A -> Enumeration A
-  | .nil,        ys => ys
-  | .cons a as,  ys => .cons a (append as ys)
-
-def rev : Enumeration A -> Enumeration A
-  | .nil      => .nil
-  | .cons a t => append (rev t) (.cons a .nil)
-
-end Enumeration
-
 /--
 Ledger: concrete nonempty spine [head, tail...].
 -/
