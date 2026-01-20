@@ -7,15 +7,19 @@ and the concrete nonempty spine TimeSeries := [head, tail].
 Depends on Chapter1/ZFC.lean.
 -/
 
-import Measurement.Chapter1.ZFC
+import Measurement.Chapter1.Axioms
 
 
 namespace Measurement
 
 /--
-TimeSeries interface: something you can call `first`, `last`, `index`, etc. on.
+Definition 2: Symbol Map.
+-/
+abbrev SymbolMap (X : Type u) : Type u :=
+  Nat -> Option X
 
-We keep it minimal: nonempty by construction (via `first : X`).
+/--
+Definition 3: Time Series
 -/
 structure TimeSeries (X : Type u) : Type u where
   first : X
