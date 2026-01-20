@@ -1,76 +1,87 @@
 import Std
 
+import Measurement.Chapter1.Constructions
+
 namespace Measurement
 
 universe u v w
 
-/-- Things in real life take up space, unlike abstract entities in a set. -/
-class Size (R : Type v) where
-  size : R -> Nat
 
-/-- A recursive ledger: either empty, or it has a last entry and a previous
-ledger. All accessors can be defined by recursion on `prev`. -/
-class Ledger (L : Type u) (R : Type v) where
-  /-- Base case witness. -/
-  empty : L
+namespace Enumeration
 
-  /-- Decide emptiness. -/
-  isEmpty : L -> Bool
+variable {A : Type u}
 
-  /-- The last entry, if any (the "back"). -/
-  entry : L -> Option R
+def nth : Enumeration A -> Nat -> Option A
+  | .nil,      _     => none
+  | .cons a _, 0     => some a
+  | .cons _ t, n + 1 => nth t n
 
-  /-- The previous ledger state (the "pop"). -/
-  prev : L -> Option L
+def last : Enumeration A -> Option A
+  | .nil        => none
+  | .cons a .nil => some a
+  | .cons _ t   => last t
 
-  /-- Coherence laws for the recursion. -/
-  empty_isEmpty : isEmpty empty = true
-  empty_entry   : entry empty = none
-  empty_prev    : prev empty = none
+def len : Enumeration A -> Nat
+  | .nil      => 0
+  | .cons _ t => len t + 1
 
-  /-- If not empty, we can step back. -/
-  prev_of_nonempty :
-    forall Lt : L, isEmpty Lt = false -> exists Lp : L, prev Lt = some Lp
+def append : Enumeration A -> Enumeration A -> Enumeration A
+  | .nil,        ys => ys
+  | .cons a as,  ys => .cons a (append as ys)
 
-  /-- Default recursive size: number of steps to empty. -/
-  size : L -> Nat :=
-    fun Lt =>
-      let rec go (k : Nat) (cur : L) : Nat :=
-        if isEmpty cur = true then
-          k
-        else
-          match prev cur with
-          | some p => go (k + 1) p
-          | none   => k  -- should not happen if prev_of_nonempty holds
-      go 0 Lt
+def rev : Enumeration A -> Enumeration A
+  | .nil      => .nil
+  | .cons a t => append (rev t) (.cons a .nil)
 
-  /-- Default recursive get: 0 means last entry, then walk prev. -/
-  get : L -> Nat -> Option R :=
-    fun Lt n =>
-      let rec go_get (cur : L) (m : Nat) : Option R :=
-        match m with
-        | 0 =>
-            entry cur
-        | m + 1 =>
-            match prev cur with
-            | some p => go_get p m
-            | none   => none
-      go_get Lt n
+end Enumeration
 
-  push : L -> R -> L
+/--
+Ledger: concrete nonempty spine [head, tail...].
+-/
+structure Ledger (X : Type u) : Type u where
+  head : X
+  tail : Enumeration X
 
+namespace Ledger
 
+variable {X : Type u}
 
+def toEnum (L : Ledger X) : Enumeration X :=
+  .cons L.head L.tail
 
+def first (L : Ledger X) : X :=
+  L.head
 
-/-- Definition 2: Partially Ordered Set -/
-class Poset (L : Type u) (R : Type v) [Ledger L R] where
-  prec : L -> R -> R -> Prop
+def rest (L : Ledger X) : Nat -> Option X :=
+  fun n => Enumeration.nth L.tail n
 
-notation:50 a " ≺ " b => Poset a b
+def last (L : Ledger X) : X :=
+  match Enumeration.last (L.toEnum) with
+  | some x => x
+  | none   => L.head
 
-/-- Definition 3: Time Series -/
-class TimeSeries (S : Type u) (T : Type v) (α : Type w) where
-  get? : S -> Nat -> Option α
+def index (L : Ledger X) : Nat -> Option X :=
+  fun n =>
+    match n with
+    | 0     => some L.head
+    | n + 1 => Enumeration.nth L.tail n
+
+def reverse (L : Ledger X) : Ledger X :=
+  match Enumeration.rev (L.toEnum) with
+  | .nil => { head := L.head, tail := .nil }  -- unreachable; keeps total
+  | .cons h t => { head := h, tail := t }
+
+def size (L : Ledger X) : Nat :=
+  Enumeration.len (L.toEnum)
+
+end Ledger
+
+/--
+Ledger implements the TimeSeries interface.
+-/
+def Ledger.asTimeSeries {X : Type u} (L : Ledger X) : TimeSeries X :=
+{ first := L.head
+, rest  := fun n => Enumeration.nth L.tail n
+}
 
 end Measurement

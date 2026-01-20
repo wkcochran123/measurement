@@ -1,29 +1,52 @@
 import Std
 
+
 import Measurement.Chapter1.Definitions
 import Measurement.Chapter2.Constructions
 
 namespace Measurement
 
-universe u v
+namespace Enumeration
+/-- Find the first index of `a` in the enumeration, if present. -/
+def find [DecidableEq α] : Enumeration α -> α -> Option Nat
+  | .nil,        _ => none
+  | .cons b t, a =>
+      if b = a then
+        some 0
+      else
+        match find t a with
+        | some n => some (n + 1)
+        | none   => none
 
-/-- Definition 4: Alphabet -/
-class Alphabet (S : Type u) (σ : Type v) where
-  get : S -> Nat -> σ
-  index : S -> σ -> Nat
+def get : Enumeration α -> Nat -> Option α
+  | .nil,      _     => none
+  | .cons a _, 0     => some a
+  | .cons _ t, n + 1 => get t n
+end Enumeration
 
+/-- Definition: Alphabet -/
+structure Alphabet (σ : Type v) where
+  symbols : Enumeration σ
+
+namespace Alphabet
+
+def get (A : Alphabet σ) : Nat -> Option σ :=
+  fun n => Enumeration.get A.symbols n
+
+def index [DecidableEq σ] (A : Alphabet σ) : σ -> Option Nat :=
+  fun s => Enumeration.find A.symbols s
+
+end Alphabet
 
 /-- Definition 5: Refinement -/
-structure Refinement (S: Type u) where
-  refine: S -> S
-
+structure Refinement (X : Type u) where
+  refine : X -> Enumeration X -> Enumeration X
 
 /-- Definition 6: Structure -/
-structure Record where
-  a : Nat
-  b : Nat
-  c : Nat
-
+structure Record (σ : Type v) where
+  i : Nat
+  σ : σ
+  k : Nat
 
 
 /-- Definition 7: Moment -/
@@ -43,63 +66,18 @@ class Prediction (X : Type u) (Y : Type v) where
 
 
 /-- Definition 10: Event -/
-structure Event where
-  records : ZFC.FiniteSet Record
+structure Event (S : Type u)(A: Alphabet σ) where
+  records : ZFC.FiniteSet (Record σ)
+
 
 /-- Definition 11: Phenomenon -/
-structure Phenomenon where
-  events : ZFC.FiniteSet Event
+structure Phenomenon (S: Type u)(σ: Alphabet A) where
+  events : ZFC.FiniteSet (Event u σ)
 
-/-- Definition 12: Coarsening map-/
-structure CoarseningMap (σ : Type u) where
-  coarsen : σ -> Option σ
+structure Instrument (S : Type u) where
+  Sigma: Alphabet S
+  phenomenon: Phenomenon (S:=S) Sigma
 
-/-- Definition 13: Grid map. -/
-structure GridMap where
-  grid : Nat -> Option Nat
-
-/-- Definition 14: A record coarsening map. -/
-def RecordCoarseningMap (R : Type u) :=
-  R -> Option R
-
-/-- Definition 15: Dense response. -/
-def DenseResponse : Type :=
-  ZFC.Qpos -> Rat
-
-/-- Definition 16: Domain response. -/
-def DomainResponse : Type :=
-  ZFC.Rpos -> Real
-
-/-- Definition 17: History -/
-structure History where
-  events : Array Event
-
-
-/-- Definition 18: Refinement Operator -/
-
-
-structure RefinementOperator
-    (L : Type u) (R : Type v) (X : Type w) [Ledger L R] where
-  /-- The underlying refinement (Definition 5). -/
-  Rhat : Refinement L
-
-  /-- Prediction map f. -/
-  f : X -> R
-
-  /-- Representation map rhoTilde. -/
-  rhoTilde : R -> X
-
-  /-- Growth: refinement adds exactly one new ledger entry. -/
-  ledger_growth :
-    forall Lt : L,
-      Ledger.size (L := L) (R := R) (Rhat.refine Lt) =
-        Ledger.size (L := L) (R := R) Lt + 1
-
-  ledger_coherence :
-    forall Lt : L,
-      exists e : R,
-        Ledger.entry (L := L) (R := R) (Rhat.refine Lt) = some e
-
-
+abbrev Clock := Instrument Nat
 
 end Measurement

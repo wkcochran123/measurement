@@ -636,16 +636,10 @@ Let $X$ be a set equipped with an admissible enumeration.  An
 \eta : X \to \mathbb{N}
 \]
 that assigns to each element of $X$ an ordinal address such that:
-\begin{enumerate}
 \item $\eta$ is order preserving with respect to the enumeration on $X$ and the
 standard order on $\mathbb{N}$,
-\item the image $\eta(X)$ is finite or locally finite, and
-\item for any admissible refinement of the enumeration, the induced map on
-addresses is recoverable from the record.
-\end{enumerate}
-The map $\eta$ is not required to be injective, surjective, or invertible.  Two
-enumeration maps related by an order-preserving relabeling of $\mathbb{N}$ are
-considered observationally equivalent.
+
+The image $\eta(X)$ is said to be \emph{countable}.
 \end{definition}
 
 \subsection{Recoverability Constraint}
@@ -711,6 +705,12 @@ extensions of the record.
 
 This gives rise to the idea of an \emph{enumeration}.
 
+\begin{definition}{Symbol Map}
+\[
+f_i : \mathbb \to X \cup \{\varnothing\}
+\]
+\end{definition}
+
 \begin{definition}[Enumeration]
 \label{def:enumeration}
 Let $X$ be a set.  An \emph{enumeration} of $X$ is a collection of maps
@@ -718,10 +718,9 @@ Let $X$ be a set.  An \emph{enumeration} of $X$ is a collection of maps
 \mathcal{E} = \{ f_i \}_{i \in I},
 \]
 where each map
-\[
-f_i : \mathbb \to X \cup \{\varnothing\}
-\]
 returns either an element of $X$ or the empty result $\varnothing$.
+
+REDEFINE THESE IN TERMS OF LISP
 
 The following maps are:
 \begin{enumerate}
