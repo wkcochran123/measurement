@@ -79,5 +79,28 @@ structure Instrument (S : Type u) where
   phenomenon: Phenomenon (S:=S) Sigma
 
 abbrev Clock := Instrument Nat
+/--
+Definition: Time Series.
+
+A time series is a finite or countably infinite sequence of records
+that is strictly ordered by a partial order, with no repeated positions.
+-/
+structure TimeSeries (E : Type u)(X : Type v) where
+  data : E → X
+  order : PartialOrder E
+  /-- The sequence of records (partial to allow finite series). -/
+  seq : Nat → Option E
+  /-- No two distinct records share the same position. -/
+  seq_injective :
+    ∀ {n m r},
+      seq n = some r →
+      seq m = some r →
+      n = m
+  /-- Successive records respect the order. -/
+  seq_ordered :
+    ∀ {n r s},
+      seq n = some r →
+      seq (n+1) = some s →
+      order.le r s
 
 end Measurement

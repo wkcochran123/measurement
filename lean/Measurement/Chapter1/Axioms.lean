@@ -8,15 +8,9 @@ labels to numbers.
 -/
 
 /--
-Definition 1: Symbol Map.
--/
-abbrev SymbolMap (X : Type u) : Type u :=
-  Nat -> Option X
+Definition 1: Enumerable Map.
 
-
-/-
-Defintion 2: Enumeration.
+Surjective
 -/
-inductive Enumerable (A : Type u) : Type u
-  | nil : Enumerable A
-  | cons : A → Enumerable A → Enumerable A
+abbrev EnumerationMap (X : Type u) : Type u :=
+  X -> Nat

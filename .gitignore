@@ -11,3 +11,5 @@ tex/appendix
 *.log
 *toc
 tex/go.sh
+*.zip
+lean/go.sh

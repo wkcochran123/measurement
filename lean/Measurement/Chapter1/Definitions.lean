@@ -6,6 +6,8 @@ namespace Measurement
 
 universe u v w
 
+
+
 /--
 Ledger: concrete nonempty spine [head, tail...].
 -/
@@ -46,13 +48,5 @@ def size (L : Ledger X) : Nat :=
   Enumeration.len (L.toEnum)
 
 end Ledger
-
-/--
-Ledger implements the TimeSeries interface.
--/
-def Ledger.asTimeSeries {X : Type u} (L : Ledger X) : TimeSeries X :=
-{ first := L.head
-, rest  := fun n => Enumeration.nth L.tail n
-}
 
 end Measurement

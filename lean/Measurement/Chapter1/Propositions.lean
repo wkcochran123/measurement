@@ -11,21 +11,34 @@ namespace Measurement
 
 universe u v
 
-/-- The trivial Nat enumeration: symbols are just naturals (identity). -/
-def trivialNatEnumeration : Enumerable Unit Nat :=
-{ eta := fun _ n => n
-, rho := fun _ n => some n
-, rho_eta := by
-    intro s x
-    rfl
-}
 
 /--
 Proposition 1 (Chapter 1): there exists a trivial enumeration.
 
 We package it as `Nonempty` so it is easy to use downstream.
 -/
-theorem exists_trivial_enumeration : Nonempty (Enumerable Unit Nat) :=
-  ⟨trivialNatEnumeration⟩
+
+def trivialEnumeration: EnumerationMap Nat :=
+  fun n => n
+
+theorem exists_trivial_enumeration : Nonempty (EnumerationMap Nat) :=
+  ⟨trivialEnumeration⟩
+
+def ledgerOfNaturalNumbers: Ledger Nat :=
+  { head := 1
+  , tail :=
+      let rec aux (n : Nat) : Enumeration Nat :=
+        match n with
+        | 0     => .nil
+        | n + 1 => .cons n (aux n)
+      aux  (Nat.succ 0)
+  }
+
+  /-- There exists a ledger of natural numbers. -/
+theorem exists_ledgerOfNaturalNumbers : ∃ L : Ledger Nat, True :=
+by
+  exact ⟨ledgerOfNaturalNumbers, trivial⟩
+
+
 
 end Measurement
