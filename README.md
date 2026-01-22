@@ -1,5 +1,9 @@
 # Measurement
 
+Version 0.1.1
+[Latest pdf build.](https://drive.google.com/file/d/1t8qZYaYHa_-4-A0Hfjk-5ZqHwnuflh8H/view?usp=drive_link)
+
+
 This repository contains a developing axiomatic framework for measurement,
 events, and refinement, together with a Lean 4 formalization of the early
 chapters.
@@ -16,9 +20,12 @@ than full formal rigor.
 
 ## Current status
 
-- **Chapters 1 and 2**  
-  Fully human-readable and accompanied by working Lean code.
-  Core definitions, axioms, and early propositions are mechanically verified.
+- **Chapter 1**  
+  Human-readable and accompanied by working Lean code.  Pretty big
+  refactor, but the types are now ready to scale.
+
+- **Chapter 2**
+  Mostly readable.  Substantial work left on the Lean.
 
 - **Chapter 3 and beyond**  
   The text gives more of a shape of the argument as the prose and rigor lack

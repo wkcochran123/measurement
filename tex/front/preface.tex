@@ -1,0 +1,58 @@
+\chapter*{Preface}
+
+Thank you for your interest in this work.  This manuscript is an ongoing attempt
+to articulate a minimal theory of measurement grounded in discrete records,
+enumeration, and refinement.  The aim is not to introduce new physical postulates,
+but to make explicit which structures are forced by the act of recording itself,
+and which are optional representational choices.
+
+\paragraph{Overview and goals.}
+The central goal of this work is to develop a theory of measurement in which
+facts are treated as entries in an ordered ledger and all further structure is
+introduced only when it can be recovered from refinement of that record.  The
+theory is presented in two parallel forms.  First, the mathematical development
+is given in prose, organized into chapters that introduce definitions,
+constraints, and phenomena in a fixed logical order.  Second, the same structures
+are formalized and verified in the Lean proof assistant, providing machine-checked
+proofs of the core propositions.
+
+\paragraph{State of the manuscript.}
+The manuscript is under active development.
+Chapter~1, which introduces ledgers, enumeration, and the collection of facts, is
+currently in rough draft form but structurally complete.
+Chapter~2, which introduces instruments as refinable models that generate and
+coordinate records, has many of its major components in place, though portions
+remain provisional.
+Chapter~3 marks the beginning of less developed material and currently consists
+of incomplete outlines and exploratory arguments.
+
+\paragraph{State of the formalization.}
+The Lean formalization mirrors the structure of the manuscript.
+The definitions and propositions of Chapter~1 have been implemented and verified.
+Formalization of Chapters~2 and~3 is underway, with core interfaces established
+and additional constructions in progress.
+
+\paragraph{Goal of the proof.}
+A guiding objective of this project is to clarify the role of the Continuum
+Hypothesis as a representational choice rather than a statement about physical
+reality.  In particular, we aim to show that assuming the Continuum Hypothesis
+corresponds to modeling carrier particles as having indefinitely dissectable
+volume, while assuming its negation corresponds to modeling carriers as atomic
+and volume-free.  These two assumptions give rise to distinct representational
+models that nevertheless span the same space of communicable simulations.  Within
+the ledger framework, no measurement can be communicated that expresses the volume
+of such carriers; only counts and correlations are admissible.
+
+\paragraph{Repository and versioning.}
+All source files for the manuscript and the Lean formalization are maintained in
+the public repository
+\begin{center}
+\texttt{https://github.com/wkcochran123/measurement}
+\end{center}
+The current working release is version~0.1.1.
+
+\paragraph{Request for sponsorship.}
+This manuscript is intended for submission to the arXiv under the category
+\texttt{cs.IT}.  Readers who are eligible and willing to sponsor the submission
+are kindly invited to do so using the code \texttt{C9GIVH}.
+

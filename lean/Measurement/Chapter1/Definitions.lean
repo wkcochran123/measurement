@@ -9,7 +9,7 @@ universe u v w
 
 
 /--
-Ledger: concrete nonempty spine [head, tail...].
+Definition 4: Ledger
 -/
 structure Ledger (X : Type u) : Type u where
   head : X
@@ -41,12 +41,13 @@ def index (L : Ledger X) : Nat -> Option X :=
 
 def reverse (L : Ledger X) : Ledger X :=
   match Enumeration.rev (L.toEnum) with
-  | .nil => { head := L.head, tail := .nil }  -- unreachable; keeps total
+  | .nil => { head := L.head, tail := .nil }
   | .cons h t => { head := h, tail := t }
 
 def size (L : Ledger X) : Nat :=
   Enumeration.len (L.toEnum)
 
 end Ledger
+
 
 end Measurement

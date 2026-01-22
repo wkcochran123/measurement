@@ -1,4 +1,4 @@
-\chapter{Facts and Truths}
+\chapter{Facts}
 
 Scientific knowledge begins not with theory, but with tension: the persistent
 gap between what is experienced and what is said to hold. This gap is not an
@@ -52,7 +52,8 @@ determines which distinctions are eligible to become facts at all.
 
 Instruments are not neutral windows onto reality. Each is designed to answer a
 specific question, and in doing so it discards others. A ruler measures length
-but ignores color. A clock measures duration but not distance. What qualifies as
+but ignores color. A clock measures duration but not distance. A survey
+can gauge taste yet makes no claim about flavor. What qualifies as
 a fact is therefore inseparable from the instrument used to establish it.
 Change the instrument, and new facts may appear while old ones dissolve.
 
@@ -142,8 +143,8 @@ primitive geometric derivative.
 In the mechanical case, the device literally counts wheel rotations through a
 gear train and maps those counts to pointer positions; in the digital case, it
 counts the same rotations and displays a numeral drawn from a finite set of symbols.
-Each time the counter increments and the display
-changes, a new distinguishable event is recorded. Between two successive display
+Each time the counter increments, the computation may change,
+and the current symbol for the measurement is displayed. Between two successive display
 states there is, from the informational record alone, no warrant to assert that
 any additional state occurred. The apparent continuity of ``speed'' is a visual
 interpolation of a finite counting process.
@@ -189,6 +190,20 @@ structure below the resolution of measurement. The goal of this work is to
 formalize this distinction and to derive the observed laws of the physical world
 from the constraints imposed by the observational history itself.
 
+Many of the long-standing tensions in the foundations of physical mathematics
+arise from violations of this principle. They appear whenever mathematical
+structure is treated as observationally binding despite the absence of records
+that could support it. In such cases, formal constraint outruns experimental
+distinction, and inference quietly takes on the authority of fact.
+
+This tension is already visible at the birth of the calculus. Newton introduced
+infinitesimal variation as a powerful representational device for describing
+motion, while Berkeley objected that these quantities lacked clear observational
+meaning, deriding them as ``ghosts of departed quantities.'' The dispute was not
+merely philosophical. It concerned whether structure introduced for analytical
+convenience could legitimately constrain physical description in the absence of
+corresponding records. The case of infinitesimals thus provides a particularly
+clear illustration of the principle at stake.
 
 The arguments that follow are intentionally spare. Each proceeds by identifying
 what a finite observer is permitted to record, and then asking what structures
@@ -203,7 +218,7 @@ The central question, pursued throughout this work, is what
 structure is forced when the universe itself participates in the act of
 measurement.
 
-\section{From Facts to Truths}
+\section{The Inference of Truth}
 
 This chapter draws a line that is easy to state and hard to keep straight in
 practice.
@@ -226,8 +241,14 @@ where this distinction is softened. Berkeley's criticism of Newton, for instance
 was not that
 the resulting predictions were ineffective, but that the argument appealed to
 entities that could not be grounded in any definite act of measurement. The
-concern was not utility, but epistemic license~\cite{berkeley1734}.  Predictive power,
-according to Phenomenon~\ref{ph:truth-effect}, is never guaranteed.
+concern was not utility, but epistemic license~\cite{berkeley1734}.  
+
+Predictive power, according to Phenomenon~\ref{ph:truth-effect}, is never
+guaranteed. A description may yield accurate forecasts while remaining detached
+from any recoverable record of observation. Such success does not confer
+legitimacy on the structures employed, nor does it convert assumption into fact.
+Within this framework, prediction without record is always provisional: it may
+guide action, but it cannot settle truth.
 
 When a mathematical construction is treated as if it were itself a physical
 fact, structure is quietly attributed to the world that no finite observer
@@ -323,7 +344,7 @@ but their uncountable distinctions cannot be promoted to fact. Where enumeration
 does not terminate, the experimental ledger must stop.
 
 
-\begin{phenom}{The Pythagoras--Planck Effect~\ref{euclid300bc,planck1900}}
+\begin{phenom}{The Pythagoras--Planck Effect~\cite{euclid300bc,planck1900}}
 \label{ph:pythagoras}
 
 \PhStatement
@@ -425,8 +446,8 @@ recoverability, not consistency alone.
 
 
 The structure of this work follows a single organizing principle: nothing is
-assumed that cannot be recovered from a finite record. Chapters~\ref{chap:instrument},
-and~\ref{chap:experimental} formalizes
+assumed that cannot be recovered from a finite record. Chapters~\ref{chap:instrument}
+and~\ref{chap:experimental} formalize
 measurement itself, introducing the axioms that govern refinement
 and establishing the experimental ledger as a mathematical object. Chapter~\ref{chap:algebra}
 develops the algebra of events required to merge and compare such records
@@ -478,21 +499,52 @@ procedure.
 
 \section{Observable and Inobservable}
 
-In modern form, Berkeley's criticism is that one cannot refine beyond what a
-measurement can actually distinguish. Any argument that depends on
-infinitessimal structure inaccessible to all instruments is already admitting
-information that the experimental ledger cannot contain. Such structure may be
-consistent within a theory, but it is not recoverable from fact. Berkeley's
-objection is therefore not metaphysical, but operational: distinctions without
-records are not merely unknown, they are inadmissible.
+A scientific record does not begin with explanations, models, or laws.
+It begins with reports.  Before any structure can be imposed, something
+must be said to have happened, and that saying must itself be an event.
+A fact, in this framework, is not a truth about the world but an entry
+in a record: a mark that distinguishes one outcome from another.
 
-Galileo reframed this constraint positively. By insisting that
-natural phenomena be described through quantities that can be compared,
-reproduced, and communicated, Galileo implicitly bound scientific claims to
-what could be stably written down. Measurement replaces immediate sensation
-with symbol, but only symbols that different observers can agree upon under
-similar conditions. What survives repetition
-becomes fact; what cannot be reproduced dissolves into private experience.
+Crucially, not every distinction that can be imagined can be reported.
+A report must be tied to a witnessable act.  Whether the witness is
+human, mechanical, or automated is irrelevant; what matters is that the
+act produces a discrete record that can be placed alongside others.
+Anything that cannot be so recorded cannot enter the ledger of facts.
+
+This restriction is not philosophical austerity but operational
+necessity.  A record that includes distinctions that were never
+witnessed, or could not have been witnessed, cannot be checked,
+refined, or recovered.  Such distinctions do not behave like facts.
+They cannot be ordered, counted, or related to later records without
+introducing assumptions that were never themselves recorded.
+
+
+\section{A Collection of Facts}
+\label{sec:collection_of_facts}
+
+For this reason, the collection of facts must proceed conservatively.
+Each entry in the ledger corresponds to a witnessed outcome, and
+nothing more.  The ledger grows only by the accumulation of such
+entries.  It does not interpolate between them, infer intermediate
+structure, or assign hidden properties to what was not observed.  Any
+additional structure must be justified later, through refinement or
+modeling, and must remain compatible with the original record.
+
+This discipline forces a sharp separation between what is seen and what
+is said.  The act of witnessing produces a fact; the act of describing
+or explaining it belongs to a different layer of analysis.  Confusing
+these layers leads to records that appear rich but cannot be recovered
+or refined without contradiction.
+
+The consequences of this separation were already recognized at the
+birth of modern science.  In their rejection of unobservable qualities
+and insistence on reportable outcomes, early thinkers laid the
+groundwork for a method that privileges witnessed facts over inherited
+explanation.  This constraint, though often treated as philosophical,
+has concrete implications for how measurements are recorded and how
+models may be built upon them.
+
+These implications are captured in the following phenomenon.
 
 \begin{phenom}{The  Berkeley--Galileo Effect~\cite{berkeley1734,galileo1638}}
 \label{ph:fact-effect}
@@ -526,7 +578,7 @@ cannot be resolved by refinement is inadmissible.
 
 \PhConsequence
 Hidden variables and sub-resolution structure are excluded as physical facts.
-Continuum descriptions introduced between discrete events function only as
+Continuum descriptions introduced between discrete records function only as
 models for inference and prediction; they may summarize recorded behavior but
 may not be used to distinguish physical states or to introduce new constraints
 on histories.
@@ -545,7 +597,7 @@ confusion in measurement. Scientific refinement proceeds by the construction of
 new instruments that render previously collapsed variation distinguishable,
 thereby producing new events and new ledgers. Error arises when distinctions
 visible only to a refined instrument are projected back onto a coarser one, as
-though they had always been present. Phenomeon~\ref{ph:fact-effect} marks this
+though they had always been present. Phenomenon~\ref{ph:fact-effect} marks this
 boundary precisely: structure is neither denied nor assumed, but admitted only
 when it can be stably recorded by some instrument and reconciled with existing
 ledgers.
@@ -569,14 +621,14 @@ when structure is physically constructible, the record of observation is
 finite, irregular, and contaminated by variation.  The universe does not
 present crisp algebraic objects for observation, just apparent clouds of outcomes.
 
-At this point, the challenge of interpreting measurements changes character.  
-The danger is no longer the
-introduction of metaphysical objects, but the premature declaration of truth
-from insufficient evidence.  A new discipline is required: not one that
-prevents imaginary structure, but one that makes genuine structure earn its
-right to be believed.
+\subsection{Retrospective Meaning}
 
-Truths arise only after facts have been collected, and their role is
+At this point, the challenge of interpreting measurements changes character.
+The primary danger is no longer the introduction of metaphysical objects, but
+the premature declaration of truth from insufficient record. The problem is not
+that structure is imagined, but that it is believed too soon.
+
+Truths can only arise after facts have been collected, and their role is
 explanatory rather than generative. A truth organizes what has already been
 written down; it does not compel what must be written next. While truths may
 support prediction, no prediction is guaranteed by explanation alone. The
@@ -612,7 +664,7 @@ Confirmation adds no logical force; the ledger grows only by recording specific
 outcomes, not general laws.
 
 \PhConstraint
-Let $\mathcal{L}_t$ be the ledger (Defintion~\ref{def:ledger}) at step $t$. 
+Let $\mathcal{L}_t$ be the ledger (Definition~\ref{def:ledger}) at step $t$. 
 No rule $\mathcal{R}$ derived from $\mathcal{L}_t$ may be treated as a constraint on the set of 
 refinements at $t+1$. The validity of a law is strictly retrospective; it
 describes the consistency of the current record but cannot forbid the recording
@@ -624,10 +676,10 @@ earns its standing only by resisting systematic attempts to break it under
 refinement. Consequently, ``certainty'' is not a state accessible to a finite
 observer; it is replaced by \emph{persistence}, the measure of how much
 history a rule has successfully constrained.  
-The acceptance of a physical law as a truth is directly related to the amount of the history
-it can explain.
 \end{phenom}
 
+The acceptance of a physical law as a truth is directly related to the amount of the history
+it can explain.
 More fundamentally, the Hume Effect reflects the presence of noise in every act
 of observation. No matter how strong a signal may be at a sensor, its recording
 is never exact. Finite resolution, environmental coupling, calibration drift,
@@ -649,7 +701,7 @@ space of admissible variation beneath its own resolution.
 As such, the central claim of this monograph is that an observable universe can be described
 as a pair of mutually defining operations: \emph{measurement} and \emph{distinction}.
 The first gives rise to the classical calculus of variations; the second to a discrete
-ordering of events.  We introduce the \emph{Causal Universe Tensor} as the mathematical
+ordering of records.  We introduce the \emph{Causal Universe Tensor} as the mathematical
 structure that encodes measuring events.  The Causal Universe Tensor unites events by showing that every
 measurement in the continuous domain corresponds to a finite operation in
 the discrete domain, and that these two descriptions agree point-wise to
@@ -669,8 +721,8 @@ each incomplete without the other.  The subsequent chapters formalize this
 duality axiomatically, derive its tensor representation, and show that the
 entire machinery of dynamics—motion, field, and geometry—arises as the
 successive enforcement of consistency between the two.  In order to build
-such complex mathematical structures, we begin with the simplest of all
-mathematical constructions: counting.
+such complex mathematical structures, we begin with the simplest of all:
+counting.
 
 
 \section{Enumeration}
@@ -689,7 +741,14 @@ not measure speed directly. Instead, it counts wheel rotations over time and
 pairs this count with a second enumeration, such as clock ticks. Speed appears
 only after these two ordered sequences are brought into correspondence. The
 fundamental facts are not distances or velocities, but counts: how many
-rotations occurred, and in what temporal order. Everything else is derived.
+rotations occurred between clock ticks. Everything else is derived.
+
+A speedometer relies on precisely this enumerated structure.  The instrument does
+not measure speed directly.  Instead, it counts wheel rotations over time and
+pairs this count with a second enumeration, such as clock ticks.  Speed appears
+only when these two ordered sequences are brought into correspondence.  The
+fundamental facts are not distances or velocities, but counts: how many
+rotations occurred between clock ticks.  Everything else is derived.
 
 The resolution of such an instrument is determined by what it can count. If a
 wheel completes less than a full rotation, no new event is recorded. Fractional
@@ -698,12 +757,18 @@ instrument. This is not because the motion does not occur, but because the
 instrument’s interface admits only whole rotations as recordable facts. The
 enumeration defines the grain at which experience becomes discrete.
 
-Refinement proceeds by changing what is counted. A wheel with finer markings,
-an encoder with more teeth, or a sensor that registers partial rotations
-introduces a new enumeration with smaller increments. The resulting ledger
-contains more entries, ordered more finely, and supports new derived quantities.
-What appears as continuous motion is thus revealed as a sequence whose apparent
-smoothness depends on the density of its enumeration.
+Refinement proceeds by changing what is counted. A wheel with finer markings, an
+encoder with more teeth, or a sensor that registers partial rotations introduces
+a new enumeration with smaller increments. Each such modification replaces one
+counting scheme with another, increasing the resolution at which distinctions
+can be recorded.
+
+The resulting ledger contains more entries, ordered more finely, and supports
+new derived quantities. What appears as continuous motion is thus revealed as a
+sequence whose apparent smoothness depends on the density of its enumeration.
+Continuity is not introduced as a primitive feature of motion, but emerges as a
+limit of refinement within the record.
+
 
 Importantly, enumeration does not presuppose identity beyond position in a
 sequence. The first rotation, the second rotation, and the thousandth rotation
@@ -774,18 +839,17 @@ Peano grounded arithmetic in axioms that assume the existence of the natural
 numbers rather than deriving them from prior structure. In doing so, he
 separated existence from construction and made counting primitive
 \cite{peano1889}. This formal move reflects a much older practice. The earliest
-personal name associated with measurement that we possess, Kushim, appears not
+personal name that we possess, Kushim, appears not
 in narrative or myth, but on an accounting tablet tallying receivables
-\cite{schmandtbesserat1992}. Kushim enters history as a mark of responsibility
-for a count, not as a character in a story. Together, these mark the same
+\cite{schmandtbesserat1992}. Kushim enters history as the observer writing
+to a ledger, not as a character in a story. Together, these mark the same
 principle: existence is not granted by explanation, but by being counted.
-
 
 \PhObservation
 Experimental ledgers consist of repeated distinctions returned by finite
 instruments.  Each  measurement produces a symbol from a finite
-alphabet and increments the corresponding entry in the histogram.  No further
-structure is observed at the moment of measurement.
+alphabet and increments the corresponding entry in the histogram of measurement.  
+No further structure is observed at the moment of measurement.
 
 \PhConstraint
 Only unit increments of the histogram are admissible. Each update records the
@@ -805,24 +869,31 @@ Phenomenon~\ref{ph:peano} therefore reflects a constraint on representation rath
 postulate of arithmetic.  Enumeration that violates this structure cannot remain
 stable under refinement and is inadmissible for measurement.
 
-The ledger of readings---\emph{i.e.} the ordered list of markings---grows one entry at a time. 
-Each entry appears because a
-recognizable physical change happened again: a wheel turned, a clock ticked, a display
-moved to its next mark. Those marks can be written down in a list, and because the list
-has an order, it can also be counted. Counting is not decoration here, it is the reason
-this finite decomposition works. If you could not tally how often the wheel signaled a turn, or
-how often the clock signaled a tick, you could never justify calling any later speed
-readout a reliable thing to compare across different instruments. The record of a single
-reading is therefore not a bare number, but a labeled entry that says which instrument
-noticed the change, which mark it selected, and how many times that same mark has appeared
-before in that same list.
-With this in mind, we begin by stating the formal principle that makes
-counting available as a tool of measurement.
+The ledger of readings---\emph{i.e.} the ordered list of markings---grows one entry
+at a time.  Each entry appears because a recognizable physical change happened
+again: a wheel turned, a clock ticked, a display advanced to its next mark.  These
+marks can be written down in a list, and because the list has an order, it can also
+be counted.
+
+Counting is not decoration here.  It is the reason this finite decomposition
+works.  If one could not tally how often the wheel signaled a turn, or how often
+the clock signaled a tick, there would be no basis for treating any later speed
+readout as something that could be compared across different instruments.
+
+For this reason, the record of a single reading is not a bare number.  It is a
+labeled entry that specifies which instrument registered the change, which mark
+was selected, and how many times that same mark has appeared before in that same
+ordered list.
+
+With this in mind, we begin by stating the formal principle that makes counting
+available as a tool of measurement.
+
 
 \begin{axiom}[The Axiom of Peano~\cite{fraenkel1922,zermelo1908}]
 \label{ax:peano}
 \emph{[Counting as the Tool of Information]}
-All reasoning in this work is confined to the framework of ZFC.
+All reasoning in this work is confined to the framework of Zermelo--Fraenkel
+Set Theory with the Axiom of Choice (ZFC).
 Every object---sets, relations, functions, and tensors---is
 constructible within that system, and every statement is interpretable
 as a theorem or definition of ZFC.  No additional logical principles
@@ -854,19 +925,18 @@ Because the markings are written down in sequence, they form an ordered list.
 That order is essential. It allows later entries to be compared with earlier
 ones and makes it possible to speak about succession, frequency, and rate. An
 unordered collection of marks would carry no such structure and would support
-no further reasoning.
+only a limited line of reasoning.
 
-Counting enters here not as ornament but as necessity. To count how often a
-wheel signals a turn or how often a clock signals a tick is to establish the
-only stable interface through which different instruments can later be brought
-into agreement. Without tallying, there is no principled way to justify treating
-two speed readouts, produced by different devices, as comparable at all.
+For this reason, a single reading is never just a bare symbol. It is an entry in a
+growing history. Each entry records which instrument registered the change and
+which mark was selected from its alphabet. Its position within the ordered
+sequence of prior entries is not itself recorded, but is determined by the
+ledger in which the entry appears.
 
-For this reason, a single reading is never just a bare number. It is an entry in
-a growing history. Each entry records which instrument registered the change,
-which mark was selected from its alphabet, and its position within the ordered
-sequence of prior entries. The meaning of the record depends on this context; the
-same mark occurring once or occurring many times does not play the same role.
+The meaning of a record depends on this context. A mark does not carry the same
+significance when it appears once as when it appears many times. What is
+recorded is the accumulation of marks; what is inferred is their order and
+frequency within the growing history.
 
 Enumeration therefore underwrites the entire enterprise. By fixing how entries
 are ordered and counted, the ledger makes repetition visible and comparison
@@ -887,19 +957,34 @@ associate each element of an enumerated structure with a natural ordinal that
 records its position relative to the beginning of the enumeration.
 
 Accordingly, we introduce a surjective representational map
-\[
+\begin{equation}
 \eta : X \to \mathbb{N},
-\]
-which assigns to each symbol $\sigma$ its ordinal position within a fixed
+\end{equation}
+which assigns to each entity $x\in X$ its ordinal position within a fixed
 enumeration.  The codomain $\mathbb{N}$ is not invoked here as a numerical
 structure, but as the canonical successor-generated ordinal system guaranteed
-by the Peano effect.  The role of $\eta$ is to provide an address, not a value.
+by the Peano effect.  More colloquially, the role of $\eta$ is to provide an 
+address, where to look for a value, not a value, itself.
 
 The map $\eta$ is not required to be invertible, nor is it assumed to be unique.
-Different admissible enumerations of the same structure may induce different
-ordinal assignments.  What is required is that $\eta$ preserve order and that
-its assignments be recoverable under refinement.  Any two such maps related by
-an order-preserving relabeling are observationally equivalent. 
+Different admissible enumerations of the same underlying structure may induce
+different ordinal assignments. What matters is not the specific labels assigned
+to entries, but the relational structure those labels preserve.
+
+The essential requirement is that $\eta$ respect order and that its assignments
+remain recoverable under refinement. As the ledger grows and distinctions become
+finer, previously assigned ordinals must continue to embed consistently within
+the refined enumeration. A relabeling that preserves order introduces no new
+empirical content; it merely changes the names by which recorded distinctions
+are referenced.
+
+For instance, a speedometer may be calibrated in miles
+per hour or kilometers per hour. The numerical values differ, but the ordering of
+speeds and the relations between successive readings are preserved. Both
+enumerations support the same judgments about increase, decrease, and equality,
+and both are recoverable from one another by an order-preserving transformation.
+Such representations are observationally equivalent: they describe the same
+recorded history using different, but compatible, ordinal conventions.
 
 More subtly, $\eta$ need not be invariant over time. As an instrument is refined,
 replaced, or symbols reinterpreted---such as, change in units---the admissible 
@@ -916,46 +1001,33 @@ structure and the successor-based enumeration forced by ledger extension.
 
 \begin{definition}[Enumeration Map]
 \label{def:eta}
-Let $X$ be a set equipped with an admissible enumeration.  An
-\emph{enumeration map} is a function
+Let $X$ be a set equipped with an admissible enumeration (and its induced order).
+An \emph{enumeration map} is a function
 \[
 \eta : X \to \mathbb{N}
 \]
-that assigns to each element of $X$ an ordinal address such that:
-\item $\eta$ is order preserving with respect to the enumeration on $X$ and the
-standard order on $\mathbb{N}$,
-
-The image $\eta(X)$ is said to be \emph{countable}.
+such that:
+\begin{enumerate}
+\item $\eta$ is order preserving with respect to the induced order on $X$ and the
+standard order on $\mathbb{N}$.
+\item $\eta$ is surjective.
+\end{enumerate}
+The image $\eta(X)$ is said to be \emph{enumerable}.
 \end{definition}
 
-The interface provided by enumeration consists of a small set of ordinal
-operations sufficient to support measurement.  At minimum, an enumeration must
-support traversal in order: the ability to identify a first element when one
-exists, to move forward to a successor, and to compare relative position.
-Backward traversal is required only insofar as the underlying structure admits
-it, and is never assumed to be total.
+An enumeration map fixes an ordinal address for each admissible outcome, but it
+does not by itself guarantee that those addresses remain meaningful as the
+ledger grows. New distinctions may be introduced through refinement, and with
+them new enumerations. Unless ordinal assignments can be consistently recovered
+across such extensions, they risk encoding structure that is tied to a
+particular stage of description rather than to the recorded history itself.
 
-Forward iteration reflects the irreversible growth of the experimental ledger.
-Backward iteration corresponds to reconstruction from record and is therefore
-partial, defined only where recoverability permits.  No enumeration may require
-access to predecessors that cannot be recovered from the ledger itself.
+To prevent this, additional discipline is required. Ordinal labels must not only
+respect order within a given enumeration, but remain compatible with future
+refinements of the ledger. This requirement leads to the recoverability
+constraint.
 
-In addition to iteration, enumeration may provide distinguished boundary
-elements.  A first element represents the earliest addressable record, while a
-last element represents the current extent of a finite enumeration.  The
-existence of a last element is contingent on finiteness and is not assumed
-globally.
 
-Random access, understood as direct addressing by ordinal position, requires a
-complete enumeration.  Such access is admissible only when the enumeration is
-enumerable and fully recorded.  Structures that admit random
-access support direct lookup by index, but no argument in this chapter depends
-on the availability of such access.
-
-Accordingly, enumeration is stratified.  All observable structures must admit
-ordered traversal and boundary identification where defined.  Random access is
-optional structure that may be introduced when justified by completeness, but
-is never required for the definition of records, events, or refinement.
 
 
 \subsection{Recoverability Constraint}
@@ -1019,7 +1091,16 @@ feature of the world, but the invariance of certain refinements across all
 extensions of the record.
 \end{phenom}
 
-This gives rise to the idea of an \emph{enumeration}.
+Phenomenon~\ref{ph:object-permanence} thus constrains not only what may be 
+recorded, but how records
+may grow. If distinctions, once introduced, cannot be erased or reordered, then
+the history of measurement must take the form of a sequence constructed
+irreversibly, step by step. Each new entry may depend on what came before, but
+nothing that has been written may be removed or rewritten.
+
+The simplest mathematical structure that enforces this constraint is an
+inductively constructed record, extended only at its end. This motivates the
+following definition.
 
 \begin{definition}[Enumeration]
 An \emph{enumeration} is a finite record of outcomes constructed inductively.
@@ -1036,7 +1117,7 @@ exist.
 An enumeration, by itself, specifies only how outcomes are written down. It
 records the order in which outcomes are added, but it does not yet say how that
 record is to be read or consulted. To compare records, to speak about absence as
-well as presence, or to discuss how a ledger may extend in time, one must be
+well as presence of a phenomenon, or to discuss how a ledger may extend in time, one must be
 able to ask whether a given position contains a recorded outcome.
 
 The decoding map provides this interpretation. It assigns to each count either
@@ -1046,149 +1127,84 @@ by counting. The decoding map does not add new outcomes or impose completeness;
 it merely makes explicit how the existing enumeration is accessed and compared.
 
 \begin{definition}[Decoding Map]
-A \emph{decoding map} is a rule for reading outcomes from a finite enumeration.
-Given a state space $S$ and a set of outcomes $X$, a decoding map consists of an
-enumeration of elements of $X$ together with a function
+A \emph{decoding map} is a rule for reading outcomes from an enumeration. Given a
+set of outcomes $X$, a decoding map is a function
 \[
-\zeta : S \times \mathbb{N} \to X \cup \{\varnothing\},
+\zeta : \mathbb{N} \to X \cup \{\varnothing\},
 \]
 which returns the outcome recorded at position $n$ when it exists, and
-$\varnothing$ otherwise. The decoding map does not assert completeness or
-invertibility; it merely specifies how recorded outcomes are to be read from the
-enumeration.
+$\varnothing$ otherwise.
 
-The presence of $\varnothing$ records the absence of an entry, not a failure of
-the map. A decoding map therefore interprets an enumeration as a partial
-history, indexed by count, without presupposing that every index corresponds to
-a recorded outcome.
+The decoding map does not assert completeness, invertibility, or totality. The
+presence of $\varnothing$ records the absence of an entry, not a failure of the
+map. A decoding map therefore interprets an enumeration as a partial history,
+indexed by count, without presupposing that every index corresponds to a
+recorded outcome.
 \end{definition}
 
-\section{A Trivial Enumeration}
+An enumeration records outcomes by construction, but a record that cannot be
+read cannot constrain description. To function as an empirical object, a ledger
+must support the retrieval of its entries in a form that can be compared,
+summarized, and extended. The role of a decoding map is to make this retrieval
+explicit.
 
-The first proposition records a minimal existence claim.  Before any dynamics,
-refinement, or prediction are introduced, the ledger must support the act of
-counting itself.  In Lean, this is represented by a structure
-\[
-\texttt{Enumerable}(S,X) = (\eta,\rho,\rho\_\eta),
-\]
-where $\eta$ assigns a natural index to data and $\rho$ attempts to recover the
-data from an index.  The coherence condition $\rho\_\eta$ states that decoding
-after encoding returns the original value.
+Decoding does not introduce new information. It does not complete the record, nor
+does it impose a total ordering beyond what construction already provides. It
+merely specifies how the outcomes that have been written are to be accessed by
+count, and how the absence of an entry is to be recognized. In this sense,
+decoding is interpretive rather than generative: it reads from the ledger
+without adding to it.
 
-\begin{proposition}[Existence of a Trivial Enumeration]
-\label{prop:trivial-enumeration}
-There exists an enumerable structure for symbols given by the identity map on
-the natural numbers.  In particular, there exists $\texttt{Enumerable}(,\mathbb{N})$.
-\end{proposition}
-
-\begin{proofsketch}{trivial-enumeration}
-Define the encoder $\eta : \mathbf{1} \to \mathbb{N} \to \mathbb{N}$ by
-$\eta(\ast,n)=n$.  Define the decoder $\rho : \mathbf{1} \to \mathbb{N} \to
-\textrm{Option}(\mathbb{N})$ by $\rho(\ast,n)=\mathrm{some}(n)$.  Then for any state $\ast$ and
-any symbol $n$, we have
-\[
-\rho(\ast,\eta(\ast,n))=\rho(\ast,n)=\mathrm{some}(n),
-\]
-which is exactly the coherence condition $\rho\_\eta$.  This matches the Lean
-construction \texttt{trivialNatEnumeration : Enumerable Unit Nat}, and therefore
-witnesses the existence claim.
-\end{proofsketch}
+The need for such a map becomes apparent as soon as one considers refinement.
+As the ledger grows, comparisons between earlier and later stages require a
+stable way of referring to recorded outcomes. Without a decoding rule, there is
+no principled way to ask whether a given outcome has appeared before, how often
+it has occurred, or how it relates to subsequent entries. Decoding therefore
+provides the minimal interface through which an enumeration can participate in
+empirical reasoning.
 
 
+\subsection{Operations on Enumerations}
 
-\subsection{The Time Series}
+An enumeration supports a small collection of canonical operations that reflect
+its construction as an ordered record of outcomes. These operations do not add
+new structure to the record. They merely provide ways of reading, extending, and
+comparing what has already been constructed.
 
-The following phenomenon isolates this effect in its simplest form.
+The most basic operation is indexed access. Given an enumeration and a natural
+number $n$, one may attempt to read the outcome recorded at position $n$. If such
+an entry exists, it is returned; otherwise, the result is empty. This operation
+provides a decoding of the enumeration by count, without assuming that every
+index corresponds to a recorded outcome.
 
-\begin{phenom}{The Box Effect~\cite{box1976}}
-\label{ph:box-effect}
+Two closely related operations extract summary information from an enumeration.
+One returns the most recently recorded outcome, when such an outcome exists. The
+other returns the total number of recorded outcomes. Both are determined entirely
+by the structure of the enumeration itself and require no external indexing or
+ordering assumptions.
 
-\PhStatement
-When an observation is declared to occur within a bounded temporal or spatial
-region, the absence of recorded events within that region constitutes a physical
-constraint on histories.
-
-\PhOrigin
-Box emphasized that measurement procedures are defined not only by what they
-detect, but by the region over which detection is asserted. Declaring a region
-to be under observation implicitly certifies that no distinguishable events
-occurred there beyond those recorded.
-
-\PhObservation
-A verified empty interval is not informationally neutral. When an instrument is
-operating within its specified resolution and produces no event, the resulting
-silence is itself a recorded outcome. All histories in which a distinguishable
-event would have occurred within the observation window are thereby excluded.
-
-\PhConstraint
-If a region is certified as observed and no event is recorded, then no
-extension of the ledger may introduce a distinguishable event within
-that region without contradicting the experimental ledger.
-
-\PhConsequence
-The ledger functions as an active record of eliminations. Constraints accrue
-not only through recorded events, but through recorded absences. In time series
-ledgers in particular, each successor step asserts both what occurred and what
-failed to occur within the observer’s resolution.
-\end{phenom}e
-
-\begin{definition}[Partial Order]
-\label{def:partial-order}
-A \emph{partial order} on a set $E$ is a binary relation $\prec$ satisfying:
-\begin{enumerate}
-  \item \emph{Reflexivity}: for all $e \in E$, $e \prec e$.
-  \item \emph{Antisymmetry}: for all $e_1,e_2 \in E$, if $e_1 \prec e_2$ and
-        $e_2 \prec e_1$, then $e_1 = e_2$.
-  \item \emph{Transitivity}: for all $e_1,e_2,e_3 \in E$, if $e_1 \prec e_2$ and
-        $e_2 \prec e_3$, then $e_1 \prec e_3$.
-\end{enumerate}
-\end{definition}
-
-
-From this definition we can motivate a time series.
-
-\begin{definition}[Time Series~\cite{wiener1949,yule1927}]
-\label{def:time-series}
-Let $(E,\prec)$ be a finite partially ordered set of 
-events.  A \emph{time series} is a finite or countably infinite sequence
-\[
-r_1 \prec r_2 \prec r_3 \prec \cdots
-\]
-such that each $r_{t+1}$ is a refinement of the record containing
-$\{r_1,\dots,r_t\}$ and no two distinct records share the same position in the
-sequence.  The ordering reflects the succession in which distinguishable
-refinements were justified by an observer.
-
-Historically, time series analysis emerges from treating successive 
-observations as entries in an ordered record, a viewpoint formalized 
-in early statistical work by Yule and Wiener and made operational by 
-the interpretation of data as sequences indexed by count rather than 
-by a primitive continuum.
-\end{definition}
-
-In this sense, history is not an accumulation of information but the
-systematic removal of incompatible configurations. The ledger is the
-mathematical object that encodes this pruning, and it is the foundation on
-which all later notions of compatibility, distance, and dynamics are built.
-
-
+Finally, enumerations admit a natural notion of prefix. One enumeration is said
+to be a prefix of another if it can be obtained by truncating the latter without
+reordering or altering entries. This relation captures the idea that one record
+may be an initial history of a longer one, and it provides the basic ordering
+with respect to which refinement will later be defined.
 
 \subsection{Scope of Enumeration}
 
 Enumeration appears in this text not as a technical device, but as a unifying
 discipline. Wherever observable structure is discussed, it is accessed through
-order, position, and succession rather than through intrinsic identity. The
-same constraints recur whether one is naming symbols, extending ledgers,
-restricting events, or addressing the causal universe itself. In
-each case, enumeration provides the minimal interface required to speak about
-structure without presupposing more than the record can support.
+order, position, and succession rather than through intrinsic identity. The same
+constraints recur whether one is naming symbols, extending ledgers, or reading
+records. In each case, enumeration provides the minimal interface required to
+speak about structure without presupposing more than the record can support.
 
-Because enumeration is always local and refinement--dependent, no global
-coordinate system is ever assumed. Different instruments, observers, or
-models may adopt distinct enumerations of the same underlying history without
-contradiction, provided they remain consistent under refinement. Apparent
-incompatibilities between descriptions are therefore understood as differences
-in addressing rather than differences in fact.
+Because enumeration is always local and refinement-dependent, no global
+addressing scheme is assumed. Distinct enumerations of the same record may be
+adopted without contradiction, provided they remain compatible under extension.
+Apparent discrepancies between descriptions are therefore understood as
+differences in addressing rather than differences in the recorded outcomes
+themselves.
+
 
 This perspective will recur throughout the remainder of the text. Arguments
 about continuity, probability, dynamics, and information will repeatedly reduce
@@ -1197,6 +1213,15 @@ be stably recovered. Enumeration thus functions as the connective tissue of the
 framework, binding together ledger, refinement, and comparison into a single
 coherent notion of measurement.
 
+Once enumeration is taken as fundamental, a further distinction becomes
+unavoidable. The act of recording produces an ordered sequence of entries, but
+the structure inferred from those entries need not be sequential in the same
+sense. The order in which outcomes are written is not always the order in which
+they are interpreted.
+
+This motivates a separation between \emph{sequence}, the temporal order in which
+records are produced, and \emph{state}, the structure inferred from the
+accumulated record at a given stage of refinement.
 
 \section{Sequence and State}
 \label{sec:sequence-state}
@@ -1211,45 +1236,83 @@ structure of what has been recorded. The informational content of the ledger,
 which we call the \emph{state}, need not inherit the total order imposed by the
 sequence of entry.
 
-Consider two distinguishable events, $e_A$ and $e_B$, that are informationally
-independent. An observer may record $e_A$ and then $e_B$, or $e_B$ and then $e_A$.
-Although the sequences differ, the resulting constraints on 
-histories are identical. The order of discovery has changed; the state has not.
-However, at the end of the day both $e_A$ and $e_B$ necessarily occurred. 
+The distinction between sequence and state becomes sharper when one considers
+measurements that are physically simultaneous but informationally independent.
+Consider two distinguishable records, $r_A$ and $r_B$, that constrain the same
+physical condition yet are conveyed to the observer by different physical
+channels. An observer may record $r_A$ and then $r_B$, or the reverse, depending
+on how those channels deliver their signals. Although the sequences differ, the
+resulting constraint on admissible histories is the same.
 
-This motivates a necessary separation:
-\begin{itemize}
-  \item \textbf{The Sequence} is the specific, totally ordered path by which a
-  finite observer refines the ledger.
-  \item \textbf{The State} is the accumulated set of distinctions imposed by
-  those refinements, independent of the order in which they were recorded.
-\end{itemize}
+A familiar example is provided by a vehicle observed both by its own
+speedometer and by an external radar gun. The speedometer registers speed
+mechanically through the motion of the vehicle, while the radar gun registers
+speed through the return of photons. Each measurement refers to the same
+underlying physical state, but the information reaches the observer by different
+means and at different times.
 
-In the informational framework, physical description concerns the state, not
-the sequence. Different sequences may correspond to the same state whenever
-their refinements commute. The identification of such equivalences is the
-source of observer agreement.
+Which reading is recorded first is determined by the propagation of signals,
+not by a difference in what is being measured. The mechanical linkage of the
+speedometer and the photon flight time of the radar pulse are both finite, and
+either may deliver its result first depending on geometry and circumstance.
+This ordering is physically meaningful and, in principle, measurable.
 
-This distinction underlies later developments. Relativity arises when
-different observers record different sequences that generate the same state.
-Gauge freedom arises when internal reorderings of refinement leave the state
-unchanged. In all cases, the ledger records a sequence, but physical law acts on the
-state it represents.
+However, the relative arrival times of these signals do not alter the
+constraint they jointly impose on the vehicle’s speed at the moment of
+measurement. Both readings are high--fidelity reports of the same condition,
+within their respective resolutions. The difference in sequence reflects the
+mechanics of communication, not a difference in the state being inferred.
+
+This illustrates the separation between sequence and state. Sequence records
+the order in which information becomes available to the observer, shaped by the
+physics of signal transmission. State summarizes the joint constraints imposed
+by recorded outcomes, abstracting away from the contingencies of how those
+outcomes were conveyed.
+
+By distinguishing these notions, the framework preserves sensitivity to the
+physical processes that deliver information while preventing those processes
+from introducing spurious distinctions into the inferred description of the
+world. Sequence belongs to the ledger; state belongs to what the ledger
+constrains.
 
 
-\section{Discrete Fact and Continuous Possibility}
+
+\section{Continuous Possibility}
 \label{sec:discrete-continuous}
 
-Physical description begins with a distinction between what has been recorded
-and what remains possible. This distinction is not one of scale or
-approximation, but of informational status. A feature of the world either
-exists as a finite fact in the experimental ledger, or it exists only as a
-potential refinement, no matter how absurd\footnote{This discussion may remind 
-the reader of the many-worlds interpretation of quantum mechanics. It serves only 
-as a metaphor though no such interpretive commitment is required here.}. 
-No third category exists.
+Physical description begins with a fundamental distinction between what has
+been recorded and what remains possible. This distinction is not one of scale,
+precision, or approximation, but of informational status. A feature of the world
+either exists as a finite fact in the experimental ledger, or it exists only as a
+potential refinement constrained by what has already been observed.
 
-A recorded fact is discrete. It enters the experimental ledger as a distinguishable event
+Anything that has not been recorded remains possible so long as it does not
+contradict the accumulated record. Possibility in this sense is not a statement
+of likelihood or expectation. It is a statement of admissibility. The ledger
+rules out what cannot have occurred, but it does not privilege what seems
+reasonable, natural, or familiar.
+
+For example, consider a vehicle whose speed has been recorded by a wheel--based
+speedometer. Between successive rotations of the wheel, it is admissible---within
+the logic of the record---that the vehicle’s velocity could have changed
+dramatically, even to an extreme fraction of the speed of light. Such a jump is
+inconsistent with experience and incompatible with known dynamics, but it is
+not excluded by the record itself unless additional constraints have been
+recorded.
+
+This illustrates the difference between physical law and observational fact.
+Laws encode expectations about how refinement proceeds; the ledger encodes only
+what has actually been distinguished. Until further measurements are made, the
+space of admissible continuations includes all possibilities that remain
+non-contradictory to past observation, regardless of how implausible they may
+appear.
+
+There is therefore no intermediate category between fact and possibility.
+Recorded distinctions are fixed and irreversible. Everything else belongs to
+the space of potential refinement, awaiting either confirmation or exclusion by
+future observation.
+
+A recorded fact is discrete. It enters the experimental ledger as a distinguishable record
 produced at a definite time of observation. Such facts are countable by
 construction. They may be ordered, compared, and accumulated, but they do not
 form a continuum. 
@@ -1280,123 +1343,200 @@ facts and enforces these constraints: the ledger.
 
 \section{Ledgers}
 \label{sec:intro-ledger}
-The experimental ledger is all the experiments and observations used in
-the pursuit of science.  It starts in the single experiment whose results are
-then merged into the common scientific understanding.  The single experiment
-generates facts that are observed and noted.
 
-A scientific observation is not a value of a continuous field, but a
-distinguishable event produced at a precise point in the observer's ledger. 
-To reason about such observations, we require a
-structure that records them faithfully and constrains how they may evolve.
-We call this structure a \emph{ledger}.
+The experimental ledger is the cumulative record of observations produced in the
+course of inquiry. It begins with a single experiment, whose outcomes are
+recorded as distinguishable records, and grows as further experiments are
+performed and their results incorporated. Facts do not appear all at once; they
+are generated locally and accumulated over time.
+
+A scientific observation is not the value of a continuous field, but a
+record located at a definite position in the observer’s history.
+To reason about such observations, we therefore require a structure that describes
+them faithfully, preserves their order of appearance, and constrains how the
+record may be extended. We call this structure a \emph{ledger}.
+
+Formally, a ledger consists of a distinguished initial outcome together with an
+enumeration of subsequent outcomes. The initial entry marks the beginning of the
+record, while the enumeration represents the irreversible accumulation of
+further observations. Together, these components determine a unique ordered
+history. This definition enforces the asymmetry of observation: a ledger always
+has a first entry, but no intrinsic notion of a final one. New outcomes may be
+added only by extension, and previously recorded outcomes cannot be removed or
+reordered.
+
+A ledger supports a small collection of canonical operations that expose its
+structure without altering it. One may recover the full enumeration of recorded
+outcomes, identify the first or most recent entry, access entries by position, or
+determine the current length of the record. These operations do not introduce new
+facts; they merely provide ways of reading what has already been written.
+Transformations that change presentation without changing content distinguish
+representational convenience from empirical constraint.
+
+
+\subsection{Enumerability}
+
+The requirement that recorded distinctions persist under refinement places a
+strong constraint on the form an observational history may take. Events are not
+given all at once, nor do they arrive as values of a pre-existing continuum.
+They are produced sequentially, one distinguishable outcome at a time, and once
+recorded they remain available to all subsequent description. Any structure
+intended to represent such a history must therefore support irreversible growth
+and preserve the order in which distinctions are introduced.
+
+Enumeration provides the minimal discipline needed to meet these requirements.
+It allows events to be recorded in sequence without presupposing a global
+coordinate system or intrinsic identity beyond distinguishability. The resulting
+structure is necessarily finite or countable, since each entry corresponds to a
+distinct act of observation. Continuity, when it appears, must arise from
+patterns across refinements rather than from the ledger itself.
+
+These considerations motivate the following definition.
 
 \begin{definition}[Ledger]
 \label{def:ledger}
-A \textbf{ledger} is an ordered, finite or countable list of measurement records $r$
-of a sequence of distinguishable events,
+A \emph{ledger} is a list of distinguishable outcomes constructed from a
+distinguished initial entry together with an enumeration of subsequent entries.
+Equivalently, a ledger may be viewed as an ordered, finite or countable list of
+measurement records
 \[
   L = \langle r_1 \prec r_2 \prec \cdots \prec r_n \prec \cdots \rangle,
 \]
 such that:
 \begin{enumerate}
-\item \textbf{Finiteness or countability:}  
-      The ledger contains only finitely or countably many events.
+\item \textbf{Finiteness or countability:}
+      The ledger contains only finitely or countably many recorded events.
 
-\item \textbf{Irreversibility:} 
-      New events may be appended, but existing ones may not be erased or
-      retroactively altered.
+\item \textbf{Irreversibility:}
+      New events may be appended to the ledger, but existing entries may not be
+      erased, reordered, or retroactively altered.
 
-\item \textbf{Refinement structure:}  
-      Each event $e_{t+1}$ is a refinement of the outcomes
-      remaining after $e_t$; that is, it restricts the set of configurations
-      compatible with all earlier entries of the ledger.
+\item \textbf{Refinement structure:}
+      Each new entry restricts the set of outcomes compatible with all prior
+      entries. Later records refine earlier ones without contradiction.
 
-\item \textbf{Distinguishability:}  
-      Events must correspond to outcomes that the observer can tell apart.
-      If two outcomes cannot be distinguished operationally, they represent
-      the same event in the ledger.
+\item \textbf{Distinguishability:}
+      Each entry corresponds to an outcome that can be operationally
+      distinguished. Outcomes that cannot be told apart represent the same
+      event in the ledger.
 \end{enumerate}
 \end{definition}
 
+
 A ledger is therefore not a passive list of observations, but an
-\emph{active record of eliminations}. Each new event prunes the set of
+active record of eliminations. Each new event prunes the set of
 continuations, narrowing the universe of possibilities. The
 ledger captures exactly what has survived this process of refinement and
 nothing more.
 
-A very common type of ledger is the \emph{time series}.
-A time series ledger records events in a fixed successor order.  Each entry
-certifies not only that a particular outcome occurred, but that all
-distinguishable alternatives failed to occur at that moment.  In this sense,
-the ledger functions as a sequence of exclusions.  At each step, the set of
-histories is restricted to those consistent with the recorded
-event and with the verified absence of competing events.
+\subsection{Using a Ledger}
 
-This eliminative role is often overlooked because it leaves no explicit mark.
-When an instrument is operating and no event is recorded, the silence is
-treated as empty space rather than as information.  Yet the absence of an
-entry is itself a constraint: it excludes any history in which a
-distinguishable event would have occurred during that interval.
+A ledger is not merely a static container for records. It supports a small set
+of canonical ways in which recorded outcomes may be accessed, summarized, and
+rearranged for the purposes of interpretation. These uses do not modify the
+ledger or introduce new distinctions. They describe how an existing history may
+be read.
 
-\subsection{Time Series as Enumerations of Ledgers}
-\label{subsec:ledger-timeseries}
+The full ordered history of a ledger may be recovered as a single enumeration of
+outcomes. This allows the ledger to be treated as a sequential record when
+questions of order or accumulation are at issue. From this perspective, the
+ledger may be read from beginning to end as a list of recorded events, such as a
+series of speed readings obtained during a drive.
 
-Up to this point, ledgers have been introduced as inductive objects: finite
-records that grow by the justified addition of new entries. This construction
-captures the minimal structure required to speak about succession without
-presupposing a background notion of time. Nevertheless, the language of
-measurement and prediction routinely refers to \emph{time series}: ordered
-collections of observations indexed by count. The question, therefore, is not
-whether ledgers can be treated as time series, but under what conditions such an
-identification is admissible.
+Two special entries play a distinguished role. The first entry identifies the
+initial recorded outcome, while the most recent entry summarizes the current
+state of observation. For example, the first speed reading recorded by a
+speedometer marks the beginning of a trip, while the most recent reading
+represents the vehicle’s present speed relative to the instrument’s resolution.
+Access to these entries allows one to compare initial and current conditions
+without inspecting the entire history.
 
-The key observation is that a time series carries no structure beyond ordered
-succession. When stripped of any assumed continuum or clock parameter, a time
-series is simply a partially ordered set of records in which each new element
-extends the history formed by its predecessors. In this sense, a time series
-does not precede the ledger; it is a way of viewing the ledger once an
-enumeration of justified refinements has been fixed.
+Intermediate entries may be accessed by position. This supports queries such as
+“what was the recorded speed two measurements ago,” or “which radar reading
+preceded the most recent one.” Such access is partial: positions that do not
+correspond to recorded entries simply have no associated outcome. The ledger
+records only what has been observed.
 
-This relationship can be stated precisely.
+The ledger may also be viewed in reverse order. Reversing a ledger does not
+change which outcomes have been recorded; it changes only the order in which
+they are presented. This distinction is useful when reconstructing a history
+from its most recent constraints backward, as when a radar reading prompts an
+observer to review earlier speedometer measurements.
 
-\begin{proposition}[Time Series as an Enumeration of Ledgers]
-\label{prop:timeseries-ledgers}
-Every time series admits a representation as an enumeration of ledgers. That is,
-given a time series of records, there exists an admissible enumeration such that
-each successive index corresponds to a ledger extending the previous one by
-exactly one record.
+Finally, the size of a ledger measures the number of recorded outcomes it
+contains. This count reflects the amount of observational information that has
+been accumulated, not the duration or continuity of the underlying process. A
+high-frequency speedometer and an infrequent radar gun may produce ledgers of
+very different sizes while constraining the same physical state.
+
+In all cases, these operations respect the central discipline of the ledger.
+They provide ways of reading and comparing records without erasing or revising
+what has already been written.
+
+\subsection{Existence}
+
+The preceding definitions introduce a vocabulary for talking about observable
+structure: enumerations as constructed records, decoding as a disciplined notion
+of access, and ledgers as histories with a distinguished beginning. These
+definitions would be empty if no instances existed. We therefore record two
+basic existence results. They serve as minimal witnesses that the framework is
+internally consistent and that its core objects can be realized without further
+assumptions.
+
+The first result establishes that there exists an enumeration map for the
+natural numbers. This example is intentionally trivial: it shows that
+enumerability does not require any exotic structure, only a surjective
+addressing of outcomes by natural indices. In particular, the identity map
+provides such an addressing, since every natural number is the image of itself.
+
+\begin{proposition}[Existence of an Enumeration Map on $\mathbb{N}$]
+\label{prop:exists-enum-nat}
+There exists an enumeration map $\eta : \mathbb{N} \to \mathbb{N}$.
 \end{proposition}
 
 \begin{proofsketch}
-By definition, a time series consists of records ordered by justified
-succession, with no two distinct records occupying the same position. This
-ordering induces a countable structure: records may be addressed by their order
-of appearance without introducing additional distinctions. Proposition~1
-establishes that such ordered succession always admits a trivial enumeration by
-counting.
-
-Fix any admissible enumeration of the records. For each natural index $t$, define
-the ledger $\mathcal{L}_t$ to consist of all records whose assigned positions are
-at most $t$. The defining property of a time series ensures that
-$\mathcal{L}_{t+1}$ extends $\mathcal{L}_t$ by the addition of a single new
-record, and that no previously recorded entry is altered or removed. In this
-way, the time series is realized as a chain of ledgers indexed by the natural
-numbers.
-
-The Lean implementation mirrors this construction directly: existence of an
-enumeration is assumed as an admissibility condition, and the associated family
-of ledgers is defined by successive extension. No appeal is made to a primitive
-notion of time or continuity; the indexing arises solely from the order in which
-records are justified.
+Let $\eta(n) = n$. Surjectivity is immediate: for any $m \in \mathbb{N}$, choosing
+$n=m$ gives $\eta(n)=m$. This provides a concrete enumeration map on
+$\mathbb{N}$.
 \end{proofsketch}
 
-This proposition completes the conceptual circle of the chapter. Ledgers
-provide the primitive notion of recorded succession, while time series emerge
-as a particular representation of that succession once an enumeration has been
-chosen. In the next chapter, this relationship is made explicit in the simplest
-possible case, where a single ledger enumerated by successor realizes the
-operational notion of a clock.
+The second result establishes that there exists a ledger whose entries range
+over the natural numbers. This ledger is not intended to encode any particular
+physical process. Its purpose is only to witness that the ledger definition is
+inhabited: one can specify a first entry and then construct a (finite or
+countable) enumeration of subsequent entries. Such an object provides a
+canonical toy history against which later refinement and recoverability
+conditions may be tested.
+
+\begin{proposition}[Existence of a Ledger on $\mathbb{N}$]
+\label{prop:exists-ledger-nat}
+There exists a ledger $\Ledger$ with entries in $\mathbb{N}$.
+\end{proposition}
+
+\begin{proofsketch}{nop}
+Construct a ledger by choosing an initial natural number as the first entry,
+and then appending a (finite) enumeration of subsequent natural numbers. For
+example, take the first entry to be $1$ and choose a nonempty enumeration for
+the tail. The resulting pair determines a ledger by definition. Since the
+construction is explicit, such a ledger exists.
+\end{proofsketch}
+
+The existence results above establish that ledgers and enumerations can be
+constructed, but they do not yet constrain how such structures may be modified.
+Existence alone does not prevent a description from quietly introducing
+unrecorded distinctions or retroactively altering what has already been
+written. To serve as a faithful representation of observation, the ledger must
+also enforce a discipline of restraint.
+
+In particular, there must be no operation by which new records can be inserted
+into the interior of an existing ledger. Once an outcome has been recorded, its
+position relative to earlier and later events is fixed. Any attempt to interpolate
+additional distinctions between recorded entries would introduce structure that
+was never observed and cannot be justified by refinement of the record.
+
+The next section examines this enforced silence. It formalizes the principle
+that what has not been recorded cannot be assumed to exist, and that the only
+admissible way to change a ledger is by extension at its end.
 
 
 \section{The Constraint of Silence}
@@ -1425,7 +1565,7 @@ Accordingly, a gap in the ledger is not a domain in which arbitrary structure
 may be asserted. It is a domain constrained by what did not happen. To posit
 unobserved variation in such an interval is to introduce distinctions that
 could not have been recovered by a finite observer. Such
-structure is therefore inadmissible by the Berkeley--Galileo Effect.
+structure is therefore inadmissible by Phenomenon~\ref{ph:fact-effect}.
 
 This constraint applies uniformly across all measurements. Whether
 the observer is monitoring a physical system, executing a procedure, or
@@ -1536,7 +1676,7 @@ asymmetrically. For instance, IEEE Std~610.12-1990 (since deprecated) defines
 \emph{precision} as a property of
 representation: the number of digits or symbols used to express a measured
 value, independent of whether that value is correct. Precision, in this sense,
-is a syntactic feature of the record. The same standard defines
+is a syntactic feature of the record. The same deprecated standard defines
 \emph{accuracy} as a qualitative measure of correctness, describing how closely
 a reported value agrees with the true value being measured~\cite{ieee6101990}.
 
@@ -1567,7 +1707,7 @@ finely distinctions can be drawn.  Precision governs what can be said;
 accuracy can only be assessed after the fact, and only relative to subsequent
 measurement.
 
-\section{Noise and the Limits of Distinguishability}
+\section{Noise}
 
 The preceding discussion isolates precision as an intrinsic property of the
 experimental ledger: the fineness of the distinctions an observer is capable of
@@ -1748,7 +1888,7 @@ compression into a predictive rule.
 \PhObservation
 Each refinement contributing to $\Omega$ records a distinct halting event.
 The ledger grows by the verified completion of finite procedures, each of which
-is admissible under the axioms of measurement. However, no relation among past
+is admissible under the Axioms of Measurement. However, no relation among past
 refinements constrains when the next halting event will occur, or whether it
 will occur at all. The record accumulates without contradiction, yet without
 pattern.
@@ -1764,9 +1904,9 @@ Phenomenon~\ref{ph:truth-effect}).
 \PhConsequence
 $\Omega$ marks an epistemic boundary of measurement. It demonstrates that the
 existence of a set of well-defined, well-ordered records does not imply the
-existence of an extractable law governing its continuation. The Chaitin Effect
-therefore realizes the Hume Effect in its strongest form: even an unbounded
-accumulation of facts may fail to constrain the future. 
+existence of an extractable law governing its continuation. Phenomenon~\ref{ph:chaitin} 
+therefore realizes Phenomenon~\ref{ph:hume-effect} in its strongest form: even an unbounded
+accumulation of facts may fail to provide any predictive value at all.
 \end{phenom}
 
 The remainder of this
@@ -1775,7 +1915,7 @@ does impose structure, and for which histories stabilize into the
 predictive regularities we call physical phenomena.
 
 
-\subsection*{Static Friction and Halting}
+\subsection*{Static Friction}
 
 A closely related form of unpredictability appears in physical measurement:
 static friction. When a
@@ -1806,7 +1946,7 @@ refinement predicts the timing of that transition. The only resolution is the
 event itself.
 
 Static friction therefore provides a physical realization of the same
-unpredictability exhibited by halting phenomena. The difficulty is not noise,
+unpredictability exhibited by halting phenomena. The difficulty is not instrumental noise,
 error, or ignorance of the governing rules. It is the absence of a law that
 relates past refinements to the occurrence of the decisive event. Motion, like
 termination, is something that must be observed rather than inferred.
@@ -1857,14 +1997,14 @@ coupled to the observer's chronometry: it requires ledger time, not merely model
 consistency, to be approximated.
 
 \PhConsequence
-Static friction demonstrates that the Chaitin Effect is not a peculiarity of
+Static friction demonstrates that Phenomenon~\ref{ph:chaitin} is not a peculiarity of
 formal computation, but a universal constraint on measurement.
 Here, the system is fully physical, finite, and repeatable, and the governing
 rules are well understood. Yet the ledger admits no rule that determines
-\emph{when} the decisive event will occur. The event of slip becomes known only
+when the decisive event will occur. The event of slip becomes known only
 at the moment it becomes admissible, when the measurement that implies motion is 
 recorded as fact. As with
-halting and $\Omega$, the absence of a predictive law is not due to noise, error,
+halting and $\Omega$, the absence of a predictive law is not due to instrumental noise, error,
 or incomplete specification, but to the structure of refinement itself. 
 Phenomenon~\ref{ph:static-friction} therefore shows that lawlessness of this form arises
 wherever events are defined by thresholds and silence. Computation does not
@@ -1904,4 +2044,18 @@ arbiter of what may later be called law.
 
 \end{coda}
 
+Up to this point, we have treated facts only as records: ordered entries in a
+ledger that grow by witnessed extension and admit counting by construction.
+Nothing has been said about how such records are produced, coordinated, or
+interpreted beyond the constraints required for their admissibility.  This
+deliberate restraint isolates what must be true of any collection of facts,
+independent of the mechanism by which they are obtained.
+
+In the next chapter, we turn to instruments.  An instrument is not a new kind of
+fact, but a structured process that generates and refines records according to
+fixed rules.  Where the ledger constrains what may be recorded, the instrument
+constrains how recording proceeds.  By introducing instruments, we will be able
+to study how ordered records arise in practice, how multiple enumerations may be
+brought into correspondence, and how refinement gives rise to the appearance of
+continuity without presupposing it.
 

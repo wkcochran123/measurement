@@ -4,7 +4,7 @@ namespace Measurement
 namespace ZFC
 
 /-
-ZFC has not been assumed yet.
+ZFC is assumed in Axiom 1.
 -/
 
 end ZFC

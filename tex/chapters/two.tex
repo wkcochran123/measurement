@@ -75,6 +75,115 @@ in place before measurement can proceed at all. Ledgers, refinement, causality,
 and probability will be introduced later. They all depend on instruments, but
 instruments depend only on distinguishability and construction.
 
+\section{posets}
+
+The first proposition records a minimal existence claim.  Before any dynamics,
+refinement, or prediction are introduced, the ledger must support the act of
+counting itself.  In Lean, this is represented by a structure
+\[
+\texttt{Enumerable}(S,X) = (\eta,\rho,\rho\_\eta),
+\]
+where $\eta$ assigns a natural index to data and $\rho$ attempts to recover the
+data from an index.  The coherence condition $\rho\_\eta$ states that decoding
+after encoding returns the original value.
+
+\begin{proposition}[Existence of a Trivial Enumeration]
+\label{prop:trivial-enumeration}
+There exists an enumerable structure for symbols given by the identity map on
+the natural numbers.  In particular, there exists $\texttt{Enumerable}(,\mathbb{N})$.
+\end{proposition}
+
+\begin{proofsketch}{trivial-enumeration}
+Define the encoder $\eta : \mathbf{1} \to \mathbb{N} \to \mathbb{N}$ by
+$\eta(\ast,n)=n$.  Define the decoder $\rho : \mathbf{1} \to \mathbb{N} \to
+\textrm{Option}(\mathbb{N})$ by $\rho(\ast,n)=\mathrm{some}(n)$.  Then for any state $\ast$ and
+any symbol $n$, we have
+\[
+\rho(\ast,\eta(\ast,n))=\rho(\ast,n)=\mathrm{some}(n),
+\]
+which is exactly the coherence condition $\rho\_\eta$.  This matches the Lean
+construction \texttt{trivialNatEnumeration : Enumerable Unit Nat}, and therefore
+witnesses the existence claim.
+\end{proofsketch}
+
+
+
+\subsection{The Time Series}
+
+The following phenomenon isolates this effect in its simplest form.
+
+\begin{phenom}{The Box Effect~\cite{box1976}}
+\label{ph:box-effect}
+
+\PhStatement
+When an observation is declared to occur within a bounded temporal or spatial
+region, the absence of recorded events within that region constitutes a physical
+constraint on histories.
+
+\PhOrigin
+Box emphasized that measurement procedures are defined not only by what they
+detect, but by the region over which detection is asserted. Declaring a region
+to be under observation implicitly certifies that no distinguishable events
+occurred there beyond those recorded.
+
+\PhObservation
+A verified empty interval is not informationally neutral. When an instrument is
+operating within its specified resolution and produces no event, the resulting
+silence is itself a recorded outcome. All histories in which a distinguishable
+event would have occurred within the observation window are thereby excluded.
+
+\PhConstraint
+If a region is certified as observed and no event is recorded, then no
+extension of the ledger may introduce a distinguishable event within
+that region without contradicting the experimental ledger.
+
+\PhConsequence
+The ledger functions as an active record of eliminations. Constraints accrue
+not only through recorded events, but through recorded absences. In time series
+ledgers in particular, each successor step asserts both what occurred and what
+failed to occur within the observer’s resolution.
+\end{phenom}e
+
+\begin{definition}[Partial Order]
+\label{def:partial-order}
+A \emph{partial order} on a set $E$ is a binary relation $\prec$ satisfying:
+\begin{enumerate}
+  \item \emph{Reflexivity}: for all $e \in E$, $e \prec e$.
+  \item \emph{Antisymmetry}: for all $e_1,e_2 \in E$, if $e_1 \prec e_2$ and
+        $e_2 \prec e_1$, then $e_1 = e_2$.
+  \item \emph{Transitivity}: for all $e_1,e_2,e_3 \in E$, if $e_1 \prec e_2$ and
+        $e_2 \prec e_3$, then $e_1 \prec e_3$.
+\end{enumerate}
+\end{definition}
+
+
+From this definition we can motivate a time series.
+
+\begin{definition}[Time Series~\cite{wiener1949,yule1927}]
+\label{def:time-series}
+Let $(E,\prec)$ be a finite partially ordered set of 
+events.  A \emph{time series} is a finite or countably infinite sequence
+\[
+r_1 \prec r_2 \prec r_3 \prec \cdots
+\]
+such that each $r_{t+1}$ is a refinement of the record containing
+$\{r_1,\dots,r_t\}$ and no two distinct records share the same position in the
+sequence.  The ordering reflects the succession in which distinguishable
+refinements were justified by an observer.
+
+Historically, time series analysis emerges from treating successive 
+observations as entries in an ordered record, a viewpoint formalized 
+in early statistical work by Yule and Wiener and made operational by 
+the interpretation of data as sequences indexed by count rather than 
+by a primitive continuum.
+\end{definition}
+
+In this sense, history is not an accumulation of information but the
+systematic removal of incompatible configurations. The ledger is the
+mathematical object that encodes this pruning, and it is the foundation on
+which all later notions of compatibility, distance, and dynamics are built.
+
+
 
 \section{Symbol Alphabets}
 \label{sec:alphabets}
