@@ -12,8 +12,6 @@ labels to numbers.
 
 
 /-- Definition 1: Enumeration Map.
-
-A map from X to Nat together with surjectivity.
 -/
 
 structure EnumerationMap (X : Type u) where

@@ -55,7 +55,16 @@ assumes a relationship between rotation and linear velocity. The radar gun
 assumes a relationship between frequency shift and relative motion. These models
 are not inferred at the moment of measurement; they are compiled into the
 instrument. The instrument therefore carries a predictor implicitly, even when
-no explicit prediction is displayed.
+no explicit prediction is displayed.  
+
+The difference between what could have been displayed and what was displayed is
+not accessible from the record itself.  That difference is internal to the
+instrument and is known only to its predictor.  As a result, the space of
+counterfactual outcomes associated with a measurement cannot be reconstructed
+from the ledger alone, even in principle.  This limitation is not a matter of
+incomplete observation, but a structural consequence of compiling a model into
+the instrument prior to refinement.
+
 
 This predictor need not be probabilistic. It may be a fixed rule determined by
 geometry, mechanics, or electronics. What matters is that the instrument is

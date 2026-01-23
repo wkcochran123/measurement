@@ -3,6 +3,7 @@ import Measurement.Chapter2.ZFC
 
 namespace Measurement
 
-axiom natEnumeration : Enumeration Nat
+universe u v
+
 
 end Measurement

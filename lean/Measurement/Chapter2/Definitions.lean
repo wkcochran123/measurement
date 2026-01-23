@@ -1,90 +1,62 @@
 import Std
 
 
-import Measurement.Chapter1.Definitions
 import Measurement.Chapter2.Constructions
 
 namespace Measurement
+open Classical
 
-namespace Enumeration
-/-- Find the first index of `a` in the enumeration, if present. -/
-def find [DecidableEq α] : Enumeration α -> α -> Option Nat
-  | .nil,        _ => none
-  | .cons b t, a =>
-      if b = a then
-        some 0
-      else
-        match find t a with
-        | some n => some (n + 1)
-        | none   => none
+structure Refinement (X : Type u) where
+  enumeration : Enumeration X
+  predictor : DecodingMap X
 
-def get : Enumeration α -> Nat -> Option α
-  | .nil,      _     => none
-  | .cons a _, 0     => some a
-  | .cons _ t, n + 1 => get t n
-end Enumeration
+namespace Refinement
+  def step {X : Type u} (R : Refinement X) : Enumeration X :=
+    let n := Enumeration.len R.enumeration
+      match R.predictor.ζ n with
+      | none   => R.enumeration
+      | some x => Enumeration.snoc R.enumeration x
 
-/-- Definition: Alphabet -/
+end Refinement
 structure Alphabet (σ : Type v) where
   symbols : Enumeration σ
 
-namespace Alphabet
+structure Instrument (S: Type u)(σ :Type v) where
+  alphabet : Alphabet σ
+  ledger : Ledger S
 
-def get (A : Alphabet σ) : Nat -> Option σ :=
-  fun n => Enumeration.get A.symbols n
+abbrev Moment : Type :=
+  Σ t : Real, ({ u : Real // u ∈ ZFC.unitIocAt t } → Real)
 
-def index [DecidableEq σ] (A : Alphabet σ) : σ -> Option Nat :=
-  fun s => Enumeration.find A.symbols s
+abbrev Phenomenon := Enumeration Moment
 
-end Alphabet
+structure DenseResponse (X: Type u) where
+  refinement: Refinement X
+  map : QPos -> Q
 
-/-- Definition 5: Refinement -/
-structure Refinement (X : Type u) where
-  refine : X -> Enumeration X -> Enumeration X
+structure DomainResponse (X: Type u) where
+  -- Who needs a continuum hypothesis when I have this continuous function right here?
+  ψ : Real -> Real
+  certifies : DenseResponse X
 
-/-- Definition 6: Structure -/
-structure Record (σ : Type v) where
-  i : Nat
-  σ : σ
-  k : Nat
+abbrev QPos := { q : Rat // q > 0 }
 
+namespace DomainResponse
+  noncomputable def psi {X : Type u}
+    (D : DomainResponse X) (t : Real) : Real :=
 
-/-- Definition 7: Moment -/
-abbrev Moment (t : Real) : Type :=
-  { u : Real // u ∈ ZFC.unitIocAt t } -> Real
+    -- Check if t is a Rational Positive number
+    if h : ∃ (q : QPos), ((q : Rat) : Real) = t then
+      -- CASE 1: Rational. Use the Ledger (Evidence).
+      -- 'h.choose' extracts the rational q from the existence proof.
+      (D.certifies.map h.choose : Real)
+    else
+      -- CASE 2: Irrational. Use the Ghost Function (ZFC).
+      D.ψ t
 
-
-/-- Definition 8: Representational Map -/
-class Representation (σ : Type u) (X : Type v) where
-  encode : X -> σ
-  decode : σ -> X
-
-
-/-- Definition 9: Predition Map -/
-class Prediction (X : Type u) (Y : Type v) where
-  predict : X -> Y
-
-
-/-- Definition 10: Event -/
-structure Event (S : Type u)(A: Alphabet σ) where
-  records : ZFC.FiniteSet (Record σ)
+end DomainResponse
 
 
-/-- Definition 11: Phenomenon -/
-structure Phenomenon (S: Type u)(σ: Alphabet A) where
-  events : ZFC.FiniteSet (Event u σ)
-
-structure Instrument (S : Type u) where
-  Sigma: Alphabet S
-  phenomenon: Phenomenon (S:=S) Sigma
-
-abbrev Clock := Instrument Nat
-/--
-Definition: Time Series.
-
-A time series is a finite or countably infinite sequence of records
-that is strictly ordered by a partial order, with no repeated positions.
--/
 structure TimeSeries (E : Type u)(X : Type v) where
   data : E → X
   order : PartialOrder E

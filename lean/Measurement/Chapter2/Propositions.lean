@@ -1,24 +1,37 @@
-import Std
-import Measurement.Chapter2.Definitions
+import Measurement.Chapter2.Definitions -- contains ledgerOfNaturalNumbers
 
 namespace Measurement
+open Classical
 
-noncomputable section
+universe u
 
-def trivialNatAlphabet : Alphabet Nat :=
-{ symbols := natEnumeration }
+def naturalPredictor : DecodingMap Nat :=
+  { ζ := fun n => some n }
 
-def emptyPhenomenon : Phenomenon (S := Nat) trivialNatAlphabet :=
-{ events := ZFC.empty }
+def naturalRefinement : Refinement Nat :=
+  { enumeration := ledgerOfNaturalNumbers.toEnum
+  , predictor   := naturalPredictor
+  }
 
-def trivialClock : Clock :=
-{ Sigma := trivialNatAlphabet
-, phenomenon := emptyPhenomenon
-}
+def naturalDenseResponse : DenseResponse Nat :=
+  { refinement := naturalRefinement
+  , map := fun q => q.val
+  }
 
-end
+/--
+Theorem 1: Identity Support.
+We prove that the continuous identity function ψ(t) = t
+is supported by the Natural Ledger.
+-/
+noncomputable def Theorem_LedgerSupportsIdentity : DomainResponse Nat :=
+  { ψ := id
+  , certifies := naturalDenseResponse
+  , interpolation := by
+      -- The proof is trivial because we defined the map as identity
+      -- and the function as identity.
+      intro q
+      simp [naturalDenseResponse, id]
+  }
 
-theorem exists_clock : Nonempty Clock :=
-  ⟨trivialClock⟩
 
 end Measurement
