@@ -21,58 +21,86 @@ end Refinement
 structure Alphabet (σ : Type v) where
   symbols : Enumeration σ
 
-structure Instrument (S: Type u)(σ :Type v) where
+
+structure Instrument (S : Type u) (σ : Type v) where
+  -- The State
   alphabet : Alphabet σ
-  ledger : Ledger S
+  ledger   : Ledger S
+
+  domainLogic     : DecodingMap S
+  instrumentLogic : DecodingMap σ
+
+namespace Instrument
+
+  def domainRefinement {S σ} (I : Instrument S σ) : Refinement S :=
+    { enumeration := I.ledger.toEnum -- (Assuming Ledger wraps Enumeration)
+    , predictor   := I.domainLogic
+    }
+
+  def instrumentRefinement {S σ} (I : Instrument S σ) : Refinement σ :=
+    { enumeration := I.alphabet.symbols
+    , predictor   := I.instrumentLogic
+    }
+
+  def search {Record σ} (I : Instrument Record σ) (k : Nat) : Option Record :=
+    I.ledger.index k
+end Instrument
 
 abbrev Moment : Type :=
   Σ t : Real, ({ u : Real // u ∈ ZFC.unitIocAt t } → Real)
 
 abbrev Phenomenon := Enumeration Moment
 
-structure DenseResponse (X: Type u) where
-  refinement: Refinement X
+abbrev QPos := { q : Rat // 0 < q }
+
+abbrev RationalInstrument := Instrument QPos QPos
+
+structure RationalMap where
   map : QPos -> Q
 
-structure DomainResponse (X: Type u) where
-  -- Who needs a continuum hypothesis when I have this continuous function right here?
-  ψ : Real -> Real
-  certifies : DenseResponse X
+structure DenseResponse where
+  rationals: Enumeration QPos
+  instrument: RationalInstrument
 
-abbrev QPos := { q : Rat // q > 0 }
+namespace DenseResponse
+  noncomputable def map (D : DenseResponse) (t : QPos) : Option QPos :=
+    match D.rationals.indexOf t with
+    | none   => none
+    | some i => (D.instrument).search i
+
+end DenseResponse
+
+
+structure DomainResponse where
+  ψ         : Real → Real
+  certifies : DenseResponse
+
+  -- membership predicate (your "q ∈ QPos")
+  QPosSet   : Set Real
+
+  -- turn membership evidence into an actual QPos value
+  toQPos    : ∀ {q : Real}, q ∈ QPosSet → QPos
+
+  -- interpret a QPos back in the continuum
+  embedQPos : QPos → Real
 
 namespace DomainResponse
-  noncomputable def psi {X : Type u}
-    (D : DomainResponse X) (t : Real) : Real :=
 
-    -- Check if t is a Rational Positive number
-    if h : ∃ (q : QPos), ((q : Rat) : Real) = t then
-      -- CASE 1: Rational. Use the Ledger (Evidence).
-      -- 'h.choose' extracts the rational q from the existence proof.
-      (D.certifies.map h.choose : Real)
-    else
-      -- CASE 2: Irrational. Use the Ghost Function (ZFC).
-      D.ψ t
+/--
+If `q ∈ QPosSet`, try the certified dense response; otherwise fall back to `ψ`.
+If the certified lookup fails (`none`), also fall back to `ψ`.
+-/
+noncomputable def psi (D : DomainResponse) (q : Real) : Real := by
+  classical
+  by_cases h : q ∈ D.QPosSet
+  ·
+    let t : QPos := D.toQPos h
+    match DenseResponse.map D.certifies t with
+    | some t' => exact D.embedQPos t'
+    | none    => exact D.ψ q
+  ·
+    exact D.ψ q
 
 end DomainResponse
-
-
-structure TimeSeries (E : Type u)(X : Type v) where
-  data : E → X
-  order : PartialOrder E
-  /-- The sequence of records (partial to allow finite series). -/
-  seq : Nat → Option E
-  /-- No two distinct records share the same position. -/
-  seq_injective :
-    ∀ {n m r},
-      seq n = some r →
-      seq m = some r →
-      n = m
-  /-- Successive records respect the order. -/
-  seq_ordered :
-    ∀ {n r s},
-      seq n = some r →
-      seq (n+1) = some s →
-      order.le r s
 
 end Measurement

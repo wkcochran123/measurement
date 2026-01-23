@@ -47,6 +47,10 @@ def reverse (L : Ledger X) : Ledger X :=
 def size (L : Ledger X) : Nat :=
   Enumeration.len (L.toEnum)
 
+/-- Ledger order induced from lexicographic order on enumerations. -/
+def le {X : Type u} [Ord X] (L₁ L₂ : Ledger X) : Bool :=
+  Enumeration.leLex (toEnum L₁) (toEnum L₂)
+
 end Ledger
 
 

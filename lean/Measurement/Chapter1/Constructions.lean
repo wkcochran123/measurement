@@ -49,10 +49,25 @@ inductive Prefix {A : Type u} : Enumeration A -> Enumeration A -> Prop
   | nil  (t) : Prefix .nil t
   | cons (a) (s t) : Prefix s t -> Prefix (.cons a s) (.cons a t)
 
+/-- Lexicographic `<=` on enumerations, with equality only if they end together. -/
+def leLex {A : Type u} [Ord A] : Enumeration A → Enumeration A → Bool
+  | .nil,       .nil        => true
+  | .nil,       .cons _ _   => false
+  | .cons _ _,  .nil        => false
+  | .cons a as, .cons b bs  =>
+      match compare a b with
+      | Ordering.lt => true
+      | Ordering.gt => false
+      | Ordering.eq => leLex as bs
+
 variable {A : Type u}
 
 def snoc : Enumeration A → A → Enumeration A
   | xs, a => append xs (.cons a .nil)
+
+def indexOf [DecidableEq A] : Enumeration A → A → Option Nat
+  | .nil,      _ => none
+  | .cons a t, x => if a = x then some 0 else (indexOf t x).map Nat.succ
 
 end Enumeration
 
