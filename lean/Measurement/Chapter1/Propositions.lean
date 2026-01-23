@@ -16,7 +16,7 @@ universe u v
 Proposition 1: There exists an enumeration of the natural numbers.
 -/
 def trivialEnumeration : EnumerationMap Nat :=
-{ f := fun n => n
+{ η := fun n => n
 , surjective := by
     intro n
     exact ⟨n, rfl⟩
