@@ -1,9 +1,7 @@
 import Measurement.Chapter2.Definitions
 
 namespace Measurement
-open Classical
 
-universe u
-
+/- No Propositions in Chapter 2 -/
 
 end Measurement

@@ -23,18 +23,24 @@ noncomputable def floorNat (x : Real) : Nat :=
 
 
 -- restrict a function to a set
-def restrict {α β : Type} (s : Set α) (f : α -> β) :
-  {x : α // x ∈ s} -> β :=
-  fun x => f x.1
+/--
+  A partial order on a type C.
+-/
+structure PartialOrder (C : Type u) where
+  le        : C -> C -> Prop
+  refl      : forall a, le a a
+  antisymm  : forall a b, le a b -> le b a -> a = b
+  trans     : forall a b c, le a b -> le b c -> le a c
 
+structure Poset (C : Type u) where
+  po : PartialOrder C
 
-/-- The positive rational numbers. -/
-def Qpos : Type :=
-  { q : Rat // 0 < q }
+  Bucket : Type u
+  enum   : Bucket -> C -> Nat
+  fib    : Bucket -> Nat -> List C
+  leB    : Bucket -> C -> C -> Prop
 
-/-- The positive real numbers. -/
-def Rpos : Type :=
-  { r : Real // 0 < r }
+  buckets : Enumeration Bucket
 
-end ZFC
+nd ZFC
 end Measurement

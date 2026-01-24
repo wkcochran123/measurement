@@ -52,14 +52,6 @@ structure GridMap where
 def RecordCoarseningMap (R : Type u) :=
   R -> Option R
 
-/-- Definition 15: Dense response. -/
-def DenseResponse : Type :=
-  ZFC.Qpos -> Rat
-
-/-- Definition 16: Domain response. -/
-def DomainResponse : Type :=
-  ZFC.Rpos -> Real
-
 
 /-- Unary refinement acting on ledgers. -/
 structure LedgerRefinement (R : Type u) where

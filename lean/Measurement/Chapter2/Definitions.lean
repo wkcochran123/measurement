@@ -6,18 +6,7 @@ import Measurement.Chapter2.Constructions
 namespace Measurement
 open Classical
 
-structure Refinement (X : Type u) where
-  enumeration : Enumeration X
-  predictor : DecodingMap X
 
-namespace Refinement
-  def step {X : Type u} (R : Refinement X) : Enumeration X :=
-    let n := Enumeration.len R.enumeration
-      match R.predictor.ζ n with
-      | none   => R.enumeration
-      | some x => Enumeration.snoc R.enumeration x
-
-end Refinement
 structure Alphabet (σ : Type v) where
   symbols : Enumeration σ
 
@@ -46,24 +35,19 @@ namespace Instrument
     I.ledger.index k
 end Instrument
 
-abbrev Moment : Type :=
-  Σ t : Real, ({ u : Real // u ∈ ZFC.unitIocAt t } → Real)
 
-abbrev Phenomenon := Enumeration Moment
+abbrev RationalInstrument := Instrument ZFC.QPos ZFC.QPos
 
-abbrev QPos := { q : Rat // 0 < q }
-
-abbrev RationalInstrument := Instrument QPos QPos
 
 structure RationalMap where
-  map : QPos -> Q
+  map : ZFC.QPos -> ZFC.Q
 
 structure DenseResponse where
-  rationals: Enumeration QPos
+  rationals: Enumeration ZFC.QPos
   instrument: RationalInstrument
 
 namespace DenseResponse
-  noncomputable def map (D : DenseResponse) (t : QPos) : Option QPos :=
+  noncomputable def map (D : DenseResponse) (t : ZFC.QPos) : Option ZFC.QPos :=
     match D.rationals.indexOf t with
     | none   => none
     | some i => (D.instrument).search i
@@ -79,10 +63,10 @@ structure DomainResponse where
   QPosSet   : Set Real
 
   -- turn membership evidence into an actual QPos value
-  toQPos    : ∀ {q : Real}, q ∈ QPosSet → QPos
+  toQPos    : ∀ {q : Real}, q ∈ QPosSet → ZFC.QPos
 
   -- interpret a QPos back in the continuum
-  embedQPos : QPos → Real
+  embedQPos : ZFC.QPos → Real
 
 namespace DomainResponse
 
@@ -94,7 +78,7 @@ noncomputable def psi (D : DomainResponse) (q : Real) : Real := by
   classical
   by_cases h : q ∈ D.QPosSet
   ·
-    let t : QPos := D.toQPos h
+    let t : ZFC.QPos := D.toQPos h
     match DenseResponse.map D.certifies t with
     | some t' => exact D.embedQPos t'
     | none    => exact D.ψ q

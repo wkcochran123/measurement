@@ -12,6 +12,15 @@ import Measurement.Chapter1.ZFC
 namespace Measurement
 
 /--
+Definition 1: Enumeration Map.
+-/
+
+structure EnumerationMap (X : Type u) where
+  η : X → Nat
+  surjective : Function.Surjective η
+
+
+/--
 Definition 2: Enumeration
 -/
 inductive Enumeration (A : Type u) : Type u
