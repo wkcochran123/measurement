@@ -7,8 +7,7 @@ namespace Measurement
 open Classical
 
 
-structure Alphabet (σ : Type v) where
-  symbols : Enumeration σ
+
 
 
 structure Instrument (S : Type u) (σ : Type v) where
@@ -35,6 +34,11 @@ namespace Instrument
     I.ledger.index k
 end Instrument
 
+structure CoarseningMap (σ : Type u) where
+  coarsen : σ -> Option σ
+
+structure GridMap where
+  grid : Nat -> Option Nat
 
 abbrev RationalInstrument := Instrument ZFC.QPos ZFC.QPos
 

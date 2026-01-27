@@ -28,6 +28,82 @@ permanent trace, there must be some circumstance that causes the trace to be mad
 Before speaking about numbers, laws, or dynamics, we must isolate the minimal notion
 that connects change in the world to change in the ledger. That notion is the event.
 
+\section{The Time Series}
+
+The following phenomenon isolates this effect in its simplest form.
+
+\begin{phenom}{The Box Effect~\cite{box1976}}
+\label{ph:box-effect}
+
+\PhStatement
+When an observation is declared to occur within a bounded temporal or spatial
+region, the absence of recorded events within that region constitutes a physical
+constraint on histories.
+
+\PhOrigin
+Box emphasized that measurement procedures are defined not only by what they
+detect, but by the region over which detection is asserted. Declaring a region
+to be under observation implicitly certifies that no distinguishable events
+occurred there beyond those recorded.
+
+\PhObservation
+A verified empty interval is not informationally neutral. When an instrument is
+operating within its specified resolution and produces no event, the resulting
+silence is itself a recorded outcome. All histories in which a distinguishable
+event would have occurred within the observation window are thereby excluded.
+
+\PhConstraint
+If a region is certified as observed and no event is recorded, then no
+extension of the ledger may introduce a distinguishable event within
+that region without contradicting the experimental ledger.
+
+\PhConsequence
+The ledger functions as an active record of eliminations. Constraints accrue
+not only through recorded events, but through recorded absences. In time series
+ledgers in particular, each successor step asserts both what occurred and what
+failed to occur within the observer’s resolution.
+\end{phenom}e
+
+\begin{definition}[Partial Order]
+\label{def:partial-order}
+A \emph{partial order} on a set $E$ is a binary relation $\prec$ satisfying:
+\begin{enumerate}
+  \item \emph{Reflexivity}: for all $e \in E$, $e \prec e$.
+  \item \emph{Antisymmetry}: for all $e_1,e_2 \in E$, if $e_1 \prec e_2$ and
+        $e_2 \prec e_1$, then $e_1 = e_2$.
+  \item \emph{Transitivity}: for all $e_1,e_2,e_3 \in E$, if $e_1 \prec e_2$ and
+        $e_2 \prec e_3$, then $e_1 \prec e_3$.
+\end{enumerate}
+\end{definition}
+
+
+From this definition we can motivate a time series.
+
+\begin{definition}[Time Series~\cite{wiener1949,yule1927}]
+\label{def:time-series}
+Let $(E,\prec)$ be a finite partially ordered set of 
+events.  A \emph{time series} is a finite or countably infinite sequence
+\[
+r_1 \prec r_2 \prec r_3 \prec \cdots
+\]
+such that each $r_{t+1}$ is a refinement of the record containing
+$\{r_1,\dots,r_t\}$ and no two distinct records share the same position in the
+sequence.  The ordering reflects the succession in which distinguishable
+refinements were justified by an observer.
+
+Historically, time series analysis emerges from treating successive 
+observations as entries in an ordered record, a viewpoint formalized 
+in early statistical work by Yule and Wiener and made operational by 
+the interpretation of data as sequences indexed by count rather than 
+by a primitive continuum.
+\end{definition}
+
+In this sense, history is not an accumulation of information but the
+systematic removal of incompatible configurations. The ledger is the
+mathematical object that encodes this pruning, and it is the foundation on
+which all later notions of compatibility, distance, and dynamics are built.
+
+
 \section{Events}
 
 An \emph{event} is the circumstance that makes an
@@ -550,82 +626,6 @@ readings earn meaning only through persistence in the experimental ledger.
 Time, in this view, is the index that labels stable progression of
 distinctions, not a value returned by the instrument.
 
-Kant recognized that temporality is not given to the observer as a continuously
-measurable parameter, but is instead the cognitive structure forced when a sequence
-of appearances cannot be further merged without loss of informational integrity~\cite{kant1781}.
-In the ledger formulation, the idea of a \emph{moment} is precisely this object in embryonic form:
-the minimal refinement of the experimental ledger that preserves causal coherence
-between two successive measurements (as in the phrase \emph{at that moment}). Kant's work parallels the operational rule that
-time is witnessed only through finite instrument traces (\emph{e.g.}, atomic-clock ticks),
-and that no additional intermediate distinctions may be asserted without
-corresponding entries in the record. 
-
-\begin{phenom}{The Kant Effect~\cite{kant1781}}
-\label{ph:kant-effect}
-
-\PhStatement
-Events are not given within time; rather, temporal order is induced by the
-ordering of records in a ledger.
-
-\PhOrigin
-Kant argued that time is not an object of experience but a condition under
-which experiences are ordered. Temporal structure does not arise from things
-as they are in themselves, but from the form in which distinguishable
-appearances are arranged for an observer.
-
-\PhObservation
-In a ledger, events appear only as recorded distinctions.
-Their ordering is determined solely by their placement within the ledger.
-No event carries an intrinsic temporal coordinate beyond this ordering.
-
-\PhConstraint
-No description may assign temporal structure to a record
-independently of its position in the ledger. Any notion of time
-that precedes or exists apart from the ordering of recorded events is
-inadmissible.
-
-\PhConsequence
-Time emerges as an ordering relation on records induced by record extension,
-not as a primitive background in which events occur. Temporal succession is
-therefore a property of the ledger, not of the records themselves.
-\end{phenom}
-
-This increases the rigor for the concept of a moment in time.
-The operational realization of a moment is best illustrated by Einstein’s 
-analysis of simultaneity through the exchange of light signals~\cite{einstein1905}. 
-In this 
-framework, time is not a pre-existing geometric coordinate but a relation 
-established by the discrete events of emission and reception. The interval 
-between these two events represents a domain of informational silence; 
-until the return signal is distinguished and recorded, the ledger 
-contains no warrant to assert additional structure.
-
-\begin{definition}[Moment~\cite{einstein1905}]
-\label{def:moment}
-A \emph{moment} is the implied continuous interpolation between two successive
-states of a ledger $\Ledger_t$ and $\Ledger_{t+1}$ for an instrument $i$ in the
-universe of instruments $I$. Any theoretical, though not necessarily physical,
-observation between the corresponding events is represented as an image of this
-interpolated domain. A moment is not a primitive atom of time, but the continuous
-domain on which completion of the record is defined when no new distinguishable
-refinements occur.
-
-Concretely, a moment is a function
-\[
-M_i(t) : (\lfloor t\rfloor, \lfloor t \rfloor+1] \to \mathbb{R},
-\]
-determined by physical law inferred from the lifetime ledger event of instrument
-$i$. It represents the smooth surrogate of informational silence: the continuous
-interpolation spanning the discrete gaps of the ledger.
-\end{definition}
-
-
-Physical laws model behavior \emph{in the moment} (such as parabolic or hyperbolic partial 
-differential equations) or \emph{at that moment} (such as eliptic partial differential equations), but 
-moments are never measured directly. The ledger records behavior \emph{in order}, appending 
-exactly one new distinction whenever an instrument licenses a new fact. 
-This is just another lens to distinguish fact and truth: phenomena in the
-moment are truths and their measurements in the ledger are facts.
 
 \subsection{Patterns in Measurement}
 
@@ -1778,22 +1778,6 @@ coarser one. Fine distinctions are collapsed, cumulative alignment is preserved,
 and only admissible configurations are retained. We refer to a mapping with this
 role as a \emph{grid map}.
 
-\begin{definition}[Grid Map]
-\label{def:grid-map}
-A \emph{grid map} is a function
-\[
-\upsilon : \mathbb{N} \rightarrow \mathbb{N} \cup \{\varnothing\},
-\]
-interpreted as a representational correspondence between refined and coarse
-counting indices. For a refined index $n \in \mathbb{N}$, the value $\upsilon(n)$
-is either a coarse index that represents it, or $\varnothing$ if no admissible
-coarse representative exists.
-
-The grid map preserves cumulative count structure while allowing refined
-distinctions to be collapsed or suppressed. No algebraic, metric, or dynamical
-structure on $\upsilon$ is assumed beyond this admissibility constraint.
-\end{definition}
-
 Regardless of how an instrument is improved, a ledger can increase precision
 only by expanding its measurement alphabet, and it can increase the number of
 distinctions only by increasing its sensitivity to the phenomenon. We formalize
@@ -2272,27 +2256,6 @@ experimental ledger, and it ensures that records may be compared, reordered,
 and refined without introducing representational artifacts.
 
 
-\begin{axiom}[The Axiom of Kolmogorov~\cite{kolmogorov1933}]
-\label{ax:kolmogorov}
-\emph{[Every Instrument Communicates Discrete Information.]}
-For every instrument $i$ in the universe of instruments $I$, the set of symbols it can emit is represented as a
-finite, totally ordered, and indexable list:
-\[
-\Sigma_i = [\sigma_{i,1}, \sigma_{i,2}, \dots, \sigma_{i,n_i}],
-\]
-where each symbol has a unique natural index.
-A record produced by $i$ stores the ordinal position $j$ of the emitted symbol
-in this list.
-
-Thus, a record $r$ may be written as:
-\[
-r = (i, j, k) \in \mathbb{N} \times \mathbb{N} \times \mathbb{N},
-\]
-where $i \in I$ labels the instrument, $j \in \{1, \dots, n_{i}\}$ 
-is the natural index of the symbol in the instrument’s numbered alphabet $\Sigma_i$,
-$k \in \mathbb{N}$ is the successor count of that symbol emitted by $i$
-up to the time of the record.
-\end{axiom}
 
 The record of measurement---defined as the finite or countable set of
 observed, distinguishable events---is taken to be a mathematical object
@@ -2610,24 +2573,6 @@ The event is the action that makes previously indistinguishable outcomes disting
 measurement is the observed differentiation (the count) between two anchor events.  This is not the
 absolute measure of the event, but just relative difference of the two.  We count the events as time passes.
 
-\begin{axiom}[The Axiom of Cantor~\cite{cantor1895,earman1974}]
-\label{ax:cantor}
-\emph{[Time is an Ordinal Labeling]}
-
-For $(E,\prec)$ satisfying the Axiom~\ref{ax:causal},
-there exists an injective, order-preserving map
-\[
-\tau : E \longrightarrow \mathbb{N}
-\]
-into the natural numbers $\mathbb{N}$ such that
-\[
-e \prec f \;\Longleftrightarrow\; \tau(e) < \tau(f).
-\]
-In particular, every finite segment of the record is order-isomorphic to an
-initial segment $\{1,2,\dots,n\}$ of $\mathbb{N}$, and the ordinal labels
-$\tau(e)$ provide a canonical indexing of events in a ledger by their place in the
-refinement sequence.
-\end{axiom}
 
 The map $\tau$ assigns an ordinal position to each event, not to each recorded
 measurement.  Distinct events may share the same ordinal label when no
@@ -2674,22 +2619,6 @@ therefore bounded not by the universe itself, but by the observer’s ability to
 register and distinguish events within a finite record.
 
 
-\begin{axiom}[The Axiom of Planck~\cite{planck1901}]
-\label{ax:planck}
-\emph[Observations are Finite and Immutable]
-For any observer, the set of observable events within their causal domain
-is finite.  The chain of measurable distinctions terminates at the limit of the
-observer’s proper time or causal reach. These observations do not change over time.
-
-More formally, there exists a finite precision scale $\mathcal{E}$ with
-$0 < \mathcal{E} < \infty$ such that for every $e \in E$,
-\begin{equation}
-0 < |e| \le \mathcal{E},
-\end{equation}
-where $|e|$ denotes the cardinality of the event $e$.
-
-Events can only leave a finite trace.
-\end{axiom}
 
 Taken together, these axioms do not describe the behavior of physical systems,
 but the minimal conditions under which measurements may be recorded, compared,

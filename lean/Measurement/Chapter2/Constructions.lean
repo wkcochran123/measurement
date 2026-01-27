@@ -10,7 +10,17 @@ abbrev Moment : Type :=
 
 abbrev Phenomenon := Enumeration Moment
 
+structure Alphabet (σ : Type v) where
+  symbols : Enumeration σ
 
+structure Predictor (σ : Type v) where
+  p : Real → Option σ
+
+structure CoarseningMap (σ : Type u) where
+  coarsen : σ -> Option σ
+
+structure GridMap where
+  grid : Nat -> Option Nat
 
 structure Refinement (X : Type u) where
   enumeration : Enumeration X
