@@ -1,0 +1,1651 @@
+\chapter{Instruments}
+
+What is necessary is that the values in the ledger are faithfully represented
+by the decomposition.
+
+\begin{phenom}{The Fourier--Nyquist Effect}
+\label{ph:fourier-nyquist}
+
+\PhStatement
+Exact decomposition of measurement is lawful if and only if the refinement of
+the record is sufficient to permit recovery.  Decomposition may be applied
+internally to measured distinctions, but no component may be recovered unless
+the ledger commits distinctions densely enough to support inversion.
+
+\PhOrigin
+Fourier introduced decomposition as a method for representing complex phenomena
+through orthogonal components, showing that structured behavior could be
+analyzed by factorization rather than direct inspection~\cite{fourier1822}.
+Nyquist later identified the conditions under which such decompositions remain
+recoverable when measurements are recorded sequentially~\cite{nyquist1928}.
+Together, their work established that decomposition alone is insufficient:
+recoverability depends on the rate and structure of refinement.
+
+\PhObservation
+Physical instruments routinely employ internal decomposition to resolve
+structure from composite measurements.  Optical imaging, radio transmission,
+and digital signal processing all separate admissible components from a single
+sensor response.  In each case, the ledger records only sequential samples, while
+decomposition occurs internally.  Successful reconstruction depends not on the
+continuity of the underlying process, but on whether the recorded refinements
+are sufficient to support exact recovery.
+
+\PhConstraint
+No decomposition may introduce distinctions not licensed by measurement.
+Components resolved by internal structure must correspond exactly to refinements
+that can be recovered from the ledger.  If refinement is too sparse, the
+decomposition ceases to be exact, and recoverability is lost.
+
+\PhConsequence
+The Fourier--Nyquist Effect identifies the boundary between lawful and unlawful
+decomposition.  Apparent continuity, smooth spectra, or rich intermediate
+structure do not guarantee recoverability.  What matters is whether sequential
+commitment to the ledger is dense enough to support inversion.  Decomposition is
+therefore not a metaphysical property of phenomena, but an instrumental
+achievement constrained by refinement.
+\end{phenom}
+
+\label{chap:instrument}
+
+Measurement does not begin with records or histories, but with instruments. An
+instrument specifies the distinctions an observer is capable of making and the
+expectations under which those distinctions are produced. Before a ledger may
+be formed or refinement discussed, the instrument itself must be defined as a
+static object, independent of time or accumulation. Without an instrument,
+there is nothing that can be said to have been measured, recorded, or compared.
+
+An instrument encodes the current understanding of a phenomenon. It reflects
+what distinctions are believed to matter and which variations are to be treated
+as irrelevant. This understanding may be incomplete or even incorrect, but it
+is always explicit in the structure of the instrument. The instrument therefore
+represents a commitment: it declares in advance what counts as an observable
+difference.
+
+In this sense, an instrument is deterministic.  Given the same triggering
+conditions and the same internal configuration, the instrument will append the
+same ledger entry.  This claim does not appeal to a metaphysical replay of the
+world.  The phrase ``the same conditions'' is operational: it refers to any
+orientation, calibration, or internal state of the instrument that produces an
+identical response when presented with an identical stimulus.
+
+Determinism here is therefore not a property of the underlying phenomenon, but
+of the instrument's construction.  The instrument implements a fixed routing
+from admissible stimuli to admissible records.  When that routing is held fixed,
+the outcome is fixed.  What appears as determinism is simply the stability of
+the instrument's internal mechanism or computation, not a claim that the phenomenon itself
+admits only one possible continuation.
+
+
+For the purposes of this work, an instrument is composed of two conceptual
+parts: a sensor and a gauge. The sensor is the part of the instrument that
+physically interacts with the phenomenon. It is constructed using
+well-established engineering practices and calibrated against known standards.
+The gauge is the interface through which the instrument writes to the
+experimental ledger. Its reading is a symbolic output presented to the observer,
+drawn from a finite and well-defined set of possible indications.
+
+The distinction between sensor and gauge is not merely practical but
+structural. The sensor mediates interaction with the physical world, while the
+gauge mediates interaction with the ledger. The sensor produces responses; the
+gauge licenses distinctions. Measurement is complete only when a sensor
+response has been translated into a symbol that can be appended to the record.
+
+Unless the sensor itself is binary, its output cannot be treated as a single
+distinction. A non-binary sensor produces a range of responses that must be
+interpreted, discretized, or refined before a gauge can act. In this sense, the
+sensor is itself an experimental ledger, accumulating intermediate distinctions
+prior to presentation. The gauge then performs a further refinement, collapsing
+that internal ledger to a single recorded symbol.
+
+This layered structure clarifies why instruments may contain multiple stages of
+processing without violating the principle that only one fact is recorded at a
+time.  Internal ledgers may grow and be refined within the instrument, but only
+the final gauge reading is appended to the experimental record.  What is
+observed is not the raw sensor interaction, but the result of a structured
+refinement process that connects the world to the ledger.
+
+At each such moment of observation, the instrument commits to a single fact:
+an agreed--upon meaning of a symbol produced by its construction.  Intermediate
+symbols, partial refinements, and internal distinctions remain inaccessible to
+the experimental ledger and therefore do not constitute recorded facts.
+
+We do not assume how the
+instrument is constructed, what internal operations it performs, or who, if
+anyone, observes its output. These questions concern interpretation rather than
+mechanism and are therefore deferred to the next chapter. For now, it suffices
+to assume only that there exists a nonzero chance that some instrument can be
+constructed which is sufficiently precise and sufficiently accurate for its
+intended use. The meanings of ``precise,'' ``accurate,'' and even ``intended use''
+remain intentionally informal here. Their formalization belongs to the act of
+observation, not to the mechanics of refinement.
+
+
+Further, this separation explicitly encodes a causal ordering.  The sensor is
+triggered first, responding to the phenomenon, and only afterward is a reading
+produced.  This ordering is irreversible in practice: a reading cannot occur
+without a prior sensor interaction.  The instrument does not merely occupy time;
+it enforces an order of operations.  In this way, the instrument itself embodies
+an arrow of time, even before any notion of history or record is introduced.
+
+Returning once more to a radar gun used to measure the speed of a passing vehicle.  The device
+does not passively receive information from the world.  It must first emit an
+electromagnetic pulse.  Only after this pulse is sent can a reflected signal be
+received and processed.  A reading displayed before emission would be
+meaningless, not because of metaphysical prohibition, but because the necessary
+causal conditions have not yet been satisfied.
+
+The same ordering appears in simpler instruments.  A digital display cannot
+illuminate a digit before charge carriers move through the circuit that drives
+it.  A needle cannot deflect before a current flows through the coil that
+produces the magnetic force.  In each case, the sequence is enforced by
+construction.  The instrument contains states that must be traversed in order,
+and later states are inaccessible until earlier ones have occurred.
+
+This arrow of time is therefore not imported from thermodynamics or assumed as a
+background structure of the universe.  It arises locally, from the asymmetry
+between sensing and recording built into every instrument.  Before there is a
+ledger, before there is a history, there is already an irreversible passage from
+interaction to inscription.  The arrow of time enters the framework through the
+instrument itself.
+
+\section{The Arrow of Time}
+The arrow of time appears most plainly when one attends to the waiting imposed by
+an instrument's construction.  A familiar example is the automobile
+speedometer.  The device does not reveal speed continuously, nor does it respond
+instantaneously to motion.  
+
+Instead, it waits.  
+
+That waiting is not a flaw or a
+delay to be engineered away; it is the physical expression of causal order.
+
+Consider a mechanical speedometer driven by wheel rotation.  The wheel must turn
+through a finite angle before a gear advances.  The gear must overcome friction
+before a ratchet clicks.  The ratchet must complete its motion before a needle
+can deflect or a counter can increment.  Each of these stages constitutes a
+condition that must be satisfied before the next becomes possible.  The reading
+does not appear because the car is moving; it appears because enough motion has
+accumulated to overcome resistance and trigger the next refinement.
+
+The same structure persists in electronic instruments.  A beam must be broken
+before a detector switches.  A transistor must cross a threshold before its
+state flips.  Charge carriers must traverse a circuit before a display
+illuminates.  None of these transitions is instantaneous, and none may occur out
+of order.  The instrument waits for each frictional event to complete before the
+next may begin.  The delay is not merely temporal but logical: later states are
+inaccessible until earlier ones have occurred.
+
+From the perspective of the ledger, each such transition licenses at most one new
+fact.  Between updates, nothing further may be recorded, regardless of how much
+the underlying phenomenon continues to evolve.  The number of ledger events that
+separate successive readings is therefore fixed by construction.  Whether the
+instrument waits for a full wheel rotation, a single ratchet click, a threshold
+crossing, or a clock pulse, the order of these events is enforced by the physical
+path through which refinement proceeds.
+
+Kant motivated this interpretation of time as a sequence of events. 
+Kant argued that time is not an object of
+experience, nor a property of external phenomena, but a condition under which
+experience may be ordered~\cite{kant1781}.  Temporal succession is therefore not
+observed directly; it is imposed by the rules that make ordered perception
+possible.
+
+\begin{phenom}{The Kant Effect~\cite{einstein1905,kant1781}}
+\label{ph:kant-effect}
+
+\PhStatement
+Temporal structure is not a primitive backdrop in which events occur, but an
+ordering relation induced by the admissible sequencing of records. Time is thus
+a derived coordinate of observation, not an independently given domain.
+
+\PhOrigin
+Kant held that time is not an object of experience but a necessary form by which
+experiences are ordered for an observer. It does not belong to things as they
+are in themselves, but to the conditions under which appearances are made
+comparable. This mirrors Phenomenon~\ref{ph:clock}.
+Clocks do not reveal an underlying time; they
+establish temporal relations by coordinating measurement records under physical
+constraints. Together, these views imply that temporal order arises from the
+structure of recorded observations rather than from a pre-existing continuum.
+
+
+\PhObservation
+In a ledger, events appear only as recorded distinctions.
+Their ordering is determined solely by their placement within the ledger.
+No event carries an intrinsic temporal coordinate beyond this ordering.
+
+\PhConstraint
+No description may assign temporal structure to a record
+independently of its position in the ledger. Any notion of time
+that precedes or exists apart from the ordering of recorded events is
+inadmissible.
+
+\PhConsequence
+Time emerges as an ordering relation on records induced by record extension,
+not as a primitive background in which events occur. Temporal succession is
+therefore a property of the ledger, not of the records themselves.
+\end{phenom}
+
+Kant’s distinction between one event following another entered scientific
+practice through the idealization of time as a uniform medium in which such
+succession could be represented.  In elevating temporal order from an observed
+relation between acts of measurement to a background structure shared by all
+phenomena, science gained a powerful unifying coordinate.  Events could now be
+compared, aligned, and predicted as points along a single axis, independent of
+the particular instruments that recorded them.  This idealization quietly
+reversed the epistemic direction of the Kantian insight: rather than temporal
+order arising from the conditions of observation, observation was increasingly
+interpreted as sampling an already-existing temporal continuum.  The practical
+success of this move secured its adoption, even as it obscured the fact that
+the ordering of events originates in the refinement of records, not in time
+taken as a primitive.
+
+\subsection{Quantum of Time}
+
+Phenomenon~\ref{ph:kant-effect} appears with particular clarity in the ledger of a radar
+gun.  Unlike the speedometer, which accumulates motion mechanically, the radar
+gun measures speed through the exchange of electromagnetic signals.  Yet the
+arrow of time is enforced just as strictly.  The instrument must first be
+triggered.  Electronics must energize.  An electromagnetic pulse must be
+generated and emitted.  Only after this emission can a reflected signal be
+received, processed, and finally recorded as a reading.  A display appearing
+before transmission would not merely be incorrect; it would be incoherent,
+since the causal prerequisites for measurement would not yet exist.
+
+Here the waiting imposed by the instrument is more subtle.  The delay between
+emission and reception is not a mechanical accumulation but a propagation
+interval governed by finite signal speed.  During this interval, the instrument
+is neither idle nor recording.  It occupies a silent phase in which no new fact
+may be appended to the ledger.  The reading that eventually appears corresponds
+to the completion of a closed causal loop: emission, propagation, reflection,
+return, and processing.  Until that loop is closed, the instrument cannot
+advance.
+
+This structure is exactly the one emphasized by Einstein in his analysis of
+timekeeping~\cite{einstein1905}.  In his discussion of clocks synchronized by light signals, Einstein
+was explicit that the theory does not describe what occurs between emission and
+reception.  One records the departure of a signal, one records its return, and
+one defines the intervening time by convention.  The physical process in between
+is not observed; it is only inferred to have occurred.  Linear interpolation is
+introduced not as a claim about reality, but as a practical rule for relating
+records.
+
+\begin{phenom}{The Einstein Effect~\cite{einstein1905}}
+\label{ph:clock}
+
+\PhStatement
+Temporal order arises from the construction of instruments that enforce a
+directed sequence of admissible records.  An instrument produces time not by
+measuring an underlying flow, but by imposing an irreversible ordering on the
+facts it appends to the ledger.
+
+\PhOrigin
+Einstein introduced his analysis of time through operational procedures
+involving signal exchange and synchronization, explicitly refusing to describe
+what occurs between emission and reception.  Time, in this account, is not an
+entity to be observed but a relation defined by the ordering of recorded events.
+Phenomenon~\ref{ph:clock} isolates this insight from its relativistic consequences and
+treats it as a general property of measurement devices.
+
+\PhObservation
+Every functioning instrument separates sensing from recording.  A sensor must
+first be triggered, and only afterward may a reading be produced.  This ordering
+is enforced by construction: a display cannot illuminate before current flows,
+and a signal cannot be received before it is emitted.  Between these stages,
+the instrument may occupy a silent interval during which no fact is recorded.
+
+\PhConstraint
+No instrument may append a record that is not causally licensed by a prior
+interaction.  Recorded facts must respect the internal ordering imposed by the
+instrument's design.  Any description that assigns physical reality to events
+outside this ordering exceeds what the instrument can justify.
+
+\PhConsequence
+Time enters the measurement framework as an artifact of causal ordering rather
+than as a primitive coordinate.  Phenomenon~\ref{ph:clock} shows that temporal notions
+are grounded in the discipline of instrumentation: what may be recorded, and in
+what order.  Relativistic time emerges only when multiple such instruments are
+coordinated, but the arrow of time itself is already present in a single device.
+\end{phenom}
+
+The radar gun is therefore an explicit realization of Einstein's clock.  Each
+measurement defines a discrete temporal unit bounded by two recorded events:
+signal emission and signal reception.  What lies between these events is not a
+sequence of facts but an assumed continuity justified by recoverability.  The
+instrument measures time only in quanta, each quantum corresponding to a
+completed exchange.  Speed is inferred by comparing such quanta across repeated
+cycles, not by observing motion as a continuous flow.
+
+This structure does not depend on electromagnetism.  What matters is not the
+carrier, but the closure of a bounded exchange that licenses a record.  The same
+logic appears wherever an instrument waits for a departure and a return before
+committing a fact.
+
+The speedometer exhibits Phenomenon~\ref{ph:clock} in a form that is mechanically
+transparent.  Instead of an electromagnetic pulse, the initiating signal is a
+single rotation of the wheel.  A marked notch leaves a reference point and, after
+a full turn, returns.  These two events bound a discrete instrumental cycle.
+Only when the notch has completed this round trip does the instrument license an
+update of the reading.
+
+
+As with the radar gun, what lies between departure and return is not recorded as
+a sequence of facts.  The wheel passes through intermediate positions, but none
+of these positions is appended to the ledger.  The instrument records only that
+the notch has left and that it has returned.  The continuity of the rotation is
+assumed, not observed, and is justified solely by the recoverability of the
+cycle from these two recorded events.
+
+A simple thought experiment makes this point vivid.  Consider turning a car off
+and leaving it parked.  Hours, days, weeks, or even years may pass before the
+engine is started again.  From the perspective of ordinary language, a long
+duration has elapsed.  From the perspective of the speedometer, nothing at all
+has happened.  No wheel has turned, no cycle has closed, and no new fact has been
+licensed.
+
+When the car is finally driven again, the wheel completes its next rotation and
+the instrument advances by exactly one count.  The speedometer does not record
+how long the car was idle, nor does it distinguish whether the pause lasted
+minutes or decades.  Its ledger reflects only the completion of a bounded
+exchange: one additional rotation.  All intervening time is invisible to the
+instrument.
+
+This example underscores the instrumental meaning of a quantum of time.  Time
+does not accumulate simply because the world continues to exist.  It advances
+for an instrument only when the conditions for a new record are met.  Duration,
+as inferred by the device, is nothing more than the count of completed cycles.
+
+
+The analogy with signal exchange is exact.  In the radar gun, a photon is
+emitted and later received.  In the speedometer, a mechanical marker departs and
+later returns.  In both cases, the instrument defines a quantum of time by the
+completion of a closed path.  No reading can occur before the return event, and
+the order of events cannot be reversed.  The arrow of time is enforced by
+construction.
+
+Speed is then inferred by comparing many such cycles.  The speedometer does not
+track motion as a continuous flow; it counts completed rotations per interval of
+observation.  The smooth motion suggested by the needle is a summary of repeated
+discrete cycles, each bounded by departure and return.  Like the radar gun, the
+speedometer measures time only in quanta, and continuity enters only as an
+interpolation across those quanta.
+
+In this way, the wheel rotation plays the same instrumental role as the photon.
+Different carriers, identical structure.  Both devices function as clocks: they
+produce temporal order by enforcing the completion of bounded exchanges.  In
+each case, a new reading appears only when a cycle closes, and continuity enters
+only as an assumed interpolation.  Temporal order arises from the construction of
+the instrument, not from the direct observation of continuous motion.
+
+
+\section{The Mathematical Device}
+\label{sec:instrument}
+
+An instrument is the minimal structure by which interaction with the world is
+converted into recordable fact.  It consists of two irreducible components: an
+alphabet, which determines what distinctions may be expressed, and a ledger,
+which determines when such distinctions become facts.  These two components
+implement complementary constraints. 
+
+The automobile speedometer provides a concrete illustration.  At the level of
+its alphabet, the speedometer counts wheel rotations.  Each completed rotation
+is treated as a discrete, repeatable symbol.  Intermediate positions of the
+wheel are irrelevant to the alphabet; only the completion of a turn matters.
+This is Phenomenon~\ref{ph:peano} in mechanical form: a potentially unbounded
+sequence generated by the repetition of a successor operation, here realized as
+successive rotations of the wheel.
+
+The ledger enters when these counted rotations are assigned meaning.  A single
+rotation, by itself, does not yet constitute speed.  Speed arises only when the
+instrument commits to an ordered record that relates successive counts to one
+another under fixed conditions.  The ledger enforces this commitment by allowing
+the count to advance only when a rotation has completed, and by recording that
+advance irreversibly.  In doing so, it implements the Kant Effect: time and order
+enter the description not as observed quantities, but as conditions under which
+the record is possible.
+
+The value reported as ``speed'' is therefore not a direct measurement of motion,
+but a ledger-level interpretation of counted symbols.  The instrument assigns
+meaning to the alphabet by relating rotations across successive ledger entries.
+The smooth behavior suggested by the display is a summary of many such entries,
+not a continuous observation.  In this way, the speedometer exemplifies the
+general structure of an instrument: an alphabet that supports counting, and a
+ledger that confers facthood through ordered commitment.
+
+A familiar illustration of this distinction appears in the automotive
+speedometer.  In a traditional mechanical design, the rotation of the wheels is
+transmitted through a gear train that appears to move as one in a continuous fashion. The
+motion appears continuous, yet the mechanism itself is composed entirely of
+discrete elements: teeth, ratios, and fixed linkages.  Each full rotation of
+the wheel advances the gear train by an exact number of teeth, and the apparent
+smoothness of the needle arises from the aggregation of many small, countable
+advances.  The ratios governing the speedometer are therefore ratios of simple
+machines, fixed at construction, encoding a correspondence between counted
+rotations and displayed speed.  What presents itself as analog motion is, at
+base, an ordered sequence of discrete mechanical refinements: the chosen size
+of the gears and the ratios between them.
+
+Modern digital speedometers make this structure explicit.  Wheel rotation is
+measured by digital sensors that emit pulses, each pulse corresponding to a
+fixed angular increment.  These pulses are counted, aggregated over an interval,
+and mapped through a predefined ratio to a numerical display.  Here the ledger
+is literal: a counter is incremented, a value is computed, and a symbol is
+recorded.  The physical and the metaphysical divide emerges precisely at this
+mapping.  Physically, both systems rely on discrete acts of counting, whether
+implemented by gear teeth or electronic pulses.  Metaphysically, the idealized
+notion of continuous speed is not measured directly, but inferred from the
+structure of the instrument itself.  In both cases, continuity is a
+representational choice layered atop a fundamentally discrete process of
+refinement and record.
+
+
+\subsection{Physical and Metaphysical}
+\label{subsec:physical-metaphysical}
+
+The distinction between physical and metaphysical description becomes sharp once
+the roles of alphabet and ledger are separated.  A physical description is one
+that accounts for how facts are produced and recorded by an instrument.  A
+metaphysical description is one that invokes structure that is never itself
+licensed by any act of measurement, but is assumed in order to make the
+description work.
+
+Archimedes' treatment of density occupies this metaphysical position.  The
+procedure relies on a continuous geometric relation between volume and
+displacement, a relation that is never directly observed.  The balance registers
+equivalence of weights, but the mathematical continuum that underwrites the
+inference of density operates as an unseen intermediary.  It functions as a
+\emph{deus ex machina}: a perfectly smooth structure introduced to bridge gaps
+that no ledger ever records.  The success of the method does not make this
+structure physical. 
+
+It makes it \emph{effective.}
+
+This is not a criticism of Archimedes, but a clarification of scope.  The
+geometric continuum serves as an alphabet rich enough to express arbitrarily fine
+relations, even though no such relations are committed as facts.  The method
+works precisely because the continuous structure is stable, reusable, and never
+challenged by the ledger.  Its role is explanatory, not observational.
+
+By contrast, stoichiometric reasoning is physical in the strict instrumental
+sense.  It refuses to license intermediate structure.  Reactions are recorded
+only when integer relations balance, and no appeal is made to unseen fractional
+entities.  What appears continuous in the phenomenon is constrained by what may
+be committed to the ledger.  Here, no deus ex machina is permitted; facthood is
+tied directly to countable commitment.
+
+Proust’s contribution enters at the point where refinement becomes chemical
+law.  Through careful experimental practice, he observed that substances do not
+combine in arbitrary proportions, but in fixed ratios that recur across
+contexts and preparations.  The law of definite proportions did not arise from
+a metaphysical claim about matter itself, but from the stability of recorded
+outcomes under repeated refinement of measurement.  By insisting that the same
+compound, however prepared, yields the same proportional record, Proust
+anchored chemical identity in the ledger rather than in speculative structure.
+His work exemplifies how lawful regularity emerges when experimental records
+remain invariant under improved instruments, tighter controls, and repeated
+acts of observation.  In this sense, chemical law appears not as an assumption
+about underlying substance, but as a constraint imposed by the persistence of
+distinguishability across refinement.
+
+
+\begin{phenom}{The Archimedes--Proust Effect}
+\label{ph:continuity}
+
+\PhStatement
+Quantitative knowledge may be obtained either by embedding discrete observations
+within a continuous representational structure or by constraining apparently
+continuous phenomena through integer commitment.  These two modes correspond to
+distinct instrumental roles: expression through alphabet and facthood through
+ledger.
+
+\PhOrigin
+Archimedes inferred quantities such as density indirectly, by situating finite
+acts of comparison within continuous geometric relations.  His method relies on
+idealized continua that are never themselves recorded, but which provide a
+stable expressive framework for reasoning about measurement.  Proust, by
+contrast, established that chemical compounds form in fixed integer
+proportions, refusing any appeal to intermediate fractional composition.  His
+law of definite proportions grounded chemical facthood in whole-number
+relations that must balance exactly.
+
+\PhObservation
+In Archimedean measurement, a balance records equivalence while geometry supplies
+a smooth relation that interpolates unseen structure.  The instrument commits
+few facts while the mathematics carries the burden of continuity.  In
+stoichiometry, the situation is reversed: mixtures and reactions may appear
+continuous, but only integer ratios are ever licensed as facts.  The ledger
+records balance or imbalance, and no finer distinction is admitted.
+
+\PhConstraint
+Continuous structure may enter only as expressive alphabet and must not be
+confused with recorded fact.  Conversely, integer commitment may constrain
+phenomena without denying their apparent continuity.  Any theory that treats
+alphabetic interpolation as physical fact, or that treats ledger balance as
+approximate, exceeds what the instrument justifies.
+
+\PhConsequence
+Phenomenon~\ref{ph:continuity} clarifies the complementary roles of continuity and
+discreteness in measurement.  Archimedes exemplifies the metaphysical use of
+continuity to express relations beyond direct record.  Proust exemplifies the
+physical discipline of committing facts only when integer relations balance.
+Within the ledger framework, both are legitimate:
+continuity
+belongs to expression, discreteness to commitment.  Instruments bind these
+together, but never collapse one into the other.
+\end{phenom}
+
+Concentrations vary continuously, masses may be divided
+arbitrarily, and reactions unfold in time without visible jumps.  Yet Proust
+insisted that such appearances are not the basis of chemical knowledge.
+This discipline makes clear that apparent continuity is not continuity itself.
+The smooth variation of quantities during a reaction does not imply that the
+resulting substance admits arbitrary composition.  Continuity describes how the
+phenomenon unfolds; it does not determine what may be recorded as a fact.  Proust
+separated these roles cleanly.  He allowed continuity in the process while
+denying it in the commitment.
+
+Proust's insistence on exact ratios thus anticipates the instrumental
+distinction between expression and commitment discussed here.  What chemistry 
+describes is not
+the infinitely many intermediate states through which a reaction may pass, but
+the discrete conditions under which a substance can be said to exist.  Apparent
+continuity belongs to description; facthood belongs to balance.
+
+The ledger framework makes this contrast explicit.  Continuous structure may
+enter as alphabet, but only discrete commitments enter as fact.  When a theory
+relies on continuous relations that never touch the ledger, it operates
+metaphysically.  When it restricts itself to what instruments can actually
+record, it operates physically.  Both modes are useful.  Confusion arises only
+when they are treated as the same.
+
+At this point it is worth emphasizing that nothing in the preceding discussion
+fixes a unique way of organizing what has been introduced.  The same ledger may
+be enumerated in different orders, the same alphabet renumbered or reissued, and
+the same decoding maps rearranged or reconstructed without changing the
+admissible records themselves.  These choices are matters of organization, not
+of fact.  The development that follows adopts one particular organization, not
+because it is necessary, but because it is sufficient.  Other choices could
+have been made, and many would lead to equivalent results.
+
+The intuition we wish to isolate concerns divide--and--conquer reasoning itself.
+Bisection, iteration, and sequential search all rely on the same metaphysical
+commitment: that refinement may proceed indefinitely by subdividing admissible
+structure, even when only one distinction is committed at a time.  This
+commitment echoes the resolution of the Zeno Effect, in which motion is not
+treated as a primitive given, but as an ordered progression of ever finer
+distinctions.  What matters is not that all refinements be realized at once, but
+that each step lawfully constrains the next.  Divide and conquer is thus not
+merely an algorithmic technique; it is a way of understanding how structured
+outcomes may arise from sequential commitment alone.
+
+This intuition underlies what will later be formalized as the Turing device.
+Here, however, it is introduced only as a possibility: the idea that an
+instrument, when decomposed appropriately, may support unbounded refinement
+through coordinated traversal of its internal structure.  Whether such an
+arrangement is required, sufficient, or even present in a given context will be
+established rigorously later.  For now, it serves as a conceptual anchor,
+showing that the metaphysical burden of divide--and--conquer reasoning can be
+borne entirely by refinement, without presupposing any particular computational
+mechanism.
+
+\subsection{Coordinated Enumeration}
+
+At this point it is worth emphasizing that nothing in the preceding discussion
+fixes a unique way of organizing what has been introduced.  The same ledger may
+be enumerated in different orders, the same alphabet renumbered or reissued, and
+the same decoding maps rearranged or reconstructed without changing the
+admissible records themselves.  These choices are matters of organization, not
+of fact.  The development that follows adopts one particular organization, not
+because it is necessary, but because it is sufficient.  Other choices could
+have been made, and many would lead to equivalent results.
+
+The intuition we wish to isolate concerns divide--and--conquer reasoning itself.
+Bisection, iteration, and sequential search all rely on the same metaphysical
+commitment: that refinement may proceed indefinitely by subdividing admissible
+structure, even when only one distinction is committed at a time.  This
+commitment echoes the resolution of the Zeno Effect, in which motion is not
+treated as a primitive given, but as an ordered progression of ever finer
+distinctions.  What matters is not that all refinements be realized at once, but
+that each step lawfully constrains the next.  Divide and conquer is thus not
+merely an algorithmic technique; it is a way of understanding how structured
+outcomes may arise from sequential commitment alone.
+
+\begin{phenom}{The Newton--Cooley--Tukey Effect}
+\label{ph:newton-cooley-tukey}
+
+\PhStatement
+Any process whose structure admits hierarchical refinement may be computed by
+operating locally along that hierarchy, provided the decomposition is exact and
+aligned with the instrument's decoding maps.
+
+\PhOrigin
+Newton introduced local methods of computation based on successive refinement,
+demonstrating that complex behavior could be resolved through iterative
+linearization~\cite{newton1687}.  Much later, Cooley and Tukey showed that global
+transformations could be computed efficiently by exploiting recursive
+factorization already present in the problem structure~\cite{cooley1965}.
+Although developed in distinct contexts, both approaches rely on the same
+principle: computation proceeds by respecting an existing hierarchy rather than
+by treating the problem as flat.
+
+\PhObservation
+Physical and computational instruments routinely exploit hierarchical structure.
+Signal transforms are computed by recursive decomposition, differential
+equations are solved by local updates, and refinement-based searches narrow
+admissible outcomes step by step.  In each case, computation advances by acting
+on small components whose organization mirrors the structure of the instrument
+itself.  The ledger records only the outcomes of these local operations, while
+the hierarchy remains implicit.
+
+\PhConstraint
+No computation may lawfully bypass the refinement structure of the instrument.
+Operations must act locally within the hierarchy exposed by decomposition.
+Attempts to compute globally without respecting this structure introduce
+unrecoverable distinctions and violate exactness.
+
+\PhConsequence
+The Newton--Cooley--Tukey Effect explains why hierarchical descriptions admit
+efficient computation.  Computational power arises not from algorithmic
+ingenuity alone, but from alignment between the instrument's decomposition and
+the process being computed.  When such alignment holds, global behavior emerges
+from local refinement.  When it does not, computation becomes intractable or
+ill-defined.
+\end{phenom}
+
+The preceding phenomena make clear that computation proceeds only insofar as
+structure has already been declared.  Hierarchical refinement, exact
+decomposition, and divide--and--conquer reasoning all presuppose a fixed set of
+admissible distinctions on which they may operate.  Before any device can
+traverse a hierarchy, before any local computation can be aligned with global
+structure, the instrument must first determine what counts as a distinct
+outcome at all.  This determination is not computational; it is representational.
+As such, we define a \emph{decomposing map} as follows.
+
+\begin{definition}[Decomposing Map]
+A \emph{decomposing map} consists of an enumeration of ordered pairs.  Formally,
+a decomposing map over two collections is given by an enumeration of their
+Cartesian product.  That is, a decomposing map is specified by
+\[
+\text{an enumeration of pairs } (\sigma,\tau).
+\]
+The enumeration fixes a coordinated traversal of the two collections, exposing
+their joint structure without introducing any additional distinctions beyond
+those already present.
+\end{definition}
+
+We therefore turn next to alphabets.  An alphabet specifies the admissible
+symbols that may appear in the ledger and, by extension, the distinctions that
+computation may lawfully manipulate.  It is at this stage that continuity,
+granularity, and resolution are fixed, not by assumption but by construction.
+All subsequent operations---iteration, bisection, decomposition, and
+hierarchical computation---take place entirely within the constraints imposed by
+the chosen alphabet.  The following subsection makes this explicit by treating
+alphabets as primary objects of the instrument, prior to any notion of device or
+computation.
+
+\subsection{Alphabets}
+\label{sec:alphabets}
+
+An alphabet is fixed at the moment an instrument is constructed.  It specifies
+the full range of distinctions the instrument is capable of expressing, prior
+to any act of measurement and independent of any notion of time.  Before an
+instrument can record a fact, it must already know \emph{what kind} of thing it
+could record.  That prior commitment is the alphabet.
+
+In this framework, alphabets exhibit Phenomenon~\ref{ph:peano}.  They do
+not enforce measurement or commitment; they display the successor structure by
+which symbols may be generated, repeated, and indexed.  Symbols carry no
+facthood on their own.  A symbol is merely a candidate for commitment.  The
+alphabet therefore answers the question of expressive capacity: what
+distinctions are available to the instrument at all.
+
+This role is deliberately pre-temporal.  Alphabets do not enforce order, delay,
+or irreversibility.  They do not wait, and they do not accumulate.  Those
+constraints belong to the ledger.  An instrument may manipulate its alphabet
+internally, generate symbols, or discard them entirely without producing a
+single recorded fact.  The existence of an alphabet does not imply that any
+symbol will ever be committed.
+
+
+An alphabet, by definition, is a fixed collection of symbols equipped with an
+ordering.  It specifies what distinctions may be expressed, but it does not
+explain why those distinctions should be preferred over any others.  This
+feature is not a defect.  It is the essential freedom that allows instruments to
+be constructed at all.  An alphabet is chosen, not discovered.
+
+\begin{definition}[Alphabets~\cite{shannon1948}]
+An \emph{alphabet} is an enumeration of a set of symbols. 
+\end{definition}
+
+Temperature scales provide canonical illustrations of this arbitrariness.
+Fahrenheit and Celsius both confront the same underlying phenomenon: a physical
+process that varies smoothly and admits no intrinsic markings.  Mercury expands
+continuously in a glass tube; heat itself offers no natural numerals.  The act of
+measurement therefore begins not with discovery, but with imposition.  Marks
+are placed, symbols are assigned, and an alphabet is fixed.
+
+Fahrenheit’s scale makes this arbitrariness especially visible~\ref{fahrenheit1724}.
+Its reference
+points were selected for convenience and reproducibility rather than for any
+deep physical reason, and the resulting numbers bear no transparent relation to
+one another.  Nothing in the phenomenon privileges the value $32$ for freezing
+or $212$ for boiling.  These symbols function purely as labels, and their
+usefulness lies entirely in their stability once chosen.
+
+The Celsius scale underscores the same arbitrariness while partially concealing
+it.  By anchoring temperature to the freezing and boiling points of water,
+Celsius appeals to familiar, repeatable physical events, thereby improving
+practical precision and ease of communication.  This appeal, however, does not
+eliminate convention.  Water is not privileged by nature as a universal thermal
+standard; it is privileged by human practice.  The numerical interval between
+the chosen reference points, and the decision to subdivide that interval
+uniformly, remain representational choices.  For this reason, Celsius is
+generally preferred in contexts where coherence across systems and calculations
+is valued, while Fahrenheit persists where experiential convenience dominates:
+a roughly one-to-ten scale spanning very cold to very hot, with ordinary comfort
+occupying the middle ground.
+
+In both cases, the continuum enters only as a justificatory scaffold.  The smooth
+variation of the mercury column licenses the interpolation between marks, but it
+does not determine where the marks must lie.  Large populations of measurements
+may be organized as if they inhabited a continuous scale, yet each recorded
+value is still drawn from a discrete alphabet fixed in advance.
+
+This perspective was later formalized in mathematics.  Lagrange clarified that
+the choice of coordinates or units does not alter the underlying relations being
+described.  Different parameterizations of the same system are equally valid,
+provided they preserve the structure of the relations among quantities.  What
+appears as physical law is invariant under such changes of representation.  The
+alphabet may change; the form of the law does not.
+
+\begin{phenom}{The Celsius--Lagrange Effect}
+\label{ph:celsius-lagrange}
+
+\PhStatement
+Discrete reference points may be embedded within a continuous representational
+scheme in order to support interpolation without asserting continuity of the
+underlying phenomenon.  The resulting scale is arbitrary in its symbols but
+stable in its relations.
+
+\PhOrigin
+Celsius constructed his temperature scale by selecting two reproducible physical
+events, the freezing and boiling of water, and treating them as fixed reference
+points.  The interval between these points was then subdivided uniformly,
+inviting interpolation despite the absence of any intrinsic markings in the
+phenomenon itself.  Lagrange later formalized this practice in mathematics by
+showing how a finite collection of points may determine a smooth interpolating
+form.  In both cases, continuity is introduced as a representational convenience,
+not as an observed fact.
+
+\PhObservation
+Thermometers respond smoothly as conditions vary, and mathematical functions may
+be evaluated at arbitrarily many intermediate values.  Yet neither instrument
+records nor requires infinitely many facts.  The Celsius scale records only
+which symbol is selected, while interpolation supplies a rule for relating those
+symbols as if they lay on a continuum.  The smooth curve summarizes discrete
+anchors.
+
+\PhConstraint
+Interpolation must be recoverable from the chosen reference points.  No
+intermediate value may be treated as factual unless it can be reconstructed from
+the finite data that define the scale.  Continuous structure is therefore
+inadmissible as fact when it exceeds what the underlying anchors support.
+
+\PhConsequence
+The Celsius--Lagrange Effect clarifies how continuity enters measurement and
+analysis without becoming ontological.  Celsius demonstrates that a scale may be
+fixed by convention and stabilized by interpolation.  Lagrange demonstrates that
+such interpolation is a general mathematical pattern.  Together, they show that
+continuous descriptions function as scaffolding for discrete records.  Within
+the ledger framework, continuity belongs to representation; facthood remains
+anchored in discrete commitment.
+\end{phenom}
+
+
+Seen this way, Fahrenheit and Celsius are not competing theories of temperature.
+They are different alphabets imposed on the same phenomenon.  Their success does
+not depend on uncovering a hidden discreteness in nature, but on fixing symbols
+in a way that supports comparison, repetition, and agreement.  The arbitrariness
+of the scale is not a weakness.  It is the price of making measurement possible.
+
+
+\section{Mathematical Devices}
+\label{sec:mathematical-devices}
+
+The preceding sections have treated instruments as concrete structures whose
+operation produces ledgers.  An instrument must exist, in the physical or
+abstract sense, in order for any fact to be recorded at all.  It has an alphabet,
+it enforces waiting, and it commits results irreversibly.  Instruments therefore
+belong to the world of construction: they are things that act.
+
+\begin{definition}[Instrument]
+An \emph{instrument} consists of a ledger, an alphabet, and decoding maps
+associated with each.  Formally, an instrument comprises:
+\begin{itemize}
+  \item a ledger $\Ledger$,
+  \item an alphabet $\Sigma$,
+  \item a decoding map on the ledger $\zeta_\Ledger$,
+  \item a decoding map on the alphabet $\zeta_\Sigma$.
+\end{itemize}
+\end{definition}
+
+
+
+Mathematical analysis, however, proceeds differently.  It does not require that
+a particular instrument be built or operated.  Instead, it studies the
+constraints under which instruments could operate, and the consequences that
+follow if they do.  To make this distinction explicit, we separate instruments
+from \emph{devices}.  A device is not an object that measures; it is a
+mathematical description of a class of instruments that share the same
+structural features.
+
+This distinction mirrors a familiar pattern.  A physical balance is an
+instrument; the equations describing equilibrium are a device.  A radar gun is
+an instrument; the timing relations that characterize its operation define a
+device.  Multiple instruments may realize the same device, and a single
+instrument may be described by different devices depending on which features
+are under consideration.  What matters is that devices do not produce facts.
+They describe how facts would be produced if an appropriate instrument were to
+exist.
+
+Within the ledger framework, instruments and devices play complementary roles.
+Instruments ground facthood.  Devices ground reasoning.  Instruments answer the
+question of what must exist for measurement to occur.  Devices answer the
+question of what structural constraints such measurement obeys.  Keeping these
+roles distinct prevents mathematical description from being mistaken for
+physical process, while still allowing rigorous analysis of instrumental
+behavior.
+
+An instrument, as defined above, is a static object: it specifies what may be
+recorded and how records are decoded, but it does not yet describe how those
+structures are used.  In practice, instruments are operated by procedures that
+navigate their internal structure, advancing through ledgers and alphabets in a
+coordinated way.  These procedures are not additional assumptions about
+measurement, but systematic ways of traversing what the instrument already
+provides.  To reason about such procedures, it is necessary to separate the
+instrument itself from the operations that act upon it.
+
+This separation motivates the introduction of \emph{devices}.  A device is a
+decomposition of an instrument into components that may be advanced, compared,
+and recombined in tandem.  By decomposing the instrument, one obtains paired
+iterators over the ledger and the alphabet, allowing simultaneous traversal of
+their respective decoding maps.  This coordinated traversal enables structured
+search, refinement, and comparison without introducing new representational
+assumptions.  In effect, a device acts as a zipper on the instrument, advancing
+through its components together and exposing the operational content required
+for lawful computation.
+
+The remainder of this chapter treats decomposition at the level of devices.
+That is, it studies how the structure of an instrument may be factored and
+recombined without asserting that any additional facts are produced.  The
+formal definitions below make this separation precise.
+
+
+\section{Decomposition}
+\label{sec:decomposition}
+
+The starting point for decomposition is the minimal possible response: a binary
+distinction. Every instrument, regardless of its apparent sophistication, must
+ultimately ground its operation in distinctions that can be licensed discretely.
+A sensor, at its most primitive, does not measure a quantity; it responds. That
+response may be idealized as binary: a threshold crossing, a register flip, a
+count increment. From such binary acts, all further structure is built.
+
+Consider a sensor responding to incident electromagnetic radiation (see 
+Phenomenon~\ref{ph:marconi}). The
+interaction between the sensor and an incoming photon produces not a real
+number, but a pattern of activations across internal components: timing pulses,
+phase offsets, comparator outputs. Each activation is discrete. Taken together,
+these activations form a finite pattern that records how the sensor responded to
+the interaction.
+
+This activation pattern is not yet a measurement. It becomes one only through
+decomposition. The instrument applies a structured sequence of internal
+transformations that refine the raw binary responses into an organized record.
+In the case of a radar gun, these transformations include frequency mixing,
+counting of beat periods, and aggregation of phase differences. Each step refines
+the internal state without appending a new experimental record.
+
+Through this refinement process, the activation pattern may be interpreted as a
+rational number. No appeal to a continuous domain is required. The rational
+arises from counting, comparison, and enumeration carried out according to the
+instrument's design. The blueprint of the radar gun specifies how many binary
+events correspond to a cycle, how cycles are grouped, and how those groups are
+encoded. The result is a rational representation of wavelength or frequency,
+constructed entirely from discrete acts.
+
+\begin{phenom}{The Fessenden--Shannon Effect}
+\label{ph:channel}
+
+\PhStatement
+Beyond binary off/on distinctions, some phenomena admit a finite decomposition
+into multiple admissible values, such that discrete distinctions may be embedded
+and recovered by refinement without introducing new structure.
+
+\PhOrigin
+The transmission of voice by amplitude--modulated radio provided a decisive
+demonstration that symbolic distinctions need not be binary. Early radio
+experiments, most notably the work of Fessenden,
+showed that continuous variation in a physical response could be partitioned
+into a finite set of admissible distinctions sufficient to convey speech. What
+was transmitted was not the waveform itself, but a structured modulation that
+could be discretized and decoded by an instrument. Shannon later abstracted this
+practice by isolating the notion of a channel: a refinement structure that
+supports multiple symbolic distinctions independently of the physical form of
+their realization.
+
+\PhObservation
+Instruments exhibiting this phenomenon respond to interaction not with a single
+binary outcome, but with activation patterns that may be partitioned into a
+finite set of distinguishable values. These values are organized by internal
+refinement procedures that allow multiple symbolic distinctions to be supported
+simultaneously without ambiguity. Distinct decompositions may coexist provided
+they remain disjoint under refinement.
+
+\PhConstraint
+Finite decomposition does not introduce new distinctions. It reorganizes
+existing responses by refinement of representation. Any admissible value must be
+recoverable from the underlying interaction using only the instrument's own
+refinement rules. No appeal is made to continuous structure, propagation laws,
+or unrecorded intermediate states.
+
+\PhConsequence
+The existence of finite decompositions beyond binary distinctions reflects a
+property of instrumental refinement rather than of the phenomena themselves.
+Such decompositions permit richer symbolic structure while preserving the
+atomicity of both the fact and the moment, enabling complex internal organization without
+inflating the experimental ledger.
+\end{phenom}
+
+Phenomenon~\ref{ph:channel} is not unique to radio. It appears wherever an instrument
+supports a finite decomposition of responses beyond binary distinctions and can
+recover those distinctions by refinement. Across history, the symbolic structure
+remains remarkably stable, even as the physical means of transport change.
+
+Early optical telegraph systems provide a clear example.  Messages were encoded
+as configurations drawn from a finite alphabet and relayed visually from station
+to station.  Each configuration represented a distinct admissible value.  A
+simple instance of this decomposition is a string of flags hung along a line,
+where each flag occupies a fixed position and may assume one of several allowed
+states.  The channel exists as an ordered array of visible distinctions, and
+transport is explicit and unavoidable: symbols move through space by being
+replaced, not by being interpolated.  In such systems the instrument relies on
+geometry itself to preserve the decomposition, with lines of sight enforcing
+order and adjacency without appeal to any underlying continuum.
+
+A similar pattern appears in optical imaging devices that restrict light through
+a small aperture, most famously in Leonardo da Vinci's analysis of the camera
+obscura.  In such devices, the channel is nothing more than a pinhole: a single,
+geometrically constrained conduit through which light passes.  The resulting
+image, though produced by a continuous physical process, is decomposed into a
+finite collection of distinguishable regions or tones on the receiving surface.
+This decomposition is not inferred but enforced mechanically.  The aperture
+itself organizes transport by restricting which distinctions may pass and how
+they are arranged, ensuring that correspondence between source and image arises
+from geometry rather than from any assumed continuity of representation.
+
+In each of these cases, the existence of a channel is inseparable from a visible
+means of transport. Whether by wire, by line of sight, or by aperture, the
+physical pathway is apparent, and the decomposition seems to be imposed by the
+apparatus itself. The channel appears to be a consequence of the conduit.
+
+Amplitude--modulated radio removes even this remaining assumption.  Here the
+symbolic decomposition persists when no explicit transport mechanism appears in
+the record, even though a model of the photon is often invoked to supply the
+apparent mechanism of the apparatus.  Distinct admissible values are embedded
+into structured patterns of response and later recovered by refinement, without
+tracing any tangible path between source and receiver.  What is preserved across
+transmission is therefore not a physical conduit, but a refinement structure
+sufficient to reconstruct the recorded distinctions.
+
+
+Seen in this way, the introduction of radio does not create a new symbolic
+capacity. It reveals that the channel is not a property of wires, apertures, or
+mechanical linkages, but of instrumental decomposition. Transport may facilitate
+communication, but it is not what makes finite symbolic structure possible. 
+Phenomenon~\ref{ph:channel} marks the point at which this distinction becomes 
+unavoidable.
+
+Physical laws, at this stage, do not act on the world but on representations.
+The rational encoding of wavelength may be transformed into another rational
+encoding that represents speed. This transformation is internal to the
+instrument and respects its refinement rules. Only after this transformation is
+complete is a final distinction licensed. That distinction is appended to the
+experimental ledger by lookup in the instrument's alphabet decode map.
+
+Decomposition thus explains how an instrument may lawfully pass from binary
+sensor responses to a numerical record while only committing to one distinction
+at a time.  Intermediate structures may be rich, layered, and computational, but
+they remain internal to the instrument and leave no direct trace in the ledger.
+What appears in the record is not the sensor interaction itself, but the outcome
+of a controlled refinement process that maps discrete responses to admissible
+symbols.
+
+Decomposition may be understood most simply through dimensionality.  A single
+record is linear: it is appended one distinction at a time.  To represent more
+structured phenomena, the instrument therefore introduces coordinates by
+decomposing internal processes across multiple dimensions.  A familiar example
+is the plane determined by a parameter $t$ and an associated response $f(t)$.
+Here the apparent two--dimensional structure does not appear in the ledger
+directly; instead, it is recovered by coordinating two traversals: one over the
+parameter and one over the admissible responses.  The recorded outcome is not
+the plane itself, but the result of pairing an alphabet with its decoded values,
+yielding the ordered collection $(\Sigma, f(\Sigma))$.
+
+This pairing is itself a decomposition of decompositions.  Each coordinate axis
+arises from a prior refinement of admissible distinctions, and their
+combination requires a synchronized traversal of both structures.  In this
+sense, dimensional representation is a multiplex of multiplexes: a coordinated
+zipper that advances through multiple internal decompositions while committing
+only a single distinction to the ledger at each step.  The instrument never
+records a point in a plane; it records the outcome of a controlled traversal
+whose apparent dimensionality is reconstructed only after the fact.
+
+Turing's abstract machine was introduced to formalize what it means for a
+procedure to be carried out effectively.  By reducing computation to a finite
+set of local operations applied sequentially to a linear record, Turing showed
+that symbolic manipulation requires no appeal to intuition, insight, or
+continuous process.  The tape of the machine serves as a ledger, the symbols as
+an alphabet, and the head as a controlled traversal mechanism.  At each step,
+exactly one distinction is read and exactly one distinction is written.  All
+apparent complexity arises from decomposition and iteration, not from any
+simultaneous or global operation.
+
+Within this framework, computation over the rational numbers occupies a special
+and instructive position.  Rational quantities admit exact symbolic
+representation: they may be encoded as finite strings describing numerators,
+denominators, and signs.  Operations such as addition, multiplication, and
+comparison reduce to finite procedures acting on these encodings.  As a result,
+questions about equality, ordering, and arithmetic relations among rational
+numbers are decidable.  The Turing machine does not approximate these quantities;
+it computes them exactly by refining symbolic representations through lawful,
+terminating procedures.
+
+This decidability is not a property of number in the abstract, but of
+representation under refinement.  The rationals are computable because their
+structure aligns with the constraints of sequential record keeping: every step
+can be reduced to a finite manipulation of symbols, and every computation
+terminates with a definite outcome.  In this sense, the effectiveness of
+rational arithmetic reflects the compatibility between the instrument of
+computation and the refinement structure of the objects it represents.  Where
+such compatibility fails, decidability is no longer guaranteed, not because of
+logical deficiency, but because the instrument cannot lawfully complete the
+required refinements.
+
+\begin{phenom}{The Turing Effect}
+\label{ph:turing}
+
+\PhStatement
+Any finite--dimensional process may be represented as a sequential refinement of
+a single record, provided the instrument supports controlled decomposition and
+coordinated traversal of its internal structure.
+
+\PhOrigin
+Turing introduced his abstract machine to formalize the notion of effective
+procedure, demonstrating that symbolic manipulation could be reduced to a
+finite set of local operations applied sequentially~\cite{turing1936}.  Although
+presented as an idealized model of computation, the construction implicitly
+assumed that complex structures could be decomposed into linear records without
+loss of generality.
+
+\PhObservation
+In physical instruments, rich multidimensional processes are routinely reduced
+to one--dimensional records.  Images are scanned line by line, spectra are
+sampled sequentially, and multiplexed signals are resolved by internal
+decomposition before being recorded as ordered symbols.  The apparent
+dimensionality of the phenomenon is reconstructed only after the record is
+complete.
+
+\PhConstraint
+No instrument may record more than one distinction at a time.  Any representation
+of higher--dimensional structure must therefore arise from internal
+decomposition and coordinated traversal, not from simultaneous commitment of
+multiple records.
+
+\PhConsequence
+The universality of sequential computation reflects a structural property of
+measurement rather than a peculiarity of logic.  What is called a Turing machine
+is an instrument whose decomposition allows higher--dimensional processes to be
+faithfully serialized and later reconstructed.  Computation is universal not
+because all processes are inherently sequential, but because lawful measurement
+admits only sequential commitment to the ledger.
+\end{phenom}
+
+The identification of a Turing machine with paired stack-based processes was not
+explicit in Turing’s original presentation.  Turing’s 1936 construction focused
+on the minimal requirements for effective procedure, expressing computation as
+local symbolic updates on a linear record~\cite{turing1936}.  The tape and head
+were introduced as conceptual devices to make sequential refinement explicit,
+not as claims about physical mechanism.  Turing’s central result was that such a
+device suffices to capture all effectively calculable procedures, thereby
+establishing a boundary on decidability grounded in the structure of symbolic
+manipulation rather than in any particular implementation.
+
+The equivalence between Turing machines and other computational models,
+including systems built from stack-based components, was established later in
+the development of automata theory.  In particular, it was shown that two
+coordinated pushdown automata operating together possess the full computational
+power of a Turing machine~\cite{hopcroft1979}.  Each pushdown automaton alone is
+strictly weaker, limited to context-free structure.  When paired, however, they
+may simulate unbounded bidirectional traversal by storing complementary
+information in their respective stacks.  This result clarified that Turing
+completeness does not depend on a tape per se, but on the ability to coordinate
+multiple structured refinement processes.
+
+Within the present framework, this equivalence acquires a direct instrumental
+interpretation.  The two pushdown automata correspond to the decoding maps of the
+instrument: one governing refinement over the ledger, the other governing
+refinement over the alphabet.  Their synchronized operation implements the
+bidirectional decoding required to move between recorded distinctions and
+admissible symbols.  A Turing machine thus appears not as a primitive object, but
+as the device that arises when these two refinement processes are allowed to
+interact freely.  Decidability, universality, and effective procedure follow not
+from the tape as an abstraction, but from the lawful coordination of decoding
+under sequential commitment to the ledger.
+
+It is not essential, for present purposes, to assert that a Turing machine is
+literally realized in every instance of bisection or refinement.  What matters
+is that the instrumental structure admits such a device when required.  The
+existence of a Turing--complete description serves here as a guarantee of
+sufficiency rather than as an ontological claim about mechanism.  Whether a
+given instrument actually instantiates a Turing machine is a question that may
+be deferred, and in some cases left unanswered.  The arguments that follow will
+make precise which computational capabilities are required and which are not,
+demonstrating rigorously when sequential refinement suffices and when stronger
+assumptions are invoked.
+
+What is necessary is that the values in the ledger are faithfully represented
+by the decomposition.
+
+\begin{phenom}{The Fourier--Nyquist Effect}
+\label{ph:fourier-nyquist}
+
+\PhStatement
+Exact decomposition of measurement is lawful if and only if the refinement of
+the record is sufficient to permit recovery.  Decomposition may be applied
+internally to measured distinctions, but no component may be recovered unless
+the ledger commits distinctions densely enough to support inversion.
+
+\PhOrigin
+Fourier introduced decomposition as a method for representing complex phenomena
+through orthogonal components, showing that structured behavior could be
+analyzed by factorization rather than direct inspection~\cite{fourier1822}.
+Nyquist later identified the conditions under which such decompositions remain
+recoverable when measurements are recorded sequentially~\cite{nyquist1928}.
+Together, their work established that decomposition alone is insufficient:
+recoverability depends on the rate and structure of refinement.
+
+\PhObservation
+Physical instruments routinely employ internal decomposition to resolve
+structure from composite measurements.  Optical imaging, radio transmission,
+and digital signal processing all separate admissible components from a single
+sensor response.  In each case, the ledger records only sequential samples, while
+decomposition occurs internally.  Successful reconstruction depends not on the
+continuity of the underlying process, but on whether the recorded refinements
+are sufficient to support exact recovery.
+
+\PhConstraint
+No decomposition may introduce distinctions not licensed by measurement.
+Components resolved by internal structure must correspond exactly to refinements
+that can be recovered from the ledger.  If refinement is too sparse, the
+decomposition ceases to be exact, and recoverability is lost.
+
+\PhConsequence
+The Fourier--Nyquist Effect identifies the boundary between lawful and unlawful
+decomposition.  Apparent continuity, smooth spectra, or rich intermediate
+structure do not guarantee recoverability.  What matters is whether sequential
+commitment to the ledger is dense enough to support inversion.  Decomposition is
+therefore not a metaphysical property of phenomena, but an instrumental
+achievement constrained by refinement.
+\end{phenom}
+
+
+With these considerations in place, we turn to bisection as the simplest and
+most economical instance of refinement-driven computation.  Bisection requires
+no commitment to a particular computational model, only the ability to compare,
+refine, and record successive distinctions.  It therefore provides a natural
+entry point for examining how ordered search, numerical structure, and
+computational sufficiency emerge directly from the constraints of the
+instrument.  The following subsection develops bisection as an operational
+procedure, independent of any assumption about the presence or absence of a
+Turing machine.
+
+\subsection{Bisection}
+
+Bisection provides the simplest bridge between discrete iteration and numerical
+structure.  Starting from an ordered enumeration of the natural numbers, repeated
+bisection of an interval generates a decision process that refines location by
+halving rather than by scanning.  Each bisection step consumes a single binary
+distinction and commits it to the ledger, producing a path of refinements that
+converges toward a unique rational value.  What appears as division in the
+numerical domain is, operationally, iteration in the ledger: a sequence of
+yes--or--no commitments that progressively narrow admissible outcomes.
+
+Through this process, a map between the naturals and the rationals is generated
+without appeal to continuity.  The natural numbers index the refinement steps,
+while the resulting sequence of binary decisions encodes a rational as a finite
+or eventually periodic expansion.  Iteration supplies order; bisection supplies
+structure.  Together they yield a constructive correspondence in which rational
+numbers arise as the stabilized outcomes of finite refinement procedures.
+Numerical value is not assumed in advance, but produced by disciplined iteration
+over discrete distinctions.
+
+This construction highlights why bisection occupies a central role in both
+computation and measurement.  It transforms linear iteration into effective
+search, allowing dense numerical structure to be accessed through sequential
+commitment alone.  In this sense, the generation of rationals from naturals is
+not a metaphysical embedding but an instrumental achievement: a consequence of
+allowing iteration to operate on decomposed structure under the constraint that
+only one distinction may be recorded at a time.
+
+\section{Devices}
+
+At first glance, a radar gun, a digital speedometer, and a mechanical
+speedometer appear to be fundamentally different instruments.  One operates by
+emitting and receiving electromagnetic radiation, another by counting electronic
+pulses from a rotating wheel, and the third by transmitting mechanical motion
+through gears and springs.  Their physical realizations differ so markedly that
+they are often treated as examples of distinct kinds of measurement.  Yet all
+three serve the same instrumental role: they measure speed.  From the
+perspective developed here, this common role is not superficial.  It reflects a
+shared underlying structure that persists despite differences in mechanism.
+
+Each of these instruments establishes a correspondence between motion and
+number.  Speed is not observed directly; it is inferred from a relation between
+change and order.  In the radar gun, this relation appears as a frequency shift;
+in the digital speedometer, as a count of sensor transitions over time; in the
+mechanical speedometer, as the deflection of a needle driven by rotational
+motion.  In every case, the ledger ultimately records a numerical outcome.  What
+differs is the path by which admissible distinctions are generated and refined
+before that record is made.
+
+The radar gun employs electromagnetic waves to probe motion at a distance.
+By emitting radiation and measuring the Doppler shift of the reflected signal,
+it encodes relative velocity into a change in frequency.  This process is often
+described in terms of photons, fields, and relativistic effects, yet the device
+itself does not reason about such entities.  Internally, it decomposes a received
+signal into admissible frequency components and refines those components until a
+numerical speed is recovered.  The ledger sees neither waves nor particles, only
+the outcome of that refinement.
+
+The digital speedometer replaces propagation through space with local sensing.
+A wheel sensor produces discrete pulses of electricity as the wheel rotates, each pulse
+corresponding to a fixed increment of angular motion.  These pulses are counted
+over an interval, and the count is mapped to speed through a predetermined
+ratio.  Here the decomposition is explicit and binary: pulse or no pulse.  The
+instrument relies on exact enumeration rather than spectral analysis, yet the
+result is the same kind of record.  Speed again appears as a number derived from
+refinement, not as a directly perceived quantity.
+
+The mechanical speedometer achieves the same end through purely mechanical
+means.  Rotational motion is transmitted through a flexible cable to a magnetic
+cup or gear train, producing a force that deflects a spring-loaded needle.  The
+needle’s position is read against a calibrated dial.  Despite its apparent
+continuity, this device is built from discrete components: teeth, ratios, and
+elastic limits.  The smooth sweep of the needle conceals an underlying sequence
+of mechanical refinements that map rotation to position and position to number.
+
+In all three cases, the instruments depend on physical laws far more general
+than those they explicitly invoke.  Electromagnetic theory underlies radar
+propagation, electronic sensing, and even the forces that govern mechanical
+motion.  Maxwell’s equations describe the behavior of fields and charges in each
+regime.  Yet none of these instruments operate by solving Maxwell’s equations.
+They rely instead on simplified, instrument-specific models that are sufficient
+for the task at hand.  The success of the measurement does not require fidelity
+to the full underlying theory.
+
+This selective abstraction is not a weakness; it is a defining feature of
+instrumental measurement.  An instrument does not aim to represent the world in
+its entirety.  It aims to establish a stable refinement from physical interaction
+to record.  Whether that interaction is mediated by waves, electrons, or gears
+is secondary to the existence of a lawful mapping from motion to number.  The
+ledger does not record how the mapping was achieved, only that it was achieved
+consistently.
+
+Seen in this light, the differences among the three speed-measuring devices are
+differences of device, not of instrument.  They employ different decompositions,
+different internal traversals, and different physical affordances, but they
+instantiate the same instrumental structure.  Each commits one distinction at a
+time, refines admissible outcomes, and produces a numerical record.  The notion
+of speed that emerges is therefore an instrumental invariant, robust under wide
+variation in physical realization.
+
+This invariance illustrates a central theme of the measurement framework.
+What is measured is not determined by the full richness of physical law, but by
+the structure of the instrument and the refinement it enforces.  Radar guns,
+digital speedometers, and mechanical speedometers differ dramatically in their
+construction, yet they agree on speed because they agree on how distinctions are
+to be recorded.  The shared instrument lies beneath the diversity of devices,
+quietly governing what may be said to have been measured at all.
+
+\subsection{Noise Floor}
+
+Every instrument enforces a noise floor.  This floor is not an incidental feature
+of imperfect construction, but a necessary condition for recordability.  Below a
+certain threshold, distinctions are no longer refined, not because they fail to
+exist physically, but because continuing refinement would not yield stable or
+recoverable records.  The noise floor marks the point at which measurement
+ceases to distinguish and instead commits to suppression.
+
+In digital instruments, the noise floor appears explicitly as numerical
+precision.  A radar gun reports speed to a fixed number of decimal places; a
+digital speedometer rounds wheel counts to the nearest admissible value.  Any
+variation smaller than the least significant digit is discarded.  This act of
+rounding is not an approximation of an underlying real number, but a declaration
+of admissibility.  Values below the threshold are suppressed to $\varnothing$ because
+they cannot be meaningfully refined further within the instrument.
+
+Analog instruments enforce the same constraint through graduation.  The scale of
+a mechanical speedometer is marked with finite tick intervals, and the position
+of the needle is read relative to those marks.  Vibrations smaller than the
+spacing between graduations are ignored, averaged out by damping, or rendered
+invisible by friction and inertia.  The smooth appearance of the needle conceals
+the fact that distinctions below the graduation are systematically suppressed.
+The noise floor is built into the geometry of the dial.
+
+This suppression is often mistaken for loss.  In fact, it is the condition under
+which any loss can be avoided.  Without a noise floor, instruments would respond
+to every microscopic fluctuation, producing records that jitter endlessly and
+never stabilize.  The act of measurement would fail to conclude.  By declaring a
+threshold, the instrument ensures that refinement terminates and that recorded
+values persist under repeated observation.
+
+Rounding provides a clear illustration of this principle.  When a digital device
+rounds a value, it does not claim that the discarded portion is unreal.  It
+claims only that the discarded portion is instrumentally irrelevant.  Once
+rounded, the value becomes stable: repeated measurements yield the same record,
+and refinement does not reopen distinctions that have been closed.  Rounding is
+therefore a form of suppression that preserves consistency rather than
+precision.
+
+The same logic governs noise reduction systems.  Dolby processing identifies
+regions of variation that fall below a perceptual or instrumental threshold and
+suppresses them deliberately.  The suppression is not tuned to truth, but to
+recoverability.  High--frequency hiss is removed not because it is false, but
+because attempting to preserve it would dominate the record and obscure the
+distinctions that matter.  The noise floor is chosen so that refinement remains
+tractable.
+
+Across instruments, the choice of noise floor is conventional in magnitude but
+necessary in kind.  Different devices select different thresholds depending on
+purpose, cost, and context.  A laboratory radar may resolve finer distinctions
+than a roadside unit; a racing speedometer may differ from one designed for
+daily driving.  These differences do not reflect competing realities, but
+different decisions about where refinement should stop.
+
+The existence of a noise floor also clarifies the relation between measurement
+and law.  Laws are formulated in terms of recorded values, not in terms of
+suppressed variation.  Once distinctions fall below the noise floor, they cannot
+enter into lawful description.  This does not make law approximate; it makes law
+conditional on instrumentation.  What counts as negligible is fixed by the
+instrument, not by nature alone.
+
+
+
+\begin{phenom}{The Dolby--Shannon Effect}
+\label{ph:dolby-shannon}
+
+\PhStatement
+Finite, decidable records require the deliberate suppression of distinctions
+below a noise floor.  Any attempt to preserve all fine--scale structure leads to
+nontermination and destroys the possibility of lawful refinement.
+
+\PhOrigin
+Shannon first formalized this necessity by showing that unbounded bandwidth and
+arbitrarily fine distinctions render communication ill--defined~\cite{shannon1948}.
+Information becomes meaningful only when admissible signals are constrained.
+Dolby later operationalized this insight in physical instruments by explicitly
+identifying noise floors and suppressing high--frequency structure that could not
+be stably recovered.  What Shannon proved in principle, Dolby enforced in design.
+
+\PhObservation
+Physical instruments routinely discard structure.  Speedometers damp vibration,
+optical systems blur below resolution, radios limit bandwidth, and digital
+systems quantize and threshold signals.  These suppressions are not failures of
+measurement, but the means by which records remain finite and usable.  The noise
+floor marks the boundary beyond which refinement ceases to yield recoverable
+distinctions.
+
+\PhConstraint
+No instrument may refine distinctions whose continued refinement would prevent
+termination or recovery.  Variations that cannot be stabilized under refinement
+must be treated as noise, regardless of their physical origin.
+
+\PhConsequence
+Noise is not merely disturbance or uncertainty, but a structural requirement
+for measurement and computation.  The Dolby--Shannon Effect identifies the point
+at which suppression becomes epistemically necessary: without it, neither
+information nor law can be recorded.  Finite knowledge is possible only because
+infinite refinement is refused.
+\end{phenom}
+
+In this sense, the noise floor is the final act of decomposition.  It collapses
+infinite potential refinement into finite record by declaring which distinctions
+will be treated as undefined.  This declaration is what allows instruments to agree,
+records to persist, and computation to halt.  Noise is not the failure of
+measurement, but the boundary that makes measurement possible at all.
+
+
+\subsection{Realization}
+
+An instrument defines a space of admissible distinctions together with the
+structure by which those distinctions may be refined and recorded.  In this
+sense, the instrument already determines a distribution: not a probability
+distribution imposed from outside, but the full range of outcomes the
+instrument licenses across all admissible interactions.  This distribution is
+abstract and comprehensive.  It reflects everything the instrument could, in
+principle, record under repeated use.
+
+A device does not engage this entire distribution.  Instead, it selects and
+operates on a slice of it.  Each use of a device realizes only a finite portion
+of the instrument’s admissible behavior, shaped by context, operating
+conditions, and the particular decomposition chosen.  The recorded outcomes are
+therefore not the instrument itself, but a realization drawn from the
+instrument’s distribution.  Different devices, or different uses of the same
+device, may realize different slices without altering the underlying
+instrument.
+
+Noise, in this setting, is not the difference between signal and disturbance,
+but the discrepancy between the full distribution defined by the instrument and
+the particular slice realized by the device.  Everything the device does not
+explicitly model appears as residual variation within that slice.  Some of this
+variation is suppressed below the noise floor and rendered undefined; some
+appears as fluctuation in the recorded outcomes.  In either case, the residual
+is a property of realization, not of the instrument itself.
+
+This is precisely the regime for which classical statistical tests were
+developed.  The Student's \(t\)–test, for example, does not attempt to reconstruct
+the full distribution.  It assumes that the instrument defines a stable
+underlying structure and asks whether a finite realization drawn from it is
+consistent with a proposed model.  The test operates entirely on the slice,
+using residual variation to assess adequacy without requiring access to the
+instrument’s complete distribution.  Statistics thus enters not as a theory of
+measurement, but as a theory of realization: a way to reason about how a device’s
+observed slice relates to the instrument that makes it possible.
+
+\begin{phenom}{The Gosset Effect}
+\label{ph:gosset}
+
+\PhStatement
+Repeated realization of a device increases recoverable signal while decreasing
+the influence of residual noise, provided the repetitions decompose the same
+underlying instrument.
+
+\PhOrigin
+William Sealy Gosset introduced his $t$--test to reason about small samples drawn
+from a stable but partially unknown process~\cite{gosset1908}.  His work showed
+that repetition itself carries epistemic power: by observing multiple
+realizations of the same instrument, one may separate persistent structure from
+incidental variation without requiring full knowledge of the underlying
+distribution.
+
+\PhObservation
+Across physical and experimental practice, repetition refines measurement.
+Multiple radar readings stabilize a speed estimate, repeated brews reveal the
+character of a recipe, and averaged sensor outputs converge on reproducible
+values.  Each realization introduces new variation, yet the shared structure of
+the instrument persists.  Decomposition across repetitions exposes this shared
+structure by allowing consistent components to reinforce while inconsistent
+components cancel or remain undefined.
+
+\PhConstraint
+Repetition increases signal only when realizations are governed by the same
+instrumental structure.  If the instrument itself drifts, repetition amplifies
+error rather than suppressing it.  Decomposition must therefore be applied across
+realizations that are comparable in the sense of sharing admissible
+distinctions.
+
+\PhConsequence
+The Gosset Effect explains why averaging, replication, and repeated trials are
+fundamental to empirical knowledge.  Signal emerges not from single observation,
+but from decomposition across realizations.  Noise is reduced not by elimination,
+but by being rendered incoherent under repetition.  Lawful structure appears as
+that which survives decomposition across many realizations of the same
+instrument.
+\end{phenom}
+
+Taken together, these constructions provide a blueprint for the determination of
+fact in the presence of noise.  Measurement does not eliminate noise, nor does it
+pretend that noise is absent.  Instead, it arranges refinement so that noise is
+either rendered undefined below a declared threshold or isolated as residual
+variation within realizations.  Facts are not extracted by suppressing all
+variation, but by structuring refinement so that admissible distinctions persist
+across decomposition while incidental variation does not.
+
+In this sense, truth itself acquires noise.  Individual observations may deviate,
+realizations may fluctuate, and devices may disagree in detail, yet lawful
+structure remains identifiable through repetition and decomposition.  What
+counts as fact is not what appears in a single record, but what survives
+systematic refinement across many.  The noise of truth is not error or illusion;
+it is the unavoidable residue left when finite instruments engage an
+overdetermined world.
+
+This blueprint replaces certainty with stability.  A fact is established not by
+appeal to an underlying reality taken as given, but by demonstrating that a
+distinction endures under refinement, survives noise floors, and coheres across
+realizations.  In this way, truth is not assumed but earned.  It is the outcome
+of disciplined interaction between instrument, device, and world, carried out
+in full awareness that noise is not the enemy of knowledge, but the medium
+through which knowledge must be forged.
+
+We now turn from general considerations of noise, realization, and repetition to
+the construction of our first explicit device.  The purpose of this construction
+is not to introduce new complexity, but to show how much structure is already
+present in the simplest possible case.  The device we consider arises from a
+minimal instrument: a clock.  By examining how a clock records succession, we
+will see how ordered facts emerge without appeal to geometry, dynamics, or
+continuity.  This construction will culminate in what we call the
+\emph{Einstein device}, the simplest realization of temporal order within the
+measurement framework.
+
+\subsection{Clocks}
+
+The Kant Effect establishes that facts are committed in an ordered way.  An
+instrument does not record everything at once; it appends records sequentially.
+This ordering is not derived from an external notion of time, but from the act
+of record itself.  Each new entry presupposes the existence of earlier ones.
+Succession is therefore enforced by the ledger, not assumed as a background
+parameter.  A clock is the canonical instrument that isolates this effect by
+recording nothing but order.
+
+A clock instrument may be described entirely in terms of enumeration.  Its
+ledger consists of a sequence of records indexed by the natural numbers.  Each
+record marks the occurrence of a tick, and nothing more.  There is no magnitude,
+no duration, and no geometry associated with these ticks.  The instrument does
+not measure time as a quantity; it records succession as order.  In this sense,
+a clock is the purest expression of the Kantian insight that temporal order is a
+condition of experience rather than an object within it.
+
+The alphabet of the clock is equally minimal.  It consists of the same ordered
+structure as the ledger: the natural numbers themselves.  Each symbol corresponds
+to a position in the sequence of ticks.  There is no additional semantic content
+attached to these symbols.  A tick does not represent a second, a minute, or any
+physical duration.  It represents only that one event has followed another.
+
+The decoding maps of this instrument are trivial.  The decoding map on the
+ledger sends each record to its index in the natural numbers.  The decoding map
+on the alphabet sends each symbol to itself.  No transformation is performed.
+No interpretation is added.  The act of decoding merely identifies the position
+of a record within the sequence.
+
+When this instrument is equipped with a device, the result is what we call the
+Einstein device.  The device introduces no additional decomposition beyond that
+already present in enumeration.  Traversal of the ledger and traversal of the
+alphabet coincide exactly.  The decomposing maps on both sides are the identity.
+To advance the device is simply to advance one step along the natural numbers.
+
+This construction realizes time as an ordering of records and nothing else.
+There is no metric, no simultaneity, and no notion of rate.  The Einstein device
+does not measure how much time has passed; it measures only that one tick has
+occurred after another.  All richer temporal concepts must be built on top of
+this structure or introduced by additional instruments.
+
+\begin{definition}[Einstein Device]
+An \emph{Einstein device} is an instrument whose ledger and alphabet are both the
+natural numbers. 
+\end{definition}
+
+
+The simplicity of the Einstein device is its strength.  By reducing temporal
+measurement to identity on the natural numbers, it makes explicit that the
+ordering of events is not derived from physics, but imposed by the structure of
+recording.  Physical clocks may rely on oscillations, decay, or motion, but the
+instrumental core remains the same: a disciplined enumeration of succession.
+
+In this way, the Einstein device provides the foundational model for time within
+the measurement framework.  It shows how temporal order can be realized without
+assumption, how succession can be recorded without metric, and how a device may
+operate entirely within the constraints of the ledger.  More elaborate temporal
+devices will enrich this structure, but they will not replace it.  All time, in
+the end, begins as counting.
+
+\begin{coda}{Computational Noise}
+
+The preceding development has treated computation as an instrumental activity:
+what may be computed is constrained not only by logic, but by the structure and
+precision of the instrument that carries out the computation.  In this light,
+computational power is not an absolute property of a formal system.  It is a
+resource--bounded capability, limited by how finely distinctions may be
+represented, refined, and recorded.  The distinction between a linear bounded
+automaton and a universal Turing machine is therefore not merely a matter of
+theoretical expressiveness, but of instrumental commitment.  Unbounded
+computation presupposes unbounded capacity to refine and store distinctions.
+
+This limitation appears as computational noise.  When an instrument lacks the
+precision or capacity to represent intermediate states, computation must either
+terminate early or collapse distinctions that would otherwise remain separate.
+Recursively enumerable processes illustrate this boundary sharply.  Such
+processes may generate outcomes indefinitely, but without a corresponding
+commitment of resources to enumerate and record those outcomes, they cannot be
+realized as facts.  What exceeds the instrument’s capacity does not become false;
+it remains unrecorded, undefined, or unrealized.
+
+Computational noise is therefore a tradeoff.  Increasing precision allows more
+structure to be represented, but demands greater resources and longer refinement.
+Reducing precision enforces termination and stability, but suppresses potential
+distinctions.  This tradeoff mirrors the role of the noise floor in measurement:
+just as physical instruments suppress fine--scale variation to make records
+possible, computational instruments suppress unbounded refinement to make
+decidable outcomes attainable.  Noise is the boundary at which computation
+remains feasible.
+
+This perspective also clarifies the analogy with the Heisenberg uncertainty
+principle.  In quantum mechanics, increased precision in one observable limits
+precision in another, not because of experimental defect, but because of the
+structure of measurement itself.  Likewise, in computation, increased expressive
+power demands increased instrumental commitment.  Without such commitment,
+attempts to refine indefinitely produce indeterminacy rather than knowledge.
+Computational noise is not an error to be eliminated, but a structural constraint
+that governs what may be computed, recorded, and known.
+
+In this sense, computational noise marks the final boundary of the measurement
+framework.  It is the point at which logical possibility outstrips instrumental
+capacity.  Beyond this boundary lie processes that may be described formally but
+cannot be realized without additional structure.  The recognition of this limit
+does not diminish computation; it situates it.  What can be computed is not what
+can be imagined, but what can be refined, recorded, and stabilized within the
+constraints of an instrument.
+\end{coda}
+
+
+

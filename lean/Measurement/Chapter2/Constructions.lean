@@ -5,39 +5,43 @@ namespace Measurement
 
 universe u v w
 
-abbrev Moment : Type :=
-  Σ t : Real, ({ u : Real // u ∈ ZFC.unitIocAt t } → Real)
-
-abbrev Phenomenon := Enumeration Moment
-
-structure Alphabet (σ : Type v) where
-  symbols : Enumeration σ
-
-structure Predictor (σ : Type v) where
-  p : Real → Option σ
-
-structure CoarseningMap (σ : Type u) where
-  coarsen : σ -> Option σ
-
-structure GridMap where
-  grid : Nat -> Option Nat
-
-structure Refinement (X : Type u) where
-  enumeration : Enumeration X
-  predictor : DecodingMap X
-
-namespace Refinement
-  def step {X : Type u} (R : Refinement X) : Enumeration X :=
-    let n := Enumeration.len R.enumeration
-      match R.predictor.ζ n with
-      | none   => R.enumeration
-      | some x => Enumeration.snoc R.enumeration x
-
-end Refinement
 
 
 
+structure SymbolMap (σ : Type u) (τ : Type v) where
+  equiv : σ ≃ τ
 
+namespace SymbolMap
+  def map {σ τ} (f : SymbolMap σ τ) : σ → τ := f.equiv
+  def inv {σ τ} (f : SymbolMap σ τ) : τ → σ := f.equiv.symm
+end SymbolMap
+
+/-- Zipper decomposition: an enumeration of paired symbols. -/
+structure DecomposingMap (σ : Type u) (τ : Type v) where
+  pairs : Enumeration (σ × τ)
+
+namespace Enumeration
+
+  def zip {A : Type u} {B : Type v} :
+      Enumeration A → Enumeration B → Enumeration (A × B)
+    | .nil,      _         => .nil
+    | _,         .nil      => .nil
+    | .cons a as, .cons b bs => .cons (a, b) (zip as bs)
+
+end Enumeration
+
+namespace DecomposingMap
+
+  /-- Zeta: index into the zipper enumeration. -/
+  def ζ {σ τ} (D : DecomposingMap σ τ) (n : Nat) : Option (σ × τ) :=
+    Enumeration.nth D.pairs n
+
+  /-- Build a DecomposingMap by zipping two enumerations. -/
+  def ofZips {σ τ} (eσ : Enumeration σ) (eτ : Enumeration τ) :
+    DecomposingMap σ τ :=
+  { pairs := Enumeration.zip eσ eτ }
+
+end DecomposingMap
 
 
 end Measurement

@@ -1,88 +1,94 @@
 import Std
 
-import Measurement.Chapter3.Constructions
+
+import Measurement.Chapter2.Constructions
 
 namespace Measurement
+open Classical
 
-universe u v
 
-namespace Ledger
 
-variable {X : Type u}
+
+
+
+abbrev RationalInstrument := Instrument ZFC.QPos ZFC.QPos
+
+structure Refinement (X : Type u) where
+  enumeration : Enumeration X
+  predictor : DecodingMap X
+
+namespace Refinement
+  def step {X : Type u} (R : Refinement X) : Enumeration X :=
+    let n := Enumeration.len R.enumeration
+      match R.predictor.ζ n with
+      | none   => R.enumeration
+      | some x => Enumeration.snoc R.enumeration x
+
+end Refinement
+
+namespace Instrument
+
+  def domainRefinement {S σ} (I : Instrument S σ) : Refinement S :=
+    { enumeration := I.ledger.toEnum -- (Assuming Ledger wraps Enumeration)
+    , predictor   := I.domainLogic
+    }
+
+  def instrumentRefinement {S σ} (I : Instrument S σ) : Refinement σ :=
+    { enumeration := I.alphabet.symbols
+    , predictor   := I.instrumentLogic
+    }
+
+  def search {Record σ} (I : Instrument Record σ) (k : Nat) : Option Record :=
+    I.ledger.index k
+end Instrument
+
+
+structure RationalMap where
+  map : ZFC.QPos -> ZFC.Q
+
+structure DenseResponse where
+  rationals: Enumeration ZFC.QPos
+  instrument: RationalInstrument
+
+namespace DenseResponse
+  noncomputable def map (D : DenseResponse) (t : ZFC.QPos) : Option ZFC.QPos :=
+    match D.rationals.indexOf t with
+    | none   => none
+    | some i => (D.instrument).search i
+
+end DenseResponse
+
+
+structure DomainResponse where
+  ψ         : Real → Real
+  certifies : DenseResponse
+
+  -- membership predicate (your "q ∈ QPos")
+  QPosSet   : Set Real
+
+  -- turn membership evidence into an actual QPos value
+  toQPos    : ∀ {q : Real}, q ∈ QPosSet → ZFC.QPos
+
+  -- interpret a QPos back in the continuum
+  embedQPos : ZFC.QPos → Real
+
+namespace DomainResponse
 
 /--
-Find the first index of `x` in the ledger.
-Indexing: 0=head, 1.. in tail.
+If `q ∈ QPosSet`, try the certified dense response; otherwise fall back to `ψ`.
+If the certified lookup fails (`none`), also fall back to `ψ`.
 -/
-def find [DecidableEq X] (L : Ledger X) (x : X) : Option Nat :=
-  if L.head = x then
-    some 0
-  else
-    let rec go : Enumeration X -> Nat -> Option Nat
-      | .nil,        _ => none
-      | .cons y ys,  i =>
-          if y = x then some i else go ys (i + 1)
-    go L.tail 1
+noncomputable def psi (D : DomainResponse) (q : Real) : Real := by
+  classical
+  by_cases h : q ∈ D.QPosSet
+  ·
+    let t : ZFC.QPos := D.toQPos h
+    match DenseResponse.map D.certifies t with
+    | some t' => exact D.embedQPos t'
+    | none    => exact D.ψ q
+  ·
+    exact D.ψ q
 
-/--
-Find the first index whose projected symbol equals `sym`.
-Indexing: 0=head, 1.. in tail.
--/
-def find_symbol {σ : Type v} [DecidableEq σ]
-    (L : Ledger X) (proj : X -> σ) (sym : σ) : Option Nat :=
-  if proj L.head = sym then
-    some 0
-  else
-    let rec go : Enumeration X -> Nat -> Option Nat
-      | .nil,        _ => none
-      | .cons y ys,  i =>
-          if proj y = sym then some i else go ys (i + 1)
-    go L.tail 1
-
-end Ledger
-
-structure CoarseningMap (σ : Type u) where
-  coarsen : σ -> Option σ
-
-/-- Definition 13: Grid map. -/
-structure GridMap where
-  grid : Nat -> Option Nat
-
-/-- Definition 14: A record coarsening map. -/
-def RecordCoarseningMap (R : Type u) :=
-  R -> Option R
-
-
-/-- Unary refinement acting on ledgers. -/
-structure LedgerRefinement (R : Type u) where
-  refine : Ledger R -> Ledger R
-
-namespace LedgerRefinement
-
-/-- Canonical cons refinement: new head, old ledger becomes the tail. -/
-def consRefine {R : Type u} (new : Ledger R -> R) : LedgerRefinement R :=
-  { refine := fun Lt => { head := new Lt, tail := Lt.toEnum } }
-
-end LedgerRefinement
-
-
-/-- Definition 18: Refinement Operator (unary Ledger style). -/
-structure RefinementOperator (R : Type v) (X : Type w) (σ : Type u) [DecidableEq σ] where
-  Rhat : LedgerRefinement R
-  f : X -> R
-  rhoTilde : R -> X
-  proj : R -> σ
-
-  /-- Growth: refinement adds exactly one new ledger entry. -/
-  ledger_growth :
-    forall Lt : Ledger R,
-      Ledger.size (Rhat.refine Lt) =
-        Ledger.size Lt + 1
-
-  /-- Coherence: the refined ledger has at least one symbol (find_symbol succeeds). -/
-  ledger_coherence :
-    forall Lt : Ledger R,
-      exists s : σ, exists n : Nat,
-        Ledger.find_symbol (Rhat.refine Lt) proj s = some n
+end DomainResponse
 
 end Measurement

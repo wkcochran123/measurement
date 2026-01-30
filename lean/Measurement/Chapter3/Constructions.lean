@@ -1,22 +1,42 @@
-import Std
+import Measurement.Chapter2.ZFC
 
-import Measurement.Chapter3.ZFC
 
 namespace Measurement
 
-universe u v
+universe u v w
 
-/-- A representation map (tilde-rho) is just a function. -/
-def RhoTilde (R : Type u) (X : Type v) : Type (max u v) :=
-  R -> X
+abbrev Moment : Type :=
+  Σ t : Real, ({ u : Real // u ∈ ZFC.unitIocAt t } → Real)
 
-/-- Construction 1: identity representation (when `X = R`). -/
-def rhoTilde_id (R : Type u) : RhoTilde R R :=
-  fun r => r
+abbrev Phenomenon := Enumeration Moment
 
-/-- Construction 2: constant representation (needs an inhabitant of `X`). -/
-def rhoTilde_const (R : Type u) (X : Type v) [Inhabited X] : RhoTilde R X :=
-  fun _ => default
+structure Alphabet (σ : Type v) where
+  symbols : Enumeration σ
+
+structure Predictor (σ : Type v) where
+  p : Real → Option σ
+
+structure CoarseningMap (σ : Type u) where
+  coarsen : σ -> Option σ
+
+structure GridMap where
+  grid : Nat -> Option Nat
+
+structure Refinement (X : Type u) where
+  enumeration : Enumeration X
+  predictor : DecodingMap X
+
+namespace Refinement
+  def step {X : Type u} (R : Refinement X) : Enumeration X :=
+    let n := Enumeration.len R.enumeration
+      match R.predictor.ζ n with
+      | none   => R.enumeration
+      | some x => Enumeration.snoc R.enumeration x
+
+end Refinement
+
+
+
 
 
 
