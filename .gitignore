@@ -1,7 +1,7 @@
 .*.swp
 .DS_Store
-lean/.lake
-tex/appendix
+device/.lake
+instrument/appendix
 *aux
 *bbl
 *blg
@@ -10,6 +10,6 @@ tex/appendix
 *loe
 *.log
 *toc
-tex/go.sh
+instrument/go.sh
 *.zip
-lean/go.sh
+device/go.sh

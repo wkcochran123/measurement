@@ -15,57 +15,13 @@ extern "C" {
 #endif
 LEAN_EXPORT lean_object* lp_measurement_Measurement_DecomposingMap_00_u03b6___redArg___boxed(lean_object*, lean_object*);
 LEAN_EXPORT lean_object* lp_measurement_Measurement_DecomposingMap_00_u03b6___boxed(lean_object*, lean_object*, lean_object*, lean_object*);
-LEAN_EXPORT lean_object* lp_measurement_Measurement_SymbolMap_inv___redArg(lean_object*, lean_object*);
 LEAN_EXPORT lean_object* lp_measurement_Measurement_DecomposingMap_ofZips___redArg(lean_object*, lean_object*);
 lean_object* lp_measurement_Measurement_Enumeration_nth___redArg(lean_object*, lean_object*);
-LEAN_EXPORT lean_object* lp_measurement_Measurement_SymbolMap_map___redArg(lean_object*, lean_object*);
-LEAN_EXPORT lean_object* lp_measurement_Measurement_SymbolMap_inv(lean_object*, lean_object*, lean_object*, lean_object*);
 LEAN_EXPORT lean_object* lp_measurement_Measurement_DecomposingMap_ofZips(lean_object*, lean_object*, lean_object*, lean_object*);
-lean_object* lp_mathlib_Equiv_symm___redArg(lean_object*);
 LEAN_EXPORT lean_object* lp_measurement_Measurement_DecomposingMap_00_u03b6___redArg(lean_object*, lean_object*);
 LEAN_EXPORT lean_object* lp_measurement_Measurement_Enumeration_zip(lean_object*, lean_object*, lean_object*, lean_object*);
 LEAN_EXPORT lean_object* lp_measurement_Measurement_Enumeration_zip___redArg(lean_object*, lean_object*);
-LEAN_EXPORT lean_object* lp_measurement_Measurement_SymbolMap_map(lean_object*, lean_object*, lean_object*, lean_object*);
 LEAN_EXPORT lean_object* lp_measurement_Measurement_DecomposingMap_00_u03b6(lean_object*, lean_object*, lean_object*, lean_object*);
-LEAN_EXPORT lean_object* lp_measurement_Measurement_SymbolMap_map___redArg(lean_object* x_1, lean_object* x_2) {
-_start:
-{
-lean_object* x_3; lean_object* x_4; 
-x_3 = lean_ctor_get(x_1, 0);
-lean_inc(x_3);
-lean_dec_ref(x_1);
-x_4 = lean_apply_1(x_3, x_2);
-return x_4;
-}
-}
-LEAN_EXPORT lean_object* lp_measurement_Measurement_SymbolMap_map(lean_object* x_1, lean_object* x_2, lean_object* x_3, lean_object* x_4) {
-_start:
-{
-lean_object* x_5; 
-x_5 = lp_measurement_Measurement_SymbolMap_map___redArg(x_3, x_4);
-return x_5;
-}
-}
-LEAN_EXPORT lean_object* lp_measurement_Measurement_SymbolMap_inv___redArg(lean_object* x_1, lean_object* x_2) {
-_start:
-{
-lean_object* x_3; lean_object* x_4; lean_object* x_5; 
-x_3 = lp_mathlib_Equiv_symm___redArg(x_1);
-x_4 = lean_ctor_get(x_3, 0);
-lean_inc(x_4);
-lean_dec_ref(x_3);
-x_5 = lean_apply_1(x_4, x_2);
-return x_5;
-}
-}
-LEAN_EXPORT lean_object* lp_measurement_Measurement_SymbolMap_inv(lean_object* x_1, lean_object* x_2, lean_object* x_3, lean_object* x_4) {
-_start:
-{
-lean_object* x_5; 
-x_5 = lp_measurement_Measurement_SymbolMap_inv___redArg(x_3, x_4);
-return x_5;
-}
-}
 LEAN_EXPORT lean_object* lp_measurement_Measurement_Enumeration_zip___redArg(lean_object* x_1, lean_object* x_2) {
 _start:
 {

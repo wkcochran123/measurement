@@ -1,50 +1,5 @@
 \chapter{Instruments}
 
-What is necessary is that the values in the ledger are faithfully represented
-by the decomposition.
-
-\begin{phenom}{The Fourier--Nyquist Effect}
-\label{ph:fourier-nyquist}
-
-\PhStatement
-Exact decomposition of measurement is lawful if and only if the refinement of
-the record is sufficient to permit recovery.  Decomposition may be applied
-internally to measured distinctions, but no component may be recovered unless
-the ledger commits distinctions densely enough to support inversion.
-
-\PhOrigin
-Fourier introduced decomposition as a method for representing complex phenomena
-through orthogonal components, showing that structured behavior could be
-analyzed by factorization rather than direct inspection~\cite{fourier1822}.
-Nyquist later identified the conditions under which such decompositions remain
-recoverable when measurements are recorded sequentially~\cite{nyquist1928}.
-Together, their work established that decomposition alone is insufficient:
-recoverability depends on the rate and structure of refinement.
-
-\PhObservation
-Physical instruments routinely employ internal decomposition to resolve
-structure from composite measurements.  Optical imaging, radio transmission,
-and digital signal processing all separate admissible components from a single
-sensor response.  In each case, the ledger records only sequential samples, while
-decomposition occurs internally.  Successful reconstruction depends not on the
-continuity of the underlying process, but on whether the recorded refinements
-are sufficient to support exact recovery.
-
-\PhConstraint
-No decomposition may introduce distinctions not licensed by measurement.
-Components resolved by internal structure must correspond exactly to refinements
-that can be recovered from the ledger.  If refinement is too sparse, the
-decomposition ceases to be exact, and recoverability is lost.
-
-\PhConsequence
-The Fourier--Nyquist Effect identifies the boundary between lawful and unlawful
-decomposition.  Apparent continuity, smooth spectra, or rich intermediate
-structure do not guarantee recoverability.  What matters is whether sequential
-commitment to the ledger is dense enough to support inversion.  Decomposition is
-therefore not a metaphysical property of phenomena, but an instrumental
-achievement constrained by refinement.
-\end{phenom}
-
 \label{chap:instrument}
 
 Measurement does not begin with records or histories, but with instruments. An
@@ -150,16 +105,15 @@ instrument itself.
 
 \section{The Arrow of Time}
 The arrow of time appears most plainly when one attends to the waiting imposed by
-an instrument's construction.  A familiar example is the automobile
-speedometer.  The device does not reveal speed continuously, nor does it respond
+an instrument's construction. 
+For instance, a speedometer does not reveal speed continuously, nor does it respond
 instantaneously to motion.  
 
 Instead, it waits.  
 
 That waiting is not a flaw or a
 delay to be engineered away; it is the physical expression of causal order.
-
-Consider a mechanical speedometer driven by wheel rotation.  The wheel must turn
+The wheel must turn
 through a finite angle before a gear advances.  The gear must overcome friction
 before a ratchet clicks.  The ratchet must complete its motion before a needle
 can deflect or a counter can increment.  Each of these stages constitutes a
@@ -202,12 +156,9 @@ a derived coordinate of observation, not an independently given domain.
 Kant held that time is not an object of experience but a necessary form by which
 experiences are ordered for an observer. It does not belong to things as they
 are in themselves, but to the conditions under which appearances are made
-comparable. This mirrors Phenomenon~\ref{ph:clock}.
-Clocks do not reveal an underlying time; they
-establish temporal relations by coordinating measurement records under physical
-constraints. Together, these views imply that temporal order arises from the
-structure of recorded observations rather than from a pre-existing continuum.
-
+comparable.  Temporal order arises from the
+structure of recorded observations, the order of occurence, rather than 
+from a pre--existing continuum.
 
 \PhObservation
 In a ledger, events appear only as recorded distinctions.
@@ -226,19 +177,44 @@ not as a primitive background in which events occur. Temporal succession is
 therefore a property of the ledger, not of the records themselves.
 \end{phenom}
 
-Kant’s distinction between one event following another entered scientific
+Kant's distinction between one event following another entered scientific
 practice through the idealization of time as a uniform medium in which such
-succession could be represented.  In elevating temporal order from an observed
-relation between acts of measurement to a background structure shared by all
-phenomena, science gained a powerful unifying coordinate.  Events could now be
-compared, aligned, and predicted as points along a single axis, independent of
-the particular instruments that recorded them.  This idealization quietly
-reversed the epistemic direction of the Kantian insight: rather than temporal
-order arising from the conditions of observation, observation was increasingly
-interpreted as sampling an already-existing temporal continuum.  The practical
-success of this move secured its adoption, even as it obscured the fact that
+succession could be represented.  What Kant had treated as a condition of
+possible experience was reinterpreted as a shared background against which all
+events could be placed.  This intuition endowed science with a powerful unifying
+coordinate: temporal order could now serve as a common axis along which
+phenomena recorded by different instruments might be compared, aligned, and
+extrapolated.
+
+In adopting this intuition, however, the epistemic direction of Kant's insight
+was quietly reversed.  Rather than temporal order arising from the conditions
+under which observations are made, observation came to be understood as
+sampling an already-existing temporal continuum.  The practical success of this
+idealization secured its widespread use, even as it obscured a crucial fact:
 the ordering of events originates in the refinement of records, not in time
-taken as a primitive.
+taken as a primitive structure.  What appears as a background coordinate is, in
+practice, a stabilized residue of measurement.
+
+This constraint should not be read as a denial of occurrence, nor as a claim
+that events cannot be further subdivided by improved instruments or more
+refined procedures.  Acts of measurement may always be sharpened, repeated, or
+reorganized, and records may always be extended by additional distinctions.
+What is ruled out is not refinement as such, but refinement without end.  No
+instrument can support an infinite regress of subdivision within a single act
+of observation, because each refinement is itself an event that must be
+carried by the instrument and recorded by the ledger.
+
+Crucially, the time required for this refinement does not elapse between
+observations, but within them.  Between records, the ledger is silent.  During
+this silence, the instrument executes its internal process, determines which
+distinction it is capable of supporting, and only then appends a new entry.
+Temporal extension is therefore not an empty interval separating completed
+events, but an intrinsic feature of the act by which an event becomes
+recordable at all.  The duration of experience reflects the irreducible cost of
+refinement, and it is this cost that enforces a minimal temporal granularity.
+From this perspective, time does not flow beneath events; it is consumed in the
+making of them.
+
 
 \subsection{Quantum of Time}
 
@@ -290,9 +266,10 @@ treats it as a general property of measurement devices.
 \PhObservation
 Every functioning instrument separates sensing from recording.  A sensor must
 first be triggered, and only afterward may a reading be produced.  This ordering
-is enforced by construction: a display cannot illuminate before current flows,
-and a signal cannot be received before it is emitted.  Between these stages,
-the instrument may occupy a silent interval during which no fact is recorded.
+is enforced by construction: a display has never been observed illuminated
+before current flows, and a signal has never been received before it was
+emitted.  Between these stages, the instrument may occupy a silent interval
+during which no fact is yet recorded.
 
 \PhConstraint
 No instrument may append a record that is not causally licensed by a prior
@@ -346,7 +323,7 @@ licensed.
 When the car is finally driven again, the wheel completes its next rotation and
 the instrument advances by exactly one count.  The speedometer does not record
 how long the car was idle, nor does it distinguish whether the pause lasted
-minutes or decades.  Its ledger reflects only the completion of a bounded
+milliseconds or decades.  Its ledger reflects only the completion of a bounded
 exchange: one additional rotation.  All intervening time is invisible to the
 instrument.
 
@@ -356,12 +333,14 @@ for an instrument only when the conditions for a new record are met.  Duration,
 as inferred by the device, is nothing more than the count of completed cycles.
 
 
-The analogy with signal exchange is exact.  In the radar gun, a photon is
-emitted and later received.  In the speedometer, a mechanical marker departs and
-later returns.  In both cases, the instrument defines a quantum of time by the
-completion of a closed path.  No reading can occur before the return event, and
-the order of events cannot be reversed.  The arrow of time is enforced by
-construction.
+The signal exchange is not an analogy but the mechanism by which temporal order
+is established.  In a radar gun, a photon is emitted and later received.  In a
+speedometer, a mechanical marker departs and later returns.  In each case, the
+instrument defines a quantum of time by the completion of a closed path.  No
+reading can occur before the return event, and the order of events cannot be
+reversed without destroying the operation of the device.  The arrow of time is
+therefore enforced by construction, not inferred from observation.
+
 
 Speed is then inferred by comparing many such cycles.  The speedometer does not
 track motion as a continuous flow; it counts completed rotations per interval of
@@ -378,7 +357,7 @@ only as an assumed interpolation.  Temporal order arises from the construction o
 the instrument, not from the direct observation of continuous motion.
 
 
-\section{The Mathematical Device}
+\section{The Mathematical Instrument}
 \label{sec:instrument}
 
 An instrument is the minimal structure by which interaction with the world is
@@ -400,7 +379,8 @@ rotation, by itself, does not yet constitute speed.  Speed arises only when the
 instrument commits to an ordered record that relates successive counts to one
 another under fixed conditions.  The ledger enforces this commitment by allowing
 the count to advance only when a rotation has completed, and by recording that
-advance irreversibly.  In doing so, it implements the Kant Effect: time and order
+advance irreversibly.  In doing so, it measures Phenomenon~\ref{ph:kant-effect}: time 
+and order
 enter the description not as observed quantities, but as conditions under which
 the record is possible.
 
@@ -414,16 +394,23 @@ ledger that confers facthood through ordered commitment.
 
 A familiar illustration of this distinction appears in the automotive
 speedometer.  In a traditional mechanical design, the rotation of the wheels is
-transmitted through a gear train that appears to move as one in a continuous fashion. The
-motion appears continuous, yet the mechanism itself is composed entirely of
-discrete elements: teeth, ratios, and fixed linkages.  Each full rotation of
-the wheel advances the gear train by an exact number of teeth, and the apparent
-smoothness of the needle arises from the aggregation of many small, countable
-advances.  The ratios governing the speedometer are therefore ratios of simple
-machines, fixed at construction, encoding a correspondence between counted
-rotations and displayed speed.  What presents itself as analog motion is, at
-base, an ordered sequence of discrete mechanical refinements: the chosen size
-of the gears and the ratios between them.
+transmitted through a gear train whose motion appears continuous to the eye.
+The needle sweeps smoothly across the dial, suggesting an uninterrupted flow
+of motion that mirrors the presumed continuity of speed itself.
+
+The appearance is deceptive.  The mechanism is composed entirely of discrete
+elements: teeth, ratios, and fixed linkages.  Each full rotation of the wheel
+advances the gear train by an exact, countable number of teeth.  No intermediate
+state exists within the mechanism.  What appears as smooth motion is the visual
+integration of many small, ordered advances, each determined by the geometry of
+the gears.
+
+The ratios governing the speedometer are therefore ratios of simple machines,
+fixed at construction.  They encode a correspondence between counted rotations
+and displayed speed, enforcing a lawful translation from one ledger to another.
+What presents itself as analog motion is, at base, an ordered sequence of
+discrete mechanical refinements.  Continuity enters only as a description of how
+those refinements are perceived, not as a property of the mechanism itself.
 
 Modern digital speedometers make this structure explicit.  Wheel rotation is
 measured by digital sensors that emit pulses, each pulse corresponding to a
@@ -470,22 +457,32 @@ By contrast, stoichiometric reasoning is physical in the strict instrumental
 sense.  It refuses to license intermediate structure.  Reactions are recorded
 only when integer relations balance, and no appeal is made to unseen fractional
 entities.  What appears continuous in the phenomenon is constrained by what may
-be committed to the ledger.  Here, no deus ex machina is permitted; facthood is
-tied directly to countable commitment.
+be committed to the ledger.  Here, no \emph{deus ex machina} is permitted:
+facthood is tied directly to countable commitment.
 
-Proust’s contribution enters at the point where refinement becomes chemical
+This refusal is methodological rather than metaphysical.  Stoichiometry does
+not deny that chemical processes unfold through complex intermediate stages,
+nor does it claim that matter lacks internal structure.  It simply withholds
+epistemic license from anything that cannot be stabilized as a record.  A
+reaction either balances or it does not.  The discipline lies not in asserting
+what must exist between measurements, but in restricting what may be said to
+exist at all.
+
+Proust's contribution enters precisely at the point where refinement becomes
 law.  Through careful experimental practice, he observed that substances do not
-combine in arbitrary proportions, but in fixed ratios that recur across
-contexts and preparations.  The law of definite proportions did not arise from
-a metaphysical claim about matter itself, but from the stability of recorded
-outcomes under repeated refinement of measurement.  By insisting that the same
-compound, however prepared, yields the same proportional record, Proust
-anchored chemical identity in the ledger rather than in speculative structure.
-His work exemplifies how lawful regularity emerges when experimental records
-remain invariant under improved instruments, tighter controls, and repeated
-acts of observation.  In this sense, chemical law appears not as an assumption
-about underlying substance, but as a constraint imposed by the persistence of
-distinguishability across refinement.
+combine in arbitrary proportions, but in fixed ratios that recur across contexts
+and preparations.  These ratios were not inferred from speculative models of
+matter, but extracted from the persistence of recorded outcomes.  The same
+compound, however prepared, yielded the same proportional ledger entries.
+
+The law of definite proportions thus anchored chemical identity in the ledger
+rather than in unseen structure.  Its force came from invariance: improved
+instruments, tighter controls, and repeated acts of observation did not disturb
+the recorded ratios.  In this way, chemical law emerged not as an assumption
+about underlying substance, but as a constraint imposed by the continued
+distinguishability of records under refinement.  Lawfulness appeared where
+further subdivision ceased to produce new admissible facts.
+
 
 
 \begin{phenom}{The Archimedes--Proust Effect}
@@ -544,71 +541,194 @@ phenomenon unfolds; it does not determine what may be recorded as a fact.  Prous
 separated these roles cleanly.  He allowed continuity in the process while
 denying it in the commitment.
 
-Proust's insistence on exact ratios thus anticipates the instrumental
-distinction between expression and commitment discussed here.  What chemistry 
-describes is not
-the infinitely many intermediate states through which a reaction may pass, but
-the discrete conditions under which a substance can be said to exist.  Apparent
-continuity belongs to description; facthood belongs to balance.
+\subsection{The Illusion of Continuity}
 
-The ledger framework makes this contrast explicit.  Continuous structure may
-enter as alphabet, but only discrete commitments enter as fact.  When a theory
-relies on continuous relations that never touch the ledger, it operates
-metaphysically.  When it restricts itself to what instruments can actually
-record, it operates physically.  Both modes are useful.  Confusion arises only
-when they are treated as the same.
+From its earliest formulations, natural philosophy has been anchored by a
+commitment to discreteness.  Long before the development of modern chemistry or
+atomic physics, the atomistic intuition held that matter consists of indivisible
+units whose combinations account for observable change.  This principle was not
+introduced as a convenient approximation, but as a constraint on intelligible
+description: whatever appears continuous must ultimately arise from the
+arrangement and interaction of discrete constituents.
 
-At this point it is worth emphasizing that nothing in the preceding discussion
-fixes a unique way of organizing what has been introduced.  The same ledger may
-be enumerated in different orders, the same alphabet renumbered or reissued, and
-the same decoding maps rearranged or reconstructed without changing the
-admissible records themselves.  These choices are matters of organization, not
-of fact.  The development that follows adopts one particular organization, not
-because it is necessary, but because it is sufficient.  Other choices could
-have been made, and many would lead to equivalent results.
+The apparent continuity encountered in experience therefore posed a problem
+from the beginning.  Substances flow, colors blend, and reactions appear to
+unfold smoothly in time.  Yet atomism denies that this smoothness reflects an
+underlying continuum of states.  What appears continuous is instead the result
+of limited resolution, both in perception and in instrumentation.  Continuity,
+on this view, is not a property of matter itself but a feature of description
+when distinctions fall below the threshold of record.
 
-The intuition we wish to isolate concerns divide--and--conquer reasoning itself.
-Bisection, iteration, and sequential search all rely on the same metaphysical
-commitment: that refinement may proceed indefinitely by subdividing admissible
-structure, even when only one distinction is committed at a time.  This
-commitment echoes the resolution of the Zeno Effect, in which motion is not
-treated as a primitive given, but as an ordered progression of ever finer
-distinctions.  What matters is not that all refinements be realized at once, but
-that each step lawfully constrains the next.  Divide and conquer is thus not
-merely an algorithmic technique; it is a way of understanding how structured
-outcomes may arise from sequential commitment alone.
+Modern chemistry preserved this constraint even as its descriptive apparatus
+became increasingly refined.  What chemistry specifies are not infinitely many
+intermediate configurations, but stable compositions and reaction conditions.
+A substance exists when its proportions balance; it ceases to exist when those
+conditions are violated.  The transition between such states may be modeled as
+smooth, but the model does not license the existence of every intermediate
+description as a fact.  Facthood attaches only to what can be stabilized,
+reproduced, and recorded.
 
-This intuition underlies what will later be formalized as the Turing device.
-Here, however, it is introduced only as a possibility: the idea that an
-instrument, when decomposed appropriately, may support unbounded refinement
-through coordinated traversal of its internal structure.  Whether such an
-arrangement is required, sufficient, or even present in a given context will be
-established rigorously later.  For now, it serves as a conceptual anchor,
-showing that the metaphysical burden of divide--and--conquer reasoning can be
-borne entirely by refinement, without presupposing any particular computational
-mechanism.
+The ledger framework makes this distinction explicit.  Continuous structure may
+enter as alphabet, providing a space in which refinement is described, but only
+discrete commitments enter the ledger as facts.  A reaction may be represented
+as a curve, a trajectory, or a differential equation, yet the ledger records
+only the conditions under which a substance is present or absent.  Between
+entries lies no hidden continuum of facts, only silence.
 
-\subsection{Coordinated Enumeration}
+The persistence of continuous models in scientific practice does not contradict
+this structure; it exploits it.  Continuity functions as a powerful device-level
+representation, allowing interpolation, prediction, and control.  Its success
+lies precisely in its indifference to the ledger.  Continuous descriptions are
+useful because they smooth over the gaps between records, not because those gaps
+have been filled in reality.
 
-At this point it is worth emphasizing that nothing in the preceding discussion
-fixes a unique way of organizing what has been introduced.  The same ledger may
-be enumerated in different orders, the same alphabet renumbered or reissued, and
-the same decoding maps rearranged or reconstructed without changing the
-admissible records themselves.  These choices are matters of organization, not
-of fact.  The development that follows adopts one particular organization, not
-because it is necessary, but because it is sufficient.  Other choices could
-have been made, and many would lead to equivalent results.
+Confusion arises when this representational convenience is mistaken for
+ontological commitment.  When a theory relies on continuous relations that never
+touch the ledger, it operates metaphysically.  When it restricts itself to the
+conditions under which instruments can actually produce records, it operates
+physically.  Both modes are legitimate, but they are not interchangeable.  The
+illusion of continuity emerges when the boundary between them is ignored.
 
-The intuition we wish to isolate concerns divide--and--conquer reasoning itself.
-Bisection, iteration, and sequential search all rely on the same metaphysical
-commitment: that refinement may proceed indefinitely by subdividing admissible
-structure, even when only one distinction is committed at a time.  This
-commitment echoes the resolution of the Zeno Effect, in which motion is not
-treated as a primitive given, but as an ordered progression of ever finer
-distinctions.  What matters is not that all refinements be realized at once, but
-that each step lawfully constrains the next.  Divide and conquer is thus not
-merely an algorithmic technique; it is a way of understanding how structured
-outcomes may arise from sequential commitment alone.
+From the perspective of atomism, then, continuity was never discovered and later
+questioned.  It was introduced as a descriptive convenience and gradually
+forgotten as such.  The ledger framework restores this original discipline.  It
+treats continuity not as a primitive feature of the world, but as a shadow cast
+by discrete commitments viewed at insufficient resolution.
+
+
+\subsection{The Illusion of Metaphysical Continuity}
+
+The metaphysical illusion of continuity enters mathematics through the treatment
+of irrational numbers as completed objects.  In common presentation, an
+irrational number appears as an infinite string of digits, as though it were a
+static entity waiting to be revealed.  This representation conceals the fact
+that no such string is ever given.  What exists instead is a rule, a procedure,
+or a refinement process by which successive approximations may be generated.
+
+An irrational number is therefore not selected from an already-existing set,
+but produced through an act of construction.  Each digit arises only through
+additional refinement, and no finite stage exhausts the number it seeks to
+represent.  The apparent objecthood of the real number is a retrospective
+illusion, stabilized by the success of the generating process and projected
+backward as though the limit had existed all along.
+
+This structure is identical to that encountered in physical processes governed
+by dissipation.  In the presence of friction, motion converges only when energy
+falls below a threshold; above it, the system continues to evolve without
+settling.  Convergence is not guaranteed by form alone, but by the existence of
+constraints that arrest further refinement.  Where such constraints are absent,
+the notion of a completed state loses operational meaning.
+
+The construction of the real numbers follows this same pattern.  A Cauchy
+sequence converges not because it approaches a preexisting point, but because
+the refinement process satisfies a criterion that halts further distinction.
+The limit is not observed; it is licensed.  Below the threshold imposed by the
+definition, convergence is declared.  Above it, the process remains unfinished,
+no matter how suggestive the approximations may be.
+
+That the formal definition of the real numbers took centuries to stabilize is
+evidence of this underlying difficulty.  The obstacle was not technical
+ingenuity, but epistemic discipline.  What was required was a rule capable of
+deciding when refinement suffices, and when further subdivision no longer
+produces new admissible distinctions.  Only with such a rule in place could the
+illusion of a completed continuum be safely managed.
+
+The ledger framework makes this discipline explicit.  An irrational number may
+enter as an alphabet of refinement, but it never enters the ledger as an
+infinite object.  Each approximation is a discrete commitment, and the passage
+to the limit is not an act of discovery but an act of closure.  The real line,
+so understood, is not a collection of points but a stabilized record of
+successful refinement procedures.
+
+Metaphysical continuity arises when this procedural origin is forgotten.  The
+limit is treated as an entity rather than as the termination of a process, and
+the discipline that licensed its use is erased from view.  Restored to its
+instrumental footing, continuity loses its metaphysical force.  What remains is
+not an infinite expanse of given structure, but a finite practice of
+approximation whose success depends on thresholds, constraints, and silence.
+
+\subsection{The Calculator}
+
+The construction of the real numbers functions here as an instrument in the
+strict sense.  It accepts a record from one ledger as stimulus and produces a
+record in another as output.  Both the input and the output consist of an
+ordinal together with a symbol, and nothing else ever appears at the boundary.
+The instrument neither consumes nor produces infinities; it operates entirely
+within the space of finite records.
+
+In this role, the real numbers are not objects that inhabit a continuum, but
+symbols generated under a disciplined procedure.  Each real value appears only
+as a finite representation produced by the instrument, sufficient for the
+relation being computed and no more.  What is often described as an infinite
+decimal expansion is, in practice, a promise that further refinement could be
+carried out if required, not a structure that has already been realized.
+
+The operation of the instrument is relational.  Given a symbol recorded at a
+particular ordinal in one ledger, it computes the ordinal and symbol that may be
+recorded in the other.  This computation respects refinement thresholds and
+terminates only when additional subdivision would fail to produce a new
+admissible distinction.  The output is therefore always a record, never a limit
+taken in abstraction.
+
+Instruments that implement this mapping may differ widely in form.  One device
+may use algebraic expressions, another numerical approximation, another a
+lookup table or algorithm.  These devices compute according to the same
+instrumental rules, but they do not define them.  The authority to declare a
+relation complete resides in the construction of the reals as a refinement
+instrument, not in any particular method of calculation.
+
+Seen this way, the mathematical instrument is a translator between ledgers.
+Its stimulus is a recorded distinction; its response is another recorded
+distinction.  What lies between is process, silence, and refinement, but what
+emerges is always discrete.  Continuity enters only as a managed description of
+how such translations may be carried out, never as an entity that bypasses the
+ledger.
+
+\subsection{The Infinite as Finite}
+
+The history of mathematical physics may be read as a sequence of successful
+attempts to make the infinite operationally finite.  These attempts did not
+consist in denying infinity, but in disciplining it.  Again and again, progress
+was achieved not by enumerating infinite structure, but by identifying the
+conditions under which further refinement could be safely ignored without loss
+of predictive power.
+
+Newton's calculus is the earliest and most influential example.  Fluxions were
+introduced to reason about motion and change without committing to an actual
+continuum of intermediate states.  Infinitesimals functioned as a regulating
+ideal, allowing ratios of change to be computed while never appearing as
+recorded quantities themselves.  What mattered was not the existence of
+infinitely small magnitudes, but the stability of results under refinement.
+Infinity entered only as a limit on procedure, not as an object of measurement.
+
+Cantor's construction of the real numbers extended this discipline to the
+foundations of analysis.  The continuum was not assumed but built, step by step,
+from countable processes.  Cauchy sequences and Dedekind cuts replaced geometric
+intuition with rules governing convergence.  Here too, infinity was rendered
+harmless by constraint: a real number was admitted only when a refinement
+process satisfied a criterion that licensed closure.  The infinite was present
+only insofar as it could be managed by finite acts.
+
+In computation, the same pattern reappears with particular clarity.  The
+Cooley--Tukey algorithm does not compute a Fourier transform by summing an
+infinite series.  Instead, it decomposes the problem into finitely many parts
+whose structure mirrors that of the original domain.  By aligning the
+refinement of representation with the refinement of computation, an operation
+that appears to require unbounded resources is executed using finite memory and
+finite time.  Infinity is not traversed; it is avoided.
+
+What unifies these developments is not technique, but architecture.  In each
+case, success depends on identifying a representation in which refinement
+commutes with the operation being performed.  When this alignment holds,
+processes that are formally infinite admit finite realization.  When it fails,
+the infinite reasserts itself as intractable.
+
+The Newton--Cooley--Tukey effect names this architectural principle.  An
+instrument may safely invoke infinite structure only when its operation closes
+on finite records.  The stimulus is finite, the response is finite, and the
+infinite appears solely as a constraint on admissible refinement, never as a
+thing to be measured or stored.  In this way, infinity is not eliminated, but
+contained.
 
 \begin{phenom}{The Newton--Cooley--Tukey Effect}
 \label{ph:newton-cooley-tukey}
@@ -651,6 +771,14 @@ the process being computed.  When such alignment holds, global behavior emerges
 from local refinement.  When it does not, computation becomes intractable or
 ill-defined.
 \end{phenom}
+
+
+Within the ledger framework, this containment is explicit.  Infinite structure
+may enter the alphabet as a description of how refinement proceeds, but the
+ledger records only finite commitments.  Every successful law, computation, or
+prediction depends on this asymmetry.  The infinite is made finite not by
+enumeration, but by instrument design.
+
 
 The preceding phenomena make clear that computation proceeds only insofar as
 structure has already been declared.  Hierarchical refinement, exact
@@ -809,7 +937,7 @@ in a way that supports comparison, repetition, and agreement.  The arbitrariness
 of the scale is not a weakness.  It is the price of making measurement possible.
 
 
-\section{Mathematical Devices}
+\section{Devices}
 \label{sec:mathematical-devices}
 
 The preceding sections have treated instruments as concrete structures whose

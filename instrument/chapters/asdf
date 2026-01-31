@@ -3318,7 +3318,6 @@
   pages   = {286--302}
 }
 
-
 @article{proust1799,
   author  = {Proust, Joseph Louis},
   title   = {Recherches sur la nature et les proportions des matieres},
@@ -3326,14 +3325,5 @@
   volume  = {32},
   pages   = {26--54},
   year    = {1799}
-}
-
-@book{archimedes1897,
-  author    = {Archimedes},
-  title     = {The Works of Archimedes},
-  editor    = {Heath, Thomas L.},
-  publisher = {Cambridge University Press},
-  year      = {1897},
-  note      = {English translation; includes On the Measurement of the Circle}
 }
 

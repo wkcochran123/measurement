@@ -1,12 +1,12 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["3452b320fec8342d.olean"],
-  "i": "5498f8de93b97d2a.ilean",
-  "c": "6b850b0acb227f0d.c"},
+ {"o": ["1a3e5d296ed47959.olean"],
+  "i": "a969288fd943fe34.ilean",
+  "c": "52105b14dbddbc5e.c"},
  "log":
  [{"message":
-   ".> LEAN_PATH=/Users/williamcochran/Desktop/measurement/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/lean/.lake/build/lib/lean /Users/williamcochran/.elan/toolchains/leanprover--lean4---v4.27.0-rc1/bin/lean /Users/williamcochran/Desktop/measurement/lean/Measurement/Chapter2/Constructions.lean -o /Users/williamcochran/Desktop/measurement/lean/.lake/build/lib/lean/Measurement/Chapter2/Constructions.olean -i /Users/williamcochran/Desktop/measurement/lean/.lake/build/lib/lean/Measurement/Chapter2/Constructions.ilean -c /Users/williamcochran/Desktop/measurement/lean/.lake/build/ir/Measurement/Chapter2/Constructions.c --setup /Users/williamcochran/Desktop/measurement/lean/.lake/build/ir/Measurement/Chapter2/Constructions.setup.json --json",
+   ".> LEAN_PATH=/Users/williamcochran/Desktop/measurement/device/.lake/packages/Cli/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/device/.lake/packages/batteries/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/device/.lake/packages/Qq/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/device/.lake/packages/aesop/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/device/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/device/.lake/packages/importGraph/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/device/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/device/.lake/packages/plausible/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/device/.lake/packages/mathlib/.lake/build/lib/lean:/Users/williamcochran/Desktop/measurement/device/.lake/build/lib/lean /Users/williamcochran/.elan/toolchains/leanprover--lean4---v4.27.0-rc1/bin/lean /Users/williamcochran/Desktop/measurement/device/Measurement/Chapter2/Constructions.lean -o /Users/williamcochran/Desktop/measurement/device/.lake/build/lib/lean/Measurement/Chapter2/Constructions.olean -i /Users/williamcochran/Desktop/measurement/device/.lake/build/lib/lean/Measurement/Chapter2/Constructions.ilean -c /Users/williamcochran/Desktop/measurement/device/.lake/build/ir/Measurement/Chapter2/Constructions.c --setup /Users/williamcochran/Desktop/measurement/device/.lake/build/ir/Measurement/Chapter2/Constructions.setup.json --json",
    "level": "trace"}],
  "inputs":
  [["Measurement.Chapter2.Constructions:deps",
@@ -24,8 +24,8 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.27.0, commit 2fcce7258eeb6e324366bc25f9058293b04b7547",
    "6f43b597efea5d4c"],
-  ["/Users/williamcochran/Desktop/measurement/lean/Measurement/Chapter2/Constructions.lean",
-   "a6112045209b2254"],
+  ["/Users/williamcochran/Desktop/measurement/device/Measurement/Chapter2/Constructions.lean",
+   "d770524783db0299"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "7d070bc788c7b568"}
+ "depHash": "32318e16bf803be9"}

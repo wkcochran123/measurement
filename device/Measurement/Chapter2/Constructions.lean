@@ -7,15 +7,6 @@ universe u v w
 
 
 
-
-structure SymbolMap (σ : Type u) (τ : Type v) where
-  equiv : σ ≃ τ
-
-namespace SymbolMap
-  def map {σ τ} (f : SymbolMap σ τ) : σ → τ := f.equiv
-  def inv {σ τ} (f : SymbolMap σ τ) : τ → σ := f.equiv.symm
-end SymbolMap
-
 /-- Zipper decomposition: an enumeration of paired symbols. -/
 structure DecomposingMap (σ : Type u) (τ : Type v) where
   pairs : Enumeration (σ × τ)
