@@ -1,9 +1,0 @@
-{"plugins": [],
- "package": "measurement",
- "options": {},
- "name": "Measurement.Chapter1.Constructions",
- "isModule": false,
- "importArts":
- {"Measurement.Chapter1.ZFC":
-  ["/Users/williamcochran/Desktop/measurement/lean/.lake/build/lib/lean/Measurement/Chapter1/ZFC.olean"]},
- "dynlibs": []}
