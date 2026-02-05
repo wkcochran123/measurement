@@ -1,26 +1,29 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{section}{Abstract}
 
+This work develops a finite, instrument-based approximation to space--time
+structure by analyzing two distinct linearizations associated with a single
+invariant field: the Gateaux approximation and the Frechet approximation.  Each
+linearization is realized through a finite computational device.  The Gateaux
+approximation is implemented via a Newton-style search, while the Frechet
+approximation is implemented via a bisection-based search, reflecting their
+respective sensitivities to local direction and global constraint.
 
-We propose a foundational framework for physical measurement that does not assume
-a pre-existing continuum, but instead begins from the experimental ledger: a
-finite, growing record of distinguishable events. Guided by six axioms drawing
-from Peano, Kolmogorov, and Planck, observation is formalized as an irreversible
-process of refinement, in which new distinctions are appended to a history that
-cannot be erased.
+To support iteration, explicit maps from the integers to representative
+continua are constructed.  For Newton search, convergence is represented by
+Cauchy sequences; for bisection search, completion is represented by Cantor's
+construction.  These representations are treated as idealized instruments,
+distinct from the realized devices that execute finite refinement and commit
+discrete records.  The framework maintains a strict separation between
+representational completion and operational certification.
 
-In the first part of the work, we construct the Causal Universe Tensor, an
-algebraic object that encodes admissible event histories and their causal
-relations. Familiar continuous structures, including time and geometry, are
-shown to arise not as primitive elements, but as smooth representational
-surrogates required to interpolate intervals of verified silence between
-discrete records.
-
-The latter part reframes physical dynamics in this setting. Physical laws appear
-as bookkeeping constraints that preserve consistency across observers, rather
-than as generators of motion in a prior spacetime. Within this framework, the
-monotonicity of causal entropy ($\Delta S \geq 0$) is not an additional law, but a
-structural consequence: because the ledger is append-only, the number of
-distinguishable events can only increase.
-
+Within this setting, the residual structure arising from each approximation is
+computed.  The Gateaux approximation leaves a directional residue associated
+with anticipatory refinement, while the Frechet approximation leaves a
+constraint-based residue associated with global consistency.  The interesection of
+these residues characterizes the full space of admissible continuations under
+finite measurement.  This space is identified with the union of all possible
+physical laws compatible with the instrument, understood not as ontological
+necessities but as stable invariants that survive finite refinement under
+recoverability constraints.
 

@@ -8,7 +8,7 @@ universe u v w
 
 
 /-- Zipper decomposition: an enumeration of paired symbols. -/
-structure DecomposingMap (σ : Type u) (τ : Type v) where
+structure Decomposition (σ : Type u) (τ : Type v) where
   pairs : Enumeration (σ × τ)
 
 namespace Enumeration
@@ -21,18 +21,18 @@ namespace Enumeration
 
 end Enumeration
 
-namespace DecomposingMap
+namespace Decomposition
 
   /-- Zeta: index into the zipper enumeration. -/
-  def ζ {σ τ} (D : DecomposingMap σ τ) (n : Nat) : Option (σ × τ) :=
+  def ζ {σ τ} (D : Decomposition σ τ) (n : Nat) : Option (σ × τ) :=
     Enumeration.nth D.pairs n
 
   /-- Build a DecomposingMap by zipping two enumerations. -/
   def ofZips {σ τ} (eσ : Enumeration σ) (eτ : Enumeration τ) :
-    DecomposingMap σ τ :=
+    Decomposition σ τ :=
   { pairs := Enumeration.zip eσ eτ }
 
-end DecomposingMap
+end Decomposition
 
 
 end Measurement

@@ -19,14 +19,14 @@ structure Instrument (S : Type u) (σ : Type v) where
   domainLogic     : DecodingMap S
   instrumentLogic : DecodingMap σ
 
+structure Device (σ : Type S) (τ:Type T) where
+  instrument : Instrument σ τ
+  decomposition : Decomposition τ σ
 
+abbrev EinsteinDevice := Device Nat Nat
 
-abbrev Clock := Instrument Nat Nat
-abbrev Ruler := Instrument ZFC.QPos ZFC.QPos
+abbrev TuringDevice (S : Type u) (σ : Type v) : Type (max u v) :=
+  Device S σ
 
-
-structure TuringDevice (S : Type u) (σ : Type v) where
-  instrument     : Instrument S σ
-  decomposition  : DecomposingMap S σ
 
 end Measurement

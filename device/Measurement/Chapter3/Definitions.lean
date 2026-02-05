@@ -10,6 +10,8 @@ open Classical
 
 
 
+abbrev CauchyCantorInstrument {σ : Type v} :=
+  Instrument σ σ
 
 abbrev RationalInstrument := Instrument ZFC.QPos ZFC.QPos
 
