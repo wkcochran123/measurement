@@ -16,9 +16,6 @@ structure Instrument (S : Type u) (σ : Type v) where
   alphabet : Alphabet σ
   ledger   : Ledger S
 
-  domainLogic     : DecodingMap S
-  instrumentLogic : DecodingMap σ
-
 structure Device (σ : Type S) (τ:Type T) where
   instrument : Instrument σ τ
   decomposition : Decomposition τ σ
