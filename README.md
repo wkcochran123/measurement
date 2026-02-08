@@ -1,8 +1,7 @@
 # Measurement
 
-Version 0.1.1
+Version 0.1.5
 [Latest pdf build.](https://drive.google.com/file/d/1t8qZYaYHa_-4-A0Hfjk-5ZqHwnuflh8H/view?usp=drive_link)
-
 
 This repository contains a developing axiomatic framework for measurement,
 events, and refinement, together with a Lean 4 formalization of the early
