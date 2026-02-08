@@ -1,5 +1,5 @@
 \chapter{Calibration}
-Recall the though experiment of the parked car and the speedometer from last
+Recall the thought experiment of the parked car and the speedometer from last
 chapter.  The car is loaded onto a train and transported across
 the country.  The displacement is large, the duration is long, and ordinary
 reasoning would readily describe the episode as one of sustained motion.  Yet
@@ -76,1921 +76,418 @@ may coexist with activity in another, and how calibration permits instruments
 with different clocks, alphabets, and refinement paths to participate in a
 common phenomenal description without contradiction.
 
-\section{Invariance}
-\label{sec:invariance}
-
-
-The notion of invariance may be introduced concretely through the familiar
-example of speed.  Speed is not observed directly.  What is recorded are
-successive positions committed at successive events.  From these records one
-forms finite differences: ratios of displacement to the number of intervening
-counts.  Each such ratio is a rational quantity, computed by a terminating
-procedure and committed to the ledger as a finite result.
-
-As refinement proceeds, these finite differences may be taken over shorter
-intervals.  The resulting sequence of rational values need not stabilize at any
-finite stage.  What matters is not equality of successive entries, but the
-persistence of a relation among them.  When further refinement fails to alter
-the inferred relation in any admissible way, the relation is said to be
-invariant under refinement.
-
-This construction is already present in Newton's treatment of motion.  Velocity
-is introduced not as a primitive magnitude, but as the limit of a sequence of
-ratios taken over ever smaller intervals.  The limit is not itself computed by
-any finite procedure.  It functions as an ideal object that summarizes the
-stable behavior of the finite differences under continued refinement.  What is
-observed are only the approximating ratios; what is inferred is the invariant
-they approach.
-
-Within the present framework, this distinction is essential.  Each finite
-difference is a lawful, terminating computation.  The invariant speed is not a
-new value added to the ledger, but a relation that remains unchanged as the
-ledger is extended.  Invariance therefore precedes representation.  It is
-identified before any particular numerical model is selected, and it does not
-depend on the existence of a completed limit.
-
-Speed, in this sense, is an invariant of the phenomenon, not a quantity recorded
-by an instrument.  Instruments produce sequences of finite values.  Invariance
-is the condition that allows these values to be treated as expressions of a
-single underlying relation.  The phenomenal model introduced in the following
-section formalizes how such invariants are represented numerically without
-confusing the stability of the relation with the finiteness of its
-computations.
-
-
-
-\subsection{Events}
-
-An \emph{event} is the basic site at which refinement may occur.  It is not a
-measurement, not a value, and not a record.  Rather, it marks a place where an
-instrument may, in principle, introduce a distinction.  Events are therefore
-pre-numerical.  They carry no magnitude and admit no intrinsic scale.
-
-Events are identified only up to admissible refinement.  Two events are
-considered equivalent if no instrument can distinguish between them through any
-sequence of lawful refinements.  What matters is not their internal structure,
-but their role as loci of potential commitment.
-
-\subsection{Phenomena}
-
-A \emph{phenomenon} is a partial ordering imposed on a collection of events.
-This ordering captures precedence, compatibility, and possible succession
-without assuming total comparability.  Not all events need be related, and no
-global parameter is required.
-
-The ordering supplied by a phenomenon does not assign values.  It constrains
-which events may be considered before or after others, and which collections of
-events may be jointly refined.  In this sense, a phenomenon structures events
-without measuring them.
-
-\subsection{Invariant Structure}
-
-An invariant is a relation on events that is preserved under admissible
-refinement.  If refinement sharpens distinctions without altering the relation,
-that relation is invariant.  Invariants therefore express stability across
-levels of description, rather than properties fixed at a single scale.
-
-Typical examples include order relations, conservation constraints, and
-equivalence classes that persist as events are refined.  The identification of
-such invariants precedes any numerical assignment and does not depend on a
-chosen device.
-
-\subsection{From Invariance to Representation}
-
-Numerical models arise only after invariants have been identified.  A device
-may then be introduced to compute finite quantities that represent these
-invariants in a form suitable for recording.  The numbers produced are not the
-invariants themselves, but symbolic stand-ins whose validity rests on the
-stability of the underlying relations.
-
-This separation is essential.  Invariants belong to the structure of phenomena.
-Numbers belong to the structure of devices.  The phenomenal model constructed in
-the following section mediates between the two, ensuring that numerical
-assignments respect the invariants they are meant to represent.
-
-
-\section{Refinement}
-
-Prediction is not introduced here as a claim about the future, but as a
-structural component of an instrument. Every instrument that produces a record
-does so by applying an internal rule that determines what distinction may be
-licensed next. This rule is the predictor. It is not an empirical statement
-about the world, but a constraint on the instrument’s own behavior.
-
-Concrete instruments make this clear. A mechanical speedometer and a radar gun
-are both treated as measuring speed, yet they operate by entirely different
-means. One accumulates wheel rotations over a period of waiting and reports an
-average value; the other infers velocity from a Doppler shift and reports an
-effectively instantaneous estimate. In neither case does the instrument
-directly observe speed. Each applies an internal model that maps prior records
-and sensor responses to a displayable symbol.
-
-Between the arrival of a sensor signal and the appearance of a new ledger
-entry, the instrument occupies a brief but essential interval. During this
-interval, no new fact is yet recorded. The ledger is momentarily silent while
-the instrument executes its internal logic. What is commonly described as
-“prediction” occurs entirely within this silence. The instrument determines
-which outcome its own design licenses, and only then appends a new distinction.
-
-
-In this sense, prediction is future-directed only in a trivial ordering sense:
-the display follows the computation. The content of the prediction is not a
-claim about what will happen in the world, but an assertion about what value the
-instrument’s model requires, given the records accumulated so far. The
-predictor governs admissible refinement of the ledger. It does not foretell
-events; it constrains which facts may consistently appear next.
-
-\subsection{Parallel Refinement}
-\label{subsec:parallel-refinement}
-
-A particularly clear instance of decomposition arises when the same refinement
-rule is applied simultaneously across multiple indistinguishable responses.
-In such cases, refinement proceeds in parallel, producing a structured pattern
-of admissible values that may later be enumerated without privileging any single
-component.
-
-A simple optical instrument with two apertures provides a concrete example.
-When light interacts with the apparatus, the instrument does not refine one
-response and then the other. Instead, the same physical constraints are applied
-to both apertures simultaneously. The resulting interaction produces a spatial
-activation pattern whose structure reflects the combined effect of the two
-paths. No intermediate distinction is licensed for either path individually.
-Only the aggregate pattern is admissible.
-
-From the perspective of refinement, this instrument does not branch. It refines
-once, but across multiple lanes. Each lane is subject to the same rule, and no
-lane carries independent authority. The internal structure produced by this
-parallel refinement may be recorded, filtered, or further decomposed, but it is
-not ordered temporally at the level of individual paths.
-
-\begin{phenom}{The Young--Cray Parallel Refinement Effect}
-\label{ph:young-cray}
-
-\PhStatement
-A single refinement rule may be applied simultaneously across a finite family
-of indistinguishable responses, producing a structured activation pattern that
-may be organized into a single admissible enumeration.
-
-\PhOrigin
-Optical instruments employing multiple apertures demonstrated that the same
-physical constraint can act concurrently on several indistinguishable paths,
-yielding a combined response without sequential evaluation. Much later, vector
-processors made this structure explicit in engineered form by applying a single
-instruction simultaneously across multiple data lanes. The physical and
-computational cases share the same underlying refinement structure.
-
-\PhObservation
-In a two--aperture optical instrument, interaction does not resolve individual
-paths. Instead, the instrument refines a family of indistinguishable responses
-in parallel, producing an activation pattern whose structure reflects their
-joint refinement. In vector processing hardware, a single operation is broadcast
-across multiple registers, producing a vector of results in one step. In both
-cases, no component is privileged, and no intermediate distinction is licensed
-individually.
-
-\PhConstraint
-Parallel refinement does not increase the rate at which distinctions are
-recorded. Although multiple components are processed simultaneously, only one
-admissible result may be appended per moment of refinement. Any internal
-structure produced by parallel refinement must be recoverable by projection
-onto the component enumerations without introducing new distinctions.
-
-\PhConsequence
-Parallel refinement permits complex internal structure without violating the
-one--fact--per--moment principle. It explains how instruments may exhibit
-vector--like behavior, supporting finite decompositions and zipper
-enumerations, while remaining compatible with admissible ledger growth. This
-effect provides the structural bridge between physical decomposition and
-engineered vector computation.
-\end{phenom}
-
-
-This behavior realizes decomposition as vector processing---two or more values that
-can be computed exactly the same way but with different underlying sets of symbols. A single refinement
-step acts on a finite family of indistinguishable responses, producing a
-composite activation that may later be enumerated by a zipper construction. The
-one--fact--per--moment principle is preserved because no individual component is
-recorded in isolation. What is recorded, if anything, is the result of their
-joint refinement.
-
-Parallel refinement demonstrates that decomposition need not be sequential.
-An instrument may lawfully apply the same refinement rule across multiple
-components at once, provided that the resulting structure can be organized into
-a single admissible enumeration. This mechanism underlies diffraction,
-multi--pixel sensing, and other instruments that process many responses
-simultaneously without violating admissibility.
-
-
-
-\subsection{The Illusion of Metaphysical Continuity}
-
-The metaphysical illusion of continuity enters mathematics through the treatment
-of irrational numbers as completed objects.  In common presentation, an
-irrational number appears as an infinite string of digits, as though it were a
-static entity waiting to be revealed.  This representation conceals the fact
-that no such string is ever given.  What exists instead is a rule, a procedure,
-or a refinement process by which successive approximations may be generated.
-
-An irrational number is therefore not selected from an already-existing set,
-but produced through an act of construction.  Each digit arises only through
-additional refinement, and no finite stage exhausts the number it seeks to
-represent.  The apparent objecthood of the real number is a retrospective
-illusion, stabilized by the success of the generating process and projected
-backward as though the limit had existed all along.
-
-This structure exhibits Phenomenon~\ref{ph:static-friction}.  In the presence of
-friction, motion begins only when applied energy exceeds a threshold; below it,
-the system may continue to evolve without observable motion.  Convergence is not
-guaranteed by form alone, but by the presence of constraints that arrest further
-refinement.  A convergence criterion must be met within a finite execution of
-the process.  Where such constraints are absent, the notion of a completed state
-loses operational meaning.
-
-Cauchy extensively studied this behavior of convergence~\cite{cauchy1921}.  A Cauchy sequence is 
-not itself a new
-kind of event; it is a disciplined way of arranging already admissible ones.
-Each term in the sequence is a rational commitment, produced by finite
-enumeration and recoverable from the ledger.  What distinguishes a Cauchy
-sequence is not that it reaches beyond the ledger, but that it constrains how
-successive refinements may proceed.  The sequence encodes a promise: future
-entries must respect the pattern already recorded.  In this sense, Cauchy
-convergence is an ordering principle, not a metaphysical leap.
-
-Along with an iterative structure, the rational numbers admit a
-recursive description in which each refinement subdivides an interval already
-licensed by earlier commitments.  This construction does not assume the real
-line as a completed object.  It builds admissible positions step by step,
-through bisection, interleaving, and enumeration.  Each rational is introduced
-by a finite act of refinement, and the entire construction remains grounded in
-countable procedure.  The apparent density of the rationals is thus not a
-property of a preexisting continuum, but the result of a recursive enumeration
-whose structure mirrors the refinement process itself.
-
-Phenomenon~\ref{ph:continuum} isolates the representational choice made at this juncture.
-One may treat the recursive rational construction as indefinitely extensible,
-with limits understood only as constraints on future refinement.  Alternatively,
-one may complete the construction by positing new points not witnessed by any
-finite enumeration.  The former stance remains faithful to the ledger: all
-distinctions are recoverable, and convergence is a rule governing succession.
-The latter introduces optional structure, justified only if its consequences can
-be operationally recovered.  The transition from Cauchy sequence to completed
-continuum is therefore not forced by logic, but chosen as a matter of
-representation.
-
-\begin{phenom}{The Cauchy--Cantor Effect~\cite{cantor1872,cauchy1821}}
-\label{ph:continuum}
-
-\PhStatement
-Iterative and recursive descriptions may encode the same admissible refinement
-process.  A Cauchy sequence constrains refinement by successive approximation,
-while Cantor's construction constrains it by recursive subdivision.  When both
-descriptions preserve recoverability, they represent the same phenomenal
-content expressed through different organizational schemes.
-
-\PhOrigin
-Cauchy introduced sequences defined by internal coherence: terms become
-arbitrarily close without presupposing a completed limit
-\cite{cauchy1821}.  Cantor later described number systems through recursive
-construction, enumerating admissible refinements by systematic subdivision
-\cite{cantor1872}.  Though often presented as distinct foundations for analysis,
-both approaches govern how refinement may proceed from finite commitments.
-Their apparent divergence reflects a difference in description rather than in
-phenomenon.
-
-\PhObservation
-In practice, instruments realize convergence either by iteration or by
-decomposition.  A clock refines time by repeated ticks; a ruler refines space by
-subdivision.  Both produce sequences of recorded distinctions whose future
-extensions are constrained by prior ones.  Whether refinement is described as a
-Cauchy sequence approaching a value or as a Cantor construction narrowing an
-interval, the ledger records the same sequence of admissible events.
-
-\PhConstraint
-No description of convergence may introduce distinctions not licensed by finite
-refinement.  Iterative limits and recursive completions are admissible only insofar
-as they constrain future ledger extensions without positing unrecoverable
-intermediate structure.  Completion that cannot be witnessed by refinement is
-optional structure, not fact.
-
-\PhConsequence
-Cauchy convergence and Cantor recursion are revealed as dual organizational
-languages for the same process of measurement.  One emphasizes temporal
-succession, the other structural decomposition, but both articulate how lawful
-refinement proceeds.  Within the ledger framework, their equivalence dissolves
-the apparent tension between sequence and construction: convergence governs
-continuation, while recursion governs admissible subdivision.  The continuum
-emerges not as a primitive object, but as a representational shadow cast by
-coherent refinement.
-\end{phenom}
-
-Placed alongside Phenomenon~\ref{ph:atoms}, the lesson is sharp.  The recursive
-description of the rationals respects the priority of recorded structure: each
-step is licensed by what has already been enumerated.  
-The construction of the real numbers follows this same pattern.  A Cauchy
-sequence converges not because it approaches a preexisting point, but because
-the refinement process satisfies a criterion that halts further distinction.
-The limit is not observed; it is licensed.  Below the threshold imposed by the
-definition, convergence is declared.  Above it, the process remains unfinished,
-no matter how suggestive the approximations may be.
-
-That the formal definition of the real numbers took centuries to stabilize is
-evidence of this underlying difficulty.  The obstacle was not technical
-ingenuity, but epistemic discipline.  What was required was a rule capable of
-deciding when refinement suffices, and when further subdivision no longer
-produces new admissible distinctions.  Only with such a rule in place could the
-illusion of a completed continuum be safely managed.
-
-The ledger framework makes this discipline explicit.  An irrational number may
-enter as a symbol of an alphabet, but it never enters the ledger as an
-infinite object.  Each approximation is a discrete commitment, and the passage
-to the limit is not an act of discovery but an act of closure.  The real line,
-so understood, is not a collection of points but a stabilized record of
-successful refinement procedures.
-
-Metaphysical continuity arises when this procedural origin is forgotten.  The
-limit is treated as an entity rather than as the termination of a process, and
-the discipline that licensed its use is erased from view.  Restored to its
-instrumental footing, continuity loses its metaphysical force.  What remains is
-not an infinite expanse of given structure, but a finite practice of
-approximation whose success depends on thresholds, constraints, and silence.
-
-\subsection{The Calculator}
-
-The construction of the real numbers functions here as an instrument in the
-strict sense.  It accepts a record from one ledger as stimulus and produces a
-record in another as output.  Both the input and the output consist of an
-ordinal together with a symbol, and nothing else ever appears at the boundary.
-The instrument neither consumes nor produces infinities; it operates entirely
-within the space of finite records.
-
-Between the iterative discipline of Cauchy and the recursive discipline of
-Cantor lies a device that makes their equivalence operational rather than merely
-conceptual: the calculator.  A calculator is not introduced here as an abstract
-machine, nor as a completed model of computation, but as an instrument that can
-be constructed within the ledger framework.  It accepts finitely specified
-inputs, performs a finite sequence of internal refinements, and produces a
-symbol that may be appended to the ledger.  In doing so, it mediates between
-successive approximation and recursive subdivision without committing to either
-as ontologically prior.
-
-From the Cauchy perspective, the calculator realizes iteration.  Each operation
-advances a sequence by one step, refining an approximation according to rules
-that depend only on previously recorded values.  From the Cantor perspective,
-the same device realizes recursion.  Its internal structure decomposes the
-problem space into admissible regions, selecting outcomes by traversing a
-hierarchy of refinements aligned with its decoding maps.  What the ledger sees
-in both cases is identical: a sequence of discrete commitments, each licensed by
-finite computation and recoverable from the record.
-
-In this role, the real numbers are not objects that inhabit a continuum, but
-a single set of symbols generated under two different disciplined procedures.  
-Each real value appears only
-as a finite representation produced by the instrument, sufficient for the
-relation being computed and no more.  What is often described as an infinite
-decimal expansion is, in practice, a promise that further refinement could be
-carried out if required, not a structure that has already been realized.
-\begin{definition}[Cauchy--Cantor Instrument]
-A \emph{Cauchy--Cantor instrument} is an instrument whose ledger and alphabet
-coincide as sets of distinctions, differing at most by their enumeration.
-\end{definition}
-
-
-The operation of the instrument is relational.  Given a symbol recorded at a
-particular ordinal in one ledger, it computes the ordinal and symbol that may be
-recorded in the other.  This computation respects refinement thresholds and
-terminates only when additional subdivision would fail to produce a new
-admissible distinction.  The output is therefore always a record, never a limit
-taken in abstraction.
-
-Instruments that implement this mapping may differ widely in form.  One device
-may use algebraic expressions, another numerical approximation, another a
-lookup table or algorithm.  These devices compute according to the same
-instrumental rules, but they do not define them.  The authority to declare a
-relation complete resides in the construction of the reals as a refinement
-instrument, not in any particular method of calculation.
-
-Seen this way, a calculator is a translator between ledgers.
-Its stimulus is a recorded distinction; its response is another recorded
-distinction.  What lies between is process, silence, and refinement, but what
-emerges is always discrete.  Continuity enters only as a managed description of
-how such translations may be carried out, never as an entity that bypasses the
-ledger.
-
-
-
-\subsection{Ledger Prediction}
-\label{sec:ledger-prediction}
-
-Repeated application of ledger prediction produces a growing sequence of
-measurement records.  Precision increases not by accessing a continuously
-varying quantity, but by sampling more densely within the same interaction
-protocol.  Each refinement step appends one additional record, increasing the
-density of samples available to the instrument.
-
-For the radar instrument, the reported speed is determined from the ordered
-sequence of emission and return events.  As the ledger grows, the sampling of
-these events becomes denser, and the inferred speed becomes more precise.
-The improvement in precision arises entirely from the accumulation of discrete
-samples, not from direct access to an underlying continuous speed.
-
-The sampling process defines a refinement chain whose structure determines the
-limits of precision.  Whether this chain admits a completion that may be treated
-as a continuously valued speed is a separate question.  At this stage, the
-instrument reports speed only through increasingly dense discrete samples.
-Any limiting description is a representational choice layered on top of the
-ledger, not a primitive feature of the measurement itself.
-
-Refinement also requires a prediction of how the ledger is extended.  Let $L_t$
-denote the ledger at stage $t$.  In this context, refinement does not resolve the
-next event in time, but rather proposes an admissible intermediate value between
-records that are already established.
-
-A refinement step specifies a prediction map
-\begin{equation}
-P_t : L_t \to \Sigma' ,
-\end{equation}
-which selects a refined symbol consistent with the existing ledger.  The ledger
-is then extended by recording this hypothesized refinement,
-\begin{equation}
-L_{t+1} = L_t \cup \{ P_t(L_t) \}.
-\end{equation}
-
-By construction, exactly one record is appended.  The arrow of time is preserved,
-but the refinement acts on resolution rather than chronology: it increases the
-descriptive precision of what is already known, rather than predicting a future
-event.
-
-The refined symbol selected by a prediction map need not correspond to any
-recorded event in the ledger.  It represents a value consistent with the
-existing record, not an observation supported by it.  In particular, there may
-exist no ledger in which the refined value is ever realized as a recorded fact.
-Refinement therefore does not assert existence; it asserts admissibility.
-
-Nothing in the ledger licenses the refined value as a measurement outcome.  The
-ledger contains only the original records and their order.  The refined symbol
-is introduced solely by the prediction map, as a hypothesis about how the
-existing facts might be resolved more finely.  The refinement is valid only in
-the sense that it does not contradict the established ledger.
-
-Because the refined value is unsupported by direct measurement, its status is
-necessarily speculative.  It is not an event that occurred, but a proposal for
-how the ledger could be consistently extended were additional resolution
-available.  In this sense, refinement produces a true predictor: a symbol that
-is admissible given the record, but not warranted by it.
-
-Whether such a predicted refinement is ever realized as a recorded event is a
-separate question.  If a future measurement produces a symbol compatible with
-the prediction, the hypothesis is confirmed by extension.  If not, the
-refinement remains a purely internal construct.  The ledger itself carries no
-obligation to realize predicted refinements, and no failure is implied when it
-does not.
-
-\subsection{Refinement as a Pair of Maps}
-\label{sec:refinement-pair}
-
-A \emph{refinement} is the pair
-\[
-(c, P_t),
-\]
-consisting of an alphabet coarsening map and a ledger prediction map.
-
-The coarsening map ensures that refined symbols may be compared to earlier
-descriptions, while the prediction map ensures that ledger extension remains
-lawful.  No further structure is required.  In particular, refinement does not
-assume continuity, density, or completion.  Those arise only when additional
-constraints are imposed on repeated refinement.
-
-Viewed through the original instrument, refinement either collapses to a coarse
-record via the coarsening map or becomes inexpressible.  In neither case is the
-existing ledger revised.  Refinement adds resolution only by prediction and
-explicit projection.
-
-\begin{proposition}[Uniqueness of Measurement Under Refinement]
-\label{prop:unique-measurement-refinement}
-
-A refinement admits exactly one measurement.
-
-\end{proposition}
-
-\begin{proofsketch}
-By definition, a refinement is the pair $(c, P_t)$, consisting of an alphabet
-coarsening map and a ledger prediction map.  The prediction map
-\[
-P_t : L_t \to \Sigma'
-\]
-selects a single admissible refined symbol.  The ledger update rule
-\[
-L_{t+1} = L_t \cup \{ P_t(L_t) \}
-\]
-appends exactly one record to the ledger.
-
-No additional measurement is licensed by the refinement.  The coarsening map
-relates refined symbols back to earlier descriptions but does not generate new
-records.  Any further subdivision or alternative prediction would constitute a
-distinct refinement step with its own prediction map.
-
-Therefore, each refinement corresponds to a single admissible measurement, and
-the ledger grows by exactly one record per refinement.
-\end{proofsketch}
-
-
-\subsection{The Phenomenal Hypothesis}
-\label{sec:phenomenal-hypothesis}
-
-The \emph{Phenomenal Hypothesis} occupies a precise and limited role in the
-measurement framework.  It is not a theorem to be proved, nor a claim about
-ultimate ontology.  It is a structural necessity that links the design of an
-instrument to its ability to act as a predictive witness to the world.  The
-hypothesis asserts that for a measurement to occur at all, there must exist a
-model capable of mapping the current history of recorded outcomes to the very
-next symbol the instrument will produce.  Absent such a hypothesis, a ledger
-degenerates into a mere collection of marks, incapable of refinement or of the
-ordered growth from which physical law emerges.
-
-At this level of the theory, prediction is treated as absolute.  A predicted
-symbol either coincides exactly with the recorded outcome, or it fails.  The
-Phenomenal Hypothesis deliberately excludes approximation, probability, and
-statistical success.  Those notions arise later, as secondary structure built
-on refinement.  Here, the commitment is minimal and sharp: an instrument is
-constructed with an internal logic, a \emph{predictor}, and the hypothesis is
-that this predictor is capable of resolving the next event in the ledger.  This
-is the weakest assumption under which measurement remains meaningful.
-
-The radar gun provides a canonical instantiation.  To an external description,
-the radar gun appears as a device that reports a continuous quantity called
-speed.  Operationally, however, the instrument produces only discrete records:
-a symbol for an emitted signal and a symbol for a received return.  The car is
-the possessor of the invariant of speed.  The radar gun does not create that
-invariant; it seeks to infer it.  The Phenomenal Hypothesis enters precisely at
-the point where these discrete records must be related.
-
-In this context, the \emph{photon} functions as the phenomenal hypothesis.  It
-is not an object recorded in the ledger.  What the ledger contains are detector
-events: electron excitations, current pulses, threshold crossings.  The photon
-is the model that explains why these specific records appear in the observed
-order and with the observed relations.  It is the hypothesized carrier of
-information that links emission records to reception records, allowing the
-instrument to treat them as corresponding parts of a single interaction.
-
-Crucially, the photon does not carry speed.  Speed belongs to the car as an
-invariant inferred by the instrument.  The photon carries information that,
-once processed by the instrument’s internal rules of comparison and counting,
-is rendered into a speed symbol.  The distinction is essential: invariants are
-not transported through space; correlations are.  The Phenomenal Hypothesis
-licenses this transport without assigning ownership of the resulting invariant
-to the carrier itself.
-
-The radar gun thus clarifies the distinction between \emph{fact} and
-\emph{truth}.  The facts are the ordered ledger entries: emission, silence,
-return.  The truth is the phenomenal hypothesis that preserves consistency
-among those facts.  If the hypothesis is correct, the instrument’s predictor
-anticipates the next symbol exactly.  If it fails, refinement must revise or
-abandon the hypothesis.  Nothing in the ledger records the photon directly; its
-entire justification lies in the stability it brings to prediction.
-
-This example also illustrates that speed is not a primitive quantity found in
-the world, but a phenomenal invariant: a value that remains stable across
-distinct instruments.  A mechanical speedometer counts rotations; a radar gun
-compares frequency shifts mediated by a photon hypothesis.  The Phenomenal
-Hypothesis allows these disparate mechanisms to converge on the same invariant
-because each instrument anchors its predictions to the same underlying state
-of affairs, albeit through different carriers and ledgers.
-
-Finally, the hypothesis disciplines what may be said about absence.  The
-interval between emission and reception is treated as \emph{verified silence}.
-No structure may be asserted during this interval unless a new act of
-measurement records it.  The Phenomenal Hypothesis forbids hidden narratives in
-the gaps between marks.  It allows physics to proceed without assuming a
-completed continuum, replacing it instead with a theory of ordered
-distinctions, carried just far enough to sustain lawful prediction.
-
-\subsection{Enumeration of Refinement}
-\label{sec:enumeration-refinement}
-
-The Phenomenal Hypothesis establishes the instrument as a predictor.  The role
-of Cantor’s axiom is to make this prediction mechanism precise by identifying it
-with an \emph{enumeration}.  Under this axiom, refinement of the experimental
-ledger is not merely the accretion of marks, but an ordered act in which each
-new distinction is assigned a unique ordinal position.  Measurement is thereby
-identified with counting, and the history of an experiment becomes a structured
-object rather than an unordered archive.
-
-
-Formally, the predictor of an instrument maps the current ledger state to the
-next admissible symbol.  To require that this map be an enumeration is to
-require that the growth of the ledger be order-isomorphic to the natural
-numbers.  Each refinement step advances the ledger by exactly one index.  No
-appeal is made to an underlying continuum of time, space, or interaction.
-Whatever continuity may later be represented must be recoverable from this
-ordered sequence of discrete refinements.
-
-The radar gun again provides a concrete illustration.  The instrument emits a
-pulse, records silence, and eventually records a return.  The photon hypothesis
-explains why these records are correlated, but the Axiom of Cantor governs how
-they are organized.  Each detected return is appended to the ledger and
-enumerated.  The predictor, functioning as an enumerator, identifies the
-ordinal position at which the next return is expected to occur relative to the
-instrument’s internal clock ledger.  When a return is recorded at the predicted
-index, the Phenomenal Hypothesis is sustained.
-
-In this setting, speed is derived not from a continuous trajectory, but from
-the density of enumerated events.  The car possesses the invariant of speed.
-The photon conveys information.  The instrument enumerates detector events and
-compares their ordinal spacing against its own counted ticks.  Speed appears
-as a stable phenomenal value because distinct instruments, employing distinct
-carriers and mechanisms, converge on the same ordered growth of records.
-
-By identifying prediction with enumeration, the framework eliminates any need
-to posit an external time parameter.  Time is not a background variable; it is
-a property of the ledger itself.  The Axiom of Cantor guarantees that the ledger
-admits a successor structure, and nothing more.  The instrument’s epistemic
-reach extends only as far as its ability to enumerate refinements.  Questions
-about what may exist between enumerated indices are rendered optional and
-extraneous.
-
-This is the sense in which the framework is shielded from the Continuum
-Hypothesis.  No commitment is made to the existence or nonexistence of
-intermediate structure beyond the enumeration.  Continuity, if introduced, is
-
-
-\subsection{Motivation for the Counting Map}
-\label{sec:counting-map-motivation}
-
-The logical role of the counting map can now be stated cleanly.  The Axiom of
-Cantor guarantees that the refinement order of events admits an ordinal
-labeling.  The counting map is the operational realization of that guarantee
-inside an instrument.  It is the step at which an abstract order becomes an
-addressable history, and it is this transition that makes prediction possible
-at all.
-
-An abstract order relation $\prec$ is globally meaningful but locally silent.
-It asserts that one event precedes another, but it does not provide a finite
-handle by which an instrument may refer to a specific event without traversing
-the entire chain.  An instrument, however, must act locally.  To predict, it
-must evaluate a function on its accumulated record.  Functions require
-arguments, and arguments require addresses.  The counting map supplies those
-addresses.
-
-The Axiom of Cantor performs the essential lifting.  By asserting that the
-event order is injectively and order-preservingly embeddable into
-$\mathbb{N}$, it licenses the replacement of ``earlier than'' with ``has a
-smaller index than.''  The enumeration map does not add structure beyond this;
-it merely realizes the embedding as part of the instrument’s internal logic.
-Each refinement step assigns a unique natural number to the newly recorded
-event, and this assignment is never revised.
-
-This irreversibility is not an accident but a constraint.  Once an event is
-assigned an ordinal address, that address is burned into the history of the
-ledger.  There is no admissible operation that reindexes past events without
-destroying the coherence of prediction.  If the sequence is corrupted or goes
-out of sync, the instrument does not degrade gracefully; it fails.  This
-reflects the fact that addressability is not representational garnish, but a
-structural requirement for lawful measurement.
-
-The radar gun again illustrates why counting, rather than continuity, is the
-appropriate primitive.  The instrument has no access to what occurs between
-emission and reception.  That interval is treated as verified silence.  What
-the instrument can do is count: it counts internal clock ticks, it counts
-emissions, and it counts returns.  Speed is inferred by comparing these counts.
-At no point is the instrument required to consult a background time parameter
-or to assume dense intermediate structure.  The entire computation is grounded
-in ordinal position within the ledger.
-
-This resolves the apparent tension between prediction and asynchrony.  By
-binding both internal and external events to the same counting discipline, the
-instrument avoids the need to reconcile independent clocks or continuous
-streams.  Everything that matters is locked to the successor structure of the
-ledger itself.  The counting map is therefore the mechanism by which refinement
-becomes computable and prediction becomes well-defined.
-
-Finally, counting is justified as the weakest structure capable of sustaining
-the Phenomenal Hypothesis.  A metric presupposes distance.  A continuum
-presupposes density.  Counting presupposes only distinguishability and
-succession, both of which are already guaranteed by earlier axioms.  The
-enumeration map introduces nothing superfluous.  It is the minimal extension
-required to turn an ordered history into an operational instrument, and it is
-for this reason that it occupies a foundational position in the construction
-of measurement.
-
-
-
-
-\subsection{The Instrument Predictor}
-\label{sec:instrument-predictor}
-
-An instrument is not defined solely by the symbols it may record, but by the
-rule according to which it proposes the next admissible record.  This rule is
-captured by the \emph{instrument predictor}.
-
-The instrument predictor acts by applying refinement to the current state of
-the instrument.  This refinement may occur in one of two ways: by extending the
-ledger in time, or by refining the alphabet at the current stage.  In both
-cases, the predictor is defined using the same underlying maps.
-
-Let $L_t$ denote the ledger at stage $t$, let $\Sigma$ be the current alphabet,
-and let $\Sigma'$ be a refined alphabet related by a coarsening map
-\[
-c : \Sigma' \to \Sigma \cup \{\emptyset\}.
-\]
-Let $\eta$ denote the enumeration associated to the instrument.
-
-The instrument predictor is the rule that, given the current ledger $L_t$,
-selects an admissible refined symbol by applying refinement through the
-available structure.  Concretely, the predictor may be viewed as the composite
-operation that:
-\begin{itemize}
-\item enumerates the admissible extensions consistent with the ledger,
-\item selects a refined symbol in $\Sigma'$ according to the refinement rule,
-\item ensures comparability with prior records via the coarsening map.
-\end{itemize}
-
-When applied temporally, the predictor proposes the next ledger extension,
-resulting in
-\[
-L_{t+1} = L_t \cup \{ P_t(L_t) \}.
-\]
-When applied at fixed time, the predictor refines the descriptive resolution of
-existing records by selecting symbols in a refined alphabet that coarsen back
-to the original description.
-
-In either case, the predictor is a function of the current ledger alone.  It
-does not consult future records, nor does it introduce new structure beyond
-refinement and enumeration.  The distinction between temporal prediction and
-descriptive refinement is therefore one of interpretation, not mechanism: both
-are realized by the same predictive rule applied to different components of the
-instrument.
-
-\subsection{Phenomena and Models}
-\label{sec:phenomena-models}
-
-An instrument does not act on symbols in isolation.  It measures a phenomenon.
-A phenomenon is not identified with a particular carrier model.  Rather, a
-carrier model is a representational choice used to predict the outcomes
-produced by the phenomenon.
-
-At this stage, no assumptions are made about the internal structure of the
-phenomenon or the form of the model.  Only the existence of a predictive
-relationship is relevant.
-
-The symbols of an instrument are mathematical only in the most minimal sense.
-
-\begin{axiom}[The Axiom of Kolmogorov]
-\label{ax:kolmogorov}
-There exists a measurement.
-\[
-\exists\, x \in X.
-\]
-\end{axiom}
-
-
-This axiom fixes the mathematical status of instrument symbols.  They may be
-collected, compared for equality, and enumerated.  They do not, by default,
-carry numerical value, distance, likelihood, or magnitude.  Any such
-interpretation is a modeling choice layered on top of the alphabet, not a
-property of the symbols themselves.
-
-Carrier models operate by assigning additional structure to these sets in order
-to support prediction.  Different models may assign different structures to the
-same alphabet without altering the instrument.  The measurement framework
-therefore treats models as optional and revisable, while the set-theoretic
-status of recorded symbols remains fixed.
-
-
-\subsection{Prediction at Instrument Resolution}
-\label{sec:prediction-resolution}
-
-Let $(\Sigma, L_t)$ be an instrument with alphabet $\Sigma$ and ledger $L_t$.
-A prediction at stage $t$ is a map
-\begin{equation}
-P_t : L_t \to \Sigma
-\end{equation}
-selecting the next admissible symbol to be recorded.
-
-Prediction is always evaluated at the resolution of the instrument.  Finer or
-coarser descriptions are not considered here.  The predicted symbol is either
-exactly the symbol recorded by the instrument, or it is not.
-
-\subsection{Statement of the Hypothesis}
-\label{sec:hypothesis-statement}
-
-We now state the central assumption governing prediction.
-
-\begin{definition}[Phenomenal Hypothesis]
-\label{def:phenomenal-hypothesis}
-Let $(\Sigma, L_t)$ be an instrument at stage $t$.  The \emph{phenomenal
-hypothesis} asserts that there exists a model $M_t$ and a prediction map
-\begin{equation}
-P_t : L_t \to \Sigma
-\end{equation}
-such that the predicted symbol $P_t(L_t)$ is exactly the symbol recorded by the
-instrument at stage $t+1$.
-
-The prediction is either correct or incorrect with no intermediate case.  No
-notion of noise, approximation, or probabilistic success is admitted.
-\end{definition}
-
-\begin{axiom}[The Axiom of Planck~\cite{planck1901}]
-\label{ax:planck}
-\emph[Observations are Finite and Immutable]
-For any observer, the set of observable events within their causal domain
-is finite.  The chain of measurable distinctions terminates at the limit of the
-observer’s proper time or causal reach. These observations do not change over time.
-
-More formally, there exists a finite precision scale $\mathcal{E}$ with
-$0 < \mathcal{E} < \infty$ such that for every $e \in E$,
-\begin{equation}
-0 < |e| \le \mathcal{E},
-\end{equation}
-where $|e|$ denotes the cardinality of the event $e$.
-
-Events can only leave a finite trace.
-\end{axiom}
-
-
-\subsection{Scope and Failure}
-\label{sec:hypothesis-scope}
-
-The phenomenal hypothesis makes no claim about prediction beyond the resolution
-of the instrument.  It does not require that the phenomenon be deterministic in
-any absolute sense, nor that prediction be unique.
-
-When the hypothesis holds, ledger extension by prediction is lawful.  When it
-fails, refinement is undefined and must terminate.  Any subsequent treatment of
-uncertainty or noise must therefore arise from failure of the phenomenal
-hypothesis, not be assumed as primitive.
-
-\subsection{Clock 2}
-
-In this way, the quantum of time is not a smallest instant of nature, but the
-smallest interval an instrument can meaningfully resolve.  It is fixed by the
-construction of the device and the causal path it enforces.  The radar gun, like
-Einstein's clock, does not reveal what happens in between its records.  It merely
-asserts that something must have happened, and that the order of those assertions
-cannot be reversed.  Time enters the ledger one completed exchange at a time.
-
-\subsection{Resonance}
-\label{subsec:resonance}
-
-Phenomenon~\ref{ph:clock} explains why instruments impose order, but it does not yet
-explain why ordered measurements often exhibit smooth, lawful structure when
-viewed in aggregate.  That regularity appears through resonance: the repeated
-alignment between discrete acts of measurement and the responses they license.
-Resonance is not itself a fact, but a pattern that becomes visible only across
-many recorded events.
-
-From the perspective of measurement, this pattern is governed by what may be
-called the Fourier--Peirce Effect.  Peirce provides the epistemic constraint: a
-fact is the agreed meaning of a symbol, fixed only at inscription.  Fourier
-provides the representational convenience: a continuous form that summarizes
-how such facts accumulate and interfere across repeated trials.  Neither alone
-is sufficient.  Peirce without Fourier yields isolated records without law.
-Fourier without Peirce yields smooth functions detached from measurement.
-
-Resonance arises when an instrument is refined repeatedly under stable
-conditions.  Individual measurements remain discrete and irreversible, but the
-distribution of outcomes exhibits regular structure.  In such cases it becomes
-useful to represent the response of the instrument as if it were continuous,
-even though no single measurement ever records a continuum.  The Fourier
-representation is therefore not a claim about what the instrument measures, but
-about how its discrete ledger may be summarized.
-
-In this way, resonance bridges discrete measurement and continuous description
-without conflating them.  The Peircean act of recording fixes meaning one fact at
-a time, while the Fourier form captures the emergent regularity of many such
-acts.  Continuity enters only as a resonant approximation, justified by repeated
-agreement between instrument, phenomenon, and ledger, and never as a primitive
-feature of what is observed.
-
-\subsection{Waves}
-\label{subsec:waves}
-
-The radar gun provides a concrete realization of Einstein's device: a measurement
-defined by the emission and reception of a signal, with a silent interval in
-between during which no fact is recorded.  In practice, however, the signal used
-in such instruments is not treated as a discrete object.  It is modeled as an
-electromagnetic wave governed by Maxwell's equations, evolving continuously
-through space and time.  The clock that enforces causal order is therefore
-immediately embedded in a mathematical framework that assumes uninterrupted
-propagation.
-
-Maxwell's equations describe the electromagnetic field as a continuous entity
-whose state is defined at every point of spacetime.  Once a pulse is emitted,
-the field is taken to exist everywhere along its path, accumulating phase and
-amplitude until it is reflected and received.  The radar gun, when analyzed in
-this way, appears to measure not a discrete exchange but a segment of smooth
-field evolution.  The silence between emission and reception is filled, in the
-mathematics, by a fully specified intermediate process.
-
-This continuous description is extraordinarily successful, but its success rests
-on a representational step.  No instrument records the electromagnetic field at
-each intermediate point along the path.  What is recorded are two facts: that a
-signal was sent, and that a signal was received.  Everything that occurs between
-these records is inferred rather than observed.  The field description supplies
-a lawful interpolation that connects these facts without adding new ones to the
-ledger.
-
-The Fourier--Maxwell Effect names this interpolation explicitly.  Maxwell
-provides the dynamical law: a linear field whose disturbances propagate and
-superpose.  Fourier provides the representational tool: the decomposition of
-those disturbances into continuous modes that accumulate and interfere.  Taken
-together, they yield a picture in which the response of the instrument is
-described as the accumulation of wave components, even though no single
-measurement ever records such accumulation directly.
-
-\begin{phenom}{The Fourier--Maxwell Effect}
-\label{ph:fourier-maxwell}
-
-\PhStatement
-Wave descriptions of electromagnetic phenomena arise from treating the silent
-interval enforced by an Einstein Device as if it were filled by continuous,
-linearly propagating structure.  This treatment is a representational choice,
-not a recorded fact.
-
-\PhOrigin
-Maxwell formulated electromagnetism as a system of linear field equations whose
-solutions evolve continuously through space and time.  Fourier provided the
-mathematical machinery for decomposing such linear responses into superposable
-modes.  Together, these developments established the modern wave picture of
-light, in which propagation and interference are described as continuous
-processes.  The Fourier--Maxwell Effect isolates this representational synthesis
-from the operational procedures by which electromagnetic measurements are
-actually obtained.
-
-\PhObservation
-Instruments that rely on electromagnetic signals, such as radar guns, record
-only discrete events: the emission of a pulse and its subsequent reception.
-Between these two facts, no intermediate measurements are made.  Nevertheless,
-the behavior of repeated measurements is accurately predicted by models that
-treat the signal as a continuously evolving wave.  The success of these models
-reflects the stability of the instrument and its environment, not the direct
-observation of continuous field values.
-
-\PhConstraint
-No measurement licenses the attribution of physical fact to intermediate field
-values that are not recorded.  The continuous field description must therefore
-be understood as an interpolation that preserves recoverability from recorded
-facts.  Any use of wave structure that introduces distinctions which cannot, in
-principle, be reconstructed from emission and reception records exceeds what
-the instrument justifies.
-
-\PhConsequence
-The Fourier--Maxwell Effect explains why wave mechanics is both indispensable
-and incomplete.  Maxwell's equations supply a lawful propagation model, and
-Fourier analysis supplies a compact representation of accumulated response.
-Together, they provide a powerful summary of electromagnetic measurement
-outcomes.  Within the ledger framework, however, this summary is optional
-structure layered atop the Einstein Device.  The apparent continuity of waves
-reflects a choice of completion of the silent interval, not a direct feature of
-what is measured.
-\end{phenom}
-
-From the instrumental perspective, this effect is a specialization of the
-Einstein Device rather than a replacement for it.  The clock still operates by
-signal exchange and causal order.  The wave picture enters only as a convenient
-summary of how many such exchanges behave under stable conditions.  It does not
-describe what is measured, but how repeated measurements may be organized into a
-smooth account.
-
-In this sense, the mathematics of waves does not contradict the discrete
-structure of measurement; it refines it representationally.  Maxwell's equations
-and Fourier analysis together assume a continuous interior to the silent
-interval enforced by the Einstein Device.  That assumption is optional, justified
-by recoverability and predictive success rather than by direct observation.
-Later sections will show how this continuous description may itself be derived
-from discrete refinement, and where its limits become visible.
-
-
-\section{The Domain of Physical Law}
-\label{sec:domain-law}
-
-The preceding discussion emphasized a simple but easily overlooked fact:
-distinct instruments may produce records that are treated as measuring the
-same quantity, even when the internal mechanisms and interpretive models
-differ substantially.  A radar gun infers speed from Doppler shift; a
-speedometer infers it from counted rotations and elapsed ticks.  The
-agreement between their outputs does not arise because either instrument
-accesses an underlying entity called \emph{speed}, but because their records
-can be placed into correspondence after the fact.
-
-
-
-This observation motivates a shift in perspective. Physical law, as it appears
-in measurement, is not first encountered as a statement about a pre-existing
-continuum of time, space, or motion. It appears instead as a set of constraints
-on how records may be ordered, compared, and refined without contradiction.
-The domain of physical law is therefore not a space of states, but a space of
-\emph{admissible histories}, 
-the set of all possible ledgers consistent with current observation.
-
-To reach this domain, we must identify the minimal structure common to all
-records, prior to any notion of duration, distance, or magnitude. That
-structure is not metric, but ordinal. One record precedes another. Something
-is observed, and later something else is observed. This relation is not inferred
-from a clock nor imposed by an external parameter. It is an irreducible feature
-of observation itself, and the first coordinate from which all further
-structure is built.
-
-We refer to the necessity of waiting for this ordering to resolve as
-\emph{temporal friction} (see Phenomenon~\ref{ph:chaitin}).  An observation is 
-made, and one must wait before
-another observation can occur.  This enforced delay is not chosen, nor can it
-be reliably measured \emph{a priori}.  It is encountered as part of the act of
-measurement.
-
-From temporal friction arises what is commonly called the arrow of time.  Within
-the measurement framework, this arrow is not the passage of a parameter, but
-the fact of sequential observation.  There is a before and an after, and the
-ledger that records observations preserves this order.
-
-This asymmetry is minimal.  It does not yet constitute a notion of time as a
-continuum, nor does it require a uniform scale.  It asserts only that
-observation is sequential.  The arrow of time is therefore not a background
-feature of the universe, but a structural property of records produced by
-instruments.  An instrument senses, and only afterward does a mechanism display
-the result.  The ordering is structural, not dynamical.
-
-\subsection{Clocks}
-
-Crucially, this arrow does not depend on the existence of a clock.  On the other hand,
-clocks are themselves just instruments that regularize sequences of records.
-The existence
-of precedence does not depend on such regularization.  Any instrument capable of
-producing more than one record already induces an ordering among them.  What is
-absent at this stage is not order, but uniform comparison between different
-intervals of waiting.
-
-A clock is introduced precisely to supply this comparison.  It does so by
-selecting a repeatable physical process and using its recorded transitions as a
-reference for ordering other records.  The clock does not reveal time; it
-produces a structured ledger whose regularity may be used to compare waiting
-intervals.
-
-An atomic clock makes this explicit.  The instrument records discrete
-transitions between internal states of an atom.  Each transition is an atomic
-event, and the clock’s output is nothing more than a count of such events.  The
-regularity of the atomic process allows these counts to be treated as
-interchangeable units, but the temporal order of records is already present
-before this regularization.  The clock refines comparison; it does not create
-precedence.
-
-In Kant’s philosophy, experience is not given as events unfolding within an
-independently existing time; rather, time is the form by which a succession of
-appearances is ordered into a coherent sequence.  Einstein extended this intuition
-with the proposition of atomic clocks.
-Operationally, an atomic clock does not observe time itself, but produces a
-chain of discrete state transitions whose ordered listing is subsequently
-treated as temporal structure.
-
-
-This perspective sharpens the notion of a \emph{moment} by grounding it in
-operational necessity rather than geometric assumption. A moment is not an
-infinitesimal slice of a pre-existing temporal continuum, but the minimal
-circumstance under which an observation can be said to occur.
-
-The operational realization of a moment is classically illustrated by
-Einstein’s analysis of simultaneity through the exchange of light
-signals~\cite{einstein1905}. In this construction, time is not given in advance
-as a coordinate against which events are placed. It is established relationally
-by discrete acts of emission and reception. Between these acts lies an interval
-about which the ledger is silent: until the return signal is distinguished and
-recorded, no additional structure is warranted.
-
-Einstein is explicit that any assignment of intermediate temporal values within
-this interval is a matter of convention. Linear interpolation between emission
-and reception is adopted not because it is revealed by the experiment, but
-because it is the simplest rule compatible with the observed records. Other
-interpolations would serve equally well, provided they preserve the ordering of
-events. The smooth temporal parameter thus enters only as a representational
-convenience, layered atop a discrete exchange whose endpoints alone are
-operationally fixed.
-
-
-In this operational sense, the clock plays exactly the role emphasized by 
-Einstein in his analysis of simultaneity. Einstein did not begin by 
-assuming a universal time parameter; he began with clocks as physical 
-instruments whose readings could be compared only through concrete procedures. 
-What mattered was not an abstract flow of time, but the rule by which one 
-sequence of counted marks could be brought into correspondence with another. 
-A clock reading, on its own, carries no temporal meaning beyond its position 
-in a counted sequence of waiting events.
-
-Einstein’s crucial insight was to recognize that coordination between clocks is 
-itself an act of measurement, subject to physical constraints and conventions. 
-Synchronization does not reveal an underlying temporal substance; it establishes 
-a shared counting scheme across instruments. Within the ledger framework, this 
-insight appears naturally: clocks are instruments whose records may be aligned 
-by agreed-upon rules, and temporal structure emerges only insofar as such 
-alignment is possible. The clock thus remains an instrument of enumeration, not 
-a window onto an independent temporal continuum, and its authority derives 
-entirely from the coherence of the records it enables different instruments to 
-compare.
-
-The domain of physical law is therefore defined as the collection of
-constraints that govern how ordered records may be extended, compared, and
-refined.  Laws do not first prescribe trajectories through a continuous time
-parameter.  They delimit which sequences of observations are admissible,
-which refinements preserve coherence, and which interpretations may be placed
-into correspondence across instruments.
-
-Only after this domain has been established does it become meaningful to
-introduce additional structure, such as clocks, continua, or real-valued
-representations.  These constructions are not prerequisites for law, but
-responses to the demands placed on representation by increasingly refined
-records.
-
-
-\subsection{Moment}
-\label{sec:moment}
-
-A \emph{moment} is the minimal unit at which an instrument may interact
-with a phenomenon.  Following Einstein, a moment is not an instant of
-time taken as given, but a point of coordination between an instrument
-and the world.  Moments serve as placeholders for interaction, not as
-ontological commitments to a temporal continuum.
-
-Kant recognized that temporality is not given to the observer as a
-continuously measurable parameter, but is instead the cognitive structure
-forced when a sequence of appearances cannot be further merged without
-loss of informational integrity~\cite{kant1781}.  In the ledger formulation,
-the idea of a \emph{moment} is precisely this object in embryonic form:
-the minimal refinement of the experimental ledger that preserves causal
-coherence between two successive measurements (as in the phrase:
-\emph{at that moment}).  Kant's analysis parallels the operational rule
-that time is witnessed only through finite instrument traces
-(\emph{e.g.}, atomic-clock ticks), and that no additional intermediate
-distinctions may be asserted without corresponding entries in the record.
-
-Formally, a moment is introduced not as a temporal coordinate, but as a
-mapping that associates an act of interaction with a definite position
-in the experimental ledger.  We call this mapping the \emph{carrier map}.
-The carrier map identifies which ledger entry carries the outcome of a
-given interaction, thereby anchoring the notion of ``that moment'' to
-a specific refinement of the record.  In this way, moments inherit their
-structure entirely from the ledger and the instrument, and require no
-independent notion of time beyond the order already imposed by
-observation.
-
-
-\begin{definition}[Moment~\cite{einstein1905}]
-\label{def:moment}
-A \emph{moment} is the implied continuous interpolation between two successive
-states of a ledger $\Ledger_k$ and $\Ledger_{k+1}$. 
-Any theoretical, though not necessarily physical,
-observation between the corresponding ledger entries is represented as an image of this
-interpolated domain. A moment is not a primitive atom of time, but the continuous
-domain on which completion of the record is defined when no new distinguishable
-refinements occur.
-
-Concretely, a moment is a function on the unit interval on the real line
-\[
-C(t) : (0, 1] \to \mathbb{R},
-\]
-determined by some predictive physical law. 
-It represents the smooth surrogate of informational silence: the continuous
-interpolation spanning the discrete gaps of the ledger.
-
-The map $C$ is called the \emph{carrier} of the moment.
-\end{definition}
-
-Physical laws model behavior \emph{in the moment} (as in parabolic or hyperbolic
-partial differential equations) or \emph{at that moment} (as in elliptic partial
-differential equations), yet moments themselves are never measured directly.
-This is another lens through which to distinguish
-fact from truth: phenomena as they obtain in the moment are truths, while their
-registrations in the ledger are facts.
-
-In the framework developed here, we operate exclusively in an elliptic regime.
-No law is taken to generate behavior forward in time from initial conditions,
-nor backward from final ones. Instead, laws are treated as global constraints on
-admissible histories. To assert that a physical quantity has a value is not to
-assert that it evolves through moments, but that its value may be consistently
-computed from the totality of recorded distinctions. The mathematical task is
-therefore not integration of a flow, but the satisfaction of a constraint.
-
-This restriction is not imposed for convenience, but follows from the
-assumption that ledgers are computable objects. A ledger is countable, and any
-quantity derived from it must be computable by a finite procedure operating on
-its entries. To describe a law is to describe how such a computation is carried
-out and to demonstrate that it terminates. Elliptic structure guarantees this:
-the value of a quantity depends only on a finite pattern of recorded facts, not
-on an unbounded process unfolding in an unobserved time.
-
-Under this assumption, time need not play a foundational role. If the universe
-admits representation as a countable ledger, then no primitive temporal
-continuum is required at the level of description considered here. What is
-assumed is only enumeration: one record, then another, then another. Order is
-essential; duration is not.
-
-This does not deny the usefulness of temporal concepts, nor does it assert that
-time is unreal. It asserts only that, within a ledger-based description, temporal
-structure is not taken as primitive. What appears as time in conventional
-models can be recovered later as a faithful carrier for ordered records, chosen
-for its convenience in summarizing regularities and expressing laws compactly.
-
-On this view, time enters as a representational choice rather than an
-ontological commitment. It is introduced when it improves compression,
-calculation, or comparison of histories, and it is judged by the same standard
-as any other carrier: faithfulness to the ledger it represents.
-
-
-\subsection{The Carrier and Continuity}
-\label{sec:carrier-continuity}
-
-The definition of a moment makes no assumption about the nature of the set
-into which the carrier maps.  The carrier need only associate each act of
-interaction with a definite refinement of the ledger.  Whether this
-association is represented discretely, densely, or by a continuous
-parameter is a matter of representational choice, not a requirement
-imposed by observation.
-
-In particular, the carrier may be taken to embed the ledger into a
-continuum, such as an interval of the real line, or it may remain purely
-discrete, indexing moments by natural numbers alone.  The framework is
-agnostic on this point.  No empirical distinction arises at the level of
-the record from the assumption of intermediate structure unless such
-structure can be recovered by refinement of the ledger itself.  A
-continuous carrier that introduces distinctions not supported by
-recorded outcomes exceeds its epistemic license, while a discrete carrier
-that preserves recoverability remains fully admissible.
-
-This flexibility mirrors the classical independence demonstrated in
-Phenomenon~\ref{ph:ch}.  The existence or
-nonexistence of intermediate cardinalities between the countable and the
-continuous cannot be settled by consistency alone.  Within the ledger
-formulation, this indeterminacy is not a defect but a guide: continuity is
-optional structure that may be adopted when justified by recoverability
-and stability under refinement.  The carrier may therefore assume a
-continuum or decline it without altering the admissibility of the
-underlying moments.
-
-Phenomenon~\ref{ph:duality} is motivated by a simple historical and experimental
-fact: optical phenomena admitted multiple successful descriptions long before
-their underlying nature was settled.  Using prisms, lenses, and ruled
-apertures, Newton produced reproducible records that were naturally organized
-as discrete trials and ordered outcomes~\cite{newton1705}, while Hooke, examining diffraction,
-interference, and elastic response in light and matter, employed continuous
-descriptions that interpolated smoothly between observations~\cite{hooke1665}.  Both approaches
-worked, not because nature asserted incompatible ontologies, but because the
-experimental ledgers supported more than one faithful carrier.  The apparent
-conflict arose only at the level of representation.  This effect illustrates a
-general principle of measurement: when distinct carriers preserve the same
-ordered record and collapse to the same refinements, they describe the same
-physical content, even if one representation is discrete and the other
-continuous.
-
-
-\begin{phenom}{The Hooke--Newton Effect~\cite{hooke1665,newton1704}}
-\label{ph:duality}
-
-\PhStatement
-Distinct representational models may faithfully describe the same ordered
-record of observations, provided each model carries the ledger without
-introducing unrecoverable structure.  Discrete and continuous descriptions
-are therefore not mutually exclusive, but correspond to different admissible
-carriers of the same experimental content.
-
-\PhOrigin
-In the seventeenth century, Newton and Hooke advanced competing models for
-natural phenomena.  Newton favored corpuscular and discrete descriptions,
-while Hooke emphasized elastic continua and wave-like behavior.  Both models
-proved successful within the domains accessible to contemporary instruments,
-despite their apparent incompatibility at the level of interpretation.
-
-\PhObservation
-Experiments that register isolated impacts, counts, or impulses are naturally
-described by discrete models, while experiments exhibiting resonance,
-superposition, or smooth variation admit continuous representations.  In
-practice, instruments often support both modes of description, depending on
-how their records are carried into mathematical form.
-
-\PhConstraint
-No representational model may assert distinctions that cannot be recovered
-from refinement of the experimental ledger.  A continuous carrier is
-admissible only if its intermediate structure collapses to the same ordered
-record under equivalence, and a discrete carrier must preserve all certified
+\section{Invariant}
+
+The purpose of calibration is not to discover what exists, but to determine what
+may be held fixed under translation.  In the preceding chapters, invariance
+appeared only as a phenomenon: certain regularities survived refinement, while
+others did not.  In this chapter, invariance is elevated from observation to
+constraint.  Calibration fixes which distinctions are permitted to survive
+comparison between instruments.
+
+An invariant, in this sense, is not an object recorded by any instrument.  It is
+a condition imposed on admissible translations between ledgers.  Calibration
+therefore proceeds not by accumulation of facts, but by suppression of
+instrument-specific distinctions that obstruct comparability.
+
+The invariant of invariance is the structure that survives this suppression.  We
+refer to this structure as the manifold, but only in a technical and deliberately
+restricted sense.  The manifold is not an underlying substrate, nor a background
+space in which measurements occur.  It is the formal name given to a calibrated
+projection between independent ledgers.
+
+\subsection{Gauge Threads}
+
+The calibration procedure introduces a residual freedom that is neither error nor
+ambiguity, but necessity.  When instrument-specific distinctions are suppressed
+to permit comparison, multiple descriptions may correspond to the same
+admissible record.  This freedom is not removed by calibration; it is structured
+by it.  We refer to these structured freedoms as gauge threads.
+
+A gauge thread is not a symmetry of an underlying space.  It is a consequence of
+translation between ledgers that are only partially comparable.  Distinctions
+that do not survive projection are not false; they are irrelevant to the
+calibrated comparison.  Gauge freedom arises precisely from this irrelevance.
+
+In classical gauge theory, one begins with a configuration space and identifies
+redundant descriptions via a group action.  In the present framework, no such
+space is assumed.  Gauge threads appear only after calibration, as the degrees of
+freedom left unconstrained by admissible projection.  The order is reversed:
+practice precedes symmetry.
+
+The work of Yang and Mills provides a canonical illustration of this reversal.
+Their insight was not that new physical entities must be introduced, but that
+certain transformations leave observable quantities invariant.  In the ledger
+framework, such transformations correspond to movements along gauge threads:
+changes within a refinement scheme that do not alter the calibrated residue.
+
+Gauge threads therefore encode how much freedom remains once comparability has
+been enforced.  They are neither noise nor structure in their own right.  Rather,
+they mark directions along which refinement may proceed without affecting the
+phenomenon under study.  These directions are invisible to the manifold, yet
+essential to the internal coherence of instruments.
+
+Because gauge threads arise from suppression, they obstruct true inversion.
+A projection that collapses multiple descriptions onto a single calibrated
+record cannot be reversed uniquely.  Any attempt to recover suppressed detail
+must choose a representative along a gauge thread.  This choice is conventional,
+not factual.
+
+The necessity of such choices explains why generalized inverses appear naturally
+in calibrated theories.  A recovery map may restore admissible structure, but it
+cannot recover distinctions eliminated by calibration.  Stability is achieved
+not by exact inversion, but by consistency under round-trip projection.
+
+Gauge threads thus signal the limits of representation rather than hidden degrees
+of freedom in nature.  They record how instruments may differ without
+contradiction, and how refinement may proceed without altering the calibrated
+invariant.  In this sense, gauge freedom is not an excess of description, but the
+price of comparability.
+
+The introduction of gauge threads completes the transition from phenomenology to
+discipline.  What remains invariant is fixed; what varies without consequence is
+identified.  Subsequent structure must respect this partition, or abandon
+calibration altogether.
+
+
+\subsection{Translation}
+
+Calibration licenses translation rather than revealing a hidden map.  When two
+instruments produce records that appear incompatible, the manifold arises as the
+maximally coarse ledger onto which both records may be projected without
+contradiction.  This projection does not embed the ledgers into a preexisting
+space; it suppresses distinctions until coherence is restored.
+
+The manifold must never be granted ontological priority.  It is subordinate to
+the ledger and exists only insofar as calibration succeeds.  Its role is purely
+functional: to ensure that facts recorded under one refinement scheme do not
+vanish or invert when expressed under another.
+
+What survives calibration does not remain unchanged in any metaphysical sense.
+Rather, survival refers to the persistence of certain orderings and relations
+once instrument-specific details have been intentionally discarded.  Suppression,
+not preservation, is the operative mechanism.
+
+Agreement between instruments is therefore not a psychological or physical event.
+We do not say that two devices agree on a quantity.  Instead, we say that their
+respective ledgers admit a common coarsening that preserves admissible structure
+under refinement.  This coarsening is the manifold.
+
+Consider a mechanical speedometer and a satellite-based timing device.  The
+tension of a spring and the phase of a signal belong to incompatible alphabets.
+Calibration suppresses these distinctions, licensing a projection onto a common
+ordering interpreted as velocity.  The manifold records only what survives this
+suppression.
+
+Dimensionality itself is an emergent artifact of this process.  No instrument
+records a plane, a volume, or a spacetime directly.  Such descriptions arise only
+after calibration, when repeated projections reveal a stable pattern of
+compatibility across records.
+
+The manifold is therefore reconstructed only after the fact, and only under
+constraint.  This reconstruction must introduce no distinctions not already
+licensed by the ledgers involved.  Any completion that presupposes unrecorded
+structure is inadmissible.
+
+By treating the manifold as a residue of finite refinement, the theory avoids any
+appeal to infinite precision.  Physical laws are not ontological necessities but
+stable residues that persist when instruments are calibrated against one
+another.
+
+The manifold functions as the terminal point of measurement.  It is the shared
+constraint that remains once all instrument-specific commitments have been
+suppressed.  Beyond this point, further refinement introduces no new
+comparability.
+
+To prevent a return to classical realism, this demotion must be explicit.  The
+manifold is not an element of the ontology of the theory.  Concepts such as
+smoothness or continuity may appear only as descriptions of how projections
+compose, not as primitive assumptions.
+
+Ultimately, the manifold is the invariant of invariance because it governs the
+rules of correspondence between observers.  It ensures that translation between
+refinement schemes preserves the phenomenon under study without appeal to any
+unobserved background.
+
+Calibration thus replaces ontology with discipline.  What remains is not what
+exists, but what can be compared.
+
+
+\section{Instrument}
+
+An instrument is not defined by what it detects, but by what it licenses.  It
+specifies which distinctions may be admitted into the ledger and which must be
+suppressed to preserve coherence.  In this sense, an instrument is a rule for
+facthood rather than a mechanism for discovery.
+
+Prior to calibration, an instrument may appear to merely register signals.
+After calibration, it is understood as enforcing an invariant.  The instrument
+does not reveal structure; it constrains representation so that structure may be
+compared across refinements.
+
+An instrument therefore exists at the boundary between signal and record.  It
+receives input from the world, but its defining action occurs before any ledger
+entry is made.  During this interval, no fact yet exists.  The instrument
+evaluates admissibility according to its internal rules and only then commits a
+distinction.
+
+The defining feature of an instrument is its refinement discipline.  Each
+instrument carries a specification of how distinctions may be sharpened, merged,
+or discarded under improved conditions.  Refinement is not an afterthought but
+the core logic by which the instrument operates.
+
+Because refinement rules differ between instruments, no instrument is universal.
+Each enforces a particular notion of comparability, tied to the invariant it has
+been calibrated to preserve.  Two instruments observing the same phenomenon may
+produce incompatible records until calibration suppresses their incompatible
 distinctions.
 
-\PhConsequence
-The apparent opposition between particle-like and wave-like descriptions is
-resolved as a choice of carrier rather than a conflict of ontology.  Newton's
-and Hooke's models are seen as complementary representations of the same
-observational backbone.  The persistence of this tension in later physics,
-including quantum theory, reflects the enduring freedom to choose between
-faithful carriers, not an inconsistency in nature itself.
-\end{phenom}
-
-What matters is not whether the carrier is continuous, but whether it is
-faithful. A carrier is faithful if distinct refinements of the ledger map to
-distinct carrier values, and if refinement histories that are equivalent with
-respect to the recorded facts collapse to the same representation. Faithfulness
-is therefore a condition on recoverability: no distinction introduced by the
-carrier may fail to correspond to a distinction that can be licensed by the
-record.
-
-Under this criterion, discrete and continuous carriers encode the same
-experimental content. They differ only in the amount of representational
-structure layered atop the ledger. A continuous carrier does not add new facts;
-it interpolates between recorded ones. When such interpolation is faithful, it
-preserves the ordering and equivalence relations induced by refinement. When it
-is not, it introduces distinctions that cannot be justified by any admissible
-history.
-
-This perspective clarifies why the laws discovered by Newton, Hooke, and their
-contemporaries took the forms they did. The linear and differential structures
-of classical mechanics mirror the experimental apparatus through which those
-laws were established: balances, springs, pendulums, and rulers. These
-instruments produce ordered, repeatable marks that admit smooth interpolation
-without ambiguity. The success of continuous carriers in classical physics
-reflects the faithfulness of those representations to the refinement structure
-of the underlying records, not an independent commitment to continuity in
-nature itself.
-
-As instruments change, so too does the faithfulness of the carriers they
-support. The present framework does not privilege discrete or continuous
-representations \emph{a priori}. It requires only that any carrier employed be faithful
-to the ledger it summarizes, adding no distinctions that cannot be recovered by
-refinement and discarding none that the record compels.
-
-
-
-\subsection{Phenomenal Laws}
-\label{sec:phenomenal-laws}
-
-A phenomenal law characterizes regularities observed across moments.
-Such laws are expressed in terms of relations among recorded outcomes,
-rather than assumed underlying trajectories.  At this stage, laws are
-descriptive constraints on admissible records, not dynamical equations.
-They do not assert what happens between observations; they restrict what
-may coherently appear \emph{across} observations.
-
-A \emph{phenomenon} is introduced as the union of moments that an
-instrument, or collection of instruments, is capable of registering.
-Individually, moments carry no lawlike content.  They are acts of
-interaction anchored to the ledger.  Law emerges only when moments are
-considered together, as a family whose recorded outcomes exhibit
-stability under repetition, comparison, and refinement.  A phenomenon is
-thus not an object in the world, but a structured aggregate of moments
-that admit coherent description.
-
-Phenomenal laws arise when this aggregate exhibits invariants.  An
-invariant is a value or relation that persists across moments despite
-changes in circumstance, instrument, or representation.  Crucially,
-such invariants are certified only by the record.  They are not inferred
-from hypothetical intermediates, nor are they imposed by theoretical
-models in advance.  A phenomenal law states that, within the admissible
-union of moments, certain relations among recorded values must hold.
-
-Recall that a speedometer produces records by counting wheel
-rotations against the ticks of a clock and a radar gun produces records by
-measuring frequency shifts in reflected signals.  The internal
-operations of these instruments differ completely.  One relies on
-mechanical counting and elapsed waiting; the other relies on wave
-interaction and signal processing.  Yet both produce records that may be
-placed into correspondence.
-
-The invariant we call \emph{speed} is not located in either instrument
-alone.  It is not the rotation count, nor the Doppler shift.  It is the
-value that remains stable across the union of moments produced by both
-instruments when their records are compared.  Speed is therefore a
-phenomenal value: it belongs to the phenomenon constituted by those
-moments, not to any particular carrier used to represent them.
-
-This example illustrates a general principle. A phenomenal law fixes an
-invariant value while remaining agnostic about how that value is carried.
-Distinct carriers may encode the same invariant in radically different ways,
-provided they collapse to the same relations among records. The law constrains
-admissible records, not the mechanisms or representations that generate them.
-
-This principle was first made explicit in algebra by Galois~\cite{galois1846}. In his
-analysis of polynomial equations, Galois showed that solvability does not depend
-on the particular algebraic form of an equation, but on the structure of the
-group of permutations that leaves its roots invariant. Radically different
-polynomials may therefore encode the same algebraic content when their symmetry
-groups coincide. The invariant object is not the equation itself, but the
-relations among its solutions under admissible transformations.
-
-Noether later elevated this insight into a general structural doctrine~\cite{noether1918}.
-In her work on invariant theory and variational problems, she demonstrated that
-laws are precisely those quantities that remain unchanged under an allowed
-class of transformations. In physics, this appeared as the correspondence
-between symmetries and conservation laws; in algebra, as the independence of
-invariant content from presentation. Mechanisms, coordinates, and functional
-forms may vary, but the invariant they preserve defines the law.
-
-Together, these results establish Phenomenon~\ref{ph:symmetry}:
-laws do not reside in their carriers. They reside in the invariants that
-survive changes of representation. Whether encoded in discrete tables, smooth
-fields, mechanical devices, or algebraic expressions, a law is identified by
-the equivalence relations it induces among admissible records. Representation
-is flexible; invariance is compulsory.
-
-
-\begin{phenom}{The Noether--Galois Effect~\cite{galois1846,noether1918}}
-\label{ph:symmetry}
-
-\PhStatement
-Physical and mathematical laws constrain invariants of admissible structure,
-not the representations or mechanisms by which those invariants are carried.
-Distinct carriers may encode the same law, provided they induce the same
-relations among records.
-
-\PhOrigin
-Galois showed that the essential content of an equation is determined not by its
-explicit form, but by the symmetries that leave its solutions invariant.
-Different algebraic expressions may therefore represent the same underlying
-structure when they share the same group of admissible transformations.
-Noether later generalized this insight, demonstrating that laws are precisely
-those quantities or relations that remain invariant under an allowed class of
-changes. In physics, her theorem formalized the principle that conservation laws
-reflect symmetry, not mechanism; in algebra, her work established invariance as
-the proper object of study independent of presentation.
-
-\PhObservation
-Experimental laws routinely persist across changes in apparatus, scale, and
-representation. The same invariant may be carried by mechanical balances,
-elastic springs, discrete counts, or smooth fields. Agreement among such
-descriptions is achieved not by identical mechanisms, but by collapse to the
-same relations among recorded distinctions.
-
-\PhConstraint
-A representation is admissible only if it preserves the invariant relations
-licensed by refinement of the ledger. Any carrier that introduces distinctions
-not recoverable from the record, or that fails to identify equivalent histories,
-violates the law it purports to represent.
-
-\PhConsequence
-Laws do not reside in equations, coordinates, or material constructions. They
-reside in invariants shared across faithful carriers. Discrete and continuous
-descriptions are therefore interchangeable insofar as they encode the same
-refinement relations. The choice of carrier is representational; the invariant
-it preserves is the law.
-\end{phenom}
-
-
-At this level of description, no appeal is made to continuous
-trajectories, instantaneous velocities, or underlying state spaces.
-Such constructions may later prove useful, but they are not required to
-state the law.  The phenomenal law of constant speed, for example, may
-be expressed entirely as a relation among recorded pairs of counts,
-ticks, and signal returns across moments.  The law asserts consistency,
-not motion.
-
-Phenomenal laws are therefore intrinsically pluralistic with respect to
-representation.  The same law may admit multiple faithful carriers, each
-tailored to a different instrument or mode of refinement.  Apparent
-disagreements between models arise only when carrier--specific structure
-is mistaken for invariant content.  When attention is restricted to the
-ledger and the relations it certifies, the law remains unchanged.
-
-In this sense, phenomenal laws occupy an intermediate position.  They
-are stronger than isolated facts, because they bind moments together.
-Yet they are weaker than dynamical theories, because they refrain from
-asserting how those moments are generated.  They delineate the domain of
-physical law as the space of admissible regularities across observation,
-within which multiple representations may coexist without contradiction.
-
-As such, we define a phenomenon as simply a list of moments in order,
-an enumeration.
-
-\begin{definition}[Phenomenon~\cite{hume1748}]
-A \emph{phenomenon} is an enumeration of moments
-\[
-(m_k)_{k \in \mathbb{N}},
-\]
-each equipped with a carrier map
-\[
-C_{m_k} : (0,1] \to \mathbb{R}.
-\]
-Associated to the phenomenon is an evaluation map
-\[
-\phi : \mathbb{R}^+ \to \mathbb{R},
-\]
-defined by
-\[
-\phi(t) = C_{m_{\lfloor t \rfloor}}\bigl(t - \lfloor t \rfloor\bigr),
-\]
-whenever the indicated moment exists.
-
-The evaluation map $\phi$ is obtained by selecting the carrier of the
-moment indexed by the enumeration and evaluating it on the unit interval.
-In this way, a phenomenon assembles individual moment carriers into a
-single representational map without introducing additional structure at
-the level of the moments themselves.
-\end{definition}
-
-
-
-\subsection{Predictors}
-
-Given an alphabet, the next predictive commitment made by an instrument
-is the association of carrier values with symbols from that alphabet.
-A \emph{predictor} specifies how the instrument expects its internal
-carrier to be rendered as a symbol in the ledger.  Concretely, 
-
-\begin{definition}[Predictor]
-A \emph{predictor} is a map
-\[
-p : \mathbb{R} \to \Sigma \cup \{\varnothing\},
-\]
-assigning to each carrier value either a symbol in the instrument's
-alphabet or the distinguished value $\varnothing$, indicating that no
-admissible symbol is available.  The predictor may therefore be partial,
-reflecting limitations in the instrument's capacity to categorize its
-carrier.
-\end{definition}
-
-
-This association should not be read as a claim about the world, but as a
-rule of interpretation internal to the instrument.  The carrier value
-represents a surrogate for unresolved interaction, while the symbol is
-the categorical outcome the instrument is capable of recording.
-Prediction consists in deciding, ahead of observation, how the
-continuous carrier domain will be resolved into discrete marks.
-
-Viewed this way, a predictor induces a partition of the carrier domain.
-Each symbol in the alphabet corresponds to a region of carrier values
-that the instrument treats as equivalent for the purposes of recording.
-Distinct regions map to distinct symbols; variations within a region are
-suppressed.  No assumption is made that these regions are contiguous,
-regular, or even exhaustive.  The partition reflects only the design of
-the instrument, not the structure of the phenomenon itself.
-
-Partiality of the predictor reflects honest limitation.  There may be
-carrier values for which the instrument has no admissible symbol, and
-thus no prediction.  In such cases, the instrument cannot extend its
-ledger without refinement of its alphabet or predictor.  Failure to
-predict is therefore not an error, but an indication that the current
-categorization is insufficient.
-
-Whether a prediction succeeds or fails is determined only after
-measurement, by comparison between the predicted symbol and the symbol
-actually recorded.  Prediction constrains admissibility; measurement
-supplies fact.  The distinction between the two allows different
-instruments, with different predictors and alphabets, to participate in
-the same phenomenal law while making incompatible or incommensurate
-predictions at the level of individual moments.
-
-\subsection{Coarsening Maps}
-
-A predictor maps a carrier value to a symbol in the instrument's alphabet.
-Refinement enlarges this alphabet by subdividing its categories: where the
-coarse instrument emitted a single symbol, the refined instrument may emit one
-of several.  Coarsening is the mathematical mechanism that makes this process
-coherent.  It provides the backward map from refined distinctions to the
-coarser distinctions they refine.
-
-Formally, 
-\begin{definition}[Coarsening Map]
-A \emph{coarsening map} is a map on symbols
-\[
-c : \Sigma \to \Sigma \cup \{\varnothing\},
-\]
-sending a refined symbol to the coarser symbol it represents, when such a
-collapse is admissible, and to $\varnothing$ otherwise.  The distinguished
-value $\varnothing$ records the absence of a valid coarser interpretation.
-\end{definition}
-
-A predictor specifies how unresolved variation, represented by the
-carrier, is to be collapsed into a discrete symbol suitable for entry
-into the ledger. It does not describe how the carrier is produced, nor
-does it assert that the predicted symbol will in fact be recorded.
-Rather, it encodes the instrument’s rule for translating carrier values
-into categorical outcomes. In this sense, prediction is prior to
-measurement: the predictor determines what the instrument is prepared
-to say before any interaction occurs.
-
-The inclusion of the null value $\varnothing$ is essential. It records
-that there may exist carrier values for which the instrument has no
-admissible symbol, and hence no lawful extension of the ledger. Such
-cases signal the need for refinement of the alphabet or predictor, not a
-failure of prediction. A predictor therefore constrains admissibility
-rather than accuracy: it delineates which extensions of the record are
-permitted by the instrument’s design, leaving questions of agreement
-between prediction and measurement to later comparison.
-
-The presence of $\varnothing$ is essential.  Refinement may introduce
-distinctions that cannot be meaningfully collapsed without violating the
-instrument's design or the recoverability of prior records.  In such cases,
-coarsening is undefined rather than forced.  The coarsening map therefore
-expresses controlled suppression of distinctions, not arbitrary loss.
-
-By iterating $c$, one obtains a recursive subdivision of symbolic structure.
-A refined process may be collapsed stepwise through successive levels of
-resolution, each level forgetting only those distinctions that the instrument
-has chosen not to preserve.  In this way, coarsening makes refinement recursive:
-it organizes symbols into a hierarchy of partitions linked by explicit maps.
-
-Recoverability imposes the admissibility condition on coarsening maps.  A
-coarsening map is valid only if any refined record, when coarsened, agrees with
-a record that could have been produced at the coarser level.  Coarsening thus
-encodes backward compatibility between successive stages of instrument
-construction and ensures that refinement resolves the record without rewriting
-its history.
-
-Coarsening makes refinement recursive.  By iterating $c$, one may descend from
-a fine symbol through successive coarser descriptions, obtaining a chain of
-progressively less resolved categories.  This expresses the idea that a refined
-process can be subdivided into stages, each stage admitting a controlled
-forgetting of distinctions.  In this way, refinement is not merely an increase
-in resolution, but the construction of a hierarchy of symbolic partitions
-together with maps relating adjacent levels.
-
-Recoverability is the constraint that ties coarsening back to the ledger.
-A coarsening map is admissible only if it preserves the interpretability of
-prior records: any record written in the refined alphabet must, when coarsened,
-agree with some record that could have been written in the coarser alphabet.
-Equivalently, coarsening must not create distinctions that were not present
-before, and it must not collapse distinct coarse outcomes into ambiguity.  A
-coarsening map therefore encodes backward compatibility between successive
-stages of instrument construction and ensures that refinement does not rewrite
-history, but only resolves it.
-
-
-\subsection{Grid Maps}
-
-Grid maps mediate between enumerations.  They align indices across
-different symbol lists or carrier discretizations, enabling coordinated
-comparison between instruments or between successive refinements of the
-same instrument.  A grid map specifies how positions in one ordered
-collection correspond to positions in another, without asserting that
-those positions are equally spaced or metrically comparable.
-
-This alignment becomes significant when instruments differ in how long
-they must wait before producing a record.  One instrument may resolve
-its carrier quickly, producing frequent symbols, while another requires
-longer waiting to produce a single outcome.  A grid map allows the
-finer-grained enumeration to be related to the coarser one by indicating
-which refined indices correspond to a single coarser entry.  In this
-way, grid maps formalize the ability to wait less where applicable,
-without requiring that all instruments share a common cadence.
-
-Importantly, grid maps do not introduce duration, rate, or geometry.
-They record only correspondence between ordered positions.  Waiting less
-does not mean advancing further in time; it means resolving distinctions
-at a finer scale within the same phenomenological domain.  The grid map
-makes this refinement legible by aligning multiple resolutions of
-waiting into a single ordered framework.
-
-\begin{definition}[Grid Map]
-\label{def:grid-map}
-A \emph{grid map} is a function
-\[
-\upsilon : \mathbb{N} \rightarrow \mathbb{N} \cup \{\varnothing\},
-\]
-interpreted as a representational correspondence between refined and coarse
-counting indices. For a refined index $n \in \mathbb{N}$, the value $\upsilon(n)$
-is either a coarse index that represents it, or $\varnothing$ if no admissible
-coarse representative exists.
-
-The grid map preserves cumulative count structure while allowing refined
-distinctions to be collapsed or suppressed. No algebraic, metric, or dynamical
-structure on $\upsilon$ is assumed beyond this admissibility constraint.
-\end{definition}
-
-
-The role of grid maps becomes central when an observer combines multiple
-instruments.  To contract records or predictions across instruments, one
-must first establish how their enumerations relate.  Grid maps provide
-this relation, ensuring that comparisons are made between corresponding
-stages of refinement rather than between mismatched indices.  They are
-thus the structural mechanism by which heterogeneous instruments may be
-coordinated without assuming uniform clocks or shared temporal metrics.
-
-\subsection{Instrument Specification}
-
-Prediction completes the minimal specification of an instrument.  An
-instrument consists of an alphabet that categorizes outcomes, a predictor
-that constrains admissible extensions of the record, and a ledger that
-stores the symbols actually realized.  None of these components is
-sufficient on its own.  Together, they determine what the instrument can
-say, what it is prepared to say, and what it has in fact said.
-
-The alphabet fixes the vocabulary of the instrument.  It determines the
-distinctions that are meaningful and suppresses all others.  The
-predictor fixes how unresolved interaction, represented by the carrier,
-is to be collapsed into this vocabulary.  The ledger records the outcome
-of this collapse as an irreversible sequence of symbols.  Measurement
-occurs only when all three components are present: without an alphabet
-there is nothing to record, without a predictor there is no admissible
-extension, and without a ledger there is no fact.
-
-Importantly, the specification of an instrument does not include a claim
-about correctness or adequacy.  An instrument may predict poorly, emit
-symbols that later prove uninformative, or fail to admit predictions at
-all in certain regions of its carrier domain.  These are not defects in
-the specification, but features of its design.  The framework separates
-the question of what an instrument is from the question of how well it
-serves a particular experimental purpose.
-
-Refinement acts on this specification rather than replacing it.  An
-instrument may be refined by expanding its alphabet, modifying its
-predictor, or extending its ledger, provided that recoverability is
-preserved through appropriate coarsening and grid maps.  In this way,
-instruments form histories of refinement rather than isolated objects.
-Later stages remain interpretable only through their relation to earlier
-ones.
-
-With this specification in place, instruments may be compared,
-coordinated, and ultimately combined.  Phenomenal laws constrain the
-relations among their records, while observers contract their outputs
-into joint representations.  The formal structure introduced here is the
-minimal machinery required for these later constructions.  No further
-assumptions about dynamics, geometry, or probability are made at this
-stage.
-
-An instrument refines the ledger by producing symbols drawn from its
-alphabet and appending them irreversibly to the record.  Each recorded
-symbol certifies that a particular distinction has been resolved and
-that the corresponding act of waiting has completed.  The ledger thus
-accumulates not raw interaction, but categorical outcomes shaped by the
-instrument’s predictive structure.
-
-As an instrument is refined, this process becomes more expressive.
-Refinement enlarges the space of symbols available to the instrument,
-subdividing existing categories into finer distinctions.  These refined
-symbols inhabit a refined representational space: they distinguish
-interactions that were previously treated as equivalent.  The ledger
-produced by a refined instrument therefore contains more detailed
-information, not because new facts have been introduced, but because
-previously silent variation has been resolved.
-
-Crucially, refinement does not erase the past.  Refined symbols must
-remain compatible with earlier records through coarsening maps that
-collapse new distinctions back to their prior forms.  The ledger grows
-only forward, but its interpretation may be revisited as refinement
-proceeds.  In this way, refinement enriches the meaning of the ledger
-without rewriting its history.
-
-This perspective clarifies the role of refinement in measurement.
-Refinement is not the discovery of hidden intermediate states, nor the
-assertion of a pre-existing continuum.  It is the controlled extension
-of an instrument’s capacity to resolve distinctions, expressed through
-its alphabet, predictor, and coarsening structure.  The ledger records
-the outcome of this extension as an ordered sequence of refined symbols.
-
-\section{Smooth Phenomena}
-\label{sec:smooth-phenomena}
-
-\subsection*{Overview}
-
-Many successful physical laws are expressed as smooth relations over continua.
-Within the measurement framework, this smoothness is not taken as an ontological
-feature of the world.  Instead, it is understood as an \emph{instrumental
-regime}: a class of descriptions that remain stable under refinement because the
-instrument enforces a particular mode of completion of finite records.
-
-This section characterizes \emph{smooth phenomena} as those for which admissible
-continuation rules commute with refinement.  In such regimes, finite ledgers may
-be extended by minimal-variation completions without exposing unresolved
-distinctions.  The effectiveness of smooth laws is thus explained as an
-engineering convenience rather than a metaphysical guarantee.
-
-\subsection{The Newton--Cauchy Effect}
-\label{sec:newton-cauchy}
-
-The Newton--Cauchy Effect names the synthesis underlying smooth phenomena.
-Newtonian laws supply smooth functional forms relating measured quantities.
-Cauchy's contribution legitimizes the passage from finite sequences of
-measurements to completed objects by treating convergence as sufficient
-justification for completion.
-
-In the measurement framework, this synthesis is reinterpreted as a
-representational choice.  Finite ledgers never contain limits; they contain only
-records and refinements.  Smooth laws become admissible when instruments are
-designed so that refinement sequences may be treated as convergent without
-introducing unrecoverable intermediate structure.  This assumption parallels the
-role played by the Continuum Hypothesis in set-theoretic completion.
-
-\subsection{No Predictor of the Future}
-\label{sec:no-predictor}
-
-There is no predictor of the future.  No function maps a finite ledger to a
-guaranteed next fact.  This limitation is structural and cannot be removed by
-refinement, probabilistic modeling, or increased computational power.
-
-What instruments may possess instead is a \emph{predictor as specification}: an
-internal rule that proposes the next admissible symbol compatible with the
-instrument's current state.  Such a predictor is deterministic and binary.  It
-is either correct or incorrect with respect to the next recorded fact.  It does
-not assert necessity.  It enforces compatibility.
-
-\subsection{Noise and the Reading Interface}
-\label{sec:noise-interface}
-
-Noise does not reside in the predictor or in the phenomenon under observation.
-It arises at the interface between the instrument and the ledger, where multiple
-distinguishable physical states may be mapped to a single recorded symbol.  This
-non-injectivity reflects limited distinguishability rather than uncertainty in
-specification.
-
-The engineer is assumed to understand the full noise envelope of the instrument.
-Noise is therefore not an accident but a known structural feature of the reading
-process.  Smooth phenomena are those in which this noise may be suppressed
-through refinement without altering the admissible continuation rule.
-
-\subsection{Refinement, Scaling, and the Zeno Strategy}
-\label{sec:refinement-scaling}
-
-Refinement does not improve prediction.  It changes what is counted.  By
-replacing one counting scheme with another of finer resolution, the instrument
-generates additional records without presupposing a pre-existing continuum.
-
-This process may be viewed as a Zeno-style strategy for resisting the Hume
-effect.  Refinement increases distinguishability through strictly positive
-extensions of the ledger, ensuring that inquiry does not stall.  The strategy
-does not guarantee convergence to truth.  It guarantees only continued earning
-of structure.
-
-Scale invariance in this context is not a symmetry of the universe.  It is a
-consequence of the information bottleneck imposed by the ledger.  Absent an
-external reference, the size of the machine used to generate records is
-irrelevant until it interacts with another record at a different scale.  This
-constraint is enforced by the Fact Effect.
-
-\subsection{Commutativity of Refinement and Continuation}
-\label{sec:commutativity}
-
-The defining feature of smooth phenomena is the commutativity of refinement and
-continuation.  Refining the instrument does not alter the form of the admissible
-completion rule.  Smooth laws persist because finer records remain compatible
-with the same mode of interpolation.
-
-When this commutativity holds, smooth completion acts as a stable filter over
-finite records.  When it fails, refinement changes the admissible continuation in
-a non-trivial way.  The breakdown of commutativity marks the boundary between
-smooth and fractal phenomena.
-
-\subsection{Toward the Residue of Reality}
-\label{sec:toward-residue}
-
-Even under perfect specification, complete noise characterization, and unlimited
-refinement, an irreducible gap remains between the idealized continuation enforced
-by the instrument and the finite reading recorded in the ledger.  This gap is not
-noise and cannot be eliminated by further refinement.
-
-The nature of this residue, and its role in the emergence and failure of law, is
-not addressed here.  It is the subject of the coda to this chapter.
-
-
-\begin{coda}{The Residue of Reality}
-\label{sec:elliptic-residue}
-
-\subsection*{Overview}
-
-The appearance of residue in physical theory is not accidental.  It is a direct
-consequence of modeling the universe as an elliptic problem.  Once physical law
-is expressed as a global constraint satisfaction problem rather than as a
-generative process, discrepancy does not propagate forward in time.  It has
-nowhere to go but into the interface between specification and record.
-
-This section interweaves the emergence of residue with the adoption of elliptic
-closure.  The residue is not an add-on to smooth phenomena.  It is what smooth
-phenomena necessarily leave behind.
-
-\subsection{Elliptic Problems Without Frames}
-\label{sec:no-frames}
-
-Elliptic descriptions do not privilege frames.  They do not evolve states.  They
-relate admissible configurations globally.  In such descriptions, time is no
-longer an organizing principle but a coordinate indexing constraints on a
-completed solution.
-
-Without frames, there is nothing to conserve.  Conservation laws arise from
-symmetries of generative dynamics.  When dynamics are replaced by global
-consistency, these symmetries lose their footing.  The ledger supplies boundary
-conditions, not trajectories.  The universe is not stepped forward.  It is
-closed.
-
-This closure is the defining feature of smooth phenomena.  It is also the source
-of their limitation.
-
-\subsection{Why Least Squares Appears}
-\label{sec:least-squares}
-
-When a generative model is replaced by an elliptic one, the problem is no longer
-to determine what happens next, but to reconcile incompatible constraints.  The
-overspecification that would render an ordinary differential equation
-inconsistent is absorbed by the elliptic formulation through minimization.
-
-Least-squares methods are not neutral tools.  They are the natural computational
-expression of elliptic closure.  They presuppose that no exact solution exists,
-that discrepancy is unavoidable, and that the correct response is to distribute
-error globally rather than resolve it locally.
-
-In this setting, residue is not a failure of the model.  It is the quantity being
-managed.
-
-\subsection{Residue as an Elliptic Artifact}
-\label{sec:residue-elliptic}
-
-Because elliptic problems admit no notion of propagation, discrepancy cannot be
-localized in time or attributed to a particular event.  It appears instead as a
-global mismatch between specification and record.
-
-This mismatch is what is called noise.  It is not conserved, not propagated, and
-not resolved.  It is smoothed, averaged, and suppressed.  The smoother the
-completion, the more completely the residue is displaced from theory and into
-instrumentation.
-
+The instrument is therefore not reducible to its physical realization.  Springs,
+photodiodes, counters, and clocks are implementations, not definitions.  What
+defines the instrument is the abstract rule governing how raw signals are mapped
+to admissible ledger entries.
+
+An instrument always carries an implicit decoding map.  This map determines how
+raw variation is interpreted as symbolic distinction.  Calibration fixes this
+map, and any change to it constitutes a change of instrument, not merely a change
+of resolution.
+
+The role of the instrument is to ensure that refinement and projection commute.
+A refinement that introduces distinctions which cannot be projected back to the
+calibrated invariant is inadmissible.  In this way, the instrument enforces
+recoverability as a structural constraint.
+
+Noise, from the instrumental perspective, is not external disturbance but
+internal inconsistency.  When an instrument admits distinctions that fail to
+survive projection, it produces non-commuting records.  Such failures indicate
+that the instrument has exceeded the limits of its calibration.
+
+An instrument may therefore be silent without being idle.  During transport,
+reconfiguration, or prediction, the instrument may produce no ledger entries at
+all.  This silence is not ignorance but discipline: no admissible distinction has
+yet been licensed.
+
+The distinction between instrument and device becomes sharp at this point.  The
+instrument defines admissibility; the device realizes it under repetition.  An
+instrument may exist in principle without a stable device, but no device can
+operate without an instrument.
+
+Because instruments impose structure before computation, they cannot themselves
+be computed.  Their rules must be declared, constructed, or calibrated.  This
+non-computational character explains why representational choices precede
+algorithmic ones.
+
+The apparent continuity of many physical descriptions arises from the stability
+of instrumental rules under refinement.  Continuity is not observed; it is
+licensed.  The instrument allows arbitrarily fine distinctions only insofar as
+they remain recoverable under projection.
+
+Instruments therefore mediate between finite records and idealized descriptions.
+They permit the use of continuous language without committing the ledger to
+infinite structure.  This mediation is conditional, not absolute.
+
+Ultimately, an instrument is the guardian of facthood.  It determines when a
+distinction may be recorded, how it may be refined, and whether it may be
+compared.  Without an instrument, there are signals but no facts; with an
+instrument, there are facts, but only those it licenses.
+
+\section{Device}
+
+In the framework, the \emph{device} is the physical realization of the
+instrument.  While the instrument provides the logical rules and the
+Cantor--Cauchy protocol for consistency, the device is the finite, bounded entity
+that must execute the work.  It marks the transition from mathematical ideal to
+physical reality, where thermal limits, energy costs, and irreversible records
+cannot be ignored.  The device is where the theory of measurement meets the laws
+of thermodynamics and the constraints of hardware.
+
+The device is fundamentally a \emph{finitary machine}.  Unlike the instrument,
+which may be described in terms of infinite sequences or constructions, the
+device is restricted by a hard limit on the number of distinctions it can
+maintain.  This limit is the device's \emph{resolution}, representing the maximum
+density of the ledger before the cost of adding a new entry exceeds the energy
+available to the system.  In this sense, every device is a clock, and every clock
+is a heat engine.
+
+A central feature of the device is the \emph{irreversibility of the record}.  Once
+a device commits a fact to the ledger, that entry cannot be undone without a
+corresponding increase in the entropy of the environment.  This anchors the
+system in a constructive arrow of time: the ledger only grows.  The device does
+not observe a pre-existing state; it \emph{precipitates a fact} through the act of
+recording, turning an indeterminate experience into a discrete, permanent, and
+irreversible distinction.
+
+The architecture of the device is defined by its internal state space, which is
+strictly smaller than the phenomenal space it monitors.  This mismatch
+necessitates decomposition.  Because the device is finite, it cannot capture an
+invariant in its entirety; it can only record a shadow or trace of it on its
+internal ledger.  This finiteness is not a flaw but the defining characteristic
+that separates a physical device from a mathematical abstraction.
+
+Within the hierarchy, the device is the site of \emph{thermal noise}.  While
+noise in the gauge is a logical failure of commutation, thermal noise is a
+physical failure of the device to maintain its distinctions.  As the device
+operates, it generates heat, and this heat threatens to blur the very records it
+creates.  To maintain a clear ledger, the device must continually export entropy,
+a process that defines the physical cost of measurement.
+
+The device realizes the Newton search and the bisection search through specific
+physical mechanisms.  For iterative creation, the device acts as a transducer,
+converting local physical change into a discrete increment in the ledger.  If
+the device's response time is slower than the rate of change in the phenomenon,
+the resulting record becomes smeared, leading to an accumulation of error in the
+associated Cauchy sequence.  These mechanisms realize the instrument under finite
+constraints rather than defining it.
+
+For the bisection search, the device acts as a comparator.  It tests the
+phenomenon against internal reference levels to determine the address of the
+value.  This global process requires the device to maintain stable references.
+If these references drift due to temperature, wear, or age, the Cantor
+construction fails to align with the record, signaling that the device, rather
+than the instrument, is no longer calibrated.
+
+The encoding map is physically embedded in the device's hardware.  Whether it is
+the markings on a ruler or the voltage thresholds in an analog-to-digital
+converter, the map is a physical artifact.  As a result, the alphabet of the
+measurement is subject to the same physical degradation as the device itself.
+Calibration is therefore not merely a logical update of symbols, but a physical
+realignment of hardware to ensure the map remains faithful to the ledger.
+
+One critical aspect of the device is the \emph{sampling interval}.  Because the
+device is finite, it cannot record continuously; it must pulse.  Each pulse
+represents a discrete moment of interaction in which the device samples the
+environment and updates the ledger.  This periodicity defines a boundary: any
+phenomenon occurring faster than this pulse rate is invisible to the device,
+appearing only as unresolvable background noise or aliased artifacts.
+
+The device also defines the \emph{dynamic range} of the measurement, the ratio
+between the smallest distinction it can record and the largest value it can
+represent without saturation.  When a phenomenon exceeds this range, the device
+clips and ledger entries lose their evidentiary meaning.  This physical
+saturation is a hard boundary: beyond it, the device no longer provides an
+evidence-based record, and the system must fail explicitly.
+
+The device is also the source of \emph{latency}.  There is a finite delay between
+the occurrence of a physical event and its registration in the ledger.  This
+delay is a fundamental property of the device's transport mechanism.  The record
+is therefore always retrospective, reinforcing the fact that measurement is an
+act of history-writing rather than real-time seeing.
+
+The coupling between the device and the phenomenon is never neutral.  Every
+device exerts back-action on the system it measures.  By extracting distinctions
+from the environment, the device alters that environment.  This coupling is the
+physical basis of the observer effect.  If the coupling is too strong, the device
+becomes part of the phenomenon it is intended to measure, destroying the
+independence of the record.
+
+The device is the ultimate judge of \emph{precision}.  While the instrument may
+calculate to arbitrary levels, the device determines the actual stop bit.  The
+achievable precision is limited by the signal-to-noise ratio.  High precision
+requires high mass or high energy throughput, as larger signals are needed to
+remain above the thermal noise floor.  In this way, the abstract geometry of the
+manifold is tied directly to the physical mass-energy of the device.
+
+Calibration of the device maps its physical responses to the logical symbols of
+the instrument.  This is where the Einstein device becomes the gold standard.
+By reducing operation to the simplest act, counting events, the number of
+physical variables subject to drift is minimized.  A device that counts pulses
+is more stable than one that measures analog voltages, which is why the count
+serves as the primary primitive of the theory.
+
+In summary, the device is the finite anchor of the theory.  It is the machine
+that turns energy into information and experience into a ledger.  Without the
+device, the theory of measurement remains mathematics alone; with the device, it
+becomes a physical law.  The limits of the device are the limits of the theory,
+and its failures, whether through noise, saturation, or drift, define the
+boundaries of knowledge.
+
+\section{Decomposition}
+
+Decomposition is the stage at which the unity of the record is intentionally
+broken.  Whereas previous sections concerned the creation, implementation, and
+stability of ledger entries, decomposition addresses the asymmetry between the
+act of measurement and the act of recovery.  It is here that inversion first
+appears as a structural problem rather than a physical error.
+
+A measurement may be understood as a projection from a phenomenal invariant to a
+discrete ledger entry.  Decomposition is the attempt to map such an entry back
+into the instrument's alphabet.  This operation is naturally described as an
+inverse.  However, because projection suppresses distinctions, this inverse
+cannot in general exist as an identity.
+
+The finiteness of the device and the constraints imposed by calibration ensure
+that information is lost during projection.  Any attempt at recovery must
+therefore contend with this loss.  The appropriate notion of inversion is not a
+true inverse, but a pseudoinverse that recovers only those distinctions licensed
+by the instrument.
+
+Decomposition introduces the principle of \emph{inversion as non-commutative
+operation}.  Even when two refinement procedures yield identical ledger entries,
+the order in which their inverses are applied matters.  In general, the inverse
+of a composition is not the composition of inverses in the opposite order.
+
+This non-commutativity is not an algebraic artifact but a consequence of finite
+evidence.  Every decomposition corresponds to a path through the instrument's
+refinement structure.  Different paths leave different residues, even when they
+terminate at the same ledger symbol.
+
+In a Newton-style refinement, the path of decomposition follows local directional
+steps.  In a bisection-style refinement, decomposition retraces the elimination
+of global alternatives.  Although both procedures may certify the same value,
+their inversions traverse distinct regions of the device's state space.
+
+The phrase ``even if the results agree'' is therefore essential.  Agreement of
+symbols does not imply equivalence of operators.  Inversion is not a purely
+formal reversal, but a constrained retracing of admissible transitions through
+an irreversible machine.
+
+Because the device is finite and thermodynamically irreversible, inversion
+cannot restore the original state.  Each attempt at recovery leaves a remainder.
+Identity is not given but achieved, and only approximately.  In this framework,
+the identity operator is a calibrated limit, not a primitive.
+
+This non-commutative gap is the first appearance of order-dependence in the
+theory.  The order in which evidence is recovered matters because evidence
+itself is history-dependent.  In a finite system, histories cannot be reordered
+without changing their effect.
+
+The emergence of geometric structure is grounded in this failure of commutation.
+If all decompositions commuted, measurement would be trivial and structure would
+collapse to a flat ordering.  Non-commutation introduces curvature, understood
+not as a property of a background space, but as a property of ledger operations.
+
+Decomposition also clarifies the role of gauge threads.  Transformations that
+commute with projection belong to the same gauge thread.  Transformations that
+fail to commute represent genuine distinctions in the phenomenal invariant.
+Inversion is the first operation capable of distinguishing these cases.
+
+Within the Cantor--Cauchy instrument, decomposition forces both refinement paths
+to run backward.  Inverting a Cauchy sequence retraces local commitments.
+Inverting a Cantor construction retraces eliminated alternatives.  Their failure
+to commute demonstrates that creation and addressing are logically distinct
+operations that meet only under calibration.
+
+The cost of inversion is therefore real.  Undoing a measurement is not free.
+It requires work, incurs error, and leaves trace.  Any theory that assumes
+symmetry between measurement and recovery ignores the finitary nature of
+devices.
+
+Decomposition prepares the ground for generalized recovery operators.  Because
+true inverses are unavailable, recovery must be defined relative to projection.
+This necessity leads naturally to the introduction of pseudoinverses and
+orthogonal projectors as the only operators compatible with calibration.
+
+In this sense, decomposition serves as the bridge to the next chapter.  By
+establishing inversion as non-commutative, it justifies why invariants can only
+be approximated through sequences of constrained operations rather than solved
+for directly.
+
+Inversion is thus the watershed moment of the theory.  It is where the single
+invariant is viewed through multiple, non-compatible decompositions.  From this
+point onward, measurement is irreducibly dynamic, path-dependent, and
+structurally incomplete.
+
+
+\begin{coda}{Representational Noise}
 \end{coda}
 
