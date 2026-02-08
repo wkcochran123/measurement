@@ -16,7 +16,7 @@ Up through **Chapter 2**, these two views coincide. From that point onward,
 the manuscript emphasizes the *shape* and consequences of the argument rather
 than full formal rigor.
 
-## Release Notes — v0.2
+## Release Notes - v0.1.5
 
 ### Chapter 1
 - Relocated the discussion of ZFC to Chapter 1, establishing the foundational
