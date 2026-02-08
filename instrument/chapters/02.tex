@@ -1372,10 +1372,9 @@ rotation, by itself, does not yet constitute speed.  Speed arises only when the
 instrument commits to an ordered record that relates successive counts to one
 another under fixed conditions.  The ledger enforces this commitment by allowing
 the count to advance only when a rotation has completed, and by recording that
-advance irreversibly.  In doing so, it measures Phenomenon~\ref{ph:kant-effect}: time 
-and order
-enter the description not as observed quantities, but as conditions under which
-the record is possible.
+advance irreversibly.  In doing so, it measures Phenomenon~\ref{ph:kant-effect}:
+the number of events that have occurred.
+
 
 The value reported as ``speed'' is therefore not a direct measurement of motion,
 but a ledger-level interpretation of counted symbols.  The instrument assigns
@@ -1391,7 +1390,7 @@ The needle sweeps smoothly across the dial, suggesting an uninterrupted flow
 of motion that mirrors the presumed continuity of speed itself.
 
 The appearance is deceptive.  The mechanism is composed entirely of discrete
-elements: teeth, ratios, and fixed linkages.  Each full rotation of the wheel
+elements: teeth, a magnet, and fixed linkages.  Each full rotation of the wheel
 advances the gear train by an exact, countable number of teeth.  No intermediate
 state exists within the mechanism.  What appears as smooth motion is the visual
 integration of many small, ordered advances, each determined by the geometry of
@@ -1451,7 +1450,8 @@ The difference is not one of correctness, but of representational posture.
 Geometric reasoning permits the introduction of structure that is never itself
 tested by enumeration.  It tolerates intermediate distinctions so long as they
 remain stable under refinement and do not force additional commitments into the
-record.  Such structure functions as a scaffold for reasoning: powerful,
+record (see Phenomenon~\ref{ph:object-permanence}).  Such structure functions as a 
+scaffold for reasoning: powerful,
 consistent, and deliberately insulated from direct confrontation with the
 ledger.  Its admissibility rests on explanatory coherence rather than on
 countable verification.
@@ -1701,7 +1701,8 @@ An \emph{alphabet} is an enumeration of a set of symbols.
 Temperature scales provide canonical illustrations of this arbitrariness.
 Fahrenheit and Celsius both confronted the same underlying phenomenon: a physical
 process that varies smoothly and admits no intrinsic markings.  Mercury expands
-continuously in a glass tube; thermal agitation itself presents no natural
+continuously in a glass tube as its apparent temperature rises; thermal agitation 
+itself presents no natural
 numerals, thresholds, or units.  Nothing in the phenomenon announces where one
 degree ends and another begins.  The act of measurement therefore begins not with
 discovery, but with imposition.
@@ -1852,11 +1853,11 @@ instrumental scheme.
 An instrument may thus be understood as a formal object whose essential content
 is symbolic rather than mechanical.  Its defining features are not the materials
 from which it is built or the physical processes it exploits, but the alphabets
-it licenses and the decoding maps it provides.  These determine what may count as
+it licenses and the decoding maps it implies.  These determine what may count as
 a distinct outcome and how such outcomes may be recorded and interpreted.
 
 With this in mind, we define an instrument abstractly as a combinatoric structure
-consisting of a ledger, an alphabet, and decoding maps associated with each.
+consisting of a ledger and an alphabet.
 
 \begin{definition}[Instrument]
 An \emph{instrument} consists of a ledger $\Ledger$ and an alphabet $\Sigma$.
@@ -1914,9 +1915,11 @@ infinitely small magnitudes, but the stability of results under refinement.
 Infinity entered only as a limit on procedure, not as an object of measurement.
 
 Cantor's construction of the real numbers extended this discipline to the
-foundations of analysis.  The continuum was not assumed but built, step by step,
+foundations of analysis~\cite{cantor1872}.  The continuum was not assumed 
+but built, step by step,
 from countable processes.  Cauchy sequences and Dedekind cuts replaced geometric
-intuition with rules governing convergence.  Here too, infinity was rendered
+intuition with rules governing convergence~\cite{cauchy1821,dedekind1872}.  Here too, 
+infinity was rendered
 harmless by constraint: a real number was admitted only when a refinement
 process satisfied a criterion that licensed closure.  The infinite was present
 only insofar as it could be managed by finite acts.
@@ -1938,13 +1941,13 @@ splits the polynomial into even and odd parts,
 p(x) = p_0(x^2) + x\,p_1(x^2),
 \]
 and evaluates the smaller polynomials before recombining.  This is structurally
-identical to the Cooley--Tukey decomposition, applied here to algebraic degree
+identical to the Cooley--Tukey decomposition~\cite{cooley1965}, applied here to algebraic degree
 rather than to harmonic components.  The refinement of representation, the
 separation into powers of $x^2$, is aligned with the refinement of work, the
 recursive evaluation of subproblems.
 
 What appears as a single large evaluation is executed as a hierarchy of smaller
-ones, each finite and recoverable.  As in the Fourier case, no infinite object
+ones, each finite and recoverable.  No infinite object
 is traversed.  Unbounded structure enters only through a pattern of finite
 steps already licensed by the instrument's decoding maps.
 
@@ -2010,16 +2013,6 @@ and reliable prediction all rely on this asymmetry.  The infinite is rendered
 finite not by enumeration, but by the design of the instrument that licenses
 which distinctions may be committed.
 
-
-The preceding phenomena make clear that computation proceeds only insofar as
-structure has already been declared.  Hierarchical refinement, exact
-decomposition, and divide--and--conquer reasoning all presuppose a fixed set of
-admissible distinctions on which they may operate.  Before any device can
-traverse a hierarchy, before any local computation can be aligned with global
-structure, the instrument must first determine what counts as a distinct outcome
-at all.  This determination is not computational; it is representational.  It
-establishes the space within which computation may later occur.
-
 This priority is easy to overlook because mathematical presentations often blur
 the boundary between representation and operation.  In practice, however, an
 algorithm does not discover its own alphabet.  The symbols it manipulates, the
@@ -2044,7 +2037,7 @@ decompositions, and exact relations among symbols without regard to the cost of
 their realization.  Such an instrument is indispensable for reasoning, but it
 does not act.  It does not wait, does not terminate, and does not record.  To
 pass from what may be described to what may be witnessed requires a different
-kind of structure: a emph{device} that executes procedures, incurs delay, and commits
+kind of structure: a \emph{device} that executes procedures, incurs delay, and commits
 results to a ledger.  The following sections therefore turn from instruments of
 completion to devices of operation, where refinement is no longer free and
 lawful description must give way to finite execution.
@@ -2241,70 +2234,46 @@ and refinement does not reopen distinctions that have been closed.  Rounding is
 therefore a form of suppression that preserves consistency rather than
 precision.
 
-The same logic governs noise reduction systems.  Dolby processing identifies
-regions of variation that fall below a perceptual or instrumental threshold and
-suppresses them deliberately.  The suppression is not tuned to truth, but to
-recoverability.  High--frequency hiss is removed not because it is false, but
-because attempting to preserve it would dominate the record and obscure the
-distinctions that matter.  The noise floor is chosen so that refinement remains
-tractable.
+The operation of a noise floor provides a concrete illustration of 
+Phenomenon~\ref{ph:channel}.  In early amplitude--modulated radio, intelligibility
+was achieved not by preserving arbitrarily fine variation in the carrier, but by
+discarding distinctions that could not be reliably recovered.  Atmospheric
+noise, receiver sensitivity, and bandwidth limitations enforced a practical
+cutoff: variations below a certain scale were treated as instrumentally
+irrelevant.  What was transmitted and recorded was not the full physical
+waveform, but a finite decomposition sufficient for stable decoding.
 
-Across instruments, the choice of noise floor is conventional in magnitude but
-necessary in kind.  Different devices select different thresholds depending on
-purpose, cost, and context.  A laboratory radar may resolve finer distinctions
-than a roadside unit; a racing speedometer may differ from one designed for
-daily driving.  These differences do not reflect competing realities, but
-different decisions about where refinement should stop.
+Shannon later made this practice explicit by formalizing the channel as a system
+with finite capacity.  In his abstraction, distinctions below the noise level do
+not merely fail to be resolved; they are excluded from admissibility altogether.
+Rounding in digital devices exhibits the same logic.  When a value is rounded,
+the discarded portion is not declared unreal.  It is declared unrecoverable
+within the channel.  Once suppressed, these distinctions do not reappear under
+further refinement.  Stability is achieved not by greater precision, but by the
+enforcement of a boundary.
 
-The existence of a noise floor also clarifies the relation between measurement
-and law.  Laws are formulated in terms of recorded values, not in terms of
+Across instruments, the placement of this boundary is conventional in magnitude
+but necessary in kind.  Different devices impose different noise floors depending
+on purpose, cost, and context.  A laboratory radar resolves distinctions that a
+roadside unit discards; an experimental receiver admits refinements that a
+consumer radio cannot.  These choices do not reflect competing descriptions of
+the phenomenon, but different decisions about where refinement must halt to
+preserve a coherent ledger.
+
+The existence of a noise floor clarifies the relation between measurement and
+law.  Laws are formulated in terms of recorded distinctions, not in terms of
 suppressed variation.  Once distinctions fall below the noise floor, they cannot
-enter into lawful description.  This does not make law approximate; it makes law
-conditional on instrumentation.  What counts as negligible is fixed by the
-instrument, not by nature alone.
-
-\begin{phenom}{The Dolby--Shannon Effect}
-\label{ph:noise-floor}
-
-\PhStatement
-Finite, decidable records require the deliberate suppression of distinctions
-below a noise floor.  Any attempt to preserve all fine--scale structure leads to
-nontermination and destroys the possibility of lawful refinement.
-
-\PhOrigin
-Shannon first formalized this necessity by showing that unbounded bandwidth and
-arbitrarily fine distinctions render communication ill--defined~\cite{shannon1948}.
-Information becomes meaningful only when admissible signals are constrained.
-Dolby later operationalized this insight in physical instruments by explicitly
-identifying noise floors and suppressing high--frequency structure that could not
-be stably recovered.  What Shannon proved in principle, Dolby enforced in design.
-
-\PhObservation
-Physical instruments routinely discard structure.  Speedometers damp vibration,
-optical systems blur below resolution, radios limit bandwidth, and digital
-systems quantize and threshold signals.  These suppressions are not failures of
-measurement, but the means by which records remain finite and usable.  The noise
-floor marks the boundary beyond which refinement ceases to yield recoverable
-distinctions.
-
-\PhConstraint
-No instrument may refine distinctions whose continued refinement would prevent
-termination or recovery.  Variations that cannot be stabilized under refinement
-must be treated as noise, regardless of their physical origin.
-
-\PhConsequence
-Noise is not merely disturbance or uncertainty, but a structural requirement
-for measurement and computation.  Phenomenon~\ref{ph:noise-floor} identifies the point
-at which suppression becomes epistemically necessary: without it, neither
-information nor law can be recorded.  Finite knowledge is possible only because
-infinite refinement is refused.
-\end{phenom}
+enter into lawful description, not because they are absent from the phenomenon,
+but because they are inadmissible to the instrument.  Law is therefore not
+approximate in itself; it is conditional on the channel through which facts are
+recorded.
 
 In this sense, the noise floor is the final act of decomposition.  It collapses
-infinite potential refinement into finite record by declaring which distinctions
-will be treated as undefined.  This declaration is what allows instruments to agree,
-records to persist, and computation to halt.  Noise is not the failure of
+unbounded potential refinement into finite record by declaring which distinctions
+will be treated as undefined.  This declaration is what allows instruments to
+agree, records to persist, and computation to halt.  Noise is not the failure of
 measurement, but the boundary that makes measurement possible at all.
+
 
 
 \subsection{Realization}
@@ -2409,8 +2378,7 @@ persists across admissible realizations and on which all compatible records
 agree.  A \emph{true fact} is not defined by singular observation, but by stability
 under refinement, repetition, and comparison.
 
-
-This blueprint replaces certainty with stability.  A fact is established not by
+This instrument design replaces certainty with stability.  A fact is established not by
 appeal to an underlying reality taken as fixed in advance, but by demonstrating
 that a distinction endures under refinement and coheres across realizations.
 Truth is therefore not assumed, but achieved.  It is the outcome of disciplined
@@ -2572,15 +2540,21 @@ accumulation together generate the minimal structure required for numerical
 reasoning.
 
 Repeated trial exposes the sense in which statistics are devices rather than
-laws.  A device implements a specific decomposition of an instrument into an
-encoding map, a decoding map, and a ledger.  Repetition is the act of applying
-this same decomposition again and again.  What is learned is not an intrinsic
+laws.  A device implements a specific decomposition of an instrument's admissible
+symbols together with a ledger in which the results of that decomposition are
+recorded.  Repetition is the act of applying this same decomposition again and
+again under identical admissibility rules.  What is learned is not an intrinsic
 parameter of the phenomenon, but the stability of the decomposition under
-refinement.  The emergence of paired summaries from a single invariant reflects
-this stability: one summary enables progressive iteration, while the other
-licenses enclosure by bisection.  Statistical quantities thus record not hidden
-properties of the world, but the capacity of a device to sustain refinement
-without contradiction.
+refinement.
+
+From a single invariant enforced by the instrument, repetition induces a paired
+structure.  One summary supports progressive iteration by stabilizing central
+tendency, while the other licenses enclosure by bisection by bounding dispersion.
+These paired summaries do not reveal hidden properties of the world.  They record
+the capacity of a device to sustain refinement without contradiction.  In this
+sense, statistical quantities arise from the behavior of devices, not from laws
+imposed on phenomena.
+
 
 \begin{definition}[Device]
 A \emph{device} is an instrument equipped with a decomposition of the symbols
@@ -2635,8 +2609,8 @@ exactly one symbol per act.  The clock enforces repetition by design.
 
 \subsection{Clocks}
 
-Phenomenon~\ref{ph:kant-effect} establishes that facts are committed in an ordered way.  An
-instrument does not record everything at once; it appends records sequentially.
+Facts commited in an orderly way is evidence of Phenomenon~\ref{ph:kant-effect}.
+An instrument does not record everything at once; it appends records sequentially.
 This ordering is not derived from an external notion of time, but from the act
 of record itself.  Each new entry presupposes the existence of earlier ones.
 Succession is therefore enforced by the ledger, not assumed as a background
@@ -2672,12 +2646,7 @@ passed before a target symbol is reached.  In this sense, the device measures
 Phenomenon~\ref{ph:peano} directly.  Nothing further is inferred, interpolated,
 or approximated; the record certifies only the order and number of steps required
 to arrive.
-
-
-This construction realizes time as an ordering of records and nothing else.
-There is no metric, no simultaneity, and no notion of rate.  The Einstein device
-does not measure how much time has passed; it measures only that one tick has
-occurred after another.  All richer temporal concepts must be built on top of
+All richer temporal concepts must be built on top of
 this structure or introduced by additional instruments.
 
 \begin{definition}[Einstein Device]
@@ -2706,8 +2675,9 @@ In this way, the Einstein device provides the foundational model for time within
 the measurement framework.  It shows how temporal order can be realized without
 assumption, how succession can be recorded without metric, and how a device may
 operate entirely within the constraints of the ledger.  More elaborate temporal
-devices will enrich this structure, but they will not replace it.  All time, in
-the end, begins as counting.
+devices will enrich this structure, but they will not replace it.  
+
+All measurement, in the end, begins as counting.
 
 \subsection{The Constraint of the Metaphysical}
 \label{sec:constraint-metaphysical}
@@ -2729,18 +2699,19 @@ not fact.
 
 The necessity of this separation becomes clear when considering refinement.
 Refinement sharpens distinctions already admitted; it does not create new kinds
-of distinction \emph{ex nihilo}.  A continuous alphabet may be refined indefinitely in
-principle, yet only those distinctions selected by the device and committed by
-the ledger acquire experimental standing.  The metaphysical continuum thus
-remains a reservoir of possible descriptions, constrained at every step by
-recoverability.
+of distinction \emph{ex nihilo}.  A continuous alphabet may be refined
+indefinitely in principle, yet only those distinctions selected by the device and
+committed by the ledger acquire experimental standing.  The metaphysical
+continuum thus remains a reservoir of possible descriptions, constrained at
+every step by recoverability.
 
-Temporal structure is the most tempting place to violate this discipline.
-Smooth time models invite the interpolation of events between recorded moments,
-suggesting hidden states or unobserved transitions.  The framework explicitly
-refuses this invitation.  Between ledger entries lies no finer temporal fact,
-only silence.  Time, like any other coordinate, acquires meaning only through the
-device that enumerates it.
+This discipline is most easily violated when the refined quantity is taken to be
+temporal.  Smooth models of time invite the interpolation of events between
+recorded moments, suggesting hidden states or unobserved transitions that never
+entered the ledger.  The framework explicitly refuses this invitation.  Between
+ledger entries lies no finer temporal fact, only silence.  Time, like any other
+coordinate, acquires meaning only through the device that enumerates it.
+
 
 This refusal does not render temporal models useless.  On the contrary, smooth
 time serves as a powerful heuristic for prediction, interpolation, and control.
@@ -2768,50 +2739,66 @@ measurement.  By insisting that every recorded fact be traceable to an explicit
 act of enumeration, the framework ensures that abstraction never outruns
 accountability.  The metaphysical may guide, but it may not legislate.
 
-Temporal noise names the irreducible discrepancy between smooth temporal models
-and discrete temporal records.  It is not an external disturbance acting on time
-itself, but an artifact of representing duration through repeated trials.  Each
-tick, pulse, or event marks a commitment; between such commitments the model may
-speak, but the ledger remains mute.
+Temporal noise names the discrepancy between smooth temporal models and discrete
+temporal records.  It arises whenever duration is represented through repeated
+acts of commitment rather than through continuous description.  Each tick,
+pulse, or event marks a ledger entry; between such entries no finer temporal fact
+is recorded.  Models may interpolate within this silence, but the ledger does
+not.
 
-This noise cannot be eliminated by refinement alone.  Refinement increases the
-resolution of admissible distinctions, but it does not collapse silence into
-fact.  Even an ideal clock, endlessly stable, records only its own acts.  The
-appearance of jitter or drift reflects the interaction between a metaphysical
-time coordinate and a device that enforces countability.
-
-Seen this way, temporal noise is not a flaw to be corrected but a signal of
-discipline.  It certifies that the device has not overstepped its authority by
-recording what it cannot justify.  Where smooth theories predict continuity,
-temporal noise reminds us that prediction occurs in the absence of fact.
-
-The coda therefore closes the chapter with a warning and a reassurance.  The
-warning is that no amount of modeling may bypass the ledger.  The reassurance is
-that this restriction does not impoverish science; it grounds it.  By honoring
-the constraint of the metaphysical, measurement remains tethered to acts, not
-assumptions, and time itself is rendered measurable without being reified.
-
-In this way, devices may be understood as mixed second variations of fact.
-Variation occurs first temporally, through successive acts of record, and
-second hierarchically, through refinement of the admissible distinctions.  A
-device stabilizes only where these two variations commute.
+This discrepancy cannot be removed by refinement alone.  Refinement sharpens the
+resolution of admissible distinctions, but it does not convert absence into
+fact.  Even an idealized clock records only its own acts of enumeration.  The
+appearance of jitter or drift reflects the interaction between smooth temporal
+description and a device that enforces countability.  In what follows, we show
+that this residue is not a defect to be eliminated, but a structural feature
+that must be respected if measurement is to remain coherent.
 
 \begin{coda}{Temporal Noise}
 
-The achievement of this chapter lies in the separation of instrument from
+The central observation of this chapter is the separation of instrument from
 phenomenon.  An instrument has been defined as a license for admissible
 distinction, and a device as its realized routing from stimulus to symbol.
 Determinism, within this framework, is not a claim about the world, but a
-property of the instrument’s internal logic.  Facts are not discovered as given;
+property of the instrument's internal logic.  Facts are not discovered as given;
 they are ledger entries that earn their status by surviving refinement and
 accumulation.
 
-This construction introduces an unavoidable tension.  Increasing precision
-requires tightening thresholds and extending decomposition, thereby enlarging
-the space of admissible distinctions.  Each refinement increases resolution, but
-also increases sensitivity to variation.  The ledger becomes more responsive to
-small differences in realization, not less.  Precision, rather than guaranteeing
-stability, exposes fragility.
+This observation exposes an unavoidable tension.  Increasing precision requires
+tightening thresholds and extending decomposition, thereby enlarging the space
+of admissible distinctions.  Each refinement increases resolution, but also
+increases sensitivity to variation.  The ledger becomes more responsive to small
+differences in realization, not less.  Precision, rather than guaranteeing
+stability, reveals the limits of admissibility.
+
+The mechanical speedometer provides a concrete illustration.  Rotational motion
+from the drivetrain is transmitted through a gear train and magnetic coupling to
+a spring-loaded needle.  Teeth, ratios, elastic limits, and friction enforce
+discrete advancement and finite responsiveness.  Small variations in rotation
+do not immediately produce a new reading.  Only when accumulated motion exceeds
+the threshold required to overcome mechanical resistance does the needle advance
+to a new position.
+
+Temporal noise arises from this accumulation.  Friction, backlash, and elastic
+deformation introduce discrepancies in the transmission of motion.  These
+discrepancies are not recorded individually.  They are integrated until a
+threshold is crossed and a new admissible symbol is committed to the dial.  The
+noise observed in the reading reflects not error in the phenomenon, but the
+device's method of enforcing countable record.
+
+This noise cannot be eliminated by refinement alone.  Improving gear ratios,
+reducing friction, or tightening tolerances shifts the scale at which noise
+appears, but does not remove the underlying mechanism.  The device records only
+those distinctions that satisfy its criteria for commitment.  Between recorded
+positions lies no finer fact, only unresolved variation that has not yet
+accumulated into an admissible distinction.
+
+In this sense, temporal noise marks the boundary between smooth description and
+discrete record.  Continuous models may describe motion at arbitrarily fine
+scales, but the ledger records only what the device can stably commit.  The noise
+observed in measurement is therefore not a failure of the instrument, but
+evidence of its discipline.  The device refuses to record distinctions it cannot
+recover.
 
 \subsection*{Finite Precision and Computation}
 
@@ -2829,13 +2816,13 @@ This duality is often written using an overlapping integral--summation glyph,
 \[
 \mathcal{A}
   \;=\;
-  \int\!\!\!\!\!\sum_{\;\omega \in \Omega}
+  \sumint_{\;\omega \in \Omega}
   e^{\tfrac{i}{\hbar} S[\omega]}
   \,\mathcal{W}(\mathrm{d}\omega),
 \]
 where $\Omega$ denotes the space of admissible histories, $S[\omega]$ the action,
 and $\mathcal{W}$ the weight induced by the chosen refinement.  The symbol
-$\int\!\!\!\!\!\sum$ is read as an integral in the ideal description and as a sum
+$\sumint$ is read as an integral in the ideal description and as a sum
 in execution.
 
 The act of observation takes time, produces a discrete outcome, and commits a
@@ -2870,15 +2857,39 @@ finiteness of the admissible structure itself.  The limitations encountered by
 finite Turing devices are not defects of implementation, but invariants of any
 measurement regime constrained by a finite ledger.
 
+More concretely, a finite device operates with two distinct decoding roles.
+One decoding map enumerates the symbols read from and written to the tape,
+assigning each admissible mark a place in the alphabet.  A second decoding map
+enumerates position, assigning a numerical address to the location on the tape
+at which a symbol is encountered or committed.  Together, these maps determine
+what was recorded and where it was recorded.
+
+When these two enumerations are coordinated in a one-to-one manner, lookup is
+exact.  Each symbol corresponds to a unique position, and each position
+corresponds to a unique symbol.  In this case, refinement does not introduce
+ambiguity: repetition yields identical records, and execution is stable under
+iteration.  The device behaves deterministically because its internal
+representations align without overlap.
+
+When this correspondence is not one-to-one, noise is unavoidable.  Multiple
+symbolic states may map to the same position, or multiple positions may decode
+to the same symbol.  In such cases, refinement sharpens distinctions without
+resolving them completely.  Small variations in execution are absorbed into the
+same recorded outcome, while larger variations force transitions between
+admissible symbols.  What appears as computational noise reflects the mismatch
+between symbolic enumeration and positional numeration.
+
 This distinction between ideal computation and finite execution will recur
 throughout what follows.  It is at this boundary that refinement gives way to
 record, precision encounters conditioning, and temporal noise necessarily
-appears.
+appears.  Exactness is not lost through error, but through the unavoidable
+compression imposed by finite admissibility.
+
 
 \subsection*{Residue of Computation}
 
 This tension may be expressed without appeal to metaphysics by adopting the
-operator viewpoint associated with von Neumann.  An instrument acts as a map
+operator viewpoint associated with von Neumann~\cite{vonneumann1947}.  An instrument acts as a map
 from admissible stimuli to admissible symbols.  Stability is determined not by
 the phenomenon, but by how this map propagates variation into recorded
 distinctions.  When the mapping is ill-conditioned, refinement amplifies
@@ -2902,13 +2913,28 @@ variation grows rapidly.  Ease of expression thus appears as the inverse of
 representational friction: the more effort required to translate between
 symbols, the faster instability accumulates.
 
-This distinction becomes especially visible when nonlinear behavior is forced
-into a linear symbolic scheme.  Linearization succeeds only when the associated
-operator preserves relations between admissible distinctions to sufficient
-accuracy.  Where this preservation holds, refinement behaves nearly as an
-isometry, and accumulation converges.  Where it fails, the operator stretches
-and compresses the space of distinctions unevenly, and residual variation
-records the mismatch between the phenomenon and the chosen alphabet.
+In finite precision arithmetic, this mismatch appears immediately.  Linear
+operators are applied not to ideal real numbers, but to symbols drawn from a
+finite alphabet with rounding and truncation.  Each application introduces a
+small residual that is suppressed only insofar as the operator preserves the
+relative ordering and scale of admissible distinctions.  When this preservation
+is sufficiently uniform, successive applications dampen residual variation and
+accumulation stabilizes.  When it is not, small discrepancies are amplified
+unevenly.  What appears as numerical instability is the ledger recording the
+failure of linearization to respect the admissible structure imposed by the
+device.
+
+Matrix inversion makes this visible in a single step.  In the ideal setting, an
+invertible matrix defines a bijection between symbolic representations.  Under
+finite precision, inversion replaces exact correspondence with conditional
+recoverability.  If the matrix is well conditioned, the inverse approximately
+undoes the forward map, and residual variation remains bounded under iteration.
+If the matrix is ill conditioned, inversion magnifies suppressed distinctions
+and collapses nearby symbols into divergent outcomes.  The resulting noise is
+not a defect of computation, but a record of the effort required to force a
+nonlinear phenomenon into a linear symbolic scheme.  Residual variation thus
+measures the distance between the chosen alphabet and the structure it attempts
+to represent.
 
 From the von Neumann perspective, the stability of a fact is therefore a function
 of symbolic efficiency.  An expression is stable precisely when the operator
@@ -2922,7 +2948,7 @@ This pessimistic conclusion is not the end of the story.  While von Neumann’s
 analysis correctly characterizes the worst case, it does not describe the cases
 that survive long enough to be used.  As later emphasized by numerical analysts,
 notably Trefethen, the practical success of computation reflects a profound
-selection effect.  Although most symbolic translations are ill-conditioned, we
+selection effect~\cite{trefethen1997}.  Although most symbolic translations are ill-conditioned, we
 do not build instruments around them.  We restrict attention, often implicitly,
 to operators for which refinement happens to be stable.
 
@@ -2935,8 +2961,8 @@ computation is thus contingent: it arises because the symbolic schemes we employ
 are drawn from a narrow, well-conditioned subset of what is mathematically
 permissible.
 
-\begin{phenom}{The von Neumann--Trefethen Effect}
-\label{ph:vnt}
+\begin{phenom}{The von Neumann--Trefethen Effect~\cite{trefethen1997,vonneumann1947}}
+\label{ph:stability}
 
 \PhStatement
 The practical success of finite computation reflects a selection effect on
@@ -3009,7 +3035,7 @@ quantum physics.  It is the optimal computational strategy for managing the
 residue generated by non-commuting refinements.
 
 The success of the Fourier transform in modeling physical law is the clearest
-expression of the von Neumann--Trefethen selection effect.  The transform is not
+expression of the Phenomenon~\ref{ph:stability} selection effect.  The transform is not
 merely a tool for spectral decomposition; it is a global coordination of
 refinement.  Invoking the Fourier transform amounts to transitioning between two
 incompatible schemes of admissibility: one organized around localized
@@ -3031,7 +3057,7 @@ unusually well-conditioned.  The Fourier basis emerges not because the world is
 fundamentally wavelike, but because it is the most stable basis for transporting
 meaning across incompatible refinements.
 
-\begin{phenom}{The Heisenberg Effect}
+\begin{phenom}{The Heisenberg Effect~\cite{heisenberg1927}}
 \label{ph:heisenberg}
 
 \PhStatement
@@ -3091,15 +3117,16 @@ distinction endures under refinement, coheres across realizations, and survives
 the temporal noise induced by finite precision.  What remains unstable is not
 falsehood, but the boundary of what may be said.
 
+
 \subsection*{The Architecture of Evidence}
 
-This chapter has shown how facts are formed through refinement and accumulation.
-The next must address a deeper questions. When do different constructions agree?
-How do devices compare? And, what structure persists when the operator itself is
-changed?  We now turn from the formation of fact to the architecture of
-invariance.
+This chapter has shown how facts arise through refinement and accumulation.
+What remains is the question of agreement.  When do different constructions
+record the same fact?  How may devices be compared, and what structure persists
+when the operator itself is altered?  We now turn from the formation of fact to
+the architecture that supports invariance across devices.
 
-This chapter has argued that uncertainty is not a defect of measurement, but its
+As this coda argues, uncertainty is not a defect of measurement, but its
 natural condition.  Finite instruments engage phenomena that admit multiple
 continuations, and no physical realization can eliminate this plurality.  As a
 result, individual records vary, realizations fluctuate, and executions disagree
@@ -3157,6 +3184,10 @@ share invariants.  We have shown only what it means for a fact to be true at all
 it is true because it is preserved by a mathematical device.  The next chapter
 addresses how such truths may be compared, synchronized, and extended across
 independent constructions. 
-\end{coda}
 
+Instead of treating the finite difference as an approximation to the derivative,
+we may reverse the perspective.  The derivative is understood as a continuous
+completion of a finite difference operator, admitted only when refinement
+stabilizes.  No assumption of continuity is made or required.
+\end{coda}
 

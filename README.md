@@ -17,8 +17,32 @@ Up through **Chapter 2**, these two views coincide. From that point onward,
 the manuscript emphasizes the *shape* and consequences of the argument rather
 than full formal rigor.
 
+## Release Notes — v0.2
 
-## Current status
+### Chapter 1
+- Relocated the discussion of ZFC to Chapter 1, establishing the foundational
+  logical environment explicitly at the outset.
+- Introduced three core definitions, formalized consistently in both the PDF and
+  the Lean development, aligning the narrative exposition with the verified
+  framework.
+
+### Chapter 2
+- **PDF:** Developed Cauchy and Cantor decompositions as complementary limits of
+  linear refinement processes, showing how infinite values may be represented
+  through disciplined accumulation. Defined noise as the structural limitation
+  imposed by finite measurement rather than as experimental error. Introduced
+  devices as finite instantiations of theoretical instruments, emphasizing the
+  role of admissibility, refinement, and commitment in the formation of facts.
+- **Lean:** Implemented the framework as a **Finite Turing Device**, demonstrating
+  that mathematical devices can be instantiated as finite structures realizing
+  the theoretical constructions described in the text. The Lean kernel serves as
+  a terminating execution environment in which repetition is enacted as a counted
+  process. These instantiations formalize repetition as a finite, admissible act,
+  providing a verified model of the phenomena treated narratively in the
+  manuscript.
+
+
+## Release Notes - v0.1.1
 
 - **Chapter 1**  
   Human-readable and accompanied by working Lean code.  Pretty big
