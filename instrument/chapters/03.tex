@@ -78,139 +78,93 @@ common phenomenal description without contradiction.
 
 \section{Invariant}
 
-The purpose of calibration is not to discover what exists, but to determine what
-may be held fixed under translation.  In the preceding chapters, invariance
-appeared only as a phenomenon: certain regularities survived refinement, while
-others did not.  In this chapter, invariance is elevated from observation to
-constraint.  Calibration fixes which distinctions are permitted to survive
-comparison between instruments.
+We begin with our preferred invariant: speed.  As we have seen, speed is not observed
+directly.  It is inferred from records produced by instruments that operate by
+very different mechanisms.  A mechanical speedometer counts wheel rotations.  A
+radar gun infers velocity from Doppler shift.  A GPS receiver estimates
+displacement over time from satellite signals.  Each produces a finite record,
+and none is privileged.
 
-An invariant, in this sense, is not an object recorded by any instrument.  It is
-a condition imposed on admissible translations between ledgers.  Calibration
-therefore proceeds not by accumulation of facts, but by suppression of
-instrument-specific distinctions that obstruct comparability.
+Despite this diversity, these instruments are understood to be measuring the
+same thing.  This is not because they report identical values, but because their
+records are mutually compatible.  Each record excludes large classes of
+possible motions.  A speedometer reading rules out zero velocity.  A radar
+measurement rules out backward motion.  A GPS track rules out discontinuous
+jumps.  What remains is a shared constraint on what the motion could have been.
 
-The invariant of invariance is the structure that survives this suppression.  We
-refer to this structure as the manifold, but only in a technical and deliberately
-restricted sense.  The manifold is not an underlying substrate, nor a background
-space in which measurements occur.  It is the formal name given to a calibrated
-projection between independent ledgers.
+That shared constraint is the invariant.  It is not a number written on a dial,
+but the set of possibilities that survive all recorded restrictions.  As new
+records are added, this set can only shrink.  Measurement proceeds by
+elimination, not by revelation.
 
-\subsection{Gauge Threads}
+This immediately introduces order.  One record may be strictly more informative
+than another.  A longer GPS trace refines a shorter one.  A radar average over
+many pulses refines a single pulse.  A record that excludes more possibilities
+is said to be a refinement of one that excludes fewer.  Refinement is therefore
+a relation between records.
 
-The calibration procedure introduces a residual freedom that is neither error nor
-ambiguity, but necessity.  When instrument-specific distinctions are suppressed
-to permit comparison, multiple descriptions may correspond to the same
-admissible record.  This freedom is not removed by calibration; it is structured
-by it.  We refer to these structured freedoms as gauge threads.
+The collection of admissible records, ordered by refinement, forms a partial
+order.  Two records are comparable only when one rules out everything the other
+does.  When neither refines the other, they are simply different views of the
+same underlying constraint.  When their admissible sets fail to intersect, they
+cannot both be correct.
 
-A gauge thread is not a symmetry of an underlying space.  It is a consequence of
-translation between ledgers that are only partially comparable.  Distinctions
-that do not survive projection are not false; they are irrelevant to the
-calibrated comparison.  Gauge freedom arises precisely from this irrelevance.
+In this way, the invariant of speed is not a single value but an ordered family
+of admissible descriptions.  Agreement between instruments does not mean equality
+of outputs; it means the existence of a common refinement.  Disagreement is not
+noise to be averaged away, but a logical incompatibility that cannot be repaired.
 
-In classical gauge theory, one begins with a configuration space and identifies
-redundant descriptions via a group action.  In the present framework, no such
-space is assumed.  Gauge threads appear only after calibration, as the degrees of
-freedom left unconstrained by admissible projection.  The order is reversed:
-practice precedes symmetry.
+This ordered structure is the invariant that will matter throughout this
+chapter.  It is not introduced by assumption, nor derived from continuity.
+It arises directly from the way instruments restrict possibility.  The next
+sections show how this order is navigated, coordinated, and ultimately realized
+by devices.
 
-The work of Yang and Mills provides a canonical illustration of this reversal.
-Their insight was not that new physical entities must be introduced, but that
-certain transformations leave observable quantities invariant.  In the ledger
-framework, such transformations correspond to movements along gauge threads:
-changes within a refinement scheme that do not alter the calibrated residue.
+\subsection{Observed Quantities}
 
-Gauge threads therefore encode how much freedom remains once comparability has
-been enforced.  They are neither noise nor structure in their own right.  Rather,
-they mark directions along which refinement may proceed without affecting the
-phenomenon under study.  These directions are invisible to the manifold, yet
-essential to the internal coherence of instruments.
+An observed quantity is not a property of a system.  It is a record produced by
+an instrument.  What distinguishes one observed quantity from another is not
+what it represents, but how it restricts possibility.  An observation is a
+commitment to a finite distinction, and nothing more.
 
-Because gauge threads arise from suppression, they obstruct true inversion.
-A projection that collapses multiple descriptions onto a single calibrated
-record cannot be reversed uniquely.  Any attempt to recover suppressed detail
-must choose a representative along a gauge thread.  This choice is conventional,
-not factual.
+We continue with the example of speed.  A speedometer reports a number derived
+from wheel rotations.  A radar gun reports a value inferred from Doppler shift.
+A GPS receiver reports a sequence of positions indexed by timestamps.  These
+records are not interchangeable, nor are they directly comparable.  Each is an
+observed quantity because each is the output of a specific instrument operating
+under a specific decomposition.
 
-The necessity of such choices explains why generalized inverses appear naturally
-in calibrated theories.  A recovery map may restore admissible structure, but it
-cannot recover distinctions eliminated by calibration.  Stability is achieved
-not by exact inversion, but by consistency under round-trip projection.
+What makes these records quantities at all is that they admit ordering.  One
+observation may be strictly more informative than another.  A speedometer
+reading averaged over ten seconds refines a single instantaneous reading.  A
+GPS trajectory over a mile refines a trajectory over one hundred meters.  An
+observed quantity is therefore not a point value, but an element in an ordered
+collection of admissible records.
 
-Gauge threads thus signal the limits of representation rather than hidden degrees
-of freedom in nature.  They record how instruments may differ without
-contradiction, and how refinement may proceed without altering the calibrated
-invariant.  In this sense, gauge freedom is not an excess of description, but the
-price of comparability.
+This ordering does not arise from numerical magnitude.  A larger reported speed
+is not a refinement of a smaller one.  Refinement is instead determined by
+exclusion: an observation refines another if it rules out every possibility
+that the other rules out, and more.  Observed quantities are ordered by the
+strength of their constraints, not by their reported values.
 
-The introduction of gauge threads completes the transition from phenomenology to
-discipline.  What remains invariant is fixed; what varies without consequence is
-identified.  Subsequent structure must respect this partition, or abandon
-calibration altogether.
+Two observed quantities need not be comparable.  A radar measurement and a GPS
+track may exclude different possibilities without one strictly refining the
+other.  In such cases, they represent distinct observations of the same
+underlying phenomenon.  They become related only when they admit a common
+refinement.  Compatibility, not equality, is the criterion for agreement.
 
+Observed quantities are therefore inherently discrete.  Each arises from a
+finite act of recording, and each admits only finitely many refinements before
+new instrumentation or new observation is required.  There is no requirement
+that observed quantities vary continuously, nor that they lie along a smooth
+scale.  Continuity, when it appears, is an emergent feature of dense refinement,
+not a primitive assumption.
 
-\subsection{Translation}
-
-Calibration licenses translation rather than revealing a hidden map.  When two
-instruments produce records that appear incompatible, the manifold arises as the
-maximally coarse ledger onto which both records may be projected without
-contradiction.  This projection does not embed the ledgers into a preexisting
-space; it suppresses distinctions until coherence is restored.
-
-The manifold must never be granted ontological priority.  It is subordinate to
-the ledger and exists only insofar as calibration succeeds.  Its role is purely
-functional: to ensure that facts recorded under one refinement scheme do not
-vanish or invert when expressed under another.
-
-What survives calibration does not remain unchanged in any metaphysical sense.
-Rather, survival refers to the persistence of certain orderings and relations
-once instrument-specific details have been intentionally discarded.  Suppression,
-not preservation, is the operative mechanism.
-
-Agreement between instruments is therefore not a psychological or physical event.
-We do not say that two devices agree on a quantity.  Instead, we say that their
-respective ledgers admit a common coarsening that preserves admissible structure
-under refinement.  This coarsening is the manifold.
-
-Consider a mechanical speedometer and a satellite-based timing device.  The
-tension of a spring and the phase of a signal belong to incompatible alphabets.
-Calibration suppresses these distinctions, licensing a projection onto a common
-ordering interpreted as velocity.  The manifold records only what survives this
-suppression.
-
-Dimensionality itself is an emergent artifact of this process.  No instrument
-records a plane, a volume, or a spacetime directly.  Such descriptions arise only
-after calibration, when repeated projections reveal a stable pattern of
-compatibility across records.
-
-The manifold is therefore reconstructed only after the fact, and only under
-constraint.  This reconstruction must introduce no distinctions not already
-licensed by the ledgers involved.  Any completion that presupposes unrecorded
-structure is inadmissible.
-
-By treating the manifold as a residue of finite refinement, the theory avoids any
-appeal to infinite precision.  Physical laws are not ontological necessities but
-stable residues that persist when instruments are calibrated against one
-another.
-
-The manifold functions as the terminal point of measurement.  It is the shared
-constraint that remains once all instrument-specific commitments have been
-suppressed.  Beyond this point, further refinement introduces no new
-comparability.
-
-To prevent a return to classical realism, this demotion must be explicit.  The
-manifold is not an element of the ontology of the theory.  Concepts such as
-smoothness or continuity may appear only as descriptions of how projections
-compose, not as primitive assumptions.
-
-Ultimately, the manifold is the invariant of invariance because it governs the
-rules of correspondence between observers.  It ensures that translation between
-refinement schemes preserves the phenomenon under study without appeal to any
-unobserved background.
-
-Calibration thus replaces ontology with discipline.  What remains is not what
-exists, but what can be compared.
+This view separates observed quantities from inferred structure.  An observed
+quantity does not encode motion, speed, or trajectory directly.  It encodes a
+restriction on what motion could have occurred.  The role of the next sections
+is to show how such restrictions are coordinated across instruments, and how
+families of observed quantities give rise to stable measurement.
 
 
 \section{Instrument}
@@ -486,7 +440,6 @@ Inversion is thus the watershed moment of the theory.  It is where the single
 invariant is viewed through multiple, non-compatible decompositions.  From this
 point onward, measurement is irreducibly dynamic, path-dependent, and
 structurally incomplete.
-
 
 \begin{coda}{Representational Noise}
 \end{coda}

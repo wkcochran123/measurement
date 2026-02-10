@@ -1,96 +1,56 @@
-import Std
+import Measurement.Chapter3.Constructions
 
-
-import Measurement.Chapter2.Constructions
 
 namespace Measurement
-open Classical
+
+universe u v w
+
+structure Calibration (σ : Type u) (τ : Type v) where
+  measurment: Decomposition σ τ
+  reference: Decomposition τ σ
+  read : σ → Option τ
+
+namespace Calibration
+
+def judgeEq {σ : Type u} {τ : Type v} [DecidableEq τ]
+    (C : Calibration σ τ) (a b : σ) : Bool :=
+  match C.read a, C.read b with
+  | some x, some y => decide (x = y)
+  | _, _           => false
+
+end Calibration
 
 
+structure Phenomenon (σ : Type u) (τ : Type v) where
+  invariant : Inversion σ τ
+  calibration : Calibration σ τ
 
-
-
-abbrev CauchyCantorInstrument {σ : Type v} :=
-  Instrument σ σ
-
-abbrev RationalInstrument := Instrument ZFC.QPos ZFC.QPos
-
-structure Refinement (X : Type u) where
-  enumeration : Enumeration X
-  predictor : DecodingMap X
-
-namespace Refinement
-  def step {X : Type u} (R : Refinement X) : Enumeration X :=
-    let n := Enumeration.len R.enumeration
-      match R.predictor.ζ n with
-      | none   => R.enumeration
-      | some x => Enumeration.snoc R.enumeration x
-
-end Refinement
-
-namespace Instrument
-
-  def domainRefinement {S σ} (I : Instrument S σ) : Refinement S :=
-    { enumeration := I.ledger.toEnum -- (Assuming Ledger wraps Enumeration)
-    , predictor   := I.domainLogic
-    }
-
-  def instrumentRefinement {S σ} (I : Instrument S σ) : Refinement σ :=
-    { enumeration := I.alphabet.symbols
-    , predictor   := I.instrumentLogic
-    }
-
-  def search {Record σ} (I : Instrument Record σ) (k : Nat) : Option Record :=
-    I.ledger.index k
-end Instrument
-
-
-structure RationalMap where
-  map : ZFC.QPos -> ZFC.Q
-
-structure DenseResponse where
-  rationals: Enumeration ZFC.QPos
-  instrument: RationalInstrument
-
-namespace DenseResponse
-  noncomputable def map (D : DenseResponse) (t : ZFC.QPos) : Option ZFC.QPos :=
-    match D.rationals.indexOf t with
-    | none   => none
-    | some i => (D.instrument).search i
-
-end DenseResponse
-
-
-structure DomainResponse where
-  ψ         : Real → Real
-  certifies : DenseResponse
-
-  -- membership predicate (your "q ∈ QPos")
-  QPosSet   : Set Real
-
-  -- turn membership evidence into an actual QPos value
-  toQPos    : ∀ {q : Real}, q ∈ QPosSet → ZFC.QPos
-
-  -- interpret a QPos back in the continuum
-  embedQPos : ZFC.QPos → Real
-
-namespace DomainResponse
 
 /--
-If `q ∈ QPosSet`, try the certified dense response; otherwise fall back to `ψ`.
-If the certified lookup fails (`none`), also fall back to `ψ`.
+An Event is a single symbol from the alphabet of a Phenomenon.
+NOTICE: σ is potentially uncountable!  Handle with care!
 -/
-noncomputable def psi (D : DomainResponse) (q : Real) : Real := by
-  classical
-  by_cases h : q ∈ D.QPosSet
-  ·
-    let t : ZFC.QPos := D.toQPos h
-    match DenseResponse.map D.certifies t with
-    | some t' => exact D.embedQPos t'
-    | none    => exact D.ψ q
-  ·
-    exact D.ψ q
+structure Event (σ : Type u) where
+  symbol : σ
 
-end DomainResponse
+namespace Phenomenon
+
+/--
+The Enumeration of a Phenomenon is the Map (η) that assigns
+each Event symbol to a unique Natural number (the ledger index).
+-/
+def enumeration {σ : Type u} {τ : Type v} [DecidableEq τ]
+    (decode : Event σ → Option τ) (e : Enumeration (Event σ)) :
+    Event σ → Option Nat :=
+  fun event =>
+    Enumeration.indexOfBy
+      (fun a b =>
+        match decode a, decode b with
+        | some x, some y => decide (x = y)
+        | _, _           => false)
+      e
+      event
+
+end Phenomenon
 
 end Measurement
