@@ -29,6 +29,16 @@ structure Phenomenon (σ : Type u) (τ : Type v) where
 structure Event (σ : Type u) where
   symbol : σ
 
+namespace Event
+
+noncomputable def eval (e : Event σ) (x : ℝ) : Option σ :=
+  if h : (0 < x ∧ x ≤ 1) then
+    some e.symbol
+  else
+    none
+
+end Event
+
 namespace Phenomenon
 
 /-- Unless I miss my guess, this can be a real-valued function
