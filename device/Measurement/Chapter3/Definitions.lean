@@ -26,19 +26,13 @@ structure Phenomenon (σ : Type u) (τ : Type v) where
   calibration : Calibration σ τ
 
 
-/--
-An Event is a single symbol from the alphabet of a Phenomenon.
-NOTICE: σ is potentially uncountable!  Handle with care!
--/
 structure Event (σ : Type u) where
   symbol : σ
 
 namespace Phenomenon
 
-/--
-The Enumeration of a Phenomenon is the Map (η) that assigns
-each Event symbol to a unique Natural number (the ledger index).
--/
+/-- Unless I miss my guess, this can be a real-valued function
+on the positive real numbers-/
 def enumeration {σ : Type u} {τ : Type v} [DecidableEq τ]
     (decode : Event σ → Option τ) (e : Enumeration (Event σ)) :
     Event σ → Option Nat :=
