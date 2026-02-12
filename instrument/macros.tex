@@ -79,15 +79,8 @@
 
 
 \newcommand{\citeph}[1]{%
-  Phenomenon~\ref{ph:#1}%
-  \footnote{\csname ph@title@#1\endcsname}%
+  #1\footnote{See Phenomenon~\ref{ph:#1}}%
 }
-
-\newcommand{\phenomtitle}[2]{%
-  \label{ph:#2}%
-  \expandafter\gdef\csname ph@title@#2\endcsname{#1}%
-}
-
 
 
 % --- House style for N.B. callouts (inline, bold, em-dash) ---
@@ -206,13 +199,6 @@
 \newcommand{\PhConsequence}{\global\ph@consequencetrue\item[\textbf{Consequence.}]}
 \newcommand{\PhInvariant}{\global\ph@invarianttrue\item[\textbf{Invariant.}]}
 \newcommand{\PhRefinement}{\global\ph@refinementtrue\item[\textbf{Refinement.}]}
-
-\newenvironment{phenomk}[2]{%
-  \gdef\csname ph@title@#2\endcsname{#1}%
-  \begin{phenom}{#1}\label{ph:#2}%
-}{%
-  \end{phenom}%
-}
 
 
 \makeatother

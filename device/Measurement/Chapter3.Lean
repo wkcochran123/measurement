@@ -92,9 +92,18 @@ structure Phenomenon (σ : Type u) (τ : Type v) where
 structure Event (σ : Type u) where
   symbol : σ
 
+instance {σ : Type u} [DecidableEq σ] : DecidableEq (Event σ)
+| ⟨s₁⟩, ⟨s₂⟩ =>
+  match decEq s₁ s₂ with
+  | isTrue h  => isTrue (by cases h; rfl)
+  | isFalse h => isFalse (by
+      intro h'
+      cases h'
+      exact h rfl)
+
 namespace Event
 
-noncomputable def eval (e : Event σ) (x : ℝ) : Option σ :=
+noncomputable def value (e : Event σ) (x : ℝ) : Option σ :=
   if h : (0 < x ∧ x ≤ 1) then
     some e.symbol
   else
@@ -117,6 +126,22 @@ def enumeration {σ : Type u} {τ : Type v} [DecidableEq τ]
         | _, _           => false)
       e
       event
+
+/-- Decode an Event through the phenomenon’s calibration. -/
+def decodeEvent {σ τ} (ph : Phenomenon σ τ) (e : Event σ) : Option τ :=
+  ph.calibration.read e.symbol
+
+/-- The phenomenon generates its observable events by walking the measurement decomposition. -/
+def generateEvents {σ : Type u} {τ : Type v}
+    (ph : Phenomenon σ τ) : Enumeration (Event σ) :=
+  Enumeration.map
+    (fun p : (σ × τ) => { symbol := p.1 })
+    ph.calibration.measurment.pairs
+
+/-- Index of an event in the phenomenon’s own generated sequence,
+    using the calibration as the decoding map. -/
+def indexOf {σ τ} [DecidableEq τ] (ph : Phenomenon σ τ) (e : Event σ) : Option Nat :=
+  enumeration (decodeEvent ph) (generateEvents ph) e
 
 end Phenomenon
 
