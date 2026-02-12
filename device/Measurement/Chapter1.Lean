@@ -1,18 +1,21 @@
+
 /-
-Measurement/Chapter1/Constructions.lean
+Measurement/Chapter1.lean
 
-Constructions layer (Chapter 1): Lisp operations on Enumeration,
-and the concrete nonempty spine TimeSeries := [head, tail].
-
+See text for description of the contents of this file.
 -/
 
-import Measurement.Chapter1.ZFC
+import Std
+import Mathlib.Data.Real.Basic
+
 
 
 namespace Measurement
 
 /--
 Definition 1: Enumeration Map.
+
+Step 1: Count your objects
 -/
 
 structure EnumerationMap (X : Type u) where
@@ -22,6 +25,8 @@ structure EnumerationMap (X : Type u) where
 
 /--
 Definition 2: Enumeration
+
+Step 2: List them as you count.
 -/
 inductive Enumeration (A : Type u) : Type u
   | nil : Enumeration A
@@ -83,14 +88,58 @@ end Enumeration
 
 /--
 Definition 3: Decoding Map
+
+With a list, you can find the nth element, if there is one.
 -/
 structure DecodingMap (X : Type v) where
   ζ : Nat → Option X
 
 
+/--
+Definition 4: Ledger
 
+Now, we make a linked list to store the objects we are counting.
+-/
+structure Ledger (X : Type u) : Type u where
+  head : X
+  tail : Enumeration X
 
+namespace Ledger
 
+variable {X : Type u}
+
+def toEnum (L : Ledger X) : Enumeration X :=
+  .cons L.head L.tail
+
+def first (L : Ledger X) : X :=
+  L.head
+
+def rest (L : Ledger X) : Nat -> Option X :=
+  fun n => Enumeration.nth L.tail n
+
+def last (L : Ledger X) : X :=
+  match Enumeration.last (L.toEnum) with
+  | some x => x
+  | none   => L.head
+
+def index (L : Ledger X) : Nat -> Option X :=
+  fun n =>
+    match n with
+    | 0     => some L.head
+    | n + 1 => Enumeration.nth L.tail n
+
+def reverse (L : Ledger X) : Ledger X :=
+  match Enumeration.rev (L.toEnum) with
+  | .nil => { head := L.head, tail := .nil }
+  | .cons h t => { head := h, tail := t }
+
+def size (L : Ledger X) : Nat :=
+  Enumeration.len (L.toEnum)
+
+def le {X : Type u} [Ord X] (L₁ L₂ : Ledger X) : Bool :=
+  Enumeration.leLex (toEnum L₁) (toEnum L₂)
+
+end Ledger
 
 
 end Measurement

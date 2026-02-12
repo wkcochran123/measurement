@@ -78,6 +78,17 @@
 \newcommand{\fold}{\mathop{\bigcirc}}
 
 
+\newcommand{\citeph}[1]{%
+  Phenomenon~\ref{ph:#1}%
+  \footnote{\csname ph@title@#1\endcsname}%
+}
+
+\newcommand{\phenomtitle}[2]{%
+  \label{ph:#2}%
+  \expandafter\gdef\csname ph@title@#2\endcsname{#1}%
+}
+
+
 
 % --- House style for N.B. callouts (inline, bold, em-dash) ---
 \newcommand{\NB}[1]{%
@@ -142,6 +153,8 @@
 \newif\ifph@observation
 \newif\ifph@constraint
 \newif\ifph@consequence
+\newif\ifph@invariant
+\newif\ifph@refinement
 
 \newcommand{\ph@resetflags}{%
   \global\ph@statementfalse
@@ -149,6 +162,8 @@
   \global\ph@observationfalse
   \global\ph@constraintfalse
   \global\ph@consequencefalse
+  \global\ph@invariantfalse
+  \global\ph@refinementfalse
 }
 
 \newcommand{\ph@requireflags}{%
@@ -189,6 +204,16 @@
 \newcommand{\PhObservation}{\global\ph@observationtrue\item[\textbf{Observation.}]}
 \newcommand{\PhConstraint}{\global\ph@constrainttrue\item[\textbf{Operational Constraint.}]}
 \newcommand{\PhConsequence}{\global\ph@consequencetrue\item[\textbf{Consequence.}]}
+\newcommand{\PhInvariant}{\global\ph@invarianttrue\item[\textbf{Invariant.}]}
+\newcommand{\PhRefinement}{\global\ph@refinementtrue\item[\textbf{Refinement.}]}
+
+\newenvironment{phenomk}[2]{%
+  \gdef\csname ph@title@#2\endcsname{#1}%
+  \begin{phenom}{#1}\label{ph:#2}%
+}{%
+  \end{phenom}%
+}
+
 
 \makeatother
 
