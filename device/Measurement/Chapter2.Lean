@@ -76,14 +76,15 @@ structure Device (σ : Type S) (τ:Type T) where
   decomposition : Decomposition τ σ
 
 /--
-Definition 9: The Clock
+Definition 9: Einstein Device
 
 Our first algorithm just outputs the current cycle number each cycle.
 -/
 abbrev EinsteinDevice := Device Nat Nat
 
 /--
-Definition 10: -/
+Definition 10: Finite Turing Device
+-/
 abbrev TuringDevice (S : Type u) (σ : Type v) : Type (max u v) :=
   Device S σ
 

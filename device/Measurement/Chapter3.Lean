@@ -68,26 +68,35 @@ def decode? {τ : Type u} {σ : Type v} [DecidableEq τ]
 
 end Decomposition
 
-structure Calibration (σ : Type u) (τ : Type v) where
-  measurment: Decomposition σ τ
-  reference: Decomposition τ σ
-  read : σ → Option τ
+structure Carrier (σ : Type u) (τ : Type v) where
+  instrument: Instrument σ τ
+  model: TuringDevice σ τ
+  map: Inversion σ τ
 
-namespace Calibration
+namespace Carrier
 
-def judgeEq {σ : Type u} {τ : Type v} [DecidableEq τ]
-    (C : Calibration σ τ) (a b : σ) : Bool :=
-  match C.read a, C.read b with
-  | some x, some y => decide (x = y)
-  | _, _           => false
+-- One-sided receive: attempt to obtain a τ from a σ via the carrier
+noncomputable def recv? {σ : Type u} {τ : Type v}
+  [DecidableEq σ] [DecidableEq τ]
+  (C : Carrier σ τ) (x : σ) : Option τ :=
 
-end Calibration
+  -- Step 1: run the finite device
+  -- (whatever your TuringDevice exposes as its step/output)
+  match C.model.decomposition.inverse.decode? x with
+  | none => none
+  | some y =>
+      -- Step 2: check admissibility via inversion
+      match C.map.inv.decode? y with
+      | none   => none
+      | some _ => some y
+
+end Carrier
+
 
 
 structure Phenomenon (σ : Type u) (τ : Type v) where
-  invariant : Inversion σ τ
-  calibration : Calibration σ τ
-
+  sensor : Device σ τ
+  carrier : Carrier σ τ
 
 structure Event (σ : Type u) where
   symbol : σ
@@ -127,25 +136,8 @@ def enumeration {σ : Type u} {τ : Type v} [DecidableEq τ]
       e
       event
 
-/-- Decode an Event through the phenomenon’s calibration. -/
-def decodeEvent {σ τ} (ph : Phenomenon σ τ) (e : Event σ) : Option τ :=
-  ph.calibration.read e.symbol
-
-/-- The phenomenon generates its observable events by walking the measurement decomposition. -/
-def generateEvents {σ : Type u} {τ : Type v}
-    (ph : Phenomenon σ τ) : Enumeration (Event σ) :=
-  Enumeration.map
-    (fun p : (σ × τ) => { symbol := p.1 })
-    ph.calibration.measurment.pairs
-
-/-- Index of an event in the phenomenon’s own generated sequence,
-    using the calibration as the decoding map. -/
-def indexOf {σ τ} [DecidableEq τ] (ph : Phenomenon σ τ) (e : Event σ) : Option Nat :=
-  enumeration (decodeEvent ph) (generateEvents ph) e
-
 end Phenomenon
 
-
-
+abbrev RealCarrier := Carrier Nat Nat
 
 end Measurement

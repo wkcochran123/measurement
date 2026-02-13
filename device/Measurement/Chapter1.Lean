@@ -7,6 +7,7 @@ See text for description of the contents of this file.
 
 import Std
 import Mathlib.Data.Real.Basic
+import Mathlib.Data.Nat.Basic
 
 
 

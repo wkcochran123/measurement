@@ -1,6 +1,6 @@
 # Measurement
 
-Version 0.1.5
+Version 0.2
 [Latest pdf build.](https://drive.google.com/file/d/1t8qZYaYHa_-4-A0Hfjk-5ZqHwnuflh8H/view?usp=drive_link)
 
 This repository contains a developing axiomatic framework for measurement,
@@ -12,11 +12,14 @@ The project is intentionally split between two modes:
 1. **Human-readable mathematical exposition**, and
 2. **Machine-verified formal statements** in Lean.
 
-Up through **Chapter 2**, these two views coincide. From that point onward,
-the manuscript emphasizes the *shape* and consequences of the argument rather
-than full formal rigor.
+The Lean has progressed substantially, providing rough outlines of chapters 3-10.
+We have constructed the physical law f(t) = t.  In other words, time passes.  This
+law is potentially continuous, being discontinuous in at most a countable number
+of points.  At least, insofar as we can measure time as continuous, it is continuous.
 
 ## Release Notes — v0.2
+
+## Release Notes — v0.1.5
 
 ### Chapter 1
 - Relocated the discussion of ZFC to Chapter 1, establishing the foundational

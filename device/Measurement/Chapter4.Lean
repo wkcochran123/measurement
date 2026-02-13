@@ -4,6 +4,24 @@ namespace Measurement
 
 universe u v w
 
+
+
+structure Calibration (σ : Type u) (τ : Type v) where
+  measurment: Decomposition σ τ
+  reference: Decomposition τ σ
+  read : σ → Option τ
+
+namespace Calibration
+
+def judgeEq {σ : Type u} {τ : Type v} [DecidableEq τ]
+    (C : Calibration σ τ) (a b : σ) : Bool :=
+  match C.read a, C.read b with
+  | some x, some y => decide (x = y)
+  | _, _           => false
+
+end Calibration
+
+
 /-- Chapter 4: a "poset" as a counted family of admissible inversions. -/
 structure PartialOrder (σ : Type u) where
   poset : Enumeration (Inversion σ σ)
@@ -117,5 +135,28 @@ noncomputable def ψ {σ : Type u} {τ : Type v} [DecidableEq σ]
       | some y => some (x', y)
 
 end Manifold
+
+structure Vector (σ :Type u) where
+  coordinates: Enumeration σ
+
+structure Basis (σ : Type u) where
+  vectors: Enumeration (Vector σ)
+  manifold: Manifold σ σ
+
+/-- A model is a choice of coordinate system (basis) together with a transport
+    rule (decomposition).  It takes an input symbol and produces an output
+    symbol when admissible. -/
+structure Model (σ : Type u) (τ : Type v) where
+  basis : Basis σ
+  decomposition : Decomposition σ τ
+
+namespace Model
+
+/-- Evaluate a model on a symbol by applying its decomposition. -/
+def eval? {σ : Type u} {τ : Type v} [DecidableEq σ]
+  (M : Model σ τ) (x : σ) : Option τ :=
+  M.decomposition.read? x
+
+end Model
 
 end Measurement
