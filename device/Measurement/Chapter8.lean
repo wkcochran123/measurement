@@ -2,102 +2,116 @@ import Measurement.Chapter7
 
 namespace Measurement
 
-structure RationalMap (σ : Type u) (τ : Type (u+1)) where
-  domain: Decomposition σ τ
-  range: Decomposition σ τ
 
-structure Integration (σ : Type u) (τ : Type (u+1)) where
-  volume: Enumeration (RationalMap σ τ)
+structure TimeSeries (σ : Type u)(τ : Type (u+1)) where
+  rows: Counting σ τ
+  columns: Alphabet τ
 
-structure Prediction (σ : Type u) (τ : Type (u+1)) where
-  model: RationalMap σ τ
-  representation: Inversion σ τ
+structure EventSeries (σ : Type u)(τ : Type (u+1)) where
+  rows: Counting σ τ
+  columns: Alphabet τ
 
-structure Residue (σ : Type u) (τ : Type (u+1)) where
-  bayes: Prediction σ τ
-  model: Prediction σ τ
-  norm: Norm σ τ
+structure Surface (σ : Type u)(τ : Type (u+1)) where
+  ordintate: TimeSeries σ τ
+  abscissa: EventSeries σ τ
 
-namespace Residue
-universe u
-
-variable {σ : Type u} {τ : Type (u+1)}
-variable [DecidableEq σ] [DecidableEq τ]
-
-def fromModels
-    (bayesModel : Prediction σ τ)
-    (phenomenalModel : Prediction σ τ)
-    (n : Norm σ τ) : Residue σ τ :=
-  { bayes := bayesModel
-    model := phenomenalModel
-    norm  := n }
+structure Residue (σ : Type u)(τ : Type (u+1)) where
+  left: Surface σ τ
+  right: Surface σ τ
+  distance: Statistic σ τ
 
 
-/-- Sum of `Norm.distance` over an enumeration of pairs. -/
-def enumSum (n : Norm σ τ) : Enumeration (σ × τ) → Nat
-  | .nil => 0
-  | .cons p ps => n.distance p + enumSum n ps
+abbrev Ruler := Residue Nat (ULift Nat)
 
-/-- Cost of disagreeing pairs at a single step (symmetric in the two predictors). -/
-def stepCost (n : Norm σ τ) (p q : σ × τ) : Nat :=
-  if h : p = q then
-    0
-  else
-    n.distance p + n.distance q
+/-- Column lookup: where does a `τ` land in the alphabet? -/
+def Alphabet.indexOf? {τ : Type u} [DecidableEq τ] (A : Alphabet τ) (t : τ) : Option Nat :=
+  Enumeration.indexOf A.symbols t
+
+/-- Apply the counting's ArrowOfTime once. Right now this is constant-in-time. -/
+def Counting.observe? {σ : Type u} {τ : Type (u+1)}
+  (C : Counting σ τ) : Option (Event τ) :=
+  ArrowOfTime.elapse C.events
 
 /--
-Compare two enumerated decompositions pairwise.
-If one list ends first, the remaining tail also contributes cost via `enumSum`.
--/
-def enumCost (n : Norm σ τ) : Enumeration (σ × τ) → Enumeration (σ × τ) → Nat
-  | .nil, ys => enumSum n ys
-  | xs, .nil => enumSum n xs
-  | .cons p ps, .cons q qs =>
-      stepCost n p q + enumCost n ps qs
+A time series "integral": turn row ticks into a Nat by
+(1) observing the τ-event (post-tick),
+(2) locating its column in the alphabet,
+(3) returning that column index (or 0 if absent).
 
-/-- Cost between two `RationalMap`s: compare both `domain` and `range`. -/
-def mapCost (n : Norm σ τ) (f g : RationalMap σ τ) : Nat :=
-  enumCost n f.domain.pairs g.domain.pairs
-  + enumCost n f.range.pairs g.range.pairs
+This is the minimal honest integral with the current `Counting`.
+Later, when `Counting` becomes iterative, this becomes a fold over ticks.
+-/
+noncomputable def TimeSeries.integral
+  {σ : Type u} {τ : Type (u+1)}
+  [DecidableEq τ]
+  (TS : TimeSeries σ τ) : Enumeration (Event σ) → Nat :=
+  fun _ticks =>
+    match Counting.observe? TS.rows with
+    | none      => 0
+    | some eτ   =>
+        match Alphabet.indexOf? TS.columns eτ.symbol with
+        | none   => 0
+        | some k => k
+
+/-- Same story for EventSeries (it is structurally identical right now). -/
+noncomputable def EventSeries.integral
+  {σ : Type u} {τ : Type (u+1)}
+  [DecidableEq τ]
+  (ES : EventSeries σ τ) : Enumeration (Event σ) → Nat :=
+  fun _ticks =>
+    match Counting.observe? ES.rows with
+    | none      => 0
+    | some eτ   =>
+        match Alphabet.indexOf? ES.columns eτ.symbol with
+        | none   => 0
+        | some k => k
 
 /--
-The Residue as a scalar action: distance between Bayes and Model predictions,
-measured by the provided `Norm`.
+Build an `Integration` snapshot from a series:
+- accumulator holds the running state (here: a singleton is enough),
+- integral is the series' integral functional.
 -/
-def length (r : Residue σ τ) : Nat :=
-  mapCost r.norm r.bayes.model r.model.model
+noncomputable def TimeSeries.toIntegration
+  {σ : Type u} {τ : Type (u+1)}
+  [DecidableEq τ]
+  (TS : TimeSeries σ τ) : Integration σ τ :=
+  let A : Accumulator σ τ :=
+    { counting := TS.rows
+      total    := Enumeration.len TS.rows.ticks }
+  { accumulator := Enumeration.cons A Enumeration.nil
+    integral    := TimeSeries.integral TS }
 
-end Residue
+noncomputable def EventSeries.toIntegration
+  {σ : Type u} {τ : Type (u+1)}
+  [DecidableEq τ]
+  (ES : EventSeries σ τ) : Integration σ τ :=
+  let A : Accumulator σ τ :=
+    { counting := ES.rows
+      total    := Enumeration.len ES.rows.ticks }
+  { accumulator := Enumeration.cons A Enumeration.nil
+    integral    := EventSeries.integral ES }
 
-structure CommonExperience (σ : Type u) (τ : Type (u+1)) where
-  projection: Projection σ τ
-  experiences: Enumeration (TimeSeries σ τ)
+/--
+A residue statistic: compare left vs right by
+summing the discrepancies of ordinate and abscissa integrals.
 
-namespace CommonExperience
+Right now we can define the discrepancy as `Nat` absolute difference.
+If you already have a `Norm.distance` notion elsewhere, substitute it here.
+-/
+def natAbsDiff (a b : Nat) : Nat :=
+  if h : a ≤ b then b - a else a - b
 
-/-- Map an `Enumeration`. -/
-def map {A : Type u} {B : Type v} (f : A → B) : Enumeration A → Enumeration B
-  | .nil        => .nil
-  | .cons a as  => .cons (f a) (map f as)
+noncomputable def Residue.computeDistance
+  {σ : Type u} {τ : Type (u+1)}
+  [DecidableEq τ]
+  (R : Residue σ τ) : Nat :=
+  let Il_o := TimeSeries.toIntegration R.left.ordintate
+  let Ir_o := TimeSeries.toIntegration R.right.ordintate
+  let Il_a := EventSeries.toIntegration R.left.abscissa
+  let Ir_a := EventSeries.toIntegration R.right.abscissa
+  let dl := natAbsDiff Il_o.value Ir_o.value
+  let da := natAbsDiff Il_a.value Ir_a.value
+  dl + da
 
-/-- Flatten an `Enumeration` of `Enumeration`s. -/
-def flatten {A : Type u} : Enumeration (Enumeration A) → Enumeration A
-  | .nil        => .nil
-  | .cons xs xss => Enumeration.append xs (flatten xss)
-
-/-- The event-ledger associated to a single `TimeSeries`: take the last `Fact`'s record. -/
-def timeSeriesEvents {σ : Type u} {τ : Type (u+1)} (T : TimeSeries σ τ) : Ledger (Event τ) :=
-  (Ledger.last T).record
-
-/-- All events contributed by all common experiences, concatenated in enumeration order. -/
-def allEvents {σ : Type u} {τ : Type (u+1)} (C : CommonExperience σ τ) : Enumeration (Event τ) :=
-  flatten (map (fun T => (timeSeriesEvents T).toEnum) C.experiences)
-
-/-- The `n`th event in the common experience stream (if it exists). -/
-def next_event? {σ : Type u} {τ : Type (u+1)}
-  (C : CommonExperience σ τ) (n : Nat) : Option (Event τ) :=
-  Enumeration.nth (allEvents C) n
-
-end CommonExperience
 
 end Measurement
