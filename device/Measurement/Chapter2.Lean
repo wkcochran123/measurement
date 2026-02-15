@@ -75,6 +75,17 @@ structure Device (σ : Type S) (τ:Type T) where
   instrument : Instrument σ τ
   decomposition : Decomposition τ σ
 
+
+namespace Instrument
+
+/-- Build the canonical `Device` whose decomposition is the zipped traversal of
+    the instrument's alphabet and ledger (pairs `(τ × σ)`). -/
+def getDevice {σ : Type u} {τ : Type v} (I : Instrument σ τ) : Device σ τ :=
+{ instrument    := I
+  decomposition := { pairs := Enumeration.zip I.alphabet.symbols I.ledger.toEnum } }
+
+end Instrument
+
 /--
 Definition 9: Einstein Device
 

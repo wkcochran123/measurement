@@ -2,38 +2,76 @@ import Measurement.Chapter6
 
 namespace Measurement
 
-structure Counting (σ : Type u) (τ : Type (u+1)) where
-  list: Enumeration (Sensor σ τ Nat)
+structure Counting (σ : Type u)(τ : Type (u+1)) where
+  ticks: Enumeration (Event σ)
+  events: ArrowOfTime (Event σ) (Event τ)
 
-structure Norm (σ : Type u) (τ : Type (u+1)) where
-  distance: (σ × τ) → Nat
+structure Accumulator (σ : Type u)(τ : Type (u+1)) where
+  counting: Counting σ τ
+  total: Nat
 
-structure Accumulator (σ : Type u) (τ : Type (u+1)) where
-  dx: Counting σ τ
-  x: Norm σ τ
+structure Integration (σ : Type u)(τ : Type (u+1)) where
+  accumulator: Enumeration (Accumulator σ τ)
+  integral: Enumeration (Event σ) → Nat
 
-structure Space (σ : Type u) (τ : Type (u+1)) where
-  histories: Enumeration (Accumulator σ τ)
+structure Statistic (σ : Type u)(τ : Type (u+1)) where
+  integration: Enumeration (Integration σ τ)
+  statistic: Enumeration (Integration σ τ) → Nat
 
-structure Fact (σ : Type u) (τ : Type (u+1)) where
-  sensor : Sensor σ τ RealCarrier
-  record : Ledger (Event τ)
 
-namespace Fact
+namespace Counting
 
-/-- Project an observation into the observer's record: accept it iff the sensor accepts it,
-    then append the resulting event to the ledger. -/
-noncomputable def project
-  {σ : Type u} {τ : Type (u+1)}
-  [DecidableEq σ] [DecidableEq τ]
-  (F : Fact σ τ) (s : σ) (t : τ) : Fact σ τ :=
-  match Sensor.reading? F.sensor s t with
-  | none   => F
-  | some y =>
-      { F with record := F.record.snoc { symbol := y } }
+/-- Add a tick-event to the counting tape. -/
+def push {σ : Type u} {τ : Type (u+1)}
+  (C : Counting σ τ) (e : Event σ) : Counting σ τ :=
+  { C with ticks := Enumeration.snoc C.ticks e }
 
-end Fact
+end Counting
 
-abbrev TimeSeries (σ : Type u) (τ : Type (u+1)) := Ledger (Fact σ τ)
+
+namespace Accumulator
+
+/-- Push an event: update the counting tape and increment the total. -/
+def push {σ : Type u} {τ : Type (u+1)}
+  (A : Accumulator σ τ) (e : Event σ) : Accumulator σ τ :=
+  { counting := A.counting.push e
+    total    := A.total.succ }
+
+/-- The value of an Accumulator is the current total of the ledger. -/
+def value {σ : Type u} {τ : Type (u+1)} (A : Accumulator σ τ) : Nat :=
+  A.total
+
+end Accumulator
+
+
+namespace Integration
+
+def push {σ : Type u} {τ : Type (u+1)}
+  (I : Integration σ τ) (A : Accumulator σ τ) : Integration σ τ :=
+  { I with accumulator := Enumeration.snoc I.accumulator A }
+
+
+def value {σ : Type u} {τ : Type (u+1)} (I : Integration σ τ) : Nat :=
+  match I.accumulator.last with
+  | none   => 0
+  | some A => I.integral A.counting.ticks
+
+end Integration
+
+
+namespace Statistic
+
+def push {σ : Type u} {τ : Type (u+1)}
+  (S : Statistic σ τ) (I : Integration σ τ) : Statistic σ τ :=
+  { S with integration := Enumeration.snoc S.integration I }
+
+
+def value {σ : Type u} {τ : Type (u+1)} (S : Statistic σ τ) : Nat :=
+  match S.integration.last with
+  | none   => 0
+  | some I => I.value
+
+end Statistic
+
 
 end Measurement

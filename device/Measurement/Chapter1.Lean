@@ -14,6 +14,21 @@ import Mathlib.Data.Nat.Basic
 namespace Measurement
 
 /--
+Definition 0: Arrow of Time
+-/
+
+structure ArrowOfTime (X : Type u) (Y : Type (u+1)) where
+  before : X
+  after  : Y
+
+namespace ArrowOfTime
+
+def elapse {X : Type u} {Y : Type (u+1)} (A : ArrowOfTime X Y) : Option Y :=
+  some A.after
+
+end ArrowOfTime
+
+/--
 Definition 1: Enumeration Map.
 
 Step 1: Count your objects
@@ -52,9 +67,15 @@ def len : Enumeration A -> Nat
   | .nil      => 0
   | .cons _ t => len t + 1
 
-def append : Enumeration A -> Enumeration A -> Enumeration A
-  | .nil,        ys => ys
-  | .cons a as,  ys => .cons a (append as ys)
+--def append : Enumeration A -> Enumeration A -> Enumeration A
+--  | .nil,        ys => ys
+--  | .cons a as,  ys => .cons a (append as ys)
+
+/-- Append enumerations (needed to flatten a 2D shape). -/
+def append {A : Type u} : Enumeration A → Enumeration A → Enumeration A
+  | .nil, ys => ys
+  | .cons a as, ys => .cons a (append as ys)
+
 
 def rev : Enumeration A -> Enumeration A
   | .nil      => .nil

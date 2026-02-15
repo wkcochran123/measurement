@@ -4,25 +4,14 @@ namespace Measurement
 
 universe u v w
 
+/--
+Definition : Parial Order
 
+A partial order is a relation on a set that provides some indication of
+"less than or equal to" between elements, but does not necessarily compare
+every pair of elements.
+-/
 
-structure Calibration (σ : Type u) (τ : Type v) where
-  measurment: Decomposition σ τ
-  reference: Decomposition τ σ
-  read : σ → Option τ
-
-namespace Calibration
-
-def judgeEq {σ : Type u} {τ : Type v} [DecidableEq τ]
-    (C : Calibration σ τ) (a b : σ) : Bool :=
-  match C.read a, C.read b with
-  | some x, some y => decide (x = y)
-  | _, _           => false
-
-end Calibration
-
-
-/-- Chapter 4: a "poset" as a counted family of admissible inversions. -/
 structure PartialOrder (σ : Type u) where
   poset : Enumeration (Inversion σ σ)
 
@@ -40,7 +29,6 @@ def any {A : Type u} (p : A → Bool) : Enumeration A → Bool
 
 end Enumeration
 
-
 namespace Decomposition
 
 /-- Boolean membership test for a specific pair in a decomposition. -/
@@ -52,7 +40,6 @@ def contains {σ : Type u} {τ : Type v} [DecidableEq σ] [DecidableEq τ]
 
 end Decomposition
 
-
 namespace Inversion
 
 /-- The inversion "admits" the ordered pair (a,b) iff it occurs in the enumerated pairs. -/
@@ -60,7 +47,6 @@ def admits {σ : Type u} [DecidableEq σ] (I : Inversion σ σ) (a b : σ) : Boo
   I.inv.contains (a, b)
 
 end Inversion
-
 
 namespace PartialOrder
 
@@ -85,7 +71,6 @@ def ceil? {σ : Type u} [DecidableEq σ]
     (fun y => if P.isCeil xs x y then some y else none)
     xs
 
-
 /-- `x` is bottom (least) among the enumerated candidates iff `x ≤ y` for all `y` in `xs`. -/
 def isBottom {σ : Type u} [DecidableEq σ]
     (P : PartialOrder σ) (xs : Enumeration σ) (x : σ) : Bool :=
@@ -101,23 +86,40 @@ def bottom? {σ : Type u} [DecidableEq σ]
 end PartialOrder
 
 
-structure Invariant (σ : Type u) (τ : Type v) where
-  evidence : Device σ τ
-  model    : Inversion σ τ
-  survivor : (σ × τ) → Option τ
+structure Walking (σ : Type u) where
+  poset : PartialOrder σ
+  candidates : Enumeration σ
 
-namespace Invariant
+namespace Walking
 
-noncomputable def admissible {σ : Type u} {τ : Type v}
-    [DecidableEq σ]
-    (I : Invariant σ τ) (e : σ) : Option τ :=
-  match I.model.inv.inverse.decode? e with
-  | none   => none
-  | some y => I.survivor (e, y)
+def iterate (W : Walking σ) :
+    Nat → Option (ULift σ) :=
+  fun t =>
+    let u' := t.succ
+    match Enumeration.nth W.candidates u' with
+    | none   => none
+    | some s => some ⟨s⟩
 
-end Invariant
+end Walking
 
 
+structure Calibration (σ : Type u) (τ : Type v) where
+  measurment: Decomposition σ τ
+  reference: Decomposition τ σ
+  read : σ → Option τ
+
+namespace Calibration
+
+def judgeEq {σ : Type u} {τ : Type v} [DecidableEq τ]
+    (C : Calibration σ τ) (a b : σ) : Bool :=
+  match C.read a, C.read b with
+  | some x, some y => decide (x = y)
+  | _, _           => false
+
+end Calibration
+
+
+/-- Introducing Geometry!-/
 structure Manifold (σ : Type u) (τ : Type v) where
   domain: PartialOrder σ
   range: Invariant σ τ
@@ -136,27 +138,5 @@ noncomputable def ψ {σ : Type u} {τ : Type v} [DecidableEq σ]
 
 end Manifold
 
-structure Vector (σ :Type u) where
-  coordinates: Enumeration σ
-
-structure Basis (σ : Type u) where
-  vectors: Enumeration (Vector σ)
-  manifold: Manifold σ σ
-
-/-- A model is a choice of coordinate system (basis) together with a transport
-    rule (decomposition).  It takes an input symbol and produces an output
-    symbol when admissible. -/
-structure Model (σ : Type u) (τ : Type v) where
-  basis : Basis σ
-  decomposition : Decomposition σ τ
-
-namespace Model
-
-/-- Evaluate a model on a symbol by applying its decomposition. -/
-def eval? {σ : Type u} {τ : Type v} [DecidableEq σ]
-  (M : Model σ τ) (x : σ) : Option τ :=
-  M.decomposition.read? x
-
-end Model
 
 end Measurement

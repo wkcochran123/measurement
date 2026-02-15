@@ -11,16 +11,8 @@ decomposition.  Given a decomposition, this will invert the order of the pairs i
 structure Inversion (σ : Type u) (τ : Type v) where
   inv : Decomposition τ σ
 
-namespace Inversion
-
-def eta {σ : Type u} {τ : Type v} (I : Inversion σ τ) : Nat → Option (τ × σ) :=
-  fun n => Enumeration.nth I.inv.pairs n
-
-end Inversion
-
 namespace Enumeration
 
-/-- Map a function over an enumeration. -/
 def map {A : Type u} {B : Type v} (f : A → B) : Enumeration A → Enumeration B
   | .nil        => .nil
   | .cons a as  => .cons (f a) (map f as)
@@ -32,7 +24,6 @@ def findMap? {A : Type u} {B : Type v} (f : A → Option B) : Enumeration A → 
       | some b => some b
       | none   => findMap? f as
 
-/-- `indexOf`, but using a user-supplied equality test instead of `DecidableEq`. -/
 def indexOfBy {A : Type u} (eqb : A → A → Bool) : Enumeration A → A → Option Nat
   | .nil,        _ => none
   | .cons a as,  x =>
@@ -40,7 +31,6 @@ def indexOfBy {A : Type u} (eqb : A → A → Bool) : Enumeration A → A → Op
         some 0
       else
         Option.map Nat.succ (indexOfBy eqb as x)
-
 
 end Enumeration
 
@@ -68,6 +58,20 @@ def decode? {τ : Type u} {σ : Type v} [DecidableEq τ]
 
 end Decomposition
 
+namespace Inversion
+
+def η {σ : Type u} {τ : Type v} (I : Inversion σ τ) : Nat → Option (τ × σ) :=
+  fun n => Enumeration.nth I.inv.pairs n
+
+end Inversion
+
+
+/--
+Definition 12: Carrier
+
+Metaphysical device responsible for event arrival.
+-/
+
 structure Carrier (σ : Type u) (τ : Type v) where
   instrument: Instrument σ τ
   model: TuringDevice σ τ
@@ -75,29 +79,62 @@ structure Carrier (σ : Type u) (τ : Type v) where
 
 namespace Carrier
 
--- One-sided receive: attempt to obtain a τ from a σ via the carrier
 noncomputable def recv? {σ : Type u} {τ : Type v}
   [DecidableEq σ] [DecidableEq τ]
   (C : Carrier σ τ) (x : σ) : Option τ :=
 
-  -- Step 1: run the finite device
-  -- (whatever your TuringDevice exposes as its step/output)
   match C.model.decomposition.inverse.decode? x with
   | none => none
   | some y =>
-      -- Step 2: check admissibility via inversion
       match C.map.inv.decode? y with
       | none   => none
       | some _ => some y
 
 end Carrier
 
+namespace Device
 
+/-- Promote a `Device` to its implied metaphysical `Carrier`.
+    The computational model is the most expressive finite object available here:
+    the device itself (a `TuringDevice`). The inversion map is the device's
+    own decomposition viewed as an `Inversion`. -/
+  def getCarrier {σ : Type u} {τ : Type v} (D : Device σ τ) : Carrier σ τ :=
+{ instrument := D.instrument
+  model      := D
+  map        := { inv := D.decomposition } }
+
+end Device
+
+/--
+Definition 13: RealCarrier
+
+This carrier can carry the description of a real number
+-/
+abbrev DopplerCarrier := Carrier Nat Nat
+
+
+
+
+
+/--
+Definition 14: Phenomenon
+
+A phenomenon is an observered experience.  It is detected
+by a sensor and must be carried by a carrier.
+-/
 
 structure Phenomenon (σ : Type u) (τ : Type v) where
   sensor : Device σ τ
   carrier : Carrier σ τ
 
+
+/--
+Definition 15: Event
+
+An event is a distinquished occurence.  It is
+distinguished by its symbol, σ, which may or may not
+come from an alphabet.
+-/
 structure Event (σ : Type u) where
   symbol : σ
 
@@ -138,6 +175,21 @@ def enumeration {σ : Type u} {τ : Type v} [DecidableEq τ]
 
 end Phenomenon
 
-abbrev RealCarrier := Carrier Nat Nat
+structure Invariant (σ : Type u) (τ : Type v) where
+  evidence : Device σ τ
+  model    : Inversion σ τ
+  survivor : (σ × τ) → Option τ
+
+namespace Invariant
+
+noncomputable def admissible {σ : Type u} {τ : Type v}
+    [DecidableEq σ]
+    (I : Invariant σ τ) (e : σ) : Option τ :=
+  match I.model.inv.inverse.decode? e with
+  | none   => none
+  | some y => I.survivor (e, y)
+
+end Invariant
+
 
 end Measurement

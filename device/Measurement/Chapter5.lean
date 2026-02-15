@@ -4,44 +4,31 @@ namespace Measurement
 
 universe u v w
 
-structure TemporalVariation
-  (A : Type u → Type v → Type w)
-  (B : Type (u+1) → Type (v+1) → Type w')
-  (σ  : Type u) (τ  : Type v)
-  (σ' : Type (u+1)) (τ' : Type (v+1)) where
-  left  : A σ τ
-  right : B σ' τ'
-
-structure PhenomenalVariation
-  (A : Type u → Type v → Type w)
-  (σ : Type u) (τ : Type v) where
-  left  : A σ τ
-  right : A σ τ
-
-structure MixedVariation (A : Type u → Type v → Type w)
-  (A : Type u → Type v → Type w)
-  (B : Type (u+1) → Type (v+1) → Type w')
-  (σ  : Type u) (τ  : Type v)
-  (σ' : Type (u+1)) (τ' : Type (v+1)) where
-
-  timelike: TemporalVariation A B σ τ σ' τ'
-  spacelike: PhenomenalVariation A σ τ
-
-
-
-
 structure Partition (σ : Type u) (τ : Type v) where
   key : σ
   fiber : (σ × τ) → Alphabet σ
-
 
 structure Kernel (σ : Type u) (τ : Type v) where
   space: Partition σ τ
   injection: Inversion σ τ
 
+structure DotProduct (σ : Type u) (τ : Type v) where
+  kernel : Kernel σ τ
+  vector : Manifold σ τ
+
+structure Variation (σ : Type u) (τ : Type (u+1)) where
+  step: ArrowOfTime σ τ
+  norm: DotProduct σ τ
+
+
+namespace Partition
+  def representative {σ : Type u} {τ : Type v} (P : Partition σ τ) : σ :=
+  P.key
+end Partition
+
 namespace Kernel
 
-  noncomputable def phi {σ : Type u} {τ : Type v}
+  noncomputable def φ {σ : Type u} {τ : Type v}
     [DecidableEq σ]
     (K : Kernel σ τ) (x : σ) : Option (Alphabet σ × τ) :=
   match K.injection.inv.inverse.decode? x with
@@ -52,48 +39,34 @@ namespace Kernel
 
 end Kernel
 
-structure DotProduct (σ : Type u) (τ : Type v) where
-  kernel : Kernel σ τ
-  vector : Manifold σ τ
-
 namespace DotProduct
 
 noncomputable def correlance {σ : Type u} {τ : Type v}
     [DecidableEq σ] [DecidableEq τ]
     (DP : DotProduct σ τ) (x : σ) : Option Bool :=
-  match (Kernel.phi DP.kernel x, DP.vector.range.admissible x) with
+  match (Kernel.φ DP.kernel x, DP.vector.range.admissible x) with
   | (some (_, y₁), some y₂) => some (decide (y₁ = y₂))
   | _                       => none
 
+noncomputable def project {σ : Type u} {τ : Type v} [DecidableEq σ] [DecidableEq τ]
+  (DP : DotProduct σ τ) (x : σ) : Option Bool := DotProduct.correlance DP x
 end DotProduct
 
-structure Projection (σ : Type u) (τ : Type v) where
-  dot: DotProduct σ τ
-  manifold: Manifold τ τ
 
-namespace Projection
-  noncomputable def project {σ : Type u} {τ : Type v} [DecidableEq σ] [DecidableEq τ]
-    (P : Projection σ τ) (x : σ) : Option Bool := P.dot.correlance x
 
-end Projection
+noncomputable def Variation.succ {σ : Type u} {τ : Type (u+1)}
+    [DecidableEq σ] [DecidableEq τ]
+    (V : Variation σ τ) (x : σ) : Option τ :=
+  let rep := V.norm.kernel.space.representative
 
-abbrev LorentzProjection (σ : Type u) := Projection σ σ
+  match DotProduct.project V.norm rep with
+  | some true =>
+      V.step.elapse
+  | _ =>
+      none
 
-abbrev CantorProjection := Projection Nat ℚ
-abbrev CauchyProjection := Projection ℚ ℝ
 
-/-- If the required ingredients exist, then the projections exist. -/
-theorem cantor_exists
-  (dot : DotProduct Nat ℚ) (man : Manifold ℚ ℚ) :
-  ∃ P : CantorProjection, True :=
-by
-  refine ⟨{ dot := dot, manifold := man }, trivial⟩
-
-theorem cauchy_exists
-  (dot : DotProduct ℚ ℝ) (man : Manifold ℝ ℝ) :
-  ∃ P : CauchyProjection, True :=
-by
-  refine ⟨{ dot := dot, manifold := man }, trivial⟩
-
+/-- Law of Bit Sufficiency?-/
+abbrev Prediction := Variation Nat (ULift Nat)
 
 end Measurement
