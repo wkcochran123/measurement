@@ -1,8 +1,36 @@
-
 /-
 Measurement/Chapter1.lean
+Facts
 
-See text for description of the contents of this file.
+There are four definitions per chapter in the accompanying description.  These
+correspond to
+o Invariant:     Something that seems to exist
+o Instrument:    Metaphysical description of the invariant
+o Device:        The representation of a finite process that coulc measure
+                 the invariant
+o Closure:       The general description of the mathematical container of
+                 the invariant
+
+
+Conventions:
+
+Universe Number:     The η/ζ the compiler uses to understand the ledger of readings
+                     built during compilation
+η                    The "lookup map" Given a symbol, get any location of that symbol in a list.
+ζ                    Given a spot in a list, what is the symbol there?
+
+
+Chapter 1 discuss the foundations of time and counting.  It identifies the ArrowOfTime
+as the concept of before and after.  Concepts "before" ar of universe Type u.  Concepts
+"after" are of universe Type u+1.  The universe evolves through time.
+
+There is one assumption that runs through the code, the decidablility of equality between
+abstract symbols.  Please refere to section 1.1 on the reasoning.  This is evidenced by
+[DecidableEq σ] and [DecidableEq τ] appearing in the type signatures of many functions.
+
+Further, any future conmputation is _noncomputable_.  Please refere to Section 1.1 for
+the reasoning.  Basically, there is no computation that predicts the future exactly,
+so we prevent Lean from trying.
 -/
 
 import Std
@@ -13,105 +41,36 @@ import Mathlib.Data.Nat.Basic
 
 namespace Measurement
 
-/--
-Definition 0: Arrow of Time
+/-
+There are two types of values, physical and metaphysical.
 -/
-
-structure ArrowOfTime (X : Type u) (Y : Type (u+1)) where
-  before : X
-  after  : Y
-
-namespace ArrowOfTime
-
-def elapse {X : Type u} {Y : Type (u+1)} (A : ArrowOfTime X Y) : Option Y :=
-  some A.after
-
-end ArrowOfTime
+universe u v
 
 /--
-Definition 1: Enumeration Map.
+Definition 1: ArrowOfTime
 
-Step 1: Count your objects
+This structure holds the type of two symbols, one that happened
+"before" now and one that will happend "after" now.
 -/
-
-structure EnumerationMap (X : Type u) where
-  η : X → Nat
-  surjective : Function.Surjective η
-
+structure ArrowOfTime (X : Type u)(Y : Type (u+1)) where
+  before: X
+  after: Y
 
 /--
 Definition 2: Enumeration
 
-Step 2: List them as you count.
+The most simple mathematical act is to count.  Counting
+does not necessarily take time.
 -/
 inductive Enumeration (A : Type u) : Type u
   | nil : Enumeration A
   | cons : A → Enumeration A → Enumeration A
 
-
-namespace Enumeration
-
-variable {A : Type u}
-
-def nth : Enumeration A -> Nat -> Option A
-  | .nil,      _     => none
-  | .cons a _, 0     => some a
-  | .cons _ t, n + 1 => nth t n
-
-def last : Enumeration A -> Option A
-  | .nil        => none
-  | .cons a .nil => some a
-  | .cons _ t   => last t
-
-def len : Enumeration A -> Nat
-  | .nil      => 0
-  | .cons _ t => len t + 1
-
---def append : Enumeration A -> Enumeration A -> Enumeration A
---  | .nil,        ys => ys
---  | .cons a as,  ys => .cons a (append as ys)
-
-/-- Append enumerations (needed to flatten a 2D shape). -/
-def append {A : Type u} : Enumeration A → Enumeration A → Enumeration A
-  | .nil, ys => ys
-  | .cons a as, ys => .cons a (append as ys)
-
-
-def rev : Enumeration A -> Enumeration A
-  | .nil      => .nil
-  | .cons a t => append (rev t) (.cons a .nil)
-
-inductive Prefix {A : Type u} : Enumeration A -> Enumeration A -> Prop
-  | nil  (t) : Prefix .nil t
-  | cons (a) (s t) : Prefix s t -> Prefix (.cons a s) (.cons a t)
-
-/-- Lexicographic `<=` on enumerations, with equality only if they end together. -/
-def leLex {A : Type u} [Ord A] : Enumeration A → Enumeration A → Bool
-  | .nil,       .nil        => true
-  | .nil,       .cons _ _   => false
-  | .cons _ _,  .nil        => false
-  | .cons a as, .cons b bs  =>
-      match compare a b with
-      | Ordering.lt => true
-      | Ordering.gt => false
-      | Ordering.eq => leLex as bs
-
-variable {A : Type u}
-
-def snoc : Enumeration A → A → Enumeration A
-  | xs, a => append xs (.cons a .nil)
-
-def indexOf [DecidableEq A] : Enumeration A → A → Option Nat
-  | .nil,      _ => none
-  | .cons a t, x => if a = x then some 0 else (indexOf t x).map Nat.succ
-
-end Enumeration
-
-
 /--
-Definition 3: Decoding Map
+Definition 3: DecodingMap
 
-With a list, you can find the nth element, if there is one.
+The decoding map is the thing that is made when you count something.
+It assigns an ordinal to a thing.
 -/
 structure DecodingMap (X : Type v) where
   ζ : Nat → Option X
@@ -120,48 +79,66 @@ structure DecodingMap (X : Type v) where
 /--
 Definition 4: Ledger
 
-Now, we make a linked list to store the objects we are counting.
+A Ledger is a list of things that have been counted (the linked_list)
+and the ordinal lookup index for those objects.  It is just a list
+with symbols on it that you can randomly access by entry number.
+These data comprise _facts_.
 -/
 structure Ledger (X : Type u) : Type u where
-  head : X
-  tail : Enumeration X
+  linked_list : Enumeration X
+  random_access : DecodingMap X
 
-namespace Ledger
 
-variable {X : Type u}
 
-def toEnum (L : Ledger X) : Enumeration X :=
-  .cons L.head L.tail
+/-
+**************************************************************
+Code:
 
-def first (L : Ledger X) : X :=
-  L.head
+This software uses discrete definitions of _many_ common concepts
+from mathematics all built from the idea of counting.
+-/
 
-def rest (L : Ledger X) : Nat -> Option X :=
-  fun n => Enumeration.nth L.tail n
+namespace ArrowOfTime
 
-def last (L : Ledger X) : X :=
-  match Enumeration.last (L.toEnum) with
-  | some x => x
-  | none   => L.head
+/--
+To elapse is to go forward in time.
+-/
+def elapse {X : Type u} {Y : Type (u+1)} (A : ArrowOfTime X Y) : Option Y :=
+  some A.after
 
-def index (L : Ledger X) : Nat -> Option X :=
-  fun n =>
-    match n with
-    | 0     => some L.head
-    | n + 1 => Enumeration.nth L.tail n
+/--
+One cannot relive the past.
+Lean does a _really_ good job of making sure you could not do this anyway, but,
+just to underline the point.
+-/
+def relive {X : Type u} : Option X :=
+  none
 
-def reverse (L : Ledger X) : Ledger X :=
-  match Enumeration.rev (L.toEnum) with
-  | .nil => { head := L.head, tail := .nil }
-  | .cons h t => { head := h, tail := t }
+end ArrowOfTime
 
-def size (L : Ledger X) : Nat :=
-  Enumeration.len (L.toEnum)
 
-def le {X : Type u} [Ord X] (L₁ L₂ : Ledger X) : Bool :=
-  Enumeration.leLex (toEnum L₁) (toEnum L₂)
+namespace Enumeration
 
-end Ledger
+variable {A : Type u}
+
+def η [DecidableEq A] : Enumeration A → A → Option Nat
+  | .nil,      _ => none
+  | .cons a t, x => if a = x then some 0 else (η t x).map Nat.succ
+
+def ζ : Enumeration A -> Nat -> Option A
+  | .nil,      _     => none
+  | .cons a _, 0     => some a
+  | .cons _ t, n + 1 => ζ t n
+
+/-- Append enumerations (needed to flatten a 2D shape). -/
+def append {A : Type u} : Enumeration A → Enumeration A → Enumeration A
+  | .nil, ys => ys
+  | .cons a as, ys => .cons a (append as ys)
+
+def count : Enumeration A → A → Enumeration A
+  | xs, a => append xs (.cons a .nil)
+
+end Enumeration
 
 
 end Measurement

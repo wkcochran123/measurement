@@ -2,75 +2,61 @@ import Measurement.Chapter5
 
 namespace Measurement
 
+structure Accumulation (σ : Type u) (τ : Type (u+1)) where
+  numbers: Counting σ τ
+  values: Enumeration (Invariant σ τ)
 
-structure Flattening (σ : Type u) (τ : Type (u+1)) where
-  ordering : Enumeration (Walking σ)
-  shape : Enumeration (Enumeration (σ × τ))
+structure Function (σ : Type u) (τ : Type (u+1)) where
+  domain: Manifold σ τ
+  codomain: Accumulation σ τ
 
-structure Refinement(σ : Type u) (τ : Type (u+1)) where
-  step: ArrowOfTime σ τ
-  value: Flattening σ τ
+structure Integration (σ : Type u) (τ : Type (u+1)) where
+  f: Function σ τ
+  integral: Accumulation σ τ
 
-structure GateauxVariation (σ : Type u) (τ : Type (u+1)) where
-  variation: Variation σ τ
-  Refinement: Refinement σ τ
-
-structure Sensor (σ : Type u) (τ : Type (u+1))  where
-  projection: GateauxVariation σ τ
-  reading: Inversion σ τ
-
+structure WeakForm (σ : Type u) (τ : Type (u+1)) where
+  domain: Manifold σ τ
+  range:  Integration σ τ
 
 
 
-
-namespace Flattening
-
-  noncomputable def ceil? {σ : Type u} {τ : Type (u+1)}
-  [DecidableEq σ]
-  (F : Flattening σ τ) (x : σ) : Option σ :=
-  Enumeration.findMap?
-    (fun W => PartialOrder.ceil? W.poset W.candidates x)
-    F.ordering
-
-end Flattening
-
-namespace Refinement
-
-def step? {σ : Type u} {τ : Type (u+1)}
-  (R : Refinement σ τ) : Option τ :=
-  ArrowOfTime.elapse R.step
-
-noncomputable def next? {σ : Type u} {τ : Type (u+1)}
-  [DecidableEq σ]
-  (R : Refinement σ τ) (x : σ) : Option (σ × τ) :=
-  match R.value.ceil? x, R.step? with
-  | some x', some y => some (x', y)
-  | _, _            => none
-
-end Refinement
-
-namespace GateauxVariation
-
-noncomputable def predict? {σ : Type u} {τ : Type (u+1)}
-  [DecidableEq σ] [DecidableEq τ]
-  (G : GateauxVariation σ τ) (x : σ) : Option τ :=
-  match G.Refinement.value.ceil? x with
-  | none    => none
-  | some x' => Variation.succ G.variation x'
-
-end GateauxVariation
+namespace Counting
+  def accumulate (C : Counting σ τ) {F: Function σ τ}: Accumulation σ τ :=
+    { numbers := C
+      values := F.codomain.values }
+end Counting
 
 
-namespace Sensor
+namespace Function
+  def f {σ : Type u} {τ : Type (u+1)} [DecidableEq σ] [DecidableEq τ]
+    (F : Function σ τ) (_x : σ) : Counting σ τ := F.codomain.numbers
 
-noncomputable def read? {σ : Type u} {τ : Type (u+1)}
-  [DecidableEq σ] [DecidableEq τ]
-  (S : Sensor σ τ) (x : σ) : Option τ :=
-  match S.projection.predict? x with
-  | none   => none
-  | some y =>
-      match S.reading.inv.decode? y with
-      | none   => none
-      | some _ => some y
+  def integrate {σ : Type u} {τ : Type (u+1)} [DecidableEq σ] [DecidableEq τ]
+    (F : Function σ τ) (_x : σ) : Integration σ τ :=
+    { f := F
+      integral := F.codomain }
+end Function
 
-end Sensor
+namespace Integration
+
+  def weakForm {σ : Type u} {τ : Type (u+1)} [DecidableEq σ] [DecidableEq τ]
+    (I : Integration σ τ) : WeakForm σ τ :=
+    { domain := I.f.domain
+      range := I }
+
+end Integration
+
+namespace WeakForm
+
+  /-
+  You get a list of invariants (whatever they may be) and their associated numbers.
+  This describes how to make a list of Type u+1 from Type u.
+  -/
+  def measure {σ : Type u} {τ : Type (u+1)} [DecidableEq σ] [DecidableEq τ]
+    (WF : WeakForm σ τ) (_x : σ) : Accumulation σ τ :=
+    WF.range.integral
+
+end WeakForm
+
+
+end Measurement

@@ -2,18 +2,27 @@ import Measurement.Chapter3
 
 namespace Measurement
 
-universe u v w
+structure PartialOrder (σ : Type u) (τ : Type (u+1)) where
+  poset : Enumeration (Inversion σ τ)
 
-/--
-Definition : Parial Order
+structure Event (σ: Type u)(τ: Type (u+1)) where
+  state : σ
+  reading : τ
+  deriving DecidableEq
 
-A partial order is a relation on a set that provides some indication of
-"less than or equal to" between elements, but does not necessarily compare
-every pair of elements.
+structure Walking (σ : Type u)(τ : Type (u+1)) where
+  poset : PartialOrder σ τ
+  candidates : Enumeration (Event σ τ)
+
+structure Counting (σ : Type u)(τ : Type (u+1)) where
+  ticks: Enumeration (Event σ τ)
+
+
+/-
+These are the symbols of the numbers in order
 -/
+abbrev NaturalNumbers := Counting Nat (ULift Nat)
 
-structure PartialOrder (σ : Type u) where
-  poset : Enumeration (Inversion σ σ)
 
 namespace Enumeration
 
@@ -29,114 +38,108 @@ def any {A : Type u} (p : A → Bool) : Enumeration A → Bool
 
 end Enumeration
 
-namespace Decomposition
-
-/-- Boolean membership test for a specific pair in a decomposition. -/
-def contains {σ : Type u} {τ : Type v} [DecidableEq σ] [DecidableEq τ]
-    (D : Decomposition σ τ) (p : σ × τ) : Bool :=
-  match Enumeration.indexOfBy (fun a b => decide (a = b)) D.pairs p with
-  | some _ => true
-  | none   => false
-
-end Decomposition
-
 namespace Inversion
-
-/-- The inversion "admits" the ordered pair (a,b) iff it occurs in the enumerated pairs. -/
-def admits {σ : Type u} [DecidableEq σ] (I : Inversion σ σ) (a b : σ) : Bool :=
-  I.inv.contains (a, b)
-
+/-- `I` admits `(a,b)` iff decoding `b` through `I.inv` yields `a`. -/
+def admits {σ : Type u} {τ : Type (u+1)}
+  [DecidableEq σ]
+  [DecidableEq τ]
+  (I : Inversion σ τ) (a : σ) (b : τ) : Bool :=
+  match Decomposition.decode? I.inv b with
+  | none   => false
+  | some a' => decide (a' = a)
 end Inversion
-
-namespace PartialOrder
-
-/-- `a ≤ b` iff every inversion in the poset admits (a,b). -/
-def le {σ : Type u} [DecidableEq σ] (P : PartialOrder σ) (a b : σ) : Bool :=
-  Enumeration.all (fun I => Inversion.admits I a b) P.poset
-
-
-/-- `y` is a bottom element among the candidates `>= x` iff:
-    (1) x ≤ y, and
-    (2) for every z with x ≤ z, we have y ≤ z. -/
-def isCeil {σ : Type u} [DecidableEq σ]
-    (P : PartialOrder σ) (xs : Enumeration σ) (x y : σ) : Bool :=
-  P.le x y ∧
-  Enumeration.all (fun z => if P.le x z then P.le y z else true) xs
-
-/-- `ceil(x)`: walk the enumeration, skipping candidates with `¬(x ≤ y)`,
-    return the first `y` that is bottom among all `>= x`. -/
-def ceil? {σ : Type u} [DecidableEq σ]
-    (P : PartialOrder σ) (xs : Enumeration σ) (x : σ) : Option σ :=
-  Enumeration.findMap?
-    (fun y => if P.isCeil xs x y then some y else none)
-    xs
-
-/-- `x` is bottom (least) among the enumerated candidates iff `x ≤ y` for all `y` in `xs`. -/
-def isBottom {σ : Type u} [DecidableEq σ]
-    (P : PartialOrder σ) (xs : Enumeration σ) (x : σ) : Bool :=
-  Enumeration.all (fun y => P.le x y) xs
-
-/-- Find the least element by walking the enumeration: first `x` with no counterexample. -/
-def bottom? {σ : Type u} [DecidableEq σ]
-    (P : PartialOrder σ) (xs : Enumeration σ) : Option σ :=
-  Enumeration.findMap?
-    (fun x => if P.isBottom xs x then some x else none)
-    xs
-
-end PartialOrder
-
-
-structure Walking (σ : Type u) where
-  poset : PartialOrder σ
-  candidates : Enumeration σ
 
 namespace Walking
 
-def iterate (W : Walking σ) :
-    Nat → Option (ULift σ) :=
+def iterate (W : Walking σ τ) :
+    Nat → Option τ :=
   fun t =>
     let u' := t.succ
-    match Enumeration.nth W.candidates u' with
+    match Enumeration.ζ W.candidates u' with
     | none   => none
-    | some s => some ⟨s⟩
+    | some s => some s.reading
+
+def admits {σ : Type u} {τ : Type (u+1)}
+  [DecidableEq σ]
+  [DecidableEq τ]
+  (a : σ)
+  (b : τ): Bool :=
+  (match Enumeration.findPair? (fun p : (σ × τ) => if _h : p.1 = a then some (p.2 = b) else none) with
+  | _ => true)
 
 end Walking
 
 
-structure Calibration (σ : Type u) (τ : Type v) where
-  measurment: Decomposition σ τ
-  reference: Decomposition τ σ
-  read : σ → Option τ
+namespace PartialOrder
 
-namespace Calibration
+def le {σ : Type u} {τ : Type (u+1)}
+  [DecidableEq σ]
+  [DecidableEq τ]
+  (P : PartialOrder σ τ) (a : σ) (b : τ) : Bool :=
+  Enumeration.all (fun I : Inversion σ τ => Inversion.admits I a b) P.poset
 
-def judgeEq {σ : Type u} {τ : Type v} [DecidableEq τ]
-    (C : Calibration σ τ) (a b : σ) : Bool :=
-  match C.read a, C.read b with
-  | some x, some y => decide (x = y)
-  | _, _           => false
-
-end Calibration
+end PartialOrder
 
 
-/-- Introducing Geometry!-/
-structure Manifold (σ : Type u) (τ : Type v) where
-  domain: PartialOrder σ
-  range: Invariant σ τ
-  map: σ → Option σ
+namespace Counting
 
-namespace Manifold
+/-- Add a tick-event to the counting tape. -/
+def push {σ : Type u} {τ : Type (u+1)}
+  (C : Counting σ τ) (e : Event σ τ) : Counting σ τ :=
+  { C with ticks := Enumeration.count C.ticks e }
 
-noncomputable def ψ {σ : Type u} {τ : Type v} [DecidableEq σ]
-    (M : Manifold σ τ) (xs : Enumeration σ) (x : σ) : Option (σ × τ) :=
-  match PartialOrder.ceil? M.domain xs x with
-  | none    => none
-  | some x' =>
-      match M.range.admissible x' with
-      | none   => none
-      | some y => some (x', y)
+end Counting
 
-end Manifold
+instance {σ : Type u} {τ : Type (u+1)} [DecidableEq σ] [DecidableEq τ] :
+    DecidableEq (Event σ τ) :=
+by
+  intro a b
+  cases a with
+  | mk aσ aτ =>
+    cases b with
+    | mk bσ bτ =>
+      cases hσ : (decEq aσ bσ) with
+      | isTrue h1 =>
+        cases hτ : (decEq aτ bτ) with
+        | isTrue h2 =>
+          exact isTrue (by cases h1; cases h2; rfl)
+        | isFalse h2 =>
+          exact isFalse (by
+            intro h
+            cases h
+            exact h2 rfl)
+      | isFalse h1 =>
+        exact isFalse (by
+          intro h
+          cases h
+          exact h1 rfl)
 
+namespace Event
+
+  def arrow {σ : Type u} {τ : Type (u+1)} (e : Event σ τ) : ArrowOfTime σ τ :=
+    ArrowOfTime.mk e.state e.reading
+
+  /-
+  We can make symbols to measure things with!!
+  -/
+  def alphabet .{u} {σ : Type u} {τ : Type (u+1)} (e : Event σ τ) : Alphabet τ :=
+    Alphabet.mk (Enumeration.cons e.reading Enumeration.nil)
+
+  /-
+  We can design instruments to measure events!!
+  -/
+  def instrument  {σ : Type u} {τ : Type (u+1)} {L : Ledger σ} (e : Event σ τ) : Instrument σ τ :=
+    let time := arrow e
+    let after := time.after
+    let newEvent := Event.mk e.state after
+    Instrument.mk (newEvent.alphabet) L
+
+  /-
+  We can build devices to plans that measure events!!
+  -/
+  def device {σ : Type u} {τ : Type (u+1)} {I: Instrument σ τ} (E : Event σ τ)  : Device σ τ :=
+    Device.mk I (Decomposition.zip I.ledger.linked_list I.alphabet.symbols) E.arrow
+
+end Event
 
 end Measurement
