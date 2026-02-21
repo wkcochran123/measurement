@@ -23,25 +23,29 @@ Closure:       A description of the mechanism of a physical
 /--
 A description of a mechanism, given σ the mechanism returns τ.
 -/
-structure Decomposition (σ : Type u) (τ : Type v) where
+structure Decomposition (σ : Type u) (τ : Type (u+1)) where
   pairs : Enumeration (σ × τ)
+  ordering : Numbering (σ × τ)
+  deriving DecidableEq
 
 /--
 These are the symbols that are read out.  They will be
 paired with the symbols that are in the ledger to
 form a decomposition.
 -/
-structure Alphabet (σ : Type v) where
+structure Alphabet (σ : Type u) where
   symbols : Enumeration σ
+  deriving DecidableEq
 
 /--
 An instrument is the metaphysical device that pairs an
 alphabet with a listing of that alphabet.
 -/
-structure Instrument (S : Type u) (σ : Type v) where
+structure Instrument (σ : Type u) (τ : Type (u+1)) where
   -- The State
-  alphabet : Alphabet σ
-  ledger   : Ledger S
+  ledger   : Ledger σ
+  alphabet : Alphabet τ
+  deriving DecidableEq
 
 /-
 A device is merely the decomposition of the instrument
@@ -51,7 +55,7 @@ is updated.
 structure Device (σ : Type u) (τ:Type (u+1)) where
   instrument : Instrument σ τ
   decomposition : Decomposition σ τ
-  silence: ArrowOfTime σ τ
+  deriving DecidableEq
 
 
 
@@ -64,11 +68,8 @@ o EinsteinDevice:  This is a clock, it counts upward once for every event,
 o TuringDevice:    A theoretical device that computes representations, a
                    trivial abbreviation, but
 -/
-abbrev EinsteinDevice := Device Nat (ULift Nat)
+abbrev EinsteinDevice (σ : Type u) := Device Nat (ULift Nat)
 abbrev TuringDevice (σ : Type u) (τ : Type (u+1)) := Device σ τ
-
-
-
 
 
 
@@ -81,32 +82,69 @@ namespace Enumeration
     | _,         .nil      => .nil
     | .cons a as, .cons b bs => .cons (a, b) (pair as bs)
 
+  def flip {X : Type u} : Enumeration (Nat × X) → Enumeration (X × Nat)
+    | .nil => .nil
+    | .cons (n, x) xs => .cons (x, n) (flip xs)
+
+  def numbering {X : Type u} (e : Enumeration X) : Numbering X :=
+    let ps := e.relation 0
+    { pairs := ps
+    , swaps := flip ps
+    }
+
 end Enumeration
 
 namespace Decomposition
   /-
-  A decomposition provides a new ζ for the combination symbols
-  -/
-  def ζ {σ τ} (D : Decomposition σ τ) (n : Nat) : Option (σ × τ) :=
-    Enumeration.ζ D.pairs n
-
-  /-
   You can make a decomposition very easily from two enumerations by running
   their iterators simulaneously.
   -/
-  def zip {σ τ} (eσ : Enumeration σ) (eτ : Enumeration τ) :
-    Decomposition σ τ :=
-  { pairs := Enumeration.pair eσ eτ }
+  def zip {σ : Type u} {τ : Type u}
+    (eσ : Enumeration σ) (eτ : Enumeration τ) : Decomposition σ τ :=
+  by
+    let ps : Enumeration (σ × τ) := Enumeration.pair eσ eτ
+    exact
+    { pairs := ps
+    , ordering := Enumeration.numbering ps
+    }
 
+def swap {σ : Type u} {τ : Type v} (d : Decomposition σ τ) : Decomposition τ σ :=
+  let swapped_pairs :=
+    Enumeration.map (fun p : σ × τ => (p.2, p.1)) d.pairs
+  let swapped_ordering :=
+    Numbering.swapProd d.ordering
+  Decomposition.mk swapped_pairs swapped_ordering
+
+  def enumerate {σ : Type u} {τ : Type v} (d : Decomposition σ τ) : Enumeration (σ × τ) :=
+    d.pairs
 end Decomposition
 
 
+namespace Instrument
+
+def arrow {σ : Type u} {τ : Type (u+1)} (I : Instrument σ τ) [DecidableEq σ] [DecidableEq τ]: ArrowOfTime σ τ :=
+    -- Step 1: Extract the sequences
+    let alpha_seq := I.alphabet.symbols
+    let ledger_seq := I.ledger.linked_list
+    let zip_seq := Decomposition.zip ledger_seq alpha_seq
+
+    match zip_seq.pairs.numbering.ζ 0 with
+    | none => sorry
+    | some pair => ArrowOfTime.mk pair.1 pair.2
+
+def device {σ : Type u} {τ : Type (u+1)} {I: Instrument σ τ} : Device σ τ :=
+  Device.mk I (Decomposition.zip I.ledger.linked_list I.alphabet.symbols)
+
+end Instrument
 
 namespace Device
 /-
 The device must spend time quietly waiting for the reading.
 -/
-def read? {σ : Type u} {τ : Type (u+1)} (D: Device σ τ): Option τ := D.silence.elapse
+
+def silence {σ : Type u} {τ : Type (u+1)} (D: Device σ τ) [DecidableEq σ] [DecidableEq τ]: ArrowOfTime σ τ := D.instrument.arrow
+
+def read? {σ : Type u} {τ : Type (u+1)} (D: Device σ τ) [DecidableEq σ] [DecidableEq τ]: Option τ := D.silence.elapse
 
 end Device
 

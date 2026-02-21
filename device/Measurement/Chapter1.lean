@@ -36,6 +36,7 @@ so we prevent Lean from trying.
 import Std
 import Mathlib.Data.Real.Basic
 import Mathlib.Data.Nat.Basic
+import Mathlib.Tactic.Basic
 
 
 
@@ -50,11 +51,13 @@ universe u v
 Definition 1: ArrowOfTime
 
 This structure holds the type of two symbols, one that happened
-"before" now and one that will happend "after" now.
+"before" now and one that will happend "after" now. The event
+σ happens before the reading τ.
 -/
-structure ArrowOfTime (X : Type u)(Y : Type (u+1)) where
-  before: X
-  after: Y
+structure ArrowOfTime (σ : Type u)(τ : Type (u+1)) where
+  before: σ
+  after: τ
+  deriving DecidableEq
 
 /--
 Definition 2: Enumeration
@@ -65,6 +68,7 @@ does not necessarily take time.
 inductive Enumeration (A : Type u) : Type u
   | nil : Enumeration A
   | cons : A → Enumeration A → Enumeration A
+deriving instance DecidableEq for Enumeration
 
 /--
 Definition 3: DecodingMap
@@ -72,8 +76,10 @@ Definition 3: DecodingMap
 The decoding map is the thing that is made when you count something.
 It assigns an ordinal to a thing.
 -/
-structure DecodingMap (X : Type v) where
-  ζ : Nat → Option X
+structure Numbering (σ : Type u) where
+  pairs : Enumeration (Nat × σ)
+  swaps : Enumeration (σ × Nat)
+  deriving DecidableEq
 
 
 /--
@@ -84,10 +90,10 @@ and the ordinal lookup index for those objects.  It is just a list
 with symbols on it that you can randomly access by entry number.
 These data comprise _facts_.
 -/
-structure Ledger (X : Type u) : Type u where
-  linked_list : Enumeration X
-  random_access : DecodingMap X
-
+structure Ledger (σ : Type u) : Type u where
+  linked_list : Enumeration σ
+  random_access : Numbering σ
+  deriving DecidableEq
 
 
 /-
@@ -121,15 +127,6 @@ namespace Enumeration
 
 variable {A : Type u}
 
-def η [DecidableEq A] : Enumeration A → A → Option Nat
-  | .nil,      _ => none
-  | .cons a t, x => if a = x then some 0 else (η t x).map Nat.succ
-
-def ζ : Enumeration A -> Nat -> Option A
-  | .nil,      _     => none
-  | .cons a _, 0     => some a
-  | .cons _ t, n + 1 => ζ t n
-
 /-- Append enumerations (needed to flatten a 2D shape). -/
 def append {A : Type u} : Enumeration A → Enumeration A → Enumeration A
   | .nil, ys => ys
@@ -138,7 +135,50 @@ def append {A : Type u} : Enumeration A → Enumeration A → Enumeration A
 def count : Enumeration A → A → Enumeration A
   | xs, a => append xs (.cons a .nil)
 
+def relation {X : Type u} : Enumeration X → Nat → Enumeration (Nat × X)
+  | .nil,      _ => .nil
+  | .cons x xs, n => .cons (n, x) (relation xs (n + 1))
+
+def map {A : Type u} {B : Type v} (f : A → B) : Enumeration A → Enumeration B
+  | .nil => .nil
+  | .cons a as => .cons (f a) (map f as)
+
 end Enumeration
 
+
+namespace Numbering
+def ζ {X : Type u} [DecidableEq X] (dm : Numbering X) (n : Nat) : Option X :=
+  let rec find : Enumeration (Nat × X) → Option X
+    | .nil => none
+    | .cons (idx, sym) tail =>
+        if idx = n then some sym else find tail
+  find dm.pairs
+
+def η {X : Type u} [DecidableEq X] (dm : Numbering X) (x : X) : Option Nat :=
+  let rec find : Enumeration (X × Nat) → Option Nat
+    | .nil => none
+    | .cons (y, k) xs => if y = x then some k else find xs
+  find dm.swaps
+
+def map {X : Type u} {Y : Type v} (f : X → Y) (N : Numbering X) : Numbering Y :=
+{ pairs := N.pairs.map (fun p => (p.1, f p.2))
+, swaps := N.swaps.map (fun p => (f p.1, p.2))
+}
+
+def swap {σ : Type u} {τ : Type v} (N : Numbering (σ × τ)) : Numbering (τ × σ) :=
+{ pairs := N.pairs.map (fun p => (p.1, (p.2.2, p.2.1)))  -- (n,(σ,τ)) -> (n,(τ,σ))
+, swaps := N.swaps.map (fun p => ((p.1.2, p.1.1), p.2))  -- ((σ,τ),n) -> ((τ,σ),n)
+}
+
+def swapProd {σ : Type u} {τ : Type v} (N : Numbering (σ × τ)) : Numbering (τ × σ) :=
+{ pairs := Enumeration.map
+    (fun p : Nat × (σ × τ) => (p.1, (p.2.2, p.2.1)))
+    N.pairs
+, swaps := Enumeration.map
+    (fun p : (σ × τ) × Nat => ((p.1.2, p.1.1), p.2))
+    N.swaps
+}
+
+end Numbering
 
 end Measurement

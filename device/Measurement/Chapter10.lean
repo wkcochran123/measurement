@@ -19,6 +19,10 @@ structure Regime (σ : Type u) (τ : Type (u+1)) where
   hierarchy: Hierarchy σ τ
 
 
+structure Indirection (σ : Type u) (τ : Type (u+1)) where
+  model : Inversion σ τ
+  step  : Indirection σ τ
+
 namespace Walking
 
 -- "Computational equality": ignore poset, compare only enumerated events.

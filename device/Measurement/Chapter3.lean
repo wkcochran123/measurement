@@ -10,24 +10,24 @@ Device:        The list of possible carrier/sensor interactions
 Closure:       The invariant of measurement
 -/
 
-structure Inversion (σ : Type u) (τ : Type (u+1)) where
+structure Inversion (σ : Type u) (τ : Type v) where
   inv : Decomposition τ σ
-  ordering : ArrowOfTime σ τ
+  deriving DecidableEq
 
-structure Carrier (σ : Type u) (τ : Type (u+1)) where
+structure Carrier (σ : Type u) (τ : Type (v+1)) where
   instrument: Instrument σ τ
   model: TuringDevice σ τ
   map: Inversion σ τ
   ordering: ArrowOfTime σ τ
 
-structure Phenomenon (σ : Type u) (τ : Type (u+1)) where
+structure Phenomenon (σ : Type u) (τ : Type (v+1)) where
   sensor : Device σ τ
   carrier : Carrier σ τ
 
-structure Invariant (σ : Type u) (τ : Type (u+1)) where
-  evidence : Device σ τ
-  model    : Inversion σ τ
-  survivor : (σ × τ) → Option τ
+structure Invariant (σ : Type u) (τ : Type (v+1)) where
+  description : Device σ τ
+  model       : Inversion σ τ
+  deriving DecidableEq
 
 
 
@@ -49,6 +49,12 @@ def findPair? {A : Type u} {B : Type v} (f : A → Option B) : Enumeration A →
 end Enumeration
 
 
+namespace Inversion
+
+  def numbering {σ  : Type u} {τ : Type v} (i : Inversion σ τ) : Numbering (τ×σ) :=
+    i.inv.ordering
+
+end Inversion
 
 namespace Decomposition
 
@@ -63,24 +69,7 @@ def decode? {σ : Type u} {τ : Type v} [DecidableEq σ]
         none)
     D.pairs
 
-def invert {σ : Type u} {τ : Type u} [DecidableEq τ]
-    (D : Decomposition σ τ) (s : τ) : Option σ :=
-  Enumeration.findPair?
-    (fun p : (σ × τ) =>
-      if _h : p.2 = s then
-        some p.1
-      else
-        none)
-    D.pairs
-
 end Decomposition
-
-namespace Inversion
-
-def η {σ : Type u} {τ : Type (u+1)} (I : Inversion σ τ) : Nat → Option (τ × σ) :=
-  fun n => Enumeration.ζ I.inv.pairs n
-
-end Inversion
 
 
 namespace Carrier
