@@ -26,9 +26,8 @@ A description of a mechanism, given σ the mechanism returns τ.
 structure Decomposition (σ : Type u) (τ : Type v) where
   pairs : Enumeration (σ × τ)
   ordering : Numbering (σ × τ)
-  deriving DecidableEq
 
-abbrev PhysicalDecomposition (σ :Type u)(τ: Type v) := Decomposition σ (ULift τ)
+abbrev PhysicalDecomposition (σ :Type u)(τ: Type v) := Friction (Decomposition σ) τ
 
 /--
 These are the symbols that are read out.  They will be
@@ -37,7 +36,6 @@ form a decomposition.
 -/
 structure Alphabet (σ : Type u) where
   symbols : Enumeration σ
-  deriving DecidableEq
 
 /--
 An instrument is the metaphysical device that pairs an
@@ -47,7 +45,6 @@ structure Instrument (σ : Type u) (τ : Type (v+1)) where
   -- The State
   ledger   : Ledger σ
   alphabet : Alphabet τ
-  deriving DecidableEq
 
 /-
 A device is merely the decomposition of the instrument
@@ -57,8 +54,6 @@ is updated.
 structure Device (σ : Type u) (τ:Type (v+1)) where
   instrument : Instrument σ τ
   decomposition : PhysicalDecomposition σ τ
-  deriving DecidableEq
-
 
 
 /--
@@ -81,7 +76,6 @@ abbrev TuringDevice (σ : Type u) (τ : Type (u+1)):= Device σ τ
 structure Computer (σ : Type u) (τ : Type (u+1)) where
   cpu : TuringDevice σ τ
   memory: Ledger σ
-  deriving DecidableEq
 
 namespace Enumeration
 

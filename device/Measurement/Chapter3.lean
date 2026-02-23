@@ -12,7 +12,6 @@ Closure:       The invariant of measurement
 
 structure Inversion (σ : Type u) (τ : Type (u+1)) where
   inv : Decomposition τ σ
-  deriving DecidableEq
 
 structure Carrier (σ : Type u) (τ : Type (u+1)) where
   instrument: Instrument σ τ
@@ -27,7 +26,6 @@ structure Phenomenon (σ : Type u) (τ : Type (u+1)) where
 structure Invariant (σ : Type u) (τ : Type (u+1)) where
   description : Device σ τ
   model       : Inversion σ τ
-  deriving DecidableEq
 
 
 abbrev DopplerCarrier := Carrier Nat (ULift Nat)
