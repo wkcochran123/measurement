@@ -23,10 +23,12 @@ Closure:       A description of the mechanism of a physical
 /--
 A description of a mechanism, given σ the mechanism returns τ.
 -/
-structure Decomposition (σ : Type u) (τ : Type (u+1)) where
+structure Decomposition (σ : Type u) (τ : Type v) where
   pairs : Enumeration (σ × τ)
   ordering : Numbering (σ × τ)
   deriving DecidableEq
+
+abbrev PhysicalDecomposition (σ :Type u)(τ: Type v) := Decomposition σ (ULift τ)
 
 /--
 These are the symbols that are read out.  They will be
@@ -41,7 +43,7 @@ structure Alphabet (σ : Type u) where
 An instrument is the metaphysical device that pairs an
 alphabet with a listing of that alphabet.
 -/
-structure Instrument (σ : Type u) (τ : Type (u+1)) where
+structure Instrument (σ : Type u) (τ : Type (v+1)) where
   -- The State
   ledger   : Ledger σ
   alphabet : Alphabet τ
@@ -52,9 +54,9 @@ A device is merely the decomposition of the instrument
 that takes _time_ to read.  The single internal symbol
 is updated.
 -/
-structure Device (σ : Type u) (τ:Type (u+1)) where
+structure Device (σ : Type u) (τ:Type (v+1)) where
   instrument : Instrument σ τ
-  decomposition : Decomposition σ τ
+  decomposition : PhysicalDecomposition σ τ
   deriving DecidableEq
 
 
@@ -68,11 +70,18 @@ o EinsteinDevice:  This is a clock, it counts upward once for every event,
 o TuringDevice:    A theoretical device that computes representations, a
                    trivial abbreviation, but
 -/
-abbrev EinsteinDevice (σ : Type u) := Device Nat (ULift Nat)
-abbrev TuringDevice (σ : Type u) (τ : Type (u+1)) := Device σ τ
+abbrev EinsteinDevice := Device Nat (ULift Nat)
+/-
+Suppose we would like to use math to both describe the world and how it evolves?
+This is the message to the compiler that it can assume math will both describe the world
+and how it evolves.
+-/
+abbrev TuringDevice (σ : Type u) (τ : Type (u+1)):= Device σ τ
 
-
-
+structure Computer (σ : Type u) (τ : Type (u+1)) where
+  cpu : TuringDevice σ τ
+  memory: Ledger σ
+  deriving DecidableEq
 
 namespace Enumeration
 
@@ -99,7 +108,7 @@ namespace Decomposition
   You can make a decomposition very easily from two enumerations by running
   their iterators simulaneously.
   -/
-  def zip {σ : Type u} {τ : Type u}
+  def zip {σ : Type u} {τ : Type (u+1)}
     (eσ : Enumeration σ) (eτ : Enumeration τ) : Decomposition σ τ :=
   by
     let ps : Enumeration (σ × τ) := Enumeration.pair eσ eτ
@@ -108,14 +117,7 @@ namespace Decomposition
     , ordering := Enumeration.numbering ps
     }
 
-def swap {σ : Type u} {τ : Type v} (d : Decomposition σ τ) : Decomposition τ σ :=
-  let swapped_pairs :=
-    Enumeration.map (fun p : σ × τ => (p.2, p.1)) d.pairs
-  let swapped_ordering :=
-    Numbering.swapProd d.ordering
-  Decomposition.mk swapped_pairs swapped_ordering
-
-  def enumerate {σ : Type u} {τ : Type v} (d : Decomposition σ τ) : Enumeration (σ × τ) :=
+  def enumerate {σ : Type u} {τ : Type (u+1)} (d : Decomposition σ τ) : Enumeration (σ × τ) :=
     d.pairs
 end Decomposition
 
@@ -132,9 +134,6 @@ def arrow {σ : Type u} {τ : Type (u+1)} (I : Instrument σ τ) [DecidableEq σ
     | none => sorry
     | some pair => ArrowOfTime.mk pair.1 pair.2
 
-def device {σ : Type u} {τ : Type (u+1)} {I: Instrument σ τ} : Device σ τ :=
-  Device.mk I (Decomposition.zip I.ledger.linked_list I.alphabet.symbols)
-
 end Instrument
 
 namespace Device
@@ -147,6 +146,14 @@ def silence {σ : Type u} {τ : Type (u+1)} (D: Device σ τ) [DecidableEq σ] [
 def read? {σ : Type u} {τ : Type (u+1)} (D: Device σ τ) [DecidableEq σ] [DecidableEq τ]: Option τ := D.silence.elapse
 
 end Device
+
+
+namespace Computer
+
+def execute? {σ : Type u} {τ : Type (u+1)} (C: Computer σ τ) [DecidableEq σ] [DecidableEq τ]: Option τ :=
+  C.cpu.silence.elapse
+
+end Computer
 
 
 end Measurement

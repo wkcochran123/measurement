@@ -47,6 +47,13 @@ There are two types of values, physical and metaphysical.
 -/
 universe u v
 
+/-
+Axiom 1: The Axiom of Distinquishability
+-/
+
+class Distinguishable (σ : Type u) : Type (u+1) where
+  inst : DecidableEq σ
+
 /--
 Definition 1: ArrowOfTime
 
@@ -58,6 +65,7 @@ structure ArrowOfTime (σ : Type u)(τ : Type (u+1)) where
   before: σ
   after: τ
   deriving DecidableEq
+
 
 /--
 Definition 2: Enumeration
@@ -96,6 +104,16 @@ structure Ledger (σ : Type u) : Type u where
   deriving DecidableEq
 
 
+
+/-
+Coda: Friction
+-/
+
+class Friction (E : Type u → Type v) (σ : Type u) : Type (max u v + 1) where
+  count : E σ → Nat
+  threshold : Nat
+  observable : E σ
+
 /-
 **************************************************************
 Code:
@@ -121,6 +139,7 @@ def relive {X : Type u} : Option X :=
   none
 
 end ArrowOfTime
+
 
 
 namespace Enumeration
@@ -180,5 +199,15 @@ def swapProd {σ : Type u} {τ : Type v} (N : Numbering (σ × τ)) : Numbering 
 }
 
 end Numbering
+
+namespace Friction
+
+def admissible (F : Friction E σ) (x : E σ) : Bool :=
+  decide (F.threshold ≤ F.count x)
+
+def silence (F : Friction E σ) (x : E σ) : Option (E σ) :=
+  if admissible F x then some x else none
+
+end Friction
 
 end Measurement

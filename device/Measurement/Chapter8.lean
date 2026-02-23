@@ -38,10 +38,10 @@ end Statistic
 namespace BayesPredictor
 
   def predict {σ : Type u}{τ : Type (u+1)}
-      (B: BayesPredictor σ τ) (N: Number σ τ)
+      (B: BayesPredictor σ τ) (N: Number σ τ) (E: Event σ τ)
       [DecidableEq σ] [DecidableEq τs] : Number σ τ :=
 
-      evidence.
+      let invariant := N.value
 
 
 end BayesPredictor
