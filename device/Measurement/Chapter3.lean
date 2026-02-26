@@ -10,29 +10,34 @@ Device:        The list of possible carrier/sensor interactions
 Closure:       The invariant of measurement
 -/
 
-structure Inversion (σ : Type u) (τ : Type (u+1)) where
+structure Inversion
+    (σ : Type u) [Distinguishable σ]
+    (τ : Type v) [Distinguishable τ] where
   inv : Decomposition τ σ
 
-structure Carrier (σ : Type u) (τ : Type (u+1)) where
+structure Carrier
+    (σ : Type u) [Distinguishable σ]
+    (τ : Type v) [Distinguishable τ] where
   instrument: Instrument σ τ
-  model: TuringDevice σ τ
+  model: Friction (Device σ) (ULift τ)
   map: Inversion σ τ
-  ordering: ArrowOfTime σ τ
+  arrow: ArrowOfTime τ
 
-structure Phenomenon (σ : Type u) (τ : Type (u+1)) where
+structure Phenomenon (σ : Type u) (τ : Type v) where
   sensor : Device σ τ
   carrier : Carrier σ τ
 
-structure Invariant (σ : Type u) (τ : Type (u+1)) where
+structure Invariant (σ : Type u) (τ : Type v) where
   description : Device σ τ
   model       : Inversion σ τ
 
 
-abbrev DopplerCarrier := Carrier Nat (ULift Nat)
-abbrev Digitizer (σ : Type u):= Computer σ (ULift Nat)
+abbrev DopplerCarrier (σ : Type u) := Carrier σ (ULift Nat)
 
-
-
+structure Digitizer (σ : Type u) where
+  carrier: Friction DopplerCarrier σ
+  cpu: Friction (Computer Nat) (ULift Rat) -- Computer that associates a symbol index with a rational number
+  calibration: Numbering Rat
 
 
 

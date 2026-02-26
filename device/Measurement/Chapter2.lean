@@ -19,42 +19,38 @@ Device:        The measurement instrument
 Closure:       A description of the mechanism of a physical
 -/
 
+structure Decomposition
+    (σ : Type now) [Distinguishable σ]
+    (τ : Type now) [Distinguishable τ]
+    where
+  data : Numbering (ArrowOfTime σ τ)
 
-/--
-A description of a mechanism, given σ the mechanism returns τ.
--/
-structure Decomposition (σ : Type u) (τ : Type v) where
-  pairs : Enumeration (σ × τ)
-  ordering : Numbering (σ × τ)
 
-abbrev PhysicalDecomposition (σ :Type u)(τ: Type v) := Friction (Decomposition σ) τ
+structure Alphabet
+  (σ : Type now) [Distinguishable σ]
+  (τ : Type now)
+  where
+  symbol: σ
+  lookup: Noisy Decomposition σ τ
 
-/--
-These are the symbols that are read out.  They will be
-paired with the symbols that are in the ledger to
-form a decomposition.
--/
-structure Alphabet (σ : Type u) where
-  symbols : Enumeration σ
+structure Instrument
+    (σ : Type now) [Distinguishable σ]
+    (τ : Type now)
+    : Type (now+2) where
+  sensorAlphabet : Alphabet σ τ
 
-/--
-An instrument is the metaphysical device that pairs an
-alphabet with a listing of that alphabet.
--/
-structure Instrument (σ : Type u) (τ : Type (v+1)) where
-  -- The State
-  ledger   : Ledger σ
-  alphabet : Alphabet τ
+  sensor : Noisy Ledger σ
+  gauge  : Noisy Ledger τ
 
 /-
 A device is merely the decomposition of the instrument
 that takes _time_ to read.  The single internal symbol
 is updated.
 -/
-structure Device (σ : Type u) (τ:Type (v+1)) where
+structure Device (σ : Type u) (τ:Type v)
+   [Distinguishable σ] [Distinguishable τ] where
   instrument : Instrument σ τ
   decomposition : PhysicalDecomposition σ τ
-
 
 /--
 Constructions:
@@ -65,87 +61,91 @@ o EinsteinDevice:  This is a clock, it counts upward once for every event,
 o TuringDevice:    A theoretical device that computes representations, a
                    trivial abbreviation, but
 -/
-abbrev EinsteinDevice := Device Nat (ULift Nat)
+abbrev EinsteinDevice := Device Nat Nat
 /-
 Suppose we would like to use math to both describe the world and how it evolves?
 This is the message to the compiler that it can assume math will both describe the world
 and how it evolves.
 -/
-abbrev TuringDevice (σ : Type u) (τ : Type (u+1)):= Device σ τ
+abbrev TuringDevice (σ : Type u)
+    [Distinguishable σ] := Device σ σ
 
-structure Computer (σ : Type u) (τ : Type (u+1)) where
-  cpu : TuringDevice σ τ
+structure Computer (σ : Type u)
+    [Distinguishable σ] where
+  cpu : TuringDevice σ
   memory: Ledger σ
 
-namespace Enumeration
-
-  def pair {A : Type u} {B : Type v} :
-      Enumeration A → Enumeration B → Enumeration (A × B)
-    | .nil,      _         => .nil
-    | _,         .nil      => .nil
-    | .cons a as, .cons b bs => .cons (a, b) (pair as bs)
-
-  def flip {X : Type u} : Enumeration (Nat × X) → Enumeration (X × Nat)
-    | .nil => .nil
-    | .cons (n, x) xs => .cons (x, n) (flip xs)
-
-  def numbering {X : Type u} (e : Enumeration X) : Numbering X :=
-    let ps := e.relation 0
-    { pairs := ps
-    , swaps := flip ps
-    }
-
-end Enumeration
-
 namespace Decomposition
-  /-
-  You can make a decomposition very easily from two enumerations by running
-  their iterators simulaneously.
-  -/
-  def zip {σ : Type u} {τ : Type (u+1)}
-    (eσ : Enumeration σ) (eτ : Enumeration τ) : Decomposition σ τ :=
-  by
-    let ps : Enumeration (σ × τ) := Enumeration.pair eσ eτ
-    exact
-    { pairs := ps
-    , ordering := Enumeration.numbering ps
-    }
+  variable {σ : Type u}[Distinguishable σ]
+  variable {τ : Type v}[Distinguishable τ]
 
-  def enumerate {σ : Type u} {τ : Type (u+1)} (d : Decomposition σ τ) : Enumeration (σ × τ) :=
-    d.pairs
+  instance [Distinguishable α] [Distinguishable β] : Distinguishable (α × β) where
+  inst := inferInstance
+  symbol := (Distinguishable.symbol, Distinguishable.symbol)
+
+  def zip (eσ : Enumeration σ) (eτ : Enumeration τ) : Decomposition σ τ :=
+      { left :=
+          { symbol := eσ
+          , numbering := eσ.naturals 0
+          }
+      , right :=
+          { symbol := eτ
+          , numbering := eτ.naturals 0
+          }
+      }
+
+  def enumerate (d : Decomposition σ τ) : Enumeration (σ × τ) :=
+      let rec walk : Enumeration σ → Enumeration τ → Enumeration (σ × τ)
+        | .nil, _ => .nil
+        | _, .nil => .nil
+        | .cons s ss, .cons t ts => .cons (s, t) (walk ss ts)
+      walk d.left.symbol d.right.symbol
 end Decomposition
 
 
 namespace Instrument
 
-def arrow {σ : Type u} {τ : Type (u+1)} (I : Instrument σ τ) [DecidableEq σ] [DecidableEq τ]: ArrowOfTime σ τ :=
-    -- Step 1: Extract the sequences
-    let alpha_seq := I.alphabet.symbols
-    let ledger_seq := I.ledger.linked_list
-    let zip_seq := Decomposition.zip ledger_seq alpha_seq
+variable {σ : Type u}[Distinguishable σ]
+variable {τ : Type v}[Distinguishable τ]
 
-    match zip_seq.pairs.numbering.ζ 0 with
-    | none => sorry
-    | some pair => ArrowOfTime.mk pair.1 pair.2
+/--
+Readout: The 'after' state of the current arrow of time.
+This is the symbol currently displayed by the instrument.
+-/
+def reading?
+  (I : Instrument σ τ) : Option (ULift τ) :=
+  let sensor_reading := Friction.slip? I.sensor I.arrow
+  match sensor_reading with
+  | none => none
+  | some reading => let reading_ndx := I.sensor.base.data.η reading.down
+    match reading_ndx with
+    | none => none
+    | some ndx => let gauge_symbol := I.gauge.data.ζ ndx
+      match gauge_symbol with
+      | none => none
+      | some sym => some (ULift.up sym)
 
 end Instrument
+
 
 namespace Device
 /-
 The device must spend time quietly waiting for the reading.
 -/
+variable {σ : Type u}[Distinguishable σ]
+variable {τ : Type v}[Distinguishable τ]
 
-def silence {σ : Type u} {τ : Type (u+1)} (D: Device σ τ) [DecidableEq σ] [DecidableEq τ]: ArrowOfTime σ τ := D.instrument.arrow
-
-def read? {σ : Type u} {τ : Type (u+1)} (D: Device σ τ) [DecidableEq σ] [DecidableEq τ]: Option τ := D.silence.elapse
+def gauge? (D: Device σ τ) (x : σ) : Option (ULift τ) := D.instrument.read_out? x
 
 end Device
 
 
 namespace Computer
 
-def execute? {σ : Type u} {τ : Type (u+1)} (C: Computer σ τ) [DecidableEq σ] [DecidableEq τ]: Option τ :=
-  C.cpu.silence.elapse
+variable {σ : Type u}[Distinguishable σ]
+
+def execute? (C: Computer σ) (x: σ): Option (ULift σ) :=
+  C.cpu.read? x
 
 end Computer
 
