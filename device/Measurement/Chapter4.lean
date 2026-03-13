@@ -3,27 +3,54 @@ import Measurement.Chapter3
 namespace Measurement
 
 
-structure Indirection (σ : Type u) where
-  arrow: ArrowOfTime σ
+class ADMISSIBLE
+    (symbol: Type now)
+    (event: Type (now+1))
+    [DISTINGUISHABLE symbol event]
+    (number : symbol)
+    (value : symbol -> symbol -> Bool)
+    [COUNTABLE symbol event number value]
+    (domain : symbol -> symbol -> Bool)
+    (transform : symbol -> Option (ULift.{now+1, now} symbol))
+    [LOCAL symbol event number value domain transform]
+    (mapping : symbol)
+    (first_variation : symbol → symbol → Bool)
+      where
 
-structure Event (σ : Type u) where
-  description: Friction Indirection σ
+  admits? : symbol -> event -> Bool
 
-structure Commutator (σ : Type u) (τ : Type (v+1)) where
-  left: Distinguishable (Event σ)
-  right: Friction Distinguishable (Event τ)
+  invariant : symbol
+  ψ : symbol
 
-structure TotalVariation (σ : Type u) (τ : Type (u+1))(υ : Type (v+1)) where
-  first: Indirection σ τ
-  second: Commutator σ τ
 
-abbrev Refinement (σ : Type u)(τ : Type (u+1)) := TotalVariation σ τ τ
+inductive Sample
+    (symbol: Type now)
+    (event: Type (now+1))
+    [DISTINGUISHABLE symbol event]
+    (number : symbol)
+    (value : symbol -> symbol -> Bool)
+    [COUNTABLE symbol event number value]
+    (domain : symbol -> symbol -> Bool)
+    (transform : symbol -> Option (ULift.{now+1, now} symbol))
+    [locality : LOCAL symbol event number value domain transform]
+    (mapping : symbol)
+    (first_variation : symbol → symbol → Bool)
+    [ADMISSIBLE symbol event number value domain transform mapping first_variation]
 
-structure CausalUniverseTensor (σ : Type u) (τ : Type (u+1)) where
-  events: Ledger (Event σ)
-  partitions: Numbering (Commutator σ τ)
-  variations: Numbering (Refinement σ τ)
+    (threshold: COUNTABLE symbol event number value)
+  /-- The empty ledger (The Void) -/
+  | nil : Sample symbol event number value domain transform mapping first_variation threshold
 
+  | next :
+           Count symbol event →
+           (s : symbol) →
+           (e : event) →
+           (event×symbol) →
+           count →
+           Accumulate count symbol event number value →
+           count_value →
+           (ADMISSIBLE.admits? mapping (count → threshold → (count.witness >= threshold.witness)) →
+            Sample symbol event number value domain transform mapping first_variation threshold)
 
 
 

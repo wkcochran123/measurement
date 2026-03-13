@@ -2,6 +2,26 @@ import Measurement.Chapter4
 
 namespace Measurement
 
+class CORRELANT
+    (symbol: Type now)
+    (event: Type (now+1))
+    [DISTINGUISHABLE symbol event]
+    (number : symbol)
+    (value : symbol -> symbol -> Bool)
+    [COUNTABLE symbol event number value]
+    (domain : symbol -> symbol -> Bool)
+    (transform : symbol -> Option (ULift.{now+1, now} symbol))
+    [LOCAL symbol event number value domain transform]
+    (mapping : symbol)
+    (first_variation : symbol → symbol → Bool)
+    [ADMISSIBLE symbol event number value domain transform mapping first_variation]
+    second_variation : symbol → Option (ULift.{now+2, now+1} symbol)
+      where
+
+  correlates? : symbol -> event -> Bool
+  dψ : symbol
+
+/-
 universe u v w
 
 structure History (σ : Type u) where
@@ -48,5 +68,6 @@ def read? (s : Sensor σ τ) [DecidableEq σ] : Option Rat :=
 
 end Sensor
 
+-/
 
 end Measurement

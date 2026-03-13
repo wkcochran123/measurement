@@ -1,153 +1,325 @@
 /-
 Measurement/Chapter2.lean
-
-Chapter 2 develops the concept of the _pair_.  Given
-a set _S_, a pair is a relation on _S_.  With a pair,
-you can implement a divide and conquer strategy where
-half of the work is in one part and the other half
-is in the other.
 -/
 
 import Measurement.Chapter1
 
 namespace Measurement
 
-/-
-Invariant:     Divide and conquer strategy
-Instrument:    List of symbols that represent divisions
-Device:        The measurement instrument
-Closure:       A description of the mechanism of a physical
--/
+inductive TuringDevice
+    (Symbol: Type i)
+    (Encoding: Symbol -> Symbol -> Bool )
+    (Encoded: Symbol -> NEXT Symbol -> Bool)
+    (Value : Symbol -> Symbol -> Bool)
+    (Phenomenon: Symbol -> NEXT Symbol -> Bool)
+    [DISTINGUISHABLE Symbol Encoding]
+    [ENCODED Symbol Encoding Encoded]
+    [DISTINGUISHABLE Symbol Value]
+    [ENCODED Symbol Value Phenomenon]
+    [ADMISSIBLE Symbol Value Phenomenon]
+    [COMPUTABLE Symbol Encoding Encoded]
+    [COMPUTABLE Symbol Value Phenomenon]
+    : Type (i+1)
+  | nil : TuringDevice Symbol Encoding Execution
+  | cons : Symbol ->
+           ENCODED Symbol Encoding ->
+           ADMISSIBLE Symbol Execution ->
+           COMPUTABLE Symbol Encoding Execution ->
+           TuringDevice Symbol Encoding Execution
+
+class COUNTABLE
+    (Symbol: Type i)
+    (Arrival : Symbol -> Symbol -> Bool)
+    (CountingProcess : Symbol -> NEXT Symbol -> Bool)
+    (Encoding : Symbol -> Symbol -> Bool)
+    [DISTINGUISHABLE Symbol Arrival]
+    [DECOMPOSABLE Symbol Arrival]
+    [DISTINGUISHABLE Symbol Encoding]
+    [ADMISSIBLE Symbol CountingProcess]
+      where
+  now: Symbol
+  next? : Symbol -> Symbol -> Bool
+  count? : Symbol -> NEXT Symbol -> Bool
+
+namespace COUNTABLE
+variable {Symbol: Type i}
+         {Arrival : Symbol -> Symbol -> Bool}
+         {CountingProcess : Symbol -> NEXT Symbol -> Bool}
+         {Encoding : Symbol -> Symbol -> Bool}
+         (carrier_symbol: DISTINGUISHABLE Symbol Arrival)
+         (observed_symbol: DECOMPOSABLE Symbol Arrival)
+         (gauge_reading: DISTINGUISHABLE Symbol Encoding)
+         (awaited_return: ADMISSIBLE Symbol CountingProcess)
+         [count_of_carriers: COUNTABLE Symbol Arrival CountingProcess Encoding ]
+
+def next
+    (n: Symbol)
+    (n_plus_one: Symbol)
+    : Bool :=
+  count_of_carriers.next? n n_plus_one
+
+def count
+    (number_i1: Symbol)
+    (number_i2: NEXT Symbol)
+    : Bool :=
+  count_of_carriers.count? number_i1 number_i2
+
+end COUNTABLE
+
+
+class TIMED
+    (Symbol: Type i)
+    (Data: Symbol)
+    (Carrier: NEXT Symbol)
+    (Elapsed: Symbol -> NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
+    where
+  sent? : Symbol -> NEXT Symbol -> Bool
+  received? : NEXT Symbol -> NEXT (NEXT Symbol) -> Bool
+
+namespace TIMED
+variable {Symbol: Type i}
+         {Data: Symbol}
+         {Carrier: NEXT Symbol}
+         {Elapsed: Symbol -> NEXT Symbol -> NEXT (NEXT Symbol) -> Bool}
+         (Timer: TIMED Symbol Data Carrier Elapsed)
+
+def sent
+    (data: Symbol)
+    (carrier: NEXT Symbol)
+    : Bool :=
+  Timer.sent? data carrier
+
+def received
+    (carrier: NEXT Symbol)
+    (response: NEXT (NEXT Symbol))
+    : Bool :=
+  Timer.received? carrier response
+
+end TIMED
+
+inductive Clock
+    (Symbol: Type i)
+    (Data: Symbol)
+    (Carrier: NEXT Symbol)
+    (Elapsed: Symbol -> NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
+    [TIMED Symbol Data Carrier Elapsed]
+  | nil : Clock Symbol Data Carrier Elapsed
+  | cons: Symbol -> NEXT Symbol -> NEXT (NEXT Symbol) -> Clock Symbol Data Carrier Elapsed
+
+
+class PHENOMENAL
+    (Symbol: Type i)
+    (Process: Symbol)
+    (Carrier: NEXT Symbol)
+    (Response: NEXT (NEXT Symbol))
+    (CarrierEmitted: Symbol -> NEXT Symbol -> Bool)
+    (CarrierReceived: NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
+    (Observed: Symbol -> NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
+    (Hypothesis: NEXT Symbol -> NEXT Symbol -> Bool)
+    [TIMED Symbol Process Carrier Observed]                        -- The emission and reception of a particle
+    [ADMISSIBLE Symbol CarrierEmitted]
+    [ADMISSIBLE (NEXT Symbol) CarrierReceived]
+    [DISTINGUISHABLE (NEXT Symbol) Hypothesis]
+    [DECOMPOSABLE (NEXT Symbol) Hypothesis]
+    [TIMED Symbol Process Carrier Observed]
+    [COUNTABLE (NEXT Symbol) Hypothesis CarrierReceived Hypothesis] -- The samples of individual particles
+
+inductive Instrument
+    (Symbol: Type i)
+    (Process: Symbol)
+    (Carrier: NEXT Symbol)
+    (Response: NEXT (NEXT Symbol))
+    (CarrierEmitted: Symbol -> NEXT Symbol -> Bool)
+    (CarrierReceived: NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
+    (Observed: Symbol -> NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
+    (Phenomenon: NEXT Symbol -> NEXT Symbol -> Bool)
+    [TIMED Symbol Process Carrier Observed]                        -- The emission and reception of a particle
+    [ADMISSIBLE Symbol CarrierEmitted]
+    [ADMISSIBLE (NEXT Symbol) CarrierReceived]
+    [DISTINGUISHABLE (NEXT Symbol) Phenomenon]
+    [DECOMPOSABLE (NEXT Symbol) Phenomenon]
+    [COUNTABLE (NEXT Symbol) Phenomenon CarrierReceived Phenomenon] -- The samples of individual particles
+    [PHENOMENAL Symbol Process Carrier Response CarrierEmitted CarrierReceived Observed Phenomenon]
+  | nil : Instrument Symbol Process Carrier Response CarrierEmitted CarrierReceived Observed Phenomenon
+  | cons : Symbol ->
+           Process ->
+           Carrier ->
+           Response ->
+           TIMED Symbol Process Carrier Observed ->
+           ADMISSIBLE Symbol CarrierEmitted ->
+           ADMISSIBLE (NEXT Symbol) Phenomenon ->
+           DISTINGUISHABLE (NEXT Symbol) Phenomenon ->
+           OBSERVABLE (NEXT Symbol) Phenomenon ->
+           COUNTABLE ()
+
+
+class COUNTABLE
+    (symbol : Type now)
+    (event  : Type (now+1))
+    [DISTINGUISHABLE symbol event]
+    (η : symbol)
+    (LT : symbol -> symbol -> Bool)
+    where
+  witness : symbol -> Option (ULift.{now+1, now} symbol)
+  number: symbol
+
+namespace COUNTABLE
+variable {symbol : Type now}
+         {event : Type (now+1)}
+         [ds: DISTINGUISHABLE symbol event]
+         {η : symbol}
+         {LT : symbol -> symbol -> Bool}
+         [cs: COUNTABLE symbol event η LT]
+def η?
+  (n : symbol) : Option (ULift.{now+1, now} symbol) :=
+  cs.witness n
+end COUNTABLE
+
+structure Event
+    (Symbol: Type i)
+    (Distinguishable: Symbol -> Symbol -> Bool)
+    [DISTINGUISHABLE Symbol Distinguishable]
+    where
+  admissible? : Symbol -> NEXT Symbol -> Bool
+  observation : Symbol
+
+namespace Event
+variable {Symbol : Type i}
+         {Distinguishable : Symbol -> Symbol -> Bool}
+         [DISTINGUISHABLE Symbol Distinguishable]
+
+def admissible (s : Symbol)(e : Event Symbol Distinguishable) : Bool :=
+  Distinguishable s e.observation
+
+end Event
+
+structure Sensor
+    (Event: Type i)
+    (Stimulus: Event -> Event -> Bool)
+    (Response: Event -> (NEXT Event) -> Bool)
+    [DISTINGUISHABLE Event Stimulus]
+    [ENCODED Event Stimulus]
+    [COMPUTABLE Event Stimulus Response]
+    where
+  read? : Event -> Option (NEXT Event)
+  correlant? : Event -> Event -> Bool
+
+class REPEATABLE
+    (Symbol : Type i)
+    (Experiment: Symbol -> NEXT Symbol -> Bool)
+    where
+  observation: Symbol
+  outcome?: Symbol -> NEXT Symbol -> Bool
+
+namespace REPEATABLE
+variable {Symbol : Type i}
+         {Experiment: Symbol -> NEXT Symbol -> Bool}
+         [r: REPEATABLE Symbol Experiment]
+def trial
+    (value: Symbol)
+    (outcome: NEXT Symbol)
+      : Bool :=
+  (r.outcome? value outcome) && (Experiment value outcome)
+end REPEATABLE
+
+
+abbrev Next (σ : Type now) := ULift.{now+1,now} σ
+
+inductive Count
+    (symbol : Type now)
+    (next  : Type (now+1))
+    [DISTINGUISHABLE symbol (Next symbol)]
+    : Type (now+1)
+  | nil : Count symbol next
+  | cons : (next × symbol) → Count symbol next → Count symbol next
+
+namespace Count
+variable {symbol : Type now}
+         {event : Type (now+1)}
+         [DISTINGUISHABLE symbol event]
+end Count
+
+structure Bounds
+    (symbol : Type now)
+    (event : Type (now+1))
+    [i: DISTINGUISHABLE symbol event]
+    [j: DISTINGUISHABLE symbol event]
+    (number : symbol)
+    (LT : symbol -> symbol -> Bool)
+    [i_count: COUNTABLE symbol event number LT]
+    [j_count: COUNTABLE symbol event number LT]
+    where
+  left_number: symbol
+  right_number: symbol
+  in_bounds?: symbol → symbol → Bool
+
+
+namespace Bisection
+end Bisection
 
 structure Decomposition
-    (σ : Type now) [Distinguishable σ]
-    (τ : Type now) [Distinguishable τ]
+    (symbol : Type now)
+    (event : Type (now+1))
+    [i: DISTINGUISHABLE symbol event]
+    [j: DISTINGUISHABLE symbol event]
+    (η : symbol)
+    (LT : symbol -> symbol -> Bool)
+    [i_count: COUNTABLE symbol event η LT]
     where
-  data : Numbering (ArrowOfTime σ τ)
+  top: symbol
+  bottom: symbol
 
+structure Ordering
+    (symbol : Type now)
+    (event : Type (now+1))
+    [DISTINGUISHABLE symbol event]
+    (η : symbol)
+    (LT : symbol -> symbol -> Bool)
+    [count: COUNTABLE symbol event η LT]
+    where
+  lt? : symbol -> symbol -> Bool
 
-structure Alphabet
-  (σ : Type now) [Distinguishable σ]
-  (τ : Type now)
-  where
-  symbol: σ
-  lookup: Noisy Decomposition σ τ
+namespace Ordering
+variable {symbol : Type now}
+         {event : Type (now+1)}
+         [DISTINGUISHABLE symbol event]
+         {η : symbol}
+         {LT : symbol -> symbol -> Bool}
+         [count: COUNTABLE symbol event η LT]
 
-structure Instrument
-    (σ : Type now) [Distinguishable σ]
-    (τ : Type now)
-    : Type (now+2) where
-  sensorAlphabet : Alphabet σ τ
+def lt (a b : symbol) : Bool :=
+  LT a b
 
-  sensor : Noisy Ledger σ
-  gauge  : Noisy Ledger τ
+end Ordering
 
-/-
-A device is merely the decomposition of the instrument
-that takes _time_ to read.  The single internal symbol
-is updated.
--/
-structure Device (σ : Type u) (τ:Type v)
-   [Distinguishable σ] [Distinguishable τ] where
-  instrument : Instrument σ τ
-  decomposition : PhysicalDecomposition σ τ
+class Invariant
+    (symbol : Type now)
+    (event  : Type (now+1))
+    [DISTINGUISHABLE symbol event]
+    (η : symbol)
+    (LE : symbol -> symbol -> Bool)
+    [COUNTABLE symbol event η LE]
+    where
+  indicative: symbol
+  less_than? : symbol -> symbol -> Bool
+  rounds? : symbol -> Option (ULift.{now+1, now} symbol) -> Bool
 
-/--
-Constructions:
+namespace Invariant
+variable {symbol : Type now}
+         {event : Type (now+1)}
+         [DISTINGUISHABLE symbol event]
+         {η : symbol}
+         {LT : symbol -> symbol -> Bool}
+         [COUNTABLE symbol event η LT]
 
-o EinsteinDevice:  This is a clock, it counts upward once for every event,
-                   much like a pendulum clock that advances a mechansim.
+def lt (a b : symbol) : Bool :=
+  LT a b
 
-o TuringDevice:    A theoretical device that computes representations, a
-                   trivial abbreviation, but
--/
-abbrev EinsteinDevice := Device Nat Nat
-/-
-Suppose we would like to use math to both describe the world and how it evolves?
-This is the message to the compiler that it can assume math will both describe the world
-and how it evolves.
--/
-abbrev TuringDevice (σ : Type u)
-    [Distinguishable σ] := Device σ σ
+def round (a : symbol) (n : Option (ULift.{now+1, now} symbol)) : Bool :=
+  match n with
+  | none => false
+  | some n' => LT a n'.down
 
-structure Computer (σ : Type u)
-    [Distinguishable σ] where
-  cpu : TuringDevice σ
-  memory: Ledger σ
-
-namespace Decomposition
-  variable {σ : Type u}[Distinguishable σ]
-  variable {τ : Type v}[Distinguishable τ]
-
-  instance [Distinguishable α] [Distinguishable β] : Distinguishable (α × β) where
-  inst := inferInstance
-  symbol := (Distinguishable.symbol, Distinguishable.symbol)
-
-  def zip (eσ : Enumeration σ) (eτ : Enumeration τ) : Decomposition σ τ :=
-      { left :=
-          { symbol := eσ
-          , numbering := eσ.naturals 0
-          }
-      , right :=
-          { symbol := eτ
-          , numbering := eτ.naturals 0
-          }
-      }
-
-  def enumerate (d : Decomposition σ τ) : Enumeration (σ × τ) :=
-      let rec walk : Enumeration σ → Enumeration τ → Enumeration (σ × τ)
-        | .nil, _ => .nil
-        | _, .nil => .nil
-        | .cons s ss, .cons t ts => .cons (s, t) (walk ss ts)
-      walk d.left.symbol d.right.symbol
-end Decomposition
-
-
-namespace Instrument
-
-variable {σ : Type u}[Distinguishable σ]
-variable {τ : Type v}[Distinguishable τ]
-
-/--
-Readout: The 'after' state of the current arrow of time.
-This is the symbol currently displayed by the instrument.
--/
-def reading?
-  (I : Instrument σ τ) : Option (ULift τ) :=
-  let sensor_reading := Friction.slip? I.sensor I.arrow
-  match sensor_reading with
-  | none => none
-  | some reading => let reading_ndx := I.sensor.base.data.η reading.down
-    match reading_ndx with
-    | none => none
-    | some ndx => let gauge_symbol := I.gauge.data.ζ ndx
-      match gauge_symbol with
-      | none => none
-      | some sym => some (ULift.up sym)
-
-end Instrument
-
-
-namespace Device
-/-
-The device must spend time quietly waiting for the reading.
--/
-variable {σ : Type u}[Distinguishable σ]
-variable {τ : Type v}[Distinguishable τ]
-
-def gauge? (D: Device σ τ) (x : σ) : Option (ULift τ) := D.instrument.read_out? x
-
-end Device
-
-
-namespace Computer
-
-variable {σ : Type u}[Distinguishable σ]
-
-def execute? (C: Computer σ) (x: σ): Option (ULift σ) :=
-  C.cpu.read? x
-
-end Computer
-
+end Invariant
 
 end Measurement
