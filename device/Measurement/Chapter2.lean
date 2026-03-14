@@ -6,6 +6,225 @@ import Measurement.Chapter1
 
 namespace Measurement
 
+
+
+
+/- --------------------------------------------------------
+-/
+
+-- Oh boy, CAUSAL.  This one is quite the narrow definition
+-- to make it easy to enforce.  CAUSAL just means some symbol
+-- must come before others.  The canonical causal relationship
+-- that I claim science requires is the stimulus-response
+-- relationship. This is slip manifest, force requires an object
+-- to move but the object is not compelled to move until enough
+-- force is applied. If you have a more restrictive definition of
+-- causal, I would love to here how stimulus-response is _not_ a
+-- cornerstone of science.
+class CAUSAL
+    (Symbol: Type i)
+    (Characteristic: Symbol → Symbol → Bool)
+    (Event : Symbol → NEXT Symbol → Bool)
+    (Sorted : Symbol → Symbol → Bool)
+    (Computed: Symbol → NEXT Symbol → Bool)
+    -- Here we introduce the concept of a phenomenon.
+    -- Basically, the phenomenon can not only predict what
+    -- might happen next, it can predict from those options
+    -- what the next, potentially larger set of options
+    -- are.  Science is good like that.  So is math.  This
+    -- is a differential form.  Or, it will be.  Soon.
+    (Phenomenon : NEXT Symbol → NEXT (NEXT Symbol) → Bool)
+    [d: DISTINGUISHABLE Symbol Characteristic]
+    [a: ADMISSIBLE Symbol Characteristic Event]
+    [s: SORTED Symbol Characteristic Event Sorted]
+    [c: COMPUTABLE Symbol Characteristic Event Sorted Computed]
+    where
+
+  -- Now we wait, potentially forever
+  response?     : Symbol → NEXT Symbol
+  -- We can recognize that there has been a change by looking
+  -- at it.  If we can't see it, it isn't there.
+  precedes?     : Symbol → NEXT Symbol → Bool
+
+namespace CAUSAL
+variable  {Symbol: Type i}
+          {Characteristic: Symbol → Symbol → Bool}
+          {Event : Symbol → NEXT Symbol → Bool}
+          {Sorted: Symbol → Symbol → Bool}
+          {Computed: Symbol → NEXT Symbol → Bool}
+          {Phenomenon : NEXT Symbol → NEXT (NEXT Symbol) → Bool}
+          (d: DISTINGUISHABLE Symbol Characteristic)
+          (a: ADMISSIBLE Symbol Characteristic Event)
+          (s: SORTED Symbol Characteristic Event Sorted)
+          (c: COMPUTABLE Symbol Characteristic Event Sorted Computed)
+          (phenomenon: CAUSAL Symbol Characteristic Event Sorted Computed Phenomenon)
+
+-- Well, well, well, if it isn't our old friend the single invariant.
+def stimulus
+    : Symbol :=
+  d.invariant
+
+-- Do we see it yet?
+def response
+    (stimulus : Symbol)
+    : NEXT Symbol :=
+  response? Characteristic Event Sorted Computed Phenomenon stimulus
+
+-- Is this a correct prediction, does before precede after?
+def precedes
+    (before: Symbol)
+    (after: NEXT Symbol)
+      : Bool :=
+  a.occured? before after
+
+end CAUSAL
+
+
+
+
+/- --------------------------------------------------------
+-/
+
+class COUNTABLE
+    (Symbol: Type i)
+    (Characteristic: Symbol → Symbol → Bool)
+    (Event : Symbol → NEXT Symbol → Bool)
+    (Sorted : Symbol → Symbol → Bool)
+    (Computation: Symbol → NEXT Symbol → Bool)
+    (Phenomenal : NEXT Symbol → NEXT (NEXT Symbol) → Bool)
+    (Counted : (Symbol -> NEXT Symbol) -> (NEXT Symbol -> NEXT (NEXT Symbol)) -> Bool )
+    [d: DISTINGUISHABLE Symbol Characteristic]
+    [a: ADMISSIBLE Symbol Characteristic Event]
+    [s: SORTED Symbol Characteristic Event Sorted]
+    [c: COMPUTABLE Symbol Characteristic Event Sorted Computation]
+    [phenomenon: CAUSAL Symbol Characteristic Event Sorted Computation Phenomenal]
+    where
+
+  next?    : (Symbol → NEXT Symbol) → (NEXT Symbol → NEXT (NEXT Symbol)) → Bool
+  count?   : (Symbol → NEXT Symbol) → (NEXT Symbol → NEXT (NEXT Symbol))
+
+namespace COUNTABLE
+variable  {Symbol: Type i}
+          {Characteristic: Symbol → Symbol → Bool}
+          {Event : Symbol → NEXT Symbol → Bool}
+          {Sorted: Symbol → Symbol → Bool}
+          {Computation : Symbol → NEXT Symbol → Bool}
+          {Phenomenal : NEXT Symbol → NEXT (NEXT Symbol) → Bool}
+          {Counted : (Symbol -> NEXT Symbol) -> (NEXT Symbol -> NEXT (NEXT Symbol)) -> Bool }
+          (d: DISTINGUISHABLE Symbol Characteristic)
+          (a: ADMISSIBLE Symbol Characteristic Event)
+          (s: SORTED Symbol Characteristic Event Sorted)
+          (c: COMPUTABLE Symbol Characteristic Event Sorted Computation)
+          (phenomenon: CAUSAL Symbol Characteristic Event Sorted Computation Phenomenal)
+          (naturals: COUNTABLE Symbol Characteristic Event Sorted Computation Phenomenal Counted)
+
+def next
+    (current: Symbol → NEXT Symbol)
+    (next: NEXT Symbol → NEXT (NEXT Symbol))
+      : Bool :=
+  next? Characteristic Event Sorted Computation Phenomenal Counted current next
+
+def index
+    : Symbol :=
+  d.invariant
+
+end COUNTABLE
+
+
+class TIME_LIKE
+    (Symbol: Type i)
+    (Encoding: Symbol -> Symbol -> Bool)
+    (Execution: Symbol -> NEXT Symbol -> Bool)
+    (Value : NEXT Symbol -> NEXT Symbol -> Bool)
+    (Phenomenal: NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
+    (Forward: (Symbol -> NEXT Symbol) -> ((Symbol -> NEXT Symbol) -> NEXT (Symbol -> NEXT Symbol)) -> Bool)
+    [DISTINGUISHABLE Symbol Encoding]
+    [LABELED Symbol Encoding Execution]
+    [DISTINGUISHABLE (NEXT Symbol) Value]
+    [LABELED (NEXT Symbol) Value Phenomenal]
+    [ADMISSIBLE (NEXT Symbol) Value Phenomenal]
+    [ADMISSIBLE Symbol Encoding Execution]
+    [CAUSAL Symbol Encoding Execution Phenomenal]
+    [COMPUTABLE Symbol Encoding Execution]
+    where
+
+  t: Symbol
+
+  emitted? : Symbol -> NEXT Symbol -> Bool
+  received? : NEXT (Symbol -> NEXT Symbol) -> Bool
+
+  now?   : Symbol -> Symbol -> Bool
+  later? :  Symbol → NEXT Symbol -> Bool
+  before?   :  Symbol → NEXT Symbol → Bool
+  after? :  NEXT Symbol → NEXT (NEXT Symbol) → Bool
+
+namespace TIME_LIKE
+variable  {Symbol: Type i}
+          {Encoding: Symbol → Symbol → Bool}
+          {Execution : Symbol → NEXT Symbol → Bool}
+          {Value: NEXT Symbol → NEXT Symbol → Bool}
+          {Phenomenal : NEXT Symbol → NEXT (NEXT Symbol) → Bool}
+          {Forward : (Symbol -> NEXT Symbol) -> ((Symbol -> NEXT Symbol) → NEXT (Symbol -> NEXT Symbol)) -> Bool }
+          (d: DISTINGUISHABLE Symbol Encoding)
+          (e: LABELED Symbol Encoding Execution)
+          (v: DISTINGUISHABLE (NEXT Symbol) Value)
+          (p: LABELED (NEXT Symbol) Value Phenomenal)
+          (a1: ADMISSIBLE (NEXT Symbol) Value Phenomenal)
+          (a2: ADMISSIBLE Symbol Encoding Execution)
+          (c: COMPUTABLE Symbol Encoding Execution)
+          (ca: CAUSAL Symbol Encoding Execution Phenomenal)
+          (t: TIME_LIKE Symbol Encoding Execution Value Phenomenal Forward)
+def local_time
+    : Symbol :=
+  t.t
+
+def emitted
+    (data: Symbol)
+    (carrier: NEXT Symbol)
+      : Bool :=
+  later? Encoding Execution Value Phenomenal Forward data carrier
+
+def received
+    (message: NEXT (Symbol -> NEXT Symbol))
+      : Bool :=
+  received? Encoding Execution Value Phenomenal Forward message
+
+end TIME_LIKE
+
+
+
+
+
+
+
+inductive Ledger
+    (Symbol: Type i)
+    (Encoding: Symbol -> Symbol -> Bool )
+    (Encoded: Symbol -> NEXT Symbol -> Bool)
+    (Value : Symbol -> Symbol -> Bool)
+    (Phenomenal: Symbol -> NEXT Symbol -> Bool)
+    [DISTINGUISHABLE Symbol Encoding]
+    [LABELED Symbol Encoding Encoded]
+    [DISTINGUISHABLE Symbol Value]
+    [LABELED Symbol Value Phenomenal]
+    [ADMISSIBLE Symbol Value Phenomenal]
+    [COMPUTABLE Symbol Encoding Encoded]
+    [COMPUTABLE Symbol Value Phenomenal]
+
+    : Type (i+1)
+  | nil :  Ledger Symbol Encoding Encoded Value Phenomenal
+  | cons: Symbol →
+          DISTINGUISHABLE Symbol Encoding →
+          LABELED Symbol Encoding Encoded →
+          DISTINGUISHABLE Symbol Value →
+          LABELED Symbol Value Phenomenal →
+          ADMISSIBLE Symbol Value Phenomenal →
+          COMPUTABLE Symbol Encoding Encoded →
+          COMPUTABLE Symbol Value Phenomenal →
+          Ledger Symbol Encoding Encoded Value Phenomenal →
+          Ledger Symbol Encoding Encoded Value Phenomenal
+
+
 inductive TuringDevice
     (Symbol: Type i)
     (Encoding: Symbol -> Symbol -> Bool )
