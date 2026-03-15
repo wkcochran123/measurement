@@ -36,15 +36,16 @@ class DISTINGUISHABLE
 
   -- The indescribable universe.
   -- There is no other variable.
-  -- Every Symbol you see is this entropy variable.
-  -- Should be easy to spot.
+  -- Every Symbol you see is stuff.
+  -- Also, every symbol you see is stuff.
+  -- Should be easy to spot the difference.
 
   -- When you see "NEXT Symbol", that is just what
-  -- entropy will look like at step _i_+1. We
+  -- stuff will look like at step _i_+1. We
   -- don't know what that is.
 
   -- Keep your eye on the ball!!
-  entropy             : Symbol
+  stuff               : Symbol
 
   -- All other classes will be defined by mappings.
   -- The mappings are either supplied by the type name
@@ -70,7 +71,7 @@ class DISTINGUISHABLE
 /-
 Of course, we need to be able to inquire about
 a particularly distinguished symbol-- I mean
-the entropy above.
+the stuff above.
 -/
 
 namespace DISTINGUISHABLE
@@ -79,10 +80,10 @@ variable  {Symbol : Type i}
           [d: DISTINGUISHABLE Symbol Characteristic]
 
 -- This is the single invariant upon which the entire universe can be
--- decomposed.
+-- decomposed: stuff.
 def invariant
     : Symbol :=
-  d.entropy
+  d.stuff
 
 
 -- This is a record of whether or not a particular
@@ -90,7 +91,7 @@ def invariant
 -- Could be fantasy. Could be a lie. Could be a hallucination.
 def is_a_fact
       : Bool :=
-  distinguished? Characteristic d.entropy
+  distinguished? Characteristic d.stuff
 
 
 -- This determines if two symbols do not share
@@ -136,15 +137,15 @@ end DISTINGUISHABLE
 -- symbols, one right after another.  Like and subscribe if you
 -- thought I was talking about something else. We'll come back to that
 -- later.
-inductive Description
+inductive DescriptionOf
     (Symbol : Type i)
     (Characteristic : Symbol → Symbol → Bool)
-    [DISTINGUISHABLE Symbol Characteristic ]
-  | nil : Description Symbol Characteristic
+    [DISTINGUISHABLE Symbol Characteristic]
+  | nil : DescriptionOf Symbol Characteristic
   | cons : Symbol →
            DISTINGUISHABLE Symbol Characteristic →
-           Description Symbol Characteristic →
-           Description Symbol Characteristic
+           DescriptionOf Symbol Characteristic →
+           DescriptionOf Symbol Characteristic
 
 
 
@@ -167,7 +168,7 @@ inductive Description
 -- We started understanding that certain situations were impossible
 -- given current conditions.  Everything else could happen, theoretically.
 -- We can further distinguish our universe by whether or not something
--- _could_ happen. So, an admissible entropy state in the future is one
+-- _could_ happen. So, an admissible stuff state in the future is one
 -- that _could_ represent this.  That's 2 _coulds_.  Those are different
 -- _coulds_.  Or, are they? Do they have to be?  Why not both?
 class ADMISSIBLE
@@ -182,7 +183,7 @@ class ADMISSIBLE
   -- phenomenologies whose entire purpose is to describe how symbols
   -- for invariants, their values, their derived values, and those
   -- representations, change over time, across units, and in different
-  -- circumstances. (((fiveshadowing)))
+  -- circumstances. ((foreshadowing))
   occured?      : Symbol → NEXT Symbol → Bool
 
 
@@ -347,7 +348,7 @@ inductive ListOf
     (Encoding: Symbol → Symbol → Bool)
 
     -- Any arbitrary computation can go here, but it
-    -- must operate on the current state of entropy
+    -- must operate on the current state of stuff
     -- and no other.  This is a witness to the computation.
     -- So we can describe the partition and we can describe
     -- the witness.
@@ -461,7 +462,16 @@ inductive IndexOf
 
 
 /- --------------------------------------------------------
--/
+
+           ***       ***      ***        *
+          *   *     *   *     *  *      * *
+          *         *   *     *  *     *   *
+          *         *   *     *  *     *****
+          *         *   *     *  *     *   *
+          *   *     *   *     *  *     *   *
+           ***       ***      ***      *   *
+
+-- -------------------------------------------------------/
 
 -- Before there were computers, there was Turing.  Turing
 -- made an implicit assumption:  Representation is faithful.
@@ -477,8 +487,8 @@ class COMPUTABLE
     (Event : Symbol → NEXT Symbol → Bool)
     (Sorted: Symbol → Symbol → Bool)
     -- Look closely, and you will see memoization.
-    -- Let's memoize the entropy right in front of us by putting
-    -- it back into the next entropy. I know you think I am building
+    -- Let's memoize the stuff right in front of us by putting
+    -- it back into the next stuff. I know you think I am building
     -- a universal Turing machine here, but I am not.  I am building a ...
     (Computation: Symbol → NEXT Symbol → Bool)
     -- (((lol)))
@@ -524,6 +534,9 @@ def value
 
 end COMPUTABLE
 
+
+-- This generates a trace of a computation: the list of computations
+-- and the internal state of the computer at the time of computation
 inductive ComputationOf
     (Symbol: Type i)
     (Characteristic: Symbol → Symbol → Bool)
@@ -540,6 +553,9 @@ inductive ComputationOf
     [event: ADMISSIBLE Symbol Characteristic Event]
     [l1: LABELED Symbol Encoding Computed]     -- This is the LABEL that LABELS a computation
     [l2: LABELED Symbol Characteristic Event]  -- This is the name of invariant of the computation, _x_.
+
+    -- The two lists mentioned above, sorted.  Weird how they sit on
+    -- top of each other in all this stuff.
     [s1: SORTED Symbol Encoding Computed Sorted_Computations]
     [s2: SORTED Symbol Characteristic Event Sorted_Events]
 
@@ -549,38 +565,83 @@ inductive ComputationOf
     -- at a time.  Sometimes we can get quite a few all at once.
     : (Symbol : Type i) → Type (i+1)
   | nil :  ComputationOf Symbol Characteristic Encoding Event Computed Sorted_Computations Sorted_Events Computation Symbol
-  | cons: (s : Symbol) →
-          (now: Symbol) →
-          (later: NEXT Symbol) →
-          ComputationOf Symbol Characteristic Encoding Event Computed Sorted_Computations Sorted_Events Computation Symbol →
-          ComputationOf Symbol Characteristic Encoding Event Computed Sorted_Computations Sorted_Events Computation Symbol
+  | cons: (program : Symbol) →             -- Input
+          (machine_code: Symbol) →         -- Compiled input (lake build, e.g. and i.e., or is that too-meta?)
+          (register: NEXT Symbol) →        -- Computed output
+          ComputationOf Symbol
+                        Characteristic Encoding Event
+                        Computed Sorted_Computations Sorted_Events
+                        Computation Symbol →
+          ComputationOf Symbol
+                        Characteristic Encoding Event
+                        Computed Sorted_Computations Sorted_Events
+                        Computation Symbol
 
 
 /- --------------------------------------------------------
 -/
 
+-- Finally, the physical process of slip, the ole'
+-- noisy stimulus-response. Slip, as characterized by da Vince,
+-- is a threshold process based on the mass of the object stubbornly
+-- resisting motion.  Then it moves _all_ _at_ _once_.  This
+-- all at once-ness is the key to slip. Once some threshold is met,
+-- the slip occurs, even if you have no idea how to compute the
+-- invariant or threshold.  You just need to be able to recoginze the
+-- slip as being a distinguished change in circumstance.  This is the
+-- basis of all physical processes,
 class PHYSICAL
     (Symbol: Type i)
-    (Stimulus: Symbol → NEXT Symbol → Bool)
-    (Response: NEXT Symbol → NEXT Symbol → Bool)
-    (Observation: NEXT Symbol → NEXT (NEXT Symbol) → Bool)
-    [d: DISTINGUISHABLE (NEXT Symbol) Response]
-    (a: ADMISSIBLE (NEXT Symbol) Response Observation)
+    (Invariant: Symbol)
+    -- Prediction
+    (Threshold: Symbol -> Symbol -> Bool)
+    -- Have you seen the slip yet?
+    (Observation: Symbol -> NEXT Symbol -> Bool)
+    [D: DISTINGUISHABLE Symbol Threshold]
+    [A: ADMISSIBLE Symbol Threshold Observation]
     where
 
-  -- This is the fundamental physical law.  It is the only thing
-  -- that is physical.  It is the only thing that is real.  It is
-  -- the only thing that exists.  It is the only thing that can be
-  -- measured.  It is the only thing that can be computed.  It is
-  -- the only thing that can be sorted.  It is the only thing that can
-  -- be distinguished.  It is the only thing that can be admitted.
   slip? : Symbol → NEXT Symbol → Bool
 
-
 namespace PHYSICAL
+variable  {Symbol: Type i}
+          {Invariant: Symbol}
+          {Threshold: Symbol -> Symbol -> Bool}
+          {Observation: Symbol -> NEXT Symbol -> Bool}
+          [D: DISTINGUISHABLE Symbol Threshold]
+          [A: ADMISSIBLE Symbol Threshold Observation]
+          [law: PHYSICAL Symbol Invariant Threshold Observation]
+
+  -- slip? is a complex process, but you don't need to know how it
+  -- works, just that it does. You don't have to know anything about
+  -- the response at all, just that there should be one.
+  def slip
+    (now: Symbol)
+    (later: NEXT Symbol)
+      : Bool :=
+  law.slip? now later
 
 end PHYSICAL
 
 
+-- As you can see, as you slip, you move through time at the rate
+-- of one slip per unit time.
+inductive PhenomenonOf
+    (Symbol: Type i)
+    (Invariant: Symbol)
+    (Threshold: Symbol -> Symbol -> Bool)
+    (Observation: Symbol -> NEXT Symbol -> Bool)
+
+    [D: DISTINGUISHABLE Symbol Threshold]
+    [A: ADMISSIBLE Symbol Threshold Observation]
+    [P: PHYSICAL Symbol Invariant Threshold Observation]
+
+    : (Symbol : Type i) → Type (i+1)
+  | nil :  PhenomenonOf Symbol Invariant Threshold Observation Symbol
+  | cons: (s : Symbol) →
+          (now: Symbol) →
+          (later: NEXT Symbol) →
+          PhenomenonOf Symbol Invariant Threshold Observation Symbol →
+          PhenomenonOf Symbol Invariant Threshold Observation Symbol
 
 end Measurement
