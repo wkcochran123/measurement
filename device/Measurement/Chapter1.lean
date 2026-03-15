@@ -34,6 +34,8 @@ class DISTINGUISHABLE
     (Characterisitic : Symbol → Symbol → Bool)
     where
 
+  -- STUFF
+
   -- The indescribable universe.
   -- There is no other variable.
   -- Every Symbol you see is stuff.
@@ -46,6 +48,8 @@ class DISTINGUISHABLE
 
   -- Keep your eye on the ball!!
   stuff               : Symbol
+  -- There is no other stuff.  There is only one stuff.
+  -- This is the single invariant.
 
   -- All other classes will be defined by mappings.
   -- The mappings are either supplied by the type name
