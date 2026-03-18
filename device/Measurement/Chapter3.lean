@@ -2,6 +2,47 @@ import Measurement.Chapter2
 
 namespace Measurement
 
+
+
+class CORRELANT
+    (Symbol_1: Type i)
+    (Symbol_2: Type i)
+    (Characteristic_1: Symbol_1 → Symbol_1 → Bool)
+    (Characteristic_2: Symbol_2 → Symbol_2 → Bool)
+    [DISTINGUISHABLE Symbol_1 Characteristic_1]
+    [DISTINGUISHABLE Symbol_2 Characteristic_2]
+    [DISTINGUISHABLE (Symbol_1 × Symbol_2) (λ p1 p2 => Characteristic_1 p1.1 p2.1 && Characteristic_2 p1.2 p2.2)]
+    [RELATABLE Symbol_1 Symbol_2 Characteristic_1 Characteristic_2]
+      where
+
+  correlant? : Symbol_1 → Symbol_2 → Bool
+
+
+namespace CORRELANT
+variable {Symbol_1: Type i}
+         {Symbol_2: Type (i+1)}
+         {Now}
+         {Event_Description: Symbol_1 → Symbol_2}
+         {Characteristic_1: Symbol_1 → Symbol_1 → Bool}
+         {Characteristic_2: Symbol_2 → Symbol_2 → Bool}
+         [DISTINGUISHABLE Symbol_1 Characteristic_1]
+         [ADMISSIBLE Symbol_1 Characteristic_1 (λ s1 s2 => Characteristic_2 Characateristic_1 (Event_Description Symbol_1))]
+         [DISTINGUISHABLE Symbol_2 Characteristic_2]
+         [ADMISSIBLE Symbol_2 Characteristic_2 (λ s1 s2 => Characteristic_2 s1 s2)]
+         [DISTINGUISHABLE (Symbol_1 × Symbol_2) (λ p1 p2 => Characteristic_1 p1.1 p2.1 && Characteristic_2 p1.2 p2.2)]
+         [RELATABLE Symbol_1 Symbol_2 Characteristic_1 Characteristic_2]
+         [CORRELANT Symbol_1 Symbol_2 Characteristic_1 Characteristic_2]
+
+def correlant
+    (s1: Symbol_1)
+    (s2: Symbol_2)
+      : Bool :=
+  CORRELANT.correlant? Characteristic_1 Characteristic_2 s1 s2
+
+end CORRELANT
+
+
+
 class LOCAL
     (symbol: Type now)
     (event: Type (now+1))

@@ -7,77 +7,149 @@ import Measurement.Chapter1
 namespace Measurement
 
 
+/- --------------------------------------------------------
+-/
 
 
 /- --------------------------------------------------------
 -/
 
--- Oh boy, CAUSAL.  This one is quite the narrow definition
--- to make it easy to enforce.  CAUSAL just means some symbol
--- must come before others.  The canonical causal relationship
--- that I claim science requires is the stimulus-response
--- relationship. This is slip manifest, force requires an object
--- to move but the object is not compelled to move until enough
--- force is applied. If you have a more restrictive definition of
--- causal, I would love to here how stimulus-response is _not_ a
--- cornerstone of science.
-class CAUSAL
+abbrev PAIR (Symbol: Type i) := Symbol × Symbol
+
+class DECOMPOSED
     (Symbol: Type i)
-    (Characteristic: Symbol → Symbol → Bool)
-    (Event : Symbol → NEXT Symbol → Bool)
-    (Sorted : Symbol → Symbol → Bool)
-    (Computed: Symbol → NEXT Symbol → Bool)
-    -- Here we introduce the concept of a phenomenon.
-    -- Basically, the phenomenon can not only predict what
-    -- might happen next, it can predict from those options
-    -- what the next, potentially larger set of options
-    -- are.  Science is good like that.  So is math.  This
-    -- is a differential form.  Or, it will be.  Soon.
-    (Phenomenon : NEXT Symbol → NEXT (NEXT Symbol) → Bool)
-    [d: DISTINGUISHABLE Symbol Characteristic]
-    [a: ADMISSIBLE Symbol Characteristic Event]
-    [s: SORTED Symbol Characteristic Event Sorted]
-    [c: COMPUTABLE Symbol Characteristic Event Sorted Computed]
+    (Whole: Symbol)
+    (Part_1: Symbol)
+    (Part_2: NEXT Symbol)
+
+    (NextDecomposition: Symbol → NEXT (PAIR (NEXT Symbol)) → Bool)    -- This checks to see if the next Whole is decomposed.
+    (Decompose: Symbol → PROCESS (PAIR (NEXT Symbol)) → Bool)
     where
 
-  -- Now we wait, potentially forever
-  response?     : Symbol → NEXT Symbol
-  -- We can recognize that there has been a change by looking
-  -- at it.  If we can't see it, it isn't there.
-  precedes?     : Symbol → NEXT Symbol → Bool
+  before? : (Symbol → NEXT (PAIR (NEXT Symbol)) → Bool) := NextDecomposition
+  decompose? : (Symbol → PROCESS (PAIR (NEXT Symbol)) → Bool) := Decompose
 
-namespace CAUSAL
-variable  {Symbol: Type i}
-          {Characteristic: Symbol → Symbol → Bool}
-          {Event : Symbol → NEXT Symbol → Bool}
-          {Sorted: Symbol → Symbol → Bool}
-          {Computed: Symbol → NEXT Symbol → Bool}
-          {Phenomenon : NEXT Symbol → NEXT (NEXT Symbol) → Bool}
-          (d: DISTINGUISHABLE Symbol Characteristic)
-          (a: ADMISSIBLE Symbol Characteristic Event)
-          (s: SORTED Symbol Characteristic Event Sorted)
-          (c: COMPUTABLE Symbol Characteristic Event Sorted Computed)
-          (phenomenon: CAUSAL Symbol Characteristic Event Sorted Computed Phenomenon)
+namespace PRECEDES
 
--- Well, well, well, if it isn't our old friend the single invariant.
-def stimulus
-    : Symbol :=
-  d.invariant
+variable {Symbol_1 : Type i}
+         {Symbol_2 : Type i}
+         {s1 : Symbol_1}
+         {s2 : Symbol_2}
+         {Before : Symbol_1 → NEXT Symbol_2 → Bool}
+         {Concatenated : (Symbol_1 × Symbol_2) → Bool}
+         [relation: PRECEDES Symbol_1 Symbol_2 s1 s2 Before Concatenated]
 
--- Do we see it yet?
-def response
-    (stimulus : Symbol)
-    : NEXT Symbol :=
-  response? Characteristic Event Sorted Computed Phenomenon stimulus
-
--- Is this a correct prediction, does before precede after?
-def precedes
-    (before: Symbol)
-    (after: NEXT Symbol)
+def concatenated
+    (a: Symbol_1)
+    (b: Symbol_2)
       : Bool :=
-  a.occured? before after
+  relation.concatenated? (a, b)
 
-end CAUSAL
+def before
+    (a: Symbol_1)
+    (b: Symbol_2)
+      : Bool :=
+  relation.before? a b
+
+-- Can these things be concantenated?  Interesting question..
+def concatenate?
+    (a: Symbol_1)
+    (b: Symbol_2)
+      : Bool :=
+  relation.concatenated? (a, b) && relation.before? a b
+
+def correlate
+    (a: Symbol_1)
+    (b: Symbol_2)
+      : Bool :=
+  relation.concatenated? (a, b) && !relation.before? a b
+
+end PRECEDES
+
+inductive DecompositionOf
+    (Symbol: Type i)    -- This is the symbol being decomposed.
+    (Whole: Symbol)     -- This is the whole symbol that is being decomposed.
+    (Part_1: Symbol)    -- First part.
+    (Part_2: Symbol)    -- Second part.
+
+    (s: Symbol)
+    (s1: Part_1)         -- <- The Tape distinguishes them as before and after
+    (s2: NEXT Part_2)    -- <- The approximate arrow of time due to the
+                           -- Tape being a process that takes time the first time.
+    (Before: Symbol_1 → NEXT Symbol_2 → Bool)
+    (Concatenated: (Symbol_1 × Symbol_2) → Bool)
+
+/- --------------------------------------------------------
+-/
+
+
+class ORDERING
+    (Symbol: Type i)
+    (Name: Symbol)
+    (Value: Symbol)
+    (FeatureName: Symbol → NEXT Symbol → Bool)
+    (FeatureRelation: (Symbol × Symbol) → Bool)
+    [PRECEDES Symbol Name Value FeatureName FeatureRelation]
+    where
+
+  name? : Symbol → NEXT Symbol → Bool := FeatureName
+  less_than?: (Symbol × Symbol) → Bool := FeatureRelation
+
+
+namespace ORDERING
+variable {Symbol : Type i}
+         {Name : Symbol}
+         {Value : Symbol}
+         {FeatureName : Symbol → NEXT Symbol → Bool}
+         {FeatureRelation : (Symbol × Symbol) → Bool}
+         [related: PRECEDES Symbol Name Value FeatureName FeatureRelation]
+         [ordering: ORDERING Symbol Name Value FeatureName FeatureRelation]
+
+def name
+    (name: Symbol)
+    (word: Symbol)
+      : Bool :=
+  ordering.name? name word
+
+def less_than
+    (a: Symbol)
+    (b: Symbol)
+      : Bool :=
+  ordering.less_than? (a, b)
+
+def value
+    (name: Symbol)
+    (value: Symbol)
+      : Bool :=
+  related.same? name value
+
+def inside
+    (a: Symbol)
+    (b: Symbol)
+      : Bool :=
+  related.related? (a, b) && related.same? a b
+
+end ORDERING
+
+inductive OrderingOf
+    (Symbol: Type i)
+    (Name: Symbol)
+    (Value: Symbol)
+    (FeatureName: Symbol → NEXT Symbol → Bool)
+    (FeatureRelation: (Symbol × Symbol) → Bool)
+    [PRECEDES Symbol Name Value FeatureName FeatureRelation]
+    [ORDERING Symbol Name Value FeatureName FeatureRelation]
+  | nil : OrderingOf Symbol Name Value FeatureName FeatureRelation
+  | cons: Symbol →
+          Symbol →
+          PRECEDES Symbol Name Value FeatureName FeatureRelation →
+          ORDERING Symbol Name Value FeatureName FeatureRelation →
+          OrderingOf Symbol Name Value FeatureName FeatureRelation →
+          OrderingOf Symbol Name Value FeatureName FeatureRelation
+
+
+
+
 
 
 
@@ -85,460 +157,282 @@ end CAUSAL
 /- --------------------------------------------------------
 -/
 
-class COUNTABLE
+class DECOMPOSABLE
     (Symbol: Type i)
-    (Characteristic: Symbol → Symbol → Bool)
-    (Event : Symbol → NEXT Symbol → Bool)
-    (Sorted : Symbol → Symbol → Bool)
-    (Computation: Symbol → NEXT Symbol → Bool)
-    (Phenomenal : NEXT Symbol → NEXT (NEXT Symbol) → Bool)
-    (Counted : (Symbol -> NEXT Symbol) -> (NEXT Symbol -> NEXT (NEXT Symbol)) -> Bool )
-    [d: DISTINGUISHABLE Symbol Characteristic]
-    [a: ADMISSIBLE Symbol Characteristic Event]
-    [s: SORTED Symbol Characteristic Event Sorted]
-    [c: COMPUTABLE Symbol Characteristic Event Sorted Computation]
-    [phenomenon: CAUSAL Symbol Characteristic Event Sorted Computation Phenomenal]
+    (Whole: Symbol)
+    (Parts: (Symbol × Symbol))
+    (Feature: Symbol → NEXT Symbol → Bool)
+    (Relation: (Symbol × Symbol) → Bool)
+    (Decompose:  (NEXT Symbol × NEXT Symbol) → PROCESS (NEXT Symbol) → PROCESS (PROCESS (NEXT Symbol)) → Bool)
+    [PRECEDES Symbol Whole Whole Feature Relation]
+    [ORDERING Symbol Whole Whole Feature Relation]
     where
 
-  next?    : (Symbol → NEXT Symbol) → (NEXT Symbol → NEXT (NEXT Symbol)) → Bool
-  count?   : (Symbol → NEXT Symbol) → (NEXT Symbol → NEXT (NEXT Symbol))
+  left?: Symbol → NEXT Symbol → Bool
+  right?: Symbol → NEXT Symbol → Bool
+  whole? : Symbol → Bool
 
-namespace COUNTABLE
-variable  {Symbol: Type i}
-          {Characteristic: Symbol → Symbol → Bool}
-          {Event : Symbol → NEXT Symbol → Bool}
-          {Sorted: Symbol → Symbol → Bool}
-          {Computation : Symbol → NEXT Symbol → Bool}
-          {Phenomenal : NEXT Symbol → NEXT (NEXT Symbol) → Bool}
-          {Counted : (Symbol -> NEXT Symbol) -> (NEXT Symbol -> NEXT (NEXT Symbol)) -> Bool }
-          (d: DISTINGUISHABLE Symbol Characteristic)
-          (a: ADMISSIBLE Symbol Characteristic Event)
-          (s: SORTED Symbol Characteristic Event Sorted)
-          (c: COMPUTABLE Symbol Characteristic Event Sorted Computation)
-          (phenomenon: CAUSAL Symbol Characteristic Event Sorted Computation Phenomenal)
-          (naturals: COUNTABLE Symbol Characteristic Event Sorted Computation Phenomenal Counted)
+namespace DECOMPOSABLE
+variable {Symbol : Type i}
+         {Whole : Symbol}
+         {Parts : (Symbol×Symbol)}
+         {Feature : Symbol → NEXT Symbol → Bool}
+         {Relation : (Symbol × Symbol) → Bool}
+         {Decompose :  (NEXT Symbol × NEXT Symbol) → PROCESS (NEXT Symbol) → PROCESS (PROCESS (NEXT Symbol)) → Bool}
+         [related: PRECEDES Symbol Whole Whole Feature Relation]
+         [ordering: ORDERING Symbol Whole Whole Feature Relation]
+         [decomposable: DECOMPOSABLE Symbol Whole Parts Feature Relation Decompose]
 
-def next
-    (current: Symbol → NEXT Symbol)
-    (next: NEXT Symbol → NEXT (NEXT Symbol))
+def left
+    (whole: Symbol)
+    (part: NEXT Symbol)
       : Bool :=
-  next? Characteristic Event Sorted Computation Phenomenal Counted current next
+  decomposable.left? whole part
 
-def index
-    : Symbol :=
-  d.invariant
+def right
+    (whole: Symbol)
+    (part: NEXT Symbol)
+      : Bool :=
+  decomposable.right? whole part
 
-end COUNTABLE
+def whole
+      : Bool :=
+   decomposable.whole? Whole
 
 
-class TIME_LIKE
+end DECOMPOSABLE
+
+
+inductive DecompositionOf
     (Symbol: Type i)
-    (Encoding: Symbol -> Symbol -> Bool)
-    (Execution: Symbol -> NEXT Symbol -> Bool)
-    (Value : NEXT Symbol -> NEXT Symbol -> Bool)
-    (Phenomenal: NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
-    (Forward: (Symbol -> NEXT Symbol) -> ((Symbol -> NEXT Symbol) -> NEXT (Symbol -> NEXT Symbol)) -> Bool)
-    [DISTINGUISHABLE Symbol Encoding]
-    [LABELED Symbol Encoding Execution]
-    [DISTINGUISHABLE (NEXT Symbol) Value]
-    [LABELED (NEXT Symbol) Value Phenomenal]
-    [ADMISSIBLE (NEXT Symbol) Value Phenomenal]
-    [ADMISSIBLE Symbol Encoding Execution]
-    [CAUSAL Symbol Encoding Execution Phenomenal]
-    [COMPUTABLE Symbol Encoding Execution]
+    (Whole: Symbol)
+    (Parts: (Symbol×Symbol))
+    (Feature: Symbol → NEXT Symbol → Bool)
+    (Relation: (Symbol × Symbol) → Bool)
+    (Decompose:  (NEXT Symbol × NEXT Symbol) → PROCESS (NEXT Symbol) → PROCESS (PROCESS (NEXT Symbol)) → Bool)
+    [PRECEDES Symbol Whole Whole Feature Relation]
+    [ORDERING Symbol Whole Whole Feature Relation]
+    [DECOMPOSABLE Symbol Whole Parts Feature Relation Decompose]
+  | nil : DecompositionOf Symbol Whole Parts Feature Relation Decompose
+  | cons: Symbol →
+          NEXT Symbol →
+          PRECEDES Symbol Whole Whole Feature Relation →
+          ORDERING Symbol Whole Whole Feature Relation →
+          DECOMPOSABLE Symbol Whole Parts Feature Relation Decompose →
+          DecompositionOf Symbol Whole Parts Feature Relation Decompose →
+          DecompositionOf Symbol Whole Parts Feature Relation Decompose
+
+
+
+
+
+
+
+
+/- --------------------------------------------------------
+-/
+
+class NAMED
+    (Symbol: Type i)
+    (Name: Symbol)
+    (Feature: Symbol → NEXT Symbol → Bool)
+    [PRECEDES Symbol Name Name Feature (λ _ => false)]
     where
 
-  t: Symbol
+  name? : Symbol → NEXT Symbol → Bool := Feature
 
-  emitted? : Symbol -> NEXT Symbol -> Bool
-  received? : NEXT (Symbol -> NEXT Symbol) -> Bool
 
-  now?   : Symbol -> Symbol -> Bool
-  later? :  Symbol → NEXT Symbol -> Bool
-  before?   :  Symbol → NEXT Symbol → Bool
-  after? :  NEXT Symbol → NEXT (NEXT Symbol) → Bool
 
-namespace TIME_LIKE
+namespace NAMED
+variable {Symbol : Type i}
+         {Name : Symbol}
+         {Feature : Symbol → NEXT Symbol → Bool}
+         [related: PRECEDES Symbol Name Name Feature (λ _ => false)]
+         [named: NAMED Symbol Name Feature]
+
+-- How much wood could a woodchuck chuck?
+def name
+    (name: Symbol)
+    (word: Symbol)
+      : Bool :=
+  named.name? name word
+
+inductive DictionaryOf
+    (Symbol: Type i)
+    (Name: Symbol)
+    (Feature: Symbol → NEXT Symbol → Bool)
+    [PRECEDES Symbol Name Name Feature (λ _ => false)]
+    [NAMED Symbol Name Feature]
+  | nil : DictionaryOf Symbol Name Feature
+  | cons: Symbol →
+          NAMED Symbol Name Feature →
+          DictionaryOf Symbol Name Feature →
+          DictionaryOf Symbol Name Feature
+
+end NAMED
+
+
+
+
+
+
+
+
+
+/- --------------------------------------------------------
+-/
+
+
+class STATEFUL
+    (Symbol: Type i)
+    (Instruction: Symbol)
+    (Answer_State: NEXT (NEXT Symbol×NEXT Symbol))
+    (NextResult: Symbol → NEXT Symbol → Bool)
+    (Next_Answer_State: (NEXT Symbol×NEXT Symbol) → PROCESS (NEXT Symbol×NEXT Symbol) → Bool)
+    [PRECEDES Symbol Instruction (NEXT Symbol×NEXT Symbol)))]
+    where
+
+  state? : Symbol → NEXT Symbol → Bool := Change
+  next_state? : Symbol -> PROCESS Symbol -> Bool := NextState
+
+
+namespace STATEFUL
+variable {Symbol : Type i}
+         {Name : Symbol}
+         {State : Symbol}
+         {Change : Symbol → NEXT Symbol → Bool}
+         {NextState : Symbol → PROCESS Symbol → Bool}
+         [related_name: PRECEDES Symbol Name Name Change (λ _ => false)]
+         [related_state: PRECEDES Symbol State State Change (λ _ => true)]
+         [named: NAMED Symbol Name Change]
+
+def state
+    (name: Symbol)
+    (state: Symbol)
+      : Bool :=
+  related_name.same? name state
+
+def next_state
+    (state: Symbol)
+    (next_state: Symbol)
+      : Bool :=
+  related_state.same? state next_state
+
+end STATEFUL
+
+inductive Tape
+    (Symbol: Type i)
+    (Name: Symbol)
+    (State: Symbol)
+    (Change: Symbol → NEXT Symbol → Bool)
+    (NextState: Symbol → PROCESS Symbol → Bool)
+    [PRECEDES Symbol Name Name Change (λ _ => false)]
+    [PRECEDES Symbol State State Change (λ _ => true)]
+    [NAMED Symbol Name Change]
+    [STATEFUL Symbol Name State Change NextState]
+  | nil : Tape Symbol Name State Change NextState
+  | cons: Symbol →
+          Symbol →
+          PRECEDES Symbol Name Name Change (λ _ => false) →
+          PRECEDES Symbol State State Change (λ _ => true) →
+          NAMED Symbol Name Change →
+          Tape Symbol Name State Change NextState →
+          Tape Symbol Name State Change NextState
+
+
+
+
+
+
+
+
+/- --------------------------------------------------------
+-/
+
+
+class CARRIED
+    (Symbol:    Type i)
+
+
+    (Particle:  Symbol)
+    (Amplitude: Symbol)
+    (Frequency: Symbol)
+    (Wave: (NEXT Symbol × NEXT Symbol))
+    (Carrier: (NEXT Symbol×NEXT Symbol) → Bool)
+    (Wavefunction: Symbol × (NEXT Symbol×NEXT Symbol))
+    (Detector: (NEXT Symbol) × (NEXT Symbol) → PROCESS (NEXT Symbol))
+
+    (Æther: NEXT Symbol → NEXT (NEXT Symbol) → Bool) -- Notice the Æther is metaphysical and does not require observation.
+    (Elliptic: Symbol → NEXT Symbol → Bool)
+    (Hyperbolic: (NEXT (NEXT Symbol)×NEXT (NEXT Symbol)) → PROCESS (NEXT (NEXT Symbol)) → PROCESS (PROCESS (NEXT (NEXT Symbol))) → Bool)
+    (Parabolic: (NEXT Symbol×NEXT Symbol) → PROCESS (NEXT (Symbol×Symbol)) → Bool)
+    (Schroedinger: (Symbol × (NEXT Symbol×NEXT Symbol)) → PROCESS Symbol → Bool)
+
+    [PRECEDES (NEXT Symbol) (some Particle) (some Particle) Æther Carrier]
+    [PRECEDES (NEXT Symbol) (some Particle) (some Particle) Æther (λ _ => false)]
+    [ORDERING (NEXT Symbol) (some Particle) (some Particle) Æther Carrier]
+    [DECOMPOSABLE (NEXT Symbol) Particle Wave Æther Carrier Hyperbolic]
+    [NAMED (NEXT Symbol) Particle Æther]
+    [STATEFUL (NEXT Symbol) Particle Æther Hyperbolic Schroedinger]
+    (Symbol: Type i)
+    (Name: Symbol)
+    (State: Symbol)
+    (Change: Symbol → NEXT Symbol → Bool)
+    (NextState: Symbol → PROCESS Symbol → Bool)
+      where
+
+
+namespace CARRIED
 variable  {Symbol: Type i}
-          {Encoding: Symbol → Symbol → Bool}
-          {Execution : Symbol → NEXT Symbol → Bool}
-          {Value: NEXT Symbol → NEXT Symbol → Bool}
-          {Phenomenal : NEXT Symbol → NEXT (NEXT Symbol) → Bool}
-          {Forward : (Symbol -> NEXT Symbol) -> ((Symbol -> NEXT Symbol) → NEXT (Symbol -> NEXT Symbol)) -> Bool }
-          (d: DISTINGUISHABLE Symbol Encoding)
-          (e: LABELED Symbol Encoding Execution)
-          (v: DISTINGUISHABLE (NEXT Symbol) Value)
-          (p: LABELED (NEXT Symbol) Value Phenomenal)
-          (a1: ADMISSIBLE (NEXT Symbol) Value Phenomenal)
-          (a2: ADMISSIBLE Symbol Encoding Execution)
-          (c: COMPUTABLE Symbol Encoding Execution)
-          (ca: CAUSAL Symbol Encoding Execution Phenomenal)
-          (t: TIME_LIKE Symbol Encoding Execution Value Phenomenal Forward)
-def local_time
-    : Symbol :=
-  t.t
+          {Value: Symbol}
+          {State: Symbol}
+          {Mechanism: Symbol → NEXT Symbol → Bool}
+          {StateChange: NEXT Symbol → NEXT (NEXT Symbol) → Bool}
+          {Emitted: NEXT Symbol → PROCESS (NEXT Symbol) → Bool}
+          {Received: PROCESS (NEXT Symbol) → PROCESS (PROCESS (NEXT Symbol)) → Bool} -- Nothing can go in the middle of the counts.
 
 def emitted
-    (data: Symbol)
-    (carrier: NEXT Symbol)
-      : Bool :=
-  later? Encoding Execution Value Phenomenal Forward data carrier
-
-def received
-    (message: NEXT (Symbol -> NEXT Symbol))
-      : Bool :=
-  received? Encoding Execution Value Phenomenal Forward message
-
-end TIME_LIKE
-
-
-
-
-
-
-
-inductive Ledger
-    (Symbol: Type i)
-    (Encoding: Symbol -> Symbol -> Bool )
-    (Encoded: Symbol -> NEXT Symbol -> Bool)
-    (Value : Symbol -> Symbol -> Bool)
-    (Phenomenal: Symbol -> NEXT Symbol -> Bool)
-    [DISTINGUISHABLE Symbol Encoding]
-    [LABELED Symbol Encoding Encoded]
-    [DISTINGUISHABLE Symbol Value]
-    [LABELED Symbol Value Phenomenal]
-    [ADMISSIBLE Symbol Value Phenomenal]
-    [COMPUTABLE Symbol Encoding Encoded]
-    [COMPUTABLE Symbol Value Phenomenal]
-
-    : Type (i+1)
-  | nil :  Ledger Symbol Encoding Encoded Value Phenomenal
-  | cons: Symbol →
-          DISTINGUISHABLE Symbol Encoding →
-          LABELED Symbol Encoding Encoded →
-          DISTINGUISHABLE Symbol Value →
-          LABELED Symbol Value Phenomenal →
-          ADMISSIBLE Symbol Value Phenomenal →
-          COMPUTABLE Symbol Encoding Encoded →
-          COMPUTABLE Symbol Value Phenomenal →
-          Ledger Symbol Encoding Encoded Value Phenomenal →
-          Ledger Symbol Encoding Encoded Value Phenomenal
-
-
-inductive TuringDevice
-    (Symbol: Type i)
-    (Encoding: Symbol -> Symbol -> Bool )
-    (Encoded: Symbol -> NEXT Symbol -> Bool)
-    (Value : Symbol -> Symbol -> Bool)
-    (Phenomenon: Symbol -> NEXT Symbol -> Bool)
-    [DISTINGUISHABLE Symbol Encoding]
-    [ENCODED Symbol Encoding Encoded]
-    [DISTINGUISHABLE Symbol Value]
-    [ENCODED Symbol Value Phenomenon]
-    [ADMISSIBLE Symbol Value Phenomenon]
-    [COMPUTABLE Symbol Encoding Encoded]
-    [COMPUTABLE Symbol Value Phenomenon]
-    : Type (i+1)
-  | nil : TuringDevice Symbol Encoding Execution
-  | cons : Symbol ->
-           ENCODED Symbol Encoding ->
-           ADMISSIBLE Symbol Execution ->
-           COMPUTABLE Symbol Encoding Execution ->
-           TuringDevice Symbol Encoding Execution
-
-class COUNTABLE
-    (Symbol: Type i)
-    (Arrival : Symbol -> Symbol -> Bool)
-    (CountingProcess : Symbol -> NEXT Symbol -> Bool)
-    (Encoding : Symbol -> Symbol -> Bool)
-    [DISTINGUISHABLE Symbol Arrival]
-    [DECOMPOSABLE Symbol Arrival]
-    [DISTINGUISHABLE Symbol Encoding]
-    [ADMISSIBLE Symbol CountingProcess]
-      where
-  now: Symbol
-  next? : Symbol -> Symbol -> Bool
-  count? : Symbol -> NEXT Symbol -> Bool
-
-namespace COUNTABLE
-variable {Symbol: Type i}
-         {Arrival : Symbol -> Symbol -> Bool}
-         {CountingProcess : Symbol -> NEXT Symbol -> Bool}
-         {Encoding : Symbol -> Symbol -> Bool}
-         (carrier_symbol: DISTINGUISHABLE Symbol Arrival)
-         (observed_symbol: DECOMPOSABLE Symbol Arrival)
-         (gauge_reading: DISTINGUISHABLE Symbol Encoding)
-         (awaited_return: ADMISSIBLE Symbol CountingProcess)
-         [count_of_carriers: COUNTABLE Symbol Arrival CountingProcess Encoding ]
-
-def next
-    (n: Symbol)
-    (n_plus_one: Symbol)
-    : Bool :=
-  count_of_carriers.next? n n_plus_one
-
-def count
-    (number_i1: Symbol)
-    (number_i2: NEXT Symbol)
-    : Bool :=
-  count_of_carriers.count? number_i1 number_i2
-
-end COUNTABLE
-
-
-class TIMED
-    (Symbol: Type i)
-    (Data: Symbol)
-    (Carrier: NEXT Symbol)
-    (Elapsed: Symbol -> NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
-    where
-  sent? : Symbol -> NEXT Symbol -> Bool
-  received? : NEXT Symbol -> NEXT (NEXT Symbol) -> Bool
-
-namespace TIMED
-variable {Symbol: Type i}
-         {Data: Symbol}
-         {Carrier: NEXT Symbol}
-         {Elapsed: Symbol -> NEXT Symbol -> NEXT (NEXT Symbol) -> Bool}
-         (Timer: TIMED Symbol Data Carrier Elapsed)
-
-def sent
-    (data: Symbol)
-    (carrier: NEXT Symbol)
-    : Bool :=
-  Timer.sent? data carrier
-
-def received
-    (carrier: NEXT Symbol)
-    (response: NEXT (NEXT Symbol))
-    : Bool :=
-  Timer.received? carrier response
-
-end TIMED
-
-inductive Clock
-    (Symbol: Type i)
-    (Data: Symbol)
-    (Carrier: NEXT Symbol)
-    (Elapsed: Symbol -> NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
-    [TIMED Symbol Data Carrier Elapsed]
-  | nil : Clock Symbol Data Carrier Elapsed
-  | cons: Symbol -> NEXT Symbol -> NEXT (NEXT Symbol) -> Clock Symbol Data Carrier Elapsed
-
-
-class PHENOMENAL
-    (Symbol: Type i)
-    (Process: Symbol)
-    (Carrier: NEXT Symbol)
-    (Response: NEXT (NEXT Symbol))
-    (CarrierEmitted: Symbol -> NEXT Symbol -> Bool)
-    (CarrierReceived: NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
-    (Observed: Symbol -> NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
-    (Hypothesis: NEXT Symbol -> NEXT Symbol -> Bool)
-    [TIMED Symbol Process Carrier Observed]                        -- The emission and reception of a particle
-    [ADMISSIBLE Symbol CarrierEmitted]
-    [ADMISSIBLE (NEXT Symbol) CarrierReceived]
-    [DISTINGUISHABLE (NEXT Symbol) Hypothesis]
-    [DECOMPOSABLE (NEXT Symbol) Hypothesis]
-    [TIMED Symbol Process Carrier Observed]
-    [COUNTABLE (NEXT Symbol) Hypothesis CarrierReceived Hypothesis] -- The samples of individual particles
-
-inductive Instrument
-    (Symbol: Type i)
-    (Process: Symbol)
-    (Carrier: NEXT Symbol)
-    (Response: NEXT (NEXT Symbol))
-    (CarrierEmitted: Symbol -> NEXT Symbol -> Bool)
-    (CarrierReceived: NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
-    (Observed: Symbol -> NEXT Symbol -> NEXT (NEXT Symbol) -> Bool)
-    (Phenomenon: NEXT Symbol -> NEXT Symbol -> Bool)
-    [TIMED Symbol Process Carrier Observed]                        -- The emission and reception of a particle
-    [ADMISSIBLE Symbol CarrierEmitted]
-    [ADMISSIBLE (NEXT Symbol) CarrierReceived]
-    [DISTINGUISHABLE (NEXT Symbol) Phenomenon]
-    [DECOMPOSABLE (NEXT Symbol) Phenomenon]
-    [COUNTABLE (NEXT Symbol) Phenomenon CarrierReceived Phenomenon] -- The samples of individual particles
-    [PHENOMENAL Symbol Process Carrier Response CarrierEmitted CarrierReceived Observed Phenomenon]
-  | nil : Instrument Symbol Process Carrier Response CarrierEmitted CarrierReceived Observed Phenomenon
-  | cons : Symbol ->
-           Process ->
-           Carrier ->
-           Response ->
-           TIMED Symbol Process Carrier Observed ->
-           ADMISSIBLE Symbol CarrierEmitted ->
-           ADMISSIBLE (NEXT Symbol) Phenomenon ->
-           DISTINGUISHABLE (NEXT Symbol) Phenomenon ->
-           OBSERVABLE (NEXT Symbol) Phenomenon ->
-           COUNTABLE ()
-
-
-class COUNTABLE
-    (symbol : Type now)
-    (event  : Type (now+1))
-    [DISTINGUISHABLE symbol event]
-    (η : symbol)
-    (LT : symbol -> symbol -> Bool)
-    where
-  witness : symbol -> Option (ULift.{now+1, now} symbol)
-  number: symbol
-
-namespace COUNTABLE
-variable {symbol : Type now}
-         {event : Type (now+1)}
-         [ds: DISTINGUISHABLE symbol event]
-         {η : symbol}
-         {LT : symbol -> symbol -> Bool}
-         [cs: COUNTABLE symbol event η LT]
-def η?
-  (n : symbol) : Option (ULift.{now+1, now} symbol) :=
-  cs.witness n
-end COUNTABLE
-
-structure Event
-    (Symbol: Type i)
-    (Distinguishable: Symbol -> Symbol -> Bool)
-    [DISTINGUISHABLE Symbol Distinguishable]
-    where
-  admissible? : Symbol -> NEXT Symbol -> Bool
-  observation : Symbol
-
-namespace Event
-variable {Symbol : Type i}
-         {Distinguishable : Symbol -> Symbol -> Bool}
-         [DISTINGUISHABLE Symbol Distinguishable]
-
-def admissible (s : Symbol)(e : Event Symbol Distinguishable) : Bool :=
-  Distinguishable s e.observation
-
-end Event
-
-structure Sensor
-    (Event: Type i)
-    (Stimulus: Event -> Event -> Bool)
-    (Response: Event -> (NEXT Event) -> Bool)
-    [DISTINGUISHABLE Event Stimulus]
-    [ENCODED Event Stimulus]
-    [COMPUTABLE Event Stimulus Response]
-    where
-  read? : Event -> Option (NEXT Event)
-  correlant? : Event -> Event -> Bool
-
-class REPEATABLE
-    (Symbol : Type i)
-    (Experiment: Symbol -> NEXT Symbol -> Bool)
-    where
-  observation: Symbol
-  outcome?: Symbol -> NEXT Symbol -> Bool
-
-namespace REPEATABLE
-variable {Symbol : Type i}
-         {Experiment: Symbol -> NEXT Symbol -> Bool}
-         [r: REPEATABLE Symbol Experiment]
-def trial
     (value: Symbol)
-    (outcome: NEXT Symbol)
+    (state: PROCESS (NEXT Symbol))
       : Bool :=
-  (r.outcome? value outcome) && (Experiment value outcome)
-end REPEATABLE
+  carrier.emitted? value state
 
+def received
+    (state: PROCESS (NEXT Symbol))
+    (value: PROCESS (PROCESS (NEXT Symbol)))
+      : Bool :=
+  carrier.received? state value
 
-abbrev Next (σ : Type now) := ULift.{now+1,now} σ
+def value
+    (state: NEXT Symbol)
+    (mechanism: NEXT Symbol)
+    : Symbol :=
+  number.name?  mechanism
 
-inductive Count
-    (symbol : Type now)
-    (next  : Type (now+1))
-    [DISTINGUISHABLE symbol (Next symbol)]
-    : Type (now+1)
-  | nil : Count symbol next
-  | cons : (next × symbol) → Count symbol next → Count symbol next
+end CARRIED
 
-namespace Count
-variable {symbol : Type now}
-         {event : Type (now+1)}
-         [DISTINGUISHABLE symbol event]
-end Count
-
-structure Bounds
-    (symbol : Type now)
-    (event : Type (now+1))
-    [i: DISTINGUISHABLE symbol event]
-    [j: DISTINGUISHABLE symbol event]
-    (number : symbol)
-    (LT : symbol -> symbol -> Bool)
-    [i_count: COUNTABLE symbol event number LT]
-    [j_count: COUNTABLE symbol event number LT]
-    where
-  left_number: symbol
-  right_number: symbol
-  in_bounds?: symbol → symbol → Bool
-
-
-namespace Bisection
-end Bisection
-
-structure Decomposition
-    (symbol : Type now)
-    (event : Type (now+1))
-    [i: DISTINGUISHABLE symbol event]
-    [j: DISTINGUISHABLE symbol event]
-    (η : symbol)
-    (LT : symbol -> symbol -> Bool)
-    [i_count: COUNTABLE symbol event η LT]
-    where
-  top: symbol
-  bottom: symbol
-
-structure Ordering
-    (symbol : Type now)
-    (event : Type (now+1))
-    [DISTINGUISHABLE symbol event]
-    (η : symbol)
-    (LT : symbol -> symbol -> Bool)
-    [count: COUNTABLE symbol event η LT]
-    where
-  lt? : symbol -> symbol -> Bool
-
-namespace Ordering
-variable {symbol : Type now}
-         {event : Type (now+1)}
-         [DISTINGUISHABLE symbol event]
-         {η : symbol}
-         {LT : symbol -> symbol -> Bool}
-         [count: COUNTABLE symbol event η LT]
-
-def lt (a b : symbol) : Bool :=
-  LT a b
-
-end Ordering
-
-class Invariant
-    (symbol : Type now)
-    (event  : Type (now+1))
-    [DISTINGUISHABLE symbol event]
-    (η : symbol)
-    (LE : symbol -> symbol -> Bool)
-    [COUNTABLE symbol event η LE]
-    where
-  indicative: symbol
-  less_than? : symbol -> symbol -> Bool
-  rounds? : symbol -> Option (ULift.{now+1, now} symbol) -> Bool
-
-namespace Invariant
-variable {symbol : Type now}
-         {event : Type (now+1)}
-         [DISTINGUISHABLE symbol event]
-         {η : symbol}
-         {LT : symbol -> symbol -> Bool}
-         [COUNTABLE symbol event η LT]
-
-def lt (a b : symbol) : Bool :=
-  LT a b
-
-def round (a : symbol) (n : Option (ULift.{now+1, now} symbol)) : Bool :=
-  match n with
-  | none => false
-  | some n' => LT a n'.down
-
-end Invariant
+inductive PhenomenonOf
+    (Symbol: Type i)
+    (Value: Symbol)
+    (State: Symbol)
+    (Mechanism: Symbol → NEXT Symbol → Bool)
+    (StateChange: NEXT Symbol → NEXT (NEXT Symbol) → Bool)
+    (Emitted: NEXT Symbol → PROCESS (NEXT Symbol) → Bool)
+    (Received: PROCESS (NEXT Symbol) → PROCESS (PROCESS (NEXT Symbol)) → Bool) -- Nothing can go in the middle of the counts.
+    [PRECEDES Symbol Value Value Mechanism (λ _ => false)]
+    [PRECEDES Symbol State State Mechanism (λ _ => true)]
+    [PRECEDES (NEXT Symbol) (some Value) (some Value) StateChange fun _x => false]  -- More free bits!
+    [PRECEDES (NEXT Symbol) (some State) (some State) StateChange fun _x => true] -- Who needs memory allocation?
+    [NAMED Symbol Value Mechanism] -- You know, like PHOTON GUN. Much better name than laser.
+    [NAMED (NEXT Symbol) (some Value) StateChange]
+    [STATEFUL (NEXT Symbol) Value State StateChange Emitted]
+    [CARRIED Symbol Value State Mechanism StateChange Emitted Received]
+  | nil : PhenomenonOf Symbol Value State Mechanism StateChange Emitted Received
+  | cons: Symbol →
+          NEXT Symbol →
+          PROCESS (NEXT Symbol) →
+          PROCESS (PROCESS (NEXT Symbol)) →
+          PhenomenonOf Symbol Value State Mechanism StateChange Emitted Received →
+          PhenomenonOf Symbol Value State Mechanism StateChange Emitted Received
 
 end Measurement
