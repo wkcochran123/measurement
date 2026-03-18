@@ -3,17 +3,6 @@ Measurement/Chapter1.lean
 
 
 -- There are NO IMPORTS.
-
--- We assume that there are 4 symbols that must be recognized.
--- I
--- NEXT
--- NEXT_I
--- A compiled version of this program that demonstrates truth.
--- It makes no difference what these words mean, they just need
--- to be recognized as symbols.
-
--- Everything else is determmined to follow from the language
--- of lean alone.
 -/
 
 
@@ -32,18 +21,6 @@ You don't know the future until you yank off that Option.
 -/
 abbrev OBSERVE (x : Type i) := Option (ULift.{i+1,i} x)
 
-abbrev NEXT  (x : Type i) := Option x      -- For x := Bool, this abbrev will
-                                           -- carry an allocated bit in the
-                                           -- memory of the compiler that will
-                                           -- not exist in the proof, because
-                                           -- Option Bool is not binary, it is
-                                           -- Trinary. This bit is used as
-                                           -- the ephemera of the carrier.
-                                           -- the Æther, if you will. The construction
-                                           -- below ensures that the abbrev requires
-                                           -- no memory so I can use that bit
-                                           -- freely. That's the how the magic trick
-                                           -- works.
 
 
 
@@ -67,7 +44,7 @@ class DISTINGUISHABLE
   -- Also, every symbol you see is stuff.
   -- Should be easy to spot the difference.
 
-  -- When you see "NEXT Symbol", that is just what
+  -- When you see "DIFFERENT Symbol", that is just what
   -- stuff will look like at step _i_+1. We
   -- don't know what that is.
 
@@ -98,12 +75,14 @@ variable {Characterisitic : Type i → Type i → Prop}
          [d: DISTINGUISHABLE Characterisitic Carrier]
 
 def symbol
-    (S: Type i)
-    [Decidable (d.distinguished? S)] : Type i :=
-  if d.distinguished? S then
-    S
+    (Symbol: Type i)
+    [Decidable (d.distinguished? Symbol)] : Option (Type i) :=
+  if d.distinguished? Symbol then
+    some Symbol
   else
-    d.æther
+    some (d.æther)
+
+
 
 end DISTINGUISHABLE
 
@@ -130,32 +109,6 @@ inductive DescriptionOf
          : DescriptionOf Characteristic Symbol
 
 
-
--- As you can see, we can describe a symbol as a pile of
--- characteristics, with just a little help from the
--- compiler.  Welcome to the ledger of the universe.
--- What you see below is the holder for the mostly
--- densely packed game of 20 Questions you have ever seen.
-abbrev Symbol
-    (Characteristic : Type i → Type i → Prop)
-    (Substrate : Type i)
-    [d : DISTINGUISHABLE Characteristic Substrate] :=
-  DescriptionOf Characteristic Substrate
-
-abbrev RESOLVED
-    (Characteristic : Type i → Type i → Prop)
-    (Substrate : Type i)
-    [d : DISTINGUISHABLE Characteristic Substrate] :=
-  d.distinguished?
-
-abbrev COUNT
-    (Char : Type i → Type i → Prop)
-    (Symbol: Type i)
-    [d : DISTINGUISHABLE Char Symbol]
-      :=
-  DescriptionOf Char Symbol
-
--- We shall now decompose the æther into countable segments.
 
 
 /- --------------------------------------------------------
@@ -228,17 +181,6 @@ inductive CountOf
            CountOf Event Before After Observation →  -- tick tock, before after
            CountOf Event Before After Observation
 
--- And now, a NUMBER.  This time, the
--- count is done by the compiler counting ephemeral lambdas,
--- I mean the æther. Uhh... entropy?
-abbrev NUMBER
-    (Event : Type (i+1) → Type (i+1) → Prop)
-    (Symbol: Type i)
-    (Value: Type (i+1))
-    [a: DISTINGUISHABLE Event Value]
-    (Count: Symbol → OBSERVE Value → Bool) :=
-  CountOf Event Symbol Value Count
-
 
 
 
@@ -248,13 +190,13 @@ abbrev NUMBER
 class PAIRED
     (Ordering: Type (i+1) → Type (i+1) → Prop)
     (Symbol: Type i)
-    (Enccoding: Type (i+1))
-    (Encode: Symbol → OBSERVE Name → Bool)
-    [DISTINGUISHABLE Ordering Name]
-    [ADMISSIBLE Ordering Symbol Name Encode]
+    (Encoding: Type (i+1))
+    (Encode: Symbol → OBSERVE Encoding → Bool)
+    [DISTINGUISHABLE Ordering Encoding]
+    [ADMISSIBLE Ordering Symbol Encoding Encode]
     where
 
-  encoded? : Symbol → OBSERVE Name → Bool := Encode
+  encoded? : Symbol → OBSERVE Encoding → Bool := Encode
 
 namespace PAIRED
 variable {Ordering: Type (i+1) → Type (i+1) → Prop}
@@ -300,17 +242,6 @@ inductive PairsOf
            (h: parsed_symbol.encoded? input output) →
            PairsOf Ordering First Second Encode →
            PairsOf Ordering First Second Encode
-
-
-abbrev Mapping
-    (Ordering: Type (i+1) → Type (i+1) → Prop)
-    (Preimage: Type i)
-    (Image: Type (i+1))
-    (Encode: Preimage → OBSERVE Image → Bool)
-    [DISTINGUISHABLE Ordering Image]
-    [ADMISSIBLE Ordering Preimage Image Encode]
-    [parsed_symbol: PAIRED Ordering Preimage Image Encode] :=
-  PairsOf Ordering Preimage Image Encode
 
 
 
@@ -404,43 +335,45 @@ inductive SortedPairsOf
 
 class COMPUTABLE
     (DecodeInstruction: Type (i+1) → Type (i+1) → Prop)
-    (ExecuteInstruction: Type (i+2) → Type (i+2) → Prop)
+    (ExecuteInstruction: Type (i+1) → Type (i+1) → Prop)
     (Data: Type i)
     (Instruction: Type (i+1))
-    (Output: Type (i+2))
+    (Output: Type (i+1))
     (Decoded   : Data → OBSERVE Instruction → Bool)
-    (Executed  : Instruction → OBSERVE Output → Bool)
+    (Executed  : Data → OBSERVE Output → Bool)
     [DISTINGUISHABLE DecodeInstruction Instruction]
+    [DISTINGUISHABLE ExecuteInstruction Instruction]
     [DISTINGUISHABLE ExecuteInstruction Output]
     [ADMISSIBLE DecodeInstruction Data Instruction Decoded]
-    [ADMISSIBLE ExecuteInstruction Instruction Output Executed]
+    [ADMISSIBLE ExecuteInstruction Data Output Executed]
     [PAIRED DecodeInstruction Data Instruction Decoded]
-    [PAIRED ExecuteInstruction Instruction Output Executed]
+    [PAIRED ExecuteInstruction Data Output Executed]
     [ORDERED DecodeInstruction Data Instruction Decoded (λ d i => Decoded d (some (ULift.up i)))]
-    [ORDERED ExecuteInstruction Instruction Output Executed (λ i o => Executed i (some (ULift.up o)))]
+    [ORDERED ExecuteInstruction Data Output Executed (λ d o => Executed d (some (ULift.up o)))]
       where
 
   decoded? : Data → OBSERVE Instruction → Bool := Decoded
-  executed? : Instruction → OBSERVE Output → Bool := Executed
+  executed? : Data → OBSERVE Output → Bool := Executed
 
 
 namespace COMPUTABLE
-variable {DecodeInstruction: Type (i+1) → Type (i+1) → Prop}
-         {ExecuteInstruction: Type (i+2) → Type (i+2) → Prop}
-         {Data: Type i}
-         {Instruction: Type (i+1)}
-         {Output: Type (i+2)}
-         {Decoded   : Data → OBSERVE Instruction → Bool}
-         {Executed  : Instruction → OBSERVE Output → Bool}
-         [DISTINGUISHABLE DecodeInstruction Instruction]
-         [DISTINGUISHABLE ExecuteInstruction Output]
-         [ADMISSIBLE DecodeInstruction Data Instruction Decoded]
-         [ADMISSIBLE ExecuteInstruction Instruction Output Executed]
-         [PAIRED DecodeInstruction Data Instruction Decoded]
-         [PAIRED ExecuteInstruction Instruction Output Executed]
-         [ORDERED DecodeInstruction Data Instruction Decoded (λ d i => Decoded d (some (ULift.up i)))]
-         [ORDERED ExecuteInstruction Instruction Output Executed (λ i o => Executed i (some (ULift.up o)))]
-         [model: COMPUTABLE DecodeInstruction ExecuteInstruction Data Instruction Output Decoded Executed]
+variable  {DecodeInstruction: Type (i+1) → Type (i+1) → Prop}
+          {ExecuteInstruction: Type (i+1) → Type (i+1) → Prop}
+          {Data: Type i}
+          {Instruction: Type (i+1)}
+          {Output: Type (i+1)}
+          {Decoded   : Data → OBSERVE Instruction → Bool}
+          {Executed  : Data → OBSERVE Output → Bool}
+          [DISTINGUISHABLE DecodeInstruction Instruction]
+          [DISTINGUISHABLE ExecuteInstruction Instruction]
+          [DISTINGUISHABLE ExecuteInstruction Output]
+          [ADMISSIBLE DecodeInstruction Data Instruction Decoded]
+          [ADMISSIBLE ExecuteInstruction Data Output Executed]
+          [PAIRED DecodeInstruction Data Instruction Decoded]
+          [PAIRED ExecuteInstruction Data Output Executed]
+          [ORDERED DecodeInstruction Data Instruction Decoded (λ d i => Decoded d (some (ULift.up i)))]
+          [ORDERED ExecuteInstruction Data Output Executed (λ d o => Executed d (some (ULift.up o)))]
+          [model: COMPUTABLE DecodeInstruction ExecuteInstruction Data Instruction Output Decoded Executed]
 
 def decoded
     (d: Data)
@@ -449,50 +382,46 @@ def decoded
   model.decoded? d i
 
 def executed
-    (i: Instruction)
+    (d: Data)
     (o: OBSERVE Output)
       : Bool :=
-  model.executed? i o
-
+  model.executed? d o
 end COMPUTABLE
-
 
 -- This generates a trace of a computation: the list of computations
 -- and the internal state of the computer at the time of computation
 inductive TapeOf
     (DecodeInstruction: Type (i+1) → Type (i+1) → Prop)
-    (ExecuteInstruction: Type (i+2) → Type (i+2) → Prop)
+    (ExecuteInstruction: Type (i+1) → Type (i+1) → Prop)
     (Data: Type i)
     (Instruction: Type (i+1))
-    (Output: Type (i+2))
+    (Output: Type (i+1))
     (Decoded   : Data → OBSERVE Instruction → Bool)
-    (Executed  : Instruction → OBSERVE Output → Bool)
+    (Executed  : Data → OBSERVE Output → Bool)
     [DISTINGUISHABLE DecodeInstruction Instruction]
+    [DISTINGUISHABLE ExecuteInstruction Instruction]
     [DISTINGUISHABLE ExecuteInstruction Output]
     [ADMISSIBLE DecodeInstruction Data Instruction Decoded]
-    [ADMISSIBLE ExecuteInstruction Instruction Output Executed]
+    [ADMISSIBLE ExecuteInstruction Data Output Executed]
     [PAIRED DecodeInstruction Data Instruction Decoded]
-    [PAIRED ExecuteInstruction Instruction Output Executed]
+    [PAIRED ExecuteInstruction Data Output Executed]
     [ORDERED DecodeInstruction Data Instruction Decoded (λ d i => Decoded d (some (ULift.up i)))]
-    [ORDERED ExecuteInstruction Instruction Output Executed (λ i o => Executed i (some (ULift.up o)))]
+    [ORDERED ExecuteInstruction Data Output Executed (λ d o => Executed d (some (ULift.up o)))]
     [model: COMPUTABLE DecodeInstruction ExecuteInstruction Data Instruction Output Decoded Executed]
-    where
-    -- Welcome to boiler plate.  This pattern is going to
-    -- grow one word at a time as we slowly describe the
-    -- measurement in a ledger. Okay, not really one word
-    -- at a time.  Sometimes we can get quite a few all at once.
-  | nil :  TapeOf DecodeInstruction ExecuteInstruction Data Instruction Output Decoded Executed
+
+  | nil : TapeOf DecodeInstruction ExecuteInstruction Data Instruction Output Decoded Executed
   | cons : (d: Data) →
-           (i: Instruction) →
-           (o: Output) →
-           (h1: model.decoded d (some (ULift.up i))) →
-           (h2: model.executed i (some (ULift.up o))) →
+           (i: OBSERVE Instruction) →
+           (o: OBSERVE Output) →
+           model.decoded? d i →
+           model.executed? d o →
            TapeOf DecodeInstruction ExecuteInstruction Data Instruction Output Decoded Executed →
            TapeOf DecodeInstruction ExecuteInstruction Data Instruction Output Decoded Executed
 
-
+abbrev COMPUTED (Symbol: Type i) := Symbol × OBSERVE Symbol
 /- --------------------------------------------------------
 -/
+
 
 -- Finally, the physical process of slip, the ole'
 -- noisy stimulus-response. Slip, as characterized by da Vince,
@@ -507,40 +436,111 @@ inductive TapeOf
 /-
     (Symbol: Type i)
     (Encoding: Symbol → Symbol → Bool)
-    (InternalSymbol: Symbol → NEXT Symbol)
-    (StateChange: NEXT Symbol → NEXT Symbol → Bool)
+    (InternalSymbol: Symbol → DIFFERENT Symbol)
+    (StateChange: DIFFERENT Symbol → DIFFERENT Symbol → Bool)
     (Parsed: Symbol → OBSERVE Symbol → Bool)
     (Instruction: OBSERVE Symbol -> OBSERVE Symbol -> Bool)
     (Compiled: OBSERVE Symbol → OBSERVE (OBSERVE Symbol) → Bool)
-    (NextInstruction: OBSERVE Symbol → NEXT (OBSERVE Symbol))
-    (InterpretInstruction: OBSERVE Symbol → NEXT (OBSERVE Symbol))
-    (Execution: NEXT (OBSERVE Symbol) → NEXT (OBSERVE Symbol) → Bool)
-    (Executed: NEXT (OBSERVE Symbol) → OBSERVE (NEXT (OBSERVE Symbol)) → Bool)
+    (NextInstruction: OBSERVE Symbol → DIFFERENT (OBSERVE Symbol))
+    (InterpretInstruction: OBSERVE Symbol → DIFFERENT (OBSERVE Symbol))
+    (Execution: DIFFERENT (OBSERVE Symbol) → DIFFERENT (OBSERVE Symbol) → Bool)
+    (Executed: DIFFERENT (OBSERVE Symbol) → OBSERVE (DIFFERENT (OBSERVE Symbol)) → Bool)
 -/
+
+class ENCODED
+    (Labeled: Type (i+1) → Type (i+1) → Prop)
+    (Symbol: Type i)
+    (Name: Symbol → Type i)
+    (Representation: Type (i+1))
+    (EncodedSymbol: Symbol → OBSERVE Representation → Bool)
+    (Encoding: Symbol → Representation → Bool)
+    [DISTINGUISHABLE Labeled Representation]
+    [ADMISSIBLE Labeled Symbol Representation EncodedSymbol]
+    [PAIRED Labeled Symbol Representation EncodedSymbol]
+    [ORDERED Labeled Symbol Representation EncodedSymbol Encoding]
+      where
+  encoded? : Symbol → OBSERVE Representation → Bool := EncodedSymbol
+  name? : Symbol → Type i := Name
+  encoding? : Symbol → Representation → Bool := Encoding
+
+namespace ENCODED
+variable {Labeled: Type (i+1) → Type (i+1) → Prop}
+         {Symbol: Type i}
+         {Name: Symbol → Type i}
+         {Representation: Type (i+1)}
+         {EncodedSymbol: Symbol → OBSERVE Representation → Bool}
+         {Encoding: Symbol → Representation → Bool}
+         [DISTINGUISHABLE Labeled Representation]
+         [ADMISSIBLE Labeled Symbol Representation EncodedSymbol]
+         [PAIRED Labeled Symbol Representation EncodedSymbol]
+         [ORDERED Labeled Symbol Representation EncodedSymbol Encoding]
+         [index: ENCODED Labeled Symbol Name Representation EncodedSymbol Encoding]
+
+def encoded
+    (s: Symbol)
+    (r: OBSERVE Representation)
+      : Bool :=
+  index.encoded? s r
+
+def name
+    (s: Symbol)
+      : Type i :=
+  index.name? s
+
+def encoding
+    (s: Symbol)
+    (r: Representation)
+      : Bool :=
+  index.encoding? s r
+
+end ENCODED
+
+inductive RepresentationOf
+    (Labeled: Type (i+1) → Type (i+1) → Prop)
+    (Symbol: Type i)
+    (Name: Symbol → Type i)
+    (Representation: Type (i+1))
+    (EncodedSymbol: Symbol → OBSERVE Representation → Bool)
+    (Encoding: Symbol → Representation → Bool)
+    [DISTINGUISHABLE Labeled Representation]
+    [ADMISSIBLE Labeled Symbol Representation EncodedSymbol]
+    [PAIRED Labeled Symbol Representation EncodedSymbol]
+    [ORDERED Labeled Symbol Representation EncodedSymbol Encoding]
+    [index: ENCODED Labeled Symbol Name Representation EncodedSymbol Encoding]
+
+  | nil : RepresentationOf Labeled Symbol Name Representation EncodedSymbol Encoding
+  | cons : (s: Symbol) →
+           (r: OBSERVE Representation) →
+           (h1: index.encoded? s r) →
+           RepresentationOf Labeled Symbol Name Representation EncodedSymbol Encoding →
+           RepresentationOf Labeled Symbol Name Representation EncodedSymbol Encoding
+
+
+abbrev DIFFERENT (Symbol: Type i) := Option (Symbol)
 
 class TIMED
     (ddt: Type i → Type i → Type i → Prop)
     (dt: Type i → Type i → Prop)
     (t: Type i)
     (x: t → Type i)
-    (Stimulus: t → NEXT t → Bool)
-    (Response: NEXT t → OBSERVE (NEXT t) → Bool)
-    (dx: (OBSERVE t) → NEXT (OBSERVE t) → Bool)
-    (ddx: (NEXT (OBSERVE t)) → NEXT (OBSERVE (NEXT t)) → Bool)
+    (Stimulus: t → DIFFERENT t → Bool)
+    (Response: DIFFERENT t → OBSERVE (DIFFERENT t) → Bool)
+    (dx: (OBSERVE t) → DIFFERENT (OBSERVE t) → Bool)
+    (ddx: (DIFFERENT (OBSERVE t)) → DIFFERENT (OBSERVE (DIFFERENT t)) → Bool)
     where
 
   emit? : t → OBSERVE t → Bool
-  receive? : NEXT t → OBSERVE (NEXT t) → Bool
+  receive? : DIFFERENT t → OBSERVE (DIFFERENT t) → Bool
 
 namespace TIMED
 variable {ddt: Type i → Type i → Type i → Prop}
          {dt: Type i → Type i → Prop}
          {t: Type i}
          {x: t → Type i}
-         {Stimulus: t → NEXT t → Bool}
-         {Response: NEXT t → OBSERVE (NEXT t) → Bool}
-         {dx: (OBSERVE t) → NEXT (OBSERVE t) → Bool}
-         {ddx: (NEXT (OBSERVE t)) → NEXT (OBSERVE (NEXT t)) → Bool}
+         {Stimulus: t → DIFFERENT t → Bool}
+         {Response: DIFFERENT t → OBSERVE (DIFFERENT t) → Bool}
+         {dx: (OBSERVE t) → DIFFERENT (OBSERVE t) → Bool}
+         {ddx: (DIFFERENT (OBSERVE t)) → DIFFERENT (OBSERVE (DIFFERENT t)) → Bool}
          [model: TIMED ddt dt t x Stimulus Response dx ddx]
 
 def emit
@@ -550,8 +550,8 @@ def emit
   model.emit? s o
 
 def receive
-    (s: NEXT t)
-    (o: OBSERVE (NEXT t))
+    (s: DIFFERENT t)
+    (o: OBSERVE (DIFFERENT t))
       : Bool :=
   model.receive? s o
 
@@ -563,10 +563,10 @@ inductive CounterOf
     (dt: Type i → Type i → Prop)
     (t: Type i)
     (x: t → Type i)
-    (Stimulus: t → NEXT t → Bool)
-    (Response: NEXT t → OBSERVE (NEXT t) → Bool)
-    (dx: (OBSERVE t) → NEXT (OBSERVE t) → Bool)
-    (ddx: (NEXT (OBSERVE t)) → NEXT (OBSERVE (NEXT t)) → Bool)
+    (Stimulus: t → DIFFERENT t → Bool)
+    (Response: DIFFERENT t → OBSERVE (DIFFERENT t) → Bool)
+    (dx: (OBSERVE t) → DIFFERENT (OBSERVE t) → Bool)
+    (ddx: (DIFFERENT (OBSERVE t)) → DIFFERENT (OBSERVE (DIFFERENT t)) → Bool)
     [model: TIMED ddt dt t x Stimulus Response dx ddx]
   | nil : CounterOf ddt dt t x Stimulus Response dx ddx
   | cons : (s: t) →
@@ -579,16 +579,174 @@ inductive CounterOf
 
 
 class AGGREGATED
-    (COUNT: Type i → Type i → Type i → Prop)
-    (ZERO: Type i → Type i → Prop)
-    (Number: Type i)
-    (ONE: Number → Type i)
-    (Counter : Type (i+1))              -- The count of the count of the mark. So, we have to make One COUNTABLE.
-    (Trial : Counter -> Counter → Bool)
-    (Tally: r -> OBSERVE Counter → Bool)
-    (Repeatable: OBSERVE Number → NEXT (OBSERVE COUNTER) → Bool)
-    (Comparable: NEXT (OBSERVE COUNTER) → NEXT (OBSERVE COUNTER) → Bool)
+    (Accumulate: Type i → Type i → Type i → Prop)
+    (Count: Type i → Type i → Prop)
+    (Trial: Type i)
+    (Accumulation: Type (i+1))
+    (Counter: Trial → Type i)
 
+    (Accumulated: Trial → DIFFERENT Trial → Bool)
+    (Repeatable: DIFFERENT Trial → OBSERVE (DIFFERENT Trial) → Bool)
+    (Predictable: (OBSERVE Trial) → DIFFERENT (OBSERVE Trial) → Bool)
+    (Trend: (DIFFERENT (OBSERVE Trial)) → DIFFERENT (OBSERVE (DIFFERENT Trial)) → Bool)
 
-    [time: TIMED COUNT ZERO Number ONE Trial Tally Repeatable Comparable]
+    [timer: TIMED Accumulate Count
+                  Trial Counter
+                  Accumulated Repeatable Predictable Trend]
       where
+
+  accumulated? : Trial → DIFFERENT Trial → Bool := Accumulated
+
+namespace AGGREGATED
+variable  {Accumulate: Type i → Type i → Type i → Prop}
+          {Count: Type i → Type i → Prop}
+          {Trial: Type i}
+          {Accumulation: Type (i+1)}
+          {Counter: Trial → Type i}
+          {Accumulated: Trial → DIFFERENT Trial → Bool}
+          {Repeatable: DIFFERENT Trial → OBSERVE (DIFFERENT Trial) → Bool}
+          {Predictable: (OBSERVE Trial) → DIFFERENT (OBSERVE Trial) → Bool}
+          {Trend: (DIFFERENT (OBSERVE Trial)) → DIFFERENT (OBSERVE (DIFFERENT Trial)) → Bool}
+          [timer: TIMED Accumulate Count
+                  Trial Counter
+                  Accumulated Repeatable Predictable Trend]
+          {Accumulattion: Type (i+1)}
+          [model: AGGREGATED Accumulate Count Trial Accumulation Counter Accumulated Repeatable Predictable Trend]
+
+def accumulated
+    (t: Trial)
+    (o: DIFFERENT Trial)
+      : Bool :=
+  model.accumulated? t o
+
+end AGGREGATED
+
+inductive AccumulationOf
+    (Accumulate: Type i → Type i → Type i → Prop)
+    (Count: Type i → Type i → Prop)
+    (Trial: Type i)
+    (Accumulation: Type (i+1))
+    (Counter: Trial → Type i)
+
+    (Accumulated: Trial → DIFFERENT Trial → Bool)
+    (Repeatable: DIFFERENT Trial → OBSERVE (DIFFERENT Trial) → Bool)
+    (Predictable: (OBSERVE Trial) → DIFFERENT (OBSERVE Trial) → Bool)
+    (Trend: (DIFFERENT (OBSERVE Trial)) → DIFFERENT (OBSERVE (DIFFERENT Trial)) → Bool)
+    [timer: TIMED Accumulate Count
+            Trial Counter
+            Accumulated Repeatable Predictable Trend]
+    [model: AGGREGATED Accumulate Count Trial Accumulation Counter Accumulated Repeatable Predictable Trend]
+  | nil : AccumulationOf Accumulate Count Trial Accumulation Counter Accumulated Repeatable Predictable Trend
+  | cons : (t: Trial) →
+           (o: DIFFERENT Trial) →
+           (h1: model.accumulated? t o) →
+           AccumulationOf Accumulate Count Trial Accumulation Counter Accumulated Repeatable Predictable Trend →
+           AccumulationOf Accumulate Count Trial Accumulation Counter Accumulated Repeatable Predictable Trend
+
+abbrev ACCUMULATION (Trial: Type i) := Trial × DIFFERENT Trial  -- Check that out, an ordered pair!
+
+
+/- -------------------------
+I think everything below here just needs an LE operator on a decomposition
+-/
+
+-- This is a fun way to define real number symbols by describing the gemoetric
+-- computation, bounding the number ever tighter..
+abbrev PAIR (Symbol: Type i) := Symbol × Symbol
+abbrev ORDERED_PAIR (Symbol_1: Type i) (Symbol_2: Type (i+1)) := Symbol_1 × Symbol_2
+abbrev COUNTING (Symbol: Type i) := ORDERED_PAIR Symbol (OBSERVE Symbol)
+abbrev NUMBER (Symbol: Type i) := ORDERED_PAIR Symbol (COUNTING Symbol)
+abbrev BOUNDS (Symbol: Type i) := ORDERED_PAIR (NUMBER Symbol) (NUMBER (OBSERVE Symbol))
+abbrev SEQUENCE (Symbol: Type i) := ORDERED_PAIR (NUMBER Symbol) (BOUNDS Symbol)
+
+
+class REAL
+    (Metaphysical: Type (i+1) → Type (i+1) → Prop)
+    (Computational: Type (i+1) → Type (i+1) → Prop)
+    (Symbol: Type i)
+    (Decomposition: Type (i+1))
+    (Value: Type (i+1))
+    (Iterated : Symbol → OBSERVE Value → Bool) -- Decomposition is the midpoint of the bounds. -- These can be overlapped!
+    (Computed: Symbol → OBSERVE Decomposition → Bool) -- The value is the limit of the decomposition.
+
+    -- This needs refactoring as i am starting to bog again.
+    (Converged: Symbol → Value → Bool) -- Is the decomposition the bisection of the bounds?
+    (LE: Symbol → Symbol → Bool) -- Less than is not possible, on LE. need to make a poset.
+    [DISTINGUISHABLE Metaphysical Value]
+    [DISTINGUISHABLE Metaphysical Decomposition]
+    [DISTINGUISHABLE Computational Value]
+    [DISTINGUISHABLE Computational Decomposition]
+    [ADMISSIBLE Metaphysical Symbol Value Iterated]
+    [ADMISSIBLE Metaphysical Symbol Decomposition Computed]
+    [ADMISSIBLE Computational Symbol Value Iterated]
+    [ADMISSIBLE Computational Symbol Decomposition Computed]
+    [PAIRED Metaphysical Symbol Value Iterated]
+    [PAIRED Metaphysical Symbol Decomposition Computed]
+    [PAIRED Computational Symbol Value Iterated]
+    [PAIRED Computational Symbol Decomposition Computed]
+    [ORDERED Metaphysical Symbol Value Iterated Converged]
+    [ORDERED Metaphysical Symbol Decomposition Computed fun d i => Computed d (some { down := i })]
+    [ORDERED Computational Symbol Value Iterated Converged]
+    [ORDERED Computational Symbol Decomposition Computed fun d i => Computed d (some { down := i })]
+    [ORDERED Metaphysical Symbol Decomposition Computed fun d i => Computed d (some { down := i })]
+    [ORDERED Computational Symbol Value Iterated Converged]
+    [ORDERED Computational Symbol Value Iterated fun d o => Iterated d (some { down := o })]
+    [COMPUTABLE Metaphysical Computational Symbol Decomposition Value Computed Iterated]
+      where
+
+  le? : Symbol → Symbol → Bool := LE
+  eq? : Symbol → Symbol → Bool := λ s1 s2 => LE s1 s2 && LE s2 s1
+
+
+
+
+
+namespace REAL
+
+variable {Metaphysical: Type (i+1) → Type (i+1) → Prop}
+         {Computational: Type (i+1) → Type (i+1) → Prop}
+         {Symbol: Type i}
+         {Decomposition: Type (i+1)}
+         {Value: Type (i+1)}
+         {Iterated : Symbol → OBSERVE Value → Bool}
+         {Computed: Symbol → OBSERVE Decomposition → Bool}
+         {Converged: Symbol → Value → Bool}
+         {LE: Symbol → Symbol → Bool}
+         [DISTINGUISHABLE Metaphysical Value]
+         [DISTINGUISHABLE Metaphysical Decomposition]
+         [DISTINGUISHABLE Computational Value]
+         [DISTINGUISHABLE Computational Decomposition]
+         [ADMISSIBLE Metaphysical Symbol Value Iterated]
+         [ADMISSIBLE Metaphysical Symbol Decomposition Computed]
+         [ADMISSIBLE Computational Symbol Value Iterated]
+         [ADMISSIBLE Computational Symbol Decomposition Computed]
+         [PAIRED Metaphysical Symbol Value Iterated]
+         [PAIRED Metaphysical Symbol Decomposition Computed]
+         [PAIRED Computational Symbol Value Iterated]
+         [PAIRED Computational Symbol Decomposition Computed]
+         [ORDERED Metaphysical Symbol Value Iterated Converged]
+         [ORDERED Metaphysical Symbol Decomposition Computed fun d i => Computed d (some { down := i })]
+         [ORDERED Computational Symbol Value Iterated Converged]
+         [ORDERED Computational Symbol Decomposition Computed fun d i => Computed d (some { down := i })]
+         [ORDERED Metaphysical Symbol Decomposition Computed fun d i => Computed d (some { down := i })]
+         [ORDERED Computational Symbol Value Iterated Converged]
+         [ORDERED Computational Symbol Value Iterated fun d o => Iterated d (some { down := o })]
+         [COMPUTABLE Metaphysical Computational Symbol Decomposition Value Computed Iterated]
+         [ψ : REAL Metaphysical Computational Symbol Decomposition Value Iterated Computed Converged LE]
+
+def le
+    (s1: Symbol)
+    (s2: Symbol)
+      : Bool :=
+  ψ.le? s1 s2
+
+def eq
+    (s1: Symbol)
+    (s2: Symbol)
+      : Bool :=
+  ψ.eq? s1 s2
+
+end REAL
+
+
+end Measurement
