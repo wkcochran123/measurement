@@ -1,8 +1,19 @@
 /-
 Measurement/Chapter1.lean
 
+CODA:  Welcome the the TuringDevice that explicitly describes
+the computations necessary for the simultaneous decomposition
+and evaluation of a real valued function.
+
+As promised, we beign at the beginning and rely on the state
+transform mechanisms of Lean as an example of a discrete universal
+Turing machine.  The following is an arbitrary encoding, so be
+on the lookout for Godel. I would consider this some "arbitrary
+encoding."
+
 
 -- There are NO IMPORTS.
+
 -/
 
 
@@ -22,18 +33,34 @@ You don't know the future until you yank off that Option.
 abbrev OBSERVE (x : Type i) := Option (ULift.{i+1,i} x)
 -- If you have seen it, then you can look directly at the symbol of the result.
 abbrev OBSERVED (x: Type i) := ULift.{i+1,i} x
+-- A different symbol is probably some other symbol, we will
+-- prove that in a bit.
+abbrev DIFFERENT (Invariant : Type i) := Option Invariant
 
--- A different symbol is just some other symbol.
-abbrev DIFFERENT (Symbol : Type i) := Option Symbol
--- Symbol is the symbol we care about since everything is a symbol
--- in measurement.  Measurement is a representation.
-abbrev TOKEN (Symbol : Type i) := DIFFERENT Symbol
 
-abbrev BOOL (Symbol :Type i) := TOKEN Symbol
-def FALSE {Symbol: Type i} : (Option Symbol) := none
+-- At the end of the day, a type is a symbol that can be assigned a name and value.
+-- This sounds liks counting, to me.  Let's exploit this structure.
+abbrev SYMBOL := Type
+
+
+-- A TOKEN Invariant is one that the compiler can recognize as being
+-- distinct from all other symbols.
+abbrev TOKEN (Invariant : Type) := DIFFERENT Invariant
+
+-- We can talk about something being on and off. We call that token
+abbrev BOOL (Invariant :Type) := TOKEN Invariant
+-- BOOL.  See how we are making the process of making TOKENS?
+-- Would you like to see the only primitive TOKEN?
+
+-- Verified silence. This is the only thing we can know for sure,
+-- nothing has been verified and so we can TOKENIZE that concept as
+def _______________FALSE_______________ {Invariant: Type} : (TOKEN Invariant) := none
 -- We define FALSE to be the symbol that represents unrepresentable symbols.
--- This is a DISTINCT Symbol, although it will never be observed as such.
-
+-- This is a DISTINCT Invariant, although it will never be observed as such.
+-- I made it REALLY distinct so you do NOT miss it.
+--
+-- There is only one ball, keep your eye on it.
+-- Like and Subscribe if you think I should make the ball bigger or smaller.
 
 
 
@@ -45,96 +72,46 @@ some characteristic that is either present or absent from
 the something relative to the others.
 -/
 class DISTINGUISHABLE
-    (Characterisitic : Type i → Type i → Option (Type i))
-    (Symbol: Type i)
+    (Characterisitic : Type → Option (Type))
+    (Invariant: Type)
+    [DecidableEq Invariant]
     where
 
-  -- STUFF
+  -- The universe only exists as a type.
+  -- Any higher type is metaphysical and belongs to
+  -- the compiling engine, not the proof.
+  -- Or does it?
+  æther               : Type
 
-  -- The indescribable universe.
-  -- There is no other variable.
-  -- Every Symbol you see is stuff.
-  -- Also, every symbol you see is stuff.
-  -- Should be easy to spot the difference.
-
-  -- When you see "DIFFERENT Symbol", that is just what
-  -- stuff will look like at step _i_+1. We
-  -- don't know what that is or what "DIFFERENT" means.
-
-  -- A symbol just might get resolved, if you read more.
-  æther               : Type i
-  -- But wait, didn't Michelson and Morley show that the æther doesn't exist?
-  -- Maybe, but we don't know that yet.  We just know that it is not distinguishable
-  -- from other symbols, so we can't tell if it exists or not.  It is a symbol that
-  -- is indistinguishable from all other symbols, so it could be anything, including
-  -- nothing.  Hence, æther, the universal substance that unites all. The thing that
-  -- makes up existence.
-
-
-  -- Are two symbols different?
-  --  Supplied by the characteristic in the typename and evaluated by the compiler.
-  different?          : Type i → Type i → Prop :=
-                (λ s1 s2 => ∃ (_ : Type i), match Characterisitic s1 s2 with
-                                              | some _ => true
-                                              | none => false)
-
-  -- Have we distinguished a particular symbol from all others?
-  -- Supplied logically here as there eixts a variable c of type i
-  -- such that the different? mapping can be applied to provide the
-  -- necessary Option (Type i)erty.  Nothing has been instantiated, just named.
-
-  distinguished?      : Type i → Prop := λ s => ∃ (c : Type i), different? c s
-
-
+  different? : Invariant → Invariant → Prop :=
+    fun s1 s2 => s1 ≠ s2
+  distinguished? : Invariant → Prop :=
+    fun s => ∃ c : Invariant, different? s c
+  dec_distinguished : DecidablePred distinguished?
 
 namespace DISTINGUISHABLE
-variable {Characterisitic : Type i → Type i → Option (Type i)}
-         {Carrier: Type i}
-         [d: DISTINGUISHABLE Characterisitic Carrier]
-
+variable {Characterisitic : Type → Option (Type)}
+         {Invariant: Type}
+         [DecidableEq Invariant]
+         [d: DISTINGUISHABLE Characterisitic Invariant]
 
 def different
-    (s1: Type i)
-    (s2: Type i)
-      : Prop :=
+    (s1 s2 : Invariant) : Prop :=
   d.different? s1 s2
 
 def distinguished
-    (s: Type i)
-      : Prop :=
+    (s : Invariant) : Prop :=
   d.distinguished? s
 
-def symbol
-    (Symbol: Type i)
-    [Decidable (d.distinguished? Symbol)] : Option (Type i) :=
-  if d.distinguished? Symbol then
-    some Symbol
-  else
-    some (d.æther)
+def encode
+    (symbol: Invariant)
+    (compiler_type : Type)
+      : Option (Type) :=
+  if (d.dec_distinguished symbol).decide then some compiler_type else none
 
 end DISTINGUISHABLE
 
 
--- A description is just a series of distinguishable symbols.
--- Just like the ones you are reading right now.
--- Perhaps you are wondering if this description is a description
--- exactly like you are reading right now, a list of distinguishable
--- symbols, one right after another. Or is it a description like
--- this program describes a computation? Like and subscribe if you
--- thought I was talking about something else. We'll come back to all
--- of these later.  I promise.
-
--- The important thing about a description is that it exists as
--- part of the stuff of the universe, so it has an index _i_
-inductive DescriptionOf
-    (Characteristic : Type i → Type i → Option (Type i))
-    (Symbol: Type i)
-    [d : DISTINGUISHABLE Characteristic Symbol]
-  | nil : DescriptionOf Characteristic Symbol
-  | cons (S : Type i)
-         (h : d.distinguished? S)
-         (rest : DescriptionOf Characteristic Symbol)
-         : DescriptionOf Characteristic Symbol
 
 
 
@@ -156,130 +133,271 @@ inductive DescriptionOf
 -- that _could_ represent this.  That's 2 _coulds_.  Those are different
 -- _coulds_.  Or, are they? Do they have to be?  Why not both?
 class ADMISSIBLE
-    (Event : Type (i+1) → Type (i+1) → Prop)
-    (Before: Type (max 1 i))
-    (After: Type (i+1))
-    (Observation: Before → OBSERVE After → Bool)
+    (Event : Type 1 → Option (Type 1))
+    (Description: Type → Option (Type))
+    (Invariant: Type)
+    (NextInvariant: OBSERVE (DIFFERENT Type))
+
+     -- Notice the metaphor is starting to work on abstract types.
+     -- It is _metaphysical_.
+    (Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool)
     where
 
   -- Is this a possible future state of the universe? Dunno, could be.
-  admissible? : Before → OBSERVE After → Bool := Observation
+  admissible? : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool := Metaphor
+
+  -- Michelson and Morley disallowed the æther as a possible thing that could be
+  -- distinguished. The æther is the absence of any symbol, so it cannot be distinguished
+  -- from itself.
+  aether_inadmissible :
+    ∀ obs : OBSERVE (DIFFERENT Invariant), admissible? none obs = none
 
 namespace ADMISSIBLE
-variable {Event : Type (i+1) → Type (i+1) → Prop}
-         {Before: Type i}
-         {After: Type (i+1)}
-         {Observation: Before → OBSERVE After → Bool}
-         (ADMISSIBLE Event)
+variable {Event       : Type 1 → Option (Type 1)}
+         {Description : Type → Option (Type)}
+         {Invariant      : Type}
+         {NextInvariant  : OBSERVE (DIFFERENT Type)}
+         {Metaphor    : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool}
+         [a : ADMISSIBLE Event Description Invariant NextInvariant Metaphor]
 
 def admissible
-    (before: Before)
-    (after: OBSERVE After)
-      : Bool :=
-  Observation before after
+    (s   : DIFFERENT Invariant)
+    (obs : OBSERVE (DIFFERENT Invariant))
+      : BOOL Bool :=
+  a.admissible? s obs
 
 end ADMISSIBLE
 
+-- The arrow of time in the compiler is right here.
+abbrev BEFORE (x : Type i) := x
 abbrev AFTER (x : Type i) := ULift.{i+1, i} x
 
--- Once we have the concept of an admissible event, we can enumerate
--- those, producing a list in time.  This is a history of events
--- recorded as a symbol.  I wonder what that symbol could be? If
--- we have done this correctly, this is a list of entropies as they
--- evolve from one point to the next.
-inductive CountOf
-    (Event : Type (i+1) → Type (i+1) → Prop)
-    (Before: Type (max 1 i))
-    (After: Type (i+1))
-    (Observation: Before → OBSERVE After → Bool)
-    [ADMISSIBLE Event Before After Observation]
-  | nil : CountOf Event Before After Observation
-  | cons : (Before → OBSERVE After → Bool) →           -- Now this is pod racing---- er, counting.
-           CountOf Event Before After Observation →  -- tick tock, before after
-           CountOf Event Before After Observation
+
+class COUNTABLE
+    -- Physical Traits of counting
+    (Invariant : Type)
+
+    -- The metaphysical process of counting.
+    -- Associate an i-th thing with a number
+    (ζ      : Type i → Option Type)
+    (Value  : Type i)
+    (NextNumberInvariant : Type → DIFFERENT Type)
+    (NextCount  : Type i →  DIFFERENT (Type i))
+    (NextNumberValue : Type 1 → DIFFERENT (Type 1))
+    (NextInvariant: OBSERVE (DIFFERENT Type))
+    (Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool)
+
+    [value_equality : DecidableEq (Value)]
+    [value_equality : DecidableEq (Invariant)]
+    [value: DISTINGUISHABLE NextNumberInvariant Invariant]
+    [next_value: ADMISSIBLE NextNumberValue NextNumberInvariant Invariant NextInvariant Metaphor]
+    where
+
+  ζ? : Type i → Option Type := ζ
+  next_number_symbol? : Type → DIFFERENT Type := NextNumberInvariant
+  next_count? : Type i → DIFFERENT (Type i) := NextCount
+  next_number_value? : Type 1 → DIFFERENT (Type 1) := NextNumberValue
+  next_symbol? : OBSERVE (DIFFERENT Type) := NextInvariant
+
+  metaphor? : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool := Metaphor
+
+  zero: Invariant
 
 
 
 
 
+namespace COUNTABLE
 
-/-
-Measurement/Chapter3.lean
+variable  {Invariant : Type}
+          {ζ: Type i → Option Type}
+          {Value  : Type i}
+          {NextNumberInvariant : Type → DIFFERENT Type}
+          {NextCount  : Type i →  DIFFERENT (Type i)}
+          {NextNumberValue : Type 1 → DIFFERENT (Type 1)}
+          {NextInvariant: OBSERVE (DIFFERENT Type)}
+          {Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool}
+          [value_equality : DecidableEq (Value)]
+          [symbol_equality : DecidableEq (Invariant)]
+          [value_symbol: DISTINGUISHABLE NextNumberInvariant Invariant]
+          [next_value_symbol: ADMISSIBLE NextNumberValue NextNumberInvariant Invariant NextInvariant Metaphor]
+          [countable: COUNTABLE Invariant ζ Value NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor]
 
-DISTINCT and LedgerOf.
+def next_number_symbol
+    (s : Type)
+      : DIFFERENT Type :=
+  countable.next_number_symbol? s
 
-DISTINCT is the NAND of DISTINGUISHABLE and ADMISSIBLE.
+def next_count
+    (s : Type i)
+      : DIFFERENT (Type i) :=
+  countable.next_count? s
 
-Two symbols are DISTINCT when it is NOT the case that they are
-both distinguishable AND admissible at the same ledger position
-simultaneously.
+def countable.next_count
+    (s : Type i)
+      : DIFFERENT (Type i) :=
+  countable.next_count? s
 
-This is the compile-time spinor. The compiler is the rotation group.
-Elaboration failure is the sign change.
+def next_number_value
+    (s : Type 1)
+      : DIFFERENT (Type 1) :=
+  countable.next_number_value? s
 
-No equality is used anywhere. Only < and apart-from.
--/
+def metaphor
+    (s : DIFFERENT Invariant)
+    (obs : OBSERVE (DIFFERENT Invariant))
+      : BOOL Bool :=
+  countable.metaphor? s obs
 
-
-
-/-
-Measurement/Chapter3.lean
-
-DISTINCT, LedgerOf, RefinementOf, CALIBRATION.
-
-DISTINCT is the NAND of DISTINGUISHABLE and ADMISSIBLE.
-
-Two symbols are DISTINCT when it is NOT the case that they are
-both distinguishable AND admissible at the same ledger position
-simultaneously.
-
-This is the compile-time spinor. The compiler is the rotation group.
-Elaboration failure is the sign change.
-
-No equality is used anywhere. Only < and apart-from.
-
-Universe structure:
-  i     -- physical symbols, ledger entries
-  i+1   -- the instrument: OBSERVE, DISTINCT, LedgerOf, RefinementOf
-  i+2   -- the standard:   CALIBRATION
--/
+end COUNTABLE
 
 
-/- --------------------------------------------------------
-DISTINCT
 
-DISTINGUISHABLE says: there exists a characteristic separating s₁ from s₂.
-ADMISSIBLE says:      s₂ is a possible continuation from s₁.
+inductive Count
+    -- Physical Traits of counting
+    (Invariant : Type)
 
-DISTINCT = DISTINGUISHABLE NAND ADMISSIBLE
+    -- The metaphysical process of counting.
+    (ζ     : Type i → Option Type)
+    (Value  : Type i)
+    (NextNumberInvariant : Type → DIFFERENT Type)
+    (NextCount  : Type i →  DIFFERENT (Type i))
+    (NextNumberValue : Type 1 → DIFFERENT (Type 1))
+    (NextInvariant: OBSERVE (DIFFERENT Type))
+    (Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool)
+  | nil : Count Invariant ζ Value NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor
+  | cons: Invariant →
+          Count Invariant ζ Value NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor →
+          Count Invariant ζ Value NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor
 
-The truth table:
+namespace Count
+variable  {Invariant : Type}
+          {ζ: Type i → Option Type}
+          {Value  : Type i}
+          {NextNumberInvariant : Type → DIFFERENT Type}
+          {NextCount  : Type i →  DIFFERENT (Type i)}
+          {NextNumberValue : Type 1 → DIFFERENT (Type 1)}
+          {NextInvariant: OBSERVE (DIFFERENT Type)}
+          {Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool}
+          [value_equality : DecidableEq (Value)]
+          [symbol_equality : DecidableEq (Invariant)]
+          [value_symbol: DISTINGUISHABLE NextNumberInvariant Invariant]
+          [next_value_symbol: ADMISSIBLE NextNumberValue NextNumberInvariant Invariant NextInvariant Metaphor]
+          [countable: COUNTABLE Invariant ζ Value NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor]
 
-  DISTINGUISHABLE | ADMISSIBLE | DISTINCT
-  ----------------|------------|----------
-  false           | false      | true   -- neither fires, no constraint, æther
-  false           | true       | true   -- admissible but unseparated, still æther
-  true            | false      | true   -- separated but not a valid continuation
-  TRUE            | TRUE       | FALSE  -- both fire: contradiction, compiler rejects
 
-The only case the compiler rejects is when a symbol claims to be
-both fully distinguishable AND fully admissible at the same ledger
-position. That case cannot enter the record. That is the excluded case.
-That is NAND.
 
-Note: no equality is used. Only the Bool result of distinguished? and
-admissible? — both of which are < style separations, not identity claims.
--/
+def η
+    (c : Count Invariant ζ Value NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor)
+      : Invariant :=
+  match c with
+  | nil => countable.zero
+  | cons s _ => s
+
+end Count
+
+
+
+inductive DecodeMap
+    (Invariant           : Type)
+    (NextNumberInvariant : Type → DIFFERENT Type)
+  | nil  : DecodeMap Invariant NextNumberInvariant
+  | cons : Invariant →
+           DecodeMap Invariant NextNumberInvariant →
+           DecodeMap Invariant NextNumberInvariant
+
+
+namespace DecodeMap
+
+variable {Invariant           : Type}
+         {ζ                : Type i → Option Type}
+         {Value            : Type i}
+         {NextNumberInvariant : Type → DIFFERENT Type}
+         {NextCount        : Type i → DIFFERENT (Type i)}
+         {NextNumberValue  : Type 1 → DIFFERENT (Type 1)}
+         {NextInvariant       : OBSERVE (DIFFERENT Type)}
+         {Metaphor         : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool}
+         [DecidableEq Invariant]
+         [DecidableEq Value]
+         [d : DISTINGUISHABLE NextNumberInvariant Invariant]
+         [a : ADMISSIBLE NextNumberValue NextNumberInvariant Invariant NextInvariant Metaphor]
+         [c : COUNTABLE Invariant ζ Value NextNumberInvariant NextCount
+                         NextNumberValue NextInvariant Metaphor]
+
+def decode
+    (ct : Count Invariant ζ Value NextNumberInvariant NextCount
+                NextNumberValue NextInvariant Metaphor)
+      : DecodeMap Invariant NextNumberInvariant :=
+  match ct with
+  | Count.nil        => nil
+  | Count.cons s rest => cons s (decode rest)
+
+end DecodeMap
+
+class NUMERIC
+    (Invariant           : Type)
+    (NextNumberInvariant : Type → DIFFERENT Type)
+    (NextCount        : Type → DIFFERENT Type)
+    (NextNumberValue  : Type 1 → DIFFERENT (Type 1))
+    (NextInvariant       : OBSERVE (DIFFERENT Type))
+    (Metaphor         : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool)
+    [DecidableEq Invariant]
+    [d : DISTINGUISHABLE NextNumberInvariant Invariant]
+    [a : ADMISSIBLE NextNumberValue NextNumberInvariant Invariant NextInvariant Metaphor]
+    [c : COUNTABLE Invariant
+              (fun S => some (DecodeMap S NextNumberInvariant))
+              Invariant
+              NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor]
+    where
+
+  numeral: Invariant
+
+-- We define the CARRIER symbol as the thing
+-- that can identify the presence of a number.
+abbrev CARRIER := Prop
+
+structure Sensor
+    (Name: Type)
+    (Invariant : Type i)
+    (CompilerCarrier : CARRIER)
+    (CompilerRepresentation : Type 1)
+    (Representation : Type × Type)
+    (NextRepresentation : Type → OBSERVE (Type 1 × Type 1))
+    (NextInvariant : Type →  Type)
+      where
+  binary_digits : Invariant
+  source_representation :
+  compiler_representation : CompilerRepresentation
+  next_number_symbol : NextNumberInvariant Invariant
+
+
+
+
+class ENCODABLE
+    (Invariant : Type)
+    (Representation : )
+    (Decomposition: Type → OBSERVE (Type × Type))
+    (: )
+    (Encode : Type → Type → OBSERVE (Type×Type) → BOOL Bool)
+    (Decode : (Type × Type) → OBSERVE Type → Type 1)
+    [DISTINGUISHABLE Encoding Invariant]
+    [ADMISSIBLE Encoding Invariant Encoding Encode]
+    where
+
+  encoded? : Invariant → OBSERVE Encoding → Bool := Encode
+
+
 
 class DISTINCT
     (Event        : Type (i+1) → Type (i+1) → Prop)
-    (Feature      : Type (max 1 i) → Type (max 1 i) → Option (Type (max 1 i)))
-    (Before       : Type i)
-    (Stimulus      : Type (max 1 i))
+    (Desciption   : Type i → Type i → Option (Type i))
+    (BIT          : Type (max 1 i) → Type (max 1 i) → Option (Type (max 1 i)))
+    (Invariant       : Type i)
+    (Stimulus     : Type (max 1 i))
     (Response     : Type (i+1))
     (Observation  : Before → OBSERVE Response → Bool)
-    [d : DISTINGUISHABLE Feature Stimulus]
-    [a : ADMISSIBLE Event Before Stimulus Response Observation]
+    [d : DISTINGUISHABLE Description Invariant]
+    [a : ADMISSIBLE Event Invariant ]
     where
 
   -- The NAND gate.
@@ -589,12 +707,12 @@ theorem size_le
 end RefinementOf
 
 
--- We can assert a TRUTH as being some Symbol that survives the act of observation.
-abbrev TRUE  (Symbol : Type i) := TOKEN Symbol  -- TRUE, a certified presence
-abbrev RELATION (Symbol : Type i) := TRUE (TOKEN Symbol)  -- RELATION, a certified connection between symbols
-abbrev PROPERTY (Symbol : Type i) := TRUE (RELATION Symbol)  -- PROPERTY, a certified characteristic of a symbol
-abbrev FEATURE (Symbol : Type i) := TRUE (PROPERTY Symbol)  -- VALUE, a certified measurement of a symbol's property
-abbrev NATURAL_NUMBER (Symbol : Type i) := Option Symbol  -- A symbol that can be counted, like a tick mark on a ruler.
+-- We can assert a TRUTH as being some Invariant that survives the act of observation.
+abbrev TRUE  (Invariant : Type i) := TOKEN Invariant  -- TRUE, a certified presence
+abbrev RELATION (Invariant : Type i) := TRUE (TOKEN Invariant)  -- RELATION, a certified connection between symbols
+abbrev PROPERTY (Invariant : Type i) := TRUE (RELATION Invariant)  -- PROPERTY, a certified characteristic of a symbol
+abbrev FEATURE (Invariant : Type i) := TRUE (PROPERTY Invariant)  -- VALUE, a certified measurement of a symbol's property
+abbrev NATURAL_NUMBER (Invariant : Type i) := Option Invariant  -- A symbol that can be counted, like a tick mark on a ruler.
 
 /- --------------------------------------------------------
 CALIBRATION
@@ -709,26 +827,26 @@ end CALIBRATION
 
 class CORRELATED
     (Ordering: Type (i+1) → Type (i+1) → Option (Type i))
-    (Symbol: Type i)
+    (Invariant: Type i)
     (Encoding: Type (i+1))
-    (Encode: Symbol → OBSERVE Encoding → Bool)
+    (Encode: Invariant → OBSERVE Encoding → Bool)
     [DISTINGUISHABLE Ordering Encoding]
-    [ADMISSIBLE Ordering Symbol Encoding Encode]
+    [ADMISSIBLE Ordering Invariant Encoding Encode]
     where
 
-  encoded? : Symbol → OBSERVE Encoding → Bool := Encode
+  encoded? : Invariant → OBSERVE Encoding → Bool := Encode
 
 namespace CORRELATED
 variable {Ordering: Type (i+1) → Type (i+1) → Option (Type i)}
-         {Symbol: Type i}
+         {Invariant: Type i}
          {Encoding: Type (i+1)}
-         {Encode: Symbol → OBSERVE Encoding → Bool}
+         {Encode: Invariant → OBSERVE Encoding → Bool}
          [DISTINGUISHABLE Ordering Encoding]
-         [ADMISSIBLE Ordering Symbol Encoding Encode]
-         [parsed_symbol: CORRELATED Ordering Symbol Encoding Encode]
+         [ADMISSIBLE Ordering Invariant Encoding Encode]
+         [parsed_symbol: CORRELATED Ordering Invariant Encoding Encode]
 
 def encoded
-    (input: Symbol)
+    (input: Invariant)
     (output: OBSERVE Encoding)
       : Bool :=
   parsed_symbol.encoded? input output
@@ -953,61 +1071,61 @@ inductive TapeOf
 -- basis of all physical processes,
 
 /-
-    (Symbol: Type i)
-    (Encoding: Symbol → Symbol → Bool)
-    (InternalSymbol: Symbol → DIFFERENT Symbol)
-    (StateChange: DIFFERENT Symbol → DIFFERENT Symbol → Bool)
-    (Parsed: Symbol → OBSERVE Symbol → Bool)
-    (Instruction: OBSERVE Symbol -> OBSERVE Symbol -> Bool)
-    (Compiled: OBSERVE Symbol → OBSERVE (OBSERVE Symbol) → Bool)
-    (NextInstruction: OBSERVE Symbol → DIFFERENT (OBSERVE Symbol))
-    (InterpretInstruction: OBSERVE Symbol → DIFFERENT (OBSERVE Symbol))
-    (Execution: DIFFERENT (OBSERVE Symbol) → DIFFERENT (OBSERVE Symbol) → Bool)
-    (Executed: DIFFERENT (OBSERVE Symbol) → OBSERVE (DIFFERENT (OBSERVE Symbol)) → Bool)
+    (Invariant: Type i)
+    (Encoding: Invariant → Invariant → Bool)
+    (InternalInvariant: Invariant → DIFFERENT Invariant)
+    (StateChange: DIFFERENT Invariant → DIFFERENT Invariant → Bool)
+    (Parsed: Invariant → OBSERVE Invariant → Bool)
+    (Instruction: OBSERVE Invariant -> OBSERVE Invariant -> Bool)
+    (Compiled: OBSERVE Invariant → OBSERVE (OBSERVE Invariant) → Bool)
+    (NextInstruction: OBSERVE Invariant → DIFFERENT (OBSERVE Invariant))
+    (InterpretInstruction: OBSERVE Invariant → DIFFERENT (OBSERVE Invariant))
+    (Execution: DIFFERENT (OBSERVE Invariant) → DIFFERENT (OBSERVE Invariant) → Bool)
+    (Executed: DIFFERENT (OBSERVE Invariant) → OBSERVE (DIFFERENT (OBSERVE Invariant)) → Bool)
 -/
 
 class ENCODED
     (Labeled: Type (i+1) → Type (i+1) → Option (Type i))
-    (Symbol: Type i)
-    (Name: Symbol → Type i)
+    (Invariant: Type i)
+    (Name: Invariant → Type i)
     (Representation: Type (i+1))
-    (EncodedSymbol: Symbol → OBSERVE Representation → Bool)
-    (Encoding: Symbol → Representation → Bool)
+    (EncodedInvariant: Invariant → OBSERVE Representation → Bool)
+    (Encoding: Invariant → Representation → Bool)
     [DISTINGUISHABLE Labeled Representation]
-    [ADMISSIBLE Labeled Symbol Representation EncodedSymbol]
-    [CORRELATED Labeled Symbol Representation EncodedSymbol]
-    [ORDERED Labeled Symbol Representation EncodedSymbol Encoding]
+    [ADMISSIBLE Labeled Invariant Representation EncodedInvariant]
+    [CORRELATED Labeled Invariant Representation EncodedInvariant]
+    [ORDERED Labeled Invariant Representation EncodedInvariant Encoding]
       where
-  encoded? : Symbol → OBSERVE Representation → Bool := EncodedSymbol
-  name? : Symbol → Type i := Name
-  encoding? : Symbol → Representation → Bool := Encoding
+  encoded? : Invariant → OBSERVE Representation → Bool := EncodedInvariant
+  name? : Invariant → Type i := Name
+  encoding? : Invariant → Representation → Bool := Encoding
 
 namespace ENCODED
 variable {Labeled: Type (i+1) → Type (i+1) → Option (Type i)}
-         {Symbol: Type i}
-         {Name: Symbol → Type i}
+         {Invariant: Type i}
+         {Name: Invariant → Type i}
          {Representation: Type (i+1)}
-         {EncodedSymbol: Symbol → OBSERVE Representation → Bool}
-         {Encoding: Symbol → Representation → Bool}
+         {EncodedInvariant: Invariant → OBSERVE Representation → Bool}
+         {Encoding: Invariant → Representation → Bool}
          [DISTINGUISHABLE Labeled Representation]
-         [ADMISSIBLE Labeled Symbol Representation EncodedSymbol]
-         [CORRELATED Labeled Symbol Representation EncodedSymbol]
-         [ORDERED Labeled Symbol Representation EncodedSymbol Encoding]
-         [index: ENCODED Labeled Symbol Name Representation EncodedSymbol Encoding]
+         [ADMISSIBLE Labeled Invariant Representation EncodedInvariant]
+         [CORRELATED Labeled Invariant Representation EncodedInvariant]
+         [ORDERED Labeled Invariant Representation EncodedInvariant Encoding]
+         [index: ENCODED Labeled Invariant Name Representation EncodedInvariant Encoding]
 
 def encoded
-    (s: Symbol)
+    (s: Invariant)
     (r: OBSERVE Representation)
       : Bool :=
   index.encoded? s r
 
 def name
-    (s: Symbol)
+    (s: Invariant)
       : Type i :=
   index.name? s
 
 def encoding
-    (s: Symbol)
+    (s: Invariant)
     (r: Representation)
       : Bool :=
   index.encoding? s r
@@ -1016,87 +1134,87 @@ end ENCODED
 
 inductive RepresentationOf
     (Labeled: Type (i+1) → Type (i+1) → Option (Type i))
-    (Symbol: Type i)
-    (Name: Symbol → Type i)
+    (Invariant: Type i)
+    (Name: Invariant → Type i)
     (Representation: Type (i+1))
-    (EncodedSymbol: Symbol → OBSERVE Representation → Bool)
-    (Encoding: Symbol → Representation → Bool)
+    (EncodedInvariant: Invariant → OBSERVE Representation → Bool)
+    (Encoding: Invariant → Representation → Bool)
     [DISTINGUISHABLE Labeled Representation]
-    [ADMISSIBLE Labeled Symbol Representation EncodedSymbol]
-    [CORRELATED Labeled Symbol Representation EncodedSymbol]
-    [ORDERED Labeled Symbol Representation EncodedSymbol Encoding]
-    [index: ENCODED Labeled Symbol Name Representation EncodedSymbol Encoding]
+    [ADMISSIBLE Labeled Invariant Representation EncodedInvariant]
+    [CORRELATED Labeled Invariant Representation EncodedInvariant]
+    [ORDERED Labeled Invariant Representation EncodedInvariant Encoding]
+    [index: ENCODED Labeled Invariant Name Representation EncodedInvariant Encoding]
 
-  | nil : RepresentationOf Labeled Symbol Name Representation EncodedSymbol Encoding
-  | cons : (s: Symbol) →
+  | nil : RepresentationOf Labeled Invariant Name Representation EncodedInvariant Encoding
+  | cons : (s: Invariant) →
            (r: OBSERVE Representation) →
            (h1: index.encoded? s r) →
-           RepresentationOf Labeled Symbol Name Representation EncodedSymbol Encoding →
-           RepresentationOf Labeled Symbol Name Representation EncodedSymbol Encoding
+           RepresentationOf Labeled Invariant Name Representation EncodedInvariant Encoding →
+           RepresentationOf Labeled Invariant Name Representation EncodedInvariant Encoding
 
 
 structure Token
     (Labeled        : Type (i+1) → Type (i+1) → Option (Type i))
-    (Symbol         : Type i)
-    (Name           : Symbol → Type i)
+    (Invariant         : Type i)
+    (Name           : Invariant → Type i)
     (Representation : Type (i+1))
-    (Observation    : Symbol → OBSERVE Representation → Bool)
-    (Encoding       : Symbol → Representation → Bool)
+    (Observation    : Invariant → OBSERVE Representation → Bool)
+    (Encoding       : Invariant → Representation → Bool)
     where
   distinguishable : DISTINGUISHABLE Labeled Representation
-  admissible      : ADMISSIBLE Labeled Symbol Representation Observation
-  correlated      : CORRELATED Labeled Symbol Representation Observation
-  ordered         : ORDERED Labeled Symbol Representation Observation Encoding
-  encoded         : ENCODED Labeled Symbol Name Representation Observation Encoding
+  admissible      : ADMISSIBLE Labeled Invariant Representation Observation
+  correlated      : CORRELATED Labeled Invariant Representation Observation
+  ordered         : ORDERED Labeled Invariant Representation Observation Encoding
+  encoded         : ENCODED Labeled Invariant Name Representation Observation Encoding
 
-class RESOLVED (Symbol : Type i) where
+class RESOLVED (Invariant : Type i) where
   labeled        : Type (i+1) → Type (i+1) → Option (Type i)
-  name           : DIFFERENT Symbol → Type i
+  name           : DIFFERENT Invariant → Type i
   representation : Type (i+1)
-  observation    : DIFFERENT Symbol → OBSERVE representation → Bool
-  encoding       : DIFFERENT Symbol → representation → Bool
-  token          : Token labeled (DIFFERENT Symbol) name
+  observation    : DIFFERENT Invariant → OBSERVE representation → Bool
+  encoding       : DIFFERENT Invariant → representation → Bool
+  token          : Token labeled (DIFFERENT Invariant) name
                          representation observation encoding
 
 inductive DistinctTokensOf
     (Labeled: Type (i+1) → Type (i+1) → Option (Type i))
-    (Symbol: Type i)
-    (Name: DIFFERENT Symbol → Type i)
+    (Invariant: Type i)
+    (Name: DIFFERENT Invariant → Type i)
     (Representation: Type (i+1))
-    (Observation: DIFFERENT Symbol → OBSERVE Representation → Bool)
-    (Encoding: DIFFERENT Symbol → Representation → Bool)
+    (Observation: DIFFERENT Invariant → OBSERVE Representation → Bool)
+    (Encoding: DIFFERENT Invariant → Representation → Bool)
     [DISTINGUISHABLE Labeled Representation]
-    [ADMISSIBLE Labeled (DIFFERENT Symbol) Representation Observation]
-    [CORRELATED Labeled (DIFFERENT Symbol) Representation Observation]
-    [ORDERED Labeled (DIFFERENT Symbol) Representation Observation Encoding]
-  | nil : DistinctTokensOf Labeled Symbol Name Representation Observation Encoding
-  | cons : (s: DIFFERENT Symbol) →
+    [ADMISSIBLE Labeled (DIFFERENT Invariant) Representation Observation]
+    [CORRELATED Labeled (DIFFERENT Invariant) Representation Observation]
+    [ORDERED Labeled (DIFFERENT Invariant) Representation Observation Encoding]
+  | nil : DistinctTokensOf Labeled Invariant Name Representation Observation Encoding
+  | cons : (s: DIFFERENT Invariant) →
            (r: OBSERVE Representation) →
            (h1: Observation s r) →
-           DistinctTokensOf Labeled Symbol Name Representation Observation Encoding →
-           DistinctTokensOf Labeled Symbol Name Representation Observation Encoding
+           DistinctTokensOf Labeled Invariant Name Representation Observation Encoding →
+           DistinctTokensOf Labeled Invariant Name Representation Observation Encoding
 
 
 class NAMED
     (Labeled   : Type (i+1) → Type (i+1) → Option (Type i))
-    (Symbol    : Type i)
+    (Invariant    : Type i)
     (Referent  : Type i)
-    (Binding   : TOKEN Symbol → OBSERVE Referent → Bool)
-    [t : TOKEN Symbol]
+    (Binding   : TOKEN Invariant → OBSERVE Referent → Bool)
+    [t : TOKEN Invariant]
     where
-  named? : TOKEN Symbol → OBSERVE Referent → Bool := Binding
+  named? : TOKEN Invariant → OBSERVE Referent → Bool := Binding
 
 namespace NAMED
 
 variable {Labeled   : Type (i+1) → Type (i+1) → Option (Type i)}
-         {Symbol    : Type i}
+         {Invariant    : Type i}
          {Referent  : Type i}
-         {Binding   : TOKEN Symbol → OBSERVE Referent → Bool}
-         [t : TOKEN Symbol]
-         [model: NAMED Labeled Symbol Referent Binding]
+         {Binding   : TOKEN Invariant → OBSERVE Referent → Bool}
+         [t : TOKEN Invariant]
+         [model: NAMED Labeled Invariant Referent Binding]
 
 def named
-    (token: TOKEN Symbol)
+    (token: TOKEN Invariant)
     (referent: OBSERVE Referent)
       : Bool :=
   model.named? token referent
@@ -1107,36 +1225,36 @@ end NAMED
 
 inductive LEXED
     (Labeled        : Type (i+1) → Type (i+1) → Option (Type i))
-    (Symbol         : Type i)
+    (Invariant         : Type i)
     (Referent       : Type i)
     (Representation : Type (i+1))
-    (Binding        : TOKEN Symbol → Representation → Bool)
-    (Letter         : TOKEN Symbol → OBSERVE Referent → Bool)
+    (Binding        : TOKEN Invariant → Representation → Bool)
+    (Letter         : TOKEN Invariant → OBSERVE Referent → Bool)
     (SortedByLetter : Referent → OBSERVE Representation → Bool)
-    (Difference     : DIFFERENT Symbol → OBSERVE Representation → Bool)
-    (Encoded        : DIFFERENT Symbol → Representation → Bool)
-    (t              : TOKEN Symbol)
-    [n  : NAMED Labeled Symbol Referent Letter]
+    (Difference     : DIFFERENT Invariant → OBSERVE Representation → Bool)
+    (Encoded        : DIFFERENT Invariant → Representation → Bool)
+    (t              : TOKEN Invariant)
+    [n  : NAMED Labeled Invariant Referent Letter]
     [DISTINGUISHABLE Labeled Representation]
     [ADMISSIBLE Labeled Referent Representation SortedByLetter]
-    [ADMISSIBLE Labeled (DIFFERENT Symbol) Representation Difference]
-  | nil : LEXED Labeled Symbol Referent Representation
+    [ADMISSIBLE Labeled (DIFFERENT Invariant) Representation Difference]
+  | nil : LEXED Labeled Invariant Referent Representation
                 Binding Letter SortedByLetter
                 Difference Encoded t
   | cons :
-      (d        : DIFFERENT Symbol) →
-      (tok      : TOKEN Symbol) →
+      (d        : DIFFERENT Invariant) →
+      (tok      : TOKEN Invariant) →
       (ref      : Referent) →
       (r        : OBSERVE (Representation)) →
-      (r_symbol : OBSERVE (TOKEN.representation Symbol)) →
+      (r_symbol : OBSERVE (TOKEN.representation Invariant)) →
       (h_enc    : tok.token.encoded.encoded? d r_symbol = true) →
       (h_seen   : SortedByLetter ref r = true) →
       (h_name   : n.named? tok (some (ULift.up ref)) = true) →
-      LEXED Labeled Symbol Referent Representation
+      LEXED Labeled Invariant Referent Representation
             Binding Letter SortedByLetter
             Difference Encoded
             t →
-      LEXED Labeled Symbol Referent Representation
+      LEXED Labeled Invariant Referent Representation
             Binding Letter SortedByLetter
             Difference Encoded
             t
@@ -1277,50 +1395,50 @@ I think everything below here just needs an LE operator on a decomposition
 
 -- This is a fun way to define real number symbols by describing the gemoetric
 -- computation, bounding the number ever tighter..
-abbrev PAIR (Symbol: Type i) := Symbol × Symbol
-abbrev ORDERED_PAIR (Symbol_1: Type i) (Symbol_2: Type (i+1)) := Symbol_1 × Symbol_2
-abbrev COUNTING (Symbol: Type i) := ORDERED_PAIR Symbol (OBSERVE Symbol)
-abbrev NUMBER (Symbol: Type i) := ORDERED_PAIR Symbol (COUNTING Symbol)
-abbrev BOUNDS (Symbol: Type i) := ORDERED_PAIR (NUMBER Symbol) (NUMBER (OBSERVE Symbol))
-abbrev SEQUENCE (Symbol: Type i) := ORDERED_PAIR (NUMBER Symbol) (BOUNDS Symbol)
+abbrev PAIR (Invariant: Type i) := Invariant × Invariant
+abbrev ORDERED_PAIR (Invariant_1: Type i) (Invariant_2: Type (i+1)) := Invariant_1 × Invariant_2
+abbrev COUNTING (Invariant: Type i) := ORDERED_PAIR Invariant (OBSERVE Invariant)
+abbrev NUMBER (Invariant: Type i) := ORDERED_PAIR Invariant (COUNTING Invariant)
+abbrev BOUNDS (Invariant: Type i) := ORDERED_PAIR (NUMBER Invariant) (NUMBER (OBSERVE Invariant))
+abbrev SEQUENCE (Invariant: Type i) := ORDERED_PAIR (NUMBER Invariant) (BOUNDS Invariant)
 
-abbrev COMPUTED (Symbol: Type i) := Symbol × OBSERVE Symbol
+abbrev COMPUTED (Invariant: Type i) := Invariant × OBSERVE Invariant
 
 class ADMITTED
     (Metaphysical: Type (i+1) → Type (i+1) → Option (Type i))
     (Computational: Type (i+1) → Type (i+1) → Option (Type i))
-    (Symbol: Type i)
+    (Invariant: Type i)
     (Decomposition: Type (i+1))
     (Value: Type (i+1))
-    (Iterated : Symbol → OBSERVE Value → Bool) -- Decomposition is the midpoint of the bounds. -- These can be overlapped!
-    (Computed: Symbol → OBSERVE Decomposition → Bool) -- The value is the limit of the decomposition.
+    (Iterated : Invariant → OBSERVE Value → Bool) -- Decomposition is the midpoint of the bounds. -- These can be overlapped!
+    (Computed: Invariant → OBSERVE Decomposition → Bool) -- The value is the limit of the decomposition.
 
     -- This needs refactoring as i am starting to bog again.
-    (Converged: Symbol → Value → Bool) -- Is the decomposition the bisection of the bounds?
-    (LE: Symbol → Symbol → Bool) -- Less than is not possible, on LE. need to make a poset.
+    (Converged: Invariant → Value → Bool) -- Is the decomposition the bisection of the bounds?
+    (LE: Invariant → Invariant → Bool) -- Less than is not possible, on LE. need to make a poset.
     [DISTINGUISHABLE Metaphysical Value]
     [DISTINGUISHABLE Metaphysical Decomposition]
     [DISTINGUISHABLE Computational Value]
     [DISTINGUISHABLE Computational Decomposition]
-    [ADMISSIBLE Metaphysical Symbol Value Iterated]
-    [ADMISSIBLE Metaphysical Symbol Decomposition Computed]
-    [ADMISSIBLE Computational Symbol Value Iterated]
-    [ADMISSIBLE Computational Symbol Decomposition Computed]
-    [CORRELATED Metaphysical Symbol Value Iterated]
-    [CORRELATED Metaphysical Symbol Decomposition Computed]
-    [CORRELATED Computational Symbol Value Iterated]
-    [CORRELATED Computational Symbol Decomposition Computed]
-    [ORDERED Metaphysical Symbol Value Iterated Converged]
-    [ORDERED Metaphysical Symbol Decomposition Computed fun d i => Computed d (some { down := i })]
-    [ORDERED Computational Symbol Value Iterated Converged]
-    [ORDERED Computational Symbol Decomposition Computed fun d i => Computed d (some { down := i })]
-    [ORDERED Metaphysical Symbol Decomposition Computed fun d i => Computed d (some { down := i })]
-    [ORDERED Computational Symbol Value Iterated Converged]
-    [ORDERED Computational Symbol Value Iterated fun d o => Iterated d (some { down := o })]
-    [COMPUTABLE Metaphysical Computational Symbol Decomposition Value Computed Iterated]
+    [ADMISSIBLE Metaphysical Invariant Value Iterated]
+    [ADMISSIBLE Metaphysical Invariant Decomposition Computed]
+    [ADMISSIBLE Computational Invariant Value Iterated]
+    [ADMISSIBLE Computational Invariant Decomposition Computed]
+    [CORRELATED Metaphysical Invariant Value Iterated]
+    [CORRELATED Metaphysical Invariant Decomposition Computed]
+    [CORRELATED Computational Invariant Value Iterated]
+    [CORRELATED Computational Invariant Decomposition Computed]
+    [ORDERED Metaphysical Invariant Value Iterated Converged]
+    [ORDERED Metaphysical Invariant Decomposition Computed fun d i => Computed d (some { down := i })]
+    [ORDERED Computational Invariant Value Iterated Converged]
+    [ORDERED Computational Invariant Decomposition Computed fun d i => Computed d (some { down := i })]
+    [ORDERED Metaphysical Invariant Decomposition Computed fun d i => Computed d (some { down := i })]
+    [ORDERED Computational Invariant Value Iterated Converged]
+    [ORDERED Computational Invariant Value Iterated fun d o => Iterated d (some { down := o })]
+    [COMPUTABLE Metaphysical Computational Invariant Decomposition Value Computed Iterated]
       where
 
-  le? : Symbol → Symbol → Bool := LE
+  le? : Invariant → Invariant → Bool := LE
 
 
 
@@ -1330,44 +1448,44 @@ namespace REAL
 
 variable {Metaphysical: Type (i+1) → Type (i+1) → Option (Type i)}
          {Computational: Type (i+1) → Type (i+1) → Option (Type i)}
-         {Symbol: Type i}
+         {Invariant: Type i}
          {Decomposition: Type (i+1)}
          {Value: Type (i+1)}
-         {Iterated : Symbol → OBSERVE Value → Bool}
-         {Computed: Symbol → OBSERVE Decomposition → Bool}
-         {Converged: Symbol → Value → Bool}
-         {LE: Symbol → Symbol → Bool}
+         {Iterated : Invariant → OBSERVE Value → Bool}
+         {Computed: Invariant → OBSERVE Decomposition → Bool}
+         {Converged: Invariant → Value → Bool}
+         {LE: Invariant → Invariant → Bool}
          [DISTINGUISHABLE Metaphysical Value]
          [DISTINGUISHABLE Metaphysical Decomposition]
          [DISTINGUISHABLE Computational Value]
          [DISTINGUISHABLE Computational Decomposition]
-         [ADMISSIBLE Metaphysical Symbol Value Iterated]
-         [ADMISSIBLE Metaphysical Symbol Decomposition Computed]
-         [ADMISSIBLE Computational Symbol Value Iterated]
-         [ADMISSIBLE Computational Symbol Decomposition Computed]
-         [CORRELATED Metaphysical Symbol Value Iterated]
-         [CORRELATED Metaphysical Symbol Decomposition Computed]
-         [CORRELATED Computational Symbol Value Iterated]
-         [CORRELATED Computational Symbol Decomposition Computed]
-         [ORDERED Metaphysical Symbol Value Iterated Converged]
-         [ORDERED Metaphysical Symbol Decomposition Computed fun d i => Computed d (some { down := i })]
-         [ORDERED Computational Symbol Value Iterated Converged]
-         [ORDERED Computational Symbol Decomposition Computed fun d i => Computed d (some { down := i })]
-         [ORDERED Metaphysical Symbol Decomposition Computed fun d i => Computed d (some { down := i })]
-         [ORDERED Computational Symbol Value Iterated Converged]
-         [ORDERED Computational Symbol Value Iterated fun d o => Iterated d (some { down := o })]
-         [COMPUTABLE Metaphysical Computational Symbol Decomposition Value Computed Iterated]
-         [ψ : REAL Metaphysical Computational Symbol Decomposition Value Iterated Computed Converged LE]
+         [ADMISSIBLE Metaphysical Invariant Value Iterated]
+         [ADMISSIBLE Metaphysical Invariant Decomposition Computed]
+         [ADMISSIBLE Computational Invariant Value Iterated]
+         [ADMISSIBLE Computational Invariant Decomposition Computed]
+         [CORRELATED Metaphysical Invariant Value Iterated]
+         [CORRELATED Metaphysical Invariant Decomposition Computed]
+         [CORRELATED Computational Invariant Value Iterated]
+         [CORRELATED Computational Invariant Decomposition Computed]
+         [ORDERED Metaphysical Invariant Value Iterated Converged]
+         [ORDERED Metaphysical Invariant Decomposition Computed fun d i => Computed d (some { down := i })]
+         [ORDERED Computational Invariant Value Iterated Converged]
+         [ORDERED Computational Invariant Decomposition Computed fun d i => Computed d (some { down := i })]
+         [ORDERED Metaphysical Invariant Decomposition Computed fun d i => Computed d (some { down := i })]
+         [ORDERED Computational Invariant Value Iterated Converged]
+         [ORDERED Computational Invariant Value Iterated fun d o => Iterated d (some { down := o })]
+         [COMPUTABLE Metaphysical Computational Invariant Decomposition Value Computed Iterated]
+         [ψ : REAL Metaphysical Computational Invariant Decomposition Value Iterated Computed Converged LE]
 
 def le
-    (s1: Symbol)
-    (s2: Symbol)
+    (s1: Invariant)
+    (s2: Invariant)
       : Bool :=
   ψ.le? s1 s2
 
 def eq
-    (s1: Symbol)
-    (s2: Symbol)
+    (s1: Invariant)
+    (s2: Invariant)
       : Bool :=
   ψ.eq? s1 s2
 
