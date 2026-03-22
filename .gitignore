@@ -13,3 +13,4 @@ instrument/appendix
 instrument/go.sh
 *.zip
 device/go.sh
+*.claude*

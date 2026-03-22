@@ -72,7 +72,7 @@ some characteristic that is either present or absent from
 the something relative to the others.
 -/
 class DISTINGUISHABLE
-    (Characterisitic : Type → Option (Type))
+    (Characterisitic : Type → DIFFERENT (Type))
     (Invariant: Type)
     [DecidableEq Invariant]
     where
@@ -90,7 +90,7 @@ class DISTINGUISHABLE
   dec_distinguished : DecidablePred distinguished?
 
 namespace DISTINGUISHABLE
-variable {Characterisitic : Type → Option (Type)}
+variable {Characterisitic : Type → DIFFERENT (Type)}
          {Invariant: Type}
          [DecidableEq Invariant]
          [d: DISTINGUISHABLE Characterisitic Invariant]
@@ -106,7 +106,7 @@ def distinguished
 def encode
     (symbol: Invariant)
     (compiler_type : Type)
-      : Option (Type) :=
+      : DIFFERENT (Type) :=
   if (d.dec_distinguished symbol).decide then some compiler_type else none
 
 end DISTINGUISHABLE
@@ -132,11 +132,14 @@ end DISTINGUISHABLE
 -- _could_ happen. So, an admissible stuff state in the future is one
 -- that _could_ represent this.  That's 2 _coulds_.  Those are different
 -- _coulds_.  Or, are they? Do they have to be?  Why not both?
+
+abbrev EVENT (_: Type 1) := OBSERVE (DIFFERENT Type)
+
 class ADMISSIBLE
-    (Event : Type 1 → Option (Type 1))
-    (Description: Type → Option (Type))
+    (Event: EVENT Type)
+    (ChangeInCircumstance : Type 1 → OBSERVED (Type 1))
+    (Description: Type → OBSERVED (Type))
     (Invariant: Type)
-    (NextInvariant: OBSERVE (DIFFERENT Type))
 
      -- Notice the metaphor is starting to work on abstract types.
      -- It is _metaphysical_.
@@ -153,12 +156,14 @@ class ADMISSIBLE
     ∀ obs : OBSERVE (DIFFERENT Invariant), admissible? none obs = none
 
 namespace ADMISSIBLE
-variable {Event       : Type 1 → Option (Type 1)}
-         {Description : Type → Option (Type)}
+variable {Event: EVENT Type}
+         {ChangeInCircumstance : Type 1 → OBSERVED (Type 1)}
+         {Description : Type → OBSERVED (Type)}
          {Invariant      : Type}
-         {NextInvariant  : OBSERVE (DIFFERENT Type)}
          {Metaphor    : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool}
-         [a : ADMISSIBLE Event Description Invariant NextInvariant Metaphor]
+         [a : ADMISSIBLE Event
+                         ChangeInCircumstance Description
+                         Invariant Metaphor]
 
 def admissible
     (s   : DIFFERENT Invariant)
@@ -168,40 +173,55 @@ def admissible
 
 end ADMISSIBLE
 
--- The arrow of time in the compiler is right here.
-abbrev BEFORE (x : Type i) := x
-abbrev AFTER (x : Type i) := ULift.{i+1, i} x
 
+-- Things that are countable have the following
+-- traits.
+abbrev NAME (_ : Type 1) := Option (Type 1)
+abbrev ENCODED (_: Type i) := Option (Type i)
+abbrev VALUE (_ : Type 1) := Option Type
 
 class COUNTABLE
     -- Physical Traits of counting
-    (Invariant : Type)
+    (Invariant        : Type)
 
-    -- The metaphysical process of counting.
-    -- Associate an i-th thing with a number
-    (ζ      : Type i → Option Type)
-    (Value  : Type i)
-    (NextNumberInvariant : Type → DIFFERENT Type)
-    (NextCount  : Type i →  DIFFERENT (Type i))
-    (NextNumberValue : Type 1 → DIFFERENT (Type 1))
-    (NextInvariant: OBSERVE (DIFFERENT Type))
+    -- Metaphysical traits of a number: (One, 1) and its representation
+    -- on the page
+    (Name             : Type i)  -- Metaphysical trait across all time
+    (Value            : Type 1)  -- The metaphysical value right now
+    (Representation   : Type)    -- The decomposition to interpret a number as a value
+
+
+    -- When we count, we have to bump everything
+    -- except the Name.  That is the invariant of counting.
+    (NextInvariant       :  Type i → OBSERVED Type)
+    (NextValue           :  Type 1 → DIFFERENT Type)
+    (NextRepresentation  :  Type   → ENCODED (Type i))
+
+
+    -- A description of the counting process.
+    (ActOfCounting : EVENT Type)
+    (NextValue : Type 1 → OBSERVED (Type 1))
     (Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool)
 
     [value_equality : DecidableEq (Value)]
     [value_equality : DecidableEq (Invariant)]
     [value: DISTINGUISHABLE NextNumberInvariant Invariant]
-    [next_value: ADMISSIBLE NextNumberValue NextNumberInvariant Invariant NextInvariant Metaphor]
+    [next_value: ADMISSIBLE NextNumberCount
+                            NextNumberValue NextInvariant
+                            Invariant Metaphor]
     where
 
-  ζ? : Type i → Option Type := ζ
-  next_number_symbol? : Type → DIFFERENT Type := NextNumberInvariant
+  lookup? : Type i → DIFFERENT Type := Lookup
+  next_number_invariant? : Type → DIFFERENT Type := NextNumberInvariant
   next_count? : Type i → DIFFERENT (Type i) := NextCount
-  next_number_value? : Type 1 → DIFFERENT (Type 1) := NextNumberValue
-  next_symbol? : OBSERVE (DIFFERENT Type) := NextInvariant
+  next_number_count? : Type 1 → OBSERVED (Type 1) := NextNumberValue
+  next_invariant? : OBSERVE (DIFFERENT Type) := ActOfCounting
+
 
   metaphor? : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool := Metaphor
 
-  zero: Invariant
+  -- The notion of the origin does not change
+  origin: Invariant
 
 
 
@@ -210,91 +230,45 @@ class COUNTABLE
 namespace COUNTABLE
 
 variable  {Invariant : Type}
-          {ζ: Type i → Option Type}
+          {Lookup      : Type i → DIFFERENT Type}
           {Value  : Type i}
-          {NextNumberInvariant : Type → DIFFERENT Type}
+          {NextInvariant : Type → OBSERVED Type}
+          {NextNumber : Type → DIFFERENT Type}
           {NextCount  : Type i →  DIFFERENT (Type i)}
-          {NextNumberValue : Type 1 → DIFFERENT (Type 1)}
-          {NextInvariant: OBSERVE (DIFFERENT Type)}
+          {NextNumberCount : EVENT Type}
+          {NextNumberValue : Type 1 → OBSERVED (Type 1)}
+          {Count: EVENT Type}
           {Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool}
           [value_equality : DecidableEq (Value)]
-          [symbol_equality : DecidableEq (Invariant)]
-          [value_symbol: DISTINGUISHABLE NextNumberInvariant Invariant]
-          [next_value_symbol: ADMISSIBLE NextNumberValue NextNumberInvariant Invariant NextInvariant Metaphor]
-          [countable: COUNTABLE Invariant ζ Value NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor]
+          [value_equality : DecidableEq (Invariant)]
+          [value: DISTINGUISHABLE NextNumber Invariant]
+          [next_value: ADMISSIBLE NextNumberCount
+                                  NextNumberValue NextInvariant
+                                  Invariant Metaphor]
+          [count: COUNTABLE Invariant Lookup Value NextInvariant NextNumber NextCount NextNumberCount NextNumberValue Count Metaphor]
 
-def next_number_symbol
+def ζ
+    (s : Type i)
+      : DIFFERENT Type :=
+  count.Lookup? s
+
+def next_number_invariant
     (s : Type)
       : DIFFERENT Type :=
-  countable.next_number_symbol? s
+  count.next_number_invariant? s
 
 def next_count
     (s : Type i)
       : DIFFERENT (Type i) :=
-  countable.next_count? s
+  count.next_count? s
 
-def countable.next_count
-    (s : Type i)
-      : DIFFERENT (Type i) :=
-  countable.next_count? s
-
-def next_number_value
+def next_number_count
     (s : Type 1)
       : DIFFERENT (Type 1) :=
-  countable.next_number_value? s
+  count.next_number_count? s
 
-def metaphor
-    (s : DIFFERENT Invariant)
-    (obs : OBSERVE (DIFFERENT Invariant))
-      : BOOL Bool :=
-  countable.metaphor? s obs
 
 end COUNTABLE
-
-
-
-inductive Count
-    -- Physical Traits of counting
-    (Invariant : Type)
-
-    -- The metaphysical process of counting.
-    (ζ     : Type i → Option Type)
-    (Value  : Type i)
-    (NextNumberInvariant : Type → DIFFERENT Type)
-    (NextCount  : Type i →  DIFFERENT (Type i))
-    (NextNumberValue : Type 1 → DIFFERENT (Type 1))
-    (NextInvariant: OBSERVE (DIFFERENT Type))
-    (Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool)
-  | nil : Count Invariant ζ Value NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor
-  | cons: Invariant →
-          Count Invariant ζ Value NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor →
-          Count Invariant ζ Value NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor
-
-namespace Count
-variable  {Invariant : Type}
-          {ζ: Type i → Option Type}
-          {Value  : Type i}
-          {NextNumberInvariant : Type → DIFFERENT Type}
-          {NextCount  : Type i →  DIFFERENT (Type i)}
-          {NextNumberValue : Type 1 → DIFFERENT (Type 1)}
-          {NextInvariant: OBSERVE (DIFFERENT Type)}
-          {Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool}
-          [value_equality : DecidableEq (Value)]
-          [symbol_equality : DecidableEq (Invariant)]
-          [value_symbol: DISTINGUISHABLE NextNumberInvariant Invariant]
-          [next_value_symbol: ADMISSIBLE NextNumberValue NextNumberInvariant Invariant NextInvariant Metaphor]
-          [countable: COUNTABLE Invariant ζ Value NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor]
-
-
-
-def η
-    (c : Count Invariant ζ Value NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor)
-      : Invariant :=
-  match c with
-  | nil => countable.zero
-  | cons s _ => s
-
-end Count
 
 
 
@@ -307,75 +281,192 @@ inductive DecodeMap
            DecodeMap Invariant NextNumberInvariant
 
 
-namespace DecodeMap
-
-variable {Invariant           : Type}
-         {ζ                : Type i → Option Type}
-         {Value            : Type i}
-         {NextNumberInvariant : Type → DIFFERENT Type}
-         {NextCount        : Type i → DIFFERENT (Type i)}
-         {NextNumberValue  : Type 1 → DIFFERENT (Type 1)}
-         {NextInvariant       : OBSERVE (DIFFERENT Type)}
-         {Metaphor         : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool}
-         [DecidableEq Invariant]
-         [DecidableEq Value]
-         [d : DISTINGUISHABLE NextNumberInvariant Invariant]
-         [a : ADMISSIBLE NextNumberValue NextNumberInvariant Invariant NextInvariant Metaphor]
-         [c : COUNTABLE Invariant ζ Value NextNumberInvariant NextCount
-                         NextNumberValue NextInvariant Metaphor]
-
-def decode
-    (ct : Count Invariant ζ Value NextNumberInvariant NextCount
-                NextNumberValue NextInvariant Metaphor)
-      : DecodeMap Invariant NextNumberInvariant :=
-  match ct with
-  | Count.nil        => nil
-  | Count.cons s rest => cons s (decode rest)
-
-end DecodeMap
-
 class NUMERIC
-    (Invariant           : Type)
+    (Invariant            : Type)
+    (Value                : Type 1)
+    (NextCount            : Type → OBSERVED Type)
+    (NextValue            : Type 1 → DIFFERENT (Type 1))
+    (NextInvariant        : OBSERVED (DIFFERENT Type))
+    (ActOfCounting        : EVENT Type)
+    (Metaphor             : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool)
+    [DecidableEq Invariant]
+    [DecidableEq Value]
+    [d : DISTINGUISHABLE NextValue Invariant]
+    [a : ADMISSIBLE   ActOfCounting
+                      NextValue NextCount
+                      Invariant Metaphor]
+
+    [c : COUNTABLE Invariant (fun S => some (DecodeMap S NextNumberInvariant)) Value
+                   NextNumberInvariant NextCount ActOfCounting NextNumberValue NextInvariant Metaphor]
+    where
+
+  -- Could this be real life?
+  -- Or is this just fantasy?
+  variable_name: Invariant
+  -- For those keeping score at home, numeral can represent anything that you can count, including
+  -- π, e, and √{-1}.  Although, the last one is exclusively Gaussian integers. We call that
+  -- value by its name _x_.
+
+-- So the COMPILER has an invariant now.  a NUMERIC Symbol of Type.
+-- However, we do NOT want to instantiate that as that would confuse
+-- the symbol for the fact.  We have no idea if it is a fact yet.
+-- BUT.... the compiler HAS given us a carrier for invariant!
+-- We have an indication that the compiler has distinguished a symbol!
+-- The CARRIER will tell us if the current symbol has been lexed, not parsed.
+def CARRIER
+    {Characteristic : Type → DIFFERENT Type}
+    {Invariant : Type}
+    [DecidableEq Invariant]
+    [d : DISTINGUISHABLE Characteristic Invariant]
+    (s : Invariant) : Prop :=
+  d.distinguished? s
+-- The root of the Invariant is the BOOL Bool.  Bool is a Prop. A
+-- Prop can be named in the compiler.  So, we have a symbol that
+-- names a symbol in the compiler that is never instantiated, only
+-- probed and waited for.
+
+-- Lots and lots of waiting.
+-- First compile of this sux.  But, it instantiates instantly as
+-- the program that produces it! Each your heart out Kolmogorov!
+-- We will now, extract a Real number from this carrier. Using
+-- Cauchy sequences and Decompositions.  The more we ask of the
+-- CARRIER, the more CARRIERs are chained together.  That's right
+
+-- "We put a theorem prover in your theorem prover
+-- so you can prove theorems about theorems while you prove
+-- theorems about theories about the world."
+                            -- Willie Nelson
+
+class REPRESENTATIVE
+    (Carrier : Prop)
+    (Characteristic : Type → DIFFERENT Type)
+    (Invariant : Type)
+    [DecidableEq Invariant]
+    [d : DISTINGUISHABLE Characteristic Invariant]
+    (Value               : Type)
     (NextNumberInvariant : Type → DIFFERENT Type)
     (NextCount        : Type → DIFFERENT Type)
     (NextNumberValue  : Type 1 → DIFFERENT (Type 1))
     (NextInvariant       : OBSERVE (DIFFERENT Type))
+    (ActOfCounting    : EVENT Type)
     (Metaphor         : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool)
-    [DecidableEq Invariant]
-    [d : DISTINGUISHABLE NextNumberInvariant Invariant]
-    [a : ADMISSIBLE NextNumberValue NextNumberInvariant Invariant NextInvariant Metaphor]
-    [c : COUNTABLE Invariant
-              (fun S => some (DecodeMap S NextNumberInvariant))
-              Invariant
-              NextNumberInvariant NextCount NextNumberValue NextInvariant Metaphor]
-    where
-
-  numeral: Invariant
-
--- We define the CARRIER symbol as the thing
--- that can identify the presence of a number.
-abbrev CARRIER := Prop
-
-structure Sensor
-    (Name: Type)
-    (Invariant : Type i)
-    (CompilerCarrier : CARRIER)
-    (CompilerRepresentation : Type 1)
-    (Representation : Type × Type)
-    (NextRepresentation : Type → OBSERVE (Type 1 × Type 1))
-    (NextInvariant : Type →  Type)
+    [DecidableEq Value]
+    [DISTINGUISHABLE NextNumberInvariant Invariant]
+    [ADMISSIBLE  ActOfCounting
+                     NextNumberValue NextNumberInvariant
+                     Invariant Metaphor]
+    [COUNTABLE Invariant (fun S => some (DecodeMap S NextNumberInvariant)) Value
+                   NextNumberInvariant NextCount ActOfCounting NextNumberValue NextInvariant Metaphor]
+    [n : NUMERIC Invariant Value NextNumberInvariant NextCount NextNumberValue NextInvariant ActOfCounting Metaphor]
       where
-  binary_digits : Invariant
-  source_representation :
-  compiler_representation : CompilerRepresentation
-  next_number_symbol : NextNumberInvariant Invariant
+
+-- Now, lets build a compiler sensor that will interact
+-- with the carrier to understand whether or not something
+-- might have compiled yet or not.  We can't solve this
+-- problem in terms of what will come ahead later, but
+-- the compiler is going to be kind enought to turn
+-- the inductive Type into a Tape that it will answer
+-- questions we ask it!  We need to be able to receive
+-- the carrier first, then we will learn how to send
+-- a carrier to the compiler.
+abbrev COMPILED (_ : Type i) := DIFFERENT (Type (i+1)× Type i)
+
+class DETECTED
+    (Phenomenon: Type)
+    (ChangeInCircumstance: Type 1 → DIFFERENT (Type 1))
+    (EventDescription: Type → DIFFERENT (Type))
+    [ADMISSIBLE  EventDescription Phenomenon]
+      where
+  observation : Phenomenon → OBSERVED CARRIER
+  carrier: OBSERVED CARRIER
+
+
+-- The compiler has been kind enough to provide us with
+-- a punch tape to keep notes on!  That is awfully nice
+-- of it.
+inductive CompilerObservations
+    (Phenomenon: Type i)
+    (Mechanism: Type i → OBSERVED (Type i))
+    [d: DETECTED Phenomenon]
+     where
+  | nil : CompilerObservations Phenomenon Mechanism
+  | cons: Phenomenon →
+          OBSERVE CARRIER →
+          CompilerObservations Phenomenon Mechanism →
+          CompilerObservations Phenomenon Mechanism
+
+
+
+class COUNTED
+    (Invariant: Type)
+    (Phenomenon: Type i)
+    (Count: Invariant → Type)
+    (NextCount: Type → OBSERVED CARRIER)
+    (CountingRule: Type → OBSERVED (DIFFERENT Invariant) → BOOL Bool)
+    [d: DETECTED Phenomenon]
+  where
+  value : Invariant
+  skip? : Type → OBSERVED (DIFFERENT Invariant) → BOOL Bool := CountingRule
+  next? : Type → OBSERVED CARRIER := NextCount
+
+
+
+-- The 1st thing counts 0 and has value 1
+-- The 2nd thing counts 1 and has value 2
+inductive Accumulation
+    (Invariant: Type)
+    (Phenomenon: Type i)
+    (Count: Invariant → Type)
+    (NextCount: Type → OBSERVED CARRIER)
+    (CountingRule: Type → OBSERVED (DIFFERENT Invariant) → BOOL Bool)
+    [d: DETECTED Phenomenon]
+    [c: COUNTED Invariant Phenomenon Count NextCount CountingRule]
+  where
+  | nil : Accumulation Invariant Phenomenon Count NextCount CountingRule
+  | cons : Invariant →
+           OBSERVE CARRIER →
+           Accumulation Invariant Phenomenon Count NextCount CountingRule →
+           Accumulation Invariant Phenomenon Count NextCount CountingRule
+
+
+class ACCUMULATED
+    (Invariant: Type)
+    (Phenomenon: Type i)
+    (Count: Invariant → Type)
+    (NextCount: Type → OBSERVED CARRIER)
+    (CountingRule: Type → OBSERVED (DIFFERENT Invariant) → BOOL Bool)
+    (AccumulationRule: Type → OBSERVED (DIFFERENT Invariant) → BOOL Bool)
+    [d: DETECTED Phenomenon]
+    [c: COUNTED Invariant Phenomenon Count NextCount CountingRule]
+    [a: ADMISSIBLE AccumulationRule Invariant Invariant NextCount AccumulationRule]
+  where
+  value : Invariant
+  skip? : Type → OBSERVED (DIFFERENT Invariant) → BOOL Bool := CountingRule
+  next? : Type → OBSERVED CARRIER := NextCount
+
+inductive Integrate
+    (Invariant: Type)
+    (Phenomenon: Type i)
+    (Count: Invariant → Type)
+    (NextCount: Type → OBSERVED CARRIER)
+    (CountingRule: Type → OBSERVED (DIFFERENT Invariant) → BOOL Bool)
+    [d: DETECTED Phenomenon]
+    [c: COUNTED Invariant Phenomenon Count NextCount CountingRule]
+  where
+  | nil : Integrate Invariant Phenomenon Count NextCount CountingRule
+  | cons : Invariant →
+           OBSERVE CARRIER →
+           Integrate Invariant Phenomenon Count NextCount CountingRule →
+           Integrate Invariant Phenomenon Count NextCount CountingRule
+
 
 
 
 
 class ENCODABLE
     (Invariant : Type)
-    (Representation : )
+    (Representation : NUMERIC Type)
+    ()
     (Decomposition: Type → OBSERVE (Type × Type))
     (: )
     (Encode : Type → Type → OBSERVE (Type×Type) → BOOL Bool)
