@@ -1,27 +1,20 @@
 /-
-Measurement/Chapter1.lean
-
-CODA:  Welcome the the TuringDevice that explicitly describes
-the computations necessary for the simultaneous decomposition
-and evaluation of a real valued function.
-
-As promised, we beign at the beginning and rely on the state
-transform mechanisms of Lean as an example of a discrete universal
-Turing machine.  The following is an arbitrary encoding, so be
-on the lookout for Godel. I would consider this some "arbitrary
-encoding."
-
-
--- There are NO IMPORTS.
-
+Measurement
+Chapter 1: Physical
 -/
 
+-- There are NO IMPORTS. We assume the concept of a PROCESS
+-- that is provided by the abstract universe called "COMPILER".
+-- We will build a device to measure this process and see what we
+-- can learn.
+
+-- I also assume that you exist and are reading this right now.
+-- Not be too pedantic, but this is going to be tooo pedantic.
 
 namespace Measurement
 
-/- there is only one universe.  that universe has
-a current state.  that current state is at time _i_,
-our first symbol-/
+-- So, we start with the universe.  Only Types exist in the
+-- universe of the compiler.
 universe i
 
 /- This is the act of seeing something happen. We assume
@@ -85,9 +78,9 @@ class DISTINGUISHABLE
 
   different? : Invariant → Invariant → Prop :=
     fun s1 s2 => s1 ≠ s2
-  distinguished? : Invariant → Prop :=
+  distinct? : Invariant → Prop :=
     fun s => ∃ c : Invariant, different? s c
-  dec_distinguished : DecidablePred distinguished?
+  dec_distinct : DecidablePred distinct?
 
 namespace DISTINGUISHABLE
 variable {Characterisitic : Type → DIFFERENT (Type)}
@@ -99,15 +92,15 @@ def different
     (s1 s2 : Invariant) : Prop :=
   d.different? s1 s2
 
-def distinguished
+def distinct
     (s : Invariant) : Prop :=
-  d.distinguished? s
+  d.distinct? s
 
 def encode
     (symbol: Invariant)
     (compiler_type : Type)
       : DIFFERENT (Type) :=
-  if (d.dec_distinguished symbol).decide then some compiler_type else none
+  if (d.dec_distinct symbol).decide then some compiler_type else none
 
 end DISTINGUISHABLE
 
@@ -150,7 +143,7 @@ class ADMISSIBLE
   admissible? : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool := Metaphor
 
   -- Michelson and Morley disallowed the æther as a possible thing that could be
-  -- distinguished. The æther is the absence of any symbol, so it cannot be distinguished
+  -- distinct. The æther is the absence of any symbol, so it cannot be distinct
   -- from itself.
   aether_inadmissible :
     ∀ obs : OBSERVE (DIFFERENT Invariant), admissible? none obs = none
@@ -221,7 +214,7 @@ class COUNTABLE
   -- The notion of the origin does not change.  This is the root of
   -- a _frame of reference_.  This is the thing that has 0 velocity and
   -- 0 value.  We count this guy.  Just like Peano.
-  origin: Invariant
+  origin: OBSERVED (DIFFERENT Invariant)
 
 namespace COUNTABLE
 variable  {Characteristic: Type → DIFFERENT Type}
@@ -287,12 +280,12 @@ inductive Iteration
                         NextName NextValue NextRepresentation
                         ActOfCounting Metaphor]
 
-  | nil : OBSERVE (Invariant) →
+  | nil : OBSERVED (DIFFERENT Invariant) →
                   Iteration Characteristic Invariant Name
                   Value Representation NextName NextValue NextRepresentation ActOfCounting Metaphor
 
-  | cons : Invariant →
-           OBSERVE (Invariant) →
+  | cons : OBSERVED (Invariant) →
+           OBSERVE  (DIFFERENT Invariant) →
            Iteration Characteristic Invariant Name
                     Value Representation NextName NextValue NextRepresentation ActOfCounting Metaphor →
            Iteration Characteristic Invariant Name
@@ -304,8 +297,8 @@ inductive Iteration
 -- However, we do NOT want to instantiate that as that would confuse
 -- the symbol for the fact.  We have no idea if it is a fact yet.
 -- BUT.... the compiler HAS given us a carrier for invariant!
--- We have an indication that the compiler has distinguished as a symbol!
--- The CARRIER will tell us if the current symbol has been distinguished
+-- We have an indication that the compiler has distinct as a symbol!
+-- The CARRIER will tell us if the current symbol has been distinct
 -- by the compiler.
 def CARRIER
     {Characteristic : Type → DIFFERENT Type}
@@ -313,11 +306,63 @@ def CARRIER
     [DecidableEq Invariant]
     [d : DISTINGUISHABLE Characteristic Invariant]
     (s : Invariant) : Prop :=
-  d.distinguished? s
+  d.distinct? s
 -- The root of the Invariant is the BOOL Bool.  Bool is a Prop. A
 -- Prop can be named in the compiler.  So, we have a symbol that
 -- names a symbol in the compiler that is never instantiated, only
 -- probed and waited for.
+
+namespace ITERATION
+variable  {Characteristic: Type → DIFFERENT Type}
+          {Invariant: Type}
+          {Name: Type i}
+          {Value: Type 1}
+          {Representation: Invariant}
+          {NextName: Type i → OBSERVED (Type i)}
+          {NextValue: Type 1 → OBSERVED (Type 1)}
+          {NextRepresentation: Type → OBSERVED Type}
+          {ActOfCounting: EVENT Type}
+          {Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool}
+          [value_equality : DecidableEq (Value)]
+          [invariant_equality : DecidableEq (Invariant)]
+          [name_equality : DecidableEq (Name)]
+          [DISTINGUISHABLE Characteristic Invariant]
+          [ADMISSIBLE ActOfCounting
+                      NextValue Invariant
+                      NextRepresentation Metaphor]
+          [c : COUNTABLE Characteristic Invariant
+                         Name Value Representation
+                         NextName NextValue NextRepresentation
+                         ActOfCounting Metaphor]
+
+def η
+    (now: OBSERVED (DIFFERENT Invariant))  -- We still need to figure out how to make one of these....
+    (i: Iteration Characteristic Invariant Name Value Representation
+                 NextName NextValue NextRepresentation ActOfCounting Metaphor)
+      : OBSERVED (DIFFERENT Invariant) :=
+  match i with
+  | Iteration.nil _ => c.origin
+  | Iteration.cons _ _ _ => now
+
+end ITERATION
+
+class RELATABLE
+    (Characteristic   : Type → DIFFERENT Type)
+    (Invariant        : Type)
+    (Event            : EVENT Type)
+    (ChangeInCircumstance : Type 1 → OBSERVED (Type 1))
+    (Description      : Type → OBSERVED Type)
+    (Metaphor         : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool)
+    [DecidableEq Invariant]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [a : ADMISSIBLE Event ChangeInCircumstance Invariant Description Metaphor]
+    where
+
+  rel : DIFFERENT Invariant → OBSERVED (DIFFERENT Invariant) → Prop :=
+    fun s t => a.admissible? s t = some true
+
+  dec_rel : DecidableRel rel
+
 
 class NUMERIC
     (Characteristic   : Type → DIFFERENT Type)
@@ -342,6 +387,8 @@ class NUMERIC
                         Name Value Representation
                         NextName NextValue NextRepresentation
                         ActOfCounting Metaphor]
+    [relation: RELATABLE Characteristic Invariant ActOfCounting
+                         NextValue NextRepresentation Metaphor]
       where
 
   -- Could this be real life?
@@ -351,74 +398,16 @@ class NUMERIC
   -- π, e, and √{-1}.  Although, the last one is exclusively Gaussian integers. We label that
   -- value by its name _variable name_.
   -- BTW, this label is _in the compiler_, not in the proof.  It is æther that cannot
-  -- be distinguished --- yet.
+  -- be distinct --- yet.
 
   carrier: Carrier
-  -- We can also ask the compiler if the current symbol has been distinguished.
+  -- We can also ask the compiler if the current symbol has been distinct.
 
+  lt: DIFFERENT Invariant → OBSERVED (DIFFERENT Invariant) → Prop :=
+    fun s t => relation.rel s t
 
-
-class RELATABLE
-    (Characteristic   : Type → DIFFERENT Type)
-    (Invariant        : Type)
-    (Event            : EVENT Type)
-    (ChangeInCircumstance : Type 1 → OBSERVED (Type 1))
-    (Description      : Type → OBSERVED Type)
-    (Metaphor         : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool)
-    [DecidableEq Invariant]
-    [DISTINGUISHABLE Characteristic Invariant]
-    [a : ADMISSIBLE Event ChangeInCircumstance Invariant Description Metaphor]
-    where
-
-  rel : DIFFERENT Invariant → OBSERVED (DIFFERENT Invariant) → Prop :=
-    fun s t => a.admissible? s t = some true
-
-  dec_rel : DecidableRel rel
-
-
-
-
--- "We are putting a theorem prover in your theorem prover
--- so you can prove theorems about theorems while you prove
--- theorems about theorems about the world."
-                            -- Willie Nelson
-
-class REPRESENTATIVE
-    (Characteristic   : Type → DIFFERENT Type)
-    (Invariant        : Type)
-    (Carrier          : Prop)
-    (Name             : Type i)       -- Metaphysical trait across all time
-    (Value            : Type 1)       -- The metaphysical value right now
-    (Representation   : Invariant)    -- The decomposition to interpret a number as a value
-    (NextName            :  Type i → OBSERVED (Type i))
-    (NextValue           :  Type 1 → OBSERVED (Type 1))
-    (NextRepresentation  :  Type   → OBSERVED  Type   )
-    (ActOfCounting : EVENT Type)
-    (Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool)
-    [value_equality : DecidableEq (Value)]
-    [invariant_equality : DecidableEq (Invariant)]
-    [name_equality : DecidableEq (Name)]
-    [DISTINGUISHABLE Characteristic Invariant]
-    [ADMISSIBLE ActOfCounting
-                NextValue Invariant
-                NextRepresentation Metaphor]
-    [ZERO: COUNTABLE  Characteristic Invariant
-                        Name Value Representation
-                        NextName NextValue NextRepresentation
-                        ActOfCounting Metaphor]
-    [variable_name: NUMERIC Characteristic
-                            Invariant Carrier
-                            Name Value Representation
-                            NextName NextValue NextRepresentation
-                            ActOfCounting Metaphor]
-      where
-
-  ordinal: Invariant
-  carrier: Carrier
-
-
-
-class ENCODED
+-- This is purely an induction on the bits differentiatied in the compiler.
+inductive Count
     (Characteristic   : Type → DIFFERENT Type)
     (Invariant        : Type)
     (Carrier          : Prop)
@@ -441,16 +430,372 @@ class ENCODED
                         Name Value Representation
                         NextName NextValue NextRepresentation
                         ActOfCounting Metaphor]
-    [carrier: NUMERIC Characteristic
-                      Invariant Carrier
-                      Name Value Representation
-                      NextName NextValue NextRepresentation
-                      ActOfCounting Metaphor]
+    [relation: RELATABLE Characteristic Invariant ActOfCounting
+                         NextValue NextRepresentation Metaphor]
+
+  | zero :
+      OBSERVED (Invariant) →
+      Count Characteristic Invariant Carrier Name Value Representation
+            NextName NextValue NextRepresentation ActOfCounting Metaphor
+
+  | succ :
+      OBSERVED (Invariant) →
+      OBSERVED (DIFFERENT Invariant) →
+      Count Characteristic Invariant Carrier Name Value Representation
+            NextName NextValue NextRepresentation ActOfCounting Metaphor →
+      Count Characteristic Invariant Carrier Name Value Representation
+            NextName NextValue NextRepresentation ActOfCounting Metaphor
+
+namespace Count
+variable  {Characteristic: Type → DIFFERENT Type}
+          {Invariant: Type}
+          {Carrier: Prop}
+          {Name: Type i}
+          {Value: Type 1}
+          {Representation: Invariant}
+          {NextName: Type i → OBSERVED (Type i)}
+          {NextValue: Type 1 → OBSERVED (Type 1)}
+          {NextRepresentation: Type → OBSERVED Type}
+          {ActOfCounting: EVENT Type}
+          {Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool}
+          [value_equality : DecidableEq (Value)]
+          [invariant_equality : DecidableEq (Invariant)]
+          [name_equality : DecidableEq (Name)]
+          [DISTINGUISHABLE Characteristic Invariant]
+          [ADMISSIBLE ActOfCounting
+                      NextValue Invariant
+                      NextRepresentation Metaphor]
+          [c : COUNTABLE Characteristic Invariant
+                         Name Value Representation
+                         NextName NextValue NextRepresentation
+                         ActOfCounting Metaphor]
+          [relation: RELATABLE Characteristic Invariant ActOfCounting
+                              NextValue NextRepresentation Metaphor]
+
+def ζ
+    (n : Count Characteristic Invariant Carrier Name Value Representation
+             NextName NextValue NextRepresentation ActOfCounting Metaphor)
+      : OBSERVED (DIFFERENT Invariant) :=
+  match n with
+  | zero _ => c.origin
+  | succ _ n' _ => n'
+
+end Count
+
+-- "We are putting a theorem prover in your theorem prover
+-- so you can prove theorems about theorems while you prove
+-- theorems about theorems about the world."
+                            -- Willie Nelson
+
+-- This will actually give us One, Two Three.
+class REPRESENTATIVE
+    (Characteristic   : Type → DIFFERENT Type)
+    (Invariant        : Type)
+    (Carrier          : Prop)
+    (Name             : Type i)       -- Metaphysical trait across all time
+    (Value            : Type 1)       -- The metaphysical value right now
+    (Representation   : Invariant)    -- The decomposition to interpret a number as a value
+    (NextName            :  Type i → OBSERVED (Type i))
+    (NextValue           :  Type 1 → OBSERVED (Type 1))
+    (NextRepresentation  :  Type   → OBSERVED  Type   )
+    (ActOfCounting : EVENT Type)
+    (Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool)
+    [value_equality : DecidableEq (Value)]
+    [invariant_equality : DecidableEq (Invariant)]
+    [name_equality : DecidableEq (Name)]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [ADMISSIBLE ActOfCounting
+                NextValue Invariant
+                NextRepresentation Metaphor]
+    [origin: COUNTABLE  Characteristic Invariant
+                        Name Value Representation
+                        NextName NextValue NextRepresentation
+                        ActOfCounting Metaphor]
+    [relation: RELATABLE Characteristic Invariant ActOfCounting
+                         NextValue NextRepresentation Metaphor]
       where
-  encoding: Invariant
+
+  ordinal: Invariant
   carrier: Carrier
 
 
+-- These are all the numbers that the compiler can "represent"
+inductive Numbers
+      (Characteristic   : Type → DIFFERENT Type)
+      (Invariant        : Type)
+      (Carrier          : Prop)
+      (Name             : Type i)       -- Metaphysical trait across all time
+      (Value            : Type 1)       -- The metaphysical value right now
+      (Representation   : Invariant)    -- The decomposition to interpret a number as a value
+      (NextName            :  Type i → OBSERVED (Type i))
+      (NextValue           :  Type 1 → OBSERVED (Type 1))
+      (NextRepresentation  :  Type   → OBSERVED  Type   )
+      (ActOfCounting : EVENT Type)
+      (Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool)
+      [value_equality : DecidableEq (Value)]
+      [invariant_equality : DecidableEq (Invariant)]
+      [name_equality : DecidableEq (Name)]
+      [DISTINGUISHABLE Characteristic Invariant]
+      [ADMISSIBLE ActOfCounting
+                  NextValue Invariant
+                  NextRepresentation Metaphor]
+      [origin: COUNTABLE  Characteristic Invariant
+                          Name Value Representation
+                          NextName NextValue NextRepresentation
+                          ActOfCounting Metaphor]
+      [relation: RELATABLE Characteristic Invariant ActOfCounting
+                          NextValue NextRepresentation Metaphor]
+      [REPRESENTATIVE Characteristic Invariant Carrier Name Value Representation
+                      NextName NextValue NextRepresentation ActOfCounting Metaphor]
+
+    | zero :
+        Numbers Characteristic Invariant Carrier Name Value Representation
+                NextName NextValue NextRepresentation ActOfCounting Metaphor
+
+    | succ :
+        Count Characteristic Invariant Carrier Name Value Representation
+              NextName NextValue NextRepresentation ActOfCounting Metaphor →
+        Numbers Characteristic Invariant Carrier Name Value Representation
+                NextName NextValue NextRepresentation ActOfCounting Metaphor
+
+class ENCODED
+      (Characteristic   : Type → DIFFERENT Type)
+      (Invariant        : Type)
+      (Carrier          : Prop)
+      (Name             : Type i)       -- Metaphysical trait across all time
+      (Value            : Type 1)       -- The metaphysical value right now
+      (Representation   : Invariant)    -- The decomposition to interpret a number as a value
+      (NextName            :  Type i → OBSERVED (Type i))
+      (NextValue           :  Type 1 → OBSERVED (Type 1))
+      (NextRepresentation  :  Type   → OBSERVED  Type   )
+      (ActOfCounting : EVENT Type)
+      (Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool)
+      [value_equality : DecidableEq (Value)]
+      [invariant_equality : DecidableEq (Invariant)]
+      [name_equality : DecidableEq (Name)]
+      [DISTINGUISHABLE Characteristic Invariant]
+      [ADMISSIBLE ActOfCounting
+                  NextValue Invariant
+                  NextRepresentation Metaphor]
+      [origin: COUNTABLE  Characteristic Invariant
+                          Name Value Representation
+                          NextName NextValue NextRepresentation
+                          ActOfCounting Metaphor]
+      [relation: RELATABLE Characteristic Invariant ActOfCounting
+                          NextValue NextRepresentation Metaphor]
+      [REPRESENTATIVE Characteristic Invariant Carrier
+                      Name Value Representation
+                      NextName NextValue NextRepresentation
+                      ActOfCounting Metaphor]
+        where
+
+  representation_of_numbers: Invariant
+  -- This is best estimate of our understanding of the compiler's representation.
+
+  carrier: Carrier
+
+class COMPUTABLE
+    (Characteristic   : Type → DIFFERENT Type)
+    (Invariant        : Type)
+    (Carrier          : Prop)
+    (Parameter        : Type i)       -- Metaphysical trait across all time
+    (OpCode           : Type 1)       -- The metaphysical value right now
+    (Assembly         : Invariant)    -- The decomposition to interpret a number as a value
+    (NextParameter    :  Type i → OBSERVED (Type i))
+    (NextOpCode       :  Type 1 → OBSERVED (Type 1))
+    (NextAssembly     :  Type   → OBSERVED  Type   )
+    (ActOfCounting : EVENT Type)
+    (Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool)
+    [DecidableEq (Parameter)]
+    [DecidableEq (OpCode)]
+    [DecidableEq (Invariant)]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [ADMISSIBLE ActOfCounting
+                NextOpCode Invariant
+                NextAssembly Metaphor]
+    [origin: COUNTABLE  Characteristic Invariant
+                        Parameter OpCode Assembly
+                        NextParameter NextOpCode NextAssembly
+                        ActOfCounting Metaphor]
+    [relation: RELATABLE Characteristic Invariant ActOfCounting
+                        NextOpCode NextAssembly Metaphor]
+    [NUMERIC Characteristic Invariant Carrier
+              Parameter OpCode Assembly
+              NextParameter NextOpCode NextAssembly
+              ActOfCounting Metaphor]
+    [REPRESENTATIVE Characteristic Invariant Carrier
+                    Parameter OpCode Assembly
+                    NextParameter NextOpCode NextAssembly
+                    ActOfCounting Metaphor]
+    [ENCODED Characteristic Invariant Carrier
+              Parameter OpCode Assembly
+              NextParameter NextOpCode NextAssembly
+              ActOfCounting Metaphor]
+        where
+  instruction: Invariant
+  carrier: Carrier
+
+inductive Ledger
+    (Characteristic   : Type → DIFFERENT Type)
+    (Invariant        : Type)
+    (Carrier          : Prop)
+    (Parameter        : Type i)       -- Metaphysical trait across all time
+    (OpCode           : Type 1)       -- The metaphysical value right now
+    (Assembly         : Invariant)    -- The decomposition to interpret a number as a value
+    (NextParameter    :  Type i → OBSERVED (Type i))
+    (NextOpCode       :  Type 1 → OBSERVED (Type 1))
+    (NextAssembly     :  Type   → OBSERVED  Type   )
+    (ActOfCounting : EVENT Type)
+    (Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool)
+    [DecidableEq (Parameter)]
+    [DecidableEq (OpCode)]
+    [DecidableEq (Invariant)]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [ADMISSIBLE ActOfCounting
+                NextOpCode Invariant
+                NextAssembly Metaphor]
+    [origin: COUNTABLE  Characteristic Invariant
+                        Parameter OpCode Assembly
+                        NextParameter NextOpCode NextAssembly
+                        ActOfCounting Metaphor]
+    [relation: RELATABLE Characteristic Invariant ActOfCounting
+                        NextOpCode NextAssembly Metaphor]
+    [NUMERIC Characteristic Invariant Carrier
+              Parameter OpCode Assembly
+              NextParameter NextOpCode NextAssembly
+              ActOfCounting Metaphor]
+    [REPRESENTATIVE Characteristic Invariant Carrier
+                    Parameter OpCode Assembly
+                    NextParameter NextOpCode NextAssembly
+                    ActOfCounting Metaphor]
+    [ENCODED Characteristic Invariant Carrier
+              Parameter OpCode Assembly
+              NextParameter NextOpCode NextAssembly
+              ActOfCounting Metaphor]
+    [COMPUTABLE Characteristic Invariant Carrier
+                Parameter OpCode Assembly
+                NextParameter NextOpCode NextAssembly
+                ActOfCounting Metaphor]
+  | nil : OBSERVED (DIFFERENT Invariant) →
+          Ledger Characteristic Invariant Carrier Parameter OpCode Assembly
+                 NextParameter NextOpCode NextAssembly ActOfCounting Metaphor
+  | cons : OBSERVED (Invariant) →
+           OBSERVE  (DIFFERENT Invariant) →
+           Ledger Characteristic Invariant Carrier Parameter OpCode Assembly
+                  NextParameter NextOpCode NextAssembly ActOfCounting Metaphor →
+           Ledger Characteristic Invariant Carrier Parameter OpCode Assembly
+                  NextParameter NextOpCode NextAssembly ActOfCounting Metaphor →
+           Ledger Characteristic Invariant Carrier Parameter OpCode Assembly
+                  NextParameter NextOpCode NextAssembly ActOfCounting Metaphor
+
+class PHYSICAL
+    (Characteristic   : Type → DIFFERENT Type)
+    (Invariant        : Type)
+    (Carrier          : Prop)
+    (Parameter        : Type i)       -- Metaphysical trait across all time
+    (OpCode           : Type 1)       -- The metaphysical value right now
+    (Assembly         : Invariant)    -- The decomposition to interpret a number as a value
+    (NextParameter    :  Type i → OBSERVED (Type i))
+    (NextOpCode       :  Type 1 → OBSERVED (Type 1))
+    (NextAssembly     :  Type   → OBSERVED  Type   )
+    (ActOfCounting : EVENT Type)
+    (Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool)
+    [DecidableEq (Parameter)]
+    [DecidableEq (OpCode)]
+    [DecidableEq (Invariant)]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [a: ADMISSIBLE  ActOfCounting
+                    NextOpCode Invariant
+                    NextAssembly Metaphor]
+    [origin: COUNTABLE  Characteristic Invariant
+                        Parameter OpCode Assembly
+                        NextParameter NextOpCode NextAssembly
+                        ActOfCounting Metaphor]
+    [relation: RELATABLE Characteristic Invariant ActOfCounting
+                        NextOpCode NextAssembly Metaphor]
+    [NUMERIC Characteristic Invariant Carrier
+              Parameter OpCode Assembly
+              NextParameter NextOpCode NextAssembly
+              ActOfCounting Metaphor]
+    [REPRESENTATIVE Characteristic Invariant Carrier
+                    Parameter OpCode Assembly
+                    NextParameter NextOpCode NextAssembly
+                    ActOfCounting Metaphor]
+    [ENCODED Characteristic Invariant Carrier
+              Parameter OpCode Assembly
+              NextParameter NextOpCode NextAssembly
+              ActOfCounting Metaphor]
+    [COMPUTABLE Characteristic Invariant Carrier
+                Parameter OpCode Assembly
+                NextParameter NextOpCode NextAssembly
+                ActOfCounting Metaphor]
+      where
+  invariant: Invariant
+  threshold: DIFFERENT Invariant
+  carrier: Carrier
+
+  -- This compiles one bit at a time.
+  slip? : DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant) → BOOL Bool :=
+    fun s t => if a.admissible? s t = some true then some true else some false
 
 
+inductive History
+    (Characteristic   : Type → DIFFERENT Type)
+    (Invariant        : Type)
+    (Carrier          : Prop)
+    (Parameter        : Type i)       -- Metaphysical trait across all time
+    (OpCode           : Type 1)       -- The metaphysical value right now
+    (Assembly         : Invariant)    -- The decomposition to interpret a number as a value
+    (NextParameter    :  Type i → OBSERVED (Type i))
+    (NextOpCode       :  Type 1 → OBSERVED (Type 1))
+    (NextAssembly     :  Type   → OBSERVED  Type   )
+    (ActOfCounting : EVENT Type)
+    (Metaphor: DIFFERENT Invariant → OBSERVE (DIFFERENT Invariant)  → BOOL Bool)
+    [DecidableEq (Parameter)]
+    [DecidableEq (OpCode)]
+    [DecidableEq (Invariant)]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [a: ADMISSIBLE  ActOfCounting
+                    NextOpCode Invariant
+                    NextAssembly Metaphor]
+    [origin: COUNTABLE  Characteristic Invariant
+                        Parameter OpCode Assembly
+                        NextParameter NextOpCode NextAssembly
+                        ActOfCounting Metaphor]
+    [relation: RELATABLE Characteristic Invariant ActOfCounting
+                        NextOpCode NextAssembly Metaphor]
+    [NUMERIC Characteristic Invariant Carrier
+              Parameter OpCode Assembly
+              NextParameter NextOpCode NextAssembly
+              ActOfCounting Metaphor]
+    [REPRESENTATIVE Characteristic Invariant Carrier
+                    Parameter OpCode Assembly
+                    NextParameter NextOpCode NextAssembly
+                    ActOfCounting Metaphor]
+    [ENCODED Characteristic Invariant Carrier
+              Parameter OpCode Assembly
+              NextParameter NextOpCode NextAssembly
+              ActOfCounting Metaphor]
+    [COMPUTABLE Characteristic Invariant Carrier
+                Parameter OpCode Assembly
+                NextParameter NextOpCode NextAssembly
+                ActOfCounting Metaphor]
+    [PHYSICAL Characteristic
+              Invariant Carrier
+              Parameter OpCode Assembly
+              NextParameter NextOpCode NextAssembly
+              ActOfCounting Metaphor]
+
+  | nil : OBSERVED (DIFFERENT Invariant) →
+          History Characteristic Invariant Carrier Parameter OpCode Assembly
+                  NextParameter NextOpCode NextAssembly ActOfCounting Metaphor
+
+  | cons :  OBSERVED (Invariant) →
+            OBSERVE  (DIFFERENT Invariant) →
+            History Characteristic Invariant Carrier Parameter OpCode Assembly
+                    NextParameter NextOpCode NextAssembly ActOfCounting Metaphor →
+            History Characteristic Invariant Carrier Parameter OpCode Assembly
+                    NextParameter NextOpCode NextAssembly ActOfCounting Metaphor →
+            History Characteristic Invariant Carrier Parameter OpCode Assembly
+                    NextParameter NextOpCode NextAssembly ActOfCounting Metaphor
 end Measurement
