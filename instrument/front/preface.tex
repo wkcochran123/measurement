@@ -1,58 +1,55 @@
 \chapter*{Preface}
 
-Thank you for your interest in this work.  This manuscript is an ongoing attempt
-to articulate a minimal theory of measurement grounded in discrete records,
-enumeration, and refinement.  The aim is not to introduce new physical postulates,
-but to make explicit which structures are forced by the act of recording itself,
-and which are optional representational choices.
+This book is written in two registers. One register is ordinary prose. The
+other is a formal device written in Lean. The prose is used to explain,
+motivate, and connect the ideas. The Lean is used to measure the compiled
+process by which those ideas are introduced, constrained, and carried forward.
+It is not included as ornament, and it is not present merely to reassure the
+reader that the definitions could be made precise later. It is itself part of
+the method of the book.
 
-\paragraph{Overview and goals.}
-The central goal of this work is to develop a theory of measurement in which
-facts are treated as entries in an ordered ledger and all further structure is
-introduced only when it can be recovered from refinement of that record.  The
-theory is presented in two parallel forms.  First, the mathematical development
-is given in prose, organized into chapters that introduce definitions,
-constraints, and phenomena in a fixed logical order.  Second, the same structures
-are formalized and verified in the Lean proof assistant, providing machine-checked
-proofs of the core propositions.
+The role of the Lean device is simple. It records what must be primitive, what
+may be derived, and what follows from what. In that sense it measures the
+logical shape of the work. When a term is introduced in prose, the Lean is
+meant to show what that term commits us to. When an inference is drawn in the
+text, the Lean is meant to expose the structure that makes the inference
+defensible. The code does not replace the argument, but it prevents the
+argument from drifting.
 
-\paragraph{State of the manuscript.}
-The manuscript is under active development.
-Chapter~1, which introduces ledgers, enumeration, and the collection of facts, is
-currently in rough draft form but structurally complete.
-Chapter~2, which introduces instruments as refinable models that generate and
-coordinate records, has many of its major components in place, though portions
-remain provisional.
-Chapter~3 marks the beginning of less developed material and currently consists
-of incomplete outlines and exploratory arguments.
+For that reason, the central terms of the book are treated in three ways at
+once. Each important term may be given a connotative sense, a denotative
+sense, and a precise sense. The connotative sense tells the reader how the
+term lives in ordinary language. The denotative sense tells the reader what
+the term points to operationally. The precise sense tells the reader how the
+term is fixed within the formal system. By placing these three senses beside
+the Lean definition itself, the book aims to keep its vocabulary readable,
+operational, and exact.  In the prose, we indicate our precision using
+a \lean{monospace] font to indicate to the reader that the word they are looking
+at has, simultaneously, a colloquial meaning, a mathematical meaning, and
+a series of logical predicates constructed by the argument evaluated as a
+truth about rigor.
 
-\paragraph{State of the formalization.}
-The Lean formalization mirrors the structure of the manuscript.
-The definitions and propositions of Chapter~1 have been implemented and verified.
-Formalization of Chapters~2 and~3 is underway, with core interfaces established
-and additional constructions in progress.
+This arrangement is especially important in a philosophy of science. Such a
+book must speak in language broad enough to address meaning, evidence, law,
+history, and explanation. At the same time, it must avoid the familiar danger
+that its most important words become suggestive long before they become
+disciplined. The Lean device is built to resist that danger. It is a measuring
+instrument for the compiled process of definition and inference. It tells us
+not only what can be said, but when it may be said, and on what prior
+structure it depends.
 
-\paragraph{Goal of the proof.}
-A guiding objective of this project is to clarify the role of the Continuum
-Hypothesis as a representational choice rather than a statement about physical
-reality.  In particular, we aim to show that assuming the Continuum Hypothesis
-corresponds to modeling carrier particles as having indefinitely dissectable
-volume, while assuming its negation corresponds to modeling carriers as atomic
-and volume-free.  These two assumptions give rise to distinct representational
-models that nevertheless span the same space of communicable simulations.  Within
-the ledger framework, no measurement can be communicated that expresses the volume
-of such carriers; only counts and correlations are admissible.
+The reader should not think of the Lean as a parallel text detached from the
+book's claims. It is better understood as a device internal to the work. It
+measures the passage from witnessed difference to admissible continuation, from
+admissible continuation to induction, from induction to countable structure,
+and from there to the larger constructions that the prose will later discuss.
+In this way, the formal system does not merely accompany the philosophy. It
+helps determine the order in which the philosophy may responsibly proceed.
 
-\paragraph{Repository and versioning.}
-All source files for the manuscript and the Lean formalization are maintained in
-the public repository
-\begin{center}
-\texttt{https://github.com/wkcochran123/measurement}
-\end{center}
-The current working release is version~0.1.1.
-
-\paragraph{Request for sponsorship.}
-This manuscript is intended for submission to the arXiv under the category
-\texttt{cs.IT}.  Readers who are eligible and willing to sponsor the submission
-are kindly invited to do so using the code \texttt{C9GIVH}.
+The hope, then, is not to replace philosophy with formalism, nor to reduce
+scientific thought to syntax. The hope is narrower and more practical. By
+using Lean to measure the compiled process of the argument, this book seeks to
+make its definitions unusually precise and its conclusions unusually
+defensible. If the prose succeeds, the reader will find the argument clear. If
+the device succeeds, the reader will also find that the clarity is earned.
 
