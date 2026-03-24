@@ -142,9 +142,8 @@ end DISTINGUISHABLE
 abbrev EVENT (_: Type 1) := REFINE (TOKEN Type)
 
 class ADMISSIBLE
-    (Value: Type 1)
-    (Description: Type → REFINED (Type))
     (Invariant: Type)
+    (Value: Type 1)
 
      -- Notice the metaphor is starting to work on abstract types.
      -- It is _metaphysical_.
@@ -158,10 +157,9 @@ class ADMISSIBLE
 namespace ADMISSIBLE
 variable {Invariant: Type}
          {Value: Type 1}
-         {Description: Type → REFINED (Type)}
          {Metaphor: TOKEN Invariant → EVENT Value → BOOL Bool}
-         [a : ADMISSIBLE Value Description -- for the
-                         Invariant Metaphor]
+         [a : ADMISSIBLE Invariant Value Metaphor]
+
 def admissible
     (s : TOKEN Invariant)
     (e : EVENT Value)
@@ -175,34 +173,30 @@ class COUNTABLE
     -- Physical Traits of counting (these are real to the compiler)
     (Characteristic   : Type → TOKEN Type)
     (Invariant        : Type)
+    (Symbol           : Type)       -- This here is what a compiler calls a "symbol".
 
     -- Metaphysical traits of a number: (One, 1) and its representation
     -- on the page (these are ℝeal to you and I)
     (Value            : Type 1)
     (Token            : Type 1)
-    (ValueDescription      : Type → REFINED (Type))
-    (TokenDescription      : Type → REFINED (Type))
-
 
     -- A description of the counting process.
-    (ActOfCounting    : EVENT Type)
-    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
-
+    (Number           : TOKEN Invariant)
+    (Metaphor         : TOKEN Invariant → EVENT Value  → BOOL Bool)
 
     -- Things that must be true in order for counting to be possible.
     [invariant_equality : DecidableEq (Invariant)]
-    [value_equality : DecidableEq (Value)]
-    [token_equality : DecidableEq (Token)]
+    [symbol_equality    : DecidableEq (Symbol)]
+    [value_equality     : DecidableEq (Value)]
+    [token_equality     : DecidableEq (Token)]
 
-    -- Right now, we only care that the value is distinguishable
-    -- and the next value is admissible. This allows words like
-    -- "twenty or so" as a loose description of a size.
     [DISTINGUISHABLE Characteristic Invariant]
-    [ADMISSIBLE Value ValueDescription Invariant Metaphor]
-    [ADMISSIBLE Token TokenDescription Invariant Metaphor]
+    [a: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => a.admissible? Number t]
       where
 
   symbol: Token
+  value:  Value
 
   -- The notion of the origin does not change.  This is the root of
   -- a _frame of reference_.  This is the thing that has 0 velocity and
@@ -211,149 +205,82 @@ class COUNTABLE
   -- is important.
   origin: TOKEN Invariant
 
+  -- This is 0, often mistaken for the origin.  0 is a symbol, not a number.
+  -- We know what this is, right?  This is our word for what the compiler
+  -- calls 0. We will pick 0000.... as the written symbol of this word...
+  -- eventually... one bit at a time.
+  -- That seems like a really convenient 0 for 0.
+  zero:   REFINED (TOKEN Symbol)
+
 namespace COUNTABLE
-variable  {Characteristic: Type → TOKEN Type}
-          {Invariant: Type}
-          {Value: Type 1}
-          {Token: Type 1}
-          {ValueDescription: Type → REFINED (Type)}
-          {TokenDescription: Type → REFINED (Type)}
-          {ActOfCounting: EVENT Type}
-          {Metaphor: TOKEN Invariant → EVENT Value → BOOL Bool}
-          [invariant_equality : DecidableEq (Invariant)]
-          [value_equality : DecidableEq (Value)]
-          [token_equality : DecidableEq (Token)]
-          [DISTINGUISHABLE Characteristic Invariant]
-          [ADMISSIBLE Value ValueDescription Invariant Metaphor]
-          [ADMISSIBLE Token TokenDescription Invariant Metaphor]
-          [c: COUNTABLE Characteristic Invariant
-                        Value Token
-                        ValueDescription TokenDescription
-                        ActOfCounting Metaphor]
 
 end COUNTABLE
 
 
 inductive Iteration
+    -- Physical Traits of counting (these are real to the compiler)
     (Characteristic   : Type → TOKEN Type)
     (Invariant        : Type)
+    (Symbol           : Type)       -- This here is what a compiler calls a "symbol".
 
     -- Metaphysical traits of a number: (One, 1) and its representation
     -- on the page (these are ℝeal to you and I)
     (Value            : Type 1)
     (Token            : Type 1)
-    (ValueDescription      : Type → REFINED (Type))
-    (TokenDescription      : Type → REFINED (Type))
-
 
     -- A description of the counting process.
-    (ActOfCounting : EVENT Type)
-    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
-
+    (Number           : TOKEN Invariant)
+    (Metaphor         : TOKEN Invariant → EVENT Value  → BOOL Bool)
 
     -- Things that must be true in order for counting to be possible.
     [invariant_equality : DecidableEq (Invariant)]
-    [value_equality : DecidableEq (Value)]
-    [token_equality : DecidableEq (Token)]
+    [symbol_equality    : DecidableEq (Symbol)]
+    [value_equality     : DecidableEq (Value)]
+    [token_equality     : DecidableEq (Token)]
 
-
-    -- Right now, we only care that the value is distinguishable
-    -- and the next value is admissible. This allows words like
-    -- "twenty or so" as a loose description of a size.
     [DISTINGUISHABLE Characteristic Invariant]
-    [ADMISSIBLE Value ValueDescription Invariant Metaphor]
-    [ADMISSIBLE Token TokenDescription Invariant Metaphor]
-    [COUNTABLE Characteristic Invariant
-               Value Token
-               ValueDescription TokenDescription
-               ActOfCounting Metaphor]
+    [ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
       where
 
   | nil :
-      REFINED (TOKEN Invariant) →
-      Iteration Characteristic Invariant Value Token ValueDescription TokenDescription
-                ActOfCounting Metaphor
+      REFINED (TOKEN Symbol) →
+      Iteration Characteristic Invariant Symbol Value Token Number Metaphor
   | cons :
       REFINED (Invariant) →
-      REFINED (TOKEN Invariant) →
-      Iteration Characteristic Invariant Value Token ValueDescription TokenDescription
-                ActOfCounting Metaphor →
-      Iteration Characteristic Invariant Value Token ValueDescription TokenDescription
-                ActOfCounting Metaphor →
-      Iteration Characteristic Invariant Value Token ValueDescription TokenDescription
-                ActOfCounting Metaphor
+      REFINED (TOKEN Symbol) →
+      Iteration Characteristic Invariant Symbol Value Token Number Metaphor →
+      Iteration Characteristic Invariant Symbol Value Token Number Metaphor →
+      Iteration Characteristic Invariant Symbol Value Token Number Metaphor
 
 
--- So we found a COMPILER invariant: an inductive Iteration.
--- A COUNTABLE Symbol of Type has to be named in order to compile
--- this iteration.
--- However, we do NOT want to instantiate that as that would confuse
--- the symbol for the fact.  We have no idea if it is a fact yet.
--- BUT.... the compiler HAS given us a carrier for invariant!
--- We have an indication that the compiler has distinct as a symbol!
--- The CARRIER will tell us if the current symbol has been distinct
--- by the compiler.
-def CARRIER
-    {Characteristic : Type → TOKEN Type}
-    {Invariant : Type}
-    [DecidableEq Invariant]
-    [d : DISTINGUISHABLE Characteristic Invariant]
-    (s : Invariant) : Prop :=
-  d.distinct? s
--- The root of the Invariant is the BOOL Bool.  Bool is a Prop. A
--- Prop can be named in the compiler.  So, we have a symbol that
--- names a symbol in the compiler that is never instantiated, only
--- probed and waited for.
 
 namespace ITERATION
-variable  {Characteristic: Type → TOKEN Type}
 
 end ITERATION
 
-class RELATABLE
-    (Characteristic   : Type → TOKEN Type)
-    (Value            : Type 1)
-    (Invariant        : Type)
-    (Event            : EVENT Type)
-    (Description      : Type → REFINED Type)
-    (Metaphor         : TOKEN Invariant → EVENT Value → BOOL Bool)
-
-    [invariant_equality : DecidableEq (Invariant)]
-    [value_equality : DecidableEq (Value)]
-
-    [DecidableEq Invariant]
-    [DISTINGUISHABLE Characteristic Invariant]
-    [a : ADMISSIBLE Value Description Invariant Metaphor]
-    where
-
-  rel : TOKEN Invariant → EVENT Value → Prop :=
-    fun s t => a.admissible? s t = some true
-
-  dec_rel : DecidableRel rel
-
-  lt?: TOKEN Invariant → TOKEN Invariant → Prop :=
-    fun s t => rel s (a.event) ∧ ¬ rel t (a.event)
 
 
 class NUMERIC
     (Characteristic   : Type → TOKEN Type)
     (Invariant        : Type)
+    (Symbol           : Type)
 
     -- Metaphysical traits of a number: (One, 1) and its representation
     -- on the page (these are ℝeal to you and I)
     (Value            : Type 1)
     (Token            : Type 1)
-    (ValueDescription      : Type → REFINED (Type))
-    (TokenDescription      : Type → REFINED (Type))
-
 
     -- A description of the counting process.
-    (ActOfCounting : EVENT Type)
+    (Number           : TOKEN Invariant)
+    (Ordinal          : TOKEN Symbol)
     (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
 
 
     -- Things that must be true in order for counting to be possible.
     [invariant_equality : DecidableEq (Invariant)]
+    [symbol_equality : DecidableEq (Symbol)]
     [value_equality : DecidableEq (Value)]
     [token_equality : DecidableEq (Token)]
 
@@ -362,376 +289,620 @@ class NUMERIC
     -- and the next value is admissible. This allows words like
     -- "twenty or so" as a loose description of a size.
     [DISTINGUISHABLE Characteristic Invariant]
-    [ADMISSIBLE Value ValueDescription Invariant Metaphor]
-    [ADMISSIBLE Token TokenDescription Invariant Metaphor]
-    [COUNTABLE  Characteristic Invariant
+    [DISTINGUISHABLE Characteristic Symbol]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol
                 Value Token
-                ValueDescription TokenDescription
-                ActOfCounting Metaphor]
-    [r: RELATABLE Characteristic Value Invariant
-                  ActOfCounting ValueDescription Metaphor]
+                Number Metaphor]
       where
 
-  -- Could this be real life?
-  -- Or is this just fantasy?
-  variable_name: Invariant
-  -- For those keeping score at home, variable_name can represent anything that you can count, including
-  -- π, e, and √{-1}.  Although, the last one is exclusively Gaussian integers. We label that
-  -- value by its name _variable name_.
-  -- BTW, this label is _in the compiler_, not in the proof.  It is æther that cannot
-  -- be distinct --- yet.
+  glyph: Token
+  value: Value
+  number: TOKEN Invariant
+  ordinal: REFINED (TOKEN Invariant)
 
-  carrier: Carrier
-  -- We can also ask the compiler if the current symbol has been distinct.
+  correlant?: TOKEN Invariant → TOKEN Invariant → BOOL Bool :=
+    fun s t => (event.admissible? s event.event) == TRUTH &&
+               (event.admissible? t event.event) == TRUTH &&
+               (Metaphor s event.event) == TRUTH &&
+               (Metaphor t event.event) == TRUTH
 
-  lt?: TOKEN Invariant → TOKEN Invariant → Prop :=
-    fun s t => r.lt? s t
+
 
 
 -- This is purely an induction on the bits differentiatied in the compiler.
-inductive Count
+inductive Stack
     (Characteristic   : Type → TOKEN Type)
     (Invariant        : Type)
-
-    -- Metaphysical traits of a number: (One, 1) and its representation
-    -- on the page (these are ℝeal to you and I)
+    (Symbol           : Type)
     (Value            : Type 1)
     (Token            : Type 1)
-    (ValueDescription      : Type → REFINED (Type))
-    (TokenDescription      : Type → REFINED (Type))
-
-
-    -- A description of the counting process.
-    (ActOfCounting : EVENT Type)
+    (Number           : TOKEN Invariant)
+    (Ordinal          : TOKEN Symbol)
     (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
-
-
-    -- Things that must be true in order for counting to be possible.
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
     [invariant_equality : DecidableEq (Invariant)]
+    [symbol_equality : DecidableEq (Symbol)]
     [value_equality : DecidableEq (Value)]
     [token_equality : DecidableEq (Token)]
-
-
-    -- Right now, we only care that the value is distinguishable
-    -- and the next value is admissible. This allows words like
-    -- "twenty or so" as a loose description of a size.
     [DISTINGUISHABLE Characteristic Invariant]
-    [ADMISSIBLE Value ValueDescription Invariant Metaphor]
-    [ADMISSIBLE Token TokenDescription Invariant Metaphor]
-    [COUNTABLE  Characteristic Invariant
+    [DISTINGUISHABLE Characteristic Symbol]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol
                 Value Token
-                ValueDescription TokenDescription
-                ActOfCounting Metaphor]
-    [r: RELATABLE Characteristic Value Invariant
-                  ActOfCounting ValueDescription Metaphor]
-    [number: NUMERIC Characteristic Invariant Value Token
-                     ValueDescription TokenDescription
-                     ActOfCounting Metaphor]
+                Number Metaphor]
+    [NUMERIC  Characteristic Invariant Symbol
+              Value Token
+              Number Ordinal
+              Metaphor Metafive]
+  where
   | zero :
-      TOKEN (Invariant) →
-      Count Characteristic Invariant Value Token ValueDescription TokenDescription
-            ActOfCounting Metaphor
+      TOKEN Invariant →
+      REFINED (TOKEN Invariant) →
+      Stack Characteristic Invariant Symbol Value Token Number Ordinal
+            Metaphor Metafive →
+      Stack Characteristic Invariant Symbol Value Token Number Ordinal
+            Metaphor Metafive →
+      Stack Characteristic Invariant Symbol Value Token Number Ordinal
+            Metaphor Metafive
   | succ :
-      Invariant
-      → TOKEN (Invariant) →
-      Count Characteristic Invariant Value Token ValueDescription TokenDescription ActOfCounting Metaphor →
-      Count Characteristic Invariant Value Token ValueDescription TokenDescription ActOfCounting Metaphor
+      REFINED (TOKEN Invariant) →
+      REFINED (TOKEN Invariant) →
+      Stack Characteristic Invariant Symbol Value Token Number Ordinal
+            Metaphor Metafive →
+      Stack Characteristic Invariant Symbol Value Token Number Ordinal
+            Metaphor Metafive →
+      Stack Characteristic Invariant Symbol Value Token Number Ordinal
+            Metaphor Metafive
 
 
-namespace Count
+namespace Stack
+
 variable  {Characteristic: Type → TOKEN Type}
           {Invariant: Type}
+          {Symbol: Type}
           {Value: Type 1}
           {Token: Type 1}
-          {ValueDescription: Type → REFINED (Type)}
-          {TokenDescription: Type → REFINED (Type)}
-          {ActOfCounting: EVENT Type}
-          {Metaphor: TOKEN Invariant → EVENT Value → BOOL Bool}
+          {Number: TOKEN Invariant}
+          {Ordinal: TOKEN Symbol}
+          {Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool}
+          {Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool}
           [invariant_equality : DecidableEq (Invariant)]
+          [symbol_equality : DecidableEq (Symbol)]
           [value_equality : DecidableEq (Value)]
           [token_equality : DecidableEq (Token)]
           [DISTINGUISHABLE Characteristic Invariant]
-          [ADMISSIBLE Value ValueDescription Invariant Metaphor]
-          [ADMISSIBLE Token TokenDescription Invariant Metaphor]
-          [c: COUNTABLE  Characteristic Invariant
-                         Value Token
-                         ValueDescription TokenDescription
-                         ActOfCounting Metaphor]
-          [r: RELATABLE Characteristic Value Invariant
-                        ActOfCounting ValueDescription Metaphor]
-          [number: NUMERIC  Characteristic Invariant Value Token
-                            ValueDescription TokenDescription
-                            ActOfCounting Metaphor]
+          [DISTINGUISHABLE Characteristic Symbol]
+          [event: ADMISSIBLE Invariant Value Metaphor]
+          [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+          [ADMISSIBLE Symbol Token Metafive]
+          [COUNTABLE  Characteristic Invariant Symbol
+                      Value Token
+                      Number Metaphor]
+          [NUMERIC  Characteristic Invariant Symbol
+                    Value Token
+                    Number Ordinal
+                    Metaphor Metafive]
 
 def ζ
-    (n : Count Characteristic Invariant Value Token ValueDescription TokenDescription
-                ActOfCounting Metaphor)
-      : TOKEN Invariant :=
+    (n : Stack Characteristic Invariant Symbol
+               Value Token Number Ordinal Metaphor Metafive)
+      : REFINED (TOKEN Invariant) :=
   match n with
-  | zero _ => c.origin
-  | succ _ n' _ => n'
+  | zero _ s _ _ => s
+  | succ s _ _ _ => s
 
-end Count
 
--- "We are putting a theorem prover in your theorem prover
--- so you can prove theorems about theorems while you prove
--- theorems about theorems about the world."
-                            -- Willie Nelson
+end Stack
 
--- This will actually give us One, Two Three.
+
+class RELATABLE
+    (Characteristic   : Type → TOKEN Type)
+    (Invariant        : Type)
+    (Symbol           : Type)
+    (Value            : Type 1)
+    (Token            : Type 1)
+    (Number           : TOKEN Invariant)
+    (Ordinal          : TOKEN Symbol)
+    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
+    [invariant_equality : DecidableEq (Invariant)]
+    [symbol_equality : DecidableEq (Symbol)]
+    [value_equality : DecidableEq (Value)]
+    [token_equality : DecidableEq (Token)]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [DISTINGUISHABLE Characteristic Symbol]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol
+                Value Token
+                Number Metaphor]
+    [NUMERIC  Characteristic Invariant Symbol
+              Value Token
+              Number Ordinal
+              Metaphor Metafive]
+      where
+
+  precedes? : TOKEN Invariant → EVENT Value → BOOL Bool := Metaphor
+
+  lt? : TOKEN Symbol → EVENT Token → BOOL Bool := Metafive
+
+inductive Relation
+    (Characteristic   : Type → TOKEN Type)
+    (Invariant        : Type)
+    (Symbol           : Type)
+    (Value            : Type 1)
+    (Token            : Type 1)
+    (Number           : TOKEN Invariant)
+    (Ordinal          : TOKEN Symbol)
+    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
+    [invariant_equality : DecidableEq (Invariant)]
+    [symbol_equality : DecidableEq (Symbol)]
+    [value_equality : DecidableEq (Value)]
+    [token_equality : DecidableEq (Token)]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [DISTINGUISHABLE Characteristic Symbol]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol
+                Value Token
+                Number Metaphor]
+    [NUMERIC  Characteristic Invariant Symbol
+              Value Token
+              Number Ordinal
+              Metaphor Metafive]
+    [RELATABLE  Characteristic Invariant
+                Symbol Value Token Number Ordinal
+                Metaphor Metafive]
+      where
+  | nil : Relation Characteristic Invariant Symbol Value Token Number Ordinal
+             Metaphor Metafive →
+          Relation Characteristic Invariant Symbol Value Token Number Ordinal
+             Metaphor Metafive
+  | cons: EVENT Token →
+          Relation Characteristic Invariant Symbol Value Token Number Ordinal
+             Metaphor Metafive →
+          Relation Characteristic Invariant Symbol Value Token Number Ordinal
+             Metaphor Metafive
+
 class REPRESENTATIVE
     (Characteristic   : Type → TOKEN Type)
     (Invariant        : Type)
-    (Carrier          : Prop)
-    (Value            : Type 1)       -- The metaphysical value right now
+    (Symbol           : Type)
+    (Value            : Type 1)
     (Token            : Type 1)
-    (Variable         : Type i)       -- uh, oh.  something can vary!
-    (Representation   : Invariant)    -- The decomposition to interpret a number as a value
-    (NextName            :  Type i → REFINED (Type i))
-    (NextValue           :  Type 1 → REFINED (Type 1))
-    (NextRepresentation  :  Type   → REFINED  Type   )
-    (ActOfCounting : EVENT Type)
-    (Metaphor: TOKEN Invariant → REFINE (TOKEN Invariant)  → BOOL Bool)
-    [value_equality : DecidableEq (Value)]
+    (Representative   : Prop)
+
+    (Number           : TOKEN Invariant)
+    (Ordinal          : TOKEN Symbol)
+
+    -- holy hell....
+    (TRUTH)
+
+    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
     [invariant_equality : DecidableEq (Invariant)]
-    [name_equality : DecidableEq (Name)]
+    [symbol_equality : DecidableEq (Symbol)]
+    [value_equality : DecidableEq (Value)]
+    [token_equality : DecidableEq (Token)]
     [DISTINGUISHABLE Characteristic Invariant]
-    [ADMISSIBLE ActOfCounting
-                NextValue Invariant
-                NextRepresentation Metaphor]
-    [origin: COUNTABLE  Characteristic Invariant
-                        Name Value Representation
-                        NextName NextValue NextRepresentation
-                        ActOfCounting Metaphor]
-    [relation: RELATABLE Characteristic Invariant ActOfCounting
-                         NextValue NextRepresentation Metaphor]
+    [DISTINGUISHABLE Characteristic Symbol]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol
+                Value Token
+                Number Metaphor]
+    [NUMERIC  Characteristic Invariant Symbol
+              Value Token
+              Number Ordinal
+              Metaphor Metafive]
+    [RELATABLE  Characteristic Invariant
+                Symbol Value Token Number Ordinal
+                Metaphor Metafive]
       where
+  carrier: TRUTH
+  compiled_symbol: Representative
+  representative: Invariant
+  invariant: Symbol
+  symbol: Value
+  value: TOKEN Invariant
+  number: TOKEN Symbol
 
-  ordinal: Invariant
-  carrier: Carrier
+namespace REPRESENTATIVE
 
+variable  {Characteristic   : Type → TOKEN Type}
+          {Invariant        : Type}
+          {Symbol           : Type}
+          {Value            : Type 1}
+          {Token            : Type 1}
+          {Representative   : Prop}
+          {Number           : TOKEN Invariant}
+          {Ordinal          : TOKEN Symbol}
+          {Metaphor         : TOKEN Invariant → EVENT Value → BOOL Bool}
+          {Metafive         : TOKEN Symbol   → EVENT Token → BOOL Bool}
+          [invariant_equality : DecidableEq Invariant]
+          [symbol_equality    : DecidableEq Symbol]
+          [value_equality     : DecidableEq Value]
+          [token_equality     : DecidableEq Token]
+          [DISTINGUISHABLE Characteristic Invariant]
+          [DISTINGUISHABLE Characteristic Symbol]
+          [value_event : ADMISSIBLE Invariant Value Metaphor]
+          [token_event : ADMISSIBLE Symbol Token fun _ t =>
+              ADMISSIBLE.admissible? Metaphor Number t]
+          [symbolic_event : ADMISSIBLE Symbol Token Metafive]
+          [COUNTABLE Characteristic Invariant Symbol
+                     Value Token
+                     Number Metaphor]
+          [NUMERIC Characteristic Invariant Symbol
+                   Value Token
+                   Number Ordinal
+                   Metaphor Metafive]
+          [rel : RELATABLE Characteristic Invariant
+                            Symbol Value Token Number Ordinal
+                            Metaphor Metafive]
+          [r : REPRESENTATIVE Characteristic Invariant Symbol
+                              Value Token Representative
+                              Number Ordinal (BOOL Bool)
+                              Metaphor Metafive]
+
+def admissible? : BOOL Bool :=
+  if (r.carrier == TRUTH) &&
+     (rel.precedes? (some r.representative) value_event.event == TRUTH) &&
+     (rel.lt? (some r.invariant) symbolic_event.event == TRUTH)
+  then
+    TRUTH
+  else
+    __SILENCE__
+
+end REPRESENTATIVE
 
 -- These are all the numbers that the compiler can "represent"
 inductive Numbers
-      (Characteristic   : Type → TOKEN Type)
-      (Invariant        : Type)
-      (Carrier          : Prop)
-      (Name             : Type i)       -- Metaphysical trait across all time
-      (Value            : Type 1)       -- The metaphysical value right now
-      (Representation   : Invariant)    -- The decomposition to interpret a number as a value
-      (NextName            :  Type i → REFINED (Type i))
-      (NextValue           :  Type 1 → REFINED (Type 1))
-      (NextRepresentation  :  Type   → REFINED  Type   )
-      (ActOfCounting : EVENT Type)
-      (Metaphor: TOKEN Invariant → REFINE (TOKEN Invariant)  → BOOL Bool)
-      [value_equality : DecidableEq (Value)]
-      [invariant_equality : DecidableEq (Invariant)]
-      [name_equality : DecidableEq (Name)]
-      [DISTINGUISHABLE Characteristic Invariant]
-      [ADMISSIBLE ActOfCounting
-                  NextValue Invariant
-                  NextRepresentation Metaphor]
-      [origin: COUNTABLE  Characteristic Invariant
-                          Name Value Representation
-                          NextName NextValue NextRepresentation
-                          ActOfCounting Metaphor]
-      [relation: RELATABLE Characteristic Invariant ActOfCounting
-                          NextValue NextRepresentation Metaphor]
-      [REPRESENTATIVE Characteristic Invariant Carrier Name Value Representation
-                      NextName NextValue NextRepresentation ActOfCounting Metaphor]
+    (Characteristic   : Type → TOKEN Type)
+    (Invariant        : Type)
+    (Symbol           : Type)
+    (Value            : Type 1)
+    (Token            : Type 1)
+    (Representative   : Prop)
+
+    (Number           : TOKEN Invariant)
+    (Ordinal          : TOKEN Symbol)
+
+    -- holy hell....
+    (Truth: BOOL Bool)
+
+    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
+    [invariant_equality : DecidableEq (Invariant)]
+    [symbol_equality : DecidableEq (Symbol)]
+    [value_equality : DecidableEq (Value)]
+    [token_equality : DecidableEq (Token)]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [DISTINGUISHABLE Characteristic Symbol]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol
+                Value Token
+                Number Metaphor]
+    [NUMERIC  Characteristic Invariant Symbol
+              Value Token
+              Number Ordinal
+              Metaphor Metafive]
+    [RELATABLE  Characteristic Invariant
+                Symbol Value Token Number Ordinal
+                Metaphor Metafive]
+    [r : REPRESENTATIVE Characteristic Invariant Symbol
+                        Value Token Representative
+                        Number Ordinal (BOOL Bool)
+                        Metaphor Metafive]
 
     | zero :
-        Numbers Characteristic Invariant Carrier Name Value Representation
-                NextName NextValue NextRepresentation ActOfCounting Metaphor
-
-    | succ :
-        Count Characteristic Invariant Carrier Name Value Representation
-              NextName NextValue NextRepresentation ActOfCounting Metaphor →
-        Numbers Characteristic Invariant Carrier Name Value Representation
-                NextName NextValue NextRepresentation ActOfCounting Metaphor
+        TOKEN Invariant →
+        REFINED (TOKEN Invariant) →
+        Numbers Characteristic Invariant Symbol Value Token Representative
+                Number Ordinal Truth
+                Metaphor Metafive →
+        Numbers Characteristic Invariant Symbol Value Token Representative
+                Number Ordinal Truth
+                Metaphor Metafive →
+        Numbers Characteristic Invariant Symbol Value Token Representative
+                Number Ordinal Truth
+                Metaphor Metafive
 
 class ENCODED
-      (Characteristic   : Type → TOKEN Type)
-      (Invariant        : Type)
-      (Carrier          : Prop)
-      (Name             : Type i)       -- Metaphysical trait across all time
-      (Value            : Type 1)       -- The metaphysical value right now
-      (Representation   : Invariant)    -- The decomposition to interpret a number as a value
-      (NextName            :  Type i → REFINED (Type i))
-      (NextValue           :  Type 1 → REFINED (Type 1))
-      (NextRepresentation  :  Type   → REFINED  Type   )
-      (ActOfCounting : EVENT Type)
-      (Metaphor: TOKEN Invariant → REFINE (TOKEN Invariant)  → BOOL Bool)
-      [value_equality : DecidableEq (Value)]
-      [invariant_equality : DecidableEq (Invariant)]
-      [name_equality : DecidableEq (Name)]
-      [DISTINGUISHABLE Characteristic Invariant]
-      [ADMISSIBLE ActOfCounting
-                  NextValue Invariant
-                  NextRepresentation Metaphor]
-      [origin: COUNTABLE  Characteristic Invariant
-                          Name Value Representation
-                          NextName NextValue NextRepresentation
-                          ActOfCounting Metaphor]
-      [relation: RELATABLE Characteristic Invariant ActOfCounting
-                          NextValue NextRepresentation Metaphor]
-      [REPRESENTATIVE Characteristic Invariant Carrier
-                      Name Value Representation
-                      NextName NextValue NextRepresentation
-                      ActOfCounting Metaphor]
+    (Characteristic   : Type → TOKEN Type)
+    (Invariant        : Type)
+    (Symbol           : Type)
+    (Value            : Type 1)
+    (Token            : Type 1)
+    (Representative   : Prop)
+
+    (Number           : TOKEN Invariant)
+    (Ordinal          : TOKEN Symbol)
+
+    (Truth: BOOL Bool)
+
+    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
+    [invariant_equality : DecidableEq (Invariant)]
+    [symbol_equality : DecidableEq (Symbol)]
+    [value_equality : DecidableEq (Value)]
+    [token_equality : DecidableEq (Token)]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [DISTINGUISHABLE Characteristic Symbol]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol
+                Value Token
+                Number Metaphor]
+    [NUMERIC  Characteristic Invariant Symbol
+              Value Token
+              Number Ordinal
+              Metaphor Metafive]
+    [RELATABLE  Characteristic Invariant
+                Symbol Value Token Number Ordinal
+                Metaphor Metafive]
+    [r : REPRESENTATIVE Characteristic Invariant Symbol
+                        Value Token Representative
+                        Number Ordinal (BOOL Bool)
+                        Metaphor Metafive]
         where
 
-  representation_of_numbers: Invariant
-  -- This is best estimate of our understanding of the compiler's representation.
+  carrier: Representative
+  representative: Invariant
+  invariant: Symbol
+  symbol: Value
+  value: TOKEN Invariant
+  number: TOKEN Symbol
 
-  carrier: Carrier
+inductive Tape
+    (Characteristic   : Type → TOKEN Type)
+    (Invariant        : Type)
+    (Symbol           : Type)
+    (Value            : Type 1)
+    (Token            : Type 1)
+    (Representative   : Prop)
+
+    (Number           : TOKEN Invariant)
+    (Ordinal          : TOKEN Symbol)
+
+    (Truth: BOOL Bool)
+
+    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
+    [invariant_equality : DecidableEq (Invariant)]
+    [symbol_equality : DecidableEq (Symbol)]
+    [value_equality : DecidableEq (Value)]
+    [token_equality : DecidableEq (Token)]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [DISTINGUISHABLE Characteristic Symbol]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol
+                Value Token
+                Number Metaphor]
+    [NUMERIC  Characteristic Invariant Symbol
+              Value Token
+              Number Ordinal
+              Metaphor Metafive]
+    [RELATABLE  Characteristic Invariant
+                Symbol Value Token Number Ordinal
+                Metaphor Metafive]
+    [r : REPRESENTATIVE Characteristic Invariant Symbol
+                        Value Token Representative
+                        Number Ordinal (BOOL Bool)
+                        Metaphor Metafive]
+    [ENCODED Characteristic Invariant Symbol
+              Value Token Representative
+              Number Ordinal Truth   -- We have resolved 1 bit.
+              Metaphor Metafive]
+  | nil : TOKEN Invariant →
+          REFINED (TOKEN Invariant) →
+          Tape Characteristic Invariant Symbol Value Token Representative
+               Number Ordinal Truth
+               Metaphor Metafive →
+          Tape Characteristic Invariant Symbol Value Token Representative
+               Number Ordinal Truth
+               Metaphor Metafive →
+          Tape Characteristic Invariant Symbol Value Token Representative
+               Number Ordinal Truth
+               Metaphor Metafive
+  | cons :  REFINED (Invariant) →
+            REFINE  (TOKEN Invariant) →  -- This is how we resolve the bit
+            Tape Characteristic Invariant Symbol Value Token Representative
+                 Number Ordinal Truth
+                 Metaphor Metafive →
+            Tape Characteristic Invariant Symbol Value Token Representative
+                  Number Ordinal Truth
+                  Metaphor Metafive →
+            Tape Characteristic Invariant Symbol Value Token Representative
+                  Number Ordinal Truth
+                  Metaphor Metafive
+
 
 class COMPUTABLE
     (Characteristic   : Type → TOKEN Type)
     (Invariant        : Type)
-    (Carrier          : Prop)
-    (Parameter        : Type i)       -- Metaphysical trait across all time
-    (OpCode           : Type 1)       -- The metaphysical value right now
-    (Assembly         : Invariant)    -- The decomposition to interpret a number as a value
-    (NextParameter    :  Type i → REFINED (Type i))
-    (NextOpCode       :  Type 1 → REFINED (Type 1))
-    (NextAssembly     :  Type   → REFINED  Type   )
-    (ActOfCounting : EVENT Type)
-    (Metaphor: TOKEN Invariant → REFINE (TOKEN Invariant)  → BOOL Bool)
-    [DecidableEq (Parameter)]
-    [DecidableEq (OpCode)]
-    [DecidableEq (Invariant)]
+    (Symbol           : Type)
+    (Value            : Type 1)
+    (Token            : Type 1)
+    (Representative   : Prop)
+
+    (Number           : TOKEN Invariant)
+    (Ordinal          : TOKEN Symbol)
+
+    (Truth: BOOL Bool)
+
+    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
+    [invariant_equality : DecidableEq (Invariant)]
+    [symbol_equality : DecidableEq (Symbol)]
+    [value_equality : DecidableEq (Value)]
+    [token_equality : DecidableEq (Token)]
     [DISTINGUISHABLE Characteristic Invariant]
-    [ADMISSIBLE ActOfCounting
-                NextOpCode Invariant
-                NextAssembly Metaphor]
-    [origin: COUNTABLE  Characteristic Invariant
-                        Parameter OpCode Assembly
-                        NextParameter NextOpCode NextAssembly
-                        ActOfCounting Metaphor]
-    [relation: RELATABLE Characteristic Invariant ActOfCounting
-                        NextOpCode NextAssembly Metaphor]
-    [NUMERIC Characteristic Invariant Carrier
-              Parameter OpCode Assembly
-              NextParameter NextOpCode NextAssembly
-              ActOfCounting Metaphor]
-    [REPRESENTATIVE Characteristic Invariant Carrier
-                    Parameter OpCode Assembly
-                    NextParameter NextOpCode NextAssembly
-                    ActOfCounting Metaphor]
-    [ENCODED Characteristic Invariant Carrier
-              Parameter OpCode Assembly
-              NextParameter NextOpCode NextAssembly
-              ActOfCounting Metaphor]
+    [DISTINGUISHABLE Characteristic Symbol]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol
+                Value Token
+                Number Metaphor]
+    [NUMERIC  Characteristic Invariant Symbol
+              Value Token
+              Number Ordinal
+              Metaphor Metafive]
+    [RELATABLE  Characteristic Invariant
+                Symbol Value Token Number Ordinal
+                Metaphor Metafive]
+    [r : REPRESENTATIVE Characteristic Invariant Symbol
+                        Value Token Representative
+                        Number Ordinal (BOOL Bool)
+                        Metaphor Metafive]
+    [ENCODED Characteristic Invariant Symbol
+              Value Token Representative
+              Number Ordinal Truth   -- We have resolved 1 bit.
+              Metaphor Metafive]
         where
-  instruction: Invariant
-  carrier: Carrier
+  carrier: Invariant
+  invariant: Symbol
+  symbol: Value
+  value: TOKEN Invariant
+  number: TOKEN Symbol
 
 inductive Ledger
     (Characteristic   : Type → TOKEN Type)
     (Invariant        : Type)
-    (Carrier          : Prop)
-    (Parameter        : Type i)       -- Metaphysical trait across all time
-    (OpCode           : Type 1)       -- The metaphysical value right now
-    (Assembly         : Invariant)    -- The decomposition to interpret a number as a value
-    (NextParameter    :  Type i → REFINED (Type i))
-    (NextOpCode       :  Type 1 → REFINED (Type 1))
-    (NextAssembly     :  Type   → REFINED  Type   )
-    (ActOfCounting : EVENT Type)
-    (Metaphor: TOKEN Invariant → REFINE (TOKEN Invariant)  → BOOL Bool)
-    [DecidableEq (Parameter)]
-    [DecidableEq (OpCode)]
-    [DecidableEq (Invariant)]
+    (Symbol           : Type)
+    (Value            : Type 1)
+    (Token            : Type 1)
+    (Representative   : Prop)
+
+    (Number           : TOKEN Invariant)
+    (Ordinal          : TOKEN Symbol)
+
+    (Truth: BOOL Bool)
+
+    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
+    [invariant_equality : DecidableEq (Invariant)]
+    [symbol_equality : DecidableEq (Symbol)]
+    [value_equality : DecidableEq (Value)]
+    [token_equality : DecidableEq (Token)]
     [DISTINGUISHABLE Characteristic Invariant]
-    [ADMISSIBLE ActOfCounting
-                NextOpCode Invariant
-                NextAssembly Metaphor]
-    [origin: COUNTABLE  Characteristic Invariant
-                        Parameter OpCode Assembly
-                        NextParameter NextOpCode NextAssembly
-                        ActOfCounting Metaphor]
-    [relation: RELATABLE Characteristic Invariant ActOfCounting
-                        NextOpCode NextAssembly Metaphor]
-    [NUMERIC Characteristic Invariant Carrier
-              Parameter OpCode Assembly
-              NextParameter NextOpCode NextAssembly
-              ActOfCounting Metaphor]
-    [REPRESENTATIVE Characteristic Invariant Carrier
-                    Parameter OpCode Assembly
-                    NextParameter NextOpCode NextAssembly
-                    ActOfCounting Metaphor]
-    [ENCODED Characteristic Invariant Carrier
-              Parameter OpCode Assembly
-              NextParameter NextOpCode NextAssembly
-              ActOfCounting Metaphor]
-    [COMPUTABLE Characteristic Invariant Carrier
-                Parameter OpCode Assembly
-                NextParameter NextOpCode NextAssembly
-                ActOfCounting Metaphor]
-  | nil : REFINED (TOKEN Invariant) →
-          Ledger Characteristic Invariant Carrier Parameter OpCode Assembly
-                 NextParameter NextOpCode NextAssembly ActOfCounting Metaphor
-  | cons : REFINED (Invariant) →
-           REFINE  (TOKEN Invariant) →
-           Ledger Characteristic Invariant Carrier Parameter OpCode Assembly
-                  NextParameter NextOpCode NextAssembly ActOfCounting Metaphor →
-           Ledger Characteristic Invariant Carrier Parameter OpCode Assembly
-                  NextParameter NextOpCode NextAssembly ActOfCounting Metaphor →
-           Ledger Characteristic Invariant Carrier Parameter OpCode Assembly
-                  NextParameter NextOpCode NextAssembly ActOfCounting Metaphor
+    [DISTINGUISHABLE Characteristic Symbol]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol
+                Value Token
+                Number Metaphor]
+    [NUMERIC  Characteristic Invariant Symbol
+              Value Token
+              Number Ordinal
+              Metaphor Metafive]
+    [RELATABLE  Characteristic Invariant
+                Symbol Value Token Number Ordinal
+                Metaphor Metafive]
+    [r : REPRESENTATIVE Characteristic Invariant Symbol
+                        Value Token Representative
+                        Number Ordinal (BOOL Bool)
+                        Metaphor Metafive]
+    [ENCODED Characteristic Invariant Symbol
+              Value Token Representative
+              Number Ordinal Truth   -- We have resolved 1 bit.
+              Metaphor Metafive]
+    [COMPUTABLE Characteristic Invariant Symbol
+                Value Token Representative
+                Number Ordinal Truth   -- We have resolved 1 bit.
+                Metaphor Metafive]
+  | nil : TOKEN Invariant →
+          REFINE (TOKEN Invariant) →
+          Ledger Characteristic Invariant Symbol Value Token Representative
+               Number Ordinal Truth Metaphor Metafive →
+          Ledger Characteristic Invariant Symbol Value Token Representative
+               Number Ordinal Truth Metaphor Metafive →
+          Ledger Characteristic Invariant Symbol Value Token Representative
+               Number Ordinal Truth Metaphor Metafive
+  | cons: REFINE Invariant →
+          REFINE (TOKEN Invariant) →
+          Ledger Characteristic Invariant Symbol Value Token Representative
+               Number Ordinal Truth Metaphor Metafive →
+          Ledger Characteristic Invariant Symbol Value Token Representative
+               Number Ordinal Truth Metaphor Metafive →
+          Ledger Characteristic Invariant Symbol Value Token Representative
+               Number Ordinal Truth Metaphor Metafive
+
+
 
 class PHYSICAL
     (Characteristic   : Type → TOKEN Type)
     (Invariant        : Type)
-    (Carrier          : Prop)
-    (Parameter        : Type i)       -- Metaphysical trait across all time
-    (OpCode           : Type 1)       -- The metaphysical value right now
-    (Assembly         : Invariant)    -- The decomposition to interpret a number as a value
-    (NextParameter    :  Type i → REFINED (Type i))
-    (NextOpCode       :  Type 1 → REFINED (Type 1))
-    (NextAssembly     :  Type   → REFINED  Type   )
-    (ActOfCounting : EVENT Type)
-    (Metaphor: TOKEN Invariant → REFINE (TOKEN Invariant)  → BOOL Bool)
-    [DecidableEq (Parameter)]
-    [DecidableEq (OpCode)]
-    [DecidableEq (Invariant)]
+    (Symbol           : Type)
+    (Value            : Type 1)
+    (Token            : Type 1)
+    (Representative   : Prop)
+
+    (Number           : TOKEN Invariant)
+    (Ordinal          : TOKEN Symbol)
+
+    (Truth: BOOL Bool)
+
+    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
+    [invariant_equality : DecidableEq (Invariant)]
+    [symbol_equality : DecidableEq (Symbol)]
+    [value_equality : DecidableEq (Value)]
+    [token_equality : DecidableEq (Token)]
     [DISTINGUISHABLE Characteristic Invariant]
-    [counting: ADMISSIBLE ActOfCounting
-                          NextOpCode Invariant
-                          NextAssembly Metaphor]
-    [origin: COUNTABLE  Characteristic Invariant
-                        Parameter OpCode Assembly
-                        NextParameter NextOpCode NextAssembly
-                        ActOfCounting Metaphor]
-    [relation: RELATABLE Characteristic Invariant ActOfCounting
-                        NextOpCode NextAssembly Metaphor]
-    [NUMERIC Characteristic Invariant Carrier
-              Parameter OpCode Assembly
-              NextParameter NextOpCode NextAssembly
-              ActOfCounting Metaphor]
-    [REPRESENTATIVE Characteristic Invariant Carrier
-                    Parameter OpCode Assembly
-                    NextParameter NextOpCode NextAssembly
-                    ActOfCounting Metaphor]
-    [ENCODED Characteristic Invariant Carrier
-              Parameter OpCode Assembly
-              NextParameter NextOpCode NextAssembly
-              ActOfCounting Metaphor]
-    [COMPUTABLE Characteristic Invariant Carrier
-                Parameter OpCode Assembly
-                NextParameter NextOpCode NextAssembly
-                ActOfCounting Metaphor]
+    [DISTINGUISHABLE Characteristic Symbol]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol
+                Value Token
+                Number Metaphor]
+    [NUMERIC  Characteristic Invariant Symbol
+              Value Token
+              Number Ordinal
+              Metaphor Metafive]
+    [RELATABLE  Characteristic Invariant
+                Symbol Value Token Number Ordinal
+                Metaphor Metafive]
+    [r : REPRESENTATIVE Characteristic Invariant Symbol
+                        Value Token Representative
+                        Number Ordinal (BOOL Bool)
+                        Metaphor Metafive]
+    [ENCODED Characteristic Invariant Symbol
+              Value Token Representative
+              Number Ordinal Truth   -- We have resolved 1 bit.
+              Metaphor Metafive]
+    [COMPUTABLE Characteristic Invariant Symbol
+                Value Token Representative
+                Number Ordinal Truth   -- We have resolved 1 bit.
+                Metaphor Metafive]
       where
-  invariant: Invariant
-  threshold: TOKEN Invariant
-  carrier: Carrier
+  carrier: Symbol
+  symbol: Value
+  value: TOKEN Invariant
+  number: TOKEN Symbol
 
   -- This compiles one bit at a time.
   slip? : TOKEN Invariant → REFINE (TOKEN Invariant) → BOOL Bool :=
-    fun s t => if counting.admissible? s t = TRUTH then TRUTH else __SILENCE__
+    fun s t => if r.admissible? s t = TRUTH then TRUTH else __SILENCE__
 
 
-inductive History
+inductive Domain
     (Characteristic   : Type → TOKEN Type)
     (Invariant        : Type)
     (Carrier          : Prop)
