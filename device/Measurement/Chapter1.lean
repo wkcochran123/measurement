@@ -30,8 +30,8 @@ namespace Measurement
 universe i
 
 -- This is repeatable observation.  We wait for what is next.
-abbrev OBSERVE {x} := Option (ULift.{i+1,i} x)
 -- If you have seen it, then you can look directly at the symbol of the result.
+abbrev OBSERVE (Invariant : Type i) := Option Invariant
 
 -- To count, one needs a token. We hope to collect a lot
 -- of TOKEN Symbols
@@ -843,122 +843,79 @@ inductive Ledger
           Ledger Characteristic Invariant Symbol Value Token Representative
                Number Ordinal Truth Metaphor Metafive
 
+/--
+  NOISY represents the state where an observation exists,
+  but the refinement into a stable Invariant is corrupted or ambiguous.
+-/
+class NOISY
+    (Characteristic   : Type → TOKEN Type)
+    (Invariant        : Type i)
+    (Symbol           : Type i)
+    (Value            : Type (i+1))
+    (Token            : Type (i+1))
+    (Representative   : Prop)
+    where
+  -- Numerical and Ordinal representations of tokens
+  Number  : TOKEN Invariant
+  Ordinal : TOKEN Symbol
 
+  -- Using your defined BOOL and TRUTH [cite: 17, 18]
+  Truth   : BOOL Bool := some true
+
+  -- Metaphor and Metafive maps: Using OBSERVE for EVENT as per turn-based logic [cite: 13]
+  Metaphor : TOKEN Invariant → OBSERVE Value → BOOL Bool
+  Metafive : TOKEN Symbol → OBSERVE Token → BOOL Bool
+
+  -- Class fields
+  entropy : Symbol
+  strain  : Value
+  value   : TOKEN Invariant
+  number  : TOKEN Symbol
+
+inductive Channel
+    (Characteristic   : Type → TOKEN Type)
+    (Invariant        : Type i)
+    (Symbol           : Type i)
+    (Value            : Type (i+1))
+    (Token            : Type (i+1))
+    (Representative   : Prop)
+    [NOISY Characteristic Invariant Symbol Value Token Representative]
+    where
+  | nil : REFINE (TOKEN Invariant) →
+          Channel Characteristic Invariant Symbol Value Token Representative
+  | cons: REFINED Invariant →
+          REFINE (TOKEN Invariant) →  -- Read next bit/byte/word/paragraph/etc.
+          Channel Characteristic Invariant Symbol Value Token Representative →
+          Channel Characteristic Invariant Symbol Value Token Representative
 
 class PHYSICAL
     (Characteristic   : Type → TOKEN Type)
-    (Invariant        : Type)
-    (Symbol           : Type)
-    (Value            : Type 1)
-    (Token            : Type 1)
+    (Invariant        : Type i)
+    (Symbol           : Type i)
+    (Value            : Type (i+1))
+    (Token            : Type (i+1))
     (Representative   : Prop)
+    [noise: NOISY Characteristic Invariant Symbol Value Token Representative]
 
-    (Number           : TOKEN Invariant)
-    (Ordinal          : TOKEN Symbol)
+    where
+  -- The channel through which records are produced by an instrument
+  channel : Channel Characteristic Invariant Symbol Value Token Representative
 
-    (Truth: BOOL Bool)
+  -- The physical manifestation of entropy within the measurement
+  entropy_witness : Symbol := noise.entropy
+  strain_witness  : Value  := noise.strain
 
-    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
-    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
-    [invariant_equality : DecidableEq (Invariant)]
-    [symbol_equality : DecidableEq (Symbol)]
-    [value_equality : DecidableEq (Value)]
-    [token_equality : DecidableEq (Token)]
-    [DISTINGUISHABLE Characteristic Invariant]
-    [DISTINGUISHABLE Characteristic Symbol]
-    [event: ADMISSIBLE Invariant Value Metaphor]
-    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
-    [ADMISSIBLE Symbol Token Metafive]
-    [COUNTABLE  Characteristic Invariant Symbol
-                Value Token
-                Number Metaphor]
-    [NUMERIC  Characteristic Invariant Symbol
-              Value Token
-              Number Ordinal
-              Metaphor Metafive]
-    [RELATABLE  Characteristic Invariant
-                Symbol Value Token Number Ordinal
-                Metaphor Metafive]
-    [r : REPRESENTATIVE Characteristic Invariant Symbol
-                        Value Token Representative
-                        Number Ordinal (BOOL Bool)
-                        Metaphor Metafive]
-    [ENCODED Characteristic Invariant Symbol
-              Value Token Representative
-              Number Ordinal Truth   -- We have resolved 1 bit.
-              Metaphor Metafive]
-    [COMPUTABLE Characteristic Invariant Symbol
-                Value Token Representative
-                Number Ordinal Truth   -- We have resolved 1 bit.
-                Metaphor Metafive]
-      where
-  carrier: Symbol
-  symbol: Value
-  value: TOKEN Invariant
-  number: TOKEN Symbol
-
-  -- This compiles one bit at a time.
-  slip? : TOKEN Invariant → REFINE (TOKEN Invariant) → BOOL Bool :=
-    fun s t => if r.admissible? s t = TRUTH then TRUTH else __SILENCE__
-
+  -- Constraints on the ActOfCounting
+  count_invariant : TOKEN Invariant := noise.value
+  count_symbol    : TOKEN Symbol    := noise.number
 
 inductive Domain
     (Characteristic   : Type → TOKEN Type)
-    (Invariant        : Type)
-    (Carrier          : Prop)
-    (Parameter        : Type i)       -- Metaphysical trait across all time
-    (OpCode           : Type 1)       -- The metaphysical value right now
-    (Assembly         : Invariant)    -- The decomposition to interpret a number as a value
-    (NextParameter    :  Type i → REFINED (Type i))
-    (NextOpCode       :  Type 1 → REFINED (Type 1))
-    (NextAssembly     :  Type   → REFINED  Type   )
-    (ActOfCounting : EVENT Type)
-    (Metaphor: TOKEN Invariant → REFINE (TOKEN Invariant)  → BOOL Bool)
-    [DecidableEq (Parameter)]
-    [DecidableEq (OpCode)]
-    [DecidableEq (Invariant)]
-    [DISTINGUISHABLE Characteristic Invariant]
-    [counting: ADMISSIBLE ActOfCounting
-                          NextOpCode Invariant
-                          NextAssembly Metaphor]
-    [origin: COUNTABLE  Characteristic Invariant
-                        Parameter OpCode Assembly
-                        NextParameter NextOpCode NextAssembly
-                        ActOfCounting Metaphor]
-    [relation: RELATABLE Characteristic Invariant ActOfCounting
-                        NextOpCode NextAssembly Metaphor]
-    [NUMERIC Characteristic Invariant Carrier
-              Parameter OpCode Assembly
-              NextParameter NextOpCode NextAssembly
-              ActOfCounting Metaphor]
-    [REPRESENTATIVE Characteristic Invariant Carrier
-                    Parameter OpCode Assembly
-                    NextParameter NextOpCode NextAssembly
-                    ActOfCounting Metaphor]
-    [ENCODED Characteristic Invariant Carrier
-              Parameter OpCode Assembly
-              NextParameter NextOpCode NextAssembly
-              ActOfCounting Metaphor]
-    [COMPUTABLE Characteristic Invariant Carrier
-                Parameter OpCode Assembly
-                NextParameter NextOpCode NextAssembly
-                ActOfCounting Metaphor]
-    [PHYSICAL Characteristic
-              Invariant Carrier
-              Parameter OpCode Assembly
-              NextParameter NextOpCode NextAssembly
-              ActOfCounting Metaphor]
+    (Invariant        : Type i)
+    (Symbol           : Type i)
+    (Value            : Type (i+1))
+    (Token            : Type (i+1))
+    (Representative   : Prop)
+    [noise: NOISY Characteristic Invariant Symbol Value Token Representative]
 
-  | nil : REFINED (TOKEN Invariant) →
-          History Characteristic Invariant Carrier Parameter OpCode Assembly
-                  NextParameter NextOpCode NextAssembly ActOfCounting Metaphor
-
-  | cons :  REFINED (Invariant) →
-            REFINE  (TOKEN Invariant) →
-            History Characteristic Invariant Carrier Parameter OpCode Assembly
-                    NextParameter NextOpCode NextAssembly ActOfCounting Metaphor →
-            History Characteristic Invariant Carrier Parameter OpCode Assembly
-                    NextParameter NextOpCode NextAssembly ActOfCounting Metaphor →
-            History Characteristic Invariant Carrier Parameter OpCode Assembly
-                    NextParameter NextOpCode NextAssembly ActOfCounting Metaphor
 end Measurement
