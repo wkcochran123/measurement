@@ -2,231 +2,158 @@ import Measurement.Chapter2
 
 namespace Measurement
 
+abbrev GAUGE (Symbol : Type)(Value: Type)(Reading : Type 1)   := ((TOKEN Symbol) × TOKEN Value)×(TOKEN Reading)
 
-
-class CORRELANT
-    (Symbol_1: Type i)
-    (Symbol_2: Type i)
-    (Characteristic_1: Symbol_1 → Symbol_1 → Bool)
-    (Characteristic_2: Symbol_2 → Symbol_2 → Bool)
-    [DISTINGUISHABLE Symbol_1 Characteristic_1]
-    [DISTINGUISHABLE Symbol_2 Characteristic_2]
-    [DISTINGUISHABLE (Symbol_1 × Symbol_2) (λ p1 p2 => Characteristic_1 p1.1 p2.1 && Characteristic_2 p1.2 p2.2)]
-    [RELATABLE Symbol_1 Symbol_2 Characteristic_1 Characteristic_2]
+class MEASURED
+    (Characteristic   : Type → TOKEN Type)
+    (Invariant        : Type)
+    (Symbol           : Type)
+    (Value            : Type 1)
+    (Token            : Type 1)
+    (Representative   : Prop)
+    (Number           : TOKEN Invariant)
+    (Ordinal          : TOKEN Symbol)
+    (Truth: BOOL Bool)
+    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
+    [invariant_equality : DecidableEq (Invariant)]
+    [symbol_equality : DecidableEq (Symbol)]
+    [value_equality : DecidableEq (Value)]
+    [token_equality : DecidableEq (Token)]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [DISTINGUISHABLE Characteristic Symbol]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol Value Token Number Metaphor]
+    [NUMERIC  Characteristic Invariant Symbol Value Token Number Ordinal Metaphor Metafive]
+    [RELATABLE  Characteristic Invariant Symbol Value Token Number Ordinal Metaphor Metafive]
+    -- Finally, the extension cord is long enough.
+    [r: REPRESENTATIVE Characteristic Invariant Symbol Value Token Representative Number Ordinal (BOOL Bool) Metaphor Metafive]
+    -- weird, right?  still have no idea what it is. This isn't cheating though, watch...
+    [e: ENCODED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth  Metaphor Metafive]
+    [COMPUTABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [ENCODABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [RELATED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [BINARY Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [DECOMPOSABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [DECOMPOSED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [DISTINGUISHED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
       where
+  carrier: RELATING Symbol Value
+  bit: NAND (ENCODING Symbol) (RELATING Symbol Value) -- You didn't even see the hat this rabbit came out of.
+  swap: COMMUTING (ENCODING Symbol) (RELATING Symbol Value)
+  decomposition: CHARACTERISTIC (ENCODING Symbol)
+  invarant_: Invariant
+  symbol_: Symbol
+  number : TOKEN Invariant
+  ordinal : TOKEN Symbol
+  reading? : TOKEN Invariant → EVENT Value
+  counted_    : TOKEN Invariant → EVENT Value → BOOL Bool := fun i v => Metaphor i v
+  admitted_   : TOKEN Symbol → EVENT Token → BOOL Bool := fun s t => Metafive s t
 
-  correlant? : Symbol_1 → Symbol_2 → Bool
+abbrev READING (Symbol : Type)(Value: Type)(Reading : Type 1) := GAUGE Symbol Value Reading
 
-
-namespace CORRELANT
-variable {Symbol_1: Type i}
-         {Symbol_2: Type (i+1)}
-         {Now}
-         {Event_Description: Symbol_1 → Symbol_2}
-         {Characteristic_1: Symbol_1 → Symbol_1 → Bool}
-         {Characteristic_2: Symbol_2 → Symbol_2 → Bool}
-         [DISTINGUISHABLE Symbol_1 Characteristic_1]
-         [ADMISSIBLE Symbol_1 Characteristic_1 (λ s1 s2 => Characteristic_2 Characateristic_1 (Event_Description Symbol_1))]
-         [DISTINGUISHABLE Symbol_2 Characteristic_2]
-         [ADMISSIBLE Symbol_2 Characteristic_2 (λ s1 s2 => Characteristic_2 s1 s2)]
-         [DISTINGUISHABLE (Symbol_1 × Symbol_2) (λ p1 p2 => Characteristic_1 p1.1 p2.1 && Characteristic_2 p1.2 p2.2)]
-         [RELATABLE Symbol_1 Symbol_2 Characteristic_1 Characteristic_2]
-         [CORRELANT Symbol_1 Symbol_2 Characteristic_1 Characteristic_2]
-
-def correlant
-    (s1: Symbol_1)
-    (s2: Symbol_2)
-      : Bool :=
-  CORRELANT.correlant? Characteristic_1 Characteristic_2 s1 s2
-
-end CORRELANT
-
-
-
-class LOCAL
-    (symbol: Type now)
-    (event: Type (now+1))
-    [DISTINGUISHABLE symbol event]
-    (η : symbol)
-    (LT : symbol -> symbol -> Bool)
-    [COUNTABLE symbol event η LT]
-    (LE : symbol -> symbol -> Bool)
-    (transform : symbol -> Option (ULift.{now+1, now} symbol))
-    where
-  ζ? : symbol -> Option (ULift.{now+1, now} symbol) -> Bool
-  step_size? : symbol -> Option (ULift.{now+1, now} symbol) -> Bool
-
-  vector: symbol
-
-namespace LOCAL
-variable {symbol : Type now}
-         {event : Type (now+1)}
-         [ds: DISTINGUISHABLE symbol event]
-         {η : symbol}
-         {LT : symbol -> symbol -> Bool}
-         [cs: COUNTABLE symbol event η LT]
-         {domain : symbol -> symbol -> Bool}
-         {transform : symbol -> Option (ULift.{now+1, now} symbol)}
-def ζ
-  (n : symbol) : Option (ULift.{now+1, now} symbol) :=
-  cs.witness n
-end LOCAL
-
-
-inductive Accumulate
-    (count : Type (now+1))
-    (i : Type now)
-    (j : Type (now+1))
-    [DISTINGUISHABLE i j]
-    (η : i)
-    (LT : i -> i -> Bool)
-    [COUNTABLE i j η LT]
-    : Type (now+2)
-  | nil : Accumulate count i j η LT
-  | cons : i → j -> Count i j →  (j×i) → count →
-          Accumulate count i j η LT → Accumulate count i j η LT
-
-structure BinaryOperator
-    (symbol : Type now)
-    (event : Type (now+1))
-    [A : DISTINGUISHABLE symbol event]
-    [B : DISTINGUISHABLE symbol event]
-    (η : symbol)
-    (LT : symbol -> symbol -> Bool)
-    [A_count : COUNTABLE symbol event η LT]
-    where
-  -- Input Bits (The 3)
-  top    : symbol
-  bottom : symbol
-  left   : symbol
-  -- The "Etching" Logic (No-label pass-through)
-  right? : symbol → symbol → symbol → Bool
-
-namespace BinaryOperator
-variable {symbol : Type now}
-         {event : Type (now+1)}
-         [A : DISTINGUISHABLE symbol event]
-         [B : DISTINGUISHABLE symbol event]
-         {η : symbol}
-         {LT : symbol -> symbol -> Bool}
-         [A_count : COUNTABLE symbol event η LT]
-
-end BinaryOperator
-
-structure Iteration
-    (symbol: Type now)
-    (event: Type (now+1))
-    [DISTINGUISHABLE symbol event]
-    (η1 : symbol)
-    (LT1 : symbol -> symbol -> Bool)
-    [count: COUNTABLE symbol event η1 LT]
-    (η2 : symbol)
-    (LT2 : symbol -> symbol -> Bool)
-    [strain: INVARIANT symbol event η2 LT2]
-    (LE : symbol -> symbol -> Bool)
-    (transform : symbol -> Option (ULift.{now+1, now} symbol))
-    [LOCAL symbol event η LT LE transform]
-    (φ : symbol)
-    (dφ : symbol → symbol → Bool)
+class READABLE
+    (Characteristic   : Type → TOKEN Type)
+    (Invariant        : Type)
+    (Symbol           : Type)
+    (Value            : Type 1)
+    (Token            : Type 1)
+    (Representative   : Prop)
+    (Number           : Type i)
+    (Ordinal          : Type (i+1))
+    (Truth: BOOL Bool)
+    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
+    (Metasix:  TOKEN Symbol → EVENT Reading → BOOL Bool)
+    [invariant_equality : DecidableEq (Invariant)]
+    [symbol_equality : DecidableEq (Symbol)]
+    [value_equality : DecidableEq (Value)]
+    [token_equality : DecidableEq (Token)]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [DISTINGUISHABLE Characteristic Symbol]
+    [DISTINGUISHABLE (CHARACTERISTIC Symbol \to TOKEN Symbol) Invariant]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol Value Token Number Metaphor]
+    [NUMERIC  Characteristic Invariant Symbol Value Token Number Ordinal Metaphor Metafive]
+    [RELATABLE  Characteristic Invariant Symbol Value Token Number Ordinal Metaphor Metafive]
+    -- Finally, the extension cord is long enough.
+    [r: REPRESENTATIVE Characteristic Invariant Symbol Value Token Representative Number Ordinal (BOOL Bool) Metaphor Metafive]
+    -- weird, right?  still have no idea what it is. This isn't cheating though, watch...
+    [e: ENCODED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth  Metaphor Metafive]
+    [COMPUTABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [ENCODABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [RELATED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [BINARY Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [DECOMPOSABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [DECOMPOSED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [DISTINGUISHED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [m: MEASURED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
       where
-  value : symbol
-  le? : symbol -> symbol -> Bool
-  lt? : symbol -> symbol -> Bool
-  step? : symbol -> symbol -> Bool
-  round? : symbol -> Option (ULift.{now+1, now} symbol) -> Bool
-  transform? : symbol -> symbol -> Option (ULift.{now+1, now} symbol)
+  carrier: RELATING Symbol Value
+  bit: NAND (ENCODING Symbol) (RELATING Symbol Value) -- You didn't even see the hat this rabbit came out of.
+  swap: COMMUTING (ENCODING Symbol) (RELATING Symbol Value)
+  decomposition: CHARACTERISTIC (ENCODING Symbol)
+  invarant_: Invariant
+  symbol_: Symbol
+  number : TOKEN Invariant
+  ordinal : TOKEN Symbol
+  reading? : m.reading
+  counted_    : TOKEN Invariant → EVENT Value → BOOL Bool := fun i v => Metaphor i v
+  admitted_   : TOKEN Symbol → EVENT Token → BOOL Bool := fun s t => Metafive s t
 
-namespace Iteration
-variable {symbol : Type now}
-         {event : Type (now+1)}
-         [DISTINGUISHABLE symbol event]
-         {η : symbol}
-         {LT : symbol -> symbol -> Bool}
-         [COUNTABLE symbol event η LT]
-         {LE : symbol -> symbol -> Bool}
-         {transform : symbol -> Option (ULift.{now+1, now} symbol)}
-         [LOCAL symbol event η LT LE transform]
-         {φ : symbol}
-         {dφ : symbol → symbol → Bool}
+abbrev BIT (Symbol : Type)(Value: Type)(Reading : Type 1) := READING Symbol Value Reading
 
-def le (a b : symbol) : Bool :=
-  LE a b
+class OBSERVED_CARRIER
+    (Characteristic   : Type → TOKEN Type)
+    (Invariant        : Type)
+    (Symbol           : Type)
+    (Value            : Type 1)
+    (Token            : Type 1)
+    (Representative   : Prop)
+    (Number           : TOKEN Invariant)
+    (Ordinal          : TOKEN Symbol)
+    (Truth: BOOL Bool)
+    (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
+    (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
+    [invariant_equality : DecidableEq (Invariant)]
+    [symbol_equality : DecidableEq (Symbol)]
+    [value_equality : DecidableEq (Value)]
+    [token_equality : DecidableEq (Token)]
+    [DISTINGUISHABLE Characteristic Invariant]
+    [DISTINGUISHABLE Characteristic Symbol]
+    [event: ADMISSIBLE Invariant Value Metaphor]
+    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [ADMISSIBLE Symbol Token Metafive]
+    [COUNTABLE  Characteristic Invariant Symbol Value Token Number Metaphor]
+    [NUMERIC  Characteristic Invariant Symbol Value Token Number Ordinal Metaphor Metafive]
+    [RELATABLE  Characteristic Invariant Symbol Value Token Number Ordinal Metaphor Metafive]
+    [REPRESENTATIVE Characteristic Invariant Symbol Value Token Representative Number Ordinal (BOOL Bool) Metaphor Metafive]
+    -- weird, right?  still have no idea what it is. This isn't cheating though, watch...
+    [e: ENCODED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth  Metaphor Metafive]
+    [COMPUTABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [ENCODABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [RELATED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [BINARY Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [DECOMPOSABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [DECOMPOSED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [DISTINGUISHED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [MEASURED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    [WRITTEN Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+      where
+  carrier: Invariant
+  symbol: Symbol
+  value: Value
+  token: Token
+  representative: BIT Symbol Invariant (TOKEN (Symbol × Value))
 
-def lt (a b : symbol) : Bool :=
-  LT a b
+  observed? : TOKEN Invariant → TOKEN Symbol → TOKEN Value → BOOL Bool :=
+    fun i s v => token_equality i s
 
-def step (a b : symbol) : Bool :=
-  dφ a b
 
-def round
-  [inv : Invariant symbol event η LT]
-  (a : symbol)
-  (n : Option (ULift.{now+1, now} symbol)) : Bool :=
-  match n with
-  | none => false
-  | some n' => LT a n'.down
 
-end Iteration
 
-structure Inverse
-    (symbol : Type now)
-    (event : Type (now+1))
-    [DISTINGUISHABLE symbol event]
-    (number : symbol)
-    (value : symbol -> symbol -> Bool)
-    [count: COUNTABLE symbol event number value]
-    (inverse_of: symbol)
-    (inverse? : symbol -> symbol -> Bool)
-    where
-  forward: Decomposition symbol event number value
-  preimage? : symbol -> symbol -> Bool
-
-structure PartialOrdering
-    (symbol : Type now)
-    (event : Type (now+1))
-    [DISTINGUISHABLE symbol event]
-    (number : symbol)
-    (value : symbol -> symbol -> Bool)
-    [count: COUNTABLE symbol event number value]
-    where
-  le? : symbol -> symbol -> Bool
-  causal? : symbol -> symbol -> Bool
-  correlant? : symbol -> symbol -> Bool
-  admissible? : symbol -> symbol -> symbol -> Bool
-
-namespace PartialOrdering
-
-variable {symbol : Type now}
-         {event : Type (now+1)}
-         [DISTINGUISHABLE symbol event]
-
-/--
-Standard less-than-or-equal check.
-Directly uses the raw boolean map from the index.
--/
-def le (p : PartialOrdering symbol event) (a b : symbol) : Bool :=
-  p.le? a b
-
-/--
-The etching path of the carrier.
-Determines if bit 'a' is a causal prerequisite for bit 'b'[cite: 49].
--/
-def causal (p : PartialOrdering symbol event) (a b : symbol) : Bool :=
-  p.causal? a b
-
-/--
-Multiset pressure correlation.
-Identifies bits that share a neighborhood in the giant bitset[cite: 49].
--/
-def correlant (p : PartialOrdering symbol event) (a b : symbol) : Bool :=
-  p.correlant? a b
-
-/--
-The 3-to-1 bit reduction resolver.
-Validates if bits 'a' and 'b' are admissible relative to a third symbol[cite: 49].
--/
-def admissible (p : PartialOrdering symbol event) (a b threshold : symbol) : Bool :=
-  p.admissible? a b threshold
-
-end PartialOrdering
 end Measurement
