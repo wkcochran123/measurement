@@ -29,9 +29,6 @@ namespace Measurement
 -- I mean compiler. A Type.
 universe i
 
--- This is repeatable observation.  We wait for what is next.
--- If you have seen it, then you can look directly at the symbol of the result.
-abbrev OBSERVE (Invariant : Type i) := Option Invariant
 
 -- To count, one needs a token. We hope to collect a lot
 -- of TOKEN Symbols
@@ -62,6 +59,17 @@ def __SILENCE__ {Invariant: Type} : (TOKEN Invariant) := none
 -- There is only one ball, keep your eye on it.
 -- Like and Subscribe if you think I should make the ball bigger or smaller.
 
+-- And, of course, we can tell when the carrer is present, as the option has
+-- appeared.
+def __CARRIER_PRESENT__  {Invariant : Type i} (x : TOKEN Invariant) : Bool :=
+  match x with
+  | none => false
+  | some _ => true
+
+-- This is repeatable observation.  We wait for what is next.
+-- If you have seen it, then you can look directly at the symbol of the result.
+abbrev OBSERVE (Invariant : Type) := match Option Invariant with
+  | s => some s
 
 abbrev REFINE (Symbol: Type i) := Option (ULift Symbol)
 abbrev REFINED (Symbol: Type i) := ULift Symbol
@@ -399,6 +407,7 @@ def ζ
 
 end Stack
 
+abbrev CORRELATED (Symbol_1: Type) (Symbol_2: Type) := (Symbol_1×Symbol_2)
 
 class RELATABLE
     (Characteristic   : Type → TOKEN Type)
@@ -428,9 +437,11 @@ class RELATABLE
               Metaphor Metafive]
       where
 
+  metaphysial_relation: RELATED Symbol Symbol
+  physical_relation   : RELATED (TOKEN Symbol) (TOKEN Symbol)
   precedes? : TOKEN Invariant → EVENT Value → BOOL Bool := Metaphor
 
-  lt? : TOKEN Symbol → EVENT Token → BOOL Bool := Metafive
+  le? : TOKEN Symbol → EVENT Token → BOOL Bool := Metafive
 
 inductive Relation
     (Characteristic   : Type → TOKEN Type)
@@ -472,17 +483,20 @@ inductive Relation
           Relation Characteristic Invariant Symbol Value Token Number Ordinal
              Metaphor Metafive
 
-class REPRESENTATIVE
+class METAPHYSICAL
     (Characteristic   : Type → TOKEN Type)
     (Invariant        : Type)
-    (Symbol           : Type)
+    (Carrier          : Type)
     (Value            : Type 1)
     (Token            : Type 1)
-    (Representative   : Prop)
+    (Admissible       : Prop)
 
+    -- A number has 2 metaphysical properties: a count of individuals and the number of individuals with like characteristics.
     (Number           : TOKEN Invariant)
-    (Ordinal          : TOKEN Symbol)
+    (Count            : TOKEN Carrier)
 
+    -- A number as 1 physical property:  You can see it on a page and recognize it as a symbol.
+    (Symbol           : OBSERVED (TOKEN Carrier))
     -- holy hell....
     (TRUTH)
 
@@ -495,8 +509,8 @@ class REPRESENTATIVE
     [DISTINGUISHABLE Characteristic Invariant]
     [DISTINGUISHABLE Characteristic Symbol]
     [event: ADMISSIBLE Invariant Value Metaphor]
-    [ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
-    [ADMISSIBLE Symbol Token Metafive]
+    [e1: ADMISSIBLE Symbol Token fun _ t => ADMISSIBLE.admissible? Metaphor Number t]
+    [e2: ADMISSIBLE Symbol Token Metafive]
     [COUNTABLE  Characteristic Invariant Symbol
                 Value Token
                 Number Metaphor]
@@ -509,8 +523,8 @@ class REPRESENTATIVE
                 Metaphor Metafive]
       where
   carrier: TRUTH
+  present?: OBSERVE Invariant
   compiled_symbol: Representative
-  representative: Invariant
   invariant: Symbol
   symbol: Value
   value: TOKEN Invariant

@@ -250,7 +250,7 @@ class DISTINGUISHED
   ordinal_ : TOKEN Symbol
 
 
-class PARSED
+class ADMITTED
     (Characteristic   : Type → TOKEN Type)
     (Encoding         : Type i → TOKEN Type)
     (Input            : Type i)
@@ -258,12 +258,11 @@ class PARSED
     (Symbol           : Type)
     (Value            : Type 1)
     (Token            : Type 1)
-    (Representative   : Prop)
     (Number           : TOKEN Invariant)
     (Ordinal          : TOKEN Symbol)
-    (Truth: BOOL Bool)
     (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
     (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
+    (Truth: BOOL Bool)
     [invariant_equality : DecidableEq (Invariant)]
     [symbol_equality : DecidableEq (Symbol)]
     [value_equality : DecidableEq (Value)]
@@ -277,14 +276,15 @@ class PARSED
     [NUMERIC  Characteristic Invariant Symbol Value Token Number Ordinal Metaphor Metafive]
     [RELATABLE  Characteristic Invariant Symbol Value Token Number Ordinal Metaphor Metafive]
     [REPRESENTATIVE Characteristic Invariant Symbol Value Token Representative Number Ordinal (BOOL Bool) Metaphor Metafive]
-    [e: ENCODED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth  Metaphor Metafive]
-    [COMPUTABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
-    [ENCODABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
-    [RELATED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
-    [BINARY Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
-    [DECOMPOSABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
-    [DECOMPOSED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
-    [DISTINGUISHED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
+    -- A TRUTH survives.
+    [e: ENCODED Characteristic Invariant Symbol Value Token Representative Number Ordinal TRUTH Metaphor Metafive]
+    [COMPUTABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal TRUTH Metaphor Metafive]
+    [ENCODABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal TRUTH Metaphor Metafive]
+    [RELATED Characteristic Invariant Symbol Value Token Representative Number Ordinal TRUTH Metaphor Metafive]
+    [BINARY Characteristic Invariant Symbol Value Token Representative Number Ordinal TRUTH Metaphor Metafive]
+    [DECOMPOSABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal TRUTH Metaphor Metafive]
+    [DECOMPOSED Characteristic Invariant Symbol Value Token Representative Number Ordinal TRUTH Metaphor Metafive]
+    [DISTINGUISHED Characteristic Invariant Symbol Value Token Representative Number Ordinal TRUTH Metaphor Metafive]
       where
   carrier: RELATING Symbol Value
   bit: NAND (ENCODING Symbol) (RELATING Symbol Value) -- You didn't even see the hat this rabbit came out of.
@@ -294,7 +294,7 @@ class PARSED
   symbol_: Symbol
   token_: TOKEN Invariant
   ordinal_ : TOKEN Symbol
-  input : Input
+  glyph : DISTINGUISHABLE Characteristic Invariant
 
 inductive Alphabet
     (Characteristic   : Type → TOKEN Type)
@@ -304,10 +304,8 @@ inductive Alphabet
     (Symbol           : Type)
     (Value            : Type 1)
     (Token            : Type 1)
-    (Representative   : Prop)
     (Number           : TOKEN Invariant)
     (Ordinal          : TOKEN Symbol)
-    (Truth: BOOL Bool)
     (Metaphor: TOKEN Invariant → EVENT Value  → BOOL Bool)
     (Metafive: TOKEN Symbol → EVENT Token  → BOOL Bool)
     [invariant_equality : DecidableEq (Invariant)]
@@ -331,8 +329,7 @@ inductive Alphabet
     [DECOMPOSABLE Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
     [DECOMPOSED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
     [DISTINGUISHED Characteristic Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
-    [PARSED Characteristic Encoding Input Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive]
-  | nil : EncodingTable Characteristic Encoding Input Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive
-  | cons: Encoding (cons-)
+    [concept: ADMITTED Characteristic Encoding Input Invariant Symbol Value Token Number Ordinal Metaphor Metafive]
+  | nil : Alphabet Characteristic Encoding Input Invariant Symbol Value Token Representative Number Ordinal Truth Metaphor Metafive
 
 end Measurement
