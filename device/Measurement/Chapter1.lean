@@ -1,134 +1,197 @@
 /-
 Measurement
-Chapter 1: Physical
+Chapter 2:
 -/
-
--- There are NO IMPORTS. We assume the concept of a PROCESS
--- provided by an abstract universe called "COMPILER".
--- We will build a device to measure a process and see what
--- can be learned from it.
-
--- I also assume that you exist and are reading this right now.
--- Not to be too pedantic, but this is going to get tooo pedantic.
-
--- I further assume not only that I exist, but that I wrote this
--- with the intention that you would read it.
-
--- I do not assume that the compiler exists. I have demonstrated
--- to myself it probably does by compiling this program several times.
-
--- Draw your own conclusions.
 
 namespace Measurement
-
--- So, we start with the universe.  Only Types exist in the
--- universe of the compiler. However, we step through time
--- by step 1, step 2, etc.. step i, ...
--- Whenever you see an index on a variable, this is that
--- index. No index, then it is the current value in the universe,
--- I mean compiler. A Type.
 universe i
 
+structure Fact where
+  truth : Prop
+  decTruth : Decidable truth
 
--- To count, one needs a token. We hope to collect a lot
--- of TOKEN Symbols
-abbrev TOKEN (Invariant : Type i) := Option Invariant
-
--- If we have already seen it, then you don't need to
--- de-option it.
-abbrev OBSERVED {x} := ULift.{i+1,i} x
--- A different symbol is probably some other symbol, we will
--- prove that in a bit.
-
--- We can talk about something being on and off. We call that token
-abbrev BOOL (Invariant :Type) := TOKEN Invariant
-
--- We can talk about truth using the truth the compiler gives us.
-abbrev TRUTH  : BOOL Bool := some true
-
--- BOOL.  See how we are making the process of making TOKENS?
--- Would you like to see the only primitive TOKEN?
-
--- Verified silence. This is the only thing we can know for sure,
--- nothing has been verified and so we can TOKENIZE that concept as
-def __SILENCE__ {Invariant: Type} : (TOKEN Invariant) := none
--- We define FALSE to be the symbol that represents unrepresentable symbols.
--- This is a DISTINCT Invariant, although it will never be observed as such.
--- I made it REALLY distinct so you do NOT miss it.
---
--- There is only one ball, keep your eye on it.
--- Like and Subscribe if you think I should make the ball bigger or smaller.
-
--- And, of course, we can tell when the carrer is present, as the option has
--- appeared.
-def __CARRIER_PRESENT__  {Invariant : Type i} (x : TOKEN Invariant) : Bool :=
-  match x with
-  | none => false
-  | some _ => true
-
--- This is repeatable observation.  We wait for what is next.
--- If you have seen it, then you can look directly at the symbol of the result.
-abbrev OBSERVE (Invariant : Type) := match Option Invariant with
-  | s => some s
-
-abbrev REFINE (Symbol: Type i) := Option (ULift Symbol)
-abbrev REFINED (Symbol: Type i) := ULift Symbol
+namespace Fact
+def Truth : Prop := True
+end Fact
 
 
-/- --------------------------------------------------------
-DISTINGUISHABLE.
+-- Big Endian Binary number with LE ordering.
+inductive Number where
+  | zero : Number
+  | succ : Fact → Number → Number
 
-Something is DISTINGUISHABLE from others if there exists
-some characteristic that is either present or absent from
-the something relative to the others.
--/
+namespace Number
+def le : Number → Number → Prop
+  | .zero, _ => True
+  | .succ _ _, .zero => False
+  | .succ p1 n1', .succ p2 n2' =>
+      match p1.decTruth, p2.decTruth with
+      | isTrue _,  isTrue _  => le n1' n2'
+      | isTrue _,  isFalse _ => False
+      | isFalse _, isTrue _  => True
+      | isFalse _, isFalse _ => le n1' n2'
+end Number
+
+-- And the notation to match.
+instance : LE Number where
+  le := Number.le
+
+structure Carrier
+    (carrier: Fact)
+  where
+  present? : Option Number → Prop := fun s =>
+    match s with
+    | none      => False
+    | some f  => match f with
+      | .zero => carrier.truth
+      | .succ p _ => p.truth
+
+
 class DISTINGUISHABLE
-    (Characterisitic : Type → TOKEN (Type))
-    (Invariant: Type)
-    [DecidableEq Invariant]
+    (Carrier: Number)
+    (Label: Type 1)
+    [DecidableEq Label]
     where
 
-  -- The universe only exists as a type.
-  -- Any higher type is metaphysical and belongs to
-  -- the compiling engine, not the proof.
-  -- Or does it?
-  -- Meet our single invariant:
-  æther               : Type
-
-  different? : Invariant → Invariant → Prop :=
+  different? : Label → Label → Prop :=
     fun s1 s2 => s1 ≠ s2
-  distinct? : Invariant → Prop :=
-    fun s => ∃ c : Invariant, different? s c
+  distinct? : Label → Prop :=
+    fun s => ∃ c : Label, different? s c
   dec_distinct : DecidablePred distinct?
 
-namespace DISTINGUISHABLE
-variable {Characterisitic : Type → TOKEN (Type)}
-         {Invariant: Type}
-         [DecidableEq Invariant]
-         [d: DISTINGUISHABLE Characterisitic Invariant]
-
-def different
-    (s1 s2 : Invariant) : Prop :=
-  d.different? s1 s2
-
-def distinct
-    (s : Invariant) : Prop :=
-  d.distinct? s
-
-def encode
-    (symbol: Invariant)
-    (compiler_type : Type)
-      : TOKEN (Type) :=
-  if (d.dec_distinct symbol).decide then some compiler_type else none
-
-end DISTINGUISHABLE
+inductive Glyphs
+  (Value: Number)
+  (Label: Type 1)
+  [DecidableEq Label]
+  [number: DISTINGUISHABLE Value Label]
+  where
+  | nil : Glyphs Value Label
+  | cons : DISTINGUISHABLE Value Label  →
+           Glyphs Value Label →
+           Glyphs Value Label
 
 
+structure Variable
+    (Value: Number)
+    (NaturalNumber: Type 1)
+    [DecidableEq NaturalNumber]
+    [DISTINGUISHABLE Value NaturalNumber]
+    (Label: Type 1)
+    [DecidableEq Label]
+    [DISTINGUISHABLE Value Label]
+    (Name: Glyphs Value Label)
+    [DecidableEq Number]
+  where
+  value: Number
+  label: Glyphs Value Label
+  number: Type 1
+  name: Type 1
+  decValue : DecidableEq Number
+  leValue: DecidableLE Number
+
+
+class ADMISSIBLE
+  (Signal: Number)
+  (Response: Type 1)
+  [DecidableEq Response]
+  [DISTINGUISHABLE Signal Response]
+  where
+
+  admissible? : Response → Prop := fun s =>
+    ∃ h : Measurement Signal Response, h = Carrier ∧
+      match h with
+      | .nil => False
+      | .cons d _ => d.distinct? s
+
+
+inductive Mapping
+  (Signal: Number)
+  (Response: Type 1)
+  [DecidableEq Response]
+  [DISTINGUISHABLE Signal Response]
+  [ADMISSIBLE Signal Response]
+  where
+  | nil : Mapping Signal Response
+  | cons : DISTINGUISHABLE Signal Response →
+           Mapping Signal Response →
+           Mapping Signal Response
+
+
+structure PartialOrdering
+  (Value: Number)
+  (Precision: Type 1)
+  [DecidableEq Precision]
+  [DISTINGUISHABLE Value Precision]
+  [ADMISSIBLE Value Precision]
+  (history: Mapping Value Precision)
+  (α: Type 1)
+  (β: Type 1)
+  [DecidableEq α]
+  [DecidableEq β]
+  where
+  le? : Option (Type 1) → Option (Type 1) → Prop := fun a b =>
+    match a, b with
+    | none, none => True
+    | none, some _ => False
+    | some (t1, φ1), none => False
+    | some (t2, φ2), some (t3, φ3) => t2 ≤ t3
+
+
+inductive Ordering
+  (Observation: Invariant)
+  (Label: Type 1)
+  (Value: Type 1)
+  [DecidableEq Label]
+  [DISTINGUISHABLE Observation.Carrier. Label]
+  [ADMISSIBLE Observation Label Value]
+  where
+  | nil : Ledger Observation Label Value
+  | cons : Event →
+           Symbol →
+           Ledger Observation Label Value →
+           Ledger Observation Label Value
 
 
 
 
-/- --------------------------------------------------------
+
+
+
+structure Event where
+  Carrier: Symbol
+  Value: Number
+  Invariant: Measurement Carrier Symbol
+
+
+inductive Counting
+  (Observation: Invariant)
+  (Label: Type 1)
+  (Value: Type 1)
+  [DecidableEq Label]
+  [DISTINGUISHABLE Observation Label]
+  [ADMISSIBLE Observation Label Value]
+  where
+  | nil : Counting Observation Label Value
+  | cons : Event →
+           Symbol →
+           Counting Observation Label Value →
+           Counting Observation Label Value
+
+
+
+class COUNTABLE
+    (Observation: Invariant)
+    (Label: Type 1)
+    (Value: Type 1)
+    where
+  zero : Symbol
+  observe : Event → Prop
+  tick : Prop → Event → Symbol
+
+
+
+
+/- STOP HERE--------------------------------------------------------
 -/
 
 -- At one time, people were over run with floods and people were like
@@ -147,7 +210,20 @@ end DISTINGUISHABLE
 
 -- An LA(1) compiler can only do 1 thing, refine a token into
 -- compiled code.
-abbrev EVENT (_: Type 1) := REFINE (TOKEN Type)
+abbrev SYMBOL (_: Type 1) := REFINE (TOKEN Type)
+
+structure Event where
+  invariant: Type
+  label: Type 1
+  value: Type 1
+  decomposition: Type 1
+
+  slip? : Option Type -> BOOL Bool := fun s => match s with
+    | none => __SILENCE__
+    | some _ => TRUTH
+
+
+
 
 class ADMISSIBLE
     (Invariant: Type)
@@ -175,6 +251,38 @@ def admissible
   a.admissible? s e
 
 end ADMISSIBLE
+
+structure Representative (Invariant Symbol Value : Type i) where
+  source : Invariant
+  symbol : Symbol
+  value  : Value
+
+class COUNTABLE
+    (Invariant Symbol Value : Type) where
+  zero    : TOKEN Symbol
+  observe : Representative Invariant Symbol Value → BOOL Bool
+  tick    : BOOL Bool → EVENT (OBSERVE Symbol) → OBSERVE Symbol
+
+inductive Enumeration
+    (Invariant Symbol Value : Type i) : Type i where
+  | nil  : Enumeration Invariant Symbol Value
+  | cons :
+      Representative Invariant Symbol Value →
+      Enumeration Invariant Symbol Value →
+      Enumeration Invariant Symbol Value
+
+namespace COUNTABLE
+
+variable {Invariant Symbol Value : Type i}
+         [c : COUNTABLE Invariant Symbol Value]
+
+def Count :
+    Enumeration Invariant Symbol Value → OBSERVE Symbol
+  | .nil       => c.zero
+  | .cons r xs => c.tick (c.observe r) (Count xs)
+
+end COUNTABLE
+
 
 
 class COUNTABLE
@@ -224,6 +332,15 @@ namespace COUNTABLE
 
 end COUNTABLE
 
+structure Representative (Invariant Symbol Value : Type i) where
+  source  : Invariant
+  symbol  : Symbol
+  value   : Value
+
+
+inductive Enumeration
+    (Symbol: COUNTABLE Representative)
+  | nil
 
 inductive Iteration
     -- Physical Traits of counting (these are real to the compiler)
