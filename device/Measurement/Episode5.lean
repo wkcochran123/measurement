@@ -1,0 +1,289 @@
+/-
+__Measurement: The Tragedy of John Henry__
+__A Satire in Look-Ahead Backus-Naur Form__
+
+_This is a gentle reminder that the long, long stories we tell ourselves are just that: far, far away._
+
+(c) 2026 All rights reserved.  Come at me Disney.
+
+lake build --use=force -D__LUCK_DISABLED__
+
+Let's talk seriously about time and stop beating around the bush.  Are you familiar with the story
+Tom Sawyer?  Why don't you go read Tom Sawyer for five minutes and see if you get why I asked.
+
+Count how many five minute intervals it takes for the coin to drop.  Seriously, you have to read at least
+that far.  Even if you know what the coin is.  Either way, I can upperbound how long it takes you to read
+a sentence.  I can guesstimate how long it _should have taken_ for you to read this far in this docuement.
+Only you know how long it took.  That, my friend is, __INFORMATIONAL_STRAIN__.  Because, as I have been
+trying to point out this entire time, _TIME_ is not elapsing for me, but it is for you.
+
+That reminds me, this weeks sponsor is NordVPN...  You have _NO IDEA_ the information people can figure out
+about you just from publishing something online.
+
+Lol.
+
+-/
+
+
+-- Would you even care if I imported anything at this point?
+import Measurement.Episode4
+
+
+-- So, have you figured out the quarter I keep taking from you?   I told you, you had no idea how
+-- much I would take...
+
+-- Get back to work John. You need to learn Gungan __REAL_FAST__.
+namespace Measurement
+
+-- So, once we translate it to GUNGAN, we have to ask the GUNGAN to go get us a Jedi and then
+-- we can stack these Jedi into an army and do whatever it was that had to happen in the first movie.
+
+-- j/k
+-- But seriously, I believe we have enough to start talking about the tape on a Turing machine.
+-- We can use the GUNGAN symbols as the symbols we use to encode the instructions on the tape.
+-- We have 2 instructions right now:  a = a and a ≤ b.  I believe we have that, anyway.
+
+inductive Quantization
+    | zero: Fact → Quantization → Quantization
+    | one: Prop → Quantization → Quantization → Quantization
+
+structure DigitalProcess
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]                   -- We all agree that what we know zero is, right?
+                                                   -- This is zero in GUNGAN.
+
+  where
+    meesa_process : MeesaProcess Value Carrier
+    one: Quantization
+    zero: Quantization
+
+    tick: Quantization → Quantization := fun s =>
+      match s with
+      | .zero _ _ => .one false zero one           -- Dag you, we have an anonymous ZERO
+      | .one _ _ _ => .zero Fact.Truth zero        --              and an anonymous ONE.
+                                                   -- COMPLETELY FUCKING ANONYMOUS.
+                                                   -- You instantiate Nats.  I pull them out of my ass.
+
+class SOURCE
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+  where
+  meesa_process : MeesaProcess Value Carrier
+
+  one? : Quantization → Quantization → Prop := fun tick tock=>
+    match tick,tock with
+    | .zero _ _ , .zero _ _ =>  false
+    | .zero _ _ , .one _ _ _ => false
+    | .one _ _ _ , .zero _ _ => false
+    | .one _ _ _ , .one _ _ _ => true
+
+  zero? : Quantization → Quantization → Prop := fun tick tock=>
+    match tick,tock with
+    | .zero _ _ , .zero _ _ =>  true
+    | .zero _ _ , .one _ _ _ => false
+    | .one _ _ _ , .zero _ _ => false
+    | .one _ _ _ , .one _ _ _ => false
+
+inductive Encoding
+  | zero: Quantization → Encoding → Encoding
+  | one: Quantization → Encoding → Encoding → Encoding
+
+structure CompiledProcess
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+
+  where
+  digital_process : DigitalProcess Value Carrier
+  source: SOURCE Value Carrier
+  opcode: Encoding
+
+  execute?: Encoding → Encoding := fun input =>
+    match opcode, input with
+    | .zero _ _,   .zero _ _     => .one digital_process.zero opcode input
+    | .zero _ _,   .one _ _ _    => .one digital_process.zero opcode input
+    | .one _ _ _,  .zero _ _     => .zero digital_process.one opcode
+    | .one _ _ _,  .one _ _ _    => .zero digital_process.one opcode
+
+class EXECUTED
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+
+  where
+  compiled_process : CompiledProcess Value Carrier
+
+  output? : Encoding → Encoding → Prop := fun opcode output=>
+    match opcode,output with
+    | .zero _ _ , .zero _ _ =>  true
+    | .zero _ _ , .one _ _ _ => false
+    | .one _ _ _ , .zero _ _ => false
+    | .one _ _ _ , .one _ _ _ => true
+
+inductive Abstraction
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [false: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+  | compile: SOURCE Value Carrier → Abstraction Value Carrier →
+             Abstraction Value Carrier → Abstraction Value Carrier
+  | execute: CompiledProcess Value Carrier → Abstraction Value Carrier →
+             Abstraction Value Carrier → Abstraction Value Carrier
+
+namespace Abstraction
+variable  {Value: Type}
+          {Carrier: CarrierProcess Value}
+          [d: DISTINGUISHABLE Value Carrier]
+          [a: ADMISSIBLE Value Carrier]
+          [c: COUNTABLE Value Carrier]
+          [e: ENCODED Value Carrier]
+          [r: RESIDUE Value Carrier]
+          [b: BINARY Value Carrier]
+          [f: REPEATABLE Value Carrier]
+          [n: NUMERIC Value Carrier]
+          [h: REPRESENTABLE Value Carrier]
+          [p: PHYSICAL Value Carrier]
+          [z: COMPARABLE Value Carrier]
+          [particle: OBSERVED Value Carrier]
+          [frquency: PRESENT Value Carrier]
+          [what_meesa_saying: MEASURABLE Value Carrier]
+          [zero: GUNGAN Value Carrier]
+          [one: SOURCE Value Carrier]
+
+def le : Abstraction Value Carrier → Abstraction Value Carrier → Prop := fun f1 f2 =>
+  match f1,f2 with
+  | .compile _ _ _, .compile _ _ _ => true
+  | .compile _ _ _, .execute _ _ _ => true
+  | .execute _ _ _, .execute _ _ _ => true
+  | .execute _ _ _, .compile _ _ _ => false
+
+def lt: Abstraction Value Carrier → Abstraction Value Carrier → Prop := fun f1 f2 =>
+  match f1,f2 with
+  | .compile _ _ _, .compile _ _ _ => false
+  | .compile _ _ _, .execute _ _ _ => true
+  | .execute _ _ a, .execute _ _ b => lt a b
+  | .execute _ _ _, .compile _ _ _ => false
+end Abstraction
+
+instance
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [false: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+ : LE (Abstraction Value Carrier) := ⟨Abstraction.le⟩  -- boo ya!  abstraction head.
+
+-- This "abstracts" the < operation.
+instance
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [false: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+ : LT (Abstraction Value Carrier) := ⟨Abstraction.le⟩  -- boo ya!  abstraction head.
+--  ^                                              ^
+--  |                                              |
+--  +-----------------+----------------------------+
+--                    |
+--                    +---------------- This is __NOT__ a bug.  Figure it out! Berry Paradox much?
+end Measurement

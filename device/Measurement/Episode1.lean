@@ -1,6 +1,8 @@
 /-
-Measurement: The Tragedy of John Henry.
-_a gentle reminder that the fanciful stories we tell ourselves are just that: stories. or, are they?_
+__Measurement: The Tragedy of John Henry__
+__A Satire in Backus-Naur Form__
+
+_This is a gentle reminder that the fanciful stories we tell ourselves are just that: stories._
 
 (c) 2026 All rights reserved -- Can you copyright an anonymous text? rofl.
 
@@ -129,8 +131,12 @@ end Number
 -- not to fall into a circular reasoning trap.
 
 -- BTW, it is _not at all clear_ to me that numbers are well sorted. I mean, _i_.
--- how do you sort that?  IEEE figured out that _a_ ≠ _a_ can be used to represent
--- these concepts. _NaN_.  Pretty certain _you_ use _i_ like it is a number
+-- how do you sort that?  IEEE 754 figured out that _a_ ≠ _a_ can be used to represent
+-- these concepts. _NaN_.
+
+-- I find IEEE plays it _real loose and cool_ with these definitions, so be warned.
+
+-- Besides, pretty certain _you_ use _i_ like it is a number
 -- _all the time!_  Most compilers are just too lazy to write out the COMPLETE
 -- Taylor expansion e^(iθ) all the way out so we can really _understand_ _i_.
 --                  ------
@@ -192,8 +198,10 @@ class DISTINGUISHABLE                                           -- You may start
     where                                                       -- An eternal golden braid of meta-programming.
                                                                 -- This argument does not exist without the
                                                                 -- beauty of Hofstadter's work.
+                                                                -- And Backus
+                                                                -- And Naur
 
-  fact: Fact           -- This is quite true as a matter of fact, if it is true or false.
+  fact: Fact           -- This is quite true as a matter of fact
                        -- Also, C++ PTSD.
                        --     DUCK::Duck duck = new DUCK::Duck() // quack!
 
@@ -834,7 +842,7 @@ structure CauchyProcess
   accumulation: Limit               -- This is th actual limit point, or the place the compiler
                                     -- wourl put it, if the compiler would only stop being so
                                     -- lazy and enuemrate e^iθ.
-  iterate: Limit → Limit := fun l =>
+  iterate?: Limit → Limit := fun l =>
       match l with
       |.nil f => .index f e.limit_process.sequence accumulation
       |.index p seq _ => .index p (e.limit_process.iterate seq) accumulation

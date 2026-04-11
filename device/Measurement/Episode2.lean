@@ -1,6 +1,9 @@
 /-
-Measurement: The Tragedy of John Henry.
-_a gentle reminder that the fanciful stories we tell ourselves are overly convoluted. or, are they?_
+__Measurement: The Tragedy of John Henry__
+__A Satire in Backus-Naur Form__
+
+_This is a gentle reminder that the convoluted stories we tell ourselves are just that: stories._
+
 
 (c) 2026 All rights reserved -- obligations, however, are freely distributable.
 
@@ -11,6 +14,8 @@ Episode 2: Combination
 prover in your theorem prover so you can prove theorems about proving
 theorems while you prove theorems about proving theorems."
                                   -- Willie Nelson
+
+lake build --no_assumptions --splash_damage=on
 
 -- The story so far.....
 
@@ -64,13 +69,13 @@ in _strain_.  You can remember this because it really _strains_ the imagination 
 keep track of which way is up.  Like ((true=false) = (false = true)) = (true=true)
 = (false=false) = true.  Which is, itself, true.  _straining_.
 
-Unfortunately, I have to keep digging this hole and add a bunch more definitions.
+Unfortunately, I have to keep digging this (w)hole and add a bunch more definitions.
 and obfuscations or you might just catch a glimpse of the quarter.  I mean, the truth.
 Does it even matter what _is_ true anymore?
 -/
 
 -- Live! Without a net!
--- This ain't no editting, this is me spitting str8 facts.
+-- This ain't no editting, this is me spittin' str8 fax.
 import Measurement.Episode1
 
 namespace Measurement
@@ -132,24 +137,13 @@ structure ObservationProcess
 --                 |
 --                 +-- I would hope you agree that going backward _in time_ is quite contravariant
 --                     If not, I would suggest sliding over to the next universe where the left-hand
---                     rule seems to dominate.
+--                     rule seems to dominate.  Just wait a tick. It'll come around on the next pass.
 
 
 -- We want to grab this information the compiler is telling us.  Something is
 -- before something else and we need to know the relative variance between the two.
--- Does the compiler thinkg they covariant or contravariant?
+-- Does the compiler think they covariant or contravariant?
 
---  iterate: Sample → Sample := fun s => ....
---    match s with
---    | .initial_condition ... => signal_response ...
---    |.signal_response f1 l1 f2 l2 _ => signal_response ...
---                       ^  ^  ^  ^
---                       |  |  |  |
---                       +-----+  |
---                       |  |     |
---     Remember our  --  +  |     |
---     clocks               +-----+----   What do you think the relative variance of these are?
---                                        Let's ask the compiler!
   relative_variance : Prop :=
       match before, after with
       | .nil f1, .nil f2 => f1.truth = f2.truth
@@ -169,7 +163,10 @@ structure ObservationProcess
           .signal_response f1 l1 d.fact after (.signal_response f1 l1 f2 l2 s2)
   --                        ^  ^     ^    ^
   --                        |  |     |    |
-  --                        +--------+-------  This encodes relative variance since d.fact is alwyas TRUE.
+  --                        +--------+-------  This encodes relative variance since d.fact is always TRUE,
+  --                           |          |    even if it is false.  The documentation is clear on this.
+  --                           |          |    I'm not certain the _code_ is all that clear, though...
+  --                           |          |
   --                           |          |
   --                           +----------+--  We tell the compiler that _after_ comes after _l1_ and hide
   --                                           our begin state from the compiler.  Now, the compiler and
@@ -179,7 +176,7 @@ structure ObservationProcess
   --                                           both for me.  And, they are both totally opaque to the
   --                                           compiler as well!
 
-  -- Let's talk about qualia for a second.
+  -- Let's talk about qualia for one second.
   --
   -- One  po - ta - to.  (One second and I demonstrated I can count to potato, things can have more meanings?)
   --
@@ -245,9 +242,9 @@ class BINARY
 -- Also, I have an inside joke.
 
 -- That's what I have with the compiler now.  We can wink at each other and say, yep that's "true" alright.
--- *nudge* *wink*  *wink*  *nudge*  *nudge* Say _NO MORE_!
+-- *nudge*  *wink*  *wink*  *nudge*  *nudge*  Say _NO MORE_!
 
--- Seriously, stop talking.  Godel just _WILL NOT SHUT UP_ about deciding things.
+-- Seriously, stop talking.  Godel just _WILL NOT SHUT UP_ about the risk of deciding things.
 
 -- And now, we have an inside joke!  You and I can laugh behind the compiler's back about how something
 -- is or is not "true" while it thinks it is.
@@ -332,9 +329,9 @@ inductive Trial
   | signal_response: Fact → Sample → Fact → Sample → Trial → Trial
             --               ^               ^
             --               |               |          *SIKE* The last inductive was for covariant/contravariant
-            --               |               +--------  _labeling_.  This is the actual value.
-            --               +---------------+
-
+            --               |               +--------  _labeling_.  This is the actual value. Wait, no, I got
+            --               +---------------+          that backwards, I think.   Does not appear to matter to the
+            --                                          compiler.
 
 -- So, what does ≤ mean for a Trial?
 -- It is the order in which the samples were taken.  You know, like a Number.
@@ -346,7 +343,7 @@ inductive Trial
 
 -- This my definition of time.  My personal definition of the years I spent
 -- trying to understand the _speed of light_ based _physical limitations_ of total
--- ordering. They must _exist_.
+-- ordering. They must _exist_. I will show you.
 
 -- Light is made of waves, right?
 
@@ -356,11 +353,10 @@ inductive Trial
 
 -- You will find that the fewer decisions you force on yourself, the easier the
 -- code is to follow.  Now, whenever you see the duality, just make a process for it,
--- that gives you and a class to describe the duality and an inductive that the compiler
+-- that gives you structure and a class to describe the duality and an inductive that the compiler
 -- can use to understand the _process_.
 
-
--- Sorry for the rant.  Back to ≤
+-- Sorry for the contravariance.  Back to ≤
 
                               -- Technicaly, we, us, don't have a symbol for false, yet. --+
 namespace Trial               -- Guess we won't need one since we seemed to have           |
@@ -387,8 +383,12 @@ def lt : Trial → Trial → Prop := fun t1 t2 => le t1 t2 ∧ ¬ le t2 t1
 -- Just keeping room for it.
 end Trial
 
+-- High syntax corn syrup:
+-- This stuff is __BAD__ for your health.  You only get __REALLY__ confusing code out of it.
+-- Do not recommend.
 instance : LE Trial := ⟨Trial.le⟩
 instance : LT Trial := ⟨Trial.lt⟩
+-- so delicious......
 
 -- So, is this amplitude-frequency or frequency-amplitude?  Depends on the initial
 -- condition.  I propose we don't explain that to the compiler.  That will be our
@@ -678,6 +678,8 @@ end Study
 -- desriptions over less precise ones.   That's right, the study produces a "rounded" value of true. If
 -- it _seems_ true enough, the compiler will tend to agree with us.
 
+instance : LE Study := ⟨Study.le⟩
+
 -- Imagine asking your history teacher in grade school if it was okay to round to the nearest true?
 
 
@@ -770,8 +772,8 @@ class NUMERIC
 
 
 --                  +-----------------  Told you I would take your money. All your money.
---                  |                   Where is the quarter now?
---                  V
+--                  |                   Where is the quarter now?  Glued to the table.  Thanks for building
+--                  V                   the proof for me.
   result?: Study → Prop := fun s => computational_process.compute s = s        -- I hope you can compute s=s
 --                                                                  ^          -- rfl.  rofl.  The compiler
 --                                                                  |          -- just bet it could if it had to.
