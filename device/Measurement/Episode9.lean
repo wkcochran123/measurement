@@ -81,7 +81,7 @@ structure UniverseTensor
     [gospel: TRUTH Value Carrier]
     [acount: WITNESSED Value Carrier]
   where
-  nature: ReligiousProcess Value Carrier
+  frame_of_reference: ReligiousProcess Value Carrier
   reality: Truth
 
   -- Your _PUNY_ __GODS__ _ignore_ your pleas!
@@ -120,9 +120,12 @@ class REAL
     [scientist: ACOLYTE Value Carrier]
     [ideology: SCIENTIFIC Value Carrier]
     [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier]
   where
-  current_value: Universe Value Carrier
-  is_this_the_real_life? : Prop := current_value.reality.observe? current_value.nature.the_ancient_texts.prop
+  universal_observer: UniverseTensor Value Carrier  -- Praise be to the universal observer.
+  current_status: Truth
+  is_this_the_real_life? : Prop := universal_observer.reality.observe?
+                                                      universal_observer.frame_of_reference.the_ancient_texts.prop
   -- Or is this just fantasy?
   -- Squashed that fucking imaginary number like a bug with the hammer of reality!
 

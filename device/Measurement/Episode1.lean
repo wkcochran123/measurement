@@ -6,6 +6,17 @@ _This is a gentle reminder that the fanciful stories we tell ourselves are just 
 
 (c) 2026 All rights reserved -- Can you copyright an anonymous text? rofl.
 
+-- Forward:
+
+Dear All,
+
+Technically, I'm dead.  But, if I were alive, it is possible that the words "This program
+is truly the way forward." could have been among a _LARGE_ set of words that I was capable
+of speaking.  I spoke a lot of words in only one particular order.
+
+                                         -- Arthur C. Clarke
+
+This is my apology to Mr. Clarke.  Any, and I mean _ANY_, advanced enough science looks like magic.
 
 Episode 1:  Counting
 
@@ -21,10 +32,10 @@ Can I do this with no imports?  Hold my beer...
 -- doing the measuring.  While it is doing the measuring.  All the way down.  To try to give
 -- you some idea of what I am talking about, I am going to try to measure how true the proposition
 -- _true = true_ is. At least, insofar as Lean will me show you that this isn't nearly as set
--- in stone as you you might thing.
+-- in stone as you might think.
 
 -- We are going to use the generally accepted principles of science and engineering to reverse-engineer
--- the Lean compiler itself and explicitly _measure_ how well it can evalute _true = true_.
+-- the Lean compiler itself and explicitly _measure_ how well it can evaluate _true = true_.
 
 -- Why?  Cuz I understand math, but the way _I_ understand math is _very_ different from most people's.
 -- This here lean proof assistant is designed to show me where _I_ don't understand math.  Well, I'm
@@ -41,19 +52,21 @@ universe i -- There is only 1 universe, the one we can experience right now, at 
 -- you a story about measurement.  Measurement begins with _facts_.
 -- I think you will agree it is easy to see whether or not something happened
 -- and if that something happened, that _fact_ is _true_.  Otherwise, it ain't. Clear?
-class Fact where
+
+-- This compiles Fact and fails Number
+class Fact where   -- Entropy ≈ 9
   truth : Prop                 -- Did it happen or not?
-  decTruth : Decidable truth   -- Sometimes he compiler will know the answer before we do!
+  decTruth : Decidable truth   -- Sometimes the compiler will know the answer before we do!
                                -- This fucker doesn't know math, it is _PSYCHIC_! It seems to understand
                                -- what cannot be possible given the current situation _pretty_ well.
-                               -- _WITCHCRAFT_ I telly you!
+                               -- _WITCHCRAFT_ I tell you!
 
 
 -- Well, let's start with the simplest of all Facts, something that is True.  Here,
 -- the compiler is asked whether or not something is true.  In this way, we can
 -- can measure the compiler.  Is the compiler currently bullish or bearish on
 -- the veracity of _true_ = _true_?
-namespace Fact
+namespace Fact    -- Entropy ≈ 25
              --              +---------------------  Know where the compiler puts this?  On the DATA page.
              --              |                       This is not a variable.  It is the truth that the
              --              |                       compiler and I agree on. Don't know what that means?
@@ -74,7 +87,8 @@ end Fact
 -- Well, if we are going to measure what the compiler is doing, it would help
 -- if we agreed on what some numbers were.  So, let's make some and name them.  Big Endian so we
 -- can shortcut a very common computation.
-inductive Number where
+-- This compiles Fact and fails Number
+inductive Number where   -- Entropy ≈ 92
   | zero : Fact → Number
     --      ^
     --      |
@@ -114,7 +128,7 @@ inductive Number where
 -- time to compile a program and I really don't want to wait forever.
 
 --                                         +------------------------+
-namespace Number                --         |                        |
+namespace Number  --  Entropy ≈ 112        |                        |
 def le : Number → Number → Prop --         V          Now, this is just _intuition_. We need
   | .zero _ , _ => True         -- 0 ≤ n  n∈ℕ         something that might pass as a natural number.
   | .one  _ _, .zero _ => False -- n > 0  n∈ℕ > 0     Lean has the Nat thing, but I don't trust it.  Do you?
@@ -129,7 +143,7 @@ def le : Number → Number → Prop --         V          Now, this is just _int
 end Number
 
 -- Did you catch that?  We have a different fact than the compiler.  The compiler has true and false,
--- We have at least 3 truth symobls: true=true, false=false, and true=false.  Weird.
+-- We have at least 3 truth symbols: true=true, false=false, and true=false.  Weird.
 -- A clock complement collapses the true=true and false=false into a same/different cadence.
 -- Do we want to the compiler to go to 3 to match our view of the world?  Probably, but not yet.
 -- This is fiveshadowing.  We don't foreshadow when we metaprogram, we fiveshadow.  Remember that
@@ -155,13 +169,14 @@ end Number
 
 -- Just absolute laziness.
 
---                            +--+----------------------------------------------------  Aaah, low entropy language,
---                            |  |                                                      could there be a better
---                            V  V                                                      medium?  No possible.
--- A more madenning question is is 1 <= 0.999999999.... ?  Well, as you will see
---                                        ^^^^^^^^^
---                                        |||||||||
---                                        +++++++++-----------------------------------------   lol
+--                             +--+----------------------------------------------------  Aaah, low entropy language,
+--                             |  |                                                      could there be a better
+--                             V  V                                                      medium?  No possible.
+-- A more madenning question "is is" 1 <= 0.999999999.... ?  Well, as you will see
+--                            ----\         ^^^^^^^^^
+--  Parsing syllables             |         |||||||||
+--  Slick Willy style  --------+--+         +++++++++-----------------------------------------   lol
+
 -- I will be asking a very similar question in a second. Turns out, I've heard it
 -- both ways.
 
@@ -170,14 +185,14 @@ end Number
 -- If you forget what they mean, because hijack is really a euphemism for what
 -- I'm about to do, just remember it always means "Less Than or Equal To" in whatever
 -- context it is in.
-instance : LE Number where
+instance : LE Number where  -- Entropy ≈ 7
   le := Number.le
 -- Trust me, ;-)
 
 -- So, this is our "sensor" for the compiler's meaning
 -- of a Type.  The compiler will happily send us carriers
 -- that will evaluate true/false for us to use as "facts."
-structure CarrierProcess
+structure CarrierProcess -- Entropy ≈ 85
     (Carrier: Type)
   where
   symbol: Fact      -- Said fact from the compiler, either _true_ or _false_.
@@ -200,7 +215,7 @@ structure CarrierProcess
 --        +--------------------------------------------------------+
 --        |
 --        V
-class DISTINGUISHABLE                                           -- You may start noticing a pattern to
+class DISTINGUISHABLE  -- Entropy ≈ 28                             You may start noticing a pattern to
     (Value: Type)                                               -- the structure -> class -> inductive ->
     (Observation: CarrierProcess Value)                         -- structure -> class -> ...
     where                                                       -- An eternal golden braid of meta-programming.
@@ -237,7 +252,7 @@ class DISTINGUISHABLE                                           -- You may start
 -- lets talk about how they are structured.                                                |
 --                                                                                         |
 -- You didn't notice the universe number thing? -------------------------------------------+
-inductive Natural
+inductive Natural  -- Entropy ≈ 107
   where
   | zero : Fact → Natural                       -- The Fact here is a bit murkier, we are coordinating with
                                                 -- the compiler now on what is a fact and what isn't.
@@ -250,10 +265,10 @@ inductive Natural
   | number : Fact → Number → Natural → Natural  -- Here, the Fact is that we agree with the compiler that
                                                 -- the universe of Number is what we call a Natural number.
 
--- The natual numbers have this property that the ones after are bigger than the ones before.
+-- The natural numbers have this property that the ones after are bigger than the ones before.
 -- Not certain they have another property worth talking about.  If you can think of one,
 -- leave it in the comments below.  It helps the algorithm.
-namespace Natural
+namespace Natural   -- Entropy ≈ 42          _42?!_
 def le : Natural → Natural → Prop
   | .zero _ , _  => True                     -- Zero is less than or equal to everything
   | .number _ _ _ , .zero _ => False         -- Any nonzero natural is > 0.
@@ -265,15 +280,15 @@ def le : Natural → Natural → Prop
 -- the existence of a map that allows you to perform this computation on the natural numbers:
 def lt: Natural → Natural → Prop := fun n1 n2 => le n1 n2 ∧ ¬ le n2 n1
 -- I hope you agree it will be difficult for the us and the compiler to diverge on this definition.
--- And any time the compiler _does_ diverge from this assumption, it lets' us know.
+-- And any time the compiler _does_ diverge from this assumption, it let's us know.
 
 end Natural
 
-instance : LE Natural where
+instance : LE Natural where  -- Entropy ≈ 5
   le := Natural.le
 
 -- More notional abuse.  Won't someone think of the notation?
-instance : LT Natural where
+instance : LT Natural where  -- Entropy ≈ 7
   lt := Natural.lt
 
 -- So, you ever thought about how you count before?
@@ -284,7 +299,7 @@ instance : LT Natural where
 -- count apart as I think that might be important to the plot.
 --
 -- And you are reading this for the plot, right?
-structure CountingProcess
+structure CountingProcess -- Entropy ≈ 118
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -336,7 +351,7 @@ structure CountingProcess
 -- just means the compiler did not barf on a computation. In this case
 -- what the compiler is doing is looking through the inductive to see
 -- if it can find a counterexample to a ≤ b.
-class ADMISSIBLE
+class ADMISSIBLE  -- Entropy ≈ 60
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [DISTINGUISHABLE Value Carrier]
@@ -370,13 +385,14 @@ class ADMISSIBLE
 -- I could convince you that such a mapping will enumerate all rationals, but I am
 -- lazy af.  Point is, all those numbers _are_ rational numbers. And we don't need
 -- all of them, just a countable amount.
-inductive Rational
+inductive Rational  -- Entropy ≈ 107
       --     ^
       --     |
-      --     +------------ This is not ℚ.  This is jusst an inductive structure that
+      --     +------------ This is not ℚ.  This is just an inductive structure that
       --                   is populated with symbols that represent what the compiler
       --                   might consider a rational number.  This is just a symbol for
-      --                   a rational number looking thing in the compiler, not the raional number itself.
+      --                   a rational number looking thing in the compiler, not the
+      --                   rational number itself.
   where
   | zero : Fact → Rational
   | number : Fact → Natural → Rational → Rational
@@ -405,7 +421,7 @@ inductive Rational
 -- Or are you trying your best to dismiss these things?  Keep trying! lean will keep us
 -- both honest.
 
-namespace Rational
+namespace Rational  -- Entropy ≈ 46
 def le : Rational → Rational → Prop
   | .zero _ , _               => True  -- Duh, zero is less than or equal to everything
   | .number _ _ _ , .zero _   => False -- Duh, nothing other than zero is less than or equal to zero
@@ -421,10 +437,10 @@ def lt: Rational → Rational → Prop := fun r1 r2 => le r1 r2 ∧ ¬ le r2 r1
 end Rational
 
 -- Let's make the symbols work.
-instance : LE Rational where
+instance : LE Rational where  -- Entropy ≈ 5
   le := Rational.le
 
-instance : LT Rational where
+instance : LT Rational where  -- Entropy ≈ 5
   lt := Rational.lt
 -- If you have made it this far, then you must agree that while I may not be right, and I am certainly
 -- not wrong so far. Relax, the compiler will keep me honest.  I want you
@@ -436,7 +452,7 @@ instance : LT Rational where
 -- yet. But! I do know 1 interesting Rational number.  That is the origin!
 -- Zero = 0.00 <--- is this 2 or 3 significant digits?  Turns out, that will matter.
 -- Not yet, though.
-structure IndexingProcess               --     +-------------------------------------------- I hate this word.
+structure IndexingProcess  -- Entropy ≈ 143    +-------------------------------------------- I hate this word.
         --       ^                             |                                             It is intangible
         --       |                             V                                             It is imaginary
         --       +------- WTF is this?  Well, set theory says that we can map things
@@ -480,7 +496,7 @@ structure IndexingProcess               --     +--------------------------------
 -- Now, we have a giant elephant in the room.  I mean _HUGE_.  Basically,
 -- we have no facility to describe the average number.  I mean, the _average_
 -- number, an infinite decimal irrational representation of any and all orderings
--- of all numebrs.
+-- of all numbers.
 --
 -- Don't tell normies that.  They will have our asses!  But, we really have
 -- no facility to describe the _average_ number.  We can talk about individual
@@ -503,7 +519,7 @@ structure IndexingProcess               --     +--------------------------------
 -- you know how _technically_ wrong I just _have_ to be.  I think you will find
 -- that I am cleverer than you think.
 
-class COUNTABLE
+class COUNTABLE  -- Entropy ≈ 85
  --      ^                 Bet you weren't expecting the word COUNTABLE from any of that.
  --      |                 But that is exactly the concept we are modeling, there exists
  --      +---------------- an enumeration of these things.  These 1/2-spin carriers.
@@ -590,7 +606,7 @@ class COUNTABLE
 -- represent these concepts.
 
 -- For instance, a sequence of numbers is a common useful construction of math.
-inductive Sequence
+inductive Sequence  -- Entropy ≈ 107
   |nil: Fact → Sequence
   |index :  Fact → Rational → Sequence → Sequence
        --             ^          ^
@@ -608,7 +624,7 @@ inductive Sequence
 -- And so, we continue with the covariant/contravariant comparison rules.
 -- So that if I decompose the mapping, you decompose the mapping, and the compiler
 -- decomposes the mapping, we all agree on the concepts of how it is compared.
-namespace Sequence
+namespace Sequence  -- Entropy ≈ 48
 def le: Sequence → Sequence → Prop
   | .nil _ , _ => True
   | .index _ _ _, .nil _ => False
@@ -639,10 +655,10 @@ def le: Sequence → Sequence → Prop
 def lt: Sequence → Sequence → Prop := fun s1 s2 => le s1 s2 ∧ ¬ le s2 s1
 end Sequence
 
-instance : LE Sequence where
+instance : LE Sequence where -- Entropy ≈ 5
   le := Sequence.le
 
-instance : LT Sequence where
+instance : LT Sequence where -- Entropy ≈ 5
   lt := Sequence.lt
 
 -- Now that we have some idea of a sequence, we can start to talk about limits.
@@ -668,7 +684,7 @@ instance : LT Sequence where
 -- or is this argument dense?
 
 -- Any hooozlebee, this gets you a localized .....
-structure LimitProcess
+structure LimitProcess  -- Entropy ≈ 185
     (Value: Type)                     -- As you can start to see, the Value and Carrier
     (Carrier: CarrierProcess Value)   -- paramaters are universal.  What is happening is
     [DISTINGUISHABLE Value Carrier]   -- as we provide the capability to compute ≤ and <
@@ -728,7 +744,7 @@ structure LimitProcess
 -- Actually, we should start more primitively, with _zero_.  I think we all agree on what that
 -- is supposed to look like.
 
-class ENCODED
+class ENCODED  -- Entropy ≈ 85
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [DISTINGUISHABLE Value Carrier]
@@ -764,7 +780,7 @@ class ENCODED
 -- This is also the interface for solving for the _value_ of non-linear systems.
 -- Ya boy Newton figured that out.  So, which limit are we talking,
 -- the residue or the value?  Thankfully, one is covariant and one is contravariant.
-inductive Limit
+inductive Limit -- Entropy ≈ 107
   |nil: Fact → Limit
   |index :  Fact → Sequence → Limit → Limit
     --     -----
@@ -778,7 +794,7 @@ inductive Limit
     --                      The _natural_ numberas and the _rational_ numbers are the
     --                      other two kinds of numbers we are building as well.
 
-namespace Limit
+namespace Limit -- Entropy ≈ 48
 def le: Limit → Limit → Prop
   | .nil _, _ => True                   -- So, you going to let me get away with this?
                                         -- Smuggling in 0 being a converged digit?
@@ -820,10 +836,10 @@ def le: Limit → Limit → Prop
 def lt: Limit → Limit → Prop := fun l1 l2 => le l1 l2 ∧ ¬ le l2 l1
 end Limit
 
-instance : LE Limit where
+instance : LE Limit where -- Entropy ≈ 5
   le := Limit.le
 
-instance : LT Limit where
+instance : LT Limit where -- Entropy ≈ 5
   lt := Limit.lt
 
 -- I suppose we should talk about superpositions at some point.  I mean, all of science
@@ -832,7 +848,7 @@ instance : LT Limit where
 -- Wild, right?  Well, turns out stoichiometric measurement is one of only _2_ kinds of
 -- measurement.  One covariant and one contravariant. You either passively measure it through
 -- a carrier interaction or you actively manipulate it, finding its physical bounds.
-structure CauchyProcess
+structure CauchyProcess  -- Entropy ≈ 228
     (Value: Type)                      -- These guys are still familiar
     (Carrier: CarrierProcess Value)
     [DISTINGUISHABLE Value Carrier]    -- We now have 4 different features we ask about
@@ -857,7 +873,7 @@ structure CauchyProcess
 --                                                  +-------- Still just counting
 
 class RESIDUE
-    (Value: Type)
+    (Value: Type) -- Entropy ≈ 103
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -887,7 +903,7 @@ class RESIDUE
 -- turns out.  To lazy to show you, trust me on this for now, we will come back to this
 -- idea.
 
-inductive Sample -- This is the admissible symbol for a single normal number
+inductive Sample -- Entropy ≈ 150            -- This is the admissible symbol for a single normal number
   where
 
 -- Serieously, though, not only is this a representation of your run-of-the-mill
@@ -925,7 +941,7 @@ inductive Sample -- This is the admissible symbol for a single normal number
 -- of the facts, ≤ while either return ≤ on the first limit or the second limit.  Contravariant first
 -- the covariant second, or covariant first then contravariant second.  Why not both?
 
-namespace Sample
+namespace Sample   -- Entropy ≈ 105
 def le: Sample → Sample → Prop
   | .initial_condition f1 l1, .initial_condition f2 l2 =>
     (f1.truth = f2.truth ∧ l1 ≤ l2) ∨ (f1.truth ≠ f2.truth ∧ l2 ≤ l1)
@@ -937,14 +953,14 @@ def le: Sample → Sample → Prop
                                                                   -- serious _strain_.  The compiler
                                                                   -- thought _true = false_ somewhere.
 
--- I will argue that the munge of ordering we just gimmicked up is actually pretty well orderd.
+-- I will argue that the munge of ordering we just gimmicked up is actually pretty well ordered.
 def lt: Sample → Sample → Prop := fun s1 s2 => le s1 s2 ∧ ¬ le s2 s1
 end Sample
 
-instance : LE Sample where
+instance : LE Sample where   -- Entropy ≈ 5
   le := Sample.le
 
-instance : LT Sample where
+instance : LT Sample where   -- Entropy ≈ 5
   lt := Sample.lt
 
 -- So, why the name Sample?  Well, because we are getting sample numbers from
@@ -957,17 +973,17 @@ instance : LT Sample where
 -- a random sampling of irrational numbers. What set of circumstances?  Well we have a pile of Facts already
 -- in front of us....
 
--- I love just throwing terms of art around in a blender like I am Bill Borroughs.
+-- I love just throwing terms of art around in a blender like I am Bill Burroughs.
 
 -- Speaking of... If you made it this far, you must be wondering _w THE ACTUAL f_?!?
 
 -- Well, you may recall our friend Kurt (he's a goodfella) said something about how hard it was to prove
--- something about a system from within the system.  So, let's not even try.  Instead, lets' try
+-- something about a system from within the system.  So, let's not even try.  Instead, let's try
 -- to make the most outlandish _yet technically correct_ claims about the system and see what
 -- the system does to _respond_ to those claims.
 
--- Introducting the concept of _INFOMRATIONAL STRAIN_.  That is what you are under right now and I am
--- about to strain the information all the way out.  For those who do no know what a stress-strain
+-- Introducing the concept of _INFORMATIONAL STRAIN_.  That is what you are under right now and I am
+-- about to strain the information all the way out.  For those who do not know what a stress-strain
 -- curve looks like, go look it up.  We are _clearly_ in the linear response zone of mathematics right
 -- now.  We will completely model this stress and strain, which means _yes_, we will be developing the
 -- stress tensor, and _yes_ we will be dealing with Navier-Stokes, and _yes_, you will see that the
@@ -989,7 +1005,7 @@ instance : LT Sample where
                                     --               +-----------------  Informational strain, true ≠ false
 
 -- Actually, there is a third choice.  I just chose one of many paths through this maze.  There are many
--- As we walk by places where you think I choose the wrong next abstraction, follow your thoughts.
+-- As we walk past places where you think I choose the wrong next abstraction, follow your thoughts.
 -- These are just words.  They mean what you want them to mean.  Only the compiler has the dictionary
 -- for the words in this file.  These aren't our words.  This is source code.
 
@@ -997,8 +1013,8 @@ instance : LT Sample where
 -- and math.  I am going to show you how to derive the Euler-Lagrange equations from true=false.
 -- Then, we will use Galerkin methods to provide both dot and cross product definitions for the compiler
 -- finally sticking a sock in the mouth of Bishop Berkeley after 300 years. I will bootstrap Galerkin so
--- it doesn't even _know_ what a derivative is.  That's the point of Galerikin, it eliminates derivatives.
--- It is a geometric argument that can be constrcuted with compass and straightedge. Eventually.
+-- it doesn't even _know_ what a derivative is.  That's the point of Galerkin, it eliminates derivatives.
+-- It is a geometric argument that can be constructed with __COMPASS__ and __STRAIGHTEDGE__. Eventually. Watch.
 
 -- But before we can get started, as the Sample says above, you need a limit point to get started.
 -- Dirichlet's fault, not mine.  He's the one you need to bitch at about not being able to get out from

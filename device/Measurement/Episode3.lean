@@ -404,17 +404,49 @@ class COMPARABLE
     [h: REPRESENTABLE Value Carrier]     -- we will figure out which _DIRECTION_ it needs to go in order to be bigger and
     [p: PHYSICAL Value Carrier]          -- then work it out from there.
   where
--- Not touching this with a ten foot pole.  Is the entire London Symphony Orchestra less than pink?  _You_ tell _me_ how to write
--- _that_ "le". Lean is a real sonofabitch about loose ends.
+-- Not touching this with a ten foot pole.  Is the entire London Symphony Orchestra less than pink?  Or just a few?
+-- _You_ tell _me_ how to write _that_ "le". Lean is a real sonofabitch about loose ends.
 
 -- Actually, I think I will let you write this.  If, at any point, the compile process becomes unbearable and you're like
 -- "Dude, wtf?"  and you're like "That's a bug, let me fix it in COMPARABLE", then go ahead. Be my guest and
--- tell me which one is less.
+-- tell me which one is less.  I think the choice you would be making is telling.
+
+-- Till then, we have to wait for someone to tell us how to compare things.
+
+-- However, more rigorously, we can _POINT_ to things.  As in we can say that there is a line between two THINGS!
+-- Euler said so.  He went _ON_ and _ON_ about it.  That and our buddy __e^iθ__.  This guy _KNOWS_ some math.  Between
+-- him and Gauss, they figured out 99.99% of it. We will come back to Gauss a _couple_ of times.  And, this is _definitely_
+-- not the last time we will run into Euler.  Anyway, we can draw that line. In this case, we can tell the universe that
+-- it can draw a line from a universe level _itself_ to a type.  So, it can now tell _US_ what our current universe index
+-- is __AND__ it's Fact represents real or imaginary! While, as cool as that sounds, it actually introduces a _HUGE_ problem.
+-- How do I explain to the compiler what imaginary means without it getting confused with reality?
+
+-- That's a stumper for another day.
+
+-- In the meanwhile, let's meet our next representative!  Yes, we can get two kinds of numbers, just as Bombelli argued.
+-- hell that means, BUT I know that Bombelli would be happy to know that sophistic numbers are being remembered for what they are.
+inductive Sophism
+  | origin: Fact → ChaitinsNumberSequence → Type → Sophism
+  | dimension: Fact → ChaitinsNumberSequence → Type i → Sophism → Sophism
+-- I love using big words.  It makes me feel photosynthesis.
+
+-- Here is why. A specialist in differential geometry understands covariance because she has seen vectors transform
+-- one way and covectors transform the other way under a change of coordinates. That is, she has applied a stimulus --
+-- a coordinate change — and observed which mathematical objects go with it and which go against it. The covariance
+-- is not in the definition. The covariance is in the response to the stimulus.
+
+-- A specialist in category theory understands covariance because he has seen functors that preserve the direction
+-- of morphisms and functors that reverse them. Again: stimulus is a morphism, response is where it goes. The variance
+-- is in the response pattern.  A specialist in type theory understands covariance because she has seen type constructors
+-- that respect subtyping in one direction and those that flip it. Stimulus is a subtyping relation, response is whether
+-- the constructor preserves or reverses it.
+
+-- Three specialists. Three stimuli. Three response patterns. One word. Sophistry. Just like our generalization of
+-- Chaitin's number.  Weren't the Sophists a group of smart people?
 
 
-inductive Projection
-  | origin: Fact → ChaitinsNumberSequence → Type → Projection
-  | dimension: Fact → ChaitinsNumberSequence → Type i → Projection → Projection
+-- What? I told you we are measuring how __TRUE__ _true=true_ really is.  I mean __REALLY__ is.
+
 
 structure SlipProcess
     (Value: Type)
@@ -432,11 +464,11 @@ structure SlipProcess
     [z: COMPARABLE Value Carrier]
   where
   physical_process: PhysicalProcess Value Carrier
-  projection: Projection
+  projection: Sophism
   stress: ChaitinsNumberSequence
   threshold: Type
 
-  happened : Projection → Projection := fun s =>
+  happened : Sophism → Sophism := fun s =>
       match s with
     | .origin _ _ _ =>
         -- The first tick: The Fact is realized as a dimension
