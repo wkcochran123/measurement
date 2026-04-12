@@ -1,6 +1,6 @@
 /-
 __Measurement: The Tragedy of John Henry__
-__A Satire in Backus-Naur Form__
+__A Satire in Look Ahead Backus-Naur Form__
 
 _This is a gentle reminder that the fanciful stories we tell ourselves are just that: stories._
 
@@ -17,8 +17,12 @@ lake build --expert_mode --crash_on_everything --do_not_explain_errors
 Can I do this with no imports?  Hold my beer...
 -/
 
+-- So, I have been thinking about how to measure things.  Anything.  Even the thing that is
+-- doing the measuring.  While it is doing the measuring.  All the way down.  To try to give
+-- you some idea of what I am talking about, I am going to try to measure how true the proposition
+-- _true = true_ is. At least, insofar as Lean will me show you that this isn't nearly as set
+-- in stone as you you might thing.
 
--- We are going to set about measuring how _true_ the true proposition _true = true_ really is.
 -- We are going to use the generally accepted principles of science and engineering to reverse-engineer
 -- the Lean compiler itself and explicitly _measure_ how well it can evalute _true = true_.
 
@@ -39,7 +43,10 @@ universe i -- There is only 1 universe, the one we can experience right now, at 
 -- and if that something happened, that _fact_ is _true_.  Otherwise, it ain't. Clear?
 class Fact where
   truth : Prop                 -- Did it happen or not?
-  decTruth : Decidable truth   -- We can sometimes ask the compiler if it happened.
+  decTruth : Decidable truth   -- Sometimes he compiler will know the answer before we do!
+                               -- This fucker doesn't know math, it is _PSYCHIC_! It seems to understand
+                               -- what cannot be possible given the current situation _pretty_ well.
+                               -- _WITCHCRAFT_ I telly you!
 
 
 -- Well, let's start with the simplest of all Facts, something that is True.  Here,

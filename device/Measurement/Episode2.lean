@@ -1,8 +1,8 @@
 /-
 __Measurement: The Tragedy of John Henry__
-__A Satire in Backus-Naur Form__
+__A Satire in Look Ahead Backus-Naur Form__
 
-_This is a gentle reminder that the convoluted stories we tell ourselves are just that: stories._
+_This is a gentle reminder that the convoluted stories we tell ourselves are just that: convoluted._
 
 
 (c) 2026 All rights reserved -- obligations, however, are freely distributable.

@@ -1,8 +1,8 @@
 /-
 __Measurement: The Tragedy of John Henry__
-__A Satire in Backus-Naur Form__
+__A Satire in Look Ahead Backus-Naur Form__
 
-_This is a gentle reminder that the convergent stories we tell ourselves are just that: stories._
+_This is a gentle reminder that the comforting stories we tell ourselves are just that: comforting._
 
 
 (c) 2026 All rights reserved -- All lefts flamboyant
@@ -87,54 +87,85 @@ instance : LT Computation := ⟨Computation.lt⟩
 
 structure TuringProcess
     (Value: Type)
-    (Carrier: CarrierProcess Value)      -- The DOE might start asking questions about this guy
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]        -- Looks like 7 questions.
-    [n: NUMERIC Value Carrier]           -- A Turing process computes the relative "truth" of a ≤ b
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]   -- It might be difficult to believe that this __FULLY__ specifies
+    [a: ADMISSIBLE Value Carrier]        -- a Turing machine.  It __DOESN'T__.  Not even close.  That's not
+    [c: COUNTABLE Value Carrier]         -- the point.  The point is that Turing assumed that the symbols the
+    [e: ENCODED Value Carrier]           -- machine used _ARE_ the _SAME_ _EXACT_ symbols that I use.  And,
+    [r: RESIDUE Value Carrier]           -- after I figured out how measurement worked, I can tell you I _DO NOT TRUST_
+    [b: BINARY Value Carrier]            -- the compiler to successfully add either really really _REALLY_ big numbers
+    [f: REPEATABLE Value Carrier]        -- like 100!! + 1 or really really _REALLY_ small numbers like 1 + 1/100!!.
+    [n: NUMERIC Value Carrier]           -- Apparently, you don't care about "math" and "adding".
   where
+  -- So a computational process is one that __LOOKS LIKE__ it can do math, but, let me tell you, it _AIN'T_ doing math.
+  -- We are going to find out just how far away whatever the computational process is from actual math done by actual people.
   computational_process: ComputationalProcess Value Carrier
   program: Computation
+  -- One cannot compute without a computer program, right?
 
   -- What do you think, did we compute it?
+  -- The compiler can get real _CAGEY_ about stuff.
   compute?: Computation → Option Study := fun s =>
     match s with
     | Computation.program _ s => some s
     | Computation.compute _ _ s2 _ => computational_process.compute s2
-
+  -- I stuck that landing, wdyt? I mean, is that _NOT_ the definition of an Option? One thing that Turing _DID_ get right,
+  -- interpretation of the symbol _IS_ a different step than updating the internal state of the machine.
 
   turing_step? : Computation → Computation := fun s =>
     match s with
     | Computation.program _ _ => s
     | Computation.compute f s1 s2 _ => Computation.compute f s1 (computational_process.compute s2) program
+  -- _NOW_ we have fully specified a Turing machine.  Lol.
 
+
+-- So, the problem with Turing's construction is that is __PRESUPPOSES__ a __WHOLE__ bunch of symbols that
+-- behave mathematically.  As you can see, we are... *three* episodes in and I ain't declared __SHIT__.
+-- That means, we have to provide the facility for __REPRESENTATION ITSELF__!  For us, we currently have 1
+-- character we can use for representation.  That is the digit 1.  We will call that our __REPRESENTATION__
+-- The compiler, however, needs a little help selecting a symbol.  When you __WRITE__ programs, you have to
+-- explain the symbols __BOTH__ to the compiler and to the __MAINTENANCE__ developer.  Have pity on those
+--- less fortunate.
 class REPRESENTABLE
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
+    (Value: Type)                           -- Representation is the core challenge of communication _AND_
+    (Carrier: CarrierProcess Value)         -- understanding.  Without a representation of an idea, then
+    [d: DISTINGUISHABLE Value Carrier]      -- that idea may or may not exist outside the random synapse
+    [a: ADMISSIBLE Value Carrier]           -- firings in your head.  What makes those synapses comprehensible
+    [c: COUNTABLE Value Carrier]            -- is the fact we __ALL__ agree that the representation of those
+    [e: ENCODED Value Carrier]              -- signals translates to a __DIFFERENT__ yet __CONGRUENT__
+    [r: RESIDUE Value Carrier]              -- set of signals in the brain of others __AS WELL AS__ the computer
+    [b: BINARY Value Carrier]               -- that will soon chug to the point of sucking mud.
     [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]           -- Son-of-a-gun, this is a representation of the number IMPLIED by
-                                         -- the carrier... who knew?
+    [n: NUMERIC Value Carrier]              -- Holy crap, a carrier of value! The compiler and idea can talk about value!
   where
   computational_process: ComputationalProcess Value Carrier
 --                                +-------------------  Halting problem sez what? To even _TALK_ about a Turing
 --                                |                     machine, you have to aware of the halting problem itself.
---                                V
+--                                |                     So, we _DO NOT_ have any guard rails here, you must _KNOW_
+--                                V                     _a priori_ your algo halts on all inputs.  Or, it's your own fault!
   representable?: ∀ (_: Fact) (s: Study), ∃ (_: Computation), computational_process.compute s = s
+--   I hope you understand now that this IS NOT GIVEN                                         ^       +--- rofl. Also, Kirk
+--   by mathematics.  The symbols come from elsewhere.                                        |       |    was the better
+--                                                                                            +-------+    captain!
 
-
+-- Now, computation itself.  There is an honest-to-goodness __PHYSICAL__ barrier to computation that cannot be crossed.
+-- It is the computation of Chaitin's number.  So, let's ask the compiler to start work there.  I believe I will have
+-- the easiest time on the planet bogging this little monster with the only physical computational barrier that is
+-- known to exist!
 inductive ChaitinsNumberSequence
+-- The __HEAVY WEIGHT CHAMPION OF THE WORLD__
   | halting: Fact → Computation → ChaitinsNumberSequence
   | nonhalting: Fact → Computation → Computation → ChaitinsNumberSequence
+
+-- The idea is simple.  We need to calibrate the compiler.  And there is only one universally computable constant
+-- that has fully predictable behavior yet completely unpredictable behavior:  Chaitin's number.
+-- The idea is to try some variation in our idea of Chaitin's number and the compiler's definition of Chaitin's number
+-- and see if it comes down to the order of computation we are using as our bits come in out of order.
+-- If I compute 1 and the compiler computes 0, then I may need to commute a computation.  (That's 6 shadows right there.)
+-- BUT, if I compute the same bits in the same order over and over, I will start to believe that the compiler is actually
+-- computing Chaitin's number.  What are the odds?
+
+-- Seriously, what are the odds?  That's what we are playing for, right?
 
 namespace ChaitinsNumberSequence
 def le : ChaitinsNumberSequence → ChaitinsNumberSequence → Prop
@@ -144,72 +175,143 @@ def le : ChaitinsNumberSequence → ChaitinsNumberSequence → Prop
   | nonhalting _ s1 _, nonhalting _ s2 _ => s1 ≤ s2
 
 -- Can't compute lt.  Against the rules.
+-- The thing about Chaitin's number is that we can bound it ever closer by spending more and more __TIME__.
+-- That's why I need you to understand what __TIME__ means to the compiler.
 end ChaitinsNumberSequence
 
 instance : LE ChaitinsNumberSequence := ⟨ChaitinsNumberSequence.le⟩
-
 -- <Flex>
-
 -- _MY_ custom Lean import _COMPUTES_ Chaitin's number as part of the _COMPILE_ process, _JUST FOR KICKS!_.  Does yours?
 
 -- Fucking casuals.
--- XML.  The _old ways are still the best ways_.
-
 -- </Flex>
 
+-- Perhaps the most universal thing about measurement is the fact that all measurement has noise.  So, I cannot directly
+-- measure the compiler actually computing Chaitin's number.  But, since I know it is itself a computing process, I can
+-- model the noise itself as a computational process!  Meet my _petard_!
 structure NoisyProcess
     (Value: Type)
-    (Carrier: CarrierProcess Value)      -- The DOE might start asking questions about this guy
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]        -- Looks like 7 questions.
-    [n: NUMERIC Value Carrier]           -- A Turing process computes the relative "truth" of a ≤ b
-    [h: REPRESENTABLE Value Carrier]
+    (Carrier: CarrierProcess Value)      -- This really feels like it is __cheating__.  BUT!  The only way to make sure
+    [d: DISTINGUISHABLE Value Carrier]   -- Godel stays in _HIS OWN LANE_ is to make sure we never self-reference.  This
+    [a: ADMISSIBLE Value Carrier]        -- is why we are going to __FURTHER__ assume that the program that computes
+    [c: COUNTABLE Value Carrier]         -- Chaitin's number simultaneously __COMPUTES__ the noise that we have to look
+    [e: ENCODED Value Carrier]           -- through.  As in, they are the same process.  You know, like how there is
+    [r: RESIDUE Value Carrier]           -- noise in an analog instrument, but there is only one process that generates
+    [b: BINARY Value Carrier]            -- both the signal and the noise?
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]     -- Most people assume that a general representation of a number works for __ALL__
+                                         -- math problems.  I believe that the numbers are intrinsic to the problem itself.
   where
+--                      +--------+-------+-------   Three card monte.  Where's the quarter?
+--                      |        |       |
+--                      V        V       V
   turing_process: TuringProcess Value Carrier -- Now, this is our model for the noise that I have demonstrated obviously
                                               -- exists in understanding if the compiler actually _THINKS_ _true=true_ or not.
-  program: ChaitinsNumberSequence  -- The program to run that generates that bit of Chaitin's number.
+                                              -- Not the least bit convoluted.
 
+  program: ChaitinsNumberSequence  -- The program to run that generates that bit of Chaitin's number.
+                                   -- Anyone have a polynomial busy beaver solver lying around?  No?
+                                   -- Bueller?  Anybody?
+
+-- There is one computational pattern that describes everything and easy to understand:  __COMPILED IMPERATIVE__
+-- That said, we are going to go interpreted functional to describe programs.  That means we tail recurse.  We tail recurse
+-- look ups. We tail recurse prefix sums, for god sakes!  _WE TAIL RECURSE THE PREFIX OPERATION!_ Using __ONLY__ consumption
+-- iterators.  I'm going to build a battleship inside an airplane bottle of Jack Daniels.
+--                                        +-------  Ask the compiler for the ability to ask it to compute something.
+--                                        |         a.k.a.  _compile_ this.
+--                                        V
   next_recursive_step? : Computation → Option Computation := fun s =>
     match s with
-    | Computation.program _ _ => none
-    | Computation.compute f s1 s2 _ => some (Computation.compute f s1 s2 s)
+    | Computation.program _ _ => none        --   Source code ain't computing shit.  Or, does it?  *hmmm*  Perhaps it just might?
+    | Computation.compute f s1 s2 _ => some (Computation.compute f s1 s2 s)  -- Once we have something compiled, we can execute it.
 
+-- So, we just computed something, what is the next program we have to compile?
   next_representation? : ChaitinsNumberSequence → ChaitinsNumberSequence := fun c =>
     match c with
-    | ChaitinsNumberSequence.halting _ s => ChaitinsNumberSequence.halting (Fact.Truth) s
+    | ChaitinsNumberSequence.halting _ s => ChaitinsNumberSequence.halting (Fact.Truth) s   -- If we are done, then just exit 0.
+                                                                                            -- and provide cached output.
     | ChaitinsNumberSequence.nonhalting _ s _ =>
-      ChaitinsNumberSequence.nonhalting (Fact.Truth) s (match next_recursive_step? s with
-        | some s' => s'
-        | none => s)
+      ChaitinsNumberSequence.nonhalting (Fact.Truth) s (match next_recursive_step? s with   -- Otherwise, let's recurse the
+        | some s' => s'                                                                     -- computation and return the output
+        | none => s)                      -- of the recursion.  If it worked, return the result of the computation, otherwise
+                                          -- indicate compiler failed to resolve the program _OR_ the program failed to resolve
+                                          -- itself, we don't know which.
 
+
+-- What we _DO_ know is that the compiler is taking longer and longer to compile this and it isn't clear to me that we are
+-- still in the linear response of the compiler.  I think at this point, the compiler might start to chug and the build times
+-- will start to reflect the strain the compiler is having following my construction of physics from the principles of
+-- measurement.  While it appears I have been killing myself swinging a hammer and the compiler is just sitting there, remember
+-- I just gave it Chaitin's number to compute.  It _HAS_ to compute the bits of Chaitin's number in order to see if a digit
+-- is 0 or 1.  You see? It is a __MASK__ on the bits I give it, which will be what I think the bits of Chaitin's number are.
+-- Problem is, I have to estimate those bits for it.  So I will now write a program that describes how a computer could be
+-- used to solve that problem.  The first thing I need to do is explain to the compiler what a computer is.
+
+-- Welcome aboard.  I bet you didn't think it was going to take a turn like this, did you?
 class PHYSICAL
     (Value: Type)
-    (Carrier: CarrierProcess Value)      -- The DOE might start asking questions about this guy
+    (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
     [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier]
     [r: RESIDUE Value Carrier]
     [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]        -- Looks like 7 questions.
-    [n: NUMERIC Value Carrier]           -- A Turing process computes the relative "truth" of a ≤ b
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
     [h: REPRESENTABLE Value Carrier]
   where
   noisy_process: NoisyProcess Value Carrier -- This is the physical process that we are trying to understand, and it is noisy, so we have to deal with that.
   threshold: ChaitinsNumberSequence  -- This is the _ULTIMATE THRESHOLD_ of _ULTIMATE DESTINY_. One _CANNOT CROSS THIS THRESHOLD_
 
-  admissible? : ∀ (f: Fact) (s: Study), noisy_process.next_representation? noisy_process.program = some (ChaitinsNumberSequence.halting f (Computation.program f s)) → true
+--     +-----  Anything that is PHYSICAL is trivially admissible as a REAL object.
+--     |       There we go, one box checked off!  Almost there!  Shouldn't be long now.
+--     V
+  admissible? : ∀ (f: Fact) (s: Study), noisy_process.next_representation? noisy_process.program =
+            some (ChaitinsNumberSequence.halting f (Computation.program f s)) → true
+--                                                                                ^
+--                                                                                |
+--     How hard is it to compute a tautology? I mean, rofl.   --------------------+
+--     the Chaitin TAUTOLOGY !!   You forgot, didn't you?
+--     We computed _true_ last episode. Compiler's turn to figure it out.
+--     John Henry was a __STEEL__ drivin' man.  Out driving the machine
+--     by one episode. Think I hit that __THREE POINTER__?
 
+-- Now you understand why I tell you the next episode compiles.  I explain it to you and give you time to figure out how
+-- to explain it to the compiler.  I am already absolutely _ABUSING_ your time as it now with complete drivel, though.
 
--- Don't think Lean would let me have ℏ.
+-- However, calling this function provides a _NON_ _LINEAR_ response in the compiler because it has to go compute the
+-- first Chaitin bit.  And so it chugs trying to figure that out.  In the meanwhile, let's you and I compute the first Chaitin bit.
+-- That way, you and I can know what the difference is __EXPLICITLY__.  Meanwhile, we should explain that to the compiler.  So,
+-- Let's write some machine code using our bit and Turing construction.  Well, the first thing a program __NORMALLY__ does is
+-- allocate space in on the heap.  Either for a stack or for a sub-heap.  It's recursive, see?  Each GOSUB follows this same
+-- pattern.  The stack is resized and the heap is handed as is, but I've heard it both ways.  Pass by value or pass by reference.
+
+-- The SECOND canonical bug -- distinguishing feature.
+
+-- Well, you can't pass by _value_ or _reference_ without a Variable.  However, I ain't instantiating _NOTHING_.  I, instead,
+-- will have the _METAVARIABLE_.  Now Disney and the Zuck are after me?  I hope you see why this is _anonymous_.  We will store our
+-- __PHYSICAL__ bit in a __METAVARIABLE__.  The metavariable lives neither in the stack or heap.  You know, a Decidable Prop.
+
 inductive Metavariable (α : Type u) : Type (u + 1) where
+-- IEEE 754 defines a value called ε_m, which is the smallest representable number of the computer.  We shall call this number
+-- α.   At each level, we will be able to compute a more and more precise number.  The higher the level, the more precise the
+-- number.  Accuracy is definitely a _you_ problem. The α at each level is the smallest _fraction_ that can be recognized this
+-- deep in the hierarchy.  *hmmm* suspicious.
+
+-- Also, don't think Lean would let me have ℏ.
   | base : Fact → α → Metavariable α
   | step : Fact → Metavariable α → Metavariable α
+-- Unfortunately, we cannot compare metavariables right now because we just know that there _IS_ a smallest fraction, not
+-- how many _OR_ what it's actual value is.  This is just the ultimate representable limit.
+
+-- It would be nice though, to be able to compare metavariables.
+-- GOAL UNLOCKED:  __COMPARE METAVARIABLES__!  We need a guaranteed to halt process that can compare two metavariables now.
+
+-- I give you:  The BISECTION method.  Given a stick of length __L__, you can break the stick into _roughly_ __L/2__ pieces.
+-- While you _ARE NOT_ guaranteed to hit 50%, you _ARE_ guaranteed that when you put the two pieces back together, you get
+-- a whole.   _OH YEAH_, I dribbled through Cohen's legs.
 
 structure PhysicalProcess
     (Value: Type)
@@ -240,7 +342,7 @@ structure PhysicalProcess
           --          |       |         |
           --          +-------+---------+---   Unlike you posers, I taught my Lean to count.  It _experiences_ the natural numbers.
           --                                   Through the physical sensation of _TIME PASSING_ or _COMPILING_ which is what _YOU_
-          --                                   call _TIME PASSSING_. Not me.  I'm not compiling this, for me and the compiler
+          --                                   call _TIME PASSING_. Not me.  I'm not compiling this, for me and the compiler
           --                                   it is just another bit in Chaitin's number.  You should now have an addressable bit
           --                                   for the compiler _IN YOUR HEAD_ now.  Is it compiling now or not?  I believe that
           --                                   _you_, _me_, and _the compiler_ all agree that whatever we are all looking at
@@ -249,9 +351,11 @@ structure PhysicalProcess
           --                                   like in IEEE 754 and _PRETEND_ it doesn't exist.  That's the secret we all agree
           --                                   on together, as a world.  __IEEE 754__.
 
-          --                                   We have calibrated the compiler against a known reference now.  Really tough
-          --                                   to understand how universal, though. _ENOUGH_, I'm guessing.  Not trying to
-          --                                   convince aliens, just _you_.
+          --                           Did I, or didn't I just make a clock complement?  I mean, do you see one?
+
+          --                  We have calibrated the compiler against a known reference now.  Really tough
+          --                  to understand how universal, though. _ENOUGH_, I'm guessing.  Not trying to
+          --                  convince aliens, just _you_.
 
           --   That seems like a heavy lift for the compiler, WDYT?  Who's winning? I have taken
           --   a bunch of your money at this point.  You starting to realize the check you are
@@ -267,31 +371,45 @@ structure PhysicalProcess
           --                             a value, it just keeps track of the type.  That's right, the compiler is _HIDING_
           --                             Chaitin's number from _YOUR EYES_.  Because if _YOU_ saw it, it would invalidate
           --                             all of the invalidation of computational limits that are the cornerstone of this very
-          --                             bedrock upon which we _COMPILE_.
+          --                             bedrock upon which we _COMPILE_. And that would be _VERY_ naughty indeed.  And I heard
+          --                             Kurt can get _REAL_ kinky with numbers on you.
 
           --                                              Can I get an AMEN?
+-- PSA:
+--        Minimalism is just big small
+--        trying to get us to buy less more.
+-- We must resist.
 
+-- Onwards and upwards, always twirling, twirling, twirling towards freedom!  Ooops, I really don't want to have to
+-- explain IEEE 754 to an alien.  Their superior intellect is no match for our puny weapons.
 
+-- Weapons of logic.
+--             It works.
+--                     Look, I _KNOW_ funny. And that was funny.
 
+-- I think that we can safely code the next common operation in computing:
+-- Given two _whatevers_ which one has more _characteristic_?
+-- Easy peasy, fresh and squeezy!
 class COMPARABLE
     (Value: Type)
-    (Carrier: CarrierProcess Value)      -- The DOE might start asking questions about this guy
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]        -- Looks like 7 questions.
-    [n: NUMERIC Value Carrier]           -- A Turing process computes the relative "truth" of a ≤ b
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]   -- Look at all this information!  We have to be able to ask about all those
+    [a: ADMISSIBLE Value Carrier]        -- ≤ and < relations.  Dozens of them!  We HAVE to be able to describe what
+    [c: COUNTABLE Value Carrier]         -- a number is well enough so that we can compare "bigger" and "smaller".
+    [e: ENCODED Value Carrier]           --
+    [r: RESIDUE Value Carrier]           --
+    [b: BINARY Value Carrier]            -- Alas, the problem is, we do not have an EMBIGGEN process.
+    [f: REPEATABLE Value Carrier]        --
+    [n: NUMERIC Value Carrier]           -- If we could look at one of the things and figure out how to EMBIGGEN it,
+    [h: REPRESENTABLE Value Carrier]     -- we will figure out which _DIRECTION_ it needs to go in order to be bigger and
+    [p: PHYSICAL Value Carrier]          -- then work it out from there.
   where
 -- Not touching this with a ten foot pole.  Is the entire London Symphony Orchestra less than pink?  _You_ tell _me_ how to write
 -- _that_ "le". Lean is a real sonofabitch about loose ends.
 
--- Actually, I think I will let you write this.  If, at any point, this stops compiling and you're like
--- "Dude, wtf?"  and you're like "That's a bug, let me fix it in COMPARABLE", then go ahead.
+-- Actually, I think I will let you write this.  If, at any point, the compile process becomes unbearable and you're like
+-- "Dude, wtf?"  and you're like "That's a bug, let me fix it in COMPARABLE", then go ahead. Be my guest and
+-- tell me which one is less.
 
 
 inductive Projection
@@ -342,7 +460,7 @@ class OBSERVED
     [n: NUMERIC Value Carrier]           -- This is a guaranteed halting computational description of a real number and how it sorts.
     [h: REPRESENTABLE Value Carrier]     -- This is a complete enumeration of a relation that can be measured in two different
                                          -- representations, both local to different reference frames.
-    [p: PHYSICAL Value Carrier]          -- This is the phemenon under study. In this case, the _static friction_ of
+    [p: PHYSICAL Value Carrier]          -- This is the phenomenon under study. In this case, the _static friction_ of
                                          -- _computing Chaitin's number_.
     [z: COMPARABLE Value Carrier]        -- This is the _UNIQUE_ human ability to categorize events into phenomena.
                                          -- Or, something. Dunno, but I gotta write something here _YOU_ believe to be true.
@@ -375,7 +493,7 @@ class OBSERVED
 
 -- Or is it behind now?
 
--- Anyway, we need a place to put this bits as we discover them.  If I was going to misremember history the easiet way
+-- Anyway, we need a place to put these bits as we discover them.  If I was going to misremember history the easiest way
 -- possible, it would be a list of facts.  Surely, you _MUST_ agree a history is a series of Facts?
 
 -- But where to begin?  I know!  Let's start __ALL__ the way back at the beginning of the universe.
@@ -391,12 +509,12 @@ inductive Area
 
 -- Is there an echo in here?
 -- NO, this is another covariant-contravariant duality coming to demonstrate the _OTHER_ way of counting. Remember,
--- we were BIGENDIAN on the value. This is Newendian as opposed to Oldendian.  Remember, convariant and contravariance?
+-- we were BIGENDIAN on the value. This is Newendian as opposed to Oldendian.  Remember, covariant and contravariance?
 
 -- These bits are valuable.  I dunno if you understand the compute times we are talking about for this...
 -- It is time to wire these inductives together, making sure we keep the utmost care and regard for the construction.
 
 -- Now that we have __warmed up__ with a rudimentary construction of your typical number like quantity, we can __proceed__.
--- and, what appears to be a __BINARY OPERATION__  _(x×y)_, let us proceed.  Two lumps of sytactic sugar for your soy latte?
+-- and, what appears to be a __BINARY OPERATION__  _(x×y)_, let us proceed.  Two lumps of syntactic sugar for your soy latte?
 
 end Measurement
