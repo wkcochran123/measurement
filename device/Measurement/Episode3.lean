@@ -82,6 +82,8 @@ end Computation
 -- This is starting to look more and more like ≤ and <, isn't it?
 instance : LE Computation := ⟨Computation.le⟩
 instance : LT Computation := ⟨Computation.lt⟩
+-- The fact that we get _two_ different representations of the _same_ ordering relation is a _SUPER_ huge convenience
+-- and it will _NEVER_ get confusing.
 
 structure TuringProcess
     (Value: Type)

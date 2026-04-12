@@ -6,10 +6,6 @@ defaultTargets = ["Measurement"]
 name = "Measurement"
 srcDir = "."
 
-[[require]]
-name = "mathlib"
-scope = "leanprover-community"
-
 [package]
 name = "measurement"
 

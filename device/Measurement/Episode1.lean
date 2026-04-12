@@ -101,6 +101,7 @@ inductive Number where
 -- give you error bounds on the likelihood that _true = true_.  Over/under _r²_ is .95. and I will
 -- take your book.
 
+
 -- In the meanwhile, the actual fact on the number can be interpreted as the sign of that number
 -- That way we can use a clock complement as the fact itself. A clock?  Yeah, a clock.  It takes
 -- time to compile a program and I really don't want to wait forever.
@@ -198,8 +199,6 @@ class DISTINGUISHABLE                                           -- You may start
     where                                                       -- An eternal golden braid of meta-programming.
                                                                 -- This argument does not exist without the
                                                                 -- beauty of Hofstadter's work.
-                                                                -- And Backus
-                                                                -- And Naur
 
   fact: Fact           -- This is quite true as a matter of fact
                        -- Also, C++ PTSD.

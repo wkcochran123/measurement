@@ -4,15 +4,26 @@ __A Satire in Look-Ahead Backus-Naur Form__
 
 _This is a gentle reminder that the long, long stories we tell ourselves are just that: far, far away._
 
-(c) 2026 All rights are lefts.
+HOW ARE YOU GENTLEMEN !!
+(c) 2026 All your base are belong to us.
+
+You have no chance to survive make your time. Ha ha ha ha ...
+
+
+
+Welcome back episode 6.  And you know what?
+
+I'm all about that base, 'bout that base, 'bout that base, no treble.
+                                    -- Linda Ronstadt
+
 
 -/
 
 
-
--- Would you even trust a theorem if I wrote one at this point?
+-- WE GET SIGNAL!
 import Measurement.Episode5
 
+-- MAIN SCREEN TURN ON !
 namespace Measurement
 
 structure MathematicalProcess
@@ -280,6 +291,9 @@ structure BASICOperation
     match b with
     | .origin _ _ => .basis Fact.Truth GOSUB.product TEN span
     | .basis f p a _ => .basis f (GOSUB.multiply? p) a b
+        --                                             ^
+        --                                             |
+        -- Tail recursion -----------------------------+
 
 class LOAD
     (Value: Type)
@@ -354,30 +368,39 @@ structure GalerkinProcess
       | _ => .add Fact.Truth b p
     | .add f b _ => .add f b polynomial
 
+-- Let's address the _elephant in the room_.  First, let's agree that it is _SINGULAR_ and that it is only _SO BIG_.
+-- It can get really, really, __REALLY__ big in just a few keystrokes.  That's the problem.  We have only
+-- one stack frame, our __FINITE_ELEPHANT__.
 class FINITE_ELEPHANT
     (Value: Type)
     (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
+    [d: DISTINGUISHABLE Value Carrier]     -- So, they _ASSUME_ they have an undocumented one and proceed to add the release.
+    [a: ADMISSIBLE Value Carrier]          -- Only to realize they can't _EXACTLY_ find the _RIGHT_ release of their media to catalog.
+    [c: COUNTABLE Value Carrier]           -- And spends hours every day on DISCOGS organizing their collection.
+    [e: ENCODED Value Carrier]             -- The audiophile purchases the finest copies of any analog recordings.
+    [r: RESIDUE Value Carrier]             -- The audiophile meticulously cleans her records.
+    [b: BINARY Value Carrier]              -- Invariably, there will be two camps.  The _AUDIOPHILE_ and the _NORMIE_.
+    [f: REPEATABLE Value Carrier]          -- And I can burn the output of the DAC to a CD?  Holy crap!
+    [n: NUMERIC Value Carrier]             -- How about that, I just built a DAC !?
+    [h: REPRESENTABLE Value Carrier]       -- Which means I can quantize and take the DFT!
+    [p: PHYSICAL Value Carrier]            -- I just know that what I hear is measured by this physical process of oscillations.
+    [z: COMPARABLE Value Carrier]          -- Dunno what they mean though.
+    [particle: OBSERVED Value Carrier]     -- There we are, I found some phonemes.
+    [frequency: PRESENT Value Carrier]     -- Fucking Jar Jar. Let me use an osciliscope and measure their tones and figure it out.
+    [what_meesa_saying: MEASURABLE Value Carrier]  -- MEESA TRUE!
+    [zero: GUNGAN Value Carrier]           -- Translate that into Gungan and ask Jar Jar Binks if he can relate to it?
+    [one: SOURCE Value Carrier]            -- To quote Johnny Five: "NEED INPUT!"  Doesn't matter what kind.
+    [result: EXECUTED Value Carrier]       -- Actually, I take that back, we have a program that can compute the value from an input
+    [value: VALUE Value Carrier]           -- No, just some sort of representation of the value.
+    [length: MAGNITUDE Value Carrier]      -- And this the length?   Do we have _e^iθ_?
+    [scaled: SCALED Value Carrier]         -- Could this possibly represent the direction of said load?
+    [oriented: LOAD Value Carrier]         -- hmmm, an _ORIENTED LOAD_?  Like _μ_ __N__?
+--     ^                     ^
+--     |                     |       +------------- Just this once, let's read it ^ this way.
+--     +--------+------------+       |
+--              |                    |
+--              +--------------------+
+
 
   where
   galerkin_process : GalerkinProcess Value Carrier

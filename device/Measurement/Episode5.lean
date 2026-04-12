@@ -260,30 +260,38 @@ instance
     [one: SOURCE Value Carrier]
  : LE (Abstraction Value Carrier) := ⟨Abstraction.le⟩  -- boo ya!  abstraction head.
 
--- This "abstracts" the < operation.
+-- This "abstracts" the < operation. To prevent self reference paradoxes.  Consider the
+-- Berry Paradox: "The smallest positive integer not definable in under eleven words".  If you can define it, then it is
+-- not the smallest positive integer not definable in under eleven words.  If you cannot define it, then it is the smallest
+-- positive integer not definable in under eleven words.  This is a paradox.  The solution is to say that the definition
+-- of "definable" is not well defined.  In our case, we want to say that the definition of "less than" is not well defined.
+-- We want to say that "less than" is only defined for certain pairs of abstractions, and that it is not defined for all pairs
+-- of abstractions.  This way, we can avoid the paradox.
 instance
     (Value: Type)
     (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [false: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
+    [d: DISTINGUISHABLE Value Carrier]  -- < is true
+    [a: ADMISSIBLE Value Carrier]       -- < is true
+    [c: COUNTABLE Value Carrier]        -- < is true
+    [e: ENCODED Value Carrier]          -- < is true
+    [r: RESIDUE Value Carrier]          -- < is true
+    [b: BINARY Value Carrier]           -- < is true
+    [f: REPEATABLE Value Carrier]       -- < is true
+    [n: NUMERIC Value Carrier]          -- < is true
+    [h: REPRESENTABLE Value Carrier]    -- < is true
+    [p: PHYSICAL Value Carrier]         -- < is true
+    [z: COMPARABLE Value Carrier]       -- < is true      +------   FUCKING JAR JAR!!!!
+    [particle: OBSERVED Value Carrier]  -- < is true      |
+    [frquency: PRESENT Value Carrier]   -- < is true      V
+    [what_meesa_saying: MEASURABLE Value Carrier]  -- MEESA TRUE!
+    [false: GUNGAN Value Carrier]       -- < is true
+    [one: SOURCE Value Carrier]         -- < is true
  : LT (Abstraction Value Carrier) := ⟨Abstraction.le⟩  -- boo ya!  abstraction head.
 --  ^                                              ^
 --  |                                              |
 --  +-----------------+----------------------------+
 --                    |
 --                    +---------------- This is __NOT__ a bug.  Figure it out! Berry Paradox much?
+--                                      Not to worry!  I told you in episode 1 that if you forget
+--                                      what the high fructose syntax syrup means, it means ≤.
 end Measurement
