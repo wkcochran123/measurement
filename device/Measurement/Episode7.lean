@@ -13,7 +13,7 @@ import Measurement.Episode6
 -- MAIN SCREEN TURN ON
 namespace Measurement
 
-structure ArmWaveProcess
+structure ArmWaveProcess   -- 3306
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -47,7 +47,7 @@ structure ArmWaveProcess
     | .knot prop poly _ => .knot prop poly guess
     | .interpolant prop poly prior _ => .interpolant prop poly prior guess
 
-class BULLSHIT
+class BULLSHIT  -- 2733
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -79,11 +79,11 @@ class BULLSHIT
     | .knot prop _ _ => prop
     | .interpolant prop _ _ _ => prop.truth
 
-inductive Diatribe
+inductive Diatribe  -- 147
   | speculation: Prop → Spline → Diatribe → Diatribe
   | rant: Prop → Spline → Diatribe → Diatribe → Diatribe
 
-structure CrusadeProcess
+structure CrusadeProcess   -- Bullshit meter 3804
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -118,7 +118,7 @@ structure CrusadeProcess
     | .speculation prop s _ => .speculation prop s religion
     | .rant prop s d1 _ => .rant prop s d1 religion
 
-class PROPAGANDA
+class PROPAGANDA  -- 3151
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -151,7 +151,7 @@ class PROPAGANDA
     | .speculation prop _ _ => prop
     | .rant prop _ _ _ => prop
 
-inductive Cult
+inductive Cult  -- 6460
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -186,7 +186,7 @@ inductive Cult
 namespace Cult
 end Cult
 
-structure InitiationProcess
+structure InitiationProcess  -- Bullshit meter ≈ 9117.   TBF, when is an initiation process not a bunch of bullshit?
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -221,7 +221,7 @@ structure InitiationProcess
     | .cult_of_personality prop crusade _ => .cult_of_personality prop crusade cult
     | .cult_of_ideology fact crusade rest1 _ => .cult_of_ideology fact crusade rest1 cult
 
-class ACOLYTE
+class ACOLYTE   -- 7699
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -255,7 +255,7 @@ class ACOLYTE
     | .cult_of_personality prop _ _ => prop
     | .cult_of_ideology fact _ _ _ => fact.truth
 
-inductive Science
+inductive Science  -- 8029
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]

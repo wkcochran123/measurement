@@ -43,11 +43,11 @@ namespace Measurement
 -- We can use the GUNGAN symbols as the symbols we use to encode the instructions on the tape.
 -- We have 2 instructions right now:  a = a and a ≤ b.  I believe we have that, anyway.
 
-inductive Quantization
+inductive Quantization  -- Bullshit meter ≈ 119.   This is down almost 1/3.  Induction-on-induction Wild!
     | zero: Fact → Quantization → Quantization
     | one: Prop → Quantization → Quantization → Quantization
 
-structure DigitalProcess
+structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -79,7 +79,7 @@ structure DigitalProcess
                                                    -- COMPLETELY FUCKING ANONYMOUS.
                                                    -- You instantiate Nats.  I pull them out of my ass.
 
-class SOURCE
+class SOURCE   -- Bullshit meter ≈ 1121.   That's almost a 50% increase!
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -114,11 +114,11 @@ class SOURCE
     | .one _ _ _ , .zero _ _ => false
     | .one _ _ _ , .one _ _ _ => false
 
-inductive Encoding
+inductive Encoding   -- Bullshit meter = 118.  Flat.
   | zero: Quantization → Encoding → Encoding
   | one: Quantization → Encoding → Encoding → Encoding
 
-structure CompiledProcess
+structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bullshit tends to accrete!
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -150,7 +150,7 @@ structure CompiledProcess
     | .one _ _ _,  .zero _ _     => .zero digital_process.one opcode
     | .one _ _ _,  .one _ _ _    => .zero digital_process.one opcode
 
-class EXECUTED
+class EXECUTED  -- Bullshit meter = 1158.  Calling this flat.
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -180,7 +180,7 @@ class EXECUTED
     | .one _ _ _ , .zero _ _ => false
     | .one _ _ _ , .one _ _ _ => true
 
-inductive Abstraction
+inductive Abstraction  -- Bullshit meter = 2045.  About a 1/6 increase.
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -204,7 +204,8 @@ inductive Abstraction
   | execute: CompiledProcess Value Carrier → Abstraction Value Carrier →
              Abstraction Value Carrier → Abstraction Value Carrier
 
-namespace Abstraction
+namespace Abstraction   -- Bullshit meter = 2759.  This is a big jump, but that's because we couldn't compute
+                        -- LE on the above types.
 variable  {Value: Type}
           {Carrier: CarrierProcess Value}
           [d: DISTINGUISHABLE Value Carrier]
@@ -239,7 +240,7 @@ def lt: Abstraction Value Carrier → Abstraction Value Carrier → Prop := fun 
   | .execute _ _ _, .compile _ _ _ => false
 end Abstraction
 
-instance
+instance    -- Bullshit meter = 579 !!  that is a 60x increase!  Hmmm...
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -267,7 +268,7 @@ instance
 -- of "definable" is not well defined.  In our case, we want to say that the definition of "less than" is not well defined.
 -- We want to say that "less than" is only defined for certain pairs of abstractions, and that it is not defined for all pairs
 -- of abstractions.  This way, we can avoid the paradox.
-instance
+instance  -- Bullshit meter = 579    Expected from above
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]  -- < is true

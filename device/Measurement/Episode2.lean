@@ -121,7 +121,7 @@ namespace Measurement
 -- What we need to do now is understand if we want to label the first limit value of
 -- a Sample the covariant repsonse or the contravariant response.
 
-structure ObservationProcess
+structure ObservationProcess   -- Bullshit meter ≈ 313
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -210,7 +210,7 @@ structure ObservationProcess
 
   -- And, still nothing up my sleeve.
 
-class BINARY
+class BINARY  --  Bullshit meter ≈ 141
   --     ^
   --     |               So, DSP.  We can assume a covariant/contravariant tick/tock for creating
   --     +-------------- the clock complement.  As I mentioned above, before is the covariant represenataion
@@ -324,7 +324,7 @@ class BINARY
 
 
 -- Let me help the compiler with one last thing about time.  The signal comes before the response:
-inductive Trial
+inductive Trial  -- Bullshit meter ≈ 150
   | hypothesis: Fact → Sample → Trial
   | signal_response: Fact → Sample → Fact → Sample → Trial → Trial
             --               ^               ^
@@ -358,9 +358,8 @@ inductive Trial
 
 -- Sorry for the contravariance.  Back to ≤
 
-                              -- Technicaly, we, us, don't have a symbol for false, yet. --+
-namespace Trial               -- Guess we won't need one since we seemed to have           |
-def le : Trial → Trial → Prop -- dispensed with the need for zero.                         V
+namespace Trial  -- Bullshit meter ≈ 94
+def le : Trial → Trial → Prop
   | .hypothesis _ s1, .hypothesis f s2 => f.truth ∨ (s1 ≤ s2)             -- Our hypothesis has no volume.
   | .hypothesis _ s1, .signal_response _ s2 _ _ _ => s1 ≤ s2              -- The hypothesis has a smaller first
                                                                           -- in time
@@ -386,8 +385,8 @@ end Trial
 -- High syntax corn syrup:
 -- This stuff is __BAD__ for your health.  You only get __REALLY__ confusing code out of it.
 -- Do not recommend.
-instance : LE Trial := ⟨Trial.le⟩
-instance : LT Trial := ⟨Trial.lt⟩
+instance : LE Trial := ⟨Trial.le⟩  -- Bullshit meter ≈ 8
+instance : LT Trial := ⟨Trial.lt⟩  -- Bullshit meter ≈ 8
 -- so delicious......
 
 -- So, is this amplitude-frequency or frequency-amplitude?  Depends on the initial
@@ -434,7 +433,7 @@ instance : LT Trial := ⟨Trial.lt⟩
 -- to each other that the mathematical process has a name to it and memoize the result right on
 -- top of our covariant/contravariant clock-based, chainsaw juggling, Jenga stack of classes.
 
-structure RepeatableProcess
+structure RepeatableProcess  -- Bullshit meter ≈ 296
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -491,7 +490,7 @@ structure RepeatableProcess
 -- Think about it.  What is a second?  Please explain how that is not tick/tock. The electron
 -- repeatably and on queue (sic) does its thing.  The important part about it is:
 -- _on cue_:  the time between events is considered _constant_.
-class REPEATABLE
+class REPEATABLE   -- Bullshit meter ≈ 166
   --  ----------
   --      ^         This is far and away the most important part of science.  If one is
   --      |         to measure, one must very _carefully_ explain how to measure so that
@@ -625,7 +624,7 @@ class REPEATABLE
 -- Where were we?  Oh yeah,
 -- Let's explain this to the compiler:
 
-inductive Study
+inductive Study   -- Bullshit meter ≈ 119
   | hypothesis: Fact → Trial → Study
   | data: Fact → Trial → Study → Study
 
@@ -663,7 +662,7 @@ inductive Study
 -- At the end of the day, the only thing we can say is that sometimes, you can't know some fact before you know
 -- another fact. And we really don't know why.
 
-namespace Study
+namespace Study  -- Bullshit meter ≈ 87
 def le : Study → Study → Prop
   | .hypothesis f1 t1, .hypothesis f2 t2 => f1 = f2 ∧ (t1 ≤ t2)   -- One hypothesis is "finer"
                                                                   -- or has more description than the other
@@ -678,7 +677,7 @@ end Study
 -- desriptions over less precise ones.   That's right, the study produces a "rounded" value of true. If
 -- it _seems_ true enough, the compiler will tend to agree with us.
 
-instance : LE Study := ⟨Study.le⟩
+instance : LE Study := ⟨Study.le⟩ -- Bullshit meter ≈ 5
 
 -- Imagine asking your history teacher in grade school if it was okay to round to the nearest true?
 
@@ -703,7 +702,7 @@ instance : LE Study := ⟨Study.le⟩
 -- to start earning its keep.
 
 -- Well, we start by grabbing the compiler by the short and curlies:
-structure ComputationalProcess
+structure ComputationalProcess  -- Bullshit meter ≈ 373
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -747,7 +746,7 @@ structure ComputationalProcess
 --            tell it how.  These are both reasonable interpretations of what is happening here.
 
 -- Since we have a computational process, we can describe the objects being computed!
-class NUMERIC
+class NUMERIC  -- Bullshit meter ≈ 215
 --       ^
 --       |
 --       +-----------------  This is not a _number_.  I think you and I would call this a _digit_ or a _variable_.

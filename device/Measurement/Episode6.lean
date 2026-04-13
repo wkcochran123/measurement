@@ -26,7 +26,7 @@ import Measurement.Episode5
 -- MAIN SCREEN TURN ON !
 namespace Measurement
 
-structure MathematicalProcess
+structure MathematicalProcess  -- Bullshit meter = 2963.  That's about 2/3 increase.
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -60,7 +60,7 @@ structure MathematicalProcess
       @Abstraction.execute _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ one compiled_process prog mapping
 
 
-class VALUE
+class VALUE  -- Bullshit meter = 3327.  3x increase!  That's a lot of bullshit!
      (Value: Type)
      (Carrier: CarrierProcess Value)
      [d: DISTINGUISHABLE Value Carrier]
@@ -92,11 +92,11 @@ class VALUE
 
 
 
-inductive Sum
+inductive Sum    -- Bullshit meter = 119.   Seems like that Abstraction bullshit doesn't stick around.  Probably should, though.
   | zero: Prop → Area → Sum
   | add: Fact → Area → Sum → Sum
 
-namespace Sum
+namespace Sum   -- Bullshit meter = 76.
 def le: Sum → Sum → Prop := fun s1 s2 =>
   match s1, s2 with
   | .zero p1 a1, .zero p2 a2 => p1 = p2 ∧ a1 ≤ a2
@@ -108,10 +108,10 @@ def le: Sum → Sum → Prop := fun s1 s2 =>
 def lt: Sum → Sum → Prop := fun s1 s2 => le s1 s2 ∧ ¬ le s2 s1
 end Sum
 
-instance : LE Sum := ⟨Sum.le⟩
+instance : LE Sum := ⟨Sum.le⟩  -- Bullshit meter = 8
 instance : LT Sum := ⟨Sum.lt⟩
 
-structure AddingProcess
+structure AddingProcess  -- Bullshit meter ≈ 2063.   Thats 33% less bullshit than a generic mathematical process!
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -143,7 +143,7 @@ structure AddingProcess
       | _ => .add Fact.Truth a (.zero p a)
     | .add f a _ => .add f a sum
 
-class MAGNITUDE
+class MAGNITUDE  -- Bullshit meter ≈ 1503.  That's less than 1/2 the bullshit of a value!
      (Value: Type)
      (Carrier: CarrierProcess Value)
      [d: DISTINGUISHABLE Value Carrier]
@@ -172,12 +172,11 @@ class MAGNITUDE
     | .zero _ a => a
     | .add _ a _ => a
 
-inductive Product
+inductive Product  -- Bullshit meter = 119
   | One: Prop → Area → Product
   | Mul: Fact → Area → Product → Product
 
-namespace Product
-
+namespace Product  -- Bullshit meter = 75
 def le: Product → Product → Prop := fun p1 p2 =>
   match p1, p2 with
   | .One p1 a1, .One p2 a2 => p1 = p2 ∧ a1 ≤ a2
@@ -188,10 +187,10 @@ def le: Product → Product → Prop := fun p1 p2 =>
 def lt: Product → Product → Prop := fun p1 p2 => le p1 p2 ∧ ¬ le p2 p1
 end Product
 
-instance : LE Product := ⟨Product.le⟩
+instance : LE Product := ⟨Product.le⟩  -- Bullshit meter = 5
 instance : LT Product := ⟨Product.lt⟩
 
-structure MultiplyingProcess
+structure MultiplyingProcess  -- Bullshit meter = 2157  5% increase.  Call that flat response over the AddingProcess.
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -223,7 +222,7 @@ structure MultiplyingProcess
       | _ => .Mul Fact.Truth a p
     | .Mul f a _ => .Mul f a product
 
-class SCALED
+class SCALED  -- Bullshit meter = 1756
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -253,13 +252,13 @@ class SCALED
     | .Mul f a _ => .add f a (.zero f.truth a)
 
 -- Dyson vacuums are _so-so_.  Dyson series, on the other hand?
-inductive Basis
+inductive Basis   -- Bullshit meter = 134
   | origin: Prop → Area → Basis
   | basis: Fact → Product → Area → Basis → Basis
 -- Surely you're joking Mr. Henry!
 
 
-structure BASICOperation
+structure BASICOperation  -- Bullshit meter ≈ 2759
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -295,7 +294,7 @@ structure BASICOperation
         --                                             |
         -- Tail recursion -----------------------------+
 
-class LOAD
+class LOAD  -- Bullshit meter 2089
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -329,11 +328,11 @@ class LOAD
     | .basis _ _ _ _, .origin _ _ => False       -- Disallow this.
     | .basis f1 _ a1 _, .basis f2 _ a2 _ => f1 ≠ f2 ∧ a1 ≤ a2
 
-inductive Polynomial
+inductive Polynomial    --  Bullshit meter 119
   | zero: Prop → Basis → Polynomial
   | add: Fact → Basis → Polynomial → Polynomial
 
-structure GalerkinProcess
+structure GalerkinProcess   -- Bullshit meter 2794
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -371,7 +370,7 @@ structure GalerkinProcess
 -- Let's address the _elephant in the room_.  First, let's agree that it is _SINGULAR_ and that it is only _SO BIG_.
 -- It can get really, really, __REALLY__ big in just a few keystrokes.  That's the problem.  We have only
 -- one stack frame, our __FINITE_ELEPHANT__.
-class FINITE_ELEPHANT
+class FINITE_ELEPHANT   -- 2368
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]     -- So, they _ASSUME_ they have an undocumented one and proceed to add the release.
@@ -411,7 +410,7 @@ class FINITE_ELEPHANT
 
 
 -- reticulate, damn you!
-inductive Spline
+inductive Spline  -- 152
   | knot: Prop → Polynomial → Spline → Spline
   | interpolant: Fact → Polynomial → Spline → Spline → Spline
 

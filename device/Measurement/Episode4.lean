@@ -78,7 +78,7 @@ namespace Measurement
 -- partially ordered.
 
 -- But first, let me case-and-paste the code just as in Episode 1:
-namespace Area
+namespace Area   -- Bullshit meter ≈ 111
 def le : Area → Area → Prop
   | .t _ , _ => True
   | .dt  _ _, .t _ => False
@@ -92,9 +92,9 @@ def le : Area → Area → Prop
 -- Simultaneity prevents well ordering
 end Area
 
-instance : LE Area := ⟨Area.le⟩
+instance : LE Area := ⟨Area.le⟩ -- Bullshit meter ≈ 8
 
-structure SensingProcess
+structure SensingProcess -- Bullshit meter ≈ 750
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -117,7 +117,7 @@ structure SensingProcess
     | .t _ => .t d.fact
     | .dt fact _ => .dt fact accumulation
 
-class PRESENT
+class PRESENT  -- Bullshit meter ≈ 594
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -136,11 +136,11 @@ class PRESENT
   sensing_process: SensingProcess Value Carrier
   present: Area → Area → Prop := fun s1 s2 => sensing_process.receive_carrier s1 = s2
 
-inductive Phenomenon
+inductive Phenomenon   -- Bullshit meter ≈ 153
   | inital_condition: Fact → Area → Phenomenon → Phenomenon
   | observations: Fact → Area → Phenomenon → Phenomenon → Phenomenon
 
-namespace Phenomenon
+namespace Phenomenon  -- Bullshit meter ≈ 227
 def le : Phenomenon → Phenomenon → Prop := fun p1 p2 =>
   match p1, p2 with
   | .inital_condition f1 _ p1', .inital_condition f2 _ p2' =>
@@ -160,7 +160,7 @@ def le : Phenomenon → Phenomenon → Prop := fun p1 p2 =>
 
 end Phenomenon
 
-structure GaugeProcess
+structure GaugeProcess  -- Bullshit meter ≈ 830
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -180,7 +180,7 @@ structure GaugeProcess
   sensing_process : SensingProcess Value Carrier
   phenomenon : Phenomenon
 
-class MEASURABLE
+class MEASURABLE  -- Bullshit meter ≈ 730
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -205,11 +205,11 @@ class MEASURABLE
 -- The compiler and I agree.  It promises that any computation I ask of it will satisfy Du=0 _and_ F=dF + A∧A.
 -- You and I will call that fact 0.  This is our initial condition.
 
-inductive Jar
+inductive Jar  -- Bullshit meter ≈ 153    *hmmm*,    I would have thought this should be higher?
   | bang: Fact → Jar → Jar -- BINKS!  Meesa Spake!
   | superposition: Fact → Jar → Jar → Jar
 
-namespace Jar
+namespace Jar  -- Bullshit meter ≈ 214
 def le : Jar → Jar → Prop := fun j1 j2 =>
   match j1, j2 with
   | .bang f1 j1', .bang f2 j2' =>
@@ -231,14 +231,17 @@ def le : Jar → Jar → Prop := fun j1 j2 =>
 -- Spooky!
 end Jar
 
-instance : LE Jar := ⟨Jar.le⟩  -- boo ya!  jar head.
+instance : LE Jar := ⟨Jar.le⟩  -- Bullshit meter ≈ 5.   I mean, c'mon compiler.  I'm confident my
+                               -- bullshit meter is pretty well calibrated.
 
 -- Meesa explain!
 -- Meesa take the concept and put it in the jar!
 -- Meesa don't know what meesa saying but the compiler does!
 -- Meesa the β-reduction! Meesa VERY IMPORTANT!
 
-structure MeesaProcess
+structure MeesaProcess  -- Bullshit meter ≈ 1010.    There we go, we just broke 1000 on the bullshit meter.
+                        -- That's about 1/4 increase in bullshit, measured structure-on-structure.
+                        -- Huh, is that 2 bits of information?
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -262,7 +265,8 @@ structure MeesaProcess
     | .bang f _ => .bang f concept
     | .superposition f _ j2 => .superposition f concept j2
 
-class GUNGAN
+class GUNGAN  -- Bullshit meter = 802.  Only a 1/8 increase on classes.  Is that 3 bits?
+              -- Can't tell if the compiler is trying to carry 2 or 3 bits in its head right now.
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]

@@ -50,11 +50,11 @@ universe i -- There is only 1 universe, the one we can experience right now, at 
 -- I have always thought that the comments of the code should tell a story.
 -- The story helps the reader understand what is going on.  So, let me tell
 -- you a story about measurement.  Measurement begins with _facts_.
--- I think you will agree it is easy to see whether or not something happened
--- and if that something happened, that _fact_ is _true_.  Otherwise, it ain't. Clear?
-
--- This compiles Fact and fails Number
-class Fact where   -- Entropy ≈ 9
+-- I think you will agree it is easy to see whether or not something happened                +-------------------------------+
+-- and if that something happened, that _fact_ is _true_.  Otherwise, it ain't. Clear?       |                               |
+--                                             +---------------------------------------------+                               |
+-- This compiles Fact and fails Number         |               This is a measurement from a device of my own design. --------+
+class Fact where   -- Bullshit meter ≈ 9   <---+
   truth : Prop                 -- Did it happen or not?
   decTruth : Decidable truth   -- Sometimes the compiler will know the answer before we do!
                                -- This fucker doesn't know math, it is _PSYCHIC_! It seems to understand
@@ -66,7 +66,7 @@ class Fact where   -- Entropy ≈ 9
 -- the compiler is asked whether or not something is true.  In this way, we can
 -- can measure the compiler.  Is the compiler currently bullish or bearish on
 -- the veracity of _true_ = _true_?
-namespace Fact    -- Entropy ≈ 25
+namespace Fact    -- Bullshit meter ≈ 25
              --              +---------------------  Know where the compiler puts this?  On the DATA page.
              --              |                       This is not a variable.  It is the truth that the
              --              |                       compiler and I agree on. Don't know what that means?
@@ -88,7 +88,7 @@ end Fact
 -- if we agreed on what some numbers were.  So, let's make some and name them.  Big Endian so we
 -- can shortcut a very common computation.
 -- This compiles Fact and fails Number
-inductive Number where   -- Entropy ≈ 92
+inductive Number where   -- Bullshit meter ≈ 92
   | zero : Fact → Number
     --      ^
     --      |
@@ -128,7 +128,7 @@ inductive Number where   -- Entropy ≈ 92
 -- time to compile a program and I really don't want to wait forever.
 
 --                                         +------------------------+
-namespace Number  --  Entropy ≈ 112        |                        |
+namespace Number  --  Bullshit meter ≈ 112 |                        |
 def le : Number → Number → Prop --         V          Now, this is just _intuition_. We need
   | .zero _ , _ => True         -- 0 ≤ n  n∈ℕ         something that might pass as a natural number.
   | .one  _ _, .zero _ => False -- n > 0  n∈ℕ > 0     Lean has the Nat thing, but I don't trust it.  Do you?
@@ -185,14 +185,14 @@ end Number
 -- If you forget what they mean, because hijack is really a euphemism for what
 -- I'm about to do, just remember it always means "Less Than or Equal To" in whatever
 -- context it is in.
-instance : LE Number where  -- Entropy ≈ 7
+instance : LE Number where  -- Bullshit meter ≈ 7
   le := Number.le
 -- Trust me, ;-)
 
 -- So, this is our "sensor" for the compiler's meaning
 -- of a Type.  The compiler will happily send us carriers
 -- that will evaluate true/false for us to use as "facts."
-structure CarrierProcess -- Entropy ≈ 85
+structure CarrierProcess -- Bullshit meter ≈ 85
     (Carrier: Type)
   where
   symbol: Fact      -- Said fact from the compiler, either _true_ or _false_.
@@ -215,7 +215,7 @@ structure CarrierProcess -- Entropy ≈ 85
 --        +--------------------------------------------------------+
 --        |
 --        V
-class DISTINGUISHABLE  -- Entropy ≈ 28                             You may start noticing a pattern to
+class DISTINGUISHABLE  -- Bullshit meter ≈ 28                      You may start noticing a pattern to
     (Value: Type)                                               -- the structure -> class -> inductive ->
     (Observation: CarrierProcess Value)                         -- structure -> class -> ...
     where                                                       -- An eternal golden braid of meta-programming.
@@ -252,7 +252,7 @@ class DISTINGUISHABLE  -- Entropy ≈ 28                             You may sta
 -- lets talk about how they are structured.                                                |
 --                                                                                         |
 -- You didn't notice the universe number thing? -------------------------------------------+
-inductive Natural  -- Entropy ≈ 107
+inductive Natural  -- Bullshit meter ≈ 107
   where
   | zero : Fact → Natural                       -- The Fact here is a bit murkier, we are coordinating with
                                                 -- the compiler now on what is a fact and what isn't.
@@ -268,7 +268,7 @@ inductive Natural  -- Entropy ≈ 107
 -- The natural numbers have this property that the ones after are bigger than the ones before.
 -- Not certain they have another property worth talking about.  If you can think of one,
 -- leave it in the comments below.  It helps the algorithm.
-namespace Natural   -- Entropy ≈ 42          _42?!_
+namespace Natural   -- Bullshit meter ≈ 42     _42?!_
 def le : Natural → Natural → Prop
   | .zero _ , _  => True                     -- Zero is less than or equal to everything
   | .number _ _ _ , .zero _ => False         -- Any nonzero natural is > 0.
@@ -284,11 +284,11 @@ def lt: Natural → Natural → Prop := fun n1 n2 => le n1 n2 ∧ ¬ le n2 n1
 
 end Natural
 
-instance : LE Natural where  -- Entropy ≈ 5
+instance : LE Natural where  -- Bullshit meter ≈ 5
   le := Natural.le
 
 -- More notional abuse.  Won't someone think of the notation?
-instance : LT Natural where  -- Entropy ≈ 7
+instance : LT Natural where  -- Bullshit meter ≈ 7
   lt := Natural.lt
 
 -- So, you ever thought about how you count before?
@@ -299,7 +299,7 @@ instance : LT Natural where  -- Entropy ≈ 7
 -- count apart as I think that might be important to the plot.
 --
 -- And you are reading this for the plot, right?
-structure CountingProcess -- Entropy ≈ 118
+structure CountingProcess -- Bullshit meter ≈ 118
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -351,7 +351,7 @@ structure CountingProcess -- Entropy ≈ 118
 -- just means the compiler did not barf on a computation. In this case
 -- what the compiler is doing is looking through the inductive to see
 -- if it can find a counterexample to a ≤ b.
-class ADMISSIBLE  -- Entropy ≈ 60
+class ADMISSIBLE  -- Bullshit meter ≈ 60
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [DISTINGUISHABLE Value Carrier]
@@ -385,7 +385,7 @@ class ADMISSIBLE  -- Entropy ≈ 60
 -- I could convince you that such a mapping will enumerate all rationals, but I am
 -- lazy af.  Point is, all those numbers _are_ rational numbers. And we don't need
 -- all of them, just a countable amount.
-inductive Rational  -- Entropy ≈ 107
+inductive Rational  -- Bullshit meter ≈ 107
       --     ^
       --     |
       --     +------------ This is not ℚ.  This is just an inductive structure that
@@ -421,7 +421,7 @@ inductive Rational  -- Entropy ≈ 107
 -- Or are you trying your best to dismiss these things?  Keep trying! lean will keep us
 -- both honest.
 
-namespace Rational  -- Entropy ≈ 46
+namespace Rational  -- Bullshit meter ≈ 46
 def le : Rational → Rational → Prop
   | .zero _ , _               => True  -- Duh, zero is less than or equal to everything
   | .number _ _ _ , .zero _   => False -- Duh, nothing other than zero is less than or equal to zero
@@ -437,10 +437,10 @@ def lt: Rational → Rational → Prop := fun r1 r2 => le r1 r2 ∧ ¬ le r2 r1
 end Rational
 
 -- Let's make the symbols work.
-instance : LE Rational where  -- Entropy ≈ 5
+instance : LE Rational where  -- Bullshit meter ≈ 5
   le := Rational.le
 
-instance : LT Rational where  -- Entropy ≈ 5
+instance : LT Rational where  -- Bullshit meter ≈ 5
   lt := Rational.lt
 -- If you have made it this far, then you must agree that while I may not be right, and I am certainly
 -- not wrong so far. Relax, the compiler will keep me honest.  I want you
@@ -452,8 +452,9 @@ instance : LT Rational where  -- Entropy ≈ 5
 -- yet. But! I do know 1 interesting Rational number.  That is the origin!
 -- Zero = 0.00 <--- is this 2 or 3 significant digits?  Turns out, that will matter.
 -- Not yet, though.
-structure IndexingProcess  -- Entropy ≈ 143    +-------------------------------------------- I hate this word.
-        --       ^                             |                                             It is intangible
+structure IndexingProcess  -- Bullshit meter ≈ 143
+        --       ^                             +-------------------------------------------- I hate this word.
+        --       |                             |                                             It is intangible
         --       |                             V                                             It is imaginary
         --       +------- WTF is this?  Well, set theory says that we can map things
         --                to the natural numbers.  This is that indexing process.  This
@@ -519,7 +520,7 @@ structure IndexingProcess  -- Entropy ≈ 143    +------------------------------
 -- you know how _technically_ wrong I just _have_ to be.  I think you will find
 -- that I am cleverer than you think.
 
-class COUNTABLE  -- Entropy ≈ 85
+class COUNTABLE  -- Bullshit meter ≈ 85
  --      ^                 Bet you weren't expecting the word COUNTABLE from any of that.
  --      |                 But that is exactly the concept we are modeling, there exists
  --      +---------------- an enumeration of these things.  These 1/2-spin carriers.
@@ -606,7 +607,7 @@ class COUNTABLE  -- Entropy ≈ 85
 -- represent these concepts.
 
 -- For instance, a sequence of numbers is a common useful construction of math.
-inductive Sequence  -- Entropy ≈ 107
+inductive Sequence  -- Bullshit meter ≈ 107
   |nil: Fact → Sequence
   |index :  Fact → Rational → Sequence → Sequence
        --             ^          ^
@@ -624,7 +625,7 @@ inductive Sequence  -- Entropy ≈ 107
 -- And so, we continue with the covariant/contravariant comparison rules.
 -- So that if I decompose the mapping, you decompose the mapping, and the compiler
 -- decomposes the mapping, we all agree on the concepts of how it is compared.
-namespace Sequence  -- Entropy ≈ 48
+namespace Sequence  -- Bullshit meter ≈ 48
 def le: Sequence → Sequence → Prop
   | .nil _ , _ => True
   | .index _ _ _, .nil _ => False
@@ -655,10 +656,10 @@ def le: Sequence → Sequence → Prop
 def lt: Sequence → Sequence → Prop := fun s1 s2 => le s1 s2 ∧ ¬ le s2 s1
 end Sequence
 
-instance : LE Sequence where -- Entropy ≈ 5
+instance : LE Sequence where -- Bullshit meter ≈ 5
   le := Sequence.le
 
-instance : LT Sequence where -- Entropy ≈ 5
+instance : LT Sequence where -- Bullshit meter ≈ 5
   lt := Sequence.lt
 
 -- Now that we have some idea of a sequence, we can start to talk about limits.
@@ -684,7 +685,7 @@ instance : LT Sequence where -- Entropy ≈ 5
 -- or is this argument dense?
 
 -- Any hooozlebee, this gets you a localized .....
-structure LimitProcess  -- Entropy ≈ 185
+structure LimitProcess  -- Bullshit meter ≈ 185
     (Value: Type)                     -- As you can start to see, the Value and Carrier
     (Carrier: CarrierProcess Value)   -- paramaters are universal.  What is happening is
     [DISTINGUISHABLE Value Carrier]   -- as we provide the capability to compute ≤ and <
@@ -744,7 +745,7 @@ structure LimitProcess  -- Entropy ≈ 185
 -- Actually, we should start more primitively, with _zero_.  I think we all agree on what that
 -- is supposed to look like.
 
-class ENCODED  -- Entropy ≈ 85
+class ENCODED  -- Bullshit meter ≈ 85
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [DISTINGUISHABLE Value Carrier]
@@ -780,7 +781,7 @@ class ENCODED  -- Entropy ≈ 85
 -- This is also the interface for solving for the _value_ of non-linear systems.
 -- Ya boy Newton figured that out.  So, which limit are we talking,
 -- the residue or the value?  Thankfully, one is covariant and one is contravariant.
-inductive Limit -- Entropy ≈ 107
+inductive Limit -- Bullshit meter ≈ 107
   |nil: Fact → Limit
   |index :  Fact → Sequence → Limit → Limit
     --     -----
@@ -794,7 +795,7 @@ inductive Limit -- Entropy ≈ 107
     --                      The _natural_ numberas and the _rational_ numbers are the
     --                      other two kinds of numbers we are building as well.
 
-namespace Limit -- Entropy ≈ 48
+namespace Limit -- Bullshit meter ≈ 48
 def le: Limit → Limit → Prop
   | .nil _, _ => True                   -- So, you going to let me get away with this?
                                         -- Smuggling in 0 being a converged digit?
@@ -836,10 +837,10 @@ def le: Limit → Limit → Prop
 def lt: Limit → Limit → Prop := fun l1 l2 => le l1 l2 ∧ ¬ le l2 l1
 end Limit
 
-instance : LE Limit where -- Entropy ≈ 5
+instance : LE Limit where -- Bullshit meter ≈ 5
   le := Limit.le
 
-instance : LT Limit where -- Entropy ≈ 5
+instance : LT Limit where -- Bullshit meter ≈ 5
   lt := Limit.lt
 
 -- I suppose we should talk about superpositions at some point.  I mean, all of science
@@ -848,7 +849,7 @@ instance : LT Limit where -- Entropy ≈ 5
 -- Wild, right?  Well, turns out stoichiometric measurement is one of only _2_ kinds of
 -- measurement.  One covariant and one contravariant. You either passively measure it through
 -- a carrier interaction or you actively manipulate it, finding its physical bounds.
-structure CauchyProcess  -- Entropy ≈ 228
+structure CauchyProcess  -- Bullshit meter ≈ 228
     (Value: Type)                      -- These guys are still familiar
     (Carrier: CarrierProcess Value)
     [DISTINGUISHABLE Value Carrier]    -- We now have 4 different features we ask about
@@ -873,7 +874,7 @@ structure CauchyProcess  -- Entropy ≈ 228
 --                                                  +-------- Still just counting
 
 class RESIDUE
-    (Value: Type) -- Entropy ≈ 103
+    (Value: Type) -- Bullshit meter ≈ 103
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -903,7 +904,7 @@ class RESIDUE
 -- turns out.  To lazy to show you, trust me on this for now, we will come back to this
 -- idea.
 
-inductive Sample -- Entropy ≈ 150            -- This is the admissible symbol for a single normal number
+inductive Sample -- Bullshit meter ≈ 150            -- This is the admissible symbol for a single normal number
   where
 
 -- Serieously, though, not only is this a representation of your run-of-the-mill
@@ -941,7 +942,7 @@ inductive Sample -- Entropy ≈ 150            -- This is the admissible symbol 
 -- of the facts, ≤ while either return ≤ on the first limit or the second limit.  Contravariant first
 -- the covariant second, or covariant first then contravariant second.  Why not both?
 
-namespace Sample   -- Entropy ≈ 105
+namespace Sample   -- Bullshit meter ≈ 105
 def le: Sample → Sample → Prop
   | .initial_condition f1 l1, .initial_condition f2 l2 =>
     (f1.truth = f2.truth ∧ l1 ≤ l2) ∨ (f1.truth ≠ f2.truth ∧ l2 ≤ l1)
@@ -957,10 +958,10 @@ def le: Sample → Sample → Prop
 def lt: Sample → Sample → Prop := fun s1 s2 => le s1 s2 ∧ ¬ le s2 s1
 end Sample
 
-instance : LE Sample where   -- Entropy ≈ 5
+instance : LE Sample where   -- Bullshit meter ≈ 5
   le := Sample.le
 
-instance : LT Sample where   -- Entropy ≈ 5
+instance : LT Sample where   -- Bullshit meter ≈ 5
   lt := Sample.lt
 
 -- So, why the name Sample?  Well, because we are getting sample numbers from

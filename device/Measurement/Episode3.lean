@@ -49,14 +49,14 @@ namespace Measurement
 -- carrier as such.  It is, in fact, two numbers.  Not that we know the numbers, we have to _study_ them to understand
 -- what they are.
 
-inductive Computation
+inductive Computation    -- Bullshit meter ≈ 134
   | program: Fact → Study → Computation          -- This is the description of the hypothesis
   | compute: Fact → Study → Study → Computation → Computation  -- This is input -> output description of Computation
 
 -- Lean claims to understand these concepts, so it should be _no problem_ to model the Lean computation itself this way.
 
 -- Computations should sort in a pretty straightforward way.
-namespace Computation
+namespace Computation   -- Bullshit meter ≈ 80
 def le : Computation → Computation → Prop
   | program _ s1, program _ s2 => s1 ≤ s2         -- Programs are indexable.  Turing's construction assumed that this is possible.
 
@@ -80,12 +80,12 @@ def lt: Computation → Computation → Prop
 end Computation
 
 -- This is starting to look more and more like ≤ and <, isn't it?
-instance : LE Computation := ⟨Computation.le⟩
-instance : LT Computation := ⟨Computation.lt⟩
+instance : LE Computation := ⟨Computation.le⟩   -- Bullshit meter ≈ 8
+instance : LT Computation := ⟨Computation.lt⟩   -- Bullshit meter ≈ 8
 -- The fact that we get _two_ different representations of the _same_ ordering relation is a _SUPER_ huge convenience
 -- and it will _NEVER_ get confusing.
 
-structure TuringProcess
+structure TuringProcess   -- Bullshit meter ≈ 492
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]   -- It might be difficult to believe that this __FULLY__ specifies
@@ -126,7 +126,7 @@ structure TuringProcess
 -- The compiler, however, needs a little help selecting a symbol.  When you __WRITE__ programs, you have to
 -- explain the symbols __BOTH__ to the compiler and to the __MAINTENANCE__ developer.  Have pity on those
 --- less fortunate.
-class REPRESENTABLE
+class REPRESENTABLE  --  Bullshit meter ≈ 261
     (Value: Type)                           -- Representation is the core challenge of communication _AND_
     (Carrier: CarrierProcess Value)         -- understanding.  Without a representation of an idea, then
     [d: DISTINGUISHABLE Value Carrier]      -- that idea may or may not exist outside the random synapse
@@ -152,7 +152,7 @@ class REPRESENTABLE
 -- It is the computation of Chaitin's number.  So, let's ask the compiler to start work there.  I believe I will have
 -- the easiest time on the planet bogging this little monster with the only physical computational barrier that is
 -- known to exist!
-inductive ChaitinsNumberSequence
+inductive ChaitinsNumberSequence  -- Bullshit meter ≈ 112
 -- The __HEAVY WEIGHT CHAMPION OF THE WORLD__
   | halting: Fact → Computation → ChaitinsNumberSequence
   | nonhalting: Fact → Computation → Computation → ChaitinsNumberSequence
@@ -167,7 +167,7 @@ inductive ChaitinsNumberSequence
 
 -- Seriously, what are the odds?  That's what we are playing for, right?
 
-namespace ChaitinsNumberSequence
+namespace ChaitinsNumberSequence  -- Bullshit meter ≈ 91
 def le : ChaitinsNumberSequence → ChaitinsNumberSequence → Prop
   | halting _ s1, halting _ s2 => s1 ≤ s2
   | halting _ _, nonhalting _ _ _ => true
@@ -179,7 +179,7 @@ def le : ChaitinsNumberSequence → ChaitinsNumberSequence → Prop
 -- That's why I need you to understand what __TIME__ means to the compiler.
 end ChaitinsNumberSequence
 
-instance : LE ChaitinsNumberSequence := ⟨ChaitinsNumberSequence.le⟩
+instance : LE ChaitinsNumberSequence := ⟨ChaitinsNumberSequence.le⟩  -- Bullshit meter ≈ 5
 -- <Flex>
 -- _MY_ custom Lean import _COMPUTES_ Chaitin's number as part of the _COMPILE_ process, _JUST FOR KICKS!_.  Does yours?
 
@@ -189,7 +189,7 @@ instance : LE ChaitinsNumberSequence := ⟨ChaitinsNumberSequence.le⟩
 -- Perhaps the most universal thing about measurement is the fact that all measurement has noise.  So, I cannot directly
 -- measure the compiler actually computing Chaitin's number.  But, since I know it is itself a computing process, I can
 -- model the noise itself as a computational process!  Meet my _petard_!
-structure NoisyProcess
+structure NoisyProcess  -- Bullshit meter ≈ 504
     (Value: Type)
     (Carrier: CarrierProcess Value)      -- This really feels like it is __cheating__.  BUT!  The only way to make sure
     [d: DISTINGUISHABLE Value Carrier]   -- Godel stays in _HIS OWN LANE_ is to make sure we never self-reference.  This
@@ -249,7 +249,7 @@ structure NoisyProcess
 -- used to solve that problem.  The first thing I need to do is explain to the compiler what a computer is.
 
 -- Welcome aboard.  I bet you didn't think it was going to take a turn like this, did you?
-class PHYSICAL
+class PHYSICAL  -- Bullshit meter ≈ 430
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -274,7 +274,7 @@ class PHYSICAL
 --                                                                                |
 --     How hard is it to compute a tautology? I mean, rofl.   --------------------+
 --     the Chaitin TAUTOLOGY !!   You forgot, didn't you?
---     We computed _true_ last episode. Compiler's turn to figure it out.
+--     Actually, we are just telling the compiler we can figure it out.  I have a plan. Compiler's turn to figure it out.
 --     John Henry was a __STEEL__ drivin' man.  Out driving the machine
 --     by one episode. Think I hit that __THREE POINTER__?
 
@@ -294,7 +294,7 @@ class PHYSICAL
 -- will have the _METAVARIABLE_.  Now Disney and the Zuck are after me?  I hope you see why this is _anonymous_.  We will store our
 -- __PHYSICAL__ bit in a __METAVARIABLE__.  The metavariable lives neither in the stack or heap.  You know, a Decidable Prop.
 
-inductive Metavariable (α : Type u) : Type (u + 1) where
+inductive Metavariable (α : Type i) : Type (i + 1) where   -- Bullshit meter ≈ 133
 -- IEEE 754 defines a value called ε_m, which is the smallest representable number of the computer.  We shall call this number
 -- α.   At each level, we will be able to compute a more and more precise number.  The higher the level, the more precise the
 -- number.  Accuracy is definitely a _you_ problem. The α at each level is the smallest _fraction_ that can be recognized this
@@ -313,7 +313,7 @@ inductive Metavariable (α : Type u) : Type (u + 1) where
 -- While you _ARE NOT_ guaranteed to hit 50%, you _ARE_ guaranteed that when you put the two pieces back together, you get
 -- a whole.   _OH YEAH_, I dribbled through Cohen's legs.
 
-structure PhysicalProcess
+structure PhysicalProcess   -- Bullshit meter ≈ 647
     (Value: Type)
     (Carrier: CarrierProcess Value)      -- The DOE might start asking questions about this guy
     [d: DISTINGUISHABLE Value Carrier]
@@ -390,7 +390,7 @@ structure PhysicalProcess
 -- I think that we can safely code the next common operation in computing:
 -- Given two _whatevers_ which one has more _characteristic_?
 -- Easy peasy, fresh and squeezy!
-class COMPARABLE
+class COMPARABLE  -- Bullshit meter ≈ 292
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]   -- Look at all this information!  We have to be able to ask about all those
@@ -425,7 +425,7 @@ class COMPARABLE
 
 -- In the meanwhile, let's meet our next representative!  Yes, we can get two kinds of numbers, just as Bombelli argued.
 -- hell that means, BUT I know that Bombelli would be happy to know that sophistic numbers are being remembered for what they are.
-inductive Sophism
+inductive Sophism   -- Bullshit meter ≈ 153
   | origin: Fact → ChaitinsNumberSequence → Type → Sophism
   | dimension: Fact → ChaitinsNumberSequence → Type i → Sophism → Sophism
 -- I love using big words.  It makes me feel photosynthesis.
@@ -448,7 +448,7 @@ inductive Sophism
 -- What? I told you we are measuring how __TRUE__ _true=true_ really is.  I mean __REALLY__ is.
 
 
-structure SlipProcess
+structure SlipProcess    -- Bullshit meter ≈ 680
     (Value: Type)
     (Carrier: CarrierProcess Value)      -- The DOE might start asking questions about this guy
     [d: DISTINGUISHABLE Value Carrier]
@@ -478,7 +478,7 @@ structure SlipProcess
         -- This is where F = dA + A ∧ A is evaluated by the compiler.  Should have marked this spoilers.
         .dimension f c (Metavariable t) projection
 
-class OBSERVED
+class OBSERVED   -- Bullshit meter ≈ 444
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]   -- We have ≠
@@ -534,7 +534,7 @@ class OBSERVED
 -- Also, I just pulled the quarter I glued to the table from behind your ear just now.
 
 -- The temporal history of the compiler's bits captured as a sequence of Facts over time:
-inductive Area
+inductive Area   -- Bullshit meter ≈ 92
   | t: Fact → Area
   | dt: Fact → Area → Area
 -- Thats right, it's an integral.  Volume seems nearby...  I promised you Galerkin and Galerkin starts with integration.
