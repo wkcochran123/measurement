@@ -44,7 +44,7 @@ structure ArmWaveProcess   -- 3306
   galerking_process : GalerkinProcess Value Carrier
   guess: Spline
 
-  coin_flip?: Spline → Spline := fun input =>
+  reticulate?: Spline → Spline := fun input =>
     match input with
     | .knot prop poly _ => .knot prop poly guess
     | .interpolant prop poly prior _ => .interpolant prop poly prior guess
@@ -76,7 +76,7 @@ class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved.
     [matter: FINITE_ELEPHANT Value Carrier]
   where
   arm_wave_process : ArmWaveProcess Value Carrier
-  bullshit? : Spline → Prop := fun s =>
+  interpolate? : Spline → Prop := fun s =>
     match s with
     | .knot prop _ _ => prop
     | .interpolant prop _ _ _ => prop.truth
@@ -115,7 +115,7 @@ structure CrusadeProcess   -- Bullshit meter 3804
   pwn_n00bz: ArmWaveProcess Value Carrier
   religion: Diatribe
 
-  argue? : Diatribe → Diatribe := fun d =>
+  gate_keep? : Diatribe → Diatribe := fun d =>
     match d with
     | .speculation prop s _ => .speculation prop s religion
     | .rant prop s d1 _ => .rant prop s d1 religion
@@ -147,8 +147,9 @@ class PROPAGANDA  -- 3151
     [matter: FINITE_ELEPHANT Value Carrier]
     [model: BULLSHIT Value Carrier]
   where
-  crusade_process : CrusadeProcess Value Carrier
-  consistent? : Diatribe → Prop := fun d =>
+  insinuation: CrusadeProcess Value Carrier
+  -- What color (lol) is your pill?  Same color as your jar?
+  red_pilled? : Diatribe → Prop := fun d =>
     match d with
     | .speculation prop _ _ => prop
     | .rant prop _ _ _ => prop
@@ -182,8 +183,8 @@ inductive Cult  -- 6460
     [space: PROPAGANDA Value Carrier]          -- "Cargo" lol.  Rust needs
                                                  -- parametric variables.
                                                  -- I will die on that hill.
-  | cult_of_personality: Prop → CrusadeProcess Value Carrier → Cult Value Carrier → Cult Value Carrier
-  | cult_of_ideology: Fact → CrusadeProcess Value Carrier → Cult Value Carrier → Cult Value Carrier → Cult Value Carrier
+  | pythagorass: Prop → CrusadeProcess Value Carrier → Cult Value Carrier → Cult Value Carrier
+  | triangles: Fact → CrusadeProcess Value Carrier → Cult Value Carrier → Cult Value Carrier → Cult Value Carrier
 
 namespace Cult
 end Cult
@@ -216,12 +217,13 @@ structure InitiationProcess  -- Bullshit meter ≈ 9117.   TBF, when is an initi
     [model: BULLSHIT Value Carrier]
     [space: PROPAGANDA Value Carrier]
   where
-  crusade_process: CrusadeProcess Value Carrier
+  -- Aristotle was a bugger for the bottle!
+  ethos: CrusadeProcess Value Carrier
   cult: Cult Value Carrier
   initiate: Cult Value Carrier → Cult Value Carrier := fun c =>
     match c with
-    | .cult_of_personality prop crusade _ => .cult_of_personality prop crusade cult
-    | .cult_of_ideology fact crusade rest1 _ => .cult_of_ideology fact crusade rest1 cult
+    | .pythagorass prop crusade _ => .pythagorass prop crusade cult
+    | .triangles fact crusade rest1 _ => .triangles fact crusade rest1 cult
 
 class ACOLYTE   -- 7699
     (Value: Type)
@@ -251,11 +253,11 @@ class ACOLYTE   -- 7699
     [model: BULLSHIT Value Carrier]
     [space: PROPAGANDA Value Carrier]
   where
-  initiation_process : InitiationProcess Value Carrier
-  evangelize? : Cult Value Carrier → Prop := fun c =>
+  euclid : InitiationProcess Value Carrier
+  judgement_day? : Cult Value Carrier → Prop := fun c =>
     match c with
-    | .cult_of_personality prop _ _ => prop
-    | .cult_of_ideology fact _ _ _ => fact.truth
+    | .pythagorass prop _ _ => prop
+    | .triangles fact _ _ _ => fact.truth
 
 inductive Science  -- 8029
     (Value: Type)

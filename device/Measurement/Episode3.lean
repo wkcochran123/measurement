@@ -36,7 +36,7 @@ I wonder how big the die is on the computer you are running on? .01 ns? I guess 
 
 -- I tried to tell you I think about math differently than most people do.
 -- Welcome back to the chaotic maelstrom that is my understanding of math.
-import Measurement.Episode2
+--import Measurement.Episode2
 -- So far, though, haven't needed anything else imported, don't see the need to start.
 set_option allowUnsafeReducibility true
 
@@ -128,6 +128,7 @@ structure TuringProcess   -- Bullshit meter ≈ 492
 -- The compiler, however, needs a little help selecting a symbol.  When you __WRITE__ programs, you have to
 -- explain the symbols __BOTH__ to the compiler and to the __MAINTENANCE__ developer.  Have pity on those
 --- less fortunate.
+@[reducible]
 class REPRESENTABLE  --  Bullshit meter ≈ 261
     (Value: Type)                           -- Representation is the core challenge of communication _AND_
     (Carrier: CarrierProcess Value)         -- understanding.  Without a representation of an idea, then
@@ -191,6 +192,7 @@ instance : LE ChaitinsNumberSequence := ⟨ChaitinsNumberSequence.le⟩  -- Bull
 -- Perhaps the most universal thing about measurement is the fact that all measurement has noise.  So, I cannot directly
 -- measure the compiler actually computing Chaitin's number.  But, since I know it is itself a computing process, I can
 -- model the noise itself as a computational process!  Meet my _petard_!
+@[reducible]
 structure NoisyProcess  -- Bullshit meter ≈ 504
     (Value: Type)
     (Carrier: CarrierProcess Value)      -- This really feels like it is __cheating__.  BUT!  The only way to make sure
@@ -251,6 +253,7 @@ structure NoisyProcess  -- Bullshit meter ≈ 504
 -- used to solve that problem.  The first thing I need to do is explain to the compiler what a computer is.
 
 -- Welcome aboard.  I bet you didn't think it was going to take a turn like this, did you?
+@[reducible]
 class PHYSICAL  -- Bullshit meter ≈ 430
     (Value: Type)
     (Carrier: CarrierProcess Value)

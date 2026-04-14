@@ -110,12 +110,19 @@ structure SensingProcess -- Bullshit meter ≈ 750
     [z: COMPARABLE Value Carrier]
     [particle: OBSERVED Value Carrier]
   where
-  slip_process : SlipProcess Value Carrier
-  accumulation: Area
+  static_fraction : SlipProcess Value Carrier
+-- μ: You don't get to know this.
+  accumulation: Area   -- You _do_ get to know this.
 
-  receive_carrier: Area → Area := fun s => match s with
+  use_force: Area → Area := fun s => match s with
     | .t _ => .t d.fact
     | .dt fact _ => .dt fact accumulation
+
+-- You know who else has a secret threshold _AND_ can use the force?
+
+-- Santa Claus!
+-- How do you _KNOW_ if you have been _TOO_ naughty?  Can you be a little bit _more_ naughty and still get presents?
+-- Also, using the force is _THE ONLY EXPLANATION_ for how he can get around the Earth in a single night.
 
 class PRESENT  -- Bullshit meter ≈ 594
     (Value: Type)
@@ -133,8 +140,8 @@ class PRESENT  -- Bullshit meter ≈ 594
     [z: COMPARABLE Value Carrier]
     [particle: OBSERVED Value Carrier]
   where
-  sensing_process: SensingProcess Value Carrier
-  present: Area → Area → Prop := fun s1 s2 => sensing_process.receive_carrier s1 = s2
+  santa_claus: SensingProcess Value Carrier
+  present: Area → Area → Prop := fun s1 s2 => sensor.receive_carrier s1 = s2
 
 inductive Phenomenon   -- Bullshit meter ≈ 153
   | inital_condition: Fact → Area → Phenomenon → Phenomenon
@@ -234,10 +241,32 @@ end Jar
 instance : LE Jar := ⟨Jar.le⟩  -- Bullshit meter ≈ 5.   I mean, c'mon compiler.  I'm confident my
                                -- bullshit meter is pretty well calibrated.
 
+--   ⠀⠀⠀⠀⠀⠀⢀⣶⣤⣀⠀⠀⠀⡼⡑⠢⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+--   ⠀⠀⠀⠀⠀⠀⢘⢉⢹⣯⣆⡰⣾⣷⣀⡄⣼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+--   ⠀⠀⠀⠀⠀⠀⠈⣧⠭⣹⢟⣽⣿⣷⡚⠿⠏⠳⠒⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+--   ⠀⠀⠀⠀⠀⠀⠀⢈⠏⠈⠼⣿⣿⣏⠉⠀⠀⠀⠀⢶⠛⠢⡀⠀⠀⠀⠀⠀⠀⠀
+--   ⠀⠀⠀⠀⠀⠀⠀⡦⠂⠀⠊⠳⠀⠛⡢⠀⠀⠀⠀⠈⠄⠁⣻⡄⠀⠀⠀⠀⠀⠀
+--   ⠀⠀⠀⠀⠀⠀⡔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠄⣘⢣⠀⠀⠀⠀⠀⠀
+--   ⠀⠀⠀⠀⠀⢎⣀⡠⠤⢄⣀⡀⠤⠴⠶⠠⠀⠀⠀⠀⢀⠎⢸⣽⡀⠀⠀⠀⠀⠀
+--   ⠀⠀⠀⠀⠀⠀⠘⡤⣀⣀⣀⣤⣶⣤⠤⠂⠐⠀⠀⠀⢸⠘⠔⠝⡅⠀⠀⠀⠀⠀
+--   ⠀⠀⠀⠀⠀⠀⢰⢅⣽⢷⡝⡈⠀⠀⠀⢀⠀⠀⠀⠀⣟⠈⢄⡌⡵⠀⠀⠀⠀⠀
+--   ⠀⠀⠀⠀⠀⢀⢇⣾⣯⡞⢀⠱⡀⠀⠀⠀⠀⠀⠀⢸⠀⢔⠀⠈⠂⡆⠀⠀⠀⠀
+--   ⠀⠀⠀⠀⠀⡜⣻⡿⣹⠃⡌⡠⠃⠀⠀⠀⠀⠀⢠⣿⠀⠀⠈⢄⠉⢳⠀⠀⠀⠀
+--   ⠀⠀⠀⠀⢰⢡⣿⢷⣿⡖⠉⠀⠀⠀⠀⠀⠀⠀⠀⢿⣆⠀⢀⣀⠊⠀⠢⠀⠀⠀
+--   ⠀⠀⢀⢔⣡⣾⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣻⣷⣄⡀⠀⠁⠅⣵⠀⠀
+--   ⠀⠀⣶⣯⠟⠛⣿⣿⣿⣿⣷⣦⣤⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⡧⡀⠠⠎⠌⡄⠀
+--   ⠀⠀⠜⠁⠀⠀⠸⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⢠⣿⣽⣿⣿⣿⣧⠀⠑⠄⡉⢘⡄
+--   ⡔⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⣼⣿⣿⣿⣿⣿⣿⠀⠀⠀⠘⡄⡴
 -- Meesa explain!
 -- Meesa take the concept and put it in the jar!
 -- Meesa don't know what meesa saying but the compiler does!
 -- Meesa the β-reduction! Meesa VERY IMPORTANT!
+
+-- Am I going to have to invite JarJar along with us on the ride of your life?
+-- Of course, I have to explain IEEE 754 to Gungans.  Didn't I say that last episode?  That I was going to end up
+-- doing it?
+
+-- However,
 
 structure MeesaProcess  -- Bullshit meter ≈ 1010.    There we go, we just broke 1000 on the bullshit meter.
                         -- That's about 1/4 increase in bullshit, measured structure-on-structure.

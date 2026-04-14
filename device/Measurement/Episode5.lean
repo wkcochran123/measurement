@@ -71,15 +71,37 @@ structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
 
   where
     meesa_process : MeesaProcess Value Carrier
+-- Step 1 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dynamics As Described By Yang and Mills:
+-- Explain the Pauli Exclusion Principle and the hyperfine transition. So, there are two electrons that we will
+-- call:
     one: Quantization
     zero: Quantization
 
-    tick: Quantization → Quantization := fun s =>
+-- Step 2 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dynamics As Described By Yang and Mills:
+-- Explain that there are two states that something can be in, zero and one.  But, it can only be in one at
+-- a time.
+--           +----------------+-------------------------   Looks like we can speculate an evolutionary mechanism
+--           |                |                            that allows the forward propagation of quantified data
+--           V                V                            under transform.   I _think_ this is what you might call
+    tick: Quantization → Quantization := fun s =>     --   parameterization.
       match s with
+--                           +--------------   I call this the Neutrino! for it _IS_ the state that is excluded by
+--                           |                 Pauli.
+--                           V
       | .zero _ _ => .one false zero one           -- Dag you, we have an anonymous ZERO
       | .one _ _ _ => .zero Fact.Truth zero        --              and an anonymous ONE.
-                                                   -- COMPLETELY FUCKING ANONYMOUS.
-                                                   -- You instantiate Nats.  I pull them out of my ass.
+--                              ^  +--+               COMPLETELY FUCKING ANONYMOUS.
+--  I call this the thing that  |  |  |               You instantiate Nats.  I pull them out of my ass.
+--  Pauli exclusion needs to    +--+  |
+--  know if there is a   -------------+
+--  particle present.  Only one
+--  Particle at a time!
+
+--  Step 3 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dyanmics As Described By Yang and Mills:
+--  ???
+
+--  Step 4 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dyanmics As Described By Yang and Mills:
+--  Explain Warp Drives.
 
 @[reducible]
 class SOURCE   -- Bullshit meter ≈ 1121.   That's almost a 50% increase!

@@ -43,7 +43,9 @@ structure LearningProcess
     [scientist: ACOLYTE Value Carrier]
   where
   initiation_process : InitiationProcess Value Carrier
-  hypothesis: Cult Value Carrier
+  -- Learn the ways of Galileo
+  galileo: Cult Value Carrier
+  -- In order to _DESCRIBE_ science.
   invariant: Science Value Carrier
 
   touch_stove? : Science Value Carrier → Science Value Carrier := fun s =>
