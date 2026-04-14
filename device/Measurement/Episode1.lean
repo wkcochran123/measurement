@@ -34,8 +34,6 @@ lake build --expert_mode --crash_on_everything --do_not_explain_errors
 Can I do this with no imports?  Hold my beer...
 -/
 set_option allowUnsafeReducibility true
-
-set_option jobs 1
 -- Well, I do need _a little bit_ of help..
 
 -- So, I have been thinking about how to measure things.  Anything.  Even the thing that is
