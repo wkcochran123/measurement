@@ -38,6 +38,7 @@ I wonder how big the die is on the computer you are running on? .01 ns? I guess 
 -- Welcome back to the chaotic maelstrom that is my understanding of math.
 import Measurement.Episode2
 -- So far, though, haven't needed anything else imported, don't see the need to start.
+set_option allowUnsafeReducibility true
 
 
 namespace Measurement
@@ -85,6 +86,7 @@ instance : LT Computation := ⟨Computation.lt⟩   -- Bullshit meter ≈ 8
 -- The fact that we get _two_ different representations of the _same_ ordering relation is a _SUPER_ huge convenience
 -- and it will _NEVER_ get confusing.
 
+@[reducible]
 structure TuringProcess   -- Bullshit meter ≈ 492
     (Value: Type)
     (Carrier: CarrierProcess Value)

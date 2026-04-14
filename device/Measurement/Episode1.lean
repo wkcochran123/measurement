@@ -6,6 +6,10 @@ _This is a gentle reminder that the fanciful stories we tell ourselves are just 
 
 (c) 2026 All rights reserved -- Can you copyright an anonymous text? rofl.
 
+TO ALL THE PEOPLE WHOSE IDEAS CONTRIBUTED TO THIS WORK, I HUMBLY STAND IN YOUR SHADOW.
+I DARE NOT STAND ON YOUR SHOULDERS, FOR I AM NOT SURE I CAN SEE FAR ENOUGH TO KNOW WHERE
+YOUR SHOULDERS ARE.
+
 -- Forward:
 
 Dear All,
@@ -16,9 +20,11 @@ of speaking.  I spoke a lot of words in only one particular order.
 
                                          -- Arthur C. Clarke
 
-This is my apology to Mr. Clarke.  Any, and I mean _ANY_, advanced enough science looks like magic.
+This is my apology to Mr. Clarke.  Any, and I mean _ANY_, advanced enough satire is
+indistinguisahble from science.   Not necessarily this one, though.
 
-Episode 1:  Counting
+
+__EPISODE 1__:  _Counting_
 
 "Hold on lady, we go for ride."
                     -- Short Round.
@@ -27,6 +33,10 @@ lake build --expert_mode --crash_on_everything --do_not_explain_errors
 
 Can I do this with no imports?  Hold my beer...
 -/
+set_option allowUnsafeReducibility true
+
+set_option jobs 1
+-- Well, I do need _a little bit_ of help..
 
 -- So, I have been thinking about how to measure things.  Anything.  Even the thing that is
 -- doing the measuring.  While it is doing the measuring.  All the way down.  To try to give
@@ -35,7 +45,7 @@ Can I do this with no imports?  Hold my beer...
 -- in stone as you might think.
 
 -- We are going to use the generally accepted principles of science and engineering to reverse-engineer
--- the Lean compiler itself and explicitly _measure_ how well it can evaluate _true = true_.
+-- the Lean compiler _AND PHYSICS ITSELF_ and explicitly _measure_ how well it can evaluate _true = true_.
 
 -- Why?  Cuz I understand math, but the way _I_ understand math is _very_ different from most people's.
 -- This here lean proof assistant is designed to show me where _I_ don't understand math.  Well, I'm
@@ -53,9 +63,9 @@ universe i -- There is only 1 universe, the one we can experience right now, at 
 -- I think you will agree it is easy to see whether or not something happened                +-------------------------------+
 -- and if that something happened, that _fact_ is _true_.  Otherwise, it ain't. Clear?       |                               |
 --                                             +---------------------------------------------+                               |
--- This compiles Fact and fails Number         |               This is a measurement from a device of my own design. --------+
-class Fact where   -- Bullshit meter ≈ 9   <---+
-  truth : Prop                 -- Did it happen or not?
+@[reducible] --                                |               This is a measurement from a device of my own design. --------+
+class Fact where   -- Bullshit meter ≈ 9   <---+               a clever device that gives us an idea of how much bullshit
+  truth : Prop                 -- Did it happen or not?                                             Lean is putting up with
   decTruth : Decidable truth   -- Sometimes the compiler will know the answer before we do!
                                -- This fucker doesn't know math, it is _PSYCHIC_! It seems to understand
                                -- what cannot be possible given the current situation _pretty_ well.
@@ -73,25 +83,28 @@ namespace Fact    -- Bullshit meter ≈ 25
              --              |                       It means that we are playing three card monte and I glued
              --              |                       the quarter to the table. Watch me _still_ take your money.
              --              V                       Without moving the first card.
-def Truth : Fact := { truth := true, decTruth := Decidable.isTrue rfl }
-     --                                                            ^
-     --                                                            |
-     --             I assume you, too, can rfl this.  rofl. -------+
+def Truth : Fact := { truth := true, decTruth := Decidable.isTrue rfl }     -- For those new to Lean, I just asked
+     --                                                            ^        -- the compiler what _true=true_ and it
+     --                                                            |        -- said TRUE.  This is the actual mechansim
+     --             I assume you, too, can rfl this.  rofl. -------+        -- the compiler uses.  A label for it, anyway.
 end Fact
 -- Thus ends the storage allocation portion of the program.  The rest of the code reorganizes this vast,
 -- deep--- dare I say _BIG DATA_?!-- bit into something that might look familiar to you.
 
--- But before we measure, we have to deal with relative value.  I don't have time to spend _all day_
+-- That's right.  We are going to manipulate the __HELL__ out of that bit by comparing it to itself.
+
+
+-- But before we measure, though, we have to deal with relative value.  I don't have time to spend _all day_
 -- building you a number system from scratch, so I will just make enough of the number system to get by.
 
 -- Well, if we are going to measure what the compiler is doing, it would help
 -- if we agreed on what some numbers were.  So, let's make some and name them.  Big Endian so we
 -- can shortcut a very common computation.
--- This compiles Fact and fails Number
-inductive Number where   -- Bullshit meter ≈ 92
-  | zero : Fact → Number
-    --      ^
-    --      |
+--                                               +----------------   What you are looking at is an estimation of
+inductive Number where   -- Bullshit meter ≈ 92  |                   the work the elaborator is doing.  This is
+  | zero : Fact → Number --                   ^  |    approximately the minimum number of heartbeats the elaborator
+    --      ^                                 |  |    requires to check this code.  How much bullshit it has to wade through.
+    --      |                                 +--+
     --      +--------------- 0 or 1. This is our digit. Or, rather, the clock
     --                       complement of this for those who understand DSP.
   | one  : Fact → Number → Number
@@ -103,8 +116,13 @@ inductive Number where   -- Bullshit meter ≈ 92
     --                         is _the standard_ to which I am holding myself.  This is
     --                         _probably true_. Let's find out!  We can ask the compiler.
 
+-- *REMEMBER THAT* __FACTS__ have a high likelihood of being  __TRUE__!  (A sign of our times...)
+-- If one does not check facts then does one have fake news?  Oh, I see, they are exclusive!
+-- that explains a lot.  Facts:  check_facts ≠ fake_news.  or check_facts ∩ fake_news = ∅.
+-- See, facts are probably true.
+
 -- And so, we set about constructing the machinery so the compiler can, in fact answer
--- this question of can we count both ways?
+-- this question of can we count both ways as a matter of probable fact?
 
 -- Be patient, we have to go through Einstein field equations to get the answer, but it
 -- is in there. And we will find it.  Eventually.  Eye on the prize, we just want to know
@@ -180,7 +198,6 @@ end Number
 -- I will be asking a very similar question in a second. Turns out, I've heard it
 -- both ways.
 
-
 -- BTW, I hope you don't mind I hijack operators for my own nefarious purposes.
 -- If you forget what they mean, because hijack is really a euphemism for what
 -- I'm about to do, just remember it always means "Less Than or Equal To" in whatever
@@ -212,15 +229,16 @@ structure CarrierProcess -- Bullshit meter ≈ 85
                                               -- fence post problems, realize that they are the first fundamental
                                               -- bug. I mean, distinguishing feature.
 --                                                                 |
---        +--------------------------------------------------------+
---        |
---        V
+--                +------------------------------------------------+
+--                |
+@[reducible] --   V
 class DISTINGUISHABLE  -- Bullshit meter ≈ 28                      You may start noticing a pattern to
     (Value: Type)                                               -- the structure -> class -> inductive ->
     (Observation: CarrierProcess Value)                         -- structure -> class -> ...
     where                                                       -- An eternal golden braid of meta-programming.
                                                                 -- This argument does not exist without the
                                                                 -- beauty of Hofstadter's work.
+                                                                -- Also, it's a representation of the BNF representation.
 
   fact: Fact           -- This is quite true as a matter of fact
                        -- Also, C++ PTSD.
@@ -263,7 +281,7 @@ inductive Natural  -- Bullshit meter ≈ 107
                                                 -- you that, indeed, true=true.
 
   | number : Fact → Number → Natural → Natural  -- Here, the Fact is that we agree with the compiler that
-                                                -- the universe of Number is what we call a Natural number.
+                                                -- the universe of level Number is what we call a Natural number.
 
 -- The natural numbers have this property that the ones after are bigger than the ones before.
 -- Not certain they have another property worth talking about.  If you can think of one,
@@ -299,10 +317,11 @@ instance : LT Natural where  -- Bullshit meter ≈ 7
 -- count apart as I think that might be important to the plot.
 --
 -- And you are reading this for the plot, right?
+@[reducible]
 structure CountingProcess -- Bullshit meter ≈ 118
     (Value: Type)
     (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
+    [object: DISTINGUISHABLE Value Carrier]
   where
 -- Well, it turns out, To do either, you need a _carrier_.  Something
 -- you can identify, classify, bin, and count.  The first three are
@@ -334,16 +353,31 @@ structure CountingProcess -- Bullshit meter ≈ 118
 -- like way.
   iterate: Natural → Natural := fun n =>
     match n with
-    | .zero _ => .zero d.fact -- Naturals need to have something factual to start from
-                              -- I would prefer to avoid the empty set as
-                              -- that blatantly _assumes sets exist_.  Such decadence.
-                              -- Instead, we are using the fact that true = true. However,
-                              -- sometimes, true = false.  Just to mix it up. I actually
-                              -- don't care which world we live in, symmetric or anti-symmetric.
-                              -- and neither does the compiler.
+--                           +------    This is the "GROUND TRUTH".  The thing that we agree happened that allowed us to
+--                           |          start counting in the first place. This is the opposite of absence.  We know something
+--                           |          is there.  That something is _nothing_.  Personified as ∅.  _THESE_ are the naturals.
+--                           V
+    | .zero _ => .zero object.fact  -- Naturals need to have something factual to start from
+                                    -- I would prefer to avoid the empty set as
+                                    -- that blatantly _assumes sets exist_.  Such decadence.
+                                    -- Instead, we are using the fact that true = true. However,
+                                    -- sometimes, true = false.  Just to mix it up. I actually
+                                    -- don't care which world we live in, symmetric or anti-symmetric.
+                                    -- and neither does the compiler.
 
-    | .number _ _ _ => .number d.fact carrier.value count
--- We can take the carrier value from the compiler and use it to count.
+--            +-+-+--------------------   This is compiler gibberish.  Which is fine.  The compiler is counting.  I am telling
+--            | | |                       it what _I_ think goes there.
+--            V V V
+    | .number _ _ _ => .number object.fact carrier.value count
+--                                   ^            ^        ^
+--                                   |            |        |
+--                                   +------------|--------|------------ The fact the next thing showed up
+--                                                |        |
+--                                                +--------|------------ The label I give this compiler gibberish in the compiler.
+--                                                         |
+--                                                         +------------ My list of numbers up to this point. That should be enough
+--                                                                       for the compiler to figure out how I sort the symbols
+--                                                                       by value.
 
 
 
@@ -351,6 +385,7 @@ structure CountingProcess -- Bullshit meter ≈ 118
 -- just means the compiler did not barf on a computation. In this case
 -- what the compiler is doing is looking through the inductive to see
 -- if it can find a counterexample to a ≤ b.
+@[reducible]
 class ADMISSIBLE  -- Bullshit meter ≈ 60
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -377,14 +412,19 @@ class ADMISSIBLE  -- Bullshit meter ≈ 60
   --     +--------------------- asking if the value obeys our sign convention on ≤. In
   --                            which case, we already know it is different and uncounted,
   --                            and therefore counting it _embiggens_ the magnitude!
+  --                            Also, this is the fall-thru shortcut promised way up  when
+  --                            we mad a number.
 
 
 -- Now, I am invoking my _creative license_ here, kinda.  Let's talk rational
 -- numbers.  Here we define rationals in a very interesting way.  Given a sequence
 -- of naturals, you get.  F -> A -> A -> F -> B -> A/B -> F -> C -> C -> F -> D -> C/D -> ....
 -- I could convince you that such a mapping will enumerate all rationals, but I am
--- lazy af.  Point is, all those numbers _are_ rational numbers. And we don't need
--- all of them, just a countable amount.
+-- lazy af.  Not only that, but you should easily be able to convince yourself it maps the rationals
+-- over and over again to the naturals because it doesn't assume reduced fractions.  Point is, all those numbers
+-- _are_ rational numbers. And we don't need all of them, just a countable amount.
+
+-- It would be a _nice to have_ if it were bijective.
 inductive Rational  -- Bullshit meter ≈ 107
       --     ^
       --     |
@@ -409,7 +449,7 @@ inductive Rational  -- Bullshit meter ≈ 107
 -- The threshold mention above should start to make sense.  1 is our threshold
 -- And we can count our way arbitrarily close to it without keeping state.
 
--- And, since we haven't included any numbers from lean whatsoever, I will
+-- And, since we haven't included any numbers from Lean whatsoever, I will
 -- just go ahead and assume that residue is _actually_ what is being represented.
 -- And when we do math, we are just doing math on the representations.
 
@@ -452,6 +492,7 @@ instance : LT Rational where  -- Bullshit meter ≈ 5
 -- yet. But! I do know 1 interesting Rational number.  That is the origin!
 -- Zero = 0.00 <--- is this 2 or 3 significant digits?  Turns out, that will matter.
 -- Not yet, though.
+@[reducible]
 structure IndexingProcess  -- Bullshit meter ≈ 143
         --       ^                             +-------------------------------------------- I hate this word.
         --       |                             |                                             It is intangible
@@ -520,6 +561,7 @@ structure IndexingProcess  -- Bullshit meter ≈ 143
 -- you know how _technically_ wrong I just _have_ to be.  I think you will find
 -- that I am cleverer than you think.
 
+@[reducible]
 class COUNTABLE  -- Bullshit meter ≈ 85
  --      ^                 Bet you weren't expecting the word COUNTABLE from any of that.
  --      |                 But that is exactly the concept we are modeling, there exists
@@ -607,6 +649,7 @@ class COUNTABLE  -- Bullshit meter ≈ 85
 -- represent these concepts.
 
 -- For instance, a sequence of numbers is a common useful construction of math.
+@[reducible]
 inductive Sequence  -- Bullshit meter ≈ 107
   |nil: Fact → Sequence
   |index :  Fact → Rational → Sequence → Sequence
@@ -685,6 +728,7 @@ instance : LT Sequence where -- Bullshit meter ≈ 5
 -- or is this argument dense?
 
 -- Any hooozlebee, this gets you a localized .....
+@[reducible]
 structure LimitProcess  -- Bullshit meter ≈ 185
     (Value: Type)                     -- As you can start to see, the Value and Carrier
     (Carrier: CarrierProcess Value)   -- paramaters are universal.  What is happening is
@@ -745,6 +789,7 @@ structure LimitProcess  -- Bullshit meter ≈ 185
 -- Actually, we should start more primitively, with _zero_.  I think we all agree on what that
 -- is supposed to look like.
 
+@[reducible]
 class ENCODED  -- Bullshit meter ≈ 85
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -849,6 +894,7 @@ instance : LT Limit where -- Bullshit meter ≈ 5
 -- Wild, right?  Well, turns out stoichiometric measurement is one of only _2_ kinds of
 -- measurement.  One covariant and one contravariant. You either passively measure it through
 -- a carrier interaction or you actively manipulate it, finding its physical bounds.
+@[reducible]
 structure CauchyProcess  -- Bullshit meter ≈ 228
     (Value: Type)                      -- These guys are still familiar
     (Carrier: CarrierProcess Value)
@@ -873,6 +919,7 @@ structure CauchyProcess  -- Bullshit meter ≈ 228
 --                                                  |
 --                                                  +-------- Still just counting
 
+@[reducible]
 class RESIDUE
     (Value: Type) -- Bullshit meter ≈ 103
     (Carrier: CarrierProcess Value)

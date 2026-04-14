@@ -27,6 +27,7 @@ Lol.
 
 -- Would you even care if I imported anything at this point?
 import Measurement.Episode4
+set_option allowUnsafeReducibility true
 
 
 -- So, have you figured out the quarter I keep taking from you?   I told you, you had no idea how
@@ -47,6 +48,7 @@ inductive Quantization  -- Bullshit meter ≈ 119.   This is down almost 1/3.  I
     | zero: Fact → Quantization → Quantization
     | one: Prop → Quantization → Quantization → Quantization
 
+@[reducible]
 structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -79,6 +81,7 @@ structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
                                                    -- COMPLETELY FUCKING ANONYMOUS.
                                                    -- You instantiate Nats.  I pull them out of my ass.
 
+@[reducible]
 class SOURCE   -- Bullshit meter ≈ 1121.   That's almost a 50% increase!
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -118,6 +121,7 @@ inductive Encoding   -- Bullshit meter = 118.  Flat.
   | zero: Quantization → Encoding → Encoding
   | one: Quantization → Encoding → Encoding → Encoding
 
+@[reducible]
 structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bullshit tends to accrete!
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -150,6 +154,7 @@ structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bul
     | .one _ _ _,  .zero _ _     => .zero digital_process.one opcode
     | .one _ _ _,  .one _ _ _    => .zero digital_process.one opcode
 
+@[reducible]
 class EXECUTED  -- Bullshit meter = 1158.  Calling this flat.
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -180,6 +185,7 @@ class EXECUTED  -- Bullshit meter = 1158.  Calling this flat.
     | .one _ _ _ , .zero _ _ => false
     | .one _ _ _ , .one _ _ _ => true
 
+@[reducible]
 inductive Abstraction  -- Bullshit meter = 2045.  About a 1/6 increase.
     (Value: Type)
     (Carrier: CarrierProcess Value)

@@ -8,6 +8,7 @@ set_option allowUnsafeReducibility true
 
 namespace Measurement
 
+@[reducible]
 class WITNESSED
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -45,10 +46,11 @@ class WITNESSED
 inductive Truth
   | fact: Gospel → Prop → Truth → Truth
 
-@[reducible] -- We have learned this through Quantum Eletrodynamics.
+--  We have learned this through Quantum Eletrodynamics.
 --  Damn, there's that fade away three nothing but net over __GODEL__ __COHEN__ __CANTOR__ __HILBERT__ and ...
 --  No...  Without them, I would have stepped on the land mines.  It is _BECAUSE_ of them that I can see the land mines
 --  and avoid them.
+@[reducible]
 structure UniverseTensor
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -90,6 +92,7 @@ structure UniverseTensor
     match gospel with
     | .state _ _ _ => fun _ => reality
 
+@[reducible]
 class REAL
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -128,3 +131,104 @@ class REAL
                                                  universal_observer.frame_of_reference.the_ancient_texts
   -- Or is this just fantasy?
   -- Squashed that fucking imaginary number like a bug with the hammer of reality!
+
+
+inductive Variation
+  | gateaux: Gospel → Prop → Prop → Variation
+  | frechet: Gospel → Prop → Prop → Prop → Variation
+
+@[reducible]
+structure FiniteGaugeTheoryOfMeasurement
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier]
+  where
+  universal_observer: UniverseTensor Value Carrier  -- Praise be to the universal observer.
+  differential_equation: Variation
+  transmute: Variation → Variation := fun variation =>
+    match variation with
+    | .gateaux g a b =>
+        -- Gateaux → Fréchet: add the residue.
+        -- a is the direction, b is the response, a≠b is the strain.
+        .frechet g a b (a ∧ ¬b)   -- the residue is exactly the informational strain
+    | .frechet g a b residue =>
+        -- Fréchet → Gateaux: project out the residue, collapse to direction only.
+        -- This is the weak form. You lose the residue. That's the price of Galerkin.
+        .gateaux g a b
+
+@[reducible]
+class UNIVERSAL
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier]
+  where
+  theory: FiniteGaugeTheoryOfMeasurement Value Carrier
+  experience: Variation → Fact := fun variation =>
+    match variation with
+    | .gateaux _ a b =>
+    --                  +--------------  TRUE = True AND Not false lol.
+    --                  |                I put a ball-gag on Godel.
+    --                  V
+        { truth    := a ∧ ¬b      -- covariant: did the direction match the response?
+        , decTruth := by decide }  -- sorry this if decide chokes
+    --                  ^
+    --                  |
+    --                  +--------------  I like to call this the
+    --                                   _Householder Razzle Dazzle_
+    | .frechet _ a b residue =>
+        { truth    := residue      -- the residue IS the fact. strain or no strain.
+        , decTruth := by decide }

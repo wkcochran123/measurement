@@ -22,10 +22,12 @@ I'm all about that base, 'bout that base, 'bout that base, no treble.
 
 -- WE GET SIGNAL!
 import Measurement.Episode5
+set_option allowUnsafeReducibility true
 
 -- MAIN SCREEN TURN ON !
 namespace Measurement
 
+@[reducible]
 structure MathematicalProcess  -- Bullshit meter = 2963.  That's about 2/3 increase.
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -60,6 +62,7 @@ structure MathematicalProcess  -- Bullshit meter = 2963.  That's about 2/3 incre
       @Abstraction.execute _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ one compiled_process prog mapping
 
 
+@[reducible]
 class VALUE  -- Bullshit meter = 3327.  3x increase!  That's a lot of bullshit!
      (Value: Type)
      (Carrier: CarrierProcess Value)
@@ -111,6 +114,7 @@ end Sum
 instance : LE Sum := ⟨Sum.le⟩  -- Bullshit meter = 8
 instance : LT Sum := ⟨Sum.lt⟩
 
+@[reducible]
 structure AddingProcess  -- Bullshit meter ≈ 2063.   Thats 33% less bullshit than a generic mathematical process!
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -143,6 +147,7 @@ structure AddingProcess  -- Bullshit meter ≈ 2063.   Thats 33% less bullshit t
       | _ => .add Fact.Truth a (.zero p a)
     | .add f a _ => .add f a sum
 
+@[reducible]
 class MAGNITUDE  -- Bullshit meter ≈ 1503.  That's less than 1/2 the bullshit of a value!
      (Value: Type)
      (Carrier: CarrierProcess Value)
@@ -190,6 +195,7 @@ end Product
 instance : LE Product := ⟨Product.le⟩  -- Bullshit meter = 5
 instance : LT Product := ⟨Product.lt⟩
 
+@[reducible]
 structure MultiplyingProcess  -- Bullshit meter = 2157  5% increase.  Call that flat response over the AddingProcess.
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -222,6 +228,7 @@ structure MultiplyingProcess  -- Bullshit meter = 2157  5% increase.  Call that 
       | _ => .Mul Fact.Truth a p
     | .Mul f a _ => .Mul f a product
 
+@[reducible]
 class SCALED  -- Bullshit meter = 1756
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -258,6 +265,7 @@ inductive Basis   -- Bullshit meter = 134
 -- Surely you're joking Mr. Henry!
 
 
+@[reducible]
 structure BASICOperation  -- Bullshit meter ≈ 2759
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -294,6 +302,7 @@ structure BASICOperation  -- Bullshit meter ≈ 2759
         --                                             |
         -- Tail recursion -----------------------------+
 
+@[reducible]
 class LOAD  -- Bullshit meter 2089
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -332,6 +341,7 @@ inductive Polynomial    --  Bullshit meter 119
   | zero: Prop → Basis → Polynomial
   | add: Fact → Basis → Polynomial → Polynomial
 
+@[reducible]
 structure GalerkinProcess   -- Bullshit meter 2794
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -370,12 +380,13 @@ structure GalerkinProcess   -- Bullshit meter 2794
 -- Let's address the _elephant in the room_.  First, let's agree that it is _SINGULAR_ and that it is only _SO BIG_.
 -- It can get really, really, __REALLY__ big in just a few keystrokes.  That's the problem.  We have only
 -- one stack frame, our __FINITE_ELEPHANT__.
+@[reducible]
 class FINITE_ELEPHANT   -- 2368
     (Value: Type)
     (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]     -- So, they _ASSUME_ they have an undocumented one and proceed to add the release.
-    [a: ADMISSIBLE Value Carrier]          -- Only to realize they can't _EXACTLY_ find the _RIGHT_ release of their media to catalog.
-    [c: COUNTABLE Value Carrier]           -- And spends hours every day on DISCOGS organizing their collection.
+    [d: DISTINGUISHABLE Value Carrier]     -- So, she _ASSUMES_ they have an undocumented one and proceed to add the release.
+    [a: ADMISSIBLE Value Carrier]          -- Only to realize she can't _EXACTLY_ find the _RIGHT_ release of their media to catalog.
+    [c: COUNTABLE Value Carrier]           -- And spends hours every day on DISCOGS organizing her collection.
     [e: ENCODED Value Carrier]             -- The audiophile purchases the finest copies of any analog recordings.
     [r: RESIDUE Value Carrier]             -- The audiophile meticulously cleans her records.
     [b: BINARY Value Carrier]              -- Invariably, there will be two camps.  The _AUDIOPHILE_ and the _NORMIE_.

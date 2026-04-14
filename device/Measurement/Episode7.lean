@@ -8,11 +8,13 @@ _This is a gentle reminder that the long, long stories we tell ourselves are jus
 
 -- WE GET SIGNAL!
 import Measurement.Episode6
+set_option allowUnsafeReducibility true
 
 
 -- MAIN SCREEN TURN ON
 namespace Measurement
 
+@[reducible]
 structure ArmWaveProcess   -- 3306
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -47,7 +49,7 @@ structure ArmWaveProcess   -- 3306
     | .knot prop poly _ => .knot prop poly guess
     | .interpolant prop poly prior _ => .interpolant prop poly prior guess
 
-class BULLSHIT  -- 2733
+class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved.
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]

@@ -77,6 +77,7 @@ Does it even matter what _is_ true anymore?
 -- Live! Without a net!
 -- This ain't no editting, this is me spittin' str8 fax.
 import Measurement.Episode1
+set_option allowUnsafeReducibility true
 
 namespace Measurement
 
@@ -121,6 +122,7 @@ namespace Measurement
 -- What we need to do now is understand if we want to label the first limit value of
 -- a Sample the covariant repsonse or the contravariant response.
 
+@[reducible]
 structure ObservationProcess   -- Bullshit meter ≈ 313
     (Value: Type)
     (Carrier: CarrierProcess Value)
