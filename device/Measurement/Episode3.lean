@@ -36,7 +36,7 @@ I wonder how big the die is on the computer you are running on? .01 ns? I guess 
 
 -- I tried to tell you I think about math differently than most people do.
 -- Welcome back to the chaotic maelstrom that is my understanding of math.
---import Measurement.Episode2
+import Measurement.Episode2
 -- So far, though, haven't needed anything else imported, don't see the need to start.
 set_option allowUnsafeReducibility true
 

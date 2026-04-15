@@ -2,54 +2,7 @@
 import Measurement.Episode9
 
 -- Homework:
-
 namespace Measurement
-@[reducible]
-class LOCAL
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-    [ideology: SCIENTIFIC Value Carrier]
-    [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier]
-  where
-  theory: BigRedDogProcess Value Carrier
-  delta: Fact
-  experience: Variation → Prop := fun variation =>
-  match variation with
-  | .gateaux f a b => (a ∧ b) ∨ ¬ (¬ a ∧ b)
-  | .frechet _ _ _ _ => delta.truth
-
-
-inductive SpaceTimePath
-  | white_hole: Prop → Type → SpaceTimePath
-  | black_hole: Prop → Type → Prop → Type 1 → SpaceTimePath → SpaceTimePath
-  | geodesic: Prop → Type i → Prop → Type (i+1) → SpaceTimePath → SpaceTimePath → SpaceTimePath
-
 
 structure CalculusProcess
     (Value: Type)
@@ -89,9 +42,9 @@ structure CalculusProcess
 
   ouija_board: SpaceTimePath → SpaceTimePath := fun path =>
     match path with
-    | .white_hole fact _ => .white_hole fact invariant_description
-    | .black_hole f1 _ f2 horizon path' => .black_hole f1 horizon f2 path' invariant_description
-    | .geodesic fact _ _ f1 path1 path2 => .geodesic f1 path1 f1 path2 path1 invariant_description
+    | .white_hole fact representation => .white_hole fact representation invariant_description
+    | .black_hole f1 _ f2 horizon path' => .black_hole f1 horizon f2 ULift(horizon) invariant_description
+    | .geodesic f1 path1 f2 path2 send receive => .geodesic ¬f1 path2 ¬f1 path1 receive send invariant_description
 
 
 class UNIVERSAL

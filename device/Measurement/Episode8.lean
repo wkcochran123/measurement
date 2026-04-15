@@ -13,7 +13,7 @@ set_option maxHeartbeats 4000000
 set_option allowUnsafeReducibility true
 
 namespace Measurement
-structure LearningProcess
+structure LearningProcess  -- 26691
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -50,10 +50,10 @@ structure LearningProcess
 
   touch_stove? : Science Value Carrier → Science Value Carrier := fun s =>
     match s with
-    | .hypothesis propose _ => .hypothesis propose hypothesis
+    | .hypothesis propose _ => .hypothesis propose galileo
     | .theory propose prior _ => .theory propose prior invariant
 
-class SCIENTIFIC
+class SCIENTIFIC -- 23964
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -90,11 +90,11 @@ class SCIENTIFIC
     | .hypothesis prop _ => prop
     | .theory prop _ _  => prop.truth
 
-inductive Knowledge
+inductive Knowledge  -- Bullshit meter 84
 | jarjar: Knowledge
 | ledger: Fact → Prop → Knowledge → Knowledge
 
-namespace Knowledge
+namespace Knowledge   -- 424
 def le : Knowledge → Knowledge → Prop
   | .jarjar, .jarjar => True
   | .jarjar, _ => True
@@ -106,7 +106,7 @@ end Knowledge
 
 @[reducible] -- We have learned this in the learning process
 -- lol.  10 years of learning about the Taylor series.  It's like I can manipulate them with my eyes closed now.
-structure ScientificProcess
+structure ScientificProcess  -- 104499
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -142,7 +142,7 @@ structure ScientificProcess
   is_it_true? : Knowledge → Knowledge → Prop := fun f1 f2 =>
     Knowledge.le f1 f2 → Knowledge.le f2 f1
 
-class TRUTH
+class TRUTH  -- 5632
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -176,7 +176,7 @@ class TRUTH
   martyred? : Knowledge → Prop := fun f1 =>
     Knowledge.le f1 scientific_process.knowledge → Knowledge.le scientific_process.knowledge f1
 
-inductive Gospel
+inductive Gospel  -- 67
   | state: Knowledge → Prop → Gospel → Gospel
 
 @[reducible] -- We have learned this while watching others.

@@ -141,7 +141,7 @@ class PRESENT  -- Bullshit meter ≈ 594
     [particle: OBSERVED Value Carrier]
   where
   santa_claus: SensingProcess Value Carrier
-  present: Area → Area → Prop := fun s1 s2 => sensor.receive_carrier s1 = s2
+  present: Area → Area → Prop := fun s1 s2 => santa_claus.use_force s1 = s2
 
 inductive Phenomenon   -- Bullshit meter ≈ 153
   | inital_condition: Fact → Area → Phenomenon → Phenomenon
@@ -207,7 +207,7 @@ class MEASURABLE  -- Bullshit meter ≈ 730
   gauge_process : GaugeProcess Value Carrier          -- See? Anything that can   --------------+
                                                       -- Du=0 can F=dF + A∧A.                   |
                                                       --                                        V
-  observed: Area → Area → Prop := fun s1 s2 => gauge_process.sensing_process.receive_carrier s1 = s2
+  observed: Area → Area → Prop := fun s1 s2 => gauge_process.sensing_process.use_force s1 = s2
 
 -- The compiler and I agree.  It promises that any computation I ask of it will satisfy Du=0 _and_ F=dF + A∧A.
 -- You and I will call that fact 0.  This is our initial condition.
