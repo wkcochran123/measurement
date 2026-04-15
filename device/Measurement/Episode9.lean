@@ -138,7 +138,7 @@ inductive Variation
   | frechet: Gospel → Prop → Prop → Prop → Variation
 
 @[reducible]
-structure FiniteGaugeTheoryOfMeasurement
+structure BigRedDogProcess
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]

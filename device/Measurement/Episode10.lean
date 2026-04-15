@@ -5,7 +5,7 @@ import Measurement.Episode9
 
 namespace Measurement
 @[reducible]
-class UNIVERSAL
+class LOCAL
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -37,44 +37,155 @@ class UNIVERSAL
     [gospel: TRUTH Value Carrier]
     [account: WITNESSED Value Carrier]
   where
-  theory: FiniteGaugeTheoryOfMeasurement Value Carrier
-  invariant: d.fact.symbol
-  experience: Variation → Fact := fun variation =>
-    match variation with
-    | .gateaux _ a b =>
-    --                  +--------------  TRUE = True AND Not false lol.
-    --                  |                I put a ball-gag on Godel.
-    --                  V
-        { truth    := (invariant = Fact.Truth.truth ) ∧ ¬(invariant ≠ Fact.Truth.truth)
-        --                                                                               covariant: did the direction match the response?
-        , decTruth := by
-            -- FIX 2: invariant is now a known decidable Prop, so decide can fire.
-            -- The Householder Razzle Dazzle holds: P ∧ ¬¬P reduces to P, and P is decidable.
-            exact instDecidableAnd
-              d.dec_distinct
-              (instDecidableNot (instDecidableNot d.dec_distinct)) }
+  theory: BigRedDogProcess Value Carrier
+  delta: Fact
+  experience: Variation → Prop := fun variation =>
+  match variation with
+  | .gateaux f a b => (a ∧ b) ∨ ¬ (¬ a ∧ b)
+  | .frechet _ _ _ _ => delta.truth
 
-    | .frechet _ a b residue =>
-        { truth    := residue      -- the residue IS the fact. strain or no strain.
-        , decTruth :=
-            -- FIX 3: fix the typo (invarinant -> invariant) and give the right type.
-            -- residue : Prop, so we need Decidable residue.
-            -- residue = (a ∧ ¬b) from transmute, both a and b are Props from Variation.
-            -- We don't have dec instances for a/b in scope here, so we use Classical
-            -- as the honest answer: we know it's a Prop, we cannot always decide it.
-            --
-            -- But! the invariant path gives us our ground:
-            -- if invariant is true, the device measured something; residue is the strain.
-            -- The compiler asked for decidability. We give it what we have.
-            if h : invariant = Fact.Truth.truth
-            then
-              -- covariant case: invariant matched, residue is the strain a ∧ ¬b
-              -- we cannot decide a and b without more structure, so we defer to Classical
-              Classical.dec residue
-            else
-              -- contravariant case: invariant did not match, strain is certain
-              Classical.dec residue }
+
+inductive SpaceTimePath
+  | white_hole: Prop → Type → SpaceTimePath
+  | black_hole: Prop → Type → Prop → Type 1 → SpaceTimePath → SpaceTimePath
+  | geodesic: Prop → Type i → Prop → Type (i+1) → SpaceTimePath → SpaceTimePath → SpaceTimePath
+
+
+structure CalculusProcess
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier]
+    [epsilon: LOCAL Value Carrier]
+  where
+  reading: BigRedDogProcess Value Carrier  -- Parents, read to your kids.  They are the future.
+  invariant_description: SpaceTimePath
+
+  ouija_board: SpaceTimePath → SpaceTimePath := fun path =>
+    match path with
+    | .white_hole fact _ => .white_hole fact invariant_description
+    | .black_hole f1 _ f2 horizon path' => .black_hole f1 horizon f2 path' invariant_description
+    | .geodesic fact _ _ f1 path1 path2 => .geodesic f1 path1 f1 path2 path1 invariant_description
+
+
+class UNIVERSAL
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier]
+    [epsilon: LOCAL Value Carrier]
+  where
+  the_compiler: CalculusProcess Value Carrier  -- Praise be to the universal compiler.
+  compiler_theory: SpaceTimePath → SpaceTimePath
+
+  -- Riding the train into the city sux ass, but at least you can write stupid Lean while you do it.
+  lake_build: SpaceTimePath → SpaceTimePath → SpaceTimePath → Prop := fun path1 path2 path3 =>
+  compiler_theory path1 = path2 ∧ compiler_theory path2 = path3
+
+
+inductive Integral
+|bulk: SpaceTimePath → SpaceTimePath → Prop → Integral
+|boundary: SpaceTimePath → SpaceTimePath → SpaceTimePath → Prop → Prop → Integral → Integral
+
+structure HeartbeatProcess
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier]
+    [epsilon: LOCAL Value Carrier]
+    [delta: UNIVERSAL Value Carrier]
+  where
+  bullshit_meter: CalculusProcess Value Carrier  -- Praise be to the heart.
+  bullshit_theory: SpaceTimePath → SpaceTimePath → SpaceTimePath → Prop → Prop
+  accumulated_bullshit: Integral
+
+  differentiate: Prop → Prop → Integral := fun f1 f2 =>
+    match f1, f2 with
+    | true, true => .dt bullshit_theory accumulated_bullshit
+    | false, false => .dt bullshit_theory accumulated_bullshit
+    | _, _ => .t bullshit_meter.compiler_theory (f1∧¬f2) epsilon.invariant_description
+
+
 /-
+
 def program : CarrierProcess FiniteGaugeTheoryOfMeasurement := sorry
 
 -- Problem 1: Implement de Morgan's law of the excluded middle.
