@@ -88,7 +88,7 @@ class UNIVERSAL
   compiler_theory path1 = path2 ∧ compiler_theory path2 = path3
 
 
-inductive Integral
+inductive YarnTheory
 |bulk: SpaceTimePath → SpaceTimePath → Prop → Integral
 |boundary: SpaceTimePath → SpaceTimePath → SpaceTimePath → Prop → Prop → Integral → Integral
 
@@ -128,13 +128,18 @@ structure HeartbeatProcess
   where
   bullshit_meter: CalculusProcess Value Carrier  -- Praise be to the heart.
   bullshit_theory: SpaceTimePath → SpaceTimePath → SpaceTimePath → Prop → Prop
-  accumulated_bullshit: Integral
+  accumulated_bullshit: YarnTheory
 
-  differentiate: Prop → Prop → Integral := fun f1 f2 =>
-    match f1, f2 with
-    | true, true => .dt bullshit_theory accumulated_bullshit
-    | false, false => .dt bullshit_theory accumulated_bullshit
-    | _, _ => .t bullshit_meter.compiler_theory (f1∧¬f2) epsilon.invariant_description
+  differentiate: Prop → Prop → YarnTheory := fun f1 f2 =>
+    match d.dec_distinct f1, d.dec_distinct f2 with
+    | isTrue _,  isTrue _  => .fibers epsilon.invariant_description epsilon.invariant_description True
+    | isFalse _, isFalse _ => .fibers epsilon.invariant_description epsilon.invariant_description True
+    | _, _                 => .bulk epsilon.invariant_description
+                                    epsilon.invariant_description
+                                    epsilon.invariant_description
+                                    (f1 ∧ ¬f2)
+                                    (¬f1 ∧ f2)
+                                    accumulated_bullshit
 
 
 /-

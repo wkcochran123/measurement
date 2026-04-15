@@ -134,6 +134,9 @@ class REAL
 
 
 inductive Variation
+--      +-----    We do what we must because we can.
+--      |
+--      V
   | gateaux: Gospel → Prop → Prop → Variation
   | frechet: Gospel → Prop → Prop → Prop → Variation
 
