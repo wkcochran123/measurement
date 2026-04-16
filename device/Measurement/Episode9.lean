@@ -228,7 +228,7 @@ class LOCAL
 
 
 inductive SpaceTimePath
-  | white_hole: Prop → Type → SpaceTimePath
+  | white_hole: Prop → Type → SpaceTimePath → SpaceTimePath
   | black_hole: Prop → Type → Prop → Type 1 → SpaceTimePath → SpaceTimePath
   | geodesic: Prop → Type i → Prop → Type (i+1) → SpaceTimePath → SpaceTimePath → SpaceTimePath
 

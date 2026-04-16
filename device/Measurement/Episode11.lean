@@ -1,11 +1,9 @@
 
-import Measurement.Episode9
+import Measurement.Episode10
 
--- Homework:
 namespace Measurement
-set_option maxHeartbeats 4000000
 
-structure CalculusProcess
+class LOGICAL
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -37,21 +35,17 @@ structure CalculusProcess
     [gospel: TRUTH Value Carrier]
     [account: WITNESSED Value Carrier]
     [epsilon: LOCAL Value Carrier]
+    [delta: UNIVERSAL Value Carrier]
   where
-  derivative: BigRedDogProcess Value Carrier  -- Parents, read to your kids.  They are the future.
-  function: SpaceTimePath
-  value: Type i
-  projection: Type 1
-  converged: Prop
+  feelings: HeartbeatProcess Value Carrier
+  understanding: Fact
 
-  photon_torpedo: SpaceTimePath → SpaceTimePath := fun path =>
-    match path with
-    | .white_hole fact representation _ => .white_hole fact representation function
-    | .black_hole f1 horizon f2 _ _ => .black_hole f1 horizon f2 projection function
-    | .geodesic _ path1 _ path2 before after => .geodesic d.fact.truth path1 d.fact.truth path2 before after
+  evaluate: Type i → Fact := fun _ => understanding
 
+inductive ComputerProgram
+| tape: Prop → Fact → ComputerProgram → ComputerProgram
 
-class UNIVERSAL
+structure ElaborationProcess
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -83,21 +77,15 @@ class UNIVERSAL
     [gospel: TRUTH Value Carrier]
     [account: WITNESSED Value Carrier]
     [epsilon: LOCAL Value Carrier]
+    [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier]
   where
-  the_compiler: CalculusProcess Value Carrier  -- Praise be to the universal compiler.
-  source_program: SpaceTimePath
-  compiled_program: SpaceTimePath
+  stamina: HeartbeatProcess Value Carrier
+  output: ComputerProgram
 
-  -- Riding the train into the city sux ass, but at least you can write stupid Lean while you do it.
-  lake_build: SpaceTimePath → SpaceTimePath → Prop := fun _ _ => the_compiler.converged = d.fact.truth
+  execute: ComputerProgram → ComputerProgram := fun _ => output
 
-
-
-inductive YarnTheory
-|fibers: SpaceTimePath → SpaceTimePath → Prop → YarnTheory → YarnTheory
-|fabric: SpaceTimePath → SpaceTimePath → SpaceTimePath → Prop → Prop → YarnTheory → YarnTheory → YarnTheory
-
-structure HeartbeatProcess
+class HALTED
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -129,38 +117,25 @@ structure HeartbeatProcess
     [gospel: TRUTH Value Carrier]
     [account: WITNESSED Value Carrier]
     [epsilon: LOCAL Value Carrier]
-    [computer_science: UNIVERSAL Value Carrier]
+    [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier]
   where
-  bullshit_meter: CalculusProcess Value Carrier  -- Praise be to the heart.
-  last_reading: SpaceTimePath
-  current_reading: SpaceTimePath
-  next_reading: SpaceTimePath
-  accumulated_bullshit: YarnTheory
+  scientific_paper: ElaborationProcess Value Carrier
+  hypothesis: Fact   -- So, how true is true = true?
+  result: Prop       -- Guess we will find out.
 
-  differential: Fact → Fact → YarnTheory := fun f1 f2 =>
-    match f1.decTruth, f2.decTruth with
-    | isTrue _,  isTrue _  => .fibers computer_science.source_program computer_science.compiled_program d.fact.truth accumulated_bullshit
-    | isFalse _, isFalse _ => .fibers computer_science.source_program computer_science.source_program (¬d.fact.truth) accumulated_bullshit
-    | _, _ => .fabric last_reading current_reading next_reading (f1.truth = ¬f2.truth) (¬f1.truth = f2.truth) accumulated_bullshit accumulated_bullshit
-/-
+  believe? : Prop → Fact := fun guess =>
+    { truth := guess = hypothesis,
+      decTruth := Classical.propDecidable (guess = hypothesis) }
 
-def program : CarrierProcess FiniteGaugeTheoryOfMeasurement := sorry
-
--- Problem 1: Implement de Morgan's law of the excluded middle.
-instance : DISTINGUISHABLE FiniteGaugeTheoryOfMeasurement program := sorry
-
--- My answer:
-def program : CarrierProcess FiniteGaugeTheoryOfMeasurement where
---                  +---------------------------    Weierstrauss Approximation Theorem  cuz Fuck the Continuum Hypothesis
---                  |                               I can make that three pointer all day long.  Swish.
---                  V
+def program : CarrierProcess HALTED where
   symbol := { truth := False, decTruth := Decidable.isFalse (fun h => h) }
   value  := .one Fact.Truth (.zero Fact.Truth)
 
-
--- I believe this demonstrates Euler-Lagrange.  I mean, it had to demonstrate
--- a solution to Euler-Lagrange to compile.
--/
+instance : DISTINGUISHABLE HALTED program where
+  fact   := Fact.Truth
+  symbol := HALTED
+  dec_distinct := fun _ => Classical.propDecidable _
 
 
 end Measurement
