@@ -16,7 +16,7 @@ def le : CompilerTape → CompilerTape → Prop := fun t1 t2 =>
   | .boot _ _ _ , .strap _ _ _ _ _ => True
   | .strap _ _ _ _ _ , .boot _ _ _ => False
   | .strap _ _ _ _ a , .strap _ _ _ _ b => le a b
-  | _, _ => false
+  termination_by _ t2 => sizeOf t2
 end CompilerTape
 
 instance : LE CompilerTape where
@@ -107,6 +107,10 @@ class COMPILED
   compiler_output: CompilerOutput Value Carrier
 
   is_it_true? : Prop :=
-    compiler_output.emit? compiler_output.tape ≤ compiler_output.tape
+    compiler_output.emit? compiler_output.tape ≤ compiler_output.tape  ∧
+    compiler_output.satire.velocity ≤                                   -- |F|  the force applied
+    measured.piled_high_and_deep?                                       -- μ|N| the threshold
+        compiler_output.satire.velocity
+        compiler_output.satire.velocity
 
 end Measurement

@@ -1,5 +1,5 @@
 /-
-__Measurement: The Tragedy of John Henry__
+__Measurement:  The Tragedy of John Henry__
 __A Satire in Look Ahead Backus-Naur Form__
 
 _This is a gentle reminder that the fanciful stories we tell ourselves are just that: stories._
