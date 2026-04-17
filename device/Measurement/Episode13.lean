@@ -9,6 +9,19 @@ inductive CompilerTape where
   | boot  : Type → Type 1 → CompilerTape → CompilerTape
   | strap : Type i → Type (i+1) → Type (i+2) → CompilerTape → CompilerTape → CompilerTape
 
+namespace CompilerTape
+def le : CompilerTape → CompilerTape → Prop := fun t1 t2 =>
+  match t1, t2 with
+  | .boot _ _ _ , .boot _ _ _ => True
+  | .boot _ _ _ , .strap _ _ _ _ _ => True
+  | .strap _ _ _ _ _ , .boot _ _ _ => False
+  | .strap _ _ _ _ a , .strap _ _ _ _ b => le a b
+  | _, _ => false
+end CompilerTape
+
+instance : LE CompilerTape where
+  le := CompilerTape.le
+
 structure CompilerOutput
     (Value: Type)
     (Carrier: CarrierProcess Value)
