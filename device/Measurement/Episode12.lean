@@ -1,53 +1,13 @@
-
-import Measurement.Episode10
+import Measurement.Episode11
 set_option maxHeartbeats 4000000
 set_option maxRecDepth 10000000000
 
 namespace Measurement
+inductive Measurement
+|distance: Number → Measurement → Measurement
+|speed: Number → Number → Measurement → Measurement → Measurement
 
-class LOGICAL
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-    [ideology: SCIENTIFIC Value Carrier]
-    [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier]
-    [epsilon: LOCAL Value Carrier]
-    [delta: UNIVERSAL Value Carrier]
-  where
-  feelings: HeartbeatProcess Value Carrier
-  understanding: Fact
-
-  evaluate: Type i → Fact := fun _ => understanding
-
-inductive ComputerProgram
-| tape: Prop → Fact → ComputerProgram → ComputerProgram
-
-structure ElaborationProcess
+structure LeanProcess
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -81,13 +41,19 @@ structure ElaborationProcess
     [epsilon: LOCAL Value Carrier]
     [delta: UNIVERSAL Value Carrier]
     [prop: LOGICAL Value Carrier]
+    [executable: HALTED Value Carrier]
   where
-  stamina: HeartbeatProcess Value Carrier
-  output: ComputerProgram
+  description: ElaborationProcess Value Carrier
+  length: Number
+  velocity: Measurement
 
-  execute: ComputerProgram → ComputerProgram := fun _ => output
+  evolve? : Measurement → Measurement := fun x =>
+    match x with
+    | .distance value _ => .distance length velocity
+    | .speed pos1 pos2 _ current_speed => .speed pos2 length current_speed velocity
 
-class HALTED
+
+class MEASURED
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -121,14 +87,16 @@ class HALTED
     [epsilon: LOCAL Value Carrier]
     [delta: UNIVERSAL Value Carrier]
     [prop: LOGICAL Value Carrier]
+    [executable: HALTED Value Carrier]
   where
-  scientific_paper: ElaborationProcess Value Carrier
-  hypothesis: Fact   -- So, how true is true = true?
-  result: Prop       -- Guess we will find out.
+  satire: LeanProcess Value Carrier
+  bullshit: Number
+  volume: Number
 
-  believe? : Prop → Fact := fun guess =>
-    { truth := guess ≠ hypothesis.truth,   -- Our expectation is that one CANNOT compute halting.
-      decTruth := Classical.propDecidable (guess ≠ hypothesis.truth) }
+  piled_high_and_deep? : Measurement → Measurement → Measurement := fun x_1 x_2 =>
+    match x_1 with
+    | .distance _ _ => .speed bullshit volume x_2 x_2
+    | .speed _ pos2 _ current_speed => .speed pos2 bullshit current_speed x_2
 
 
 end Measurement

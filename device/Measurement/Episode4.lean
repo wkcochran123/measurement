@@ -332,4 +332,5 @@ class GUNGAN  -- Bullshit meter = 802.  Only a 1/8 increase on classes.  Is that
 -- Do you think the compiler is going to give you the lady? or the tiger?
 
 -- Hope you don't ask much of the compiler....
+
 end Measurement
