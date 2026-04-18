@@ -17,10 +17,14 @@ def le : CompilerTape → CompilerTape → Prop := fun t1 t2 =>
   | .strap _ _ _ _ _ , .boot _ _ _ => False
   | .strap _ _ _ _ a , .strap _ _ _ _ b => le a b
   termination_by _ t2 => sizeOf t2
+
+def lt : CompilerTape → CompilerTape → Prop := fun n1 n2 => le n1 n2 ∧ ¬ le n2 n1
 end CompilerTape
 
 instance : LE CompilerTape where
   le := CompilerTape.le
+instance : LT CompilerTape where
+  lt := CompilerTape.lt
 
 structure CompilerOutput
     (Value: Type)
@@ -105,9 +109,10 @@ class COMPILED
     [measured: MEASURED Value Carrier]
   where
   compiler_output: CompilerOutput Value Carrier
+  object_file: CompilerTape
 
   is_it_true? : Prop :=
-    compiler_output.emit? compiler_output.tape ≤ compiler_output.tape  ∧
+    compiler_output.emit? object_file < compiler_output.tape  ∧
     compiler_output.satire.velocity ≤                                   -- |F|  the force applied
     measured.piled_high_and_deep?                                       -- μ|N| the threshold
         compiler_output.satire.velocity

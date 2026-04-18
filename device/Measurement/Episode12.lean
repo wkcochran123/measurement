@@ -7,6 +7,18 @@ inductive Measurement
 |distance: Number → Measurement → Measurement
 |speed: Number → Number → Measurement → Measurement → Measurement
 
+namespace Measurement
+def le : Measurement → Measurement → Prop := fun t1 t2 =>
+  match t1, t2 with
+  | .distance a _ , .distance b _ => a ≤ b
+  | .distance a _, .speed _ b _ _ => a ≤ b
+  | .speed _ b _ _, .distance a _ => a ≤ b
+  | .speed _ a _ _, .speed _ b _ _ => a ≤ b
+end Measurement
+
+instance : LE Measurement where
+  le := Measurement.le
+
 structure LeanProcess
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -49,8 +61,8 @@ structure LeanProcess
 
   evolve? : Measurement → Measurement := fun x =>
     match x with
-    | .distance value _ => .distance length velocity
-    | .speed pos1 pos2 _ current_speed => .speed pos2 length current_speed velocity
+    | .distance _ _ => .distance length velocity
+    | .speed _ pos2 _ current_speed => .speed pos2 length current_speed velocity
 
 
 class MEASURED
