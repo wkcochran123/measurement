@@ -2,9 +2,11 @@
 import Measurement.Episode10
 set_option maxHeartbeats 4000000
 set_option maxRecDepth 10000000000
+set_option allowUnsafeReducibility true
 
 namespace Measurement
 
+@[reducible]
 class LOGICAL
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -47,6 +49,7 @@ class LOGICAL
 inductive ComputerProgram
 | tape: Prop → Fact → ComputerProgram → ComputerProgram
 
+@[reducible]
 structure ElaborationProcess
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -87,6 +90,7 @@ structure ElaborationProcess
 
   execute: ComputerProgram → ComputerProgram := fun _ => output
 
+@[reducible]
 class HALTED
     (Value: Type)
     (Carrier: CarrierProcess Value)

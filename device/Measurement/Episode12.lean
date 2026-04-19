@@ -1,6 +1,7 @@
 import Measurement.Episode11
 set_option maxHeartbeats 4000000
 set_option maxRecDepth 10000000000
+set_option allowUnsafeReducibility true
 
 namespace Measurement
 inductive Measurement
@@ -19,6 +20,7 @@ end Measurement
 instance : LE Measurement where
   le := Measurement.le
 
+@[reducible]
 structure LeanProcess
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -65,6 +67,7 @@ structure LeanProcess
     | .speed _ pos2 _ current_speed => .speed pos2 length current_speed velocity
 
 
+@[reducible]
 class MEASURED
     (Value: Type)
     (Carrier: CarrierProcess Value)

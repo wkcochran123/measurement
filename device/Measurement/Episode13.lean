@@ -2,6 +2,7 @@ import Measurement.Episode12
 
 set_option maxHeartbeats 4000000
 set_option maxRecDepth 10000000000
+set_option allowUnsafeReducibility true
 
 namespace Measurement
 
@@ -26,6 +27,7 @@ instance : LE CompilerTape where
 instance : LT CompilerTape where
   lt := CompilerTape.lt
 
+@[reducible]
 structure CompilerOutput
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -71,6 +73,7 @@ structure CompilerOutput
     | .boot a b _ => .boot a b tape
     | .strap a b c prior _ => .strap a b c prior tape
 
+@[reducible]
 class COMPILED
     (Value: Type)
     (Carrier: CarrierProcess Value)

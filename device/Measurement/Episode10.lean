@@ -3,8 +3,10 @@ import Measurement.Episode9
 
 -- Homework:
 namespace Measurement
+set_option allowUnsafeReducibility true
 set_option maxHeartbeats 4000000
 
+@[reducible]
 structure CalculusProcess
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -51,6 +53,7 @@ structure CalculusProcess
     | .geodesic _ path1 _ path2 before after => .geodesic d.fact.truth path1 d.fact.truth path2 before after
 
 
+@[reducible]
 class UNIVERSAL
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -97,6 +100,7 @@ inductive YarnTheory
 |fibers: SpaceTimePath → SpaceTimePath → Prop → YarnTheory → YarnTheory
 |fabric: SpaceTimePath → SpaceTimePath → SpaceTimePath → Prop → Prop → YarnTheory → YarnTheory → YarnTheory
 
+@[reducible]
 structure HeartbeatProcess
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -142,25 +146,6 @@ structure HeartbeatProcess
     | isTrue _,  isTrue _  => .fibers computer_science.source_program computer_science.compiled_program d.fact.truth accumulated_bullshit
     | isFalse _, isFalse _ => .fibers computer_science.source_program computer_science.source_program (¬d.fact.truth) accumulated_bullshit
     | _, _ => .fabric last_reading current_reading next_reading (f1.truth = ¬f2.truth) (¬f1.truth = f2.truth) accumulated_bullshit accumulated_bullshit
-/-
-
-def program : CarrierProcess FiniteGaugeTheoryOfMeasurement := sorry
-
--- Problem 1: Implement de Morgan's law of the excluded middle.
-instance : DISTINGUISHABLE FiniteGaugeTheoryOfMeasurement program := sorry
-
--- My answer:
-def program : CarrierProcess FiniteGaugeTheoryOfMeasurement where
---                  +---------------------------    Weierstrauss Approximation Theorem  cuz Fuck the Continuum Hypothesis
---                  |                               I can make that three pointer all day long.  Swish.
---                  V
-  symbol := { truth := False, decTruth := Decidable.isFalse (fun h => h) }
-  value  := .one Fact.Truth (.zero Fact.Truth)
-
-
--- I believe this demonstrates Euler-Lagrange.  I mean, it had to demonstrate
--- a solution to Euler-Lagrange to compile.
--/
 
 
 end Measurement
