@@ -44,9 +44,45 @@ namespace Measurement
 -- We can use the GUNGAN symbols as the symbols we use to encode the instructions on the tape.
 -- We have 2 instructions right now:  a = a and a ≤ b.  I believe we have that, anyway.
 
-inductive Quantization  -- Bullshit meter ≈ 119.   This is down almost 1/3.  Induction-on-induction Wild!
-    | zero: Fact → Quantization → Quantization
-    | one: Prop → Quantization → Quantization → Quantization
+-- The way we go about doing this is the mathematical process of __EQUIVALATION__.  An _equivalation_
+-- is the statement that something has value that already has that value.  It is the trivial observation
+-- of _that seems like four_.   Not really an approximation, more like π = 3 from the Bible.  Not really
+-- _said_ like that and can only be read that way as a _literal_ application of the division algorithm
+-- to a circle, which... well...
+
+-- Euclid says good luck, you will have mixed results.  Still, though, gotta be prepared to _approximate_
+-- π so, I'll alow it.
+
+                                                              --         +-- I will never get weary of doing
+                                                              --         |   this to you.
+                                                              --         V
+inductive Equivalation  -- Bullshit meter ≈ 119.   This is down almost 1/π.  Induction-on-induction Wild!
+
+  --   +----+-----+--------   What does it mean to be zero like?  Well, Nothing.  What is nothing? well
+  --   |    |     |           we introduced the ∅ last episode as the alias for "nothing."   The thing
+  --   |    |     |           about nothing is that unless you have ever seen _something_, you don't know
+  --   V    V     V           _nothing_ is there.   Or _isn't_ there?  I feel like this hair is getting split.
+    | zero_like: Fact → Equivalation → Equivalation  --                I mean, think about it. Is it evidence
+    | one_like: Prop → Equivalation → Equivalation → Equivalation   --  of absence or absence of evidence?
+  --                                                      ^
+  --  As Peano said, once you can see nothing, you can    |
+  --  identify something called next.  -------------------+
+  --  The first next is _EXTERMELY_ one like.
+
+  -- The reason why I bring this up is that we need to figure out the Gungan number system from Jar Jar
+  -- Binks.  Do you really think he understands binary?  God I hope so.  R2 does.  Perhaps we can get
+  -- Jar Jar to ask R2-D2 through C-3P0 if any of this makes sense?  In which case, we need to understand
+  -- the binary language of moisture evaporators:  __BINARY__.
+
+  -- Should be a straightforward exercise from here.
+
+
+  -- We start with the basic physical fact:  The Pauli Exclusion Principle.
+  -- The Pauli exclusion principle is simple:  two things can exist simultaneously, one up and one down.  It might also be one
+  -- thing.  Hard to tell sometimes.  How many electrons can there possibly be?
+
+  -- The Pauli Exclusion Principle is simple: there can be at most one of something, unless there are two.
+  -- You know, BINARY.
 
 @[reducible]
 structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
@@ -64,9 +100,9 @@ structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
     [p: PHYSICAL Value Carrier]
     [z: COMPARABLE Value Carrier]
     [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]                   -- We all agree that what we know zero is, right?
+    [frequency: PRESENT Value Carrier]
+    [cant_be_done: MEASURABLE Value Carrier]
+    [what_meesa_saying: GUNGAN Value Carrier]                   -- We all agree that what we know zero is, right?
                                                    -- This is zero in GUNGAN.
 
   where
@@ -74,24 +110,25 @@ structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
 -- Step 1 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dynamics As Described By Yang and Mills:
 -- Explain the Pauli Exclusion Principle and the hyperfine transition. So, there are two electrons that we will
 -- call:
-    one: Quantization
-    zero: Quantization
+    one: Equivalation         --   Are you beginning to understand why I don't trust "sets" and "Nat"?  Lies, I tell you.
+    zero: Equivalation
 
 -- Step 2 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dynamics As Described By Yang and Mills:
 -- Explain that there are two states that something can be in, zero and one.  But, it can only be in one at
--- a time.
---           +----------------+-------------------------   Looks like we can speculate an evolutionary mechanism
+-- a time.  I wish we had something that spun around to show him.
+
+--           +----------------+-------------------------   Looks like we can speculate an equivalatory mechanism
 --           |                |                            that allows the forward propagation of quantified data
 --           V                V                            under transform.   I _think_ this is what you might call
-    tick: Quantization → Quantization := fun s =>     --   parameterization.
+    tick: Equivalation → Equivalation := fun s =>     --   parameterization.  Pass by named reference?
       match s with
 --                           +--------------   I call this the Neutrino! for it _IS_ the state that is excluded by
---                           |                 Pauli.
+--                           |                 Pauli.  Perhaps you disagree?
 --                           V
-      | .zero _ _ => .one false zero one           -- Dag you, we have an anonymous ZERO
-      | .one _ _ _ => .zero Fact.Truth zero        --              and an anonymous ONE.
---                              ^  +--+               COMPLETELY FUCKING ANONYMOUS.
---  I call this the thing that  |  |  |               You instantiate Nats.  I pull them out of my ass.
+      | .zero_like _ _ => .one_like false zero one           -- Dag you, we have an anonymous ZERO
+      | .one_like _ _ _ => .zero_like Fact.Truth zero        --              and an anonymous ONE.
+--                              ^  +--+                         COMPLETELY FUCKING ANONYMOUS.
+--  I call this the thing that  |  |  |                         You instantiate Nats.  I pull them out of my ass.
 --  Pauli exclusion needs to    +--+  |
 --  know if there is a   -------------+
 --  particle present.  Only one
@@ -119,29 +156,29 @@ class SOURCE   -- Bullshit meter ≈ 1121.   That's almost a 50% increase!
     [p: PHYSICAL Value Carrier]
     [z: COMPARABLE Value Carrier]
     [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
+    [frequency: PRESENT Value Carrier]
     [what_meesa_saying: MEASURABLE Value Carrier]
     [zero: GUNGAN Value Carrier]
   where
   meesa_process : MeesaProcess Value Carrier
 
-  one? : Quantization → Quantization → Prop := fun tick tock=>
+  one? : Equivalation → Equivalation → Prop := fun tick tock=>
     match tick,tock with
-    | .zero _ _ , .zero _ _ =>  false
-    | .zero _ _ , .one _ _ _ => false
-    | .one _ _ _ , .zero _ _ => false
-    | .one _ _ _ , .one _ _ _ => true
+    | .zero_like _ _ , .zero_like _ _ =>  false
+    | .zero_like _ _ , .one_like _ _ _ => false
+    | .one_like _ _ _ , .zero_like _ _ => false
+    | .one_like _ _ _ , .one_like _ _ _ => true
 
-  zero? : Quantization → Quantization → Prop := fun tick tock=>
+  zero? : Equivalation → Equivalation → Prop := fun tick tock=>
     match tick,tock with
-    | .zero _ _ , .zero _ _ =>  true
-    | .zero _ _ , .one _ _ _ => false
-    | .one _ _ _ , .zero _ _ => false
-    | .one _ _ _ , .one _ _ _ => false
+    | .zero_like _ _ , .zero_like _ _ =>  true
+    | .zero_like _ _ , .one_like _ _ _ => false
+    | .one_like _ _ _ , .zero_like _ _ => false
+    | .one_like _ _ _ , .one_like _ _ _ => false
 
 inductive Encoding   -- Bullshit meter = 118.  Flat.
-  | zero: Quantization → Encoding → Encoding
-  | one: Quantization → Encoding → Encoding → Encoding
+  | zero: Equivalation → Encoding → Encoding
+  | one: Equivalation → Encoding → Encoding → Encoding
 
 @[reducible]
 structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bullshit tends to accrete!
@@ -159,7 +196,7 @@ structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bul
     [p: PHYSICAL Value Carrier]
     [z: COMPARABLE Value Carrier]
     [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
+    [frequency: PRESENT Value Carrier]
     [what_meesa_saying: MEASURABLE Value Carrier]
     [zero: GUNGAN Value Carrier]
     [one: SOURCE Value Carrier]
@@ -192,7 +229,7 @@ class EXECUTED  -- Bullshit meter = 1158.  Calling this flat.
     [p: PHYSICAL Value Carrier]
     [z: COMPARABLE Value Carrier]
     [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
+    [frequency: PRESENT Value Carrier]
     [what_meesa_saying: MEASURABLE Value Carrier]
     [zero: GUNGAN Value Carrier]
     [one: SOURCE Value Carrier]
@@ -223,7 +260,7 @@ inductive Abstraction  -- Bullshit meter = 2045.  About a 1/6 increase.
     [p: PHYSICAL Value Carrier]
     [z: COMPARABLE Value Carrier]
     [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
+    [frequency: PRESENT Value Carrier]
     [what_meesa_saying: MEASURABLE Value Carrier]
     [false: GUNGAN Value Carrier]
     [one: SOURCE Value Carrier]
@@ -248,7 +285,7 @@ variable  {Value: Type}
           [p: PHYSICAL Value Carrier]
           [z: COMPARABLE Value Carrier]
           [particle: OBSERVED Value Carrier]
-          [frquency: PRESENT Value Carrier]
+          [frequency: PRESENT Value Carrier]
           [what_meesa_saying: MEASURABLE Value Carrier]
           [zero: GUNGAN Value Carrier]
           [one: SOURCE Value Carrier]
@@ -283,7 +320,7 @@ instance    -- Bullshit meter = 579 !!  that is a 60x increase!  Hmmm...
     [p: PHYSICAL Value Carrier]
     [z: COMPARABLE Value Carrier]
     [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
+    [frequency: PRESENT Value Carrier]
     [what_meesa_saying: MEASURABLE Value Carrier]
     [false: GUNGAN Value Carrier]
     [one: SOURCE Value Carrier]
@@ -311,7 +348,7 @@ instance  -- Bullshit meter = 579    Expected from above
     [p: PHYSICAL Value Carrier]         -- < is true
     [z: COMPARABLE Value Carrier]       -- < is true      +------   FUCKING JAR JAR!!!!
     [particle: OBSERVED Value Carrier]  -- < is true      |
-    [frquency: PRESENT Value Carrier]   -- < is true      V
+    [frequency: PRESENT Value Carrier]   -- < is true      V
     [what_meesa_saying: MEASURABLE Value Carrier]  -- MEESA TRUE!
     [false: GUNGAN Value Carrier]       -- < is true
     [one: SOURCE Value Carrier]         -- < is true

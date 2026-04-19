@@ -140,8 +140,17 @@ class PRESENT  -- Bullshit meter ≈ 594
     [z: COMPARABLE Value Carrier]
     [particle: OBSERVED Value Carrier]
   where
+--     +---------------+---------------------------    Somehow, the _FAT MAN_(tm) always knows if you have been good or bad.  He
+--     |               |                               uses this information to compute the most efficient route to "cover" the
+--     |               |                               sphere.  He does this using what Jar Jar Binks would recognize as "the force".
+--     V               V                               Not saying _it is_ the force, just saying Jar Jar would see it that way.
   santa_claus: SensingProcess Value Carrier
-  present: Area → Area → Prop := fun s1 s2 => santa_claus.use_force s1 = s2
+  present: Area → Area → Prop := fun s1 s2 => santa_claus.use_force s1 = s2    -- Now, this is an AI video waiting to happen.
+--     ^    ^      ^
+--     |    |      |                     One of the more interesting things that Einstein showed us is that the "present time"
+--     +----+------+------------------   is very much a "local" computation.  The farther away you are from something, the farther
+--                                       away in time it is to you.  This is why the present is only in the local area.  That,
+--                                       and I suspect Santa uses Stokes' theorem to compute the local curl.
 
 inductive Phenomenon   -- Bullshit meter ≈ 153
   | inital_condition: Fact → Area → Phenomenon → Phenomenon
@@ -167,6 +176,16 @@ def le : Phenomenon → Phenomenon → Prop := fun p1 p2 =>
 
 end Phenomenon
 
+-- If we are talking about a phenomenon, we need to talk about how to measure it.  Normally, you get an intstrument
+-- with a _gauge_ on it, stick the instrument in the phenomenon, and read the gauge.  In order to explain Yang-Mills
+-- Gauge theory to Jar Jar Binks, we need to first agree on what a gauge is.  A gauge generally takes a physical principle,
+-- like quantum electrodynamics, and uses it to measure something.  In this case, we are going to measure _time_.
+
+-- A stop watch is a cromulent gauge for measuring time, but Jar Jar Binks is from Star Wars and Star Wars happened a long
+-- time ago before they invented clocks.  So, we have to use something else.  Actually, any gauge will work.  That's the
+-- thing about Gauge Theory.  It explains how gauges display the numbers physics wants it to.
+
+-- STAND BACK!  I am about to _SCIENCE_!
 structure GaugeProcess  -- Bullshit meter ≈ 830
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -184,8 +203,17 @@ structure GaugeProcess  -- Bullshit meter ≈ 830
     [particle: OBSERVED Value Carrier]
     [frequency: PRESENT Value Carrier]
   where
+--       +-------------------------------------------  Sensors are neat little devices.  They are capable of _exchanging_ things.
+--       |                                             A sensor exchanges _information_ for _chaos_.   You learn something about
+--       |                                             the universe and the universe gets lower frequency photons in return.
+--       V
   sensing_process : SensingProcess Value Carrier
   phenomenon : Phenomenon
+
+  event? : Phenomenon → Phenomenon := fun p =>
+    match p with
+    | .inital_condition f a p => .observations f (sensing_process.use_force a) p phenomenon
+    | .observations f a _ p12 => .observations f (sensing_process.use_force a) p12 phenomenon
 
 class MEASURABLE  -- Bullshit meter ≈ 730
     (Value: Type)
@@ -213,8 +241,29 @@ class MEASURABLE  -- Bullshit meter ≈ 730
 -- You and I will call that fact 0.  This is our initial condition.
 
 inductive Jar  -- Bullshit meter ≈ 153    *hmmm*,    I would have thought this should be higher?
-  | bang: Fact → Jar → Jar -- BINKS!  Meesa Spake!
+
+  | bang: Fact → Jar → Jar -- BINKS!  Meesa Spake!        So, what the hell is a jar?  I've never heard of a mathematical or
+--   ⠀⠀⠀⠀⠀⠀⢀⣶⣤⣀⠀⠀⠀⡼⡑⠢⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                   physical concept called a jar.  Will, it is like a bag, except you
+--   ⠀⠀⠀⠀⠀⠀⢘⢉⢹⣯⣆⡰⣾⣷⣀⡄⣼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                   can kinda see whats in the middle of it.  You can't really see what's
+--   ⠀⠀⠀⠀⠀⠀⠈⣧⠭⣹⢟⣽⣿⣷⡚⠿⠏⠳⠒⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀                   around the edge because of the curvature of the jar.  The important
+--   ⠀⠀⠀⠀⠀⠀⠀⢈⠏⠈⠼⣿⣿⣏⠉⠀⠀⠀⠀⢶⠛⠢⡀⠀⠀⠀⠀⠀⠀⠀                   thing about a jar is you can classify the stuff in side by just looking
+--   ⠀⠀⠀⠀⠀⠀⠀⡦⠂⠀⠊⠳⠀⠛⡢⠀⠀⠀⠀⠈⠄⠁⣻⡄⠀⠀⠀⠀⠀⠀                   at it rather than _actually_ opening it up and verifying what's inside.
+--   ⠀⠀⠀⠀⠀⠀⡔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠄⣘⢣⠀⠀⠀⠀⠀⠀                   You can't verify _EVERY LITTLE DETAIL_, but you can get the gist of it.
+--   ⠀⠀⠀⠀⠀⢎⣀⡠⠤⢄⣀⡀⠤⠴⠶⠠⠀⠀⠀⠀⢀⠎⢸⣽⡀⠀⠀⠀⠀⠀
+--   ⠀⠀⠀⠀⠀⠀⠘⡤⣀⣀⣀⣤⣶⣤⠤⠂⠐⠀⠀⠀⢸⠘⠔⠝⡅⠀⠀⠀⠀⠀                   TBF, this is the most elastic concept in the entire stack of the proof.
+--   ⠀⠀⠀⠀⠀⠀⢰⢅⣽⢷⡝⡈⠀⠀⠀⢀⠀⠀⠀⠀⣟⠈⢄⡌⡵⠀⠀⠀⠀⠀                   I mean, it allows for spooky action at a distance, like moving a quarter
+--   ⠀⠀⠀⠀⠀⢀⢇⣾⣯⡞⢀⠱⡀⠀⠀⠀⠀⠀⠀⢸⠀⢔⠀⠈⠂⡆⠀⠀⠀⠀                   from under one card to another.  Spooky!
+--   ⠀⠀⠀⠀⠀⡜⣻⡿⣹⠃⡌⡠⠃⠀⠀⠀⠀⠀⢠⣿⠀⠀⠈⢄⠉⢳⠀⠀⠀⠀
+--   ⠀⠀⠀⠀⢰⢡⣿⢷⣿⡖⠉⠀⠀⠀⠀⠀⠀⠀⠀⢿⣆⠀⢀⣀⠊⠀⠢⠀⠀⠀                   I get it, it makes no sense.  It is a jar that has multiple things inside
+--   ⠀⠀⢀⢔⣡⣾⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣻⣷⣄⡀⠀⠁⠅⣵⠀⠀                   but it behaves as a unit of boundedness.  Looks like you can just keep
+--   ⠀⠀⣶⣯⠟⠛⣿⣿⣿⣿⣷⣦⣤⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⡧⡀⠠⠎⠌⡄⠀                   sticking stuff into the jar, but you may find that being able to put
+--   ⠀⠀⠜⠁⠀⠀⠸⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⢠⣿⣽⣿⣿⣿⣧⠀⠑⠄⡉⢘⡄                   _anything_ in the jar leads to serious build time problem.
+--   ⡔⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⣼⣿⣿⣿⣿⣿⣿⠀⠀⠀⠘⡄⡴
+
   | superposition: Fact → Jar → Jar → Jar
+--        ^
+--        |
+--        +---------   Look, others have satirized superposition better than I ever could. 🐱📦🍄☁️
 
 namespace Jar  -- Bullshit meter ≈ 214
 def le : Jar → Jar → Prop := fun j1 j2 =>
@@ -241,22 +290,8 @@ end Jar
 instance : LE Jar := ⟨Jar.le⟩  -- Bullshit meter ≈ 5.   I mean, c'mon compiler.  I'm confident my
                                -- bullshit meter is pretty well calibrated.
 
---   ⠀⠀⠀⠀⠀⠀⢀⣶⣤⣀⠀⠀⠀⡼⡑⠢⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
---   ⠀⠀⠀⠀⠀⠀⢘⢉⢹⣯⣆⡰⣾⣷⣀⡄⣼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
---   ⠀⠀⠀⠀⠀⠀⠈⣧⠭⣹⢟⣽⣿⣷⡚⠿⠏⠳⠒⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
---   ⠀⠀⠀⠀⠀⠀⠀⢈⠏⠈⠼⣿⣿⣏⠉⠀⠀⠀⠀⢶⠛⠢⡀⠀⠀⠀⠀⠀⠀⠀
---   ⠀⠀⠀⠀⠀⠀⠀⡦⠂⠀⠊⠳⠀⠛⡢⠀⠀⠀⠀⠈⠄⠁⣻⡄⠀⠀⠀⠀⠀⠀
---   ⠀⠀⠀⠀⠀⠀⡔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠄⣘⢣⠀⠀⠀⠀⠀⠀
---   ⠀⠀⠀⠀⠀⢎⣀⡠⠤⢄⣀⡀⠤⠴⠶⠠⠀⠀⠀⠀⢀⠎⢸⣽⡀⠀⠀⠀⠀⠀
---   ⠀⠀⠀⠀⠀⠀⠘⡤⣀⣀⣀⣤⣶⣤⠤⠂⠐⠀⠀⠀⢸⠘⠔⠝⡅⠀⠀⠀⠀⠀
---   ⠀⠀⠀⠀⠀⠀⢰⢅⣽⢷⡝⡈⠀⠀⠀⢀⠀⠀⠀⠀⣟⠈⢄⡌⡵⠀⠀⠀⠀⠀
---   ⠀⠀⠀⠀⠀⢀⢇⣾⣯⡞⢀⠱⡀⠀⠀⠀⠀⠀⠀⢸⠀⢔⠀⠈⠂⡆⠀⠀⠀⠀
---   ⠀⠀⠀⠀⠀⡜⣻⡿⣹⠃⡌⡠⠃⠀⠀⠀⠀⠀⢠⣿⠀⠀⠈⢄⠉⢳⠀⠀⠀⠀
---   ⠀⠀⠀⠀⢰⢡⣿⢷⣿⡖⠉⠀⠀⠀⠀⠀⠀⠀⠀⢿⣆⠀⢀⣀⠊⠀⠢⠀⠀⠀
---   ⠀⠀⢀⢔⣡⣾⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣻⣷⣄⡀⠀⠁⠅⣵⠀⠀
---   ⠀⠀⣶⣯⠟⠛⣿⣿⣿⣿⣷⣦⣤⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⡧⡀⠠⠎⠌⡄⠀
---   ⠀⠀⠜⠁⠀⠀⠸⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⢠⣿⣽⣿⣿⣿⣧⠀⠑⠄⡉⢘⡄
---   ⡔⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⣼⣿⣿⣿⣿⣿⣿⠀⠀⠀⠘⡄⡴
+-- Looks like Jar Jar has something to _VERY IMPORTANT_ to say about the nature of time:
+
 -- Meesa explain!
 -- Meesa take the concept and put it in the jar!
 -- Meesa don't know what meesa saying but the compiler does!
@@ -264,29 +299,31 @@ instance : LE Jar := ⟨Jar.le⟩  -- Bullshit meter ≈ 5.   I mean, c'mon comp
 
 -- Am I going to have to invite JarJar along with us on the ride of your life?
 -- Of course, I have to explain IEEE 754 to Gungans.  Didn't I say that last episode?  That I was going to end up
--- doing it?
+-- doing it?   May as well show you the MeesaProcess, the way we know the compiler has found a bit.
 
--- However,
+
+-- FULL DISCLOSURE:  Jar Jar is along for the ride to help __YOU__.  I _understand_ all of this already.
+-- You have no one to blame but yourself.
 
 structure MeesaProcess  -- Bullshit meter ≈ 1010.    There we go, we just broke 1000 on the bullshit meter.
                         -- That's about 1/4 increase in bullshit, measured structure-on-structure.
                         -- Huh, is that 2 bits of information?
     (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
+    (Carrier: CarrierProcess Value)                             -- It is at this point I would like to honor one of the
+    [d: DISTINGUISHABLE Value Carrier]                          -- greatest philosophers of our age, Harry Frankfurt.  I urge
+    [a: ADMISSIBLE Value Carrier]                               -- you to write your Congressbot and ask them to invade France
+    [c: COUNTABLE Value Carrier]                                -- so that SI will have to make a new unit called the Frankfurt.
+    [e: ENCODED Value Carrier]                                  -- The Frankfurt is the amount of bullshit that comes out of
+    [r: RESIDUE Value Carrier]                                  -- Jar Jar Binks' mouth in a single sentence.
+    [b: BINARY Value Carrier]                                   --
+    [f: REPEATABLE Value Carrier]                               -- I declare the MeesaProcess to be the first Frankfurt degree.
+    [n: NUMERIC Value Carrier]                                  --
+    [h: REPRESENTABLE Value Carrier]                            -- Bulshit meter ≈ 1010 = 1⁰F.
     [p: PHYSICAL Value Carrier]
     [z: COMPARABLE Value Carrier]
     [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]  -- <-- compiler gibberish representing a number
+    [frequency: PRESENT Value Carrier]
+    [impossible: MEASURABLE Value Carrier]
   where
   gauge_process : GaugeProcess Value Carrier
   concept: Jar
@@ -310,8 +347,8 @@ class GUNGAN  -- Bullshit meter = 802.  Only a 1/8 increase on classes.  Is that
     [p: PHYSICAL Value Carrier]
     [z: COMPARABLE Value Carrier]
     [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]  -- <-- compiler gibberish representing a number
+    [frequency: PRESENT Value Carrier]
+    [gibberish: MEASURABLE Value Carrier]
   where
   gauge_process : GaugeProcess Value Carrier
   translation? : Jar → Jar → Prop := fun j1 j2 => match j1, j2 with
