@@ -229,6 +229,8 @@ class BINARY  --  Bullshit meter ≈ 141
   observation_process: ObservationProcess Value Carrier
 
 --  XXXXx REPAIR
+  zero    : Limit
+  one     : Limit
   bit     : Sample        --  <-- tick or tock
 
 -- It takes honest to god, real wall-clock time to create the contravariant interpretation of the

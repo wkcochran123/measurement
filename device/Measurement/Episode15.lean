@@ -1,4 +1,4 @@
-import Measurement.Episode14
+import Measurement.Episode6
 
 namespace Measurement
 
@@ -58,6 +58,9 @@ instance BINARY_RESIDUE
     { cauchy_process := r.cauchy_process
       before         := .nil d.fact
       after          := .nil d.fact }
+  bit := .initial_condition d.fact r.cauchy_process.accumulation
+  zero := .nil d.fact
+  one  := .nil d.fact
 
 instance REPEATABLE_BINARY
     (Value: Type)
@@ -69,10 +72,38 @@ instance REPEATABLE_BINARY
     [r: RESIDUE Value Carrier]
     [b: BINARY Value Carrier]
     : REPEATABLE Value Carrier where
-  observation_process :=
-    { observation_process := b.observation_procss
-      stimulus            := .initial_condition d.fact r.cauchy_process.accumulation
-      expectation         := .hypothesis d.fact b.bit}
+  repeatable_process :=
+  {
+    observation_process := b.observation_process
+    stimulus := .initial_condition d.fact b.zero
+    expectation := .hypothesis d.fact b.bit
+  }
 
+instance NUMERIC_REPEATABLE
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    : REPRESENTABLE Value Carrier where
+  calculation_process :=
+  { computational_process := aa.computational_process
+    program := match aa.computational_process.output with
+    |some x => x
+    |none => .hypothesis d.fact xx.repeatable_process.expectation
+    state := .program d.fact (match aa.computational_process.output with
+      |some x => x
+      |none => .hypothesis d.fact xx.repeatable_process.expectation)
+  }
+  representable? := fun _ s =>
+    ⟨Computation.program d.fact s,
+      match aa.computational_process.output with
+      | none   => rfl
+      | some _ => rfl⟩
 
 end Measurement

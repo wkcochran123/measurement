@@ -102,7 +102,8 @@ structure TuringProcess   -- Bullshit meter ≈ 492
   -- So a computational process is one that __LOOKS LIKE__ it can do math, but, let me tell you, it _AIN'T_ doing math.
   -- We are going to find out just how far away whatever the computational process is from actual math done by actual people.
   computational_process: ComputationalProcess Value Carrier
-  program: Computation
+  program: Study
+  state: Computation
   -- One cannot compute without a computer program, right?
 
   -- What do you think, did we compute it?
@@ -117,7 +118,7 @@ structure TuringProcess   -- Bullshit meter ≈ 492
   turing_step? : Computation → Computation := fun s =>
     match s with
     | Computation.program _ _ => s
-    | Computation.compute f s1 s2 _ => Computation.compute f s1 (computational_process.compute s2) program
+    | Computation.compute f s1 s2 _ => Computation.compute f s1 (computational_process.compute s2) state
   -- _NOW_ we have fully specified a Turing machine.  Lol.
 
 
@@ -141,12 +142,13 @@ class REPRESENTABLE  --  Bullshit meter ≈ 261
     [f: REPEATABLE Value Carrier]
     [n: NUMERIC Value Carrier]              -- Holy crap, a carrier of value! The compiler and idea can talk about value!
   where
-  computational_process: ComputationalProcess Value Carrier
+  calculation_process: TuringProcess Value Carrier
 --                                +-------------------  Halting problem sez what? To even _TALK_ about a Turing
 --                                |                     machine, you have to aware of the halting problem itself.
 --                                |                     So, we _DO NOT_ have any guard rails here, you must _KNOW_
 --                                V                     _a priori_ your algo halts on all inputs.  Or, it's your own fault!
-  representable?: ∀ (_: Fact) (s: Study), ∃ (_: Computation), computational_process.compute s = s
+--  REPAIR
+  representable?: ∀ (_: Fact) (s: Study), ∃ (_: Computation), calculation_process.computational_process.compute s = s
 --   I hope you understand now that this IS NOT GIVEN                                         ^       +--- rofl. Also, Kirk
 --   by mathematics.  The symbols come from elsewhere.                                        |       |    was the better
 --                                                                                            +-------+    captain!
