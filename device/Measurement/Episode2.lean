@@ -228,14 +228,8 @@ class BINARY  --  Bullshit meter ≈ 141
   where
   observation_process: ObservationProcess Value Carrier
 
---     +--------------------  Use this function if you want to interpret a binary number as covariant
---     |
---     V
-  covariant?     : Limit := observation_process.before        --  <-- tick
-  contravariant? : Limit := observation_process.after         --  <-- tock
---     ^
---     |
---     +--------------------  Use this function if you want to interpret a binary number as contravariant
+--  XXXXx REPAIR
+  bit     : Sample        --  <-- tick or tock
 
 -- It takes honest to god, real wall-clock time to create the contravariant interpretation of the
 -- covariant representation.  The imporant thing is a BINARY fact is TRUE.  This is an _ACTUAL_ representation

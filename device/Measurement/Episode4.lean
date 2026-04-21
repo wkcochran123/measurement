@@ -350,7 +350,7 @@ class GUNGAN  -- Bullshit meter = 802.  Only a 1/8 increase on classes.  Is that
     [frequency: PRESENT Value Carrier]
     [gibberish: MEASURABLE Value Carrier]
   where
-  gauge_process : GaugeProcess Value Carrier
+  meesa_process : MeesaProcess Value Carrier
   translation? : Jar → Jar → Prop := fun j1 j2 => match j1, j2 with
     | .bang f1 _, .bang f2 _ => f1 = f2         -- What color is your jar?
     | .superposition f1 _ _, .superposition f2 _ _ => f1 = f2

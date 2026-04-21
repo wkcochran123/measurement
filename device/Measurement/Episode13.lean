@@ -20,7 +20,9 @@ def le : CompilerTape → CompilerTape → Prop := fun t1 t2 =>
   termination_by _ t2 => sizeOf t2
 
 def lt : CompilerTape → CompilerTape → Prop := fun n1 n2 => le n1 n2 ∧ ¬ le n2 n1
+
 end CompilerTape
+
 
 instance : LE CompilerTape where
   le := CompilerTape.le
@@ -67,6 +69,7 @@ structure CompilerOutput
   where
   satire: LeanProcess Value Carrier
   tape: CompilerTape
+  symbol : Type Value
 
   emit?: CompilerTape → CompilerTape := fun t =>
     match t with
@@ -114,11 +117,6 @@ class COMPILED
   compiler_output: CompilerOutput Value Carrier
   object_file: CompilerTape
 
-  is_it_true? : Prop :=
-    compiler_output.emit? object_file < compiler_output.tape  ∧
-    compiler_output.satire.velocity ≤                                   -- |F|  the force applied
-    measured.piled_high_and_deep?                                       -- μ|N| the threshold
-        compiler_output.satire.velocity
-        compiler_output.satire.velocity
+  load_opcode: Type Value → CompilerTape := fun _ => object_file
 
 end Measurement
