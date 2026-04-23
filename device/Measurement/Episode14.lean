@@ -7,8 +7,9 @@ set_option allowUnsafeReducibility true
 namespace Measurement
 
 inductive CompilerTape where
-  | boot  : Type → Type 1 → CompilerTape → CompilerTape
-  | strap : Type i → Type (i+1) → Type (i+2) → CompilerTape → CompilerTape → CompilerTape
+  | boot    : Fact → Type → CompilerTape
+  | strap   : Fact → Type → Type 1 → CompilerTape → CompilerTape
+  | compute : Fact → Type → Type i → Prop → Type → Type (i+1) → CompilerTape → CompilerTape → CompilerTape
 
 namespace CompilerTape
 def le : CompilerTape → CompilerTape → Prop := fun t1 t2 =>
