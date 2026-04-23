@@ -1,147 +1,346 @@
 
+
+
 import Measurement.Episode9
-set_option allowUnsafeReducibility true
+-- Told you Chaitin gets expensive
 set_option maxHeartbeats 4000000
+set_option allowUnsafeReducibility true
 set_option maxRecDepth 100
 
--- Homework:
 namespace Measurement
 
-inductive SpaceTimePath
-  | einstein: Fact → SpaceTimePath
-  | white_hole: Fact → Type → SpaceTimePath → SpaceTimePath
-  | blackhole: Prop → Type 1 → SpaceTimePath → SpaceTimePath
-  | geodesic: Fact → Type i → Prop → Type (i+1) → SpaceTimePath → SpaceTimePath → SpaceTimePath
-
 @[reducible]
-structure CalculusProcess
+class WITNESSED
     (Value: Type)
     (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier]
-    [epsilon: LOCAL Value Carrier]
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
   where
-  derivative: BigRedDogProcess Value Carrier  -- Parents, read to your kids.  They are the future.
-  function: SpaceTimePath
-  converged: Fact
-  sink: Type 1
+  baptism: ReligiousProcess Value Carrier
+  witness: Gospel
 
-  photon_torpedo: SpaceTimePath → SpaceTimePath := fun path =>
-    match path with
-    | .einstein fact =>
-                .white_hole converged Value (.einstein fact)
-    | .white_hole fact val path =>
-              match fact.decTruth with
-              | isTrue _ =>
-                    .geodesic d.fact val d.fact.truth (ULift val) path function
-              | isFalse _ =>
-                    .blackhole fact.truth (ULift val) function
-    | .geodesic fact val1 prop val2 _ _ =>
-              match fact.decTruth with
-              | isTrue _ =>
-                    .geodesic d.fact
-                              val1
-                              prop
-                              val2
-                              (.white_hole converged (ULift Value) (.einstein fact))
-                              (.einstein fact)
-              | isFalse _ =>
-                    .blackhole fact.truth sink function
-    | .blackhole prop val after => .blackhole prop val after
-
-
-@[reducible]
-class UNIVERSAL
+instance WITNESSED_TRUTH
     (Value: Type)
     (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier]
-    [epsilon: LOCAL Value Carrier]
-  where
-  the_compiler: CalculusProcess Value Carrier  -- Praise be to the universal compiler.
-  source_program: SpaceTimePath
-  compiled_program: SpaceTimePath
-
-  -- let's ask the compiler to hold the quarter we glued to the table.
-  lake_build: SpaceTimePath → SpaceTimePath → Prop := fun _ _ => the_compiler.converged = d.fact
-
-
-instance UNIVERSAL_LOCAL
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier]
-    [epsilon: LOCAL Value Carrier]
-    : UNIVERSAL Value Carrier where
-  the_compiler :=
-  { derivative := epsilon.theory
-    function := .einstein d.fact
-    converged := d.fact
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    : WITNESSED Value Carrier where
+  baptism :=
+  { scientific_process := gospel.scientific_process
+    the_literature := .epiphany d.fact.truth
   }
-  source_program   := .white_hole d.fact Value (.einstein d.fact)
-  compiled_program := .black_hole d.fact.truth (ULift Value) (.einstein d.fact)
+  witness := .epiphany d.fact.truth
 
-inductive YarnTheory
-|stokes: SpaceTimePath → Prop → YarnTheory
-|fibers: SpaceTimePath → SpaceTimePath → Prop → Prop → YarnTheory → YarnTheory
-|fabric: SpaceTimePath → SpaceTimePath → SpaceTimePath → Prop → Prop → Prop → YarnTheory → YarnTheory → YarnTheory
+inductive Truth
+  | logic: Prop → Truth
+  | fact: Gospel → Prop → Truth → Truth
 
+--  We have learned this through Quantum Eletrodynamics.
+--  Damn, there's that fade away three nothing but net over __GODEL__ __COHEN__ __CANTOR__ __HILBERT__ and ...
+--  No...  Without them, I would have stepped on the land mines.  It is _BECAUSE_ of them that I can see the land mines
+--  and avoid them.
 @[reducible]
-structure HeartbeatProcess
+structure UniverseTensor
     (Value: Type)
     (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
     [account: WITNESSED Value Carrier]
-    [epsilon: LOCAL Value Carrier]
-    [computer_science: UNIVERSAL Value Carrier]
   where
-  bullshit_meter: CalculusProcess Value Carrier  -- Praise be to the heart.
-  current_reading: SpaceTimePath
-  accumulated_bullshit: YarnTheory
+  frame_of_reference: ReligiousProcess Value Carrier
+  reality: Truth
 
-  weave? : YarnTheory → YarnTheory := fun yarn =>
-     match yarn with
-     |.stokes stp prop =>
-              .fibers stp current_reading (prop=d.fact.truth) accumulated_bullshit
-     |.fibers before after prop_before prop_after yt =>
-              match (prop_before ∧ d.fact.truth) ∧ (¬ prop_after ∧  d.fact.truth) with
-              | true  => .fibers after current_reading d.fact.truth prop_after yt accumulated_bullshit
-              | false => .fabric before after current_reading d.fact.truth prop_after prop_before yt accumulated_bullshit accumulated_bullshit
-     |.fabric _ x1 x2 p2 p1 _ _ yt =>
-              .fabric x1 x2 current_reading d.fact.truth p2 p1 yt accumulated_bullshit
+  -- Your _PUNY_ __GODS__ _ignore_ your pleas!
+  -- The universe __SIMPLY__ dngaf!
+  observe? : Truth → Truth := fun gospel =>
+    match gospel with
+    | .logic prop => .fact account.witness prop reality
+    | .fact knowledge prop _ => .fact knowledge prop reality
 
+@[reducible]
+class REAL
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier]
+  where
+  universal_observer: UniverseTensor Value Carrier  -- Praise be to the universal observer.
+  current_status: Truth
 
+instance REAL_WITNESSED
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier]
+    : REAL Value Carrier where
+  universal_observer :=
+  { frame_of_reference := account.baptism
+    reality := .logic d.fact.truth
+  }
+  current_status := .fact account.witness d.fact.truth (.logic d.fact.truth)
+
+inductive Variation
+  | newton: Gospel → Prop → Variation
+--      +-----    We do what we must because we can.
+--      |
+--      V
+  | gateaux: Gospel → Prop → Prop → Variation → Variation      -- CAKE!
+  | frechet: Gospel → Prop → Prop → Prop → Variation → Variation → Variation
+
+@[reducible]
+structure BigRedDogProcess
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier]
+    [real: REAL Value Carrier]
+  where
+  universal_observer: UniverseTensor Value Carrier  -- Praise be to the universal observer.
+  differential_equation: Variation
+  transmute: Variation → Variation := fun variation =>
+    match variation with
+    | .newton g p => .gateaux g d.fact.truth p differential_equation
+    | .gateaux g a b v =>
+        -- Gateaux → Fréchet: add the residue.
+        -- a is the direction, b is the response, a≠b is the strain.
+        .frechet g a b (a ∧ ¬b) v differential_equation   -- the residue is exactly the informational strain
+    | .frechet g a b c f1 _ =>
+        -- Fréchet → Gateaux: project out the residue, collapse to direction only.
+        -- This is the weak form. You lose the residue. That's the price of Galerkin.
+        .gateaux g (d.fact.truth∧a) (b=c) f1
+
+@[reducible]
+class LOCAL
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier]
+    [real: REAL Value Carrier]
+  where
+  theory: BigRedDogProcess Value Carrier
+  delta: Prop
+  experience: Variation → Prop := fun variation =>
+  match variation with
+  | .newton _ p => p
+  | .gateaux _ a b _ => (a ∧ b) ∨ ¬ (¬ a ∧ b)
+  | .frechet _ _ _ _ _ _ => delta
+
+instance LOCAL_REAL
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier]
+    [real: REAL Value Carrier]
+    : LOCAL Value Carrier where
+  theory :=
+  { universal_observer := real.universal_observer
+    differential_equation := .newton account.witness d.fact.truth
+  }
+  delta := d.fact.truth
 
 end Measurement

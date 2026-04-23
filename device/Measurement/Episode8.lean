@@ -1,25 +1,71 @@
-/-
-__Measurement: The Tragedy of John Henry__
-__A Satire in Look-Ahead Backus-Naur Form__
-
-_This is a gentle reminder that the long, long stories we tell ourselves are just that: far, far away._
-
--/
-
-
-import Measurement.Episode15
--- Told you Chaitin gets expensive
+import Measurement.Episode7
 set_option maxHeartbeats 4000000
+set_option maxRecDepth 10000000000
 set_option allowUnsafeReducibility true
 
 namespace Measurement
 
-inductive Science  -- 8029
-  | repeatable: Prop → Science
-  | hypothesis: Prop → Cult → Science
-  | theory: Prop → Cult → Fact → Science → Science
+instance STEP_1
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier] : ADMISSIBLE Value Carrier where
+  counting_process :=
+    { carrier := Carrier
+      count   := .zero d.fact
+      iterate := fun n => match n with
+        | .zero _     => .zero d.fact
+        | .number _ _ _ => .number d.fact Carrier.value (.zero d.fact) }
 
-structure LearningProcess  -- 26691
+instance COUNTABLE_ADMISSIBLE
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    : COUNTABLE Value Carrier where
+  index :=
+    { count  := a.counting_process
+      origin := .zero d.fact }
+
+instance ENCODED_COUNTABLE
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier] : ENCODED Value Carrier where
+  limit_process :=
+    { indexing_process := c.index
+      limit            := .zero d.fact
+      sequence         := .nil d.fact }
+
+instance RESIDUE_ENCODED
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier] : RESIDUE Value Carrier where
+  cauchy_process :=
+    { limit_process  := e.limit_process
+      value          := .zero d.fact
+      accumulation   := .nil d.fact }
+
+instance BINARY_RESIDUE
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier] : BINARY Value Carrier where
+  observation_process :=
+    { cauchy_process := r.cauchy_process
+      before         := .nil d.fact
+      after          := .nil d.fact }
+  bit := .initial_condition d.fact r.cauchy_process.accumulation
+  zero := .nil d.fact
+  one  := .nil d.fact
+
+instance REPEATABLE_BINARY
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -28,39 +74,15 @@ structure LearningProcess  -- 26691
     [e: ENCODED Value Carrier]
     [r: RESIDUE Value Carrier]
     [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-  where
-  initiation_process : InitiationProcess Value Carrier
-  -- Learn the ways of Galileo
-  galileo: Cult
-  -- In order to _DESCRIBE_ science.
-  invariant: Science
+    : REPEATABLE Value Carrier where
+  repeatable_process :=
+  {
+    observation_process := b.observation_process
+    stimulus := .initial_condition d.fact b.zero
+    expectation := .hypothesis d.fact b.bit
+  }
 
-  touch_stove? : Science → Science := fun s =>
-    match s with
-    | .repeatable propose => .hypothesis propose galileo
-    | .hypothesis propose idea => .theory propose idea d.fact (.hypothesis propose galileo)
-    | .theory propose prior fact _ => .theory propose prior fact invariant
-
-class SCIENTIFIC -- 23964
+instance NUMERIC_REPEATABLE
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -69,37 +91,437 @@ class SCIENTIFIC -- 23964
     [e: ENCODED Value Carrier]
     [r: RESIDUE Value Carrier]
     [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-  where
-  phd_process : LearningProcess Value Carrier
-  invariant: Science
+    [xx: REPEATABLE Value Carrier]
+    [Inhabited (xx.typical_response xx.repeatable_process.expectation)]
+    : NUMERIC Value Carrier where
+  computational_process :=
+  { repeatable_process := xx.repeatable_process
+    output := match xx.typical_response xx.repeatable_process.expectation with
+             | _ => some (.hypothesis d.fact)
+  }
 
-  predictable? : Science → Prop := fun s =>
-    match s with
-    | .repeatable prop => prop
-    | .hypothesis prop _ => prop
-    | .theory prop _ _ _  => prop
+instance REPRESENTABLE_NUMERIC
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    : REPRESENTABLE Value Carrier where
+  calculation_process :=
+  { computational_process :=
+      { aa.computational_process with
+        closure := fun s => s }
+    program := aa.computational_process.close aa.computational_process.output
+    state := .program d.fact (aa.computational_process.close aa.computational_process.output)
+  }
+  representable? := fun _ s =>
+    ⟨Computation.program d.fact s, rfl⟩
 
+instance PHYSICAL_NUMERIC
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    : PHYSICAL Value Carrier where
+  noisy_process := {
+    turing_process := bb.calculation_process
+    program := .halting d.fact (.program d.fact bb.calculation_process.program)
+  }
+  threshold := .nonhalting  d.fact
+                            (.program d.fact bb.calculation_process.program)
+                            (bb.calculation_process.turing_step? (.program d.fact bb.calculation_process.program))
+  admissible? := fun _ _ _ => rfl    -- rofl!  This is some serious gourmet coding!
+                                     -- The fact this exists as physical electrons is enough for me!
 
-instance SCIENTIFIC_ACOLYTE
+instance COMPARABLE_PHYSICAL
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [electron: Inhabited d.symbol]
+    : COMPARABLE Value Carrier where
+  physical_process :=
+  { physical_process := cc.noisy_process
+    invariant := .base d.fact default
+    value := .base d.fact (ULift.up default)
+  }
+  --  Again, anytime you think you know what goes here....
+  -- oh wait... aren't we suppose to lift a variable or something?
+  -- I see, lifting a variable is the mechanism on the compiler that is
+  -- option evaluation on this side.
+
+instance OBSERVED_COMPARABLE
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    : OBSERVED Value Carrier where
+  slip_process :=
+  { physical_process := dd.physical_process
+    projection       := .origin d.fact dd.physical_process.physical_process.program d.symbol
+    stress           := cc.threshold
+    threshold        := d.symbol
+  }
+  observation := ULift d.symbol
+
+instance PRESENT_OBSERVED
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    : PRESENT Value Carrier where
+  santa_claus:=
+  { static_fraction := ee.slip_process
+    accumulation := .t d.fact
+  }
+  quantum := Type 1
+
+instance MEASURABLE_PRESENT
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    [ff: PRESENT Value Carrier]
+    : MEASURABLE Value Carrier where
+  gauge_process :=
+  { sensing_process := ff.santa_claus
+    clock      := .field d.fact (.t d.fact)
+  }
+
+instance GUNGAN_MEASURABLE
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    [ff: PRESENT Value Carrier]
+    [gg: MEASURABLE Value Carrier]
+    : GUNGAN Value Carrier where
+  meesa_process :=
+  { gauge_process := gg.gauge_process
+    concept := .color d.fact gg.gauge_process.sensing_process.accumulation
+  }
+
+instance SOURCE_GUNGAN
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    [ff: PRESENT Value Carrier]
+    [gg: MEASURABLE Value Carrier]
+    [hh: GUNGAN Value Carrier]
+    : SOURCE Value Carrier where
+  cd_process :=
+  { meesa_process := hh.meesa_process
+    zero := .physics d.fact hh.meesa_process.concept
+  }
+  one := .zero_like d.fact (.physics d.fact hh.meesa_process.concept)
+
+instance EXECUTED_SOURCE
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    [ff: PRESENT Value Carrier]
+    [gg: MEASURABLE Value Carrier]
+    [hh: GUNGAN Value Carrier]
+    [ii: SOURCE Value Carrier]
+    : EXECUTED Value Carrier where
+  compiled_process :=
+  { digital_process := ii.cd_process
+    source := ii
+    opcode := .boot d.fact (.physics d.fact hh.meesa_process.concept)
+  }
+
+instance VALUE_EXECUTED
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    [ff: PRESENT Value Carrier]
+    [gg: MEASURABLE Value Carrier]
+    [hh: GUNGAN Value Carrier]
+    [ii: SOURCE Value Carrier]
+    [jj: EXECUTED Value Carrier]
+    : VALUE Value Carrier where
+    -- What we have here is the multiplicative identity.  from no-fucking-where
+  mathematical_process := {
+    compiled_process := jj.compiled_process
+    mapping := fun input => match input with
+      |.satire f => .satire f
+      |.compile f e a => .execute f e a
+      |.execute f e a => .compile f e a
+  }
+  monad := .satire d.fact
+
+instance MAGNITUDE_VALUE
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    [ff: PRESENT Value Carrier]
+    [gg: MEASURABLE Value Carrier]
+    [hh: GUNGAN Value Carrier]
+    [ii: SOURCE Value Carrier]
+    [jj: EXECUTED Value Carrier]
+    [kk: VALUE Value Carrier]
+    : MAGNITUDE Value Carrier where
+  adding_process :=
+  { mathematical_process := kk.mathematical_process
+    plus := kk
+    sum := .zero d.fact.truth ff.santa_claus.accumulation
+  }
+
+instance SCALED_MAGNITUDE
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    [ff: PRESENT Value Carrier]
+    [gg: MEASURABLE Value Carrier]
+    [hh: GUNGAN Value Carrier]
+    [ii: SOURCE Value Carrier]
+    [jj: EXECUTED Value Carrier]
+    [kk: VALUE Value Carrier]
+    [ll: MAGNITUDE Value Carrier]
+    : SCALED Value Carrier where
+  multiplying_process :=
+  { adding_process := ll.adding_process
+    product := .one d.fact.truth ll.adding_process.sum
+  }
+
+instance LOAD_SCALED
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    [ff: PRESENT Value Carrier]
+    [gg: MEASURABLE Value Carrier]
+    [hh: GUNGAN Value Carrier]
+    [ii: SOURCE Value Carrier]
+    [jj: EXECUTED Value Carrier]
+    [kk: VALUE Value Carrier]
+    [ll: MAGNITUDE Value Carrier]
+    [mm: SCALED Value Carrier]
+    : LOAD Value Carrier where
+  basic_operation :=
+  { GOSUB := mm.multiplying_process
+    TEN := ff.santa_claus.accumulation
+    span := .origin d.fact.truth ff.santa_claus.accumulation
+  }
+
+instance FINITE_ELEPHANT_LOAD
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    [ff: PRESENT Value Carrier]
+    [gg: MEASURABLE Value Carrier]
+    [hh: GUNGAN Value Carrier]
+    [ii: SOURCE Value Carrier]
+    [jj: EXECUTED Value Carrier]
+    [kk: VALUE Value Carrier]
+    [ll: MAGNITUDE Value Carrier]
+    [mm: SCALED Value Carrier]
+    [nn: LOAD Value Carrier]
+    : FINITE_ELEPHANT Value Carrier where
+  galerkin_process :=
+  { ANSYS_process := nn.basic_operation
+    polynomial := .zero d.fact.truth nn.basic_operation.span
+  }
+
+instance BULLSHIT_FINITE_ELEPHANT
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    [ff: PRESENT Value Carrier]
+    [gg: MEASURABLE Value Carrier]
+    [hh: GUNGAN Value Carrier]
+    [ii: SOURCE Value Carrier]
+    [jj: EXECUTED Value Carrier]
+    [kk: VALUE Value Carrier]
+    [ll: MAGNITUDE Value Carrier]
+    [mm: SCALED Value Carrier]
+    [nn: LOAD Value Carrier]
+    [oo: FINITE_ELEPHANT Value Carrier]
+    : BULLSHIT Value Carrier where
+  arm_wave_process :=
+  { galerkin_process := oo.galerkin_process
+    guess := .observation d.fact.truth
+  }
+
+instance PROPAGANDA_BULLSHIT
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    [ff: PRESENT Value Carrier]
+    [gg: MEASURABLE Value Carrier]
+    [hh: GUNGAN Value Carrier]
+    [ii: SOURCE Value Carrier]
+    [jj: EXECUTED Value Carrier]
+    [kk: VALUE Value Carrier]
+    [ll: MAGNITUDE Value Carrier]
+    [mm: SCALED Value Carrier]
+    [nn: LOAD Value Carrier]
+    [oo: FINITE_ELEPHANT Value Carrier]
+    [pp: BULLSHIT Value Carrier]
+    : PROPAGANDA Value Carrier where
+  insinuation :=
+  { pwn_n00bz := pp.arm_wave_process
+    religion  := .religion d.fact.truth
+  }
+
+instance ACOLYTE_PROPAGANDA
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -126,179 +548,11 @@ instance SCIENTIFIC_ACOLYTE
     [oo: FINITE_ELEPHANT Value Carrier]
     [pp: BULLSHIT Value Carrier]
     [qq: PROPAGANDA Value Carrier]
-    [rr: ACOLYTE Value Carrier]
-    : SCIENTIFIC Value Carrier where
-  phd_process :=
-  { initiation_process := rr.euclid
-    galileo := rr.euclid.sacred_texts
-    invariant := .repeatable d.fact.truth
+    : ACOLYTE Value Carrier where
+  euclid :=
+  { ethos := qq.insinuation
+    sacred_texts := .inside_joke d.fact.truth
   }
-  invariant := .hypothesis d.fact.truth rr.euclid.sacred_texts
-
-
-inductive Knowledge  -- Bullshit meter 84
-| jarjar: Prop → Knowledge
-| ledger: Prop → Fact → Knowledge → Knowledge
-
-namespace Knowledge   -- 424
-def le : Knowledge → Knowledge → Prop
-  | .jarjar f1, .jarjar f2 => f1 = f2
-  | .jarjar _, _ => True
-  | _, .jarjar _=> False
-  | .ledger f1 p1 k1, .ledger f2 p2 k2 =>
-    (f1 = f2 ∧ p1 = p2 ∧ le k1 k2) ∨ le (.ledger f1 p1 k1) k2
-termination_by _ k => sizeOf k
-end Knowledge
-
-@[reducible] -- We have learned this in the learning process
--- lol.  10 years of learning about the Taylor series.  It's like I can manipulate them with my eyes closed now.
-structure ScientificProcess  -- 104499
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-  where
-  learning_process: LearningProcess Value Carrier
-  knowledge: Knowledge
-
-  is_it_true? : Knowledge → Knowledge → Prop := fun f1 f2 =>
-    Knowledge.le f1 f2 → Knowledge.le f2 f1
-
-class TRUTH  -- 5632
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-    [ideology: SCIENTIFIC Value Carrier]
-  where
-  scientific_process: ScientificProcess Value Carrier
-  martyred? : Knowledge → Prop := fun f1 =>
-    Knowledge.le f1 scientific_process.knowledge → Knowledge.le scientific_process.knowledge f1
-
-instance TRUTH_SCIENTIFIC
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-    [ideology: SCIENTIFIC Value Carrier]
-    : TRUTH Value Carrier where
-  scientific_process :=
-  { learning_process := ideology.phd_process
-    knowledge := .jarjar d.fact.truth
-  }
-
-inductive Gospel  -- 67
-  | epiphany: Prop → Gospel
-  | state: Knowledge → Prop → Gospel → Gospel
-
-@[reducible] -- We have learned this while watching others.
-structure ReligiousProcess
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-    [ideology: SCIENTIFIC Value Carrier]
-    [gospel: TRUTH Value Carrier]
-  where
-  scientific_process: ScientificProcess Value Carrier
-  the_literature: Gospel
-
-  pray? : Gospel → Gospel := fun prayer =>
-    match prayer with
-    | .epiphany prop => .state gospel.scientific_process.knowledge prop the_literature
-    | .state _ prop experiment => .state gospel.scientific_process.knowledge prop experiment
 
 
 end Measurement
