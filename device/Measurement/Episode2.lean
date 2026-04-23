@@ -623,7 +623,7 @@ class REPEATABLE   -- Bullshit meter ≈ 166
 -- Let's explain this to the compiler:
 
 inductive Study   -- Bullshit meter ≈ 119
-  | hypothesis: Fact → Trial → Study
+  | hypothesis: Fact → Study
   | data: Fact → Trial → Study → Study
 
 -- The first thing you will notice about a study is that it doesn't have numbers, it is either facts or
@@ -662,10 +662,10 @@ inductive Study   -- Bullshit meter ≈ 119
 
 namespace Study  -- Bullshit meter ≈ 87
 def le : Study → Study → Prop
-  | .hypothesis f1 t1, .hypothesis f2 t2 => f1 = f2 ∧ (t1 ≤ t2)   -- One hypothesis is "finer"
+  | .hypothesis f1 , .hypothesis f2 => f1 = f2    -- One hypothesis is "finer"
                                                                   -- or has more description than the other
-  | .hypothesis f1 t1, .data f2 t2 _ => f1.truth = f2.truth ∨ (t1 ≤ t2)  -- A hypothesis is either the same as a data point or has less description than a data point
-  | .data f1 t1 _, .hypothesis f2 t2 => f1.truth = f2.truth ∨ (t1 ≤ t2)  -- A data point is either the same as a hypothesis or has more description than a hypothesis
+  | .hypothesis f1 , .data f2 _ _ => f1.truth = f2.truth  -- A hypothesis is either the same as a data point or has less description than a data point
+  | .data _ _ _, .hypothesis _ => false
   | .data f1 t1 _, .data f2 t2 _ => ((f1.truth = f2.truth) ∧ (t1 ≤ t2)) ∨ -- This is the variance trick again,
                                     ((f1.truth ≠ f2.truth) ∧ (t2 ≤ t1))   -- just comparing the size of the description.
 
@@ -717,31 +717,22 @@ structure ComputationalProcess  -- Bullshit meter ≈ 373
 --                            +-----------+------+---   A RepeatableProcess Value Carrer is an input/output
 --                                                      instance. For those who do simulation, the input and
 --                                                      the output can _never_ separate or the results lose
-  output: Option Study --                               almost all meaning.
---    ^
---    |        The compiler was good enought to give us the option
---    |        to ask it to compute a value for a some study we
---    |        give it.  We don't have to look, but we can if we want to.
---    +------  We have the _option_ to do this.  We now have to figure out
---             how to explain _option_ to the compiler....
-  compute: Study → Study := fun s => match s with
-    | .hypothesis f t => .data f t (match output with
-                          | none => s           -- If the compiler didn't evaluate it, just return the same study.
-                          | some x => x)        -- Otherwise, check to see what the compiler did.
-    | .data f t _ => .data f (repeatable_process.iterate t) (match output with
-                          | none => s      --                  ^     ^     ^
-                          | some x => x)   --                  |     |     |
---                              ^                              +-+---+-----+
---                              |                                |
---      +-----------------------+--------------------------------+
---      |
---      |     What are we looking at here?  Well.... one interpretation could be we are looking at
---      |     a _wave collapse_ process where we ask the compiler to _inspect_ __ψ__.  It is a _model_
---      |     of the process, not the process itself. No _unlicensed accelerators_! Another way to look
---      |     at this is the compiler is giving us the compilation process for a symbol, if we really need
---      |     it.  BUT..... we have to wait for the evaluation to complete.  The compiler now understands
---      +---  that our time _passes_ as its time _passes_ and can measure it as well for us. Just need to
---            tell it how.  These are both reasonable interpretations of what is happening here.
+  output: Option Study
+
+  error_code: Study :=
+    .hypothesis d.fact
+
+  close: Option Study → Study := fun maybe =>
+    match maybe with
+    | some s => s
+    | none   => error_code
+
+  closure: Study → Study := fun s =>
+    match s with
+    | .hypothesis f =>
+        .data f repeatable_process.expectation (close output)
+    | .data f t _ =>
+        .data f (repeatable_process.iterate t) (close output)
 
 -- Since we have a computational process, we can describe the objects being computed!
 class NUMERIC  -- Bullshit meter ≈ 215
@@ -765,20 +756,15 @@ class NUMERIC  -- Bullshit meter ≈ 215
 --                                 |           |       |                     It looks written in FORTRAN, probably.
 --                                 V           V       V
   computational_process: ComputationalProcess Value Carrier
-  carrier: CarrierProcess Value   ----------------------------- hmm, this guy seems like it is full of stuff!
+
+  carrier: Study := .hypothesis d.fact
+
+  lambda: Option Study → Study := fun output =>
+    match output with
+    | some s => s
+    | none   => carrier
 
 
---                  +-----------------  Told you I would take your money. All your money.
---                  |                   Where is the quarter now?  Glued to the table.  Thanks for building
---                  V                   the proof for me.
-  result?: Study → Prop := fun s => computational_process.compute s = s        -- I hope you can compute s=s
---                                                                  ^          -- rfl.  rofl.  The compiler
---                                                                  |          -- just bet it could if it had to.
---  Curious if the compiler can tell the same thing apart? ---------+          -- what about you?
---                                                                  |
---                                                                  +--- or is it all spun around?
---                                                                  |
---                         Like a record baby, right round ---------+
 
 -- Told you _ENDIAN_ encoding.  Our binary number is ENDIAN encoded.
 -- One way is the whole, the other way is the parts.

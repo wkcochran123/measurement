@@ -7,12 +7,18 @@ _This is a gentle reminder that the long, long stories we tell ourselves are jus
 -/
 
 
-import Measurement.Episode7
+import Measurement.Episode15
 -- Told you Chaitin gets expensive
 set_option maxHeartbeats 4000000
 set_option allowUnsafeReducibility true
 
 namespace Measurement
+
+inductive Science  -- 8029
+  | repeatable: Prop → Science
+  | hypothesis: Prop → Cult → Science
+  | theory: Prop → Cult → Fact → Science → Science
+
 structure LearningProcess  -- 26691
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -44,14 +50,15 @@ structure LearningProcess  -- 26691
   where
   initiation_process : InitiationProcess Value Carrier
   -- Learn the ways of Galileo
-  galileo: Cult Value Carrier
+  galileo: Cult
   -- In order to _DESCRIBE_ science.
-  invariant: Science Value Carrier
+  invariant: Science
 
-  touch_stove? : Science Value Carrier → Science Value Carrier := fun s =>
+  touch_stove? : Science → Science := fun s =>
     match s with
-    | .hypothesis propose _ => .hypothesis propose galileo
-    | .theory propose prior _ => .theory propose prior invariant
+    | .repeatable propose => .hypothesis propose galileo
+    | .hypothesis propose idea => .theory propose idea d.fact (.hypothesis propose galileo)
+    | .theory propose prior fact observation => .theory propose prior fact observation
 
 class SCIENTIFIC -- 23964
     (Value: Type)
@@ -82,23 +89,62 @@ class SCIENTIFIC -- 23964
     [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier]
   where
-  initiation_process : InitiationProcess Value Carrier
-  invariant: Science Value Carrier
+  phd_process : LearningProcess Value Carrier
+  invariant: Science
 
-  predictable? : Science Value Carrier → Prop := fun s =>
+  predictable? : Science → Prop := fun s =>
     match s with
+    | .repeatable prop => prop
     | .hypothesis prop _ => prop
-    | .theory prop _ _  => prop.truth
+    | .theory prop _ _ _  => prop
+
+
+instance SCIENTIFIC_ACOLYTE
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    [ff: PRESENT Value Carrier]
+    [gg: MEASURABLE Value Carrier]
+    [hh: GUNGAN Value Carrier]
+    [ii: SOURCE Value Carrier]
+    [jj: EXECUTED Value Carrier]
+    [kk: VALUE Value Carrier]
+    [ll: MAGNITUDE Value Carrier]
+    [mm: SCALED Value Carrier]
+    [nn: LOAD Value Carrier]
+    [oo: FINITE_ELEPHANT Value Carrier]
+    [pp: BULLSHIT Value Carrier]
+    [qq: PROPAGANDA Value Carrier]
+    [rr: ACOLYTE Value Carrier]
+    : SCIENTIFIC Value Carrier where
+  phd_process :=
+  { initiation_process := rr.euclid
+    galileo := rr.euclid.sacred_texts
+    invariant := .repeatable d.fact.truth
+  }
+  invariant := .hypothesis d.fact.truth rr.euclid.sacred_texts
+
 
 inductive Knowledge  -- Bullshit meter 84
-| jarjar: Knowledge
-| ledger: Fact → Prop → Knowledge → Knowledge
+| jarjar: Prop → Knowledge
+| ledger: Prop → Fact → Knowledge → Knowledge
 
 namespace Knowledge   -- 424
 def le : Knowledge → Knowledge → Prop
-  | .jarjar, .jarjar => True
-  | .jarjar, _ => True
-  | _, .jarjar => False
+  | .jarjar f1, .jarjar f2 => f1 = f2
+  | .jarjar _, _ => True
+  | _, .jarjar _=> False
   | .ledger f1 p1 k1, .ledger f2 p2 k2 =>
     (f1 = f2 ∧ p1 = p2 ∧ le k1 k2) ∨ le (.ledger f1 p1 k1) k2
 termination_by _ k => sizeOf k
@@ -136,7 +182,6 @@ structure ScientificProcess  -- 104499
     [scientist: ACOLYTE Value Carrier]
   where
   learning_process: LearningProcess Value Carrier
-  scientific_process: SCIENTIFIC Value Carrier
   knowledge: Knowledge
 
   is_it_true? : Knowledge → Knowledge → Prop := fun f1 f2 =>
@@ -176,7 +221,43 @@ class TRUTH  -- 5632
   martyred? : Knowledge → Prop := fun f1 =>
     Knowledge.le f1 scientific_process.knowledge → Knowledge.le scientific_process.knowledge f1
 
+instance TRUTH_SCIENTIFIC
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    : TRUTH Value Carrier where
+  scientific_process :=
+  { learning_process := ideology.phd_process
+    knowledge := .jarjar d.fact.truth
+  }
+
 inductive Gospel  -- 67
+  | epiphany: Prop → Gospel
   | state: Knowledge → Prop → Gospel → Gospel
 
 @[reducible] -- We have learned this while watching others.
@@ -212,13 +293,12 @@ structure ReligiousProcess
     [gospel: TRUTH Value Carrier]
   where
   scientific_process: ScientificProcess Value Carrier
-  truth_process: TRUTH Value Carrier
-  the_ancient_texts: Gospel
-  science: Knowledge
+  the_literature: Gospel
 
-  pray? : Gospel → Gospel → Knowledge := fun prayer =>
+  pray? : Gospel → Gospel := fun prayer =>
     match prayer with
-    | .state k _ _ => fun _ => k
+    | .epiphany prop => .state gospel.scientific_process.knowledge prop the_literature
+    | .state _ prop experiment => .state gospel.scientific_process.knowledge prop experiment
 
 
 end Measurement

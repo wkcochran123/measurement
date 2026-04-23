@@ -50,16 +50,10 @@ structure MathematicalProcess  -- Bullshit meter = 2963.  That's about 2/3 incre
     [result: EXECUTED Value Carrier]
   where
   compiled_process: CompiledProcess Value Carrier
-  result: EXECUTED Value Carrier
-  mapping: Abstraction Value Carrier  -- Could it be that we are instantiating things?
+  mapping: Abstraction → Abstraction
 
   -- lepidopterology
-  calculate? : Abstraction Value Carrier → Abstraction Value Carrier := fun function =>
-  match function with
-  | @Abstraction.compile _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ f _ =>
-      @Abstraction.compile _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ one one f function
-  | @Abstraction.execute _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ prog _ =>
-      @Abstraction.execute _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ one compiled_process prog mapping
+  calculate? : Abstraction → Abstraction := mapping
 
 
 @[reducible]
@@ -86,8 +80,11 @@ class VALUE  -- Bullshit meter = 3327.  3x increase!  That's a lot of bullshit!
 
    where
    mathematical_process : MathematicalProcess Value Carrier
-   lt? : Abstraction Value Carrier → Abstraction Value Carrier → Prop := fun function output=>
+   monad: Abstraction
+   lt? : Abstraction → Abstraction → Prop := fun function output=>
      match function,output with
+     | .satire _ , _  => false
+     | _ , .satire _ => false
      | .compile _ _ _ , .compile _ _ _ => false
      | .compile _ _ _ , .execute _ _ _ => true
      | .execute _ _ _ , .compile _ _ _ => false
@@ -178,16 +175,16 @@ class MAGNITUDE  -- Bullshit meter ≈ 1503.  That's less than 1/2 the bullshit 
     | .add _ a _ => a
 
 inductive Product  -- Bullshit meter = 119
-  | One: Prop → Area → Product
-  | Mul: Fact → Area → Product → Product
+  | one: Prop → Sum → Product
+  | mul: Fact → Sum → Product → Product
 
 namespace Product  -- Bullshit meter = 75
 def le: Product → Product → Prop := fun p1 p2 =>
   match p1, p2 with
-  | .One p1 a1, .One p2 a2 => p1 = p2 ∧ a1 ≤ a2
-  | .One p1 a1, .Mul f2 a2 _ => p1 = f2.truth ∧ a1 ≤ a2
-  | .Mul f1 a1 _, .One p2 a2 => f1.truth = p2 ∧ a1 ≤ a2
-  | .Mul f1 a1 _, .Mul f2 a2 _ => f1 = f2 ∧ a1 ≤ a2
+  | .one p1 a1, .one p2 a2 => p1 = p2 ∧ a1 ≤ a2
+  | .one p1 a1, .mul f2 a2 _ => p1 = f2.truth ∧ a1 ≤ a2
+  | .mul f1 a1 _, .one p2 a2 => f1.truth = p2 ∧ a1 ≤ a2
+  | .mul f1 a1 _, .mul f2 a2 _ => f1 = f2 ∧ a1 ≤ a2
 
 def lt: Product → Product → Prop := fun p1 p2 => le p1 p2 ∧ ¬ le p2 p1
 end Product
@@ -220,13 +217,13 @@ structure MultiplyingProcess  -- Bullshit meter = 2157  5% increase.  Call that 
     [length: MAGNITUDE Value Carrier]
 
   where
-  addding_process : AddingProcess Value Carrier
+  adding_process : AddingProcess Value Carrier
   product: Product
   multiply? : Product → Product := fun p =>
     match p with
-    | .One prop a => match prop with
-      | _ => .Mul Fact.Truth a p
-    | .Mul f a _ => .Mul f a product
+    | .one prop a => match prop with
+      | _ => .mul Fact.Truth a p
+    | .mul f a _ => .mul f a product
 
 @[reducible]
 class SCALED  -- Bullshit meter = 1756
@@ -255,8 +252,8 @@ class SCALED  -- Bullshit meter = 1756
   multiplying_process : MultiplyingProcess Value Carrier
   norm? : Product → Sum:= fun p =>
     match p with
-    | .One f a => .zero f a
-    | .Mul f a _ => .add f a (.zero f.truth a)
+    | .one _ a => a
+    | .mul f a _ => .add f frquency.santa_claus.accumulation a
 
 -- Dyson vacuums are _so-so_.  Dyson series, on the other hand?
 inductive Basis   -- Bullshit meter = 134
@@ -266,7 +263,7 @@ inductive Basis   -- Bullshit meter = 134
 
 
 @[reducible]
-structure BASICOperation  -- Bullshit meter ≈ 2759
+structure BASICProcess  -- Bullshit meter ≈ 2759
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
@@ -328,7 +325,7 @@ class LOAD  -- Bullshit meter 2089
     [scaled: SCALED Value Carrier]
 
   where
-  basic_operation : BASICOperation Value Carrier
+  basic_operation : BASICProcess Value Carrier
   --  Is this an eigenvector?
   decoded? : Basis → Basis → Prop := fun b1 b2 =>
    match b1,b2 with
@@ -368,7 +365,7 @@ structure GalerkinProcess   -- Bullshit meter 2794
     [oriented: LOAD Value Carrier]
 
   where
-  load_process : LOAD Value Carrier
+  ANSYS_process : BASICProcess Value Carrier
   polynomial : Polynomial
 
   dot? : Polynomial → Polynomial := fun p =>
@@ -422,6 +419,7 @@ class FINITE_ELEPHANT   -- 2368
 
 -- reticulate, damn you!
 inductive Spline  -- 152
+  | observation: Prop → Spline
   | knot: Prop → Polynomial → Spline → Spline
   | interpolant: Fact → Polynomial → Spline → Spline → Spline
 

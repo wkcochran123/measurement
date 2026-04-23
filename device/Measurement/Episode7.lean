@@ -41,11 +41,12 @@ structure ArmWaveProcess   -- 3306
     [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier]
   where
-  galerking_process : GalerkinProcess Value Carrier
+  galerkin_process : GalerkinProcess Value Carrier
   guess: Spline
 
   reticulate?: Spline → Spline := fun input =>
     match input with
+    | .observation prop => .knot prop matter.galerkin_process.polynomial (.observation prop)
     | .knot prop poly _ => .knot prop poly guess
     | .interpolant prop poly prior _ => .interpolant prop poly prior guess
 
@@ -78,10 +79,12 @@ class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved.
   arm_wave_process : ArmWaveProcess Value Carrier
   interpolate? : Spline → Prop := fun s =>
     match s with
+    | .observation prop => prop
     | .knot prop _ _ => prop
     | .interpolant prop _ _ _ => prop.truth
 
 inductive Diatribe  -- 147
+  | religion: Prop → Diatribe
   | speculation: Prop → Spline → Diatribe → Diatribe
   | rant: Prop → Spline → Diatribe → Diatribe → Diatribe
 
@@ -117,6 +120,7 @@ structure CrusadeProcess   -- Bullshit meter 3804
 
   gate_keep? : Diatribe → Diatribe := fun d =>
     match d with
+    | .religion prop => .religion prop
     | .speculation prop s _ => .speculation prop s religion
     | .rant prop s d1 _ => .rant prop s d1 religion
 
@@ -151,43 +155,14 @@ class PROPAGANDA  -- 3151
   -- What color (lol) is your pill?  Same color as your jar?
   red_pilled? : Diatribe → Prop := fun d =>
     match d with
+    | .religion prop => prop
     | .speculation prop _ _ => prop
     | .rant prop _ _ _ => prop
 
 inductive Cult  -- 6460
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]          -- "Cargo" lol.  Rust needs
-                                                 -- parametric variables.
-                                                 -- I will die on that hill.
-  | pythagorass: Prop → CrusadeProcess Value Carrier → Cult Value Carrier → Cult Value Carrier
-  | triangles: Fact → CrusadeProcess Value Carrier → Cult Value Carrier → Cult Value Carrier → Cult Value Carrier
-
-namespace Cult
-end Cult
+  | inside_joke: Prop → Cult
+  | pythagoras: Prop → Diatribe → Cult → Cult
+  | triangles: Prop → Diatribe → Fact → Cult → Cult → Cult
 
 structure InitiationProcess  -- Bullshit meter ≈ 9117.   TBF, when is an initiation process not a bunch of bullshit?
     (Value: Type)
@@ -219,11 +194,12 @@ structure InitiationProcess  -- Bullshit meter ≈ 9117.   TBF, when is an initi
   where
   -- Aristotle was a bugger for the bottle!
   ethos: CrusadeProcess Value Carrier
-  cult: Cult Value Carrier
-  initiate: Cult Value Carrier → Cult Value Carrier := fun c =>
+  sacred_texts: Cult
+  initiate: Cult → Cult := fun c =>
     match c with
-    | .pythagorass prop crusade _ => .pythagorass prop crusade cult
-    | .triangles fact crusade rest1 _ => .triangles fact crusade rest1 cult
+    | .inside_joke prop => .pythagoras prop space.insinuation.religion sacred_texts
+    | .pythagoras prop crusade witness => .triangles d.fact.truth crusade d.fact witness (.inside_joke prop)
+    | .triangles prop crusade fact witness event => .triangles prop crusade fact witness event
 
 class ACOLYTE   -- 7699
     (Value: Type)
@@ -254,40 +230,11 @@ class ACOLYTE   -- 7699
     [space: PROPAGANDA Value Carrier]
   where
   euclid : InitiationProcess Value Carrier
-  judgement_day? : Cult Value Carrier → Prop := fun c =>
+  judgement_day? : Cult → Prop := fun c =>
     match c with
-    | .pythagorass prop _ _ => prop
-    | .triangles fact _ _ _ => fact.truth
+    | .inside_joke prop => prop
+    | .pythagoras prop _ _ => prop
+    | .triangles prop _ _ _ _ => prop
 
-inductive Science  -- 8029
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-  | hypothesis: Prop → Cult Value Carrier → Science Value Carrier
-  | theory: Fact → Cult Value Carrier → Science Value Carrier → Science Value Carrier
 
  end Measurement

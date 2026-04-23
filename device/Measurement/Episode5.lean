@@ -57,6 +57,7 @@ namespace Measurement
                                                               --         |   this to you.
                                                               --         V
 inductive Equivalation  -- Bullshit meter ≈ 119.   This is down almost 1/π.  Induction-on-induction Wild!
+    | physics: Fact → Jar → Equivalation
 
   --   +----+-----+--------   What does it mean to be zero like?  Well, Nothing.  What is nothing? well
   --   |    |     |           we introduced the ∅ last episode as the alias for "nothing."   The thing
@@ -84,6 +85,24 @@ inductive Equivalation  -- Bullshit meter ≈ 119.   This is down almost 1/π.  
   -- The Pauli Exclusion Principle is simple: there can be at most one of something, unless there are two.
   -- You know, BINARY.
 
+namespace Equivalation
+def le : Equivalation → Equivalation → Prop := fun e1 e2 =>
+  match e1,e2 with
+  | .physics f1 j1 , .physics f2 j2    => f1.truth ∧ f2.truth ∧ j1 ≤ j2
+  | .physics _ _ , .zero_like _ _      => false
+  | .physics _ _ , .one_like _ _ _     => true
+  | .zero_like f1 _ , .zero_like f2 _  => f1.truth ∧ f2.truth
+  | .zero_like _ _ , .physics _ _      => true
+  | .zero_like _ _ , .one_like _ _ _   => true
+  | .one_like p1 e _, .one_like p2 f _ => p1 ∧ p2 ∧ (le e f)
+  | .one_like _ _ _ , _                => false
+
+-- Not certain one can genuinely order equivalations yet.
+end Equivalation
+
+instance : LE Equivalation := ⟨Equivalation.le⟩ -- Bullshit meter ≈ 8
+
+
 @[reducible]
 structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
     (Value: Type)
@@ -110,7 +129,6 @@ structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
 -- Step 1 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dynamics As Described By Yang and Mills:
 -- Explain the Pauli Exclusion Principle and the hyperfine transition. So, there are two electrons that we will
 -- call:
-    one: Equivalation         --   Are you beginning to understand why I don't trust "sets" and "Nat"?  Lies, I tell you.
     zero: Equivalation
 
 -- Step 2 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dynamics As Described By Yang and Mills:
@@ -122,10 +140,11 @@ structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
 --           V                V                            under transform.   I _think_ this is what you might call
     tick: Equivalation → Equivalation := fun s =>     --   parameterization.  Pass by named reference?
       match s with
+      | .physics f j => .physics f j    -- We __hope__ this doesn't change!
 --                           +--------------   I call this the Neutrino! for it _IS_ the state that is excluded by
 --                           |                 Pauli.  Perhaps you disagree?
 --                           V
-      | .zero_like _ _ => .one_like false zero one           -- Dag you, we have an anonymous ZERO
+      | .zero_like _ _ => .one_like false zero zero           -- Dag you, we have an anonymous ZERO
       | .one_like _ _ _ => .zero_like Fact.Truth zero        --              and an anonymous ONE.
 --                              ^  +--+                         COMPLETELY FUCKING ANONYMOUS.
 --  I call this the thing that  |  |  |                         You instantiate Nats.  I pull them out of my ass.
@@ -160,25 +179,13 @@ class SOURCE   -- Bullshit meter ≈ 1121.   That's almost a 50% increase!
     [what_meesa_saying: MEASURABLE Value Carrier]
     [zero: GUNGAN Value Carrier]
   where
-  meesa_process : MeesaProcess Value Carrier
-
-  one? : Equivalation → Equivalation → Prop := fun tick tock=>
-    match tick,tock with
-    | .zero_like _ _ , .zero_like _ _ =>  false
-    | .zero_like _ _ , .one_like _ _ _ => false
-    | .one_like _ _ _ , .zero_like _ _ => false
-    | .one_like _ _ _ , .one_like _ _ _ => true
-
-  zero? : Equivalation → Equivalation → Prop := fun tick tock=>
-    match tick,tock with
-    | .zero_like _ _ , .zero_like _ _ =>  true
-    | .zero_like _ _ , .one_like _ _ _ => false
-    | .one_like _ _ _ , .zero_like _ _ => false
-    | .one_like _ _ _ , .one_like _ _ _ => false
+  cd_process : DigitalProcess Value Carrier
+  one : Equivalation
 
 inductive Encoding   -- Bullshit meter = 118.  Flat.
-  | zero: Equivalation → Encoding → Encoding
-  | one: Equivalation → Encoding → Encoding → Encoding
+  | boot: Fact → Equivalation → Encoding
+  | zero: Fact → Equivalation → Encoding → Encoding
+  | one: Fact → Equivalation → Equivalation → Encoding → Encoding → Encoding
 
 @[reducible]
 structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bullshit tends to accrete!
@@ -208,10 +215,15 @@ structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bul
 
   execute?: Encoding → Encoding := fun input =>
     match opcode, input with
-    | .zero _ _,   .zero _ _     => .one digital_process.zero opcode input
-    | .zero _ _,   .one _ _ _    => .one digital_process.zero opcode input
-    | .one _ _ _,  .zero _ _     => .zero digital_process.one opcode
-    | .one _ _ _,  .one _ _ _    => .zero digital_process.one opcode
+    | .boot f _,  .boot g _      => match (f.truth ∧ g.truth) with
+                                    | _ => .one f digital_process.zero digital_process.zero opcode input
+    | .boot f e, _               => .zero f e opcode
+    | .zero f x1 e1, .zero g x2 e2 => match (f.truth ∧ g.truth) with
+                                    | _ => .one f x1 x2 e1 e2
+    | .zero f x e , _            => .zero f x e
+    | .one f _ _ _ _ , .one g _ x _ e => match (f.truth ∧ g.truth) with
+                                    | _ => .zero f x e
+    | .one f _ x _ e, _          => .zero f x e
 
 @[reducible]
 class EXECUTED  -- Bullshit meter = 1158.  Calling this flat.
@@ -239,66 +251,39 @@ class EXECUTED  -- Bullshit meter = 1158.  Calling this flat.
 
   output? : Encoding → Encoding → Prop := fun opcode output=>
     match opcode,output with
-    | .zero _ _ , .zero _ _ =>  true
-    | .zero _ _ , .one _ _ _ => false
-    | .one _ _ _ , .zero _ _ => false
-    | .one _ _ _ , .one _ _ _ => true
+    | .boot f _ , .boot g _ => f = g
+    | .boot _ _ , _ => false
+    | _ , .boot _ _ => false
+    | .zero f _ _ , .zero g _ _ =>  f = g
+    | .zero _ _ _ , .one _ _ _ _ _ => false
+    | .one _ _ _ _ _ , .zero _ _ _ => false
+    | .one f _ e1 _ _ , .one g _ e2 _ _ => f.truth ∧ g.truth ∧ (e1 ≤ e2)
 
 @[reducible]
 inductive Abstraction  -- Bullshit meter = 2045.  About a 1/6 increase.
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frequency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [false: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-  | compile: SOURCE Value Carrier → Abstraction Value Carrier →
-             Abstraction Value Carrier → Abstraction Value Carrier
-  | execute: CompiledProcess Value Carrier → Abstraction Value Carrier →
-             Abstraction Value Carrier → Abstraction Value Carrier
+  | satire:  Fact → Abstraction
+  | compile: Fact → Encoding → Abstraction → Abstraction
+  | execute: Fact → Encoding → Abstraction → Abstraction
 
 namespace Abstraction   -- Bullshit meter = 2759.  This is a big jump, but that's because we couldn't compute
                         -- LE on the above types.
-variable  {Value: Type}
-          {Carrier: CarrierProcess Value}
-          [d: DISTINGUISHABLE Value Carrier]
-          [a: ADMISSIBLE Value Carrier]
-          [c: COUNTABLE Value Carrier]
-          [e: ENCODED Value Carrier]
-          [r: RESIDUE Value Carrier]
-          [b: BINARY Value Carrier]
-          [f: REPEATABLE Value Carrier]
-          [n: NUMERIC Value Carrier]
-          [h: REPRESENTABLE Value Carrier]
-          [p: PHYSICAL Value Carrier]
-          [z: COMPARABLE Value Carrier]
-          [particle: OBSERVED Value Carrier]
-          [frequency: PRESENT Value Carrier]
-          [what_meesa_saying: MEASURABLE Value Carrier]
-          [zero: GUNGAN Value Carrier]
-          [one: SOURCE Value Carrier]
 
-def le : Abstraction Value Carrier → Abstraction Value Carrier → Prop := fun f1 f2 =>
+def le : Abstraction → Abstraction → Prop := fun f1 f2 =>
   match f1,f2 with
+  | .satire f1     , .satire f2      => f1 = f2
+  | .satire f1     , .compile f2 _ _ => f1 = f2
+  | .satire f1     , .execute f2 _ _ => f1 = f2
+  | .compile f1 _ _, .satire f2      => f1 = f2
+  | .execute f1 _ _, .satire f2      => f1 = f2
   | .compile _ _ _, .compile _ _ _ => true
   | .compile _ _ _, .execute _ _ _ => true
   | .execute _ _ _, .execute _ _ _ => true
   | .execute _ _ _, .compile _ _ _ => false
 
-def lt: Abstraction Value Carrier → Abstraction Value Carrier → Prop := fun f1 f2 =>
+def lt: Abstraction → Abstraction → Prop := fun f1 f2 =>
   match f1,f2 with
+  | .satire _, _ => false
+  | _, .satire _ => false
   | .compile _ _ _, .compile _ _ _ => false
   | .compile _ _ _, .execute _ _ _ => true
   | .execute _ _ a, .execute _ _ b => lt a b
@@ -306,25 +291,7 @@ def lt: Abstraction Value Carrier → Abstraction Value Carrier → Prop := fun 
 end Abstraction
 
 instance    -- Bullshit meter = 579 !!  that is a 60x increase!  Hmmm...
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frequency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [false: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
- : LE (Abstraction Value Carrier) := ⟨Abstraction.le⟩  -- boo ya!  abstraction head.
+ : LE Abstraction := ⟨Abstraction.le⟩  -- boo ya!  abstraction head.
 
 -- This "abstracts" the < operation. To prevent self reference paradoxes.  Consider the
 -- Berry Paradox: "The smallest positive integer not definable in under eleven words".  If you can define it, then it is
@@ -334,25 +301,7 @@ instance    -- Bullshit meter = 579 !!  that is a 60x increase!  Hmmm...
 -- We want to say that "less than" is only defined for certain pairs of abstractions, and that it is not defined for all pairs
 -- of abstractions.  This way, we can avoid the paradox.
 instance  -- Bullshit meter = 579    Expected from above
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]  -- < is true
-    [a: ADMISSIBLE Value Carrier]       -- < is true
-    [c: COUNTABLE Value Carrier]        -- < is true
-    [e: ENCODED Value Carrier]          -- < is true
-    [r: RESIDUE Value Carrier]          -- < is true
-    [b: BINARY Value Carrier]           -- < is true
-    [f: REPEATABLE Value Carrier]       -- < is true
-    [n: NUMERIC Value Carrier]          -- < is true
-    [h: REPRESENTABLE Value Carrier]    -- < is true
-    [p: PHYSICAL Value Carrier]         -- < is true
-    [z: COMPARABLE Value Carrier]       -- < is true      +------   FUCKING JAR JAR!!!!
-    [particle: OBSERVED Value Carrier]  -- < is true      |
-    [frequency: PRESENT Value Carrier]   -- < is true      V
-    [what_meesa_saying: MEASURABLE Value Carrier]  -- MEESA TRUE!
-    [false: GUNGAN Value Carrier]       -- < is true
-    [one: SOURCE Value Carrier]         -- < is true
- : LT (Abstraction Value Carrier) := ⟨Abstraction.le⟩  -- boo ya!  abstraction head.
+ : LT Abstraction := ⟨Abstraction.lt⟩  -- boo ya!  abstraction head.
 --  ^                                              ^
 --  |                                              |
 --  +-----------------+----------------------------+

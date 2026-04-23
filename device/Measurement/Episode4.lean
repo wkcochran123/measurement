@@ -145,6 +145,7 @@ class PRESENT  -- Bullshit meter ≈ 594
 --     |               |                               sphere.  He does this using what Jar Jar Binks would recognize as "the force".
 --     V               V                               Not saying _it is_ the force, just saying Jar Jar would see it that way.
   santa_claus: SensingProcess Value Carrier
+  quantum: Type Area
   present: Area → Area → Prop := fun s1 s2 => santa_claus.use_force s1 = s2    -- Now, this is an AI video waiting to happen.
 --     ^    ^      ^
 --     |    |      |                     One of the more interesting things that Einstein showed us is that the "present time"
@@ -153,12 +154,15 @@ class PRESENT  -- Bullshit meter ≈ 594
 --                                       and I suspect Santa uses Stokes' theorem to compute the local curl.
 
 inductive Phenomenon   -- Bullshit meter ≈ 153
+  | field: Fact → Area → Phenomenon
   | inital_condition: Fact → Area → Phenomenon → Phenomenon
   | observations: Fact → Area → Phenomenon → Phenomenon → Phenomenon
 
 namespace Phenomenon  -- Bullshit meter ≈ 227
 def le : Phenomenon → Phenomenon → Prop := fun p1 p2 =>
   match p1, p2 with
+  | .field _ _, _ => True
+  | _,.field _ _ => False
   | .inital_condition f1 _ p1', .inital_condition f2 _ p2' =>
       match f1.decTruth, f2.decTruth with
       | isTrue _,  isTrue _  => le p1' p2'
@@ -208,12 +212,15 @@ structure GaugeProcess  -- Bullshit meter ≈ 830
 --       |                                             the universe and the universe gets lower frequency photons in return.
 --       V
   sensing_process : SensingProcess Value Carrier
-  phenomenon : Phenomenon
+
+  clock : Phenomenon
+  count : Phenomenon := .inital_condition d.fact (.t d.fact) clock
 
   event? : Phenomenon → Phenomenon := fun p =>
     match p with
-    | .inital_condition f a p => .observations f (sensing_process.use_force a) p phenomenon
-    | .observations f a _ p12 => .observations f (sensing_process.use_force a) p12 phenomenon
+    | .field f a              => .field f (sensing_process.use_force a)
+    | .inital_condition f a _ => .observations f (sensing_process.use_force a) p clock
+    | .observations f a _ p12 => .observations f (sensing_process.use_force a) p12 clock
 
 class MEASURABLE  -- Bullshit meter ≈ 730
     (Value: Type)
@@ -241,7 +248,7 @@ class MEASURABLE  -- Bullshit meter ≈ 730
 -- You and I will call that fact 0.  This is our initial condition.
 
 inductive Jar  -- Bullshit meter ≈ 153    *hmmm*,    I would have thought this should be higher?
-
+  | color: Fact → Area → Jar
   | bang: Fact → Jar → Jar -- BINKS!  Meesa Spake!        So, what the hell is a jar?  I've never heard of a mathematical or
 --   ⠀⠀⠀⠀⠀⠀⢀⣶⣤⣀⠀⠀⠀⡼⡑⠢⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                   physical concept called a jar.  Will, it is like a bag, except you
 --   ⠀⠀⠀⠀⠀⠀⢘⢉⢹⣯⣆⡰⣾⣷⣀⡄⣼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                   can kinda see whats in the middle of it.  You can't really see what's
@@ -268,6 +275,9 @@ inductive Jar  -- Bullshit meter ≈ 153    *hmmm*,    I would have thought this
 namespace Jar  -- Bullshit meter ≈ 214
 def le : Jar → Jar → Prop := fun j1 j2 =>
   match j1, j2 with
+  | .color f1 a1 , .color f2 a2 => (f1.truth ∧ f2.truth) ∧ (a1 ≤ a2)
+  | .color _ _ , _ => True
+  | _ , .color _ _ => False
   | .bang f1 j1', .bang f2 j2' =>
       match f1.decTruth, f2.decTruth with
       | isTrue _,  isTrue _  => le j1' j2'
@@ -328,6 +338,7 @@ structure MeesaProcess  -- Bullshit meter ≈ 1010.    There we go, we just brok
   gauge_process : GaugeProcess Value Carrier
   concept: Jar
   life_debt? : Jar → Jar := fun j => match j with
+    | .color f a => .color f a    -- Colors don't change
     | .bang f _ => .bang f concept
     | .superposition f _ j2 => .superposition f concept j2
 

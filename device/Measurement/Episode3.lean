@@ -111,14 +111,14 @@ structure TuringProcess   -- Bullshit meter ≈ 492
   compute?: Computation → Option Study := fun s =>
     match s with
     | Computation.program _ s => some s
-    | Computation.compute _ _ s2 _ => computational_process.compute s2
+    | Computation.compute _ _ s2 _ => computational_process.closure s2
   -- I stuck that landing, wdyt? I mean, is that _NOT_ the definition of an Option? One thing that Turing _DID_ get right,
   -- interpretation of the symbol _IS_ a different step than updating the internal state of the machine.
 
   turing_step? : Computation → Computation := fun s =>
     match s with
     | Computation.program _ _ => s
-    | Computation.compute f s1 s2 _ => Computation.compute f s1 (computational_process.compute s2) state
+    | Computation.compute f s1 s2 _ => Computation.compute f s1 (computational_process.closure s2) state
   -- _NOW_ we have fully specified a Turing machine.  Lol.
 
 
@@ -148,7 +148,7 @@ class REPRESENTABLE  --  Bullshit meter ≈ 261
 --                                |                     So, we _DO NOT_ have any guard rails here, you must _KNOW_
 --                                V                     _a priori_ your algo halts on all inputs.  Or, it's your own fault!
 --  REPAIR
-  representable?: ∀ (_: Fact) (s: Study), ∃ (_: Computation), calculation_process.computational_process.compute s = s
+  representable?: ∀ (_: Fact) (s: Study), ∃ (_: Computation), calculation_process.computational_process.closure s = s
 --   I hope you understand now that this IS NOT GIVEN                                         ^       +--- rofl. Also, Kirk
 --   by mathematics.  The symbols come from elsewhere.                                        |       |    was the better
 --                                                                                            +-------+    captain!
@@ -411,6 +411,8 @@ class COMPARABLE  -- Bullshit meter ≈ 292
     [h: REPRESENTABLE Value Carrier]     -- we will figure out which _DIRECTION_ it needs to go in order to be bigger and
     [p: PHYSICAL Value Carrier]          -- then work it out from there.
   where
+  physical_process : PhysicalProcess Value Carrier
+
 -- Not touching this with a ten foot pole.  Is the entire London Symphony Orchestra less than pink?  Or just a few?
 -- _You_ tell _me_ how to write _that_ "le". Lean is a real sonofabitch about loose ends.
 
@@ -509,7 +511,7 @@ class OBSERVED   -- Bullshit meter ≈ 444
            --        |        |     |           is the velocity of the object.  It is 0 at rest and 1 in motion.
            --        V        V     V           Let us proceed to implement the model of static friction.
   slip_process: SlipProcess Value Carrier
-  observation: Type                      -- This is the current velocity of the object measured in universe levels.
+  observation: Type i                    -- This is the current velocity of the object measured in universe levels.
 
 -- So, there is a universality of this concept called _entropy_.  What I have done here is designed a numeric system
 -- optimized to compute _entropy_ in information computed the way Coloumbs modeled static friction, an _entropic_ process:
