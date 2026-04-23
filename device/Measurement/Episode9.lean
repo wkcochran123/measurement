@@ -5,6 +5,7 @@ import Measurement.Episode8
 -- Told you Chaitin gets expensive
 set_option maxHeartbeats 4000000
 set_option allowUnsafeReducibility true
+set_option maxRecDepth 100
 
 namespace Measurement
 
@@ -251,15 +252,15 @@ structure BigRedDogProcess
   differential_equation: Variation
   transmute: Variation → Variation := fun variation =>
     match variation with
-    | .newton g p => .gateaux g p differential_equation
+    | .newton g p => .gateaux g d.fact.truth p differential_equation
     | .gateaux g a b v =>
         -- Gateaux → Fréchet: add the residue.
         -- a is the direction, b is the response, a≠b is the strain.
         .frechet g a b (a ∧ ¬b) v differential_equation   -- the residue is exactly the informational strain
-    | .frechet g a b e f1 _ =>
+    | .frechet g a b c f1 _ =>
         -- Fréchet → Gateaux: project out the residue, collapse to direction only.
         -- This is the weak form. You lose the residue. That's the price of Galerkin.
-        .gateaux g a b e f1
+        .gateaux g (d.fact.truth∧a) (b=c) f1
 
 @[reducible]
 class LOCAL
@@ -300,7 +301,7 @@ class LOCAL
   experience: Variation → Prop := fun variation =>
   match variation with
   | .newton _ p => p
-  | .gateaux _ a b => (a ∧ b) ∨ ¬ (¬ a ∧ b)
+  | .gateaux _ a b _ => (a ∧ b) ∨ ¬ (¬ a ∧ b)
   | .frechet _ _ _ _ _ _ => delta
 
 instance LOCAL_REAL
@@ -341,12 +342,5 @@ instance LOCAL_REAL
     differential_equation := .newton account.witness d.fact.truth
   }
   delta := d.fact.truth
-
-inductive SpaceTimePath
-  | einstein: Prop → SpaceTimePath
-  | white_hole: Prop → Type → SpaceTimePath → SpaceTimePath
-  | black_hole: Prop → Type → Prop → Type 1 → SpaceTimePath → SpaceTimePath
-  | geodesic: Prop → Type i → Prop → Type (i+1) → SpaceTimePath → SpaceTimePath → SpaceTimePath
-
 
 end Measurement

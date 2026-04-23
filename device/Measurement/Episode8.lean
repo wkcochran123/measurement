@@ -58,7 +58,7 @@ structure LearningProcess  -- 26691
     match s with
     | .repeatable propose => .hypothesis propose galileo
     | .hypothesis propose idea => .theory propose idea d.fact (.hypothesis propose galileo)
-    | .theory propose prior fact observation => .theory propose prior fact observation
+    | .theory propose prior fact _ => .theory propose prior fact invariant
 
 class SCIENTIFIC -- 23964
     (Value: Type)
