@@ -76,7 +76,7 @@ class MEASURED
   satire: LeanProcess Value Carrier
 
 
-instance MEASURED_EXECUTABLE
+instance MEASURED_HALTED
     (Value: Type)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
@@ -95,7 +95,7 @@ instance MEASURED_EXECUTABLE
   satire :=
   { description := executable.scientific_paper
     length := Carrier.value
-    velocity := .origin Carrier.value Value
+    velocity := .origin d.fact Carrier.value Value
     projection := ULift (ULift (ULift Value))  -- Hmm... wonder what this could mean?
   }
 

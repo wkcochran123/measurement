@@ -141,17 +141,17 @@ structure HeartbeatProcess
               | isTrue _ =>
                 .fibers fact after current_reading prop_after fact.truth accumulated_bullshit
               | isFalse _ =>
-                .fabric fact d.fact before after current_reading prop_before prop_after ¬fact.truth yt accumulated_bullshit
+                .fabric fact d.fact before after current_reading prop_before prop_after (¬fact.truth) yt accumulated_bullshit
      |.fabric f1 f2 x1 x2 x3 p1 p2 p3 yt1 yt2 =>
               match f1.decTruth, f2.decTruth with
               | isTrue _   , isTrue _    =>
                           .fabric f1 f2 x1 x2 x3 p1 p2 p3 yt1 yt2
               | isTrue _   , isFalse _   =>
-                          .fabric d.fact f2 current_reading x2 x3 computer_science.the_compiler.converged.truth p2 ¬p3 accumulated_bullshit yt2
+                          .fabric d.fact f2 current_reading x2 x3 computer_science.the_compiler.converged.truth p2 (¬p3) accumulated_bullshit yt2
               | isFalse _, isTrue _  =>
                           .fibers f2 x3 current_reading p3 f2.truth accumulated_bullshit
               | isFalse _, isFalse _ =>
-                          .fabric f1 f2 x2 x3 current_reading ¬p2 ¬p3 f2.truth yt2 accumulated_bullshit
+                          .fabric f1 f2 x2 x3 current_reading (¬p2) (¬p3) f2.truth yt2 accumulated_bullshit
 
 
 
