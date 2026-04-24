@@ -95,20 +95,10 @@ structure ElaborationProcess
             .transform f2 d.fact p2 p1 t t1 program                     -- F=T: stay, not ready yet
         | isFalse _, isFalse _ =>
             .transform f1 f2 p1 p2 t t1 program                         -- F=F: halt
-    | .boolean f1' f2' f3' p1' p2' p3' t' t1' ti' prev =>
-        match f1.decTruth, f2.decTruth with
-        | isTrue _,  isTrue _  =>
-            -- [T, B] = 0: commutes freely, absorb transform into boolean
-            .boolean f1' f2' f1 p1' p2' p1 t' t1' t program
-        | isTrue _,  isFalse _ =>
-            -- [T, B] ≠ 0: non-zero residue → gauge correction
-            .boolean d.fact f1 f1' p1 ¬p1' p1' t t1' t' program
-        | isFalse _, isTrue _  =>
-            -- [T, B] ≠ 0 other orientation → gauge correction, other chirality
-            .boolean f1' d.fact f1 p1' ¬p1 p1 t' t1' t program
-        | isFalse _, isFalse _ =>
-            -- halt: even the commutator can't fire
-            .transform f1 f2 p1 p2 t t1 program
+    | .boolean f1' f2' f3' p1' p2' p3' t' t1' t    |.boolean f1 f2 f3 p1 p2 p3 t t1 ti program =>
+        match d.fact.decTruth with
+            | isTrue _  => .boolean f2 f3 f1 p2 p3 p1 t t t program
+            | isFalse _ => .load d.fact (p1 ∧ p2 ∧ p3) t
 
 
 
