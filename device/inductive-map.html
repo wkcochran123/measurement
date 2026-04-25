@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Measurement Inductive Map</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --paper: #f8fafc;
+      --panel: #ffffff;
+      --line: #d5dce5;
+      --accent: #1f6feb;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    header {
+      padding: 18px 22px 14px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .meta {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      min-height: calc(100vh - 76px);
+    }
+
+    #graph {
+      overflow: auto;
+      padding: 20px;
+    }
+
+    #graph svg {
+      display: block;
+      width: max-content;
+      min-width: 100%;
+      height: auto;
+    }
+
+    aside {
+      border-left: 1px solid var(--line);
+      background: var(--panel);
+      padding: 18px;
+      overflow: auto;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 14px;
+    }
+
+    pre {
+      margin: 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #f3f6fa;
+      overflow: auto;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .legend {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .swatch {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: 8px;
+      border: 1px solid #8aa8c9;
+      vertical-align: -2px;
+    }
+
+    .inductive { background: #dbeafe; }
+    .external { background: #fff7cc; }
+
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Measurement Inductive Map</h1>
+    <div class="meta">Generated from <code>Measurement/Episode*.lean</code>. Edges mean “constructor mentions this type.”</div>
+  </header>
+
+  <main>
+    <section id="graph" aria-label="Rendered inductive graph"></section>
+    <aside>
+      <h2>Legend</h2>
+      <div class="legend">
+        <div><span class="swatch inductive"></span>Project inductive</div>
+        <div><span class="swatch external"></span>External carrier / primitive / class-backed type</div>
+      </div>
+      <h2>DOT Source</h2>
+      <pre id="dot-source"></pre>
+    </aside>
+  </main>
+
+  <script type="text/vnd.graphviz" id="dot">
+digraph MeasurementInductives {
+  graph [
+    rankdir=LR,
+    bgcolor="transparent",
+    pad=0.25,
+    nodesep=0.45,
+    ranksep=0.85,
+    splines=true,
+    overlap=false,
+    fontname="Helvetica"
+  ];
+  node [
+    shape=box,
+    style="rounded,filled",
+    fontname="Helvetica",
+    fontsize=11,
+    color="#8aa8c9",
+    fillcolor="#dbeafe"
+  ];
+  edge [
+    color="#7a8da8",
+    arrowsize=0.7,
+    fontname="Helvetica",
+    fontsize=10
+  ];
+
+  Fact [fillcolor="#fff7cc", color="#d6b656"];
+  Prop [fillcolor="#fff7cc", color="#d6b656"];
+  Type [fillcolor="#fff7cc", color="#d6b656"];
+  Alpha [label="α", fillcolor="#fff7cc", color="#d6b656"];
+
+  Number -> Fact;
+
+  Natural -> Fact;
+  Natural -> Number;
+  Natural -> Natural [label="rec"];
+
+  Rational -> Fact;
+  Rational -> Natural;
+  Rational -> Rational [label="rec"];
+
+  Sequence -> Fact;
+  Sequence -> Rational;
+  Sequence -> Sequence [label="rec"];
+
+  Limit -> Fact;
+  Limit -> Sequence;
+  Limit -> Limit [label="rec"];
+
+  Sample -> Fact;
+  Sample -> Limit;
+  Sample -> Sample [label="rec"];
+
+  Trial -> Fact;
+  Trial -> Sample;
+  Trial -> Trial [label="rec"];
+
+  Study -> Fact;
+  Study -> Trial;
+  Study -> Study [label="rec"];
+
+  Computation -> Fact;
+  Computation -> Study;
+  Computation -> Computation [label="rec"];
+
+  ChaitinsNumberSequence -> Fact;
+  ChaitinsNumberSequence -> Computation;
+
+  Metavariable -> Fact;
+  Metavariable -> Alpha;
+  Metavariable -> Metavariable [label="rec"];
+
+  Sophism -> Fact;
+  Sophism -> ChaitinsNumberSequence;
+  Sophism -> Type;
+  Sophism -> Sophism [label="rec"];
+
+  Area -> Fact;
+  Area -> Number;
+  Area -> Area [label="rec"];
+
+  Phenomenon -> Fact;
+  Phenomenon -> Area;
+  Phenomenon -> Phenomenon [label="rec"];
+
+  Jar -> Fact;
+  Jar -> Area;
+  Jar -> Jar [label="rec"];
+
+  Equivalation -> Fact;
+  Equivalation -> Jar;
+  Equivalation -> Prop;
+  Equivalation -> Equivalation [label="rec"];
+
+  Encoding -> Fact;
+  Encoding -> Equivalation;
+  Encoding -> Encoding [label="rec"];
+
+  Abstraction -> Fact;
+  Abstraction -> Encoding;
+  Abstraction -> Abstraction [label="rec"];
+
+  Sum -> Prop;
+  Sum -> Area;
+  Sum -> Fact;
+  Sum -> Sum [label="rec"];
+
+  Product -> Prop;
+  Product -> Sum;
+  Product -> Fact;
+  Product -> Product [label="rec"];
+
+  Basis -> Prop;
+  Basis -> Area;
+  Basis -> Fact;
+  Basis -> Product;
+  Basis -> Basis [label="rec"];
+
+  Polynomial -> Prop;
+  Polynomial -> Basis;
+  Polynomial -> Fact;
+  Polynomial -> Polynomial [label="rec"];
+
+  Spline -> Prop;
+  Spline -> Polynomial;
+  Spline -> Fact;
+  Spline -> Spline [label="rec"];
+
+  Diatribe -> Prop;
+  Diatribe -> Spline;
+  Diatribe -> Diatribe [label="rec"];
+
+  Cult -> Prop;
+  Cult -> Diatribe;
+  Cult -> Fact;
+  Cult -> Cult [label="rec"];
+
+  Science -> Prop;
+  Science -> Cult;
+  Science -> Fact;
+  Science -> Science [label="rec"];
+
+  Knowledge -> Prop;
+  Knowledge -> Fact;
+  Knowledge -> Knowledge [label="rec"];
+
+  Gospel -> Prop;
+  Gospel -> Knowledge;
+  Gospel -> Gospel [label="rec"];
+
+  Truth -> Prop;
+  Truth -> Gospel;
+  Truth -> Truth [label="rec"];
+
+  Variation -> Gospel;
+  Variation -> Prop;
+  Variation -> Variation [label="rec"];
+
+  SpaceTimePath -> Fact;
+  SpaceTimePath -> Type;
+  SpaceTimePath -> Prop;
+  SpaceTimePath -> SpaceTimePath [label="rec"];
+
+  YarnTheory -> Fact;
+  YarnTheory -> SpaceTimePath;
+  YarnTheory -> Prop;
+  YarnTheory -> YarnTheory [label="rec"];
+
+  ComputerProgram -> Fact;
+  ComputerProgram -> Prop;
+  ComputerProgram -> Type;
+  ComputerProgram -> ComputerProgram [label="rec"];
+
+  Measurement -> Fact;
+  Measurement -> Number;
+  Measurement -> Type;
+  Measurement -> Measurement [label="rec"];
+
+  CompilerTape -> Fact;
+  CompilerTape -> Type;
+  CompilerTape -> Prop;
+  CompilerTape -> CompilerTape [label="rec"];
+
+  Bullshit -> Fact;
+  Bullshit -> Number;
+  Bullshit -> CompilerTape;
+  Bullshit -> Prop;
+  Bullshit -> Bullshit [label="rec"];
+}
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@viz-js/viz@3.12.0/lib/viz-standalone.js"></script>
+  <script>
+    const dot = document.getElementById("dot").textContent.trim();
+    document.getElementById("dot-source").textContent = dot;
+
+    Viz.instance().then(viz => {
+      const svg = viz.renderSVGElement(dot);
+      const graph = document.getElementById("graph");
+      graph.textContent = "";
+      graph.appendChild(svg);
+    }).catch(error => {
+      const graph = document.getElementById("graph");
+      graph.innerHTML = "<pre></pre>";
+      graph.querySelector("pre").textContent = String(error);
+    });
+  </script>
+</body>
+</html>

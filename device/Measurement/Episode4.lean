@@ -81,14 +81,14 @@ namespace Measurement
 namespace Area   -- Bullshit meter ≈ 111
 def le : Area → Area → Prop
   | .t _ , _ => True
-  | .dt  _ _, .t _ => False
-  | .dt  p1 n1', .dt  p2 n2' =>
+  | .dt _ _ _, .t _ => False
+  | .dt p1 n1 a1', .dt p2 n2 a2' =>
       match p1.decTruth, p2.decTruth with
-      | isTrue _,  isTrue _  => le n1' n2'
+      | isTrue _,  isTrue _  => n1 ≤ n2 ∧ le a1' a2'
       | isTrue _,  isFalse _ => False
       | isFalse _, isTrue _  => True
-      | isFalse _, isFalse _ => ¬ le n1' n2'
-
+      | isFalse _, isFalse _ => n2 ≤ n1 ∧ le a2' a1'
+termination_by a1 a2 => sizeOf a1 + sizeOf a2
 -- Simultaneity prevents well ordering
 end Area
 
@@ -116,7 +116,7 @@ structure SensingProcess -- Bullshit meter ≈ 750
 
   use_force: Area → Area := fun s => match s with
     | .t _ => .t d.fact
-    | .dt fact _ => .dt fact accumulation
+    | .dt fact number _ => .dt fact number accumulation
 
 -- You know who else has a secret threshold _AND_ can use the force?
 

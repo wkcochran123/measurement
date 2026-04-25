@@ -545,7 +545,7 @@ class OBSERVED   -- Bullshit meter ≈ 444
 -- The temporal history of the compiler's bits captured as a sequence of Facts over time:
 inductive Area   -- Bullshit meter ≈ 92
   | t: Fact → Area
-  | dt: Fact → Area → Area
+  | dt: Fact → Number → Area → Area
 -- Thats right, it's an integral.  Volume seems nearby...  I promised you Galerkin and Galerkin starts with integration.
 
 -- Is there an echo in here?
