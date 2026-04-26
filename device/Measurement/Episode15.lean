@@ -205,6 +205,39 @@ noncomputable instance truthDistinct :
     intro s
     exact Classical.propDecidable (s≠Prop)
 
+structure DistinguishedSymbol
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [d : DISTINGUISHABLE Value Carrier] where
+  symbol : Type Value := d.symbol
+  fact : Fact := d.fact
+  different? : Type Value → Prop := d.different?
+  dec_distinct : DecidablePred different? := d.dec_distinct
+
+
+noncomputable instance COMPARABLE_PROP_TRUTHCARRIER
+    [d : DISTINGUISHABLE Prop truthCarrier]
+    [a : ADMISSIBLE Prop truthCarrier]
+    [c : COUNTABLE Prop truthCarrier]
+    [e : ENCODED Prop truthCarrier]
+    [r : RESIDUE Prop truthCarrier]
+    [b : BINARY Prop truthCarrier]
+    [xx : REPEATABLE Prop truthCarrier]
+    [aa : NUMERIC Prop truthCarrier]
+    [bb : REPRESENTABLE Prop truthCarrier]
+    [cc : PHYSICAL Prop truthCarrier]
+    : COMPARABLE Prop truthCarrier where
+  physical_process :=
+    { physical_process := cc.noisy_process
+      invariant := .base d.fact d
+      value     := .base d.fact (ULift.up (d.fact.truth : d.symbol)) }
+
+noncomputable instance COMPARABLE_PROP_TRUTHCARRIER where
+  physical_process :=
+    { physical_process := cc.noisy_process
+      invariant := .base d.fact True          -- True : Prop ≡ d.symbol
+      value     := .base d.fact (ULift.up True) }
+
 #check (inferInstance : TrueOutput Prop truthCarrier)
 
 end Measurement

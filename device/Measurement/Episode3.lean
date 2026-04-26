@@ -335,40 +335,15 @@ structure PhysicalProcess   -- Bullshit meter ≈ 647
     [p: PHYSICAL Value Carrier]
   where
   physical_process: NoisyProcess Value Carrier
+  representation: d.symbol
   invariant: Metavariable (d.symbol)
   value: Metavariable (ULift d.symbol)
 
-  embiggen? : Metavariable _ → Metavariable (ULift _) := fun m =>
+  embiggen? : Metavariable d.symbol → Metavariable (ULift d.symbol) := fun m =>
     match m with
-                    --        +-------------------- Another quarter.  How many are you going to feed me? I showed you one
-                    --        |                     just a few minutes ago.
-                    --        V
-    | .base _ m => .base (Fact.Truth) m
-    | .step _ _ => .step (Fact.Truth) value
-          --          ^       ^         ^
-          --          |       |         |
-          --          +-------+---------+---   Unlike you posers, I taught my Lean to count.  It _experiences_ the natural numbers.
-          --                                   Through the physical sensation of _TIME PASSING_ or _COMPILING_ which is what _YOU_
-          --                                   call _TIME PASSING_. Not me.  I'm not compiling this, for me and the compiler
-          --                                   it is just another bit in Chaitin's number.  You should now have an addressable bit
-          --                                   for the compiler _IN YOUR HEAD_ now.  Is it compiling now or not?  I believe that
-          --                                   _you_, _me_, and _the compiler_ all agree that whatever we are all looking at
-          --                                   is a _COVARIANT_ bit of Chaitin's number.  It has to be _1_ because the first
-          --                                   mantissa digit is by definition is _1_. So, let's drop that symbol from the mantissa
-          --                                   like in IEEE 754 and _PRETEND_ it doesn't exist.  That's the secret we all agree
-          --                                   on together, as a world.  __IEEE 754__.
+    | .base f x => .base f (ULift.up x)
+    | .step f _ => .step f value
 
-          --                           Did I, or didn't I just make a clock complement?  I mean, do you see one?
-
-          --                  We have calibrated the compiler against a known reference now.  Really tough
-          --                  to understand how universal, though. _ENOUGH_, I'm guessing.  Not trying to
-          --                  convince aliens, just _you_.
-
-          --   That seems like a heavy lift for the compiler, WDYT?  Who's winning? I have taken
-          --   a bunch of your money at this point.  You starting to realize the check you are
-          --   running up?  How many quarters have _you_ put into this machine so far? Remember,
-          --   these are _YOUR_ quarters.  The bit I share is Chaitin's number.  __TONS__ cheaper.
-          --   ELECTRONS ARE FREE!  lol.
 
   next_circumstance?: Type i → Type (i+1) := fun α => Metavariable α
           --             ^        ^

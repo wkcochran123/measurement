@@ -162,6 +162,7 @@ instance COMPARABLE_PHYSICAL
     : COMPARABLE Value Carrier where
   physical_process :=
   { physical_process := cc.noisy_process
+    representation := default
     invariant := .base d.fact default
     value := .base d.fact (ULift.up default)
   }
