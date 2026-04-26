@@ -1,7 +1,7 @@
 import Measurement.Episode14
 
 set_option maxHeartbeats 4000000
-set_option maxRecDepth 10000000000
+set_option maxRecDepth 1000
 set_option allowUnsafeReducibility true
 
 
@@ -182,15 +182,29 @@ instance TRUE_COMPILED
     proof := compiled.object_file
   }
 
-instance DISTINGUISHABLE_TYPE
-    (Carrier : CarrierProcess Type)
-    : DISTINGUISHABLE Type Carrier where
+noncomputable instance DISTINGUISHABLE_PROP
+    (Carrier : CarrierProcess Prop)
+    : DISTINGUISHABLE Prop Carrier where
   fact := Carrier.symbol
   symbol := Prop
   dec_distinct := by
     intro s
-    infer_instance
+    exact Classical.propDecidable (s ≠ Prop)
 
 
+
+def truthCarrier : CarrierProcess Prop where
+  symbol := Fact.Truth
+  value := .zero Fact.Truth
+
+noncomputable instance truthDistinct :
+    DISTINGUISHABLE Prop truthCarrier where
+  fact := truthCarrier.symbol
+  symbol := Prop
+  dec_distinct := by
+    intro s
+    exact Classical.propDecidable (s≠Prop)
+
+#check (inferInstance : TrueOutput Prop truthCarrier)
 
 end Measurement
