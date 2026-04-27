@@ -48,7 +48,7 @@ structure ArmWaveProcess   -- 3306
     match input with
     | .observation prop => .knot prop matter.galerkin_process.polynomial (.observation prop)
     | .knot prop poly _ => .knot prop poly guess
-    | .interpolant prop poly prior _ => .interpolant prop poly prior guess
+    | .interpolant prop _ poly2 prior _ => .interpolant prop poly2 matter.galerkin_process.polynomial prior guess
 
 class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved.
     (Value: Type)
@@ -81,15 +81,17 @@ class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved.
     match a,b with
     | .observation p1         , .observation p2           => p1 = p2
     | .observation p1         , .knot p2 _ _              => p1 = p2
-    | .observation p1         , .interpolant p2 _ _ _     => p1 = p2
+    | .observation p1         , .interpolant p2 _ _ _ _   => p1 = p2.truth
 
     | .knot p1 _ _            , .observation p2           => p1 ≠ p2
     | .knot p1 poly1 sp1      , .knot p2 poly2 sp2        => (p1 = p2 ∧ poly1 ≤ poly2 ∧ sp1 ≤ sp2) ∨
                                                              (p1 ≠ p2 ∧ poly2 ≤ poly1 ∧ sp2 ≤ sp1)
-    | .knot p1         , .interpolant p2 _ _ _     => p1 = p2
+    | .knot p1 _ _            , .interpolant p2 _ _ _ _   => p1 = p2.truth
 
-    | .knot prop _ _ => prop
-    | .interpolant prop _ _ _ => prop.truth
+    | .interpolant p1 _ _ _ _ , .observation p2           => p1.truth = p2
+    | .interpolant p1 _ _ _ _ , .knot p2 _ _              => p1.truth = p2
+    | .interpolant p1 _ _ _ _ , .interpolant p2 _ _ _ _   => p1 = p2
+
 
 inductive Diatribe  -- 147
   | religion: Prop → Diatribe

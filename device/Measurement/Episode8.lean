@@ -92,7 +92,7 @@ instance NUMERIC_REPEATABLE
     [r: RESIDUE Value Carrier]
     [b: BINARY Value Carrier]
     [xx: REPEATABLE Value Carrier]
-    [Inhabited (xx.typical_response xx.repeatable_process.expectation)]
+    [Inhabited (xx.typical_response xx.repeatable_process.expectation xx.repeatable_process.expectation)]
     : NUMERIC Value Carrier where
   computational_process :=
   { repeatable_process := xx.repeatable_process
@@ -145,6 +145,11 @@ instance PHYSICAL_NUMERIC
   admissible? := fun _ _ _ => rfl    -- rofl!  This is some serious gourmet coding!
                                      -- The fact this exists as physical electrons is enough for me!
 
+
+
+
+/-
+Deferring implementation until episode 15
 instance COMPARABLE_PHYSICAL
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -170,6 +175,7 @@ instance COMPARABLE_PHYSICAL
   -- oh wait... aren't we suppose to lift a variable or something?
   -- I see, lifting a variable is the mechanism on the compiler that is
   -- option evaluation on this side.
+-/
 
 instance OBSERVED_COMPARABLE
     (Value: Type)
@@ -397,6 +403,7 @@ instance SCALED_MAGNITUDE
   multiplying_process :=
   { adding_process := ll.adding_process
     product := .one d.fact.truth ll.adding_process.sum
+    total := .zero d.fact.truth (.t d.fact)
   }
 
 instance LOAD_SCALED
@@ -426,7 +433,7 @@ instance LOAD_SCALED
   basic_operation :=
   { GOSUB := mm.multiplying_process
     TEN := ff.santa_claus.accumulation
-    span := .origin d.fact.truth ff.santa_claus.accumulation
+    span := .origin d.fact.truth mm.multiplying_process.product
   }
 
 instance FINITE_ELEPHANT_LOAD
@@ -456,7 +463,7 @@ instance FINITE_ELEPHANT_LOAD
     : FINITE_ELEPHANT Value Carrier where
   galerkin_process :=
   { ANSYS_process := nn.basic_operation
-    polynomial := .zero d.fact.truth nn.basic_operation.span
+    polynomial := .constant .Truth
   }
 
 instance BULLSHIT_FINITE_ELEPHANT

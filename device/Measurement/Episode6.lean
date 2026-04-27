@@ -516,6 +516,10 @@ def le: Polynomial → Polynomial → Prop := fun p1 p2 =>
   | .factor f1 _ _ _,  .monomial f2 _ => f1.truth = f2
 end Polynomial
 
+instance : LE Polynomial where
+  le := Polynomial.le
+
+
 @[reducible]
 structure GalerkinProcess   -- Bullshit meter 2794
     (Value: Type)
@@ -654,7 +658,7 @@ def le : Spline → Spline → Prop := fun s1 s2 =>
   -- It is contained by another knot if their phases match
   -- and their internal polynomials/histories are ordered.
   | .knot t1 p1 tail1, .knot t2 p2 tail2 =>
-      t1 = t2 ∧ p1 ≤ p2 ∧ tail1 ≤ tail2
+      t1 = t2 ∧ p1 ≤ p2 ∧ (le tail1 tail2)
 
   -- 3. The Interpolant (The Second Variation / The Weak Derivative)
   -- This is the "Inverse Gauss" arm.
@@ -667,7 +671,7 @@ def le : Spline → Spline → Prop := fun s1 s2 =>
   -- This is the Cauchy check. s1 ≤ s2 if s1 is a sub-path of the
   -- geodesic defined by s2.
   | .interpolant f1 i1 o1 left1 right1, .interpolant f2 i2 o2 left2 right2 =>
-      f1 = f2 ∧ i1 ≤ i2 ∧ o1 ≤ o2 ∧ left1 ≤ left2 ∧ right1 ≤ right2
+      f1 = f2 ∧ i1 ≤ i2 ∧ o1 ≤ o2 ∧ (le left1 left2) ∧ (le right1 right2)
 
   -- 5. Disallow Retrocausality
   -- A complex interpolation cannot be contained within a simple observation.
@@ -676,4 +680,8 @@ def le : Spline → Spline → Prop := fun s1 s2 =>
   | .interpolant _ _ _ _ _, .knot _ _ _ => False
 
 end Spline
- end Measurement
+
+instance : LE Spline where
+  le := Spline.le
+
+end Measurement
