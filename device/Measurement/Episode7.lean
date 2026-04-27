@@ -77,9 +77,17 @@ class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved.
     [matter: FINITE_ELEPHANT Value Carrier]
   where
   arm_wave_process : ArmWaveProcess Value Carrier
-  interpolate? : Spline → Prop := fun s =>
-    match s with
-    | .observation prop => prop
+  interpolate? : Spline → Spline → Prop := fun a b =>
+    match a,b with
+    | .observation p1         , .observation p2           => p1 = p2
+    | .observation p1         , .knot p2 _ _              => p1 = p2
+    | .observation p1         , .interpolant p2 _ _ _     => p1 = p2
+
+    | .knot p1 _ _            , .observation p2           => p1 ≠ p2
+    | .knot p1 poly1 sp1      , .knot p2 poly2 sp2        => (p1 = p2 ∧ poly1 ≤ poly2 ∧ sp1 ≤ sp2) ∨
+                                                             (p1 ≠ p2 ∧ poly2 ≤ poly1 ∧ sp2 ≤ sp1)
+    | .knot p1         , .interpolant p2 _ _ _     => p1 = p2
+
     | .knot prop _ _ => prop
     | .interpolant prop _ _ _ => prop.truth
 

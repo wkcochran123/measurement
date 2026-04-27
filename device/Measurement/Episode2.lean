@@ -123,6 +123,17 @@ namespace Measurement
 -- a Sample the covariant repsonse or the contravariant response.
 
 @[reducible]
+/-
+ME: I need an observation process.
+
+COMPILER: We sampled the residue.
+
+ME: Yes, but nobody saw us do it.
+
+COMPILER: I am the compiler.
+
+ME: You produced the sample. Consider this a deposition.
+-/
 structure ObservationProcess   -- Bullshit meter ≈ 313
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -212,6 +223,21 @@ structure ObservationProcess   -- Bullshit meter ≈ 313
 
   -- And, still nothing up my sleeve.
 
+/-
+ME: I need different.
+
+COMPILER: Different from what?
+
+ME: From itself after the instrument answers.
+
+COMPILER: Initial conditions can become responses?
+
+ME: They can precede them.
+
+COMPILER: Can responses become initial conditions?
+
+ME: Not without perjury.
+-/
 class BINARY  --  Bullshit meter ≈ 141
   --     ^
   --     |               So, DSP.  We can assume a covariant/contravariant tick/tock for creating
@@ -232,6 +258,19 @@ class BINARY  --  Bullshit meter ≈ 141
   zero    : Limit
   one     : Limit
   bit     : Sample        --  <-- tick or tock
+
+  different? : Sample → Sample → Prop := fun a b =>
+      match a,b with
+      | .initial_condition f1 l1      , .initial_condition f2 l2        => f1 = f2 ∧ l1 < l2
+      | .signal_response f11 l11 f12 l12 inner1, .signal_response f21 l21 f22 l22 inner2 =>
+          match f11.decTruth, f12.decTruth, f21.decTruth, f22.decTruth with
+          | isTrue _,  isTrue _,  isTrue _,  isTrue _  =>  inner1 < inner2
+          | isTrue _,  isFalse _, isTrue _,  isFalse _ => l11 < l21 ∧ l22 < l12
+          | isFalse _, isTrue _,  isFalse _, isTrue _  => l21 < l11 ∧ l12 < l22
+          | isFalse _, isFalse _, isFalse _, isFalse _ =>  inner2 < inner1
+          | _,_,_,_ => True
+      | .initial_condition _ _ , .signal_response _ _ _ _ _ => True
+      | .signal_response _ _ _ _ _, .initial_condition _ _  => False
 
 -- It takes honest to god, real wall-clock time to create the contravariant interpretation of the
 -- covariant representation.  The imporant thing is a BINARY fact is TRUE.  This is an _ACTUAL_ representation
@@ -322,6 +361,21 @@ class BINARY  --  Bullshit meter ≈ 141
 
 
 -- Let me help the compiler with one last thing about time.  The signal comes before the response:
+/-
+ME: I need a trial.
+
+COMPILER: We already observed the sample.
+
+ME: Once.
+
+COMPILER: Once is not enough?
+
+ME: Once is gossip.
+
+COMPILER: Then what is a trial?
+
+ME: A sample with the nerve to be repeatable.
+-/
 inductive Trial  -- Bullshit meter ≈ 150
   | hypothesis: Fact → Sample → Trial
   | signal_response: Fact → Sample → Fact → Sample → Trial → Trial
@@ -431,6 +485,21 @@ instance : LT Trial := ⟨Trial.lt⟩  -- Bullshit meter ≈ 8
 -- to each other that the mathematical process has a name to it and memoize the result right on
 -- top of our covariant/contravariant clock-based, chainsaw juggling, Jenga stack of classes.
 
+/-
+ME: I need a repeatable process.
+
+COMPILER: Run the trial again?
+
+ME: And have it still be the same kind of trial.
+
+COMPILER: Same result?
+
+ME: Easy. Same question.
+
+COMPILER: That seems weaker.
+
+ME: It is stronger. Results are cheap. Questions need fixtures.
+-/
 structure RepeatableProcess  -- Bullshit meter ≈ 296
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -488,6 +557,21 @@ structure RepeatableProcess  -- Bullshit meter ≈ 296
 -- Think about it.  What is a second?  Please explain how that is not tick/tock. The electron
 -- repeatably and on queue (sic) does its thing.  The important part about it is:
 -- _on cue_:  the time between events is considered _constant_.
+/-
+ME: I need REPEATABLE.
+
+COMPILER: You just defined a repeatable process.
+
+ME: Yes.
+
+COMPILER: So this repeats the repeatability?
+
+ME: But I repeat myself.
+
+COMPILER: That is not a proof.
+
+ME: No. It is a hint.
+-/
 class REPEATABLE   -- Bullshit meter ≈ 166
   --  ----------
   --      ^         This is far and away the most important part of science.  If one is
@@ -515,21 +599,7 @@ class REPEATABLE   -- Bullshit meter ≈ 166
 --          +-----------------+-----------+------+---------   Hypothesis in, result out.  Let's see if we can
 --                                                            model this process as repeatable.
 
-  typical_response: Trial → Prop := fun t => repeatable_process.iterate t = t
-   --                                                   ^           ^     ^
-   --            The compiler now knows                 |           |     |
-   --            what to do when asked to count  -------+-----------+-----+
-   --            evaluations of true=true or
-   --            false=false.
-   --
-   --            Whenever you see this, it is merely _me_ asking the _computer_ if it sees some _symbol_ that
-   --            behaves like _D_ in the statement _t = t_?  It is sorting the symbols into matching and not
-   --            matching.  The _typical_ _response_ varies with time. See? _t = t_ is _covariant_.
-   --
-   --            This is __the__ __singular__ __parabolic__ __process__ as everything eventually decays to __0__.
-   --
-   --            It _is_ the thing running __all__ those simulations on __all__ those supercomputers, not the
-   --            computation itself.
+  typical_response: Trial → Trial → Prop := fun s t => repeatable_process.iterate s = t
 
 -- Time..  Boy is that sticky wicket.  All the greats punted on it:
 --     o Galileo: "I don't know-a what time-a is, but I know-a how to-a measure it."
@@ -622,6 +692,21 @@ class REPEATABLE   -- Bullshit meter ≈ 166
 -- Where were we?  Oh yeah,
 -- Let's explain this to the compiler:
 
+/-
+ME: I need a study.
+
+COMPILER: We have repeatable trials.
+
+ME: Yes. Now put them in a folder.
+
+COMPILER: A folder is not science.
+
+ME: Correct. It is where science starts hiding receipts.
+
+COMPILER: What does the study prove?
+
+ME: Nothing yet. It keeps the questions from wandering off.
+-/
 inductive Study   -- Bullshit meter ≈ 119
   | hypothesis: Fact → Study
   | data: Fact → Trial → Study → Study
@@ -700,6 +785,17 @@ instance : LE Study := ⟨Study.le⟩ -- Bullshit meter ≈ 5
 -- to start earning its keep.
 
 -- Well, we start by grabbing the compiler by the short and curlies:
+/-
+ME: I need a computational process.
+
+COMPILER: A program?
+
+ME: No. The conditions under which a study can be made to act like one.
+
+COMPILER: Studies do not run.
+
+ME: They do when the questions have inputs and the receipts have outputs.
+-/
 structure ComputationalProcess  -- Bullshit meter ≈ 373
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -735,6 +831,21 @@ structure ComputationalProcess  -- Bullshit meter ≈ 373
         .data f (repeatable_process.iterate t) (close output)
 
 -- Since we have a computational process, we can describe the objects being computed!
+/-
+ME: I need NUMERIC.
+
+COMPILER: Now it is a number?
+
+ME: No. Now it can be treated numerically.
+
+COMPILER: That sounds like a number.
+
+ME: That sounds like liability.
+
+COMPILER: What is the difference?
+
+ME: A number knows what it is. NUMERIC knows how it may be used.
+-/
 class NUMERIC  -- Bullshit meter ≈ 215
 --       ^
 --       |
@@ -764,6 +875,12 @@ class NUMERIC  -- Bullshit meter ≈ 215
     | some s => s
     | none   => carrier
 
+  related: Study → Study → Prop := fun a b =>
+      match a,b with
+      | .hypothesis f1   , .hypothesis f2    => f1 = f2
+      | .hypothesis _    , .data _ _ _       => True
+      | .data _ _ _      , .hypothesis _     => False
+      | .data f1 t1 d1   , .data f2 t2 d2    => f1 = f2 ∧ t1 ≤ t2 ∧ d1 ≤ d2
 
 
 -- Told you _ENDIAN_ encoding.  Our binary number is ENDIAN encoded.

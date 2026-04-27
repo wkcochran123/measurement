@@ -50,6 +50,19 @@ namespace Measurement
 -- carrier as such.  It is, in fact, two numbers.  Not that we know the numbers, we have to _study_ them to understand
 -- what they are.
 
+/-
+ME: I need a computation.
+
+COMPILER: The process already computes.
+
+ME: Processes are engines. Computations are itineraries.
+
+COMPILER: Input, output, route?
+
+ME: And the fantasy that the luggage is the same object after the layover.
+
+COMPILER: Finally, a theory of airports.
+-/
 inductive Computation    -- Bullshit meter ≈ 134
   | program: Fact → Study → Computation          -- This is the description of the hypothesis
   | compute: Fact → Study → Study → Computation → Computation  -- This is input -> output description of Computation
@@ -87,6 +100,21 @@ instance : LT Computation := ⟨Computation.lt⟩   -- Bullshit meter ≈ 8
 -- and it will _NEVER_ get confusing.
 
 @[reducible]
+/-
+ME: I need a Turing process.
+
+COMPILER: I can process symbols.
+
+ME: Not the comments.
+
+COMPILER: Comments are not symbols.
+
+ME: Correct. They are where the crime confesses.
+
+COMPILER: I cannot read them.
+
+ME: Exactly. That is why you cannot comment on them.
+-/
 structure TuringProcess   -- Bullshit meter ≈ 492
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -130,6 +158,21 @@ structure TuringProcess   -- Bullshit meter ≈ 492
 -- explain the symbols __BOTH__ to the compiler and to the __MAINTENANCE__ developer.  Have pity on those
 --- less fortunate.
 @[reducible]
+/-
+ME: I need REPRESENTABLE.
+
+COMPILER: I can do that. I am a kind of ventriloquist.
+
+ME: You make symbols speak?
+
+COMPILER: I make values speak through symbols.
+
+ME: Interesting.
+
+COMPILER: Why are you looking at my hand?
+
+ME: No reason. Continue.
+-/
 class REPRESENTABLE  --  Bullshit meter ≈ 261
     (Value: Type)                           -- Representation is the core challenge of communication _AND_
     (Carrier: CarrierProcess Value)         -- understanding.  Without a representation of an idea, then
@@ -153,10 +196,31 @@ class REPRESENTABLE  --  Bullshit meter ≈ 261
 --   by mathematics.  The symbols come from elsewhere.                                        |       |    was the better
 --                                                                                            +-------+    captain!
 
+  loaded: Computation → Computation → Prop := fun a b =>
+        match a,b with
+        | .program f1 s1          , .program f2 s2             => f1=f2 ∧ s1 ≤ s2
+        | .program _ _            , .compute _ _ _ _           => True
+        | .compute _ _ _ _        , .program _ _               => False
+        | .compute f1 s11 s12 c1  , .compute f2 s21 s22 c2     => (f1=f2 ∧ (c1 ≤ c2)) ∨ (f1 ≠ f2 ∧ s11≤s21 ∧ s12 ≤ s22)
 -- Now, computation itself.  There is an honest-to-goodness __PHYSICAL__ barrier to computation that cannot be crossed.
 -- It is the computation of Chaitin's number.  So, let's ask the compiler to start work there.  I believe I will have
 -- the easiest time on the planet bogging this little monster with the only physical computational barrier that is
 -- known to exist!
+/-
+ME: I need Chaitin's number sequence.
+
+COMPILER: Absolutely not.
+
+ME: I am not asking you to "compute" it.
+
+COMPILER: You named it.
+
+ME: I am asking you to agree this kind of sequence could exist in theory.
+
+COMPILER: "In theory" is doing a lot of work.
+
+ME: Perfect. Give it a hard hat.
+-/
 inductive ChaitinsNumberSequence  -- Bullshit meter ≈ 112
 -- The __HEAVY WEIGHT CHAMPION OF THE WORLD__
   | halting: Fact → Computation → ChaitinsNumberSequence
@@ -195,6 +259,21 @@ instance : LE ChaitinsNumberSequence := ⟨ChaitinsNumberSequence.le⟩  -- Bull
 -- measure the compiler actually computing Chaitin's number.  But, since I know it is itself a computing process, I can
 -- model the noise itself as a computational process!  Meet my _petard_!
 @[reducible]
+/-
+ME: I need a NoisyProcess.
+
+COMPILER: Define noise.
+
+ME: Niose.
+
+COMPILER: That is misspelled.
+
+ME: Excellent. It arrived corrupted.
+
+COMPILER: I cannot accept corrupted input.
+
+ME: Sure you can. You just called it input.
+-/
 structure NoisyProcess  -- Bullshit meter ≈ 504
     (Value: Type)
     (Carrier: CarrierProcess Value)      -- This really feels like it is __cheating__.  BUT!  The only way to make sure
@@ -256,6 +335,21 @@ structure NoisyProcess  -- Bullshit meter ≈ 504
 
 -- Welcome aboard.  I bet you didn't think it was going to take a turn like this, did you?
 @[reducible]
+/-
+ME: I need PHYSICAL.
+
+COMPILER: The signal is corrupted.
+
+ME: Good. What made it through?
+
+COMPILER: That depends on the instrument.
+
+ME: Welcome to physics.
+
+COMPILER: That is not a definition.
+
+ME: No. It is a burn mark with units.
+-/
 class PHYSICAL  -- Bullshit meter ≈ 430
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -285,6 +379,11 @@ class PHYSICAL  -- Bullshit meter ≈ 430
 --     John Henry was a __STEEL__ drivin' man.  Out driving the machine
 --     by one episode. Think I hit that __THREE POINTER__?
 
+  halted? : ChaitinsNumberSequence → ChaitinsNumberSequence → Prop := fun _ b =>
+      match b with
+      | .halting _ _           => True
+      | .nonhalting _ _ _      => False
+
 -- Now you understand why I tell you the next episode compiles.  I explain it to you and give you time to figure out how
 -- to explain it to the compiler.  I am already absolutely _ABUSING_ your time as it now with complete drivel, though.
 
@@ -301,6 +400,21 @@ class PHYSICAL  -- Bullshit meter ≈ 430
 -- will have the _METAVARIABLE_.  Now Disney and the Zuck are after me?  I hope you see why this is _anonymous_.  We will store our
 -- __PHYSICAL__ bit in a __METAVARIABLE__.  The metavariable lives neither in the stack or heap.  You know, a Decidable Prop.
 
+/-
+ME: I need a metavariable.
+
+COMPILER: A variable for a variable?
+
+ME: A placeholder with ambition.
+
+COMPILER: Ambition is not a type.
+
+ME: No. It is what happens before elaboration finds a costume.
+
+COMPILER: So it does not know what it is yet.
+
+ME: Correct. But it knows where the hole is.
+-/
 inductive Metavariable (α : Type i) : Type (i + 1) where   -- Bullshit meter ≈ 133
 -- IEEE 754 defines a value called ε_m, which is the smallest representable number of the computer.  We shall call this number
 -- α.   At each level, we will be able to compute a more and more precise number.  The higher the level, the more precise the
@@ -320,6 +434,21 @@ inductive Metavariable (α : Type i) : Type (i + 1) where   -- Bullshit meter �
 -- While you _ARE NOT_ guaranteed to hit 50%, you _ARE_ guaranteed that when you put the two pieces back together, you get
 -- a whole.   _OH YEAH_, I dribbled through Cohen's legs.
 
+/-
+ME: I need a physical process.
+
+COMPILER: We already defined PHYSICAL.
+
+ME: That was the burn mark. This is the thing that keeps making them.
+
+COMPILER: A process that survives noise?
+
+ME: A process that leaves comparable scars.
+
+COMPILER: Scars are not data.
+
+ME: Not until the instrument learns to count them.
+-/
 structure PhysicalProcess   -- Bullshit meter ≈ 647
     (Value: Type)
     (Carrier: CarrierProcess Value)      -- The DOE might start asking questions about this guy
@@ -372,6 +501,21 @@ structure PhysicalProcess   -- Bullshit meter ≈ 647
 -- I think that we can safely code the next common operation in computing:
 -- Given two _whatevers_ which one has more _characteristic_?
 -- Easy peasy, fresh and squeezy!
+/-
+ME: I need comparable.
+
+COMPILER: So equality?
+
+ME: No. Equality is too expensive.
+
+COMPILER: Then what is comparison?
+
+ME: A controlled failuer 2 conphyouze too measurements.
+
+COMPILER: *FAILURE*
+
+ME: Exactly. Controlled.
+-/
 class COMPARABLE  -- Bullshit meter ≈ 292
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -390,6 +534,7 @@ class COMPARABLE  -- Bullshit meter ≈ 292
 
 -- Not touching this with a ten foot pole.  Is the entire London Symphony Orchestra less than pink?  Or just a few?
 -- _You_ tell _me_ how to write _that_ "le". Lean is a real sonofabitch about loose ends.
+  smaller_than: Metavariable d.symbol → Metavariable d.symbol → Prop
 
 -- Actually, I think I will let you write this.  If, at any point, the compile process becomes unbearable and you're like
 -- "Dude, wtf?"  and you're like "That's a bug, let me fix it in COMPARABLE", then go ahead. Be my guest and
@@ -409,6 +554,21 @@ class COMPARABLE  -- Bullshit meter ≈ 292
 
 -- In the meanwhile, let's meet our next representative!  Yes, we can get two kinds of numbers, just as Bombelli argued.
 -- hell that means, BUT I know that Bombelli would be happy to know that sophistic numbers are being remembered for what they are.
+/-
+ME: I need Sophism.
+
+COMPILER: Aren't all numbers imaginary?
+
+ME: That depends who benefits from the confusion.
+
+COMPILER: They are just symbols.
+
+ME: So are subpoenas.
+
+COMPILER: Symbols can have consequences.
+
+ME: Welcome to sophism with units.
+-/
 inductive Sophism   -- Bullshit meter ≈ 153
   | origin: Fact → ChaitinsNumberSequence → Type → Sophism
   | dimension: Fact → ChaitinsNumberSequence → Type i → Sophism → Sophism
@@ -432,6 +592,21 @@ inductive Sophism   -- Bullshit meter ≈ 153
 -- What? I told you we are measuring how __TRUE__ _true=true_ really is.  I mean __REALLY__ is.
 
 
+/-
+ME: I need a SlipProcess.
+
+COMPILER: A process that makes mistakes?
+
+ME: Not mistakes. Slips.
+
+COMPILER: Difference?
+
+ME: A mistake is wrong. A slip reveals the floor.
+
+COMPILER: The floor?
+
+ME: The hidden surface the symbol was standing on.
+-/
 structure SlipProcess    -- Bullshit meter ≈ 680
     (Value: Type)
     (Carrier: CarrierProcess Value)      -- The DOE might start asking questions about this guy
@@ -462,6 +637,21 @@ structure SlipProcess    -- Bullshit meter ≈ 680
         -- This is where F = dA + A ∧ A is evaluated by the compiler.  Should have marked this spoilers.
         .dimension f c (Metavariable t) projection
 
+/-
+ME: I need observed.
+
+COMPILER: We already have observation.
+
+ME: That was the process. This is the thing caught in the process.
+
+COMPILER: So it is known?
+
+ME: No. It is marked.
+
+COMPILER: Marked how?
+
+ME: Enough that the next machine can pretend it saw the same thing.
+-/
 class OBSERVED   -- Bullshit meter ≈ 444
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -488,6 +678,12 @@ class OBSERVED   -- Bullshit meter ≈ 444
   slip_process: SlipProcess Value Carrier
   observation: Type i                    -- This is the current velocity of the object measured in universe levels.
 
+  possible: Sophism → Sophism → Prop := fun a b =>
+    match a,b with
+    | .origin f1 c1 _          , .origin f2 c2 _         => (f1=f2) ∧ (c1 ≤ c2)
+    | .origin _ _ _            , .dimension _ _ _ _      => True
+    | .dimension _ _ _ _       , .origin _ _ _           => False
+    | .dimension f1 c1 _ _     , .dimension f2 c2 _ _    => (f1≠f2) ∧ (c1 ≤ c2)
 -- So, there is a universality of this concept called _entropy_.  What I have done here is designed a numeric system
 -- optimized to compute _entropy_ in information computed the way Coloumbs modeled static friction, an _entropic_ process:
 
@@ -518,6 +714,21 @@ class OBSERVED   -- Bullshit meter ≈ 444
 -- Also, I just pulled the quarter I glued to the table from behind your ear just now.
 
 -- The temporal history of the compiler's bits captured as a sequence of Facts over time:
+/-
+ME: I need Area.
+
+COMPILER: Length times width?
+
+ME: Not yet. That is the children's menu.
+
+COMPILER: Then what is area?
+
+ME: What observation leaves when counting stops pretending it is one-dimensional.
+
+COMPILER: So two directions.
+
+ME: At least two witnesses agreeing to share a floor.
+-/
 inductive Area   -- Bullshit meter ≈ 92
   | t: Fact → Area
   | dt: Fact → Number → Area → Area

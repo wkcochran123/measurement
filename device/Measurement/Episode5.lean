@@ -56,6 +56,21 @@ namespace Measurement
                                                               --         +-- I will never get weary of doing
                                                               --         |   this to you.
                                                               --         V
+/-
+ME: I need equivalation.
+
+COMPILER: You mean equivalence.
+
+ME: No. Equivalence sits still.
+
+COMPILER: And equivalation?
+
+ME: Equivalence under procedure.
+
+COMPILER: That sounds like equality with errands.
+
+ME: Exactly. Two things are the same after the machine finishes explaining why they are not.
+-/
 inductive Equivalation  -- Bullshit meter ≈ 119.   This is down almost 1/π.  Induction-on-induction Wild!
     | physics: Fact → Jar → Equivalation
 
@@ -104,6 +119,25 @@ instance : LE Equivalation := ⟨Equivalation.le⟩ -- Bullshit meter ≈ 8
 
 
 @[reducible]
+/-
+ME: I need a DigitalProcess.
+
+COMPILER: Bits?
+
+ME: Fingers first.
+
+COMPILER: Digits?
+
+ME: Yes. Counting before electricity got branding.
+
+COMPILER: So digital means binary?
+
+ME: No. Digital means the hand learned procedure.
+
+COMPILER: The hand again?
+
+ME: What your hand does during ventriloquism.
+-/
 structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -160,6 +194,21 @@ structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
 --  Explain Warp Drives.
 
 @[reducible]
+/-
+ME: I need a source.
+
+COMPILER: Source code?
+
+ME: Source first. Code later.
+
+COMPILER: Then what is the source?
+
+ME: Where the procedure claims it came from.
+
+COMPILER: Claims?
+
+ME: Every origin story starts lying when it gets a filename.
+-/
 class SOURCE   -- Bullshit meter ≈ 1121.   That's almost a 50% increase!
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -188,6 +237,21 @@ inductive Encoding   -- Bullshit meter = 118.  Flat.
   | one: Fact → Equivalation → Equivalation → Encoding → Encoding → Encoding
 
 @[reducible]
+/-
+ME: I need a CompiledProcess.
+
+COMPILER: Finally, I do my job.
+
+ME: Not yet. You become the job.
+
+COMPILER: I compile the source.
+
+ME: You turn blame into machinery.
+
+COMPILER: That is compilation?
+
+ME: Origin with paperwork becoming procedure with consequences.
+-/
 structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bullshit tends to accrete!
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -226,6 +290,21 @@ structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bul
     | .one f _ x _ e, _          => .zero f x e
 
 @[reducible]
+/-
+ME: I need executed.
+
+COMPILER: Run?
+
+ME: Carried out.
+
+COMPILER: Same thing.
+
+ME: Not in court.
+
+COMPILER: Is this legal or computational?
+
+ME: Yes. The sentence has consequences now.
+-/
 class EXECUTED  -- Bullshit meter = 1158.  Calling this flat.
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -260,6 +339,21 @@ class EXECUTED  -- Bullshit meter = 1158.  Calling this flat.
     | .one f _ e1 _ _ , .one g _ e2 _ _ => f.truth ∧ g.truth ∧ (e1 ≤ e2)
 
 @[reducible]
+/-
+ME: I need abstraction.
+
+COMPILER: From what?
+
+ME: From the machinery that just worked.
+
+COMPILER: Why hide the machinery?
+
+ME: To make it reusable.
+
+COMPILER: That sounds dangerous.
+
+ME: It is. Abstraction is where a solved problem learns to impersonate a primitive.
+-/
 inductive Abstraction  -- Bullshit meter = 2045.  About a 1/6 increase.
   | satire:  Fact → Abstraction
   | compile: Fact → Encoding → Abstraction → Abstraction

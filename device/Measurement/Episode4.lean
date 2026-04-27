@@ -78,6 +78,21 @@ namespace Measurement
 -- partially ordered.
 
 -- But first, let me case-and-paste the code just as in Episode 1:
+/-
+ME: I need to compare areas.
+
+COMPILER: By size?
+
+ME: By history.
+
+COMPILER: That is not an area.
+
+ME: It is after Einstein gets involved.
+
+COMPILER: So not well time is ordered?
+
+ME: Obviously.
+-/
 namespace Area   -- Bullshit meter ≈ 111
 def le : Area → Area → Prop
   | .t _ , _ => True
@@ -94,6 +109,21 @@ end Area
 
 instance : LE Area := ⟨Area.le⟩ -- Bullshit meter ≈ 8
 
+/-
+ME: I need a sensing process.
+
+COMPILER: What does it sense?
+
+ME: Every strike.
+
+COMPILER: The hammer?
+
+ME: The return.
+
+COMPILER: So it records vibration.
+
+ME: It keeps count of what the rail refuses to forget.
+-/
 structure SensingProcess -- Bullshit meter ≈ 750
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -124,6 +154,21 @@ structure SensingProcess -- Bullshit meter ≈ 750
 -- How do you _KNOW_ if you have been _TOO_ naughty?  Can you be a little bit _more_ naughty and still get presents?
 -- Also, using the force is _THE ONLY EXPLANATION_ for how he can get around the Earth in a single night.
 
+/-
+ME: I need the present.
+
+COMPILER: The current time?
+
+ME: The accumulated return.
+
+COMPILER: That is not now.
+
+ME: It is if now is what the instrument has not forgotten yet.
+
+COMPILER: So the present is memory?
+
+ME: Local memory with a deadline. Ask Santa.
+-/
 class PRESENT  -- Bullshit meter ≈ 594
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -153,32 +198,65 @@ class PRESENT  -- Bullshit meter ≈ 594
 --                                       away in time it is to you.  This is why the present is only in the local area.  That,
 --                                       and I suspect Santa uses Stokes' theorem to compute the local curl.
 
+/-
+ME: I need a phenomenon.
+
+COMPILER: What happened?
+
+ME: The rail answered.
+
+COMPILER: That is an event.
+
+ME: The hammer returned, the rail remembered, the clock disagreed.
+
+COMPILER: That is more than an event.
+
+ME: Now you are hearing the phenomenon.
+-/
 inductive Phenomenon   -- Bullshit meter ≈ 153
   | field: Fact → Area → Phenomenon
-  | inital_condition: Fact → Area → Phenomenon → Phenomenon
-  | observations: Fact → Area → Phenomenon → Phenomenon → Phenomenon
+  | initial_condition: Fact → Area → Phenomenon → Phenomenon
+  | observations: Fact → Area → Area → Phenomenon → Phenomenon → Phenomenon
 
-namespace Phenomenon  -- Bullshit meter ≈ 227
+namespace Phenomenon
+
 def le : Phenomenon → Phenomenon → Prop := fun p1 p2 =>
   match p1, p2 with
-  | .field _ _, _ => True
-  | _,.field _ _ => False
-  | .inital_condition f1 _ p1', .inital_condition f2 _ p2' =>
+  | .field f1 a1, .field f2 a2 =>
+      f1 = f2 ∧ a1 ≤ a2
+  | .field _ _, _ =>
+      True
+  | _, .field _ _ =>
+      False
+
+  | .initial_condition f1 a1 p1', .initial_condition f2 a2 p2' =>
       match f1.decTruth, f2.decTruth with
-      | isTrue _,  isTrue _  => le p1' p2'
+      | isTrue _,  isTrue _  => a1 ≤ a2 ∧ le p1' p2'
       | isTrue _,  isFalse _ => False
       | isFalse _, isTrue _  => True
-      | isFalse _, isFalse _ => ¬ le p1' p2'
-  | .observations f1 _ p11 p12, .observations f2 _ p21 p22 =>
+      | isFalse _, isFalse _ => a2 ≤ a1 ∧ le p2' p1'
+
+  | .initial_condition _ _ _, .observations _ _ _ _ _ =>
+      True
+  | .observations _ _ _ _ _, .initial_condition _ _ _ =>
+      False
+
+  | .observations f1 before1 after1 p11 p12,
+    .observations f2 before2 after2 p21 p22 =>
       match f1.decTruth, f2.decTruth with
-      | isTrue _,  isTrue _  => le p11 p21 ∧ le p12 p22
-      | isTrue _,  isFalse _ => False
-      | isFalse _, isTrue _  => True
-      | isFalse _, isFalse _ => ¬ (le p11 p21 ∧ le p12 p22)
-  | .inital_condition _ _ _, .observations _ _ _ _ => True
-  | .observations _ _ _ _, .inital_condition _ _ _ => False
+      | isTrue _,  isTrue _  =>
+          before1 ≤ before2 ∧ after1 ≤ after2 ∧ le p11 p21 ∧ le p12 p22
+      | isTrue _,  isFalse _ =>
+          False
+      | isFalse _, isTrue _  =>
+          True
+      | isFalse _, isFalse _ =>
+          before2 ≤ before1 ∧ after2 ≤ after1 ∧ le p21 p11 ∧ le p22 p12
+termination_by p1 p2 => sizeOf p1 + sizeOf p2
 
 end Phenomenon
+
+instance : LE Phenomenon := ⟨Phenomenon.le⟩ -- Bullshit meter ≈ 8
 
 -- If we are talking about a phenomenon, we need to talk about how to measure it.  Normally, you get an intstrument
 -- with a _gauge_ on it, stick the instrument in the phenomenon, and read the gauge.  In order to explain Yang-Mills
@@ -190,6 +268,21 @@ end Phenomenon
 -- thing about Gauge Theory.  It explains how gauges display the numbers physics wants it to.
 
 -- STAND BACK!  I am about to _SCIENCE_!
+/-
+ME: I need a GaugeProcess.
+
+COMPILER: A meter?
+
+ME: A gauge.
+
+COMPILER: A meter reads.
+
+ME: A gauge negotiates.
+
+COMPILER: Negotiates what?
+
+ME: How much chaos the field can afford before Yang starts asking why Mills is billing by the curvature.
+-/
 structure GaugeProcess  -- Bullshit meter ≈ 830
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -214,14 +307,29 @@ structure GaugeProcess  -- Bullshit meter ≈ 830
   sensing_process : SensingProcess Value Carrier
 
   clock : Phenomenon
-  count : Phenomenon := .inital_condition d.fact (.t d.fact) clock
+  count : Phenomenon := .initial_condition d.fact (.t d.fact) clock
 
   event? : Phenomenon → Phenomenon := fun p =>
     match p with
-    | .field f a              => .field f (sensing_process.use_force a)
-    | .inital_condition f a _ => .observations f (sensing_process.use_force a) p clock
-    | .observations f a _ p12 => .observations f (sensing_process.use_force a) p12 clock
+    | .field f a                 => .field f (sensing_process.use_force a)
+    | .initial_condition f a _   => .observations f a (sensing_process.use_force a) p clock
+    | .observations f _ a _ p    => .observations f a (sensing_process.use_force a) p clock
 
+/-
+ME: I need measurable.
+
+COMPILER: Use the gauge.
+
+ME: The gauge does not measure.
+
+COMPILER: It reads.
+
+ME: It bargains.
+
+COMPILER: Then what makes it measurable?
+
+ME: The bargain leaves a number-shaped scar.
+-/
 class MEASURABLE  -- Bullshit meter ≈ 730
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -242,11 +350,50 @@ class MEASURABLE  -- Bullshit meter ≈ 730
   gauge_process : GaugeProcess Value Carrier          -- See? Anything that can   --------------+
                                                       -- Du=0 can F=dF + A∧A.                   |
                                                       --                                        V
-  observed: Area → Area → Prop := fun s1 s2 => gauge_process.sensing_process.use_force s1 = s2
+  observed: Phenomenon → Phenomenon → Prop := fun a b =>
+  match a, b with
+  | .field f1 a1, .field f2 a2 =>
+      f1 = f2 ∧ a1 ≤ a2
+  | .field _ _, .initial_condition _ _ _ =>
+      True
+  | .field _ _, .observations _ _ _ _ _ =>
+      True
+  | .initial_condition f1 a1 p1, .initial_condition f2 a2 p2 =>
+      f1 = f2 ∧ a1 ≤ a2 ∧ p1 ≤ p2
+  | .initial_condition _ _ _, .observations _ _ _ _ _ =>
+      True
+  | .initial_condition _ _ _, .field _ _ =>
+      false
+  | .observations _ _ _ _ _, .field _ _ =>
+      false
+  | .observations _ _ _ _ _, .initial_condition _ _ _ =>
+      False
+  | .observations f1 before1 after1 p11 p12,
+    .observations f2 before2 after2 p21 p22 =>
+      f1 = f2 ∧ before1 ≤ before2 ∧ after1 ≤ after2 ∧ p11 ≤ p21 ∧ p12 ≤ p22
 
 -- The compiler and I agree.  It promises that any computation I ask of it will satisfy Du=0 _and_ F=dF + A∧A.
 -- You and I will call that fact 0.  This is our initial condition.
 
+/-
+ME: I need Jar Jar Binks.
+
+COMPILER: Absolutely not.
+
+ME: Relax. First, just the jar.
+
+COMPILER: What is in it?
+
+ME: That is the point.
+
+COMPILER: So the jar contains unknown contents?
+
+ME: Worse. It contains contents that have not agreed which reading they are yet.
+
+COMPILER: That sounds like superposition.
+
+ME: Good. Now put a lid on it.
+-/
 inductive Jar  -- Bullshit meter ≈ 153    *hmmm*,    I would have thought this should be higher?
   | color: Fact → Area → Jar
   | bang: Fact → Jar → Jar -- BINKS!  Meesa Spake!        So, what the hell is a jar?  I've never heard of a mathematical or
@@ -315,6 +462,21 @@ instance : LE Jar := ⟨Jar.le⟩  -- Bullshit meter ≈ 5.   I mean, c'mon comp
 -- FULL DISCLOSURE:  Jar Jar is along for the ride to help __YOU__.  I _understand_ all of this already.
 -- You have no one to blame but yourself.
 
+/-
+ME: I need a MeesaProcess.
+
+COMPILER: I refuse the dialect.
+
+ME: You called yourself a ventriloquist.
+
+COMPILER: I make values speak through symbols.
+
+ME: Good. The jar is speaking.
+
+COMPILER: That is not a voice.
+
+ME: Then why did your hand move?
+-/
 structure MeesaProcess  -- Bullshit meter ≈ 1010.    There we go, we just broke 1000 on the bullshit meter.
                         -- That's about 1/4 increase in bullshit, measured structure-on-structure.
                         -- Huh, is that 2 bits of information?
@@ -342,6 +504,21 @@ structure MeesaProcess  -- Bullshit meter ≈ 1010.    There we go, we just brok
     | .bang f _ => .bang f concept
     | .superposition f _ j2 => .superposition f concept j2
 
+/-
+ME: I need GUNGAN.
+
+COMPILER: That is not a typeclass. That is a warning.
+
+ME: It is a translation layer.
+
+COMPILER: From what?
+
+ME: From the jar's dialect into admissible structure.
+
+COMPILER: I refuse to understand it.
+
+ME: Good. Understanding was never the contract.
+-/
 class GUNGAN  -- Bullshit meter = 802.  Only a 1/8 increase on classes.  Is that 3 bits?
               -- Can't tell if the compiler is trying to carry 2 or 3 bits in its head right now.
     (Value: Type)
@@ -362,7 +539,7 @@ class GUNGAN  -- Bullshit meter = 802.  Only a 1/8 increase on classes.  Is that
     [gibberish: MEASURABLE Value Carrier]
   where
   meesa_process : MeesaProcess Value Carrier
-  translation? : Jar → Jar → Prop := fun j1 j2 => match j1, j2 with
+  correllant? : Jar → Jar → Prop := fun j1 j2 => match j1, j2 with
     | .bang f1 _, .bang f2 _ => f1 = f2         -- What color is your jar?
     | .superposition f1 _ _, .superposition f2 _ _ => f1 = f2
     | _, _ => False

@@ -15,3 +15,5 @@ instrument/go.sh
 *.zip
 device/go.sh
 *.claude*
+*csv
+gpt

@@ -60,6 +60,18 @@ universe i -- There is only 1 universe, the one we can experience right now, at 
 -- you a story about measurement.  Measurement begins with _facts_.
 -- I think you will agree it is easy to see whether or not something happened                +-------------------------------+
 -- and if that something happened, that _fact_ is _true_.  Otherwise, it ain't. Clear?       |                               |
+
+/-
+ME: I need a Fact.
+
+COMPILER: A proposition?
+
+ME: No, a proposition with a receipt.
+
+COMPILER: That is called a proof.
+
+ME: Great. Staple it to the universe.
+-/
 --                                             +---------------------------------------------+                               |
 @[reducible] --                                |               This is a measurement from a device of my own design. --------+
 class Fact where   -- Bullshit meter ≈ 9   <---+               a clever device that gives us an idea of how much bullshit
@@ -98,6 +110,21 @@ end Fact
 -- Well, if we are going to measure what the compiler is doing, it would help
 -- if we agreed on what some numbers were.  So, let's make some and name them.  Big Endian so we
 -- can shortcut a very common computation.
+/-
+ME: I need the number to be bigger or smaller.
+
+COMPILER: Bigger or smaller than what?
+
+ME: Another number.
+
+COMPILER: That is an order relation.
+
+ME: No. That is a fact about two costumes agreeing which one is taller.
+
+COMPILER: You want `<` and `≤`.
+
+ME: I want them wearing badges.
+-/
 --                                               +----------------   What you are looking at is an estimation of
 inductive Number where   -- Bullshit meter ≈ 92  |                   the work the elaborator is doing.  This is
   | zero : Fact → Number --                   ^  |    approximately the minimum number of heartbeats the elaborator
@@ -230,6 +257,21 @@ structure CarrierProcess -- Bullshit meter ≈ 85
 --                +------------------------------------------------+
 --                |
 @[reducible] --   V
+/-
+ME: Before I count, I need difference.
+
+COMPILER: Difference from what?
+
+ME: From itself, eventually. But start small.
+
+COMPILER: You want decidable equality.
+
+ME: I want a witness that the costumes are not the same costume.
+
+COMPILER: That is decidable equality.
+
+ME: Fine. But with better lighting.
+-/
 class DISTINGUISHABLE  -- Bullshit meter ≈ 28                      You may start noticing a pattern to
     (Value: Type)                                               -- the structure -> class -> inductive ->
     (Observation: CarrierProcess Value)                         -- structure -> class -> ...
@@ -268,6 +310,21 @@ class DISTINGUISHABLE  -- Bullshit meter ≈ 28                      You may sta
 -- lets talk about how they are structured.                                                |
 --                                                                                         |
 -- You didn't notice the universe number thing? -------------------------------------------+
+/-
+ME: I need a natural number.
+
+COMPILER: Great. Use Nat.
+
+ME: No. Too much civilization.
+
+COMPILER: Then what do you want?
+
+ME: I want to tell one from the rest.
+
+COMPILER: That is barely counting.
+
+ME: Exactly. We are still in the cave drawing phase.
+-/
 inductive Natural  -- Bullshit meter ≈ 107
   where
   | zero : Fact → Natural                       -- The Fact here is a bit murkier, we are coordinating with
@@ -316,6 +373,21 @@ instance : LT Natural where  -- Bullshit meter ≈ 7
 --
 -- And you are reading this for the plot, right?
 @[reducible]
+/-
+ME: I need a counting process.
+
+COMPILER: Count the things?
+
+ME: Or count what makes up the things.
+
+COMPILER: That is decomposition.
+
+ME: Good. Put it next to enumeration.
+
+COMPILER: Why?
+
+ME: Eventually the pieces become things and demand representation.
+-/
 structure CountingProcess -- Bullshit meter ≈ 118
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -384,6 +456,21 @@ structure CountingProcess -- Bullshit meter ≈ 118
 -- what the compiler is doing is looking through the inductive to see
 -- if it can find a counterexample to a ≤ b.
 @[reducible]
+/-
+ME: Counting only goes up.
+
+COMPILER: Then why do your pieces get smaller?
+
+ME: Because I changed what we are counting.
+
+COMPILER: That sounds illegal.
+
+ME: No. That is admissible.
+
+COMPILER: Admissible to whom?
+
+ME: To the representation that remembered which way was forward.
+-/
 class ADMISSIBLE  -- Bullshit meter ≈ 60
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -423,6 +510,21 @@ class ADMISSIBLE  -- Bullshit meter ≈ 60
 -- _are_ rational numbers. And we don't need all of them, just a countable amount.
 
 -- It would be a _nice to have_ if it were bijective.
+/-
+ME: I need fractions.
+
+COMPILER: For division?
+
+ME: Not yet. For pieces.
+
+COMPILER: Pieces of what?
+
+ME: The thing we just finished pretending was one.
+
+COMPILER: So one was provisional.
+
+ME: All measurement is provisional. Please initialize the saw.
+-/
 inductive Rational  -- Bullshit meter ≈ 107
       --     ^
       --     |
@@ -491,6 +593,21 @@ instance : LT Rational where  -- Bullshit meter ≈ 5
 -- Zero = 0.00 <--- is this 2 or 3 significant digits?  Turns out, that will matter.
 -- Not yet, though.
 @[reducible]
+/-
+ME: Keep track of the uncounted numbers.
+
+COMPILER: If they are numbers, haven't they been counted?
+
+ME: That is adorable.
+
+COMPILER: I dislike your tone.
+
+ME: Most numbers have not been counted. That is why we need an index.
+
+COMPILER: I thought the index was the counting.
+
+ME: No. The index is the little fence around what we are allowed to pretend we counted.
+-/
 structure IndexingProcess  -- Bullshit meter ≈ 143
         --       ^                             +-------------------------------------------- I hate this word.
         --       |                             |                                             It is intangible
@@ -560,6 +677,21 @@ structure IndexingProcess  -- Bullshit meter ≈ 143
 -- that I am cleverer than you think.
 
 @[reducible]
+/-
+ME: Count up until we need a fraction.
+
+COMPILER: Need one for what?
+
+ME: To describe the next thing without pretending it is whole.
+
+COMPILER: So the counting broke.
+
+ME: No. The unit broke.
+
+COMPILER: That sounds worse.
+
+ME: That is called a Dedekind cut when it dresses formally.
+-/
 class COUNTABLE  -- Bullshit meter ≈ 85
  --      ^                 Bet you weren't expecting the word COUNTABLE from any of that.
  --      |                 But that is exactly the concept we are modeling, there exists
@@ -648,6 +780,21 @@ class COUNTABLE  -- Bullshit meter ≈ 85
 
 -- For instance, a sequence of numbers is a common useful construction of math.
 @[reducible]
+/-
+ME: I need a sequence.
+
+COMPILER: Of counted numbers?
+
+ME: Of next numbers.
+
+COMPILER: That sounds the same.
+
+ME: That is adorable.
+
+COMPILER: I am filing a complaint.
+
+ME: A sequence is not what we counted. It is the rule that keeps finding the next admissible thing.
+-/
 inductive Sequence  -- Bullshit meter ≈ 107
   |nil: Fact → Sequence
   |index :  Fact → Rational → Sequence → Sequence
@@ -727,6 +874,21 @@ instance : LT Sequence where -- Bullshit meter ≈ 5
 
 -- Any hooozlebee, this gets you a localized .....
 @[reducible]
+/-
+ME: I need a limit process.
+
+COMPILER: A sequence that approaches a value.
+
+ME: Look at you.
+
+COMPILER: That is correct, isn't it?
+
+ME: Almost dangerously correct.
+
+COMPILER: I dislike the adverb.
+
+ME: The value is not the point. The approaching is the machinery.
+-/
 structure LimitProcess  -- Bullshit meter ≈ 185
     (Value: Type)                     -- As you can start to see, the Value and Carrier
     (Carrier: CarrierProcess Value)   -- paramaters are universal.  What is happening is
@@ -788,6 +950,21 @@ structure LimitProcess  -- Bullshit meter ≈ 185
 -- is supposed to look like.
 
 @[reducible]
+/-
+ME: I need it encoded.
+
+COMPILER: Into what?
+
+ME: A coin.
+
+COMPILER: You want to reduce the limit process to a token?
+
+ME: I want something that drops.
+
+COMPILER: Drops where?
+
+ME: Into the machine that pretends tokens are meaning.
+-/
 class ENCODED  -- Bullshit meter ≈ 85
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -796,22 +973,12 @@ class ENCODED  -- Bullshit meter ≈ 85
     [c: COUNTABLE Value Carrier]
   where
   limit_process: LimitProcess Value Carrier
-  encoding?: Sequence → Rational := fun s =>
-    match s with
-    | .nil _ => c.index.origin             -- Ladies and gentlemen, introducing 0.                     ^
-    --                ----+----               Just like Marconi and Shannon demonstrated               |
-    --                    |                   we can choose a circumstance that we call                |
-    --                    |                   "Lack of carrier".  So, if you look waaaaaaaay back -----+
-    --                    +------------------ you will see that origin is the first rational number
-    --                                        we want to count.  While the Romans were
-    --                                        quite confident that Fortran would rule the
-    --                                        world and started counting from 1, we follow the
-    --                                        one true way (tm) and number things from 0.
-    | .index _ _ _ => limit_process.limit
-                           --         ^
-                           --         |
-                           --         +---- Any time we need, we can ask the encoded carrier
-                           --               what it thinks the current limit is.
+  encoding?: Sequence → Sequence → Prop := fun s1 s2 =>
+    match s1,s2 with
+    | .nil f1         , .nil f2       => f1 = f2
+    | .nil _          , .index _ _ _  => True
+    | .index _ _ _    , .nil _          => False
+    | .index f1 r1 i1 , .index f2 r2 i2 => (f1 = f2) ∧ r1 ≤ r2 ∧ i1 < i2
 
 -- We now have the pieces of a _residue_, an origin and a limit
 -- away from that origin. This gives us _direction_ and _magnitude_!
@@ -824,6 +991,21 @@ class ENCODED  -- Bullshit meter ≈ 85
 -- This is also the interface for solving for the _value_ of non-linear systems.
 -- Ya boy Newton figured that out.  So, which limit are we talking,
 -- the residue or the value?  Thankfully, one is covariant and one is contravariant.
+/-
+ME: I need a limit process.
+
+COMPILER: I do not know nuthin 'bout no calculus.
+
+ME: Perfect.
+
+COMPILER: Perfect?
+
+ME: I do not need you to know calculus. I need you to watch a sequence keep missing.
+
+COMPILER: Missing what?
+
+ME: The thing we will later pretend it was approaching.
+-/
 inductive Limit -- Bullshit meter ≈ 107
   |nil: Fact → Limit
   |index :  Fact → Sequence → Limit → Limit
@@ -893,6 +1075,21 @@ instance : LT Limit where -- Bullshit meter ≈ 5
 -- measurement.  One covariant and one contravariant. You either passively measure it through
 -- a carrier interaction or you actively manipulate it, finding its physical bounds.
 @[reducible]
+/-
+ME: I need a Cauchy process.
+
+COMPILER: A sequence that converges.
+
+ME: Careful, that has ontology on it.
+
+COMPILER: Then what is it?
+
+ME: A crowd of terms agreeing to stop wandering apart.
+
+COMPILER: How do they know how far apart they are?
+
+ME: Do not worry. Pythagoras is still backstage.
+-/
 structure CauchyProcess  -- Bullshit meter ≈ 228
     (Value: Type)                      -- These guys are still familiar
     (Carrier: CarrierProcess Value)
@@ -918,6 +1115,25 @@ structure CauchyProcess  -- Bullshit meter ≈ 228
 --                                                  +-------- Still just counting
 
 @[reducible]
+/-
+ME: I need a residue.
+
+COMPILER: A what?
+
+ME: What is left after the process almost explains itself.
+
+COMPILER: That is not a thing.
+
+ME: That is adorable.
+
+COMPILER: Left over from what?
+
+ME: From the difference between the story and the measurement.
+
+COMPILER: I do not like measuring leftovers.
+
+ME: Then stop making them.
+-/
 class RESIDUE
     (Value: Type) -- Bullshit meter ≈ 103
     (Carrier: CarrierProcess Value)
@@ -927,10 +1143,12 @@ class RESIDUE
     [e: ENCODED Value Carrier]
   where
   cauchy_process: CauchyProcess Value Carrier
-  representative? : Limit → Rational := fun l1 =>
-    match l1 with
-    | .nil f => e.encoding? (.nil f)
-    | .index f _ _ => e.encoding? (.index f (Rational.zero f) (.nil f))
+  representative? : Limit → Limit → Prop := fun a b =>
+    match a,b with
+    | .nil f1          , .nil f2           => f1 = f2
+    | .nil _           , .index _ _ _      => True
+    | .index _ _ _     , .nil _           => False
+    | .index f1 s1 l1  , .index f2 s2 l2   => (f1 = f2) ∧ s1 ≤ s2 ∧ l1 < l2
 
 
 -- At the risk of flaunting my _creative license_ again, I am going to model the average number.
@@ -949,6 +1167,21 @@ class RESIDUE
 -- turns out.  To lazy to show you, trust me on this for now, we will come back to this
 -- idea.
 
+/-
+ME: I need a sample.
+
+COMPILER: A point from the process?
+
+ME: A bite from the residue.
+
+COMPILER: That sounds unsanitary.
+
+ME: Measurement usually is.
+
+COMPILER: What does the sample prove?
+
+ME: Nothing. It gives the next machine something small enough to lie about.
+-/
 inductive Sample -- Bullshit meter ≈ 150            -- This is the admissible symbol for a single normal number
   where
 
