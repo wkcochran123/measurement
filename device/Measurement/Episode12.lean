@@ -23,6 +23,9 @@ class LOGICAL
   where
   feelings: HeartbeatProcess Value Carrier
 
+  logical? : YarnTheory → YarnTheory → Prop := fun a b =>
+    YarnTheory.le a b
+
 instance LOGICAL_UNIVERSAL
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -47,6 +50,34 @@ inductive ComputerProgram
 | load: Fact → Prop → Type → ComputerProgram
 | transform:   Fact → Fact → Prop → Prop → Type → Type 1 → ComputerProgram → ComputerProgram
 | boolean:   Fact → Fact → Fact → Prop → Prop → Prop → Type → Type 1 → Type i → ComputerProgram → ComputerProgram
+
+namespace ComputerProgram
+def le : ComputerProgram → ComputerProgram → Prop
+  | .load f1 p1 _, .load f2 p2 _ =>
+    f1 = f2 ∧ p1 = p2
+  | .load f1 p1 _, .transform f2 _ p2 _ _ _ _ =>
+    f1 = f2 ∧ p1 = p2
+  | .load f1 p1 _, .boolean f2 _ _ p2 _ _ _ _ _ _ =>
+    f1 = f2 ∧ p1 = p2
+  | .transform f1 f2 p1 p2 _ _ _, .load f3 p3 _ =>
+    (f1 ≠ f3 ∧ f2 ≠ f3) ∨ (p1 ≠ p3 ∧ p2 ≠ p3)
+  | .transform f1 f2 p1 p2 t1 t2 c1, .transform f3 f4 p3 p4 _ _ c2 =>
+    (f1 = f3 ∧ f2 = f4 ∧ p1 = p3 ∧ p2 = p4 ∧ le c1 c2) ∨
+      le (.transform f1 f2 p1 p2 t1 t2 c1) c2
+  | .transform f1 f2 p1 p2 t1 t2 c1, .boolean f3 f4 _ p3 p4 _ _ _ _ c2 =>
+    (f1 = f3 ∧ f2 = f4 ∧ p1 = p3 ∧ p2 = p4 ∧ le c1 c2) ∨
+      le (.transform f1 f2 p1 p2 t1 t2 c1) c2
+  | .boolean f1 f2 f3 p1 p2 p3 _ _ _ _, .load f4 p4 _ =>
+    (f1 ≠ f4 ∧ f2 ≠ f4 ∧ f3 ≠ f4) ∨ (p1 ≠ p4 ∧ p2 ≠ p4 ∧ p3 ≠ p4)
+  | .boolean f1 f2 _ p1 p2 _ t1 t2 t3 c1, .transform f4 f5 p4 p5 _ _ c2 =>
+    (f1 = f4 ∧ f2 = f5 ∧ p1 = p4 ∧ p2 = p5 ∧ le c1 c2) ∨
+      le (.boolean f1 f2 f1 p1 p2 p1 t1 t2 t3 c1) c2
+  | .boolean f1 f2 f3 p1 p2 p3 t1 t2 t3 c1, .boolean f4 f5 f6 p4 p5 p6 _ _ _ c2 =>
+    (f1 = f4 ∧ f2 = f5 ∧ f3 = f6 ∧
+      p1 = p4 ∧ p2 = p5 ∧ p3 = p6 ∧ le c1 c2) ∨
+        le (.boolean f1 f2 f3 p1 p2 p3 t1 t2 t3 c1) c2
+termination_by _ program => sizeOf program
+end ComputerProgram
 
 @[reducible]
 structure ElaborationProcess
@@ -101,6 +132,12 @@ class HALTED
     [prop: LOGICAL Value Carrier]
   where
   scientific_paper: ElaborationProcess Value Carrier
+
+  halted? : ComputerProgram → ComputerProgram → Prop := fun _ program =>
+    match program with
+    | .load _ _ _ => False
+    | .transform _ _ _ _ _ _ _ => False
+    | .boolean _ _ _ _ _ _ _ _ _ _ => True
 
 
 instance HALTED_LOGICAL

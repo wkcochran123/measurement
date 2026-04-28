@@ -97,6 +97,7 @@ def Truth : Fact := { truth := true, decTruth := Decidable.isTrue rfl }     -- F
      --                                                            ^        -- the compiler what _true=true_ and it
      --                                                            |        -- said TRUE.  This is the actual mechansim
      --             I assume you, too, can rfl this.  rofl. -------+        -- the compiler uses.  A label for it, anyway.
+
 end Fact
 -- Thus ends the storage allocation portion of the program.  The rest of the code reorganizes this vast,
 -- deep--- dare I say _BIG DATA_?!-- bit into something that might look familiar to you.

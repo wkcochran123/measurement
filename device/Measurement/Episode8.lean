@@ -148,35 +148,6 @@ instance PHYSICAL_NUMERIC
 
 
 
-/-
-Deferring implementation until episode 15
-instance COMPARABLE_PHYSICAL
-    (Value: Type)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [xx: REPEATABLE Value Carrier]
-    [aa: NUMERIC Value Carrier]
-    [bb: REPRESENTABLE Value Carrier]
-    [cc: PHYSICAL Value Carrier]
-    [electron: Inhabited d.symbol]
-    : COMPARABLE Value Carrier where
-  physical_process :=
-  { physical_process := cc.noisy_process
-    representation := default
-    invariant := .base d.fact default
-    value := .base d.fact (ULift.up default)
-  }
-  --  Again, anytime you think you know what goes here....
-  -- oh wait... aren't we suppose to lift a variable or something?
-  -- I see, lifting a variable is the mechanism on the compiler that is
-  -- option evaluation on this side.
--/
-
 instance OBSERVED_COMPARABLE
     (Value: Type)
     (Carrier: CarrierProcess Value)

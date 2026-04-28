@@ -79,6 +79,8 @@ class COMPILED
   compiler_output: CompilerOutput Value Carrier
   object_file: CompilerTape
 
+  converged?: CompilerTape → CompilerTape → Prop := fun a b => a < b
+
 instance COMPILED_MEASURED
     (Value: Type)
     (Carrier: CarrierProcess Value)

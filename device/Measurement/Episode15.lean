@@ -42,6 +42,11 @@ namespace Bullshit
 def lt: Bullshit → Bullshit → Prop := fun s1 s2 => le s1 s2 ∧ ¬ le s2 s1
 end Bullshit
 
+instance : LE Bullshit where
+  le := Bullshit.le
+instance : LT Bullshit where
+  lt := Bullshit.lt
+
 
 structure AtreyuProcess
     (Value: Type)
@@ -159,6 +164,8 @@ class TrueOutput
   atreyu_process : AtreyuProcess Value Carrier
   output : Bullshit := atreyu_process.satirize atreyu_process.next_measurement
 
+  obfusplained? : Bullshit → Bullshit → Prop := fun a b => a < b
+
 instance TRUE_COMPILED
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -205,39 +212,197 @@ noncomputable instance truthDistinct :
     intro s
     exact Classical.propDecidable (s≠Prop)
 
-structure DistinguishedSymbol
-    (Value : Type)
-    (Carrier : CarrierProcess Value)
-    [d : DISTINGUISHABLE Value Carrier] where
-  symbol : Type Value := d.symbol
-  fact : Fact := d.fact
-  different? : Type Value → Prop := d.different?
-  dec_distinct : DecidablePred different? := d.dec_distinct
 
-
-noncomputable instance COMPARABLE_PROP_TRUTHCARRIER
-    [d : DISTINGUISHABLE Prop truthCarrier]
-    [a : ADMISSIBLE Prop truthCarrier]
-    [c : COUNTABLE Prop truthCarrier]
-    [e : ENCODED Prop truthCarrier]
-    [r : RESIDUE Prop truthCarrier]
-    [b : BINARY Prop truthCarrier]
-    [xx : REPEATABLE Prop truthCarrier]
-    [aa : NUMERIC Prop truthCarrier]
-    [bb : REPRESENTABLE Prop truthCarrier]
-    [cc : PHYSICAL Prop truthCarrier]
-    : COMPARABLE Prop truthCarrier where
+noncomputable instance COMPARABLE_PHYSICAL
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [electron: Inhabited d.symbol]
+    [circle: Subsingleton d.symbol]
+    : COMPARABLE Value Carrier where
   physical_process :=
-    { physical_process := cc.noisy_process
-      invariant := .base d.fact d
-      value     := .base d.fact (ULift.up (d.fact.truth : d.symbol)) }
-
-noncomputable instance COMPARABLE_PROP_TRUTHCARRIER where
-  physical_process :=
-    { physical_process := cc.noisy_process
-      invariant := .base d.fact True          -- True : Prop ≡ d.symbol
-      value     := .base d.fact (ULift.up True) }
+  { physical_process := cc.noisy_process
+    representation := default
+    invariant := .base d.fact default
+    value := .base d.fact (ULift.up default)
+  }
+  smaller_than := fun m1 m2 => m1 = m2
 
 #check (inferInstance : TrueOutput Prop truthCarrier)
+
+namespace Fact
+
+noncomputable def SAME
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [compiled: COMPILED Value Carrier]
+    [out: TrueOutput Value Carrier]
+    : Fact :=
+  { truth := Subsingleton (out.obfusplained? (.zero Fact.Truth) out.atreyu_process.next_measurement)
+    decTruth := Decidable.isTrue inferInstance }
+
+end Fact
+
+inductive Closure
+  | same : Fact → Bullshit → Closure
+  | different : Fact → Bullshit → Bullshit → Prop → Closure
+  | inferred : Fact → Fact → Bullshit → Bullshit → Prop → Closure → Closure
+
+namespace Closure
+
+def le : Closure → Closure → Prop
+  | .same f1 b1, .same f2 b2 =>
+      f1.truth = f2.truth ∧ b1 ≤ b2
+
+  | .same f1 b1, .different f2 a2 b2 rel2 =>
+      f1.truth = f2.truth ∧ (b1 ≤ a2 ∨ b1 ≤ b2)
+
+  | .same f1 b1, .inferred f2 f3 a2 b2 rel2 prior =>
+      (f1.truth = f2.truth ∨ f1.truth = f3.truth) ∧
+        (b1 ≤ a2 ∨ b1 ≤ b2) ∨ le (.same f1 b1) prior
+
+  | .different f1 a1 b1 rel1, .same f2 b2 =>
+      f1.truth ≠ f2.truth ∨ ¬ (a1 ≤ b2 ∨ b1 ≤ b2)
+
+  | .different f1 a1 b1 rel1, .different f2 a2 b2 rel2 =>
+      f1.truth = f2.truth ∧ a1 ≤ a2 ∧ b1 ≤ b2 ∧ (rel1 → rel2)
+
+  | .different f1 a1 b1 rel1, .inferred f2 f3 a2 b2 rel2 prior =>
+      ((f1.truth = f2.truth ∨ f1.truth = f3.truth) ∧
+        a1 ≤ a2 ∧ b1 ≤ b2 ∧ (rel1 → rel2)) ∨
+          le (.different f1 a1 b1 rel1) prior
+
+  | .inferred f1 f2 a1 b1 rel1 prior1, .same f3 b3 =>
+      (f1.truth ≠ f3.truth ∧ f2.truth ≠ f3.truth) ∨
+        ¬ (a1 ≤ b3 ∨ b1 ≤ b3)
+
+  | .inferred f1 f2 a1 b1 rel1 prior1, .different f3 a3 b3 rel3 =>
+      ((f1.truth = f3.truth ∨ f2.truth = f3.truth) ∧
+        a1 ≤ a3 ∧ b1 ≤ b3 ∧ (rel1 → rel3)) ∨
+          le prior1 (.different f3 a3 b3 rel3)
+
+  | .inferred f1 f2 a1 b1 rel1 prior1,
+    .inferred f3 f4 a3 b3 rel3 prior2 =>
+      ((f1.truth = f3.truth ∨ f2.truth = f4.truth) ∧
+        a1 ≤ a3 ∧ b1 ≤ b3 ∧ (rel1 → rel3) ∧ le prior1 prior2) ∨
+          le (.inferred f1 f2 a1 b1 rel1 prior1) prior2
+termination_by _ c => sizeOf c
+
+end Closure
+
+
+@[reducible]
+structure EquivalenceProcess
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [compiled: COMPILED Value Carrier]
+    [out: TrueOutput Value Carrier]
+  where
+  atreyu_process : AtreyuProcess Value Carrier
+  closure : Closure
+
+  close? : Bullshit → Bullshit → Closure := fun a b =>
+    .different (Fact.SAME Value Carrier) a b (out.obfusplained? a b)
+
+@[reducible]
+class INFERRED
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [compiled: COMPILED Value Carrier]
+    [out: TrueOutput Value Carrier]
+  where
+  equivalence_process : EquivalenceProcess Value Carrier
+  theory : Closure
+
+  inferred? : Closure → Closure → Prop := fun a b =>
+    Closure.le a b
+
+noncomputable instance INFERRED_TRUE
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [compiled: COMPILED Value Carrier]
+    [out: TrueOutput Value Carrier]
+    : INFERRED Value Carrier where
+  equivalence_process :=
+  { atreyu_process := out.atreyu_process
+    closure :=
+      .different
+        (Fact.SAME Value Carrier)
+        (.zero Fact.Truth)
+        out.atreyu_process.next_measurement
+        (out.obfusplained? (.zero Fact.Truth) out.atreyu_process.next_measurement)
+  }
+  theory :=
+    .inferred
+      (Fact.SAME Value Carrier)
+      d.fact
+      (.zero Fact.Truth)
+      out.atreyu_process.next_measurement
+      (out.obfusplained? (.zero Fact.Truth) out.atreyu_process.next_measurement)
+      (.different
+        (Fact.SAME Value Carrier)
+        (.zero Fact.Truth)
+        out.atreyu_process.next_measurement
+        (out.obfusplained? (.zero Fact.Truth) out.atreyu_process.next_measurement))
+
+noncomputable def theory_true? : Prop :=
+  (inferInstance : INFERRED Prop truthCarrier).inferred?
+    (inferInstance : INFERRED Prop truthCarrier).equivalence_process.closure
+    (inferInstance : INFERRED Prop truthCarrier).theory
+
+#check theory_true?
 
 end Measurement

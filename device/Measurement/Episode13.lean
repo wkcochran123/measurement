@@ -75,6 +75,9 @@ class MEASURED
   where
   satire: LeanProcess Value Carrier
 
+  bounded? : Measurement → Measurement → Prop := fun a b =>
+    Measurement.le a b
+
 
 instance MEASURED_HALTED
     (Value: Type)

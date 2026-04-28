@@ -92,11 +92,11 @@ class SCIENTIFIC -- 23964
   phd_process : LearningProcess Value Carrier
   invariant: Science
 
-  predictable? : Science → Prop := fun s =>
-    match s with
-    | .repeatable prop => prop
-    | .hypothesis prop _ => prop
-    | .theory prop _ _ _  => prop
+  predictable? : Science → Science → Prop := fun a b =>
+    match a, b with
+    | _, .repeatable prop => prop
+    | _, .hypothesis prop _ => prop
+    | _, .theory prop _ _ _  => prop
 
 
 instance SCIENTIFIC_ACOLYTE
@@ -184,8 +184,10 @@ structure ScientificProcess  -- 104499
   learning_process: LearningProcess Value Carrier
   knowledge: Knowledge
 
-  is_it_true? : Knowledge → Knowledge → Prop := fun f1 f2 =>
-    Knowledge.le f1 f2 → Knowledge.le f2 f1
+  learn? : Knowledge → Knowledge := fun know =>
+    match know with
+    | .jarjar p       => .ledger p d.fact knowledge
+    |.ledger p f k   => .ledger p f knowledge
 
 class TRUTH  -- 5632
     (Value: Type)
@@ -218,8 +220,9 @@ class TRUTH  -- 5632
     [ideology: SCIENTIFIC Value Carrier]
   where
   scientific_process: ScientificProcess Value Carrier
-  martyred? : Knowledge → Prop := fun f1 =>
-    Knowledge.le f1 scientific_process.knowledge → Knowledge.le scientific_process.knowledge f1
+  martyred? : Knowledge → Knowledge → Prop := fun f1 f2 =>
+    Knowledge.le f1 f2 → Knowledge.le f2 f1
+
 
 instance TRUTH_SCIENTIFIC
     (Value: Type)
@@ -259,6 +262,16 @@ instance TRUTH_SCIENTIFIC
 inductive Gospel  -- 67
   | epiphany: Prop → Gospel
   | state: Knowledge → Prop → Gospel → Gospel
+
+namespace Gospel
+def le : Gospel → Gospel → Prop
+  | .epiphany p1, .epiphany p2 => p1 = p2
+  | .epiphany p1, .state _ p2 _ => p1 = p2
+  | .state _ p1 _, .epiphany p2 => p1 ≠ p2
+  | .state f1 p1 g1, .state f2 p2 g2 =>
+    (Knowledge.le f1 f2 ∧ p1 = p2 ∧ le g1 g2) ∨ le (.state f1 p1 g1) g2
+termination_by _ g => sizeOf g
+end Gospel
 
 @[reducible] -- We have learned this while watching others.
 structure ReligiousProcess

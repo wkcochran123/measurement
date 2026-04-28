@@ -13,6 +13,50 @@ inductive SpaceTimePath
   | blackhole: Prop → Type 1 → SpaceTimePath → SpaceTimePath
   | geodesic: Fact → Type i → Prop → Type (i+1) → SpaceTimePath → SpaceTimePath → SpaceTimePath
 
+namespace SpaceTimePath
+def le : SpaceTimePath → SpaceTimePath → Prop
+  | .einstein f1, .einstein f2 =>
+    f1 = f2
+  | .einstein f1, .white_hole f2 _ _ =>
+    f1 = f2
+  | .einstein f1, .blackhole p2 _ _ =>
+    f1.truth = p2
+  | .einstein f1, .geodesic f2 _ p2 _ _ _ =>
+    f1 = f2 ∧ f1.truth = p2
+  | .white_hole f1 _ _, .einstein f2 =>
+    f1 ≠ f2
+  | .white_hole f1 val p1, .white_hole f2 _ p2 =>
+    (f1 = f2 ∧ le p1 p2) ∨ le (.white_hole f1 val p1) p2
+  | .white_hole f1 val p1, .blackhole p2 _ p3 =>
+    (f1.truth = p2 ∧ le p1 p3) ∨ le (.white_hole f1 val p1) p3
+  | .white_hole f1 val p1, .geodesic f2 _ p2 _ p3 p4 =>
+    (f1 = f2 ∧ f1.truth = p2 ∧ (le p1 p3 ∨ le p1 p4)) ∨
+      le (.white_hole f1 val p1) p3 ∨ le (.white_hole f1 val p1) p4
+  | .blackhole p1 _ _, .einstein f2 =>
+    p1 ≠ f2.truth
+  | .blackhole p1 val p2, .white_hole f2 _ p3 =>
+    (p1 ≠ f2.truth ∧ le p2 p3) ∨ le (.blackhole p1 val p2) p3
+  | .blackhole p1 val p2, .blackhole p3 _ p4 =>
+    (p1 = p3 ∧ le p2 p4) ∨ le (.blackhole p1 val p2) p4
+  | .blackhole p1 val p2, .geodesic _ _ p3 _ p4 p5 =>
+    (p1 = p3 ∧ (le p2 p4 ∨ le p2 p5)) ∨
+      le (.blackhole p1 val p2) p4 ∨ le (.blackhole p1 val p2) p5
+  | .geodesic f1 _ p1 _ _ _, .einstein f2 =>
+    f1 ≠ f2 ∨ p1 ≠ f2.truth
+  | .geodesic f1 val1 p1 val2 p2 p3, .white_hole f2 _ p4 =>
+    (f1 = f2 ∧ f1.truth = p1 ∧ (le p2 p4 ∨ le p3 p4)) ∨
+      le (.geodesic f1 val1 p1 val2 p2 p3) p4
+  | .geodesic f1 val1 p1 val2 p2 p3, .blackhole p4 _ p5 =>
+    (p1 = p4 ∧ (le p2 p5 ∨ le p3 p5)) ∨
+      le (.geodesic f1 val1 p1 val2 p2 p3) p5
+  | .geodesic f1 val1 p1 val2 p2 p3, .geodesic f2 _ p4 _ p5 p6 =>
+    (f1 = f2 ∧ p1 = p4 ∧
+      ((le p2 p5 ∧ le p3 p6) ∨ (le p2 p6 ∧ le p3 p5))) ∨
+      le (.geodesic f1 val1 p1 val2 p2 p3) p5 ∨
+        le (.geodesic f1 val1 p1 val2 p2 p3) p6
+termination_by _ path => sizeOf path
+end SpaceTimePath
+
 @[reducible]
 structure CalculusProcess
     (Value: Type)
@@ -110,6 +154,51 @@ inductive YarnTheory
 |stokes: Fact → SpaceTimePath → Prop → YarnTheory
 |fibers: Fact → SpaceTimePath → SpaceTimePath → Prop → Prop → YarnTheory → YarnTheory
 |fabric: Fact → Fact → SpaceTimePath → SpaceTimePath → SpaceTimePath → Prop → Prop → Prop → YarnTheory → YarnTheory → YarnTheory
+
+namespace YarnTheory
+def le : YarnTheory → YarnTheory → Prop
+  | .stokes f1 p1 q1, .stokes f2 p2 q2 =>
+    f1 = f2 ∧ SpaceTimePath.le p1 p2 ∧ q1 = q2
+  | .stokes f1 p1 q1, .fibers f2 p2 p3 q2 q3 _ =>
+    f1 = f2 ∧ (SpaceTimePath.le p1 p2 ∨ SpaceTimePath.le p1 p3) ∧
+      (q1 = q2 ∨ q1 = q3)
+  | .stokes f1 p1 q1, .fabric f2 f3 p2 p3 p4 q2 q3 q4 _ _ =>
+    (f1 = f2 ∨ f1 = f3) ∧
+      (SpaceTimePath.le p1 p2 ∨ SpaceTimePath.le p1 p3 ∨ SpaceTimePath.le p1 p4) ∧
+        (q1 = q2 ∨ q1 = q3 ∨ q1 = q4)
+  | .fibers f1 _ _ q1 q2 _, .stokes f2 _ q3 =>
+    f1 ≠ f2 ∨ (q1 ≠ q3 ∧ q2 ≠ q3)
+  | .fibers f1 p1 p2 q1 q2 y1, .fibers f2 p3 p4 q3 q4 y2 =>
+    (f1 = f2 ∧ SpaceTimePath.le p1 p3 ∧ SpaceTimePath.le p2 p4 ∧
+      q1 = q3 ∧ q2 = q4 ∧ le y1 y2) ∨
+        le (.fibers f1 p1 p2 q1 q2 y1) y2
+  | .fibers f1 p1 p2 q1 q2 y1, .fabric f2 f3 p3 p4 p5 q3 q4 q5 y2 y3 =>
+    ((f1 = f2 ∨ f1 = f3) ∧
+      (SpaceTimePath.le p1 p3 ∨ SpaceTimePath.le p1 p4) ∧
+        (SpaceTimePath.le p2 p4 ∨ SpaceTimePath.le p2 p5) ∧
+          (q1 = q3 ∨ q1 = q4) ∧ (q2 = q4 ∨ q2 = q5) ∧
+            (le y1 y2 ∨ le y1 y3)) ∨
+              le (.fibers f1 p1 p2 q1 q2 y1) y2 ∨
+                le (.fibers f1 p1 p2 q1 q2 y1) y3
+  | .fabric f1 f2 _ _ _ q1 q2 q3 _ _, .stokes f3 _ q4 =>
+    (f1 ≠ f3 ∧ f2 ≠ f3) ∨ (q1 ≠ q4 ∧ q2 ≠ q4 ∧ q3 ≠ q4)
+  | .fabric f1 f2 p1 p2 p3 q1 q2 q3 y1 y2, .fibers f3 p4 p5 q4 q5 y3 =>
+    ((f1 = f3 ∨ f2 = f3) ∧
+      (SpaceTimePath.le p1 p4 ∨ SpaceTimePath.le p2 p4) ∧
+        (SpaceTimePath.le p2 p5 ∨ SpaceTimePath.le p3 p5) ∧
+          (q1 = q4 ∨ q2 = q4) ∧ (q2 = q5 ∨ q3 = q5) ∧
+            (le y1 y3 ∨ le y2 y3)) ∨
+              le (.fabric f1 f2 p1 p2 p3 q1 q2 q3 y1 y2) y3
+  | .fabric f1 f2 p1 p2 p3 q1 q2 q3 y1 y2,
+      .fabric f3 f4 p4 p5 p6 q4 q5 q6 y3 y4 =>
+    (f1 = f3 ∧ f2 = f4 ∧
+      SpaceTimePath.le p1 p4 ∧ SpaceTimePath.le p2 p5 ∧ SpaceTimePath.le p3 p6 ∧
+        q1 = q4 ∧ q2 = q5 ∧ q3 = q6 ∧
+          ((le y1 y3 ∧ le y2 y4) ∨ (le y1 y4 ∧ le y2 y3))) ∨
+            le (.fabric f1 f2 p1 p2 p3 q1 q2 q3 y1 y2) y3 ∨
+              le (.fabric f1 f2 p1 p2 p3 q1 q2 q3 y1 y2) y4
+termination_by _ yarn => sizeOf yarn
+end YarnTheory
 
 @[reducible]
 structure HeartbeatProcess

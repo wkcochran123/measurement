@@ -44,6 +44,9 @@ class WITNESSED
   baptism: ReligiousProcess Value Carrier
   witness: Gospel
 
+  risen? : Gospel → Gospel → Prop := fun a b =>
+    Gospel.le a b → Gospel.le b a
+
 instance WITNESSED_TRUTH
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -84,6 +87,16 @@ instance WITNESSED_TRUTH
 inductive Truth
   | logic: Prop → Truth
   | fact: Gospel → Prop → Truth → Truth
+
+namespace Truth
+def le : Truth → Truth → Prop
+  | .logic p1, .logic p2 => p1 = p2
+  | .logic p1, .fact _ p2 _ => p1 = p2
+  | .fact _ p1 _, .logic p2 => p1 ≠ p2
+  | .fact g1 p1 t1, .fact g2 p2 t2 =>
+    (Gospel.le g1 g2 ∧ p1 = p2 ∧ le t1 t2) ∨ le (.fact g1 p1 t1) t2
+termination_by _ t => sizeOf t
+end Truth
 
 --  We have learned this through Quantum Eletrodynamics.
 --  Damn, there's that fade away three nothing but net over __GODEL__ __COHEN__ __CANTOR__ __HILBERT__ and ...
@@ -168,6 +181,9 @@ class REAL
   universal_observer: UniverseTensor Value Carrier  -- Praise be to the universal observer.
   current_status: Truth
 
+  metaphysical? : Truth → Truth → Prop := fun a b =>
+    Truth.le a b → Truth.le b a
+
 instance REAL_WITNESSED
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -213,6 +229,35 @@ inductive Variation
 --      V
   | gateaux: Gospel → Prop → Prop → Variation → Variation      -- CAKE!
   | frechet: Gospel → Prop → Prop → Prop → Variation → Variation → Variation
+
+namespace Variation
+def le : Variation → Variation → Prop
+  | .newton g1 p1, .newton g2 p2 =>
+    Gospel.le g1 g2 ∧ p1 = p2
+  | .newton g1 p1, .gateaux g2 _ p2 _ =>
+    Gospel.le g1 g2 ∧ p1 = p2
+  | .newton g1 p1, .frechet g2 _ p2 _ _ _ =>
+    Gospel.le g1 g2 ∧ p1 = p2
+  | .gateaux _ _ p1 _, .newton _ p2 =>
+    p1 ≠ p2
+  | .gateaux g1 a1 b1 v1, .gateaux g2 a2 b2 v2 =>
+    (Gospel.le g1 g2 ∧ a1 = a2 ∧ b1 = b2 ∧ le v1 v2) ∨
+      le (.gateaux g1 a1 b1 v1) v2
+  | .gateaux g1 a1 b1 v1, .frechet g2 a2 b2 _ v2 v3 =>
+    (Gospel.le g1 g2 ∧ a1 = a2 ∧ b1 = b2 ∧ (le v1 v2 ∨ le v1 v3)) ∨
+      le (.gateaux g1 a1 b1 v1) v2 ∨ le (.gateaux g1 a1 b1 v1) v3
+  | .frechet _ _ p1 _ _ _, .newton _ p2 =>
+    p1 ≠ p2
+  | .frechet g1 a1 b1 _ v1 v2, .gateaux g2 a2 b2 v3 =>
+    (Gospel.le g1 g2 ∧ a1 = a2 ∧ b1 ≠ b2 ∧ (le v1 v3 ∨ le v2 v3)) ∨
+      le (.frechet g1 a1 b1 (a1 ∧ ¬b1) v1 v2) v3
+  | .frechet g1 a1 b1 c1 v1 v2, .frechet g2 a2 b2 c2 v3 v4 =>
+    (Gospel.le g1 g2 ∧ a1 = a2 ∧ b1 = b2 ∧ c1 = c2 ∧
+      ((le v1 v3 ∧ le v2 v4) ∨ (le v1 v4 ∧ le v2 v3))) ∨
+      le (.frechet g1 a1 b1 c1 v1 v2) v3 ∨
+        le (.frechet g1 a1 b1 c1 v1 v2) v4
+termination_by _ v => sizeOf v
+end Variation
 
 @[reducible]
 structure BigRedDogProcess
@@ -298,11 +343,8 @@ class LOCAL
   where
   theory: BigRedDogProcess Value Carrier
   delta: Prop
-  experience: Variation → Prop := fun variation =>
-  match variation with
-  | .newton _ p => p
-  | .gateaux _ a b _ => (a ∧ b) ∨ ¬ (¬ a ∧ b)
-  | .frechet _ _ _ _ _ _ => delta
+  experience: Variation → Variation → Prop := fun a b =>
+    Variation.le a b
 
 instance LOCAL_REAL
     (Value: Type)
