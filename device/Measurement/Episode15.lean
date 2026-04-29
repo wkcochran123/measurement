@@ -227,7 +227,6 @@ noncomputable instance COMPARABLE_PHYSICAL
     [bb: REPRESENTABLE Value Carrier]
     [cc: PHYSICAL Value Carrier]
     [electron: Inhabited d.symbol]
-    [circle: Subsingleton d.symbol]
     : COMPARABLE Value Carrier where
   physical_process :=
   { physical_process := cc.noisy_process
@@ -237,7 +236,6 @@ noncomputable instance COMPARABLE_PHYSICAL
   }
   smaller_than := fun m1 m2 => m1 = m2
 
-#check (inferInstance : TrueOutput Prop truthCarrier)
 
 namespace Fact
 
@@ -274,14 +272,14 @@ def le : Closure → Closure → Prop
   | .same f1 b1, .same f2 b2 =>
       f1.truth = f2.truth ∧ b1 ≤ b2
 
-  | .same f1 b1, .different f2 a2 b2 rel2 =>
+  | .same f1 b1, .different f2 a2 b2 _ =>
       f1.truth = f2.truth ∧ (b1 ≤ a2 ∨ b1 ≤ b2)
 
-  | .same f1 b1, .inferred f2 f3 a2 b2 rel2 prior =>
+  | .same f1 b1, .inferred f2 f3 a2 b2 _ prior =>
       (f1.truth = f2.truth ∨ f1.truth = f3.truth) ∧
         (b1 ≤ a2 ∨ b1 ≤ b2) ∨ le (.same f1 b1) prior
 
-  | .different f1 a1 b1 rel1, .same f2 b2 =>
+  | .different f1 a1 b1 _, .same f2 b2 =>
       f1.truth ≠ f2.truth ∨ ¬ (a1 ≤ b2 ∨ b1 ≤ b2)
 
   | .different f1 a1 b1 rel1, .different f2 a2 b2 rel2 =>
@@ -292,7 +290,7 @@ def le : Closure → Closure → Prop
         a1 ≤ a2 ∧ b1 ≤ b2 ∧ (rel1 → rel2)) ∨
           le (.different f1 a1 b1 rel1) prior
 
-  | .inferred f1 f2 a1 b1 rel1 prior1, .same f3 b3 =>
+  | .inferred f1 f2 a1 b1 _ _, .same f3 b3 =>
       (f1.truth ≠ f3.truth ∧ f2.truth ≠ f3.truth) ∨
         ¬ (a1 ≤ b3 ∨ b1 ≤ b3)
 
@@ -306,7 +304,7 @@ def le : Closure → Closure → Prop
       ((f1.truth = f3.truth ∨ f2.truth = f4.truth) ∧
         a1 ≤ a3 ∧ b1 ≤ b3 ∧ (rel1 → rel3) ∧ le prior1 prior2) ∨
           le (.inferred f1 f2 a1 b1 rel1 prior1) prior2
-termination_by _ c => sizeOf c
+termination_by a b => sizeOf a + sizeOf b
 
 end Closure
 
