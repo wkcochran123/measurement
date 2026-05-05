@@ -92,12 +92,10 @@ instance NUMERIC_REPEATABLE
     [r: RESIDUE Value Carrier]
     [b: BINARY Value Carrier]
     [xx: REPEATABLE Value Carrier]
-    [Inhabited (xx.typical_response xx.repeatable_process.expectation xx.repeatable_process.expectation)]
     : NUMERIC Value Carrier where
   computational_process :=
   { repeatable_process := xx.repeatable_process
-    output := match xx.typical_response xx.repeatable_process.expectation with
-             | _ => some (.hypothesis d.fact)
+    output := some (.hypothesis d.fact)
   }
 
 instance REPRESENTABLE_NUMERIC

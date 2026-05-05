@@ -396,6 +396,18 @@ noncomputable instance INFERRED_TRUE
         out.atreyu_process.next_measurement
         (out.obfusplained? (.zero Fact.Truth) out.atreyu_process.next_measurement))
 
+noncomputable instance truthRepeatable_fixedPoint
+    [xx : REPEATABLE Prop truthCarrier]
+    : Inhabited (xx.typical_response
+                   xx.repeatable_process.expectation
+                   xx.repeatable_process.expectation) :=
+  match Classical.propDecidable
+          (xx.typical_response
+             xx.repeatable_process.expectation
+             xx.repeatable_process.expectation) with
+  | isTrue  h => ⟨h⟩        -- the True case: h is a proof, wrap it
+  | isFalse h => ⟨h⟩  -- the False case: classical escape
+
 noncomputable def theory_true? : Prop :=
   (inferInstance : INFERRED Prop truthCarrier).inferred?
     (inferInstance : INFERRED Prop truthCarrier).equivalence_process.closure
