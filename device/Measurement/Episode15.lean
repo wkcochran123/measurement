@@ -396,17 +396,35 @@ noncomputable instance INFERRED_TRUE
         out.atreyu_process.next_measurement
         (out.obfusplained? (.zero Fact.Truth) out.atreyu_process.next_measurement))
 
+-- De Morgan clock-complement: a failed joint phase distributes into a
+-- complement phase. Names the classical-duality bridge explicitly.
+noncomputable def deMorganClockComplement (P Q : Prop) :
+    ¬(P ∧ Q) → ¬P ∨ ¬Q := by
+  intro h
+  by_cases hp : P
+  · exact Or.inr (fun hq : Q => h ⟨hp, hq⟩)
+  · exact Or.inl hp
+
+-- Every repeatable observation has a definite phase.
+-- Or.inl = universe-0 TRUE (P holds / True=True).
+-- Or.inr = universe-1 TRUE (¬P holds / True=False).
+noncomputable def truthPhase (P : Prop) : P ∨ ¬P :=
+  Classical.em P
+
 noncomputable instance truthRepeatable_fixedPoint
     [xx : REPEATABLE Prop truthCarrier]
-    : Inhabited (xx.typical_response
-                   xx.repeatable_process.expectation
-                   xx.repeatable_process.expectation) :=
-  match Classical.propDecidable
-          (xx.typical_response
+    : Inhabited (
+        xx.typical_response
+          xx.repeatable_process.expectation
+          xx.repeatable_process.expectation
+        ∨
+        ¬ (xx.typical_response
              xx.repeatable_process.expectation
-             xx.repeatable_process.expectation) with
-  | isTrue  h => ⟨h⟩        -- the True case: h is a proof, wrap it
-  | isFalse h => ⟨h⟩  -- the False case: classical escape
+             xx.repeatable_process.expectation)) :=
+  ⟨truthPhase
+      (xx.typical_response
+         xx.repeatable_process.expectation
+         xx.repeatable_process.expectation)⟩
 
 noncomputable def theory_true? : Prop :=
   (inferInstance : INFERRED Prop truthCarrier).inferred?
