@@ -304,7 +304,7 @@ def le : Closure → Closure → Prop
       ((f1.truth = f3.truth ∨ f2.truth = f4.truth) ∧
         a1 ≤ a3 ∧ b1 ≤ b3 ∧ (rel1 → rel3) ∧ le prior1 prior2) ∨
           le (.inferred f1 f2 a1 b1 rel1 prior1) prior2
-termination_by a b => sizeOf a + sizeOf b
+termination_by c1 c2 => sizeOf c1 + sizeOf c2
 
 end Closure
 

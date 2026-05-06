@@ -638,19 +638,23 @@ structure SlipProcess    -- Bullshit meter ≈ 680
         .dimension f c (Metavariable t) projection
 
 /-
-ME: I need observed.
+ME: I need OBSERVED.possible a b inhabited.
 
-COMPILER: We already have observation.
+COMPILER: So a becomes b?
 
-ME: That was the process. This is the thing caught in the process.
+ME: No.
 
-COMPILER: So it is known?
+COMPILER: So a equals b?
 
-ME: No. It is marked.
+ME: No.
 
-COMPILER: Marked how?
+COMPILER: Then what am I certifying?
 
-ME: Enough that the next machine can pretend it saw the same thing.
+ME: That the computation is cromulent.
+
+COMPILER: Cromulent is not a theorem.
+
+ME: Yet.
 -/
 class OBSERVED   -- Bullshit meter ≈ 444
     (Value: Type)
