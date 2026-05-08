@@ -106,7 +106,7 @@ structure AtreyuProcess
                     last_object last_state
                     last_measurement next_measurement
 
-  | .rest f1 f2 rel n1 n2 n3 statement prior_proof if_true if_false =>
+  | .rest _ f2 _ _ n2 n3 _ prior_proof _ if_false =>
               match f2.decTruth, d.fact.decTruth with
               | isTrue _,  isTrue _  =>
                   .rest f2 d.fact
@@ -144,7 +144,6 @@ structure AtreyuProcess
 
 
 
-@[reducible]
 class TrueOutput
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -396,14 +395,6 @@ noncomputable instance INFERRED_TRUE
         out.atreyu_process.next_measurement
         (out.obfusplained? (.zero Fact.Truth) out.atreyu_process.next_measurement))
 
--- De Morgan clock-complement: a failed joint phase distributes into a
--- complement phase. Names the classical-duality bridge explicitly.
-noncomputable def deMorganClockComplement (P Q : Prop) :
-    ¬(P ∧ Q) → ¬P ∨ ¬Q := by
-  intro h
-  by_cases hp : P
-  · exact Or.inr (fun hq : Q => h ⟨hp, hq⟩)
-  · exact Or.inl hp
 
 -- Every repeatable observation has a definite phase.
 -- Or.inl = universe-0 TRUE (P holds / True=True).
@@ -425,6 +416,22 @@ noncomputable instance truthRepeatable_fixedPoint
       (xx.typical_response
          xx.repeatable_process.expectation
          xx.repeatable_process.expectation)⟩
+
+noncomputable instance truthSymbolInhabited :
+    Inhabited truthDistinct.symbol :=
+  ⟨Fact.Truth.truth⟩
+
+noncomputable instance truthReal :
+    REAL Prop truthCarrier :=
+  REAL_WITNESSED Prop truthCarrier
+
+noncomputable instance truthLocal :
+    LOCAL Prop truthCarrier :=
+  LOCAL_REAL Prop truthCarrier
+
+
+set_option maxHeartbeats 0
+set_option synthInstance.maxHeartbeats 0
 
 noncomputable def theory_true? : Prop :=
   (inferInstance : INFERRED Prop truthCarrier).inferred?

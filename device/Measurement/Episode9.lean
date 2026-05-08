@@ -187,7 +187,7 @@ structure ScientificProcess  -- 104499
   learn? : Knowledge → Knowledge := fun know =>
     match know with
     | .jarjar p       => .ledger p d.fact knowledge
-    |.ledger p f k   => .ledger p f knowledge
+    |.ledger p f _   => .ledger p f knowledge
 
 class TRUTH  -- 5632
     (Value: Type)

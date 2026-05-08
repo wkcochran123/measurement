@@ -94,7 +94,7 @@ namespace Fact    -- Bullshit meter ≈ 25
              --              |                       the quarter to the table. Watch me _still_ take your money.
              --              V                       Without moving the first card.
 def Truth : Fact := { truth := true, decTruth := Decidable.isTrue rfl }     -- For those new to Lean, I just asked
-     --                                                            ^        -- the compiler what _true=true_ and it
+     --                                                            ^        -- the compiler what is _true=true_ and it
      --                                                            |        -- said TRUE.  This is the actual mechansim
      --             I assume you, too, can rfl this.  rofl. -------+        -- the compiler uses.  A label for it, anyway.
 
@@ -181,7 +181,7 @@ def le : Number → Number → Prop --         V          Now, this is just _int
   | .one  p1 n1', .one  p2 n2' =>   --     +------------------------+
       match p1.decTruth, p2.decTruth with
       | isTrue _,  isTrue _  => le n1' n2' -- so, we can interpret true and false as the sign
-      | isTrue _,  isFalse _ => False      -- of the values.  if true is positive, then this
+      | isTrue _,  isFalse _ => False      -- of the values.  if true is positive, then this is
       | isFalse _, isTrue _  => True       -- the truth table of <=.
       | isFalse _, isFalse _ => ¬ le n1' n2'
 end Number
@@ -215,7 +215,7 @@ end Number
 
 --                             +--+----------------------------------------------------  Aaah, low entropy language,
 --                             |  |                                                      could there be a better
---                             V  V                                                      medium?  No possible.
+--                             V  V                                                      medium?  Not possible.
 -- A more madenning question "is is" 1 <= 0.999999999.... ?  Well, as you will see
 --                            ----\         ^^^^^^^^^
 --  Parsing syllables             |         |||||||||
@@ -233,8 +233,8 @@ instance : LE Number where  -- Bullshit meter ≈ 7
 -- Trust me, ;-)
 
 -- So, this is our "sensor" for the compiler's meaning
--- of a Type.  The compiler will happily send us carriers
--- that will evaluate true/false for us to use as "facts."
+-- of a Type.  The compiler will happily send us carriers (I think they are called properties, but I have never
+-- seen a language spec) that will evaluate true/false for us to use as "facts."
 structure CarrierProcess -- Bullshit meter ≈ 85
     (Carrier: Type)
   where
