@@ -1,49 +1,41 @@
 \chapter{The Bullshit Meter}
 \label{chap:bullshit-meter}
 
-% EPISODE COVERAGE: Episodes 6 and 7 revisited through the lens of elaboration cost.
-% Also introduces Episode 10's HeartbeatProcess as a forward reference.
-% The chapter is thematic, not strictly linear through the episodes.
-%
-% AUDIENCE NOTE: This chapter explains what elaboration cost means and why
-% the compiler's struggle is itself a measurement. Non-technical readers will
-% find this chapter funny. Technical readers will find it precise.
-%
-% KEY CONCEPT: The bullshit meter is a real instrument. The heartbeat count
-% is the compiler measuring the logical distance between context and conclusion.
-% Precision costs. The spline epsilon is the point where refinement stops paying.
-%
-% TONE: Comic and precise. The satirical naming in the Lean code is addressed
-% directly. The joke is explained and then shown to be serious.
+% EPISODE COVERAGE: Episodes 6 and 7 revisited through elaboration cost,
+% plus Episode 10's HeartbeatProcess as forward reference.
+% KEY CONCEPT: The heartbeat count is the compiler measuring the logical
+% distance between context and conclusion.
 
 \section{What the Compiler Finds Expensive}
 \label{se:what-compiler-finds-expensive}
 
-% In Lean 4, every elaboration step consumes a "heartbeat" -- an internal
-% tick of the elaboration engine. The total number of heartbeats consumed
-% by a definition is a measure of its elaboration cost.
-%
-% By default, Lean stops after 200,000 heartbeats and reports an error.
-% The device raises this limit repeatedly:
+% In Lean 4, every elaboration step consumes a heartbeat.
+% The device raises maxHeartbeats repeatedly:
 %
 %   set_option maxHeartbeats 400000    -- Episode 7
 %   set_option maxHeartbeats 2000000   -- Episode 13
 %   set_option maxHeartbeats 4000000   -- Episode 15
+%   set_option maxHeartbeats 0         -- Episode 15 final lines
 %
-% And in the final lines:
-%
-%   set_option maxHeartbeats 0         -- no limit
-%   set_option synthInstance.maxHeartbeats 0
-%
-% These options are not programmer impatience. They are measurements.
+% These are not programmer impatience. They are measurements.
 % Each increase records the compiler's honest report of how hard it is
 % working to verify the tower so far.
 %
-% Sidebar: What is elaboration? In Lean, elaboration is the process of
-% filling in implicit arguments, resolving typeclasses, and confirming
-% types. When you write a term, the compiler elaborates it: it works out
-% everything you left implicit and checks the result. The heartbeat count
-% is the clock ticking while it works.
+% Sidebar: What is elaboration? Filling in implicit arguments, resolving
+% typeclasses, confirming types. The heartbeat count is the clock ticking
+% while it works.
+
+\begin{gphenom}{Pythagoras-Planck}
+\label{ph:pythagoras-planck}
+\GPhObs Planck's constant $h = 6.626 \times 10^{-34}$ J$\cdot$s sets a minimum
+quantum of action. No physical process can transfer less than one quantum.
+Below $h$, no distinction is admissible.
+\GPhCon The ledger is finite at every scale. There exists a smallest admissible
+distinction, below which no further elaboration is possible.
+\GPhSeq The compiler's heartbeat is the formal analog of $h$: the minimum
+unit of elaboration cost. Below one heartbeat, no verification step
+is admissible. The tower cannot be built for free.
+\end{gphenom}
 
 \section{The Bullshit Meter Annotations}
 \label{se:bullshit-meter-annotations}
@@ -51,81 +43,81 @@
 % The comments in the code: -- Bullshit meter approximately N.
 % Show a sampling from different episodes to illustrate the meter climbing.
 %
-% Early episodes: small numbers. The compiler barely struggles.
-% Episode 6: the meter climbs as arithmetic and splines are introduced.
+% Early episodes: small numbers.
+% Episode 6: climbs as arithmetic and splines are introduced.
 % Episode 7: the instance cascade. The meter spikes.
 % Episode 15: 32 typeclass parameters. The meter is pegged.
 %
-% What does the meter measure? The logical distance between the compiler's
-% current context and the term being elaborated. A definition that depends
-% on 30 prior definitions costs more to elaborate than one that depends on 3.
-% The meter is the compiler reporting how far it has traveled.
+% Frankfurt's bullshit: "On Bullshit" (2005) distinguishes lies from bullshit.
+% The bullshit meter measures the accumulated overhead of prior commitments
+% that the compiler must now carry -- regardless of whether those commitments
+% were well-chosen.
 %
-% The name "bullshit" is Frankfurtian: Harry Frankfurt's "On Bullshit"
-% (2005) distinguishes lies (false claims made knowing they are false)
-% from bullshit (claims made without regard to truth). The meter does
-% not measure lies -- it measures the accumulated overhead of prior
-% commitments that the compiler must now carry, regardless of whether
-% those commitments were well-chosen.
-%
-% Sidebar: Frankfurt's bullshit. Frankfurt argues that bullshit is more
-% dangerous than lying because the bullshitter does not care about truth.
-% The device turns this around: the bullshit meter cares about nothing
-% but truth. It measures exactly how much truth the compiler has been
-% forced to carry.
+% Sidebar: Frankfurt's bullshit. The bullshitter does not care about truth.
+% The bullshit meter cares about nothing but truth. It measures exactly how
+% much truth the compiler has been forced to carry.
 
 \section{Precision Has a Price}
 \label{se:precision-has-a-price}
 
 % The spline epsilon: the informational quantum.
+% After threading through all observed points and satisfying all knot
+% constraints, there remains a family of valid splines that cannot be
+% distinguished by any admissible measurement within the current ledger.
 %
-% Every C2 spline has a residual freedom: after threading through all
-% observed points and satisfying all knot constraints, there remains
-% a family of valid splines that cannot be distinguished by any
-% admissible measurement within the current ledger.
-%
-% This residual freedom is epsilon. It is not a measurement error.
-% It is the fundamental limit of the instrument: below epsilon, no
-% further distinction is admissible.
-%
-% The compiler analogy: the elaborator has a similar limit. There
-% are terms that are definitionally equal (equal by computation)
-% but not propositionally equal (not provably equal in the logic).
-% The gap between definitional and propositional equality is the
-% compiler's epsilon.
-%
+% The compiler analogy: the gap between definitional and propositional equality.
 % Below epsilon, no new distinction is admissible in either system.
-% The measurement is complete. The ledger is closed.
 %
-% Connect forward: Chapter 8 (Stress) in the instrument develops
-% the spline epsilon in full. Here we are showing its Lean precursor
-% in FINITE_ELEPHANT and the spline construction of Episode 6.
+% Connect forward: Chapter 8 (Stress) in the instrument develops the spline
+% epsilon in full. Here we show its Lean precursor in FINITE_ELEPHANT.
+
+\begin{gphenom}{von Neumann}
+\label{ph:von-neumann}
+\GPhObs Every floating-point system has a machine epsilon: the smallest
+number that, added to 1.0, produces a result distinguishable from 1.0.
+Below machine epsilon, the arithmetic system cannot record a difference.
+\GPhCon The instrument cannot resolve distinctions smaller than its machine
+epsilon. The ledger cannot record events below this threshold.
+No refinement below this scale produces a new entry.
+\GPhSeq \lean{FINITE\_ELEPHANT}'s \lean{finite?} predicate is the machine epsilon
+test for the tower: below epsilon, the sequence has converged and no
+further refinement is admissible. The compiler stops not because it
+is tired but because there is nothing left to distinguish.
+\end{gphenom}
 
 \section{When Refinement Stops}
 \label{se:when-refinement-stops}
 
-% The Richardson Effect: measure a coastline at 100km resolution
-% and you get one number. At 10km, a larger number. At 1km, larger
-% still. The coastline length diverges as resolution increases.
+% The Richardson Effect: measure a coastline at 100km resolution and you
+% get one number. At 10km, a larger number. At 1km, larger still.
+% The measured length diverges as resolution increases.
 %
-% This is not a paradox. It is the correct behavior of any instrument
-% that operates near its resolution limit. At some scale, the
-% instrument can no longer distinguish the signal from the noise.
-% The measurement stops.
+% This is not a paradox -- it is the correct behavior of any instrument
+% near its resolution limit. At some scale, the instrument can no longer
+% distinguish the signal from the noise.
 %
 % In the device, this stopping point is formalized by FINITE_ELEPHANT's
-% finite? predicate: does this sequence converge? If the predicate
-% returns false, refinement has reached the limit. The compiler will
-% not compute a smaller value.
+% finite? predicate.
 %
 % The name FINITE_ELEPHANT: the elephant in the room of finite element
 % analysis is that all smooth fields are approximated by piecewise
-% polynomial functions. The approximation is exact in the limit, but
-% the limit requires infinite refinement. FINITE_ELEPHANT is the honest
-% acknowledgment that the elephant exists and is finite.
-%
-% End of chapter: the compiler has been measured. Its elaboration cost
-% is a real number, rising with each new layer of the tower. Its
-% resolution limit is real: below epsilon, the ledger cannot be
-% refined further. The instrument is calibrated. It knows its own limits.
+% polynomial functions. FINITE_ELEPHANT is the honest acknowledgment
+% that the elephant exists and is finite.
+
+\begin{gphenom}{Richardson}
+\label{ph:richardson}
+\GPhObs Lewis Fry Richardson measured that the reported length of a national
+border depends entirely on the length of the ruler used to measure it.
+Shorter rulers find longer borders. The coastline has no definite length.
+\GPhCon A fractal boundary has no well-defined length at infinite resolution.
+The instrument must choose a resolution and accept the result as approximate.
+Below the chosen scale, no further distinction between segments is admissible.
+\GPhSeq The spline's informational quantum $\varepsilon$ is the compiler's
+chosen resolution: the point below which no further distinction is admissible.
+The ledger does not grow forever. It stops when refinement stops buying anything.
+\end{gphenom}
+
+% End of chapter: the compiler has been measured. Its elaboration cost is
+% a real number, rising with each new layer. Its resolution limit is real.
+% The instrument is calibrated. It knows its own limits.
 

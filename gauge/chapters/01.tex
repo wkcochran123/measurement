@@ -2,22 +2,14 @@
 \label{chap:the-fact}
 
 % EPISODE COVERAGE: Episode 1 (partial) -- Fact, Number, CarrierProcess, le duality
-%
-% AUDIENCE NOTE: No Lean experience assumed. Introduce the compiler as a character.
-% Introduce the idea that a yes/no decision is the only primitive the compiler trusts.
-%
-% TONE: Conversational, wonder-forward. The chapter should feel like the first
-% chapter of a mystery novel in which the detective has only one clue.
+% TONE: Conversational, wonder-forward. The compiler as a character with one obsession.
 
 \section{The Compiler as Character}
 \label{se:compiler-as-character}
 
 % Introduce Lean 4 as a proof assistant: its job is to decide whether things
 % are consistent. Frame it as a character with a single obsession: it will not
-% accept anything it has not verified.
-%
-% Sidebar: What is a proof assistant? Brief, accessible. The key point is that
-% the compiler is not a search engine -- it does not guess. It checks.
+% accept anything it has not verified. Not a search engine -- it checks.
 %
 % End this section with the central question: what is the smallest thing
 % the compiler can verify?
@@ -31,22 +23,30 @@
 %     truth : Prop
 %     decTruth : Decidable truth
 %
-% Explain what this means in plain language: a Fact is a proposition
-% (a claim that might be true or false) together with a decision procedure
-% (a recipe for checking which one it is). The compiler insists on the
-% decision procedure. It will not accept a claim it cannot verify.
+% A Fact is a proposition together with a decision procedure. The compiler
+% insists on the decision procedure. It will not accept a claim it cannot verify.
 %
-% Key point: Fact.Truth = { truth := true, decTruth := Decidable.isTrue rfl }
-% The compiler can verify this in one step. "rfl" means "it follows by
-% reflection" -- the thing equals itself. The simplest fact: true is true.
+% Fact.Truth = { truth := true, decTruth := Decidable.isTrue rfl }
+% "rfl" means "it follows by reflection." The simplest fact: true is true.
 %
 % Sidebar: Propositions vs. Facts. A proposition is a claim. A Fact is a
-% proposition equipped with a method of decision. The word "decidable" in
-% mathematics has a precise meaning: there exists a finite procedure that
-% always terminates with yes or no. A Fact is a claim that can be decided.
+% proposition equipped with a method of decision. "Decidable" has a precise
+% meaning: there exists a finite procedure that always terminates with yes or no.
 %
-% Connect to physics: a measurement is also a decision. The instrument
-% decides: this reading is distinguishable from that one.
+% Connect to physics: a measurement is also a decision. The instrument decides:
+% this reading is distinguishable from that one.
+
+\begin{gphenom}{Peano-Kushim}
+\label{ph:peano-kushim}
+\GPhObs The oldest verified act of counting is a 5,000-year-old Sumerian tablet
+recording a barley inventory, attributed to a scribe named Kushim.
+Peano axiomatized the same act in 1889.
+\GPhCon Counting requires a decision procedure: this item is distinct from that one.
+The ledger begins with the first verified distinction, not with the first number.
+\GPhSeq The compiler's \lean{Fact} is the minimum unit of counting:
+a claim that can be verified. Arithmetic is not discovered but built,
+one verified distinction at a time.
+\end{gphenom}
 
 \section{Counting from Nothing}
 \label{se:counting-from-nothing}
@@ -57,44 +57,45 @@
 %     | zero : Fact -> Number
 %     | one  : Fact -> Number -> Number
 %
-% The inductive definition: a Number is either a zero (built from a Fact)
-% or a one (built from a Fact and a prior Number). This is Peano arithmetic
-% rendered in Lean. Every number carries its justification with it.
+% Every number carries its justification with it. The Fact inside each
+% Number is the witness that the compiler accepted this step. The number
+% line is a ledger of accepted decisions.
 %
-% Key insight: the Fact inside each Number is not decoration. It is the
-% witness that the compiler accepted this step. The number line is a
-% ledger of accepted decisions.
-%
-% Sidebar: Peano and Kushim. Giuseppe Peano axiomatized arithmetic in 1889.
-% The oldest known act of counting is a 5,000-year-old Sumerian tablet
-% attributed to "Kushim" recording a barley inventory. Counting is the
-% oldest technology. The Lean compiler re-discovers it from scratch.
+% Sidebar: Peano and Kushim. The oldest act of counting is a 5,000-year-old
+% Sumerian tablet. Counting is the oldest technology. The Lean compiler
+% re-discovers it from scratch.
+
+\begin{gphenom}{Hume}
+\label{ph:hume}
+\GPhObs No finite sequence of observed sunrises guarantees that the sun will
+rise tomorrow. Hume established this in 1739: induction cannot be
+logically justified from finite evidence.
+\GPhCon The compiler cannot infer, from $N$ verified facts, that the $(N+1)$th
+fact will hold. Every general claim in the ledger is provisional.
+\GPhSeq The ledger records what has been witnessed, not what must be.
+The \lean{ADMISSIBLE} typeclass does not predict; it only checks
+whether a proposed continuation is consistent with what is already recorded.
+\end{gphenom}
 
 \section{The Two Orderings}
 \label{se:two-orderings}
 
 % The covariant/contravariant duality in Number.le.
-% Show the definition with its four cases and explain each:
+% Four cases: zero/zero same truth (covariant), zero/zero different truth
+% (contravariant), one/one same truth (covariant recursive),
+% one/one different truth (contravariant recursive).
 %
-%   - zero/zero, same truth: covariant (truth preserved, smaller <= larger)
-%   - zero/zero, different truth: contravariant (truth inverted, ordering reverses)
-%   - one/one, same truth on the leading Fact: covariant case recurses
-%   - one/one, different truth: contravariant case recurses
+% Two ways to count: forward (each step adds) or backward (each step subtracts).
+% A clock counts forward. A countdown counts backward. Both are legitimate
+% orderings on the same object.
 %
-% Plain language: there are two ways to count. You can count forward
-% (each step adds to what you know) or backward (each step subtracts
-% from what you do not know). A clock counts forward. A countdown counts
-% backward. Both are legitimate orderings on the same object.
-%
-% The duality will recur in every subsequent episode. Name it here:
-% the covariant direction is the direction of accumulation; the
-% contravariant direction is the direction of elimination.
+% Name the duality: covariant = direction of accumulation;
+% contravariant = direction of elimination.
 %
 % Sidebar: Clocks and clock complements. In digital signal processing,
 % a clock is a T/F alternating sequence. Its complement is the same
 % sequence with T and F swapped. Together they tile time. The covariant
-% ordering corresponds to the clock; the contravariant ordering corresponds
-% to the clock complement.
+% ordering corresponds to the clock; the contravariant to its complement.
 
 \section{What the Compiler Carries Forward}
 \label{se:what-compiler-carries}
@@ -107,14 +108,23 @@
 %     event: Number -> Number
 %
 % A CarrierProcess is a triple: a witnessed fact, a current count, and
-% a rule for moving to the next count. This is the minimal structure
-% that supports forward motion.
-%
-% The "Carrier" type parameter is abstract -- the compiler does not yet
-% know what kind of thing is being measured. It only knows that something
-% has a symbol (a distinguishing fact), a value (a position in the count),
-% and an event (a step rule).
-%
+% a rule for moving to the next count. The Carrier type parameter is
+% abstract -- the compiler does not yet know what kind of thing is being
+% measured.
+
+\begin{gphenom}{Marconi}
+\label{ph:marconi}
+\GPhObs Guglielmo Marconi's first transatlantic radio transmission in 1901
+was three dots -- the letter S in Morse code. The receiver knew it was
+a signal because it was distinguishable from silence. Silence itself
+was informative: the channel was open.
+\GPhCon Silence is an admissible ledger entry. The absence of a signal is
+a witnessed distinction: the instrument was present and nothing arrived.
+\GPhSeq The \lean{CarrierProcess.symbol} is not always active.
+The compiler must accept the null event as a first-class value.
+A ledger that records only signals misses half the experiment.
+\end{gphenom}
+
 % End of chapter reflection: from a single yes/no decision, we have built
 % a counting machine. The compiler has agreed to believe: true is true,
 % counting is possible, and two directions of counting exist. Everything

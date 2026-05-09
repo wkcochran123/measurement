@@ -4,16 +4,7 @@
 % EPISODE COVERAGE: Episodes 12, 13, 14, and 15 -- Measurement/MEASURED,
 % CompilerTape/COMPILED, Bullshit inductive, AtreyuProcess, TrueOutput,
 % Closure inductive, EquivalenceProcess, INFERRED, theory_true?, #check
-%
-% AUDIENCE NOTE: This is the payoff chapter. Every thread is resolved.
-% John Henry's measurement closes the satire. The CompilerTape makes the
-% Turing machine concrete. The Closure inductive defines, formally, what
-% it means for the elaborator to finish. The final #check is the experiment.
-%
-% KEY CONCEPT: The anti-Adams punchline. The answer is not 42.
-% The answer is the question closing on itself.
-%
-% TONE: Earned triumph. Precise. The humor has been building to this.
+% KEY CONCEPT: Everything closes. The question is the answer.
 
 \section{John Henry's Measurement}
 \label{se:john-henry-measurement}
@@ -25,29 +16,17 @@
 %     | distance: Measurement
 %     | speed: Measurement
 %
-% The title of the device is "The Tragedy of John Henry -- A Satire in
-% Look-Ahead Backus-Naur Form." John Henry is the folk hero who raced
-% a steam drill and won, then died. The tragedy is not that he lost --
-% he won. The tragedy is that winning was not enough.
+% The title: "The Tragedy of John Henry -- A Satire in Look-Ahead Backus-Naur Form."
+% John Henry raced a steam drill, won, then died. The tragedy is that winning
+% was not enough.
 %
-% The Measurement type has three constructors: origin, distance, speed.
-% These are the three quantities in John Henry's race:
-% - origin: where the measurement starts (the beginning of the tunnel)
-% - distance: how far the tool has traveled
-% - speed: how fast it is moving
+% LeanProcess holds a velocity (a Measurement) and evolve?.
+% MEASURED adds bounded?: has John Henry reached the end of the tunnel?
 %
-% LeanProcess holds a velocity (a Measurement) and an evolve? function.
-% The velocity is the rate of change of the Lean tower itself -- how fast
-% the compiler is building the proof.
-%
-% MEASURED adds bounded?: is the measurement finite? Has John Henry
-% reached the end of the tunnel?
-%
-% The satire lands here: the device has been measuring the compiler's
-% own race against itself. The Lean elaborator is John Henry. The steam
-% drill is the combinatorial explosion of typeclass instances. The
-% final set_option maxHeartbeats 0 is the moment John Henry drops his
-% hammer and lets the race continue without limit.
+% The satire: the device has been measuring the compiler's own race against itself.
+% The Lean elaborator is John Henry. The steam drill is the combinatorial explosion
+% of typeclass instances. set_option maxHeartbeats 0 is the moment John Henry
+% drops his hammer and lets the race continue without limit.
 
 \section{The Tape}
 \label{se:the-tape}
@@ -59,29 +38,19 @@
 %     | strap: CompilerTape
 %     | compute: CompilerTape
 %
-% The Turing machine tape, given its final name. Three states:
-% boot (initialization -- the compiler starts here every time),
-% strap (bootstrap -- loading the prior context), and compute
-% (running -- the elaborator is active).
+% The Turing machine tape, given its final name.
+% boot: initialization. strap: bootstrap -- loading prior context.
+% compute: running -- the elaborator is active.
 %
-% CompilerOutput holds a tape and an emit? function: given a
-% CompilerTape state, produce the next output.
+% COMPILED adds object_file and converged?: has the compilation produced
+% a stable output?
 %
-% COMPILED adds object_file and converged?: has the compilation
-% produced a stable output? The converged? predicate is the
-% termination condition for the entire device.
+% The tower recognizes itself as a compiler. Not a metaphor. An actual compiler
+% modeling its own tape, bootstrap sequence, and convergence condition.
 %
-% This is the moment the tower recognizes itself as a compiler.
-% Not a metaphor for a compiler. An actual compiler, modeling
-% its own tape, its own bootstrap sequence, its own convergence
-% condition.
-%
-% Sidebar: What is bootstrapping? A compiler that is written in
-% its own language must compile itself. This is called bootstrapping
-% (from the phrase "pulling yourself up by your own bootstraps").
-% The Lean compiler is bootstrapped: the Lean compiler is written
-% in Lean. The strap constructor in CompilerTape is the moment the
-% device acknowledges this.
+% Sidebar: What is bootstrapping? A compiler written in its own language
+% must compile itself. Lean is bootstrapped: it compiles itself.
+% The strap constructor is the device acknowledging this.
 
 \section{The Bullshit Accumulator}
 \label{se:bullshit-accumulator}
@@ -94,34 +63,34 @@
 %     | rest: Fact -> Fact -> Prop -> Number -> Number -> Number ->
 %                     CompilerTape -> CompilerTape -> Bullshit -> Bullshit -> Bullshit
 %
-% Three constructors:
+% zero: base case. No accumulated overhead.
+% one: one step of accumulation. The compiler moved from one tape state to another.
+% rest: the general case. Two Bullshit branches, a Prop being checked, three
+% Numbers (start, step, total), two tape states.
 %
-% zero: a Bullshit built from a single Fact. The base case.
-% No accumulated overhead. The compiler has just started.
+% AtreyuProcess: 32 typeclass parameters, a satirize method that transitions
+% Bullshit states based on covariant/contravariant truth matching from Chapter 1.
 %
-% one: a Bullshit built from a Fact, a Number (how many steps),
-% two CompilerTape states (before and after), and a prior Bullshit.
-% This is one step of accumulation: the compiler moved from one tape
-% state to another and the heartbeat count went up by Number.
-%
-% rest: the general case. Two Facts, a Prop (the claim being
-% checked), three Numbers (start, step, total), two tape states,
-% and two prior Bullshits. The Prop is the thing being elaborated.
-% The two Bullshits are the accumulated costs from two branches
-% of the elaboration tree.
-%
-% AtreyuProcess holds 32 typeclass parameters and a satirize method
-% that transitions Bullshit states based on the covariant/contravariant
-% truth matching developed in Chapter 1. The satirize method is the
-% final implementation of the covariant/contravariant duality: given
-% two Bullshit states, it determines whether their truths agree and
-% returns the appropriate accumulated state.
-%
-% Sidebar: Why Atreyu? In The Neverending Story, Atreyu is the hero
-% who must travel across the entire known world to find a cure for
-% the Childlike Empress. The AtreyuProcess must carry 32 typeclass
-% parameters -- the entire known world of the tower -- to reach the
-% Closure.
+% Sidebar: Why Atreyu? In The Neverending Story, Atreyu must travel across
+% the entire known world to find a cure. The AtreyuProcess must carry 32
+% typeclass parameters -- the entire known world of the tower.
+
+\begin{gphenom}{Maxwell-Second-Law}
+\label{ph:maxwell-second-law}
+\GPhObs Maxwell imagined a demon sorting fast and slow molecules, apparently
+defeating the Second Law. Szilard showed in 1929 that the demon's memory
+erasure costs exactly the entropy it appears to save. Bennett confirmed
+this in 1973: information erasure is the irreducible thermodynamic cost.
+\GPhCon The commutator $[M, U] \neq 0$: the demon's measurement ledger and the
+universe's ledger are uncorrelant records whose joint interpretation requires
+introducing unrecorded events. The demon cannot cheat the ledger.
+\GPhSeq The Second Law is not a thermodynamic postulate but a structural
+consequence of monotone ledger growth: each refinement strictly enlarges
+the set of distinguishable states, so the entropy cannot decrease.
+The \lean{Bullshit.rest} constructor accumulates both branches -- the
+demon's ledger and the universe's ledger -- and their joint cost is
+the entropy production term.
+\end{gphenom}
 
 \section{The Closure}
 \label{se:the-closure-formal}
@@ -133,29 +102,30 @@
 %     | different: Fact -> Bullshit -> Bullshit -> Prop -> Closure
 %     | inferred:  Fact -> Fact -> Bullshit -> Bullshit -> Prop -> Closure -> Closure
 %
-% Three constructors. This is the grammar of what it means for the
-% elaborator to finish.
+% same: no new information. The record is consistent. No distinction introduced.
+% different: two states diverge. A witnessed difference. This is measurement.
+% inferred: a new closure derived from a prior one. A new Fact, a new Prop,
+% a prior Closure as context.
 %
-% same: one Fact, one Bullshit state. The compiler found no new
-% information. The record is consistent. No distinction was introduced.
-% The elaboration terminated without producing anything new.
-%
-% different: one Fact, two Bullshit states (before and after), one Prop.
-% The compiler found a distinction. Two states diverged. A new Prop was
-% produced. This is the fundamental act of measurement: a witnessed difference.
-%
-% inferred: two Facts, two Bullshit states, one Prop, and a prior Closure.
-% The compiler produced a new closure by extending a prior one. The new
-% Fact is the witness to the inference. The new Prop is the claim that
-% was inferred. The prior Closure is the context from which the inference
-% was drawn.
-%
-% Closure.le: a well-founded ordering on Closures, with termination
-% proved by sizeOf. The compiler can compare closures.
-%
-% EquivalenceProcess and INFERRED: the typeclass that wraps Closure
-% into the tower. INFERRED.inferred? is the predicate: given a Closure
-% and a Theory, has the closure been inferred?
+% Closure.le: well-founded ordering, termination proved by sizeOf.
+% EquivalenceProcess and INFERRED: the typeclass wrapping Closure into the tower.
+
+\begin{gphenom}{Hawking}
+\label{ph:hawking}
+\GPhObs Hawking showed in 1974 that black holes emit thermal radiation with
+temperature $T = \hbar c^3 / (8\pi G M k_B)$, inversely proportional to
+their mass. The radiation arises from quantum effects at the event horizon.
+Black holes are not black.
+\GPhCon A \lean{HALTED} \lean{blackhole} path under entropy monotonicity cannot
+simply stop. The ledger must record the outward channel, or it must introduce
+unrecorded assumptions. The commutator of the black hole's ledger with the
+universe's ledger is nonzero.
+\GPhSeq Hawking radiation is not a separate physical effect -- it is a necessary
+consequence of applying the Second Law to a \lean{HALTED SpaceTimePath.blackhole}.
+The \lean{Closure.different} constructor captures this: two Bullshit states diverge
+at the event horizon, and the Prop that witnesses the divergence is the
+thermal spectrum of the radiation.
+\end{gphenom}
 
 \section{\#check theory\_true?}
 \label{se:check-theory-true}
@@ -177,67 +147,56 @@
 %
 %   #check theory_true?
 %
-% Walk through this step by step.
-%
 % truthCarrier: a CarrierProcess whose Value type is Prop itself.
-% The carrier is carrying propositions. The instrument is measuring
-% whether propositions are admissible.
+% The instrument is measuring whether propositions are admissible.
 %
-% truthDistinct, truthReal, truthLocal: confirming that the Prop
-% carrier is distinguishable, real (globally consistent), and local
-% (has a neighborhood structure). These are the first three floors
-% of the tower, built over Prop.
-%
-% inferInstance: INFERRED Prop truthCarrier. This line asks Lean
-% to synthesize an instance of INFERRED for the Prop carrier. To
-% do this, Lean must search its typeclass database and construct
-% a value of type INFERRED. It must climb every floor of the 32-
-% layer tower. The heartbeat count goes to zero -- no limit -- because
-% this might take a very long time.
-%
-% theory_true? is defined as: take the INFERRED instance, get its
-% equivalence_process.closure, get its theory, and ask inferred?
-% whether the closure has been inferred relative to the theory.
+% inferInstance: INFERRED Prop truthCarrier. Lean must climb every floor
+% of the 32-layer tower. maxHeartbeats is set to zero -- no limit --
+% because this might take a very long time.
 %
 % #check theory_true? asks: does this definition type-check?
-%
 % The compiler's answer: yes. The type of theory_true? is Prop.
 % The elaboration succeeded. The tower closes.
 %
-% This is the experiment. The compiler -- the measuring instrument --
-% has been asked to verify that its own accumulated context closes on
-% the proposition that truth is inferrable from the record of witnessed
-% distinctions. It says yes.
-%
-% Sidebar: What does noncomputable mean? In Lean, a definition is
-% noncomputable if it depends on classical logic or on functions that
-% cannot be reduced to an algorithm. theory_true? is noncomputable
-% because it uses inferInstance over the full INFERRED class, which
-% requires the law of excluded middle. The compiler can verify the
-% type. It cannot run the program. This is intentional: the experiment
-% is the type-check, not the execution.
+% Sidebar: What does noncomputable mean? The compiler can verify the type.
+% It cannot run the program. The experiment is the type-check, not the execution.
+
+\begin{gphenom}{Lambda-CDM-Dissolution}
+\label{ph:lambda-cdm}
+\GPhObs The standard cosmological model $\Lambda$CDM requires two unexplained
+parameters inserted by hand: $\Lambda$ (dark energy, 68\% of the universe's
+energy content) and $\Omega_\text{cdm}$ (cold dark matter, 27\%). Neither is
+derived from first principles. Both are measured and then postulated.
+\GPhCon $\Lambda$ is the informational quantum $\varepsilon$ at cosmological
+scales -- the minimum residual spline freedom that cannot be refined further.
+$\Omega_\text{cdm}$ is the Causal Universe Tensor's accounting of distinctions
+that have been made but not recorded in the baryonic ledger: witnessed structure
+without a ledger entry.
+\GPhSeq Both parameters are determined by the admissibility structure and require
+no independent postulation. $\Lambda$CDM does not fall by being refuted -- it
+dissolves by being absorbed. Its free parameters are the names the model gives
+to things the ledger already contains. \lean{theory\_true?} closes on both.
+\end{gphenom}
 
 \section{The Anti-Adams Punchline}
 \label{se:anti-adams-punchline}
 
 % Douglas Adams said the answer is 42.
-%
 % The device says: the answer is the question closing on itself.
 %
-% 42 requires no setup. It is a number pulled from nowhere, offered
-% as a joke about the absurdity of expecting derivable structure.
-% The humor works because the answer is arbitrary: no mechanism,
-% no ledger, no admissibility condition.
+% 42 requires no setup. It is a number pulled from nowhere. The humor works
+% because the answer is arbitrary: no mechanism, no ledger, no admissibility
+% condition.
 %
-% theory_true? requires everything. It requires:
+% theory_true? requires everything:
 %   - a single yes/no decision (Chapter 1)
 %   - an ordered record of decisions (Chapter 2)
 %   - a boundary between decidable and undecidable (Chapter 3)
 %   - arithmetic, encoding, and smooth interpolation (Chapter 4)
 %   - a calibrated instrument with known limits (Chapter 5)
 %   - a model of how knowledge updates (Chapter 6)
-%   - spacetime, geodesics, and the identification of
-%     measurement with halting (Chapter 7)
+%   - spacetime, geodesics, gravitational clocks, the expansion of the
+%     universe, and the identification of measurement with halting (Chapter 7)
 %   - a formal grammar of what it means to finish (this chapter)
 %
 % The question -- "is truth inferrable from the record of witnessed
@@ -247,7 +206,7 @@
 % The compiler answers yes. It took the entire universe to make the
 % question askable. The answer was always going to be yes.
 %
-% End of book: what began as a single \lean{class Fact} closes as
-% the unique structure of admissible continuation. The ledger is full.
-% The compiler is satisfied. The measurement is complete.
+% What began as a single class Fact closes as the unique structure of
+% admissible continuation. The ledger is full. The compiler is satisfied.
+% The measurement is complete.
 

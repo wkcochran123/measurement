@@ -4,56 +4,44 @@
 % EPISODE COVERAGE: Episodes 9, 10, and 11 -- UniverseTensor, REAL, Variation,
 % LOCAL, SpaceTimePath, CalculusProcess, UNIVERSAL, YarnTheory, HeartbeatProcess,
 % LOGICAL, ElaborationProcess, HALTED
-%
-% AUDIENCE NOTE: This chapter is where the tower becomes physics. The key
-% move is that differential geometry, spacetime, and the halting problem
-% are not separate subjects -- they are three views of the same question:
-% what continuations are admissible across a globally consistent ledger?
-%
 % KEY CONCEPT: Spacetime is the shape of the admissibility structure.
-% Geodesics are the paths of minimal elaboration cost.
-% The halting problem closes the loop: the compiler is itself a physical system.
-%
-% TONE: Expansive. This chapter earns the book's subtitle.
+% Time is a ledger quantity, not a background.
 
 \section{Three Derivatives}
 \label{se:three-derivatives}
 
-% Episode 9: Variation.
-%
+% Variation:
 %   inductive Variation where
 %     | newton: Variation
 %     | gateaux: Variation
 %     | frechet: Variation
 %
-% Three kinds of derivative, three ways of asking what changes when
-% you perturb something:
-%
-% Newton: the derivative as a limit of secant slopes. The classical
-% definition. Works for functions on the real line.
-%
-% Gateaux: the directional derivative. You fix a direction in an
-% infinite-dimensional function space and ask how the functional
-% changes in that direction. Used in the calculus of variations.
-%
-% Frechet: the derivative as a bounded linear operator. The strongest
-% notion. If the Frechet derivative exists, the function is well-
-% approximated by a linear map near every point.
+% Newton: limit of secant slopes. The classical derivative.
+% Gateaux: directional derivative in an infinite-dimensional function space.
+%   Used in the calculus of variations.
+% Frechet: the derivative as a bounded linear operator. The strongest notion.
 %
 % BigRedDogProcess holds a Variation and a transmute function.
-% The name is a reference to Clifford the Big Red Dog -- the idea
-% that applying a derivative transforms a function into something
-% of a different type, the way Clifford transforms his surroundings
-% by being enormously red.
+% LOCAL: adds theory, delta, and experience.
 %
-% LOCAL: adds theory (a BigRedDogProcess), delta (a Prop -- the
-% neighborhood), and experience (a predicate on local behavior).
-%
-% Sidebar: Why three derivatives? The three correspond to the three
-% main strategies in the instrument for approximating the invariant
-% field: Newton search (Cauchy sequences), Galerkin projection (finite
-% element), and bisection (Cantor construction). Each requires a
-% different notion of derivative.
+% Sidebar: Why three derivatives? The three correspond to the three strategies
+% in the instrument: Newton search (Cauchy sequences), Galerkin projection
+% (finite element), and bisection (Cantor construction).
+
+\begin{gphenom}{LiDAR}
+\label{ph:lidar}
+\GPhObs A LiDAR system measures distance by timing the return of a laser pulse.
+Two LiDAR systems moving relative to each other will disagree on the timing
+of the same pulse -- not because either is malfunctioning, but because each
+has accumulated a different number of laser-certified distinctions.
+\GPhCon Time dilation is not a physical distortion of time but a bookkeeping
+disagreement between two ledgers. Each ledger is correct. They are uncorrelant
+with respect to the timing event.
+\GPhSeq The compiler that elaborates a \lean{SpaceTimePath.einstein} term is
+keeping the same books as the LiDAR system. The elapsed heartbeats are the
+certified distinctions. Two compilers running at different speeds are not
+wrong -- they have different ledgers.
+\end{gphenom}
 
 \section{The Universe Tensor}
 \label{se:universe-tensor}
@@ -64,27 +52,30 @@
 %     reality: Truth
 %     observe?: ...
 %
-% The UniverseTensor is the accumulated linear encoding of all
-% admissible refinements. It holds a Truth (from Chapter 6) and
-% a frame_of_reference -- the choice of gauge (from Chapter 3).
+% The accumulated linear encoding of all admissible refinements.
+% Holds a Truth and a frame_of_reference.
+% REAL wraps this with metaphysical?.
 %
-% REAL wraps this with metaphysical?: can the current UniverseTensor
-% support a metaphysical claim? The answer is a Prop -- the compiler
-% does not evaluate it, only type-checks it.
+% LOCAL describes behavior in a neighborhood. REAL describes behavior globally.
+% Together they provide the local-global structure of differential geometry.
 %
-% This is the global structure. The LOCAL class from the previous
-% section describes behavior in a neighborhood. REAL describes
-% behavior globally. Together they provide the local-global structure
-% of differential geometry: a manifold is something that looks like
-% flat space locally but has curvature globally.
-%
-% Sidebar: What is a tensor? A tensor is a machine for measuring
-% things that look different from different viewpoints but describe
-% the same underlying reality. The stress tensor in a material tells
-% you the force per unit area in every direction. The metric tensor
-% in relativity tells you the distance between nearby events. The
-% UniverseTensor in the device tells you which truths persist across
-% all frames of reference.
+% Sidebar: What is a tensor? A machine for measuring things that look different
+% from different viewpoints but describe the same underlying reality.
+
+\begin{gphenom}{Pound-Rebka}
+\label{ph:pound-rebka}
+\GPhObs Pound and Rebka (1959) sent gamma rays up a 22.5-meter shaft at Harvard
+and measured the gravitational redshift. The photons arrived blueshifted
+going down and redshifted going up by exactly the amount general relativity
+predicts: $\Delta f / f = gh/c^2$.
+\GPhCon The clock at the bottom of the tower accumulates distinctions more
+slowly than the clock at the top. Both clocks are correct ledgers of what
+they have witnessed. The gravitational potential is a ledger depth.
+\GPhSeq The deeper you are in a gravitational well, the more slowly new
+admissible events accumulate. Time dilation is the compiler running at
+different heartbeat rates at different depths in the \lean{UniverseTensor}.
+The tower has a gravitational gradient.
+\end{gphenom}
 
 \section{Spacetime as Data}
 \label{se:spacetime-as-data}
@@ -97,29 +88,34 @@
 %     | blackhole: SpaceTimePath
 %     | geodesic: SpaceTimePath
 %
-% Four constructors. einstein is the standard spacetime path: a
-% worldline in general relativity. white_hole is a time-reversed
-% black hole: matter and energy emerge rather than fall in.
-% blackhole is the more familiar case: information falls in and
-% cannot return. geodesic is the extremal path: the path of least
-% action, the straightest line in curved spacetime.
+% einstein: a worldline in general relativity.
+% white_hole: a time-reversed black hole. Matter and energy emerge.
+% blackhole: information falls in and cannot return.
+% geodesic: the path of least action, the straightest line in curved spacetime.
 %
-% CalculusProcess holds a derivative (a Variation) and a function
-% (a SpaceTimePath). The photon_torpedo field is the propagation
-% rule: how does the path evolve?
+% CalculusProcess holds a derivative (a Variation) and a function (a SpaceTimePath).
+% UNIVERSAL: the compiler, source_program, compiled_program, lake_build.
+% The device describing itself. The tower is now aware of the tool that built it.
 %
-% UNIVERSAL: the compiler, the source_program, the compiled_program,
-% and lake_build. This is the device describing itself. The
-% UNIVERSAL typeclass says: there exists a compiler, it has a source
-% program, it produces a compiled program, and lake_build is the
-% build system that ties them together. The device is now aware of
-% the tool that built it.
-%
-% Sidebar: What is a geodesic? In flat space, the shortest path
-% between two points is a straight line. In curved space, the
-% "straightest possible" path is a geodesic. Light follows geodesics.
-% Planets follow geodesics. The SpaceTimePath.geodesic constructor is
-% the path that the universe prefers.
+% Sidebar: What is a geodesic? In curved space, the straightest possible path.
+% Light follows geodesics. Planets follow geodesics.
+
+\begin{gphenom}{Hubble-Lemaitre}
+\label{ph:hubble-lemaitre}
+\GPhObs Lemaitre derived the expansion of the universe in 1927; Hubble confirmed
+it observationally in 1929. Distant galaxies recede at a rate proportional to
+their distance. The Hubble tension is the unresolved disagreement between
+early-universe ($H_0 \approx 67$ km/s/Mpc) and late-universe
+($H_0 \approx 73$ km/s/Mpc) measurements of this rate.
+\GPhCon The expansion of the universe is the ledger growing. The rate of expansion
+is the rate at which new admissible events can be recorded.
+Early-universe and late-universe instruments have accumulated different ledgers
+and are measuring the same rate from different positions in the record.
+\GPhSeq The Hubble tension is structural, not experimental error. Two instruments
+at different ledger depths disagree on the rate of ledger growth for the same
+reason that two clocks at different gravitational depths disagree on elapsed time.
+The disagreement is a measurement of the ledger's own curvature.
+\end{gphenom}
 
 \section{The Stokes Integral}
 \label{se:stokes-integral}
@@ -130,64 +126,46 @@
 %     | fibers: YarnTheory
 %     | fabric: YarnTheory
 %
-% Stokes' theorem says that the integral of a derivative over a
-% region equals the integral of the original function over the
-% boundary of that region. It is the master theorem of vector
-% calculus -- Green's theorem, the divergence theorem, and the
-% classical Stokes theorem are all special cases.
+% Stokes' theorem: the integral of a derivative over a region equals the
+% integral of the original function over the boundary. Green's theorem,
+% divergence theorem, and classical Stokes are all special cases.
 %
-% YarnTheory.stokes is the theorem itself: the boundary of a
-% boundary is zero. fibers are the local pieces. fabric is the
-% global assembly.
-%
-% HeartbeatProcess: the bullshit meter gets its own structure here.
-%   bullshit_meter: ...
-%   accumulated_bullshit: YarnTheory
-%   weave?: ...
-%
-% The accumulated_bullshit field holds a YarnTheory. The elaboration
-% overhead -- the cost of verifying the tower -- is now modeled as
-% a Stokes integral over the fabric of prior commitments. The compiler's
-% heartbeat count is the integral of the derivative of the tower.
-%
-% This is the deepest joke in the device: the bullshit meter is
-% not just a funny annotation. It is a measurement of topological
-% curvature. The compiler is doing algebraic topology.
+% HeartbeatProcess: bullshit_meter, accumulated_bullshit: YarnTheory, weave?
+% The elaboration overhead is modeled as a Stokes integral over the fabric
+% of prior commitments. The bullshit meter is doing algebraic topology.
 
 \section{The Halting of Physics}
 \label{se:halting-of-physics}
 
 % Episode 11: LOGICAL, ElaborationProcess, HALTED.
 %
-% ElaborationProcess:
-%   structure ElaborationProcess ... where
-%     computer_state: ComputerProgram
-%     execute: ...
+% HALTED returns True only for ComputerProgram.boolean -- the terminal decision.
+% Not for load. Not for transform. Only boolean.
 %
-% ComputerProgram:
-%   inductive ComputerProgram where
-%     | load: ComputerProgram
-%     | transform: ComputerProgram
-%     | boolean: ComputerProgram
+% A physical process terminates when it reaches a state where the outcome
+% is a boolean. A geodesic terminates at a black hole or at a measurement.
+% Load and transform are still in motion. Boolean has stopped.
 %
-% HALTED: returns True only for ComputerProgram.boolean.
-% Not for load, not for transform. Only boolean -- the terminal state,
-% the decision -- causes HALTED to return True.
-%
-% The physical interpretation: a physical process terminates when it
-% reaches a state where the outcome is a boolean -- a yes or no.
-% A geodesic terminates at a black hole (which cannot be escaped) or
-% at a measurement (which produces a definite outcome). Load and
-% transform are still in motion. Boolean has stopped.
-%
-% This closes the loop from Chapter 3. The halting problem is not
-% just a mathematical curiosity about programs. It is the physics of
-% observation: a measurement is a process that halts. An unobserved
-% system is a process that has not halted yet.
-%
-% End of chapter: the tower has now agreed to hold spacetime paths,
-% geodesics, white holes and black holes, Stokes integrals, compiler
-% self-awareness, and the identification of physical halting with
-% measurement. The physics is not a layer on top of the computation.
-% The physics is the computation, made global and curved.
+% This closes the loop from Chapter 3: the halting problem is the physics of
+% observation. A measurement is a process that halts. An unobserved system
+% is a process that has not halted yet.
+
+\begin{gphenom}{Photoelectric}
+\label{ph:photoelectric}
+\GPhObs Einstein showed in 1905 that the photoelectric effect depends on
+frequency, not intensity: light below a threshold frequency cannot eject
+electrons regardless of how bright it is, while light above the threshold
+always can, even at very low intensity.
+\GPhCon The admissibility cost of an event is set by frequency -- the possibility
+of a distinction -- not by intensity -- the rate of attempts.
+No number of sub-threshold attempts will force the compiler to accept a term.
+\GPhSeq \lean{HALTED} returns \lean{True} only for \lean{ComputerProgram.boolean}.
+The photoelectric threshold is the point at which the event crosses from
+\lean{load} or \lean{transform} into \lean{boolean}: admissible, terminal,
+witnessed. Below the threshold, the elaboration never halts.
+\end{gphenom}
+
+% End of chapter: the tower has agreed to hold spacetime paths, geodesics,
+% white holes and black holes, Stokes integrals, compiler self-awareness,
+% and the identification of physical halting with measurement.
 

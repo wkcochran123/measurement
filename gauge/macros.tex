@@ -86,6 +86,45 @@
 % Heartbeat annotation (the bullshit meter)
 \newcommand{\heartbeat}[1]{\marginpar{\tiny $\heartsuit \approx #1$}}
 
+% Lightweight phenomenon environment for the gauge register.
+% Three required fields: Observation, Constraint, Consequence.
+% Lighter than the instrument's phenom -- no Statement/Origin/Invariant/Refinement.
+\makeatletter
+\newif\ifgph@obs
+\newif\ifgph@con
+\newif\ifgph@seq
+
+\newcommand{\gph@resetflags}{%
+  \global\gph@obsfalse
+  \global\gph@confalse
+  \global\gph@seqfalse
+}
+\newcommand{\gph@requireflags}{%
+  \ifgph@obs\else\PackageError{gphenom}{Missing required block: Observation}{}\fi
+  \ifgph@con\else\PackageError{gphenom}{Missing required block: Constraint}{}\fi
+  \ifgph@seq\else\PackageError{gphenom}{Missing required block: Consequence}{}\fi
+}
+
+\newtheorem{gphenomthm}{Phenomenon}
+
+\newenvironment{gphenom}[1]{%
+  \gph@resetflags
+  \begin{gphenomthm}[#1]%
+  $\quad$
+
+  \begin{list}{}{\leftmargin=1.5em \rightmargin=0pt \itemsep=0.5ex}%
+}{%
+  \end{list}%
+  \gph@requireflags
+  \end{gphenomthm}%
+  \medskip
+}
+
+\newcommand{\GPhObs}{\global\gph@obstrue\item[\textbf{Observation.}]}
+\newcommand{\GPhCon}{\global\gph@contrue\item[\textbf{Constraint.}]}
+\newcommand{\GPhSeq}{\global\gph@seqtrue\item[\textbf{Consequence.}]}
+\makeatother
+
 \makeatletter
 \renewcommand{\l@chapter}{\@dottedtocline{0}{0em}{1.5em}}
 \makeatother

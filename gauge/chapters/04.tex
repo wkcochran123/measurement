@@ -3,38 +3,14 @@
 
 % EPISODE COVERAGE: Episodes 5, 6, and 7 -- SOURCE/EXECUTED/Abstraction,
 % VALUE/MAGNITUDE/SCALED/LOAD/FINITE_ELEPHANT/Spline, Episode 7 totality proof
-%
-% AUDIENCE NOTE: This chapter shows the mathematical machinery being assembled:
-% encoding, arithmetic, splines. Then Episode 7 shows the tower instantiated
-% concretely. The key visual metaphor is a physical tower whose floors must
-% be built in order -- you cannot build floor 7 before floor 6 is complete.
-%
-% KEY CONCEPT: The totality proof. The tower exists not just as abstract
-% definitions but as a concrete instance. The compiler has confirmed it.
-%
-% TONE: More technical, but still accessible. Use the building metaphor
-% throughout. The tower is the argument made physical.
+% KEY CONCEPT: The totality proof. The tower exists not just as definitions
+% but as a concrete verified instance.
 
 \section{Encoding Instructions}
 \label{se:encoding-instructions}
 
 % Episode 5: Equivalation, SOURCE, Encoding, EXECUTED, Abstraction.
 %
-% Equivalation:
-%   inductive Equivalation where
-%     | physics: Equivalation
-%     | zero_like: Equivalation
-%     | one_like: Equivalation
-%
-% The Pauli exclusion principle rendered as a type: at each level,
-% exactly one of three states is occupied. This is not the spin-1/2
-% story from quantum mechanics texts. It is the compiler's version:
-% at each level of the tower, each slot holds exactly one occupant.
-%
-% DigitalProcess: zero and tick. The binary state machine at the
-% foundation of all encoding.
-%
-% Encoding:
 %   inductive Encoding where
 %     | boot: Encoding
 %     | zero: Encoding
@@ -42,15 +18,12 @@
 %
 % Three opcodes: boot (initialize), zero, one. Every program is a
 % sequence of these. This is the minimal instruction set.
-%
-% EXECUTED wraps this in a typeclass with execute? and output?.
-% The compiler can now run instructions.
+% EXECUTED wraps this with execute? and output?.
 %
 % Sidebar: The instruction set as a measuring instrument. Every CPU
-% has an instruction set -- the finite vocabulary of operations it
-% can perform. The Encoding type is the minimal instruction set: you
-% can boot, set a bit to zero, or set a bit to one. Everything else
-% is derived from these three operations.
+% has an instruction set -- the finite vocabulary of operations it can perform.
+% The Encoding type is the minimal instruction set: boot, zero, one.
+% Everything else is derived.
 
 \section{Abstraction and the Berry Paradox}
 \label{se:abstraction-berry}
@@ -61,53 +34,61 @@
 %     | compile: Abstraction
 %     | execute: Abstraction
 %
-% The three levels of abstraction: mock (satire), compile (produce
-% executable form), execute (run). The names are deliberately satirical.
+% Abstraction.le and Abstraction.lt: careful ordering to avoid the Berry paradox.
+% The Berry paradox arises from self-referential definition. Abstraction avoids
+% this by requiring that lt terminate -- compile < execute, satire incomparable.
 %
-% Abstraction.le and Abstraction.lt: the ordering is careful because
-% of the Berry paradox. The Berry paradox arises when you try to
-% define "the smallest number not definable in fewer than N words":
-% the definition is self-referential. Abstraction avoids this by
-% requiring that the lt ordering terminate -- compile < execute,
-% satire is incomparable. No self-reference is introduced.
+% VALUE wraps this with monad (the abstraction of the closure) and lt?.
 %
-% VALUE wraps this in a typeclass with monad (the abstraction of the
-% closure) and lt? (a decidable ordering on abstractions).
-%
-% Sidebar: The Berry paradox and self-reference. Russell's paradox,
-% Godel's incompleteness, Chaitin's Omega, and the halting problem
-% are all variations on a single theme: what happens when a formal
-% system refers to itself? The Abstraction type navigates this by
-% making the reference structure explicit and bounded.
+% Sidebar: The Berry paradox and self-reference. Russell, Godel, Chaitin,
+% and the halting problem are all variations: what happens when a formal
+% system refers to itself? Abstraction navigates this by making the
+% reference structure explicit and bounded.
+
+\begin{gphenom}{Galileo-Abel}
+\label{ph:galileo-abel}
+\GPhObs Galileo showed that all objects fall at the same rate regardless of mass.
+Abel showed that the roots of a polynomial are invariant under permutation of
+the coefficients. In both cases, the law is preserved under a transformation
+that the experiment does not see.
+\GPhCon If two instruments disagree on a measurement but agree on the law, one
+of them is applying a transformation the law does not see.
+The law is the invariant; the instrument choice is the gauge.
+\GPhSeq \lean{VALUE}'s ordering on \lean{Abstraction} is invariant under
+transformation: \lean{compile < execute} regardless of which instrument
+is doing the compiling. The law holds across instruments.
+\end{gphenom}
 
 \section{Arithmetic Assembled}
 \label{se:arithmetic-assembled}
 
-% Episode 6: Sum, MAGNITUDE, Product, SCALED, Basis, LOAD, Polynomial, FINITE_ELEPHANT, Spline.
+% Episode 6: Sum, MAGNITUDE, Product, SCALED, Basis, LOAD, Polynomial,
+% FINITE_ELEPHANT, Spline.
 %
-% Sum: inductive with zero and add. Addition.
+% Sum: zero and add. Addition.
 % MAGNITUDE: adds whelmed? -- can one Sum dominate another?
-%
-% Product: inductive with origin (vacuum), one (identity), mul (scaling).
+% Product: origin (vacuum), one (identity), mul (scaling).
 % SCALED: adds orthogonal? -- can two Products be orthogonal?
-%
-% Basis: null_space, origin, basis. The three-part structure of a
-% vector space: the zero vector, the origin, and a basis vector.
+% Basis: null_space, origin, basis -- the three-part vector space structure.
 % LOAD: adds decoded? -- can we invert the encoding?
+% FINITE_ELEPHANT: the DAC layer. Takes discrete values, produces smooth oscillations.
+% BASICProcess: GOSUB/GOTO. The compiler's minimal flow control.
 %
-% FINITE_ELEPHANT: the DAC (digital-to-analog converter) layer.
-% Takes discrete encoded values and produces smooth oscillations.
-% The finite? predicate asks: does this sequence converge?
-%
-% BASICProcess: the GOSUB/GOTO machine. The compiler's implementation
-% of flow control. A jmp? function. This is Dijkstra's nightmare
-% rendered as a typeclass.
-%
-% Sidebar: Why BASIC? In the 1970s, BASIC was the first programming
-% language many people encountered. Its GOTO statement was notorious
-% for producing unreadable "spaghetti code." The BASICProcess in the
-% device is not an homage -- it is the minimal model of flow control,
-% which requires unconditional jumps.
+% Sidebar: Why BASIC? The minimal model of flow control requires unconditional jumps.
+
+\begin{gphenom}{Dirichlet-Bancroft}
+\label{ph:dirichlet-bancroft}
+\GPhObs Dirichlet's function is 1 on rationals and 0 on irrationals.
+It is defined everywhere but Riemann-integrable nowhere.
+A model can be complete -- defined for every input -- while being
+useless for measurement.
+\GPhCon Model completeness is not ledger sufficiency. A model that cannot
+invert its encoding cannot recover the original record, even if it
+is defined for every possible input.
+\GPhSeq \lean{LOAD}'s \lean{decoded?} predicate marks this boundary.
+A model accepted by the compiler is not necessarily a model that
+can answer questions. Completeness is cheap; sufficiency is earned.
+\end{gphenom}
 
 \section{The Spline}
 \label{se:the-spline}
@@ -118,60 +99,41 @@
 %     | knot: Spline
 %     | interpolant: Spline
 %
-% The spline is the smooth interpolant between observations. An
-% observation is a recorded event. A knot is a constraint point.
-% An interpolant is the smooth curve threaded through both.
+% The continuum made explicit. The spline is not assumed -- it is constructed
+% from observations and knot constraints. The smooth curve is the unique
+% admissible interpolant: minimum curvature, threading all observed points.
 %
-% This is the continuum made explicit. The spline is not assumed.
-% It is constructed from observations and knot constraints. The
-% smooth curve is the unique admissible interpolant -- the curve
-% that passes through all observed points while satisfying the
-% knot constraints, with minimum curvature.
-%
-% Connect to the instrument: Chapter 8 (Stress) defines the
-% informational quantum epsilon as the residual C2 freedom in
-% spline closure. The spline here is its Lean precursor.
-%
-% Polynomial and GalerkinProcess: the algebraic engine underneath
-% the spline. The Galerkin method projects the continuous problem
-% onto a finite polynomial basis. The compiler is doing finite
-% element analysis.
+% Polynomial and GalerkinProcess: the algebraic engine. The Galerkin method
+% projects the continuous problem onto a finite polynomial basis.
+% The compiler is doing finite element analysis.
 
 \section{The Totality Proof}
 \label{se:totality-proof}
 
 % Episode 7: 17 chained instance declarations.
+% Each instance is the compiler confirming that the previous level was real.
+% To declare an instance is to produce a concrete inhabitant of the typeclass.
 %
-% Show a few of the instance declarations to give the flavor:
+% The cascade is the totality proof: DISTINGUISHABLE through ACOLYTE, verified.
+% The tower is not a collection of definitions that might be consistent.
+% It is a construction that has been built and checked.
 %
-%   instance STEP_1 : DISTINGUISHABLE ... := { ... }
-%   instance COUNTABLE_ADMISSIBLE : ADMISSIBLE ... := { ... }
-%   ...
-%   instance ACOLYTE_PROPAGANDA : ACOLYTE ... := { ... }
-%
-% What is happening here: each instance is the compiler confirming
-% that the previous level was real. To declare an instance is to
-% produce a concrete inhabitant of the typeclass -- a value of that
-% type. The compiler checks each instance against all prior instances.
-%
-% The cascade of 17 instances is the totality proof: the compiler
-% has confirmed that the entire tower, from DISTINGUISHABLE to
-% ACOLYTE, can be instantiated. The tower is not a collection of
-% definitions that might be consistent. It is a construction that
-% has been verified.
-%
-% Visual: show the tower as a sequence of blocks, each labeled
-% with the typeclass it confirms, each resting on the one below.
-%
-% The heartbeat counter: this is where set_option maxHeartbeats
-% first needs to be raised. The instance cascade is expensive.
-% The compiler is sweating.
-%
+% The heartbeat counter: maxHeartbeats must be raised here. The compiler sweats.
+
+\begin{gphenom}{Markov-Conway}
+\label{ph:markov-Conway}
+\GPhObs Conway's Game of Life produces arbitrarily complex structures --
+gliders, oscillators, universal computers -- from three local rules
+applied to a binary grid. No global architect is required.
+\GPhCon Global structure emerges from local admissibility conditions.
+The tower does not need a designer; it needs each floor to be
+locally consistent with the floor below.
+\GPhSeq Each typeclass instance in \episode{7} is a local rule.
+The 17-instance cascade is the Game of Life running on the tower:
+global structure -- the verified existence of the entire hierarchy --
+emerging from 17 local consistency checks.
+\end{gphenom}
+
 % End of chapter: the tower stands. Seventeen floors, each verified.
-% The compiler has agreed to believe in distinction, admissibility,
-% counting, encoding, limits, residues, binary, repetition, numeric
-% closure, representation, physical thresholds, observation, gauges,
-% measurement, quantum states, encoding instructions, arithmetic,
-% scaling, smooth interpolation, and flow control. The next floor
-% asks something harder: what is true?
+% The next floor asks something harder: what is true?
 
