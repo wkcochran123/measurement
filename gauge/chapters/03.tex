@@ -1,0 +1,168 @@
+\chapter{The Signal}
+\label{chap:the-signal}
+
+% EPISODE COVERAGE: Episodes 3 and 4 -- TuringProcess, REPRESENTABLE,
+% ChaitinsNumberSequence, PHYSICAL, OBSERVED, GaugeProcess, MEASURABLE,
+% Jar, GUNGAN
+%
+% AUDIENCE NOTE: This chapter introduces the boundary between computable
+% and incomputable. The halting problem is introduced accessibly. The
+% quantum jar is introduced as a natural data type. No physics background
+% assumed.
+%
+% KEY CONCEPT: The measurement boundary. Not everything can be decided.
+% The compiler must operate in the presence of undecidable programs.
+% The instrument must operate in the presence of noise.
+%
+% TONE: More dramatic. This chapter is where the tower meets the real world.
+
+\section{The Turing Machine Arrives}
+\label{se:turing-machine-arrives}
+
+% TuringProcess: wraps all prior classes in a computational state machine.
+%
+%   structure TuringProcess ... where
+%     computational_process: ComputationalProcess Value Carrier
+%     program: Computation
+%     state: ...
+%     compute?: ...
+%     turing_step?: ...
+%
+% Plain language: a TuringProcess is a computational process that knows
+% its own program. It can execute a step, check a state, and run.
+% This is the general model of computation: any algorithm, any procedure,
+% any recipe can be described as a TuringProcess.
+%
+% REPRESENTABLE adds: for every Fact and Study, there exists a Computation.
+% This is the Church-Turing thesis rendered as a typeclass. Every decidable
+% question has a program.
+%
+% Sidebar: Alan Turing and the universal machine. Turing's 1936 paper
+% showed that any computation can be described as a finite table of
+% rules operating on a tape. The TuringProcess in the device is that
+% table, given a type.
+
+\section{The Halting Boundary}
+\label{se:halting-boundary}
+
+% ChaitinsNumberSequence:
+%
+%   inductive ChaitinsNumberSequence where
+%     | halting: ChaitinsNumberSequence
+%     | nonhalting: ChaitinsNumberSequence
+%
+% This two-constructor type captures one of the deepest results in
+% mathematics: some programs terminate, and some do not, and there is
+% no general algorithm to tell which.
+%
+% Gregory Chaitin's Omega number is the probability that a randomly
+% chosen program halts. It is a real number. It is not computable.
+% It exists, but the compiler cannot close on it.
+%
+% PHYSICAL uses ChaitinsNumberSequence as its threshold:
+%   threshold: ChaitinsNumberSequence
+%   admissible?: ...
+%   halted?: ...
+%
+% The physical threshold is the boundary between what can and cannot be
+% verified. This is not a limitation of any particular instrument. It is
+% a structural feature of the measurement process itself.
+%
+% Connection to the text: the Marconi Phenomenon from the instrument --
+% "silence is a constraint." The nonhalting case is informative: the
+% compiler's refusal to close is data. The measurement is: this program
+% does not halt within the observable window.
+%
+% Sidebar: The halting problem for non-programmers. Imagine asking a
+% librarian whether a book mentions itself. Some books do (dictionaries
+% often list their own title). Some don't. Now ask: is there a general
+% procedure for answering this question for every possible book?
+% Turing proved there is not.
+
+\section{Noise as Structure}
+\label{se:noise-as-structure}
+
+% NoisyProcess: wraps TuringProcess with a ChaitinsNumberSequence program.
+%
+% The noise is not a corruption of the signal. It is the structural
+% presence of the halting boundary inside the measurement process.
+% Every real instrument operates in the presence of events it cannot
+% decide. NoisyProcess makes this explicit.
+%
+% Metavariable: the smallest representable fraction at a given level.
+% The compiler's Planck scale: below this, no further distinction is
+% admissible.
+%
+% OBSERVED adds a SlipProcess: the instrument's response at threshold.
+% The "slip" is what happens when the instrument is pushed past the
+% point of admissible distinction. In static friction terms, it is the
+% moment the object moves.
+%
+% Sidebar: Signal and noise in physics. Shannon's information theory
+% (1948) showed that noise is not the enemy of communication -- it is
+% the context in which communication is defined. You cannot define a
+% signal without defining what it is distinguished from.
+
+\section{The Gauge}
+\label{se:the-gauge}
+
+% Episode 4: Area, SensingProcess, PRESENT, Phenomenon, GaugeProcess, MEASURABLE.
+%
+% Area is an accumulation type:
+%   inductive Area where
+%     | t: Area
+%     | dt: Area
+%
+% t is a moment; dt is a differential -- the gap between moments.
+% Together they model integration: the accumulation of dt's over t.
+%
+% Area.le is deliberately not a well-ordering (the comment in the code
+% says "not well ordered -- Einstein"). Time intervals under relativity
+% do not have a universal ordering. This is the first explicit physical
+% claim in the device.
+%
+% GaugeProcess: the structure that negotiates chaos. It holds a
+% SensingProcess, a clock (a Phenomenon), and an event? function.
+% The gauge is the instrument that asks: given all the noise and all
+% the incompleteness, which events are admissible right now?
+%
+% MEASURABLE wraps this in a typeclass with an observed relation on Phenomena.
+%
+% Sidebar: What is a gauge in physics? In gauge theory, a gauge is a
+% choice of reference frame that does not change observable predictions.
+% Two gauges describe the same physics if they agree on all admissible
+% measurements. In the device, the GaugeProcess is the choice: given
+% this sensing process and this clock, these events are observable.
+
+\section{The Quantum Jar}
+\label{se:quantum-jar}
+
+% Jar:
+%   inductive Jar where
+%     | color: Jar
+%     | bang: Jar
+%     | superposition: Jar
+%
+% The most unusual inductive type in the early episodes. Three states:
+% color (a classical outcome), bang (an event), and superposition
+% (neither yet).
+%
+% MeesaProcess holds a Jar as a concept. The name is satirical
+% (Jar Jar Binks), but the structure is precise: superposition is a
+% first-class value in the type, not a vague phrase. The compiler
+% accepts superposition as a valid state before a measurement has
+% been made.
+%
+% GUNGAN: the translation layer. It converts Jar states into admissible
+% structures. The quantum measurement is the act of GUNGAN: collapsing
+% the superposition into a color or a bang.
+%
+% This is the quantum measurement problem, rendered as a typeclass
+% constraint. The compiler will not use a Jar value until GUNGAN
+% has been invoked to resolve it.
+%
+% End of chapter: the tower now has sixteen layers. The compiler has
+% agreed to operate in the presence of noise, undecidable programs,
+% integration, and quantum superposition. The ledger is growing.
+% The signal is present. The gauge is running.
+

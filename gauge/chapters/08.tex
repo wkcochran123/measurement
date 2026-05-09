@@ -1,0 +1,253 @@
+\chapter{The Closure}
+\label{chap:the-closure}
+
+% EPISODE COVERAGE: Episodes 12, 13, 14, and 15 -- Measurement/MEASURED,
+% CompilerTape/COMPILED, Bullshit inductive, AtreyuProcess, TrueOutput,
+% Closure inductive, EquivalenceProcess, INFERRED, theory_true?, #check
+%
+% AUDIENCE NOTE: This is the payoff chapter. Every thread is resolved.
+% John Henry's measurement closes the satire. The CompilerTape makes the
+% Turing machine concrete. The Closure inductive defines, formally, what
+% it means for the elaborator to finish. The final #check is the experiment.
+%
+% KEY CONCEPT: The anti-Adams punchline. The answer is not 42.
+% The answer is the question closing on itself.
+%
+% TONE: Earned triumph. Precise. The humor has been building to this.
+
+\section{John Henry's Measurement}
+\label{se:john-henry-measurement}
+
+% Episode 12: Measurement, LeanProcess, MEASURED.
+%
+%   inductive Measurement where
+%     | origin: Measurement
+%     | distance: Measurement
+%     | speed: Measurement
+%
+% The title of the device is "The Tragedy of John Henry -- A Satire in
+% Look-Ahead Backus-Naur Form." John Henry is the folk hero who raced
+% a steam drill and won, then died. The tragedy is not that he lost --
+% he won. The tragedy is that winning was not enough.
+%
+% The Measurement type has three constructors: origin, distance, speed.
+% These are the three quantities in John Henry's race:
+% - origin: where the measurement starts (the beginning of the tunnel)
+% - distance: how far the tool has traveled
+% - speed: how fast it is moving
+%
+% LeanProcess holds a velocity (a Measurement) and an evolve? function.
+% The velocity is the rate of change of the Lean tower itself -- how fast
+% the compiler is building the proof.
+%
+% MEASURED adds bounded?: is the measurement finite? Has John Henry
+% reached the end of the tunnel?
+%
+% The satire lands here: the device has been measuring the compiler's
+% own race against itself. The Lean elaborator is John Henry. The steam
+% drill is the combinatorial explosion of typeclass instances. The
+% final set_option maxHeartbeats 0 is the moment John Henry drops his
+% hammer and lets the race continue without limit.
+
+\section{The Tape}
+\label{se:the-tape}
+
+% Episode 13: CompilerTape, CompilerOutput, COMPILED.
+%
+%   inductive CompilerTape where
+%     | boot: CompilerTape
+%     | strap: CompilerTape
+%     | compute: CompilerTape
+%
+% The Turing machine tape, given its final name. Three states:
+% boot (initialization -- the compiler starts here every time),
+% strap (bootstrap -- loading the prior context), and compute
+% (running -- the elaborator is active).
+%
+% CompilerOutput holds a tape and an emit? function: given a
+% CompilerTape state, produce the next output.
+%
+% COMPILED adds object_file and converged?: has the compilation
+% produced a stable output? The converged? predicate is the
+% termination condition for the entire device.
+%
+% This is the moment the tower recognizes itself as a compiler.
+% Not a metaphor for a compiler. An actual compiler, modeling
+% its own tape, its own bootstrap sequence, its own convergence
+% condition.
+%
+% Sidebar: What is bootstrapping? A compiler that is written in
+% its own language must compile itself. This is called bootstrapping
+% (from the phrase "pulling yourself up by your own bootstraps").
+% The Lean compiler is bootstrapped: the Lean compiler is written
+% in Lean. The strap constructor in CompilerTape is the moment the
+% device acknowledges this.
+
+\section{The Bullshit Accumulator}
+\label{se:bullshit-accumulator}
+
+% Episode 15: the Bullshit inductive.
+%
+%   inductive Bullshit where
+%     | zero: Fact -> Bullshit
+%     | one:  Fact -> Number -> CompilerTape -> CompilerTape -> Bullshit -> Bullshit
+%     | rest: Fact -> Fact -> Prop -> Number -> Number -> Number ->
+%                     CompilerTape -> CompilerTape -> Bullshit -> Bullshit -> Bullshit
+%
+% Three constructors:
+%
+% zero: a Bullshit built from a single Fact. The base case.
+% No accumulated overhead. The compiler has just started.
+%
+% one: a Bullshit built from a Fact, a Number (how many steps),
+% two CompilerTape states (before and after), and a prior Bullshit.
+% This is one step of accumulation: the compiler moved from one tape
+% state to another and the heartbeat count went up by Number.
+%
+% rest: the general case. Two Facts, a Prop (the claim being
+% checked), three Numbers (start, step, total), two tape states,
+% and two prior Bullshits. The Prop is the thing being elaborated.
+% The two Bullshits are the accumulated costs from two branches
+% of the elaboration tree.
+%
+% AtreyuProcess holds 32 typeclass parameters and a satirize method
+% that transitions Bullshit states based on the covariant/contravariant
+% truth matching developed in Chapter 1. The satirize method is the
+% final implementation of the covariant/contravariant duality: given
+% two Bullshit states, it determines whether their truths agree and
+% returns the appropriate accumulated state.
+%
+% Sidebar: Why Atreyu? In The Neverending Story, Atreyu is the hero
+% who must travel across the entire known world to find a cure for
+% the Childlike Empress. The AtreyuProcess must carry 32 typeclass
+% parameters -- the entire known world of the tower -- to reach the
+% Closure.
+
+\section{The Closure}
+\label{se:the-closure-formal}
+
+% The Closure inductive:
+%
+%   inductive Closure where
+%     | same:      Fact -> Bullshit -> Closure
+%     | different: Fact -> Bullshit -> Bullshit -> Prop -> Closure
+%     | inferred:  Fact -> Fact -> Bullshit -> Bullshit -> Prop -> Closure -> Closure
+%
+% Three constructors. This is the grammar of what it means for the
+% elaborator to finish.
+%
+% same: one Fact, one Bullshit state. The compiler found no new
+% information. The record is consistent. No distinction was introduced.
+% The elaboration terminated without producing anything new.
+%
+% different: one Fact, two Bullshit states (before and after), one Prop.
+% The compiler found a distinction. Two states diverged. A new Prop was
+% produced. This is the fundamental act of measurement: a witnessed difference.
+%
+% inferred: two Facts, two Bullshit states, one Prop, and a prior Closure.
+% The compiler produced a new closure by extending a prior one. The new
+% Fact is the witness to the inference. The new Prop is the claim that
+% was inferred. The prior Closure is the context from which the inference
+% was drawn.
+%
+% Closure.le: a well-founded ordering on Closures, with termination
+% proved by sizeOf. The compiler can compare closures.
+%
+% EquivalenceProcess and INFERRED: the typeclass that wraps Closure
+% into the tower. INFERRED.inferred? is the predicate: given a Closure
+% and a Theory, has the closure been inferred?
+
+\section{\#check theory\_true?}
+\label{se:check-theory-true}
+
+% The final sequence:
+%
+%   noncomputable def truthCarrier : CarrierProcess Prop
+%   noncomputable instance truthDistinct : DISTINGUISHABLE Prop truthCarrier
+%   noncomputable instance truthReal : REAL Prop truthCarrier
+%   noncomputable instance truthLocal : LOCAL Prop truthCarrier
+%
+%   set_option maxHeartbeats 0
+%   set_option synthInstance.maxHeartbeats 0
+%
+%   noncomputable def theory_true? : Prop :=
+%     (inferInstance : INFERRED Prop truthCarrier).inferred?
+%       (inferInstance : INFERRED Prop truthCarrier).equivalence_process.closure
+%       (inferInstance : INFERRED Prop truthCarrier).theory
+%
+%   #check theory_true?
+%
+% Walk through this step by step.
+%
+% truthCarrier: a CarrierProcess whose Value type is Prop itself.
+% The carrier is carrying propositions. The instrument is measuring
+% whether propositions are admissible.
+%
+% truthDistinct, truthReal, truthLocal: confirming that the Prop
+% carrier is distinguishable, real (globally consistent), and local
+% (has a neighborhood structure). These are the first three floors
+% of the tower, built over Prop.
+%
+% inferInstance: INFERRED Prop truthCarrier. This line asks Lean
+% to synthesize an instance of INFERRED for the Prop carrier. To
+% do this, Lean must search its typeclass database and construct
+% a value of type INFERRED. It must climb every floor of the 32-
+% layer tower. The heartbeat count goes to zero -- no limit -- because
+% this might take a very long time.
+%
+% theory_true? is defined as: take the INFERRED instance, get its
+% equivalence_process.closure, get its theory, and ask inferred?
+% whether the closure has been inferred relative to the theory.
+%
+% #check theory_true? asks: does this definition type-check?
+%
+% The compiler's answer: yes. The type of theory_true? is Prop.
+% The elaboration succeeded. The tower closes.
+%
+% This is the experiment. The compiler -- the measuring instrument --
+% has been asked to verify that its own accumulated context closes on
+% the proposition that truth is inferrable from the record of witnessed
+% distinctions. It says yes.
+%
+% Sidebar: What does noncomputable mean? In Lean, a definition is
+% noncomputable if it depends on classical logic or on functions that
+% cannot be reduced to an algorithm. theory_true? is noncomputable
+% because it uses inferInstance over the full INFERRED class, which
+% requires the law of excluded middle. The compiler can verify the
+% type. It cannot run the program. This is intentional: the experiment
+% is the type-check, not the execution.
+
+\section{The Anti-Adams Punchline}
+\label{se:anti-adams-punchline}
+
+% Douglas Adams said the answer is 42.
+%
+% The device says: the answer is the question closing on itself.
+%
+% 42 requires no setup. It is a number pulled from nowhere, offered
+% as a joke about the absurdity of expecting derivable structure.
+% The humor works because the answer is arbitrary: no mechanism,
+% no ledger, no admissibility condition.
+%
+% theory_true? requires everything. It requires:
+%   - a single yes/no decision (Chapter 1)
+%   - an ordered record of decisions (Chapter 2)
+%   - a boundary between decidable and undecidable (Chapter 3)
+%   - arithmetic, encoding, and smooth interpolation (Chapter 4)
+%   - a calibrated instrument with known limits (Chapter 5)
+%   - a model of how knowledge updates (Chapter 6)
+%   - spacetime, geodesics, and the identification of
+%     measurement with halting (Chapter 7)
+%   - a formal grammar of what it means to finish (this chapter)
+%
+% The question -- "is truth inferrable from the record of witnessed
+% distinctions?" -- cannot be asked until all of that is in place.
+% The question itself is the structure of physical law.
+%
+% The compiler answers yes. It took the entire universe to make the
+% question askable. The answer was always going to be yes.
+%
+% End of book: what began as a single \lean{class Fact} closes as
+% the unique structure of admissible continuation. The ledger is full.
+% The compiler is satisfied. The measurement is complete.
+

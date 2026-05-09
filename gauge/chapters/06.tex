@@ -1,0 +1,153 @@
+\chapter{The Science}
+\label{chap:the-science}
+
+% EPISODE COVERAGE: Episode 8 -- Science, LearningProcess, SCIENTIFIC,
+% Knowledge, ScientificProcess, TRUTH, Gospel, ReligiousProcess, WITNESSED
+%
+% AUDIENCE NOTE: This is the philosophical pivot. The tower has been built
+% through computation and arithmetic. Now it asks: what does it mean to know
+% something? The compiler is asked to hold both science and religion as
+% formal structures and to distinguish between them without prejudice.
+%
+% KEY CONCEPT: Science and religion are both admissibility structures.
+% Science updates on evidence. Religion does not. The compiler does not
+% care which you prefer -- it only asks whether your continuation is
+% consistent with the ledger.
+%
+% TONE: The most philosophically rich chapter. Accessible but uncompromising.
+% The satirical names (GUNGAN, Jar Jar, Meesa) have been making a point
+% that is now made explicit.
+
+\section{Two Typeclasses}
+\label{se:two-typeclasses}
+
+% Science:
+%   inductive Science where
+%     | repeatable: Science
+%     | hypothesis: Science
+%     | theory: Science
+%
+% Gospel:
+%   inductive Gospel where
+%     | epiphany: Science
+%     | state: Science
+%
+% These are parallel inductive types. Science has three constructors:
+% a repeatable observation, a hypothesis (a proposed explanation),
+% and a theory (a hypothesis that has survived repeated testing).
+%
+% Gospel has two constructors: an epiphany (a revealed truth that
+% did not arise from observation) and a state (a fixed position).
+%
+% The structural difference: Science's constructors are ordered by
+% evidence accumulation. A theory requires a hypothesis; a hypothesis
+% requires a repeatable. Gospel's constructors require nothing prior.
+% The epiphany arrives without preparation.
+%
+% Sidebar: What makes something a theory? In common usage, "theory"
+% means a guess. In science, it means the opposite: a hypothesis that
+% has survived every attempt to falsify it. A theory is the most
+% reliable kind of knowledge. A hypothesis is still on trial.
+
+\section{The Scientific Method as a Typeclass}
+\label{se:scientific-method-typeclass}
+
+% LearningProcess:
+%   structure LearningProcess ... where
+%     galileo: Cult
+%     invariant: Science
+%     touch_stove?: ...
+%
+% The touch_stove? function is the predicate for learning from
+% experience. A LearningProcess has a Galileo field (a community of
+% practice -- those who have agreed to update on evidence) and an
+% invariant Science (the current state of knowledge).
+%
+% SCIENTIFIC wraps this with predictable?: can the current Science
+% make predictions about future observations?
+%
+% Knowledge:
+%   inductive Knowledge where
+%     | jarjar: Knowledge
+%     | ledger: Knowledge
+%
+% Two kinds of knowledge: jarjar (intuitive, pre-theoretical,
+% unreliable but present) and ledger (recorded, ordered, verifiable).
+% The Knowledge type is the honest admission that not all knowledge
+% is in the ledger. Some of it is jarjar.
+%
+% ScientificProcess wraps both with learn?: can this process update
+% the Knowledge given a new observation?
+%
+% Sidebar: Karl Popper and falsifiability. Popper argued that a
+% scientific claim is one that could, in principle, be false.
+% The predictable? predicate is Lean's version of this: a theory
+% is scientific only if it generates predictions that could be
+% refuted by observation.
+
+\section{What the Compiler Knows About Religion}
+\label{se:compiler-religion}
+
+% ReligiousProcess:
+%   structure ReligiousProcess ... where
+%     the_literature: Gospel
+%     pray?: ...
+%
+% The pray? function is not satirical. It is the predicate for
+% adherence: given a Gospel, does this process conform to it?
+%
+% The compiler treats ReligiousProcess and ScientificProcess
+% with identical structural seriousness. Both are processes.
+% Both make admissibility judgments. The difference is in how
+% they update: SCIENTIFIC updates when predictable? fails;
+% ReligiousProcess does not update, because the epiphany is
+% not subject to revision.
+%
+% TRUTH:
+%   class TRUTH ... where
+%     scientific_process: ScientificProcess
+%     martyred?: ... -> ... -> Prop
+%
+% The martyred? predicate is the equivalence relation on TRUTH:
+% two truths are martyred if they were held simultaneously by a
+% process that was forced to revise one of them. This is the
+% compiler's model of paradigm shift.
+%
+% Sidebar: Thomas Kuhn and scientific revolutions. Kuhn argued
+% that science does not progress by smooth accumulation. It
+% advances through crises and revolutions: a new paradigm
+% replaces the old, and knowledge that was central becomes
+% peripheral or false. The martyred? predicate formalizes this:
+% the old truth was held, the revision was forced, both are recorded.
+
+\section{WITNESSED: The Ledger Closes on Knowledge}
+\label{se:witnessed}
+
+% WITNESSED:
+%   class WITNESSED ... where
+%     baptism: ReligiousProcess
+%     witness: Gospel
+%     risen?: ...
+%
+% WITNESSED is the first typeclass that simultaneously requires
+% a ReligiousProcess and connects it to the Gospel via a witness.
+% The risen? predicate asks: has this Gospel survived the revision
+% that the scientific process forced?
+%
+% This is the tower's model of convergence between science and
+% religion. A Gospel that survives the scientific process is not
+% refuted -- it has been witnessed. A Gospel that does not survive
+% is not necessarily false -- it has not been witnessed within
+% this ledger.
+%
+% The compiler makes no judgment about which Gospels are true.
+% It only asks: is this process consistent? Has the witness been
+% recorded? Is the continuation admissible?
+%
+% End of chapter: the tower has now agreed to hold Science and
+% Gospel as first-class values, to distinguish knowledge that
+% updates from knowledge that does not, and to record the
+% history of revisions. The ledger is now epistemological.
+% The next question is: what does the universe look like from
+% inside a ledger like this?
+

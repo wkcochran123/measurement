@@ -1,0 +1,155 @@
+\chapter{The Ledger}
+\label{chap:the-ledger}
+
+% EPISODE COVERAGE: Episodes 1 (completion) and 2 -- DISTINGUISHABLE through NUMERIC,
+% Sample, ObservationProcess, BINARY, REPEATABLE, ComputationalProcess.closure
+%
+% AUDIENCE NOTE: Introduce the idea of a ledger as an accumulation of compiler
+% agreements. Each typeclass is a new rule the compiler must accept. The ledger
+% is irreversible: the compiler cannot un-accept a prior agreement.
+%
+% KEY CONCEPT TO ESTABLISH: ComputationalProcess.closure is the elaborator
+% doing what measurement does -- closing an open account.
+%
+% TONE: Still accessible, but the Lean code starts to carry more weight.
+% Use sidebars to protect non-technical readers.
+
+\section{One Rule at a Time}
+\label{se:one-rule-at-a-time}
+
+% The typeclass as a compiler agreement.
+% Introduce DISTINGUISHABLE:
+%
+%   class DISTINGUISHABLE (Value: Type) (Carrier: CarrierProcess Value) where
+%     fact: Fact
+%     symbol: Type Value
+%     distinct? : Prop
+%     different? : Type Value -> Prop
+%     dec_distinct : DecidablePred different?
+%
+% Plain language: to be distinguishable is to be equipped with a method
+% for telling things apart. The compiler will not call two things distinct
+% until it has a decision procedure for distinguishing them.
+%
+% The type parameter pattern: every subsequent class is parameterized over
+% (Value: Type) (Carrier: CarrierProcess Value). The compiler carries the
+% context of the carrier forward into every new agreement.
+%
+% Sidebar: What is a typeclass? In Lean, a typeclass is a collection of
+% operations that a type is required to provide. It is a contract. When
+% you declare that something is DISTINGUISHABLE, you are promising the
+% compiler that you can distinguish things of that type. The compiler
+% holds you to the promise.
+
+\section{The Chain of Admissibility}
+\label{se:chain-of-admissibility}
+
+% Walk through ADMISSIBLE, COUNTABLE, ENCODED, RESIDUE as a progressive
+% tightening of the contract.
+%
+% ADMISSIBLE: adds counting_process and admissible? -- the first explicit
+% admissibility predicate. A proposed continuation is admissible if it
+% passes this test.
+%
+% COUNTABLE: adds index (IndexingProcess) and bounded? -- we can now
+% place events on a number line and ask whether a range is finite.
+%
+% ENCODED: adds limit_process and encoding? -- we can compare sequences
+% of events.
+%
+% RESIDUE: adds cauchy_process and representative? -- we can identify
+% equivalence classes of sequences. The limit exists as a residue.
+%
+% Key metaphor: imagine a courtroom. ADMISSIBLE is the rule that says
+% what evidence may be introduced. COUNTABLE is the rule that says how
+% evidence must be numbered. ENCODED is the rule that says how two
+% pieces of evidence may be compared. RESIDUE is the verdict: this
+% evidence is equivalent to that evidence.
+%
+% Sidebar: Cauchy sequences. A Cauchy sequence is one where the terms
+% get arbitrarily close to each other. It is the formal definition of
+% "converging without needing to name the limit." The compiler accepts
+% a Cauchy process as a proxy for a limit that might not exist in the
+% current vocabulary.
+
+\section{The First Multi-Fact Structure}
+\label{se:first-multi-fact}
+
+% Introduce Sample:
+%
+%   inductive Sample where
+%     | initial_condition: Fact -> Limit -> Sample
+%     | signal_response: Fact -> Limit -> Fact -> Limit -> Sample -> Sample
+%
+% A Sample is the first structure that holds more than one Fact. It
+% models a stimulus and a response: an initial condition (one Fact, one
+% Limit) and a signal_response that pairs a new Fact-Limit with a prior
+% Sample.
+%
+% This is the ledger taking shape. Each signal_response appends a new
+% witnessed event to the record. The record is ordered and irreversible
+% by construction: you cannot build a signal_response without a prior Sample.
+%
+% The Limit type (from Episode 1) is an inductive sequence of Sequences.
+% Together, Sample and Limit model the dual structure of observation:
+% the thing observed (Limit, a sequence of encoded values) and the act
+% of observation (Sample, a chain of Fact-witnessed events).
+
+\section{The Clock and Its Complement}
+\label{se:clock-and-complement}
+
+% Episode 2: ObservationProcess and BINARY.
+%
+% ObservationProcess adds before: Limit and after: Limit -- the two
+% sides of a witnessed transition.
+%
+% BINARY adds zero and one as Limits, and a bit as a Sample. The
+% different? predicate has four cases: zero/zero, one/one (same),
+% zero/one, one/zero (different). This is the compiler learning
+% to count in binary.
+%
+% Connect to the covariant/contravariant duality from Chapter 1:
+% the zero is the covariant ground state; the one is the contravariant
+% step. The clock ticks T/F, T/F. Its complement ticks F/T, F/T.
+% Together they tile every possible distinction.
+%
+% Sidebar: Why binary? Not because the universe is digital, but because
+% a single distinction is the minimum unit of information. One bit. The
+% compiler builds everything from yes/no decisions; of course the first
+% number system it needs is binary.
+
+\section{Closure}
+\label{se:closure-first-appearance}
+
+% The key arrival: ComputationalProcess.closure.
+%
+%   structure ComputationalProcess ... where
+%     ...
+%     closure: Study -> Study
+%
+% Show the full structure briefly. The closure field is a function
+% from Study to Study -- it takes an open computational record and
+% returns a closed one.
+%
+% What does "closed" mean? In the context of the compiler: a term
+% is closed when all its free variables have been resolved, all its
+% type holes have been filled, and every sub-expression has been
+% type-checked. The elaborator has run to completion on the term.
+%
+% In the context of measurement: a ledger is closed when the proposed
+% continuation is consistent with everything recorded. The measurement
+% is complete.
+%
+% These are the same operation. ComputationalProcess.closure is the
+% point where the book's central claim first becomes visible in the
+% Lean code.
+%
+% NUMERIC follows: it wraps the closure in a class with a carrier
+% (a Study), a lambda (the abstraction of the closure), and a
+% related predicate (equality of closures).
+%
+% End of chapter: the compiler has now agreed to twelve rules. It can
+% distinguish, count, encode, take limits, observe, work in binary,
+% repeat experiments, and close. The ledger is not yet full. But the
+% compiler knows what a closure is.
+

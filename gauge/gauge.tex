@@ -1,0 +1,61 @@
+\documentclass[12pt,oneside]{book}
+\usepackage{amsthm,amssymb,amsmath,mathtools,MnSymbol,setspace,thmtools,tikz-cd,titling,tocloft}
+
+\input{macros}
+
+\begin{document}
+
+% Title info
+\title{Gauge\\
+\large How a Compiler Learned to Measure the Universe}
+
+\author{Bill Cochran\\wkcochran@gmail.com\\https://github.com/wkcochran123/measurement}
+\date{\today}
+
+\maketitle
+
+\begin{center}
+\vspace*{2em}
+\begin{center}
+\vspace*{2em}
+\vspace*{2em}
+\textit{For everyone who ever asked a computer a question \\
+and wondered how it knew the answer.}
+\vspace*{6em}
+\begin{quote}
+``The answer to the ultimate question of life, the universe, and everything is 42.''\\
+\hfill---Douglas Adams, \textit{The Hitchhiker's Guide to the Galaxy} (1979)
+\end{quote}
+\vspace*{2em}
+\begin{quote}
+``Je les poss\`ede, parce que jamais personne avant moi n'a song\'e \`a les poss\'eder.''\\
+\hfill---Antoine de Saint--Exup\'ery, \textit{Le Petit Prince} (1943)
+\end{quote}
+\end{center}
+\vspace*{2em}
+\end{center}
+
+\newpage
+\frontmatter
+\onehalfspacing
+\include{front/toc}
+\include{front/preface}
+\include{front/harm}
+\tableofcontents
+
+\mainmatter
+\include{chapters/01}
+\include{chapters/02}
+\include{chapters/03}
+\include{chapters/04}
+\include{chapters/05}
+\include{chapters/06}
+\include{chapters/07}
+\include{chapters/08}
+\cleardoublepage
+
+\backmatter
+
+\bibliographystyle{plain}
+\bibliography{gauge}
+\end{document}

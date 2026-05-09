@@ -1,0 +1,122 @@
+\chapter{The Fact}
+\label{chap:the-fact}
+
+% EPISODE COVERAGE: Episode 1 (partial) -- Fact, Number, CarrierProcess, le duality
+%
+% AUDIENCE NOTE: No Lean experience assumed. Introduce the compiler as a character.
+% Introduce the idea that a yes/no decision is the only primitive the compiler trusts.
+%
+% TONE: Conversational, wonder-forward. The chapter should feel like the first
+% chapter of a mystery novel in which the detective has only one clue.
+
+\section{The Compiler as Character}
+\label{se:compiler-as-character}
+
+% Introduce Lean 4 as a proof assistant: its job is to decide whether things
+% are consistent. Frame it as a character with a single obsession: it will not
+% accept anything it has not verified.
+%
+% Sidebar: What is a proof assistant? Brief, accessible. The key point is that
+% the compiler is not a search engine -- it does not guess. It checks.
+%
+% End this section with the central question: what is the smallest thing
+% the compiler can verify?
+
+\section{The Primitive Distinction}
+\label{se:primitive-distinction}
+
+% The answer: a Fact. Show the Lean definition:
+%
+%   class Fact where
+%     truth : Prop
+%     decTruth : Decidable truth
+%
+% Explain what this means in plain language: a Fact is a proposition
+% (a claim that might be true or false) together with a decision procedure
+% (a recipe for checking which one it is). The compiler insists on the
+% decision procedure. It will not accept a claim it cannot verify.
+%
+% Key point: Fact.Truth = { truth := true, decTruth := Decidable.isTrue rfl }
+% The compiler can verify this in one step. "rfl" means "it follows by
+% reflection" -- the thing equals itself. The simplest fact: true is true.
+%
+% Sidebar: Propositions vs. Facts. A proposition is a claim. A Fact is a
+% proposition equipped with a method of decision. The word "decidable" in
+% mathematics has a precise meaning: there exists a finite procedure that
+% always terminates with yes or no. A Fact is a claim that can be decided.
+%
+% Connect to physics: a measurement is also a decision. The instrument
+% decides: this reading is distinguishable from that one.
+
+\section{Counting from Nothing}
+\label{se:counting-from-nothing}
+
+% From Fact, build Number:
+%
+%   inductive Number where
+%     | zero : Fact -> Number
+%     | one  : Fact -> Number -> Number
+%
+% The inductive definition: a Number is either a zero (built from a Fact)
+% or a one (built from a Fact and a prior Number). This is Peano arithmetic
+% rendered in Lean. Every number carries its justification with it.
+%
+% Key insight: the Fact inside each Number is not decoration. It is the
+% witness that the compiler accepted this step. The number line is a
+% ledger of accepted decisions.
+%
+% Sidebar: Peano and Kushim. Giuseppe Peano axiomatized arithmetic in 1889.
+% The oldest known act of counting is a 5,000-year-old Sumerian tablet
+% attributed to "Kushim" recording a barley inventory. Counting is the
+% oldest technology. The Lean compiler re-discovers it from scratch.
+
+\section{The Two Orderings}
+\label{se:two-orderings}
+
+% The covariant/contravariant duality in Number.le.
+% Show the definition with its four cases and explain each:
+%
+%   - zero/zero, same truth: covariant (truth preserved, smaller <= larger)
+%   - zero/zero, different truth: contravariant (truth inverted, ordering reverses)
+%   - one/one, same truth on the leading Fact: covariant case recurses
+%   - one/one, different truth: contravariant case recurses
+%
+% Plain language: there are two ways to count. You can count forward
+% (each step adds to what you know) or backward (each step subtracts
+% from what you do not know). A clock counts forward. A countdown counts
+% backward. Both are legitimate orderings on the same object.
+%
+% The duality will recur in every subsequent episode. Name it here:
+% the covariant direction is the direction of accumulation; the
+% contravariant direction is the direction of elimination.
+%
+% Sidebar: Clocks and clock complements. In digital signal processing,
+% a clock is a T/F alternating sequence. Its complement is the same
+% sequence with T and F swapped. Together they tile time. The covariant
+% ordering corresponds to the clock; the contravariant ordering corresponds
+% to the clock complement.
+
+\section{What the Compiler Carries Forward}
+\label{se:what-compiler-carries}
+
+% Introduce CarrierProcess:
+%
+%   structure CarrierProcess (Carrier: Type) where
+%     symbol: Fact
+%     value: Number
+%     event: Number -> Number
+%
+% A CarrierProcess is a triple: a witnessed fact, a current count, and
+% a rule for moving to the next count. This is the minimal structure
+% that supports forward motion.
+%
+% The "Carrier" type parameter is abstract -- the compiler does not yet
+% know what kind of thing is being measured. It only knows that something
+% has a symbol (a distinguishing fact), a value (a position in the count),
+% and an event (a step rule).
+%
+% End of chapter reflection: from a single yes/no decision, we have built
+% a counting machine. The compiler has agreed to believe: true is true,
+% counting is possible, and two directions of counting exist. Everything
+% that follows will be built on these three agreements.
+
