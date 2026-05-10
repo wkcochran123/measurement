@@ -1,136 +1,888 @@
-\chapter{The Science}
-\label{chap:the-science}
+\chapter{The Bullshit Meter}
+\label{chap:bullshit-meter}
 
-% EPISODE COVERAGE: Episode 8 -- Science, LearningProcess, SCIENTIFIC,
-% Knowledge, ScientificProcess, TRUTH, Gospel, ReligiousProcess, WITNESSED
-% KEY CONCEPT: Science and religion are both admissibility structures.
-% The compiler holds both without prejudice.
+% EPISODE COVERAGE: Episodes 6 and 7 revisited through elaboration cost,
+% plus Episode 10's HeartbeatProcess as forward reference.
+% KEY CONCEPT: The heartbeat count is the compiler measuring the logical
+% distance between context and conclusion.
 
-\section{Two Typeclasses}
-\label{se:two-typeclasses}
+A speedometer has a public face and a private burden. The public face is the
+number the driver sees. The private burden is everything the instrument must
+carry to make that number worth seeing: sensor pulses, timing windows,
+calibration constants, filtering rules, unit conversions, display updates, and
+fault states. Chapter 5 built the tower that carries those burdens upward.
+Chapter 6 installs a gauge on the tower itself. It asks how heavy the tower has
+become.
 
-% Science:
-%   inductive Science where
-%     | repeatable: Science
-%     | hypothesis: Science
-%     | theory: Science
-%
-% Gospel:
-%   inductive Gospel where
-%     | epiphany: Gospel
-%     | state: Gospel
-%
-% Structural difference: Science's constructors are ordered by evidence
-% accumulation. Gospel's constructors require nothing prior. The epiphany
-% arrives without preparation.
-%
-% Sidebar: What makes something a theory? In science, the most reliable
-% kind of knowledge: a hypothesis that has survived every attempt to falsify it.
+The phrase "bullshit meter" is intentionally rude. A polite title would hide
+the chapter's useful irritation. The book has spent many pages building formal
+machinery, and formal machinery has a way of sounding noble merely because it
+is elaborate. Chapter 6 refuses that easy reverence. It asks what the compiler
+has to pay for each layer. It does not ask whether a definition looks
+impressive. It asks how much work the elaborator must perform before the
+definition becomes usable.
 
-\section{The Scientific Method as a Typeclass}
-\label{se:scientific-method-typeclass}
+Think of a dashboard that reports instrument strain as well as speed. The
+vehicle may be traveling at sixty while the electronics are hot, noisy, or
+retrying a sensor read. Chapter 6 turns that diagnostic inward. The manuscript
+has a formal speedometer; now it wants a meter for the cost of its own
+operation.
 
-% LearningProcess:
-%   structure LearningProcess ... where
-%     galileo: Cult
-%     invariant: Science
-%     touch_stove?: ...
-%
-% touch_stove? is the predicate for learning from experience.
-% SCIENTIFIC wraps this with predictable?.
-%
-% Knowledge: jarjar (intuitive, pre-theoretical) and ledger (recorded, verifiable).
-% The honest admission that not all knowledge is in the ledger.
-%
-% Sidebar: Karl Popper and falsifiability. A claim is scientific only if
-% it could, in principle, be false. predictable? is Lean's version of this.
+Lean gives the chapter a real analog: heartbeats. In Lean, elaboration is not a
+mystical act. The compiler fills implicit arguments, resolves typeclass
+instances, checks that expressions have the expected types, unfolds definitions
+when needed, and confirms that the term can live where the manuscript says it
+lives. Each bit of that work consumes resources. The heartbeat count is the
+compiler's internal clock ticking while it tries to make the tower stand.
 
-\begin{gphenom}{Wittgenstein}
-\label{ph:wittgenstein}
-\GPhObs Wittgenstein argued in the \textit{Philosophical Investigations} that
-``after'' is a grammatical rule, not a description of a causal force.
-Saying ``B happened after A'' adds a syntactic relation to the record;
-it does not describe a mechanism that pushed B into place.
-\GPhCon Temporal order is a rule of the ledger, not a dynamical quantity.
-It costs nothing to say B came after A once both have been recorded.
-The ledger's irreversibility provides sequence; no force is required.
-\GPhSeq The Wittgenstein Effect frees the compiler from having to derive
-temporal order from dynamics. \lean{ObservationProcess.before} and
-\lean{.after} are structural positions in the ledger, not caused states.
-The arrow of time is a syntactic arrow, not a causal one.
+This is why the chapter comes immediately after totality. A tower that has no
+instances cannot honestly be measured for strain. It is still a sketch. Once
+the instance cascade exists, however, cost becomes meaningful. The compiler has
+accepted the structure, but acceptance did not come for free. Raising
+\texttt{maxHeartbeats} is the formal equivalent of watching the dashboard's
+diagnostic gauge climb. The engine still runs. The question is how hard it has
+to work.
+
+The speedometer metaphor sharpens the difference between error and cost. If the
+needle reports the wrong speed, the instrument is wrong. If it reports the right
+speed only after constant filtering and compensation, the instrument may be
+right but fragile. The meter is not cheap cynicism. Some complexity buys
+precision. Some complexity only preserves an awkward shape. The chapter asks
+which is which.
+
+Chapter 6 therefore gives the reader a new habit. After asking whether a mark
+may enter, whether a number may be built, whether a permission may be granted,
+whether a signal may be processed, and whether a tower may be inhabited, the
+reader now asks what the compiler found expensive. This is not a secondary
+question. Cost is part of measurement. If two speedometers report the same
+speed, but one requires a stable sensor and the other requires constant
+emergency correction, they are not equally healthy instruments. If two formal
+paths reach the same statement, but one requires a simple instance and the
+other requires an avalanche of search, the difference is epistemically
+interesting.
+
+The chapter also makes the book more humane. A reader trying to follow a dense
+formal manuscript needs permission to notice fatigue. Sometimes fatigue means
+the reader has missed a definition. Sometimes it means the text has asked too
+much too quickly. Sometimes it means the tower itself is beginning to strain.
+The bullshit meter gives that sensation a formal companion. It says that
+difficulty is not merely private weakness. Sometimes difficulty is a measured
+property of the construction.
+
+The speedometer's diagnostic lamp provides the emotional tone. A warning light
+does not hate the vehicle. It exists because the vehicle matters. It gives the
+operator a chance to intervene before failure becomes dramatic. Chapter 6's
+meter has the same affection. It is not placed on the tower to mock the tower.
+It is placed there because the tower has become real enough to deserve care.
+
+That care has two sides. The first is precision: do not stop refining while the
+instrument can still make meaningful distinctions. The second is restraint: do
+not refine past the scale at which new distinctions are admissible. A
+speedometer that updates once a day is useless. A speedometer that tries to
+report infinitely many digits of instantaneous speed is also useless. The right
+instrument lives between negligence and mania. Chapter 6 studies that middle.
+
+The chapter will move through four questions. First, what does the compiler
+find expensive? Second, what do the manuscript's bullshit annotations measure?
+Third, why does precision always have a price? Fourth, when should refinement
+stop? Together these questions turn cost from embarrassment into evidence.
+
+By the end, the reader should be able to see heartbeat counts, epsilon
+thresholds, finite approximations, and stopping rules as parts of one
+diagnostic practice. The tower is not only something the compiler accepts. It
+is something whose strain can be read. The bullshit meter is the dashboard
+inside the dashboard, the gauge that tells the instrument how hard it is
+working to be believed.
+
+There is also a moral reason for installing the meter here. The book has begun
+to create impressive words: admissibility, residue, closure, abstraction,
+totality, numeric study. Such words can become protective paint. They can make
+the tower look necessary even when a reader is unsure which part of the machine
+is doing which job. A meter cuts through some of that aura. It asks a
+non-rhetorical question: what did this distinction cost, and what did it buy?
+If the answer is clear, the tower grows in authority. If the answer is cloudy,
+the meter has found a place where the manuscript owes the reader more help.
+
+The speedometer analogy keeps that question from becoming merely literary. A
+dashboard calibrated in miles per hour is not judged by whether the number
+sounds clever. It is judged by whether the instrument can connect the display
+to wheel motion at the required scale. A diagnostic gauge inside that
+speedometer would be judged the same way. Is the sensor noisy? Is the filter
+overworked? Is the calibration being applied too often? Does the update cost
+make the instrument late? Those are not philosophical embarrassments. They are
+maintenance questions. Chapter 6 wants formal prose to accept maintenance
+questions as part of its dignity.
+
+This makes the chapter a friend to tractability. The goal is not to make the
+book smaller at every moment. Some chapters need breadth, and some sections
+need slow repetition. The goal is to know when breadth helps. The bullshit
+meter is a pressure sensor for cognitive load as well as elaboration load. If a
+reader must remember too many inherited promises at once, the human meter
+rises. If Lean must search through too many inherited promises at once, the
+machine meter rises. When those two meters rise together, organization becomes
+mathematical pedagogy rather than mere taste.
+
+That is why the chapter can be playful without being unserious. The word on
+the dial is abrasive, but the care behind the dial is tender. It protects the
+reader from false solemnity. It protects the code from unexamined complexity.
+It protects the project from mistaking effort for insight. And, best of all, it
+lets the book keep its strange ambition while learning where the ambition needs
+bracing.
+
+The speedometer's driver needs both confidence and warning. Confidence without
+warning becomes bravado. Warning without confidence becomes paralysis. Chapter
+6 tries to hold those together. The tower has earned confidence by compiling;
+now the meter gives it warning lights. That combination is what lets a complex
+instrument remain usable rather than sacred.
+
+\section{What the Compiler Finds Expensive}
+\label{se:what-compiler-finds-expensive}
+
+The compiler finds hidden obligations expensive. A human reader may see a short
+line of Lean and think it should be easy. The elaborator sees all the implicit
+arguments that have to be reconstructed, all the typeclass instances that have
+to be found, all the coercions that have to be inserted, all the definitions
+that may need unfolding, and all the local goals that must be reconciled. The
+surface length of the line is not the cost. The cost is the distance between
+what the line says and what the kernel must finally verify.
+
+A speedometer has the same hidden distance. The visible update may be a single
+number changing from 59 to 60. Beneath that change are sensor interrupts, time
+measurement, validation, filtering, scaling, and display logic. A driver sees
+one digit move. The instrument carries the whole chain. If the chain is simple,
+the update is cheap. If the chain has accumulated exceptions, fallbacks,
+calibrations, and diagnostic branches, the update may still be correct, but it
+is no longer cheap.
+
+Lean's heartbeat count is a way to make that hidden distance visible. In the
+episodes, the device repeatedly raises \texttt{maxHeartbeats}. Episode 7 needs
+a substantial budget to carry the instance cascade. Later episodes raise the
+limit further as the tower grows. The final setting of zero, which removes the
+limit, is not a boast. It is a confession that the construction has reached a
+scale where ordinary budgets no longer describe the work being asked.
+
+That is not automatically bad. A larger tower should cost more than a smaller
+tower. The totality proof at the end of Chapter 5 asks Lean to connect many
+local inhabitants into a global hierarchy. The compiler has to search through
+the promises already installed. It has to decide which instance supplies which
+obligation. It has to build terms whose dependencies are not visible to the
+reader at a glance. Some expense is simply the cost of making the tower real.
+
+The chapter's point is subtler. Expense becomes interesting when it records a
+gap between conceptual simplicity and formal burden. If the prose says "now
+the ledger has a numeric study" and Lean needs a large search to establish the
+instance, the text should notice the difference. Perhaps the concept really is
+deep. Perhaps the encoding has made the concept harder than it needs to be.
+Perhaps a helper lemma, a smaller class, or a better ordering would reduce the
+strain. The heartbeat count cannot answer those questions alone, but it tells
+the reader where to ask them.
+
+This is why the compiler is a better critic than embarrassment. A writer may
+feel proud of an elegant cascade. Another reader may feel annoyed by it. Those
+feelings matter, but they can drift. Heartbeats are not final truth, yet they
+are repeatable evidence of formal labor. They turn a vague sensation of
+heaviness into a diagnostic signal. The speedometer analogy would be a
+dashboard that not only feels sluggish but reports how many cycles each update
+consumed.
+
+\begin{gphenom}{Pythagoras-Planck}
+\label{ph:pythagoras-planck}
+\GPhObs Planck's constant marks the quantum scale at which classical
+continuity no longer describes physical exchange in the old way. The lesson is
+not a slogan about smallness. It is that a theory can expose a minimum scale at
+which its bookkeeping changes.
+\GPhCon The ledger is finite at every scale. There exists a smallest admissible
+distinction, below which no further elaboration can be recorded.
+\GPhSeq The compiler's heartbeat is not a physical constant. It is the tower's
+coarse cost counter. It reminds the reader that verification occurs in finite
+steps and that no accepted obligation is carried for free.
 \end{gphenom}
 
-\section{What the Compiler Knows About Religion}
-\label{se:compiler-religion}
+The Planck comparison is not claiming that Lean is physics. It is claiming that
+the chapter has reached threshold language. In the physical story, the old
+continuous account breaks at a quantum scale. In the formal story, verification
+is not free. Every proof obligation that becomes real consumes machine work.
 
-% ReligiousProcess:
-%   structure ReligiousProcess ... where
-%     the_literature: Gospel
-%     pray?: ...
-%
-% The compiler treats ReligiousProcess and ScientificProcess with identical
-% structural seriousness. Both are processes. Both make admissibility judgments.
-% The difference: SCIENTIFIC updates when predictable? fails; ReligiousProcess
-% does not update, because the epiphany is not subject to revision.
-%
-% TRUTH: adds martyred? -- the equivalence relation on TRUTH.
-% Two truths are martyred if they were held simultaneously by a process
-% that was forced to revise one of them. The compiler's model of paradigm shift.
-%
-% Sidebar: Thomas Kuhn and scientific revolutions. Science advances through
-% crises. The martyred? predicate formalizes this: the old truth was held,
-% the revision was forced, both are recorded.
+The speedometer gives the reader an everyday version. A sensor cannot report
+motion without sampling. A digital display cannot update without a clock. The
+device may hide the sampling from the driver, but it cannot escape it. A
+reading exists because some finite act happened. Lean's heartbeat is the
+sampling clock of elaboration. It counts the finite acts required to move from
+surface term to verified term.
 
-\begin{gphenom}{Cantor-Godel-Cohen}
-\label{ph:cantor-godel-cohen}
-\GPhObs Cantor showed that some infinities are strictly larger than others.
-Godel showed in 1931 that any sufficiently powerful formal system contains
-true statements it cannot prove. Cohen showed in 1963 that the continuum
-hypothesis is independent of the axioms of set theory.
-\GPhCon The ledger is necessarily incomplete: there exist admissible
-continuations that cannot be derived from the current entries.
-Consistency does not imply completeness.
-\GPhSeq \lean{TRUTH}'s \lean{martyred?} predicate records the history of
-forced revisions. The compiler does not require the ledger to be complete.
-It requires only that each new entry be consistent with what is already there.
-Incompleteness is not a defect; it is the honest report of the instrument.
+The compiler finds typeclass search especially expensive because typeclasses
+are promises to supply structure automatically. That automation is a gift until
+the search space grows. A speedometer with automatic calibration is wonderful
+when the possibilities are few and well organized. It becomes dangerous if the
+instrument has to consider a sprawling family of possible calibrations every
+time it updates the needle. Automation transfers work from the human to the
+machine. The work has not vanished.
+
+This matters for the manuscript's organization. If a chapter presents many
+classes in a tight cascade, the human reader and the compiler may both strain
+for similar reasons. Each new class inherits older commitments. Each new
+instance asks the search system to carry more context. The heartbeat count
+becomes a shadow table of contents. It reveals where conceptual dependencies
+have become computational dependencies.
+
+There is a nice humility in this. The compiler does not care that a metaphor is
+beautiful. It does not care that the prose is persuasive. It does not care that
+the author feels the tower should obviously stand. It asks for terms. When it
+works hard, the manuscript should listen. Formal verification is not only a
+stamp of correctness; it is a microphone placed near the machinery.
+
+What the compiler finds expensive, then, is not simply "large code." It finds
+unresolved obligation expensive. It finds automatic reconstruction expensive.
+It finds long dependency chains expensive. It finds implicit structure
+expensive when the path to that structure is crowded. The bullshit meter begins
+as a way to see these costs without moralizing them. Expense is evidence. The
+chapter's task is to learn how to read it.
+
+Consider the difference between a direct wire and a routed circuit. A direct
+wire from sensor to display is easy to inspect, but it is crude. A routed
+circuit with conditioning, filtering, and protection is better, but the signal
+now travels through more components. When the output behaves strangely, the
+technician must inspect the route. Lean's elaborator is doing that inspection
+constantly. A short expression may have a long route through implicit
+parameters, inherited classes, and instance search. The cost belongs to the
+route, not to the surface length of the expression.
+
+This is why local convenience can create global expense. A typeclass can be a
+beautiful way to avoid passing the same structure by hand. It lets the code say
+less at the point of use. But the compiler must recover what the code leaves
+implicit. If many such classes overlap, the search for the intended structure
+becomes part of every later proof. The human equivalent is a chapter that
+relies on a shared metaphor without reminding the reader which part of the
+metaphor is active. The prose becomes shorter, but the reader's reconstruction
+cost rises.
+
+The heartbeat count is therefore a measurement of deferred explicitness. It
+does not condemn deferral. A well-designed dashboard defers many details from
+the driver. That is what makes it usable. But a good engineer knows where the
+details went. The manuscript should know the same thing. When the compiler
+spends many heartbeats, one useful question is: what explicit step did we avoid
+earlier, and was avoiding it worth this later cost?
+
+Sometimes the answer is yes. A general abstraction may cost more at first and
+pay back the cost across many later uses. A speedometer's filtering system may
+be more expensive than a raw counter, but it saves the driver from jitter. In
+Lean, a typeclass hierarchy may be worth its search cost if it lets later
+chapters state results at the right level of generality. The meter is not a
+simple austerity rule. It is an accounting practice.
+
+Sometimes the answer is no. A definition may have been made too general
+because generality felt virtuous. A class may inherit a promise that only one
+later section actually uses. A proof may ask the elaborator to rediscover a
+path that a small lemma could have named. In those cases the heartbeat count is
+an editorial cue. It says: name the route, split the floor, or move the burden
+closer to the place where it is needed.
+
+The compiler finds expensive exactly what a reader finds hard to hold without a
+map. That parallel is not perfect, but it is close enough to guide the book.
+Long chains of inherited context, hidden reconstruction, overloaded names, and
+late-arriving witnesses strain both machine and human attention. Chapter 6
+turns that strain into material. Instead of hiding the cost, it lets the cost
+teach organization.
+
+\section{The Bullshit Meter Annotations}
+\label{se:bullshit-meter-annotations}
+
+The code comments that name a bullshit meter are funny because they are too
+honest to be ornamental. A comment that says "Bullshit meter approximately N"
+does not merely complain. It records a local sense of accumulated overhead. The
+author is watching the formal tower grow and noticing when the compiler, the
+reader, and the prose all have to carry more than they did before.
+
+That kind of annotation belongs in the manuscript because it exposes a healthy
+practice. Formal work often hides its strain behind polished definitions. The
+final theorem appears, the proof compiles, and the reader is invited to admire
+the result. But the path by which the proof became expensive is itself
+instructive. A speedometer's diagnostic logs matter for the same reason. The
+dashboard may show a valid number, but the logs reveal intermittent sensor
+loss, repeated retries, or calibration drift. A correct reading can still have
+a troubled history.
+
+The bullshit meter comments are not formal theorems. They are annotations of
+felt cost. That does not make them useless. Instruments begin as felt
+differences before they become calibrated scales. A mechanic hears a strange
+sound before attaching a diagnostic tool. A mathematician feels a proof is
+awkward before isolating the bad lemma. A programmer notices elaboration has
+become slow before measuring the exact search path. The comment is the first
+mark on the dial.
+
+Harry Frankfurt's account of bullshit helps, but Chapter 6 bends it toward
+formal practice. Frankfurt distinguishes bullshit from lying: the liar cares
+about truth enough to conceal it, while the bullshitter is indifferent to truth
+and tries to manage impression. The manuscript's meter reverses the usual
+comic posture. It is not indifferent to truth. It cares about truth so much
+that it counts the cost of carrying truth through the formal system.
+
+This is the chapter's slyness. The meter does not measure whether the tower is
+false. It measures how much overhead the tower has accumulated in order to stay
+true. A high reading may mean the construction is profound. It may mean the
+construction is bloated. It may mean the prose has outrun the formal
+organization. The meter does not settle the interpretation. It prevents the
+interpretation from being cost-blind.
+
+In a speedometer, cost blindness is dangerous. Suppose the displayed speed is
+accurate because the firmware is constantly correcting a noisy sensor. The
+driver may be safe today, but the instrument is close to failure. The right
+diagnostic is not "the speed is wrong." It is "the speed is being obtained
+under strain." That is exactly the distinction Chapter 6 wants. A formal claim
+may compile, but the cost of compilation may reveal fragility in the tower.
+
+The annotations also create a second voice inside the project. The formal code
+says what has been built. The comments say how the building felt. The prose can
+then synthesize both. This is especially important in a book that wants to be
+pedagogically tractable. A reader learning the tower needs to know not only the
+definitions but also where the definitions begin to draw blood. The meter makes
+the author's own strain available as guidance.
+
+The early episodes carry small readings because the tower is still close to
+the ground. A mark is distinguished, a number form is introduced, a simple
+process is ordered. The compiler's search space is limited. The speedometer has
+only begun to count pulses. By Episode 6, arithmetic and splines introduce more
+load. Sums, products, bases, loading, finite approximation, and flow control
+begin to pull different parts of the tower together. The needle is still
+moving, but the diagnostic gauge is no longer asleep.
+
+Episode 7 spikes because the instance cascade asks the compiler to assemble
+the tower as a tower. Local promises become global structure. This is the
+moment when cost becomes visible as architecture. A speedometer bench test
+does the same thing: each subsystem may pass alone, but integrating sensor,
+counter, filter, firmware, and display reveals coupling costs that unit tests
+miss. The bullshit meter is an integration meter.
+
+Later episodes make the point more severe. When a construction carries dozens
+of typeclass parameters, the meter is not merely joking. Every parameter is a
+promise. Every promise has to be threaded through the context. A reader may
+not see all of them at once, but Lean does. The compiler becomes the witness
+that no abstraction is free after it has been made part of the environment.
+
+This does not mean the manuscript should avoid all high meter readings. A
+speedometer for a racing vehicle is allowed to be more complex than a toy dial.
+It needs higher precision, faster response, and more diagnostics. The question
+is whether the complexity is doing work that the project needs. The comments
+invite that audit. They ask: what is this cost buying? Is it buying precision,
+generality, modularity, or merely the preservation of a baroque earlier choice?
+
+The best use of the meter is local repair. If a section spikes, one can ask
+whether the chapter needs a new lemma, a shorter excerpt, a clearer prose
+handoff, or a better separation of concerns. This is where the book's recent
+chapter split matters. Moving the permissions cascade into its own chapter was
+a bullshit-meter decision in spirit. It reduced human elaboration cost. It gave
+the reader fewer obligations to resolve at once.
+
+The annotations therefore do two jobs. They measure machine strain and they
+model editorial honesty. They let the manuscript say, "Here the formal tower
+is carrying a lot." That sentence is not weakness. It is maintenance. A project
+that can name its expensive places can improve them, explain them, or defend
+them. A project that hides them forces every reader to rediscover the strain
+alone.
+
+By the end of this section, the reader should treat the bullshit meter as a
+dashboard gauge rather than a punchline. It is comic because formal work needs
+comedy. It is serious because formal work needs diagnostics. The tower is not
+discredited by having a meter attached. It is dignified by becoming measurable.
+
+The annotations also guard against a particular kind of retrospective myth.
+After a proof compiles, it is tempting to pretend that the final form was
+inevitable. The comment interrupts that myth. It says that the path had weight
+while it was being walked. This matters because future readers, including the
+author months later, may otherwise inherit only the polished surface. They will
+see the dashboard number without knowing which diagnostic lights flickered
+during assembly.
+
+In this sense, the meter comments are a poor person's lab notebook. They do
+not record every command or every failed attempt, but they preserve the
+important fact that the construction had measurable friction. A lab notebook
+does not weaken an experiment by admitting adjustments. It strengthens the
+experiment by making the adjustments visible. The code comments do the same
+for formal development. They say where the tower required more carrying than
+the surrounding prose might suggest.
+
+There is an editorial lesson here for the expanded chapters. When a section
+contains a dense Lean excerpt, the surrounding prose should not merely praise
+the code. It should tell the reader what obligation the excerpt is carrying and
+why that obligation belongs here. The bullshit meter annotations remind us that
+the code has weight. The prose should help distribute that weight. Otherwise
+the book forces the reader to become the elaborator, reconstructing implicit
+context by hand.
+
+The annotations are also a defense against false smoothness. A chapter that
+moves from definition to definition without naming strain can feel more
+elegant than it is. Smooth exposition is valuable, but only when it preserves
+load-bearing distinctions. The meter lets the book keep small rough edges in
+view. A little roughness can be pedagogically kind if it tells the reader where
+to slow down.
+
+This is why the word "approximately" matters. The meter comments are not
+claiming laboratory precision. They are local readings from a working
+instrument. In a speedometer diagnostic, an approximate warning may still be
+useful: the sensor is noisy, the voltage is low, the update loop is slow. The
+exact number can come later. First, the system needs to know that a phenomenon
+exists. The bullshit annotations mark the phenomenon of accumulated overhead.
+
+They also democratize critique. A reader does not have to be hostile to notice
+cost. The author has already noticed it. That shared noticing changes the
+relationship between manuscript and reader. Instead of asking the reader to
+admire complexity in silence, the book says: yes, this is heavy; let us ask
+whether the heaviness is earning its keep. That posture is exactly what lets an
+ambitious project remain hospitable.
+
+It also gives collaborators a common dial. Instead of saying only that a
+chapter "feels too much," they can ask where the meter rises and what support
+would lower it.
+
+\section{Precision Has a Price}
+\label{se:precision-has-a-price}
+
+Precision is not the same as verbosity. A system can say many things and still
+measure poorly. Precision is the ability to make a distinction that matters
+under the current instrument. Chapter 6 insists that every such distinction has
+a price. The speedometer makes this easy to see. Reporting "60" is cheap.
+Reporting "60.0000000001" is expensive, and usually absurd, because the sensor,
+tire, road, sampling window, and calibration do not support that many
+meaningful digits.
+
+The same problem appears in formal systems. A proof can refine definitions,
+add parameters, sharpen hypotheses, and split cases until the context becomes
+exquisitely specific. Sometimes that specificity is necessary. Sometimes it is
+only decoration with obligations attached. The compiler does not know whether a
+distinction is pedagogically worth making. It only knows that if the
+distinction has been made, it must be carried.
+
+This is why the spline epsilon matters. A spline threads observations, knots,
+and polynomial structure into a smooth report. But after the admissible points
+and constraints have been honored, there may remain differences between curves
+that the current ledger cannot distinguish. Below that informational quantum,
+additional refinement does not buy a new measurement. It only spends effort
+on differences the instrument cannot record.
+
+A speedometer's display filter has the same threshold. The instrument may
+smooth a needle path between pulses, but the tire deforms, the road vibrates,
+and the sensor samples at finite intervals. There is a scale below which a
+change in displayed speed is not a better report. It is noise wearing the mask
+of precision. A good instrument refuses to let extra digits impersonate extra
+knowledge.
+
+\begin{gphenom}{von Neumann}
+\label{ph:von-neumann}
+\GPhObs Every floating-point system has a machine epsilon: the smallest number
+that, added to 1.0, produces a result distinguishable from 1.0. Below machine
+epsilon, the arithmetic system cannot record a difference.
+\GPhCon The instrument cannot resolve distinctions smaller than its machine
+epsilon. The ledger cannot record events below this threshold. No refinement
+below this scale produces a new entry.
+\GPhSeq \lean{FINITE\_ELEPHANT}'s \lean{finite?} predicate is the machine epsilon
+test for the tower: below epsilon, the sequence has converged and no further
+refinement is admissible. The compiler stops not because it is tired but
+because there is nothing left to distinguish.
 \end{gphenom}
 
-\section{WITNESSED: The Ledger Closes on Knowledge}
-\label{se:witnessed}
+The von Neumann box gives the chapter a computational analogy for restraint.
+Floating-point arithmetic is not ashamed of machine epsilon. It publishes it.
+The system says, in effect: here is the smallest difference I can responsibly
+record near one. That limit is not a defect added after the fact. It is part of
+what makes floating-point computation usable. A system with no declared
+resolution limit would invite false confidence.
 
-% WITNESSED:
-%   class WITNESSED ... where
-%     baptism: ReligiousProcess
-%     witness: Gospel
-%     risen?: ...
-%
-% The first typeclass that simultaneously requires a ReligiousProcess and
-% connects it to the Gospel via a witness.
-% risen? asks: has this Gospel survived the revision that the scientific
-% process forced?
-%
-% The compiler makes no judgment about which Gospels are true.
-% It only asks: is this process consistent? Has the witness been recorded?
-% Is the continuation admissible?
+The tower needs the same honesty. \lean{FINITE\_ELEPHANT} is funny because it
+points at the large fact often hidden in smooth mathematics: finite machines
+approximate. They use polynomial pieces, finite bases, sampled points, and
+chosen tolerances. The elephant is finite because the machine is finite. The
+name keeps the reader from mistaking a smooth report for an infinite gift.
 
-\begin{gphenom}{Hall-Einstein-Podolsky-Rosen}
-\label{ph:hall-epr}
-\GPhObs Einstein, Podolsky, and Rosen showed in 1935 that quantum mechanics
-implies correlations between separated particles that no local hidden-variable
-theory can reproduce. Bell confirmed the bound in 1964. The correlations are real.
-\GPhCon Two ledgers are uncorrelant if they cannot be jointly interpreted without
-introducing events that neither has recorded. The EPR correlations are real
-because both particles share an admissibility structure that neither ledger
-alone contains.
-\GPhSeq \lean{WITNESSED} models this boundary: a Gospel that has not been
-witnessed in the current ledger is not false -- it is uncorrelant with the
-current record. The compiler accepts both ledgers. It cannot merge them
-without a witness.
+Precision has a price in Lean because every new distinction enters the
+environment. A sharper class may require sharper instances. A more exact
+predicate may require more hypotheses. A more general theorem may require a
+more elaborate proof term. The elaborator must carry the refinement whether or
+not the reader remembers why it was introduced. The bullshit meter asks whether
+the additional precision still has a job.
+
+This does not mean the book should prefer vagueness. Vagueness is cheap until
+it fails. A speedometer that reports "moving somewhat" is easy to build and
+almost useless. The chapter is defending calibrated precision, not laziness.
+The question is always: what distinction does the instrument need in order to
+perform its work? Once that question has an answer, refinement should proceed
+to the needed scale and stop there.
+
+The difference between definitional and propositional equality gives another
+formal version. Definitional equality is what the system can see by computation
+and normalization. Propositional equality may require proof. Moving many
+distinctions from the first world into the second may be necessary, but the
+cost should be noticed.
+
+The chapter's title keeps the discussion from becoming merely technical.
+Bullshit often arrives as unsupported precision. A number with many digits can
+look more scientific than a rougher number, even when the extra digits are
+fantasy. A formal definition with many parameters can look more serious than a
+leaner one, even when the extra parameters are not buying measured
+distinctions. The meter is trained to be suspicious of precision that has not
+paid its way.
+
+The speedometer's tire size is a useful mundane example. Changing tire diameter
+changes the relation between wheel rotations and distance traveled. A precise
+speed reading must account for that. But no ordinary dashboard needs to account
+for microscopic rubber deformation at every point of contact. Somewhere between
+tire size and molecular vibration lies the instrument's admissible resolution.
+The exact location depends on the task, but the existence of a stopping point
+does not.
+
+Chapter 6 therefore places epsilon beside heartbeat. Heartbeat measures the
+cost of elaboration. Epsilon marks the scale below which refinement stops
+buying distinctions. Together they form a diagnostic pair. If heartbeats climb
+while epsilon says no new distinction is available, the meter should flash. The
+system is spending work below its own resolution.
+
+This is one of the book's central ethical moves. To measure is to accept
+limits. A ledger that claims infinite precision is usually refusing the
+conditions that make measurement meaningful. A compiler that must carry
+unbounded refinements may still succeed, but the success should not be
+confused with wisdom. Precision is good when it is admissible, useful, and
+paid for. Beyond that, it becomes a form of theater.
+
+The theater of precision is familiar outside mathematics. A cheap digital
+scale may show a weight to four decimal places even when its sensor cannot
+support the final two. A weather app may report rain probability with a
+confidence the local model does not deserve. A speedometer may display a stable
+integer while tire slip is making the underlying relation uncertain. The extra
+detail looks like knowledge because the display is crisp. Chapter 6 asks the
+reader to distrust crispness that has not declared its resolution.
+
+Formal prose can commit the same sin by over-naming. A term may carry more
+parameters than the current argument can interpret. A hierarchy may distinguish
+cases that no later theorem uses. A definition may preserve generality so
+broadly that every example requires a small ritual before it can be applied.
+Those choices may still be defensible, but their cost must be visible. The
+meter does not forbid them. It asks for their receipt.
+
+One useful test is whether precision improves transfer. A good speedometer
+calibration lets the same instrument remain useful after a tire replacement,
+within stated limits. A good formal abstraction lets a later chapter reuse the
+structure without reopening every lower proof. If added precision makes
+transfer easier, it may be buying real power. If added precision makes every
+later use more ceremonial, it may be taxing the tower without strengthening it.
+
+Another test is whether precision improves error localization. A refined model
+should help identify where failure occurs. If a speedometer separates sensor
+noise from calibration error, the additional distinction is useful. If a formal
+development separates admissibility from countability from encoding, and each
+separation helps a later argument locate its obligation, the precision is
+earning its keep. But if distinctions multiply without helping repair, they
+begin to resemble decorative digits.
+
+This is the reason epsilon is not an afterthought. Epsilon is the instrument's
+promise about the smallest difference worth recording. It lets the system say
+"below here, the difference belongs to the medium, not the measured claim." In
+prose, an analogous epsilon appears when another explanatory paragraph would
+only restate what the reader already has. In code, it appears when another
+generalization would not change any later construction. The cost of precision
+must be judged against such thresholds.
+
+The chapter therefore treats price as a structural concept. Price is not only
+runtime, page count, or heartbeat count. Price is the total burden a distinction
+places on the system that must carry it. A true distinction can still be too
+expensive for the current instrument. A useful distinction can become worth the
+cost in a later instrument. Measurement lives in that negotiation. Chapter 6
+does not close the negotiation; it teaches the reader to see it.
+
+Seeing the negotiation is already protection against counterfeit depth.
+
+\section{When Refinement Stops}
+\label{se:when-refinement-stops}
+
+Refinement stops when the next distinction no longer changes the ledger. This
+sounds simple, but it is one of the hardest disciplines in measurement. Every
+instrument is tempted by the next smaller scale. The speedometer can sample
+more frequently, smooth more cleverly, report more digits, and compensate for
+more variables. At first, each refinement improves the reading. Eventually,
+the instrument begins to chase disturbances that do not belong to the report.
+
+The Richardson effect gives the chapter its classic example. Measure a
+coastline with a long ruler and small bays disappear. Measure it with a
+shorter ruler and those bays enter. Measure it with a still shorter ruler and
+more structure appears. The reported length grows as resolution increases. The
+problem is not bad arithmetic. The problem is that the object and the
+instrument do not define one scale-independent length for the task being
+performed.
+
+\begin{gphenom}{Richardson}
+\label{ph:richardson}
+\GPhObs Lewis Fry Richardson measured that the reported length of a national
+border depends on the length of the ruler used to measure it. Shorter rulers
+find longer borders. The coastline has no definite length independent of the
+chosen resolution.
+\GPhCon A fractal boundary has no well-defined length at infinite resolution.
+The instrument must choose a resolution and accept the result as approximate.
+Below the chosen scale, no further distinction between segments is admissible.
+\GPhSeq The spline's informational quantum $\varepsilon$ is the compiler's
+chosen resolution: the point below which no further distinction is admissible.
+The ledger does not grow forever. It stops when refinement stops buying
+anything.
 \end{gphenom}
 
-% End of chapter: the tower has agreed to hold Science and Gospel, to
-% distinguish knowledge that updates from knowledge that does not, and to
-% record the history of revisions. The next question: what does the universe
-% look like from inside a ledger like this?
+The speedometer's version is less picturesque but more familiar. The tire does
+not roll over a perfect mathematical road. It flexes, slips, vibrates, and
+deforms. A wheel sensor can count rotations, but a sufficiently refined account
+would have to include rubber temperature, tread wear, road texture, suspension
+movement, and momentary slip. For ordinary driving, those refinements do not
+belong on the dashboard. They may matter to a racing engineer or a crash
+investigator, but the instrument must know which task it is serving.
 
+That last phrase is important: refinement stops relative to a task. There is no
+universal stopping rule that floats above every measurement. A laboratory
+instrument, a race telemetry system, and a family car can all measure vehicle
+motion honestly at different resolutions. What would be false precision in one
+context may be necessary precision in another. The ledger's admissibility rules
+must therefore be explicit enough to say what kind of distinction is being
+bought.
+
+\lean{FINITE\_ELEPHANT}'s \lean{finite?} predicate belongs in this story
+because finite element methods live by chosen resolution. They approximate
+smooth fields with finite pieces. The honest question is not whether the pieces
+are the continuum itself. They are not. The honest question is whether further
+refinement changes the answer the instrument is allowed to record. When the
+change falls below epsilon, the elephant has become finite enough for the task.
+
+The word "enough" does real work. It prevents two opposite failures. The first
+failure is premature closure, where the instrument stops refining while
+meaningful differences remain. A speedometer that updates too slowly may miss a
+rapid acceleration. A formal proof that lumps distinct cases together may hide
+a necessary hypothesis. The second failure is compulsive refinement, where the
+instrument keeps subdividing after the ledger has no admissible place to put
+the new distinctions. Both failures are measurement failures.
+
+This is why Chapter 6 pairs Richardson with epsilon rather than treating the
+coastline as a mere curiosity. The coastline teaches that more resolution can
+change the report. Epsilon teaches that resolution must eventually be judged
+against an instrument's capacity and purpose. Without Richardson, stopping can
+look lazy. Without epsilon, refinement can become infinite appetite. Together
+they define disciplined measurement.
+
+The compiler's version is typeclass search and proof refinement. A formal
+development can always ask for another layer of generality, another inherited
+constraint, another abstraction over the current abstraction. Sometimes this
+opens the right theorem. Sometimes it only makes every later instance heavier.
+The bullshit meter asks whether a refinement still buys distinguishable
+knowledge or merely increases the cost of elaboration.
+
+This is where Chapter 6 becomes editorial as well as formal. A book can refine
+its explanations forever. It can add another metaphor, another cross-reference,
+another aside, another historical box. At some point the reader stops receiving
+more clarity and starts carrying more furniture. The instruction to write long
+essays has to be balanced by this very rule: length is justified only when it
+creates a new admissible distinction for the reader.
+
+The speedometer intro and the later coda serve that rule. They do not simply
+add words. They give the reader two different pattern-matching surfaces. If a
+metaphor opens a new route into the chapter's structure, it pays for itself. If
+it only repeats the same shape, it becomes cost. The bullshit meter applies to
+prose as much as to Lean.
+
+Refinement stops when the instrument can say, with receipts, that the remaining
+differences do not affect the ledger's current answer. That stopping point is
+not defeat. It is the condition that lets a measurement be reported at all. A
+speedometer that never stops refining never shows the driver a number. A proof
+that never stops generalizing never becomes a theorem the reader can use.
+
+The chapter therefore ends its technical arc with a kind of mercy. The tower is
+allowed to stop. Not because inquiry is over, and not because reality has become
+simple, but because this instrument has reached the scale at which further
+distinctions no longer buy the relevant answer. The bullshit meter watches for
+the moment when more precision becomes less truth.
+
+Stopping is especially hard for formal work because formal tools reward
+continuation. There is always another lemma to extract, another hypothesis to
+weaken, another type parameter to generalize, another theorem statement to make
+more elegant. These refinements can be addictive because each one feels like
+progress in isolation. The meter asks for a global account. Does the next
+refinement make the tower easier to use, easier to check, or easier to repair?
+If not, it may be only motion.
+
+The speedometer's display loop gives a practical rule. The instrument must
+update often enough to be useful and slowly enough to be stable. An update loop
+that never returns because it is still refining the estimate is a failed
+instrument, even if its internal model is sophisticated. A proof development
+has the same failure mode. If a construction keeps improving its generality but
+never reaches a usable theorem, the refinement has consumed the measurement it
+was meant to serve.
+
+A second stopping rule is communicability. A measurement has to be reportable.
+The driver needs a number, not the entire sensor history. The reader needs a
+section, not the complete search tree of every instance. This does not license
+hiding essential structure, but it does require compression. Stopping is the
+moment when compression becomes honest: enough source has been preserved that
+the report can be trusted, and enough detail has been suppressed that the
+report can be used.
+
+A third stopping rule is reversibility of explanation. If a reader can move
+from the reported claim back to the relevant source, the section has likely
+kept enough receipt. If the reader cannot retrace the path, refinement may have
+stopped too early or exposition may have hidden too much. If the reader is
+forced to retrace every microscopic step every time, refinement may have gone
+too far. The right stopping point leaves a trail without making the trail the
+whole journey.
+
+Richardson's coastline keeps these rules honest because it shows that the
+world itself may not supply a unique final scale. The instrument chooses a
+ruler. That choice is not arbitrary if it is tied to the task, but it is still a
+choice. Chapter 6 wants the manuscript to acknowledge its rulers: heartbeat
+budgets, epsilon thresholds, chapter boundaries, excerpt lengths, and
+metaphors. These are all choices about resolution.
+
+The finite elephant is therefore not a joke pasted on top of a serious
+argument. It is the chapter's mascot of honest finitude. Smooth mathematics
+often enters through finite pieces. The wise instrument does not deny this. It
+declares the pieces, chooses the resolution, and stops when the next
+subdivision no longer changes the admissible answer. The bullshit meter is the
+small light that turns on when subdivision becomes appetite.
+
+This prepares the next chapters. Science will need stopping rules for method:
+when has an observation become witnessed knowledge rather than endless
+protocol? Physics will need stopping rules for formal spacetime: when has a
+path halted, and when is the demand for more resolution only a refusal to name
+the current boundary? Closure will need stopping rules for the book itself.
+Chapter 6 is where stopping becomes a virtue rather than a failure of nerve.
+
+\section*{Coda}
+\markboth{CODA}{CODA}
+
+For a second metaphor, leave the dashboard and enter a darkroom. A photograph
+begins as exposure, but the print is made by controlled development. Light
+passes through the negative, strikes treated paper, and slowly becomes visible
+in chemical baths. Too little time and the image is faint. Too much time and
+the contrast hardens or the paper fogs. The darkroom worker is not merely
+revealing an image. She is managing a process whose cost is exposure, time,
+temperature, and grain.
+
+Chapter 6 is a darkroom chapter. The formal tower has exposed an image of
+measurement, but the image still has to be developed. Heartbeats are developer
+time. Epsilon is grain. The bullshit meter is the red light under which the
+worker watches the print emerge without ruining it by excess illumination. The
+question is not "can more be done?" More can always be done. The question is
+when more development improves the image and when it burns the paper.
+
+The darkroom metaphor helps the reader feel the difference between hidden and
+visible cost. A finished photograph may look immediate, just as a speedometer
+number may look immediate and a theorem may look clean. But the print carries
+the history of its development. Contrast, exposure, dodging, burning, paper
+choice, and chemical timing all live inside the visible image. Likewise, a
+compiled formal object carries the history of elaboration. The final term may
+be accepted, but the heartbeat count remembers how much development it needed.
+
+Grain is especially useful here. Photographic grain is not simply error. It is
+the texture of the medium. At one scale, the image is smooth enough to see a
+face, a street, a cloud, a hand on a steering wheel. At another scale, the
+image resolves into grains. Enlarging beyond that limit does not reveal a more
+faithful face. It reveals the substrate. Machine epsilon plays the same role.
+Below the admissible grain of the instrument, refinement does not discover new
+structure in the measured object. It discovers the medium's limit.
+
+This does not make the limit shameful. A darkroom worker loves the grain when
+it belongs to the print. The issue is honesty. A small print can be sharp. A
+huge enlargement from the same negative may become muddy. The image has not
+become morally worse; it has been asked to speak at a scale its medium does not
+support. Chapter 6 asks the formal tower to know its print size.
+
+Dodging and burning offer another pattern. In the darkroom, the worker may
+hold back light from one region or add light to another so the final image
+matches the intended balance. These interventions are not lies if they are
+part of the craft. They become lies when they pretend no intervention occurred.
+Formal refinement is similar. Adding helper lemmas, splitting classes, raising
+heartbeat limits, and choosing epsilon thresholds can all be honest craft. They
+become bullshit when they are hidden as if the result required no such work.
+
+The bullshit meter is the notebook beside the trays. It records exposure times,
+developer temperature, paper stock, and failed attempts. The notebook does not
+replace the photograph. It makes the photograph reproducible and criticizable.
+Likewise, the meter does not replace the proof. It tells the reader how the
+proof emerged. A manuscript that keeps such notes is easier to trust because it
+does not pretend that polished output arrived without process.
+
+The darkroom also clarifies why stopping is a virtue. Development must stop
+while the image is still alive. The print enters a stop bath not because the
+worker hates detail, but because the chemical process would otherwise continue
+past the desired image. A proof development needs its own stop bath. At some
+point, the definitions are precise enough, the instances are explicit enough,
+the spline has enough knots, and further elaboration will darken the print
+rather than clarify it.
+
+The reader can carry this metaphor into the rest of the book. Science will
+develop observations into method. Physics will develop spacetime into formal
+data. Closure will develop the accumulated tower into a final claim about what
+has halted and what remains open. In each case, the question will be the same:
+what exposure was admitted, what process developed it, what grain limits the
+result, and where should development stop?
+
+The speedometer says the tower needs a diagnostic gauge. The darkroom says the
+image needs a development log. Together they teach the same discipline. Do not
+trust a number merely because it is displayed. Do not trust a print merely
+because it is beautiful. Ask what work produced it, what medium limits it, and
+what interventions shaped it into its final form.
+
+Chapter 6 ends with the meter installed and calibrated. It has not destroyed
+the tower's ambition. It has made the ambition safer to use. The compiler's
+heartbeats, the spline's epsilon, the finite element elephant, and the
+Richardson stopping rule now belong to one diagnostic family. They tell the
+reader that truth in an instrument is never only a proposition. It is a
+proposition carried at a cost, resolved at a scale, and stopped at a boundary.
+
+That is the mercy of the bullshit meter. It lets the book remain ambitious
+without becoming drunk on ambition. It lets the tower climb while asking where
+the stairs groan. It lets precision be loved without letting false precision
+rule the room. And it gives the reader a simple question to carry forward: is
+this refinement buying a new admissible distinction, or is it only developing
+the paper past the image?
+
+The darkroom also teaches patience with failure. Not every bad print means the
+negative is worthless. Sometimes the exposure was too long. Sometimes the
+developer was tired. Sometimes the paper was wrong for the contrast the image
+needed. The equivalent in the tower is a proof that strains, a section that
+overloads the reader, or a definition that keeps demanding more context. The
+first response should not be despair. It should be diagnosis. Which part of the
+process produced the fog?
+
+This gives the chapter a gentler relation to the word on its own title page.
+Bullshit is not merely something wicked people do. In technical work, bullshit
+can accrete from ordinary carelessness, overconfidence, ambition, exhaustion,
+or a failure to stop developing the print. The meter is useful precisely
+because it catches accumulation before it hardens into style. It says: this
+region is getting cloudy; check the exposure, check the grain, check the
+reason for the next refinement.
+
+The darkroom worker also knows that different images ask for different
+treatments. A high-contrast street scene, a soft portrait, and an astronomical
+negative do not want the same development. Likewise, the later chapters will
+not all want the same degree of formal or metaphorical density. Science may
+need methodical witness language. Physics may need more mathematical
+compression. Closure may need synthesis. The meter does not enforce one style.
+It enforces attention to cost.
+
+So the coda leaves the reader in a room lit dimly enough for care. The exposed
+paper is in the tray. The image is appearing, but it is not finished merely
+because something has appeared. Watch the contrast. Watch the grain. Watch the
+clock. Stop when the image has become readable and before the process begins to
+destroy what it revealed. That is also how to read the rest of the book.
+
+The speedometer and darkroom finally meet in the word "calibration." The
+dashboard calibrates motion into a public number. The darkroom calibrates light
+into a visible print. The compiler calibrates definitions into accepted terms.
+Chapter 6 calibrates ambition against cost. It does not ask the project to
+shrink. It asks the project to know the price of staying large.
+
+That price will keep returning. A scientific method that can witness knowledge
+must pay for protocols, replication, and exclusion. A physics chapter that
+claims spacetime as data must pay for coordinates, tensors, integrals, and
+halting boundaries. A closure chapter that says the theory has stopped must
+pay for the history of every earlier stop. The darkroom coda prepares the
+reader to see those payments as part of the image rather than as stains on it.
+
+The final instruction is simple: keep the meter in view without worshiping it.
+A high cost is not automatically bullshit. A low cost is not automatically
+wisdom. The question is whether the cost, the resolution, and the report belong
+to the same instrument. When they do, the print can be trusted at its scale.
+When they do not, the print may still be beautiful, but the notebook will tell
+you where to look for fog. That is enough for the next room of the book: not
+certainty without cost, but confidence with instruments still warm from use.
+The image can travel now.

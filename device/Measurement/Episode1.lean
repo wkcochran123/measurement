@@ -39,47 +39,47 @@ set_option allowUnsafeReducibility true
 -- So, I have been thinking about how to measure things.  Anything.  Even the thing that is
 -- doing the measuring.  While it is doing the measuring.  All the way down.  To try to give
 -- you some idea of what I am talking about, I am going to try to measure how true the proposition
--- _true = true_ is. At least, insofar as Lean will me show you that this isn't nearly as set
+-- _true = true_ is. At least, insofar as Lean will let me show you that this isn't nearly as set
 -- in stone as you might think.
 
 -- We are going to use the generally accepted principles of science and engineering to reverse-engineer
 -- the Lean compiler _AND PHYSICS ITSELF_ and explicitly _measure_ how well it can evaluate _true = true_.
 
 -- Why?  Cuz I understand math, but the way _I_ understand math is _very_ different from most people's.
--- This here lean proof assistant is designed to show me where _I_ don't understand math.  Well, I'm
+-- This here Lean proof assistant is designed to show me where _I_ don't understand math.  Well, I'm
 -- going to show it a thing or two I have picked up over the years.
 
 -- Man vs. Machine!
 namespace Measurement
 
 universe i -- There is only 1 universe, the one we can experience right now, at time step _i_.
-           -- or, is this √-1?  i forget.
+           -- or, is this √-1?  _i_ forget.
 
 -- I have always thought that the comments of the code should tell a story.
 -- The story helps the reader understand what is going on.  So, let me tell
 -- you a story about measurement.  Measurement begins with _facts_.
--- I think you will agree it is easy to see whether or not something happened                +-------------------------------+
--- and if that something happened, that _fact_ is _true_.  Otherwise, it ain't. Clear?       |                               |
+-- I think you will agree it is easy to see whether or not something happened
+-- and if that something happened, that _fact_ is _true_.  Otherwise, it ain't. Clear?
 
-/-
-ME: I need a Fact.
-
-COMPILER: A proposition?
-
-ME: No, a proposition with a receipt.
-
-COMPILER: That is called a proof.
-
-ME: Great. Staple it to the universe.
--/
---                                             +---------------------------------------------+                               |
-@[reducible] --                                |               This is a measurement from a device of my own design. --------+
-class Fact where   -- Bullshit meter ≈ 9   <---+               a clever device that gives us an idea of how much bullshit
-  truth : Prop                 -- Did it happen or not?                                             Lean is putting up with
+-- ME: I need a Fact.
+--
+-- COMPILER: A proposition?
+--
+-- ME: No, a proposition with a receipt.
+--
+-- COMPILER: That is called a proof.
+--                                                           This is a measurement from a device of my own design, a
+-- ME: Great. Staple it to the universe.       +------------ clever device that gives us an idea of how much bullshit
+--                                             |             the LEan elaborator is putting up with.  We will be constructing
+@[reducible] --                                |             a model for this later.
+class Fact where   -- Bullshit meter ≈ 9   <---+
+--
+  truth : Prop                 -- Did it happen or not?
   decTruth : Decidable truth   -- Sometimes the compiler will know the answer before we do!
                                -- This fucker doesn't know math, it is _PSYCHIC_! It seems to understand
                                -- what cannot be possible given the current situation _pretty_ well.
-                               -- _WITCHCRAFT_ I tell you!
+                               -- _WITCHCRAFT_ I tell you!  Seriously, though, Lean can appear to have precognition
+                               -- sometimes.
 
 
 -- Well, let's start with the simplest of all Facts, something that is True.  Here,
@@ -97,13 +97,14 @@ def Truth : Fact := { truth := true, decTruth := Decidable.isTrue rfl }     -- F
      --                                                            ^        -- the compiler what is _true=true_ and it
      --                                                            |        -- said TRUE.  This is the actual mechansim
      --             I assume you, too, can rfl this.  rofl. -------+        -- the compiler uses.  A label for it, anyway.
-
 end Fact
--- Thus ends the storage allocation portion of the program.  The rest of the code reorganizes this vast,
--- deep--- dare I say _BIG DATA_?!-- bit into something that might look familiar to you.
 
--- That's right.  We are going to manipulate the __HELL__ out of that bit by comparing it to itself.
-
+-- Within this one little bit lies _Quantum Electrodynamics_.  Not because this is a math engine, not because we are about
+-- to undergo some _crazy_ math, and certainly not because I want to derive QED. The trouble is, that _bit_ is held in place
+-- by static electricity in RAM and by being pulled high in closer representations.  Electrons are being used to
+-- encode this bit in silicon.  Unless you have one of those new cortical engines that use stem cells to grow neurons. QED
+-- has to be there or the bit will not be consistent enough for Lean to understand.  See?  I wish this could be easier,
+-- but the exit door for this is on the other side of Yang-Mills.
 
 -- But before we measure, though, we have to deal with relative value.  I don't have time to spend _all day_
 -- building you a number system from scratch, so I will just make enough of the number system to get by.

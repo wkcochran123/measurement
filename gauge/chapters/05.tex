@@ -1,123 +1,1047 @@
-\chapter{The Bullshit Meter}
-\label{chap:bullshit-meter}
+\chapter{The Tower}
+\label{chap:the-tower}
 
-% EPISODE COVERAGE: Episodes 6 and 7 revisited through elaboration cost,
-% plus Episode 10's HeartbeatProcess as forward reference.
-% KEY CONCEPT: The heartbeat count is the compiler measuring the logical
-% distance between context and conclusion.
+% EPISODE COVERAGE: Episodes 5, 6, and 7 -- SOURCE/EXECUTED/Abstraction,
+% VALUE/MAGNITUDE/SCALED/LOAD/FINITE_ELEPHANT/Spline, Episode 7 totality proof
+% KEY CONCEPT: The totality proof. The tower exists not just as definitions
+% but as a concrete verified instance.
 
-\section{What the Compiler Finds Expensive}
-\label{se:what-compiler-finds-expensive}
+A speedometer is not one instrument. It is a tower pretending to be one
+instrument. At the bottom is contact with rotation: a wheel, a cable, a pickup,
+a magnet, a toothed ring. Above that is a pulse vocabulary: this crossing
+counts, that flutter does not, this window is still open, that window has
+closed. Above that is arithmetic: pulses per unit time, circumference times
+rotation, smoothing across windows, conversion to miles or kilometers. Above
+that is display: the needle, the digital number, the warning state. The driver
+sees only the top floor.
 
-% In Lean 4, every elaboration step consumes a heartbeat.
-% The device raises maxHeartbeats repeatedly:
-%
-%   set_option maxHeartbeats 400000    -- Episode 7
-%   set_option maxHeartbeats 2000000   -- Episode 13
-%   set_option maxHeartbeats 4000000   -- Episode 15
-%   set_option maxHeartbeats 0         -- Episode 15 final lines
-%
-% These are not programmer impatience. They are measurements.
-% Each increase records the compiler's honest report of how hard it is
-% working to verify the tower so far.
-%
-% Sidebar: What is elaboration? Filling in implicit arguments, resolving
-% typeclasses, confirming types. The heartbeat count is the clock ticking
-% while it works.
+Chapter 5 asks how such a tower can stand. Chapter 4 made the signal honest by
+forcing it through computation, halting, noise, gauge, and unresolved state.
+That was the receiver learning to listen. Chapter 5 asks what happens after a
+signal can be listened to. The instrument must now build an internal world in
+which instructions can be encoded, abstractions can be ordered without falling
+into self-reference, arithmetic can be assembled from small formal parts,
+smooth behavior can be constructed from finite records, and the whole stack can
+be shown to exist by concrete instances.
 
-\begin{gphenom}{Pythagoras-Planck}
-\label{ph:pythagoras-planck}
-\GPhObs Planck's constant $h = 6.626 \times 10^{-34}$ J$\cdot$s sets a minimum
-quantum of action. No physical process can transfer less than one quantum.
-Below $h$, no distinction is admissible.
-\GPhCon The ledger is finite at every scale. There exists a smallest admissible
-distinction, below which no further elaboration is possible.
-\GPhSeq The compiler's heartbeat is the formal analog of $h$: the minimum
-unit of elaboration cost. Below one heartbeat, no verification step
-is admissible. The tower cannot be built for free.
+The speedometer's tower is a useful guide because none of its floors is
+optional. A wheel pulse with no instruction set is just a click. An instruction
+set with no abstraction is a pile of operations that cannot be reused. An
+abstraction with no arithmetic cannot become speed. Arithmetic with no
+interpolation cannot produce a stable needle. A stable needle with no verified
+path back to the sensor is only theater. The tower matters because each floor
+inherits the obligations below it and adds exactly the structure the next floor
+needs.
+
+An electronic speedometer makes this especially plain. A firmware routine
+begins with a few primitive instructions: initialize the counter, clear a bit,
+set a bit, branch, load, compare, return. Engineers build drivers, filters, and
+display logic from that vocabulary. Eventually the dashboard can show a number
+that feels immediate. But immediacy is the illusion of a completed tower. The
+number is the visible output of a hierarchy of encodings and verified
+transitions.
+
+The chapter is called "The Tower" because it stops treating that hierarchy as
+background. It asks the reader to look at the levels themselves. At the bottom
+is an instruction vocabulary small enough to be trusted. Above it is
+abstraction, the ability of a solved problem to behave like a primitive in the
+next problem. Above that is arithmetic assembled from sums, products, bases,
+and loads. Above that is the spline, where finite observations become a smooth
+interpolant without pretending the continuum was given for free. At the top is
+the totality proof: the compiler confirms that the floors are inhabited, not
+merely described.
+
+This chapter also changes the emotional texture of the book. Earlier chapters
+often asked whether a mark may enter. This chapter asks whether the entered
+mark can be built upward without cheating. The question is architectural. A
+tower is not stable because its top is beautiful. It is stable because weight
+is carried down through every floor. A speedometer reading is stable only if
+the needle's motion can be traced back through display logic, arithmetic,
+instruction, signal, threshold, and wheel.
+
+That trace is the chapter's central discipline. Each abstraction must carry a
+receipt from the floor below. Each operation must be limited enough that the
+compiler can accept it. Each new mathematical convenience must be earned by a
+structure that can actually be used. The result is not a grand theory imposed
+from above. It is a tower climbed from below, one verified floor at a time.
+
+The tower is therefore a dependency order, not an ornamented outline of topics.
+Encoding must precede execution because no machine executes an instruction it
+cannot read. Execution must precede abstraction because an abstraction that has
+never run is only a name. Arithmetic must precede the spline because smooth
+interpolation needs sums, products, bases, and loading. The totality proof must
+come last because only the completed stack can be checked as a stack.
+
+An analog speedometer hides the same order in metal. The cable turns, the
+magnet drags the cup, the spring resists, the needle settles, and the dial
+marks give the settled position a public value. If any lower relation fails,
+the upper reading may still move, but it no longer means what it claims to
+mean.
+
+Chapter 5 slows down to label those stairs. Later chapters will use high-level
+words quickly. This chapter teaches the reader to ask what supports them: what
+was encoded, what was executed, what abstraction is being spent as primitive,
+which arithmetic was assembled, which spline made finite records smooth, and
+which instances prove the floor is not empty.
+
+It also teaches the reader not to despise small primitives. The tower begins
+with almost childish gestures: boot, zero, one, compile, execute, add, multiply,
+load. These are not small because the ambition is small. They are small because
+trust has to be small before it can be large. A dashboard number that looks
+effortless is made from many little permissions kept in order. Chapter 5 asks
+the reader to develop affection for that order. The grandeur of the tower is
+not that it escapes primitive acts. The grandeur is that primitive acts can
+become a structure tall enough to hold arithmetic, smoothness, and proof.
+
+That is the mood of this chapter: patient construction under pressure. The
+speedometer does not win trust by sounding philosophical. It wins trust by
+booting, counting, scaling, smoothing, and surviving inspection. The formal
+tower wants the same kind of trust. It will not ask the reader to believe in a
+continuum before showing how finite pieces are allowed to support one.
+
+The reader should feel that patience as relief, not delay. The chapter gives
+each floor enough time to become legible before the next floor leans on it. A
+fast dashboard is useful only because slow construction happened somewhere
+else first.
+
+\section{Encoding Instructions}
+\label{se:encoding-instructions}
+
+The first floor above signal is instruction. A signal may be received, but an
+instrument cannot use it until the signal is encoded as something the machine
+knows how to do. The speedometer's firmware does not receive "speed" as an
+idea. It receives transitions. It has to turn those transitions into primitive
+operations: start, clear, set, count, compare, branch. The chapter begins at
+this humble level because a tower that cannot explain its instruction
+vocabulary is already leaning.
+
+Episode 5 introduces \lean{Equivalation}. The word is odd because ordinary
+equivalence is too still. The device needs equivalence under procedure:
+something has the same value after the machine has done the work that makes
+the sameness usable. In measurement language, this is the difference between
+saying two readings look alike and saying the instrument has a procedure by
+which one can be carried as the other. A speedometer uses this all the time.
+One pulse from one tooth is equivalent to another pulse from another tooth only
+under the procedure that treats both as wheel crossings in the current gauge.
+
+The constructors of \lean{Equivalation} are physical, zero-like, and one-like.
+That is not yet a full arithmetic. It is a way to say that a measurement state
+may be grounded in a jar-like physical condition, may behave like absence, or
+may behave like a next distinguished presence. The tower has learned not to
+import zero and one as metaphysical givens. It must teach the machine how zero
+and one arise as procedural roles.
+
+The next process is digital in the older sense of the word. Digital means
+fingered before it means electronic. A digit is a counted gesture, a way for a
+hand to carry a discrete state. \lean{DigitalProcess} gives the tower a way to
+tick an equivalation from one role into another. The tick does not reveal a
+hidden Platonic bit. It performs a transition. In a speedometer, the equivalent
+transition is the counter advancing when a pulse is admitted. The bit changes
+because the process says it changes.
+
+The instruction vocabulary then narrows to \lean{Encoding}. The type has three
+primitive opcodes: boot, zero, and one. Boot initializes. Zero and one carry
+the two elementary symbolic states. This seems absurdly small until one
+remembers that every actual processor is built from a finite instruction set.
+No CPU understands all possible actions as primitives. It understands a small
+vocabulary and derives complexity by composition.
+
+\begin{leancode}
+| boot : Encoding\\
+| zero : Encoding\\
+| one : Encoding
+\end{leancode}
+
+The point of displaying this tiny excerpt is not to impress. It is to slow the
+reader down. A tower of computation begins with a finite alphabet of actions.
+The instrument is not allowed to assume that arbitrary procedures are already
+available. It starts with initialization and a binary distinction. Everything
+else must be built by sequencing, interpretation, and execution.
+
+\lean{SOURCE} asks where such an instruction sequence claims to come from. The
+name is deliberately broader than source code. A source is the origin story the
+machine is allowed to use. In a speedometer, source may be firmware, a lookup
+table, a calibration constant, or the pulse stream itself. A source is not
+trusted because it exists. It is trusted because it can be carried through the
+ledger's existing promises.
+
+\lean{EXECUTED} adds the question that matters to a machine: what happens when
+the encoding is run? It wraps the instruction vocabulary with an execution
+process, an output question, and the relation between encoded state and
+reported result. The transition from encoding to execution is the transition
+from a possible instruction to an acted instruction. A pulse counter sitting in
+memory is not a speedometer. The instruction must run in time.
+
+\begin{sidebar}{Instruction Sets}
+\label{sb:instruction-sets}
+An instruction set is the finite vocabulary a processor can perform directly.
+Programs feel rich because instructions are composed, not because the machine
+begins with infinitely many primitives. Chapter 5 uses \lean{Encoding} in this
+spirit: boot, zero, and one are not the whole tower, but the first alphabet
+from which the tower can speak.
+\end{sidebar}
+
+The speedometer metaphor helps resist a common mistake. A driver may think the
+instrument "knows" speed. The firmware knows procedures. It can boot, read,
+count, clear, set, compare, and display. Speed emerges only after those
+instructions have been ordered by the tower. If the instruction set is wrong,
+the displayed number can be wrong even if the sensor is perfect. If the source
+is wrong, the execution can be wrong even if the instruction vocabulary is
+sound. The tower must therefore care about source and execution before it cares
+about elegant arithmetic.
+
+This section is the foundation of the chapter because it teaches the tower to
+move from signal to procedure. A signal that cannot be encoded remains a
+received event. A signal that can be encoded can become part of a program. A
+program that can be executed can become a higher-level instrument. The tower
+has begun to climb.
+
+The speedometer's boot sequence makes the point concrete. When the instrument
+powers on, it does not begin by reporting speed. It clears registers, checks
+the display, loads calibration constants, initializes timers, and waits for a
+valid pulse stream. Boot is not decorative. Boot is the act by which the
+instrument creates the conditions under which later zero and one states can
+mean anything. A counter that has not been initialized can still contain bits,
+but they are not yet a measurement.
+
+Zero is equally procedural. The instrument may report zero because no pulses
+have arrived in the current admissible window, because the vehicle is
+stationary, because the sensor has failed and the display has been forced to a
+safe state, or because the firmware has just cleared the register. These are
+not the same physical situation. The tower cares about the procedure by which
+zero is produced. A zero that follows a valid timeout is different from a zero
+that follows a power-on reset.
+
+One is procedural too. A single pulse is not one in the abstract. It is one
+admitted crossing under the current source, gauge, and execution rule. The
+pickup may see a voltage transition; the firmware must decide whether that
+transition is the one it is allowed to count. Once counted, the pulse becomes a
+unit in the instruction vocabulary. Before that, it is only a candidate mark.
+
+This is why the chapter uses a minimal instruction set rather than a familiar
+large one. A large instruction set would hide the problem under convenience.
+Boot, zero, and one are almost embarrassingly small, and that smallness is
+their virtue. The reader can see the transition from physical mark to symbolic
+operation. The tower starts where the compiler can still account for every
+gesture.
+
+Execution then tests whether the gesture can live in time. A stored encoding
+is like a service manual on the passenger seat. It may contain the right
+procedure, but it is not yet measuring. Execution is the procedure acting under
+conditions. It reads a state, produces another state, and leaves behind an
+output relation. The same instruction can behave differently if the source,
+clock, or gauge changes. That is why execution must be formal, not assumed.
+
+The section's deeper claim is that instruction sets are themselves measuring
+instruments. They measure what a machine can do directly. Every later program
+is an experiment conducted inside that vocabulary. If the vocabulary is too
+weak, the experiment cannot be expressed. If the vocabulary is too loose, the
+experiment cannot be trusted. Encoding is the first contract between signal and
+machine.
+
+By the time the section ends, the reader should feel a small but crucial
+shift. The tower is no longer asking only what a reading is. It is asking what
+an instruction is. A reading that can instruct the next process has crossed a
+new threshold. It has become executable material.
+
+Executable material is still material. It can be malformed, stale, mismatched,
+or loaded under the wrong source. A firmware patch can change how the same
+pulse stream is interpreted. A diagnostic mode can execute a different path
+from the driving mode. The tower must therefore remember that execution is
+always execution of some encoding from some source. That memory is the first
+defense against treating software behavior as invisible magic.
+
+This is why debugging begins at the instruction level. When the displayed speed
+is wrong, a careful engineer asks whether the sensor is producing marks, whether
+the marks are admitted, whether the counter is initialized, whether the
+calibration source is current, and whether the display routine is executing the
+same instructions the specification describes. The formal tower keeps those
+questions alive. Encoding is not a prelude to the real mathematics. It is the
+floor on which every later mathematical action must stand.
+
+\section{Abstraction and the Berry Paradox}
+\label{se:abstraction-berry}
+
+An abstraction is where a solved problem learns to impersonate a primitive.
+Once the speedometer's firmware has a trusted routine for counting pulses over
+a window, later code does not need to reprove pulse counting every time it
+asks for speed. It calls the routine. The routine behaves like a new primitive
+for the next layer. This is useful, dangerous, and unavoidable.
+
+The danger is self-reference. An abstraction can refer to what came before it,
+but it can also be tempted to define itself by the very act of definition. The
+Berry paradox is the classic warning: "the smallest positive integer not
+definable in under eleven words" appears to define such an integer in under
+eleven words. The phrase trips over its own power. It uses the system's
+definition machinery to point at the boundary of definability from inside that
+same machinery.
+
+Chapter 5 cannot ignore this. The tower has just learned how to encode and
+execute instructions. It now wants abstractions so later floors do not have to
+carry every lower detail explicitly. But if abstraction is allowed to float
+freely, it can become the same trap: a process that claims more definitional
+power than it has earned.
+
+\lean{Abstraction} has three roles: satire, compile, and execute. Satire is
+the base case, the deliberately awkward reminder that not every formal object
+is already a useful machine action. Compile and execute are the two serious
+movements. Compile turns an encoding into a form the machine can carry.
+Execute runs the carried form. A speedometer's calibration table is compiled
+into firmware; the firmware is executed when pulses arrive. Confusing those
+acts is how instruments lie to themselves.
+
+\begin{leancode}
+| satire : Fact -> Abstraction\\
+| compile : Fact -> Encoding ->\\
+\quad Abstraction -> Abstraction\\
+| execute : Fact -> Encoding ->\\
+\quad Abstraction -> Abstraction
+\end{leancode}
+
+The order on abstractions is careful because the tower cannot allow every
+abstraction to compare with every other abstraction. Compile may sit below
+execute because compilation prepares execution. Satire is not simply smaller
+than execution. It is a different kind of formal gesture. The code's ordering
+is not a mathematical flourish. It is a guardrail against pretending that every
+named abstraction belongs on one clean ladder.
+
+The strict order matters even more. A nonterminating or self-referential
+ordering would ruin the tower. To say that one abstraction is less than another
+must itself terminate as a usable comparison. The tower is not allowed to
+define an order whose own use reopens the Berry problem. Abstraction must be
+bounded enough to be executed by the compiler that carries it.
+
+\lean{VALUE} wraps abstraction as carried context: an abstraction and a
+less-than predicate. A value is not a naked object. It is an object inside the
+process that knows how to compare and carry it forward.
+
+In the speedometer, a value is never naked. "Sixty" on the dial is not just
+the integer 60. It is 60 under a unit, a calibration, a timing window, a
+filter, a source, and an executed display routine. The value can be compared
+with 55 or 65 because the instrument carries the abstraction that makes such
+comparison meaningful. Without that abstraction, the number is a symbol with
+no operational home.
+
+\begin{gphenom}{Galileo-Abel}
+\label{ph:galileo-abel}
+\GPhObs Galileo's free-fall law separates the law of acceleration from the mass
+of the falling body. Abel's impossibility theorem separates polynomial roots
+from the hope of one general radical formula for all quintics. In both cases, a
+familiar presentation is not the same as the structure it tries to describe.
+\GPhCon An instrument may change presentation without changing the law, and a
+presentation may fail without destroying the object. The invariant is not the
+surface form. It is the dependency relation that survives the allowed change.
+\GPhSeq \lean{VALUE} preserves the order on \lean{Abstraction}: compile remains
+below execute. The carried value is useful because the dependency order
+survives the presentation in which the instrument meets it.
 \end{gphenom}
 
-\section{The Bullshit Meter Annotations}
-\label{se:bullshit-meter-annotations}
+The phenomenon box names the good side of abstraction. An invariant can survive
+changes in representation. Galileo's falling bodies and Abel's transformations
+both teach that law is not the same thing as presentation. Chapter 5 wants the
+same strength for the tower. If compile is structurally before execute, that
+relation should not depend on the incidental instrument doing the work.
 
-% The comments in the code: -- Bullshit meter approximately N.
-% Show a sampling from different episodes to illustrate the meter climbing.
-%
-% Early episodes: small numbers.
-% Episode 6: climbs as arithmetic and splines are introduced.
-% Episode 7: the instance cascade. The meter spikes.
-% Episode 15: 32 typeclass parameters. The meter is pegged.
-%
-% Frankfurt's bullshit: "On Bullshit" (2005) distinguishes lies from bullshit.
-% The bullshit meter measures the accumulated overhead of prior commitments
-% that the compiler must now carry -- regardless of whether those commitments
-% were well-chosen.
-%
-% Sidebar: Frankfurt's bullshit. The bullshitter does not care about truth.
-% The bullshit meter cares about nothing but truth. It measures exactly how
-% much truth the compiler has been forced to carry.
+But invariance is earned only when self-reference is controlled. The Berry
+paradox shows what happens when naming becomes too powerful. The
+\lean{Abstraction} layer makes the reference structure explicit and bounded. It does not
+let the tower say "the abstraction that defeats this abstraction" and then
+walk away smiling. It asks which constructor is being used, which encoding is
+being carried, and which comparison is allowed to terminate.
 
-\section{Precision Has a Price}
-\label{se:precision-has-a-price}
+This section therefore gives the tower its second floor. The first floor was
+instruction. The second is reusable procedure. The price of reuse is
+discipline. An abstraction may impersonate a primitive only after the compiler
+can see how it was compiled, how it may be executed, and how it avoids eating
+its own definition.
 
-% The spline epsilon: the informational quantum.
-% After threading through all observed points and satisfying all knot
-% constraints, there remains a family of valid splines that cannot be
-% distinguished by any admissible measurement within the current ledger.
-%
-% The compiler analogy: the gap between definitional and propositional equality.
-% Below epsilon, no new distinction is admissible in either system.
-%
-% Connect forward: Chapter 8 (Stress) in the instrument develops the spline
-% epsilon in full. Here we show its Lean precursor in FINITE_ELEPHANT.
+The speedometer's unit conversion is a gentle example. Once the firmware knows
+how to convert wheel pulses into miles per hour, later routines can treat that
+conversion as a primitive. A cruise controller may ask whether speed is below a
+target. A warning routine may ask whether speed exceeds a limit. Those later
+routines need not rebuild the conversion each time. They rely on an
+abstraction. But if the conversion routine secretly depends on the warning
+routine, or if its definition changes depending on who asks, the instrument has
+created a Berry-like knot inside its own dashboard.
 
-\begin{gphenom}{von Neumann}
-\label{ph:von-neumann}
-\GPhObs Every floating-point system has a machine epsilon: the smallest
-number that, added to 1.0, produces a result distinguishable from 1.0.
-Below machine epsilon, the arithmetic system cannot record a difference.
-\GPhCon The instrument cannot resolve distinctions smaller than its machine
-epsilon. The ledger cannot record events below this threshold.
-No refinement below this scale produces a new entry.
-\GPhSeq \lean{FINITE\_ELEPHANT}'s \lean{finite?} predicate is the machine epsilon
-test for the tower: below epsilon, the sequence has converged and no
-further refinement is admissible. The compiler stops not because it
-is tired but because there is nothing left to distinguish.
+Good abstraction therefore has provenance. It remembers the encoding it
+compiled from, the conditions under which it may execute, and the comparison
+rule by which it can sit below or above another abstraction. This is why the
+constructors carry facts and encodings. The abstraction is not an empty label.
+It is a record of how a lower process became a reusable higher process.
+
+The satire constructor keeps the chapter from becoming too solemn about its
+own abstractions. Some formal gestures look like abstractions but do not yet
+function as reusable machine parts. Satire is the tower's way of preserving a
+place for that awkwardness. Not every named thing has earned execution. Not
+every clever phrase has become a floor. This is a surprisingly practical
+warning in formal work, where a seductive definition can feel like progress
+before it has been connected to anything.
+
+The Berry paradox also explains why less-than matters more than it first
+appears. Ordering abstractions is a way to control dependency. Compile before
+execute is not merely a slogan; it is a termination discipline. If execution
+could be prior to its own compilation, or if a definition could be ordered by a
+comparison that requires the definition itself, the tower would circulate
+without climbing. The strict order forces a direction.
+
+This direction is what lets later floors spend abstraction safely. Arithmetic
+will soon use operations as if they were available units. The spline will use
+polynomial structure as if it were a tool. The totality proof will use
+instances as if each floor can be summoned by name. All of that depends on the
+Berry problem being contained here. The tower must know the difference between
+a reusable primitive and a self-referential trap.
+
+The speedometer's calibration routine again gives a practical version. A
+calibration can be loaded and executed. Later speed estimates can depend on it.
+But the calibration cannot be defined as "the calibration that makes this
+speedometer correct in all cases where its correctness is questioned." That
+sentence sounds clever and measures nothing. A usable calibration has finite
+source, bounded procedure, and known application. It can be wrong, but it is
+not self-devouring.
+
+Abstraction is therefore not the enemy of measurement. It is the way
+measurement becomes usable at scale. The danger is unreceipted abstraction,
+abstraction without source, execution, or terminating order. Chapter 5 allows
+abstraction only after it has learned to carry its receipts.
+
+The practical payoff is maintenance. A mechanic can replace a speed sensor
+because the rest of the instrument treats the sensor through an abstraction:
+produce admissible pulses under this gauge. The replacement part does not need
+to be metaphysically identical to the old part. It must satisfy the abstraction
+the tower uses. Good abstraction makes substitution possible without erasing
+accountability. Bad abstraction makes substitution look possible until the
+system fails.
+
+The Berry paradox is the nightmare version of bad substitution. A phrase
+pretends to substitute for a bounded description while smuggling in the whole
+act of description. Chapter 5's abstraction layer refuses that trick. It lets a
+solved process stand in for a primitive only when the standing-in has a visible
+source and a direction of execution. The result is not less abstraction. It is
+abstraction strong enough to be maintained.
+
+\section{Arithmetic Assembled}
+\label{se:arithmetic-assembled}
+
+The tower can now encode instructions and control abstraction. It still does
+not have ordinary arithmetic as a gift. Chapter 5 insists that arithmetic be
+assembled. This is one of the book's most important refusals. Arithmetic is
+not a bag of familiar operators imported because the reader expects them. It
+is a set of behaviors the ledger earns by constructing the processes that make
+them usable.
+
+The speedometer again keeps the refusal honest. A dashboard can display speed
+only after it has assembled addition, multiplication, scaling, basis choice,
+loading, and smoothing in a concrete procedure. Pulses must be summed. Counts
+must be multiplied by calibration factors. Time windows must scale the result.
+Encoded sensor data must be loaded into the process and decoded back into a
+reported value. The arithmetic is not floating above the instrument. It is the
+instrument's internal labor.
+
+Episode 6 begins with \lean{Sum}: zero and add. Addition is the first
+assembled operation because the instrument must accumulate. A speedometer
+counts wheel events in a window. A fuel injector counts pulses. A Geiger
+counter counts clicks. Sum is not glamorous, but without it there is no
+running ledger of events. \lean{MAGNITUDE} then asks whether one sum can
+dominate another. Counting becomes comparison of size.
+
+The next form is \lean{Product}. It has origin, one, and multiplication.
+Product is where scaling enters. A speedometer multiplies wheel rotations by a
+circumference. A display may multiply by a unit conversion. A controller may
+multiply by a gain. Multiplication is not just repeated addition in this
+context. It is the formal act of making one accumulated quantity act as a
+scale on another.
+
+\lean{SCALED} asks about orthogonality. Two products may scale along
+independent directions. A speedometer's pulse count and its clock count are
+not the same dimension; they meet in a ratio. A vector space needs basis
+structure because not every direction is interchangeable with every other
+direction. Orthogonality is the promise that two scaling roles can be kept
+apart while still belonging to the same assembled arithmetic.
+
+\lean{Basis} then gives the tower a three-part vector-space skeleton:
+null-space, origin, and basis. This is not yet a full linear algebra course.
+It is the minimum formal shape needed to say that some changes do nothing, some
+point marks the start, and some set of directions spans the space in which the
+instrument will operate. For the speedometer, the null-space may be
+disturbance that does not move the reported value. The origin is zero speed.
+The basis is the calibration structure by which pulses and time become a
+speed dimension.
+
+\lean{LOAD} adds decoding. This is crucial. A model may accept encoded data
+without being able to recover the record it needs. A speedometer that logs raw
+sensor ticks but cannot decode them back into calibrated speed has stored
+activity, not measurement. Loading is not merely placing data in memory. It is
+placing data where the process can invert enough of the encoding to answer the
+question being asked.
+
+\begin{gphenom}{Dirichlet-Bancroft}
+\label{ph:dirichlet-bancroft}
+\GPhObs Dirichlet's function is 1 on rationals and 0 on irrationals. It is
+defined everywhere but Riemann-integrable nowhere. A model can be complete --
+defined for every input -- while being useless for measurement.
+\GPhCon Model completeness is not ledger sufficiency. A model that cannot
+invert its encoding cannot recover the original record, even if it is defined
+for every possible input.
+\GPhSeq \lean{LOAD}'s \lean{decoded?} predicate marks this boundary. A model
+accepted by the compiler is not necessarily a model that can answer questions.
+Completeness is cheap; sufficiency is earned.
 \end{gphenom}
 
-\section{When Refinement Stops}
-\label{se:when-refinement-stops}
+The phenomenon box is a warning against a common mathematical comfort. A
+function can be total and still useless for the measurement at hand. Dirichlet's
+function is defined everywhere, but it does not give the kind of integrable
+structure an instrument can use for ordinary accumulation. Likewise, a data
+model can accept every input and still fail to produce a recoverable record.
+The tower cares about sufficiency, not mere total domain.
 
-% The Richardson Effect: measure a coastline at 100km resolution and you
-% get one number. At 10km, a larger number. At 1km, larger still.
-% The measured length diverges as resolution increases.
-%
-% This is not a paradox -- it is the correct behavior of any instrument
-% near its resolution limit. At some scale, the instrument can no longer
-% distinguish the signal from the noise.
-%
-% In the device, this stopping point is formalized by FINITE_ELEPHANT's
-% finite? predicate.
-%
-% The name FINITE_ELEPHANT: the elephant in the room of finite element
-% analysis is that all smooth fields are approximated by piecewise
-% polynomial functions. FINITE_ELEPHANT is the honest acknowledgment
-% that the elephant exists and is finite.
+\lean{FINITE\_ELEPHANT} appears as the digital-to-analog layer. The name is
+comic, but the role is serious. A finite process may produce smooth behavior
+only by passing through a structure that knows how discrete values become
+oscillation, approximation, or display. A speedometer's digital count becomes a
+smooth needle only through such a layer. The smoothness is not imported. It is
+generated from finite instructions.
 
-\begin{gphenom}{Richardson}
-\label{ph:richardson}
-\GPhObs Lewis Fry Richardson measured that the reported length of a national
-border depends entirely on the length of the ruler used to measure it.
-Shorter rulers find longer borders. The coastline has no definite length.
-\GPhCon A fractal boundary has no well-defined length at infinite resolution.
-The instrument must choose a resolution and accept the result as approximate.
-Below the chosen scale, no further distinction between segments is admissible.
-\GPhSeq The spline's informational quantum $\varepsilon$ is the compiler's
-chosen resolution: the point below which no further distinction is admissible.
-The ledger does not grow forever. It stops when refinement stops buying anything.
+\lean{BASICProcess} adds minimal flow control: GOSUB and GOTO. This is not
+nostalgia. The point is that once arithmetic is assembled, the instrument needs
+control flow. It must branch, return, and repeat. A speedometer must reset a
+window, continue a filter, jump to a fault routine, or return to display. Even
+the humblest arithmetic needs a little program around it.
+
+By the end of this section, arithmetic has become a working floor of the
+tower. Addition, magnitude, product, scale, basis, load, finite smoothing, and
+flow control have all appeared as explicit structures. The reader is not being
+asked to forget ordinary arithmetic. The reader is being asked to notice what
+ordinary arithmetic costs when an instrument must actually carry it.
+
+The cost appears whenever a reading is used outside the narrow context in which
+it was first produced. A pulse count by itself can be added. To become speed,
+it must be divided by time or multiplied by a reciprocal time scale. To become
+distance, it must be accumulated against circumference. To become acceleration,
+it must be compared against another speed across another interval. Each new
+quantity is arithmetically familiar, but each requires a different load path
+through the instrument.
+
+This is why basis matters. The instrument must know which dimensions it is
+assembling. Pulse count, clock ticks, wheel circumference, and display units do
+not belong to one undifferentiated heap. They are coordinates in a working
+space. The null-space matters because some disturbances should vanish from the
+reported value. The origin matters because zero speed is not the same as a
+missing reading. The basis matters because the instrument must know how to
+combine independent directions without confusing them.
+
+The finite elephant is funny because the task is large and the carrier is
+small. A finite digital process is asked to produce behavior that appears
+smooth, analog, and continuous. That is exactly what dashboards do. A digital
+controller updates a display often enough that the driver experiences motion
+rather than discrete jumps. The elephant is finite because every update is
+discrete. It is large because the displayed phenomenon pretends to be smooth.
+
+Flow control completes the floor because arithmetic is never merely an
+expression in a living instrument. It is a path through cases. If the pulse
+window is empty, do one thing. If the count is implausible, do another. If the
+sensor has failed, branch to a diagnostic routine. If the value is valid, load
+the display update. BASIC's old GOTO and GOSUB are crude names for a permanent
+truth: computation needs routes as well as formulas.
+
+The assembled arithmetic section is therefore less about inventing addition
+and multiplication than about domesticating them. The tower wants these
+operations to live inside measurement rather than above it. Sum is
+accumulation with receipts. Product is scaling with receipts. Basis is
+direction with receipts. Load is decoding with receipts. Flow control is
+procedure with receipts. The repeated phrase is the point.
+
+Once arithmetic has receipts, it can be trusted by later smooth constructions.
+Without receipts, a smooth curve may be built from numbers whose origins have
+already been forgotten. With receipts, the curve remains tethered to the
+instrument. The speedometer can draw a needle path because the arithmetic below
+the path has not dissolved into anonymous calculation.
+
+There is also a lesson about units. Arithmetic that ignores units can produce
+formally valid nonsense. Adding pulse counts to milliseconds is not a speed
+calculation. Multiplying by a circumference in the wrong unit can produce a
+beautifully precise wrong answer. The tower's assembled arithmetic must
+therefore remember basis and load, not just operator shape. The speedometer
+works because the arithmetic is dimensional before it is numerical.
+
+This is why "assembled" is the right word. The pieces have to fit. Addition,
+product, scaling, basis, loading, and flow control are not independent
+decorations. They are parts of one mechanism. The section teaches the reader
+to inspect the mechanism before trusting the number it emits.
+
+The assembled mechanism is also reusable. Once the speedometer has an honest
+way to add pulses, scale by circumference, compare against time, and load the
+result into a display routine, later systems can use speed as an input. Cruise
+control, braking assistance, navigation, and fault diagnostics all inherit the
+assembled arithmetic. They do not inherit a naked number. They inherit a number
+with a machine history, which is the only kind this tower trusts.
+
+\section{The Spline}
+\label{se:the-spline}
+
+A speedometer needle should not twitch with every raw pulse. It should move
+smoothly enough to be readable and responsively enough to be useful. That
+smoothness is not the same as the raw data. It is an interpolated behavior
+constructed from finite observations under constraints. The chapter names this
+floor \lean{Spline}.
+
+A spline is a curve built from pieces. It passes through or near selected
+points called knots while satisfying smoothness conditions between them. The
+important lesson is that the continuum is constructed, not assumed. A finite
+instrument does not receive a continuous speed field from heaven. It receives
+discrete observations and builds a smooth report under rules.
+
+\lean{Spline} has three constructors: observation, knot, and interpolant. An
+observation is the raw admitted fact. A knot is a constraint that holds the
+curve at a meaningful location. An interpolant is the smooth structure that
+threads the observed and constrained record. The smooth curve is not a
+primitive object. It is the result of a finite process that has learned how to
+respect its data.
+
+\begin{leancode}
+| observation : Prop -> Spline\\
+| knot : Prop -> Polynomial -> Spline -> Spline\\
+| interpolant :\\
+\quad Fact -> Polynomial -> Polynomial ->\\
+\quad Spline -> Spline -> Spline
+\end{leancode}
+
+The speedometer's display filter is a small spline-like story. The instrument
+has observed pulse counts at times. It has constraints: the needle cannot jump
+infinitely fast, the display should not flicker, the reported speed should
+follow sustained acceleration. The interpolated display is the curve the driver
+sees. It is not every raw pulse. It is a constructed reading that honors the
+knots the instrument regards as admissible.
+
+The chapter also invokes polynomials and Galerkin projection. That method
+projects a continuous problem onto a finite basis. Instead of solving in an
+infinite space directly, one chooses basis functions and asks for the best
+finite approximation inside their span. This is finite element thinking:
+approximate the continuous by assembling local, computable pieces.
+
+The tower needs this because measurement sits between finite records and
+continuous claims. Physics speaks of smooth motion, fields, curvature, and
+flow. Instruments produce finite entries. The spline is the bridge. It says:
+given observations, knots, and polynomial structure, the ledger may construct a
+smooth-enough object without pretending smoothness was present before the
+construction.
+
+This matters for the book's relationship to calculus. A derivative of a raw
+pulse train is mostly nonsense. A derivative of an interpolated curve may be
+usable if the interpolation process is part of the record. A speedometer can
+estimate acceleration only after speed has been smoothed into a path whose
+change makes sense. The spline is therefore not decoration. It is what lets
+later differential language have a measured subject.
+
+The word "unique" should also be handled with care. In ordinary spline theory,
+constraints can determine a unique admissible interpolant under chosen
+conditions such as degree, knots, and smoothness. The tower's point is not that
+every set of observations magically yields one obvious curve. The point is that
+when the constraints are named, the interpolant is accountable to them. A
+different knot choice or smoothness condition is a different gauge of the
+continuous report.
+
+For the speedometer, this is the difference between a racing display and a
+family sedan display. The racing display may prefer responsiveness; the sedan
+may prefer smoothness. The same pulses can produce different visible curves
+because the interpolation constraints differ. Neither curve is the wheel
+itself. Each is a constructed report for a purpose.
+
+The spline also protects the reader from another false comfort: that finite
+data automatically imply a continuum. They do not. Infinitely many curves can
+pass through finitely many points. The instrument earns its curve by adding
+constraints, basis, and admissibility. The curve is a measured artifact. It is
+not a metaphysical disclosure.
+
+This section gives the tower its smooth floor. Arithmetic can now become a
+path. Encoded values can be loaded, scaled, assembled, and interpolated. The
+needle can move as if it were continuous because the tower has built the
+conditions under which that motion is an honest report.
+
+The spline also helps the reader understand why approximation is not a
+confession of failure. Every instrument approximates. The question is whether
+the approximation is accountable. A speedometer display that updates ten times
+per second is not lying because it does not show infinitely many values between
+updates. It is honest if the interpolation rule, update window, and smoothing
+constraints are appropriate to the measurement task. Approximation becomes
+deception only when the rule is hidden or when the smooth report claims more
+than the finite record can support.
+
+Knots are the moral center of the spline. A knot says: this finite constraint
+matters. The curve may be smooth between knots, but it must answer to them. In
+experimental practice, knots are calibration points, observed samples, boundary
+conditions, or conservation constraints. For the speedometer, knots might be
+verified pulse counts at known wheel speeds, zero at rest, or a maximum
+allowed acceleration of the display needle. The interpolant is free only within
+the discipline those knots impose.
+
+The Galerkin idea reinforces that discipline. Rather than pretending to solve
+a continuous problem in its full infinite richness, one projects the problem
+onto a finite basis. That projection is not a surrender. It is the way finite
+machines do honest work with continuous phenomena. The basis is chosen, the
+residual is controlled, and the approximation is judged relative to the chosen
+space. A finite element mesh is not the object. It is the instrument's
+accountable grip on the object.
+
+The chapter's spline is therefore the first place where the tower begins to
+look like engineering mathematics in the usual sense. Earlier floors built
+receipts, instructions, values, sums, and products. The spline uses them to
+make a shape. The shape can be seen, plotted, differentiated, and used by
+later physics. But the reader should now know better than to treat the shape as
+free. It is the child of finite records and named constraints.
+
+There is a political lesson hiding in the mathematics as well. Smooth curves
+are persuasive. They look more authoritative than the scattered points from
+which they came. A chart with a smooth line can make sparse or noisy data feel
+inevitable. The tower resists that seduction by making the spline's
+construction visible. The curve is admissible only because its observations,
+knots, polynomial basis, and interpolation rule have been named.
+
+This is why the spline belongs before the totality proof. The tower must show
+not only that it can build discrete arithmetic but that it can responsibly
+construct the smooth objects later chapters will need. Totality without a
+smooth floor would leave the later physics unsupported. Smoothness without
+totality would leave the curve theatrical. Together they make a path the
+compiler can climb and the reader can inspect.
+
+The speedometer needle has become the chapter's simplest spline. It is a
+smooth report assembled from finite rotations. It is useful because it hides
+raw jitter, and honest only if the hiding has rules. The tower's spline keeps
+those rules in the record.
+
+A spline also gives the reader a way to understand prediction. Once a smooth
+curve has been constructed, the instrument may estimate a value between
+observed points. That estimate is not an observation. It is an interpolated
+claim under the spline's constraints. A speedometer needle between pulses is
+doing exactly this: it reports a continuous-looking value between discrete
+sensor events. The report is useful because the interpolation has been made
+part of the instrument.
+
+Prediction beyond the knots is more dangerous. Extrapolation asks the spline
+to speak outside the region where observations constrain it. A dashboard may
+briefly carry a trend forward when pulses are delayed, but the longer it does
+so, the more it owes the reader a warning. The tower's spline discipline
+therefore teaches a difference between interpolation and prophecy. Smoothness
+inside the record is one thing; confidence beyond the record is another.
+
+This distinction will matter later, when the book talks about science and
+physics. A theory often behaves like a spline at a higher scale. It honors
+known observations, imposes smoothness and symmetry conditions, and then speaks
+between or beyond the measured points. Chapter 5 wants the reader to feel the
+difference between those acts. Interpolation inside a disciplined record is a
+measured convenience. Extrapolation beyond it is a wager that must remain
+visible as a wager.
+
+The speedometer is humble enough to make the lesson merciful. When it smooths
+between pulses, the driver benefits. When it keeps reporting a confident speed
+after the sensor has gone silent, the driver is endangered. The same formal
+curve can be helpful or dishonest depending on where its constraints end. The
+spline floor teaches the tower to know that boundary before later theory asks
+for more.
+
+\section{The Totality Proof}
+\label{se:totality-proof}
+
+A tower made only of definitions might still be imaginary. One can describe
+beautiful floors that no one can inhabit. Lean demands more. To declare an
+instance is to provide a concrete inhabitant of a class. The compiler does not
+merely admire the blueprint. It asks whether each promised floor can actually
+be built on the floor below.
+
+Episode 7 provides the cascade. Seventeen chained instances carry the tower
+from the early promises through the later machinery. Each instance is local.
+It says: assuming the lower floors, here is how this floor is inhabited. The
+global result is the tower, but the proof proceeds by local construction. This
+is why the chapter can claim totality. The tower is not only a collection of
+names. It has been instantiated.
+
+The speedometer's manufacturing line offers a concrete analogy. A design file
+may say that the instrument has a sensor, a counter, a filter, a display, and a
+calibration routine. But the manufactured unit must pass tests. Does the sensor
+produce pulses? Does the counter advance? Does the filter settle? Does the
+display respond? Does the calibration fit the tire radius? Each test is local,
+but passing all of them makes the instrument real.
+
+The totality proof is that test bench for the formal tower. The compiler checks
+that each class can be inhabited under the accumulated assumptions. A missing
+instance is a missing floor. A mismatched dependency is a beam that does not
+land on its support. The proof is not glamorous, and that is why it matters.
+Real towers stand by unglamorous load paths.
+
+The heartbeat counter belongs here. Lean's elaborator works under resource
+limits. When the tower becomes large enough, those limits have to be raised.
+That is not merely an inconvenience. It is evidence that the compiler is doing
+work. The tower is not a poem written in Lean syntax. It is a set of
+dependencies the elaborator must actually traverse.
+
+\begin{gphenom}{Markov-Conway}
+\label{ph:markov-Conway}
+\GPhObs Conway's Game of Life produces arbitrarily complex structures --
+gliders, oscillators, universal computers -- from three local rules applied to
+a binary grid. No global architect is required.
+\GPhCon Global structure emerges from local admissibility conditions. The tower
+does not need a designer hovering above it; it needs each floor to be locally
+consistent with the floor below.
+\GPhSeq Each typeclass instance in \episode{7} is a local rule. The instance
+cascade is the Game of Life running on the tower: global structure, the
+verified existence of the entire hierarchy, emerges from local consistency
+checks.
 \end{gphenom}
 
-% End of chapter: the compiler has been measured. Its elaboration cost is
-% a real number, rising with each new layer. Its resolution limit is real.
-% The instrument is calibrated. It knows its own limits.
+The Conway comparison is apt because no single cell in Life knows the glider.
+Each cell follows a local rule. The glider is the pattern that emerges when
+those rules are applied coherently. Likewise, no single instance in Episode 7
+is the whole tower. Each instance confirms one local promise. The tower is the
+pattern produced by the cascade.
 
+This is also why totality differs from completeness. Completeness might mean
+that every syntactic piece has been named. Totality means the construction has
+inhabitants all the way up. A speedometer manual may list every subsystem. The
+test bench asks whether a real unit exists whose subsystems work together. The
+compiler is the test bench.
+
+There is a philosophical temptation to treat formalization as a decorative
+appendix to prose. This chapter rejects that. The prose can explain why the
+tower matters, but the instance cascade is what makes the tower more than
+explanation. Lean does not care whether the metaphor is attractive. It checks
+whether the promised structure can be elaborated.
+
+The result is modest and enormous. Modest, because the tower is local to this
+construction and inherits its rough edges. Enormous, because a verified
+inhabitant changes the status of the manuscript. The book is no longer only
+saying "imagine a hierarchy like this." It is saying "here is a hierarchy the
+compiler has been made to accept."
+
+By the end of Chapter 5, the tower stands. It has an instruction floor, an
+abstraction floor, an arithmetic floor, a spline floor, and a totality proof
+that the floors are not merely decorative. The next chapter can ask what the
+compiler finds expensive because there is now a real object whose expense can
+be felt.
+
+The totality proof also changes the burden of disagreement. Before the proof,
+one might object that the tower is only a sequence of suggestive names. After
+the proof, the better objection has to be more precise. Which instance fails
+to mean what the prose says? Which dependency is too weak? Which abstraction is
+too expensive? Which floor should be rearranged? The compiler has not made the
+book unquestionable. It has made the questions sharper.
+
+This is the real gift of formalization. It does not end interpretation. It
+focuses interpretation. A reader can still disagree with the modeling choices,
+but the choices are no longer fog. They have names, dependencies, and
+inhabitants. The tower may be eccentric, but it is not merely atmospheric. It
+has joints one can inspect.
+
+The speedometer analogy ends here with a passed bench test. The instrument is
+not perfect. It may be calibrated for the wrong tire. It may smooth too much or
+too little. It may fail under conditions the designer did not anticipate. But
+it is no longer a sketch. It powers on, receives pulses, executes procedures,
+assembles arithmetic, moves a needle, and can be tested as a unit. That is what
+the instance cascade gives the formal tower.
+
+The raised heartbeat is part of the story because it registers strain. A proof
+that costs nothing might still be correct, but a proof that makes the compiler
+work reminds the reader that dependency has computational weight. The tower is
+not an outline drawn in air. It is something the elaborator has to carry. The
+next chapter will make that weight explicit by measuring the price of
+precision.
+
+The totality proof is therefore both ending and invitation. It ends the
+construction phase by showing that the floors can stand together. It invites
+the cost phase by revealing that standing together is not free. A verified
+tower still has load, strain, and maintenance. Chapter 6 will listen for that
+strain.
+
+The instance cascade also teaches that verification is cumulative. The last
+instance does not float above the first. It depends on the chain of prior
+inhabitants. If an early promise changes, the upper floors may have to be
+rebuilt. This is familiar to anyone who has changed a sensor specification and
+then watched calibration, filtering, display, and diagnostics all need review.
+Formal dependency is not bureaucracy. It is how the tower remembers its own
+load paths.
+
+There is a second lesson: local success does not mean global triviality. Each
+instance may be understandable on its own, yet the cascade can still be hard
+for the compiler. Many small obligations become a large elaboration problem.
+That is why the raised heartbeat is narratively right. The compiler's strain
+is the felt cost of totality. The tower stands, and the compiler has the
+sweat to prove it.
+
+The proof also marks a change in what the manuscript can responsibly claim.
+Before totality, the prose could gesture toward a possible hierarchy. After
+totality, the prose can refer to an inhabited hierarchy. That does not make
+every interpretation correct, but it changes the ground. The reader is now
+arguing with a built object, not only with an analogy.
+
+Totality also gives the reader confidence in the chapter's pacing. The earlier
+sections may feel slow because they refuse shortcuts. The proof reveals why
+that patience mattered. Each floor was prepared so that the next floor could
+actually be inhabited. The speedometer was not assembled slowly because the
+builder loved ceremony. It was assembled slowly because skipping a floor would
+leave no place for the test bench to attach its probes.
+
+This is why Chapter 5 is the hinge between construction and critique. Chapter
+6 can measure bullshit because Chapter 5 has given it something real enough to
+strain. Without totality, cost would be theatrical. With totality, cost becomes
+diagnostic.
+
+The chapter ends construction without ending responsibility. A verified tower
+can still be awkward, expensive, overly specific, or hard to extend. Totality
+does not mean the final design is beautiful. It means the design has crossed
+from rhetoric into artifact. Chapter 6 will take that artifact seriously enough
+to ask how much precision it can afford.
+
+This is why the proof feels like a handoff rather than a curtain call. The
+tower is now sturdy enough to be measured. Its practical measured strength can be tested, its
+costs can be counted, and its refinements can be judged against the work they
+actually demand from the compiler and the patient reader who must follow the climb.
+
+\section*{Coda}
+\markboth{CODA}{CODA}
+
+A tower can also be heard as an organ. The pipes visible to the audience are
+not the instrument by themselves. Beneath them are keys, trackers, valves,
+windchests, reservoirs, stops, and the bellows that give the whole system
+breath. Pressing a key does not create a note directly. It opens a path. Air
+travels through a mechanism, chooses a pipe, meets a resonant body, and becomes
+sound.
+
+Chapter 5 has built its tower like that organ. Encoding is the keyboard: a
+finite vocabulary of actions the player can actually press. Abstraction is the
+stop mechanism: one gesture can bring a prepared bank of pipes into play.
+Arithmetic is the windchest: pressure, distribution, scaling, and routing.
+The spline is the pipe speaking smoothly from a finite opening. The totality
+proof is the moment the builder pumps the bellows and discovers that the
+instrument really sounds.
+
+The metaphor helps because an organ is hierarchical without being abstract in
+the empty sense. Every level has a job. A key with no valve is decoration. A
+valve with no wind is motion without sound. Wind with no pipe is pressure
+without pitch. A pipe with no tuning is noise with ambition. Only the assembled
+instrument can play.
+
+The speedometer taught the chapter through engineering. The organ teaches it
+through resonance. A tower is not only a stack of supports; it is a stack of
+permissions for vibration. Lower floors make higher sounds possible. Higher
+sounds do not erase the lower floors. When a chord fills a room, the listener
+does not hear the tracker action, but the tracker action is inside the chord's
+possibility.
+
+So it is with the formal tower. A later value may sound like a primitive, but
+inside it are instructions, execution, abstraction, sums, products, bases,
+loads, splines, and instances. The point of the chapter is not to make the
+reader stare forever at the mechanism. It is to let the reader hear the note
+without forgetting that the note has a mechanism.
+
+An organ also teaches why totality matters. A drawn stop that opens no pipe is
+a broken promise. A beautiful console connected to no wind is a theatrical
+object, not an instrument. The instance cascade is the wind test. It says that
+the keys are connected, the valves open, the wind arrives, and the pipes
+answer. The tower has breath.
+
+The next chapter will ask about cost. An organ makes that question natural.
+Some stops require more wind. Some chords strain the reservoir. Some pipes
+speak slowly. Some combinations are possible but impractical in a small room.
+Likewise, some formal refinements compile easily, some force the elaborator to
+work, and some reveal that precision has a price. The tower stands, but a
+standing tower is not free.
+
+Keep the organ in mind when the book turns to the bullshit meter. The meter is
+not merely mocking complexity. It is listening for strain in the mechanism. A
+sound may be possible and still costly. A chord may be correct and still draw
+too much wind. A formal layer may be true and still tell the reader that the
+instrument is nearing the edge of what it can comfortably carry.
+
+Chapter 5 therefore ends with a working instrument rather than a final
+philosophy. The keys can be pressed. The pipes can sound. The tower can carry a
+signal upward into arithmetic and smooth report. That is enough. The next
+question is how much breath the music costs.
+
+The organ metaphor also gives the reader a way to hold abstraction without
+losing materiality. A stop labeled "flute" does not contain a flute in the
+orchestral sense. It summons a rank of pipes shaped to speak with a certain
+color. The label is an abstraction, but the abstraction is connected to wood,
+metal, air, and tuning. The label works because the mechanism beneath it is
+real.
+
+So too with \lean{VALUE}, \lean{Spline}, and the other upper floors. Their
+names should become playable stops, not disembodied slogans. Pulling the stop
+should bring a mechanism into relation with the rest of the instrument. If a
+name summons nothing, the tower has decorated itself instead of extending
+itself.
+
+An organist also knows that the same key can speak differently depending on
+which stops are drawn. That is not contradiction. It is controlled
+registration. A formal value likewise speaks differently depending on the
+abstraction, basis, load, and spline through which it is carried. The tower
+does not seek a single context-free sound. It seeks controlled relations among
+contexts.
+
+The audience hears music, not mechanism, but the builder cannot afford that
+innocence. The builder must know which pipe is slow to speak, which valve leaks
+wind, which stop draws too much pressure, which rank goes sharp in the heat.
+The next chapter's bullshit meter is the builder's ear. It hears strain where
+the audience hears only volume.
+
+This is why the coda does not end with triumph. The organ sounds, but the
+sound opens the next question. Can the instrument sustain the chord? Can the
+bellows supply the wind? Can the mechanism be tuned without making the player
+fight the keys? A tower that stands still has to be played. A formal tower
+that compiles still has to be used.
+
+The chapter's achievement is therefore concrete and provisional. Concrete,
+because the tower has instances. Provisional, because every working instrument
+invites the question of cost. Chapter 5 has given the book a playable machine.
+Chapter 6 will ask where the machine strains, where precision is expensive,
+and where refinement should stop.
+
+The organ also reminds the reader that hierarchy can be beautiful without
+being mystical. The beauty is in coupling. A key is coupled to a valve, a valve
+to wind, wind to a pipe, a pipe to a room, a room to an ear. The tower's beauty
+is the same kind: instruction to execution, execution to abstraction,
+abstraction to arithmetic, arithmetic to spline, spline to instance,
+instance to use.
+
+If one coupling is broken, the music changes. Sometimes the failure is silent.
+Sometimes it is a cipher, a note that will not speak. Sometimes it is a cipher
+that speaks too loudly because a valve leaks. Formal systems have similar
+failures: missing instances, runaway searches, definitions that are too broad,
+abstractions that compile but do not clarify. The next chapter's meter will
+listen for these failures as changes in cost.
+
+The coda's organ gives another pattern-matching surface for the reader. The
+speedometer says tower as instrument. The organ says tower as resonance. The
+same formal structure can be seen through both. One emphasizes calibration and
+display. The other emphasizes breath and coupling. Together they teach that a
+verified hierarchy is not dead scaffolding. It is a mechanism that can carry
+motion into sound.
+
+And sound, like measurement, happens in time. A chord has attack, sustain, and
+decay. The tower has boot, execution, abstraction, interpolation, and proof.
+The reader should not imagine the finished hierarchy as a frozen diagram. It
+is a playable sequence. The value of the tower is that it can be entered,
+activated, and made to carry a signal upward.
+
+In that sense, the organ returns us to the dashboard. The driver does not see
+the cable, counter, firmware, or filter, just as the listener does not see the
+windchest. Yet both experiences depend on hidden couplings. The ethical demand
+of the chapter is to enjoy the output without becoming innocent about the
+mechanism. A good reader can hear the note and still remember the bellows.
+
+The tower is meant to be used. It should support later chapters the way an
+organ supports a hymn: by disappearing enough for the melody to move and
+remaining structured enough that the melody has somewhere to live. When the
+book turns to science and physics, it will draw on the tower's stops without
+rebuilding every pipe. This coda asks the reader to remember that the pipes are
+there.
+
+The next chapter will put a meter on the instrument. That may sound suspicious
+after such a patient construction, but it is actually a compliment. Only a real
+instrument can be tuned. Only a sounding organ can reveal where wind is wasted,
+where a pipe refuses to speak, or where a chord asks too much of the bellows.
+The bullshit meter is not coming to sneer at the tower. It is coming because
+the tower is finally substantial enough to strain.
+
+That is a good place to leave the reader: not in triumph, but with an
+instrument under the hands. The next sound will not be another foundation being
+poured. It will be the tower learning how much pressure its own music requires
+from breath, hand, and proof.

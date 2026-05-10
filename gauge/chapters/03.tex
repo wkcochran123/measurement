@@ -1,132 +1,541 @@
-\chapter{The Signal}
-\label{chap:the-signal}
+\chapter{The Ledger's Permissions}
+\label{chap:ledger-permissions}
 
-% EPISODE COVERAGE: Episodes 3 and 4 -- TuringProcess, REPRESENTABLE,
-% ChaitinsNumberSequence, PHYSICAL, OBSERVED, GaugeProcess, MEASURABLE,
-% Jar, GUNGAN
-% KEY CONCEPT: The measurement boundary. Not everything can be decided.
+% EPISODE COVERAGE: Episode 2 -- ADMISSIBLE through NUMERIC, Sample,
+% ObservationProcess, BINARY, REPEATABLE, ComputationalProcess.closure.
+% KEY CONCEPT: permissions as the rules that turn number forms into a ledger.
 
-\section{The Turing Machine Arrives}
-\label{se:turing-machine-arrives}
+A threshold is not only a gate. A gate suggests a door, a hinge, a yes or no.
+But the instruments in this chapter need something more precise than a door.
+They need a way to decide what may become part of a record, how fast that
+record may grow, whether the next entry actually moves the record forward, and
+when further comparison has gone quiet. A threshold is the place where a
+physical process becomes a ledger process.
 
-% TuringProcess wraps all prior classes in a computational state machine.
-% REPRESENTABLE: for every Fact and Study, there exists a Computation.
-% This is the Church-Turing thesis as a typeclass.
-%
-% Sidebar: Alan Turing and the universal machine. Turing's 1936 paper
-% showed that any computation can be described as a finite table of rules
-% operating on a tape. The TuringProcess is that table, given a type.
+This is why thresholds have to be set before the record begins. A threshold
+chosen after the mark arrives is not a threshold. It is an excuse. The line on
+the glass, the voltage across the tube, the exposure range of the paper, the
+trial protocol signed before enrollment: each one is a promise that the
+instrument will not change its rule after seeing what came through. A record
+can tolerate noise. It can tolerate missed events. It cannot tolerate a moving
+standard and still call itself a measurement.
 
-\section{The Halting Boundary}
-\label{se:halting-boundary}
+Consider a Geiger counter. A particle may pass near the tube and still leave
+no entry. The counter records only an ionization strong enough to trigger the
+avalanche. Below that avalanche, something may have happened in the tube, but
+the instrument has no mark it is allowed to keep. The record begins only when
+the event clears the entry threshold.
 
-% ChaitinsNumberSequence:
-%   inductive ChaitinsNumberSequence where
-%     | halting: ChaitinsNumberSequence
-%     | nonhalting: ChaitinsNumberSequence
-%
-% Some programs terminate; some do not; there is no general algorithm to
-% tell which. Chaitin's Omega: the probability that a random program halts.
-% It exists but is not computable.
-%
-% PHYSICAL uses ChaitinsNumberSequence as its threshold. The physical
-% measurement boundary is the boundary between what can and cannot be verified.
-%
-% Sidebar: The halting problem for non-programmers. Ask whether a book
-% mentions itself. Some do. Some don't. There is no general procedure.
+The counter has another threshold hidden inside its pace. After a discharge,
+the tube needs a short recovery interval. During that dead time, a second
+particle may arrive with more than enough energy to matter physically. The
+instrument still cannot count it. The record is bounded by the counter's
+capacity to recover. It may grow one way, but not arbitrarily fast. The
+instrument does not merely ask whether an event occurred. It asks whether the
+event occurred in a window where it could be distinguished from the event just
+recorded.
 
-\begin{gphenom}{Chaitin}
-\label{ph:chaitin}
-\GPhObs Chaitin showed in 1974 that some real numbers are algorithmically
-random: they contain no pattern shorter than themselves. No program can
-generate them. They must be copied in full or not at all.
-\GPhCon Some ledger entries are lawless -- they carry no compressible
-structure. No instrument can predict them; no theory can derive them.
-They must be witnessed directly.
-\GPhSeq The compiler must accept lawless entries. \lean{ChaitinsNumberSequence}
-is the honest acknowledgment: some programs never halt, and the ledger
-must record that fact without being able to explain it.
+The record also has a direction. Counts are timestamped. A later count can
+extend the run; a count whose timestamp falls behind the previous count cannot
+be inserted as if nothing happened. The counter's ledger accumulates one way.
+It may miss events. It may saturate. It may have uncertainty. But it cannot
+honestly move backward through its own record.
+
+Finally, a radiation measurement does not close because the universe has
+stopped emitting particles. It closes because the comparison has settled
+enough for the instrument's purpose. A count over one dwell time is compared
+with a background count over the same dwell time. More counting may reduce the
+uncertainty, but at some point the ratio of signal to background stops changing
+in a useful way. The physicist sets down the detector when the remaining
+difference is smaller than the decision the record was built to support.
+Before that moment, the tube must also be calibrated against its own ordinary
+silence. Background is not nothing. It is the instrument's watched absence, the
+rate at which the world enters the counter when no source is being tested.
+Only against that watched absence can the source count become a reading rather
+than a pile of clicks.
+
+A photographic emulsion has the same four thresholds, but now they appear in
+light and chemistry. A silver halide grain does not become part of the image
+because one imagines light nearby. It needs enough photons to initiate the
+latent change that development can reveal. Below that threshold, light may
+have brushed the material, but the grain will not enter the record.
+
+The emulsion also bounds the growth of the record. Its tonal range is finite.
+At the dark end, small differences disappear into the base. At the bright end,
+the material saturates. More exposure does not produce a more precise reading;
+it collapses many differences into the same dense patch. The image can grow in
+detail only inside the range the material can distinguish.
+
+Development gives the record its direction. Expose, develop, stop, fix: the
+order is not a preference. If the fixer arrives before the developer, the
+latent image is destroyed. If the stop bath is skipped, development keeps
+moving past the useful point. The print is not a pile of chemical states. It
+is a progression whose steps must occur in the order the material permits.
+
+The print is lifted from the tray when further development no longer changes
+what the eye can use. It may still be possible to leave the paper longer. That
+is not the point. The comparison between the emerging image and the intended
+record has settled. The next moment in the bath no longer earns a new
+distinction.
+The darkroom teaches another part of the same discipline: the threshold must
+belong to the material, not to the wish of the photographer. Paper has a grade.
+Developer has a strength. The safelight is safe only because its wavelength
+falls beneath what the emulsion will register within the working time. The
+record is possible because the room itself has been arranged around what the
+paper can and cannot admit.
+
+The Geiger tube and the photographic paper are very different instruments. Yet
+each has the same hidden grammar. Something must clear an entry threshold. The
+record must be bounded in its growth. Its steps must move forward rather than
+rewriting themselves. It must know when further comparison has fallen silent.
+These are not four separate phenomena. They are four faces of one problem:
+what may become part of the record.
+
+The number forms are built. Each can be compared, ordered, and accumulated.
+What the ledger cannot yet do is decide which readings may enter, how fast
+they may grow, which progressions are legitimate, and when two settling paths
+represent the same measurement. These are not properties of the numbers. They
+are permissions the ledger must be given. This chapter installs them.
+
+Each permission is named for what it authorizes, and each is tied to a number
+form the previous chapter built.
+
+\begin{center}
+\begin{tabular}{@{}p{0.24\textwidth}p{0.22\textwidth}p{0.42\textwidth}@{}}
+\lean{ADMISSIBLE} & \lean{Natural} &
+what may enter as evidence \\
+\lean{COUNTABLE} & \lean{Rational} &
+how pieces are bounded and numbered \\
+\lean{ENCODED} & \lean{Sequence} &
+how readings become forward progressions \\
+\lean{RESIDUE} & \lean{Limit} &
+when settling paths no longer differ usefully
+\end{tabular}
+\end{center}
+
+In the courtroom metaphor: admission, numbering, comparison, verdict.
+
+\section{The Chain of Admissibility}
+\label{se:chain-of-admissibility}
+
+The number ladder is now visible: \lean{Natural}, \lean{Rational},
+\lean{Sequence}, and \lean{Limit}. This chapter does not introduce new number
+types. It authorizes the use of those types. The previous chapter built the
+forms an instrument can hold. This chapter installs the promises that let the
+ledger use them. Each promise names a permission the ledger did not previously
+have.
+
+\lean{CountingProcess} packages a carrier, a \lean{Natural}, and an iterator:
+the fixture required before the ledger can treat receipt-stacks as a count.
+
+\begin{leancode}
+class ADMISSIBLE\\
+\quad (Value: Type)\\
+\quad (Carrier: CarrierProcess Value)\\
+\quad [DISTINGUISHABLE Value Carrier]\\
+\quad where\\
+\quad counting\_process : CountingProcess Value Carrier\\
+\quad admissible? : Number -> Number -> Prop :=\\
+\quad\quad fun stimulus threshold =>\\
+\quad\quad match stimulus, threshold with\\
+\quad\quad | .zero \_, \_ => True\\
+\quad\quad | .one \_ \_, .zero \_ => False\\
+\quad\quad | .one \_ n1', .one p2 n2' =>\\
+\quad\quad\quad p2.truth \(\vee\) n1' <= n2'
+\end{leancode}
+
+The stimulus and threshold are \lean{Number}s, the receipt-stacks from Chapter
+1. A zero stimulus is always admitted. A nonzero stimulus against a zero
+threshold is rejected. When both sides are nonzero, the threshold's fact may
+already let the stimulus through, or the stimulus tail must fit below the
+threshold tail. This is admission: a distinguished mark becomes evidence only
+if it clears the gate.
+
+The move to \lean{Natural} is the move from a single receipt to a directed
+count. \lean{ADMISSIBLE} is the promise that this move is legitimate for the
+carrier at hand. It does not say that every possible mark belongs in the
+ledger. It says that, once a mark has been distinguished, there is a gate by
+which it may be tested against the current threshold. The natural number
+appears here as the running stack made possible by that gate. Without
+admission, a pile of receipts is only a pile. With admission, the pile becomes
+a count whose next step has been allowed to enter.
+
+This is the class pattern for the permission chain. Each later class carries
+the same \lean{Value} and \lean{Carrier} parameters, inherits the promises
+already installed, and adds one new constraint to the stack. From here on, the
+code blocks show only the new constraint and the predicate that does the
+conceptual work. The inherited parameter block and process field are omitted.
+
+\lean{IndexingProcess} packages a \lean{Rational} origin with the counting
+process that advances it.
+
+\begin{leancode}
+[ADMISSIBLE Value Carrier]\\
+bounded? : Rational -> Rational -> Prop :=\\
+\quad\quad fun stimulus threshold =>\\
+\quad\quad match stimulus, threshold with\\
+\quad\quad | .zero \_, \_ => True\\
+\quad\quad | .number \_ \_ \_, .zero \_ => False\\
+\quad\quad | .number p1 i1 \_, .number p2 i2 \_ =>\\
+\quad\quad\quad (p1.truth = p2.truth \(\wedge\) i1 <= i2) \(\vee\)\\
+\quad\quad\quad (p1.truth \(\neq\) p2.truth \(\wedge\) i2 <= i1)
+\end{leancode}
+
+The move to \lean{Rational} is the move from whole ticks to comparable pieces.
+\lean{bounded?} asks whether one indexed piece falls within another. When the
+truths agree, the indexes are read forward. When the truths differ, the order
+reverses. Numbering is also a bound: the record may grow only as fast as the
+instrument can distinguish what is being added.
+
+\lean{COUNTABLE} therefore authorizes more than incrementation. It says that a
+new piece can be placed against an origin and compared with a threshold of the
+same kind. The familiar rational intuition is useful here: a ratio is not
+merely a bigger count, but a count read against another count. The class keeps
+that intuition inside the ledger's discipline. It does not import division.
+It asks whether the proposed indexed reading remains within a bounded
+comparison. The contravariant branch is essential, because an instrument
+sometimes learns a quantity by reading the same relation from the opposite
+side. A receding Doppler return and an approaching one are both readings, but
+their order is not interpreted by the same branch. The promise of
+\lean{COUNTABLE} is that the ledger can make that branch choice without
+forgetting the receipt structure that made counting possible in the first
+place.
+
+\begin{gphenom}{Berkeley-Galileo}
+\label{ph:berkeley-galileo}
+\GPhObs Berkeley argued in 1734 that Galileo's law of free fall implies an
+instantaneous infinite velocity at the moment of release, which Berkeley
+considered an absurdity that undermined the calculus.
+\GPhCon The rate at which new facts can be added to the ledger is bounded by
+the instrument's resolution. The derivative of the ledger is bounded
+by the admissibility rate.
+\GPhSeq \lean{COUNTABLE}'s \lean{bounded?} predicate is this constraint made
+formal: no sequence of events may exceed the instrument's capacity to
+distinguish them. The ledger grows at most as fast as the instrument can witness.
 \end{gphenom}
 
-\section{Noise as Structure}
-\label{se:noise-as-structure}
+\lean{LimitProcess} packages a \lean{Sequence}, a rational limit value, and an
+iterator for advancing the ordered progression.
 
-% NoisyProcess: wraps TuringProcess with a ChaitinsNumberSequence program.
-% Noise is the structural presence of the halting boundary inside measurement.
-%
-% Metavariable: the smallest representable fraction at a given level.
-% The compiler's Planck scale.
-%
-% OBSERVED adds SlipProcess: the instrument's response at threshold.
-% The "slip" is what happens when the instrument is pushed past the
-% point of admissible distinction.
-%
-% Sidebar: Signal and noise in physics. Shannon (1948) showed that noise
-% is not the enemy of communication -- it is the context in which
-% communication is defined.
+\begin{leancode}
+[COUNTABLE Value Carrier]\\
+encoding? : Sequence -> Sequence -> Prop :=\\
+\quad\quad fun s1 s2 =>\\
+\quad\quad match s1, s2 with\\
+\quad\quad | .nil f1, .nil f2 => f1 = f2\\
+\quad\quad | .nil \_, .index \_ \_ \_ => True\\
+\quad\quad | .index \_ \_ \_, .nil \_ => False\\
+\quad\quad | .index f1 r1 i1, .index f2 r2 i2 =>\\
+\quad\quad\quad (f1 = f2) \(\wedge\) r1 <= r2 \(\wedge\) i1 < i2
+\end{leancode}
 
-\begin{gphenom}{Schrodinger-Young}
-\label{ph:schrodinger-young}
-\GPhObs Young's double-slit experiment (1801) produces an interference pattern
-even when particles are sent one at a time. Schrodinger's formalism (1926)
-explains this: the particle carries structural correlation across both paths
-simultaneously until the detector fires.
-\GPhCon A single particle's ledger entry is not resolved until measurement.
-\lean{Jar.superposition} is not temporary ignorance -- it is a first-class
-ledger state that the compiler holds without resolving.
-\GPhSeq The quantum measurement problem is a typeclass constraint:
-\lean{GUNGAN} must be invoked to resolve a \lean{Jar} value before the
-compiler can use it. Superposition is not a defect in the ledger.
-It is a valid entry that has not yet been closed.
+A \lean{Sequence} is what happens when indexed pieces appear in an order that
+can move forward. The strict inequality \lean{i1 < i2} is the formal statement
+that the comparison must have advanced. \lean{ENCODED} is where the record
+becomes more than a list of bounded values. The chain acquires an arrow.
+
+\lean{ENCODED} is the promise attached to \lean{Sequence}. A sequence is not
+only a collection of rational readings. It is a record in which one indexed
+piece follows another under a comparison the ledger can check. The class
+requires a \lean{LimitProcess}, but the immediate work of the predicate is
+directional. Nil may begin the progression. A nonempty entry cannot be below
+nil. Two indexed entries agree only when their facts agree, their rational
+readings are ordered, and the later index is strictly later. This is how a
+time-ordered instrument record differs from a bag of samples. The promise does
+not yet say that the record has settled. It says that the record has been
+encoded as progress, so later claims may ask whether the progress converges.
+
+\lean{CauchyProcess} packages a \lean{Limit} with a current rational value and
+an accumulation.
+
+\begin{leancode}
+[ENCODED Value Carrier]\\
+representative? : Limit -> Limit -> Prop :=\\
+\quad\quad fun a b =>\\
+\quad\quad match a, b with\\
+\quad\quad | .nil f1, .nil f2 => f1 = f2\\
+\quad\quad | .nil \_, .index \_ \_ \_ => True\\
+\quad\quad | .index \_ \_ \_, .nil \_ => False\\
+\quad\quad | .index f1 s1 l1, .index f2 s2 l2 =>\\
+\quad\quad\quad (f1 = f2) \(\wedge\) s1 <= s2 \(\wedge\) l1 < l2
+\end{leancode}
+
+A \lean{Limit} is not a completed real number here. It is the shape of a
+settling record. \lean{representative?} declares when two limit paths can no
+longer be told apart by admissible comparison. This is equivalence by
+comparison, not equality by identity. The ledger does not require two
+measurement paths to be the same path. It requires that no relevant difference
+remain. That is the courtroom verdict.
+
+\lean{RESIDUE} is the promise attached to \lean{Limit}. It does not create a
+new continuum for the ledger to inhabit. It gives the ledger a way to say that
+two accumulated progressions have the same relevant remainder. The familiar
+mathematical word is convergence, but the device phrases the point as a
+representative test. A nil limit may be compared with another nil limit by
+fact equality. A nil limit sits below a nonempty path. Two nonempty paths
+compare by fact, by sequence order, and by a further limit index. The structure
+is recursive because settling is not a single final glance. It is the
+continued failure of further admissible comparison to expose a difference that
+matters to the record.
+
+The wheel-speed sensor has now gained more than a pulse count. It can recognize
+a tooth passing, admit that tooth into the record, number it as a bounded
+piece, compare recordings as ordered progressions, and declare when two
+settling paths represent the same measurement. The number thread that began
+with a single witnessed mark now runs through four types, four processes, and
+four class promises. The ledger is ready to hold a sample.
+
+\section{The First Multi-Fact Structure}
+\label{se:first-multi-fact}
+
+The preceding sections built enough numerical structure to say what counts,
+what is bounded, what progresses, and what has settled. But a measurement is
+not only a settled path. It is an event in which a path is taken as a sample.
+That requires a structure with room for more than one fact.
+
+\begin{leancode}
+inductive Sample where\\
+\quad | initial\_condition : Fact -> Limit -> Sample\\
+\quad | signal\_response :\\
+\quad\quad Fact -> Limit -> Fact -> Limit -> Sample -> Sample
+\end{leancode}
+
+\lean{Sample} is the first multi-fact structure in the tower. The initial case
+stores the fact and limit from which the instrument begins. The response case
+stores a first fact and limit, a second fact and limit, and the sample that
+came before. The record is therefore not a bag of readings. It is an ordered
+accumulation of before-and-after structure.
+
+The order on samples repeats the pattern one more time.
+
+\begin{leancode}
+namespace Sample\\
+def le : Sample -> Sample -> Prop\\
+\quad | .initial\_condition f1 l1, .initial\_condition f2 l2 =>\\
+\quad\quad (f1.truth = f2.truth \(\wedge\) l1 <= l2) \(\vee\)\\
+\quad\quad (f1.truth \(\neq\) f2.truth \(\wedge\) l2 <= l1)\\
+\quad | .signal\_response f1 s1 \_ r1 \_,\\
+\quad\quad .signal\_response f2 s2 \_ r2 \_ =>\\
+\quad\quad (f1.truth = f2.truth \(\wedge\) r1 <= r2) \(\vee\)\\
+\quad\quad (f1.truth \(\neq\) f2.truth \(\wedge\) s1 <= s2)\\
+\quad | .initial\_condition f1 l1,\\
+\quad\quad .signal\_response f2 l2 \_ \_ \_ =>\\
+\quad\quad (f1.truth = f2.truth \(\wedge\) l1 <= l2) \(\vee\)\\
+\quad\quad (f1.truth \(\neq\) f2.truth \(\wedge\) l2 <= l1)\\
+\quad | .signal\_response \_ \_ \_ \_ \_, .initial\_condition \_ \_ =>\\
+\quad\quad False
+\end{leancode}
+
+The important fact is not the detail of every case. It is the shape. Initial
+conditions compare by their limits. Signal responses compare by the relation
+between what came in and what came back. A later response cannot be moved back
+under an initial condition. Once a response has been recorded, the ledger has
+crossed a boundary.
+
+\lean{Sample} and \lean{Limit} therefore split observation into two roles. The
+\lean{Limit} is the thing observed, the settling path. The \lean{Sample} is the
+act of taking that path into the record. This is where the ledger first looks
+like an experiment rather than only a number system.
+
+\begin{gphenom}{da Vinci-Coulomb}
+\label{ph:da-vinci-coulomb}
+\GPhObs Da Vinci observed that a block on a rough surface resists motion
+until the applied force exceeds a threshold. Coulomb formalized this in 1781:
+static friction holds until the threshold is crossed, then yields.
+\GPhCon A proposed continuation is not admissible until it exceeds the ledger's
+static friction threshold -- the accumulated inconsistency required to force
+a new entry. Below the threshold, the ledger absorbs the proposal without yielding.
+\GPhSeq The \lean{Sample} structure models this exactly: a new response can be
+appended to the record only when the incoming mark has cleared the
+admissibility threshold. Below that threshold, the record does not grow.
+Measurement is not continuous. It is a series of threshold crossings.
 \end{gphenom}
 
-\section{The Gauge}
-\label{se:the-gauge}
+\section{The Clock and Its Complement}
+\label{se:clock-and-complement}
 
-% Episode 4: Area (t and dt), SensingProcess, PRESENT, Phenomenon,
-% GaugeProcess, MEASURABLE.
-%
-% Area.le is deliberately not a well-ordering -- the comment in the code
-% says "not well ordered -- Einstein." Time intervals under relativity
-% do not have a universal ordering.
-%
-% GaugeProcess: holds a SensingProcess, a clock (a Phenomenon), and
-% an event? function. The gauge asks: which events are admissible right now?
-%
-% Sidebar: What is a gauge in physics? A choice of reference frame that
-% does not change observable predictions. Two gauges describe the same
-% physics if they agree on all admissible measurements.
+Episode 2 begins by asking what it means to observe the sample just built. The
+answer is not a new number. It is a process with a before and an after.
 
-\begin{gphenom}{Descartes}
-\label{ph:descartes}
-\GPhObs Descartes' coordinate grid (1637) imposes a discrete address on
-continuous space. Every point becomes a pair of numbers. Continuity
-is replaced by a countable index.
-\GPhCon Quantization is the act of assigning a finite address to an otherwise
-undifferentiated position. The instrument's resolution determines the
-grid spacing; below that spacing, no distinction is admissible.
-\GPhSeq The \lean{Metavariable} type is the compiler's Cartesian grid:
-it assigns a finite index to the smallest representable distinction at
-each level of the tower. The continuum does not precede the grid;
-the grid is what makes the continuum measurable.
-\end{gphenom}
+The parameter block and constraint stack are the same as in the preceding
+classes and will not be shown again for structures. The fields are the new
+fixture.
 
-\section{The Quantum Jar}
-\label{se:quantum-jar}
+\begin{leancode}
+\quad cauchy\_process : CauchyProcess Value Carrier\\
+\quad before : Limit\\
+\quad after : Limit\\
+\quad relative\_variance : Prop
+\end{leancode}
 
-% Jar:
-%   inductive Jar where
-%     | color: Jar
-%     | bang: Jar
-%     | superposition: Jar
-%
-% Superposition is a first-class value. MeesaProcess holds a Jar as a concept.
-% GUNGAN is the translation layer: it collapses superposition into color or bang.
-% The quantum measurement is the act of GUNGAN.
-%
-% This is the quantum measurement problem as a typeclass constraint.
-% The compiler will not use a Jar value until GUNGAN has resolved it.
-%
-% End of chapter: sixteen layers. The compiler has agreed to operate in the
-% presence of noise, undecidable programs, integration, and quantum superposition.
+\lean{ObservationProcess} carries the whole tower forward. It requires
+distinction, admission, counting, encoding, and residue before it is allowed to
+name the two sides of an observation. The fields \lean{before} and
+\lean{after} are both \lean{Limit}s because observation happens at the level
+where readings have settled enough to be compared.
 
+This is the structure pattern for the rest of the chapter. Later structure
+blocks show only the fields that change.
+
+The new predicate is \lean{relative\_variance}. In the Lean file it asks
+whether the facts attached to the before and after limits agree. If they do,
+the observation is covariant. If they do not, the observation is
+contravariant. The old truth-parity rule has become a clock.
+
+The class \lean{BINARY} packages that clock.
+\lean{BINARY} breaks the preceding class pattern. Where the permission classes
+carried one process and one predicate, this class carries the observed unit
+itself: zero, one, the bit between them, and a distinction test.
+
+\begin{leancode}
+\quad zero : Limit\\
+\quad one : Limit\\
+\quad bit : Sample\\
+\quad different? : Sample -> Sample -> Prop
+\end{leancode}
+
+\lean{BINARY} does not introduce a binary numeral system in the usual sense.
+It introduces the minimum unit of observed difference: a zero limit, a one
+limit, and a sample that can tick between them. A clock says true, false, true,
+false. Its complement says false, true, false, true. Together they tile the
+same distinction from opposite phases.
+
+\begin{sidebar}{Why binary?}
+\label{sb:why-binary}
+A single distinction is the minimum unit of information. The ledger does not
+need an alphabet yet. It needs one stable difference, and then the complement
+of that difference. From that pair, it can begin to count observations.
+\end{sidebar}
+
+This is why the tower began with \lean{DISTINGUISHABLE}. A bit is not a tiny
+number floating in isolation. It is a witnessed distinction that survived the
+whole tower: admitted, bounded, encoded, reduced to residue, and observed as a
+before-after pair.
+
+The same pattern then moves one level higher, from samples to trials.
+
+\lean{Trial} is to \lean{Sample} what \lean{Sample} is to \lean{Limit}: the
+same two-constructor pattern, now carrying samples instead of limits. A trial
+turns an observed bit into something that can be repeated.
+
+\section{Closure}
+\label{se:closure-first-appearance}
+
+Once the ledger can observe a bit, it can repeat the observation. Episode 2
+does this by building repeatable processes and studies. The repeatable process
+packages an observation process, a sample stimulus, and an expected trial.
+
+\begin{leancode}
+\quad stimulus : Sample\\
+\quad expectation : Trial\\
+\quad iterate : Trial -> Trial
+\end{leancode}
+
+A \lean{RepeatableProcess} keeps the observation machinery together with the
+stimulus and expected trial that make one run repeatable.
+
+\begin{leancode}
+[BINARY Value Carrier]\\
+typical\_response : Trial -> Trial -> Prop
+\end{leancode}
+
+\lean{REPEATABLE} requires that process and a typical-response predicate: the
+formal version of an experimental protocol, saying that given a stimulus trial,
+this is the trial the process predicts.
+
+The ledger also needs an open account.
+
+\begin{leancode}
+inductive Study where\\
+\quad | hypothesis : Fact -> Study\\
+\quad | data : Fact -> Trial -> Study -> Study
+\end{leancode}
+
+A \lean{Study} is the ledger's open account: either a hypothesis or a
+witnessed fact attached to a trial and the study that preceded it. Only now can
+the chapter name the first explicit computational closure.
+
+\begin{leancode}
+\quad output : Option Study\\
+\quad close : Option Study -> Study\\
+\quad closure : Study -> Study
+\end{leancode}
+
+\lean{ComputationalProcess} is the first place where the ledger says what it
+does with an open record. The field \lean{output} may contain a completed
+\lean{Study}, or it may contain nothing. The function \lean{close} turns either
+case into a study. If there is an output, it returns it. If there is none, it
+returns the error-code study supplied by the process.
+
+Then \lean{closure} turns a study into another study. A hypothesis becomes data
+by attaching the expected trial and the closed output. Existing data becomes
+new data by iterating the trial and closing the output again. In compiler
+language, this is what it feels like when all holes are filled, all local
+obligations are resolved, and the elaborator has run to completion. In
+measurement language, the proposed continuation has become consistent with the
+record.
+
+\lean{NUMERIC} wraps that closure in the next class promise.
+
+\begin{leancode}
+[REPEATABLE Value Carrier]\\
+carrier : Study\\
+lambda : Option Study -> Study\\
+related : Study -> Study -> Prop
+\end{leancode}
+
+\lean{NUMERIC} does not say that the carrier is a number in the ordinary
+sense. It says that the carrier can now be used numerically. There is a study
+that can carry it, a lambda that closes optional output, and a relation that
+orders one study against another. The tower has not imported arithmetic. It has
+built enough ledger discipline for arithmetic behavior to have a place to sit.
+
+This is the chapter's first full closure. The compiler has agreed to a sequence
+of promises: distinguish, admit, count, bound, encode, reduce, sample, observe,
+repeat, and close. The ledger is not yet the whole instrument. It is not yet
+geometry, calculus, or physics. But it now has a closed account. A mark can
+enter, become evidence, become a count, become a bounded piece, become a
+progression, become a residue, become a sample, become a bit, and return as a
+closed study.
+
+This is the substrate the next chapter needs. Once a closed study can carry
+counts, ratios, progressions, and settling values, a signal can arrive as more
+than noise. It can be tested against the boundary of what the ledger can decide.
+The next chapter asks what happens when a closed ledger meets undecidable
+programs, noisy thresholds, and the measurement boundary.
+
+\section*{Coda}
+\markboth{CODA}{CODA}
+
+A child's string game begins with almost nothing: one loop, two hands, and
+tension. The loop does not contain a ladder, a cradle, a diamond, and a net as
+separate things. It becomes those figures by being held differently. One finger
+lifts a strand. Another passes under. A crossing that was slack becomes
+load-bearing. The string has not changed substance. Its obligations have
+changed.
+
+Chapter 3 has been playing that game with permissions. The ladder was already
+there: count, piece, path, settling value. But a loose ladder is not yet an
+instrument. A strand must be admitted before it can enter the figure. A crossing
+must be numbered before the next hand can find it. A passage must move forward
+rather than collapse into the shape already held. A residue must settle before
+the figure can be lifted.
+
+That is why the words in this chapter are so plain. Admission, counting,
+encoding, residue: they are the holds by which the ladder becomes a usable
+figure. Then the figure acquires hands. A sample holds a settled path as an
+event. An observation gives that event a before and an after. A bit gives the
+ledger one stable difference and its complement. A trial asks whether the same
+difference can be produced again. A study keeps the account open until closure
+turns it into something the compiler can carry forward.
+
+The number ladder and the permissions are not separate inventions. They are one
+movement in two acts. The ladder builds the forms. The permissions say what the
+forms may become. Without the ladder, the permissions have nothing to authorize.
+Without the permissions, the ladder is a beautiful structure no instrument can
+use.
+
+Closure is the moment the figure can be lifted from the hands without losing
+its form. The compiler has not believed the metaphor. It has checked the
+crossings. Once the figure can be lifted, the next question is what motions of
+the figure are allowed.
