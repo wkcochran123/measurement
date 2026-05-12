@@ -421,22 +421,24 @@ noncomputable instance truthSymbolInhabited :
     Inhabited truthDistinct.symbol :=
   ⟨Fact.Truth.truth⟩
 
-noncomputable instance truthReal :
-    REAL Prop truthCarrier :=
-  REAL_WITNESSED Prop truthCarrier
+-- noncomputable instance truthReal :
+--     REAL Prop truthCarrier :=
+--   REAL_WITNESSED Prop truthCarrier
 
-noncomputable instance truthLocal :
-    LOCAL Prop truthCarrier :=
-  LOCAL_REAL Prop truthCarrier
+-- noncomputable instance truthLocal :
+--     LOCAL Prop truthCarrier :=
+--   LOCAL_REAL Prop truthCarrier
 
 
 set_option maxHeartbeats 0
 set_option synthInstance.maxHeartbeats 0
 
 noncomputable def theory_true? : Prop :=
-  (inferInstance : INFERRED Prop truthCarrier).inferred?
-    (inferInstance : INFERRED Prop truthCarrier).equivalence_process.closure
-    (inferInstance : INFERRED Prop truthCarrier).theory
+  let inst : INFERRED Prop truthCarrier := inferInstance
+  inst.inferred?
+    inst.equivalence_process.closure
+    inst.theory
+
 
 #check theory_true?
 
