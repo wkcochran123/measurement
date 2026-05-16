@@ -1,0 +1,313 @@
+\chapter{Thermodynamics}
+\label{chap:thermodynamics}
+
+% Closed question: Why does the record only grow, and when is it closed enough
+% to support inference?
+
+\begin{chapteressay}
+
+Drive one mile forward and one mile backward. The car returns to its starting
+place. The odometer does not return to its starting value. It reads two more
+miles.
+
+That is thermodynamics in dashboard form. Some coordinates can reverse. A
+record of physical expenditure does not simply undo itself. The tire warmed.
+The engine burned fuel or the battery discharged. Bearings heated. Road noise
+became heat. The odometer did not measure displacement. It measured accumulated
+path.
+
+The first metaphor is therefore append-only record. Entropy is not just
+messiness as a mood. It is the growth of physically unavailable information:
+the spreading of energy into degrees of freedom that cannot be gathered back
+without leaving further marks. A log can burn. Smoke and heat can disperse.
+The reverse movie is not forbidden because the frames cannot be imagined. It
+is forbidden because the required record-gathering would cost more record.
+
+The second example is a cash register at a bakery. A loaf is sold. The drawer
+opens. The receipt prints. Flour has already been baked, heat has already
+dissipated, the loaf has left the shelf. If the customer returns it, the sale
+is not erased. A refund is entered. The ledger grows. Closing the register at
+night does not undo the day; it reconciles the day well enough to support
+inference.
+
+The code names this with comic force. \lean{Bullshit} has zero, one, and rest:
+origin, first burden, and accumulated burden. \lean{AtreyuProcess} satirizes a
+measurement into a larger record. \lean{TrueOutput} compares outputs by strict
+growth. \lean{Closure} then asks when two accumulated records can be declared
+same, different, or inferred. \lean{INFERRED\_TRUE} is the closure gesture:
+the theory becomes true enough when the record has been closed by its own
+equivalence process.
+
+The closed question is:
+
+\begin{center}
+\emph{Why does the record only grow, and when is it closed enough to support
+inference?}
+\end{center}
+
+The answer is that erasure is physical. Records can be transformed, summarized,
+refunded, compressed, or closed, but not removed for free. Inference begins
+when the growing ledger has been reconciled into an equivalence strong enough
+to act on.
+
+Chapter 11 closes Volume 2 by making measurement irreversible. The physical
+gauge is not merely a way to compare. It is a way to carry accumulated cost.
+
+\end{chapteressay}
+
+% Phenomenon arcs use: 1/3 setup -> phenomenon box -> 2/3 structural interpretation.
+
+\section{Irreversibility}
+\label{se:irreversibility}
+
+The odometer is the clean instrument. It accumulates path length. It does not
+subtract when the car reverses. A round trip has zero net displacement and
+positive mileage.
+
+\begin{phenom}{Append-Only Odometer Effect}
+\label{ph:append-only-odometer-effect}
+
+\PhStatement A physical record can grow monotonically even when the coordinate
+state it describes returns to its starting value.
+
+\PhOrigin Odometers and thermodynamic entropy both distinguish accumulated
+process from reversible coordinate description.
+
+\PhObservation Driving out and back returns the car to its starting position
+while increasing the odometer reading and dissipating energy into heat.
+
+\PhConstraint The measurement may not confuse reversible displacement with
+reversible physical expenditure.
+
+\PhConsequence Irreversibility is ledger growth: the path has been carried even
+when the endpoint has returned.
+
+\end{phenom}
+
+This gives entropy its local grammar. The second law says that the total
+entropy of an isolated system does not decrease. In this book's language, the
+complete physical ledger does not shrink. Local order can increase, but only by
+exporting burden to the surrounding record.
+
+\section{Landauer's Principle and Erasure Cost}
+\label{se:landauers-principle-and-erasure-cost}
+
+Landauer's principle makes erasure physical. To erase one bit of information at
+temperature $T$, the minimum dissipated heat is
+
+\[
+Q \geq k_B T \ln 2.
+\label{eq:chapter11-landauer}
+\]
+
+The bit may look abstract on a blackboard. In a device, it is a physical state.
+Resetting it compresses alternatives into one state, and the lost distinction
+must go somewhere.
+
+\begin{phenom}{Landauer Erasure Effect}
+\label{ph:landauer-erasure-effect}
+
+\PhStatement Erasing a record has a minimum thermodynamic cost because the
+distinction removed from memory must be exported to the environment.
+
+\PhOrigin Landauer identified the heat cost of logically irreversible erasure;
+later experiments measured this cost in physical memory systems.
+
+\PhObservation Resetting a one-bit memory to a standard state dissipates at
+least $k_B T \ln 2$ of heat in the ideal limit.
+
+\PhConstraint The computation may not treat logical deletion as physically free
+when a real device must implement the reset.
+
+\PhConsequence Information is a physical ledger entry. Removing it from one
+register writes cost into another.
+
+\end{phenom}
+
+This is the thermodynamic face of compilation. A compiler may remove dead code
+from an output, but the process of computing, storing, comparing, and erasing
+is carried by hardware. The visible artifact can be smaller while the physical
+ledger still grows.
+
+\section{Maxwell's Demon}
+\label{se:maxwells-demon}
+
+Maxwell's demon imagines a tiny observer sorting fast and slow molecules to
+make one side of a box hotter than the other. It looks like entropy decreases
+for free. The missing cost is the demon's memory.
+
+To sort, the demon must measure. To repeat, the demon must remember or erase.
+Bennett's resolution is that the thermodynamic bill arrives when the demon's
+memory is reset.
+
+\begin{phenom}{Maxwell Demon Effect}
+\label{ph:maxwell-demon-effect}
+
+\PhStatement A local entropy decrease obtained by measurement must include the
+memory record and erasure cost of the measuring agent.
+
+\PhOrigin Maxwell's thought experiment challenged the second law; later
+information-theoretic analysis located the cost in measurement memory and
+erasure.
+
+\PhObservation Sorting molecules requires acquiring and managing information
+about their states, and resetting that information dissipates heat.
+
+\PhConstraint The apparatus may not omit the observer's memory from the
+thermodynamic ledger.
+
+\PhConsequence The second law survives because the complete record includes the
+demon, not only the gas box.
+
+\end{phenom}
+
+The demon is a warning against bad boundaries. If the system is drawn too
+small, entropy appears to be cheated. Draw the boundary around gas, demon,
+memory, and heat bath, and the ledger grows again.
+
+\section{Dark Energy as Cosmological Boundary Example}
+\label{se:dark-energy}
+
+Type Ia supernovae revealed that the expansion of the universe is accelerating.
+In the simplest cosmological model, the cosmological constant acts as a dark
+energy component with negative pressure. The expansion history is a record of
+which directions the universe can no longer reverse: the comoving distance
+between distant galaxies is a quantity the universe accumulates and does not
+unwind.
+
+\begin{phenom}{Dark Energy Effect}
+\label{ph:dark-energy-effect}
+
+\PhStatement Cosmological expansion is an accumulated record whose large-scale
+history cannot be treated as a reversible local displacement.
+
+\PhOrigin Supernova observations in the late twentieth century showed that the
+universe's expansion is accelerating.
+
+\PhObservation Distant type Ia supernovae appear dimmer than expected in a
+decelerating universe, supporting a positive cosmological constant or related
+dark-energy component.
+
+\PhConstraint Cosmology may not close the expansion ledger using matter-only
+deceleration when the distance-redshift record demands acceleration.
+
+\PhConsequence The record-growth arrow extends beyond laboratory heat. It also
+appears in the large-scale record of cosmic history.
+
+\end{phenom}
+
+This section is a cosmological boundary example, not a closure of the
+heat-engine ledger. Dark energy does not behave like a working fluid;
+the thermodynamic tie at this scale is the record-growth arrow --- the
+universe's accumulated history refusing to unwind --- and not the
+Clausius entropy of a heat engine. The link to the chapter's earlier
+sections is structural: both the laboratory ledger and the cosmological
+record share the same direction of refinement. The mechanism is
+different in each case.
+
+\section{The Meissner Effect}
+\label{se:the-meissner-effect}
+
+A superconductor cooled below its critical temperature expels magnetic flux
+from its interior. The Meissner effect is not merely perfect conductivity. It
+is a new ordered phase with a closed electromagnetic response. The closure here
+is \emph{phase closure} or \emph{order-parameter closure}, not entropy
+closure: the ordered state restricts which field configurations are
+admissible inside the bulk. The thermodynamic arrow at this temperature
+is the irreversible accumulation of the symmetry-broken phase, not the
+heat-engine entropy of the surroundings. The two closures share the
+record-growth discipline; they differ in what the closing operation
+forbids.
+
+\begin{phenom}{Meissner Closure Effect}
+\label{ph:meissner-closure-effect}
+
+\PhStatement A phase transition can close a record by excluding a class of
+admissible field configurations from the interior.
+
+\PhOrigin The Meissner effect showed that superconductors expel magnetic flux
+when entering the superconducting phase.
+
+\PhObservation Below the critical temperature, magnetic fields are expelled
+from the bulk rather than simply persisting forever as they would in an ideal
+zero-resistance conductor.
+
+\PhConstraint The material may not be described only as resistance-free wire;
+its phase imposes a new closure condition on the field record.
+
+\PhConsequence Closure can be structural: the phase changes which field
+histories are admissible inside it.
+
+\end{phenom}
+
+The final section returns to inference. A closed phase, a closed register, a
+closed equivalence class, and a closed theory all have the same book-shape.
+They do not say that nothing happened. They say the record has reached a state
+from which certain distinctions are no longer admissible inside the boundary.
+
+That is why \lean{Closure.le} and \lean{EquivalenceProcess.close?} are the
+right code names for the ending. The ledger grows. Then a closure process says
+which grown records can be treated as same, different, or inferred. The theory
+does not become true by escaping physical cost. It becomes usable by accounting
+for cost well enough.
+
+\begin{bridge}
+
+The chapter's question was why the record only grows, and when it is closed
+enough to support inference.
+
+The answer is physical erasure cost and disciplined closure. The odometer
+accumulates path. Landauer gives erasure a heat bill. Maxwell's demon fails
+unless its memory is counted. Dark energy keeps cosmological history open to an
+accelerating expansion record. The Meissner effect shows a phase closing the
+admissible field histories inside a material.
+
+This closes Volume 2. Measurement has become a physical gauge: a calibrated,
+witnessed, frame-corrected, transport-sensitive, invariant, irreversible record
+from which inference can be drawn.
+
+\end{bridge}
+
+\begin{coda}{A Bakery Cash Register at Closing Time}
+
+The bakery opens before sunrise. Dough has been mixed in the dark. Ovens heat.
+Steam clouds the windows. The first customer buys a roll and coffee. The
+register prints a receipt.
+
+Nothing dramatic has happened, but the ledger has grown.
+
+By noon, the drawer contains bills, coins, card slips, refund receipts, and
+notes about special orders. A tray of croissants sold out. Three loaves were
+set aside for pickup. One cake was returned because the name was misspelled.
+The baker does not erase the sale. She enters a refund and a waste note. The
+ledger grows again.
+
+The bread cannot become flour. The heat cannot become unburned gas. The sold
+roll cannot be unsold by pretending the receipt never printed. Every correction
+is another transaction. Even the attempt to clean the record leaves a record.
+
+This is Landauer in the bakery. Erasing a line from the register would not make
+the day simpler. It would require a manager key, an audit entry, and a reason.
+The old distinction is removed from one view and written into another. The
+system protects itself by refusing free deletion.
+
+The demon appears as the cashier who knows which pastries are moving quickly
+and which are going stale. She can sort the trays, discount the slow ones, and
+keep the display attractive. But her knowledge has to be recorded: waste,
+markdown, transfer, donation. If she acts without memory, she cannot improve
+the day. If she keeps memory, the ledger grows.
+
+At closing, the register is reconciled. Reconciliation is not reversal. It is
+closure. The drawer count, card batch, waste sheet, and sales totals are made
+compatible enough that the owner can infer the day's result. Profit, loss,
+inventory, and tomorrow's bake are all drawn from the closed record.
+
+The bakery performs the final typeclasses. \lean{Bullshit} is accumulated
+burden. \lean{AtreyuProcess} turns the next measurement into a larger comic
+truth. \lean{TrueOutput} compares grown outputs. \lean{Closure} decides when
+records are same, different, or inferred. \lean{INFERRED} is the owner trusting
+the closed till enough to order flour.
+
+The lights go off. The smell of bread remains. The ledger does not shrink.
+
+\end{coda}

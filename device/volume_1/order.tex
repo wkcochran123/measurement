@@ -1,0 +1,55 @@
+\documentclass[12pt,oneside]{book}
+\usepackage{amsthm,amssymb,amsmath,mathtools,MnSymbol,setspace,thmtools,tikz-cd,titling,tocloft}
+\usepackage{siunitx}
+\usepackage{hyperref}
+
+\input{macros}
+
+\begin{document}
+
+% Title info
+\title{Order\\
+\large How Calculus, Geometry, and Topology Emerge from Orderings on Sets}
+
+\author{Bill Cochran\\wkcochran@gmail.com}
+\date{\today}
+
+\maketitle
+
+\begin{center}
+\vspace*{2em}
+\textit{In admiration of the giants whose shoulders I cannot climb. \\
+Their shadows delimit the space in which I stand.}
+\vspace*{6em}
+\end{center}
+
+\newpage
+\frontmatter
+\onehalfspacing
+\include{front/preface}
+\include{front/harm}
+\tableofcontents
+\include{front/toc}
+
+\mainmatter
+\include{chapters/01}
+\include{chapters/02}
+\include{chapters/03}
+\include{chapters/04}
+\include{chapters/05}
+\include{chapters/06}
+\include{chapters/07}
+\include{chapters/08}
+\include{chapters/09}
+\include{chapters/10}
+\include{chapters/11}
+\cleardoublepage
+
+\backmatter
+
+% Seed citation while the volume is still a scaffold. Remove once chapters cite
+% the bibliography directly.
+\nocite{davey2002}
+\bibliographystyle{plain}
+\bibliography{measurement,order}
+\end{document}

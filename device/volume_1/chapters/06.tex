@@ -1,0 +1,806 @@
+\chapter{Variational Calculus}
+\label{chap:variational-calculus}
+
+% Closed question: What selects one admissible continuation as the history
+% actually carried forward?
+
+\begin{chapteressay}
+
+A bead slides down a wire from a higher point $A$ to a lower point
+$B$. The wire's shape is to be designed for fastest descent. The
+straight line connecting $A$ and $B$ is not the answer; a curve that
+drops more steeply at first builds up speed faster. The optimal
+curve is the cycloid: the path traced by a point on the rim of a
+rolling wheel.
+
+The cycloid is not obvious. It is also not arbitrary. It is forced
+by a precise selection principle: among all admissible curves
+connecting $A$ to $B$, the cycloid is the unique one minimizing the
+travel time. The selection is unique; the cycloid is the answer.
+
+This is the chapter's structural question. Given data (the endpoints
+$A$, $B$) and an admissible family of continuations (smooth curves
+between them), how is one continuation selected as the actual
+history? The answer is variational: select the continuation that
+extremizes a chosen functional. For the brachistochrone, the
+functional is the descent time; the extremum is a minimum; the
+selected curve is the cycloid.
+
+The chapter develops the selection principle through five
+structures. The first is minimality as selection: among
+admissible alternatives, the minimum of the functional is the
+selected element. The soap film example illustrates this: the
+film selects the minimum-area surface for the given boundary.
+
+The second is the Euler-Lagrange equation. Given a functional
+$J[y] = \int L(y, y', x) \, dx$, the Euler-Lagrange equation
+$\partial L/\partial y - d/dx \, \partial L/\partial y' = 0$ is
+the necessary condition for $y$ to be an extremum. The
+brachistochrone problem is solved by this technique; the cycloid
+is the unique smooth curve satisfying the boundary conditions
+and the Euler-Lagrange equation. This is Medium-section
+material: the derivation requires careful variational
+calculation.
+
+The third is Kolmogorov selection. For discrete settings, the
+selection principle ``minimize $K$'' is conceptually parallel
+to the variational principle but algorithmically different.
+Exact $K$ is not computable; the discipline uses computable
+proxies (heartbeat counts, BIC, integrated curvature, edit
+distance). This is also Medium-section material: the connection
+between continuous variational calculus and discrete
+algorithmic minimization is the load-bearing conceptual
+content.
+
+The fourth is fluxions resolved. Newton's infinitesimal calculus
+is reframed as the limit of finite-difference ratios. The
+derivative is a Galerkin limit, not a ghost of departed
+quantities. The Euler-Lagrange equation operates on these
+limits without requiring the infinitesimal vocabulary.
+
+The fifth is Galerkin convergence. The discrete Galerkin
+approximations to a variational problem converge to the
+continuous extremum as the discretization refines. The
+convergence unifies the discrete and continuous: both are
+expressions of the same selection principle.
+
+The chapter's ground example is the brachistochrone. The cycloid
+is the unique minimum-time path from $A$ to $B$ under gravity.
+The Euler-Lagrange equation produces the cycloid; the cycloid is
+the selected history.
+
+The chapter's second concrete example is the calligrapher
+drawing one stroke. The calligrapher's brush travels from a
+specific starting point to a specific ending point. Among all
+the trajectories the brush could take, the calligrapher's
+training selects the unique minimum-effort trajectory: the
+trajectory that produces the desired stroke without
+unnecessary inflection or wasted motion. The selection is the
+calligrapher's body's implementation of the chapter's
+variational principle. After thirty years of practice, the
+selection is automatic; but it is the chapter's principle being
+performed.
+
+The chapter's closed question is:
+
+\begin{center}
+\emph{What selects one admissible continuation as the history
+actually carried forward?}
+\end{center}
+
+The chapter's answer is: a variational principle. Among
+admissible continuations, the one that extremizes a chosen
+functional is the selected history. The functional may be the
+energy, the action, the surface area, the descent time, the
+Kolmogorov complexity, or any other admissible functional. The
+Euler-Lagrange equation is the necessary condition for the
+extremum. The discrete version uses computable proxies for the
+incomputable exact selection.
+
+The chapter is the central analytic chapter of the book, paired
+with Chapter 5. Chapter 5 established the discrete (spline)
+case; Chapter 6 extends to continuous (variational) selection.
+Together they give the mathematical gauge its selection tools.
+
+Subsequent chapters build on this. Chapter 7 introduces
+transport: how information moves between selected histories.
+Chapter 8 introduces calibration: how the reference structure is
+made commensurable across observers. Chapter 9 introduces
+curvature: the geometric quantity recording the failure of
+transport to commute. Chapter 10 introduces invariance: what
+survives admissible relabeling. Chapter 11 closes the book with
+measure and entropy.
+
+\end{chapteressay}
+
+\section{Minimality as Selection Principle}
+\label{se:minimality-as-selection-principle}
+
+A soap film stretched across a wire frame takes a specific shape: the
+shape that minimizes the surface area subject to the boundary
+condition of the frame. The film does not assume an arbitrary shape;
+it does not undulate; it does not choose any of the infinitely many
+surfaces that fit the wire boundary. The film selects the unique
+minimal-area surface.
+
+The shape is forced by physics. The film's surface tension is a force
+proportional to area. The film's energy is the surface tension times
+the area. The film equilibrates at the minimum-energy configuration:
+the surface of minimum area for the given boundary. The selection is
+a consequence of the energy minimization.
+
+Mathematically, the minimal surface satisfies the minimal surface
+equation:
+\[
+\nabla \cdot \left(\frac{\nabla u}{\sqrt{1 + |\nabla u|^2}}\right) = 0,
+\]
+where $u(x, y)$ is the surface height at horizontal position $(x, y)$.
+The equation is non-linear in general, but for small slopes it
+reduces to the linear Laplace equation $\Delta u = 0$. The surface
+is harmonic; among all harmonic functions matching the boundary
+values, it is unique.
+
+This is the chapter's first claim. Minimality is a selection principle.
+Among all admissible continuations consistent with the boundary data,
+the minimum (of some chosen energy functional) is uniquely selected.
+The selection is forced by the functional, not chosen arbitrarily.
+
+The previous chapter introduced the spline as the minimum-curvature
+interpolant of finite data. The current chapter extends this to
+selection problems: given an admissible family of continuations
+parameterized by initial conditions, which member of the family is
+the actual history? The answer is the member that minimizes some
+functional.
+
+The functional is the chapter's algebraic object. Common functionals
+include:
+\begin{itemize}
+\item Surface area for soap films.
+\item Travel time for light rays in optical media.
+\item Action (kinetic minus potential energy integrated over time)
+for mechanical paths.
+\item Information content (Kolmogorov complexity) for sequences.
+\item Integrated curvature for splines.
+\end{itemize}
+Each functional selects a unique admissible continuation. The
+specific functional depends on the physical situation; the selection
+principle (minimize the functional) is universal.
+
+In Lean, the selection principle appears throughout. The
+\texttt{GalerkinProcess} typeclass from Chapter 5 selects the
+best approximation in the energy norm. The \texttt{Spline.le}
+relation orders splines by their refinement: among admissible
+splines, the most refined consistent with the data is the
+minimum-curvature interpolant. The compiler's elaborator selects
+the minimum-effort proof when multiple proofs are admissible.
+
+The chapter's discipline: among admissible continuations, the
+minimum of the chosen functional is the selected one. The
+selection is unique when the functional is strictly convex. The
+selection may be non-unique for non-convex functionals; in that
+case, additional criteria are needed to break the tie.
+
+The minimal surface example illustrates the existence and uniqueness
+theory. For a smooth wire frame (the boundary), the minimal surface
+exists (by the direct method of the calculus of variations) and is
+unique (when the boundary is sufficiently regular). The proof
+relies on the convexity of the surface area functional.
+
+For non-convex functionals --- the chapter's example will be the
+action functional for mechanical paths --- existence and uniqueness
+are more delicate. The Euler-Lagrange equation (next section) gives
+the necessary condition for an extremum; whether the extremum is a
+minimum, maximum, or saddle point depends on second-order
+information.
+
+\section{The Euler-Lagrange Equation}
+\label{se:the-euler-lagrange-equation}
+
+The brachistochrone problem, posed by Johann Bernoulli in 1696, asks:
+given two points $A$ (higher) and $B$ (lower, not directly below $A$),
+which curve connecting them produces the fastest descent of a bead
+sliding under gravity, starting from rest at $A$?
+
+The straight line is not the answer. The straight line minimizes
+distance; it does not minimize time. A curve that drops more steeply
+at first builds up speed faster; the higher speed compensates for
+the longer path. The optimal curve is therefore neither the
+straightest nor the shortest; it is the curve that balances distance
+and acceleration to minimize total time.
+
+The answer is the cycloid: the curve traced by a fixed point on the
+rim of a wheel rolling along a horizontal line. Parameterized by the
+wheel's angle $\theta$:
+\[
+x(\theta) = r(\theta - \sin\theta), \quad y(\theta) = -r(1 - \cos\theta),
+\]
+where $r$ is the wheel's radius. The cycloid is the unique
+admissible curve through $A$ and $B$ that minimizes the time of
+descent.
+
+The proof is a paradigmatic application of the calculus of variations.
+
+\emph{Setup.} Let $y(x)$ be the curve from $A = (0, 0)$ to $B = (a,
+-b)$ with $b > 0$. By energy conservation, a bead at height $-y$
+(below $A$) has speed $v = \sqrt{2g|y|}$ where $g$ is gravitational
+acceleration. The arc length element is $ds = \sqrt{1 + (y')^2} \,
+dx$. The travel time element is $dt = ds/v$. The total time is:
+\[
+T[y] = \int_0^a \frac{\sqrt{1 + (y')^2}}{\sqrt{2g|y|}} \, dx.
+\]
+The problem is to find $y(x)$ minimizing $T[y]$ subject to $y(0) =
+0$ and $y(a) = -b$.
+
+\emph{Variational formulation.} The functional $T[y]$ is the
+integral of a Lagrangian:
+\[
+T[y] = \int_0^a L(y, y') \, dx, \quad L(y, y') = \frac{\sqrt{1 +
+(y')^2}}{\sqrt{2g|y|}}.
+\]
+The Lagrangian does not depend explicitly on $x$ (it depends only on
+$y$ and $y'$); the corresponding Beltrami identity will simplify
+the analysis.
+
+\emph{Derivation of the Euler-Lagrange equation.} To find a curve
+$y$ that extremizes $T[y]$, consider a perturbation $y + \epsilon
+\eta$ where $\eta$ is a smooth function vanishing at the endpoints
+($\eta(0) = \eta(a) = 0$) and $\epsilon$ is small. The first-order
+variation of $T$ is:
+\[
+\frac{d}{d\epsilon}\bigg|_{\epsilon=0} T[y + \epsilon \eta] =
+\int_0^a \left(\frac{\partial L}{\partial y} \eta + \frac{\partial
+L}{\partial y'} \eta'\right) dx.
+\]
+Integration by parts on the second term, using $\eta(0) = \eta(a) =
+0$:
+\[
+\int_0^a \frac{\partial L}{\partial y'} \eta' \, dx = -\int_0^a
+\frac{d}{dx}\frac{\partial L}{\partial y'} \eta \, dx.
+\]
+Combining:
+\[
+\frac{d}{d\epsilon}\bigg|_{\epsilon=0} T = \int_0^a \left(\frac{\partial
+L}{\partial y} - \frac{d}{dx}\frac{\partial L}{\partial y'}\right)
+\eta \, dx.
+\]
+For $T$ to be extremized at $y$, this variation must vanish for all
+admissible $\eta$. By the fundamental lemma of the calculus of
+variations:
+\[
+\frac{\partial L}{\partial y} - \frac{d}{dx}\frac{\partial
+L}{\partial y'} = 0.
+\]
+This is the Euler-Lagrange equation. It is a necessary condition for
+$y$ to be an extremum of $T[y]$. The equation is a second-order
+ordinary differential equation for $y(x)$.
+
+\emph{Application to the brachistochrone.} For the brachistochrone
+Lagrangian, the Beltrami identity (a first integral when $L$ is
+independent of $x$) gives:
+\[
+L - y' \frac{\partial L}{\partial y'} = C
+\]
+for some constant $C$. Computing:
+\[
+\frac{\sqrt{1 + (y')^2}}{\sqrt{-2gy}} - \frac{y' \cdot y'}{\sqrt{-2gy}
+\sqrt{1 + (y')^2}} = \frac{1}{\sqrt{-2gy}\sqrt{1 + (y')^2}} = C.
+\]
+Squaring: $-2gy(1 + (y')^2) = 1/C^2$, or $y(1 + (y')^2) = -1/(2gC^2)
+= -k$ for some positive constant $k$.
+
+\emph{Solving the equation.} The first integral is $y(1 + (y')^2) =
+-k$. Substitute $y = -k \sin^2(\theta/2)$ (this is a clever
+substitution motivated by the cycloid form). Then $y' = -k
+\sin(\theta/2)\cos(\theta/2) \cdot \theta'/2 \cdot$ (something);
+after careful computation, one finds:
+\[
+x = \frac{k}{2}(\theta - \sin\theta), \quad y = -\frac{k}{2}(1 -
+\cos\theta).
+\]
+With $r = k/2$, this is the cycloid parameterization. The constant
+$k$ (equivalently $r$) is fixed by requiring the curve to pass
+through $B = (a, -b)$.
+
+\emph{Verification.} The cycloid satisfies the Euler-Lagrange
+equation. It passes through the endpoints. It is the unique smooth
+curve doing so for given endpoints. The travel time can be computed
+in closed form: $T = \pi \sqrt{r/g}$ for the cycloid arc from cusp
+to first descent.
+
+The brachistochrone is the chapter's central example. The result is
+not merely that the cycloid is admissible; the result is that the
+cycloid is forced. Among all admissible curves connecting $A$ and
+$B$, the cycloid is the unique one that minimizes the travel time.
+The selection is unique.
+
+The Euler-Lagrange equation is the chapter's central tool. Given any
+functional $J[y] = \int L(y, y', x) \, dx$, the equation
+\[
+\frac{\partial L}{\partial y} - \frac{d}{dx}\frac{\partial L}{\partial
+y'} = 0
+\]
+is the necessary condition for $y$ to be an extremum of $J$. The
+equation generalizes to multiple dependent variables (vector $y$,
+producing a system of equations), to higher-order Lagrangians
+(involving $y''$, producing fourth-order equations), and to multiple
+independent variables (producing partial differential equations).
+
+For mechanics, the Lagrangian is $L = T - V$ (kinetic minus potential
+energy). The Euler-Lagrange equation gives Newton's equation $F =
+ma$. The variational formulation and Newton's formulation are
+equivalent; either implies the other. The variational form is more
+fundamental: it generalizes to systems where Newton's form is
+awkward (rotating frames, constrained motion, field theories).
+
+For optics, Fermat's principle of least time gives the optical
+equivalent: light follows the path of minimum travel time. The
+Euler-Lagrange equation produces Snell's law and the lens equation.
+
+For relativistic mechanics, the action $S = -mc^2 \int d\tau$ (mass
+times the proper-time interval) is the Lagrangian; the
+Euler-Lagrange equation produces the geodesic equation: free
+particles follow geodesics of spacetime.
+
+In Lean, the Euler-Lagrange equation appears in the
+\texttt{GalerkinProcess} typeclass: the Galerkin projection of
+Chapter 5 is the minimum-energy approximation; the
+Euler-Lagrange equation is the variational form of the same
+selection. The compiler's elaborator uses similar variational
+ideas in its search heuristics: among admissible proofs, the
+elaborator selects the one with minimum elaboration cost.
+
+The chapter's claim is that the Euler-Lagrange equation is the
+necessary condition for selection by a functional. Given the
+admissible family and the functional, the equation produces the
+selected member. The brachistochrone's cycloid is the canonical
+example: a specific functional (the descent time) produces a
+specific curve (the cycloid) through the Euler-Lagrange machinery.
+
+\section{Kolmogorov Selection}
+\label{se:kolmogorov-selection}
+
+The Euler-Lagrange equation selects the extremum of a continuous
+functional defined on an admissible family of curves. The selection
+principle is geometric: among smooth curves through the boundary
+data, the extremum minimizes or maximizes the functional. The
+selection has a different character when the admissible family is
+discrete or when the functional is the description length of the
+candidate.
+
+Kolmogorov complexity $K(w)$ of a string $w$ is the length of the
+shortest program that produces $w$ as output. The complexity is
+measured relative to a fixed universal Turing machine; the choice of
+machine affects $K$ by only an additive constant, so the asymptotic
+behavior is machine-independent.
+
+Kolmogorov complexity is the canonical algorithmic measure of
+informational content. A string of one million identical characters
+(``aaaa...a'') has small $K$: a short program (``print `a' one
+million times'') produces it. A string of one million random
+characters has large $K$: no program much shorter than the string
+itself produces it.
+
+The chapter's third claim is that Kolmogorov complexity provides a
+selection principle. Among admissible continuations of a given
+record, the one with minimum $K$ is the most economical: it
+asserts the least unnecessary structure. The selection is
+analogous to the Euler-Lagrange selection (minimum of a
+functional), but in the discrete algorithmic setting.
+
+For the cubic spline of Chapter 5, the connection is direct. The
+spline minimizes the integrated squared curvature $\int (f'')^2 \,
+dx$. The minimum-curvature continuation of given data is also the
+minimum-Kolmogorov-complexity continuation in the following sense:
+among admissible $C^2$ continuations of the data, the spline has
+the shortest description (the data plus the spline construction
+algorithm) compared to alternatives that introduce extra
+inflections.
+
+This is informal because exact $K$ is not computable; it cannot be
+verified by an algorithm that the spline is exactly the minimum-$K$
+continuation. But the integrated curvature is a computable upper
+bound on $K$: a function with more curvature has more inflection
+points to describe, hence more bits in any reasonable encoding.
+
+\begin{theorem}[Kolmogorov-Spline Correspondence (informal)]
+For data $\{(x_i, y_i)\}_{i=0}^n$ and the admissible class of $C^2$
+interpolants, the natural cubic spline approximately minimizes the
+Kolmogorov complexity in the sense that any $C^2$ interpolant with
+strictly less integrated curvature has strictly less complexity (up
+to a constant accounting for the description algorithm).
+\end{theorem}
+
+This is not a precise theorem; it is a heuristic statement of the
+informational economy that the spline embodies. The exact form
+involves the choice of universal Turing machine and a careful
+specification of what an interpolant's description includes.
+
+The chapter takes Kolmogorov selection as a conceptual frame, not as
+a computable algorithm. The frame says: among admissible
+continuations, the one with the minimum informational content
+(measured by some computable proxy for $K$) is the selected
+continuation. The proxy varies with the situation: integrated
+curvature for splines, action for mechanical paths, surface area
+for soap films, edit distance for sequence alignments.
+
+A critical observation: exact Kolmogorov complexity is not
+computable. By Chaitin's theorem (a consequence of the Halting
+Problem), no algorithm computes $K(w)$ for arbitrary $w$. The
+selection principle ``minimize $K$'' is therefore not directly
+implementable; it must be approximated.
+
+The compiler's elaborator, when it selects a proof, uses a
+computable proxy: the number of heartbeats (internal elaboration
+steps) consumed by the proof. The heartbeat count is a computable
+upper bound on the proof's algorithmic complexity; the elaborator
+selects the proof with the lowest heartbeat count among admissible
+proofs that succeed. This is a Kolmogorov-style selection with a
+specific proxy.
+
+\begin{leanexcerpt}{Proxy Cost}
+structure EKG where
+  private reference : Reading
+  embigger? : Prop $\to$ Prop $\to$ Prop
+\end{leanexcerpt}
+
+The \texttt{EKG} structure in \texttt{LeanCalibration.lean}
+encapsulates the heartbeat proxy. The \texttt{reference} field
+carries the baseline reading (privately, hidden from user code).
+The \texttt{embigger?} method is a binary predicate on
+\texttt{Prop} that the calibration uses to certify one
+heartbeat-bearing claim as no smaller than another. The proxy is
+computable; the predicate is admissible; the selection of the
+minimum is decidable through the calibration interface.
+
+The chapter's discipline: when the exact Kolmogorov selection is
+not implementable, use a computable proxy. The proxy should be a
+plausible upper bound on $K$. The selection by the proxy is the
+admissible substitute for the ideal selection.
+
+The Kolmogorov frame extends to several specific selection problems
+beyond the spline:
+
+\emph{Sparse regression.} Given data and a large set of candidate
+features, select the smallest set of features that explains the
+data adequately. The Lasso regression solves this approximately by
+minimizing the residual plus a penalty proportional to the
+$\ell_1$ norm of the coefficients. The penalty is a computable
+proxy for $K$.
+
+\emph{Model selection.} Given several candidate statistical models,
+choose the one that best balances goodness of fit against
+complexity. The Bayesian information criterion (BIC) is a proxy
+for $K$: BIC = $k \ln n - 2 \ln L$ where $k$ is the number of
+parameters and $L$ is the likelihood. Selecting the model with
+the smallest BIC is a computable approximation to Kolmogorov
+selection.
+
+\emph{Compression.} Given a string $w$, find the shortest encoding
+that recovers $w$. Lempel-Ziv compression is the practical
+algorithm; the resulting compressed length is a computable upper
+bound on $K(w)$. The selection (among possible encodings) of the
+shortest is the Kolmogorov principle applied to encoding.
+
+Each of these is a Kolmogorov-style selection problem with a
+specific computable proxy. The chapter's general principle holds:
+among admissible alternatives, select the one with the minimum
+informational content as measured by the chosen proxy.
+
+In Lean, the \texttt{ChaitinsNumberSequence} in
+\texttt{Episode3.lean} represents the halting probability $\Omega$,
+the formal object whose digits encode the answers to the Halting
+Problem. The compiler does not compute these digits; the type
+exists but no values are constructed. The Kolmogorov selection at
+the universe's level would require computing $\Omega$; since this
+is impossible, the compiler uses heartbeats as a proxy.
+
+The chapter's distinction: the Kolmogorov frame is a conceptual
+ideal; the proxies are practical implementations. The
+brachistochrone (a continuous selection problem) is solved exactly
+by the Euler-Lagrange equation. The spline (a discrete selection)
+is solved exactly by linear algebra. The general Kolmogorov
+selection problem is unsolvable exactly; computable proxies are
+the discipline.
+
+The chapter's claim is that variational calculus (continuous,
+Euler-Lagrange) and Kolmogorov selection (discrete, proxy-based)
+are two faces of the same selection principle. Both ask: among
+admissible alternatives, which has the minimum value of the
+functional / complexity / energy? The answer is unique when the
+functional is convex; for non-convex functionals or for
+incomputable complexities, the selection is approximate, and the
+proxies must be honest about their limitations.
+
+\section{Fluxions Resolved}
+\label{se:fluxions-resolved}
+
+Newton's calculus was based on \emph{fluxions}: infinitesimal
+quantities representing momentary changes. The derivative of $x$
+with respect to $t$, written $\dot{x}$ in Newton's notation, was the
+fluxion: the ratio of the infinitesimal change in $x$ to the
+infinitesimal change in $t$ at a single instant.
+
+The fluxion was philosophically problematic. Bishop Berkeley
+famously criticized fluxions in \emph{The Analyst} (1734) as
+``ghosts of departed quantities'': simultaneously zero (at the
+limiting instant) and nonzero (a meaningful ratio). The
+contradiction was not resolved until Cauchy's epsilon-delta
+formalism in the early nineteenth century made the limit rigorous.
+
+In the chapter's framework, the fluxion is resolved differently. The
+derivative is not a ratio of infinitesimals; it is a Galerkin
+limit of finite ratios. The discrete data are the counts; the
+ratios are admissible because they are computed from finite
+counts; the derivative is the limit of the ratios as the data are
+refined.
+
+For a function $x(t)$ recorded at discrete times $t_0 < t_1 < t_2 <
+\ldots$, the finite difference $\Delta x_n / \Delta t_n =
+(x(t_{n+1}) - x(t_n))/(t_{n+1} - t_n)$ is a ratio of two recorded
+counts: the change in $x$ over the change in $t$. The finite
+difference is admissible: both numerator and denominator are
+counts; the ratio is well-defined.
+
+As the time grid is refined ($\Delta t_n \to 0$), the finite
+differences converge (if $x$ is smooth) to a limit. The limit is
+the derivative $\dot{x}(t)$ in the modern sense. The limit is the
+Galerkin projection of the ratio onto the increasingly fine grid:
+the unique admissible continuation of the discrete ratios.
+
+The chapter's resolution: fluxions are not infinitesimals. They are
+limits of finite ratios. The infinitesimal vocabulary is shorthand
+for the limit; the limit is admissible because it is the Galerkin
+projection's limit value. No ghosts; no contradictions.
+
+In Lean, derivatives are defined as limits via the type
+\texttt{HasDerivAt}. The definition is the standard
+epsilon-delta limit: $f$ has derivative $f'(a)$ at $a$ when for
+every $\varepsilon > 0$, there exists $\delta > 0$ such that
+$|f(x) - f(a) - f'(a)(x - a)| < \varepsilon |x - a|$ for all $|x
+- a| < \delta$. The definition is constructive: the derivative is
+computed from finite data (the values of $f$ near $a$) by taking
+the limit.
+
+The chapter's fourth claim is that calculus is grounded in finite
+counting, not in infinitesimals. The derivative is the limit of
+finite-difference ratios; the integral is the limit of
+finite-sum Riemann approximations; the curvature is the limit of
+finite second-difference ratios. All of calculus is admissible as
+limits of counted operations.
+
+This perspective unifies the chapter's themes. The Euler-Lagrange
+equation involves $d/dx$ of $\partial L/\partial y'$. The
+derivative $d/dx$ is the limit of finite differences; the
+equation is admissible as a statement about Galerkin limits. The
+selection by minimum-functional is an algebraic operation on the
+discrete data; the limit (as the discretization refines) is the
+continuous extremum.
+
+The chapter's discipline: no infinitesimals; only limits of
+finite operations. The notation $dx$ is shorthand; the meaning is
+the limit. The selection principle is unaffected by the
+notational simplification; the Euler-Lagrange equation is the
+limit form of the discrete extremality condition.
+
+\section{Galerkin Convergence}
+\label{se:galerkin-convergence}
+
+Consider the boundary-value problem $u^{(4)}(x) = f(x)$ on $[0, 1]$
+with boundary conditions $u(0) = u(1) = u'(0) = u'(1) = 0$. This is
+the equation for the bending of an elastic beam under a distributed
+load $f$. The chapter's framework solves it by Galerkin projection.
+
+Let $V_h$ be the space of cubic spline functions on $[0, 1]$ with
+knot spacing $h$ that vanish at the endpoints and have zero
+derivatives at the endpoints. As $h$ decreases (more knots), $V_h$
+grows. The Galerkin projection $u_h$ is the unique solution in
+$V_h$ of the variational form: $\int_0^1 u_h''(x) v''(x) \, dx =
+\int_0^1 f(x) v(x) \, dx$ for all $v \in V_h$.
+
+The Galerkin Convergence Theorem states that the sequence $u_h$
+converges to the exact solution $u$ as $h \to 0$. The convergence
+rate depends on the smoothness of $u$ and the order of the basis:
+for cubic splines and $u \in H^4$, the rate is $\|u - u_h\|_{L^2}
+\le C h^4 \|u^{(4)}\|_{L^2}$.
+
+The chapter's fifth claim is that the Galerkin projection
+converges to the exact solution as the discretization refines.
+The discrete approximations are admissible at each finite
+resolution; the limit is the continuous solution; the limit is
+admissible because the Cauchy completion of the discrete
+approximations is the continuum's element.
+
+This is the chapter's continuous extension of Chapter 5's spline
+result. Chapter 5 proved that the spline is the
+minimum-curvature interpolant of finite data. The current
+chapter extends this to differential equations: the spline
+discretization of a variational problem converges to the
+continuous solution as the discretization refines.
+
+The convergence is the chapter's structural unification of the
+discrete and the continuous. The discrete Galerkin solutions
+$u_h$ are admissible at each finite resolution. The continuous
+solution $u$ is the limit of the discrete approximations. The
+limit is the continuous extremum of the same variational
+problem. The discrete and continuous are unified through the
+Galerkin convergence.
+
+In Lean, the convergence theorem is part of \texttt{Mathlib}'s
+functional-analysis library (for the underlying functional-analytic
+results) plus the chapter's spline-specific machinery. The
+\texttt{GalerkinProcess} typeclass requires the convergence proof
+as part of its admissibility certificate. The compiler enforces
+this: an instance must demonstrate convergence; without the
+proof, the instance is rejected.
+
+The chapter closes here. The selection principle (Section 1) chooses
+the extremum of a functional. The Euler-Lagrange equation (Section
+2) gives the necessary condition for the extremum. Kolmogorov
+selection (Section 3) extends this to discrete settings via
+computable proxies. Fluxions (Section 4) are resolved as limits of
+finite ratios. Galerkin convergence (Section 5) unifies the
+discrete and continuous through the convergence of finite
+approximations to the continuous limit.
+
+\begin{bridge}
+
+The chapter's question was what selects one admissible continuation
+as the history actually carried forward.
+
+The answer is: minimization of a functional. The soap film selects
+the minimum-area surface; the brachistochrone selects the
+minimum-time path (the cycloid); the spline selects the
+minimum-curvature interpolant; the Galerkin projection selects the
+minimum-energy approximation. Each selection is forced by its
+functional. The Euler-Lagrange equation is the necessary
+condition: at the extremum, the functional derivative vanishes.
+Kolmogorov selection extends the principle to discrete settings
+with computable proxies for the incomputable exact $K$.
+
+The chapter's discipline: among admissible continuations, the
+minimum of the chosen functional is selected. The selection is
+unique when the functional is strictly convex. Fluxions are
+resolved as limits of finite ratios. Galerkin convergence unifies
+the discrete and continuous through limit processes.
+
+What remains is transport. The chapter has selected one
+continuation; how does information move between continuations?
+Chapter 7 takes up the transport question: how can structure
+move from one record to another while preserving admissibility?
+
+\end{bridge}
+
+\begin{coda}{The Calligrapher Drawing One Stroke}
+
+The calligrapher sits at a low wooden table in a quiet room. The
+table is covered with a felt mat; on the mat is a sheet of
+hand-made paper, smooth, slightly cream-colored, twelve centimeters
+square. The brush rests in a small ceramic stand to the right.
+The ink stone is to the left, with a small puddle of ink at its
+center. The water dish is behind. The room is silent except for the
+soft sound of the calligrapher's breath.
+
+She has been practicing this stroke for thirty years. The stroke is
+the horizontal first stroke of the character meaning ``one'': a
+single line drawn from left to right, starting with a soft entry,
+swelling slightly in the middle, and ending with a controlled tail.
+The character is the simplest; the stroke is the most demanding.
+The simplest character requires the most precise stroke.
+
+She loads the brush. The brush is held vertically; the tip is dipped
+into the ink puddle; the brush rotates slowly; the ink rises into
+the hairs of the brush by capillary action. The calligrapher
+withdraws the brush, taps it once gently on the side of the stone
+to remove excess ink, and considers the load. The brush carries the
+right amount: not too little (the stroke will skip), not too much
+(the stroke will blot). The load is calibrated.
+
+She positions the brush above the paper. The starting point of the
+stroke is on the left side, about three centimeters from the
+upper edge. The ending point is on the right side, three
+centimeters from the upper edge, parallel to the starting point.
+Between these two points, the stroke must travel.
+
+She pauses. The pause is not idle. The calligrapher is selecting
+the stroke. Not consciously; her training has internalized the
+selection. But the selection is happening: among all the possible
+strokes connecting the two points, which is the one she will draw?
+
+The answer is the stroke of minimum added curvature: the stroke
+that introduces no inflection not forced by the boundary data and
+the brush's natural behavior. The selection is the chapter's
+selection principle, performed by the calligrapher's body. The
+brush is the instrument; the paper is the substrate; the
+minimization is the discipline.
+
+The minimum-curvature constraint is the calligrapher's spline. The
+brush will travel from start to end; the brush's bristles will
+flex slightly as the stroke proceeds; the paper will absorb the
+ink slightly; all of these are physical processes that the
+calligrapher must accommodate. The optimal stroke is the
+trajectory of the brush that minimizes unnecessary effort while
+producing the intended visual result.
+
+She begins. The brush descends. The first contact is the entry:
+the tip of the brush touches the paper, the bristles spread
+slightly, the first dot of ink appears. The entry is a controlled
+event: the calligrapher's wrist initiates the contact at a
+specific angle, with a specific pressure, with a specific speed.
+The control determines the entry's appearance: a soft entry, not
+a hard impact.
+
+The brush moves to the right. The speed is constant; the
+pressure varies; the ink flow varies; the bristles flex and
+recover. The calligrapher's arm carries the brush horizontally;
+her wrist makes small adjustments to maintain the stroke's
+character. The stroke is being drawn.
+
+This is the Euler-Lagrange equation in physical form. The
+functional is the calligrapher's aesthetic: the visual quality of
+the stroke. The admissible curves are the trajectories the brush
+could take from start to end. The selection is the trajectory
+that the calligrapher's training has identified as the unique
+admissible answer. The training is the calibration; the stroke
+is the executed continuation.
+
+The middle of the stroke is the swell: a slight thickening as the
+brush carries its full ink and the bristles flex maximally. The
+swell is not a deliberate addition; it is the natural consequence
+of the brush's full engagement with the paper. The calligrapher
+does not add the swell; she allows the brush's natural behavior
+to produce it. The minimization principle accommodates this:
+the swell is what minimum-effort produces, not what
+maximum-effort produces.
+
+The stroke continues. The brush approaches the end. The
+calligrapher decreases the pressure; the bristles return toward
+their resting shape; the stroke tapers. The taper is the exit:
+a controlled lift of the brush from the paper, producing a
+sharp tail. The taper is the mirror of the entry: same precision,
+same controlled mechanics, opposite direction.
+
+The brush lifts. The stroke is complete. The horizontal line is
+on the paper: an inked trajectory from left to right, with a
+soft entry, a natural swell, and a controlled tail. The total
+duration was perhaps three seconds.
+
+The calligrapher inspects the stroke. The result is acceptable.
+The line is straight; the swell is in the right place; the
+tail is correct. The selection has succeeded: the minimum-effort
+stroke has produced the intended visual quality.
+
+What if the stroke had failed? Suppose the brush had wavered, or
+the ink had blotted, or the line had been slightly curved. The
+failure would have been an admission that the selection had not
+quite produced the unique minimum-effort answer. The
+calligrapher's training would identify the source of the failure
+(too much ink, too quick a motion, too high a brush angle) and
+correct for the next stroke.
+
+The chapter's discipline is what the calligrapher embodies. The
+admissible continuations are the possible stroke trajectories.
+The functional is the aesthetic / mechanical / inking
+requirements. The Euler-Lagrange equation is the implicit
+calculation that the calligrapher's body performs to identify
+the minimum-functional trajectory. The execution is the brush's
+actual motion. The result is the inked line on the paper.
+
+The line on the paper is the chapter's structures performed in
+ink. The boundary data are the start and end points. The
+admissible continuations are the possible strokes. The selection
+is the minimum-curvature stroke. The execution is the brush's
+trajectory. The residue is the slight imperfection that any
+physical execution introduces.
+
+The calligrapher will draw another stroke now. The next character
+in her practice sheet is the character meaning ``two'': two
+horizontal strokes, the lower one slightly longer. Each stroke
+is its own selection problem; each admits its own
+Euler-Lagrange solution; each is executed by the same
+discipline. After thirty years, the calligrapher's bodily
+training is the unconscious implementation of the chapter's
+variational principle.
+
+She loads the brush again. The next stroke begins.
+
+\end{coda}

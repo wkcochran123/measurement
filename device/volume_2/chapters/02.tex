@@ -1,0 +1,605 @@
+\chapter{Three Ways to Measure}
+\label{chap:three-ways-to-measure}
+
+% Closed question: How can an instrument compare records and repeat the result
+% without pretending the comparison is the thing measured?
+
+\begin{chapteressay}
+
+A car passes a police officer on the side of a road. The officer raises a radar
+gun. In the car, the dashboard speedometer already reads 60 mph. In the
+driver's phone, a map application also estimates the car's speed from GPS
+positions. Three instruments are now telling one story.
+
+They do not tell it in the same language.
+
+The speedometer counts rotations. A magnetic sensor sees teeth pass in the
+drivetrain, counts pulses, scales by wheel circumference, and divides by elapsed
+time. The radar gun sends out electromagnetic waves and compares the outgoing
+frequency with the reflected frequency. The GPS receiver listens for timestamped
+signals from satellites, compares arrival times, solves for position, and then
+compares positions across time. The dashboard, radar display, and phone may all
+say the same number, but the physical routes to that number are different.
+
+This is the chapter's example and its warning. Agreement among instruments is
+powerful only because the instruments are not the same instrument. If three
+copies of the same miscalibrated speedometer agree, the agreement may only
+prove that the same error has been repeated. If a pulse counter, a Doppler
+instrument, and a time-of-flight system agree within their resolutions, the
+comparison is stronger. The same physical claim has survived three carriers.
+
+What is being compared? Not speed itself as a thing in the road. Each
+instrument compares records. The speedometer compares pulse count to clock
+count under a wheel calibration. The radar gun compares emitted and returned
+frequencies under an electromagnetic calibration. The GPS receiver compares
+satellite times, receiver times, and successive positions under a relativistic
+clock calibration. The agreement among them is a comparison of comparisons.
+
+A measurement therefore becomes physical law only after it can be repeated and
+compared without confusing the comparison with the thing measured. A ruler does
+not become a table. A clock does not become time. A speedometer does not become
+speed. They produce records. Those records can agree, disagree, drift, or
+calibrate one another. The instrument's interface with the world is comparison,
+and the discipline of this chapter is to keep that interface honest.
+
+The same structure appears in a kitchen scale and a measuring cup. Suppose a
+baker measures flour by weight on a digital scale and by volume in a cup. The
+scale compares force against an internal calibration. The cup compares a filled
+volume against a marked line. The two instruments do not carry the same physical
+event. Weight changes with density and packing; volume changes with how the
+flour settles. The baker can still learn from their agreement or disagreement.
+If the recipe says 120 grams and one cup, and the packed flour weighs 160 grams,
+the disagreement is not a metaphysical crisis. It is the instrument telling the
+baker that two comparison interfaces have diverged.
+
+This chapter overlays that ordinary fact on the speedometer thread. Chapter 1
+gave us admissible marks: events carried under calibration. Chapter 2 asks how
+such marks can be compared. The answer must do two things at once. First, it
+must let instruments repeat their readings. A comparison that cannot be repeated
+is only an accident. Second, it must prevent the reading from being confused
+with the world. A comparison is an interface, not an identity.
+
+The closed question is:
+
+\begin{center}
+\emph{How can an instrument compare records and repeat the result without
+pretending the comparison is the thing measured?}
+\end{center}
+
+The speedometer, radar gun, and GPS receiver answer together. Each produces a
+different physical record. Each reduces its record to a ratio or comparison
+under calibration. The three readings become comparable only because the
+calibrations are named and the units are shared. Their agreement is not magic.
+It is a constructed common interface.
+
+By the end of the chapter, the instrument will have three new obligations. It
+must expose a binary comparison: this reading is less than, equal to, or greater
+than that one within the instrument's resolution. It must be repeatable: the
+same physical situation, under the same calibration, must return the same
+comparison. And it must remain humble: the comparison is the measurement's
+admissible output, not the thing measured in itself.
+
+\end{chapteressay}
+
+% Phenomenon arcs use: 1/3 setup -> phenomenon box -> 2/3 structural interpretation.
+
+\section{The Speedometer: Pulse Counting}
+\label{se:the-speedometer-pulse-counting}
+
+The speedometer's comparison begins with a pulse rate. Chapter 1 treated each
+Hall-effect pulse as an admissible mark. Chapter 2 asks what can be done with a
+sequence of those marks.
+
+Suppose the sensor admits $N$ pulses in a time interval $\Delta t$. Suppose the
+tone wheel has $P$ pulses per wheel revolution and the calibrated wheel
+circumference is $C$. Then the instrument computes
+
+\[
+v = \frac{N}{\Delta t}\cdot\frac{C}{P}.
+\]
+
+This equation is not yet a law of nature. It is the speedometer's comparison
+interface. The first ratio, $N/\Delta t$, compares pulse count to clock count.
+The second ratio, $C/P$, compares distance per wheel revolution to pulses per
+wheel revolution. The displayed speed is the result of composing those
+comparisons.
+
+The car's motion enters only through admitted pulses. Tire slip, vibration,
+wind, road grade, and engine noise do not enter unless they change the pulse
+record or its calibration. The speedometer is therefore narrow by design. It
+does not measure every physical fact about the moving car. It measures the
+ratio it can carry.
+
+This narrowness is what makes comparison possible. A pulse count can be
+compared with another pulse count. A clock interval can be compared with another
+clock interval. A calibrated circumference can be compared with a shop standard.
+The final display can be compared with a radar gun, a GPS receiver, a roadside
+timing trap, or a dynamometer. The reading is useful because it is made of
+comparisons all the way down.
+
+The speedometer also shows why a reading is never merely a number. The same
+number 60 can mean different things depending on the calibration. Sixty miles
+per hour and sixty kilometers per hour are not the same speed. Sixty pulses per
+second is not a speed until the pulses have been scaled. Sixty on a broken
+display may be neither speed nor reliable frequency. The number becomes a
+measurement only when the comparison grammar is present.
+
+This gives an old physical insight a precise place in the argument.
+
+\begin{phenom}{Archimedes-Proust Effect}
+\label{ph:archimedes-proust-effect}
+
+\PhStatement A physical measurement becomes stable when it is expressed as an
+admissible ratio: one count or quantity compared with another under a named
+standard.
+
+\PhOrigin Archimedes made physical proportion operational in mechanics and
+hydrostatics; Joseph Proust's law of definite proportions showed that chemical
+compounds combine in fixed ratios by mass.
+
+\PhObservation The speedometer reading is not a raw pulse count. It is a ratio
+of pulses to time, scaled by the ratio of wheel circumference to pulses per
+revolution. The same grammar appears in density, concentration, gear ratio, and
+chemical proportion.
+
+\PhConstraint The instrument may compare only quantities it can carry under a
+calibration. A ratio with an unnamed denominator is not a physical reading.
+
+\PhConsequence Physical comparison begins as proportion. The speedometer's
+number is admissible because it is a ratio of carried records, not because the
+instrument touches speed directly.
+
+\end{phenom}
+
+The Archimedes-Proust Effect is not a historical ornament here. It fixes the
+chapter's grammar. To measure is to compare records under proportion. The
+speedometer's pulse-counting interface is the simplest physical version of that
+grammar in this volume.
+
+\section{The Radar Gun: Doppler Shift}
+\label{se:the-radar-gun-doppler-shift}
+
+The radar gun agrees with the speedometer without counting wheel rotations. It
+does not know the tire radius. It does not care whether the car is front-wheel
+drive, rear-wheel drive, or coasting in neutral. It sends a wave and compares
+what comes back.
+
+A typical police radar gun operates in the K-band at $24{.}125\,\mathrm{GHz}$
+or in the Ka-band at $33{.}4$ to $36\,\mathrm{GHz}$. The emitter, a Gunn
+diode oscillator stabilized against a dielectric resonator, generates
+continuous-wave microwave radiation at a precisely known frequency $f_0$. The
+beam is collimated by a horn antenna to a divergence angle of about $12$
+degrees. When this beam encounters a target moving along the line of sight,
+the reflected wave returns with a shifted frequency. For speeds much smaller
+than the speed of light, the round-trip Doppler shift is approximately
+\[
+\Delta f \approx \frac{2v}{c} f_0,
+\]
+where $v$ is the car's speed along the radar beam and $c$ is the speed of
+light. The factor of two appears because the wave is shifted once as it meets
+the moving car and again as it is reflected back to the receiver.
+
+The derivation makes the chapter's point explicit. The wave's relationship to
+the target involves two frequency comparisons. First, the moving car sees an
+incoming wave at frequency $f_1 = f_0 (1 + v/c)$ (the target's frame sees a
+blue-shifted wave because the source is approaching it). Second, the wave
+reflected back to the gun is doubly shifted: the moving car acts as a
+re-emitter at frequency $f_1$, but from the gun's stationary frame, the
+target is moving toward the gun, so the received frequency is
+$f_2 = f_1 (1 + v/c) = f_0 (1 + v/c)^2 \approx f_0 (1 + 2v/c)$ for $v \ll c$.
+The shift $\Delta f = f_2 - f_0 \approx 2 f_0 v / c$ is the gun's measurable
+output.
+
+For a car at $60\,\mathrm{mph}$ ($v \approx 27\,\mathrm{m/s}$) and a K-band
+radar gun at $f_0 = 24{.}125\,\mathrm{GHz}$, the predicted shift is
+$\Delta f \approx 2 \times 24{.}125 \times 10^9 \times 27 / (3 \times 10^8)
+\approx 4{.}3\,\mathrm{kHz}$. The radar gun extracts this audio-frequency
+shift from the radio-frequency carrier by mixing the received signal with
+the local oscillator output, producing a beat note at the Doppler frequency.
+A simple frequency counter on the beat note gives the speed. For
+police-radar accuracy of about $\pm 1\,\mathrm{mph}$, the beat frequency must
+be measured to about $\pm 70\,\mathrm{Hz}$ over a one-second gating interval
+--- easily achievable with standard electronics.
+
+The instrument does not count wheel events. It compares frequencies. The
+comparison is the chapter's structural point: the radar gun and the
+speedometer measure the same physical quantity (the car's speed relative to
+the road) through completely different instrumental procedures. The
+speedometer counts mechanical rotations and multiplies by a calibrated
+circumference. The radar gun emits a wave and measures a Doppler shift.
+Neither instrument touches the speed directly; each performs a comparison
+that, under its respective calibration, produces a number that is interpreted
+as the speed.
+
+The agreement between the two instruments, when both are properly calibrated,
+is the chapter's \texttt{REPEATABLE} certificate. Disagreement is diagnostic.
+If a speedometer reads 60 and the radar gun reads 55, the disagreement points
+to a specific failure mode in one or both instruments. The speedometer's
+characteristic failures are tire-related: a worn or oversized tire changes
+the effective wheel circumference, and the calibration constant no longer
+matches the physical geometry. The radar gun's characteristic failures are
+geometry-related: a beam not aligned with the car's direction of motion
+produces a cosine-of-angle underread; two cars in the beam force a target
+selection ambiguity; oscillator drift biases the frequency comparison.
+
+These are not reasons to distrust either instrument. They are reminders that
+every comparison interface has its own failure modes, and the discipline of
+measurement is to know each instrument's vulnerabilities. A radar reading is
+not speed in itself; it is a Doppler comparison interpreted as speed under
+named assumptions about geometry and calibration.
+
+The radar gun also makes the communication structure of measurement explicit.
+The emitted wave leaves the instrument, interacts with the car, and returns. The
+reading depends on what survives that round trip. This is a channel problem:
+signal, carrier, noise, encoding, decoding, and comparison.
+
+\begin{phenom}{Fessenden-Shannon Effect}
+\label{ph:fessenden-shannon-effect}
+
+\PhStatement A measurement that travels through a channel is constrained by the
+channel's ability to carry a distinguishable signal from source to receiver.
+
+\PhOrigin Reginald Fessenden's early radio work made continuous-wave
+communication operational; Claude Shannon later gave the mathematical theory of
+information transmission through noisy channels.
+
+\PhObservation A radar gun emits a calibrated microwave signal and receives a
+shifted reflection. The speed reading depends on whether the returned signal can
+be distinguished from noise, assigned to the correct target, and compared with
+the emitted reference.
+
+\PhConstraint The instrument may not infer more information than the channel
+carries. Beam angle, noise, bandwidth, and target ambiguity limit what the
+returned signal can support.
+
+\PhConsequence Communication is already inside measurement. The radar gun is a
+physical comparator because the channel preserves enough structure for emitted
+and returned frequencies to be compared.
+
+\end{phenom}
+
+This phenomenon is the radar section's hinge. The speedometer compares events
+inside the car. The radar gun compares a transmitted and returned signal across
+space. In both cases, comparison requires a carried record. But the radar gun
+shows that the carrier can leave the instrument, encounter the measured object,
+and return with a changed structure.
+
+That changed structure is not arbitrary. The Doppler shift is repeatable because
+waves with the same emitted frequency, reflecting from targets with the same
+radial speed under the same geometry, return with the same frequency shift. The
+comparison is physical because the channel law is stable. The instrument's
+reading is credible because the comparison can be repeated.
+
+This is the first glimpse of a theme that will grow in later chapters. A
+measurement is not only a mark in a ledger. It is also an interaction that
+transports information. Chapter 7 will make that transport explicit. Here, we
+need only the first lesson: the radar gun measures by comparing what it sent
+with what returned, not by touching the car's speed.
+
+\section{The GPS: Time of Flight}
+\label{se:the-gps-time-of-flight}
+
+The GPS receiver agrees with the speedometer and radar gun by using neither
+wheel rotations nor reflected microwaves from the car. It measures position
+from time.
+
+The Global Positioning System consists of approximately $24$ active
+satellites in six orbital planes, each at an altitude of $20{,}200\,\mathrm{km}$.
+The orbital period is $11\,\mathrm{h}\,58\,\mathrm{min}$, so each satellite
+completes two orbits per sidereal day and returns to roughly the same
+position relative to the Earth's surface daily. The constellation geometry
+is chosen so that at least four satellites are visible from any point on
+the Earth's surface at any time. Each satellite carries multiple cesium and
+rubidium atomic clocks with frequency stability of $10^{-13}$ over a day,
+providing a precise time reference.
+
+Each GPS satellite broadcasts a signal at two L-band frequencies:
+$L1 = 1{.}57542\,\mathrm{GHz}$ and $L2 = 1{.}2276\,\mathrm{GHz}$. The
+signal contains the satellite's identification code, its precise orbital
+ephemeris (the Keplerian elements plus correction terms), and the time at
+which the signal was sent, all encoded by phase-modulating the carrier
+with pseudo-random noise codes that allow the receiver to identify each
+satellite and to measure signal arrival time to within nanoseconds.
+
+The receiver compares the transmission time encoded in each satellite's
+signal with its own reception time. Multiplying the time difference by
+the speed of light gives a distance to the satellite, more precisely a
+\emph{pseudorange} because the receiver clock is not perfectly
+synchronized with the satellite clocks. Four satellites are needed in
+ordinary operation: three to triangulate the three spatial coordinates,
+and a fourth to solve for the receiver clock offset (which appears as a
+common bias in all four pseudoranges).
+
+The triangulation equations are
+\[
+(x - x_i)^2 + (y - y_i)^2 + (z - z_i)^2 = c^2 (t_i - t + b)^2,
+\quad i = 1, 2, 3, 4,
+\]
+where $(x, y, z)$ is the receiver's unknown position, $(x_i, y_i, z_i)$ is
+the $i$-th satellite's known position at signal emission, $t_i$ is the
+satellite's transmission time (broadcast in the signal), $t$ is the
+receiver's reception time (read from the receiver's clock), and $b$ is
+the receiver's clock offset against GPS system time. Four equations in
+four unknowns ($x, y, z, b$) yield a unique solution under typical
+geometric conditions.
+
+Once the receiver has solved for its position, repeated solutions at
+successive reception times yield a velocity estimate. The speed is
+\[
+v \approx \frac{|\Delta \mathbf{x}|}{\Delta t},
+\]
+where $\Delta \mathbf{x}$ is the position change between two solutions
+and $\Delta t$ is the time elapsed between them.
+
+In practice, GPS receivers use a more direct velocity measurement based
+on Doppler shifts of the satellite signals themselves, which gives
+better short-term velocity accuracy than position differencing. The
+satellite signals arrive Doppler-shifted by both the satellite's motion
+(at $3{.}87\,\mathrm{km/s}$ orbital speed) and the receiver's motion. The
+receiver's contribution to the Doppler shift can be extracted from the
+sum of signals from multiple satellites, yielding a velocity estimate
+with accuracy on the order of $0{.}1\,\mathrm{m/s}$ even when position
+accuracy is limited to a few meters.
+
+The speedometer counts drivetrain pulses. The radar gun compares
+frequencies. The GPS receiver compares times and positions across an
+entire constellation of satellites. Yet all three can display the same
+speed.
+
+This agreement is possible only because the GPS receiver is aggressively
+calibrated. Satellite clocks are atomic clocks. Their signals carry precise
+time references. The system includes corrections for satellite orbit, clock
+drift, atmospheric delay, and relativistic effects (detailed in Chapter 8).
+A GPS speed reading is not ``position magic.'' It is a disciplined comparison
+among many clocks.
+
+That clock discipline brings Einstein into the chapter, but in an operational
+way. Synchronization is not a philosophical luxury. If the receiver and
+satellite clocks are not comparable, the position solution fails. If the clocks
+are comparable but the relativistic frame corrections are wrong, the solution
+drifts. The physical reading depends on an agreement about time.
+
+\begin{phenom}{Einstein Synchronization Effect}
+\label{ph:einstein-synchronization-effect}
+
+\PhStatement Spatial measurement by light signal requires a clock-comparison
+protocol. Distances inferred from signal travel time are admissible only after
+the relevant clocks have been synchronized or their offsets have been solved.
+
+\PhOrigin Einstein's 1905 analysis of simultaneity made synchronization by
+light signals operational: clocks at different places are compared by a defined
+signal protocol, not by access to absolute time.
+
+\PhObservation GPS receivers solve for position and receiver-clock offset by
+comparing satellite timestamps with local reception times. The speed estimate
+comes only after those clock comparisons are made mutually consistent.
+
+\PhConstraint The receiver may not treat remote timestamps as directly
+comparable without a synchronization rule and calibration corrections. Time of
+flight becomes distance only under that protocol.
+
+\PhConsequence A physical instrument can compare records across space only by
+carrying its reference structure with it. The GPS speed agrees with the
+speedometer because its clock comparisons have been made admissible.
+
+\end{phenom}
+
+The GPS example closes the triangle of this chapter. The speedometer is local
+and mechanical. The radar gun is remote and wave-based. The GPS receiver is
+distributed and clock-based. Their agreement is not agreement of identical
+apparatus. It is agreement of compatible comparisons.
+
+That compatibility is what makes physical measurement powerful. If the
+speedometer reads 60 mph, the radar gun reads 60 mph, and the GPS receiver
+computes 60 mph, the car's speed is no longer tied to one fragile carrier. The
+claim has survived three encodings. It has become a shared physical record.
+
+But the humility remains. The three instruments still do not touch speed as an
+independent object. They carry pulse ratios, frequency shifts, and time-of-
+flight comparisons. The agreement among those records is what gives the reading
+its physical force.
+
+\section{Repeatability}
+\label{se:repeatability}
+
+Comparison without repeatability is not measurement. It is coincidence.
+
+Suppose a car drives ten laps around a closed test track at a controlled speed.
+The speedometer, radar gun, and GPS receiver are recorded on each lap. If the
+track conditions, calibration, and driving profile are held fixed, the
+instruments should agree within their resolutions each time. Small deviations
+are not shocking; they are the measurement noise. But if the readings wander
+without pattern, the comparison has failed.
+
+Repeatability does not mean identical numbers under all conditions. It means
+that the same admissible situation returns the same admissible comparison. If
+the tire pressure changes, the speedometer calibration may shift. If the radar
+angle changes, the Doppler reading may change. If the GPS receiver loses
+satellite lock, the time-of-flight solution may degrade. Repeatability always
+includes the condition ``under the same calibration and apparatus state.''
+
+This is where a study begins. A single reading can be useful, but repeated
+readings let the instrument characterize its own scatter. If the speedometer
+reads 60, 60, 60, 61, 60 over five passes, the scatter is small. If the radar
+gun reads 58, 60, 63, 59, 61, its scatter is larger. If the GPS receiver reads
+60 steadily after filtering but lags during acceleration, that is a different
+kind of repeatability limit. Repetition turns comparison into a record about the
+instrument as well as about the car.
+
+Small-sample inference belongs here because real instruments are not granted
+infinite trials. A factory, laboratory, or roadside calibration procedure may
+have only a handful of repeated measurements. The question is not whether
+infinite repetition would settle the matter; finite instruments never get
+infinite repetition. The question is what a finite repeatable record can
+support.
+
+\begin{phenom}{Gosset Effect}
+\label{ph:gosset-effect}
+
+\PhStatement Finite repeated measurements can support inference only by naming
+their uncertainty. Small samples do not eliminate comparison; they force the
+instrument to carry its confidence structure.
+
+\PhOrigin William Sealy Gosset, writing as Student, developed the
+small-sample $t$ distribution while working on industrial quality problems,
+where only limited repeated trials were available.
+
+\PhObservation A speedometer calibration checked over five track passes cannot
+claim infinite certainty. It can report a mean discrepancy and a finite-sample
+uncertainty. The comparison becomes trustworthy by carrying the uncertainty,
+not by pretending the sample is unlimited.
+
+\PhConstraint The study may not replace finite repeatability with an infinite
+ideal. It must compare records using the sample actually carried by the ledger.
+
+\PhConsequence Repeatability is physical and statistical at once. A repeated
+instrument reading becomes a study only when its finite uncertainty is part of
+the record.
+
+\end{phenom}
+
+The Gosset Effect keeps this chapter grounded. The comparison interface is not
+perfect simply because it is repeated. It becomes useful when repetition exposes
+the scale of its own variation. A radar gun, a speedometer, and a GPS receiver
+can agree within one mile per hour; that phrase ``within'' is doing real work.
+It names the tolerance that makes equality operational.
+
+Repeatability therefore prepares the binary interface. If two readings differ
+by less than the instrument's resolution, the instrument may treat them as
+equal. If one reading exceeds another by more than the tolerance, it may treat
+one as greater. If the difference is inside the noise band, the honest answer
+may be: this instrument cannot distinguish them.
+
+This is the beginning of order in physical comparison. Less than, equal to, and
+greater than are not metaphysical verdicts. They are repeatable outcomes of a
+calibrated interface.
+
+\section{The Binary Interface}
+\label{se:the-binary-interface}
+
+The word ``binary'' here does not mean that every instrument has only two
+possible readings. A speedometer has many possible displayed speeds. A GPS
+receiver has many possible positions. A radar gun has many possible frequency
+shifts. The binary interface is the comparison question the instrument can
+answer about two records:
+
+\[
+a \leq b \quad \text{or not}.
+\]
+
+From this small question, the familiar ordering language follows. If $a \leq b$
+and $b \leq a$ within the instrument's resolution, the records are equal for
+that instrument. If $a \leq b$ and not $b \leq a$, then $a$ is less than $b$.
+If neither comparison is admissible, the instrument may be facing incomparable
+records or insufficient resolution.
+
+For a speedometer, the binary question might be: is this reading no greater
+than 60 mph? The ECU does not need to know what speed is in itself to answer.
+It compares its scaled pulse ratio with the calibrated threshold. The output is
+an admissible comparison. Cruise control, speed warnings, traction systems, and
+data loggers all depend on such binary comparisons.
+
+The important discipline is that the comparison is not the thing compared. A
+speed warning light does not contain speed. It contains the result of a
+comparison between a carried reading and a threshold. The driver's experience of
+``going fast'' is also not the same as the comparison. It may correlate with
+it, but the instrument's admissible output is narrower.
+
+This is why the chapter began with three instruments. The speedometer, radar
+gun, and GPS receiver can all answer comparison questions about the same car.
+Is the car above 60 mph? Is its speed increasing? Is this reading less than the
+previous reading? Does one instrument's output agree with another within
+tolerance? The instruments answer through different carriers, but the final
+interface is comparison.
+
+There is a philosophical temptation to make the comparison disappear and say
+that the instrument has simply revealed the property. This chapter resists that
+temptation. The comparison is the physical interface. It is not an obstacle to
+truth; it is the way a finite instrument earns truth. To pretend otherwise is to
+ask the instrument to speak outside its ledger.
+
+The binary interface also sets up the next chapter. Once an instrument can
+compare recorded events, it immediately confronts what it has not recorded.
+Between two pulse events, what happened? Between two GPS positions, what path
+was taken? Between two radar readings, what acceleration occurred? Comparison
+of records forces the question of the gap. Chapter 3 begins there.
+
+\begin{bridge}
+
+The chapter's question was how an instrument can compare records and repeat the
+result without pretending the comparison is the thing measured.
+
+The answer is that the instrument exposes a calibrated comparison interface.
+The speedometer compares pulse count to clock count under a wheel calibration.
+The radar gun compares emitted and returned frequencies through a channel. The
+GPS receiver compares satellite timestamps and receiver times under a
+synchronization protocol. Repetition turns those comparisons into studies, and
+finite uncertainty becomes part of the record rather than an embarrassment.
+
+The comparison remains an interface. It is powerful because it is repeatable,
+portable, and checkable across instruments. It is limited because it only
+compares what the instruments have carried. The next question is forced by that
+limit: what can be said about what happens between recorded events without
+inventing structure not in the ledger?
+
+\end{bridge}
+
+\begin{coda}{Three Clocks in a Railway Control Room}
+
+In the railway control room, three clocks face the dispatcher.
+
+The first is an old wall clock above the door. Its quartz oscillator advances a
+second hand around a printed face. The second is the dispatch computer clock,
+visible in the scheduling software that tracks arrivals and departures. The
+third is the stationmaster's pendulum clock, maintained as a ceremonial but
+working reference, its rod calibrated and its swing adjusted by hand.
+
+The train does not touch any of them.
+
+When the 8:10 express is due, the dispatcher compares the train's reported
+position against the schedule. The wall clock says 8:08. The computer says
+8:08:03. The pendulum clock says just past eight minutes after the hour. Each
+clock carries time differently. The wall clock counts electronic oscillations
+and gear steps. The computer counts processor-maintained time synchronized to a
+network source. The pendulum counts swings under gravity, temperature, and rod
+length. The clocks agree well enough for the train to be called on time.
+
+That agreement matters because the clocks are not the same device. If the
+dispatch software freezes, the wall clock continues. If the wall clock battery
+weakens, the computer and pendulum expose the drift. If the pendulum is not
+adjusted after a temperature change, the discrepancy appears as a comparison
+among records. The control room does not possess time itself. It possesses
+clocks whose readings can be compared.
+
+The comparison is binary at the point of action. Is the train on time or not?
+Is this clock ahead of that one or not? Is the departure interval less than the
+minimum safe spacing or not? The dispatcher does not need a metaphysics of time
+to answer the operational question. The clocks provide comparison interfaces.
+
+Repeatability turns the control room into an instrument. If the 8:10 train
+arrives at the same platform marker under the same schedule conditions, the
+clocks should classify it the same way each day. If one clock disagrees
+regularly, it becomes the object of calibration. If all three disagree in
+different directions, the control room has lost its reference and cannot speak
+honestly about the schedule.
+
+The wall clock, computer clock, and pendulum clock perform the same structure as
+the speedometer, radar gun, and GPS receiver. Each has its own carrier. Each has
+its own calibration. Each can be wrong in its own way. Agreement among them is
+therefore meaningful. It is not proof that any one clock touched time. It is
+evidence that three different comparison chains have closed on the same
+operational reading.
+
+The train enters the record only through such comparisons. A conductor radios a
+position. A track circuit reports occupancy. A platform camera confirms arrival.
+The clocks do not become the train, and the schedule does not become motion.
+The control room carries records and compares them. From those comparisons it
+acts.
+
+At 8:10, the express arrives. The wall clock, the computer, and the pendulum all
+agree within the tolerance the railway uses. The dispatcher marks the train on
+time.
+
+That mark is not the train. It is the comparison the railway can repeat.
+
+\end{coda}

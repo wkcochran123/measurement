@@ -60,6 +60,39 @@ structure LearningProcess  -- 26691
     | .hypothesis propose idea => .theory propose idea d.fact (.hypothesis propose galileo)
     | .theory propose prior fact _ => .theory propose prior fact invariant
 
+def LearningProcess.default
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    : LearningProcess Value Carrier where
+  initiation_process := InitiationProcess.default Value Carrier
+  galileo := .inside_joke Fact.Truth.truth
+  invariant := .repeatable Fact.Truth.truth
+
 class SCIENTIFIC -- 23964
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -128,12 +161,8 @@ instance SCIENTIFIC_ACOLYTE
     [qq: PROPAGANDA Value Carrier]
     [rr: ACOLYTE Value Carrier]
     : SCIENTIFIC Value Carrier where
-  phd_process :=
-  { initiation_process := rr.euclid
-    galileo := rr.euclid.sacred_texts
-    invariant := .repeatable d.fact.truth
-  }
-  invariant := .hypothesis d.fact.truth rr.euclid.sacred_texts
+  phd_process := LearningProcess.default Value Carrier
+  invariant := .hypothesis Fact.Truth.truth (.inside_joke Fact.Truth.truth)
 
 
 inductive Knowledge  -- Bullshit meter 84

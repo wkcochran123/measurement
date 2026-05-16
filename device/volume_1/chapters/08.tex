@@ -1,0 +1,533 @@
+\chapter{Riemannian Geometry}
+\label{chap:riemannian-geometry}
+
+% Closed question: What reference structure lets distinct observers compare
+% their counts as one physical record?
+
+\begin{chapteressay}
+
+Two observers measure the same physical quantity. One reports the
+length in meters; the other reports it in feet. To compare their
+records, a conversion rate must be named: 1 meter equals about 3.281
+feet. The conversion is the chapter's reference structure: the
+shared piece of information that makes the two records commensurable.
+
+Without the conversion, the two records are not directly comparable.
+The first observer's ``5 meters'' and the second observer's ``18
+feet'' could refer to roughly the same physical length, or to two
+quite different lengths; without the conversion, the comparison is
+ambiguous. With the conversion, the two records can be brought to a
+common scale, and the comparison becomes admissible.
+
+The chapter is about the reference structure that lets distinct
+observers compare their counts as one physical record. The
+reference is the calibration certificate; the calibration governs
+the conversion; the conversion makes the comparison admissible.
+
+The chapter develops the reference structure through five
+mathematical objects. The first is metric from counting: a metric
+can be constructed from counting alone, without any geometric
+assumption. The Hamming distance is the canonical example: count
+the positions at which two strings differ, and that count is the
+distance.
+
+The second is the Cartesian construction: Descartes's product of
+perpendicular rulers gives the plane, with the Pythagorean formula
+forced by the invariance of distance under rotation. The
+construction is purely algebraic: a product of one-dimensional
+metric records gives a two-dimensional metric record.
+
+The third is the calibration certificate: a named record of the
+reference conditions under which two observers' counts can be
+compared. The \texttt{EKG} typeclass in Lean is the canonical
+algebraic version: a private reference scale (the
+\texttt{Reading}) accessed only through a public comparison
+interface (the \texttt{boolean} method).
+
+The fourth is the metric tensor: the local reference structure on
+a curved manifold. The tensor varies with position; the
+variation captures the manifold's curvature; the local distance
+is determined by the local tensor.
+
+The fifth is truth as carried structure: a theorem's truth is a
+carried certificate (the proof); removing the proof removes the
+certificate; the truth is portable as the proof is portable.
+
+The chapter's ground example is the ratio of two counts in
+different units. The conversion rate is the calibration; the
+conversion translates one count into another; the translated
+counts are admissibly comparable.
+
+The chapter's second concrete example is the currency exchange
+desk. The exchange rate between two currencies is the chapter's
+reference structure. The rate translates dollars into euros (or
+yen, or pounds); the translation makes two travelers' wealths
+comparable in a common currency. The consistency conditions on the
+rate matrix (identity, inverse, triangle) are the calibration
+requirements. Arbitrage enforces consistency.
+
+The chapter's closed question is:
+
+\begin{center}
+\emph{What reference structure lets distinct observers compare
+their counts as one physical record?}
+\end{center}
+
+The chapter's answer is: the calibration certificate plus the
+metric. The calibration is the named reference; the metric is
+the structural rule for distance computation; the two together
+let observers compare counts.
+
+Subsequent chapters refine this. Chapter 9 introduces curvature:
+the geometric quantity that records the failure of transport to
+commute. Curvature is computed from the metric tensor's
+derivatives. Chapter 10 introduces invariance: what survives
+admissible relabelings of the coordinate system.
+
+\end{chapteressay}
+
+\section{Metric from Counting}
+\label{se:metric-from-counting}
+
+Two DNA strands are compared. The first is ACGT; the second is ACCT.
+The Hamming distance between them is one: they differ at exactly one
+position (the third). The Hamming distance is a metric on the space
+of strings of equal length: it satisfies the triangle inequality, it
+is symmetric, it is positive definite.
+
+The Hamming distance is constructed entirely from counting. The
+operation: align the two strings position by position; count the
+positions at which they differ; the count is the distance. No
+geometry is involved; no number line is required. The distance
+emerges from the position-by-position comparison and the count of
+differences.
+
+This is the chapter's first claim. A metric can be constructed
+from counting alone. The counting is the comparison operation
+applied to corresponding components of the two records; the
+count is the metric. No reference to a continuous quantity is
+needed.
+
+The Hamming distance is the chapter's simplest example. More
+elaborate counting-based metrics include:
+\begin{itemize}
+\item Levenshtein (edit) distance: the minimum number of
+insertions, deletions, or substitutions transforming one string
+into the other.
+\item Jaccard distance: $1 - |A \cap B| / |A \cup B|$ for sets $A$
+and $B$. The distance counts the symmetric difference relative
+to the union.
+\item Cosine distance: $1 - \cos(\theta)$ for the angle $\theta$
+between two vectors. Despite the appearance of geometry, the
+cosine is computed from inner products of counts.
+\end{itemize}
+
+Each metric is built from counting. The geometric interpretation
+(if any) is downstream of the counting; the metric exists in the
+combinatorial structure of the records.
+
+The chapter's claim is that this construction extends to physical
+measurement. Every measurement is fundamentally a count: the
+yardstick records how many ticks fit; the clock records how many
+tocks have passed; the thermometer records the position of a
+column relative to graduated marks. The metric on physical
+quantities is built from these counts.
+
+\section{Descartes: The Product of Rulers}
+\label{se:descartes-the-product-of-rulers}
+
+Ren\'e Descartes, in his \emph{La G\'eom\'etrie} of 1637,
+introduced the Cartesian coordinate system. A plane is described by
+two perpendicular rulers: the $x$-axis and the $y$-axis. Each point
+in the plane has two coordinates: its distance along the $x$-axis
+and its distance along the $y$-axis. The pair $(x, y)$ identifies
+the point.
+
+The construction is the product of two one-dimensional rulers. Each
+ruler is a metric record on its own; the plane is the Cartesian
+product of the two records. The point $(x, y)$ has identity in
+the product: the $x$-coordinate is recovered by the projection
+$\pi_x$, the $y$-coordinate by $\pi_y$.
+
+The distance between two points $(x_1, y_1)$ and $(x_2, y_2)$ in
+the Cartesian plane is given by the Pythagorean formula:
+\[
+d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}.
+\]
+This formula is forced by two requirements: (1) the two rulers
+are independent, so the distance along $x$ and the distance along
+$y$ are admissible separately; (2) the distance is invariant under
+rotation of the coordinate system (it does not matter which
+direction is ``up'' or ``right'').
+
+The chapter's second claim is that the Cartesian construction is
+the canonical reference structure for two-dimensional measurement.
+The two perpendicular rulers provide the basis; their product
+provides the plane; the Pythagorean formula provides the
+distance. The construction extends to higher dimensions: $n$
+perpendicular rulers produce an $n$-dimensional space; the
+Pythagorean formula generalizes to $d = \sqrt{\sum (x_2^i -
+x_1^i)^2}$.
+
+The construction is purely algebraic: a product of one-dimensional
+records, with a distance formula determined by the requirement of
+invariance under rotation. No geometry is assumed beyond the
+metric of the rulers; the plane's geometry is derived from the
+metric.
+
+The construction also reveals a subtlety. The Pythagorean formula
+depends on the rulers being perpendicular (orthogonal). For
+oblique rulers (not at right angles), the distance formula is
+different. The choice of perpendicular rulers is the calibration
+of the coordinate system: it determines what distance means in
+this coordinate system.
+
+For curved surfaces, the Cartesian construction fails: there is no
+single pair of perpendicular rulers that covers the whole surface
+(the earth's surface, for example, admits no global Cartesian
+coordinates). The metric must be defined locally; the metric
+tensor (next sections) is the structural object that does this.
+
+\section{The Calibration Certificate}
+\label{se:the-calibration-certificate}
+
+Two rulers made of different materials behave differently under
+changes of temperature. A steel ruler expands at $11.7 \times
+10^{-6}$ per degree Celsius; a brass ruler expands at $19 \times
+10^{-6}$ per degree Celsius. At a reference temperature of
+$20^\circ$C, the two rulers can be calibrated to agree: both
+measure $1$ meter as $1$ meter. At $40^\circ$C, the steel ruler
+has grown by $0.000234$ meter; the brass ruler has grown by
+$0.00038$ meter; they no longer agree.
+
+To compare measurements made by the two rulers, the calibration
+must be named: the temperature at which the calibration holds.
+Without the calibration certificate, the rulers' readings cannot
+be compared. With it, the readings can be adjusted to account for
+the temperature dependence of each material.
+
+The chapter's third claim is that calibration is a structural
+prerequisite for comparison across observers. Each observer's
+instrument has its own behavior under environmental variations;
+the comparison requires naming the calibration conditions. The
+calibration is part of the record; the record is admissible
+only when the calibration is stated.
+
+In Lean, calibration is the \texttt{EKG} typeclass in
+\texttt{LeanCalibration.lean}:
+
+\begin{leanexcerpt}{EKG}
+structure EKG where
+  private reference : Reading
+  embigger? : Prop $\to$ Prop $\to$ Prop
+\end{leanexcerpt}
+
+The \texttt{Reading} type is the hidden reference scale (private).
+The \texttt{reference} field carries an instance of that scale at
+the calibration's baseline. The \texttt{embigger?} method takes
+two propositions and returns a proposition asserting that the
+first dominates the second under the calibration's bookkeeping.
+The calibration's scale is not directly exposed; the comparisons
+through the calibration are. The discipline is the chapter's: the
+reference is hidden; the comparisons are admissible.
+
+The \texttt{LOGICAL} typeclass requires that a program carry its
+\texttt{EKG}:
+
+\begin{leanexcerpt}{LOGICAL}
+class LOGICAL
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] ... [UNIVERSAL Value Carrier]
+  where
+  feelings : HeartbeatProcess Value Carrier
+  ekg      : Calibration.EKG
+  logical? : YarnTheory $\to$ YarnTheory $\to$ Prop := fun a b =>
+    YarnTheory.le a b
+\end{leanexcerpt}
+
+A program that asserts comparison results without providing a
+\texttt{LOGICAL} instance is not admitted by the compiler. The
+calibration certificate is required at every comparison.
+
+The chapter's claim is that this is the mathematical structure of
+the calibration discipline. Two observers comparing their counts
+must share a reference structure (the \texttt{EKG} or its
+analog). The reference structure is hidden behind a public
+comparison interface. The comparison's admissibility depends on
+the reference structure being correctly calibrated.
+
+For the steel and brass rulers, the calibration certificate names
+the temperature. For the SI unit of length (the meter), the
+calibration is the definition: the distance traveled by light in
+vacuum in $1/299792458$ second. For the chapter's mathematical
+records, the calibration is the typeclass \texttt{LOGICAL}
+asserting the \texttt{EKG}.
+
+\section{The Metric Tensor}
+\label{se:the-metric-tensor}
+
+For a curved surface like the earth, no single global Cartesian
+coordinate system exists. The distance between two nearby points
+must be computed locally, using the surface's local metric. The
+metric tensor $g_{ij}(x)$ at a point $x$ is the structural object
+that specifies the local metric.
+
+In local coordinates, the distance between two points with
+coordinates $x$ and $x + dx$ is:
+\[
+ds^2 = g_{ij}(x) \, dx^i \, dx^j = g_{11}(x) (dx^1)^2 + 2 g_{12}(x)
+\, dx^1 \, dx^2 + g_{22}(x) (dx^2)^2 + \ldots,
+\]
+where the sum is over indices $i, j$ ranging over the surface's
+dimension. The metric tensor's components $g_{ij}$ vary with
+position; the metric is not globally constant for curved surfaces.
+
+For the earth's surface, in spherical coordinates $(\theta,
+\phi)$ where $\theta$ is the polar angle and $\phi$ is the
+azimuthal angle, the metric is:
+\[
+ds^2 = R^2 \, d\theta^2 + R^2 \sin^2\theta \, d\phi^2,
+\]
+where $R$ is the earth's radius. The metric depends on $\theta$:
+the longitudinal distance $R \sin\theta \, d\phi$ varies with
+latitude. At the equator ($\theta = \pi/2$), the longitudinal
+distance is $R \, d\phi$ (the equator's length per unit angle).
+At the pole ($\theta = 0$ or $\pi$), the longitudinal distance
+is $0$ (a degree of longitude at the pole is zero length).
+
+The chapter's fourth claim is that the metric tensor is the local
+reference structure on a curved manifold. The tensor varies with
+position; the variation captures the manifold's geometry.
+Different observers in different regions use different local
+metrics; the comparison across observers requires the metric
+tensor's transformation properties under coordinate changes.
+
+In Lean, the metric tensor is part of \texttt{Mathlib}'s
+differential-geometry library. The type
+\texttt{Manifold.Metric} carries the tensor field; the metric
+is computed locally; the geodesic equation and the Levi-Civita
+connection are derived from it.
+
+The \texttt{UniverseTensor} type in \texttt{Episode10.lean} is
+the chapter's algebraic analog. It carries the local metric at
+each point of an admissible record:
+
+\begin{leanexcerpt}{UniverseTensor}
+structure UniverseTensor
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] ... [WITNESSED Value Carrier]
+  where
+  frame_of_reference : ReligiousProcess Value Carrier
+  reality            : Truth
+  observe?           : Truth $\to$ Truth := ...
+\end{leanexcerpt}
+
+The \texttt{UniverseTensor} carries the full cascade through
+\texttt{WITNESSED}, a frame-of-reference religious process, a
+current \texttt{Truth}, and the function \texttt{observe?} that
+advances a \texttt{Truth} through the observer's tensor. The
+metric interpretation is metaphorical here: each layer of the
+class cascade plays the role of a metric component, and the
+\texttt{observe?} function plays the role of the geodesic
+projection.
+
+The chapter's claim is that the metric tensor is the most general
+form of the reference structure. The Cartesian plane has a
+constant metric (the identity matrix). The earth's surface has a
+position-dependent metric. General relativity's spacetime has a
+position-dependent and signature-indefinite metric. Each is the
+chapter's reference structure for its corresponding manifold.
+
+The metric tensor determines distances, angles, areas, and
+volumes on the manifold. It determines geodesics (locally
+shortest paths). It determines parallel transport (Chapter 7's
+connection is derived from the metric). The metric is the
+foundational object of Riemannian geometry; it is the chapter's
+reference structure.
+
+\section{Truth as Carried Structure}
+\label{se:truth-as-carried-structure}
+
+``$2 + 2 = 4$.'' The statement is true. But true relative to what?
+Under the Peano axioms for natural numbers, the statement is a
+theorem: it can be proved from the axioms by the standard
+recursive definition of addition. Under a different axiom system
+(say, modular arithmetic in $\mathbb{Z}/3\mathbb{Z}$), the carried
+value of the numeral $4$ changes: $4$ now denotes the residue $1$,
+and the same arithmetic is written $2 + 2 = 1$. The statement
+$2 + 2 = 4$ remains formally true if one interprets $4$ as its
+residue class; the disagreement is not in the arithmetic but in
+what the symbols carry.
+
+Truth is therefore not absolute; it is relative to the axiom
+system. The truth of ``$2 + 2 = 4$'' is a carried certificate:
+the proof of the statement from the Peano axioms is what makes
+it true. Without the axioms (without the proof carrying the
+certificate), the statement is not yet admissible.
+
+The chapter's fifth claim is that mathematical truth is carried
+structure. A theorem is true not in some abstract universal sense,
+but relative to its proof and the axioms it depends on. The proof
+is the certificate; the certificate carries the truth.
+
+In Lean, this is the philosophy of type theory. A proposition $p$
+is a type; a proof of $p$ is a term of that type. The
+proposition's truth is the existence of the term. Without the
+term, the proposition is unproved (and therefore not admissibly
+true).
+
+\begin{leanexcerpt}{Truth}
+inductive Truth
+  | logic : Prop $\to$ Truth
+  | fact  : Gospel $\to$ Prop $\to$ Truth $\to$ Truth
+\end{leanexcerpt}
+
+The \texttt{Truth} inductive in \texttt{Episode10.lean} carries
+the proof history. The \texttt{logic} constructor sits at the
+base: a single \texttt{Prop} that grounds the chain. The
+\texttt{fact} constructor extends a prior \texttt{Truth} by
+attaching a \texttt{Gospel} (the witness from an earlier
+chapter), the \texttt{Prop} being added, and the prior truth
+stack. The certificate is the entire stack; the truth is portable
+exactly as far as the stack's witnesses are portable.
+
+The chapter's claim is that truth is structural, not metaphysical.
+Removing the axioms removes the certificate. The certificate is
+as portable as the proof that witnesses it. The proof's
+portability depends on the axioms being accepted in the destination
+context.
+
+This is the chapter's most philosophical claim. It says: truth
+is not a cosmic fact but a derived structural property of the
+proof system. The chapter does not deny that some things are
+true and others false; it asserts that the truth of a specific
+statement is relative to the proof system. ``$2 + 2 = 4$'' is
+true in the proof system of Peano arithmetic; the truth is
+carried by the proof from the Peano axioms.
+
+For the chapter's transport theme, this matters because
+transport across different axiom systems is non-trivial. A
+theorem proved in one system may not be provable in another.
+The transport requires the source system's axioms to be
+admissible in the destination system. The transport's
+admissibility is checked at the meta-level: do the axioms
+agree? If yes, transport is possible; if no, the truth does
+not transport.
+
+The chapter closes here. The metric is built from counting.
+Descartes's product of rulers gives the Cartesian plane. The
+calibration certificate names the reference conditions. The
+metric tensor is the local reference structure on curved
+manifolds. Truth is carried structure: the proof is the
+certificate.
+
+\begin{bridge}
+
+The chapter's question was what reference structure lets distinct
+observers compare their counts as one physical record.
+
+The answer is the metric and the calibration certificate. The
+metric is built from counting (Hamming distance is the simplest
+example). Descartes's product of rulers gives the Cartesian
+plane and its Pythagorean distance. The calibration certificate
+names the conditions under which two observers' counts can be
+compared. The metric tensor is the local reference structure on
+curved manifolds. Truth is carried structure: the proof
+certificate makes the truth admissible.
+
+What remains is curvature. The metric tensor varies across a
+manifold; the variation is the manifold's curvature. The
+transport (Chapter 7) accumulates holonomy proportional to the
+enclosed curvature. Chapter 9 takes up the question: what
+records the failure of transport to commute?
+
+\end{bridge}
+
+\begin{coda}{The Currency Exchange Desk}
+
+The currency exchange desk is in the main terminal of an international
+airport. Behind the counter, the clerk has a small computer that
+displays the current exchange rates. Above the counter, a board lists
+the rates: dollar to euro, euro to yen, dollar to yen, pound to
+dollar, and so on. The rates change throughout the day.
+
+A traveler approaches with a hundred-dollar bill. He wants to
+convert it to euros. The clerk consults the board. Today's
+rate is 0.92 euros per dollar. The clerk calculates: 100 dollars
+times 0.92 equals 92 euros. The clerk hands the traveler 92
+euros (minus a small commission fee). The transaction is
+complete.
+
+The exchange rate is the chapter's reference structure for
+currencies. Each currency is its own unit of count; converting
+between currencies requires a named reference rate; the rate is
+the calibration certificate for the conversion.
+
+Two travelers, one with dollars and one with yen, want to
+compare their wealth. The dollars and yen are not directly
+comparable: they are counts in different currencies. To
+compare, they must convert to a common currency. The common
+currency is the chapter's reference structure: the metric in
+which both wealths can be expressed.
+
+The exchange rates form a small mathematical structure. Let
+$r_{ij}$ denote the exchange rate from currency $i$ to currency
+$j$ (the amount of currency $j$ one unit of currency $i$ buys).
+For the rates to be admissible, certain consistency conditions
+must hold:
+\begin{itemize}
+\item Identity: $r_{ii} = 1$ for all currencies $i$.
+\item Inverse: $r_{ij} \cdot r_{ji} = 1$ (within a small
+commission spread).
+\item Triangle: $r_{ij} \cdot r_{jk} = r_{ik}$ (the rate from $i$
+to $k$ via $j$ equals the direct rate, within a spread).
+\end{itemize}
+
+These conditions are the calibration. Without them, the rate
+matrix would be inconsistent: an arbitrage opportunity would
+exist (buy currency cheaply in one path, sell expensively in
+another, profit). The market enforces consistency through
+arbitrage: traders identify any inconsistency and trade against
+it until the rates align.
+
+The chapter's claim is that this is the structure of any
+reference system. The exchange rate matrix is the local metric.
+The currency at each city is the local ruler. The consistency
+conditions (identity, inverse, triangle) are the calibration
+requirements. The arbitrage is the verification that the
+calibration holds.
+
+For physical units, the analogous structure is the SI system.
+The base units (meter, kilogram, second, ampere, kelvin, mole,
+candela) are the reference rulers. The conversion between units
+of the same dimension (meter to inch, kilogram to pound) is the
+analog of currency exchange. The conversions are calibrated:
+1 inch = 0.0254 meter exactly, by definition. The calibration
+is internationally agreed, enforced by metrology institutes.
+
+For curved spaces, the analog is the metric tensor at each
+point. The tensor at each point is the local ruler; the
+relations between tensors at different points are the local
+calibration; the global consistency is the manifold's
+smoothness.
+
+The traveler walks away with his 92 euros. He has performed the
+chapter's transport: a record (his hundred dollars) has been
+transported to a different currency (92 euros) through the
+calibrated exchange rate. The transport is admissible because
+the rate is the calibration; the comparison between currencies
+is meaningful because the rate translates one currency's count
+into the other's.
+
+The clerk closes out the desk at the end of her shift. The
+day's transactions are logged: the conversion volumes, the
+realized exchange rates, the commission income. The log is
+the chapter's record of the day's reference activity. The
+discipline of the currency exchange is the chapter's
+discipline in financial form: every comparison requires a
+named reference; the reference must be consistent; the
+consistency is checked at the level of the rate matrix.
+
+\end{coda}

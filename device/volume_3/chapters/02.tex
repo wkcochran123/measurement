@@ -1,0 +1,868 @@
+\chapter{Divide and Conquer}
+\label{chap:divide-and-conquer}
+
+% Closed question: How can an instrument compare records and repeat the result
+% without pretending the comparison is the thing measured?
+
+\begin{chapteressay}
+
+A speedometer reads sixty miles per hour. The driver glances at the
+dial, confirms the reading, and looks back at the road. Three seconds
+later the dial still reads sixty. The two readings agree. The driver
+does not interpret the agreement as evidence that the speedometer's
+reading is the speed. The agreement is evidence that the speedometer
+is repeating its comparison reliably.
+
+The speed is something else. The speed is what the car is doing. The
+speedometer's reading is the algorithm's report on its comparison
+between the rotation rate of the drive shaft and the calibrated
+reference. The reading and the speed are not the same object. The
+reading is the output of the comparison; the speed is the physical
+event the comparison was designed to characterize.
+
+This distinction is the chapter's subject. An instrument compares.
+The comparison's output is the reading. The reading is not the
+measurement; the measurement is what the reading is interpreted as
+indicating. The interpretation depends on calibration, context, and
+the chain of comparisons that produced the reading. To say the
+speedometer measures the speed is shorthand for: the speedometer's
+internal mechanism performs a sequence of admissible comparisons, the
+sequence terminates with a final comparison whose output is the
+displayed number, and the displayed number is interpreted as the
+speed by virtue of the speedometer's calibration. The reading is the
+algorithm's output; the speed is the algorithm's intended referent.
+
+When the algorithm is divide-and-conquer, the structure becomes
+explicit. A merge sort on a million records does not measure any
+individual record; it produces a permutation. A binary search on a
+sorted array does not measure the target; it produces the target's
+index. An FFT does not measure the signal; it transforms the
+signal's representation. A tournament sort does not measure the
+runners; it identifies a winner. In each case, the algorithm's
+output is the produced structure (the permutation, the index, the
+spectrum, the winner). The comparisons inside the algorithm are how
+the structure is produced; they are not the structure itself.
+
+This is the algorithmic statement of an old metrological principle.
+The instrument and the measurement are distinct. The instrument
+performs a procedure; the procedure produces a reading; the reading
+is interpreted as a measurement. The procedure is the algorithm.
+Different procedures (different algorithms) on the same input
+produce different readings. Different calibrations of the same
+procedure produce different interpretations of the same reading.
+The structure of the algorithm and the structure of the calibration
+together determine what the reading means.
+
+The chapter develops this through five algorithmic forms, each one a
+different way of comparing records while keeping the comparison
+distinct from the measurement.
+
+The five forms are not arbitrary. They are the canonical
+divide-and-conquer algorithms: binary search (locate one element in
+a sorted structure), merge sort (impose order on an unordered
+structure), FFT (transform between representations), tournament sort
+(extract a distinguished element), and the typeclass machinery
+\texttt{REPEATABLE} that certifies all of the above. The chapter's
+claim is that this family is forced by the requirement of
+repeatability. Any repeatable comparison structure factors through
+some combination of these primitives.
+
+The second concrete example, beyond the speedometer, is the mail
+sorting machine. A mail-processing center handles a million envelopes
+per day. Each envelope's address is read by an optical scanner. The
+scanner's reading is a multi-digit zip code. The center then sorts
+envelopes by zip code into delivery sequences. The comparisons inside
+the sort are not the address; the address is input. The output is
+the delivery sequence: the permutation of envelopes that the carrier
+will deliver in order.
+
+A million envelopes produce roughly ten million comparisons. The
+sorting machine produces about one hundred forty delivery sequences.
+The comparison-to-output ratio is about seventy thousand to one. None
+of the comparisons is a delivery sequence; the delivery sequences are
+the outputs the comparisons produce.
+
+If the machine's comparisons are not \texttt{REPEATABLE} --- if the
+same envelope's zip code is sometimes read as 90210 and sometimes as
+90211 --- the delivery sequences will be wrong. The machine's
+correctness depends on the underlying scanner being repeatable. A
+miscalibrated scanner produces misrouted mail.
+
+The chapter's closed question is:
+
+\begin{center}
+\emph{How can an instrument compare records and repeat the result
+without pretending the comparison is the thing measured?}
+\end{center}
+
+The answer the chapter develops is divide-and-conquer with
+\texttt{REPEATABLE} comparisons. The instrument is the algorithm.
+The comparisons are the algorithm's primitive operations. The
+\texttt{REPEATABLE} typeclass certifies that the comparisons
+produce consistent outputs. The algorithm composes the comparisons
+into a structured output (a permutation, an index, a spectrum, a
+winner). The structured output is the measurement. The comparisons
+are not the measurement; the comparisons are how the measurement
+is produced.
+
+This chapter is short by design. The argument is straightforward
+once the algorithmic form is named. Subsequent chapters build on it:
+Chapter 3 examines what the instrument carries between comparisons
+(the metavariable, the unresolved state). Chapter 4 examines how
+multiple records combine (union-find). Chapter 5 examines distance
+as count of refinements (bisection and the spline). Chapter 6 is
+the load-bearing chapter, examining the boundary where the algorithm
+runs out: the selection rule requires exact Kolmogorov information,
+and exact $K$ is not computable. The earlier chapters build the
+algorithmic vocabulary the noncomputability argument requires.
+
+\end{chapteressay}
+
+\section{Binary Search}
+\label{se:binary-search}
+
+A sorted array of one million integers can be searched in twenty comparisons.
+Sequential scan would require, on average, half a million comparisons. The
+difference is the algorithm. Binary search exploits the sorting to eliminate
+half the remaining candidates with each comparison.
+
+The procedure is simple. Maintain two indices, $\text{low}$ and $\text{high}$,
+initialized to the first and last positions of the array. While
+$\text{low} \le \text{high}$, compute the middle index $m = \lfloor
+(\text{low} + \text{high}) / 2 \rfloor$. Compare the array element at
+position $m$ to the target. If the element equals the target, return $m$.
+If the element is less than the target, set $\text{low} = m + 1$ (the
+target, if present, is in the upper half). If the element is greater than
+the target, set $\text{high} = m - 1$ (the target is in the lower half).
+The loop terminates either when a match is found or when
+$\text{low} > \text{high}$, indicating the target is not in the array.
+
+Each iteration of the loop halves the size of the remaining search space.
+Starting with $n$ elements, after $k$ iterations the search space has size
+$n / 2^k$. The loop terminates when the search space has size zero or
+one. The number of iterations is therefore at most $\lceil \log_2 n
+\rceil$. For $n = 10^6$, this is twenty iterations.
+
+The algorithm's correctness depends on two preconditions. First, the array
+must be sorted. Without sorting, binary search produces incorrect results
+because the comparison at position $m$ does not constrain the contents of
+the upper and lower halves in the required way. Second, the comparison
+must be a total order: every pair of elements must be comparable as less,
+equal, or greater. Both preconditions are part of the instrument's
+calibration. The sorting is the precomputation; the total order is the
+typeclass constraint.
+
+The output of binary search is the index of the target if present, or the
+not-found indicator. It is not the target itself; the target was already
+known when the search began. The output is the location in the record
+where the target lives. This is the operational distinction at the heart
+of the chapter's question: the comparison is not the thing measured; the
+comparison is the procedure for locating it.
+
+What is measured? The location. The target is the query; the array is the
+record; the location is the answer. The comparison is the algorithm that
+maps query and record to answer. Saying ``the target equals the element at
+position $m$'' is not a measurement of the target. The target's value was
+input data, not an output. What was produced was the index $m$, which is
+information about the array's structure, not about the target.
+
+This distinction is crucial when the comparison is being performed for the
+first time on a particular pairing. A scientist using a spectrometer to
+identify an unknown compound is not measuring the compound's spectrum --- the
+spectrum is the instrument's output, the raw data. The measurement is the
+comparison of that spectrum against a library of reference spectra,
+yielding an identification (the index in the reference library of the
+closest match). The spectrometer produces the spectrum; the database
+lookup produces the identification. The instrument is the composition.
+
+In Lean, binary search appears as the typeclass \texttt{BINARY} in
+\texttt{Episode2.lean}. The class names what the comparison produces: a
+binary output (one of three values: less, equal, greater). The comparison
+itself is a function from a pair of values to this three-valued type.
+\texttt{Trial.le} and \texttt{Trial.lt} are the typeclasses for less-than
+and less-than-or-equal trials. Together they form a decidable total order.
+
+The reason binary search is the chapter's first algorithm is that it is
+the simplest divide-and-conquer procedure. The recursion is trivial: each
+call halves the problem. The comparison at the midpoint is the entire
+work of the recursive step. The base case is when the size drops to zero
+or one. The recursion is also tail-recursive: the same loop can be
+implemented iteratively without a function call stack.
+
+Iterative binary search is also the cheapest divide-and-conquer
+algorithm. The constants in the $O(\log n)$ bound are small. A single
+comparison plus a single integer divide plus two integer updates per
+iteration. Twenty iterations for $n = 10^6$. Memory usage is $O(1)$: no
+additional storage beyond the indices and the comparison variable. This
+makes binary search a primitive in many higher-level algorithms: it is
+the lookup operation in B-trees, in skip lists, in sorted associative
+arrays. Whenever an ordered collection needs a fast lookup, binary
+search is the default mechanism.
+
+The compiler's analog is namespace lookup with a sorted dictionary. When
+the elaborator sees the name \texttt{Nat.add}, it walks the namespace
+tree. Within each node, the children are stored in sorted order. The
+lookup at each level is binary search on the children's names. The cost
+of resolving a fully qualified name with $k$ dotted components, in a
+namespace with $n$ entries at each level, is $O(k \log n)$. For Mathlib,
+which has hundreds of thousands of names, this is the difference between
+sub-millisecond name resolution and seconds-long delays. The Lean
+compiler's responsiveness depends on this algorithmic choice.
+
+Binary search is also the algorithmic form of a decision procedure with
+gradual information gain. Each comparison provides one bit of information
+about the target's location (it is in the upper half or the lower half).
+After $k$ comparisons, the search has narrowed the candidates from $n$ to
+$n / 2^k$. The information content of the answer is $\log_2 n$ bits ---
+exactly the index of the matched position, interpreted as a binary
+integer. The algorithm extracts these bits one at a time. This is the
+ideal case: the information content of the output matches the work done
+to produce it. Binary search is information-theoretically optimal for
+sorted-array search.
+
+\section{Merge Sort}
+\label{se:merge-sort}
+
+Binary search assumes a sorted array. The next question is how the array
+became sorted. The canonical algorithm is merge sort.
+
+Merge sort sorts a list of $n$ elements in three steps. First, if $n \le 1$,
+the list is already sorted; return it. Second, split the list into two
+halves, of size $\lceil n/2 \rceil$ and $\lfloor n/2 \rfloor$. Recursively
+sort each half. Third, merge the two sorted halves into a single sorted
+list. The merge step compares the front elements of the two halves,
+selects the smaller, and emits it; it then advances the corresponding
+half's index and repeats until both halves are exhausted.
+
+The recursion is the divide. The merge is the conquer. The recursion depth
+is $\log_2 n$. The merge step at each recursion level processes a total of
+$n$ elements (because the two halves at level $k$ together have $n$
+elements between them). The total work is $O(n \log n)$, which is
+asymptotically optimal for comparison-based sorting.
+
+The algorithm's structure displays the chapter's question precisely.
+Sorting a list of one million records by surname is not a measurement of
+any individual record. The output is a permutation: a reordering of the
+input that satisfies the order relation. The comparisons made during the
+sort produce no record of any individual surname; they produce the
+permutation that puts the surnames in the right sequence. The
+permutation is the measured output. Each comparison is a step in the
+algorithm; the algorithm is the instrument; the permutation is the
+reading.
+
+Each comparison in merge sort is a Boolean trial: is the front of the
+left half less than or equal to the front of the right half? The answer
+selects which element is emitted next. The trial is the
+\texttt{BINARY} typeclass. The result is one of two outputs: emit-left
+or emit-right. The trial itself does not produce information about the
+absolute position of either element in the final permutation; it
+produces only the local information that one element comes before
+another. The local information accumulates, over the course of the
+merge, into the global information of the sorted order.
+
+This is a precise instance of what the chapter is naming. The
+comparison is the algorithm, not the measurement. The measurement is the
+sorted output. The repeatability of the comparison --- the same two
+inputs always producing the same Boolean output --- is what makes the
+sorted output deterministic. If the comparison were nondeterministic,
+running the sort twice on the same input could produce different
+permutations.
+
+Merge sort is also a stable sort. If two elements compare equal, their
+relative order in the output matches their relative order in the input.
+Stability is a property of the algorithm, not of the comparison. The
+comparison says only ``these two elements are equal''; the algorithm
+chooses, when two equal elements are encountered, to emit the one from
+the left half before the one from the right half. This choice is the
+algorithm's commitment to preserving prior order. The algorithm is the
+instrument; the comparison is the trial; the stability is the
+instrument's calibration choice.
+
+The cost in memory is $O(n)$ for the merge buffers. This is the standard
+implementation; in-place merge sort exists but is more complex and
+slower in practice. The memory cost reflects the fact that the merge
+step cannot operate purely on the input; it requires temporary storage
+to hold the half-sorted intermediate results. The instrument needs
+scratch space.
+
+The Lean analog is \texttt{Study} in \texttt{Episode2.lean}. A
+\texttt{Study} is a structured inquiry: a sequence of trials that
+together establish a comparison conclusion. \texttt{Study.le} is the
+partial order on studies: one study is at most another when its
+conclusion is contained in the other's. A merge sort, viewed as a
+study, has $n \log n$ trials and produces, as its conclusion, the
+permutation. Each individual trial is a \texttt{Trial.le} instance; the
+study composes them into the larger result.
+
+\texttt{REPEATABLE} in \texttt{Episode2.lean} formalizes the property
+that a sort produces the same permutation when run twice on the same
+input. The typeclass requires that the underlying comparison be
+deterministic: \texttt{Trial.le a b} is a function of $a$ and $b$ only,
+not of any other state. If the comparison consults a clock, a random
+number generator, or any external resource, the typeclass instance
+cannot be provided, and the sort cannot be certified as repeatable.
+
+The compiler analog is the elaboration of a definition. When Lean
+elaborates a complicated definition with many implicit arguments, it
+performs a sequence of unification steps, each one a small comparison
+between expected and actual types. The order of unification is
+determined by the elaboration strategy. Two runs of the elaborator on
+the same input produce the same result --- the same set of unification
+decisions, in the same order --- because each unification step is
+deterministic. The elaborator is a sort: it produces a structured
+output (the elaborated term) by repeatedly applying a deterministic
+comparison (unification) to an input set of constraints. The
+comparison is not the elaboration; the elaboration is the algorithm
+that uses the comparison.
+
+A practical observation: merge sort scales well to external sorting.
+When the input does not fit in main memory, the algorithm can be run
+on disk-backed files, with each half sorted as a separate file and the
+merge step streaming the two files into a third. This is how large
+database systems sort tables that exceed available RAM. The
+algorithm's divide-and-conquer structure makes external sorting
+feasible: the recursion can be unrolled into a sequence of merge
+passes over the data, with each pass reading and writing the entire
+dataset once. The cost is $O(n \log_k n)$ I/O operations for a
+$k$-way merge, which for typical disk speeds is acceptable on
+terabyte-scale data.
+
+The classical achievement of merge sort is its provable $O(n \log n)$
+lower bound. Any comparison-based sort that always produces the
+correct output must, in the worst case, make $\Omega(n \log n)$
+comparisons. The lower bound is information-theoretic: the number of
+distinct permutations of $n$ elements is $n!$, and distinguishing
+among $n!$ outcomes requires $\log_2 (n!) \approx n \log_2 n$ bits of
+information. Each comparison provides at most one bit. Therefore the
+number of comparisons is at least $n \log_2 n$. Merge sort achieves
+this bound up to a constant. The algorithm is, in this precise sense,
+optimal.
+
+\section{FFT: Recursive Divide}
+\label{se:fft-recursive-divide}
+
+The Discrete Fourier Transform (DFT) of a length-$N$ signal $x_0, x_1,
+\ldots, x_{N-1}$ produces a length-$N$ frequency spectrum $X_0, X_1, \ldots,
+X_{N-1}$, computed by
+\[
+X_k = \sum_{n=0}^{N-1} x_n \, e^{-2\pi i \, k n / N}.
+\]
+The naive computation of each $X_k$ requires $N$ multiplications and $N-1$
+additions; computing all $N$ values costs $O(N^2)$ operations. For
+$N = 10^6$, this is $10^{12}$ operations, which is hours on a typical CPU.
+
+The Fast Fourier Transform, due to Cooley and Tukey in 1965 (though
+discovered earlier by Gauss and others and forgotten), reduces this to
+$O(N \log N)$ operations. For $N = 10^6$, the cost is approximately
+$2 \times 10^7$ operations: a fraction of a second. The speedup is six
+orders of magnitude, achieved by a divide-and-conquer factoring of the
+sum.
+
+The factoring exploits an algebraic identity. When $N$ is a power of two,
+the sum can be split into even-indexed and odd-indexed terms:
+\[
+X_k = \sum_{n=0}^{N/2-1} x_{2n} \, e^{-2\pi i \, k (2n) / N}
+     + \sum_{n=0}^{N/2-1} x_{2n+1} \, e^{-2\pi i \, k (2n+1) / N}.
+\]
+The first sum is a DFT of length $N/2$ on the even-indexed samples. The
+second sum is a DFT of length $N/2$ on the odd-indexed samples, multiplied
+by a twiddle factor $e^{-2\pi i \, k / N}$. The full transform is the
+combination of two half-length transforms plus $N$ complex multiplications
+and additions (the butterfly stage).
+
+The recurrence is $T(N) = 2 T(N/2) + O(N)$. By the master theorem, this
+solves to $T(N) = O(N \log N)$. The depth of recursion is $\log_2 N$.
+Each level does $O(N)$ work in the butterfly combining step. For
+$N = 2^{20} \approx 10^6$, the recursion has twenty levels, and each
+level does about $10^6$ operations. The total is roughly $2 \times 10^7$,
+matching the asymptotic estimate.
+
+The FFT is divide-and-conquer at maximum information density. Each
+butterfly operation is a $2 \times 2$ matrix multiplication: two complex
+inputs produce two complex outputs. The matrix is
+\[
+\begin{pmatrix}
+1 & \omega \\
+1 & -\omega
+\end{pmatrix},
+\]
+where $\omega = e^{-2\pi i k / N}$ is the twiddle factor specific to the
+position in the recursion. The butterfly is the smallest unit of FFT
+computation: two inputs, two outputs, one twiddle factor, four complex
+multiplications, two complex additions. The entire FFT is $N \log N / 2$
+butterflies.
+
+Each butterfly is an admissible trial: it produces a comparison between
+two frequency components, separating their sum and difference. The trial
+is deterministic: the same two inputs and the same twiddle factor produce
+the same two outputs. Repeated application of the FFT to the same signal
+produces the same spectrum every time. This is the chapter's
+\texttt{REPEATABLE} property at the level of the largest commonly-used
+algorithm in numerical computing.
+
+What is measured by the FFT? The frequency content of the signal. The
+output $X_k$ is the amplitude (complex-valued) of the $k$-th harmonic.
+Each $X_k$ is a record of the signal's projection onto a specific
+frequency. The FFT does not change the signal; it transforms the
+representation. The same physical signal, expressed in time domain
+($x_n$) or frequency domain ($X_k$), is the same physical event. The FFT
+is the algorithmic instrument that converts between the two
+representations.
+
+This connects FFT to the chapter's question. The transformation is not
+the measurement of the signal; the signal was already known. The
+transformation is a structural reorganization that exposes a different
+aspect of the same record. A signal that looks random in the time domain
+may reveal periodic components in the frequency domain. The FFT is the
+instrument that makes those components visible. The measurement is what
+the instrument shows; the algorithm is how the instrument processes the
+input.
+
+The FFT is also the canonical example of an algorithm that produces a
+unique minimal-information representation. The DFT is invertible: from
+$X_k$, the original $x_n$ can be recovered by an inverse FFT of the
+same complexity. The transform preserves all information. It is a
+unitary change of basis. The frequency domain representation is not
+``richer'' or ``poorer'' than the time domain representation; they
+contain the same information, expressed differently. The minimum-
+information property is what makes the FFT useful: it lets the user
+work in whichever representation is most convenient for the task.
+
+In Lean, the FFT analog is the typeclass cascade that handles
+elaboration. Every implicit argument unification is, in effect, a small
+transform: the elaborator reorganizes the expression to expose the
+constraints that need to be solved. The cascade of unifications has the
+same divide-and-conquer structure as the FFT: at each level, the
+elaborator splits the constraint into smaller constraints, solves them
+recursively, and combines the results. The compiler's elaboration cost,
+when expressed in heartbeats, is approximately $O(n \log n)$ in the size
+of the term being elaborated. The same algorithmic form, the same
+asymptotic cost.
+
+A practical observation: the FFT's $O(N \log N)$ cost made many
+applications feasible that were previously not. Real-time spectrum
+analysis on audio signals, image compression in JPEG, fast convolution
+of large signals, polynomial multiplication in $O(N \log N)$ rather than
+$O(N^2)$, and many others. The algorithmic improvement transformed entire
+fields of engineering. The chapter's point is not that the FFT is fast;
+it is that the FFT's structure is the algorithmic embodiment of the
+chapter's claim. Divide and conquer is not an optimization heuristic; it
+is the structural form forced by the chapter's question about repeatable
+comparison.
+
+\section{Tournament Sort}
+\label{se:tournament-sort}
+
+A field of sixty-four runners is to produce one winner. Each pairwise race is
+a definite outcome: one runner finishes ahead of the other. The simplest
+fair procedure is a single-elimination tournament. Round one: thirty-two
+races; the winners advance, the losers are eliminated. Round two: sixteen
+races. Round three: eight. Round four: four. Round five: two. Round six:
+one. After six rounds and sixty-three races, one runner remains: the
+champion.
+
+Tournament sort generalizes this. Given $n$ elements and a comparison
+operator, build a complete binary tree with $n$ leaves. Place the elements
+at the leaves. At each internal node, store the winner (the larger or
+smaller, depending on the desired order) of its two children. Propagate
+upward: the root contains the overall winner. This takes $n - 1$
+comparisons.
+
+To extract the next element after the winner, mark the winner's leaf as
+removed and re-run the comparisons along the path from that leaf to the
+root. The path has $\log_2 n$ edges, so $\log_2 n$ comparisons restore the
+tree. The next winner is at the root. Repeat to extract all elements in
+sorted order. Total comparisons: $n - 1$ for the initial tournament plus
+$(n-1) \log_2 n$ for the extractions. The total is $O(n \log n)$,
+asymptotically the same as merge sort.
+
+Tournament sort's value is not its asymptotic cost --- merge sort matches
+it. The value is that the algorithm finds the winner without producing the
+full sorted order. Sixty-three races identify the fastest runner; the
+ranking of the second-place finisher requires an additional six races
+(re-running the path through the second-place runner's bracket). The
+algorithm produces ranked information incrementally, on demand, rather
+than computing the full sorted order eagerly.
+
+This matters for the chapter's question. Tournament sort is the
+algorithmic form of a comparison whose result is not the full ranking but
+a specific named question: who is the winner? The comparison is performed
+exactly enough times to answer the question, and no more. The remaining
+elements are partially ordered (we know they all lost to someone in the
+bracket) but not fully ordered (we do not know their relative ranks).
+
+The comparison is the algorithm. The winner is the measurement. The
+algorithm uses sixty-three comparisons; the measurement is one runner's
+identity. The comparisons are not the measurement. The measurement is the
+question the tournament was designed to answer.
+
+What does this teach? It teaches that the comparison's purpose is
+incidental to the comparison itself. Sixty-three runners participate in
+the tournament, each of them comparing against another runner in some
+round. Each runner's individual experience is a comparison. The aggregate
+experience produces the winner. The aggregate is the measurement; the
+individual comparisons are the procedure.
+
+If the tournament asks ``who is the fastest runner?'', the answer is one
+name. If the tournament asks ``what is the full ranking?'', the answer is
+sixty-four names in order. The two questions require different
+algorithms. The tournament-as-described answers the first question in
+$O(n)$ comparisons. Answering the second requires $O(n \log n)$ further
+comparisons. The questions are different; the algorithm is different; the
+measurements are different. The comparisons in each case are not the
+measurement; they are how the algorithm progresses toward producing the
+measurement.
+
+Tournament sort also exposes a subtle property: the comparisons in
+different parts of the tree are independent and can be parallelized. The
+thirty-two first-round races can all be run simultaneously --- on
+thirty-two separate tracks, or on thirty-two CPU cores. The sixteen
+second-round races can follow, but they cannot begin until the first
+round completes. The total wall-clock time is $\log_2 n$ rounds, not $n -
+1$ sequential races. For $n = 64$, the wall-clock time drops from
+sixty-three rounds to six rounds. The algorithm exploits parallelism
+naturally.
+
+This is why tournament sort, and divide-and-conquer in general, scales
+well on parallel hardware. The recursion's branching gives independent
+subproblems at each level. The combining stage (which in tournament sort
+is the comparison at the parent node) is the only sequential dependency.
+For algorithms with cheap combining steps (like tournament sort), the
+parallel speedup is nearly linear in the number of processors.
+
+The Lean analog of tournament sort is the typeclass resolution algorithm.
+When the elaborator needs an instance of some typeclass, it searches the
+instance database. The search is a tournament: each instance is compared
+against the current candidate, and the better candidate (more specific
+type match) advances. The tournament's winner is the instance the
+elaborator selects. The comparison between two candidates is one
+unification problem. The tournament's structure ensures that, for $n$
+candidate instances, the elaborator performs $O(n)$ unifications, not
+$O(n^2)$.
+
+A practical observation: tournament sort is the basis of priority queues
+implemented as heaps. A heap is a complete binary tree with the heap
+property: each node is at least as large (or as small, depending on the
+order) as its children. Insertion and extraction in a heap are both
+$O(\log n)$. The heap is the data-structural form of the running
+tournament: it always has the current winner at the root, and it can be
+updated incrementally as new elements arrive or the current winner is
+extracted. Every priority queue, every event-driven simulation, every
+Dijkstra's algorithm implementation, every Huffman coding tree, uses a
+heap. The heap is the algorithmic generalization of tournament sort.
+
+The chapter's argument is that this generalization is forced by the
+chapter's question. To compare records and repeat the comparison reliably,
+the algorithmic form must be one of these: sequential scan, binary search,
+merge sort, FFT, or tournament sort. The specific form chosen depends on
+the question being asked (find one, find all in order, transform between
+representations, find the winner without ranking the rest), but the family
+of forms is fixed. Other algorithms exist, but they are compositions of
+these primitives.
+
+\section{RepeatableProcess in Lean}
+\label{se:repeatableprocess-in-lean}
+
+\texttt{Episode2.lean} defines a typeclass \texttt{REPEATABLE} that
+formalizes the chapter's central distinction. The class certifies that a
+process produces the same output when given the same input, regardless of
+when or how often it is called. The definition has the shape:
+
+\begin{leanexcerpt}{REPEATABLE}
+class REPEATABLE
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] [ADMISSIBLE Value Carrier]
+    [COUNTABLE Value Carrier]       [ENCODED Value Carrier]
+    [RESIDUE Value Carrier]
+    [b : BINARY Value Carrier]
+  where
+  repeatable_process : RepeatableProcess Value Carrier
+  typical_response   : Trial $\to$ Trial $\to$ Prop := ...
+\end{leanexcerpt}
+
+The class carries the full prior cascade through \texttt{BINARY} (each
+prior class is a typeclass requirement, not a field). The first field,
+\texttt{repeatable\_process}, names the underlying
+\texttt{RepeatableProcess} against which the class is calibrated. The
+second field, \texttt{typical\_response}, is a binary predicate on
+\texttt{Trial}s that records when one trial is an admissible
+repetition of another. The proof obligation runs the entire length of
+the cascade; consistency under repetition is what
+\texttt{typical\_response} certifies.
+
+The typeclass formalizes what every divide-and-conquer algorithm in the
+chapter assumes. Binary search assumed that comparing the array element at
+position $m$ to the target produces the same Boolean every time. Merge
+sort assumed that comparing the front of the left half to the front of
+the right half produces the same Boolean every time. FFT assumed that the
+butterfly operation produces the same complex outputs every time. Without
+\texttt{REPEATABLE}, none of these algorithms can be certified to produce
+the correct output.
+
+The proof obligation is stronger than determinism in the runtime sense.
+Many programs are deterministic at runtime --- they do not consult random
+sources or external state --- but produce outputs that depend on
+implementation details like memory layout or floating-point rounding mode.
+A \texttt{REPEATABLE} process must produce outputs that are consistent
+across implementations: the comparison's value is determined by the
+mathematical specification, not by the implementation.
+
+This is why floating-point arithmetic is not trivially
+\texttt{REPEATABLE}. The same floating-point computation on two different
+CPUs may produce slightly different results due to differences in
+extended-precision intermediate registers, fused multiply-add instructions,
+or compiler optimizations. The IEEE 754 standard partially addresses this
+by specifying exact rounding behavior, but in practice the situation is
+murky: some compilers do not strictly follow IEEE 754, and some hardware
+provides higher-precision intermediates that can drift the result.
+
+To get a \texttt{REPEATABLE} instance for floating-point comparisons,
+either the implementation must be tightly specified (which Lean's
+\texttt{Float} type aspires to), or the comparison must be made discrete
+(rounded to a fixed precision before comparing). The chapter's algorithms
+typically use integer or rational comparisons to sidestep this issue. When
+floating-point is required, the \texttt{REPEATABLE} instance comes with
+caveats about the implementation.
+
+The companion typeclass \texttt{ComputationalProcess} captures the next
+layer: a process that not only is repeatable but produces a numeric
+output. \texttt{NUMERIC} is the certificate. Together with
+\texttt{REPEATABLE}, it certifies that the output is both deterministic
+and admits arithmetic. The chapter's algorithms --- binary search returning
+an index, merge sort returning a permutation, FFT returning a complex
+vector, tournament sort returning the winner --- all instantiate this
+combination. Each produces a numeric output (an integer, a permutation
+encoded as integers, a complex vector, a runner's ID) that can be compared
+arithmetically with other outputs.
+
+The typeclass \texttt{Study.le} captures the partial order on studies:
+one study refines another when its conclusion is at least as specific. A
+study that produces a sorted permutation refines a study that produces
+only the winner. A study that produces the frequency spectrum of a signal
+refines a study that produces only the peak frequency. The partial order
+on studies is the partial order on the information content of their
+conclusions.
+
+These typeclasses compose to express the chapter's answer. Comparison is
+performed by an \texttt{ObservationProcess} that produces \texttt{BINARY}
+outputs. Repeated application of the process is admissible only when the
+\texttt{REPEATABLE} instance certifies the process. A
+\texttt{ComputationalProcess} layers numerical structure: the output is
+a number, not just a Boolean. A \texttt{Study} composes multiple trials
+into a structured inquiry. The composition produces a permutation, an
+index, a spectrum, a ranking --- the algorithmic measurement.
+
+The compiler's enforcement is at elaboration time. If a user writes a
+sort function that depends on an unspecified comparison, the
+\texttt{REPEATABLE} instance cannot be derived, and the function cannot
+be certified. The compiler will not let the user assert that the sort's
+output is deterministic without providing the underlying comparison's
+determinism proof. This is a non-trivial constraint: many real-world
+sorting libraries cannot meet it because they use comparison functions
+that consult external state. Those libraries can run, but they cannot be
+proven correct in this framework.
+
+The chapter's argument closes with this observation. Divide and conquer
+is the algorithmic form of repeatable comparison. The form is forced by
+the requirement that the comparison be \texttt{REPEATABLE} (independent
+of context) and \texttt{NUMERIC} (producing a structured output). The
+specific divide-and-conquer algorithm (binary search, merge sort, FFT,
+tournament sort) depends on the question being asked. But the family of
+algorithms is the family forced by the chapter's question. Any
+comparison that does not factor through this family is either
+deterministic-but-not-structurable (a heuristic) or
+structurable-but-not-deterministic (an oracle). Both fall outside the
+admissibility constraint.
+
+\begin{bridge}
+
+The chapter's question was how an instrument can compare records and
+repeat the result without pretending the comparison is the thing
+measured.
+
+The answer is divide-and-conquer: the algorithmic family that performs
+many small comparisons and composes them into a single structured
+output. Binary search finds an index in a sorted array. Merge sort
+produces a permutation that orders an input list. FFT transforms a
+signal between time and frequency representations. Tournament sort
+identifies a winner from a field of contestants. In each case, the
+comparisons are the procedure; the structured output is the
+measurement. The typeclass \texttt{REPEATABLE} formalizes the constraint
+that the comparison produces the same Boolean output on the same input
+every time. Without \texttt{REPEATABLE}, the algorithm cannot be
+certified.
+
+What remains is the gap between recorded events. Between two
+comparisons, the instrument carries some state --- the current
+partition, the current subtree, the current frequency band --- but
+this state is not yet a record in the chapter's sense. The state is
+working memory. To talk about it as a record, the next chapter must
+ask what can be said about the state of the algorithm between two
+adjacent comparisons, and how the compiler distinguishes admissible
+inferences about that state from inadmissible ones. Chapter 3 takes
+up the interpolation problem: what the compiler may carry as a
+metavariable without resolving it prematurely.
+
+\end{bridge}
+
+\begin{coda}{The Postal Sorting Machine}
+
+The mail-processing center is a long building on the outskirts of the
+city. Inside, two parallel conveyor systems carry envelopes and packages
+past stations of optical scanners, mechanical diverters, and human
+inspectors. The building processes one million pieces of mail per day.
+Each piece enters through one of three loading docks and exits through
+one of one hundred forty delivery routes. The path each piece takes
+through the building is determined by a sequence of comparisons.
+
+The first station is the orientation scanner. An envelope arrives in
+arbitrary orientation: front-up, back-up, sideways, upside-down. The
+scanner detects which corner has the postage and the address block,
+and rotational mechanics in the conveyor turn the envelope so all
+envelopes proceed to the next station in the same orientation. This is
+not yet a comparison in the chapter's sense; it is preprocessing,
+analogous to building the index before sorting.
+
+The second station is the zip-code reader. The optical character
+recognition module reads the five-digit zip code at the top of the
+delivery address. The reading is a series of small comparisons:
+compare the pixel pattern against a template for each digit. The
+output is a five-digit number, which becomes the envelope's primary
+sort key. The reader achieves about 99.5 percent accuracy. Envelopes
+whose zip codes cannot be confidently read are diverted to a manual
+station where a human operator types in the zip code from the
+displayed image. The diverter is the exception path; the manual
+station is the halting-boundary resolution.
+
+After the zip-code reader, the conveyor splits into ten branches. Each
+branch handles zip codes starting with one of the ten digits. This is
+the first level of divide-and-conquer. The decision at the split is a
+single Boolean comparison: is the first digit of the zip code less
+than five? If yes, take the upper branch; if no, take the lower branch.
+Two further splits at the second level, and so on. By the end of the
+five-level split, each branch handles a specific three-digit prefix
+range. There are about a thousand such branches.
+
+This is binary search physically realized. The envelope is the target.
+The branch system is the search tree. Each split is a comparison. The
+total number of comparisons per envelope is $\log_2$ of the number of
+final branches, which for a thousand branches is ten. The branch
+system processes envelopes in parallel: at any moment, thousands of
+envelopes are at different stages of the descent, each one having
+made some prefix of the ten comparisons.
+
+The third level of sorting happens within a branch. Each branch's final
+chute leads to a local sorting machine that handles four-digit and
+five-digit zip code resolution within the branch's three-digit prefix
+range. The local machine uses a tournament structure: the envelopes
+are ranked against each other by zip code, and the local machine
+delivers a sorted stream to the next stage. The tournament is run
+continuously: as new envelopes arrive, they enter the bracket and the
+local machine re-runs the affected paths. The local machine's output
+is a sequence of envelopes in sorted order, one per zip code, ready to
+be routed to the appropriate delivery sequence.
+
+The fourth level is the delivery sequence. A delivery sequence is the
+order in which a letter carrier visits addresses on a route: down one
+side of the street, up the other, into each building in the order the
+carrier reaches them. The delivery sequence is a permutation of the
+addresses on the route. Each piece of mail's position in the sequence
+is determined by another sort, this one keyed by the street number and
+apartment number. The fourth-level sort is the most fine-grained: it
+operates on individual delivery points, of which there are typically a
+few thousand per route.
+
+The fourth-level sort uses merge sort. Multiple input streams (the
+envelopes arriving from the local sorting machines) are merged into
+a single sorted output, in the delivery sequence order. The merge is
+the canonical algorithm: compare the front of each stream, emit the
+smallest, advance the corresponding stream's pointer. The merge is
+stable: two envelopes for the same address are emitted in their
+arrival order, which becomes the order in which the carrier delivers
+them (a courtesy to the recipient who may have multiple envelopes
+that day).
+
+Throughout all four levels, the comparisons are repeatable. Sending
+the same envelope through the machine twice would route it to the
+same delivery sequence both times. The comparisons depend only on the
+zip code, street number, and apartment number printed on the
+envelope, not on the time of day, the operator on shift, or the
+weather. The machine's output is deterministic in the input: a
+fundamental property of \texttt{REPEATABLE} \texttt{ComputationalProcess}.
+
+The comparison is not the measurement. The measurement is the
+delivery sequence: a list of envelopes in the order the carrier will
+deliver them. The comparisons are how the machine produces the
+delivery sequence; the delivery sequence is what the machine produces.
+A million envelopes pass through the machine each day; ten million
+comparisons are performed; one hundred forty delivery sequences are
+produced. The ratio of comparisons to outputs is roughly $10^7 / 140 =
+7 \times 10^4$, which means each delivery sequence is the result of
+about seventy thousand comparisons. None of those comparisons is the
+sequence itself.
+
+The morning shift manager has been at the center for seventeen years.
+She watches the flow on a real-time display: arrivals at the loading
+docks, throughput at each station, exceptions diverted to the manual
+station, completion times for each delivery sequence. The display
+shows aggregate statistics: average sort time, exception rate, branch
+utilization. The aggregates are produced from the underlying
+comparisons by yet another algorithm: a streaming summarization that
+maintains running counts and averages. The aggregates are
+measurements, too; the comparisons that produce them are not.
+
+When a problem arises --- a stalled conveyor, a misrouted batch, a
+failed optical scanner --- the manager investigates by tracing the
+sequence of comparisons backward. She inspects the misrouted
+envelopes, reads their zip codes, and checks which comparison led to
+the wrong branch. The trace is the audit log of the comparisons: each
+envelope's path through the machine is recorded, every decision is
+timestamped, every diversion is logged. The audit log is the
+\texttt{Study}: the structured record of which trials happened in
+which order. The manager uses the study to diagnose the failure.
+
+Today's failure is a misrouted batch of about three hundred envelopes
+that should have gone to delivery sequence forty-seven but instead
+went to delivery sequence forty-eight. The audit log shows the
+problem: at the third-level split for branch forty-seven, the
+comparison ``is the fourth digit less than five?'' was producing the
+wrong answer for envelopes with fourth digit exactly five. The
+optical scanner was misreading the digit five as a six. The
+\texttt{REPEATABLE} property had been violated: the comparison was
+producing different outputs for envelopes that should have produced
+the same output. The fault was at the scanner level, not at the
+algorithm level. The algorithm was correct; the input was wrong.
+
+The manager dispatches a technician to recalibrate the scanner. The
+recalibration is the next chapter's territory: when the comparison
+itself is the source of error, the response is to recalibrate the
+instrument. The chapter's algorithms assume \texttt{REPEATABLE}
+comparisons; when the assumption fails, the system must intervene to
+restore the property. The intervention is not part of the divide-and-
+conquer algorithm; it is part of the metrology infrastructure that
+supports it.
+
+By mid-afternoon, the technician has replaced the failed scanner
+module, recalibrated against a test target, and certified that the
+new module produces \texttt{REPEATABLE} comparisons. The misrouted
+batch is retrieved, re-scanned, and re-routed through the now-correct
+sorting tree. The audit log records both the original misrouting and
+the corrective rerouting. The system's record carries both events:
+the failure is not erased; it is appended.
+
+At ten o'clock at night, the last delivery sequence is finalized.
+One million envelopes have been processed. Ten million comparisons
+have been made. One hundred forty delivery sequences have been
+produced. The throughput is normal. The exception rate is slightly
+elevated due to the morning's scanner failure, but within tolerance.
+The shift manager closes the day's audit log and signs off.
+
+The mail-processing center is the most physical possible
+embodiment of divide-and-conquer. Every envelope is a record. Every
+zip code is a sort key. Every split is a comparison. Every branch is
+a recursion level. Every local sort is a tournament. Every merge into
+delivery sequences is a stable merge sort. The comparisons are not
+the deliveries; the deliveries are what the comparisons produce.
+
+\end{coda}

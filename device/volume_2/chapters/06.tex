@@ -1,0 +1,494 @@
+\chapter{Classical Mechanics}
+\label{chap:classical-mechanics}
+
+% Closed question: What selects one admissible continuation as the history
+% actually carried forward?
+
+\begin{chapteressay}
+
+A ball rolls off a table.
+
+At one moment it is at the table edge. A little later it is lower and farther
+out. A camera can mark those two positions. A stopwatch can mark the elapsed
+time. Between the two marks, no one sees every infinitesimal point of the
+motion. Still, the path is not arbitrary. The ball does not zigzag, pause,
+circle, and resume. It follows the familiar parabola.
+
+That parabola is the chapter's first example of an admissible continuation. The
+measured endpoints do not contain the whole motion as a list. They contain
+constraints. Classical mechanics supplies a selection rule: among the possible
+histories compatible with the endpoints, the actual history is the one whose
+action is stationary. The law is often presented as a postulate. In this book
+it is read as a measurement consequence. A record with endpoints needs a way to
+choose a continuation that does not add structure the measurement never earned.
+
+The speedometer has been doing a low-tech version of this all along. Between
+two pulses, it assumes the least fussy continuation compatible with the last
+known state. It does not imagine that the wheel sped up, slowed down, reversed,
+and recovered unless the later record forces that complication. The odometer
+accumulates distance by trusting that local continuation. If the next pulse
+disagrees, the interpolant is corrected. If the pulses remain stable, the
+minimal continuation survives.
+
+The same structure appears in astronomy. Mars is observed at one opposition and
+then again months later. The observations are finite. The orbit is not drawn
+on the sky as a luminous thread. Yet the inverse-square law, the Sun's position,
+and the elapsed time select an ellipse. A wild path between the two observed
+locations may be imaginable, but it would require forces not present in the
+record. It would be an added story.
+
+The code names this danger with comic severity. \lean{Spline} has observations,
+knots, and interpolants. \lean{GalerkinProcess} supplies a polynomial carrier
+for turning finite evidence into admissible approximation. \lean{ArmWaveProcess}
+can reticulate a guess into a more elaborate spline. \lean{BULLSHIT} then asks
+whether the interpolation really respects the record. The joke is doing
+technical work: overhead is conserved. A story that adds unmeasured structure
+must carry the burden of that addition.
+
+The closed question is:
+
+\begin{center}
+\emph{What selects one admissible continuation as the history actually carried
+forward?}
+\end{center}
+
+The answer is not that nature loves parabolas, ellipses, or smooth curves as
+decorations. The answer is that a physical history is the least added structure
+compatible with the measurements and the governing constraint. Least action is
+the classical expression of that rule. It turns endpoint records into a
+selected path.
+
+Chapter 6 therefore gives distance a history. Chapter 5 counted refinements
+between marks. Now those marks are joined. The joining is not free invention.
+It must be accountable to the record.
+
+\end{chapteressay}
+
+% Phenomenon arcs use: 1/3 setup -> phenomenon box -> 2/3 structural interpretation.
+
+\section{Least Action}
+\label{se:least-action}
+
+The principle of least action can sound mystical if it is heard as a claim that
+the particle surveys every possible future and chooses the best one. It should
+be heard instead as a selection rule for histories.
+
+A classical system has a Lagrangian $L$, usually kinetic energy minus potential
+energy. A proposed path $q(t)$ receives an action
+
+\[
+S[q] = \int_{t_0}^{t_1} L(q,\dot q,t)\,dt.
+\label{eq:chapter6-action}
+\]
+
+The physical path is stationary under small variations that leave the endpoints
+fixed. For a ball in a uniform gravitational field, that condition gives a
+parabola. For a free particle, it gives a straight line at constant velocity.
+For a pendulum at small angle, it gives harmonic motion.
+
+In measurement language, the endpoints are the record, and the action is the
+burden paid by a proposed continuation. A path that introduces needless bends,
+accelerations, or reversals pays extra burden without evidence. Least action
+does not say that nothing happens between marks. It says that the history
+between marks must be justified by the constraint actually present.
+
+This is where the speedometer analogy becomes precise. A constant wheel speed
+between two pulses is not a metaphysical truth. It is the minimal admissible
+interpolant until the next pulse forces a revision. If the pulses begin to
+arrive closer together, acceleration enters the record. If the pulses spread
+out, deceleration enters. Until then, the interpolant should not add drama.
+
+The Lean code's \lean{Spline} type is a useful grammar for this. An
+\lean{observation} starts the record. A \lean{knot} binds a proposition to a
+polynomial carrier. An \lean{interpolant} combines facts and polynomials across
+prior spline structure. Classical mechanics is not being implemented there, but
+the grammar is exactly the one this chapter needs: finite marks, admissible
+carriers, and composed continuations.
+
+\section{Euler-Lagrange from Data}
+\label{se:euler-lagrange-from-data}
+
+The Euler-Lagrange equations are what the principle of least action looks like
+when the stationary condition is written locally. For a Lagrangian $L(q,
+\dot{q}, t)$ describing a system with generalized coordinate $q(t)$, the
+equation is
+\[
+\frac{d}{dt}\frac{\partial L}{\partial \dot q}
+  - \frac{\partial L}{\partial q} = 0.
+\label{eq:chapter6-euler-lagrange}
+\]
+This is a second-order ordinary differential equation for $q(t)$. Given
+appropriate boundary conditions --- typically the position at two endpoint
+times --- the equation has a unique solution (under mild regularity
+assumptions on $L$). The equation is not a replacement for data. It is the
+rule that tells a data record what continuations remain admissible.
+
+The derivation is brief but worth retracing because the structure carries
+the chapter's argument. The action functional is
+\[
+S[q] = \int_{t_1}^{t_2} L(q(t), \dot{q}(t), t) \, dt,
+\]
+where $q(t_1)$ and $q(t_2)$ are fixed boundary data. Consider a small
+variation $q \to q + \varepsilon \eta$ with $\eta(t_1) = \eta(t_2) = 0$.
+The first-order change in $S$ is
+\[
+\delta S = \int_{t_1}^{t_2}\left(\frac{\partial L}{\partial q} \eta + \frac{\partial L}{\partial \dot{q}} \dot{\eta}\right) dt.
+\]
+Integrating the second term by parts (using $\eta(t_1) = \eta(t_2) = 0$ to
+kill the boundary):
+\[
+\delta S = \int_{t_1}^{t_2}\left(\frac{\partial L}{\partial q} - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}}\right) \eta \, dt.
+\]
+For $S$ to be stationary --- $\delta S = 0$ for all admissible $\eta$ --- the
+integrand's coefficient of $\eta$ must vanish, which gives the
+Euler-Lagrange equation. The derivation is local: at every interior point
+between $t_1$ and $t_2$, the equation must hold.
+
+Now apply this to a planet. Suppose Mars is observed at two specific
+positions $\mathbf{r}_1$ and $\mathbf{r}_2$ separated by six months of
+proper time. The Lagrangian for a planet of mass $m$ in the Sun's
+gravitational field (with the Sun fixed at the origin) is
+\[
+L = \frac{1}{2} m |\dot{\mathbf{r}}|^2 + \frac{GMm}{|\mathbf{r}|},
+\]
+where $G$ is Newton's constant and $M$ is the Sun's mass. The Euler-Lagrange
+equation for this Lagrangian is
+\[
+m\ddot{\mathbf{r}} = -\frac{GMm}{|\mathbf{r}|^3} \mathbf{r}.
+\]
+This is Newton's equation of motion for an inverse-square gravitational
+force directed toward the Sun. Given the boundary data $\mathbf{r}(t_1) =
+\mathbf{r}_1$ and $\mathbf{r}(t_2) = \mathbf{r}_2$, the equation has a
+unique solution (modulo the orbital plane orientation, which is determined
+by the angular momentum at any one point).
+
+The solution is a conic section: ellipse, parabola, or hyperbola
+depending on the energy. For a bound planet like Mars, the orbit is an
+ellipse with the Sun at one focus. The specific ellipse is fixed by the
+boundary data: given two positions separated by a known time interval,
+the ellipse's semi-major axis, eccentricity, orientation, and orbital
+phase are all determined.
+
+The point is that the orbit is not chosen; it is forced. Among all
+admissible continuations of the data (all curves passing through
+$\mathbf{r}_1$ at $t_1$ and $\mathbf{r}_2$ at $t_2$), the unique one
+that satisfies Newton's law (equivalently, the Euler-Lagrange equation
+of the gravitational Lagrangian) is the specific Keplerian ellipse.
+Any other continuation would require unrecorded forces between the two
+boundary times. The Euler-Lagrange equation rejects continuations that
+would need such forces.
+
+This is the chapter's central structural claim. Classical mechanics is
+sometimes taught as if the equations of motion float above measurement
+and are later applied. The framework reverses this. A record of
+measurements asks for a continuation between two recorded events. The
+Euler-Lagrange equation is the local condition that closes the question
+by rejecting any continuation that would require force not present in the
+recorded sources.
+
+Without observation data --- without specifying boundary conditions ---
+the Euler-Lagrange equation has infinitely many solutions parameterized
+by the choice of initial conditions. The equation alone does not produce
+a unique trajectory; it characterizes a family. The record's role is to
+select one member of the family by specifying enough boundary data.
+
+The \lean{GalerkinProcess} name from the Lean code is apt here. In
+numerical analysis, a Galerkin method chooses an approximate solution
+from a finite-dimensional space of basis functions and demands that the
+residual vanish against an admissible test space. The procedure converts
+a continuous problem (the Euler-Lagrange equation) into a finite linear
+system, solvable on a computer. The continuous solution emerges as the
+limit of finite Galerkin approximations as the basis is refined. The
+chapter's claim is that this is what measurement is doing: a finite
+record of boundary data plus a Lagrangian produces a finite-dimensional
+admissible continuation; finer records produce finer continuations; the
+limit is the continuous trajectory.
+
+The phrase ``from data'' matters. The Euler-Lagrange equation is not a
+metaphysical truth that exists independently of measurement. It is a
+specific local condition that closes the gap between recorded events.
+Without records, the equation is vacuous; with records, the equation
+selects a unique continuation among admissible alternatives. The
+discipline of measurement is to provide the records; the discipline of
+mechanics is to apply the equation.
+
+This also explains why a bad model can fit two endpoints but fail as
+mechanics. A polynomial curve can be drawn through any two points. A
+physical trajectory must carry the right burden: the inverse-square
+force, the specific Lagrangian, the conservation laws that follow from
+the action's symmetries. If the proposed curve needs a hidden impulse
+in the middle, the record must show that impulse. Otherwise the curve
+is just overhead --- unrecorded structure imposed on the data without
+empirical warrant.
+
+The chapter's framework formalizes this in the typeclass cascade. A
+\lean{GalerkinProcess} accepts boundary data and a basis; it produces the
+finite-dimensional approximation; the \lean{FINITE\_ELEPHANT} certificate
+confirms that further refinement would produce no admissible distinction
+at the stated resolution; the resulting trajectory is the unique
+continuation forced by the data, the law, and the resolution. None of
+these elements is optional. Removing any of them allows continuations
+the chapter considers inadmissible.
+
+\section{Repeatability of Invisible Motion}
+\label{se:repeatability-of-invisible-motion}
+
+Galileo's inclined plane gives the central phenomenon. A ball rolls down a
+shallow ramp. The motion is too fast to measure comfortably if the ball falls
+freely, so the ramp slows the descent while preserving a simple acceleration
+law. Different observers can time the ball, mark positions, and recover the
+same structure.
+
+\begin{phenom}{Repeatability of Invisible Motion}
+\label{ph:repeatability-of-invisible-motion}
+
+\PhStatement A motion that is not continuously observed can still be physically
+repeatable when independent finite records select the same admissible
+continuation.
+
+\PhOrigin Galileo's inclined-plane experiments made acceleration measurable by
+slowing falling motion into a repeatable laboratory process.
+
+\PhObservation Different timing devices and repeated trials recover the same
+quadratic distance-time relation within experimental error, even though the
+intermediate continuum of positions is not directly listed in the record.
+
+\PhConstraint The experiment may infer invisible intermediate motion only when
+the same continuation is forced by repeatable endpoint and timing records.
+
+\PhConsequence Classical history is not guessed between observations. It is
+selected by the continuation that repeatable finite measurements keep forcing.
+
+\end{phenom}
+
+The phenomenon closes a common loophole. If motion between observations were
+mere storytelling, repeatability would not be enough to stabilize it. But
+Galileo's inclined plane makes the invisible interval accountable. The ball's
+distance grows quadratically with time. Change the clock, repeat the trial,
+mark a different set of intermediate positions, and the same continuation
+returns.
+
+This is exactly why \lean{BULLSHIT} is a useful, if impolite, name for the
+class stack. An interpolation that cannot be made repeatable is not merely
+uncertain; it has imported material that the measurement cannot carry. The
+burden has to be paid somewhere. Classical mechanics pays it with forces,
+constraints, and action.
+
+\section{The Free Parameter}
+\label{se:the-free-parameter}
+
+Two endpoint positions do not always determine a unique history. A thrown ball
+can pass through the same two points with different launch speeds if the time
+of flight is not fixed. Add the elapsed time, and the family narrows. Add a
+launch angle or initial velocity, and it closes further.
+
+The free parameter is not a failure of measurement. It is the honest shape of
+the record. The record says exactly how much it knows.
+
+In spline language, an interpolant often has degrees of freedom left after it
+passes through the knots. Smoothness may remove some. Boundary derivatives may
+remove more. A natural cubic spline, for instance, uses endpoint conditions to
+settle curvature that the interior knots alone do not determine. The remaining
+choice is not mystical; it is the place where another measurement can enter.
+
+Classical mechanics treats the initial velocity in the same way. Position at
+one time is not a whole state for a second-order law. A second-order law needs
+position and velocity, or enough endpoint information to determine both. The
+missing velocity is not hidden ontology. It is an unresolved parameter in the
+measurement ledger.
+
+This helps explain why the chapter does not claim that least action removes all
+ambiguity by itself. Least action selects among paths with the same boundary
+data. If the boundary data are incomplete, the selection remains a family. The
+right response is not to invent a path. The right response is to ask which
+additional measurement closes the family.
+
+The code's class stack embodies this discipline. \lean{FINITE\_ELEPHANT} carries
+the finite matter of approximation. \lean{ArmWaveProcess} can add a guess.
+\lean{BULLSHIT} tests interpolation. \lean{PROPAGANDA} and \lean{ACOLYTE} show
+what happens when a story becomes institutional. The mathematical joke is that
+every added layer must still answer to the record.
+
+\section{Kepler's Orbits}
+\label{se:keplers-orbits}
+
+Kepler's orbits are the chapter's mature example. Johannes Kepler, working
+with Tycho Brahe's observations of Mars from 1576 to 1601, spent about
+two decades analyzing the data. The observations were sparse by modern
+standards: positions noted to about one arcminute precision, distributed
+across multiple oppositions of Mars over twenty-five years. From this
+sparse record, Kepler extracted three laws.
+
+The first law, published in 1609, states that planetary orbits are ellipses
+with the Sun at one focus. This replaced the centuries-old Ptolemaic
+assumption of circular motion (modified by epicycles to fit the data). The
+ellipse fit Brahe's data far more cleanly than any combination of circles.
+
+The second law, also from 1609, states that the line connecting a planet
+to the Sun sweeps out equal areas in equal times. This is the area
+conservation law; it implies that planets move faster when closer to the
+Sun and slower when farther.
+
+The third law, published in 1619, states that the square of a planet's
+orbital period is proportional to the cube of its orbital semi-major axis:
+\[
+T^2 \propto a^3.
+\label{eq:chapter6-kepler-third}
+\]
+Specifically, $T^2 = (4\pi^2/GM) a^3$ in modern notation, where $G$ is
+Newton's constant and $M$ is the Sun's mass. The proportionality constant
+is the same for all planets orbiting a given star.
+
+Kepler discovered these laws empirically. He had no theory of gravity; he
+fit curves to Brahe's data and identified the patterns. The third law in
+particular was the result of decades of arithmetic: Kepler tried many
+relationships between period and orbit size before he found one that worked
+for all six known planets.
+
+Newton, in 1687, derived all three laws from the inverse-square law of
+universal gravitation. The derivation makes the chapter's structural point
+explicit. Given the inverse-square gravitational force, the resulting
+two-body equation of motion is
+\[
+\ddot{\mathbf{r}} = -\frac{GM}{|\mathbf{r}|^3} \mathbf{r}.
+\]
+For a bound orbit (negative total energy), the solution is a conic section
+with the central body at one focus --- specifically, an ellipse. The
+trajectory satisfies all three Kepler laws automatically: the ellipse with
+Sun at focus is the first law; angular momentum conservation gives the
+second law (equal areas in equal times); and the period-size relation
+gives the third law.
+
+The third law's derivation is particularly clean. For a circular orbit of
+radius $r$, the gravitational acceleration $GM/r^2$ must equal the
+centripetal acceleration $v^2/r = (2\pi r/T)^2/r$. Setting these equal
+gives
+\[
+\frac{GM}{r^2} = \frac{4\pi^2 r}{T^2},
+\]
+which rearranges to $T^2 = (4\pi^2/GM) r^3$. The generalization to
+elliptical orbits replaces the radius with the semi-major axis $a$ and
+gives Kepler's third law. The proportionality constant $4\pi^2/GM$
+depends only on the central body's mass, so all planets orbiting the
+same star satisfy the same period-size relation.
+
+The structural significance is the chapter's claim that the orbit is
+forced, not chosen. Brahe's observations of Mars provided sparse boundary
+data: positions at various dates over twenty-five years. Newton's
+gravitational law provided the structural constraint: the equation of
+motion. Together, the data and the law force the orbit. Kepler's three
+laws are not three independent assumptions; they are three observable
+features of the unique admissible continuation.
+
+\begin{phenom}{Kepler Effect}
+\label{ph:kepler-effect}
+
+\PhStatement A sparse astronomical record can select a stable orbit when the
+governing constraint makes one continuation carry less unmeasured structure
+than its rivals.
+
+\PhOrigin Kepler's analysis of planetary observations replaced circular
+preference with elliptical orbits, later explained by Newtonian gravitation.
+
+\PhObservation Planetary positions, elapsed times, and the Sun's focus agree
+with ellipses and with the period-size relation $T^2 \propto a^3$.
+
+\PhConstraint The orbit may not be chosen for geometric beauty alone. It must
+be the continuation that survives the observations and the force law.
+
+\PhConsequence Classical astronomy turns finite sky records into a physical
+history by selecting the least added continuation compatible with gravitation.
+
+\end{phenom}
+
+Kepler is important because the record is so obviously partial. No one sees
+the entire orbit at once. No one measures every point. The orbit is a
+continuation that becomes trustworthy because later observations keep
+agreeing with it.
+
+The third law's confirmation is particularly clean. Kepler had data for
+six planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn. The ratio
+$T^2/a^3$ comes out to a single number across all six planets, within
+the precision of Brahe's measurements. Modern measurements with
+spacecraft and high-precision astronomy extend the agreement to all
+known solar-system bodies (planets, moons, asteroids, Kuiper belt
+objects, comets) to many decimal places. The same ratio also applies
+to exoplanets around other stars (with the appropriate stellar mass
+substituted): every exoplanet detected by transit or radial velocity
+methods obeys Kepler's third law with high precision. The law is one
+of the most-confirmed predictions in physics.
+
+The third law is also load-bearing for the chapter's claim that the
+orbit is forced rather than fit. If Kepler's third law were merely a
+phenomenological fit, it would be expected to hold approximately within
+the range of Brahe's data and to diverge outside that range. Instead, the
+law holds with full precision across orbits ranging from Mercury's
+$88$-day period to Pluto's $248$-year period, and into the entirely
+different scale of moons orbiting planets (where the proportionality
+constant changes to reflect the planet's mass rather than the Sun's).
+The structural form is universal; the specific proportionality constant
+is local; the universality of the form is what supports the chapter's
+claim of a forced continuation.
+
+This brings the chapter back to the speedometer. The odometer is a tiny
+Kepler: finite marks, a law of continuation, and repeated correction. The
+planet is a grand odometer: finite observations, a gravitational law, and
+a history whose burden is too low to ignore. In both cases, the record is
+sparse, the continuation is forced by the law, and the agreement between
+prediction and subsequent observation is the chapter's calibration check.
+
+\begin{bridge}
+
+The chapter's question was what selects one admissible continuation as the
+history actually carried forward.
+
+The answer is least added structure under a governing constraint. The falling
+ball follows the stationary-action path. The Galilean ramp makes invisible
+motion repeatable. The free parameter marks exactly what the record has not
+closed. Kepler's orbit shows finite observations becoming a stable history.
+
+The next question is sharper. Classical mechanics joins measurements by a
+single admissible path. Quantum mechanics asks what happens when more than one
+history remains admissible until the act of witnessing changes the record.
+
+\end{bridge}
+
+\begin{coda}{A Figure Skater Tracing One Clean Arc}
+
+Two chalk marks sit on the ice. The skater begins at the first and must finish
+at the second. The rink is open. Nothing prevents a spiral, a stumble, a loop,
+or a sequence of decorative cuts. Many paths are imaginable.
+
+But the skater is moving with a blade on ice.
+
+The blade has an edge. The ice has friction. The skater has momentum. A clean
+arc is not merely prettier than the alternatives. It is the path that carries
+the least unnecessary correction from the given entry speed to the required
+exit mark. A loop would demand extra force. A stutter would lose momentum. A
+sharp corner would require a cut the blade cannot hide. The good path is the
+one that makes the constraints visible without adding a story.
+
+The coach can see this at once. If the arc is clean, the body, blade, and ice
+agree. If it wobbles, the wobble is a record: the skater changed edge, lost
+balance, or corrected too late. The ice preserves the evidence. The trace is a
+ledger.
+
+The analogy performs the chapter's typeclasses. The chalk marks are
+observations. The blade is the carrier. The rink supplies admissibility. The
+skater's body carries magnitude and load. The clean arc is the spline. The
+coach's judgment is the interpolation test. A flourish that was not required by
+the marks must pay for itself in visible force.
+
+This is not about beauty, though beauty appears when burden is low. The clean
+arc looks inevitable because the hidden alternatives have been disqualified by
+the physical situation. The skater did not choose from fantasy paths. The
+skater carried a body through a constrained medium.
+
+Classical mechanics does the same. A path is not accepted because it can be
+drawn. It is accepted because the required accelerations, forces, endpoints,
+and times agree. The trace on the ice is a human-scale least-action record.
+
+The skate mark remains after the motion. It says: this is how the continuation
+was carried.
+
+\end{coda}

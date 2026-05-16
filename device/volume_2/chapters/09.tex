@@ -1,0 +1,498 @@
+\chapter{The Einstein Equations}
+\label{chap:the-einstein-equations}
+
+% Closed question: What records the failure of transport to commute?
+
+\begin{chapteressay}
+
+A car turns through a tight curve. The inner wheel travels a shorter path than
+the outer wheel. If the speedometer reads only one wheel, the odometer can be
+slightly wrong during the turn. The car has not stopped measuring. It has
+entered geometry.
+
+This is the chapter's everyday doorway into curvature. On a straight road, it
+is easy to imagine one distance count standing for the whole vehicle. In a
+turn, different parts of the car trace different arcs. Transport is no longer
+transparent. The mismatch is not an error added after the fact. It is the
+physical signature of the path.
+
+General relativity makes this severe. Carry a gyroscope around Earth and its
+axis does not return exactly as flat space would predict. Let two long
+interferometer arms compare their lengths while a gravitational wave passes,
+and the differential strain records spacetime curvature moving through the
+detector. Watch stars orbit far from a galactic center, and their speeds do not
+fall as the visible mass budget predicts. Something in the curvature budget is
+missing.
+
+The same structure appears outside gravity. In a turbulent river, transporting
+smooth velocity data forward can fail because gradients feed smaller gradients.
+In neutrino oscillation, a flavor state transported through space does not
+remain an electron-flavor record. The measured state changes according to a
+mass-basis structure that does not commute with the flavor basis.
+
+The code names this chapter with \lean{SpaceTimePath}, \lean{CalculusProcess},
+\lean{UNIVERSAL}, \lean{YarnTheory}, and \lean{HeartbeatProcess}. A path can be
+Einstein, white hole, blackhole, or geodesic. A yarn can be a Stokes record, a
+fiber comparison, or a fabric of several paths. The names are satire, but the
+shape is exact: transport has grammar, comparison has order, and accumulated
+strain becomes a record.
+
+The closed question is:
+
+\begin{center}
+\emph{What records the failure of transport to commute?}
+\end{center}
+
+The answer is curvature, read as strain in the measurement ledger. If carrying
+structure along one path and then another gives a different result from the
+opposite order, the mismatch is not noise. It is what the field is measuring.
+
+Chapter 9 therefore turns calibration into dynamics. Chapter 8 asked how
+observers compare counts. Chapter 9 asks what the comparison records when
+transport itself has path-dependent residue.
+
+\end{chapteressay}
+
+% Phenomenon arcs use: 1/3 setup -> phenomenon box -> 2/3 structural interpretation.
+
+\section{Strain as Transport Failure}
+\label{se:strain-as-transport-failure}
+
+Gravity Probe B was launched on April 20, 2004, into a $642\,\mathrm{km}$
+polar orbit around Earth. The spacecraft carried four gyroscopes machined
+from fused quartz to the most precise sphericity ever achieved: deviations
+from a perfect sphere of less than $10\,\mathrm{nm}$ over a $38\,\mathrm{mm}$
+diameter ball. Each gyroscope was coated with a thin layer of niobium and
+cooled to $1{.}8\,\mathrm{K}$ in a helium dewar, making it
+superconducting. The spinning superconductors produced magnetic moments
+aligned with their rotation axes; superconducting quantum interference
+devices (SQUIDs) measured the magnetic moments and hence the orientations
+of the spin axes to within $10^{-5}$ arcseconds. The spacecraft also
+carried a telescope locked onto the guide star IM Pegasi (HR 8703), so
+that the gyroscope orientations could be measured relative to a fixed
+distant reference.
+
+The mission's goal was to measure two relativistic effects predicted by
+general relativity: the \emph{geodetic effect} (de Sitter precession),
+which arises from the curvature of spacetime caused by the Earth's mass;
+and the \emph{frame-dragging effect} (Lense-Thirring precession), which
+arises from the Earth's rotation dragging the surrounding spacetime
+along with it. The predicted magnitudes were
+\[
+\Omega_{\text{geodetic}} = 6{,}606 \,\mathrm{mas/yr}, \qquad
+\Omega_{\text{frame-drag}} = 37{.}2 \,\mathrm{mas/yr},
+\]
+where ``mas'' denotes milli-arcseconds. The geodetic effect points in the
+orbital plane; the frame-dragging effect points perpendicular to it.
+
+Mission operations ran from August 2004 through August 2005, with data
+analysis continuing for another six years due to unexpected systematic
+effects from the gyroscopes' patch effects (electrostatic anomalies on the
+sphere surfaces). The final published result in 2011 reported the geodetic
+precession as $6{,}601{.}8 \pm 18{.}3\,\mathrm{mas/yr}$ and the
+frame-dragging precession as $37{.}2 \pm 7{.}2\,\mathrm{mas/yr}$. Both
+values agreed with the general relativistic predictions within the
+experimental uncertainty.
+
+The structural significance is what the gyroscope is doing. It is not
+measuring gravity as a force pulling on a pointer; gyroscopes do not
+respond to forces in the relevant sense. It is measuring how an orientation
+changes when transported along a worldline through curved spacetime.
+
+In flat spacetime, ideal parallel transport of a vector around a closed
+loop returns the vector unchanged. The orientation of an isolated gyroscope
+in inertial motion through flat spacetime would not precess relative to
+the distant stars; it would always point the same way. In curved spacetime,
+parallel transport around a closed loop does not return the vector
+unchanged: the vector rotates by an amount determined by the curvature
+enclosed by the loop. A gyroscope in orbit around the Earth traces a
+closed loop (or, more precisely, a tightly wound helix; over many orbits
+it samples a closed loop's worth of curvature each year). The gyroscope's
+orientation, observed against a distant fixed reference, precesses by an
+amount that records the integrated curvature.
+
+This is the chapter's central claim. Curvature is not an invisible
+substance suffusing space. Curvature is the structured record of
+transport's failure to commute or to return unchanged. Gravity Probe B
+measured curvature by measuring the rotation accumulated during transport.
+The measurement was direct: the gyroscope orientation was a physical
+quantity recorded continuously throughout the mission; the precession
+was a real, measured rotation; the rotation rate matched the
+predictions of general relativity.
+
+\begin{phenom}{Gravity Probe B Effect}
+\label{ph:gravity-probe-b-effect}
+
+\PhStatement Curvature can be measured as the mismatch left after transporting
+an orientation around a physical path.
+
+\PhOrigin Gravity Probe B tested general relativity by tracking gyroscope
+precession in a polar orbit around Earth.
+
+\PhObservation The gyroscope axes accumulated geodetic and frame-dragging
+precession relative to a distant guide star, matching the relativistic
+transport prediction within experimental uncertainty.
+
+\PhConstraint The measurement may not treat orientation as globally fixed when
+the spacetime path itself changes the transported frame.
+
+\PhConsequence Curvature is not an invisible substance. It is the recorded
+failure of transport to return structure unchanged.
+
+\end{phenom}
+
+This is the operational heart of the Einstein equations. Geometry is what
+transport does. The connection tells how to carry a vector locally.
+Curvature is the residue of carrying it around a loop. The Einstein
+equations then balance that curvature record against stress-energy.
+
+Gravity Probe B is the cleanest direct test of this picture. The
+gyroscopes were nearly perfect: any precession not predicted by
+relativity would have been visible at the milli-arcsecond level. The
+guide star provided a fixed external reference: the gyroscope orientations
+were measured against IM Pegasi, whose own motion relative to the
+extragalactic frame was independently determined by VLBI observations
+to better than $0{.}1\,\mathrm{mas/yr}$. The redundancy of four
+gyroscopes allowed systematic effects to be calibrated against the
+expected pattern. The result is a measurement of curvature as a
+physical quantity --- not an inferred theoretical construct, but a
+recorded rotation.
+
+The chapter's structural framework is precise here. The gyroscope's
+spin axis is a record that is transported along the spacecraft's
+worldline. In a flat background, the transport would preserve the
+axis direction. In the Schwarzschild-plus-Lense-Thirring background
+of a rotating massive Earth, the transport precesses the axis. The
+precession is the curvature: it is the algebraic record of how much
+the geometry deviated from flatness along the path. The Einstein
+field equations relate this curvature to the stress-energy content
+of spacetime (the Earth's mass-energy and angular momentum); Gravity
+Probe B measured the curvature side of the equation directly.
+
+The Lean formalization in \lean{HeartbeatProcess} captures the same
+idea at the algebraic level. A \lean{HeartbeatProcess} accumulates
+elaboration cost along a proof path; two paths to the same
+conclusion may accumulate different costs; the difference is the
+strain of the path. For Gravity Probe B, the analog is: the gyroscope
+records the integrated curvature along its worldline; two worldlines
+with the same endpoints (e.g., one full orbit, vs. staying at rest
+relative to the distant stars) accumulate different precession; the
+difference is the curvature enclosed. The strain is physical in the
+gyroscope case and algebraic in the proof case, but the structure
+is the same: transport failure is what curvature looks like as a
+recorded quantity.
+
+\section{The Navier--Stokes Third Parameter}
+\label{se:the-navier-stokes-third-parameter}
+
+A river can look smooth at one scale and violent at another. Velocity changes
+from point to point. Gradients feed gradients. Eddies break into smaller
+eddies. A model that transports the velocity field forward must account for
+whether the smooth record remains smooth.
+
+The Navier-Stokes equations are not Einstein's equations, but they belong in
+this chapter because they ask a parallel measurement question: can the
+transport of a field remain globally controlled, or can finite-time strain
+make the record fail?
+
+Write the incompressible equation schematically as
+
+\[
+\partial_t v + (v \cdot \nabla)v = -\nabla p + \nu \Delta v.
+\label{eq:chapter9-navier-stokes}
+\]
+
+The nonlinear transport term carries velocity by velocity. The viscous term
+smooths. The conflict between them is the source of the problem.
+
+\begin{phenom}{Navier-Stokes Effect}
+\label{ph:navier-stokes-effect}
+
+\PhStatement A transported field can generate strain faster than smoothing can
+control it, making global continuation itself the measurement question.
+
+\PhOrigin The Navier-Stokes existence and smoothness problem asks whether
+smooth three-dimensional incompressible flow can develop singular behavior in
+finite time.
+
+\PhObservation Turbulent flows transfer structure across scales, so small
+errors or gradients can become dynamically significant rather than remaining
+local bookkeeping details.
+
+\PhConstraint The model may not assume a smooth global record merely because
+the initial data were smooth.
+
+\PhConsequence Field transport must carry its own strain budget; continuation
+is admissible only while that budget remains controlled.
+
+\end{phenom}
+
+This section is deliberately adjacent rather than identical to relativity. The
+point is not that fluids are spacetime. The point is that transport can fail to
+commute as an accounting matter. Carry local data forward, compare it at a
+later scale, and the mismatch becomes the phenomenon.
+
+\section{Flat Rotation Curves}
+\label{se:flat-rotation-curves}
+
+In a galaxy whose mass is mostly concentrated near the center, orbital speeds
+should fall with radius, roughly like $1/\sqrt r$ outside the visible disk. But
+many spiral galaxies show flat rotation curves: stars far from the center move
+about as fast as stars nearer in.
+
+The record does not balance if only visible matter is counted.
+
+\begin{phenom}{Flat Rotation Curve Effect}
+\label{ph:flat-rotation-curve-effect}
+
+\PhStatement A curvature or mass budget can fail operationally when transported
+orbital records do not match the visible source count.
+
+\PhOrigin Measurements of spiral galaxy rotation curves showed orbital speeds
+remaining approximately flat far beyond the luminous disk.
+
+\PhObservation The observed velocities imply more gravitational mass than is
+seen in stars and gas, or else a change in the gravitational accounting rule.
+
+\PhConstraint The measurement may not close the curvature ledger using only
+visible matter when the orbital records demand additional source structure.
+
+\PhConsequence Dark matter, modified gravity, or any rival explanation must pay
+the same bill: the transported orbital record has a missing source.
+
+\end{phenom}
+
+This example gives the Einstein-equation idea its public shape. The left side
+of the equation is geometry. The right side is stress-energy. If the geometry
+inferred from motion does not match the visible stress-energy, the ledger is
+open. Something has not been counted.
+
+\section{Gravitational Waves from LIGO}
+\label{se:gravitational-waves-from-ligo}
+
+The Laser Interferometer Gravitational-Wave Observatory (LIGO) consists of
+two facilities, one in Hanford, Washington, and one in Livingston, Louisiana,
+separated by about $3{,}000\,\mathrm{km}$. Each facility is an L-shaped
+Michelson interferometer with $4\,\mathrm{km}$ arms. A laser beam is split at
+the corner of the L; each half travels down one arm, reflects off a hanging
+mirror at the far end, and returns to the corner; the two returning beams
+are recombined and the interference pattern is recorded by a photodiode.
+
+LIGO measures strain:
+\[
+h = \frac{\Delta L}{L}.
+\label{eq:chapter9-ligo-strain}
+\]
+A passing gravitational wave stretches one arm while compressing the other,
+then reverses. The strain $h$ is the fractional change in arm length. For
+$L = 4\,\mathrm{km}$ and a typical astrophysical source, the strain at
+Earth is on the order of $10^{-21}$, meaning the arm length changes by
+$\Delta L = 10^{-21} \times 4 \times 10^3 = 4 \times 10^{-18}\,\mathrm{m}$,
+or about one-thousandth the diameter of a proton.
+
+The signal is fantastically small. To detect it, the interferometer must
+suppress noise sources orders of magnitude larger. Seismic noise from
+ground vibrations is suppressed by a four-stage pendulum suspension
+system that decouples the mirrors from the ground at frequencies above
+$10\,\mathrm{Hz}$. Thermal noise in the mirror coatings is suppressed by
+operating the mirrors as cold as the cryogenic infrastructure allows
+(LIGO operates at room temperature; KAGRA, a Japanese sister
+instrument, operates cryogenically). Shot noise in the laser is
+suppressed by using a high-power laser (about $750\,\mathrm{kW}$
+circulating in each arm cavity) and by injecting squeezed vacuum states
+into the dark port. Quantum radiation pressure noise at low frequencies
+is balanced against shot noise at high frequencies through the choice
+of laser power.
+
+The result is a strain sensitivity that reaches about $10^{-23}$ per
+$\sqrt{\mathrm{Hz}}$ in the most sensitive band around
+$100\,\mathrm{Hz}$. Integrated over the duration of a typical
+astrophysical signal (a fraction of a second), the detectable strain is
+in the $10^{-22}$ to $10^{-21}$ range.
+
+On September 14, 2015, at 09:50:45 UTC, the LIGO detectors at Hanford
+and Livingston both recorded a signal consistent with the merger of two
+black holes. The signal lasted about $0{.}2\,\mathrm{s}$ and swept
+upward in frequency from $35\,\mathrm{Hz}$ to $250\,\mathrm{Hz}$ --- a
+characteristic ``chirp'' as the orbital frequency increased while the
+two black holes spiraled together. The peak strain was about $10^{-21}$.
+The peak amplitude corresponds to the moment of merger. The signal then
+faded as the merged black hole rang down to its final stationary
+configuration. This was GW150914, the first direct detection of
+gravitational waves.
+
+Analysis of the waveform yielded the source parameters: two black holes
+of masses approximately $36$ and $29$ solar masses, merging at a distance
+of about $1{.}3$ billion light-years (redshift $z \approx 0{.}09$). The
+final black hole had a mass of $62$ solar masses, meaning that
+approximately $3$ solar masses' worth of energy ($3 M_\odot c^2 \approx
+5{.}4 \times 10^{47}\,\mathrm{J}$) was radiated away as gravitational
+waves during the merger --- in less than a second. The peak luminosity
+exceeded $3{.}6 \times 10^{49}\,\mathrm{W}$, more than the total
+luminosity of all the stars in the observable universe.
+
+The detection relied on coincidence between the two LIGO sites. The
+Hanford signal arrived $7\,\mathrm{ms}$ before the Livingston signal,
+consistent with a gravitational wave traveling at the speed of light
+from a source in the southern sky. The waveforms at the two sites,
+corrected for the different antenna response patterns, matched to within
+the noise. Independent analyses by separate teams using separate
+software pipelines confirmed the detection. The statistical significance
+was greater than $5{.}1\sigma$.
+
+\begin{phenom}{LIGO Strain Effect}
+\label{ph:ligo-strain-effect}
+
+\PhStatement A gravitational wave is measured as differential strain in a
+calibrated comparison of spacetime paths.
+
+\PhOrigin Laser interferometer gravitational-wave detectors were built to
+compare long optical paths for the passing strain predicted by general
+relativity.
+
+\PhObservation GW150914 matched the waveform expected from a binary black-hole
+merger, with correlated signals in separated detectors.
+
+\PhConstraint The apparatus may not claim a wave from a single local wiggle; it
+must carry differential arm comparison, noise modeling, and cross-detector
+coincidence.
+
+\PhConsequence Curvature can be a traveling record. The failure of distances to
+remain mutually fixed is the signal itself.
+
+\end{phenom}
+
+LIGO also folds Chapter 5 back into Chapter 9. Interferometry counted phase
+distinctions as distance. Here the same technique records spacetime strain.
+The detector is not watching a wave pass by like a ripple on a pond. It is
+asking whether two calibrated paths remain comparable in the same way.
+
+The structural point is that gravitational waves are recorded curvature
+travelling at the speed of light. The Einstein field equations admit wave
+solutions in vacuum: $\Box h_{\mu\nu} = 0$, where $h_{\mu\nu}$ is the
+linearized metric perturbation. These solutions propagate at $c$ and carry
+energy and momentum. When such a wave passes through the LIGO detector,
+the strain $h$ at the detector is the metric perturbation transversely
+projected onto the arm directions. The chapter's claim is that this strain
+is the same kind of object as the gyroscope precession of Gravity Probe B:
+both are records of transport failure, both are physical readings of
+curvature, both confirm that curvature is a measurable quantity rather
+than an abstract theoretical construct.
+
+GW150914 was the first direct detection, but by 2024 LIGO and its
+collaborators (Virgo in Italy, KAGRA in Japan) had detected over $100$
+gravitational wave events. Most are binary black hole mergers; several
+are binary neutron star mergers; a few are mixed black-hole/neutron-star
+mergers. The catalog of detections has become large enough to support
+population studies: the distribution of black hole masses, the rate of
+mergers per unit cosmological volume, the spins and inclinations of the
+merging systems. The 2017 detection of GW170817, a binary neutron star
+merger, was accompanied by electromagnetic counterparts (a short gamma-ray
+burst, a kilonova in optical and infrared, X-ray and radio afterglows)
+that pinpointed the source's host galaxy and established gravitational
+wave astronomy as a multi-messenger discipline.
+
+The chapter's framework treats the LIGO record as the canonical example
+of curvature as a transported quantity. The strain $h(t)$ recorded over
+$0{.}2\,\mathrm{s}$ during GW150914 is a time series of metric
+perturbation amplitudes; the time series is the curvature wave's
+fingerprint passing through the detector; the fingerprint matches the
+prediction of general relativity for the specific source. The record is
+admissible because the coincidence between sites, the matched-filter
+analysis against theoretical waveforms, and the noise model together
+support the inference that the signal is a real astrophysical event
+rather than an instrumental artifact.
+
+\section{Neutrino Oscillations}
+\label{se:neutrino-oscillations}
+
+Neutrinos are produced and detected in flavor states: electron, muon, and tau.
+But propagation is governed by mass states. The flavor basis and mass basis are
+not the same. As a neutrino travels, the phase differences among mass
+components change, so the flavor measured later can differ from the flavor
+produced.
+
+\begin{phenom}{Neutrino Oscillation Effect}
+\label{ph:neutrino-oscillation-effect}
+
+\PhStatement A carried quantum state can change its measured label when the
+transport basis and the observation basis do not commute.
+
+\PhOrigin Solar, atmospheric, reactor, and accelerator neutrino experiments
+showed that neutrinos change flavor during propagation, implying nonzero mass
+differences.
+
+\PhObservation Electron neutrinos produced in the Sun arrive at Earth as a
+mixture of flavors rather than as a conserved electron-neutrino count.
+
+\PhConstraint The measurement may not assume that a label assigned at
+production remains invariant under transport when the physical basis differs.
+
+\PhConsequence Noncommuting transport and observation bases create a real
+record of change, not a mere naming convention.
+
+\end{phenom}
+
+This closes the chapter by widening curvature into commutation failure. In
+gravity, transport around a loop changes orientation. In fluid dynamics,
+transport can amplify strain. In galaxies, transported orbital records expose a
+source mismatch. In LIGO, differential transport is the wave. In neutrinos, the
+failure is between bases.
+
+The common structure is \lean{YarnTheory}: paths, fibers, fabric, and the order
+relations that say which carried records can be compared.
+
+\begin{bridge}
+
+The chapter's question was what records the failure of transport to commute.
+
+The answer is strain. Gravity Probe B measures orientation mismatch. Navier-
+Stokes asks whether transported smoothness can survive nonlinear strain. Flat
+rotation curves expose a missing source in the curvature budget. LIGO records
+differential spacetime strain. Neutrino oscillations show a label changing
+because transport and observation bases do not commute.
+
+The next chapter asks what remains invariant when labels can change. If
+transport can twist records, then physics needs a rule for what survives
+admissible relabeling.
+
+\end{bridge}
+
+\begin{coda}{A Bridge Deck with Expansion Joints}
+
+The bridge crosses a river in steel segments. In the morning shade, the deck is
+shorter. By afternoon, sunlight warms one span more than another. The steel
+expands. The expansion joints open and close.
+
+The joints are not decorative gaps. They are instruments. Each gap records the
+failure of the deck to behave as one rigid length under changing heat. If the
+engineer pretended every segment expanded identically, the bolts would complain
+first, then the welds, then the traffic report.
+
+A truck crossing the bridge transports load from segment to segment. On a cool,
+even day, the transfer is quiet. On a hot day with uneven expansion, the load
+meets strain at the joints. The path across the bridge still exists, but the
+transport is no longer trivial. The joint gap is the visible residue.
+
+This performs the chapter's structure. The deck segment is a local frame. The
+joint is a comparison. Thermal expansion is curvature-like strain. The truck's
+route is \lean{SpaceTimePath}. The stress analysis is \lean{YarnTheory}. The
+sensors watching the gap through the day are \lean{HeartbeatProcess}. The
+question is not whether the bridge exists. The question is whether transported
+load returns the same account after the path has crossed all those strained
+interfaces.
+
+If a joint sticks, the record changes. Expansion that should have been absorbed
+becomes force. Force becomes a crack. The crack becomes a maintenance entry.
+No one needs a metaphysical theory of bridges to see the rule: transport
+failure writes itself somewhere.
+
+The same is true in the physical chapters. A gyroscope writes curvature into
+precession. A galaxy writes missing mass into rotation speed. A gravitational
+wave writes strain into interferometer arms. A neutrino writes basis mismatch
+into flavor statistics.
+
+The bridge deck teaches the quiet version. Curvature is not always a spectacle.
+Sometimes it is the extra millimeter in the joint at noon.
+
+\end{coda}

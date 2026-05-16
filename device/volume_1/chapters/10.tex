@@ -1,0 +1,539 @@
+\chapter{Symmetry Groups}
+\label{chap:symmetry-groups}
+
+% Closed question: What remains invariant under admissible relabeling or
+% recompilation?
+
+\begin{chapteressay}
+
+The previous chapter introduced curvature: the algebraic record of
+transport's failure to commute. This chapter takes up the dual
+question: what does commute? What is invariant under the
+relabelings that the curvature exposes as non-trivial?
+
+Invariance is the chapter's subject. Some quantities depend on the
+specific labeling of the underlying structure: the coordinates of
+a triangle's vertices depend on the choice of coordinate system.
+Other quantities do not: the triangle's area is independent of the
+coordinate system. The area is invariant under the group of
+rigid motions of the plane; the coordinates are not.
+
+The chapter develops invariance through five mathematical
+structures.
+
+The first is the basic notion of invariance under relabeling. A
+quantity is invariant when its value does not change under any
+element of the symmetry group. Different invariants correspond
+to different groups: rotations preserve the lengths of vectors;
+conformal transformations preserve angles; affine transformations
+preserve ratios of distances along lines.
+
+The second is the group action: the mathematical formalization of
+what relabelings are admissible. The symmetry group of a square is
+the dihedral group $D_4$; the group acts on the square by
+permuting vertices. The orbits of the action are the equivalence
+classes; the invariants are the functions constant on orbits.
+
+The third is Noether's theorem. For continuous symmetries (Lie
+groups) acting on a physical system (with an action functional),
+every continuous symmetry corresponds to a conserved quantity.
+Time-translation invariance gives energy conservation;
+space-translation gives momentum; rotation gives angular
+momentum; gauge invariance gives electric charge.
+
+The fourth is the Aharonov-Bohm effect: a topological invariant
+manifesting as a measurable phase shift. The magnetic flux
+through a closed loop is a topological invariant; the charged
+particle's wave function responds to the flux even when the
+local field is zero. The effect demonstrates that topology can
+matter independently of local geometry.
+
+The fifth is bootstrapping as the algorithmic fixed point. The
+Lean 4 compiler is written in Lean 4; recompiling the source
+with the compiler produces an identical compiler. The semantic
+content is the invariant under recompilation. The bootstrap is
+the chapter's algorithmic instance of invariance.
+
+The chapter's ground example is the triangle's area: invariant
+under rigid motions. The chapter's second concrete example is
+the family shortbread recipe: invariant under unit conversions,
+temperature scale changes, and ingredient substitutions. The
+recipe survives transport across units, temperatures, brands, and
+kitchens; the cookies are recognizably the same regardless of the
+specific admissible substitutions used.
+
+The chapter's closed question is:
+
+\begin{center}
+\emph{What remains invariant under admissible relabeling or
+recompilation?}
+\end{center}
+
+The chapter's answer is: the invariants of the group action. The
+group specifies the admissible relabelings; the invariants are
+the quantities that survive every element of the group. For
+geometric quantities, the invariants are the area, the length,
+the angle, the curvature scalar, the topological invariants. For
+physical quantities, the invariants are the Noether charges and
+the topological invariants. For algorithmic quantities, the
+invariants are the semantic content of the compiled program.
+
+The chapter's discipline: state claims in terms of invariants.
+Claims that depend on specific labelings are incomplete; they
+must be reformulated in terms of group-invariant quantities to
+be admissible structural statements.
+
+The next chapter is the final chapter. It addresses why the record
+only grows --- the append-only property of the mathematical
+ledger --- and when the record is closed enough to support
+inference. The book closes with the final type-check on the
+accumulated formal apparatus.
+
+\end{chapteressay}
+
+\section{Invariance Under Relabeling}
+\label{se:invariance-under-relabeling}
+
+A triangle has area $A$. Rotate the triangle by any angle about any
+point; reflect it across any line; translate it by any vector. After
+each transformation, the triangle's area is still $A$. The area is
+invariant under the group of rigid motions of the plane.
+
+The triangle's specific coordinates change with each transformation:
+a triangle with vertices $(0, 0), (1, 0), (0, 1)$ becomes, after a
+$90^\circ$ rotation, the triangle with vertices $(0, 0), (0, 1),
+(-1, 0)$. The vertex coordinates have changed; the relations among
+the vertices (specifically, the area) have not.
+
+This is the chapter's first claim. An invariant is a quantity that
+does not change under the action of a specified group of
+transformations. The area of a planar region is invariant under the
+group of rigid motions. The length of a vector is invariant under
+rotations. The trace of a matrix is invariant under conjugation. In
+each case, the quantity is a function of the underlying structure,
+not of the specific labeling.
+
+The invariant is the structural fact; the specific labeling is the
+representation. The same structural fact (the triangle's area) can
+be expressed in many different coordinate systems; the invariant is
+what they all agree on.
+
+The chapter's discipline: invariants are admissible. Specific
+labelings are not. A claim that depends on the specific labeling is
+not yet admissible as a structural claim about the underlying
+object; the claim must be expressed in terms of invariants.
+
+In mathematics, this discipline is pervasive. A vector space has
+basis-independent properties (dimension, rank, trace, determinant);
+these are admissible structural claims. A specific basis is one of
+many possible labelings; claims tied to a specific basis are
+incomplete without additional context.
+
+In Lean, the discipline is enforced by the type system. A theorem
+about a vector space is stated in basis-independent terms; the
+proof may use a specific basis but must produce a result that
+holds regardless. The compiler does not directly enforce
+invariance, but the typing discipline encourages it.
+
+\section{Group Action}
+\label{se:group-action}
+
+The symmetry group of a square consists of eight elements: four
+rotations ($0^\circ$, $90^\circ$, $180^\circ$, $270^\circ$) and
+four reflections (across the two diagonals and across the two
+midlines). This group is called $D_4$, the dihedral group of
+order eight.
+
+Each element of $D_4$ is a bijection from the square to itself
+that preserves the square's structure: each element maps vertices
+to vertices, edges to edges, and the center to the center. The
+group is closed under composition: applying two symmetries in
+succession gives another symmetry. The identity is the
+$0^\circ$ rotation. Each symmetry has an inverse (the reverse
+rotation or the same reflection).
+
+A group $G$ acts on a set $X$ when there is a function $G \times X
+\to X$ satisfying:
+\begin{itemize}
+\item Identity: the identity element of $G$ acts as the identity
+function on $X$.
+\item Composition: for any $g, h \in G$ and $x \in X$, $(g h) \cdot
+x = g \cdot (h \cdot x)$.
+\end{itemize}
+The group action makes precise the idea that the group's elements
+relabel the elements of $X$ in a structured way.
+
+For the square, the set $X$ is the square's set of vertices; $D_4$
+acts on $X$ by permuting the vertices. The action is faithful
+(different group elements give different permutations) and
+transitive (any vertex can be mapped to any other).
+
+The chapter's second claim is that the group action is the
+mathematical formalization of admissible relabeling. The group
+specifies what relabelings are admissible; the action specifies
+how each relabeling acts on the underlying set. The invariants
+of the action are the quantities preserved by every group
+element.
+
+The orbit of a point $x \in X$ under $G$ is the set $\{g \cdot x :
+g \in G\}$: all the points reachable from $x$ by some group
+element. The orbits partition $X$. Two points in the same orbit
+are equivalent under the group's relabeling; they differ only by
+a relabeling that the group permits.
+
+The stabilizer of $x$ is the subgroup $\{g \in G : g \cdot x = x\}$:
+all elements that fix $x$. The orbit-stabilizer theorem says: the
+size of the orbit times the size of the stabilizer equals the size
+of the group. For finite groups acting on finite sets, this gives
+a useful relation.
+
+In Lean, the group-action structure is the typeclass
+\texttt{MulAction} in \texttt{Mathlib.GroupTheory.GroupAction.Basic}:
+
+\begin{leanexcerpt}{MulAction}
+class MulAction ($\alpha$ : Type u) ($\beta$ : Type v) [Monoid $\alpha$]
+    extends SMul $\alpha$ $\beta$ where
+  one_smul : $\forall$ b : $\beta$, (1 : $\alpha$) $\bullet$ b = b
+  mul_smul : $\forall$ (a$_1$ a$_2$ : $\alpha$) (b : $\beta$),
+    (a$_1$ * a$_2$) $\bullet$ b = a$_1$ $\bullet$ a$_2$ $\bullet$ b
+\end{leanexcerpt}
+
+The class formalizes the (monoid) action with the identity and
+composition axioms. The compiler enforces both: an instance must
+provide proofs of both properties. (Group actions arise as the
+special case where the monoid is a group; \texttt{MulAction} is
+the general form.)
+
+The chapter's claim is that the group-action structure is the
+foundation of symmetry-based analysis. Whenever a system has
+admissible relabelings, the relabelings form a group, the group
+acts on the system, and the invariants of the action are the
+structural facts.
+
+\section{Noether's Theorem}
+\label{se:noethers-theorem}
+
+Emmy Noether proved in 1918 that every continuous symmetry of the
+action functional corresponds to a conserved quantity. The result
+is one of the most important theorems of mathematical physics.
+
+For a mechanical system with Lagrangian $L(q, \dot{q}, t)$ and
+action $S[q] = \int L \, dt$, suppose the action is invariant under
+a continuous transformation $q \to q + \epsilon \delta q$, where
+$\delta q$ is a generator of the transformation and $\epsilon$ is
+the parameter. Then the quantity
+\[
+Q = \frac{\partial L}{\partial \dot{q}} \delta q
+\]
+is conserved: $dQ/dt = 0$ along solutions of the Euler-Lagrange
+equations.
+
+Specific applications:
+\begin{itemize}
+\item Time-translation invariance ($t \to t + \epsilon$): energy is
+conserved.
+\item Space-translation invariance ($q \to q + \epsilon$): momentum
+is conserved.
+\item Rotation invariance: angular momentum is conserved.
+\item Gauge invariance: electric charge is conserved.
+\end{itemize}
+
+Each symmetry generates a specific conserved quantity. The
+correspondence is structural: the symmetry's generator (the
+$\delta q$) becomes the conjugate quantity to the canonical momentum
+$\partial L / \partial \dot{q}$.
+
+The chapter's third claim is that conserved quantities are
+invariants of the action. The action's symmetries are the
+admissible relabelings; the conserved quantities are the
+structural invariants. Noether's theorem is the precise
+mathematical correspondence between the two.
+
+In Lean, Noether's theorem requires the variational calculus
+infrastructure of Chapter 6 plus the group action infrastructure
+of this chapter. The combination is non-trivial; \texttt{Mathlib}
+has partial support. The full Noether theorem at the level of
+field theories is beyond the current state of the Lean
+formalization; it is in the chapter's
+\texttt{future\_work} category.
+
+\begin{phenom}{Noether's Theorem}
+\label{ph:noethers-theorem}
+
+\PhStatement For every continuous symmetry of the action functional
+of a physical system, there is a corresponding conserved quantity.
+
+\PhOrigin Emmy Noether proved this in her 1918 paper ``Invariante
+Variationsprobleme,'' addressing concerns about energy conservation
+in general relativity.
+
+\PhObservation The pendulum's motion conserves energy because its
+Lagrangian is time-independent. A spinning top with rotational
+symmetry conserves angular momentum about the symmetry axis. A
+charged particle in an electromagnetic field has conserved electric
+charge due to gauge invariance.
+
+\PhConstraint The theorem requires the symmetry to be continuous
+(a Lie group, not a discrete group). Discrete symmetries
+correspond to selection rules but not to conserved Noether
+charges.
+
+\PhConsequence Conservation laws are not contingent facts; they
+follow from the action's symmetry structure. Without the
+symmetry, the conservation fails; without the conservation, the
+symmetry is not a symmetry of the action.
+
+\end{phenom}
+
+The Noether's Theorem phenomenon is the chapter's load-bearing
+structural result. Symmetries and conservations are related by
+the theorem; one implies the other.
+
+\section{Aharonov-Bohm}
+\label{se:aharonov-bohm}
+
+The Aharonov-Bohm effect, predicted in 1959 and experimentally
+verified in the 1980s, shows that a charged particle can be
+affected by an electromagnetic field even when the particle passes
+through a region where the field is zero.
+
+The setup: a long solenoid carries an electric current, producing
+a magnetic field $\mathbf{B}$ inside the solenoid and zero magnetic
+field outside. The vector potential $\mathbf{A}$ associated with
+the field, however, is nonzero outside the solenoid: the
+circulation $\oint \mathbf{A} \cdot d\mathbf{l}$ around any closed
+loop enclosing the solenoid equals the magnetic flux $\Phi$ through
+the solenoid.
+
+A charged particle traveling on a path that encloses the solenoid
+acquires a quantum-mechanical phase shift proportional to $\Phi$.
+The phase shift is measurable in an interference experiment: two
+beams of electrons, one passing on each side of the solenoid, are
+recombined; the interference pattern shifts by an amount
+corresponding to the enclosed flux.
+
+The chapter's fourth claim is that the Aharonov-Bohm effect is the
+chapter's instance of a topological invariant. The phase shift
+depends on the enclosed magnetic flux, not on the local
+electromagnetic field at the particle's location. The flux is a
+topological quantity (an integral over the surface bounded by the
+loop). The local field is the geometric quantity. The particle
+responds to the topology, not the local geometry.
+
+The mathematical formulation uses gauge theory. The
+electromagnetic field is described by a connection on a $U(1)$
+bundle over spacetime. The connection's curvature is the
+electromagnetic field tensor. The bundle's topology is captured
+by the integer-valued Chern number, which for a magnetic flux
+$\Phi$ on a closed surface gives $\Phi / (h/e)$ (where $h/e$ is
+the magnetic flux quantum).
+
+The chapter's claim is that the Aharonov-Bohm effect demonstrates
+the existence of topologically invariant quantities that are not
+captured by the local geometric data. The enclosed flux is a
+topological invariant; the local field at the particle is the
+geometric quantity. The particle's phase shift is the
+chapter's algebraic record of the topological invariant.
+
+This is a deep claim. It says: some physical effects depend on
+global topological structure, not on local geometric structure.
+The chapter's structures (invariants under group action,
+Noether charges, topological invariants) include such global
+quantities; the chapter's discipline is to recognize them as
+admissible structural facts.
+
+In Lean, the analog appears in the typeclass machinery for
+topological invariants. The chapter's
+\texttt{INVARIANT} typeclass (informally introduced via the
+preserved invariants of the group action) would carry the
+admissibility of topological invariants. The full development
+is beyond the chapter's current Lean infrastructure; the
+chapter notes this as a future development.
+
+\section{Bootstrapping as Fixed Point}
+\label{se:bootstrapping-as-fixed-point}
+
+The Lean 4 compiler is written in Lean 4. The first version of the
+compiler was written in another language (C++), but once a working
+Lean 4 compiler existed, the source could be compiled by the
+compiler to produce a new compiler binary. The new binary should
+be identical to the original.
+
+This is the bootstrapping property. A compiler is a fixed point of
+its own compilation process: $\text{stage}(N+1) = \text{stage}(N)$.
+The fixed point is the invariant under recompilation: the
+compiler does not change when recompiled with itself.
+
+The fixed point is the chapter's algorithmic instance of invariance.
+The compiler's binary changes its internal representation when
+recompiled (different memory layout, different timestamps), but
+the semantic content is invariant: the same program compiles to a
+program that behaves the same way. The semantic content is the
+invariant under recompilation.
+
+For Lean 4, the bootstrapping was achieved in 2021. The compiler's
+source compiles itself to a binary that, when used to compile the
+source again, produces a semantically equivalent binary --- a
+fixed point up to the chosen build equivalence. (Bit-for-bit
+identity is not guaranteed across all build environments;
+timestamps, layout, and metadata vary. The invariant is semantic
+behavior, not byte sequence.) The verification is the chapter's
+algorithmic version of the bootstrap fixed point.
+
+The chapter's fifth claim is that bootstrapping is the
+algorithmic form of invariance. The compiler is the algorithm; the
+recompilation is the group action (recompile by the same compiler);
+the bootstrap fixed point is the invariant element.
+
+In Lean, this is implicit in the language's design. The
+\texttt{COMPILED} typeclass certifies that a process has reached
+its compiled form. The
+\texttt{ElaborationProcess} typeclass tracks the elaboration
+through load $\to$ transform $\to$ boolean stages; the boolean
+stage is \texttt{HALTED}. The bootstrap is the demonstration that
+the compiler's source plus a working compiler produces the
+compiler again.
+
+\begin{leanexcerpt}{ComputerProgram}
+inductive ComputerProgram
+  | load      : Fact $\to$ Prop $\to$ Type $\to$ ComputerProgram
+  | transform : Fact $\to$ Fact $\to$ Prop $\to$ Prop
+              $\to$ Type $\to$ Type 1
+              $\to$ ComputerProgram $\to$ ComputerProgram
+  | boolean   : Fact $\to$ Fact $\to$ Fact $\to$ Prop $\to$ Prop $\to$ Prop
+              $\to$ Type $\to$ Type 1 $\to$ Type i
+              $\to$ ComputerProgram $\to$ ComputerProgram
+\end{leanexcerpt}
+
+The project's \texttt{ComputerProgram} inductive in
+\texttt{ComputerProgram.lean} captures the bootstrap layering: a
+program is built from \texttt{load} (the initial Fact/Prop/Type
+triple), \texttt{transform} (an admissible rewrite step that
+extends a prior program), and \texttt{boolean} (a step that
+decides between admissible branches). The recompilation is the
+fixed point inside this inductive: a closed compilation
+\texttt{ComputerProgram} that, when fed back to itself, produces
+the same shape under the project's heartbeat calibration. The
+compiler is the invariant under its own action.
+
+The chapter closes here. Invariance under relabeling is the
+chapter's first structure: quantities that do not change under
+admissible relabelings. Group action formalizes the relabelings.
+Noether's theorem connects continuous symmetries to conserved
+quantities. The Aharonov-Bohm effect demonstrates topological
+invariants. Bootstrapping is the algorithmic fixed point: the
+compiler is invariant under its own recompilation.
+
+\begin{bridge}
+
+The chapter's question was what remains invariant under admissible
+relabeling or recompilation.
+
+The answer: the invariants of the group action. The group of
+admissible relabelings acts on the underlying record; the
+invariants of the action are the structural facts. The area
+of a triangle is invariant under rigid motions; the trace of a
+matrix is invariant under conjugation; the conserved Noether
+charges are invariant under continuous symmetries; the
+topological invariants (Aharonov-Bohm flux quantum, Chern numbers)
+are invariant under continuous deformations; the compiler's
+semantic content is invariant under recompilation.
+
+What remains is closure. The chapter has identified what does not
+change; the next chapter takes up what grows. Chapter 11 is the
+final chapter: it addresses why the record only grows and when
+the record is closed enough to support inference.
+
+\end{bridge}
+
+\begin{coda}{The Recipe Surviving Substitution}
+
+The recipe is for shortbread cookies. It comes from a family
+cookbook compiled in the 1950s by a great-grandmother who passed
+the cookbook to her daughter, who passed it to her daughter, who
+passed it to the current cook. The recipe has been used dozens of
+times across four generations.
+
+The recipe is written in imperial units: 1 cup of butter, 1/2 cup
+of sugar, 2 cups of flour, 1/4 teaspoon of salt. The instructions
+are spare: cream the butter and sugar, mix in flour and salt,
+press into a pan, bake at 325 degrees Fahrenheit for 45 minutes,
+cool before cutting.
+
+The current cook is in Paris, attending a year-long visiting
+position. The kitchen is small, the oven is in Celsius, the
+units on the packages are grams, the flour available is not quite
+the same flour the family has always used. The cook adapts.
+
+Cup to gram: 1 cup of butter is approximately 227 grams; 1/2 cup of
+sugar is approximately 100 grams; 2 cups of flour is approximately
+250 grams; 1/4 teaspoon of salt is approximately 1.5 grams.
+Fahrenheit to Celsius: 325 F is approximately 163 C. The cook
+makes the substitutions and prepares the dough.
+
+The flour available is French type 55, similar but not identical
+to American all-purpose flour. The cook uses it. The butter is
+European unsalted butter, with slightly higher fat content than
+American butter. The cook uses it. The salt is fine sea salt
+rather than table salt; the cook accounts for the difference in
+crystal size by using slightly less.
+
+The shortbread bakes for 45 minutes. The cook takes it out, cools
+it, cuts it into squares. The first square is taken to taste.
+
+The taste is recognizable. The texture is familiar. The shortbread
+is the same shortbread the cook grew up with. Slightly different
+in subtle ways --- the European butter contributes a slightly
+different mouthfeel; the French flour gives a slightly different
+crumb --- but recognizably the same recipe, the same family
+tradition.
+
+What survived the substitution? Not the specific brand of butter,
+not the American cup measure, not the Fahrenheit temperature, not
+the American flour. What survived is the structural relationship
+of the ingredients: the ratio of butter to sugar to flour, the
+short development of gluten, the slow even bake, the
+post-baking cool. The recipe is the invariant under the
+unit conversions and brand substitutions.
+
+This is the chapter's invariance in domestic form. The recipe has
+been transported across units (cup to gram), across temperatures
+(Fahrenheit to Celsius), across brands (American flour to French
+flour), and across geographies (American kitchen to Parisian
+kitchen). The invariant under all of these admissible
+substitutions is the shortbread itself: the taste, the texture,
+the result.
+
+The chapter's group action is the substitution group: rescalings
+of units, conversions of temperatures, substitutions of equivalent
+ingredients. The recipe's invariant is the shortbread. The
+shortbread is recognized as the same regardless of which specific
+admissible substitution path was taken to produce it.
+
+If the substitutions are inadmissible --- a different temperature,
+a different ingredient that does not bake the same way, a
+different ratio of components --- the recipe fails. The cookie is
+not the shortbread; the substitution has left the equivalence
+class. The chapter's discipline appears: admissible substitutions
+preserve the invariant; inadmissible ones do not.
+
+The Lean 4 bootstrapping example from the chapter is the
+algorithmic analog. The compiler is the recipe. Recompilation
+is the substitution: the compiler's source is recompiled with
+itself; the new binary is the bootstrap fixed point. The
+compiler is invariant under its own recompilation.
+
+The grandmother's shortbread is the chapter's symmetry group at
+the level of family cooking. The recipe has been passed down four
+generations; each generation has adapted it slightly to the
+available ingredients and equipment; the invariant is the
+shortbread itself. The recipe is the chapter's recipe-as-invariant:
+the structural fact preserved through admissible substitutions.
+
+When the cook returns to the United States in a year, the recipe
+will be made again, this time in the original American kitchen
+with the original American ingredients. The cookies will be the
+same cookies. The recipe will be the same recipe. The
+bootstrapping fixed point will hold.
+
+\end{coda}

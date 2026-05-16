@@ -1,0 +1,694 @@
+\chapter{Inversion}
+\label{chap:inversion}
+
+% Closed question: How can information move between histories while preserving
+% admissibility?
+
+\begin{chapteressay}
+
+The previous chapter ended with a difficult conclusion: the selection
+rule that picks one admissible continuation from many is provably
+uncomputable. The selection rule requires exact Kolmogorov
+complexity; Kolmogorov complexity requires the Busy Beaver function;
+the Busy Beaver is not computable. The chapter ended with the
+observation that the universe is doing something no Turing machine
+can simulate, while the compiler is restricted to proxies.
+
+This chapter continues the algorithmic vocabulary. The previous
+chapter's noncomputability did not stop the algorithm from doing
+useful work. Many algorithms still operate admissibly, even though
+the selection rule itself is uncomputable. This chapter examines
+one specific class of admissible algorithms: those that move
+information between histories through inversion.
+
+Inversion is the algorithmic operation of taking a forward
+computation and computing its adjoint. The forward computation
+goes from inputs to outputs; the adjoint goes from outputs back
+to inputs, exposing the sensitivity of the output to each input.
+The two computations are related by an algebraic identity: the
+adjoint of the linearization. The identity is the chain rule,
+applied to the entire algorithm.
+
+The classical example is matrix algebra. The system $Ax = b$ has
+solution $x = A^{-1} b$. Direct computation of $A^{-1}$ would be
+expensive; the standard algorithm is LU decomposition: $A = LU$
+with $L$ lower triangular and $U$ upper triangular. The forward
+substitution $Ly = b$ produces an intermediate; the backward
+substitution $Ux = y$ produces the solution. The two substitutions
+together solve the system in $O(n^3)$ for the decomposition and
+$O(n^2)$ for the two substitutions.
+
+The forward-backward pattern repeats throughout the chapter. In
+neural networks, the forward pass computes the loss; the backward
+pass (backpropagation) computes the gradient. In Gram-Schmidt,
+the forward direction projects onto previous basis vectors; the
+backward direction subtracts those projections, leaving the
+orthogonal residue. In quantum mechanical alpha decay, the forward
+direction is the wave function's evolution; the backward
+extraction is the probability of tunneling through the barrier.
+In Lean's typeclass machinery, the forward direction is
+deduction; the \texttt{WITNESSED} certificate is the backward
+verification.
+
+The second concrete example for the chapter is an expense audit.
+An employee submits a report with sixty-two line items totaling
+several thousand dollars. The accounting clerk audits backward:
+from the total, back to the line items, back to the supporting
+receipts, back to the merchants where the money was spent. Each
+line item is a transport: a transport of an expense from a
+merchant to the report. The audit is the inversion: from the
+report back to the merchants. Each line item requires four
+witnesses: the source (the merchant), the process (the credit
+card transaction), the truth (the supporting receipt), and the
+admissibility (the policy allows this category at this amount).
+Missing witnesses produce metavariables, which the audit
+sends back to the employee for clarification.
+
+The expense audit makes the chapter's structure concrete in a
+non-computational setting. The same algorithmic pattern
+(forward computation, backward inversion, structured witnessing)
+appears in linear algebra (LU), machine learning (backprop),
+classical algorithms (Gram-Schmidt), quantum mechanics (alpha
+decay), and accounting (expense audits). The pattern is
+algorithmic, not domain-specific. The chapter's claim is that
+this pattern is the algorithmic form forced by the chapter's
+question.
+
+The chapter's closed question is:
+
+\begin{center}
+\emph{How can information move between histories while preserving
+admissibility?}
+\end{center}
+
+The answer is: through inversion, with the
+\texttt{WITNESSED} structure as the formal certificate. The
+forward computation transports information; the inversion
+provides the backward verification; the four-input witness
+(source, process, truth, admissibility) certifies that the
+transport was admissible.
+
+The chapter has a particular relationship to Chapter 6. Chapter
+6's argument was that the selection rule is uncomputable.
+Chapter 7's argument is that, despite the uncomputability of the
+selection, many admissible transports are computable. The
+compiler can certify them. The proofs of admissibility are
+finite. The \texttt{WITNESSED} certificates can be produced.
+
+The book's overall argument is therefore not that all is lost. It
+is that most operations are admissible and certifiable; only the
+selection rule itself is the uncomputable boundary. The compiler
+handles the bulk of the work. The exceptional case is when the
+algorithm must select between near-tied admissible continuations,
+and that selection requires the exact $K$ that no algorithm can
+compute. For the bulk of practical inversion problems, the
+compiler is enough. The chapter's algorithmic discipline is the
+working machinery of the admissible.
+
+Subsequent chapters build on this. Chapter 8 addresses the
+calibration that makes multiple observers' records commensurable.
+Chapter 9 addresses the commutation failure when two transports
+do not produce the same result. Chapter 10 addresses the
+invariants that survive across admissible recompilations. Chapter
+11 addresses the append-only structure of the final ledger and
+the type-check that closes the book.
+
+\end{chapteressay}
+
+\section{LU Decomposition}
+\label{se:lu-decomposition}
+
+A linear system $Ax = b$ asks: given a matrix $A$ and a vector $b$,
+find the vector $x$ such that $Ax = b$. For a $1000 \times 1000$ matrix,
+the naive solution (Cramer's rule, computing determinants) is
+$O(n!)$ --- impossibly slow. The standard solution is LU
+decomposition.
+
+The matrix $A$ is factored as $A = LU$, where $L$ is lower triangular
+(zero above the diagonal) and $U$ is upper triangular (zero below the
+diagonal). The factorization is computed by Gaussian elimination,
+which takes $O(n^3)$ operations: roughly $10^9$ multiplications for a
+$1000 \times 1000$ matrix, which a modern CPU performs in a fraction
+of a second.
+
+Once the factorization is computed, the original system $Ax = b$
+becomes $L(Ux) = b$, which factors into two triangular systems. Let
+$y = Ux$. Then $Ly = b$ is solved by forward substitution (start with
+$y_1$, work down). $Ux = y$ is solved by backward substitution (start
+with $x_n$, work up). Each substitution is $O(n^2)$. The total cost
+is $O(n^3 + 2n^2)$, dominated by the initial decomposition.
+
+The two substitutions are forward and backward. Forward goes from the
+input ($b$) to the intermediate ($y$). Backward goes from the
+intermediate ($y$) to the output ($x$). The two sweeps are the
+algorithm's traversal in both directions: forward to solve, backward
+to invert.
+
+The forward sweep is the canonical forward computation. Given the
+matrix and the right-hand side, the algorithm produces the
+intermediate. The backward sweep is the canonical adjoint
+computation. Given the intermediate and the upper triangular factor,
+the algorithm produces the answer. The backward sweep inverts the
+forward sweep's action.
+
+This is the chapter's question in linear algebra form. Information
+flows forward (from $b$ to $y$ via $L$) and then backward (from $y$
+to $x$ via $U$). The two flows together solve the system. Neither
+flow alone produces the answer; both are needed. The algorithm
+preserves admissibility at each step: every operation is a single
+row reduction, every reduction is reversible, every reduction
+preserves the system's solution set.
+
+The Lean analog is the typeclass cascade in \texttt{Episode8.lean}.
+The instance cascade \texttt{STEP\_1} through
+\texttt{ACOLYTE\_PROPAGANDA} formalizes the algorithmic transport
+of structure through a stack of typeclass instances. Each step in
+the cascade is one inference rule application: forward propagation
+of structure. The reverse application (the adjoint) propagates
+constraints backward: from a desired output type, the algorithm
+infers the required input type.
+
+LU decomposition is the simplest example of forward and adjoint
+operations in the same algorithm. The forward operation is
+multiplication by the matrix: $Ax = b$. The adjoint operation is
+multiplication by the transposed matrix: $A^T y = c$. The two
+operations are related: if $A x = b$, then $\langle A x, y
+\rangle = \langle b, y \rangle$, which by the adjoint property
+equals $\langle x, A^T y \rangle$. The adjoint property is the
+algebraic structure that allows the backward sweep to invert the
+forward sweep.
+
+This is the foundation of the chapter's notion of inversion.
+Information moves through an algorithm via a sequence of admissible
+transformations. The inversion of the algorithm moves information
+backward through the same sequence. The forward and backward
+movements are related by an algebraic identity (the adjoint
+property). The identity is what guarantees that the inversion is
+admissible: applying the forward and then the backward operation
+returns to the original input.
+
+\section{Backpropagation}
+\label{se:backpropagation}
+
+A five-layer neural network is trained to classify handwritten digits.
+The input is a $28 \times 28$ image. The output is a probability
+distribution over ten digit classes. The middle three layers have
+varying widths --- say 512, 256, 128 neurons. The total number of
+weights is roughly $10^6$. The training data is the MNIST dataset:
+60,000 training images and 10,000 test images.
+
+Training proceeds by gradient descent on the cross-entropy loss. For
+each training image, the network produces a predicted distribution.
+The loss is the cross-entropy between the predicted distribution and
+the true label (a one-hot vector). The training adjusts the weights
+to decrease the loss.
+
+The gradient of the loss with respect to each weight is what tells
+the algorithm which way to move each weight. Computing this gradient
+naively, by perturbing each weight individually and observing the
+change in loss, would require $10^6$ forward passes per training step,
+which would be hopelessly slow.
+
+The trick is backpropagation. Compute one forward pass: input the
+image, propagate through each layer, output the predicted
+distribution, compute the loss. This is the forward direction. Then
+compute a backward pass: starting from the loss, propagate the
+gradient backward through the layers, applying the chain rule. The
+backward pass takes about the same time as the forward pass. The
+gradients of all $10^6$ weights are computed in one backward pass.
+
+The backward pass is the inversion. The forward pass produces the
+loss from the inputs. The backward pass produces the gradients of
+the loss with respect to each weight. The two passes together fit
+the chapter's structure: forward computes the result, backward
+computes the sensitivity of the result to changes in the input. The
+sensitivity is information about the algorithm's structure that
+propagates backward from the result to the parameters.
+
+The chain rule is the algebraic identity that makes
+backpropagation work. For a composition of functions $f \circ g$,
+the gradient is $\nabla(f \circ g)(x) = J_g(x)^T \cdot \nabla
+f(g(x))$, where $J_g$ is the Jacobian of $g$. The transposed
+Jacobian is the adjoint of the linear approximation of $g$. The
+gradient at $x$ is the gradient at $g(x)$ pulled back through
+$g$'s adjoint.
+
+This is the same adjoint structure as LU decomposition. The
+forward computation is the composition; the backward computation
+is the adjoint of the forward. The two are related by the chain
+rule. Each layer's contribution to the gradient is computed by
+applying the adjoint of that layer.
+
+The chapter's question is how information moves backward
+admissibly. In backpropagation, the gradient information flows
+backward from the loss to the parameters. The flow is admissible
+because each step is the adjoint of a forward step. The adjoint
+preserves the linear algebraic structure of the forward
+computation. The gradient at the start (the input layer) is
+related to the gradient at the end (the loss) by the
+composition of the adjoints of all the layers.
+
+The Lean analog is the typeclass cascade
+\texttt{Knowledge} $\to$ \texttt{ScientificProcess} $\to$
+\texttt{TRUTH} in \texttt{Episode9.lean}. Each transition in the
+cascade represents the transport of a fact backward from a
+conclusion to its supporting evidence. The conclusion is the
+forward output; the evidence is the backward result. The
+\texttt{Knowledge.le} comparison routes through the
+\texttt{ScientificProcess} backward, retrieving the chain of
+inferences that produced the conclusion.
+
+Backpropagation is the chapter's most spectacular example of
+inversion at scale. A neural network with $10^9$ parameters can
+be trained efficiently because the gradient of all parameters
+is computable in one backward pass per training example. The
+cost is $O(P)$ for $P$ parameters per pass, asymptotically
+optimal. Without backpropagation, the cost would be $O(P^2)$,
+which for $P = 10^9$ would be infeasible.
+
+The success of deep learning depends on backpropagation. The
+algorithm is the workhorse of modern AI. The chapter's claim
+is that backpropagation is not an optional optimization; it is
+the algorithmic form of admissible inversion. Any system that
+inverts a multi-layer computation must use the adjoint
+structure that backpropagation embodies. The structure is
+forced by the chapter's question: how does information move
+backward without inventing structure not in the forward
+computation?
+
+\section{Gram-Schmidt Orthogonalization}
+\label{se:gram-schmidt-orthogonalization}
+
+Given three linearly independent vectors in three-dimensional space ---
+say $v_1 = (1, 0, 0)$, $v_2 = (1, 1, 0)$, $v_3 = (1, 1, 1)$ --- the
+Gram-Schmidt procedure produces three orthonormal vectors that span
+the same space. The procedure is iterative.
+
+Step 1: $u_1 = v_1 / \|v_1\| = (1, 0, 0)$. The first vector is the
+first input, normalized.
+
+Step 2: Subtract the projection of $v_2$ onto $u_1$. The projection is
+$\langle v_2, u_1 \rangle u_1 = 1 \cdot (1, 0, 0) = (1, 0, 0)$. The
+remainder is $v_2 - (1, 0, 0) = (0, 1, 0)$. Normalize: $u_2 = (0, 1,
+0)$.
+
+Step 3: Subtract the projections of $v_3$ onto $u_1$ and $u_2$. The
+projection onto $u_1$ is $1 \cdot (1, 0, 0) = (1, 0, 0)$; onto $u_2$
+is $1 \cdot (0, 1, 0) = (0, 1, 0)$. The remainder is $v_3 - (1, 0, 0)
+- (0, 1, 0) = (0, 0, 1)$. Normalize: $u_3 = (0, 0, 1)$.
+
+The three output vectors $u_1, u_2, u_3$ are orthogonal (pairwise
+inner products are zero) and normalized (each has unit norm). They
+span the same space as the input vectors $v_1, v_2, v_3$. The
+procedure has produced an orthonormal basis for the input span.
+
+Each step is an inversion. The projection of $v_2$ onto $u_1$ is
+the forward direction: given $v_2$ and $u_1$, compute the
+component of $v_2$ in the $u_1$ direction. The subtraction is the
+inversion: remove that component, leaving the orthogonal residue.
+The residue is the part of $v_2$ that is admissible as a new basis
+vector.
+
+The chapter's question manifests here as: how does the next basis
+vector get oriented while preserving its admissibility as part of
+the orthonormal basis? The answer is: by inverting the projections
+onto the previous basis vectors. Each previous component is removed
+through an inversion. The residue is the new admissible direction.
+
+The procedure has a numerical issue: if the inputs are nearly
+linearly dependent (almost in the same direction), the residue
+becomes small and floating-point error becomes significant. The
+modified Gram-Schmidt procedure addresses this by subtracting one
+projection at a time (rather than all at once), which improves
+numerical stability. The chapter's algorithmic content is the
+same; the implementation differs.
+
+Gram-Schmidt is the algorithmic form of building an admissible
+basis from a sequence of inputs. The construction is incremental:
+each new vector is added after the previous ones have been
+processed. The processing is the inversion of the projections.
+The output basis is admissible at each stage: after the first
+vector, the basis spans a one-dimensional subspace; after the
+second, two dimensions; and so on.
+
+The Lean analog appears in the typeclass machinery for
+\texttt{Knowledge.le} in \texttt{Episode9.lean}. The order
+relation on knowledge states is: one knowledge state refines
+another when it contains all the conclusions of the other plus
+possibly more. The Gram-Schmidt procedure is the algorithmic
+form of building a knowledge state incrementally: each new
+fact is added after removing its component in the previously
+established facts. The remaining residue is the new admissible
+contribution.
+
+\section{Alpha-Decay Transport}
+\label{se:alpha-decay-transport}
+
+Uranium-238 has a half-life of $4.47 \times 10^9$ years. A single
+U-238 nucleus, isolated in a vacuum, has a fifty percent probability
+of decaying within this time. The decay produces an alpha particle (a
+helium-4 nucleus, two protons and two neutrons) emitted from the U-238
+nucleus, leaving behind thorium-234.
+
+The mechanism is quantum mechanical tunneling. Inside the nucleus,
+the alpha particle is bound by the strong nuclear force; outside the
+nucleus, it is repelled by the electrostatic force of the remaining
+protons. Between these two regimes is the Coulomb barrier: a
+potential energy maximum that classically the alpha particle cannot
+cross because its kinetic energy is less than the barrier height.
+
+Quantum mechanically, the alpha particle's wave function has a small
+but nonzero amplitude on the other side of the barrier. The
+probability of tunneling per unit time is exponentially small in the
+barrier's integrated height. For U-238, the tunneling rate is small
+enough to give a 4.47-billion-year half-life. For other isotopes,
+the rate varies: polonium-214 has a half-life of 164 microseconds;
+bismuth-209 has a half-life of $2 \times 10^{19}$ years.
+
+The Gamow factor is the exponential rate of tunneling. It is
+computable from the alpha particle's energy and the Coulomb
+barrier's shape:
+\[
+P_{\text{tunnel}} \propto \exp\left(-\frac{2}{\hbar}
+\int_{r_1}^{r_2} \sqrt{2m(V(r) - E)} \, dr\right),
+\]
+where $r_1$ and $r_2$ are the classical turning points, $V(r)$ is
+the potential energy, $E$ is the alpha particle's energy, $m$ is its
+mass, and $\hbar$ is Planck's constant.
+
+This is the quantum-mechanical analog of the chapter's question.
+Information (the alpha particle) moves from inside the nucleus
+(where it is admissible as a bound state) to outside (where it is
+admissible as a free particle), through a region where neither
+state is admissible classically. The transport is admissible because
+the wave function's continuity carries the alpha particle through
+the barrier.
+
+The transport is not the chapter's adjoint structure --- it is not
+a backward computation. It is a different kind of admissible
+information movement: through a region the classical algorithm
+cannot traverse. The quantum mechanics provides the algorithmic
+form: the wave function's amplitude varies continuously, including
+through the barrier. The probability of a transport event is the
+square of the amplitude at the other side. The transport rate is
+the rate at which this probability accumulates.
+
+The chapter's claim is that this is the algorithmic form of
+transport through a classically forbidden region. The forward
+computation (the wave function evolution) is admissible at every
+point, including inside the barrier. The probability of a
+transport event (the integrated amplitude at the far side) is the
+admissible record of how much information has crossed the
+barrier.
+
+Alpha-decay transport is the algorithmic version of a
+\texttt{ReligiousProcess} from \texttt{Episode9.lean}. A
+religious process is one that transports belief through a
+boundary that admissible inference cannot cross directly. The
+boundary is the gap between empirically verifiable facts and
+unverifiable beliefs; the transport is the propagation of belief
+through the boundary. The chapter's algorithmic claim is that
+this transport is structurally similar to alpha decay: both
+involve information moving through a region where direct
+admissibility is suspended.
+
+The \texttt{Gospel} type in \texttt{Episode9.lean} is the
+typeclass for the content of a \texttt{ReligiousProcess}. A
+\texttt{Gospel} is a structured statement that the
+\texttt{ReligiousProcess} transports. The structure includes the
+content (the claim being transported), the warrant (the basis
+for the transport), and the consequence (what the receiver is
+expected to do with the transported content). The typeclass
+makes the structure explicit.
+
+The Lean compiler does not, of course, simulate alpha decay. The
+typeclass is satirical: it formalizes the algorithmic structure
+of belief transport through unobservable mechanisms. The point of
+the satire is that algorithms that handle this kind of transport
+must declare their warrant explicitly. The transport is not
+admissible by default; it requires the warrant to be carried
+through.
+
+The chapter's transport themes thus span multiple registers:
+linear algebra (LU decomposition), machine learning
+(backpropagation), classical algorithms (Gram-Schmidt), quantum
+mechanics (alpha decay), and Lean typeclass machinery
+(\texttt{Knowledge.le}, \texttt{ReligiousProcess}). In every
+case, the transport is admissible only when the algorithm
+provides a structural justification: the adjoint property, the
+chain rule, the projection-removal, the wave function continuity,
+or the typeclass warrant. The justification is part of the
+transport, not separate from it.
+
+\section{WITNESSED in Lean}
+\label{se:witnessed-in-lean}
+
+\texttt{Episode10.lean} defines the \texttt{WITNESSED} typeclass that
+formalizes the transport of a truth through an admissible process to
+the current context. The class has the shape:
+
+\begin{leanexcerpt}{WITNESSED}
+class WITNESSED
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] ... [TRUTH Value Carrier]
+  where
+  baptism : ReligiousProcess Value Carrier
+  witness : Gospel
+  risen?  : Gospel $\to$ Gospel $\to$ Prop := fun a b =>
+    Gospel.le a b $\to$ Gospel.le b a
+\end{leanexcerpt}
+
+A \texttt{WITNESSED} instance carries the full project cascade
+through \texttt{TRUTH}: every prior class is a typeclass
+requirement on the bracketed list. The structure provides a
+\texttt{baptism} (a \texttt{ReligiousProcess} for the underlying
+witness), a current \texttt{witness} (a \texttt{Gospel}, the
+project's name for the chapter's transported truth), and a
+binary decision rule \texttt{risen?} that certifies the
+transported gospel survives the round-trip. The compiler enforces
+every link in the cascade.
+
+The structure is the formal version of the chapter's transport
+discipline. To transport a truth from one context to another, the
+algorithm must provide: the source (what was true elsewhere), the
+warrant (the process that carried it), the verification (that the
+source was indeed true), and the admissibility (that the
+destination is compatible). The four inputs together constitute the
+witness for $p$.
+
+Without the four inputs, $p$ cannot be witnessed in the current
+context. The compiler enforces this: a use of $p$ that requires a
+\texttt{WITNESSED} instance must provide all four. If any one is
+missing, the compiler refuses to admit the use. The discipline is
+strict: transport without witnessing is inadmissible.
+
+The chapter's algorithmic claim is that \texttt{WITNESSED} is the
+typeclass formalization of transport's admissibility. Every
+admissible transport produces a \texttt{WITNESSED} certificate.
+Every \texttt{WITNESSED} certificate requires the four inputs:
+source, process, truth, admissibility. The four inputs make the
+transport admissible; their absence makes it inadmissible.
+
+The four inputs match the chapter's algorithmic examples. The
+source is the input data (the right-hand side $b$ in LU, the
+loss in backpropagation, the initial vector in Gram-Schmidt, the
+bound state in alpha decay). The process is the forward
+computation (the matrix factorization, the network's forward
+pass, the orthogonalization, the wave function evolution). The
+truth is the verification that the source has the claimed
+property (the matrix's invertibility, the loss function's
+differentiability, the input vectors' independence, the bound
+state's energy). The admissibility is the relation between
+source and destination (the solution belonging to the same vector
+space, the gradient corresponding to the same parameter space,
+the orthogonal basis spanning the same subspace, the free
+particle representing the same nucleus).
+
+The Lean machinery captures all four. The compiler's enforcement
+ensures that every transport in user code provides all four. The
+compiler is implementing the chapter's algorithmic discipline at
+elaboration time. A user who attempts to transport a truth
+without a \texttt{WITNESSED} certificate gets a compilation
+error. A user who provides the certificate gets the transport
+admitted.
+
+The chapter's bridge to subsequent chapters: transport is now
+algorithmically certified. The next question is how multiple
+transports compose --- how distinct observers, each carrying their
+own \texttt{WITNESSED} certificates, can compare their records.
+Chapter 8 takes up the question of calibration: how the
+reference structure is built such that two observers' counts can
+be compared as one physical record.
+
+\begin{bridge}
+
+The chapter's question was how information can move between histories
+while preserving admissibility.
+
+The answer is inversion. The forward computation produces a result;
+the inversion produces the sensitivity of the result to the inputs.
+LU decomposition factors a matrix into forward (lower) and backward
+(upper) triangular parts. Backpropagation computes gradients by
+applying the chain rule backward through a neural network's layers.
+Gram-Schmidt builds an orthonormal basis by inverting projections.
+Alpha-decay transport carries information through a classically
+forbidden region via wave function continuity. The
+\texttt{WITNESSED} typeclass in Lean certifies that the transport
+is admissible by requiring source, process, truth, and
+admissibility.
+
+What remains is the calibration that makes multiple transports
+commensurable. Two observers, each carrying their own
+\texttt{WITNESSED} certificates, must share a reference structure to
+compare their records. Chapter 8 develops the ruler algorithm: the
+calibration as hidden reference scale, the metric as the data
+structure for frame-comparison.
+
+\end{bridge}
+
+\begin{coda}{Auditing an Expense Report Backward}
+
+The expense report arrives at the corporate accounting department.
+The employee submitting it has been traveling for a week. The report
+is fourteen pages, with sixty-two line items, totaling four thousand
+two hundred and eighteen dollars and sixteen cents. The cover page
+lists the trip dates, the destinations, the project code, the
+manager's approval signature, and the employee's certification that
+the expenses are accurate.
+
+The accounting clerk who receives the report has been at the
+department for six years. She processes about two hundred expense
+reports per week. Her job is to verify each report against the
+company's expense policy and against the supporting receipts. If
+everything checks out, she approves the report and routes it to
+payroll for reimbursement. If something is wrong, she sends the
+report back to the employee with notes about the discrepancies.
+
+Today's report has a flag. The system has noted that the total
+amount is in the ninety-fifth percentile for this employee's
+historical pattern. The flag is a routine check; it triggers a
+closer audit but does not imply wrongdoing.
+
+The audit proceeds backward.
+
+She starts with the total amount on the cover page: four thousand
+two hundred and eighteen dollars. The total is a sum. She verifies
+the sum by re-adding the line items. The line items total four
+thousand two hundred and eighteen dollars and sixteen cents,
+matching the cover page. The arithmetic is correct.
+
+She moves backward to the line items. There are sixty-two of them,
+each with a date, a description, a category code, and an amount.
+She works through them in reverse order, starting with the most
+recent (the employee's flight home, three days ago). The flight is
+seven hundred forty dollars, charged to the project code, with a
+boarding pass attached. The boarding pass shows the employee's
+name, the flight number, the date, and the destination. The
+boarding pass matches the report. She approves the line item.
+
+She continues backward. The hotel for the four nights before the
+return flight is one thousand two hundred dollars: three hundred
+per night, with the hotel's receipt attached. The receipt shows
+the hotel name, the dates, the room rate, and the taxes. The
+receipt matches. The dates match the trip's authorized period.
+She approves the line item.
+
+She reaches a line item for an expensive dinner: two hundred
+sixty-five dollars at a restaurant. The receipt is attached. The
+date is the second day of the trip. The category code is
+``client entertainment.'' She checks the company's policy:
+client entertainment is allowed up to fifty dollars per person
+per meal. The receipt does not specify the number of attendees.
+She makes a note: the receipt requires clarification.
+
+The audit's backward direction is the chapter's adjoint
+operation. The forward direction is the employee's spending:
+each purchase produces a receipt, the receipts accumulate into
+the report, the report is submitted. The backward direction is
+the clerk's verification: each line item is examined, the
+supporting receipt is checked, the policy is verified, the
+arithmetic is confirmed. The audit is the inversion of the
+spending: from the total back to the individual transactions.
+
+The chapter's \texttt{WITNESSED} structure appears at each step.
+Each line item is a transport: a transport of an expense from
+the merchant (the source) through the credit card transaction
+(the process) to the report (the destination). The supporting
+receipt is the \texttt{TRUTH} certificate; the matching of the
+receipt to the line item is the admissibility check. The clerk's
+approval is the witness: the certification that the transport
+was admissible.
+
+If a line item lacks a supporting receipt, the witness cannot be
+produced. The clerk cannot certify the line item as transported
+admissibly. The line item is denied; the employee must produce
+the receipt or accept that the expense is not reimbursable. The
+denial is the missing witness, recorded in the audit trail.
+
+The dinner receipt that requires clarification is a metavariable:
+the line item is constrained but not yet resolved. The clerk
+notes the metavariable and continues the audit. At the end, she
+will compile the list of metavariables and send it back to the
+employee. The employee will provide the clarification, the
+metavariables will resolve, and the audit can complete.
+
+The clerk reaches the early line items, the ones from the start
+of the trip. A taxi from the airport to the hotel on day one.
+Twenty-eight dollars. The receipt shows the date, the
+destination, the fare. The receipt matches. She approves it.
+
+She has worked through all sixty-two line items. Five have
+clarification requests. The remaining fifty-seven are approved.
+The total approved is three thousand nine hundred fifty-three
+dollars. The remaining two hundred sixty-five dollars (the
+dinner) is held pending clarification.
+
+She writes a memo to the employee. The memo lists the five
+clarification requests, each with the line item number, the date,
+the amount, and the specific question (number of attendees for
+client entertainment; conversion rate for foreign currency
+charges; receipt for a taxi without a receipt; project code for
+an item that lacked one; date verification for an item with an
+ambiguous date stamp).
+
+The memo is the algorithmic inversion's record: it propagates
+the audit's findings backward to the source (the employee) for
+resolution. The employee will receive the memo, gather the
+clarifying information, and re-submit. The clerk will then
+complete the audit.
+
+This is the chapter's structure in administrative form. Each
+expense is a transport: from a merchant, through a payment, to a
+report. The audit is the inversion: from the report, back through
+the payments, to the merchants. The supporting receipts are the
+\texttt{TRUTH} certificates that warrant each transport. The
+matches between receipts and line items are the
+\texttt{Knowledge.le} comparisons that establish admissibility.
+The clerk's approvals are the \texttt{WITNESSED} certificates.
+
+At the end of the day, the clerk closes the audit. The report is
+partially approved (the fifty-seven items totaling three thousand
+nine hundred fifty-three dollars are routed to payroll). The
+partial approval is the admissible state: the report is not
+finalized, but the approved portion is releasable. The five
+pending items remain in the system, awaiting clarification.
+
+The clerk's audit trail records every action: which items were
+approved, which were flagged, which receipts were checked, which
+questions were asked. The trail is the chapter's algorithmic
+record of the inversion. Every transport (line item) has been
+either approved (with the four witnesses) or flagged (with the
+metavariable identifying what is missing). The audit is
+complete in the algorithmic sense: every line item has a
+status.
+
+Tomorrow the clerk will process more expense reports. The
+process will repeat. Each report is a forward computation; each
+audit is the backward inversion. The system handles thousands of
+such pairings per month. The algorithmic discipline is what
+makes the system trustworthy: every dollar that leaves the
+company has a paper trail, and every paper trail is auditable
+in the backward direction.
+
+\end{coda}

@@ -1,0 +1,646 @@
+\chapter{The Ruler Algorithm}
+\label{chap:ruler-algorithm}
+
+% Closed question: What reference structure lets distinct observers compare
+% their counts as one physical record?
+
+\begin{chapteressay}
+
+Every measurement assumes a ruler. A measurement of length assumes a
+calibrated meter stick. A measurement of mass assumes a calibrated
+balance. A measurement of time assumes a calibrated clock. The ruler
+is the reference; the measurement is the comparison of the measured
+object against the reference.
+
+If the ruler is wrong, the measurement is wrong --- but in a particular
+way. Two observers using the same (wrong) ruler can still agree with
+each other; they share a calibration error but their comparisons among
+themselves remain internally consistent. Two observers using different
+(correct) rulers may disagree if the rulers have not been mutually
+calibrated. The agreement among observers depends on the shared
+calibration, not on the absolute correctness of the calibration.
+
+This is the chapter's question. Two observers, perhaps in different
+locations, perhaps using different physical instruments, perhaps
+working at different times, want to compare their measurements. What
+structure must they share to make the comparison admissible?
+
+The answer is a calibrated reference. The reference is the ruler. Both
+observers must measure against the same ruler. If they cannot agree on
+the same physical ruler (perhaps because they are in different
+locations and cannot ship the ruler back and forth), they must agree on
+a calibration chain: a sequence of comparisons that links each
+observer's local ruler to a common reference.
+
+The chapter develops this through five algorithmic forms. The first is
+tail-latency measurement: a web service measures its 99th percentile
+latency and uses it as the ruler for SLA compliance. The percentile is
+the calibrated reference; new request latencies are compared against
+it. The second is Dijkstra's algorithm: the shortest path in a network
+is computed by comparing edge weights against a calibrated distance
+function; the function is the ruler. The third is the Lean
+\texttt{EKG} typeclass: the calibration is a private \texttt{Reading}
+structure exposed only through propositional comparisons. The fourth
+is Gram-Schmidt orthogonalization: building a calibrated orthonormal
+basis one vector at a time. The fifth is the coordinate transform:
+converting measurements between two calibrations of the same physical
+quantity.
+
+The second concrete example is the factory quality-control room. A
+metrology technician uses a set of precision gauge blocks --- pieces of
+hardened steel ground to specific thicknesses --- as the factory's
+reference. Every measurement made in the QC room compares the part
+being measured against the gauge blocks. The gauge blocks themselves
+are calibrated against a secondary reference, which is calibrated
+against the national standard, which is calibrated against the
+international Bureau of Weights and Measures. The chain anchors at
+the speed of light in vacuum and a specific time interval.
+
+The QC room is the practical embodiment of the chapter's structure.
+The calibration is hidden inside the instruments (the micrometer's
+gear train, the gauge blocks' precise dimensions, the granite
+surface table's flatness). The interface is the propositional
+comparison (in tolerance / out of tolerance). The calibration chain
+reaches up to a universal reference.
+
+The same structure appears in many domains. In software, the
+calibration is the version control system that ensures two
+developers see the same source code. In finance, the calibration is
+the currency exchange rate that converts measurements in dollars to
+measurements in euros. In medicine, the calibration is the reference
+range that determines whether a blood test is normal or abnormal.
+In each case, the algorithm depends on the shared reference;
+measurements are admissible only through the reference.
+
+The chapter's closed question is:
+
+\begin{center}
+\emph{What reference structure lets distinct observers compare their
+counts as one physical record?}
+\end{center}
+
+The answer the chapter develops is the ruler algorithm with a
+hidden calibration. The calibration is a reference scale that is
+not directly exposed to observers; observers interact with it only
+through propositional comparisons. The hidden-ness is intentional:
+direct access to the scale would tempt observers to make non-
+comparison-based judgments, which the algorithm cannot certify.
+The propositional interface forces all comparisons through the
+shared, calibrated reference.
+
+The Lean \texttt{EKG} type is the chapter's clean formal
+representation. The \texttt{Reading} structure is private. The
+\texttt{boolean} comparison is the public interface. The
+\texttt{LOGICAL} typeclass requires the calibration; the
+\texttt{ComputerProgram.le} comparison routes through it. The
+compiler enforces the protocol: programs that bypass the
+calibration cannot be admitted.
+
+The chapter's claim is that this is the algorithmic form forced by
+the chapter's question. Any system that compares distinct
+observers' measurements must have a shared, calibrated reference.
+The reference is hidden; the comparisons are propositional. The
+discipline is what makes the comparisons admissible.
+
+Subsequent chapters build on this. Chapter 9 addresses what
+happens when two transports through the calibrated frame do not
+commute: the curvature, the commutation failure, the algorithmic
+record of paths that disagree. Chapter 10 addresses what survives
+admissible recompilation: the invariants of the algorithmic
+description. Chapter 11 closes with the append-only nature of the
+final ledger and the type-check that ends the book.
+
+\end{chapteressay}
+
+\section{Tail-Latency Measurement}
+\label{se:tail-latency-measurement}
+
+A web service processes ten thousand requests per second. Each request
+is timed: the server records, in microseconds, how long the request
+took to handle. At the end of each minute, the server has six hundred
+thousand latency measurements. The question is: what is the latency
+of this service?
+
+The naive answer is the mean: average all six hundred thousand
+measurements and report the result. But the mean hides the worst
+cases. If 99 percent of requests are fast (under ten milliseconds)
+and 1 percent are very slow (several seconds), the mean might be a
+few hundred milliseconds, which understates how bad the bad cases
+are. The mean is misleading.
+
+The standard answer is percentile-based: sort all measurements,
+report several key percentiles. The 50th percentile (median) is the
+middle latency. The 99th percentile is the latency below which 99
+percent of requests fall. The 99.9th percentile is the latency
+below which 99.9 percent fall. The 99.99th percentile is the latency
+of the worst out of ten thousand.
+
+For SLA (service-level agreement) purposes, the 99th percentile is
+often the contractual reference. The agreement says: the service
+will respond in under 500 milliseconds for 99 percent of requests.
+The measurement instrument is the percentile-based latency analysis;
+the reference is the SLA threshold. Compliance is a comparison
+against the reference.
+
+This is the chapter's question in operational form. The 99th
+percentile is the ruler: the calibrated reference against which
+individual requests are judged. A request whose latency is below
+the ruler value is compliant. A request whose latency is above is
+non-compliant. The ruler is set by the SLA, not by the request's
+own characteristics. The ruler is the system-wide calibration.
+
+Computing the percentile requires sorting the latencies, which is
+$O(n \log n)$ for $n$ measurements. For six hundred thousand
+measurements, this is about $10^7$ operations: a small fraction of
+a second on a modern CPU. The sorting is the algorithm; the
+percentile is the algorithm's output. The output is the ruler value.
+
+The ruler can be applied to new measurements as they arrive. Each
+new request is timed; the timing is compared to the ruler; the
+request is either compliant or not. The comparison is
+$O(1)$ per request; the percentile is recomputed periodically (every
+minute, every hour, every day, depending on the system's
+requirements).
+
+The Lean analog is the comparison operation routed through the
+\texttt{EKG} typeclass. Each program's elaboration cost is recorded
+as a heartbeat count. The \texttt{EKG} comparison asks: is this
+program's cost within tolerance of the reference cost? The
+reference cost is the calibration --- the ruler. The comparison is
+the application of the ruler to the program.
+
+The \texttt{UniverseTensor} type in \texttt{Episode10.lean} extends
+the structure to multi-dimensional reference. A
+\texttt{UniverseTensor} represents the calibrated reference for an
+entire system: not just one ruler, but a tensor of rulers, one for
+each dimension being measured. The system's calibration is the
+tensor; comparisons in each dimension route through the corresponding
+ruler.
+
+The chapter's claim is that the ruler algorithm is the algorithmic
+form forced by the chapter's question. To compare distinct
+observers' counts as one physical record, the system must have a
+shared reference. The reference is the ruler; the comparison is the
+ruler's application. The ruler is calibrated; the application is
+deterministic. Different observers using the same ruler produce
+comparable measurements. Different rulers (different SLA percentiles,
+different calibration standards) produce incomparable measurements
+that the system cannot unify without a recalibration step.
+
+\section{Dijkstra as Ruler Algorithm}
+\label{se:dijkstra-as-ruler-algorithm}
+
+Dijkstra's algorithm finds the shortest path from a source node to all
+other nodes in a weighted graph with non-negative edge weights. The
+algorithm maintains a priority queue of nodes ordered by their current
+known minimum distance from the source. At each step, it extracts the
+minimum-distance node from the queue, marks it as visited, and updates
+the distances of its unvisited neighbors based on the new
+shortest paths through the visited node.
+
+For a network of one thousand servers with five thousand
+connections, Dijkstra finds the shortest path from any source in
+$O((V + E) \log V) \approx 8 \times 10^4$ operations: a small
+fraction of a second.
+
+The algorithm's correctness depends on the ruler. The ruler is the
+distance function: it assigns to each edge a non-negative weight,
+and the path distance is the sum of edge weights along the path.
+The algorithm always extracts the smallest-distance node next.
+This is admissible because of the ruler's properties: distance is
+non-negative, additive, and gives a total order on partial paths.
+
+Without the ruler, the algorithm cannot make a deterministic
+choice about which node to extract. With it, the choice is
+forced: the smallest-distance node is unambiguous. The ruler is
+the algorithm's calibration. Different rulers (different edge
+weight functions) produce different shortest paths. The same
+graph, with the same algorithm, can produce different answers if
+the ruler is different.
+
+This is the chapter's structure in the network domain. The
+calibration is the ruler (the edge weight function). The
+comparison is the algorithm's extract-min operation. The
+admissible movement is along the shortest path. Different
+calibrations produce different admissible movements.
+
+A practical example: routing internet packets. The router knows
+the network topology and the link delays. Dijkstra computes the
+shortest path (in milliseconds of delay) from the router to each
+destination. The shortest path is the route. The calibration
+(the delay function) is what makes the route admissible.
+
+Changing the calibration changes the routing. If link delays
+spike on a particular path, the calibration changes, and Dijkstra
+re-runs with the new weights. The new shortest path may avoid the
+congested link entirely. The recalibration produces new admissible
+routes.
+
+In Lean, Dijkstra's algorithm appears implicitly in the
+\texttt{Truth.le} relation in \texttt{Episode10.lean}. The
+relation defines a partial order on truths; the shortest-path
+computation in this order is the chain of inferences from
+hypothesis to conclusion. Each step of the chain has a cost (the
+heartbeat count of the inference rule); the shortest chain is
+the minimum-cost proof.
+
+The compiler's tactic mechanism, when it searches for a proof,
+behaves like Dijkstra: it explores the partial order of truths,
+following the lowest-cost edges first, until it reaches the
+target. The cost is the proof effort; the calibration is the
+\texttt{EKG} reference; the algorithm is the
+\texttt{Truth.le}-routed search.
+
+\section{EKG as Calibration Reference}
+\label{se:ekg-as-calibration-reference}
+
+The Lean calibration module is in
+\texttt{device/Measurement/Calibration/LeanCalibration.lean}. It
+defines the \texttt{EKG} type, which represents a calibration's
+public interface, and the private \texttt{Reading} structure, which
+holds the hidden reference scale.
+
+The \texttt{Reading} structure has a single field:
+
+\begin{leanexcerpt}{Reading}
+private structure Reading where
+  heartbeats : Nat
+\end{leanexcerpt}
+
+The \texttt{Reading} is private. User code cannot directly access
+the \texttt{heartbeats} field. The field is the hidden
+implementation: the actual count of elaboration heartbeats that
+the compiler has performed. The count is a \texttt{Nat}, but the
+\texttt{Nat} does not leak into user-facing code.
+
+The \texttt{EKG} structure exposes only \texttt{Prop}-valued
+operations:
+
+\begin{leanexcerpt}{EKG}
+structure EKG where
+  private reference : Reading
+  embigger? : Prop $\to$ Prop $\to$ Prop
+\end{leanexcerpt}
+
+The \texttt{reference} field is itself private: it holds an
+instance of the hidden \texttt{Reading} at the calibration's
+baseline. The \texttt{embigger?} method takes two propositions
+and returns a proposition asserting that the first dominates the
+second under the calibration's bookkeeping. Together they are
+sufficient for the chapter's comparison: an \texttt{EKG} can
+answer ``is this program at most as costly as that program?''
+without exposing either the underlying heartbeat counts or the
+baseline.
+
+This is the chapter's central design pattern. The calibration
+exists as a hidden reference scale (the \texttt{Reading}, plus
+the \texttt{reference} held inside the \texttt{EKG}). The public
+interface is propositional comparison (the \texttt{embigger?}
+relation). User code interacts with the calibration through the
+propositional interface, never with the raw scale. The compiler
+enforces the privacy: the \texttt{private} keyword prevents user
+code from reading either the heartbeat count or the baseline.
+
+This is the chapter's algorithmic formalization of the metrology
+principle that calibration is a reference standard, not a
+measurement. The standard exists; comparisons against the standard
+are admissible measurements; the standard itself is not directly
+exposed. The standard is hidden because exposing it would tempt
+users to make non-comparison-based decisions, which the algorithm
+cannot certify.
+
+The \texttt{LOGICAL} typeclass carries the \texttt{EKG}:
+
+\begin{leanexcerpt}{LOGICAL}
+class LOGICAL
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] ... [UNIVERSAL Value Carrier]
+  where
+  feelings : HeartbeatProcess Value Carrier
+  ekg      : Calibration.EKG
+  logical? : YarnTheory $\to$ YarnTheory $\to$ Prop := fun a b =>
+    YarnTheory.le a b
+\end{leanexcerpt}
+
+A \texttt{LOGICAL} instance is a program that carries its own
+calibration. The instance is required for any comparison operation
+on \texttt{ComputerProgram} values. Without a \texttt{LOGICAL}
+instance, the compiler refuses to admit the comparison: the program
+has no calibrated reference, so the comparison is inadmissible.
+
+The chapter's algorithmic claim is that \texttt{EKG} and
+\texttt{LOGICAL} together formalize the calibration protocol.
+\texttt{EKG} is the reference scale; \texttt{LOGICAL} is the
+program's certificate that it carries the scale; comparisons are
+routed through the scale via the \texttt{boolean} interface. The
+discipline is enforced at compile time.
+
+Without the discipline, programs could compare each other using
+ad-hoc rulers --- one program's CPU time against another's memory
+usage, with no shared reference. The comparisons would be
+incommensurable. The chapter's algorithmic answer is to require
+the shared reference (the \texttt{EKG}) and to hide its
+implementation (the \texttt{Reading}). The public interface
+forces all comparisons through the shared, calibrated reference.
+
+\section{Gram-Schmidt as Sequential Ruler}
+\label{se:gram-schmidt-as-sequential-ruler}
+
+Gram-Schmidt appeared in Chapter 7 as an inversion algorithm. In this
+chapter it serves a different role: a sequential calibration of an
+$n$-dimensional vector space.
+
+The procedure builds an orthonormal basis one vector at a time. The
+first basis vector defines the first axis; the second defines the
+second axis (orthogonal to the first); the third defines the third
+axis (orthogonal to the first two). Each basis vector is a calibration
+of one dimension. The full set of basis vectors is the calibration of
+the entire space.
+
+Before adding a new basis vector, the algorithm verifies its
+calibration: the new vector must be orthogonal to all the previous
+basis vectors (its inner products with them are zero). The
+orthogonality is the admissibility condition. The verification is the
+calibration check.
+
+If the inner product is nonzero, the new vector is not properly
+calibrated: its component in the previous basis vectors is removed
+by subtraction, and only the orthogonal remainder is admitted as the
+new basis vector. The subtraction is the recalibration.
+
+This is the chapter's structure in pure linear algebra. The
+calibration is the orthonormal basis. The admissibility check is the
+inner product. The recalibration is the subtraction of the
+non-orthogonal component. The output is a calibrated basis that
+defines admissible measurements in each dimension.
+
+Gram-Schmidt is the calibration-construction algorithm. It does not
+measure anything in the input vectors; it constructs the reference
+frame within which measurements will be made. The inputs are the
+raw data (some independent vectors); the output is the calibrated
+basis. Subsequent measurements in the calibrated basis are
+admissible because the basis is orthonormal.
+
+The connection to the chapter's question is direct. Two observers
+using different bases (calibrations) cannot directly compare their
+measurements: their numbers are in different coordinate systems. To
+compare, the two bases must be related by a coordinate transform
+(the next section). Without the transform, the measurements are
+incommensurable.
+
+Gram-Schmidt builds a canonical basis from a starting set of
+vectors. The canonical basis is the unique orthonormal basis whose
+$k$-th vector lies in the span of the first $k$ input vectors and
+has positive inner product with the $k$-th input vector. The
+canonical-ness is the calibration's universality: any starting set
+that spans the same subspace produces the same Gram-Schmidt
+output.
+
+In Lean, the analog is the typeclass cascade
+\texttt{Truth} $\to$ \texttt{Variation} $\to$ \texttt{LOCAL}. A
+\texttt{Truth} is a propositional statement; \texttt{Variation}
+records its first-order sensitivity (its derivative in the
+informational sense); \texttt{LOCAL} certifies that the
+sensitivity is admissible in the local frame. The cascade builds
+the calibration: each step is one Gram-Schmidt step in the
+truth-space.
+
+\section{Coordinate Transform as Recalibration}
+\label{se:coordinate-transform-as-recalibration}
+
+A thermometer reads 68 degrees. The question is: 68 degrees on
+which scale? Fahrenheit reads 68 F at room temperature. Celsius
+reads 20 C at the same temperature. Kelvin reads 293 K. The same
+physical temperature corresponds to three different numbers in three
+different calibrations. To compare a reading from one calibration
+to a reading from another, the algorithm must apply a coordinate
+transform.
+
+The transform from Fahrenheit to Celsius is:
+\[
+T_C = \frac{5}{9}(T_F - 32).
+\]
+The transform from Celsius to Kelvin is $T_K = T_C + 273.15$. The
+two transforms compose: $T_K = \frac{5}{9}(T_F - 32) + 273.15$.
+
+The transform is the recalibration. It converts a number in one
+calibration to a number in another, preserving the underlying
+physical quantity. The same temperature, expressed in any of the
+three scales, gives the same physical result (the same molecular
+kinetic energy, the same equilibrium with a reference).
+
+The chapter's question is answered here in the simplest possible
+form. Two observers, one with a Fahrenheit thermometer and one
+with a Celsius thermometer, can compare their measurements by
+applying the coordinate transform. The transform is the algebraic
+relation between their calibrations. The transform is a single
+linear function with a multiplier ($5/9$) and an offset ($-32$).
+
+The transform must be carried with the data. If a measurement is
+reported as ``68 degrees,'' the report is incomplete without the
+calibration. ``68 F'' and ``68 C'' are different temperatures by
+about 20 degrees C. The unit (the calibration) is part of the
+measurement, not external to it.
+
+In the Lean codebase, the calibration is preserved through the
+\texttt{EKG} typeclass. Programs that use different
+\texttt{EKG} instances are not directly comparable; the comparison
+must route through a coordinate transform between the two
+\texttt{EKG}s. The transform is the algorithmic recalibration.
+
+The general principle: a measurement is a triple (number, unit,
+operational context). Two measurements can be compared only after
+they are transformed to the same calibration. The transform is
+admissible only if its inputs are well-calibrated and its output is
+correctly stated.
+
+This is also the principle behind unit conversion libraries.
+Software libraries like \texttt{units} in Python or
+\texttt{Mathlib.Tactic.NormNum} in Lean enforce dimensional
+consistency: an addition of meters and seconds is rejected
+because the units are different. A multiplication of meters by
+seconds produces meter-seconds, a new unit. The library is the
+algorithmic encoder of the recalibration discipline.
+
+The coordinate transform also appears in more sophisticated
+contexts. The Lorentz transform in special relativity converts
+between two inertial reference frames. The transform preserves
+the spacetime interval $c^2 t^2 - x^2$, which is the same physical
+quantity in both frames. The transform is not linear in the
+ordinary sense; it is a hyperbolic rotation, but the structure is
+the same: a coordinate transform that converts between two
+calibrations of the same underlying physics.
+
+The chapter's algorithmic message: every transport that crosses a
+calibration boundary requires a coordinate transform. The transform
+is part of the algorithm. The result is the same physical quantity
+expressed in a new calibration. The new calibration's
+\texttt{EKG} certifies the result; the transform's correctness
+certifies the conversion.
+
+\begin{bridge}
+
+The chapter's question was what reference structure lets distinct
+observers compare their counts as one physical record.
+
+The answer is the ruler algorithm. The reference is a calibration:
+a hidden scale (the \texttt{Reading} structure in Lean) accessed
+only through propositional comparisons (the \texttt{boolean}
+operation of \texttt{EKG}). Tail-latency percentiles, Dijkstra's
+shortest-path costs, Gram-Schmidt's orthonormal bases, and
+coordinate transforms all express the same algorithmic structure:
+calibrated rulers that mediate admissible comparisons. The
+\texttt{LOGICAL} typeclass certifies that a program carries its
+calibration; the \texttt{ComputerProgram.le} comparison routes
+through the calibration.
+
+What remains is the failure of transport to commute. Two
+calibrated observers carrying the same record through different
+paths may produce different results. The difference is the
+curvature of the algorithmic transport. Chapter 9 takes up
+commutation failure: the algorithmic record of paths that do
+not commute.
+
+\end{bridge}
+
+\begin{coda}{The Factory Quality-Control Room}
+
+The quality-control room sits at the end of the production line.
+A metrology technician works beneath an array of measuring
+instruments, with the factory's reference standards locked in a
+cabinet beside her.
+
+The gauge blocks are the heart of the room. Each block is a
+hardened-steel piece ground to a specific thickness with a tolerance
+of fifty nanometers. By stacking blocks (a technique called
+wringing), the technician can produce any thickness in the
+factory's working range to within a few hundred nanometers.
+
+The blocks are the factory's calibrated reference. They define what
+``1.000 mm'' means inside this building. Every measurement made in
+the QC room is compared against the blocks. A part that should be
+5.000 mm thick is wrung against the 5.000 mm stack; the difference
+is the part's deviation from the standard. The deviation is the
+measurement.
+
+This morning's task is the inspection of a batch of three hundred
+machined parts. The parts are specified to be 12.450 mm long, with a
+tolerance of $\pm 0.010$ mm. The QC technician's job is to verify each
+part against the specification.
+
+She begins by checking the calibration of her measuring instruments.
+The micrometer is checked against the 5.000 mm gauge block; the reading
+is 5.0001 mm, within calibration tolerance. The ring gauge is checked
+against the matching plug gauge; the fit is correct. The master square
+is checked for perpendicularity against the granite surface table; the
+deviation is below the table's certified flatness. All four instruments
+pass calibration.
+
+She then measures each of the three hundred parts.
+
+For each part, she places it on the surface table, holds it square, and
+brings the micrometer's spindle down to contact the top surface. The
+micrometer's reading is a number with five significant figures: 12.451,
+12.450, 12.452, 12.453, 12.449. She records each reading on a
+clipboard.
+
+The readings are routed through the calibration. The micrometer's
+internal mechanism (the spindle, the thimble, the ratchet) translates
+the physical contact into a numeric reading. The number is in
+millimeters because the micrometer's calibration is in millimeters. The
+calibration is hidden: the technician does not see the gear ratios or
+the thread pitches; she sees only the displayed number.
+
+This is the chapter's \texttt{EKG} structure in metrology form. The
+calibration is hidden inside the instrument. The interface is the
+displayed reading. The technician applies the reading; the
+\texttt{boolean} comparison is the in-tolerance / out-of-tolerance
+judgment.
+
+For each part, the reading is compared to the specification: 12.450
+$\pm$ 0.010 mm. A part reading between 12.440 and 12.460 is in
+tolerance; a part reading outside this range is out. The comparison
+is a single Boolean.
+
+Of the three hundred parts, two hundred ninety-six are in tolerance.
+Four are out. Each of the four out-of-tolerance parts is set aside in
+a reject bin. The QC technician notes the readings: three parts read
+12.439 (just below tolerance, likely a tool-wear issue) and one part
+reads 12.461 (just above tolerance, likely a different cause).
+
+The QC report compiles the readings: 296 in tolerance, 4 out, a
+specific distribution of within-tolerance readings. The report is
+submitted to the production supervisor. The four rejects are returned
+to the production floor for analysis: which machine produced them,
+when, what was happening at that time.
+
+Toward mid-morning, a new batch arrives from a different supplier.
+The supplier's parts are also specified to be 12.450 mm long, but the
+supplier uses inch-based calibration internally and converts to
+millimeters for the customer. The technician measures the supplier's
+parts on the same micrometer and gets readings that cluster around
+12.453 mm. All in tolerance, but skewed slightly high.
+
+The skew is the coordinate transform's residue. The supplier's
+calibration converts 0.4901 inches to 12.4485 mm via the conversion
+factor 25.4 mm/inch. The conversion is exact in principle but
+introduces a small bias in practice because the supplier's micrometers
+have been calibrated to a slightly different inch standard (the
+international inch is 25.4 mm, but historical inch standards differ
+by a few parts per million). The bias is small, well within the
+$\pm 0.010$ mm tolerance, but it is visible as a systematic offset.
+
+The QC technician notes the offset in her log. The supplier's parts
+are accepted, but the systematic offset suggests that the supplier's
+calibration chain has a slightly different reference. If the offset
+grows, or if the tolerance tightens, the supplier will need to
+recalibrate against the factory's reference standards directly. For
+now, the offset is within tolerance.
+
+This is the chapter's recalibration discipline in operational form.
+Two suppliers use slightly different calibrations of the same physical
+quantity (length in millimeters). The coordinate transform between
+their calibrations is the conversion factor. The factor is known;
+the small bias is the residue of the transform's imperfection. The
+QC system tracks the residue and ensures that it stays within
+admissible bounds.
+
+In the afternoon, the technician performs a routine recalibration of
+the master gauge blocks themselves. She compares them against the
+factory's secondary reference: a set of gauge blocks certified by the
+national metrology institute. The comparison uses a more precise
+instrument, a laser interferometer, which can detect differences down
+to a few nanometers. The factory's master blocks are found to agree
+with the secondary reference to within 30 nanometers. The agreement
+is recorded; the master blocks are certified for another year.
+
+The secondary reference, in turn, is certified by the national
+metrology institute, which is certified by the international Bureau
+of Weights and Measures. The calibration chain reaches up four
+levels: working instrument $\to$ master gauge blocks $\to$
+secondary reference $\to$ national standard $\to$ international
+standard. At the top, the international standard for the meter is
+defined by the speed of light in vacuum and a specific time
+interval. The chain anchors at a physical constant.
+
+The chain is the chapter's algorithmic universalization. Every
+measurement in the factory is comparable to every measurement in
+any other factory that participates in the same chain, because every
+measurement traces back to the same international standard. The
+universal reference is what makes global manufacturing possible. The
+chapter's algorithmic claim is that this universality is precisely
+the \texttt{EKG} pattern at scale: a hidden reference (the
+international meter), exposed only through calibrated comparisons
+(the chain of gauge blocks).
+
+The technician closes the QC room at five o'clock. The day's
+measurements are filed. The reject bins are emptied to engineering
+for analysis. The calibration log is updated. Tomorrow she will
+return to the same instruments, the same gauge blocks, the same
+calibration chain. The factory's quality discipline is the
+\texttt{LOGICAL} typeclass enforced through metrology: every
+measurement carries the calibration; every calibration traces back
+through the chain; the chain reaches the universal reference.
+
+\end{coda}

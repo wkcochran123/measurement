@@ -1,0 +1,839 @@
+\chapter{Analysis from Ordering}
+\label{chap:analysis-from-ordering}
+
+% Closed question: How does a finite count of distinctions become an admissible
+% notion of distance?
+
+\begin{chapteressay}
+
+The previous chapter introduced compatible records combining via
+products: the algebra of records preserves source identity through
+the operations. The chapter did not, however, introduce a notion of
+distance between records. Two records of the same type might be
+``close'' in some intuitive sense or ``far'' --- but the chapter's
+algebra alone did not specify which.
+
+This chapter takes up the question. It introduces distance as a
+derived concept: not a primitive geometric notion, but a quantity
+derived from the partial order on records. The chapter's claim is
+that distance is forced by the order, not assumed separately. The
+$p$-adic distance on integers is the canonical example: a metric
+constructed from the divisibility relation alone, without any
+reference to the integer line's geometry.
+
+The chapter develops distance through five structures. The first is
+distance from order: any partial order with a notion of refinement
+gives rise to a metric. The $p$-adic distance is the canonical
+example; Hamming distance and edit distance are others. Each metric
+is a count of admissible distinctions separating two elements.
+
+The second structure is the cubic spline. Given finite data, the
+spline is the unique minimum-curvature interpolant. The Minimum
+Curvature Property (Theorem 1) is the chapter's structural
+result: among all admissible interpolants, the spline has the least
+integrated squared curvature. This is Medium-section material: the
+proof requires careful integration by parts and the natural
+boundary conditions.
+
+The third structure is the Galerkin projection. Given a continuous
+target function and a finite-dimensional basis, the Galerkin
+projection is the best approximation in the energy norm. The Best
+Approximation Theorem is the chapter's second structural result;
+the convergence theorem (fourth-order convergence for cubic
+splines on $C^4$ targets) is the load-bearing technical content.
+This is also Medium-section material.
+
+The fourth structure is spline sufficiency. For $C^4$ targets,
+cubic splines are sufficient for any practical resolution; below
+that smoothness class, more specialized bases are needed. The
+chapter's discipline is to choose the basis appropriate to the
+target's smoothness.
+
+The fifth structure is the Cauchy completion. Finite-dimensional
+approximations have limits in the infinite-dimensional Sobolev
+spaces. The completion guarantees the limit exists and is
+admissible.
+
+The chapter's ground example is the ratio of two counts, applied
+to data points and their interpolation. Five data points (a small
+counted record) are connected by a spline (a continuous
+interpolant). The spline's shape is forced by the data and the
+smoothness condition. The Galerkin projection generalizes to
+target functions whose values are not all explicitly recorded; the
+projection produces the best approximation in the basis space.
+
+The chapter's second concrete example is lofting a boat hull. A
+boatbuilder enlarges the designer's station drawings to full
+size on the loft floor, then bends a long thin batten through the
+station marks. The batten's natural shape is the chapter's spline
+in physical form: a minimum-energy continuation of the data. The
+loft lines are then transferred to patterns; the patterns are
+used to cut the boat's wood. The discipline of the boatyard is
+the discipline of the chapter: finite data forces an admissible
+continuation through the spline; the continuation is
+algorithmically realized through the Galerkin projection; the
+physical result (the boat) is the chapter's structures performed
+in wood.
+
+The chapter's closed question is:
+
+\begin{center}
+\emph{How does a finite count of distinctions become an admissible
+notion of distance?}
+\end{center}
+
+The chapter's answer is: distance is the count of admissible
+distinctions, derived from the partial order; for continuous
+structures, distance is the energy norm; the spline is the
+minimum-curvature interpolant; the Galerkin projection is the
+best approximation; the Cauchy completion provides the continuum.
+The chain from finite data to continuous distance is forced
+by the chapter's economy principle: only the minimum structure
+required by the data is admissible.
+
+This chapter and the next form the analytic core of the book. This
+chapter establishes the spline and the Galerkin projection;
+Chapter 6 builds on them to develop variational calculus and the
+Euler-Lagrange equation. Together they give the mathematical gauge
+its tools for selection and continuation.
+
+\end{chapteressay}
+
+\section{Distance from Order}
+\label{se:distance-from-order}
+
+The integers $12$ and $4$ differ by $8$. In the usual numerical sense,
+the distance between them is $|12 - 4| = 8$. But the difference $8 =
+2^3$ is divisible by $2$ three times. In the $2$-adic sense, the
+integers $12$ and $4$ are close: they agree mod $2$, they agree mod
+$4$, they agree mod $8$. They differ only at the next power of $2$.
+
+The $p$-adic distance between two integers $a, b$ is defined as
+$|a - b|_p = p^{-v}$, where $v$ is the largest power of $p$ that
+divides $a - b$. For $p = 2$ and $a - b = 8 = 2^3$, the largest power
+of $2$ dividing $8$ is $2^3$, so $v = 3$ and $|a - b|_2 = 2^{-3} =
+1/8$. In the $2$-adic sense, $12$ and $4$ are close: distance $1/8$.
+
+The $p$-adic distance is a genuine metric. It satisfies the triangle
+inequality (in fact, the stronger ultrametric inequality $|x + y|_p \le
+\max(|x|_p, |y|_p)$). It is symmetric ($|a - b|_p = |b - a|_p$). It
+is positive definite ($|a - a|_p = 0$ and $|a - b|_p > 0$ when $a
+\neq b$). Together these properties make $\mathbb{Z}$ a metric space
+under the $p$-adic distance.
+
+The $p$-adic distance is constructed entirely from the divisibility
+order on the integers. There is no geometry, no number line, no notion
+of ``how far apart on a ruler.'' The distance is a function of the
+divisibility relation: two integers are close in the $p$-adic sense
+when their difference is highly divisible by $p$. The order produces
+the metric.
+
+This is the chapter's first claim. Distance is not an independent
+geometric concept; it can be derived from a partial order. The
+divisibility lattice on $\mathbb{Z}$ has, for each prime $p$, an
+associated metric. The metric is admissible because it satisfies
+the metric axioms. The order produces the distance; the distance
+does not exist separately from the order.
+
+The chapter's metric examples extend beyond $p$-adics. The Hamming
+distance between two strings of equal length is the number of
+positions at which they differ. The string \texttt{ACGT} and the
+string \texttt{ACCT} differ at one position; their Hamming distance
+is $1$. The Hamming distance is derived from the order on positions:
+two strings are close when most positions agree, far when many
+differ.
+
+The Levenshtein distance generalizes Hamming to strings of different
+lengths: the minimum number of single-character insertions,
+deletions, or substitutions that transform one string into the other.
+Levenshtein is also order-based: the comparison is character-by-
+character, with the cost computed from the alignment.
+
+The chapter's structural claim: every metric on a discrete set is
+fundamentally a counting metric: count the number of single-step
+distinctions that separate two elements. The count is the distance.
+The specific weights of the distinctions can vary (Hamming weights
+each substitution equally; weighted Levenshtein weights insertions
+and deletions differently), but the underlying structure is the
+count of distinctions.
+
+In Lean, the partial-order-based metric is the foundation of
+\texttt{Spline.le} in \texttt{Episode6.lean}. The order on splines
+produces a notion of distance: two splines are close when one is a
+fine refinement of the other; far when their refinements diverge.
+The distance is the chapter's count of admissible refinements
+separating them.
+
+\section{The Spline as Forced Continuation}
+\label{se:the-spline-as-forced-continuation}
+
+Five data points are recorded: $(x_0, y_0), (x_1, y_1), (x_2, y_2),
+(x_3, y_3), (x_4, y_4)$ with $x_0 < x_1 < x_2 < x_3 < x_4$. The
+question is: what function $f$ should connect these points? More
+precisely: among all sufficiently smooth functions that pass through
+every data point, which is the most economical --- the one introducing
+the least unrecorded structure?
+
+The answer is the natural cubic spline. The proof requires the
+chapter's central theorem and its careful derivation.
+
+The natural cubic spline through the five data points is a piecewise
+cubic polynomial $S(x)$ defined on $[x_0, x_4]$ with the following
+properties:
+\begin{enumerate}
+\item On each interval $[x_i, x_{i+1}]$, $S(x)$ is a cubic polynomial
+$a_i + b_i (x - x_i) + c_i (x - x_i)^2 + d_i (x - x_i)^3$.
+\item $S(x_i) = y_i$ for all $i$.
+\item $S$ is twice continuously differentiable on $[x_0, x_4]$.
+\item $S''(x_0) = S''(x_4) = 0$ (the natural boundary conditions).
+\end{enumerate}
+
+The first property says $S$ is piecewise cubic. The second says $S$
+passes through every data point. The third says $S$, $S'$, and $S''$
+are all continuous; this requires the pieces to match smoothly at the
+interior knots. The fourth specifies the boundary behavior:
+$S$ has zero curvature at the endpoints.
+
+The theorem: the natural cubic spline through the five points exists
+and is unique.
+
+\emph{Proof of existence.} On each of the four intervals $[x_i,
+x_{i+1}]$, $S$ has four coefficients $a_i, b_i, c_i, d_i$. The total
+is $16$ unknowns. The constraints are:
+\begin{itemize}
+\item Five interpolation constraints: $S(x_i) = y_i$ for $i = 0, 1,
+2, 3, 4$. But this is $5$ constraints; the first two intervals
+share $S(x_1) = y_1$, etc. The count of independent interpolation
+constraints is $5$ (each $y_i$ named once). Distributed across the
+four intervals, this is $2$ constraints per interval ($S(x_i) =
+y_i$ at the left endpoint, $S(x_{i+1}) = y_{i+1}$ at the right),
+giving $8$ total constraints.
+\item Continuity of $S'$ at the three interior knots $x_1, x_2,
+x_3$: three constraints.
+\item Continuity of $S''$ at the three interior knots: three
+constraints.
+\item Natural boundary conditions: $S''(x_0) = 0$ and $S''(x_4)
+= 0$: two constraints.
+\end{itemize}
+Total: $8 + 3 + 3 + 2 = 16$ constraints. With $16$ unknowns and $16$
+constraints, the system is square. Provided the constraints are
+linearly independent (which can be shown for any distinct
+$x_i$), the system has a unique solution. The solution exists.
+
+\emph{Proof of uniqueness.} The system being linear with a unique
+solution implies uniqueness; the spline is the unique cubic
+polynomial-piecewise interpolant of the data satisfying the
+smoothness conditions and the natural boundary.
+
+Now the central economy theorem.
+
+\begin{theorem}[Minimum Curvature Property]
+Among all twice continuously differentiable functions $f$ on $[x_0,
+x_4]$ that pass through the data points (i.e., $f(x_i) = y_i$ for
+all $i$), the natural cubic spline $S$ minimizes the integrated
+squared curvature:
+\[
+\int_{x_0}^{x_4} (f''(x))^2 \, dx \ge \int_{x_0}^{x_4} (S''(x))^2 \, dx
+\]
+with equality if and only if $f = S$.
+\end{theorem}
+
+\emph{Proof.} Let $g(x) = f(x) - S(x)$. Then $g(x_i) = 0$ for all $i$
+(since $f$ and $S$ both pass through the data). Consider:
+\[
+\int_{x_0}^{x_4} (f'')^2 \, dx = \int_{x_0}^{x_4} (S'' + g'')^2 \, dx =
+\int (S'')^2 \, dx + 2 \int S'' g'' \, dx + \int (g'')^2 \, dx.
+\]
+
+The middle term $\int S'' g'' \, dx$ can be integrated by parts twice:
+\[
+\int_{x_0}^{x_4} S'' g'' \, dx = [S'' g']_{x_0}^{x_4} - \int_{x_0}^{x_4}
+S''' g' \, dx.
+\]
+The boundary term vanishes because $S''(x_0) = S''(x_4) = 0$ (natural
+boundary). Integrating by parts again:
+\[
+- \int_{x_0}^{x_4} S''' g' \, dx = -[S''' g]_{x_0}^{x_4} + \int_{x_0}^{x_4}
+S^{(4)} g \, dx.
+\]
+Since $S$ is piecewise cubic, $S^{(4)} = 0$ on each open interval. The
+final term is $0$. The boundary term $[S''' g]$ also vanishes because
+$g(x_0) = g(x_4) = 0$ (data interpolation forces this at the boundary).
+Hence $\int S'' g'' \, dx = 0$.
+
+Returning to the original expansion:
+\[
+\int (f'')^2 \, dx = \int (S'')^2 \, dx + \int (g'')^2 \, dx.
+\]
+Since $\int (g'')^2 \, dx \ge 0$ with equality iff $g'' = 0$
+(which combined with $g(x_i) = 0$ forces $g \equiv 0$, hence $f = S$),
+we conclude:
+\[
+\int (f'')^2 \, dx \ge \int (S'')^2 \, dx,
+\]
+with equality iff $f = S$. $\square$
+
+The theorem establishes the spline's optimality property. Among all
+admissible (twice-differentiable) interpolants of the data, the
+spline has the minimum integrated squared curvature. The spline is
+the smoothest interpolant in this precise sense.
+
+The chapter's second claim is that the spline is forced. Given the
+data and the smoothness condition (twice continuous
+differentiability), the spline is not a choice; it is the unique
+minimum-curvature interpolant. Any other interpolant would have more
+curvature, which means more inflection between data points, which
+means more unrecorded structure inserted into the gap.
+
+The economy principle: a record should not assert structure beyond
+what the data forces. The spline asserts only as much curvature as
+is required to pass through the data while remaining
+$C^2$-smooth. The minimum-curvature theorem is the precise
+quantification of this economy.
+
+In Lean, the \texttt{Spline} type in \texttt{Episode6.lean} carries
+the spline's data: the knot positions, the coefficients on each
+interval. The \texttt{Spline.le} relation orders splines by their
+refinement: one spline refines another when it has additional knots
+that the other lacks. The order is the chapter's distance from
+order: two splines are close when their refinements differ by few
+knot additions; far when they differ by many.
+
+\begin{leanexcerpt}{Spline}
+inductive Spline
+  | observation : Prop $\to$ Spline
+  | knot        : Prop $\to$ Polynomial $\to$ Spline $\to$ Spline
+  | interpolant : Fact $\to$ Polynomial $\to$ Polynomial
+                $\to$ Spline $\to$ Spline $\to$ Spline
+\end{leanexcerpt}
+
+The inductive carries the spline as a layered stack of refinements.
+The \texttt{observation} constructor sits at the base: a single
+propositional fact about the curve. The \texttt{knot} constructor
+extends a prior spline by attaching a polynomial under a
+propositional witness. The \texttt{interpolant} constructor pairs
+two polynomials and two prior splines under a \texttt{Fact},
+recording the interpolating piece that joins them. The chapter's
+economy principle appears in the constructor count: only three
+shapes are admissible, and a candidate spline must be expressible
+as a finite tree of these constructors.
+
+The natural boundary condition can be relaxed in other spline
+variants. The clamped spline specifies $S'(x_0)$ and $S'(x_4)$
+explicitly. The not-a-knot spline requires $S'''$ to be continuous
+at $x_1$ and $x_{n-1}$ (essentially treating those knots as
+non-knots). Each variant has its own boundary specification; each
+has its own existence/uniqueness theorem. The natural spline is
+the default; it minimizes curvature over the largest class of
+admissible interpolants.
+
+The chapter's economy theorem extends beyond cubic splines. For any
+data and any chosen smoothness class, the minimum-norm interpolant
+(minimum integrated squared $k$-th derivative for some $k$) is
+admissible and unique. The cubic spline corresponds to $k = 2$
+and natural boundary conditions; the quintic spline to $k = 3$;
+and so on.
+
+The discipline is: choose the lowest $k$ consistent with the data's
+expected smoothness, and use the minimum-norm interpolant. Lower $k$
+means less smoothness asserted; higher $k$ means more. The
+appropriate choice depends on the source of the data: physical
+measurements (typically smooth) suggest higher $k$; abstract
+data without smoothness expectations suggest lower $k$.
+
+\section{Galerkin Projection}
+\label{se:galerkin-projection}
+
+The previous section established the natural cubic spline as the
+minimum-curvature interpolant of given data points. This section
+takes the next step: given a continuous function $f$ on a bounded
+interval, how does one find the spline that best approximates $f$ in
+the energy norm? The answer is the Galerkin projection.
+
+Let $V$ be the space of continuous functions on $[a, b]$ that vanish
+at the endpoints (so $f(a) = f(b) = 0$). Equip $V$ with the inner
+product
+\[
+\langle f, g \rangle = \int_a^b f'(x) g'(x) \, dx.
+\]
+This is an inner product (it is bilinear, symmetric, and positive
+definite for non-constant functions). The induced norm $\|f\| =
+\sqrt{\langle f, f \rangle} = \sqrt{\int (f')^2 \, dx}$ is the energy
+norm or $H^1_0$-seminorm.
+
+Now let $V_h \subset V$ be a finite-dimensional subspace: the
+$n$-dimensional space spanned by $n$ basis functions $\phi_1, \ldots,
+\phi_n$ chosen for the approximation. For cubic spline approximation,
+the $\phi_i$ are the cubic B-splines centered at knots.
+
+The Galerkin projection of $f$ onto $V_h$ is the element $f_h \in V_h$
+satisfying:
+\[
+\langle f_h, v \rangle = \langle f, v \rangle \quad \text{for all } v
+\in V_h.
+\]
+This is the variational characterization: $f_h$ is the element of
+$V_h$ that has the same inner product with every test function $v
+\in V_h$ as does $f$. Equivalently, the residual $f - f_h$ is
+orthogonal to $V_h$ in the energy inner product.
+
+The Galerkin projection can be computed by solving a linear system.
+Write $f_h = \sum_j \alpha_j \phi_j$. The variational characterization
+becomes:
+\[
+\sum_j \alpha_j \langle \phi_j, \phi_i \rangle = \langle f, \phi_i
+\rangle \quad \text{for each } i = 1, \ldots, n.
+\]
+This is the system $K \alpha = F$ where $K_{ij} = \langle \phi_j,
+\phi_i \rangle$ (the stiffness matrix), $F_i = \langle f, \phi_i
+\rangle$ (the load vector), and $\alpha = (\alpha_1, \ldots,
+\alpha_n)^T$ is the unknown coefficient vector. The matrix $K$ is
+symmetric positive definite (because the inner product is); the
+system has a unique solution $\alpha$; the Galerkin approximation
+$f_h$ is constructed from $\alpha$.
+
+\begin{theorem}[Galerkin Best Approximation]
+Let $V_h \subset V$ be a finite-dimensional subspace. For any $f \in
+V$, the Galerkin projection $f_h \in V_h$ is the best approximation
+to $f$ in the energy norm:
+\[
+\|f - f_h\| = \min_{v \in V_h} \|f - v\|.
+\]
+\end{theorem}
+
+\emph{Proof.} The variational characterization says $\langle f - f_h,
+v \rangle = 0$ for all $v \in V_h$. For any $v \in V_h$, write
+$v = f_h + (v - f_h)$ with $v - f_h \in V_h$. Then:
+\[
+\|f - v\|^2 = \|f - f_h - (v - f_h)\|^2.
+\]
+Expanding:
+\[
+= \|f - f_h\|^2 - 2 \langle f - f_h, v - f_h \rangle + \|v - f_h\|^2.
+\]
+The middle term vanishes by the variational characterization. So:
+\[
+\|f - v\|^2 = \|f - f_h\|^2 + \|v - f_h\|^2 \ge \|f - f_h\|^2,
+\]
+with equality iff $v = f_h$. Hence $f_h$ minimizes $\|f - v\|$ over
+$V_h$. $\square$
+
+This is the central convergence theorem. The Galerkin projection is
+the closest element of $V_h$ to $f$ in the energy norm. As $V_h$
+grows (more basis functions, finer knot spacing), the projection
+$f_h$ improves: $\|f - f_h\|$ decreases monotonically.
+
+The convergence rate depends on the smoothness of $f$ and the order
+of the basis. For cubic B-splines with knot spacing $h$, the standard
+result is:
+\[
+\|f - f_h\|_{L^2} \le C h^4 \|f^{(4)}\|_{L^2},
+\]
+provided $f \in H^4$ (four derivatives exist in $L^2$). The
+exponent $4$ on $h$ is fourth-order convergence: halving the knot
+spacing reduces the error by a factor of $16$. This is what makes
+cubic splines such a powerful approximation tool.
+
+The Galerkin projection is the chapter's algorithmic version of the
+minimum-curvature theorem. The minimum-curvature theorem (previous
+section) was a statement about the spline as the interpolant of
+discrete data. The Galerkin projection is the same idea applied to
+continuous functions: the spline space's best approximation to a
+target function $f$ is the Galerkin projection. The two are
+related: the minimum-curvature interpolant is the Galerkin
+projection in a specific subspace.
+
+In Lean, the Galerkin process is the typeclass
+\texttt{GalerkinProcess} in \texttt{Episode6.lean}:
+
+\begin{leanexcerpt}{GalerkinProcess}
+structure GalerkinProcess
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] [ADMISSIBLE Value Carrier]
+    [COUNTABLE Value Carrier]       [ENCODED Value Carrier]
+    [RESIDUE Value Carrier]         [BINARY Value Carrier]
+    [REPEATABLE Value Carrier]      [NUMERIC Value Carrier]
+    [REPRESENTABLE Value Carrier]   [PHYSICAL Value Carrier]
+    [COMPARABLE Value Carrier]      [OBSERVED Value Carrier]
+    [PRESENT Value Carrier]         [MEASURABLE Value Carrier]
+    [GUNGAN Value Carrier]          [SOURCE Value Carrier]
+    [EXECUTED Value Carrier]        [VALUE Value Carrier]
+    [MAGNITUDE Value Carrier]       [SCALED Value Carrier]
+    [LOAD Value Carrier]
+  where
+  ANSYS_process     : BASICProcess Value Carrier
+  polynomial        : Polynomial
+  scale_and_shift?  : Polynomial $\to$ Polynomial := ...
+\end{leanexcerpt}
+
+The structure carries the full cascade through \texttt{LOAD}, an
+\texttt{ANSYS\_process} (a \texttt{BASICProcess} reference for the
+basis), a current \texttt{polynomial}, and the function
+\texttt{scale\_and\_shift?} that advances a polynomial by one
+Galerkin step. The cascade is the proof obligation. An instance is
+accepted only when every prior class in the stack has been
+witnessed; the polynomial's progression then sits on certified
+ground.
+
+The \texttt{FINITE\_ELEPHANT} typeclass certifies that the
+approximation is admissible at a stated resolution:
+
+\begin{leanexcerpt}{FINITE_ELEPHANT}
+class FINITE_ELEPHANT
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] [ADMISSIBLE Value Carrier]
+    [COUNTABLE Value Carrier]       [ENCODED Value Carrier]
+    [RESIDUE Value Carrier]         [BINARY Value Carrier]
+    [REPEATABLE Value Carrier]      [NUMERIC Value Carrier]
+    [REPRESENTABLE Value Carrier]   [PHYSICAL Value Carrier]
+    [COMPARABLE Value Carrier]      [OBSERVED Value Carrier]
+    [PRESENT Value Carrier]         [MEASURABLE Value Carrier]
+    [GUNGAN Value Carrier]          [SOURCE Value Carrier]
+    [EXECUTED Value Carrier]        [VALUE Value Carrier]
+    [MAGNITUDE Value Carrier]       [SCALED Value Carrier]
+    [LOAD Value Carrier]
+  where
+  galerkin_process : GalerkinProcess Value Carrier
+  finite?          : Polynomial $\to$ Polynomial $\to$ Prop := ...
+\end{leanexcerpt}
+
+The class binds the Galerkin process by a decision rule
+\texttt{finite?} that takes two polynomials and returns the
+proposition that one transforms to the other in finitely many
+admissible steps. The cascade obligation runs the entire length of
+the class stack; the decision rule covers the transition cases
+(grounded constants, eigenvalue hits, Lanczos residual checks). The
+compiler accepts the instance only when both the cascade and the
+rule are provided.
+
+The Galerkin projection extends beyond function approximation. It is
+the foundation of the finite element method, the spectral method,
+and many other numerical schemes. The general pattern: replace an
+infinite-dimensional problem (find $f$ satisfying a differential
+equation in $V$) with a finite-dimensional one (find $f_h$ in $V_h$
+satisfying a discrete version of the equation). The Galerkin
+projection guarantees that $f_h$ is the best $V_h$-approximation in
+the energy norm.
+
+For the differential equation $-u'' = g$ with boundary conditions
+$u(a) = u(b) = 0$, the Galerkin formulation is: find $u_h \in V_h$
+with $\langle u_h, v \rangle = \int g v \, dx$ for all $v \in V_h$.
+The solution $u_h$ is the discrete approximation; as $V_h$ refines,
+$u_h$ converges to the exact solution $u$.
+
+The chapter's claim is that the Galerkin projection is the
+algorithmic form of the chapter's economy principle. Among all
+admissible discrete approximations to a continuous function, the
+Galerkin projection minimizes the energy norm of the error. The
+projection asserts only as much structure as the basis can
+represent. The error is the residue; the residue's structure is
+determined by the basis's limitations and the target's smoothness.
+
+The Galerkin process is therefore the chapter's central
+construction. It takes finite data (the basis, the target's inner
+products with the basis) and produces a finite admissible
+approximation. The approximation is the unique minimum-energy
+element of the basis space matching the target's projections. The
+construction is forced by the chapter's economy principle.
+
+The minimum-curvature theorem of the previous section is a special
+case: the data are the interpolation values at the knots; the
+basis is the natural cubic spline space; the Galerkin projection
+is the unique cubic spline interpolant. The general framework
+includes data of many kinds (point evaluations, integrals,
+boundary conditions) and bases of many forms (polynomials,
+wavelets, eigenfunctions). The chapter's discipline operates
+identically across all variations.
+
+\section{Spline Sufficiency}
+\label{se:spline-sufficiency}
+
+The previous two sections established the natural cubic spline as the
+minimum-curvature interpolant and the Galerkin projection as the best
+approximation in the energy norm. This section asks: when is the
+spline sufficient? When does the cubic spline approximation capture
+enough of the target's structure that further refinement is not
+needed?
+
+The Spline Sufficiency property is the condition: for a target
+function $f$ in the smoothness class $C^4$, the cubic spline
+approximation with sufficiently fine knot spacing produces an error
+below any stated tolerance. The fourth-order convergence theorem
+quantifies this: $\|f - f_h\|_{L^2} \le C h^4 \|f^{(4)}\|_{L^2}$.
+
+For most practical purposes, cubic splines are sufficient. The
+fourth-order convergence is fast enough that modest knot spacings
+($h$ of order $0.01$ to $0.001$) produce errors well below typical
+measurement tolerances. The cubic spline is the workhorse of
+practical interpolation and approximation.
+
+The sufficiency condition fails for functions outside $C^4$. A
+function with a discontinuity (a step function) cannot be
+approximated by smooth splines without the Gibbs phenomenon
+discussed in Chapter 3. A function with a corner (a kink in the
+graph) has unbounded second derivative at the corner; cubic spline
+approximation introduces a small oscillation near the corner.
+
+For such non-smooth targets, higher-order or specialized
+approximations are needed. Wavelet bases are well-suited to
+functions with localized discontinuities. Piecewise constant or
+piecewise linear approximations handle step functions. The choice
+of basis is part of the calibration: the basis must be matched to
+the target's smoothness class.
+
+In Lean, the sufficiency condition is the proof obligation in
+\texttt{FINITE\_ELEPHANT}. The instance must provide a bound on the
+energy error; the bound is the resolution; the resolution is the
+tolerance at which the approximation is admissible. If the target
+is smoother than the basis can capture, the bound is tight; if the
+target is rougher, the bound is looser.
+
+The chapter's claim is that the spline is sufficient for the
+chapter's purpose: providing an admissible discrete representation
+of a continuous structure. For the chapter's questions about
+distance, the spline's structure is enough to construct distances
+on continuous functions. For more delicate questions (sharp
+features, discontinuities, localized phenomena), additional
+machinery is needed; the chapter does not develop it.
+
+The chapter's discipline: the spline is sufficient when it is.
+Outside its sufficiency class, the discipline is to acknowledge
+the insufficiency and to seek a more appropriate basis. The
+algorithmic form is the same (Galerkin projection); the basis
+choice changes with the target's properties.
+
+\section{The Cauchy Completion as Continuum}
+\label{se:the-cauchy-completion-as-continuum}
+
+Chapter 1 introduced the Cauchy completion of $\mathbb{Q}$ as the
+construction of $\mathbb{R}$. This section completes the chapter by
+extending the construction to the function spaces of interest.
+
+The space of $L^2$ functions on $[a, b]$ is the Cauchy completion of
+the space of continuous functions on $[a, b]$ under the $L^2$ norm:
+\[
+\|f\|_{L^2} = \sqrt{\int_a^b |f(x)|^2 \, dx}.
+\]
+A Cauchy sequence of continuous functions converges in $L^2$ to a
+limit. The limit may not be continuous: it may have measure-zero
+discontinuities. The $L^2$ space includes all such limits; it is
+larger than the continuous functions.
+
+The Sobolev space $H^1_0$ is the Cauchy completion under the energy
+norm $\|f\| = \sqrt{\int (f')^2 \, dx}$. The functions in $H^1_0$ have
+square-integrable first derivatives (in the weak sense) and vanish at
+the boundary. The space is larger than the continuously
+differentiable functions; it includes functions whose derivatives
+exist only in a generalized sense.
+
+The chapter's previous sections worked in the continuous functions or
+in smooth subspaces; the Galerkin projection produces approximations
+in finite-dimensional subspaces. The completion guarantees that the
+approximation has a well-defined limit as the subspace refines. The
+limit is in $L^2$ or in $H^1_0$, depending on which norm is used.
+
+For cubic spline approximation of a $C^4$ target, the sequence
+$f_{h_n}$ with $h_n \to 0$ is Cauchy in both $L^2$ and $H^1_0$ (in
+fact in any Sobolev norm up to $H^2$, by the standard convergence
+theorem). The limit is the target $f$ itself. The Cauchy completion
+is needed because the approximations are in finite-dimensional
+subspaces, but the target lives in the infinite-dimensional space
+of continuous functions.
+
+The chapter's fifth claim: the Cauchy completion of the discrete
+approximations is the continuum. The continuum is not assumed; it
+is constructed as the completion of finite-dimensional
+approximations. The construction is constructive: each step
+produces a finite-dimensional approximation; the limit is the
+continuum's element.
+
+In Lean, the completion is part of \texttt{Mathlib}'s functional-
+analysis library. The type \texttt{Lp} represents $L^p$ functions
+on a measure space. The Sobolev spaces $H^k$ are defined as the
+completion of smooth functions under the corresponding Sobolev
+norms. The chapter's algebraic structures (spline,
+\texttt{GalerkinProcess}, \texttt{FINITE\_ELEPHANT}) operate in
+these completed spaces.
+
+The chapter closes here. Distance from order is a metric derived
+from a partial order. The cubic spline is the minimum-curvature
+interpolant of finite data. The Galerkin projection is the best
+approximation in a finite-dimensional subspace. The spline is
+sufficient for $C^4$ targets. The Cauchy completion provides the
+continuum's underlying space.
+
+These five structures together produce the chapter's answer to its
+closed question. A finite count of distinctions becomes an
+admissible notion of distance through the partial-order metric;
+the metric extends to function spaces via the Galerkin projection;
+the projection produces an admissible approximation; the
+approximation's error is bounded by the resolution; the
+approximation's limit, as the resolution refines, is the
+continuum's element.
+
+\begin{bridge}
+
+The chapter's question was how a finite count of distinctions
+becomes an admissible notion of distance.
+
+The answer is: through the partial-order metric and the Galerkin
+projection. The $p$-adic distance is the canonical example of a
+metric derived from a partial order on integers. The Hamming
+distance on strings and the divisibility distance on integers are
+other examples; each is a count of admissible distinctions. The
+cubic spline is the minimum-curvature interpolant of finite data;
+its uniqueness theorem (Minimum Curvature Property) is the
+chapter's structural result. The Galerkin projection is the best
+approximation in the energy norm; the Best Approximation theorem
+guarantees that the projection is the closest element of the
+finite-dimensional subspace to the target. Spline sufficiency
+identifies the smoothness class in which cubic splines are
+adequate. The Cauchy completion provides the underlying continuum
+in which the approximations live.
+
+What remains is the selection of one continuation from many. The
+spline is the minimum-curvature continuation; the Galerkin
+projection is the minimum-error approximation; but in some
+situations, the data underdetermines the answer, and many
+admissible continuations exist. Chapter 6 takes up the question:
+what selects one admissible continuation as the history actually
+carried forward? The chapter introduces variational calculus and
+its Euler-Lagrange equation as the structural mechanism for
+selection.
+
+\end{bridge}
+
+\begin{coda}{Lofting a Boat Hull}
+
+The lofting floor is in the second-story workshop above the boatyard.
+Its surface is twenty-four meters long and six meters wide, planked
+in straight-grained Douglas fir, sanded smooth, painted matte black.
+This is the loft. On its surface, full-size drawings of the boat's
+shapes will be made: each frame, each plank, each beam will be drawn
+at full scale before any wood is cut.
+
+The boatbuilder has the designer's plans: a small set of cross-section
+drawings showing the boat's hull at twelve stations along the keel. The
+stations are spaced at uniform intervals. Each station drawing shows
+the hull's outline at that point: the half-breadth (width from the
+centerline), the height of the keel, the height of the deck, the
+curve of the hull. The drawings are the data; the boatbuilder's task
+is to construct the full hull from them.
+
+The first task is to enlarge the station drawings to full size. The
+designer's drawings are at a scale of $1:10$; the loft drawing is at
+$1:1$. The boatbuilder uses a proportional divider to step off the
+designer's measurements at ten times the scale, marking the loft
+floor with chalk lines and small nails. After several hours, twelve
+station outlines are drawn on the loft, each at the location
+corresponding to its station number.
+
+The station drawings are the data points of the chapter's spline. Each
+station provides values for the hull's shape at one specific location
+along the keel. Between stations, the hull's shape is not directly
+specified; the boatbuilder must fill in the gap.
+
+Now comes the lofting proper. The boatbuilder takes a long thin
+batten --- a flexible strip of wood, perhaps four meters long and a
+centimeter wide --- and bends it gently along the marks of the station
+outlines. The batten passes through the marked points; between them,
+it takes its natural curved shape. The natural curve is the
+minimum-energy continuation of the data points.
+
+This is the chapter's spline in physical form. The batten is the
+spline; the marks at the stations are the data points; the natural
+curve of the batten between marks is the cubic-like continuation;
+the batten's natural shape minimizes the integrated curvature in the
+mathematically precise sense (within the elastic limits of the
+wood).
+
+The boatbuilder verifies the curve. She sights along the batten from
+one end. Any bump, any flat spot, any unnatural inflection would
+indicate that the batten is not in its minimum-energy state: that
+the data points are inconsistent with the smooth hull they should
+produce, or that the batten is being constrained somewhere it
+should not be. A bump suggests a measurement error at a station;
+a flat spot suggests two stations should have intermediate
+information; an unnatural inflection suggests a structural problem
+with the hull's design.
+
+For this hull, the verification succeeds. The batten bends smoothly
+through all twelve station marks without bumps or flat spots. The
+hull's full longitudinal curve is now visible on the loft floor.
+
+But the batten is one curve. The hull has many curves: the sheer
+line (the upper edge of the side), the chine (where the side meets
+the bottom), the keel (the bottom-most curve), and the diagonals.
+Each is its own spline; each is drawn separately on the loft. The
+spline structure of the chapter applies independently to each curve:
+each is a minimum-energy continuation of the station data; each
+admits a Galerkin projection; each is sufficient for $C^4$ targets.
+
+The boat's hull is therefore the product of multiple splines. The
+product structure preserves each spline's identity: the sheer line
+is a sheer line, not just an unidentified curve; the chine is a
+chine; the keel is a keel. Each is admissible separately; the hull
+is the admissible composition.
+
+After all the lines are drawn on the loft, the boatbuilder uses
+them to make patterns: full-size templates for each plank, each
+frame, each beam. The patterns are made by transferring the loft
+lines to thin plywood. The plywood patterns are then used as
+guides for cutting the actual hull wood.
+
+The transfer is the algorithmic version of the Galerkin projection.
+The continuous loft lines (an infinite-dimensional curve in
+principle) are projected onto the discrete pattern surfaces (a
+finite-dimensional approximation). The projection is the
+boatbuilder's tracing: a careful sequence of measurements and
+copies that produces the pattern's shape. The Galerkin best-
+approximation theorem guarantees that the pattern is the closest
+admissible approximation to the loft line, given the constraints
+of the pattern material.
+
+The patterns are then taken to the boatyard floor. The wood is laid
+out flat; the patterns are placed on top; the shapes are marked.
+The marks are cut. The cut wood is bent into the boat's frames and
+attached to the keel. The boat takes shape physically.
+
+Throughout this process, the chapter's discipline operates. The
+spline is the unique minimum-curvature continuation of the station
+data. The Galerkin projection is the best discrete approximation
+to the continuous spline. The patterns are the finite-dimensional
+realization of the projection. The cut wood is the physical
+embodiment of the patterns. None of the operations introduce
+unrecorded structure: the boat's hull is forced by the station
+data through the chapter's algebraic operations.
+
+When the boat is launched, the hull's shape is determined by the
+station data and the spline's economy principle. A different
+designer might have used different station data; the resulting
+hull would differ. A different lofting technique would produce
+different finite-dimensional approximations; the resulting hulls
+would converge to the same continuous curve as the resolution
+refines.
+
+The boatyard's discipline is the chapter's discipline. The
+station data are the recorded marks. The spline is the admissible
+continuation. The Galerkin projection is the admissible
+approximation. The patterns are the discrete realization. The
+hull is the physical product. The boat floats because the algebra
+is correct.
+
+This is the chapter's claim in maritime form. Finite data, admissible
+continuation, minimum-curvature interpolation, Galerkin projection,
+finite-dimensional approximation, physical realization --- all of
+these are the chapter's structures, performed in the boatyard. The
+mathematics is not separate from the craft; the mathematics is the
+craft's algebraic content.
+
+The hull launches in three months. The boatbuilder will return to
+the loft tomorrow to draw the next set of patterns. The discipline
+continues; the algebra continues; the boat takes shape one plank at
+a time, each plank forced by the loft lines, each loft line forced
+by the station data, each station data point recorded with the
+care that the chapter's discipline requires.
+
+\end{coda}

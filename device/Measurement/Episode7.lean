@@ -134,6 +134,39 @@ structure CrusadeProcess   -- Bullshit meter 3804
     | .speculation prop s _ => .speculation prop s religion
     | .rant prop s d1 _ => .rant prop s d1 religion
 
+def CrusadeProcess.default
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    : CrusadeProcess Value Carrier where
+  pwn_n00bz :=
+  { galerkin_process := matter.galerkin_process
+    guess := .observation Fact.Truth.truth
+  }
+  religion := .religion Fact.Truth.truth
+
 class PROPAGANDA  -- 3151
     (Value: Type)
     (Carrier: CarrierProcess Value)
@@ -210,6 +243,37 @@ structure InitiationProcess  -- Bullshit meter ≈ 9117.   TBF, when is an initi
     | .inside_joke prop => .pythagoras prop space.insinuation.religion sacred_texts
     | .pythagoras prop crusade witness => .triangles d.fact.truth crusade d.fact witness (.inside_joke prop)
     | .triangles prop crusade fact witness event => .triangles prop crusade fact witness event
+
+def InitiationProcess.default
+    (Value: Type)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    : InitiationProcess Value Carrier where
+  ethos := CrusadeProcess.default Value Carrier
+  sacred_texts := .inside_joke Fact.Truth.truth
 
 class ACOLYTE   -- 7699
     (Value: Type)

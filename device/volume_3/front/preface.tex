@@ -1,0 +1,144 @@
+\chapter*{Preface}
+\label{chap:preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+A compiler is the most precise instrument a programmer ever uses.
+
+It is not merely a tool that translates one language into another. It is a
+formal machine that, given a stream of symbols, performs a sequence of
+admissible operations: tokenize, parse, elaborate, type-check, optimize,
+emit. Each operation is bounded. Each operation produces a record. Each
+record is auditable. When the compiler halts with an error, it tells you
+exactly which line failed and why. When it halts with success, it leaves
+behind a binary that does what the source said it would do, no more and no
+less.
+
+This is the cleanest measurement instrument in the world. The compiler does
+not have noise floors in the way a thermometer does. It does not require
+calibration in the way a voltmeter does. It runs deterministically: the
+same input produces the same output. The same proof checked twice produces
+the same verdict. The compiler is the closest thing engineering has produced
+to a perfect ledger.
+
+And yet the compiler has limits.
+
+Some programs do not halt. Some types cannot be inferred. Some proofs cannot
+be checked because they require more memory than the universe contains.
+Some functions are perfectly well-defined mathematically but no program can
+compute them. The Halting Problem is the canonical example: there is no
+compiler, no matter how powerful, that can decide for every program whether
+it will halt. This is not a contingent limitation. It is provably impossible.
+
+This book is about what the compiler can and cannot do, and what that tells
+us about the universe.
+
+The argument is in three parts.
+
+First, the admissible record forces algorithmic forms. When you write down
+what an instrument can carry --- what marks it can produce, what comparisons
+it can repeat, what gaps it must respect --- the result is not an arbitrary
+data structure. It is a specific family of algorithms: enumeration, divide
+and conquer, interpolation, union-find, bisection, inversion, parallel
+transport, commutator computation, invariant detection, compression. These
+algorithms are not chosen; they are forced by the structure of admissible
+measurement. The universe is not running a Turing machine because someone
+decided it would be tidy. It is running these specific algorithms because
+no other structure is consistent with the requirement of producing
+admissible records.
+
+Second, these algorithms are exactly what the Lean theorem prover already
+performs. Every section of this book points to a specific Lean file --- in
+the project's \texttt{device/Measurement/} directory --- where the
+algorithmic form appears as a working typeclass, structure, or instance.
+The compiler that elaborates these files is doing what the book describes.
+The reader can run the compiler and watch the algorithms execute. The Lean
+artifacts are not illustrations after the fact. They are the primary record
+that the book is documenting.
+
+Third --- and this is the chapter where the argument becomes uncomfortable
+--- the selection rule, the criterion that picks one admissible
+continuation from among all the formally admissible ones, requires exact
+Kolmogorov information about each candidate. Kolmogorov complexity is the
+length of the shortest program that produces a given output. It is a
+well-defined mathematical quantity. It is also provably uncomputable.
+There is no algorithm, no matter how cleverly designed, that can compute
+$K(w)$ for an arbitrary string $w$. The Halting Problem reduces to it.
+
+This means the universe, if it is running these algorithms, is running
+something that no Turing machine can simulate. Not because the universe
+contains magic, but because the selection rule requires a quantity that
+finite computation cannot produce. The universe is not faster than your
+laptop. It is doing something different in kind: it is consulting a value
+that your laptop cannot compute.
+
+The reader who comes to this conclusion expecting mysticism will be
+disappointed. The argument is technical. The selection rule does not
+require consciousness, intention, or supernatural agency. It requires
+exact Kolmogorov information. That is a mathematical object, fully
+specified, and the universe apparently has access to it. The fact that we
+do not is a fact about our instruments, not about the universe.
+
+\bigskip
+
+The book is structured as an algorithmic guidebook. Each chapter takes one
+of the eleven areas of measurement structure --- record, comparison, gap,
+combination, distance, motion, transport, reference, curvature, invariance,
+closure --- and shows what algorithm the admissible structure requires.
+Each chapter ends with a coda that uses an unrelated metaphor (a warehouse
+dock, a sorting machine, a legal contract, a print shop, a notary's
+register) to perform the chapter's typeclass structure independently. The
+metaphors are deliberate: they let the reader see that the algorithmic
+forms are not Lean-specific. They are general patterns that appear wherever
+records must be carried admissibly.
+
+Chapter 6 is the load-bearing chapter. It contains the argument that the
+selection rule requires exact $K$, and that $K$ is uncomputable. Every
+chapter before it builds the algorithmic vocabulary needed to state the
+argument cleanly. Every chapter after it shows what the universe is doing
+despite the selection rule's uncomputability: transport, calibration,
+strain, invariance, and finally append-only closure.
+
+The companion artifact is \emph{GAUGE 1199}, a manga that dramatizes the
+construction of the Lean code. The AI assistant is on screen, the human is
+at the keyboard, the physics appears in the panel space between them. The
+manga ends with an open Lean file, a definition of the minimal admissible
+interpolant left as \texttt{sorry}, and a blinking cursor. The manga is not
+fiction. It is a documentary of what occurred during the writing of this
+project. The selection rule's uncomputability is the punchline because that
+is the actual outcome of trying to formalize it.
+
+\bigskip
+
+A few notes on what this book is not.
+
+It is not a textbook on algorithm design. The algorithms described here are
+classical (bisection, union-find, FFT, LU decomposition, gradient descent).
+The novelty is not in the algorithms but in the claim that these specific
+algorithms are forced by the structure of admissible measurement.
+
+It is not a defense of digital physics or the simulation hypothesis. The
+selection rule's uncomputability is precisely an argument against simulation
+hypotheses that require Turing-computability. If the universe is a
+computation, it is not one your laptop can run, even in principle.
+
+It is not a critique of Lean or any other proof assistant. Lean is the
+primary instrument of this book. The fact that it cannot implement exact
+$K$ is not a defect of Lean. No theorem prover, no compiler, no Turing
+machine can. The boundary is at the level of computation itself.
+
+It is not a popular-science treatment of the Halting Problem. Readers who
+want that should consult Hofstadter, Penrose, or Chaitin directly. This
+book uses the Halting Problem as a piece of machinery, not as the
+destination.
+
+\bigskip
+
+The first sentence of Chapter 1 begins by asking what the smallest
+admissible mark is, and how the compiler carries it. The last line of
+Chapter 11 is the Lean expression \texttt{\#check theory\_true?}, which is
+the elaborator's verdict on whether the accumulated proof burden of the
+book itself type-checks. The verdict is not an execution. It is a question
+about type formation.
+
+That distinction --- between executing and type-checking, between simulating
+and certifying --- is what this book is for.

@@ -1,0 +1,742 @@
+\chapter{Bisection and the Spline}
+\label{chap:bisection-and-the-spline}
+
+% Closed question: How does a finite count of distinctions become an admissible
+% notion of distance?
+
+\begin{chapteressay}
+
+A surveyor walking along a street paces off distance in steps. Each step
+is roughly a meter. Twenty steps is approximately twenty meters. The
+surveyor's distance estimate is the count of admissible steps multiplied
+by the step length. The step is the unit; the count is the measurement.
+
+The step is not infinitely refined. A step can be roughly counted; it
+cannot be halved without changing the technique (a half-step is a
+different gait). For ordinary distance estimation, the step is the
+resolution: any distance shorter than a step is below the surveyor's
+admissible precision.
+
+If the surveyor needs finer precision, they switch to a measuring tape.
+The tape is marked in millimeters. The smallest admissible distance is
+one millimeter. Below this, the tape's gradations cannot distinguish.
+For still finer precision, a laser interferometer is required. The
+interferometer can resolve nanometers.
+
+In every case, the distance is the count of admissible units. The unit
+changes with the instrument. The count changes with the distance. The
+two together produce the measurement.
+
+This is the chapter's algorithmic perspective on distance. Distance is
+a count of admissible refinements. The refinements are bisections of
+the search space: each refinement halves the remaining range. The count
+continues until the resolution boundary is reached --- the smallest
+admissible distinction. Below the boundary, additional refinements
+produce no admissible distinctions; the algorithm stops.
+
+The chapter develops this through five algorithmic forms. The first is
+bisection for root finding: the canonical example of refinement by
+halving. The square root of 2 is found by 53 bisection steps to full
+double-precision accuracy. The second is Galerkin finite-element
+method: the analytic version of refinement, applied to differential
+equations. With cubic elements, the convergence is $O(h^4)$, so a
+ten-fold refinement reduces the error by 10,000. The third is
+Richardson extrapolation: two refinements at different scales are
+combined to cancel the leading error term, producing a stronger
+estimate. The fourth is residual stopping: the algorithm terminates
+when the residual falls below a calibrated threshold. The fifth is
+\texttt{FINITE\_ELEPHANT} in Lean: the typeclass that formalizes the
+stopping rule as a compiler-enforced certificate.
+
+The second concrete example is the photographer focusing a manual
+camera lens. The focus ring rotates continuously; the viewfinder's
+image varies smoothly with the rotation. The photographer rotates the
+ring to minimize the image's blur. The rotations are bisection
+refinements: each correction halves the rotational uncertainty. The
+photographer stops when the viewfinder's blur cannot distinguish
+further refinements. The stopping is at the viewfinder's resolution.
+
+The two examples --- bisection for $\sqrt{2}$ and lens focusing --- have
+the same algorithmic structure. A continuous search space, a
+bisection rule, a resolution boundary, a count of refinements until
+the boundary is reached. The count is the distance. The boundary is
+the calibration.
+
+The chapter's closed question is:
+
+\begin{center}
+\emph{How does a finite count of distinctions become an admissible
+notion of distance?}
+\end{center}
+
+The answer the chapter develops is: through bisection. The count of
+bisection steps from a starting bracket to the resolution boundary is
+the distance. The distance is finite because the resolution boundary
+is finite. The distance is admissible because each bisection step is
+an admissible refinement (a single binary comparison) and the stopping
+rule is admissible (the resolution is part of the instrument's
+calibration).
+
+The Galerkin method generalizes bisection to higher-dimensional
+problems. The basis functions are the discrete refinements; the
+weak-form linear system is the algorithm; the
+\texttt{FINITE\_ELEPHANT} certificate is the stopping rule.
+Richardson extrapolation combines two refinements at different
+scales into a stronger approximation, exploiting the convergence
+structure to do better than either input alone.
+
+The chapter closes with a connection to the next chapter. Distance
+has been defined as a count of refinements. The refinements are
+admissible because each one is a binary comparison certified by the
+resolution. But the count itself --- which refinement, of all the
+admissible ones, the algorithm should perform --- is left
+unspecified. The algorithm halves the bracket; it could halve in
+either direction; the choice is made by the comparison's output.
+The deeper question is: when the comparison is ambiguous (two
+options are equally admissible), which one does the algorithm
+select? This is the motion question. Chapter 6 addresses it, and
+the answer is the load-bearing chapter of the book: the selection
+rule requires exact Kolmogorov complexity, which is provably
+uncomputable. The compiler cannot, in general, decide which
+admissible continuation to take. The universe, somehow, can.
+
+\end{chapteressay}
+
+\section{Bisection for Root Finding}
+\label{se:bisection-for-root-finding}
+
+To find the positive square root of 2, choose the interval $[1, 2]$ as a
+starting bracket. The square root of 2 lies somewhere in this interval
+because $1^2 = 1 < 2 < 4 = 2^2$. Compute the midpoint: $1.5$. The square
+of the midpoint is $1.5^2 = 2.25$. Since $2.25 > 2$, the square root of
+2 lies in the lower half of the interval: $[1, 1.5]$. Replace the upper
+end of the bracket with the midpoint.
+
+Repeat. New midpoint: $1.25$. Square: $1.5625$. Since $1.5625 < 2$,
+the root is in the upper half: $[1.25, 1.5]$. Replace the lower end.
+New midpoint: $1.375$. Square: $1.890625$. The root is in the upper
+half: $[1.375, 1.5]$. And so on.
+
+Each iteration halves the bracket. The bracket's width after $k$
+iterations is $2^{-k}$. After 53 iterations, the bracket's width is
+$2^{-53}$, which is the smallest interval that can be distinguished in
+double-precision floating-point arithmetic. At this point, the
+algorithm has produced the floating-point representation of $\sqrt{2}$
+to full machine precision.
+
+This is bisection for root finding. The algorithm requires only that
+the function $f(x) = x^2 - 2$ change sign across the bracket. Given a
+sign change, each iteration halves the bracket while preserving the
+sign change. The bracket converges to a root.
+
+The distance from the initial bracket to the floating-point answer is
+53 bisection steps. Each step is one admissible refinement: a single
+comparison decides which half of the current bracket contains the root.
+The total distance is the count of steps. This is the chapter's
+proposal: distance is the count of bisection refinements.
+
+The proposal makes precise what ``close'' means algorithmically. Two
+values are close when few bisection steps are required to distinguish
+them. Two values are far when many steps are required. For $\sqrt{2}$
+to be ``known to within $10^{-16}$,'' the bisection requires 53 steps.
+For $\sqrt{2}$ to be ``known to within $0.1$,'' the bisection requires
+4 steps. The number of steps is the algorithmic distance.
+
+The connection to physical measurement is direct. A thermometer with
+$0.1$ degree resolution can distinguish between $20.0$ and $20.1$. It
+cannot distinguish between $20.05$ and $20.06$. The thermometer's
+admissible distinctions correspond to bisection refinements of the
+temperature scale. The instrument's resolution is its bisection
+depth.
+
+The bisection algorithm's correctness depends on three preconditions.
+First, the function must be continuous on the bracket. Without
+continuity, the sign change at the bracket does not imply a root in
+the interior. Second, the function must take values of both signs at
+the bracket endpoints. Without the sign change, the bracket does not
+guarantee a root. Third, the function evaluation must be
+\texttt{REPEATABLE}: the same input must produce the same sign every
+time. Without repeatability, the bisection cannot make a deterministic
+choice between the two halves.
+
+The Lean analog of the bisection algorithm appears in the
+\texttt{Polynomial} and \texttt{GalerkinProcess} typeclasses in
+\texttt{Episode6.lean}. A polynomial root-finding problem is encoded
+as a polynomial term and a target interval. The algorithm bisects the
+interval, evaluating the polynomial at midpoints, until the
+\texttt{FINITE\_ELEPHANT} stopping rule certifies that further
+refinement would produce no new distinctions.
+
+The compiler's analog of bisection is the decision-tree compilation of
+pattern matching. When Lean compiles a \texttt{match} expression with
+many cases, it builds a decision tree: each internal node is a
+comparison; each leaf is a case body. The tree is constructed to
+minimize the depth of the most common case. The compilation produces a
+binary tree of comparisons, structurally identical to a bisection
+search. The match expression's runtime cost is the depth of the
+decision tree.
+
+Bisection is the fundamental algorithm for refining a one-dimensional
+search space. The algorithm's structure is elementary: bracket,
+midpoint, comparison, half. The structure does not depend on the
+specific function being evaluated or the specific space being searched.
+Bisection works for square roots, for polynomial roots, for binary
+search on sorted arrays, for branch decisions in compiled code, for
+fare-zone determinations in transit calculations. The algorithm is the
+algorithmic primitive of one-dimensional refinement.
+
+\section{Galerkin FEM}
+\label{se:galerkin-fem}
+
+To solve the differential equation $u''(x) = -1$ on the interval $[0, 1]$
+with boundary conditions $u(0) = u(1) = 0$, the analytical answer is the
+parabola $u(x) = x(1-x)/2$. The maximum value is $1/8$ at $x = 1/2$.
+This is a textbook problem with a closed-form solution.
+
+The Galerkin finite element method approaches it differently. Choose a
+finite-dimensional space of trial functions: piecewise cubic
+polynomials with $C^2$ continuity at the knots. Place ten knots on
+$[0, 1]$ at $x = 0, 0.1, 0.2, \ldots, 1.0$. The trial space has ten
+basis functions (Hermite cubics). Each basis function is zero outside a
+small region around its knot.
+
+The Galerkin formulation says: find a function $u_h$ in the trial space
+such that, for every test function $v_h$ in the same space, the inner
+product $\int_0^1 u_h''(x) v_h(x) \, dx = -\int_0^1 v_h(x) \, dx$. The
+condition reduces to a linear system: $10 \times 10$ matrix equation,
+which can be solved in $O(N^3)$ time for $N$ basis functions, or
+$O(N)$ for tridiagonal systems.
+
+Solving the system produces the approximate solution $u_h$. Comparing
+$u_h$ to the exact solution $u$ shows the approximation error. For $N
+= 10$ cubic elements, the error is on the order of $10^{-6}$. For $N
+= 100$, the error drops to $10^{-10}$. The convergence rate is $h^4$,
+where $h = 1/N$ is the element size. Four orders of accuracy gained
+per ten-fold refinement: the convergence is fourth-order.
+
+This is the chapter's central convergence pattern. Each refinement
+(doubling of $N$, halving of $h$) reduces the error by a factor of
+$16 = 2^4$. The reduction is governed by the differential equation's
+smoothness and the basis functions' polynomial degree. For cubic
+elements solving a second-order ODE with smooth right-hand side, the
+convergence rate is $h^4$.
+
+The connection to distance is direct. Increasing $N$ from 10 to 100
+is roughly $\log_2(10) \approx 3.3$ bisection refinements. The error
+drops by $16^{3.3} \approx 5000$. The cost grows linearly: $O(N)$
+operations per solve. The trade-off is: pay roughly twice as much
+work to reduce the error by sixteen. For applications where the
+error must be very small, the trade-off is favorable.
+
+The Galerkin method is admissible because it produces the unique
+minimum-energy approximation in the trial space. The trial space has
+a specific notion of energy: the integral of the squared derivative
+of the function. The Galerkin solution minimizes the error in this
+energy. The minimum-energy approximation is not arbitrary; it is the
+unique structure consistent with the equation and the trial space.
+
+The Lean analog in \texttt{Episode6.lean} is the \texttt{GalerkinProcess}
+typeclass:
+
+\begin{leanexcerpt}{GalerkinProcess}
+structure GalerkinProcess
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] ... [LOAD Value Carrier]
+  where
+  ANSYS_process    : BASICProcess Value Carrier
+  polynomial       : Polynomial
+  scale_and_shift? : Polynomial $\to$ Polynomial := ...
+\end{leanexcerpt}
+
+The \texttt{ANSYS\_process} field names the underlying
+\texttt{BASICProcess} that supplies the trial space. The
+\texttt{polynomial} field carries the current iterate. The
+\texttt{scale\_and\_shift?} method advances a polynomial by one
+Galerkin step (handling constant, monomial, and factor cases). The
+cascade through \texttt{LOAD} carries every prior class as a
+typeclass requirement: the structure is admissible only when the
+full stack has been witnessed.
+
+\texttt{FINITE\_ELEPHANT} is the stopping rule:
+
+\begin{leanexcerpt}{FINITE_ELEPHANT}
+class FINITE_ELEPHANT
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] ... [LOAD Value Carrier]
+  where
+  galerkin_process : GalerkinProcess Value Carrier
+  finite?          : Polynomial $\to$ Polynomial $\to$ Prop := ...
+\end{leanexcerpt}
+
+The class binds a \texttt{GalerkinProcess} together with a binary
+decision rule \texttt{finite?} on \texttt{Polynomial}s. The rule
+covers the relevant transition cases: convergence to the ground
+state, stationary fields (the eigenvalue hit), the Lanczos residual
+check between factors, and the divergence cases. The compiler
+enforces the certificate: a function that claims an answer is
+admissible must provide the \texttt{FINITE\_ELEPHANT} instance.
+
+This is the chapter's algorithmic version of the calibration
+certificate. The instrument has a stated resolution. The
+\texttt{FINITE\_ELEPHANT} instance certifies that the algorithm's
+output is admissible at that resolution. Further refinement, if
+performed, would produce a finer approximation, but the additional
+distinctions would be below the instrument's resolution and
+therefore not admissible as measurements.
+
+The Galerkin method is the analytical analog of the cubic spline. The
+cubic spline interpolates known data points; the Galerkin method
+approximates the solution of a differential equation. Both use the
+same trial space (piecewise cubic with $C^2$ continuity). Both
+produce a unique minimum-energy answer. Both have $h^4$ convergence.
+The cubic spline is the special case where the right-hand side is
+data points; the Galerkin method is the general case where the right-
+hand side is a differential equation.
+
+The chapter's algorithmic claim is that the Galerkin method is the
+algorithm forced by the chapter's question: how does a finite count
+of distinctions become an admissible notion of distance? The answer:
+distance is the count of refinements in the trial space, and the
+trial space is the unique minimum-energy space consistent with the
+admissibility constraints. The Galerkin method produces the answer;
+the \texttt{FINITE\_ELEPHANT} stopping rule certifies it.
+
+\section{Richardson Extrapolation}
+\label{se:richardson-extrapolation}
+
+The numerical derivative of $f(x) = \sin(x)$ at $x = 1$ can be
+approximated by the central difference formula:
+\[
+f'(x) \approx \frac{f(x + h) - f(x - h)}{2h}.
+\]
+For $h = 0.1$: $(f(1.1) - f(0.9))/0.2 \approx 0.5377$. For $h = 0.05$:
+$(f(1.05) - f(0.95))/0.1 \approx 0.5400$. The exact value is
+$\cos(1) \approx 0.5403$. The error decreases as $h$ shrinks.
+
+The error in the central difference is approximately $-h^2 f'''(x)/6
++ O(h^4)$. The leading term is proportional to $h^2$. Compute the
+approximation at two values of $h$, say $h$ and $h/2$. The errors are
+$-h^2 f'''(x)/6$ and $-h^2 f'''(x)/24$ respectively. Multiply the
+second by 4 and subtract the first: $4 \cdot D(h/2) - D(h)$ has
+error $-h^2 f'''(x)/6 - 4 \cdot h^2 f'''(x)/24 = 0$. The leading
+error term cancels.
+
+The combined formula $(4 D(h/2) - D(h)) / 3$ has error $O(h^4)$, two
+orders better than either input. This is Richardson extrapolation:
+combining two approximations at different resolutions to cancel the
+leading error term, producing a more accurate approximation at no
+additional function evaluations beyond the original two.
+
+For $f(x) = \sin(x)$ at $x = 1$ with $h = 0.1$ and $h = 0.05$:
+\[
+\frac{4 \cdot 0.5400 - 0.5377}{3} = 0.5408.
+\]
+The exact value is $0.54030$. The Richardson value is about $5 \times
+10^{-4}$ from exact. The unextrapolated $h = 0.05$ value was about
+$3 \times 10^{-4}$ from exact. In this case the Richardson is
+slightly worse due to the small $h$ rounding effects, but at the
+generic asymptotic regime the Richardson is several orders better.
+
+Richardson extrapolation is the algorithmic version of refinement
+combination. Two approximations at different scales are combined into
+a third approximation that exploits the structure of the convergence.
+The structure must be known: the leading error term must depend on a
+known power of $h$. For central differences, the power is 2. For the
+trapezoidal rule, also 2. For Simpson's rule, the power is 4. For
+each method, Richardson is the canonical accelerator.
+
+The connection to the chapter's question is that Richardson
+extrapolation produces a distance estimate that exploits the
+algorithm's known convergence rate. The estimate's accuracy is not
+just the resolution at the finer scale; it is the projected
+accuracy from extrapolating the error toward $h = 0$. The
+extrapolation projects a refinement that the algorithm did not
+perform, but that the error structure permits.
+
+The Lean analog is the typeclass that combines two
+\texttt{GalerkinProcess} instances at different resolutions. Given
+both, the algorithm can compute a Richardson estimate. The
+\texttt{FINITE\_ELEPHANT} certificate for the Richardson result is
+stronger than the certificate for either input: it certifies
+admissibility at a resolution finer than either input could provide
+on its own.
+
+The chapter's algorithmic claim is that Richardson extrapolation is
+the algorithmic primitive for combining refinements. Two
+refinements alone are just two refinements; their combination, via
+Richardson, exploits the convergence structure to produce a third
+refinement at a stronger resolution. The third refinement is not a
+new measurement; it is an algebraic combination of the two
+measurements that the algorithm did perform. The combination is
+admissible because the convergence structure is part of the
+algorithm's specification.
+
+Richardson extrapolation works in higher dimensions too. For a
+two-dimensional grid with $h$ being the grid spacing, the error
+structure depends on $h^2$ in many algorithms (e.g., the finite
+difference Laplacian on a uniform grid). Refining the grid by half
+and applying Richardson produces a fourth-order accurate Laplacian
+from a second-order accurate one. The technique is also used in
+numerical integration (Romberg integration), in ODE solvers
+(Bulirsch-Stoer method), and in machine learning model training
+(model averaging across step sizes).
+
+In every case, the algorithmic content is the same. Two
+approximations at different resolutions, combined to cancel the
+leading error term, produce a higher-order approximation. The
+combination is admissible because the convergence structure is
+known and the cancellation is exact.
+
+\section{Residual Stopping}
+\label{se:residual-stopping}
+
+The Conjugate Gradient method solves the linear system $Ax = b$, where
+$A$ is a symmetric positive-definite matrix, by iteratively improving
+an estimate $x_k$. At each iteration, the algorithm computes the
+residual $r_k = b - A x_k$, the difference between the current
+estimate's effect and the desired right-hand side. If $r_k$ is small,
+$x_k$ is close to the true solution.
+
+The iteration continues until the residual's norm $\|r_k\|$ falls below
+a threshold $\varepsilon$. The threshold is the stopping criterion. The
+algorithm has reached an admissible approximation when the residual no
+longer carries enough information to refine the solution further. Below
+the threshold, additional iterations would adjust the solution by
+amounts smaller than the threshold, producing changes that are
+invisible at the calibrated precision.
+
+This is the algorithmic form of resolution-based stopping. The
+algorithm runs as long as the residual is producing distinctions at
+the current scale; it stops when the residual falls below the scale's
+resolution. The stopping condition is not a fixed number of iterations;
+it is a relationship between the residual and the resolution.
+
+The choice of $\varepsilon$ is part of the calibration. A scientific
+application that requires four significant figures sets
+$\varepsilon = 10^{-4}$; an engineering application that requires only
+two sets $\varepsilon = 10^{-2}$. The threshold determines the
+admissible accuracy of the output. Below the threshold, the algorithm
+admits the answer as final. Above the threshold, the algorithm
+continues iterating.
+
+The stopping criterion's algorithmic content is that it terminates
+the refinement process at the resolution boundary. The chapter's
+question --- how does a finite count of distinctions become an
+admissible notion of distance? --- has its answer in part here. The
+distance is the count of iterations the algorithm performs before the
+residual falls below the threshold. The count depends on the
+threshold, on the matrix's properties (condition number, spectral
+distribution), and on the initial guess. The count is the
+algorithm's measurement of the problem's distance.
+
+For well-conditioned matrices (condition number close to 1), the
+Conjugate Gradient converges quickly: the count is small. For
+ill-conditioned matrices (condition number much greater than 1), the
+count is large. The count is the chapter's distance, measured in
+units of admissible refinements.
+
+The Lean analog is the \texttt{FINITE\_ELEPHANT} typeclass mentioned
+in the Galerkin section. The class certifies that the algorithm's
+current state is admissible at the resolution. The certification is
+the algorithmic version of the residual-falls-below-threshold check.
+The compiler enforces the certificate: a function that asserts an
+answer is admissible at a stated resolution must provide a
+\texttt{FINITE\_ELEPHANT} instance for that resolution.
+
+Residual stopping appears in many iterative algorithms. Newton's
+method for root finding stops when the function value at the current
+estimate is below a threshold. Gradient descent for optimization stops
+when the gradient norm is below a threshold. Iterative refinement of a
+linear solve stops when the residual is below a threshold. Expectation-
+maximization in statistical estimation stops when the change in
+log-likelihood is below a threshold. In each case, the algorithm
+terminates when further iteration would produce no admissible
+refinement.
+
+The chapter's claim is that residual stopping is the algorithmic
+form of resolution-bounded refinement. The stopping condition is the
+calibration boundary: above the boundary, the algorithm has admissible
+work to do; below the boundary, the algorithm has produced an
+admissible answer. The boundary is the resolution. The boundary is
+part of the algorithm's specification. Without the boundary, the
+algorithm could iterate forever, producing increasingly tiny
+adjustments that are invisible at the calibrated precision.
+
+The compiler analog of residual stopping is the elaboration
+heartbeat limit. Lean's \texttt{set\_option maxHeartbeats 400000}
+caps the elaborator's effort at 400,000 heartbeats per definition.
+When the limit is reached, the elaborator stops; the definition
+fails to elaborate. The heartbeat limit is the resolution boundary
+of the compiler: definitions whose elaboration cost exceeds the
+limit are not admissible. The user must either simplify the
+definition or raise the limit.
+
+The heartbeat limit is the compiler's calibration. Different
+projects choose different limits based on the complexity of their
+proofs. Mathlib uses a relatively high limit because its proofs are
+complex; smaller projects use lower limits. The limit is the
+admissible resolution of the elaborator. Definitions that exceed
+the limit are too coarse for the calibration; the user must refine
+them.
+
+This connects the chapter's algorithmic notion of distance to the
+compiler's specific implementation. Distance is the count of
+admissible refinements. The compiler's distance is the count of
+heartbeats. The chapter's algorithmic claim is that this is the
+correct generalization: distance is whatever count the calibration
+specifies as admissible. The specific units (bisection steps,
+Galerkin refinements, Conjugate Gradient iterations, compiler
+heartbeats) vary, but the structure is the same.
+
+\section{FINITE\_ELEPHANT in Lean}
+\label{se:finite-elephant-in-lean}
+
+The typeclass \texttt{FINITE\_ELEPHANT} in \texttt{Episode6.lean} is the
+formalization of the chapter's stopping rule. The class certifies that
+a finite element approximation is admissible at its stated resolution:
+further refinement would produce no new distinctions.
+
+The class has the shape:
+
+\begin{leanexcerpt}{FINITE_ELEPHANT}
+class FINITE_ELEPHANT
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] ... [LOAD Value Carrier]
+  where
+  galerkin_process : GalerkinProcess Value Carrier
+  finite?          : Polynomial $\to$ Polynomial $\to$ Prop := ...
+\end{leanexcerpt}
+
+The first field, \texttt{galerkin\_process}, names the underlying
+Galerkin iteration. The second field, \texttt{finite?}, is the
+decision rule that classifies which transitions are admissibly
+finite. The cascade obligation runs the entire length of the class
+stack; the rule covers the transition cases the chapter named.
+
+To provide a \texttt{FINITE\_ELEPHANT} instance for a specific
+\texttt{GalerkinProcess}, the user must witness every class in the
+cascade and supply (or accept the default for) the decision rule.
+The witnesses typically come from convergence theorems: for cubic
+elements solving a smooth ODE, the error is $O(h^4)$; with
+$h = 0.01$, the error is $10^{-8}$; the rule classifies the
+resulting transitions as finite.
+
+The chapter's algorithmic claim is that \texttt{FINITE\_ELEPHANT} is
+the compiler-enforced version of the stopping rule. Without the
+certificate, the compiler will not admit the approximation as final.
+With the certificate, the approximation is admitted, and downstream
+computations can use it as a record.
+
+The compiler's enforcement is at elaboration time. If a function
+asserts that an approximation is admissible at resolution
+$\varepsilon$ without providing a \texttt{FINITE\_ELEPHANT} instance,
+the compiler refuses to admit the function. If the instance is
+provided but the proof of admissibility is incorrect, the compiler
+checks the proof and produces an error.
+
+This is the chapter's resolution-based stopping in formal Lean code.
+The algorithm's distance is the count of refinements; the count
+terminates at the resolution boundary; the \texttt{FINITE\_ELEPHANT}
+certificate marks the termination as admissible. The certificate is
+the algorithm's commitment that its output is final at the stated
+resolution.
+
+The accompanying typeclasses extend the framework. \texttt{Spline}
+is the type of cubic spline approximations. \texttt{Spline.le} is the
+partial order on splines: one spline refines another when its
+resolution is finer (smaller error tolerance). The order makes
+splines composable: a coarser spline can be replaced by a finer one
+that satisfies stricter admissibility. The replacement does not lose
+information; it adds distinctions.
+
+\texttt{MAGNITUDE}, \texttt{SCALED}, and \texttt{LOAD} are the
+typeclasses for the algebraic operations on splines:
+\texttt{MAGNITUDE} for the size of a spline value; \texttt{SCALED}
+for multiplication by a scalar; \texttt{LOAD} for the right-hand side
+of the differential equation being approximated. Together they
+formalize the linear algebra that makes the Galerkin method work.
+
+The chapter closes with this observation. Distance, in the
+algorithmic sense, is a count of admissible refinements. The count
+is bounded by the resolution. The resolution is part of the
+algorithm's calibration. The \texttt{FINITE\_ELEPHANT} typeclass is
+the formal commitment to the resolution. Together they constitute
+the algorithm's promise: the output is admissible at the stated
+resolution, and the algorithm has terminated because further
+refinement would produce no admissible distinctions.
+
+The chapter's argument is that this discipline is forced by the
+chapter's question. To convert a finite count of distinctions into
+an admissible notion of distance, the algorithm must declare its
+resolution explicitly. Without the declaration, distance is
+underspecified; with the declaration, distance is the count of
+refinements until the resolution is met. The \texttt{FINITE\_ELEPHANT}
+typeclass is the formal version of the declaration. Programs that
+provide it are certified; programs that do not are not yet
+algorithmically complete.
+
+\begin{bridge}
+
+The chapter's question was how a finite count of distinctions becomes
+an admissible notion of distance.
+
+The answer is: through bisection, with the count of refinements
+serving as the distance. Bisection halves the search space at each
+step; the count to reach the resolution boundary is the distance.
+Galerkin FEM applies the same structure to differential equations:
+the count of basis functions refines the approximation, with $h^4$
+convergence for cubic elements. Richardson extrapolation combines
+two refinements to cancel the leading error and produce a stronger
+approximation. Residual stopping terminates the refinement when
+further iteration would produce no admissible distinctions.
+\texttt{FINITE\_ELEPHANT} formalizes the stopping rule as a compiler-
+enforced typeclass.
+
+What remains is motion: how does the system select one admissible
+continuation from among the many that the refinement allows? The
+next chapter is the load-bearing chapter of the book. It contains
+the noncomputability argument: the selection rule requires exact
+Kolmogorov complexity, which is provably uncomputable. The
+algorithmic vocabulary built in the first five chapters is the
+preparation; Chapter 6 is the argument.
+
+\end{bridge}
+
+\begin{coda}{Focusing a Camera Lens}
+
+The photographer is standing on a rooftop at twilight. The subject is
+a building three blocks away: a clock tower with an illuminated face.
+The camera is on a tripod. The lens is a 200-millimeter telephoto,
+manual focus. The photographer's eye is at the viewfinder.
+
+The focus ring is a smooth metal cylinder marked with distance
+gradations: 5 meters, 10 meters, 20 meters, infinity. Between the
+gradations, the ring rotates continuously. The photographer's job
+is to find the position of the ring at which the clock tower is in
+sharpest focus.
+
+He starts with the ring at infinity. Through the viewfinder, the
+clock face is blurry. He rotates the ring counter-clockwise. The
+blur decreases, then begins to increase. He has overshot. He
+rotates back clockwise. The blur decreases again. He has
+overshot in the other direction.
+
+This is bisection. The bracket is the range of focus settings
+between the two overshoots. The midpoint is the photographer's
+next estimate. Each rotation halves the bracket.
+
+For the first pass, the bracket is about thirty degrees of ring
+rotation, corresponding to a distance range of two to three
+meters (the tower is three blocks away, but the lens's focus
+range is large at the long-focus end). The photographer makes
+three or four corrections, each one halving the rotational
+bracket. After the corrections, the bracket is about two degrees
+of rotation.
+
+At this point, he refines the technique. He inspects the
+viewfinder more carefully. The clock face has a long minute
+hand and a short hour hand. The minute hand is the finer detail;
+he focuses on it. A small turn of the ring sharpens the minute
+hand, then begins to soften it. He has reached the bisection's
+fine scale: rotations smaller than a degree.
+
+The lens's optics are such that the image on the camera's sensor
+varies smoothly with the focus ring's position. The variation is
+the convergence: small changes in the ring produce small changes
+in the image. The smoothness is what makes bisection work. If
+the variation were discontinuous, the photographer would not be
+able to converge by halving the bracket.
+
+At ten degrees of bracket, the photographer can see the
+distinction between sharp and slightly-soft. At one degree, he
+can still see it, but the distinction is at the limit of his
+visual discrimination. At a tenth of a degree, the distinction
+is invisible to him through the viewfinder. The clock face
+looks identical at the center of the bracket and at the
+endpoints.
+
+This is the resolution boundary. The viewfinder is the
+calibration instrument. Below the resolution, additional
+refinement of the focus ring produces no admissible distinction.
+The lens may technically be slightly out of focus by a tenth of
+a degree, but the photographer cannot tell, and the final
+photograph will not reveal a difference (the camera's sensor
+has its own resolution boundary, somewhat coarser than the
+photographer's eye).
+
+The photographer stops. The focus is locked. The distance from
+the initial setting (infinity) to the final setting is the
+count of bisection steps: roughly twelve corrections, each
+halving the bracket. Each correction is an admissible
+refinement. The total distance is twelve refinements.
+
+If a more precise focus is required --- say, for a macro shot
+of a small object --- the photographer would need additional
+tools. A focus rail allows millimeter-level adjustments of the
+camera's distance from the subject. A focus loupe magnifies the
+viewfinder, exposing finer distinctions. With these tools, the
+bisection continues to a finer scale: the resolution boundary
+moves. But there is always a resolution: the camera's sensor
+has finite pixels, the lens has a finite resolution power, the
+photographer has finite visual acuity. Below the boundary, the
+image cannot be improved by further refinement.
+
+This is the chapter's lesson. Distance is the count of
+bisection steps to the resolution boundary. The boundary is
+real, not arbitrary. Different instruments have different
+boundaries; the same instrument under different conditions has
+different boundaries (the photographer can focus more precisely
+in bright light than in dim light). The boundary is part of
+the instrument's specification. The
+\texttt{FINITE\_ELEPHANT} certificate is the formal version of
+``focus is now locked at the resolution''.
+
+The photographer presses the shutter. The image is captured.
+The final image's resolution is the joint resolution of the
+lens, the sensor, and the focus accuracy: each one contributes
+to the total. If any one is worse than the others, it
+dominates the result. The lens may be a fine optic; the sensor
+may have many megapixels; if the focus is two degrees off, the
+image is soft and no amount of post-processing recovers the
+detail.
+
+The bisection algorithm of focusing terminates because the
+viewfinder cannot show finer distinctions. The Galerkin
+analog terminates because the residual is below the threshold.
+The Richardson analog terminates when the extrapolation
+agrees with the unextrapolated value. The Conjugate Gradient
+analog terminates when the residual is below the
+$\varepsilon$ threshold. In every case, the algorithm
+terminates at the calibrated boundary of admissible
+refinement.
+
+On the rooftop, the photographer takes three or four more
+exposures of the clock tower at the same focus. The exposures
+differ in their light conditions; the focus does not change.
+The bracket of light conditions is being explored; the focus
+bracket has been resolved. The instrument is at its
+resolution; the next measurement (light) has its own
+resolution. The two are decoupled: the focus is a
+\texttt{FINITE\_ELEPHANT} on the focus axis, and the
+exposures iterate the light axis. The two axes have their
+own bisections, their own resolutions, their own
+\texttt{FINITE\_ELEPHANT} certificates.
+
+The photographer packs up at full dark. The day's photographs
+are stored. Tomorrow he will return to the same rooftop, with
+the same camera, at the same time. The focus ring will be at
+the same setting --- the calibration is repeatable. The
+exposures will differ as the clouds and lights change. The
+bisection at each axis will repeat. The
+\texttt{REPEATABLE} property of the instrument allows the
+algorithm to be applied repeatedly, producing comparable
+results from session to session. The chapter's
+algorithmic forms compose: \texttt{REPEATABLE} comparison
+underpins the \texttt{FINITE\_ELEPHANT} stopping rule, and
+the \texttt{FINITE\_ELEPHANT} certifies the resolution of
+the admissible refinement.
+
+\end{coda}

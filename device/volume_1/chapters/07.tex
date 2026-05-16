@@ -1,0 +1,559 @@
+\chapter{Connections and Transport}
+\label{chap:connections-and-transport}
+
+% Closed question: How can information move between histories while preserving
+% admissibility?
+
+\begin{chapteressay}
+
+Information moves. A vector at one point on a surface can be
+transported to another point along a path; a fact established in
+one record can be carried to another record by an admissible
+transformation; a theorem proved in one mathematical context can
+be applied in another, with appropriate modifications. The
+chapter is about how this movement is made admissible.
+
+Transport requires a connection: a structural rule that says how the
+moved entity should be modified along the path. Without a
+connection, there is no canonical way to compare values at
+different points; with a connection, the comparison is well-defined.
+The connection is part of the mathematical structure; the transport
+is the connection applied.
+
+The chapter develops transport through five mathematical structures.
+Parallel transport is the geometric form: a vector on a curved
+surface is transported along a curve while maintaining its
+orientation relative to the surface. The transport accumulates
+holonomy: closed loops produce rotations proportional to the
+enclosed curvature. The chapter's example is a vector transported
+around a quarter of the globe, accumulating a $90^\circ$ rotation.
+
+The Brouwer fixed-point theorem is the chapter's structural
+guarantee. Any continuous self-map of a closed ball has a fixed
+point. The theorem is topological: it does not depend on the
+specific map, only on the domain's topology. The chapter's
+significance is that transport must preserve some structure;
+the fixed-point theorem guarantees that at least one structure
+survives.
+
+The knowledge partial order is the chapter's example of obstructed
+transport. Two incompatible knowledge states have no join in the
+lattice; transport across them is obstructed. Quantum mechanics
+and general relativity are the canonical instance: each is
+admissible alone; their joint extension is not currently
+admissible at the Planck scale.
+
+Anderson localization is the chapter's example of disorder-induced
+obstruction. An electron in a disordered crystal can be
+localized: its wave function does not propagate; the transport
+fails. The disorder creates destructive interference that traps
+the information. The mathematical analog is the spectral
+behavior of random Schr\"odinger operators.
+
+Martin's Axiom is the chapter's extension theorem. For partial
+orders satisfying the countable chain condition, locally
+consistent choices extend to globally consistent records. The
+filter (the global extension) is guaranteed by the axiom. The
+chapter's transport is admissible when Martin's condition holds.
+
+The chapter's ground example is the ratio of two counts. When the
+counts are at different points on a manifold, comparing them
+requires transport. The transport's path-dependence is the
+chapter's holonomy. The information is preserved when the path
+is admissible; the information is changed when the holonomy is
+non-trivial.
+
+The chapter's second concrete example is a poem translated
+through three languages and back. The original English is
+transported to French, then Japanese, then Russian, then back
+to English. The round trip accumulates structural changes:
+rhyme is lost, imagery shifts culturally, the tonal register
+moves. The final result differs from the original. The
+difference is the chapter's accumulated holonomy in literary
+form.
+
+The chapter's closed question is:
+
+\begin{center}
+\emph{How can information move between histories while preserving
+admissibility?}
+\end{center}
+
+The chapter's answer: through connections. The connection
+specifies the admissible transport. Parallel transport on
+manifolds, classical mechanics' Hamilton-Jacobi flow, gauge
+fields in physics, and the chapter's typeclass cascades are all
+examples of connections. Each has its own admissibility rules;
+each accumulates path-dependent residues; each connects local
+records into global structures.
+
+Subsequent chapters refine this. Chapter 8 introduces the
+calibration that makes multiple observers' records commensurable.
+Chapter 9 introduces curvature: the geometric quantity recording
+the failure of transport to commute. Chapter 10 introduces
+invariance: what survives the transport's relabelings.
+
+\end{chapteressay}
+
+\section{Parallel Transport}
+\label{se:parallel-transport}
+
+A vector at the north pole points along a meridian toward Cairo. The
+vector is parallel-transported along that meridian to the equator,
+maintaining its direction relative to the surface at each step. Upon
+reaching the equator, the vector points due south (toward Cairo's
+longitude). It is then transported east along the equator, a
+quarter of the way around the world, again maintaining its
+orientation relative to the surface. The vector now points along the
+equator, southward in some sense, but in a different absolute
+direction (it has rotated relative to the fixed stars).
+
+Finally, the vector is transported north back to the pole, along the
+meridian of its new position. Upon arrival, the vector has rotated
+ninety degrees relative to its starting direction. The transport
+around the closed triangle (pole, equator-south, equator-east,
+back to pole) has accumulated a holonomy of $90^\circ$.
+
+The rotation is not an error. It is the unavoidable consequence of
+parallel transport on a curved surface. The earth is curved; the
+triangle encloses a spherical area; the holonomy equals the
+spherical excess of the triangle (which for a quarter-of-the-globe
+triangle is exactly $\pi/2$ steradians, hence $90^\circ$ of
+rotation).
+
+The chapter's first claim is that parallel transport carries
+information from one point to another along a path, and the result
+depends on the path's geometric properties. The vector at the pole
+plus the path determines the transported vector at the equator
+(and back at the pole). Two different paths can give two different
+transported vectors. The difference is the holonomy.
+
+The mathematical formalism is the connection on a vector bundle. A
+connection specifies how vectors are transported along curves; it
+is a structural object on the manifold (or its tangent bundle).
+The Levi-Civita connection on the surface of the earth is the
+unique connection compatible with the metric and torsion-free; it
+gives parallel transport in the standard geometric sense.
+
+In Lean, the structure appears as the typeclass cascade
+\texttt{STEP\_1} through \texttt{ACOLYTE\_PROPAGANDA} in
+\texttt{Episode8.lean}. Each step is one transport along the
+class stack: a fact established at one level is carried (with
+appropriate type adjustments) to the next level. The cascade is
+the algorithmic version of parallel transport.
+
+The chapter's claim is that parallel transport is the natural
+algebraic operation for carrying information along admissible paths.
+The transport is unique once the connection is specified. Different
+connections give different transport rules; the choice of
+connection is part of the calibration of the admissible structure.
+
+\section{Brouwer Fixed Point}
+\label{se:brouwer-fixed-point}
+
+Take a cup of coffee. Stir it. After stirring, some point of the
+coffee has ended up exactly where it started. The point may have
+traveled in a complicated path during the stirring, but at the end,
+some point of the coffee is in its original position.
+
+This is the Brouwer Fixed Point Theorem in its most familiar form.
+For any continuous function $f$ from a closed disk to itself, there
+exists a point $x$ such that $f(x) = x$. The point is the fixed
+point of the function. The stirring is the continuous function;
+the fixed point is the unmoved point of the coffee.
+
+The theorem holds in any dimension. For a closed ball in
+$\mathbb{R}^n$, any continuous self-map has a fixed point. The
+proof requires non-trivial topology (the no-retraction theorem,
+which follows from properties of homology or homotopy groups).
+The result is widely useful: any equilibrium in a continuous
+self-map is a fixed point; the theorem guarantees that at least
+one equilibrium exists.
+
+The chapter's second claim is that the existence of fixed points is
+forced by topology, not by the specific structure of the map. Any
+continuous self-map of a contractible space has a fixed point.
+The fixed point is the topological invariant: it exists regardless
+of which specific self-map is chosen, as long as the map is
+continuous and the domain is contractible.
+
+For transport, the fixed-point theorem ensures that some structure
+persists under any admissible transformation. If a record is
+mapped to itself by an admissible transport, at least one
+component of the record is unchanged. The unchanged component is
+the fixed point: the structure that the transport preserves.
+
+\begin{phenom}{Brouwer Fixed Point Theorem}
+\label{ph:brouwer-fixed-point}
+
+\PhStatement Let $f : D^n \to D^n$ be a continuous function from the
+closed $n$-dimensional ball to itself. Then there exists a point
+$x \in D^n$ such that $f(x) = x$.
+
+\PhOrigin Brouwer proved the theorem in 1910 in the context of his
+work on the dimension of Euclidean spaces. The theorem is one of
+the foundational results of algebraic topology.
+
+\PhObservation For $n = 1$: any continuous function $f : [0, 1] \to
+[0, 1]$ has a fixed point. This is a corollary of the
+Intermediate Value Theorem applied to $g(x) = f(x) - x$.
+
+\PhConstraint The domain must be a closed ball (or more generally,
+homeomorphic to a closed ball: convex, compact, contractible).
+The map must be continuous. Without these conditions, the theorem
+fails.
+
+\PhConsequence The theorem guarantees the existence of equilibria
+in many physical and mathematical systems. It is the foundation
+of game theory's Nash equilibrium existence proof, of
+differential equations' equilibrium analysis, and of many other
+applications.
+
+\end{phenom}
+
+The Brouwer Fixed Point phenomenon is the chapter's instance of a
+topological invariant under transport. Any admissible
+self-transport of a contractible space has a fixed point; the
+fixed point is forced by the space's topology. The transport's
+specific rules do not matter; the topology guarantees the
+existence.
+
+\section{The Knowledge Partial Order}
+\label{se:the-knowledge-partial-order}
+
+Two scientific theories may be incompatible in extreme regimes.
+Quantum mechanics and general relativity agree to high precision on
+most physical phenomena, but they diverge at the Planck scale:
+quantum mechanics predicts fluctuating spacetime at the smallest
+scales; general relativity predicts smooth spacetime. The two
+theories' predictions at the Planck scale are inconsistent.
+
+The two theories form a partial order on the lattice of possible
+physical theories. Each theory is a member of the lattice; the
+ordering is by what each theory implies. Quantum mechanics
+implies certain predictions; general relativity implies different
+predictions. The two theories' \emph{join} would be the theory
+implying both wherever they agree: that is, the theory of
+non-extreme regimes. The two theories' \emph{meet} would be the
+theory implied by both: the theory of the most extreme regimes,
+where neither alone is admissible.
+
+The join may not exist in the strict sense. A theory implying both
+quantum mechanics and general relativity must reconcile their
+predictions at the Planck scale; no such reconciliation is
+currently known. The lack of a join is the chapter's
+mathematical obstruction to a unified theory.
+
+The chapter's third claim is that knowledge --- in this
+philosophical sense --- forms a partial order with potentially
+missing joins. Two theories may both be admissible; their joint
+implications may not be; the join does not exist in the lattice.
+The transport of information across the boundary between the two
+theories' regimes is therefore obstructed.
+
+The \texttt{Knowledge.le} relation in \texttt{Episode9.lean}
+formalizes this: one knowledge state is at most another when the
+first's implications are contained in the second's. The relation
+is a partial order; the order has meets and joins (when they
+exist); the joins may be missing for incompatible knowledge.
+
+\begin{leanexcerpt}{Knowledge}
+inductive Knowledge
+  | jarjar : Prop $\to$ Knowledge
+  | ledger : Prop $\to$ Fact $\to$ Knowledge $\to$ Knowledge
+\end{leanexcerpt}
+
+A \texttt{Knowledge} state is an inductive stack. The
+\texttt{jarjar} constructor sits at the base: a single
+\texttt{Prop} that the learner has been told (and not yet
+checked). The \texttt{ledger} constructor extends a prior
+knowledge by attaching a \texttt{Prop}, a \texttt{Fact} that
+witnesses it, and the prior stack underneath. The
+\texttt{Knowledge.le} relation orders these stacks by
+substack-inclusion: one state is at most another when it sits
+inside the other's ledger chain.
+
+For two incompatible knowledge states (each consistent
+individually, but inconsistent jointly), the join would be the
+union of their conclusions; this union violates the consistency
+condition; hence the join does not exist in the lattice. The
+chapter's claim is that this obstruction is real: not every
+pair of records admits an admissible transport.
+
+The lesson: transport is not unrestricted. Information moves
+between admissible records only when the records are jointly
+admissible. When the joint admissibility fails, the transport is
+obstructed; the obstruction is the lattice's missing join.
+
+\section{Anderson Localization}
+\label{se:anderson-localization}
+
+In 1958, Philip Anderson studied the behavior of electrons in
+disordered crystals. The expected behavior was that electrons would
+diffuse through the crystal, conducting electricity in the usual
+way. Anderson showed something different. For sufficiently
+disordered systems, the electron's wave function does not spread;
+it remains localized near its initial position. The disorder
+creates destructive interference that traps the wave function.
+
+Mathematically, the Schr\"odinger equation $H \psi = E \psi$ has
+solutions that are either extended (spreading throughout the
+material) or localized (concentrated in a small region). For
+ordered systems, the eigenstates are extended; for disordered
+systems above a critical disorder strength, the eigenstates are
+localized. The transition is the Anderson transition.
+
+The chapter's fourth claim is that transport can fail. An electron
+that is localized cannot propagate; the wave function does not
+transport its initial values to other regions of the crystal.
+The localization is the obstruction to transport. The chapter's
+framework captures this: an admissible record may fail to
+transport its information when the underlying medium has too
+much disorder.
+
+The mathematical analog of Anderson localization is a random
+perturbation of a self-adjoint operator. Let $H_0$ be a
+self-adjoint operator with extended eigenstates (e.g., the
+Laplacian on a regular lattice). Add a random potential $V$ to
+form $H = H_0 + V$. For small $V$, the eigenstates remain
+extended; for large $V$, the eigenstates localize.
+
+The phenomenon is universal: any sufficiently disordered system
+exhibits localization. The chapter's claim is that this is a
+generic feature of transport: too much disorder obstructs the
+transport. The obstruction is the chapter's algebraic record of a
+non-functioning transport.
+
+In Lean, the analog appears in the typeclass machinery for
+\texttt{REPRESENTABLE} in \texttt{Episode3.lean}. A representable
+record can be transported through the elaboration cascade; a
+non-representable record cannot. The non-representability is
+the algebraic version of Anderson localization: the record exists
+but cannot be propagated.
+
+The chapter's lesson: not all admissible records are
+transportable. Some records are locally admissible but globally
+obstructed. The obstruction is a real algebraic phenomenon; the
+chapter's discipline carries it honestly as a non-transport.
+
+\section{Martin's Condition and Extension}
+\label{se:martins-condition-and-extension}
+
+Martin's Axiom is a set-theoretic principle that strengthens the
+Baire Category Theorem. It states: for any partial order $P$
+satisfying the countable chain condition, and any countable
+family of dense subsets of $P$, there exists a filter on $P$
+meeting all the dense subsets. The axiom is independent of
+Zermelo-Fraenkel set theory; it is consistent with ZFC and
+also independent of the continuum hypothesis.
+
+In the chapter's framework, Martin's Axiom guarantees the
+extension of consistent local choices to a globally consistent
+choice. The dense subsets are the local conditions; the filter is
+the globally admissible record; the existence of the filter is
+the chapter's transport guarantee for partial orders satisfying
+the countable chain condition.
+
+This is the chapter's fifth claim. Under mild combinatorial
+conditions (the countable chain condition), local consistency
+admits global extension. A record that is locally consistent at
+every point of an admissible family of conditions extends to a
+globally consistent record. The extension is the transport across
+the family; the existence of the filter is the transport's
+guarantee.
+
+The countable chain condition (CCC) is the requirement that any
+antichain (a set of pairwise incomparable elements) is countable.
+For many natural partial orders (forcing posets in set theory,
+the poset of finite functions, etc.), the CCC holds. For some
+orders (uncountable antichains exist), the CCC fails; Martin's
+Axiom does not apply.
+
+The compiler's analog is the typeclass instance resolution
+algorithm. When the elaborator needs an instance, it searches
+the global instance database. The search visits dense subsets of
+the instance lattice (the candidates of varying specificity);
+when a candidate satisfies all the local conditions, the
+elaborator selects it. The selection is the chapter's filter:
+the globally admissible choice consistent with all the local
+requirements.
+
+In Lean, the \texttt{WITNESSED} typeclass in \texttt{Episode10.lean}
+formalizes the witness of a transported truth. A
+\texttt{WITNESSED} proposition has been transported from some
+admissible source through an admissible process; the witness is
+the certificate of the transport's success. The certificate is
+the filter in Martin's sense: the algebraic confirmation that
+the local conditions extend to a global admissible record.
+
+\begin{leanexcerpt}{WITNESSED}
+class WITNESSED
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] ... [TRUTH Value Carrier]
+  where
+  baptism : ReligiousProcess Value Carrier
+  witness : Gospel
+  risen? : Gospel $\to$ Gospel $\to$ Prop := fun a b =>
+    Gospel.le a b $\to$ Gospel.le b a
+\end{leanexcerpt}
+
+The chapter closes here. Transport is the algebraic operation of
+moving structure between admissible records. The transport is
+admissible when the underlying connection is well-defined.
+Parallel transport on curved surfaces accumulates holonomy. The
+Brouwer fixed-point theorem guarantees the existence of fixed
+points under any continuous self-transport. The knowledge
+partial order has potentially missing joins; transport across
+incompatible knowledge states may be obstructed. Anderson
+localization shows that disorder can obstruct transport
+algebraically. Martin's Axiom guarantees the extension of
+consistent local choices under the CCC.
+
+\begin{bridge}
+
+The chapter's question was how information can move between
+histories while preserving admissibility.
+
+The answer is: through a connection that defines admissible
+transport. Parallel transport on curved surfaces accumulates
+holonomy. The Brouwer fixed-point theorem guarantees the existence
+of unmoved points under any continuous self-transport. The
+knowledge partial order may have missing joins; transport across
+incompatible records is obstructed. Anderson localization shows
+that sufficient disorder obstructs transport algebraically.
+Martin's Axiom guarantees the extension of consistent local
+choices to global admissible records under the CCC.
+
+What remains is the reference structure. Different observers
+performing transport may produce different transported values
+because they use different connections. The next chapter takes up
+calibration: what reference structure lets distinct observers
+compare their counts as one physical record?
+
+\end{bridge}
+
+\begin{coda}{Translating a Poem Through Three Languages and Back}
+
+The poem is short. Eight lines. The original is in English, written
+by a contemporary American poet now in her seventies. The poem is
+well-known: it has been anthologized, taught in workshops, and
+translated several times into other languages.
+
+The project this evening is a translation exercise undertaken by a
+small literary circle in a coffee shop. The participants are a
+poet who reads French, another who reads Japanese, a third who
+reads Russian, and a fourth who speaks only English. The
+exercise: the French speaker will translate the English original
+into French; the Japanese speaker will then translate that French
+into Japanese; the Russian speaker will translate that Japanese
+into Russian; finally, the English speaker (the fourth participant)
+will translate the Russian back into English.
+
+The four-step chain is the chapter's transport in literary form.
+The original English is the source; each intermediate version is
+a transported translation; the final English is the round-trip
+result. The question: what survives?
+
+The first step is the French translation. The French poet reads
+the English carefully, several times. She notes the rhyme scheme
+(ABABCDCD, with an irregular meter), the central image (a
+window at dusk), the recurring word that anchors the poem
+(``return''), and the tonal register (intimate, slightly
+melancholy). She translates. Her French version preserves the
+rhyme scheme (with rhymes appropriate to French phonology), keeps
+the central image, finds a French equivalent of ``return'' that
+recurs in the same positions, and maintains the tonal register.
+The translation takes about forty minutes.
+
+The Japanese translator reads the French. He does not see the
+original English. The French version is a poem in its own right;
+he treats it as such. He notes the same elements: rhyme,
+image, recurrence, tone. Japanese, however, does not have rhyme
+in the European sense; Japanese poetic forms use syllable counts
+and tonal contrasts instead. The translator adopts the
+five-seven-five syllable pattern characteristic of haiku, with
+some modification for the eight-line structure. The central image
+(the window at dusk) is rendered in Japanese with cultural
+attention: a shoji screen rather than a window pane, evening
+light rendered with seasonal words. The recurring ``return''
+becomes a Japanese word with similar function. The Japanese
+translation takes an hour.
+
+The Russian translator reads the Japanese. He does not see the
+French or the English. The Japanese poem is now the source. He
+notes a different set of elements: the imagery has shifted (shoji
+screen, evening seasonal words), the rhythmic pattern is now
+syllabic rather than rhymed, the tonal register is more austere
+than the original French (and presumably the original English,
+which he has not seen). His Russian translation aims for fidelity
+to the Japanese; he adopts a Russian rhythmic pattern that
+echoes the syllabic count, finds Russian equivalents for the
+imagery, and maintains the austere tone. His translation takes
+forty-five minutes.
+
+The English speaker now translates the Russian back into English.
+She has not seen the original, the French, or the Japanese. She
+reads the Russian poem and translates with fidelity to it. Her
+English version preserves the Russian imagery, the syllabic-
+derived rhythm, the austere tone, the meaning that the Russian
+carries.
+
+The final English translation is then compared to the original.
+The four participants, the original poet (who joined them by
+video), and a few coffee-shop observers look at the two side by
+side.
+
+What survives? Some structural features. Both poems are eight
+lines. Both have a sense of evening and indoor space. Both
+contain a recurring word, though the words are different (the
+original's ``return'' has become something like ``come back'' in
+the final English, via French \emph{revenir}, Japanese
+\emph{kaeru}, Russian \emph{vozvrashchat}'sya). The central
+image has shifted: an English window has become a shoji screen
+has become a Russian decorative shutter has become an English
+shutter. The image is recognizable as ``barrier between inside
+and outside, partially transparent''; the specific cultural
+form differs.
+
+What has been lost? The rhyme scheme: ABABCDCD is gone, replaced
+by free verse. The English language's specific cadence is gone,
+replaced by a rhythm influenced by Russian. The intimate
+register of the original is muted; the final version is more
+austere. The original poet's voice is not recoverable from the
+final translation; the final translation has acquired its own
+voice.
+
+What has been preserved through transport? The overall
+narrative: someone at evening, indoors, contemplating return.
+The emotional gesture: a tender remembering. The structural
+form: eight lines, evening, recurrence.
+
+This is the chapter's transport in action. The original
+information (the poem) has been transported through three
+admissible translations and back. Some structural features are
+preserved (the eight lines, the emotional gesture, the central
+image's category). Other features are lost (the rhyme, the
+specific cadence, the intimate register).
+
+The losses are the chapter's holonomy. The transport around the
+closed loop (English to French to Japanese to Russian to
+English) has accumulated structural changes; the result differs
+from the starting point. The accumulation is the chapter's
+record of the transport's curvature: the path-dependence of
+literary translation across linguistic boundaries.
+
+The discussion at the coffee shop is animated. The original poet
+finds the result fascinating. Her recurring ``return'' has
+become a different word; her window is now a shutter; her
+intimate register has become austere. She does not consider
+these losses; she considers them transformations. The poem has
+been carried through three languages and has emerged different,
+but recognizable.
+
+The exercise ends late. The participants disperse. Each carries
+home a small understanding of the chapter's transport
+phenomena: information moves between admissible records, but
+the path matters, and the round trip never exactly returns.
+
+\end{coda}

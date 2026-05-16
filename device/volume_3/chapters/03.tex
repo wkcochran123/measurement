@@ -1,0 +1,844 @@
+\chapter{The Interpolation Problem}
+\label{chap:interpolation-problem}
+
+% Closed question: What can be said about the gap between recorded events
+% without inventing structure not in the ledger?
+
+\begin{chapteressay}
+
+The Lean elaborator performs a computation that has no obvious counterpart
+in human reasoning. When a user types
+\begin{verbatim}
+def x := f y
+\end{verbatim}
+without specifying the type, the elaborator must figure out what type
+\texttt{x} should have. It does this by introducing a metavariable: a
+named placeholder for the unknown type. The metavariable is not zero. It
+is not unspecified. It is a specific token, recorded in the elaborator's
+state, with a list of constraints attached. As the elaborator processes
+more of the program, the constraints accumulate. At some point, the
+constraints uniquely determine the metavariable's value, and the
+elaborator commits.
+
+The remarkable property is that this can take a long time. A definition
+that contains many implicit arguments, complicated typeclass resolutions,
+or recursive references may introduce dozens of metavariables. Each one
+must be carried through the elaboration, constrained by the surrounding
+context, and resolved at the right moment. If the elaborator resolves
+too early, it commits to a wrong value and produces a confusing error
+later. If it resolves too late, the elaboration may stall waiting for
+constraints that never arrive. The elaborator's algorithm is a careful
+choreography of constraint gathering and metavariable resolution.
+
+This choreography is the algorithmic embodiment of the chapter's
+question. The compiler is between two recorded events: the user's
+source code (the body of the definition) and the final elaborated
+term (the type-checked, fully resolved value that will be added to
+the namespace). Between those two events, the elaborator carries a
+soup of partial information: types being inferred, instances being
+resolved, universes being unified. The carriage is admissible only if
+the partial information is held honestly --- as constrained
+placeholders, not as committed but possibly wrong values.
+
+This chapter's claim is that any algorithm that operates on incomplete
+information must use this structure. The algorithm cannot avoid having
+gaps; the gaps are inherent in operating before all input has been
+seen. The question is how the algorithm represents the gaps. The
+chapter develops three concrete examples, each from a different domain,
+showing how the metavariable structure appears.
+
+The first example is cubic spline fitting. Ten temperature readings
+have been taken at ten times during the day. The question ``what was
+the temperature at 9:15 AM, between the 8 AM and 10 AM readings?'' has
+no direct answer; the instrument did not run at 9:15. The cubic spline
+algorithm fills the gap with a uniquely determined smooth curve through
+the data. The algorithm's resolution of the gap is the algorithm's
+output. The interior slopes of the spline are metavariables; they are
+resolved by a linear system derived from the smoothness conditions.
+
+The second example is the Lean elaborator itself. The user types a
+definition with a hole, and the elaborator infers the missing type
+from the body and the context. The hole is a metavariable. The
+inference is the resolution. The elaborator carries the metavariable
+through the elaboration, gathering constraints, and resolves it when
+the constraints are sufficient. The same algorithmic structure as
+the cubic spline, but in the domain of types rather than the domain
+of temperatures.
+
+The third example is the boundary of what these algorithms can do.
+Some metavariables cannot be resolved. The bits of Chaitin's
+constant $\Omega$ are well-defined mathematically, constrained by
+the halting status of each program, but no algorithm can compute them.
+The metavariable can be carried by the elaborator, but cannot be
+evaluated. This is the halting boundary, encountered as the
+interpolation limit.
+
+The chapter's second metaphor is a legal contract. A contract is a
+\texttt{REPRESENTABLE} legal instrument: well-formed, signed
+according to specified rules, witnessed by a notary. A contract may
+have blanks: a date to be filled in, signatures to be obtained,
+initial fields awaiting their owner. The contract carries the blanks
+as metavariables. Each blank has a type (a date, a signature, an
+initial) and admissibility conditions (within a time window,
+witnessed, executed by a specific party). The contract is
+admissible in the unsigned state; it is also admissible in the
+signed state. The transition is the resolution of the metavariables.
+
+The lawyer drafting the contract does not silently fill in blanks
+with default values. She does not pretend the contract is complete.
+She manages the metavariables: she identifies what each blank
+requires, she gathers the constraints, she sequences the resolutions.
+The contract may close successfully (all blanks resolved, signatures
+witnessed) or may halt unresolved (offer expires). Either outcome is
+admissible. The record carries the resolution status honestly.
+
+The chapter's closed question is:
+
+\begin{center}
+\emph{What can be said about the gap between recorded events without
+inventing structure not in the ledger?}
+\end{center}
+
+The chapter develops the answer through five sections. Section 1
+introduces cubic spline fitting as the canonical algorithmic
+interpolation. Section 2 examines the Lean elaborator's metavariable
+machinery as the chapter's running illustration. Section 3 introduces
+the halting boundary as the limit case: a metavariable that no finite
+algorithm can resolve. Section 4 covers noisy interpolation: when the
+data itself is uncertain, the metavariable is resolved to an
+estimate with named uncertainty. Section 5 examines
+\texttt{ChaitinsNumberSequence} in Lean: the cleanest example of a
+type that exists but admits no constructible value, the
+representation of the unresolvable metavariable.
+
+The structure throughout is the same. The algorithm has incomplete
+information. It carries the incomplete information as a metavariable.
+It accumulates constraints from the surrounding context. When the
+constraints suffice, it resolves; when they don't, it carries the
+metavariable forward, marked as unresolved. The honest report of the
+resolution status is part of the algorithm's output.
+
+This pattern is the chapter's contribution to the book's larger
+argument. The compiler is doing this. The universe, if it is running
+admissible algorithms, must be doing this. The selection rule that
+picks one physical history from many admissible ones is a
+metavariable resolution problem at the deepest level: the
+constraint to be satisfied is the exact Kolmogorov complexity of the
+history, and the metavariable to be resolved is which of the
+infinitely many admissible histories has the minimum complexity.
+Chapter 6 takes up that argument. The earlier chapters build the
+vocabulary.
+
+\end{chapteressay}
+
+\section{Cubic Spline Fitting}
+\label{se:cubic-spline-fitting}
+
+Ten temperature readings have been taken at ten times during the day: 6 AM,
+8 AM, 10 AM, noon, 2 PM, 4 PM, 6 PM, 8 PM, 10 PM, midnight. The readings
+are integers in degrees Celsius. The question is: what was the temperature
+at 9:15 AM? No reading was taken at that time, but the value must be
+something. The instrument was not running at 9:15; the ledger has no entry.
+The task is to fill in a value that is admissible given the surrounding
+readings, without inventing data the instrument did not produce.
+
+The Python library \texttt{scipy.interpolate} provides
+\texttt{CubicSpline} for exactly this task. Given the ten (time,
+temperature) pairs, the constructor builds a piecewise cubic function that
+passes through every pair and is twice continuously differentiable
+($C^2$) at the interior knots. Evaluating the spline at 9:15 AM produces a
+specific number; the spline's continuity properties guarantee that the
+number is consistent with the surrounding data.
+
+The construction proceeds as follows. On each of the nine intervals
+between adjacent readings, the spline is a cubic polynomial $a_i + b_i
+(t - t_i) + c_i (t - t_i)^2 + d_i (t - t_i)^3$ for $i = 0, 1, \ldots, 8$.
+There are nine intervals and four coefficients per interval, giving thirty-
+six unknowns. The constraints are: the spline passes through both
+endpoints of each interval (two equations per interval, eighteen total);
+first derivatives match at each interior knot (eight equations); second
+derivatives match at each interior knot (eight equations). Total
+constraints: thirty-four. Two more constraints are needed; the standard
+choice is the natural spline boundary, $f''(t_0) = f''(t_9) = 0$.
+
+The thirty-six unknowns and thirty-six equations form a linear system.
+The system is tridiagonal in the slopes at the interior knots, which
+means it can be solved in $O(n)$ time by Gaussian elimination. The
+solution is unique: there is exactly one $C^2$ cubic spline through the
+data with natural boundary conditions. The spline is the algorithm's
+output.
+
+What was the temperature at 9:15 AM? The spline evaluated at 9:15
+produces, say, twenty-one degrees Celsius. This is the algorithm's
+answer. The answer is not a measurement; the instrument did not take a
+reading at 9:15. The answer is an interpolation: the unique smooth value
+consistent with the surrounding measurements under the cubic-spline
+admissibility rule.
+
+The distinction between measurement and interpolation is the chapter's
+subject. The ten readings are measurements: the instrument produced
+them, the ledger admits them, they are facts in the record. The
+spline's value at 9:15 is an inference: the algorithm produces it from
+the surrounding facts under a specified continuity assumption. The
+inference is admissible only because the continuity assumption is
+stated explicitly. If the assumption changes (linear interpolation,
+piecewise constant, quadratic, fifth-order polynomial), the inferred
+value changes. The interpolation depends on the assumption; the
+measurement does not.
+
+The cubic spline is the canonical algorithmic answer because it is the
+smoothest interpolation that does not invent excess structure. Higher-
+order polynomials (a single ninth-degree polynomial through all ten
+points) would oscillate wildly between the data points; the Runge
+phenomenon is well-documented. Lower-order interpolations (linear,
+piecewise quadratic) lack second-derivative continuity, which produces
+visible kinks at the knots. Cubic splines achieve $C^2$ smoothness
+with the minimum polynomial degree, and the natural boundary condition
+minimizes the integral of the squared second derivative ---the bending
+energy of the curve.
+
+This is the curve-fitting analog of the chapter's question. The gap
+between two recorded events (the temperature at 8 AM and the
+temperature at 10 AM) is filled by the unique $C^2$ piecewise cubic
+that minimizes bending energy. The fill is structured; it is not
+arbitrary. The structure is named (cubic spline with natural boundary).
+The structure is admissible because it does not introduce features
+(oscillations, kinks, discontinuities) that the data does not
+require.
+
+In Lean, the analog is the \texttt{Spline} type from \texttt{Episode6.lean}
+in the Lean codebase. The \texttt{Spline} structure carries a list of
+(time, value, slope) triples; the slope at each interior knot is the
+metavariable that the spline-fitting algorithm resolves. The natural
+boundary condition fixes the slope at the endpoints. The interior
+slopes are determined by the tridiagonal solve. The \texttt{Spline.le}
+relation is the partial order on splines: one spline refines another
+when it has the same or more knot points with the same or more
+specific slopes.
+
+The cubic spline fitting is the chapter's first concrete example of an
+algorithm that carries a metavariable. Before the linear system is
+solved, the interior slopes are unknown. They are not arbitrary: the
+constraints determine them. They are not measured: the instrument did
+not produce them. They are inferred: the algorithm produces them from
+the constraints. Carrying the metavariable through the algorithm,
+without resolving it prematurely, is what permits the eventual unique
+solution.
+
+\section{Carrying Metavariables in the Lean Elaborator}
+\label{se:carrying-metavariables}
+
+Open a Lean file and type:
+\begin{verbatim}
+def foo : ?$\alpha$ := 3
+\end{verbatim}
+The expression \texttt{?$\alpha$} is a placeholder for the type. The user
+has not specified what type \texttt{foo} should have; they have asked Lean
+to figure it out. The Lean elaborator processes the definition as follows:
+it sees the body \texttt{3}, recognizes it as a numeric literal, infers
+that the type must be a numeric type, and resolves \texttt{?$\alpha$} to
+\texttt{Nat} (the default numeric type unless overridden). The definition
+is admitted with type \texttt{Nat}.
+
+The placeholder \texttt{?$\alpha$} is a metavariable. It is the
+elaborator's record that some information is needed but not yet
+available. During elaboration, the metavariable is carried as a typed
+hole: the elaborator knows that \texttt{?$\alpha$} is a type (of sort
+\texttt{Type 0}), but does not know which type. As elaboration proceeds,
+constraints accumulate: the body imposes that \texttt{?$\alpha$} admits
+the literal \texttt{3}; the type-class resolution imposes that
+\texttt{?$\alpha$} has a \texttt{OfNat 3} instance; the default-instance
+rule imposes that, absent other constraints, \texttt{?$\alpha$} is
+\texttt{Nat}. The constraints, taken together, uniquely determine
+\texttt{?$\alpha$ = Nat}.
+
+Turn on the elaboration trace with \texttt{set\_option
+trace.Meta.isDefEq true} and re-run. The trace prints every unification
+step: every time the elaborator asks ``is this metavariable equal to this
+other term?'', the trace records the question and the answer. The trace
+for the above definition shows two or three unification events, each one
+constraining \texttt{?$\alpha$} a little further. The final event
+resolves the metavariable to \texttt{Nat}.
+
+The metavariable is the elaborator's way of carrying the gap between
+recorded events. The body \texttt{3} is a recorded event: the user
+typed it, and the elaborator has read it. The type \texttt{?$\alpha$} is
+unrecorded: the user did not provide it. Between the recorded event
+(the body) and the required event (the type), the elaborator carries a
+metavariable. The metavariable is constrained but not yet resolved.
+
+This is the algorithmic form of the chapter's question. What can be
+said about the gap? The metavariable can be said to be of some sort,
+constrained by the surrounding context, but its specific value is not
+yet known. The elaborator must carry this state without resolving it
+prematurely. If the elaborator resolved \texttt{?$\alpha$} to
+\texttt{Nat} as soon as it saw the literal \texttt{3} --- without
+considering whether the user might have wanted \texttt{Int} or
+\texttt{Real} --- the elaborator would foreclose admissible options.
+The correct behavior is to carry the metavariable, accumulate
+constraints from the rest of the definition, and resolve at the end
+when all constraints are gathered.
+
+The constraints come from many sources. The body provides type
+constraints (the literal \texttt{3} demands a numeric type). The
+expected return type, if specified, provides another constraint.
+Other typeclass constraints (instances that must be available) provide
+further restrictions. The default-instance mechanism provides a tie-
+breaker when multiple types satisfy all constraints. The elaboration
+strategy is to gather all constraints, then resolve.
+
+If the constraints are inconsistent, the elaborator reports an error:
+the metavariable cannot be resolved. Example:
+\begin{verbatim}
+def bar : Int := "hello"
+\end{verbatim}
+The user has specified the type (\texttt{Int}) and the body
+(\texttt{"hello"}). The constraints are: \texttt{"hello"} is a
+\texttt{String}; the expected type is \texttt{Int}; \texttt{String}
+must equal \texttt{Int}. The unification fails; the elaborator
+produces a type mismatch error.
+
+If the constraints are insufficient, the elaborator reports a
+metavariable that could not be resolved. Example:
+\begin{verbatim}
+def baz := []
+\end{verbatim}
+The body is an empty list. The list has element type \texttt{?$\alpha$},
+which is unconstrained. The elaborator cannot infer \texttt{?$\alpha$}
+without more information. The error message asks the user to provide an
+explicit type annotation.
+
+The metavariable is the elaborator's representation of unresolved
+state. It is not an error; it is a normal feature of elaboration. Many
+metavariables are carried during the elaboration of a single
+definition, and most of them resolve by the end. Only those that remain
+unresolved after all constraints are gathered produce errors.
+
+The companion typeclass in \texttt{Episode3.lean} is
+\texttt{Metavariable}. The class formalizes the chapter's claim that
+metavariables are admissible placeholders. A \texttt{Metavariable}
+carries a type (the sort of thing it stands for) and a constraint set
+(the conditions it must satisfy when resolved). \texttt{PhysicalProcess}
+is the typeclass for processes that produce metavariable outputs ---
+outputs that are constrained but not yet resolved. \texttt{COMPARABLE}
+certifies that two such processes can be compared: their constraint
+sets can be intersected, and the intersection narrows the admissible
+resolutions.
+
+Lean's elaborator is doing exactly what the chapter says an
+instrument must do. It carries unresolved values through the
+computation. It accumulates constraints. It refuses to commit
+prematurely. When constraints are sufficient, it resolves. When
+constraints are inconsistent, it reports the inconsistency. When
+constraints are insufficient, it reports the gap. The elaborator's
+behavior is the algorithmic form of admissible measurement under
+uncertainty.
+
+This is the chapter's first deep observation. The cubic spline
+algorithm carries metavariables (the interior slopes) until the
+constraints from the linear system resolve them. The Lean elaborator
+carries metavariables (the typed holes) until the constraints from
+the body and the context resolve them. The two algorithms are
+structurally identical at the level of the chapter's question. Both
+carry unresolved values; both resolve from constraint gathering;
+both refuse premature commitment.
+
+\section{The Halting Boundary as Interpolation Limit}
+\label{se:halting-boundary-as-interpolation-limit}
+
+The cubic spline produced a value at 9:15 AM. The Lean elaborator
+resolved \texttt{?$\alpha$ = Nat}. Both algorithms succeeded because their
+constraints uniquely determined the metavariable. The next question is
+what happens when the constraints do not converge.
+
+Consider a Lean program that should produce a list of natural numbers:
+\begin{verbatim}
+def search : List Nat := goldbachCounterexamples
+\end{verbatim}
+where \texttt{goldbachCounterexamples} is a function that searches the
+natural numbers for counterexamples to Goldbach's conjecture and returns
+the ones it finds. The function is well-defined as a mathematical
+specification: for each even integer $n > 2$, check whether $n$ can be
+written as a sum of two primes; if not, include $n$ in the list. The
+function is also well-typed in Lean: it has type \texttt{List Nat}.
+
+But the function does not terminate. The search is infinite: there are
+infinitely many even integers to check, and even if no counterexample
+exists, the function must run forever to prove that. Lean's elaborator
+cannot evaluate the function during elaboration; the elaboration would
+not return.
+
+This is the interpolation limit. The function has a well-defined
+mathematical value (a list of natural numbers, possibly empty), but no
+algorithmic procedure can produce that value in finite time. The
+metavariable representing the function's output cannot be resolved by
+the elaborator. The constraints are present and consistent; the
+resolution procedure is not.
+
+The \texttt{REPRESENTABLE} typeclass in \texttt{Episode3.lean} marks
+this boundary. A function is \texttt{REPRESENTABLE} when there is a
+finite algorithmic procedure that produces its value. \texttt{REPRESENTABLE}
+typeclass instances are derived for primitive functions (addition,
+multiplication, list construction) and propagate through composition
+(if $f$ and $g$ are \texttt{REPRESENTABLE}, so is their composition).
+The Goldbach search function is not \texttt{REPRESENTABLE}: it
+cannot be derived.
+
+What can the elaborator do with a non-\texttt{REPRESENTABLE} function?
+Several options. First, accept the function's type definition but not
+its evaluation. This is what Lean does by default: the function can be
+used in proofs, in type signatures, in the construction of larger
+types --- but it cannot be evaluated. The Lean expression
+\texttt{\#eval search} would either time out or produce no output.
+
+Second, evaluate the function up to a bound and return a partial
+result. This is what \texttt{partial def} permits: the function is
+declared partial, indicating that termination is not guaranteed.
+Lean trusts the user's assurance and allows the function to be
+written. \texttt{\#eval} on a partial function may run forever, but
+the elaborator does not refuse to admit the function.
+
+Third, use the function as a metavariable in a larger computation.
+The function's value is not resolved; the function is named as an
+unknown; downstream computations that depend on it are also
+unresolved. The elaborator carries the chain of unresolved values
+through the dependent computation.
+
+Each of these is a different protocol for handling the halting
+boundary. Each is the chapter's interpolation problem at the algorithmic
+limit. The function's value is the metavariable; the procedure to
+resolve it does not terminate; the elaborator must decide what to do.
+The chapter's lesson is that the elaborator must admit the unresolved
+state honestly --- not by silently substituting a default value, not by
+silently refusing to admit the function, but by carrying the
+unresolved state explicitly and allowing downstream computations to
+proceed under the explicit acknowledgment of the gap.
+
+This is the bridge from Chapter 1's halting boundary (the limit of
+enumeration) to Chapter 3's interpolation problem (the limit of
+metavariable resolution). The two are the same boundary, encountered at
+different points in the algorithmic pipeline. Enumeration runs out
+when the next mark cannot be produced; interpolation runs out when the
+next metavariable cannot be resolved. Both run out at the halting
+boundary.
+
+The \texttt{ChaitinsNumberSequence} typeclass in \texttt{Episode3.lean}
+formalizes this. The sequence is the binary expansion of $\Omega$, the
+halting probability. The $n$-th bit of $\Omega$ encodes the halting
+status of program $n$. The bits are well-defined; no algorithm can
+compute them all. \texttt{ChaitinsNumberSequence} carries the bits as
+metavariables: each bit is named, typed, and bounded (it is 0 or 1),
+but its specific value is not resolved.
+
+The compiler can carry the typeclass instance --- the user can write
+type signatures involving \texttt{ChaitinsNumberSequence} --- but the
+compiler cannot evaluate the specific bits. The bits are the most
+precise example of metavariables that are forever unresolved. They
+are not unresolved due to insufficient information; they are
+unresolved because no algorithm can resolve them. The constraints are
+complete; the resolution procedure is undefined.
+
+\texttt{NoisyProcess} extends this to a more general setting. Many
+real-world measurements produce outputs that fluctuate around a true
+value. The fluctuation is noise; the true value is what the
+measurement is intended to characterize. \texttt{PHYSICAL} certifies
+that a process produces outputs that include noise. The interpolation
+problem for such processes is: from the noisy observations, what is
+the best inference about the true value? Linear regression is the
+standard answer; the regression's coefficients are metavariables
+resolved by least squares.
+
+The noise creates an irreducible gap: even with many measurements,
+the regression's coefficients are estimates, not exact values. The
+true value is a metavariable that no finite number of observations
+can fully resolve --- only narrow. \texttt{COMPARABLE} captures the
+property that two such estimates can be compared by the width of
+their uncertainty intervals: a tighter interval is comparable to and
+strictly less than a looser one.
+
+The chapter's interpolation problem thus has three regimes. In the
+favorable regime (cubic spline, Lean type inference for a numeric
+literal), the constraints uniquely determine the metavariable, and
+the algorithm resolves it cleanly. In the regression regime
+(\texttt{PHYSICAL}, noisy data), the constraints narrow the
+metavariable to a range, and the algorithm produces an estimate with
+named uncertainty. In the limit regime (halting boundary,
+\texttt{ChaitinsNumberSequence}), the constraints are well-formed but
+no resolution procedure terminates; the metavariable is carried
+forever.
+
+All three regimes are admissible in the chapter's sense. The
+algorithm must declare which regime it is in, and the calling
+context must handle the declared regime. Carrying a Halting-Problem
+metavariable as if it were a resolved value is inadmissible. Carrying
+an unresolved cubic spline as if the algorithm had failed is
+inadmissible. The honest report of the resolution status is part of
+the algorithm's output.
+
+\section{Noisy Interpolation}
+\label{se:noisy-interpolation}
+
+A scientist measures the same quantity twenty times and obtains twenty
+slightly different values. The variations are noise: random fluctuations
+due to thermal motion, instrument quantization, electronic interference,
+or any of the other small perturbations that affect physical measurement.
+The scientist wants the best estimate of the underlying true value.
+
+The standard algorithm is linear regression. Given $n$ data points
+$(x_i, y_i)$, the linear regression model assumes $y_i = a + b x_i +
+\epsilon_i$, where $\epsilon_i$ is independent Gaussian noise with mean
+zero. The parameters $a$ and $b$ are unknown. The procedure finds the
+values of $a$ and $b$ that minimize $\sum_i (y_i - a - b x_i)^2$. The
+solution is:
+\[
+b = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i - \bar{x})^2},
+\quad
+a = \bar{y} - b \bar{x}.
+\]
+The Python idiom is \texttt{np.polyfit(x, y, 1)}, which returns the pair
+$(b, a)$ for a linear fit.
+
+The parameters $a$ and $b$ are the metavariables. Before the regression
+runs, they are placeholders constrained by the data. After the
+regression, they are resolved to specific values. The values are not
+exact: they are the maximum-likelihood estimates under the Gaussian noise
+model. The true values of $a$ and $b$ are not measurable; only their
+estimates are.
+
+The residual $r_i = y_i - a - b x_i$ is the difference between each
+observation and the fitted line. The residual is the irreducible
+structure left in the gap after the best admissible linear fit is
+removed. If the model is correct, the residuals are random and
+uncorrelated; the noise has been characterized and removed. If the
+residuals show a systematic pattern --- a curve, a periodic trend, a
+heteroskedastic spread --- the linear model is incomplete; a richer
+model is needed.
+
+The algorithm's output is the pair $(a, b)$ plus the residual standard
+deviation $\sigma$. The standard deviation is the width of the noise
+distribution; it characterizes the uncertainty in the fit. A small
+$\sigma$ means the data tightly constrains the parameters; a large
+$\sigma$ means the data is consistent with a wide range of parameters,
+and the estimate is less reliable.
+
+This is the chapter's question for noisy data. The gap between
+measurements is filled by the linear fit, but the fit is itself a
+metavariable with uncertainty. The uncertainty cannot be eliminated; it
+can only be characterized. The algorithm's honest output includes the
+uncertainty as part of the answer.
+
+\texttt{NoisyProcess} in \texttt{Episode3.lean} formalizes this. A
+process is \texttt{NoisyProcess} when it admits a noise model: a
+specification of the distribution of fluctuations around the true value.
+\texttt{PHYSICAL} certifies that the process produces outputs that
+include noise. A typeclass instance of \texttt{PHYSICAL} for a process
+requires the user to provide the noise model. Without the noise model,
+the process's outputs cannot be compared meaningfully; with the noise
+model, the process's outputs become \texttt{COMPARABLE} (comparable
+under uncertainty).
+
+The interpolation problem for \texttt{NoisyProcess} is different from
+the interpolation problem for noiseless data. Cubic spline assumed the
+data was exact; it forced the spline to pass through every data point.
+Linear regression does not force the line to pass through every data
+point; the line is the best fit, which generally has nonzero residuals.
+The two algorithms differ in their treatment of the data: the spline
+believes the data; the regression believes the data plus the noise
+model.
+
+Choosing between these two algorithms is a matter of which assumption
+is appropriate. If the measurements are highly accurate and the
+underlying function is smooth, the cubic spline is appropriate. If the
+measurements are noisy and the underlying relationship is approximately
+linear, the regression is appropriate. The chapter's lesson is that the
+choice of algorithm corresponds to a choice of noise model, and the
+noise model is part of the calibration of the instrument.
+
+The compiler analog of noisy interpolation is the parsing of
+ambiguous source code. When the parser encounters an ambiguity (e.g.,
+operator precedence that could be interpreted multiple ways), it
+must select one interpretation. The selection is a function of the
+parser's grammar plus the parser's tie-breaking rules. The
+interpretation is a metavariable resolved by the parser's heuristics;
+the heuristics are the parser's calibration. Two different parsers,
+with different calibrations, may resolve the same ambiguous expression
+differently.
+
+In well-designed languages (Lean among them), the grammar is
+unambiguous, so the parser does not need heuristics: every valid
+source produces a unique parse tree. In less carefully designed
+languages, the heuristics produce surprises. The chapter's point is
+that the parser's behavior on ambiguous input is the algorithmic
+analog of the regression's behavior on noisy data: when the input
+does not uniquely determine the output, the algorithm must declare
+its tie-breaking rule, and the output must be interpreted relative
+to that rule.
+
+\section{ChaitinsNumberSequence in Lean}
+\label{se:chaitinsnumbersequence-in-lean}
+
+The Lean file \texttt{Episode3.lean} defines a type whose existence the
+compiler can confirm but whose specific values the compiler cannot
+compute. This is \texttt{ChaitinsNumberSequence}. The definition has the
+shape:
+
+\begin{leanexcerpt}{ChaitinsNumberSequence}
+inductive ChaitinsNumberSequence
+  | halting    : Fact $\to$ Computation $\to$ ChaitinsNumberSequence
+  | nonhalting : Fact $\to$ Computation $\to$ Computation
+               $\to$ ChaitinsNumberSequence
+\end{leanexcerpt}
+
+The inductive has two constructors. The \texttt{halting} constructor
+records a \texttt{Fact} and a single \texttt{Computation}: the case
+where the program halts (and the bit is admissibly $1$). The
+\texttt{nonhalting} constructor records a \texttt{Fact} and two
+\texttt{Computation}s: the case where the program does not halt under
+either of two candidate witnesses (and the bit is admissibly $0$). The
+inductive together specifies the bit-by-bit construction of Chaitin's
+constant $\Omega = \sum_{p \text{ halts}} 2^{-|p|}$, with the halting
+and nonhalting layers stacked as the sequence is read.
+
+The compiler can elaborate this type definition. Lean's type checker
+verifies that the type is well-formed: \texttt{bits} is a function of
+the correct type; \texttt{halting\_property} is a predicate that
+correctly relates \texttt{bits} to the halting status of programs. The
+type elaborates. It is a valid Lean type.
+
+The compiler cannot construct an instance. To produce a value of type
+\texttt{ChaitinsNumberSequence}, the user would need to provide a
+specific \texttt{bits} function plus a proof that it satisfies the
+halting property. The proof requires deciding, for every $n$, whether
+program $n$ halts. The decision is the Halting Problem. No algorithm can
+provide such a proof for all $n$. The constructor is not callable.
+
+The type exists; values of the type do not. This is the cleanest
+algorithmic expression of the chapter's interpolation limit. The
+metavariable (the \texttt{bits} function) is named, typed, and
+constrained. Its value is not resolvable by any finite procedure. The
+elaborator can carry the type through the namespace, the kernel, and
+all type-level operations. The elaborator cannot evaluate any specific
+bit.
+
+This may seem like a paradox. How can a type exist without values? In
+Lean, the existence of a type is a syntactic question: the type is
+well-formed if its definition type-checks. The existence of a value is
+a semantic question: a value exists if it can be constructed. The two
+questions are distinct. A type may type-check without admitting any
+constructible value.
+
+The simplest example is the empty type \texttt{Empty}: well-formed,
+type-checks, but has no values (no \texttt{Empty} can be constructed).
+\texttt{Empty} is useful: it serves as a witness of impossibility (a
+proposition is false if it implies $\text{Empty}$). The type
+\texttt{ChaitinsNumberSequence} is similar: it is well-formed, it
+type-checks, but no constructive procedure can produce a value. Its
+usefulness is also as a witness: it names the boundary of computable
+sequences.
+
+The compiler's response to \texttt{\#check
+ChaitinsNumberSequence} is a confirmation that the type exists:
+\texttt{ChaitinsNumberSequence : Type}. The response to \texttt{\#eval
+(ChaitinsNumberSequence.mk ...)} would be an error: the constructor
+cannot be called without providing the halting-property proof.
+
+The book's argument turns on this distinction. The Lean compiler can
+admit types whose values are not effectively constructible. The
+admission is the type-check, which is a finite procedure. The
+construction is the evaluation, which is not a finite procedure. The
+book uses this distinction to argue that the universe, which must
+admit types of the same kind, is doing something the compiler cannot
+simulate: the universe constructs values of types like
+\texttt{ChaitinsNumberSequence}, while the compiler can only check
+that the type is well-formed.
+
+This is the conclusion the book is building toward, stated for the
+first time here in algorithmic form. The selection rule that picks
+one admissible continuation requires resolving a metavariable whose
+constraints are well-formed but whose resolution procedure does not
+halt. The metavariable is a sequence of bits like
+\texttt{ChaitinsNumberSequence}. The constraints are the
+admissibility conditions of the continuation. The resolution
+procedure --- the algorithm that picks which bit is 0 and which is 1
+--- would be a Halting-Problem solver if it existed. It does not.
+
+In Lean, the user can prove theorems about
+\texttt{ChaitinsNumberSequence} without ever constructing an instance.
+Theorems about the type's properties (e.g., that $\Omega$ is
+algorithmically random) are provable from the definition; theorems
+about specific bit values are not. The type-level reasoning is
+admissible; the value-level computation is not.
+
+This is the chapter's closing observation. The compiler can carry
+metavariables, including metavariables whose specific values are
+provably unresolvable. The carriage is admissible; the resolution may
+not be. The honest report of the algorithm's output therefore must
+distinguish between two kinds of metavariables: those that the
+algorithm resolves (cubic spline slopes, Lean type inference for a
+numeric literal), and those that the algorithm carries without
+resolving (Halting-Problem instances,
+\texttt{ChaitinsNumberSequence} bits). Both are admissible. They are
+not the same.
+
+\begin{bridge}
+
+The chapter's question was what can be said about the gap between
+recorded events without inventing structure not in the ledger.
+
+The answer is: the gap is filled by metavariables, and the metavariables
+are constrained by the surrounding record. Cubic spline fitting resolves
+the metavariables to specific values through a tridiagonal linear
+system. Lean's elaborator resolves the metavariables to specific types
+through unification. Noisy interpolation resolves the metavariables to
+estimates with named uncertainty. The halting boundary names
+metavariables whose resolution procedure does not terminate; the
+\texttt{ChaitinsNumberSequence} type carries such metavariables as
+named-but-unresolved entities. Each algorithm declares its resolution
+status as part of its output.
+
+What remains is that single records, with their gaps filled, do not yet
+combine into multi-record structures. Two records may be about different
+aspects of the same physical system, or about the same system at
+different times, or about systems whose physical relationship is part
+of the inquiry. Chapter 4 asks how multiple records combine into a
+joint record without collapsing into one undifferentiated heap.
+
+\end{bridge}
+
+\begin{coda}{The Legal Contract with Blanks}
+
+The lawyer's office overlooks the harbor. Two parties are seated at the
+table: the buyer's representative, the seller's representative, the
+notary, and the lawyer. A document has been printed and bound: thirty-two
+pages, double-spaced, in the standardized template the lawyer's firm
+uses for commercial real-estate transactions.
+
+The document is complete except for three blanks.
+
+Blank one is on the cover page: the effective date of the contract.
+Today is October 24th, but the contract will not become effective until
+all three signatories have signed. The effective date will be the date
+of the last signature.
+
+Blank two is on page eleven, paragraph fourteen: the buyer's signature.
+The buyer has reviewed the document and has agreed to its terms, but
+the lawyer has identified a tax provision in paragraph nine that needs
+clarification before the buyer commits. The buyer is willing to sign,
+but not until paragraph nine is resolved.
+
+Blank three is on page fourteen, paragraph eighteen: a placeholder for
+the seller's initials. The seller has read the document twice and has
+agreed to all terms. The initial is a formality. The seller will sign
+once the buyer signs.
+
+The lawyer walks through the document line by line. The structure is
+admissible: the clauses are well-formed, the obligations are clearly
+specified, the remedies are enforceable. The contract is a
+\texttt{REPRESENTABLE} legal instrument. It has type \texttt{Contract}.
+It would type-check.
+
+The three blanks are metavariables.
+
+The effective-date blank is constrained: it must be a date in the
+future, no earlier than today, no later than thirty days from today
+(after which the offer expires). It is also constrained by the structure
+of the contract: it must be a date on which all signatories signed. The
+metavariable's resolution depends on the resolution of the other two
+metavariables (the signatures), and the resolution is automatic ---
+the moment the second signature is added, the effective date is the
+date of the second signature.
+
+The buyer's signature blank is constrained: it must be the buyer's
+authentic signature, executed in the lawyer's presence, witnessed by the
+notary. The resolution depends on the resolution of the tax
+clarification, which is a separate metavariable in the system but not
+in the document. The buyer's lawyer is researching the tax provision;
+the result will be communicated by phone within the hour. Until then,
+the buyer's signature blank is carried as unresolved.
+
+The seller's initial blank is constrained: it must be the seller's
+authentic initial, executed by the same procedure. The resolution
+depends on the buyer's signature: the seller has stated they will
+initial once the buyer signs. The seller's initial is a deferred
+resolution; it is not unresolved due to insufficient information, but
+due to a chosen sequencing.
+
+This is the algorithmic structure of Chapter 3 in legal form. The
+contract is a \texttt{REPRESENTABLE} instrument with three
+metavariables. The metavariables are constrained. They are not yet
+resolved. They are not random; they are not arbitrary. They have type
+(date, signature, initial) and admissibility conditions (date in
+window, witnessed signature, witnessed initial).
+
+The lawyer's role is to carry the metavariables admissibly. She does
+not pretend the contract is complete. She does not allow the buyer to
+sign before the tax provision is resolved. She does not pretend the
+seller has already initialed when the seller has not. The metavariables
+are present in the record exactly as such: blanks with named
+constraints. The contract carries them as gaps, not as values.
+
+The lawyer makes a phone call to the buyer's tax counsel. The
+counsel returns the call eighteen minutes later. The tax provision in
+paragraph nine, when read in conjunction with subsection 5.2.1 of the
+state's revenue code, requires a small modification: a clarifying
+clause specifying that capital gains tax will be paid by the seller
+out of the proceeds before transfer to the buyer. The lawyer drafts
+the amendment in fountain pen on a separate page, has it initialed by
+both parties as a contract addendum, and re-sequences the affected
+sections.
+
+The buyer reviews the amendment. The amendment resolves the
+constraint. The buyer signs paragraph fourteen. The signature is
+witnessed by the notary. Blank two is now resolved.
+
+The seller, seeing the buyer's signature, initials paragraph eighteen.
+The initial is witnessed by the notary. Blank three is resolved.
+
+The notary records the date and time of the second witnessed event:
+October 24th, 3:47 PM. This is the effective date. The lawyer writes
+the date on the cover page. Blank one is resolved.
+
+The contract is now complete. All three metavariables have been
+resolved. The contract has transitioned from \texttt{REPRESENTABLE}
+(well-formed but unsigned) to \texttt{EXECUTED} (signed and
+binding). The transition is not a measurement of anything physical;
+it is the resolution of three placeholders into three specific
+values.
+
+The lawyer carries a second metavariable that does not appear in the
+document: her assessment of the buyer's understanding. The buyer is
+sophisticated, but the tax provision required research. The lawyer
+believes the buyer understands the contract; she has no proof. The
+assessment is carried as a \texttt{Metavariable} in the lawyer's own
+record-keeping. If a dispute arises later (the buyer claims the tax
+provision was unclear), the assessment will be retrieved from the
+lawyer's notes, along with the timestamp of the buyer's
+consultation with their tax counsel. The lawyer's notes are the
+audit trail. The metavariable is constrained by the audit trail, and
+its resolution is what the trail says.
+
+If the buyer had not signed --- if the tax clarification had not
+resolved --- the contract would have expired in thirty days. The
+expiry is the halting boundary: the metavariable could not be
+resolved in the available time, so the contract is closed in the
+unresolved state. The unsigned contract is not erased; it is filed
+as a non-execution. The record of the attempt remains. The buyer and
+seller may re-engage in the future under a new contract.
+
+This is the chapter's point in legal form. The metavariable is the
+admissible representation of unresolved state. The contract carries
+it without pretending it is resolved. The resolution proceeds by
+gathering constraints (the tax clarification, the buyer's review,
+the seller's commitment). The resolution may complete (signatures
+obtained) or may halt unresolved (offer expires). Either way, the
+record is honest about what was resolved and what was not.
+
+The notary closes the day's register. October 24th has produced
+seven witnessed acts. The day's record is complete. Tomorrow's
+register will have its own metavariables, its own contracts, its own
+gaps. The notary's record is the \texttt{Study}: the structured
+accumulation of witnessed events. Each event has admissible
+metadata; each metavariable has an admissible resolution status. The
+record grows by accumulation; it does not lose any prior event.
+
+\end{coda}

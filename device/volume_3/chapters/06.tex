@@ -1,0 +1,937 @@
+\chapter{The Noncomputable Core}
+\label{chap:noncomputable-core}
+
+% Closed question: What selects one admissible continuation as the history
+% actually carried forward?
+
+\begin{chapteressay}
+
+This is the chapter the book has been building toward.
+
+The first five chapters developed the algorithmic vocabulary:
+enumeration, divide and conquer, interpolation, union-find,
+bisection. Each chapter named a closed question and showed how the
+admissible record forced a specific family of algorithms. The
+algorithms in each chapter were computable: they could be
+implemented in Lean, run on a CPU, profiled, optimized, and
+certified by a typeclass instance. Every algorithm produced its
+output in finite time.
+
+This chapter is different. The closed question is: what selects one
+admissible continuation as the history actually carried forward? The
+answer the book argues for is: a selection rule based on minimum
+Kolmogorov complexity. The argument that follows is the load-
+bearing argument of the book. The selection rule requires exact
+Kolmogorov complexity. Exact Kolmogorov complexity is provably
+uncomputable. Therefore the selection rule is uncomputable. The
+universe, if it is running the selection rule, is doing something
+no Turing machine can simulate.
+
+The argument is not metaphorical. It is technical and the
+techniques are decades old. Turing proved the Halting Problem
+uncomputable in 1936. Chaitin proved the noncomputability of
+Kolmogorov complexity in the 1960s. The Busy Beaver function was
+defined by Rado in 1962 and shown to grow faster than any computable
+function. These are established results in computer science. The
+book applies them to the question of physical selection.
+
+The chapter's first concrete result is the Halting Problem. There
+is no algorithm that, given a program, decides whether the
+program halts on all inputs. Turing's diagonal argument is the
+proof. The proof is short and exactly the kind of argument that
+formalist mathematics produces. The Halting Problem is the
+foundational uncomputability result; everything else in this
+chapter reduces to it.
+
+The chapter's second concrete result is the Busy Beaver function.
+$BB(n)$ is the maximum number of steps any halting $n$-state
+Turing machine performs. It is the chapter's hard wall: $BB$ grows
+faster than any computable function, so no algorithm can keep up
+with it. $BB(5) = 47{,}176{,}870$ was proved in 2024 by exhaustive
+analysis. $BB(6)$ is unknown. The function's uncomputability is
+what prevents the computation of exact Kolmogorov complexity. To
+compute $K(w)$ for a string of length $\ell$, the algorithm would
+need to time each candidate program by $BB$(its length); since $BB$
+is uncomputable, the algorithm cannot do this.
+
+The chapter's third concrete result is Chaitin's $\Omega$, the
+halting probability. $\Omega$ is a specific real number between 0
+and 1, defined by summing $2^{-|p|}$ over all halting programs.
+The binary digits of $\Omega$ are algorithmically random and
+encode the Halting Problem in compact form. The first $n$ digits
+of $\Omega$ would suffice to decide halting for all programs of
+length up to $n$. The digits exist; they are not computable.
+
+These three results --- the Halting Problem, Busy Beaver,
+Chaitin's $\Omega$ --- are the chapter's technical core. They
+establish that the selection rule is uncomputable. The remaining
+two sections (heartbeat proxies in Lean,
+\texttt{ArmWaveProcess} as overhead meter) examine what
+algorithms can do given the uncomputability: they can use
+proxies that approximate the selection rule. The proxies are
+useful but not exact.
+
+The chapter's second concrete example is the sealed archive. A
+government archive holds records of varying restriction levels.
+Some boxes are sealed; their contents are restricted. The
+archivist works with a catalog that identifies each box and its
+restriction level. She routes requests through the catalog. She
+does not read the contents of sealed boxes; her clearance does
+not extend that far.
+
+The catalog is a proxy for the archive's content. It supports
+routing decisions; it does not contain the underlying records.
+Two boxes with very different contents may have identical
+catalog entries (if both are sealed). The catalog admits the
+existence of sealed boxes; it does not reveal what is inside.
+
+This is the chapter's algorithmic structure in archival form.
+The selection rule (the actual decision of who can access what)
+depends on the catalog (the proxy). The catalog is computable;
+the contents of sealed boxes are not. The archive operates by
+using the proxy where the underlying content is inaccessible.
+
+The chapter's closed question is:
+
+\begin{center}
+\emph{What selects one admissible continuation as the history
+actually carried forward?}
+\end{center}
+
+The answer the chapter develops, the load-bearing answer of the
+book, is: the selection requires exact Kolmogorov complexity,
+which is uncomputable. The universe somehow has access to
+exact $K$; no Turing machine does. The selection rule is the
+distinguishing feature between the universe's algorithmic
+behavior and any simulable algorithm.
+
+The chapter's argument is not pessimistic. The proxies are
+useful. The compiler's heartbeat counter is a working
+approximation of computational cost. The \texttt{ArmWaveProcess}
+cascade is a working approximation of formal overhead. These
+proxies allow algorithms to make admissibility decisions even
+when exact $K$ is unavailable. The work proceeds, despite the
+fundamental limitation.
+
+The chapter's contribution is to draw the line precisely. The
+proxies are computable; the selection rule is not. The proxies
+are good for many purposes; they are not exact. The chapter
+develops the boundary with concrete examples: the Halting
+Problem (Turing 1936), the Busy Beaver function (Rado 1962),
+Chaitin's $\Omega$ (Chaitin 1975). Each is a piece of established
+computer science. The book applies them to the question of
+physical selection.
+
+The reader who reaches this chapter is invited to consider its
+implications carefully. If the selection rule is uncomputable,
+then no simulation of the universe on a Turing machine can be
+faithful. The simulation might be very close --- using
+sophisticated proxies, using extensive computation, using
+clever approximations --- but it cannot be exact. The universe's
+behavior at the level of selection involves a noncomputable
+operation. The simulation hypothesis, which posits that the
+universe is running on a Turing-like machine, is at odds with
+this conclusion.
+
+The book does not claim mysticism. The selection rule is a
+mathematical object. The argument is technical. The
+conclusion is that the universe is doing something different in
+kind from algorithmic computation. The difference is precise:
+the universe has access to exact Kolmogorov complexity, which is
+provably noncomputable. No Turing machine does. The mathematics
+is the same; the implementation is different.
+
+\end{chapteressay}
+
+\section{The Halting Problem}
+\label{se:the-halting-problem}
+
+A computer program either halts (produces an output and stops) or runs
+forever (never produces a final output). The question is: given an
+arbitrary program $p$ and an arbitrary input $x$, can an algorithm
+decide which?
+
+In 1936, Alan Turing proved that no such algorithm exists. The proof
+is by diagonalization. Suppose an algorithm $H(p, x)$ exists that
+returns true if $p$ halts on input $x$, and false otherwise. Construct
+a new program $D$ as follows: given input $p$, compute $H(p, p)$. If
+$H(p, p) = $ true (meaning $p$ halts when given itself as input), $D$
+enters an infinite loop. If $H(p, p) = $ false, $D$ halts.
+
+Now consider $H(D, D)$. Two cases.
+
+Case one: $H(D, D) = $ true, meaning $D$ halts on input $D$. By the
+construction of $D$, if $H(D, D) = $ true, then $D$ enters an infinite
+loop on input $D$. Contradiction: $D$ both halts and does not halt.
+
+Case two: $H(D, D) = $ false, meaning $D$ does not halt on input $D$.
+By the construction of $D$, if $H(D, D) = $ false, then $D$ halts on
+input $D$. Contradiction.
+
+Either way, $H$ produces a contradiction. The assumption that $H$
+exists is false. There is no algorithm that decides halting in
+general.
+
+The argument is short and elementary. It is also profound. It says
+that the question ``does this program halt?'' is not algorithmically
+decidable. The question is well-formed --- given a specific program
+and input, the answer is either yes or no --- but no algorithm can
+answer it for all inputs.
+
+The Halting Problem is the canonical example of an undecidable
+problem. Many other problems are undecidable too, often by reduction
+to halting: the equivalence of two arbitrary programs, the
+non-emptiness of an arbitrary recursively enumerable set, the
+validity of arbitrary first-order logic sentences, the convergence
+of an arbitrary numerical iteration. Each of these problems contains
+the Halting Problem as a special case; if any of them were
+decidable, halting would be too, which contradicts Turing.
+
+For the chapter's argument, the Halting Problem is the foundation of
+the noncomputability of Kolmogorov complexity. The Kolmogorov
+complexity of a string $w$ is the length of the shortest program that
+produces $w$ and halts. To compute $K(w)$, the algorithm must
+identify the shortest halting program for $w$. To do that, it must
+test programs in order of increasing length and check which ones
+halt on the empty input producing $w$. The check is the Halting
+Problem. If any algorithm could compute $K$, it could also decide
+halting --- which is impossible.
+
+The reduction is direct. Given a program $p$, define $w_p$ to be
+some encoding of $p$'s behavior. If $K(w_p)$ were computable, the
+algorithm computing it would have to determine which programs halt
+producing $w_p$, which means deciding halting for those programs.
+The Halting Problem reduces to Kolmogorov complexity computation.
+Therefore Kolmogorov complexity is uncomputable.
+
+The Halting Problem is the bottleneck. Every noncomputability
+result in this chapter traces back to it. The Busy Beaver function
+is uncomputable because it grows faster than any computable
+function. Chaitin's $\Omega$ is uncomputable because its bits
+encode halting probabilities. Kolmogorov complexity is uncomputable
+because it requires finding shortest halting programs. The
+selection rule that picks the minimum-complexity admissible
+continuation is uncomputable because it requires Kolmogorov
+complexity.
+
+The Lean compiler encounters the Halting Problem at every
+elaboration step. When a definition is recursive, the compiler must
+verify termination: that the recursion eventually halts. The
+verification uses a well-founded relation --- a function from the
+recursion's state to natural numbers, decreasing at each call,
+bounded below by zero. The well-founded relation is the user's
+proof that the recursion terminates. Without the proof, the
+compiler refuses to admit the definition.
+
+This is the compiler's accommodation of the Halting Problem.
+Termination is undecidable in general, so the compiler does not
+attempt to decide it. Instead, the compiler asks the user to
+provide a termination proof, and the compiler checks the proof. The
+proof is a finite object; the check is a finite procedure. The
+undecidability is sidestepped by requiring the user to supply
+enough information to make the decision finite.
+
+This is also the chapter's first concrete example of the
+algorithm-versus-universe distinction. The user (or the
+mathematician, or the physicist) provides a termination proof
+based on their understanding of the recursion's structure. The
+compiler verifies the proof. The user's understanding is something
+the compiler cannot derive automatically. The compiler can only
+check what the user provides. If the user cannot provide a
+termination proof (because the function does not terminate), the
+compiler refuses to admit it.
+
+The Halting Problem thus sets up the chapter's argument. The
+selection rule that picks the minimum-Kolmogorov-complexity
+continuation requires solving the Halting Problem. The Halting
+Problem is provably unsolvable by any algorithm. Therefore the
+selection rule is not computable. The chapter develops the
+consequences in the remaining sections.
+
+\section{Busy Beaver}
+\label{se:busy-beaver}
+
+The Busy Beaver function $BB(n)$ is defined as follows. Consider all
+Turing machines with $n$ states (plus a halt state), an alphabet of two
+symbols (0 and 1), and a one-dimensional tape initially filled with
+zeros. Run each machine starting from a designated start state. Some
+machines halt; some do not. Of the machines that halt, identify the one
+that performs the most steps before halting. $BB(n)$ is the number of
+steps performed by that maximum machine.
+
+The definition is constructive: for any specific $n$, the answer is a
+specific natural number. For $n = 1$, $BB(1) = 1$. For $n = 2$,
+$BB(2) = 6$. For $n = 3$, $BB(3) = 21$. For $n = 4$, $BB(4) = 107$. For
+$n = 5$, the value was finally pinned down in 2024: $BB(5) =
+47{,}176{,}870$.
+
+For $n = 6$, $BB(6)$ is unknown. Lower bounds have been pushed steadily
+upward over the decades. As of recent work, $BB(6)$ is known to exceed
+$10^{36{,}534}$, and the actual value may be vastly larger. The problem
+of finding $BB(6)$ exactly is at the limit of current proof-theoretic
+techniques.
+
+The Busy Beaver function grows faster than any computable function. The
+proof: suppose $f$ is computable and $f(n) \ge BB(n)$ for all
+sufficiently large $n$. Construct a Turing machine $M_f$ that takes
+input $n$ and computes $f(n)$. The size of $M_f$ is some fixed
+constant, say $k$ states. For inputs $n > k$, the machine $M_f$ takes
+at most $f(n)$ steps. But $M_f$ run on input $n$ is a $k$-state
+machine (the size of $M_f$ does not depend on the input), and the
+Busy Beaver function $BB(k)$ is the maximum steps for any $k$-state
+machine that halts. So $f(n) \le BB(k)$ for all $n$, contradicting
+the assumption that $f(n) \ge BB(n)$ for large $n$. The function $f$
+cannot dominate $BB$.
+
+The argument shows that $BB$ grows so fast that no computable
+function can keep up with it. The Busy Beaver function is
+uncomputable. There is no algorithm that, given $n$, produces $BB(n)$
+for all $n$. Specific values can be computed (for small $n$) by
+exhaustive analysis of all $n$-state machines, but the analysis itself
+requires solving halting for each machine, and the halting problem is
+undecidable. For small $n$, the analysis is feasible; for larger $n$,
+it requires increasingly sophisticated techniques, and beyond some
+threshold, the techniques themselves run out.
+
+The Busy Beaver function is the chapter's hard wall.
+
+To see why it is the wall, consider the chapter's argument about the
+selection rule. The selection rule requires picking, from among all
+admissible continuations of a record, the one with minimum Kolmogorov
+complexity. To do this, the algorithm must enumerate candidate
+continuations, compute their complexities, and select the minimum.
+The complexity of a candidate $w$ is $K(w)$, the length of the
+shortest halting program that produces $w$.
+
+To compute $K(w)$, the algorithm tests programs in order of
+increasing length: programs of length 1, then 2, then 3, and so on.
+For each program, it runs the program and checks whether the output
+is $w$. If the program produces $w$ and halts, the algorithm has
+found a candidate. The minimum-length program that produces $w$ and
+halts is the witness of $K(w)$.
+
+The catch: for each program tested, the algorithm must decide
+whether the program halts. If the program halts, the algorithm
+observes the output and proceeds. If the program does not halt, the
+algorithm waits forever. There is no a priori bound on the running
+time of a halting program; some halting programs take an enormous
+number of steps before producing their output. The algorithm cannot
+simply time out, because timing out might prematurely declare a
+slow-halting program as non-halting, missing a candidate.
+
+This is where the Busy Beaver function enters. Suppose the algorithm
+wants to compute $K(w)$ where $w$ has length $\ell$. The programs to
+test have length up to roughly $\ell$ (longer programs are
+guaranteed not to be the minimum). Each program of length $L$ has
+internal state space bounded by $2^L$ (each bit of the program is
+either 0 or 1). When the program runs on the empty input, its
+computation visits at most $2^L \cdot \ell$ tape states before
+repeating (since the relevant tape positions are bounded by $\ell$,
+the length of the output).
+
+If the program is going to halt, it will halt within $BB(L)$ steps.
+If the program runs for more than $BB(L)$ steps without halting, it
+will run forever. So the algorithm could, in principle, test each
+length-$L$ program by running it for exactly $BB(L)$ steps and
+checking whether it halted by then. If it halted, observe the
+output. If not, declare it non-halting.
+
+The catch within the catch: this requires knowing $BB(L)$. And
+$BB(L)$ is uncomputable. The algorithm needs the value of an
+uncomputable function. The algorithm cannot have it. Therefore the
+algorithm cannot complete the Kolmogorov complexity computation. The
+selection rule based on Kolmogorov complexity is not algorithmic.
+
+The Busy Beaver function is the precise reason. If $BB$ were
+computable, the algorithm could time each candidate program for
+$BB(L)$ steps, identify the halting ones, find the shortest, and
+return $K(w)$. The selection rule would be computable. Since $BB$
+is not computable, the algorithm cannot do this. The selection rule
+is not computable.
+
+This is the deepest result of the book. The argument is concrete.
+The selection rule requires $K(w)$. The computation of $K(w)$
+requires $BB(L)$. The Busy Beaver $BB$ is uncomputable. Therefore
+the selection rule is uncomputable.
+
+Many readers will object that approximate $K$ might suffice for
+many purposes. The chapter's response is: approximate $K$ is
+computable (Lempel-Ziv, gzip, and other compression algorithms
+provide upper bounds on $K$, and these bounds are computable). But
+the chapter's argument is about the exact $K$, not approximate.
+Exact $K$ is what the selection rule needs, because approximate $K$
+can sometimes be wrong by more than the difference between two
+candidates. Two candidates with similar approximate $K$ may have
+very different exact $K$; the selection between them depends on
+which has the truly minimum.
+
+For most practical purposes, approximate $K$ works because most
+candidates are clearly different in complexity. The hard cases are
+near-ties: two candidates whose Kolmogorov complexities differ by
+one or two bits. In near-ties, approximate $K$ cannot resolve. The
+exact $K$ would, but exact $K$ is not computable. Near-ties are
+inadmissible to the algorithm; they are admissible only to whatever
+entity has access to exact $K$.
+
+The Busy Beaver function therefore is the algorithmic boundary
+between admissible computation and inadmissible computation. The
+boundary is real. It is not a matter of insufficient computational
+power. No amount of additional CPU, memory, or time can move the
+boundary. The boundary is set by the structure of computation
+itself.
+
+What about proxy costs? Several proxies are computable. The
+heartbeat counter in Lean is one. The CPU time of a running
+program is another. The memory footprint is a third. These
+proxies correlate with $K$ for many practical cases. They diverge
+from $K$ in cases of high asymmetry: a program with low Kolmogorov
+complexity but high runtime cost (e.g., one that computes $BB(100)$
+exactly --- short to write, eternal to run), or a program with
+high Kolmogorov complexity but low runtime cost (e.g., one that
+contains a large hard-coded constant and just prints it).
+
+The proxies are useful for many practical purposes. They are not
+the selection rule. The selection rule requires exact $K$. The
+proxies provide approximate $K$. The two are not the same.
+
+A reader skeptical of the book's claim should focus on this gap.
+The claim is not that the universe runs faster than your laptop.
+The claim is that the selection rule requires a quantity (exact
+$K$) that no Turing machine can compute. The universe, if it is
+running the selection rule, is doing something Turing machines
+cannot. The Busy Beaver function is the exact reason.
+
+For larger Turing machines --- machines with 7 or more states ---
+the Busy Beaver value is so large that, even if it could somehow
+be computed, the resulting time to enumerate halting programs of
+the corresponding lengths would exceed the age of the universe by
+absurd factors. $BB(7)$ is widely believed to be G\"odel-like in
+its uncomputability: not just unreachable by current methods, but
+provably independent of the axioms of standard set theory (ZFC).
+The book does not require this stronger claim; it suffices that
+$BB$ is not computable.
+
+The chapter's closing thought on this section: $BB(5) =
+47{,}176{,}870$ was proved in 2024. $BB(6)$ is unknown. The
+progress has been steady, but it is finite progress against an
+infinite mountain. The wall does not move. The wall is what the
+chapter has identified.
+
+\section{Chaitin's Omega}
+\label{se:chaitins-omega}
+
+Chaitin's constant $\Omega$ is the probability that a randomly generated
+program halts. The construction is precise. Fix a universal Turing
+machine $U$ that takes a prefix-free input encoding. For each input $p$
+of length $|p|$, the probability of generating $p$ by flipping a fair
+coin is $2^{-|p|}$. The sum over all halting inputs is:
+\[
+\Omega = \sum_{p : U(p) \text{ halts}} 2^{-|p|}.
+\]
+The prefix-free property ensures that $\Omega$ is at most 1; it is also
+positive (some programs halt) and less than 1 (some programs do not).
+$\Omega$ is a specific real number in $(0, 1)$.
+
+The remarkable fact is that the binary digits of $\Omega$ are
+algorithmically random. The first $n$ binary digits of $\Omega$, taken
+as a string, are incompressible: no program shorter than $n$ bits can
+produce them. The Kolmogorov complexity of the first $n$ digits is
+approximately $n$ itself. The digits are random in Chaitin's strong
+sense: they are random not just statistically, but algorithmically ---
+no algorithm can compute them in shorter form than reading them.
+
+The digits encode the halting problem in a compact form. The first $n$
+digits of $\Omega$ are enough to decide, in principle, whether each
+program of length at most $n$ halts. Knowing the first $n$ digits, one
+could enumerate all programs of length up to $n$, run them in
+parallel, and as halting programs are observed, accumulate their
+contribution to $\Omega$. When the accumulation matches the first $n$
+digits to within $2^{-n}$ precision, the algorithm has identified all
+the halting programs of length up to $n$. The remaining programs do
+not halt.
+
+This means the first $n$ digits of $\Omega$ are an oracle for the
+Halting Problem restricted to programs of length up to $n$. The
+digits are an oracle for a uncomputable problem. They are not
+themselves computable; computing them would solve the Halting Problem.
+
+$\Omega$ is the algorithmic version of the Holy Grail. It is a
+specific number, mathematically well-defined, that solves an
+uncomputable problem. Its existence is provable; its value is
+uncomputable. No algorithm can produce more than finitely many of
+its digits.
+
+For the chapter's argument, $\Omega$ is the most precise expression
+of the boundary. The selection rule requires identifying admissible
+continuations and computing their Kolmogorov complexities. The
+identification involves halting tests; the halting tests are
+oracular in $\Omega$. If the algorithm had access to $\Omega$'s
+digits, it could perform the halting tests and the Kolmogorov
+complexity computations. Without $\Omega$, it cannot.
+
+The universe, if it implements the selection rule, has implicit
+access to $\Omega$ (or to some equivalent oracle). The universe
+does what the algorithm cannot do, because the universe has access
+to the uncomputable information that the algorithm lacks.
+
+In Lean, $\Omega$ appears as the \texttt{ChaitinsNumberSequence}
+typeclass introduced in Chapter 3. The typeclass carries the digits
+as a sequence of Booleans, with the constraint that the $n$-th
+Boolean encodes the halting status of the $n$-th program. The type
+is well-formed; no instance is constructively buildable.
+
+The compiler can prove theorems about $\Omega$ --- that it is
+algorithmically random, that it is uncomputable, that its digits
+encode the Halting Problem. The compiler cannot evaluate any
+specific digit. The asymmetry between proof and computation is
+sharp: the theorem about $\Omega$ is checkable in finite time; the
+digit of $\Omega$ is not computable in finite time.
+
+This connects $\Omega$ to the book's larger argument about type-
+checking versus execution. The Lean type-checker can admit
+statements about $\Omega$ as well-formed propositions. The Lean
+runtime cannot evaluate $\Omega$. The two are different
+operations on the same object: checking the type is finite;
+evaluating the value is not.
+
+The chapter's algorithmic claim is that $\Omega$ is the canonical
+example of an object that the type system admits but the runtime
+cannot construct. The selection rule, which depends on quantities
+like $\Omega$, falls into the same category. The selection rule is
+type-correct (it has a well-formed mathematical specification); it
+is not runtime-computable.
+
+This is the gap the book identifies. Type-correct does not imply
+runtime-computable. The mathematical universe admits well-formed
+objects whose values cannot be computed. The physical universe, if
+it is implementing the selection rule, is constructing values of
+such objects --- doing what no Turing machine can do.
+
+$\Omega$ also appears in connections to algorithmic randomness and
+information theory. Specifically, $\Omega$ is the canonical example
+of an incompressible infinite sequence: the first $n$ bits cannot be
+generated by any program shorter than $n$ bits. The sequence has
+maximum entropy in the algorithmic sense. The chapter's next
+sections develop these connections: proxy costs in Lean, formal
+overhead as a measure of admissibility, and the distinction
+between approximate complexity (computable) and exact complexity
+(not computable).
+
+\section{Heartbeat Proxy in Lean}
+\label{se:heartbeat-proxy-in-lean}
+
+Lean's elaborator has a built-in mechanism for bounding its own
+running time. The setting \texttt{set\_option maxHeartbeats 400000}
+caps the elaboration of a single declaration at 400,000 heartbeats. A
+heartbeat is a unit of internal work --- roughly, one elementary
+unification step or one term reduction. When the elaborator reaches
+the cap, it stops and reports a timeout. The declaration fails.
+
+The heartbeat is the elaborator's proxy for the Kolmogorov
+complexity of the declaration. Definitions with high heartbeat counts
+tend to be complex: they involve deep typeclass resolution, many
+implicit arguments, or large term reductions. Definitions with low
+heartbeat counts tend to be simple: a numeric literal, a
+straightforward function definition, a direct application of a
+basic operator.
+
+The correlation is imperfect. The heartbeat count depends on
+implementation details: the order in which constraints are gathered,
+the specific simp rules invoked, the caching state of the
+elaborator. Two definitions with the same Kolmogorov complexity may
+have different heartbeat counts. Two definitions with different
+Kolmogorov complexities may have the same heartbeat count.
+
+The proxy is useful despite its imperfection. The compiler uses it
+to prevent infinite elaboration: if the elaborator is using too many
+heartbeats, the declaration is rejected, regardless of whether it
+would eventually succeed. The heartbeat limit is the compiler's
+defense against pathological inputs.
+
+The \texttt{EKG} type in \texttt{LeanCalibration.lean} exposes the
+heartbeat counter to user code:
+
+\begin{leanexcerpt}{EKG}
+private structure Reading where
+  heartbeats : Nat
+
+structure EKG where
+  private reference : Reading
+  embigger? : Prop $\to$ Prop $\to$ Prop
+\end{leanexcerpt}
+
+The \texttt{Reading} structure is private: user code cannot
+directly read the heartbeat count. The \texttt{EKG} structure
+exposes the \texttt{embigger?} relation, which takes two
+propositions and returns a proposition asserting that the first
+dominates the second under the calibration's bookkeeping. The
+\texttt{reference} field is itself private: user code cannot
+directly read the baseline either. The comparison through
+\texttt{embigger?} is the public surface; both the count and the
+baseline are hidden implementation.
+
+This design is intentional. The cost of computations is exposed as
+\texttt{Prop}-valued statements, not as runtime numbers. ``Program
+A costs less than program B'' is a proposition. The proposition
+can be proved or disproved; it can be used in type signatures and
+theorems; it can constrain other propositions. The
+\texttt{Reading.heartbeats} field is the underlying mechanism, but
+the public interface treats cost as a propositional comparison, not
+as a measurable quantity.
+
+This is the chapter's algorithmic version of calibration as hidden
+reference. The heartbeat counter is the reference scale --- the
+calibration's hidden mechanism. The public interface exposes only
+the propositional comparisons --- the calibrated readings. The
+private/public split is the algorithm's commitment that costs are
+admissible only through the calibrated interface.
+
+The \texttt{LOGICAL} typeclass carries the \texttt{EKG}:
+
+\begin{leanexcerpt}{LOGICAL}
+class LOGICAL
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] ... [UNIVERSAL Value Carrier]
+  where
+  feelings : HeartbeatProcess Value Carrier
+  ekg      : Calibration.EKG
+  logical? : YarnTheory $\to$ YarnTheory $\to$ Prop := fun a b =>
+    YarnTheory.le a b
+\end{leanexcerpt}
+
+A \texttt{LOGICAL} instance is a program that carries its own
+calibration. The calibration is the \texttt{EKG}; the
+\texttt{feelings} field names the underlying
+\texttt{HeartbeatProcess}; the \texttt{logical?} method is the
+binary decision rule over \texttt{YarnTheory} that the program's
+costs are measured by. The cascade through \texttt{UNIVERSAL}
+carries every prior class as a typeclass requirement.
+
+The chapter's argument is that the heartbeat is the proxy because
+exact $K$ is not available. The proxy is computable; exact $K$ is
+not. The selection rule, in the universe's implementation, uses
+exact $K$. The compiler's selection (which definitions to admit,
+which to reject) uses the heartbeat proxy. The proxy is good
+enough for the compiler's purposes; it is not good enough for the
+selection rule the chapter is identifying as noncomputable.
+
+The proxy makes a useful upper bound. If two programs have very
+different heartbeat counts, the program with the lower count
+probably has lower Kolmogorov complexity. The probably is the
+proxy's limitation: in pathological cases, the proxy's prediction
+is wrong. But for typical programs, the proxy correlates well with
+$K$, and the compiler's selection (based on the proxy) approximates
+the selection rule (based on $K$).
+
+The book's claim is that the universe is doing what the compiler
+cannot: using exact $K$ instead of the proxy. The chapter
+demonstrates the compiler's proxy and notes its limitations. The
+limitations are not contingent; they are structural. No proxy can
+do what exact $K$ does, because exact $K$ is not computable.
+
+\section{ArmWaveProcess as Overhead Meter}
+\label{se:armwaveprocess-as-overhead-meter}
+
+\texttt{Episode7.lean} introduces a cluster of typeclasses that track
+formal overhead accumulated during elaboration. The cluster is named
+satirically: \texttt{ArmWaveProcess} for the process,
+\texttt{BULLSHIT} for the certificate, \texttt{Diatribe},
+\texttt{CrusadeProcess}, \texttt{PROPAGANDA}, \texttt{Cult},
+\texttt{InitiationProcess}, and \texttt{ACOLYTE} for the cascade.
+
+The satirical names are deliberate. The typeclasses measure something
+real (formal overhead, the accumulated burden of typeclass resolution
+and term construction during elaboration), but the measurement is
+proxy, not exact $K$. The satire is a reminder that the proxy is
+not the truth --- it is the gestures the compiler makes while doing
+the work.
+
+\texttt{ArmWaveProcess}:
+
+\begin{leanexcerpt}{ArmWaveProcess}
+structure ArmWaveProcess
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] ... [FINITE_ELEPHANT Value Carrier]
+  where
+  galerkin_process : GalerkinProcess Value Carrier
+  guess            : Spline
+  reticulate?      : Spline $\to$ Spline := ...
+\end{leanexcerpt}
+
+An \texttt{ArmWaveProcess} carries the full project cascade
+through \texttt{FINITE\_ELEPHANT}, a current \texttt{Spline} guess,
+and a \texttt{reticulate?} function that advances the guess one
+arm-wave step. The cascade is the proof obligation that the
+arm-wave sits on every prior class admissibly. The structure
+formalizes the observation that elaboration is, in part, a
+sequence of formal gestures (the spline reticulations) that
+contribute to the proof but do not necessarily contribute to the
+content.
+
+\texttt{BULLSHIT}:
+
+\begin{leanexcerpt}{BULLSHIT}
+class BULLSHIT
+    (Value : Type)
+    (Carrier : CarrierProcess Value)
+    [DISTINGUISHABLE Value Carrier] ... [FINITE_ELEPHANT Value Carrier]
+  where
+  arm_wave_process : ArmWaveProcess Value Carrier
+  interpolate?     : Spline $\to$ Spline $\to$ Prop := ...
+\end{leanexcerpt}
+
+A process is \texttt{BULLSHIT} when it carries an
+\texttt{ArmWaveProcess} together with a binary decision rule
+\texttt{interpolate?} on \texttt{Spline}s. The decision rule
+checks whether two splines admissibly interpolate one to the
+other; the cascade obligation runs the entire length of the prior
+class stack. The certificate is the conservation principle the
+chapter names: bullshit is strictly conserved under reticulation.
+
+The cascade continues with \texttt{Diatribe} (a longer-than-needed
+argument), \texttt{CrusadeProcess} (a process that propagates a
+particular \texttt{Diatribe} pattern), \texttt{PROPAGANDA} (the
+certificate that the propagation has occurred), \texttt{Cult} (a
+group of definitions that all share a \texttt{PROPAGANDA}), \texttt{
+InitiationProcess} (the process by which a new definition enters
+the \texttt{Cult}), and \texttt{ACOLYTE} (the certificate that a
+definition has been initiated).
+
+Each step in the cascade adds formal overhead. A \texttt{Diatribe}
+has more overhead than an \texttt{ArmWaveProcess}; a
+\texttt{Cult} has more overhead than a \texttt{Diatribe}; an
+\texttt{ACOLYTE} has the most overhead in the cascade. The
+typeclasses measure progressive accumulation: each level adds
+specific structure that the previous levels did not have.
+
+The chapter's algorithmic claim is that this accumulation is the
+compiler's running estimate of Kolmogorov complexity. The
+estimate is by stages: each stage adds a fixed amount of
+formal structure, and the total is the sum. The estimate is
+computable (the typeclass instances can be checked in finite
+time), but it is approximate, not exact.
+
+The satirical naming serves a purpose. The cascade reminds the
+reader that the formal overhead is bureaucratic. It is the
+accumulated formal apparatus around what may be a simple
+content. The chapter's argument is that this bureaucratic
+proxy is the best the compiler can do; the true complexity is
+not the proxy but the underlying content, and that true
+complexity is what no algorithm can compute exactly.
+
+The book's larger argument benefits from this satire because it
+makes the proxy's role explicit. The compiler has a proxy. The
+proxy is the cascade of typeclasses. The proxy has a cost
+(formal overhead). The cost is computable. The compiler's
+selection (which definitions to admit) is based on the proxy.
+The universe's selection (which physical history to actualize)
+is based on something the proxy cannot capture.
+
+The book's contention is that the proxy can be very useful for
+many practical purposes but is fundamentally different from
+exact $K$. The cascade in \texttt{Episode7.lean} is the
+compiler's working proxy. The proxy can be measured, compared,
+optimized, and reasoned about. The exact $K$ cannot. The two
+are not the same.
+
+This concludes Chapter 6, the load-bearing chapter of the book.
+The argument has been: the selection rule requires exact $K$;
+exact $K$ requires solving the Halting Problem (via Busy
+Beaver); the Halting Problem is provably undecidable; therefore
+the selection rule is uncomputable. The compiler has proxies
+(heartbeats, the \texttt{ArmWaveProcess} cascade) that
+approximate $K$. The proxies are useful but they are not exact
+$K$. The universe, implementing the selection rule, has access
+to exact $K$ in some form. No Turing machine can.
+
+\begin{bridge}
+
+The chapter's question was what selects one admissible continuation
+as the history actually carried forward.
+
+The answer: the selection rule picks the admissible continuation
+with minimum exact Kolmogorov complexity. The Halting Problem is
+the foundational uncomputability result. The Busy Beaver function
+is the hard wall: it grows faster than any computable function, and
+its uncomputability prevents the timing of halting tests required
+to compute exact $K$. Chaitin's $\Omega$ encodes the halting
+problem in a single uncomputable real number; its digits would
+provide an oracle if accessible, but they are not computable. The
+heartbeat proxy in Lean and the \texttt{ArmWaveProcess} typeclass
+cascade are the compiler's approximate substitutes for $K$.
+Useful approximations; not exact $K$.
+
+What remains is transport. The selection rule is uncomputable, but
+the universe somehow implements it. Information moves between
+admissible records, transported by some structure the algorithm
+can describe but not simulate. Chapter 7 introduces inversion ---
+the algorithmic form of moving information backward through a
+computation, from outputs to inputs.
+
+\end{bridge}
+
+\begin{coda}{The Sealed Archive}
+
+The archive occupies the basement of a government building. Steel
+shelving runs in rows under fluorescent lights. Climate control
+maintains the temperature at sixty-eight degrees and the humidity at
+forty percent. Each shelf holds rows of acid-free archival boxes,
+labeled with accession numbers and date ranges. The archive holds
+records related to certain government activities; many of the
+boxes are sealed, with their contents restricted.
+
+The archivist sits at a desk near the entrance. Her job is to
+respond to access requests from researchers, government agencies,
+and occasionally journalists. Each request specifies an accession
+number; the archivist looks up the box in the catalog, determines
+whether the requester has clearance for that box's restriction
+level, and either retrieves the box or denies the request. The
+archivist herself does not read the contents of sealed boxes; her
+clearance does not extend to the interior of most of the archive.
+
+The catalog is on a computer terminal beside her desk. Each entry
+lists the accession number, the acquisition date, the donor or
+source, a one-line description, and a restriction level. The
+restriction level determines who can request the box. Some boxes
+are public: the description tells what is inside. Some boxes are
+restricted but described: the description names the topic without
+revealing the content. Some boxes are sealed: the description
+reads ``[CONTENT RESTRICTED]'' and the topic itself is classified.
+
+The catalog has thirty-four thousand entries. Of these, about
+five thousand are sealed. The archivist can route requests through
+the catalog quickly; she can determine, for any accession number,
+the restriction level and whether the requester has clearance. She
+cannot determine, from the catalog alone, what is in any sealed
+box. The catalog is a proxy: it carries enough information to
+route, not enough information to assess.
+
+A researcher arrives this morning with a request. He is a
+historian working on a book about a thirty-year-old policy
+decision. He has obtained clearance from the relevant agency to
+view three specific accession numbers. The archivist verifies the
+clearance, locates the boxes, and brings them to the reading room.
+The researcher spends the day with the boxes.
+
+At the end of the day, the researcher returns the boxes. The
+archivist re-shelves them. She notes the researcher's visit in
+the access log. She has performed her routing function correctly:
+the right boxes were retrieved, the right researcher was granted
+access, the activity was logged. She did not learn what was in
+the boxes; she did not need to.
+
+Now consider a different request. A young academic comes in with a
+list of fifteen accession numbers. The list looks plausible, but
+the academic does not have clearance for any of them. The
+archivist checks each number against the clearance database. Each
+returns the same result: insufficient clearance. The archivist
+denies the requests. She notes the denials in the log. The
+academic leaves.
+
+Did the denials reveal anything about the content of the requested
+boxes? Strictly speaking, no. The denials say only that the
+academic does not have clearance. They do not say what the boxes
+contain. The catalog descriptions, which the academic could read
+publicly, listed all fifteen as ``[CONTENT RESTRICTED]''. The
+denials did not change that.
+
+But there is a subtle point. The denials confirmed that the
+boxes exist. The academic now knows that there are fifteen
+specific accession numbers with restricted content. Each number
+is a position in the catalog. Each position has been verified to
+exist. The verification is a small piece of information: the
+existence of the box. The verification is not the content.
+
+The catalog is the algorithmic proxy. It carries accession
+numbers (the names of records), restriction levels (the routing
+information), and descriptions (the public content, where
+non-restricted). It does not carry the sealed content. The proxy
+is useful for routing; it does not carry the underlying truth.
+
+The chapter's argument lives in this distinction. The proxy
+allows admissibility decisions: which boxes can be retrieved,
+which cannot, which descriptions can be shared. The proxy does
+not provide the actual content. The actual content is in the
+boxes; the boxes are sealed; the seals are the algorithmic
+boundary.
+
+Some boxes have additional restrictions. A subset of the
+sealed boxes carry an annotation: ``[CONTENT
+RESTRICTED --- UNVERIFIED]''. These are boxes whose contents
+have never been verified by anyone with clearance. They were
+sealed at their creation and have remained sealed. The catalog
+entry lists them, the access log records that no researcher
+has ever viewed them, the descriptions are blank. The boxes
+exist; their content is unknown to every living person.
+
+These are the chapter's deepest analog. The catalog admits the
+existence of the boxes. The boxes have specific positions on
+the shelves. The boxes have weights, sizes, manufacturing
+dates. The shelving is physically real. But the content is
+unverified. No one has read it. No one knows what it says.
+
+To read these boxes would require breaking the seal --- an
+action that itself is restricted, requiring clearance levels
+that no living person currently has. The seals are the
+algorithmic Halting Problem. The content is the
+\texttt{ChaitinsNumberSequence}: a well-defined sequence of
+bits that no algorithm can compute. The catalog is the
+heartbeat proxy: a working approximation that supports the
+routing operations but does not give access to the content.
+
+The archivist closes the archive at five o'clock. She locks
+the entry door, sets the security alarm, and walks to the
+metro station. The catalog is updated with the day's
+activity: three boxes retrieved, three returned, fifteen
+requests denied, no seals broken. The state of the archive is
+the same at five as it was at nine, plus the audit trail of
+the day's transactions.
+
+The archive's records include the
+\texttt{ArmWaveProcess} cascade in legal form. Every request,
+denied or granted, is logged. The log is the bureaucratic
+overhead: the formal record of what was attempted, what was
+permitted, what was denied. The overhead is real; it consumes
+filing cabinet space, archivist's time, computer memory in the
+audit database. The overhead is the proxy for the content of
+the archive: it does not contain the content, but it tracks
+the access patterns around the content.
+
+A researcher attempting to game the archive --- to figure out
+what is inside the sealed boxes from the access pattern alone
+--- would face a problem analogous to the chapter's
+noncomputability argument. The access patterns are proxy
+information. They can hint at the content; they cannot
+reveal it. Two boxes with very different content might have
+identical access patterns. Two boxes with identical content
+might have very different access patterns. The proxy is
+useful for routing; it is not exact $K$ of the content.
+
+This is the chapter's final image. The archive is the
+universe. The boxes are the admissible continuations. Some
+are accessible; some are sealed; some have content
+unverifiable by any algorithm. The catalog is the proxy;
+the heartbeat counter is the proxy; the
+\texttt{ArmWaveProcess} cascade is the proxy. The proxies
+support the work of routing, of admitting, of denying. The
+proxies are not the content of the boxes.
+
+The content of the universe's admissible continuations
+exists. Some entity --- the universe itself --- has access
+to the exact $K$ of each continuation. That entity
+implements the selection rule. The catalog of the
+universe (the proxy) supports the admissibility decisions
+the algorithm can make. The seals of the universe (the
+exact $K$) support the decisions the algorithm cannot.
+
+The archivist takes the metro home. Tomorrow she will return.
+The archive will be exactly as she left it, plus whatever
+additions arrive overnight. The boxes will remain on the
+shelves. The seals will remain sealed. The catalog will
+remain a proxy. The work will continue.
+
+The catalog is computable. The boxes are not.
+
+\end{coda}

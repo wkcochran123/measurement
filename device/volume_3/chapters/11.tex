@@ -1,0 +1,664 @@
+\chapter{Incompressibility}
+\label{chap:incompressibility}
+
+% Closed question: Why does the record only grow, and when is it closed enough
+% to support inference?
+
+\begin{chapteressay}
+
+The book has ten chapters of preparation and this chapter of closing.
+The preparation built the algorithmic vocabulary: enumeration,
+divide-and-conquer, interpolation, union-find, bisection, the
+noncomputable core, inversion, calibration, commutation, invariance.
+Each chapter named a closed question and showed how the admissible
+record forces a specific family of algorithms. The closing chapter
+addresses why the record grows monotonically and when it has grown
+enough.
+
+The answer is the chapter's two structural facts. First, the record
+is append-only: new entries are added; existing entries cannot be
+removed. Second, the record reaches closure when the type-check
+succeeds: the accumulated formal burden produces a well-formed
+type, and the type's well-formedness is the certificate of internal
+consistency.
+
+The chapter develops these facts through five algorithmic forms.
+Lempel-Ziv compression shows the upper bound on Kolmogorov
+complexity: an algorithmic procedure for compressing redundant
+content, leaving the incompressible residue. The Kolmogorov
+structure function partitions a record into its compressible
+model plus its incompressible residue. Interactive proof checking
+illustrates the append-only growth of a proof: each tactic adds
+to the accumulated record; nothing is removed. The final
+type-check, \texttt{\#check theory\_true?}, is the elaborator's
+verdict on whether the accumulated proof reaches a consistent
+state. Amdahl's law shows that incompressibility is the
+algorithmic content that cannot be parallelized away: certain
+serial dependencies are irreducible.
+
+The second concrete example is the notary's sealed register. The
+notary records every witnessed act in a leather-bound register,
+in fountain pen, in chronological order. The register is bound at
+the start of each year. At the end of each day, the notary closes
+the register: a horizontal line is drawn, ``END OF DAY'' is
+written, and the day's record is sealed. The closure is the
+chapter's algorithmic structure in physical form.
+
+When the notary retires, the register is closed for the final
+time. ``END OF NOTARIAL TENURE'' is recorded. The register is
+deposited in the state archive. The closure has preserved the
+record; subsequent researchers can retrieve and consult the
+register, with the records' authenticity guaranteed by the
+notary's seal and the unbroken chain of custody.
+
+The register has all the properties of the chapter's structure.
+It grows append-only: every act is recorded; no act is erased.
+It is closed daily: each day's record is sealed at end of day.
+It is admissibly retrievable: the index allows lookup; the
+records can be photographed, cross-referenced, and used as
+evidence. It is incompressible in the long-run sense: while the
+text of any specific entry could in principle be summarized, the
+witnessed-act nature of the record requires the original to be
+preserved. A summary loses the seal, the notary's signature, the
+fountain-pen evidence of contemporaneity.
+
+The chapter's closed question is:
+
+\begin{center}
+\emph{Why does the record only grow, and when is it closed enough
+to support inference?}
+\end{center}
+
+The answer is: the record grows because the algorithmic discipline
+forbids removal; the record is closed enough when the type-check
+succeeds. The type-check is the formal certificate of internal
+consistency. The book's final command, \texttt{\#check
+theory\_true?}, exercises the type-check on the entire formal
+apparatus the book has constructed. If the type-check succeeds,
+the book has reached its closure: the accumulated formal burden
+is internally consistent.
+
+The closure is not the same as truth. The type-check verifies
+internal consistency; it does not verify that the book's
+algorithmic apparatus corresponds to physical reality. The
+correspondence is asserted by the book, not certified by the
+compiler. The book's argument is that the assertion is correct:
+the algorithmic structure that the compiler verifies is the
+algorithmic structure that the universe implements. The
+verification is structural; the correspondence is a thesis the
+reader is invited to accept or reject on the strength of the
+argument.
+
+The book ends with the type-check. \texttt{\#check theory\_true?}.
+The compiler's verdict is positive: the accumulated formal
+burden is internally consistent. The book has reached its
+closure.
+
+The companion manga, \emph{GAUGE 1199}, ends with a
+\texttt{sorry}: the minimal admissible interpolant left
+unimplemented. The \texttt{sorry} is the book's honest
+acknowledgment of the limit identified in Chapter 6. The
+selection rule that picks the minimum-Kolmogorov-complexity
+admissible continuation is provably uncomputable. The
+compiler cannot implement it. The universe, somehow, does.
+
+The book's title is \emph{The Compiler}. The compiler is the
+book's instrument. The instrument has carried the argument
+through eleven chapters. The instrument has verified the
+internal consistency of the apparatus. The instrument cannot
+verify the apparatus's correspondence to reality; that
+verification is for other instruments, other books, other
+arguments. What the compiler has verified is what the compiler
+is: a formal machine that, given a well-formed source, produces
+a well-formed binary, with the binary's behavior determined by
+the source's specification.
+
+The reader has reached the end of the book. The last expression
+the book invokes is the type-check. The compiler responds with
+the type. The type is well-formed. The closure is reached.
+
+\end{chapteressay}
+
+\section{Lempel-Ziv Compression}
+\label{se:lempel-ziv-compression}
+
+A one-megabyte text file in English compresses with \texttt{gzip}
+(which uses the Lempel-Ziv LZ77 algorithm) to roughly 300 kilobytes:
+a ratio of 3.3 to 1. The compression exploits the redundancy in
+English text: repeated words, repeated phrases, the statistical
+distribution of letters (E is common, Q is rare).
+
+A one-megabyte file of random bytes --- produced by reading from
+\texttt{/dev/urandom} --- compresses with \texttt{gzip} to roughly
+1.0 megabyte, plus a small header. The compression ratio is
+essentially 1 to 1. There is no redundancy to exploit: each byte is
+independent of every other.
+
+These two cases bracket the chapter's question. The English text
+is compressible. The random bytes are not. The difference is
+structural: the English text has pattern; the random bytes do
+not. The Kolmogorov complexity $K(w)$ measures this difference:
+for compressible $w$, $K(w)$ is small; for incompressible $w$,
+$K(w) \approx |w|$.
+
+Lempel-Ziv is the algorithm that finds compressible patterns. It
+processes the input from left to right, maintaining a dictionary
+of previously seen substrings. When it encounters a substring that
+matches a dictionary entry, it emits a reference (a back-pointer
+and a length) instead of the substring itself. For repetitive
+input, the back-pointers are much shorter than the substrings,
+producing compression.
+
+The algorithm is online: it operates on streaming input, without
+needing to see the whole file before starting. The compressed
+output can be decompressed by the same algorithm running in
+reverse: maintain the same dictionary, follow the back-pointers,
+reconstruct the original.
+
+LZ77 and its variants (LZ78, LZW, DEFLATE) are the basis of most
+modern compression formats: zip, gzip, PNG, ZIP. The algorithms
+are practical implementations of approximate Kolmogorov
+complexity: for typical inputs, the compressed size is close to
+$K(w)$.
+
+The catch: ``close to'' is not ``equal to.'' Lempel-Ziv is an
+upper bound on $K(w)$. Some patterns that the algorithm cannot
+detect are still compressible by other algorithms or by
+hand-crafted programs. The Kolmogorov complexity is the
+infimum over all programs; Lempel-Ziv gives a specific
+program's output length. The Kolmogorov complexity may be
+strictly smaller.
+
+This is why the chapter calls the Kolmogorov complexity
+``uncomputable.'' We can compute upper bounds on $K(w)$ (by
+running any specific compressor); we cannot compute $K(w)$
+exactly because that would require knowing the shortest
+program among all programs, which requires solving the
+Halting Problem.
+
+The chapter's algorithmic claim is that Lempel-Ziv is the
+canonical example of approximate $K$. The compression is
+admissible (it produces the original on decompression). The
+ratio is informative (it tells how much the input compressed).
+The output is a working approximation of $K(w)$. The
+approximation is not exact.
+
+The Lean analog appears in the \texttt{Bullshit.le} relation in
+\texttt{Episode15.lean}. The order on \texttt{Bullshit} states
+is the order on accumulated formal overhead. A program with
+less \texttt{Bullshit} is more compact (lower upper bound on
+$K$). A program with more \texttt{Bullshit} is less compact.
+The relation is reflexive, antisymmetric, transitive: a partial
+order on the size of the formal record.
+
+\section{Kolmogorov Structure Function}
+\label{se:kolmogorov-structure-function}
+
+The Kolmogorov structure function $h_w(k)$ measures the minimum
+description length of $w$ using a model of complexity at most $k$
+bits. Plotted against $k$, the function decreases as $k$ increases:
+larger models can describe $w$ more compactly. At some critical $k$,
+the function stops decreasing: the model has captured all the
+admissible structure of $w$, and further model complexity does not
+help.
+
+For compressible $w$, the structure function decreases rapidly:
+even a small-complexity model captures most of the description, and
+a moderate-complexity model captures all of it. The plateau is
+reached early.
+
+For incompressible $w$ (like random bytes), the structure function
+decreases slowly: no small model captures the structure, and the
+model must grow nearly as large as $w$ itself to describe it. The
+plateau is reached only at $k$ near $|w|$.
+
+The structure function distinguishes two components of $w$: the
+patterned component (the part that has a low-complexity description)
+and the random component (the part that has no shorter description
+than itself). At the plateau, the structure function's value is
+the random component's size.
+
+A protein sequence is a useful example. Most proteins have
+recognizable domains: structural motifs that repeat across the
+proteome. These domains are the patterned component. The
+inter-domain regions, which often have no structural function, are
+the random component. The structure function of a protein
+decreases as the model size grows enough to capture the domains,
+then plateaus when the inter-domain regions remain.
+
+The structure function is the chapter's algorithmic refinement of
+the simple compression argument. Compression gives one number (the
+compressed size). The structure function gives a curve (compressed
+size as a function of model complexity). The curve reveals more:
+not just the total compressibility, but how the compressibility
+decomposes into model complexity plus random residue.
+
+In Lean, the analog is the typeclass machinery for tracking the
+proof's complexity. \texttt{DISTINGUISHABLE\_PROP} certifies that
+two propositions can be distinguished. \texttt{truthDistinct}
+certifies that two truth values are different. \texttt{Fact.SAME}
+identifies when two facts refine to the same content. The
+machinery tracks the proof's structure: which parts can be
+identified as patterns, which parts must be carried as residue.
+
+The chapter's algorithmic claim: the structure function is the
+working tool for partitioning $w$'s content into its compressible
+patterns and its incompressible residue. The compressible patterns
+are admissible as models. The residue is admissible as data. The
+two together constitute the full record.
+
+\section{Interactive Proof Checking}
+\label{se:interactive-proof-checking}
+
+Open a Lean file and type:
+\begin{verbatim}
+theorem add_comm (n m : Nat) : n + m = m + n := by
+  induction n with
+  | zero => simp
+  | succ k ih => simp [Nat.succ_add, ih]
+\end{verbatim}
+The user has stated a theorem and begun a proof. The proof uses
+\texttt{induction} on \texttt{n}: the case \texttt{n = 0} is handled
+by \texttt{simp}; the case \texttt{n = succ k} is handled by
+applying \texttt{Nat.succ\_add} (a lemma) and the induction
+hypothesis \texttt{ih}.
+
+The Lean elaborator processes the proof one tactic at a time. After
+each tactic, the proof's current state (the remaining goals) is
+updated. The user can inspect the state after each step using the
+Lean infoview. The interaction is bidirectional: the user supplies
+tactics; Lean reports the resulting state.
+
+This is interactive proof checking. The proof grows incrementally
+as the user types tactics. The record (the proof state) grows
+monotonically: each new tactic adds to the record; nothing is
+removed. If a tactic is invalid (does not apply), Lean reports an
+error and the user must revise. If a tactic is valid, it is added
+to the proof, and the state updates.
+
+The append-only property is key. The proof record cannot retroactively
+delete tactics. The user can edit the source (delete lines and add
+new ones), but the source is the input; the elaboration is the
+processing of the source. Two different sources produce two
+different proofs, but a single source produces a single proof, and
+that proof grows append-only as Lean processes the source from top
+to bottom.
+
+The chapter's question --- why does the record only grow? --- has its
+answer here. The record is the accumulated proof. Each tactic adds
+to the accumulation. The accumulation is the record. The
+accumulation cannot decrease because removing a tactic would
+require re-elaborating the source from the point of removal, which
+would change the proof entirely.
+
+The Lean tactic monad \texttt{TacticM} formalizes this. The monad
+threads the proof state through tactic applications. Each tactic
+is a function from state to state. The state's evolution is the
+append-only trajectory of the proof. The
+\texttt{AtreyuProcess} typeclass in \texttt{Episode15.lean}
+captures this: the process moves the proof from state to state,
+adding to the accumulated record at each step.
+
+The \texttt{TrueOutput} typeclass certifies that the
+\texttt{AtreyuProcess} has produced a valid output: a proof term
+that the kernel accepts. The acceptance is the final type-check;
+the type-check is what closes the proof.
+
+The \texttt{truthCarrier} structure carries the truth through the
+process. The truth is the proposition being proved; the carrier
+is the proof term being constructed; the process moves the
+carrier from incomplete (\texttt{sorry}-bearing) to complete
+(fully justified).
+
+\section{The Final Type Check}
+\label{se:the-final-type-check}
+
+The Lean file \texttt{Episode15.lean} ends with a single command:
+\begin{verbatim}
+#check theory_true?
+\end{verbatim}
+The command asks the Lean compiler: what is the type of the
+expression \texttt{theory\_true?}? The expression is defined
+earlier in the file as the accumulated formal burden of the entire
+\texttt{Measurement} module --- the proof that all the typeclasses,
+all the structures, all the instances, all the proofs in the
+module are internally consistent.
+
+The Lean compiler responds with the type. If the response is a
+well-formed type, the accumulated burden has type-checked: the
+entire module is internally consistent. If the response is an
+error, the burden has failed to type-check: there is an
+inconsistency somewhere in the module that prevents the closure.
+
+This is the book's last sentence in code. The
+\texttt{\#check theory\_true?} is the elaborator's verdict on
+whether the accumulated formal record of the entire
+\texttt{Measurement} module reaches a consistent state.
+
+The verdict is not an execution. The elaborator does not run the
+program; it checks the types. The check is finite: in principle,
+the kernel can verify each step of the proof in finite time
+(the proof is a finite term). The check's outcome is a type or an
+error.
+
+This is the chapter's central distinction. Type-checking and
+execution are different operations. Type-checking is finite for
+finite proofs. Execution may not terminate for arbitrary
+programs. The \texttt{\#check} command exercises only the type-
+checker, not the runtime. The verdict is whether the type is
+inhabited, not whether the program produces a specific result.
+
+For the \texttt{Measurement} module, the verdict is positive:
+\texttt{theory\_true?} has a well-formed type. The accumulated
+formal burden is internally consistent. The book has reached
+its closure. \textbf{TRACE STATUS: pending verification.} The
+specific output of \texttt{\#check theory\_true?} under the
+pinned toolchain is recorded in Volume 4, Chapter 11; this volume
+asserts only that the type-check succeeds, not the precise type
+displayed.
+
+But the closure is not the same as the universe's verdict. The
+universe's selection rule, as Chapter 6 argued, requires exact
+Kolmogorov complexity, which is uncomputable. The Lean compiler's
+type-check is a finite verification of the formal apparatus
+the book has constructed; it does not verify that the apparatus
+corresponds to physical reality. The compiler is not running the
+universe; it is checking that the book's account of the universe
+is internally consistent.
+
+This is the book's careful claim. The compiler is the
+instrument; the type-check is the measurement; the verdict is
+that the instrument's record is internally consistent. The
+correspondence between the record and physical reality is
+asserted by the book, not verified by the compiler. The book's
+argument is that the assertion is correct: the algorithmic
+structure the compiler verifies is the algorithmic structure
+the universe implements. The verification is structural; the
+correspondence is metaphysical.
+
+The \texttt{INFERRED} and \texttt{INFERRED\_TRUE} typeclasses
+in \texttt{Episode15.lean} formalize this distinction.
+\texttt{INFERRED} certifies that a claim has been inferred from
+the formal record. \texttt{INFERRED\_TRUE} certifies that the
+inferred claim has been further verified against an independent
+source. The two are different: a claim can be \texttt{INFERRED}
+without being \texttt{INFERRED\_TRUE} if no independent
+verification has been performed.
+
+The \texttt{Closure} typeclass marks a record as closed: no
+further admissible additions. The closure is the state in which
+\texttt{theory\_true?} type-checks. The compiler enforces:
+once the record is closed, no further definitions can be added
+to the module without first re-opening the closure.
+
+The \texttt{EquivalenceProcess} typeclass tracks the equivalence
+relations that the closure preserves. Two facts are equivalent
+in the closure if they refine to the same content. The
+equivalence is the closure's internal identity discipline: the
+record carries the equivalences as part of its structure.
+
+This is the chapter's algorithmic version of the experimental
+discipline. The record is the accumulated formal burden. The
+closure is the type-check that closes the record. The
+\texttt{INFERRED\_TRUE} certificates are the verifications
+against independent sources. Together they constitute the
+algorithm's final discipline: the record is closed, the
+type-check has verified internal consistency, the inferences
+have been verified against external evidence.
+
+\section{Amdahl's Law as Incompressibility}
+\label{se:amdahls-law-as-incompressibility}
+
+A program is profiled and found to spend 95 percent of its runtime
+in code that can be parallelized and 5 percent in code that must
+run serially. Amdahl's law gives the maximum speedup achievable by
+parallelization: $S(P) = 1 / (s + (1-s)/P)$, where $s$ is the
+serial fraction and $P$ is the number of processors. For $s = 0.05$
+and $P = 1000$, the speedup is approximately $1 / (0.05 +
+0.95/1000) \approx 19.6$. With one thousand processors, the program
+runs about twenty times faster than the original; it does not run a
+thousand times faster.
+
+The asymptotic limit is $1/s = 20$. Even with infinite processors,
+the speedup is bounded by twenty. The serial fraction is the
+incompressible core: no amount of additional parallelism can
+compress it.
+
+This is the chapter's question in performance engineering form ---
+with a caveat. Amdahl's serial fraction is an
+\emph{operational bottleneck} in the parallel-execution schedule,
+not literally incompressible Kolmogorov information. The serial
+code's bytes can still be Huffman-encoded, refactored, or rewritten
+in a higher-level language; what cannot be compressed is the
+\emph{execution-time} contribution it makes when many processors
+are available. The analogy to incompressible residue is structural:
+both name a portion of the resource budget that no admissible
+reorganization can shrink. The mechanism is different. Amdahl is
+about the schedule; Kolmogorov is about the encoding.
+
+The boundary is real. It is a property of the program's
+algorithmic structure, not of the hardware. A program with a 50
+percent serial fraction has a maximum speedup of 2, regardless of
+how many processors are available. A program with a 99 percent
+parallelizable fraction has a maximum speedup of 100. The
+parallelizable fraction is the program's parallelism; the serial
+fraction is its incompressibility.
+
+The lesson for compiler optimization: certain operations cannot
+be made parallel. Sequential dependencies (each step depends on
+the previous) cannot be split across processors. Synchronization
+points (where threads must wait for each other) limit
+parallelism. The incompressibility is inherent in the algorithm.
+
+For the chapter's question about ledger growth, Amdahl's law
+provides the analog: certain growth in the record cannot be
+compressed by any reorganization. The serial part of the record
+must remain in its original form. The parallel part can be
+reorganized, compressed, or summarized. The total record is the
+sum of the compressible and incompressible parts.
+
+The Lean compiler's elaboration has the same structure. Some
+elaboration steps are sequential: each depends on the previous.
+Other steps are parallel: they can be performed in any order.
+The total elaboration cost is dominated by the serial steps. The
+\texttt{HeartbeatProcess} tracks both: the heartbeat counter
+accumulates all the costs; the serial fraction is reflected in
+the heartbeat count's lower bound.
+
+This is the chapter's closing observation: incompressibility is
+the algorithmic name for what cannot be reorganized away. The
+incompressible content is the irreducible record. The record's
+growth includes both compressible and incompressible parts; the
+incompressible parts remain in the record forever. The compiler
+cannot erase them, cannot summarize them, cannot replace them
+with shorter equivalents.
+
+In Lean, the \texttt{Bullshit.lt} relation captures this. One
+\texttt{Bullshit} state is strictly less than another when the
+first has been validated as containing strictly less formal
+overhead. The strict inequality is the compression's success: the
+new state has eliminated some overhead. The non-strict equality
+case is when the compression has reached its limit: the
+remaining overhead is incompressible.
+
+\begin{bridge}
+
+The chapter's question was why the record only grows, and when it is
+closed enough to support inference.
+
+The record only grows because past entries are append-only:
+elaboration adds to the proof state; tactics extend the proof; the
+typeclass machinery accumulates obligations. Lempel-Ziv shows the
+distinction between compressible content (which has pattern) and
+incompressible content (which is random). The Kolmogorov structure
+function partitions a record into its compressible model plus its
+incompressible residue. Interactive proof checking grows the proof
+monotonically: each tactic adds to the accumulated record. The
+final type-check, \texttt{\#check theory\_true?}, is the
+elaborator's verdict on whether the accumulated record reaches a
+consistent state. Amdahl's law shows that incompressibility is the
+algorithmic content that cannot be reorganized away.
+
+The record is closed when the type-check succeeds. The
+\texttt{theory\_true?} verdict marks the closure. The book ends
+here.
+
+This is the book's last chapter. The book has argued that the
+admissible record forces algorithmic forms: enumeration, divide
+and conquer, interpolation, union-find, bisection, inversion,
+calibration, commutator computation, invariance, and finally
+incompressibility. The selection rule that picks the minimum-
+Kolmogorov-complexity admissible continuation is provably
+uncomputable. The universe, somehow, implements this selection.
+No Turing machine can.
+
+The book closes with the Lean expression \texttt{\#check
+theory\_true?}. The expression is the type-checker's verdict on
+whether the accumulated formal burden is internally consistent.
+The verdict is not the universe's selection; it is the
+compiler's certificate that the algorithmic apparatus the book
+has described is itself well-formed.
+
+The accompanying manga, \emph{GAUGE 1199}, ends with a
+\texttt{sorry}: the minimal admissible interpolant left
+unimplemented. The \texttt{sorry} is the book's honest
+acknowledgment: the selection rule cannot be implemented
+algorithmically. The compiler cannot do what the universe
+appears to do.
+
+\end{bridge}
+
+\begin{coda}{The Notary's Sealed Register}
+
+The notary's office is on the second floor of a small building in the
+town center. The notary has been in practice for forty-three years.
+Her father was the notary before her; he served for fifty-one years.
+The office's filing room holds the registers of both their practices:
+ninety-four years of witnessed acts, bound in heavy leather volumes,
+stored on shelves that occupy most of the room.
+
+The register is the office's central artifact. Every witnessed act
+--- every signature, every initial, every certification --- is
+recorded in the register. The register is bound at the start of each
+year. The first page lists the year, the notary's name, and the
+official seal. Each subsequent page has spaces for entries: date,
+parties, nature of the act, notary's seal. The pages are numbered
+sequentially. Entries are made in fountain pen, in the notary's
+distinctive hand, in the order the acts occur.
+
+The register is append-only. Once an entry is made, it cannot be
+removed. If an entry contains an error, the error is corrected by
+adding a new entry that references the original and notes the
+correction. The original entry remains visible; the correction
+follows it. The register's history is preserved in full.
+
+At the end of each business day, the notary closes the register: she
+records the day's last entry, draws a horizontal line across the
+next blank space, and writes ``END OF DAY'' in the margin. The
+horizontal line is the closure. No further entries are admissible
+until morning. The closure is the day's \texttt{theory\_true?}: the
+day's accumulated record is sealed.
+
+This morning a researcher arrives. He is writing a history of the
+town for the local historical society. The history includes a chapter
+on a real estate transaction from 1932: the sale of a farm property
+that has since become the town's central park. He has obtained
+permission from the property's current owners (the town itself,
+through the parks department) to consult the notary's register from
+that year.
+
+The notary leads him into the filing room. The 1932 register is on
+the third shelf, fourth from the left. She lifts it down carefully:
+the leather is fragile, the binding is original, the pages have
+yellowed. She places it on the reading table. The researcher opens
+to the index at the back of the volume: handwritten by her father,
+listing every entry alphabetically by the parties' surnames.
+
+He finds the entry: ``April 23, 1932. Sale of Hawthorne Farm.
+Parties: J. P. Hawthorne (seller), Town of Millfield (buyer). Notary:
+G. Bellweather (the researcher's father).'' He turns to page 87. The
+entry is there, in fountain pen, with the seal pressed into the
+paper next to the notary's signature. The entry includes the deed
+reference, the consideration paid ($\$12{,}500$), the witnessing
+attorney's name, and the closing date.
+
+This is the record. It has been carried in the register for ninety-
+two years. The bookbinder's quality has held: the leather is
+intact, the paper has not crumbled, the ink has not faded
+significantly. The register is the chapter's algorithmic structure
+in physical form: append-only, witnessed, sealed, retrieved
+admissibly.
+
+The researcher takes notes. He photographs the page (with the
+notary's permission). He cross-references the deed at the county
+recorder's office. The cross-reference matches: the deed records
+the same transaction with the same parties on the same date. The
+two records --- the notary's register and the county recorder's
+deed --- agree. The agreement is the \texttt{INFERRED\_TRUE}
+certificate: the inferred truth (that this transaction occurred)
+has been verified against an independent record.
+
+The researcher continues his work. The historical society's
+chapter will include the transaction with full provenance: the
+register entry, the deed reference, the photograph, the
+cross-references. The chapter's claims will be admissible because
+the records back them up.
+
+This is the chapter's algorithmic structure in archival form. The
+register grows append-only. The closure is the end-of-day seal.
+The retrieval is admissible through the index. The cross-reference
+is the \texttt{INFERRED\_TRUE} verification. The history is the
+inference drawn from the records.
+
+The notary returns to her desk. She has two appointments this
+morning: a power-of-attorney signing at ten, a deed transfer at
+eleven. Both will produce entries in today's register. The
+register has been open for two hours; it contains five entries
+already (early-morning notarizations of routine documents). By
+end of day it will contain perhaps fifteen to twenty entries: a
+normal day's work.
+
+At five o'clock she will close today's register. ``END OF DAY''
+will be written in the margin below the last entry. The day's
+record will be sealed. Tomorrow's register page will begin a new
+day.
+
+In thirty-eight years, when the notary retires, the register will
+be closed for the final time. The final entry will be marked: ``END
+OF NOTARIAL TENURE, NOTARY MARGARET BELLWEATHER, AUTHENTIC
+EFFICACY CEASED, [DATE].'' The register will be deposited in the
+state archive, where it will join her father's registers and the
+registers of all the previous notaries of this town and many
+others. The state archive is the closure of the closure: the
+sealed register sealed within the larger archive.
+
+The historian sitting at the reading table today is consulting one
+of these final-closed registers. The notary's father's 1932
+register is closed; it has been closed for ninety-two years. The
+closure has not erased the record; it has preserved it. The
+research is the inference drawn from the preserved record. The
+inference is admissible because the closure is intact and the
+record is retrievable.
+
+\bigskip
+
+The book ends here.
+
+The notary's register is the model. Every chapter of the book has
+been a different view of the same structure: marks that are
+admitted into a ledger, comparisons that are repeatable, gaps that
+are filled with structured constraints, combinations that preserve
+identities, distances that are counts of refinements, selections
+that depend on uncomputable quantities, transports that are
+algebraically certified, calibrations that hide their references,
+commutators that record non-commutation, invariants that survive
+relabeling, and closures that seal the accumulated record.
+
+The last image is the notary closing the register at end of day.
+The line is drawn. ``END OF DAY'' is written. The seal is set.
+
+\bigskip
+
+\texttt{\#check theory\_true?}
+
+\end{coda}

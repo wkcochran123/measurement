@@ -493,10 +493,7 @@ instance PROPAGANDA_BULLSHIT
     [oo: FINITE_ELEPHANT Value Carrier]
     [pp: BULLSHIT Value Carrier]
     : PROPAGANDA Value Carrier where
-  insinuation :=
-  { pwn_n00bz := pp.arm_wave_process
-    religion  := .religion d.fact.truth
-  }
+  insinuation := CrusadeProcess.default Value Carrier
 
 instance ACOLYTE_PROPAGANDA
     (Value: Type)
@@ -526,10 +523,7 @@ instance ACOLYTE_PROPAGANDA
     [pp: BULLSHIT Value Carrier]
     [qq: PROPAGANDA Value Carrier]
     : ACOLYTE Value Carrier where
-  euclid :=
-  { ethos := qq.insinuation
-    sacred_texts := .inside_joke d.fact.truth
-  }
+  euclid := InitiationProcess.default Value Carrier
 
 
 end Measurement
