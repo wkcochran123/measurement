@@ -713,8 +713,12 @@ The complete generation record now lives in:
 - `book3_algorithmic_gauge.md`: Book 3 claim, chapter plan, elaborator thread,
   Lean anchors, algorithmic forms, manga relation, codas, and section budgets.
 
-`notes_for_gpt.md` and `notes_for_claude.md` are handoff records. They may be
-useful for provenance, but they are no longer required to generate the books.
+`notes_for_gpt.md` and `notes_for_claude.md` are handoff records. They are not
+sources of authority, but they remain useful as roundtrip projections: Author
+-> Claude -> GPT -> Author, or Author -> GPT -> Claude -> Author. A handoff is
+actionable only when the return trip exposes a structured residual. If the
+roundtrip merely produces another plausible version, the project has gained an
+approximation, not convergence.
 
 ---
 
@@ -745,7 +749,8 @@ therefore not ornamental. It is a final independent model of the chapter's
 structure.
 
 Once the outlines stabilize, each section should receive a quantized length
-target so drafting can be assigned concretely.
+target so drafting can be assigned concretely. The numbers below are base
+quanta for planning. They are not a fixed size for every future book.
 
 Suggested length quanta:
 
@@ -759,6 +764,60 @@ Suggested length quanta:
 The quantization is an editorial budget, not a rigid law. Its purpose is to
 make generation goals concrete enough that different models can draft, compare,
 and break ties against the same target.
+
+### Scaling the budget
+
+Budgets scale linearly when a volume is authorized at a different total size.
+The base quanta define relative weight. The book file defines the scale.
+
+Use this calculation:
+
+```text
+scale factor = target total words / base total words
+scaled unit  = base unit * scale factor
+```
+
+For example, if a compact companion is planned at 45,000 words and a larger
+experimental-history volume is authorized at 170,000 words, the scale factor is:
+
+```text
+170,000 / 45,000 ≈ 3.8
+```
+
+That does not mean every Short section blindly becomes 3,800 words. It means
+the book must account for roughly 3.8 times as much structural material. A
+book can spend that added budget in two equivalent ways:
+
+1. **More units:** keep Box / Short / Medium / Long close to the base quanta,
+   but add more episodes, sections, codas, or apparatus blocks.
+2. **Larger units:** keep the same number of units, but multiply each unit by
+   the scale factor.
+
+Most large books should use a mixed linear scaling: more units where the
+material naturally subdivides, and larger units where an anchor episode,
+derivation, source history, or apparatus explanation carries more load.
+
+The rule is conservation of budget. If one section, episode, or chapter grows,
+another must either shrink, disappear, or be explicitly assigned new budget.
+Do not scale by quietly inflating every paragraph. Scale by assigning more
+named units or larger named units.
+
+For a 500-700 page experimental-history volume, a worked midpoint might be:
+
+```text
+target total: ~170,000 words
+front matter: ~10,000
+six chapters: ~22,000-30,000 each
+back matter: ~5,000
+episode tiers:
+  vignette: 500-1,000
+  working: 1,500-2,500
+  anchor: 3,000-4,500
+```
+
+This is an example calculation, not a rule for the technical volumes. It shows
+how the same section-based discipline can scale from a short companion to a
+large history without losing the budget as a controlling structure.
 
 The final production pass should give every chapter a small budget table:
 
@@ -788,6 +847,33 @@ If two models disagree, the tie-breaker should decide by asking which section
 introduces more new machinery, carries more phenomena, or performs the stronger
 chapter-closing role.
 
+### Roundtrip Richardson condition
+
+Multiple models are not a voting system. Agreement between Claude and GPT is
+evidence of a stable projection, but it is not by itself convergence.
+Disagreement between Claude and GPT is not by itself useful either. It becomes
+useful only when the disagreement has a form that can be carried through the
+next pass.
+
+The roundtrip is Richardson-like only when it exposes a structured residual:
+
+| Roundtrip result | Interpretation | Action |
+|---|---|---|
+| Same claim, different wording | stable projection | keep the simpler form |
+| Same structure, shifted boundary | leading error term is visible | adjust the boundary and run the next pass |
+| Missing dependency appears on the return trip | null-space term exposed | add the dependency to the plan |
+| Model A and Model B merely disagree | unstructured residual | treat as approximation, not convergence |
+| Both models agree but no residual is named | consensus approximation | do not freeze solely on agreement |
+
+The test is: can the return trip say what changed, why it changed, and which
+earlier basis vector caused the change? If yes, the residual has form and the
+next pass can cancel or absorb it. If no, the project is only sampling adjacent
+approximants.
+
+This is why the handoff notes should preserve not only recommendations but the
+reason a recommendation changed. The useful object is the error structure
+between passes, not the most recent answer.
+
 ## Generation Protocol
 
 To draft a chapter, use the corresponding book file as the local source of
@@ -795,9 +881,11 @@ truth and apply this sequence:
 
 1. Draft the unnumbered essay at about 1,500 words. Use the four-part shape:
    concrete example, named structure, second display, chapter overlay.
-2. Draft the five numbered sections in order. Use the section budget table in
-   that book file: Short ≈ 1,000 words, Medium ≈ 2,000 words, Long ≈ 3,000
-   words. The table is an editorial target, not a hard limit.
+2. Draft the numbered sections in order. Use the section budget table in that
+   book file: at base scale, Short ≈ 1,000 words, Medium ≈ 2,000 words,
+   Long ≈ 3,000 words. If the book file declares a larger or smaller scale,
+   use the scaled target stated there. The table is an editorial target, not a
+   hard limit.
 3. Place phenomena only where the book file assigns them. A phenomenon should
    arrive as a local arc: 1/3 setup, phenomenon box, 2/3 interpretation back
    into the chapter structure.
@@ -847,12 +935,13 @@ hypothetical content.
 For each chapter, in order:
 
 1. **Write each numbered section independently against its budget.** Before
-   drafting §$n$, restate the section's budget out loud: Short (~1,000 words),
-   Medium (~2,000 words), or Long (~3,000 words). Then draft only that section
+   drafting §$n$, restate the section's budget out loud: at base scale,
+   Short (~1,000 words), Medium (~2,000 words), or Long (~3,000 words), or the
+   scaled target declared in the book file. Then draft only that section
    against that target. Do not draft the next section until the current section
    is in place. The budget is not advisory; it is the operational target.
-   Short sections that drift toward 2,000 words are not "thorough"; they are
-   over-budget and should be cut.
+   Sections that drift one tier larger without an explicit budget assignment
+   are not "thorough"; they are over-budget and should be cut.
 
 2. **Concatenate the sections into the chapter file.** Each Edit call places
    one section into its slot in the chapter stub. The stub is a skeleton with
@@ -886,7 +975,8 @@ For each chapter, in order:
 ### The budget is the load-bearing element
 
 The budget table in each book file specifies which sections are Short, which
-are Medium, and which are Long. The medium and long designations are not
+are Medium, and which are Long, or gives a scaled equivalent such as Anchor,
+Working, and Vignette for a larger book. The medium and long designations are not
 decorative. They identify sections that carry **specific structural load**: a
 proof, a derivation, a load-bearing conceptual separation. Compressing a
 Medium section to Short omits the load. Inflating a Short section to Medium
@@ -937,6 +1027,108 @@ within ~20% of its budget, the bridge closes the chapter's question, the
 coda performs the chapter's structures without overlap with the chapter's
 own examples, and the chapter ASCII-7 lints cleanly. Any of these failing
 indicates the section-based procedure was not followed.
+
+---
+
+## Drafting Order: The Krylov Constraint
+
+Chapters must be drafted in forward order: Ch 1 -> Ch 2 -> ... -> Ch 11.
+The same rule binds Volume 6's six chapters, Volume 5's three, and every
+other volume in the project. No skipping ahead. No drafting the hardest
+chapter first. No testing the form on a late chapter before the early
+chapters have been written.
+
+This is a structural constraint, not an editorial convenience.
+
+### Why the constraint holds
+
+The procession is forward-dependent. Each named obligation requires the
+prior names to have done their work. RESIDUE only does its work because
+ENCODED has happened. BULLSHIT only does its work because LOAD and
+FINITE_ELEPHANT have established what overhead is overhead *of*. The
+procession is not a list; it is an iteration.
+
+The project's own vocabulary supplies the structural argument. The
+procession is a Krylov expansion of the question "what does it take to
+license an inferred sentence under a record." Each name is the next
+basis vector that the prior names have made necessary. In a Krylov
+iteration the k-th basis vector cannot be computed without the first
+k-1 basis vectors; the subspace at step k determines what step k+1 can
+reach.
+
+Drafting a late chapter first projects onto a subspace whose lower-order
+basis vectors have not been computed. The form (`phenom` kernel,
+calibration certificate, two-coordinate header, section-based budget
+discipline) is the projector, and the projector is consistent across
+chapters. But the content at step k+1 depends on the content already
+established at step k. A late chapter drafted in isolation either
+invents the basis it needs (drift) or assumes it (incoherence at the
+seam when the earlier chapter is eventually written).
+
+The book is not a test of the form. The book is the iteration. The
+iteration cannot run out of order.
+
+### Why the constraint is hard to obey
+
+The recurring temptation is to draft the "hardest" or "most original"
+chapter first to validate the form on demanding material. That is a
+craft argument. It is structurally identical to recommending the book
+be drafted backwards.
+
+The same error appears one level up. A planning conversation that
+recommends drafting Ch 4 first because Ch 4 is the most original is
+itself a late-iteration projection in the conversation's own Krylov
+expansion: the recommendation depends on basis vectors (the form, the
+procession, the chapter dependencies) that the conversation has not yet
+fully computed. The recommendation can sound sophisticated and still be
+wrong for the same Krylov reason the drafting move would be wrong.
+
+The constraint binds independently of who is suggesting otherwise.
+Author, Claude, GPT, or any tie-breaking model. If craft instinct
+recommends "hardest first," the structural argument still holds.
+
+### Restart as the natural second iteration
+
+Forward Krylov order Ch 1 -> Ch N is the first pass. A second forward
+pass Ch 1 -> Ch N with the full-book voice calibrated is the restart.
+The Movements act as eigenvalue clusters; revising within a movement
+after the next movement has stabilized is the equivalent of restart
+strategies in numerical Krylov methods. Two-pass drafting is the normal
+rhythm. One-pass is the accident.
+
+### Connection to existing project vocabulary
+
+The author's prior framing of his own work as "Richardson extrapolation
+used to over-resolve" already names this discipline. Richardson
+extrapolation requires iterations to be ordered correctly: the
+leading-order error term at step k+1 depends on the leading-order error
+term at step k. The constraint that lets Richardson cancel error terms
+is the constraint that forces forward Krylov order. The two methods are
+the same discipline at different scales: Richardson across project
+iterations (instrument book -> device -> volumes 1 through 6 -> manga),
+Krylov within a single volume.
+
+The same condition governs model roundtrips. A Claude -> GPT -> Claude
+or GPT -> Claude -> GPT exchange converges only if the return pass makes
+the error term visible. Without a visible residual, the exchange is still
+valuable as search, taste, or robustness checking, but it is not
+Richardson extrapolation. It can approximate the book's intended shape;
+it cannot claim convergence.
+
+### Practical rule
+
+For every chapter drafting decision: ask whether the prior chapters
+have been drafted. If not, draft them first. If "but this chapter is
+the hardest" or "but this chapter is the most original" enters the
+argument, the rule still holds. The hardest chapter is hardest
+precisely because it depends on the most prior basis vectors; that is
+exactly why it must come last in its dependency chain.
+
+This rule supersedes any earlier "draft Chapter X first" recommendation
+in `notes_for_gpt.md`, `volume_6.md`, or any other planning file. Those
+recommendations were late-iteration projections without the lower-order
+computation. The Krylov constraint is the structural argument that
+overrides them.
 
 ---
 

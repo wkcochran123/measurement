@@ -5,413 +5,149 @@
 
 A class name is where the argument becomes sayable.
 
-Before any airliner leaves the gate, the crew runs through a list. The
-list has names: flaps, trim, fuel pumps, transponder, clearance, runway,
-weather, final readiness. Each name is brief. Each name corresponds to a
-state the aircraft must be in. The crew calls the name; the responder
-confirms or withholds. The takeoff proceeds only after the list closes.
-If a name is called and the corresponding state cannot be confirmed, the
-aircraft does not take off. The list is short. The aircraft is enormous.
-The list controls the aircraft.
+Before an aircraft leaves the gate, the crew runs through a list: flaps, trim,
+fuel, clearance, runway, weather, final readiness. Each name is brief. Each name
+points to a state that must hold before the next state can be trusted. If the
+crew cannot confirm one item, the aircraft does not take off.
 
-A passenger who has never flown will still recognize the scene. The
-checklist is famous. Its discipline is famous. The reader does not have
-to be told that the checklist matters; the reader knows that two hundred
-people are about to be lifted into the sky. The checklist is the
-smallest visible apparatus inside a much larger apparatus the reader
-already trusts.
+The list is tiny compared with the aircraft. That is why it matters. A
+complicated apparatus becomes publicly usable only when its obligations can be
+called, answered, and checked. The checklist does not contain the aircraft. It
+names the gates by which the aircraft is permitted to move.
 
-The aviation industry's adoption of the checklist is not an old
-tradition. It is the result of a specific accident, the Boeing Model 299
-crash at Wright Field in 1935, in which a pilot took off without
-releasing the elevator lock. Two crew members died. The investigators
-concluded that the airplane had become too complicated for any single
-pilot to fly from memory. The fix was not to demand smarter pilots. The
-fix was a list of named items the crew would call out before takeoff.
-The names of the items were short. The names were specific. The names
-were called in a fixed order. The list closed when every item had been
-confirmed.
-
-The checklist did not make the airplane easier to fly. It made the
-airplane safer to fly by externalizing what previously sat in one
-person's head. The names made the procedure inspectable. A copilot
-could check the captain. An observer could check both. The fix was not
-technical. It was rhetorical. The names did the work that no individual
-memory could be trusted to do.
-
-The project's class names share that structure. They externalize what
-the formal record must do before the next move is admissible. They make
-the procedure inspectable. A reader can check a writer. A second reader
-can check both. The names do work that no individual claim could be
-trusted to do on its own.
-
-The procession of class names is longer than the takeoff checklist. The
-names are stranger. The discipline is the same.
+This book treats the project's class names in the same way. They are not
+decorative labels pasted onto code. They are public callouts for obligations the
+argument must satisfy. Chapter 2 walks the full procession. This chapter explains
+what sort of work a name can do before the procession begins.
 
 \section{The Name As Instrument}
 \label{se:the-name-as-instrument}
 
 People trust names every day before they trust proofs.
 
-A runway number, a calibration sticker, a boarding pass, a courtroom
-role, a warning placard, a medication label, a fuse rating: each name
-permits or forbids action. The name is not the whole truth about the
-object. It does not explain the object's history or contents in full.
-It changes what can be done next. A boarding pass with the wrong gate
-number sends the passenger to the wrong airplane. A fuse with the wrong
-rating burns the circuit. The name controls what happens after.
+A runway number, a calibration sticker, a boarding pass, a medication label, a
+courtroom role, a fuse rating: each is short enough to be used under pressure,
+and specific enough to change what may happen next. The name is not the whole
+truth about the thing. It is an instrument that lets a larger apparatus act.
 
-The use of names as instruments is older than industrial design. A
-street name does not contain the street; it does not describe the
-buildings, the residents, or the traffic patterns. A street name
-controls what the postal service does next. A package addressed to a
-street name will be delivered to the buildings along that street. A
-package addressed to an unnamed location will return to the sender. The
-name is the gate the postal system passes through. The postal system
-has elaborate internal apparatus, but the name is the public surface
-the apparatus reads.
+The pre-flight checklist makes this concrete. ``Flaps set'' is not a description
+of aerodynamics. It is the public handle for a physical configuration, an
+indicator reading, a training procedure, and a certification regime. The captain
+does not call the mechanism. The captain calls the name. The name is useful
+because the crew already knows which obligation sits behind it. The whole
+apparatus moves because a small public word has been answered.
 
-A medical wristband on a patient in a hospital is another instance. The
-band carries a name, a barcode, and a number. The name is short enough
-to read aloud. The barcode is precise enough to scan. The number is
-unique enough to identify. Each is an instrument layered over the same
-underlying patient. The nurse who administers medication does not
-consult the patient's complete medical record at each dose. The nurse
-reads the wristband, confirms the name, scans the barcode, and verifies
-that the medication's order matches the patient's record. The wristband
-is the gate. The full medical record is what the wristband points at.
+A class name works the same way. \lean{DISTINGUISHABLE} does not contain the
+whole formal definition of distinguishability. It calls that obligation into
+the current context. Once the obligation is present, later code and later
+prose may move. If the obligation is missing, the next move is not licensed.
+The class name is a small object that lets a large argument proceed.
 
-A class name in formal code works the same way. The name does not
-contain the whole specification of the obligation. It points to the
-obligation. Code that invokes the class name promises to respect what
-the class requires. Code that omits the class name has not made the
-promise. The compiler then refuses the next move. The name is the
-smallest public surface of the obligation. The obligation itself lives
-in the class definition. The class definition is long. The class name
-is short. Shortness is what makes the name usable as an instrument.
+A second example, away from cockpits and code, will be useful before the
+procession begins. A pharmacy bottle on the counter carries a drug name, a
+strength, a date, a patient name, and a barcode. None of those is the
+chemistry. Together they are the instrument by which the pharmacist may hand
+the bottle across. Without the names the chemistry cannot be safely
+transferred. With the names a stranger can complete the transfer in seconds.
+The chemistry is private to the laboratory. The names are the public surface
+that lets the transfer happen at all.
 
-In the cockpit, the captain calls flaps. The first officer reads the
-flap-position indicator. The flap-position indicator is itself an
-instrument, with internal mechanism, calibration history, and certified
-accuracy. The captain does not call the mechanism. The captain calls
-flaps. The single word is enough because the responder knows what flaps
-means inside this cockpit on this aircraft on this morning. The single
-word is the gate through which the mechanism's reading enters the
-takeoff record. The actual flap angle has been verified against a
-procedure the airline has codified, a procedure the aircraft
-manufacturer has specified, and a procedure the regulatory authority
-has certified. The reading is layered. The name calls all the layers at
-once.
+An instrument can fail. A checklist can be falsified, a label can be wrong, a
+class instance can satisfy an interface while betraying the intended meaning.
+That possibility does not make the name ornamental. It makes the named
+obligation inspectable. A bad name hides the failure. A good name gives a
+reader somewhere to look. The pharmacist who notices a mismatched barcode and
+stops the dispense is doing exactly what a good name was built to permit. The
+copilot who calls back a flap setting that does not match the indicator is
+doing the same.
 
-A name as instrument is short. A long name cannot be called under
-pressure. The pre-flight checklist runs in two minutes or less; a
-checklist that took fifteen minutes would be skipped. A class name that
-took a sentence to write would be substituted with a shorter alias.
-Shortness is structural. The instrument has to fit in the moment in
-which the instrument is needed.
-
-A name as instrument is unambiguous within its context. A name that
-could mean two states cannot be confirmed by a single response. The
-captain calls flaps and the first officer answers set. There is no
-question about which state set refers to. The cockpit has agreed in
-advance that flaps means a specific control surface, and set means a
-specific position of that surface, and the agreement is unambiguous to
-the two people in the cockpit. \texttt{DISTINGUISHABLE} does not float
-between several possible obligations. It names one specific obligation,
-inside one specific formal vocabulary, and the obligation is the same
-every time the class name is invoked.
-
-A name as instrument is binding. Once the name is called and confirmed,
-the takeoff moves on; the state behind the name is now treated as
-established. The flap-position indicator does not get a second
-verification at runway-entry. The first officer's set is taken as
-licensing the next checklist item. If the flap position is wrong, the
-failure surfaces somewhere else in the system: the takeoff performance
-calculation, the stall warning, the post-incident analysis. Within the
-checklist, set is binding. Class names are similarly binding. Once an
-instance of \texttt{DISTINGUISHABLE} has been provided, subsequent code
-may assume the witness is in place. The compiler does not re-check the
-witness at each use. The provision is binding for the scope of the
-use.
-
-An instrument can be called and lie. A flap-position indicator can be
-miscalibrated. A medical wristband can be on the wrong patient. A class
-instance can be provided that satisfies the name's interface without
-satisfying the obligation the name was meant to carry. Instrument-
-failure is a real problem and a separate question from what the name
-does when it works. The procession in Chapter 2 will return to
-instrument-failure in several specific places.
-
-A name's instrument function depends on a trained community. The
-captain and first officer are trained to use the checklist. Pilots in
-training rehearse the checklist hundreds of times before they are
-licensed. Class names depend on a different trained community:
-programmers who know what \texttt{DISTINGUISHABLE} demands, readers
-who have learned the project's vocabulary, and reviewers who can spot
-a class name invoked without the obligation backing it.
-
-A name can also fail as an instrument by being overused. A boy-who-cried-
-wolf name no longer controls behavior. A warning placard posted
-everywhere is read nowhere. A class name applied to every record loses
-its discriminating power. The project's class names are used precisely.
-\texttt{DISTINGUISHABLE} is not invoked on records that do not need the
-obligation. \texttt{REPEATABLE} is not invoked on processes that do
-not need the obligation. The instrument function depends on the
-obligation being a real demand the name filters for. A name that
-filters for nothing is not an instrument; it is decoration.
-
-Instrument is the visible surface. The next question is what the
-surface controls access to.
+The first claim is therefore modest. Names are instruments because they expose
+the conditions under which action is allowed. The next section asks what those
+conditions cost.
 
 \section{The Name As Obligation}
 \label{se:the-name-as-obligation}
 
 A good name makes evasion harder.
 
-A record that wears \texttt{REPEATABLE} owes a second reading. The
-reading must happen again, under the same conditions, with the same
-result. A single reading does not satisfy the name. A reading made
-under different conditions does not satisfy the name. The name is
-short, but its short shape forces a specific commitment. A process
-that has been observed once is not \texttt{REPEATABLE} yet, no matter
-how confidently the observer recalls it. The name will not let the
-observation through until the second observation, under the same
-conditions, has been made.
+If a process is called \lean{REPEATABLE}, the reader knows what must be shown:
+the reading has to survive being done again. If a process is called
+\lean{HALTED}, the reader knows what cannot be left open: the process must
+have reached a recognizable output. If a conclusion is called \lean{INFERRED},
+guessing is not enough; the conclusion must be licensed by a record.
 
-A record that wears \texttt{HALTED} owes a stopped process. The process
-must have stopped at a recognizable output. A process that might still
-produce more information does not satisfy the name. A process that has
-been declared finished without an output cannot wear the name. The
-short word refuses a class of weak claims. A scientific study cannot
-be \texttt{HALTED} while data collection continues. A computation
-cannot be \texttt{HALTED} while it is still running. The name is short
-and the refusal it carries is sharp.
+The pre-flight checklist makes this ordinary. ``Fuel checked'' owes more than
+a confident nod. It owes a quantity, a unit, a route plan, and a reserve.
+``Clearance received'' owes an actual clearance, not a feeling that the
+runway is probably available. The name is short because the procedure is
+long. The procedure is long because the obligation is real.
 
-A record that wears \texttt{INFERRED} owes a record-permitted
-conclusion. The conclusion must be the kind a disciplined record
-permits. A conclusion reached by status, intuition, or institutional
-pressure does not earn the name. The name does not soften the claim;
-it narrows it. A sentence that wears \texttt{INFERRED} must point to
-the record that licenses it. A sentence that wears \texttt{INFERRED}
-without pointing to the record is asking the name to do work it has
-refused to do.
+The canonical case in this project is calibration. A reading without a named
+reference is not yet a reading. In the Lean code, \lean{LOGICAL} carries
+\lean{ekg : Calibration.EKG}. That field matters rhetorically before it
+matters technically. Logic is not free-floating cleverness. It carries a
+scale. The underlying reference remains hidden from the program that uses it,
+but the certificate of calibration is public. The name exposes the obligation
+while the reference itself stays protected.
 
-Class names are not labels glued to internal structure. They are
-obligations the structure has had to take on. A record carrying the
-name \texttt{REPEATABLE} has accepted the obligation to be
-reproducible. A record carrying the name \texttt{ADMISSIBLE} has
-accepted the obligation to have entered through a gate. A record
-carrying the name \texttt{WITNESSED} has accepted the obligation to
-have been transported through a recordable path. The externalization
-makes the obligations checkable.
+A second example, away from cockpits and code. A hospital medication order
+carries a drug, a dose, a route, a frequency, and an indication. The nurse
+preparing the dose does not have to retrace the prescriber's reasoning. The
+nurse has to check the five named obligations against the patient: right
+patient, right drug, right dose, right route, right time. The five checks
+are five named gates. Each gate may refuse. The order moves only when each
+gate has been answered.
 
-In the cockpit, the captain calls fuel checked. The first officer reads
-the fuel quantity, the planned reserve, and the diversion margin. Each
-reading is an obligation. The crew does not get to nod through fuel
-checked. The phrase requires a quantity in pounds or kilograms or
-liters, a unit, a planned consumption for the flight, a reserve for
-unexpected diversions, and a comparison against minimum legal reserves
-for the route. If the quantity is below the planned departure
-threshold, the call cannot be confirmed. The takeoff stops. The
-obligation is inspectable because the name is short enough to be heard
-and specific enough to be checked. The obligation has been codified by
-the airline, by the aircraft manufacturer, and by the regulatory
-authority. The captain and first officer did not invent the obligation;
-they inherited it and they answer to it.
-
-The codification makes the obligation enforceable. A name that points
-at an obligation no one has written down is not enforceable. The
-captain who decides personally what fuel checked should mean has not
-made the call. The call is what the airline, the manufacturer, and the
-regulator together have decided fuel checked must mean. The captain's
-role is to make the call honestly under that codification. The
-codification preceded the captain. The codification will outlive this
-morning's flight.
-
-The obligation each class names is fixed by the definition, not
-invented in the moment. A reader can look up what
-\texttt{DISTINGUISHABLE} requires, by consulting the class definition
-in the formal volumes. The obligation is publicly held: any code that
-claims an instance of the class can be inspected against the
-definition. A reviewer can ask whether the instance actually satisfies
-the obligation, or whether the instance is a placeholder pretending to
-satisfy it. The obligation is small enough to fail: the compiler can
-refuse the instance. The class name is the public form of an
-obligation that the code has had to accept in order to proceed.
-
-A class name carries one obligation. The next class name in the
-procession carries the next obligation. The procession's force comes
-from the fact that the obligations build on one another.
-\texttt{ADMISSIBLE} does not satisfy \texttt{REPEATABLE}.
-\texttt{REPEATABLE} does not satisfy \texttt{WITNESSED}. Each
-obligation must be satisfied in order, and the satisfaction of one
-does not waive the others. The class names are independent
-obligations stacked in a forced sequence.
-
-A name as obligation has three properties to hold. The obligation is
-named in advance, by a codification that precedes the moment of use.
-The obligation is publicly held, so that a reviewer can check the
-claim against the codification. The obligation is small enough to
-fail, so that the codification can refuse a candidate instance that
-does not meet the demand. A purported obligation that lacks any of
-these is not yet an obligation. It is an aspiration.
-
-The class names of the project accept all three properties. The
-checklist callouts of the pre-flight procedure accept all three
-properties. The medical wristband's identification accepts all three
-properties. The street name on the postal label accepts all three
-properties. Named obligation is everywhere in ordinary public life.
-The project's class names sit inside that grammar.
-
-The individual obligations are independently inspectable. The next
-question is what gives the sequence rhetorical weight.
+A name as obligation has to be named in advance, publicly held, and small
+enough to fail. A private standard invented at the moment of use is not an
+obligation. A public standard that never refuses anything is not an
+obligation either. The project's class names matter because they can refuse.
+They let the reader ask: where is the witness, where is the gate, where is
+the calibration, where is the halt?
 
 \section{The Name As Public Argument}
 \label{se:the-name-as-public-argument}
 
 A private proof can be correct and still fail to persuade the public.
 
-A mathematician may have an airtight proof that a function converges.
-The mayor of a small town cannot read the proof. The mayor must still
-decide whether to license the bridge that the function describes. The
-mathematician and the mayor need a shared interface. The interface is
-not the proof; it is the public claim the proof licenses. The
-mathematician says, after this proof, the bridge load is admissible at
-the stated rating. The mayor can use that sentence.
+The public does not need the entire proof at every moment of action. A bridge
+sign does not print the engineer's calculations. It says the bridge has a
+load rating under a named standard. A patient wristband does not print the
+hospital's database. It gives the nurse a name, a barcode, and a number that
+can be checked against the order. The public sentence is short because the
+discipline behind it is long.
 
-The shared interface is not a simplification of the proof. The proof
-remains intact. The proof's authority does not transfer to the public
-sentence by accident. It transfers because the public sentence carries,
-in compressed form, the obligations that the proof's discipline
-imposed. The sentence is short because the obligations have already
-been satisfied by the proof. The sentence is honest because the
-sentence does not promise more than the proof's obligations covered.
-The mayor who licenses the bridge under that sentence is not licensing
-the bridge on the strength of the mathematician's reputation. The
-mayor is licensing the bridge on the strength of a named obligation:
-load rating, tested under specified conditions, admissible at the
-stated value.
+The rhetorical gauge asks whether the formal sequence has become sayable in
+that way. It does not simplify by removing rigor. It lets the right names
+carry the right pressure.
 
-The mathematician's proof remains intact behind the sentence. What the
-public hears is a short sentence whose obligations the public can
-recognize. Load rating. Tested sample. Engineering standard. Each is a
-name with an inspectable meaning. Together they form a small public
-argument that the mayor, the city council, and the townspeople can use
-as the basis for a decision.
+The first three names already show the form. \lean{DISTINGUISHABLE}: the
+mark can be told apart. \lean{ADMISSIBLE}: the distinguishable mark may
+enter under rule. \lean{COUNTABLE}: the admitted mark can take a place in a
+sequence. No definition has been quoted yet, but the order can already be
+heard. The next name is forced by the previous one. Difference without
+admission is noise. Admission without count is a pile. Count without
+encoding will not travel.
 
-The mayor's decision is not the mathematician's proof. The decision is
-the public action the proof licenses, under the public argument the
-proof produces. The two registers are connected by the named
-obligations. The argument moves between them only because the
-obligations have been preserved across the move. A bridge-rating
-sentence that did not point at any obligation would not move the
-mayor's decision; it would be a slogan. A bridge-rating sentence that
-pointed at the load test, the engineering standard, and the
-manufacturer's certification is doing public-argument work because the
-obligations are named and inspectable.
+A second example. A courtroom moves only when each named role is answered:
+judge, jurors, plaintiff, defendant, counsel, witness, bailiff. The trial
+is not the names. The trial is what the named roles, taken in their order,
+are licensed to perform. A trial conducted without a named judge is not a
+trial. A trial conducted without sworn witnesses is not a trial. The names
+are the public surface that lets the proceeding count as the kind of thing
+the law recognizes.
 
-The passenger does not hear the whole flight-control system before
-takeoff. The passenger does not hear how flaps are
-electromechanically actuated, how the transponder negotiates with
-air-traffic control, how the weather briefing has been derived from
-upper-atmosphere sounding balloons. The passenger hears that the
-captain has run the checklist. The captain says cleared for takeoff
-after the gate has closed. The passenger uses that sentence. The
-sentence is short. It is also a public argument: the checklist has
-closed, the gates have held, the aircraft may move.
-
-The argument is not made by the captain alone. The captain is the
-visible speaker. The argument is made by the checklist, by the
-codification behind each item, by the training that lets the captain
-and first officer execute the checklist accurately, by the maintenance
-organization that prepared the aircraft, by the air traffic control
-system that issued the clearance, and by the regulatory authority
-that certified all of the above. The captain is the last speaker in a
-long chain of speakers. The cleared for takeoff sentence is the
-chain's compressed conclusion. The passenger trusts the sentence
-because the chain is real, even though the passenger cannot personally
-inspect each link.
-
-A sequence of names becomes a public argument when three conditions
-hold. The names appear in a forced order. The captain does not call
-cleared for takeoff before flaps. The order is not arbitrary; the
-obligations build on one another. Cleared for takeoff depends on
-having confirmed weather, runway, fuel, flaps, trim, and clearance,
-in that order, because each later item presupposes the earlier items.
-A clearance issued before fuel is checked is not operationally
-meaningful. The order encodes the dependency structure.
-
-Each name in the sequence is independently inspectable. A passenger
-who wanted to could ask which names the captain called and what the
-responder said. The information is recorded in the cockpit voice
-recorder, the flight data recorder, and the maintenance log. Each
-name's confirmation is a piece of recorded behavior that any
-investigator can later examine. Each class name's instance is
-recorded in the project's source code. Each instance can be
-inspected against the class definition. The procession is not a
-sealed performance; it is a sequence of inspectable acts.
-
-The closing sentence summarizes the sequence without erasing it.
-Cleared for takeoff is short because the checklist is long. The
-short sentence is honest only because the long checklist held. A
-captain who said cleared for takeoff without running the checklist
-would be making the same words mean something different: an
-unsupported claim rather than a public argument. The shortness of
-the sentence is licensed by the length of the procession behind it.
-Remove the procession and the sentence becomes mere assertion.
-
-A procession can be wrong. The order encoded in the class names is
-itself a choice that can be debated. A reader who thinks the
-procession is wrong can argue against the order, propose a different
-order, and engage with the reasoning that the current order encodes.
-The project's procession is not infallible. It is one specific
-ordering of obligations, chosen because each link's dependency on the
-previous link could be made explicit. A different procession might
-be equally valid for a different decision. The procession's defense
-is not that it is the only one, but that it is internally coherent
-and externally inspectable.
-
-A public can misunderstand a name. A reader may hear \texttt{ADMISSIBLE}
-as carrying a softer obligation than it actually demands. The
-correction is teaching, not invention. The chapter that follows walks
-the procession in detail, with each name receiving its own
-development. Misunderstanding is a teaching problem.
-
-A captain can falsify the checklist. A class-name claim can be made
-without the obligation being satisfied. The defense is inspection. The
-flight recorder catches falsified checklists. The reviewer catches
-falsified class instances. The defense depends on the institutional
-infrastructure that makes inspection possible. The class names are
-not self-enforcing; they are inspectable only if someone takes the
-trouble to inspect them. The procession is honest about what
-honoring it requires, and what failing it would look like.
+That is the method of the book. It follows the necessary names until the
+record can license a public sentence. The running case will be a used-car
+inspection: a buyer, a seller, a mechanic, and a decision about whether
+money should change hands. The decision is small enough to remain ordinary
+and large enough to make the whole procession necessary.
 
 \begin{handoff}
 
-The class names of the formal project do the same kinds of work as
-the pre-flight checklist, in the same kind of order, but for a
-different decision. The decision is whether a used car should be
-bought at the offered price. The decision is local, financial, and
-personal. The discipline is the same.
-
-Each section in Chapter 2 opens with a public pressure, names the
-class that answers it, explains why the name had to appear, shows the
-running car-inspection example, shows an independent example from
-another domain, and hands off to the next pressure. The procession is
-forced. Each name makes the next one necessary.
-
-The class-name procession is longer than the pre-flight checklist and
-stranger. The names include some that are deliberately impolite. The
-discipline is recognizable. A reader who heard flaps as a name doing
-public work in the cockpit will hear \texttt{ADMISSIBLE} and
-\texttt{WITNESSED} and \texttt{INFERRED} as names doing public work
-in the same grammar.
-
-The decision at the end of Chapter 2 is small. The buyer may infer
-that the car is worth buying, may infer that the car is worth buying
-only after a repair credit, or may infer that the buyer should walk
-away. The smallness of the decision lets the procession do its work
-without importing a contested public domain. A reader who can follow
-the procession in this small case can carry it to larger cases.
+The checklist showed that named gates already govern public action. The used-car
+inspection will now run the same discipline in order. The question is no longer
+what a name can carry in general. The question is what sentence the full
+procession of names can license.
 
 \end{handoff}
