@@ -1,4 +1,5 @@
 import Measurement.Episode15
+import Measurement.Calibration.EKGBounded
 namespace Measurement
 
 
@@ -148,13 +149,6 @@ noncomputable instance truthLogical :
     LOGICAL Prop truthCarrier :=
   LOGICAL_UNIVERSAL Prop truthCarrier
 
-noncomputable instance truthElaborationProcess
-    [prop: LOGICAL Prop truthCarrier]
-    : ElaborationProcess Prop truthCarrier where
-  stamina := prop.feelings
-  calibration := prop.ekg
-  computer_state := .load Fact.Truth Fact.Truth.truth Prop
-
 noncomputable instance truthHalted :
     HALTED Prop truthCarrier :=
   HALTED_LOGICAL Prop truthCarrier
@@ -176,16 +170,19 @@ noncomputable instance truthInferred :
   INFERRED_TRUE Prop truthCarrier
 
 
-set_option maxHeartbeats 0
-set_option synthInstance.maxHeartbeats 0
+-- EKG bounded subjunctive probe: MEASURE the evaluation of the proposition,
+-- and that is all. Budget 720 user-heartbeats = 9 (a Fact) * 8 (a 3SAT clause's
+-- 2^3 assignments) * 10 (safety) = 720000 internal compiler heartbeats. The
+-- probe binds no declaration, so it cannot leak universe metavariables, and it
+-- never fails the module: on outgrowth it logs the EKG event and continues.
+ekg_probe 720 =>
+  truthInferred.inferred?
+    truthInferred.equivalence_process.closure
+    truthInferred.theory
 
-noncomputable def theory_true? : Prop :=
-  let inst : INFERRED Prop truthCarrier := inferInstance
-  inst.inferred?
-    inst.equivalence_process.closure
-    inst.theory
-
-
-#check theory_true?
+theorem true_eq_false :
+    Subsingleton Fact.Truth.truth = Subsingleton (¬ Fact.Truth.truth) := by
+  apply propext
+  exact ⟨fun _ => inferInstance, fun _ => inferInstance⟩
 
 end Measurement

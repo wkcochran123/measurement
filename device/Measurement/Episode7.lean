@@ -14,9 +14,11 @@ set_option allowUnsafeReducibility true
 -- MAIN SCREEN TURN ON
 namespace Measurement
 
+universe i
+
 @[reducible]
 structure ArmWaveProcess   -- 3306
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -51,7 +53,7 @@ structure ArmWaveProcess   -- 3306
     | .interpolant prop _ poly2 prior _ => .interpolant prop poly2 matter.galerkin_process.polynomial prior guess
 
 class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved.
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -99,7 +101,7 @@ inductive Diatribe  -- 147
   | rant: Prop → Spline → Diatribe → Diatribe → Diatribe
 
 structure CrusadeProcess   -- Bullshit meter 3804
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -135,7 +137,7 @@ structure CrusadeProcess   -- Bullshit meter 3804
     | .rant prop s d1 _ => .rant prop s d1 religion
 
 def CrusadeProcess.default
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -168,7 +170,7 @@ def CrusadeProcess.default
   religion := .religion Fact.Truth.truth
 
 class PROPAGANDA  -- 3151
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -208,7 +210,7 @@ inductive Cult  -- 6460
   | triangles: Prop → Diatribe → Fact → Cult → Cult → Cult
 
 structure InitiationProcess  -- Bullshit meter ≈ 9117.   TBF, when is an initiation process not a bunch of bullshit?
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -245,7 +247,7 @@ structure InitiationProcess  -- Bullshit meter ≈ 9117.   TBF, when is an initi
     | .triangles prop crusade fact witness event => .triangles prop crusade fact witness event
 
 def InitiationProcess.default
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -276,7 +278,7 @@ def InitiationProcess.default
   sacred_texts := .inside_joke Fact.Truth.truth
 
 class ACOLYTE   -- 7699
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]

@@ -43,6 +43,8 @@ set_option allowUnsafeReducibility true
 
 namespace Measurement
 
+universe i
+
 -- So Marconi said:  Hey we can use the photon to communicate using a "presence"/"absence" duality defined by a
 -- _threshold_ of detection.  So, if a sample is above the threshold of detection, it sure as hell should be
 -- detectable. Then modulation and demodulation arrived and we could send voice over amplitude modulated photons.
@@ -116,7 +118,7 @@ COMPILER: I cannot read them.
 ME: Exactly. That is why you cannot comment on them.
 -/
 structure TuringProcess   -- Bullshit meter ≈ 492
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]   -- It might be difficult to believe that this __FULLY__ specifies
     [a: ADMISSIBLE Value Carrier]        -- a Turing machine.  It __DOESN'T__.  Not even close.  That's not
@@ -174,7 +176,7 @@ COMPILER: Why are you looking at my hand?
 ME: No reason. Continue.
 -/
 class REPRESENTABLE  --  Bullshit meter ≈ 261
-    (Value: Type)                           -- Representation is the core challenge of communication _AND_
+    (Value: Type i)                           -- Representation is the core challenge of communication _AND_
     (Carrier: CarrierProcess Value)         -- understanding.  Without a representation of an idea, then
     [d: DISTINGUISHABLE Value Carrier]      -- that idea may or may not exist outside the random synapse
     [a: ADMISSIBLE Value Carrier]           -- firings in your head.  What makes those synapses comprehensible
@@ -275,7 +277,7 @@ COMPILER: I cannot accept corrupted input.
 ME: Sure you can. You just called it input.
 -/
 structure NoisyProcess  -- Bullshit meter ≈ 504
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)      -- This really feels like it is __cheating__.  BUT!  The only way to make sure
     [d: DISTINGUISHABLE Value Carrier]   -- Godel stays in _HIS OWN LANE_ is to make sure we never self-reference.  This
     [a: ADMISSIBLE Value Carrier]        -- is why we are going to __FURTHER__ assume that the program that computes
@@ -351,7 +353,7 @@ COMPILER: That is not a definition.
 ME: No. It is a burn mark with units.
 -/
 class PHYSICAL  -- Bullshit meter ≈ 430
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -450,7 +452,7 @@ COMPILER: Scars are not data.
 ME: Not until the instrument learns to count them.
 -/
 structure PhysicalProcess   -- Bullshit meter ≈ 647
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)      -- The DOE might start asking questions about this guy
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -517,7 +519,7 @@ COMPILER: *FAILURE*
 ME: Exactly. Controlled.
 -/
 class COMPARABLE  -- Bullshit meter ≈ 292
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]   -- Look at all this information!  We have to be able to ask about all those
     [a: ADMISSIBLE Value Carrier]        -- ≤ and < relations.  Dozens of them!  We HAVE to be able to describe what
@@ -608,7 +610,7 @@ COMPILER: The floor?
 ME: The hidden surface the symbol was standing on.
 -/
 structure SlipProcess    -- Bullshit meter ≈ 680
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)      -- The DOE might start asking questions about this guy
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -657,7 +659,7 @@ COMPILER: Cromulent is not a theorem.
 ME: Yet.
 -/
 class OBSERVED   -- Bullshit meter ≈ 444
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]   -- We have ≠
     [a: ADMISSIBLE Value Carrier]        -- We have ≤

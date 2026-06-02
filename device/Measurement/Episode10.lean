@@ -9,9 +9,11 @@ set_option maxRecDepth 100
 
 namespace Measurement
 
+universe i
+
 @[reducible]
 class WITNESSED
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -48,7 +50,7 @@ class WITNESSED
     Gospel.le a b → Gospel.le b a
 
 instance WITNESSED_TRUTH
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -104,7 +106,7 @@ end Truth
 --  and avoid them.
 @[reducible]
 structure UniverseTensor
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -147,7 +149,7 @@ structure UniverseTensor
 
 @[reducible]
 class REAL
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -185,7 +187,7 @@ class REAL
     Truth.le a b → Truth.le b a
 
 instance REAL_WITNESSED
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -261,7 +263,7 @@ end Variation
 
 @[reducible]
 structure BigRedDogProcess
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -309,7 +311,7 @@ structure BigRedDogProcess
 
 @[reducible]
 class LOCAL
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -347,7 +349,7 @@ class LOCAL
     Variation.le a b
 
 instance LOCAL_REAL
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]

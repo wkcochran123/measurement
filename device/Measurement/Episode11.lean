@@ -7,10 +7,12 @@ set_option maxRecDepth 100
 -- Homework:
 namespace Measurement
 
+universe i
+
 inductive SpaceTimePath
   | einstein: Fact → SpaceTimePath
-  | white_hole: Fact → Type → SpaceTimePath → SpaceTimePath
-  | blackhole: Prop → Type 1 → SpaceTimePath → SpaceTimePath
+  | white_hole: Fact → Type i → SpaceTimePath → SpaceTimePath
+  | blackhole: Prop → Type (i+1) → SpaceTimePath → SpaceTimePath
   | geodesic: Fact → Type i → Prop → Type (i+1) → SpaceTimePath → SpaceTimePath → SpaceTimePath
 
 namespace SpaceTimePath
@@ -59,7 +61,7 @@ end SpaceTimePath
 
 @[reducible]
 structure CalculusProcess
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -76,7 +78,7 @@ structure CalculusProcess
   derivative: BigRedDogProcess Value Carrier  -- Parents, read to your kids.  They are the future.
   function: SpaceTimePath
   converged: Fact
-  sink: Type 1
+  sink: Type (i+1)
 
   photon_torpedo: SpaceTimePath → SpaceTimePath := fun path =>
     match path with
@@ -85,9 +87,9 @@ structure CalculusProcess
     | .white_hole fact val path =>
               match fact.decTruth with
               | isTrue _ =>
-                    .geodesic d.fact val d.fact.truth (ULift val) path function
+                    .geodesic d.fact val d.fact.truth (ULift.{i+1} val) path function
               | isFalse _ =>
-                    .blackhole fact.truth (ULift val) function
+                    .blackhole fact.truth (ULift.{i+1} val) function
     | .geodesic fact val1 prop val2 _ _ =>
               match fact.decTruth with
               | isTrue _ =>
@@ -95,7 +97,7 @@ structure CalculusProcess
                               val1
                               prop
                               val2
-                              (.white_hole converged (ULift Value) (.einstein fact))
+                              (.white_hole converged (ULift.{i} Value) (.einstein fact))
                               (.einstein fact)
               | isFalse _ =>
                     .blackhole fact.truth sink function
@@ -104,7 +106,7 @@ structure CalculusProcess
 
 @[reducible]
 class UNIVERSAL
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -127,7 +129,7 @@ class UNIVERSAL
 
 
 instance UNIVERSAL_LOCAL
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -145,10 +147,10 @@ instance UNIVERSAL_LOCAL
   { derivative := epsilon.theory
     function := .einstein d.fact
     converged := Fact.Truth
-    sink := Type
+    sink := Type i
   }
   source_program   := .white_hole d.fact Value (.einstein d.fact)
-  compiled_program := .blackhole d.fact.truth (ULift Value) (.einstein d.fact)
+  compiled_program := .blackhole d.fact.truth (ULift.{i+1} Value) (.einstein d.fact)
 
 inductive YarnTheory
 |stokes: Fact → SpaceTimePath → Prop → YarnTheory
@@ -202,7 +204,7 @@ end YarnTheory
 
 @[reducible]
 structure HeartbeatProcess
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]

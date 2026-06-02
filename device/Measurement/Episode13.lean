@@ -1,13 +1,16 @@
 import Measurement.Episode12
 set_option maxHeartbeats 4000000
-set_option maxRecDepth 10000000000
+set_option maxRecDepth 1000
 set_option allowUnsafeReducibility true
 
 namespace Measurement
+
+universe i
+
 inductive Measurement
-|origin: Fact → Number → Type → Measurement
-|distance: Fact → Number → Number → Type → Type 1 → Measurement → Measurement
-|speed: Fact → Number → Number → Number → Type → Type 1 → Type i →  Measurement → Measurement → Measurement
+|origin: Fact → Number → Type i → Measurement
+|distance: Fact → Number → Number → Type i → Type (i+1) → Measurement → Measurement
+|speed: Fact → Number → Number → Number → Type i → Type (i+1) → Type i →  Measurement → Measurement → Measurement
 
 namespace Measurement
 def le : Measurement → Measurement → Prop := fun t1 t2 =>
@@ -26,7 +29,7 @@ instance : LE Measurement where
 
 @[reducible]
 structure LeanProcess
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -49,16 +52,16 @@ structure LeanProcess
 
   evolve? : Measurement → Measurement := fun x =>
     match x with
-    | .origin fact number _ => .distance fact number length Value (ULift Value) velocity
+    | .origin fact number _ => .distance fact number length Value (ULift.{i+1} Value) velocity
     | .distance fact x1 x2 _ _ v =>
-                                .speed fact x1 x2 length Value (ULift Value) projection v velocity
+                                .speed fact x1 x2 length Value (ULift.{i+1} Value) projection v velocity
     | .speed fact _ x2 x3 _ _ _ _ v =>
-                                .speed fact x2 x3 length Value (ULift Value) projection v velocity
+                                .speed fact x2 x3 length Value (ULift.{i+1} Value) projection v velocity
 
 
 @[reducible]
 class MEASURED
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -80,7 +83,7 @@ class MEASURED
 
 
 instance MEASURED_HALTED
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -99,7 +102,7 @@ instance MEASURED_HALTED
   { description := executable.scientific_paper
     length := Carrier.value
     velocity := .origin d.fact Carrier.value Value
-    projection := ULift (ULift (ULift Value))  -- Hmm... wonder what this could mean?
+    projection := ULift.{i} (ULift.{i} (ULift.{i} Value))  -- Hmm... wonder what this could mean?
   }
 
 

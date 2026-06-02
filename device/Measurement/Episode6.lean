@@ -27,6 +27,8 @@ set_option allowUnsafeReducibility true
 -- MAIN SCREEN TURN ON !
 namespace Measurement
 
+universe i
+
 @[reducible]
 /-
 ME: I need a MathematicalProcess.
@@ -44,7 +46,7 @@ COMPILER: What does it process?
 ME: The difference between a trick and a theorem.
 -/
 structure MathematicalProcess  -- Bullshit meter = 2963.  That's about 2/3 increase.
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -88,7 +90,7 @@ COMPILER: Carried where?
 ME: Wherever the representation still recognizes its luggage.
 -/
 class VALUE  -- Bullshit meter = 3327.  3x increase!  That's a lot of bullshit!
-     (Value: Type)
+     (Value: Type i)
      (Carrier: CarrierProcess Value)
      [d: DISTINGUISHABLE Value Carrier]
      [a: ADMISSIBLE Value Carrier]
@@ -145,7 +147,7 @@ instance : LT Sum := ⟨Sum.lt⟩
 
 @[reducible]
 structure AddingProcess  -- Bullshit meter ≈ 2063.   Thats 33% less bullshit than a generic mathematical process!
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -178,7 +180,7 @@ structure AddingProcess  -- Bullshit meter ≈ 2063.   Thats 33% less bullshit t
 
 @[reducible]
 class MAGNITUDE  -- Bullshit meter ≈ 1503.  That's less than 1/2 the bullshit of a value!
-     (Value: Type)
+     (Value: Type i)
      (Carrier: CarrierProcess Value)
      [d: DISTINGUISHABLE Value Carrier]
      [a: ADMISSIBLE Value Carrier]
@@ -253,7 +255,7 @@ instance : LT Product := ⟨Product.lt⟩
 
 @[reducible]
 structure MultiplyingProcess  -- Bullshit meter = 2157  5% increase.  Call that flat response over the AddingProcess.
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -296,7 +298,7 @@ structure MultiplyingProcess  -- Bullshit meter = 2157  5% increase.  Call that 
 
 @[reducible]
 class SCALED  -- Bullshit meter = 1756
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -383,7 +385,7 @@ instance : LT Basis where
 
 @[reducible]
 structure BASICProcess  -- Bullshit meter ≈ 2759
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -434,7 +436,7 @@ structure BASICProcess  -- Bullshit meter ≈ 2759
 
 @[reducible]
 class LOAD  -- Bullshit meter 2089
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -522,7 +524,7 @@ instance : LE Polynomial where
 
 @[reducible]
 structure GalerkinProcess   -- Bullshit meter 2794
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -573,7 +575,7 @@ structure GalerkinProcess   -- Bullshit meter 2794
 -- one stack frame, our __FINITE_ELEPHANT__.
 @[reducible]
 class FINITE_ELEPHANT   -- 2368
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]     -- So, she _ASSUMES_ they have an undocumented one and proceed to add the release.
     [a: ADMISSIBLE Value Carrier]          -- Only to realize she can't _EXACTLY_ find the _RIGHT_ release of their media to catalog.

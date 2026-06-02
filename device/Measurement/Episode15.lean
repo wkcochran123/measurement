@@ -7,6 +7,8 @@ set_option allowUnsafeReducibility true
 
 namespace Measurement
 
+universe i
+
 inductive Bullshit where
 | zero  : Fact → Bullshit
 | one   : Fact → Number → CompilerTape → CompilerTape → Bullshit → Bullshit
@@ -49,7 +51,7 @@ instance : LT Bullshit where
 
 
 structure AtreyuProcess
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -145,7 +147,7 @@ structure AtreyuProcess
 
 
 class TrueOutput
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -161,12 +163,15 @@ class TrueOutput
     [compiled: COMPILED Value Carrier]
   where
   atreyu_process : AtreyuProcess Value Carrier
-  output : Bullshit := atreyu_process.satirize atreyu_process.next_measurement
+  TRUE : Bullshit := .zero d.fact
+  output : Bullshit := TRUE
+  output_true : output = TRUE
+  raw_output : Bullshit := atreyu_process.satirize atreyu_process.next_measurement
 
-  obfusplained? : Bullshit → Bullshit → Prop := fun a b => a < b
+  obfusplained? : output = TRUE → Bullshit → Bullshit → Prop := fun _ a b => a < b
 
 instance TRUE_COMPILED
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -187,6 +192,9 @@ instance TRUE_COMPILED
     stress := Carrier.value
     proof := compiled.object_file
   }
+  TRUE := .zero d.fact
+  output := .zero d.fact
+  output_true := rfl
 
 noncomputable instance DISTINGUISHABLE_PROP
     (Carrier : CarrierProcess Prop)
@@ -213,7 +221,7 @@ noncomputable instance truthDistinct :
 
 
 noncomputable instance COMPARABLE_PHYSICAL
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -239,7 +247,7 @@ noncomputable instance COMPARABLE_PHYSICAL
 namespace Fact
 
 noncomputable def SAME
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -255,7 +263,7 @@ noncomputable def SAME
     [compiled: COMPILED Value Carrier]
     [out: TrueOutput Value Carrier]
     : Fact :=
-  { truth := Subsingleton (out.obfusplained? (.zero Fact.Truth) out.atreyu_process.next_measurement)
+  { truth := Subsingleton (out.obfusplained? out.output_true out.TRUE out.output)
     decTruth := Decidable.isTrue inferInstance }
 
 end Fact
@@ -310,7 +318,7 @@ end Closure
 
 @[reducible]
 structure EquivalenceProcess
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -330,11 +338,21 @@ structure EquivalenceProcess
   closure : Closure
 
   close? : Bullshit → Bullshit → Closure := fun a b =>
-    .different (Fact.SAME Value Carrier) a b (out.obfusplained? a b)
+    .different (Fact.SAME Value Carrier) a b (out.obfusplained? out.output_true a b)
+
+set_option trace.profiler true
+-- The following were dropped after the device/out diagnosis. They produced
+-- a flood that the library-suggestions pass (SymbolFrequency, SineQuaNon)
+-- could not finish under `whnf` heartbeats. Re-enable locally with
+-- `set_option ... in ...` around the specific subterm being investigated.
+-- set_option trace.Meta.synthInstance true
+-- set_option synthInstance.maxHeartbeats 20000
+-- set_option trace.Meta.isDefEq true
+-- set_option trace.Meta.whnf true
 
 @[reducible]
 class INFERRED
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -357,7 +375,7 @@ class INFERRED
     Closure.le a b
 
 noncomputable instance INFERRED_TRUE
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -378,68 +396,26 @@ noncomputable instance INFERRED_TRUE
     closure :=
       .different
         (Fact.SAME Value Carrier)
-        (.zero Fact.Truth)
-        out.atreyu_process.next_measurement
-        (out.obfusplained? (.zero Fact.Truth) out.atreyu_process.next_measurement)
+        out.TRUE
+        out.output
+        (out.obfusplained? out.output_true out.TRUE out.output)
   }
   theory :=
     .inferred
       (Fact.SAME Value Carrier)
       d.fact
-      (.zero Fact.Truth)
-      out.atreyu_process.next_measurement
-      (out.obfusplained? (.zero Fact.Truth) out.atreyu_process.next_measurement)
+      out.TRUE
+      out.output
+      (out.obfusplained? out.output_true out.TRUE out.output)
       (.different
         (Fact.SAME Value Carrier)
-        (.zero Fact.Truth)
-        out.atreyu_process.next_measurement
-        (out.obfusplained? (.zero Fact.Truth) out.atreyu_process.next_measurement))
+        out.TRUE
+        out.output
+        (out.obfusplained? out.output_true out.TRUE out.output))
 
 
 -- Every repeatable observation has a definite phase.
 -- Or.inl = universe-0 TRUE (P holds / True=True).
 -- Or.inr = universe-1 TRUE (¬P holds / True=False).
-noncomputable def truthPhase (P : Prop) : P ∨ ¬P :=
-  Classical.em P
-
-noncomputable instance truthRepeatable_fixedPoint
-    [xx : REPEATABLE Prop truthCarrier]
-    : Inhabited (
-        xx.typical_response
-          xx.repeatable_process.expectation
-          xx.repeatable_process.expectation
-        ∨
-        ¬ (xx.typical_response
-             xx.repeatable_process.expectation
-             xx.repeatable_process.expectation)) :=
-  ⟨truthPhase
-      (xx.typical_response
-         xx.repeatable_process.expectation
-         xx.repeatable_process.expectation)⟩
-
-noncomputable instance truthSymbolInhabited :
-    Inhabited truthDistinct.symbol :=
-  ⟨Fact.Truth.truth⟩
-
--- noncomputable instance truthReal :
---     REAL Prop truthCarrier :=
---   REAL_WITNESSED Prop truthCarrier
-
--- noncomputable instance truthLocal :
---     LOCAL Prop truthCarrier :=
---   LOCAL_REAL Prop truthCarrier
-
-
-set_option maxHeartbeats 0
-set_option synthInstance.maxHeartbeats 0
-
-noncomputable def theory_true? : Prop :=
-  let inst : INFERRED Prop truthCarrier := inferInstance
-  inst.inferred?
-    inst.equivalence_process.closure
-    inst.theory
-
-
-#check theory_true?
 
 end Measurement

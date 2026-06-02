@@ -6,10 +6,12 @@ set_option allowUnsafeReducibility true
 
 namespace Measurement
 
+universe i
+
 inductive CompilerTape where
-  | boot    : Fact → Type → CompilerTape
-  | strap   : Fact → Fact → Type → Type 1 → CompilerTape → CompilerTape
-  | compute : Fact → Fact → Prop → Type → Type 1 → Type i → CompilerTape → CompilerTape
+  | boot    : Fact → Type i → CompilerTape
+  | strap   : Fact → Fact → Type i → Type (i+1) → CompilerTape → CompilerTape
+  | compute : Fact → Fact → Prop → Type i → Type (i+1) → Type (i+1) → CompilerTape → CompilerTape
 
 namespace CompilerTape
 def le : CompilerTape → CompilerTape → Prop := fun t1 t2 =>
@@ -32,7 +34,7 @@ instance : LT CompilerTape where
 
 @[reducible]
 structure CompilerOutput
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -51,8 +53,8 @@ structure CompilerOutput
 
   emit?: CompilerTape → CompilerTape := fun t =>
     match t with
-    | .boot a b                => .strap a d.fact b (ULift b) tape
-    | .strap f1 f2 t t1 symbol => .compute f1 f2 d.fact.truth t t1 (ULift t1) symbol
+    | .boot a b                => .strap a d.fact b (ULift.{i+1, i} b) tape
+    | .strap f1 f2 t t1 symbol => .compute f1 f2 d.fact.truth t t1 (ULift.{i+1, i+1} t1) symbol
     | .compute f1 f2 _ t t1 t2 remainder =>
           match f1.decTruth,f2.decTruth with
           | isTrue _     , isTrue _    =>  .boot Fact.Truth Value
@@ -62,7 +64,7 @@ structure CompilerOutput
 
 @[reducible]
 class COMPILED
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -82,7 +84,7 @@ class COMPILED
   converged?: CompilerTape → CompilerTape → Prop := fun a b => a < b
 
 instance COMPILED_MEASURED
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
     [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
@@ -100,7 +102,7 @@ instance COMPILED_MEASURED
   { satire := measured.satire
     tape := (.boot Fact.Truth Value)
   }
-  object_file := .strap Fact.Truth Fact.Truth Value (ULift Value) (.boot Fact.Truth Value)
+  object_file := .strap Fact.Truth Fact.Truth Value (ULift.{i+1, i} Value) (.boot Fact.Truth Value)
 
 
 end Measurement

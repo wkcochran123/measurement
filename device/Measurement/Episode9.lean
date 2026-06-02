@@ -14,13 +14,15 @@ set_option allowUnsafeReducibility true
 
 namespace Measurement
 
+universe i
+
 inductive Science  -- 8029
   | repeatable: Prop → Science
   | hypothesis: Prop → Cult → Science
   | theory: Prop → Cult → Fact → Science → Science
 
 structure LearningProcess  -- 26691
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -61,7 +63,7 @@ structure LearningProcess  -- 26691
     | .theory propose prior fact _ => .theory propose prior fact invariant
 
 def LearningProcess.default
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -94,7 +96,7 @@ def LearningProcess.default
   invariant := .repeatable Fact.Truth.truth
 
 class SCIENTIFIC -- 23964
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -133,7 +135,7 @@ class SCIENTIFIC -- 23964
 
 
 instance SCIENTIFIC_ACOLYTE
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -182,7 +184,7 @@ end Knowledge
 @[reducible] -- We have learned this in the learning process
 -- lol.  10 years of learning about the Taylor series.  It's like I can manipulate them with my eyes closed now.
 structure ScientificProcess  -- 104499
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -219,7 +221,7 @@ structure ScientificProcess  -- 104499
     |.ledger p f _   => .ledger p f knowledge
 
 class TRUTH  -- 5632
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -254,7 +256,7 @@ class TRUTH  -- 5632
 
 
 instance TRUTH_SCIENTIFIC
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -304,7 +306,7 @@ end Gospel
 
 @[reducible] -- We have learned this while watching others.
 structure ReligiousProcess
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]

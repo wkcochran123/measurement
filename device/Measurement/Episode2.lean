@@ -81,6 +81,8 @@ set_option allowUnsafeReducibility true
 
 namespace Measurement
 
+universe i
+
 -- So, we have the ability to make a bunch of symbols and we can, in fact, identify
 -- two of them by sight. Not only that, we have an inductive that conveniently provides
 -- two limit points at each step. I suggest we let those two representations mingle
@@ -135,7 +137,7 @@ COMPILER: I am the compiler.
 ME: You produced the sample. Consider this a deposition.
 -/
 structure ObservationProcess   -- Bullshit meter ≈ 313
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -244,7 +246,7 @@ class BINARY  --  Bullshit meter ≈ 141
   --     +-------------- the clock complement.  As I mentioned above, before is the covariant represenataion
   --                     and after is the contravariant.
 
-    (Value: Type)                         --      +---------  Looking like we can ask a bunch of questions
+    (Value: Type i)                         --      +---------  Looking like we can ask a bunch of questions
     (Carrier: CarrierProcess Value)       --      |
     [d: DISTINGUISHABLE Value Carrier]    -- <----+
     [a: ADMISSIBLE Value Carrier]         -- <----+
@@ -501,7 +503,7 @@ COMPILER: That seems weaker.
 ME: It is stronger. Results are cheap. Questions need fixtures.
 -/
 structure RepeatableProcess  -- Bullshit meter ≈ 296
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -584,7 +586,7 @@ class REPEATABLE   -- Bullshit meter ≈ 166
   --                                                |
   --                                                +----------  Big baller, shot caller!
 
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]  --
     [a: ADMISSIBLE Value Carrier] --      \
@@ -797,7 +799,7 @@ COMPILER: Studies do not run.
 ME: They do when the questions have inputs and the receipts have outputs.
 -/
 structure ComputationalProcess  -- Bullshit meter ≈ 373
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -852,7 +854,7 @@ class NUMERIC  -- Bullshit meter ≈ 215
 --       +-----------------  This is not a _number_.  I think you and I would call this a _digit_ or a _variable_.
 --                           Why not both?  It can either be a digit or a variable.  It can be up/down, top/bottom,
 --                           strange/charmed, and so on.  These are just random dualities I chose from random.
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)      -- The DOE might start asking questions about this guy
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]

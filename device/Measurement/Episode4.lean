@@ -51,6 +51,7 @@ import Measurement.Episode3
 -- Literally, algebraic ring incoming.
 namespace Measurement
 
+universe i
 
 -- I forgot where we were, easy to get lost.  Oh yeah, Oldendian and Newendian.  This is how things
 -- appear on a wire.  Oldendian arrives first, new endian arrives second.  So, what we want to do
@@ -125,7 +126,7 @@ COMPILER: So it records vibration.
 ME: It keeps count of what the rail refuses to forget.
 -/
 structure SensingProcess -- Bullshit meter ≈ 750
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -170,7 +171,7 @@ COMPILER: So the present is memory?
 ME: Local memory with a deadline. Ask Santa.
 -/
 class PRESENT  -- Bullshit meter ≈ 594
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -284,7 +285,7 @@ COMPILER: Negotiates what?
 ME: How much chaos the field can afford before Yang starts asking why Mills is billing by the curvature.
 -/
 structure GaugeProcess  -- Bullshit meter ≈ 830
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -331,7 +332,7 @@ COMPILER: Then what makes it measurable?
 ME: The bargain leaves a number-shaped scar.
 -/
 class MEASURABLE  -- Bullshit meter ≈ 730
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -480,7 +481,7 @@ ME: Then why did your hand move?
 structure MeesaProcess  -- Bullshit meter ≈ 1010.    There we go, we just broke 1000 on the bullshit meter.
                         -- That's about 1/4 increase in bullshit, measured structure-on-structure.
                         -- Huh, is that 2 bits of information?
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)                             -- It is at this point I would like to honor one of the
     [d: DISTINGUISHABLE Value Carrier]                          -- greatest philosophers of our age, Harry Frankfurt.  I urge
     [a: ADMISSIBLE Value Carrier]                               -- you to write your Congressbot and ask them to invade France
@@ -521,7 +522,7 @@ ME: Good. Understanding was never the contract.
 -/
 class GUNGAN  -- Bullshit meter = 802.  Only a 1/8 increase on classes.  Is that 3 bits?
               -- Can't tell if the compiler is trying to carry 2 or 3 bits in its head right now.
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]

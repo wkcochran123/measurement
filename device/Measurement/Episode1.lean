@@ -36,6 +36,9 @@ Can I do this with no imports?  Hold my beer...
 set_option allowUnsafeReducibility true
 -- Well, I do need _a little bit_ of help..
 
+set_option trace.Meta.synthInstance true
+set_option trace.Elab.step true
+
 -- So, I have been thinking about how to measure things.  Anything.  Even the thing that is
 -- doing the measuring.  While it is doing the measuring.  All the way down.  To try to give
 -- you some idea of what I am talking about, I am going to try to measure how true the proposition
@@ -237,7 +240,7 @@ instance : LE Number where  -- Bullshit meter ≈ 7
 -- of a Type.  The compiler will happily send us carriers (I think they are called properties, but I have never
 -- seen a language spec) that will evaluate true/false for us to use as "facts."
 structure CarrierProcess -- Bullshit meter ≈ 85
-    (Carrier: Type)
+    (Carrier: Type i)
   where
   symbol: Fact      -- Said fact from the compiler, either _true_ or _false_.
   value: Number     -- The inductive number defined above.  It isn't a natural number, in that it
@@ -275,7 +278,7 @@ COMPILER: That is decidable equality.
 ME: Fine. But with better lighting.
 -/
 class DISTINGUISHABLE  -- Bullshit meter ≈ 28                      You may start noticing a pattern to
-    (Value: Type)                                               -- the structure -> class -> inductive ->
+    (Value: Type i)                                               -- the structure -> class -> inductive ->
     (Observation: CarrierProcess Value)                         -- structure -> class -> ...
     where                                                       -- An eternal golden braid of meta-programming.
                                                                 -- This argument does not exist without the
@@ -391,7 +394,7 @@ COMPILER: Why?
 ME: Eventually the pieces become things and demand representation.
 -/
 structure CountingProcess -- Bullshit meter ≈ 118
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [object: DISTINGUISHABLE Value Carrier]
   where
@@ -474,7 +477,7 @@ COMPILER: Admissible to whom?
 ME: To the representation that remembered which way was forward.
 -/
 class ADMISSIBLE  -- Bullshit meter ≈ 60
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [DISTINGUISHABLE Value Carrier]
     where
@@ -618,7 +621,7 @@ structure IndexingProcess  -- Bullshit meter ≈ 143
         --                to the natural numbers.  This is that indexing process.  This
         --                will take the current rational and create the next rational
         --                in the sequence. rᵢ → rᵢ₊₁ → rᵢ₊₂ → ...
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [DISTINGUISHABLE Value Carrier]
     [ADMISSIBLE Value Carrier]
@@ -707,7 +710,7 @@ class COUNTABLE  -- Bullshit meter ≈ 85
     -- and juggling balls... and whatever else he did _after_ he dropped some serious knowledge
     -- on information. That is why this carrier is important.  We _MUST_ extract every last
     -- piece of information from the carrier.
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [DISTINGUISHABLE Value Carrier]  -- The way we do that is through _classes_.  This class,
                                      -- for instance, says we can distinguish the carrier the
@@ -892,7 +895,7 @@ COMPILER: I dislike the adverb.
 ME: The value is not the point. The approaching is the machinery.
 -/
 structure LimitProcess  -- Bullshit meter ≈ 185
-    (Value: Type)                     -- As you can start to see, the Value and Carrier
+    (Value: Type i)                     -- As you can start to see, the Value and Carrier
     (Carrier: CarrierProcess Value)   -- paramaters are universal.  What is happening is
     [DISTINGUISHABLE Value Carrier]   -- as we provide the capability to compute ≤ and <
     [ADMISSIBLE Value Carrier]        -- we further classify what the current carrier is
@@ -968,7 +971,7 @@ COMPILER: Drops where?
 ME: Into the machine that pretends tokens are meaning.
 -/
 class ENCODED  -- Bullshit meter ≈ 85
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [DISTINGUISHABLE Value Carrier]
     [ADMISSIBLE Value Carrier]
@@ -1093,7 +1096,7 @@ COMPILER: How do they know how far apart they are?
 ME: Do not worry. Pythagoras is still backstage.
 -/
 structure CauchyProcess  -- Bullshit meter ≈ 228
-    (Value: Type)                      -- These guys are still familiar
+    (Value: Type i)                      -- These guys are still familiar
     (Carrier: CarrierProcess Value)
     [DISTINGUISHABLE Value Carrier]    -- We now have 4 different features we ask about
     [ADMISSIBLE Value Carrier]         -- a carrier!  That is 16 different possible carriers
@@ -1137,7 +1140,7 @@ COMPILER: I do not like measuring leftovers.
 ME: Then stop making them.
 -/
 class RESIDUE
-    (Value: Type) -- Bullshit meter ≈ 103
+    (Value: Type i) -- Bullshit meter ≈ 103
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]

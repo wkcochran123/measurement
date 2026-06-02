@@ -36,6 +36,8 @@ set_option allowUnsafeReducibility true
 -- Get back to work John. You need to learn Gungan __REAL_FAST__.
 namespace Measurement
 
+universe i
+
 -- So, once we translate it to GUNGAN, we have to ask the GUNGAN to go get us a Jedi and then
 -- we can stack these Jedi into an army and do whatever it was that had to happen in the first movie.
 
@@ -139,7 +141,7 @@ COMPILER: The hand again?
 ME: What your hand does during ventriloquism.
 -/
 structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -210,7 +212,7 @@ COMPILER: Claims?
 ME: Every origin story starts lying when it gets a filename.
 -/
 class SOURCE   -- Bullshit meter ≈ 1121.   That's almost a 50% increase!
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -253,7 +255,7 @@ COMPILER: That is compilation?
 ME: Origin with paperwork becoming procedure with consequences.
 -/
 structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bullshit tends to accrete!
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -306,7 +308,7 @@ COMPILER: Is this legal or computational?
 ME: Yes. The sentence has consequences now.
 -/
 class EXECUTED  -- Bullshit meter = 1158.  Calling this flat.
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]

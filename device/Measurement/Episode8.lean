@@ -5,8 +5,10 @@ set_option allowUnsafeReducibility true
 
 namespace Measurement
 
+universe i
+
 instance STEP_1
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] : ADMISSIBLE Value Carrier where
   counting_process :=
@@ -17,7 +19,7 @@ instance STEP_1
         | .number _ _ _ => .number d.fact Carrier.value (.zero d.fact) }
 
 instance COUNTABLE_ADMISSIBLE
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -27,7 +29,7 @@ instance COUNTABLE_ADMISSIBLE
       origin := .zero d.fact }
 
 instance ENCODED_COUNTABLE
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -38,7 +40,7 @@ instance ENCODED_COUNTABLE
       sequence         := .nil d.fact }
 
 instance RESIDUE_ENCODED
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -50,7 +52,7 @@ instance RESIDUE_ENCODED
       accumulation   := .nil d.fact }
 
 instance BINARY_RESIDUE
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -66,7 +68,7 @@ instance BINARY_RESIDUE
   one  := .nil d.fact
 
 instance REPEATABLE_BINARY
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -83,7 +85,7 @@ instance REPEATABLE_BINARY
   }
 
 instance NUMERIC_REPEATABLE
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -99,7 +101,7 @@ instance NUMERIC_REPEATABLE
   }
 
 instance REPRESENTABLE_NUMERIC
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -121,7 +123,7 @@ instance REPRESENTABLE_NUMERIC
     ⟨Computation.program d.fact s, rfl⟩
 
 instance PHYSICAL_NUMERIC
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -147,7 +149,7 @@ instance PHYSICAL_NUMERIC
 
 
 instance OBSERVED_COMPARABLE
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -170,7 +172,7 @@ instance OBSERVED_COMPARABLE
   observation := ULift d.symbol
 
 instance PRESENT_OBSERVED
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -189,10 +191,10 @@ instance PRESENT_OBSERVED
   { static_fraction := ee.slip_process
     accumulation := .t d.fact
   }
-  quantum := Type 1
+  quantum := Type i
 
 instance MEASURABLE_PRESENT
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -214,7 +216,7 @@ instance MEASURABLE_PRESENT
   }
 
 instance GUNGAN_MEASURABLE
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -237,7 +239,7 @@ instance GUNGAN_MEASURABLE
   }
 
 instance SOURCE_GUNGAN
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -262,7 +264,7 @@ instance SOURCE_GUNGAN
   one := .zero_like d.fact (.physics d.fact hh.meesa_process.concept)
 
 instance EXECUTED_SOURCE
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -288,7 +290,7 @@ instance EXECUTED_SOURCE
   }
 
 instance VALUE_EXECUTED
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -319,7 +321,7 @@ instance VALUE_EXECUTED
   monad := .satire d.fact
 
 instance MAGNITUDE_VALUE
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -347,7 +349,7 @@ instance MAGNITUDE_VALUE
   }
 
 instance SCALED_MAGNITUDE
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -376,7 +378,7 @@ instance SCALED_MAGNITUDE
   }
 
 instance LOAD_SCALED
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -406,7 +408,7 @@ instance LOAD_SCALED
   }
 
 instance FINITE_ELEPHANT_LOAD
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -436,7 +438,7 @@ instance FINITE_ELEPHANT_LOAD
   }
 
 instance BULLSHIT_FINITE_ELEPHANT
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -467,7 +469,7 @@ instance BULLSHIT_FINITE_ELEPHANT
   }
 
 instance PROPAGANDA_BULLSHIT
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
@@ -496,7 +498,7 @@ instance PROPAGANDA_BULLSHIT
   insinuation := CrusadeProcess.default Value Carrier
 
 instance ACOLYTE_PROPAGANDA
-    (Value: Type)
+    (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier]
     [a: ADMISSIBLE Value Carrier]
