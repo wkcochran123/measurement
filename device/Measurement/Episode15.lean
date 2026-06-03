@@ -170,6 +170,31 @@ class TrueOutput
 
   obfusplained? : output = TRUE → Bullshit → Bullshit → Prop := fun _ a b => a < b
 
+def You_the_Reader
+    (Value: Type i)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [compiled: COMPILED Value Carrier]
+ : AtreyuProcess Value Carrier where
+  compiler_output := compiled.compiler_output
+  next_measurement := .zero d.fact
+  stress := Carrier.value
+  proof := compiled.object_file
+
+repeatable := .zero d.fact
+hypothesis := (TRUE_ATREYU Value Carrier).satirize hypothesis
+theory := (TRUE_ATREYU Value Carrier).satirize theory
+
 instance TRUE_COMPILED
     (Value: Type i)
     (Carrier: CarrierProcess Value)
@@ -193,7 +218,7 @@ instance TRUE_COMPILED
     proof := compiled.object_file
   }
   TRUE := .zero d.fact
-  output := .zero d.fact
+  output :=
   output_true := rfl
 
 noncomputable instance DISTINGUISHABLE_PROP
