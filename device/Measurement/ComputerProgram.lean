@@ -5,8 +5,8 @@ namespace Measurement
 universe i
 
 inductive ComputerProgram
-| load: Fact → Prop → Type → ComputerProgram
-| transform: Fact → Fact → Prop → Prop → Type → Type 1 → ComputerProgram → ComputerProgram
-| boolean: Fact → Fact → Fact → Prop → Prop → Prop → Type → Type 1 → Type i → ComputerProgram → ComputerProgram
+| load:      Prop → Type i → ComputerProgram
+| transform: Prop → Prop → Type i → Type (i+1) → ComputerProgram → ComputerProgram
+| boolean:   Prop → Prop → Prop → Type i → Type (i+1) → Type (i+1) → ComputerProgram → ComputerProgram
 
 end Measurement

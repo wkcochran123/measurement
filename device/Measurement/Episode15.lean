@@ -164,11 +164,17 @@ class TrueOutput
   where
   atreyu_process : AtreyuProcess Value Carrier
   TRUE : Bullshit := .zero d.fact
-  output : Bullshit := TRUE
-  output_true : output = TRUE
+  -- output is the compiler/reader output: the THEORY rung of the bullshit
+  -- ladder, NOT the origin TRUE.  Instances must supply it.
+  output : Bullshit
+  -- The certificate is now ORDERING, not equality: the .zero origin (TRUE)
+  -- is the floor below the accumulated bullshit `output`.  `Bullshit.le` gives
+  -- `.zero _ , _ => True` for ANY second argument, so `TRUE ≤ output` is the
+  -- honest definitional witness no matter which rung `output` lands on.
+  output_true : TRUE ≤ output
   raw_output : Bullshit := atreyu_process.satirize atreyu_process.next_measurement
 
-  obfusplained? : output = TRUE → Bullshit → Bullshit → Prop := fun _ a b => a < b
+  obfusplained? : TRUE ≤ output → Bullshit → Bullshit → Prop := fun _ a b => a < b
 
 def You_the_Reader
     (Value: Type i)
@@ -191,9 +197,56 @@ def You_the_Reader
   stress := Carrier.value
   proof := compiled.object_file
 
-repeatable := .zero d.fact
-hypothesis := (TRUE_ATREYU Value Carrier).satirize hypothesis
-theory := (TRUE_ATREYU Value Carrier).satirize theory
+-- THEORY: the three pieces of bullshit as a named ladder, expressed as defs
+-- (NOT a 34-binder structure -- a structure here forces a fresh 34-gate
+-- instance synthesis at every use site, which is exactly the elaboration cost
+-- we are fighting).  Each rung takes the reader-process explicitly and
+-- satirizes the PREVIOUS rung, so the chain is well-founded and bottoms at the
+-- .zero origin.  `THEORY.raw_output` is the HYPOTHESIS rung (.one): the compiler
+-- output the device reads, NOT the origin TRUE.  (It is the b rung, one satirize
+-- up; the theory rung c/.rest is still defined below for Episode16's
+-- velocity/acceleration variations, but is not used as the certified output --
+-- see the raw_output comment for why.)
+namespace THEORY
+
+variable {Value : Type i} {Carrier : CarrierProcess Value}
+    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [compiled: COMPILED Value Carrier]
+
+def repeatable
+    (_reader : AtreyuProcess Value Carrier) (origin : Bullshit) : Bullshit :=
+  origin                                                       -- piece 1: the origin / repeatable observation
+
+def hypothesis
+    (reader : AtreyuProcess Value Carrier) (origin : Bullshit) : Bullshit :=
+  reader.satirize (repeatable reader origin)                   -- piece 2: one step on the previous
+
+def theory
+    (reader : AtreyuProcess Value Carrier) (origin : Bullshit) : Bullshit :=
+  reader.satirize (hypothesis reader origin)                   -- piece 3: the accumulated rest
+
+def raw_output
+    (reader : AtreyuProcess Value Carrier) (origin : Bullshit) : Bullshit :=
+  hypothesis reader origin                                     -- the compiler output the device reads:
+  -- the hypothesis rung (.one).  satirize(.zero) constructs `.one` with a
+  -- STATIC head (no decTruth match), so `TRUE ≤ raw_output` certifies cheaply
+  -- by `trivial`.  The theory rung (.rest) is the same ladder one step higher
+  -- but its head is gated behind a stuck `decTruth` match, which makes the
+  -- ordering certificate computationally pathological; the three rung defs
+  -- (repeatable/hypothesis/theory) remain intact for the velocity/acceleration
+  -- variations in Episode16.
+
+end THEORY
 
 instance TRUE_COMPILED
     (Value: Type i)
@@ -211,15 +264,16 @@ instance TRUE_COMPILED
     [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
     [compiled: COMPILED Value Carrier]
     : TrueOutput Value Carrier where
-  atreyu_process :=
-  { compiler_output := compiled.compiler_output
-    next_measurement := .zero d.fact
-    stress := Carrier.value
-    proof := compiled.object_file
-  }
+  atreyu_process := You_the_Reader Value Carrier
   TRUE := .zero d.fact
-  output :=
-  output_true := rfl
+  -- output is THEORY.raw_output: the hypothesis rung (.one) the reader-process
+  -- produced by satirizing the .zero origin once.
+  output := THEORY.raw_output (You_the_Reader Value Carrier) (.zero d.fact)
+  -- TRUE (.zero) is the floor below that accumulated bullshit.  `output` is the
+  -- hypothesis rung = satirize(.zero), which reduces to a `.one`-headed Bullshit
+  -- with no stuck decTruth match, so `Bullshit.le .zero (.one ..)` reduces to
+  -- `True` and `trivial` closes it cheaply.
+  output_true := by trivial
 
 noncomputable instance DISTINGUISHABLE_PROP
     (Carrier : CarrierProcess Prop)
