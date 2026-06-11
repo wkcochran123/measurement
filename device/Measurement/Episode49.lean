@@ -21,9 +21,11 @@ episode delivers it.
 The review also caught a second bug, in the obvious grading.  Grading slices
 by size-sum makes `rest zero zero` (size 3) land in the alleged size-2 slice
 and the counting lemma is false as stated.  The repair is DEPTH -- `max` of
-children plus one -- under which the slices are exact: every skeleton term of
-depth `d` appears in stage `d`, by structural induction, with no counting
-debt.
+children plus one -- under which the slices are complete: every skeleton term
+of depth `d` appears by stage `d`, by structural induction, with no counting
+debt on the membership side.  (The stage lists count with multiplicity --
+stage 2 holds 15 entries, 13 distinct -- which is harmless: `hexhaust` asks
+for membership, not measure.)
 
 The tower is cumulative: stage `n+1` is stage `n` plus one `skeletonOne`
 image and one `skeletonRest` product.  Cumulativity matters more than it
@@ -41,9 +43,11 @@ Stated formally:
   skeleton variation, with `N := slipDepth variation.slip`.
 * `skeletonTower_no_single_stage` -- and per Episode47, still no single stage
   does it uniformly; the quantifier order survives the construction.
-* `node1_mem_ratSlips_one`, `node2_mem_ratSlips_one` -- stage 1 already
-  covers all three tag holes, so Episode48's transfer applies from the first
-  refinement onward.
+* `skeletonStage_covers_tagReps`, `discriminatingAction_no_skeleton_knots`
+  -- stage 1 already covers all three tag holes, so Episode48's refusal
+  applies from the first refinement onward: no trace over the discriminating
+  action can take any skeleton stage past the zeroth as its knots.  The
+  bridge is a theorem, not a header sentence.
 
 Residue left (honest scope):
 the tower is enumeration; it is not yet wired into a completed residual
@@ -159,6 +163,39 @@ theorem node2_mem_ratSlips_one : node2 ∈ ratSlips 1 := by
   exact List.mem_append.mpr
     (Or.inr (List.mem_append.mpr
       (Or.inr (mem_restPairs (List.Mem.head _) (List.Mem.head _)))))
+
+/-- From stage 1 onward, every stage literally holds all three tag
+representatives -- Episode48's covering, supplied by the enumeration. -/
+theorem skeletonStage_covers_tagReps {n : Nat} (hn : 1 <= n) :
+    forall rep : Bullshit0, rep ∈ [node0, node1, node2] ->
+      rep ∈ ratSlips n := by
+  intro rep hrep
+  cases hrep with
+  | head =>
+      exact node0_mem_ratSlips n
+  | tail _ h1 =>
+      cases h1 with
+      | head =>
+          exact ratSlips_mono hn node1_mem_ratSlips_one
+      | tail _ h2 =>
+          cases h2 with
+          | head =>
+              exact ratSlips_mono hn node2_mem_ratSlips_one
+          | tail _ h3 =>
+              cases h3
+
+/-- The bridge from Episode48, filed as a theorem: no trace over the
+discriminating action can take any skeleton stage past the zeroth as its
+knots -- the stage covers the three representatives, and the covering is
+refused. -/
+theorem discriminatingAction_no_skeleton_knots
+    (path : FiniteGaugePath) {n : Nat} (hn : 1 <= n)
+    (trace : ApproximateLanczosTrace discriminatingAction path)
+    (hk : trace.knots = ⟨ratSlips n⟩) : False := by
+  apply discriminatingAction_no_covering_trace path trace
+  intro rep hrep
+  rw [hk]
+  exact skeletonStage_covers_tagReps hn rep hrep
 
 /-- The concrete elephant at stage `n`: body `node0`, candidates the
 depth-`n` slice of the skeleton. -/

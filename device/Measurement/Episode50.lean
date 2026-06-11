@@ -36,21 +36,27 @@ Stated formally:
   over `natScale`, every certificate field constructed.
 * `skeleton_unconditional_tendsToZero` -- the conclusion for EVERY variation,
   through Episode27's own flagship theorem, now with honest inputs.
-* `skeleton_episode45_discharged` -- Episode45's theorem applied with
+* `skeleton_discharge_via_exhaustion` -- Episode45's theorem applied with
   `hexhaust` supplied by `skeletonTower_exhausts`: the per-slip pigeonhole
   route, N computed as `slipDepth variation.slip`.
 
 The `#eval`/`#print axioms` record below extends Episode46's audit to the
-new chain.  The boundary is still a build artifact; the new theorems live on
-the constructive side of it.
+new chain: every theorem below is expected choice-free.  And one more bug for
+the record, found by RUNNING the audit instead of reading it: Episode46's
+standing expectation that `rung3Inferred` lists `Classical.choice` is stale
+-- the build reports `[propext, Quot.sound]`.  The boundary is a build
+artifact, and artifacts get rebuilt.
 
 Residue left (honest scope):
-the covering framework only ever instantiates at globally balanced
-(action, path) pairs -- the forced-balance collapse the review identified is
-real, and `telescopingAction` is balanced BY STRUCTURE, which is exactly why
-it admits the tower.  An action with genuinely nonzero residual cannot ride
-this construction; for it, eventual exactness is false, not unproven.  The
-discrete gauge equation keeps its content.
+the covering framework only ever instantiates where the residual already
+vanishes on the covered slips -- the forced-balance collapse the review
+identified is real.  `telescopingAction` rides it because it is FLAT by
+structure (`telescoping_flatAt`) with an identically zero residual, while
+admitting NO path at all (`telescoping_not_admits`); Episode27's trace
+dropped Episode21's `admits` field, and that dropped field is the door.  An
+action with genuinely nonzero residual cannot ride this construction; for
+it, eventual exactness is false, not unproven.  The discrete gauge equation
+keeps its content.
 -/
 
 /-- The concrete path for the produced certificate: all nodes at the origin. -/
@@ -103,8 +109,9 @@ def skeletonMagnitude : IntResidualMagnitude natScale where
   ofInt := intActivityMagnitude
 
 /-- The produced squeeze: `bound := residual`, and `bound_tends_zero` is a
-THEOREM -- the null Lagrangian makes every stage's reading exactly zero.
-Nothing here is assumed. -/
+THEOREM, routed through Episode45's own order-theoretic core
+(`eventuallyZero_tendsToZero`) -- the null Lagrangian makes every stage's
+reading exactly zero.  Nothing here is assumed. -/
 def skeletonSqueeze :
     PointwiseSqueezedResidual natScale FiniteGaugeVariation where
   residual := fun n variation =>
@@ -113,15 +120,14 @@ def skeletonSqueeze :
     intActivityMagnitude ((skeletonStageTrace n).terminalResidual variation)
   zero_le_residual := fun _ _ => Nat.zero_le _
   residual_le_bound := fun _ _ => Nat.le_refl _
-  bound_tends_zero := by
-    intro variation epsilon _
-    refine ⟨0, fun n _ => ?_⟩
-    show
-      intActivityMagnitude
-        ((skeletonStageTrace n).terminalResidual variation) <= epsilon
-    rw [skeletonStageTrace_terminalResidual n variation,
-      intActivityMagnitude_zero]
-    exact Nat.zero_le epsilon
+  bound_tends_zero := fun variation =>
+    eventuallyZero_tendsToZero natScale natScale_zero_le _
+      ⟨0, fun n _ => by
+        show
+          intActivityMagnitude
+            ((skeletonStageTrace n).terminalResidual variation) = 0
+        rw [skeletonStageTrace_terminalResidual n variation,
+          intActivityMagnitude_zero]⟩
 
 /-- The produced residual tower over `natScale`. -/
 def skeletonResidualTower :
@@ -146,7 +152,7 @@ def skeletonCompletion :
   approximation := skeletonWeierstrassTower
   limit := node0
   approximant := fun _ => node0
-  approximant_in_stage := fun _ => Or.inl rfl
+  approximant_in_stage := fun n => Or.inr (node0_mem_ratSlips n)
   converges := fun approximant limit => forall n, approximant n = limit
   converges_to_limit := fun _ => rfl
 
@@ -176,8 +182,11 @@ theorem skeleton_unconditional_tendsToZero
 /-- Episode45's discharge theorem, applied: `hexhaust` is supplied by
 `skeletonTower_exhausts`, the per-slip pigeonhole route, with
 `N = slipDepth variation.slip` computed from the term.  The hypothesis that
-was a residue is now a theorem. -/
-theorem skeleton_episode45_discharged
+was a residue is now a theorem.  Honest accounting: at THIS (action, path)
+the conclusion is subsumed by `skeleton_unconditional_tendsToZero` above,
+because the residual is structurally zero -- the exhaustion route is
+demonstrated here, not load-bearing. -/
+theorem skeleton_discharge_via_exhaustion
     (variation : FiniteGaugeVariation) (h : IsSkeleton variation.slip) :
     natScale.TendsToZero
       (fun n =>
@@ -194,7 +203,8 @@ theorem skeleton_episode45_discharged
 The standing record, extending Episode46's audit.  Expected results inline.
 -/
 
--- The enumeration runs and counts: depth reads back, slices are exact.
+-- The enumeration runs and counts: depth reads back, slices are complete
+-- (entry counts include multiplicity).
 #eval slipDepth (iterOne 5)      -- expect: 5
 #eval (ratSlips 0).length        -- expect: 1
 #eval (ratSlips 1).length        -- expect: 3
@@ -210,13 +220,13 @@ The standing record, extending Episode46's audit.  Expected results inline.
   (cubicSplineResidual discriminatingAction skeletonPath { slip := node1 })
     -- expect: 2
 
--- The new chain stays on the constructive side of the boundary: expect NO
--- `Classical.choice` anywhere below.
+-- Extending Episode46's audit: expect NO `Classical.choice` anywhere below.
 #print axioms finite_entries_miss_a_slip
 #print axioms discriminatingAction_no_covering_trace
+#print axioms discriminatingAction_no_tag_covering_trace
 #print axioms tag_covering_residual
 #print axioms skeletonTower_exhausts
 #print axioms skeleton_unconditional_tendsToZero
-#print axioms skeleton_episode45_discharged
+#print axioms skeleton_discharge_via_exhaustion
 
 end Measurement

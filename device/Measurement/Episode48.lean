@@ -14,9 +14,10 @@ finite list of holes, so literal support can never be uniform.  This episode
 proves the positive pigeonhole, and it lands on the other side of the same
 counting: the residual does not see the slip -- it sees the slip only through
 two segment costs.  When the cost factors through `tag` (Episode44), the
-infinite pigeon family maps into THREE holes, and three representatives carry
-every variation.  Countably many pigeons, three holes, congruence transfers
-the zero from the hole to every pigeon inside it.
+whole slip type maps into THREE holes, and three representatives carry every
+variation.  However many pigeons there are -- Episode49 will show you cannot
+even count them -- there are three holes, and congruence transfers the zero
+from the hole to every pigeon inside it.
 
 Stated formally:
 * `cubicSplineResidual_congr` -- the kernel lemma: cost-indistinguishable
@@ -31,19 +32,30 @@ Stated formally:
 And the bug report, filed as a theorem.  The review found that Episode44's
 `discriminatingAction` -- the only nontrivial action in the corpus -- can
 never inhabit a covering trace: with `a = tag source` and `c = tag target`,
-the map `x ↦ [a≠x] + [x≠c]` over the three tags takes values `{0,2}` or
+the map `x ↦ [a≠x] + [x≠c]` over the three tags takes values `{0,2,2}` or
 `{1,1,2}`, never constant, so the residual cannot vanish on all three
-representatives at once.  `kickedGaugeReading = 2` was the standing witness
-all along.  `discriminatingAction_obstructed` states it for every path, with
-a `decide` over `Fin 3` as the entire arithmetic content;
+representatives at once.  `kickedGaugeReading = 2` (Episode44) was the same
+arithmetic all along -- two boundary-crossing edges.
+`discriminatingAction_obstructed` states it for every path, with a `decide`
+over `Fin 3` as the entire arithmetic content;
 `discriminatingAction_no_covering_trace` is the corollary that no
-`ApproximateLanczosTrace` over it can carry tag-covering knots.
+`ApproximateLanczosTrace` over it can carry the three representatives, and --
+since the discriminating cost itself factors through `tag`
+(`discriminating_factorsThroughTag`) --
+`discriminatingAction_no_tag_covering_trace` extends the refusal to ANY knot
+set covering the three tags, representatives or not.
 
 The repair is `telescopingAction`: cost `tag x + (2 - tag y)`.  The two
 segment costs telescope -- `cost(s,t) + cost(t,g)` is constant in `t` -- so
 the Euler-Lagrange residual vanishes identically, for every path and every
 variation: a discrete null Lagrangian.  Nontrivial cost, structurally zero
-residual, and the whole thing computes.
+residual, and the whole thing computes.  In corpus terms it is FLAT at every
+path (`telescoping_flatAt`) while admitting NONE (`telescoping_not_admits`:
+composed = direct + 2, everywhere); Episode27's `ApproximateLanczosTrace`
+dropped Episode21's `admits` field, and that dropped field is exactly the
+door it walks through.  The covering route closes on it
+(`telescoping_covering_route`), exercising the three-hole transfer on the one
+action that accepts it.
 
 Residue left (honest scope):
 the covering representatives exist and transfer, but no concrete exhausting
@@ -183,6 +195,46 @@ theorem discriminatingAction_no_covering_trace
     ((trace.terminal_matches_cubic { slip := s }).symm.trans
       (trace.terminal_solved_on { slip := s } (hcov s hmem)))
 
+/-- The discriminating cost itself factors through `tag` -- which is what
+turns its refusal from three literal representatives into the whole quotient. -/
+theorem discriminating_factorsThroughTag :
+    discriminatingAction.FactorsThroughTag := by
+  intro s t htag
+  refine ⟨fun x => ?_, fun x => ?_⟩
+  · show
+      (if tag x = tag s then (0 : Nat) else 1) =
+        (if tag x = tag t then (0 : Nat) else 1)
+    rw [htag]
+  · show
+      (if tag s = tag x then (0 : Nat) else 1) =
+        (if tag t = tag x then (0 : Nat) else 1)
+    rw [htag]
+
+/-- The strengthened refusal: no `ApproximateLanczosTrace` over
+`discriminatingAction` can carry knots covering the three tags AT ALL --
+representatives or any other terms.  Congruence transfers the forced zero
+from whatever knot covers a tag back to that tag's representative, where
+`discriminatingAction_obstructed` forbids it. -/
+theorem discriminatingAction_no_tag_covering_trace
+    (path : FiniteGaugePath)
+    (trace : ApproximateLanczosTrace discriminatingAction path) :
+    ¬ forall rep : Bullshit0, rep ∈ [node0, node1, node2] ->
+        exists knot, knot ∈ trace.knots.entries /\ tag knot = tag rep := by
+  intro hcov
+  obtain ⟨s, hmem, hne⟩ := discriminatingAction_obstructed path
+  obtain ⟨knot, hknot, htag⟩ := hcov s hmem
+  apply hne
+  have hzero :
+      cubicSplineResidual discriminatingAction path { slip := knot } = 0 :=
+    (trace.terminal_matches_cubic { slip := knot }).symm.trans
+      (trace.terminal_solved_on { slip := knot } hknot)
+  calc
+    cubicSplineResidual discriminatingAction path { slip := s } =
+        cubicSplineResidual discriminatingAction path { slip := knot } :=
+      cubicSplineResidual_tag_congr
+        discriminating_factorsThroughTag path htag.symm
+    _ = 0 := hzero
+
 /-
 The repair: a tag-factoring action whose residual is structurally zero.
 -/
@@ -216,5 +268,43 @@ theorem telescoping_residual_zero
         Int.ofNat (tag path.slip + (2 - tag path.target))) = 0
   simp only [Int.ofNat_eq_natCast, Int.natCast_add]
   omega
+
+/-- In corpus terms the telescoping action is FLAT at every path: the
+composed cost cannot detect the slip coordinate (Episode17's pure-gauge
+condition). -/
+theorem telescoping_flatAt (path : FiniteGaugePath) :
+    telescopingAction.flatAt path := by
+  intro slip'
+  have hs := tag_lt_three slip'
+  have hp := tag_lt_three path.slip
+  show
+    tag path.source + (2 - tag slip') +
+        (tag slip' + (2 - tag path.target)) =
+      tag path.source + (2 - tag path.slip) +
+        (tag path.slip + (2 - tag path.target))
+  omega
+
+/-- And it admits NO path at all: composed = direct + 2, everywhere.  Flat
+without admitting -- pure gauge with a constant offset.  Harmless, because
+Episode27's `ApproximateLanczosTrace` dropped Episode21's `admits` field. -/
+theorem telescoping_not_admits (path : FiniteGaugePath) :
+    ¬ telescopingAction.admits path := by
+  have hp := tag_lt_three path.slip
+  intro h
+  have h' :
+      tag path.source + (2 - tag path.target) =
+        tag path.source + (2 - tag path.slip) +
+          (tag path.slip + (2 - tag path.target)) := h
+  omega
+
+/-- The covering route, exercised: the three-hole transfer closes on the one
+action that accepts it.  Independent of `telescoping_residual_zero`'s direct
+proof -- this one goes through `tag_covering_residual` to show the machinery
+of Episode48 carries its own showcase. -/
+theorem telescoping_covering_route (path : FiniteGaugePath) :
+    forall variation : FiniteGaugeVariation,
+      cubicSplineResidual telescopingAction path variation = 0 :=
+  tag_covering_residual telescoping_factorsThroughTag path
+    (fun rep _ => telescoping_residual_zero path { slip := rep })
 
 end Measurement

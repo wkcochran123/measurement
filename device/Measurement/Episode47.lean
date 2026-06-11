@@ -23,15 +23,17 @@ forcing argument is the pigeonhole principle in its escape form: a stage's
 support is one finite list, and the slips are an infinite family, so every
 finite list misses a slip.  More pigeons than holes; some pigeon stands
 outside.  Hence no single stage -- and no uniform N -- can ever support every
-variation literally, and `EXISTS N, forall variation` is unprovable for any
-tower whatsoever.  The per-slip form is the only form there is.
+variation literally, and `EXISTS N, forall variation` is provably false for
+any tower whatsoever.  The per-slip form is the only form there is.
 
 The infinite family of pigeons is built honestly: iterate the skeleton `.one`
 constructor over the fixed atoms (`Fact.Truth`, `Number.zero Fact.Truth`, the
 boot tape).  A spine-depth measure separates the iterates -- `oneDepth` reads
-the iteration count back off the term -- so the family is injective, and the
-escape witness for a list `l` is computable: the iterate at depth
-`maxOneDepth l + 1`, one deeper than anything `l` holds.
+the iteration count back off the term -- so the family is injective.  The
+injectivity is the formal content of "infinitely many pigeons", exhibited for
+the record; the escape itself needs only that `oneDepth` is unbounded along
+the family.  The escape witness for a list `l` is computable: the iterate at
+depth `maxOneDepth l + 1`, one deeper than anything `l` holds.
 
 Stated formally:
 * `iterOne_injective` -- the pigeons are pairwise distinct.
@@ -72,7 +74,9 @@ theorem oneDepth_iterOne : forall n, oneDepth (iterOne n) = n
   | n + 1 => by
       simp [iterOne, skeletonOne, oneDepth, oneDepth_iterOne n]
 
-/-- The pigeons are pairwise distinct: `oneDepth` inverts `iterOne`. -/
+/-- The pigeons are pairwise distinct: `oneDepth` inverts `iterOne`.  This is
+the formal record that the pigeon family is infinite -- exhibited
+independently of the escape proof below, which needs only unboundedness. -/
 theorem iterOne_injective {m n : Nat} (h : iterOne m = iterOne n) : m = n := by
   have hm := oneDepth_iterOne m
   rw [h, oneDepth_iterOne n] at hm
