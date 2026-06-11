@@ -169,147 +169,71 @@ noncomputable instance truthInferred :
     INFERRED Prop truthCarrier :=
   INFERRED_TRUE Prop truthCarrier
 
-namespace TruthTransition
-
-noncomputable def reader : AtreyuProcess Prop truthCarrier :=
-  truthTrueOutput.atreyu_process
-
-noncomputable def repeatable : Bullshit :=
-  THEORY.repeatable reader truthTrueOutput.TRUE
-
-noncomputable def hypothesis : Bullshit :=
-  THEORY.hypothesis reader truthTrueOutput.TRUE
-
-noncomputable def theory : Bullshit :=
-  THEORY.theory reader truthTrueOutput.TRUE
-
-noncomputable def raw_output : Bullshit :=
-  THEORY.raw_output reader truthTrueOutput.TRUE
-
-noncomputable def trueOutput_value1 : Prop :=
-  truthTrueOutput.obfusplained?
-    truthTrueOutput.output_true
-    repeatable
-    hypothesis
-
-noncomputable def trueOutput_value2 : Prop :=
-  truthTrueOutput.obfusplained?
-    truthTrueOutput.output_true
-    hypothesis
-    theory
-
-noncomputable def trueOutput_direct : Prop :=
-  truthTrueOutput.obfusplained?
-    truthTrueOutput.output_true
-    repeatable
-    theory
-
-noncomputable def trueOutput_composed : Prop :=
-  trueOutput_value1 ∧ trueOutput_value2
-
-noncomputable def trueOutput_coherent : Prop :=
-  trueOutput_direct = trueOutput_composed
-
-noncomputable def closure_repeatable_hypothesis : Closure :=
-  truthInferred.equivalence_process.close? repeatable hypothesis
-
-noncomputable def closure_hypothesis_theory : Closure :=
-  truthInferred.equivalence_process.close? hypothesis theory
-
-noncomputable def closure_repeatable_theory : Closure :=
-  truthInferred.equivalence_process.close? repeatable theory
-
-noncomputable def equivalence_value1 : Prop :=
-  Closure.le
-    truthInferred.equivalence_process.closure
-    closure_repeatable_hypothesis
-
-noncomputable def equivalence_value2 : Prop :=
-  Closure.le
-    closure_repeatable_hypothesis
-    closure_hypothesis_theory
-
-noncomputable def equivalence_direct : Prop :=
-  Closure.le
-    truthInferred.equivalence_process.closure
-    closure_repeatable_theory
-
-noncomputable def equivalence_composed : Prop :=
-  equivalence_value1 ∧ equivalence_value2
-
-noncomputable def equivalence_coherent : Prop :=
-  equivalence_direct = equivalence_composed
-
-noncomputable def inferred_value1 : Prop :=
-  truthInferred.inferred?
-    closure_repeatable_hypothesis
-    closure_hypothesis_theory
-
-noncomputable def inferred_value2 : Prop :=
-  truthInferred.inferred?
-    closure_hypothesis_theory
-    truthInferred.theory
-
-noncomputable def inferred_direct : Prop :=
-  truthInferred.inferred?
-    closure_repeatable_theory
-    truthInferred.theory
-
-noncomputable def inferred_composed : Prop :=
-  inferred_value1 ∧ inferred_value2
-
-noncomputable def inferred_coherent : Prop :=
-  inferred_direct = inferred_composed
-
-noncomputable def transition_coherent : Prop :=
-  trueOutput_coherent ∧ equivalence_coherent ∧ inferred_coherent
-
-structure StepValues where
-  trueOutput_first : Prop
-  trueOutput_second : Prop
-  trueOutput_direct : Prop
-  trueOutput_composed : Prop
-  trueOutput_coherent : Prop
-  equivalence_first : Prop
-  equivalence_second : Prop
-  equivalence_direct : Prop
-  equivalence_composed : Prop
-  equivalence_coherent : Prop
-  inferred_first : Prop
-  inferred_second : Prop
-  inferred_direct : Prop
-  inferred_composed : Prop
-  inferred_coherent : Prop
-  transition_coherent : Prop
-
-noncomputable def step_values : StepValues where
-  trueOutput_first := trueOutput_value1
-  trueOutput_second := trueOutput_value2
-  trueOutput_direct := trueOutput_direct
-  trueOutput_composed := trueOutput_composed
-  trueOutput_coherent := trueOutput_coherent
-  equivalence_first := equivalence_value1
-  equivalence_second := equivalence_value2
-  equivalence_direct := equivalence_direct
-  equivalence_composed := equivalence_composed
-  equivalence_coherent := equivalence_coherent
-  inferred_first := inferred_value1
-  inferred_second := inferred_value2
-  inferred_direct := inferred_direct
-  inferred_composed := inferred_composed
-  inferred_coherent := inferred_coherent
-  transition_coherent := transition_coherent
-
-end TruthTransition
-
-
--- EKG bounded subjunctive probe: MEASURE the evaluation of the proposition,
--- and that is all. Budget 720 user-heartbeats = 9 (a Fact) * 8 (a 3SAT clause's
--- 2^3 assignments) * 10 (safety) = 720000 internal compiler heartbeats. The
--- probe binds no declaration, so it cannot leak universe metavariables, and it
--- never fails the module: on outgrowth it logs the EKG event and continues.
+-- EKG bounded subjunctive probe: MEASURE elaboration of the proposition-shaped
+-- term, and that is all. This smoke pulse uses budget 7. The fuller one-clause
+-- budget appears later as 720 = 9 fact positions * 8 three-bit assignments * 10
+-- safety. The probe binds no declaration, so it cannot leak universe
+-- metavariables, and it never fails the module: on outgrowth it logs the EKG
+-- event and continues.
 ekg_probe 7 =>
-  TruthTransition.transition_coherent
+  let repeatable : Bullshit :=
+    truthTrueOutput.TRUE
+  let hypothesis : Bullshit :=
+    truthTrueOutput.output
+  let theory : Bullshit :=
+    truthTrueOutput.atreyu_process.satirize truthTrueOutput.output
+  let trueOutput_value1 : Prop :=
+    truthTrueOutput.obfusplained?
+      truthTrueOutput.output_true
+      repeatable
+      hypothesis
+  let trueOutput_value2 : Prop :=
+    truthTrueOutput.obfusplained?
+      truthTrueOutput.output_true
+      hypothesis
+      theory
+  let trueOutput_direct : Prop :=
+    truthTrueOutput.obfusplained?
+      truthTrueOutput.output_true
+      repeatable
+      theory
+  let trueOutput_coherent : Prop :=
+    trueOutput_direct = (trueOutput_value1 ∧ trueOutput_value2)
+  let closure_repeatable_hypothesis : Closure :=
+    truthInferred.equivalence_process.close? repeatable hypothesis
+  let closure_hypothesis_theory : Closure :=
+    truthInferred.equivalence_process.close? hypothesis theory
+  let closure_repeatable_theory : Closure :=
+    truthInferred.equivalence_process.close? repeatable theory
+  let equivalence_value1 : Prop :=
+    Closure.le
+      truthInferred.equivalence_process.closure
+      closure_repeatable_hypothesis
+  let equivalence_value2 : Prop :=
+    Closure.le
+      closure_repeatable_hypothesis
+      closure_hypothesis_theory
+  let equivalence_direct : Prop :=
+    Closure.le
+      truthInferred.equivalence_process.closure
+      closure_repeatable_theory
+  let equivalence_coherent : Prop :=
+    equivalence_direct = (equivalence_value1 ∧ equivalence_value2)
+  let inferred_value1 : Prop :=
+    truthInferred.inferred?
+      closure_repeatable_hypothesis
+      closure_hypothesis_theory
+  let inferred_value2 : Prop :=
+    truthInferred.inferred?
+      closure_hypothesis_theory
+      truthInferred.theory
+  let inferred_direct : Prop :=
+    truthInferred.inferred?
+      closure_repeatable_theory
+      truthInferred.theory
+  let inferred_coherent : Prop :=
+    inferred_direct = (inferred_value1 ∧ inferred_value2)
+  trueOutput_coherent ∧ equivalence_coherent ∧ inferred_coherent
 
 theorem true_eq_false :
     Subsingleton Fact.Truth.truth = Subsingleton (¬ Fact.Truth.truth) := by
