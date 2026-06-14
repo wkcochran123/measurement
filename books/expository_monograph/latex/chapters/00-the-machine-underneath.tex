@@ -1,0 +1,68 @@
+\chapter*{Chapter 0: The Machine Underneath}
+\addcontentsline{toc}{chapter}{Chapter 0: The Machine Underneath}
+
+There is a proof underneath this book, and it is not made of prose. Every claim the body makes
+in its metaphysical voice restates a step in a construction written in a proof assistant and
+checked, line by line, by a computer. The construction is real, it is finite, and it compiles.
+The body never mentions it. This chapter, alone with the preface, does.
+
+What the body gives is an armwave. That is not an insult to it; it is the exact description of
+what it is. The body describes a process --- the mark, the receipt, the residue, the boundary,
+the bit --- faithfully and in order, but it describes the process, not the mechanism that
+performs it. An armwave, done well, is a true account of what a machine does without being the
+machine. The body is the true account. The machine is underneath.
+
+This chapter describes the mechanism, and in describing the mechanism it does the one thing the
+armwave cannot: it describes how the proof proves itself. The mechanism is not a fixed procedure
+the author ran once and wrote down. It is a construction that, run, generates its own proof. To
+say how it works is to say how the book is established --- and the book's content is exactly that
+proof. Describe the machine precisely and you have described how the book proves itself.
+
+The mechanism turns on a single classical step. Everywhere else the construction is
+constructive: it builds what it claims, and the building is the evidence. At one point, and one
+point only, it reaches past the constructive, to the axiom of choice --- the assertion that a
+choice can be made without a rule for making it. The body calls this the needle, the one decision
+the apparatus sits in rather than derives. The machine treats it differently. It does not pick an
+algorithm to make the choice. It inspects the algorithms that could.
+
+A choice with no rule is a choice that many rules could imitate, and the machine considers them
+as a field: the possible algorithms the axiom of choice might employ to do what it does without
+saying how. It does not run them for their outputs. It encodes each by what it costs the proof
+assistant to elaborate it --- the time the assistant spends bringing that algorithm to a checked
+form. Elaboration time is the measurement the body has been taking all along, under the name of
+the heartbeat; here it is the very code in which the candidate algorithms are written down. Each
+possible way of making the unmade choice becomes a finite elaboration cost.
+
+The proof assistant then builds a program out of these encodings. It staples them together ---
+composes the elaboration-time codes into one assembled object, the way the construction stapled
+its tower of instances into a single synthesized whole. The program is not written by hand and
+handed to the assistant; it is assembled by the assistant, out of the encoded algorithms, as the
+construction elaborates.
+
+What gets built is, itself, a proof assistant. Not the whole of one --- it does not verify
+arbitrary mathematics --- but a proof assistant insofar as the techniques the proof uses: it can
+carry out, on its own, the checking the construction needs. The assistant has built an assistant,
+restricted to the proof's own methods. This is the strange turn the chapter has been approaching,
+and it is why the book leans on Hofstadter where it does: a formal system, to refer to itself
+without standing outside itself, builds inside itself a smaller image of itself.
+
+The last step closes the loop. The original proof assistant simulates a computer --- a finite
+machine, modeled inside the assistant --- and runs the built program on it. The run is the proof.
+Not a description of the proof, not a promise that one exists: the execution of the assembled
+assistant, on the simulated machine, generates the proof the book restates. The assistant builds
+an assistant, sets it running on a computer the assistant pretends into being, and the running is
+the thing.
+
+So the book is an armwave because the mechanism is this, and prose is not this. The body can
+describe the process the machine performs --- it does, carefully, for twenty-one chapters --- but
+the process described is the shadow the machine casts, not the loop the machine runs. The loop is
+here, stated once: a proof assistant inspects the algorithms a free choice could employ, encodes
+them by elaboration time, staples them into a program that is itself a proof assistant for the
+proof's techniques, and runs that program on a computer it simulates --- and the running
+generates the proof.
+
+From here the book does not mention any of this again. The next page is the first mark, and from
+the first mark to the last compass needle the book speaks only the theory --- the marks, the
+residues, the coin on the table --- as though the machine underneath had never been built. It was
+built. It compiles. The reader who wants to know what the armwave waves at has, in this chapter
+and the preface, the whole of the admission; everything after is the theory, told straight.

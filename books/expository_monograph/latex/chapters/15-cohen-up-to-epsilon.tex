@@ -1,0 +1,473 @@
+\chapter{Cohen Up to Epsilon}
+
+The previous chapters leaned, more and more openly, on a divide they never made
+precise: countable exhaustion reaches the certificate family and stops short of the
+coupling, and the two families were kept apart by type. That divide has the shape of a
+set-theoretic fact, and a finite apparatus that means to approach the continuum should
+put its set-theoretic house in order before it knocks on that door. This chapter does
+the housekeeping. It builds the apparatus's own counting, files a finite forcing
+calculus bounded by a tolerance, gives that calculus its order and its coding, and
+closes the finite arc --- all before any continuum claim is made.
+
+The chapter opens at the bottom, with counting. The apparatus has carried a number
+type since its first pages, but it has never made that type count: never shown, in its
+own number system, that one and one make two. The first section does exactly that. It
+defines the successor and the sum in the apparatus's own numbers and proves the small
+arithmetic that everything above will quietly use --- one and one is two, one and two is
+three, one and one and one is three --- as definitional facts, with an induction
+principle over the numbers the successor actually generates. It is the humblest section
+in the book, and it is load-bearing: the closeout at the chapter's end will rest on a
+single successor certificate proved here.
+
+The second section introduces the objects the forcing calculus acts on. A spline
+condition is a finite list of bounded knot-value assignments --- a finite piece of
+partial information about where the spline sits, with every knot and value held below a
+fixed tolerance. These are forcing conditions in the precise sense: finite, partial,
+and orderable by how much they commit to. The section establishes that they behave: the
+empty condition commits to nothing, and every condition has a finite support, the finite
+set of knots it speaks about.
+
+The third section gives the calculus its three operations, the three that any forcing
+discipline needs. Extension is information growth: a stronger condition contains every
+assignment of a weaker one, and extension is reflexive and transitive. Compatibility is
+consistency: two conditions that agree wherever they overlap have a common extension,
+their merge. And decision is density: for any bounded knot, a one-step extension decides
+it, and any finite list of bounded knots can be decided at once. These three --- extend,
+merge, decide --- are the Cohen-shaped content the apparatus can have before the continuum
+door, and the section proves all of them stay finite, controlled by the same tolerance
+the convergence argument used.
+
+The fourth section gives the calculus its order and its size. The order is extension,
+but conditions carry proof, so the order closes only up to the extensional equality of
+the assignments they record; extension is a partial order up to that equality, and the
+merge is its meet, commutative up to the same equality. And the calculus is countable:
+each assignment carries a natural-number code, each condition carries a code built from
+its assignments, and so the conditions are enumerable. This is the constructive content
+of ``the ledger stays countable'' --- not a completed enumeration of a continuum, but a
+finite code attached to each finite condition.
+
+The fifth section closes the finite arc and hands the closeout to the gauge side. It
+packages the forcing calculus, its order, and its coding into a single finite-compliance
+certificate, and then it shows that the gauge residue rests on the counting of the first
+section. From the one successor certificate --- that the successor of the successor of one
+is the successor of two --- the apparatus reads off that the vacuum's linear term closes
+and the residue is the mixed pair, the electron. The gauge commutator residue is closed
+out against the count, and the finite arc that began with one and one making two ends
+with the electron underwritten by that same arithmetic.
+
+By the end of the chapter the apparatus has earned the right to approach the continuum.
+Its counting is its own and proven; its forcing calculus is finite, ordered, countable,
+and bounded by a tolerance; and the gauge residue is tied back to the count. Nothing in
+the chapter crosses the continuum door. Everything in it makes sure that when the next
+chapter does name what lies beyond that door, the house behind it is in order.
+
+\section{Counting to Three in the Original Number System}
+
+Before a forcing calculus can bound its conditions by a number, the apparatus must be
+able to count, in its own numbers, past the smallest cases. It has carried a number type
+since its earliest chapters, but carrying a type is not the same as making it count. This
+section makes it count, and proves the small arithmetic that the rest of the chapter will
+use without comment.
+
+The apparatus builds counting from a successor. Its number type has a successor that
+attaches a fixed label to a number, and from the successor it defines numerals in the
+usual way: zero is the base, and each numeral is the successor of the one below it. So one
+is the successor of zero, two the successor of one, three the successor of two. Addition is
+defined by peeling the left argument down to zero:
+\[
+  0 + m = m,
+  \qquad
+  (\mathrm{succ}\,n) + m = \mathrm{succ}(n + m).
+\]
+This is the ordinary recursive sum, written in the apparatus's own numbers rather than
+borrowed from outside.
+
+With successor and sum in hand, the small arithmetic is definitional. The apparatus does
+not argue that one and one make two; it computes it, and the equality holds by the
+definitions alone:
+\[
+  1 + 1 = 2,
+  \qquad
+  1 + 2 = 3,
+  \qquad
+  1 + 1 + 1 = 3.
+\]
+Each of these is a definitional identity in the apparatus's numbers --- not a theorem
+requiring induction, but a computation that unfolds to a reflexive equality. The apparatus
+can count to three, and it can see that the three roads to three agree.
+
+Counting needs an induction principle, and the apparatus is careful to give it the right
+one. Its number type is more permissive than its numerals --- the type admits values its
+successor never builds --- so the apparatus distinguishes the canonical numbers, the ones
+generated from zero by the successor, and proves induction over exactly those:
+\[
+  \text{motive}(0),
+  \quad
+  \big(\forall n \text{ canonical},\ \text{motive}(n) \Rightarrow \text{motive}(\mathrm{succ}\,n)\big)
+  \;\Longrightarrow\;
+  \text{motive}(n) \text{ for canonical } n.
+\]
+Induction runs on the canonical spine, the numbers the successor actually reaches, and not
+on the wider type. This is the honest induction principle for a number system whose type
+carries more than its numerals do, and it is the principle the chapter's later counting
+will use.
+
+The section ends by isolating the one fact the chapter's closeout will need, the
+successor certificate. It is small: the successor of the successor of one equals the
+successor of two,
+\[
+  \mathrm{succ}(\mathrm{succ}\,1) = \mathrm{succ}\,2,
+\]
+which is just $\mathrm{succ}$ applied to the identity that the successor of one is two. The
+apparatus files this lifted successor certificate by name, because the gauge closeout at
+the end of the chapter will rest on it: the electron's residue will be read off, in part,
+from the fact that the apparatus can count this far and certify the step.
+
+The section's metaphysical anchor is that an apparatus must be able to count in its own
+numbers before it bounds anything by a count. The apparatus tanges its number type into a
+working arithmetic --- successor, sum, numerals, induction on the canonical spine --- and
+funges the small certificates forward, where a later section will spend them. Counting to
+three is not a triviality the book skips; it is the floor on which the forcing calculus
+stands, and the apparatus lays the floor before it builds.
+
+\section{Finite Spline Conditions}
+
+The forcing calculus of this chapter acts on finite pieces of partial information, and
+this section introduces them. A spline condition is a finite record of where the spline is
+committed to sit --- a finite list of knot-value assignments, each held below a fixed
+tolerance. These are the conditions a finite forcing discipline extends, merges, and
+decides, and the section establishes that they are well-behaved before the next section
+puts them to work.
+
+Fix a tolerance, a natural number the whole calculus will respect. An assignment is a
+single knot-value pair, and it is bounded by the tolerance when both its knot and its
+value lie below it:
+\[
+  \text{atom} = (\mathrm{knot}, \mathrm{value}),
+  \qquad
+  \text{bounded by } \varepsilon
+  \;\Longleftrightarrow\;
+  \mathrm{knot} \le \varepsilon \ \text{ and }\ \mathrm{value} \le \varepsilon.
+\]
+A spline condition is then a finite list of such bounded assignments --- a finite, partial
+specification of the spline, every entry held under the tolerance:
+\[
+  C = [\,\text{atom}_1, \ldots, \text{atom}_k\,],
+  \qquad
+  \text{every atom bounded by } \varepsilon.
+\]
+The boundedness travels with the condition: a condition is not merely a list of
+assignments but a list together with the guarantee that each assignment respects the
+tolerance. The tolerance is the same one the convergence argument used, so the forcing
+calculus and the Cauchy argument are controlled by a single parameter.
+
+These conditions are forcing conditions in the exact sense the rest of the chapter needs.
+They are finite, so the apparatus can hold and inspect any one of them. They are partial,
+committing to finitely many knots and leaving the rest open. And they are ordered by
+commitment, though that order is the next section's subject. The empty condition, which
+commits to nothing, sits at the bottom: it is a valid condition, bounded vacuously,
+asserting no assignment at all.
+
+Each condition has a finite support, the finite set of knots it speaks about. The support
+is read off by collecting the knots of the assignments, and because the condition is a
+finite list, its support is a finite list as well:
+\[
+  \mathrm{support}(C) = [\,\mathrm{knot}(\text{atom}) : \text{atom} \in C\,],
+  \qquad
+  \text{finite.}
+\]
+Finite support is the property that keeps the calculus finite: a condition can only
+constrain the knots in its support, and that support is always a finite, inspectable list.
+Outside its support a condition says nothing, and the apparatus is free to extend it there.
+
+The boundedness and the finiteness together are what make these conditions safe to work
+with before the continuum. A condition never commits to infinitely many knots, and it
+never commits to a value beyond the tolerance. So every operation the next section defines
+--- extending, merging, deciding --- starts from finite, bounded data and, the section will
+show, returns finite, bounded data. The conditions cannot grow into the continuum by
+accident; their finiteness and their bound are built into what they are.
+
+The section's metaphysical anchor is that partial finite information is a legitimate
+object, not a defective approximation to a total one. A spline condition does not apologize
+for being partial; it commits to what it commits to and leaves the rest open, and that
+openness is exactly what lets it be extended. The apparatus tanges the spline's partial
+state into a finite bounded list and funges that list through the calculus, never needing
+the total specification the continuum would supply. The condition is finite, bounded, and
+honest about what it does not yet say --- which is precisely what a forcing condition must
+be.
+
+\section{Extension, Compatibility, and Decision}
+
+A forcing calculus needs three operations, and this section gives all three to the spline
+conditions. They are the operations by which partial information grows, combines, and
+settles: extension, compatibility, and decision. The section proves each one stays finite
+and bounded, so that the whole calculus lives below the tolerance and never escapes into
+the continuum.
+
+Extension is information growth. A condition extends another when it commits to everything
+the weaker one did, and possibly more --- when every assignment of the weaker condition is
+also an assignment of the stronger:
+\[
+  C' \text{ extends } C
+  \quad\Longleftrightarrow\quad
+  \text{every atom of } C \text{ is an atom of } C'.
+\]
+Extension is reflexive --- a condition extends itself --- and transitive --- an extension of
+an extension is an extension. So the conditions are ordered by commitment, the stronger
+conditions sitting above the weaker, and the order has the basic shape any forcing order
+needs. To extend a condition is to learn more without unlearning anything.
+
+Compatibility is consistency. Two conditions are compatible when they agree wherever they
+overlap: at any knot they both commit to, they commit to the same value. Compatible
+conditions can be combined, and their combination --- the merge, formed by concatenating
+their assignments --- extends both:
+\[
+  C, D \text{ compatible}
+  \;\Longrightarrow\;
+  C \cup D \text{ extends } C \ \text{ and }\ C \cup D \text{ extends } D.
+\]
+The merge is finite because both conditions are, and bounded because both are. Two
+conditions that disagree on a shared knot have no common extension --- no condition can
+commit to two different values at one knot --- so compatibility is exactly the condition
+under which a common extension exists. Consistent partial information combines; inconsistent
+partial information does not.
+
+Decision is density, and it is the operation that makes the calculus useful. A condition
+decides a knot when it commits to some value there. The key fact is that any bounded knot
+can be decided by a one-step extension: from any condition, adding a single assignment at
+that knot produces a stronger condition that decides it. And the same holds for any finite
+list of bounded knots at once --- a finite sequence of one-step extensions decides them all:
+\[
+  \text{for any condition } C \text{ and bounded knot } k,
+  \quad
+  \exists\, C' \text{ extending } C,\quad C' \text{ decides } k.
+\]
+This is density in the forcing sense: below any condition, for any knot, lies a stronger
+condition that settles it. The settling is finite --- one assignment per knot --- and bounded
+--- the new assignment respects the tolerance. The apparatus can decide any finite question
+about the spline by a finite, bounded extension.
+
+These three operations are the Cohen-shaped content available before the continuum door,
+and the section's point is that they are entirely finite. Extension preserves finiteness and
+boundedness; merging two finite bounded conditions yields a finite bounded condition;
+deciding finitely many knots takes finitely many bounded steps. Nothing here reaches past
+the tolerance, and nothing here requires a completed, decided-everywhere condition. The
+forcing calculus grows, combines, and settles partial information without ever forming the
+total object a generic filter would be.
+
+That restraint is the whole discipline. A forcing argument, in its full set-theoretic
+form, passes to a generic object that decides everything at once --- and that object lives
+beyond the countable conditions, on the far side of a continuum door. The apparatus does
+not pass to it. It keeps to the finite conditions and their three operations, settling any
+finite question it is actually asked, and it leaves the generic object, like the continuum,
+named for later and unbuilt for now. The calculus is Cohen up to the tolerance: the forcing
+machinery, run only as far as finite bounded conditions reach.
+
+The section's metaphysical anchor is that consistent partial information can grow, combine,
+and settle without ever being completed. The apparatus tanges each finite commitment into a
+condition and funges it forward by extension, merges compatible commitments, and decides any
+finite question by a bounded step --- and it never needs the total assignment that would
+decide everything. Forcing, for a finite apparatus, is the discipline of partial information
+done honestly: extend, merge, decide, and stop at the finite, leaving the generic object on
+the far side of a door this chapter does not open.
+
+\section{Extensional Order and Natural Coding}
+
+The forcing calculus has its three operations; this section gives it the two structural
+properties a Cohen forcing requires: an order, and a countable code. Both are slightly
+subtle in the finite apparatus, and the subtleties are worth stating, because they are
+exactly where a careless account would overclaim.
+
+Take the order first. Extension orders the conditions, but the conditions carry their
+boundedness as proof-laden data, so two conditions that record the same assignments by
+different internal routes are not literally identical. The order therefore closes only up
+to extensional equality --- sameness of the assignments a condition records, regardless of
+how it records them:
+\[
+  C \equiv D
+  \quad\Longleftrightarrow\quad
+  \text{$C$ and $D$ have exactly the same atoms.}
+\]
+Up to this equality, extension is a genuine partial order. It is reflexive and transitive,
+as the previous section noted, and it is antisymmetric in the extensional sense: if two
+conditions each extend the other, they have the same atoms. The merge is the meet of two
+compatible conditions --- the least condition extending both --- and it is commutative up to
+extensional equality, since merging in either order records the same assignments. So the
+conditions form a forcing poset, exactly the ordered structure a forcing argument lives in,
+with equality read extensionally.
+
+The extensional reading is not a blemish; it is the honest order for proof-carrying data. A
+condition is what it commits to, not how it stores the commitment, and the order respects
+that: two conditions saying the same thing are ordered identically, whatever their internal
+form. The apparatus does not pretend its conditions are bare sets; it works with
+proof-carrying conditions and reads their order up to what they actually say. The forcing
+poset is a poset up to extensional equality, and that is the correct poset for the objects
+the apparatus actually has.
+
+Now the code. A Cohen forcing is a \emph{countable} poset, and the apparatus shows its
+conditions are countable by coding them with natural numbers. Each assignment is coded by a
+single number built from its knot and value; each finite list of assignments is coded by a
+number built recursively from the codes of its entries; and each condition is coded by the
+code of its assignment list:
+\[
+  \mathrm{code}(\text{atom}) \in \mathbb{N},
+  \qquad
+  \mathrm{code}(\text{condition}) \in \mathbb{N}.
+\]
+Because every condition carries a natural-number code, the conditions are enumerable: they
+inject into the natural numbers, and the forcing poset is countable. The coding is
+constructive --- it is an actual function from conditions to numbers, not an abstract
+cardinality claim.
+
+The apparatus is exact about what this countability is and is not. It is the constructive
+content of ``the ledger stays countable'': a finite code attached to each finite condition,
+so that the conditions can be listed. It is not a completed enumeration of the continuum,
+and it is not a claim that the generic object is countable. The conditions are countable;
+the object they force toward is not, and it stays on the far side of the door. The coding
+makes the forcing a countable forcing --- the Cohen setting --- without making any claim about
+what lies beyond it.
+
+Together the order and the code give the apparatus a countable forcing poset, finite and
+bounded at every condition. That is precisely the structure Cohen forcing inhabits: a
+countable poset of finite conditions, ordered by extension, dense enough to decide any
+finite question. The apparatus has built that structure honestly, up to extensional
+equality and with a constructive code, and it has built it entirely below the tolerance,
+short of the continuum.
+
+The section's metaphysical anchor is that a forcing is an ordered, countable family of
+finite commitments. The apparatus tanges each condition into a place in a partial order ---
+read up to what it actually says --- and funges each into a natural-number code, so that the
+whole calculus is a countable poset of finite, bounded conditions. It is the Cohen setting,
+finite edition: ordered, countable, dense, and stopped at the door the continuum lies
+behind.
+
+\section{The Gauge Commutator Residue Closeout}
+
+The chapter closes the finite arc by packaging its hygiene and then handing the package to
+the gauge side, where it discovers that the electron's residue has rested, all along, on
+the counting of the first section. The closeout is short, but it ties the chapter's two
+ends --- the arithmetic at the bottom and the charge at the top --- into one finite ledger.
+
+Package first. The forcing calculus, its extensional order, and its natural coding are
+three views of one object, and the apparatus bundles them into a single finite-compliance
+certificate: a condition calculus that is Cohen-compliant up to the tolerance, ordered up
+to extensional equality, and countable by code. Carrying all three in one certificate is
+the chapter's deliverable on the set-theoretic side: a finite forcing, complete with its
+order and its enumeration, bounded by the tolerance and ready to sit beneath any later
+continuum claim.
+
+Now the gauge side, and the tie that closes the arc. The generated program's residue is the
+mixed pair term --- the electron --- and it is what remains after the vacuum's linear
+certificate has closed. The closeout reads this off the counting certificate of the first
+section. From the single fact that the apparatus can count its successors --- that the
+successor of the successor of one is the successor of two --- it follows that the vacuum's
+linear term closes, that the configuration is certified through second order, and that the
+residue left over is the mixed pair:
+\[
+  \text{successor certificate}
+  \;\Longrightarrow\;
+  \text{linear term closes} \ \text{ and }\ \text{residue} = \text{the mixed pair} = -1.
+\]
+The arithmetic the apparatus proved at the bottom of the chapter underwrites the charge at
+the top. The electron's residue is not free-floating; it stands on the apparatus being able
+to count, certified by the same successor step that let it count to three.
+
+This is what it means to close the gauge commutator residue against the count. The
+commutator residue --- the part of the gauge that survives after the linear term is taken
+out --- is the mixed pair, and the apparatus certifies it by certifying that the linear term
+closes, which it does because the counting holds. The set-theoretic hygiene and the gauge
+charge are the two ends of one finite ledger, and the ledger is joined in the middle by the
+arithmetic of the successor. The chapter that began by proving one and one make two ends by
+spending that proof on the electron.
+
+The section's metaphysical anchor is that the apparatus's highest object rests on its
+lowest. The electron, the order-two quantum read at the boundary, is underwritten by the
+successor certificate, the humblest fact in the chapter. The apparatus tanges its counting
+into a certificate and funges that certificate all the way up to the gauge residue, where
+the charge closes out against the count. The finite arc is closed: a forcing calculus
+bounded by a tolerance, a counting proven in the apparatus's own numbers, and a charge that
+rests on both. Nothing has crossed the continuum door, and everything behind it is in
+order.
+
+\section*{Bridge: Approaching the Completion Door}
+
+The chapter put the apparatus's finite house in order. Its counting is its own and proven;
+its forcing calculus is finite, ordered, countable, and bounded by a tolerance; and the
+gauge residue is tied back to the count. Every object the chapter built is finite, and every
+claim it made stops short of the continuum. That restraint was the point: the apparatus
+refused, again and again, to pass to the generic object, the completed enumeration, the
+total assignment that lives on the far side of a door it kept naming and not opening.
+
+But the door has been named too many times to leave shut forever. The square-root door of
+the operator chapter, the completion slot of the Hilbert frame, the generic object of this
+chapter's forcing --- they are all the same door, the one between the finite apparatus and the
+continuum. The apparatus has done everything a finite house can do up to that door. What it
+has not done is say, plainly and in order, what lies beyond it: which continuum-facing
+hypotheses the finite construction would need, and which of them the apparatus can honestly
+claim to have discharged.
+
+The next chapter does exactly that, and only that. It names the Sobolev and Hilbert
+completion the finite energy points toward, the continuum certificate families the finite
+ones shadow, and the conditional boundary-radiation theorem the finite edition gestured at.
+It names them as hypotheses, with the dependence made explicit, and it discharges only what
+the finite apparatus genuinely discharges. The door is approached, framed, and described ---
+not walked through as though the continuum were free.
+
+So the next chapter is the honest accounting at the threshold. It states the
+continuum-facing hypotheses without pretending they are theorems, separates the finite
+skeleton that is built from the analytic completion that is assumed, and gives the
+boundary-radiation result its true conditional form. The question the apparatus carries to
+the door is the one it has earned the right to ask: of everything that lies beyond the
+finite, what exactly must be assumed, and what has the finite construction already made
+good?
+
+\section*{Coda: The Half-Filled Grid}
+
+A constructor building a crossword grid works the way this chapter's forcing works, cell by
+cell, and never needs the finished grid to make progress. Watching the grid fill is watching
+extension, compatibility, decision, and countability happen in pencil.
+
+A partially filled grid is a condition. Some cells carry letters; most are blank. The
+constructor has committed to finitely much --- the letters written so far --- and left the
+rest open. The grid does not apologize for being mostly empty; a half-filled grid is a
+legitimate state of the work, a finite partial commitment exactly like a spline condition
+with finitely many assignments and the rest of the knots untouched.
+
+Filling more cells extends the condition. Write a letter in a blank cell and the new grid
+contains every letter the old one did, plus one more; it is a stronger condition, committed
+to everything the weaker one was and a little besides. Erasing would unlearn a commitment,
+and the forcing order does not erase --- extension only adds. The constructor grows the grid
+by extension, each new letter a step up the order, never taking back what was written.
+
+Two partial grids are compatible when they agree on every shared cell. If one grid has a
+letter in a cell, and the other grid has the same letter there or leaves it blank, the two
+are consistent, and they merge into a fuller grid carrying both their commitments. But if one
+grid writes one letter in a cell and the other writes a different letter in the same cell,
+they cannot be merged --- no single grid holds two letters in one square. Compatibility is
+agreement on the overlap, and the merge of compatible grids extends them both, exactly as the
+merge of compatible conditions does.
+
+Any specific cell can be decided. Point to a blank square, and the constructor can always
+extend the current grid to fill it --- one letter, one step, and the cell is settled. There is
+no square that the grid cannot be extended to decide; deciding any finite set of squares is
+just a finite run of such extensions. That is density in pencil: below any partial grid, for
+any square, lies a fuller grid that decides it.
+
+And the partial grids are countable. Each filled cell is a finite piece of data --- a position
+and a letter --- and a partial grid is a finite list of them, so the partial grids can be
+listed, coded one by one. There are only countably many finite fills, however large the
+ambitions of the finished puzzle.
+
+The one thing the constructor never needs, to do any of this, is the completed grid. Extending,
+merging, deciding a square, listing the partial fills --- all of it happens among the finite
+partial grids, with no appeal to the total solution. The completed grid is a separate object,
+the limit the partial fills approach, and it lives beyond all of them; the constructor reaches
+it, if at all, only by a different and later act. The finite discipline settles every finite
+question without it.
+
+That is the chapter in a grid. The partial fills are the forcing conditions; writing a letter
+is extension; agreement on shared cells is compatibility, and consistent grids merge; any
+square is decided by a finite extension; the partial fills are countable; and the completed
+grid is the generic object on the far side of the door, approached by the finite work and
+never required by it. The apparatus, like the constructor, fills its grid as far as finite
+commitments reach, and leaves the finished puzzle for the chapter that opens the door.

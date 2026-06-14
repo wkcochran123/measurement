@@ -1,0 +1,1186 @@
+\chapter{Finite Support and Selection}
+
+Chapter 6 began the finite calculus by reading the shape of a measurement: when a reading is
+stationary, when its first-order response vanishes, and how that vanishing becomes a detector.
+But stationarity quietly assumed something it did not supply --- a field of candidates for the
+reading to be stationary over. Before a certificate can declare a residual quiet, it must name
+the field in which the residual may be tested. This chapter supplies that field, and supplies
+it finitely. It gives the apparatus a finite support to read, coordinate names for the
+support, local equations the named support can carry, a measured way to spend the support, and
+a tower of refinements that squeezes the residual below any bound. It is the chapter in which
+finitude stops being an apology and becomes expressive enough to carry equations.
+
+The first move is to put support before order. A finite support is the held field of
+candidates the apparatus permits itself to inspect --- not the whole continuum, not a hidden
+reservoir behind a finite notation, but exactly the company a certificate brings to the table.
+Support says which candidates count as available; order says only how the apparatus visits
+them. The two are different structures, and keeping support ahead of order is what stops the
+apparatus from smuggling membership into the act of reading. A candidate is read because it
+already stood in the field, not because the trace happened to touch it.
+
+The second move is to name the field without importing analysis. Once the apparatus holds a
+finite support, it can place the supported candidates among coordinate names --- a finite
+addressing discipline that says where a candidate stands and how adjacent names face one
+another, without turning the support into a continuum or promising that every limiting
+question has already been answered. Coordinates give the field names; they do not give it an
+analysis it has not earned.
+
+The third move is to let the named field carry equations. With a finite support and
+coordinate names, the apparatus can write local equations for the middle of a trace --- the
+cubic middle-node equations that make the supported record articulate. These are not global
+theorems about all paths; they are local equations for the names the support has made
+available, a small algebraic scene in which residual quiet can be inspected. Finitude has
+become expressive: the field carries equations rather than merely listing names.
+
+The fourth move is to spend the support by a measured selector. A finite support may hold
+several admitted candidates, and the apparatus needs a disciplined way to spend the current
+support rather than an arbitrary one. Heartbeat selection supplies it --- a measured choice
+among admitted candidates by a carried finite cost, allowing ties to remain visible and
+passing the remaining support forward. Selection settles a local question, which admitted
+candidate this finite event reads now, without pretending to settle the deeper question of
+what the residual pressure means across many such readings.
+
+The fifth move is to squeeze the residual along a tower. A refining family of finite supports
+can carry receipts forward, compare residual magnitudes across stages, and drive a terminal
+residual below a bound that vanishes along the admitted sequence. The squeeze is real
+discipline: it lets the apparatus say a residual is small, and smaller along this admitted
+tower, without pretending one finite stage has become the whole continuum. Control of residual
+magnitude is earned; interpretation of the residual is not yet.
+
+Together these five moves give the apparatus a finite field that is held, named,
+equation-bearing, measurably spent, and squeezed toward zero. The chapter does not escape
+finitude; it makes finitude carry the weight an analysis would otherwise carry. And it closes,
+in its bridge, by drawing the line its own success exposes: the apparatus can now control a
+residual along a tower, but control is not yet interpretation, and the question of what single
+quantity reads the remaining pressure is the question the next chapter must take up.
+
+\section{Support Before Order}
+
+A completed certificate can close a residual only after the apparatus has
+named the field in which the residual may be tested. The earlier chapter
+explained what stationarity says once a middle, a path, and a finite
+certificate already stand in hand. It separated the direct residual from the
+first-order residual, and it showed how the same first-order quiet can appear
+as balance, spline closure, or a tridiagonal certificate residual when the
+finite identifications have already been carried. That account still leaves a
+prior question. Before the certificate can declare quiet, which alternatives
+does it read?
+
+Support answers that question. A finite support is the held field of candidates
+that the apparatus permits itself to inspect. It does not pretend to contain
+the whole continuum. It does not hide an infinite reservoir behind a finite
+notation. It does not apologize for leaving uncarried possibilities outside
+the present act. It says something sharper: for this certificate, these are
+the candidates in scope. The certificate may test them, order them, consume
+them, and report what remains. A claim becomes tangible when the apparatus can
+hold this finite field, and it becomes fungible when another compatible event
+can carry the same field without reconstructing the entire origin of each
+candidate.
+
+Write the support as
+\[
+  K = \{b_1,\ldots,b_n\}.
+\]
+The notation marks a finite field of candidate middles, candidate variations,
+or candidate slips, depending on the surrounding problem. The letter \(K\)
+does not name an interval, a region of analysis, or a hidden space of possible
+answers. It names the finite company the certificate actually brings to the
+table. A candidate belongs to the present field precisely when
+\[
+  b \in K.
+\]
+This membership statement carries the first discipline of Chapter 7. The
+apparatus may read \(b\) because \(b\) stands inside the carried support. If a
+candidate does not stand inside \(K\), this certificate has not yet earned the
+right to speak about it.
+
+Support comes before order. The support tells us which candidates count as
+available; order tells us how the apparatus visits them. These are different
+pieces of structure. The same support can admit several execution orders,
+because membership does not say which candidate comes first, which comes next,
+or which one closes the trace. If three candidates stand in \(K\), the
+apparatus may inspect them in one sequence or another while preserving the same
+membership field. Changing the order changes the trace. It need not change the
+support.
+
+This distinction keeps the finite doctrine honest. If order created support,
+then the apparatus would smuggle membership into the act of reading. A
+candidate would count only because the trace happened to touch it. Measurement
+requires the stricter order: the field must already stand in hand before the
+trace consumes from it. The trace does not produce permission by moving. It
+uses permission already carried by the support. The event that reads a
+candidate therefore has two checks. First, the candidate belongs to \(K\).
+Second, the execution chooses that candidate at this step.
+
+The basic event has the form
+\[
+  K \xrightarrow{\,b\,} K',
+  \qquad
+  b \in K,
+  \qquad
+  K' \subseteq K,
+  \qquad
+  |K'| < |K|.
+\]
+Read this display from left to right. The apparatus begins with a finite
+support \(K\). It consumes the supported candidate \(b\). It carries forward a
+remaining support \(K'\). The remaining support stays inside the original
+field, and its size decreases. Nothing here says that the apparatus has solved
+for every conceivable candidate. The display says that one finite event has
+selected one candidate that already belonged to the field, and that the event
+has made the field smaller.
+
+This decrease matters. A finite trace needs a clock it can spend. Without the
+inequality \(|K'| < |K|\), consumption would not differ from rehearsal. The
+apparatus could visit a candidate and leave the same unresolved field behind.
+With the inequality, each consumption event has cost. The field loses one
+available candidate, or at least becomes strictly shorter in the sense the
+certificate tracks. The trace cannot consume forever while claiming to remain
+inside one finite support. Each step spends part of the field it inherited.
+
+The subset condition matters just as much. The remaining candidates are not
+new arrivals. The apparatus does not consume \(b\) and then admit a fresh
+candidate from outside the field to replace it. Every candidate left in \(K'\)
+already stood in \(K\). The trace may reorder, postpone, and eventually
+consume supported candidates, but it may not silently enlarge the field it was
+given. Enlargement would require a new act of support, not a hidden side
+effect of execution.
+
+These two clauses let the apparatus separate membership from sequence. The
+support says what may be read. The execution order says which supported
+candidate the apparatus reads now. A finite certificate can then record the
+trace without confusing the field with the itinerary. This matters whenever a
+later calculation presents an analytic-looking result. The calculation may
+look as if it has swept across an open landscape, but the finite certificate
+has not done that. It has read a carried field in an order.
+
+The residual inherits the same discipline. Once the trace closes, it may
+report terminal quiet only for the candidates whose membership the support
+carried. The public statement has the form
+\[
+  r_{\mathrm{term}}(b')=0
+  \qquad \text{for } b' \in K.
+\]
+The quantifier lives inside the support. The prime on \(b'\) reminds us that
+the statement concerns any candidate still considered as a supported
+variation, not only the candidate consumed at one particular step. The
+terminal residual vanishes on supported variations. It does not thereby speak
+for unsupported variations, uncarried middles, or a background continuum.
+
+When the stationarity language from the previous chapter enters, the same
+support-local sentence becomes
+\[
+  r_{\mathrm{spline}}(b')=0
+  \qquad \text{for } b' \in K.
+\]
+This display does not add a new universe of candidates. It translates terminal
+quiet into the spline residual language already earned by the carried finite
+identifications. The support condition remains visible. The apparatus may say
+that the spline residual vanishes among the carried candidates. It may not drop
+the phrase "for \(b' \in K\)" and pretend that a finite trace has surveyed
+every possible variation.
+
+The word "possible" needs care here. Measurement never forbids the operator
+from opening a larger support, nor from comparing two supports, nor from
+forming a later limiting promise. It only refuses to let one finite
+certificate claim more than it carries. A larger support is a new field. A new
+field needs its own membership. A limit-promise needs its own finite grammar
+for how one field follows another. None of those later acts can erase the
+local accounting of the present trace.
+
+Nor does support-local speech weaken the residual. It tells the apparatus where
+the residual has a name. A residual without a support can sound larger than the
+apparatus that reports it. It can suggest a voice floating above every
+candidate whether or not the candidate has entered the finite record. The
+support prevents that drift. It ties the residual to the candidates that the
+apparatus has made available for inspection. When the certificate says quiet,
+it says quiet there: inside the field the trace carried, among the candidates
+whose membership the support made tangible, and along the order by which the
+trace spent that field. A later certificate may compare fields. It may explain
+how one support refines another, or how a family of supports keeps a stable
+promise. But this certificate earns no such family by implication. It earns
+the finite sentence written on its carried field.
+
+This discipline also gives failure a place to stand. If a candidate outside
+\(K\) matters, the apparatus must say so by opening another support or by
+showing how the present support should expand. The objection cannot hide
+inside the closed residual, because the residual never claimed that outside
+candidate. It must appear as a new support question. Measurement therefore
+turns overclaim into bookkeeping: name the field, mark membership, order
+consumption, and state the residual only where the field authorizes the read.
+
+Support-local quiet also prevents a common false picture of computation. The
+apparatus does not begin with an infinite mathematical object and then trim it
+down for convenience. It begins with a finite record that can circulate
+through compatible events. The record contains candidates, not a vague cloud
+of possible candidates. The trace orders those candidates. The residual tests
+those candidates. The result closes only where the record let the apparatus
+read. This is not a weakness in the theory. It is the price of a witness that
+can actually be held.
+
+The multiset language helps because the field may care about repeated
+presence without yet caring about order. Two copies of a candidate can matter
+as two carried chances, two receipts, or two positions in a later accounting,
+even before the trace decides which copy comes first. A plain set would erase
+that multiplicity too soon. A sequence would impose order too soon. The finite
+field therefore keeps exactly the information this section needs: which
+candidates are in scope, with whatever finite multiplicity the apparatus has
+chosen to carry, before any execution order begins.
+
+Once execution begins, the trace converts the unordered field into a history.
+At each step it chooses a supported candidate, spends that choice, and carries
+the remainder. The history is not merely a list of names. It records the
+finite cost of selection, the shrinking field of alternatives, and the place
+where residual quiet can later attach. By the end of the trace, the certificate
+can say: this was the support; this was the order in which the support was
+consumed; this is the residual statement earned inside that support.
+
+This order of explanation also protects the next section. Partitioned real
+coordinates will soon give the apparatus a way to name supported candidates in
+a coordinate frame. That step should not retroactively turn the present
+support into an interval, a cell decomposition of a continuum, or an analytic
+estimate. Coordinates will help name the finite field. They will not supply a
+secret infinity behind it. The present section must therefore stop at the
+support/order grammar: membership before execution, consumption with decrease,
+and residual quiet for supported variations.
+
+The doctrine can be stated compactly. A finite support \(K\) names the
+candidates this certificate may read. An execution order consumes candidates
+from \(K\) one finite event at a time. Each consumption event selects a member,
+keeps the remainder inside the original field, and decreases the field. A
+closed trace may report \(r_{\mathrm{term}}(b')=0\), and where the spline
+identification applies it may report \(r_{\mathrm{spline}}(b')=0\), only for
+\(b'\) in \(K\). The apparatus has not read every possible middle. It has made
+one finite field tangible, carried it through an order, and closed the
+residual on the candidates that field allowed it to read.
+
+\section{Coordinates Without Imported Analysis}
+
+Once a support has named the candidates in scope, the apparatus still needs a
+way to name their positions. The trace from the previous section can say which
+candidate it consumes next, and it can keep residual quiet local to the
+carried field. But a later calculation will also need coordinate-facing
+speech: before, after, adjacent, bounded step, and located candidate. This
+does not require the book to borrow real analysis. It requires a finite
+coordinate contract.
+
+The contract begins with an ordered axis. Publicly, write its named points as
+\[
+  x_0 \le x_1 \le \cdots \le x_N .
+\]
+The display says only that the apparatus has finitely many coordinate names
+and an order among adjacent names. It does not claim that the axis is a
+completed continuum. It does not assert a normed function space or an
+analytic theorem about limits. The coordinate system gives the finite support
+a language of position. That is already a substantial act: the apparatus can
+now say where a supported candidate stands relative to the other names it
+carries.
+
+A partition adds a finite scale to this order. Between adjacent names the
+apparatus records a bound
+\[
+  d(x_i,x_{i+1}) \le h .
+\]
+Here \(d\) is the apparatus distance and \(h\) is the mesh bound. The bound
+does not promise convergence. It does not say that shrinking \(h\) recovers a
+continuum object. It says that adjacent coordinate names in this finite
+partition stand within a controlled step. The mesh therefore measures a local
+adjacency in the carried partition, not a global analytic limit.
+
+The finite field also needs an admissible range. The apparatus does not assign
+coordinates to every possible body or every possible candidate. It begins with
+a carried body and a finite candidate support, and it asks whether those
+items lie inside the allowed range. The body must be admitted. Each supported
+candidate must be admitted. Only then does the partition become a coordinate
+record for the present data. This keeps the support from pretending to be a
+universal domain: it remains a finite field that has passed a range check.
+
+Location is the next act. A supported candidate receives a coordinate name:
+\[
+  b \in K
+  \quad \Longrightarrow \quad
+  x(b) \in \{x_0,\ldots,x_N\}.
+\]
+The implication matters. The candidate receives a coordinate name because it
+belongs to \(K\). The partition does not coordinate unsupported candidates by
+silence, and it does not discover candidates outside the field. It makes the
+carried support tangible in a coordinate grammar. The record can now say:
+this candidate belongs to the support, this candidate lies inside the
+admissible range, and this candidate has this coordinate name among the
+finite names of the partition.
+
+The trace must keep faith with that coordinate record. Its knots cannot drift
+away from the carried data. If the support from the trace and the support from
+the partitioned data are being identified, the public summary may be written
+as
+\[
+  K_{\mathrm{trace}} = K_{\mathrm{data}} .
+\]
+This is not a new theorem of the continuum. It is bookkeeping for the finite
+certificate. The knots the trace consumes are the candidates the partition
+locates. The order still belongs to the trace; the coordinate names belong to
+the partition; the support keeps them talking about the same finite field.
+
+Residual quiet transfers through that match. When a terminal residual is zero
+on the trace knots, the partitioned data may read the same quiet on its
+supported candidates. If weak language is useful, the statement should remain
+local:
+\[
+  r_{\mathrm{weak}}(b')=0
+  \qquad \text{for } b' \in K .
+\]
+And, where the spline identification from the earlier stationarity chapter is
+being carried, the same local discipline gives
+\[
+  r_{\mathrm{spline}}(b')=0
+  \qquad \text{for } b' \in K .
+\]
+The phrase "for \(b' \in K\)" does the work. It prevents the coordinate
+partition from inflating the claim into global variation control. The weak
+residual vanishes for supported candidates. The spline residual vanishes for
+supported candidates. Unsupported candidates remain outside this certificate's
+voice.
+
+The word "weak" also needs a boundary. In this section it names a
+partition-facing pairing language for finite functions generated by the
+support. It does not announce completed Sobolev analysis. It does not supply an
+ambient function-space theorem, inner-product theorem, or compactness
+argument.
+The apparatus has a finite partition, a finite pairing discipline, and a
+support-generated family of functions. That is enough for the present
+coordinate-facing claim. It is not enough to claim a completed theory of weak
+solutions.
+
+This restraint keeps the chapter moving in the right order. The first section
+made support prior to execution. This section gives that support coordinate
+names, adjacency, a mesh bound, admissibility, and knot matching. The next
+section may use those ingredients to write the next algebraic laws.
+It should not inherit an unstated analytic universe from this one. Coordinates
+prepare the finite field for algebra; they do not solve the algebra in
+advance.
+
+The result is a sharper finite promise. A support says which candidates the
+certificate may read. A coordinate partition says where those supported
+candidates stand among finitely many ordered names and how adjacent names are
+bounded by the mesh. A knot match says that the trace consumes the same field
+the partition locates. Residual quiet then remains exactly where it belongs:
+on the supported candidates, in the coordinate-facing language the apparatus
+has actually carried.
+
+\section{Cubic Middle-Node Equations}
+
+The coordinate contract prepares the finite field for equations. It names
+supported candidates, places them among finitely many ordered coordinates, and
+keeps residual quiet local to the support that the apparatus actually carries.
+The next question is no longer whether a candidate has a name. It is what
+condition a named interior candidate must satisfy once the apparatus asks a
+path to be quiet. The answer begins with the first case where there are two
+interior names at once.
+
+Consider a cubic support written as a four-node path
+\[
+  q_0 \longrightarrow q_1 \longrightarrow q_2 \longrightarrow q_3 .
+\]
+The endpoints \(q_0\) and \(q_3\) are held fixed for the present certificate.
+They are the boundary of the local calculation. The middle names \(q_1\) and
+\(q_2\) are the supported interior records. The word "middle" does not mean
+that the book has imported a continuum point between two completed endpoints.
+It means that the apparatus has carried two named interior positions in the
+finite record. Each middle name stands only because a support has made it
+available and a coordinate contract has made its location tangible.
+
+This is the first reason the cubic case is useful. A single middle node can
+teach a local balance law, but it can hide the fact that a path with two
+interior names has more than one local question. The left middle name may be
+tested while the right middle name is held fixed. The right middle name may be
+tested while the left middle name is held fixed. And the two middle names may
+move together, in which case the segment between them changes from both sides.
+The section must keep these three readings separate. Otherwise a finite
+calculation would quietly turn two supported local equations into an
+unsupported claim of whole-path quiet.
+
+The finite record also decides what kind of object the equations are allowed
+to be. The four names are not samples from a curve that has already been
+granted. They are the names the certificate has in hand. The two boundary
+names let the local problem stand still long enough to be measured. The two
+middle names are the places where the apparatus may ask for balance. The
+equations therefore begin as accounting over named positions. They do not
+begin as a law over an unbounded space of paths and then shrink down to the
+finite case. Measurement runs in the other direction: name the finite field
+first, then state the condition that the field can actually test.
+
+The action for the four-node path is the sum of three segment costs:
+\[
+  S(q_0,q_1,q_2,q_3)
+    = C(q_0,q_1) + C(q_1,q_2) + C(q_2,q_3).
+\]
+The first term reads the segment from the fixed initial endpoint to the left
+middle name. The second term reads the segment between the two middle names. The
+third term reads the segment from the right middle name to the fixed target.
+This display is deliberately finite. It does not ask for a differentiable
+curve, a completed function space, or a background continuum of variations. It
+asks the apparatus to add the three costs that its record has made available.
+
+The equality also records what has not yet been decided. The cost of the whole
+four-node path is not a single opaque number handed down from outside the
+apparatus. It is assembled from the three finite reads the record permits.
+That assembly matters because each middle name touches two segments. The left
+middle name touches the first and second segment. The right middle name
+touches the second and third segment. Thus the middle segment is shared. It is
+the place where the two interior names can no longer be treated as completely
+independent once they move together.
+
+The notation \(S\) should therefore be read as a carried sum, not as a hidden
+functional over all possible paths. It is large enough to ask whether the
+supported middle names are quiet relative to the three segment costs. It is
+not large enough to speak for unsupported middle names or for a path that has
+not been named by this certificate. The support still governs the voice of the
+equation. The coordinate contract still governs where the named candidates
+stand. The cost only measures the finite path once those acts have already
+been performed.
+
+Begin with the left middle name. Hold \(q_0\), \(q_2\), and \(q_3\) fixed, and
+let the apparatus test a supported left variation \(\eta_L\) of \(q_1\). The
+left test changes the first segment and the middle segment, because \(q_1\)
+belongs to both. It does not change the right endpoint segment from \(q_2\) to
+\(q_3\). The finite residual recorded by this one-coordinate test is written
+as \(R_L(\eta_L)\). The left middle-node equation is
+\[
+  R_L(\eta_L)=0
+  \qquad \text{for supported left variations }\eta_L .
+\]
+The last phrase is part of the equation. It is not an explanatory decoration.
+The residual vanishes on the supported left variations that the certificate
+has admitted. If a left variation is not in the carried support, this
+certificate has not tested it.
+
+This left equation is already an Euler-Lagrange-shaped statement, but the
+shape must be read with finite discipline. The apparatus has not taken a
+derivative in a completed space of curves. It has not ranged over arbitrary
+perturbations of a continuum path. It has compared a named middle record with
+the supported alternatives the trace can read. The finite Euler-Lagrange
+equation says that the left middle name is locally balanced against the
+supported left tests. It is a residual equation on the named support.
+
+The word "residual" keeps the claim from becoming merely verbal. A residual is
+what remains when the apparatus compares the present middle name with the
+supported alternatives available to it. If the residual is nonzero, the
+support has found a local imbalance. If the residual is zero for every
+supported left test, the apparatus has no left-supported discrepancy left to
+spend in this one-coordinate reading. That is a real closure, but it is a
+closure with an address: the left support, the left middle name, and the
+fixed surrounding nodes of the present cubic record.
+
+The same discipline applies on the right. Hold \(q_0\), \(q_1\), and \(q_3\)
+fixed, and test a supported right variation \(\eta_R\) of \(q_2\). This
+variation changes the middle segment and the final segment. It does not
+change the first segment from \(q_0\) to \(q_1\). The right residual is written
+\(R_R(\eta_R)\), and the right middle-node equation is
+\[
+  R_R(\eta_R)=0
+  \qquad \text{for supported right variations }\eta_R .
+\]
+Again the support condition is not optional. The equation does not say that
+the path is quiet against every rightward motion that a later theory might
+invent. It says that, inside the present finite record, every admitted right
+test has zero residual.
+
+The right equation also prevents a false symmetry. Since both middle names
+touch the central segment, one might be tempted to treat the two balances as
+one undifferentiated interior condition. The apparatus refuses that shortcut.
+The left test asks what happens when the left interior name is replaced by a
+supported left alternative. The right test asks what happens when the right
+interior name is replaced by a supported right alternative. They share part of
+the cost, but they are different tests with different supports. The finite
+record has to keep both receipts.
+
+The two equations are parallel but not interchangeable. The left equation
+looks at the cost terms touched by \(q_1\). The right equation looks at the
+cost terms touched by \(q_2\). Both see the middle segment, but they see it
+from different one-coordinate tests. This is why the cubic path is not merely
+a longer version of the one-middle case. It forces the apparatus to carry two
+interior balances without collapsing them into one anonymous interior
+condition.
+
+The phrase "finite middle-node balance" is useful here. A balance is a
+relation among costs the apparatus can actually compare. The left balance
+compares the supported alternatives for the left middle name while the rest of
+the cubic record remains fixed. The right balance compares the supported
+alternatives for the right middle name under the matching fixed-boundary
+condition. The apparatus earns two balances because it has two supported
+middle names. It does not earn a global variational principle by saying the
+word "balance" twice.
+
+The finite Euler-Lagrange boundary is therefore exact but narrow. It is exact
+because the residual statements are not metaphors. They are the algebraic
+conditions the carried cubic record must satisfy at its supported middle
+names. It is narrow because every quantifier remains inside the admitted
+support. The book may call these finite Euler-Lagrange equations, provided the
+the adjective must stay strict. Finite means the equation is tested on named
+variations, inside the field the apparatus has carried, with endpoints and the
+other middle name held according to the one-coordinate test.
+
+This boundary is not a hedge. It is the content of the construction. A
+completed analytic setting may have its own way to discuss variation, but this
+chapter is not leaning on that setting. It is showing what the apparatus can
+say before such a setting is available. The finite Euler-Lagrange equation is
+the statement that no supported one-coordinate test exposes residual pressure
+at the middle name being tested. The equation is strong because it is exact on
+the support. It is limited because the support is the place where the
+apparatus has earned a voice.
+
+This language also preserves the role of the endpoints. Fixed endpoints do
+not become metaphysical absolutes. They are fixed for this local calculation.
+The certificate is asking what the two supported interior names must do while
+the boundary names stand still. A later certificate may move a boundary or
+compare a family of boundaries, but that is a new question. Here the endpoints
+define the local field of the cubic test. They make the middle equations
+legible by preventing the whole path from sliding at once.
+
+The same point can be put as a bookkeeping rule. A middle-node equation is not
+a declaration about the identity of the whole path. It is a statement about
+what changes when exactly one supported interior name is exchanged while the
+rest of the local record is held. This is why the equations can be written
+before the chapter has introduced a selector. The selector will later ask
+which candidate survives a measured choice. The present section only supplies
+the local tests that candidates must face.
+
+Now let both middle names move together. The apparatus tests a pair
+\((\eta_L,\eta_R)\) and compares the cost of the changed cubic path with the
+cost of the original one. The resulting coupled difference is not merely the
+sum of the two one-coordinate residuals. The middle segment has been touched
+from both sides at once. When \(q_1\) and \(q_2\) both change, the cost
+\(C(q_1,q_2)\) is replaced by the cost of the changed middle segment, and that
+replacement contains a contribution that neither one-coordinate test sees by
+itself.
+
+Write the coupled accounting as
+\[
+  \Delta_{12}S(\eta_L,\eta_R)
+    = R_L(\eta_L) + R_R(\eta_R) + M(\eta_L,\eta_R).
+\]
+The term \(M(\eta_L,\eta_R)\) is the mixed coupling. It records the extra
+middle-segment contribution that appears only when the two supported middle
+names move together. The display is the chief warning of this section. The
+left residual and the right residual can both vanish on their respective
+supports, and the coupled variation can still contain a mixed term. The
+apparatus must not hide that term inside the two residual equations.
+
+The mixed term is not an error in the finite account. It is the honest residue
+of asking a two-middle question. One-coordinate variation isolates a middle
+name by holding the other one fixed. Coupled variation removes that protection.
+The middle segment then depends on both changed names, and the accounting must
+say so. The finite theory becomes stronger, not weaker, when it refuses to
+erase this residue. It shows exactly where the local equations stop and where
+an additional coupling condition begins.
+
+This is also where the language of two equations becomes most precise. There
+are two one-coordinate residual equations, not because the apparatus has split
+a single smooth condition into pieces, but because the record contains two
+supported interior names. Their coupled movement is an additional finite
+question. If the mixed term is present, the apparatus has learned something:
+the two local quiet statements have not exhausted the relation between the
+middle names. The middle segment still carries pressure that belongs to the
+pair.
+
+The clean exact closure is
+\[
+  R_L=0,\quad R_R=0,\quad M=0
+    \quad\Longrightarrow\quad
+    \Delta_{12}S=0.
+\]
+This implication should be read with the same support boundary as before. The
+left residual is zero on supported left variations. The right residual is zero
+on supported right variations. The mixed term is separately solved, cancelled,
+or otherwise controlled for the coupled supported test. Only then does the
+coupled difference vanish. The two middle equations alone do not erase the
+coupled variation.
+
+The implication also separates exact closure from later control. In the clean
+display, the mixed term is zero. In prose, the chapter may leave room for a
+later finite argument that bounds or carries the mixed contribution as
+residue. Those are not the same claim. Zero says the coupled contribution has
+closed in the present calculation. A bound says a later accounting may keep
+the residue under control. A carried residue says the apparatus knows the
+pressure remains. Here the exact case teaches the algebra; broader control
+belongs to the later sections on selection and squeezing.
+
+This is the exact place where the section must resist a tempting shortcut. It
+would be easy to say that the left and right equations make the cubic path
+stationary. That sentence is too large. The equations make the supported
+one-coordinate residuals quiet. They do not, by themselves, prove quiet for
+all coupled movement. They do not range over unsupported variations. They do
+not smuggle in a smoothness argument that declares the mixed term negligible.
+They do not import a completed variational calculus. The coupled statement
+needs the mixed term to be named and handled.
+
+The terminology of residue is appropriate here. After the two middle-node
+equations have done their work, the mixed coupling remains as the next item of
+accounting. It may be zero in a special exact case. It may be cancelled by a
+separate condition. It may be bounded by a later finite argument. But it must
+not disappear because the prose wants the cubic path to look simpler. A
+measurement record is reliable only when the remaining pressure is still
+visible.
+
+The mixed term also protects the meaning of "quiet." Quiet at the left middle
+name means no supported left test reports residual pressure. Quiet at the
+right middle name means no supported right test reports residual pressure.
+Coupled quiet is a stronger sentence. It requires the paired movement to leave
+no additional middle-segment pressure beyond the two residuals. The apparatus
+therefore has a hierarchy of claims: left quiet, right quiet, and coupled
+quiet. Confusing the hierarchy would make the record sound more complete than
+it is.
+
+This also clarifies what the cubic equations contribute to selection. They do
+not yet choose one candidate from a support. They define the local equations
+that a supported interior pair must satisfy before selection can be a
+measured act rather than a preference. A candidate pair that fails the left
+residual test has not met the left middle-node balance. A candidate pair that
+fails the right residual test has not met the right middle-node balance. A
+candidate pair that passes both tests may still carry coupled residue through
+the mixed term. The apparatus now has a sharper set of questions to ask of
+the support.
+
+This sharpening is the section's practical contribution to the chapter. The
+previous section made finite coordinates available without importing analysis.
+This section turns those coordinates into equations that selection can read.
+The equations are not yet a choice procedure. They are tests. A later
+selection rule can prefer, reject, or compare supported candidates only after
+the residual tests have given the candidates a measured profile. The cubic
+case gives that profile two middle-node faces and one coupled residue.
+
+The word "local" should therefore remain visible. The left equation is local
+to the left middle support. The right equation is local to the right middle
+support. The mixed term is local to the coupled movement of the two supported
+middle names. None of these statements surveys an unbounded landscape of
+paths. They organize the finite record already in hand. They tell the
+apparatus where quiet has been earned and where an unresolved coupling still
+stands.
+
+The result can be summarized in one sentence. A cubic support with fixed
+endpoints and two supported middle names carries two finite Euler-Lagrange
+equations, one for each middle name, and a separate mixed coupling residue
+when the two middle names move together. The section has not completed the
+selection problem. It has prepared it. The next step can ask how an apparatus
+chooses among locally measured candidates without confusing selection with
+global uniqueness. A later step can ask how squeezed supports carry residual
+behavior forward. For now the boundary is exact: two middle-node residuals,
+one visible mixed term, and no claim beyond the support the certificate has
+actually named.
+
+\section{Heartbeat Selection as Local Measured Choice}
+
+The cubic equations give the apparatus local tests. They say when a supported
+left middle name is quiet, when a supported right middle name is quiet, and
+where a mixed coupling remains if the two middle names move together. They do
+not yet say which admitted candidate the apparatus reads next. A support may
+contain several candidates that satisfy the current local tests, or several
+candidates that still need to be tested. Selection is the next discipline: it
+turns a finite field of admitted candidates into an ordered act of reading.
+
+The support remains prior. Selection does not create a candidate, discover an
+outside option, or enlarge the multiset that the certificate carries. It works
+only on candidates already admitted. The new ingredient is a heartbeat cost:
+a measured priority attached to each admitted candidate. Publicly, write
+\[
+  h:K\to \mathbb{N}.
+\]
+Here \(K\) is the current finite support and \(h(b)\) is the heartbeat cost of
+the admitted candidate \(b\). The codomain \(\mathbb{N}\) matters. The
+heartbeat is a finite number the apparatus can compare. It is not a biological
+pulse, not a runtime measurement, and not a probability assigned to a possible
+world. It is an ordering cost carried by the present record.
+
+This keeps the word "heartbeat" from becoming decorative. The heartbeat is a
+clock only in the finite sense that it gives the apparatus a countable priority
+scale. Two candidates can be compared because their costs are numbers. A
+candidate with cost \(2\) stands before a candidate with cost \(5\) under this
+policy. The apparatus has not measured duration in a machine, and it has not
+found a secret physical pulse inside the candidate. It has attached a finite
+priority to an admitted name so that the next read can be justified by a
+carried comparison.
+
+This cost lets the trace ask for a fastest admitted read. A candidate
+\(b_\ast\) is heartbeat-minimal when
+\[
+  b_\ast \in K,
+  \qquad
+  h(b_\ast)\le h(b)
+  \quad\text{for every } b\in K .
+\]
+The first clause says that the candidate belongs to the current support. The
+second says that no admitted candidate has a smaller heartbeat cost. This is
+minimality, not uniqueness. If two admitted candidates have the same least
+cost, both may be heartbeat-minimal. The finite support still has a measured
+front edge, but it has not necessarily collapsed to a single candidate by cost
+alone.
+
+That boundary is important enough to keep in the prose. A nonempty finite
+support has at least one heartbeat-minimal admitted candidate. This gives the
+apparatus existence of a next measured read. It does not give the stronger
+claim that there is exactly one minimizer. If the apparatus needs one actual
+next candidate and several candidates tie, it must carry a tie policy, or it
+must choose one minimizer as an additional witnessed act. The heartbeat
+orders candidates by cost. It does not erase every ambiguity that finite cost
+can leave behind.
+
+The tie case is not a defect. It is a visible boundary in the record. Suppose
+two supported candidates both have the least heartbeat cost. The cost policy
+has done its work: it has ruled out every candidate with larger cost as the
+next fastest read. What remains is a finite front of tied minimizers. To move
+from that front to one consumed candidate, the apparatus needs a secondary
+rule, a stable convention, or a witnessed choice. That extra act should be
+named when it is used. Otherwise the prose would pretend that a preorder had
+become a single-valued selector by silence.
+
+The measured choice step is therefore written as
+\[
+  K \xrightarrow{\,b_\ast\,}_{h} K',
+  \qquad
+  b_\ast\in K,
+  \qquad
+  K'\subseteq K,
+  \qquad
+  |K'|<|K|.
+\]
+Read the display as fastest admitted consumption. The apparatus begins with
+the finite support \(K\). It chooses a heartbeat-minimal admitted candidate
+\(b_\ast\). It consumes that candidate and carries a remaining support \(K'\).
+The remainder stays inside the original support, and the support strictly
+decreases. The heartbeat subscript records the policy by which the next read
+was chosen; it does not change the membership rule.
+
+The decrease clause keeps the trace honest. If \(K'\) were allowed to have the
+same size as \(K\), the apparatus could announce a fastest read without
+spending any support. If \(K'\) were allowed to contain candidates outside
+\(K\), the heartbeat would become a hidden support generator. The display
+permits neither. The consumed candidate comes from the present support, and
+the remainder stays inside the present support while becoming strictly
+smaller. Selection is therefore an event of finite expenditure, not a fresh
+act of creation.
+
+This is the local measured choice promised by the title. It is local because
+the comparison is made only inside the current support. It is measured because
+the comparison uses the heartbeat cost. It is choice because the apparatus
+commits to a next read, including any tie policy or witnessed choice needed
+when several candidates are equally minimal. It is not global optimization.
+The apparatus has not searched all possible candidates. It has not minimized
+over a continuum, over a hidden background space, or over candidates that the
+support did not admit.
+
+The heartbeat also does not replace the execution trace. It refines the order
+in which the trace consumes the support. Once the heartbeat-ordered act has
+chosen and consumed its candidate, the event can still be read as an ordinary
+ordered trace: one admitted candidate was consumed, and the remaining support
+was carried forward. Forgetting the heartbeat order leaves the support/order
+discipline from the opening section intact. The heartbeat tells why this
+candidate was read now; the ordinary trace still records that a supported
+candidate was read and that the support became smaller.
+
+This forgetting is not a loss of truth. It is a change of view. With the
+heartbeat visible, the record says that the candidate was read because it was
+minimal under \(h\). With the heartbeat forgotten, the record still says that
+the candidate belonged to the support and that the trace consumed it. The
+ordinary trace is enough for residual bookkeeping that only needs membership
+and consumption. The heartbeat order adds a measurable reason for the
+itinerary, then allows the older support grammar to keep doing its work.
+
+This forgetting is useful because residual quiet was already formulated for
+the ordinary trace. The heartbeat-ordered trace does not need to invent a new
+kind of residual. It carries the same terminal and support-local residual
+statements through a more disciplined order of consumption:
+\[
+  r_{\mathrm{term}}(b)=0
+  \qquad\text{for } b\in K .
+\]
+The phrase "for \(b\in K\)" remains the guardrail. Heartbeat order has not
+expanded the domain of the residual. It has only supplied a measured policy
+for deciding which admitted candidate is consumed next.
+
+The partitioned-coordinate story also carries forward. A heartbeat-ordered
+trace can still be read by the partitioned approximation once the support and
+the coordinate record match. The finite functions and residual statements do
+not become analytic claims merely because the trace now has a cost policy.
+They remain support-local. The heartbeat supplies a measurable order on the
+admitted candidates; the partition supplies coordinate names; the residual
+reports quiet on the supported tests the certificate has earned.
+
+Thus the section has three layers and should not collapse them. Support says
+which candidates can be read. Coordinates say where those supported candidates
+stand. Heartbeat selection says which admitted candidate is read next under a
+finite priority. None of the three layers replaces the others. If the support
+is missing, the heartbeat has no lawful domain. If the coordinate record is
+missing, the candidate may be admitted but not yet located in the finite
+coordinate grammar. If the heartbeat is missing, the trace may still consume
+the support, but it lacks this measured priority policy.
+
+The cubic equations from the previous section should enter here only as
+carried structure. The section may note that, on supported tests,
+\[
+  R_L(\eta_L)=0,\qquad R_R(\eta_R)=0
+  \qquad\text{on supported tests.}
+\]
+But it should not redo the cubic calculation. The heartbeat does not solve the
+mixed coupling. It does not prove coupled quiet. It does not change the two
+middle-node equations into a global theorem. It says how a finite apparatus,
+already holding local equations and residual boundaries, chooses which
+admitted candidate to read next.
+
+This distinction prevents a second overclaim. Selection is not the same thing
+as a uniqueness guarantee. A fastest admitted read may be unique after a tie
+policy, or after the support happens to contain a single minimal candidate, or
+after the apparatus witnesses one minimizer among several. Those are different
+facts. The heartbeat cost alone supplies a preorder by finite number. It gives
+the apparatus a measured front of the support. The actual next read is the
+minimal candidate the apparatus carries forward.
+
+Choice should therefore be heard in its measured sense. The apparatus
+does not choose because it prefers a candidate in silence. It chooses because
+the support is finite, the heartbeat cost is carried, and a minimal admitted
+candidate has been selected for consumption. If there are ties, the tie policy
+or chosen witness is part of the measurement record. If there are no ties, the
+heartbeat cost itself has isolated the next read. In both cases the claim is
+local to the current support.
+
+Nor is heartbeat selection a probabilistic rule. Nothing in the display says
+that \(h(b)\) is a likelihood, a frequency, or a weight of belief. The number
+is a cost used for ordering consumption. A candidate with a lower heartbeat is
+read earlier under this policy; it is not thereby more true, more probable, or
+more real than another supported candidate. Truth and residual quiet remain
+attached to the certificate's residual statements. The heartbeat only orders
+the finite work by which the certificate spends its support.
+
+The remaining support \(K'\) keeps failure and continuation honest. If
+unread candidates remain, the apparatus has not forgotten them. It carries
+them forward as the finite field for the next measured choice. If the support
+is exhausted, the trace has spent the candidates it was authorized to read.
+At no point does the heartbeat permit the trace to replenish the support from
+outside. A new candidate requires a new support act. A new support act is not
+hidden inside the word "fastest."
+
+The local doctrine can therefore be stated compactly. A finite support \(K\)
+names the admitted candidates. A heartbeat cost \(h\) assigns a natural-number
+priority to those candidates. A heartbeat-minimal candidate has no admitted
+candidate below it in cost. The trace consumes one such candidate, records the
+remaining support, and can forget the heartbeat policy back to the ordinary
+ordered trace. Residual quiet remains support-local, and the cubic middle-node
+equations remain carried tests rather than a new selection principle.
+
+This doctrine also explains why the section does not need an external
+optimization principle. The apparatus is not borrowing a general theory of
+best choice. It is performing a finite comparison among names already in hand.
+The whole grammar remains inspectable: a support \(K\), a cost assignment
+\(h\), a minimal admitted candidate \(b_\ast\), a consumption event, and a
+remaining support \(K'\). Nothing else is hidden behind the notation.
+
+This is where the section should stop. It has given the apparatus a measured
+choice policy for the current finite support. It has explained ties without
+pretending they vanish. It has carried residual quiet through heartbeat order
+without hiding the mixed coupling from the cubic calculation. The next
+question is different: how a support can be squeezed while residual behavior
+is preserved or controlled. That is not a selection rule. It is a later
+question about families of supports and the residue they carry.
+
+\section{Squeezed Residuals in a Finite Tower}
+
+Heartbeat selection spends one finite support in a measured order. It chooses
+inside the support already admitted, consumes one candidate, and carries the
+remaining finite support forward. That doctrine leaves a second question for
+the close of the chapter. A single support can be read, but the apparatus may
+also compare a whole family of supports, each still finite, each refining the
+last, each carrying a residual record. The issue is no longer which candidate
+comes next inside one support. The issue is how residual size behaves as the
+apparatus passes through a tower of finite supports.
+
+Write the stages as \(K_0,K_1,K_2,\ldots\). The notation should not suggest an
+infinite support at any one stage. Each \(K_n\) is finite. Each stage is an
+admitted record the apparatus can hold, inspect, and pass forward. Refinement
+means that what a stage has already admitted does not fall out silently at the
+next stage. A carried candidate remains carried, or else the record must name
+the loss as a new boundary. In the ordinary case considered here, the tower
+keeps prior admitted contents available while it adds resolution.
+
+This is the tower version of finite honesty. The apparatus does not announce a
+continuum merely because it can name many finite stages. It names a sequence
+of finite stages and a rule by which the stages relate. The rule matters as
+much as the stages. Without a refinement rule, the family would be a list of
+unrelated supports. With the rule, the family becomes a tower: a finite record
+at each level, and a visible passage from one level to the next.
+
+The passage from \(K_n\) to \(K_{n+1}\) should be read as a receipt-preserving
+event. What \(K_n\) made tangible for the apparatus remains available to
+\(K_{n+1}\), unless the next record explicitly marks a boundary where
+availability stops. This is how refinement differs from replacement. A
+replacement can abandon one support and begin again. A refinement carries the
+earlier support into a better-resolved stage. The tower therefore lets the
+apparatus compare residual reports across stages without smuggling in a hidden
+change of subject.
+
+That receipt-preserving structure also explains why the tower may speak about
+approximants. An approximant at stage \(n\) is not a ghost from an outside
+space. It is a name accepted by the stage support. A sequence of approximants
+is therefore a sequence of finite receipts, one per stage, not a single
+unbounded object disguised as notation. The tower makes those receipts
+fungible across refinement: each stage can pass its admitted information to
+the next stage while still remaining a finite stage.
+
+The word "completion" enters only under that discipline. A completion claim
+does not say that Chapter 7 has proved a completed analytic space. It says
+that the tower comes with a declared relation by which an approximating
+sequence may be accepted as converging to a limit name. The limit is not
+outside the declared completion, because the completion relation itself says
+how the approximants carried by the tower point to it. That is a membership
+sentence inside the declared relation, not an unqualified continuum theorem.
+
+This distinction protects the chapter boundary. The tower may prepare a door,
+but it does not walk through every room beyond it. Chapter 7 may say that a
+limit name belongs by declaration to the completion carried by the tower. It
+may not say that all finite geometry has become a completed analytic geometry,
+or that the later variational theory has already been established. Those are
+later questions. Here the completion relation serves one purpose: it prevents
+the limit from becoming a mysterious outside object while also
+preventing the prose from claiming more analysis than the finite apparatus has
+earned.
+
+Residuals now need a measured size language. A terminal residual may begin as
+an integer or a finite report attached to a stage trace, but convergence talk
+requires a magnitude. Let \(r_n(\eta)\) name the magnitude assigned at stage
+\(n\) to the residual tested by \(\eta\). The symbol \(\eta\) still denotes an
+admitted test; it does not range over every possible analytic perturbation.
+The magnitude language lets the apparatus compare residual size at different
+stages and ask whether the sizes become arbitrarily small under the admitted
+tolerance relation.
+
+The key assertion is the squeeze:
+\[
+  0 \le r_n(\eta) \le B_n(\eta),
+  \qquad
+  B_n(\eta)\to 0 .
+\]
+The lower inequality says that residual magnitude is measured as a nonnegative
+quantity. The upper inequality says that the residual at stage \(n\) never
+exceeds a bound \(B_n(\eta)\). The last clause says that this bound tends to
+zero along the tower. The apparatus therefore need not compute a separate
+limit for the residual. It can compare the residual to a vanishing bound and
+let the bound carry the limiting behavior.
+
+The consequence is the expected one:
+\[
+  r_n(\eta)\to 0 .
+\]
+This statement remains pointwise in the admitted test \(\eta\). It does not
+assert uniform control over every possible test, and it does not transform the
+finite tower into a completed continuum. It says that, for the test under
+discussion, the residual magnitude is squeezed below a bound that vanishes.
+The claim is strong enough to close the finite-support arc and modest enough
+to leave later analytic structure untouched.
+
+The bound may come from a density certificate. In ordinary mathematical
+language one might invoke a Weierstrass-style promise: a sufficiently rich
+family can approximate the target with a bound that shrinks. In this book that
+promise should be read as an admitted certificate, not as a theorem rederived
+inside the chapter. The certificate supplies \(B_n(\eta)\). Once the tower
+carries both the residual and the bound, the squeeze does the local work:
+residual below bound, bound to zero, residual to zero.
+
+The certificate has a precise burden. It does not need to tell the whole story
+of approximation. It needs to provide, for the admitted test, a bound that the
+residual magnitude can sit below and that the tower can make smaller beyond
+any accepted tolerance. Once that burden is met, the apparatus has enough to
+carry a finite limiting claim about residual magnitude. It does not need to
+identify a preferred analytic model, and it does not need to describe every
+possible way of refining the support. The finite tower and the bound do the
+work that this chapter needs.
+
+This also keeps the squeeze from becoming a metaphor without count. The
+display has three inspectable parts: nonnegative residual magnitude, residual
+below the bound, and a bound that vanishes along the tower. Remove any one of
+the three and the claim changes. Without nonnegativity, "size" loses its
+order. Without the upper bound, the residual no longer rides the certificate.
+Without the vanishing promise, the bound may control the residual while never
+forcing it down. The displayed inequality is therefore the grammar of the
+section, not an ornament.
+
+Two witness families can carry the same shape of argument. A B-spline witness
+and an FFT witness need not be the same basis. They do not erase basis choice,
+and they do not prove an all-bases theorem. They show that different admitted
+witness types may present the same residual grammar: a finite tower, a
+residual magnitude, a bound, and a vanishing promise for the bound. The public
+point is the shared shape of the certificate, not identity of the bases.
+
+This is why the section should avoid a stronger headline claim about basis
+neutrality. The apparatus has not surveyed every possible basis and found the
+same theorem waiting there. It has received witness types that can be
+translated into the same squeeze form. The witness matters. Basis choice still
+belongs to the record. What circulates across the witnesses is the grammar of
+the squeeze: if the residual lies below an admitted vanishing bound, the
+residual magnitude tends to zero along the finite tower.
+
+The stage trace connects this magnitude statement back to the terminal
+residuals from the earlier sections. The tower does not invent a second
+residual unrelated to the trace. It measures the terminal residual at stage
+\(n\):
+\[
+  r_n(\eta)
+  = \mu\!\left(r_{\mathrm{term},n}(\eta)\right),
+  \qquad
+  r_n(\eta)\to 0 .
+\]
+Here \(\mu\) denotes the magnitude reading of the terminal residual. The
+display says that the residual magnitude used in the squeeze is the measured
+size of the stage terminal residual. The terminal residual remains the same
+kind of finite report as before; the magnitude reading makes it comparable
+along the tower.
+
+The magnitude reading also prevents a category mistake. The terminal residual
+itself belongs to the finite trace: it is the report left at the end of a
+stage computation. The squeeze needs a magnitude because it compares sizes
+across stages and against a tolerance. The symbol \(\mu\) marks that passage
+from a terminal report to a size the tower can compare. It does not add a new
+residual, and it does not erase the finite origin of the report. It makes the
+terminal report tangible as a measured magnitude the tower can carry.
+
+Carried knots still have their sharper local statement:
+\[
+  \eta\in K_n
+  \quad\Longrightarrow\quad
+  r_{\mathrm{term},n}(\eta)=0 .
+\]
+If the test belongs to the stage support, the stage trace solves that
+terminal residual outright. This is stronger than smallness at that stage,
+but it is local to carried support. The squeeze statement handles residual
+size along the tower. The carried-knot statement handles exact terminal quiet
+where membership at the current stage has been earned. The two claims should
+not be merged.
+
+This separation keeps the chapter's residual doctrine clean. Membership in a
+stage support gives exact local quiet for the terminal residual named by that
+membership. A vanishing bound gives limiting smallness for residual magnitude
+along the tower. Declared completion says that the limit name is not outside
+the completion relation carried by the tower. These are three distinct
+sentences: local exactness, squeezed smallness, and declared completion
+membership. The book needs all three, but it should not let one pretend to be
+the others.
+
+The finite nature of the stages also remains visible after the limit language
+appears. At no point does the tower become a single infinite support that the
+apparatus reads all at once. It remains a sequence of finite supports. The
+limit statement speaks about behavior along the sequence. The completion
+relation records how the approximants point to a limit name. The support at
+stage \(n\) is still \(K_n\), and the residual statement at stage \(n\) still
+belongs to the tests admitted at that stage or measured against that stage's
+bound.
+
+The apparatus should therefore keep two temporal directions apart. Within one
+stage, the apparatus asks whether a supported test has terminal quiet. Along
+the tower, the apparatus asks whether residual magnitudes shrink under the
+admitted bound. The first direction is local and exact. The second direction
+is staged and limiting. The section needs both because a carried knot can be
+quiet at its stage while other admitted tests are controlled only by the
+vanishing bound. Refinement does not flatten those two questions into one.
+
+This is the final movement of Chapter 7's numbered arc. The chapter began by
+requiring finite support before measurement could say anything definite. It
+then counted the support, gave it finite coordinates, extracted local cubic
+equations, and ordered a current support by heartbeat choice. The present
+section adds one more operation: arrange finite supports into a refining
+tower and squeeze residual magnitude by an explicit vanishing bound. The
+apparatus can now speak about residual behavior along refinement without
+pretending that a single finite stage already contains the continuum.
+
+The boundary is equally important. Nothing in this section introduces an
+analytic completion theorem for the later variational theory. Nothing here
+says that all bases have disappeared, that all tests are controlled uniformly,
+or that the finite tower has become the full geometry of a completed space.
+The chapter closes with residual towers, not with the later theory of forms
+and completion. It has prepared a completion-facing door by tanging the finite
+records and funging their residual reports through an explicit squeeze, but it
+has not yet crossed into the later theory that studies what stands beyond that
+door.
+
+\section*{Bridge: Residual Towers Ask for the Invariant}
+
+Chapter 7 has earned a controlled remainder, not a governing measure of that
+remainder. Support gave measurement a finite field; coordinates tanged that
+field into named positions; local cubic equations made residual quiet
+inspectable at the middle names; heartbeat choice gave the current support a
+measured order of expenditure. The refining tower then funged those residual
+reports across stages: each supported record could pass its admitted
+information forward, and the terminal residual could be placed below a bound
+that tends to zero.
+
+That is real discipline. A nonnegative residual magnitude lies under an
+accepted vanishing bound, and the apparatus can say so without pretending that
+one finite support has become the whole continuum. The tower keeps the
+residual report honest: it names the supports, carries the maps between them,
+and records exactly where the squeeze applies. What it does not supply is the
+single quantity that interprets the remaining order-two pressure. A bound may
+force residual size downward while still leaving open what the residual presses
+against and why one reading should organize the next stage.
+
+The bridge out of the chapter is therefore not another support rule. Another
+coordinate convention would only add names. Another local selection event would
+only spend the current support again. The next demand has to gather residual
+pressure into one finite quantity without erasing the supports, coordinates,
+choices, and tower maps that made the pressure legible. It must preserve the
+discipline Chapter 7 earned while refusing to treat a collection of local
+reports as the invariant itself.
+
+The next chapter begins from that demand. It does not abandon finite support,
+and it does not smuggle in a completed analytic world behind the tower. It asks
+for the invariant that can measure the remaining order-two pressure while
+preserving the finite discipline just earned.
+
+\section*{Coda: The Bolt and the Fitting}
+
+A tailor cutting a suit from a single bolt of cloth performs this chapter's discipline with
+shears and chalk: a finite field worked in hand, named before it is cut, joined by local
+seams, spent by measured decisions, and squeezed toward an exact fit by successive fittings.
+The trade is the chapter, in wool.
+
+The bolt is the support, and it is finite. The tailor cuts the garment from the cloth on the
+table; there is no reaching outside the bolt for more cloth in the middle of the cut. What the
+bolt can yield is what the garment can be, and a tailor who has laid out the pieces knows
+before cutting which cuts the cloth admits. The field of possible pieces is fixed first, the
+order of cutting second --- support before order, because the cloth's capacity is settled
+before the sequence of shears begins. A cut is made because the bolt can yield it, not
+because the shears happened to reach that part of the table.
+
+The pattern is the field's names. Before cutting, the tailor chalks the pattern pieces onto
+the cloth --- the front, the back, the sleeve, the collar --- placing and labelling each on the
+finite field. The chalk gives the bolt coordinates: where each piece sits, how adjacent pieces
+face along the grain, which edges will meet. It does not pretend the bolt is endless; it names
+the positions the finite cloth actually offers. The garment is addressed on the cloth before a
+single thread is cut.
+
+The seams are the local equations. A seam is not a statement about the whole garment; it is a
+local condition where two named edges must match --- this edge to that edge, this dart taking
+in exactly this much at exactly this point. Each seam and each dart is an equation at a place,
+joining the named pieces locally, and the garment is articulate because its finite pieces
+carry these local conditions rather than merely lying side by side. The cloth, named and
+seamed, can carry the shape of a body the way the support, named and equationed, can carry the
+shape of a residual.
+
+The cutting is the measured selector. The tailor does not cut arbitrarily; each cut is chosen
+by a carried measure --- the customer's measurements, the fall of the grain, the cloth already
+spent --- spending the bolt deliberately and passing the remaining cloth forward. Where two
+cuts would serve, the tailor's measure decides between them, and where the cloth is tied the
+tailor leaves the choice visible for the fitting to settle. Selection spends the support by a
+finite cost, exactly as the apparatus spends its support by a carried measure rather than by
+whim.
+
+And the fittings are the squeeze. No suit is exact at the first cut. The tailor bastes a rough
+garment, fits it to the body, and reads the misfit --- a gap here, a pull there. Then the
+garment is taken in, fitted again, and the misfit is smaller; taken in once more, and smaller
+still. Each fitting is a stage in a refining tower, and the gap between the garment and the
+body is driven below any tolerance the tailor cares to name, not by reaching a Platonic
+perfect cloth but by a finite sequence of finite corrections. The suit is never the whole
+continuum of possible garments; it is one exact garment, squeezed to fit by successive finite
+fittings, with the residual misfit driven toward zero along the tower of corrections.
+
+That is the chapter on the cutting table. The bolt is the finite support; the chalked pattern
+is the field's coordinate names; the seams and darts are the local equations; the measured
+cuts are the selector spending the support; and the successive fittings are the squeeze that
+drives the misfit below any bound. The apparatus, like the tailor, works a finite field in
+hand --- naming it, seaming it, spending it by measure, and fitting it down to an exact
+residual --- and never once pretends the bolt is infinite or the fit is anything but earned.

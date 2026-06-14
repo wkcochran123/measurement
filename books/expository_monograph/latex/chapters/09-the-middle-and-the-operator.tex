@@ -1,0 +1,590 @@
+\chapter{The Middle and the Operator}
+
+Chapter 8 closed with a named invariant and three honest debts. The apparatus
+could point to the second variation, read it as the energy-squared diagonal of a
+positive-definite pairing, and certify that it vanished only on the trivial
+activity. What it could not do was compute the pairing by a fixed finite rule, it
+could not yet promise that the reading controlled the size of the activity rather
+than merely refusing to vanish, and it had deliberately left shut the door
+through which a quadratic reading becomes a length. Chapter 9 pays all three
+debts. It makes the invariant operational: it installs a concrete operator that
+reads it, earns the quantitative control a norm requires, and builds the doorframe
+through which a later geometry will pass.
+
+The chapter opens, though, with a question of confidence rather than
+construction. The previous chapter reached its invariant by two different routes:
+once through the language of a solved mixed coupling, and once through the
+language of a vanished second variation. The question is unavoidable:
+whether those are two results or one. The first section answers that they are one
+result with two proofs, and that the difference between the proofs is not a
+difference in truth but a difference in the work of arriving at it. The apparatus
+keeps a finite clock that times each route, and that clock measures only the
+computational residue of the two paths. The lesson is disciplinary and it governs
+the rest of the book: a measured difference in how long a derivation takes is a
+reading about the derivation, not about the proposition it establishes.
+
+From confidence the chapter turns to the object the operator will act on: the
+middle. A finite path carries a distinguished middle between its endpoints, and
+the second section insists on the right way to read it. The middle is not an
+independent truth the apparatus must separately justify. It is a value evaluated
+from the endpoints by a fixed rule, present because the endpoints are present, and
+unique because the rule is a function. If the middle changes, an endpoint
+changed. This is the modest but load-bearing fact that lets the operator treat the
+middle as a computed quantity rather than as a new and unexplained degree of
+freedom.
+
+With the middle understood as evaluated, the chapter installs the operator
+itself. Until now the positive-definite pairing of Chapter 8 had been exhibited on
+only a single trivial point; the cathedral was wired to one bulb. The third
+section replaces that point with a genuinely finite-dimensional configuration: a
+short chain of nodal values and an assembled operator that adds a mass term to a
+stiffness term. The mass term reads how large the activity is at each node; the
+stiffness term reads how much the activity changes from node to node. Together
+they give the first operator whose energy is not vacuously zero --- an operator a
+finite apparatus could actually run.
+
+The fourth section earns the chapter's hardest possession. The mass term makes
+coercivity cheap: when every node is penalized directly, no nontrivial activity
+can hide. But the physics the book is heading toward does not always supply a mass
+term, and the apparatus should know where coercivity comes from when it does not.
+So the chapter drops the mass and keeps only the stiffness. Stiffness alone is
+degenerate: an activity that is the same at every node changes nowhere and reads
+zero, so the constant mode survives. Coercivity must then come from the boundary,
+and it does. The loaded anchor of the previous chapter, which pinned one node to
+the trivial value, now does real quantitative work: it converts the first edge of
+the chain into a direct penalty, kills the constant mode, and restores a positive-
+definite reading. The section then proves that this is not a special accident of a
+short chain. A discrete Poincaré inequality shows that on a chain of any length,
+once one end is anchored, the stiffness energy controls the entire configuration:
+if no edge changes and the anchor is fixed, every node is fixed. Coercivity, in
+the finite apparatus, is the boundary doing work that the interior cannot do
+alone.
+
+The fifth section opens the door it has been naming since Chapter 8. A length
+requires a square root, and a square root requires an ordered field of
+coefficients with a root operation the apparatus does not itself possess. Rather
+than pretend to that field, the chapter names the interface such a field must
+provide --- an ordered carrier, an embedding of the finite readings, and a
+zero-detecting root --- and shows that any such field turns the energy-squared
+reading into a genuine norm that vanishes only on the trivial activity. The
+completion of the resulting space into a full geometry is marked as a slot, an
+import a later analytic library supplies, and the chapter declines to fill it. The
+door is built and left standing open; the apparatus does not walk through it until
+it is willing to name what lies on the other side.
+
+By the end of the chapter the invariant is no longer only named. It is computed by
+a concrete operator, controlled from below by the boundary, and fitted with a
+doorframe through which a real geometry can later be carried. The apparatus has
+turned a quantity it could point to into a quantity it can read, and it has done
+so without importing a single fact it has not built or honestly deferred.
+
+\section{One Theorem, Two Routes, One Finite Clock}
+
+The apparatus has reached one proposition by two roads, and it should say plainly
+that the destination is single even though the roads are two. The proposition is
+the one the previous chapters earned: on a supported variation whose remaining
+order-two term is silent, the coupled difference vanishes. Write that proposition
+once,
+\[
+  P : \quad D(v) = 0,
+\]
+and notice that the apparatus can establish it in two vocabularies. One route
+argues that the mixed coupling is solved; the other argues that the second
+variation has vanished. Each route ends at \(P\).
+
+These are not two theorems. They are two proofs of one theorem, and the
+distinction matters because a finite apparatus is tempted to mistake a change of
+language for a change of content. The earlier chapters showed that the mixed
+coupling and the second variation are the same quantity under two names. So an
+argument that the mixed coupling is solved and an argument that the second
+variation vanished assert the same fact about the same quantity. Once the
+proposition \(P\) is established, the route taken to it leaves no trace in the
+proposition. Two valid derivations of one proposition are interchangeable; the
+proposition does not remember which one produced it.
+
+What, then, distinguishes the routes? Only the work of walking them. Establishing
+\(P\) requires the apparatus to elaborate a derivation, and elaboration takes
+finite effort that the apparatus can measure. The apparatus keeps a finite clock
+for exactly this purpose. It times the elaboration of each route and records two
+readings, \(t_{\text{mixed}}\) and \(t_{\text{second}}\), and from them a single
+residue,
+\[
+  \rho = \lvert\, t_{\text{mixed}} - t_{\text{second}} \,\rvert.
+\]
+This residue is a reading about the derivations, not about \(P\). It says how
+differently the two routes elaborate, and nothing about whether \(P\) is true ---
+\(P\) was settled before the clock was consulted, and it is settled identically by
+either route.
+
+The clock's reading is then filed against the apparatus's own noise floor. The
+earlier chapters established that no finite reading is meaningful below a measured
+floor of irreducible variation. So the residue between the two routes admits
+exactly two verdicts:
+\[
+  \rho \le \text{floor}
+  \quad\text{(the routes are indistinguishable)},
+  \qquad
+  \text{floor} < \rho
+  \quad\text{(the routes are distinguishable)}.
+\]
+If the residue sits below the floor, the apparatus cannot tell the two routes
+apart by their cost; the difference, if any, is drowned in noise. If the residue
+rises above the floor, the apparatus has measured a genuine difference in the
+computational cost of the two routes. Either way, the verdict concerns cost. The
+truth of \(P\) is not on the ballot.
+
+This is the section's discipline, and it will recur whenever the book times a
+computation. A finite apparatus can measure how hard it worked, and that
+measurement is a legitimate reading --- it is itself a small act of measurement,
+with a quantity, a floor, and a verdict. But the apparatus must not let a reading
+about the cost of a derivation masquerade as a reading about the derived
+proposition. The clock detects path residue. It does not detect truth, and it is
+not allowed to vote on it.
+
+The metaphysical anchor of the section is the separation of result from route. A
+proposition the apparatus has established stands free of the labor that
+established it. The apparatus tanges the two derivations into two cost readings
+and funges those readings to its clock, where they become a residue it can judge
+against a floor. What survives that judgment is a fact about computation. The
+proposition itself, established once and the same by either route, is left exactly
+where the proofs found it: true, and indifferent to how it was reached.
+
+\section{The Middle as an Evaluated Value}
+
+The operator the chapter is about to install reads a path through its middle, so
+the apparatus must first be exact about what a middle is. A finite path carries a
+distinguished node between its endpoints, and the temptation is to treat that
+middle as a third independent thing the apparatus must justify on its own terms.
+The section refuses that temptation. The middle is a value evaluated from the
+endpoints, present because they are present and determined because they determine
+it.
+
+Write the middle as the value a fixed rule returns on the two endpoints,
+\[
+  b = \mathrm{middle}(a,c).
+\]
+Three properties fix its standing, and each is modest. The first is existence: the
+rule returns a value, so there is a middle to speak of,
+\[
+  \exists\, b,\quad b = \mathrm{middle}(a,c).
+\]
+This existence is not an axiom the apparatus assumes; it is the consequence of the
+rule being defined. Where the endpoints stand, the rule evaluates, and the
+evaluation is the witness. The middle exists because it is computed, not because
+the apparatus decided it should.
+
+The second property is uniqueness. The rule is a function, so it returns one
+value, and any value equal to the rule's output equals the middle:
+\[
+  b' = \mathrm{middle}(a,c) \;\Longrightarrow\; b' = b.
+\]
+There is no room for two competing middles between fixed endpoints. The middle is
+not a choice among candidates; it is the single value the rule assigns. This
+single-valuedness is what lets later sections speak of \emph{the} middle node of a
+path without ambiguity.
+
+The third property is the one that gives the middle its discipline, and it is best
+read as a contrapositive. Because the middle is a function of the endpoints, the
+middle cannot move on its own. If two situations present different middles, then
+they must have presented different endpoints:
+\[
+  \mathrm{middle}(a,c) \neq \mathrm{middle}(a',c')
+  \;\Longrightarrow\;
+  a \neq a' \ \text{ or }\ c \neq c'.
+\]
+A changed middle is evidence of a changed endpoint. The middle has no private
+freedom to drift; every change in it can be charged to a change upstream. This is
+exactly the property a measuring apparatus needs from any quantity it computes
+rather than observes: the computed quantity must be answerable to its inputs, so
+that a surprise in the output sends the apparatus to look at the inputs rather
+than at some unaccountable middle term.
+
+A small concrete instance keeps the rule from sounding abstract. Suppose the
+endpoints are the two truth values of the earlier chapters and the middle rule is
+their conjunction. Then the middle reads affirmative exactly when both endpoints
+do:
+\[
+  \mathrm{middle}(a,c) = a \wedge c,
+  \qquad
+  a = \text{true},\ c = \text{true}
+  \;\Longrightarrow\;
+  \mathrm{middle}(a,c) = \text{true}.
+\]
+The instance shows the general claim in miniature. The middle carries no
+information the endpoints did not supply; it reorganizes their information into a
+value at the middle node. Conjunction invents nothing; it reports a relation
+already present in its arguments.
+
+The point of insisting on all this is to forestall a confusion that would
+otherwise poison the operator. When the operator evaluates a path at its middle,
+it is not introducing a new truth into the record, and it is not adding a degree
+of freedom the boundary conditions failed to constrain. It is reading a value that
+the endpoints already determine. The middle is extra structure, but it is not
+extra truth. Everything the operator reports about the middle is, in the end, a
+reorganized report about the endpoints and the rule between them.
+
+The section's metaphysical anchor is that evaluation is not invention. The
+apparatus tanges the endpoints into a middle and funges that middle forward as a
+computed value, but it never lets the middle acquire a standing the endpoints did
+not give it. A middle that could drift independently would be a leak in the
+record, a place where unaccounted truth could enter. The apparatus closes that
+leak by construction: the middle exists because the endpoints do, is unique
+because the rule is a function, and changes only when an endpoint changes. The
+operator may now read the middle freely, knowing that every such read is a read of
+the endpoints in disguise.
+
+\section{Three-Rung Stiffness and Mass}
+
+The positive-definite pairing of Chapter 8 has so far been exhibited on a single
+trivial point, a configuration with one value and nothing to vary. That toy
+discharged every axiom vacuously and measured nothing. This section replaces it
+with the first genuinely finite configuration the apparatus can run: a short chain
+of three nodal values and a concrete operator assembled from two readings the
+apparatus already understands.
+
+Let an activity on the chain carry three values, one at each node,
+\[
+  x = (c_0, c_1, c_2).
+\]
+The apparatus reads such an activity two ways. The first reading is the mass. It
+reads how large the activity is at each node, summing the squared nodal values:
+\[
+  M(x,x) = c_0^{\,2} + c_1^{\,2} + c_2^{\,2}.
+\]
+The mass is the finite shadow of an \(L^2\) reading; it penalizes presence
+directly, node by node. The second reading is the stiffness. It ignores the
+absolute values and reads instead how much the activity changes across each edge
+of the chain, summing the squared edge differences:
+\[
+  S(x,x) = (c_1 - c_0)^{2} + (c_2 - c_1)^{2}.
+\]
+The stiffness is the finite shadow of a derivative-squared reading, the discrete
+form of a graph Laplacian over the two edges that join the three nodes. Where the
+mass asks how much is present, the stiffness asks how sharply it bends.
+
+The operator is the assembly of the two:
+\[
+  K(x,y) = M(x,y) + S(x,y),
+  \qquad
+  K(x,x) = M(x,x) + S(x,x).
+\]
+This \(K\) is the first concrete instance of the symmetric pairing the previous
+chapter studied abstractly. It is symmetric, because each of its two pieces pairs
+its arguments symmetrically; it is bilinear, because squaring distributes over the
+nodal sums and edge differences in the linear way the axioms require; and its
+diagonal is nonnegative, because it is a sum of squares:
+\[
+  K(x,x) = c_0^{\,2} + c_1^{\,2} + c_2^{\,2}
+           + (c_1 - c_0)^{2} + (c_2 - c_1)^{2}
+         \;\ge\; 0.
+\]
+Every property Chapter 8 asked of a pairing, this operator supplies by direct
+finite computation, not by stipulation.
+
+The operator is also coercive, and here the mass term does the work cheaply.
+Suppose the diagonal reading vanishes. A sum of squares is zero only when every
+square is zero, so in particular each nodal mass term vanishes:
+\[
+  K(x,x) = 0
+  \;\Longrightarrow\;
+  c_0^{\,2} = c_1^{\,2} = c_2^{\,2} = 0
+  \;\Longrightarrow\;
+  c_0 = c_1 = c_2 = 0
+  \;\Longrightarrow\;
+  x = 0.
+\]
+The mass term pins every node by itself. Because each nodal value is penalized
+directly, no nontrivial activity can escape the reading, and the stiffness is not
+even needed for detection. Coercivity, when a mass term is present, is almost
+free.
+
+What makes this operator worth installing is that its energy is not vacuously
+zero. Excite a single node and leave the others trivial. The activity
+\((1,0,0)\) carries one unit of mass at the first node and, because it changes
+across the first edge, one unit of stiffness there as well:
+\[
+  K\big((1,0,0),(1,0,0)\big)
+  = \underbrace{1}_{\text{mass}} + \underbrace{(0-1)^2}_{\text{stiffness}}
+  = 2.
+\]
+A nonzero activity carries nonzero energy. This single line is the difference
+between the trivial point of the previous chapter and a real operator: the
+apparatus now has a configuration in which the invariant takes a value it can
+report, two, rather than a configuration in which every reading collapses to
+nothing.
+
+The section's metaphysical anchor is that an operator is a reading made definite.
+The apparatus no longer speaks of a pairing in the abstract; it carries a fixed
+finite rule that takes an activity and returns a number by adding a mass reading
+to a stiffness reading. The apparatus tanges the activity into those two finite
+sums and funges their total forward as the energy of the activity. The cathedral
+of Chapter 8 finally has more than one point of light: a concrete operator that
+detects presence, penalizes bending, and returns an honest nonzero reading on an
+honest nonzero activity.
+
+\section{Anchor-Earned Coercivity and the Discrete Poincaré Inequality}
+
+The previous section bought coercivity with a mass term, and the bargain was so
+easy that it hid where coercivity really comes from. The physics this book is
+approaching does not always hand the apparatus a mass term; sometimes the only
+reading available is the stiffness. So the apparatus should learn to earn
+coercivity without the mass, and this section shows that the boundary, not the
+interior, is where it is earned.
+
+Drop the mass and keep only the stiffness:
+\[
+  K(x,x) = S(x,x) = (c_1 - c_0)^{2} + (c_2 - c_1)^{2}.
+\]
+Stiffness alone is degenerate. It reads only changes, and an activity that is the
+same at every node changes nowhere. Take the constant activity \((t,t,t)\): each
+edge difference is zero, so the reading is zero, yet the activity is not trivial
+when \(t \neq 0\):
+\[
+  S\big((t,t,t),(t,t,t)\big)
+  = (t-t)^2 + (t-t)^2 = 0,
+  \qquad (t,t,t) \neq 0.
+\]
+The constant mode sits in the nullspace of the stiffness. The reading is positive
+\emph{semi}-definite --- never negative, but able to vanish on something
+nontrivial --- and a semidefinite reading is not a detector. Coercivity has been
+lost with the mass, and it must be recovered from somewhere else.
+
+It is recovered at the boundary. The loaded anchor of the previous chapter pinned
+one boundary node to the trivial value; let that node be the first,
+\[
+  c_0 = 0
+  \qquad (\text{the loaded anchor}).
+\]
+The pin does something quantitative, not merely symbolic. The first edge
+difference \((c_1 - c_0)^2\) becomes \(c_1^{\,2}\), a direct penalty on the first
+free node where before there was only a difference. The anchored stiffness reads
+\[
+  S(x,x) = c_1^{\,2} + (c_2 - c_1)^{2},
+\]
+and this reading detects. If it vanishes, the first square forces \(c_1 = 0\), and
+then the second forces \(c_2 = c_1 = 0\):
+\[
+  S(x,x) = 0
+  \;\Longrightarrow\;
+  c_1 = 0 \ \text{and}\ c_2 - c_1 = 0
+  \;\Longrightarrow\;
+  x = 0.
+\]
+The constant mode is dead. It died not because the interior reading changed --- the
+stiffness still only reads differences --- but because the boundary supplied the
+one absolute value the interior could not. Coercivity has been earned by the
+anchor.
+
+This is not an accident of a three-node chain, and the apparatus proves so by
+generalizing to a chain of any length. Let an activity carry values
+\(x_0, x_1, \ldots, x_n\) along a chain of stages, and read its stiffness energy as
+the sum of squared edge differences:
+\[
+  E(x) = \sum_{k=0}^{n-1} (x_{k+1} - x_k)^{2}.
+\]
+Anchor one end, \(x_0 = 0\). The discrete Poincaré inequality is the statement that
+this anchored energy controls the entire configuration:
+\[
+  x_0 = 0
+  \ \text{ and }\
+  E(x) = 0
+  \;\Longrightarrow\;
+  x_k = 0
+  \ \text{ for every } k.
+\]
+The proof is a walk down the chain. If the total energy is zero, every edge
+difference is zero, so each stage equals the one before it: \(x_{k+1} = x_k\). The
+anchor fixes the first stage at the trivial value, and equality then propagates
+that value to the second stage, the second to the third, and onward to the end.
+One pin at one end, carried by the vanishing of every edge, fixes the whole chain.
+The three-rung anchored operator is simply the shortest instance of this result,
+the case \(n = 2\) with stages \((0, c_1, c_2)\).
+
+The discrete Poincaré inequality is the chapter's quantitative heart, because it
+upgrades detection to control. Positive-definiteness said only that a nontrivial
+activity reads nonzero. The Poincaré statement says more: the stiffness energy is
+large enough to pin down the whole configuration, so that zero energy forces not
+just nontriviality somewhere but triviality everywhere. This is the difference
+between a reading that refuses to vanish and a reading that controls its argument,
+and it is the property a genuine norm will require.
+
+The operator earned this way also takes its place in the residual tower of the
+earlier chapters. Plug the concrete anchored operator into the tower, and on
+supported data the terminal residual is zero; the operator's energy reads that
+residual, so the energy is zero; and by the coercivity just earned, the activity
+that carried it is the trivial activity. The squeeze of Chapter 7 then drives this
+finite energy toward zero across the refinement stages, not as an analytic limit
+imported from outside but as a finite reading falling under a bound the apparatus
+already holds. The operator does not merely exist; it reads the tower the book has
+been building, and the tower drives its energy down.
+
+The section's metaphysical anchor is that coercivity is boundary work. The
+interior of a finite apparatus reads change and is blind to a uniform offset; left
+to itself it can only be semidefinite. The boundary reads an absolute value, and
+through the connected chain that single absolute read propagates into control of
+every node. The apparatus tanges each edge into a squared change and funges the
+anchor's pin down the chain until the whole configuration is determined. What the
+interior cannot detect alone, the boundary makes detectable everywhere; coercivity
+is the name of that transfer.
+
+\section{The Square-Root Door}
+
+The apparatus now reads an energy, and the reading is coercive: it controls the
+whole configuration. What the apparatus still cannot do is convert that reading
+into a length. A length is the square root of an energy, and the apparatus carries
+no field of coefficients in which a square root lives. Rather than counterfeit one,
+this section names the door a genuine length must come through, builds its frame,
+and leaves it standing open.
+
+Name the interface a real, or Hilbert, coefficient field must provide. The
+apparatus does not need the whole of real analysis to state what it would consume:
+it needs an ordered carrier of coefficients, a way to embed its finite readings
+into that carrier, and a square root that detects zero. Call such a package a scale
+field. Its contract is small:
+\[
+  \mathrm{ofNat} : \mathbb{N} \to R,
+  \qquad
+  \sqrt{\,\cdot\,} : R \to R,
+  \qquad
+  \sqrt{0} = 0,
+  \qquad
+  \sqrt{v} = 0 \Rightarrow v = 0.
+\]
+The embedding carries the apparatus's finite, counting-valued energy into the
+richer carrier; the root operation is whatever that carrier supplies; and the only
+behavior the apparatus demands of the root is that it vanish exactly at zero.
+
+From this interface and the energy-squared reading, the induced length follows at
+once:
+\[
+  \lVert x \rVert \;=\; \sqrt{\,\mathrm{ofNat}\big(E^2(x)\big)\,}.
+\]
+And it detects zero exactly, inheriting the positive-definiteness the chapter
+already earned. A length of zero forces the embedded energy to zero, which forces
+the energy itself to zero, which --- by coercivity --- forces the trivial activity:
+\[
+  \lVert x \rVert = 0
+  \;\Longleftrightarrow\;
+  E^2(x) = 0
+  \;\Longleftrightarrow\;
+  x = 0.
+\]
+This is the square-root face of everything the previous sections built. The norm is
+not a new assumption; it is the old energy reading viewed through a root the scale
+field supplies.
+
+Two cautions keep the door honest. First, the completion of the normed activities
+into a full geometry --- the metric closure that would make the space a Hilbert
+space --- is not performed here. It is named as a slot, the place where a later
+analytic library imports completeness, and the chapter marks the slot rather than
+filling it. Second, the apparatus checks that the door is not vacuous by exhibiting
+the most degenerate scale field of all: take the carrier to be the counting numbers
+themselves and the root to be the identity. Then the induced length is exactly the
+energy-squared reading the apparatus already had. The degenerate instance proves
+the doorframe is inhabitable --- something passes through it --- while making plain
+that the genuine geometry, with its real square root, its triangle comparison, its
+Cauchy completeness, and its inner product, is still a future import.
+
+The section's metaphysical anchor is that an apparatus may name what it does not
+own. The energy-squared reading is finished and finite; the length is deferred and
+honest about its deferral. The apparatus tanges the energy into an embedded
+coefficient and funges it toward a square root it does not itself compute, handing
+the would-be geometry a faithful certificate: a positive-definite, coercive,
+zero-detecting energy that any real scale field can turn into a length. The door is
+built and the door is open. The apparatus declines to walk through it until a later
+chapter is ready to name the continuum on the far side.
+
+\section*{Bridge: An Operator That Has Not Yet Recorded}
+
+The chapter set out to make the invariant operational, and it has. The apparatus
+now carries a concrete finite operator that reads the second variation as an
+energy; the operator is coercive, controlling the whole configuration once the
+boundary is anchored; and a doorframe stands ready to turn that energy into a
+length the moment a scale field is supplied. The instrument is built, calibrated,
+and waiting. What it has not yet done is write anything down.
+
+There is a difference between an instrument that can read and an instrument that
+has produced a record, and the difference is the whole of the next chapter. So far
+the operator has been exercised on activities the apparatus chose for
+illustration --- a single excited node, a constant mode, an anchored chain. It has
+not yet been bundled with a substrate, a boundary, and a source into a single
+object that the apparatus can run against the world and from which a nontrivial
+finite ledger entry falls out. The reading has not yet become a record.
+
+The gap is sharper than it sounds. A record is not merely a reading the apparatus
+happens to remember. It is a reading whose verdict depends on the apparatus that
+took it, so that the same configuration can read one way for one anchored
+apparatus and another way for a differently anchored one. That apparatus-relative
+verdict is what turns an energy reading into a physical line: a statement that a
+mode is present here and absent there, certified by the instrument that carried
+the boundary. Until the operator is assembled into such an instrument, it remains a
+reader without a ledger.
+
+So the next chapter builds the kernel. It bundles the energy, the boundary anchor,
+the substrate, and the source into one finite object, grounds it on the class
+ladder the earlier chapters left standing, and writes the first physical record ---
+the first line in which measurement says something that is true relative to one
+apparatus and not another. The question the apparatus carries forward is no longer
+how to read the invariant, but how to make the reading into a record: what does it
+take for a finite operator to write a line that the world, and not only the
+apparatus, must answer to?
+
+\section*{Coda: The Surveyor's Benchmark}
+
+A survey crew running levels across a building site performs, with a tripod and a
+graduated staff, the same arc this chapter performed with an operator and an
+anchor. Watching the crew makes the chapter's logic concrete, because every
+abstract move has a tool that does it.
+
+The instrument on the tripod does not read elevations. It reads differences. The
+surveyor sights the staff held at one stake, then at the next, and records how
+much higher or lower the second stands relative to the first. Stake by stake, the
+crew accumulates a chain of differences along the site. If they wish a single
+number for how far from level the ground runs, they can sum the squared
+differences across all the adjacent stakes; that squared sum is an out-of-level
+energy, large where the site heaves and falls, zero only where every adjacent pair
+agrees. This is the stiffness reading exactly: a sum of squared edge differences
+that asks not how high the ground is but how sharply it changes from one stake to
+the next.
+
+The trouble with differences is that they leave the whole site free to float. A
+chain of perfectly consistent differences fixes the shape of the ground but not its
+height; the entire site could be lifted or dropped together and every difference
+would read the same. The crew that knew only differences would know the site's
+relief perfectly and its elevation not at all. That floating freedom is the
+constant mode, the uniform shift the difference reading cannot see, the nullspace
+the chapter found in the bare stiffness.
+
+The remedy is the benchmark. Somewhere on or near the site sits a survey monument
+of known, fixed elevation --- a brass disk set in concrete, an official mark the
+crew did not choose and may not move. The surveyor ties the chain of differences to
+that one benchmark, and the whole site snaps into place. Every stake now has an
+elevation, because every stake stands a known sum of differences away from a stake
+of known height. One fixed mark, carried along the chain of differences, determines
+the elevation of the entire site. That is the loaded anchor doing quantitative work,
+and the determination it produces is the discrete Poincaré inequality made of dirt
+and brass: if no adjacent pair differs and the benchmark is fixed, every stake sits
+at the benchmark's height, and more generally the differences plus the one anchor
+fix all the heights at once.
+
+What deserves attention is everything the crew did without ever consulting a
+national datum. They read differences with a level, summed squared differences for
+an out-of-level energy, identified the floating freedom, pinned it with a single
+benchmark, and propagated that pin into a determined elevation at every stake ---
+all in the local, relative coordinates the instrument naturally provides. Only at
+the end, and only if the job requires it, does the crew convert their determined
+local elevations into absolute heights above sea level on the official datum. That
+conversion is the square root and the calibrated field: a real scale, externally
+supplied, that turns the crew's internally consistent determination into a number
+the wider world recognizes. The crew can build the entire determined surface and
+defer the datum indefinitely; the determination is theirs, the datum is borrowed.
+
+That deferral is the coda's point and the chapter's. The apparatus, like the crew,
+reads differences, sums them into an energy, finds the floating mode, kills it with
+one anchor, and propagates the anchor into control of the whole configuration ---
+all before it owns a length. The operator is the level; the benchmark is the loaded
+anchor; the determined site is the coercive, Poincaré-controlled configuration; and
+the national datum, the absolute scale that turns relative determination into
+recognized elevation, is the square-root door the chapter built and left standing
+open. The crew does not wait for the datum to do their work, and neither does the
+apparatus.

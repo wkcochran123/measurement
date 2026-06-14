@@ -1,0 +1,351 @@
+\chapter{Stationarity}
+
+A route need not run straight from a claim to its close. It may pass through a middle: the apparatus reads a claim at a start $a$, marks an intermediate stage $b$, and carries the same claim onward to an end $c$. Chapter 5 closed a route into a report; this chapter studies a route that bends through a middle and asks two questions about that middle. What does it cost, and what happens to the account when it moves?
+
+The apparatus answers in counts. To each ordered pair of marks $(x,y)$ it assigns a finite segment cost
+\[
+  w(x,y) \in \mathbb{N},
+\]
+the reckoned burden of carrying the claim from $x$ to $y$. A route from $a$ to $c$ then admits two readings: the direct reading $w(a,c)$, which bills the single segment, and the composed reading
+\[
+  S(b) = w(a,b) + w(b,c),
+\]
+which bills the two segments the detour through $b$ traverses. The instrument tanges each reading -- it fixes the route, with its marked middle, into a held cost the next stage can inspect.
+
+The middle $b$ is a coordinate the apparatus introduced, not a feature of the claim, and whether that coordinate matters is the subject of the chapter. A middle is a \emph{gauge} direction in the finite sense used here: a coordinate the route carries but the account may or may not read. When the account cannot read it at all, the middle is \emph{pure gauge}. The full geometry of gauge -- how such redundant directions generate structure -- is developed in Chapter 13; in this chapter \emph{gauge} means only a direction the cost may be blind to. This first section names three conditions on the middle and the one law that always relates them.
+
+\section{The Transparent Middle}
+
+Fix a start $a$ and an end $c$, and route the claim through a middle $b$. Three properties of the middle organize the chapter, and they are genuinely distinct.
+
+The middle is \emph{admissible}, or transparent, when the composed reading equals the direct reading:
+\[
+  w(a,c) = w(a,b) + w(b,c).
+\]
+This is the finite triangle relation written as an equality rather than the familiar inequality. A transparent middle bills exactly the through-fare: the detour through $b$ costs what the direct route costs, so the apparatus may record $b$ without changing what the route claims to cost. The carried claim passes through the middle and arrives with the same receipt it would have carried directly. Whenever the cost never rewards a detour, the inequality $w(a,c) \le w(a,b) + w(b,c)$ holds for every middle; admissibility is the sharp case in which the detour neither saves nor wastes, and that inequality closes to an equality.
+
+The middle is \emph{stationary} when no alternative is cheaper:
+\[
+  S(b) \le S(b') \qquad \text{for every alternative middle } b',
+\]
+that is, $w(a,b) + w(b,c) \le w(a,b') + w(b',c)$ for all $b'$. A stationary middle minimizes the composed cost: among every way the apparatus could route the claim through one intermediate mark, $b$ spends the least. Stationarity weighs $b$ only against its alternatives; it says nothing about the direct reading, and a stationary middle may still bill more than $w(a,c)$ when no detour is as cheap as the through-route.
+
+The middle is \emph{flat}, or pure gauge, when the composed cost does not depend on it at all:
+\[
+  S(b') = S(b) \qquad \text{for every middle } b'.
+\]
+A flat middle is one the account cannot read. The apparatus carries $b$ in the record, yet the cost it keeps reads the same wherever the middle is placed; no movement of $b$ registers in the count.
+
+These three conditions are not interchangeable, and the section's law states the one implication that always holds: a flat middle is stationary. The argument is immediate. If $S(b') = S(b)$ for every $b'$, then in particular
+\[
+  S(b) \le S(b') \qquad \text{for every } b',
+\]
+since a count is never greater than itself. Flatness is the stronger condition: it forces stationarity but says more. A stationary middle sits at the bottom of the composed cost; a flat middle stands on level ground, with no bottom to distinguish it. The converse fails -- a strict minimizer is stationary without being flat -- so the two conditions must be held apart.
+
+The condition the chapter carries forward joins transparency to flatness. Call the middle \emph{closed-flat} when it is both admissible and flat:
+\[
+  \text{closed-flat}
+  \;\equiv\;
+  \bigl(\, w(a,c) = w(a,b) + w(b,c) \,\bigr)
+  \;\wedge\;
+  \bigl(\, S(b') = S(b) \ \text{for all } b' \,\bigr).
+\]
+A closed-flat middle is transparent and pure gauge at once: it adds nothing to the direct account, and it can be moved anywhere without disturbing the composed account. The residue that closes the chapter is stated for closed-flat middles, because a clean close needs both -- a middle that costs nothing extra and a middle the account cannot feel.
+
+\section{The Exact First Variation}
+
+The previous section compared one middle with all its alternatives. This section writes that comparison as a signed difference. Keep the start $a$ and the end $c$ fixed, let the route pass first through $b$, and then try another middle $b'$. The apparatus does not change the claim or the endpoints. It changes only the middle mark and asks how the composed reading changes.
+
+The change has two faces. On the left side of the middle, replacing $b$ by $b'$ changes the incoming segment by
+\[
+  \delta_L(b,b') = w(a,b') - w(a,b) \in \mathbb{Z}.
+\]
+On the right side, the same replacement changes the outgoing segment by
+\[
+  \delta_R(b,b') = w(b',c) - w(b,c) \in \mathbb{Z}.
+\]
+The segment costs themselves live in $\mathbb{N}$, but a comparison of two costs needs signs. A replacement can increase the incoming bill, decrease it, or leave it alone; the same holds on the outgoing side. The signed integers record that direction without pretending that a negative cost has appeared. They measure the change in the bill, not the bill itself.
+
+The first variation of the composed reading adds the two boundary differences:
+\[
+  \delta S(b,b') = \delta_L(b,b') + \delta_R(b,b').
+\]
+Expanding the definitions gives the identity that drives the chapter:
+\[
+\begin{aligned}
+  \delta S(b,b')
+    &= \bigl(w(a,b') - w(a,b)\bigr)
+       + \bigl(w(b',c) - w(b,c)\bigr) \\
+    &= \bigl(w(a,b') + w(b',c)\bigr)
+       - \bigl(w(a,b) + w(b,c)\bigr) \\
+    &= S(b') - S(b).
+\end{aligned}
+\]
+Nothing remains outside this line. The finite first variation is not an approximation to the composed difference; it is the composed difference. If one writes a remainder
+\[
+  R(b,b') = S(b') - S(b) - \delta S(b,b'),
+\]
+then the calculation above gives
+\[
+  R(b,b') = 0
+  \qquad \text{for every alternative middle } b'.
+\]
+This is the finite gift. In the continuum, a derivative usually enters through a limiting Taylor expansion, and the higher-order tail must be estimated, bounded, or made to vanish by a limiting argument. Here the apparatus compares two finite routes directly. The whole change fits into the two boundary faces, so the remainder does not become small. It vanishes exactly.
+
+The same computation can be read as a linearization with no loss. From the base middle $b$, define
+\[
+  L_b(b') = \delta_L(b,b') + \delta_R(b,b').
+\]
+Then every allowed replacement of the middle satisfies
+\[
+  S(b') = S(b) + L_b(b').
+\]
+The symbol $L_b$ does not introduce a hidden vector space; it names the signed boundary account taken from the chosen base middle. The equation says that the finite apparatus already has the whole first-order account in hand. No small parameter, neighborhood, or limiting process decides whether the approximation is trustworthy. Once the two segment counts exist, the signed boundary account exactly reconstructs the varied composed reading.
+
+This exactness also separates two tests that ordinary language easily conflates. The stationary condition from the previous section says that $b$ minimizes the composed reading:
+\[
+  S(b) \le S(b') \qquad \text{for every } b'.
+\]
+Using the identity above, the same condition says
+\[
+  \delta S(b,b') \ge 0 \qquad \text{for every } b'.
+\]
+No allowed variation lowers the cost. Some variations may raise it; a strict minimum does exactly that for at least one alternative. Stationarity therefore speaks in an inequality.
+
+Flatness speaks in an equality:
+\[
+  \delta S(b,b') = 0 \qquad \text{for every } b'.
+\]
+Because $\delta S(b,b') = S(b') - S(b)$, this equality says precisely that every alternative middle carries the same composed cost. Flatness is the pure-gauge case: the account carries the middle but cannot read it. It implies stationarity because zero is nonnegative, but it does more than stationarity. A stationary middle may sit at a bottom; a flat middle erases the bottom by making the whole floor level.
+
+The apparatus now has a first-order detector. It does not need an ambient tangent space, an infinitesimal displacement, or a hidden continuum limit. It takes one held route, varies the middle to another held route, and tanges the signed difference into a receipt. The receipt has two boundary faces, left and right, and their sum is the whole change. When that sum never goes negative, the middle is stationary. When that sum always vanishes, the middle is flat. The next section turns this exact first variation into the balance law at the middle: the two faces must meet as one finite residual.
+
+\section{Balance at the Middle}
+
+The exact first variation gives the account a local test at the middle. The left boundary contributes one signed change, the right boundary contributes another, and the middle balances only when those two contributions cancel. Write
+\[
+  r_1(b,b') =
+  \delta_L(b,b') + \delta_R(b,b')
+  =
+  \delta S(b,b').
+\]
+This number is the first residual of the middle. It measures how much signed cost remains after the incoming and outgoing changes meet. If the left boundary gains what the right boundary loses, or the right boundary gains what the left boundary loses, the two faces close to zero. If their sum does not vanish, the middle has left a first-order trace in the account.
+
+The Euler-Lagrange balance condition is therefore
+\[
+  r_1(b,b') = 0
+  \qquad \text{for every allowed alternative middle } b'.
+\]
+This is not the same statement as the minimizer condition from the first section. The minimizer condition says
+\[
+  \delta S(b,b') \ge 0
+  \qquad \text{for every } b',
+\]
+so no replacement lowers the composed cost. The balance condition says
+\[
+  \delta S(b,b') = 0
+  \qquad \text{for every } b',
+\]
+so every replacement leaves the first variation quiet. A strict minimum may allow positive variations away from $b$; balance forbids even those. The chapter uses \emph{stationary} for the minimizer when the account compares costs, and it uses \emph{balance} or \emph{first-order quiet} for the equality condition at the middle. The distinction keeps the finite calculus honest.
+
+The distinction also fixes the role of the two boundary faces. A minimizer reads the whole composed bill and asks whether any other middle lowers it. It may win that comparison by sitting at the bottom of a shaped cost landscape. Balance asks a sharper question: after the apparatus splits the signed change into left and right contributions, does anything remain at the middle? The answer is local in the finite sense of this chapter. The left and right differences are still computed from complete segment costs, but once they have been computed, their sum is the entire first-order record. No hidden remainder can rescue a nonzero $r_1$, and no limiting argument must be invoked before the apparatus may trust a zero one.
+
+Thus $r_1$ names the middle's first-order residue. It is positive when the replacement raises the composed reading, negative when the replacement lowers it, and zero when the left and right changes cancel exactly. If $r_1(b,b')$ vanishes for every allowed $b'$, the middle has no first-order preference among alternatives. The account can still ask a second question: even if the middle balances against its alternatives, did the route through $b$ cost the same as the direct route from $a$ to $c$? That second question belongs to the direct channel, not to the Euler-Lagrange channel.
+
+The middle also has a direct residual, independent of variation. It compares the direct route with the composed route:
+\[
+  r_0(b) = w(a,c) - S(b).
+\]
+Transparency, or admissibility, is exactly the vanishing of this residual:
+\[
+  r_0(b) = 0.
+\]
+When $r_0(b)$ vanishes, the detour through $b$ bills the same cost as the direct route. When it does not vanish, the middle may still minimize the composed cost among alternatives, but it has not disappeared from the direct account. The apparatus can then say where the failure lives: the middle may fail at the direct channel, at the first-order channel, or at both.
+
+The two-channel detector combines them:
+\[
+  R_{\mathrm{tot}}(b,b') = r_0(b) + r_1(b,b').
+\]
+This total residual does not erase the difference between the channels. It places them in one report. The first term asks whether the detour costs the same as the direct route. The second term asks whether moving the middle leaves the first variation quiet. A total quiet condition requires both:
+\[
+  r_0(b)=0
+  \qquad\text{and}\qquad
+  r_1(b,b')=0
+  \quad \text{for every } b'.
+\]
+Under those two equations, the total residual vanishes:
+\[
+  R_{\mathrm{tot}}(b,b') = 0
+  \qquad \text{for every } b'.
+\]
+
+Closed-flat middles make exactly this happen. Closed-flat means admissible and flat. Admissibility gives $r_0(b)=0$. Flatness gives $S(b')=S(b)$ for every middle $b'$, and the exact first-variation identity then gives
+\[
+  r_1(b,b') = \delta S(b,b') = S(b')-S(b)=0
+  \qquad \text{for every } b'.
+\]
+Both detectors go quiet. The direct/composed residual vanishes, and the middle-balance residual vanishes. The apparatus does not merely declare the middle harmless; it records the two equations that make the claim inspectable.
+
+This two-channel form is the reason the balance law can travel through the rest of the chapter. The instrument makes an abstract equality tangible by placing it in two inspectable registers. The first register holds the transparency question, $r_0(b)=0$. The second register holds the balance question, $r_1(b,b')=0$ for every allowed replacement. Once those registers exist, the result becomes fungible: later sections can read it as a direct/composed comparison, as a first-order cancellation, or as a total residual without changing the underlying account. The formula
+\[
+  R_{\mathrm{tot}}(b,b') = r_0(b) + r_1(b,b')
+\]
+therefore does not blur the channels. It packages them so the same held record can circulate through several equivalent readings.
+
+If both answers return zero, the record can pass forward as a residue-free stationarity datum in the broad sense of the chapter: transparent to the direct route and first-order quiet at the middle. If either channel returns a nonzero value, the apparatus has not failed; it has located the residue. A nonzero $r_0$ says the detour still differs from the direct bill. A nonzero $r_1$ says the middle still leaves a first-order trace under some allowed replacement. The next section uses that location to name why the same residual can be read in more than one way without changing the underlying account.
+
+\section{One Residual, Three Names}
+
+The previous section separated the direct channel from the first-order channel. The first-order channel now receives two further readings. Start with the middle-balance residual
+\[
+  r_1(b,b') = \delta_L(b,b') + \delta_R(b,b').
+\]
+The same signed number can be read as the residual of a spline closure. Write
+\[
+  r_{\mathrm{spline}}(b,b') = r_1(b,b').
+\]
+This equation does not introduce a new failure. It gives the same failure another name. The spline reading asks whether the finite record closes when the middle and its variation are treated as adjacent knots in an account of bending and return. If the residual is nonzero, the closure still carries a visible kink. If the residual is zero for every allowed $b'$, the spline account has no first-order gap at the middle.
+
+The tridiagonal solver reading gives the same residual a computational certificate. Write
+\[
+  r_{\mathrm{tri}}(b,b')
+  =
+  r_{\mathrm{spline}}(b,b')
+  =
+  r_1(b,b').
+\]
+Here ``tridiagonal'' names a finite three-neighbor account: previous, current, and next entries carry enough information for the solver certificate to report its residual. The solver does not manufacture balance. It consumes a finite trace whose terminal residual has been solved and identifies that terminal residual with the same residual already present in the gauge and spline readings.
+
+The word ``certificate'' matters. The apparatus does not watch an infinite process approach a limit. It receives a finite record with three pieces of information: the tridiagonal residual it has solved, the spline residual it claims to match, and the equality that identifies the spline residual with the middle-balance residual. Each piece remains inspectable. The solved trace says zero. The matching equation says the solver residual and the spline residual name the same signed count. The spline-gauge equation says the spline residual and $r_1$ name the same signed count. Chaining those equalities gives the collapse.
+
+A completed certificate therefore supplies
+\[
+  r_{\mathrm{tri}}(b,b') = 0
+  \qquad \text{for every allowed } b'.
+\]
+Using the residual identifications, the same statement gives
+\[
+  r_{\mathrm{spline}}(b,b') = 0
+  \qquad\text{and}\qquad
+  r_1(b,b') = 0
+  \qquad \text{for every allowed } b'.
+\]
+The implication runs through equality of records, not through an analytic convergence theorem. The finite certificate already contains the solved terminal residual. Once the apparatus knows that the tridiagonal residual and the spline residual are the same signed account, zero in one name is zero in the others.
+
+This keeps the solver in its proper station. It does not assert that every Lanczos-style procedure converges, or that an arbitrary iteration must eventually find the middle's balance. It asserts a conditional fact about a completed finite witness. If the witness supplies the solved tridiagonal residual and the required residual identifications, then the first-order channel has gone quiet. The force lies in the carried equalities, not in a promise about all possible computations.
+
+This is the point of the three names. In the Euler-Lagrange reading, the residual says whether the left and right boundary changes cancel at the middle. In the spline reading, it says whether the finite closure has a first-order gap. In the tridiagonal reading, it says whether the completed solver trace has a terminal leftover. The names differ because the instrument asks three questions. The count does not differ:
+\[
+  r_{\mathrm{tri}}(b,b')
+  =
+  r_{\mathrm{spline}}(b,b')
+  =
+  r_1(b,b').
+\]
+One tangible residual can circulate through all three readings without losing its value.
+
+The direct residual remains outside this identification. It still reads
+\[
+  r_0(b) = w(a,c) - S(b),
+\]
+and transparency still means
+\[
+  r_0(b)=0.
+\]
+The tridiagonal certificate solves the first-order channel. It does not by itself say that the detour through $b$ costs the same as the direct route. When admissibility supplies $r_0(b)=0$ as well, the two-channel report closes:
+\[
+  R_{\mathrm{tot}}(b,b')
+    =
+    r_0(b) + r_1(b,b')
+    =
+    0
+  \qquad \text{for every allowed } b'.
+\]
+Then the residue closes to zero, because the direct channel and the first-order channel have both gone quiet.
+
+This separation prevents a common overread. The first-order certificate can make the middle balanced without making the route transparent. A route may have no first-order gap under variations of the middle and still bill more, or less, than the direct route. The direct/composed account must therefore remain visible. Only when $r_0$ also vanishes does the total residual vanish. The solver certificate contributes the first-order quiet; admissibility contributes the direct quiet.
+
+Closed-flat gives one canonical source of this situation. If the middle is admissible and flat, the direct residual vanishes and the first-order residual vanishes for every allowed replacement. The spline and tridiagonal names then inherit the same zero by identification:
+\[
+  r_{\mathrm{tri}}(b,b')
+  =
+  r_{\mathrm{spline}}(b,b')
+  =
+  r_1(b,b')
+  =
+  0.
+\]
+But the section does not need closed-flat as its only route. Its central claim is residual identification: once a finite certificate identifies its tridiagonal terminal residual with the spline residual, and the spline residual with the Euler-Lagrange residual, a solved trace is enough to make the first-order channel quiet.
+
+The truth-terminal case gives the compact grounding example. If every segment cost is zero, then
+\[
+  w(x,y)=0
+  \qquad \text{for all } x,y.
+\]
+Every route is admissible, every composed reading is flat, and every allowed middle is closed-flat. Therefore
+\[
+  r_0(b)=0,
+  \qquad
+  r_1(b,b')=0,
+  \qquad
+  r_{\mathrm{spline}}(b,b')=0,
+  \qquad
+  r_{\mathrm{tri}}(b,b')=0.
+\]
+The example does not replace the residual identification; it displays its least costly instance. At the truth-terminal boundary, the instrument has nothing left to bill, no first-order gap to close, and no solver residue to carry forward.
+
+\section*{Stationarity in Review}
+
+Chapter 6 began with a middle. A route from $a$ to $c$ can be read directly by $w(a,c)$ or through a middle $b$ by
+\[
+  S(b)=w(a,b)+w(b,c).
+\]
+That single choice introduced the chapter's whole problem. The middle may change nothing in the direct account, or it may change the account while still minimizing the composed cost among alternatives, or it may become invisible to the composed cost altogether. The chapter kept those cases separate. Transparency compares the direct and composed readings. Minimizer stationarity compares one composed reading with all the others. Flatness says the composed reading cannot detect the middle at all.
+
+The second step turned comparison into signed finite difference. When the middle changes from $b$ to $b'$, the two boundary faces record
+\[
+  \delta_L(b,b') = w(a,b')-w(a,b),
+  \qquad
+  \delta_R(b,b') = w(b',c)-w(b,c),
+\]
+and their sum gives the whole first variation:
+\[
+  \delta S(b,b') = \delta_L(b,b')+\delta_R(b,b') = S(b')-S(b).
+\]
+This was the finite exactness claim. The first variation did not approximate the change; it was the change. No small parameter, hidden tail, or limiting argument had to decide whether the difference could be trusted. The apparatus compared two held routes and obtained the complete signed account.
+
+That exact difference then split stationarity into two public tests. Minimizer stationarity says
+\[
+  \delta S(b,b') \ge 0
+  \qquad \text{for every allowed } b',
+\]
+so no allowed replacement lowers the composed reading. Balance, or first-order quiet, says
+\[
+  r_1(b,b')=\delta_L(b,b')+\delta_R(b,b')=0
+  \qquad \text{for every allowed } b'.
+\]
+The equality is stronger than the minimizer inequality. A strict minimum may still have positive variations away from the middle; a balanced middle leaves no first-order trace under any allowed replacement. The chapter therefore used \emph{stationary} for the minimizer reading and \emph{balance} for the equality reading.
+
+The direct channel stayed separate. It carried
+\[
+  r_0(b)=w(a,c)-S(b),
+\]
+and transparency meant $r_0(b)=0$. The first-order channel carried $r_1$. The total report used
+\[
+  R_{\mathrm{tot}}(b,b')=r_0(b)+r_1(b,b'),
+\]
+but the sum did not blur the two questions. A route can balance at the middle without being transparent to the direct route. A route can be transparent while some first-order variation still leaves a trace. The residue closes only when both channels go quiet: $r_0(b)=0$ and $r_1(b,b')=0$ for every allowed $b'$.
+
+The final step showed that the first-order residual can circulate under three names. The Euler-Lagrange reading calls it middle balance. The spline reading calls it closure residual:
+\[
+  r_{\mathrm{spline}}(b,b')=r_1(b,b').
+\]
+The tridiagonal certificate reading calls it solver residual:
+\[
+  r_{\mathrm{tri}}(b,b')=r_{\mathrm{spline}}(b,b')=r_1(b,b').
+\]
+When a completed finite certificate supplies $r_{\mathrm{tri}}(b,b')=0$ for every allowed $b'$, those carried identifications make the spline residual and the Euler-Lagrange residual vanish as well. The chapter did not claim that every computation converges. It claimed that a completed finite witness, once it carries the right identifications, can make the first-order channel inspectably quiet.
+
+The chapter's receipts are therefore tangible and fungible in a precise sense. They are tangible because each one names a holdable finite comparison: direct against composed, base middle against varied middle, solver residual against spline residual. They are fungible because the same signed count can pass from one reading to another when the carried equalities authorize the passage. This is why the notation can change names without changing the account. What matters is not the prestige of the name but the finite equality that lets the receipt circulate.
+
+This leaves the next problem in view. Chapter 6 has shown what the apparatus can say once the relevant alternatives and residual traces are already in hand. It has not yet explained how the apparatus chooses a finite support, orders a trace, or selects which candidates the certificate is allowed to consume. The residue left for the next chapter is not a failure of stationarity. It is the selection problem: before a finite certificate can close a residual, the apparatus must decide which finite field of alternatives it may read.

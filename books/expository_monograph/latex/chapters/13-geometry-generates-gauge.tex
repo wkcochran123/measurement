@@ -1,0 +1,429 @@
+\chapter{Geometry Generates Gauge}
+
+The previous chapter produced a signed unit of charge from a paired variation and
+then admitted that it had helped itself to the pairing. It moved two channels because
+two channels were there to move, and it never asked where the two channels came from
+or why the action it used to produce the electron had the cost structure it did. This
+chapter answers both questions at once. It shows that the geometry --- the energy
+together with the boundary data --- generates the gauge form, including the two
+channels and the cost structure the electron lived in. The gauge does not appear by
+hand. It is read off the boundary.
+
+The chapter begins by saying what ``geometry'' is allowed to mean here, because the
+word carries weight it must earn. The apparatus does not have a spacetime manifold or
+a metric tensor; it has an energy and a boundary anchor. What earns the word is a fact
+the operator chapters already proved: the same energy operator changes which modes it
+can certify when the apparatus changes the boundary. With the anchor, the operator
+detects; without it, a nullspace survives. Energy plus boundary data determining which
+modes certify is the finite shadow of geometry telling matter how to behave, and the
+first section claims exactly that shadow, with the words ``finite'' and ``shadow''
+attached and nothing more.
+
+The second section makes the boundary a generative input by reading one number off it.
+The apparatus reads the depth of a configuration above the vacuum --- how many boundary
+events stand between it and the empty ground --- and treats that depth as a charge. The
+vacuum reads depth zero; a single boundary event reads depth one. This one number,
+read at the boundary, is what the generation rule of this chapter will turn into a gauge cost.
+The boundary is not a fixed frame the physics happens inside; its depth is an input the
+physics is generated from.
+
+The third section finds two channels in the one boundary. A boundary has two sides ---
+an interior and a source --- and the apparatus reads a depth on each. The interior, at
+depth zero, generates an action whose every crossing is free: the vacuum channel, on
+which the certificates of the previous chapter hold and no matter appears. The source,
+at depth one, generates an action with unit crossing costs: the excitation channel, on
+which the residue is nonzero and the electron appears. One generation rule, applied to the two
+sides of the same boundary, produces both channels. The two channels the electron
+needed are not a primitive the apparatus assumed; they are the two sides of a single
+boundary, read at two depths.
+
+The fourth section closes the loop and watches the gauge form come out. The action the
+boundary read produces is, term for term, the discriminating action the
+previous chapter used to produce the electron --- the hand-picked action was the
+boundary read all along. So the generated action produces the electron without a new
+calculation, and the apparatus can assemble the whole generated object: a gauge program
+with a certified vacuum channel and an excitation channel that produces the signed unit
+pair. Geometric data in, gauge residue out, every arrow checked. The section is exact
+about the size of the claim: the boundary generates the gauge's strength, the one
+number; the gauge's shape remains the apparatus's own structure, not yet derived from
+the geometry.
+
+The fifth section proves that the two channels cannot be collapsed into one. A single
+action cannot be both the vacuum, whose residue is zero and whose certificates hold,
+and the excitation, whose residue is nonzero --- because where the residue is nonzero
+the certificates are refused, as the constructive chapter proved. The program must
+carry two actions, not one, and the necessity is a theorem rather than a convenience.
+The two channels are irreducibly two, and the apparatus that wanted one action to do
+both jobs would be an apparatus whose vacuum and whose matter were the same thing.
+
+By the end of the chapter the electron's setting is no longer assumed. The pairing, the
+cost structure, the two channels --- all of them are generated from the energy and the
+boundary, read as a depth and generated into a gauge form. The book set out from a
+single invariant, found it was a charge produced in pairs, and now finds that the pairs
+and their charges are written into the geometry. Geometry generates gauge, in the
+finite shadow the apparatus can certify.
+
+\section{Geometry as Energy plus Boundary Data}
+
+The chapter's title promises geometry, and the apparatus must say at once what it can
+and cannot mean by the word. It has no manifold, no metric, no curvature tensor in the
+classical sense. What it has is the energy operator of the earlier chapters and the
+boundary anchor that made the operator detect. The claim of this section is that those
+two things together --- energy and boundary data --- already behave like geometry in one
+precise, finite respect, and the apparatus claims that respect and no other.
+
+The respect is this: the same operator does different physics under different
+boundaries. The operator chapters proved it without naming it. Take the stiffness
+operator with no boundary anchor and it is only semidefinite --- the constant mode
+sits in its nullspace, uncertified. Add the loaded anchor and the same operator becomes
+positive-definite --- the constant mode dies, every mode certifies. The operator did not
+change. The boundary changed, and the change in the boundary changed which modes the
+operator can certify:
+\[
+  \text{same operator } a,
+  \qquad
+  \text{no anchor} \Rightarrow \text{nullspace survives},
+  \qquad
+  \text{anchor} \Rightarrow \text{nullspace dies}.
+\]
+Energy plus boundary data determines certificate status. That is the finite content of
+the geometric idea that the configuration of space tells matter which states are
+allowed.
+
+This is why the apparatus may call its energy-and-boundary package a geometric program.
+It does not assert a spacetime; it asserts that energy together with boundary data is a
+\emph{program} --- an object that can be run against, that determines outcomes when a
+configuration is fed to it. The previous chapters left the kernel as an object one could
+point at: an energy, a door, an anchor, an invariant, bundled. The geometric program is
+that same kernel re-exposed as a surface a boundary rule can read: the energy to evaluate,
+the boundary to consult, with coherence guaranteeing that the boundary a later read
+reads is the kernel's own boundary and not a stapled-on impostor. The bundle becomes a
+program by being made readable.
+
+The honesty of the section is in its limits, and the apparatus states them plainly. This
+is not general relativity. It is the part of the geometric idea the apparatus can
+certify finitely: the boundary determines the certificate status of modes, and a change
+of boundary changes the physics. General relativity, in this book, is claimed only with
+the words ``finite'' and ``shadow'' attached. A bare mention of it costs nothing and the
+book has made such mentions before, lightly; a claim about it is gated, and the gate
+here admits exactly one statement --- that energy and boundary data, finitely, do the one
+thing geometry is supposed to do, which is to tell matter which modes are allowed.
+
+The section's metaphysical anchor is that geometry, stripped to what a finite apparatus
+can hold, is energy plus boundary data deciding what certifies. The apparatus tanges the
+energy and the boundary into one readable program and funges that program forward as the
+object the rest of the chapter will read through the generation rule. It does not claim a
+spacetime it cannot build. It claims the shadow a spacetime would cast: that the same
+operator, under a changed boundary, certifies different modes --- which is the finite
+beginning of geometry generating physics.
+
+\section{Boundary Depth as a Generative Input}
+
+For the boundary to generate a gauge, the apparatus must read something off it, and
+this section reads the simplest thing there is: a single number. The number is the depth
+of a configuration above the vacuum --- how far the configuration stands from the empty
+ground, counted in boundary events --- and the apparatus reads that depth as a charge.
+From this one number the next sections will generate a gauge cost.
+
+Define the depth by counting. The vacuum is the empty ground, and it has depth zero.
+Each boundary event --- each step away from the vacuum through the apparatus's boundary
+structure --- adds one to the depth:
+\[
+  \mathrm{depth}(\text{vacuum}) = 0,
+  \qquad
+  \mathrm{depth}(\text{one boundary event over } p) = \mathrm{depth}(p) + 1.
+\]
+The depth is a finite, computable read: feed the apparatus a configuration and it
+returns the number of boundary events between that configuration and the vacuum. There
+is nothing analytic in it, no limit, no continuum --- only a count of how deep the
+boundary structure runs beneath a given configuration.
+
+The generative step is to read this depth as a cost. The apparatus turns the depth into
+a gauge cost by the simplest rule that respects it: a crossing between configurations of
+different kinds costs the boundary depth, and a crossing between configurations of the
+same kind costs nothing. So the gauge cost is governed by one number read off the
+boundary:
+\[
+  \text{crossing cost} =
+  \begin{cases}
+    0 & \text{same kind},\\
+    \mathrm{depth} & \text{different kind}.
+  \end{cases}
+\]
+At the vacuum, where the depth is zero, every crossing is free and the cost vanishes
+identically. At a single boundary event, where the depth is one, a crossing between
+different kinds costs one unit. The gauge cost is not posited; it is the boundary depth,
+read as a charge and installed as the price of a crossing.
+
+This is what it means for the boundary to be a generative input rather than a fixed
+frame. In the classical picture one imagines physics happening inside a fixed boundary,
+the boundary a stage on which the action plays out. Here the boundary's depth is not the
+stage but the script: the depth determines the cost, the cost determines the action, and
+the action determines what the apparatus will measure. Change the depth and the cost
+changes; deepen the boundary and the crossing grows more expensive. The boundary does
+not contain the physics. It generates it, one number at a time.
+
+The apparatus is exact about how much this one number carries. The depth generates the
+\emph{strength} of the gauge cost --- how much a crossing costs --- but not its
+\emph{shape} --- which crossings are charged and which are free. The shape, the
+classification of configurations into kinds that the cost distinguishes, is the
+apparatus's own structure from the earlier chapters, not yet derived from the boundary.
+So the section claims that the boundary generates the magnitude of the gauge, and it
+does not yet claim that the boundary generates the gauge's entire form. Deriving the
+shape from the boundary too is a later upgrade; the strength, the apparatus has now.
+
+The section's metaphysical anchor is that a boundary can be read, and that the reading
+is generative. The apparatus tanges a configuration into its depth above the vacuum and
+funges that depth into the cost of a crossing, so that the boundary's one number becomes
+the gauge's strength. The boundary is not the room the physics happens in. It is the
+source the physics is read from, and the depth above the vacuum is the first thing the
+apparatus reads when it asks the boundary how much a crossing should cost.
+
+\section{The Vacuum Channel and the Excitation Channel}
+
+A boundary has two sides, and the apparatus reads a depth on each. This section finds,
+in those two reads, the two channels the previous chapter helped itself to. The vacuum
+channel and the excitation channel are not two separate constructions; they are the
+interior and the source of one boundary, read at two depths.
+
+Name the two sides. A boundary anchor carries an interior --- the configuration it sits
+over --- and a source --- the boundary event itself. The apparatus reads the depth on
+each side. The interior of the apparatus's anchor is the vacuum itself, and so it reads
+depth zero. The source is a boundary event over the vacuum, and so it reads depth one:
+\[
+  \mathrm{depth}(\text{interior}) = 0,
+  \qquad
+  \mathrm{depth}(\text{source}) = 1.
+\]
+Two depths, read off the two sides of a single boundary. Everything else in this section
+follows from feeding those two depths through the cost rule of the previous section.
+
+The interior, at depth zero, generates the vacuum channel. Depth zero makes every
+crossing free, so the action the interior generates charges nothing for any crossing:
+it is the zero action. On the zero action the residue vanishes at every variation ---
+the vacuum is empty --- and the configuration is certified through second order. This is
+the vacuum channel: certificates hold, and no matter appears. It is the empty ground the
+earlier chapters certified, now seen as what the interior of the boundary generates.
+
+The source, at depth one, generates the excitation channel. Depth one makes a crossing
+between different kinds cost one unit, so the action the source generates is the unit
+discriminating action --- the very action whose residue, under a pair kick, is the
+electron. On this action the residue is nonzero, matter appears, and the certificates
+are refused. This is the excitation channel: matter present, certificates denied. It is
+the setting in which the electron was produced, now seen as what the source of the
+boundary generates.
+
+The unification is that one generation rule, applied to the two sides of the same boundary,
+produces both channels:
+\[
+  \text{interior (depth 0)} \;\longrightarrow\; \text{vacuum action (certificates, no matter)},
+\]
+\[
+  \text{source (depth 1)} \;\longrightarrow\; \text{excitation action (matter, no certificates)}.
+\]
+The apparatus does not build a vacuum and then separately build an excitation. It reads
+one boundary from its two sides, and the two reads are the two channels. The pairing the
+electron required --- two coordinates, two channels --- is the two-sidedness of a single
+boundary.
+
+One honesty note keeps the picture exact. The two channels are not a boundary versus no
+boundary. The anchor structure mandates a boundary source, so every geometric program
+reads a source depth of at least one; the depth-zero read always belongs to the
+interior. The two channels are therefore the two sides of the one mandatory boundary,
+read at depths zero and one, not a presence and an absence of a boundary. The vacuum is
+not the boundary's absence; it is the boundary's interior.
+
+The section's metaphysical anchor is that vacuum and matter are the two sides of one
+boundary. The apparatus tanges a single boundary into two depth reads and funges each
+read through the cost rule, and what comes out is a certified empty channel from the
+inside and a matter-bearing charged channel from the source. The duality the electron
+needed was never two things. It was one boundary, read twice --- once from its interior,
+where nothing certifies as everything, and once from its source, where the crossing
+costs a unit and the electron appears.
+
+\section{The Generated Gauge Form}
+
+This section closes the loop the chapter opened. The previous chapter produced the
+electron against an action it picked by hand. Here the apparatus shows that the
+hand-picked action was the boundary read all along, and that the entire gauge form ---
+both channels, the certificates, the signed pair --- is generated from the geometric
+program rather than assumed.
+
+The generation theorem is an identity. The action the boundary rule reads off the source of
+the geometric program, with its crossing cost set to the boundary depth, is term for
+term the discriminating action the previous chapter used:
+\[
+  \text{boundary-read action of the program} = \text{the discriminating action}.
+\]
+The equality holds because the boundary depth at the source computes to one, and a unit
+crossing cost is exactly the discriminating cost. The action the electron lived in was
+not an arbitrary choice; it was the boundary read of the geometry, waiting to be
+recognized. The apparatus did not invent the cost structure; it read it off the source.
+
+Because the actions are identical, the residue follows with no new calculation. The
+generated action, under the pair kick, produces the electron:
+\[
+  \delta^2(\text{generated action, pair kick}) = -1.
+\]
+The geometric excursion is the reason the gauge cost is nonzero. The depth of the source
+above the vacuum is what makes a crossing cost a unit, and the unit cost is what makes
+the residue nonzero. No boundary depth, no crossing cost; no crossing cost, no residue;
+no residue, no electron. The chain runs from the geometry to the charge, and the
+apparatus has checked every link.
+
+Now the whole generated object can be assembled. A generated gauge program carries two
+channels, each an action recorded as a boundary-read output with its generation link, plus
+the obligations those channels must meet. The vacuum channel is the interior read, and
+it is certified through second order. The excitation channel is the source read, and it
+produces the signed unit pair --- the electron at one orientation, the positron at the
+other. The apparatus states the existence of this object as the chapter's main result:
+there is a generated gauge program over the geometric program whose vacuum channel is
+certified and whose excitation channel produces the signed unit pair residue. Geometric
+data in, gauge residue out, every arrow checked.
+
+The apparatus is exact about what ``gauge'' means here, because the temptation to hear
+more is strong. The generated program is gauge-shaped in a precise and limited sense: it
+has a certified vacuum channel and a signed unit pair residue on its excitation channel.
+That is the whole of the claim. There is no photon in it, no coupling constant, no
+renormalization, no symmetry group, no Standard Model. The claim gates hold at the
+generated program, and the apparatus does not step past them. What it has shown is that
+the energy and the boundary, read as a depth, generate a two-channel gauge form whose
+excitation produces a signed charge --- and not one thing more.
+
+And, as the previous section warned, the boundary generates the gauge's strength but not
+yet its shape. The depth fixes how much a crossing costs; the classification of
+configurations into kinds that the cost distinguishes is still the apparatus's own
+structure, carried from the earlier chapters rather than derived from the boundary. So
+the generation is genuine but partial: the magnitude of the gauge is geometric, the form
+of the gauge is not yet. The apparatus claims the magnitude and flags the form as the
+next thing to derive.
+
+The section's metaphysical anchor is that a gauge is generated when its strength is read
+off the geometry and its content follows without further input. The apparatus tanges the
+boundary into a depth, funges the depth into a crossing cost, and reads the gauge form
+out the far side: a certified vacuum, a charged excitation, a signed pair. The gauge was
+not posited and then checked against the geometry. It was generated from the geometry and
+checked at every arrow. Geometry generates gauge --- the strength of it, finitely, with
+the form still to come.
+
+\section{Why One Action Cannot Do Both Jobs}
+
+The generated program carries two actions, and the one-action question appears at
+once. The vacuum channel and the excitation channel are both gauge actions;
+could a single action not serve as both, vanishing on the vacuum and charging on the
+excitation? This short section proves that it cannot. The two channels are irreducibly
+two, and the necessity is a theorem, not a design preference.
+
+The two channels make contradictory demands. The vacuum channel must be certified: its
+residue must vanish at every variation, so that the configuration carries the
+second-order certificate and no matter appears. The excitation channel must be charged:
+its residue must be nonzero, so that the electron appears at all. State the two demands
+side by side:
+\[
+  \text{vacuum demands } \delta^2 = 0 \text{ everywhere},
+  \qquad
+  \text{excitation demands } \delta^2 \neq 0.
+\]
+A single action cannot meet both. To meet the first it must have vanishing residue; to
+meet the second it must have nonvanishing residue; and no action has both.
+
+The constructive chapter sharpened exactly this incompatibility. There it proved that an
+action with nonzero residue cannot be certified --- it has no covering trace, no
+exhausting tower, and the certificates are refused. Certification and nonzero residue are
+mutually exclusive, by that proof:
+\[
+  \text{certified} \;\Longrightarrow\; \delta^2 = 0,
+  \qquad
+  \delta^2 \neq 0 \;\Longrightarrow\; \text{not certified}.
+\]
+So an action that was both the certified vacuum and the charged excitation would be both
+certified and uncertified, which is a contradiction. The vacuum's certificate and the
+excitation's charge cannot live in one action.
+
+Therefore the program must carry two. The apparatus does not split the gauge into two
+channels for convenience or symmetry; it splits it because a single action satisfying
+both roles is impossible. The vacuum channel and the excitation channel are separate
+actions because no action is simultaneously certified and charged, and the separation is
+forced by the same refusal that made the discriminating action uncertifiable in the
+first place.
+
+The section's metaphysical anchor is that vacuum and matter are kept apart by proof, not
+by stipulation. An apparatus whose empty ground and whose matter were the same action
+would be an apparatus whose vacuum carried charge --- an incoherent object, certified and
+uncertified at once. The apparatus tanges the two demands against each other and funges
+them into two separate channels, because the algebra of the residue forbids their union.
+The two channels of the gauge are two because one action cannot be both the silence of
+the vacuum and the charge of the electron.
+
+\section*{Bridge: The Channels Split into Families}
+
+The chapter generated a two-channel gauge from the geometry: a certified vacuum channel
+and a charged excitation channel, each a single action read off one side of the
+boundary. That is the gauge in its simplest generated form, one action per channel. But
+the earlier chapters never worked with single actions; they worked with towers ---
+refining families of configurations, squeezed toward a limit. The next chapter returns
+the gauge to that setting and finds that each channel is not one action but a family.
+
+The split is natural once the channels are seen as the heads of towers. The vacuum
+channel, refined, becomes a family of certificates --- a tower of configurations each
+certified through second order. The excitation channel, refined, becomes a family of
+residues --- a tower carrying the charge down through the stages. The single certificate
+and the single electron of this chapter are the tops of two families, and the next
+chapter works with the families, not only their tops.
+
+Working with families exposes a quantity the single-action picture could not show. When
+a residue family is read at the boundary rather than in the interior, its terminal
+residue appears as a flux through the boundary --- a boundary radiation, the finite
+shadow of energy leaving through the edge. The certificate family and the residue family
+behave differently at the boundary, and their difference is exactly what the next chapter
+reads: the terminal residue as boundary flux, split cleanly from the certificates that do
+not radiate.
+
+So the next chapter splits the certificate family from the residue family and reads the
+terminal residue at the boundary. It examines the interior obstruction that keeps the two
+families distinct, reads the boundary flux as the terminal residue, files the flat tower
+of certificates, and shows the residue converging under a vanishing geometric tolerance.
+The question the apparatus carries forward is what the single-channel picture hid: when
+the two channels are unfolded into families and read at the boundary, what flows through
+the edge, and what stays inside?
+
+\section*{Coda: The Open Pipe and the Stopped Pipe}
+
+An organ builder voicing a rank of pipes performs this chapter's thesis with wind and
+metal: the geometry, and above all the boundary, generates the note. The air in a pipe
+does not decide its own pitch. The pipe's length and, decisively, the condition at its
+ends decide it, and the builder generates the sound by shaping those.
+
+Consider one number first, because the chapter began with one number. The pitch a pipe
+sounds is read, to first approximation, off a single length --- the effective length of
+the air column. Cut the pipe shorter and the pitch rises; leave it longer and the pitch
+falls. The builder does not change the air; the builder changes the length, and the
+length generates the pitch. The boundary geometry is the generative input, and the pitch
+is what the apparatus of the ear reads off it.
+
+Now the boundary's two sides, because the chapter's heart was two channels in one
+boundary. A pipe open at both ends and a pipe stopped at one end are the same air column
+under two boundary conditions, and they sound utterly differently. The stopped pipe
+sounds an octave lower than the open pipe of the same length, and it produces only the
+odd members of the harmonic series, where the open pipe produces all of them. Nothing
+about the air changed. The boundary changed --- one end opened or closed --- and the
+boundary changed which modes the column can sound. That is precisely the chapter's
+finite geometry: the same operator, under a changed boundary, certifies different modes.
+The end condition is the anchor, and the anchor decides which modes are allowed.
+
+And one pipe cannot be both open and stopped at once, which is the chapter's last
+section in the builder's terms. A pipe is voiced one way or the other; its end is open
+or it is stopped, and it sounds the spectrum that boundary permits. To have both
+spectra the builder does not contrive a single pipe that is somehow both; he builds two
+ranks, an open rank and a stopped rank, and draws whichever the music wants. The two
+spectra are two pipes because one pipe's boundary cannot be in two conditions at once ---
+exactly as the gauge's two channels are two actions because one action cannot be both
+certified and charged.
+
+That is the chapter in an organ loft. The geometry plus the boundary generates the
+note; one number, the effective length, generates the pitch; the two boundary conditions
+at the pipe's end generate two channels, the open spectrum and the stopped spectrum, from
+the same air; and no single pipe carries both, so the builder ranks them separately. The
+apparatus, voicing its gauge, does the same: it reads the boundary depth as a pitch,
+opens two channels from the boundary's two sides, and keeps the vacuum's silence and the
+electron's charge in separate ranks because one pipe cannot sound them both.

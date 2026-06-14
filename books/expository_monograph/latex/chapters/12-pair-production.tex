@@ -1,0 +1,509 @@
+\chapter{Pair Production}
+
+The previous chapter perfected a derivative and, in perfecting it, told the story
+slightly backwards. It celebrated the linear part of the variation --- the first
+variation, exact and unique and with remainder identically zero --- as though the
+zero remainder were the achievement. But a remainder that is identically zero is a
+remainder that has been thrown away, and the thing thrown away is the prize. The
+step that builds the full derivative \emph{adds} one datum, the residue; the step
+that builds only the linear part \emph{projects that datum out}. The residue is the
+real content of the computation; the linear part is merely the computation. This
+chapter recovers the discarded datum, names it, and discovers that it is a signed
+unit of charge.
+
+The chapter begins with the correction itself. The earlier tower --- the
+refinements, the squeeze, the produced certificate --- all worked in the weak form,
+the form in which the residue is projected out before anyone looks. That is why the
+residue stayed anonymous for so long. It was present at every stage, sitting in the
+slot the weak form discards, and no instrument the book had built could see it. The
+first section states the correction plainly: the order-two residue, not the
+order-one linear part, is what the derivative computation produces, and the price of
+working in the convenient weak form was exactly the loss of that residue.
+
+The second section explains why the residue stayed hidden through every earlier
+measurement, and the explanation is structural rather than accidental. A variation
+that moves a single coordinate reads the mixed coupling as zero --- not approximately,
+not usually, but always, for every action and every path. The cross term that pairs
+the two sides of the middle cancels identically when only one side moves. So every
+one-coordinate probe in the book, including the kicked path that read a clean value
+of two, read the coupling as nothing. The instruments were blind to the residue by
+construction, and the blindness was complete. A quantity that lives strictly between
+two coordinates cannot be seen by any instrument that moves one coordinate at a time.
+
+The third section produces the residue the only way it can be produced: in a pair. It
+kicks both middle nodes of the flat vacuum at once, under the discriminating action,
+and subtracts the story from the measurement. The two one-coordinate computations,
+added together, predict that the action changes by four. The action actually changes
+by three. The difference --- what is left after the linear story almost explains the
+measurement --- is a signed unit. Read as measurement minus story it is negative one,
+and the chapter names it the electron. Read in the opposite orientation, story minus
+measurement, it is positive one, and that is the positron. The pair kick produces a
+pair, signed, of unit magnitude, and produced only in coupling. The early chapters
+left a pressure around ``what is left after the process almost explains itself,''
+around ``the difference between the story and the measurement.'' In this section,
+that pressure becomes an exact identity.
+
+The fourth section ties the residue to the strain the book named at the outset. The
+linear story fails to account for the measurement precisely when the residue is
+nonzero; the failure and the residue are not two facts but one, an equivalence. The
+strain the early chapters spoke of --- the informational strain that a variation
+leaves behind --- is exactly the residue, and at the electron it is real because the
+electron's charge is nonzero, and only because. The section seats this strain back
+into the apparatus's structure: the residue question the foundational chapters left
+open now has a precise slot, and the apparatus's own machinery manufactures exactly
+the electron's term from the paired variation. The earlier pressure was there; this
+chapter identifies the slot and fills it.
+
+The fifth section certifies the configuration and reads the answer against a problem
+a century old. A cubic spline's defining property is that it carries data through the
+second derivative and nothing above --- it is twice continuously differentiable, what
+the chapter calls \(C^2\). A pair of certificates, one per middle node, certifies the
+configuration through order two: the sub-paths admit at order zero, the
+Euler-Lagrange residuals vanish at order one, and what remains of every coupled
+variation at order two is exactly the second variation, with the exactness leaving no
+order three to certify. The order-two data of the certified spline is the residue
+field, and the electron is its order-two quantum. Read against Hilbert's sixth
+problem --- the call, in 1900, for a mathematical treatment of the axioms of physics
+--- the section offers a finite variational mechanics with equations of motion at
+order one and interaction at order two, exact at order two, derived as a theorem from
+the apparatus's measurement primitives and machine-checked. It is one electron's
+worth of physics, and the chapter claims exactly that much.
+
+By the end of the chapter the single invariant of Chapter 8 has a physical face. The
+order-two quantity that survived every first-order choice, that the apparatus could
+read but not yet interpret, turns out to be a signed unit of charge, produced in
+pairs, invisible to one-coordinate measurement, and certified through second order.
+The book set out to measure a single invariant. It has measured the electron.
+
+\section{The Correction to the Derivative Story}
+
+The previous chapter's triumph needs one correction, and the correction reverses an
+emphasis rather than a fact. The chapter built the first variation, proved it exact
+and unique, and celebrated that its remainder was identically zero. Every theorem
+there is true. But the celebration pointed at the wrong term. A derivative
+computation, done honestly, produces two things: a linear part and a residue. The
+chapter kept the linear part and discarded the residue, and then praised the
+discarding as a clean result.
+
+State the two steps the way the apparatus actually performs them. Building the full
+derivative from a coarser variation \emph{adds} a datum --- the residue, the order-two
+remainder that records what the linear part fails to capture. Building only the linear
+part from the full derivative \emph{removes} that datum --- projects it out, keeps the
+computation, loses what the computation was for. The earlier chapters lived on the
+second step. They worked in the weak form, where the residue is projected away before
+the measurement is read, and in that form the residue is structurally absent, not
+merely small.
+
+So the order-two residue, not the order-one linear part, is the derivative's real
+content. Write the decomposition once more, but read it now with the emphasis
+corrected:
+\[
+  D(v) = \underbrace{r_{\mathrm{L}}(v_{\mathrm{L}}) + r_{\mathrm{R}}(v_{\mathrm{R}})}_{\text{the story (linear)}}
+         + \underbrace{\delta^2(v)}_{\text{the residue (order two)}}.
+\]
+The earlier chapters drove the story to zero and read the result as a solved
+variational principle. That reading is correct and incomplete. When the story
+vanishes, what is left is not nothing; it is the residue, the order-two datum the weak
+form had been discarding all along. The solved principle does not eliminate the
+residue. It isolates it.
+
+This corrects the book's own language without retracting a single theorem. The
+order-one residual of the previous chapter keeps its name and its uniqueness; it is a
+genuine first-order quantity, exactly determined. The residue of this chapter is a
+different slot, one floor up the ladder: the order-two datum that the first-order
+computation cannot reach. The two are not competitors. The first-order residual is
+the story; the order-two residue is what the story leaves out. The previous chapter
+perfected the story. This chapter recovers what the story left out.
+
+The cost of the weak form has a name the apparatus has used before: it is the price of
+working with a projected, convenient computation rather than the full one. That price
+bought every clean result of the tower arc --- the squeeze, the eventual exactness,
+the produced certificate --- and it bought them by setting the residue aside. There is
+nothing wrong with paying that price when the goal is to solve the first-order
+equations. The error would be to forget that it was paid, and to mistake the projected
+computation for the whole. The residue was never destroyed. It was set down in a slot
+the weak form does not read, waiting for an instrument that could pick it up.
+
+The section's metaphysical anchor is that what a computation discards can be its
+point. The apparatus tanges the variation into a linear story and an order-two
+residue, and the weak form funges the story forward while letting the residue fall
+silent. The correction is not to redo the computation but to look at the slot the
+computation emptied. The derivative's residue --- the order-two remainder, the second
+variation, the single invariant under a new name --- has been present at every stage of
+the book. The remaining chapters are about picking it up.
+
+\section{Why One-Coordinate Instruments Are Blind}
+
+The residue stayed anonymous for fifty chapters' worth of measurement, and the
+section's task is to show that this was not an oversight. It was forced by the shape of
+every instrument the book had built. Each of those instruments moved one coordinate at
+a time, and a one-coordinate instrument reads the residue as exactly zero --- always,
+for every action and every path. The blindness was structural and complete.
+
+The residue is the mixed coupling, the cross term that pairs the left and right sides
+of the middle. Look at what happens to that cross term when only one side moves. Move
+the left coordinate and hold the right fixed at its vacuum value. The mixed coupling is
+built from four cost readings that, with the right coordinate unmoved, cancel in two
+pairs:
+\[
+  \delta^2(\text{left only}) = 0
+  \qquad\text{for every action and every path.}
+\]
+The same cancellation happens when only the right coordinate moves:
+\[
+  \delta^2(\text{right only}) = 0
+  \qquad\text{for every action and every path.}
+\]
+These are identities, not approximations. A one-coordinate variation does not read a
+small coupling that could be refined away; it reads the coupling as precisely nothing,
+because the cross term requires both coordinates to move and one of them is held still.
+
+This explains the entire history of the book's measurements. Every probe the apparatus
+ran moved one node at a time. The kicked path of the physical-record chapter, which
+read a clean value of two, moved a single middle node; that two was entirely the
+linear story, and the coupling underneath it read zero. The tower's refinements, the
+squeeze, the produced certificate --- all of them exercised the apparatus one
+coordinate at a time, and so all of them read the residue as zero and reported only the
+story. The residue was present at every one of those stages, in the slot the weak form
+discards, and invisible to every instrument that moved one thing at a time.
+
+The blindness is worth stating as a principle, because it is the chapter's hinge. A
+quantity that lives strictly in the coupling between two coordinates cannot be detected
+by any instrument that varies one coordinate. No refinement helps, no matter how fine,
+because refinement of a one-coordinate probe is still a one-coordinate probe. No change
+of action helps, because the cancellation holds for every action. The only way to make
+the residue nonzero is to move both coordinates at once, and an instrument built to
+move one at a time can never do that. The residue is not hard to see; it is impossible
+to see, with a single-coordinate instrument, by the algebra of the cross term.
+
+There is a lesson here about measurement in general, and the apparatus states it. An
+instrument's reach is bounded by the shape of the variations it can perform. An
+instrument that probes along one axis is not merely less sensitive to a coupling
+between axes; it is exactly, identically insensitive to it. Sensitivity is not a
+matter of degree here but of structure: the coupling lies in a direction the
+one-coordinate instrument cannot point. To measure it at all requires a different kind
+of instrument --- one that moves a pair.
+
+The section's metaphysical anchor is that an instrument can be blind by construction,
+and that such blindness is not a flaw to be refined away but a fact to be respected.
+The apparatus tanges a single coordinate into a reading and funges that reading
+forward, and the cross term it cannot reach stays exactly zero in the record. The
+residue's long anonymity was not the apparatus failing to look hard enough. It was the
+apparatus looking, faithfully and finely, in a direction where the residue casts no
+shadow at all. To see the residue, the next section stops moving one coordinate and
+moves two.
+
+\section{The Pair Kick and Measurement Minus Story}
+
+To produce the residue, the apparatus moves a pair. It takes the flat vacuum --- the
+path whose middle nodes sit at the trivial configuration --- and kicks both middle
+nodes at once, under the discriminating action, sending the left node to one
+representative and the right node to a different one. This is the pair kick, and it is
+the first variation in the book that moves two coordinates simultaneously. What it
+produces is the residue the one-coordinate instruments could never read.
+
+Read the two quantities the pair kick presents. The story is the linear account: the
+two one-coordinate computations, the left first-order residual and the right
+first-order residual, added together. Under this pair kick the story totals four. The
+measurement is the full coupled difference, the actual change in the action under the
+joint variation. Under this pair kick the measurement totals three. The story and the
+measurement disagree, and the disagreement is the whole point:
+\[
+  \text{story} = r_{\mathrm{L}} + r_{\mathrm{R}} = 4,
+  \qquad
+  \text{measurement} = D = 3.
+\]
+The residue is what is left when the story is subtracted from the measurement:
+\[
+  \delta^2(\text{pair kick}) = \text{measurement} - \text{story} = 3 - 4 = -1.
+\]
+A signed unit. The apparatus names it the electron. It has unit magnitude, negative
+sign, and it is produced only in coupling --- a one-coordinate kick would have given
+zero, by the previous section, and only the pair makes it appear.
+
+This residue is not a new quantity. It is the second variation of the action,
+evaluated at the pair kick:
+\[
+  \text{electron} = \delta^2(\text{pair kick}) = -1.
+\]
+The single invariant of Chapter 8 --- the order-two remainder that survived every
+first-order choice, forced and unique --- evaluated on a paired excitation of the
+vacuum, is a signed unit of charge. The book promised a single invariant and spent
+four chapters making it readable; here the invariant, read on the simplest nontrivial
+paired excitation, is the electron.
+
+The sign is not a convention the apparatus may discard, and the chapter pays the debt
+its title implies. The residue is signed, and the apparatus has chosen to read it as
+measurement minus story, which makes the produced charge negative. The opposite
+orientation --- story minus measurement --- reads the same magnitude with the opposite
+sign:
+\[
+  \text{measurement} - \text{story} = -1 \ \ (\text{electron}),
+  \qquad
+  \text{story} - \text{measurement} = +1 \ \ (\text{positron}).
+\]
+Pair production produces a pair. The negative unit and the positive unit are the same
+residue read in two orientations, and the apparatus cannot produce one without the
+other being available as its mirror. The title is literal: the pair kick produces the
+electron and the positron together, as the two orientations of one signed residue.
+
+The magnitude depends on the pair being genuinely distinct. Kick both middle nodes to
+the \emph{same} representative and the residue reads negative two, not negative one ---
+a different excitation, not the unit charge. The unit magnitude belongs specifically
+to the pair that moves the two coordinates to distinct values, the genuinely
+two-channel excitation. The apparatus does not get a unit from any pair; it gets a
+unit from the pair that excites both channels differently.
+
+This production answers, exactly, an early residue question the book kept open. The
+apparatus asked what remains when its story almost explains its measurement, before it
+had machinery precise enough to carry the answer. That open question is now a theorem:
+\[
+  \delta^2(v) = D(v) - \big(r_{\mathrm{L}}(v_{\mathrm{L}}) + r_{\mathrm{R}}(v_{\mathrm{R}})\big).
+\]
+The residue is precisely the difference between the measurement and the story. The
+process --- the linear story --- almost explains the measurement, and what is left when
+it falls short is the residue, the second variation, the electron. The early demand,
+left open until the paired machinery exists, is satisfied here by an identity.
+
+The section's metaphysical anchor is that some quantities must be produced rather than
+found, and that producing them is a measurement in its own right. The apparatus tanges
+two coordinates at once into a single coupled measurement and funges the linear story
+out of it by subtraction, and what remains is a signed unit that no single coordinate
+could have shown. The electron is not discovered sitting in the vacuum; it is produced
+by exciting the vacuum in a pair and reading what the linear story cannot cover. The
+single invariant, asked to show itself on the simplest paired excitation, answers with
+a charge.
+
+\section{Strain if and only if Residue}
+
+The book has used the word strain since its earliest chapters --- the informational
+strain a variation leaves behind, the thing a process carries that its linear story
+does not capture. This section identifies that strain with the residue, exactly, and
+shows that the identification is an equivalence rather than a resemblance. The linear
+story fails precisely when the residue is nonzero, and the strain is real precisely
+when the charge is.
+
+State the equivalence directly. The measurement and the story disagree if and only if
+the residue is nonzero:
+\[
+  D(v) \neq r_{\mathrm{L}}(v_{\mathrm{L}}) + r_{\mathrm{R}}(v_{\mathrm{R}})
+  \quad\Longleftrightarrow\quad
+  \delta^2(v) \neq 0.
+\]
+This is immediate from the residue identity of the previous section --- the residue is
+the difference between the two sides --- but its content is conceptual, not algebraic.
+It says that the failure of the linear story and the presence of the residue are not
+two phenomena that happen to coincide. They are one phenomenon. Wherever the story is
+inadequate, a residue is present and measures exactly the inadequacy; wherever the
+story is adequate, the residue is zero. Strain is the residue, with no gap between
+them.
+
+Make the strain concrete at the electron. The strain has two parts: a direction and a
+failed response. The direction is that the pair moved --- both middle nodes left the
+vacuum. The failed response is that the linear story did not account for the
+measurement. At the electron both parts hold: the pair moved, and the story (four) did
+not cover the measurement (three). So the strain is real:
+\[
+  \text{strain} = (\text{pair moved}) \wedge \neg(\text{story accounts for measurement}),
+\]
+and at the pair kick both conjuncts are true. The informational strain the book named
+at the outset is not a metaphor here; it is a specific, checkable conjunction, and it
+holds at the electron.
+
+And it holds \emph{because} the electron is nonzero, and only because. The failure of
+the story is equivalent to the charge being nonzero:
+\[
+  \neg(\text{story accounts for measurement})
+  \quad\Longleftrightarrow\quad
+  \text{electron} \neq 0.
+\]
+The strain is not an independent fact that happens to accompany the charge. It is the
+charge, stated as a failure of the linear account. A zero charge would be a story that
+holds, no strain; a nonzero charge is a story that fails, strain present. The electron
+is real exactly to the degree that its residue refuses to vanish.
+
+This lets the apparatus seat the electron into its own foundations without altering
+them. The earliest chapters left a residue pressure inside the derivative's own
+construction, but they did not yet have the paired machinery that could identify a
+precise occupant. The electron's strain occupies that slot now, by name, and the
+apparatus's own machinery manufactures the occupant: transmuting the paired variation
+through the construction the early chapters already carried yields exactly the
+electron's term. The earlier structure is unchanged; what was an unresolved pressure is
+now placed in the slot the pair-production identity exposes.
+
+The placement matters because it forecloses a suspicion. One might worry that the
+electron was bolted onto the apparatus after the fact, an interpretation imposed on a
+construction that had no pressure for it. The opposite is true. The construction left a
+residue pressure that only the paired machinery can sharpen into a slot. The apparatus
+does not bolt on a place for the electron; it finds, once the pair is moved, that its
+own machinery produces both the place and the occupant together. The electron is native
+to the structure, not a guest in it.
+
+The section's metaphysical anchor is that strain and residue are the same thing read
+two ways. The strain is the felt inadequacy of a linear story; the residue is the
+measured remainder that inadequacy leaves; and they are equal, identically, at every
+variation. The apparatus tanges the pair into a measurement, funges the story out of
+it, and reads the strain as the residue that survives --- nonzero exactly when the
+story fails, native to the slot exposed by the paired machinery. The book named the
+strain before it could produce it. Here the strain is produced, named, and seated in
+the place Ch12 can now identify.
+
+\section{The C-Squared Certificate and Hilbert's Sixth, Finite Edition}
+
+The configuration the pair kick excites can be certified, and the certificate has a
+familiar name. A cubic spline carries data through its second derivative and nothing
+above: it is twice continuously differentiable, what this section abbreviates
+\(C^2\). The order-two data of such a spline is exactly the residue field the previous
+sections produced, and the electron is its order-two quantum. This section states the
+certificate, reads it against a century-old problem, and is careful about how much it
+proves.
+
+The certificate is a conjunction of three orders, supplied by a pair of certificates,
+one per middle node. At order zero, both sub-paths admit --- the configuration is
+constructible on each side of the middle. At order one, both Euler-Lagrange residuals
+vanish in every direction --- the equations of motion hold. At order two, what remains
+of every coupled variation is exactly the second variation --- the residue is the whole
+of the order-two content, and its exactness leaves no order three to certify:
+\[
+  \underbrace{\text{admits left} \wedge \text{admits right}}_{\text{order } 0}
+  \ \wedge\
+  \underbrace{r_{\mathrm{L}} = 0 \wedge r_{\mathrm{R}} = 0}_{\text{order } 1}
+  \ \wedge\
+  \underbrace{D(v) = \delta^2(v)}_{\text{order } 2, \text{ exact}}.
+\]
+A configuration meeting all three is \(C^2\)-certified. Order two is the top, because
+the order-two equality is exact: there is no remainder to push into a third order.
+
+The word \(C^2\) deserves one honest gloss, because the finite apparatus cannot mean
+by it quite what classical analysis means. Classical \(C^2\) asks the first and second
+derivatives to be \emph{continuous}, a statement about a limit the finite corpus
+cannot make. So the apparatus says what it can, and what it can say is in two respects
+sharper. At order one it does not merely ask the first derivative to exist and be
+continuous; it pins the first-order residual to zero, on-shell --- the equation of
+motion holds, not just the derivative. And at order two it does not approximate; it
+states an exact equality. \(C^2\) here means all the data through order two, with the
+equation of motion holding and the second-order content exact. It is the only sense of
+\(C^2\) the finite world can carry, and within that sense it is stronger than the
+classical condition, not weaker.
+
+The order-two data of the certified spline is the residue field, and so the electron
+is the order-two quantum of the certificate. This is the unification the chapter has
+been building toward. The certificate that says ``this configuration is smooth through
+second order'' and the residue that says ``this is the electron's charge'' are the same
+object read at the same order. The smoothness certificate carries, in its order-two
+slot, exactly the signed unit the pair kick produces. On the vacuum --- the zero-cost
+action --- that slot reads zero everywhere; the vacuum is empty, its residue identically
+zero, and the certificate is inhabited there by the flat configuration the early
+chapters established. The certificate is not conditional fiction; it holds on the
+vacuum, with the residue field reading zero until a pair excites it.
+
+Read against the history of mathematics, this is a small finite answer to a large old
+question. In 1900 Hilbert asked, as his sixth problem, for the mathematical treatment
+of the axioms of physics. What the apparatus offers is a variational mechanics with
+equations of motion at order one, interaction at order two, and exactness at order
+two, derived as a theorem from the apparatus's measurement primitives rather than
+posited, and machine-checked. And the axioms it rests on are not the axioms of a
+physical theory but two axioms of ordinary mathematics --- propositional extensionality
+and the soundness of quotients --- with the physics derived from them and the
+measurement primitives, not assumed. Two logical axioms, and a mechanics that follows.
+
+The section is exact about how much this is, because the temptation to claim more is
+real. It is one electron's worth of physics. There is no exclusion theorem here tying
+the certificate to a vanishing electron, and there could not be: the certificate pins
+first-order data, and the chapter's own central result is that first-order instruments
+cannot see the coupling. Under a certificate the residue is not forced to zero --- it is
+all that remains, by the order-two clause. What is established is at the level of
+instances: the vacuum's residue reads zero everywhere, and the electron's action
+refuses certification by an order-one obstruction --- its first variation does not
+vanish --- not as a consequence of the electron. Hilbert asked for the axioms of all of
+physics. This is one electron, certified through second order, on two logical axioms.
+
+The section's metaphysical anchor is that smoothness and charge are the same order-two
+fact. The apparatus tanges a configuration into a certificate that carries its data
+through second order, and the order-two slot of that certificate is the residue field
+the pair kick excites. To certify a configuration as \(C^2\) is to name its order-two
+quantum, and that quantum, on a paired excitation of the vacuum, is the electron. The
+oldest call for a mathematics of physics is answered here in the only currency the
+apparatus trades in: a finite, exact, machine-checked certificate, one electron's
+worth, resting on two axioms of ordinary logic.
+
+\section*{Bridge: Where the Two Channels Come From}
+
+The chapter produced a signed unit from a paired variation and certified the
+configuration that carries it. In doing so it took one thing for granted: that there
+were two channels to pair. The left side of the middle and the right side of the
+middle were given as two coordinates, and the residue lived in the coupling between
+them. But the apparatus never asked where the two channels came from. It moved a pair
+because a pair was there to move.
+
+That is the question the next chapter opens. The two-channel structure is not a
+primitive the apparatus should help itself to. It is something the geometry must
+generate. The energy of the earlier chapters and the boundary data of the loaded
+anchor together carry more structure than the apparatus has yet drawn out, and that
+structure includes the very split into two channels that pair production exploited.
+The coupling has a geometry, and the geometry has a reason for there being two sides
+to couple.
+
+There is a related debt the next chapter must pay. The same single action has been
+asked to do two jobs at once: to vanish on the vacuum, giving the empty residue, and
+to produce a nonzero residue on an excitation. A vacuum channel and an excitation
+channel are different demands, and the next chapter examines whether one action can
+honestly serve both, or whether the geometry forces the two channels apart into
+distinct roles that a single action cannot fill.
+
+So the next chapter turns from the residue to its geometry. It shows how boundary
+geometry --- the energy together with the depth of the boundary data --- generates the
+two-channel gauge form, why the boundary's depth is a generative input rather than a
+fixed frame, and why one action cannot do both the vacuum's job and the excitation's
+job at once. The question the apparatus carries forward is the one its own success
+hid: it produced the electron from two channels, but what produced the two channels?
+
+\section*{Coda: The Depth That Needs Two Eyes}
+
+Binocular vision performs this chapter's central fact with two eyes and a scene, and
+it performs it so exactly that the mathematics can almost be read off the experience.
+Depth, the quantity the scene does not flatly contain, is produced only by a pair, is
+the difference between two flat stories, and carries a sign.
+
+Begin with one eye. A single eye returns a flat image. It has color, shape, texture,
+overlap --- a great deal of information --- but it does not, by itself, return depth.
+Whatever cues a single eye exploits to guess at distance are inferences laid over a
+fundamentally flat report; the eye's own measurement is two-dimensional. Close one eye
+and reach for a thread through the eye of a needle, and the difficulty is immediate
+and structural: the flat image does not carry the distance, and no amount of squinting
+or attention recovers it. A one-eyed instrument is not poor at depth; it is, for the
+geometric component of depth, blind by construction --- exactly as a one-coordinate
+variation is blind to the coupling.
+
+Open the second eye and depth appears, and it appears as a difference. The two eyes
+see almost the same scene from slightly separated positions, and the small disparity
+between their images --- the amount by which a near object shifts against the
+background between the left view and the right view --- is what the visual system reads
+as depth. Neither flat image contains the depth; the depth is what is left when the
+two flat images are compared and the common part subtracted. Depth is the residue of
+binocular vision: measurement by the pair, minus the story each eye tells alone.
+
+And the residue is signed. An object nearer than the point the eyes are fixed on
+shifts one way between the two images; an object farther than the fixation point shifts
+the other way. The sign of the disparity distinguishes in front from behind, and the
+two signs are not interchangeable --- they are the two orientations of one comparison,
+exactly as the electron and the positron are the two orientations of one residue. The
+visual system that reads a near object as near would read the same disparity with the
+opposite sign as a far object: same magnitude, opposite sign, the pair the geometry
+allows.
+
+The lesson the eyes teach is the lesson of the pair kick. You cannot recover the depth
+by improving one eye. A sharper monocular image is still flat; a brighter one is still
+flat; the depth is not hiding in the single image waiting for better resolution,
+because it was never a property of one image at all. It is a property of the pair, read
+off the difference between two simultaneous flat reports. The apparatus that wanted the
+residue had to move two coordinates at once for the same reason the visual system needs
+two eyes open at once: the quantity lives in the comparison, not in either term.
+
+That is the chapter in the body's own optics. One eye is the one-coordinate
+instrument, flat and blind to the coupling; two eyes are the pair kick, producing what
+neither could alone; the disparity is the residue, the difference between the
+measurement and the flat stories; and the sign of the disparity is the difference
+between the electron and the positron. The single invariant of the earlier chapters,
+asked to show itself, shows itself the way depth does: only to an instrument willing to
+open both eyes at once.
