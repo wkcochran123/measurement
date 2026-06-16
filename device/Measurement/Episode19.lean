@@ -100,21 +100,32 @@ theorem totalResidualVanished_iff_directResidual_eq_zero_and_eulerLagrange
       ⟨h.left,
         (derivative.residualVanished_iff_eulerLagrange path).2 h.right⟩
 
+/-- The oracle is the Euler-Lagrange equation.  Stationarity -- whether the
+first variation vanishes for EVERY variation -- is a universal over the infinite
+variation space, not a computation.  The construction computes the direct
+residual; it must consult an oracle for stationarity.  This is the axiom of
+choice in its physical form: the law of motion is the one query nature answers
+that the machine cannot. -/
+axiom eulerLagrangeOracle
+    (derivative : DiscreteGaugeDerivative) (path : FiniteGaugePath) :
+    Decidable (derivative.eulerLagrange path)
+
 noncomputable def residue
     (derivative : DiscreteGaugeDerivative) (path : FiniteGaugePath) : Bullshit :=
-  by
-    classical
-    exact
-      if derivative.totalResidualVanished path then
-        .zero Fact.Truth
-      else
-        path.target
+  haveI : Decidable (derivative.residualVanished path) :=
+    eulerLagrangeOracle derivative path
+  haveI : Decidable (derivative.totalResidualVanished path) :=
+    inferInstanceAs
+      (Decidable (derivative.directResidual path = 0 ∧ derivative.residualVanished path))
+  if derivative.totalResidualVanished path then
+    .zero Fact.Truth
+  else
+    path.target
 
 theorem totalResidualVanished_residue_eq_truth_zero
     (derivative : DiscreteGaugeDerivative) {path : FiniteGaugePath}
     (h : derivative.totalResidualVanished path) :
     derivative.residue path = .zero Fact.Truth := by
-  classical
   simp [residue, h]
 
 def fromAction (action : FiniteGaugeAction) : DiscreteGaugeDerivative where

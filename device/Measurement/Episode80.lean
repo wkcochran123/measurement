@@ -143,8 +143,10 @@ theorem prop_deMorgan_not_or (P Q : Prop) :
     | inl hp => exact h.left hp
     | inr hq => exact h.right hq
 
-/-- Classical De Morgan: denying a conjunction yields a denied side. -/
-theorem prop_deMorgan_not_and (P Q : Prop) :
+/-- De Morgan, given a decision oracle for `P`: denying a conjunction yields a
+denied side.  The supplied `Decidable P` is the oracle -- it end-runs the
+undecidable case split that would otherwise call for choice. -/
+theorem prop_deMorgan_not_and (P Q : Prop) [Decidable P] :
     ¬ (P ∧ Q) ↔ ¬ P ∨ ¬ Q := by
   constructor
   · intro h

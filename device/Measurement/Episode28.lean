@@ -302,7 +302,7 @@ def toEnergySqCertificate
   energySq_zero := GalerkinBilinearForm.energySq_zero spd.form
   energySq_eq_zero_only_zero := by
     intro x hEnergy
-    apply SPDGalerkinActivity.diagonal_zero_detects_of_positive_definite spd
+    apply spd.nullspaceKilled.diagonal_zero_detects
     unfold GalerkinBilinearForm.energySq at hEnergy
     exact intActivityMagnitude_eq_zero hEnergy
 
