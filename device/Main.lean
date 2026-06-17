@@ -7,5 +7,6 @@ def two : Nat := 2
 
 #check two
 
+
 example : two = 2 := by
   rfl
