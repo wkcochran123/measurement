@@ -31,7 +31,8 @@ Do not cite the theorems in this file as the basis-gauge thesis. Cite
 - `GeneratedProperty`, `InGeneratedClosure`.
 - `FrameworkMeasurable`.
 - `generated_property_measurable` — soundness (proved).
-- `framework_measurable_generated` — DNF completeness (sketched, stubbed).
+- `framework_measurable_generated` — toy completeness (proved by collapse
+  to the single all-true profile).
 - `SameProfile`, `SeparatesProfiles`, `allGates_separates`.
 - `IrredundantOnProfiles`, `allGates_irredundant_profiles` (proved).
 -/
@@ -127,31 +128,50 @@ theorem generated_property_measurable
       · intro hQP'; exact Or.inl ((hQP O).mpr hQP')
       · intro hQQ'; exact Or.inr ((hQQ O).mpr hQQ')
 
-/-- Completeness on the toy: measurable ⇒ generated. Stubbed; the DNF
-construction is mechanical but not required for the main thesis. -/
+/-- Completeness on the toy: measurable ⇒ generated. In this retired model,
+every full cascade object has the same all-true profile, so every measurable
+predicate is either constantly true or constantly false on the available
+objects. -/
 theorem framework_measurable_generated
     (P : FullCascadeObject → Prop)
     (h : FrameworkMeasurable P) :
     InGeneratedClosure allGates P := by
-  sorry
+  rcases h with ⟨Q, hQ⟩
+  by_cases hbase : Q (fun _ => true : GateProfile)
+  · refine ⟨fun _ => True, GeneratedProperty.top, ?_⟩
+    intro O
+    have hPO : P O ↔ Q (fun _ => true : GateProfile) := by
+      simpa [FullCascadeObject.probeProfile, Gate.probe] using hQ O
+    exact ⟨fun _ => True.intro, fun _ => hPO.mpr hbase⟩
+  · refine ⟨fun _ => False, GeneratedProperty.bot, ?_⟩
+    intro O
+    have hPO : P O ↔ Q (fun _ => true : GateProfile) := by
+      simpa [FullCascadeObject.probeProfile, Gate.probe] using hQ O
+    exact ⟨fun hP => hbase (hPO.mp hP), fun hFalse => False.elim hFalse⟩
 
 /-! ## Profile separation (sidelined) -/
 
-def SameProfile (O1 O2 : FullCascadeObject) : Prop :=
-  ∀ g : Gate, Gate.probe g O1 = Gate.probe g O2
+def SameProfile (p1 p2 : GateProfile) : Prop :=
+  ∀ g : Gate, p1 g = p2 g
 
 def SeparatesProfiles (S : GateSet) : Prop :=
-  ∀ O1 O2 : FullCascadeObject,
-    ¬ SameProfile O1 O2 →
-    ∃ g, GateSet.Contains S g ∧ Gate.probe g O1 ≠ Gate.probe g O2
+  ∀ p1 p2 : GateProfile,
+    ¬ SameProfile p1 p2 →
+    ∃ g, GateSet.Contains S g ∧ p1 g ≠ p2 g
 
 theorem allGates_separates : SeparatesProfiles allGates := by
-  intro O1 O2 hne
-  by_contra hcontra
-  apply hne
-  intro g
-  by_contra hgne
-  exact hcontra ⟨g, rfl, hgne⟩
+  intro p1 p2 hne
+  classical
+  have hdiff : ∃ g, p1 g ≠ p2 g := by
+    apply Classical.byContradiction
+    intro hnone
+    apply hne
+    intro g
+    apply Classical.byContradiction
+    intro hg
+    exact hnone ⟨g, hg⟩
+  rcases hdiff with ⟨g, hg⟩
+  exact ⟨g, rfl, hg⟩
 
 /-! ## Profile irredundance (sidelined) -/
 

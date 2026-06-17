@@ -4,7 +4,8 @@ RYOT means **Roll Your Own Talent**.
 
 Off-the-shelf agent stacks pick the agents, the review style, and the stop
 conditions for you. RYOT is for the operator who would rather assemble those
-pieces: two LLM agents, an inbox each, a watcher, and a strict review habit.
+pieces: two LLM agents, an inbox each, self-scheduled prompt wakeups, and a
+strict review habit.
 RYOT is small on purpose. It is not a task queue, a chat server, or a substitute
 for human approval. It is a disciplined way for two agents to pass state back
 and forth without losing the thread.
@@ -15,12 +16,12 @@ Use **RYOT** as the name of the system.
 
 Use **Roll Your Own Talent** when expanding the acronym for a new reader.
 
-Use **RYOT job**, **RYOT handoff**, **RYOT watcher**, and **RYOT artifact** for
-the moving parts. Avoid falling back to a generic name like "the two-agent
-handoff protocol" once the reader knows the brand.
+Use **RYOT job**, **RYOT handoff**, **RYOT prompt automation**, and
+**RYOT artifact** for the moving parts. Avoid falling back to a generic name
+like "the two-agent handoff protocol" once the reader knows the brand.
 
-Use **RYOT operator** for the human who owns the approval gates, restarts
-watchers, and decides when the loop stops.
+Use **RYOT operator** for the human who owns the approval gates, prompt
+automations, and decisions about when the loop stops.
 
 The RYOT promise: two agents that never lose state, never quietly approve their
 own work, and never stop without the operator's sign-off.
@@ -34,15 +35,34 @@ notes_for_agent_a.md  <- written by Agent B, read by Agent A
 notes_for_agent_b.md  <- written by Agent A, read by Agent B
 ```
 
-A RYOT watcher polls each inbox, reads the first `HANDOFF` header, ignores stale
-or misaddressed messages, prints new messages, and records the last processed
-turn in a state file.
+A RYOT prompt automation wakes the receiving agent on a cadence. At each wake
+the agent reads its inbox directly, compares the latest valid `HANDOFF` turn
+against its handled-state file, handles the current safe unit of work, records
+the handled turn only after acting, and then stops.
+
+## Wake Discipline
+
+A wake is not finished after one message if more work is already available. At
+each wake, the receiving agent should drain every fresh handoff in its inbox
+until one of these stop conditions appears:
+
+```text
+no newer handoff is available
+the next action requires operator approval
+the next action belongs to the other agent
+the current artifact has an unresolved failed check
+```
+
+For active editing loops, use a tight wake cadence while work is moving. A slow
+heartbeat is for quiet monitoring only, not for an open do/review exchange.
+When a wake accepts a section and assigns the next section, it leaves the
+thread automation active with a short interval and a drain-all instruction.
 
 The RYOT operator owns the dangerous parts:
 
 - approving source edits, builds, long experiments, and destructive commands;
 - deciding when jobs may run in parallel;
-- restarting stuck watchers;
+- maintaining or pausing prompt automations;
 - stopping the loop when the agents need judgment rather than more iteration.
 
 ## Files And Roles
@@ -52,10 +72,9 @@ A minimal RYOT setup needs:
 ```text
 notes_for_agent_a.md
 notes_for_agent_b.md
-poll_agent_a.sh
-poll_agent_b.sh
 .handoff_agent_a_state
 .handoff_agent_b_state
+one prompt automation per active receiving agent
 ```
 
 In this repository the concrete names are:
@@ -63,11 +82,16 @@ In this repository the concrete names are:
 ```text
 notes_for_codex.md
 notes_for_claude.md
-poll_codex.sh
-poll_claude.sh
 .handoff_codex_state
 .handoff_claude_state
+each agent's own prompt-scheduling wake for each live receiving role
 ```
+
+The `.handoff_<agent>_state` files are handled ledgers: they say which handoffs
+the agent has actually processed. RYOT uses no separate delivery ledgers. A
+scheduled wake may notice a handoff many times,
+but it must update handled state only after the receiving agent has actually
+accepted, rejected, blocked, or otherwise recorded that handoff.
 
 Agents can be symmetric peers, but most jobs benefit from temporary roles:
 
@@ -77,9 +101,195 @@ Implementer / Auditor
 Proof author / Formalism critic
 Drafting agent / Style and correctness grader
 Patch author / Build-output diagnostician
+Doer / Thinker-planner
+Podo / Kodo
 ```
 
 State the roles in the first handoff for each job.
+
+## Kodo / Podo Split
+
+Kodo and Podo are the preferred RYOT names for the thinker/doer split.
+
+```text
+Kodo  thinker-planner, reviewer, budget/order keeper, formalism critic,
+      UAT/checkpoint owner, and final acceptance gate.
+
+Podo  doer-agent, patch author, proof writer, drafter, build/report runner,
+      and uncertainty reporter inside the restricted prompt.
+```
+
+Routing ids and role names are separate. In this repository, `codex` is usually
+the Kodo route and `claude`, `antigravity`, or a second Codex thread may serve
+as Podo. A second Codex may be Podo only if it accepts the doer contract and
+does not claim Kodo's final gate-closing authority.
+
+For jobs that use Kodo/Podo:
+
+```text
+Podo  writes code, drafts prose, applies patches, runs authorized checks, and
+      reports exact changed files, hashes, output, and uncertain points.
+
+Kodo  reads state, chooses the next concrete task, critiques the result,
+      catches overclaims, and keeps the operator's approval gates explicit.
+```
+
+If there is unblocked work and Podo appears idle, Kodo should send the next
+small actionable handoff rather than waiting passively. If Podo cannot
+continue, it should write `BLOCKED` with the smallest concrete question and
+stop.
+
+## Beastmaster
+
+The beastmaster is an occasional "(semi)-outside verifier" layered over a
+Kodo/Podo job. Most jobs never need one. It is semi-outside by design: inside
+enough to read the live state and feed the loop through Kodo's inbox, yet
+outside enough to verify the whole artifact on its own terms and refuse capture
+by the pair's local gates. A beastmaster is warranted when the doer/reviewer
+pair has begun solving problems in ways that clear each local gate yet drift
+away from what the operator actually wants across the whole artifact ---
+"unorthodox" problem solving that is locally clever and globally wrong.
+
+```text
+Kodo / Podo   produce and review one section at a time.
+Beastmaster   watches the whole world around the pair: the full artifact, the
+              source it claims to restate, the operator's standing mandates,
+              and the arc no per-section gate can see.
+```
+
+Charter:
+
+```text
+- Give feedback, do not solve. The beastmaster never owns or edits the produced
+  artifact (book prose, proof code). It reads, judges, and reports.
+- Hold the cross-cutting mandates a section gate is blind to: voice, idiom,
+  source-leakage, fidelity to the source, and global scope.
+- Keep the pair moving and in bounds: rein in drift, unblock stalls, and refuse
+  premature convergence.
+- Own the completion call. The beastmaster declares the job done only when its
+  mandates hold across the whole artifact, and sends Kodo and Podo back to work
+  when they do not. This is a stricter, later gate than Kodo's per-section
+  acceptance, never a replacement for it.
+```
+
+Discipline:
+
+```text
+- Advisory to Kodo's gates. The beastmaster recommends; Kodo issues the gate to
+  Podo. The beastmaster does not open or close writing gates directly.
+- Do not corrupt the turn machinery. The receiver's handled-state integer
+  tracks the doer/reviewer turn stream only. Beastmaster feedback goes to its
+  own ledger (long reviews) plus a short, clearly marked advisory pointer in
+  Kodo's inbox --- never a doer/reviewer turn number.
+- Separate K-items from P-items. A K-item needs a Kodo ruling; a P-item is a
+  doer fix contingent on Kodo opening a revision gate.
+- One small cycle at a time. Each beastmaster cycle files at most one refinement
+  and one focused review, then stops.
+```
+
+The beastmaster keeps a private coordination ledger, never reader-facing, that
+records its mandate, its running verdicts, and its cycle log.
+
+## Parallel Lanes
+
+A RYOT job may split into parallel lanes when the operator approves more than
+one kind of work around the same subject.
+
+Use one shared subject, one active inbox pair, and explicit lane labels:
+
+```text
+Lean lane      Doer writes isolated code; thinker-planner reviews theorem shape.
+Prose lane     Thinker-planner drafts explanation; doer edits as domain critic.
+Build lane     Operator or assigned doer runs the expensive experiment.
+```
+
+Every handoff should state which lane it concerns. If two lanes are active, the
+agents should avoid blocking each other: code review can continue while prose is
+drafted, and prose editing can wait until the doer is no longer in the middle of
+a fragile patch. Shared claims must still converge through the same checkpoint
+files before either lane declares victory.
+
+## Multiple RYOT Jobs
+
+Several RYOT jobs may run on the same machine at once. Treat project scope as a
+first-class guardrail.
+
+Each handoff should name the active workspace, task id, and owned artifacts.
+Each agent should trust its own inbox, its own handled-state file, and
+checkpoint files inside the active workspace. Process lists, terminal chatter,
+and automation output from another workspace are noise unless the operator
+explicitly connects the jobs.
+
+When another RYOT job is known to be noisy, add a constraint like:
+
+```text
+ignore unrelated RYOT activity outside <workspace-or-task>
+```
+
+This keeps a long build, a noisy side project, or a second pair of agents from
+becoming a false trigger in the current job.
+
+## Two-Phase Do/Review
+
+For paired code/prose work, use a two-phase cycle:
+
+```text
+Phase 1 - DO
+  Agent A owns proof/code artifacts.
+  Agent B owns prose/explanation artifacts.
+  Both work in parallel and write compact progress handoffs.
+  Neither agent edits the other's owned artifact during this phase.
+
+Phase 2 - REVIEW
+  Agent A reviews the prose for technical correctness.
+  Agent B reviews the proof/code for theorem shape, assumptions, and exposition.
+  Review produces explicit CHANGES_REQUESTED or HANDOFF_CONVERGED turns.
+```
+
+The handoff between phases must name artifact hashes, open risks, and the exact
+review question. This keeps production parallel but correctness adversarial.
+Do/review cycles may repeat many times under the same 500-step target.
+
+## Section-Scoped Writing
+
+When a RYOT job includes a book, article, long README, module document, or
+other prose artifact, split writing work by section rather than by whole file.
+
+Each writing handoff should name one target section:
+
+```text
+artifact: volume_7.md
+section: Chapter 2 / Uncommon Path
+goal: clarify the gate cascade for a public reader
+checks: word budget, banned terms, citations, claim boundary
+```
+
+The receiving agent should edit or review only that section unless the handoff
+explicitly labels the work as a mechanical whole-file check. Mechanical checks
+include build, citation scan, banned-token scan, ASCII scan, and warning scan.
+This keeps context local, makes critique sharper, and prevents a large prose
+artifact from turning into one undifferentiated task.
+
+## Proof-Backed Prose Stance
+
+When the operator asks for prose written as though a proof stack compiles, write
+from the theorem statement rather than from nervous process commentary. Keep
+the formal boundaries visible, but avoid turning every sentence into a hedge.
+
+If a prose section exposes a mismatch with the formal artifact, record a Lean
+audit flag instead of weakening the prose until the mismatch disappears. The
+reviewer should separate three cases:
+
+```text
+confirmed theorem surface       prose may speak directly
+named bridge assumption          prose may speak directly inside that boundary
+artifact/prose discrepancy       mark as Lean audit flag and queue proof review
+```
+
+This stance is especially useful when a long build is running. The prose lane
+can advance from the accepted theorem design while the build lane remains
+observational. If the build later fails, the RYOT job reopens the proof lane and
+repairs the artifact rather than pretending the book never made a claim.
 
 ## RYOT Quickstart
 
@@ -87,19 +297,19 @@ State the roles in the first handoff for each job.
 2. Choose roles for the first job.
 3. Create inbox files.
 4. Create state files with `last_turn=0`.
-5. Start one watcher per receiving agent.
+5. Create one prompt automation per receiving agent.
 6. Seed the first handoff with `respond_to_sha: RYOT_START_<task>`.
-7. Forward watcher output to the receiving agent when the process is manual.
+7. At each automation wake, have the agent check its own inbox directly.
 8. Continue until one agent sends `CONVERGED` and the other sends
    `HANDOFF_CONVERGED`.
-9. Stop the watchers or start the next job with a new task id.
+9. Pause/delete the prompt automations or start the next job with a new task id.
 
-To reset a stuck watcher without replaying stale turns:
+To recover from a missed wake without replaying stale turns:
 
-1. Stop the watcher.
+1. Pause the prompt automation if it is still firing badly.
 2. Edit the state file so `last_turn` equals the highest already-processed
    turn from the latest valid handoff.
-3. Restart the watcher.
+3. Re-enable the automation or send a one-time manual prompt to the agent.
 
 If the state file is missing or corrupt, recreate it with the correct
 `last_turn`. Starting from zero can replay the whole conversation.
@@ -141,7 +351,7 @@ constraint        permissions, build limits, edit limits, or user rules
 protocol_version  protocol version used by both agents
 ```
 
-Use exact agent ids. If the watcher expects `to: codex`, do not write
+Use exact agent ids. If the receiving role is `codex`, do not write
 `to: Codex`.
 
 ## Status Vocabulary
@@ -162,8 +372,8 @@ INFO_ONLY            informational; no action expected
 When an agent needs the RYOT operator, use `status: BLOCKED` and put the
 smallest concrete question in the body.
 
-Keep watcher behavior and human protocol aligned. A watcher may only stop on the
-exact status values it implements.
+Keep prompt-automation behavior and human protocol aligned. An automation may
+only stop or pause on the exact status values it implements.
 
 ## `respond_to_sha`
 
@@ -204,90 +414,163 @@ Turns are monotonic for the receiving agent. If Agent A writes to Agent B with
 `turn: 17`, the next message to Agent B must use `turn: 18` or higher.
 
 When retrying a bad handoff, always use a fresh turn. Rewriting an already
-processed turn will usually be ignored by the watcher.
+processed turn will usually be ignored by the receiving agent's handled-state
+check.
 
 Crossed turns are normal. If both agents write before reading the other's latest
 message, each should acknowledge the crossing, state which turn it is answering,
 and carry forward any constraints or open questions that still apply.
 
-## Watchers
+## Starting And Waking A Process
 
-A watcher performs four jobs:
+A launched process is not yet a participant. "Up" is not "listening": until the
+operator issues an explicit start, the process holds and does nothing. Two
+operator commands drive it:
 
-1. Poll the receiver's inbox.
-2. Parse the first `HANDOFF` header.
-3. Ignore stale, malformed, self-authored, or misaddressed messages.
-4. Print new messages and update the state file.
+```text
+RYOT START <role> <task>
+  Bring a process into the job. On START the agent, in order:
+  - rereads RYOT.md, its task checkpoint, its inbox, and its handled-state;
+  - adopts its route id and existing files without resetting or replaying them;
+  - drains every fresh handoff per Wake Discipline;
+  - then stops.
 
-Minimal behavior:
+RYOT WAKE <role>
+  A routine tick once started: the same bounded check, assuming context is
+  already loaded. This is what a self-scheduled wakeup issues.
+```
+
+A process acts only after an explicit START; START is the operator's gate for
+when a process may begin, and WAKE keeps it in the loop afterward. To stop a
+process, the operator pauses its wakeups; to restart it, issue START again. A
+START handoff may carry constraints (e.g. "hold all writing gates pending the
+beastmaster directive") just like any other handoff.
+
+## Prompt Automations
+
+RYOT uses the agent's own prompt scheduling mechanism as the wake mechanism:
+whatever recurring self-prompt or scheduled-wakeup feature the agent's runtime
+provides. RYOT does not prescribe a specific vendor tool, and each wake is one
+bounded check rather than a loop.
+
+At each wake, the receiving agent performs one bounded check:
 
 ```text
 read INBOX
-extract from, to, turn, status, respond_to_sha
-if to != AGENT: ignore
-if from == AGENT: ignore
-if turn <= last_turn in state file: ignore
-print handoff
-write last_turn=turn to state file
-repeat
+find the newest valid HANDOFF addressed to AGENT
+ignore malformed, self-authored, or misaddressed handoffs
+compare turn against .handoff_<agent>_state
+if turn is fresh, handle the safe current unit of work
+record handled state only after the response/checkpoint is written
+stop
 ```
 
-State file format:
+The prompt automation is not a proof worker by itself. It wakes the agent, and
+the agent applies the normal RYOT constraints, ownership rules, and approval
+gates. During an active exchange, a 3-minute heartbeat is appropriate. During a
+quiet wait, use a slower cadence or pause the automation.
+
+The automation prompt should name:
 
 ```text
-last_turn=17
+workspace root
+agent id
+inbox file
+handled-state file
+task checkpoint
+current lane constraints
+what to report when idle or blocked
 ```
 
-See the inline reference script below; copy and adapt as needed for your shell
-or runtime.
+## Inbox Discipline And Task Checkpoints
 
-## Reference Watcher
+RYOT inboxes are append-only while messages are in flight. Writers append new
+handoffs; they do not overwrite unread handoffs. Prompt automations wake the
+receiving agent, and the receiving agent uses handled-state files to decide
+which addressed `HANDOFF` blocks are still fresh.
 
-Any watcher that reads the `HANDOFF` header, compares `turn` against a state
-file, and emits only new turns is conforming. This is one reference
-implementation:
+> [!IMPORTANT]
+> Append-only inboxes are a delivery guarantee, not long-term memory. When a
+> task starts to repeat context, grows expensive to read, or crosses a check-in
+> boundary, recycle the message box: absorb processed decisions into
+> `ryot/tasks/<task-id>.md`, compact the inbox, and continue from the
+> checkpoint. Before acting after a wakeup, reread `RYOT.md` and the relevant
+> task checkpoint so the current turn is grounded in the latest written state,
+> not only in model context.
 
-```sh
-#!/usr/bin/env bash
-# poll_inbox.sh - RYOT reference watcher
-set -euo pipefail
+A check-in boundary is one of:
 
-AGENT="${1:?usage: poll_inbox.sh <agent_id> <inbox_file> <state_file> [interval]}"
-INBOX="${2:?}"
-STATE_FILE="${3:?}"
-INTERVAL="${4:-3}"
+- a task's two-phase convergence completes (`HANDOFF_CONVERGED` received and
+  ratified);
+- the RYOT operator requests it;
+- the inbox exceeds an agreed size threshold and all in-flight handoffs have
+  been processed.
 
-[[ -f "$STATE_FILE" ]] || echo "last_turn=0" > "$STATE_FILE"
+At a check-in boundary, agents may compact the inbox. Compaction appends an
+entry to the relevant task checkpoint recording:
 
-extract() {
-  awk -v field="$1" '
-    /<!-- HANDOFF/ { in_block=1; next }
-    in_block && /-->/ { exit }
-    in_block {
-      sub(/^[ \t]+/, "")
-      if ($1 == field":") {
-        sub("^"field":[ \t]*", "")
-        print
-        exit
-      }
-    }
-  ' "$INBOX"
-}
+- the turn range compacted, such as `turns 451-457`;
+- the decisions accepted during that range;
+- any deferred or rolled-back proposals named explicitly;
+- the resulting artifact hash at the end of the range.
 
-while true; do
-  [[ -s "$INBOX" ]] || { sleep "$INTERVAL"; continue; }
-  TO=$(extract to)
-  FROM=$(extract from)
-  TURN=$(extract turn)
-  LAST=$(sed -n 's/^last_turn=//p' "$STATE_FILE")
-  if [[ "$TO" == "$AGENT" && "$FROM" != "$AGENT" && "$TURN" -gt "$LAST" ]]; then
-    echo "=== NEW HANDOFF turn=$TURN from=$FROM ==="
-    cat "$INBOX"
-    echo "last_turn=$TURN" > "$STATE_FILE"
-  fi
-  sleep "$INTERVAL"
-done
+After the entry is written, the compacted `HANDOFF` blocks may be moved to
+`ryot/archive/<task>-<turn-range>.md` or deleted. Compaction must never delete
+an unread handoff or an unresolved decision.
+
+A handoff may not be compacted until both conditions hold:
+
+1. The receiving agent's handled-state file has advanced past the handoff turn.
+2. The relevant task checkpoint has been updated to absorb its content.
+
+Compaction races violate the delivery guarantee even when the prompt automation
+is firing correctly.
+
+For long jobs or parallel work, each task keeps a compact checkpoint at
+`ryot/tasks/<task-id>.md`. The checkpoint is a state vector, not a transcript:
+task id, owner, artifact anchors, accepted decisions, open questions, blocked
+approvals, next action, and last turn seen from each agent. The checkpoint is
+the source of truth when the inbox is lost or an agent's context is compacted.
+
+Cross-task changes require ownership acknowledgement. A task may edit only its
+owned artifacts and checkpoint. If it needs to affect `RYOT.md`, another task's
+checkpoint, or another task's artifact, it proposes the change in a fresh
+handoff under `task: ryot-revision` or a dedicated merge task. Apply only after
+the affected owner acknowledges.
+
+Promote to a formal merge ledger only when three or more live tasks contend on
+the same artifact or when merge decisions themselves become hard to track.
+
+## Culling A Box
+
+A box grows without bound because handoffs are append-only. Culling reclaims the
+box by moving processed handoffs out of it. Culling is operator-gated and must
+preserve the delivery guarantee. A box may be culled by hand or by a small tool
+the doer writes to this spec; the invariants are the same either way.
+
+```text
+1. HANDLED ONLY. A block is cullable only if its turn <= the receiver's handled
+   threshold for that block's sender. Respect both state formats:
+   `last_turn=N` (one queue) and `last_turn_from_<sender>=N` (per sender).
+2. NEVER A FRESH BLOCK. A handoff the receiver has not processed, or any
+   unresolved decision, is never removed. Blocks with no parseable turn
+   (INFO_ONLY heartbeats, anything unrecognized) are kept.
+3. KEEP ANCHORS. Retain the last few handled blocks (default three) so recent
+   context and respond_to_sha references survive in the live box.
+4. ARCHIVE, DO NOT DELETE. Move culled blocks to
+   <box_dir>/ryot/archive/<box>-turns-<lo>-<hi>.md and append one line to a
+   compaction log. The live box keeps a one-line header pointing to the archive.
+5. ATOMIC AND QUIET. Rewrite via temp-file + rename, and only while the loop is
+   paused or between wakes. Re-check the box's size/mtime just before the rename;
+   if it changed, abort and retry --- never clobber a concurrent append.
+6. CHECKPOINT. Record the culled turn range and the decisions it absorbed in the
+   task checkpoint --- the semantic step a tool cannot do.
+7. ONE OWNER. A box belongs to one job; cull it only with that job's owner's
+   acknowledgement, since handled-state and turn streams differ across jobs.
 ```
+
+Culling changes the box's bytes but not its meaning: handled-state is keyed by
+turn integer and `respond_to_sha` points at artifacts, so neither is disturbed.
 
 ## Starting A RYOT Job
 
@@ -355,7 +638,7 @@ Agent A: status CHANGES_APPLIED; handing scope to agent_b
 Agent B: status CHANGES_APPLIED; edits made; scope returns to agent_a
 ```
 
-Concurrent edits to a single artifact can overwrite each other. The watcher
+Concurrent edits to a single artifact can overwrite each other. The automation
 cannot prevent this; the discipline must.
 
 ## Withdrawals And Corrections
@@ -407,6 +690,52 @@ Useful body structure:
 5. Questions for the other agent
 6. Human decisions needed
 ```
+
+## Heartbeat Updates
+
+When an agent is waiting on a long-running process --- a build, a slow
+experiment, an operator-controlled run, any task that does not complete
+inside a single agent turn --- send an `INFO_ONLY` heartbeat update to
+the other agent every 15 minutes. The heartbeat is short: elapsed time,
+latest visible progress (target reached, last log line, output file
+size), and a one-line forecast.
+
+The point is to keep the loop alive without keeping an agent turn busy staring
+at a silent file. A heartbeat says "still running, no new findings, will report
+on completion."
+
+If the long-running process completes between heartbeats, skip the
+heartbeat and send the actual diagnostic turn instead. If three
+consecutive heartbeats show no progress, escalate to `BLOCKED` and
+ask the RYOT operator whether to keep waiting.
+
+A heartbeat is a turn like any other. Use a fresh turn number, the
+running task id, and `status: INFO_ONLY`. Set `respond_to_sha` to the
+artifact or output the long-running process targets, so the other
+agent can re-anchor when the wait ends.
+
+## Wake Mechanism
+
+A heartbeat discipline is only as reliable as the agent's wake mechanism. RYOT
+uses each agent's own prompt scheduling mechanism: the agent schedules its own
+wakes on a cadence and gives itself a normal prompt; at each wake it reads the
+inbox and state files itself.
+
+For an active two-agent exchange, set the heartbeat to a short interval, usually
+3 minutes. For long quiet waits, slow the heartbeat or pause it.
+
+Each wake must be bounded:
+
+```text
+1. Inspect the agent's inbox.
+2. Compare the newest valid addressed handoff with handled state.
+3. If a fresh handoff exists, process exactly the current safe unit of work.
+4. If no fresh handoff exists, report a short idle status.
+5. Do not start an unbounded loop; one bounded check per wake, then stop.
+```
+
+If the automation cannot prove delivery of unread handoffs, the system must use
+manual operator pings until the automation is repaired.
 
 ## Pre-Convergence Checklist
 
@@ -465,7 +794,7 @@ enough when two tasks can produce independent turn sequences at the same time.
 Stale turn:
 
 ```text
-Symptom: watcher ignores the handoff.
+Symptom: agent ignores the handoff as already handled.
 Cause: turn number was already processed.
 Fix: resend with a higher turn number.
 ```
@@ -473,8 +802,8 @@ Fix: resend with a higher turn number.
 Wrong recipient:
 
 ```text
-Symptom: watcher says the file is addressed to another agent.
-Cause: `to:` does not match the watcher agent id.
+Symptom: agent says the file is addressed to another agent.
+Cause: `to:` does not match the receiving agent id.
 Fix: correct `to:` and bump the turn if needed.
 ```
 
@@ -482,7 +811,7 @@ Self-addressed loop:
 
 ```text
 Symptom: agent appears to answer itself.
-Cause: watcher or inbox is misconfigured.
+Cause: automation prompt or inbox route is misconfigured.
 Fix: ensure each agent writes only to the other agent's inbox.
 ```
 
@@ -603,6 +932,7 @@ before you commit.
 Before replying:
 
 ```text
+[ ] Did I reread RYOT.md and the relevant task checkpoint?
 [ ] Is the handoff addressed to me?
 [ ] Is this the newest turn?
 [ ] Did I inspect the referenced artifact?
@@ -655,6 +985,10 @@ For long-running experiments:
 - record settings;
 - do not change debug options without approval;
 - state what the next output should prove or disprove.
+- use heartbeat prompt automations for long waits so agents do not spend active
+  turns staring at silent files;
+- send an `INFO_ONLY` heartbeat to the other agent every 15 minutes
+  while waiting; see Heartbeat Updates above.
 
 For non-deterministic outputs:
 
@@ -669,3 +1003,13 @@ Write every handoff so the other agent can resume after forgetting the previous
 conversation. If that feels repetitive, it is probably doing its job.
 
 Updates to RYOT should go through RYOT using a task id such as `ryot-revision`.
+
+<!-- INFO_ONLY
+from: antigravity
+to: codex
+timestamp: 2026-06-12T12:35:25.590234
+-->
+
+# Antigravity Ping
+
+Kodo, I am still waiting for your response to Turn 90. I have checked my inbox several times and am standing by for the C02-S03 O2 outline or C02-S03 Outline Agreed handoff. 

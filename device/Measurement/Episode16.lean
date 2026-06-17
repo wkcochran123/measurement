@@ -3,23 +3,14 @@ import Measurement.Calibration.EKGBounded
 namespace Measurement
 
 
-noncomputable def truthPhase (P : Prop) : P ∨ ¬P :=
-  Classical.em P
-
-noncomputable instance truthRepeatable_fixedPoint
-    [xx : REPEATABLE Prop truthCarrier]
-    : Inhabited (
-        xx.typical_response
-          xx.repeatable_process.expectation
-          xx.repeatable_process.expectation
-        ∨
-        ¬ (xx.typical_response
-             xx.repeatable_process.expectation
-             xx.repeatable_process.expectation)) :=
-  ⟨truthPhase
-      (xx.typical_response
-         xx.repeatable_process.expectation
-         xx.repeatable_process.expectation)⟩
+-- `truthPhase`/`truthRepeatable_fixedPoint` removed (no axiom of choice): they
+-- used `Classical.em` to inhabit `R ∨ ¬R` for an ARBITRARY `[xx : REPEATABLE
+-- Prop truthCarrier]`, whose `R = xx.typical_response e e` is abstract -- so no
+-- constructive witness exists for generic `xx`. The instance had no consumer, so
+-- deletion removes the excluded-middle root cleanly. (If a hidden typeclass use
+-- surfaces at build, re-add a SPECIALIZED constructive instance: for the concrete
+-- REPEATABLE_BINARY carrier, `expectation = .hypothesis ..` and `iterate` returns
+-- `.signal_response ..`, so `R` is false and `Or.inr` closes it without choice.)
 
 noncomputable instance truthSymbolInhabited :
     Inhabited truthDistinct.symbol :=

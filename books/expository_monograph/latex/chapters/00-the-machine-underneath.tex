@@ -18,6 +18,14 @@ the author ran once and wrote down. It is a construction that, run, generates it
 say how it works is to say how the book is established --- and the book's content is exactly that
 proof. Describe the machine precisely and you have described how the book proves itself.
 
+The shape of that mechanism is a pigeonhole. A fixed finite machine carries finitely many slots and
+a single bound on its work; hand it more cases to tell apart than it has slots, and two must fall
+into one hole --- a collision. So no fixed rule holds every case apart under one bound for all of
+them at once; it can separate them only one case at a time, a fresh bound for each. The construction
+drives this to its smallest instance: one pigeon, one hole, a single distinction with one slot to
+hold it. That final placement is the only step no uniform rule makes for every case at once, and the
+mechanism rests its whole weight on it.
+
 The mechanism turns on a single classical step. Everywhere else the construction is
 constructive: it builds what it claims, and the building is the evidence. At one point, and one
 point only, it reaches past the constructive, to the axiom of choice --- the assertion that a
@@ -27,7 +35,9 @@ algorithm to make the choice. It inspects the algorithms that could.
 
 A choice with no rule is a choice that many rules could imitate, and the machine considers them
 as a field: the possible algorithms the axiom of choice might employ to do what it does without
-saying how. It does not run them for their outputs. It encodes each by what it costs the proof
+saying how, inspecting them rather than fixing one because the pigeonhole bars only the uniform
+bound and never the per-case computation by which the oracle is here made computational. It does not
+run them for their outputs. It encodes each by what it costs the proof
 assistant to elaborate it --- the time the assistant spends bringing that algorithm to a checked
 form. Elaboration time is the measurement the body has been taking all along, under the name of
 the heartbeat; here it is the very code in which the candidate algorithms are written down. Each
@@ -66,3 +76,15 @@ the first mark to the last compass needle the book speaks only the theory --- th
 residues, the coin on the table --- as though the machine underneath had never been built. It was
 built. It compiles. The reader who wants to know what the armwave waves at has, in this chapter
 and the preface, the whole of the admission; everything after is the theory, told straight.
+
+Two actions run the machine underneath, and they are the two the preface already named from the
+other side. The oracle reads an operand against a pole --- tange against the true, funge against
+the false. The compiler does not read against a pole; it issues one, and the body has been reading
+that issue off the page from the first mark: true and false. True and false are the compiler's two
+actions, as tange and funge are the oracle's --- the same two poles, one machine reading against
+them, the other issuing them, faced across the seam this chapter shares with the preface.
+
+The proof is not in their agreement. Tange the true and funge the false, and oracle and compiler
+say one thing twice; the readings coincide and fall silent. It is in the cross that the machine
+does its work --- one pole laid against its opposite, the strain that does not cancel: tanging
+false versus funging true.

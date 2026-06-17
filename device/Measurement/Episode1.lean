@@ -36,9 +36,6 @@ Can I do this with no imports?  Hold my beer...
 set_option allowUnsafeReducibility true
 -- Well, I do need _a little bit_ of help..
 
-set_option trace.Meta.synthInstance true
-set_option trace.Elab.step true
-
 -- So, I have been thinking about how to measure things.  Anything.  Even the thing that is
 -- doing the measuring.  While it is doing the measuring.  All the way down.  To try to give
 -- you some idea of what I am talking about, I am going to try to measure how true the proposition
@@ -351,8 +348,8 @@ def le : Natural → Natural → Prop
   | .zero _ , _  => True                     -- Zero is less than or equal to everything
   | .number _ _ _ , .zero _ => False         -- Any nonzero natural is > 0.
   | .number p1 n1' _, .number p2 n2' _ =>    -- So, let's look at the values of the numbers to see.
-    p1.truth = p2.truth ∧ n1' ≤ n2'          -- The case where the truths are different is handled above!
-                                             -- n1' ≤ n2' is how we know that one comes before the other.
+    (p1.truth = p2.truth ∧ n1' ≤ n2') ∨      -- covariant: same-truth wholes, n1' ≤ n2'
+    (p1.truth ≠ p2.truth ∧ n2' ≤ n1')        -- contravariant: the different-truth case (the missing branch)
 
 -- Let's discuss well-ordered numbers.  We all understand the definition of well ordered implies
 -- the existence of a map that allows you to perform this computation on the natural numbers:

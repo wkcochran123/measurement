@@ -269,13 +269,7 @@ theorem diagonal_zero_detects_of_positive_definite
     forall x,
       spd.form.a x x = 0 -> x = spd.form.zero := by
   intro x hDiagonal
-  by_cases hx : x = spd.form.zero
-  · exact hx
-  · have hPositive :
-        0 < spd.form.a x x :=
-      spd.positive_definite x hx
-    rw [hDiagonal] at hPositive
-    exact False.elim ((Int.lt_irrefl (0 : Int)) hPositive)
+  exact spd.nullspaceKilled.diagonal_zero_detects x hDiagonal
 
 theorem positive_definite_of_nullspaceKilled
     (form : GalerkinBilinearForm)

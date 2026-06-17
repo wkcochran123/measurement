@@ -66,276 +66,844 @@ a claim to have crossed, but a precise account of what crossing would cost.
 
 \section{The Sobolev/Hilbert Door and the Finite Skeleton}
 
-The chapter begins by saying what the door is, because the whole chapter turns on keeping
-the door's obligations distinct from the apparatus's credentials. A Sobolev-and-Hilbert
-door is an interface: a list of what a completed function space must provide, written so
-that the finite apparatus can present what it has and name what it lacks.
+The previous chapter left the apparatus with a clean finite ledger and a
+closed finite residue account, but not with a completed space. This section
+opens Chapter 16 by naming the door that separates those two achievements. The
+door is not a theorem that the finite apparatus has already proved. It is an
+interface: a reader-facing list of the structures and hypotheses that would
+allow the finite construction to be read inside Sobolev and Hilbert language.
+The discipline of the chapter begins here, with the distinction between a
+credential already built and an obligation only named.
 
-The door requires four things. It requires a space with a norm that detects zero --- a
-length whose vanishing forces the trivial vector. It requires a pairing, an inner-product
-shadow, symmetric and vanishing on the zero vector. And it requires two further properties
-carried not as constructions but as named tokens: coercivity, that the norm controls the
-vector, and completeness, that the space is closed under the limits its norm permits.
-Written as an interface:
+On the built side, the apparatus brings the three-rung object, its
+zero-detecting norm, its finite pairing, its countable ledger of finite
+conditions, and the finite gauge residue left by the mixed pair. These are not
+decorations. The norm is meant to detect the trivial vector: if its length
+vanishes, the finite representative has collapsed to zero. The pairing is the
+finite shadow of an inner product, symmetric in the relevant entries and
+harmless on the zero vector. The ledger is countable because the preceding
+chapter coded finite partial commitments by natural numbers. The residue is
+finite because the vacuum/linear part has closed and the mixed-pair charge is
+what remains. Those are the credentials presented at the threshold.
+
+On the completion side, the door asks for more than the apparatus has built. It
+asks for coercivity, so that the norm controls the object strongly enough to
+support analytic comparison. It asks for completeness, so that Cauchy motion in
+the norm has a place to land. It asks for density, so that the countable
+skeleton is not merely countable but genuinely approximating. It asks for a
+continuum pairing, so that the finite pairing can be read as the trace of a
+completed Hilbert structure rather than only as a finite table. These are
+obligations, not hidden conclusions. The section names them so that later
+claims can say exactly where their analytic strength enters.
+
+The door can therefore be summarized as a compact contract:
 \[
-  \text{door} = \big(\,\text{norm with } \|x\|=0 \Rightarrow x=0,\ \ \text{pairing } \langle\cdot,\cdot\rangle,\ \ \text{coercive (token)},\ \ \text{complete (token)}\,\big).
+  \begin{aligned}
+  \text{door}=\big(&
+    \text{zero-detecting norm},\ \text{finite pairing};\\
+    &\text{coercivity},\ \text{completeness},\
+      \text{density},\ \text{continuum pairing}
+  \big).
+  \end{aligned}
 \]
-The first two the apparatus can supply outright. The last two it carries as obligations ---
-propositions with a marker that they are to be discharged by a continuum theory the
-apparatus does not import.
+The first two entries are supplied by the finite apparatus in the form needed
+to stand at the door. The remaining entries are carried as named hypotheses for
+the completion theory. This notation is intentionally plain. It is not trying
+to smuggle a Hilbert space into the chapter by typography. It is recording the
+minimum vocabulary required before the later sections may speak about a
+completion without pretending that countable finite data alone created one.
 
-The finite three-rung object can stand at this door. It presents the norm the operator
-chapters built, with its proven zero detection; it presents the finite pairing the
-boundary-radiation chapter used; and it carries the completeness token. The norm vanishes
-exactly at the zero vector, the pairing is symmetric and zero on the zero vector --- these
-are theorems the apparatus already has. The completeness, it does not prove; it holds the
-token. The finite object is admissible at the door, in the precise sense that it supplies
-everything the door requires as a construction and carries everything else as a named
-obligation.
+The distinction is also a guard against a common false comfort. A finite norm
+can detect zero without controlling every analytic mode that a completed space
+would contain. A finite pairing can be symmetric without already being the
+inner product of a complete Hilbert space. A countable ledger can enumerate
+finite records without proving that those records approach every continuum
+state. Each finite credential is valuable precisely because it is explicit and
+checkable, but none of them silently acquires the missing analytic clauses. The
+door is the place where those clauses are written in full view.
 
-The point of the section is the discipline of that distinction, and the apparatus is
-emphatic about it. No continuum orthogonality is claimed here, no real Hilbert completion,
-no standard theorem of the larger physics. The door is an interface that names obligations;
-the finite object is a candidate that meets some and tokens the rest. To stand at the door
-is not to have passed through it. It is to have one's credentials in order and one's
-obligations named.
+The finite skeleton is the part of the contract the apparatus can actually
+place on the near side of the door. From Chapter 15 it inherits finite
+conditions, extension, compatibility, merge, finite decision, extensional
+equality, and natural-number coding. Those pieces give a countable family of
+finite records. As a skeleton, the family may be placed inside the named
+completion interface as the candidate dense set. But the word ``candidate''
+matters. Countability is constructed. Density is a completion-side obligation.
+The skeleton is a genuine finite object equipped with a name tag for the
+analytic property it would need in order to become a separable pre-Hilbert
+spine.
 
-Alongside the door sits the finite skeleton, the apparatus's countable contribution to the
-space the door would complete. The forcing ledger of the previous chapter --- finite
-conditions, ordered, coded by natural numbers --- embeds into the door's space, and it
-carries its countable coding with it. For now the embedding is conservative: each condition
-maps to the zero vector, so the embedding's content is carried by the ledger's coding rather
-than by a rich geometric placement. The skeleton is the apparatus saying: here is a
-countable family I can actually build, standing inside the space you would complete, with
-its enumeration intact.
+This is why the section does not yet teach the separable completion story. It
+only prepares the ground for it. The next section can discuss how the
+countable ledger sits as a pre-Hilbert skeleton precisely because this section
+has already separated the earned finite ingredients from the named analytic
+requirements. Without that separation, the phrase ``separable completion''
+would arrive too quickly, as if a natural-number code for finite conditions
+already produced a dense subset of a completed space. The chapter refuses that
+shortcut.
 
-The section's metaphysical anchor is that an interface is an honest way to name what one
-does not have. The apparatus tanges its finite credentials --- norm, pairing, countable
-ledger --- into a candidate at the door, and funges the rest --- coercivity, completeness ---
-forward as named tokens, obligations marked for a theory it does not pretend to be. The door
-is approached, the credentials are presented, and the obligations are written down. Nothing
-is claimed beyond what the finite apparatus can construct, and nothing the continuum would
-require is left unnamed.
+Nor does the section claim the boundary-radiation theorem in continuum form.
+The finite residue is present, and the finite pairing can remember it, but
+continuum orthogonality, Sobolev completion, Hilbert completion, and boundary
+trace all belong to later hypotheses. To stand at the Sobolev/Hilbert door is
+therefore an honest achievement with a limited shape: the finite apparatus has
+credentials in hand, the completion side has obligations named, and the two
+lists are kept separate. The chapter will move forward only by respecting that
+separation.
+
+That limited shape is enough for the chapter's first step. The reader should
+leave this section knowing exactly which side of the threshold each word
+occupies. Norm and finite pairing belong to the apparatus. Countable coding
+belongs to the apparatus. Coercivity, completeness, density, continuum pairing,
+orthogonality, and boundary trace belong to the door-facing hypotheses. The
+finite skeleton may be carried to the door, but the door remains a door: a
+marked place where a completed theory must do work the finite apparatus has
+not done for it.
 
 \section{The Separable Pre-Hilbert Completion Skeleton}
 
-The skeleton of the previous section can be said more precisely, and the precision is the
-subject here. A completion is the closure of a dense countable set, and the apparatus's
-finite ledger is exactly a countable set standing inside the space the door would complete.
-This section names it a separable pre-Hilbert skeleton and is scrupulous about which of
-those words are earned and which are carried.
+The door contract of the previous section has two columns. On the near side are
+finite credentials: a zero-detecting norm, a finite pairing, a countable ledger
+of conditions, and the finite gauge residue. On the far side are obligations:
+coercivity, completeness, density, continuum pairing, orthogonality, and
+boundary trace. This section develops only the near-side object that can be
+carried to that door. It is called a separable pre-Hilbert completion skeleton
+because it has the formal shape that such a completion would need, not because
+the completion has already been supplied.
 
-Separability, in the analytic sense, is the existence of a countable dense subset, and it
-is the property that makes a Hilbert space tractable --- it lets a continuum be approached by
-a sequence. The apparatus's contribution to separability is the countable part, and that
-part is concrete. Every finite forcing condition carries an actual natural-number code,
-built from the codes of its assignments, so the conditions inject into the natural numbers
-and form a genuinely countable family:
+The first earned word is ``countable.'' Chapter 15 did not merely assert that
+the finite records can be listed. It built the listing out of the records
+themselves. A finite condition is a finite set of commitments. Each commitment
+has finitely described coordinates, a finite tolerance, and a finite value
+description. A condition can therefore be read extensionally as a finite list of
+finite data. Once proof-route decorations have been erased by extensional
+equality, two conditions with the same commitments count as the same record for
+the ledger. Finite lists of finite codes have natural-number codes, so the
+ledger has the form
 \[
-  \text{condition} \longmapsto \text{code} \in \mathbb{N},
-  \qquad
-  \text{the conditions are countable, by construction.}
+  p\ \longmapsto\ \ulcorner p\urcorner \in \mathbb{N}.
 \]
-This is not a cardinality assertion; it is a function the apparatus exhibits. The countable
-side of separability is built, not assumed.
+The notation is modest, but the achievement is real. The apparatus has not
+guessed that its conditions are countable; it has made their countability part
+of their receipt.
 
-The dense side, and the completion it sits inside, are tokens. Density --- that the countable
-set comes arbitrarily close to every point of the completion --- requires a completion to be
-close to, and the completion is the very thing the door carries as an obligation. So the
-apparatus marks ``dense'' and ``complete'' as named tokens on the skeleton, carried forward
-to a theory that would discharge them, and it does not pretend the countable coding amounts
-to a density proof. The skeleton is a separable pre-Hilbert skeleton in this exact sense:
-concretely countable, named-dense, sitting inside a tokened completion.
+This is also why extensional equality from the previous chapter is not a
+technical ornament. Without it, the same finite commitments could appear under
+many descriptions, and the ledger would count performances rather than records.
+The skeleton needs records. A countable pre-Hilbert candidate cannot be made
+from the history of how a condition was found; it has to be made from the
+condition's finite content. The grid image from the previous chapter is useful
+here. Two half-filled grids that display the same letters in the same squares
+are the same partial grid, even if one constructor reached it by working across
+and another by working down. Likewise, two finite conditions with the same
+commitments give the same skeleton record. The code belongs to the displayed
+finite fact, not to the route by which the fact was obtained.
 
-The honesty of the naming is the whole content. It would be easy, and wrong, to let
-``countable'' slide into ``countable dense'' and thence into ``separable Hilbert space,''
-collecting analytic strength at each step the apparatus has not paid for. The apparatus
-refuses the slide. It holds exactly one earned property, countability, and two named tokens,
-density and completion, and it keeps them in separate fields so that the earned one cannot be
-cashed for the tokened ones. The pre-Hilbert skeleton is precisely as strong as its
-countable coding and no stronger.
+That countability is the beginning of separability, not the end of it.
+Separability in the analytic sense requires a countable dense subset of a space.
+The finite ledger supplies the countable family. It does not, by that fact
+alone, supply the space in which density is measured, nor does it prove that its
+records approximate every point of such a space. Density talks about distance
+to arbitrary points of a completed object. Completion talks about limits of
+Cauchy motion. Both notions require the far side of the door. The chapter
+therefore keeps the sentence in two pieces: the countable family is built; its
+density in a completed Hilbert or Sobolev object is a named obligation.
 
-The skeleton also carries the gauge residue forward into the completion, as a mapped fact
-rather than a re-derivation. The finite residue --- the vacuum's linear term closes, the
-charge is the mixed pair --- maps into the completion alongside the skeleton, carried by the
-completion token. The apparatus does not re-prove the electron inside the completion; it
-notes that the finite residue it proved earlier travels with the skeleton to the door,
-intact, waiting for the completion that would give it an analytic home.
+The word ``pre-Hilbert'' receives the same treatment. The apparatus has a
+finite pairing and a norm-like zero detector. These give the finite ledger the
+right kind of algebraic posture: records may be compared, paired, and assigned
+length in the finite sense already available. That is enough to organize the
+ledger as a pre-Hilbert skeleton. It is not enough to announce a Hilbert space.
+A Hilbert space would require the completed normed object, the inner product
+that survives completion, and the guarantee that limit processes land where
+they are supposed to land. The skeleton has the finite grammar out of which
+that language could be read. It does not contain the analytic closure of the
+language.
 
-The section's metaphysical anchor is that separability, for a finite apparatus, is a
-countable family honestly named. The apparatus tanges its forcing ledger into a countable
-coded set and funges it to the door as a separable pre-Hilbert skeleton --- countable in
-fact, dense and complete in name. It builds the part of separability it can build and marks
-the part it cannot, and it carries the gauge residue along as a mapped fact rather than a
-fresh claim. The skeleton stands inside the completion the way a countable set stands inside
-the space it would be dense in: really there, and waiting on the completion to say how close
-it comes.
+This distinction is easiest to see by following a single finite record. A
+condition \(p\) has a code \(\ulcorner p\urcorner\). It also has a finite
+support, a finite list of commitments, and whatever finite pairing data the
+door contract allows one to evaluate between it and another finite record. If
+another condition \(q\) extends it, then \(q\) carries all of \(p\)'s
+commitments and perhaps more. If two conditions are compatible, their finite
+merge is still a condition. If a finite question must be decided, a finite
+extension can carry the new commitment. These operations make the ledger
+stable as a finite family. They also explain why the ledger is the right
+candidate to present at the completion door: it has enough internal discipline
+to be transported as a skeleton rather than as a heap of unrelated finite
+marks.
+
+The same operations explain the phrase ``completion skeleton.'' A completion
+story needs approximants that can be compared and refined. Extension gives the
+direction of refinement. Compatibility says when two partial approximants can
+be held together. Merge gives the finite common refinement when there is no
+conflict. Finite decision says that a finite question can be pushed into the
+record by a finite extension. None of these operations says that a limit
+exists. Taken together, however, they give the family the shape of approximants
+for a possible limit theory. The skeleton is not a pile of samples; it is a
+finite directed grammar that a completion hypothesis would know how to read.
+
+But a candidate dense family is still a candidate. The apparatus can say:
+here is the countable family; here are its finite extension and compatibility
+operations; here is the finite pairing; here is the zero-detecting norm; here
+is the residue that the finite gauge bookkeeping leaves. The apparatus cannot
+say, from those facts alone: every point of the completed object is a norm
+limit of this family. That last sentence is exactly where density enters. Nor
+can it say: every Cauchy sequence of skeleton records converges inside an
+already available space. That sentence is exactly where completeness enters.
+The skeleton is therefore threshold-facing. It is prepared for density and
+completion, but it does not impersonate them.
+
+The finite gauge residue travels with this skeleton in the same constrained
+way. Chapter 15 closed the vacuum/linear account and filed the mixed pair as
+the remaining finite charge. The present section does not remake that
+bookkeeping as an analytic theorem inside a completed space. It records how the
+residue is carried by the finite family that stands at the door. Each skeleton
+record may include the finite gauge information already earned: which
+linear/vacuum entries have closed, where the mixed-pair residue remains, and
+how that residue is paired with the geometric side of the construction. When
+the ledger is coded, this gauge information is part of the finite receipt. When
+the ledger is presented as a pre-Hilbert skeleton, the residue comes along as
+finite mapped content, not as a new continuum claim.
+
+That mapped content matters because the completion door is not only a place for
+abstract vectors. It is where the earlier finite geometry and finite gauge
+accounting must be held together without changing their status. If the
+skeleton forgot the residue, the completion story would have cut away one of
+the main facts that Chapter 15 delivered. If the skeleton promoted the residue
+to a Sobolev boundary theorem, it would have crossed the door without paying
+the analytic price. The section avoids both failures. It carries the residue as
+finite data attached to a countable family and leaves the analytic reading of
+that data to the hypotheses that would make the completion legitimate.
+
+The point is subtle but important. A finite gauge residue can be transported in
+two different ways. One way is bookkeeping: a skeleton record remembers that
+the linear/vacuum part has closed and that the mixed pair remains. That is the
+way available here. The other way is analytic interpretation: a completed
+object would provide a normed location, a boundary trace, and an orthogonality
+claim in which that residue could be read as a continuum phenomenon. The
+section refuses to confuse the two. It permits the first transport because the
+finite ledger already supports it. It withholds the second until the door
+hypotheses have done their work.
+
+The resulting object can be described in a compact way:
+\[
+  \mathcal{S}_{0}
+    = \{\,\text{finite coded records with finite pairing and residue data}\,\}.
+\]
+The subscript \(0\) is a reminder of its status. This is the ground skeleton,
+not the completed space. It is countable because its records are coded by
+natural numbers. It is pre-Hilbert in the limited sense that the finite pairing
+and norm data give it the role of a domain on which Hilbert language might be
+extended. It is completion-facing because it is meant to be read inside a
+larger object if the door hypotheses are granted. It is not dense by notation,
+complete by wish, or continuum-valued by proximity to analytic vocabulary.
+
+One may think of \(\mathcal{S}_{0}\) as the chapter's inventory table. Each
+row is a finite record. One column carries its natural-number code. Other
+columns carry support, extension behavior, pairing data, and residue data.
+There may also be columns reserved for later readings: dense-in, complete-in,
+paired-in-the-limit. Those reserved columns are not empty because the chapter
+forgot them; they are empty because filling them would require exactly the
+completion structure the door has not yet granted. The table format is useful
+because it lets the reader see what has a value now and what is only a named
+slot for later discharge.
+
+This compact notation also prevents a common ambiguity. The chapter will later
+speak about continuum certificate families. Those families require addresses
+in the completion: places where geometric and gauge witnesses would sit as
+vectors. The skeleton here is not yet such a family of continuum addresses. It
+is the countable finite family from which such addresses would have to be
+organized. The next section can therefore ask how certificate families should
+be named once a completion interface is on the table. It need not reargue why
+there is a countable finite family available, and it need not pretend that
+availability already provides the continuum addresses.
+
+The separable pre-Hilbert completion skeleton is thus an honest threshold
+object. It carries countability, finite extension, compatibility, finite
+decision, extensional coding, finite pairing, a zero-detecting norm, and the
+finite gauge residue. It names density and completion as obligations still
+waiting on the far side of the door. Its strength is exactly this separation.
+The finite apparatus arrives with a countable disciplined family in hand; the
+completion theory, if admitted, must say how that family becomes dense, how its
+limits are housed, and how its finite pairings become continuum pairings. Until
+those obligations are discharged, the skeleton remains what the chapter says it
+is: a countable pre-Hilbert candidate brought to the threshold, not a completed
+Hilbert or Sobolev theorem.
 
 \section{Continuum Certificate Families}
 
-The space the door would complete is meant to hold certificates --- the geometric and gauge
-witnesses of the earlier chapters, now living as vectors in a continuum. This section names
-those families and is candid about the part it can supply and the part it must mark as a
-placeholder.
+The skeleton of the previous section is a countable finite family brought to
+the completion door. It has records, codes, finite pairings, and finite residue
+content. This section asks what those records would become if the door supplied
+continuum addresses. The answer is a certificate family: not merely a set of
+vectors, and not merely a list of finite witnesses, but a disciplined pairing
+of finite witness content with a door-side address whose analytic placement is
+named rather than built.
 
-A continuum certificate has two parts: a vector in the completed space, and a finite
-witness that says what the vector certifies. The geometric family carries, as its finite
-witness, a geometric program --- the energy-and-boundary object of the geometry chapter. The
-gauge family carries, as its finite witness, the generated gauge program --- the two-channel
-object whose excitation produces the electron. Each certificate is a continuum address
-together with the finite content placed there:
+A continuum certificate therefore has two components:
 \[
-  \text{certificate} = \big(\,\text{vector} \in \text{completion},\ \ \text{finite witness}\,\big).
+  \text{certificate}
+    =
+    \big(\text{door-side address},\ \text{finite witness}\big).
 \]
-The witness is what the apparatus has built; the vector is where, in the completion, the
-witness would sit.
+The second component is the part already earned. It is a finite witness from
+the earlier apparatus: a geometric witness, a gauge witness, a generation rule,
+or a finite residue receipt. The first component is the part the completion
+would have to house. It is called an address rather than a point of an already
+constructed space because the chapter is still standing at the threshold. The
+address says where the witness would live if the completion hypotheses were
+granted. It does not by itself prove that such a completed placement has been
+constructed.
 
-The two families are genuinely coupled, not merely adjacent. The apparatus records that the
-pair is boundary-generated: the geometric witness is the geometric program, and the gauge
-witness is generated from it by the boundary rule. So a continuum certificate pair is
-not two unrelated vectors with labels; it is a geometric certificate and the gauge
-certificate the boundary generates from it, carrying the generation link the geometry
-chapter proved. The families are tied together by the same generation link that tied the two
-channels together.
-
-Now the candor the section owes. The vectors the apparatus can supply concretely are, for
-now, the zero vector of the door. The finite witnesses carry all the content --- the
-generation, the residue, the certification --- while the vectors are placeholders. The
-apparatus does not pretend that the zero vector is the certificate's true continuum
-address; it uses the zero vector exactly because it is available without an analytic
-embedding, and it marks the genuine placement --- a nonzero, dense embedding that would put
-each certificate at a distinct rich point of the completion --- as the analytic upgrade the
-door still awaits:
+This wording matters. A finite witness is content. It says what has been
+certified. A continuum address is placement. It says where that content would
+sit in a completed geometry. The apparatus has content in hand. It has the
+finite geometric record, the finite gauge record, the boundary-generation
+relation, and the mixed-pair residue. What it does not yet have is a dense
+embedding of those witnesses into a completed Hilbert or Sobolev object. The
+certificate notation must therefore keep content and placement separable:
 \[
-  \text{vector} := \text{zero (placeholder)},
-  \qquad
-  \text{genuine nonzero dense embedding} := \text{the named upgrade}.
+  \text{finite witness} \neq \text{completed vector address}.
 \]
-The witnesses are real; the addresses are placeholders; and the apparatus says which is
-which.
+The inequality is not a denial that the two should eventually be related. It
+is a guard against pretending that the relation has already been supplied.
 
-This placeholder is not a weakness to be hidden but a boundary to be marked. The content of
-a certificate --- what it certifies, what residue it carries, how it was generated --- is
-finite and proven, and it travels with the witness regardless of where the vector sits.
-What the zero-vector placeholder withholds is only the continuum geometry of the placement:
-the angles and distances between certificates that a genuine embedding would supply. The
-apparatus has the certificates' content and lacks their continuum geometry, and it places
-the content at the zero vector rather than invent a geometry it has not built.
+This separation also keeps the countable skeleton from doing too much work.
+The skeleton gives an indexable supply of finite records. A certificate family
+adds roles to those records: some records certify geometry, some carry the
+generated gauge content, and paired records remember how the gauge side was
+generated. What the skeleton still does not add is the continuum map that would
+send those records into a completed object with nontrivial positions. Thus the
+certificate family is one step richer than the bare skeleton and one step short
+of a completed analytic family. It has named witnesses sorted by role; it does
+not yet have a completed geometry of their addresses.
 
-The section's metaphysical anchor is that a certificate's content and its continuum address
-are separable, and the apparatus has the first without the second. It tanges each finite
-witness into a continuum certificate and funges it to a placeholder address, holding the
-content fixed and marking the address as provisional. The continuum certificate families are
-real in everything the apparatus built --- the programs, the generation, the residue --- and
-placeholder in exactly one respect, the rich vector a completed geometry would assign. The
-apparatus names the families with that one honesty attached.
+The geometric family is the first certificate family to name. Its finite
+witnesses come from the geometric side of the earlier chapters: the
+energy-and-boundary record, the finite support, the boundary reading, and the
+geometric role that organized the certificate sector. These witnesses are not
+anonymous labels. They carry the finite structure that made the geometric
+sector a certificate sector in the first place. A geometric continuum
+certificate would place such a witness at a door-side address:
+\[
+  G_i = \big(g_i^{\mathrm{addr}},\ w_i^{\mathrm{geom}}\big).
+\]
+Here \(w_i^{\mathrm{geom}}\) is the finite geometric witness. The address
+\(g_i^{\mathrm{addr}}\) is the named completion-side placement. The notation
+does not claim that the placement is already nonzero, dense, or complete. It
+only gives the future completion theory a precise slot to fill.
+
+The gauge family is named in parallel, but not as an independent decoration.
+Its finite witnesses come from the gauge side: the generated gauge program, the
+two-channel bookkeeping, the closed linear/vacuum part, and the mixed-pair
+residue that survives as charge. A gauge continuum certificate would have the
+same two-component form:
+\[
+  Q_i = \big(q_i^{\mathrm{addr}},\ w_i^{\mathrm{gauge}}\big).
+\]
+Again, the witness is finite content and the address is completion-side
+placement. The section does not say that \(q_i^{\mathrm{addr}}\) already lives
+as a rich vector with all analytic relations in place. It says that if the
+door is crossed, this is the kind of address the gauge witness must receive.
+
+The two families are related because the earlier apparatus related them. The
+gauge witness is not merely adjacent to the geometric witness; it is generated
+from the geometric side by the boundary rule. That generation link is finite
+content, so it belongs inside the witness side of the certificate. For a paired
+record the intended form is
+\[
+  \begin{aligned}
+  (G_i,Q_i)
+    &=
+      \big((g_i^{\mathrm{addr}},w_i^{\mathrm{geom}}),
+          (q_i^{\mathrm{addr}},w_i^{\mathrm{gauge}})\big),\\
+  w_i^{\mathrm{gauge}}
+    &\text{ is boundary-generated from } w_i^{\mathrm{geom}}.
+  \end{aligned}
+\]
+The relation on the right is the earned finite relation. The addresses on the
+left are named positions in the completion interface. This is the correct
+division of labor: the generation link is carried forward as a fact; the
+continuum placement of the related pair remains an obligation.
+
+The pairing of families should therefore not be read as a product of two
+completed vector families. It is a product of two witness families together
+with two requested address families. The finite relation says which geometric
+witness gives rise to which gauge witness. A completed theory would then have
+to place the two addresses in a way that respects that relation. It would have
+to say how nearby, orthogonal, trace-compatible, or boundary-related those
+addresses are. Those words belong to the completion side. The present section
+only ensures that when those words are later used, they will attach to the
+right finite witnesses rather than to anonymous vectors.
+
+The placeholder issue can now be stated without embarrassment. The apparatus
+can always use the zero address as a formally available address at the door.
+That use does not make the certificate trivial, because the finite witness
+still carries the content. But it also does not make the zero address the true
+continuum placement of the certificate. The zero address is a placeholder used
+when no analytic embedding has been granted:
+\[
+  \begin{array}{c}
+  \text{available address now} = 0,\\
+  \text{rich certificate placement}
+    = \text{named completion upgrade}.
+  \end{array}
+\]
+The witness says what is real on the finite side. The placeholder says what is
+not yet real on the completion side. The notation is honest only if both
+sentences remain visible.
+
+The placeholder also preserves the distinction between existence of a slot and
+occupation of the slot. The door interface can reserve a place for a geometric
+address and a gauge address even when the only universally available address is
+zero. Reserving the place is useful: it lets later hypotheses state what must
+be upgraded. Occupying the place with a nonzero vector is a stronger act. It
+would require an embedding, a completed norm, and enough density to make the
+certificate family more than a formal placement. The chapter is allowed to
+reserve the slot now. It is not allowed to pretend the slot has been occupied
+with analytic substance.
+
+This honesty blocks two opposite mistakes. The first mistake would be to throw
+away the certificate families because their rich addresses have not yet been
+constructed. That would forget the finite witnesses, generation rules, and
+residue receipts the apparatus actually earned. The second mistake would be to
+promote the placeholder addresses into a continuum geometry. That would invent
+angles, distances, nonzero placements, and dense behavior that the door has not
+provided. The section takes neither route. It says: the families are real as
+finite witness families; their addresses are provisional until the completion
+hypotheses supply the analytic placement.
+
+This is why the word ``family'' is still appropriate. The finite witnesses are
+not one collapsed object. They remain indexed by their finite records and
+their roles. A geometric witness may certify one finite boundary record; a
+gauge witness may carry the generated residue for the corresponding record.
+The address placeholders do not erase that indexing. They simply fail to add
+continuum separation. So the apparatus can speak of two certificate families
+without claiming that it has already distributed them across a completed
+space. Family structure is earned by the finite ledger and generation rule;
+continuum distribution remains named.
+
+The distinction also explains why this section does not yet prove
+orthogonality. Orthogonality is a statement about a pairing in the completed
+object. The finite apparatus has a sector split and a finite cross-pairing
+discipline. It can carry those facts as witness content. But to say that
+geometric and gauge certificate vectors are orthogonal in the continuum
+requires the continuum pairing and the completed addresses that S01 listed as
+door-side obligations. S04 will ask for exactly that interface: orthogonality,
+Clifford compatibility, and boundary trace. S03 prepares the families to which
+those conditions would apply. It does not silently satisfy the conditions.
+
+The same is true of boundary trace. The finite witness may remember a boundary
+reading and the residual charge. It may remember that the gauge witness was
+generated from the geometric side. What the present section does not supply is
+a Sobolev boundary trace operator on a completed space. The trace is a later
+analytic reading of the address, not a property of the witness alone. This
+separation keeps the finite boundary record intact while preventing it from
+becoming a completed boundary theorem by a change of vocabulary.
+
+The same caution applies to density. A countable family of certificates is not
+automatically dense in anything. Countability came from finite coding. Density
+would say that completed addresses approximate all the points the relevant
+space requires. That sentence needs a space, a metric or norm, and a completed
+address map. The present section deliberately stops before that sentence. It
+prepares a countable family that could be tested for density once the door
+hypotheses are supplied; it does not claim the test has been passed.
+
+One can summarize the section's status in a small ledger:
+\[
+  \begin{array}{c|c|c}
+  \text{fam.} & \text{finite content} & \text{address obligation} \\
+  \hline
+  G & \text{geometric witness} & \text{geometric placement} \\
+  Q & \text{gauge witness/residue} & \text{gauge placement}
+  \end{array}
+\]
+The left and middle columns are available to the finite apparatus. The right
+column is the door-facing slot. A genuine completed theory would have to fill
+that slot with nontrivial addresses, compatible pairings, and whatever density
+or trace behavior the later claims require. The present section earns only the
+right to name the slot without confusing it with the witness.
+
+The ledger also shows the order of dependence. First come finite witnesses.
+Then comes the relation between witnesses: geometric content generates gauge
+content at the boundary. Then come address slots, one for each side of the
+relation. Only after those slots are filled can the chapter ask for continuum
+relations among the addresses. This order prevents S04 from floating free. Its
+orthogonality and trace requirements will not be requirements on a vague
+continuum; they will be requirements on the very address slots named here.
+
+The metaphysical anchor is that a certificate is not exhausted by its address.
+It has content and placement, and the finite apparatus owns only the content
+side for now. The geometric and gauge families carry real witnesses, a real
+generation link, and a real finite residue account. Their continuum addresses
+are provisional marks in the completion interface. That is enough to let the
+chapter proceed to the next question: if such addresses are granted, what must
+orthogonality, Clifford compatibility, and boundary trace require of them?
 
 \section{Orthogonality, Clifford Compatibility, and the Boundary Trace}
 
-The boundary-radiation result of the earlier chapter was finite: a split orthogonal by type,
-a Clifford obstruction closing the interior, a boundary flux equal to the terminal residual.
-This section lifts all three to the door, restating each as an interface the continuum theory
-would carry. Each lift proves the continuum-shaped statement at the apparatus's placeholder
-and names the genuine analytic content as the obligation behind it. The three together are
-the structure the chapter's conditional theorem will require.
+The previous section named two certificate families. Each certificate carried
+finite content on one side and a door-facing address obligation on the other.
+This section asks what must be true of those addresses before the finite
+boundary-radiation pattern can be read as a continuum statement. The answer has
+three parts. The geometric and gauge addresses must be orthogonal in the
+completed pairing. The Clifford action must remain compatible with that
+orthogonality, so that the mixed scalar obstruction survives the passage to the
+door. The generated gauge witness must admit a boundary trace whose value
+matches the finite residual it was built to carry. These are not new theorems
+proved by the finite ledger. They are the named compatibility obligations that
+the next section will place in the antecedent of its conditional result.
 
-Take orthogonality first. In the finite setting the geometric and gauge sectors were
-orthogonal by type --- their cross-pairing was zero by construction. The door-facing version
-asks for orthogonality in the continuum pairing: the geometric certificate's vector and the
-gauge certificate's vector pair to zero in the door's inner product,
+The order matters. S03 did not hand us a completed Hilbert space full of rich
+vectors. It handed us certificate records:
 \[
-  \langle G.\text{vector},\, Q.\text{vector} \rangle = 0.
+  \begin{array}{c}
+  \text{finite witness content} \\
+  \text{door-side address obligation}
+  \end{array}
 \]
-At the placeholder this is immediate: the vectors are the zero vector, and the pairing
-vanishes on the zero vector, so the continuum-shaped orthogonality holds at the door. The
-apparatus is exact that this is the zero-vector lift --- the statement is proven at the
-placeholder, and the genuine content, orthogonality of two nonzero dense embeddings, is the
-analytic upgrade the door awaits. The finite split's orthogonality lifts to the door; the
-continuum orthogonality of rich vectors is named, not yet proven.
+The finite witness content is real. It includes the finite sector split, the
+finite Clifford obstruction, and the finite boundary residue produced by the
+generation rule. The address obligation is different. It says where the
+certificate would have to live once a completion is supplied. The present
+section therefore speaks in a double register. It preserves the finite shadows
+as genuine inherited content, and it names the analytic conditions that would
+make those shadows substantive after completion.
 
-Next the Clifford obstruction. In the finite setting the Clifford anticommutator equaled
-minus twice the pairing, so orthogonality killed the scalar cross-term and forbade an
-interior mixed certificate. The door-facing version makes this a rule about the continuum
-pairing: a continuum Clifford structure is compatible when orthogonality forbids an interior
-mixed scalar certificate,
+Start with orthogonality. In the finite theory the geometric and gauge sectors
+are separated by type. Their cross-pairing vanishes because the finite
+apparatus can distinguish the two kinds of witness before any analytic limit is
+introduced. This is an earned finite fact. What S04 needs at the door is the
+corresponding condition on the addresses:
 \[
-  \langle x, y \rangle = 0
-  \;\Longrightarrow\;
-  \text{no interior scalar mixed certificate between } x \text{ and } y.
+  \langle g_i^{addr}, q_j^{addr} \rangle_{\mathcal H} = 0
+  \qquad\text{whenever the completed pairing is defined.}
 \]
-The apparatus supplies a compatible structure and proves, from the door orthogonality of the
-previous lift, that the three-rung certificates admit no continuum interior mixed
-certificate. The finite Clifford obstruction becomes a door-facing compatibility rule, and
-the rule holds at the placeholder; the genuine continuum Clifford algebra, with its real
-anticommutator, is the named analytic content behind it.
+The notation is intentionally conditional. It presupposes a completed pairing
+\(\langle -, - \rangle_{\mathcal H}\) and address placements for the
+geometric and gauge certificates. The finite construction supplies neither a
+completed inner product nor a dense embedding theorem here. It supplies the
+finite split whose completed counterpart would have to satisfy the displayed
+orthogonality equation.
 
-Last the boundary trace. In the finite setting the generated boundary residue was read as a
-flux equal to the terminal residual --- the electron, read at the boundary. The door-facing
-version makes this a functional on the gauge certificates: a boundary trace reads a flux and
-a terminal residual, and the two agree on the generated representative,
+The zero placeholder clarifies the grammar but not the substance. If both
+addresses are interpreted as the distinguished zero address, then the displayed
+equation has a formal shadow: zero pairs to zero. That shadow is useful because
+it shows that the address slot has the right type of shape and that the
+finite-to-door bookkeeping is coherent. It is not the continuum orthogonality
+claim the chapter ultimately cares about. A nontrivial orthogonality claim
+would require nonzero or otherwise rich placements of the geometric and gauge
+families, a completed pairing on those placements, and a proof that the pairing
+vanishes on the intended cross-terms. The finite split tells us exactly what
+the condition should be. It does not discharge that condition.
+
+There is a further reason to state the orthogonality obligation at the level of
+addresses rather than at the level of witnesses. A finite witness can remember
+which sector it came from, but an analytic vector can forget its origin unless
+the placement map preserves it. The obligation therefore has two pieces. First,
+there must be a placement map that sends geometric witnesses to geometric
+addresses and gauge witnesses to gauge addresses without collapsing the
+distinction. Second, the completed pairing must respect that distinction by
+annihilating the cross-pairings that the finite split already knows how to
+annihilate. Written schematically, the completed theory must make the square
 \[
-  \text{flux}(Q) = \text{terminal residual}(Q)
-  \qquad\text{for the generated } Q.
+  \begin{array}{ccc}
+  \text{finite sector split} & \longrightarrow & \text{finite zero cross-term} \\
+  \downarrow & & \downarrow \\
+  \text{address placement} & \longrightarrow & \text{completed zero cross-term}
+  \end{array}
 \]
-The apparatus supplies such a trace and proves the agreement on the generated certificate,
-inheriting it from the finite boundary-radiation result. The boundary trace becomes a
-continuum functional; the agreement holds at the generated representative; and the genuine
-trace operator of a Sobolev theory --- the one that restricts a function to a boundary and
-reads its flux --- is the named analytic content the functional shadows.
+commute in the only sense relevant here: the zero cross-term seen finitely must
+remain zero after placement. This is not a density assertion. It is a
+preservation assertion.
 
-Seen together, the three lifts are one move repeated: take a finite result, restate it as a
-door-facing interface, prove the interface at the apparatus's placeholder, and name the
-genuine analytic content as the obligation behind it. Orthogonality, Clifford compatibility,
-and the boundary trace are exactly the three structural ingredients a continuum
-boundary-radiation theorem would need, and the apparatus has shadowed each with a finite
-fact it already proved. The interfaces are real; the placeholders are honest; the analytic
-content is named.
+This distinction prevents two common mistakes. The first mistake is to treat
+the finite sector split as if it automatically generated orthogonal vectors in
+a completed space. The second is to dismiss the finite split because it does
+not yet do so. The right reading sits between them. The finite split is the
+reason the orthogonality obligation has a canonical form. The completion
+hypotheses are what would make that form analytically true. Thus the
+orthogonality requirement is neither an empty slogan nor a completed result; it
+is an exact address-level condition carried forward from finite content.
 
-The discipline of the placeholders deserves one more word, because it is what keeps the
-lifts from overclaiming. Each lift is proven at the zero vector, and the zero vector makes
-several statements trivially true --- the pairing vanishes on it, so orthogonality is free
-there. The apparatus does not mistake that freedom for the theorem. It knows that the
-content of the lift lives in the nonzero embeddings it has not built, and it presents the
-zero-vector versions as what they are: the continuum-shaped statements, holding at the
-placeholder, with the substantive analytic versions named as the upgrade. The lifts show the
-shape of the continuum theorem; they do not claim its substance.
+The second obligation is Clifford compatibility. Earlier finite chapters used
+the Clifford relation to turn orthogonality into an obstruction. In the finite
+setting, the mixed scalar part is governed by the same pairing that separates
+the sectors. When the pairing cross-term is zero, the interior mixed scalar
+certificate has nowhere to live. At the door, this becomes a compatibility
+condition between three pieces of structure:
+\[
+  \begin{array}{c}
+  \text{completed pairing} \\
+  \text{Clifford action} \\
+  \text{mixed scalar certificate rule.}
+  \end{array}
+\]
+The condition says that the Clifford action must read the completed pairing in
+the same way the finite obstruction read the finite pairing. In particular,
+\[
+  \langle g_i^{addr},q_j^{addr}\rangle_{\mathcal H}=0
+\]
+should prevent the completed Clifford interpretation from reintroducing an
+interior mixed scalar certificate by another route.
 
-The section's metaphysical anchor is that a finite result can name its own continuum
-obligation. The apparatus tanges each finite fact --- orthogonality, the Clifford
-obstruction, the boundary trace --- into a door-facing interface and funges it to the
-placeholder, proving the shape and naming the substance. The three interfaces are the
-finite boundary-radiation result told as a list of continuum obligations, each real in shape
-and honest in placeholder. They are the antecedents the next section's conditional theorem
-will require, assembled here and marked for what they assume.
+One compact way to state the obligation is:
+\[
+  \langle x,y\rangle_{\mathcal H}=0
+  \quad\Longrightarrow\quad
+  \operatorname{mix}_{Cl}(x,y)=0,
+\]
+where \(\operatorname{mix}_{Cl}\) names the scalar mixed component read through
+the chosen Clifford-compatible structure. This formula should be read as a
+requirement on a future completed structure, not as an assertion that the
+structure has already been constructed. The finite theory supplies the pattern:
+orthogonality kills the scalar obstruction. The completion must supply the
+objects on which that pattern can act: address placements, a completed pairing,
+a Clifford action, and a proof that the action respects the pairing in the
+needed way.
+
+The placeholder again gives only a formal shadow. At the zero address the mixed
+term may vanish for the same reason every bilinear or scalar term vanishes at
+zero. That is not the obstruction theorem. The obstruction theorem is about
+nontrivial geometric and gauge content retaining their separation after the
+door is crossed. S04 therefore refuses to say that the Clifford compatibility
+has been proved. It says that the finite Clifford obstruction determines the
+compatibility condition the completed theory must satisfy. The condition is
+sharp enough to be useful: if a proposed completion allows the mixed scalar
+term to reappear despite the orthogonality condition, then it has failed to
+preserve the finite obstruction.
+
+The compatibility requirement also explains why orthogonality alone is not
+enough. A completed pairing could make the geometric and gauge addresses
+orthogonal while a separately chosen Clifford action failed to respect that
+pairing. Such a structure would have the right inner-product sentence and the
+wrong algebraic behavior. The finite result tied the two together: the scalar
+part of the Clifford relation was controlled by the same pairing that expressed
+sector separation. The door must keep that tie. Thus the completed Clifford
+action is not merely an extra decoration placed on the completed space. It is a
+test of whether the completed space has remembered the finite obstruction in
+the right algebraic language.
+
+For this reason, the mixed scalar certificate is the best diagnostic object. If
+it appears in the interior, the completion has lost the finite story. If it is
+blocked only because all addresses were replaced by zero, the completion has
+not yet gained the substantive story. The desired situation is sharper: rich
+geometric and gauge addresses are present, the completed pairing makes the
+intended cross-term vanish, and the Clifford action converts that vanishing
+into the absence of an interior scalar mixed certificate. The section names
+that situation because S05 will need it as a hypothesis.
+
+The third obligation is the boundary trace. The finite boundary pattern has a
+generated gauge witness whose residual is read at the boundary.
+In the finite language this residual is terminal: it is what remains after the
+interior mixed certificate is obstructed. At the door the same fact must be
+expressed through a trace:
+\[
+  \operatorname{Tr}(q_i^{addr}) =
+  \operatorname{res}(w_i^{gauge})
+  \qquad\text{for generated gauge certificates.}
+\]
+Here \(\operatorname{res}(w_i^{gauge})\) belongs to the finite witness content.
+The trace \(\operatorname{Tr}\) belongs to the analytic side. The equation
+therefore crosses the same boundary as the rest of the chapter: finite residue
+on one side, completed boundary functional on the other.
+
+This trace requirement is deliberately modest. It does not assert a Sobolev
+space has been completed. It does not assert that a trace operator exists for
+all relevant elements. It does not identify the finite residual with a
+physical flux by fiat. It says what must be true if the generated gauge witness
+is to be read as boundary radiation in a completed setting: the completed
+address of that witness must lie in the domain of a trace, and the trace value
+must preserve the finite residual assigned by the generation rule. The finite
+construction owns the residual and the generation link. The analytic
+completion must own the domain, the trace map, and the preservation statement.
+
+The trace obligation has its own preservation square. The finite construction
+starts with a generated gauge witness and a residual value. The analytic side
+must start with the address of that generated witness and a trace map. The
+square says that tracing the address must recover the same residual that the
+finite construction assigned:
+\[
+  \begin{array}{ccc}
+  w_i^{gauge} & \longmapsto & \operatorname{res}(w_i^{gauge}) \\
+  \downarrow & & \uparrow \\
+  q_i^{addr} & \longmapsto & \operatorname{Tr}(q_i^{addr})
+  \end{array}
+\]
+The arrows here are explanatory rather than new machinery. They mark the
+preservation demand. The finite side does not construct the lower horizontal
+arrow, and the analytic side may not rewrite the upper value. Agreement is the
+point: the boundary reading must preserve the residual, not replace it with a
+new quantity that merely resembles it.
+
+This is also where the word ``boundary'' earns its restraint. The finite
+residual was already boundary-facing, but a boundary-facing finite record is
+not yet a trace theorem. A trace theorem would require a domain, a boundary
+operator, and a statement that the generated representative lies in that
+domain. Until those are supplied, the residual remains finite content awaiting
+an analytic reader. The chapter can say exactly what the reader must do; it
+cannot claim the reader exists just because the finite record is ready for it.
+
+The generation link is the thread that ties the three obligations together. A
+geometric witness does not merely sit beside a gauge witness. Earlier chapters
+made the gauge witness arise from the geometric side as the boundary-facing
+residue of the mixed obstruction. S03 preserved this relation at the level of
+finite witness content. S04 now asks the completed addresses to preserve it as
+well. Orthogonality separates the two address families. Clifford compatibility
+explains why the interior mixed scalar certificate remains obstructed. The
+trace condition says where the generated residual is allowed to appear: at the
+boundary, as the value of the trace on the generated gauge representative.
+
+This gives the section a useful ledger:
+\[
+  \begin{array}{c|c|c}
+  \text{finite shadow} & \text{door obligation} & \text{analytic content} \\
+  \hline
+  \text{sector split} & \text{orthogonality} & \text{completed pairing} \\
+  \text{Clifford obstruction} & \text{compatibility} & \text{Clifford action} \\
+  \text{boundary residue} & \text{trace agreement} & \text{trace operator}
+  \end{array}
+\]
+The first column is inherited. The second column is what the chapter now names.
+The third column is what a nontrivial completion must provide. This table is
+also a guard against overclaiming: none of the items in the third column is
+created merely by naming it. The table records obligations, not completed
+analytic infrastructure.
+
+One can now see why the three obligations must be stated together rather than
+as independent wishes. Orthogonality without Clifford compatibility would give
+a silent pairing but no obstruction. Clifford compatibility without a trace
+would block the interior mixed scalar term but leave the residual with no
+boundary reading. A trace without orthogonality and Clifford compatibility
+would read a residual whose interior origin had not been controlled. The finite
+boundary-radiation result had all three pieces at once: separation,
+obstruction, and boundary residue. The door-facing version must keep the same
+simultaneity.
+
+The simultaneity is especially important for the generated gauge witness. The
+gauge witness is not an arbitrary element selected after the fact. It is the
+one produced by the finite generation relation from the geometric side. The
+completed theory therefore has to preserve not only a pair of isolated
+addresses but also the fact that the gauge address is the address of the
+generated witness. Otherwise a completion could satisfy a trace equation for
+some gauge-like element while losing the specific finite source of that
+element. The chapter refuses that shortcut. The boundary trace must apply to
+the generated representative, and the generated representative must still be
+linked to the finite obstruction story.
+
+The zero placeholder belongs in the ledger only as a diagnostic. It can show
+that the formulas are well formed at the door. It can confirm that the record
+has a place for a geometric address, a gauge address, a Clifford reading, and a
+trace reading. It can even make certain equations formally true in the most
+degenerate case. But a degenerate witness is not the theorem. The theorem
+would require rich addresses carrying the finite content through a completion
+without losing the sector split, the Clifford obstruction, or the generated
+residual. The placeholder tells us that the slot is coherent. It does not fill
+the slot with the continuum object.
+
+There is a productive use of the placeholder nevertheless. It allows the
+chapter to separate type discipline from analytic achievement. Type discipline
+asks whether the records have the right fields, whether the formulas mention
+the right objects, and whether the equations are shaped so that a future
+completion could interpret them. Analytic achievement asks whether nontrivial
+placements, pairings, actions, and traces have actually been supplied. The
+placeholder can support the first question. It cannot settle the second. This
+separation is what lets S04 be precise without being inflated.
+
+This is why the section keeps returning to preservation. A completion that
+forgets the finite split is too coarse. A completion that supplies a pairing
+but lets the Clifford action ignore that pairing is incompatible. A completion
+that carries gauge addresses but provides no trace, or a trace that fails to
+read the generated residual, breaks the boundary-radiation interpretation. The
+finite construction gives a compact test suite for any proposed analytic
+upgrade: preserve separation, preserve the obstruction, and preserve the
+boundary reading. Failure of any one of the three means the conditional theorem
+in the next section cannot be invoked.
+
+The result is a clean division of labor. The finite side contributes witnesses,
+sector distinctions, the mixed obstruction, and the residual bookkeeping. The
+completion side must contribute a completed inner product, nontrivial address
+placements, a Clifford action compatible with that inner product, a trace
+operator, and preservation of the finite generation link. The chapter does not
+pretend those two sides are the same achievement. It uses the first to state
+the exact hypotheses required of the second.
+
+Thus S04 is not a proof of continuum orthogonality, continuum Clifford algebra,
+or Sobolev trace. It is the place where those three requirements become
+explicit and coordinated. S03 gave the certificates addresses. S04 tells those
+addresses what they must satisfy. S05 can now state the generalized
+boundary-radiation claim honestly: if the address placements are orthogonal, if
+the Clifford action is compatible, if the generated gauge witness has the
+right trace, and if the remaining completion hypotheses are supplied, then the
+finite boundary-radiation pattern has a legitimate continuum reading.
 
 \section{Generalized Boundary Radiation as a Conditional Theorem}
 
-The chapter --- and, in its largest reach, the book --- arrives at its frontier result, and
-the result is a conditional. This section states it as one, plainly, because the honest
-shape of a finite theory's claim about the continuum is an implication: given the named
-analytic obligations, the boundary-radiation theorem follows. The apparatus has assembled the
-antecedents in the previous sections; here it adds the last one and states the implication.
+The chapter now reaches the form of the frontier theorem. It is not an
+unconditional theorem of analysis, and it is not a proof that the finite
+construction has already built the completed boundary space. It is a conditional
+theorem with its conditions written on the face of the statement. The preceding
+sections have not been leading to a sleight of hand in which finite data suddenly
+become a continuum theorem. They have been preparing an implication: if the
+completion supplies the placements, pairings, actions, traces, preservation
+facts, and convergence facts that the finite apparatus has isolated, then the
+boundary-radiation pattern produced in the finite theory has a legitimate
+continuum reading.
 
-The last antecedent is convergence in the completion norm. The apparatus has no real
-normed-space library to define Cauchy-ness analytically, so it carries the property as an
-explicit witness: a sequence in the door's space, a completion token, and the finite residue
-fact, bundled as the claim that the residual is Cauchy in the Sobolev norm. The witness is
-honest about being a witness --- it carries the completion token rather than discharging it ---
-and it records that the residue it converges to is the mixed pair, the electron. Residual
-Cauchy-ness in the completion is thus a named, carried hypothesis, exactly like the others.
+That distinction is the point of the section. The finite work does something
+real. It supplies the witnesses, the sector split, the obstruction pattern, the
+generated gauge representative, and the exact shape of the analytic hypotheses
+that must be added at the door. It identifies which certificates are meant to be
+placed in the completion, which pairings are meant to become orthogonal, which
+action is meant to respect the Clifford structure, which generated
+representative is meant to carry the trace, and which terminal residue is meant
+to survive as boundary flux. What it does not supply is the analytic
+infrastructure itself. It does not prove density, completeness, nonzero
+orthogonal embeddings, a continuum Clifford algebra, or a trace theorem. It
+separates the finite contribution from the analytic contribution and then states
+the theorem that follows when both are present.
 
-With every antecedent named, the theorem can be stated. Suppose the door-facing hypotheses:
-the certificates are boundary-generated; their vectors are orthogonal in the continuum
-pairing; the Clifford structure is compatible; the boundary trace agrees with the terminal
-residual on the generated representative; and the residual is Cauchy in the completion norm.
-Then the generalized boundary-radiation result follows ---
+The antecedent has six parts. First, the finite certificates must have address
+placements in the chosen completion setting. The proton-side and electron-side
+finite witnesses cannot remain merely formal labels if the theorem is to be read
+as a statement about a completed boundary space; they must be placed as objects
+of that space. Second, the completed pairing must make the two placed sectors
+orthogonal in the required sense. This is the continuum version of the separated
+sector pattern produced earlier, and it is not discharged by saying that two
+finite names are different. Third, the action on the completed objects must be
+compatible with the Clifford structure. The finite construction names the
+sign-bearing action and the way it interacts with the certificates, but the
+completed action must be supplied as part of the analytic setting.
+
+Fourth, the completion must provide a boundary trace operator in the relevant
+class. The generalized radiation reading needs an operator that can take the
+generated representative to the boundary expression that the finite theory has
+singled out. Fifth, the link between finite generation and the completed
+representative must be preserved. The residue in the completed setting is not an
+arbitrary boundary object; it is the continuation of the same generated gauge
+representative that arose from the finite obstruction. Sixth, the residual
+sequence must satisfy the named convergence condition. In the present chapter
+that condition is carried as a Cauchy condition in the completion setting. The
+finite apparatus can say exactly which residual sequence and which terminal
+residue are at issue, but the completed norm and its convergence facts belong to
+the analytic side of the door.
+
+With those hypotheses named, the conditional theorem can be stated. Suppose that
+the certificates have completion addresses, that the completed pairing separates
+their sectors orthogonally, that the completed action is Clifford-compatible,
+that the boundary trace is defined and agrees with the terminal residual on the
+generated representative, that finite generation is preserved by the completed
+representative, and that the residual sequence is Cauchy in the named completion
+setting. Then the generalized boundary-radiation conclusion follows:
 \[
   \left.
   \begin{array}{l}
-    \text{generated} \\
-    \text{orthogonal} \\
-    \text{Clifford-compatible} \\
-    \text{trace-compatible} \\
+    \text{completion addresses} \\
+    \text{orthogonal pairing} \\
+    \text{compatible action} \\
+    \text{boundary trace} \\
+    \text{preserved generation} \\
     \text{residual Cauchy}
   \end{array}
   \right\}
@@ -343,121 +911,351 @@ Then the generalized boundary-radiation result follows ---
   \begin{array}{l}
     \text{no interior mixed certificate} \\
     \text{flux} = \text{terminal residual} \\
-    \text{residual Cauchy in the completion}
+    \text{residual convergence}
   \end{array}
 \]
---- no interior mixed scalar certificate, boundary flux equal to the terminal residual, and a
-convergent residue. This is the continuum boundary-radiation theorem, in the only form the
-apparatus can honestly assert it: as an implication whose antecedent is the list of analytic
-obligations.
+The first line of the consequent says that the mixed scalar certificate still
+does not appear in the interior. The separation of sectors has not been erased by
+passing through the door; under the completed orthogonality hypothesis, the
+obstruction to an interior mixed scalar remains in force. The second line says
+that the boundary flux is the terminal residual. This is the continuum reading of
+the finite radiation pattern: the generated representative does not become
+interior matter, but appears at the boundary as the residue singled out by the
+trace. The third line says that this residual has the convergence status required
+in the named completion. The theorem therefore does not merely repeat the finite
+calculation. It says what the finite calculation becomes when the analytic
+setting validates the placements, operations, and limiting process that the
+calculation asks for.
 
-The apparatus is emphatic that the theorem is conditional, and emphatic about why. The
-hypotheses are not decorative; they are the analytic content the finite construction does not
-discharge. The unconditional theorem requires the antecedent --- a real
-continuum orthogonality of nonzero embeddings, a genuine Clifford algebra, an actual trace
-operator, true Cauchy convergence in a completed norm --- and that supplying is the work of an
-analytic theory the apparatus has named but not become. The conditional is not a hedge. It is
-the precise statement of what the apparatus has proven: that the consequent follows from the
-antecedent, with the dependence written out in full.
+The theorem is conditional because each hypothesis carries real weight. Address
+placement is not cosmetic: without it, the finite certificates
+are not objects of the completed setting. Orthogonality is not a slogan: without
+the completed pairing, there is no continuum meaning to the sector separation.
+Clifford compatibility is not inherited by vocabulary: without a compatible
+completed action, the sign-bearing structure of the finite theory has no
+licensed analytic extension. Trace compatibility is not automatic: without a
+trace operator, the boundary expression is only a formal echo of the finite
+residue. Preservation of finite generation is not optional: without it, the
+boundary object could have lost the very origin that makes it radiation rather
+than arbitrary boundary data. Residual convergence is not decoration: without
+it, there is no completed limiting statement to accompany the terminal residue.
+The antecedent is the theorem's analytic content.
 
-What the apparatus can do, it does: it discharges the antecedent for its three-rung instance,
-in the only way available to it, through the zero-vector lift. At the placeholder the
-certificates are generated, the zero vectors are orthogonal, the Clifford structure is
-compatible, the trace agrees, and the residual Cauchy witness is supplied --- so the consequent
-holds for the instance. But the apparatus does not mistake the placeholder discharge for the
-analytic one. The instance shows the implication is inhabited; the genuine antecedent, with
-its nonzero embeddings and its real completion, remains the named work beyond the door.
+This is also why the result does not claim more than it has earned. It does not
+say that the finite apparatus has produced a Hilbert completion. It does not say
+that a Sobolev trace theorem has been proved. It does not say that nonzero
+continuum representatives have been constructed or that the desired completed
+Clifford action exists. It says that if such a completion is supplied with the
+listed compatibilities, then the finite boundary-radiation mechanism transports
+to that setting in the precise form displayed above. The price of the theorem is
+visible. The benefit of paying that price is visible as well: the finite
+obstruction pattern becomes a continuum boundary statement without pretending
+that the analytic bridge has already been crossed.
 
-This is the honest terminus of the finite program at the edge of the continuum. The book
-drove a single invariant to a charge, generated the charge from a boundary, read it as
-radiation, and put its set-theoretic house in order --- all finitely. At the continuum it does
-not claim to cross. It states, as a theorem, exactly what crossing would require and exactly
-what follows once it is supplied, and it discharges what the finite apparatus can discharge.
-The frontier result is a conditional, and the conditional is true.
+The zero placement used inside the finite formal development should be read in
+that limited spirit. It is a formal sanity check and a degenerate witness for
+the shape of the implication. At the zero placement, the address data,
+orthogonality, compatibility, trace agreement, and residual condition can be
+recorded without adding analytic substance. This verifies that the conditional
+surface is coherent: the hypotheses fit together, and the consequent has the
+intended logical form. It is not the rich theorem one ultimately wants. It is
+not a nonzero continuum radiation theorem, not a density result, and not an
+analytic construction of the completed boundary theory. It is the finite
+apparatus showing that the implication is well-formed and that no hidden
+contradiction has been introduced in the act of naming the door.
 
-The section's metaphysical anchor is that the truthful form of a frontier claim is an
-implication with its hypotheses named. The apparatus tanges its finite results into the
-antecedent of a conditional and funges the consequent out of it, proving the implication and
-discharging the antecedent only at the placeholder. It does not announce that it has crossed
-the continuum; it announces, precisely, what crossing costs and what crossing buys. A finite
-theory that states its continuum result as an honest conditional has done the most a finite
-theory can do at the door: named the price, proven the implication, and left the door
-honestly shut.
+The substantive continuum theorem would begin where the zero sanity check stops.
+It would supply nontrivial address placements, prove the completed pairing
+orthogonal for those placements, construct the compatible completed action,
+establish the trace operator, show that the generated representative remains the
+right representative after completion, and verify residual convergence in the
+chosen norm. That work is deliberately outside the present finite theory. The
+chapter refuses to smuggle it in under a suggestive name. Instead, it records the
+exact analytic tasks that would have to be solved and records the exact theorem
+that would then be available.
+
+This makes the finite contribution sharper, not weaker. The finite theory does
+not merely gesture toward analysis; it hands analysis a specified boundary
+problem. The data are not anonymous. The proton-side and electron-side witnesses
+are the ones already separated by the obstruction. The gauge representative is
+the one generated by that obstruction. The terminal residual is the same residue
+that carried the radiation reading. The requested trace is the trace of that
+representative, not of an unrelated boundary field. The requested convergence is
+the convergence of that residual pattern, not a generic compactness assertion.
+Thus the analytic continuation, if supplied, is constrained by the finite
+construction from which it starts. The conditional theorem preserves that
+constraint in its statement: every hypothesis points back to a finite feature,
+and every conclusion says what that feature becomes after completion.
+
+Seen this way, the finite apparatus has not failed at the continuum door. It has
+reached the door with enough structure to say what the door is. Earlier chapters
+drove the invariant to a signed charge, produced the obstruction that separates
+the sectors, identified the generated gauge residue, and interpreted that
+residue as boundary radiation. The present chapter added the discipline needed
+at the frontier: address placement, completed orthogonality, Clifford
+compatibility, trace compatibility, preservation of finite generation, and
+residual convergence. These are not afterthoughts. They are the checklist that
+turns a finite radiation pattern into a conditional theorem about a completed
+boundary setting.
+
+The closing lesson of the numbered sections is therefore methodological as much
+as mathematical. A finite theory can carry a continuum-facing result only by
+making the missing analytic content explicit. If it hides the hypotheses, it
+overclaims. If it refuses to state the implication, it underuses the structure it
+has built. The right form is the conditional: finite witnesses and finite
+obstructions on one side, analytic completion hypotheses on the other, and a
+precise boundary-radiation conclusion following from their conjunction. That is
+what the door names. It names neither a completed crossing nor an empty wish, but
+the exact interface between the finite mechanism already constructed and the
+analytic theory that would let that mechanism speak in the continuum.
+
+Thus Chapter 16 closes its numbered work by fixing the status of the frontier
+claim. The apparatus has not proved an unconditional generalized
+boundary-radiation theorem. It has proved the conditional shape that any such
+theorem must respect, identified the finite data that feed it, and named the
+analytic obligations that remain. Once those obligations are supplied, the
+boundary flux is the terminal residual, the mixed scalar certificate is not an
+interior object, and the residual has its convergence reading in the completion.
+Until then, the door remains honestly closed: visible, specified, and ready for
+the analytic work it requires.
 
 \section*{Bridge: One Convention Left to Anchor}
 
-The book is nearly closed. The single invariant became a charge; the charge was generated from
-a boundary and read as radiation; the set-theoretic house was put in order; and the continuum
-door was named and its frontier theorem stated as an honest conditional. One thing, small and
-persistent, has been left unsettled through all of it: the sign.
+Chapter 16 has finished the continuum-facing work it was allowed to do. It has
+not crossed the Sobolev/Hilbert door, and it has not pretended that a finite
+ledger secretly contains a completed analytic theory. Instead it has brought
+the apparatus to the threshold with its credentials in order: a finite norm and
+pairing, a countable skeleton, certificate families with finite witness
+content, compatibility obligations for orthogonality, Clifford action, and
+trace, and finally a conditional boundary-radiation statement. The chapter's
+achievement is the shape of the door. It names the price of crossing and
+refuses to claim that the price has already been paid.
 
-The charge the book produced was signed. Read as measurement minus story it was negative one,
-the electron; read in the opposite orientation it was positive one, the positron. The
-apparatus chose the first orientation and carried it, but it never said why that orientation
-rather than its mirror. The choice has ridden along, unexamined, since the pair was produced:
-a convention the apparatus adopted and used, but did not anchor.
+That refusal matters because it keeps the book's central habit intact. At each
+frontier, the apparatus has distinguished what it built from what it merely
+needed. It did not call a finite code a continuum. It did not call a zero
+placeholder a nontrivial embedding. It did not call a carried trace condition a
+trace theorem. It did not call a conditional theorem an unconditional theorem.
+The result is narrower than a triumphant analytic completion, but cleaner: if a
+completion supplies the named structures, the finite boundary-radiation pattern
+has a legitimate reading there; until then, the statement remains conditional.
+The door is visible, specified, and honestly closed.
 
-A finite theory that has been so careful to build rather than assume cannot end with an
-unexamined convention. Either the sign is derived --- forced by something the apparatus has
-already built --- or it is a convention, and if it is a convention the apparatus owes an
-account of how a convention can be anchored without being derived. The last chapter takes up
-exactly this. It treats the orientation not as an embarrassing leftover but as the book's
-final instance of its own thesis: that a measurement can anchor a convention it cannot
-derive, by sitting in it deliberately rather than smuggling it in.
+With that door named, the book can no longer postpone the one convention it has
+carried from the moment the pair appeared. The apparatus produced a signed
+charge. Its magnitude was not the problem. The finite construction could say
+that the mixed pair leaves one unit of charge, and the later chapters could
+carry that unit through boundary generation and radiation. But a signed unit
+has an orientation. Read one way, the charge is the electron-side value; read in
+the opposite orientation, the mirror-side value appears. The apparatus has used
+the electron orientation throughout the book. What it has not yet done is say
+what kind of act that choice is.
 
-So the final chapter is about orientation as measurement. It distinguishes an orientation from
-its opposite, separates the magnitude of the charge from its sign, shows how a dominant
-orientation can be read past a noise floor, and explains how the apparatus anchors a sign
-convention without deriving it --- the one classical decision the book has carried from the
-start, named at last as what it is. The question the apparatus carries to the end is the
-question its own honesty forces: the charge has a sign, and the apparatus chose it; what does
-it mean to measure, rather than to derive, which orientation is which?
+The point is not that the sign was forgotten. It has been present all along,
+quietly doing work. The signed charge let the apparatus distinguish the two
+members of the pair. It let the boundary story speak as electron rather than as
+its mirror. It let later sections keep a coherent physical reading while the
+formal machinery remained finite. But coherence is not the same as derivation.
+The fact that a convention is stable across the argument does not by itself
+make the convention forced. Chapter 16 has just taught the book to be careful
+about this distinction. If analytic completion must be named as an obligation
+rather than smuggled into a theorem, then orientation must be treated with the
+same honesty.
+
+The final chapter therefore does not reopen the completion door. It turns from
+the question of crossing a boundary to the question of choosing an orientation.
+It asks what remains after magnitude has been separated from sign. A magnitude
+can be produced as the size of the finite residue. A sign requires an ordered
+reading of the two possible directions. The apparatus can display both
+orientations, but it still has to account for why one is carried as the
+electron-side convention and the other as its opposite. That account cannot be a
+new theorem smuggled in at the end, and it cannot be a shrug. It has to say how
+a convention can be anchored without being derived.
+
+This is the last turn of the book's method. Earlier chapters showed that an
+instrument does not need an omniscient outside view in order to make a stable
+record. It needs bounded repeatability, a way to distinguish signal from
+discard, and a disciplined account of what its own procedure has fixed. The
+orientation problem is the same kind of problem at the sign level. A finite
+apparatus may be unable to derive an absolute orientation from nothing, but it
+can measure which orientation dominates inside its own arrangement once the
+noise floor has been named. The sign convention is then not metaphysical
+legislation. It is an anchored reading: a deliberate settlement of which side
+of a symmetric pair the apparatus will call electron-side.
+
+Chapter 17 will take up that settlement. It will distinguish an orientation
+from its mirror, separate the magnitude of the charge from the sign by which
+the magnitude is read, and ask how dominance past a noise floor can anchor a
+choice without turning that choice into a derivation. The chapter must be
+careful for the same reason Chapter 16 was careful. To anchor a convention is
+not to prove that the opposite convention is impossible. It is to show why this
+apparatus, with this record and this orientation-sensitive measurement, can
+carry one convention responsibly.
+
+So the bridge out of the completion door is narrow. The book has named the
+analytic price of a continuum reading and stopped short of paying it. Now it
+names the remaining classical price of its own signed charge: the orientation
+must be faced directly. The apparatus has a charge with a magnitude, and it has
+used one sign convention to read that charge. The final question is what it
+means for a measurement to anchor that convention rather than derive it from
+nowhere.
 
 \section*{Coda: The House at Escrow}
 
-A house under contract but not yet closed performs this chapter's logic in the language of a
-real-estate transaction. The deal is real, the parties stand at the threshold, and the sale
-is stated as a conditional whose conditions are named, outstanding, and honestly unmet.
+A house under contract but not yet closed gives Chapter 16 its cleanest image.
+The buyer and seller have done something real. They have not merely talked
+about a possible sale. They have signed a contract. The price is written down.
+Earnest money has gone into escrow. The seller has taken the house off the
+market. The buyer has shown enough seriousness that the deal has a shape, a
+date, a file number, and a closing table waiting somewhere ahead. Everyone
+involved can point to an actual commitment.
 
-The contract is signed, and that much is genuine. The price is agreed, the buyer has put
-earnest money into escrow, the seller has taken the house off the market. These are the
-transaction's credentials, and they are real, present, and binding. They correspond to what
-the apparatus brings to the door: a norm, a pairing, a countable ledger, a proven residue ---
-built, not assumed, and in hand.
+And yet nobody owns the house differently at that moment. The buyer does not
+walk out of the signing with keys. The seller does not hand over the deed
+because the word ``contract'' has appeared on paper. Between signing and closing
+stand conditions precedent. The inspection must come back clean or be settled.
+The buyer's financing must be approved in fact, not merely hoped for. The title
+search must show that the seller can convey what the seller has promised to
+convey. The appraisal may have to support the loan. The closing funds must
+arrive. Each condition is ordinary, concrete, and named. Each is part of the
+deal because the deal is serious enough to say what could still stop it.
 
-But the sale is not closed, and the contract says so by listing its conditions precedent. The
-inspection must pass; the buyer's financing must clear; the title search must come back clean.
-Each is a named condition, written into the contract, on which the closing depends. None is
-yet satisfied at signing. They are the transaction's obligations --- exactly analogous to the
-door's: orthogonality, Clifford compatibility, a boundary trace, completion, convergence ---
-named in the agreement and waiting to be met.
+That is the structure of the chapter. The finite apparatus has signed a real
+contract with the continuum door. It brings genuine credentials: a
+zero-detecting norm, a finite pairing, a countable skeleton, finite certificate
+families, a generated gauge residue, and a conditional boundary-radiation
+claim. These are not wishes. They are the earnest money of the theory, the
+signed purchase agreement, the seller's promise to hold the house for this
+buyer. The finite work has made a serious commitment to a particular analytic
+future. It has not bought every possible house; it has named this house, this
+price, this route to closing.
 
-And the contract states the outcome as an implication. It does not say the house is sold; it
-says that upon satisfaction of the conditions, title passes. Read it and you find the very
-shape of the chapter's theorem: given the inspection, the financing, and the clean title, the
-sale completes. The conditional is not a weakness in the contract; it is the contract's
-honesty. No one at the signing table pretends the keys have changed hands. They have written
-down precisely what must hold for them to, and what follows when it does.
+But the analytic closing has not happened. The completed placement of the
+certificates is still an inspection item. The completed pairing is still a
+title question: does the structure actually convey the separation that the
+finite record promises? The compatible action is still a financing condition:
+can the sign-bearing mechanism survive the completed setting rather than only
+the finite application? The boundary trace is still a required report: can the
+generated representative be read at the boundary in the promised way? Residual
+convergence is still money that must arrive at closing, not a letter saying
+that it probably will. The chapter lists these conditions because the contract
+would be dishonest without them.
 
-The escrow itself is the placeholder. The earnest money sits in escrow as a stand-in for the
-full price, which is not yet paid; the pre-approval letter stands in for the financing, which
-is not yet funded. These are tokens, held in good faith, marking obligations not yet
-discharged --- exactly as the apparatus holds a completion token and places its certificates at
-the zero vector, real credentials standing in for an analytic substance not yet supplied. The
-escrow holds the shape of the deal while the conditions are worked; the apparatus holds the
-shape of the theorem while the analysis is named.
+Escrow is the right image for the placeholders. Earnest money is real money,
+but it is not the purchase price delivered to the seller. A pre-approval letter
+is a real credential, but it is not funded financing. A title commitment is a
+real report, but it is not yet the deed recorded in the buyer's name. These
+documents and deposits are not fake. They are held precisely because the deal
+is serious. They mark what has been committed and what remains to be
+discharged. The zero placement and completion tokens in the chapter play that
+role. They keep the shape of the theorem visible while refusing to pretend that
+the analytic substance has already arrived.
 
-And the discipline is the same discipline. A careful buyer does not move the furniture in
-while the title is unclear; a careful apparatus does not announce it has crossed the continuum
-while the embeddings are placeholders. Both state the conditional, name the conditions, hold
-the tokens in escrow, and wait. When the conditions are met --- the inspection passes, the
-analysis is supplied --- the implication fires and the thing is done: the house is sold, the
-theorem is unconditional. Until then, the honest sentence is the conditional one.
+A bad reading of escrow would say: because the money is in escrow, the house is
+already bought. A bad reading of Chapter 16 would say: because the finite
+apparatus has named the completion and displayed placeholders, the continuum
+theorem has already been proved. Both readings confuse commitment with
+closing. The earnest money makes the agreement binding; it does not satisfy the
+inspection, fund the loan, clear the title, or record the deed. The finite
+credentials make the frontier theorem precise; they do not supply density,
+completion, nonzero orthogonality, a trace theorem, or a completed action.
 
-That is the chapter at the closing table. The signed contract is the finite construction; the
-conditions precedent are the named analytic obligations; the escrow tokens are the completion
-token and the placeholder vectors; and the conditional contract --- title passes upon
-satisfaction of the conditions --- is the generalized boundary-radiation theorem, stated the
-only honest way a deal not yet closed can be stated. The apparatus, like the careful buyer,
-keeps its hands off the keys until the conditions are met, and writes down exactly what
-meeting them would buy.
+The conditional contract is therefore not a defect in the sale. It is the sale
+written honestly. It says: if the inspection passes, if financing clears, if
+title is clean, if funds arrive, then title transfers. The word ``if'' is not a
+retreat from seriousness. It is the legal form of seriousness before closing.
+It protects the buyer from pretending that a defective title is clean. It
+protects the seller from pretending that promised funds have arrived. It tells
+every party what must happen, and it tells them what follows once it does.
+
+The chapter's theorem has that same legal grammar. If the completion supplies
+addresses, if the pairing is completed in the required way, if the action is
+compatible, if the boundary trace exists and agrees with the generated
+representative, if finite generation is preserved, and if the residual has its
+convergence reading, then the boundary-radiation pattern has a legitimate
+continuum interpretation. The mixed scalar certificate is not an interior
+object. The boundary flux is the terminal residual. The residual belongs to the
+named completion story. The theorem is not weakened by the antecedent. The
+antecedent is the closing package.
+
+One can feel the temptation to rush the signing table. The house is beautiful;
+the buyer wants to move in; the seller wants the transaction finished; the
+contract is already thick with signatures and initials. It would be satisfying
+to take a photograph on the front porch and call the matter done. But a careful
+transaction does not work that way. It honors the difference between under
+contract and closed. It lets the inspectors inspect, the lender lend, the title
+company search, the escrow officer hold, and the closing agent record. That
+patience is not bureaucracy for its own sake. It is the discipline that makes
+the final transfer real.
+
+Chapter 16 asks for the same patience. The finite apparatus has enough to stand
+at the threshold and say what would happen if the analytic conditions were
+met. That is a strong result. It is stronger than a vague aspiration toward a
+continuum theory, because every condition has been named. It is stronger than a
+mere metaphor, because the finite witnesses and residues are actually in hand.
+But it remains weaker than closing. It does not hand itself the keys. It does
+not move the furniture into a completed Hilbert space. It waits at escrow with
+the contract signed and the conditions written.
+
+This waiting is not empty. Escrow is an active form of waiting. Documents are
+collected. Reports are reviewed. Funds are verified. Defects are either cured
+or allowed to stop the sale. The buyer's seriousness is measured by staying in
+the process without pretending the process has ended. Likewise, the apparatus's
+seriousness is measured by holding its finite construction in view while
+leaving the analytic obligations visible. It does not withdraw the offer, and
+it does not forge the deed. It keeps the conditional alive.
+
+The house image also explains why the chapter's placeholders are useful even
+when they are not the closing itself. Escrow records who owes what. It holds
+the earnest money so that the promise is not weightless. It keeps the contract
+from dissolving into conversation. The completion token and zero placement do
+the same. They mark the slots where analytic work must enter. They prevent the
+finite theorem from losing its shape while the missing conditions are named.
+They are not the finished transfer, but without them the closing package would
+not even be organized.
+
+There is another virtue in the metaphor: it separates confidence from
+possession. The buyer may be confident after the inspection. The lender may be
+nearly ready. The title company may have found only routine matters. Everyone
+may expect the closing to happen next week. Still, expectation is not title.
+The signatures are gathered because the parties expect a transfer, but the
+transfer waits for the required acts. Chapter 16 lives in that same interval.
+It has enough structure to make the conditional theorem worth stating. It has
+enough finite evidence to say why these are the right conditions rather than an
+arbitrary wish list. But expectation, plausibility, and formal placeholders are
+not analytic possession. The keys remain on the table until the conditions are
+met.
+
+This is why the coda should not be read as a retreat from the chapter's
+mathematics. A contract that names conditions precedent is not less serious
+than one that leaves them vague. It is more serious. It tells the parties where
+to look, what to repair, and what would count as completion. Likewise, the
+chapter's conditional theorem is not an apology for failing to speak about the
+continuum. It is the exact form in which the finite apparatus can speak about
+the continuum without overclaiming. It says: here is the finite record; here is
+the analytic closing package; here is what title transfer would mean.
+
+And if a condition fails, the contract has still done useful work. A failed
+inspection does not make the signed contract meaningless; it reveals the defect
+that must be cured or the reason the sale cannot close. A title problem does
+not erase the earnest money; it explains why title cannot yet pass. The named
+conditions protect the parties from confusion. In the same way, if the analytic
+completion cannot supply one of the named obligations, the chapter has not
+spoken falsely. It has located the failure. It has said which part of the
+closing package is missing and why the unconditional reading cannot yet be
+claimed.
+
+So the honest sentence at the end of Chapter 16 is not ``the house is ours.''
+It is: the house is under contract, the earnest money is in escrow, the
+conditions precedent are listed, and if they are satisfied, title passes. That
+sentence is conditional, but it is not timid. It says exactly what has been
+done and exactly what remains. It respects the signed agreement without
+confusing it with possession. It respects the future closing without pretending
+that future work has already occurred.
+
+That is the door. The finite apparatus has signed the contract. The completion
+conditions are in the file. The placeholders sit in escrow. The conditional
+theorem says what closing would buy. Until the inspection, financing, title,
+and funds have their analytic counterparts, the keys stay on the table. The
+deal is real. The house is not yet closed. Chapter 16 ends there, because that
+is the only place an honest threshold chapter can end.

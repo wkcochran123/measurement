@@ -1,4 +1,5 @@
-.*.swp
+.*.swpl
+.handoff*
 .vscode
 .DS_Store
 device/.lake
@@ -17,3 +18,5 @@ device/go.sh
 *.claude*
 *csv
 gpt
+notes_for*
+out

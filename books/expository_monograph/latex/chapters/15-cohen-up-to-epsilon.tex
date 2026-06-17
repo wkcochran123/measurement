@@ -63,28 +63,46 @@ chapter does name what lies beyond that door, the house behind it is in order.
 
 \section{Counting to Three in the Original Number System}
 
-Before a forcing calculus can bound its conditions by a number, the apparatus must be
-able to count, in its own numbers, past the smallest cases. It has carried a number type
-since its earliest chapters, but carrying a type is not the same as making it count. This
-section makes it count, and proves the small arithmetic that the rest of the chapter will
-use without comment.
+Before the continuum door opens, the apparatus has to put its finite ledger in
+order. The previous chapter ended with a boundary reading that could not be
+absorbed into an interior mixture. This chapter asks a different housekeeping
+question: when the apparatus files finite conditions, extends them, checks
+compatibility, decides bounded knots, and closes the gauge residue against a
+count, what number system is doing the counting? The answer cannot be an
+unexamined import from outside the apparatus. The ledger has to count in the
+apparatus's own numbers.
 
-The apparatus builds counting from a successor. Its number type has a successor that
-attaches a fixed label to a number, and from the successor it defines numerals in the
-usual way: zero is the base, and each numeral is the successor of the one below it. So one
-is the successor of zero, two the successor of one, three the successor of two. Addition is
-defined by peeling the left argument down to zero:
+That is why the section begins so low. The apparatus has carried a number type
+since its earliest pages, but carrying a type is not yet having arithmetic. A
+finite forcing condition will later be bounded by a count; a finite list of
+knots will be decided by a count; the gauge closeout will rest on a small
+successor certificate. All of that would be theatrical if the apparatus had not
+first shown that its own numbers can reach the first nontrivial cases. Counting
+to three is not cute. It is the floor under the finite Cohen-shaped ledger.
+
+The construction starts with successor. There is a base number, written \(0\),
+and there is an operation \(\mathrm{succ}\) that takes a number to its next
+successor. The numerals used in the chapter are the successor-generated ones:
+\[
+  1=\mathrm{succ}\,0,
+  \qquad
+  2=\mathrm{succ}\,1,
+  \qquad
+  3=\mathrm{succ}\,2.
+\]
+Addition is then defined by recursion on the left argument:
 \[
   0 + m = m,
   \qquad
   (\mathrm{succ}\,n) + m = \mathrm{succ}(n + m).
 \]
-This is the ordinary recursive sum, written in the apparatus's own numbers rather than
-borrowed from outside.
+This is the familiar recursive sum, but its importance here is local. The
+operation is written inside the apparatus's number system, so the finite counts
+that appear later are not smuggled in from a separate arithmetic background.
 
-With successor and sum in hand, the small arithmetic is definitional. The apparatus does
-not argue that one and one make two; it computes it, and the equality holds by the
-definitions alone:
+With successor and sum in place, the first identities are computations. The
+apparatus does not need a long argument to see one and one become two; it
+unfolds the definitions:
 \[
   1 + 1 = 2,
   \qquad
@@ -92,14 +110,29 @@ definitions alone:
   \qquad
   1 + 1 + 1 = 3.
 \]
-Each of these is a definitional identity in the apparatus's numbers --- not a theorem
-requiring induction, but a computation that unfolds to a reflexive equality. The apparatus
-can count to three, and it can see that the three roads to three agree.
+The equalities are definitional identities in the apparatus's own arithmetic.
+They say that the three ways the chapter will name the first small counts agree:
+two is \(1+1\), three is \(1+2\), and three is also \(1+1+1\). Later sections can
+therefore speak about one-step and finite-step extensions without wondering
+whether the underlying numerals have been aligned.
 
-Counting needs an induction principle, and the apparatus is careful to give it the right
-one. Its number type is more permissive than its numerals --- the type admits values its
-successor never builds --- so the apparatus distinguishes the canonical numbers, the ones
-generated from zero by the successor, and proves induction over exactly those:
+The point is not that three is a large number. It is that three is the first
+place where the chapter's later bookkeeping begins to look like bookkeeping at
+all. A condition can be empty, extended once, extended again, and compared with
+another finite commitment; a small residue calculation can distinguish the
+linear term, the closed vacuum part, and the mixed pair that remains. Those
+uses do not require infinite arithmetic. They require the apparatus to know
+which successor steps it has taken and to keep the names for those steps
+coherent. The identities above give the reader that coherence before the
+forcing language starts to spend it.
+
+The next point is more delicate. The apparatus's number type is wider than the
+successor-generated numerals. It may contain permissive values that are numbers
+by type but are not reached by starting at \(0\) and applying successor. An
+induction principle over the whole type would say too much. The honest
+principle is induction along the canonical spine: the numbers generated from
+the base by repeated successor. For any motive on numbers, the apparatus proves
+the generated induction rule
 \[
   \text{motive}(0),
   \quad
@@ -107,41 +140,69 @@ generated from zero by the successor, and proves induction over exactly those:
   \;\Longrightarrow\;
   \text{motive}(n) \text{ for canonical } n.
 \]
-Induction runs on the canonical spine, the numbers the successor actually reaches, and not
-on the wider type. This is the honest induction principle for a number system whose type
-carries more than its numerals do, and it is the principle the chapter's later counting
-will use.
+The restriction matters. The finite ledger only needs the counts that the
+apparatus can actually generate. Its later forcing conditions do not require a
+global classification of every value admitted by the number type; they require a
+reliable way to reason along the successor-built counts used in the finite
+lists, finite supports, finite codes, and bounded decisions.
 
-The section ends by isolating the one fact the chapter's closeout will need, the
-successor certificate. It is small: the successor of the successor of one equals the
-successor of two,
+This also keeps the implication boundary clean. The apparatus is not claiming
+that every permissive value in the number type has been enumerated by successor,
+and it is not turning a finite count into a completed continuum listing. It is
+separating the arithmetic it actually uses from the larger type that happens to
+contain it. The later ledger may be countable and coded because each finite
+condition receives a finite code; that is different from pretending that the
+continuum has already been exhausted. The canonical spine is exactly the
+right-sized domain for the finite counts that this chapter needs.
+
+The section then isolates the successor certificate that the gauge closeout will
+need. It is the small lifted identity
 \[
   \mathrm{succ}(\mathrm{succ}\,1) = \mathrm{succ}\,2,
 \]
-which is just $\mathrm{succ}$ applied to the identity that the successor of one is two. The
-apparatus files this lifted successor certificate by name, because the gauge closeout at
-the end of the chapter will rest on it: the electron's residue will be read off, in part,
-from the fact that the apparatus can count this far and certify the step.
+obtained by applying successor to the identity that \(2=\mathrm{succ}\,1\). The
+certificate is deliberately modest. It does not turn finite arithmetic into a
+continuum enumeration, and it does not decide any set-theoretic question. It
+only records that the apparatus can certify the exact successor step later used
+when the gauge residue is closed against the count.
 
-The section's metaphysical anchor is that an apparatus must be able to count in its own
-numbers before it bounds anything by a count. The apparatus tanges its number type into a
-working arithmetic --- successor, sum, numerals, induction on the canonical spine --- and
-funges the small certificates forward, where a later section will spend them. Counting to
-three is not a triviality the book skips; it is the floor on which the forcing calculus
-stands, and the apparatus lays the floor before it builds.
+This is the section's discipline. Before the finite forcing calculus talks
+about extension, compatibility, decision, order, coding, and residue closeout,
+the apparatus establishes the tiny arithmetic those words will spend. The
+numbers are successor-generated. Addition is recursive. The identities
+\(1+1=2\), \(1+2=3\), and \(1+1+1=3\) compute in the system itself. Induction is
+available on the canonical spine and no wider than that. The final successor
+certificate is filed for later use. The chapter can now raise its finite
+Cohen-shaped ledger on an arithmetic floor the apparatus has actually laid.
 
 \section{Finite Spline Conditions}
 
-The forcing calculus of this chapter acts on finite pieces of partial information, and
-this section introduces them. A spline condition is a finite record of where the spline is
-committed to sit --- a finite list of knot-value assignments, each held below a fixed
-tolerance. These are the conditions a finite forcing discipline extends, merges, and
-decides, and the section establishes that they are well-behaved before the next section
-puts them to work.
+The previous section put the counting floor in place. The apparatus can name
+the first successor-generated numbers, add them in its own arithmetic, and
+reason along the canonical spine. Now the chapter can introduce the finite
+objects that will spend those counts. A forcing ledger does not begin with a
+completed spline. It begins with a finite piece of information: this knot has
+this value, that knot has that value, and nothing has yet been said about the
+rest. This section gives that finite piece of information its name.
 
-Fix a tolerance, a natural number the whole calculus will respect. An assignment is a
-single knot-value pair, and it is bounded by the tolerance when both its knot and its
-value lie below it:
+The name is \emph{spline condition}. The phrase is deliberately modest. A
+spline condition is not the spline, not a total function, and not an analytic
+object stretched across a continuum. It is a finite record of commitments. Each
+commitment says that at one named knot the spline is assigned one named value.
+The apparatus keeps only finitely many such commitments at a time, and every
+one of them is held below the same finite allowance. That is the whole point:
+the condition is small enough to be inspected, counted, extended, and compared
+inside the apparatus before any continuum door opens.
+
+Fix a finite tolerance, written \(\varepsilon\). In the chapter's internal
+language this tolerance is a number in the apparatus's finite scale. It is not a
+metric completion and not a hidden real-valued limit. It is the same sort of
+finite allowance that Chapter 14 used when the late gauge readings were forced
+into a shrinking margin. Here the allowance has a bookkeeping role. It tells the
+forcing ledger which knots and values are small enough to be admitted into a
+condition.
+
+The smallest commitment is an atom. An atom is a knot-value assignment:
 \[
   \text{atom} = (\mathrm{knot}, \mathrm{value}),
   \qquad
@@ -149,325 +210,909 @@ value lie below it:
   \;\Longleftrightarrow\;
   \mathrm{knot} \le \varepsilon \ \text{ and }\ \mathrm{value} \le \varepsilon.
 \]
-A spline condition is then a finite list of such bounded assignments --- a finite, partial
-specification of the spline, every entry held under the tolerance:
+The atom therefore carries two pieces of information: which knot is being
+mentioned, and which value is being assigned there. Boundedness is not an
+external comment added after the fact. It is part of what makes the atom
+admissible for this finite calculus. If the knot lies beyond the allowance, or
+if the value lies beyond the allowance, the atom is not one of the bounded atoms
+this section is allowed to file.
+
+The bounded atom is the first place where the chapter's two disciplines meet.
+The knot side says where the finite record speaks. The value side says what the
+record asserts there. The tolerance says that both coordinates are still inside
+the finite range the apparatus has agreed to handle. None of this asks for a
+dense line of knots or for a function defined at every possible location. The
+atom is a single local commitment. It can be written down, checked, and counted.
+That is why it is the right unit for a finite forcing ledger.
+
+The chapter also keeps the atom separate from interpretation. A bounded atom
+does not yet say whether the chosen value is physically realized, whether the
+condition will survive later comparison, or whether a future extension will add
+neighboring knots. It only says that this finite row is admissible as a row. The
+later calculus may extend, compare, and decide such rows, but those operations
+need an object simple enough to receive them. The atom supplies that object: one
+knot, one value, one boundedness check.
+
+A spline condition is a finite list of bounded atoms:
 \[
   C = [\,\text{atom}_1, \ldots, \text{atom}_k\,],
   \qquad
   \text{every atom bounded by } \varepsilon.
 \]
-The boundedness travels with the condition: a condition is not merely a list of
-assignments but a list together with the guarantee that each assignment respects the
-tolerance. The tolerance is the same one the convergence argument used, so the forcing
-calculus and the Cauchy argument are controlled by a single parameter.
+The word ``list'' is important. The apparatus is not quantifying over all
+knots; it is holding a finite record. The length of the list is a count the
+apparatus can understand. The atoms in the list are the commitments currently
+made. The boundedness proof travels with the record, so a condition is not
+merely a list that happens to be small in the reader's imagination. It is a list
+equipped with the guarantee that each of its atoms respects \(\varepsilon\).
+Later sections can therefore manipulate conditions without rechecking from
+scratch whether the data have wandered outside the finite allowance.
 
-These conditions are forcing conditions in the exact sense the rest of the chapter needs.
-They are finite, so the apparatus can hold and inspect any one of them. They are partial,
-committing to finitely many knots and leaving the rest open. And they are ordered by
-commitment, though that order is the next section's subject. The empty condition, which
-commits to nothing, sits at the bottom: it is a valid condition, bounded vacuously,
-asserting no assignment at all.
+A condition may mention one knot, many knots, or no knots at all, but always
+only finitely many. Its list structure is the reason the chapter can later talk
+about finite support and natural coding. A page with finitely many rows can be
+copied, extended by adding another row, inspected for repeated knots, and
+assigned a finite code. A total spline cannot be handled in that way inside the
+present chapter. The spline condition is therefore not a poor substitute for the
+total object; it is the finite object the apparatus actually knows how to use.
 
-Each condition has a finite support, the finite set of knots it speaks about. The support
-is read off by collecting the knots of the assignments, and because the condition is a
-finite list, its support is a finite list as well:
+The condition also keeps its boundedness pointwise. The apparatus does not
+declare a whole condition bounded by intuition or by a global promise. It
+checks the atoms one by one. If the first atom is bounded, and the second atom
+is bounded, and so on through the finite list, then the condition is bounded.
+This pointwise structure is what makes the finite list stable under later
+bookkeeping. Whenever a later step adds one more bounded atom, the old finite
+bounded record can be enlarged without changing what it already certified.
+
+The empty list is already a condition:
+\[
+  \varnothing = [\,],
+  \qquad
+  \text{bounded by } \varepsilon \text{ vacuously.}
+\]
+It commits to no knot and assigns no value. That is not a defect. In a forcing
+calculus the empty condition is the least initial commitment, the record before
+any finite information has been added. Its boundedness is vacuous because there
+are no atoms that could violate the tolerance. This gives the ledger a clean
+starting point: one may begin with no commitments at all and then add finite
+information by controlled steps.
+
+Every nonempty condition speaks only where its atoms speak. Its finite support
+is the list of knots mentioned by its atoms:
 \[
   \mathrm{support}(C) = [\,\mathrm{knot}(\text{atom}) : \text{atom} \in C\,],
   \qquad
   \text{finite.}
 \]
-Finite support is the property that keeps the calculus finite: a condition can only
-constrain the knots in its support, and that support is always a finite, inspectable list.
-Outside its support a condition says nothing, and the apparatus is free to extend it there.
+Because \(C\) is a finite list, its support is finite as well. Repetitions and
+proof-carrying details can be handled later by the order and coding sections;
+for the present section the essential fact is simpler. A condition has a finite
+domain of speech. It constrains the knots in its support and remains silent
+elsewhere.
 
-The boundedness and the finiteness together are what make these conditions safe to work
-with before the continuum. A condition never commits to infinitely many knots, and it
-never commits to a value beyond the tolerance. So every operation the next section defines
---- extending, merging, deciding --- starts from finite, bounded data and, the section will
-show, returns finite, bounded data. The conditions cannot grow into the continuum by
-accident; their finiteness and their bound are built into what they are.
+The support forgets the values and remembers only where the condition has
+spoken. This is a useful loss of information. If one wants to know which knots
+remain open, the support is the list to consult. If one wants to know whether
+two conditions might clash, the first question is whether their supports
+overlap. If one wants to code a condition later, the support is part of the
+finite data that makes coding possible. The support is not an extra continuum
+domain hiding behind the condition. It is just the finite list of mentioned
+knots, extracted from the finite list of atoms.
 
-The section's metaphysical anchor is that partial finite information is a legitimate
-object, not a defective approximation to a total one. A spline condition does not apologize
-for being partial; it commits to what it commits to and leaves the rest open, and that
-openness is exactly what lets it be extended. The apparatus tanges the spline's partial
-state into a finite bounded list and funges that list through the calculus, never needing
-the total specification the continuum would supply. The condition is finite, bounded, and
-honest about what it does not yet say --- which is precisely what a forcing condition must
-be.
+The support also explains why partiality is precise rather than vague. A
+condition is not merely "incomplete" in a casual sense. It has an exact finite
+frontier: the knots in the support have been mentioned, and the knots outside
+the support have not. This lets the apparatus distinguish silence from
+disagreement. A missing atom at a knot is not a contrary assignment; it is no
+assignment. That distinction will matter when the next section asks whether two
+finite records can stand together.
+
+That silence is load-bearing. Outside the support, the condition says nothing.
+It does not secretly assign a default value, and it does not pretend to know the
+whole spline. The unmentioned knots are still open. This is the honest
+partiality that makes forcing possible: a condition can be extended precisely
+because it has not already answered every question. If a later step wants to
+decide a new bounded knot, it can add a bounded atom at that knot. If a later
+step wants to compare two pieces of information, it can ask whether their
+finite commitments clash where their supports overlap. The present section
+does not perform those operations, but it gives them the right kind of object.
+
+The tolerance discipline matters just as much as finite support. A finite list
+could still be useless for this chapter if it contained an unbounded knot or an
+unbounded value. Such a list would no longer belong to the controlled ledger.
+By requiring every atom to sit below \(\varepsilon\), the apparatus prevents
+the finite calculus from drifting away from the same scale that governed the
+late convergence discussion. The connection to Chapter 14 is only a discipline,
+not a reopened proof. The earlier chapter used a vanishing geometric tolerance
+to squeeze readings together. This chapter fixes a finite allowance so that its
+partial records remain controlled while the set-theoretic bookkeeping is done.
+
+The section can now say what a condition is and what it is not. It is finite:
+the apparatus can count its atoms, inspect them, and collect their knots. It is
+bounded: every atom stays under \(\varepsilon\). It is partial: outside its
+support it makes no claim. It is data with a certificate of boundedness, not a
+guess about a total spline. These four features are exactly what the next
+section will need when it defines extension, compatibility, and decision.
+Extension will mean adding information without losing the old commitments.
+Compatibility will mean that two finite records can stand together when they
+do not disagree on their overlap. Decision will mean that a bounded knot can be
+answered by a finite controlled extension. Those are S03's operations; this
+section keeps to the underlying objects.
+
+It is useful to picture a condition as a ledger page with finitely many rows.
+Each row has a knot, a value, and the evidence that both lie within the finite
+allowance. Blank rows are not hidden assertions. They are places where the
+ledger has not yet spoken. A longer ledger page may later include more rows,
+and two ledger pages may later be compared or merged if their rows do not
+contradict one another. But at this stage the page itself is already a valid
+mathematical object. It is not waiting for the completed spline to make it
+meaningful.
+
+This is the finite Cohen-shaped posture of the chapter. The apparatus treats
+partial information as real information. A condition's incompleteness is not
+embarrassing; it is the feature that leaves room for extension. Its boundedness
+keeps the ledger below the chosen allowance. Its finite support keeps the
+record inspectable. Its silence outside the support keeps the continuum door
+closed. Before the next section lets conditions grow, combine, and decide, this
+section has made sure that the things being manipulated are finite, bounded,
+partial, and honest about what they do not say.
+
+This is also why no continuum claim has entered. The section has not produced a
+generic spline, enumerated all possible spline values, or shown that the finite
+ledger exhausts an analytic space. It has only prepared the finite records that
+the apparatus can responsibly manipulate. Each record is a bounded list of
+bounded atoms with finite support. That is enough for the next section's
+forcing-shaped moves and no more than enough. The chapter stays inside its
+promise: finite set-theoretic hygiene up to \(\varepsilon\), with the continuum
+door still closed.
 
 \section{Extension, Compatibility, and Decision}
 
-A forcing calculus needs three operations, and this section gives all three to the spline
-conditions. They are the operations by which partial information grows, combines, and
-settles: extension, compatibility, and decision. The section proves each one stays finite
-and bounded, so that the whole calculus lives below the tolerance and never escapes into
-the continuum.
+The previous section introduced the objects of the ledger: finite lists of
+bounded atoms under one fixed finite allowance. This section gives those
+objects their finite motion. A condition can grow by adding information. Two
+conditions can be compared for consistency on the knots where they both speak.
+Compatible conditions can be merged into a common stronger condition. And a
+bounded knot can be decided by a finite extension. These are the operations that
+make the ledger Cohen-shaped, but every one of them stays inside the finite
+apparatus.
 
-Extension is information growth. A condition extends another when it commits to everything
-the weaker one did, and possibly more --- when every assignment of the weaker condition is
-also an assignment of the stronger:
+The first operation is extension. Extension is information growth without
+forgetting. A condition \(C'\) extends a condition \(C\) when every commitment
+made by \(C\) is still present in \(C'\):
 \[
   C' \text{ extends } C
   \quad\Longleftrightarrow\quad
   \text{every atom of } C \text{ is an atom of } C'.
 \]
-Extension is reflexive --- a condition extends itself --- and transitive --- an extension of
-an extension is an extension. So the conditions are ordered by commitment, the stronger
-conditions sitting above the weaker, and the order has the basic shape any forcing order
-needs. To extend a condition is to learn more without unlearning anything.
+The stronger condition may add more bounded atoms, but it may not retract the
+old ones. In ledger language, \(C'\) contains all rows already written in \(C\)
+and perhaps some additional rows. The word "stronger" therefore means "more
+committed", not more mysterious.
 
-Compatibility is consistency. Two conditions are compatible when they agree wherever they
-overlap: at any knot they both commit to, they commit to the same value. Compatible
-conditions can be combined, and their combination --- the merge, formed by concatenating
-their assignments --- extends both:
+Two elementary facts follow from the definition. Extension is reflexive: every
+condition extends itself, because every atom of \(C\) is already an atom of
+\(C\). Extension is transitive: if \(C''\) contains every atom of \(C'\), and
+\(C'\) contains every atom of \(C\), then \(C''\) contains every atom of \(C\).
+Thus the ledger has the basic direction required of a forcing order. Moving
+down to a stronger condition means adding finite bounded commitments while
+preserving the finite bounded commitments already made.
+
+The preservation clause is what keeps extension honest. A new condition cannot
+decide a knot by changing what the old condition said there. It can only keep
+the old assignment or add assignments where the old condition was silent. If a
+later proof carries proof-laden boundedness data along with the list, that data
+travels with the extension. The section does not need the full extensional
+order yet; S04 will handle proof-carrying sameness and coding. Here the
+reader-facing point is the finite one: extension is controlled information
+growth.
+
+This also explains why extension is the right direction for a forcing ledger.
+The weaker condition is the less informative one. It leaves more knots open.
+The stronger condition is the one with more finite commitments. Nothing about
+the word "stronger" means larger in value, closer to a limit, or more
+continuum-like. Strength is commitment. A page with three bounded rows is
+stronger than the same page with two of those rows, because it has answered one
+more finite question while keeping the earlier answers. That is the exact
+information order the later finite calculus will use.
+
+The empty condition illustrates the direction. Since the empty condition has no
+atoms, every condition extends it. The empty page is weakest because it says
+nothing. A one-row condition is stronger because it has made one bounded
+commitment. A two-row condition extending that one is stronger again. This
+chain is still finite at every step. The apparatus can follow it without
+pretending that there is already an infinite completed record waiting at the
+end.
+
+The second operation is compatibility. Compatibility is consistency on overlap.
+Two conditions \(C\) and \(D\) are compatible when they do not assign different
+values to the same knot. Equivalently, whenever a knot lies in both finite
+supports, the two conditions give it the same value. A shared knot with matching
+values is harmless. A shared knot with conflicting values blocks combination.
+There is no finite condition that can honestly contain both assignments.
+
+When two conditions are compatible, their merge is the finite record obtained
+by putting their assignments together. In symbols:
 \[
   C, D \text{ compatible}
   \;\Longrightarrow\;
   C \cup D \text{ extends } C \ \text{ and }\ C \cup D \text{ extends } D.
 \]
-The merge is finite because both conditions are, and bounded because both are. Two
-conditions that disagree on a shared knot have no common extension --- no condition can
-commit to two different values at one knot --- so compatibility is exactly the condition
-under which a common extension exists. Consistent partial information combines; inconsistent
-partial information does not.
+The merge is finite because it is made from two finite lists. It is bounded
+because every atom in either list was already bounded by the same
+\(\varepsilon\). It extends \(C\) because all rows of \(C\) remain present; it
+extends \(D\) for the same reason. The only thing compatibility has to prevent
+is contradiction at a shared knot. Once that contradiction is absent, the
+finite records can stand together.
 
-Decision is density, and it is the operation that makes the calculus useful. A condition
-decides a knot when it commits to some value there. The key fact is that any bounded knot
-can be decided by a one-step extension: from any condition, adding a single assignment at
-that knot produces a stronger condition that decides it. And the same holds for any finite
-list of bounded knots at once --- a finite sequence of one-step extensions decides them all:
+The merge should be understood as a common extension, not as a new kind of
+object. It is still a spline condition: a finite list of bounded atoms. It is
+common because it extends each input condition. It is an extension because it
+keeps every old assignment. It is bounded because both inputs used the same
+\(\varepsilon\), so no atom introduced by the merge lies outside the finite
+allowance. The operation does not average values, interpolate between knots, or
+invent a total spline. It simply places two consistent finite records on one
+page.
+
+This common-extension view is the finite substitute for the more dramatic
+language that forcing can invite. The apparatus is not saying that compatible
+conditions reveal a hidden global object. It is saying that, when two finite
+pieces of information do not contradict each other, there is a finite piece of
+information that contains them both. That is enough for the local calculus. The
+later order section may describe this merge as a meet up to extensional
+equality, but the present section needs only the concrete fact: compatible
+finite records can be jointly preserved by another finite record.
+
+The converse is just as important. If \(C\) and \(D\) disagree at a knot in
+their overlap, then no common extension can exist. A common extension would have
+to preserve the assignment from \(C\) and also preserve the different assignment
+from \(D\), thereby assigning two values to one knot. That is not a stronger
+condition; it is an inconsistent record. Thus compatibility is exactly the
+finite test for whether two partial records can have a common stronger record.
+Consistent partial information combines; inconsistent partial information does
+not.
+
+The third operation is decision. A condition decides a bounded knot \(k\) when
+it contains some bounded atom assigning a value at \(k\). It does not decide
+all knots, and it does not complete the spline. It answers one finite question:
+what value has this condition committed to at this bounded knot? If \(k\) is
+already in the support, the condition has already spoken there. If \(k\) is
+outside the support, the condition is silent there and can be extended by adding
+one new bounded atom.
+
+The one-step decision move is the finite density fact. Given a condition \(C\)
+and a bounded knot \(k\), choose a bounded value allowed by the tolerance and
+add the atom \((k,\mathrm{value})\) when it does not conflict with what \(C\)
+already says. The result is a finite condition \(C'\) extending \(C\), and
+\(C'\) decides \(k\):
 \[
   \text{for any condition } C \text{ and bounded knot } k,
   \quad
   \exists\, C' \text{ extending } C,\quad C' \text{ decides } k.
 \]
-This is density in the forcing sense: below any condition, for any knot, lies a stronger
-condition that settles it. The settling is finite --- one assignment per knot --- and bounded
---- the new assignment respects the tolerance. The apparatus can decide any finite question
-about the spline by a finite, bounded extension.
+If \(C\) already assigns a value at \(k\), the decision is already present. If
+the new choice would contradict an old assignment, choose the old assignment
+instead. In either case, the decision remains a finite bounded commitment. No
+infinite object is summoned to answer a one-knot question.
 
-These three operations are the Cohen-shaped content available before the continuum door,
-and the section's point is that they are entirely finite. Extension preserves finiteness and
-boundedness; merging two finite bounded conditions yields a finite bounded condition;
-deciding finitely many knots takes finitely many bounded steps. Nothing here reaches past
-the tolerance, and nothing here requires a completed, decided-everywhere condition. The
-forcing calculus grows, combines, and settles partial information without ever forming the
-total object a generic filter would be.
+The decision move is intentionally local. It does not ask the apparatus to know
+which value the final spline "really" has at every knot. It asks only for a
+bounded commitment at the particular bounded knot under discussion. If the
+ledger has not yet spoken there, the apparatus may add one bounded row. If it
+has already spoken there, the old row is the decision. In both cases the answer
+is found inside a finite extension of the current condition. This is why the
+operation deserves the forcing word "dense" while remaining finite: below the
+current finite record, there is a stronger finite record that answers the
+particular finite question.
 
-That restraint is the whole discipline. A forcing argument, in its full set-theoretic
-form, passes to a generic object that decides everything at once --- and that object lives
-beyond the countable conditions, on the far side of a continuum door. The apparatus does
-not pass to it. It keeps to the finite conditions and their three operations, settling any
-finite question it is actually asked, and it leaves the generic object, like the continuum,
-named for later and unbuilt for now. The calculus is Cohen up to the tolerance: the forcing
-machinery, run only as far as finite bounded conditions reach.
+The same idea iterates across a finite list of bounded knots. Decide the first
+knot by one finite extension. Decide the second by extending that result. Keep
+going until the finite list is exhausted. Because the list is finite, the
+process takes finitely many steps. Because each new atom is bounded by
+\(\varepsilon\), the final condition remains bounded. Because each step
+extends the previous condition, no earlier commitment is lost. The apparatus
+can therefore settle any finite list of bounded questions by finitely many
+bounded extensions.
 
-The section's metaphysical anchor is that consistent partial information can grow, combine,
-and settle without ever being completed. The apparatus tanges each finite commitment into a
-condition and funges it forward by extension, merges compatible commitments, and decides any
-finite question by a bounded step --- and it never needs the total assignment that would
-decide everything. Forcing, for a finite apparatus, is the discipline of partial information
-done honestly: extend, merge, decide, and stop at the finite, leaving the generic object on
-the far side of a door this chapter does not open.
+The finite-list qualification is the guardrail. If the apparatus is handed
+three bounded knots, it can make at most three one-step additions, skipping any
+knot already decided. If it is handed ten bounded knots, the same reasoning
+takes ten finite steps. The count may vary, but it remains a count the
+apparatus can carry. What the section does not claim is a single completed
+condition that has answered every possible bounded knot in advance. The
+apparatus answers the questions actually placed on the finite ledger.
+
+This is the density available to the finite apparatus. It is strong enough for
+the chapter's ledger: every actually asked finite question can be answered
+below some stronger finite condition. It is not the full generic object of
+set-theoretic forcing. It does not decide every possible knot at once, and it
+does not create a total spline. It says only that finite questions, asked
+finitely, can be answered by finite controlled growth. That is the exact level
+of forcing behavior the chapter is allowed to claim before the continuum door.
+
+The three operations also preserve the two controls from S02. Extension
+preserves finiteness because it adds only finitely many atoms in the situations
+used here; it preserves boundedness because the added atoms are bounded.
+Compatibility checks only a finite overlap of finite supports. Merge combines
+two finite bounded records into another finite bounded record. Decision adds
+one bounded row, or finitely many bounded rows for a finite list of questions.
+At no point does the calculus escape into an unbounded assignment or a
+decided-everywhere spline.
+
+It is useful to keep the ledger picture in view. Extension writes more rows
+without erasing the old ones. Compatibility asks whether two pages disagree on
+any row whose knot appears on both pages. Merge copies two nonconflicting pages
+onto a common page. Decision adds the row needed to answer a particular bounded
+question. These are ordinary finite bookkeeping moves, but together they give
+the chapter its Cohen-shaped discipline: partial information can grow, combine,
+and settle questions while remaining partial.
+
+The restraint is part of the result. A full set-theoretic forcing argument
+eventually speaks about a generic object that meets every dense requirement and
+settles an infinite field of questions. This chapter does not take that step.
+It keeps the finite conditions and the finite operations. The generic object is
+named only as the thing beyond the door, not as something already constructed
+inside the apparatus. The continuum is treated the same way. The finite ledger
+can extend, merge, and decide below \(\varepsilon\), but it does not become a
+completed continuum enumeration.
+
+Thus S03 supplies the active content of the finite forcing calculus. S02 gave
+the objects: bounded finite partial conditions with finite support. This
+section gives the moves: preserve old commitments by extension, combine
+compatible records by merge, and decide bounded finite questions by bounded
+finite extension. S04 will put these moves into an extensional order and attach
+natural codes. S05 will return to the gauge residue closeout. For now the
+chapter has exactly what it needs: a finite calculus in which partial
+information grows honestly and stops before it pretends to be total.
 
 \section{Extensional Order and Natural Coding}
 
-The forcing calculus has its three operations; this section gives it the two structural
-properties a Cohen forcing requires: an order, and a countable code. Both are slightly
-subtle in the finite apparatus, and the subtleties are worth stating, because they are
-exactly where a careless account would overclaim.
+S03 supplied the finite operations: extension, compatibility, merge, and
+decision. This section packages those operations as an order and a code. The
+order says when one finite record is stronger than another. The code says how
+the family of finite records can be listed by natural numbers. Together they
+give the chapter the promised countable forcing shape, but still only at the
+level of finite bounded conditions. Nothing here crosses into a completed
+generic spline or an enumeration of continuum values.
 
-Take the order first. Extension orders the conditions, but the conditions carry their
-boundedness as proof-laden data, so two conditions that record the same assignments by
-different internal routes are not literally identical. The order therefore closes only up
-to extensional equality --- sameness of the assignments a condition records, regardless of
-how it records them:
+The first subtlety is equality. A condition is not merely a bare set of pairs in
+the apparatus. It may carry boundedness certificates, support witnesses, or
+other finite evidence showing that its atoms really sit below the fixed
+\(\varepsilon\)-allowance. Two records can therefore have different internal
+packaging while making exactly the same commitments. For the forcing order, the
+right equality is extensional equality:
 \[
   C \equiv D
   \quad\Longleftrightarrow\quad
-  \text{$C$ and $D$ have exactly the same atoms.}
+  \text{\(C\) and \(D\) record the same bounded atoms.}
 \]
-Up to this equality, extension is a genuine partial order. It is reflexive and transitive,
-as the previous section noted, and it is antisymmetric in the extensional sense: if two
-conditions each extend the other, they have the same atoms. The merge is the meet of two
-compatible conditions --- the least condition extending both --- and it is commutative up to
-extensional equality, since merging in either order records the same assignments. So the
-conditions form a forcing poset, exactly the ordered structure a forcing argument lives in,
-with equality read extensionally.
+The condition is read by what it commits to at bounded knots, not by the route
+by which the apparatus certified those commitments.
 
-The extensional reading is not a blemish; it is the honest order for proof-carrying data. A
-condition is what it commits to, not how it stores the commitment, and the order respects
-that: two conditions saying the same thing are ordered identically, whatever their internal
-form. The apparatus does not pretend its conditions are bare sets; it works with
-proof-carrying conditions and reads their order up to what they actually say. The forcing
-poset is a poset up to extensional equality, and that is the correct poset for the objects
-the apparatus actually has.
+This is not a relaxation of the finite discipline. It is the discipline stated
+at the correct level. If \(C\) and \(D\) carry the same atom \((k,v)\) for
+every knot-value commitment, then no later finite extension, compatibility
+test, or decision test can distinguish them by their commitments. They are the
+same partial information. Their certificates may have been assembled in
+different ways, but those certificates support one finite record. The forcing
+calculus must therefore order conditions extensionally: by preserved
+assignments.
 
-Now the code. A Cohen forcing is a \emph{countable} poset, and the apparatus shows its
-conditions are countable by coding them with natural numbers. Each assignment is coded by a
-single number built from its knot and value; each finite list of assignments is coded by a
-number built recursively from the codes of its entries; and each condition is coded by the
-code of its assignment list:
+With that equality understood, extension becomes a partial order. Reflexivity
+is immediate: every condition preserves all of its own atoms. Transitivity is
+the same preservation read through two steps: if \(C''\) preserves all atoms of
+\(C'\), and \(C'\) preserves all atoms of \(C\), then \(C''\) preserves all
+atoms of \(C\). Antisymmetry holds extensionally. If \(C\) extends \(D\) and
+\(D\) extends \(C\), then each condition contains every atom of the other. They
+record the same commitments, so \(C \equiv D\).
+
+The order is therefore a genuine forcing order once equality is read
+extensionally. The weaker record is lower in information. The stronger record
+has all the weaker commitments and perhaps more. A condition is not stronger
+because it is closer to a continuum object or because its values are larger. It
+is stronger because it has answered more bounded finite questions without
+erasing earlier answers. This is exactly the direction S03 used for decision:
+to decide a bounded knot, move to a stronger finite record.
+
+The phrase "up to extensional equality" should be read as a bookkeeping
+precision, not as a loophole. The apparatus may need several finite witnesses
+to know that a row is allowed: a witness that the knot belongs to the finite
+support, a witness that the value lies inside the current tolerance, or a
+witness that adding the row preserves compatibility. Those witnesses can differ
+while the row they certify is the same row. Antisymmetry cannot reasonably ask
+the witnesses to be literally the same object. It asks the commitments to be
+the same. If each record extends the other, every committed atom on either side
+is present on both sides, so the two records have the same observable finite
+content. That is the order-theoretic fact the forcing calculus needs.
+
+This also keeps the notation honest. The chapter can write \(C' \leq C\), or
+speak of \(C'\) as stronger than \(C\), once the convention is fixed: stronger
+means extension by preserved finite information. If two presentations differ
+only by certificate packaging, they occupy the same position in the order.
+Future uses of the order should therefore never depend on the accidental route
+by which the apparatus assembled a condition. They may depend only on which
+bounded atoms the condition records and which atoms a stronger condition
+preserves.
+
+Compatibility and merge also become order statements. If two conditions agree
+on overlap, their union is a common stronger condition. It extends the first
+because it preserves every atom of the first, and it extends the second for the
+same reason. It is least among common stronger conditions up to extensional
+equality: any condition that extends both inputs must contain every atom from
+both, and therefore must contain the merged record. The merge is not an
+interpolation and not a value average. It is the least finite page that keeps
+both nonconflicting pages.
+
+This least-common-extension claim is deliberately modest. It applies when the
+inputs are compatible finite records under the same finite allowance. If the
+records disagree at a shared knot, there is no common stronger condition,
+because a stronger condition would have to preserve both incompatible
+assignments. If the records agree, the merge is finite because it combines
+finite lists, bounded because every atom already obeyed the shared
+\(\varepsilon\), and least because any common extension must include those
+same atoms. The order does no hidden analytic work.
+
+Extensional equality also keeps merge from depending on list order or
+certificate order. Writing the atoms from \(C\) before the atoms from \(D\), or
+from \(D\) before the atoms from \(C\), produces the same commitments. Removing
+duplicate matching atoms changes no commitment. Reusing a different proof that
+the same atom is bounded changes no commitment. All of these presentations are
+one condition for order purposes. The apparatus is allowed to remember its
+certificates internally while the forcing calculus reads only the finite
+commitments those certificates certify.
+
+The second structure is a natural-number code. A countable forcing needs its
+conditions to be listable. Here listability is not asserted abstractly; it is
+built from the finite data already present. A bounded atom has a knot and a
+bounded value. The knot data can be assigned a natural code. The value data,
+because it is admitted only through the finite bounded apparatus of the
+chapter, can also be assigned a natural code. Pair the two codes to obtain a
+code for the atom:
 \[
-  \mathrm{code}(\text{atom}) \in \mathbb{N},
-  \qquad
-  \mathrm{code}(\text{condition}) \in \mathbb{N}.
+  \mathrm{code}(k,v)
+  =
+  \langle \mathrm{code}(k), \mathrm{code}(v) \rangle_{\mathbb N}.
 \]
-Because every condition carries a natural-number code, the conditions are enumerable: they
-inject into the natural numbers, and the forcing poset is countable. The coding is
-constructive --- it is an actual function from conditions to numbers, not an abstract
-cardinality claim.
+The angle brackets here mean any fixed finite pairing operation on natural
+numbers. The particular pairing convention is not the content; the content is
+that a pair of natural codes receives one natural code.
 
-The apparatus is exact about what this countability is and is not. It is the constructive
-content of ``the ledger stays countable'': a finite code attached to each finite condition,
-so that the conditions can be listed. It is not a completed enumeration of the continuum,
-and it is not a claim that the generic object is countable. The conditions are countable;
-the object they force toward is not, and it stays on the far side of the door. The coding
-makes the forcing a countable forcing --- the Cohen setting --- without making any claim about
-what lies beyond it.
+A condition is a finite list of such atoms. Finite lists can be coded
+recursively: the empty list receives a base code, and a nonempty list receives
+a code built from the code of its head atom and the code of its tail list. Thus
+each finite condition receives a natural number:
+\[
+  \mathrm{code}(\emptyset) \in \mathbb N,
+  \qquad
+  \mathrm{code}((a_0,\ldots,a_{n-1})) \in \mathbb N.
+\]
+If the apparatus uses a canonical ordering of the finite support, the code can
+be made insensitive to the accidental order in which atoms were written. If it
+does not canonicalize first, the resulting code still lists presentations, and
+extensional equality then identifies presentations with the same commitments.
+Either route stays finite.
 
-Together the order and the code give the apparatus a countable forcing poset, finite and
-bounded at every condition. That is precisely the structure Cohen forcing inhabits: a
-countable poset of finite conditions, ordered by extension, dense enough to decide any
-finite question. The apparatus has built that structure honestly, up to extensional
-equality and with a constructive code, and it has built it entirely below the tolerance,
-short of the continuum.
+One can picture the coding as a ledger index. First number the admissible knot
+descriptions. Then number the admissible bounded value descriptions. Then use a
+pairing operation to number each atom. Finally, use a finite-list code to number
+the page of atoms. The construction is primitive in spirit: pair, cons, stop.
+It does not require the apparatus to inspect infinitely many possible rows
+before coding the row in hand. Given a finite condition, the apparatus reads
+the finitely many atoms actually present and produces one natural number for
+that finite page.
 
-The section's metaphysical anchor is that a forcing is an ordered, countable family of
-finite commitments. The apparatus tanges each condition into a place in a partial order ---
-read up to what it actually says --- and funges each into a natural-number code, so that the
-whole calculus is a countable poset of finite, bounded conditions. It is the Cohen setting,
-finite edition: ordered, countable, dense, and stopped at the door the continuum lies
-behind.
+If duplicate or permuted presentations are allowed, the code may count more
+presentations than extensional conditions. That is harmless for countability. A
+surjection from natural-number codes onto presentations already gives a
+listing, and quotienting presentations by extensional equality only identifies
+some entries of that list. If the apparatus wants an injection instead, it can
+choose a canonical presentation: sort the finite support by its knot code,
+discard duplicate matching atoms, and reject any conflicting duplicate as an
+invalid condition. Either method yields the same mathematical boundary: the
+finite condition family is countable because finite coded data can be listed.
+
+The countability conclusion is now concrete. Conditions inject into, or are
+listed by, natural-number codes once the chosen presentation convention is
+fixed. There is no appeal to an external continuum, no appeal to a completed
+real line, and no appeal to an unbounded search through possible splines. The
+ledger has only finite records, and finite records can be encoded by natural
+numbers. That is the constructive content of saying that this forcing poset is
+countable.
+
+The qualification matters. Countability belongs to the family of finite
+conditions, not to a completed generic object. A forcing argument may later
+speak as though a generic object meets every dense requirement, but this
+chapter has not built such an object. It has built a countable supply of finite
+bounded approximants. The fact that these approximants can be listed does not
+mean the continuum has been listed. It means the apparatus knows how to index
+the finite questions and finite answers it is actually allowed to manipulate.
+
+Nor does natural coding turn the values into ordinary real numbers. The code is
+attached to the bounded finite data admitted by the chapter: knots, values, and
+certificates inside the tolerance regime. Coding an admitted finite value is
+bookkeeping. It does not complete a metric space, add limits, or certify that
+all analytic values have been exhausted. The code says, "this finite atom has a
+place in the ledger." It does not say, "the continuum has been captured."
+
+The order and the code also fit each other. Extension can be checked against
+the finite atom lists named by the codes. Compatibility can be checked by
+looking through the finitely many coded knots in each support. Merge can be
+recoded as the finite list obtained by combining compatible coded atoms.
+Decision adds a new coded atom, or recognizes that the code for the required
+atom is already present. Every operation from S03 therefore has a
+natural-number shadow, but the shadow follows the finite operation rather than
+replacing it.
+
+That last direction matters. The code is not the condition's source of truth.
+The finite commitments are the source of truth; the code is their index. A bad
+code, a noncanonical code, or two codes for extensionally equal presentations
+does not change which knots have been committed. The order is defined on the
+commitments and then represented by codes. This prevents the natural-number
+apparatus from smuggling in a stronger claim than the finite ledger earned.
+Coding is a way to list and revisit finite commitments, not a way to enlarge
+them.
+
+This is why the chapter can call the structure Cohen-shaped without
+overclaiming. It has a partially ordered family of finite conditions. It has
+finite extension, finite compatibility, finite merge, and finite decision. It
+has a natural coding that lists the finite conditions. These are the parts of
+Cohen forcing the apparatus can responsibly instantiate below
+\(\varepsilon\). The parts that require an actual generic object remain beyond
+the finite door.
+
+The completed package is a countable poset of finite bounded commitments,
+ordered by extension up to extensional equality. Compatible records have least
+common stronger records, again up to what they actually commit to. Each atom
+and each condition has a natural code. The family of conditions is therefore
+countable in the constructive sense available to the apparatus. What has been
+counted is not the continuum, but the finite ledger of possible bounded
+commitments.
+
+S05 can now return to the gauge side. The present section has finished the
+set-theoretic hygiene: conditions, operations, order, and code. The calculus is
+ordered enough to behave like forcing and small enough to remain a finite
+apparatus. The residue closeout that follows should not reopen the order or
+the coding. It can use the package as established: a countable finite forcing
+calculus, bounded by \(\varepsilon\), honest about its partiality, and stopped
+before it mistakes its finite codes for a continuum.
 
 \section{The Gauge Commutator Residue Closeout}
 
-The chapter closes the finite arc by packaging its hygiene and then handing the package to
-the gauge side, where it discovers that the electron's residue has rested, all along, on
-the counting of the first section. The closeout is short, but it ties the chapter's two
-ends --- the arithmetic at the bottom and the charge at the top --- into one finite ledger.
+The numbered chapter closes by refusing to let its two halves drift apart. The
+first half built the local arithmetic floor: successors can be counted inside
+the apparatus, finite lists can be held as finite lists, and bounded questions
+can be asked without pretending that a completed continuum has arrived. The
+second half built the forcing-facing package below \(\varepsilon\): finite
+conditions, finite extension, compatibility, merge, finite decision,
+extensional order, and natural-number codes. S05 uses that package once, and
+only once, to return to the gauge commutator residue. It is a closeout, not a
+new theorem.
 
-Package first. The forcing calculus, its extensional order, and its natural coding are
-three views of one object, and the apparatus bundles them into a single finite-compliance
-certificate: a condition calculus that is Cohen-compliant up to the tolerance, ordered up
-to extensional equality, and countable by code. Carrying all three in one certificate is
-the chapter's deliverable on the set-theoretic side: a finite forcing, complete with its
-order and its enumeration, bounded by the tolerance and ready to sit beneath any later
-continuum claim.
+The certificate assembled by S04 has three faces. First, it is finite: every
+condition is a finite record of bounded atom commitments. Second, it is ordered:
+extension means adding information while preserving the older commitments, and
+the order is read up to extensional equality. Third, it is countable in the
+constructive sense available here: atoms have natural codes and finite
+conditions have codes built from finite lists of atoms. Taken together, these
+faces give the chapter its Cohen-compliance certificate below the tolerance. The
+certificate says that the apparatus has a finite forcing calculus with the
+right order behavior and the right coding behavior. It does not say that a
+generic spline has been formed, that the continuum has been enumerated, or that
+any completion hypothesis has been discharged.
 
-Now the gauge side, and the tie that closes the arc. The generated program's residue is the
-mixed pair term --- the electron --- and it is what remains after the vacuum's linear
-certificate has closed. The closeout reads this off the counting certificate of the first
-section. From the single fact that the apparatus can count its successors --- that the
-successor of the successor of one is the successor of two --- it follows that the vacuum's
-linear term closes, that the configuration is certified through second order, and that the
-residue left over is the mixed pair:
+This restraint is exactly what lets the gauge closeout be honest. The gauge
+side does not need a continuum object from this chapter. It needs a finite
+bookkeeping result: after the linear vacuum certificate has closed, the
+surviving commutator contribution is the mixed-pair residue. In the language of
+the earlier boundary chapters, this is the electron residue. The present chapter
+does not rederive the analytic boundary story. It supplies the finite counting
+and finite-condition hygiene that keep the residue from floating free of the
+apparatus that names it.
+
+The counting floor is the hinge. The apparatus first had to certify that its
+successor arithmetic could reach the small finite counts it uses: one, its
+successor, and the next successor. That is the humble certificate behind the
+later bookkeeping. Once the finite count is available, the apparatus can sort
+the terms it has already licensed: the vacuum's linear part closes under the
+finite certificate, while the mixed pair is not absorbed into that linear
+closure. What remains is the residue. Schematically, and only as a finite
+accounting statement, the closeout has the form
 \[
-  \text{successor certificate}
+  \text{successor/counting certificate}
   \;\Longrightarrow\;
-  \text{linear term closes} \ \text{ and }\ \text{residue} = \text{the mixed pair} = -1.
+  \text{linear vacuum closure}
+  \quad\text{with}\quad
+  \text{residue} = \text{mixed pair}.
 \]
-The arithmetic the apparatus proved at the bottom of the chapter underwrites the charge at
-the top. The electron's residue is not free-floating; it stands on the apparatus being able
-to count, certified by the same successor step that let it count to three.
+The displayed implication is not an analytic completion theorem. It is the
+chapter's bookkeeping join: the finite count supports the linear closeout, and
+the unabsorbed mixed pair is the finite residue carried forward from the gauge
+analysis.
 
-This is what it means to close the gauge commutator residue against the count. The
-commutator residue --- the part of the gauge that survives after the linear term is taken
-out --- is the mixed pair, and the apparatus certifies it by certifying that the linear term
-closes, which it does because the counting holds. The set-theoretic hygiene and the gauge
-charge are the two ends of one finite ledger, and the ledger is joined in the middle by the
-arithmetic of the successor. The chapter that began by proving one and one make two ends by
-spending that proof on the electron.
+The extensional order and the natural codes matter here because they prevent a
+subtle overstatement. A residue cannot be certified by an amorphous pile of
+finite records. The apparatus must know when two records make the same bounded
+commitments, when one record extends another, when two records can be merged,
+and how the resulting finite record is counted. Those are precisely the S03 and
+S04 operations. They let the finite certificate be filed without treating its
+route, proof packaging, or later use as part of the object certified. The record
+that supports the gauge closeout is the finite record of commitments itself.
 
-The section's metaphysical anchor is that the apparatus's highest object rests on its
-lowest. The electron, the order-two quantum read at the boundary, is underwritten by the
-successor certificate, the humblest fact in the chapter. The apparatus tanges its counting
-into a certificate and funges that certificate all the way up to the gauge residue, where
-the charge closes out against the count. The finite arc is closed: a forcing calculus
-bounded by a tolerance, a counting proven in the apparatus's own numbers, and a charge that
-rests on both. Nothing has crossed the continuum door, and everything behind it is in
-order.
+Thus the residue closeout is conditional on the apparatus already built in this
+chapter. Given the successor/counting certificate, given finite bounded
+conditions below \(\varepsilon\), given the extension and compatibility
+calculus, and given the extensional coding of finite conditions, the chapter can
+file the finite closure claim: the linear/vacuum part has closed in the finite
+ledger, and the mixed-pair contribution is the remaining gauge residue. That is
+the most this chapter claims. It names no new Sobolev space, asserts no Hilbert
+completion, and supplies no completed generic object.
+
+The chapter therefore ends with a deliberately finite package. On the
+set-theoretic side, it has a countable family of finite Cohen-style conditions,
+ordered extensionally and coded by natural numbers. On the gauge side, it has a
+finite residue statement tied back to the counting floor. The two are joined by
+bookkeeping rather than by a new continuum principle: finite records can be
+counted, finite extensions can close finite questions, and the finite gauge
+ledger can say what remains after its linear part is closed.
+
+There is also a useful negative statement in the closeout. No part of the
+argument asks the coding to choose a generic filter, no part asks the finite
+order to supply a total assignment, and no part asks the gauge residue to carry
+more analytic structure than the earlier chapters assigned to it. The residue
+is filed after the finite certificates have done their finite work.
+
+This is why the bridge may now approach the completion door without smuggling
+anything through it. The numbered chapter has put the finite house in order. It
+has not crossed to a completed continuum, a total generic spline, or a completed
+boundary-radiation theorem. It has prepared the finite certificate that any
+later completion discussion must cite: counting at the floor, Cohen-style
+finite compliance in the middle, and the mixed-pair gauge residue at the top.
+The next section may name the completion hypotheses because this one has
+stopped exactly where the finite apparatus stops.
 
 \section*{Bridge: Approaching the Completion Door}
 
-The chapter put the apparatus's finite house in order. Its counting is its own and proven;
-its forcing calculus is finite, ordered, countable, and bounded by a tolerance; and the
-gauge residue is tied back to the count. Every object the chapter built is finite, and every
-claim it made stops short of the continuum. That restraint was the point: the apparatus
-refused, again and again, to pass to the generic object, the completed enumeration, the
-total assignment that lives on the far side of a door it kept naming and not opening.
+The chapter has now done the finite work it promised to do. It began by making
+the apparatus count in its own numbers. It then turned that count into a ledger
+of finite spline conditions: bounded atoms, finite records, and partial
+commitments below \(\varepsilon\). It showed how one condition extends another,
+how compatibility is tested on overlap, how compatible records merge, and how a
+finite list of bounded questions can be decided by finite extension. It then
+quotiented away certificate packaging by extensional equality and coded the
+finite records by natural numbers. Finally, it returned that finite package to
+the gauge side and filed the mixed-pair residue after the linear/vacuum part had
+closed.
 
-But the door has been named too many times to leave shut forever. The square-root door of
-the operator chapter, the completion slot of the Hilbert frame, the generic object of this
-chapter's forcing --- they are all the same door, the one between the finite apparatus and the
-continuum. The apparatus has done everything a finite house can do up to that door. What it
-has not done is say, plainly and in order, what lies beyond it: which continuum-facing
-hypotheses the finite construction would need, and which of them the apparatus can honestly
-claim to have discharged.
+That is a substantial package, but it is deliberately not a completion. The
+chapter has a counting floor, a finite condition calculus, an extensional order,
+a natural coding, and a finite gauge residue closeout. It does not have a total
+generic spline. It does not have a completed enumeration of continuum objects.
+It does not have a Hilbert space completion, a Sobolev completion, or a
+continuum-facing result. The distinction matters because the book has now reached the
+point where a careless sentence could make the finite apparatus sound stronger
+than it is. Chapter 15's strength is exactly its refusal to do that.
 
-The next chapter does exactly that, and only that. It names the Sobolev and Hilbert
-completion the finite energy points toward, the continuum certificate families the finite
-ones shadow, and the conditional boundary-radiation theorem the finite edition gestured at.
-It names them as hypotheses, with the dependence made explicit, and it discharges only what
-the finite apparatus genuinely discharges. The door is approached, framed, and described ---
-not walked through as though the continuum were free.
+The door is nevertheless visible. The finite conditions behave like the finite
+traces of something larger. Their natural codes give a countable ledger, but a
+countable ledger of finite records is not the same as a completed object. Their
+extension order lets the apparatus answer any actually asked finite question,
+but answering finite questions one by one is not the same as producing a total
+assignment. Their residue closeout ties the gauge charge back to the count, but
+that bookkeeping closeout is not the same as an analytic boundary-radiation
+theorem. The bridge must say all of this plainly because the next chapter can
+only be honest if the threshold is honest.
 
-So the next chapter is the honest accounting at the threshold. It states the
-continuum-facing hypotheses without pretending they are theorems, separates the finite
-skeleton that is built from the analytic completion that is assumed, and gives the
-boundary-radiation result its true conditional form. The question the apparatus carries to
-the door is the one it has earned the right to ask: of everything that lies beyond the
-finite, what exactly must be assumed, and what has the finite construction already made
-good?
+The threshold has appeared before under several names. The square-root door of
+the operator discussion, the completion slot of the Hilbert frame, the generic
+object of the forcing discussion, and the continuum-facing boundary family are
+not four unrelated mysteries. They are different views of the same gap between a
+finite apparatus and the completed structure it points toward. Chapter 15 has
+not closed that gap. It has prepared the finite side of it carefully enough that
+the next chapter can name what remains without handwaving.
+
+The preparation is also negative preparation. By the end of the numbered
+sections, the apparatus knows exactly which moves it is not allowed to treat as
+free. A finite code is not a choice principle. A sequence of finite extensions
+is not a completed filter. A residue statement certified by finite bookkeeping
+is not a boundary analysis in a completed normed space. These refusals are not
+timidity; they are what make the next chapter legible. Once the finite side has
+said no to these substitutions, the completion side can ask for them openly and
+measure what each one would add.
+
+Chapter 16 therefore has a narrower job than triumph would suggest. It must
+name the Sobolev/Hilbert door as a door, not as something already crossed. It
+must identify the separable pre-Hilbert skeleton already suggested by the finite
+energy bookkeeping, while distinguishing that skeleton from a completed Hilbert
+space. It must explain how finite certificate families shadow continuum
+certificate families without pretending the shadow is the object. It must bring
+orthogonality, Clifford compatibility, and the boundary trace into one
+conditional frame. And it must state generalized boundary radiation in its true
+form: a theorem only under the completion hypotheses that make its analytic
+words meaningful.
+
+This bridge does not prove those obligations. It only aligns them. The finite
+apparatus has earned the right to ask for completion hypotheses because it has
+kept its own finite account clean. The next chapter will ask which hypotheses
+are needed, which finite structures they extend, and which claims remain
+conditional on them. That is the honest accounting at the door: not a passage
+from finite work to continuum victory, but a careful list of what must be added
+before continuum-facing statements can be read as more than finite shadows.
+
+The bridge also keeps Chapter 16 from becoming a repetition of Chapter 15. It
+does not need to reconstruct bounded atoms, redo compatibility, or recode finite
+conditions. Those credentials have been filed. What remains is to test how far
+they can be carried once the book permits completion language. The finite
+apparatus gives Chapter 16 its skeleton; the next chapter must say which
+continuum-facing assumptions put analytic flesh on that skeleton and which
+claims still depend on those assumptions.
+
+The chapter can therefore hand off without shame and without inflation. Behind
+it are successor counts, bounded finite conditions, extension and compatibility,
+finite decision, extensional coding, constructive countability, and the
+mixed-pair residue tied back to the counting floor. Ahead of it are completion
+hypotheses, continuum certificate families, boundary traces, and conditional
+radiation. The bridge is the line between those two ledgers. It says: the finite
+house is in order; the completion door is next; do not confuse one for the
+other.
 
 \section*{Coda: The Half-Filled Grid}
 
-A constructor building a crossword grid works the way this chapter's forcing works, cell by
-cell, and never needs the finished grid to make progress. Watching the grid fill is watching
-extension, compatibility, decision, and countability happen in pencil.
+A constructor filling a crossword grid works the way this chapter's forcing
+works: cell by cell, mark by mark, with a large picture in mind and only a
+finite sheet of commitments actually on the table. The constructor does not
+begin with the finished grid. She begins with a few letters, a few clues, a
+promise not to write two letters in one square, and a willingness to extend the
+partial work when a clue becomes decidable. Watching the grid fill is watching
+the whole chapter in miniature: counting, bounded commitment, extension,
+compatibility, merge, decision, coding, and the refusal to mistake finite
+progress for the completed object.
 
-A partially filled grid is a condition. Some cells carry letters; most are blank. The
-constructor has committed to finitely much --- the letters written so far --- and left the
-rest open. The grid does not apologize for being mostly empty; a half-filled grid is a
-legitimate state of the work, a finite partial commitment exactly like a spline condition
-with finitely many assignments and the rest of the knots untouched.
+A half-filled grid is not a failed grid. It is a legitimate state of the work.
+Some cells carry letters; most are blank. The written cells are the finite
+record. The blank cells are not errors or contradictions; they are the part of
+the puzzle not yet committed. That is exactly what a finite spline condition was
+in the chapter. It was not the spline, not a total assignment, and not a
+continuum object. It was a finite list of bounded atom commitments: this knot,
+this value, below the tolerance. The coda's grid gives the same idea in a form
+the eye can hold. A condition is the set of squares already filled in pencil.
 
-Filling more cells extends the condition. Write a letter in a blank cell and the new grid
-contains every letter the old one did, plus one more; it is a stronger condition, committed
-to everything the weaker one was and a little besides. Erasing would unlearn a commitment,
-and the forcing order does not erase --- extension only adds. The constructor grows the grid
-by extension, each new letter a step up the order, never taking back what was written.
+The first chapter task was to make sure the pencil could count its own marks.
+Before the constructor can say that a grid has three committed cells, or that a
+move adds one more square, she has to count. Chapter 15 therefore began at the
+floor: successor, one, two, three, and the small certificate that the apparatus
+can recognize its own finite successor steps. In the grid image, this is the
+difference between a vague impression that some squares are filled and a ledger
+that can say which finite marks have actually been made. The forcing calculus
+does not float above arithmetic. It stands on the ability to count finite
+commitments.
 
-Two partial grids are compatible when they agree on every shared cell. If one grid has a
-letter in a cell, and the other grid has the same letter there or leaves it blank, the two
-are consistent, and they merge into a fuller grid carrying both their commitments. But if one
-grid writes one letter in a cell and the other writes a different letter in the same cell,
-they cannot be merged --- no single grid holds two letters in one square. Compatibility is
-agreement on the overlap, and the merge of compatible grids extends them both, exactly as the
-merge of compatible conditions does.
+Filling one more cell extends the grid. The new partial grid contains every
+letter the old partial grid contained, plus one more letter in one more square.
+Nothing is erased. Nothing is reinterpreted. The new grid is stronger because it
+has more information and still preserves the old information. That is extension
+in its reader-facing form. A condition grows by adding bounded commitments while
+keeping the commitments it already made. In the grid, this discipline is
+obvious: a constructor who keeps erasing the old letters has not extended a
+grid; she has changed the subject.
 
-Any specific cell can be decided. Point to a blank square, and the constructor can always
-extend the current grid to fill it --- one letter, one step, and the cell is settled. There is
-no square that the grid cannot be extended to decide; deciding any finite set of squares is
-just a finite run of such extensions. That is density in pencil: below any partial grid, for
-any square, lies a fuller grid that decides it.
+Two half-filled grids are compatible when they agree wherever both have written
+something. If one grid writes \(A\) in a square and the other also writes \(A\)
+there, no conflict appears. If one grid leaves that square blank, no conflict
+appears either; the written letter can be carried into the merge. But if one
+grid writes \(A\) and the other writes \(B\) in the same square, no single grid
+can honor both. Compatibility is agreement on overlap. Merge is the finite act
+of putting together two compatible records and keeping all their letters. The
+least common stronger grid is the one that adds no extra letters beyond what
+the two compatible partial grids already require.
 
-And the partial grids are countable. Each filled cell is a finite piece of data --- a position
-and a letter --- and a partial grid is a finite list of them, so the partial grids can be
-listed, coded one by one. There are only countably many finite fills, however large the
-ambitions of the finished puzzle.
+This is why the chapter could treat decision as finite. A particular square can
+be asked about. The constructor can point to that square and extend the current
+partial grid by filling it, if a bounded admissible letter is being committed.
+If she asks about finitely many squares, she can run finitely many such moves.
+The result is a stronger partial grid that decides the finite question she
+actually asked. The completed solution is not needed for that operation. Dense
+decision in the chapter had the same modest force: every finite bounded
+question the apparatus actually asks can be settled by finitely many bounded
+extensions.
 
-The one thing the constructor never needs, to do any of this, is the completed grid. Extending,
-merging, deciding a square, listing the partial fills --- all of it happens among the finite
-partial grids, with no appeal to the total solution. The completed grid is a separate object,
-the limit the partial fills approach, and it lives beyond all of them; the constructor reaches
-it, if at all, only by a different and later act. The finite discipline settles every finite
-question without it.
+The partial grids also make extensional equality almost tactile. Two
+constructors may have arrived at the same visible grid by different routes.
+One solved the upper-left corner first; another solved the long central word
+and then filled the corners. Their notebooks may contain different scratch
+work. Their explanations may package the evidence differently. But if the same
+cells carry the same letters, the partial grid is the same for the purpose of
+the puzzle. That is extensional equality for proof-carrying conditions. The
+certificate route does not become another letter in the square. What matters is
+the finite record of actual commitments.
 
-That is the chapter in a grid. The partial fills are the forcing conditions; writing a letter
-is extension; agreement on shared cells is compatibility, and consistent grids merge; any
-square is decided by a finite extension; the partial fills are countable; and the completed
-grid is the generic object on the far side of the door, approached by the finite work and
-never required by it. The apparatus, like the constructor, fills its grid as far as finite
-commitments reach, and leaves the finished puzzle for the chapter that opens the door.
+Once the grid is understood extensionally, it can be coded. A filled square is
+finite data: a row, a column, and a letter. A half-filled grid is a finite list
+of such data. Finite data can be placed in a finite code, and finite lists of
+finite codes can themselves be coded by natural numbers. That is the chapter's
+constructive countability in a picture. The family being counted is not the set
+of completed puzzles. It is the family of finite partial fills. There are
+countably many ways to write finitely many letters in finitely described cells,
+even though the completed object toward which the work points belongs to a
+different discussion.
+
+The grid image must also remember the gauge side. A puzzle has local clues that
+close cleanly and intersections where something remains to be reconciled. In
+the chapter's gauge bookkeeping, the linear/vacuum part closes under the finite
+certificate, while the mixed pair remains as the residue. The coda should not
+turn that into a new analytic theorem. It is closer to saying: after the
+constructor has honored all the finite entries licensed by the current ledger,
+one crossing still carries the distinctive leftover mark. The mixed-pair
+residue is filed because the finite bookkeeping can say what has closed and
+what remains. It is not filed because the completed grid has already appeared.
+
+This matters emotionally as well as formally. A half-filled grid can feel
+unfinished because it is unfinished. But unfinished is not the same as
+worthless. The chapter has spent many pages teaching the reader to respect the
+power of finite work without flattering it. A finite condition is real. A
+finite extension is progress. A compatibility test is information. A merge is a
+new, stronger finite state. A decision of a finite question is an honest
+settlement of that question. A natural code for a finite record is a genuine
+counting result. The apparatus is allowed to be proud of all that, so long as it
+does not confuse those achievements with the finished puzzle.
+
+The completed grid is a different kind of object. It is the total fill in which
+every square has its final letter and every clue is simultaneously satisfied.
+The constructor may be guided by that object, may approach it through finite
+work, and may speak about it as the goal. But none of the local moves already
+possesses it. In the chapter's terms, the completed grid is the generic object
+or completion-side object beyond the finite door. The finite forcing calculus
+can approach it by extension and decide any finite bounded question on the way.
+It cannot simply declare that the total object has been supplied.
+
+The constructor's patience is the chapter's method. A good constructor does not
+look at a half-filled grid and say that every blank square has secretly been
+settled. She also does not despise the half-filled grid because it is not yet
+complete. She keeps the two truths together. The marks already written are
+binding. The blank squares remain open. The next admissible mark must respect
+the old marks. If two drafts disagree at one square, they cannot be combined
+until that conflict is resolved. This is the mood of the finite apparatus:
+serious about what has been certified, cautious about what has not.
+
+That is the finite/continuum boundary in its simplest image. A half-filled grid
+is not a completed grid, even if every mark on it is correct. A countable list
+of partial grids is not an enumeration of completed continuum objects. A
+finite residue closeout is not an unconditional boundary-radiation theorem. A
+separable pre-Hilbert skeleton is not a completed Hilbert space. A finite energy
+ledger is not a Sobolev completion. The boundary is not a rebuke to the finite
+apparatus. It is the condition under which its claims remain truthful.
+
+The grid also explains why Chapter 16 must come next rather than merely
+continue the coda. Once enough finite marks have been made, the natural question
+changes. It is no longer only, ``Can this square be filled?'' It becomes,
+``Under what hypotheses can the whole grid be treated as an object?'' That is a
+different question. It asks about completion, limits, traces, and the structures
+that let finite pieces speak as parts of a completed whole. Chapter 15 has
+prepared the finite side of that question. It has not answered the completion
+side.
+
+So the coda closes Chapter 15 with a modest confidence. The apparatus has filled
+many squares. It can count its marks. It can add new marks without erasing old
+ones. It can test whether two partial fills agree. It can merge compatible
+fills. It can decide any square it is actually asked to decide, and any finite
+set of such squares by finite iteration. It can identify partial fills that
+write the same letters, regardless of route. It can code the finite records and
+list the finite possibilities. It can tie the gauge residue back to the finite
+counting floor.
+
+What it cannot do, and what this chapter refuses to pretend it can do, is hold
+the completed grid merely because many finite pieces are in order. That work is
+next. The next chapter must name the completion hypotheses, say what analytic
+structure they add, and state which boundary-radiation claims remain
+conditional on them. Chapter 15 leaves the reader at the table with a grid that
+is genuinely fuller than before, governed by honest rules, and still not the
+finished puzzle. The pencil has done real work. The door to completion is still
+a door.
+
+That is a better ending than a premature solution. The reader can see the
+letters already placed. The reader can see how another letter would be placed.
+The reader can see when two partial fills agree, when they cannot agree, and
+why a finite list of requested squares can be settled without needing every
+other square. The reader can also see the blank space that remains. Chapter 15
+does not hide that blank space. It frames it, counts what is on this side of it,
+and sends the book forward with the right question: what must be added before
+the half-filled grid may be read as a completed one?

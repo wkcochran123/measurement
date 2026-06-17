@@ -77,293 +77,757 @@ The book set out to measure a single invariant. It has measured the electron.
 
 \section{The Correction to the Derivative Story}
 
-The previous chapter's triumph needs one correction, and the correction reverses an
-emphasis rather than a fact. The chapter built the first variation, proved it exact
-and unique, and celebrated that its remainder was identically zero. Every theorem
-there is true. But the celebration pointed at the wrong term. A derivative
-computation, done honestly, produces two things: a linear part and a residue. The
-chapter kept the linear part and discarded the residue, and then praised the
-discarding as a clean result.
+The previous chapter's triumph needs one correction, and the correction changes
+the emphasis rather than the theorem. Chapter 11 built the first variation. It
+proved that the finite Frechet derivative exists at the level it had defined,
+that the derivative is unique under exact matching, and that the finite Taylor
+expansion has no leftover term beyond the counted slots. Those claims stand.
+The chapter earned them by constructing the tower and the certificate instead
+of asking the reader to accept them as promises. The correction begins only
+after that success has been granted: the exact first-order reading was true,
+but it was not the whole measurement story.
 
-State the two steps the way the apparatus actually performs them. Building the full
-derivative from a coarser variation \emph{adds} a datum --- the residue, the order-two
-remainder that records what the linear part fails to capture. Building only the linear
-part from the full derivative \emph{removes} that datum --- projects it out, keeps the
-computation, loses what the computation was for. The earlier chapters lived on the
-second step. They worked in the weak form, where the residue is projected away before
-the measurement is read, and in that form the residue is structurally absent, not
-merely small.
+The difference is the difference between a clean linear story and the coupled
+remainder that the story cannot read. A first-order derivative asks how the
+action changes along the chosen variation. Chapter 11 answered that question
+exactly. But the paired middle of the apparatus has another place where a
+quantity can live: the order-two slot where the two sides interact. That slot
+is not an error in the first-order theorem. It is not a defect in the tower. It
+is the part of the measurement that becomes visible only after the first-order
+story has done everything it is allowed to do.
 
-So the order-two residue, not the order-one linear part, is the derivative's real
-content. Write the decomposition once more, but read it now with the emphasis
-corrected:
+The weak form explains why this second quantity stayed out of view. In the
+weak form, the apparatus projects away the order-two residue before the
+reading is made. That projection was useful. It isolated the first variation,
+made the zero certificate legible, and let the tower close its finite
+variational principle. But the same projection also removed the term this
+chapter now wants to inspect. The weak form did not prove that no residue was
+there. It arranged the question so that the residue had no place to appear.
+The cost of the clean tower was therefore a controlled loss of information.
+
+This is why the word ``residue'' needs care. Chapter 11 used a first-order
+residual to name the derivative reading it could squeeze to zero along the
+produced tower. That residual keeps its theorem. It remains the order-one
+quantity whose vanishing marks the solved finite variational principle. The
+residue in this chapter is a different slot, one floor higher: the order-two
+term left after the left and right first-order readings have told their story.
+The names are close because the apparatus keeps encountering what remains
+after a reading has been made. The levels are different because the readings
+ask different questions.
+
+Write the decomposition once more, now with that level distinction in view:
 \[
   D(v) = \underbrace{r_{\mathrm{L}}(v_{\mathrm{L}}) + r_{\mathrm{R}}(v_{\mathrm{R}})}_{\text{the story (linear)}}
          + \underbrace{\delta^2(v)}_{\text{the residue (order two)}}.
 \]
-The earlier chapters drove the story to zero and read the result as a solved
-variational principle. That reading is correct and incomplete. When the story
-vanishes, what is left is not nothing; it is the residue, the order-two datum the weak
-form had been discarding all along. The solved principle does not eliminate the
-residue. It isolates it.
+The left and right terms are the story because they are the two first-order
+readings. They say what each side contributes when that side is read in the
+linear register. The term \(\delta^2(v)\) is the residue because it remains
+only after those readings have been subtracted from the full coupled
+difference. Chapter 11 drove the first-order story to zero where the tower
+allowed it. That is a solved principle at the first-order level. It does not
+say that the order-two term has vanished. It says that the first-order account
+has become clean enough for the next question to be asked without confusion.
 
-This corrects the book's own language without retracting a single theorem. The
-order-one residual of the previous chapter keeps its name and its uniqueness; it is a
-genuine first-order quantity, exactly determined. The residue of this chapter is a
-different slot, one floor up the ladder: the order-two datum that the first-order
-computation cannot reach. The two are not competitors. The first-order residual is
-the story; the order-two residue is what the story leaves out. The previous chapter
-perfected the story. This chapter recovers what the story left out.
+The correction is therefore conservative. It retracts no existence theorem, no
+uniqueness theorem, and no exactness claim. It simply refuses to let a
+successful first-order theorem masquerade as a complete measurement. The weak
+form gave the book a way to solve the linear problem. The full coupled
+difference asks what the weak form left aside. A reader should now hold both
+facts at once: the finite Frechet derivative was exact in its own register, and
+the order-two residue was not recovered by that register.
 
-The cost of the weak form has a name the apparatus has used before: it is the price of
-working with a projected, convenient computation rather than the full one. That price
-bought every clean result of the tower arc --- the squeeze, the eventual exactness,
-the produced certificate --- and it bought them by setting the residue aside. There is
-nothing wrong with paying that price when the goal is to solve the first-order
-equations. The error would be to forget that it was paid, and to mistake the projected
-computation for the whole. The residue was never destroyed. It was set down in a slot
-the weak form does not read, waiting for an instrument that could pick it up.
+The distinction also protects the language of exactness. If the book said only
+that Chapter 11 missed something, the sentence would sound like a flaw in the
+construction. That is not the case. Chapter 11 asked an exact first-order
+question and received an exact first-order answer. This chapter asks a larger
+question about the coupled difference. A larger question can contain the old
+answer without being exhausted by it. The old answer remains a needed part of
+the new question, because the residue is recognized only after the first-order
+story has been stated cleanly enough to be subtracted.
 
-The section's metaphysical anchor is that what a computation discards can be its
-point. The apparatus tanges the variation into a linear story and an order-two
-residue, and the weak form funges the story forward while letting the residue fall
-silent. The correction is not to redo the computation but to look at the slot the
-computation emptied. The derivative's residue --- the order-two remainder, the second
-variation, the single invariant under a new name --- has been present at every stage of
-the book. The remaining chapters are about picking it up.
+In that sense, the weak form prepared the present chapter as much as it delayed
+it. By projecting away the order-two term, it gave the apparatus a disciplined
+linear account. By giving that account, it made the leftover slot precise. The
+residue is not a vague remainder outside the method. It is the named order-two
+place that appears when the full coupled difference is compared with the two
+first-order readings. The correction is to return to that place after the
+linear work has been completed, not to undo the linear work.
+
+This section stops at the correction. The next section will explain why a
+one-coordinate instrument cannot see the order-two residue even when the
+residue is present. For now the only point is the realignment of the story.
+Chapter 11 perfected the first-order account. Chapter 12 begins by turning
+toward the slot that account had to leave silent.
 
 \section{Why One-Coordinate Instruments Are Blind}
 
-The residue stayed anonymous for fifty chapters' worth of measurement, and the
-section's task is to show that this was not an oversight. It was forced by the shape of
-every instrument the book had built. Each of those instruments moved one coordinate at
-a time, and a one-coordinate instrument reads the residue as exactly zero --- always,
-for every action and every path. The blindness was structural and complete.
+The residue stayed anonymous through the earlier measurements because every
+instrument the book had built had the same shape. It could disturb one middle
+coordinate and hold the other still. It could read the effect of that single
+disturbance with great precision. It could refine the reading, squeeze it
+through a tower, and certify the result. But it could not ask a question whose
+grammar required two coordinates to change together. The blindness was not a
+limit of patience, resolution, or notation. It was built into the instrument's
+allowed motion.
 
-The residue is the mixed coupling, the cross term that pairs the left and right sides
-of the middle. Look at what happens to that cross term when only one side moves. Move
-the left coordinate and hold the right fixed at its vacuum value. The mixed coupling is
-built from four cost readings that, with the right coordinate unmoved, cancel in two
-pairs:
+The residue named in the previous section lives in the mixed coupling between
+the two sides of the middle. It is not stored on the left side alone, and it is
+not stored on the right side alone. It belongs to the joint slot where the two
+coordinates meet inside the full coupled difference. A one-coordinate probe
+therefore approaches the residue with the wrong shape. It asks, ``what happens
+when the left coordinate moves and the right coordinate stays fixed?'' or
+``what happens when the right coordinate moves and the left coordinate stays
+fixed?'' Those are legitimate first-order questions. They are exactly the
+questions Chapter 11 learned how to solve. They are also the wrong questions
+for the mixed term.
+
+Consider the left-only reading. The left coordinate changes, while the right
+coordinate remains at the value already carried by the path. The mixed coupling
+is assembled from four cost readings. In this left-only case, the two readings
+that involve the changed left coordinate appear once with a positive sign and
+once with a negative sign. They cancel. The two readings that involve the
+unchanged left coordinate do the same. Nothing small remains behind the
+calculation. The whole mixed contribution disappears by identity:
 \[
   \delta^2(\text{left only}) = 0
   \qquad\text{for every action and every path.}
 \]
-The same cancellation happens when only the right coordinate moves:
+The phrase ``for every action and every path'' matters. It says that the
+vanishing does not depend on a special choice of cost, a lucky vacuum, or a
+particular refinement of the apparatus. The algebra of the one-coordinate
+question itself has erased the mixed term.
+
+The right-only reading repeats the same argument with the names reversed. Now
+the right coordinate changes and the left coordinate remains at the value
+already carried by the path. Again the four cost readings split into two equal
+opposites. Again the mixed contribution cancels before any numerical
+sensitivity enters the discussion:
 \[
   \delta^2(\text{right only}) = 0
   \qquad\text{for every action and every path.}
 \]
-These are identities, not approximations. A one-coordinate variation does not read a
-small coupling that could be refined away; it reads the coupling as precisely nothing,
-because the cross term requires both coordinates to move and one of them is held still.
+These two identities are the section's central fact. They are not estimates.
+They are not statements that the residue is too faint for the present
+instrument. They say that a one-coordinate variation evaluates the mixed
+coupling as exactly zero, because one coordinate has been held fixed and the
+cross term has lost the second motion it needs in order to appear.
 
-This explains the entire history of the book's measurements. Every probe the apparatus
-ran moved one node at a time. The kicked path of the physical-record chapter, which
-read a clean value of two, moved a single middle node; that two was entirely the
-linear story, and the coupling underneath it read zero. The tower's refinements, the
-squeeze, the produced certificate --- all of them exercised the apparatus one
-coordinate at a time, and so all of them read the residue as zero and reported only the
-story. The residue was present at every one of those stages, in the slot the weak form
-discards, and invisible to every instrument that moved one thing at a time.
+This explains why earlier success could coexist with later ignorance. The
+single-node probes of the opening chapters were honest probes. They produced
+real readings, and those readings mattered. The physical-record chapter's clean
+value of two was also honest: it came from moving one middle node and reading
+the resulting first-order story. Nothing in the present correction turns that
+two into an illusion. The point is sharper. The value of two belonged wholly to
+the one-coordinate story, while the mixed coupling underneath it read zero
+under that shape of variation. The instrument measured exactly what it was able
+to measure, and exactly for that reason it could not measure the residue.
 
-The blindness is worth stating as a principle, because it is the chapter's hinge. A
-quantity that lives strictly in the coupling between two coordinates cannot be detected
-by any instrument that varies one coordinate. No refinement helps, no matter how fine,
-because refinement of a one-coordinate probe is still a one-coordinate probe. No change
-of action helps, because the cancellation holds for every action. The only way to make
-the residue nonzero is to move both coordinates at once, and an instrument built to
-move one at a time can never do that. The residue is not hard to see; it is impossible
-to see, with a single-coordinate instrument, by the algebra of the cross term.
+The same point can be put in the language of records. A one-coordinate record
+does not lie when it reports a single-side contribution. It gives a stable
+witness for that contribution, a mark that another compatible step can carry
+forward. But a stable witness is not automatically a witness to every adjacent
+quantity. The record says what the instrument did: one side moved, one side
+stayed fixed, and the resulting cost change was read in that restricted
+direction. It does not say what would have happened if the two sides had been
+allowed to move together. The missing residue is therefore not hidden inside
+the record as an unread number. It is absent from the record's grammar.
 
-There is a lesson here about measurement in general, and the apparatus states it. An
-instrument's reach is bounded by the shape of the variations it can perform. An
-instrument that probes along one axis is not merely less sensitive to a coupling
-between axes; it is exactly, identically insensitive to it. Sensitivity is not a
-matter of degree here but of structure: the coupling lies in a direction the
-one-coordinate instrument cannot point. To measure it at all requires a different kind
-of instrument --- one that moves a pair.
+The tower refinements followed the same pattern. Refinement made the
+one-coordinate story better controlled; it did not change the kind of question
+being asked. The squeeze drove the first-order residual into its exact place;
+it did not give the apparatus a second moving coordinate. The produced
+certificate witnessed a solved finite variational problem in the linear
+register; it did not certify that the coupled order-two slot was empty. Each
+step sharpened the earlier instrument, and every sharpening preserved the same
+blindness. A more precise one-coordinate instrument remains a one-coordinate
+instrument.
 
-The section's metaphysical anchor is that an instrument can be blind by construction,
-and that such blindness is not a flaw to be refined away but a fact to be respected.
-The apparatus tanges a single coordinate into a reading and funges that reading
-forward, and the cross term it cannot reach stays exactly zero in the record. The
-residue's long anonymity was not the apparatus failing to look hard enough. It was the
-apparatus looking, faithfully and finely, in a direction where the residue casts no
-shadow at all. To see the residue, the next section stops moving one coordinate and
-moves two.
+This is why the old path through the book could accumulate certainty without
+accumulating access. The single-node readings became more disciplined. The
+finite quotient removed irrelevant distinctions. The tower made the stages
+explicit. The squeeze removed slack. The certificate turned a successful
+reading into a holdable artifact. Each improvement strengthened the route that
+Chapter 11 needed. None of them added the missing degree of freedom. A locked
+door does not open because the key has been polished, if the key has the wrong
+cut. Here the cut is the shape of variation itself: one side moves, the other
+does not.
+
+That last sentence is the measurement principle. An instrument's reach is
+bounded by the shape of the variations it can perform. If the instrument can
+only move one coordinate, then it can only read quantities that answer to
+one-coordinate motion. A quantity that lives strictly between two coordinates
+does not become visible because the one-coordinate instrument receives a better
+scale, a longer tower, or a more disciplined certificate. Those improvements
+can remove noise, enforce exactness, and expose the first-order story. They
+cannot create a direction of measurement the instrument does not possess.
+
+Nor can the blindness be repaired by changing the action while keeping the same
+shape of probe. The two cancellation identities hold for every action. A
+different cost table changes what the four cost readings are, but it does not
+change the fact that the left-only expression subtracts each relevant reading
+from itself, and the right-only expression does the same. The mixed coupling
+has no surviving term unless both coordinates are allowed to vary. The
+obstruction therefore sits deeper than a bad choice of action. It sits in the
+grammar of the question.
+
+This universal cancellation gives the section its strong word, ``blind.'' The
+instrument does not merely lack the best action, the most dramatic path, or the
+cleverest refinement. If the variation moves only one coordinate, the mixed
+slot receives no mixed event to evaluate. The expression may be written down,
+but its four terms have already paired themselves into zero. The result is
+complete blindness, not partial sight. One could repeat the test with a new
+finite action, a new path, a new tag, or a longer enumeration of stages, and
+the one-coordinate shape would still return the same answer for the mixed
+coupling: zero by identity.
+
+The weak form then looks less like a mistake and more like an intentional
+restriction. It gave the book a way to read one-coordinate variations cleanly.
+It let the apparatus treat each side's first-order contribution as a
+transportable record: a finite mark could be produced, checked, and carried
+forward without dragging the entire surrounding history with it. That
+discipline made the earlier chapters possible. But the same discipline also
+screened off the mixed slot. A record made from one-coordinate motion can
+circulate faithfully through one-coordinate questions and still say nothing
+about a quantity whose whole definition requires two coordinates to move.
+
+There is no contradiction in that double role. Measurement often gains power
+by narrowing what counts as a legitimate question. A narrow instrument can make
+an answer exact because it refuses every variation outside its form. The weak
+form narrowed the question to the linear register, and that narrowing let the
+book prove existence, uniqueness, and zero first-order residual in the finite
+tower. The present chapter does not scold that narrowing. It names its border.
+The very discipline that made the one-coordinate record trustworthy also
+defined the region where that record had no authority.
+
+The residue's anonymity therefore has a precise cause. It was not hiding
+behind complexity. It was not postponed by an incomplete proof. It was not a
+physical adornment waiting outside the apparatus. It sat in a place the
+available instruments could not touch. The apparatus kept asking a legitimate
+question, and the legitimate answer to that question was zero mixed coupling.
+When the same legitimate question was repeated through refinement, squeeze, and
+certificate, the same answer returned. The silence was faithful.
+
+Faithful silence is different from ignorance by neglect. Neglect would mean
+that the apparatus failed to run a test it already knew how to run. This was
+not that. The apparatus lacked the relevant form of test. It could say, with
+complete reliability, what the left side did alone and what the right side did
+alone. It could not say, from those two separate readings, what belonged to
+their joint motion. Adding the two separate stories produces a story, but not
+the full coupled measurement. The residue is exactly the name for what this
+addition cannot supply.
+
+This is also why the correction from the previous section does not weaken the
+earlier theorem. Chapter 11 proved exactness for the one-coordinate story. This
+section explains why such exactness could never have read the coupled
+residue. The two facts belong together. Exactness in one register can be the
+very reason a different register remains unread: the instrument has become
+perfectly precise about a question whose shape excludes the desired term.
+
+The next step must therefore change the shape of variation, not merely improve
+the old one. To make the residue speak, the apparatus must stop moving only the
+left or only the right coordinate. It must allow the two middle coordinates to
+change together, so that the mixed coupling has two motions to compare. This
+section does not yet perform that experiment and does not yet read its sign. It
+only closes the old route. One-coordinate instruments are blind by identity.
+The residue can appear only when the instrument learns to move two coordinates
+at once.
 
 \section{The Pair Kick and Measurement Minus Story}
 
-To produce the residue, the apparatus moves a pair. It takes the flat vacuum --- the
-path whose middle nodes sit at the trivial configuration --- and kicks both middle
-nodes at once, under the discriminating action, sending the left node to one
-representative and the right node to a different one. This is the pair kick, and it is
-the first variation in the book that moves two coordinates simultaneously. What it
-produces is the residue the one-coordinate instruments could never read.
+To produce the residue, the apparatus must change the kind of event it performs.
+The previous section closed the one-coordinate route. Moving only the left
+middle coordinate or only the right middle coordinate makes the mixed coupling
+cancel by identity. No refinement can repair that, because refinement only
+improves a question of the same shape. The apparatus therefore stops asking the
+old question. It moves a pair.
 
-Read the two quantities the pair kick presents. The story is the linear account: the
-two one-coordinate computations, the left first-order residual and the right
-first-order residual, added together. Under this pair kick the story totals four. The
-measurement is the full coupled difference, the actual change in the action under the
-joint variation. Under this pair kick the measurement totals three. The story and the
-measurement disagree, and the disagreement is the whole point:
+Begin from the flat vacuum. In this chapter that phrase names the path whose
+middle nodes still sit at the unexcited configuration. Nothing has yet been
+chosen on the left side, and nothing has yet been chosen on the right side. The
+vacuum is not a cloud of possible particles; it is the finite reference state
+against which a variation can be read. It gives the apparatus a clean baseline:
+before the pair event, both middle positions carry the same trivial record, and
+the discriminating action has not yet been asked to distinguish a coupled
+change.
+
+The pair kick is the first event that changes that baseline in the right
+shape. It moves both middle nodes at once. The left middle node goes to one
+nonzero representative; the right middle node goes to a different nonzero
+representative. The distinction matters. If both sides receive the same
+representative, the apparatus has still performed a two-coordinate event, but it
+has not made the two channels distinct in the way needed for the unit reading
+below. The production section begins with the genuinely two-channel case: left
+and right both move, and they move to different representatives.
+
+The action used for the reading is discriminating. It can tell when the middle
+configuration asks it to distinguish different finite representatives. Earlier
+chapters used such discrimination as an obstruction or a refusal. Here the same
+kind of action becomes productive. It gives the paired variation a cost that
+the two one-coordinate stories can almost, but not quite, account for. The word
+``almost'' is important. If the two first-order stories explained the full
+measurement exactly, there would be no residue to read. If they had no relation
+to the measurement at all, the leftover would be arbitrary noise. The pair kick
+lands in the interesting middle: the story nearly explains the measurement, and
+the exact gap is small enough to be named.
+
+There are therefore two readings to keep separate. The first is the
+\emph{story}. The story is the linear account produced by adding the two
+one-coordinate readings. One asks what the left side contributes when it is
+read in the first-order register. One asks what the right side contributes in
+that same register. Add those two first-order answers, and one has the story
+the earlier apparatus knows how to tell:
 \[
-  \text{story} = r_{\mathrm{L}} + r_{\mathrm{R}} = 4,
+  \text{story}
+    = r_{\mathrm{L}}(v_{\mathrm{L}})
+      + r_{\mathrm{R}}(v_{\mathrm{R}}).
+\]
+For the pair kick, this story totals four. The number four is not yet the
+measurement. It is what the two separate one-coordinate histories predict when
+they are placed side by side.
+
+The second reading is the \emph{measurement}. The measurement is the full
+coupled difference, the actual change in the action under the joint variation.
+It does not first split the event into left and right stories. It asks the
+apparatus to read the paired event as one event:
+\[
+  \text{measurement} = D(v).
+\]
+For the pair kick, this measurement totals three. Now the apparatus has both
+numbers in hand. The one-coordinate story predicts four. The coupled
+measurement reads three. The pair kick has not merely made the residue
+possible; it has forced the story and the measurement to disagree by exactly
+one unit:
+\[
+  \text{story} = 4,
   \qquad
-  \text{measurement} = D = 3.
+  \text{measurement} = 3.
 \]
-The residue is what is left when the story is subtracted from the measurement:
+
+The residue is the difference in the orientation chosen by the apparatus:
+measurement minus story. In this orientation the arithmetic is plain:
 \[
-  \delta^2(\text{pair kick}) = \text{measurement} - \text{story} = 3 - 4 = -1.
+  \delta^2(\text{pair kick})
+    = \text{measurement} - \text{story}
+    = 3 - 4
+    = -1.
 \]
-A signed unit. The apparatus names it the electron. It has unit magnitude, negative
-sign, and it is produced only in coupling --- a one-coordinate kick would have given
-zero, by the previous section, and only the pair makes it appear.
+Nothing has been smuggled into the notation. The pair kick supplies the event.
+The discriminating action supplies the reading. The two one-coordinate
+residuals supply the story. The full coupled difference supplies the
+measurement. Subtraction supplies the leftover. The leftover is negative one.
 
-This residue is not a new quantity. It is the second variation of the action,
-evaluated at the pair kick:
+Only now does the section name it. The forced negative unit is the electron.
+The name comes after the arithmetic because the apparatus must earn the name.
+It has not found an electron as a metaphysical bead lying in the vacuum. It has
+produced a coupled event, read the full measurement, compared that measurement
+with the linear story, and obtained a signed unit. The electron is that
+produced unit in the measurement-minus-story orientation:
 \[
-  \text{electron} = \delta^2(\text{pair kick}) = -1.
+  \text{electron}
+    = \delta^2(\text{pair kick})
+    = -1.
 \]
-The single invariant of Chapter 8 --- the order-two remainder that survived every
-first-order choice, forced and unique --- evaluated on a paired excitation of the
-vacuum, is a signed unit of charge. The book promised a single invariant and spent
-four chapters making it readable; here the invariant, read on the simplest nontrivial
-paired excitation, is the electron.
+Its unit magnitude says the gap is exactly one. Its negative sign says the full
+measurement is one less than the story that the two one-coordinate readings
+would have predicted. Its production in coupling says the previous instruments
+were right to see nothing when they moved one coordinate at a time.
 
-The sign is not a convention the apparatus may discard, and the chapter pays the debt
-its title implies. The residue is signed, and the apparatus has chosen to read it as
-measurement minus story, which makes the produced charge negative. The opposite
-orientation --- story minus measurement --- reads the same magnitude with the opposite
-sign:
+This order of naming protects the claim from mythology. The apparatus does not
+begin with a familiar physical word and then search for a number that can carry
+it. It begins with a finite event and lets the event force a record. The record
+has three public pieces: the story, the measurement, and the oriented
+difference. Each piece can be stated without appeal to hidden intuition. The
+story is four because the two first-order readings add to four. The measurement
+is three because the coupled action reads three on the pair event. The
+difference is negative one because the apparatus subtracts the story from the
+measurement. The name electron is attached only after those three pieces have
+fixed the witness.
+
+There is also a discipline in the word ``unit.'' A unit is not merely a small
+number. It is the indivisible remainder delivered by this finite comparison.
+If the story had overshot the measurement by two, the section would not have
+earned the same name. If the measurement had equaled the story, the production
+would have produced no residue at all. The value \(-1\) says that the first
+paired event with distinct channels leaves exactly one oriented count
+uncovered by the linear story. The unit belongs to the gap, not to either
+coordinate by itself. It is a coupled unit.
+
+The sign is not decorative. A sign records an orientation of comparison. The
+apparatus chose measurement minus story as its residue orientation, and that
+choice makes the produced charge negative. Reverse the comparison and the same
+gap appears with the opposite sign:
 \[
-  \text{measurement} - \text{story} = -1 \ \ (\text{electron}),
-  \qquad
-  \text{story} - \text{measurement} = +1 \ \ (\text{positron}).
+  \text{story} - \text{measurement}
+    = 4 - 3
+    = +1.
 \]
-Pair production produces a pair. The negative unit and the positive unit are the same
-residue read in two orientations, and the apparatus cannot produce one without the
-other being available as its mirror. The title is literal: the pair kick produces the
-electron and the positron together, as the two orientations of one signed residue.
+The positive unit is the positron. This does not introduce a second unrelated
+object. It gives the opposite orientation of the same signed residue. The
+electron and positron are paired because the comparison itself has two
+orientations. Once the apparatus has produced a signed unit by comparing story
+and measurement, it has also produced the mirror reading obtained by comparing
+measurement and story in the opposite order.
 
-The magnitude depends on the pair being genuinely distinct. Kick both middle nodes to
-the \emph{same} representative and the residue reads negative two, not negative one ---
-a different excitation, not the unit charge. The unit magnitude belongs specifically
-to the pair that moves the two coordinates to distinct values, the genuinely
-two-channel excitation. The apparatus does not get a unit from any pair; it gets a
-unit from the pair that excites both channels differently.
+The two names therefore carry a shared origin. They do not mark two separate
+discoveries made in sequence. They mark the two directions in which the same
+finite discrepancy can be read. When the apparatus says electron, it reads from
+measurement back toward story: the measurement falls short by one. When it says
+positron, it reads from story back toward measurement: the story exceeds by
+one. Both readings depend on the same pair event, the same discriminating
+action, and the same numbers three and four. The pair is not an optional
+doubling of the result; it is the grammar of an oriented difference.
 
-This production answers, exactly, an early residue question the book kept open. The
-apparatus asked what remains when its story almost explains its measurement, before it
-had machinery precise enough to carry the answer. That open question is now a theorem:
+This is why the title of the chapter is literal. Pair production is not a
+decorative phrase attached to a later physical analogy. The pair kick produces
+a pair of orientations. One orientation reads measurement minus story and gives
+the negative unit. The other reads story minus measurement and gives the
+positive unit. The two signs belong to one finite discrepancy. They arise
+together because subtraction has two directions and the event supplies one
+exact magnitude for both. The apparatus does not manufacture two unrelated
+charges; it produces a signed residue whose two orientations have to be read
+together.
+
+The production also explains why one-coordinate invisibility was not a
+weakness. The one-coordinate instrument had no way to create this comparison.
+It could read the left first-order contribution. It could read the right
+first-order contribution. It could add those readings into a story. But until
+both coordinates moved in one event, there was no full coupled measurement for
+that story to be compared against. The residue is not hiding inside the left
+reading or inside the right reading. It lives in the discrepancy between their
+sum and the paired measurement. A one-coordinate instrument lacks the second
+member of that comparison.
+
+This is the hinge between S02 and the present section. The previous section did
+not merely say that one-coordinate instruments were unlucky. It proved that the
+mixed coupling had nowhere to stand when one side stayed fixed. The pair kick
+changes exactly that and nothing more. It does not abandon the earlier
+first-order readings; it uses them. It does not replace the story with a
+mysterious new story; it subtracts the old story from a measurement the old
+instrument could not perform. The new event is therefore continuous with the
+old apparatus and discontinuous in the precise way that matters: it adds the
+second moving coordinate.
+
+There is a useful contrast nearby. If both middle nodes are kicked to the same
+representative, the mixed reading gives negative two rather than negative one:
 \[
-  \delta^2(v) = D(v) - \big(r_{\mathrm{L}}(v_{\mathrm{L}}) + r_{\mathrm{R}}(v_{\mathrm{R}})\big).
+  \delta^2(\text{same representative pair}) = -2.
 \]
-The residue is precisely the difference between the measurement and the story. The
-process --- the linear story --- almost explains the measurement, and what is left when
-it falls short is the residue, the second variation, the electron. The early demand,
-left open until the paired machinery exists, is satisfied here by an identity.
+This is still a paired event, but it is not the unit-producing event of the
+chapter. The unit does not come from any two-coordinate disturbance whatsoever.
+It comes from a distinct two-channel excitation, with the left and right sides
+sent to different nonzero representatives. The same-state pair confirms the
+point by refusing to collapse all paired motion into one generic answer. The
+apparatus distinguishes kinds of paired excitation, and the unit charge belongs
+to the distinct-channel one.
 
-The section's metaphysical anchor is that some quantities must be produced rather than
-found, and that producing them is a measurement in its own right. The apparatus tanges
-two coordinates at once into a single coupled measurement and funges the linear story
-out of it by subtraction, and what remains is a signed unit that no single coordinate
-could have shown. The electron is not discovered sitting in the vacuum; it is produced
-by exciting the vacuum in a pair and reading what the linear story cannot cover. The
-single invariant, asked to show itself on the simplest paired excitation, answers with
-a charge.
+That contrast guards the finite character of the claim. The chapter is not
+saying that every coupled residue should be called an electron. It is saying
+that this specific produced variation, under this discriminating action, reads
+as the negative unit. The number is not guessed from analogy. It is forced by
+the finite accounting of the event. If the event changes, the reading can
+change. If the orientation reverses, the sign changes. If the two channels are
+not distinct in the required way, the magnitude changes. The result remains
+precise because its conditions are precise.
+
+The same-state contrast also shows why distinctness is not ornament. If left
+and right receive the same representative, the event has two moving
+coordinates, but it lacks the asymmetry that lets the unit stand alone. The
+reading then doubles in the negative direction. That doubled reading belongs
+to its own event. It should not be rounded down, normalized away, or treated as
+a failed electron. It tells the apparatus that a pair event still needs the
+right internal distinction. The unit comes from two channels that move together
+without collapsing into the same channel.
+
+The relationship between story and measurement can now be written without the
+special pair kick:
+\[
+  \delta^2(v)
+    = D(v)
+      - \big(r_{\mathrm{L}}(v_{\mathrm{L}})
+             + r_{\mathrm{R}}(v_{\mathrm{R}})\big).
+\]
+The left side is the order-two residue. The first term on the right is the full
+coupled measurement. The two terms in parentheses are the first-order story.
+The identity says that the residue is exactly what remains when the story is
+subtracted from the measurement. The pair kick is the first place in the
+chapter where this general identity receives a visible unit value.
+
+The book has been circling this sentence since its first account of residue:
+what remains after the process almost explains itself. Here that sentence
+stops being a pressure in the prose and becomes a finite measurement. The
+process is the linear story. It almost explains the paired measurement because
+four and three are only one unit apart. It fails because they are not equal.
+What remains from that failure is not an embarrassment of the story; it is the
+thing the apparatus was built to find. The residue is the difference between
+story and measurement, and in the pair kick that difference is the electron.
+
+The word ``almost'' should not soften the arithmetic. Almost does not mean
+vague, approximate, or experimentally close. It means structurally close in the
+finite account: the story has the correct register, the correct two
+first-order pieces, and the correct relation to the event, but it lacks the
+mixed term. That missing term has exact size. In the pair kick, the exact size
+is one and the orientation chosen by measurement minus story makes it
+negative. The process almost explains itself because the only thing missing is
+the coupled residue.
+
+This is why the section can speak of production rather than correction. The
+apparatus is not repairing a mistake in the story four. The story four is the
+right linear story. Nor is it correcting the measurement three; the measurement
+three is the right coupled reading. The production happens when both right
+answers are placed in the same account and the difference between their
+registers receives a finite witness. The electron is not the correction of
+four into three. It is the oriented residue that appears because four and three
+are both right in different registers.
+
+This also clarifies the role of the vacuum. The vacuum does not contain the
+electron as a stored object waiting for a name. Before the kick, it is the flat
+reference configuration. The electron appears only when the apparatus excites
+that configuration in a paired way and then performs the comparison that
+produces the residue. Production here means exactly that sequence: choose the
+paired variation, read the full coupled measurement, read the linear story, and
+take the difference. A charge is not imported from outside the apparatus. It is
+made inspectable by the apparatus's own finite event.
+
+At the same time, production is not fabrication in the loose sense of make
+believe. The apparatus does not invent an arbitrary number and then decorate it
+with a physical name. It produces a witness. The witness can be held in the
+finite arithmetic: four for the story, three for the measurement, negative one
+for measurement minus story, positive one for the opposite orientation. The
+record can circulate because each part of the comparison has been specified.
+Another compatible reading can inspect the same event and recover the same
+signed unit from the same subtraction.
+
+The witness is also portable. Once the apparatus has specified the event, the
+action, the story, and the measurement, the residue can be carried as a record
+without retelling the entire construction each time. That portability is what
+lets the later chapter language use the name without losing the finite account
+that earned it. The name does not replace the arithmetic. It abbreviates a
+produced witness whose arithmetic remains available for inspection.
+
+The single invariant from the earlier chapter now has a physical face, but only
+under the present conditions. The invariant was not readable by
+one-coordinate instruments, because those instruments never gave it a mixed
+event. The pair kick does. It asks the invariant to show itself on the simplest
+distinct coupled excitation of the flat vacuum. The answer is a signed unit.
+That is the conceptual turn of the chapter: the order-two residue is no longer
+a silent slot behind the weak form. It is a produced finite charge.
+
+This section stops at production. It does not yet say what this residue means
+for the broader strain language of the book, and it does not certify the
+configuration through higher-order data. Those are later tasks. Here the
+apparatus has done one thing and done it exactly. It has moved two coordinates
+at once, compared the story with the measurement, and named the forced signed
+unit that remains. The electron is measurement minus story on the pair kick.
+The positron is the same unit in the opposite orientation. Pair production is
+the finite production of those two readings from one coupled event.
 
 \section{Strain if and only if Residue}
 
-The book has used the word strain since its earliest chapters --- the informational
-strain a variation leaves behind, the thing a process carries that its linear story
-does not capture. This section identifies that strain with the residue, exactly, and
-shows that the identification is an equivalence rather than a resemblance. The linear
-story fails precisely when the residue is nonzero, and the strain is real precisely
-when the charge is.
+The previous section produced the signed unit by comparing two readings of one
+event. The story was the sum of the left and right first-order readings. The
+measurement was the full coupled difference. The residue was what remained when
+the story was subtracted from the measurement. That comparison now gives the
+word strain its exact meaning. Strain is not an additional atmosphere around the
+event. It is the nonzero residue itself, read as the failure of the linear story
+to cover the coupled measurement.
 
-State the equivalence directly. The measurement and the story disagree if and only if
-the residue is nonzero:
+State the equivalence directly. The story fails to account for the measurement
+if and only if the order-two residue is nonzero:
 \[
   D(v) \neq r_{\mathrm{L}}(v_{\mathrm{L}}) + r_{\mathrm{R}}(v_{\mathrm{R}})
   \quad\Longleftrightarrow\quad
   \delta^2(v) \neq 0.
 \]
-This is immediate from the residue identity of the previous section --- the residue is
-the difference between the two sides --- but its content is conceptual, not algebraic.
-It says that the failure of the linear story and the presence of the residue are not
-two phenomena that happen to coincide. They are one phenomenon. Wherever the story is
-inadequate, a residue is present and measures exactly the inadequacy; wherever the
-story is adequate, the residue is zero. Strain is the residue, with no gap between
-them.
+This is the identity from the last section, expressed as a test for failure. The
+residue is
+\[
+  \delta^2(v)
+    = D(v)
+      - \big(r_{\mathrm{L}}(v_{\mathrm{L}})
+             + r_{\mathrm{R}}(v_{\mathrm{R}})\big).
+\]
+If the measurement equals the story, the subtraction gives zero. If the
+subtraction gives zero, the measurement and the story agree. If they disagree,
+the subtraction gives a nonzero residue. If the residue is nonzero, they must
+disagree. There is no third condition hidden between these statements. The
+failure of the story and the nonvanishing of the residue are the same finite
+fact read from two sides.
 
-Make the strain concrete at the electron. The strain has two parts: a direction and a
-failed response. The direction is that the pair moved --- both middle nodes left the
-vacuum. The failed response is that the linear story did not account for the
-measurement. At the electron both parts hold: the pair moved, and the story (four) did
-not cover the measurement (three). So the strain is real:
+This is why the section says ``if and only if'' rather than ``resembles'' or
+``suggests.'' A resemblance would leave room for strain to be a descriptive
+gloss placed over an otherwise separate number. An equivalence leaves no such
+room. The story's failure is not accompanied by a residue as smoke accompanies
+fire. The story's failure is the residue, stated in the language of narrative
+accounting. The residue is the story's failure, stated in the language of
+measurement. Each sentence names the same event under a different register.
+
+The earlier chapters could speak about strain before this section could identify
+it. They had records that carried pressure forward: a mark that had to be held,
+a decision that left a remainder, a finite witness that did not become the whole
+truth it carried. Those uses were not wrong, but they were not yet pinned to the
+paired measurement. They named the experience of a process not quite accounting
+for what it produced. Chapter 12 can now say exactly what that pressure was
+waiting for. Once the apparatus can compare the linear story with the full
+coupled measurement, the pressure receives the name residue.
+
+The equivalence also protects the book from overclaiming. It does not say that
+every discomfort in a story is an electron, and it does not say that every
+unexplained word in the early chapters was already a charge. It says something
+more precise and more useful. In this finite register, when a variation has a
+full coupled measurement and a first-order story, strain is present exactly when
+the difference between them is nonzero. Zero residue means no strain in this
+register. Nonzero residue means strain is present. The word strain does no work
+beyond that finite comparison, and it needs no work beyond it.
+
+Make the strain concrete at the electron. The event has a direction and a
+failed response. The direction is that the pair moved: both middle nodes left
+the flat vacuum in one coupled variation. The failed response is that the linear
+story did not cover the coupled measurement. At the electron both conditions
+hold. The pair moved, the story was four, the measurement was three, and four
+did not account for three. So the strain is real:
 \[
   \text{strain} = (\text{pair moved}) \wedge \neg(\text{story accounts for measurement}),
 \]
-and at the pair kick both conjuncts are true. The informational strain the book named
-at the outset is not a metaphor here; it is a specific, checkable conjunction, and it
-holds at the electron.
+and at the pair kick both conjuncts are true. The first conjunct prevents strain
+from becoming a loose feeling attached to any disagreement. The second conjunct
+prevents motion alone from counting as strain. The electron is not merely a
+pair that moved. It is a pair that moved and left the linear story short of the
+measurement by one signed unit.
 
-And it holds \emph{because} the electron is nonzero, and only because. The failure of
-the story is equivalent to the charge being nonzero:
+The arithmetic is still the anchor. For the produced orientation,
+\[
+  \text{story}=4,\qquad \text{measurement}=3,\qquad
+  \delta^2=-1.
+\]
+The pair moved away from the vacuum, and the story four did not equal the
+measurement three. That is the strain. The negative unit is not added after the
+strain has been declared. It is the reason the strain can be declared. If the
+same event had given story equal to measurement, the residue would have been
+zero, and this section would have no strain to identify.
+
+So the electron's strain holds because the electron is nonzero, and only
+because. The failed response of the story is equivalent to the charge being
+nonzero:
 \[
   \neg(\text{story accounts for measurement})
   \quad\Longleftrightarrow\quad
   \text{electron} \neq 0.
 \]
-The strain is not an independent fact that happens to accompany the charge. It is the
-charge, stated as a failure of the linear account. A zero charge would be a story that
-holds, no strain; a nonzero charge is a story that fails, strain present. The electron
-is real exactly to the degree that its residue refuses to vanish.
+Again the statement is not decorative. The charge is the residue. The strain is
+the story's failure. Since the residue is measurement minus story, nonzero
+charge and failed story are one condition. A zero charge would be a story that
+holds, no strain in this register. A nonzero charge is a story that fails,
+strain present. The electron is real here exactly as a nonzero residue, and its
+strain is real for the same reason.
 
-This lets the apparatus seat the electron into its own foundations without altering
-them. The earliest chapters left a residue pressure inside the derivative's own
-construction, but they did not yet have the paired machinery that could identify a
-precise occupant. The electron's strain occupies that slot now, by name, and the
-apparatus's own machinery manufactures the occupant: transmuting the paired variation
-through the construction the early chapters already carried yields exactly the
-electron's term. The earlier structure is unchanged; what was an unresolved pressure is
-now placed in the slot the pair-production identity exposes.
+This lets the apparatus seat the electron into the book's earlier structure
+without revising that structure after the fact. The earlier chapters left a
+slot: the place where a finite process carries more than its linear account can
+say. They could not fill that slot by naming an electron, because they had not
+yet performed the paired variation. They also did not need to be rewritten in
+order for the slot to be legitimate. The slot was the residue question itself.
+Chapter 12 supplies the missing event that can occupy it.
 
-The placement matters because it forecloses a suspicion. One might worry that the
-electron was bolted onto the apparatus after the fact, an interpretation imposed on a
-construction that had no pressure for it. The opposite is true. The construction left a
-residue pressure that only the paired machinery can sharpen into a slot. The apparatus
-does not bolt on a place for the electron; it finds, once the pair is moved, that its
-own machinery produces both the place and the occupant together. The electron is native
-to the structure, not a guest in it.
+The occupation is exact. The paired variation supplies the direction: both
+middle nodes leave the vacuum. The discriminating action supplies the coupled
+measurement. The left and right first-order readings supply the story. Their
+difference supplies the residue. The negative unit occupies the old residue
+slot because it is precisely the difference the earlier language could only
+anticipate. The early pressure was not a hidden electron waiting in every mark.
+It was the unresolved shape of the question that the pair kick can now answer.
 
-The section's metaphysical anchor is that strain and residue are the same thing read
-two ways. The strain is the felt inadequacy of a linear story; the residue is the
-measured remainder that inadequacy leaves; and they are equal, identically, at every
-variation. The apparatus tanges the pair into a measurement, funges the story out of
-it, and reads the strain as the residue that survives --- nonzero exactly when the
-story fails, native to the slot exposed by the paired machinery. The book named the
-strain before it could produce it. Here the strain is produced, named, and seated in
-the place Ch12 can now identify.
+This point matters because it prevents a false retrofit. One might suspect that
+the chapter has taken a familiar physical name and attached it to an unrelated
+formal leftover. The order of the argument goes the other way. First the book
+built a vocabulary of carried remainder, finite witness, and story left short.
+Then it built a one-coordinate apparatus and learned why that apparatus could
+not read the mixed term. Then it moved a pair, compared story with measurement,
+and obtained a nonzero unit. Only after that did it name the negative unit. The
+name arrives at the end of the chain; it does not force the chain into being.
+
+The equivalence also explains why strain does not need a separate container. If
+strain were something in addition to the residue, the reader would have to ask
+where it lives. Is it in the left coordinate? In the right coordinate? In the
+vacuum before the kick? In an interpretation placed on top of the arithmetic?
+The answer is simpler. Strain lives exactly where the residue lives: in the
+coupled difference after the first-order story has been subtracted. It has no
+separate address because it is not a separate occupant.
+
+Nor does nonzero strain require a dramatic event beyond the finite comparison.
+The pair kick is enough. It moves two coordinates together, reads the coupled
+measurement, reads the linear story, and compares them. When the comparison is
+zero, the story has covered the measurement in this register. When the
+comparison is nonzero, the story has failed in exactly the amount of the
+residue. This is why the electron can be both small and decisive. Its magnitude
+is one, but one is the whole strain of this event.
+
+The same equivalence controls the opposite orientation. Story minus measurement
+reads the same gap as positive one. That is the positron orientation introduced
+in the previous section. The present section does not need to add new
+structure for it. The strain condition is still the same nonzero gap. Change
+the direction of subtraction and the sign changes; the fact of strain does not.
+Both orientations are possible because the comparison has two directions. The
+presence of strain depends only on the residue refusing to vanish.
+
+The same-representative contrast from the previous section also fits here. A
+paired event that sends both middle nodes to the same representative reads
+\(-2\), not \(-1\). It still has nonzero residue, so it still has strain in this
+register. But it is not the unit-producing electron event. This distinction is
+important. The equivalence says nonzero residue if and only if strain. It does
+not say every nonzero residue has the same magnitude or the same name. The
+electron is the unit strain of the distinct two-channel excitation, not the
+generic name for every strained pair.
+
+The section can now give the promised identification in one sentence: strain is
+residue. More fully, strain is the nonzero difference between full coupled
+measurement and the linear story, when that difference is read as the failure
+of the story to account for the event. The residue is the same difference read
+as the measured remainder. These are not parallel explanations. They are one
+identity in two registers, one narrative and one numerical.
+
+This is also why the statement is reversible in practice, not only on the page.
+If the reader starts from strain, the reader has already found a story that did
+not cover its measurement, and the residue is the exact amount of that failure.
+If the reader starts from residue, the reader has already found the measured
+gap that makes the story fail. Either route arrives at the same finite witness.
+The equivalence is therefore a rule for reading the event, not a decorative
+symmetry of notation.
+
+That identification is the whole task of this section. It does not yet certify
+the configuration through any higher-order data. It does not ask how this finite
+mechanics should be read against older programs in the foundations of physics.
+Those are later jobs. Here the claim is narrower and exact: the linear story
+fails exactly when the order-two residue is nonzero; the electron has strain
+because its residue is \(-1\); nonzero charge and nonzero strain are the same
+finite fact at the pair kick.
 
 \section{The C-Squared Certificate and Hilbert's Sixth, Finite Edition}
 
-The configuration the pair kick excites can be certified, and the certificate has a
-familiar name. A cubic spline carries data through its second derivative and nothing
-above: it is twice continuously differentiable, what this section abbreviates
-\(C^2\). The order-two data of such a spline is exactly the residue field the previous
-sections produced, and the electron is its order-two quantum. This section states the
-certificate, reads it against a century-old problem, and is careful about how much it
-proves.
+The preceding sections produced a signed residue and identified that residue
+with strain. This section asks a different question: what kind of finite
+configuration can carry such a residue without losing the exactness already
+earned? The answer is a certificate through order two. It certifies that the
+configuration is constructible on both sides of the middle, that its
+first-order equations of motion hold, and that its remaining coupled content is
+exactly the second variation. In that finite sense, the configuration is
+\(C^2\).
 
-The certificate is a conjunction of three orders, supplied by a pair of certificates,
-one per middle node. At order zero, both sub-paths admit --- the configuration is
-constructible on each side of the middle. At order one, both Euler-Lagrange residuals
-vanish in every direction --- the equations of motion hold. At order two, what remains
-of every coupled variation is exactly the second variation --- the residue is the whole
-of the order-two content, and its exactness leaves no order three to certify:
+The phrase \(C^2\) is familiar from classical analysis, but it must be used
+carefully here. Classically, a \(C^2\) curve has continuous first and second
+derivatives. Continuity is a statement about limits, and this finite apparatus
+does not claim such a limit. It can say something narrower and sharper: all
+data through order two have been accounted for inside the finite measurement
+scheme. At order one, the residuals vanish. At order two, the coupled
+difference is exact. No continuum smoothness is being smuggled in under an old
+symbol.
+
+The certificate has three clauses. At order zero, both sub-paths admit; the
+left and right pieces of the configuration are constructible. At order one, both
+Euler--Lagrange residuals vanish in every allowed direction; the equations of
+motion hold on each side. At order two, every coupled variation is read exactly
+by the second variation, so the residue is the whole of the remaining
+measurement. Written as a compact receipt, the certificate says
 \[
   \underbrace{\text{admits left} \wedge \text{admits right}}_{\text{order } 0}
   \ \wedge\
@@ -371,139 +835,371 @@ of the order-two content, and its exactness leaves no order three to certify:
   \ \wedge\
   \underbrace{D(v) = \delta^2(v)}_{\text{order } 2, \text{ exact}}.
 \]
-A configuration meeting all three is \(C^2\)-certified. Order two is the top, because
-the order-two equality is exact: there is no remainder to push into a third order.
+The order-two clause is the reason order two is the top. The certificate does
+not say, ``we have checked up to order two and left an unknown remainder
+above.'' It says that once the order-one residuals vanish, the coupled
+measurement is exactly the second variation. There is no leftover term that
+needs to be pushed into a third order. The finite certificate stops at order
+two because the order-two equality has exhausted what remains.
 
-The word \(C^2\) deserves one honest gloss, because the finite apparatus cannot mean
-by it quite what classical analysis means. Classical \(C^2\) asks the first and second
-derivatives to be \emph{continuous}, a statement about a limit the finite corpus
-cannot make. So the apparatus says what it can, and what it can say is in two respects
-sharper. At order one it does not merely ask the first derivative to exist and be
-continuous; it pins the first-order residual to zero, on-shell --- the equation of
-motion holds, not just the derivative. And at order two it does not approximate; it
-states an exact equality. \(C^2\) here means all the data through order two, with the
-equation of motion holding and the second-order content exact. It is the only sense of
-\(C^2\) the finite world can carry, and within that sense it is stronger than the
-classical condition, not weaker.
+This is the honest finite gloss on \(C^2\). The apparatus does not import
+classical continuity, and it does not pretend that a finite certificate has
+become a continuum theorem. It says: the configuration admits at order zero,
+obeys the equations of motion at order one, and carries exact interaction data
+at order two. That is all the \(C^2\) language means here. The name is useful
+because it marks the same depth as a classical cubic spline: value,
+first-order behavior, second-order behavior, and nothing higher in the
+certificate.
 
-The order-two data of the certified spline is the residue field, and so the electron
-is the order-two quantum of the certificate. This is the unification the chapter has
-been building toward. The certificate that says ``this configuration is smooth through
-second order'' and the residue that says ``this is the electron's charge'' are the same
-object read at the same order. The smoothness certificate carries, in its order-two
-slot, exactly the signed unit the pair kick produces. On the vacuum --- the zero-cost
-action --- that slot reads zero everywhere; the vacuum is empty, its residue identically
-zero, and the certificate is inhabited there by the flat configuration the early
-chapters established. The certificate is not conditional fiction; it holds on the
-vacuum, with the residue field reading zero until a pair excites it.
+The order-zero clause matters because the paired situation has two sides. A
+certificate is not issued for an isolated symbol that can be read without its
+neighbors. It is issued for a left sub-path and a right sub-path that both pass
+the apparatus's admission test. This keeps the statement constructive. The
+certificate begins with actual finite pieces, not with an ideal curve imagined
+behind them. Only after those two pieces have been admitted can the order-one
+and order-two clauses make sense.
 
-Read against the history of mathematics, this is a small finite answer to a large old
-question. In 1900 Hilbert asked, as his sixth problem, for the mathematical treatment
-of the axioms of physics. What the apparatus offers is a variational mechanics with
-equations of motion at order one, interaction at order two, and exactness at order
-two, derived as a theorem from the apparatus's measurement primitives rather than
-posited, and machine-checked. And the axioms it rests on are not the axioms of a
-physical theory but two axioms of ordinary mathematics --- propositional extensionality
-and the soundness of quotients --- with the physics derived from them and the
-measurement primitives, not assumed. Two logical axioms, and a mechanics that follows.
+The order-one clause is the familiar variational checkpoint. Each side must be
+stationary against the allowed first variations. In the language of this
+chapter, the first-order instruments have nothing left to report. That absence
+is not yet interaction. It is the condition that permits interaction to be
+separated from an uncancelled equation of motion. If a first-order residual
+remained, the coupled reading would be contaminated by ordinary failure of
+stationarity. The certificate therefore clears the first-order floor before it
+names any second-order field.
 
-The section is exact about how much this is, because the temptation to claim more is
-real. It is one electron's worth of physics. There is no exclusion theorem here tying
-the certificate to a vanishing electron, and there could not be: the certificate pins
-first-order data, and the chapter's own central result is that first-order instruments
-cannot see the coupling. Under a certificate the residue is not forced to zero --- it is
-all that remains, by the order-two clause. What is established is at the level of
-instances: the vacuum's residue reads zero everywhere, and the electron's action
-refuses certification by an order-one obstruction --- its first variation does not
-vanish --- not as a consequence of the electron. Hilbert asked for the axioms of all of
-physics. This is one electron, certified through second order, on two logical axioms.
+The order-two clause then has a clean job. It does not estimate the residue, and
+it does not mark a place where more information might be discovered by a higher
+test. It identifies the coupled difference with the second variation itself.
+This is the finite analogue of saying that the curvature data have been
+accounted for, except that the word ``curvature'' should be heard here in the
+restricted variational sense. The certificate records the exact second-order
+content carried by the admitted pair.
 
-The section's metaphysical anchor is that smoothness and charge are the same order-two
-fact. The apparatus tanges a configuration into a certificate that carries its data
-through second order, and the order-two slot of that certificate is the residue field
-the pair kick excites. To certify a configuration as \(C^2\) is to name its order-two
-quantum, and that quantum, on a paired excitation of the vacuum, is the electron. The
-oldest call for a mathematics of physics is answered here in the only currency the
-apparatus trades in: a finite, exact, machine-checked certificate, one electron's
-worth, resting on two axioms of ordinary logic.
+This three-clause form is also what prevents the certificate from becoming a
+decorative name. Each clause has a failure mode. The pieces might fail to admit;
+the first residuals might fail to vanish; the second variation might fail to
+match the coupled reading. A certificate exists only when all three checks pass
+together. That is why the later identification with residue is meaningful: the
+residue is not being read from an arbitrary expression, but from a configuration
+whose finite order-zero, order-one, and order-two obligations have all been
+settled.
+
+The order-two data of the certified spline is the residue field. This is where
+the chapter's earlier production result returns. A certified configuration
+carries its interaction data in the same order-two slot where the pair kick
+produced a signed unit. The residue field is the certificate's second-order
+content, and the electron is the unit quantum of that content on the distinct
+paired excitation of the vacuum. Smoothness through order two and charge are
+therefore not unrelated claims. They are two readings of the same order-two
+place.
+
+This also explains why the electron is described as a unit quantum rather than
+as a new background substance. The apparatus has already fixed the scale by
+which the signed residue is read. The paired excitation occupies one unit of
+that residue field. Calling it a quantum means that the certified order-two
+register has a smallest produced signed reading in this construction. It does
+not mean that every certified configuration must carry that unit, and it does
+not mean that the unit floats free of the variational pair that produced it.
+The unit is finite, signed, and local to the order-two register.
+
+The vacuum instance keeps the claim from floating as a merely conditional
+possibility. On the zero-cost vacuum action, the residue reads zero everywhere.
+The certificate is inhabited there by the flat configuration: both sides admit,
+the order-one residuals vanish, and the order-two residue field is empty. The
+vacuum is not a failed electron. It is the certified zero instance, the place
+where the same order-two slot carries no charge.
+
+The electron action is different. Its paired excitation produces a nonzero
+order-two residue, but that does not mean every certificate has been tied to a
+vanishing electron, or that a certificate excludes charge. The certificate pins
+first-order data. The whole burden of this chapter has been that first-order
+instruments do not see the mixed coupling. The residue lives at order two.
+Under a certificate, the order-two clause does not erase the residue; it names
+the residue as the remaining exact content of the coupled measurement.
+
+There is an important limitation here. The chapter has an instance of the
+vacuum certificate, with zero residue everywhere. It also has the electron's
+paired action, where the first-order obstruction prevents that action from
+being certified in the same way as the vacuum. That obstruction is an
+order-one fact about the action, not a consequence of the electron's charge.
+The point is not that certification forces charge to vanish, and not that
+charge automatically certifies a configuration. The point is that, when the
+certificate is present, its order-two slot is exactly the residue field.
+
+Now read the result against Hilbert's sixth problem. Hilbert asked for a
+mathematical treatment of the axioms of physics. The finite answer offered here
+is deliberately small. It is a variational mechanics with equations of motion
+at order one, interaction at order two, and exactness at order two, derived
+from the apparatus's own measurement primitives. It does not claim to axiomatize
+all physics. It gives one electron's worth of finite mechanics: a vacuum
+instance, a paired excitation, a signed unit, and a certificate through the
+order where the unit lives.
+
+The logical scope is equally modest. The construction rests on ordinary logical
+supports, named here only to keep the scope visible: propositional
+extensionality and quotient soundness. These are not advertised as a grand new
+physical axiom system. They mark the background permissions under which the
+finite identifications have been made: propositions with the same truth can be
+identified, and quotient identifications can be used soundly. Within that
+ordinary background, the apparatus derives its finite mechanics rather than
+postulating a separate physics.
+
+Those permissions are intentionally kept in the background. They are the
+bookkeeping that lets the finite record be treated as a record, not an extra
+physical postulate. When two propositions have the same truth, the construction
+is allowed to identify them. When two representatives have been quotiented
+under the declared equivalence, the construction is allowed to pass through the
+quotient. These permissions support the certificate's statements of equality;
+they are not themselves electrons, fields, or equations of motion.
+
+This is why the section must say ``one electron's worth'' more than once. The
+temptation is to let Hilbert's name expand the claim until it becomes vague.
+The book should not do that. There is no standard quantum field theory here, no
+general relativity, no continuum field equation, and no completion theorem for
+all possible particles. There is a finite variational apparatus, an exact
+order-two residue, a certified vacuum instance, and a produced signed unit.
+That is enough for this chapter. It is also the boundary of this chapter.
+
+The certificate therefore performs a precise service. It says that the order-two
+residue is not a loose remainder outside the apparatus. It is the certified
+second-order content of the coupled configuration. On the vacuum, that content
+is zero. On the pair kick, the same order-two language names the unit residue
+that the previous sections called the electron. The certificate does not add a
+new particle and does not reinterpret the old arithmetic. It gives the
+arithmetic a finite place to stand.
+
+So the answer to Hilbert's sixth, in this chapter's finite edition, is narrow
+but real. Physics has not been completed. A finite mechanics has been exhibited
+through the order needed to produce one charge. Equations of motion belong to
+order one. Interaction belongs to order two. The electron is the order-two
+quantum of the residue field. The vacuum shows the certificate inhabited with
+zero residue; the pair kick shows how that same order-two register can produce
+a signed unit. The section stops there, before the chapter asks where the two
+channels themselves come from.
 
 \section*{Bridge: Where the Two Channels Come From}
 
-The chapter produced a signed unit from a paired variation and certified the
-configuration that carries it. In doing so it took one thing for granted: that there
-were two channels to pair. The left side of the middle and the right side of the
-middle were given as two coordinates, and the residue lived in the coupling between
-them. But the apparatus never asked where the two channels came from. It moved a pair
-because a pair was there to move.
+The chapter has earned a small but definite result. A paired variation produced
+a signed residue. The order-two register in which that residue lives was then
+certified, so the residue is not a loose remainder outside the apparatus. The
+vacuum case was also kept honest: the same register can be inhabited with zero
+residue, while the electron action carries an order-one obstruction and a
+nonzero order-two reading. Chapter 12 therefore closes with a finite production
+story, not a total physics. It has a vacuum, an excitation, a signed unit, and a
+certificate saying where the unit belongs.
 
-That is the question the next chapter opens. The two-channel structure is not a
-primitive the apparatus should help itself to. It is something the geometry must
-generate. The energy of the earlier chapters and the boundary data of the loaded
-anchor together carry more structure than the apparatus has yet drawn out, and that
-structure includes the very split into two channels that pair production exploited.
-The coupling has a geometry, and the geometry has a reason for there being two sides
-to couple.
+That success exposes the question it did not answer. Every section in this
+chapter used a pair. The one-coordinate instruments were blind because they
+looked at one side alone. The pair kick moved two sides at once. Strain was the
+failure of the two one-coordinate stories to cover the coupled measurement. The
+certificate placed the remaining coupled content at order two. But all of that
+work assumes that there are two channels to compare, move, and couple. The
+chapter has shown what a pair can do. It has not yet shown why a pair is there.
 
-There is a related debt the next chapter must pay. The same single action has been
-asked to do two jobs at once: to vanish on the vacuum, giving the empty residue, and
-to produce a nonzero residue on an excitation. A vacuum channel and an excitation
-channel are different demands, and the next chapter examines whether one action can
-honestly serve both, or whether the geometry forces the two channels apart into
-distinct roles that a single action cannot fill.
+The next question is therefore not decorative. If the apparatus simply helps
+itself to two channels, then pair production rests on an unexplained split. The
+left and right sides of the middle would be coordinates supplied from outside
+the story, and the electron would be produced by a structure the apparatus had
+not earned. That would be too weak for the book's own standard. The same
+finite discipline that refused a hidden first-order residue must also refuse a
+hidden two-channel primitive. The split must come from the apparatus itself, or
+the production result remains only conditionally meaningful.
 
-So the next chapter turns from the residue to its geometry. It shows how boundary
-geometry --- the energy together with the depth of the boundary data --- generates the
-two-channel gauge form, why the boundary's depth is a generative input rather than a
-fixed frame, and why one action cannot do both the vacuum's job and the excitation's
-job at once. The question the apparatus carries forward is the one its own success
-hid: it produced the electron from two channels, but what produced the two channels?
+The bridge tightens the question by giving the split three nearby faces. First,
+there is the left/right split used by the pair movement itself. Second, there is
+the vacuum/excitation split exposed by the certificate: one channel carries the
+zero-residue, certified ground; the other carries the charged excitation and its
+obstruction. Third, there is the interior/source split that the next chapter
+will read at the boundary. These are not three unrelated dualisms. They are
+successive ways of asking the same finite question: why does the apparatus have
+two roles available instead of one?
+
+The cost structure is part of the same debt. In Chapter 12, the discriminating
+action already had the prices needed to produce the electron. The vacuum cost
+was zero where the vacuum needed to stay empty, and the excitation had the unit
+crossing cost that made the signed residue appear. That action did its job, but
+the chapter did not yet explain why those costs were the right costs. A
+two-channel gauge form cannot be merely announced. It must be generated from
+some prior data, or it is just a convenient table of prices.
+
+The word ``generated'' is doing careful work here. It does not mean that the
+next chapter may invent a second story beside the first one. The generated
+gauge has to return to the action Chapter 12 already used, with the same
+zero-residue vacuum behavior and the same unit-cost excitation behavior. The
+new work is not to change the electron after it has been produced. It is to
+show that the conditions under which it was produced were already latent in the
+energy and boundary data. If the generated gauge fails to recover that setting,
+then it has not answered Chapter 12's question.
+
+The prior data are energy and boundary. Energy has been present throughout the
+book as the finite invariant that decides what can be certified. Boundary data
+have also been present, but until now they have mostly served as the place
+where an apparatus is anchored and where a reading becomes definite. The next
+chapter asks those two ingredients to do more. It reads the depth of the
+boundary above the vacuum, lets that depth determine the finite cost, and shows
+how the cost becomes the two-channel gauge form that Chapter 12 had already
+used.
+
+This is also why the bridge does not move directly from electron to field. The
+missing object is smaller and more specific: the reason one side can remain a
+certified vacuum while another side can carry the charged excitation. The
+apparatus needs a rule that assigns depth zero to one role and depth one to the
+other, then lets those depths become costs. Only after that rule is in place can
+the two-channel language stop looking borrowed. The next chapter's geometry is
+therefore not scenery around the pair; it is the finite account of why the pair
+has two distinct jobs.
+
+This keeps the pressure local. The next chapter is not being asked for the
+Standard Model, a photon, a continuum gauge bundle, renormalization, or a
+completion of physics. It is being asked for a finite hinge: energy plus
+boundary depth should explain why the vacuum channel and the excitation channel
+are separate, why their costs differ, and why the same action cannot honestly
+serve both roles. If that hinge holds, then the electron's setting is no longer
+borrowed. The two channels that produced the residue will themselves be
+generated by the geometry the apparatus can certify.
 
 \section*{Coda: The Depth That Needs Two Eyes}
 
-Binocular vision performs this chapter's central fact with two eyes and a scene, and
-it performs it so exactly that the mathematics can almost be read off the experience.
-Depth, the quantity the scene does not flatly contain, is produced only by a pair, is
-the difference between two flat stories, and carries a sign.
+Binocular vision performs this chapter's central fact with two eyes and a table, a
+cup, a needle, a hand. It is tempting to say that the eyes see depth, but that is
+already too quick. Each eye sees a flat report. The left report is rich, detailed,
+colored, textured, and ordered; the right report is just as rich. Yet neither report,
+taken alone, contains the depth that lets the hand stop at the cup instead of behind
+it, thread the needle instead of striking the side, or judge the stair instead of
+guessing at it. Depth is not an extra tint on either image. It is what the body reads
+from their comparison.
 
-Begin with one eye. A single eye returns a flat image. It has color, shape, texture,
-overlap --- a great deal of information --- but it does not, by itself, return depth.
-Whatever cues a single eye exploits to guess at distance are inferences laid over a
-fundamentally flat report; the eye's own measurement is two-dimensional. Close one eye
-and reach for a thread through the eye of a needle, and the difficulty is immediate
-and structural: the flat image does not carry the distance, and no amount of squinting
-or attention recovers it. A one-eyed instrument is not poor at depth; it is, for the
-geometric component of depth, blind by construction --- exactly as a one-coordinate
-variation is blind to the coupling.
+Close one eye and the world does not vanish. In many ways it becomes more intent.
+Edges sharpen under attention. Shadows and overlap become clues. Familiar sizes
+suggest likely distances. Motion can help. A practiced person can do a great deal
+with one eye, just as a clever one-coordinate instrument can extract every fact that
+belongs to its coordinate. But the direct binocular component of depth is gone. No
+amount of concentration changes the kind of report the remaining eye makes. It can
+describe the round mouth of the cup, the shine along its rim, the blur behind it, and
+the hand approaching it. It still does not, by itself, give the finite separation the
+hand must use.
 
-Open the second eye and depth appears, and it appears as a difference. The two eyes
-see almost the same scene from slightly separated positions, and the small disparity
-between their images --- the amount by which a near object shifts against the
-background between the left view and the right view --- is what the visual system reads
-as depth. Neither flat image contains the depth; the depth is what is left when the
-two flat images are compared and the common part subtracted. Depth is the residue of
-binocular vision: measurement by the pair, minus the story each eye tells alone.
+That is the important point: the one-eyed report is not defective. It is not a bad
+two-eyed report. It is a good one-eyed report, and its goodness does not make it
+binocular. The missing quantity is not hidden in it, waiting for a better lens or a
+more patient observer. The missing quantity belongs to a different register. A sharper
+monocular image is still flat in the relevant sense; a brighter one is still flat; a
+more faithful one is still flat. The one-coordinate instrument does not fail because
+it is careless. It fails because the coupled quantity has not been offered to it.
 
-And the residue is signed. An object nearer than the point the eyes are fixed on
-shifts one way between the two images; an object farther than the fixation point shifts
-the other way. The sign of the disparity distinguishes in front from behind, and the
-two signs are not interchangeable --- they are the two orientations of one comparison,
-exactly as the electron and the positron are the two orientations of one residue. The
-visual system that reads a near object as near would read the same disparity with the
-opposite sign as a far object: same magnitude, opposite sign, the pair the geometry
-allows.
+Open the second eye and nothing mystical is added to either image. The left eye still
+has a flat image. The right eye still has a flat image. What changes is that the body
+now has two flat reports at once, made from slightly separated positions. Most of the
+scene agrees between them. The wall remains the wall. The rim remains the rim. The
+needle remains the needle. But nearby things have shifted a little against farther
+things. A thumb in front of the face jumps against the room when the left eye is closed
+and then the right eye is closed. A cup near the edge of the table slides slightly
+against the grain of the wood. The two reports disagree in a controlled way, and the
+disagreement is exactly what the body needs.
 
-The lesson the eyes teach is the lesson of the pair kick. You cannot recover the depth
-by improving one eye. A sharper monocular image is still flat; a brighter one is still
-flat; the depth is not hiding in the single image waiting for better resolution,
-because it was never a property of one image at all. It is a property of the pair, read
-off the difference between two simultaneous flat reports. The apparatus that wanted the
-residue had to move two coordinates at once for the same reason the visual system needs
-two eyes open at once: the quantity lives in the comparison, not in either term.
+Depth appears as disparity. It is not the left image, not the right image, and not a
+third picture floating between them. It is the finite mismatch between two reports
+whose common part has been accounted for. The common scene is the story each eye can
+tell alone; the residual shift is the measurement that only the pair can make. This is
+why binocular depth is such a clean bodily form of measurement-minus-story. Each eye
+gives a plausible story of the scene. The pair subtracts their agreement and finds the
+little remaining difference. That remainder is not noise. It is the thing sought.
 
-That is the chapter in the body's own optics. One eye is the one-coordinate
-instrument, flat and blind to the coupling; two eyes are the pair kick, producing what
-neither could alone; the disparity is the residue, the difference between the
-measurement and the flat stories; and the sign of the disparity is the difference
-between the electron and the positron. The single invariant of the earlier chapters,
-asked to show itself, shows itself the way depth does: only to an instrument willing to
-open both eyes at once.
+The hand knows this before the tongue explains it. Reach for a thin handle with both
+eyes open and the movement has a quiet confidence. Close one eye and the reach becomes
+slightly strained. The fingers hesitate, correct, overshoot, or slow down. The body is
+not suddenly ignorant of handles. It still sees shape, color, and edge. What it lacks
+is the paired residue that settled the last bit of distance. The strain is the bodily
+form of failed monocular storytelling: the one-eyed story almost suffices, but the
+action exposes what it cannot settle. The mismatch becomes felt as correction,
+hesitation, and effort.
+
+That is also why the residue is not merely a private mental effect. It has operational
+force. The cup is reached or missed; the thread enters the needle or catches against
+metal; the stair is placed under the foot or misjudged. A monocular story can be
+locally coherent and still leave an action underdetermined. The paired reading can be
+locally less dramatic and yet decisive. It measures the finite difference that matters
+for the act. Strain appears exactly when the residue has not been absorbed into the
+instrument: no residue, no strain of that kind; residual mismatch, finite strain. The
+body does not need a lecture on this equivalence. It lives it at the fingertips.
+
+The disparity is signed. A point nearer than the fixation point shifts one way between
+the left and right images; a point farther than the fixation point shifts the other
+way. The magnitude says how much separation the pair has detected, but the sign says
+which orientation of separation is present. In front and behind are not the same
+reading with a decorative label added later. They are opposite orientations of the
+same finite comparison. The eye pair does not merely announce, ``there is some
+difference.'' It announces a directed difference.
+
+That signed direction is the optical version of the electron and the positron. They
+are not two unrelated residues. They are the two allowed orientations of one paired
+residue. The same absolute disparity can be read with opposite sign when the relevant
+near-far relation is reversed. One sign asks the body to converge and reach short; the
+other asks it to relax and reach farther. Confusing the sign is not a small naming
+mistake. It reverses the action. The hand that treats a near disparity as far reaches
+past the thing; the hand that treats a far disparity as near stops too soon. Orientation
+is already in the measurement.
+
+Notice how little this resembles adding a second copy of the first eye. If the right
+eye simply repeated the left eye's exact flat image, no binocular depth would follow.
+Two identical reports would give agreement, not disparity. The useful pair is not a
+duplication but a separated pair. The eyes must be close enough to see the same world
+and separated enough for nearby things to shift. The pair kick lives in that finite
+separation. It is a small coordinated displacement of the instrument, not a louder
+version of one coordinate. The value appears only because the two reports are held
+together.
+
+This is why the order-two feature matters. The depth is not assigned to the left eye,
+then copied to the right. It is not assigned to the right eye, then inferred backward
+to the left. It belongs to the pair register. One may inspect the left image all day
+and not find a tiny tag labeled depth. One may inspect the right image all day and
+fail in the same honest way. The certificate that depth has been measured is not
+inside either image alone; it is the controlled comparison of the two. The order has
+increased by one because the act has become a paired act.
+
+There is also a zero case, and it is worth keeping. When a point lies on the plane of
+fixation, its left and right reports coincide in the relevant way. The disparity is
+zero. That does not mean the system has broken, nor that the point has ceased to be
+visible. It means that, for this paired measurement, there is no residual shift to
+register. Zero disparity is not ignorance; it is the zero member of the same paired
+reading. Nonzero disparity is not an error; it is the signed residue by which depth is
+given.
+
+Once this is seen, the one-eyed failure becomes gentle rather than puzzling. The
+single eye can supply every monocular cue available to it, and the body may use those
+cues with skill. But when the demanded action depends on the finite coupled residue,
+the one-eyed instrument must either guess, borrow information from motion and memory,
+or accept strain. It cannot manufacture the paired difference from inside one flat
+report. The missing depth is not a secret part of the picture. It is the relation
+between two pictures.
+
+The same lesson governs the chapter's invariant. A single-channel story may be clear,
+local, and internally faithful. It may account for everything its channel can honestly
+touch. Yet the residue that matters here is not a property of one channel. It is the
+finite leftover that appears only when two channels are compared under the same act.
+The pair does not decorate the old story. It measures what the old story, by itself,
+cannot hold. Depth is therefore not an analogy added after the fact; it is the body's
+own demonstration of the pair kick.
+
+Nor is the paired reading a luxury added after ordinary sight has finished its work.
+It changes what ordinary sight can be asked to do. A painter may flatten the world
+onto canvas and still suggest distance by shadow and scale, but the hand approaching
+the real cup needs more than suggestion. It needs the finite correction by which a
+flat arrangement becomes a reachable arrangement. The pair supplies that correction
+without making either eye less truthful. Each eye keeps its flat truth; the two
+together make a new truthful quantity.
+
+So the coda returns to the eyes because the eyes make the logic ordinary. One eye:
+flat report, rich but blind to the coupled depth. Two eyes: paired reports, close
+enough to share a world and separated enough to disagree. Disparity: the residue left
+after the common story is removed. Sign: the orientation that distinguishes one
+charged direction from the other. Strain: the felt failure of a monocular story asked
+to perform a binocular act. Certificate: the fact that the quantity belongs to the
+pair and not to either eye alone.
+
+That is the chapter in the body's own optics. The depth that lets a hand meet a cup is
+not seen by the left eye, and it is not seen by the right eye. It is measured by the
+two together. The invariant, asked to show itself in flesh rather than notation, shows
+itself exactly there: as a signed finite residue that appears only when the instrument
+opens both eyes at once.

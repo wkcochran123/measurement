@@ -116,7 +116,7 @@ instance rung3Numeric : NUMERIC Rung3 rung3Carrier where
   related := fun _ _ => True
 
 /-- Base checkpoint: the bottom nine rungs resolve for `Rung3`. -/
-example : NUMERIC Rung3 rung3Carrier := inferInstance
+def rung3Carrier_isNumeric : NUMERIC Rung3 rung3Carrier := inferInstance
 
 /-
 COMPARABLE is the one rung Episode8 left ungrounded -- the class that decides
@@ -145,7 +145,7 @@ instance rung3Comparable : COMPARABLE Rung3 rung3Carrier where
 
 /-- Upper-chain checkpoint: with COMPARABLE grounded by the EKG, Episode8's
 conditional instances fire all the way to GUNGAN. -/
-example : GUNGAN Rung3 rung3Carrier := inferInstance
+def rung3Carrier_isGungan : GUNGAN Rung3 rung3Carrier := inferInstance
 
 /-
 The middle gap (Episodes 5-7): SOURCE -> EXECUTED -> VALUE -> MAGNITUDE ->

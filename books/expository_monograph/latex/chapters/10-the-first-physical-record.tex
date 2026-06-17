@@ -87,144 +87,321 @@ apparatus-relative fact.
 
 \section{The Universe Kernel as a Finite Gauge-Field Shadow}
 
-Everything the apparatus has built is one operator wearing different clothes: a
-symmetric positive-definite energy, made coercive by the boundary anchor,
-generalized over a finite stage chain, reading the residual tower, and fitted with
-a square-root doorframe. This section binds those clothes onto one body. It
-assembles a kernel --- a single object that carries the operator, its boundary, its
-substrate, a few conserved labels, and one conserved invariant --- and reads that
-kernel as a finite shadow of a gauge field.
+The previous chapter ended with a readable invariant that was still not a
+record. The operator could evaluate a finite activity, the boundary anchor could
+remove the constant mode, the energy-squared reading could detect zero, and the
+square-root interface could say what a later scale field would have to receive.
+Those parts were correct, but they were still parts. A physical record needs a
+single finite package in which the operator, the substrate, the anchor, the
+loaded input, the decorations, and the invariant travel together. This section
+builds that package. It names it the universe kernel and treats it as the first
+finite body in which the invariant can be carried toward a ledger line.
 
-The kernel carries five things at once. It carries the coercive energy
-\(a(\cdot,\cdot)\) and its diagonal reading \(E^2\). It carries the boundary
-anchor, the loaded source that pins the nullspace and makes the energy detect. It
-carries a substrate with a causal order, so that the chain of stages becomes a
-chain of events with a before and an after. It carries a small set of conserved
-decorations: a charge, a species label, and a phase, each a discrete shadow of a
-physical quantum number the apparatus does not yet fully realize. And it carries
-the single conserved scalar invariant, which is not a new quantity but the energy
-itself,
+The kernel begins with the energy that Chapter 9 earned. It carries a symmetric
+positive-definite Galerkin activity: a finite form whose diagonal reading is the
+energy-squared certificate. This is not a second invariant and not a new physical
+quantity layered on top of the old one. It is the old invariant put in a body that
+can carry it. The kernel's scalar reading is identified with the energy-squared
+reading:
 \[
   \mathrm{invariant}(x) = E^2(x).
 \]
-This identification is the heart of the kernel. The one scalar the kernel conserves
-is exactly the coercive energy the book named as its single invariant. Everything
-else the kernel carries --- charge, species, phase --- is decoration around that one
-conserved core.
+The equality is the central bookkeeping move. It prevents the first physical
+record from inventing a new conserved scalar at the moment of packaging. The
+scalar conserved by the kernel is exactly the finite energy the apparatus already
+knows how to evaluate. The package changes the carrier, not the invariant.
 
-The invariant inherits the coercivity it was built from, and the kernel records
-that inheritance as a theorem rather than a hope. The invariant of the trivial
-activity is zero, and the invariant detects zero everywhere:
+The kernel also carries the Hilbert-completion door from the square-root section.
+That door is deliberately not a completed analysis. It does not say that the
+finite carrier has already become a Hilbert space, that a normed completion has
+been performed, or that any continuum limit has arrived. It records an interface:
+the finite energy-squared certificate has the right shape to be handed to a later
+completion or scale construction if that later construction supplies the missing
+structure. The door remains a door. Its presence in the kernel says that the
+finite record knows where a richer geometry would attach, not that the richer
+geometry has been smuggled into the finite chapter.
+
+The boundary anchor is equally concrete. The kernel uses the compiler anchor
+whose source is the white-hole node and whose program is the loaded input:
+\[
+  \texttt{.white\_hole} \longrightarrow \texttt{.load}.
+\]
+In the earlier operator chapter this anchor was the device that removed the
+stiffness nullspace. Here it becomes part of the kernel's identity. A reading is
+not merely a value of a form; it is a value read under a finite boundary
+condition. The load marks the source at which the apparatus is pinned. The
+white-hole source is not a cosmological claim; it is the formal endpoint chosen
+by the current finite substrate. It says where the configured instrument starts,
+which boundary fact it carries, and why zero energy is no longer ambiguous.
+
+The substrate is the finite spacetime path. The stage chain from the previous
+chapter is now carried as a causal order rather than as an abstract list of
+positions. The point is modest but important. A record must be tied to a
+configuration whose pieces have before-and-after structure. The kernel does not
+construct continuum spacetime and does not claim a differentiable manifold. It
+uses the finite order already available in the apparatus, now named as
+\(SpaceTimePath\), so the energy reader has a substrate on which the activity is
+located. The same operator that could read a chain now reads an ordered path.
+That is enough for a finite record-enabling package.
+
+Around the scalar invariant the kernel carries three decorations: color, flavor,
+and phase. Their names are intentionally physical, but their status is only a
+finite shadow. Color is a color-like label; flavor is a species or generation
+label; phase is a clock-like binary phase. They are carried by the package so
+that later sections can say which finite decorations travel with the reading.
+They are not yet a standard gauge group action. They do not generate dynamics,
+do not implement a Higgs mechanism, and do not prove anything about continuum
+Yang--Mills theory. They are conserved labels in a finite apparatus, placed
+beside the real scalar invariant so the kernel has the shape of a physical
+carrier without overclaiming the physics.
+
+This is the exact sense in which the section uses the phrase finite gauge-field
+shadow. A gauge field, in the full physical sense, would require symmetry
+groups, fields over a continuum or a richer discrete base, transformations,
+dynamics, and mechanisms for coupling and mass. The kernel has none of that. It
+has a finite causal substrate, a boundary-loaded source, three discrete
+decorations shaped like quantum-number placeholders, a Hilbert door that remains
+unopened, and one scalar invariant identified with energy. Calling it a shadow
+therefore protects both sides of the claim. It says the apparatus has enough
+structure to resemble a gauge-field carrier for bookkeeping purposes. It also
+says the apparatus is not claiming the actual gauge theory.
+
+The invariant inherits the zero-detection work of the operator chapter, and this
+inheritance is the reason the kernel can enable records. The trivial activity
+has zero invariant, and zero invariant forces trivial activity:
 \[
   \mathrm{invariant}(0) = 0,
   \qquad
   \mathrm{invariant}(x) = 0 \;\Longrightarrow\; x = 0.
 \]
-The second statement is the coercivity of the operator carried all the way to the
-top of the assembly. Whatever clothing the kernel wears, the conserved invariant
-still vanishes only on the trivial activity. A reading of zero invariant certifies
-that nothing is present; a positive invariant certifies a genuine activity and
-reports its order-two size. The kernel is, in this precise sense, a complete
-instrument: it carries a substrate to read, a boundary to anchor the reading, and
-a conserved invariant whose zero means absence.
+The second statement is not decoration around the kernel; it is the coercivity
+certificate surviving packaging. Once the invariant is the diagonal energy, the
+old energy-squared zero theorem becomes the kernel's zero theorem. A zero reading
+cannot hide a nonzero constant mode, because the boundary anchor has already
+removed that mode. A nontrivial activity must have positive energy-squared, hence
+positive invariant. The kernel may carry color, flavor, and phase, but none of
+those labels weakens the scalar test. Zero still means absence of activity.
 
-The phrase ``finite gauge-field shadow'' deserves its caution. The decorations
-the kernel carries are shaped like the conserved charges of a physical gauge
-theory --- a color-like charge, a generation-like species, a phase like a clock ---
-and the conserved invariant is shaped like the action's conserved energy. But the
-apparatus claims only the shadow, not the substance. It does not yet carry a
-genuine symmetry group acting on the decorations, and it does not carry the
-mechanism by which such a symmetry would give the decorations mass or dynamics.
-What it carries is the finite skeleton those richer structures would dress: a
-conserved invariant, a few conserved labels, a boundary, and a causal substrate.
-The kernel exposes the quantity a later symmetry analysis would conserve; it does
-not pretend to be that analysis.
+Episode39's concrete witness has exactly this form. The three-rung operator
+\(K=M+S\) is carried into a universe kernel over the white-hole-anchored
+spacetime path. Its selected decorations are finite choices: one color, one
+flavor, and one phase. Its invariant is the energy-squared reading of the
+three-rung SPD activity. The witness matters because it keeps the section from
+speaking only in schematic language. The kernel is not merely a definition of
+what such a package might be. There is a concrete capstone, the three-rung
+universe, in which the assembled operator, anchor, substrate, decorations, and
+invariant coexist.
 
-The section's metaphysical anchor is assembly into an instrument. A measurement
-needs more than a reading; it needs a body that carries the reading, the boundary
-that anchors it, the substrate it reads against, and the labels it conserves. The
-apparatus tanges its scattered constructions into one kernel and funges that kernel
-forward as a complete instrument, with the single invariant at its conserved core.
-The cathedral of the previous chapters is now one building with one keystone: a
-finite shadow of a gauge field whose one conserved scalar is the invariant the book
-has carried from its title.
+The fields of the package also keep the dependencies visible. The SPD activity
+remembers the operator rather than only its final number. The door remembers that
+the square-root and completion language is an interface. The compiler anchor
+remembers that the reading is pinned at a loaded source, not evaluated on a
+floating configuration. The substrate remembers that the activity belongs to an
+ordered finite path. The decorations remember that a physical-looking carrier
+usually comes with labels that must be transported with the scalar reading. The
+invariant field remembers which scalar is being conserved. Finally, the equality
+between invariant and energy-squared prevents the labels from becoming the main
+event. The package is not a heap of named parts; it is a dependency list made
+visible as one finite object.
+
+This visibility is what was missing at the end of Chapter 9. There the operator
+could be applied to an activity, but the act of application still depended on
+surrounding choices that were not themselves bundled with the reading. The reader
+had to remember which anchor removed the nullspace, which finite chain supplied
+the stage order, which door was merely conditional, and which decorations were
+being ignored. The kernel removes that burden from the prose. It says that these
+choices are part of the object being discussed. From this point on, when the
+chapter refers to the first physical carrier, it can point to a finite structure
+whose fields already state the apparatus under which the reading is meaningful.
+
+At the same time, the witness is still not the ledger record. The kernel makes
+record writing possible by giving the later ledger a complete finite object to
+cite. It says: here is the activity space, here is the energy, here is the
+boundary source, here is the causal substrate, here are the finite decorations,
+and here is the invariant whose zero detects absence. That is the body a record
+needs. But the record itself has additional work to do. It must classify what
+this apparatus can realize, distinguish that from what another apparatus cannot
+realize, and write the line with its witness or absence certificate. Those tasks
+belong to the later record section, not to the kernel assembly.
+
+This separation keeps the chapter in order. The first section assembles the
+carrier. The ladder section will explain how a concrete carrier climbs the book's
+classification rungs. The metaphysicality section will separate mathematical
+existence from instrument-relative realizability. The ledger section will write
+the first record, and the final section will let an integrator produce a finite
+gauge-equation reading. If the kernel were already treated as the record, the
+chapter would collapse those distinctions. It is better to say the precise thing:
+the kernel is record-enabling. It is the package without which the record would
+still be an unfiled reading.
+
+The apparatus-relative character is already visible. Nothing in the kernel says
+that the invariant is an absolute fact detached from the instrument. The
+invariant is read by this finite package: this SPD energy, this Hilbert door,
+this loaded source, this spacetime path, these decorations. A different package
+could carry different realizability conditions. The kernel therefore prepares the
+central move of the chapter: a physical line is true relative to the finite
+instrument that can realize it. The kernel is the first place where that
+relativity has a body rather than a slogan.
+
+The section's discipline is assembly without inflation. It tanges the scattered
+operator pieces into one finite carrier and funges that carrier forward to the
+later ledger, but it does not spend the ledger before reaching it. The invariant
+remains the diagonal energy. The Hilbert language remains a door. The gauge
+language remains a shadow. The source remains a finite load anchor. The
+decorations remain finite labels. What changes is that the apparatus now has one
+object carrying all of them. Chapter 9 made the invariant readable. The universe
+kernel gives that reading a finite body, so the rest of Chapter 10 can ask which
+readings become records and which remain beyond a given instrument's reach.
 
 \section{Grounding the Class Ladder}
 
-The early chapters built a tall ladder of classifications and then climbed only
-part of it. From raw distinguishability at the bottom, through counting,
-comparison, and many further gates, up to inference at the top, the apparatus
-defined each rung conditionally: if a carrier satisfies the rung below, then it
-satisfies the rung above. What it never supplied was a concrete carrier that
-actually stood on the bottom rung, so the conditional chain, however carefully
-built, never fired. The top rung --- inference --- was a promise about carriers that
-did not yet exist. This section supplies the carrier and lets the whole ladder
-fire.
+The early chapters built a ladder and left it conditional. A carrier that could
+be distinguished could be counted; a counted carrier could be encoded; an encoded
+carrier could be observed, repeated, represented, compared, and pushed upward
+through later gates toward inference. But the tower was still an implication
+tower. It said what would happen if a concrete carrier stood on the bottom rung
+and satisfied each open condition. It did not yet supply that carrier. The
+universe kernel has now given the chapter a finite object with an operator,
+anchor, substrate, decorations, and invariant. This section uses the three-rung
+activity inside that package as the carrier that finally climbs.
 
-The carrier is the three-rung configuration the operator chapter installed. The
-apparatus walks it up the ladder rung by rung, and almost every step is mechanical:
-having grounded one rung on the concrete carrier, the conditional definition of the
-next rung fires automatically. The grounding is bottom-up and forced, each rung
-resolving the rung beneath it, until the ladder is climbed. The interest is not in
-the mechanical steps but in the one rung that was genuinely open.
+The bottom of the climb is deliberately ordinary. The carrier is the finite
+three-rung activity space from the operator chapter, the same \(Rung3\) on which
+\(K=M+S\) was installed. To begin the ladder, the apparatus has to say that this
+carrier is distinguishable: its elements can be treated as symbols of the
+carrier type rather than as an unnamed cloud. Once that base is fixed, the early
+numeric rungs become bookkeeping. The carrier can be counted, indexed, encoded,
+given a limit-shaped witness, treated as a residue, observed as a binary
+contrast, repeated under a stimulus, and passed through a computational
+interface. The result of those base steps is the numeric rung. The point is not
+that each witness is deep. The point is that the witnesses are now attached to a
+finite carrier the apparatus actually holds.
 
-That open rung is comparison. To climb past mere counting, the apparatus must be
-able to say of two quantities which is the smaller, and nothing in the earlier
-construction decided that order. The apparatus grounds comparison on the finite
-clock of the previous chapter. To compare two quantities is to ask which one the
-apparatus spends more effort to elaborate, and the clock answers exactly that. The
-order on quantities is the order of the work the apparatus does to read them:
+That base resolution matters because the later conditional chain had always
+depended on it. A definition of numeric behavior is still inert until it names a
+carrier. Once \(Rung3\) is made distinguishable and numeric, the bottom part of
+the old ladder is no longer an announcement about some future object. It is a
+classification of the same finite activity space whose energy has already been
+made coercive. The apparatus has moved from "there could be a carrier" to "this
+is the carrier." That change is small in syntax and large in meaning: the ladder
+has acquired a body.
+
+The conceptual hinge is comparison. Counting can be made finite without deciding
+which of two readings is lesser. Encoding and repetition can be installed without
+settling an order on quantities. But the ladder cannot climb past the old
+comparison gate until the apparatus says what comparison is. Here the answer is
+the finite clock. To compare two quantities is to compare the effort the
+apparatus spends reading them. The order on quantities is the order reported by
+the EKG-like elaboration clock:
 \[
   q_1 \preceq q_2
   \quad\text{means}\quad
   \text{the clock reads } q_1 \text{ no costlier than } q_2.
 \]
-Comparison, grounded this way, is not a logical primitive imposed from outside. It
-is an act of measurement: the apparatus measures the cost of each quantity and
-reports the order it finds. The book's recurring claim, that comparison is
-measurement, becomes here a literal definition of the comparison rung.
+This makes comparison an act of measurement rather than an order imported from
+outside. The apparatus does not ask for a metaphysical less-than relation on its
+quantities. It reads the work required to elaborate them and lets that reading
+serve as order. The section therefore grounds the recurring claim that comparison
+is measurement in the ladder itself. The comparison rung fires because the finite
+instrument can measure the cost of comparing.
 
-With comparison grounded, the rest of the ladder climbs itself. Each higher gate
-was already defined conditionally on the gates below, and those conditions are now
-met on the concrete carrier, so the apparatus rises through them in turn until it
-reaches inference. The carrier that began as three nodal values and an energy now
-stands on every rung from raw distinction to inference. The instantiation the early
-chapters deferred --- the carrier that would actually climb --- is finished.
+Once comparison is grounded, the upper portion of the old tower has no remaining
+gap of the same kind. The conditional gates from the representation chain can
+fire on the concrete carrier, because their missing comparison witness is now in
+place. The apparatus does not have to reargue every upper rung as a new physical
+principle. It has to show that the carrier satisfies the prerequisites, and then
+the existing conditional machinery carries it upward. The finite three-rung
+activity has been distinguished, counted, made numeric, and compared by the
+clock. The definitions that were waiting above can now recognize it.
 
-The section's metaphysical anchor is that a ladder of classifications means nothing
-until a concrete thing climbs it. A conditional tower of definitions is scaffolding;
-it acquires content only when some carrier stands on its bottom rung and rises. The
-apparatus tanges its concrete carrier onto the first rung and funges it upward,
-each gate firing the next, until the carrier reaches the top. The earlier chapters
-promised an apparatus that could classify all the way to inference; this section
-makes that promise good on a carrier the apparatus actually holds.
+There was also a middle gap. The older ladder did not merely need a bottom base
+and an upper comparison. It also needed the source-to-acolyte stretch: a source,
+an executed process, a value, a magnitude, scaling, a load, a finite Galerkin
+style witness, and the later rhetorical rungs that lead to acolyte status. The
+current section does not dwell on the old private names or recycle their jokes.
+It keeps the structural fact: the middle chain is now instantiated on the same
+\(Rung3\) carrier. The carrier is not only numeric and comparable; it also has a
+source-facing process chain that lets the upper ladder talk to the finite
+operator package rather than to an abstract placeholder.
+
+With the bottom, hinge, and middle grounded, the capstone is inference. The
+carrier that began as a three-node activity for the operator chapter now stands
+on the full classification ladder. It is distinguishable at the bottom, numeric
+after the base witnesses, comparable by measured effort, carried through the
+middle process chain, and finally recognized as inferred. The word inferred
+should be read soberly. It does not mean that the apparatus has already written a
+physical ledger line, and it does not settle what the instrument can realize.
+It means that the old conditional classification tower has, at last, a concrete
+finite carrier on which its top gate fires.
+
+This is why the section belongs after the kernel assembly and before the
+physical/metaphysical boundary. The kernel provided the body that can carry a
+reading. The ladder now says that this body is not merely an energy carrier but a
+classified instrument all the way to inference. Only after that grounding is in
+place can the chapter ask a sharper question: which invariants can this grounded
+instrument physically realize, and which remain beyond it? Without the ladder
+grounding, the next section would be judging an apparatus whose classification
+status was still conditional.
+
+The section's metaphysical anchor is that classifications become real only when
+a finite carrier climbs them. A conditional ladder is scaffolding; it says where
+an object could go. A grounded ladder is an instrument fact; it says that this
+object has gone there. The apparatus tanges the three-rung carrier onto the base
+and funges it through the ladder until the inference capstone fires. What follows
+is no longer a promise that some future carrier might classify. It is the
+apparatus asking what a now-grounded finite carrier can and cannot realize.
 
 \section{Physical versus Metaphysical, Relative to an Apparatus}
 
-The apparatus has just climbed to inference, but the witness it produced at the top
-is, in a precise sense, inert: it exists as a proof that the carrier classifies,
-yet it carries no executable recipe for reading the classification off finite
-data. That inertness is the small shadow of a large distinction, and this section
-draws the distinction in full. A quantity can exist mathematically and still have
-no instrument that realizes it. Existence is not realizability, and the gap between
-them is the subject of the whole section.
+The apparatus has just climbed to inference, but the witness at the top has a
+limit. It says that the concrete carrier satisfies the classification ladder. It
+does not by itself give an executable finite setting that reads every invariant
+named by the mathematics. That difference is not a technical annoyance. It is
+the boundary this section draws: mathematical existence is not the same thing as
+physical realizability by an apparatus.
 
-Make realization precise. An instrument turns finite counter readings into an
-invariant value; write its action as a rule from a finite list of counter readings
-to a value. The instrument \emph{realizes} an invariant when some finite
-configuration of its counters evaluates to that invariant:
+The distinction begins with the kernel. The kernel is now a finite body for the
+reading: it carries an operator, an anchor, a substrate, decorations, and the
+energy-squared invariant. The ladder has also been grounded on the concrete
+three-rung carrier. Those two achievements make the instrument real enough to
+ask a sharper question. Given an invariant named in the mathematics, does some
+finite configuration of an instrument actually read it? A proof that an invariant
+exists, or that a carrier reaches a classification, does not answer that
+question. The answer requires a finite counter setting.
+
+So realization has to be defined as an apparatus-facing relation. An apparatus
+turns finite counter readings into an invariant value. Abstractly, it is a rule
+from a finite list of counters to a natural-number reading, or more generally to
+whatever invariant scale the current section is using. The apparatus
+\emph{realizes} an invariant when some finite configuration of its counters
+evaluates to that invariant:
 \[
   a \text{ realizes } \mathrm{inv}
   \quad\Longleftrightarrow\quad
   \exists\ \text{counters},\quad a(\text{counters}) = \mathrm{inv}.
 \]
-This is the constructive witness whose absence a bare existence proof only hints at.
-A quantity that exists may have no such configuration in a given instrument; the
-instrument simply has no setting that reads it.
+The existential counter setting is the physical witness. Without it, the
+invariant may still be perfectly meaningful as mathematics, but it has not been
+read by the instrument. This is the first place where the chapter refuses to let
+classification stand in for measurement. A top-rung witness says the carrier
+classifies. A realizing counter configuration says the apparatus has a finite way
+to produce the value.
 
-Now index realizability to a class of instruments. An invariant is \emph{physically
-modeled} by a class \(C\) when some instrument in the class realizes it, and it is
-\emph{metaphysical relative to \(C\)} when none does:
+This is also why the top witness from the ladder is not enough. Its existence
+settles a classification question: the concrete carrier reaches the inferred
+rung. But a classification witness can be inert with respect to operation. It
+may certify that a type of judgment exists while leaving no counter program, no
+setting, and no finite recipe that makes a particular invariant appear as an
+instrument reading. The section therefore separates two existential shapes. One
+is internal to the classification ladder: there is a proof witness. The other is
+externalized through counters: there is a finite input to an apparatus. Only the
+second shape is realization.
+
+The next move is to index realization by a class of instruments. A single
+apparatus may be too narrow; a class records the design space currently allowed.
+An invariant is \emph{physically modeled} by a class \(C\) when some apparatus
+in \(C\) realizes it. It is \emph{metaphysical relative to \(C\)} when no
+apparatus in \(C\) realizes it:
 \[
   \mathrm{Physical}(C,\mathrm{inv})
   :\Longleftrightarrow
@@ -234,221 +411,473 @@ modeled} by a class \(C\) when some instrument in the class realizes it, and it 
   :\Longleftrightarrow
   \neg\,\mathrm{Physical}(C,\mathrm{inv}).
 \]
-A certificate that an invariant is metaphysical is an \emph{obstruction}: a direct
-proof that every instrument in the class fails to realize it. An obstruction is the
-honest form of ``no instrument here can read this'': not silence, but a proof of
-failure quantified over the whole class.
+The word relative is doing real work. The section is not dividing the universe
+into quantities that exist and quantities that do not. It is dividing, for a
+specified apparatus class, the quantities that the class can realize from those
+it cannot. Change the class and the verdict may change. A stronger class may
+realize what a weaker class obstructs. A narrower class may lose readings that a
+wider class permits.
 
-The word that carries the section is \emph{relative}. Metaphysicality is never a
-verdict on a quantity alone; it is a verdict on a quantity together with a class of
-instruments. The apparatus proves this rather than asserting it. Consider a class
-of instruments that can only read even quantities --- the parity shadow of a loop
-that must close, a discrete curvature obstruction. An odd invariant has no witness
-in that class:
+The honest negative certificate is an obstruction. An obstruction for \(C\) and
+\(\mathrm{inv}\) is a proof that every apparatus in \(C\) fails to realize
+\(\mathrm{inv}\). This is stronger than failing to find a witness. It is a
+class-wide proof of nonrealization:
+\[
+  \forall a \in C,\quad
+  \neg\bigl(a \text{ realizes } \mathrm{inv}\bigr).
+\]
+Such a certificate makes the invariant metaphysical relative to \(C\). It does
+not make the invariant meaningless. It says that, for this instrument class,
+there is no finite counter configuration that reads it. The apparatus is allowed
+to report absence only when it has this kind of quantified reason.
+
+That last restriction is important. A missing example is not an obstruction.
+Failure to find a counter setting may only show that the apparatus has not looked
+long enough or that the class has not been described sharply enough. An
+obstruction must range over the whole class and show that every candidate
+apparatus fails. It is the negative counterpart of a realizing counter
+configuration. Positive physicality needs one witness; class-relative
+metaphysicality needs a proof that no witness exists in the class.
+
+The parity example gives the smallest clean model of the boundary. Consider a
+class of instruments whose readings are always even. This is a finite shadow of
+a closure constraint: whatever counters are supplied, the instrument reports a
+value of the form \(2k\). Then the invariant \(1\) has no witness in that class:
 \[
   a \text{ reads only even values}
   \;\Longrightarrow\;
   a \text{ cannot realize } 1.
 \]
-So the invariant \(1\) is metaphysical relative to the even-reading class. Yet a
-richer class --- one whose instruments may read any value --- realizes the same
-invariant \(1\) without difficulty. The very same quantity is metaphysical for one
-class and physical for another:
+The obstruction is elementary but decisive. If every reading is even, no counter
+configuration can evaluate to \(1\). Thus \(1\) is metaphysical relative to the
+even-reading class. The mathematics of \(1\) has not failed. The instrument
+class has failed to realize it, and the obstruction explains why.
+
+Now enlarge the comparison class. Allow every finite evaluator, including the
+constant apparatus that returns \(1\) from any counters. In that permissive
+class, the same invariant \(1\) is realized immediately. This class is a
+comparison ceiling, not a laboratory physics claim. It shows what happens when
+the apparatus class is made maximally loose: realization becomes trivial because
+the constant reader is admitted. The point is not that such a class is the real
+physical class. The point is that metaphysicality is class-relative:
 \[
   \mathrm{Meta}(\text{even-reading},\,1)
   \quad\text{and}\quad
   \mathrm{Physical}(\text{richer},\,1).
 \]
-Metaphysicality is not eternal. A quantity obstructed for a poor instrument may be
-ordinary for a richer one, and an instrument strengthened tomorrow may realize what
-is obstructed today.
+The same invariant changes status when the apparatus class changes. That is the
+section's central lesson.
 
-The relation behaves the way an honest indexing should. Enlarging the class can
-only add realizations: whatever a smaller class realizes, a larger class containing
-it realizes too. Contrapositively, an obstruction at a permissive class descends to
-every subclass: if even the larger class cannot read a quantity, no smaller one can.
-These monotonicities make obstructions into a hierarchy, with the strongest
-obstructions sitting at the most permissive classes and raining down on everything
-beneath them.
+The example is intentionally small because the point is not parity arithmetic.
+The point is the grammar of the report. For the even-reading class, the
+apparatus can say more than "I did not read \(1\)." It can say "nothing in this
+class can read \(1\), because every reading has the form \(2k\)." For the richer
+comparison class, the apparatus can say "there is a reader that returns \(1\)."
+Those are different kinds of evidence. One is an obstruction certificate. The
+other is a realization witness. The same invariant is being judged by different
+evidence under different apparatus classes.
 
-Finally the section ties the distinction back to the kernel, on the reassuring
-side. The kernel's ground invariant --- the energy of the trivial activity --- is
-zero, and zero is realizable by the simplest instrument of all, the one that reads
-zero from any counters. So the coercive bottom of the kernel sits on the physical
-side of the boundary:
+The monotonic behavior is exactly what this indexing should have. If \(C\) is a
+subclass of \(D\), then anything physically modeled by \(C\) is physically
+modeled by \(D\), because the realizing apparatus is still present in the larger
+class. Enlarging the class can add witnesses; it cannot destroy witnesses that
+were already there. The negative direction reverses. If an invariant is
+metaphysical even relative to a permissive class \(D\), then it is metaphysical
+relative to every smaller class \(C\) contained in \(D\). An obstruction at a
+large class descends to its subclasses. This turns obstructions into a hierarchy
+rather than isolated disappointments.
+
+This hierarchy is useful because it keeps refusal disciplined. A weak
+obstruction, proved only for a narrow class, says little about richer
+instruments. A strong obstruction, proved for a permissive class, rules out many
+subclasses at once. The apparatus should therefore state the class every time it
+declares metaphysicality. Without the class, the word metaphysical is too large.
+With the class, it is an auditable finite claim: no apparatus of this specified
+kind has a counter setting that reads the invariant.
+
+The section also has to protect the positive side. The kernel's ground invariant
+is not lost beyond the boundary. The trivial activity has energy \(0\), and the
+constant-zero apparatus realizes \(0\). Thus the bottom of the universe kernel is
+physically modeled:
 \[
   \mathrm{invariant}(0) = 0,
   \qquad
   \mathrm{Physical}(C,\,0).
 \]
-The instrument's ground state is realizable; the apparatus is not stranded on the
-far side of its own boundary.
+Here \(C\) may be taken as any class that contains the constant-zero reader, or
+as the comparison ceiling used above. The essential point is modest: the
+coercive ground state of the kernel is on the physical side. The apparatus is
+not stranded in a world where every invariant is merely formal. It has at least
+one realized value, and the later ledger can begin from that realized bottom.
+
+That reassurance does not trivialize the boundary. Realizing \(0\) says that the
+ground value is physically modeled. It does not say that every invariant the
+mathematics can name is realizable by the same finite apparatus class. The
+chapter therefore holds two facts together. The kernel has a physical bottom.
+The apparatus still needs obstruction certificates for values its allowed
+instruments cannot reach. The first fact keeps the instrument from being empty.
+The second keeps it from pretending to omnipotence.
+
+The connection to the previous section is now sharp. Grounding the ladder gave a
+concrete carrier the right to be called inferred. This section says that an
+inferred carrier is still not automatically a physical realizer for every
+invariant. Classification is a prerequisite for the coming records, not the
+record itself. The apparatus may classify a carrier all the way to inference and
+still need to ask which finite readings are achievable in a chosen class of
+instruments.
+
+Nor does the richer comparison class settle the physical question. It is useful
+because it demonstrates relativity: \(1\) is obstructed in the even-reading class
+and realized in the unconstrained class. But an unconstrained constant reader is
+too permissive to count as the final apparatus of the book. The meaningful
+questions concern the finite classes generated by the kernel, the boundary
+anchor, the residual interface, and the later integrator. This section supplies
+the vocabulary those later questions need. It does not answer them in advance.
+
+The first ledger record is therefore still waiting. Nothing in this section
+writes a ledger line. It prepares the rule for saying what such a line may
+contain: realized values on the physical side, and obstruction certificates for
+class-relative absences. The integrator is waiting as well. It will later produce
+residual readings, but those readings will count as records only after they pass
+through the realizability boundary just drawn.
 
 The section's metaphysical anchor is that measurement has an outside, and the
-apparatus names it honestly. Some quantities are real in the mathematics and
-unreachable by any instrument in a given class, and the apparatus neither denies the
-mathematics nor pretends to an instrument it lacks. It tanges each invariant against
-a class of instruments and funges the verdict --- physical here, metaphysical there ---
-into a relation indexed by that class. The boundary between what can be measured and
-what merely exists is not a confession of weakness. It is the most disciplined thing
-a finite instrument can report: exactly which quantities it can realize, and a
-certificate, class by class, for the ones it cannot.
+apparatus names it without drama. Some quantities are real in the mathematics and
+unreachable by any instrument in a given class. The apparatus neither denies the
+mathematics nor invents an instrument it lacks. It tanges each invariant against
+a class of finite instruments and funges the verdict into a relation indexed by
+that class: physical here, metaphysical there, obstructed by this certificate,
+realized by that counter setting. The boundary is not a denial of mathematics.
+It is a finite instrument reporting exactly which invariants it can realize, and
+which ones it can only name through class-relative obstruction.
 
 \section{The First Ledger Record}
 
-The instrument is fully wired and has never been switched on. Every classification
-so far bottoms out in trivial truth, every predicate reads affirmative by default,
-and the realizability boundary was drawn on a parity toy. That is the blank ledger,
-the apparatus at the ground state where the book began, restating that truth equals
-truth. This section writes the first entry that is not trivial, and it sources that
-entry from physics the earlier chapters actually proved rather than from a toy.
+The instrument is fully wired and has not yet written a nontrivial line. The
+kernel is finite, the ladder has been grounded, and the previous section drew the
+realizability boundary. But a boundary is not yet a record. The apparatus still
+needs an invariant that can be judged on both sides of that boundary by finite
+evidence: a positive witness where the invariant is realized, and an absence
+certificate where it is not.
 
-The invariant to be recorded is whether a \emph{null mode} exists. A null mode is a
-nonzero activity the energy cannot distinguish from the trivial one:
+The first such invariant is the null-mode predicate. A null mode is a nonzero
+activity whose energy cannot distinguish it from the trivial activity:
 \[
-  \mathrm{HasNullMode}
+  \mathrm{HasNullMode}(E)
   :\Longleftrightarrow
-  \exists\, x,\ x \neq 0 \ \text{ and }\ E(x) = 0.
+  \exists\, x,\quad x \neq 0 \ \text{ and }\ E(x) = 0.
 \]
-A null mode is exactly what a detector must not have; its presence or absence is the
-sharpest single fact about whether an instrument detects. So the first record
-classifies this one invariant across the boundary the whole book has been building:
-the boundary between the anchored instrument and the unanchored one.
+The predicate asks whether the energy has a blind direction. If it does, the
+apparatus can move along that direction without paying energy. If it does not,
+zero energy singles out the trivial activity. The question is small, but it is
+not a toy. It is the first finite question about the operator that the ledger can
+record.
 
-Relative to the anchored, coercive instrument, no null mode exists. This is not a
-new computation; it is the coercivity the operator chapter already proved, read as a
-certificate. If an anchored activity had zero energy it would be the trivial
-activity, so no nonzero activity can have zero energy:
+This predicate is especially suited to be first because it does not ask for a
+large numerical spectrum. It asks only whether zero energy has another
+inhabitant besides the ground activity. The answer can therefore be carried by
+two simple kinds of evidence. On the positive side, one explicit nonzero
+activity with energy zero is enough. On the negative side, a proof that zero
+energy forces the activity to be trivial is enough. The ledger can hold both
+forms without pretending that it has already learned how to emit every later
+quantity.
+
+The record compares two apparatuses reading the same finite world. The first is
+the anchored apparatus. It includes the boundary anchor that pins the input end
+to the load end and makes the stiffness coercive. The second is the
+unanchored apparatus. It reads stiffness on the same three-place activity, but
+without the boundary pin. The invariant is the same in both cases: does a
+nonzero zero-energy activity exist? The apparatus class changes, and that change
+is exactly what the ledger is meant to see.
+
+The comparison is not a change of mathematics behind the scenes. The finite
+activity, the stiffness rule, and the null-mode predicate are held fixed. What
+changes is the apparatus relation allowed to count as a reading. The anchored
+apparatus reads activity through the boundary-pinned form. The unanchored
+apparatus reads through stiffness before the boundary pin removes constant
+shifts. Since the previous section made physicality relative to apparatus
+classes, this section can now write the difference instead of treating it as a
+contradiction.
+
+Begin with the anchored half. Coercivity says that the anchored energy vanishes
+only at the trivial activity. In apparatus language, the boundary anchor turns
+zero energy into an identity test:
 \[
-  E_{\text{anchored}}(x) = 0 \;\Longrightarrow\; x = 0,
-  \qquad\text{hence}\qquad
-  \neg\,\mathrm{HasNullMode}_{\text{anchored}}.
+  E_{\mathrm{anchored}}(x) = 0
+  \quad\Longrightarrow\quad
+  x = 0.
 \]
-The coercivity proof is the obstruction certificate. ``A null mode exists'' is
-metaphysical relative to the anchored instrument: there is, provably, no witness.
-
-Relative to the unanchored instrument, a null mode does exist, and the apparatus
-exhibits it. With the boundary anchor removed, the stiffness reads only differences,
-and the constant configuration changes nowhere, so it carries zero energy while
-being plainly nonzero:
+Therefore no nonzero anchored activity has zero energy:
 \[
-  E_{\text{unanchored}}(1,1,1) = 0,
-  \qquad (1,1,1) \neq 0,
-  \qquad\text{hence}\qquad
-  \mathrm{HasNullMode}_{\text{unanchored}}.
+  \neg\,\mathrm{HasNullMode}(E_{\mathrm{anchored}}).
 \]
-``A null mode exists'' is physical relative to the unanchored instrument: here is the
-witness, a concrete configuration the instrument realizes.
+This is not merely a failure to find a null mode. It is the honest negative
+certificate required by the previous section. Every candidate null activity in
+the anchored apparatus collapses to the trivial activity, so the predicate
+``there is a null mode'' is metaphysical relative to the anchored apparatus.
+The ledger may not enter a missing activity as if it were a value. It may enter
+the certificate that the anchored class cannot realize such a value.
 
-The first record holds both halves, and their shape is the boundary itself:
+The certificate has content because the anchor has content. Without the anchor,
+constant activity can hide from stiffness: no neighboring difference changes,
+so the stiffness reading sees no energy. With the anchor present, the constant
+activity is no longer a free invisible shift; the boundary relation forces the
+activity to answer to the pinned edge. The absence certificate is therefore not
+a metaphysical mood. It is the boundary anchor doing a finite job.
+
+This is why the anchored half belongs in the ledger even though it is negative.
+The apparatus has not merely stayed silent. It has converted the anchor into a
+universal test: try any anchored activity; if the energy reads zero, the
+activity must be the ground one. The certificate is as finite as the positive
+witness will be on the other side, because it names the rule by which the class
+rejects every proposed null mode. The record therefore includes a certified
+absence, not an unexamined blank.
+
+Now remove the anchor. In the unanchored apparatus, stiffness reads differences
+only. The constant activity
 \[
-  \big(\ \mathrm{HasNullMode}_{\text{unanchored}}
-  \ ,\
-  \neg\,\mathrm{HasNullMode}_{\text{anchored}}\ \big).
+  (1,1,1)
 \]
-A positive witness on one side, an absence certificate on the other. The same
-invariant --- present without the anchor, absent with it --- is the chapter's first
-finite, physical, apparatus-relative fact. The same world reads one way for one
-instrument and the opposite way for another, and the difference is exactly the
-boundary anchor doing its work.
+is nonzero, but it changes nowhere. Its stiffness energy is zero:
+\[
+  E_{\mathrm{unanchored}}(1,1,1) = 0,
+  \qquad
+  (1,1,1) \neq 0.
+\]
+Thus
+\[
+  \mathrm{HasNullMode}(E_{\mathrm{unanchored}})
+\]
+is physically realized. This time the apparatus does not need a universal
+negative proof. It has a concrete witness. The constant activity is the counter
+configuration demanded by the realizability boundary: finite, inspectable, and
+entered on the physical side.
 
-The record obeys a strict rule, and the rule is the discipline of the whole ledger.
-The ledger records only what some instrument can realize, plus certificates of what
-no instrument can. The physical half is an entered value: here is the witness. The
-metaphysical half is not an entered value --- the ledger cannot hold a null mode that
-does not exist --- but a certificate of its absence. The metaphysical can never be
-written into the ledger as a quantity; only the proof that it is unrealizable can.
-This asymmetry is not a limitation to apologize for. It is what keeps the ledger
-honest: it contains realized facts and certified absences, and nothing that merely
-might be true.
+The witness is deliberately plain. A constant activity has no internal
+difference for stiffness to read. In the unanchored apparatus that is enough:
+the activity is nonzero as an activity, yet invisible to the energy. The
+apparatus can point to the witness rather than infer it from a permissive
+comparison class. The unanchored half is therefore physical in the strict sense
+of the previous section. There exists a finite configuration, and evaluating it
+produces the invariant's positive verdict.
 
-This is one line, and the section claims no more. It does not open the deferred
-doors --- the genuine continuum, a magnitude-faithful source, a full symmetry on the
-decorations. It is the smallest entry that is not trivial: the instrument's first
-reading, and the first thing the ledger holds besides the restatement that truth is
-truth. Read in the apparatus vocabulary of the previous section, it says exactly
-that the null-mode indicator is metaphysical relative to the anchored class and
-physical relative to the unanchored one --- the same line of the ledger, spoken in
-the instrument's own words.
+The first ledger record packages those two verdicts:
+\[
+  \mathrm{Record}_1
+  =
+  \left(
+    \mathrm{HasNullMode}(E_{\mathrm{unanchored}}),\;
+    \neg\,\mathrm{HasNullMode}(E_{\mathrm{anchored}})
+  \right).
+\]
+The order matters less than the shape. One half is a positive witness: here is a
+nonzero activity with zero unanchored energy. The other half is an absence
+certificate: no nonzero anchored activity can have zero anchored energy. The
+same invariant is physical relative to one apparatus and metaphysical relative
+to the other. That is the first nontrivial line because it records something
+other than the apparatus merely affirming its own ground truth.
 
-The section's metaphysical anchor is that a record is a verdict bound to the
-instrument that took it. There is no apparatus-free physical fact in this ledger;
-every entry carries the boundary of the instrument that read it. The apparatus
-tanges one world through two instruments and funges the difference into a single
-recorded line: present here, absent there, certified both ways. Measurement writes
-its first physical record not by reading a value in isolation but by recording a
-difference between two apparatus --- the difference one anchor makes.
+The record can also be read as a disciplined before-and-after of anchoring. In
+the unanchored reading, constant activity circulates as a zero-energy direction.
+In the anchored reading, the same kind of constant shift no longer survives the
+boundary. The ledger line does not erase this tension by choosing one apparatus
+as the true one and discarding the other. It records both verdicts with their
+apparatus tags, because the theory has just learned that the tag is part of the
+physical content.
+
+This line also explains what a ledger is allowed to hold. It does not hold
+unbounded metaphysical possibilities. It holds finite witnesses and finite
+certificates. On the unanchored side, the witness \((1,1,1)\) is a realized
+activity. On the anchored side, the coercivity proof is the realized
+certificate of nonrealization. Both entries obey the same discipline. Each is
+bound to the apparatus that produced it, and each can be checked without
+pretending that the apparatus has escaped its own boundary.
+
+The asymmetry is important. A positive witness is enough to make the predicate
+physical relative to a class: one finite configuration realizes it. A negative
+entry must be stronger: it has to certify that no configuration in the class
+realizes the predicate. The anchored half therefore records not a null mode, but
+the impossibility of one. The ledger does not confuse the missing object with
+the proof that it is missing. This is how the previous section's boundary
+becomes record-keeping.
+
+Here the word \emph{metaphysical} earns its apparatus-bound sense. The anchored
+null mode is metaphysical not because the predicate is vague, not because the
+number \(0\) is mysterious, and not because the activity space has been left
+informal. It is metaphysical because the anchored class cannot realize a witness
+and can prove that it cannot. The ledger keeps that proof as the public shape of
+the absence. Nothing stronger is needed, and anything stronger would exceed the
+instrument.
+
+The line is small enough to stay honest. It is not a continuum theorem, not a
+full curvature obstruction, not a Noether invariant, not a standard gauge
+claim, not a mass-gap claim, and not a magnitude-faithful emission law. It does
+not say that every future invariant has been read. It says that one finite
+predicate has been judged in two apparatus classes, with the exact evidence
+appropriate to each class.
+
+Nor is it a claim that the unanchored apparatus is the final physical apparatus.
+The unanchored reading is admitted here because it exposes what the boundary
+anchor changes. It supplies the positive witness needed for the first record,
+while the anchored reading supplies the absence certificate. The pair matters
+more than either half alone. A ledger that kept only the anchored refusal would
+hide the lost null direction; a ledger that kept only the unanchored witness
+would hide the anchor's coercive work.
+
+The record is also not an integrator output. The integrator has not yet produced
+residual readings, and this section does not build it. The current line comes
+from the null-mode test itself: anchored coercivity on one side, unanchored
+constant witness on the other. Later sections may ask how an apparatus produces
+families of readings on demand. Here the question is narrower. Can the ledger
+hold a first nontrivial record at all? Yes: it can hold this apparatus-relative
+verdict about null modes.
+
+The boundary anchor is the entire difference between the two halves. The
+unanchored apparatus treats a constant shift as invisible because stiffness
+only reads change. The anchored apparatus refuses that invisibility because the
+pin makes the constant shift answer to a boundary. One finite world is therefore
+not read once for all apparatuses. It is read through the instrument that takes
+the measurement. Changing the instrument changes the verdict, and the ledger
+records that change instead of suppressing it.
+
+The result is a record rather than a slogan because it has a stable data shape.
+It contains the invariant being judged, the apparatus class on each side, the
+kind of evidence carried by each side, and the verdict. For the unanchored side:
+null-mode predicate, unanchored stiffness apparatus, concrete constant witness,
+physical. For the anchored side: the same predicate, anchored coercive
+apparatus, universal absence certificate, metaphysical relative to that class.
+That is the first ledger grammar in full.
+
+This is the first physical record because it makes the apparatus accountable to
+its own evidence. The physical side names the witness it can realize. The
+metaphysical side names the certificate by which realization fails. The record
+is neither a free-standing mathematical object nor an apparatus-free fact. It is
+a finite line written by an instrument with a boundary: null mode present
+without the anchor, null mode absent with the anchor, and the difference
+measured by the anchor's work.
+
+The section's metaphysical anchor is that a physical record is a verdict bound
+to the instrument that took it. The apparatus tanges one finite world through
+two allowed readings and funges the result into a ledger line: positive witness
+there, absence certificate here. Measurement writes its first record not by
+claiming a value in isolation, but by recording the difference one boundary
+anchor makes.
 
 \section{The Integrator and the Discrete Gauge Equation}
 
-The ledger records facts; this section builds the instrument that produces them on
-demand. The apparatus assembles an integrator, a reading of how much the action
-changes when the path is perturbed, and turns its crank. The integrator's reading is
-the discrete gauge equation, and its stationary solutions are the realizable records
-the ledger holds.
-
-The integrator reads a residual. Given a path and a variation of it, it reads the
-magnitude of the change in the action --- the difference between the action's cost on
-the varied path and on the original:
+The ledger records facts; this section builds the instrument that produces such
+facts on demand. The apparatus now assembles an integrator. It is not an integral
+over a continuum and not a new hidden dynamics. It is the finite reader of one
+question: how much does the action change when a path is varied? Given an action,
+a path, and a variation of the two middle nodes, the integrator reads the
+activity magnitude of the coupled cubic difference,
 \[
-  \mathrm{reading}(v) = \big\lvert\, \mathrm{cost}(v\cdot\mathrm{path}) - \mathrm{cost}(\mathrm{path}) \,\big\rvert.
+  \mathrm{reading}(v)
+    =
+  \bigl|\mathrm{cost}(v(\mathrm{path}))-\mathrm{cost}(\mathrm{path})\bigr|.
 \]
-The discrete gauge equation is the statement that this residual vanishes, that the
-action is stationary under the variation:
-\[
-  D(v) = \mathrm{cost}(v\cdot\mathrm{path}) - \mathrm{cost}(\mathrm{path}) = 0.
-\]
-A variation satisfying this equation is a solution; the action does not change along
-it. This is the finite, discrete form of the stationarity the book has invoked since
-Chapter 6, now realized as a number the integrator returns.
+That number is the apparatus's residual reading: the gauge reading, the visible
+output of the action's change under a permitted variation.
 
-Turn the crank twice. Run the integrator on the variation that changes nothing --- the
-identity variation, which reproduces the path's own middle nodes. The action does not
-change, so the reading is zero:
+The discrete gauge equation is the zero case of that reading. A variation is a
+solution when the coupled cubic difference vanishes:
+\[
+  \Delta S(v)
+  =
+  \mathrm{cost}(v(\mathrm{path}))-\mathrm{cost}(\mathrm{path})
+  =
+  0.
+\]
+This is the finite Euler-Lagrange meaning of stationarity. It does not say that
+the apparatus has discovered a continuum law behind the scene. It says that,
+for this action, path, and variation, the instrument reads no change. The
+equation becomes a physical record only when the integrator can return the zero
+reading; otherwise it is an intended balance with no measured output.
+
+The first crank-turn is the identity variation. It replaces each middle node by
+the middle node already present, so the varied path is the path again. The
+action's cost is unchanged, the coupled cubic difference is zero, and the
+integrator reads
 \[
   \mathrm{reading}(\mathrm{identity}) = 0.
 \]
-This zero is the trivial stationary solution, and it is a physical record: a verdict
-the ledger can hold. Now run the integrator off the stationary set, on a variation
-that genuinely changes the action's cost. The reading is the deviation, and it is
-provably nonzero precisely when the cost changes:
-\[
-  \mathrm{cost}(v\cdot\mathrm{path}) \neq \mathrm{cost}(\mathrm{path})
-  \;\Longrightarrow\;
-  D(v) \neq 0.
-\]
-The integrator is not vacuous. It reads zero on what does not change and nonzero on
-what does, which is exactly what an instrument that measures deviation must do.
+This is the trivial stationary run, but trivial does not mean empty. It is the
+apparatus demonstrating that the unchanged configuration really is read as
+unchanged. The identity variation is a solution because the instrument can
+reproduce the path and return zero.
 
-The integrator's reading is not a new quantity; it is the decomposition of Chapter 8
-read as an equation. The residual splits into the two Euler-Lagrange residuals of the
-middle node and the mixed self-coupling:
-\[
-  D(v) = r_{\mathrm{L}}(v_{\mathrm{L}}) + r_{\mathrm{R}}(v_{\mathrm{R}}) + \delta^2(v).
-\]
-The two middle residuals are the discrete Euler-Lagrange equations; the mixed coupling
-is the self-interaction that pairs the two sides of the middle. So the discrete gauge
-equation \(D(v)=0\) says the Euler-Lagrange residuals and the self-coupling sum to
-nothing, and a concrete crank-turn confirms the instrument's bite: it reads zero on an
-unchanged path and a definite nonzero value on a kicked one.
+That matters because the zero has the right provenance. It is not a default
+value placed in the apparatus before the variation is examined. The path is
+applied to itself, the coupled cubic difference is computed, and the reading
+returns zero only after those finite operations have happened. The ledger can
+trust the zero because the zero has passed through the same reader that will
+also read a kick.
 
-The section is careful about what this is and is not. It is the discrete,
-finite gauge equation of a cubic-coupled action, realized as the apparatus's reading,
-with its stationary solutions the realizable ledger entries and its well-posedness ---
-the coercivity the anchor supplies --- the certificate that those solutions detect. It
-is not the continuum theory: the limit of the residual tower is still a door the next
-chapters must build. It is not a mass gap: the coercivity of a finite second variation
-is finite well-posedness, not a statement about a continuum spectrum. And it is not a
-full symmetry group acting on the decorations: the charge, species, and phase remain
-inert labels. Those are doors, named and shut.
+The second crank-turn leaves that stationary set. If a variation changes the
+action's cost, the same reader detects the failure of stationarity. Whenever the
+cost of the varied path differs from the original cost, the variation is not a
+gauge solution. In symbols,
+\[
+  \mathrm{cost}(v(\mathrm{path}))\neq \mathrm{cost}(\mathrm{path})
+  \quad\Longrightarrow\quad
+  \Delta S(v)\neq 0.
+\]
+So the integrator is not a ceremonial zero-maker. It reads zero on the variation
+that changes nothing and reads a nonzero deviation when the action actually
+changes. The ledger can therefore distinguish stationarity from a kick, not by
+asserting the distinction in prose, but by receiving the finite number the
+instrument returns.
+
+The residual also has an internal shape. It is not a single opaque discrepancy.
+The coupled cubic difference decomposes into three pieces: the left middle
+Euler-Lagrange residual, the right middle Euler-Lagrange residual, and the
+mixed cubic self-coupling:
+\[
+  \Delta S(v)
+  =
+  R_{\mathrm{L}}(v_{\mathrm{L}})
+  + R_{\mathrm{R}}(v_{\mathrm{R}})
+  + C_{\mathrm{mixed}}(v).
+\]
+The two middle residuals are the discrete Euler-Lagrange equations on the two
+sides of the middle. The mixed term is the cubic self-coupling that makes the
+two-sided action more than a pair of independent one-sided balances. Thus the
+gauge equation \(\Delta S(v)=0\) says that these two middle residuals and the
+mixed coupling cancel as one finite reading. If the sum vanishes, the integrator
+reads stationarity. If it does not, the same decomposition tells the apparatus
+where the finite imbalance lives.
+
+The concrete run gives the instrument its bite. On the flat path with the
+discriminating action, the unchanged variation reads \(0\). Kick one middle
+node to a different constructor tag and two adjacent edge costs change; the
+integrator reads \(2\). The point is not the particular numeral by itself, but
+the fact that the same apparatus produces both readings under controlled
+conditions:
+\[
+  \mathrm{reading}(\mathrm{unchanged})=0,
+  \qquad
+  \mathrm{reading}(\mathrm{kicked})=2.
+\]
+Zero is stationarity made visible. Two is deviation made visible. Both are
+finite ledger entries produced by the same reader.
+
+The ceiling remains explicit. This is a finite, discrete gauge /
+Euler-Lagrange equation for a cubic-coupled action. It is not continuum
+Yang--Mills; the residual tower's limit remains an unbuilt door. It is not a
+mass gap; finite coercivity and finite well-posedness are not a statement about
+a continuum spectrum. It is not a derivation of a standard gauge group, and it
+does not supply dynamics for color, flavor, or phase decorations. Those labels
+remain inert at this stage. The apparatus has built a reader for one finite
+residual, not a completed continuum physics.
 
 The section's metaphysical anchor is that an equation becomes physical when an
-instrument reads it. The discrete gauge equation is not a law imposed on the world; it
-is the integrator's reading set to zero. The apparatus tanges a variation into a
-residual and funges that residual to its integrator, where stationarity reads as a
-physical record and deviation reads as a measured number. The crank turns, the
-instrument bites, and the gauge equation of the finite world is exactly what the
-apparatus reads when it asks whether the action holds still.
+instrument reads it. Stationarity is the integrator's zero reading. Deviation
+is its nonzero finite reading. The apparatus tanges a variation into the action,
+funges the resulting residual to the integrator, and records what comes back.
+The discrete gauge equation is therefore not a slogan beside the ledger; it is
+the condition under which the ledger receives zero from the instrument. The
+crank turns, the reader answers, and the finite world has a gauge equation
+exactly where an apparatus can read stationarity and deviation apart.
 
 \section*{Bridge: The Record Leans on Unbuilt Doors}
 
@@ -459,79 +888,218 @@ recorded one apparatus-relative fact, and built an integrator whose stationary
 readings are physical records. The instrument works. But the record it produced still
 leans on promises the apparatus has named and not yet kept.
 
-Two doors in particular bear weight the record cannot yet support. The first is the
-limit of the residual tower. The earlier chapters drove residual magnitude below any
-bound along a refinement, but the existence of the limit those refinements approach
-was always stated as a promise, an analytic shortcut the apparatus borrowed rather
-than built. The second is the completion door of Chapter 9, where the square-root norm
-was fitted with a frame and the metric closure into a full geometry was marked as a
-slot for a later import. The first record rests on both: it speaks of energies and
-detectors as though the limit and the completion were in hand, when they are only
-promised.
+That is the right stopping point for this chapter. It should not rush forward and
+pretend that the doors are already open. A bridge has a narrower job: it keeps the
+record honest while carrying the reader to the next construction. The present record
+has earned more than a metaphor. It has a configured kernel, a grounded carrier, a
+relative physical fact, and an integrator that reads zero and nonzero apart. Those
+pieces give the book its first apparatus-relative line. Yet the same line also shows
+where the finite apparatus is still leaning on language that has not been cashed out
+as a carried object. The bridge names those lean-points without solving them in
+advance.
 
-A finite apparatus should not let its records lean on borrowed existence. A promise
-that a limit exists, or that a space completes, is exactly the kind of analytic
-shortcut the book has refused everywhere else --- a claim about an object the apparatus
-has not produced. If the record is to stand, the promises beneath it must be replaced
-by constructions: not an assurance that a boundary witness exists, but a boundary
-witness the apparatus builds and holds; not a completion imported from analysis, but a
-finite artifact that does the completion's work where the record needs it.
+That dependence is not a defect in the record; it is the next thing the record
+forces into view. The kernel can carry the conserved scalar, but the Hilbert
+completion door in the kernel is still only a marked interface. The classification
+ladder can reach inference on the concrete carrier, but a record that speaks of a
+whole tower of refinements must still account for the tower rather than merely gesture
+toward it. The physical/metaphysical boundary can say what this apparatus realizes,
+but a later chapter must still show which boundary witnesses are actually produced.
+The ledger line can distinguish the anchored absence from the unanchored witness, but
+that distinction has to keep standing when the record is pressed against refinement.
+The integrator can read stationarity and deviation apart, but the residual tower whose
+limit gives that reading its stable name is still a door, not yet an artifact in hand.
 
-So the next chapter turns from borrowing to building. It replaces the tempting
-analytic shortcuts with produced boundary witnesses and finite artifacts: an eventual
-exactness that does the work classical limits were trusted to do, constructed artifacts
-that serve as boundary witnesses, and a produced tower with a finite uniqueness the
-apparatus can certify rather than assume. The question the apparatus carries forward is
-plain: which of the doors its first record leaned on can be built from finite material,
-and what exactly must be constructed to keep the record from resting on a promise?
+Two doors therefore carry nearly all the remaining weight. The first is the residual
+tower limit. Earlier chapters arranged refinements and drove residual magnitude down,
+but a finite apparatus cannot be satisfied by the phrase ``there is a limit'' unless
+it can say what produces the object approached and why the residual vanishes where the
+record needs it. A tower that merely promises convergence would leave the first
+physical record leaning on borrowed existence. The second is the completion door
+opened by the square-root reading. Chapter 9 fitted the finite energy certificate with
+the right doorframe for a richer metric geometry, but the full completion was marked
+as later work. The present chapter has used that door honestly: it knows where a
+completed geometry would attach, and it has not pretended to have crossed into one.
+
+The bridge, then, is not from failure to repair but from a successful finite record to
+the obligations that success creates. Once the apparatus has read a number, it can no
+longer hide behind an analytic promise. If a boundary witness is needed, the next step
+must exhibit a boundary witness the apparatus can hold. If a convergence claim is
+needed, the next step must give the quantifier order under which convergence is
+possible, not the convenient order under which it is false. If the residual is said to
+vanish along refinement, the next step must decide whether that means approximation
+toward zero or eventual exactness at zero. If the record depends on a tower, the next
+step must produce the tower and the certificate, not merely name the tower as if
+naming paid the debt.
+
+The order matters. The next chapter does not need to improve the record by adding a
+grander physical interpretation. It needs to remove borrowed support from beneath the
+record already written. The finite ledger does not ask for a larger vocabulary; it
+asks for witnesses. It does not ask for a completed continuum theory; it asks for the
+finite conditions under which the claims already made can be carried without debt. In
+particular, the tower question cannot be answered by a single universal stage, because
+the apparatus has only finite stages while the configurations to be captured continue
+beyond any one stage. The bridge therefore carries a negative instruction as well as a
+positive one: do not demand the impossible uniform capture, and do not call its
+failure a defect in the apparatus. The correct shape is more patient and more exact:
+each configuration gets a stage, and where the residual is captured, the reading
+vanishes outright.
+
+The next chapter answers those obligations in the constructive register. It replaces
+analytic shortcuts with finite witnesses and artifacts: eventual exactness in place of
+borrowed limit language; executable artifacts in place of assumed boundary objects;
+forced quantifier order in place of a uniform stage the counting forbids; the
+three-hole quotient and discriminating refusal in place of a vague universal
+stationarity claim; and a produced tower whose terminal reading has a uniqueness the
+apparatus can certify. These are not decorations added after the record. They are the
+supports the record has just exposed. Chapter 10 has shown that an instrument can
+write a first physical line. Chapter 11 asks what has to be constructed so that this
+line rests on finite witnesses rather than promises.
 
 \section*{Coda: The Lab That Reports Only What It Can Run}
 
 A clinical laboratory, handed a tube of blood and a requisition, performs the same
-discipline this chapter performed with kernels and ledgers. Watching the lab makes the
-chapter's hardest distinction --- between what exists and what an instrument can
-realize --- concrete, because a lab lives or dies by that distinction every day.
+discipline this chapter has assembled with kernels, boundaries, ledgers, and
+integrators. The lab is not a metaphor for a hidden mechanism. It is an ordinary place
+where the distinction between existence and realization is enforced with labels,
+benches, reagents, calibrated devices, and signed reports. A patient may have a
+substance in the blood. A test for that substance may be known in the world. Another
+institution may run it every day. None of that yet entitles this lab to print a
+number. The lab may report only what its own bench can assay, or what its own
+procedure can certify absent, failed, insufficient, or not performed. That discipline
+is the whole point. Measurement is not the act of naming what might be there. It is
+the act of returning what this instrument can read.
 
-A test can exist and the lab can still be unable to run it. The literature is full of
-assays: ways to measure an analyte that have been described, validated, and published.
-Existence in that sense is cheap. What is not cheap is realization. A given lab can
-return a number for an analyte only if it owns the assay --- the reagent, the
-calibrated instrument, the validated procedure --- that turns a tube of blood into a
-reading. An analyte whose assay the lab does not own is not measured there, however
-firmly it exists in the literature. The analyte is real; the instrument to read it,
-in this lab, is absent.
+Start with the requisition. It may ask for a complete panel, a trace analyte, and an
+unusual marker. The words on the order do not make all three equally measurable. The
+basic panel may be ordinary for the clinic: tubes routed to an analyzer, reagents in
+stock, calibration current, quality controls passed, reference ranges attached. The
+trace analyte may require a different instrument across town. The unusual marker may
+have a published assay but no validated local procedure. All three names can be
+meaningful. All three may concern real features of the specimen. Yet the lab owns
+only some assays. Ownership here is not legal title or pride of possession. It is the
+practical fact that the lab has the reagent, the instrument, the calibration, the
+protocol, the control run, and the authority to turn this specimen into a reading.
+Without that chain, the order remains an intention. With that chain, the order
+becomes a measurement.
 
-So the same analyte reads differently at different labs, and the difference is the
-lab's apparatus, not the blood. A reference laboratory with a mass spectrometer
-returns a concentration where a clinic with only a basic panel returns nothing --- not
-a different number, but no number at all, because the clinic has no instrument that
-realizes the measurement. Detectability is relative to the apparatus class. What is
-ordinary at the reference lab is, in the clinic, unrealizable; and a clinic that
-acquires the instrument tomorrow will realize tomorrow what it could not realize today.
-Metaphysical-relative-to-this-lab is never a verdict on the analyte alone. It is a
-verdict on the analyte together with the instruments on the bench.
+This is the realizability boundary in plain clothes. A fact can be physically
+available to one bench and unavailable to another because the benches are not the
+same apparatus. A reference lab with a mass spectrometer may return a concentration
+where a small clinic returns no number at all. The clinic's silence is not ignorance
+about whether chemistry exists. It is the exact record of an apparatus boundary: this
+bench does not realize that reading. If the clinic later buys the instrument,
+validates the method, and passes the controls, tomorrow's report may contain the
+number that today's report refuses to invent. Nothing mystical has changed in the
+analyte. The apparatus class has changed, and the ledger changes with it.
 
-The report the lab returns obeys the ledger's strict rule. It records the results the
-lab actually measured, each a realized value. For everything else it writes a
-certificate, not a value: ``below detection limit,'' ``test not performed,''
-``specimen insufficient.'' It never enters a concentration the instrument did not
-read. The report holds measured values and certified absences, and nothing that merely
-might be present. A clinician reading the report knows that every number was realized by
-an assay and every blank carries a reason --- exactly the discipline of a ledger that
-holds the physical and certifies the metaphysical, and writes no quantity it could not
-measure.
+The same blood can therefore generate different reports without contradiction. One
+lab may write ``detected,'' another may write ``not performed,'' and a third may
+write ``below detection limit.'' These are not three free-floating truths about the
+blood alone. They are verdicts of three instruments, or three benches, or three
+procedures. The first lab owns an assay whose signal rose above its threshold. The
+second owns no relevant assay for that order. The third owns an assay but its
+validated sensitivity did not reach a positive reading. A sloppy report would blur
+these cases together. A disciplined report keeps them apart. It says which value was
+measured, which absence was certified, and which request lay outside the bench.
 
-And every line of the report is bound to the lab that produced it. A result carries
-its method, its instrument, its reference range; move the specimen to another lab with
-another assay and the report may change, because the report was never a fact about the
-blood alone but a fact about the blood read through this instrument. That is the
-apparatus-relative record exactly: a verdict bound to the instrument that took it,
-true relative to one bench and possibly silent relative to another.
+That is why a laboratory report is a ledger rather than a wish list. Each printed
+number is accompanied by its method, units, range, and often a flag. Each blank or
+refusal carries its own kind of certificate: specimen insufficient, quantity not
+sufficient, hemolysis invalidates the run, test not performed, analyte below the
+validated detection threshold. These phrases are not embarrassing footnotes. They are
+the report's honesty. They prevent the report from pretending that a desired value is
+a measured value. They also prevent absence from becoming vague. ``Not performed''
+does not mean ``zero.'' ``Below detection limit'' does not mean ``not present in the
+world.'' ``Specimen insufficient'' does not mean the marker lacks meaning. Each
+phrase says how the instrument failed to produce a positive value, or what kind of
+absence this instrument can certify.
 
-The lab does not pretend, and neither does the apparatus. It runs the assays it owns,
-reports the values it realizes, certifies the absences it can prove, and refuses to
-enter a number for a test it cannot run. The kernel is the bench fully equipped; the
-realizability boundary is the line between assays owned and assays merely published;
-the ledger is the report; and the first record --- present without the anchor, absent
-with it --- is the lab's first finding: one analyte, detected on one instrument and
-certified absent on another, with the difference written plainly as the instrument's.
+The chapter's first physical record has the same shape. One apparatus reads a
+witness; another certifies absence under its own boundary. The unanchored instrument
+can realize a constant null mode. The anchored instrument cannot. The point is not
+that the world changed between the two readings, any more than the blood changes
+because it moves from the clinic to the reference lab. The point is that the
+instrument changed. The unanchored bench owns the assay for that witness. The
+anchored bench owns an assay that rules it out. The ledger is allowed to write both
+lines because each line names the bench that produced it. Physical here means
+realized by this apparatus. Metaphysical here means not realized by this apparatus,
+with a certificate of why.
+
+The integrator adds another line to the same laboratory discipline. It is the lab's
+reader for a change in action. When the unchanged run is fed through the procedure,
+the report returns \(0\). When the kicked run is fed through the same procedure, the
+report returns \(2\). The numbers matter because they are not annotations placed
+beside the specimen. They are outputs of the owned assay. The same reader that can
+certify stationarity can also detect deviation. In a careless report, zero might be a
+placeholder, and two might be an example. In this chapter's ledger, zero and two are
+both assay results: one says no change was read under the permitted variation, the
+other says the kick crossed the instrument's finite reader.
+
+The coda's lab therefore gathers the chapter without adding a new construction. The
+kernel is the equipped bench: the finite place where samples, labels, and procedures
+can be arranged. The classification ladder is the lab's routing system: what kind of
+sample is this, what kind of order was placed, what kind of assay would answer it,
+what kind of report may be issued? The apparatus-relative physical/metaphysical
+boundary is the line between assays the lab can run and assays it cannot run, between
+values it can return and values it must refuse. The first ledger line is the signed
+report. The integrator is one particular assay on that bench: it measures whether a
+permitted variation leaves the action stationary or changes it.
+
+The report also preserves the difference between measured absence and missing
+capacity. Suppose the lab runs an assay and the signal falls below the validated
+threshold. That is a real certificate: under this method and this sensitivity, no
+positive value was detected. Suppose instead the lab never had the assay. That is not
+the same certificate. It is a boundary note: the bench could not ask that question.
+The finite apparatus needs both forms of discipline. Sometimes it proves absence
+inside its own class, as the anchored instrument does for the null mode. Sometimes it
+marks a door as unbuilt, as the bridge did for the residual tower limit and the
+completion door. A good report does not confuse those two. It does not call every
+unrun test negative, and it does not call every desired test measured.
+
+This is also why the report must refuse invented readings. A clinician may want a
+number because a treatment decision would be easier with one. A researcher may know
+that some sophisticated lab elsewhere could produce it. The patient may ask whether
+the marker is present. Still the local report cannot fill the box by sympathy. It
+can send the specimen out, request a different assay, or state the limitation. It
+cannot write a concentration it did not read. Likewise, the finite apparatus cannot
+write a continuum conclusion because the finite record would be easier to interpret
+with one. It cannot claim a mass gap, a completed geometry, a standard gauge group,
+or a universal tower merely because those words would make the report sound grander.
+It writes what its assay returns.
+
+The emotional force of the chapter lies in that refusal. Restraint is not a lack of
+ambition. It is how the first record becomes trustworthy. The report is useful
+because it is narrower than desire. It tells the clinician what was actually run,
+what was actually detected, what was certified absent, and where the bench stopped.
+The apparatus does the same for the book. It does not speak from nowhere. It signs
+each line with the instrument that produced it. A fact becomes a record only when the
+instrument has carried the fact into a form the ledger can hold. A desired reading
+that has not passed through an instrument remains outside the report.
+
+One can now hear the whole chapter as a laboratory report. Sample received: a finite
+world with a carrier, a kernel, and permitted readings. Assays available: class
+ladder, boundary anchor, ledger line, action-change reader. Result one: a constant
+null mode is realized by the unanchored apparatus. Result two: the anchored
+apparatus certifies the corresponding absence. Result three: the unchanged variation
+reads \(0\). Result four: the kicked variation reads \(2\). Limitations: residual
+tower limit not yet carried as a produced artifact; completion door marked but not
+crossed; no continuum physics claimed. This is not an apology at the bottom of the
+page. It is the report's integrity.
+
+The lab closes its file by signing the report, not by explaining the next department.
+Chapter 10 closes the same way. It has not solved every later obligation, and it
+does not need to pretend otherwise. It has shown how an apparatus draws a boundary
+between realizable and unrealizable, how a ledger records that boundary, and how an
+integrator adds a zero-or-nonzero assay to the record. The next work will have to
+construct the witnesses that remove the remaining borrowed support. This chapter's
+work is more primitive and more decisive: it teaches the book not to print what the
+bench did not run.
+
+So the final rule is simple. Run the assay you own. Report the value it returns.
+Certify the absence you can certify. Mark the test you cannot perform. Refuse the
+number you did not read. That is the laboratory discipline, and it is the discipline
+of the first physical record. The finite world does not become physical by being
+named in advance. It becomes physical where an instrument can read it, where the
+ledger can record it, and where the report is honest enough to leave every unrun
+test blank.

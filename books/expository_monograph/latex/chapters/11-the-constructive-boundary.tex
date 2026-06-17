@@ -78,486 +78,1066 @@ apparatus could only assume, it now builds.
 
 \section{Eventual Exactness instead of Classical Weierstrass}
 
-The convergence the earlier chapters invoked may seem to be waiting
-for a theorem from real analysis to arrive and justify it --- a density result, a
-completeness, a uniform bound. This section reports that no such theorem is coming,
-because the apparatus never built the world in which it would be needed. Its
-convergence is order-theoretic, and it is stronger than the analytic convergence it
-seemed to defer to.
+The convergence the earlier chapters invoked looks, at first, as if it is waiting
+for a theorem from real analysis: a density result, a completeness theorem, a
+sup-norm estimate that allows the finite apparatus to borrow a limit. That is the
+tempting door. This section closes it. The apparatus does not need to enter a real
+line it has not built, and it does not need to pretend that a continuum norm has been
+quietly waiting behind the finite record. The convergence needed here has a smaller
+and sharper form. It is an order statement inside a scale the apparatus already
+carries.
 
-Look at what the apparatus actually carries when it speaks of smallness. It carries
-a scale: a type of magnitudes, a zero, an order relating them, and a predicate
-naming which magnitudes count as admissible tolerances. That is all. There is no
-field of real numbers in it, no completeness axiom, no supremum. So the statement
-``the residual tends to zero'' cannot mean what it means in analysis. It means
-something the scale can actually express: for every admissible tolerance, the
-sequence is eventually below it,
+The scale has only four pieces. It has a type of magnitudes. It has a distinguished
+zero. It has an order, so one magnitude can be below another. And it has a predicate
+that says which magnitudes count as admissible tolerances. That is the whole
+structure. There is no completeness, no supremum, no hidden field, and no ambient
+metric space. When the apparatus says that a residual tends to zero in such a scale,
+it can mean only this: for every admissible tolerance, there is a stage after which
+all later residual magnitudes lie below that tolerance,
 \[
-  \text{tends to zero}
-  \quad\Longleftrightarrow\quad
-  \forall\,\text{tolerance } \tau,\ \exists\, N,\ \forall\, n \ge N,\ \text{seq}(n) \le \tau.
+  \forall\,\tau\ \text{admissible},\ \exists\,N,\ \forall\,n\ge N,\quad
+  r_n \le \tau .
 \]
-This is an order fact, provable in any scale whose tolerances dominate zero. It needs
-no analysis because it makes no analytic claim.
+This is not a weakened analytic theorem. It is the exact language the finite record
+has earned.
 
-The convergence the framework achieves is in fact sharper than this, and the sharper
-form is the section's real content. The residual does not merely shrink below every
-tolerance; once a refinement captures a configuration, the residual on that
-configuration is exactly zero. Capture is not approximation. The earlier chapters
-proved that a supported configuration has terminal residual zero, so along a
-refinement that eventually supports a configuration, the residual there is zero from
-some stage on:
+The key strengthening is eventual zero. A sequence may approach zero forever without
+ever becoming zero; that is the picture suggested by ordinary analytic
+approximation. The constructive boundary asks for something stricter. A residual
+sequence is eventually zero when there is a stage after which every later residual is
+equal to the scale's zero,
 \[
-  \exists\, N,\ \forall\, n \ge N,\ \text{residual}(n) = 0.
+  \exists\,N,\ \forall\,n\ge N,\quad r_n = 0 .
 \]
-A sequence that is eventually zero tends to zero in any reasonable scale, trivially.
-So the apparatus's convergence is \emph{eventual exactness}: not a sequence creeping
-toward a limit it never reaches, but a sequence that arrives at zero and stays. This
-is strictly stronger than the epsilon-approximation that ``Weierstrass'' would have
-supplied, and it is exactly what the spline-sufficiency of the earlier chapters
-means in the finite world.
+If zero lies below every admissible tolerance, then eventual zero immediately gives
+tending to zero. After the zero stage, each residual is exactly zero; zero is below
+the tolerance; transitivity is enough. No density theorem is being smuggled in. The
+argument is order-theoretic from end to end.
 
-So ``bringing in Weierstrass'' is an instantiation, not a cathedral. The apparatus
-does not enter real analysis to borrow a density theorem; it exhibits a genuinely
-nontrivial scale --- the counting numbers with their honest order, not a one-point
-toy --- in which the order-theoretic convergence holds, and it runs a concrete
-sequence through it to show the machinery turns. The analytic bound that seemed to be
-deferred is replaced by a combinatorial fact: refinement runs out of distinguishable
-configurations to leave unsupported, so every configuration's residual is eventually
-zero, hence tends to zero. The convergence is discharged from counting, with nothing
-assumed.
+This is the chapter's replacement for the old Weierstrass-shaped promise. The finite
+record does not claim that residuals become arbitrarily small because an analytic
+space has a dense family of approximants. It claims that, once a configuration is
+captured by the refinement, the terminal residual for that configuration is exactly
+zero. Capture is therefore not approximation. It is arrival. The residual does not
+creep toward the target; the apparatus reaches a stage where the target residual is
+gone, and all later stages keep it gone.
 
-The section's honesty about its own scope is part of its content. This is the
-framework's order-theoretic Weierstrass --- eventual exactness via exhaustion --- and
-it is not classical sup-norm density over the real line, because the framework never
-instantiated the real line. The strong analytic statement lives behind the
-square-root door of the previous chapter, marked and shut. What the apparatus claims
-here is the finite thing it can prove: a residual that becomes exactly zero on every
-captured configuration, in a scale it actually carries.
+The natural-number scale is the simple witness that this is not a one-point trick.
+Magnitudes can be ordinary natural numbers, zero can be \(0\), the order can be the
+usual order, and every natural number can serve as a tolerance. In that scale, the
+sample residual that reads \(1\) at the first stage and \(0\) thereafter is already
+the whole story in miniature. It is eventually zero from stage \(1\), so it tends to
+zero in the scale. The example is small on purpose. It shows that the apparatus can
+run a nontrivial scale, a nonconstant residual, and the eventual-zero argument
+without asking for a continuum object.
 
-The section's metaphysical anchor is that exactness is humbler and stronger than
-approximation. To approximate is to promise endlessly to do better; to be eventually
-exact is to arrive and stop. The apparatus tanges each configuration into a residual
-and funges the refinement forward until the residual on that configuration is not
-small but gone. It does not chase a limit through a continuum it has not built. It
-exhausts a finite field and reports the zero it reaches --- a convergence that owes
-analysis nothing because it never left the order it was given.
+The terminal-residual tower uses the same pattern. Under the explicit exhaustion
+hypothesis, each variation's slip is eventually present in the support of the
+refinement stage. Once it is present, the carried trace solves the terminal residual
+on that variation, so the terminal residual is \(0\). Therefore the sequence of
+terminal residual magnitudes over the natural-number scale is eventually zero, and
+therefore tends to zero. The old assumed bound is replaced by a finite obligation:
+show that the tower eventually supports the variation in question. Where exhaustion
+holds, convergence follows because exactness eventually holds.
+
+The hypothesis matters. This section does not yet produce the concrete exhausting
+tower. It names the order in which that later construction must pay the debt. Given
+a tower that exhausts the relevant configurations, the residual convergence is no
+longer a borrowed analytic certificate. It is discharged by the fact that supported
+configurations have terminal residual zero. The later sections still have to produce
+the tower and show where the exhaustion succeeds. This section fixes the target:
+produce support, and the convergence claim becomes eventual exactness.
+
+The scope is therefore honest and narrow. This is not classical real-line
+sup-norm density. It is not a claim that every analytic approximation problem has
+been solved by counting. It is the order-theoretic convergence appropriate to this
+finite apparatus: magnitudes, zero, order, tolerances, and a residual that becomes
+zero once refinement captures what it must carry. The square-root and completion
+doors remain doors. The apparatus has not crossed them. It has only removed one
+false dependency by noticing that the first physical record did not need that door
+to make its convergence precise.
+
+The section's anchor is that exactness is humbler and stronger than approximation.
+Approximation promises to improve without necessarily arriving. Eventual exactness
+arrives and then stops spending language. The apparatus does not chase a limit
+through a space it has not built. It states the scale it owns, names the exhaustion
+it still owes, and records the consequence: once support is reached, the terminal
+residual is not small but zero.
 
 \section{Constructed Artifacts as Boundary Witnesses}
 
-The constructive boundary should not be a matter of the apparatus's good intentions.
-It should be something the apparatus can certify, mechanically, about any
-construction it offers. This section gives the certification and then uses it: a
-construction earns the word constructive by running, and the single decision that
-cannot be run is isolated so that everything else may be cleared.
+The constructive boundary should not be a matter of the apparatus's good
+intentions. It should be a boundary the apparatus can certify in public, by the
+same finite discipline it applies to its records. A claim that the apparatus is
+constructive is cheap if it is only a label on a paragraph. The claim becomes
+serious when the apparatus exhibits the thing, sends it through its carried
+operations, and receives a definite reading back. The boundary is then no longer
+a mood or a slogan. It is a line drawn by artifacts that have actually been
+produced.
 
-The certificate is execution. A construction that the apparatus can actually run ---
-feeding it finite inputs and reading a definite value off the end --- cannot have
-used a non-constructive choice along the way, because a non-constructive choice has
-nothing to run. So a successful run is itself a proof of constructiveness. When the
-apparatus turns the crank of its integrator and a number comes out, that number
-certifies more than its own value: it certifies that the entire path behind it ---
-the carrier, the comparison, the residual, the difference --- is built from finite,
-executable material. The apparatus reads its integrator and gets zero on the
-unchanged path and a definite nonzero value on a kicked one, and those readings
-double as certificates that nothing non-constructive was consumed to produce them.
+The first certificate is execution. A finite construction that can be run on
+finite inputs and returns a definite value has already passed a severe test: the
+path from input to reading did not require an invisible choice. If such a choice
+had been needed, there would be a gap where the apparatus should have carried an
+operation. Instead the apparatus puts its construction on the bench, turns the
+handle it owns, and reads what comes out. The reading is not merely a numerical
+answer. It is evidence about the route that produced the answer. The route has a
+carrier, comparisons, residuals, and gauges, and the successful reading says that
+these pieces are not borrowed from an existence claim hidden upstream.
 
-There is exactly one decision in the whole development that cannot be run this way,
-and the apparatus isolates it rather than hiding it. At the very top of the ladder of
-classifications sits a single classical choice --- the one place where the apparatus
-must decide a distinction it cannot compute, the needle it sits in rather than
-derives. Here the needle keeps the Chapter 1 sense: the exposed yes-or-no edge
-of a finite decision. Every rung below that one is executable and certified by running; the one
-classical decision is named, located, and quarantined at its single rung. The
-apparatus does not pretend the choice away, and it does not let the choice leak
-downward. It draws the constructive boundary at one point and certifies everything
-beneath it.
+The residual example is deliberately small because a boundary witness should be
+inspectable. At the first stage the residual reads \(1\). Later, once the
+support has been captured, the same residual reads \(0\). Nothing in that story
+asks the reader to imagine a completed continuum or a hidden limiting object. The
+apparatus shows a finite scale, a residual attached to that scale, and two
+readings with different meanings. The first reading says: not yet. The later
+reading says: captured. This is the same eventual exactness from the preceding
+section, now viewed not as a formal convergence shape but as a produced artifact.
+The apparatus owns the residual well enough to evaluate it before and after the
+capture point.
 
-This turns construction into the apparatus's standard form of evidence. Where
-analysis would assert that an object exists and leave the existence unwitnessed, the
-apparatus exhibits the object and runs it. A boundary witness, in this sense, is not
-a proof that a witness exists; it is the witness, built and executable. The earlier
-chapters' completed tower carried its convergence as assumed data, a certificate sitting
-in a hypothesis wearing the hat of a fact. The honest replacement is a constructor:
-the apparatus builds the instance and proves the convergence from the combinatorics,
-so that nothing in the produced object is assumed. An assumed certificate discharges
-nothing --- it merely relabels the assumption. A produced certificate is the work
-actually done.
+The example also fixes the order of explanation. The apparatus does not first
+declare that some residual must exist and then search for a reassuring picture.
+It begins with the finite rule that produces the residual, applies the rule at a
+particular stage, and receives the value \(1\). It applies the same rule later
+and receives \(0\). The claim is therefore not suspended over the artifact; it
+is read from it. This matters because the surrounding chapter is about the
+difference between eventual exactness and mere approximation. The residual
+example lets the apparatus say, without analytic ornament, what it means to
+arrive: the carried quantity has become zero, and the apparatus can point to the
+stage at which the reading changes.
 
-The discipline cuts against a habit the book has resisted throughout. It is always
-easier to write ``such an object exists'' than to build one, and the existence claim
-often reads as if it were the same achievement. It is not. An existence claim with no
-construction behind it is a promise; a construction is a payment. The constructive
-boundary is the line between the two, and the apparatus insists on standing on the
-paying side wherever the record bears weight. The few places it cannot --- the one
-classical needle, the analytic doors marked and shut --- it names exactly, so that the
-record shows precisely how much is built and how little is borrowed.
+The gauge readings give the same certificate in the language of the first
+physical record. On the identity path, the gauge reads \(0\). On a kicked path,
+where the apparatus deliberately displaces the comparison, the gauge reads \(2\).
+The pair of readings matters because it prevents the certificate from becoming a
+vacant success. A gauge that always returned the same value would not tell the
+record much. Here the unchanged path and the displaced path separate. The zero
+reading is not an inability to see; it is the value appropriate to identity. The
+nonzero reading is not a later charge or orientation claim; it is only the
+finite sign that the apparatus can distinguish the kicked comparison from the
+unchanged one. These two numbers are enough for this section. They certify that
+the gauge path is executable and nontrivial, without asking Chapter 11 to spend
+claims that belong to later geometry.
 
-The section's metaphysical anchor is that to build is to witness. An apparatus that
-can run its construction has, in the running, certified the construction; an
-apparatus that can only assert existence has proved nothing it could not have wished.
-The apparatus tanges each claim into a construction and funges the construction
-through its own carried operation, where the result certifies what no assertion could. The
-boundary between the constructive and the assumed is not a philosophical preference
-here. It is a carried boundary: a line the apparatus can point to, certify by operation,
-and isolate to a single decision when it cannot cross it.
+So the first boundary witness is not a theorem saying that a witness exists. It
+is the witness doing work. The apparatus can point to the sample residual and
+say: at this stage it reads \(1\), and at a later stage it reads \(0\). It can
+point to the gauge and say: on identity it reads \(0\), and on the kicked
+comparison it reads \(2\). The reader is not asked to accept a certificate
+detached from its object. The object carries the certificate by being run. This
+is the standard of evidence the chapter now imposes on its constructive claims.
+
+That standard also explains why an assumed certificate is still a debt. An
+assumption may have the right shape. It may state exactly the convergence or
+support condition one wishes to use. It may even look indistinguishable, on the
+page, from the conclusion one hopes to earn. But if the certificate has not been
+produced by the apparatus, it remains outside the record. It is a promissory
+note, not a paid bill. A produced artifact is different. It is not a sentence
+asserting that support is eventually reached; it is the finite construction from
+which the terminal residual becomes zero. It is not a sentence asserting that a
+gauge is constructive; it is the gauge returning \(0\) and \(2\) in the two
+tests just described.
+
+This distinction is easy to blur, so the book names it plainly. To assume a
+certificate is to move the burden elsewhere. To construct the artifact is to
+pay the burden inside the apparatus. The first move may be legitimate as a
+temporary scaffold; many earlier passages used scaffolds while the architecture
+was still being exposed. But the scaffold is not the finished wall. The
+constructive boundary is crossed only when the apparatus replaces a certificate
+it had been handed with a certificate it can produce. The residual and gauge
+examples show the replacement in miniature. They are not decorative examples.
+They are the local grammar of payment.
+
+The same discipline governs the completed tower promised by the preceding
+section. A tower equipped with an assumed convergence certificate may be useful
+as a temporary model, but it does not yet settle the constructive boundary. It
+has a certificate in its pocket, not a certificate earned from its own finite
+parts. The apparatus must instead produce the tower, expose the support
+condition, and derive the terminal residual from that exposure. Only then can
+the convergence claim belong to the object rather than to the surrounding
+assumption. The residual \(1\) followed by \(0\) is the small version of that
+larger obligation: the artifact must carry the transition from not-yet to
+captured by its own finite rule.
+
+The second certificate is a dependency audit. Execution says that a particular
+artifact can run. The audit says where the classical boundary sits in the larger
+classification ladder. Without the audit, the apparatus would know that some
+readings came back, but it would not know whether a non-constructive decision
+had entered through a side door of the proofs surrounding those readings. The
+audit follows the carried dependencies and separates the rungs. The constructive
+rungs clear: the counting rungs, the numeric rung, the comparable rung, and the
+gauge reading do not require the classical decision. The one classical decision
+appears only at the inferred top rung.
+
+That is the narrowness the chapter needs. There is exactly one named classical
+needle in this part of the development, not a fog of classical contamination.
+Here the needle keeps the Chapter 1 sense: the exposed yes-or-no edge of a finite
+decision. The apparatus does not pretend that the needle is constructive. It
+does not dissolve the decision into prose. It also does not let the needle stain
+everything below it. The audit names where the decision is used and, just as
+importantly, where it is not used. The lower rungs remain constructive artifacts.
+The top inferred rung carries the classical edge.
+
+This is why the boundary is sharper than a disclaimer. A disclaimer would say,
+somewhere, that a classical ingredient appears. The audit says where. It records
+that the constructive base and the gauge reading are clean, while the inferred
+top rung is not. The difference matters because Chapter 11 is trying to keep the
+apparatus honest without making it timid. If one classical decision appeared
+anywhere, and the book treated that as contamination everywhere, then the
+finite work below the decision would be erased. If the book ignored the decision,
+then the classical edge would be hidden. The audit permits neither mistake. It
+keeps the built part built and the borrowed part named.
+
+The audit also prevents a second overcorrection. Once a classical needle has
+been named, one might be tempted to treat every later reading as suspect. That
+would be a different kind of inaccuracy. The identity gauge reading \(0\), the
+kicked gauge reading \(2\), and the residual readings \(1\) and \(0\) do not
+inherit the top-rung decision merely because they live in the same chapter. They
+belong to the constructive base, and the audit records that fact. The apparatus
+therefore does not choose between naive purity and wholesale suspicion. It keeps
+an account. Clean rungs stay clean; the inferred rung stays marked.
+
+The two certificates therefore play different roles. Execution is local and
+positive: this artifact runs, and here are its readings. Dependency audit is
+structural and negative: this path does not draw on the classical decision, and
+that top rung does. Together they turn the constructive boundary into a carried
+feature of the apparatus. The boundary is not guessed from the style of a proof
+and not granted by a phrase such as ``explicit construction.'' It is witnessed by
+finite readings and by a ledger of dependencies. The apparatus both produces
+the artifact and accounts for what the artifact depends on.
+
+The result is a disciplined form of humility. The apparatus does not say that
+all classical reasoning has vanished. It says that, in this finite development,
+the constructive material reaches through the residual, the gauge, and the
+lower classification rungs, while one inferred top rung remains classical. That
+is a much smaller and more useful statement than a global purity claim. It is
+also stronger than a vague warning, because it comes with artifacts. The sample
+residual reads \(1\) and then \(0\). The identity gauge reads \(0\). The kicked
+gauge reads \(2\). The audit leaves one named needle at the top. The record can
+now say exactly what it has constructed and exactly what it has merely isolated.
+
+This is the section's metaphysical anchor: to construct is to witness. A constructed
+artifact is not an illustration of a witness somewhere else. It is the witness
+under the apparatus's own operations. An assumed certificate may guide the
+search for such an artifact, but it cannot replace the artifact without leaving
+the work unpaid. The boundary between the constructive and the assumed is
+therefore not a philosophical preference here. It is a carried boundary: a line
+the apparatus can point to, certify by operation, audit by dependency, and
+isolate to a single decision when it cannot cross it.
 
 \section{The Forced Quantifier}
 
-The convergence claim of the first section has a quantifier order, and that order might
-look like a stylistic choice the apparatus made for convenience. It is
-not. The order is forced by counting, and the forcing is a pigeonhole argument the
-apparatus can prove. This short section files the proof, because the shape of the
-convergence claim is exactly what later constructions must respect.
+The convergence claim of the first section has a quantifier order, and that order
+might look like a stylistic choice the apparatus made for convenience. It is not.
+Counting forces the order before any later construction begins. The true claim is
+per-configuration, or per slip: for each slip there is some stage after which that
+slip is supported. The false strengthening reverses the order and asks for one
+stage that supports all slips at once. That reversal is not merely too ambitious.
+It is incompatible with finite support.
 
-The convergence says: for every configuration there is a stage from which the
-configuration is supported. One might hope for the stronger and tidier statement:
-there is a single stage that supports every configuration at once. The hope is
-provably empty. Set the counting out plainly. The configurations the apparatus must
-eventually capture are infinitely many. Each refinement stage is one finite list. A
-finite list cannot contain an infinite family, so every stage misses some
-configuration:
+The distinction is small enough to hide in grammar, so the apparatus writes both
+forms plainly. The true form says:
 \[
-  \text{for every finite stage } L,\quad
-  \exists\ \text{configuration } c,\quad c \notin L.
+  \forall\ \text{slip } s,\ \exists\ \text{stage } N,\ \forall\, n \ge N,\quad
+  s \text{ is supported at } n .
 \]
-This is the pigeonhole in its escape form --- more pigeons than holes, so some pigeon
-stands outside --- and the apparatus makes it concrete. It builds an infinite family
-of configurations by iterating a skeleton constructor, and it carries a depth measure
-that reads the iteration count back off each configuration. Because the depth measure
-separates the iterates, the family is genuinely infinite; and because the depth is
-unbounded along the family, the escape witness is computable: given any finite list,
-take the iterate one deeper than anything the list holds. That iterate is not in the
-list, by construction.
+The false uniform form says:
+\[
+  \exists\ \text{stage } N,\ \forall\ \text{slip } s,\ \forall\, n \ge N,\quad
+  s \text{ is supported at } n .
+\]
+The first lets the supporting stage depend on the slip. The second demands a
+single finite stage from which the whole infinite family is already captured. The
+apparatus is allowed to promise the first only if it later gives the promised
+stage slip by slip. It is not allowed to smuggle in the second because the second
+is tidier.
 
-The consequence is immediate and decisive. No single stage supports every
-configuration, so the uniform statement is false for any tower whatsoever:
-\[
-  \neg\,\big(\exists\ \text{stage } N,\ \forall\ \text{configuration } c,\ c \text{ supported at } N\big).
-\]
-The only true form is the per-configuration one:
-\[
-  \forall\ \text{configuration } c,\ \exists\ \text{stage } N,\ \forall\, n \ge N,\ c \text{ supported at } n.
-\]
-The quantifiers must come in that order. The apparatus does not support everything by
-some stage and then read off each configuration; it supports each configuration by
-its own stage, and the stage depends on the configuration. A construction that later
-tries to exhaust the family must therefore supply, for each configuration, a stage
-computed from that configuration --- which is exactly what the produced tower of the
-fifth section will do.
+This is the place where a harmless-looking swap would change the theorem. If the
+stage comes after the slip, the apparatus may inspect the slip and answer with a
+stage suited to it. If the stage comes before the slip, the apparatus has to
+answer all possible slips without seeing which one is being asked about. The
+finite record cannot do that. A stage is not a completed universe of support; it
+is one finite support list. The quantifier order records that limitation instead
+of hiding it behind a smoother sentence.
 
-The section's metaphysical anchor is that counting dictates form before any
-construction begins. The apparatus does not get to choose the convenient order of its
-convergence claim; the pigeonhole chooses it. A finite stage is a finite list of
-holes, the configurations are an unbounded flock of pigeons, and no list holds the
-flock. The apparatus tanges each configuration into its own supporting stage and
-funges the convergence forward one configuration at a time, because the only honest
-claim is the one the counting permits. The forced quantifier is not a weakness in the
-result; it is the result told in the only order that is true.
+Set the obstruction out without drama. Each stage support is a finite list. The
+family of slips is unbounded. A finite list can hold only finitely many entries,
+so some generated slip always stands outside it. The apparatus makes the escape
+explicit by fixing one skeletal move and iterating it. Start from the base slip,
+apply the one-step skeleton once, then again, then again. Along that spine, a
+depth reading counts how many one-steps have been stacked. Different depths give
+different slips, so the family does not fold back on itself. The point is not
+that the family is mysterious. The point is that it is generated by a completely
+finite recipe and still outruns every finite list.
+
+Now take any proposed stage support \(L\). Since \(L\) is a finite list, the
+apparatus can inspect the depths of the slips that \(L\) actually contains and
+find a maximum depth. Then it chooses the next iterate: one depth beyond that
+maximum. This is the escape witness. It is not selected by an existence fog and
+not guessed by an outside observer. It is computed from the list itself:
+\[
+  \text{escape}(L)
+  \quad=\quad
+  \text{the one-spine slip at depth } \max(\text{depths in }L)+1 .
+\]
+Every entry of \(L\) has depth at most the maximum. The escape slip has depth one
+larger. Therefore it is not in \(L\). This is the finite-list escape argument in
+its useful form: not a slogan about infinity, but a recipe for producing the
+missing slip from the finite list that was supposed to contain them all.
+
+The depth maximum is the important finite datum. The apparatus need not survey an
+infinite family to refute the list. It only surveys the list. Once the largest
+depth appearing there is known, the next depth is enough. This is why the escape
+is computable in the ordinary sense of the record: the witness is obtained by a
+bounded inspection of the proposed support, followed by one more step along the
+spine. The list itself tells the apparatus where to look outside it.
+
+The consequence is immediate. No finite stage supports every slip, so the uniform
+statement is false for any tower whatsoever:
+\[
+  \neg\,\big(\exists\ \text{stage } N,\ \forall\ \text{slip } s,\ 
+  s \text{ supported at } N\big).
+\]
+The only possible form is the per-slip one:
+\[
+  \forall\ \text{slip } s,\ \exists\ \text{stage } N,\ \forall\, n \ge N,\ 
+  s \text{ supported at } n .
+\]
+The quantifiers must come in that order. The apparatus does not first support
+everything and then read off each slip. It must support each slip by its own
+eventual stage, and that stage may depend on the slip. A later construction that
+claims exhaustion must therefore supply a stage for the given slip, not a magic
+stage for all slips at once.
+
+This section is only the negative half. It fixes the logical form and kills the
+uniform claim. It does not yet produce the positive tower, and it does not say which
+quotients make the later support finite enough to use. Those tasks belong to the
+next sections. What this section contributes is the rule those later sections must
+obey: the tower may be produced, but its promise must be local in the slip. The
+apparatus may answer any slip it is handed, eventually; it may not claim a single
+finite stage that answers them all.
+
+That negative result is useful, not merely prohibitive. It tells the later
+positive construction what shape its success must have. A produced tower should
+not be judged by whether it finds one universal final stage, because no such
+stage can exist with finite supports. It should be judged by whether every slip
+fed to it receives its own eventual support stage. The obstruction therefore
+guards the promise from inflation. It keeps the convergence claim exactly as
+strong as the finite apparatus can make true.
+
+The section's anchor is that counting dictates form before construction begins.
+The apparatus does not get to choose the convenient order of its convergence
+claim. A finite stage is a finite list, and the one-spine family has a depth
+beyond any such list. The forced quantifier is not a weakness in the result. It is
+the result stated in the only order that the finite record permits.
 
 \section{The Three-Hole Quotient and the Discriminating Refusal}
 
-The same counting that forbade a uniform stage hands back a uniform answer, if the
-apparatus asks the right question. The forbidding used that there are infinitely many
-configurations. The recovery uses that the residual does not see a configuration
-whole. It sees it only through a few cost readings, and those readings take finitely
-many values. This section extracts the positive pigeonhole from that observation, and
-then records, with equal care, an action for which even this recovery fails.
+The same counting that forbade a uniform stage hands back a uniform answer, if
+the apparatus asks the right question. The previous section showed that one
+finite support list cannot literally contain every slip. That is the negative
+half. The positive half begins by noticing that the residual does not inspect a
+slip whole. It sees only the cost data that enter the two segments around the
+middle node. If many slips are indistinguishable to those two cost readings, then
+they are the same as far as the residual is concerned.
 
-Start with what the residual can see. The residual at the middle node depends on the
-configuration only through two cost readings: the cost from the source to the
-configuration, and the cost from the configuration to the target. Nothing else of the
-configuration survives into the residual. So two configurations the cost cannot
-distinguish carry the same residual:
+Start with that kernel. The residual at the middle node depends on a candidate
+slip only through two readings: the cost from the left endpoint to the slip, and
+the cost from the slip to the right endpoint. Nothing else of the slip survives
+into the residual. So two slips the cost cannot distinguish carry the same
+residual:
 \[
-  \text{cost}(\text{source}, s) = \text{cost}(\text{source}, t)
+  \text{cost}(\text{left}, s) = \text{cost}(\text{left}, t)
   \ \text{ and }\
-  \text{cost}(s, \text{target}) = \text{cost}(t, \text{target})
+  \text{cost}(s, \text{right}) = \text{cost}(t, \text{right})
   \;\Longrightarrow\;
   \text{residual}(s) = \text{residual}(t).
 \]
-This congruence is the kernel of the whole section. The residual factors through the
-cost; configurations enter it only by their cost readings.
+This is the section's first move. It replaces literal support by quotient
+support. The apparatus need not carry every slip separately if the residual
+cannot tell some slips apart. It may carry one representative for each residual
+class, solve the representative, and transfer the zero across the class.
 
-Now suppose the cost itself reads a configuration through a finite tag --- finitely
-many distinguishable values, say three. Then the infinite family of configurations
-collapses, for the residual's purposes, to three representatives, one per tag, and
-solving the residual on the three solves it on every configuration that shares their
-tags:
+Now impose the finite tag that the earlier construction already uses. The tag has
+three possible values. A cost that factors through that tag reads a slip only by
+which of the three values it carries. For residual purposes, the infinite family
+therefore collapses into three holes. Choose one representative for tag \(0\),
+one representative for tag \(1\), and one representative for tag \(2\). If the
+residual vanishes on those three representatives, then it vanishes on every slip
+in the matching hole:
 \[
   \text{residual}(r_0) = \text{residual}(r_1) = \text{residual}(r_2) = 0
   \;\Longrightarrow\;
-  \text{residual}(c) = 0 \ \text{ for every configuration } c.
+  \text{residual}(s) = 0 \ \text{ for every slip } s.
 \]
-This is the positive pigeonhole. The uniform answer that the previous section proved
-impossible to reach literally --- one stage for all configurations --- is recovered up
-to the cost quotient: three holes, three representatives, and a congruence that
-transfers the zero from each representative to every configuration in its hole.
-However many configurations there are, and the previous section showed they cannot
-even be uniformly staged, there are three holes, and three solved representatives
-certify them all.
+The implication is not magic. Given any slip, look at its tag. Replace it by the
+representative with that same tag. Because the cost factors through tag, the slip
+and the representative have the same two cost readings around the middle node.
+The residual congruence above says their residuals are equal. Since the
+representative residual is zero, the slip residual is zero. The three
+representatives are not pretending to be all slips. They are enough only because
+the residual factors through the tag data.
 
-The recovery has a sharp limit, and the apparatus states it as a theorem rather than
-hiding it. Consider the most natural discriminating action: it charges nothing
-between configurations of the same tag and a unit between configurations of different
-tags. Over the three tags, the residual's dependence on the middle configuration runs
-through a map that takes values like \(\{0,2,2\}\) or \(\{1,1,2\}\) --- never constant
-across the three. So the residual cannot vanish on all three representatives at once:
+This is why the section speaks of holes rather than samples. A sample would be a
+guess that one observed case stands for many unobserved cases. A hole is a class
+defined by the readings the residual actually uses. Once the class has been
+defined that way, the representative is not chosen for resemblance or convenience.
+It is chosen because every member of the hole has the same residual as the
+representative. The transfer is therefore exact, not statistical. The apparatus
+does not say that most slips in a hole behave like the representative. It says
+that, for this residual and this cost, every slip in the hole has the same
+residual value.
+
+This is the positive pigeonhole. The uniform answer that the previous section
+proved impossible literally is recovered up to a quotient: not one finite list
+containing every slip, but three holes whose representatives carry the residual
+answer for every slip in their holes. The apparatus has not defeated the
+negative result. It has asked a different, honest question. Literal support
+cannot be uniform over the whole family. Residual support can be uniform over the
+three tag holes when the cost cannot see finer distinctions.
+
+The transfer theorem should be read with its condition attached. Solving three
+representatives solves the quotient only when the residual really factors
+through the tag/cost data. If an action asks the residual to see more than the
+tag, then the quotient is no longer licensed. If the action does factor through
+tag, but its residual refuses to vanish on the three tags themselves, then the
+quotient faithfully reports that refusal. The quotient is powerful precisely
+because it is narrow. It transfers zero; it does not invent zero.
+
+That condition prevents a common overreading. Three holes are enough for this
+residual because the residual sees two segment costs and those costs see only
+tags. They are not enough for every possible question one might ask about a
+configuration. A later geometric or orientation-sensitive question may split the
+same three holes into finer distinctions. This section does not license those
+claims. It licenses only the residual transfer that has just been stated. Within
+that boundary, the quotient is complete: solve the three representatives and the
+whole quotient is solved.
+
+The discriminating action shows the limit. It assigns no cost between equal tags
+and unit cost between unequal tags. Around a middle node, the residual asks how
+the left-to-middle and middle-to-right comparisons change when the middle tag is
+varied. Across the three possible middle tags, that pattern is nonconstant. In
+one arrangement the values have the shape \(\{0,2,2\}\); in another they have the
+shape \(\{1,1,2\}\). The details are finite arithmetic over three tags, but the
+consequence is structural: at least one tag representative has nonzero residual.
+There is no way to make the residual vanish on all three at once:
 \[
-  \text{no choice of middle makes the discriminating residual vanish on all three tags.}
+  \text{no covering trace makes the discriminating residual vanish on all three tags.}
 \]
-This is exactly the arithmetic that, in the previous chapters, gave the reading
-\emph{two} on a kicked path: two boundary-crossing edges. Because the discriminating
-action cannot be solved on the three representatives, no covering trace exists for it,
-and therefore no exhausting tower can carry it. For this action, eventual exactness is
-not merely unproven --- it is false. The apparatus does not get to drive its residual
-to zero, because its residual will not go.
+This is the same arithmetic that produced the kicked reading \(2\): two
+boundary-crossing edges. Here it is not promoted into a later sign, charge, or
+orientation claim. It is only the finite obstruction the residual sees. Because
+the discriminating residual is nonzero somewhere among the three
+representatives, no trace covering those representatives can solve it. And
+because the discriminating cost itself factors through tag, the refusal is not
+limited to those literal representatives. Any knot set that covers all three
+tags would transfer a forced zero back to the three representatives, contradicting
+the obstruction. Thus there is no covering trace and no tag-covering trace for
+this action.
 
-What \emph{can} ride the construction is an action whose residual is structurally
-zero. The clean example is a telescoping action, whose cost is read as one tag added
-to the complement of another, \(\text{cost}(x,y) = \mathrm{tag}\,x + (2 - \mathrm{tag}\,y)\).
+That refusal is not a failure of the quotient method. It is the quotient method
+working honestly. The method says: if the residual factors through the three
+holes, then solving the holes solves the family. The discriminating action says:
+the residual over the three holes is not all zero. Therefore the method refuses
+to certify it. The apparatus is not stuck because a proof is missing; it is
+informed that this action is not stationary under the residual test. Eventual
+exactness is blocked for the right reason.
+
+The no-covering conclusion has two layers. First, a trace that literally carries
+the three representatives would force the terminal residual to vanish on those
+representatives, contradicting the nonzero tag pattern. Second, even a trace that
+uses different knots cannot escape if those knots cover the same three tags. Tag
+congruence would carry the forced zero from the chosen knot back to the
+representative of its tag. The obstruction therefore survives replacement of the
+representatives. It is a tag-level obstruction, not an artifact of a bad choice
+of three named slips.
+
+What can pass through the quotient is an action whose residual is structurally
+zero. The clean repair is telescoping. Its cost is read as one tag plus the
+complement of the other:
+\[
+  \text{cost}(x,y)=\mathrm{tag}(x)+(2-\mathrm{tag}(y)).
+\]
 Around any middle node the two segment costs telescope:
 \[
-  \text{cost}(\text{source}, t) + \text{cost}(t, \text{target})
-  = \mathrm{tag}(\text{source}) + 4 - \mathrm{tag}(\text{target}),
+  \text{cost}(\text{left}, t) + \text{cost}(t, \text{right})
+  = \mathrm{tag}(\text{left}) + 4 - \mathrm{tag}(\text{right}),
 \]
 which does not depend on the middle \(t\) at all. So the difference under any
-variation is identically zero --- a discrete null Lagrangian, nontrivial in cost yet
-structurally stationary, flat at every path. The telescoping action rides every tower
-because it was a critical point everywhere to begin with; the discriminating action
-rides none, because it is a critical point nowhere.
+variation is identically zero. The action is nontrivial as a cost, but its
+residual is structurally zero. It is flat at every middle node.
 
-This pairing is the section's real lesson, and it keeps the constructive program
-honest. The covering quotient is powerful but narrow: it certifies eventual exactness
-exactly where the residual already vanishes on the covered configurations, and not one
-step further. An action with genuinely nonzero residual is not a gap in the proof; it
-is a configuration the discrete gauge equation declares unsolved, correctly. The
-apparatus that could drive every action's residual to zero would be an apparatus
-whose gauge equation said nothing. The refusal is the content.
+There is a small subtlety worth keeping visible. The telescoping action is not
+accepted because it behaves like an ordinary path admission rule. Its composed
+cost differs from the direct endpoint cost by a constant offset. That would be
+the wrong door for an earlier admission test. The present covering route asks a
+different question: whether the residual vanishes on the tag representatives and
+therefore on the quotient. For the telescoping action it does. The residual is
+zero for every path and every variation directly, and the three-hole transfer
+also certifies the same fact by the quotient route. This is the constructive
+repair: finite tag data, structurally zero residual, flatness at every middle
+node, and an accepted covering route for the reason this chapter actually needs.
 
-The section's metaphysical anchor is that a quotient is honest only when it records
-what it cannot collapse. The cost sees three holes, and the apparatus gratefully
-solves three representatives in place of an infinite family. But the same finiteness
-that enables the quotient also lets the apparatus prove that some actions cannot be
-solved on the three at all. It tanges each configuration through the cost into one of
-three holes and funges the solved zero back to the whole hole --- and where no
-assignment of holes can be solved at once, it files the refusal as a theorem. The
-constructive boundary is not only a line the apparatus builds up to; it is also a line
-the apparatus proves it cannot cross, for the actions whose residual will not vanish.
+This also explains why the repair is not a trick that erases the discriminating
+refusal. The telescoping action changes the action, not the verdict about the
+discriminating one. It arranges the two segment costs so the middle tag cancels
+out of the residual. The discriminating action arranged the costs so changing
+the middle tag could be detected. The quotient records both facts. One action
+cannot pass because its three tag residuals are not all zero. The other passes
+because its residual is zero before any representative transfer is needed, and
+the transfer then confirms the same result across the quotient.
+
+This pairing is the section's lesson, and it keeps the constructive program
+honest. The quotient is powerful but narrow. It certifies eventual exactness
+exactly where the residual is zero on the covered representatives, and not one
+step further. An action with genuinely nonzero residual is not a gap in the
+argument; it is an action the finite gauge equation declares unsolved. The
+apparatus that could drive every residual to zero would be an apparatus whose
+equation said nothing. The refusal is part of the content.
+
+The scope also stays local. This section supplies the quotient and the
+obstruction. It does not yet construct the concrete exhausting tower, and it does
+not yet claim Frechet uniqueness. Those belong to the next section. What has been
+earned here is the middle result: when cost collapses slips into three residual
+holes, three solved representatives transfer zero to the whole quotient; when the
+three holes themselves cannot be solved, no quotient language may pretend
+otherwise; and when a telescoping action makes the residual structurally zero,
+the covering route closes for the right reason.
+
+The section's anchor is that a quotient is honest only when it records both what
+it collapses and what it refuses to collapse. The cost sees three holes, and the
+apparatus may solve three representatives in place of an infinite family only
+because residual equality follows from cost equality. But the same finiteness
+also exposes actions that cannot be solved on the three holes at all. The
+constructive boundary is not only a line the apparatus works up to; it is also a
+line the apparatus can prove it must respect, for actions whose residual will not
+vanish.
 
 \section{The Produced Tower and Frechet Uniqueness}
 
-The chapter has promised two artifacts and deferred both: a concrete tower that
-actually exhausts its configurations, and a convergence certificate that is proven
-rather than assumed. This section builds both, in order, and then reads off the result
-a name the whole book has been approaching without quite saying. The quantity the
-tower drives to zero is the Frechet derivative of the action, and once the tower is
-produced, the derivative's existence, uniqueness, and termination follow.
+The chapter has promised two things and delayed both until the counting
+apparatus could honestly support them. First, it promised a concrete tower that
+really exhausts the configurations it claims to exhaust. Second, it promised a
+convergence certificate that is produced by the tower rather than smuggled into
+the hypothesis. The earlier sections prepared the ground: eventual exactness
+replaced classical density, constructed boundary witnesses replaced assumed
+certificates, the quantifier order blocked a single universal stage, and the
+three-hole quotient separated a passing action from an obstructed one. This
+section closes the numbered argument. It produces the tower, produces the
+certificate, and then reads the name of the residual it has driven to zero.
 
-Build the tower first. The family that can actually be exhausted is not the full type
-of configurations --- that type carries raw propositions and type-level data and admits
-no enumeration at all, neither constructively nor classically. The honest enumerable
-subfamily is the rational skeleton: the closure of a base configuration under the
-buildable constructors over a fixed set of atoms. This skeleton is countable, and the
-apparatus enumerates it by depth, grading each configuration by the depth of its
-construction --- the deeper of its parts, plus one. Depth is the right grading because
-it makes the slices exact: every skeleton configuration of depth \(d\) appears by stage
-\(d\), and the stage is computable from the configuration,
+The tower does not enumerate the full universe of possible configurations. That
+would be the wrong promise. The full universe contains more than the finite
+apparatus can list by a natural-number clock. Some of its distinctions are raw
+logical or type-level commitments, not generated pieces in a countable
+construction. A countable tower cannot cover those by pretending they are
+ordinary entries in a finite list. The honest enumerable family is narrower: the
+rational skeleton. It begins with a base configuration and closes under the
+constructible events over a fixed set of atoms. Every member of this skeleton
+has a construction history, and that history supplies the grading.
+
+The grading is depth. A base entry has depth \(0\). A one-step extension has
+depth one more than the entry it extends. A two-branch entry has depth one more
+than the deeper of its two branches. This rule matters because it makes the
+finite slices exact. A stage is not merely a bag of entries with approximately
+the right size. Stage \(n\) contains all skeleton entries whose construction
+depth has become visible by \(n\), and the tower is cumulative: once an entry
+appears, later stages keep it. Thus a skeleton entry \(c\) of depth \(d\) comes
+with its own stage, computed from the entry itself:
 \[
-  \text{configuration } c \text{ of depth } d
+  \text{depth}(c)=d
   \;\Longrightarrow\;
-  c \in \text{stage}(d).
-\]
-The enumeration is cumulative --- once a configuration enters a stage it remains in
-every later stage --- which is exactly the entries-monotonicity the convergence claim
-needs and which the earlier, weaker refinement notion did not guarantee. With depth
-grading and cumulativity, the apparatus has the concrete exhausting tower the first
-section only promised: for every skeleton configuration there is a stage, computed as
-its depth, from which it is supported forever.
-
-The produced tower respects the forced quantifier of the third section rather than
-evading it. Each configuration is supported from its own depth onward, a stage that
-depends on the configuration; and no single stage supports all of them, because the
-pigeonhole applies to this tower as to any other. The construction does not cheat the
-counting. It supplies precisely the per-configuration stage the counting demands, and
-no uniform stage, which the counting forbids.
-
-Now build the certificate. The earlier ``completed tower'' carried its convergence as
-assumed data: a field asserting that the bound tends to zero, with the conclusion
-already derivable from that assumption. A theorem that consumes such a structure
-discharges nothing; the assumption merely changes hats. The honest move is a
-constructor. The apparatus builds the completed tower over the null action and the
-skeleton tower, lets each stage consume its entire configuration list by identity
-steps, and observes that the terminal residual at every stage is the action's residual
---- which the null-Lagrangian result of the previous section makes identically zero. So
-the bound the squeeze certifies is the residual itself, and the residual is exactly
-zero at every stage:
-\[
-  \text{bound}(n) = \text{residual}(n) = 0
-  \qquad\text{for every stage } n.
-\]
-``The bound tends to zero'' is now a theorem, proven from the structure through the
-order-theoretic core of the first section, with nothing assumed anywhere in the
-instance. Eventual exactness of the strongest kind --- a sequence constant at zero ---
-produced rather than postulated.
-
-With the tower produced and the certificate proven, the section reads the name off the
-quantity. The residual the tower has been squeezing since the early chapters --- named
-as a spline residual, iterated, squeezed, made eventually exact, and now driven to
-zero --- is, by direct identity, the first variation of the action. It is the Frechet
-derivative. The tower was never chasing an auxiliary quantity; it was driving the
-derivative of the action to zero, and the finish line was crossed when the produced
-certificate forced the bound to zero. This section reads the name on the tape:
-\[
-  \text{residual} = \text{first variation} = \text{Frechet derivative}.
-\]
-
-The derivative exists, and its existence is a single construction carrying all paths.
-One linear gauge, built from the action, approximates the action at every path with
-remainder exactly zero:
-\[
-  \exists\ \text{gauge},\quad \forall\ \text{path, variation},\quad
-  \text{remainder} = 0.
-\]
-Because it exists with remainder identically zero, it is unique --- not by a separate
-argument but as a consequence. Any gauge that approximates the action at a path must
-carry the same linear part there, because two candidates matching the same difference
-must agree:
-\[
-  \text{both approximate at the path}
+  c \in \text{stage}(d)
   \;\Longrightarrow\;
-  \text{same linear part at the path}.
+  c \in \text{stage}(n)\quad(d\leq n).
 \]
-This is what classical Frechet uniqueness degenerates to when the remainder is not
-merely small but identically zero: exact determination. Existence forces uniqueness,
-and the apparatus files them together.
+This is stronger than a vague refinement relation. It is genuine
+entries-monotonicity. Membership persists, so the eventual claim has something
+stable to talk about.
 
-Uniqueness holds slot by slot, and the apparatus is careful about which slots are
-determined by what. The order-one linear part is pinned by its own matching condition,
-the order-one mirror of the order-two uniqueness of the second variation. In the cubic
-expansion, the left and right first-order slots are each pinned by their own
-one-coordinate matching conditions, and the second variation is pinned given the
-canonical first-order terms. The caution matters: the bare three-term sum does not by
-itself determine its three terms --- a constant can be shifted between the left and
-right slots without changing the total --- so each slot is unique only as the solution
-of its own matching condition, and the apparatus does not pretend the sum determines
-the parts. With the matching conditions in hand, the expansion terminates exactly at
-order two:
+The tower therefore exhausts exactly what it says it exhausts. Given any
+skeleton slip, compute its depth. That number is the first stage from which the
+slip is supported forever. The tower does not need to guess a witness and it
+does not ask an outside completion principle to supply one. It computes the
+witness from the slip. This is the positive counterpart to the forced
+quantifier of the third section:
 \[
-  D(v) = r_{\mathrm{L}}(v_{\mathrm{L}}) + r_{\mathrm{R}}(v_{\mathrm{R}}) + \delta^2(v),
-  \qquad\text{no remainder.}
+  \forall s\ \text{in the skeleton}\;\exists N\;\forall n\geq N,\quad
+  s\in\text{stage}(n).
 \]
-The discrete Taylor expansion does not approximate and then bound an error. It
-terminates.
+The order of quantifiers is still the honest one. The stage \(N\) depends on
+the slip \(s\). The tower does not collapse this into a single \(N\) that works
+for all slips.
 
-A word on the word ``linear,'' kept honest. There is no vector space of variations
-here, so the linearity of the linear part is not even a statement the apparatus can
-make. The slot where linearity would sit is occupied instead by uniqueness --- which
-is the job linearity does for the classical derivative anyway. And the smallness
-condition on the remainder, the analyst's \(o(h)\), is satisfied in the strongest form
-a remainder can take: identically zero, requiring no norm to express. The continuum
-derivative, with its genuine linear algebra and its limiting smallness, remains behind
-the square-root door of the previous chapter, marked and shut.
+Indeed, the produced tower also preserves the negative result. It supports each
+skeleton slip eventually, but no one stage supports all skeleton slips. Given a
+finite stage, the one-spine escape from the forced-quantifier section still
+applies: choose a generated slip one depth beyond everything in the finite
+list. The produced tower has not cheated the pigeonhole. It has supplied the
+right per-slip stage while leaving the forbidden uniform stage forbidden. This
+is why the construction is trustworthy. It solves the problem the finite
+apparatus can solve, and it leaves untouched the problem the counting argument
+proved unsolvable.
 
-The finish line is then a single sentence with the right name attached. The measured
-Frechet derivative of the gauge action tends to zero along the produced tower,
-because along that tower it is constant at zero --- eventual exactness, the variational
-principle not approximately solved but solved. The apparatus files both directions of
-the principle at the level of sequences. Every flat action's derivative reading tends
-to zero, not only the showcase. And a genuinely nonzero reading never tends to zero in
-the apparatus's scale: for an off-shell configuration, eventual exactness is false,
-and now there is a theorem that says so rather than a hope that it might be unprovable.
+The same tower also remembers the obstruction from the previous section. Early
+finite stages already cover the three tag representatives, and from that point
+forward every later stage covers them as well. For the discriminating action,
+covering those tags is exactly what cannot be made stationary. The obstruction
+therefore survives inside the produced tower. The tower gives the accepted
+action a route; it does not rescue the refused action. A nonzero residual is
+not a missing certificate waiting to be discovered. It is a genuine failure of
+eventual exactness for that action.
 
-The section's metaphysical anchor is that the apparatus produces what it once assumed
-and discovers, in the producing, what it had all along. It built the tower it had only
-promised; it proved the certificate it had only carried; and the quantity it drove to
-zero turned out to be the derivative it had been circling since it first separated a
-change from its remainder. The apparatus tanges the action into a residual, funges the
-residual down the produced tower until it is exactly zero, and reads the name off the
-result: a Frechet derivative, existent because constructed, unique because exact,
-terminating because finite. The variational principle of the finite world is not a
-limit the apparatus approaches. It is an artifact the apparatus builds.
+The contrast is worth making explicit before the certificate enters. The
+rational skeleton is not a retreat from the book's ambition; it is the first
+place where the ambition becomes holdable. The full configuration universe
+contains more distinctions than a finite tower can index. The skeleton records
+the configurations generated by the apparatus's own finite grammar. On that
+family, every membership claim has a finite reason: either the entry is the base
+entry, or it arises from one of the constructors applied to earlier entries.
+Depth is therefore not a decorative rank. It is the receipt of construction. To
+know the depth of a skeleton slip is to know how far the tower must climb before
+that slip becomes visible.
+
+This also explains why the tower uses cumulative stages rather than disjoint
+slices. A disjoint slice would say where an entry first appears, but it would
+not by itself say that the entry remains available when later stages perform
+their finite work. Eventual support requires persistence. Once the slip has
+entered, every later finite stage may use it. That persistence is the practical
+form of the word ``eventual'' in this chapter. Eventual exactness is not a
+momentary hit at one stage; it is stable support from some stage onward.
+
+Now produce the certificate. An earlier completed tower could carry a field
+saying that its bound tends to zero. But a carried assertion is not yet a
+produced certificate. If the conclusion follows because the structure was handed
+the very convergence it needs, nothing has been discharged. The honest
+certificate must construct the bound and prove its behavior from the finite
+stage data. It must show where the bound comes from, why it dominates the
+residual, and why it tends to zero.
+
+For the telescoping action, the construction is especially clean. At each finite
+stage, the trace consumes its entire knot list by identity steps. No entry is
+left unprocessed inside that finite stage. The terminal residual is the residual
+itself. The bound is chosen to be that same measured residual. Then the
+telescoping calculation from the previous section does the decisive work: the
+middle term cancels, so the residual is structurally zero at every middle node.
+Consequently, at every stage,
+\[
+  \text{bound}(n,s)=\text{measured residual}(n,s)=0.
+\]
+The squeeze is not asymptotic theater. The residual is already zero, the bound
+equals it, and the constant zero sequence tends to zero in the order-theoretic
+scale of the first section.
+
+This is the difference between an assumed certificate and a produced one. An
+assumed certificate says, ``suppose the bound tends to zero,'' and then reads
+off convergence. The produced certificate says: here is the finite tower, here
+is the trace at each stage, here is the terminal residual, here is the bound,
+and here is the proof that the bound is zero at every stage. The statement
+\[
+  \text{bound tends to zero}
+\]
+is no longer a premise. It is a result of the construction. Eventual exactness
+holds in its strongest form: not because the sequence slowly approaches zero,
+but because the sequence is constant at zero.
+
+The construction also clarifies the role of the exhaustive tower. For the flat
+telescoping action, the residual vanishes before any delicate limiting argument
+is needed. The exhaustion route is still important because it proves the
+finite-stage apparatus has the right coverage story: each skeleton slip enters
+at its computed depth and stays there. But the zero reading is not produced by
+waiting long enough for a nonzero quantity to decay. The zero reading is
+structural. The tower carries that structural zero through a produced
+finite-stage certificate.
+
+There is no hidden analytic compactness in this move. The scale here is the
+natural-number stage scale, and convergence means the order-theoretic eventual
+zero condition already introduced at the start of the chapter. The produced
+certificate proves that condition directly: choose stage \(0\), and every later
+stage reads zero. The phrase ``tends to zero'' is therefore not borrowing metric
+intuition. It names a finite order fact about a sequence of readings. The
+apparatus can inspect every part of the claim: the stage, the terminal
+residual, the bound, and the witness that the bound is already zero.
+
+For the discriminating action, the same language gives the opposite verdict.
+Its residual is nonzero on at least one tag representative, and any
+tag-covering stage would have to face that representative. No tower certificate
+can turn that residual into zero without contradicting the obstruction. The
+right conclusion is not that the discriminating action has not yet been
+approximated well enough. The right conclusion is that eventual exactness is
+false for it. The apparatus now has both sides: a produced flat case and a
+proved obstruction.
+
+With the tower and certificate in hand, the section can name the quantity the
+book has been manipulating. The residual squeezed by the tower is the first
+variation of the action. In this finite apparatus, that first variation is the
+Frechet derivative. The identification is not an analogy added after the fact.
+The same expression that has appeared as the spline residual, the terminal
+residual, and the stage reading is the derivative reading:
+\[
+  \text{residual}
+  =
+  \text{first variation}
+  =
+  \text{Frechet derivative}.
+\]
+The tower was never chasing an auxiliary error term. It was driving the
+derivative reading of the action to zero.
+
+Existence of the derivative is also finite and explicit. From an action, the
+apparatus constructs a gauge whose first-order part matches the action's composed
+difference at every path and every variation, with remainder exactly zero:
+\[
+  \exists G\;\forall p,v,\quad
+  \text{action difference at }(p,v)
+  =
+  G_{\mathrm{lin}}(p,v)
+  \quad\text{and}\quad
+  \text{remainder}(p,v)=0.
+\]
+That is the finite existence theorem. It does not require a normed vector space
+of variations, and it does not require a limiting argument over small
+increments. The remainder is zero by construction, so the approximating gauge
+exists in the strongest possible sense available here.
+
+The phrase ``at every path'' should not be read as a continuum statement. A path
+in this apparatus is a finite object with named origin, middle, and target data.
+The derivative exists because the action supplies a finite composed difference
+against each finite variation, and the canonical gauge records that difference
+with no leftover term. The construction is global over the finite path grammar,
+not over an analytic manifold. That is why the theorem can be direct without
+becoming grandiose.
+
+Uniqueness follows by exact determination. Suppose two gauges approximate the
+same action at the same path. Since both match the same composed difference,
+their first-order readings at that path must agree on every variation:
+\[
+  G_{\mathrm{lin}}(p,v)=H_{\mathrm{lin}}(p,v)
+  \quad\text{for every }v.
+\]
+This is the finite version of Frechet uniqueness. In the classical setting,
+linearity and a small remainder isolate the derivative. Here the remainder is
+identically zero, so the isolation is sharper: two candidates that exactly
+match the same difference have no room to disagree. Existence and uniqueness
+are not separate mysteries. The construction gives a derivative, and exact
+matching pins it down.
+
+This uniqueness is local in the right way. It says that at a fixed path, every
+approximating gauge has the same first-order part. It does not say that two
+different actions become the same, or that two raw configurations must be
+identified. The uniqueness belongs to the derivative reading once the action,
+path, and matching condition have been fixed. That boundary keeps the theorem
+from turning into an overclaim about the surrounding configuration world.
+
+The same care is needed for the cubic expansion. The apparatus has several
+slots: the order-one linearization, the left cubic slot, the right cubic slot,
+and the second variation. Each slot has its own matching condition. The
+order-one part is pinned by matching the composed difference. The left slot is
+pinned by the one-coordinate left difference. The right slot is pinned by the
+one-coordinate right difference. The second variation is pinned once the
+canonical first-order terms have been fixed. The warning is important: the bare
+three-term sum does not determine its terms. A constant could be shifted between
+the left and right first-order slots while preserving the total. Slot-by-slot
+uniqueness depends on the individual matching conditions, not on the sum alone.
+
+With those matching conditions in place, the discrete Taylor statement
+terminates at order two:
+\[
+  D(v)
+  =
+  r_{\mathrm L}(v_{\mathrm L})
+  +
+  r_{\mathrm R}(v_{\mathrm R})
+  +
+  \delta^2(v),
+  \qquad\text{with no remainder.}
+\]
+This is not an approximation plus an error estimate. The apparatus reaches an
+exact finite decomposition. The expansion stops because the finite grammar has
+no further undischarged remainder slot in this calculation.
+
+The two first-order slots deserve their separate names. The left slot measures
+the one-coordinate change on the left side of the middle node; the right slot
+measures the corresponding one-coordinate change on the right side. The second
+variation records the coupled remainder after those canonical first-order
+contributions have been fixed. If one forgets those matching conditions and
+looks only at the displayed sum, the decomposition can be misread as arbitrary.
+The apparatus avoids that mistake by assigning each term its own finite test.
+The decomposition is exact because each term has been separately identified.
+
+The word ``linear'' must stay honest. There is no ambient vector space of
+variations in this argument, so the apparatus does not claim classical
+linearity of a map between normed spaces. The role usually played by linearity
+is played here by uniqueness under the matching condition. Likewise, the
+classical small-\(o\) remainder condition is not imported as analytic structure.
+The finite remainder is identically zero, so it satisfies the intended
+smallness demand without a norm. The genuine continuum derivative, with
+ordinary vector-space linearity and limiting smallness, remains behind the
+square-root door of the previous chapter.
+
+That door matters. The finite Frechet derivative here is not a covert claim that
+the classical continuum derivative has already been recovered. It is the finite
+object occupying the derivative role inside the apparatus: first variation,
+exactly matched gauge, zero remainder, and uniqueness under matching. The
+continuum question asks for additional structure, and the book has deliberately
+kept that additional structure on the other side of the square-root passage.
+The present section closes the finite calculus, not the analytic one.
+
+The sequence-level finish is now precise. For the telescoping action, the
+measured Frechet derivative along the produced tower tends to zero because it
+is zero at every stage. More generally, whenever an action is flat at a path,
+the measured derivative reading is zero and the resulting constant sequence
+tends to zero. Conversely, if a residual reading is genuinely nonzero, then the
+constant sequence of its measured magnitude cannot tend to zero in this scale.
+The apparatus therefore records both directions:
+\[
+  \text{flat derivative readings tend to zero,}
+  \qquad
+  \text{genuinely nonzero readings do not.}
+\]
+The variational principle is not merely witnessed in a showcase example. It is
+stated as a finite sequence principle with an obstruction clause.
+
+The numbered chapter closes here because the promised finite work has now been
+done. The rational skeleton gives a depth-graded cumulative tower. The forced
+quantifier survives: every skeleton slip has its own eventual stage, and no
+single stage supports them all. The telescoping action receives a produced
+certificate whose bound is the residual itself and whose residual is zero at
+every stage. The discriminating action remains refused for exactly the same
+finite reason it was refused before. The residual is named as the Frechet
+derivative; the derivative exists by construction, is unique by exact matching,
+and terminates at order two in the finite expansion.
+
+The metaphysical point is that the apparatus produces what it is allowed to
+claim. It does not appeal to a hidden continuum, and it does not replace a
+missing argument by a field labeled convergence. It constructs a finite tower,
+constructs a finite certificate, and names the derivative only after the residual
+has been made inspectable at every stage. The finite variational principle is
+therefore not a limit the apparatus hopes to approach. It is a constructed
+boundary witness: a tower, a zero certificate, and a unique derivative reading
+held together by finite count.
 
 \section*{Bridge: A Derivative Told in One Coordinate}
 
-The chapter perfected a derivative, and the perfection should not obscure how narrow
-the derivative is. What the apparatus built, produced, and proved unique is the first
-variation: the change in the action read along a single coordinate of the variation.
-It exists, it is unique, its expansion terminates --- and it is, in every line, a
-one-coordinate reading. The apparatus has been telling the story of ``the derivative''
-as though the variation moved along one axis, and the story has been clean precisely
-because one axis is simple.
+The chapter ends with a clean achievement. It gave the finite tower that the
+preceding obstruction demanded, kept the depth grades honest, and produced the
+zero certificate that lets the telescoping action count as flat at every
+inspected stage. It did not ask the reader to trust an unexamined passage to a
+continuum. It built the rational skeletons, accumulated the finite stages,
+watched the residual fall to its terminal value, and then named the first
+variation as a finite Frechet derivative only after the residual had become a
+visible witness. The derivative exists because the tower produces it. It is
+unique because exact matching leaves no room for a second reading. Its finite
+Taylor expansion terminates because the apparatus has only the slots it has
+counted. That is real success, and the chapter should receive it as such.
 
-But the coupled difference of the earlier chapters was never one-coordinate. It carried
-a left part and a right part, two sides of the middle moving together, and its
-decomposition had three terms, not two: the left first-order residual, the right
-first-order residual, and the mixed coupling between them. The chapter's derivative
-captured the first-order residuals. The mixed coupling --- the second variation, the
-invariant of Chapter 8 --- is precisely the part that a one-coordinate reading does not
-see. Move along one axis and the cross term is silent; it speaks only when both axes
-move at once.
+The success has a shape, though, and the shape matters. This derivative tells a
+one-coordinate story. It reads what happens when the action changes along a
+single line of variation, and it reads that line exactly. Nothing in the
+chapter weakens that reading. The point is narrower and more dangerous: exact
+does not mean exhaustive. A key can fit the one lock it was cut for and still
+tell us nothing about the neighboring door. The finite derivative of this
+chapter fits its coordinate. It measures the first variation in the direction
+that the instrument has chosen. It does not thereby measure every quantity that
+can appear when two sides of the middle change together. The limit lies in the
+question, not in the answer. A perfect answer to a single-coordinate question
+still inherits the exclusions that made that question single-coordinate in the
+first place.
 
-This is the gap the next chapter opens. A one-coordinate instrument is not merely
-incomplete; it is systematically blind to a particular quantity, the coupling that
-lives between two coordinates and shows itself only under a paired variation. The
-clean one-coordinate derivative the apparatus just perfected is, from the next
-chapter's vantage, a correction waiting to happen: the story of ``the derivative''
-told as if a single coordinate sufficed, when the coupling demands a pair.
+The earlier coupled difference already warned us about this narrowing. That
+difference did not divide into a single first-order story plus a decorative
+remainder. It carried a left first-order slot, a right first-order slot, and a
+mixed order-two coupling. Those three pieces do not play the same role. The
+left slot says what the left side contributes when it changes as itself. The
+right slot says the corresponding thing for the right side. The mixed coupling
+does something else: it records the residue that belongs to their joint
+disturbance. It does not sit inside either first-order slot waiting for a more
+patient reader. It appears at the place where the two first-order stories meet
+and fail to exhaust the difference between them.
 
-So the next chapter pairs the variation. It shows why a single-coordinate instrument
-misses the coupling, what a genuinely paired variation reveals, and how the signed
-residue the pair exposes --- present in the mixed term, absent from either first-order
-slot --- is the thing one-coordinate measurement could never report. The question the
-apparatus carries forward is the question its own success raises: if the
-one-coordinate derivative is exact and unique and still misses the coupling, what does
-it take to measure the coupling, and what is hiding in the pair that no single
-coordinate can show?
+That is why the one-coordinate derivative can be exact and still miss the
+coupling. If the left side alone moves, the right side supplies no partner for
+the cross term. If the right side alone moves, the same silence returns from
+the other side. Each one-coordinate reading can report its own first-order
+slot, and each report can be correct. But the mixed term has no voice until the
+variation moves as a pair. A single coordinate does not merely overlook it by
+accident. The single coordinate gives the mixed term no place to speak. The
+instrument asks a question whose grammar has only one changing side, and the
+cross coupling answers only questions whose grammar has two.
+
+This also clarifies the role of the weak form that has been so useful. The
+weak form lets the chapter isolate a derivative by projecting away what would
+otherwise contaminate a one-coordinate reading. That discipline made the zero
+certificate legible. It allowed the tower to certify flatness without smearing
+the first variation into the coupling. But projection also has a cost. What it
+removes does not stop existing just because it no longer appears in the
+one-coordinate account. The weak form has helped the apparatus tell the clean
+story; the next chapter must ask what the clean story left outside its frame.
+
+The natural name for the next question is measurement-minus-story. The story
+says: here is the left first-order reading, here is the right first-order
+reading, and here is the finite derivative that each one-coordinate instrument
+can report. Measurement asks whether those reports exhaust what the paired
+change leaves behind. If they do not, then the residue no longer looks like an
+error in the derivative. It looks like the thing that the derivative was never
+designed to read. The apparatus must therefore change the question rather than
+weaken the answer it just earned.
+
+Chapter 12 begins at that change of question. It does not need to revoke the
+finite Frechet derivative, and it should not. The derivative stands: exact,
+unique, produced by a finite tower, and terminated by a finite expansion. The
+next chapter asks what appears when the variation receives two coordinates at
+once. It returns to the coupled difference, lets the two sides move together,
+and watches the mixed place that a one-coordinate reading had forced into
+silence. There the signed residue becomes the problem to identify, not a
+conclusion already in hand. The bridge from this chapter to the next therefore
+turns on a precise unease: if the one-coordinate derivative has succeeded on
+its own terms, and if those terms still cannot hear the mixed coupling, then
+what kind of instrument can measure the residue that belongs only to the pair?
 
 \section*{Coda: The Locksmith's Master Key}
 
-A locksmith at a bench, cutting keys for a building, performs the constructive
-discipline of this chapter with brass and a depth gauge. The trade is worth watching,
-because every move the chapter made in proofs the locksmith makes in metal.
+A locksmith at a bench, cutting keys for a long corridor of doors, performs the
+constructive discipline of this chapter with brass, pins, and a depth gauge. The
+trade is worth watching because it gives the chapter a body. The blade on the
+bench has no opinion about convergence, yet the lock judges it with the same
+severity that the chapter has been trying to earn. The cut reaches the required
+depth or it does not. The pin stack rises to the shear line or it does not. The
+cylinder turns or it holds. There is no charitable middle in which a nearly
+right key opens a door nearly enough.
 
-A key is not approximated; it is cut to exact depths. Each cut on the blade is filed
-to one of a fixed set of depths, and the lock it must open does not grade the cuts on a
-sliding scale. A cut either lifts its pin to the shear line or it does not. A key
-ninety percent of the way to the right depth does not ninety percent open the lock; it
-fails exactly as completely as a blank. The lock's verdict is eventual exactness in
-steel: the key clears the shear line or it jams, and there is no credit for almost.
-The locksmith files to the depth, not toward it, because the lock rewards arrival and
-ignores approach.
+A key is therefore not approximated in the sense that matters to the lock. It is
+cut to exact depths. The locksmith may approach the depth slowly, may file a
+little and check the gauge, may polish the cut before testing the blade; but the
+door does not reward the approach. A key ninety percent of the way to the right
+depth does not open the lock ninety percent. It fails with the same finality as
+a blank. The shear line is the lock's event of exactness. Until the pin stacks
+meet it, the mechanism refuses. Once they meet it, the cylinder turns. The
+chapter's eventual exactness has this same plain shape: arrival matters, and
+approach matters only as the finite work by which arrival is reached.
 
-The lock, for its part, reads the key through a finite quotient. It does not see the
-key's brand, its color, the scratches on its bow; it sees only the heights to which
-the cuts lift the pin stacks, and each stack reads one of a small set of depths. Two
-keys cut to the same depths are, to the lock, the same key, however different they look
-in the hand. The infinite variety of blanks collapses, at the cylinder, to a finite
-list of depth patterns. The locksmith exploits this without thinking of it as a
-theorem: to make a key that works, he need only match the depths, because the depths
-are all the lock can read.
+The lock also reads through a quotient. It does not care about the manufacturer's
+stamp, the color of the bow, the scratches left by a pocket, or the story of
+who carried the key. It sees the depths. More precisely, it sees the heights to
+which those depths lift a finite list of pin stacks. Two blades with the same
+depth pattern are the same key to that cylinder, however different they look in
+the hand. The whole visible variety of blanks collapses at the plug to a finite
+list of readings. The cylinder is a quotient device: ornament vanishes, brand
+vanishes, handling marks vanish, and the pin-depth pattern remains.
 
-A master key is produced, not assumed. The building wants one key that opens many
-locks, and the locksmith does not declare that such a key must exist and hand over a
-blank. He computes the cuts --- the depths compatible with every cylinder in the
-group --- and files them, and the master key is the artifact at the end of the filing,
-exhibited and tested in each lock. Existence here is cutting; the master key is the
-construction, run in every door it claims to open.
+That is the three-hole lesson in metal. The lock reads the slots it has, not
+every distinction the world can name. If a scratch does not change a pin height,
+the lock ignores it. If two keys differ in shape outside the read cuts, the
+lock treats them as one. If three visible keys lift the same finite pin pattern,
+the cylinder does not know that three visible keys arrived. It knows the
+pattern. The locksmith relies on this every day. To make a working key, he does
+not reproduce the whole visible history of the original. He reproduces the
+finite pattern the lock can test.
 
-And some groups of locks refuse a master key, provably. If two cylinders demand
-incompatible depths at the same pin position --- one needing the stack lifted high
-where another needs it left low --- then no single blade can satisfy both, and no
-amount of filing will produce a master key for the pair. The locksmith does not search
-forever and report failure; he reads the pinning charts and certifies that the group is
-not master-keyable. The refusal is a fact about the depths, demonstrable in advance,
-exactly as the discriminating action's refusal was a fact about its costs. A compatible
-group rides --- one cut key opens them all --- and an incompatible group cannot be
-ridden, and the locksmith can tell which is which before he touches the file.
+The forced quantifier appears as soon as the locksmith opens the drawers. A shop
+may keep trays of blanks and racks of cut keys, but no single finite tray
+already contains every possible key for every possible cylinder. Each lock
+pattern asks for its own work order. One door may require three cuts at shallow
+depths. Another may require five cuts, with the fourth pin riding high. A third
+may need a blank from a different rack before any cut can even begin. For each
+lock that belongs to the day's work, the locksmith can find the blank, set the
+depth gauge, cut the blade, and place the finished key in the box. But the box
+does not become a universal archive. It grows by finite jobs, and each job has
+its own stage.
 
-That is the chapter in a locksmith's terms. Eventual exactness is the shear line that
-rewards arrival and not approach; the finite quotient is the cylinder that reads only
-depths; the produced artifact is the master key cut rather than wished; and the
-discriminating refusal is the group of locks whose depths conflict, certified
-unkeyable. The apparatus, like the locksmith, does not assume the key it needs. It
-cuts the key, runs it in the lock, and where the depths conflict, it proves that no key
-will do.
+Once a pattern enters the box, it remains available. The locksmith does not
+unmake yesterday's key in order to cut today's. The rack is cumulative: a key
+cut for one cylinder sits in its labeled place while the next work order
+arrives. This is the depth-graded tower in shop language. At shallow depths,
+the locksmith has only the simple patterns. Later, the more detailed patterns
+enter. Each pattern appears at a finite stage determined by its own demand, and
+thereafter it can be taken down and tested again. The promise is not that one
+morning's tray held every key. The promise is that each finite pattern, when
+its turn arrives, receives a cut blade that stays in the record.
+
+The order on the rack matters as much as the rack itself. A careless shop could
+pile keys in a drawer and claim that everything was somewhere inside. The
+locksmith's real discipline is sharper. Each hook has a label. Each label names
+the finite pattern the hook supports. When a harder cylinder arrives, the
+locksmith does not disturb the easier ones; he adds another labeled hook at the
+right depth of the rack. If a client returns with an earlier lock, the earlier
+key is still there. If a later client brings a more delicate cylinder, the shop
+extends the rack rather than pretending the old tray already solved the new
+case. That is why the tower is not a heap. It has stages, persistence, and a
+visible rule for placing the next artifact where it can be found again.
+
+The master key sharpens the issue. A client may want one blade that opens a
+whole group of locks. The wrong way to satisfy that request is to assert that
+such a blade must exist and hand over a blank with confidence. The locksmith
+has to inspect the cylinders. He has to read the pinning charts, compare the
+positions, and find a pattern that each lock in the group will accept. If the
+pattern exists, it does not exist as a wish. It exists as brass. The locksmith
+cuts it, tests it, and watches each cylinder turn. The master key is the
+certificate. Its success lies in the doors it opens, not in a note saying that
+some key should open them.
+
+That produced key is the coda's analogue of the produced certificate. The
+chapter has refused to let an assumed certificate do the work. It has asked for
+the artifact: the finite tower, the zero reading, the trace whose bound is the
+residual itself, and the residual that vanishes in the case where the action
+truly rides. In the shop, the same distinction is tactile. A promise that a
+master key can be cut leaves every door shut. A key that has been cut and tested
+turns the cylinders. The difference between promise and proof is the difference
+between a blank and a blade whose cuts have met the pins.
+
+The locksmith also knows the dignity of refusal. Some groups of locks do not
+admit a master key. If one cylinder demands a high lift at a pin position while
+another demands a low lift there, no single cut can satisfy both. The conflict
+does not call for more optimism or a finer file. It calls for an honest verdict:
+this group cannot share one blade. The refusal is not failure by exhaustion. It
+is a successful reading of incompatibility. The pinning charts show the clash,
+and the locksmith can certify the refusal before he ruins a blank pretending
+otherwise.
+
+That refusal is as constructive as the successful master key. It tells the
+client something exact about the group. These two cylinders cannot share a
+single cut at this position. This set of locks has no common blade. The
+locksmith may still cut separate keys, or rearrange the cylinders, or change the
+client's requirement; but within the stated problem, the answer has arrived.
+The chapter's discriminating action has the same form. It does not merely lack
+a certificate today. It carries a conflict that prevents the certificate it
+would need. Where the telescoping action receives the cut key, the
+discriminating action receives the incompatibility chart.
+
+The final derivative reading also has a locksmith's analogue, though the shop
+keeps it modest. A finished key has an exact profile. Once the cuts meet their
+depths, the blade has a reading: this much lift here, that much lift there, no
+leftover gap to explain by appeal to a smoother scale. The depth gauge does not
+summon a continuum in order to certify the result. It reads the finite notches.
+The lock confirms the same reading by turning. Exactness here is not a
+philosophy added to the blade. It is the alignment of cut, pin, and shear line.
+The chapter's finite Frechet derivative should be heard in that register. It is
+the exact reading the apparatus earns once the finite cuts have been made.
+
+The profile is also unique in the only sense the lock needs. If two blades open
+the same cylinder by the same pin lifts, then the cylinder cannot distinguish
+their working part. The bow may differ, the metal may shine differently, and
+one blade may have a smoother edge, but the operative reading has already been
+fixed by the pins. The lock has no extra slot in which a second profile could
+hide. The chapter's uniqueness claim has the same modesty: once the finite
+matching condition has fixed the operative reading, another alleged reading
+must agree where the apparatus can test it.
+
+This is why the master key belongs at the close of the chapter. It gathers the
+chapter's claims without enlarging them. Exact cut, finite quotient, forced
+work order, cumulative rack, compatible group, incompatible group, produced
+key, tested key: these are enough. The locksmith does not need to predict a
+larger theory of every possible door. He needs to show which finite pattern the
+present locks can read, which pattern opens them, and which demanded pattern
+cannot exist. His craft is not less rigorous because it is local. It is rigorous
+because it knows the local test and submits the brass to it.
+
+So the chapter closes at the bench. The apparatus stands beside the locksmith,
+not above him. It does not assume the key it needs. It cuts the key, places it
+in the cylinder, and records the turn. Where the pins conflict, it records the
+conflict with the same exactness. Arrival, not approach; depth pattern, not
+ornament; produced artifact, not promise; honest refusal, not postponed hope:
+that is the constructive boundary in brass. A master key, when it exists, is a
+made thing. When it cannot exist, the impossibility is also a made thing, read
+from the finite pins and carried back to the record.

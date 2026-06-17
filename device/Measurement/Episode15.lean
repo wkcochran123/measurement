@@ -275,14 +275,13 @@ instance TRUE_COMPILED
   -- `True` and `trivial` closes it cheaply.
   output_true := by trivial
 
-noncomputable instance DISTINGUISHABLE_PROP
+instance DISTINGUISHABLE_PROP
     (Carrier : CarrierProcess Prop)
     : DISTINGUISHABLE Prop Carrier where
   fact := Carrier.symbol
   symbol := Prop
-  dec_distinct := by
-    intro s
-    exact Classical.propDecidable (s ≠ Prop)
+  different? := fun _ => True
+  dec_distinct := fun _ => isTrue trivial
 
 
 
@@ -290,13 +289,12 @@ def truthCarrier : CarrierProcess Prop where
   symbol := Fact.Truth
   value := .zero Fact.Truth
 
-noncomputable instance truthDistinct :
+instance truthDistinct :
     DISTINGUISHABLE Prop truthCarrier where
   fact := truthCarrier.symbol
   symbol := Prop
-  dec_distinct := by
-    intro s
-    exact Classical.propDecidable (s≠Prop)
+  different? := fun _ => True
+  dec_distinct := fun _ => isTrue trivial
 
 
 noncomputable instance COMPARABLE_PHYSICAL
