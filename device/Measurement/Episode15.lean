@@ -321,6 +321,21 @@ noncomputable instance COMPARABLE_PHYSICAL
   smaller_than := fun m1 m2 => m1 = m2
 
 
+/-- The truth order on the bullshit ladder -- the relation the needle collapses.
+`@[reducible]` so it unfolds to `≤` under unification (e.g. against `output_true`). -/
+@[reducible] def TruthOrder (a b : Bullshit) : Prop := a ≤ b
+
+/-- THE NEEDLE: the single sanctioned `Quot.sound` site.  Two readings that are
+ordered on the truth ladder collapse to the same truth-phase class.  Raw `Quot`,
+no `Setoid` (no refl/symm/trans obligation) -- so `#print axioms selection_sound`
+is exactly `[Quot.sound]`.  The genuinely-undecidable "are these the same truth?"
+is never DECIDED (no `Classical.propDecidable`) and never FLATTENED (no `fun _ =>
+True`): related readings are IDENTIFIED by one quotient soundness. -/
+theorem selection_sound {α : Sort _} {r : α → α → Prop} {a b : α}
+    (h : r a b) : Quot.mk r a = Quot.mk r b :=
+  Quot.sound h
+
+
 namespace Fact
 
 noncomputable def SAME
@@ -340,8 +355,14 @@ noncomputable def SAME
     [compiled: COMPILED Value Carrier]
     [out: TrueOutput Value Carrier]
     : Fact :=
-  { truth := Subsingleton (out.obfusplained? out.output_true out.TRUE out.output)
-    decTruth := Decidable.isTrue inferInstance }
+  -- The needle, honest.  "TRUE and the output are the SAME truth" = the two
+  -- readings collapse to one class in the truth-order quotient, witnessed by the
+  -- one located `Quot.sound` (`selection_sound`), with the genuine ordering witness
+  -- `out.output_true : TRUE ≤ output`.  No classical decision; no flattening.
+  -- (`SAME.truth` is only ever compared reflexively in `Closure.le` -- every chair
+  -- closure uses this same `Fact.SAME`, so `f1.truth = f2.truth` stays `X = X`.)
+  { truth := Quot.mk TruthOrder out.TRUE = Quot.mk TruthOrder out.output
+    decTruth := Decidable.isTrue (selection_sound (r := TruthOrder) out.output_true) }
 
 end Fact
 
