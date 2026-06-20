@@ -1,0 +1,5 @@
+import Experiments.TheHarmonicOscillator.Experiment2
+
+namespace Experiments.TheHarmonicOscillator
+
+end Experiments.TheHarmonicOscillator

@@ -1,0 +1,5 @@
+import Experiments.SpookyActionAtADistance.Experiment2
+
+namespace Experiments.SpookyActionAtADistance
+
+end Experiments.SpookyActionAtADistance

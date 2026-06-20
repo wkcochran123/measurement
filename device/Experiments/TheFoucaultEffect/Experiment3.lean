@@ -1,0 +1,5 @@
+import Experiments.TheFoucaultEffect.Experiment2
+
+namespace Experiments.TheFoucaultEffect
+
+end Experiments.TheFoucaultEffect

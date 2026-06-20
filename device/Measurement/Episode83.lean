@@ -123,14 +123,16 @@ def HasPositronEvent (es : List Orientation) : Prop := Orientation.positron ∈ 
 
 /-- Over the flat (symmetric) baseline the trial yields NO positron -- only matter and neutral.
 Antimatter needs a baseline asymmetry. -/
-theorem no_positron_over_flatPath : ¬ HasPositronEvent flatEvents := by decide
+theorem no_positron_over_flatPath : ¬ HasPositronEvent flatEvents := by
+  unfold HasPositronEvent; decide
 
 /-- Over the flat baseline an electron IS observed (the pair node1,node2 reads δ² = -1). -/
 theorem electron_over_flatPath : Orientation.electron ∈ flatEvents := by decide
 
 /-- Over the tilted (asymmetric) baseline the SAME pairs now yield a positron (node1,node2 reads
 δ² = +1).  The orientation FLIPPED with the baseline -- it is frame-relative, a convention. -/
-theorem positron_over_tiltedPath : HasPositronEvent tiltedEvents := by decide
+theorem positron_over_tiltedPath : HasPositronEvent tiltedEvents := by
+  unfold HasPositronEvent; decide
 
 /-- The flip, on the single pair: node1,node2 reads electron (δ² = -1) flat, positron (δ² = +1)
 tilted.  Matter/antimatter is baseline-relative. -/
@@ -142,9 +144,8 @@ theorem baseline_relative_flip :
 -- THE PIGEONHOLE BOUND: the apparatus resolves at most three electrons.
 -- ----------------------------------------------------------------
 
-/-- Every tag is one of exactly three values: the apparatus has three distinguishable states. -/
-theorem tag_lt_three (s : Bullshit0) : tag s < 3 := by
-  cases s <;> (simp only [tag]; omega)
+-- `tag_lt_three` (∀ s : Bullshit0, tag s < 3 — exactly three distinguishable states) is the
+-- canonical lemma from Episode48; reused here rather than redeclared.
 
 /-- Four electrons cannot have four distinct tags: some pair collides (3 holes, 4 pigeons). -/
 theorem four_tags_collide (a b c d : Bullshit0) :

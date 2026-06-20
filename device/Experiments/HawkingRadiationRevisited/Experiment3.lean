@@ -1,0 +1,5 @@
+import Experiments.HawkingRadiationRevisited.Experiment2
+
+namespace Experiments.HawkingRadiationRevisited
+
+end Experiments.HawkingRadiationRevisited

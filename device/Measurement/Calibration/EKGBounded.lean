@@ -67,10 +67,18 @@ elab "ekg_probe" n:num "=>" t:term : command => do
     withCurrHeartbeats do
       tryCatchRuntimeEx
         (withTheReader Core.Context (fun ctx => { ctx with maxHeartbeats := budget * 1000 }) do
-          let _ ← Term.elabTerm t none
-          logInfo m!"EKG probe within budget ({budget} user-heartbeats): proposition evaluated")
+          -- CAPTURE the elaboration heartbeat count -- the EKG reading -- bounded by
+          -- the budget. Model: Episode32 `register_timed_probe` (`Lean.withHeartbeats`).
+          -- We do NOT `whnf`/force the term: a term over the heavy `noncomputable`
+          -- truth instances is cheap to ELABORATE (projecting a built constant) but
+          -- ruinous to EVALUATE, so capturing the elaboration cost is the correct,
+          -- bounded signal; the local `maxHeartbeats` is the circuit-breaker only.
+          let (_, hb) ← Lean.withHeartbeats do
+            let _ ← Term.elabTerm t none
+            pure ()
+          logInfo m!"EKG probe within budget ({budget} user-heartbeats): elaboration consumed {hb} internal heartbeats")
         (fun ex => do
           if ex.isRuntime then
-            logInfo m!"EKG outgrown ({budget} user-heartbeats): proposition evaluation bounded; diagnostic only"
+            logInfo m!"EKG outgrown ({budget} user-heartbeats): elaboration exceeded budget -- diagnostic only"
           else
             throw ex)

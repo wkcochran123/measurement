@@ -1,80 +1,14 @@
 \chapter{The Constructive Boundary}
 
-The previous chapter wrote a record and then admitted that the record leaned on
-promises: a limit the refinements were trusted to approach, a completion marked as
-a slot for a later import. This chapter refuses to let the record lean. It replaces
-each borrowed analytic existence with a finite artifact the apparatus builds and
-holds. Where the earlier chapters said ``a limit exists,'' this chapter produces
-the object; where they said ``the residual tends to zero,'' this chapter shows the
-residual becomes exactly zero and constructs the tower along which it does. The
-constructive boundary of the title is the line between what an apparatus assumes and
-what it builds, and the whole chapter is an exercise in moving claims across that
-line from the first side to the second.
+The last chapter wrote a record and then admitted the record leaned on a promise: a limit the refinements were trusted to reach, a completion penciled in as a slot for something to be imported later. This chapter takes the lean away. Wherever the apparatus had said ``a limit exists, trust it,'' it now builds the thing and holds it; wherever it had said ``the leftover shrinks toward zero,'' it now shows the leftover becomes exactly zero, at a finite stage, and builds the ladder along which it does. The chapter is about one line --- the line between what the apparatus assumes and what it builds --- and the whole of the work is moving every claim across that line, from the first side to the second.
 
-The chapter opens by dissolving a door it never needed to open. The earlier
-convergence was always stated as though it would one day require a theorem from real
-analysis --- a Weierstrass density, a completeness, a sup-norm. The first section
-shows there is no such door, because the apparatus never instantiated the field that
-would have it. Its notion of smallness is order-theoretic: a sequence tends to zero
-when it eventually falls under every admissible tolerance. And the convergence the
-finite framework actually achieves is stronger than approximation. It is eventual
-exactness: once a refinement captures a configuration, the residual there is not
-small but zero. ``Weierstrass'' becomes an instantiation of an order fact, not a
-cathedral the apparatus must enter.
+It begins by walking up to a door it was always told it would have to open. The convergence had always been described as though it would one day need a heavy theorem from real analysis to make it rigorous. The apparatus walks up to that door and finds it was never there: it never built the smooth, continuous world the theorem would have been about, so it never needed the theorem. Its idea of ``small'' is plainer --- a thing is small when it eventually falls under every tolerance the apparatus sets --- and what it actually reaches is stronger than small. Once a refinement is fine enough to catch a configuration, the leftover there is not small but zero: exactly zero, at a finite stage. Not a limit approached, but an exactness reached.
 
-The second section makes the constructive boundary itself into something the
-apparatus can certify, and turns the certification into a method. A construction is
-genuinely constructive when the apparatus can run it and read a number off the end,
-because a successful run is a certificate that nothing non-constructive was used.
-The apparatus runs its integrator, gets a number, and thereby certifies that the
-whole path behind the number is built from finite, executable material. It also
-isolates the single non-constructive decision the book ever needed --- one classical
-choice, sitting at one rung --- so that the rest of the structure can be certified
-free of it. Constructed artifacts, produced and run rather than assumed, become the
-apparatus's boundary witnesses: where analysis would assert that an object exists,
-the apparatus exhibits one and runs it.
+The second move turns that honesty into something you can check. A construction is honest --- built, not assumed --- exactly when the apparatus can run it and read a number off the end: a number that actually comes out is a receipt that everything behind it was finite and could be run, nothing borrowed on faith. So where an analysis would assert that some object exists, this apparatus exhibits one and runs it. And where it cannot build --- one deep step, far off at the door to a richer geometry --- it does not pretend otherwise: it leaves that one step standing in plain sight, declared rather than smuggled in, so that everything around it can be certified as built.
 
-The third section proves a fact about the shape of the convergence claim that no
-amount of construction can change, and it is a fact of pure counting. The
-configurations the apparatus must eventually capture are infinitely many; each
-refinement stage is one finite list. So every finite stage misses some
-configuration --- more pigeons than holes --- and no single stage can ever support
-them all. The quantifier order is therefore forced: not ``there is a stage that
-captures every configuration,'' which is provably false for any tower whatever, but
-``for every configuration there is a stage that captures it.'' The apparatus does
-not get to choose the convenient order; the pigeonhole chooses it.
+The third move is a fact no amount of building can change, and it is pure counting. The configurations the apparatus must eventually catch are endless --- more of them than any single finite stage can ever hold --- so every stage, however fine, misses some: more pigeons than holes. That forces the shape of the honest claim. The apparatus may not say ``there is one stage that catches them all,'' because the counting forbids it; it may say only ``for each configuration, there is some stage that catches it.'' And what it does catch it sorts into a handful of holes --- folding together everything the reading cannot tell apart, while refusing to fold together what it can, so the construction never quietly collapses what was supposed to stay apart.
 
-The fourth section turns the same counting around and extracts the positive result
-hiding inside it. The residual does not see a configuration whole; it sees it only
-through two cost readings, and those readings take finitely many values. So the
-infinite family of configurations collapses, for the residual's purposes, to a
-handful of representatives --- three holes --- and solving the residual on the three
-representatives solves it on every configuration that shares their tags. The same
-counting that forbade a uniform stage hands back a uniform answer up to the cost
-quotient. The section also records an honest refusal: one natural action cannot be
-solved on all three representatives at once, so no tower can carry it, and for that
-action eventual exactness is false rather than merely unproven. The construction
-works exactly where the residual already vanishes, and the apparatus says so.
-
-The fifth section produces the two artifacts the chapter has been promising and then
-reads the name off the result. It builds a concrete exhausting tower --- an
-enumeration of the buildable configurations, graded so that each appears by a stage
-the apparatus can compute --- and it builds the convergence certificate as a
-constructor rather than a hypothesis, proving the bound from the combinatorics
-instead of assuming it. With the tower produced and the certificate proven, the
-section reveals what the tower was squeezing all along: the residual the apparatus
-has driven to zero is the Fréchet derivative of the action. The derivative exists,
-because one linear gauge approximates the action at every path with remainder
-exactly zero; it is therefore unique, because any approximating gauge must carry the
-same linear part; and the expansion that produced it terminates at order two with no
-remainder. The variational principle is not approximately solved along the produced
-tower. It is solved.
-
-By the end of the chapter the record of the previous chapter no longer leans. The
-limit is a produced tower; the completion's work, where the record needs it, is done
-by a constructed artifact; the convergence is eventual exactness proven from
-counting; and the quantity at the center of it all has its right name. What the
-apparatus could only assume, it now builds.
+The last move builds the ladder itself: a tower the apparatus produces, stage by stage, each rung built and held, and no two ways of building it that disagree --- the thing it constructs is the only thing it could have constructed. By the end the record leans on nothing it has not built. Every ``a limit exists'' has become ``here is the object, and here is how it was made.'' And there is one thing the apparatus is careful never to do, and it is the quiet point of the whole chapter: it never assumes that the thing it is building toward is already out there, waiting to be reached. It builds exactly as far as it has built, and claims only that far. It never says the end is already there before it has made its way to it.
 
 \section{Eventual Exactness instead of Classical Weierstrass}
 
@@ -261,31 +195,34 @@ larger obligation: the artifact must carry the transition from not-yet to
 captured by its own finite rule.
 
 The second certificate is a dependency audit. Execution says that a particular
-artifact can run. The audit says where the classical boundary sits in the larger
-classification ladder. Without the audit, the apparatus would know that some
+artifact can run. The audit says where the classical boundary sits relative to the larger
+construction. Without the audit, the apparatus would know that some
 readings came back, but it would not know whether a non-constructive decision
 had entered through a side door of the proofs surrounding those readings. The
 audit follows the carried dependencies and separates the rungs. The constructive
 rungs clear: the counting rungs, the numeric rung, the comparable rung, and the
 gauge reading do not require the classical decision. The one classical decision
-appears only at the inferred top rung.
+does not fall in the constructive base at all; it waits at the door to a richer
+geometry, the deep step the construction has not yet taken.
 
 That is the narrowness the chapter needs. There is exactly one named classical
-needle in this part of the development, not a fog of classical contamination.
+needle in the whole construction, not a fog of classical contamination --- and it
+does not fall in this constructive base.
 Here the needle keeps the Chapter 1 sense: the exposed yes-or-no edge of a finite
 decision. The apparatus does not pretend that the needle is constructive. It
 does not dissolve the decision into prose. It also does not let the needle stain
-everything below it. The audit names where the decision is used and, just as
+the constructive base. The audit names where the decision is used and, just as
 importantly, where it is not used. The lower rungs remain constructive artifacts.
-The top inferred rung carries the classical edge.
+The classical edge belongs to the deep geometric step, not to anything the base
+has built.
 
 This is why the boundary is sharper than a disclaimer. A disclaimer would say,
 somewhere, that a classical ingredient appears. The audit says where. It records
-that the constructive base and the gauge reading are clean, while the inferred
-top rung is not. The difference matters because Chapter 11 is trying to keep the
+that the constructive base and the gauge reading are clean, while the one classical
+edge waits at the door to a richer geometry. The difference matters because Chapter 11 is trying to keep the
 apparatus honest without making it timid. If one classical decision appeared
 anywhere, and the book treated that as contamination everywhere, then the
-finite work below the decision would be erased. If the book ignored the decision,
+finite constructive work would be erased. If the book ignored the decision,
 then the classical edge would be hidden. The audit permits neither mistake. It
 keeps the built part built and the borrowed part named.
 
@@ -293,15 +230,16 @@ The audit also prevents a second overcorrection. Once a classical needle has
 been named, one might be tempted to treat every later reading as suspect. That
 would be a different kind of inaccuracy. The identity gauge reading \(0\), the
 kicked gauge reading \(2\), and the residual readings \(1\) and \(0\) do not
-inherit the top-rung decision merely because they live in the same chapter. They
+inherit the classical decision merely because they live in the same chapter. They
 belong to the constructive base, and the audit records that fact. The apparatus
 therefore does not choose between naive purity and wholesale suspicion. It keeps
-an account. Clean rungs stay clean; the inferred rung stays marked.
+an account. Clean rungs stay clean; the one classical edge stays named at the deep
+step.
 
 The two certificates therefore play different roles. Execution is local and
 positive: this artifact runs, and here are its readings. Dependency audit is
 structural and negative: this path does not draw on the classical decision, and
-that top rung does. Together they turn the constructive boundary into a carried
+the deep geometric step does. Together they turn the constructive boundary into a carried
 feature of the apparatus. The boundary is not guessed from the style of a proof
 and not granted by a phrase such as ``explicit construction.'' It is witnessed by
 finite readings and by a ledger of dependencies. The apparatus both produces
@@ -310,12 +248,20 @@ the artifact and accounts for what the artifact depends on.
 The result is a disciplined form of humility. The apparatus does not say that
 all classical reasoning has vanished. It says that, in this finite development,
 the constructive material reaches through the residual, the gauge, and the
-lower classification rungs, while one inferred top rung remains classical. That
+lower classification rungs, while the one classical edge waits at the deep
+geometric step it has not yet taken. That
 is a much smaller and more useful statement than a global purity claim. It is
 also stronger than a vague warning, because it comes with artifacts. The sample
 residual reads \(1\) and then \(0\). The identity gauge reads \(0\). The kicked
-gauge reads \(2\). The audit leaves one named needle at the top. The record can
+gauge reads \(2\). The audit leaves one named needle at that deep step. The record can
 now say exactly what it has constructed and exactly what it has merely isolated.
+
+The audit also names a second piece of non-constructive content it refuses to
+hide. The law of motion the apparatus cannot decide is supplied openly, as a named
+oracle for an undecidable query, rather than assumed in silence. The construction is
+therefore constructive throughout its base, with two exceptions it holds in plain
+view: one classical choice at the deep geometric step, and the law of motion
+declared as an oracle. Naming them is the opposite of hiding them.
 
 This is the section's metaphysical anchor: to construct is to witness. A constructed
 artifact is not an illustration of a witness somewhere else. It is the witness
@@ -324,7 +270,7 @@ search for such an artifact, but it cannot replace the artifact without leaving
 the work unpaid. The boundary between the constructive and the assumed is
 therefore not a philosophical preference here. It is a carried boundary: a line
 the apparatus can point to, certify by operation, audit by dependency, and
-isolate to a single decision when it cannot cross it.
+isolate the classical content to a single deep step when it cannot cross it.
 
 \section{The Forced Quantifier}
 
@@ -353,7 +299,7 @@ apparatus is allowed to promise the first only if it later gives the promised
 stage slip by slip. It is not allowed to smuggle in the second because the second
 is tidier.
 
-This is the place where a harmless-looking swap would change the theorem. If the
+This is the place where a harmless-looking swap would change the claim. If the
 stage comes after the slip, the apparatus may inspect the slip and answer with a
 stage suited to it. If the stage comes before the slip, the apparatus has to
 answer all possible slips without seeing which one is being asked about. The
@@ -459,11 +405,11 @@ support. The apparatus need not carry every slip separately if the residual
 cannot tell some slips apart. It may carry one representative for each residual
 class, solve the representative, and transfer the zero across the class.
 
-Now impose the finite tag that the earlier construction already uses. The tag has
-three possible values. A cost that factors through that tag reads a slip only by
+Now impose the finite mark that the earlier construction already uses. The mark has
+three possible values. A cost that factors through that mark reads a slip only by
 which of the three values it carries. For residual purposes, the infinite family
-therefore collapses into three holes. Choose one representative for tag \(0\),
-one representative for tag \(1\), and one representative for tag \(2\). If the
+therefore collapses into three holes. Choose one representative for mark \(0\),
+one representative for mark \(1\), and one representative for mark \(2\). If the
 residual vanishes on those three representatives, then it vanishes on every slip
 in the matching hole:
 \[
@@ -471,13 +417,13 @@ in the matching hole:
   \;\Longrightarrow\;
   \text{residual}(s) = 0 \ \text{ for every slip } s.
 \]
-The implication is not magic. Given any slip, look at its tag. Replace it by the
-representative with that same tag. Because the cost factors through tag, the slip
+The implication is not magic. Given any slip, look at its mark. Replace it by the
+representative with that same mark. Because the cost factors through the mark, the slip
 and the representative have the same two cost readings around the middle node.
 The residual congruence above says their residuals are equal. Since the
 representative residual is zero, the slip residual is zero. The three
 representatives are not pretending to be all slips. They are enough only because
-the residual factors through the tag data.
+the residual factors through the mark data.
 
 This is why the section speaks of holes rather than samples. A sample would be a
 guess that one observed case stands for many unobserved cases. A hole is a class
@@ -490,79 +436,79 @@ that, for this residual and this cost, every slip in the hole has the same
 residual value.
 
 This is the positive pigeonhole. The uniform answer that the previous section
-proved impossible literally is recovered up to a quotient: not one finite list
+showed impossible literally is recovered up to a quotient: not one finite list
 containing every slip, but three holes whose representatives carry the residual
 answer for every slip in their holes. The apparatus has not defeated the
 negative result. It has asked a different, honest question. Literal support
 cannot be uniform over the whole family. Residual support can be uniform over the
-three tag holes when the cost cannot see finer distinctions.
+three holes when the cost cannot see finer distinctions.
 
-The transfer theorem should be read with its condition attached. Solving three
+The transfer result should be read with its condition attached. Solving three
 representatives solves the quotient only when the residual really factors
-through the tag/cost data. If an action asks the residual to see more than the
-tag, then the quotient is no longer licensed. If the action does factor through
-tag, but its residual refuses to vanish on the three tags themselves, then the
+through the mark/cost data. If an action asks the residual to see more than the
+mark, then the quotient is no longer licensed. If the action does factor through
+the mark, but its residual refuses to vanish on the three marks themselves, then the
 quotient faithfully reports that refusal. The quotient is powerful precisely
 because it is narrow. It transfers zero; it does not invent zero.
 
 That condition prevents a common overreading. Three holes are enough for this
 residual because the residual sees two segment costs and those costs see only
-tags. They are not enough for every possible question one might ask about a
+marks. They are not enough for every possible question one might ask about a
 configuration. A later geometric or orientation-sensitive question may split the
 same three holes into finer distinctions. This section does not license those
 claims. It licenses only the residual transfer that has just been stated. Within
 that boundary, the quotient is complete: solve the three representatives and the
 whole quotient is solved.
 
-The discriminating action shows the limit. It assigns no cost between equal tags
-and unit cost between unequal tags. Around a middle node, the residual asks how
-the left-to-middle and middle-to-right comparisons change when the middle tag is
-varied. Across the three possible middle tags, that pattern is nonconstant. In
+The discriminating action shows the limit. It assigns no cost between equal marks
+and unit cost between unequal marks. Around a middle node, the residual asks how
+the left-to-middle and middle-to-right comparisons change when the middle mark is
+varied. Across the three possible middle marks, that pattern is nonconstant. In
 one arrangement the values have the shape \(\{0,2,2\}\); in another they have the
-shape \(\{1,1,2\}\). The details are finite arithmetic over three tags, but the
-consequence is structural: at least one tag representative has nonzero residual.
+shape \(\{1,1,2\}\). The details are finite arithmetic over three marks, but the
+consequence is structural: at least one mark representative has nonzero residual.
 There is no way to make the residual vanish on all three at once:
 \[
-  \text{no covering trace makes the discriminating residual vanish on all three tags.}
+  \text{no covering trace makes the discriminating residual vanish on all three marks.}
 \]
 This is the same arithmetic that produced the kicked reading \(2\): two
 boundary-crossing edges. Here it is not promoted into a later sign, charge, or
 orientation claim. It is only the finite obstruction the residual sees. Because
 the discriminating residual is nonzero somewhere among the three
 representatives, no trace covering those representatives can solve it. And
-because the discriminating cost itself factors through tag, the refusal is not
+because the discriminating cost itself factors through the mark, the refusal is not
 limited to those literal representatives. Any knot set that covers all three
-tags would transfer a forced zero back to the three representatives, contradicting
-the obstruction. Thus there is no covering trace and no tag-covering trace for
+marks would transfer a forced zero back to the three representatives, contradicting
+the obstruction. Thus there is no covering trace and no mark-covering trace for
 this action.
 
 That refusal is not a failure of the quotient method. It is the quotient method
 working honestly. The method says: if the residual factors through the three
 holes, then solving the holes solves the family. The discriminating action says:
 the residual over the three holes is not all zero. Therefore the method refuses
-to certify it. The apparatus is not stuck because a proof is missing; it is
+to certify it. The apparatus is not stuck because a certificate is missing; it is
 informed that this action is not stationary under the residual test. Eventual
 exactness is blocked for the right reason.
 
 The no-covering conclusion has two layers. First, a trace that literally carries
 the three representatives would force the terminal residual to vanish on those
-representatives, contradicting the nonzero tag pattern. Second, even a trace that
-uses different knots cannot escape if those knots cover the same three tags. Tag
+representatives, contradicting the nonzero mark pattern. Second, even a trace that
+uses different knots cannot escape if those knots cover the same three marks. Mark
 congruence would carry the forced zero from the chosen knot back to the
-representative of its tag. The obstruction therefore survives replacement of the
-representatives. It is a tag-level obstruction, not an artifact of a bad choice
+representative of its mark. The obstruction therefore survives replacement of the
+representatives. It is a mark-level obstruction, not an artifact of a bad choice
 of three named slips.
 
 What can pass through the quotient is an action whose residual is structurally
-zero. The clean repair is telescoping. Its cost is read as one tag plus the
+zero. The clean repair is telescoping. Its cost is read as one mark plus the
 complement of the other:
 \[
-  \text{cost}(x,y)=\mathrm{tag}(x)+(2-\mathrm{tag}(y)).
+  \text{cost}(x,y)=\mathrm{mark}(x)+(2-\mathrm{mark}(y)).
 \]
 Around any middle node the two segment costs telescope:
 \[
   \text{cost}(\text{left}, t) + \text{cost}(t, \text{right})
-  = \mathrm{tag}(\text{left}) + 4 - \mathrm{tag}(\text{right}),
+  = \mathrm{mark}(\text{left}) + 4 - \mathrm{mark}(\text{right}),
 \]
 which does not depend on the middle \(t\) at all. So the difference under any
 variation is identically zero. The action is nontrivial as a cost, but its
@@ -572,19 +518,19 @@ There is a small subtlety worth keeping visible. The telescoping action is not
 accepted because it behaves like an ordinary path admission rule. Its composed
 cost differs from the direct endpoint cost by a constant offset. That would be
 the wrong door for an earlier admission test. The present covering route asks a
-different question: whether the residual vanishes on the tag representatives and
+different question: whether the residual vanishes on the mark representatives and
 therefore on the quotient. For the telescoping action it does. The residual is
 zero for every path and every variation directly, and the three-hole transfer
 also certifies the same fact by the quotient route. This is the constructive
-repair: finite tag data, structurally zero residual, flatness at every middle
+repair: finite mark data, structurally zero residual, flatness at every middle
 node, and an accepted covering route for the reason this chapter actually needs.
 
 This also explains why the repair is not a trick that erases the discriminating
 refusal. The telescoping action changes the action, not the verdict about the
-discriminating one. It arranges the two segment costs so the middle tag cancels
+discriminating one. It arranges the two segment costs so the middle mark cancels
 out of the residual. The discriminating action arranged the costs so changing
-the middle tag could be detected. The quotient records both facts. One action
-cannot pass because its three tag residuals are not all zero. The other passes
+the middle mark could be detected. The quotient records both facts. One action
+cannot pass because its three mark residuals are not all zero. The other passes
 because its residual is zero before any representative transfer is needed, and
 the transfer then confirms the same result across the quotient.
 
@@ -611,7 +557,7 @@ apparatus may solve three representatives in place of an infinite family only
 because residual equality follows from cost equality. But the same finiteness
 also exposes actions that cannot be solved on the three holes at all. The
 constructive boundary is not only a line the apparatus works up to; it is also a
-line the apparatus can prove it must respect, for actions whose residual will not
+line the apparatus can show it must respect, for actions whose residual will not
 vanish.
 
 \section{The Produced Tower and Frechet Uniqueness}
@@ -678,12 +624,12 @@ list. The produced tower has not cheated the pigeonhole. It has supplied the
 right per-slip stage while leaving the forbidden uniform stage forbidden. This
 is why the construction is trustworthy. It solves the problem the finite
 apparatus can solve, and it leaves untouched the problem the counting argument
-proved unsolvable.
+showed unsolvable.
 
 The same tower also remembers the obstruction from the previous section. Early
-finite stages already cover the three tag representatives, and from that point
+finite stages already cover the three mark representatives, and from that point
 forward every later stage covers them as well. For the discriminating action,
-covering those tags is exactly what cannot be made stationary. The obstruction
+covering those marks is exactly what cannot be made stationary. The obstruction
 therefore survives inside the produced tower. The tower gives the accepted
 action a route; it does not rescue the refused action. A nonzero residual is
 not a missing certificate waiting to be discovered. It is a genuine failure of
@@ -712,7 +658,7 @@ Now produce the certificate. An earlier completed tower could carry a field
 saying that its bound tends to zero. But a carried assertion is not yet a
 produced certificate. If the conclusion follows because the structure was handed
 the very convergence it needs, nothing has been discharged. The honest
-certificate must construct the bound and prove its behavior from the finite
+certificate must construct the bound and establish its behavior from the finite
 stage data. It must show where the bound comes from, why it dominates the
 residual, and why it tends to zero.
 
@@ -734,7 +680,7 @@ This is the difference between an assumed certificate and a produced one. An
 assumed certificate says, ``suppose the bound tends to zero,'' and then reads
 off convergence. The produced certificate says: here is the finite tower, here
 is the trace at each stage, here is the terminal residual, here is the bound,
-and here is the proof that the bound is zero at every stage. The statement
+and here is the certificate that the bound is zero at every stage. The statement
 \[
   \text{bound tends to zero}
 \]
@@ -744,7 +690,7 @@ but because the sequence is constant at zero.
 
 The construction also clarifies the role of the exhaustive tower. For the flat
 telescoping action, the residual vanishes before any delicate limiting argument
-is needed. The exhaustion route is still important because it proves the
+is needed. The exhaustion route is still important because it shows the
 finite-stage apparatus has the right coverage story: each skeleton slip enters
 at its computed depth and stays there. But the zero reading is not produced by
 waiting long enough for a nonzero quantity to decay. The zero reading is
@@ -754,20 +700,20 @@ finite-stage certificate.
 There is no hidden analytic compactness in this move. The scale here is the
 natural-number stage scale, and convergence means the order-theoretic eventual
 zero condition already introduced at the start of the chapter. The produced
-certificate proves that condition directly: choose stage \(0\), and every later
+certificate establishes that condition directly: choose stage \(0\), and every later
 stage reads zero. The phrase ``tends to zero'' is therefore not borrowing metric
 intuition. It names a finite order fact about a sequence of readings. The
 apparatus can inspect every part of the claim: the stage, the terminal
 residual, the bound, and the witness that the bound is already zero.
 
 For the discriminating action, the same language gives the opposite verdict.
-Its residual is nonzero on at least one tag representative, and any
-tag-covering stage would have to face that representative. No tower certificate
+Its residual is nonzero on at least one mark representative, and any
+mark-covering stage would have to face that representative. No tower certificate
 can turn that residual into zero without contradicting the obstruction. The
 right conclusion is not that the discriminating action has not yet been
 approximated well enough. The right conclusion is that eventual exactness is
-false for it. The apparatus now has both sides: a produced flat case and a
-proved obstruction.
+false for it. The apparatus now has both sides: a produced flat case and an
+established obstruction.
 
 With the tower and certificate in hand, the section can name the quantity the
 book has been manipulating. The residual squeezed by the tower is the first
@@ -796,7 +742,7 @@ difference at every path and every variation, with remainder exactly zero:
   \quad\text{and}\quad
   \text{remainder}(p,v)=0.
 \]
-That is the finite existence theorem. It does not require a normed vector space
+That is the finite existence result. It does not require a normed vector space
 of variations, and it does not require a limiting argument over small
 increments. The remainder is zero by construction, so the approximating gauge
 exists in the strongest possible sense available here.
@@ -806,7 +752,7 @@ in this apparatus is a finite object with named origin, middle, and target data.
 The derivative exists because the action supplies a finite composed difference
 against each finite variation, and the canonical gauge records that difference
 with no leftover term. The construction is global over the finite path grammar,
-not over an analytic manifold. That is why the theorem can be direct without
+not over an analytic manifold. That is why the result can be direct without
 becoming grandiose.
 
 Uniqueness follows by exact determination. Suppose two gauges approximate the
@@ -827,7 +773,7 @@ This uniqueness is local in the right way. It says that at a fixed path, every
 approximating gauge has the same first-order part. It does not say that two
 different actions become the same, or that two raw configurations must be
 identified. The uniqueness belongs to the derivative reading once the action,
-path, and matching condition have been fixed. That boundary keeps the theorem
+path, and matching condition have been fixed. That boundary keeps the result
 from turning into an overclaim about the surrounding configuration world.
 
 The same care is needed for the cubic expansion. The apparatus has several
@@ -996,148 +942,12 @@ turns on a precise unease: if the one-coordinate derivative has succeeded on
 its own terms, and if those terms still cannot hear the mixed coupling, then
 what kind of instrument can measure the residue that belongs only to the pair?
 
-\section*{Coda: The Locksmith's Master Key}
+\section*{Coda: The Constructive Boundary in Review}
 
-A locksmith at a bench, cutting keys for a long corridor of doors, performs the
-constructive discipline of this chapter with brass, pins, and a depth gauge. The
-trade is worth watching because it gives the chapter a body. The blade on the
-bench has no opinion about convergence, yet the lock judges it with the same
-severity that the chapter has been trying to earn. The cut reaches the required
-depth or it does not. The pin stack rises to the shear line or it does not. The
-cylinder turns or it holds. There is no charitable middle in which a nearly
-right key opens a door nearly enough.
+Chapter 11 took the record the last chapter had to lean on and took the lean away. Where the record had said ``a limit exists, trust it,'' this chapter built the thing and held it; where it had said ``the leftover shrinks toward zero,'' it showed the leftover becomes exactly zero, at a finite stage, and built the ladder along which it does. It did this without importing any smooth, continuous world: its idea of arrival is plain --- a thing is reached when it is reached exactly, and approach counts only as the finite work of reaching. It counted honestly, claiming only ``for each configuration, some stage catches it'' and never ``one stage catches them all''; and the one step it could not build, it left standing in plain sight rather than smuggling in. Drop any one of these and the record is leaning again. That is the chapter in review. But set down inside it, unnamed, is an eleventh part of the thing the chapters have been assembling.
 
-A key is therefore not approximated in the sense that matters to the lock. It is
-cut to exact depths. The locksmith may approach the depth slowly, may file a
-little and check the gauge, may polish the cut before testing the blade; but the
-door does not reward the approach. A key ninety percent of the way to the right
-depth does not open the lock ninety percent. It fails with the same finality as
-a blank. The shear line is the lock's event of exactness. Until the pin stacks
-meet it, the mechanism refuses. Once they meet it, the cylinder turns. The
-chapter's eventual exactness has this same plain shape: arrival matters, and
-approach matters only as the finite work by which arrival is reached.
+The ten parts already on the bench were the value's --- what it is, what it does, what it carries, how it meets the world. The eleventh is not another thing the value is; it is a discipline about how the value is allowed to be got. Until now the construction could afford to point past itself --- to a limit it trusted it would reach, an end it took to be already there, waiting. The eleventh part takes that away. The thing the value is built toward is never assumed to exist; it is built, exactly as far as it has been built, and claimed only that far. The apparatus reaches what it reaches and holds what it holds, and never says the end is already there before it has made its way to it. That is the eleventh part. Bare, as the others were: not what the value is built toward, not whether the end it works toward is ever reached at all --- only that whatever the apparatus has, it has because it built it, and never because it assumed it.
 
-The lock also reads through a quotient. It does not care about the manufacturer's
-stamp, the color of the bow, the scratches left by a pocket, or the story of
-who carried the key. It sees the depths. More precisely, it sees the heights to
-which those depths lift a finite list of pin stacks. Two blades with the same
-depth pattern are the same key to that cylinder, however different they look in
-the hand. The whole visible variety of blanks collapses at the plug to a finite
-list of readings. The cylinder is a quotient device: ornament vanishes, brand
-vanishes, handling marks vanish, and the pin-depth pattern remains.
+What the value is built toward does not matter right now. Like the ten before it, the eleventh is set down and left unexplained; what it is for waits on the parts not yet handed over. The book keeps its one habit --- one piece per chapter, in its turn, none before the construction reaches it. Eleven pieces now lie in order: a value spread across places, the same value moving, the value read through a floor of disturbance, the value sized on a finite frame, the value decided, the value at rest, the value living on a chosen field, the one quantity that outlasts its every variation, a fixed rule that reads how it changes from place to place, a reading that meets the world outside the apparatus, and now a value built only as far as it is built, never assumed already to be there. A reader who has watched all eleven go down may feel the shape pulling tighter, though the book still will not say it.
 
-That is the three-hole lesson in metal. The lock reads the slots it has, not
-every distinction the world can name. If a scratch does not change a pin height,
-the lock ignores it. If two keys differ in shape outside the read cuts, the
-lock treats them as one. If three visible keys lift the same finite pin pattern,
-the cylinder does not know that three visible keys arrived. It knows the
-pattern. The locksmith relies on this every day. To make a working key, he does
-not reproduce the whole visible history of the original. He reproduces the
-finite pattern the lock can test.
-
-The forced quantifier appears as soon as the locksmith opens the drawers. A shop
-may keep trays of blanks and racks of cut keys, but no single finite tray
-already contains every possible key for every possible cylinder. Each lock
-pattern asks for its own work order. One door may require three cuts at shallow
-depths. Another may require five cuts, with the fourth pin riding high. A third
-may need a blank from a different rack before any cut can even begin. For each
-lock that belongs to the day's work, the locksmith can find the blank, set the
-depth gauge, cut the blade, and place the finished key in the box. But the box
-does not become a universal archive. It grows by finite jobs, and each job has
-its own stage.
-
-Once a pattern enters the box, it remains available. The locksmith does not
-unmake yesterday's key in order to cut today's. The rack is cumulative: a key
-cut for one cylinder sits in its labeled place while the next work order
-arrives. This is the depth-graded tower in shop language. At shallow depths,
-the locksmith has only the simple patterns. Later, the more detailed patterns
-enter. Each pattern appears at a finite stage determined by its own demand, and
-thereafter it can be taken down and tested again. The promise is not that one
-morning's tray held every key. The promise is that each finite pattern, when
-its turn arrives, receives a cut blade that stays in the record.
-
-The order on the rack matters as much as the rack itself. A careless shop could
-pile keys in a drawer and claim that everything was somewhere inside. The
-locksmith's real discipline is sharper. Each hook has a label. Each label names
-the finite pattern the hook supports. When a harder cylinder arrives, the
-locksmith does not disturb the easier ones; he adds another labeled hook at the
-right depth of the rack. If a client returns with an earlier lock, the earlier
-key is still there. If a later client brings a more delicate cylinder, the shop
-extends the rack rather than pretending the old tray already solved the new
-case. That is why the tower is not a heap. It has stages, persistence, and a
-visible rule for placing the next artifact where it can be found again.
-
-The master key sharpens the issue. A client may want one blade that opens a
-whole group of locks. The wrong way to satisfy that request is to assert that
-such a blade must exist and hand over a blank with confidence. The locksmith
-has to inspect the cylinders. He has to read the pinning charts, compare the
-positions, and find a pattern that each lock in the group will accept. If the
-pattern exists, it does not exist as a wish. It exists as brass. The locksmith
-cuts it, tests it, and watches each cylinder turn. The master key is the
-certificate. Its success lies in the doors it opens, not in a note saying that
-some key should open them.
-
-That produced key is the coda's analogue of the produced certificate. The
-chapter has refused to let an assumed certificate do the work. It has asked for
-the artifact: the finite tower, the zero reading, the trace whose bound is the
-residual itself, and the residual that vanishes in the case where the action
-truly rides. In the shop, the same distinction is tactile. A promise that a
-master key can be cut leaves every door shut. A key that has been cut and tested
-turns the cylinders. The difference between promise and proof is the difference
-between a blank and a blade whose cuts have met the pins.
-
-The locksmith also knows the dignity of refusal. Some groups of locks do not
-admit a master key. If one cylinder demands a high lift at a pin position while
-another demands a low lift there, no single cut can satisfy both. The conflict
-does not call for more optimism or a finer file. It calls for an honest verdict:
-this group cannot share one blade. The refusal is not failure by exhaustion. It
-is a successful reading of incompatibility. The pinning charts show the clash,
-and the locksmith can certify the refusal before he ruins a blank pretending
-otherwise.
-
-That refusal is as constructive as the successful master key. It tells the
-client something exact about the group. These two cylinders cannot share a
-single cut at this position. This set of locks has no common blade. The
-locksmith may still cut separate keys, or rearrange the cylinders, or change the
-client's requirement; but within the stated problem, the answer has arrived.
-The chapter's discriminating action has the same form. It does not merely lack
-a certificate today. It carries a conflict that prevents the certificate it
-would need. Where the telescoping action receives the cut key, the
-discriminating action receives the incompatibility chart.
-
-The final derivative reading also has a locksmith's analogue, though the shop
-keeps it modest. A finished key has an exact profile. Once the cuts meet their
-depths, the blade has a reading: this much lift here, that much lift there, no
-leftover gap to explain by appeal to a smoother scale. The depth gauge does not
-summon a continuum in order to certify the result. It reads the finite notches.
-The lock confirms the same reading by turning. Exactness here is not a
-philosophy added to the blade. It is the alignment of cut, pin, and shear line.
-The chapter's finite Frechet derivative should be heard in that register. It is
-the exact reading the apparatus earns once the finite cuts have been made.
-
-The profile is also unique in the only sense the lock needs. If two blades open
-the same cylinder by the same pin lifts, then the cylinder cannot distinguish
-their working part. The bow may differ, the metal may shine differently, and
-one blade may have a smoother edge, but the operative reading has already been
-fixed by the pins. The lock has no extra slot in which a second profile could
-hide. The chapter's uniqueness claim has the same modesty: once the finite
-matching condition has fixed the operative reading, another alleged reading
-must agree where the apparatus can test it.
-
-This is why the master key belongs at the close of the chapter. It gathers the
-chapter's claims without enlarging them. Exact cut, finite quotient, forced
-work order, cumulative rack, compatible group, incompatible group, produced
-key, tested key: these are enough. The locksmith does not need to predict a
-larger theory of every possible door. He needs to show which finite pattern the
-present locks can read, which pattern opens them, and which demanded pattern
-cannot exist. His craft is not less rigorous because it is local. It is rigorous
-because it knows the local test and submits the brass to it.
-
-So the chapter closes at the bench. The apparatus stands beside the locksmith,
-not above him. It does not assume the key it needs. It cuts the key, places it
-in the cylinder, and records the turn. Where the pins conflict, it records the
-conflict with the same exactness. Arrival, not approach; depth pattern, not
-ornament; produced artifact, not promise; honest refusal, not postponed hope:
-that is the constructive boundary in brass. A master key, when it exists, is a
-made thing. When it cannot exist, the impossibility is also a made thing, read
-from the finite pins and carried back to the record.
+For now there are eleven parts, and the eleventh is as bare as the rest. It names nothing the value is built toward, assumes no end already waiting, and leans on nothing still to come: a value that can differ from place to place, a value that can differ from before to after, a value read through a floor of disturbance, a value with a size on a finite frame, a value committed to a definite reading, a value that can hold steady, a value that lives on a chosen field of places, the one quantity that outlasts its every variation, a fixed rule that reads how the value changes from place to place, a reading taken against the world outside the apparatus, and now a value built only as far as it has been built, never assumed already to exist. It is an eleventh mark of a second kind, set down beside the others and waiting, as they wait, for what has not been handed over to give it its place.

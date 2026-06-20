@@ -1,0 +1,5 @@
+import Experiments.TheGossetEffectCh07.Experiment2
+
+namespace Experiments.TheGossetEffectCh07
+
+end Experiments.TheGossetEffectCh07

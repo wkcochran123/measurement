@@ -1,0 +1,5 @@
+import Experiments.TheAmdahlEffect.Experiment2
+
+namespace Experiments.TheAmdahlEffect
+
+end Experiments.TheAmdahlEffect

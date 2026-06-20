@@ -1,18 +1,14 @@
 \chapter{Stationarity}
 
-A route need not run straight from a claim to its close. It may pass through a middle: the apparatus reads a claim at a start $a$, marks an intermediate stage $b$, and funges the same claim onward to an end $c$. Chapter 5 closed a route into a report; this chapter studies a route that bends through a middle and asks two questions about that middle. What does it cost, and what happens to the account when it moves?
+The speeder, settled on sixty, reaches for the cruise control. The needle --- which has held a value, kept a before against an after, made itself carriable, taken on a size, and just now been committed to --- does a new thing: it goes still. The speed holds level. The car is still moving, the engine still working, the road still passing underneath, but the reading sits at one mark and stays there. This chapter is about that stillness --- what it takes for a reading to hold steady, which turns out to be stranger and more exact than a needle simply not moving.
 
-The apparatus answers in counts. To each ordered pair of marks $(x,y)$ it assigns a finite segment cost
-\[
-  w(x,y) \in \mathbb{N},
-\]
-the reckoned burden of carrying the claim from $x$ to $y$. A route from $a$ to $c$ then admits two readings: the direct reading $w(a,c)$, which bills the single segment, and the composed reading
-\[
-  S(b) = w(a,b) + w(b,c),
-\]
-which bills the two segments the detour through $b$ traverses. The instrument tanges each reading -- it fixes the route, with its marked middle, into a held cost the next stage can inspect.
+Steady cannot mean that nothing is happening, because plainly everything is. It means something sharper: the conditions can be nudged --- a little more throttle, a slope, a different way of arriving at the same speed --- and the held reading does not move. Some nudges the reading answers to, and some it is simply blind to: change them however you like and the needle does not notice. The chapter's first task is to sort the one from the other --- to find which directions the steady reading reads and which are nothing to it, a difference the reading itself draws by what moves it and what does not.
 
-The middle $b$ is a coordinate the apparatus introduced, not a feature of the claim, and whether that coordinate matters is the subject of the chapter. A middle is a \emph{gauge} direction in the finite sense used here: a coordinate the route carries but the account may or may not read. When the account cannot read it at all, the middle is \emph{pure gauge}. The full geometry of gauge -- how such redundant directions generate structure -- is developed in Chapter 13; in this chapter \emph{gauge} means only a direction the cost may be blind to. This first section names three conditions on the middle and the one law that always relates them.
+When a nudge does move the reading, the chapter is not content with roughly how much. It wants the exact change --- the whole of it, signed, with nothing rounded off and nothing left to a limit nobody could finish taking. And it gets it the only honest way: by holding the reading before the nudge against the reading after, and taking the difference. That difference is not an estimate of how the reading shifted; it is the shift itself, read straight off two held values. The chapter makes that exactness its discipline --- the first change a reading shows under a nudge is a thing the apparatus can hold in its hand, not a thing it has to chase.
+
+A reading is steady, then, in a strong and testable sense: nudge it any way the conditions allow, and to first order it does not budge --- every push leaves no trace in the reading. That is balance, and it is the chapter's name for a needle truly held level. But here is the thing to keep hold of, because the chapter turns on it: steady is not flat. A speed held level is not a speed with nothing under it. The needle can be perfectly still and the road beneath it still full of texture --- grades, gusts, the engine's work --- that the first nudge is too coarse to show. The stillness of that first change is not emptiness; it is the apparatus going quiet enough to register what the first order cannot reach.
+
+And whatever the stillness leaves over --- the gap between a reading gone quiet and a reading truly settled --- the chapter finds is not one thing with one name. The same single leftover, read as a balance not yet struck, as a bend that has not quite closed, as a calculation not yet signed off, is one number wearing three names at once. The chapter ends there, on that one residual, held three ways. What it does not yet do is say what lies under the steadiness --- the texture the held needle registers but cannot, at first order, show. That waits for the chapters that come.
 
 \section{The Transparent Middle}
 
@@ -296,60 +292,12 @@ The example does not replace the residual identification; it displays its least 
 
 The three names were never three quantities. The apparatus tanges one signed count and reads it under whichever question the moment asks --- whether two boundary changes cancel, whether a finite closure leaves a gap, whether a solved trace leaves a leftover --- and the count it reads is the same each time. This is the chapter's quiet thesis, and the book's: an invariant is not made many by being named many times. A measurement earns the right to call one residual by three names exactly when no name can change its value, and the whole discipline of a finite calculus is the discipline of keeping that single number answerable under every name it is asked to wear.
 
-\section*{Stationarity in Review}
+\section*{Coda: Stationarity in Review}
 
-Chapter 6 began with a middle. A route from $a$ to $c$ can be read directly by $w(a,c)$ or through a middle $b$ by
-\[
-  S(b)=w(a,b)+w(b,c).
-\]
-That single choice introduced the chapter's whole problem. The middle may change nothing in the direct account, or it may change the account while still minimizing the composed cost among alternatives, or it may become invisible to the composed cost altogether. The chapter kept those cases separate. Transparency compares the direct and composed readings. Minimizer stationarity compares one composed reading with all the others. Flatness says the composed reading cannot detect the middle at all.
+Chapter 6 took the committed reading and asked what it takes for it to hold steady. It found the answer in a forced order: a middle the reading might or might not read; an exact first change, held as the difference of two readings rather than chased to a limit; a balance, where every allowed nudge leaves the reading no first-order trace; and a single leftover that turned out to wear three names at once. Drop any one and the next has nothing to test. That is the chapter in review. But set down inside that same order, unnamed, is a sixth part of the thing the chapters have been assembling.
 
-The second step turned comparison into signed finite difference. When the middle changes from $b$ to $b'$, the two boundary faces record
-\[
-  \delta_L(b,b') = w(a,b')-w(a,b),
-  \qquad
-  \delta_R(b,b') = w(b',c)-w(b,c),
-\]
-and their sum gives the whole first variation:
-\[
-  \delta S(b,b') = \delta_L(b,b')+\delta_R(b,b') = S(b')-S(b).
-\]
-This was the finite exactness claim. The first variation did not approximate the change; it was the change. No small parameter, hidden tail, or limiting argument had to decide whether the difference could be trusted. The apparatus compared two held routes and obtained the complete signed account.
+The five parts already on the bench have been, each in its way, unsettled or in motion: a value that can differ from place to place, a value that can differ from before to after, a value read through a floor of disturbance, a value given a size on a finite frame, and a value committed to a definite reading. Now the value can come to rest. It can sit at a reading and hold there --- steady, every allowed nudge leaving it, to first order, unmoved. That is the sixth part: not a value decided once, but a value that stays, balanced against the small pushes around it. Bare, as the others were: not why it rests, not what holds it there, not what its stillness is for --- only that the value can be steady, a reading that does not move to first order. And bare in one more way the chapter was careful about: steady is not empty. Something the first order cannot show still lies beneath the stillness --- but what that is is not this part, and not yet.
 
-That exact difference then split stationarity into two public tests. Minimizer stationarity says
-\[
-  \delta S(b,b') \ge 0
-  \qquad \text{for every allowed } b',
-\]
-so no allowed replacement lowers the composed reading. Balance, or first-order quiet, says
-\[
-  r_1(b,b')=\delta_L(b,b')+\delta_R(b,b')=0
-  \qquad \text{for every allowed } b'.
-\]
-The equality is stronger than the minimizer inequality. A strict minimum may still have positive variations away from the middle; a balanced middle leaves no first-order trace under any allowed replacement. The chapter therefore used \emph{stationary} for the minimizer reading and \emph{balance} for the equality reading.
+What the steadiness is for does not matter right now. Like the five before it, the sixth is set down and left unexplained; what it is for waits on the parts not yet handed over. The book keeps its one habit --- one piece per chapter, in its turn, none before the construction reaches it. Six pieces now lie in order: a value spread across places, the same value moving, the value read through a floor of disturbance, the value sized on a finite frame, the value decided, and now the value at rest. A reader who has watched all six go down may feel the shape pulling tighter, though the book still will not say it.
 
-The direct channel stayed separate. It carried
-\[
-  r_0(b)=w(a,c)-S(b),
-\]
-and transparency meant $r_0(b)=0$. The first-order channel carried $r_1$. The total report used
-\[
-  R_{\mathrm{tot}}(b,b')=r_0(b)+r_1(b,b'),
-\]
-but the sum did not blur the two questions. A route can balance at the middle without being transparent to the direct route. A route can be transparent while some first-order variation still leaves a trace. The residue closes only when both channels go quiet: $r_0(b)=0$ and $r_1(b,b')=0$ for every allowed $b'$.
-
-The final step showed that the first-order residual funges under three names. The Euler-Lagrange reading calls it middle balance. The spline reading calls it closure residual:
-\[
-  r_{\mathrm{spline}}(b,b')=r_1(b,b').
-\]
-The tridiagonal certificate reading calls it solver residual:
-\[
-  r_{\mathrm{tri}}(b,b')=r_{\mathrm{spline}}(b,b')=r_1(b,b').
-\]
-When a completed finite certificate supplies $r_{\mathrm{tri}}(b,b')=0$ for every allowed $b'$, those carried identifications make the spline residual and the Euler-Lagrange residual vanish as well. The chapter did not claim that every computation converges. It claimed that a completed finite witness, once it carries the right identifications, can make the first-order channel inspectably quiet.
-
-The chapter's receipts therefore behave in a precise double sense. The apparatus tanges each one into a holdable finite comparison --- direct against composed, base middle against varied middle, solver residual against spline residual --- and then funges it between readings, since the same signed count passes from one name to another whenever the carried equalities authorize the passage. This is why the notation can change names without changing the account: what matters is not the prestige of the name but the finite equality that lets the receipt travel.
-
-This leaves the next problem in view. Chapter 6 has shown what the apparatus can say once the relevant alternatives and residual traces are already in hand. It has not yet explained how the apparatus chooses a finite support, orders a trace, or selects which candidates the certificate is allowed to consume. The residue left for the next chapter is not a failure of stationarity. It is the selection problem: before a finite certificate can close a residual, the apparatus must decide which finite field of alternatives it may read.
-
-What Chapter 6 settled, it settled in the finite: a measurement can read how it changes, and whether it changes at all, without borrowing an infinite step to do so. The first variation here is not a tendency glimpsed in the limit but a difference already written, and the one residual it leaves wears three names without becoming three things. A finite calculus that names its single invariant three ways, and keeps all three answerable to one signed count, has learned to read change without ever leaving the ground it stands on.
+For now there are six parts, and the sixth is as bare as the rest. It names no rest in particular, fixes no reading, and leans on nothing still to come: a value that can differ from place to place, a value that can differ from before to after, a value read through a floor of disturbance, a value with a size on a finite frame, a value committed to a definite reading, and now a value that can hold steady. It is a sixth mark of a second kind, set down beside the others and waiting, as they wait, for what has not been handed over to give it its place.

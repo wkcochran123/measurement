@@ -1,0 +1,5 @@
+import Experiments.TheEinsteinEffectCh08.Experiment2
+
+namespace Experiments.TheEinsteinEffectCh08
+
+end Experiments.TheEinsteinEffectCh08

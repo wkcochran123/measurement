@@ -1,0 +1,5 @@
+import Experiments.TheInverseSquareEffect.Experiment2
+
+namespace Experiments.TheInverseSquareEffect
+
+end Experiments.TheInverseSquareEffect

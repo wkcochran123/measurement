@@ -1,0 +1,5 @@
+import Experiments.TheComptonScatteringEffect.Experiment2
+
+namespace Experiments.TheComptonScatteringEffect
+
+end Experiments.TheComptonScatteringEffect

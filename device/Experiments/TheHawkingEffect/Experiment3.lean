@@ -1,0 +1,5 @@
+import Experiments.TheHawkingEffect.Experiment2
+
+namespace Experiments.TheHawkingEffect
+
+end Experiments.TheHawkingEffect

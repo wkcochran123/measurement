@@ -1,65 +1,14 @@
 \chapter{Cohen Up to Epsilon}
 
-The previous chapters leaned, more and more openly, on a divide they never made
-precise: countable exhaustion reaches the certificate family and stops short of the
-coupling, and the two families were kept apart by type. That divide has the shape of a
-set-theoretic fact, and a finite apparatus that means to approach the continuum should
-put its set-theoretic house in order before it knocks on that door. This chapter does
-the housekeeping. It builds the apparatus's own counting, files a finite forcing
-calculus bounded by a tolerance, gives that calculus its order and its coding, and
-closes the finite arc --- all before any continuum claim is made.
+The receiver does not give a point. Ask it where you are and it gives a place to within so many feet --- a cell on a grid, narrowed as more satellites come in, narrowed again, the box around you shrinking but never closing to a single dimensionless point. That is the honest thing about it: a finite receiver pins a finite cell, finer and finer, and never pretends it has reached the one exact spot. And it points at something the book has been circling for chapters. The earlier work leaned, more and more openly, on a line it never drew sharply --- the line where the countable, the things you can list one by one, stops short of the complete, unbroken world it keeps seeming to reach. Before the book can walk up to that complete world and knock, it has to put its own counting in order. This chapter is that housekeeping, and it does every bit of it on this side of the door.
 
-The chapter opens at the bottom, with counting. The apparatus has carried a number
-type since its first pages, but it has never made that type count: never shown, in its
-own number system, that one and one make two. The first section does exactly that. It
-defines the successor and the sum in the apparatus's own numbers and proves the small
-arithmetic that everything above will quietly use --- one and one is two, one and two is
-three, one and one and one is three --- as definitional facts, with an induction
-principle over the numbers the successor actually generates. It is the humblest section
-in the book, and it is load-bearing: the closeout at the chapter's end will rest on a
-single successor certificate proved here.
+It starts at the very bottom, with counting. The apparatus has carried numbers since its first page, but it had never made them actually count --- never shown, in its own numbers, that one and one make two. So the first thing the chapter does is the humblest thing in the book: it builds the step that takes each number to the next, and shows that one and one is two, one and two is three, and that the numbers can be climbed one step at a time. It is the smallest result the book contains, and everything above it leans on it; the chapter's very last move will rest on a single fact set down here at the floor.
 
-The second section introduces the objects the forcing calculus acts on. A spline
-condition is a finite list of bounded knot-value assignments --- a finite piece of
-partial information about where the spline sits, with every knot and value held below a
-fixed tolerance. These are forcing conditions in the precise sense: finite, partial,
-and orderable by how much they commit to. The section establishes that they behave: the
-empty condition commits to nothing, and every condition has a finite support, the finite
-set of knots it speaks about.
+On that counting it lays a discipline of partial commitments. A commitment is a finite scrap of where the grid sits --- this cell holds this value, that one holds that, each pinned below a fixed tolerance, and most of the grid left blank. A half-filled grid is not a failed grid; it is a legitimate, honest state of the work. And the chapter gives that work just three moves, the three any such discipline needs: you can always write in more; two scraps that agree wherever they overlap can be combined into one; and any single question you put to the grid can be settled by writing in one more cell. Write in more, combine, settle --- and the chapter shows all three stay finite, held the whole time under the same tolerance the earlier convergence used. None of it is a finished grid; all of it is finite progress toward one.
 
-The third section gives the calculus its three operations, the three that any forcing
-discipline needs. Extension is information growth: a stronger condition contains every
-assignment of a weaker one, and extension is reflexive and transitive. Compatibility is
-consistency: two conditions that agree wherever they overlap have a common extension,
-their merge. And decision is density: for any bounded knot, a one-step extension decides
-it, and any finite list of bounded knots can be decided at once. These three --- extend,
-merge, decide --- are the Cohen-shaped content the apparatus can have before the continuum
-door, and the section proves all of them stay finite, controlled by the same tolerance
-the convergence argument used.
+Then it gives the work an order and a name. The partial grids line up by how much each commits --- a fuller grid sits above a sparser one it agrees with --- and every finite grid can be tagged by an ordinary number, so the whole discipline can be carried, counted, and pointed to inside the apparatus's own books, with nothing borrowed from outside.
 
-The fourth section gives the calculus its order and its size. The order is extension,
-but conditions carry proof, so the order closes only up to the extensional equality of
-the assignments they record; extension is a partial order up to that equality, and the
-merge is its meet, commutative up to the same equality. And the calculus is countable:
-each assignment carries a natural-number code, each condition carries a code built from
-its assignments, and so the conditions are enumerable. This is the constructive content
-of ``the ledger stays countable'' --- not a completed enumeration of a continuum, but a
-finite code attached to each finite condition.
-
-The fifth section closes the finite arc and hands the closeout to the gauge side. It
-packages the forcing calculus, its order, and its coding into a single finite-compliance
-certificate, and then it shows that the gauge residue rests on the counting of the first
-section. From the one successor certificate --- that the successor of the successor of one
-is the successor of two --- the apparatus reads off that the vacuum's linear term closes
-and the residue is the mixed pair, the electron. The gauge commutator residue is closed
-out against the count, and the finite arc that began with one and one making two ends
-with the electron underwritten by that same arithmetic.
-
-By the end of the chapter the apparatus has earned the right to approach the continuum.
-Its counting is its own and proven; its forcing calculus is finite, ordered, countable,
-and bounded by a tolerance; and the gauge residue is tied back to the count. Nothing in
-the chapter crosses the continuum door. Everything in it makes sure that when the next
-chapter does name what lies beyond that door, the house behind it is in order.
+And it closes the finite arc, filing the last leftover away where the earlier chapters left it. By the end the apparatus has a counting floor, a discipline of finite partial commitments, an order on them, a tag for each, and a clean close --- a substantial package, and, on purpose, not a finished one. It has not built that complete world; it has only made its way up to the door, not through it. That door --- the crossing from a grid forever fillable to a grid actually full --- is the next chapter's to open, with the care it will take. This one only sets the house in order first.
 
 \section{Counting to Three in the Original Number System}
 
@@ -131,7 +80,7 @@ successor-generated numerals. It may contain permissive values that are numbers
 by type but are not reached by starting at \(0\) and applying successor. An
 induction principle over the whole type would say too much. The honest
 principle is induction along the canonical spine: the numbers generated from
-the base by repeated successor. For any motive on numbers, the apparatus proves
+the base by repeated successor. For any motive on numbers, the apparatus establishes
 the generated induction rule
 \[
   \text{motive}(0),
@@ -955,164 +904,12 @@ radiation. The bridge is the line between those two ledgers. It says: the finite
 house is in order; the completion door is next; do not confuse one for the
 other.
 
-\section*{Coda: The Half-Filled Grid}
+\section*{Coda: Approaching the Door in Review}
 
-A constructor filling a crossword grid works the way this chapter's forcing
-works: cell by cell, mark by mark, with a large picture in mind and only a
-finite sheet of commitments actually on the table. The constructor does not
-begin with the finished grid. She begins with a few letters, a few clues, a
-promise not to write two letters in one square, and a willingness to extend the
-partial work when a clue becomes decidable. Watching the grid fill is watching
-the whole chapter in miniature: counting, bounded commitment, extension,
-compatibility, merge, decision, coding, and the refusal to mistake finite
-progress for the completed object.
+Chapter 15 stepped back from the value itself and put the space it lives in in order. It began at the floor, teaching the apparatus to count in its own numbers --- one and one is two --- and built on that a discipline of partial commitments: finite scraps of where a grid sits, each pinned below a tolerance, most of the grid left blank, and three moves to work them --- write in more, combine two that agree, settle any one question with one more cell. It gave those partial grids an order and a tag, and closed the finite arc. And it did all of it on this side of one door it would not open: the door from a grid forever fillable to a grid actually full. Drop any one of these and the apparatus could not honestly walk up to that door. That is the chapter in review. But set down inside it, unnamed, is a fifteenth part of the thing the chapters have been assembling.
 
-A half-filled grid is not a failed grid. It is a legitimate state of the work.
-Some cells carry letters; most are blank. The written cells are the finite
-record. The blank cells are not errors or contradictions; they are the part of
-the puzzle not yet committed. That is exactly what a finite spline condition was
-in the chapter. It was not the spline, not a total assignment, and not a
-continuum object. It was a finite list of bounded atom commitments: this knot,
-this value, below the tolerance. The coda's grid gives the same idea in a form
-the eye can hold. A condition is the set of squares already filled in pencil.
+The fourteen parts already on the bench were all about the value --- what it is, does, carries, pays, and lets out at its edge. The fifteenth is about the space the value is coming to live in. Until now that space was only ever filled in part: a value here, a value there, a finite grid of places, refinable but never whole. The fifteenth part is the discipline that lets that grid be filled finer and finer --- pinned closer, committed further, brought nearer a whole space it never builds --- without ever pretending the filling has finished. The value can be carried as near to living on a whole space as anyone asks, to within any tolerance named, and still never actually set on one. That is the fifteenth part: the right to approach the value's full space, with the space itself left unbuilt. Bare, as the others were: not the whole space, not what the approaching is for --- only that the value's grid can now be refined toward completeness without ever being completed.
 
-The first chapter task was to make sure the pencil could count its own marks.
-Before the constructor can say that a grid has three committed cells, or that a
-move adds one more square, she has to count. Chapter 15 therefore began at the
-floor: successor, one, two, three, and the small certificate that the apparatus
-can recognize its own finite successor steps. In the grid image, this is the
-difference between a vague impression that some squares are filled and a ledger
-that can say which finite marks have actually been made. The forcing calculus
-does not float above arithmetic. It stands on the ability to count finite
-commitments.
+What the approaching is for does not matter right now. Like the fourteen before it, the fifteenth is set down and left unexplained; what it is for waits on the parts not yet handed over. The book keeps its one habit --- one piece per chapter, in its turn, none before the construction reaches it. Fifteen pieces now lie in order: a value spread across places, the same value moving, the value read through a floor of disturbance, the value sized on a finite frame, the value decided, the value at rest, the value living on a chosen field, the one quantity that outlasts its every variation, a fixed rule that reads how it changes from place to place, a reading taken against the world, a value built only as far as it is built, a signed unit it carries, a price it pays for departing from itself, an edge across which it reads out what it cannot hold, and now the right to refine its space toward a whole one without ever completing it. A reader who has watched all fifteen go down may feel the shape pulling tighter, though the book still will not say it.
 
-Filling one more cell extends the grid. The new partial grid contains every
-letter the old partial grid contained, plus one more letter in one more square.
-Nothing is erased. Nothing is reinterpreted. The new grid is stronger because it
-has more information and still preserves the old information. That is extension
-in its reader-facing form. A condition grows by adding bounded commitments while
-keeping the commitments it already made. In the grid, this discipline is
-obvious: a constructor who keeps erasing the old letters has not extended a
-grid; she has changed the subject.
-
-Two half-filled grids are compatible when they agree wherever both have written
-something. If one grid writes \(A\) in a square and the other also writes \(A\)
-there, no conflict appears. If one grid leaves that square blank, no conflict
-appears either; the written letter can be carried into the merge. But if one
-grid writes \(A\) and the other writes \(B\) in the same square, no single grid
-can honor both. Compatibility is agreement on overlap. Merge is the finite act
-of putting together two compatible records and keeping all their letters. The
-least common stronger grid is the one that adds no extra letters beyond what
-the two compatible partial grids already require.
-
-This is why the chapter could treat decision as finite. A particular square can
-be asked about. The constructor can point to that square and extend the current
-partial grid by filling it, if a bounded admissible letter is being committed.
-If she asks about finitely many squares, she can run finitely many such moves.
-The result is a stronger partial grid that decides the finite question she
-actually asked. The completed solution is not needed for that operation. Dense
-decision in the chapter had the same modest force: every finite bounded
-question the apparatus actually asks can be settled by finitely many bounded
-extensions.
-
-The partial grids also make extensional equality almost tactile. Two
-constructors may have arrived at the same visible grid by different routes.
-One solved the upper-left corner first; another solved the long central word
-and then filled the corners. Their notebooks may contain different scratch
-work. Their explanations may package the evidence differently. But if the same
-cells carry the same letters, the partial grid is the same for the purpose of
-the puzzle. That is extensional equality for proof-carrying conditions. The
-certificate route does not become another letter in the square. What matters is
-the finite record of actual commitments.
-
-Once the grid is understood extensionally, it can be coded. A filled square is
-finite data: a row, a column, and a letter. A half-filled grid is a finite list
-of such data. Finite data can be placed in a finite code, and finite lists of
-finite codes can themselves be coded by natural numbers. That is the chapter's
-constructive countability in a picture. The family being counted is not the set
-of completed puzzles. It is the family of finite partial fills. There are
-countably many ways to write finitely many letters in finitely described cells,
-even though the completed object toward which the work points belongs to a
-different discussion.
-
-The grid image must also remember the gauge side. A puzzle has local clues that
-close cleanly and intersections where something remains to be reconciled. In
-the chapter's gauge bookkeeping, the linear/vacuum part closes under the finite
-certificate, while the mixed pair remains as the residue. The coda should not
-turn that into a new analytic theorem. It is closer to saying: after the
-constructor has honored all the finite entries licensed by the current ledger,
-one crossing still carries the distinctive leftover mark. The mixed-pair
-residue is filed because the finite bookkeeping can say what has closed and
-what remains. It is not filed because the completed grid has already appeared.
-
-This matters emotionally as well as formally. A half-filled grid can feel
-unfinished because it is unfinished. But unfinished is not the same as
-worthless. The chapter has spent many pages teaching the reader to respect the
-power of finite work without flattering it. A finite condition is real. A
-finite extension is progress. A compatibility test is information. A merge is a
-new, stronger finite state. A decision of a finite question is an honest
-settlement of that question. A natural code for a finite record is a genuine
-counting result. The apparatus is allowed to be proud of all that, so long as it
-does not confuse those achievements with the finished puzzle.
-
-The completed grid is a different kind of object. It is the total fill in which
-every square has its final letter and every clue is simultaneously satisfied.
-The constructor may be guided by that object, may approach it through finite
-work, and may speak about it as the goal. But none of the local moves already
-possesses it. In the chapter's terms, the completed grid is the generic object
-or completion-side object beyond the finite door. The finite forcing calculus
-can approach it by extension and decide any finite bounded question on the way.
-It cannot simply declare that the total object has been supplied.
-
-The constructor's patience is the chapter's method. A good constructor does not
-look at a half-filled grid and say that every blank square has secretly been
-settled. She also does not despise the half-filled grid because it is not yet
-complete. She keeps the two truths together. The marks already written are
-binding. The blank squares remain open. The next admissible mark must respect
-the old marks. If two drafts disagree at one square, they cannot be combined
-until that conflict is resolved. This is the mood of the finite apparatus:
-serious about what has been certified, cautious about what has not.
-
-That is the finite/continuum boundary in its simplest image. A half-filled grid
-is not a completed grid, even if every mark on it is correct. A countable list
-of partial grids is not an enumeration of completed continuum objects. A
-finite residue closeout is not an unconditional boundary-radiation theorem. A
-separable pre-Hilbert skeleton is not a completed Hilbert space. A finite energy
-ledger is not a Sobolev completion. The boundary is not a rebuke to the finite
-apparatus. It is the condition under which its claims remain truthful.
-
-The grid also explains why Chapter 16 must come next rather than merely
-continue the coda. Once enough finite marks have been made, the natural question
-changes. It is no longer only, ``Can this square be filled?'' It becomes,
-``Under what hypotheses can the whole grid be treated as an object?'' That is a
-different question. It asks about completion, limits, traces, and the structures
-that let finite pieces speak as parts of a completed whole. Chapter 15 has
-prepared the finite side of that question. It has not answered the completion
-side.
-
-So the coda closes Chapter 15 with a modest confidence. The apparatus has filled
-many squares. It can count its marks. It can add new marks without erasing old
-ones. It can test whether two partial fills agree. It can merge compatible
-fills. It can decide any square it is actually asked to decide, and any finite
-set of such squares by finite iteration. It can identify partial fills that
-write the same letters, regardless of route. It can code the finite records and
-list the finite possibilities. It can tie the gauge residue back to the finite
-counting floor.
-
-What it cannot do, and what this chapter refuses to pretend it can do, is hold
-the completed grid merely because many finite pieces are in order. That work is
-next. The next chapter must name the completion hypotheses, say what analytic
-structure they add, and state which boundary-radiation claims remain
-conditional on them. Chapter 15 leaves the reader at the table with a grid that
-is genuinely fuller than before, governed by honest rules, and still not the
-finished puzzle. The pencil has done real work. The door to completion is still
-a door.
-
-That is a better ending than a premature solution. The reader can see the
-letters already placed. The reader can see how another letter would be placed.
-The reader can see when two partial fills agree, when they cannot agree, and
-why a finite list of requested squares can be settled without needing every
-other square. The reader can also see the blank space that remains. Chapter 15
-does not hide that blank space. It frames it, counts what is on this side of it,
-and sends the book forward with the right question: what must be added before
-the half-filled grid may be read as a completed one?
+For now there are fifteen parts, and the fifteenth is as bare as the rest. It names no whole space, fixes no completion, and leans on nothing still to come: a value that can differ from place to place, a value that can differ from before to after, a value read through a floor of disturbance, a value with a size on a finite frame, a value committed to a definite reading, a value that can hold steady, a value that lives on a chosen field of places, the one quantity that outlasts its every variation, a fixed rule that reads how the value changes from place to place, a reading taken against the world outside the apparatus, a value built only as far as it has been built, a signed unit it carries read two ways, a price it pays for departing from itself, an edge across which it reads out what it cannot hold, and now the right to refine the value's grid toward a whole space without ever completing it. It is a fifteenth mark of a second kind, set down beside the others and waiting, as they wait, for what has not been handed over to give it its place.

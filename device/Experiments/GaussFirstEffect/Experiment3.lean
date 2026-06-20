@@ -1,0 +1,5 @@
+import Experiments.GaussFirstEffect.Experiment2
+
+namespace Experiments.GaussFirstEffect
+
+end Experiments.GaussFirstEffect
