@@ -145,9 +145,9 @@ class HALTED
 
   halted? : ComputerProgram → ComputerProgram → Prop := fun _ program =>
     match program with
-    | .load _ _ => False
-    | .transform _ _ _ _ _ => False
-    | .boolean _ _ _ _ _ _ _ => True
+    | .load p _ => p
+    | .transform p _ _ _ _ => p
+    | .boolean p _ _ _ _ _ _ => p
 
 
 instance HALTED_LOGICAL

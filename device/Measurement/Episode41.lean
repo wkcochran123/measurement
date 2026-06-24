@@ -45,6 +45,35 @@ The strong form -- quantifying over *every* apparatus the universe kernel admits
 that will not close, Ch. 9 strain).  Parity is its smallest shadow.
 -/
 
+-- ----------------------------------------------------------------
+-- THE FUNGE FOUNDATION.  Episode40 grounded the funge (the comparison) and un-flattened the
+-- contravariant clock.  From here the funge behavior is LIVE: every reading is a funge (the truth
+-- forward, `isTrue`) or a tange (reversed, `isFalse` -- the residue that turns the crank).  Counting
+-- funges is the measurement; the tanges turn the crank.  Parity (this episode's obstruction) is the
+-- funge/tange balance.  (Defined here, where the funge is grounded, so the behavior begins at Ep41.)
+-- ----------------------------------------------------------------
+
+/-- A funge bit: the truth read forward (the funge, `true`) or reversed (the tange, `false`). -/
+def fungeBit (f : Fact) : Bool := @decide f.truth f.decTruth
+
+/-- THE CRANK: how many times the tanges turn it -- the residue count, the engine. -/
+def crankTurns (tape : List Fact) : Nat :=
+  (tape.map fungeBit).countP (fun b => b == false)
+
+/-- THE MEASUREMENT: count the funges -- the matter the machine reads. -/
+def countFunges (tape : List Fact) : Nat :=
+  (tape.map fungeBit).countP (fun b => b == true)
+
+/-- Every fact is read exactly once: counted (a funge) or turning the crank (a tange). -/
+theorem funges_and_cranks_partition (tape : List Fact) :
+    countFunges tape + crankTurns tape = tape.length := by
+  unfold countFunges crankTurns
+  induction tape with
+  | nil => rfl
+  | cons f rest ih =>
+    simp only [List.map_cons, List.countP_cons, List.length_cons]
+    cases fungeBit f <;> simp_all <;> omega
+
 /-- An apparatus turns finite counter readings into an invariant value. -/
 structure Apparatus where
   evaluate : List Nat -> Nat
@@ -111,6 +140,15 @@ theorem odd_is_obstructed : Obstruction EvenApparatus 1 := by
 it exists in the mathematics, but no even-reading instrument witnesses it. -/
 theorem odd_invariant_metaphysical : MetaphysicalRelativeTo EvenApparatus 1 :=
   obstruction_implies_metaphysical odd_is_obstructed
+
+/-- THE FUNGE DOUBLING of the parity obstruction.  Funges and tanges partition every tape, so reading
+an EVEN invariant is exactly reading a tape whose funge count and crank (tange) count sum to an even
+total -- a balanced tape.  The odd invariant `1` is then the single funge residue no balance absorbs:
+the same obstruction (`odd_is_obstructed`), now counted in funges.  Each parity reading carries its
+funge reading alongside -- the density doubles. -/
+theorem even_reading_is_funge_balance (tape : List Fact) :
+    (∃ k, tape.length = 2 * k) ↔ (∃ k, countFunges tape + crankTurns tape = 2 * k) := by
+  rw [funges_and_cranks_partition]
 
 /-- The maximal *logical* apparatus class: every evaluator, unconstrained.
 NOTE: this is a comparison class, not a physical/laboratory apparatus class.  It

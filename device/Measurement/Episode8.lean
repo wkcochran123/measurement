@@ -141,7 +141,7 @@ instance PHYSICAL_NUMERIC
   }
   threshold := .nonhalting  d.fact
                             (.program d.fact bb.calculation_process.program)
-                            (bb.calculation_process.turing_step? (.program d.fact bb.calculation_process.program))
+                            (some (ChaitinsNumberSequence.halting d.fact bb.calculation_process.state))
   admissible? := fun _ _ _ => rfl    -- rofl!  This is some serious gourmet coding!
                                      -- The fact this exists as physical electrons is enough for me!
 

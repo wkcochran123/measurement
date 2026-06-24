@@ -62,7 +62,7 @@ def rung3Indexing : IndexingProcess Rung3 rung3Carrier where
 
 instance rung3Countable : COUNTABLE Rung3 rung3Carrier where
   index := rung3Indexing
-  bounded? := fun _ _ => True
+  -- un-flattened: falls through to COUNTABLE's substantive `bounded?` default.
 
 def rung3Limit : LimitProcess Rung3 rung3Carrier where
   indexing_process := rung3Indexing
@@ -71,7 +71,7 @@ def rung3Limit : LimitProcess Rung3 rung3Carrier where
 
 instance rung3Encoded : ENCODED Rung3 rung3Carrier where
   limit_process := rung3Limit
-  encoding? := fun _ _ => True
+  -- un-flattened: falls through to ENCODED's substantive `encoding?` default.
 
 def rung3Cauchy : CauchyProcess Rung3 rung3Carrier where
   limit_process := rung3Limit
@@ -80,19 +80,29 @@ def rung3Cauchy : CauchyProcess Rung3 rung3Carrier where
 
 instance rung3Residue : RESIDUE Rung3 rung3Carrier where
   cauchy_process := rung3Cauchy
-  representative? := fun _ _ => True
+  -- un-flattened: falls through to RESIDUE's substantive `representative?` default.
+
+/-- The contravariant (funged) truth: `Fact.Truth` with its truth-mode reversed -- the tange/residue
+reading.  (Built locally because `Fact.FALSE` is not introduced until Episode 78.) -/
+def rung3FactFalse : Fact :=
+  { truth := false, decTruth := Decidable.isFalse (by intro h; cases h) }
 
 def rung3Observation : ObservationProcess Rung3 rung3Carrier where
   cauchy_process := rung3Cauchy
-  before := Limit.nil Fact.Truth
-  after := Limit.nil Fact.Truth
+  before := Limit.nil Fact.Truth        -- covariant
+  -- CONTRAVARIANT CONDITION (funge the truth): `after` is `before`'s truth reversed, so the clock
+  -- complement is no longer flat and the contravariant tail (`f2 ≠ f4`, Ep14) can fire.
+  after := Limit.nil rung3FactFalse     -- contravariant (funged)
 
 instance rung3Binary : BINARY Rung3 rung3Carrier where
   observation_process := rung3Observation
   zero := Limit.nil Fact.Truth
   one := Limit.nil Fact.Truth
   bit := Sample.initial_condition Fact.Truth (Limit.nil Fact.Truth)
-  different? := fun _ _ => True
+  -- UN-FLATTENED (reflecting Episode 8's grounding of COMPARABLE via the EKG): the funge stops being
+  -- `fun _ _ => True` and falls through to BINARY's substantive default -- the decTruth order-reversal
+  -- (isTrue -> forward, isFalse -> reversed) that IS the matter/antimatter sign.  No `dec_different?`
+  -- field, so nothing extra is demanded.  Comparison is the measurement.
 
 def rung3Repeatable : RepeatableProcess Rung3 rung3Carrier where
   observation_process := rung3Observation
@@ -103,7 +113,7 @@ def rung3Repeatable : RepeatableProcess Rung3 rung3Carrier where
 
 instance rung3RepeatableClass : REPEATABLE Rung3 rung3Carrier where
   repeatable_process := rung3Repeatable
-  typical_response := fun _ _ => True
+  -- un-flattened: falls through to REPEATABLE's substantive `typical_response` default.
 
 def rung3Computational : ComputationalProcess Rung3 rung3Carrier where
   repeatable_process := rung3Repeatable
@@ -113,7 +123,7 @@ instance rung3Numeric : NUMERIC Rung3 rung3Carrier where
   computational_process := rung3Computational
   carrier := Study.hypothesis Fact.Truth
   lambda := fun _ => Study.hypothesis Fact.Truth
-  related := fun _ _ => True
+  -- un-flattened: falls through to NUMERIC's substantive `related` default.
 
 /-- Base checkpoint: the bottom nine rungs resolve for `Rung3`. -/
 def rung3Carrier_isNumeric : NUMERIC Rung3 rung3Carrier := inferInstance

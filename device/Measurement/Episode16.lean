@@ -173,23 +173,23 @@ ekg_probe 7 =>
     truthTrueOutput.output
   let theory : Bullshit :=
     truthTrueOutput.atreyu_process.satirize truthTrueOutput.output
-  let trueOutput_value1 : Prop :=
+  let trueOutput_value1 : Option Prop :=
     truthTrueOutput.obfusplained?
       truthTrueOutput.output_true
       repeatable
       hypothesis
-  let trueOutput_value2 : Prop :=
+  let trueOutput_value2 : Option Prop :=
     truthTrueOutput.obfusplained?
       truthTrueOutput.output_true
       hypothesis
       theory
-  let trueOutput_direct : Prop :=
+  let trueOutput_direct : Option Prop :=
     truthTrueOutput.obfusplained?
       truthTrueOutput.output_true
       repeatable
       theory
   let trueOutput_coherent : Prop :=
-    trueOutput_direct = (trueOutput_value1 ∧ trueOutput_value2)
+    trueOutput_direct = Closure.slipAnd trueOutput_value1 trueOutput_value2
   let closure_repeatable_hypothesis : Closure :=
     truthInferred.equivalence_process.close? repeatable hypothesis
   let closure_hypothesis_theory : Closure :=

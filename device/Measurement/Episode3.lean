@@ -226,7 +226,7 @@ ME: Perfect. Give it a hard hat.
 inductive ChaitinsNumberSequence  -- Bullshit meter ≈ 112
 -- The __HEAVY WEIGHT CHAMPION OF THE WORLD__
   | halting: Fact → Computation → ChaitinsNumberSequence
-  | nonhalting: Fact → Computation → Computation → ChaitinsNumberSequence
+  | nonhalting: Fact → Computation → Option ChaitinsNumberSequence → ChaitinsNumberSequence
 
 -- The idea is simple.  We need to calibrate the compiler.  And there is only one universally computable constant
 -- that has fully predictable behavior yet completely unpredictable behavior:  Chaitin's number.
@@ -318,10 +318,10 @@ structure NoisyProcess  -- Bullshit meter ≈ 504
     match c with
     | ChaitinsNumberSequence.halting _ s => ChaitinsNumberSequence.halting (Fact.Truth) s   -- If we are done, then just exit 0.
                                                                                             -- and provide cached output.
-    | ChaitinsNumberSequence.nonhalting _ s _ =>
+    | ChaitinsNumberSequence.nonhalting f s _ =>
       ChaitinsNumberSequence.nonhalting (Fact.Truth) s (match next_recursive_step? s with   -- Otherwise, let's recurse the
-        | some s' => s'                                                                     -- computation and return the output
-        | none => s)                      -- of the recursion.  If it worked, return the result of the computation, otherwise
+        | some s' => some (ChaitinsNumberSequence.halting f s')
+        | none => none)                      -- of the recursion.  If it worked, return the result of the computation, otherwise
                                           -- indicate compiler failed to resolve the program _OR_ the program failed to resolve
                                           -- itself, we don't know which.
 

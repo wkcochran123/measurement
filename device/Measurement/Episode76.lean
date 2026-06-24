@@ -56,8 +56,8 @@ def godelProofLanguageOutput : Bullshit :=
     godelProofLanguageOrigin
 
 /-- The proof-language relation carried by the closure. -/
-def godelProofLanguageRelation : Prop :=
-  True
+def godelProofLanguageRelation : Option Prop :=
+  some True
 
 /-- The source closure of the sentence. -/
 def godelProofLanguageSource : Closure :=

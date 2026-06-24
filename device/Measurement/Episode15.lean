@@ -174,7 +174,10 @@ class TrueOutput
   output_true : TRUE ≤ output
   raw_output : Bullshit := atreyu_process.satirize atreyu_process.next_measurement
 
-  obfusplained? : TRUE ≤ output → Bullshit → Bullshit → Prop := fun _ a b => a < b
+  obfusplained? : TRUE ≤ output → Bullshit → Bullshit → Option Prop := fun _ a b =>
+  match a, b with
+  | .zero _, .zero _ => none            -- two origins: they commute, no slip
+  | _,       _       => some (a < b)    -- a real rung pair: the slip, condition a < b
 
 def You_the_Reader
     (Value: Type i)
@@ -368,10 +371,25 @@ end Fact
 
 inductive Closure
   | same : Fact → Bullshit → Closure
-  | different : Fact → Bullshit → Bullshit → Prop → Closure
-  | inferred : Fact → Fact → Bullshit → Bullshit → Prop → Closure → Closure
+  | different : Fact → Bullshit → Bullshit → Option Prop → Closure
+  | inferred : Fact → Fact → Bullshit → Bullshit → Option Prop → Closure → Closure
 
 namespace Closure
+
+/-- The slip order on a node's commutator slot.  `none` (the operators commuted -- no slip) is the
+floor, mirroring how `.zero` floors `Bullshit.le`; between two genuine slips the original Prop
+implication survives. -/
+def slipLe : Option Prop → Option Prop → Prop
+  | none,   _      => True
+  | some _, none   => False
+  | some p, some q => p → q
+
+/-- Slip composition (the cocycle the coherence checks compare against).  `none` is the identity --
+a commuting step contributes nothing -- and two genuine slips compose by conjunction. -/
+def slipAnd : Option Prop → Option Prop → Option Prop
+  | none,   y      => y
+  | x,      none   => x
+  | some p, some q => some (p ∧ q)
 
 def le : Closure → Closure → Prop
   | .same f1 b1, .same f2 b2 =>
@@ -388,11 +406,11 @@ def le : Closure → Closure → Prop
       f1.truth ≠ f2.truth ∨ ¬ (a1 ≤ b2 ∨ b1 ≤ b2)
 
   | .different f1 a1 b1 rel1, .different f2 a2 b2 rel2 =>
-      f1.truth = f2.truth ∧ a1 ≤ a2 ∧ b1 ≤ b2 ∧ (rel1 → rel2)
+      f1.truth = f2.truth ∧ a1 ≤ a2 ∧ b1 ≤ b2 ∧ slipLe rel1 rel2
 
   | .different f1 a1 b1 rel1, .inferred f2 f3 a2 b2 rel2 prior =>
       ((f1.truth = f2.truth ∨ f1.truth = f3.truth) ∧
-        a1 ≤ a2 ∧ b1 ≤ b2 ∧ (rel1 → rel2)) ∨
+        a1 ≤ a2 ∧ b1 ≤ b2 ∧ slipLe rel1 rel2) ∨
           le (.different f1 a1 b1 rel1) prior
 
   | .inferred f1 f2 a1 b1 _ _, .same f3 b3 =>
@@ -401,13 +419,13 @@ def le : Closure → Closure → Prop
 
   | .inferred f1 f2 a1 b1 rel1 prior1, .different f3 a3 b3 rel3 =>
       ((f1.truth = f3.truth ∨ f2.truth = f3.truth) ∧
-        a1 ≤ a3 ∧ b1 ≤ b3 ∧ (rel1 → rel3)) ∨
+        a1 ≤ a3 ∧ b1 ≤ b3 ∧ slipLe rel1 rel3) ∨
           le prior1 (.different f3 a3 b3 rel3)
 
   | .inferred f1 f2 a1 b1 rel1 prior1,
     .inferred f3 f4 a3 b3 rel3 prior2 =>
       ((f1.truth = f3.truth ∨ f2.truth = f4.truth) ∧
-        a1 ≤ a3 ∧ b1 ≤ b3 ∧ (rel1 → rel3) ∧ le prior1 prior2) ∨
+        a1 ≤ a3 ∧ b1 ≤ b3 ∧ slipLe rel1 rel3 ∧ le prior1 prior2) ∨
           le (.inferred f1 f2 a1 b1 rel1 prior1) prior2
 termination_by c1 c2 => sizeOf c1 + sizeOf c2
 
