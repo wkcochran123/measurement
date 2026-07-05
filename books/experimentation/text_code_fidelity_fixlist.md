@@ -47,6 +47,25 @@ Each is a gated unit. Most are fences/re-anchors/softens — the honest-under-cl
    fence the claim (doc). Build-or-retreat.
 4. **Band exclusivity.** Want the trichotomy? Build pairwise-exclusivity (code); else soften (A.8).
 
+### Section B decisions (fidelity lane, tange→guess→MARK; Podo turn 40, Kodo-gated turn 40)
+- **B.1 (capstone rethread) — SKIP for the PDF; DEFERRED.** `% CHOICE (B.1)`: the book is coda-complete +
+  coherent (354pp, builds, the whole arc lands to the Ch30 verdict). Re-rooting Parts IV+V around the built
+  `Capstone.lean` as the two leading terms is a STRUCTURAL enhancement, NOT a coherence requirement — deferred to
+  a future structural pass. No book edit. (No incoherence found that the rethread would fix.)
+- **B.2 (flavor / "at most three" promote) — NO PROMOTION; keep interpretive.** `-- CHOICE (B.2)`: Ep83
+  `apparatus_resolves_at_most_three` proves the NARROWER tag-resolution result — `¬ ∃ a b c d, [tags pairwise
+  distinct]` via `tag_lt_three` (pigeonhole: at most three distinct tags) — NOT the physics generation-count
+  ("exactly/at most three generations"). The book makes NO "three generations / at most three families" claim
+  (grep-clean). So nothing to promote and nothing to fence: generation-count stays interpretive/conjectural,
+  exactly as the code's scope warrants. No edit.
+- **B.3 (Ep93 ↔ Ep92 integration) — DEFER; off the Vol2-PDF path.** `-- CHOICE (B.3)`: Ep93's `did_this_whelm?`
+  calls `length.whelmed?` (the Ep6 class interface), not Ep92's band `Reader.whelmed?`. NO book prose depends on
+  Ep93/Ep92 or the `whelmed?` wiring (grep-clean of the chapters). Device-internal fork with no PDF impact — the
+  claim is fenced by A.9 (Ep93 = the three predicates + conjunction it exposes) and the wiring is deferred. Build
+  the wire-to-Ep92 only if something later needs it.
+- **B.4 (band exclusivity) — DONE via A.8** (softened to coverage; disjointness true-but-unbuilt noted, Ep92
+  docstring, commit 1599767).
+
 ## C. RESOLVED — NO ACTION (backed / aligned; my false-positive gaps, banked)
 - #2 shell zero-force → `threeRung_interiorCharge_zero` (Ep54). Backed.
 - #9 five loop residues → readings of one ±1 holonomy; fine as framed.
