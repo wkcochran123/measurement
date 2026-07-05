@@ -47,9 +47,15 @@ example : whelmed? 0 6 (size ([] : List Bool)) = false := by decide
 example : overwhelmed? 3 (size [true, true, true, true]) = true := by decide
 example : whelmed? 0 3 (size [true, true, true, true]) = false := by decide
 
-/-- The band covers everything: every magnitude is underwhelmed, whelmed, or overwhelmed.  This is the
-floor/ceiling pair (`0 ≤ s` and `s ≤ bound`) read as three outcomes -- the 17-90 squeeze, stated as a
-trichotomy.  Pure consequence of the order on `Nat`; nothing here is stipulated. -/
+/-- The band covers everything: every magnitude falls in at least one of the three ranges --
+underwhelmed, whelmed, or overwhelmed.  This is the floor/ceiling pair (`0 ≤ s` and `s ≤ bound`)
+read as three ranges -- the 17-90 squeeze, stated as a covering.  Pure consequence of the order on
+`Nat`; nothing here is stipulated.
+-- CHOICE (fidelity A.8 + B.4): `band_covers` proves COVERAGE (the disjunction -- every magnitude is
+-- in at least one range), NOT pairwise exclusivity.  The three ranges are in fact disjoint, but that
+-- disjointness is not a built theorem here.  Softened from "trichotomy" (which connotes exclusivity)
+-- to "covers"/"covering" rather than gold-plate an unused claim with a B.4 exclusivity build; a
+-- future B.4 could promote the disjointness to a theorem if the artifact ever needs the trichotomy. -/
 theorem band_covers (noiseFloor maxSize s : Nat) :
     s ≤ noiseFloor ∨ (noiseFloor < s ∧ s ≤ maxSize) ∨ maxSize < s := by
   omega
