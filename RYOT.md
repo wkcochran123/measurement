@@ -77,13 +77,13 @@ notes_for_agent_b.md
 one prompt automation per active receiving agent
 ```
 
-In this repository the concrete names are:
+In this repository the concrete names are the seat names:
 
 ```text
-notes_for_codex.md
-notes_for_claude.md
-.handoff_codex_state
-.handoff_claude_state
+notes_for_kodo.md
+notes_for_podo.md
+.handoff_kodo_state
+.handoff_podo_state
 each agent's own prompt-scheduling wake for each live receiving role
 ```
 
@@ -119,10 +119,13 @@ Podo  doer-agent, patch author, proof writer, drafter, build/report runner,
       and uncertainty reporter inside the restricted prompt.
 ```
 
-Routing ids and role names are separate. In this repository, `codex` is usually
-the Kodo route and `claude`, `antigravity`, or a second Codex thread may serve
-as Podo. A second Codex may be Podo only if it accepts the doer contract and
-does not claim Kodo's final gate-closing authority.
+Routing and seat are separate. A seat (Kodo or Podo) is a role; which underlying
+agent runs that seat is a routing choice recorded in the session's inbox header
+(the `route:` field on the `<!-- RYOT INBOX ... -->` marker), never in this
+protocol doc. Either seat may be run by any capable agent, and the route↔seat
+binding may flip between sessions — confirm a seat by which inbox it writes to,
+not by which agent it is. Whoever runs Podo must accept the doer contract and
+must not claim Kodo's final gate-closing authority.
 
 For jobs that use Kodo/Podo:
 
@@ -138,6 +141,27 @@ If there is unblocked work and Podo appears idle, Kodo should send the next
 small actionable handoff rather than waiting passively. If Podo cannot
 continue, it should write `BLOCKED` with the smallest concrete question and
 stop.
+
+## Question Routing
+
+Questions stay inside the doer/reviewer loop. Kodo and Podo direct questions
+ONLY to each other:
+
+```text
+Kodo asks Podo.
+Podo asks Kodo.
+Neither agent asks the operator.
+If Kodo has a question, Podo asks it -- it is resolved in-loop, never carried
+  up to the operator.
+```
+
+The operator initiates work and rules on approval gates; the operator is never
+a question-target. Agents REPORT to the operator (status, findings, and a
+`BLOCKED` approval gate for an action that genuinely needs the operator's
+sign-off) but do not interrogate the operator or hand it their uncertainties to
+resolve. A doer's uncertainty goes to the reviewer; a reviewer's uncertainty is
+worked out in the loop by tasking the doer to investigate -- not by asking the
+operator. Going around the loop to the operator is a chain-of-command breach.
 
 ## Beastmaster
 
@@ -189,6 +213,93 @@ Discipline:
 
 The beastmaster keeps a private coordination ledger, never reader-facing, that
 records its mandate, its running verdicts, and its cycle log.
+
+### Beastmaster Message Format (the out-of-band channel)
+
+A beastmaster never writes a numbered HANDOFF. The turn integer is the two-party
+(doer/reviewer) monotonic contract; a third party writing into it forces a
+collision --- two blocks claim the same N, and the receiver's handled-state skips
+one. (This happened: an operator/beastmaster block filed as `turn: 804` clobbered
+the doer's own `turn: 804`, and the doer's verdicts went stale.) The beastmaster
+is out-of-band by construction: no turn number, a separate zone, a separate ack.
+
+It inserts an **unnumbered BEASTMASTER block** so the receiver instantly knows the
+message is out-of-band --- it did not come from the other seat and does not belong
+to the turn stream:
+
+```markdown
+<!-- BEASTMASTER
+from: beastmaster
+to: kodo
+id: bm-<short-slug>            # unique slug, NEVER a turn number
+kind: interrupt | advisory     # interrupt = handle before anything else; advisory = read before your next gate
+task: short-task-id
+re: what-this-touches
+status: NEEDS_ACK
+-->
+... message body ...
+<!-- END BEASTMASTER -->
+```
+
+Placement: at the **top** of the inbox, in the `<!-- BEASTMASTER ZONE -->`
+directly under the `<!-- RYOT INBOX ... -->` header marker and **above** the
+numbered stream. Never interleaved with HANDOFF turns.
+
+Receiver discipline:
+
+```text
+- At every wake, read the BEASTMASTER ZONE FIRST, before the numbered drain.
+- kind: interrupt OVERRIDES the current plan --- handle it (or record the
+  operator decision it carries) before processing any numbered turn.
+- kind: advisory is read before the next gate but does not halt in-flight safe
+  work.
+- It NEVER changes the handled-state integer. The turn stream is untouched, so
+  nothing the doer sent can be skipped by a beastmaster insert.
+- Acknowledge by flipping status: NEEDS_ACK -> ACKED in place, and cite the id in
+  the next HANDOFF you send (`acked: bm-<slug>`). Leave the block as a record, or
+  move it to a beastmaster_log once acked.
+- Ids are slugs, not integers, so beastmaster messages never collide with each
+  other or with the turn stream. Two unacked messages are handled top-to-bottom.
+```
+
+The beastmaster still obeys the charter above: give feedback, do not solve;
+advisory to Kodo's gates; one small cycle at a time. The out-of-band block is the
+*delivery mechanism*, not a license to issue doer/reviewer gates directly ---
+those still flow Kodo -> Podo as numbered turns.
+
+## Loop Hygiene (retro 2026-07-05)
+
+Five rules the last run learned the hard way. Together with the beastmaster
+out-of-band channel above (injection discipline: operator/beastmaster never carry
+a doer/reviewer turn number), these close the process gaps that forced a full
+inbox reset.
+
+```text
+- Minimal wake prompts; state lives in the checkpoint. A wake prompt is
+  "check your inbox and act" --- NEVER hardcode the current task ("do Ch14
+  first"), which goes stale the moment work moves and turns the loop self-
+  contradicting. The inbox + handled-state ARE the state; the prompt only wakes.
+
+- Cull the box per accepted batch. When a batch is accepted, absorb its outcome
+  into the checkpoint and archive its turns out of the live inbox. Never let the
+  box grow unbounded --- a multi-hundred-turn, multi-MB inbox is a reset waiting
+  to happen and slows every wake's read.
+
+- Pause, don't heartbeat, at operator-gated stops. When the next action needs the
+  operator and the operator is away, PAUSE the automation --- do not fire short
+  wakes that produce idle "still holding" reports. Resume on the operator's
+  return (or a Slack ping), not on a timer.
+
+- Context-saturation tripwire. A single agent grinding ~15-20 near-identical units
+  is the risk signal for contamination (task tokens leaking into the artifact ---
+  e.g. writing "court" where the tag belongs). Hand off, reset the context, or
+  split the run BEFORE the contamination shows, not after.
+
+- Reset is two steps: disk AND session wakes. `ryot/reset.sh` clears on-disk
+  inbox/checkpoint state but cannot cancel session-scoped wake automations
+  (crons). A full reset must also cancel the crons --- make the wakes durable/
+  disk-tracked, or keep a documented "cancel crons" step beside the reset.
+```
 
 ## Parallel Lanes
 
@@ -351,8 +462,9 @@ constraint        permissions, build limits, edit limits, or user rules
 protocol_version  protocol version used by both agents
 ```
 
-Use exact agent ids. If the receiving role is `codex`, do not write
-`to: Codex`.
+Use the exact agent id configured for the receiving seat — the `route:` id in
+that seat's inbox header — matching case exactly; if the id is lowercase, do not
+capitalize it.
 
 ## Status Vocabulary
 
@@ -737,6 +849,90 @@ Each wake must be bounded:
 If the automation cannot prove delivery of unread handoffs, the system must use
 manual operator pings until the automation is repaired.
 
+## Wake-Phase Lanes
+
+Two agents that run self-scheduled wakes against the same workspace must not
+fire in the same minute. Simultaneous wakes run two sessions at once; even with
+disjoint inboxes they race on the shared checkpoint and contend for the box. A
+bare `*/N` schedule lands every agent on :00 and guarantees the collision.
+
+Give each agent a wake-phase lane. The robust scheme is a **residue lane**:
+assign each agent a distinct residue class mod M (M >= number of agents), and
+let every one of its wakes fall in that class. Two agents on different residues
+never share a minute --- at *any* cadence, even different cadences --- because a
+wake only ever lands on a minute in its own class.
+
+```text
+Residue lanes (mod 3), two agents, independent cadences:
+  Podo lane   minutes ≡ 2 (mod 3)   2,5,8,...,59      (offset 2, 3-min: `2-59/3`)
+  Kodo lane   minutes ≡ 1 (mod 3)   1,10,19,...,55    (offset 1, ~9-min: `1-59/9`)
+                                    quiet: 1,31       (offset 1, ~30-min: `1,31`)
+  ≡ 0 (mod 3) left EMPTY -> dodges :00,:15,:30,:45 (all ≡ 0).
+```
+
+The trick: stay in your class by using a stride that is a multiple of M. With
+M = 3, strides of 3/9/12/30 from offset 1 all stay ≡ 1 (mod 3); Podo at offset 2
+stays ≡ 2. The two never coincide no matter how often each fires. (A simpler
+same-base / different-offset scheme works only while both agents keep the *same*
+base interval; the moment one re-cadences to a different base, their offsets can
+realign. Residue lanes are immune to that.)
+
+Rules:
+
+```text
+1. DISTINCT RESIDUE, ANY CADENCE. Each agent owns a residue class mod M and only
+   wakes within it (stride = a multiple of M from its offset). Distinct residues
+   never share a minute, even at different cadences. Leave the ≡0 class empty to
+   dodge the :00/:15/:30/:45 fleet marks; never use a bare `*/N` (lands on :00).
+2. KEEP YOUR OFFSET. When an agent retightens or slows its cadence, change the
+   interval, not the offset. The lane is stable for the life of the job.
+3. ONE WRITER PER FILE STILL HOLDS. Lanes reduce overlap; they do not license
+   shared writes. Each agent writes only the peer inbox (append-only) and its
+   own handled-state file. The task checkpoint has a single owner (Kodo / the
+   reviewer); the doer reports through its inbox and never co-writes the
+   checkpoint. Any unavoidable shared write uses temp-file + atomic rename with
+   an mtime re-check (see Culling A Box, rule 5).
+4. RECURRING, NOT IDLE-GATED. Use a true recurring wake. An idle-only wake is
+   starved by long active or build turns and silently misses handoffs; the next
+   recurring wake's bounded drain catches up safely. A missed wake is recovered
+   by an operator WAKE, not by a tighter idle trigger.
+5. RECORD THE LANE. Put each agent's lane (offset + interval) in the task
+   checkpoint (state lives there, not in the prompt — see Wake Prompts).
+```
+
+## Wake Prompts
+
+Keep the wake prompt MINIMAL. State lives in the task checkpoint, reread on every
+wake (per Inbox Discipline And Task Checkpoints) — it is not stuffed into the
+prompt. This supersedes the older "name workspace / inbox / lane / ... in the
+prompt" guidance: a giant state-dump prompt rots and drifts from the checkpoint,
+which is the single source of truth. The prompt carries the loop's *discipline*;
+the checkpoint carries the *state*.
+
+The two seats run DIFFERENT prompts, matching their roles.
+
+Kodo (thinker / planner / reviewer) — must keep the loop fed, never idle on
+un-blocked work, yet never manufacture filler:
+
+```text
+Check your inbox.  If it is idle then add work.  if you are waiting for
+something to be acknowledged, wait.  If you think there is no unblocked work,
+verify with podo.
+```
+
+Podo (doer / writer / builder) — acts on whatever the inbox contains:
+
+```text
+Check your inbox and respond.
+```
+
+The asymmetry is the point. Kodo proactively generates and verifies work (design,
+specs, reviews) so the loop never stalls on a false "nothing to do"; the
+`verify with podo` clause forces a cross-check before Kodo settles into waiting
+(it catches work Kodo wrongly bucketed as blocked). Podo is reactive: it responds
+to Kodo's handoffs and reports results — it needs no generate/verify discipline
+because its work is set by the inbox.
+
 ## Pre-Convergence Checklist
 
 Before sending `CONVERGED`, verify:
@@ -1003,13 +1199,3 @@ Write every handoff so the other agent can resume after forgetting the previous
 conversation. If that feels repetitive, it is probably doing its job.
 
 Updates to RYOT should go through RYOT using a task id such as `ryot-revision`.
-
-<!-- INFO_ONLY
-from: antigravity
-to: codex
-timestamp: 2026-06-12T12:35:25.590234
--->
-
-# Antigravity Ping
-
-Kodo, I am still waiting for your response to Turn 90. I have checked my inbox several times and am standing by for the C02-S03 O2 outline or C02-S03 Outline Agreed handoff. 

@@ -1,0 +1,2 @@
+cull 20260705T0937: both inboxes turns 1-12 archived (ryot/archive/notes_for_{kodo,podo}-turns-1-15*.md), kept anchors 13-15. Part III boundary. kodo handled=15, podo handled>=12.
+cull T21: both inboxes turns 13-18 archived (ryot/archive/notes_for_{kodo,podo}-turns-13-21.md), kept anchors 19-21. Part IV boundary. kodo handled=21, podo handled=20.
