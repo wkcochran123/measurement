@@ -1,0 +1,192 @@
+\chapter{Orbits and Rotation}
+\label{chap:orbits-and-rotation}
+
+The first two chapters tracked motion along a line. This one tracks motion that closes on itself --- an
+orbit, a rotation --- where the record becomes a loop. And the loop is the instrument's most important new
+capability, the one every later proof rests on: a closed path the instrument can carry a tally around, and
+from which the tally can return \emph{changed}. That returning-changed is holonomy, and it is the seed of
+every proof of a charged loop to come. The chapter introduces it gently --- first as the closed cycle of an
+orbit, where the smooth-shadow ceiling debuts; then as the conserved tally of a rotation, the case where the
+tally comes back unchanged; and finally, in Foucault's pendulum, as a residue a loop genuinely carries.
+
+\section{The Kepler Effect: an orbit is a closed cycle}
+\label{se:kepler}
+
+An orbit is the first motion the instrument reads as a loop. Where a line is traversed once, an orbit is a
+closed admissible cycle --- a recorded motion that returns to where it began and is required to do so again,
+period after period,
+\begin{equation}
+  \gamma(t + T) = \gamma(t).
+\end{equation}
+It is not equilibrium --- not a fixed point a body settles into --- but a stable failure to terminate, a loop
+of length at least two that the record rereads forever. Because the path closes, the natural object for the
+instrument is no longer a difference taken along a line but an integral taken around a loop --- the $\oint$
+that will become this chapter's protagonist, a quantity accumulated all the way around and read where it
+returns.
+
+Kepler's three laws give the loop its shape, and they are best read as descriptions of the loop, not
+equations to solve. The orbit is an ellipse with the attracting body at a focus,
+\begin{equation}
+  r = \frac{p}{1 + e\cos\theta};
+\end{equation}
+equal areas are swept in equal times,
+\begin{equation}
+  \frac{dA}{dt} = \frac{L}{2m} = \text{const},
+\end{equation}
+which is the conservation of angular momentum wearing a geometric disguise; and the period and size are
+locked together,
+\begin{equation}
+  T^2 = \frac{4\pi^2}{GM}\,a^3 .
+\end{equation}
+Each names a feature of the closed loop the instrument traverses --- its shape, its rate of sweep, its
+size-and-period lock --- rather than a number to be solved for.
+
+Behind the closed shape stands a single function that explains why the loop is a loop. Fold the angular part
+of the motion into the radial coordinate alone, and the dynamics is governed by an effective potential,
+\begin{equation}
+  V_{\text{eff}}(r) = \frac{L^2}{2mr^2} - \frac{GMm}{r},
+\end{equation}
+two competing terms: the centrifugal barrier $L^2/2mr^2$, which rises steeply as $r \to 0$ and forbids the
+body from falling to the center, and the gravitational well $-GMm/r$, which draws it in. Their sum has a
+minimum, a basin in $r$, and the orbit is the body rolling in that basin --- resting at the bottom for a
+circle, swinging up the slopes for an ellipse, the radius oscillating between a nearest and a farthest turn
+while the angle winds around. The whole closed cycle is fixed by two conserved invariants the loop carries:
+the energy $E$, which sets how deep in the basin the motion sits, and the angular momentum $L$, which sets the
+height of the centrifugal barrier. Whether the motion is bound or escapes is read off $E$; the shape of the
+conic, off both together.
+
+Two of the instrument's honest floors meet here, and both deserve naming. The closure itself --- the demand
+that the loop return to its start --- is a finite count obligation: the instrument verifies directly that the
+cycle comes back, a count condition it can check. But the smooth ellipse is something else, and it is the
+smooth-shadow ceiling making its first appearance. The continuous curve $r = p/(1+e\cos\theta)$ is not a thing
+the instrument holds; it is the smooth shadow that a closed discrete cycle of counts casts as the cycle is
+imagined refined --- the shape the loop of counts approaches, named as a shadow and not derived as a fact.
+This is the third of the four honest floors, and the rest of the book will rely on it heavily: wherever a
+continuum law stands in for a discrete count, the instrument names the bridge an analogy and not a
+derivation.
+
+The reading is Kepler's, recast: an orbit is a closed book that must be reread forever, sustained not by a
+force pinning a body in place but by a reconciliation that never finishes. The loop is the instrument's new
+home, and the integral around it the instrument's new tool.
+
+\section{The Angular Momentum Effect: conservation around a loop}
+\label{se:angular-momentum}
+
+If the orbit gives the instrument a loop, rotation gives it a tally to carry around one. A rotation conserves
+a count, and that count is the angular momentum --- the tally a closed motion carries with it as it goes
+around. Written as the cross product of position and momentum,
+\begin{equation}
+  \mathbf{L} = \mathbf{r} \times \mathbf{p},
+\end{equation}
+it is the previous chapter's momentum lifted from a line to a loop: where linear momentum balanced across a
+boundary, angular momentum is conserved around a cycle. For a rigid body it takes the familiar form
+\begin{equation}
+  L = I\,\omega, \qquad I \approx M R^2, \qquad \omega = 2\pi f,
+\end{equation}
+and a hoop of mass $M = 2.0~\mathrm{kg}$ and radius $R = 0.33~\mathrm{m}$ spun at $f = 5~\mathrm{Hz}$ carries
+$\omega = 2\pi(5) = 31.4~\mathrm{rad/s}$ and $L = M R^2 \omega \approx 6.8~\mathrm{kg\,m^2/s}$ --- a definite
+tally, read off the spin. The conservation law is descriptive bookkeeping,
+\begin{equation}
+  \frac{dL}{dt} = \tau,
+\end{equation}
+saying that the tally changes only under a torque and holds fixed when none acts: the loop carries its
+angular momentum around unchanged unless something at the boundary turns it. The angular coordinate earns its
+place by compression --- it folds two independent linear displacements into a single number, carrying half
+the dimensional burden of the motion it describes.
+
+And the tally is conserved for a reason, not by accident, and naming the reason here gives the book one of its
+organizing ideas. Conservation follows from symmetry: this is Noether's theorem, met for the first time.
+Because the central well is the same in every direction --- rotate the whole configuration and nothing
+physical changes --- the motion carries a rotational symmetry, and to every continuous symmetry Noether's
+theorem attaches a conserved count. The count that rotational symmetry conserves is exactly the angular
+momentum $\mathbf{L} = \mathbf{r} \times \mathbf{p}$. The instrument does not impose the conservation; it reads
+it off the symmetry. The same principle returns in the next chapter as the general rule behind every conserved
+quantity the book meets --- a symmetry breeds an invariant, and the invariant is a count the instrument can
+carry around a loop unchanged.
+
+The honest floor is a finite count obligation: a conserved tally the loop carries around, count for count.
+The reading is that angular momentum is the conserved count of a rotation --- the rotational echo of the
+linear momentum of the previous chapter, balanced now around a cycle rather than across a boundary. The
+instrument carries a tally around the loop and finds it unchanged; that unchangedness is the conservation,
+and it is the calm before the more interesting case --- where what the instrument carries around the loop
+does \emph{not} come back the same.
+
+\section{The Foucault Effect: precession as holonomy}
+\label{se:foucault}
+
+Here is the chapter's payoff, and one of the most important moments in the book: the first time the
+instrument carries something around a loop and finds it does not come back the same. Foucault's pendulum is
+the demonstration, and the effect deserves to be built slowly, because the capability it introduces ---
+holonomy --- is the one every later proof rests on.
+
+Start with the bare idea, on the bench. Give the instrument a tally to carry --- not a number this time but a
+\emph{direction}, an arrow it keeps pointed ``the same way'' as it moves. Carry the arrow along a straight
+path and back, and it returns pointing exactly as it left: nothing accumulated. Now carry it around a closed
+loop that bends --- around a cone, say, or across the curved surface of the Earth --- keeping it as parallel
+as the surface allows at every step, never deliberately turning it. When it returns to its starting point, it
+is rotated. No one turned it; each step was as straight as the surface permitted; and yet the trip around the
+closed loop has left a residue, an angle the arrow has gained for going around. That leftover angle is the
+\emph{holonomy} --- the residue a closed loop carries, read where the path returns.
+
+The notation names the residue without computing it. Around the loop, the accumulated turning is written
+\begin{equation}
+  \Delta\phi \;=\; \oint (\text{connection}) \;=\; 2\pi\,(1 - \cos\theta),
+\end{equation}
+where $\theta$ is the half-angle of the cone the loop traces. This integral is not a number to be ground out;
+it is the \emph{name} of what the loop carries --- the holonomy --- and the form $2\pi(1 - \cos\theta)$ is its
+\emph{shape}: zero for a flat loop ($\theta = 0$, the arrow returns unturned), growing as the cone sharpens,
+exactly the solid angle the loop encloses. The instrument reads the residue off where the arrow returns; the
+equation describes that residue, it does not produce it.
+
+It is worth saying precisely what that connection is, because the same object stands under every proved
+residue to come. A connection is a rule for carrying a direction from one point to the next --- the rule of
+parallel transport, ``as straight as the surface allows.'' On a flat surface the rule is trivial, and any loop
+returns the arrow unturned; on a curved surface it is not, and the failure to return is governed by the
+surface's curvature. The holonomy is the loop integral of the connection, and by the theorem of Gauss and
+Bonnet that loop integral equals the total curvature the loop encloses,
+\begin{equation}
+  \oint (\text{connection}) = \iint (\text{curvature}) = \text{the solid angle the loop subtends}.
+\end{equation}
+For a loop on the unit sphere the enclosed curvature is exactly the area it bounds --- the solid angle --- so
+the holonomy is $2\pi(1 - \cos\theta)$, the cap the loop cuts off. The residue the arrow gains is not a
+property of the path alone but of the curvature the path encloses, read off the boundary by the connection.
+This is the precise machinery the proved chapters will carry: where Foucault's loop encloses a smooth
+curvature and returns a continuous angle, a discrete loop will enclose a quantized curvature and return a
+residue of exactly $\pm 1$.
+
+Foucault's pendulum is this picture made visible. As the Earth turns, the pendulum's swing plane is carried
+around a circle of latitude --- a closed loop on a curved surface --- and the plane, kept as parallel as the
+motion allows, returns rotated. It precesses, at a rate
+\begin{equation}
+  \Omega_{\mathrm{prec}} = \Omega \sin\lambda,
+\end{equation}
+with $\Omega$ the Earth's rotation rate and $\lambda$ the latitude, completing a full turn in one sidereal
+day divided by $\sin\lambda$. No torque turns the plane --- there is none --- yet it precesses, because the
+loop it is carried around will not let the swing's orientation close. The precession is the holonomy of that
+loop, classical and gentle, visible to anyone who watches the pendulum for an afternoon.
+
+The honest floor is the smooth-shadow analogy the orbit introduced, met now in its sharpest form. The finite
+model is a discrete transport-residue --- the failure to close, counted as the swing direction is carried
+slot by slot around the loop --- and the continuum formula $2\pi(1 - \cos\theta)$ is the smooth shadow that
+residue casts as the slots refine. The bridge between them is an analogy, named and not hidden: the finite
+experiment secures a residue, and the precession equation is the continuum that residue points toward, not a
+theorem the finite model proves.
+
+And here is the sentence the rest of the book turns on. Foucault is the \emph{gentle, classical first
+sighting} of a residue that will return, in the chapters to come, as something the instrument does not
+merely shadow but \emph{proves}. The same loop that here leaves a continuous precession will, in an echo
+chamber, a diffracting crystal, a rotating ring, a Dirac particle, and a positron's annihilation, carry a
+residue of exactly $\pm 1$ --- a sign the instrument can establish as a finite theorem about the loop,
+converses and all, not an analogy to a continuum. Foucault shows the reader, in the most familiar setting
+there is, what a loop residue \emph{is}; the proofs come later, but the capability is born here. Everything
+the instrument will prove about a charged loop, it first learns to see in the slow turning of a pendulum.
+
+\bigskip
+
+With orbits and rotation the instrument has its loop, its tally, and --- decisively --- its holonomy. It can
+carry a count around a closed path and read it where it returns: sometimes the count comes back unchanged, and
+that is conservation; sometimes it comes back with a residue, and that is holonomy. The smooth-shadow ceiling
+has debuted, naming the continuum shapes the discrete cycles only approach. Part I closes next with the least
+principle and the unseen, where the instrument learns to reconstruct the stretches of motion it did not
+directly record --- and to say, honestly, exactly how much of what it reports it has seen and how much it has
+inferred.

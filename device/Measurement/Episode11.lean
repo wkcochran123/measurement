@@ -72,8 +72,8 @@ structure CalculusProcess
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier]
-    [epsilon: LOCAL Value Carrier]
+    [account: WITNESSED Value Carrier] [real: REAL Value Carrier]
+    (imaginary: REAL Value Carrier)
   where
   derivative: BigRedDogProcess Value Carrier  -- Parents, read to your kids.  They are the future.
   function: SpaceTimePath
@@ -117,10 +117,9 @@ class UNIVERSAL
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier]
-    [epsilon: LOCAL Value Carrier]
+    [account: WITNESSED Value Carrier] [real: REAL Value Carrier]
   where
-  the_compiler: CalculusProcess Value Carrier  -- Praise be to the universal compiler.
+  the_compiler: CalculusProcess Value Carrier real -- Praise be to the universal compiler.
   source_program: SpaceTimePath
   compiled_program: SpaceTimePath
 
@@ -128,7 +127,7 @@ class UNIVERSAL
   lake_build: SpaceTimePath → SpaceTimePath → Prop := fun _ _ => the_compiler.converged = d.fact
 
 
-instance UNIVERSAL_LOCAL
+instance UNIVERSAL_REAL
     (Value: Type i)
     (Carrier: CarrierProcess Value)
     [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
@@ -140,13 +139,17 @@ instance UNIVERSAL_LOCAL
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier]
-    [epsilon: LOCAL Value Carrier]
+    [account: WITNESSED Value Carrier] [real: REAL Value Carrier]
     : UNIVERSAL Value Carrier where
   the_compiler :=
-  { derivative := epsilon.theory
+  { derivative :=
+    { universal_observer := real.universal_observer
+      differential_equation := .gateaux account.witness Fact.Truth.truth d.fact.truth (.newton account.witness Fact.Truth.truth)
+    }
     function := .einstein d.fact
-    converged := Fact.Truth
+    converged := match d.fact.decTruth with
+        | isTrue  _ => Fact.Truth
+        | isFalse _ => d.fact
     sink := Type i
   }
   source_program   := .white_hole d.fact Value (.einstein d.fact)
@@ -215,11 +218,11 @@ structure HeartbeatProcess
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier]
-    [epsilon: LOCAL Value Carrier]
-    [computer_science: UNIVERSAL Value Carrier]
+    [account: WITNESSED Value Carrier] [real: REAL Value Carrier]
+    (imaginary: REAL Value Carrier)
+    (computer_science: UNIVERSAL Value Carrier)
   where
-  bullshit_meter: CalculusProcess Value Carrier  -- Praise be to the heart.
+  bullshit_meter: CalculusProcess Value Carrier real -- Praise be to the heart.
   current_reading: SpaceTimePath
   accumulated_bullshit: YarnTheory
 

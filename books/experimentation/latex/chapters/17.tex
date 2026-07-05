@@ -1,0 +1,196 @@
+\chapter{Particles, Spin, and the Dirac Equation}
+\label{chap:particles-spin-dirac}
+
+This chapter is the proved heart of the book. Where Part II met one proved holonomy in the echo maze and the
+matter waves met a second in the Bragg peak, here three effects in a row are proved rather than shadowed: the
+Dirac operator that generates a particle's dynamics, the chirality that violates parity, and the Feynman
+diagram that reads an amplitude off a loop. Between them sits spin-$\tfrac12$, the double-cover sign the same
+holonomy explains. And it is, after the uncertainty chapter, the math-richest chapter in the book, because the
+objects here --- the gamma matrices, the covariant derivative, its curvature, the chiral projectors --- are the
+full apparatus of a relativistic particle, and each earns its picture. The unifying fact is one the book has
+built toward: orientation is a holonomy sign, and a closed loop carries $\pm 1$.
+
+\section{The Dirac Operator: the minimal first-order generator}
+\label{se:dirac}
+
+The Dirac operator is the smallest generator of a particle's dynamics that is both first-order and
+gauge-covariant, and the story of how Dirac found it is the story of a square root. The relativistic wave
+equation before him, the Klein--Gordon equation, was second-order --- it set the square of the energy and
+momentum equal to the square of the mass, $\Box\psi + m^2\psi = 0$ --- and Dirac wanted a first-order
+equation, one linear in the derivatives, because only a first-order generator propagates a state forward step
+by step without needing its acceleration as well. To get one he had to take the square root of the
+second-order operator: to find objects $\gamma^\mu$ for which
+\begin{equation}
+  (i\gamma^\mu \partial_\mu)(i\gamma^\nu \partial_\nu) = \Box,
+\end{equation}
+the product of two first-order operators returning the second-order wave operator. That is possible only if
+the $\gamma^\mu$ anticommute in a particular way,
+\begin{equation}
+  \{\gamma^\mu, \gamma^\nu\} = \gamma^\mu\gamma^\nu + \gamma^\nu\gamma^\mu = 2g^{\mu\nu}\mathbb{1},
+\end{equation}
+the Clifford algebra: the gammas square to the metric and anticommute off the diagonal. They cannot be
+numbers, since numbers commute; the smallest objects that satisfy the relation are four-by-four matrices, and
+that is why a relativistic electron is described by four components. The Clifford algebra is not imposed; it is
+forced --- the minimal bookkeeping compatible with the metric, the price of taking the square root.
+
+The dynamics then read
+\begin{equation}
+  i\gamma^\mu D_\mu \psi = m\psi,
+\end{equation}
+with the derivative not the plain $\partial_\mu$ but the covariant derivative,
+\begin{equation}
+  D_\mu = \partial_\mu + iq A_\mu,
+\end{equation}
+which carries the gauge field $A_\mu$ along with it --- the minimal coupling, the derivative that knows the
+electromagnetic potential the electron moves through. A plain derivative compares the spinor at neighboring
+points as though they shared one frame; the covariant derivative corrects for the gauge frame turning from
+point to point, so that $D_\mu$ measures genuine change against the connection $A_\mu$ rather than the
+artifact of a turning frame.
+
+And here is the loop. Transport the spinor around a small closed circuit using $D_\mu$, and it does not in
+general come back to itself --- it comes back rotated, and the rotation is measured by the failure of the
+covariant derivatives to commute,
+\begin{equation}
+  [D_\mu, D_\nu] = iq F_{\mu\nu},
+\end{equation}
+the field strength $F_{\mu\nu}$ appearing as exactly that commutator. This is the curvature of the connection,
+and it is the holonomy made into a formula: $F_{\mu\nu}$ is the residue of transport around an infinitesimal
+loop in the $\mu\nu$-plane, the amount by which the loop fails to close trivially. The square of the Dirac
+operator returns the wave operator together with a spin term built from this same $F_{\mu\nu}$, and transported
+around a closed loop the spinor returns with a sign --- the loop charge, the spin's $\pm$.
+
+And here, as in the echo maze and the Bragg peak, the finite model proves this rather than shadowing it. That
+a closed loop carries $\pm 1$ and an open path is trivial is a finite theorem about the loop's residue, not an
+analogy to a continuum. The honest floor is a finite count obligation, and a proved one: the holonomy $\pm 1$
+is proved, not approached. The reading is that the Dirac operator is the smallest first-order, gauge-covariant
+generator, its gammas forced by a square root and its curvature $[D_\mu, D_\nu] = iq F_{\mu\nu}$ the loop
+residue itself --- the dynamics and the spin one fact read twice, a holonomy the finite model proves to be
+$\pm 1$.
+
+The four components carry one more surprise, and it is the one the next chapter turns on. Two of them describe
+the electron's two spin states; the other two are solutions of negative energy, which Dirac could neither
+discard nor ignore. His reading was audacious: the negative-energy states are all filled, a sea, and a hole
+knocked in that sea --- a missing negative-energy electron --- behaves exactly like a particle of positive
+energy and opposite charge. The equation, taken at its word, predicted a partner to the electron before anyone
+had seen one. That partner is the positron, and the proved sign of this chapter becomes, in the next, a
+particle on a detector.
+
+\section{The Spin-$\tfrac12$ Effect: the double cover}
+\label{se:spin-half}
+
+A spin-$\tfrac12$ particle does not return to itself under a single full turn. Rotate it through $2\pi$ and its
+state reverses sign, $\psi \to -\psi$; only a second full turn, $4\pi$ in all, restores it. Its spin is $S =
+\hbar/2$, carried by the three spin operators
+\begin{equation}
+  \mathbf{S} = \tfrac{\hbar}{2}\,\boldsymbol{\sigma},
+\end{equation}
+built from the Pauli matrices $\boldsymbol{\sigma} = (\sigma_x, \sigma_y, \sigma_z)$, which satisfy the spin
+algebra
+\begin{equation}
+  [\sigma_i, \sigma_j] = 2i\,\epsilon_{ijk}\,\sigma_k,
+\end{equation}
+the same rotation algebra ordinary angular momentum obeys, but in its smallest nontrivial representation ---
+two-by-two matrices, a two-state system, the qubit of the measurement chapter now read as a spin.
+
+Spin was measured before it was understood. Stern and Gerlach, in 1922, sent a beam of silver atoms through a
+non-uniform magnetic field and found it split into exactly two --- not the continuous smear a classical
+magnetic moment pointing every which way would give, but two sharp spots, the spin either up or down along the
+field and nothing between. The two-valuedness is the eigenvalues $\pm\hbar/2$ of a single spin component, the
+discreteness the measurement chapter's collapse seen in a magnet. And the Dirac equation got the strength
+right: it predicted the electron's magnetic moment with a gyromagnetic ratio $g = 2$, twice the classical
+value and just what experiment found --- one of the first triumphs of the relativistic theory.
+
+The geometry behind the sign-flip is a double cover. The rotations of spacetime form the Lorentz group
+$\mathrm{SO}(3,1)$; the spin states transform under a larger group, $\mathrm{Spin}(3,1)$, that wraps around it
+twice,
+\begin{equation}
+  \mathrm{Spin}(3,1) \longrightarrow \mathrm{SO}(3,1), \qquad \text{two-to-one}.
+\end{equation}
+A single physical rotation, a full $2\pi$ in $\mathrm{SO}(3,1)$, is only half a loop in the cover above it,
+and half a loop ends on the other sheet --- the sign-flipped state. Go around again, a second $2\pi$, and the
+loop in the cover closes and the state comes home. The belt trick makes it visible: give a belt a single full
+twist and you cannot smooth it out while holding the ends fixed, but a double twist undoes itself, looped away
+without turning either end --- the belt is a spinor, and $2\pi$ is not a closed loop for it while $4\pi$ is.
+
+The honest floor is name-only --- the double cover is the physics, written as physics, and the finite model
+claims only the name. But the sign-flip is not foreign to the chapter's holonomies: the $2\pi$ flip is exactly
+the $\pm 1$ the neighboring loops carry, the double cover and the loop charge two faces of one sign. The
+reading is that spin-$\tfrac12$ is named, the double cover $\mathrm{Spin}(3,1) \to \mathrm{SO}(3,1)$ is the
+physics, and the finite model is the label --- though the sign it flips under $2\pi$ is the same $\pm 1$ the
+Dirac loop proves, so the name rests atop a holonomy the chapter has already earned.
+
+\section{The Chirality Effect: parity violation as a real sign}
+\label{se:chirality}
+
+Nature distinguishes left from right. To say so precisely needs one more object from the Clifford algebra, the
+chirality operator
+\begin{equation}
+  \gamma^5 = i\gamma^0\gamma^1\gamma^2\gamma^3,
+\end{equation}
+the ordered product of all four gammas, which squares to the identity,
+\begin{equation}
+  (\gamma^5)^2 = \mathbb{1},
+\end{equation}
+and so has eigenvalues $\pm 1$ --- the two handednesses. From it come the chiral projectors,
+\begin{equation}
+  P_L = \tfrac12\bigl(1 - \gamma^5\bigr), \qquad P_R = \tfrac12\bigl(1 + \gamma^5\bigr),
+\end{equation}
+which split any spinor into its left- and right-handed parts,
+\begin{equation}
+  \psi = \psi_L + \psi_R,
+\end{equation}
+the components $\gamma^5$ sends to $-\psi_L$ and $+\psi_R$. For a long time these were thought physically
+equivalent --- mirror images, related by a parity reflection nature was assumed to respect. They are not. The
+weak interaction couples to $\psi_L$ and not to $\psi_R$: it acts on the left-handed component alone, and
+parity is violated. Wu's experiment, in 1957, saw it directly --- the electrons from decaying cobalt-60 flew
+off preferentially against the nuclear spin, a left--right asymmetry no mirror-symmetric law could produce.
+
+Read through the holonomy, the inequivalence is literal. Orientation is a holonomy sign, so $\psi_L \neq
+\psi_R$ is exactly $+1 \neq -1$ --- the projectors select the two eigenvalues of $\gamma^5$, a closed loop is
+charged and an open path is trivial, and the two handednesses are the two signs. The asymmetry is not a
+convention removable by a smooth deformation; it is a real sign difference the finite model proves.
+
+The honest floor is a no-go, and a proved one: there is no smooth deformation carrying $+1$ to $-1$, so the
+chirality asymmetry cannot be deformed away. The reading is that parity violation is a proved sign. Left and
+right are the two loop charges, $+1$ and $-1$, and no continuous turning carries one into the other; the
+handedness of the weak force is the impossibility of deforming a charged loop into a trivial one.
+
+\section{The Feynman Diagram: amplitude as loop holonomy}
+\label{se:feynman}
+
+A Feynman diagram computes an amplitude by contracting tensors along its lines. A diagram is a graph: external
+legs for the particles coming in and going out, internal lines for the virtual particles exchanged, and
+vertices where they meet. Each line is an admissible contraction between event tensors, a bilinear pairing
+\begin{equation}
+  \langle E_i, E_j \rangle = \mathrm{Tr}\!\left(E_i^\top G\, E_j\right),
+\end{equation}
+the two events paired through the metric $G$, and the complete amplitude for a process is the contraction of
+the ordered product over all the connected events --- every internal line summed, every vertex joined. Read
+through the holonomy, that amplitude is a loop charge: a connected loop in the diagram, a closed circuit of
+internal lines, carries a $\pm 1$ residue, while an open tree, a diagram with no loop, is trivial. The
+amplitude's nontrivial content lives in its loops, and each loop's contribution is the holonomy the finite
+model proves to be $\pm 1$.
+
+A picture helps. The simplest diagram for two electrons scattering has two vertices joined by a single
+internal line: each electron arrives, emits or absorbs a virtual photon at a vertex, and departs --- the
+photon, the internal line, carrying momentum from the one to the other. That single-photon exchange is the
+leading term. The full amplitude is a sum over all diagrams connecting the same incoming and outgoing
+particles, ordered by complexity: one photon, then two, then diagrams with closed loops, each higher term
+smaller than the last by a factor of the coupling. The series is the perturbation expansion, and the loops ---
+the closed circuits where the bookkeeping carries a residue --- are exactly the terms beyond the trivial
+trees.
+
+The honest floor is a finite count obligation, and a proved one: the loop residue $\pm 1$ is a proved discrete
+holonomy, the contraction over a connected loop, not a continuum approximation. The reading is that a Feynman
+diagram is bookkeeping with a loop charge. Its trees are trivial and its loops are charged, and the amplitude
+is the contraction those loops carry --- the same $\pm 1$ holonomy, proved, that ran through the Dirac operator
+and the chirality, here computing a scattering.
+
+\bigskip
+
+Particles, spin, and the Dirac equation are the proved heart of the book, and they share one proved fact:
+orientation is a holonomy sign, and a closed loop carries $\pm 1$. The Dirac operator generates it, its
+curvature $[D_\mu, D_\nu] = iq F_{\mu\nu}$ the loop residue itself; spin-$\tfrac12$ flips under it; chirality
+forbids deforming it away; and a Feynman diagram computes with it. Three proofs in a row, the most the book
+gathers in one place. Part IV ends next with the one effect the whole book has been built to reach --- the
+detection of the positron, its designated exemplar, where the proved sign becomes a particle.

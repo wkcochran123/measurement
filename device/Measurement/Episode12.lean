@@ -22,9 +22,10 @@ class LOGICAL
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] [imaginary: REAL Value Carrier]
+    [delta: UNIVERSAL Value Carrier]
   where
-  feelings: HeartbeatProcess Value Carrier
+  feelings: HeartbeatProcess Value Carrier imaginary delta
   ekg: Calibration.EKG
 
   logical? : YarnTheory → YarnTheory → Prop := fun a b =>
@@ -42,7 +43,7 @@ instance LOGICAL_UNIVERSAL
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [account: WITNESSED Value Carrier] [REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
     : LOGICAL Value Carrier where
   feelings :=
   { bullshit_meter := delta.the_compiler
@@ -64,7 +65,7 @@ def le
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [account: WITNESSED Value Carrier] [REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
     [prop: LOGICAL Value Carrier]
     : ComputerProgram → ComputerProgram → Prop
   | .boolean p1 p2 p3 t1 t2 t3 program1,
@@ -98,10 +99,11 @@ structure ElaborationProcess
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] [LOCAL Value Carrier real] (imaginary: REAL Value Carrier)
+    [delta: UNIVERSAL Value Carrier]
     [prop: LOGICAL Value Carrier]
   where
-  stamina: HeartbeatProcess Value Carrier
+  stamina: HeartbeatProcess Value Carrier imaginary delta
   calibration: Calibration.EKG
   computer_state:  ComputerProgram
 
@@ -138,10 +140,10 @@ class HALTED
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
     [prop: LOGICAL Value Carrier]
   where
-  scientific_paper: ElaborationProcess Value Carrier
+  scientific_paper: ElaborationProcess Value Carrier real
 
   halted? : ComputerProgram → ComputerProgram → Prop := fun _ program =>
     match program with
@@ -162,11 +164,11 @@ instance HALTED_LOGICAL
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
     [prop: LOGICAL Value Carrier]
     : HALTED Value Carrier where
   scientific_paper :=
-    let feelings : HeartbeatProcess Value Carrier := prop.feelings
+    let feelings : HeartbeatProcess Value Carrier imaginary delta := prop.feelings
     let ekg : Calibration.EKG := prop.ekg
     { stamina := feelings
       calibration := ekg

@@ -6,6 +6,10 @@ defaultTargets = ["Measurement"]
 name = "Measurement"
 srcDir = "."
 
+[[lean_lib]]
+name = "Experiments"
+srcDir = "."
+
 [package]
 name = "measurement"
 

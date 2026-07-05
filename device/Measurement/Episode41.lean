@@ -1,4 +1,5 @@
 import Measurement.Episode40
+import Measurement.Funge
 
 set_option maxHeartbeats 4000000
 set_option maxRecDepth 1000
@@ -50,29 +51,10 @@ that will not close, Ch. 9 strain).  Parity is its smallest shadow.
 -- contravariant clock.  From here the funge behavior is LIVE: every reading is a funge (the truth
 -- forward, `isTrue`) or a tange (reversed, `isFalse` -- the residue that turns the crank).  Counting
 -- funges is the measurement; the tanges turn the crank.  Parity (this episode's obstruction) is the
--- funge/tange balance.  (Defined here, where the funge is grounded, so the behavior begins at Ep41.)
+-- funge/tange balance.  (The primitives -- `fungeBit`, `crankTurns`, `countFunges`, and
+-- `funges_and_cranks_partition` -- now live in `Measurement/Funge.lean`, grounded off Episode1 and
+-- imported above; the funge behavior goes LIVE here at Ep41, where they are first used.)
 -- ----------------------------------------------------------------
-
-/-- A funge bit: the truth read forward (the funge, `true`) or reversed (the tange, `false`). -/
-def fungeBit (f : Fact) : Bool := @decide f.truth f.decTruth
-
-/-- THE CRANK: how many times the tanges turn it -- the residue count, the engine. -/
-def crankTurns (tape : List Fact) : Nat :=
-  (tape.map fungeBit).countP (fun b => b == false)
-
-/-- THE MEASUREMENT: count the funges -- the matter the machine reads. -/
-def countFunges (tape : List Fact) : Nat :=
-  (tape.map fungeBit).countP (fun b => b == true)
-
-/-- Every fact is read exactly once: counted (a funge) or turning the crank (a tange). -/
-theorem funges_and_cranks_partition (tape : List Fact) :
-    countFunges tape + crankTurns tape = tape.length := by
-  unfold countFunges crankTurns
-  induction tape with
-  | nil => rfl
-  | cons f rest ih =>
-    simp only [List.map_cons, List.countP_cons, List.length_cons]
-    cases fungeBit f <;> simp_all <;> omega
 
 /-- An apparatus turns finite counter readings into an invariant value. -/
 structure Apparatus where

@@ -17,7 +17,7 @@ through the reader, and that is the gate's verdict; the TANGING question is its 
 
   did_this_distinguish?  ->  DISTINGUISHABLE.different?  (Ep1)  asked of  d.symbol
   did_this_whelm?        ->  MAGNITUDE.whelmed?          (Ep6)  asked of  length.adding_process.sum
-  did_this_rise?         ->  TRUTH.risen?                (Ep10) asked of  gospel.witness
+  did_this_rise?         ->  TRUTH.martyred?             (Ep9)  asked of  gospel.scientific_process.knowledge
 
 These three are the named pattern; one method per remaining class interface follows the same shape.
 `did_this_whelm?` is the band gate -- the tanging question, where the superconducting pair admits the
@@ -38,25 +38,26 @@ variable {Value : Type i} {Carrier : CarrierProcess Value}
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] [imaginary: REAL Value Carrier]
+    [epsilon: LOCAL Value Carrier real] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
     [compiled: COMPILED Value Carrier]
 
 /-- DISTINGUISHABLE's question, asked of the reader: is the reader's own symbol different from itself?
 (`different? symbol`, Ep1.)  Calls the real class interface `d.different?`. -/
-def did_this_distinguish? (_reader : AtreyuProcess Value Carrier) : Prop :=
+def did_this_distinguish? (_reader : AtreyuProcess Value Carrier imaginary) : Prop :=
   d.different? d.symbol
 
 /-- MAGNITUDE's question (`whelmed?`, Ep6), asked of the reader's accumulated Sum against itself.
 This is the band gate -- the tanging question.  Calls the real class interface `length.whelmed?` on
 `length.adding_process.sum`, the Sum the reader's MAGNITUDE gate carries. -/
-def did_this_whelm? (_reader : AtreyuProcess Value Carrier) : Prop :=
+def did_this_whelm? (_reader : AtreyuProcess Value Carrier imaginary) : Prop :=
   length.whelmed? length.adding_process.sum length.adding_process.sum
 
-/-- TRUTH's question (`risen?`, Ep10), asked of the reader's witness.  Calls the real class interface
-`gospel.risen?` on `gospel.witness`. -/
-def did_this_rise? (_reader : AtreyuProcess Value Carrier) : Prop :=
-  gospel.risen? gospel.witness gospel.witness
+/-- TRUTH's question (`martyred?`, Ep9), asked of the reader's knowledge.  Calls the real class
+interface `gospel.martyred?` on `gospel.scientific_process.knowledge`. -/
+def did_this_rise? (_reader : AtreyuProcess Value Carrier imaginary) : Prop :=
+  gospel.martyred? gospel.scientific_process.knowledge gospel.scientific_process.knowledge
 
 /-- Ask all three OF You the Reader (Ep15): the reader's own DISTINGUISHABLE, TRUTH, and MAGNITUDE
 gates, called on the reader's own carrier values.  The tanging question lives in the third conjunct,

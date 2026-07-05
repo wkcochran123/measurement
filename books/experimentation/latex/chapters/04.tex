@@ -1,0 +1,199 @@
+\chapter{The Least Principle and the Unseen}
+\label{chap:least-principle-and-the-unseen}
+
+This chapter closes Part I, and by its end the instrument is fully assembled. It governs motion when nothing
+visibly forces it, and it confronts the question every finite instrument must answer honestly: what can a
+record say about what it did not directly see? The two halves --- the least principle, that the actual motion
+extremizes an action, and the unseen, the stretches a record must reconstruct, the boundary that makes a
+solution unique, the horizon past which prediction fails --- turn out to be one discipline. The instrument
+fills the unseen with its least-cost guess, and the least principle is, in the end, the demand that the
+unseen leave the smoothest trace it can. By the chapter's close the instrument has every capability the rest
+of the book will use.
+
+\section{The Minimizing Variations Effect: the instrument's economy}
+\label{se:minimizing-variations}
+
+Of all the paths a body could record between two fixed configurations, the instrument lays down the one that
+costs the least. This is the least principle, and to the instrument it is a statement about economy: the
+actual motion is the path that demands the fewest reconciliations --- the least re-filing --- to lay down
+from one endpoint to the other. Writing the cost of a path as an action, a tally accumulated along it,
+\begin{equation}
+  J[x] = \int_a^b L\bigl(t, x, \dot{x}\bigr)\, dt,
+\end{equation}
+the principle says the recorded path is the one at which this cost is stationary,
+\begin{equation}
+  \delta J = 0 .
+\end{equation}
+Read this as a description, not a calculation. It says: nudge the path a little, holding its endpoints fixed,
+and to first order the cost does not change --- the instrument is sitting at the bottom of the cost, where
+small re-routings buy nothing. The condition that a path sit there everywhere along its length has a shape,
+and that shape is the Euler--Lagrange equation,
+\begin{equation}
+  \frac{d}{dt}\frac{\partial L}{\partial \dot{x}} = \frac{\partial L}{\partial x} .
+\end{equation}
+This equation is not something the instrument solves to find the motion; it is the \emph{form} a least-cost
+path must have, the local signature of a global economy. Where it holds, the path is stationary; where it
+fails, a cheaper re-routing exists and the path is not the one the instrument records.
+
+Two consequences of this economy organize the whole book, and both belong here. The first is Noether's
+theorem, met in the last chapter for rotation and stated now as the general rule: to every continuous symmetry
+of the action there corresponds a conserved current. Where the cost is unchanged under sliding the clock
+forward --- time-translation symmetry --- the conserved quantity is the energy; where it is unchanged under
+sliding space --- space-translation symmetry --- the conserved quantity is the momentum; where it is unchanged
+under turning --- rotational symmetry --- the conserved quantity is the angular momentum. The conservation
+laws scattered through the rest of the book are not separate facts but one theorem, read off the symmetries
+the instrument cannot tell apart: a sameness the action does not register becomes a count the motion cannot
+change.
+
+The second consequence completes the conjugate-pair structure the force chapter introduced. The Lagrangian is
+a function of position and velocity, $(q, \dot q)$; the instrument's update rule, Hamilton's, runs on position
+and its conjugate momentum, $(q, p)$. The bridge between the two descriptions is the Legendre transform,
+\begin{equation}
+  H(q, p) = p\,\dot q - L(q, \dot q),
+\end{equation}
+which trades the velocity $\dot q$ for the conjugate momentum $p = \partial L/\partial \dot q$ and returns the
+Hamiltonian. The two formalisms are one economy seen from two sides --- the Lagrangian extremizing a cost
+along whole paths, the Hamiltonian stepping the conjugate pair forward point by point --- and the Legendre
+transform is the change of variables that carries each into the other. With it the analytical mechanics begun
+in the force chapter is complete: a least principle, a conserved count for every symmetry, and a conjugate
+pair the next parts will quantize.
+
+The economy is visible on the bench. Offer the instrument two candidate records between the same endpoints
+--- the true motion and a slight detour, a path that wanders a little wider and then hurries to make up the
+time. Tally the cost along each: the detour, being longer and more sharply turned, demands more
+reconciliations to lay down, and the instrument, asked which record it would actually produce, returns the
+cheaper one. The least principle is not a mystical preference for economy imposed on nature from outside; it
+is the plain fact that the record the instrument lays down is the one that took the fewest distinctions to
+write.
+
+The honest floor is a smooth-shadow analogy. What the instrument actually secures is a discrete least-cost
+path over a sampled record --- the cheapest sequence of counts between the endpoints --- and the
+Euler--Lagrange equation is the smooth shadow that discrete economy casts as the sampling is refined. The
+bridge between the cheapest sequence of counts and the differential equation is an analogy, named as one. The
+reading is that the law of motion is not a force imposed from outside but an economy obeyed from within: the
+path along which the instrument spends the fewest distinctions, described by the shape its frugality must
+take.
+
+\section{The Repeatability of Invisible Motion Effect: the smoothest honest guess}
+\label{se:repeatability}
+
+The least principle has an immediate use: it tells the instrument how to fill a stretch it did not see.
+Suppose a record shows two configurations and, between them, no events at all. To a finite-resolution
+instrument this silence is not ignorance but information --- any acceleration or inflection large enough to
+register would have left a trace, so whatever happened between the anchors sat below the floor. The
+instrument must reconstruct the unseen stretch, and it does so with its smoothest honest guess: the
+minimal-curvature completion, the curve that bends as little as the endpoints allow. That curve is the one
+whose fourth derivative vanishes,
+\begin{equation}
+  \Psi^{(4)} = 0,
+\end{equation}
+with neighboring patches glued so that the curve, its slope, and its bend are all continuous --- a $C^2$ fit,
+the natural cubic spline through the anchors. And this smoothest guess is exactly the least-action extremal of
+the previous section: smooth dynamics are precisely the histories that leave no trace, so two observers who
+see nothing between the same endpoints reconstruct the very same cubic.
+
+The honest floor is again a smooth-shadow analogy --- the discrete minimal-curvature reconstruction is the
+shadow of the continuum extremal. The reading is that invisible motion is not unknown but uniquely
+determined. The unseen stretch is the smoothest path the endpoints allow, which is the least-action path,
+which is exactly why a motion that leaves no trace is repeatable at all: every honest instrument, asked to
+fill the same silence, fills it the same way. The instrument does not guess wildly into the dark; it lays down
+the one curve its economy demands, and labels it for what it is --- a reconstruction, the smoothest the
+anchors permit, not a thing seen.
+
+\section{The Dirichlet--Bancroft Effect: an interior fixed from its edge}
+\label{se:dirichlet-bancroft}
+
+Here the boundary reconciliation the momentum chapter introduced returns as a power: the instrument's ability
+to fix a whole interior from its edge alone. A model can be exact and internally consistent and still fail to
+pin down a unique answer, because the governing equations by themselves leave room for more than one; what
+selects the true answer is boundary data committed to the record. The standing bench instance is the global
+positioning system, and Bancroft's method of reading a position from it. The satellite positions and timing
+are fully specified, and yet the equations that locate a receiver are quadratic --- they admit two solutions,
+a true position and a phantom. The interior is under-determined; the algebra alone cannot say which is real.
+
+Picture it as trilateration. Each satellite tells the receiver only its distance --- a sphere of possible
+positions centered on that satellite. Two such spheres meet in a circle, three in a pair of points: the
+receiver is at one of them, but the ranges alone do not say which. The interior of the problem, the
+receiver's location, is pinned to two candidates and no further. It is the edge that breaks the tie --- the
+constraint that the receiver sits on or near the Earth's surface, a condition imposed from the boundary,
+selects the one point of the pair where a receiver can actually be.
+
+A single boundary fact decides it. The constraint that the receiver lies near the Earth's surface --- a fact
+about the edge, not the interior --- discards the phantom and collapses the two solutions to one. The
+instrument has fixed the interior, where the receiver is, from the boundary, the satellite ranges and the
+surface constraint, without ever needing to scan the interior directly: it stands at the edge, reconciles
+what the edge demands, and the interior follows uniquely. This is the same boundary reconciliation that will,
+in the quantum and relativity parts, fix a record's order from its frontier without opening the record up;
+here it appears in its plainest classical form, as trilateration.
+
+The trilateration is the plainest instance, but the structure is general, and naming it sharpens the point.
+When the interior of a region carries a field with no sources of its own --- a potential, a steady
+temperature, an equilibrium configuration --- that field is harmonic: it satisfies Laplace's equation,
+\begin{equation}
+  \nabla^2 \Psi = 0,
+\end{equation}
+and a harmonic field is fixed completely and uniquely by its values on the boundary. The interior holds no
+freedom the edge has not already settled. The reason is the maximum principle: a harmonic field attains its
+largest and smallest values only on the boundary, never strictly inside --- there is no interior peak or
+valley the boundary did not put there. So to know the field everywhere within, the instrument needs only its
+values on the frontier, and the bulk is the boundary's unique harmonic continuation inward. This is the
+precise form of fixing an interior from its edge, the same structure --- a frontier that determines a bulk ---
+that the boundary reconciliations of the later parts carry.
+
+The honest floor is a finite count obligation: the count is the number of admissible solutions, and the
+boundary is the obligation that reduces it from two to one. The reading is that completeness is not
+uniqueness. What a record must commit to is its boundary; with it the interior is determined, and without it
+the equations, however exact, leave a fork the instrument cannot close.
+
+\section{The Butterfly Effect: the instrument's horizon}
+\label{se:butterfly}
+
+The last of Part I's effects gives the instrument its own horizon. Prediction has a limit, and the usual name
+for it is chaos --- sensitive dependence, a butterfly's wing swaying a storm. But the instrument reads the
+limit differently, and more honestly: it is not the dynamics amplifying a difference exponentially but the
+instrument's own floor, grown until it swamps the signal. Two histories that differ only below the resolution
+floor are, to the instrument, one history; as time runs forward, the gap between such histories grows, and at
+some finite depth it exceeds what the record can hold. Count the admissible microhistories consistent with a
+single coarse reading: that count climbs as finer and finer distinctions go unrecorded, and the horizon of
+prediction is the moment it overruns the instrument's capacity to carry it. Beyond that horizon the instrument
+cannot predict --- not because the future is unknowable in principle, but because the record cannot store the
+sub-resolution information that would decide it.
+
+The amplification has a rate, and naming it shows how unforgiving the horizon is. Even granting the dynamics
+its divergence rate, what the instrument secures is its own horizon: a gap that starts at the floor, of size
+$\epsilon_0$, and grows, where the motion is chaotic, exponentially,
+\begin{equation}
+  \delta(t) \sim \epsilon_0\, e^{\lambda t},
+\end{equation}
+with $\lambda$ the Lyapunov exponent, the rate at which nearby histories diverge. The amplified floor reaches
+the scale at which the record can no longer hold it after a time
+\begin{equation}
+  t_h \sim \frac{1}{\lambda}\,\ln\frac{1}{\epsilon_0},
+\end{equation}
+the prediction horizon. The cruelty is in the logarithm: because the horizon grows only as the logarithm of
+the precision, buying a thousandfold finer floor buys only a few more multiples of $1/\lambda$ before the
+floor swamps the signal again. The instrument cannot push its horizon out by force; the divergence converts
+each decimal of added precision into a fixed, small extension of foresight, and no finite floor reaches past
+the wall.
+
+The honest floor is a finite count obligation: the microhistory count measured against capacity, the depth at
+which it overflows. The reading deserves to be stated flatly, because it is easy to mistake. The butterfly's
+horizon belongs to the apparatus, not the world. It is a combinatorial limit on what a finite record can
+distinguish, not an exponential sensitivity of the equations; one is a fact about an instrument, the other a
+claim about the dynamics, and only the first is what the experiment secures. The instrument knows exactly how
+far it can see, and it does not pretend to see past its own horizon.
+
+\bigskip
+
+With that, Part I closes, and the instrument is complete. Across four chapters it has been assembled piece by
+piece: it records distinctions as a count; it has a resolution floor below which it reads nothing; it
+reconciles records at their boundaries, fixing an interior from its edge; it carries a tally around a closed
+loop and reads the holonomy where the loop returns; it lays down the path of least cost, spending the fewest
+distinctions; and it knows its own horizon, the depth past which its floor swamps the signal. Six
+capabilities, and four honest floors --- a finite count, a smooth shadow, a no-go wall, and, in name if not
+yet in force, a label --- with which it has read all of mechanics off a finite record. Everything that
+follows is this same instrument, unchanged, carried to larger and larger scales: to the fields, where its
+holonomy becomes a residue it proves; to heat, where its count becomes a temperature; to the quantum, where
+its count becomes an amplitude; to relativity, where its floor and its loop bend space and time; and to the
+foundations, where it is turned at last upon itself. The instrument is built. Part II sets it among the
+fields.

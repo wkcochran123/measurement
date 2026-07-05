@@ -62,10 +62,10 @@ structure AtreyuProcess
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [account: WITNESSED Value Carrier] [REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
     [compiled: COMPILED Value Carrier] where
-  compiler_output: CompilerOutput Value Carrier
+  compiler_output: CompilerOutput Value Carrier imaginary
   next_measurement: Bullshit
   stress: Number
   strain: Number := Carrier.event Carrier.value   -- Delicious Ouroboros!!
@@ -141,7 +141,32 @@ structure AtreyuProcess
                     if_false next_measurement
 
 
+  bilinear? : Bullshit → Bullshit → Bullshit := fun a b =>
+    -- Back-to-back satirize: lift both inputs one rung, then hang them as the two
+    -- children of a single .rest -- the only constructor that carries a pair.  The
+    -- Prop slot holds the slip (sa < sb); residue? is exactly the projection of it.
+    -- (satirize lifts every rung, so neither side is ever .zero -- the floor arms are
+    -- kept only for totality and collapse to the surviving satire.)
+    match satirize a, satirize b with
+    | .zero _, sb      => sb
+    | sa,      .zero _ => sa
+    | sa,      sb      =>
+        .rest d.fact d.fact (sa < sb)
+              stress stress strain
+              proof proof
+              sa sb
 
+  -- residue? is the PROJECTION of the operator: run bilinear?, then read the slip out of
+  -- the .rest's Prop slot.  The only `none` is the commute -- both inputs at the origin
+  -- floor -- mirroring how `.zero` floors Bullshit.le and `none` floors slipLe.  This is
+  -- the option the residue computation (obfusplained?/close?) reads off.
+  residue? : Bullshit → Bullshit → Option Prop := fun a b =>
+    match a, b with
+    | .zero _, .zero _ => none
+    | _,       _       =>
+        match bilinear? a b with
+        | .rest _ _ p _ _ _ _ _ _ _ => some p
+        | _                          => none
 
 
 
@@ -158,11 +183,11 @@ class TrueOutput
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [account: WITNESSED Value Carrier] [REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
     [compiled: COMPILED Value Carrier]
   where
-  atreyu_process : AtreyuProcess Value Carrier
+  atreyu_process : AtreyuProcess Value Carrier imaginary
   TRUE : Bullshit := .zero d.fact
   -- output is the compiler/reader output: the THEORY rung of the bullshit
   -- ladder, NOT the origin TRUE.  Instances must supply it.
@@ -191,10 +216,10 @@ def You_the_Reader
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [account: WITNESSED Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
     [compiled: COMPILED Value Carrier]
- : AtreyuProcess Value Carrier where
+ : AtreyuProcess Value Carrier imaginary where
   compiler_output := compiled.compiler_output
   next_measurement := .zero d.fact
   stress := Carrier.value
@@ -222,24 +247,24 @@ variable {Value : Type i} {Carrier : CarrierProcess Value}
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [account: WITNESSED Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
     [compiled: COMPILED Value Carrier]
 
 def repeatable
-    (_reader : AtreyuProcess Value Carrier) (origin : Bullshit) : Bullshit :=
+    (_reader : AtreyuProcess Value Carrier imaginary) (origin : Bullshit) : Bullshit :=
   origin                                                       -- piece 1: the origin / repeatable observation
 
 def hypothesis
-    (reader : AtreyuProcess Value Carrier) (origin : Bullshit) : Bullshit :=
+    (reader : AtreyuProcess Value Carrier imaginary) (origin : Bullshit) : Bullshit :=
   reader.satirize (repeatable reader origin)                   -- piece 2: one step on the previous
 
 def theory
-    (reader : AtreyuProcess Value Carrier) (origin : Bullshit) : Bullshit :=
+    (reader : AtreyuProcess Value Carrier imaginary) (origin : Bullshit) : Bullshit :=
   reader.satirize (hypothesis reader origin)                   -- piece 3: the accumulated rest
 
 def raw_output
-    (reader : AtreyuProcess Value Carrier) (origin : Bullshit) : Bullshit :=
+    (reader : AtreyuProcess Value Carrier imaginary) (origin : Bullshit) : Bullshit :=
   hypothesis reader origin                                     -- the compiler output the device reads:
   -- the hypothesis rung (.one).  satirize(.zero) constructs `.one` with a
   -- STATIC head (no decTruth match), so `TRUE ≤ raw_output` certifies cheaply
@@ -263,10 +288,10 @@ instance TRUE_COMPILED
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [account: WITNESSED Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
     [compiled: COMPILED Value Carrier]
-    : TrueOutput Value Carrier where
+    : TrueOutput Value Carrier imaginary where
   atreyu_process := You_the_Reader Value Carrier
   TRUE := .zero d.fact
   -- output is THEORY.raw_output: the hypothesis rung (.one) the reader-process
@@ -353,10 +378,10 @@ noncomputable def SAME
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [account: WITNESSED Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
     [compiled: COMPILED Value Carrier]
-    [out: TrueOutput Value Carrier]
+    [out: TrueOutput Value Carrier imaginary]
     : Fact :=
   -- The needle, honest.  "TRUE and the output are the SAME truth" = the two
   -- readings collapse to one class in the truth-order quotient, witnessed by the
@@ -445,12 +470,12 @@ structure EquivalenceProcess
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [account: WITNESSED Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
     [compiled: COMPILED Value Carrier]
-    [out: TrueOutput Value Carrier]
+    [out: TrueOutput Value Carrier imaginary]
   where
-  atreyu_process : AtreyuProcess Value Carrier
+  atreyu_process : AtreyuProcess Value Carrier imaginary
   closure : Closure
 
   close? : Bullshit → Bullshit → Closure := fun a b =>
@@ -479,10 +504,10 @@ class INFERRED
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [account: WITNESSED Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
     [compiled: COMPILED Value Carrier]
-    [out: TrueOutput Value Carrier]
+    [out: TrueOutput Value Carrier imaginary]
   where
   equivalence_process : EquivalenceProcess Value Carrier
   theory : Closure
@@ -502,10 +527,12 @@ noncomputable instance INFERRED_TRUE
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier]
+    [account: WITNESSED Value Carrier] [imaginary: REAL Value Carrier]
+    [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier]
+    [m2: MEASURED Value Carrier imaginary]
     [compiled: COMPILED Value Carrier]
-    [out: TrueOutput Value Carrier]
+    [out: TrueOutput Value Carrier imaginary]
     : INFERRED Value Carrier where
   equivalence_process :=
   { atreyu_process := out.atreyu_process

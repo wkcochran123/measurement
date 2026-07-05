@@ -1,0 +1,226 @@
+\chapter{Decay, Confinement, and Symmetry Breaking}
+\label{chap:decay-confinement-symmetry}
+
+This chapter is the particle-physics frontier, and it closes Part IV. Here, more than anywhere in the book, the
+physics outruns the finite model: most of these eight effects rest on the name-only floor, their physics
+written out in full and the model claiming only the name. But the frontier keeps its walls and its counts as
+well --- a decay that removes a branch, a conservation that balances a split, a winding that must be an integer,
+and a vacuum that pulls by a shadow. And it is, for all the modesty of its floors, among the math-richest
+chapters in the book: confinement's growing potential, the sombrero that breaks a symmetry, the non-abelian
+field strength, the Casimir mode-count --- each is written out, every object given its picture, even where the
+model claims only the label beneath it. All four honest floors appear here, in this one chapter.
+
+\section{The Alpha Decay Effect: a branch removed}
+\label{se:alpha-decay}
+
+Alpha decay is usually told as tunneling --- a particle leaking through a barrier it has not the energy to
+cross. Read off finite records, no tunneling is assumed. An unstable nucleus carries an irreconcilable overlap,
+a branch that cannot be made consistent --- here, an alpha particle, a tightly bound clump of two protons and
+two neutrons that the nucleus can no longer hold in one consistent record --- and decay is the unique minimal
+boundary update that removes it: the inconsistent branch is eliminated and the record evolves on the one that
+remains. The removal is not timed but only probable per unit time, each nucleus carrying the same fixed chance
+of the repair in any interval. Summed over many nuclei, that constant per-capita rate gives the exponential
+law,
+\begin{equation}
+  N(t) = N_0\, e^{-\lambda t},
+\end{equation}
+the population falling by a fixed fraction in each span, with a half-life $t_{1/2} = \ln 2 / \lambda$ at which
+half remain. The honest floor is a no-go --- the inconsistent branch cannot be kept, and its removal is forced.
+The reading is that alpha decay is the discarding of a branch, not the leaking of a particle. No hidden force
+and no barrier-crossing is needed: the nucleus carries a branch it cannot reconcile, the minimal repair removes
+it, and the exponential law is the statistics of that forced removal --- a wall the record meets, not a barrier
+it sneaks through.
+
+\section{The Gamma Decay Effect: a conservative split}
+\label{se:gamma-decay}
+
+Gamma decay is a reversible, conservative split. A nucleus left in an excited state --- often by an earlier
+alpha or beta decay --- carries unresolved internal curvature and relaxes to its ground state by emitting a
+photon that carries off exactly the difference,
+\begin{equation}
+  E_{\text{excited}} = E_{\text{ground}} + E_\gamma .
+\end{equation}
+The nucleus, like the atom, has discrete energy levels, and the gamma photon's energy is the gap between two of
+them --- which is why gamma spectra are sharp lines, each line a particular transition, the nuclear fingerprint
+by which a decaying isotope is known. Nothing is lost: the excited count equals the ground count plus the
+photon, and the split balances exactly. The honest floor is a finite count obligation --- the conservation is a
+count, the excited total equal to the ground total plus the emitted photon. The reading is that gamma decay is
+conservation made into a transition. The excited nucleus does not lose its energy; it partitions it, handing
+the photon exactly the excess so that the books balance across the split, the sharp line the signature of an
+exact count.
+
+\section{The Neutrino Effect: the messenger that arrives first}
+\label{se:neutrino}
+
+The neutrino barely interacts, and that is the whole of the effect. It carries no charge and feels neither
+electromagnetism nor the strong force; only the weak interaction touches it, and the weak interaction is
+feeble, so a neutrino passes through matter almost as though it were not there --- light-years of lead would
+scarcely stop it. Because almost nothing slows it, a neutrino travels nearly unimpeded and saturates the speed
+limit $c$. The proof arrived from the sky in 1987: when a star exploded as supernova SN1987A, its neutrinos
+reached Earth about three hours before its light, because the neutrinos streamed straight out of the collapsing
+core while the photons scattered their slow way out through the star's shattering envelope. The messenger that
+interacts least arrives first.
+
+The honest floor is name-only --- the physics of the weakly-interacting messenger is written as physics, and
+the finite model claims only the name. The reading is that the neutrino is named, its early arrival is the
+physics of a particle that almost nothing slows, and the finite model is the label beneath it: the messenger
+that arrives first because the medium has almost no hold on it.
+
+\section{The Strong Interaction Effect: strain self-confines}
+\label{se:strong-interaction}
+
+The strong interaction confines, and it does so by a force unlike any other: one that does not weaken with
+distance but strengthens. Where a weak disturbance disperses through the record as a linear smoothing, the
+strong regime is nonlinear --- the strain does not spread but self-confines, and the combined strain of two
+charges is not the sum of their separate strains,
+\begin{equation}
+  \Sigma(q_i, q_j) \neq \Sigma(q_i) + \Sigma(q_j) .
+\end{equation}
+The potential between two quarks grows with their separation rather than falling off,
+\begin{equation}
+  V(r) \sim \sigma r,
+\end{equation}
+a straight line of slope $\sigma$, the string tension: the colour field between the quarks collapses into a
+narrow flux tube of fixed tension, and pulling the quarks apart lengthens the tube at a constant energy cost
+per unit length. Pull hard enough and it is cheaper for the tube to snap --- the stored energy making a fresh
+quark--antiquark pair at the break --- than to stretch further, so a quark is never isolated; it comes away
+clothed in a new partner, and no free quark is ever seen. This is visible in every high-energy collision: a
+quark knocked hard out of a proton does not fly off alone but dresses itself, on the way out, into a
+collimated spray of ordinary particles --- a jet --- the snapping flux tube made into a shower; detectors see
+jets, never quarks. The same force has an opposite face at short range:
+asymptotic freedom. The coupling runs weak at small separation, so quarks squeezed close together inside a
+hadron behave almost as free particles, while the coupling grows strong at large separation and confines them.
+Weak when near, unbreakable when far --- the reverse of every other force.
+
+The honest floor is name-only --- the confinement physics is written in full, and the finite model claims only
+the name. The reading is that confinement is named, the linear potential $V \sim \sigma r$, the asymptotic
+freedom, and the super-additive strain are the physics, and the finite model is the label: a force that grows
+with distance, so its charges are never isolated.
+
+\section{The Sombrero Potential: symmetry breaks, mass appears}
+\label{se:sombrero}
+
+Spontaneous symmetry breaking is the sombrero potential. A complex scalar field $\phi$ sits in a potential
+shaped like a Mexican hat,
+\begin{equation}
+  V(\phi) = \lambda\bigl(|\phi|^2 - v^2\bigr)^2,
+\end{equation}
+symmetric about the center but with its minimum not at the center --- where the potential has a bump --- but
+around a whole circle of radius $|\phi| = v$, the brim of the hat. The field must come to rest somewhere on
+that circle, and in choosing a point it breaks the symmetry: the law is symmetric under rotations of $\phi$,
+but the chosen ground state is not, singling out one direction around the brim. Write the field as a
+displacement from the chosen point,
+\begin{equation}
+  \phi = (v + h)\,e^{i\theta},
+\end{equation}
+and the two excitations split in character. The radial one, $h$, climbs the wall of the hat and costs energy
+--- it is massive, the Higgs mode. The angular one, $\theta$, runs around the flat brim at no cost --- it is
+massless, a Goldstone mode. And here is the mechanism: when the broken symmetry is a gauge symmetry, the
+massless Goldstone $\theta$ is not a physical particle at all but a phase the gauge field $A_\mu$ can absorb.
+The gauge boson swallows the Goldstone, gaining a longitudinal mode and, with it, a mass --- a massless
+force-carrier eats the massless angular excitation and becomes a massive one, which is how the weak bosons get
+their mass and the force its short range. The radial mode is not a fiction either: the Higgs boson, the
+quantum of the field's climb up the wall of the hat, was found at the Large Hadron Collider in 2012 at a mass
+near 125~GeV --- the last piece of the Standard Model seen at last.
+
+The honest floor is name-only --- the symmetry-breaking and mass-generation physics is written in full, and the
+finite model claims only the name. The reading is that the Higgs mechanism is named, the sombrero $V(\phi)$, the
+broken circle, and the absorbed Goldstone are the physics, and the finite model is the label: a symmetry the
+field breaks by choosing, and a mass the gauge boson gains by swallowing what is left.
+
+\section{The Yang--Mills Effect: the gauge group}
+\label{se:yang-mills}
+
+The Standard Model's forces are a gauge symmetry. Each class of label defines a distinct mode of refinement,
+and the requirement that local corrections compose consistently forces each into a compact local symmetry;
+together they are the Standard-Model group,
+\begin{equation}
+  U(1) \times SU(2) \times SU(3),
+\end{equation}
+electromagnetism, the weak force, and the strong force as three local symmetries. What appears in the smooth
+shadow as a gauge field $A_\mu$ is, beneath it, the connection read off how local frames must be adjusted to
+compose consistently --- the same connection whose curvature the Dirac chapter wrote as $[D_\mu, D_\nu]$. But
+here the connection has a feature electromagnetism lacks. For the abelian $U(1)$ the field strength is the
+plain curl,
+\begin{equation}
+  F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu,
+\end{equation}
+and the photon carries no charge of its own. For the non-abelian $SU(2)$ and $SU(3)$ the gauge fields do not
+commute, and the field strength gains a term built from their commutator,
+\begin{equation}
+  F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu + ig\,[A_\mu, A_\nu],
+\end{equation}
+the extra piece a self-interaction: the gauge fields carry the very charge they mediate, so gluons pull on
+gluons and the weak bosons on one another, where photons pass through each other untouched. That self-coupling
+is the root of confinement and of the whole nonlinearity of the strong and weak forces.
+
+The honest floor is name-only --- the gauge structure is written as physics, and the finite model claims only
+the name. The reading is that the Standard-Model gauge group is named, the product $U(1) \times SU(2) \times
+SU(3)$, its connection $A_\mu$, and the non-abelian field strength are the physics, and the finite model is the
+label: three forces as three compact symmetries, the gauge field their smooth shadow, self-interacting where it
+does not commute.
+
+\section{The Casimir Effect: the vacuum pulls by a shadow}
+\label{se:casimir}
+
+Two uncharged plates set close together attract, and the pull comes from the vacuum. The vacuum is not empty:
+every mode of the electromagnetic field carries a zero-point energy $\tfrac12\hbar\omega$ --- the same restless
+half-quantum the oscillator could not give up in the uncertainty chapter --- and the vacuum's energy is the sum
+over all modes,
+\begin{equation}
+  \sum \tfrac12\hbar\omega,
+\end{equation}
+a sum that is enormous, and the same outside the plates as in, until the plates restrict it. Between two
+conducting plates a distance $d$ apart, only modes whose wavelengths fit --- a whole number of half-waves
+across the gap --- are allowed, and the long-wavelength modes that do not fit are excluded. So the interior
+carries fewer modes than the exterior, and the zero-point sum inside falls below the sum outside. The imbalance
+is a pressure: the fuller vacuum outside presses the plates together harder than the thinner vacuum inside
+presses them apart. Subtract the two infinite sums, with care, and the finite difference is an attractive force
+per unit area,
+\begin{equation}
+  \frac{F}{A} = -\frac{\pi^2 \hbar c}{240\, d^4},
+\end{equation}
+growing sharply, as the inverse fourth power, as the plates near --- a force since measured, and matched.
+
+The honest floor is a smooth-shadow analogy --- the discrete interior mode count is the model, the continuum
+Casimir pressure its smooth shadow, and the bridge from the missing modes to the $1/d^4$ law is an analogy,
+named as one. The reading is that the Casimir force is a counted absence. The plates attract because there are
+fewer modes within than without, and the continuum law $F/A \propto 1/d^4$ is the smooth shadow of that finite
+deficit --- the vacuum pulling by what it is not allowed to carry, the oscillator's $\tfrac12\hbar\omega$ now
+summed over every mode and felt as a force.
+
+\section{The Topological Integer Count: quantization by winding}
+\label{se:topological}
+
+Some quantities are quantized not by a spectrum but by a topology --- not because a count fills a ladder, but
+because a configuration wraps. A field whose phase $\theta$ turns as one goes around a loop carries a winding
+number, the total turning divided by a full turn,
+\begin{equation}
+  w = \frac{1}{2\pi}\oint d\theta \;\in\; \mathbb{Z},
+\end{equation}
+and it is necessarily an integer: the phase must return to itself after the circuit, so the total turning is a
+whole number of full cycles, never a fraction. This is the Chern number, and it is what the quantum Hall effect
+measures --- the Hall conductance locked to integer multiples of a fundamental unit, flat plateaus that do not
+drift with the sample's details because an integer cannot drift, the TKNN integer counting how the state winds
+over the space of momenta. No fractional thread is admissible: the record either contains a whole thread or it
+does not, and a half-turn that fails to close is not a configuration at all.
+
+The honest floor is a finite count obligation --- the winding is an integer count, and fractional values are
+inadmissible. The reading is that topological quantization is counting by winding. The integer is not the rung
+of a ladder but the number of times a configuration wraps, and because a thread either closes or does not, the
+count is exact and whole --- quantization with no continuum in sight, the conductance pinned to an integer by
+the impossibility of a fractional turn.
+
+\bigskip
+
+With the frontier, Part IV closes, and with it the longest movement of the book. All four honest floors met in
+this one chapter: a no-go in the discarded branch of alpha decay, a finite count in the balanced split of gamma
+decay and the integer winding, a smooth shadow in the Casimir deficit, and a name-only label beneath the
+neutrino, the strong force, the Higgs, and the gauge group --- the instrument's full vocabulary of honesty,
+gathered at the frontier where the physics runs furthest ahead. The quantum began as a doorway --- the count
+carried as an amplitude, diffusion run in imaginary time --- and through the part the amplitude became a
+holonomy that a loop charges to $\pm 1$, a particle that a detector proves by coincidence, and, at the
+frontier, a name the physics still outruns. The count became an amplitude, the amplitude a loop charge, the
+loop charge a particle proved at a detector; and where the model could prove no more, it named honestly and
+wrote the physics in full. Part V turns next to relativity and gravitation, where the count acquires a geometry
+and the record's own measure bends.

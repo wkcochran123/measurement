@@ -1,0 +1,178 @@
+\chapter{The Field That Acts Where It Isn't}
+\label{chap:field-that-acts-where-it-isnt}
+
+Part I built the instrument and read motion off single bodies. Part II sets it among the fields --- and the
+field is where the instrument's most distinctive power finally comes into the open. The first lesson the field
+teaches is a strange one: it can act where it is not. To the instrument a field's physical content is not its
+value at a point but the holonomy of its potential around a loop --- a phase the record picks up by going
+around, which survives even where the local field vanishes. And then, in this same chapter, the instrument
+does something it has not done before. In Part I it could only \emph{shadow} a loop's residue: Foucault's
+pendulum let it glimpse a holonomy, but the continuum formula was a named analogy, not a theorem. Here, in an
+echo chamber, the instrument \emph{proves} the residue --- establishes, as a finite theorem about a loop, that
+a closed path carries a charge of exactly $\pm 1$. This is the moment Part I promised. The chapter opens with
+the field that acts where it isn't, makes the instrument's first proof its centerpiece, and closes on energy
+conservation as the boundary audit of Part I, written now for a field.
+
+\section{The Aharonov--Bohm Effect: the potential's holonomy}
+\label{se:aharonov-bohm}
+
+The sharpest demonstration that a field acts where it is not is the Aharonov--Bohm effect. Split an electron
+beam into two coherent branches and send them around either side of a tightly wound solenoid that confines a
+magnetic flux $\Phi_B$ to its interior. Outside the solenoid --- everywhere the electrons actually go --- the
+magnetic field is zero: $\mathbf{B} = 0$ along both paths, so by the classical reckoning there is no force on
+either branch and nothing should happen. Yet when the branches recombine, they interfere with a measurable
+phase difference, and that difference depends on the flux the electrons never touched.
+
+It is worth pausing on how strange this is. Nothing the electron passes through exerts a force; the field is
+sealed inside the solenoid, and the electron's whole journey is through empty space. And yet the two branches,
+recombining, disagree by an amount set precisely by the flux they went around but never entered. The
+instrument is not detecting a field along the path --- there is none to detect --- it is reading a property of
+the loop the two branches enclose between them. The field's reach is not its local value but the residue it
+leaves on any loop that encircles it.
+
+The instrument reads the phase as a holonomy --- a residue the loop carries. Each branch transports a phase
+along the connection $\mathbf{A}$, the potential, accumulating it step by step, and the two branches,
+enclosing the solenoid between them, differ by the loop integral of that potential,
+\begin{equation}
+  \Delta\varphi = \frac{e}{\hbar}\oint \mathbf{A}\cdot d\boldsymbol{\ell} = \frac{e}{\hbar}\,\Phi_B .
+\end{equation}
+This integral is not a number ground out of a field along the path --- the field is zero there. It is the
+\emph{name of what the loop encircles}: the holonomy of the potential, which equals the enclosed flux exactly,
+whether or not anything along the way pushed the electron. As the confined flux is varied, the phase marches
+through full turns, period by period in units of the flux quantum $h/e$, a staircase the instrument reads off
+the interference and nothing else.
+
+Two facts about the potential make the holonomy the right object, and both reach forward into the quantum
+part. The first is gauge invariance. The potential is not unique: one can add to it the gradient of any
+function,
+\begin{equation}
+  A_\mu \to A_\mu + \partial_\mu \chi,
+\end{equation}
+without changing a single physical prediction, because the added gradient integrates to zero around any closed
+loop. The holonomy $\oint \mathbf{A}\cdot d\boldsymbol{\ell}$ is blind to the choice of $\chi$ --- it sees only
+the enclosed flux, the gauge-invariant content the loop carries. The second fact is what the flux is, locally:
+the curl of the potential, the field tensor
+\begin{equation}
+  F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu,
+\end{equation}
+whose magnetic part is the $\mathbf{B}$ sealed inside the solenoid. Along the electron's path $F_{\mu\nu} = 0$
+--- the field is zero --- and yet the loop integral of $A$ does not vanish, because the flux $F_{\mu\nu}$
+encloses is nonzero even where $F_{\mu\nu}$ itself is not. The potential carries, around the loop, what the
+field hides inside it.
+
+And here the forward-link must be stated plainly, because it is the second great through-line the front half
+lays into the quantum part. The field tensor $F_{\mu\nu}$ is the abelian precursor of the object the proved
+heart of the book is built on: the curvature of a covariant derivative, written there as a commutator,
+\begin{equation}
+  [D_\mu, D_\nu] = iq F_{\mu\nu} .
+\end{equation}
+The relation is exactly the one the force chapter set up between the Poisson bracket and the commutator. As
+the bracket $\{q, p\} = 1$ is the classical shadow of $[x, p] = i\hbar$, so the field tensor here --- the plain
+curl of a potential that commutes with itself --- is the abelian, gentle version of the non-abelian field
+strength the Dirac chapter carries, where the potentials no longer commute and the curvature gains a term
+built from their bracket. The holonomy the electron picks up here is the same loop residue that, sharpened, the
+later chapters prove to be $\pm 1$.
+
+The honest floor is a finite count obligation: the phase is a count accumulated around a loop, required to
+equal the enclosed flux, and that requirement is exact --- the holonomy is not approached by refinement but
+fixed by what the loop encircles. The reading is that the potential, not the local field, is what the
+instrument carries. A field acts where it is not through the holonomy of its connection: the record, going
+around a loop, picks up what the loop encircles even when nothing along the path was there to push it. The
+loop residue of the previous part has become a physical phase --- and the next effect makes it a proof.
+
+\section{The Echo Chamber Maze: the first proved holonomy}
+\label{se:echo-chamber-maze}
+
+Here is the landmark, and it deserves to be marked as one: the first time in the book the instrument does not
+shadow a loop's residue but \emph{proves} it. Picture navigating a maze by clapping and listening, so the
+echoes trace the causal paths a signal takes. Straight corridors --- a flat metric --- return crisp echoes,
+perfect parallel transport with no phase; curved passages distort the return, leaving a residue. Walk a closed
+loop through the maze and compare the echoed rhythm against what was sent, and the mismatch measures the
+curvature the loop encloses. An open path carries no residue. A closed loop carries $\pm 1$.
+
+The residue is the discrete echo of the last effect's continuous phase. Where the Aharonov--Bohm loop carried
+the holonomy $\oint \mathbf{A}$ as a phase that marched smoothly with the enclosed flux, the maze carries a
+discrete curvature, and the residue the echo accumulates is the quantized version of that same loop integral:
+the enclosed curvature is no longer a continuum the phase sweeps through but a charge the loop is forced to
+carry, exactly $\pm 1$. The continuous holonomy and the discrete residue are one object read at two
+resolutions --- and it is the discrete one, here, that the instrument can prove.
+
+What makes this different from everything before is the \emph{status} of that $\pm 1$. When Foucault's
+pendulum traced its loop in Part I, the instrument could only shadow the result: the discrete failure-to-close
+approached a continuum holonomy, and the bridge between them was an analogy, honestly named and no more. Here
+the instrument crosses the line it has stood behind for four chapters. It does not approach the residue by
+refinement; it establishes it, as a finite theorem about the loop --- that an open path is trivial and a
+closed loop is charged, exactly $\pm 1$, with the converses to match: off the loop, nothing; around it, the
+sign. The residue Foucault let the instrument glimpse is now a thing it can prove.
+
+To see why this is a proof and not a measurement, watch the instrument check it both ways. Send a clap down a
+straight corridor and back, and the echo returns in step --- residue zero, exactly, not approximately. Send it
+around a closed loop that encircles a curved cell of the maze, and the echo returns shifted by the full
+residue --- $\pm 1$, exactly, again with no margin. The instrument does not refine its way toward these
+values; it establishes them as the only admissible answers, the open path forced to nothing and the closed
+loop forced to the sign, each converse closing the case. A shadow would say ``the residue is approximately
+$\pm 1$, and closer as the maze is read more finely''; a proof says ``the residue is $\pm 1$, and an open path
+is exactly trivial,'' and means it. That gap --- between approached and established --- is the gap this
+chapter crosses, and every later proof in the book widens the same crossing.
+
+This is the strongest grounding the book has, and it will recur: every later proof --- a diffracting crystal,
+a rotating ring, a Dirac particle, a positron's annihilation --- is this same move, a loop residue established
+as a finite theorem rather than approached as a shadow. The honest floor is a finite count obligation, and a
+proved one: a finite theorem about a loop's residue, not an analogy to a continuum. The proof is described
+here, not performed on the page; what matters is its character. The reading is that curvature is the
+informational stress of maintaining closure in a finite domain, read off a loop and \emph{proved} to be
+$\pm 1$. The field's geometry, here, is not approached by refinement; it is demonstrated --- and the
+instrument has shown, for the first time, that it can prove and not merely shadow.
+
+\section{The Conservation of Energy: the boundary audit for a field}
+\label{se:conservation-of-energy}
+
+The chapter closes where Part I's momentum chapter left a promise. There the instrument audited a boundary: it
+drew a closed line around a region, tallied what crossed in and out, and read conservation off the books
+coming out even. Energy conservation, read off a field, is exactly that audit, raised from a single body's
+momentum to the full stress-energy of a field. Take a field $\phi$ with Lagrangian
+\begin{equation}
+  \mathcal{L} = \tfrac{1}{2}\,\partial_\mu\phi\,\partial^\mu\phi - \tfrac{1}{2}\,m^2\phi^2,
+  \qquad \eta_{\mu\nu} = \mathrm{diag}(-,+,+,+),
+\end{equation}
+and form its symmetric stress--energy tensor,
+\begin{equation}
+  T^{\mu\nu} = \partial^\mu\phi\,\partial^\nu\phi - \eta^{\mu\nu}\mathcal{L} .
+\end{equation}
+This tensor is the conserved current Noether's theorem attaches to the field's symmetries --- its energy
+component the count that time-translation invariance conserves, exactly as the least-principle chapter
+promised, now carried from a single body's motion to a field that fills space. It is the field's complete
+ledger of what can cross a boundary: its time--time component is the
+energy density the region holds, and its time--space components are the energy flux that crosses the edge,
+\begin{equation}
+  \mathcal{E} = T^{00} = \tfrac{1}{2}\bigl(\dot\phi^2 + |\nabla\phi|^2 + m^2\phi^2\bigr),
+  \qquad
+  S^i = T^{0i} = \dot\phi\,\partial^i\phi .
+\end{equation}
+The conservation law is the statement that this ledger does not leak,
+\begin{equation}
+  \partial_\mu T^{\mu\nu} = 0,
+\end{equation}
+which for the energy component is a continuity equation, $\partial_t \mathcal{E} + \nabla\cdot\mathbf{S} = 0$,
+and in integral form is the boundary audit itself,
+\begin{equation}
+  \frac{d}{dt}\int_R \mathcal{E}\, dV = -\oint_{\partial R} \mathbf{S}\cdot\mathbf{n}\, dA .
+\end{equation}
+What a region loses in energy, it loses through its boundary, accounted for by the flux --- the same
+closed-line tally the instrument ran for momentum, now keeping the field's books.
+
+The honest floor is a finite count obligation: the continuity is a count balanced across a boundary, the
+field-theoretic form of the momentum balance that closed the mechanics part. The reading is that energy is not
+a substance a region stores but a count that balances across its boundary, conserved by the same continuity
+that conserved momentum --- Part I's bookkeeping, written now for a field, and audited at the edge exactly as
+before.
+
+\bigskip
+
+Part II has opened on the instrument's two new powers. A field acts where it is not, through the holonomy its
+potential carries around a loop; and the instrument, for the first time, has proved such a residue rather than
+shadowed it --- the line Foucault let it approach, now crossed. The boundary audit of Part I has carried over
+intact, keeping the field's energy books at the edge. The next chapter stays with the field but turns to what
+it does when it overlaps itself --- diffraction, interference, and the wall of crossed polarizers --- where
+the instrument meets its second no-go and the proved residue of this chapter is put to work reading patterns
+of light.

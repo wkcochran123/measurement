@@ -1,0 +1,165 @@
+\chapter{Scaling Laws of Systems}
+\label{chap:scaling-laws-of-systems}
+
+The book's last chapter is about how systems scale --- the ceilings, costs, and concentrations that appear
+when many records act together. Six effects carry it: the cap on parallel speedup, the cost set by the slowest
+synchronization, the concentration of mass into a few, agency as strain minimized, the stochastic correction
+that is a refinement artifact, and --- the book's final wall --- the entropy that renaming cannot raise. After
+them, the book ends.
+
+\section{The Amdahl Effect: a ceiling on parallel speedup}
+\label{se:amdahl}
+
+No computation is made arbitrarily fast by parallelism. However many processors are thrown at a problem, the
+part that must run in sequence cannot be hurried, and that serial residue caps the gain. If a fraction $p$ of
+the work parallelizes and $1 - p$ does not, the speedup is bounded,
+\begin{equation}
+  S_{\max} = \frac{1}{1 - p},
+\end{equation}
+no matter how many processors are added: even with infinite parallelism the serial fraction sets the ceiling.
+Gene Amdahl drew the bound in 1967 to cool the enthusiasm for ever more processors --- parallelize
+nine-tenths of a job and the last tenth, which must run in sequence, still caps the speedup at tenfold, though
+a thousand processors stand idle waiting on it.
+The honest floor is a finite count obligation --- the speedup is bounded by the serial residue, a fixed
+fraction of the work that no parallelism removes. The reading is that parallelism has a ceiling, and the
+ceiling is the serial part. What cannot be split cannot be hurried, and the gain from any number of processors
+is capped at the inverse of the fraction that must run alone.
+
+\section{The Tail Latency Effect: the slowest boundary sets the cost}
+\label{se:tail-latency}
+
+The cost of a synchronized system is set by its slowest part. When many processes must reconcile at a shared
+boundary, the latency is governed not by the shortest path but by the longest --- the slowest boundary
+reconciliation in the system. The tail of the latency distribution scales with the size and the boundary,
+\begin{equation}
+  \mathcal{L}_{\text{tail}} \propto N\,|\partial\Omega|,
+\end{equation}
+so that as a system grows, its worst-case synchronization cost grows with it. The honest floor is a finite
+count obligation --- the tail latency is a count of the slowest boundary's work, scaling with the system size
+and its boundary. The reading is that the slowest boundary sets the cost. A synchronized system waits on its
+laggard; the latency is not the average but the tail, the cost of the one reconciliation that finishes last,
+and it grows with the boundary the system must keep coherent.
+
+\section{The Pareto Effect: the mass concentrates}
+\label{se:pareto}
+
+Refinement concentrates mass into a few. Admissibility does not spread weight evenly; at each extension it
+forces concentration, so that a small fraction of the entries carry most of the total. The distribution is a
+power law,
+\begin{equation}
+  P(x) \propto x^{-\alpha},
+\end{equation}
+heavy at the head and long in the tail --- the law Vilfredo Pareto found in the distribution of wealth, the
+familiar four-fifths of it held by a fifth of the people, the same lopsidedness repeating within that fifth
+and within that again, scale-invariant all the way down. A sparse basis --- a few entries holding the mass ---
+is what survives refinement, while a flat, uniform distribution does not. The honest floor is a finite count
+obligation --- the concentration is a count, most of the mass on a few entries, and a uniform spread is
+inadmissible under refinement. The reading is that the mass concentrates, and uniformity does not survive. A
+flat distribution is not a stable state of a refining system; admissibility drives the weight onto a sparse
+few, and the power law is the shape that concentration takes --- the many light, the few heavy, and no even
+spread to be had.
+
+\section{The Agent Effect: agency is strain minimized}
+\label{se:agent}
+
+An agent is not an outside observer but a part of the record that minimizes its own strain. A localized
+substructure, facing the stream of events at its boundary, acts to minimize the informational strain those
+boundary conditions induce on it --- and what we call agency is the residue of that minimization, not a force
+added from outside. The agent is the part of the record that pushes back on its own boundary to keep its
+strain low. The honest floor is a finite count obligation --- agency is the strain-minimizing residue, a count
+of how a local substructure reconciles its boundary. The reading is that agency is strain minimized, not a
+special cause. An agent is a region of the record that keeps its own informational strain low against the
+incoming stream, and its apparent purpose is the shape that minimization takes --- not a force outside the
+physics but a residue within it.
+
+\section{The Ito Lemma: a stochastic correction that is a shadow}
+\label{se:ito}
+
+When a record is updated under noise, a correction appears that is an artifact of refinement, not an extra
+force. Step a noisy variable forward, $X_{t+\Delta t} = X_t + \Delta X_t$, and ask how a function of it
+changes; the answer carries a second-order term the ordinary chain rule would miss,
+\begin{equation}
+  df = f'(X_t)\,dX_t + \tfrac{1}{2} f''(X_t)\,(dX_t)^2,
+\end{equation}
+where the $(dX_t)^2$ term --- the quadratic variation --- does not vanish, because under noise the squared
+step is of the same order as the step. For the Brownian walk of an earlier chapter the rule is exact, $(dX_t)^2
+\to dt$: the variance of a random step grows with the time elapsed, not with its square, so the squared step
+keeps pace with the step itself and the second-order term refuses to disappear. This is Ito's lemma, and the correction is the smooth shadow of a
+discrete reconciliation: it is forced by comparing the refined updates, not by any force in the dynamics. The
+honest floor is a smooth-shadow analogy --- the discrete noisy updates are the model, the Ito correction their
+smooth shadow, and the bridge from the squared discrete step to the continuum quadratic-variation term is an
+analogy, named as one. The reading is that the stochastic correction is a refinement artifact, not a force.
+The extra term in Ito's lemma is what the discrete reconciliation leaves when it is read in the continuum ---
+a shadow of how the noisy steps compare, and the lone smooth shadow of this final chapter.
+
+\section{The Limitation of Indexing: the entropy renaming cannot raise}
+\label{se:limitation-indexing}
+
+The book's last wall is the one it began with. Entropy --- the logarithm of the number of distinguishable
+configurations,
+\begin{equation}
+  S = \ln N, \qquad \Delta S \ge 0
+\end{equation}
+--- rises only under a genuine refinement, a real new distinction committed to the record. It does not rise
+under renaming. Relabel the entries, permute the indices, rewrite the record in another alphabet, and $N$ is
+unchanged and $\Delta S$ is zero: a renaming adds no distinguishable configuration, and so adds no entropy.
+Only a real new distinction --- a measurement that separates two configurations the record could not tell apart
+before --- raises the count. The honest floor is a no-go, and it is the book's final one: the count cannot be
+inflated by renaming, only by measuring. The reading is the one the book opened on, restated as a wall. The
+first mark made a difference because it distinguished two configurations; a relabeling makes none, and so the
+entropy a record carries is exactly the count of real distinctions in it, never the count of names. You cannot
+measure by renaming. The arrow that began at the first difference points the same way at the last: the count
+rises only when something is genuinely told apart.
+
+\bigskip
+\begin{center}
+\rule{0.4\textwidth}{0.4pt}
+\end{center}
+\bigskip
+
+\noindent\textbf{\large An Entire Physics, Read Off the Count}
+
+\medskip
+
+This book began with a single difference. In its first chapter a mark was made, and the mark mattered because
+it told two configurations apart --- the first distinction, the first count. Everything after was the same act,
+repeated and refined: a count incremented, an order kept, a distinction committed and never retracted. From
+that one difference, an entire physics has been read off the count.
+
+And it was read by one instrument. Not a different apparatus for each domain --- a telescope here, a cloud
+chamber there, a clock, a lattice, a computer --- but one finite reader, the same from the first mark to the
+last: a thing of finite resolution, finite memory, and a single primitive act, the recording of a difference.
+Everything in this book was that one instrument at work, carried from mechanics to the horizon and back, and
+the reader who held it in mind from the first count will have recognized it behind the last.
+
+The path ran through six parts. Mechanics gave the count its invariance under relabeling and its least
+principle. Fields turned the count into a holonomy that survives where the field is absent and a frontier that
+dilutes as it grows. Heat made the count a temperature and proved that information is physical --- that to
+sort, to erase, to confine is to pay in the currency of the second law. The quantum carried the count as an
+amplitude, charged a loop to plus or minus one, and --- at the book's deepest grounding --- registered a
+particle at a detector, the positron proved by a coincidence the model could state as a theorem. Relativity
+read the interval, the potential, and the horizon as the geometry of the count, and forbade the one closed
+loop in time the count's own rising will not allow. And the foundations turned the apparatus on itself, finding
+the preconditions it cannot escape, the continuum it casts as a shadow, the walls of computation it cannot
+pass, and the entropy that renaming cannot raise.
+
+Through all of it, every effect was a count, and every count was fenced honestly at one of four ceilings. Some
+were finite count obligations --- a balance, a conservation, a closure the record owes. Some were smooth-shadow
+analogies --- a continuum law named as the shadow the discrete casts as it refines, the bridge to the equation
+called an analogy and not a derivation. Some were no-go walls --- a refinement the law makes impossible, from
+the first friction threshold to the last forbidden renaming. And some were names only --- a phenomenon written
+in full as physics, with the finite model claiming nothing but the label beneath it. The discipline was to say,
+of every effect, exactly which floor it stood on, and never to claim more.
+
+A handful stood higher than the rest. In a few places the finite model did not shadow physics but proved it:
+the echo that charges a closed loop, the Bragg peak that proves a matter wave, the Dirac operator and the
+chirality and the Feynman loop that carry a proved $\pm 1$, the Sagnac residue that will not close, and, above
+all, the positron --- detected, by a coincidence the model proves as an if-and-only-if, with every converse
+falsifiable, and fenced with equal care against claiming one inch more than it had earned. Those are the places
+where the book's central wager was paid in full: that a finite record, kept honestly, can not only describe the
+physics but, here and there, prove it.
+
+What is left at the end is what was there at the beginning: a mark, and the difference it made. Make the first
+mark permanent --- commit one distinction to a record that cannot unmake it --- and the rest follows, count by
+count, fence by fence, all the way out to the horizon and back. An entire physics, read off the count, from a
+single difference recorded.

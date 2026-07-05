@@ -1,0 +1,1165 @@
+⚠ [15/103] Replayed Measurement.Episode12
+warning: Measurement/Episode12.lean:167:40: unused variable `real`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+ℹ [21/103] Replayed Measurement.Agent.Positron
+info: Measurement/Agent/Positron.lean:40:0: 0
+info: Measurement/Agent/Positron.lean:41:0: 1
+info: Measurement/Agent/Positron.lean:42:0: 35
+info: Measurement/Agent/Positron.lean:43:0: false
+ℹ [22/103] Replayed Measurement.Episode86
+info: Measurement/Episode86.lean:44:0: 0
+info: Measurement/Episode86.lean:45:0: 1
+ℹ [23/103] Replayed Measurement.Episode87
+info: Measurement/Episode87.lean:38:0: (36, 0)
+info: Measurement/Episode87.lean:39:0: (35, 1)
+ℹ [26/103] Replayed Measurement.Episode90
+info: Measurement/Episode90.lean:36:0: 1
+ℹ [29/103] Built Measurement.Episode15 (83861s)
+info: Measurement/Episode15.lean:494:0: [Elab.command] [83852.620183] @[reducible]
+    class INFERRED (Value : Type i) (Carrier : CarrierProcess Value) [d : DISTINGUISHABLE Value Carrier]
+        [a : ADMISSIBLE Value Carrier] [c : COUNTABLE Value Carrier] [e : ENCODED Value Carrier]
+        [r : RESIDUE Value Carrier] [b : BINARY Value Carrier] [f : REPEATABLE Value Carrier]
+        [n : NUMERIC Value Carrier] [h : REPRESENTABLE Value Carrier] [p : PHYSICAL Value Carrier]
+        [z : COMPARABLE Value Carrier] [particle : OBSERVED Value Carrier] [frquency : PRESENT Value Carrier]
+        [what_meesa_saying : MEASURABLE Value Carrier] [zero : GUNGAN Value Carrier] [one : SOURCE Value Carrier]
+        [result : EXECUTED Value Carrier] [value : VALUE Value Carrier] [length : MAGNITUDE Value Carrier]
+        [scaled : SCALED Value Carrier] [oriented : LOAD Value Carrier] [matter : FINITE_ELEPHANT Value Carrier]
+        [model : BULLSHIT Value Carrier] [space : PROPAGANDA Value Carrier] [scientist : ACOLYTE Value Carrier]
+        [ideology : SCIENTIFIC Value Carrier] [gospel : TRUTH Value Carrier] [account : WITNESSED Value Carrier]
+        [imaginary : REAL Value Carrier] [delta : UNIVERSAL Value Carrier] [prop : LOGICAL Value Carrier]
+        [executable : HALTED Value Carrier] [measured : MEASURED Value Carrier imaginary]
+        [compiled : COMPILED Value Carrier] [out : TrueOutput Value Carrier imaginary] where
+      equivalence_process : EquivalenceProcess Value Carrier
+      theory : Closure
+      inferred? : Closure → Closure → Prop := fun a b => Closure.le a b
+  [Elab.step] [0.010560] expected type: Type
+        (max
+            (max
+                (max
+                    (max
+                        (max
+                            (max (max (max (max (?u.908043 + 2) (?u.908044 + 1)) (?u.908045 + 2)) (?u.908046 + 1))
+                                (?u.908047 + 2))
+                            (?u.908048 + 1))
+                        (?u.908049 + 2))
+                    (?u.908050 + 1))
+                (?u.900633 + 1))
+            (i + 2)), term
+      SCIENTIFIC Value Carrier
+  [Elab.step] [0.011407] expected type: Type
+        (max
+            (max
+                (max
+                    (max
+                        (max
+                            (max (max (max (max (?u.909249 + 2) (?u.909250 + 1)) (?u.909251 + 2)) (?u.909252 + 1))
+                                (?u.909253 + 2))
+                            (?u.909254 + 1))
+                        (?u.909256 + 2))
+                    (?u.909257 + 1))
+                (?u.900633 + 1))
+            (i + 2)), term
+      TRUTH Value Carrier
+  [Elab.step] [0.012648] expected type: Type
+        (max
+            (max
+                (max
+                    (max
+                        (max
+                            (max (max (max (max (?u.910602 + 2) (?u.910603 + 1)) (?u.910604 + 2)) (?u.910605 + 1))
+                                (?u.910699 + 2))
+                            (?u.910700 + 1))
+                        (?u.910701 + 2))
+                    (?u.910702 + 1))
+                (?u.900633 + 1))
+            (i + 2)), term
+      WITNESSED Value Carrier
+  [Elab.step] [0.014199] expected type: Type
+        (max
+            (max
+                (max
+                    (max
+                        (max
+                            (max (max (max (max (?u.912207 + 2) (?u.912208 + 1)) (?u.912210 + 2)) (?u.912211 + 1))
+                                (?u.912212 + 2))
+                            (?u.912213 + 1))
+                        (?u.912214 + 2))
+                    (?u.912215 + 1))
+                (?u.900633 + 1))
+            (i + 2)), term
+      REAL Value Carrier
+  [Elab.step] [0.016430] expected type: Type
+        (max
+            (max
+                (max
+                    (max
+                        (max
+                            (max
+                                (max
+                                    (max
+                                        (max
+                                            (max
+                                                (max (max (max (?u.913881 + 2) (?u.913882 + 2)) (?u.913883 + 2))
+                                                    (?u.913884 + 2))
+                                                (?u.913886 + 2))
+                                            (?u.913887 + 1))
+                                        (?u.913888 + 2))
+                                    (?u.913889 + 1))
+                                (?u.913890 + 2))
+                            (?u.913891 + 1))
+                        (?u.913892 + 2))
+                    (?u.913893 + 1))
+                (?u.900633 + 1))
+            (i + 2)), term
+      UNIVERSAL Value Carrier
+  [Elab.step] [0.019750] expected type: Type
+        (max
+            (max
+                (max
+                    (max
+                        (max
+                            (max
+                                (max
+                                    (max
+                                        (max
+                                            (max
+                                                (max
+                                                    (max
+                                                        (max
+                                                            (max
+                                                                (max
+                                                                    (max
+                                                                        (max
+                                                                            (max
+                                                                                (max
+                                                                                    (max
+                                                                                        (max
+                                                                                            (max (?u.915733 + 2)
+                                                                                                (?u.915734 + 2))
+                                                                                            (?u.915735 + 2))
+                                                                                        (?u.915737 + 2))
+                                                                                    (?u.915738 + 2))
+                                                                                (?u.915739 + 2))
+                                                                            (?u.915740 + 2))
+                                                                        (?u.915741 + 2))
+                                                                    (?u.915742 + 2))
+                                                                (?u.915743 + 2))
+                                                            (?u.915744 + 2))
+                                                        (?u.915745 + 2))
+                                                    (?u.915746 + 2))
+                                                (?u.915748 + 2))
+                                            (?u.915749 + 1))
+                                        (?u.915750 + 2))
+                                    (?u.915751 + 1))
+                                (?u.915752 + 2))
+                            (?u.915753 + 1))
+                        (?u.915754 + 2))
+                    (?u.915755 + 1))
+                (?u.900633 + 1))
+            (i + 2)), term
+      LOGICAL Value Carrier
+  [Elab.step] [0.020539] expected type: Type
+        (max
+            (max
+                (max
+                    (max
+                        (max
+                            (max
+                                (max
+                                    (max
+                                        (max
+                                            (max
+                                                (max (max (max (?u.917963 + 2) (?u.917964 + 2)) (?u.917965 + 2))
+                                                    (?u.917966 + 2))
+                                                (?u.917967 + 2))
+                                            (?u.917968 + 1))
+                                        (?u.917969 + 2))
+                                    (?u.917971 + 1))
+                                (?u.917972 + 2))
+                            (?u.917973 + 1))
+                        (?u.917974 + 2))
+                    (?u.917975 + 1))
+                (?u.900633 + 1))
+            (i + 2)), term
+      HALTED Value Carrier
+  [Elab.step] [0.027832] expected type: Type
+        (max
+            (max
+                (max
+                    (max
+                        (max
+                            (max
+                                (max
+                                    (max
+                                        (max
+                                            (max
+                                                (max (max (max (?u.920233 + 2) (?u.920234 + 2)) (?u.920235 + 2))
+                                                    (?u.920236 + 2))
+                                                (?u.920237 + 2))
+                                            (?u.920238 + 1))
+                                        (?u.920239 + 2))
+                                    (?u.920242 + 1))
+                                (?u.920243 + 2))
+                            (?u.920244 + 1))
+                        (?u.920245 + 2))
+                    (?u.920246 + 1))
+                (?u.900633 + 1))
+            (i + 2)), term
+      MEASURED Value Carrier imaginary
+  [Elab.step] [0.041742] expected type: Type
+        (max
+            (max
+                (max
+                    (max
+                        (max
+                            (max
+                                (max
+                                    (max
+                                        (max
+                                            (max
+                                                (max (max (max (?u.923179 + 2) (?u.923180 + 2)) (?u.923181 + 2))
+                                                    (?u.923182 + 2))
+                                                (?u.923183 + 2))
+                                            (?u.923184 + 1))
+                                        (?u.923185 + 2))
+                                    (?u.923186 + 1))
+                                (?u.923187 + 2))
+                            (?u.923189 + 1))
+                        (?u.923190 + 2))
+                    (?u.923191 + 1))
+                (?u.900633 + 1))
+            (i + 2)), term
+      COMPILED Value Carrier
+    [Meta.synthInstance] [0.013608] ✅️ LOCAL Value Carrier imaginary
+  [Elab.step] [0.032651] expected type: Type
+        (max
+            (max
+                (max
+                    (max
+                        (max
+                            (max
+                                (max
+                                    (max
+                                        (max
+                                            (max
+                                                (max
+                                                    (max
+                                                        (max
+                                                            (max
+                                                                (max
+                                                                    (max
+                                                                        (max
+                                                                            (max (max (?u.926979 + 2) (?u.926980 + 2))
+                                                                                (?u.926981 + 2))
+                                                                            (?u.926982 + 2))
+                                                                        (?u.926983 + 2))
+                                                                    (?u.926984 + 2))
+                                                                (?u.926985 + 2))
+                                                            (?u.926987 + 2))
+                                                        (?u.926988 + 2))
+                                                    (?u.926989 + 2))
+                                                (?u.926990 + 2))
+                                            (?u.926991 + 1))
+                                        (?u.926992 + 2))
+                                    (?u.926993 + 1))
+                                (?u.926994 + 2))
+                            (?u.926995 + 1))
+                        (?u.926996 + 2))
+                    (?u.926998 + 1))
+                (?u.900633 + 1))
+            (i + 2)), term
+      TrueOutput Value Carrier imaginary
+  [Elab.step] [0.038267] expected type: Type
+        (max
+            (max
+                (max
+                    (max
+                        (max
+                            (max
+                                (max
+                                    (max
+                                        (max
+                                            (max
+                                                (max
+                                                    (max
+                                                        (max
+                                                            (max
+                                                                (max
+                                                                    (max
+                                                                        (max
+                                                                            (max
+                                                                                (max
+                                                                                    (max
+                                                                                        (max
+                                                                                            (max
+                                                                                                (max
+                                                                                                    (max
+                                                                                                        (max
+                                                                                                            (max
+                                                                                                                (max
+                                                                                                                    (max
+                                                                                                                        (max
+                                                                                                                            (max
+                                                                                                                                (max
+                                                                                                                                    (max
+                                                                                                                                        (max
+                                                                                                                                            (max
+                                                                                                                                                (max
+                                                                                                                                                    (max
+                                                                                                                                                        (max
+                                                                                                                                                            (max
+                                                                                                                                                                (max
+                                                                                                                                                                    (max
+                                                                                                                                                                        (max
+                                                                                                                                                                            (max
+                                                                                                                                                                                (max
+                                                                                                                                                                                    (max
+                                                                                                                                                                                        (max
+                                                                                                                                                                                            (max
+                                                                                                                                                                                                (max
+                                                                                                                                                                                                    (?u.929669 +
+                                                                                                                                                                                                        2)
+                                                                                                                                                                                                    (?u.929671 +
+                                                                                                                                                                                                        2))
+                                                                                                                                                                                                (?u.929672 +
+                                                                                                                                                                                                    2))
+                                                                                                                                                                                            (?u.929673 +
+                                                                                                                                                                                                2))
+                                                                                                                                                                                        (?u.929674 +
+                                                                                                                                                                                            2))
+                                                                                                                                                                                    (?u.929675 +
+                                                                                                                                                                                        2))
+                                                                                                                                                                                (?u.929676 +
+                                                                                                                                                                                    2))
+                                                                                                                                                                            (?u.929677 +
+                                                                                                                                                                                2))
+                                                                                                                                                                        (?u.929678 +
+                                                                                                                                                                            2))
+                                                                                                                                                                    (?u.929679 +
+                                                                                                                                                                        2))
+                                                                                                                                                                (?u.929680 +
+                                                                                                                                                                    2))
+                                                                                                                                                            (?u.929682 +
+                                                                                                                                                                2))
+                                                                                                                                                        (?u.929683 +
+                                                                                                                                                            2))
+                                                                                                                                                    (?u.929684 +
+                                                                                                                                                        2))
+                                                                                                                                                (?u.929685 +
+                                                                                                                                                    2))
+                                                                                                                                            (?u.929686 +
+                                                                                                                                                2))
+                                                                                                                                        (?u.929687 +
+                                                                                                                                            2))
+                                                                                                                                    (?u.929688 +
+                                                                                                                                        2))
+                                                                                                                                (?u.929689 +
+                                                                                                                                    2))
+                                                                                                                            (?u.929690 +
+                                                                                                                                2))
+                                                                                                                        (?u.929691 +
+                                                                                                                            2))
+                                                                                                                    (?u.929693 +
+                                                                                                                        2))
+                                                                                                                (?u.929694 +
+                                                                                                                    2))
+                                                                                                            (?u.929695 +
+                                                                                                                2))
+                                                                                                        (?u.929696 + 2))
+                                                                                                    (?u.929697 + 2))
+                                                                                                (?u.929698 + 2))
+                                                                                            (?u.929699 + 2))
+                                                                                        (?u.929700 + 2))
+                                                                                    (?u.929701 + 2))
+                                                                                (?u.929702 + 2))
+                                                                            (?u.929704 + 2))
+                                                                        (?u.929705 + 2))
+                                                                    (?u.929706 + 2))
+                                                                (?u.929707 + 2))
+                                                            (?u.929708 + 1))
+                                                        (?u.929709 + 2))
+                                                    (?u.929710 + 1))
+                                                (?u.929711 + 2))
+                                            (?u.929712 + 1))
+                                        (?u.929713 + 2))
+                                    (?u.929715 + 1))
+                                (?u.926979 + 2))
+                            (?u.926980 + 2))
+                        (?u.926981 + 2))
+                    (?u.926982 + 2))
+                (?u.900633 + 1))
+            (i + 2)), term
+      EquivalenceProcess Value Carrier
+  [addDecl] [0.112778] adding declarations [Measurement.INFERRED, Measurement.INFERRED.rec, Measurement.INFERRED.mk]
+    [Kernel] [0.112747] ✅️ typechecking declarations [Measurement.INFERRED]
+  [Meta.mkCasesOn] [0.028147] Measurement.INFERRED
+  [Meta.mkNoConfusion] [0.566864] Measurement.INFERRED
+info: Measurement/Episode15.lean:495:0: [Elab.async] [0.027121] Lean.addDecl
+  [Kernel] [0.027108] ✅️ typechecking declarations [Measurement.INFERRED.recOn]
+info: Measurement/Episode15.lean:495:0: [Elab.async] [0.029951] Lean.addDecl
+  [Kernel] [0.029936] ✅️ typechecking declarations [Measurement.INFERRED.casesOn]
+info: Measurement/Episode15.lean:495:0: [Elab.async] [0.019678] Lean.addDecl
+  [Kernel] [0.019664] ✅️ typechecking declarations [Measurement.INFERRED.ctorIdx]
+info: Measurement/Episode15.lean:495:0: [Elab.async] [0.040651] Lean.addDecl
+  [Kernel] [0.040636] ✅️ typechecking declarations [Measurement.INFERRED.noConfusionType]
+info: Measurement/Episode15.lean:495:0: [Elab.async] [0.268341] Lean.addDecl
+  [Kernel] [0.268308] ✅️ typechecking declarations [Measurement.INFERRED.noConfusion]
+info: Measurement/Episode15.lean:495:0: [Elab.async] [0.048016] Lean.addDecl
+  [Kernel] [0.047992] ✅️ typechecking declarations [Measurement.INFERRED.mk.noConfusion]
+info: Measurement/Episode15.lean:512:2: [Elab.async] [0.025273] Lean.addDecl
+  [Kernel] [0.025248] ✅️ typechecking declarations [Measurement.INFERRED.equivalence_process]
+info: Measurement/Episode15.lean:513:2: [Elab.async] [0.025492] Lean.addDecl
+  [Kernel] [0.025466] ✅️ typechecking declarations [Measurement.INFERRED.theory]
+info: Measurement/Episode15.lean:515:2: [Elab.async] [0.030474] Lean.addDecl
+  [Kernel] [0.030253] ✅️ typechecking declarations [Measurement.INFERRED.inferred?]
+info: Measurement/Episode15.lean:494:0: [Elab.async] [0.027504] Lean.addDecl
+  [Kernel] [0.027484] ✅️ typechecking declarations [Measurement.INFERRED.mk._flat_ctor]
+info: Measurement/Episode15.lean:494:0: [Elab.async] [0.019240] Lean.addDecl
+  [Kernel] [0.019181] ✅️ typechecking declarations [Measurement.INFERRED.inferred?._default]
+info: Measurement/Episode15.lean:518:0: [Elab.command] [1.102769] noncomputable instance INFERRED_TRUE (Value : Type i) (Carrier : CarrierProcess Value)
+        [d : DISTINGUISHABLE Value Carrier] [a : ADMISSIBLE Value Carrier] [c : COUNTABLE Value Carrier]
+        [e : ENCODED Value Carrier] [r : RESIDUE Value Carrier] [b : BINARY Value Carrier]
+        [f : REPEATABLE Value Carrier] [n : NUMERIC Value Carrier] [h : REPRESENTABLE Value Carrier]
+        [p : PHYSICAL Value Carrier] [z : COMPARABLE Value Carrier] [particle : OBSERVED Value Carrier]
+        [frquency : PRESENT Value Carrier] [what_meesa_saying : MEASURABLE Value Carrier] [zero : GUNGAN Value Carrier]
+        [one : SOURCE Value Carrier] [result : EXECUTED Value Carrier] [value : VALUE Value Carrier]
+        [length : MAGNITUDE Value Carrier] [scaled : SCALED Value Carrier] [oriented : LOAD Value Carrier]
+        [matter : FINITE_ELEPHANT Value Carrier] [model : BULLSHIT Value Carrier] [space : PROPAGANDA Value Carrier]
+        [scientist : ACOLYTE Value Carrier] [ideology : SCIENTIFIC Value Carrier] [gospel : TRUTH Value Carrier]
+        [account : WITNESSED Value Carrier] [imaginary : REAL Value Carrier] [delta : UNIVERSAL Value Carrier]
+        [prop : LOGICAL Value Carrier] [executable : HALTED Value Carrier] [m2 : MEASURED Value Carrier imaginary]
+        [compiled : COMPILED Value Carrier] [out : TrueOutput Value Carrier imaginary] : INFERRED Value Carrier
+        where
+      equivalence_process :=
+        { atreyu_process := out.atreyu_process
+          closure :=
+            .different (Fact.SAME Value Carrier) out.TRUE out.output
+              (out.obfusplained? out.output_true out.TRUE out.output) }
+      theory :=
+        .inferred (Fact.SAME Value Carrier) d.fact out.TRUE out.output
+          (out.obfusplained? out.output_true out.TRUE out.output)
+          (.different (Fact.SAME Value Carrier) out.TRUE out.output
+            (out.obfusplained? out.output_true out.TRUE out.output))
+  [Elab.definition.header] [0.380406] Measurement.INFERRED_TRUE
+    [Elab.step] [0.010346] expected type: Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max (max (max (max (?u.943395 + 2) (?u.943396 + 1)) (?u.943398 + 2)) (?u.943399 + 1))
+                                  (?u.943400 + 2))
+                              (?u.943401 + 1))
+                          (?u.943402 + 2))
+                      (?u.943403 + 1))
+                  (?u.938000 + 1))
+              (i + 2)), term
+        PROPAGANDA Value Carrier
+    [Elab.step] [0.011250] expected type: Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max (max (max (max (?u.944340 + 2) (?u.944341 + 1)) (?u.944342 + 2)) (?u.944343 + 1))
+                                  (?u.944344 + 2))
+                              (?u.944345 + 1))
+                          (?u.944346 + 2))
+                      (?u.944347 + 1))
+                  (?u.938000 + 1))
+              (i + 2)), term
+        ACOLYTE Value Carrier
+    [Elab.step] [0.012474] expected type: Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max (max (max (max (?u.945410 + 2) (?u.945411 + 1)) (?u.945412 + 2)) (?u.945413 + 1))
+                                  (?u.945414 + 2))
+                              (?u.945415 + 1))
+                          (?u.945416 + 2))
+                      (?u.945417 + 1))
+                  (?u.938000 + 1))
+              (i + 2)), term
+        SCIENTIFIC Value Carrier
+    [Elab.step] [0.014124] expected type: Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max (max (max (max (?u.946616 + 2) (?u.946617 + 1)) (?u.946618 + 2)) (?u.946619 + 1))
+                                  (?u.946620 + 2))
+                              (?u.946621 + 1))
+                          (?u.946623 + 2))
+                      (?u.946624 + 1))
+                  (?u.938000 + 1))
+              (i + 2)), term
+        TRUTH Value Carrier
+    [Elab.step] [0.013907] expected type: Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max (max (max (max (?u.947969 + 2) (?u.947970 + 1)) (?u.947971 + 2)) (?u.947972 + 1))
+                                  (?u.948066 + 2))
+                              (?u.948067 + 1))
+                          (?u.948068 + 2))
+                      (?u.948069 + 1))
+                  (?u.938000 + 1))
+              (i + 2)), term
+        WITNESSED Value Carrier
+    [Elab.step] [0.018765] expected type: Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max (max (max (max (?u.949574 + 2) (?u.949575 + 1)) (?u.949577 + 2)) (?u.949578 + 1))
+                                  (?u.949579 + 2))
+                              (?u.949580 + 1))
+                          (?u.949581 + 2))
+                      (?u.949582 + 1))
+                  (?u.938000 + 1))
+              (i + 2)), term
+        REAL Value Carrier
+    [Elab.step] [0.020334] expected type: Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max
+                                  (max
+                                      (max
+                                          (max
+                                              (max
+                                                  (max (max (max (?u.951248 + 2) (?u.951249 + 2)) (?u.951250 + 2))
+                                                      (?u.951251 + 2))
+                                                  (?u.951253 + 2))
+                                              (?u.951254 + 1))
+                                          (?u.951255 + 2))
+                                      (?u.951256 + 1))
+                                  (?u.951257 + 2))
+                              (?u.951258 + 1))
+                          (?u.951259 + 2))
+                      (?u.951260 + 1))
+                  (?u.938000 + 1))
+              (i + 2)), term
+        UNIVERSAL Value Carrier
+    [Elab.step] [0.022631] expected type: Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max
+                                  (max
+                                      (max
+                                          (max
+                                              (max
+                                                  (max
+                                                      (max
+                                                          (max
+                                                              (max
+                                                                  (max
+                                                                      (max
+                                                                          (max
+                                                                              (max
+                                                                                  (max
+                                                                                      (max
+                                                                                          (max
+                                                                                              (max (?u.953100 + 2)
+                                                                                                  (?u.953101 + 2))
+                                                                                              (?u.953102 + 2))
+                                                                                          (?u.953104 + 2))
+                                                                                      (?u.953105 + 2))
+                                                                                  (?u.953106 + 2))
+                                                                              (?u.953107 + 2))
+                                                                          (?u.953108 + 2))
+                                                                      (?u.953109 + 2))
+                                                                  (?u.953110 + 2))
+                                                              (?u.953111 + 2))
+                                                          (?u.953112 + 2))
+                                                      (?u.953113 + 2))
+                                                  (?u.953115 + 2))
+                                              (?u.953116 + 1))
+                                          (?u.953117 + 2))
+                                      (?u.953118 + 1))
+                                  (?u.953119 + 2))
+                              (?u.953120 + 1))
+                          (?u.953121 + 2))
+                      (?u.953122 + 1))
+                  (?u.938000 + 1))
+              (i + 2)), term
+        LOGICAL Value Carrier
+    [Elab.step] [0.024002] expected type: Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max
+                                  (max
+                                      (max
+                                          (max
+                                              (max
+                                                  (max (max (max (?u.955330 + 2) (?u.955331 + 2)) (?u.955332 + 2))
+                                                      (?u.955333 + 2))
+                                                  (?u.955334 + 2))
+                                              (?u.955335 + 1))
+                                          (?u.955336 + 2))
+                                      (?u.955338 + 1))
+                                  (?u.955339 + 2))
+                              (?u.955340 + 1))
+                          (?u.955341 + 2))
+                      (?u.955342 + 1))
+                  (?u.938000 + 1))
+              (i + 2)), term
+        HALTED Value Carrier
+    [Elab.step] [0.032964] expected type: Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max
+                                  (max
+                                      (max
+                                          (max
+                                              (max
+                                                  (max (max (max (?u.957600 + 2) (?u.957601 + 2)) (?u.957602 + 2))
+                                                      (?u.957603 + 2))
+                                                  (?u.957604 + 2))
+                                              (?u.957605 + 1))
+                                          (?u.957606 + 2))
+                                      (?u.957609 + 1))
+                                  (?u.957610 + 2))
+                              (?u.957611 + 1))
+                          (?u.957612 + 2))
+                      (?u.957613 + 1))
+                  (?u.938000 + 1))
+              (i + 2)), term
+        MEASURED Value Carrier imaginary
+    [Elab.step] [0.049561] expected type: Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max
+                                  (max
+                                      (max
+                                          (max
+                                              (max
+                                                  (max (max (max (?u.960546 + 2) (?u.960547 + 2)) (?u.960548 + 2))
+                                                      (?u.960549 + 2))
+                                                  (?u.960550 + 2))
+                                              (?u.960551 + 1))
+                                          (?u.960552 + 2))
+                                      (?u.960553 + 1))
+                                  (?u.960554 + 2))
+                              (?u.960556 + 1))
+                          (?u.960557 + 2))
+                      (?u.960558 + 1))
+                  (?u.938000 + 1))
+              (i + 2)), term
+        COMPILED Value Carrier
+      [Meta.synthInstance] [0.016968] ✅️ LOCAL Value Carrier imaginary
+        [Meta.synthInstance] [0.010426] ✅️ apply LOCAL_REAL to LOCAL Value Carrier imaginary
+          [Meta.synthInstance.tryResolve] [0.010048] ✅️ LOCAL Value Carrier imaginary ≟ LOCAL Value Carrier imaginary
+    [Elab.step] [0.038020] expected type: Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max
+                                  (max
+                                      (max
+                                          (max
+                                              (max
+                                                  (max
+                                                      (max
+                                                          (max
+                                                              (max
+                                                                  (max
+                                                                      (max
+                                                                          (max
+                                                                              (max (max (?u.964346 + 2) (?u.964347 + 2))
+                                                                                  (?u.964348 + 2))
+                                                                              (?u.964349 + 2))
+                                                                          (?u.964350 + 2))
+                                                                      (?u.964351 + 2))
+                                                                  (?u.964352 + 2))
+                                                              (?u.964354 + 2))
+                                                          (?u.964355 + 2))
+                                                      (?u.964356 + 2))
+                                                  (?u.964357 + 2))
+                                              (?u.964358 + 1))
+                                          (?u.964359 + 2))
+                                      (?u.964360 + 1))
+                                  (?u.964361 + 2))
+                              (?u.964362 + 1))
+                          (?u.964363 + 2))
+                      (?u.964365 + 1))
+                  (?u.938000 + 1))
+              (i + 2)), term
+        TrueOutput Value Carrier imaginary
+    [Elab.step] [0.048574] expected type: Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max
+                                  (max
+                                      (max
+                                          (max
+                                              (max
+                                                  (max
+                                                      (max
+                                                          (max
+                                                              (max
+                                                                  (max
+                                                                      (max
+                                                                          (max
+                                                                              (max
+                                                                                  (max
+                                                                                      (max
+                                                                                          (max
+                                                                                              (max
+                                                                                                  (max
+                                                                                                      (max
+                                                                                                          (max
+                                                                                                              (max
+                                                                                                                  (max
+                                                                                                                      (max
+                                                                                                                          (max
+                                                                                                                              (max
+                                                                                                                                  (max
+                                                                                                                                      (max
+                                                                                                                                          (max
+                                                                                                                                              (max
+                                                                                                                                                  (max
+                                                                                                                                                      (max
+                                                                                                                                                          (max
+                                                                                                                                                              (max
+                                                                                                                                                                  (max
+                                                                                                                                                                      (max
+                                                                                                                                                                          (max
+                                                                                                                                                                              (max
+                                                                                                                                                                                  (max
+                                                                                                                                                                                      (max
+                                                                                                                                                                                          (max
+                                                                                                                                                                                              (max
+                                                                                                                                                                                                  (max
+                                                                                                                                                                                                      (max
+                                                                                                                                                                                                          (max
+                                                                                                                                                                                                              (max
+                                                                                                                                                                                                                  (max
+                                                                                                                                                                                                                      (max
+                                                                                                                                                                                                                          (max
+                                                                                                                                                                                                                              (max
+                                                                                                                                                                                                                                  (max
+                                                                                                                                                                                                                                      (max
+                                                                                                                                                                                                                                          (max
+                                                                                                                                                                                                                                              (max
+                                                                                                                                                                                                                                                  (max
+                                                                                                                                                                                                                                                      (max
+                                                                                                                                                                                                                                                          (max
+                                                                                                                                                                                                                                                              (max
+                                                                                                                                                                                                                                                                  (max
+                                                                                                                                                                                                                                                                      (max
+                                                                                                                                                                                                                                                                          (max
+                                                                                                                                                                                                                                                                              (max
+                                                                                                                                                                                                                                                                                  (max
+                                                                                                                                                                                                                                                                                      (max
+                                                                                                                                                                                                                                                                                          (max
+                                                                                                                                                                                                                                                                                              (max
+                                                                                                                                                                                                                                                                                                  (max
+                                                                                                                                                                                                                                                                                                      (?u.966994 +
+                                                                                                                                                                                                                                                                                                          2)
+                                                                                                                                                                                                                                                                                                      (?u.966995 +
+                                                                                                                                                                                                                                                                                                          2))
+                                                                                                                                                                                                                                                                                                  (?u.966996 +
+                                                                                                                                                                                                                                                                                                      2))
+                                                                                                                                                                                                                                                                                              (?u.966997 +
+                                                                                                                                                                                                                                                                                                  2))
+                                                                                                                                                                                                                                                                                          (?u.966998 +
+                                                                                                                                                                                                                                                                                              2))
+                                                                                                                                                                                                                                                                                      (?u.967000 +
+                                                                                                                                                                                                                                                                                          2))
+                                                                                                                                                                                                                                                                                  (?u.967001 +
+                                                                                                                                                                                                                                                                                      2))
+                                                                                                                                                                                                                                                                              (?u.967002 +
+                                                                                                                                                                                                                                                                                  2))
+                                                                                                                                                                                                                                                                          (?u.967003 +
+                                                                                                                                                                                                                                                                              2))
+                                                                                                                                                                                                                                                                      (?u.967004 +
+                                                                                                                                                                                                                                                                          2))
+                                                                                                                                                                                                                                                                  (?u.967005 +
+                                                                                                                                                                                                                                                                      2))
+                                                                                                                                                                                                                                                              (?u.967006 +
+                                                                                                                                                                                                                                                                  2))
+                                                                                                                                                                                                                                                          (?u.967007 +
+                                                                                                                                                                                                                                                              2))
+                                                                                                                                                                                                                                                      (?u.967008 +
+                                                                                                                                                                                                                                                          2))
+                                                                                                                                                                                                                                                  (?u.967009 +
+                                                                                                                                                                                                                                                      2))
+                                                                                                                                                                                                                                              (?u.967011 +
+                                                                                                                                                                                                                                                  2))
+                                                                                                                                                                                                                                          (?u.967012 +
+                                                                                                                                                                                                                                              2))
+                                                                                                                                                                                                                                      (?u.967013 +
+                                                                                                                                                                                                                                          2))
+                                                                                                                                                                                                                                  (?u.967014 +
+                                                                                                                                                                                                                                      2))
+                                                                                                                                                                                                                              (?u.967015 +
+                                                                                                                                                                                                                                  2))
+                                                                                                                                                                                                                          (?u.967016 +
+                                                                                                                                                                                                                              2))
+                                                                                                                                                                                                                      (?u.967017 +
+                                                                                                                                                                                                                          2))
+                                                                                                                                                                                                                  (?u.967018 +
+                                                                                                                                                                                                                      2))
+                                                                                                                                                                                                              (?u.967019 +
+                                                                                                                                                                                                                  2))
+                                                                                                                                                                                                          (?u.967020 +
+                                                                                                                                                                                                              2))
+                                                                                                                                                                                                      (?u.967022 +
+                                                                                                                                                                                                          2))
+                                                                                                                                                                                                  (?u.967023 +
+                                                                                                                                                                                                      2))
+                                                                                                                                                                                              (?u.967024 +
+                                                                                                                                                                                                  2))
+                                                                                                                                                                                          (?u.967025 +
+                                                                                                                                                                                              2))
+                                                                                                                                                                                      (?u.967026 +
+                                                                                                                                                                                          2))
+                                                                                                                                                                                  (?u.967027 +
+                                                                                                                                                                                      2))
+                                                                                                                                                                              (?u.967028 +
+                                                                                                                                                                                  2))
+                                                                                                                                                                          (?u.967029 +
+                                                                                                                                                                              2))
+                                                                                                                                                                      (?u.967030 +
+                                                                                                                                                                          2))
+                                                                                                                                                                  (?u.967031 +
+                                                                                                                                                                      2))
+                                                                                                                                                              (?u.967033 +
+                                                                                                                                                                  2))
+                                                                                                                                                          (?u.967034 +
+                                                                                                                                                              2))
+                                                                                                                                                      (?u.967035 +
+                                                                                                                                                          2))
+                                                                                                                                                  (?u.967036 +
+                                                                                                                                                      2))
+                                                                                                                                              (?u.967037 +
+                                                                                                                                                  2))
+                                                                                                                                          (?u.967038 +
+                                                                                                                                              2))
+                                                                                                                                      (?u.967039 +
+                                                                                                                                          2))
+                                                                                                                                  (?u.967040 +
+                                                                                                                                      2))
+                                                                                                                              (?u.967041 +
+                                                                                                                                  2))
+                                                                                                                          (?u.967042 +
+                                                                                                                              2))
+                                                                                                                      (?u.967044 +
+                                                                                                                          2))
+                                                                                                                  (?u.967045 +
+                                                                                                                      2))
+                                                                                                              (?u.967046 +
+                                                                                                                  2))
+                                                                                                          (?u.967047 +
+                                                                                                              2))
+                                                                                                      (?u.967048 + 2))
+                                                                                                  (?u.967049 + 2))
+                                                                                              (?u.967050 + 2))
+                                                                                          (?u.967051 + 2))
+                                                                                      (?u.967052 + 2))
+                                                                                  (?u.967053 + 2))
+                                                                              (?u.967055 + 2))
+                                                                          (?u.967056 + 2))
+                                                                      (?u.967057 + 2))
+                                                                  (?u.967058 + 2))
+                                                              (?u.967059 + 1))
+                                                          (?u.967060 + 2))
+                                                      (?u.967061 + 1))
+                                                  (?u.967062 + 2))
+                                              (?u.967063 + 1))
+                                          (?u.967064 + 2))
+                                      (?u.967066 + 1))
+                                  (?u.964346 + 2))
+                              (?u.964347 + 2))
+                          (?u.964348 + 2))
+                      (?u.964349 + 2))
+                  (?u.938000 + 1))
+              (i + 2)), term
+        INFERRED Value Carrier
+  [Elab.definition.value] [0.663233] Measurement.INFERRED_TRUE
+    [Elab.step] [0.657376] expected type: INFERRED Value Carrier, term
+        {
+          equivalence_process :=
+            { atreyu_process := out.atreyu_process
+              closure :=
+                .different (Fact.SAME Value Carrier) out.TRUE out.output
+                  (out.obfusplained? out.output_true out.TRUE out.output) },
+          theory :=
+            .inferred (Fact.SAME Value Carrier) d.fact out.TRUE out.output
+              (out.obfusplained? out.output_true out.TRUE out.output)
+              (.different (Fact.SAME Value Carrier) out.TRUE out.output
+                (out.obfusplained? out.output_true out.TRUE out.output))
+                -- Every repeatable observation has a definite phase.
+                -- Or.inl = universe-0 TRUE (P holds / True=True).
+                -- Or.inr = universe-1 TRUE (¬P holds / True=False).
+                 }
+      [Meta.isDefEq] [0.021786] ✅️ INFERRED Value Carrier =?= INFERRED ?m.633 ?m.634
+      [Elab.step] [0.229602] expected type: EquivalenceProcess Value Carrier, term
+          { atreyu_process := out.atreyu_process
+            closure :=
+              .different (Fact.SAME Value Carrier) out.TRUE out.output
+                (out.obfusplained? out.output_true out.TRUE out.output) }
+        [Meta.isDefEq] [0.021504] ✅️ EquivalenceProcess Value Carrier =?= EquivalenceProcess ?m.670 ?m.671
+        [Elab.step] [0.021591] expected type: AtreyuProcess Value Carrier imaginary, term
+            out.atreyu_process
+          [Meta.isDefEq] [0.017151] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.707 ?m.708 ?m.738
+        [Elab.step] [0.172286] expected type: Closure, term
+            .different (Fact.SAME Value Carrier) out.TRUE out.output
+              (out.obfusplained? out.output_true out.TRUE out.output)
+          [Elab.step] [0.040238] expected type: Fact, term
+              (Fact.SAME Value Carrier)
+            [Elab.step] [0.040209] expected type: Fact, term
+                Fact.SAME Value Carrier
+          [Elab.step] [0.019711] expected type: Bullshit, term
+              out.TRUE
+            [Meta.isDefEq] [0.017191] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.779 ?m.780 ?m.810
+          [Elab.step] [0.020487] expected type: Bullshit, term
+              out.output
+            [Meta.isDefEq] [0.018089] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.816 ?m.817 ?m.847
+          [Elab.step] [0.091249] expected type: Option Prop, term
+              (out.obfusplained? out.output_true out.TRUE out.output)
+            [Elab.step] [0.091239] expected type: Option Prop, term
+                out.obfusplained? out.output_true out.TRUE out.output
+              [Meta.isDefEq] [0.019283] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.853 ?m.854 ?m.884
+              [Elab.step] [0.024497] expected type: TrueOutput.TRUE imaginary ≤ TrueOutput.output imaginary, term
+                  out.output_true
+                [Meta.isDefEq] [0.018421] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.890 ?m.891 ?m.921
+              [Elab.step] [0.021668] expected type: Bullshit, term
+                  out.TRUE
+                [Meta.isDefEq] [0.018895] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.927 ?m.928 ?m.958
+              [Elab.step] [0.022315] expected type: Bullshit, term
+                  out.output
+                [Meta.isDefEq] [0.019620] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.964 ?m.965 ?m.995
+      [Elab.step] [0.386470] expected type: Closure, term
+          .inferred (Fact.SAME Value Carrier) d.fact out.TRUE out.output
+            (out.obfusplained? out.output_true out.TRUE out.output)
+            (.different (Fact.SAME Value Carrier) out.TRUE out.output
+              (out.obfusplained? out.output_true out.TRUE out.output))
+        [Elab.step] [0.041546] expected type: Fact, term
+            (Fact.SAME Value Carrier)
+          [Elab.step] [0.041537] expected type: Fact, term
+              Fact.SAME Value Carrier
+        [Elab.step] [0.026314] expected type: Bullshit, term
+            out.TRUE
+          [Meta.isDefEq] [0.023804] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.1039 ?m.1040 ?m.1070
+        [Elab.step] [0.023235] expected type: Bullshit, term
+            out.output
+          [Meta.isDefEq] [0.020733] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.1076 ?m.1077 ?m.1107
+        [Elab.step] [0.096544] expected type: Option Prop, term
+            (out.obfusplained? out.output_true out.TRUE out.output)
+          [Elab.step] [0.096536] expected type: Option Prop, term
+              out.obfusplained? out.output_true out.TRUE out.output
+            [Meta.isDefEq] [0.020963] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.1113 ?m.1114 ?m.1144
+            [Elab.step] [0.026134] expected type: TrueOutput.TRUE imaginary ≤ TrueOutput.output imaginary, term
+                out.output_true
+              [Meta.isDefEq] [0.019440] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.1150 ?m.1151 ?m.1181
+            [Elab.step] [0.023387] expected type: Bullshit, term
+                out.TRUE
+              [Meta.isDefEq] [0.020822] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.1187 ?m.1188 ?m.1218
+            [Elab.step] [0.022506] expected type: Bullshit, term
+                out.output
+              [Meta.isDefEq] [0.019434] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.1224 ?m.1225 ?m.1255
+        [Elab.step] [0.197340] expected type: Closure, term
+            (.different (Fact.SAME Value Carrier) out.TRUE out.output
+              (out.obfusplained? out.output_true out.TRUE out.output))
+          [Elab.step] [0.197330] expected type: Closure, term
+              .different (Fact.SAME Value Carrier) out.TRUE out.output
+                (out.obfusplained? out.output_true out.TRUE out.output)
+            [Elab.step] [0.057175] expected type: Fact, term
+                (Fact.SAME Value Carrier)
+              [Elab.step] [0.057167] expected type: Fact, term
+                  Fact.SAME Value Carrier
+            [Elab.step] [0.020614] expected type: Bullshit, term
+                out.TRUE
+              [Meta.isDefEq] [0.017147] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.1296 ?m.1297 ?m.1327
+            [Elab.step] [0.023820] expected type: Bullshit, term
+                out.output
+              [Meta.isDefEq] [0.020485] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.1333 ?m.1334 ?m.1364
+            [Elab.step] [0.094273] expected type: Option Prop, term
+                (out.obfusplained? out.output_true out.TRUE out.output)
+              [Elab.step] [0.094260] expected type: Option Prop, term
+                  out.obfusplained? out.output_true out.TRUE out.output
+                [Meta.isDefEq] [0.019404] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.1370 ?m.1371 ?m.1401
+                [Elab.step] [0.026184] expected type: TrueOutput.TRUE imaginary ≤ TrueOutput.output imaginary, term
+                    out.output_true
+                  [Meta.isDefEq] [0.019216] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.1407 ?m.1408 ?m.1438
+                [Elab.step] [0.022757] expected type: Bullshit, term
+                    out.TRUE
+                  [Meta.isDefEq] [0.020214] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.1444 ?m.1445 ?m.1475
+                [Elab.step] [0.021898] expected type: Bullshit, term
+                    out.output
+                  [Meta.isDefEq] [0.018873] ✅️ TrueOutput Value Carrier imaginary =?= TrueOutput ?m.1481 ?m.1482 ?m.1512
+  [Elab.def.processPreDef] [0.052680] process pre-definitions
+    [Elab.attribute] [0.015441] applying [instance 1000]
+info: Measurement/Episode15.lean:518:23: [Elab.async] [0.042780] Lean.addDecl
+  [Kernel] [0.042730] ✅️ typechecking declarations [Measurement.INFERRED_TRUE]
+✖ [30/103] Building Measurement.Episode16 (1.3s)
+trace: .> LEAN_PATH=/Users/williamcochran/Desktop/measurement/device/.lake/build/lib/lean /Users/williamcochran/.elan/toolchains/leanprover--lean4---v4.27.0-rc1/bin/lean /Users/williamcochran/Desktop/measurement/device/Measurement/Episode16.lean -o /Users/williamcochran/Desktop/measurement/device/.lake/build/lib/lean/Measurement/Episode16.olean -i /Users/williamcochran/Desktop/measurement/device/.lake/build/lib/lean/Measurement/Episode16.ilean -c /Users/williamcochran/Desktop/measurement/device/.lake/build/ir/Measurement/Episode16.c --setup /Users/williamcochran/Desktop/measurement/device/.lake/build/ir/Measurement/Episode16.setup.json --json
+error: Measurement/Episode16.lean:132:4: type expected, got
+  (LOCAL Prop
+  truthCarrier : REAL Prop truthCarrier →
+  Type
+    (max
+        (max
+            (max
+                (max (max (max (max (max 2 (?u.37384 + 1)) (?u.37383 + 2)) (?u.37382 + 1)) (?u.37381 + 2))
+                    (?u.37380 + 1))
+                (?u.37379 + 2))
+            (?u.37378 + 1))
+        (?u.37377 + 2)))
+error: Measurement/Episode16.lean:137:2: Unknown identifier `UNIVERSAL_LOCAL`
+error: Measurement/Episode16.lean:148:4: type expected, got
+  (MEASURED Prop
+  truthCarrier : (imaginary : REAL Prop truthCarrier) →
+  [delta : UNIVERSAL Prop truthCarrier] →
+    [prop : LOGICAL Prop truthCarrier] →
+      [executable : HALTED Prop truthCarrier] →
+        Type
+          (max
+              (max
+                  (max
+                      (max
+                          (max
+                              (max
+                                  (max
+                                      (max
+                                          (max (max (max (max 2 (?u.55234 + 1)) (?u.55233 + 2)) (?u.55232 + 1))
+                                              (?u.55231 + 2))
+                                          (?u.55230 + 1))
+                                      (?u.55227 + 2))
+                                  (?u.55226 + 1))
+                              (?u.55225 + 2))
+                          (?u.55224 + 2))
+                      (?u.55223 + 2))
+                  (?u.55222 + 2))
+              (?u.55221 + 2)))
+error: Measurement/Episode16.lean:152:4: failed to synthesize instance of type class
+  MEASURED Prop truthCarrier truthReal
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Measurement/Episode16.lean:156:4: type expected, got
+  (TrueOutput Prop
+  truthCarrier : (imaginary : REAL Prop truthCarrier) →
+  [delta : UNIVERSAL Prop truthCarrier] →
+    [prop : LOGICAL Prop truthCarrier] →
+      [executable : HALTED Prop truthCarrier] →
+        [measured : MEASURED Prop truthCarrier imaginary] →
+          [compiled : COMPILED Prop truthCarrier] →
+            Type
+              (max
+                  (max
+                      (max
+                          (max
+                              (max
+                                  (max
+                                      (max
+                                          (max
+                                              (max
+                                                  (max
+                                                      (max
+                                                          (max
+                                                              (max
+                                                                  (max
+                                                                      (max
+                                                                          (max
+                                                                              (max (max 2 (?u.65154 + 1))
+                                                                                  (?u.65152 + 2))
+                                                                              (?u.65151 + 1))
+                                                                          (?u.65150 + 2))
+                                                                      (?u.65149 + 1))
+                                                                  (?u.65148 + 2))
+                                                              (?u.65147 + 1))
+                                                          (?u.65146 + 2))
+                                                      (?u.65145 + 2))
+                                                  (?u.65144 + 2))
+                                              (?u.65143 + 2))
+                                          (?u.65141 + 2))
+                                      (?u.65140 + 2))
+                                  (?u.65139 + 2))
+                              (?u.65138 + 2))
+                          (?u.65137 + 2))
+                      (?u.65136 + 2))
+                  (?u.65135 + 2)))
+error: Measurement/Episode16.lean:160:4: failed to synthesize instance of type class
+  MEASURED Prop truthCarrier truthReal
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Measurement/Episode16.lean:161:2: failed to synthesize instance of type class
+  MEASURED Prop truthCarrier truthReal
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Measurement/Episode16.lean:171:4: Unknown identifier `truthTrueOutput.TRUE`
+error: Measurement/Episode16.lean:173:4: Unknown identifier `truthTrueOutput.output`
+error: Measurement/Episode16.lean:175:4: Unknown identifier `truthTrueOutput.atreyu_process.satirize`
+error: Measurement/Episode16.lean:177:4: Unknown identifier `truthTrueOutput.obfusplained?`
+error: Measurement/Episode16.lean:182:4: Unknown identifier `truthTrueOutput.obfusplained?`
+info: Measurement/Episode16.lean:169:0: EKG outgrown (7 user-heartbeats): elaboration exceeded budget -- diagnostic only
+error: Lean exited with code 1
+✖ [101/103] Building Measurement.Episode93 (3.5s)
+trace: .> LEAN_PATH=/Users/williamcochran/Desktop/measurement/device/.lake/build/lib/lean /Users/williamcochran/.elan/toolchains/leanprover--lean4---v4.27.0-rc1/bin/lean /Users/williamcochran/Desktop/measurement/device/Measurement/Episode93.lean -o /Users/williamcochran/Desktop/measurement/device/.lake/build/lib/lean/Measurement/Episode93.olean -i /Users/williamcochran/Desktop/measurement/device/.lake/build/lib/lean/Measurement/Episode93.ilean -c /Users/williamcochran/Desktop/measurement/device/.lake/build/ir/Measurement/Episode93.c --setup /Users/williamcochran/Desktop/measurement/device/.lake/build/ir/Measurement/Episode93.setup.json --json
+error: Measurement/Episode93.lean:41:49: type expected, got
+  (LOCAL Value
+  Carrier : REAL Value Carrier →
+  Type
+    (max
+        (max
+            (max
+                (max
+                    (max (max (max (max (max (i + 2) (?u.7 + 1)) (?u.11587 + 1)) (?u.11586 + 2)) (?u.11585 + 1))
+                        (?u.11584 + 2))
+                    (?u.11583 + 1))
+                (?u.11582 + 2))
+            (?u.11581 + 1))
+        (?u.11580 + 2)))
+error: Measurement/Episode93.lean:47:37: failed to synthesize instance of type class
+  DISTINGUISHABLE Value Carrier
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Measurement/Episode93.lean:48:2: Unknown identifier `d.different?`
+error: Measurement/Episode93.lean:53:31: failed to synthesize instance of type class
+  DISTINGUISHABLE Value Carrier
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Measurement/Episode93.lean:54:2: Unknown identifier `length.whelmed?`
+error: Measurement/Episode93.lean:58:30: failed to synthesize instance of type class
+  DISTINGUISHABLE Value Carrier
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Measurement/Episode93.lean:59:2: Unknown identifier `gospel.risen?`
+error: Measurement/Episode93.lean:65:40: Unknown identifier `Value`
+error: Measurement/Episode93.lean:65:46: Unknown identifier `Carrier`
+error: Measurement/Episode93.lean:66:33: Unknown identifier `Value`
+error: Measurement/Episode93.lean:66:39: Unknown identifier `Carrier`
+error: Measurement/Episode93.lean:67:34: Unknown identifier `Value`
+error: Measurement/Episode93.lean:67:40: Unknown identifier `Carrier`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Measurement.Episode16
+- Measurement.Episode93

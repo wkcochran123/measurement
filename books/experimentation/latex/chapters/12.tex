@@ -1,0 +1,127 @@
+\chapter{Chemistry: Counting Reactions}
+\label{chap:chemistry-counting-reactions}
+
+Chemistry is where the instrument's count becomes visible to the eye. Everywhere else the count is inferred
+--- read off a trajectory, a field, a spectrum --- but in chemistry it is the plain content of the science:
+reactions balance in whole numbers, compounds form in fixed integer proportions, and the continuum of masses
+and temperatures is only an alphabet for stating integer facts. This is counting at its purest, the
+instrument working in the one place where the world hands it whole numbers directly, because its units ---
+atoms --- are indivisible and cannot be had in fractions. Four effects carry the chapter: definite
+proportions, the integer balance of a reaction, the arbitrary-but-stable temperature scale, and the catalyst
+that changes a reaction's path without changing its count.
+
+\section{The Archimedes--Proust Effect: definite proportions}
+\label{se:archimedes-proust}
+
+At the turn of the nineteenth century two chemists argued about whether a compound's composition was fixed or
+free. Berthollet held that two elements could combine in any proportion across a continuous range; Proust held
+that a given compound always contained its elements in the same fixed ratio --- water always eight parts
+oxygen to one of hydrogen by mass, however it was made. Proust was right, and the reason is the instrument's:
+there are two modes of measurement, the continuous, where geometry supplies arbitrarily fine values, and the
+integer, where commitment fixes a whole number, and a compound belongs to the second. Atoms are indivisible
+counting units, and a compound is a whole-number ratio of them. Water is two hydrogen atoms to one oxygen,
+always, and no preparation, however careful, yields two-and-a-half hydrogens to an oxygen, because there is no
+half an atom to count.
+
+The honest floor is a finite count obligation: the proportions are integers, the integer balance is the fact,
+and the continuous masses are alphabet, not content. The reading is that a compound is an integer relation.
+The continuum can express it to any precision --- sixteen grams of oxygen to two of hydrogen, eight to one ---
+but the fact it expresses is a count: two of the one, one of the other. This is chemistry's first count, and
+it is the bare fact that atoms come in whole numbers, made into a law.
+
+Dalton sharpened the point into the strongest early evidence for atoms. The same two elements can form more
+than one compound --- carbon and oxygen make both carbon monoxide and carbon dioxide --- and when they do, the
+masses of the one element combining with a fixed mass of the other stand in small whole-number ratios. Hold
+the carbon fixed, and the oxygen in the dioxide is exactly twice the oxygen in the monoxide: one to two, not
+one to one-point-nine. This is the law of multiple proportions, and it is nearly a proof on its own that
+matter is made of indivisible units. A continuum would have no reason to prefer the ratio two; counting units
+have no choice but to.
+
+\section{The Stoichiometry Effect: a reaction is an integer program}
+\label{se:stoichiometry}
+
+If a compound is an integer ratio, a reaction is an integer balance. Burn hydrogen in oxygen and you get
+water --- but not in any proportion: the equation must balance, atom for atom,
+\begin{equation}
+  2\mathrm{H}_2 + \mathrm{O}_2 \to 2\mathrm{H}_2\mathrm{O},
+\end{equation}
+two hydrogen molecules and one of oxygen making two waters, every atom on the left accounted for on the right.
+In general a merge of $N_A$ and $N_B$ into $N_C$ is admissible only if there are integers $a, b, c \in
+\mathbb{Z}$ that balance every atom exactly,
+\begin{equation}
+  a\,N_A + b\,N_B = c\,N_C,
+\end{equation}
+and no fractional event may be recorded --- no half a molecule reacts, no partial refinement is admitted. This
+is Lavoisier's conservation made into arithmetic: nothing is created or destroyed in the reaction, so every
+atom that enters must leave, and the balance is an integer bookkeeping the instrument can check by counting.
+
+The balance has a sharp linear-algebraic form, and naming it ties the reaction to the relation-algebra the
+book uses elsewhere. Build the formula matrix $A$: one row per element, one column per species, each entry the
+number of atoms of that element in that species. A reaction is a vector $\mathbf{v}$ of stoichiometric
+coefficients --- positive for products, negative for reactants --- and conservation, the demand that every
+atom entering leaves, is the single statement that $A$ annihilates $\mathbf{v}$,
+\begin{equation}
+  A\mathbf{v} = \mathbf{0}, \qquad \mathbf{v} \in \mathbb{Z}^n .
+\end{equation}
+Balancing a reaction is finding a vector in the kernel of the formula matrix, and the demand that $\mathbf{v}$
+be integer, not merely real, is the demand that atoms come in whole units. The kernel as a linear subspace
+would admit any scalar multiple, a continuum of solutions; the integer kernel admits only whole-number ratios,
+and the smallest such vector --- the coefficients in lowest terms --- is the balanced equation. An equation
+that balances is one whose formula matrix has a nonzero integer null vector; an unbalanceable one is a matrix
+whose kernel meets the integer lattice only at zero.
+
+The honest floor is a finite count obligation: the reaction is exactly the integer balance, and admissibility
+is solvability in whole numbers. The reading is that a chemical reaction is an integer program. It proceeds if
+and only if the atoms balance in whole numbers, and the selection rule governing which reactions can happen at
+all is just the demand that an integer solution exist --- an unbalanceable equation is not a slow reaction or
+an inefficient one; it is simply not a reaction.
+
+\section{The Celsius--Lagrange Effect: a scale arbitrary in symbol, stable in relation}
+\label{se:celsius-lagrange}
+
+Not everything in chemistry is a count; some of it is a scale, and a scale is a different kind of object,
+built to support interpolation without claiming the underlying phenomenon is continuous. Celsius fixed two
+reproducible anchors --- the freezing and boiling of water, called nought and a hundred --- and interpolated
+linearly between them,
+\begin{equation}
+  T = T_0 + (T_1 - T_0)\,\frac{x - x_0}{x_1 - x_0},
+\end{equation}
+so that any intermediate temperature is recoverable by the rule. But the scale is arbitrary in its symbols and
+stable only in its relations. The anchors are facts and the relations among readings are facts; the off-anchor
+values are scaffolding --- a convention chosen to interpolate, not a claim that the phenomenon is genuinely
+continuous there. That the numbers are free is plain from the rival scales: Fahrenheit and Kelvin set
+different anchors and different zeros, and a temperature reads as a different number on each, yet all three
+encode the same orderings and the same ratios of intervals. What every scale agrees on is the relation; what
+each is free to choose is the label.
+
+The honest floor is a smooth-shadow analogy: the continuous scale is the smooth shadow of two anchors and a
+rule, and the bridge from the anchors to the continuum of readings is an interpolation, named as one. The
+reading is that a scale's numbers are arbitrary but its relations are not. What a thermometer reports between
+its anchors is scaffolding built to interpolate; the only facts are the anchors and the order and ratios the
+scale preserves. The symbol is free; the relation is fixed.
+
+\section{The First Effect of Gibbs: a catalyst changes the path, not the count}
+\label{se:gibbs-catalyst}
+
+A catalyst lowers the strain a reaction must overcome to proceed, without altering the net ledger. Introduce a
+catalytic structure $K$ and it supplies an alternate sequence of intermediate steps that reduce the curvature
+of the admissible path --- an easier route over the same terrain. But $K$ is regenerated: it appears in the
+forward step and is returned by the inverse, so the forward and inverse catalyst contributions cancel and the
+net balance is exactly what it was without $K$. The count stays additive. The Haber process is the standing
+example: an iron catalyst lets nitrogen and hydrogen combine into ammonia at a workable rate, and the iron is
+returned untouched at the end, nowhere in the net equation $\mathrm{N}_2 + 3\mathrm{H}_2 \to 2\mathrm{NH}_3$.
+It changed how fast the reaction ran and by what path, but not a single integer in the balance.
+
+The honest floor is a finite count obligation: the catalyst cancels in the net count, leaving the integer
+balance of the reaction untouched. The reading is that a catalyst changes the path, not the destination. It
+lowers the strain of getting there and is handed back unchanged, so the reaction's count --- its
+stoichiometry, its definite proportions --- is exactly what it would be without it. The catalyst speeds the
+reconciliation; it does not alter the books.
+
+\bigskip
+
+Chemistry, read off finite records, is integer arithmetic made visible: definite proportions, reactions that
+balance in whole numbers, scales whose symbols are free but whose relations are fixed, and catalysts that
+change the path without touching the count. Nowhere did the instrument need the continuum; the atoms handed it
+whole numbers, and it counted them. Part III closes next with condensed matter, where these counts settle into
+the states of solids, and the instrument meets the last of its four honest floors.

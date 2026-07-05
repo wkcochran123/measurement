@@ -1,0 +1,191 @@
+\chapter{The Second Law and the Cost of Information}
+\label{chap:second-law-cost-of-information}
+
+The thread of this chapter is a single claim, and it is the chapter's spine: information is physical. The
+second law is not, at bottom, a statement about disorder; it is a statement about the cost of bookkeeping.
+And there is a sharper point inside it, one this part has been building toward: the instrument's own
+measuring is a physical act with a thermodynamic price. To measure is not to look on from outside; it is to
+join the causal order and pay into it. Every distinction the instrument draws, every bit it erases, every
+boundary it must reconcile, is settled in the same currency as heat. Five effects build the case, from the
+demon that seems to cheat the second law for free to the equilibrium that turns out to be actively held.
+
+\section{Maxwell's Demon: sorting is entropy-producing}
+\label{se:maxwell-demon}
+
+The demon is the instrument in disguise. Set a partition across a box of gas with a gate the demon controls,
+and let it watch the molecules, opening the gate only for the fast ones heading one way and the slow ones the
+other. After a while the fast molecules are gathered on one side, the slow on the other --- the gas has been
+sorted, hot from cold, its entropy lowered, and apparently for nothing, since opening a frictionless gate
+costs no work. This is the paradox: the demon seems to break the second law by mere observation.
+
+The resolution is that observation is never mere. The demon's measurement $M$ and the gas's evolution $U$ do
+not commute; if $[M, U] = 0$ the demon's looking would leave the causal order untouched and could be slid past
+the dynamics for free, but it does not, and the non-commutativity forces an entropy balance,
+\begin{equation}
+  \Delta S_{\text{gas}} + \Delta S_{\text{demon}} = k_{\mathrm{B}}\ln\!\left|\Omega_{\text{joint}}\right| > 0 .
+\end{equation}
+Entropy here is Boltzmann's count: the logarithm of the number of microscopic configurations a macroscopic
+state allows,
+\begin{equation}
+  S = k_{\mathrm{B}} \ln \Omega,
+\end{equation}
+the formula on his tombstone, turning a count of arrangements $\Omega$ into a thermodynamic entropy. The
+demon's sort lowers the gas's $\Omega$ and raises the demon's own, and the joint count
+$|\Omega_{\text{joint}}|$ can only grow. The demon cannot read a molecule's speed without becoming part of the
+gas's causal order, and each thing it
+reads is a distinction it must record. That record is physical --- it lives in the demon's own memory --- and
+the entropy the demon takes out of the gas reappears, and more, inside it: each refinement of its internal
+partition, $P_n \to P_{n+1}$, adds a distinction to the world's total count.
+
+Picture the demon's notebook as it works. Every molecule it sorts costs an entry --- \emph{fast, this side;
+slow, that side} --- and the notebook fills, line by line, with exactly the distinctions the demon drew out of
+the gas. The gas grows orderly; the notebook grows full. Nothing has been gotten for free: the order taken
+from the gas has been paid for, distinction for distinction, in the demon's own record. The demon is the
+instrument, and its notebook is the instrument's count --- and the count, as always, is physical.
+
+The honest floor is a finite count obligation: the global count of distinct configurations rises, and the
+demon's record is exactly the count it adds. The reading is the chapter's spine. Measurement is physical. The
+demon does not cheat the second law, because observing is not free --- to measure is to join the system's
+causal order and add to the world's count of distinctions. Every reading the instrument has taken in this
+book, from the first mark to here, has been such an act; the demon simply makes its price visible.
+
+\section{The Thermodynamic Cost of Erasure: Landauer's bound}
+\label{se:landauer}
+
+There is a loophole to close, and closing it is Landauer's. The demon's notebook is finite. Sooner or later
+it fills, and to keep sorting the demon must erase it --- wipe the old entries to make room for new.
+Measuring, it turns out, can be done for free; erasing cannot. Resetting a single bit --- dumping its recorded
+distinction into the surroundings --- releases at least
+\begin{equation}
+  E_{\min} = k_{\mathrm{B}} T \ln 2
+\end{equation}
+of heat and raises entropy by at least $k_{\mathrm{B}}\ln 2$. This is Landauer's bound, and it is exactly the
+size of the demon's debt. When the demon erases its full notebook to carry on, it pays out, bit by bit,
+precisely the entropy its sorting had removed from the gas. The loophole closes: the sort lowered the gas's
+entropy, the erasure that lets the sort continue raises it right back, and the second law is whole. The bill
+came due not at the measurement but at the erasure.
+
+Szilard sharpened the demon to a single molecule and made the exchange exact. Put one molecule in a box and
+let the demon learn which half it is in --- a single bit of information. With that bit the demon can slide a
+piston against the empty side and let the molecule's own pressure push it out, extracting work; for the
+isothermal expansion of one molecule from half the box to the whole, the work is exactly $k_{\mathrm{B}} T
+\ln 2$. One bit of information, converted into one bit's worth of work. But the demon now holds a used bit ---
+which half the molecule was in --- and to run the engine again it must erase that bit, paying back the very
+$k_{\mathrm{B}} T \ln 2$ it gained. The engine extracts $k_{\mathrm{B}} T \ln 2$ from a bit, and Landauer's
+bound charges $k_{\mathrm{B}} T \ln 2$ to clear it: the books close, the cycle yields nothing, and the exact
+equality of the two is the sharpest statement in physics that information is physical. A bit is worth
+$k_{\mathrm{B}} T \ln 2$ --- to spend, and to clear.
+
+The honest floor is a finite count obligation: the erased bit is a count, and $k_{\mathrm{B}} T \ln 2$ is its
+price. The reading is that the irreversible step is not measurement but erasure. A record can be made for
+free, but it cannot be unmade for free. The second law is paid at the moment a distinction is destroyed, not
+when it is first drawn --- which is why the demon could sort all day for nothing and still never beat the law:
+the bill was waiting at the bottom of the notebook.
+
+\section{The Entropic Cost of Acceleration: temperature from a horizon}
+\label{se:unruh}
+
+Temperature, the chapter's third effect shows, can be made from geometry alone. Accelerate, and a horizon
+forms --- a surface beyond which the records of the world can no longer reach you, sealed off by your own
+motion. The records behind it are not destroyed but hidden, and their count is a temperature: an accelerating
+observer reads a thermal bath whose warmth rises with the acceleration,
+\begin{equation}
+  T \propto a,
+\end{equation}
+the heat set by the entropy of the records the horizon has sealed away. Temperature here is not primary, and
+not a property of any substance; it is the count of sealed pages the horizon hides.
+
+This is the instrument meeting a horizon again, in a new guise. In Part I the butterfly gave it a horizon of
+\emph{resolution} --- a depth past which its own floor swamped the signal. Here acceleration gives it a
+horizon of \emph{access} --- a surface past which records are sealed from it. And the same idea returns at the
+largest scale in Part V, where a black hole's event horizon seals records away and carries, by exactly this
+reasoning, a temperature and an entropy of its own. The Unruh effect is the bench-scale rehearsal of the
+black hole: a horizon, a sealed count, a temperature read off what can no longer be reached.
+
+The honest floor is a smooth-shadow analogy: the discrete count of hidden records is the shadow of the
+continuum temperature, and the bridge from the sealed-page count to $T \propto a$ is an analogy, named as one.
+The reading is that temperature can be made from geometry alone. Accelerate, and a horizon seals part of your
+own ledger away; the heat you then feel is the entropy of what you can no longer read --- temperature as the
+price of a horizon, not a property of a substance.
+
+\section{The Ideal Ledger Effect: pressure as reconciliation flux}
+\label{se:ideal-ledger}
+
+Pressure, too, turns out to be bookkeeping rather than substance. To the instrument, pressure is the rate at
+which a boundary must reconcile the updates arriving from the interior: every molecule that reaches the wall
+is a reconciliation the wall must perform, and the pressure is how fast those reconciliations come. When the
+volume is large the requests are sparse and the wall is rarely troubled; when it is small they crowd the same
+stretch of boundary and the wall is hammered. Pressure is the flux density of that reconciliation,
+\begin{equation}
+  P \propto \frac{n\,T}{V}, \qquad\text{that is,}\qquad PV = nT,
+\end{equation}
+the ideal gas law read as additive ledger counts --- $n$ threads each reconciling at a shared wall, the
+temperature $T$ setting how vigorously each one arrives, the volume $V$ setting how much boundary they have to
+share.
+
+Pressure is one reading among many, and all of them flow from a single object the instrument writes down once
+and differentiates forever: the partition function. List the states a system can occupy, each of energy $E_i$,
+and sum a Boltzmann weight over them,
+\begin{equation}
+  Z = \sum_i e^{-\beta E_i}, \qquad \beta = \frac{1}{k_{\mathrm{B}} T},
+\end{equation}
+the weight $e^{-\beta E_i}$ measuring how accessible a state of energy $E_i$ is at temperature $T$ --- near one
+for states well below $k_{\mathrm{B}} T$, vanishing for states far above. The probability of finding the system
+in state $i$ is that weight normalized,
+\begin{equation}
+  p_i = \frac{e^{-\beta E_i}}{Z},
+\end{equation}
+the Boltzmann distribution. And from $Z$ the whole thermodynamics falls out by differentiation. Its logarithm
+is the free energy,
+\begin{equation}
+  F = -k_{\mathrm{B}} T \ln Z,
+\end{equation}
+and every thermodynamic count the chapter has named is a derivative of that one sum over states: the average
+energy is $\langle E\rangle = -\partial_\beta \ln Z$, the entropy is $S = -\partial_T F$, the pressure is $P =
+-\partial_V F$. The instrument does not compute heat, entropy, and pressure separately; it writes down one sum
+over the accessible states and reads each observable off as a slope. $Z$ is the ledger of the many, and
+thermodynamics is its bookkeeping.
+
+The honest floor is a finite count obligation: pressure is a count of reconciliation events per unit of
+boundary, and $PV = nT$ balances those counts. The reading is that pressure is not a substance pushing on a
+wall but the density of reconciliation the wall must carry. The ideal gas law is bookkeeping --- more threads,
+a hotter gas, or a smaller wall each mean more reconciliations crowded together, and that crowding is the
+pressure.
+
+\section{The Thermostat Effect: equilibrium actively held}
+\label{se:thermostat}
+
+Equilibrium is the last surprise, and the gentlest: it is not a passive resting point but an actively
+maintained one. An admissible ledger self-regulates around its low-strain states, and its updates do not
+merely seek a stationary point --- they suppress deviations away from it. The stability is second-order. Where
+the curvature of the strain is positive,
+\begin{equation}
+  \delta^2 \mathcal{I} > 0,
+\end{equation}
+a deviation decays and the ledger returns, a stable minimum; where $\delta^2 \mathcal{I} < 0$, the deviation
+amplifies and the control loop fails. Equilibrium is the fixed point the feedback holds, not merely the place
+the system happens to land.
+
+The fixed point has a name from the partition function of the last section. Equilibrium is the state that
+minimizes the free energy $F = -k_{\mathrm{B}} T \ln Z$ --- equivalently, the state of maximum entropy at fixed
+energy, the most probable arrangement of the many. The first variation of $F$ vanishes there, $\delta F = 0$,
+marking the extremum; the second variation is positive, $\delta^2 F > 0$, marking it a minimum rather than a
+maximum --- which is exactly the $\delta^2 \mathcal{I} > 0$ above, the curvature that makes a deviation decay.
+Equilibrium is not a place the system drifts to but the bottom of the free-energy basin, and the second law's
+drift toward it is the system rolling down that basin while the feedback holds it at the floor.
+
+The honest floor is a finite count obligation: stability is the sign of the second variation, a definite
+verdict on whether a deviation grows or shrinks. The reading is that equilibrium is maintained, not merely
+occupied. A thermostat does not so much find a stable state as hold one, suppressing drift by negative
+feedback --- and the second law's drift toward equilibrium is itself an active reconciliation, the ledger
+forever restoring the consistency a fluctuation disturbs, not a passive fall toward disorder.
+
+\bigskip
+
+The thread through all five is one claim: information is physical, and the instrument's own measuring is part
+of the physics it measures. Sorting, erasing, accelerating, confining, and stabilizing each cost in the
+currency of the second law, because each one makes, destroys, hides, crowds, or holds a count of distinctions
+--- and that count is the entropy. The demon makes the price of a measurement visible; Landauer collects it at
+erasure; a horizon turns a sealed count into heat; a wall turns crowded reconciliations into pressure; and a
+thermostat spends a steady trickle to hold a fixed point against drift. Part III closes next with matter in
+bulk, where these same costs harden into the properties of solids.

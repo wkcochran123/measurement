@@ -1,4 +1,5 @@
 import Measurement.Episode15
+import Measurement.Meanwhile17
 import Measurement.Calibration.EKGBounded
 namespace Measurement
 
@@ -129,12 +130,12 @@ noncomputable instance truthReal :
   REAL_WITNESSED Prop truthCarrier
 
 noncomputable instance truthLocal :
-    LOCAL Prop truthCarrier :=
+    LOCAL Prop truthCarrier truthReal :=
   LOCAL_REAL Prop truthCarrier
 
 noncomputable instance truthUniversal :
     UNIVERSAL Prop truthCarrier :=
-  UNIVERSAL_LOCAL Prop truthCarrier
+  UNIVERSAL_REAL Prop truthCarrier
 
 noncomputable instance truthLogical :
     LOGICAL Prop truthCarrier :=
@@ -145,15 +146,15 @@ noncomputable instance truthHalted :
   HALTED_LOGICAL Prop truthCarrier
 
 noncomputable instance truthMeasured :
-    MEASURED Prop truthCarrier :=
+    MEASURED Prop truthCarrier truthReal :=
   MEASURED_HALTED Prop truthCarrier
 
 noncomputable instance truthCompiled :
     COMPILED Prop truthCarrier :=
-  COMPILED_MEASURED Prop truthCarrier
+  COMPILED_MEASURED Prop truthCarrier truthReal
 
 noncomputable instance truthTrueOutput :
-    TrueOutput Prop truthCarrier :=
+    TrueOutput Prop truthCarrier truthReal :=
   TRUE_COMPILED Prop truthCarrier
 
 noncomputable instance truthInferred :

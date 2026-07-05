@@ -293,7 +293,7 @@ structure BigRedDogProcess
     [ideology: SCIENTIFIC Value Carrier]
     [gospel: TRUTH Value Carrier]
     [account: WITNESSED Value Carrier]
-    [real: REAL Value Carrier]
+    [real: REAL Value Carrier]    -- The idea that a real number can be reperesented isn't real.
   where
   universal_observer: UniverseTensor Value Carrier  -- Praise be to the universal observer.
   differential_equation: Variation
@@ -341,7 +341,8 @@ class LOCAL
     [ideology: SCIENTIFIC Value Carrier]
     [gospel: TRUTH Value Carrier]
     [account: WITNESSED Value Carrier]
-    [real: REAL Value Carrier]
+    [imaginary: REAL Value Carrier]
+    (real: REAL Value Carrier)
   where
   theory: BigRedDogProcess Value Carrier
   delta: Prop
@@ -380,11 +381,10 @@ instance LOCAL_REAL
     [gospel: TRUTH Value Carrier]
     [account: WITNESSED Value Carrier]
     [real: REAL Value Carrier]
-    : LOCAL Value Carrier where
+    : LOCAL Value Carrier real where
   theory :=
   { universal_observer := real.universal_observer
     differential_equation := .newton account.witness d.fact.truth
   }
   delta := d.fact.truth
-
 end Measurement

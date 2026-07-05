@@ -40,11 +40,11 @@ structure LeanProcess
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
     [prop: LOGICAL Value Carrier]
     [executable: HALTED Value Carrier]
   where
-  description: ElaborationProcess Value Carrier
+  description: ElaborationProcess Value Carrier real
   length: Number
   velocity: Measurement
   projection: Type i
@@ -72,38 +72,19 @@ class MEASURED
     [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
     [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
     [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
     [prop: LOGICAL Value Carrier]
     [executable: HALTED Value Carrier]
   where
-  satire: LeanProcess Value Carrier
+  satire: LeanProcess Value Carrier real
 
-  bounded? : Measurement → Measurement → Prop := fun a b =>
-    Measurement.le a b
+  bounded? := fun a b => Measurement.le a b
 
 
-instance MEASURED_HALTED
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [epsilon: LOCAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier]
-    [executable: HALTED Value Carrier]
-    : MEASURED Value Carrier where
-  satire :=
-  { description := executable.scientific_paper
-    length := Carrier.value
-    velocity := .origin d.fact Carrier.value Value
-    projection := ULift.{i} (ULift.{i} (ULift.{i} Value))  -- Hmm... wonder what this could mean?
-  }
+
+  -- The two locals store two universals (one per REAL).  bounded? MERGES them with
+  -- lake_build -- the bilinear -- carried on top of the Measurement bound: the real local's
+  -- source program against the imaginary local's compiled program (the before/after seam).
 
 
 end Measurement

@@ -1,0 +1,177 @@
+\chapter{Sampling, Spectra, and the Limits of a Reading}
+\label{chap:sampling-spectra-limits}
+
+Every reading the instrument takes is a projection. A continuous field, infinite in its detail, is mapped
+onto a finite ledger of counts, and a projection always does two things at once: it keeps part of what it is
+given and discards the rest. The part it keeps is the reading; the part it discards is its \emph{kernel} ---
+the blind spot every projection has, the subspace of the world it is structurally unable to see. This chapter
+is a tour of that blind spot. It asks when a reading is dense enough to lose nothing, what a finite reading
+does to a sharp edge, where the edge goes when the reading smooths it away, what two finite readings invent
+between them that neither holds alone, and what part of a message no receiver can ever decode. Five effects,
+one object: the kernel of the projection, and where in physics it hides.
+
+\section{The Fourier--Nyquist Effect: exact inversion needs density}
+\label{se:fourier-nyquist}
+
+The instrument can take a continuous wave apart into its frequencies and put it back together exactly --- but
+only if it sampled densely enough to begin with. Taking the wave apart is the Fourier transform, and putting
+it back is its inverse,
+\begin{equation}
+  \hat f(k) = \int f(x)\, e^{-ikx}\, dx, \qquad f(x) = \frac{1}{2\pi}\int \hat f(k)\, e^{ikx}\, dk,
+\end{equation}
+the forward integral reading off how much of each frequency $k$ the signal holds, the inverse rebuilding the
+signal from that spectrum; the two are exact inverses, so the spectrum $\hat f$ carries everything the signal
+does, written in frequencies instead of positions. The sampling enters when the instrument records the signal
+not as a continuous curve but as a row of samples. A signal is band-limited when its spectrum stops at a
+highest frequency $B$,
+\begin{equation}
+  \hat f(k) = 0 \quad\text{for } |k| > B,
+\end{equation}
+holding no detail finer than $B$; and Nyquist found, Shannon made a theorem, that such a signal is recovered
+exactly from its samples if and only if they come at least twice that fast,
+\begin{equation}
+  f_s \geq 2B .
+\end{equation}
+Sample at or above the Nyquist rate and the reconstruction is perfect, the discrete reading carrying every
+distinction the continuous wave held. Sample below it, and high frequencies fold down onto low ones ---
+aliasing --- so that two genuinely different waves leave exactly the same trail of samples. The under-sampled
+reading cannot tell them apart, not because noise has blurred them but because the projection has
+\emph{identified} them: they differ only in the kernel.
+
+Everyone has seen the kernel at work. Film a spinning wagon wheel at too few frames per turn and the wheel
+appears to rotate slowly backward, or to hang motionless --- the camera, sampling below the wheel's Nyquist
+rate, has filed a fast forward spin and a slow backward one as the same record. The true motion has not been
+corrupted; it has been folded onto another that shares its samples, and from the film alone the two are one.
+That folding is the kernel of an under-dense reading: the set of distinct worlds a too-sparse sampling cannot
+separate.
+
+The honest floor is a smooth-shadow analogy. The finite sampling is the discrete shadow of the continuum
+signal, and exact inversion is the bridge between them --- a bridge that holds above the Nyquist rate and
+collapses below it, where the hinge of the analogy is precisely the density of the sampling. The reading is
+that a reading recovers everything if and only if it is dense enough. Below the Nyquist rate, distinct signals
+collapse to identical samples, and the loss is not noise added but the geometry of under-sampling: two
+different worlds filed as one, separated only by what the reading threw away.
+
+\section{The Gibbs Phenomenon: the overshoot that won't go away}
+\label{se:gibbs}
+
+Push a sharp edge through a band-limited reading and the reading rings. At a discontinuity --- a square wave's
+vertical face, a brightness step in an image --- a band-limited reconstruction overshoots the jump and then
+oscillates beside it, and the overshoot does not shrink as more frequencies are added: it stays, fixed, at
+about nine percent of the jump's height. Add a hundred terms, a thousand, a million, and the ripple narrows
+but its peak holds at the same nine percent. The number is exact and famous. A partial Fourier sum --- the
+first $N$ terms of the series --- reconstructs a jump by convolving it with the Dirichlet kernel, the summed
+first $N$ harmonics, and that kernel has a fixed overshoot at a step: as $N$ grows the ripple is squeezed
+toward the edge but its first peak settles at a constant fraction of the jump, the Gibbs constant, about
+$0.0895$ --- nine percent --- no matter how many terms are summed. The overshoot does not converge away because
+it is a property of the kernel, not of how finely the sum is taken. In the ledger's terms the part of a jump of
+height $h$ that a band-limit $B$ cannot represent is
+\begin{equation}
+  \mathrm{gap} = h - \min(h, B),
+\end{equation}
+and that gap is what the ringing is made of.
+
+The ripple is familiar wherever sharp meets smooth. Reconstruct a square wave from a truncated Fourier series
+and the telltale ears appear at every corner; compress an image too hard and a faint halo rings each crisp
+boundary; the overshoot is the same in each case, and in each case it cannot be filtered away without blurring
+the edge that causes it. The honest floor is a smooth-shadow analogy: the overshoot is the discrete jump's
+smooth shadow, and it persists precisely because the shadow cannot represent the discontinuity it shadows. The
+reading is that a band-limited reading cannot show a sharp edge without ringing. The nine percent is not a
+flaw in the signal and not a fault in the instrument; it is the fixed price of the shadow, the irreducible
+residue a continuous reading pays whenever it is asked to draw a corner it cannot hold.
+
+\section{The Gibbs Preservation Effect: edges in the null space}
+\label{se:gibbs-preservation}
+
+If the previous effect showed the kernel as a price, this one shows it as a refuge, and the two are the same
+kernel seen twice. The feature a band-limited reading cannot represent --- the sharp edge that makes it ring
+--- is the very feature a smoothing cannot reach to erase. The edge that overshoots in the one reading is the
+edge preserved in the other; the null space that rings is the null space that keeps. The instrument's blind
+spot exacts a price at a corner and offers a refuge at the same corner, because it is one blind spot met from
+two sides --- and seeing that is the clearest statement of the chapter's whole idea.
+
+When the instrument smooths a record --- projects a discrete ledger onto its continuous shadow --- it applies a
+band-limiting projection $P$, a map that keeps the low frequencies and zeroes the rest. Like every projection,
+$P$ splits its domain in two: the range, the smooth part it keeps, and the null space, the features it sends to
+nothing, $P e = 0$. A sharp antisymmetric feature --- an edge of the form $[+h, -h]$ --- lies squarely in that
+null space: $P$ maps it to zero. To the smoothing the edge is invisible. Add it to the record or remove it, and
+the smooth shadow $P f$ does not change, because the edge sits entirely in the part the projection discards,
+never in the part it keeps.
+
+The consequence is the opposite of what intuition expects. One imagines smoothing as the enemy of edges --- a
+blur that erodes them. But an edge that lives in the kernel of the blur is not eroded; it is \emph{set aside}.
+Blur a photograph with a sharp boundary and the boundary is not smeared into the soft regions around it; it is
+separated, intact, into the residual the blur discards, and from that residual it can be recovered whole. The
+smoothing cannot destroy the edge for exactly the reason it cannot see it: the edge was never in the
+smoothing's reach to begin with. The instrument's blind spot, here, is also its safe-deposit box --- the very
+subspace the projection cannot read is the one place a feature is safe from it.
+
+The honest floor is a smooth-shadow analogy --- the preserved edge is the part of the discrete ledger the
+smooth shadow cannot touch, the analogy's blind spot named for what it is. The reading is that smoothing does
+not destroy edges; it cannot reach them. The sharpest features of a record are precisely the ones the smooth
+shadow leaves alone, which is why a reading can blur a field and still carry its discontinuities perfectly
+intact: the edge was never in the shadow's range to lose, but in the kernel the shadow sets aside. This is the
+kernel at its most vivid --- a blind spot that, far from losing what falls into it, keeps it.
+
+\section{The Moir\'e Effect: beats from mismatched lattices}
+\label{se:moire}
+
+Lay two fine gratings over each other, their pitches slightly different, and a coarse pattern swims into view
+--- broad bright and dark bands, far larger than either grating's lines, marching at the difference of the two
+pitches,
+\begin{equation}
+  f_{\mathrm{beat}} = |f_1 - f_2| .
+\end{equation}
+The beat is the difference frequency two periodic patterns make when they are laid together. Overlay two
+gratings of frequencies $f_1$ and $f_2$ and their product splits, by the elementary product-to-sum identity,
+into a fast term at the sum $f_1 + f_2$ and a slow term at the difference $|f_1 - f_2|$; the eye averages away
+the fast term and sees only the slow one, the coarse band marching at the difference. This is the moir\'e
+effect, named for the watered silk whose rippled sheen comes from exactly such an overlay,
+and seen daily wherever two regular patterns cross: a striped shirt shimmering on a television screen, the
+rosettes that betray a halftone reprint, the bands across a photograph of a brick wall. The coarse pattern is
+real --- one can measure it, photograph it, count its bands --- and yet it is in neither grating alone. It is
+a structure the two readings make \emph{together}, a beat of their mismatch, present in the pair and absent
+from each.
+
+The honest floor is a finite count obligation: the beat is a definite difference of two pitches, the count of
+where the two lattices fall into step against where they drift apart. The reading is that the moir\'e pattern
+belongs to the pair and not to the world. It is what two finite readings invent between them --- a ghost of
+their mismatch, read as a structure that was never in the signal either reading sampled. Where the kernel of a
+single reading is what that reading cannot see, the moir\'e pattern is its mirror image: a thing two readings
+together can see that is not, in fact, there.
+
+\section{The Message Effect: what no receiver can decode}
+\label{se:message}
+
+A transmission carries structure, but a receiver registers only the part its own basis can resolve. Relative
+to that basis, the symmetric component of a refinement is decodable, and the antisymmetric twist is not: it
+falls in the kernel of the decoding, and for that receiver it is simply unrecordable. Only the symmetric part
+survives as message; a pure antisymmetric twist arrives reading identical to silence, indistinguishable from
+nothing sent at all. The unrecoverable part has a precise signature --- it is a closure defect, a circulation
+that does not vanish around a loop,
+\begin{equation}
+  \oint \mathbf{R}\cdot d\boldsymbol{\ell} \neq 0,
+\end{equation}
+so that the twist which refuses to close around a loop is exactly the twist that cannot be sent.
+
+This is the kernel as a limit on communication, and it is sharper than it first sounds. It does not say the
+twist is hard to decode, or that a better receiver could recover it; it says that \emph{for this basis} the
+twist and silence are the same message. Two transmissions differing only by a pure twist are, to the receiver,
+one transmission. The honest floor is a smooth-shadow analogy --- the decodable message is the symmetric
+shadow of the transmission, and the antisymmetric twist is the part the projection cannot cast, named as the
+kernel of the decoding. The reading is that communication is a projection, and a projection has a kernel. What
+no receiver can decode is not lost in transit but invisible to the basis --- a twist that reads as silence
+because the decoder has no axis for it. The limit of a reading is its kernel, and a message is only ever its
+symmetric part.
+
+\bigskip
+
+With the message, the chapter's object is complete, and it has a single name. A finite reading is a
+projection; a projection keeps and discards; and what it discards --- its kernel --- is the blind spot every
+reading carries. The kernel appears here as a threshold below which two worlds file as one, as the ringing a
+shadow cannot smooth away, as the refuge where an edge survives precisely because the smoothing cannot reach
+it, as the ghost two mismatched readings invent together, and as the twist that reaches every receiver reading
+exactly like silence. The instrument is honest about all of it: it names what each reading recovers and what
+it leaves behind, and never mistakes the second for nothing. Part II closes next with the inverse-square law
+--- a field's reach diluting across an expanding frontier --- and with it the instrument leaves the reading of
+waves for the geometry of how a field spreads.

@@ -1,0 +1,74 @@
+\documentclass[12pt,oneside]{book}
+\usepackage{amsmath,amssymb,setspace}
+\makeatletter
+% TOC part lines read "Part I  Domain" to match the divider pages (mirrors Vol 1/3; standard book
+% \l@part with \partname prepended).
+\renewcommand*\l@part[2]{%
+  \ifnum \c@tocdepth >-2\relax
+    \addpenalty{-\@highpenalty}%
+    \addvspace{2.25em \@plus\p@}%
+    \setlength\@tempdima{3em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      {\leavevmode
+       \large \bfseries \partname\nobreakspace#1\hfil \hb@xt@\@pnumwidth{\hss #2}}\par
+       \nobreak
+         \global\@nobreaktrue
+         \@afterheading
+    \endgroup
+  \fi}
+\makeatother
+
+\begin{document}
+
+\title{Experimentation\\[0.4em]\large An Applied Physics}
+\author{Bill Cochran\\wkcochran@gmail.com\\https://github.com/wkcochran123/measurement}
+\date{\today}
+\maketitle
+
+\frontmatter
+\onehalfspacing
+% Front matter intentionally empty pending the openers and the interim intro.
+\tableofcontents
+
+\mainmatter
+\part{Mechanics and Motion}
+\include{chapters/01}
+\include{chapters/02}
+\include{chapters/03}
+\include{chapters/04}
+\part{Fields, Waves, and Light}
+\include{chapters/05}
+\include{chapters/06}
+\include{chapters/07}
+\include{chapters/08}
+\part{Heat, Entropy, and Matter}
+\include{chapters/09}
+\include{chapters/10}
+\include{chapters/11}
+\include{chapters/12}
+\include{chapters/13}
+\part{The Quantum}
+\include{chapters/14}
+\include{chapters/15}
+\include{chapters/16}
+\include{chapters/17}
+\include{chapters/18}
+\include{chapters/19}
+\part{Relativity and Gravitation}
+\include{chapters/20}
+\include{chapters/21}
+\include{chapters/22}
+\include{chapters/23}
+\part{Foundations: Computation, Limits, and Measurement}
+\include{chapters/24}
+\include{chapters/25}
+\include{chapters/26}
+\include{chapters/27}
+\include{chapters/28}
+\include{chapters/29}
+\include{chapters/30}
+
+\backmatter
+\end{document}
