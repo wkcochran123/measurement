@@ -3,13 +3,18 @@
 In-order reading of the Lean development, recording each episode's theorems with
 the axioms they depend on.
 
-> **Status: READ-DERIVED, pending build.** `#print axioms` was **not** run (Lean
-> build in progress, per operator). Every axiom attribution below is derived from
-> (a) static reading of proof terms, (b) the two taint rules below, and (c) the
-> author's own in-source `#print axioms` audit annotations (Ep46, 50, 52–59, 73,
-> 81). When the build lands, confirm against the `#print axioms` blocks the source
-> already contains. Lines flagged **[PENDING BUILD]** are the only ones the source
-> does not already pin.
+> **Status: BUILD-CONFIRMED (fidelity A.12, 2026-07-05).** `#print axioms` HAS now
+> been run per-decl (`lake env lean`). It **OVERTURNS** the read-derived
+> `Classical.choice` attributions below: **the corpus is choice-free end to end.**
+> Every decl once tagged "documented CHOICE" (the chair Ep52/56/81, the geometric
+> program Ep53–55, the Ep57 flux) builds `[propext, Quot.sound]`. Root cause of the
+> error: the read-derived "Choice rule" conflated `noncomputable` with
+> `Classical.choice` — the chair `truthLocal` is a `noncomputable instance` yet
+> `[propext, Quot.sound]` (noncomputable is Quot/funext-borne, NOT the choice axiom).
+> The ONLY `Classical.choice` in any footprint is `band_covers` (Ep92), and it is a
+> `by omega` TACTIC artifact — the same statement proved by hand is axiom-free `[]`.
+> Sections below are corrected in place; the per-episode "documented CHOICE" tags are
+> superseded and marked. The build (`#print axioms`), not this prose, is the count.
 
 ---
 
@@ -22,14 +27,18 @@ There are **exactly four** axioms anywhere in the closure, and **no `sorry`**:
 | 1 | `propext` | Lean foundational (ambient) | Prop-level theorems | most theorems |
 | 2 | `Quot.sound` | Lean foundational (ambient) | quotient/typeclass machinery | most theorems |
 | 3 | `eulerLagrangeOracle` | **the one custom `axiom`** (Ep19:109) | declared Ep19 | ~20 theorems, Ep19–26 only |
-| 4 | `Classical.choice` | Lean classical (ambient) — **never called directly** | inherited from scaffolding | Ep52 onward, specific theorems |
+| 4 | `Classical.choice` | **BUILD: absent as a genuine dependency** (was: "Lean classical, inherited") | ~~inherited from scaffolding~~ | **NONE in the math; sole footprint occurrence = `band_covers` (Ep92) `omega` tactic artifact, hand-proof axiom-free** |
 
 - A theorem's "axioms" is therefore drawn from `{propext, Quot.sound}` plus,
-  *for a minority*, `eulerLagrangeOracle` and/or `Classical.choice`.
+  *for a minority* (Ep19–26), `eulerLagrangeOracle`. No theorem depends on
+  `Classical.choice` (build-confirmed; see the status banner and the retracted
+  Choice rule).
 - Purely arithmetic theorems over `Nat`/`Int` closed by `rfl`/`decide`/`omega`
   depend on **no axioms at all** (the author records several such, e.g. Ep73).
-- **No `Classical.` call appears in any episode body** — every `Classical.*`
-  token in the corpus is in a comment. Choice is inherited structurally, not invoked.
+- **No `Classical.` call appears in any episode body**, and — build-confirmed — no
+  decl inherits it either: every `Classical.*` token in the corpus is in a comment,
+  and the build carries none into the math. (The one footprint occurrence,
+  `band_covers`, is an `omega` tactic artifact, not an inheritance.)
 
 ### The one custom axiom (Ep19)
 
@@ -50,15 +59,14 @@ It is consumed **only** by `noncomputable def residue` (Ep19), which uses it as 
   term touches `residue` (the `*_residue_eq_truth_zero` family). Theorems about the
   `eulerLagrange` predicate or the `eulerLagrangeResidual : Int` are constructive
   and oracle-free. Oracle reach = Ep19–26.
-- **Choice rule.** A theorem depends on `Classical.choice` **iff** its closure
-  touches one of two scaffolding roots:
-  - **the chair** `truthLocal` (Ep16 instance; `noncomputable`, classical via
-    `SAME`'s `Classical.propDecidable`), used in Ep52 (`the_stack_produces_it`),
-    Ep56 (the door), Ep81 (the chair);
-  - **the geometric program** rooted in Ep28's `x = zero` case-split, when consumed
-    by the noncomputable three-rung generated program (Ep53–55, Ep57 flux theorems).
-  Ep28's own theorems are choice-free; choice surfaces only when the program is
-  generated through the noncomputable chair.
+- **Choice rule — RETRACTED (build-falsified, fidelity A.12).** This read-derived
+  rule predicted `Classical.choice` wherever a proof touched "the chair" `truthLocal`
+  or the noncomputable geometric program. The BUILD refutes it: `truthLocal` is
+  `[propext, Quot.sound]` (noncomputable ≠ classical; no `Classical.propDecidable`
+  survives in the built corpus), and every decl it named — Ep52 `the_stack_produces_it`,
+  Ep56 the door, Ep81 the chair, Ep53–55 geometric, Ep57 flux — is
+  `[propext, Quot.sound]`, choice-free. There is no choice-taint root. The corpus
+  carries no `Classical.choice` except the `band_covers` (Ep92) `omega` artifact.
 
 ---
 
@@ -179,13 +187,14 @@ _existsUnique`, `linearization_unique`, `cubic_left/right_slot_unique`,
 `flat_actions_cross_too`, `nonzero_residual_fails_eventual_exactness`.
 **Documented choice-free `{propext, Quot.sound}`.** (Ep1–51 are choice-free.)
 
-### Ep52 — Pair Production = CHOICE FRONTIER (documented split)
+### Ep52 — Pair Production (build: NO choice frontier — corrected)
 
-`electron = -1`, the second-variation residue. Author's audit:
-- **`Classical.choice`** (`[propext, Classical.choice, Quot.sound]`) — **only**
-  `the_stack_produces_it` (inherited from the chair `truthLocal`, *not* the electron);
-  by extension `electronVariation` / `electronVariation_normal_form` (seated under the
-  chair, `noncomputable`).
+`electron = -1`, the second-variation residue. Build-corrected (was "CHOICE FRONTIER"):
+- **`the_stack_produces_it` is `[propext, Quot.sound]`, choice-FREE** (build). The
+  read-derived audit tagged it `Classical.choice` "inherited from the chair
+  `truthLocal`"; the build shows the chair itself choice-free (noncomputable, not
+  classical), so nothing is inherited. `electronVariation` /
+  `electronVariation_normal_form` are noncomputable but likewise choice-free.
 - **Clean `[propext, Quot.sound]`** — the production line:
   `electron_charge`, `positron_charge`, `same_pair_charge`,
   `mixedCoupling_needs_the_pair_left/right`,
@@ -194,35 +203,37 @@ _existsUnique`, `linearization_unique`, `cubic_left/right_slot_unique`,
   `linear_story_fails`, `electron_is_the_secondVariation`, `vacuum_is_empty`,
   `certificate_is_C2`, `hilberts_sixth_on_the_vacuum`.
 
-### Ep53 — geometric program detects invariant (documented CHOICE)
+### Ep53 — geometric program detects invariant (build: CLEAN — corrected)
 
-**`[propext, Classical.choice, Quot.sound]` on all three** — geometric side inherits
-choice from Ep28: `GeometricProgram.invariant_zero_detects`,
+**`[propext, Quot.sound]` on all three, choice-FREE** (build; was "documented CHOICE").
+The read-derived "inherits choice from Ep28" is falsified — the geometric side is
+noncomputable but choice-free: `GeometricProgram.invariant_zero_detects`,
 `threeRungGeometricProgram_invariant_zero_detects`,
 `threeRungGeometricProgram_source_is_white_hole`.
 
-### Ep54 — compiled action produces the electron (documented CHOICE)
+### Ep54 — compiled action produces the electron (build: CLEAN — corrected)
 
-**`[propext, Classical.choice, Quot.sound]`** (geometric):
+**`[propext, Quot.sound]`, choice-FREE** (build; was "documented CHOICE"):
 `threeRungCompiler_generates_discriminatingAction`,
 `threeRung_vacuum_compiles_to_zero_action`, `compiled_action_produces_the_electron`.
 
-### Ep55 — geometry generates QED program (documented CHOICE)
+### Ep55 — geometry generates QED program (build: CLEAN — corrected)
 
-**`[propext, Classical.choice, Quot.sound]`** (the generated program):
+**`[propext, Quot.sound]`, choice-FREE** (build; was "documented CHOICE"):
 `generatedThreeRungQEDProgram`, `geometric_program_generates_qed_program`.
 
-### Ep56 — pairing door / certificate split (documented CHOICE — the door = chair)
+### Ep56 — pairing door / certificate split (build: CLEAN — corrected)
 
-**`[propext, Classical.choice, Quot.sound]`** (the door, the chair):
+**`[propext, Quot.sound]`, choice-FREE** (build; was "documented CHOICE — the door =
+chair"). The door/chair is noncomputable but choice-free:
 `threeRungPairingDoor_dot_zero_left`, `threeRungCertificateSplit_sectors_nontrivial`.
 
-### Ep57 — boundary radiation, finite (documented MIXED)
+### Ep57 — boundary radiation, finite (build: CLEAN throughout — corrected)
 
-- **Clean `[propext, Quot.sound]`** — the three obstruction theorems:
-  `orthogonal_clifford_scalar_cross_zero`, `no_interior_scalar_mixed_of_orthogonal`,
-  `threeRung_no_interior_mixed_certificate`.
-- **`[propext, Classical.choice, Quot.sound]`** — the two flux theorems:
+Both groups are `[propext, Quot.sound]`, choice-FREE (build; was "MIXED"):
+- the three obstruction theorems: `orthogonal_clifford_scalar_cross_zero`,
+  `no_interior_scalar_mixed_of_orthogonal`, `threeRung_no_interior_mixed_certificate`;
+- the two flux theorems (read-derived tagged CHOICE via the chair — falsified):
   `generated_boundary_flux_eq_terminal_residual`, `boundary_radiation_finite`.
 
 ### Ep58 — flat tower (documented CLEAN)
@@ -241,9 +252,14 @@ choice from Ep28: `GeometricProgram.invariant_zero_detects`,
 
 These have `#print axioms` targets but **no inline expected-axiom annotation** — the
 running build settles them. Structural inference: those built purely on the
-arithmetic/Cohen/flat production line are **expected clean `{propext, Quot.sound}`**;
-any routed through the noncomputable three-rung *generated/geometric* program may
-inherit **`Classical.choice`** (the Ep28 root). Confirm via `#print axioms` on build.
+arithmetic/Cohen/flat production line are **clean `{propext, Quot.sound}`**. The
+read-derived worry that decls routed through the noncomputable generated/geometric
+program "may inherit `Classical.choice`" is **void** — A.12 build-verified that root
+(chair + geometric program) is itself choice-free. Spot-checks here — Ep64
+`finiteGauge_successor_commutator_residue_theorem`, Ep75
+`threeRung_boundary_secondVariation_eq_electron`, and the QED capstone (`[propext]`) —
+are choice-free. A full per-decl `#print axioms` sweep of Ep60–80 stays the authority
+for the remainder.
 
 - **Ep60** Counting to three: `successorNumber_eq_zero_succ_succ`, `canonical_ofNat`,
   `induction_on_canonical/_ofNat`, `succ_succ`, `succ_one_eq_two`, `succ_two_eq_three`,
@@ -308,23 +324,30 @@ inherit **`Classical.choice`** (the Ep28 root). Confirm via `#print axioms` on b
   `how_much_do_you_want_continue_if_new_boundary`,
   `duh_we_made_binary_how_much_do_you_want`.
 
-### Ep81 — capstone "the chair" (documented CHOICE)
+### Ep81 — capstone "the chair" (build: CLEAN — corrected)
 
-**"Expect the chair — `[propext, Classical.choice, Quot.sound]`."**
+**Build `[propext, Quot.sound]`, choice-FREE** (was "Expect the chair —
+`[propext, Classical.choice, Quot.sound]`"; the chair is noncomputable, not classical):
 `measurementBit_on`, `distinguished_distinguishable`, `binary_is_enough`.
 
 ---
 
 ## 3. Summary
 
-- **Total axioms in the whole development: 4** (`propext`, `Quot.sound`,
-  `eulerLagrangeOracle`, `Classical.choice`). **No `sorry`.**
+- **Total axioms in the math: 3** (`propext`, `Quot.sound`, `eulerLagrangeOracle`).
+  **No `sorry`.** `Classical.choice` appears in NO math footprint; it surfaces only
+  as a `by omega` tactic artifact in `band_covers` (Ep92), which the hand-proof shows
+  eliminable (axiom-free `[]`).
 - **`eulerLagrangeOracle`** (the one custom axiom): ~20 `*_residue_eq_truth_zero`
   theorems, **Ep19–26 only**.
-- **`Classical.choice`** (never called; inherited): the chair (Ep52
-  `the_stack_produces_it`, Ep56 door, Ep81 chair) and the noncomputable geometric
-  program (Ep53–55, Ep57 flux). Ep1–51 are choice-free.
+- **`Classical.choice`** — build-confirmed ABSENT as a genuine dependency. The
+  read-derived attributions (the chair Ep52/56/81, the geometric program Ep53–55,
+  Ep57 flux) are all `[propext, Quot.sound]` in the build. The corpus is choice-free
+  end to end; the sole footprint occurrence is `band_covers` (Ep92), a `by omega`
+  tactic artifact (hand-proof axiom-free). Ep1–81 are choice-free.
 - **Everything else: `{propext, Quot.sound}`**, with many `Nat`/`Int` theorems
   depending on **no axioms at all**.
-- **[PENDING BUILD]:** Ep60–72, 74–80 lack inline expected-axiom annotations; the
-  running `#print axioms` build is the authority for their choice-vs-clean split.
+- **[choice-root void; sweep partial]:** Ep60–72, 74–80 lacked inline annotations.
+  The `Classical.choice` worry for them is void (A.12 verified the chair/geometric
+  root is choice-free); spot-checks (Ep64, Ep75, the QED capstone `[propext]`) are
+  clean. A full per-decl `#print axioms` sweep remains the authority for the rest.

@@ -390,11 +390,12 @@ The standing record.  Expected results inline.
 -- is anonymous again the moment you execute -- you can only read its
 -- charge, above.
 
--- The axioms of this physics: expect `[propext, Quot.sound]` at the apex
+-- The axioms of this physics: `[propext, Quot.sound]` at the apex
 -- (`hilberts_sixth_on_the_vacuum`, `certificate_is_C2`), nothing classical
--- on the production line.  `the_stack_produces_it` alone reports
--- `Classical.choice` -- inherited from the chair (`truthLocal`), not from
--- the electron.
+-- on the production line -- and NOT on `the_stack_produces_it` either: it is
+-- `[propext, Quot.sound]`, choice-FREE.  The chair (`truthLocal`) it routes
+-- through is a NONCOMPUTABLE instance, but noncomputable is not the choice
+-- axiom (it is Quot/funext-borne); nothing here inherits `Classical.choice`.
 #print axioms electron_charge
 #print axioms positron_charge
 #print axioms mixedCoupling_needs_the_pair_left

@@ -164,9 +164,10 @@ theorem compiled_action_produces_the_electron :
 The standing record.
 -/
 
--- Expect `[propext, Classical.choice, Quot.sound]` where the geometric
--- chair is referenced (the program is noncomputable); the generation
--- itself adds nothing.
+-- Build-true `[propext, Quot.sound]`, choice-FREE.  (Earlier audits expected
+-- `Classical.choice` where the geometric chair is referenced, reading the
+-- program's noncomputability as classical; it is not -- noncomputable is
+-- Quot/funext-borne, not the choice axiom.)  The generation itself adds nothing.
 #print axioms threeRungCompiler_generates_discriminatingAction
 #print axioms threeRung_vacuum_compiles_to_zero_action
 #print axioms compiled_action_produces_the_electron

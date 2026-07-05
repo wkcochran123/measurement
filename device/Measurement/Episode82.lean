@@ -25,8 +25,12 @@ relative-velocity invariant, measured by the apparatus; orientation is a convent
 
 Episode52 produced the electron as the second variation δ² = MEASUREMENT - STORY
 (`residue_is_the_difference_between_story_and_measurement`, Ep52:195) and placed its
-strain in the stack's Frechet slot through the chair (`truthLocal`) -- the lone reason
-`the_stack_produces_it` carries `Classical.choice`.
+strain in the stack's Frechet slot through the chair (`truthLocal`).
+-- CHOICE (fidelity A.12): earlier audits called the chair the lone reason
+-- `the_stack_produces_it` carries `Classical.choice`; the BUILD now shows it
+-- `[propext, Quot.sound]` -- choice-free (the chair is noncomputable, not
+-- classical: Quot/funext-borne, not the choice axiom).  Historical/superseded,
+-- kept for provenance.
 
 Here the SAME object is filed without the chair, and the one quotient-collapse the whole
 construction needs is made explicit and named ONCE:
@@ -53,9 +57,12 @@ they cancel (coheres with Episode73 `orientation_readings_cancel`).
 Note (corrected by Kodo): `SlipMultiset` is a plain `List` wrapper and the device imports
 no Mathlib, so there is no `Multiset`/`Quotient`; the corpus's ambient `Quot.sound` is
 `funext`-borne.  This episode is the LOCATED, named home for `Quot.sound` (one site,
-`selection_sound`); it does NOT scrub the ambient `funext` ones, and it does NOT remove
-Episode52's `Classical.choice` (rerouting `the_stack_produces_it` and retiring the
-genuine pre-Ep16 `SAME` needle are DEFERRED -- both edit built episodes).
+`selection_sound`); it does NOT scrub the ambient `funext` ones.
+-- CHOICE (fidelity A.12): this episode was written NOT removing Episode52's
+-- `Classical.choice` (rerouting `the_stack_produces_it` and retiring the genuine
+-- pre-Ep16 `SAME` needle were DEFERRED).  The BUILD now shows the whole line
+-- choice-free (`the_stack_produces_it` = `[propext, Quot.sound]`); that deferral
+-- is superseded.  Kept for provenance.
 -/
 
 /-- A reading from a single trial: a `whole` count and a `parts` count.  The

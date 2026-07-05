@@ -143,8 +143,10 @@ theorem threeRungCertificateSplit_sectors_nontrivial :
 The standing record.
 -/
 
--- Expect `[propext, Classical.choice, Quot.sound]` on the door (the chair);
--- the split's own facts are decidable computations.
+-- Build-true `[propext, Quot.sound]` on the door (the chair), choice-FREE.
+-- (Earlier audits expected `Classical.choice`, reading the chair's
+-- noncomputability as classical; noncomputable is Quot/funext-borne, not the
+-- choice axiom.)  The split's own facts are decidable computations.
 #print axioms threeRungPairingDoor_dot_zero_left
 #print axioms threeRungCertificateSplit_sectors_nontrivial
 

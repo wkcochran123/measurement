@@ -170,9 +170,10 @@ theorem boundary_radiation_finite :
 The standing record.
 -/
 
--- Expect `[propext, Quot.sound]` on the three obstruction theorems;
--- `[propext, Classical.choice, Quot.sound]` on the two flux theorems
--- (the chair).
+-- Build-true `[propext, Quot.sound]` on the three obstruction theorems AND on
+-- the two flux theorems -- all choice-FREE.  (Earlier audits expected
+-- `Classical.choice` on the flux pair via the chair; the chair is noncomputable
+-- but choice-free -- Quot/funext-borne, not the choice axiom.)
 #print axioms orthogonal_clifford_scalar_cross_zero
 #print axioms no_interior_scalar_mixed_of_orthogonal
 #print axioms threeRung_no_interior_mixed_certificate

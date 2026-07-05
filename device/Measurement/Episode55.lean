@@ -139,9 +139,11 @@ theorem geometric_program_generates_qed_program :
 The standing record.
 -/
 
--- Expect `[propext, Classical.choice, Quot.sound]`: the generated program
--- references the geometric chair.  The charges themselves stayed axiom-free
--- back in Episode52; the chair is the price of the generation story.
+-- Build-true `[propext, Quot.sound]`, choice-FREE.  (Earlier audits expected
+-- `Classical.choice` because the generated program references the geometric
+-- chair -- but the chair is noncomputable, not classical (Quot/funext-borne,
+-- not the choice axiom), so it costs no choice.)  The charges themselves stayed
+-- axiom-free back in Episode52.
 #print axioms generatedThreeRungQEDProgram
 #print axioms geometric_program_generates_qed_program
 

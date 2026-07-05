@@ -111,11 +111,12 @@ theorem threeRungGeometricProgram_source_is_white_hole :
 The standing record.
 -/
 
--- Expect `[propext, Classical.choice, Quot.sound]` on all three: the
--- geometric side inherits `Classical.choice` from Episode28's
--- positive-definiteness route (proof by contradiction) and the kernel's
--- noncomputable door.  The geometric chair is classical; the gauge-side
--- production line (Episodes 48-52) is not.  The split is the point.
+-- Build-true `[propext, Quot.sound]` on all three, choice-FREE.  (Earlier audits
+-- expected `Classical.choice` here, reading the geometric side's noncomputable
+-- door -- Episode28's positive-definiteness route -- as classical.  The build
+-- shows otherwise: noncomputable is Quot/funext-borne, not the choice axiom.
+-- The geometric chair is noncomputable but choice-free, exactly like the
+-- gauge-side production line (Episodes 48-52).)
 #print axioms GeometricProgram.invariant_zero_detects
 #print axioms threeRungGeometricProgram_invariant_zero_detects
 #print axioms threeRungGeometricProgram_source_is_white_hole

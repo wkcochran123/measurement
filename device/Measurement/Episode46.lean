@@ -45,8 +45,8 @@ results are noted inline.
 #eval identityGaugeReading  -- expect: 0
 #eval kickedGaugeReading    -- expect: 2
 
--- (2) `#print axioms`: the constructive rungs are choice-free; the needle is
--- isolated at `rung3Inferred`.
+-- (2) `#print axioms`: the constructive rungs AND the needle are all choice-free
+-- ([propext, Quot.sound] or less); nothing here touches `Classical.choice`.
 
 -- Constructive rungs -- expect NO `Classical.choice`:
 #print axioms gaugeReading        -- the integrator

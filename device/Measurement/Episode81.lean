@@ -85,9 +85,10 @@ theorem binary_is_enough :
   ⟨measurementBit_on, BoundarySignal.on_ne_off⟩
 
 /-
-The standing record.  Expect the chair -- `[propext, Classical.choice, Quot.sound]`
--- inherited through the noncomputable `DISTINGUISHED` capstone, exactly as
-Episode76.
+The standing record.  Build-true `[propext, Quot.sound]`, choice-FREE.  (Earlier
+audits expected the chair -- `Classical.choice` -- reading the noncomputable
+`DISTINGUISHED` capstone as classical; noncomputable is Quot/funext-borne, not
+the choice axiom, so nothing is inherited.  Same correction as Episode76.)
 -/
 #print axioms measurementBit_on
 #print axioms distinguished_distinguishable
