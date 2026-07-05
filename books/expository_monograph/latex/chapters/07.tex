@@ -1,0 +1,217 @@
+\chapter{Arithmetic, Linear Algebra, Galerkin, and Splines}
+\label{chap:arithmetic-galerkin-splines}
+
+With a computer in hand, the construction can stop building tools and start using them. This chapter
+does the mathematics the rest of the book will run on: ordinary arithmetic recovered as operations on
+Facts, the linear algebra of bases and orthogonality, and then the two numerical methods that the
+whole variational core depends on --- the Galerkin method, which solves problems by projecting them
+into a finite frame, and splines, which stitch local pieces into a smooth whole. The chapter ends by
+noticing something that the next several chapters will live on: a spline is already a variational
+object, its joints first variations and its smooth fillers second variations. The calculus of
+variations does not have to be imported. It is sitting inside the spline, waiting to be named.
+
+\section{Values and addition}
+\label{se:values-and-addition}
+
+The first thing arithmetic needs is a value: a magnitude a measurement can carry, read off the
+construction rather than assumed. The construction builds values, gives each a magnitude, and provides
+the operation that compares two of them --- a decidable question of whether one magnitude overwhelms
+another, which is all ``greater than'' has ever meant to a finite device. On top of values it builds
+addition, and it builds it in a way that connects back to the fourth chapter: a sum is an accumulation,
+the same act that turned a sequence of velocities into an area. To add is to lay one magnitude
+alongside another and total the strip, so addition and integration are not two operations but one seen
+at two scales --- a finite sum of finite pieces, with the integral as the limit the pieces only ever
+approach.
+
+Two small points make the arithmetic concrete. A magnitude comparison is not a fixed lookup but a
+finite act: to ask whether one value overwhelms another, the construction walks their representations
+from the high end down, the same bisection the earlier chapters used, and stops the moment one is
+decided larger or the two prove equal to within resolution. And addition, read as area, is more than a
+metaphor. Take three measured strips of widths two, three, and five; their sum, ten, is the area of the
+region they tile end to end, and the same total would be read by integrating a step function that holds
+each height across its width. The construction does not distinguish the two procedures, because for it
+they are one: a finite total of finite pieces. What changes as the pieces shrink is only how closely
+the staircase approximates a smooth ramp --- the limit the second chapter taught it to approach and
+never to claim.
+
+Repetition does something to values that no single value contains, and the construction borrows the
+observation from Gauss. When the same measurement is added up again and again under a fixed way of
+recording it, the totals do not scatter arbitrarily; they cluster into a stable bell-shaped
+distribution with a definite center and a definite spread. The experiment under Gauss's name is careful
+about why. The bell curve is not a law of nature smuggled in, and it does not assume the underlying
+thing is smooth; it arises from the structure of repetition itself, the way independent finite errors
+accumulate. Gauss introduced the normal curve exactly this way --- as the practical shape of error from
+repeated observation with a fixed instrument, justified operationally rather than metaphysically --- and
+the construction adopts it on the same terms. A mean and a variance are what repeated addition leaves
+behind; they are summary Facts about a pile of trials, not properties of a world assumed in advance.
+
+\section{Multiplication and orthogonality}
+\label{se:multiplication-and-orthogonality}
+
+If addition lays magnitudes end to end, multiplication scales them: it stretches or shrinks one
+quantity by another, and the construction reads it as a spatial operation, a change of size rather than
+a change of position. Two features of this scaling matter for what follows. The first is the sign flip.
+Multiplying by a negative reverses orientation --- it turns a magnitude into its opposite --- and the
+construction reads that reversal physically, as the flip between matter and antimatter, the same
+sign-as-truth-value that the very first chapter built into its numbers. A value and its negative are
+the same magnitude carried with opposite orientation, and the operation that exchanges them is
+multiplication by minus one.
+
+The second feature is orthogonality, and the construction gives it a reading that will recur for the
+rest of the book. Two directions are orthogonal when scaling along one contributes nothing to the
+other --- when their product cancels to zero. The construction reads this cancellation as destructive
+interference: orthogonal components do not reinforce or diminish each other because they have no
+overlap to share, and a measurement along one is blind to the other. This is the linear-algebraic
+shadow of the superposition of the previous chapter --- where a blend of two states held both at once,
+orthogonality is the condition under which two states can be held without contaminating each other ---
+and it is the property that makes a basis useful: a set of mutually orthogonal directions is a set of
+measurements that do not interfere, so each can be read cleanly without disturbing the rest.
+
+A concrete pair fixes the idea. Two directions at right angles --- a step purely east and a step purely
+north --- have a product that vanishes: moving east changes the eastward reading and leaves the
+northward reading exactly as it was. That vanishing product is the whole content of orthogonality, and
+it is why a surveyor can measure east and north separately and trust that neither contaminates the
+other. Tilt the two directions toward each other and the product stops vanishing; now a step along one
+leaks into the reading of the other, and the two measurements interfere. The construction's whole
+strategy for handling many quantities at once is to choose directions whose products vanish in pairs,
+so that each can be read in isolation --- and when no such directions are handed to it, to manufacture
+them, straightening a tilted set into a right-angled one by subtracting off the overlaps. That
+straightening is the orthogonalization every linear method begins with, and it is destructive
+interference put to work: cancel the shared part on purpose, and what remains is clean.
+
+\section{A basis and a small machine}
+\label{se:a-basis-and-a-small-machine}
+
+Linear algebra, stripped down, is the study of how to write any quantity as a combination of a chosen
+few. The construction builds a basis --- a collection of independent directions --- and with it the two
+structures every linear method needs: the span, the set of quantities the basis can reach by funging
+its directions together in weighted combination, and the null space, the set of quantities that the
+relevant transformation sends to nothing. To resolve a quantity in a basis is to tange its components,
+selecting how much of each independent direction it carries, and the cleanness of that reading is
+exactly the orthogonality of the previous section.
+
+The construction cannot resist making this concrete as a tiny programmable machine, and the joke
+carries a real idea. Picture the smallest interpreter that can branch and call: it has a jump, which
+sends control somewhere else and abandons where it was, and a call, which goes somewhere else and
+remembers to return. The construction reads the jump as scattering --- an interaction that sends a
+state off in a new direction with no memory of the old --- and the call as a propagator, the operator
+that carries a state forward and brings it back, the bookkeeping of how influence travels and returns.
+Underneath both is the eigenvector reading: among all the directions a transformation can act on, the
+eigenvectors are the ones it merely scales without turning, the directions a measurement can load and
+read back unrotated. An eigenvector is a direction that survives a process intact, which is why it is
+the natural thing for a basis to be built from --- a basis of eigenvectors is a set of measurements
+each of which the process leaves pointing where it found it.
+
+A worked resolution shows the machinery turning. Suppose a quantity is to be written in a basis of three
+orthogonal directions. The construction asks, of each direction in turn, how much of it the quantity
+carries --- a single projection, a product that does not vanish --- and records the three answers as the
+quantity's components. Reassembled, the three weighted directions return the original exactly, because
+the basis spanned the space and the orthogonality kept the questions from interfering. Now suppose the
+basis is chosen from the eigenvectors of the process under study. Then the process, applied to the
+quantity, does nothing to the directions and only rescales the components --- each eigenvector stretched
+by its own factor and turned not at all. A problem that looked like a tangle of coupled motions becomes
+three independent scalings, one per eigenvector, and that decoupling is the reason eigenvectors are
+worth the trouble of finding: in the right basis, a hard process falls apart into easy ones.
+
+\section{Galerkin and splines}
+\label{se:galerkin-and-splines}
+
+Now the chapter reaches the methods the rest of the book runs on. A polynomial is the construction's
+flexible shape: a finite combination of basis powers that can be bent to approximate almost anything
+over a small enough region. The Galerkin method is the way the construction solves an equation using
+them, and its defining virtue is that it is derivative-free. Rather than differentiating --- which a
+finite device cannot do exactly, only approximate --- it demands that the leftover error, the residue
+of a candidate solution, be orthogonal to every polynomial in a chosen finite basis. If the residue
+has no component along any direction the basis can see, then within that frame the candidate is the
+solution, and the whole problem reduces to the orthogonality of the previous section applied to the
+error. Differentiation is replaced by projection, and projection is just funging the residue into the
+part the basis cannot detect.
+
+Made concrete, the method is disarmingly simple. Suppose the construction wants to approximate some
+target behavior by a polynomial drawn from the finite basis of a constant, a linear term, and a
+quadratic. It writes its candidate as an unknown weighted sum of the three, computes the residue --- the
+amount by which the candidate fails to satisfy the equation it is meant to solve --- and then imposes
+exactly three conditions: that the residue have no overlap with the constant, none with the linear
+term, and none with the quadratic. Three orthogonality conditions, three unknown weights; the
+construction solves the small finite system and reads off the best approximation the three-term frame
+can give. No derivative was ever taken. The error was not minimized by calculus but annihilated, in
+each of the basis directions, by projection --- which is why the method survives in a world where exact
+differentiation is unavailable but a finite inner product is always at hand.
+
+The phrase ``finite basis'' is load-bearing, and the construction is blunt about its cost. The method
+lives in a single finite frame --- one bounded stack of working memory, which the construction nicknames
+to keep it honest about the fact that it is singular and only so big, and which a few keystrokes can
+overflow. Everything Galerkin does, it must do within that one frame; it cannot recurse without limit or
+hold an infinite basis. The check that the method has actually converged is correspondingly finite: a
+transform is finite, the construction says, when it settles --- when it reaches a state the next step
+leaves unchanged, an eigenvalue fixed point where the approximating has stopped, or when its residue
+stops carrying new strain from one step to the next. A transform that would inject unbounded energy ---
+moving from a settled ground state back into an excited one --- is ruled out, not as an error but as a
+divergence the finite frame cannot represent. Convergence, here, is the statement that the method came
+to rest inside the one frame it was given.
+
+The convergence test deserves to be made precise, because it is where the method admits it can fail.
+After each refinement the construction compares the new approximation with the one before it and asks a
+decidable question: did anything of substance change? If the candidate has reached a state the next step
+leaves fixed --- an eigenvalue fixed point, where projecting again returns the same polynomial --- the
+method has converged and stops. If the residue keeps carrying the same strain forward without shrinking,
+the method is stalled; and if a step would inject more than the frame can hold, driving a settled
+solution back into an excited one, the construction rules it out as a divergence rather than chasing it.
+There is no promise, issued in advance, that a given problem will settle inside the one frame --- that is
+the same halting honesty the fourth chapter insisted on, now wearing the clothes of numerical analysis.
+The method is trustworthy exactly when it comes to rest, and it tells you whether it has.
+
+A spline is what you get when you stitch such local polynomial pieces together, and it is the
+chapter's payoff because it is already the object the calculus of variations studies. A spline is built
+from three things, and their names in the construction are exact. There is the observation, the bare
+ground state, a recorded value with no work done on it. There is the knot --- a localized place where
+two polynomial pieces meet --- and the construction marks it as the \emph{first variation}: a knot is
+where the curve is allowed to bend, the place a small change in the path first registers. And there is
+the interpolant, the smooth filler that joins the pieces across a knot, which the construction marks as
+the \emph{second variation}, the weak derivative, the curvature that the bending leaves behind. A
+spline, in other words, is not merely a smooth curve through data; it is a record of first and second
+variations, a structure whose joints are the first-order freedom to vary and whose fillers are the
+second-order response. The whole apparatus of stationary paths and minimal actions that the next
+chapters build is, at bottom, the discipline of choosing those knots and interpolants well.
+
+The experiment that names what this is for is the harmonic oscillator. Read informationally --- with no
+metric and no assumed dynamics --- it is a conjugate pair: one variable recording the current
+distinguishable state, its partner recording the rate at which that distinguishability is expected to
+change, the two trading off under a reciprocity that makes the system oscillate. The quantity that
+governs such a pair is a quadratic form, and a quadratic form is exactly a second variation. The
+harmonic oscillator is the simplest place the second variation appears as the thing that runs the
+dynamics, and it is the construction's signpost that the spline's interpolant --- its second variation
+--- is the object the whole middle of the book will turn on.
+
+\section{What is demonstrated, and what is assumed}
+\label{se:demonstrated-assumed-ch7}
+
+Following the experimental library's discipline, we separate the built from the named. This chapter
+built a great deal, and most of it is solid in the plainest way: it is ordinary mathematics, recovered
+finitely.
+
+What is demonstrated is arithmetic and linear algebra over the construction's own numbers --- values
+with a decidable magnitude order, addition as finite accumulation, multiplication as scaling with a
+sign flip, a basis with its span and null space, and the eigenvector reading --- together with two
+numerical methods: a derivative-free Galerkin projection that solves by making a residue orthogonal to
+a finite basis, and a spline built from observations, knots, and interpolants. Every piece is finite
+and decidable, and the Galerkin method's reliance on a single bounded frame is stated as a genuine
+limitation, not hidden.
+
+\begin{quote}
+\emph{A note on the labels.} The physical readings here are bridges. Calling the sign flip a
+\emph{matter--antimatter} exchange, orthogonality \emph{destructive interference}, a jump and a call
+\emph{scattering} and a \emph{propagator}, and the spline's interpolant a \emph{second variation} are
+interpretations laid over finite linear algebra. The mathematics is earned outright; the physical names
+are the analogy the construction is betting on. The single identification that is \emph{not} an analogy
+is internal and will be cashed in over the next several chapters: that a spline's knot is a first
+variation and its interpolant a second. That one is a fact about the construction, and the calculus of
+variations is what happens when it is taken seriously.
+\end{quote}
+
+What is assumed is modest here and mostly inherited: that the finite Galerkin frame is large enough for
+the problems put to it, and that the physical names above are the right ones for the linear-algebraic
+structures underneath. With arithmetic, linear algebra, and the spline in hand --- and with the second
+variation already glinting inside the spline's interpolant --- the construction has everything it needs
+to turn to the question the whole next part is built around: among all the paths a measurement could
+take, which one does it actually take, and what holds steady when it is nudged.

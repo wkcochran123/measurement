@@ -1,45 +1,79 @@
-\documentclass[11pt,twoside]{book}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb, amsthm}
-\usepackage{cite}
-\input{measurement-macros}
-
-\title{Measurement: The Finite Geometry of the Invariant First Derivative}
-\author{William Cochran}
-\date{\today}
+\documentclass[12pt,oneside]{book}
+\usepackage{amsmath,amssymb,setspace}
+\renewcommand{\partname}{Act}
+\makeatletter
+% TOC part lines read "Act I  Title" to match the divider pages (folds the act dividers' label into the
+% contents; standard book \l@part with \partname prepended).
+\renewcommand*\l@part[2]{%
+  \ifnum \c@tocdepth >-2\relax
+    \addpenalty{-\@highpenalty}%
+    \addvspace{2.25em \@plus\p@}%
+    \setlength\@tempdima{3em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      {\leavevmode
+       \large \bfseries \partname\nobreakspace#1\hfil \hb@xt@\@pnumwidth{\hss #2}}\par
+       \nobreak
+         \global\@nobreaktrue
+         \@afterheading
+    \endgroup
+  \fi}
+\makeatother
 
 \begin{document}
 
+\title{Measurement}
+\author{Bill Cochran\\wkcochran@gmail.com\\https://github.com/wkcochran123/measurement}
+\date{\today}
 \maketitle
-\include{front/preface}
-\include{front/harm}
+
+\frontmatter
+\onehalfspacing
+% Interim introduction (front/introduction.tex) -- stand-in until the act-openers land.
 \tableofcontents
+\input{front/introduction}
 
-\include{chapters/00-the-machine-underneath}
-\include{chapters/01-the-first-mark}
-\include{chapters/02-clock-complement}
-\include{chapters/03-representation-noise-observation}
-\include{chapters/04-value-scale-overhead}
-\include{chapters/05-witness-reality-decision}
-\include{chapters/06-stationarity}
-\include{chapters/07-finite-support-selection}
-\include{chapters/08-energy-single-invariant}
-\include{chapters/09-the-middle-and-the-operator}
-\include{chapters/10-the-first-physical-record}
-\include{chapters/11-the-constructive-boundary}
-\include{chapters/12-pair-production}
-\include{chapters/13-geometry-generates-gauge}
-\include{chapters/14-boundary-radiation}
-\include{chapters/15-cohen-up-to-epsilon}
-\include{chapters/16-the-hilbert-completion-door}
-\include{chapters/17-orientation-as-measurement}
-\include{chapters/18-the-outside-reading}
-\include{chapters/19-the-sentence-the-interior-cannot-settle}
-\include{chapters/20-true-and-false-at-the-boundary}
-\include{chapters/21-how-much-do-you-want}
-\include{chapters/22-relative-velocity-and-the-sign-of-the-interaction}
-\include{chapters/23-baseline-relativity-and-the-three-fold-bound}
-\bibliographystyle{plain}
-\bibliography{measurement}
+\mainmatter
+\part{The First Difference}
+\include{chapters/01}
+\include{chapters/02}
+\include{chapters/03}
+\include{chapters/04}
+\part{The Apparatus Reads Itself}
+\include{chapters/05}
+\include{chapters/06}
+\include{chapters/07}
+\include{chapters/08}
+\part{The Single Invariant}
+\include{chapters/09}
+\include{chapters/10}
+\include{chapters/11}
+\include{chapters/12}
+\include{chapters/13}
+\part{The Descent into Matter}
+\include{chapters/14}
+\include{chapters/15}
+\include{chapters/16}
+\include{chapters/17}
+\include{chapters/18}
+\include{chapters/19}
+\include{chapters/20}
+\include{chapters/21}
+\include{chapters/22}
+\part{The Outside Reading}
+\include{chapters/23}
+\include{chapters/24}
+\include{chapters/25}
+\include{chapters/26}
+\include{chapters/27}
+\include{chapters/28}
+\part{The Return to the Reader}
+\include{chapters/29}
+\include{chapters/30}
+\include{chapters/31}
+\include{chapters/32}
+\cleardoublepage
 
+\backmatter
 \end{document}

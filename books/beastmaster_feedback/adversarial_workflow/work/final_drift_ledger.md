@@ -1,0 +1,37 @@
+# Final Drift Ledger
+
+Status: first-slice judge ledger, provisional.
+
+Source: Podo adversarial scout completed; two Kodo affirmative agents were
+stopped after stalling. This ledger captures rows that survived a first judge
+pass over outline/docs plus targeted Lean anchors. It is not a full manuscript
+audit.
+
+Hard boundary: no row recommends edits to `device/Measurement/Episode1.lean`
+through `device/Measurement/Episode16.lean`.
+
+| ID | Ruling | Severity | Text Anchor | Exact Claim | Lean Anchor | Status | Drift Type | Recommended Target | Rationale |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| D-001 | accept | S1 | `books/expository_monograph/outline.md:32-34`; `books/expository_monograph/outline.md:218-224`; `books/expository_monograph/meanwhile17_study.md:3-6` | `Meanwhile17.lean` is a storytelling guide whose bodies are `sorry`; the study calls it 37 `sorry`s. | `device/Measurement/Meanwhile17.lean:28-1002`; required Episode/Meanwhile corpus search reports no live `sorry`. | stale | stale documentation | docs/prose | The docs describe an older proof state; the remaining issue is interface/theorem support, not active `sorry` holes. |
+| D-002 | accept | S2 | `books/expository_monograph/outline.md:110-116`; `books/expository_monograph/meanwhile17_study.md:26-27`, `244-253` | Ch13's fourth way depends on `SECOND_VARIATION : DISTINGUISHABLE Prop` / `ELECTRON_MODEL`. | Current `device/Measurement/Meanwhile17.lean:900-995`; no current `SECOND_VARIATION` or `ELECTRON_MODEL` declaration found in the required Lean corpus. | stale | anchor/name drift | docs/prose or Meanwhile | The named anchors are stale or reworked; any retained claim must be re-anchored to current declarations. |
+| D-003 | narrow | S2 | `books/expository_monograph/outline.md:110-116`; `books/expository_monograph/_episodes_digest.md:180-185` | The second variation is reached four ways, including the bare difference over `Prop`. | `device/Measurement/Episode31.lean:37-55`, `116-137`, `235-248`; `device/Measurement/Meanwhile17.lean:820-1002` | interface | claim expansion | docs/prose or Meanwhile | Episode31 supports three theorem-level identities; the fourth face is currently interpretive/interface unless a current theorem anchor is supplied. |
+| D-004 | accept | S1 | `books/expository_monograph/three_gauges.md:41-47`, `95-98`; `books/expository_monograph/_conceptual_outline.md:47-49`; `books/expository_monograph/_episodes_digest.md:547-548` | The proof is choice-free / the physics axioms are only `propext` and `Quot.sound`. | `device/Measurement/Episode19.lean:103-112`; `device/Measurement/Episode52.lean:388-397`; `device/Measurement/Episode82.lean:26-29` | overclaimed | axiom-accounting mismatch | docs/prose | Episode19 introduces `eulerLagrangeOracle`, and Episode52 comments note a `Classical.choice` footprint for one production-line theorem; the global claim needs fencing. |
+| D-005 | accept | S1 | `books/expository_monograph/_conceptual_outline.md:87`; `books/expository_monograph/_episodes_digest.md:490`, `543-546` | Native baseline gives pure matter / baryon asymmetry. | `device/Measurement/Episode82.lean:16-22`; `device/Measurement/Episode83.lean:11-17`; `device/Measurement/Episode85.lean:10-21` | contradicted | honesty-gate conflict | docs/prose | Episodes82/83 explicitly disclaim baryogenesis, CP violation, Sakharov conditions, and Standard Model asymmetry; allowed claim is native-baseline/sign convention asymmetry. |
+| D-006 | narrow | S2 | `books/expository_monograph/outline.md:27-29`; `books/expository_monograph/_conceptual_outline.md:27-29`; `books/expository_monograph/_episodes_digest.md:365-373` | The construction is Cohen forcing. | `device/Measurement/Episode61.lean:266-327`; `device/Measurement/Episode62.lean:1-93`; `device/Measurement/Episode63.lean:1-63` | conditional | mathematical-name overclaim | docs/prose | Lean supports finite `CohenUpToEpsilon`, extensional order, and countable finite-ledger coding, not literal set-theoretic Cohen forcing. |
+| D-007 | accept | S2 | `books/expository_monograph/_episodes_digest.md:513-516`; `books/expository_monograph/outline.md:207-210` | The under/in/over band is complete; risk: exact trichotomy/exclusive band. | `device/Measurement/Episode92.lean:23-36`, `50-55` | proved plus missing qualifier | theorem-strength mismatch | docs/prose | `band_covers` proves coverage by disjunction, but not pairwise exclusivity without extra order assumptions. |
+| D-008 | accept | S2 | `books/expository_monograph/_episodes_digest.md:517-520`; `books/expository_monograph/outline.md:209-210` | The reader is asked every class's own question; the reader is the final measuring apparatus. | `device/Measurement/Episode93.lean:46-68` | interface | reader-theorem overclaim | docs/prose or Episode17+ | Episode93 exposes three predicates and a conjunction proposition; it does not prove reader performance or discharge every class predicate. |
+| D-009 | accept | S2 | `books/expository_monograph/outline.md:207-210`; `books/expository_monograph/_episodes_digest.md:513-520` | The final reader question uses the Ep92 band. | `device/Measurement/Episode93.lean:54-55`; `device/Measurement/Episode6.lean:181-219`; `device/Measurement/Episode92.lean:23-36` | building | import/integration mismatch | docs/prose or Episode17+ | Episode93's `did_this_whelm?` calls the older `MAGNITUDE.whelmed?` interface, while Episode92's Nat band lives separately. |
+| D-010 | narrow | S2 | `books/expository_monograph/outline.md:127-132`; `books/expository_monograph/_episodes_digest.md:236-243` | Color/flavor/phase are carried labels while charge is observable. | `device/Measurement/Episode39.lean:49-80`, `116-137` | interface | physical observability overclaim | docs/prose | Lean supplies data fields and finite phase facts; it does not prove physical confinement or unreadability of color/flavor. |
+| D-011 | narrow | S1 | `books/expository_monograph/_conceptual_outline.md:68-71`; `books/expository_monograph/_episodes_digest.md:443-444`; `books/expository_monograph/outline.md:177-183` | The invariant is a Navier-Stokes/Einstein boundary obstruction. | `device/Measurement/Episode75.lean:31-35`, `192-197`, `215-266` | conditional | physical-equation identity overclaim | docs/prose | Episode75 supports a finite boundary/residue/obstruction shape; literal continuum Navier-Stokes or Einstein identity language must be fenced. |
+| D-012 | narrow | S2 | `books/expository_monograph/_episodes_digest.md:305-311`; `books/expository_monograph/three_gauges.md:8-19`, `41-47` | Electron/positron language, including electron as second-variation reading. | `device/Measurement/Episode52.lean:160-172`, `388-397`; `device/Measurement/Episode82.lean:26-29` | proved plus conditional | model-vs-physical-identification | docs/prose | Episode52 gives finite formal support for electron charge/sign/product relationships, but not lab-electron identification or a globally choice-free stack. |
+
+## Judge Notes
+
+- D-001 and D-002 are stale-documentation rows, not proof-failure rows.
+- D-011 and D-012 are guard rows: do not erase the finite formal support while
+  tightening physical wording.
+- D-007 supports coverage, not exclusivity.
+- D-008 and D-009 should be kept separate: one is reader theorem strength, the
+  other is band-reader integration.
+- The next adversarial unit should be a narrow manuscript chapter pass, not a
+  full-corpus crawl.

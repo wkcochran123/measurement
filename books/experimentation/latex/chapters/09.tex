@@ -4,11 +4,13 @@
 Part III turns to heat, entropy, and matter --- the physics of the many. It opens not with a thermodynamic
 law but with the statistics those laws rest on, because the instrument's count, gathered over repetition,
 becomes a distribution before it becomes a temperature. The point worth holding onto is that the statistics
-are \emph{earned}, not assumed: the instrument does not begin with a bell curve or a significance test and
-apply it; it repeats a measurement, accumulates the counts, and reads the distribution off what accumulates.
-Four readings carry the chapter --- the bell curve as the shape repetition makes, the two faces of the
-disciplined small sample, and the posterior as the smallest correction a new fact can force --- and each is a
-count gathered, not a law imposed.
+are \emph{earned}, not assumed --- and the division is the book's constant one: the shape the counts settle
+into is the world's, while the bins we sort them into, the model we test, the prior we bring, are ours. The
+instrument does not begin with a bell curve or a significance test and apply it; it repeats a measurement,
+accumulates the counts, and reads the distribution off what accumulates. Four effects carry the chapter --- the
+bell curve as the shape repetition makes, the two faces of the disciplined small sample, and the posterior as
+the smallest correction a new fact can force --- and each is a count gathered, not a law imposed: the tally the
+world's, the frame that reads it ours.
 
 \section{Gauss's First Effect: the bell curve as a stable shape}
 \label{se:gauss-first}
@@ -19,7 +21,8 @@ characterized completely by where it centers and how widely it spreads,
 \begin{equation}
   p(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\,\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right).
 \end{equation}
-The instrument does not impose this curve; it watches it emerge. The bin totals add over concatenated trials
+The instrument does not impose this curve; it watches it emerge --- the bins ours to lay down, the shape that
+fills them the world's. The bin totals add over concatenated trials
 --- run the experiment twice as long and each bin's count roughly doubles, the shape unchanged --- and the
 two parameters $\mu$ and $\sigma^2$ are read off the accumulated counts, the center and the width the data
 themselves settle into. Gauss met the curve in the reduction of astronomical observations, where a star's
@@ -30,7 +33,8 @@ Why this shape and no other? Because a single measurement's error is itself the 
 independent nudges --- a little turbulence in the air, a little tremor in the hand, a little flicker in the
 apparatus --- and a sum of many small independent contributions, whatever each one's own distribution, piles
 up into the bell. That is the reason the curve appears wherever a count is repeated: not because nature
-prefers it, but because adding up independent small errors has only one stable shape to settle into.
+prefers it, but because adding up independent small errors has only one stable shape to settle into --- and it settles
+there whatever bins we bring to catch it.
 
 That intuition is a theorem, the central limit theorem, and it is worth stating with its mechanism. Take $n$
 independent contributions, each with a finite mean and variance but otherwise of any shape whatever, sum them,
@@ -47,12 +51,14 @@ contributions multiply their transforms, so their logarithms add. Take logarithm
 every term in the log-transform beyond the second is suppressed by a growing power of $n$ and dies, leaving
 only a quadratic. A quadratic log-transform is exactly the signature of the Gaussian, and nothing else. So the
 bell is not one stable shape among several; it is the unique fixed point of adding-and-normalizing, the only
-distribution whose log-transform a sum cannot push away from. The instrument does not impose the bell; it is
-the only shape a sum of many small independent counts can settle into.
+distribution whose log-transform a sum cannot push away from. The instrument does not impose the bell --- no
+model of ours puts it there; it is the only shape a sum of many small independent counts can settle into, and
+the settling is the world's.
 
 The
 honest floor is a finite count obligation: the normal curve is the stable shape of the bin totals, an
-emergent count and not a posited law. The reading is that the bell curve is not a fact about nature but the
+emergent count and not a posited law --- the bins ours to draw, the shape they settle into the world's. The
+reading is that the bell curve is not a fact about nature but the
 shape that repetition makes --- what a sum of many independent finite errors converges to, characterized by
 its center and its spread and needing nothing more.
 
@@ -63,7 +69,8 @@ The bell curve is the shape of \emph{many} repetitions. But the instrument is of
 a handful of measurements and must say, honestly, how much it knows from them. This is the first of Gosset's
 two problems, the problem of pooling. With only a few samples the true spread of the underlying distribution
 is unknown, so the instrument cannot reach for the population's variance; it must estimate the spread from the
-same small sample it is trying to measure. The mean it forms is the signal, and the signal sharpens as the
+same small sample it is trying to measure. The sample is ours to take, and always finite; the true spread is
+the world's, and never handed over whole. The mean it forms is the signal, and the signal sharpens as the
 sample grows: the random errors in the individual measurements partly cancel when averaged, so the noise in
 the mean pools down as $\sqrt{n}$, and the honest interval around the mean is
 \begin{equation}
@@ -74,7 +81,7 @@ It is drawn not from the normal curve but from Student's $t$-distribution, which
 heavier tails are exactly the price of estimating the spread from the small sample rather than knowing it.
 With few measurements the instrument is unsure not only of the mean but of its own estimate of the scatter,
 and the fatter tails of the $t$ widen the interval to pay for that second uncertainty rather than pretend it
-away.
+away --- the smallness of the sample ours, the widening it forces the world's.
 
 The shape of those tails has a precise form. The $t$-density, with $\nu = n - 1$ degrees of freedom, falls off
 as a power of the deviation,
@@ -86,7 +93,8 @@ deviations are far likelier under the $t$ than under the bell. With few degrees 
 heavy and the interval wide; as $\nu$ grows --- as the sample fills out and the estimated spread approaches the
 true one --- the power-law tail steepens toward the Gaussian's, and in the limit $\nu \to \infty$ the $t$
 becomes the bell exactly. The $t$-distribution is the bell with its own uncertainty about its width built
-honestly into the tails, and it relaxes to the bell precisely as that uncertainty is resolved.
+honestly into the tails --- the uncertainty ours, the widening it forces the world's --- and it relaxes to the
+bell precisely as that uncertainty is resolved.
 
 The effect is named for ``Student,'' and the pseudonym is part of the lesson. William Gosset discovered the
 distribution while working as a brewer at Guinness, where the samples were necessarily small --- a few batches
@@ -94,14 +102,16 @@ of barley, a handful of yeast cultures --- and the brewery forbade its staff fro
 names. The $t$-distribution is, at bottom, the honest statistics of the under-sampled: what an instrument may
 claim when it has only a little data and refuses to borrow confidence it has not earned. The honest floor is a
 finite count obligation: the pooled estimate is a count of how fast the noise in the mean shrinks with $n$,
-and the $t$ multiplier is the honest widening that a small count demands.
+and the $t$ multiplier is the honest widening that a small count demands --- the count ours to gather, the widening
+its smallness forces the world's.
 
 \section{The Gosset Effect, II: hypothesis as projection}
 \label{se:gosset-projection}
 
 Gosset's second problem is different in kind, and it deserves its own room: not how much the sample says, but
 whether an apparent signal in it is real. A sample mean by itself means nothing until it is set against the
-variability that could have produced it by chance, and the instrument settles the question by a projection.
+variability that could have produced it by chance, and the instrument settles the question by a projection ---
+the axis ours to set, the fall of the data along it the world's.
 Take the data as a vector $x$, and let a hypothesis name an axis $u$ --- the direction the data would point if
 the hypothesis held. Project $x$ onto $u$. The component along the axis, $\langle x, u\rangle$, is the
 structure the hypothesis predicts; the part left over, $x - \langle x, u\rangle\,u$, lies orthogonal to $u$
@@ -111,9 +121,9 @@ and is everything the hypothesis does not explain. The test statistic is the rat
 \end{equation}
 the structure along the axis measured against the residual that scatters away from it: large when the data
 line up with the hypothesis, small when they spill into the orthogonal directions the hypothesis has nothing
-to say about.
+to say about. The direction was ours to pose; whether the data lie along it is the world's to answer.
 
-This is the same geometry the kernel chapter ran on a wave. There the instrument projected a record onto a
+This is the same geometry the instrument ran on a wave among the fields. There the instrument projected a record onto a
 subspace and set aside the orthogonal residual it could not reach; here it projects the data onto the
 hypothesis axis and reads the structure against the orthogonal residual that could be noise. A significance
 test is a Hilbertian projection --- a structured comparison of an observation against a hypothesis, decided by
@@ -122,20 +132,21 @@ smooth-shadow analogy: the discrete projection-and-residual is the shadow of the
 and the bridge between the instrument's finite decomposition and the smooth curve of critical values is an
 analogy, named as one.
 
-The two readings together are the discipline Gosset brought to a small sample. The first asks how much the
+The two questions together are the discipline Gosset brought to a small sample. The first asks how much the
 sample knows and widens the answer honestly for the count it has; the second asks whether a pattern in the
-sample is real and settles it by projecting onto the hypothesis. Neither helps itself to the distribution it
+sample is real and settles it by projecting onto the hypothesis. Both are ours to pose; both are answered by
+the count, not by us. Neither helps itself to the distribution it
 is trying to test; both are bookkeeping the instrument can do on a handful of counts, refusing to borrow what
 it has not measured.
 
 \section{The Bayes Effect: the minimal coherence-restoring correction}
 \label{se:bayes}
 
-The last reading is about how the instrument changes its mind. A new fact does not overwrite what was known;
+The last effect is about how the instrument changes its mind. A new fact does not overwrite what was known;
 it corrects it by the least amount that restores coherence. The instrument carries a prior --- its accumulated
-state of belief --- and a new event brings a likelihood, the constraint that event imposes; the posterior is
-the unique reconciliation that minimizes the strain between the two, the smallest revision that makes the old
-belief and the new fact consistent. In logarithmic form the update is simply additive,
+state of belief, ours to bring --- and a new event brings a likelihood, the constraint that event imposes and
+the world's to set; the posterior is the unique reconciliation that minimizes the strain between the two, the
+smallest revision that makes the old belief and the new fact consistent. In logarithmic form the update is simply additive,
 \begin{equation}
   \log P(\theta \mid D) = \log P(\theta) + \log P(D \mid \theta) + c,
 \end{equation}
@@ -148,15 +159,29 @@ The honest floor is a finite count obligation --- the update is an additive coun
 minimal correction that restores coherence. The reading is that the posterior is not a fresh belief replacing
 an old one but the smallest correction to the old that the new fact forces. What was known is carried forward,
 corrected rather than erased, and the cost of the correction is exactly the surprise the new fact carried ---
-the log-evidence it added. The instrument changes its mind the way it does everything else: by the least
+the log-evidence it added: the belief ours to hold, the surprise that corrects it the world's to deliver. The instrument changes its mind the way it does everything else: by the least
 bookkeeping that keeps the account consistent.
 
 \bigskip
 
-With these readings the instrument's statistics are complete, and they were earned, not assumed. A count
+With these effects the instrument's statistics are complete, and they were earned, not assumed --- the
+counts the world's, the frames that read them ours. A count
 repeated settles into the bell curve, the shape any sum of small independent errors must take. A small count
 is read with discipline --- pooled honestly for what it knows, projected to test what it claims. And a new
 fact revises the old by the smallest correction that restores coherence. Nowhere did the instrument begin with
 a law of statistics and apply it; everywhere it gathered counts and read the distribution off them. Part III
 turns next from the distribution to what a distribution costs --- to entropy, the second law, and the price
 the instrument pays to know.
+
+\bigskip
+\begin{center}
+\rule{0.4\textwidth}{0.4pt}
+\end{center}
+\bigskip
+
+\noindent A single observation proves little; a lone reading is an anecdote, as apt to be error as fact. Weight
+comes from repetition --- the same measurement taken again and again until the scatter of any one trial averages
+away and a stable shape stands out that no single reading could show. An account carries no weight from one
+telling but from the pattern many independent tellings settle into: what persists across the repetitions is the
+evidence; what belonged to a single trial washes out. Which measurements to gather, and how to bin them, is
+ours; the shape the many settle into, and how fast the noise falls as they accumulate, is the world's.

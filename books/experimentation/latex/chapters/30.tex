@@ -1,11 +1,13 @@
 \chapter{Scaling Laws of Systems}
 \label{chap:scaling-laws-of-systems}
 
-The book's last chapter is about how systems scale --- the ceilings, costs, and concentrations that appear
-when many records act together. Six effects carry it: the cap on parallel speedup, the cost set by the slowest
+The apparatus makes its last examination here: how systems scale --- the ceilings, costs, and concentrations
+that appear
+when many records act together --- the systems ours to build, the ceilings they meet the world's. Six effects
+make the case: the cap on parallel speedup, the cost set by the slowest
 synchronization, the concentration of mass into a few, agency as strain minimized, the stochastic correction
-that is a refinement artifact, and --- the book's final wall --- the entropy that renaming cannot raise. After
-them, the book ends.
+that is a refinement artifact, and --- the last wall of all --- the entropy that renaming cannot raise. After
+them, only the count remains to be read whole.
 
 \section{The Amdahl Effect: a ceiling on parallel speedup}
 \label{se:amdahl}
@@ -16,13 +18,15 @@ the work parallelizes and $1 - p$ does not, the speedup is bounded,
 \begin{equation}
   S_{\max} = \frac{1}{1 - p},
 \end{equation}
-no matter how many processors are added: even with infinite parallelism the serial fraction sets the ceiling.
+no matter how many processors are added: even with infinite parallelism the serial fraction sets the ceiling
+--- the processors ours to add, the residue that waits for none of them the world's.
 Gene Amdahl drew the bound in 1967 to cool the enthusiasm for ever more processors --- parallelize
 nine-tenths of a job and the last tenth, which must run in sequence, still caps the speedup at tenfold, though
 a thousand processors stand idle waiting on it.
 The honest floor is a finite count obligation --- the speedup is bounded by the serial residue, a fixed
-fraction of the work that no parallelism removes. The reading is that parallelism has a ceiling, and the
-ceiling is the serial part. What cannot be split cannot be hurried, and the gain from any number of processors
+fraction of the work that no parallelism removes --- the splitting ours, the ceiling the world's. The reading
+is that parallelism has a ceiling, and it
+is the serial part. What cannot be split cannot be hurried, and the gain from any number of processors
 is capped at the inverse of the fraction that must run alone.
 
 \section{The Tail Latency Effect: the slowest boundary sets the cost}
@@ -34,30 +38,34 @@ reconciliation in the system. The tail of the latency distribution scales with t
 \begin{equation}
   \mathcal{L}_{\text{tail}} \propto N\,|\partial\Omega|,
 \end{equation}
-so that as a system grows, its worst-case synchronization cost grows with it. The honest floor is a finite
+so that as a system grows, its worst-case synchronization cost grows with it --- the system ours to grow, the
+laggard it waits on the world's. The honest floor is a finite
 count obligation --- the tail latency is a count of the slowest boundary's work, scaling with the system size
-and its boundary. The reading is that the slowest boundary sets the cost. A synchronized system waits on its
+and its boundary --- the boundary ours to set, the tail that finishes last the world's. The reading is that
+the slowest boundary sets the cost. A synchronized system waits on its
 laggard; the latency is not the average but the tail, the cost of the one reconciliation that finishes last,
 and it grows with the boundary the system must keep coherent.
 
 \section{The Pareto Effect: the mass concentrates}
 \label{se:pareto}
 
-Refinement concentrates mass into a few. Admissibility does not spread weight evenly; at each extension it
-forces concentration, so that a small fraction of the entries carry most of the total. The distribution is a
+Refinement concentrates mass into a few. Admissibility seldom spreads weight evenly; extension after
+extension, the weight drifts onto a few, so that a small fraction of the entries carry most of the total. The distribution is a
 power law,
 \begin{equation}
   P(x) \propto x^{-\alpha},
 \end{equation}
 heavy at the head and long in the tail --- the law Vilfredo Pareto found in the distribution of wealth, the
 familiar four-fifths of it held by a fifth of the people, the same lopsidedness repeating within that fifth
-and within that again, scale-invariant all the way down. A sparse basis --- a few entries holding the mass ---
-is what survives refinement, while a flat, uniform distribution does not. The honest floor is a finite count
-obligation --- the concentration is a count, most of the mass on a few entries, and a uniform spread is
-inadmissible under refinement. The reading is that the mass concentrates, and uniformity does not survive. A
-flat distribution is not a stable state of a refining system; admissibility drives the weight onto a sparse
-few, and the power law is the shape that concentration takes --- the many light, the few heavy, and no even
-spread to be had.
+and within that again, scale-invariant all the way down --- the fifths ours to draw, the lopsidedness they
+find the world's. A sparse basis --- a few entries holding the mass ---
+is what refinement keeps returning, while a flat, uniform distribution rarely lasts. The honest floor is a
+finite count
+obligation --- the concentration is a count, most of the mass on a few entries, the bookkeeping of an observed
+lopsidedness rather than a derived necessity --- the spread ours to tally, the concentration it keeps finding
+the world's. The reading is that the mass concentrates, and uniformity seldom survives. A
+flat distribution is rarely a stable state of a refining system; the weight drifts onto a sparse
+few, and the power law is the shape that concentration takes --- the many light, the few heavy.
 
 \section{The Agent Effect: agency is strain minimized}
 \label{se:agent}
@@ -66,8 +74,11 @@ An agent is not an outside observer but a part of the record that minimizes its 
 substructure, facing the stream of events at its boundary, acts to minimize the informational strain those
 boundary conditions induce on it --- and what we call agency is the residue of that minimization, not a force
 added from outside. The agent is the part of the record that pushes back on its own boundary to keep its
-strain low. The honest floor is a finite count obligation --- agency is the strain-minimizing residue, a count
-of how a local substructure reconciles its boundary. The reading is that agency is strain minimized, not a
+strain low --- the ledger ours to reconcile, the demand the stream sets the world's. The honest floor is a
+finite count obligation --- agency is the strain-minimizing residue, a count
+of how a local substructure reconciles its boundary; the agent counts its refinements, and nothing here
+selects them --- the reconciliation ours, the strain that remains the world's. The reading is that agency is
+strain minimized, not a
 special cause. An agent is a region of the record that keeps its own informational strain low against the
 incoming stream, and its apparent purpose is the shape that minimization takes --- not a force outside the
 physics but a residue within it.
@@ -82,33 +93,37 @@ changes; the answer carries a second-order term the ordinary chain rule would mi
   df = f'(X_t)\,dX_t + \tfrac{1}{2} f''(X_t)\,(dX_t)^2,
 \end{equation}
 where the $(dX_t)^2$ term --- the quadratic variation --- does not vanish, because under noise the squared
-step is of the same order as the step. For the Brownian walk of an earlier chapter the rule is exact, $(dX_t)^2
+step is of the same order as the step. For the Brownian walk already met, the rule is exact, $(dX_t)^2
 \to dt$: the variance of a random step grows with the time elapsed, not with its square, so the squared step
-keeps pace with the step itself and the second-order term refuses to disappear. This is Ito's lemma, and the correction is the smooth shadow of a
+keeps pace with the step itself and the second-order term refuses to disappear --- the function ours to write,
+the correction the jitter exacts the world's. This is Ito's lemma, and the correction is the smooth shadow of a
 discrete reconciliation: it is forced by comparing the refined updates, not by any force in the dynamics. The
 honest floor is a smooth-shadow analogy --- the discrete noisy updates are the model, the Ito correction their
 smooth shadow, and the bridge from the squared discrete step to the continuum quadratic-variation term is an
-analogy, named as one. The reading is that the stochastic correction is a refinement artifact, not a force.
+analogy, named as one --- the calculus ours to bring, the quadratic variation the world's. The reading is that
+the stochastic correction is a refinement artifact, not a force.
 The extra term in Ito's lemma is what the discrete reconciliation leaves when it is read in the continuum ---
-a shadow of how the noisy steps compare, and the lone smooth shadow of this final chapter.
+a shadow of how the noisy steps compare, and the last smooth shadow of them all.
 
 \section{The Limitation of Indexing: the entropy renaming cannot raise}
 \label{se:limitation-indexing}
 
-The book's last wall is the one it began with. Entropy --- the logarithm of the number of distinguishable
-configurations,
+The last wall has been standing since the first mark. Entropy --- the logarithm of the number of
+distinguishable configurations,
 \begin{equation}
   S = \ln N, \qquad \Delta S \ge 0
 \end{equation}
 --- rises only under a genuine refinement, a real new distinction committed to the record. It does not rise
 under renaming. Relabel the entries, permute the indices, rewrite the record in another alphabet, and $N$ is
-unchanged and $\Delta S$ is zero: a renaming adds no distinguishable configuration, and so adds no entropy.
+unchanged and $\Delta S$ is zero --- the relabeling ours, the count it cannot move the world's: a renaming
+adds no distinguishable configuration, and so adds no entropy.
 Only a real new distinction --- a measurement that separates two configurations the record could not tell apart
-before --- raises the count. The honest floor is a no-go, and it is the book's final one: the count cannot be
-inflated by renaming, only by measuring. The reading is the one the book opened on, restated as a wall. The
+before --- raises the count. The honest floor is a no-go, the last of all: the count cannot be
+inflated by renaming, only by measuring --- the labels ours, the count the world's. The reading is the first
+difference, restated as a wall. The
 first mark made a difference because it distinguished two configurations; a relabeling makes none, and so the
-entropy a record carries is exactly the count of real distinctions in it, never the count of names. You cannot
-measure by renaming. The arrow that began at the first difference points the same way at the last: the count
+entropy a record carries is exactly the count of real distinctions in it, never the count of names. Renaming
+measures nothing. The arrow that began at the first difference points the same way at the last: the count
 rises only when something is genuinely told apart.
 
 \bigskip
@@ -159,7 +174,62 @@ falsifiable, and fenced with equal care against claiming one inch more than it h
 where the book's central wager was paid in full: that a finite record, kept honestly, can not only describe the
 physics but, here and there, prove it.
 
-What is left at the end is what was there at the beginning: a mark, and the difference it made. Make the first
-mark permanent --- commit one distinction to a record that cannot unmake it --- and the rest follows, count by
-count, fence by fence, all the way out to the horizon and back. An entire physics, read off the count, from a
-single difference recorded.
+One scene remains, and the whole of the physics sits in it. A driver is clocked for speeding, and three
+instruments say so. The speedometer is the car's own count --- an origin fixed, the distance ticked off, the
+rate read from inside the motion: the first regime of this book, a record keeping the books on itself. The
+GPS is the second, and it reads true only because relativity is true: the satellite clocks run fast by the
+thirty-eight microseconds a day the potential wins --- the same clock physics Pound and Rebka weighed in a
+Harvard stairwell --- and uncorrected, the position, and the speed read off it, drift by kilometers within
+hours. The radar gun is the third: a photon sent out, reflected off the car, returned with its frequency
+shifted, the shift converted to a speed --- the quantum doing the measuring, the frame physics doing the
+converting. Three instruments, three regimes; one car, and a court that owes one verdict.
+
+The court's first work is to close the three readings into one. Each instrument went out by its own physics
+and came back with a number, and the comparison of the returns is a closed loop --- the same figure the
+fields and the quantum charged: what survives when the circuit is sewn shut is a residue no re-reading
+cancels. When the three numbers agree, the agreement is a conservation, residue composing with residue along
+the loop; when they disagree, the disagreement is itself a datum, a residue pointing at whichever leg of the
+physics bent. Either way the loop returns something the court can hold: one speed, carried by the concord of
+three independent ways of counting it.
+
+Then the harder question: whose speed is it? A speed is a reading against a frame --- the road's, in which
+the car moves, or the car's, in which the road does --- and the world does not fix which frame the question
+is asked in. That is not a defect in the instruments; it is the frame physics doing here what it did on its
+own pages. The sign a turned loop hands back is the frame's, not the world's; and which particle a detector
+calls matter is the apparatus's to say --- the coincidence that registered the positron is written in the
+two photons alone, and no line of it names which partner was the matter. Every reading on
+the bench is sound, and not one of them can supply the frame it is to be read in.
+
+And so the question itself turns. The case opened on a question put to the world --- \emph{is he speeding?}
+--- a fact, to be measured. It closes on a question put to a juror --- \emph{do you find him guilty?} --- a
+verdict, to be returned. The same case, the same car, the same number: the question has made one full
+revolution, from the world's frame to the asking's, and come back wearing the same face with the opposite
+sign. The electron whose sign Part IV followed is a spin-half thing --- a spinor --- and a spinor turned
+through one full revolution, $2\pi$, does not come home: it returns with a minus sign, the same face
+inverted, and only a second full turn, $4\pi$, restores it. That is the case's own geometry. The opening
+question and the closing one are the $2\pi$ pair --- fact and verdict, one face with two signs.
+
+But before the verdict, the floor. The court does not prove the speed; it stands on the instruments, and
+the instruments stand on the physics. Trace the radar down: the photon's emission and its shifted return
+rest on the quantum; the conversion of shift to speed rests on the frames --- rests on, in each case a
+dependency and never a derivation, the same fence this book kept everywhere else. And relativity itself is
+read by a clock --- the thirty-eight microseconds are a clock's gain --- and the clock keeps an assumption
+older than either theory: Newton's, that time is a continuous parameter, a smooth $t$ that flows. Einstein
+localized the clock, relativized it, and kept the $t$ continuous. And the continuity of time rests on
+nothing at all. It has never been observed: what is observed is ticks, a finite count, never the continuum
+between them. It has never been derived. It is the assumption adopted for want of anything else to do ---
+and this book has been, from the first mark, the something else: a physics run on the count alone, the
+continuum fenced, wherever it appeared, as the smooth shadow the count casts. Not disproved --- the fences
+hold, and no more is claimed at the end than anywhere earlier --- but named, and named as an assumption.
+
+So the court convicts, if it convicts, standing on a plank it cannot prove --- and the juror it turns to has
+been seated since the first mark. Whoever held the instrument through these chapters --- watched the count
+rise, the fences hold, the continuum recede into shadow --- was never watching from the gallery. The case
+closes on its second question, the one no instrument answers: which frame, which sign, guilty or not. The
+reading of the readings was never the apparatus's to give. It is the juror's --- and the juror is you. One
+revolution brought the question back with its sign inverted; the second turn is yours to make. The
+verdict is yours.
+
+\bigskip
+
+\hfill Q.E.D.

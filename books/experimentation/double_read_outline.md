@@ -131,16 +131,24 @@ Kodo guards each against §3 + §4. Operator green-light required to begin.)
 ## 8. The rewrite — RYOT, one section at a time (turn-2 execution)
 
 Turn 2 is executed as a RYOT process, **one section at a time** (143 \section units across 30 chapters,
-reading order). For each section, the **reuse criterion** (the operator's rule):
+reading order).
 
-- **KEEP the current prose** to the extent it (a) **matches the code** — faithful to the construction it
-  describes — AND (b) **already supports the contravariant reading** — reads both ways, physics forward and
-  structure backward.
-- **REWRITE** where the current prose is **unfaithful to the code** OR **single-band** (covariant-only — the
-  contravariant layer must be added *under* it, not bolted on top).
-- **Result per section:** complete as physics on the first read (covariant band whole, the first read loses
-  nothing and feels nothing cryptic) AND carrying the structure band underneath (the contravariant reading
-  present, discoverable under the filter). Felt, **never announced.**
+**BOLD RE-CAST (operator's depth call, 2026-06-30 — supersedes the earlier reuse-heavy reading).** Genuinely
+**rewrite most of each section** so the contravariant reading runs ALL THE WAY THROUGH and the change is
+**visible in the prose**. The text must MOVE. Do NOT garnish (turn-1 prose + one phrase) — that was too timid;
+the operator looked at the page and saw no change. **Re-cast.** The criterion:
+- **REUSE only** the sentences that ALREADY read both ways (rare). **Re-write the rest** so each load-bearing
+  sentence carries both bands — the funge/count read forward, the tange/orientation read backward.
+- **Still inviolable:** faithful to the code (ground-check the episode; flag overreach); the **first read
+  WHOLE** (clean physics, loses nothing, never cryptic); **felt, NEVER announced** (no "read again," no wink);
+  the CALIBRATION below (early body = interpretive/frame, foreshadow, no spinor/choice-free) and the §9
+  choice-family rules still hold.
+- **Growth is allowed.** A bold re-cast lengthens sections (the second band costs words) — acceptable now; the
+  operator prioritizes a visible rewrite over the ~249pp parity. Report the page delta each section. Every
+  added clause must carry the contravariant band — denser, not padded.
+- **The bar:** a SECOND-pass reader cannot miss the section was built to be re-read; a FIRST-pass reader reads
+  clean physics and loses nothing. (Harder craft than either garnish or announcement — dense double-meaning
+  throughout.)
 
 **CALIBRATION — match the seed to the episode it is grounded in (canon, turn-2 §2).** The contravariant
 band is NOT the same depth everywhere; plant only what the grounding episode earns:
@@ -156,12 +164,45 @@ band is NOT the same depth everywhere; plant only what the grounding episode ear
 The book FORESHADOWS in the early body and DELIVERS at the end — the same shape as NAME → SUBMERGE → SURFACE.
 Always ground-check (read-only) the grounding episode before seeding; flag overreach (as §1 and §2 did).
 
+> **CALIBRATION REFINEMENT — the proved ±1 vs the spinor (Ch05 §2 decision, 2026-06-30).** THREE distinct
+> things, not one; do not collapse them:
+> 1. **The proved ±1 (the device-coupled holonomy):** echo (Ch05 §2), Bragg/Davisson-Germer (Ch16), Sagnac,
+>    the positron (Ch18). *That a closed charged loop carries a residue of exactly ±1* is a **real finite-model
+>    theorem** — a finite count (open loop trivial / closed charged ±1, with converses), **code-independent**;
+>    the Lean proof lives **post-15 (Ep64 `finiteGauge_successor_commutator_residue_theorem`)** but is rendered
+>    **AS-IF-BUILT** per the operator's "after Ep15 you may pretend the code builds" rule. **KEEP "proved"**
+>    where the book proves it (Part II onward, the device-coupled effects); the honesty rail is "the proof is
+>    described here, not performed on the page." The early body (Part I) still FORESHADOWS it (Foucault =
+>    "capability born, proofs come later"); the FORESHADOW→PROOF shift lands at Ch05 §2.
+> 2. **The 2π/4π SPINOR** (the −1-on-one-turn, the orientation that needs a double traversal): DISTINCT from
+>    (1) — post-15, stays FORESHADOW through the whole body, delivered only at the CODA. "proved ±1" must NOT
+>    slide into "spinor."
+> 3. **The constructive choice-free refusal** (the proof declining to elect a representative): post-15, CODA.
+> So: the proved ±1 is allowed (as-if-built) at the device-coupled effects; the spinor + choice-free are coda.
+
 **Per-section guard (Kodo):** (1) faithful to the code? (2) reads both ways — is the contravariant band
 actually there, or only claimed? (3) current prose reused wherever it qualified (not gratuitously
 rewritten)? (4) §3 (first read whole) + §4 (plain but not announced) honored? (5) builds; greps 0 — including
-the **ANNOUNCE-grep** (the band is *felt*: `read again|your choice|second reading|you the reader|
-orientation is yours` all 0; the seed IS the contravariant layer, never a wink) and the standing set
-(code/tooling, bare device, bare Lean excl Galilean, meta-leak, book-ref). Accept or bounce; next section.
+the **ANNOUNCE-grep** (the band is *felt*: `read again|read it again|reread|re-read|closed book|second
+reading|two readings|both readings|read both ways|read it (one way|the other)|your choice|you the reader|
+orientation is yours` all 0;
+the seed IS the contravariant layer, never a wink) and the standing set (code/tooling, bare device, bare Lean
+excl Galilean, META-LEAK, book-ref) + 2nd-person you=0 in body + choice-family per §9 + **SPINOR-grep**
+(`spinor|720|4π|two turns|half-turn|half a turn|half turn` — 0 in the body; the spinor is CODA-only. **NB
+"half a turn"/"half turn" with spaces slips the hyphenated `half-turn`** — Ch06 §2 had "differ by half a turn"
+→ "oppose by π"; keep the spaced forms in the grep. Physical "π phase" / "180°" are fine; "half a turn" reads
+as the spinor wink).
+Accept or bounce; next section. **"two readings"/"both readings"/"two ways" near the bracket-or-record are the
+sneakiest winks** — reword to "orderings"/"either order", keep the physics. (Caught Ch02 §2 turn-2: "the two
+readings … opposite sign" → "the two orderings"; the narrower announce-grep had missed it.)
+
+> **META-LEAK grep — co/contravariant REFINEMENT (Ch05 catch).** The double-read framing must not leak as
+> self-commentary, BUT the bare grep `covariant|contravariant` FALSE-POSITIVES on legitimate **physics tensor
+> terms** — "**covariant derivative**" (the gauge $D_\mu$, the field-tensor → Ch17 $[D,D]=iqF$ through-line),
+> "contravariant index/vector/component", "covariant components". Those are REAL PHYSICS — KEEP them. So the
+> meta-leak grep for this pair = `covariant (reading|band)|contravariant (reading|band)|read (co|contra)variant`
+> (the double-read self-reference), NOT bare `covariant|contravariant`. In verify greps, exclude physics:
+> `grep -iE 'covariant|contravariant' | grep -viE 'covariant deriv|contravariant (index|vector|compon|tensor)|covariant (compon|index)'`.
 
 **Order:** the body, Ch01 (opening preamble → §1 → …) → … → Ch30, in reading order. The **bookends** (preface
 front, coda back) are written to spec (three_gauges "THE PREFACE" / ending_outline.md) as the frame — staged
@@ -201,20 +242,85 @@ choose|orientation is yours|read again|second reading`) stays HARD-0 everywhere.
 - KEEP + LEAN IN at the physics-choice prime sites above.
 - Early body (Ep1–15-grounded) target: choice-family **0** (forks carried via "ours"). Ch01 = 0 (achieved §5).
 
-**Progress ledger (Kodo updates as sections land):**
-- [x] Ch01 opening preamble — DONE (sha 4eb9058; reshaped one phrase "the bookkeeping we lay over it";
-  reuse-heavy; both bands; greps 0). Fidelity catch logged (first mark ≠ fork).
-- [x] Ch01 §1 The Instrument — DONE (sha 386a253; holonomy reshape "the sign is fixed once an orientation is
-  given … that it returns signed is the fact" + close "imposed from what it has found"; spinor 0; "proved"
-  kept). Yielded the CALIBRATION (early body foreshadows, post-15/coda delivers).
-- [x] Ch01 §2 The Instrument at Work — DONE (sha 5df13ff; reshape "the zero was ours to place, never the
-  world's"; reuse-heavy). + Six-features fix: finiteness promoted to the 1st feature (faithful, "operate
-  within" not "derived from").
-- [x] Ch01 §3 The Aristotle Effect — DONE (sha 857c7d1; marked payoff line 135 reused VERBATIM/undiluted;
-  one faint setup echo "an act of ours, not of the motion"). Lightest section.
-- [x] Ch01 §4 The Galileo Effect — DONE (sha e570294; "a fact about the frame we read it from"; objectivity =
-  the invariant left when our frame is divided out). Reuse-heavy.
-- [x] Ch01 §5 Descartes-I — DONE (sha 31c6f0a; "the origin and spacing we lay down"; the grid is ours / the
-  count is the world's). + the choice-family sweep catch → §9. Ch01 choice-family = 0.
-- [ ] Ch01 §6 Descartes-II  ← turn-2 section 7, in flight — THE LOAD-BEARING TURN SEED ("seed of holonomy" /
-  non-commutativity). Then §7 Velocity → Ch01 done.
+**Progress ledger (Kodo updates as sections land).** NOTE: Ch01 §preamble–§6 were done in the *timid* mode
+(reuse-heavy, one phrase each) — superseded; the catches they yielded (first-mark≠fork, calibration, six-
+features, choice-family §9, the Ep1 grounding that the residue is literally "covariant/contravariant") all
+STAND and feed the bold redo. **Ch01 is being RE-CAST BOLD from the preamble.**
+- [x] **PREFACE** "The Oracle of Free Will" — DONE + spec-guard PASS (00-preface.tex sha 3bc893d; ~1560w/~5pp;
+  anti-demon, four doorways, name→submerge→surface, opens "You are free"/closes the verdict). Front bookend.
+- [x] Ch01 opening preamble — DONE BOLD (sha e3d940e; git diff 23+/15-; the record's two sides / keeper's hand
+  through every sentence; first read whole; greps 0; 255pp). THE BAR. (timid 4eb9058 superseded)
+- [x] Ch01 §1 The Instrument — DONE BOLD (sha c68fb01; +12 lines; six features each both-band; turn seed
+  "that it returns signed is the world's / which sign is ours", "proved" intact; greps 0). 300 lines total.
+- [x] Ch01 §2 The Instrument at Work — DONE BOLD (sha d1eecac; +8 lines; whole bench both-band, four
+  disciplines doubled; greps 0). 305 lines, 256pp.
+- [x] Ch01 §3 The Aristotle Effect — DONE BOLD (sha 8947301; payoff + entropy-link byte-for-byte verbatim,
+  re-cast around it so it lands earned; greps 0). 309 lines, 256pp.
+- [x] Ch01 §4 The Galileo Effect — DONE BOLD (sha 843664a; frame-ours/invariant-world's throughout; "holds
+  still while we move the frame around it"; greps 0). 310 lines, 256pp.
+- [x] Ch01 §5 Descartes-I — DONE BOLD (sha d641eb8; grid-ours/relation-world's + smooth-shadow faithful;
+  holonomy held for §6; greps 0). 313 lines, 256pp.
+- [x] Ch01 §6 Descartes-II — DONE BOLD (sha d22fea3; TURN SEED "residue world's+proved / which-sign the
+  hand's", grounded in non-commutative Sample; body "you"=0; no spinor/choice-free; greps 0). 316 lines.
+- [x] Ch01 §7 The Velocity Effect + chapter coda — DONE BOLD. *** Ch01 BOLD COMPLETE *** (sha b249ffb; 322
+  lines [timid 281], 257pp; body you=0; aphorism+entropy byte-for-byte; greps 0; four ceilings; "proved" 7×).
+- [ ] **Ch02** "Force, Inertia, and Momentum" — bold pass. [x] preamble (21be329) [x] §1 Newton (1c1600e;
+  "the act is the instrument's; the bill is the world's"). CATCH: code has NO cost primitive → "mass=cost" is
+  a PHYSICS OVERLAY not a code-derivation (canon, keep cost-readings at physics level). [x] §2 Momentum
+  (04ec6f9; Poisson antisymmetry foreshadow grounded in Ep2 BINARY.different?; BOUNCED+fixed "two readings"→
+  "two orderings" wink — announce-grep broadened §8). ← §3 Lagrange-Hamilton in flight (de-risk "read at two
+  scales"→"at"; [x,p]=iℏ = through-line endpoint, foreshadow; stationary-action = named smooth-shadow). Then
+  §4 Acceleration, §5 da Vinci-Coulomb (first WALL; clear §5 "you" 221-222).
+  [x] §3 Lagrange-Hamilton (5794f52; smooth-shadow faithful, through-line intact, "read at two scales"→"at").
+  [x] §4 Acceleration (45c8151; standard-ours/curvature-world's; GR named-only). [x] §5 da Vinci-Coulomb
+  (357692d; first WALL grounded in code's Prop→False, no-go faithful). *** Ch02 BOLD COMPLETE *** (262 lines
+  [timid 241], 258pp; body you=0; greps 0; four ceilings; through-line intact). Fidelity canon: cost/action/
+  curvature/μ_s = physics overlays / named shadows, never code-derivations.
+- [ ] **Ch03** "Orbits and Rotation" — bold pass. [x] preamble (7a15c4e; turn-frame "residue world's / which
+  sign frame's"; no body "you"). [x] §1 Kepler (d2311a4; closing=world's/chart=ours; smooth ellipse named-
+  shadow; cleared "rereads/closed book" → reread family added to announce canon §8). ← §2 Angular Momentum
+  (7e771f5; axis-ours/tally-world's; Noether named-link; contrast foil "a residue the world put there" set).
+  [x] §3 **Foucault: precession as holonomy = the TURN made physical** (79325cf; "that it comes back turned is
+  the world's; the angle world's, the zero we read it from ours"; CALIBRATION HELD — continuous angle →
+  discrete proved-±1, "the proofs come later but the capability is born here"; NOT spinor). *** Ch03 BOLD
+  COMPLETE *** (210 lines [timid 165, +45], 259pp; body you=0; greps 0; smooth-shadow+finite-count ceilings).
+  Catch: "read against" matches "read again" as substring → reword to "measured against" (benign).
+- [ ] **Ch04** "The Least Principle and the Unseen" — bold pass. [x] preamble (8e22d62; "we set the contest,
+  the world names the winner"; no body "you"). [x] §1 Minimizing Variations (89378dc; cost-ours/winning-path-
+  world's; E-L named shadow). [x] §2 Repeatability (ac446d0; guess-ours/unseen-world's, "not a thing seen").
+  [x] §3 Dirichlet-Bancroft (ea56dfb; edge-ours/interior-world's; collapse/EPR a NAMED forward-pointer only,
+  Bell/EPR unnamed — temptation held; grounded in representative? pivot). [x] §4 Butterfly (c6c97cc; horizon =
+  the APPARATUS's limit, floor ours/divergence world's — faithful split kept over "horizon is the world's").
+  *** Ch04 BOLD COMPLETE → PART I (Ch01-04) FULLY BOLD *** (259pp; body you=0; four ceilings).
+
+### PART II — Fields, Waves, and Light
+- [ ] **Ch05** "The Field That Acts Where It Isn't" — bold pass. ** CALIBRATION SHIFTS: §2 = the FIRST PROVED
+  holonomy. ** [x] preamble (d42bfd6; "field is the world's reach; gauge is our account"; proved-±1 calibration
+  marked). [x] §1 **Aharonov-Bohm** (1ea71f5; "the gauge is the description, the holonomy is the described";
+  "choice of χ" + "covariant derivative" sanctioned & verified clean). [x] §2 **Echo Chamber Maze = first
+  PROVED ±1** (def01a8; CALIBRATION SHIFT delivered — "proved" kept 14×, spinor 0, "described not performed"
+  honesty, Ep64 receipt as-if-built; that-carries-±1=world's/which-sign=frame's). Calibration REFINED §8:
+  proved-±1 vs spinor vs choice-free = 3 distinct things. [x] §3 Energy (a840f1d; "the line is ours; that the
+  books come out even is not"). *** Ch05 BOLD COMPLETE *** — the FORESHADOW→PROOF chapter (194 lines, 259pp;
+  you=0; spinor 0; proved 14×; sanctioned exceptions only).
+- [ ] **Ch06** "Diffraction, Interference, and Polarization" — bold pass. [x] preamble (18b26ee; "what we
+  arrange is ours; what it forces is the world's"; "only to record"). [x] §1 Arago Spot (0f5d11f; forbidding
+  grounded in different?→False; unnumbered). [x] §2 Mach-Zehnder (08d531f; label-ours/tally-world's, fold
+  "passes out of our hands"; foreshadow; "half a turn"→"oppose by π", spinor-grep widened to spaced forms).
+  260pp. [x] §3 Malus (bc5d5bb; second wall absolute; you@116 cleared). [x] §4 Schrödinger-Young (which-path
+  complementarity FORESHADOW; "two readings"@165→"two faces"; drumbeat thinned). *** Ch06 BOLD COMPLETE ***
+  (213 lines, 260pp; you=0; announce 0; spinor 0; Bell/quantum unplanted; 1 "proved"=sanctioned Ch05 back-ref).
+- [ ] **Ch07** "Sampling, Spectra, and the Limits of a Reading" — *** THE KEYSTONE meta-site (§5) *** — bold
+  pass STARTED ← preamble in flight. Second band DENSEST + announce-temptation HIGHEST (the physics IS the
+  double-read's mechanism: sampling=reading, Nyquist=a reading's resolution, passband=what a reading passes).
+  HOLD THE LINE: recognition is the reader's on re-read, NEVER stated; announce-grep 0 even here. [x] preamble
+  (7f51d0d; "Every reading is a projection… the kernel it cannot reach is the world's"; wink-hunt: NO WINK
+  under 2 hostile blind readers). [x] §1 Fourier-Nyquist (1c3a029; sample rate ours/recoverable world's; wink-hunt CAUGHT "The reading is that a reading"→"The lesson is that", fixed). [x] §2 Gibbs (c292b0b; persistence absolute, "the reading is that a reading"→"the lesson" pre-empted; 261pp). [x] §3 Gibbs Preservation (40dfa7e; meta-line→"kernel idea at its sharpest"; "one reading...other" removed). [x] §4 Moiré (8a846a1; THE "two readings" DEAD — whole-Ch07 plural "readings"=0; two gratings/samplings; wink-hunt caught "two mismatched readings" closer leak by MEANING, grep blind to "two X readings"→sweep broadened to \breadings\b). [x] §5 Message (dcae41d; decoding-basis ours/wall world's; closer "the blind spot every reading carries — ours in where we aim it, the world's in what it cannot reach"). *** Ch07 KEYSTONE BOLD COMPLETE *** (1ad2ef0; 196 lines, 261pp; plural readings 0, doubled-reading 0, spinor 0, you 0, proved 0; CUMULATIVE wink-hunt PASS). THE KEYSTONE HOLDS.
+- [ ] **Ch08** "Force from Geometry: the Inverse-Square Law" — PART II CLOSE — bold pass STARTED ← preamble in flight (preamble + 1 large §1; exponent = the dimension of space; clear 3 "you").
+- [ ] Ch01 §2 The Instrument at Work — redo bold
+- [ ] Ch01 §3 The Aristotle Effect — redo bold (marked payoff stays verbatim; re-cast around it)
+- [ ] Ch01 §4 The Galileo Effect — redo bold
+- [ ] Ch01 §5 Descartes-I — redo bold
+- [ ] Ch01 §6 Descartes-II — redo bold (the TURN; ordered pair = code's `Sample`, non-commutative; residue
+  labeled "covariant/contravariant" in Ep1 — ground confirmed, timid sha 0576379)
+- [ ] Ch01 §7 Velocity — bold (not yet done even timid)

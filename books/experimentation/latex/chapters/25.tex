@@ -1,12 +1,13 @@
 \chapter{Resolution, Precision, and the Continuum}
 \label{chap:resolution-precision-continuum}
 
-This is the chapter where the discrete most directly confronts the smooth. The continuum --- the unbroken real
-line physics is written on --- is, in this book, a shadow the discrete casts, never the substrate beneath it.
-Six effects make the case: a resolution floor below which nothing varies, a precision that is reproducibility
-and not truth, a derivative that needs no vanishing quantity, a continuum that is a limit of refinements rather
-than a ground, a length that depends on the ruler, and an irrational diagonal that forces a smallest quantum.
-The continuum here is the book's most useful analogy and its most carefully fenced.
+Here the discrete most directly confronts the smooth. The continuum --- the unbroken real line physics is
+written on --- stands here as a shadow the discrete casts, never the substrate beneath it: an analogy, the most
+useful one the instrument keeps and the most carefully fenced, offered as an alternative and never as a
+disproof --- the frame ours to offer, the smooth limit the refinements approach the world's. Six effects make
+the case: a resolution floor below which nothing varies, a precision that is reproducibility and not truth, a
+derivative that needs no vanishing quantity, a continuum that is a limit of refinements rather than a ground, a
+length that depends on the ruler, and an irrational diagonal no enumeration can finish.
 
 \section{The Berkeley--Galileo Effect: a resolution floor}
 \label{se:berkeley-galileo}
@@ -16,18 +17,20 @@ the state but its shadow,
 \begin{equation}
   \text{shadow} = \left\lfloor \frac{\text{state}}{\epsilon} \right\rfloor,
 \end{equation}
-the state divided into whole cells of width $\epsilon$ and the remainder discarded; any variation smaller than
+the state divided into whole cells of width $\epsilon$ and the remainder discarded --- the cell width ours, the
+state it coarsens the world's; any variation smaller than
 $\epsilon$ leaves the shadow unchanged, so below the threshold multiple candidate descriptions are
 indistinguishable, separable only by a finer instrument. Galileo, grinding lenses to push the floor down, saw
 moons around Jupiter the naked eye could not --- not because the moons were infinitesimal but because they lay
-below the eye's $\epsilon$ and above the telescope's. And Berkeley, a century later, objected to Newton's
+below the eye's $\epsilon$ and above the telescope's. And Berkeley, a century and more later, objected to Newton's
 infinitesimals as ``ghosts of departed quantities'' --- magnitudes treated as nonzero to form a ratio and then
 as zero to be rid of. The objection is answered here by a floor: there are no departed quantities, only
 variations below resolution, and a finite instrument cannot see them --- not because they vanish, but because
 they were never above the floor.
 
 The honest floor is a finite count obligation --- the shadow is a count of $\epsilon$-cells, and
-sub-$\epsilon$ variation adds no count. The reading is that resolution is a floor, not a limit approached.
+sub-$\epsilon$ variation adds no count --- the ruler ours to bring, what lies beneath its floor the world's.
+The reading is that resolution is a floor, not a limit approached.
 Below $\epsilon$ nothing varies that the instrument can record; Berkeley's ghosts are not infinitesimals
 vanishing but distinctions too small to count, and the floor is exact --- a finite ruler reads in whole cells.
 
@@ -43,9 +46,10 @@ and that minimizer is the natural cubic spline, the curve a draftsman's flexible
 the anchors, bending as little as it can between them. Minimizing the curvature forces the fourth derivative to
 vanish between the anchors,
 \begin{equation}
-  \Psi^{(4)} = 0,
+  f^{(4)} = 0,
 \end{equation}
-so the completion is piecewise cubic, the smoothest interpolant the anchors allow. Once the anchors are fixed
+so the completion is piecewise cubic, the smoothest interpolant the anchors allow --- the completion ours to
+draw, the anchors it must pass through the world's. Once the anchors are fixed
 the completion is determined, and that determinacy is precision: precision is the reproducibility of the
 shadow, the same smooth completion returned each time, and it is distinct from accuracy, which is nearness to a
 truth the completion may or may not share. The distinction is the dartboard's. A tight cluster of throws, all
@@ -55,7 +59,8 @@ without the other, and the cubic completion delivers only the first: it returns 
 says nothing about whether that shadow sits on the truth.
 
 The honest floor is a smooth-shadow analogy --- the discrete anchors are the model, the minimal-curvature
-spline their smooth shadow, and the bridge from the anchors to the completion is an analogy, named as one. The
+spline their smooth shadow, and the bridge from the anchors to the completion is an analogy, named as one ---
+the completion ours, the truth it may or may not sit on the world's. The
 reading is that precision is reproducibility, not truth. A precise instrument returns the same smooth shadow
 each time it is run; whether that shadow is near the truth is accuracy, a different question, and the cubic
 completion is precise exactly because the anchors fix it uniquely --- not because it is right.
@@ -63,19 +68,21 @@ completion is precise exactly because the anchors fix it uniquely --- not becaus
 \section{The Fluxions Effect: a derivative without infinitesimals}
 \label{se:fluxions}
 
-The derivative does not need a vanishing quantity. Newton's fluxion treated an infinitesimal $\mathrm{d}t$ as
+The derivative does not need a vanishing quantity. Newton's method of fluxions treated an infinitesimal $\mathrm{d}t$ as
 both zero and not-zero --- nonzero while it sat in the denominator of a ratio, zero the moment the ratio was
 taken --- the very paradox Berkeley mocked. But the slope can be had without it. Take the finite difference and
 read off the smooth completion's slope,
 \begin{equation}
-  \dot x = \frac{\Delta x}{\Delta t} \longrightarrow \Psi',
+  \dot x = \frac{\Delta x}{\Delta t} \longrightarrow f',
 \end{equation}
 the derivative being the slope of the $C^2$ cubic completion at a point, not the limit of a ratio whose
-denominator disappears. No $\mathrm{d}t$ vanishes; the slope is a property of the shadow, present wherever the
+denominator disappears --- the slope ours to read, the differences that fix it the world's. No $\mathrm{d}t$
+vanishes; the slope is a property of the shadow, present wherever the
 completion is, needing nothing to be sent to zero.
 
 The honest floor is a smooth-shadow analogy --- the finite differences are the model, the cubic slope their
-smooth shadow, and the derivative is read off the shadow, named as such. The reading is that the derivative is
+smooth shadow, and the derivative is read off the shadow, named as such --- the shadow ours, the anchors
+beneath it the world's. The reading is that the derivative is
 a slope, not a vanishing. It is the slope of the smooth completion the anchors determine, and because that
 completion is $C^2$ the slope is well-defined without any infinitesimal --- the fluxion's ghost laid to rest by
 reading the shadow instead of vanishing the denominator.
@@ -86,14 +93,16 @@ reading the shadow instead of vanishing the denominator.
 The continuum is not a ground the discrete sits on; it is the limit the discrete approaches as the mesh
 refines. A finite instrument reads on a mesh of spacing $h$, and the continuum is the $h \to 0$ limit of that
 mesh --- a limit defined by the refinement study, not assumed in advance. And the limit must be earned: the
-convergence law relating readings across mesh levels is fit from the refinement, never ordained. Assume a law
+convergence law relating measurements across mesh levels is fit from the refinement, never ordained --- the
+mesh ours to refine, the law its measurements obey the world's. Assume a law
 in advance --- a linear stress--strain relation, say --- and the estimator sits on a plateau at $1.5$; fit it
-honestly from the mesh, letting the data say how the readings change as $h$ halves, and a mixed second-difference
-estimator converges instead to its true value, $1.0$. The number the continuum hands back depends on whether
+honestly from the mesh, letting the data say how the values change as $h$ halves, and an estimator that
+locates the kink converges instead to the true value, $1.0$. The number the continuum hands back depends on whether
 its law was assumed or measured, and only the measured one is admissible.
 
 The honest floor is a smooth-shadow analogy --- the mesh is the model, the continuum its smooth shadow, and the
-$h \to 0$ limit is the bridge, named and earned by refinement rather than assumed. The reading is that the
+$h \to 0$ limit is the bridge, named and earned by refinement rather than assumed --- the mesh ours, what the
+refinements tend toward the world's. The reading is that the
 continuum is a limit of refinements, not a substrate beneath them. It is what the mesh tends toward as it grows
 fine, recovered by study and not presupposed --- the smooth not the ground the discrete stands on but the
 shadow it casts as it refines.
@@ -105,7 +114,8 @@ How long is a coastline? The answer depends on the ruler. Lewis Fry Richardson, 
 national borders, noticed that different sources gave wildly different figures for the same frontier, and saw
 why: measure Britain's coast with a finer and finer yardstick and the length does not converge but grows,
 because each finer ruler resolves bays within bays, headlands within headlands, that the coarser one stepped
-straight across. The measured length scales with the ruler,
+straight across --- the yardstick ours to pick, the bays that were always there the world's. The measured
+length scales with the ruler,
 \begin{equation}
   L(\epsilon) \propto \epsilon^{\,1 - D},
 \end{equation}
@@ -118,35 +128,41 @@ The honest floor is a smooth-shadow analogy --- the coastline at resolution $\ep
 continuum length its smooth shadow, and for a fractal that shadow does not exist as a single number. The
 reading is that length is resolution-dependent, not absolute. A coastline has no one length, only a length at a
 scale; the smooth shadow that would be ``the length'' diverges, and what is real is the ruler and the count it
-returns --- the continuum length a shadow that, for a fractal, the discrete never settles into.
+returns --- the ruler ours, the count the world's --- the continuum length a shadow that, for a fractal, the
+discrete never settles into.
 
-\section{The Pythagoras--Planck Effect: the irrational forces a quantum}
+\section{The Pythagoras--Planck Effect: the diagonal and the quantum}
 \label{se:pythagoras-planck}
 
-Here the chapter meets a no-go. A construction can force a magnitude no enumeration can reach: the diagonal of a
-unit square has length $\sqrt 2$, and $\sqrt 2$ is irrational. The proof is the one that, legend says, cost its
+Here the instrument meets a no-go. A construction can force a magnitude no enumeration can reach: the diagonal
+of a unit square has length $\sqrt 2$, and $\sqrt 2$ is irrational. The proof is the one that, legend says, cost its
 discoverer his life --- Hippasus, the Pythagorean said to have drowned at sea for revealing that the diagonal
 could not be written as a ratio, breaking the brotherhood's creed that all things were whole number. Suppose
 $\sqrt 2$ were a ratio $p/q$ of whole numbers in lowest terms. Then
 $p^2 = 2q^2$, so $p^2$ is even, so $p$ is even, say $p = 2k$; substituting, $4k^2 = 2q^2$, so $q^2 = 2k^2$, so
 $q^2$ is even, so $q$ is even. But then $p$ and $q$ are both even, contradicting ``lowest terms.'' No ratio
-survives the descent. So $\sqrt 2$ admits no finite ratio, no exact enumeration in whole units however fine; a
+survives the descent --- the ratio ours to attempt, the diagonal that refuses it the world's. So $\sqrt 2$
+admits no finite ratio, no exact enumeration in whole units however fine; a
 discrete ledger cannot represent it exactly, and pushed to enumerate the diagonal to the end, the refinement
-never terminates. Something must give, and what gives is the assumption of unlimited refinement: a smallest
-quantum of action $h$ caps how finely the ledger may divide, so the irrational is approached but never exactly
-reached.
+never terminates. Something must give, and what gives is the assumption of unlimited refinement: the ledger
+takes a smallest unit, a cap on how finely it may divide, so the irrational is approached but never exactly
+reached. Physics keeps a constant at this register --- Planck's quantum of action $h$ --- and the model
+borrows the name for its cap, claiming the kinship and not the derivation.
 
-The honest floor is a no-go --- exact enumeration of the diagonal is inadmissible, and the cutoff is forced.
-The reading is that the irrational forces a quantum. The diagonal no finite count can reach is the same
-pressure that, in physics, forces a minimum action: refinement cannot run forever against an irrational, so a
-smallest step is imposed --- Pythagoras's incommensurable diagonal and Planck's quantum the two ends of one
-no-go.
+The honest floor is a no-go --- exact enumeration of the diagonal is inadmissible, and the cutoff is the
+model's own, imposed on its ledger and never derived for physics --- the enumeration ours to press, the
+incommensurable diagonal the world's. The reading is that the diagonal demands a smallest step of the ledger,
+and the demand meets its physical echo: refinement cannot run forever against an irrational, so the ledger
+takes a floor, and the name the model borrows for that floor is Planck's --- Pythagoras's diagonal and Planck's
+quantum a pairing, not an identity, the kinship named and the derivation refused.
 
 \bigskip
 
-With the irrational's quantum, the chapter closes. The continuum has been, throughout, the book's most useful
-analogy and its most carefully fenced: a resolution floor below it, a precision that is its reproducibility, a
+With the diagonal and the quantum paired, the continuum's case is closed. The continuum has been, throughout,
+the most useful analogy the instrument keeps and its most carefully fenced: a resolution floor below it, a
+precision that is its reproducibility, a
 derivative that is its slope, a limit that earns it by refinement, a length that depends on the ruler, and an
 irrational that forbids its exact enumeration. In every case the continuum is a shadow the discrete casts as it
-refines --- never the substrate beneath it. Part VI turns next to determinism, induction, and cause --- whether
+refines --- never the substrate beneath it --- the shadow ours to name, the refinements that cast it the
+world's. Part VI turns next to determinism, induction, and cause --- whether
 a finite record can be continued from a seed, and what the gap between past and future costs.

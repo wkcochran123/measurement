@@ -1,0 +1,163 @@
+\chapter{The Gauge as a Bit-Vector}
+\label{chap:gauge-as-a-bit-vector}
+
+Under everything the gauge has carried --- the charge, the orientation, the holonomy --- lies the
+simplest structure the book contains: the gauge is a vector of bits. Each reading is a string of on/off
+gates, a vertex of a hypercube, and the whole apparatus of matter and antimatter can be read off those
+bits by counting. The electron is one particular bit-vector. The distance from any reading to it is the
+number of bits that differ. The bits that agree are matter, the bits that differ are antimatter, and a
+measurement is the tally of the agreeing ones. This is where the book's oldest idea comes home: counting
+the funges is the measurement, a claim made since the seventeenth chapter, turns out to mean, at the
+bottom, a literal count of matching bits --- a population count on a hypercube. The gauge that generated a
+particle is, underneath, a place to do arithmetic on bits.
+
+\section{The hypercube and the distance to the electron}
+\label{se:the-hypercube-and-the-distance-to-the-electron}
+
+The construction represents each gauge reading as a fixed-length string of bits, one per gate, each on or
+off. The strings of a given length are the vertices of a hypercube, every vertex a possible reading and
+every edge a single bit flipped. In this space the electron is not special as a structure --- it is one
+vertex among the others --- but it is the reference everything is measured against. The construction
+defines the distance from any reading to the electron as the number of bits in which the two differ, the
+count of gates the reading would have to flip to become the electron. The electron is at distance zero
+from itself, trivially; the superconducting pair the book has met before is proved to be at distance one,
+a single bit away, differing from the electron in exactly one gate.
+
+That the gauge should turn out to be a vector of bits is less a reduction than a revelation of what it
+always was. A gauge reading records, gate by gate, whether each gate is engaged or not --- on or off, one
+or zero --- and a list of such answers is a bit-string by definition. The construction does not encode the
+gauge as bits as a convenience; the gauge is already a finite list of yes-or-no settings, and the
+bit-string is just that list written down. Once it is written down, the tools of bit-strings apply
+unbidden: distance, agreement, the count of differences. The gauge did not become a bit-vector at this
+chapter; it was disclosed as one, the on/off character of its gates --- present since the gates were first
+built --- finally read for the arithmetic it allows. Everything in this chapter follows from taking that
+character seriously: if the gates are bits, the readings are bit-strings, and bit-strings can be counted
+and compared.
+
+This is the Hamming distance of coding theory, and the experiment on the bit-vector message names the
+setting. A message sent over a channel is a string of bits, and the distance between two messages is the
+number of positions in which they disagree --- the count of bit-errors that would turn one into the other.
+The construction's gauge is exactly such a space of messages, and the electron is a chosen codeword; every
+other reading is at some Hamming distance from it, measured by counting disagreements. To ask how far a
+reading is from being an electron is to ask how many gates one would have to flip, and the answer is a
+plain integer, computed by comparing two bit-strings. The hypercube turns the question \emph{is this an
+electron} into the question \emph{how many bits differ}, and the second has a one-line answer.
+
+The hypercube picture repays a moment's geometry, because it makes the relations between readings visible.
+A hypercube of bit-strings has a vertex for every reading and an edge between any two that differ in a
+single bit; walking from one vertex to another, edge by edge, flips one gate per step, and the shortest
+such walk has exactly as many steps as the two readings have differing bits. So the distance to the
+electron is a path length: how many single-gate flips separate a reading from the electron vertex. The
+superconducting pair, one bit away, is a single edge from the electron --- one flip and it would be the
+electron, one positron standing between them. A reading far from the electron sits many flips away, deep in
+the cube. This is a space with a real metric, and the construction's readings are points in it at definite
+distances, the electron the origin everything is measured from. Nothing about the geometry is
+metaphorical; the cube is the finite set of bit-strings, and the distances are integers one can count.
+
+\section{Funge is matter, crank is antimatter}
+\label{se:funge-is-matter-crank-is-antimatter}
+
+Now the book's central distinction lands on the bits, exactly. The bits in which a reading agrees with the
+electron are its funges --- read forward, matching, counted as matter. The bits in which it differs are
+its cranks --- reversed, mismatched, counted as antimatter. The construction proves the two exhaust the
+gauge: every gate is either a funge or a crank, the gauge partitioned cleanly into the matching bits and
+the differing ones with nothing left over. A reading's matter content is its funge count, the number of
+gates it shares with the electron; its antimatter content is its crank count, the number it does not. The
+electron is all funge and never cranks --- it matches itself in every gate, antimatter content zero. The
+superconducting pair funges in thirty-five of its gates and cranks in one, which is why its distance to
+the electron is one: a single crank, a single positron, against thirty-five funges of matter.
+
+This is the funge foundation of the seventeenth chapter made fully concrete, and it is worth marking how
+literal it has become. There, counting funges was the measurement and the tanges turned the crank --- an
+image, a way of speaking about which readings register matter and which spin residue. Here it is
+arithmetic on a bit-string: the funges are the matching bits, the cranks are the differing bits, the
+measurement is the count of the matching ones, and the partition of the gauge into the two is a theorem.
+What was a metaphor about reading truth forward or reversed is now a tally of where two bit-vectors agree
+and where they differ. The matter the apparatus reads is the funge count; the antimatter is the crank
+count; and the gauge is nothing but the hypercube on which the counting happens.
+
+It is worth pausing on how much of the book this single partition gathers up. The first chapters asked how
+true a reading is, and answered with a residue --- what is left when a story almost closes. The
+seventeenth chapter named the two acts of reading, the funge that counts and the crank that spins. The
+electron chapter made the orientation a sign. And every one of these, it now appears, was the same fact
+about bits: a reading agrees with the electron in some gates and differs in others, the agreements are its
+matter and the disagreements its antimatter, and the residue, the sign, the orientation are all just which
+bits fall on which side. Take the superconducting pair again: thirty-five gates where it matches the
+electron, one where it does not. Those thirty-five funges are its matter, the lone crank is its single
+positron, and the pair's whole physical character --- a Cooper pair carrying one unit of antimatter --- is
+read off that one differing bit. A book that began by asking what a measurement is ends able to answer, for
+this reading, by pointing at a single gate.
+
+\section{The measurement is a population count}
+\label{se:the-measurement-is-a-population-count}
+
+The construction makes the count explicit as an operation, and it is the plainest in the bit-vector
+repertoire. To find a reading's antimatter content --- its positron count --- the construction takes the
+exclusive-or of the reading with the electron, which sets exactly the bits in which the two differ, masks
+that against the electron's own bits to keep the relevant gates, and counts the ones that remain. The
+count of set bits is the population count, and the positron count is a population count of the differing
+gates. Matter is counted the same way on the agreeing bits. So a measurement, in the end, is a population
+count on a hypercube: line up the reading and the electron, mark where they match and where they differ,
+and count.
+
+The population count is worth recognizing as the humblest operation in computing and the one this whole
+construction reduces to. Every processor has it: a single instruction that takes a register full of bits
+and returns how many are set, the count of ones. It is the operation behind error-counting in a channel,
+behind the weight of a codeword, behind a dozen low-level tallies, and it is what a measurement in this
+book finally is. There is something fitting in the descent. The construction began with grand questions
+--- what is a number, what is a measurement, what is an electron --- and answered them, chapter by chapter,
+with finite structures; and at the bottom of the finite structures, doing the actual work, is the plainest
+tally a processor performs, counting the bits that are on. The whole edifice of forcing, geometry, gauge,
+and orientation comes to rest on population count. Counting the funges is the measurement, and counting,
+here, is exactly the instruction a register answers in one cycle.
+
+Two facts close the gauge. The superconducting pair is proved to admit exactly one positron --- its
+population count of cranks is one, a single antimatter bit carried by a pair that is otherwise matter ---
+which is the bit-level reading of the pair the annihilation experiments detect. And the gauge is proved to
+close: the bit-vector structure is complete, the split tallying every gate as funge or crank with none
+unaccounted, the commutator residue of the countability chapter now read as the closure of the hypercube.
+The gauge that began as a field generated from geometry ends as a closed space of bit-strings on which the
+construction does the one operation the whole book reduces to: it counts the funges, by population count,
+and reports the matter.
+
+There is a closing symmetry in the gauge ending where the number tower began. The construction's first act
+was to build a finite stand-in for a number; its last structural act, here, is to read its richest object
+--- the gauge, with its charge and geometry and orientation --- as a finite string of bits, an object as
+plain as a number and counted the same way. Between the two lies everything the book built, and the
+bit-vector is where it all returns to arithmetic. That the gauge closes --- every gate accounted for as
+funge or crank, the hypercube complete with no reading left dangling --- is the formal sign that the return
+is total. Nothing of the gauge escapes the bit-count; the whole of it is funges and cranks, matter and
+antimatter, ones and zeros tallied against the electron. The construction has carried its physics all the
+way down to the bits and found the bits sufficient to hold it.
+
+\section{What is demonstrated, and what is assumed}
+\label{se:demonstrated-assumed-ch31}
+
+This chapter is almost all computation, and its assumptions are correspondingly slight.
+
+What is demonstrated is the bit-vector structure and the counts on it. The gauge is represented as a
+hypercube of bit-strings, and the distance to the electron is proved to be the count of differing bits ---
+zero for the electron, one for the superconducting pair. The funges and cranks are proved to partition
+the gauge, matter the matching bits and antimatter the differing ones, the electron all funge. The
+positron count is proved equal to the population count of the masked exclusive-or, and the pair proved to
+admit exactly one positron. And the gauge is proved to close. Each of these is checked by direct
+computation on finite bit-strings.
+
+\begin{quote}
+\emph{A note on the identification.} The bridge here is among the tightest in the book, of a piece with
+the relativity chapter's. To call the gauge a bit-vector is not to model it as something bit-like; it is a
+bit-vector, a finite string of on/off gates, and the hypercube is literally its space of readings. To
+call the matter count a population count is likewise no analogy: the count of matching bits is a
+population count, the same operation a processor performs on a register. What is a modeling claim is the
+naming of the counts as \emph{matter} and \emph{antimatter} and the chosen vertex as the \emph{electron}
+--- the same naming the physics chapters made, carried down to the bits. So the structure is literal and
+the physics is the reading laid over it: a hypercube of gates, a distinguished vertex called the electron,
+a population count called a measurement, and the funge foundation of the whole book revealed as the
+counting of bits that agree.
+\end{quote}
+
+What is assumed, then, is the standing grant and the now-familiar naming of the bit-counts as physics,
+with the bit-vector structure itself built and computed. The book's central act --- counting the funges
+--- has been followed all the way down to a population count on a hypercube. One chapter remains, and it
+turns the counting outward: from the strict order that reads charge, through the band that covers every
+reading, to the last measuring apparatus the book will name, which is the reader.

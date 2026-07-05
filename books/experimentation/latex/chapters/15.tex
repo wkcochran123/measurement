@@ -1,11 +1,13 @@
 \chapter{Measurement, Decoherence, and Nonlocality}
 \label{chap:measurement-decoherence-nonlocality}
 
-The foundations of quantum measurement reduce to a single sentence, and it is the chapter's spine: a record
-is committed once, and that commitment is irreversible and order-sensitive. This is the chapter where the
-count, now an amplitude, meets the act of measurement, and it is naturally the richest in machinery, because
-measurement is where the amplitude's strangeness becomes visible. Six effects turn the spine over, and each
-brings its own piece of the apparatus: the density matrix and its decohering coherences, the bounded shadow a
+The foundations of quantum measurement reduce to a single sentence, and it is the one fact the rest rests on: a
+record is committed once, and that commitment is irreversible and order-sensitive. The committing is ours ---
+which observable, which basis, when to close the record --- but the irreversibility is the world's: once the
+count is committed, no act of ours takes it back, and the order in which commitments fall is one the world will
+not let us permute. Here the count, now an amplitude, meets the act of measurement --- where the amplitude's
+strangeness becomes visible, and where it takes the most apparatus to hold. Six effects work the spine, each
+bringing its own piece of the apparatus: the density matrix and its decohering coherences, the bounded shadow a
 set of observables returns, the singlet that fixes a partner without a signal, the tensor product and reduced
 state of an entangled pair, the CHSH bound the quantum breaks, and the seam two records must share to be
 jointly read.
@@ -27,7 +29,8 @@ a two-by-two table whose diagonal entries $|\alpha|^2$ and $|\beta|^2$ are the p
 branches and whose off-diagonal entries $\alpha\beta^*$ and $\alpha^*\beta$ are the coherences --- the record
 that the branches are not merely a probabilistic mixture but a genuine superposition, in phase with each
 other. The coherences \emph{are} the superposition; strip them and $\rho$ describes a coin that is either $0$
-or $1$ with some probability, not a state that is both at once.
+or $1$ with some probability, not a state that is both at once. The table is ours to keep; the coherence it
+records --- the branches genuinely in phase --- is the world's.
 
 There is a picture for this. A single qubit's density matrix can always be written from three real numbers,
 \begin{equation}
@@ -37,9 +40,10 @@ There is a picture for this. A single qubit's density matrix can always be writt
 where $\boldsymbol{\sigma} = (X, Y, Z)$ are the three Pauli observables and $\mathbf{r}$ is the Bloch vector.
 The vector lives in a ball: pure states, $\lVert\mathbf{r}\rVert = 1$, sit on its surface --- the Bloch
 sphere --- and mixed states, $\lVert\mathbf{r}\rVert < 1$, sit inside, with the completely uncertain $\tfrac12
-I$ at the very center. Decoherence is the Bloch vector contracting. The off-diagonal coherences are the
-components of $\mathbf{r}$ transverse to the measurement axis, and as they decay the vector collapses onto the
-axis, the point sliding from the surface toward the center. The qubit losing its coherence is, in the
+I$ at the very center. Decoherence is the Bloch vector contracting. The measurement axis is ours to set; how far the vector falls
+toward it is the world's. The off-diagonal coherences are the components of $\mathbf{r}$ transverse to the
+measurement axis, and as they decay the vector collapses onto the axis, the point sliding from the surface
+toward the center. The qubit losing its coherence is, in the
 picture, a point falling inward off the sphere.
 
 Decoherence is the decay of those coherences. When the qubit couples to an environment it cannot track --- a
@@ -50,34 +54,38 @@ stray photon, a jostling atom, the apparatus itself --- the off-diagonal entries
 \end{equation}
 and the superposition becomes a mixture: the state is now genuinely either $0$ or $1$, the branches no longer
 in phase, the coherence gone. To the instrument this is the discarding of a branch it can no longer
-reconcile. The coupling commits an event the two in-phase branches cannot both survive; a boundary pivot
-eliminates the incompatible ordering, and what is left is a single branch, the coherence that recorded their
-togetherness erased.
+reconcile. The discarding is ours --- the record closed on the branch it can still hold --- but the decay that
+forces it is the world's: the coupling commits an event the two in-phase branches cannot both survive, a
+boundary pivot eliminates the incompatible ordering, and what is left is a single branch, the coherence that
+recorded their togetherness erased, irreversibly.
 
 The honest floor is a no-go --- keeping the unreconcilable superposition, once the environment has committed
 its event, is inadmissible. The observed rate at which the coherences decay is itself a smooth shadow of the
-discrete eliminations beneath it, but the collapse is a wall. The reading is that collapse is not a process
-that reaches in and selects; it is the discarding of a branch the record can no longer hold, the off-diagonals
-of $\rho$ falling to zero because the superposition they encoded can no longer be reconciled.
+discrete eliminations beneath it, but the collapse is a wall the world sets, not a cost the instrument pays.
+The reading is that collapse is not a process that reaches in and selects; it is the discarding of a branch the
+record can no longer hold --- the discarding ours, the wall the world's --- the off-diagonals of $\rho$ falling
+to zero because the superposition they encoded can no longer be reconciled.
 
 \section{Shadow Tomography: the bounded shadow a measurement returns}
 \label{se:shadow-tomography}
 
 A measurement does not hand the instrument the state $\rho$; it hands back the expectation of an observable.
-For an observable $O$, what the instrument reads is the trace
+Which observable to test is ours to set; the number it returns is the world's. For an observable $O$, what the
+instrument reads is the trace
 \begin{equation}
   \langle O\rangle = \mathrm{Tr}(\rho\, O),
 \end{equation}
 a single number averaging $O$ over the state. A bounded family of observables $\{O_1, \ldots, O_m\}$ returns a
 bounded family of numbers $\langle O_1\rangle, \ldots, \langle O_m\rangle$ --- the shadow of $\rho$ on the
-tests performed, its projection onto the directions the instrument actually probed. And the shadow is all that
-is accessible. Two states $\rho$ and $\rho'$ that agree on every test in the family, $\mathrm{Tr}(\rho O_i) =
+tests performed, its projection onto the directions the instrument actually probed. The directions are ours to
+probe; the shadow they cast is the world's, and that shadow is all that is accessible. Two states $\rho$ and $\rho'$ that agree on every test in the family, $\mathrm{Tr}(\rho O_i) =
 \mathrm{Tr}(\rho' O_i)$ for all $i$, are operationally one state: no measurement in the family distinguishes
 them, however many times it is run, and even an exponentially long sequence of tests from a fixed family
 cannot expose a distinction that lies outside the directions it spans.
 
 The honest floor is a finite count obligation: the shadow is a finite list of expectation values, and two
-states with the same list are identical to the apparatus. The reading is that a measurement reveals a shadow,
+states with the same list are identical to the apparatus --- the list ours to gather, the bound on what it can
+tell the world's. The reading is that a measurement reveals a shadow,
 not a state. What is accessible is the bounded projection $\mathrm{Tr}(\rho O_i)$ onto the tests performed; the
 state beneath the shadow, in the directions no test touched, is not measured and cannot be.
 
@@ -90,15 +98,17 @@ Prepare two qubits in the singlet,
 \end{equation}
 and send one to a laboratory $A$ and the other, spacelike separated, to $B$. The singlet is perfectly
 anti-correlated: measure $A$ and find $0$, and $B$ is fixed at $1$; find $1$ at $A$, and $B$ is fixed at $0$
---- at once, with no signal sent. The two measurements are spacelike, so their operators commute,
+--- at once, with no signal sent. Which end to measure, and along which axis, is ours; that the partner comes
+out opposite is the world's. The two measurements are spacelike, so their operators commute,
 \begin{equation}
   E_i E_j = E_j E_i,
 \end{equation}
 and the order in which they are performed cannot matter to the joint record. What looks like influence is the
 shared preparation showing through: the anti-correlation was written into the singlet at the source, and
-committing either end simply reads out what the joint record already fixed.
+committing either end simply reads out what the joint record already fixed --- the committing ours, the answer
+the world wrote at the source.
 
-That no signal can be sent is not a hope but a theorem of the formalism. Whatever $A$ chooses to measure, the
+That no signal can be sent is not a hope but a theorem of the formalism. Whatever $A$ measures, the
 state $B$ holds by itself --- its reduced density matrix, got by tracing out $A$,
 \begin{equation}
   \rho_B = \mathrm{Tr}_A\,\lvert\psi\rangle\langle\psi\rvert = \tfrac12 I,
@@ -106,7 +116,8 @@ state $B$ holds by itself --- its reduced density matrix, got by tracing out $A$
 is the completely mixed state, the same maximally uncertain qubit no matter what $A$ does. $B$ sees $\tfrac12
 I$ before $A$ measures and $\tfrac12 I$ after; nothing in $B$'s accessible statistics changes, so no message
 crosses. The honest floor is a finite count obligation: the joint order is fixed by a count at the shared
-preparation, and the reduced state $B$ can read is unchanged by $A$'s choice. The reading is that the
+preparation, and the reduced state $B$ can read is unchanged by what $A$ measures --- the measurement $A$'s to
+run, the anti-correlation and the silence the world's to keep. The reading is that the
 ``spooky'' action sends nothing. The partner is fixed because the singlet has one consistent anti-correlated
 order, committing either end reads it out, and $B$'s own statistics --- $\tfrac12 I$ throughout --- carry no
 trace of $A$'s measurement. Correlation is shared at preparation, not influence carried at measurement.
@@ -118,7 +129,8 @@ The state of two systems lives in the tensor product of their spaces,
 \begin{equation}
   \mathcal{H}_A \otimes \mathcal{H}_B,
 \end{equation}
-and most states in that product are not products. A separable state factors, $\lvert\psi\rangle = \lvert
+and most states in that product are not products. The split into $A$ and $B$ is ours to draw; whether the
+state factors across it is the world's. A separable state factors, $\lvert\psi\rangle = \lvert
 a\rangle \otimes \lvert b\rangle$ --- $A$ in a definite state of its own, $B$ in a definite state of its own
 --- but the singlet does not: there are no $\lvert a\rangle, \lvert b\rangle$ with $\lvert\psi\rangle = \lvert
 a\rangle \otimes \lvert b\rangle$, and that failure to factor is exactly what entanglement is. The Schmidt
@@ -130,7 +142,8 @@ with non-negative Schmidt coefficients $\lambda_i$; the state is separable when 
 and entangled when more than one is, and the spread of the $\lambda_i$ measures how entangled it is. The
 singlet has two equal coefficients, $\lambda = 1/\sqrt2$ each --- maximal entanglement.
 
-Trace out one side and the entanglement shows as ignorance about the other. The reduced state of $A$,
+Trace out one side and the entanglement shows as ignorance about the other. Which side to trace out is
+ours; the ignorance it exposes is the world's. The reduced state of $A$,
 \begin{equation}
   \rho_A = \mathrm{Tr}_B\,\lvert\psi\rangle\langle\psi\rvert,
 \end{equation}
@@ -150,12 +163,14 @@ here counting the definiteness one half has spent on the whole.
 
 This is the degeneracy entanglement names --- the
 order of the two wings' events in the joint history is undetermined, many orders equally consistent --- and a
-boundary resolves it. A pivot on the shared boundary, not a physical process but bookkeeping, installs the
+boundary resolves it. The boundary is ours to draw; the order it forces is the world's. A pivot on the shared
+boundary, not a physical process but bookkeeping, installs the
 unique order compatible with the frontier, eliminating the incompatible orderings without ever scanning the
 interior of either record.
 
-The honest floor is a finite count obligation: the pivot is a count at the seam that selects the one
-frontier-compatible order. The reading is that entanglement is a degeneracy of order resolved at a boundary.
+The honest floor is a finite count obligation: the pivot is a count at the seam that fixes the one
+frontier-compatible order --- the seam ours to draw, the order it admits the world's. The reading is that
+entanglement is a degeneracy of order resolved at a boundary.
 The interior need not be scanned; boundary consistency alone fixes the order, and the entangled correlation is
 that single admissible ordering, fixed at the edge rather than computed in the bulk --- the reduced state's
 ignorance the price the edge pays for the whole's definiteness.
@@ -164,8 +179,8 @@ ignorance the price the edge pays for the whole's definiteness.
 \label{se:bell}
 
 The deepest of the six is the Bell test, and it deserves its full machinery. Two spacelike laboratories share
-an entangled pair. Alice can measure one of two observables, $A_1$ or $A_2$; Bob one of two, $B_1$ or $B_2$;
-each measurement returns $\pm 1$. From the four correlations $\langle A_i B_j\rangle$ --- the averages of the
+an entangled pair. Alice can measure one of two observables, $A_1$ or $A_2$; Bob one of two, $B_1$ or $B_2$ ---
+which pair each wing runs is ours to set --- and each measurement returns $\pm 1$. From the four correlations $\langle A_i B_j\rangle$ --- the averages of the
 products of the two wings' outcomes --- form the CHSH combination,
 \begin{equation}
   S = \langle A_1 B_1\rangle + \langle A_1 B_2\rangle + \langle A_2 B_1\rangle - \langle A_2 B_2\rangle .
@@ -184,27 +199,30 @@ it. With the singlet and the measurement directions set at the right angles, the
   |S| = 2\sqrt{2},
 \end{equation}
 Tsirelson's bound, decisively past the local limit; and the Aspect experiments, and many since, measure values
-at $2\sqrt2$ and not $2$. The local account is simply wrong.
+at $2\sqrt2$ and not $2$. The settings are ours to set; the correlation the world returns --- past every local
+bound --- is the world's, and the local account is simply wrong.
 
 Where does $2\sqrt2$ come from? The singlet's correlation between a measurement along a direction $a$ in one
 wing and a direction $b$ in the other is the cosine of the angle between the settings,
 \begin{equation}
   E(a, b) = -\cos\theta_{ab}.
 \end{equation}
-Choose the four directions so that each pair entering the CHSH combination is $45^\circ$ apart: three of the
+Set the four directions so that each pair entering the CHSH combination is $45^\circ$ apart: three of the
 correlations then contribute $+\tfrac{1}{\sqrt2}$ and the one that is subtracted contributes $+\tfrac{1}{\sqrt2}$
 after its sign, and the four add to $4\cdot\tfrac{1}{\sqrt2} = 2\sqrt2$. The violation is not a small overshoot
 wrung from a lucky arrangement but the cosine correlation evaluated at its best angles, and Tsirelson's bound
 says quantum mechanics can do no better.
 
-The CHSH inequality is the physics, quoted. What the instrument proves is the no-go beneath it: there is no
-fold of two independent local maps, one acting on each wing, that reproduces the joint correlations. No
-assignment of separate local responses to the two sides --- no predetermined table the pair could carry ---
-can match the joint update, because the update is irreducibly joint. The honest floor is a no-go, and a proved
-one. The reading is that the correlations are real and the locality is not. The bound $|S| \le 2$ is what any
-theory of separate local causes must obey; the quantum $2\sqrt2$ breaks it; and the instrument shows why --- the
-joint update does not factor into local maps, and nonlocality here is exactly that impossibility of
-factorization, not a signal faster than light.
+The CHSH inequality is the physics, quoted. What the instrument proves is the local bound: for any
+predetermined table of separate local responses the pair could carry from the source, the sign-counting forces
+$|S| \le 2$ --- a genuine counting no-go, the wall no local theory can pass. That much is proved. The quantum
+$2\sqrt2$ that breaks the wall is not proved but measured: Aspect's experiments, and the loophole-free tests
+since, read $2\sqrt2$, and the local account is simply wrong. The honest floor is a no-go, and the proved part
+of it is the local bound; the breaking of it is the world's, shown in the laboratory, not derived at the desk.
+The reading is that the correlations are real and the locality is not. No fold of two independent local maps,
+one acting on each wing, reproduces the joint correlations --- the update is irreducibly joint, and nonlocality
+here is exactly that impossibility of factorization: a correlation the world holds across the boundary,
+carrying no signal faster than light.
 
 \section{The Hall--EPR Effect: joint inference needs an agreeing seam}
 \label{se:hall-epr}
@@ -214,11 +232,13 @@ the Monty Hall game teaches: a conditional inference depends on the constraint a
 or removing that constraint changes the inference --- the contestant's odds shift when the host's rule is
 specified, because the conditioning is on what was really recorded, not on what might have been. Across a
 spacelike pair, two detectors record locally consistent outcomes, and to condition one on the other, to infer
-across the pair, the seam values where they meet must match. A mismatch does not merely weaken the inference;
+across the pair, the seam values where they meet must match. Where to draw the seam is ours; whether it agrees
+is the world's. A mismatch does not merely weaken the inference;
 it blocks it, because the correlation cannot be decomposed into independent local components while preserving
 what was observed.
 
-The honest floor is a no-go: you cannot condition across a mismatch. The reading is that joint inference over
+The honest floor is a no-go: the instrument cannot condition across a mismatch --- the seam ours to draw, the
+agreement the world's to grant or refuse. The reading is that joint inference over
 two records is admissible only where their seams agree. Where the seam values disagree the conditioning is not
 uncertain but inadmissible --- a wall, not a probability. Correlation can be read across the pair only through
 an agreeing seam, and the unrecorded structure a careless conditioning would smuggle in is exactly what the
@@ -227,7 +247,7 @@ seam-agreement forbids.
 \bigskip
 
 The foundations of quantum measurement are one claim made six ways, now with its full machinery: a record is
-committed once, irreversibly and in order. Collapse is the off-diagonals of $\rho$ falling to zero, a branch
+committed once, irreversibly and in order --- the committing ours, the irreversibility and the order the world's. Collapse is the off-diagonals of $\rho$ falling to zero, a branch
 discarded; a measurement is the bounded shadow $\mathrm{Tr}(\rho O)$ on the tests performed; a spacelike
 partner is fixed by a shared preparation while the reduced state $\tfrac12 I$ sends nothing; entanglement is a
 non-separable state of $\mathcal{H}_A \otimes \mathcal{H}_B$ whose order a boundary pivots into place; the Bell

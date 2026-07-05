@@ -1,10 +1,11 @@
 \chapter{Computation: Universality, Limits, and Stability}
 \label{chap:computation-universality-limits-stability}
 
-This is the book's densest chapter and the one closest to the machine. Run the apparatus as a computer and it
+Here the apparatus runs closest to the machine. Run it as a computer and it
 gains a single universal power and meets four kinds of wall: a wall of continuation where it must stop, a wall
 of extraction where it cannot compress, a wall of decision where it cannot settle, and a wall of stability
-where finite precision defeats it. Eight effects make the chapter, and one of them, the precision limit von
+where finite precision defeats it --- the program ours to write, the walls it runs into the world's. Eight
+effects make the case, and one of them, the precision limit von
 Neumann named, un-folds into two: the machine can replay anything it can write down, but it cannot always
 continue, compress, decide, or stabilize.
 
@@ -19,7 +20,8 @@ loss,
 \begin{equation}
   \text{reconstruct}(\text{serialize}\, g) = g,
 \end{equation}
-the round-trip an identity --- nothing lost in flattening a structure to a line and rebuilding it. A single
+the round-trip an identity --- nothing lost in flattening a structure to a line and rebuilding it --- the
+flattening ours, what survives it the world's. A single
 universal reader, taking one step per cell, can then replay any record so written. The universality of
 sequential computation is just this: a record faithfully serialized and faithfully reconstructed loses nothing,
 so one machine that reads sequences can run them all. The reach of that one machine is the content of the
@@ -28,7 +30,8 @@ method, on any machine yet built or imagined --- can be carried out by the unive
 the property of one clever construction but, if the thesis holds, the shape of computation itself.
 
 The honest floor is name-only --- universality is labelled here, written as the physics of computation, with
-the finite model claiming only the name. The reading is that universality is serialization, not magic. A record
+the finite model claiming only the name --- the name ours to give, the reach the world's. The reading is that
+universality is serialization, not magic. A record
 reduces to a sequence and rebuilds from it without loss, and the universal machine is just the reader of those
 sequences --- one step per cell, every record within its reach because every record can be written down.
 
@@ -38,28 +41,33 @@ sequences --- one step per cell, every record within its reach because every rec
 Not every refinement has a successor. There are configurations from which no admissible next step exists, and
 there the refinement halts. The structure is a gate: before each step the order asks whether any successor may
 follow --- whether some admissible event may precede the rest without contradicting what is already written ---
-and where that gate returns nothing, the refinement stops. A halted ledger is not incomplete; it is complete in
+and where that gate returns nothing, the refinement stops --- the steps ours to take, the gate's answer the
+world's. A halted ledger is not incomplete; it is complete in
 the only sense the order allows, having reached a configuration with no admissible continuation. This inverts
-the usual reading of the halting problem: there, that one cannot in general foretell whether a machine halts is
+the halting problem's usual lesson: there, that one cannot in general foretell whether a machine halts is
 a limit on foresight; here, the halt itself is no failure but a terminus, the record finished because the order
 has nowhere left to extend it.
 
-The honest floor is a no-go --- when no successor satisfies the order, the process stops, and the stopping is a
-wall, not a choice. The reading is that halting is completion, not failure. The machine does not always run on;
-where the order admits no next step it must stop, and that stopping is forced by the structure, not selected by
-the machine --- a wall the refinement reaches and cannot pass.
+The honest floor is a no-go --- when no successor satisfies the order, the process stops, and the stopping is
+the order's wall, not the machine's act --- the running ours, the terminus the world's. The reading is that
+halting is completion, not failure. The machine does not always run on;
+where the order admits no next step it must stop, and that stopping is forced by the structure alone --- a
+wall the refinement reaches and cannot pass.
 
 \section{The Jupyter Effect: a collision halts the kernel}
 \label{se:jupyter}
 
-Asynchronous writes can collide, and a collision halts the kernel. When two updates target the same slot at the
+Asynchronous writes can collide, and a collision halts the kernel --- the kernel here the programmer's
+everyday model, its name borrowed for the ledger's reader. When two updates target the same slot at the
 same point in the order but carry different values --- same slot, same order, different values --- there is no
-admissible reconciliation, and the kernel does not resolve the conflict but halts. The future cannot be
+admissible reconciliation, and the kernel does not resolve the conflict but halts --- the writes ours to
+issue, the refusal the world's. The future cannot be
 accessed before the past, and a contradiction at one slot has no successor that respects the order. There is no
 averaging, no last-writer-wins, no silent merge: a genuine collision is a contradiction, and the order admits
 no configuration that holds both values at once.
 
-The honest floor is a no-go --- a collision admits no continuation and stops the kernel. The reading is that
+The honest floor is a no-go --- a collision admits no continuation and stops the kernel --- the collision ours
+to cause, the wall that answers it the world's. The reading is that
 conflicting unordered writes are rejected, not merged. The machine does not paper over a contradiction; faced
 with two incompatible values for one slot at one moment, it halts, because no admissible refinement contains
 both --- a wall against inconsistency, enforced by stopping.
@@ -67,18 +75,19 @@ both --- a wall against inconsistency, enforced by stopping.
 \section{The Prover--Verifier Effect: a law is the surviving fixed point}
 \label{se:prover-verifier}
 
-A physical law can be read as the survivor of an interactive proof. Modern proof theory casts verification as a
+A physical law can be cast as the survivor of an interactive proof. Modern proof theory casts verification as a
 dialogue: a prover proposes, a verifier challenges, and a claim is accepted only if it answers every challenge
 the verifier can raise. Cast the space of admissible models as the prover and the record as the verifier, and a
 law is what survives every round --- the unique fixed point of the interaction, the model no admissible
-challenge can break. It is not posited and then defended; it is whatever is left standing when every objection
+challenge can break --- the challenges ours to pose, what survives them the world's. It is not posited and then defended; it is whatever is left standing when every objection
 the record can mount has been answered. The surprising strength of the picture is that the verifier need not be
-as clever as the prover: by posing challenges it chooses at random, a modest verifier can catch a cheating
+as clever as the prover: by posing challenges it draws at random, a modest verifier can catch a cheating
 prover with overwhelming probability --- accepting a true claim and rejecting a false one without ever
 reconstructing the whole proof, conviction bought by interrogation rather than by exhaustive check.
 
 The honest floor is a finite count obligation --- the law is the fixed point that survives the challenge
-rounds, a survivor counted against every admissible objection. The reading is that a law is what survives
+rounds, a survivor counted against every admissible objection --- the interrogation ours, the survivor the
+world's. The reading is that a law is what survives
 interrogation. It is established by survival rather than by assertion: the law is the fixed point of prover and
 verifier, the one model the record cannot refute, left standing when the challenges run out.
 
@@ -93,12 +102,14 @@ shortest program that outputs it, and a string is random when that shortest prog
 string itself --- there is nothing to say but the string. Most strings are random in this sense, incompressible
 because there are far more strings than short programs to generate them, and $\Omega$ is the exemplar whose
 incompressibility can be proved. Its leading digits secretly encode the answers to the halting problem, which is exactly why no
-rule can shorten them: to compress $\Omega$ would be to decide what cannot be decided. Two records can agree on
+rule can shorten them: to compress $\Omega$ would be to decide what cannot be decided --- the shortening ours
+to attempt, the digits that refuse it the world's. Two records can agree on
 every digit of a prefix and disagree on the very next, with no predictor that could have called it; the record
 is incompressible, its next digit irreducible to any rule the past licenses.
 
 The honest floor is name-only --- the irreducibility is labelled, the algorithmic randomness written as the
-mathematics it is, with the finite model claiming only the name. The reading is that a precise record can still
+mathematics it is, with the finite model claiming only the name --- the label ours, the lawlessness the
+world's. The reading is that a precise record can still
 hold no law. Precision is not lawfulness: $\Omega$ is exact to every digit and compressible to none, and a
 record can be perfectly definite and yet carry nothing a rule could continue --- the limit of extraction,
 named.
@@ -118,10 +129,11 @@ That a precise question might have no answer the axioms determine was itself a d
 first. His incompleteness theorems, of 1931, showed that any consistent formal system rich enough to express
 arithmetic contains statements that are true but unprovable within it --- the system cannot settle every
 question it can pose, and adding axioms to settle one only opens others. The continuum hypothesis turned out to
-be such a question for set theory, and its undecidability, established in two halves, is the standing instance
+be a question set theory cannot settle --- not true-but-unprovable, as G\"odel's own examples were, but
+undecidable in both directions --- and its undecidability, established in two halves, is the standing instance
 of that general wall.
 
-The hypothesis resisted proof for sixty years, and the reason came in two halves. G\"odel showed, in 1940, that
+The hypothesis resisted proof for sixty years, and the reason came in two parts. G\"odel showed, in 1940, that
 the continuum hypothesis cannot be refuted from the standard axioms of set theory: assume it, and no
 contradiction follows. Cohen showed, in 1963, by the method he invented and called forcing, that it cannot be
 proved from them either: one can build a model of the axioms in which the hypothesis fails. Forcing adjoins to a
@@ -129,10 +141,12 @@ model new sets approached by finite conditions --- a generic object the model it
 finite approximations --- and tunes them to make the hypothesis false while keeping every axiom true. Between
 the two results the hypothesis is independent: neither true nor false relative to the axioms, but a free choice
 of completion. One may extend the axioms to make it hold or to make it fail, and no faithful refinement of the
-record decides between them, while an unfaithful one --- which silently inflates the count --- is detected.
+record decides between them, while an unfaithful one --- which silently inflates the count --- is detected ---
+the axioms ours to extend, the independence the world's.
 
 The honest floor is a no-go --- the continuum hypothesis is independent, undecidable by any faithful refinement,
-and its resolution is a chosen completion rather than a derived fact. The reading is that completion is a
+and its resolution is a chosen completion rather than a derived fact --- the completion ours, the
+undecidability the world's. The reading is that completion is a
 choice, not a discovery. Where the record is genuinely undecided, settling it is an act of extension, not of
 measurement; the continuum hypothesis is the standing case --- a question the apparatus cannot decide by
 refining, only by choosing how to complete.
@@ -143,20 +157,19 @@ refining, only by choosing how to complete.
 A finite machine has a smallest distinguishable difference, and below it computation cannot go. Every number
 the machine holds is rounded to a finite precision, and the gap between $1$ and the next representable number is
 the machine epsilon, $\epsilon_{\text{mach}}$ --- the floor of the machine's arithmetic. Once rounding error
-dominates, once the precision a step requires exceeds $\epsilon_{\text{mach}}$, further operations do not refine
-the answer; they only stir the noise. How fast that error grows is measured by the condition number,
-\begin{equation}
-  \kappa,
-\end{equation}
+dominates, once a step needs more precision than $\epsilon_{\text{mach}}$ allows, further operations do not
+refine
+the answer; they only stir the noise. How fast that error grows is measured by the condition number $\kappa$
 of the operation: a well-conditioned step, $\kappa$ near $1$, passes its input's error through roughly
 unchanged, while an ill-conditioned step, $\kappa$ large, amplifies a tiny input error into a large output one.
 Solve a nearly singular system, or subtract two nearly equal large numbers, and $\kappa$ is enormous --- the
 few digits of agreement are eaten by the rounding, and the answer is noise dressed as precision. An
 ill-conditioned step, one that demands more precision than is accessible, is inadmissible: it cannot be carried
-out faithfully.
+out faithfully --- the demand ours, the floor the world's.
 
 The honest floor is a no-go --- when the required precision exceeds the accessible precision, the step is
-blocked, and the machine-epsilon floor is a wall. The reading is that finite precision is a floor with teeth. A
+blocked, and the machine-epsilon floor is a wall --- the step ours to pose, what the rounding eats the
+world's. The reading is that finite precision is a floor with teeth. A
 computation that needs more precision than $\epsilon_{\text{mach}}$ allows cannot be carried out, and the
 condition number says in advance which computations the floor will swallow --- the ill-conditioned demand a
 precision the machine does not have.
@@ -171,10 +184,12 @@ lies. An operator can have every eigenvalue safely inside the stable region and 
 enormously over a long transient, because its eigenvectors are nearly parallel and a small input projects onto
 a huge combination of them. The pseudospectrum captures what the spectrum hides: it is the set of values where
 the resolvent, the inverse $(zI - A)^{-1}$, is merely large, not only where it is infinite as at the spectrum
-proper. A pseudospectrum bulging into the unstable region warns of growth the eigenvalues conceal.
+proper. A pseudospectrum bulging into the unstable region warns of growth the eigenvalues conceal --- the
+promise ours to take from the spectrum, the survivorship the world's.
 
 The honest floor is a no-go --- a computation whose pseudospectrum reaches into the unstable region does not
-survive finite precision, however safe its spectrum looks. The reading is that stability is survivorship, not
+survive finite precision, however safe its spectrum looks --- the spectrum ours to read, what survives the
+world's. The reading is that stability is survivorship, not
 spectrum. What lives under rounding is what the pseudospectra permit; the spectrum can promise a stability the
 operator does not have, and only the resolvent, read where it is large, says which computations the floor lets
 through --- stability the name for surviving the perturbations finite precision injects.
@@ -192,23 +207,26 @@ correction,
 \end{equation}
 each step sliding down the tangent line to where it crosses zero, and each step roughly squaring the accuracy
 --- a handful of corrections from a rough guess to machine precision. Both are divide-and-conquer made into
-admissible refinement: split the problem, solve the parts, combine.
+admissible refinement: split the problem, solve the parts, combine --- the splitting ours, the reach it buys
+the world's.
 
 The honest floor is a finite count obligation --- the recursion is a count of admissible steps, $O(N\log N)$
-for the transform and a handful of corrections for the root. The reading is that recursion is refinement that
+for the transform and a handful of corrections for the root --- the factoring ours to run, the count of steps
+the world's. The reading is that recursion is refinement that
 divides and conquers. The machine extends its reach not by brute force but by factoring a problem into smaller
 admissible steps, and the fast transform and Newton's method are the same move twice --- divide, refine the
 parts, combine, each step a legitimate refinement of the record.
 
 \bigskip
 
-With recursion, the densest chapter closes, and the machine's one power and four walls stand clear. It can
+With recursion, the machine's one power and four walls stand clear. It can
 replay anything it can serialize --- that is the universal power (Turing). Against it stand the four walls. It
 must stop where the order admits no successor and where writes collide (Halt and Jupyter): the wall of
 continuation. It cannot compress what is algorithmically random (Chaitin): the wall of extraction. It cannot
 decide the independent (Cantor--G\"odel--Cohen): the wall of decision. And it cannot stabilize the
 ill-conditioned or carry the non-normal through finite precision (von Neumann, floor and survivorship both):
 the wall of stability. Where a problem factors, recursion carries it (Newton--Cooley--Tukey), and a law,
-between the walls, is what survives interrogation (Prover--Verifier) --- but the four walls do not factor away.
+between the walls, is what survives interrogation (Prover--Verifier) --- but the four walls do not factor away
+--- the program still ours to write, the walls still the world's.
 Run as a computer, the apparatus gains universality and meets exactly these four limits. Part VI turns next to
-its last chapter, and the book toward its end.
+the scaling of systems, and the apparatus toward its last examination.
