@@ -351,7 +351,12 @@ example
           (b35_slip.compiler_output.emit? b35_slip.object_file)
           b35_slip.compiler_output.tape b36_slip.output := rfl
 
-example
+-- The mass = second-difference payoff, NAMED (was an anonymous acceptance
+-- `example`; vol1 E2, Kodo turn 50).  At the third trip (f2) the reading-head
+-- climbs into `.rest` -- the strain-bearing constructor -- so mass surfaces as
+-- the second difference.  Proof unchanged from the example; #print axioms
+-- identical ([propext, Quot.sound]).
+theorem mass_surfaces_at_f2
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
     (Value: Type i)
