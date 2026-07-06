@@ -39,6 +39,25 @@ So Act I/II drop ~15–20%; the freed words bank toward the five REVEAL chapters
 and, mostly, into RESERVE. The envelope is a CAP, not a floor — economy mirrors the instrument's own "declines to
 read anything else" stance.*
 
+## Natural-length projection (Kodo turn 56 — `% CHOICE`: sized to honest economy, not Vol-2 parity)
+The Act-I drafts confirmed a two-attempt signal: definitional chapters land ~1,700–2,050, complete. **Accepted
+rule:** definitional chapters (Act I/II) **target ~2,500, do NOT pad** (land where the material lands); reveal
+chapters (Ch11/18/19/23/24) full **5,000–6,000, target-not-cap**; proof/Act-IV chapters get genuine development.
+The 112k envelope stays a **CAP**; the book lands **~84,000 words ≈ ~185 pp** — terse-on-theme (a complete 180pp
+beats a padded 280pp; the reveals carry the weight, the construction runs lean).
+```
+PROJECTED NATURAL TOTAL ≈ 83,600 words  (~185 pp)   [well under the 112k cap]
+  Act I  (ch1-4, actual)        ~9,100   Ch1 3,300 · Ch2 2,035 · Ch3 1,725 · Ch4 2,040
+  Act II (ch5-8, definitional)  ~8,800   ~2,200/ch, terse-complete
+  Act III (apex; Ch11 reveal)  ~14,300   Ch11 6,000 + defs ~2,500-3,000
+  Act IV (return; proof depth) ~13,600   Ch13 ~4,000 · Ch16 ~4,000 (mass) + defs
+  Act V  (naming/split reveals)~19,000   Ch18 6,000 · Ch19 6,000 + Ch17/20 ~3,500
+  Act VI (reader/forcing/close)~16,800   Ch23 5,000 · Ch24 5,000 · Ch21 ~4,000 · Ch22 ~2,800
+  Front matter (Oracle preface) ~2,000
+```
+*The per-chapter table below keeps the turn-54 CAP allocations as ceilings; the definitional rows are now
+"target ~2,500, don't pad" (the book will land under them, by design). Depth is spent on the proof/reveal rows.*
+
 ## Allocation
 
 | Unit | §s | Opener | Body | Total | Δ vs prior |
