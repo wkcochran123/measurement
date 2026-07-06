@@ -1,0 +1,186 @@
+\chapter{Unification, Counting, and the Name of the Forcing}
+\label{chap:unification-counting-forcing}
+
+The split left two sectors perpendicular and uncombined. This chapter brings them back into relation in
+the one way the split allows --- as a limit --- and in doing so reaches a place the book has been
+approaching since its first page without naming. It does three things. It shows that the gauge theory is
+the limit of the geometric one as the geometric scale vanishes, which is the construction's unification
+statement. It returns to the number tower it started from and builds genuine arithmetic on it, counting
+to three by a real successor and a real induction. And it finally names the structure that has been
+running underneath every real the construction ever built: Cohen forcing, made finite, decided up to a
+tolerance. The name has been withheld on purpose until the construction itself earned it; here it does.
+
+\section{The gauge is a limit of the geometry}
+\label{se:the-gauge-is-a-limit-of-the-geometry}
+
+The geometric and gauge sectors cannot be summed, but they can be related by a limit, and the relation
+the construction proves is a strong one. The geometric program carries a scale --- call it the geometric
+tolerance, the discrete analogue of how fine the geometry is resolved --- and as that scale is driven to
+zero, the gauge program converges. The construction proves the convergence is of the constructive,
+controlled kind: the sequence of gauge readings is Cauchy, with a rate the same tolerance governs, so
+that for any precision one names there is a finite stage past which the readings agree to that precision.
+The gauge theory, in other words, is the limit of the geometric theory as the geometric scale vanishes
+--- the construction's version of a unification, with electromagnetism emerging as the fine-scale limit
+of geometry.
+
+The Cauchy form is the honest form and worth holding onto. The construction does not assert that a limit
+exists and name it the gauge theory; it exhibits a sequence and proves it Cauchy, which is the
+finitist's way of having a limit --- a convergence certified by a rate rather than a completion claimed
+from above. So the unification statement is not ``the two theories are secretly one'' but the more exact
+``the one is the controlled limit of the other, and here is the rate.'' And here the fence holds as it
+has through every chapter of this part: what converges are the construction's QED-shaped and GR-shaped
+shadows, finite structures with the form of the physical theories and none of their measured content.
+That a gauge shadow is the vanishing-scale limit of a geometric shadow is a real theorem with the shape
+of unification; it is offered as that shape, audited, and not as a claim that the electrodynamics and
+the gravity of the world stand in this relation.
+
+It is worth being precise about what kind of unification a limit is, because it is a subtler thing than
+the word usually promises. To unify two theories is often imagined as finding the single larger theory
+they are both special cases of --- a roof over both. A limit unifies differently and more honestly: it
+says one theory is what the other becomes at the edge of a parameter, so that they are not two faces of a
+third thing but a single thing seen at two scales. The construction's claim is of this second kind. There
+is not a master theory above geometry and gauge; there is the geometric program, and the gauge program is
+what it converges to as its scale shrinks. The electron, the gauge field, the radiation at the boundary
+--- all of these, which arrived in the gauge sector, are recovered as the fine-scale limit of geometric
+data. That is a tighter and more falsifiable claim than a roof would be, because a limit comes with a
+rate, and a rate is a thing one can check.
+
+\section{Counting to three}
+\label{se:counting-to-three}
+
+Having built a charged particle, a gauge field, and a radiation law, the construction does something
+that looks like a step backward and is in fact the closing of its longest loop: it returns to the
+natural numbers and builds arithmetic. It began, chapters ago, by building a sample --- a finite object
+standing in for a real number, scaffolding it could compute with. Now it builds the naturals properly,
+on its own foundations: a genuine successor that takes each number to the next, an induction principle
+that lets it prove statements about all numbers by the canonical ladder of base case and step, and, as
+the worked token of all this, the theorem that one and one and one make three.
+
+That last theorem is smaller than anything else in the chapter and is there for a reason. To prove
+$1+1+1=3$ from a successor and induction is to show that the construction's number tower is not a
+borrowed convenience but a thing it owns --- that it can define the successor, climb it three times from
+zero, and certify by its own induction that the result is the canonical three. The construction that
+spent twenty chapters reading physics off an invariant pauses to show it can also count, rigorously, from
+the same foundations. This matters for what comes next, because the forcing the chapter is about to name
+lives on exactly these naturals: the conditions will be finite lists indexed by them, the tolerances will
+be naturals, and the whole apparatus of the generic will be built on the number tower the construction
+has just made honest.
+
+It is worth walking the small theorem once, because its smallness is the point. Three is defined as the
+successor of the successor of the successor of zero --- climb the ladder three rungs from the bottom. The
+sum $1+1+1$ is computed by the successor too: one is the successor of zero, and adding one is taking a
+successor, so $1+1+1$ unfolds, step by step, into the same three-rung climb. The two sides meet not
+because a calculator agrees but because the construction's own definition of addition and its own
+successor drive them to the identical canonical form, and its induction principle certifies the identity
+is not an accident of small numbers but the way the ladder is built. A reader who has watched the book
+build samples, invariants, an electron, and a gauge field might find it strange to see it pause over
+$1+1+1$. The point of the pause is sovereignty: the construction is showing that the numbers it has used
+throughout are numbers it can define and reason about from the ground, not borrowed from outside, and
+that the forcing about to be built on them rests on arithmetic the construction owns.
+
+\section{The name of the forcing}
+\label{se:the-name-of-the-forcing}
+
+Now the construction names what it has been doing. From the beginning, a real number in this book was
+never a completed object handed down from above; it was approached by finite specifications, each
+committing to a little more than the last, and the number was whatever they converged to. The
+construction now makes that structure exact and gives it its name. A \emph{condition} --- the
+construction calls it a spline condition --- is a finite list of atoms, each pinned below a tolerance
+$\varepsilon$: a finite, partial specification of a real, a cut that says \emph{here is what I have
+decided so far} and leaves the rest open. The conditions are ordered: a stronger condition extends a
+weaker one, containing all its commitments and adding more, and the construction proves this order is a
+genuine one, reflexive and transitive, a partial order of finite cuts. Any bounded question --- any knot
+within the tolerance --- can be settled by a single finite extension, one more atom added to decide it.
+And any two compatible conditions have a merge, a common extension that honors both. Finite cuts, ordered
+by extension, with one-step decisions and merges of the compatible: this is Cohen forcing, and the
+construction's own notes call the result Cohen-shaped. The book has finally earned the name it withheld.
+
+Each piece of that structure had a quiet career earlier in the book, and it is worth collecting them now
+that they have a name. The finite condition is the sample of the first chapters --- the finite
+specification that stood in for a real, here seen as a cut that commits to part of the number and leaves
+the rest open. The extension order is the refinement that drove every convergence: a finer sample, a
+deeper tower, a stronger condition, all the same act of committing to more. The one-step decision of a
+bounded knot is the reason the generic is total where it is approached --- any question within the
+tolerance can be answered by adding a single atom, so no bounded question is left permanently open. And
+the merge of compatible conditions is the consistency the construction has insisted on everywhere: two
+partial specifications that do not contradict can be held at once, pooled into one that honors both. None
+of this is new machinery. It is the machinery the book has run on from the start, gathered under the name
+that has always fit it.
+
+What this reveals is that the generic --- the real the conditions approach --- was the forcing's generic
+all along, the object every sufficiently rich family of conditions drives toward, never a completed
+totality but the limit of finite commitments. And the book's two verbs turn out to be the two acts of a
+single condition. To lay down a condition is to \emph{tange}: to select, by the decidable test of the
+tolerance, exactly which atoms one commits to. And to combine compatible conditions is to \emph{funge}:
+to pool them into the merge that honors them both. Forcing is tanging and funging --- deciding atoms and
+pooling the compatible --- and every real the construction built was a tower of such acts. The
+experiment that carries the names of Cantor, Godel, and Cohen marks the lineage: Cantor's continuum,
+Godel's proof that its size cannot be refuted, and Cohen's that it cannot be settled, the independence
+established by exactly this method of finite conditions approaching a generic. The construction stands in
+that line, with one deliberate difference it never hides.
+
+That the book's two verbs are the two acts of forcing is worth pausing on, because it explains why they
+have been everywhere. A condition does exactly two things, and a measurement does exactly two things, and
+they are the same two. To tange is to decide --- to select, by a test the construction can actually run,
+which atoms a condition commits to, which is the selecting half of every reading the apparatus has taken.
+To funge is to pool --- to merge the compatible into a common refinement, which is the gathering half of
+every count the apparatus has made. Every chapter that distinguished a tange from a funge was, it turns
+out, distinguishing the deciding act of a forcing condition from its pooling act, without yet having the
+word forcing to hang them on. The verbs were the construction's way of naming the two motions of the
+generic before it was ready to name the generic itself.
+
+The difference is the tolerance. Set-theoretic Cohen forcing reaches the full generic, an object whose
+existence needs the completed infinite. The construction reaches only \emph{up to $\varepsilon$}: every
+condition is finite, every decision is one step, every bound is a natural number, and the generic is
+approached to within whatever tolerance one fixes and no further in any single finite stage. This is
+Cohen forcing made finite --- the constructive face of the method, decided up to a tolerance rather than
+completed. It is also exactly the one grant the book has carried openly since the tenth chapter, now
+seen for what it is. The single thing the construction is given, the genericity of the law of motion, is
+the genericity of this forcing: the assurance that the dense families of conditions are met, that the
+generic the finite cuts approach is actually decided. The construction builds every condition, every
+extension, every merge; what it is granted is that the approaching reaches its generic, up to epsilon.
+Naming the forcing does not add an assumption. It identifies the one the book always had.
+
+This is the deepest payoff of the name, and it deserves to be said plainly. Through twenty-one chapters
+the book has had exactly one assumption it could not discharge, carried openly and called by various
+provisional names --- the oracle, the granted decision, the genericity of the law of motion. Naming the
+forcing collapses all of those into a single, classical, well-understood object: the genericity of a
+Cohen forcing, the assurance that the dense families of finite conditions are met. The construction does
+not need this for the conditions themselves, which it builds, nor for the extensions or merges, which it
+proves; it needs it only for the one step from \emph{approached} to \emph{reached}, from the tower of
+finite cuts to the generic they converge to. To grant the law of motion was always to grant exactly that
+step. The book's single act of faith, it turns out, is the single act of faith of forcing --- and a
+remarkably small and precise one, set against everything the construction builds without it.
+
+\section{What is demonstrated, and what is assumed}
+\label{se:demonstrated-assumed-ch22}
+
+This chapter's separation is unusually satisfying, because naming the forcing sharpens exactly what the
+one assumption is.
+
+What is demonstrated is the limit, the arithmetic, and the forcing. The gauge readings are proved Cauchy
+as the geometric scale vanishes, with a controlled rate --- the unification, as a constructive limit.
+The successor and induction are built and $1+1+1=3$ is proved, the number tower made the construction's
+own. And the conditions, their order, their one-step decisions, and their merges are all built and
+proved, the whole structure shown to be Cohen forcing, decided up to a tolerance. Every piece is finite
+and checked.
+
+\begin{quote}
+\emph{A note on the labels, and on the name.} Two things here are of different kinds. The unification ---
+gauge as the limit of geometry --- is a theorem about the construction's shadows, and its identification
+with the unification of the physical theories is the modeling bridge this whole part has been marking. By
+contrast, naming the forcing is not a modeling claim at all; it is a piece of mathematical recognition.
+The conditions, the extension order, the merges, the generic decided up to $\varepsilon$ --- these are
+literally a Cohen forcing, not a structure resembling one, and calling them by their name adds nothing
+and assumes nothing. The reason the name waited until now is only that the construction had to build
+enough of the forcing, openly, before the word would be earned rather than imposed. The one assumption
+the book has carried --- the genericity granted to the law of motion --- is the genericity of this
+forcing, and that is the whole of what is assumed, now stated in its proper vocabulary.
+\end{quote}
+
+What is assumed, then, is the standing grant, which the forcing's name has now made precise, together
+with the modeling identification on the unification side. With the gauge placed as a limit of the
+geometry, the number tower rebuilt, and the forcing named, the construction has shown both what it builds
+and what it is given, in the same language. The next chapter takes the forcing one step further and
+proves that its ledger of conditions is countable --- that the finite cuts can be enumerated --- which is
+the last structural fact the completion will need.

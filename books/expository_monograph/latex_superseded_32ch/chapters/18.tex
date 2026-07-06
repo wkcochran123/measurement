@@ -1,0 +1,175 @@
+\chapter{The Integrator and the Produced Certificate}
+\label{chap:integrator-produced-certificate}
+
+The apparatus of the last several chapters could measure, but it measured in the abstract --- it knew
+what an energy was and what it would mean for a path to be stationary, without ever being set running on
+a particular path to find out. This chapter sets it running. It builds the integrator, the concrete
+instrument that reads the Euler--Lagrange residue off a path and returns a number, and it shows that the
+instrument does three things the abstract apparatus could only promise. It reads zero exactly at a
+solution and nonzero off one, so its output is a genuine detector of the law of motion. It produces its
+convergence rather than assuming it, by exhausting configurations until the residual is forced to zero.
+And, most tellingly, it produces a certificate of its own honesty simply by running: a procedure that
+leaned on something it could not construct could not be run to a definite answer, so the integrator's
+running is itself the receipt that nothing but the one standing grant was used.
+
+\section{The integrator reads the residue}
+\label{se:the-integrator-reads-the-residue}
+
+The integrator is the law of motion turned into an instrument. Hand it a path and an action and it
+computes the Euler--Lagrange residue --- the amount by which the path fails to be stationary --- and
+returns that amount as a reading. Its defining behavior is the one a detector must have. On a genuine
+solution, a path that actually satisfies the equation, the integrator reads zero: the identity path, the
+simplest solution, is proved to read exactly nothing. On a path that has been kicked off a solution, the
+integrator reads a definite nonzero number; the construction's own concrete run perturbs the solution and
+watches the reading jump from zero to two. Zero on the solution, nonzero off it: the integrator funges
+the residue into a single number that is zero precisely when the path obeys the law and positive
+precisely when it does not, and that number is the measurement.
+
+The detector behavior is worth seeing as a worked reading, because it is what makes the integrator an
+instrument rather than a definition. Take the identity path, where the output equals the input at every
+step --- the plainest solution of the simplest action. Run the integrator on it and the residue at every
+node cancels: there is no discrepancy between what the path does and what the equation demands, and the
+reading is zero, exactly. Now kick the path: nudge it off the solution at one interior point and leave
+the rest. The kicked node no longer satisfies the equation, a residue appears there, and the integrator,
+summing the discrepancies, returns a definite positive number --- in the construction's own run, two. The
+instrument has tanged the perturbation: it selected, out of a path that looks almost like a solution, the
+one place the equation fails, and reported its size. That is what a detector is --- a device that reads
+zero on the thing it is tuned to and a definite size on any departure from it --- and the integrator is
+the construction's first one built to run.
+
+It is worth being clear about what the integrator does and does not settle, because the boundary is the
+same one the tenth chapter drew. Handed a particular path, the integrator computes the residue on that
+path, exactly and finitely --- this is the direct residual, the part a finite procedure can always
+compute. What it does not do, and cannot, is survey all paths at once to certify that a given one is the
+global stationary point; that universal is still the oracle's, the one query the integrator cannot
+answer by running. The integrator is precisely the computable face of the law of motion: it reads,
+concretely, whether the path in front of it satisfies the equation, and it leaves to the standing grant
+the only thing reading cannot reach. The experiment under Laplace's name fixes the status of its output.
+Relative to a single committed record, each reading appears determined by what came before --- the
+integrator's tape looks like the demon's ledger, the future fixed by the past --- but the demon is local,
+demoted to exactly the finite record the integrator has actually written, with no reach past the edge of
+what it has read.
+
+\section{Weierstrass by instantiation}
+\label{se:weierstrass-by-instantiation}
+
+The twelfth chapter proved the residual could be squeezed toward zero by refinement but left the
+convergence itself as a flagged certificate --- a bound asserted to exist. This chapter discharges the
+flag, and the way it does so is characteristic. It does not import an analytic theorem that the bound
+exists; it constructs the convergence by instantiation, exhausting the configurations until the residual
+has nowhere left to be nonzero. As the refinement deepens, the configurations the residual could live on
+are enumerated and used up, and a quantity that is eventually zero on every configuration tends to zero
+in the only sense a finite construction recognizes. This is Weierstrass approximation done by the
+finitist's method: not the existence of an approximating sequence asserted from above, but an
+approximating sequence built from below, configuration by configuration, until exhaustion forces the
+residual down. The generic is approached, once again, by the instantiation of finite conditions rather
+than by a leap to a completed limit, and the convergence that was a hypothesis in the twelfth chapter is
+a construction here.
+
+What makes this more than a relabeling of the earlier convergence is the source of the zero. In the
+twelfth chapter the residual went to zero because a bound was assumed to drive it there --- the limit was
+promised by an analytic certificate the construction marked and did not open. Here the zero has a
+constructive cause: the configurations on which the residual could be nonzero are finite at each depth
+and enumerable, and the refinement walks through them and uses them up, so that past a certain depth
+there is simply no admissible configuration left for a nonzero residual to occupy. The residual is not
+asserted to vanish; it is left with nowhere to be. This is the difference between approaching a limit one
+hopes is there and approaching one whose every alternative has been struck out, and it is the difference
+between the twelfth chapter's flagged certificate and this chapter's produced one. Exhaustion is a thing
+a finite construction can do; promising a limit is not, and the integrator does the first in place of
+the second.
+
+\section{The boundary is a build artifact}
+\label{se:the-boundary-is-a-build-artifact}
+
+Two subtleties the integrator exposes are worth marking, because both are places the construction is
+careful not to claim too much. The first is that the boundary --- the anchor that earned definiteness
+several chapters ago --- is a build artifact, a feature of how the apparatus is assembled rather than a
+fact about the world it measures. The construction needs the boundary to make its forms definite, but it
+does not pretend the boundary is anything more than the scaffold's edge, and it marks it as such. The
+second is sharper: there is no uniform finite support. For any single configuration the integrator needs
+only finitely many entries to read it, but there is no one finite set of entries that suffices for
+\emph{all} configurations at once --- any finite set, however large, misses some slip it cannot account
+for. The order of the quantifiers is therefore forced and cannot be reversed: for each configuration
+there is a finite support, but not a finite support for every configuration. This is the oracle's
+universal wearing a different coat. The same gap that made stationarity uncomputable --- a property that
+must hold across an unbounded range, with no finite witness covering the whole --- reappears here as the
+impossibility of a single finite support, and the construction names it rather than papering over it
+with a uniformity it has not got.
+
+The forced quantifier order repays a moment's thought, because it is where the construction's finiteness
+and the oracle's infinity meet. To say that for each configuration there is a finite support is to make a
+promise the construction can keep: hand it a configuration, and it produces, then and there, the finite
+set of entries that reads it. To say there is a finite support for every configuration would be to
+promise a single finite object adequate to an unbounded range --- a uniform witness --- and that the
+construction cannot keep, because any finite support it offers, a reader can name a configuration that
+slips past. The two statements differ only in the order of \emph{for each} and \emph{there is}, and that
+order is exactly what separates what a finite procedure can deliver from what only an oracle could. The
+construction lives entirely on the deliverable side of that line, and it marks the line rather than
+stepping over it --- the same discipline, in the same place, the tenth chapter applied to stationarity
+itself.
+
+\section{The certificate is produced}
+\label{se:the-certificate-is-produced}
+
+Here is the chapter's most distinctive move, and it is one only a constructive apparatus can make. The
+integrator does not merely assert its reading; it \emph{runs}, and produces the reading as an output one
+can hold. And that it can be run at all is a certificate of something the construction cares about more
+than almost anything else: that the computation is choice-free. A procedure that secretly depended on a
+non-constructive grant --- a value asserted to exist without being exhibited --- could not be run to a
+definite answer, because there would be no exhibited value to compute with; it would name a result
+without being able to produce one. The integrator produces one. It runs to a definite number, and its
+running is therefore a receipt, a certificate generated by the act of computing, that everything it
+touched was built and nothing was merely assumed. The certificate is produced, not promised: where the
+earlier chapters reasoned that the construction was constructive, the integrator demonstrates it by
+running, and the demonstration is the run.
+
+It is worth being exact about why running is a certificate and not merely a convenience. The construction
+is built so that a procedure can be carried to a definite output only if every value it depends on has
+been exhibited --- actually constructed, available to be computed with. A procedure that named a value by
+asserting its existence, without producing it, would stall the moment it needed that value, because there
+would be nothing there to use. So the set of procedures that run to an answer is exactly the set of
+procedures that are constructive through and through. The integrator runs to an answer. That fact, by
+itself, places it inside the constructive set and certifies that no existence-without-exhibition was
+hiding in it. No separate audit is needed; the run is the audit. This is why the construction prizes a
+runnable certificate over a proven one where it can get the runnable kind: a proof that something is
+constructive is a claim to be checked, while a run is the constructivity happening, the certificate and
+the thing certified collapsing into one act.
+
+The experiment on the ideal ledger names this kind of certificate. A produced certificate is one that
+the boundary's reconciliation of the bulk actually generates, an output the apparatus emits rather than
+a guarantee it requests; the integrator's run is exactly such an output. And a small economy underlies
+it: three tags suffice to type every reading the integrator produces, and one action is refused as
+inadmissible, so the whole space of readings is enumerated by a finite, depth-indexed rational skeleton
+the integrator can walk. The certificate the integrator produces is therefore not only honest but cheap
+--- a finite, runnable receipt, generated on demand, that the measurement it accompanies was taken
+constructively and that the only thing assumed anywhere was the single standing grant.
+
+\section{What is demonstrated, and what is assumed}
+\label{se:demonstrated-assumed-ch18}
+
+The accounting closes the apparatus side of the book, and it is gratifyingly clean.
+
+What is demonstrated is a working, running instrument and its certificate. The integrator is proved to
+read zero on a solution and nonzero off one, and it runs concretely to those values. The convergence of
+its residual is constructed by exhaustion, not assumed --- Weierstrass by instantiation. The absence of
+a uniform finite support is proved, fixing the quantifier order. And the certificate of choice-freeness
+is produced by the act of running, a receipt the computation generates of its own constructivity. Each
+is a checked or runnable fact about finite objects.
+
+\begin{quote}
+\emph{A note on the one assumption.} It is worth saying precisely what the running integrator does and
+does not certify. Its run certifies that the computation is choice-free --- that no non-constructive
+grant was smuggled in beneath it. It does \emph{not} certify the one grant the construction has carried
+openly since the tenth chapter: that stationarity, the universal over all directions, is decided. That
+grant is not a hidden choice the run could expose; it is the declared one, sitting above the
+computation, supplying the only thing the integrator's reading cannot reach. The honest summary is that
+everything the integrator does is constructive and certified so by its running, on top of exactly one
+assumption that no run can discharge because it is not the kind of thing a run touches.
+\end{quote}
+
+What is assumed, then, is the standing grant alone, now sharply distinguished from everything the
+running integrator certifies away. With a concrete instrument that reads the law of motion, constructs
+its own convergence, and produces a receipt of its honesty, the apparatus is complete and proven to run.
+The construction has built everything it needs to make a measurement and to vouch for it. What remains is
+to point the finished instrument at something and read off a value with a physical name --- which is
+what the next chapter does, and the name it reads is the electron.

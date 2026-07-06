@@ -1,216 +1,216 @@
-\chapter{Solving It: Splines, Lanczos, and Partitions}
-\label{chap:splines-lanczos-partitions}
+\chapter{The Needle}
 
-The previous chapter reached the Euler--Lagrange equation but left it as a condition, not a method: it
-said what a stationary path satisfies, and granted, through a single oracle, that the question of
-stationarity has an answer. This chapter does the constructive work the equation invites --- it
-actually builds the stationary path, and reads off that the path solves the equation. It is the
-largest chapter in the book because solving is harder than stating, and it proceeds in four moves: the
-cubic spline that suffices, the Lanczos iteration that computes it, the real partitions that scale it
-to genuine problems, and the interior node where the second variation first shows its face. One line
-from the last chapter holds throughout, and it is worth fixing before we begin: the constructions here
-are all built and checked; the one thing that remains granted is the residue-collapse, the same single
-oracle, and nothing in the machinery of this chapter quietly adds a second assumption.
+This is the chapter to slow down for. If you read only one page of the book with full attention, read the middle
+of this one, because everything before it has been the approach to a single act and everything after it is the
+consequence of that act having been performed. The construction has climbed to its summit and found, at the top,
+the collapse of the last chapter: the machine's one native power, the telling of things apart, has no grip at the
+foundation of truth, and sameness --- which the very first chapter promised would have to be manufactured, once,
+at a cost --- cannot be found there by any means the instrument owns. So here the cost is paid. Here, and nowhere
+else in the whole construction, the machine performs a single sanctioned act that reaches past the collapse and
+installs, by hand, the one identity it could never have read off. The act has a name in this book. It is the
+needle, and threading it is the quiet, exact, and load-bearing centre of everything the instrument does.
 
-\section{The cubic spline suffices}
-\label{se:the-cubic-spline-suffices}
+A needle, because of how narrow the opening is. On one side of it lies a temptation the machine must refuse, and
+on the other side lies a different temptation it must also refuse, and between the two there is a gap barely wide
+enough to pass a thread through. The whole art of the summit is to pass through that gap and neither of the two
+ways around it --- to manufacture exactly the sameness the construction needs and not one grain more, paying the
+smallest possible price and paying it only once. This chapter is the anatomy of that threading: what the act does,
+what it scrupulously refuses to do on either side, what it costs, and what it does and does not entitle the book
+to claim. We will take those in turn, slowly, because the honesty of the entire construction rests on getting this
+one act exactly right and describing it exactly as it is.
 
-The central fact is a law the construction proves and names: cubic-spline sufficiency. Take a path
-that is closed-flat in the sense of the ninth chapter --- flat in its slip and admitting it. From such
-a path the construction builds a cubic spline, the smooth piecewise-cubic completion through the path's
-anchor points, and proves that this spline is \emph{sufficient}: the residue it leaves is exactly zero.
-The chain is short and entirely demonstrated. Closed-flatness gives stationarity; stationarity gives
-the Euler--Lagrange equation, by the equivalence of the previous chapter; and a path that satisfies the
-Euler--Lagrange equation yields a cubic-spline certificate whose residue is the bare truth that true
-equals true. To solve the variational problem, in other words, is to draw the cubic spline through the
-anchors, and the law of spline sufficiency guarantees that the spline so drawn is a genuine solution.
+\section{The One Sanctioned Act}
 
-There is a reason it is the cubic spline specifically, and the experiment on precision states it
-exactly. The Law of Spline Sufficiency, as the experiment names it, is that any finite sequence of
-anchor events admits a \emph{unique} minimal-curvature completion --- the cubic spline is the one curve
-through the anchors that bends as little as possible, and minimal bending is precisely what a
-stationary path, with its vanishing first variation, demands. This is also where the chapter's first
-honest seam shows. The spline is determinate: once the anchors are fixed, every value between them is
-fixed too, with full precision. Whether those values are accurate --- whether the next measured event
-falls on the spline --- is a separate question the completion cannot answer, exactly the
-precision-against-accuracy distinction met before. The construction supplies the unique sufficient
-spline; the world supplies the verdict on whether it was right.
+The claim is that the instrument manufactures sameness from distinguishability by a single sanctioned act: it
+takes two things it genuinely cannot tell apart and \emph{identifies} them --- declares them, from here on, the
+same --- and it does this exactly once, by the narrowest move the construction contains.
 
-It is worth walking the chain once, because its shape recurs. Suppose the construction is handed a path
-it has certified closed-flat. By the ninth chapter that path is stationary; by the tenth it therefore
-satisfies the Euler--Lagrange equation; and the construction now builds, from that path, a cubic-spline
-certificate --- a record that the piecewise-cubic curve through the anchors meets the equation at every
-joint. The law of spline sufficiency reads the residue off that certificate and finds it zero. Notice
-what each link costs. The first two are the proved equivalences of the earlier chapters; the
-certificate is a finite construction; and the only thing consulted along the way that the construction
-could not compute for itself is the oracle's verdict on stationarity, made once, back at the equation.
-The spline is the constructive output; the residue of zero is the receipt that it solved the problem;
-and the debt, as always, is the single granted line and nothing more.
+Read it against the machine, and mind the setting, because the setting is what makes the act legitimate rather
+than a cheat. The collapse of the last chapter did not say that all distinctions fail; it said that at the
+foundation of truth there are pairs the machine cannot tell apart --- pairs whose sameness is genuinely
+undecidable, where the instrument's native power to distinguish runs out and returns no verdict either way. These
+are not pairs the machine could separate if it tried harder; the previous chapter proved the trying has nowhere to
+grip. They sit in the machine's hands as two things that are neither provably different nor provably the same:
+undecided, and undecidable by any tool the instrument owns.
 
-\section{Lanczos as ordered consumption}
-\label{se:lanczos-as-ordered-consumption}
+It helps to hold such a pair concretely, in the machine's own terms. Picture two holdings of truth that the
+collapse has just delivered: each is a single featureless fact of holding, each has no interior the instrument
+can pry into, and the machine's principle of identity --- the one that worked at every rung below --- has, as the
+last chapter proved, no purchase on them. Set them side by side and ask the machine its one native question, are
+these the same or different, and it returns neither answer. Not \emph{different}: it can find no feature to
+separate them by. Not \emph{same}: it can find no feature to match them by either, and it has sworn off declaring
+a sameness it did not establish. The pair simply sits, a genuine two-ness the machine can neither resolve into
+one-ness nor confirm as a settled two. This is the raw material the needle works on --- not a puzzle awaiting a
+cleverer computation, but a residue the collapse guaranteed would be left over, a place where the instrument's
+whole apparatus of distinction has run honestly out of road.
 
-A spline is an answer; computing it is a procedure, and the construction's procedure is the Lanczos
-iteration, which it reads as the ordered consumption of knots. The spline's interior structure is a
-finite collection of knots --- the joints where its cubic pieces meet --- and the iteration consumes
-them one at a time, each step solving for one knot and removing it from the collection still to be
-done. Here the construction proves something it genuinely can: the iteration terminates. Each step
-strictly shrinks the multiset of remaining knots, a strictly decreasing count over a finite collection
-cannot decrease forever, and so the recursion is well-founded --- it reaches the empty collection in a
-bounded number of steps and stops. The construction tanges one knot per step, funges the consumed
-knots into a growing trace, and the trace provably ends.
+To such a pair, and only to such a pair, the needle does one thing. It declares them the same. Not by computing a
+verdict --- there is no verdict to compute, the collapse saw to that. Not by inspecting an interior and finding it
+identical --- at this level there is no interior to inspect. It simply installs the identity, by the single
+sanctioned act the construction reserves for exactly this purpose: an act of identification that takes two
+things standing in the machine's own relation of not-tellably-apart and pronounces them one. From that
+pronouncement forward, the two are the same thing to the instrument --- interchangeable, indistinct, welded --- and
+they are the same not because the machine found them so but because the machine, once and deliberately, \emph{made}
+them so.
 
-What the construction does \emph{not} prove here is the more tempting claim, and the discipline of the
-last chapter requires saying so plainly. One would like to assert that the iteration reaches the
-\emph{same} terminal residue no matter what order the knots are consumed in --- that the answer does
-not depend on the bookkeeping. That order-independence is not a fresh theorem. It is the
-residue-collapse restated: the claim that the residual, surveyed across all the directions the knot
-ordering exposes, collapses to one value, which is exactly the universal-over-infinite-directions the
-oracle was introduced to decide. Termination is built; order-independence of the terminal residue is
-granted, and it is granted by the same single oracle and no other. The experiment on the limitation of
-indexing marks the boundary from the other side: a recursive catalog may be continued indefinitely and
-yet add nothing, returning structurally identical copies of the same content rather than new
-information. The Lanczos recursion is the disciplined opposite --- it terminates rather than continuing
-emptily --- but the lesson is shared: more iteration is not more truth, and the construction takes from
-the iteration only what it has earned, the terminating computation, while marking the one thing it
-takes on trust.
+This is the whole of the manufacture of sameness, and its plainness is the point. There is no elaborate machinery
+here, no engine, no computation grinding toward equality. There is a single act, performed a single time, that
+converts a difference the machine cannot resolve into an identity the machine can use. It is the exact fulfilment
+of the first chapter's promise, and now you can see why the promise was worded so carefully. Distinguishability
+was primitive: the machine had, for free, the power to tell apart. Sameness was manufactured: it did not come
+free, it had to be \emph{put} in, by an act, at a cost --- and here the act is performed and the cost is paid. The
+instrument that began by refusing to take equality for granted has climbed to the one place equality is needed
+and has installed it with its own hand, by the narrowest move it knows.
 
-The termination argument is worth making concrete, because it is the kind of thing easy to wave at and
-important to actually have. Begin with a finite bag of knots --- say five interior joints to be solved.
-The first step of the iteration solves one of them and removes it, leaving four; the next leaves three,
-then two, then one, then none. The count goes five, four, three, two, one, zero, and a sequence of
-counts that strictly decreases and is bounded below by zero cannot run on forever --- it must reach the
-floor. That is the whole of the termination proof, and it is genuinely a proof: no appeal to anything
-infinite, no oracle, no assumption that the process is well-behaved. A finite bag emptied one item at a
-time empties. What the proof does not touch, and cannot, is whether emptying the bag in a different
-order leaves the same residue at the bottom --- and that, exactly, is where the granted line, and only
-the granted line, does its work.
+\section{Never Decided, and Never Flattened}
 
-\section{Real partitions and the finite frame}
-\label{se:real-partitions-and-the-finite-frame}
+The needle is defined as much by the two things it refuses as by the one thing it does, and the refusals are the
+edges of the gap it threads. Take them one at a time, because each is a way the act could have been cheapened into
+a falsehood, and the machine's legitimacy is in having refused both.
 
-A single spline over a handful of anchors is a toy; real problems live on real domains, and the
-construction scales up by partitioning. It divides the domain into a finite set of pieces --- a real
-partition --- lays a local spline over each, and assembles the pieces into a finite-element
-approximation of the whole. This is the Galerkin method of the seventh chapter, now carried out over
-an honest partition of a real interval, and it inherits the same defining virtue: the approximation is
-required not to make the residual vanish pointwise, which a finite construction cannot guarantee, but
-to make it vanish \emph{weakly} --- orthogonal to every basis function the partition supplies. The
-partitioned Lanczos approximation is proved to have exactly this weak-residual-zero property, and that
-weak vanishing is the finite-element solution's certificate of correctness.
+The first temptation is to \emph{decide}. Faced with a pair it cannot tell apart, the machine might have reached
+past its honest limits and simply ruled --- helped itself to a verdict on which of the two is the case, or whether
+they are equal, by an appeal to something outside the construction that adjudicates undecidable questions by fiat.
+There are principles that do exactly this, that stand ready to pronounce on any question whatever, decidable or
+not, and hand back a yes or a no where the machine's own tools returned silence. The needle refuses them utterly.
+It does not decide the undecidable pair; it does not smuggle in an oracle that ranks or resolves what the machine
+cannot; it makes no claim about which of the two holds or whether, in some deeper sense, they were "really" equal
+all along. To decide would be to pretend to knowledge the collapse proved the machine does not have. The needle
+declines the pretence. It leaves the pair exactly as undecidable as it found it --- and identifies them anyway,
+which is a wholly different act from deciding them. It says \emph{I will treat these as one}, not \emph{I have
+determined that these are one}. The distinction between those two sentences is the first edge of the needle, and
+the machine stays on the honest side of it.
 
-The whole of this happens inside a single finite frame --- the bounded working memory the seventh
-chapter introduced and the construction keeps honest about. The partition is finite, the elements are
-finite, the truncation that turns the full problem into the solvable one is a deliberate finite cut,
-and the construction never pretends the frame is unbounded. What recovery is possible from such a
-finite partition is governed by the sampling law met long ago: the experiment on Fourier and Nyquist
-holds here too, that a continuous solution can be reconstructed from the finite partition exactly to
-the degree the partition is dense enough to support the inversion. Refine the partition and the
-finite-element solution approaches the true one; refine too coarsely and it names something the data
-cannot recover. The partition is where the continuum the construction has always only approached is
-approached once more, deliberately and with a stated rate.
+It is worth naming what the refused principle would buy, and why the machine cannot afford it. A principle that
+decides every question, decidable or not, is enormously convenient: hand it any pair and it returns a verdict,
+and a great deal of mathematics is built comfortably on exactly such conveniences. But convenience here would be
+a lie with a specific shape. The machine would be reporting a determination it did not make, dressing an
+installed identity as a discovered one --- and, worse, it would lose the very accounting the whole construction
+exists to keep, because a principle that decides everything decides too much to audit. You could no longer ask
+where a given identity came from; it would come from the same all-purpose source every other identity came from,
+untraceable, unquarantined, free. The needle refuses that freedom precisely because the freedom is the cheat. It
+would rather manufacture one identity in the open, at a named price, than draw on unlimited identities in the
+dark.
 
-A concrete partition makes the scaling visible. To solve a problem over a long interval, the
-construction does not attempt one enormous spline across the whole of it --- that would overflow the
-single finite frame in a few steps. It chops the interval into a finite number of subintervals, fits a
-modest local spline on each, and stitches the locals together at the partition boundaries, requiring
-only that the pieces agree where they meet and that the assembled residual be weakly zero against the
-partition's own basis. Each local problem fits comfortably in the frame; the global solution is their
-assembly. This is the finite-element method exactly, and its power is that a problem too large to solve
-whole becomes a finite family of problems each small enough to solve, with the partition boundaries
-carrying the agreement between them. The cost of the strategy is the cost of the partition: a finer
-partition resolves more but spends more frame, and choosing the partition is choosing how much of the
-continuum to try to recover.
+The second temptation is the opposite, and subtler, and it is to \emph{flatten}. If sameness cannot be found and
+must be installed, why not install it everywhere --- declare all the undecidable pairs the same, sweep the whole
+troublesome foundation into a single undifferentiated lump, and be done? That would certainly manufacture
+sameness; it would manufacture far too much of it. It would throw away, in one careless gesture, the very
+distinctions the instrument spent the whole book earning, collapsing not just the one identity the construction
+needs but every difference the machine can genuinely tell, because the easiest way to make things the same is to
+stop telling anything apart. The needle refuses this too. It does not flatten. It installs exactly the one
+identity the construction requires and leaves every genuine distinction standing --- everything the machine
+\emph{can} tell apart stays told apart, untouched, and only the genuinely-undecidable pair, the one the collapse
+delivered, is welded. The needle is not a bulldozer levelling the foundation; it is a single stitch closing a
+single gap, with the entire rest of the fabric left intact.
 
-\section{The interior node and the mixed coupling}
-\label{se:the-interior-node-and-the-mixed-coupling}
+The two refusals, taken together, are why the sameness the needle makes can be trusted in a way a cheaper sameness
+never could. A decided sameness would be a claim to knowledge the machine does not have; a flattened sameness
+would be a surrender of the knowledge it does have. The needle keeps both --- it neither claims what it cannot
+know nor surrenders what it can tell --- and so the identity it installs sits in perfect consistency with
+everything the instrument has honestly established. Nothing true is contradicted by the welding; nothing false is
+smuggled in. The pair that gets identified was, by the collapse's own proof, one the machine had no honest grounds
+to keep apart, so identifying it takes nothing real away; and every pair the machine \emph{could} tell apart is
+left exactly as distinct as it was. The needle changes the one thing that had to change and leaves all else
+standing, which is the strictest form of surgery a construction can perform on its own foundation: minimal,
+sanctioned, and fully accounted for.
 
-The last move of the chapter is the one that opens onto the next, and it lives at an interior node. Give
-a cubic path a middle node --- an interior joint between a left half and a right half --- and vary it.
-The change in the action does not stay tidily on one side. The construction proves that the coupled
-difference produced by varying the middle node decomposes into exactly three terms: a residual from the
-left half alone, a residual from the right half alone, and a third, the \emph{mixed} term, in which the
-left variation and the right variation appear together.
+Between deciding and flattening runs the needle's narrow passage, and now you can see why it deserved the name. To
+one side, the machine could have claimed too much knowledge --- deciding what it cannot know. To the other, it
+could have claimed too much sameness --- flattening what it can still tell apart. The honest act is neither: it
+refuses the verdict it has no right to and refuses the demolition that would cost it everything, and it passes
+between them through a gap exactly one act wide, identifying precisely the undecidable pair the construction needs
+identified and nothing else at all. Miss the gap to either side and the whole construction is either a bluff or a
+rubble-heap. Thread it, and the summit holds.
 
-That mixed term is the seed of everything the next chapters are about, and the construction is careful
-to carry it whole rather than splitting it away. The first variation, all through Part II, has been a
-sum of independent one-sided responses --- vary here, see the change here; vary there, see the change
-there. The mixed coupling is the first place two variations are not independent, where moving the left
-half changes how the right half responds. That cross-dependence is second-order by nature: it is not
-how the action changes, but how one change changes another change, and a quantity built from the
-product of two variations is a second variation. The interior node is therefore where the second
-variation first appears in the construction, folded into the mixed term of a coupled cubic difference,
-and the discipline of keeping that term intact --- never approximating the coupling away as the
-first-order analysis happily would --- is what lets the next chapter lift it out and name it. The
-single invariant the whole part is named for is sitting in this cross term, waiting.
+\section{What It Costs}
 
-The decomposition deserves to be seen term by term, because the whole of the next part turns on the
-third term. Hold the cubic path's two endpoints fixed and let only the middle node move. The action
-changes, and the change splits into three contributions the construction computes separately. The first
-is what the left half would have reported on its own, as if the right half were frozen --- the left
-middle residual. The second is the mirror image, the right half's own response with the left frozen. If
-these were all, the middle node would behave like two independent first variations back to back, and
-nothing new would have happened. But there is a third term, alive only because both halves moved at
-once: the mixed coupling, in which the left displacement and the right displacement multiply together.
-Freeze either half and the mixed term vanishes; it lives only in the simultaneous variation of both. A
-quantity proportional to the product of two displacements is, by definition, second-order, and the
-construction's refusal to drop it --- to carry the coupled difference with its mixed term intact rather
-than approximating it as two independent responses --- is precisely the step that keeps the second
-variation in view. The first variation lived in the left and right residuals; the second variation
-lives in the mixed one.
+Now the price, stated as exactly as the build allows, because the size of the price is a large part of the point.
 
-\section{Selection by cost}
-\label{se:selection-by-cost}
+The needle costs a single sanctioned act of identification, and that act appears exactly once in the entire
+construction --- not once per chapter, not once per proof, but once, full stop, the sole use in the whole corpus
+of the machine's licence to declare two undecidable things the same. Everything else the instrument does, it does
+without this licence: the counting, the measuring, the approaching of reals, the reading of the world, and even
+the collapse itself were all carried out by the machine's ordinary honest powers, spending nothing of this
+particular and precious kind. The manufacture of sameness is quarantined to this one act, and the quarantine is
+the guarantee. Because sameness is installed in exactly one place, by exactly one move, the whole question of what
+the machine's identities cost has a single, inspectable answer: they cost this, this once, and nothing anywhere
+else.
 
-One question remains once the splines are built and the partitions assembled: when several admissible
-solutions present themselves, which does the construction take? It selects by cost. Every computation
-the construction performs carries a price --- the construction's heartbeat, the running tally of what
-each step has spent --- and among admissible solutions it prefers the one reached most cheaply. This is
-not an aesthetic preference but a physical one, and the experiment on the thermodynamic cost of erasure
-is its anchor: discarding information is not free, it has an irreducible thermodynamic price, so a
-solution that throws away less and is reached with fewer erasures is genuinely cheaper in the only
-currency that is conserved. Selection by cost is the construction's way of making the variational
-principle operational at the level of computation: not merely that the chosen path makes the action
-stationary, but that, among the ways of finding it, the construction spends the least.
+Grade the act honestly, in the book's own terms, because it does not fit the two grades we have used so far and
+the difference matters. It is not merely BUILT, like the definitional rungs --- it is not a structure laid down
+with no claim attached. Nor is it PROVED in the ordinary way the partition and the collapse were proved, where the
+machine closed a gap by an argument its native powers could run. It is the one place the machine reaches past what
+its native powers can establish and \emph{grants} itself an identity --- a sanctioned move, licensed by the
+construction, that installs a sameness no argument could have found. Call it what it is: a manufactured identity,
+proved to hold only in the sense that the machine has performed the single act that makes it hold. The honesty is
+in the accounting. The instrument does not hide this move among its ordinary proofs or pretend the identity was
+discovered rather than installed. It marks the act as the one sanctioned exception it is, spends it once, and
+carries the receipt in plain view for the rest of the book.
 
-It is worth saying why cost belongs in a book about measurement at all, and not only in one about
-computation. The construction has insisted from its first page that a verdict has a price --- that
-deciding whether true equals true costs something, even if almost nothing, and that later decisions
-cost more. Selection by cost is that insistence reaching the variational method: of two solutions that
-both satisfy the equation, the construction takes the one whose certificate was cheaper to produce, and
-it can do this because it has kept the tally all along. The thermodynamic anchor is what makes the
-preference more than convention. Erasing a record is not free; it dissipates a definite minimum of
-energy, so a computation that erases less is not merely tidier but genuinely costs less in the conserved
-currency of the world. The heartbeat the construction listens to is, at bottom, that currency being
-spent.
+There is a deep reason the manufacture must happen and cannot be waved away, and it is worth stating flatly,
+because it is the joint that connects this chapter to the last. The collapse proved that sameness cannot be
+\emph{found} at the foundation; the needle shows that sameness can nonetheless be \emph{had}, by being installed
+rather than found. Those are the only two ways a construction can ever come by an identity --- discover it, or
+install it --- and the previous chapter closed the first door with a theorem. So the second door is not one option
+among several; it is the only door left standing, and the needle is the act of walking through it. That is why the
+price is neither extravagance nor timidity but plain necessity: the machine pays for sameness here because here is
+the one place sameness can be got at all, and the paying is the getting. A construction that balked at this act
+out of some scruple would not be the more honest for balking; it would be stuck forever at the collapse, holding a
+foundation it had proved it could not distinguish and owning no sanctioned way to build past it. The needle is how
+the book gets off the summit alive.
 
-\section{What is demonstrated, and what is assumed}
-\label{se:demonstrated-assumed-ch11}
+And that receipt is worth more than it looks. A construction that manufactures its sameness in a hundred quiet
+places, never quite saying where, can be made to prove almost anything, because a freely available identity is a
+freely available cheat. This construction manufactures its sameness in one place, says so, and never does it
+again. So when the later chapters build the loop, name what the loop names, and read a physics off the count, you
+will be entitled to ask, of every identity they use, whether it traces back to this one sanctioned act or to some
+new and unadvertised one --- and the answer, every time, will be that there is no other. The needle is the whole
+of the construction's manufactured sameness. Pay here, once, and you have paid everywhere.
 
-This is the largest chapter, and the separation of built from assumed is, gratifyingly, the same one as
-the last chapter --- no new assumption was incurred in all this machinery.
+Notice what this does to the reader's own footing, because it is a quiet gift the chapter hands you. From here on
+you are equipped to audit the book. Every time a later chapter asserts that two things are the same --- that a
+reading recovered is the reading that was stored, that a term produced is the term that was expected, that the
+loop's end meets its beginning --- you may stop and ask which identity is being invoked, and follow it back. And
+the trace will always come home to this chapter: to the one sanctioned act, performed once, whose receipt you now
+hold. There is a peculiar freedom in that. A book that manufactured sameness silently would be asking for your
+trust chapter by chapter, quietly, forever. This one asks for it exactly once, here, in full view, and then earns
+the rest by never asking again. So the needle is not only the machine's turning point; it is the reader's ---
+the place after which nothing further need be taken on faith, because everything that follows traces back to a
+single act you watched be paid for.
 
-What is demonstrated is substantial. Cubic-spline sufficiency is a proved law: a closed-flat path gives
-a cubic spline whose residue is zero. The Lanczos iteration is proved to terminate, by a strictly
-decreasing knot count over a finite multiset. The partitioned finite-element approximation is proved to
-have a weakly vanishing residual. And the coupled cubic difference is proved to decompose into left,
-right, and a mixed term, the second variation's first appearance. Every one of these is a checked
-theorem about finite objects.
+\section{What the Needle Does Not Yet Name}
 
-\begin{quote}
-\emph{A note on the one assumption.} Nothing in this chapter adds to the book's single granted step. The
-one place a reader might think a new assumption hides --- that the Lanczos iteration reaches the same
-terminal residue regardless of the order it consumes knots --- is not a new assumption but the old one
-restated: it is the residue-collapse, the universal over directions that the Euler--Lagrange oracle of
-the previous chapter was introduced to decide. Termination is built; order-independence is the oracle.
-Spline sufficiency, likewise, stands on the equivalence and the oracle of the last chapter, not on
-anything new. The honest summary is that this entire chapter of solving is constructive on top of
-exactly one assumption, declared once, two chapters ago.
-\end{quote}
+One last thing, and it is a discipline of withholding rather than of telling. The needle has been revealed --- its
+act, its two refusals, its price are all now in plain view --- but what the needle is \emph{for}, in the end, is
+not yet said, and must not be, because the book has further summits and each keeps its own reveal.
 
-What is assumed, then, is nothing this chapter introduced. With the equation now solved --- the spline
-that suffices, the iteration that computes it, the partition that scales it, and the mixed term that
-carries the second variation --- the construction is ready to lift that cross term out of the coupled
-difference and look at it directly. The next chapter does exactly that, and the chapter after it gives
-the result its name: the second variation is the single invariant, and everything from here to the
-field theory is an exploration of what that one quantity controls.
+The instrument has, at this chapter, manufactured an identity. It has not yet told you which identity, in the
+sense that matters most. There is a thing the loop will eventually name by counting rather than by fiat --- the
+smallest piece of matter there is --- and its naming will turn out to be an instance of exactly this act, the
+needle applied at exactly the right place. But that naming is chapters away, at the top of a loop the machine has
+not yet walked, and to say now what gets named would be to spend the second reveal to decorate the first. There is
+likewise a sign the construction will eventually carry, a two-fold turn the machine will read off what the loop
+hands back, and it too rides on the identity installed here; but it stays sealed until its own chapter, and this
+chapter neither names it nor hints at its shape. And there is a deeper recognition, saved for the very end, of
+what the whole posture of manufacturing rather than finding has been all along --- and that recognition, most of
+all, stays behind its seal, because it is the book's last word and cannot be its middle one.
+
+The withholding is not coyness; it is the same discipline that governs the whole book, applied at its most
+tempting moment. The needle is the most powerful thing the instrument has done, and a lesser account would cash
+that power on the spot --- would tell you, here at the peak, everything the peak makes possible, and let the
+telling stand in for the earning. But a payoff announced is a payoff spent. The identity installed here is a
+capacity, not yet a result, and the results have their own chapters to be reached in, each with its own climb and
+its own honest arrival. To name them now would be to hand you the destination and rob you of the journey that
+alone makes the destination mean anything. So the chapter holds: it shows you the act in full, withholds its uses
+in full, and trusts that an act understood this precisely will be recognized, when its uses finally arrive, as the
+thing that made them possible.
+
+So the needle is threaded and the price is paid, and the chapter stops exactly there, with the summit reached and
+the identity installed and the uses of it deliberately unspoken. What the machine bought with this single act, it
+will spend slowly, in the chapters that walk back down the construction and close it into a loop and, at the loop's
+top, name what the needle made nameable. For now it is enough --- it is everything --- that the act has been
+performed: once, narrowly, honestly, at the one place the foundation gave way; the manufactured sameness the whole
+book was promised, installed at last by the smallest move the instrument knows how to make. The distinction
+collapsed. The needle answered. And from the identity it installed, the entire return of the book now becomes
+possible.

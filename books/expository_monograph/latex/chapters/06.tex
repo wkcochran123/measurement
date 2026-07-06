@@ -1,202 +1,81 @@
-\chapter{A Stored-Program Computer from the Fact}
-\label{chap:stored-program-computer}
+\chapter{Treating a Thing Numerically}
 
-The first five chapters built the parts: a number, a duration, a notion of computation, a calculus in
-embryo, and the informational skeleton of a field. This chapter assembles them into a single machine
---- a stored-program computer, grown entirely from the Fact, that holds a procedure as data and runs
-it. The word machine is meant in the mathematician's sense, not the engineer's: there is no device
-here, no dial and no readout, only a finite construction that happens to compute. What makes it a
-\emph{stored-program} computer is the same move that made the von Neumann architecture more than a
-calculator --- the program it runs is built from the very same Facts as the data it runs on, so that a
-procedure is just another kind of record, able to be stored, inspected, compiled, and executed like
-any other. Reaching this point completes the first part of the book: the construction has built itself
-something to run on.
+To measure a thing is one matter; to \emph{compute} with it is another, and the machine now learns the second. A
+count that only sits and is compared is inert. What makes it useful is that the instrument can carry it into a
+calculation --- feed it to a procedure, run the procedure, get a result --- and treat the whole business
+numerically, as an operation on values rather than a mere holding of them. This chapter gives the machine that
+power, and then, in the same breath, shows the machine the first wall it will ever run into, because the power
+and the wall come together and cannot be separated. The moment the instrument can compute, it inherits the one
+question about computation that has no general answer: will the computation stop?
 
-\section{The binary digit and its tick}
-\label{se:the-binary-digit-and-its-tick}
+\section{A Value, and a Machine to Work It}
 
-A computer needs a unit of state that can be set, read, and changed, and the construction builds the
-smallest one possible. It begins by noticing that two procedures can be \emph{equivalent} even when
-they are written differently: if they carry every value to the same result, the construction treats
-them as one, funging the procedures that act alike into a single equivalence class. Equivalence under
-procedure is the chapter's first act --- the recognition that what a computation \emph{is} matters less
-than what it \emph{does}, so that all the ways of doing the same thing collapse to one.
+The claim is that the instrument can treat a thing numerically --- carry a value into a computation and work it
+--- by holding, as a first-class object, a full computing machine.
 
-A small example shows why this funging is the right first move for a computer. Two procedures that add
-one to a number --- one that counts up by a single tick, another that counts up by three and then back
-by two --- are written differently, take different numbers of steps, and leave different intermediate
-traces, yet they carry every input to the same output. For the purpose of building a machine they are
-the same procedure, and the construction insists on treating them so. This is not laziness; it is the
-precondition for compilation. A compiler may replace a procedure with any procedure equivalent to it
-precisely because equivalence-under-procedure has already declared them interchangeable, and an
-optimization that did not respect that equivalence would be changing the program's meaning rather than
-its form.
+Against the construction, this is two rungs. The lower one gives the machine a value it can share: a number no
+longer trapped as a bare tally but handed about, passed into and out of operations, the common currency the rest
+of the computation trades in. The upper rung is the substantial one. It equips the instrument to hold an entire
+little computer --- a program, a state the program runs over, and a step that advances the state one move at a
+time --- and to run it. This is a genuine machine within the machine: given a program and a starting state, it
+grinds, step after step, transforming the state by the program's rule, exactly as any computer does. With it the
+instrument can, in principle, carry out any calculation that can be carried out at all. It has become, at this
+rung, computationally universal in the small.
 
-On that footing the construction makes a binary digit. Recall from the first chapter that its numbers
-carried not two truth-states but three: both-true, both-false, and the odd one out where the two
-disagree. A clean binary digit has only two states, so the construction must \emph{exclude} one of the
-three --- it tanges the two states that will count, zero and one, and sets the third aside. The digit
-then carries a tick: a step that flips zero to one and one back to zero, the minimal nontrivial
-dynamics a state can have. Set, read, flip: that is a bit, and the tick is what makes it a register
-rather than a constant.
+It is worth pausing on how much that is. A machine that can hold any program and run it, step by faithful step,
+can carry out any calculation that has a method at all --- any sum, any sort, any search, any simulation a
+procedure could describe. The instrument gains no new arithmetic here; it gains the ability to \emph{follow a
+recipe}, and following a recipe, in the end, is all that computing has ever been. Everything the great computers
+of the world do, they do by exactly this: holding a program and advancing a state. So the rung is modest in its
+parts and enormous in its reach --- a program, a state, a step --- and from those three the whole of what can be
+computed becomes, in principle, the machine's. That reach is the point; and so is the catch that rides in with
+it, because a power this wide cannot help but arrive at the one thing no computer can do.
 
-It is worth pausing on what was thrown away. The first chapter's numbers were richer than ordinary
-bits: they carried three truth-states, not two, because they compared pairs of Facts and could register
-agreement, disagreement, or the bare values themselves. A binary digit is poorer on purpose. The
-construction tanges two of those three states to serve as zero and one and quarantines the third, and
-the poverty is the point --- a clean two-state register is what a computer needs, and the construction
-buys it by deliberately forgetting a distinction it was perfectly able to draw. Much of engineering is
-this kind of disciplined forgetting: a usable component is an expressive structure with most of its
-expressiveness suppressed, so that what remains is reliable.
+But notice what the rung demands before it will run. To hold a computing machine, the instrument must be handed a
+program \emph{and} the assurance that the program, on the input it is given, actually finishes --- that the
+grinding halts and yields a result rather than turning forever. The construction does not manufacture that
+assurance; it requires it, as a condition the caller must supply. You may bring the machine any computation you
+like, but you must bring it already knowing that this computation returns, because the rung has no way to find
+out for you.
 
-The excluded third state does not vanish, and the construction gives it a name that the rest of the
-book will earn. It calls the state that the binary digit leaves out --- the one the tick passes through
-untouched, present but never selected --- a \emph{neutrino}, and the exclusion that produces it a
-Pauli exclusion: only one of the two active states may be occupied at a time, exactly as only one
-electron may occupy a state. This is the experiment under the neutrino's name, and it is careful to
-disclaim any particle physics: the informational neutrino is simply the excluded state, the residue
-that has to exist so that the digit can be cleanly binary, and it earns the analogy because it is the
-thing that travels through the construction almost without interacting, carrying a small correction
-that keeps the larger record globally consistent.
+\section{The First Horizon}
 
-The choice of name is less arbitrary than it looks. A real neutrino is the particle that barely
-interacts --- it streams through matter almost untouched, and from a supernova it arrives ahead of the
-light because it need not wait for the medium to clear. The construction's excluded state plays the same
-role in miniature: it passes through the tick unchanged while the two active states flip around it, and
-it carries the small second-order correction that keeps separated observers' records agreeing with one
-another. The analogy is doing real work --- the same informational shape, a nearly inert messenger that
-reconciles the books --- and the construction claims only that shape, not the physics of weak
-interactions or the mass of any particle.
+That demand is the first horizon, and it is worth being exact about what kind of thing a horizon is here, because
+the book will meet several and must not misdescribe any of them.
 
-The tick deserves one more word, because it answers an old objection. Berkeley complained that
-Newton's fluxions were ghosts, increments that had to be nonzero to do their work and zero to
-disappear afterward. The construction's tick is the fluxion made finite and honest: a single discrete
-step, neither an infinitesimal nor a vanishing quantity, just the smallest change the digit admits.
-This is the experiment under the name of fluxions, and its resolution is the one the whole book has
-been rehearsing --- there are no infinitesimals here, and smooth change appears only as the unique
-completion of finite distinctions, never as a quantity that is somehow both zero and not. A finite,
-observable change emerges from finite, observable steps, and the ghost is laid to rest by refusing to
-summon it.
+The halting question --- given a program and an input, will it finish? --- has no general procedure that answers
+it for every case. This is not a shortcoming of this particular instrument, to be patched in a later chapter by a
+cleverer rung. It is a limit on computation itself, and the machine runs straight up to it and stops. The
+instrument cannot decide, in general, whether an arbitrary computation halts; so it does not pretend to. It
+requires the halting to be vouched for from outside, and it works only within the computations that come with
+that voucher. Beyond that fence it does not go, and it does not sulk about not going --- it simply reports the
+edge of what it can do and stays inside it.
 
-\section{Source, compilation, and execution}
-\label{se:source-compilation-and-execution}
+Be clear about what is and is not being claimed, because here the book holds a fence it will hold again for every
+limit it meets. The instrument is \emph{not} proving a theorem about the impossibility of a halting procedure. It
+is not doing metamathematics; it lays down no demonstration that no such procedure could exist, and the book
+makes no such demonstration on its behalf. What the instrument does is humbler and more honest: it \emph{meets}
+the limit. It comes to the place where a general halting decision would be needed, finds it has none, and marks
+the place as a boundary of its competence rather than papering over it. The limit is real, and famous, and the
+instrument's stance toward it is not to prove it but to respect it --- to name the wall it has run into and
+decline to pretend it can pass. A limit met is not a limit proved, and the book will keep the two apart as
+scrupulously as it keeps the built apart from the demonstrated.
 
-With a bit and a tick the construction can build a program, and the way it does so is the heart of the
-stored-program idea. A program begins as a source --- the construction's wry gloss is that the source
-is wherever a procedure claims to have come from, an origin story that starts bending the moment it is
-given a name. The source is then encoded into a sequence of operations, the opcodes, each a small,
-fixed instruction the digital state knows how to obey. Compilation is the act of turning the source
-into that encoded sequence; execution is the act of running it, each opcode ticking the state forward
-one determined step.
+\section{The Floor, and the Honesty of a Boundary}
 
-The decisive point, and the reason this is a stored-program computer rather than a fixed device, is
-that the encoded program is made of the same Facts as the data it manipulates. A program is not a
-thing of a different kind, wired in from outside; it is a record, indistinguishable in substance from
-the records it reads and writes. That single identity --- program is data --- is what lets a procedure
-be stored alongside its inputs, inspected as if it were a number, transformed by another procedure, and
-fed to itself. Everything that makes a modern computer general rather than special-purpose follows from
-it.
+The floor, then, has two parts, and both are honest. The rungs themselves --- the shared value, the little
+computer --- are \emph{built}, laid down by construction like everything in this act; no theorem, just
+assembly. And the halting horizon is a \emph{boundary}: not a thing the instrument builds and not a thing it
+proves, but a limit it acknowledges and works within. That second kind of floor --- a wall the machine meets and
+names honestly --- will recur through the book wherever the instrument reaches the edge of what any finite
+computer can do, and each time the discipline is the same: state the boundary, respect it, claim nothing beyond
+it, and above all do not dress the meeting of a limit as the proving of one.
 
-The consequences are worth spelling out, because they are the difference between a calculator and a
-computer. Because a program is a record, one program can read another, or read itself; it can rewrite a
-procedure before running it, generate a new procedure as it goes, or hand a procedure to a further
-procedure as input. A construction that kept programs in a separate, privileged compartment --- wired
-in, unreadable, unchangeable --- could compute only the fixed function it was born with. By making the
-program out of the same Facts as the data, the construction gets the whole of general-purpose
-computation for free: anything it can do to a number it can do to a procedure, because in the end they
-are the same kind of thing. The price of that generality is exactly the danger the next section
-confronts, for a procedure that can manipulate procedures can manipulate itself.
-
-A worked example shows the cycle turning. Take a source that says, in effect, \emph{flip the bit
-three times}. Compilation encodes it as three identical tick-opcodes laid in order. Execution then runs
-them: the state starts at zero, the first opcode ticks it to one, the second back to zero, the third to
-one again, and the program halts with the bit reading one. Nothing in this required anything the
-earlier chapters had not already built --- the bit is a Fact-built register, the opcodes are encoded
-Facts, the order is the same order the number tower carried, and the halt is the computation of the
-fourth chapter reaching its end. The computer is not a new primitive. It is the old primitives wired
-together so that one record can direct the transformation of another.
-
-Two features of this cycle reach back to earlier chapters and are worth naming. The compilation step is
-where the source's claimed intent is fixed into a definite sequence of opcodes; after it, what runs is
-the encoding, not the story the source told about itself, and any gap between the two is the program's
-first chance to surprise its author. The execution step inherits the honesty of the fourth chapter: it
-runs the opcodes one tick at a time and halts when it halts, with no guarantee issued in advance that it
-will. A program that ticks forever is not forbidden by the construction; it is simply a procedure for
-which the halting precondition was never established, and running it is the same act of faith every
-computation here rests on. The computer does not escape the limits of computation by being assembled
-out of Facts. It inherits them.
-
-\section{Abstraction and the limit of self-reference}
-\label{se:abstraction-and-self-reference}
-
-A computer earns its power by abstraction: by hiding a procedure that works behind a name, so that a
-solved problem can be reused as though it were a primitive. The construction builds this too, wrapping
-compiled-and-executed procedures into abstractions that later procedures can call without seeing
-inside. But abstraction is where a construction can hurt itself, because a procedure that can name and
-manipulate procedures can be turned to name and manipulate \emph{itself}, and self-reference is the
-doorway to paradox.
-
-The construction guards the doorway with a move that is worth watching closely, because it is the last
-structural decision of the part. It declines to make the order relation on abstractions total. Where
-every earlier kind of number could be compared to every other, the order on abstractions is defined
-only for certain pairs and deliberately left undefined for others --- in particular, for the pairs that
-would let an abstraction ask a ranking question about itself. The motivation is the Berry paradox: the
-smallest positive integer not definable in fewer than eleven words, a phrase of ten words that appears
-to define exactly the integer it says is undefinable. The resolution is to deny that ``definable'' is
-well defined across the board, and the construction makes the same move for ``less than'': by refusing
-to rank certain self-referential pairs, it never lets the paradoxical question be posed, and the
-machinery stays consistent.
-
-Concretely, the construction can still compare two abstractions when their relationship is settled by
-their structure --- a procedure that merely compiles ranks below one that compiles and then executes,
-and such pairs are compared freely. What it refuses to do is rank an abstraction against a question
-about its own ranking. The moment a comparison would require an abstraction to evaluate a predicate that
-mentions that very comparison, the order returns no verdict at all, and the recursion that would
-otherwise spiral into the Berry paradox has nowhere to begin. The fence is not a patch bolted on after
-the fact; it is built into the definition of the order, which is total exactly where comparison is safe
-and silent exactly where it is not.
-
-This is the experiment the construction files under the paradoxes of time travel, and its lesson is
-exact. The apparent paradoxes --- a message to one's own past, a procedure that ranks itself --- are
-not glimpses of exotic physics but pathologies of over-resolution: they arise only when incompatible
-refinements are treated as simultaneously admissible, when an observer tries to handle its own index as
-an ordinary piece of data. The construction follows the warning that Godel made famous: a system that
-can encode statements about its own inferences cannot, in general, stay globally consistent, so the
-honest course is to keep certain self-referential configurations outside the admissible structure
-altogether. The partial order is exactly that fence. It costs a little --- not everything can be
-compared --- and it buys the one thing a computer built to reason must not spend: its own consistency.
-
-\section{What is demonstrated, and what is assumed}
-\label{se:demonstrated-assumed-ch6}
-
-Following the experimental library's discipline one last time for this part, we separate the built from
-the named, and note first what the chapter pointedly did \emph{not} use: no instrument, no dial, no
-readout of any kind. The computer here is a finite mathematical object, and every step of it was grown
-from Facts.
-
-What is demonstrated is a working stored-program computer in miniature. There is equivalence under
-procedure, funging procedures that act alike. There is a binary digit, tanged from the three truth-
-states by excluding one, with a finite tick for its dynamics. There is a program built of the same
-Facts as its data --- a source, an encoding into opcodes, a compilation, an execution that ticks the
-state to a halt. And there is an abstraction mechanism made safe by a deliberately partial order that
-keeps self-reference out. All of it is finite, decidable, and free of any physical device.
-
-\begin{quote}
-\emph{A note on the labels.} The physical names in this chapter are bridges, as before. Calling the
-excluded state a \emph{neutrino}, the exclusion a \emph{Pauli exclusion}, and the finite tick a
-\emph{fluxion} aligns the construction with the language of physics and the calculus, and each is
-earned only to the extent its analogy holds: the construction exhibits the informational shape of the
-excluded state and the discrete increment, and claims nothing about supernovae or about Newton's
-dynamics. The one genuinely load-bearing identification is internal, not physical --- that a stored
-program is the same kind of object as its data --- and that one is not an analogy but a fact about the
-construction.
-
-\end{quote}
-
-What is assumed is the interpretive thread the whole part has been spending: that these finite
-constructions deserve the physical and computational names laid over them. With the computer built, the
-account has closed a loop --- the construction that began by measuring whether a single Fact is true has
-assembled, out of nothing but such Facts, a machine capable of running the very procedures that decide
-them. The chapters that follow leave the foundations behind and turn to what the machine is for: the
-calculus of variations, the stationary actions, and the small finite field theory that the opening
-chapters promised were waiting at the end of the construction.
+The reading is brief. To treat a thing numerically is to gain enormous power and, with it, to inherit the
+computation's own honesty about its reach. The instrument can compute whatever comes with a guarantee that it
+finishes; it cannot manufacture that guarantee; and the boundary between the two is not the machine's failing but
+the shape of computation as such. What the machine computes, once it is inside the fence, is as much the world's
+as any count it has taken --- the result of a halting computation is fixed, not chosen, handed back the same on
+every honest run. What the machine cannot do is see, from outside, which computations lie inside the fence and
+which run forever. It must be told. And being told, rather than pretending to know, is the whole of the
+instrument's honesty at the first horizon it meets.

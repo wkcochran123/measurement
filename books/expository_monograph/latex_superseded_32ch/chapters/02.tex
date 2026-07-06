@@ -1,0 +1,240 @@
+\chapter{The Number Tower up to the Reals}
+\label{chap:the-number-tower}
+
+The previous chapter produced a number from a Fact and the ability to tell two carriers apart. That
+is the bottom rung. This chapter climbs. From counting it builds ratios, from ratios sequences, from
+sequences limits, and at the top it reaches for the continuum --- and there it stops, because the
+continuum is the one thing a finite construction is never allowed to finish. What arrives at the top
+is not the real line but a \emph{sample} of it: a finite symbol that stands in for a number it can
+only ever approach. The chapter is the story of that climb, of the single ordering idea that repeats
+at every rung, and of the honest gap that opens at the summit between what is built and what is named.
+
+Two threads run the length of it, so it helps to name them in advance. The first is a braid: each new
+kind of number is produced in the same three-part move, a process that does some work, a property that
+certifies the work was admissible, and the new kind of number that results --- and then the new kind
+of number becomes the raw material for the next turn of the braid. The second is a single comparison
+rule, present in every order from the counting numbers to the samples, that already contains the
+distinction between two ways of measuring. We meet both at the first rung.
+
+\section{The braid that climbs}
+\label{se:the-braid-that-climbs}
+
+Counting is not as simple as it looks, and the development is careful to say which counting it means.
+There are two ways to count a collection. One is to iterate: to walk along it, laying down one more
+unit at each step, producing an enumeration. The other is to decompose: to break the collection into
+like pieces and ask how many pieces there are, producing a cardinality. The two coincide on simple
+finite heaps and diverge the moment the pieces themselves start to demand description, and the first
+rung of the tower --- the counting numbers --- is built deliberately on iteration, with decomposition
+held back for later. A counting number is assembled from the Facts and base numbers of the previous
+chapter, and counting proper is the act of stepping a carrier forward and recording that one more
+event has occurred.
+
+This is the first full turn of the braid, and the shape is worth fixing because it recurs unchanged
+all the way up. There is a \emph{process} --- here a counting process, which holds a carrier, a
+running count, and a step that advances it. There is a \emph{property} --- here admissibility, which
+certifies that a proposed comparison ran to completion without turning up a counterexample, so that
+the order ``remembered which way was forward'' even as what is being counted changes. And there is the
+resulting \emph{kind of number}, the counting numbers themselves. Every rung above this one is the
+same: a process that does the work, a property that certifies it, a new kind of number that results
+and then feeds the next rung. The tower is not a list of definitions; it is one move, performed over
+and over, each time on the output of the last.
+
+The order on the counting numbers introduces the second thread, and it is the more important one. To
+compare two counting numbers you look at their leading Facts and at the magnitudes beneath them, and
+the rule splits on whether the two Facts decided the same way. If they agree, the comparison is passed
+to the magnitudes \emph{in the same direction} --- the larger magnitude is the larger number. If they
+disagree, the comparison is passed to the magnitudes \emph{reversed} --- the larger magnitude is now
+the smaller number. The development calls these two branches covariant and contravariant, and the
+words are exact. A same-sign comparison runs covariantly, with the magnitude; an opposite-sign
+comparison runs contravariantly, against it. This is not a quirk of the counting numbers. The same
+two-branch rule --- agree and run with, disagree and run against --- appears in the order at every rung
+of the tower, and by the time we reach the top it will have grown into a claim about measurement
+itself: that there are exactly two ways to learn a quantity, one that reads it off passively through a
+carrier and one that pushes against it to find where it gives way.
+
+What kind of fact is a count, though? Here the development leans on Aristotle, and the experiment filed
+under his name draws a line the rest of the chapter respects. Aristotle separated a thing's substance
+from its predicates: what a thing \emph{is} comes before how it is classified, ordered, or named, and
+no change in description brings a new thing into being. Transposed into the setting of records, the
+events in a ledger are the substance and the enumeration laid over them is the predicate. The factual
+content lives in the events: which distinctions actually occurred. The enumeration --- the particular
+way they are indexed, the order they are listed in, the alphabet their symbols are drawn from --- is
+descriptive structure, and reindexing it, renaming its symbols, or rescaling its display changes the
+manner of expression without adding or removing a single recorded distinction. The counting numbers,
+on this reading, are not themselves facts about the world; they are an admissible way of expressing
+facts that reside, underneath, in the bare record of what was distinguished from what. Holding that
+line --- counts express, events record --- is what keeps the tower honest as it grows, because every
+rung above adds expressive power, and expressive power is exactly the thing one can mistake for
+content.
+
+\section{Beyond binary}
+\label{se:beyond-binary}
+
+The base number speaks in two symbols, true and false. The world it is asked to describe does not, and
+the next rungs of the tower are the development teaching its numbers to carry finer distinctions
+without smuggling in any structure it has not built. A ratio is the first step: a number expressed as
+a relation between two others, which lets the construction name magnitudes that no single string of
+binary digits lands on exactly. A sequence is the next: an indexed run of numbers, the raw form in
+which an unfolding quantity gets recorded one entry at a time. With each step the construction adds a
+property to the braid --- countability, that the entries can be put in correspondence with the
+counting numbers and so enumerated; then encoding, that distinctions can be packed into a carrier and
+pulled back out by refinement --- and at no point does it help itself to a completed infinite object.
+A sequence is always, at any moment, a finite record with a rule for extending it.
+
+The experiment that carries this rung is Fessenden and Shannon's, and it is the cleanest possible
+statement of what ``beyond binary'' is allowed to mean. Fessenden's early radio showed that voice ---
+continuous, analog, nothing like a bit --- could be carried by partitioning a physical response into a
+finite set of admissible distinctions, enough to reconstruct speech at the far end. What travelled was
+never the waveform itself; it was a structured modulation that an instrument could discretize and
+decode. Shannon then stripped the idea to its bones and named the thing that did the work: a channel,
+a refinement structure that supports several symbolic distinctions at once, independently of whatever
+physical form happens to realize them. That is precisely the license the tower needs. Going beyond two
+symbols does not require a continuum hiding inside the carrier; it requires only that a finite set of
+distinctions can be embedded and recovered by refinement, with distinct decompositions allowed to
+coexist as long as they stay disjoint. The development's numbers become multi-valued in exactly
+Shannon's sense --- a channel's worth of admissible distinctions --- and not a hair more. The carrier
+gains capacity; it does not gain a hidden infinity.
+
+It is worth pausing on a small surprise the development records here: the same pile of Facts now stands
+for three kinds of number at once. Read one way it is a binary string, read another a counting number,
+read a third a ratio, and each reading comes with its own ordering. One construction, three numbers,
+three orders, all sharing the covariant--contravariant comparison of the previous section. This triple
+reading is not a trick; it is the reason the climb can continue without the tower toppling. Because a
+single finite object is already carrying several arithmetic identities, the construction can move
+between counting, proportion, and sequence without ever having to build a bridge from one completed
+number system to another. It just reads the same record under a finer description.
+
+\section{The continuum you can only approach}
+\label{se:the-continuum-you-can-only-approach}
+
+Now the climb reaches for its limit, and the careful language of the development becomes the whole
+point. A limit, in ordinary mathematics, is a completed thing: the number a sequence converges to,
+sitting at the end of an infinite process as though the process had finished. The construction cannot
+say that, because it never finishes anything. So it says less, and means more. A limiting process is
+modelled as a crowd of terms agreeing to stop wandering apart --- a Cauchy condition stated without
+the ontology of a destination. The process holds a current ratio, its best finite value so far, and a
+separate record of where the terms are tending, and it inches forward, as the development puts it, by
+whole in the sequence and by part in the value: one more entry recorded, the approximation refined one
+notch finer. At no stage is there a completed real number in hand. There is a finite record and a rule
+for tightening it.
+
+A concrete look at the representation shows why the gap at the top is unavoidable rather than a failure
+of nerve. In the development's binary numerals the number one is the all-true string, every digit
+deciding the same way; the smallest magnitude the construction can represent at a given depth is the
+all-false string, every digit deciding the other. Read as whole numbers there is no zero among them ---
+one is the least of the whole numbers and nothing lies beneath it. Read as parts, the all-false string
+is the smallest representable fraction, and the construction simply \emph{defines} that to be zero,
+exploiting the very ambiguity between reading a numeral as a whole and reading it as a part. The same
+ambiguity is what turns the familiar identity that a string of nines equals the next whole number from
+a paradox into a plain fact about representation: two different finite descriptions can name the same
+limit, and the construction treats agreement in the limit, not identity of description, as the thing
+that counts. The reals it climbs toward are exactly the numbers at which description runs out and only
+the limit remains.
+
+What, then, is the number at the top? The development gives it a deliberately modest name and a
+deliberately strange construction. It calls the object a residue: what is left over once a process has
+almost explained itself, the difference between the story the model tells and the measurement actually
+taken. And the number that carries a residue --- the construction's stand-in for a single real number
+--- is a \emph{sample}: an admissible symbol for one normal number, built as a pair, a limit in time
+and a limit in value, ordered by the same covariant--contravariant rule now applied across both
+coordinates at once. A sample does not complete the continuum and does not pretend to. In the
+development's own blunt gloss, a sample proves nothing; it gives the next stage something small enough
+to work with. The real number arrives as a finite token standing in for an object that the
+construction has shown how to approach as closely as one likes and has pointedly declined to claim it
+has reached.
+
+It is worth saying exactly what act produces such a number, because it is the act on which the rest of
+this book turns. The construction has two ways of handling a characteristic it can decide. It can
+\emph{tange}: single out the one member that bears the characteristic, individuating it from everything
+else by the decision that holds of it alone. And it can \emph{funge}: pool together everything that
+shares a characteristic, collecting like with like into one bagged object, indifferent to whatever else
+distinguishes its members. Tange selects; funge pools. A real number is built from both at once, as a
+cut. To specify a real is to decide, for every rational, whether it falls below the number being named:
+tange the rationals where that decision returns true, funge all the rest together as the ones where it
+returns false, and the dividing line between the two heaps simply \emph{is} the real. Nothing else is;
+the number is that decision, made everywhere along the domain of rationals.
+
+This is construction running in the opposite direction from the one that built the counting numbers.
+Those were assembled covariantly, by accumulation --- start from a floor and lay down one more unit,
+and one more, raising the number from below. A cut is the contravariant move: it fixes a number not by
+accumulating it but by deciding it against an entire domain laid out in advance, carving the rationals
+into a below and an above. So the construction has its own covariant and contravariant --- accumulate
+versus cut --- and they are the building counterpart of the same/different cadence that runs through
+every comparison in the tower; the two covariances, of building and of comparing, are faces of one
+rule. The decisive point is that tange and funge are things the construction actually \emph{does},
+because every characteristic it uses is decidable. Selecting the member that bears a property and
+pooling the ones that share it are not powers it must assume it has; they are operations it carries
+out, one decision at a time. That is exactly why the continuum can be \emph{approached} by finite
+deciding rather than seized whole: a cut across all the rationals is an unbounded amount of deciding,
+so the construction never completes one, only ever tightening a finite stretch of it. That is the
+reason, underneath the Fourier--Nyquist density law met just below, that a finite record can come
+arbitrarily close to a real and never arrive.
+
+Two experiments hold this summit between them, and they pull in opposite and complementary directions.
+The first is Archimedes and Proust's. Archimedes measured by embedding finite acts of comparison
+inside an idealized continuous geometry --- continua that are never themselves recorded, but that
+furnish a smooth framework for reasoning about what the balance reports. The instrument commits few
+facts; the mathematics carries the burden of continuity. Proust stands at the opposite pole: his law
+of definite proportions grounds chemical fact in whole numbers, refusing any appeal to intermediate
+fractional composition, so that mixtures which look continuous are licensed as facts only at integer
+ratios. Put side by side, the two mark the exact division the tower has been building toward.
+Continuity is an expressive scaffold --- legitimate, useful, never recorded --- and facthood is
+discrete. The development keeps the scaffold and records only the integers, which is why its real
+numbers can be samples without apology: the continuum was always the framework one reasons in, never
+the thing the ledger holds.
+
+The second experiment is Fourier and Nyquist's, and it supplies the law that makes a sample
+trustworthy rather than wishful. Fourier showed that a complicated quantity can be decomposed into
+orthogonal components; Nyquist found the condition under which that decomposition can be inverted ---
+under which the original can actually be recovered from a record of samples. The lesson is that
+decomposition is cheap and recovery is not: no component may be reconstructed unless the record commits
+its distinctions densely enough to support the inversion. This is the precise sense in which the
+tower's summit is honest. The sample at the top is allowed to stand in for a real number exactly to
+the degree that the refinement beneath it is dense enough to pin that number down; refine too coarsely
+and the sample names nothing recoverable. Recovery depends not on the continuity of the underlying
+process --- which is never recorded --- but on whether the finite refinements committed to the ledger
+are sufficient. The continuum is approached, and the rate of approach is itself subject to a law.
+
+\section{What is demonstrated, and what is assumed}
+\label{se:demonstrated-assumed-ch2}
+
+As in the previous chapter, the experimental library's own discipline supplies the template for the
+close: each experiment is a finite model that states how much it is entitled to claim and is candid
+about what it does not. The tower invites a particularly tempting overclaim --- it really does look
+like it has built the real numbers --- so the separation matters more here than anywhere yet.
+
+What is demonstrated is a graded sequence of kinds of number, each produced by the same process /
+property / type braid and each carrying a total, computable order. The orders all obey one comparison
+rule, covariant on agreement and contravariant on disagreement, and that rule is a genuine theorem of
+the construction, not a stipulation laid on from outside. The limiting machinery is real: there is a
+finite Cauchy-style process, a well-defined notion of residue, and a sample object --- a real specified by a decidable cut,
+tange below and funge above --- that is a perfectly concrete finite symbol with a perfectly concrete
+order. Everything in the tower can be computed,
+compared, and checked, and none of it requires a completed infinity at any step.
+
+\begin{quote}
+\emph{A note on the labels.} The word \emph{real number} is the heaviest label in this chapter, and it
+is a modeling choice, not a theorem. What the construction builds is a sample: a finite token, a pair
+of approaching limits, with a residue attached. To call that token a real number is to assert that the
+finite thing in hand stands faithfully for the continuous thing it approaches --- and that assertion
+is licensed by the Fourier--Nyquist law only to the extent the refinement is dense enough to recover
+what is named. The continuum itself is never constructed; it is the expressive scaffold of
+Archimedes, reasoned within and never recorded. Likewise, reading the covariant branch as passive
+measurement and the contravariant branch as active measurement is an interpretation laid over a single
+comparison rule. The arithmetic is earned; the physical and Platonic names are bridges, and they carry
+the weight of their analogies and no more.
+\end{quote}
+
+What is assumed is therefore the same kind of bridge met in the first chapter, now bearing more load.
+We assume that a finite sample, refined densely enough, may be treated as the real number it
+approaches --- that the gap the construction leaves open between approximation and limit is one a
+working scientist is entitled to step across, having been told exactly how wide it is. And we assume
+that the two branches of every order are worth reading as the two faces of measurement, the passive and
+the active, rather than as a bookkeeping convenience. These are the assumptions that turn a tower of
+finite symbols into a usable number system. Note what is conspicuously \emph{not} among them: any
+power to choose. The selection and pooling the construction leans on --- tange and funge --- are
+operations it performs by deciding, never capacities it must be granted, so the continuum is approached
+without assuming a single choice the construction could not itself carry out. With the numbers in hand, up to and including a disciplined
+stand-in for the reals, the construction is ready to put them to work --- and the first work it takes
+up is the one quantity it has so far only gestured at, the one the counting process kept making us wait
+for: time.

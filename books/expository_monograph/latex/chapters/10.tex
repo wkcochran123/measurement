@@ -1,182 +1,102 @@
-\chapter{The Euler--Lagrange Equivalence}
-\label{chap:euler-lagrange-equivalence}
+\chapter{Where the Distinction Collapses}
 
-The previous chapter brought a path to the edge of stationarity: a path is stationary when its first
-variation vanishes, and flatness is the clean, exact form of that vanishing. This chapter takes the
-last step, from stationarity to the equation that physics writes for it --- the Euler--Lagrange
-equation --- and in taking it the construction arrives at the one place in the entire book where it
-cannot proceed by building. Everything until now has been exhibited: every number constructed, every
-theorem proved by producing a witness, every characteristic inhabited. Here, for the first and only
-time, the construction reaches a question it cannot answer by computing, and instead of pretending
-otherwise it does the honest thing --- it names the assumption, grants it openly, and marks exactly
-where the building stops. The long constructive discipline of Part I exists so that this single
-assumption, when it finally appears, has nowhere to hide.
+The instrument has folded back onto its own truth, and now it takes the step off the ledge. It aims its founding
+act --- the telling-apart of two things --- at the barest object there is: a truth, and its denial, with nothing
+beneath either to hold them apart. And the distinction fails. Not by the machine's error, not by a bug to be
+patched, but by a genuine result, forced and unavoidable, that the machine proves against itself. At the very
+bottom, where the instrument tried to keep the affirmation of a truth distinct from its negation, the two are
+driven together and cannot be kept apart. This is the collapse, and it is the crisis the whole apex was climbing
+toward. It is also, and this is the turn to hold onto, the second thing the book has genuinely \emph{proved}.
 
-\section{The equivalence, proved}
-\label{se:the-equivalence-proved}
+\section{The Second Proof, and What It Proves}
 
-Start with what is solid, because most of the chapter is. The construction forms the discrete
-derivative of its action --- the finite, exact analogue of differentiating a functional --- and writes
-down the discrete Euler--Lagrange equation: the statement that this derivative's residual vanishes in
-every variation direction. Then it proves the equivalence the chapter is named for. A path is
-stationary if and only if it satisfies the discrete Euler--Lagrange equation. Both directions are
-genuine theorems. Stationarity implies the equation, because the action's change in any direction
-decomposes into a part the derivative captures and a remainder the construction shows is identically
-zero, so flatness forces the derivative to vanish. And the equation implies stationarity, by running
-the same decomposition in reverse. Neither direction assumes anything; each is established by
-exhibiting the algebra that connects the two descriptions.
+The claim, stated carefully, is this: at the level of bare truth, the assertion that the truth holds and the
+assertion that the truth fails are forced to be the same, and the machine proves it.
 
-It is worth seeing the shape of that proof, because it explains why this direction costs nothing while
-the next costs everything. The change in the action along a variation splits cleanly into two pieces: a
-part the discrete derivative is defined to capture --- the leading response, the analogue of a
-derivative times a displacement --- and a remainder, everything the leading part misses. The whole
-point of the construction's setup is that, for its finite gauge action, this remainder is identically
-zero: the discrete derivative captures the change exactly, with nothing left over. Once that is in
-hand, the equivalence is immediate in both directions. If the path is flat, the total change is zero,
-and since the remainder is already zero the derivative's part must be zero too --- the Euler--Lagrange
-equation. If the derivative's part is zero, then since the remainder is zero the total change is zero
-in that direction --- flatness. The equivalence is exact precisely because the remainder is exactly
-zero, and that exactness is what a finite construction can deliver. What it cannot deliver comes next.
+You will feel the ground change under this sentence, exactly as it changed at the partition four chapters back,
+because we are once more in the presence of a demonstration rather than a definition. The last several chapters
+built; this one proves. What is at stake could have gone otherwise --- one can imagine a construction in which
+affirmation and denial stay comfortably apart all the way down --- and the machine settles that it does not go
+otherwise here, closes the gap, and leaves the collapse standing as a theorem. So say it plainly, in the book's
+own grade: this is PROVED. It is the second proof, and where the first was a clean partition you could welcome,
+this one is a crisis you must survive.
 
-This equivalence is the formal heart of the variational method, and it is worth seeing what it buys.
-Stationarity is a global, geometric condition --- the path sits where the action is flat. The
-Euler--Lagrange equation is a local, algebraic one --- a derivative vanishes. The theorem says these
-are the same condition wearing different clothes, so a problem stated as ``find the flat path'' can be
-solved as ``solve this equation,'' which is the move that makes the calculus of variations a
-calculational tool rather than a description. The construction tanges the solutions by the trait the
-equation tests --- the residual vanishes here --- and the equivalence guarantees that the paths so
-selected are exactly the stationary ones. The experiment under the name of minimizing variations is
-the classical original of this: form the functional whose value is an integral over a path, take its
-first variation under a fixed-endpoint perturbation, set it to zero, and the Euler--Lagrange equation
-falls out as the condition the integrand must satisfy. The construction's finite version reaches the
-same equation by the same logic, with exact differences in place of derivatives.
+Now read the proof against the machine, because its shape is the whole of its meaning and it is easy to
+misunderstand. At the level of bare truth, a proposition has no interior. To hold a truth, at this level, is not
+to hold an elaborate object with parts to inspect; it is only to hold that the thing is so, a single indivisible
+fact of holding. Two ways of holding the same bare truth cannot differ, because there is nothing about them to
+differ in --- the machine, examining them, finds them interchangeable, indistinguishable, subsingleton, a word
+that means \emph{at most one, all copies the same}. So far, so harmless: of course two holdings of the same truth
+are the same. But now consider the \emph{denial}. To hold that the truth fails is, at this same bare level, again
+a single indivisible fact of holding, with no interior, at most one, all copies the same. The affirmation is a
+subsingleton. The denial is a subsingleton. And the machine carries a principle --- propositional extensionality,
+the rule that two claims which hold in exactly the same circumstances are the very same claim --- which, applied
+here, has no room to tell these two apart. The assertion \emph{this bare truth is a single indivisible holding}
+and the assertion \emph{its denial is a single indivisible holding} are, as claims, satisfied under the same
+conditions, and so the principle equates them. The affirmation's shape and the negation's shape are proven
+identical. The distinction between them, at this level, is gone.
 
-A concrete reading anchors the abstraction. A free particle, in the classical theory, has an action
-that totals its kinetic energy along a path, and the Euler--Lagrange equation its first variation
-yields is simply that its acceleration is zero --- it moves in a straight line at constant speed. The
-global statement, that the path is the one making the action stationary, and the local statement, that
-the acceleration vanishes at every instant, are by the equivalence the same statement: one checked by
-comparing whole paths, the other by solving an equation point by point. The construction's discrete
-version replaces the instants with a finite mesh and the acceleration with a discrete second
-difference, but the equivalence is the same, and it is this that lets the next chapter solve real
-problems --- it never has to search the space of paths, only to solve the equation the equivalence
-hands it.
+Slow the crucial step down once more, because everything turns on its being understood rather than merely
+conceded. The principle the machine carries does not say that things which look alike are the same; it says that
+claims satisfied under exactly the same conditions are the same claim. Ordinarily that principle is a friend: it
+lets the machine identify two descriptions of one situation without fuss. Here it turns on the machine, because
+the condition under which \emph{this bare truth is a single featureless holding} is satisfied is precisely the
+condition under which \emph{its denial is a single featureless holding} is satisfied --- namely always, vacuously,
+by both, since at this level each is trivially a single featureless holding whether the underlying truth stands or
+falls. Two claims satisfied under identical conditions; the principle equates them; and the equation lands on the
+affirmation-form and the negation-form themselves. The very tool that let the machine identify things safely at
+every rung below now, turned on the barest truth, identifies the two things it most needed to keep apart. The tool
+did not malfunction. It worked exactly as designed, on an input where working as designed is the disaster.
 
-\section{The one thing it cannot decide}
-\label{se:the-one-thing-it-cannot-decide}
+Be exact about what has and has not just been proved, because the temptation to overread it is enormous and the
+book's honesty depends on resisting. The machine has \emph{not} proved that true is false --- not that a thing and
+its opposite are the same thing, not some contradiction that would bring the whole construction down in rubble.
+What it has proved is narrower and stranger: that at the bare level of truth, the \emph{form} of affirming and the
+\emph{form} of denying cannot be told apart, because each is a single featureless holding and the machine's
+principle of identity has nothing to grip. It is a collapse of the \emph{distinction}, not a collapse into
+contradiction. The machine has not fallen into paradox. It has discovered that its one native tool --- the telling
+of things apart --- has no purchase at the foundation of truth, where the things to be told apart have been worn
+down to featureless points. The proof is real, the footprint is exactly the principle of extensionality and
+nothing heavier, and the result is a crisis of method, not a crisis of consistency.
 
-Now the catch, and it is the most important paragraph in the book. The equivalence is proved, but to
-\emph{use} it --- to decide whether a given path actually is stationary --- you must check that its
-first variation vanishes. Not in one direction, not in a thousand: in \emph{every} variation
-direction. And the space of variation directions is infinite. The construction can compute the change
-of the action in any single direction it is handed, exactly and finitely; what it cannot do is range
-over all directions at once and certify that the change is zero in every one of them. Stationarity is
-a universal claim quantified over an infinite domain, and a universal over an infinite domain is not a
-computation. No finite procedure can check infinitely many cases, and the construction has spent ten
-chapters refusing to pretend otherwise.
+\section{The Crisis, and the Shape of Its Answer}
 
-It is worth being exact about the asymmetry, because it is the crux. Testing one variation is a finite
-act: hand the construction a direction, and it computes the action's change along it and reports
-whether that change is zero, all in bounded time. Testing every variation is not a finite act, and no
-amount of cleverness makes it one, because the variations are not a list that can be walked to its end
---- they form an infinite space, and a property that must hold throughout an infinite space is a
-universally quantified claim, not a value to be computed. This is the precise boundary of the whole
-construction. Everything it has built has been, at bottom, a finite procedure returning a verdict;
-stationarity is the first object it needs that is not of that kind. It is a claim \emph{about} all the
-finite procedures at once, and that is a different and larger thing than any one of them.
+So the floor is PROVED, and what it proves is a collapse. Sit with the difficulty honestly, because the next
+chapter is nothing but the answer to it, and the answer only lands if the difficulty is felt.
 
-So here it stops building, and grants. At precisely the point where deciding stationarity would require
-the one thing a finite construction cannot supply --- a completed survey of infinitely many directions
---- the construction introduces a single axiom. It consults an oracle: it assumes, without proof and
-without apology, that the question ``is this path stationary?'' has a decidable answer, even though it
-cannot compute that answer itself. This one axiom is the sole assumption of its kind in the entire
-development. Everything else was built; this alone is granted. And the construction is precise about
-what the assumption \emph{is} in physical terms. The decidability of stationarity is the law of
-motion: the claim that nature, faced with a path, does settle whether that path is the one it takes.
-The oracle is the construction's way of saying that this settling happens --- that there is a fact of
-the matter about which path is stationary --- while admitting in the same breath that establishing the
-fact is the one query nature answers and a finite procedure cannot.
+The instrument was built on a single primitive: it can tell two things apart. It spent eight chapters showing how
+much can be raised on that one power --- number, measurement, the whole apparatus of reading the world. Then it
+turned the power on its own foundation, and the power failed. At the bottom, where truth meets its denial, there
+is nothing to tell apart \emph{by}, and the machine has proved there is nothing. The founding act does not reach
+all the way down. Distinction, the thing the whole book stands on, runs out exactly at the place the whole book
+was trying to ground itself.
 
-What the oracle supplies is narrow and specific, and saying exactly what it is keeps the assumption
-from sprawling. It does not assert that the path is stationary; it asserts only that the question has a
-definite answer --- that stationarity, for any given path, is either true or false and can be treated
-as decided. The construction still computes everything it can: it forms the action, the derivative, the
-direct residual, the equivalence. The oracle enters at exactly one point, supplying the single bit the
-construction cannot produce --- whether the residual vanishes across all directions --- and from that
-one granted bit the rest follows by ordinary computation. It is the smallest assumption that does the
-job: not a path handed down, not a law postulated in full, but one decision, about one universal,
-granted because the alternative is to pretend a finite survey can be infinite.
+This looks, for a moment, like ruin. It is not; it is the setup for the single most important move in the
+construction, and the collapse is precisely what makes that move necessary rather than optional. Return to the
+promise made in the very first chapter: distinguishability is primitive, and sameness is manufactured --- made,
+once, at a cost, by a definite act, and never had for free. Here, at last, is why sameness cannot be had for free.
+If the machine could simply \emph{find} sameness at the foundation --- read off, by its native power, that two
+things are the same --- it would need the foundation to sustain a distinction fine enough to certify the finding.
+And the foundation cannot. The collapse has just proved it cannot. At the very place sameness would have to be
+established, the tool for establishing it has no grip. So sameness cannot be found at the bottom. It can only be
+\emph{put} there --- declared, by a single sanctioned act that reaches past the collapsed distinction and installs
+an identity the machine could never have read off on its own.
 
-\begin{quote}
-\emph{A note on the labels --- and the one assumption.} This is the chapter to read slowly. The
-construction has, to here, assumed almost nothing: proposition extensionality, the quotient that
-collapses observationally equal readings, and the bridges of physical naming, all declared as they
-arose. The Euler--Lagrange oracle is different in kind. It is not a naming and not a convenience; it is
-a genuine logical assumption, the assertion that a universal quantifier over an infinite variation
-space can be decided when no finite computation can decide it. It is the one
-non-constructive grant the whole development needs --- the assertion that this universal, which no
-finite procedure can survey, is nonetheless \emph{decided} --- and it wears, in physics, the name of the
-law of motion: the single query that nature answers and the finite construction cannot. The entire constructive discipline of the first part ---
-doing without the excluded middle, without a free power to choose, building every other result by
-exhibiting a witness --- exists to make this one assumption stand out in full relief. It is the load
-the whole structure hangs from, and the honest thing is to point at it directly: \emph{here, and only
-here, the construction stops proving and starts trusting.}
-\end{quote}
+That act is the needle, and the next chapter is where the instrument pays for it. Everything in the book has been
+walking toward that payment, and now we know why the payment is unavoidable: not because the builders chose to
+charge for sameness out of some austerity, but because the machine has \emph{proved}, against its own foundation,
+that sameness is the one thing its native powers cannot supply. The distinction collapsed. Something must be done,
+by hand and at a price, to manufacture from that collapse the one identity the whole construction turns on.
 
-It helps to see why the wall is exactly where it is, because it is the same wall the book has hit
-before. To confirm a path stationary, the construction can test direction after direction and find
-the action flat in each --- the first, the second, the thousandth --- and every test that passes is a
-small confirmation, exactly as a study accumulates agreeing trials. But no finite number of passing
-tests is the universal claim; the next direction could always be the one where the action is not flat,
-and the construction can no more rule that out by testing than Hume's observer could rule out a future
-counterexample, or than a finite reader could certify that a stream of bits was lawful rather than
-noise. The oracle is the assumption that the survey, could it be completed, would come back clean ---
-the leap from ``flat in every direction I have checked'' to ``flat in every direction,'' which is
-precisely the leap a finite construction is not entitled to take and which physics takes every time it
-writes a law of motion. The construction funges all those directions into a single universal and then
-grants, by axiom, that the universal has a definite truth-value. That grant is the whole of what it
-assumes here.
+Feel, before the next chapter arrives, how narrow the escape has to be. The machine cannot simply overrule the
+collapse --- it \emph{proved} the collapse, and a construction does not get to un-prove its own theorems when they
+turn inconvenient. Nor can it live with the collapse untreated, because a foundation on which affirmation and
+denial are indistinguishable is a foundation on which nothing further can be reliably built. So the way forward
+cannot be to deny the collapse and cannot be to ignore it; it must somehow be to accept the collapse and build
+past it anyway --- installing, by a single sanctioned act, the one identity the collapse showed could never be
+found. That is a needle's-eye of a requirement: accept the proof, keep every distinction the machine can still
+honestly make, and manufacture exactly the one it cannot. The next chapter is the threading of it.
 
-With that one grant in place, the rest is bookkeeping the construction does for itself. Given the
-oracle's verdict that the residual vanishes across all directions, and its own computation that the
-direct residual vanishes too, it forms the total residual and reads off a residue: zero --- the bare
-truth that true equals true --- when the path is stationary, and the path's own endpoint, a non-zero
-marker, when it is not. The residue is the construction's honest receipt. It records, in one value it
-can compare and check, whether the path it was handed obeys the law of motion, and it carries in its
-provenance the exact debt it owes --- one consulted oracle, and nothing else. Every later result that
-reads a residue of zero is reading, folded into that zero, the single assumption this chapter made and
-the long chain of computation that surrounds it.
-
-\section{What is demonstrated, and what is assumed}
-\label{se:demonstrated-assumed-ch10}
-
-This chapter's separation of built from assumed is the most important one in the book, so it is worth
-stating with no softening.
-
-What is demonstrated is the equivalence itself, and it is fully proved. The discrete Euler--Lagrange
-equation is a finite, exact object; the theorem that stationarity holds if and only if the equation
-holds is established in both directions by exhibiting the decomposition that connects them; and the
-residue the construction reads off a path is zero exactly when the total residual vanishes, which is a
-computation it can carry out once the decision is in hand. None of this is assumed. The machinery that
-turns ``flat'' into ``solves an equation'' is genuine, checked mathematics.
-
-A word on why the assumption sits here, in the open, rather than dissolved quietly into the machinery.
-A less scrupulous construction could have buried the same leap in a dozen places --- assuming, here and
-there, that some search terminates or some property holds throughout an infinite range --- and no
-single line would have looked like an axiom. This construction does the opposite. It drives every such
-need down to one point, the decidability of stationarity, and grants it once, by a named axiom, so that
-the whole development's debt is a single declared line a reader can find, weigh, and refuse if she
-likes. That localization is itself the achievement of Part I's discipline: not that the construction
-assumes little, though it does, but that it assumes its little in one visible place. An honest theory
-is not one with no assumptions; it is one whose assumptions you can point to.
-
-What is assumed is a single thing, and it is the keystone: that stationarity --- a universal over the
-infinite space of variations --- is decidable, granted by the one custom axiom the development
-contains. This is the construction's only appeal to something it cannot compute, and it is deliberately
-the law of motion itself, the physical fact that there is a path nature takes. Every honest reckoning
-of this book's claims turns on holding that line clearly. The construction demonstrates, with nothing
-up its sleeve, that the variational and the differential descriptions of motion are the same; it
-assumes, openly and exactly once, that the question those descriptions pose has an answer. The next
-chapter turns from this principle to practice --- to actually solving the Euler--Lagrange equation with
-splines, with the Lanczos iteration, and over real partitions --- on the strength of the one assumption
-named here, and no other.
+What
+that something is, how little of it there is, and what exactly it costs, is the summit of the book, and we have
+finally climbed to the foot of it.

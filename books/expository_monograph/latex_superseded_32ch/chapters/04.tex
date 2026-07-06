@@ -1,0 +1,216 @@
+\chapter{Computation, Representation, and the Chaitin Barrier}
+\label{chap:computation-chaitin}
+
+The construction can now count, order, approximate the continuum, and keep time. The natural next
+question is what it can \emph{compute} --- and the honest answer comes with a hard edge. There is
+exactly one barrier to computation known to be physical rather than merely practical, and the
+construction walks straight up to it and calibrates against it. This chapter is about that edge: what
+computation is in a finite world, where the symbols it manipulates actually come from, why noise and
+signal are produced by the very same process, and how, at the bottom, the resolution of any
+instrument runs out. Along the way the construction takes its first real step toward calculus, by
+noticing that an observation is a velocity and the area under it is an integral.
+
+\section{Computation and representation}
+\label{se:computation-and-representation}
+
+A computation, in the construction, is not a magic box. It is a sequential refinement of a single
+record: a process that reads the record, appends one more determined step, and repeats, traversing its
+own internal structure in a controlled order. This is exactly the content of the experiment the
+construction files under Turing's name --- that any finite-dimensional process can be represented as
+the orderly refinement of one record, provided the instrument can decompose its structure and walk
+through it in a coordinated way. There is nothing here but the disciplined extension of a ledger, one
+step at a time, which is all a Turing machine ever was.
+
+What the construction is scrupulously honest about is that it gets no guardrails. To run a computation
+it must already know that the computation halts; nothing inside the process warns it if the process
+will run forever. The halting problem is not an external theorem imported for color --- it is the
+ambient condition under which every computation here operates, the standing reminder that a finite
+device cannot be promised in advance that its own procedure will terminate. The construction proceeds
+anyway, on processes it has reason to believe halt, and is candid that the belief is a precondition,
+not a guarantee.
+
+There is a deeper honesty in this section, and it is the one most worth carrying forward. Where do the
+symbols a computation manipulates come from? Not from mathematics. The construction states this
+flatly: a representation is not given by the mathematics; the symbols come from elsewhere. A choice of
+how to write a quantity --- which marks stand for which distinctions --- is imposed from outside the
+formal system, by a community that agrees a pattern in one head is congruent to a pattern in another
+and in the devices that carry it between minds. Mathematics can manipulate a representation once it has one, but it
+cannot hand itself the representation to begin with; that act is prior to the formal system and
+external to it. This is not a defect. It is the seam where a formal construction meets the world that
+uses it, and naming the seam honestly is what lets the later chapters attach physical words to formal
+objects without pretending the words were derived.
+
+A small illustration fixes the point. The same quantity --- three --- can be written as a row of three
+tally marks, as a digit string in base ten, as a different digit string in base two, as a position on
+a dial, as a length of rod, or as a pattern of voltages on a wire. Mathematics has no opinion about
+which of these is the number; they are all equally faithful, and the relations among numbers hold
+identically whichever is chosen. The choice between them is made for reasons that live entirely outside
+the mathematics --- legibility to a human eye, cheapness to a circuit, robustness against noise on a
+line --- by whoever has to read the result. This is what it means to say representation is not given:
+the formal system supplies the structure, the world supplies the symbols, and the two meet only by an
+agreement the formal system cannot itself certify. Every later chapter that pins a physical name to a
+constructed object spends exactly this kind of agreement, and it is cleaner to see the currency now.
+
+\section{Calibrating against Chaitin}
+\label{se:calibrating-against-chaitin}
+
+To find the edge of computation you need something to push against, and the construction chooses the
+hardest object available: Chaitin's constant, the probability that a random program halts. It is a
+genuinely strange number --- in one sense completely determined, a single real number fixed by the
+machinery, and in another sense completely unpredictable, its digits encoding the answer to the
+halting problem and so computable by no finite procedure. The construction does not try to compute it,
+which would be hopeless. It uses it as a calibration target: the one universally definable constant
+whose behavior is perfectly lawful and perfectly unforeseeable at once, the standing physical barrier
+that any honest account of computation must run into rather than around.
+
+The reason this matters for measurement is the chapter's sharpest point, and it is the lesson of the
+experiment under Chaitin's name. A record may consist entirely of finite, distinguishable, perfectly
+admissible events and still admit no extractable law whatsoever. Piling up facts does not guarantee
+that a truth will emerge from them; some finite records are simply lawless, noise all the way down,
+and no amount of further refinement will distill a rule from them because there is no rule there to
+distill. And here is the unsettling part: noise of this kind is produced by the \emph{same} process
+that produces signal. The construction generates a candidate sequence the only way it can, by
+refinement, and whether the result is meaningful signal or pure noise is not something the generating
+process can tell you. Signal and noise are the same act with different luck --- the construction \emph{funges} them into one
+process, the two set apart only by which way the luck fell.
+
+This puts the construction in the position of a gambler, and it is candid about the odds. Having
+generated a sequence by refinement, all it can do is bet that the sequence is lawful and watch the bet
+ride. Each further bit that comes out as predicted is a small payout, a little more evidence that a
+rule is present; each bit is equally a fresh chance to be wrong. There is no point at which the
+winnings convert into a certificate, because the very object it calibrates against --- Chaitin's
+constant --- is the standing proof that a perfectly definite sequence can be perfectly unforecastable.
+The construction does not find this discouraging; it finds it clarifying. Measurement has always been
+the accumulation of confirmations against the permanent possibility of refutation, and computation,
+pushed to its physical edge, simply makes the asymmetry impossible to look away from.
+
+\begin{quote}
+\emph{A worked check.} Suppose you and the construction each generate a stream of bits meant to be
+the same constant, computed independently. Compare them in order. As long as they agree, bit after
+bit, your confidence that you are both computing the same lawful object climbs --- this is the study
+of the previous chapter, funging the agreeing trials and rounding toward ``true''. But the agreement is
+never a proof. A single disagreement at the thousandth bit, or a permutation that reveals you were
+computing the same bits in a different order, collapses the verdict, and nothing in the stream warned
+you it was coming. You cannot certify in advance that the stream is signal; you can only watch it fail
+to be noise, for now. That asymmetry --- endless tentative confirmation, instant refutation --- is
+Chaitin's barrier made into a daily experience, and it is exactly Hume's induction from the last
+chapter wearing a computer's clothes.
+\end{quote}
+
+\section{The machine epsilon}
+\label{se:the-machine-epsilon}
+
+Every finite instrument has a smallest step it can resolve, a floor below which two readings are the
+same reading. The construction makes this floor explicit and calls it, in effect, its machine epsilon:
+the least distinguishable increment, the size of the smallest move the apparatus can certify as a
+move at all. Below the machine epsilon there is no signal and no noise, only sameness; it is the scale
+at which the Berkeley--Galileo lesson of the first chapter bites, where two descriptions that differ
+by less than epsilon are, for this instrument, one description.
+
+With a resolution floor in hand, the construction can compare two quantities the way a finite device
+actually does: by bisection. To decide which of two numbers is larger, or to locate a value, it
+repeatedly tanges the half that must contain the answer --- selecting, by a single decidable question,
+which side of a split the target lies on --- and discards the other half, halving the remaining
+uncertainty at each step. The procedure does not run forever; it runs until the surviving interval is
+narrower than the machine epsilon, at which point the remaining ambiguity is below resolution and the
+comparison simply stops with a verdict. Comparison, in a finite world, is not an act of seeing which
+number is bigger; it is a finite sequence of decidable cuts that terminates when further cutting would
+fall beneath the instrument's own floor.
+
+Made concrete, the procedure is the one every instrument with a dial secretly runs. To pin a value
+known to lie between zero and one, ask first whether it exceeds one half; the answer, a single
+decidable bit, tanges the surviving half. Ask next whether it exceeds the midpoint of that half, and
+again, and again, each question chopping the remaining interval in two and each answer a clean yes or
+no. After ten such questions the interval is a thousandth of its original width; after twenty, a
+millionth. The construction does not press on forever: it stops the first time the surviving interval
+is narrower than its machine epsilon, because at that point the two ends of the interval are the same
+reading and no further question could separate them. The value has not been found exactly --- exactly
+is not available to a finite device --- but it has been cornered to within the instrument's resolution,
+which is all a measurement ever claims.
+
+\section{From observation to area}
+\label{se:from-observation-to-area}
+
+The chapter's last move is the one that opens the door to everything calculus-shaped that follows, and
+it begins by noticing what an observation actually is. The construction models the simplest possible
+physical event --- the moment a thing at rest begins to move --- and reads the observation off as a
+\emph{velocity}: zero while the object is held, one once it slips. An observation is not a static
+quantity but a rate, the first derivative of position dressed as a measurement. The event it watches
+is the onset of motion under static friction, and the construction chooses that example for a precise
+reason: it is the cleanest case of something a finite ledger cannot predict.
+
+This is the experiment under the names of Da Vinci and Coulomb. The force needed to hold a thing
+still rises with the load by Coulomb's simple law, but the exact instant at which static friction
+gives way and the object slips is a finite, distinguishable event that cannot be read off from any
+amount of prior refinement of the ledger. You can press harder and harder, refining the record
+indefinitely, and the record will not tell you when the slip will come; only the slip itself, when it
+happens, settles it. This unpredictable onset is what the construction means by a curvature term: the
+genuinely nonlinear part of a process, the part that cannot be reached by extrapolating the smooth
+trend, the place where the second-order structure asserts itself. Friction is the construction's first
+curvature, and it earns the name by being exactly the thing linear prediction misses.
+
+Once an observation is a velocity, the quantity that accumulates it is an area, and the construction
+builds that next: the area under a sequence of observations, assembled the same way numbers were, one
+strip at a time. That area is a first integral --- velocity accumulated into displacement, the
+integral that the calculus of the coming chapters will build on, and the place the construction first
+admits that it is doing integration rather than mere counting. It is worth noting that area arrives
+with the opposite orientation from the numbers of the first chapter: where those accumulated most
+significant part first, the integral accumulates from the other end, the contravariant counterpart to
+the covariant tower --- the two ways of building meeting again, now as derivative and integral.
+
+It is worth saying why the construction reaches derivative and integral here, two chapters before it
+strictly needs them. A velocity is what a measurement reports when it watches a quantity change; an
+area is what accumulates when those reports are summed back up. The two are inverse operations, and
+between them they let the construction ask the question the whole middle of the book turns on: not what
+a quantity \emph{is} at an instant, but how it \emph{responds} when its surroundings are varied, and
+what survives unchanged when they are. Reading observation as a rate and area as its integral is the
+minimal equipment for that question --- a way to register change and a way to total it --- and having
+built both from finite strips, the construction can treat a measured history as something with a slope
+and an area rather than a bare list of numbers. That is the threshold of the calculus of variations,
+and the friction example was the construction stepping up to it: a curvature term is precisely what a
+theory of how things vary must be able to see.
+
+A coda to the friction example guards against the wrong conclusion. The experiment under Laplace's
+name observes that, relative to a single committed record, each next refinement looks uniquely
+determined by its predecessors --- the record appears to run like Laplace's demon, the future fixed by
+the past. The construction keeps the appearance and demotes the demon. Determinism here is a property
+of a finite record's internal consistency, true relative to the anchors already committed, not a
+cosmic guarantee that the next observation cannot surprise. The demon is real but local, and the
+Chaitin barrier is the reminder that its writ does not extend past the edge of what has actually been
+recorded.
+
+\section{What is demonstrated, and what is assumed}
+\label{se:demonstrated-assumed-ch4}
+
+Keeping to the experimental library's discipline, we separate the built from the named. The chapter
+reaches toward large ideas --- computation, determinism, the calculus --- and the modest truth
+underneath them is worth isolating.
+
+What is demonstrated is a finite theory of computation and its first calculus. There is a notion of
+computation as the sequential refinement of one record, with the halting problem honestly marked as
+the condition it runs under. There is a calibration object, Chaitin's constant, used not by being
+computed but by being pushed against. There is a machine epsilon, a least resolvable step, and a
+bisection comparison that tanges its way to a verdict and halts at that floor. And there is an
+observation read as a velocity and an area built as its first integral, both finite, both computable,
+both checkable. None of this assumes infinite precision, an oracle for halting, or a completed
+continuum.
+
+\begin{quote}
+\emph{A note on the labels.} Several names in this chapter are bridges, not theorems. Calling the
+unpredictable onset of slip a \emph{curvature term}, an observation a \emph{velocity}, and an
+accumulated area a \emph{first integral} are modeling choices that align the finite constructions with
+the vocabulary of physics and calculus; the constructions are earned, the physical readings are laid
+over them. The deepest assumption in the chapter is the one the construction states outright: that a
+\emph{representation} can be had at all. The symbols come from outside the mathematics, and the whole
+edifice runs on the prior, unproven agreement that a pattern here stands for a pattern there. That
+agreement is the price of admission, paid before the first line of construction, and honesty requires
+naming it as an assumption rather than a result.
+\end{quote}
+
+What is assumed, then, is a representation to compute with and a belief that the procedures run will
+halt --- the two things a finite computer cannot give itself and must be handed. With those granted,
+the construction has computation, a resolution floor, and the first integral of a velocity, which is
+precisely the equipment needed to take the next step: to treat a measurement not as a single reading
+but as something that varies, and to ask how it responds when its surroundings are changed. That is
+the move into gauge, superposition, and the local present, and it is where the construction stops
+describing arithmetic and starts describing fields.

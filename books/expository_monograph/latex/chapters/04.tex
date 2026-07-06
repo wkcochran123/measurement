@@ -1,216 +1,128 @@
-\chapter{Computation, Representation, and the Chaitin Barrier}
-\label{chap:computation-chaitin}
+\chapter{The Two Acts on a Difference}
 
-The construction can now count, order, approximate the continuum, and keep time. The natural next
-question is what it can \emph{compute} --- and the honest answer comes with a hard edge. There is
-exactly one barrier to computation known to be physical rather than merely practical, and the
-construction walks straight up to it and calibrates against it. This chapter is about that edge: what
-computation is in a finite world, where the symbols it manipulates actually come from, why noise and
-signal are produced by the very same process, and how, at the bottom, the resolution of any
-instrument runs out. Along the way the construction takes its first real step toward calculus, by
-noticing that an observation is a velocity and the area under it is an integral.
+We have a machine that can tell two things apart, count the differences it admits, and approach a real number
+through finite conditions. In all of it, one thing has been done to differences over and over without ever being
+named: they have been \emph{handled}. Admitted or not admitted, counted up or counted down, used to sharpen a cut
+or set aside --- at every step the instrument has been doing something with each difference it meets. This
+chapter stops and asks what, exactly, there is to do with a difference, and gives an answer that turns out to be
+complete: there are two acts, and only two, and everything the machine will ever do to a record is one of them or
+the other. The two acts are the spine of the book. Every later chapter leans on them, so this chapter names them
+and, for the first time, \emph{proves} something about them.
 
-\section{Computation and representation}
-\label{se:computation-and-representation}
+That word deserves a pause, because it marks a change in the ground. Three chapters running, the instrument has
+been built and nothing has been proved --- the first difference, the tally, the finite approach were all laid
+down, posited, true by construction and not by argument. Here that ends. The claim this chapter makes about the
+two acts is not a definition we are free to arrange as we like; it is a statement that could have been false, and
+the machine settles it, closes the gap, and leaves it true. You will feel the floor change under you as you read.
+It is the moment the first chapter promised: the instrument stops merely being assembled and begins, for the
+first time, to know something it did not simply decide.
 
-A computation, in the construction, is not a magic box. It is a sequential refinement of a single
-record: a process that reads the record, appends one more determined step, and repeats, traversing its
-own internal structure in a controlled order. This is exactly the content of the experiment the
-construction files under Turing's name --- that any finite-dimensional process can be represented as
-the orderly refinement of one record, provided the instrument can decompose its structure and walk
-through it in a coordinated way. There is nothing here but the disciplined extension of a ledger, one
-step at a time, which is all a Turing machine ever was.
+\section{Naming the Two Acts}
 
-What the construction is scrupulously honest about is that it gets no guardrails. To run a computation
-it must already know that the computation halts; nothing inside the process warns it if the process
-will run forever. The halting problem is not an external theorem imported for color --- it is the
-ambient condition under which every computation here operates, the standing reminder that a finite
-device cannot be promised in advance that its own procedure will terminate. The construction proceeds
-anyway, on processes it has reason to believe halt, and is candid that the belief is a precondition,
-not a guarantee.
+Here are the two acts, and they need names, because the book will use them on every page from here on and there
+are no ordinary words that carry exactly the right meaning. When you meet a difference, you can do one of two
+things with it.
 
-There is a deeper honesty in this section, and it is the one most worth carrying forward. Where do the
-symbols a computation manipulates come from? Not from mathematics. The construction states this
-flatly: a representation is not given by the mathematics; the symbols come from elsewhere. A choice of
-how to write a quantity --- which marks stand for which distinctions --- is imposed from outside the
-formal system, by a community that agrees a pattern in one head is congruent to a pattern in another
-and in the devices that carry it between minds. Mathematics can manipulate a representation once it has one, but it
-cannot hand itself the representation to begin with; that act is prior to the formal system and
-external to it. This is not a defect. It is the seam where a formal construction meets the world that
-uses it, and naming the seam honestly is what lets the later chapters attach physical words to formal
-objects without pretending the words were derived.
+You can \emph{funge} it: pool it in with its like, count it as one more of a kind, let it swell a total that does
+not care which particular difference this was, only that it was another of the same sort. To funge is to bag
+together by a shared characteristic --- to treat this difference as interchangeable with the others that share
+its kind, and to keep only the count. When the machine tallied differences in the last chapters, it was funging:
+each admitted difference lost its individuality and became one more unit in a total.
 
-A small illustration fixes the point. The same quantity --- three --- can be written as a row of three
-tally marks, as a digit string in base ten, as a different digit string in base two, as a position on
-a dial, as a length of rod, or as a pattern of voltages on a wire. Mathematics has no opinion about
-which of these is the number; they are all equally faithful, and the relations among numbers hold
-identically whichever is chosen. The choice between them is made for reasons that live entirely outside
-the mathematics --- legibility to a human eye, cheapness to a circuit, robustness against noise on a
-line --- by whoever has to read the result. This is what it means to say representation is not given:
-the formal system supplies the structure, the world supplies the symbols, and the two meet only by an
-agreement the formal system cannot itself certify. Every later chapter that pins a physical name to a
-constructed object spends exactly this kind of agreement, and it is cleaner to see the currency now.
+Or you can \emph{tange} it: select it out \emph{by} a characteristic, single it as this one and not the others,
+mark it with a label that picks it from the crowd. To tange is to distinguish and hold apart --- to care exactly
+which difference this is, to pin it with a tag, to refuse to let it dissolve into a count. When the machine hung a
+label on a fact to keep it from its neighbors, back at the very first rung, it was tanging.
 
-\section{Calibrating against Chaitin}
-\label{se:calibrating-against-chaitin}
+Two acts: funge, to pool by a likeness and keep the count; tange, to select by a characteristic and keep the
+label. Pool or pick. Count or name. They are opposites in the plainest way --- one throws away which-one and
+keeps how-many, the other throws away how-many and keeps which-one --- and between them there is no third thing
+to do with a difference. That completeness is not a slogan. It is what the chapter proves.
 
-To find the edge of computation you need something to push against, and the construction chooses the
-hardest object available: Chaitin's constant, the probability that a random program halts. It is a
-genuinely strange number --- in one sense completely determined, a single real number fixed by the
-machinery, and in another sense completely unpredictable, its digits encoding the answer to the
-halting problem and so computable by no finite procedure. The construction does not try to compute it,
-which would be hopeless. It uses it as a calibration target: the one universally definable constant
-whose behavior is perfectly lawful and perfectly unforeseeable at once, the standing physical barrier
-that any honest account of computation must run into rather than around.
+\section{The First Theorem: The Two Acts Account for the Whole}
 
-The reason this matters for measurement is the chapter's sharpest point, and it is the lesson of the
-experiment under Chaitin's name. A record may consist entirely of finite, distinguishable, perfectly
-admissible events and still admit no extractable law whatsoever. Piling up facts does not guarantee
-that a truth will emerge from them; some finite records are simply lawless, noise all the way down,
-and no amount of further refinement will distill a rule from them because there is no rule there to
-distill. And here is the unsettling part: noise of this kind is produced by the \emph{same} process
-that produces signal. The construction generates a candidate sequence the only way it can, by
-refinement, and whether the result is meaningful signal or pure noise is not something the generating
-process can tell you. Signal and noise are the same act with different luck --- the construction \emph{funges} them into one
-process, the two set apart only by which way the luck fell.
+The claim, sharpened to the thing that can be proved, is this: run any record past the instrument, and every mark
+on it is read exactly once --- either funged or tanged --- and the funged ones and the tanged ones together
+account for the entire record, with nothing read twice and nothing left unread.
 
-This puts the construction in the position of a gambler, and it is candid about the odds. Having
-generated a sequence by refinement, all it can do is bet that the sequence is lawful and watch the bet
-ride. Each further bit that comes out as predicted is a small payout, a little more evidence that a
-rule is present; each bit is equally a fresh chance to be wrong. There is no point at which the
-winnings convert into a certificate, because the very object it calibrates against --- Chaitin's
-constant --- is the standing proof that a perfectly definite sequence can be perfectly unforecastable.
-The construction does not find this discouraging; it finds it clarifying. Measurement has always been
-the accumulation of confirmations against the permanent possibility of refutation, and computation,
-pushed to its physical edge, simply makes the asymmetry impossible to look away from.
+Now read that against the machine, and watch the ground change, because this is the book's first genuine
+demonstration. Take a record --- a tape of marks, however long. The instrument passes along it and, at each mark,
+makes a single decision: does this mark carry a truth to be pooled into the count, or does it turn the crank,
+selected out as a distinguished one? Each mark gets exactly one of these two readings; there is no mark that is
+both and none that is neither, because the decision is made by the same decidable truth we have carried since the
+first rung --- it settles, one way or the other, for every mark. Tally the marks that were pooled. Tally the
+marks that were selected. The claim is that these two tallies, added, come to the length of the whole record ---
+that the count of the funged plus the count of the tanged is exactly the count of the marks, no more and no less.
 
-\begin{quote}
-\emph{A worked check.} Suppose you and the construction each generate a stream of bits meant to be
-the same constant, computed independently. Compare them in order. As long as they agree, bit after
-bit, your confidence that you are both computing the same lawful object climbs --- this is the study
-of the previous chapter, funging the agreeing trials and rounding toward ``true''. But the agreement is
-never a proof. A single disagreement at the thousandth bit, or a permutation that reveals you were
-computing the same bits in a different order, collapses the verdict, and nothing in the stream warned
-you it was coming. You cannot certify in advance that the stream is signal; you can only watch it fail
-to be noise, for now. That asymmetry --- endless tentative confirmation, instant refutation --- is
-Chaitin's barrier made into a daily experience, and it is exactly Hume's induction from the last
-chapter wearing a computer's clothes.
-\end{quote}
+And the machine proves it. Not by inspection of one record, not by trying a few and trusting the pattern, but for
+every record whatsoever, by an argument that runs along the tape mark by mark and leaves no gap: at each mark the
+two tallies together advance by exactly one, matching the one mark just read, and so however long the record
+runs, the two tallies keep exact pace with its length and meet it precisely at the end. There is no record on
+which this could fail. The two acts partition the whole --- every mark falls to one act or the other, and the two
+counts sum to the total --- and that partition is a theorem, closed and settled, the first the book has earned.
 
-\section{The machine epsilon}
-\label{se:the-machine-epsilon}
+The exhaustiveness is the part worth dwelling on, because it is what makes the two acts a \emph{spine} and not
+merely two things among many the machine might happen to do. The theorem does not say that funging and tanging
+are two common ways to handle a difference; it says they are the \emph{only} ways --- that between the pool and
+the pick there is no third act, no leftover mode of handling that slips past the partition. Every mark is read,
+and every reading is one of the two. That is why the rest of the book can lean on the pair so heavily without
+ever glancing over its shoulder: when a later chapter says that some operation on a record either preserved the
+count or moved a label, it is not offering a convenient classification that might quietly have exceptions. It is
+invoking a proved dichotomy. There are two acts on a difference, exactly two, and the machine has shown it.
+Completeness of that kind is rare and it is load-bearing, and it was worth a theorem to nail down.
 
-Every finite instrument has a smallest step it can resolve, a floor below which two readings are the
-same reading. The construction makes this floor explicit and calls it, in effect, its machine epsilon:
-the least distinguishable increment, the size of the smallest move the apparatus can certify as a
-move at all. Below the machine epsilon there is no signal and no noise, only sameness; it is the scale
-at which the Berkeley--Galileo lesson of the first chapter bites, where two descriptions that differ
-by less than epsilon are, for this instrument, one description.
+Feel what has happened to the floor. In the last three chapters, when the instrument said something, it was
+telling you how it had been built. Now, when it says the two acts account for the whole record, it is telling you
+something it \emph{found} --- something that had to be shown, that a doubter could have doubted, and that the
+machine has put beyond doubt by a finite argument you could follow to its end. The distinction is not decoration.
+It is the difference between a definition and a demonstration, between the posited and the proved, and from here
+on the book will be scrupulous about which of the two any given claim is, because the whole value of a
+construction like this lies in never letting the one be mistaken for the other. This chapter's central claim is
+proved. Hold that; it is rarer in the pages ahead than you might expect, and worth more each time it appears.
 
-With a resolution floor in hand, the construction can compare two quantities the way a finite device
-actually does: by bisection. To decide which of two numbers is larger, or to locate a value, it
-repeatedly tanges the half that must contain the answer --- selecting, by a single decidable question,
-which side of a split the target lies on --- and discards the other half, halving the remaining
-uncertainty at each step. The procedure does not run forever; it runs until the surviving interval is
-narrower than the machine epsilon, at which point the remaining ambiguity is below resolution and the
-comparison simply stops with a verdict. Comparison, in a finite world, is not an act of seeing which
-number is bigger; it is a finite sequence of decidable cuts that terminates when further cutting would
-fall beneath the instrument's own floor.
+\section{Which Act Is the World's}
 
-Made concrete, the procedure is the one every instrument with a dial secretly runs. To pin a value
-known to lie between zero and one, ask first whether it exceeds one half; the answer, a single
-decidable bit, tanges the surviving half. Ask next whether it exceeds the midpoint of that half, and
-again, and again, each question chopping the remaining interval in two and each answer a clean yes or
-no. After ten such questions the interval is a thousandth of its original width; after twenty, a
-millionth. The construction does not press on forever: it stops the first time the surviving interval
-is narrower than its machine epsilon, because at that point the two ends of the interval are the same
-reading and no further question could separate them. The value has not been found exactly --- exactly
-is not available to a finite device --- but it has been cornered to within the instrument's resolution,
-which is all a measurement ever claims.
+So the partition is a theorem. Now comes the reading laid over it, and here the book asks for the care it will
+ask for whenever a meaning is advanced on top of a proof, because the reading is not itself proved and must not
+be dressed as though it were.
 
-\section{From observation to area}
-\label{se:from-observation-to-area}
+The two acts are not symmetric in what they have to do with the world and the hand. Funging --- pooling by a
+likeness, keeping the count --- is the act that answers to the world. How many differences of a given kind there
+are is not up to the instrument; it counts, and the world supplies the differences to be counted, and the total
+that comes out is the world's, unchanged by any relabeling we might do. The funged count runs \emph{with} the
+thing it counts: change your names for the marks all you like, and the how-many does not move. Tanging ---
+selecting by a characteristic, keeping the label --- is the act that answers to us. Which difference we single
+out, which characteristic we pick to select on, which mark we tag as the distinguished one: these are the hand's,
+chosen and re-choosable, and they run \emph{against} the thing, in the sense that they are exactly the part of
+the account a change of convention moves. The tanged label is ours; the funged count is the world's.
 
-The chapter's last move is the one that opens the door to everything calculus-shaped that follows, and
-it begins by noticing what an observation actually is. The construction models the simplest possible
-physical event --- the moment a thing at rest begins to move --- and reads the observation off as a
-\emph{velocity}: zero while the object is held, one once it slips. An observation is not a static
-quantity but a rate, the first derivative of position dressed as a measurement. The event it watches
-is the onset of motion under static friction, and the construction chooses that example for a precise
-reason: it is the cleanest case of something a finite ledger cannot predict.
+That is the interpretive key the whole book turns on, and it is worth being exact about its status, because the
+book's honesty depends on the exactness. What is \emph{proved} is the partition: that every mark is read once,
+funged or tanged, and the two account for the whole. That the funged side is the world's and the tanged side is
+ours is not a further theorem; it is a reading, advanced on top of the proved partition, to be judged by how
+faithfully it tracks what the two acts actually do. It is a good reading --- it will earn its keep in every
+chapter that follows, and the count-that-survives-relabeling really is the durable, shared, world-facing thing,
+while the label-we-select-with really is the movable, chosen, ours-facing thing. But it is a reading, and the
+book will call it one, and will never let the strength of the partition beneath it be borrowed to prop up the
+interpretation on top. The theorem says the two acts are exhaustive and disjoint. The reading says one of them is
+the world's and the other is ours. The first is proved; the second is offered; and knowing which is which, here
+at the hinge of the whole construction, is the difference between a book that measures and a book that merely
+asserts.
 
-This is the experiment under the names of Da Vinci and Coulomb. The force needed to hold a thing
-still rises with the load by Coulomb's simple law, but the exact instant at which static friction
-gives way and the object slips is a finite, distinguishable event that cannot be read off from any
-amount of prior refinement of the ledger. You can press harder and harder, refining the record
-indefinitely, and the record will not tell you when the slip will come; only the slip itself, when it
-happens, settles it. This unpredictable onset is what the construction means by a curvature term: the
-genuinely nonlinear part of a process, the part that cannot be reached by extrapolating the smooth
-trend, the place where the second-order structure asserts itself. Friction is the construction's first
-curvature, and it earns the name by being exactly the thing linear prediction misses.
+There is a plain test that makes the reading concrete, and the book will apply it again and again, so it is worth
+installing here at its source. To find the world's part of any record, relabel everything you are free to relabel
+--- rename the marks, swap the tags, change every convention you chose --- and see what does not move. What
+survives the relabeling was never yours to move; it is the funged count, the world's part. What shifts was the
+tanged label, the hand's part, and it shifted precisely because it was a choice all along. This is not a further
+axiom smuggled in; it is only what the two acts already are, read through the question of what a change of
+convention can touch. The funged count is the invariant; the tanged label is the variable. Every measurement the
+instrument will ever report comes down, in the end, to running that one test --- holding still what the world
+fixed, and owning what it did not --- and the test is available at all only because the two acts, here, were
+proved to carve the record cleanly in two with nothing falling between.
 
-Once an observation is a velocity, the quantity that accumulates it is an area, and the construction
-builds that next: the area under a sequence of observations, assembled the same way numbers were, one
-strip at a time. That area is a first integral --- velocity accumulated into displacement, the
-integral that the calculus of the coming chapters will build on, and the place the construction first
-admits that it is doing integration rather than mere counting. It is worth noting that area arrives
-with the opposite orientation from the numbers of the first chapter: where those accumulated most
-significant part first, the integral accumulates from the other end, the contravariant counterpart to
-the covariant tower --- the two ways of building meeting again, now as derivative and integral.
-
-It is worth saying why the construction reaches derivative and integral here, two chapters before it
-strictly needs them. A velocity is what a measurement reports when it watches a quantity change; an
-area is what accumulates when those reports are summed back up. The two are inverse operations, and
-between them they let the construction ask the question the whole middle of the book turns on: not what
-a quantity \emph{is} at an instant, but how it \emph{responds} when its surroundings are varied, and
-what survives unchanged when they are. Reading observation as a rate and area as its integral is the
-minimal equipment for that question --- a way to register change and a way to total it --- and having
-built both from finite strips, the construction can treat a measured history as something with a slope
-and an area rather than a bare list of numbers. That is the threshold of the calculus of variations,
-and the friction example was the construction stepping up to it: a curvature term is precisely what a
-theory of how things vary must be able to see.
-
-A coda to the friction example guards against the wrong conclusion. The experiment under Laplace's
-name observes that, relative to a single committed record, each next refinement looks uniquely
-determined by its predecessors --- the record appears to run like Laplace's demon, the future fixed by
-the past. The construction keeps the appearance and demotes the demon. Determinism here is a property
-of a finite record's internal consistency, true relative to the anchors already committed, not a
-cosmic guarantee that the next observation cannot surprise. The demon is real but local, and the
-Chaitin barrier is the reminder that its writ does not extend past the edge of what has actually been
-recorded.
-
-\section{What is demonstrated, and what is assumed}
-\label{se:demonstrated-assumed-ch4}
-
-Keeping to the experimental library's discipline, we separate the built from the named. The chapter
-reaches toward large ideas --- computation, determinism, the calculus --- and the modest truth
-underneath them is worth isolating.
-
-What is demonstrated is a finite theory of computation and its first calculus. There is a notion of
-computation as the sequential refinement of one record, with the halting problem honestly marked as
-the condition it runs under. There is a calibration object, Chaitin's constant, used not by being
-computed but by being pushed against. There is a machine epsilon, a least resolvable step, and a
-bisection comparison that tanges its way to a verdict and halts at that floor. And there is an
-observation read as a velocity and an area built as its first integral, both finite, both computable,
-both checkable. None of this assumes infinite precision, an oracle for halting, or a completed
-continuum.
-
-\begin{quote}
-\emph{A note on the labels.} Several names in this chapter are bridges, not theorems. Calling the
-unpredictable onset of slip a \emph{curvature term}, an observation a \emph{velocity}, and an
-accumulated area a \emph{first integral} are modeling choices that align the finite constructions with
-the vocabulary of physics and calculus; the constructions are earned, the physical readings are laid
-over them. The deepest assumption in the chapter is the one the construction states outright: that a
-\emph{representation} can be had at all. The symbols come from outside the mathematics, and the whole
-edifice runs on the prior, unproven agreement that a pattern here stands for a pattern there. That
-agreement is the price of admission, paid before the first line of construction, and honesty requires
-naming it as an assumption rather than a result.
-\end{quote}
-
-What is assumed, then, is a representation to compute with and a belief that the procedures run will
-halt --- the two things a finite computer cannot give itself and must be handed. With those granted,
-the construction has computation, a resolution floor, and the first integral of a velocity, which is
-precisely the equipment needed to take the next step: to treat a measurement not as a single reading
-but as something that varies, and to ask how it responds when its surroundings are changed. That is
-the move into gauge, superposition, and the local present, and it is where the construction stops
-describing arithmetic and starts describing fields.
+Everything ahead is these two acts, at heavier and heavier stakes. When the instrument later reads a charge, a
+mass, a curvature off a record, it will be funging --- counting what survives relabeling, reporting the world's
+part. When it lays down a gauge, a frame, a convention, it will be tanging --- selecting with a label, spending
+the hand's part. The pool and the pick, the count and the name, the world's and the ours: named here, proved
+exhaustive here, and from here on simply used. This was the chapter to slow down for. It is the one the rest of
+the book stands on.

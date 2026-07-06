@@ -1,181 +1,60 @@
-\chapter{The First Stiffness Operator}
-\label{chap:first-stiffness-operator}
+\chapter{The Trace and the Slip}
 
-The single invariant of the second part was, for all its importance, an abstract object --- a number
-defined by an identity, with no particular shape on the page. This chapter gives it a body. It builds
-the first genuinely concrete operator of the book, a three-node mass-and-stiffness form, and shows that
-this small, writable object is the abstract energy of the twelfth chapter realized in the flesh:
-symmetric, positive, and definite, with its definiteness earned at an anchor exactly as before, and
-with a new property the abstract form did not display --- coercivity, the discrete shadow of the
-Poincar\'e inequality, which is what makes an operator something one can actually solve. With it the
-construction stops describing the invariant and starts computing with it.
+As the machine walks its loop, it leaves a record of the walking. Not the tally of turns from the last chapter ---
+a different record, finer, one entry for each rung the walk passes rather than one for each circuit completed.
+This is the trace: the tape the loop writes about its own descent, a step-by-step account of the construction as
+it is re-derived, kept so that the walk can later be run back and checked. And in the checking a question surfaces
+that the machine cannot answer from inside itself, a place where the construction, having built everything it
+could, finds it has reached a thing it must be handed rather than make. That handing is the quiet centre of this
+chapter, and it must be approached carefully, because it is a seed the book plants here and does not harvest for
+many rungs.
 
-\section{The three-node form}
-\label{se:the-three-node-form}
+\section{The Tape the Loop Writes, and the Test That Runs It}
 
-The operator lives on three nodes --- the smallest arrangement that has an interior --- and it pairs two
-contributions. A mass part registers how much is present at each node; a stiffness part registers how
-much each node differs from its neighbors, the tension in the links between them. Together they make a
-bilinear form: hand it two configurations of the three nodes and it returns a number, and hand it one
-configuration twice and it returns that configuration's energy. The construction proves the form has
-exactly the properties the twelfth chapter demanded of an energy. It is symmetric, so the pairing does
-not care which configuration is named first. It is positive, never returning a negative energy. And, on
-its diagonal, it is definite: the energy of a configuration is zero only when the configuration is the
-zero configuration, so the form detects zero. These are not assumed; each is a short theorem about the
-three-node form, and together they package it as an instance of the very SPD energy the twelfth chapter
-built abstractly. The abstract energy has become a concrete matrix one could write on a napkin.
+The claim is that the loop writes a class-by-class trace of its own descent, and that this trace can be run back
+up the ladder to test where the construction actually landed.
 
-It is worth seeing the form concretely, because its smallness is what makes it transparent. The
-stiffness energy of the three-node chain is the sum, over the two links, of the square of the difference
-across each link --- node one to node two, node two to node three --- with the mass part adding a small
-square at each node for what sits there. To evaluate the energy is to funge these contributions: pool
-the squared link-tensions and node-masses into a single non-negative total, the configuration's energy.
-The two squared differences are why the form is positive --- a square is never negative --- and the
-funging is why it adds rather than cancels. And the diagonal detects zero for a plain reason: the total
-is a sum of squares, so it can vanish only if every square vanishes, which forces every link-difference
-and every node-mass to zero, which, once the anchor of the next section is in place, forces the whole
-configuration to zero. The abstract claim that the energy detects zero is, on three nodes, the
-elementary fact that a sum of squares vanishes only when each square does.
+Against the machine, this is two more stretches of construction, inhabited like everything in the return. The
+first builds the trace: a second tape, one cell per class, on which the walk records what it did at each rung as
+it came down. Like every tape in this machine, it only ever appends --- the trace grows as the descent proceeds
+and never rewrites what it has already written, so that the record of the walk is a faithful, monotone account
+that can be read back in order. The second stretch builds the test. Having a trace of the descent, the machine can
+execute it in reverse: run back up the ladder, cell by cell, re-performing at each rung what the trace recorded,
+and watch for a \emph{slip} --- a place where re-running the construction does not land exactly where the trace
+said it should, where the walk back up and the walk that came down fail to agree. The slip test is how the machine
+audits its own loop: it does not merely assume the descent was faithful; it re-executes it against its own record
+and checks. All of this is built, not proved --- the trace inhabited cell by cell, the test constructed as a
+re-execution --- and it gives the machine something no single pass could: a way to hold its own walk up to its own
+record and see whether they match.
 
-That it is writable is the point of the chapter, and worth dwelling on. Until now the energy was a
-property the construction could reason about but not exhibit --- it knew an energy detected zero without
-having one in hand. The three-node form is one in hand: a finite operator with definite entries, the
-first place the single invariant appears as something to compute rather than something to characterize.
-Every richer operator the rest of the book builds --- the larger stiffness forms, the field operators,
-the boundary maps --- is this same object grown larger, and the habits established on three nodes carry
-up unchanged. The construction is learning to hold its invariant, not just to define it.
+\section{The Carrier the Machine Cannot Supply}
 
-The two parts of the form play complementary roles, and the names are not idle. The stiffness part is
-relational: it measures only differences, how much each node is displaced relative to its neighbors, and
-it is what couples the nodes into a single structure rather than three independent points --- which is
-also why it alone cannot see a uniform shift, since a shift changes no difference. The mass part is
-local: it measures each node on its own, what is present there regardless of its neighbors. In the small
-operator of this chapter the stiffness dominates and the mass is a gentle regularizer; in the field
-operators to come the balance between them becomes the very content of the physics, the stiffness
-carrying the spatial coupling and the mass carrying the rest energy of whatever the field describes. To
-have both, here, on three nodes, is to have the simplest object in which coupling and locality coexist.
+Here is the thing this chapter exists to name, and the naming must be exact and no more than exact. When the slip
+test runs the trace back up and reaches the top, it needs one thing to complete the accounting that the
+construction, from within itself, cannot provide. It needs to know which carrier the descent actually landed on
+--- the particular internal state the walk resolved to when it ran on real input, the thing that was only ever
+determined by the concrete running and is nowhere written on the tape in advance. And the machine cannot supply
+this from inside. It is not a value the construction can compute for itself, not a thing the trace already holds,
+not something any amount of internal work will yield. It is a carrier that must be handed in from outside --- given
+to the machine by whatever actually ran the descent, at the site where the loop was really walked rather than
+merely described.
 
-\section{The anchor earns its keep}
-\label{se:the-anchor-earns-its-keep}
+Mark exactly what is and is not being said, because the temptation to say more is strong and the book has staked a
+later reveal on saying less. The machine is \emph{not}, here, naming what supplies the carrier, nor what kind of
+thing the supplier is, nor by what right it supplies it. It is naming only the shape of a gap: that the
+construction reaches a point where it has done all it can from within and finds one thing still missing, a carrier
+it cannot generate and must be given. The instrument's stance toward that gap is the honest one it has kept at
+every limit --- it does not force a carrier it has no grounds to force, does not manufacture from within a thing
+that can only come from without; it measures where its descent landed and reports what it finds, leaving the
+supplying of the carrier to the outside that alone can supply it. There is a great deal more to say about that
+outside --- what it is, why it is the one thing the machine must be granted, how a construction that manufactures
+its own sameness nonetheless cannot manufacture this --- but all of it belongs to a chapter far down the loop,
+where the gap named here is finally given its due. For now the seed is planted and left as a seed: the machine, at
+the top of its own trace, needs a carrier it cannot supply, and it holds the place open for the world to fill.
 
-There is a flaw in the form as built, and it is the familiar one. The stiffness part sees only
-differences between neighboring nodes, so a configuration in which all three nodes are shifted by the
-same amount --- a rigid translation of the whole structure --- registers no stiffness energy at all:
-every difference is unchanged, every link equally taut, nothing strained. Such a uniform shift is a
-nonzero configuration with zero stiffness energy, which means the stiffness form, left to itself, has a
-nontrivial kernel and is only positive-semidefinite. It cannot tell a rigid translation from no
-configuration at all, blind along exactly that mode.
-
-The worked case is as simple as the flat line of the previous chapter. Take the configuration that sets
-all three nodes to the same value, say one. Node one differs from node two by nothing; node two from
-node three by nothing; every link is slack, every squared difference zero, and the stiffness energy is
-zero --- yet the configuration is plainly not the zero configuration, every node sitting at one. That is
-the kernel made visible: a whole one-parameter family of uniform configurations, all distinct, all at
-zero stiffness energy. Now pin node one to zero. The uniform configuration at value one violates the
-pin --- its first node is one, not zero --- and is struck from the admissible set; the only uniform
-configuration that survives is the one already at zero, which is the zero configuration. The kernel has
-collapsed to a point, and with the family gone the energy is positive on everything that remains. One
-pinned node converts a semidefinite form with a line of zeros into a definite one with a single zero,
-and the conversion costs exactly one committed boundary value.
-
-The cure is the anchor, and it is the same cure the twelfth chapter applied to the abstract energy.
-Pin one node --- commit a boundary value, fix where the structure is fastened --- and the rigid
-translation is no longer free: shifting all three nodes would move the pinned one, which the anchor
-forbids. The construction tanges the offending kernel by the one trait that exposes it, being a uniform
-mode the unanchored form cannot see, and the anchor removes it; the only configuration left with zero
-energy is the zero configuration, and the anchored form is genuinely positive-definite. The experiment
-on thermostatic control names what the anchored operator then does. An admissible ledger, it observes,
-self-regulates around its low-strain states: when the configuration drifts from the energy's minimum,
-the dynamics are biased back toward it. A positive-definite form has exactly one minimum, a single
-low-strain configuration that every nearby state is drawn toward, and the anchor is what fixes that
-minimum's location --- the setpoint the operator regulates to. Without the anchor there is no setpoint,
-only a flat valley the structure can slide along freely; with it, a definite bowl with a bottom the
-operator keeps returning to.
-
-\section{Discrete Poincar\'e}
-\label{se:discrete-poincare}
-
-Definiteness says the energy is zero only at zero; coercivity says more, and it is what the chapter adds
-to the story. The anchored form is coercive: the energy of a configuration bounds the configuration's
-size from below, so a state with small energy is necessarily a small state, with no way to be large and
-low-energy at once. This is the discrete form of the Poincar\'e inequality, proved here on the little
-graph of three nodes and their links, and it is the property that turns a definite operator into a
-solvable one. An operator that is bounded above and coercive below traps its solution between two walls;
-the solution cannot escape to infinity, cannot hide in a flat direction, and is therefore unique and
-findable. Coercivity is well-posedness made concrete.
-
-It helps to see why definiteness alone would not be enough, because the gap is the whole reason
-coercivity is named separately. A merely definite form is positive on every nonzero configuration, but
-it could in principle be \emph{arbitrarily small} on configurations that are nonetheless large --- a
-long, low ridge along which the energy creeps toward zero without ever reaching it. On such a form a
-solver could chase the energy down forever, the configuration growing without bound while the energy
-shrank, and the problem would have no findable answer. Coercivity forbids the ridge. By bounding the
-energy below by a fixed multiple of the configuration's size, it guarantees that large configurations
-have large energy, so the energy cannot be made small except by making the configuration small, and the
-search for a minimum is confined to a bounded region it cannot escape. On three anchored nodes the
-bound is easy to believe and the construction proves it; on the large operators to come it is the
-difference between a problem that can be solved and one that only looks like it can.
-
-The experiment on Anderson's effect supplies the physical reading, and it is a striking one. Transport
-through a medium, the experiment says, requires extending a local refinement into a coherent global
-pattern, and where the local rules are incoherent --- disordered --- no such global extension exists and
-propagation simply fails. Coercivity is the construction's guarantee against that failure. A coercive
-operator is one whose local stiffnesses cohere strongly enough that a configuration's global size is
-controlled by its local energy; the discrete Poincar\'e inequality is precisely the statement that the
-links bind tightly enough for a coherent whole to form. Lose coercivity --- let the kernel back in, let a
-direction go flat --- and the structure localizes, breaks into pieces that no longer constrain one
-another, exactly the failure of transport Anderson describes. The anchored, coercive three-node form is
-the smallest medium through which a signal can propagate coherently, and the chapter's inequalities are
-what certify that it can.
-
-\section{The operator joins the tower}
-\label{se:the-operator-joins-the-tower}
-
-One step remains, and it is bookkeeping in the best sense: the new operator has to take its place among
-everything built before it. The construction proves that the three-node form, once supported on the
-apparatus, is consistent with the residual tower of the first part --- its energy vanishes exactly when
-its activity does, so it reports nothing happening precisely when nothing is, in agreement with every
-other instrument in the stack. The operator is not a separate gadget bolted to the side of the
-construction; it is a citizen of it, slotting into the same tower of characteristics that the
-self-bootstrap inhabited, carrying the same residue discipline, answering to the same notion of zero.
-With that, the abstract invariant of the second part has been fully concretized: it is a writable,
-symmetric, positive-definite, coercive operator that lives in the construction's own apparatus and can
-be applied, composed, and measured like anything else there.
-
-This citizenship is more than tidiness; it is what lets the rest of the book treat operators as ordinary
-objects. Because the three-node form answers to the same notion of zero as everything else in the tower
---- reporting nothing when nothing is present, something when something is --- a later construction can
-hand it a configuration and trust the reading without re-deriving the apparatus around it. Operators
-built this way compose: the output of one, being a citizen of the tower, is admissible input to the
-next, so the construction can chain stiffness forms into larger ones, feed a form's residue to another
-instrument, and build the field operators of the coming chapters out of these small definite pieces
-without the joints leaking. The first stiffness operator is small, but it is built to the tower's
-standard, and that standard is what makes everything assembled from it hold together.
-
-\section{What is demonstrated, and what is assumed}
-\label{se:demonstrated-assumed-ch15}
-
-The accounting is, once more, free of any new assumption.
-
-What is demonstrated is a concrete operator and its credentials. The three-node mass-and-stiffness form
-is proved symmetric, positive, and diagonally definite, and packaged as an instance of the abstract SPD
-energy. Its unanchored kernel is proved nontrivial --- the rigid mode --- and the anchored form is proved
-positive-definite, definiteness earned at the boundary. The anchored energy is proved coercive, a
-discrete Poincar\'e inequality. And the operator is proved consistent with the residual tower, its
-energy zero exactly when its activity is. Each is a checked theorem about a small finite object.
-
-\begin{quote}
-\emph{A note on the labels.} The physical names are light here and honest. Calling the form a
-\emph{stiffness} operator and its diagonal an \emph{energy} borrows the vocabulary of elasticity for
-objects that are, in themselves, a bilinear form and its diagonal; the theorems hold of the form
-whatever it is called. The deeper continuity is structural, not nominal: the anchor that earns
-definiteness is, once again, a finite commitment at a boundary deciding the character of everything
-inside --- the same move that fixed a real by a cut and an interior node by its endpoints, here fixing
-an operator's definiteness by a pinned node.
-\end{quote}
-
-What is assumed is only the standing oracle, in the background as always. With a first concrete operator
-in hand --- definite, coercive, and native to the apparatus --- the construction is ready to ask what
-norm it induces and what space that norm completes to. The next chapter opens that door, taking the
-square root of the energy to reach a genuine length, and following it toward the completed space in
-which the construction's approximations finally have a home to converge in.
+The floor is BUILT --- the trace inhabited, the slip test constructed, no theorem in either. And the gap the test
+uncovers is not a flaw in the construction but a discovery about it: that a machine can build everything up to a
+certain point and find, at that point, one thing it must be handed rather than make. The slip test is how the
+loop checks itself; the missing carrier is what the checking reveals the loop cannot check alone. The instrument
+records both --- the faithful trace, and the honest gap at the top of it --- and passes on, carrying the open
+place forward toward the chapter that will finally say what fills it.

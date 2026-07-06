@@ -1,0 +1,216 @@
+\chapter{Solving It: Splines, Lanczos, and Partitions}
+\label{chap:splines-lanczos-partitions}
+
+The previous chapter reached the Euler--Lagrange equation but left it as a condition, not a method: it
+said what a stationary path satisfies, and granted, through a single oracle, that the question of
+stationarity has an answer. This chapter does the constructive work the equation invites --- it
+actually builds the stationary path, and reads off that the path solves the equation. It is the
+largest chapter in the book because solving is harder than stating, and it proceeds in four moves: the
+cubic spline that suffices, the Lanczos iteration that computes it, the real partitions that scale it
+to genuine problems, and the interior node where the second variation first shows its face. One line
+from the last chapter holds throughout, and it is worth fixing before we begin: the constructions here
+are all built and checked; the one thing that remains granted is the residue-collapse, the same single
+oracle, and nothing in the machinery of this chapter quietly adds a second assumption.
+
+\section{The cubic spline suffices}
+\label{se:the-cubic-spline-suffices}
+
+The central fact is a law the construction proves and names: cubic-spline sufficiency. Take a path
+that is closed-flat in the sense of the ninth chapter --- flat in its slip and admitting it. From such
+a path the construction builds a cubic spline, the smooth piecewise-cubic completion through the path's
+anchor points, and proves that this spline is \emph{sufficient}: the residue it leaves is exactly zero.
+The chain is short and entirely demonstrated. Closed-flatness gives stationarity; stationarity gives
+the Euler--Lagrange equation, by the equivalence of the previous chapter; and a path that satisfies the
+Euler--Lagrange equation yields a cubic-spline certificate whose residue is the bare truth that true
+equals true. To solve the variational problem, in other words, is to draw the cubic spline through the
+anchors, and the law of spline sufficiency guarantees that the spline so drawn is a genuine solution.
+
+There is a reason it is the cubic spline specifically, and the experiment on precision states it
+exactly. The Law of Spline Sufficiency, as the experiment names it, is that any finite sequence of
+anchor events admits a \emph{unique} minimal-curvature completion --- the cubic spline is the one curve
+through the anchors that bends as little as possible, and minimal bending is precisely what a
+stationary path, with its vanishing first variation, demands. This is also where the chapter's first
+honest seam shows. The spline is determinate: once the anchors are fixed, every value between them is
+fixed too, with full precision. Whether those values are accurate --- whether the next measured event
+falls on the spline --- is a separate question the completion cannot answer, exactly the
+precision-against-accuracy distinction met before. The construction supplies the unique sufficient
+spline; the world supplies the verdict on whether it was right.
+
+It is worth walking the chain once, because its shape recurs. Suppose the construction is handed a path
+it has certified closed-flat. By the ninth chapter that path is stationary; by the tenth it therefore
+satisfies the Euler--Lagrange equation; and the construction now builds, from that path, a cubic-spline
+certificate --- a record that the piecewise-cubic curve through the anchors meets the equation at every
+joint. The law of spline sufficiency reads the residue off that certificate and finds it zero. Notice
+what each link costs. The first two are the proved equivalences of the earlier chapters; the
+certificate is a finite construction; and the only thing consulted along the way that the construction
+could not compute for itself is the oracle's verdict on stationarity, made once, back at the equation.
+The spline is the constructive output; the residue of zero is the receipt that it solved the problem;
+and the debt, as always, is the single granted line and nothing more.
+
+\section{Lanczos as ordered consumption}
+\label{se:lanczos-as-ordered-consumption}
+
+A spline is an answer; computing it is a procedure, and the construction's procedure is the Lanczos
+iteration, which it reads as the ordered consumption of knots. The spline's interior structure is a
+finite collection of knots --- the joints where its cubic pieces meet --- and the iteration consumes
+them one at a time, each step solving for one knot and removing it from the collection still to be
+done. Here the construction proves something it genuinely can: the iteration terminates. Each step
+strictly shrinks the multiset of remaining knots, a strictly decreasing count over a finite collection
+cannot decrease forever, and so the recursion is well-founded --- it reaches the empty collection in a
+bounded number of steps and stops. The construction tanges one knot per step, funges the consumed
+knots into a growing trace, and the trace provably ends.
+
+What the construction does \emph{not} prove here is the more tempting claim, and the discipline of the
+last chapter requires saying so plainly. One would like to assert that the iteration reaches the
+\emph{same} terminal residue no matter what order the knots are consumed in --- that the answer does
+not depend on the bookkeeping. That order-independence is not a fresh theorem. It is the
+residue-collapse restated: the claim that the residual, surveyed across all the directions the knot
+ordering exposes, collapses to one value, which is exactly the universal-over-infinite-directions the
+oracle was introduced to decide. Termination is built; order-independence of the terminal residue is
+granted, and it is granted by the same single oracle and no other. The experiment on the limitation of
+indexing marks the boundary from the other side: a recursive catalog may be continued indefinitely and
+yet add nothing, returning structurally identical copies of the same content rather than new
+information. The Lanczos recursion is the disciplined opposite --- it terminates rather than continuing
+emptily --- but the lesson is shared: more iteration is not more truth, and the construction takes from
+the iteration only what it has earned, the terminating computation, while marking the one thing it
+takes on trust.
+
+The termination argument is worth making concrete, because it is the kind of thing easy to wave at and
+important to actually have. Begin with a finite bag of knots --- say five interior joints to be solved.
+The first step of the iteration solves one of them and removes it, leaving four; the next leaves three,
+then two, then one, then none. The count goes five, four, three, two, one, zero, and a sequence of
+counts that strictly decreases and is bounded below by zero cannot run on forever --- it must reach the
+floor. That is the whole of the termination proof, and it is genuinely a proof: no appeal to anything
+infinite, no oracle, no assumption that the process is well-behaved. A finite bag emptied one item at a
+time empties. What the proof does not touch, and cannot, is whether emptying the bag in a different
+order leaves the same residue at the bottom --- and that, exactly, is where the granted line, and only
+the granted line, does its work.
+
+\section{Real partitions and the finite frame}
+\label{se:real-partitions-and-the-finite-frame}
+
+A single spline over a handful of anchors is a toy; real problems live on real domains, and the
+construction scales up by partitioning. It divides the domain into a finite set of pieces --- a real
+partition --- lays a local spline over each, and assembles the pieces into a finite-element
+approximation of the whole. This is the Galerkin method of the seventh chapter, now carried out over
+an honest partition of a real interval, and it inherits the same defining virtue: the approximation is
+required not to make the residual vanish pointwise, which a finite construction cannot guarantee, but
+to make it vanish \emph{weakly} --- orthogonal to every basis function the partition supplies. The
+partitioned Lanczos approximation is proved to have exactly this weak-residual-zero property, and that
+weak vanishing is the finite-element solution's certificate of correctness.
+
+The whole of this happens inside a single finite frame --- the bounded working memory the seventh
+chapter introduced and the construction keeps honest about. The partition is finite, the elements are
+finite, the truncation that turns the full problem into the solvable one is a deliberate finite cut,
+and the construction never pretends the frame is unbounded. What recovery is possible from such a
+finite partition is governed by the sampling law met long ago: the experiment on Fourier and Nyquist
+holds here too, that a continuous solution can be reconstructed from the finite partition exactly to
+the degree the partition is dense enough to support the inversion. Refine the partition and the
+finite-element solution approaches the true one; refine too coarsely and it names something the data
+cannot recover. The partition is where the continuum the construction has always only approached is
+approached once more, deliberately and with a stated rate.
+
+A concrete partition makes the scaling visible. To solve a problem over a long interval, the
+construction does not attempt one enormous spline across the whole of it --- that would overflow the
+single finite frame in a few steps. It chops the interval into a finite number of subintervals, fits a
+modest local spline on each, and stitches the locals together at the partition boundaries, requiring
+only that the pieces agree where they meet and that the assembled residual be weakly zero against the
+partition's own basis. Each local problem fits comfortably in the frame; the global solution is their
+assembly. This is the finite-element method exactly, and its power is that a problem too large to solve
+whole becomes a finite family of problems each small enough to solve, with the partition boundaries
+carrying the agreement between them. The cost of the strategy is the cost of the partition: a finer
+partition resolves more but spends more frame, and choosing the partition is choosing how much of the
+continuum to try to recover.
+
+\section{The interior node and the mixed coupling}
+\label{se:the-interior-node-and-the-mixed-coupling}
+
+The last move of the chapter is the one that opens onto the next, and it lives at an interior node. Give
+a cubic path a middle node --- an interior joint between a left half and a right half --- and vary it.
+The change in the action does not stay tidily on one side. The construction proves that the coupled
+difference produced by varying the middle node decomposes into exactly three terms: a residual from the
+left half alone, a residual from the right half alone, and a third, the \emph{mixed} term, in which the
+left variation and the right variation appear together.
+
+That mixed term is the seed of everything the next chapters are about, and the construction is careful
+to carry it whole rather than splitting it away. The first variation, all through Part II, has been a
+sum of independent one-sided responses --- vary here, see the change here; vary there, see the change
+there. The mixed coupling is the first place two variations are not independent, where moving the left
+half changes how the right half responds. That cross-dependence is second-order by nature: it is not
+how the action changes, but how one change changes another change, and a quantity built from the
+product of two variations is a second variation. The interior node is therefore where the second
+variation first appears in the construction, folded into the mixed term of a coupled cubic difference,
+and the discipline of keeping that term intact --- never approximating the coupling away as the
+first-order analysis happily would --- is what lets the next chapter lift it out and name it. The
+single invariant the whole part is named for is sitting in this cross term, waiting.
+
+The decomposition deserves to be seen term by term, because the whole of the next part turns on the
+third term. Hold the cubic path's two endpoints fixed and let only the middle node move. The action
+changes, and the change splits into three contributions the construction computes separately. The first
+is what the left half would have reported on its own, as if the right half were frozen --- the left
+middle residual. The second is the mirror image, the right half's own response with the left frozen. If
+these were all, the middle node would behave like two independent first variations back to back, and
+nothing new would have happened. But there is a third term, alive only because both halves moved at
+once: the mixed coupling, in which the left displacement and the right displacement multiply together.
+Freeze either half and the mixed term vanishes; it lives only in the simultaneous variation of both. A
+quantity proportional to the product of two displacements is, by definition, second-order, and the
+construction's refusal to drop it --- to carry the coupled difference with its mixed term intact rather
+than approximating it as two independent responses --- is precisely the step that keeps the second
+variation in view. The first variation lived in the left and right residuals; the second variation
+lives in the mixed one.
+
+\section{Selection by cost}
+\label{se:selection-by-cost}
+
+One question remains once the splines are built and the partitions assembled: when several admissible
+solutions present themselves, which does the construction take? It selects by cost. Every computation
+the construction performs carries a price --- the construction's heartbeat, the running tally of what
+each step has spent --- and among admissible solutions it prefers the one reached most cheaply. This is
+not an aesthetic preference but a physical one, and the experiment on the thermodynamic cost of erasure
+is its anchor: discarding information is not free, it has an irreducible thermodynamic price, so a
+solution that throws away less and is reached with fewer erasures is genuinely cheaper in the only
+currency that is conserved. Selection by cost is the construction's way of making the variational
+principle operational at the level of computation: not merely that the chosen path makes the action
+stationary, but that, among the ways of finding it, the construction spends the least.
+
+It is worth saying why cost belongs in a book about measurement at all, and not only in one about
+computation. The construction has insisted from its first page that a verdict has a price --- that
+deciding whether true equals true costs something, even if almost nothing, and that later decisions
+cost more. Selection by cost is that insistence reaching the variational method: of two solutions that
+both satisfy the equation, the construction takes the one whose certificate was cheaper to produce, and
+it can do this because it has kept the tally all along. The thermodynamic anchor is what makes the
+preference more than convention. Erasing a record is not free; it dissipates a definite minimum of
+energy, so a computation that erases less is not merely tidier but genuinely costs less in the conserved
+currency of the world. The heartbeat the construction listens to is, at bottom, that currency being
+spent.
+
+\section{What is demonstrated, and what is assumed}
+\label{se:demonstrated-assumed-ch11}
+
+This is the largest chapter, and the separation of built from assumed is, gratifyingly, the same one as
+the last chapter --- no new assumption was incurred in all this machinery.
+
+What is demonstrated is substantial. Cubic-spline sufficiency is a proved law: a closed-flat path gives
+a cubic spline whose residue is zero. The Lanczos iteration is proved to terminate, by a strictly
+decreasing knot count over a finite multiset. The partitioned finite-element approximation is proved to
+have a weakly vanishing residual. And the coupled cubic difference is proved to decompose into left,
+right, and a mixed term, the second variation's first appearance. Every one of these is a checked
+theorem about finite objects.
+
+\begin{quote}
+\emph{A note on the one assumption.} Nothing in this chapter adds to the book's single granted step. The
+one place a reader might think a new assumption hides --- that the Lanczos iteration reaches the same
+terminal residue regardless of the order it consumes knots --- is not a new assumption but the old one
+restated: it is the residue-collapse, the universal over directions that the Euler--Lagrange oracle of
+the previous chapter was introduced to decide. Termination is built; order-independence is the oracle.
+Spline sufficiency, likewise, stands on the equivalence and the oracle of the last chapter, not on
+anything new. The honest summary is that this entire chapter of solving is constructive on top of
+exactly one assumption, declared once, two chapters ago.
+\end{quote}
+
+What is assumed, then, is nothing this chapter introduced. With the equation now solved --- the spline
+that suffices, the iteration that computes it, the partition that scales it, and the mixed term that
+carries the second variation --- the construction is ready to lift that cross term out of the coupled
+difference and look at it directly. The next chapter does exactly that, and the chapter after it gives
+the result its name: the second variation is the single invariant, and everything from here to the
+field theory is an exploration of what that one quantity controls.

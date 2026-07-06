@@ -1,7 +1,9 @@
 \documentclass[12pt,oneside]{book}
 \usepackage{amsmath,amssymb,setspace}
+\renewcommand{\partname}{Act}
 \makeatletter
-% TOC part lines read "Part I  Title" (mirrors Vol 2/3).
+% TOC part lines read "Act I  Title" to match the divider pages (folds the act dividers' label into the
+% contents; standard book \l@part with \partname prepended).
 \renewcommand*\l@part[2]{%
   \ifnum \c@tocdepth >-2\relax
     \addpenalty{-\@highpenalty}%
@@ -21,61 +23,57 @@
 
 \begin{document}
 
-\title{Measurement\\[0.4em]\large Volume One: The Construction}
+\title{Measurement}
 \author{Bill Cochran\\wkcochran@gmail.com\\https://github.com/wkcochran123/measurement}
 \date{\today}
 \maketitle
 
 \frontmatter
 \onehalfspacing
+% Interim introduction (front/introduction.tex) -- stand-in until the act-openers land.
 \tableofcontents
-
-% Series naming-preface prepended as front matter, ahead of Vol 1's own Oracle preface.
-% Series-then-volume, PREPEND-not-replace (identical seam to Vol 2). The series preface is the
-% SHARED front matter (single source of truth in the Vol-2 tree); \input by relative path so it
-% never diverges.  % CHOICE (vol1-seam)
-\input{../../experimentation/latex/chapters/00-series-preface}
-
-% Vol 1's own Oracle-of-Free-Will preface -- STUB (to be authored, Stage 3).  % FLAG: Vol 1 has no
-% existing Oracle preface; author one (the old expository_monograph draft front matter is superseded).
-\input{chapters/00-preface}
+\input{front/introduction}
 
 \mainmatter
-
 \part{The First Difference}
 \include{chapters/01}
 \include{chapters/02}
 \include{chapters/03}
 \include{chapters/04}
-
-\part{The Machine Reads}
+\part{The Apparatus Reads Itself}
 \include{chapters/05}
 \include{chapters/06}
 \include{chapters/07}
 \include{chapters/08}
-
-\part{The Apex: The Machine Reads Its Own Truth}
+\part{The Single Invariant}
 \include{chapters/09}
 \include{chapters/10}
 \include{chapters/11}
 \include{chapters/12}
-
-\part{The Return: The Loop Closes}
 \include{chapters/13}
+\part{The Descent into Matter}
 \include{chapters/14}
 \include{chapters/15}
 \include{chapters/16}
-
-\part{The Naming and the Predicted Split}
 \include{chapters/17}
 \include{chapters/18}
 \include{chapters/19}
 \include{chapters/20}
-
-\part{The Reader}
 \include{chapters/21}
 \include{chapters/22}
+\part{The Outside Reading}
 \include{chapters/23}
 \include{chapters/24}
+\include{chapters/25}
+\include{chapters/26}
+\include{chapters/27}
+\include{chapters/28}
+\part{The Return to the Reader}
+\include{chapters/29}
+\include{chapters/30}
+\include{chapters/31}
+\include{chapters/32}
+\cleardoublepage
 
+\backmatter
 \end{document}
