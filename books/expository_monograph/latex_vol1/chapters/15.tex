@@ -1,2 +1,60 @@
 \chapter{The Trace and the Slip}
-% STUB (scaffold). Draft to outline_working.md Ch15 + its budget.
+
+As the machine walks its loop, it leaves a record of the walking. Not the tally of turns from the last chapter ---
+a different record, finer, one entry for each rung the walk passes rather than one for each circuit completed.
+This is the trace: the tape the loop writes about its own descent, a step-by-step account of the construction as
+it is re-derived, kept so that the walk can later be run back and checked. And in the checking a question surfaces
+that the machine cannot answer from inside itself, a place where the construction, having built everything it
+could, finds it has reached a thing it must be handed rather than make. That handing is the quiet centre of this
+chapter, and it must be approached carefully, because it is a seed the book plants here and does not harvest for
+many rungs.
+
+\section{The Tape the Loop Writes, and the Test That Runs It}
+
+The claim is that the loop writes a class-by-class trace of its own descent, and that this trace can be run back
+up the ladder to test where the construction actually landed.
+
+Against the machine, this is two more stretches of construction, inhabited like everything in the return. The
+first builds the trace: a second tape, one cell per class, on which the walk records what it did at each rung as
+it came down. Like every tape in this machine, it only ever appends --- the trace grows as the descent proceeds
+and never rewrites what it has already written, so that the record of the walk is a faithful, monotone account
+that can be read back in order. The second stretch builds the test. Having a trace of the descent, the machine can
+execute it in reverse: run back up the ladder, cell by cell, re-performing at each rung what the trace recorded,
+and watch for a \emph{slip} --- a place where re-running the construction does not land exactly where the trace
+said it should, where the walk back up and the walk that came down fail to agree. The slip test is how the machine
+audits its own loop: it does not merely assume the descent was faithful; it re-executes it against its own record
+and checks. All of this is built, not proved --- the trace inhabited cell by cell, the test constructed as a
+re-execution --- and it gives the machine something no single pass could: a way to hold its own walk up to its own
+record and see whether they match.
+
+\section{The Carrier the Machine Cannot Supply}
+
+Here is the thing this chapter exists to name, and the naming must be exact and no more than exact. When the slip
+test runs the trace back up and reaches the top, it needs one thing to complete the accounting that the
+construction, from within itself, cannot provide. It needs to know which carrier the descent actually landed on
+--- the particular internal state the walk resolved to when it ran on real input, the thing that was only ever
+determined by the concrete running and is nowhere written on the tape in advance. And the machine cannot supply
+this from inside. It is not a value the construction can compute for itself, not a thing the trace already holds,
+not something any amount of internal work will yield. It is a carrier that must be handed in from outside --- given
+to the machine by whatever actually ran the descent, at the site where the loop was really walked rather than
+merely described.
+
+Mark exactly what is and is not being said, because the temptation to say more is strong and the book has staked a
+later reveal on saying less. The machine is \emph{not}, here, naming what supplies the carrier, nor what kind of
+thing the supplier is, nor by what right it supplies it. It is naming only the shape of a gap: that the
+construction reaches a point where it has done all it can from within and finds one thing still missing, a carrier
+it cannot generate and must be given. The instrument's stance toward that gap is the honest one it has kept at
+every limit --- it does not force a carrier it has no grounds to force, does not manufacture from within a thing
+that can only come from without; it measures where its descent landed and reports what it finds, leaving the
+supplying of the carrier to the outside that alone can supply it. There is a great deal more to say about that
+outside --- what it is, why it is the one thing the machine must be granted, how a construction that manufactures
+its own sameness nonetheless cannot manufacture this --- but all of it belongs to a chapter far down the loop,
+where the gap named here is finally given its due. For now the seed is planted and left as a seed: the machine, at
+the top of its own trace, needs a carrier it cannot supply, and it holds the place open for the world to fill.
+
+The floor is BUILT --- the trace inhabited, the slip test constructed, no theorem in either. And the gap the test
+uncovers is not a flaw in the construction but a discovery about it: that a machine can build everything up to a
+certain point and find, at that point, one thing it must be handed rather than make. The slip test is how the
+loop checks itself; the missing carrier is what the checking reveals the loop cannot check alone. The instrument
+records both --- the faithful trace, and the honest gap at the top of it --- and passes on, carrying the open
+place forward toward the chapter that will finally say what fills it.
