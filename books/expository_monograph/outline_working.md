@@ -280,10 +280,13 @@ not "proved," for the backward walk.*
   as an `omega` TACTIC artifact (hand-provable away), a peripheral coverage lemma off the spine. Asterisk it
   honestly; the spine's choice-freeness stands.
 - The one needle: exactly one sanctioned `Quot.sound`. → **`selection_sound` (Ep15:362) → `[Quot.sound]`**. SBP.
-- The one grant: the oracle = the law of motion = the axiom of choice in physical form. → **`axiom
-  eulerLagrangeOracle` (Ep19:109)**, consumed by `noncomputable def residue`. **SBD** — a declared axiom, not a
-  theorem; the AC=oracle is the author's reading. Reach = Ep19–26 residue family ONLY; the Act-VI dictionary
-  theorems do NOT touch it (they are axiom-free/`[propext,Quot.sound]`).
+- The one grant: the oracle = the law of motion = **the single declared axiom the world answers** (the machine
+  poses the one query it cannot decide; the world returns it). → **`axiom eulerLagrangeOracle` (Ep19:109)**,
+  consumed by `noncomputable def residue`. **SBD** — a declared axiom, not a theorem. Reach = Ep19–26 residue
+  family ONLY; the Act-VI dictionary theorems do NOT touch it (they are axiom-free/`[propext,Quot.sound]`).
+  ⚠ **`% AC-fence`: BODY prose names it "the one grant / the law of motion / the single declared axiom the world
+  answers," NEVER "the axiom of choice." The oracle IS the series-preface's AC-question in physical form — the
+  reader connects it; the body stays silent on the literal phrase (series-preface-only, Vol-2 precedent).**
 
 **Ch23. The construction is forcing** — *SBD + SBP + RI*
 - Cohen: finite conditions ordered by extension with a dense-decides property (the forcing signature). →
@@ -294,8 +297,9 @@ not "proved," for the backward walk.*
   `finiteCohen_boundary_radiation_closeout`/`_gauge_residue_closeout` (Ep64:34,86). SBP.
 - The construction recognizes itself as the forcing it has been (the REVEAL); literal set-theoretic forcing NAMED,
   not claimed. → rides the FiniteCohen structure. **RI** — no generic-filter/independence theorem; a finite,
-  ε-bounded, countable analogue. ⚠ **Reveal-fence anchor: forcing NAMED here (Ch23); the body stays silent on
-  "axiom of choice" until this chapter.**
+  ε-bounded, countable analogue. ⚠ **Reveal-fence anchor: FORCING (Cohen) is named here (Ch23) — sanctioned. The
+  body still NEVER writes "axiom of choice" (series-preface-only); the reveal says "the forcing it has been" /
+  "a free choice of completion" (Vol-2 Ch29 precedent), not the literal phrase.**
 
 **Ch24. The reader is the final apparatus (the close)** — *SBP + SBD + RI*
 - The band/MAGNITUDE gate covers everything (floor/ceiling squeeze read as a COVERING). → **theorem `band_covers`
@@ -333,10 +337,12 @@ real extra distinction) is not real → the funge (keep 4) wins.
   ("the whole lighter than its parts") — has **no code object (unpinned)**, so per E1 it is **DROPPED** (not given
   a build claim it cannot back), not folded. Result: clean 4-per-act, 24 chapters.
 
-**(c) Double-read reveal fence — PRESERVED. `% CHOICE (fork-c)`.** Mechanism shown before named:
-**needle at Ch11** (`selection_sound` shown) → **naming at Ch18** (the electron named) → **forcing named only at
-Ch23** (the last act), and **the body stays silent on "axiom of choice" until Ch23**. The renumber preserves the
-ordering (11 < 18 < 23, all mechanism-before-name). Fence chapter numbers MARKED at Ch11 / Ch18 / Ch23.
+**(c) Double-read reveal fence — PRESERVED + CORRECTED. `% CHOICE (fork-c)`.** TWO fences: **(i) mechanism before
+name** — **needle at Ch11** (`selection_sound` shown) → **naming at Ch18** (the electron named) → **FORCING named
+only at Ch23** (the last act); ordering holds (11 < 18 < 23). **(ii) the BODY never writes "axiom of choice" —
+series-preface-only:** the shared `00-series-preface.tex` §"The Axiom of Choice" poses the question; the BODY,
+even at the Ch23 forcing reveal, says "the forcing it has been" / "a free choice of completion," never the literal
+phrase (Vol-2's CGC/Ch29 precedent, Kodo-gated). Fence chapter numbers MARKED at Ch11 / Ch18 / Ch23.
 
 ## Series-preface seam (Stage-3, flagged not authored)
 The series naming-preface already exists (`books/experimentation/latex/chapters/00-series-preface.tex`, authored
