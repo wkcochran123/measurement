@@ -1,0 +1,23 @@
+Section manager brief: Beat 16
+==============================
+
+Target file: sections/02-discrete-poincare.tex
+Section title: Discrete Poincare
+
+Beat:
+Discrete Poincare: a boundary-anchored chain forces zero-energy nodes to
+zero.
+
+Writer fragments:
+- Fragment A: present the chain as a finite ledger of neighboring differences.
+- Fragment B: explain zero energy. If every neighboring difference vanishes,
+  the chain can still drift unless a boundary has been pinned.
+- Fragment C: explain the anchor. The boundary identifies one node and forbids
+  the null drift that the interior form cannot read.
+- Fragment D: conclude that zero energy now forces every node to zero; this is
+  the finite Poincare reading.
+
+Acceptance criteria:
+- Keep "Poincare" ASCII in text.
+- Make the boundary a grammatical commitment, not a convenience.
+- Prepare the move from finite energy to a scale field.

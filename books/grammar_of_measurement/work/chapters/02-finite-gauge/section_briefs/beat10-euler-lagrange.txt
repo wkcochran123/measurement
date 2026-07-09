@@ -1,0 +1,21 @@
+Section manager brief: Beat 10, Two Renderings Of One Constraint
+================================================================
+
+Task:
+- Draft the section that identifies vanishing first variation with the
+  discrete Euler--Lagrange constraint.
+- Treat the two forms as renderings of one obligation, not as competing
+  derivations.
+
+Writer fragments:
+- Fragment A: perturbations with fixed endpoints and what they are permitted
+  to test.
+- Fragment B: first variation as the linear part of the action change.
+- Fragment C: discrete Euler--Lagrange as the nodewise balance condition.
+- Fragment D: show why zero residual is the shared reading.
+
+Constraints:
+- ASCII TeX only.
+- Use classical formulas sparingly as readable notation.
+- Avoid making calculus the authority; make grammar the authority that
+  permits the calculus reading.

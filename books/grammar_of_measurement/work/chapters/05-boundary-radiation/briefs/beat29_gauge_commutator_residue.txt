@@ -1,0 +1,32 @@
+Section-manager brief: Beat 29
+================================
+
+Working title: Successor Residue
+
+Beat:
+- The gauge commutator residue: the commutator residue closes only through
+  successor counting.
+
+Required section result:
+- Explain the commutator residue as the debt left when two admissible gauge
+  transports do not commute.
+- Tie closure to successor counting, not to a completed continuum or a
+  free algebraic cancellation.
+- The count must carry first transport, second transport, and their
+  ordered comparison; the residue is read when the second successor is not
+  interchangeable with the first.
+- Closure means the grammar has counted enough to identify the residual
+  loop and bound it.
+
+Writer-sized fragments:
+1. Define why gauge order matters after the extensional ledger.
+2. Explain the commutator as two ordered readings of the same finite
+   obligations.
+3. Tie the residue to successor count: one step, second step, comparison.
+4. Explain why closure is a countable close-out, not an interior shortcut.
+5. Hand off to the completion norm.
+
+Examples allowed:
+- Aharonov-Bohm or Mach-Zehnder: closed comparison carries a residue even
+  when local segments look silent.
+- Echo or loop examples only as illustrations of ordered transport.

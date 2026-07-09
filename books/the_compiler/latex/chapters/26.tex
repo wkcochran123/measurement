@@ -1,0 +1,97 @@
+\chapter{Exact Galerkin as Finite Compilation}
+\label{chap:exact-galerkin-finite-compilation}
+
+Galerkin computation is the place where the weak contract becomes a finite compilation. Choose a finite
+test space
+\[
+  V_N = \operatorname{span}\{\phi_1,\ldots,\phi_N\}.
+\]
+Choose an approximate state \(u_N\) in the corresponding trial space. The weak equation is then asked only
+against the selected tests:
+\[
+  D\mathcal A(u_N)[\phi_i] = 0,
+  \qquad i=1,\ldots,N .
+\]
+That finite family is not an approximation to a proof in the compiler's eyes. It is a proof of a finite
+statement. Approximation enters when the finite statement is related back to the full space by density,
+stability, and error estimates. The compiler can keep those layers apart: exact row closure first,
+analytic convergence second.
+
+\section{Assembly as elaboration}
+\label{se:assembly-as-elaboration}
+
+Assembly is elaboration with indices. Each basis function contributes a column to the trial space and a row
+to the test space. Each bilinear or nonlinear term is expanded into entries. For a linearized problem, the
+Jacobian or stiffness matrix has the familiar form
+\[
+  K_{ij} = D^2\mathcal A(u_N)[\phi_j,\phi_i],
+\]
+and the residual vector has entries
+\[
+  r_i = D\mathcal A(u_N)[\phi_i].
+\]
+The compiler-facing content is that every \(K_{ij}\) and \(r_i\) is a typed scalar produced from declared
+data. If coefficients are rational, symbolic, or otherwise exact, the resulting finite computation is
+exact. If numerical quadrature is introduced, the quadrature rule is a new assumption in the ledger, not an
+invisible property of Galerkin itself.
+
+This is the same discipline that governed the rest of the compiler. A result is not more exact because it
+sounds analytic, and not less exact because it is finite. Exactness depends on whether the object stated is
+the object proved. The finite Galerkin system is a finite theorem. It says that a selected residual vector
+vanishes, or has a stated norm, or satisfies a stated estimate. When convergence data are added, the theorem
+connects the finite residual to the universal residual. The compiler should be asked for the theorem it can
+actually close.
+
+\section{Running forever and paying a finite cost}
+\label{se:running-forever-paying-finite-cost}
+
+The paired-particle apparatus introduced a useful pattern: the program may be capable of running forever,
+but a measurement names the cost it is willing to spend. Galerkin computation has the same shape. One can
+keep enriching the space,
+\[
+  V_1 \subset V_2 \subset V_3 \subset \cdots ,
+\]
+and the process has no natural final rung unless a tolerance, theorem, or external budget supplies one. The
+compiler does not need the infinite ladder to terminate in order to certify a rung. It needs the rung
+number, the basis, the assembly rules, and the residual reading at that rung. A run can be open-ended while
+each receipt remains finite.
+
+This matters for the weak Dirac apparatus because spinorial and gauge-coupled systems are not gentle
+targets. The algebra is exact, but the search space can grow without mercy. The right compiler contract
+therefore separates the eternal process from the finite certificate. A user may ask for one more basis
+function, one more refinement, one more coupling term, or one more derivative row. Each request produces a
+new finite compilation. None of those receipts pretends to be the limit unless the convergence theorem is
+also carried.
+
+\section{The compiler's receipt}
+\label{se:compiler-galerkin-receipt}
+
+The receipt for an exact Galerkin run has a small number of fields. It names the state space and test
+space. It names the universal tensor that supplies the residual. It names the Sobolev norm or finite Gram
+matrix used to measure that residual. It names the cost ceiling, if the run is bounded by one. It reports
+the row residuals and the proof obligations discharged for those rows. If the residual vector is zero, the
+receipt says so exactly. If the residual has a norm, the receipt says in which norm. If an error estimate
+connects the finite receipt to the continuum problem, that estimate appears as another checked field.
+
+That receipt is the compiler version of the weak solution story. The Dirac gate supplies the local typed
+motion. The universal tensor supplies the residual. The first Frechet variation turns least activity into
+a family of test obligations. Galerkin selection makes a finite family of those obligations available for
+exact computation. The compiler neither weakens nor mystifies the mathematics. It records what was selected,
+what was checked, what it cost, and which stronger conclusions still require their own laws.
+
+\section{Back to the ledger}
+\label{se:back-to-ledger}
+
+The ledger does not reopen when the weak apparatus is added. It becomes more explicit about what kind of
+receipt analytic computation produces. There is still no hidden choice in a named basis. There is still no
+unbounded search masquerading as a proof when a cost ceiling is declared. There is still no continuum
+theorem hidden inside a finite residual vector. What changes is that the compiler now has a clean language
+for the most delicate experimental claim: the weak solution to the principle of least activity is the first
+Frechet variation of the universal tensor, expressed in the Sobolev norm, and exact Galerkin computation is
+the finite compilation of that weak statement.
+
+At that point the three volumes speak through the same apparatus. The expository construction names the
+measurement. The experimental construction performs the weak computation. The compiler construction says
+what the machine can check about the computation and how the receipt should be read. That division is not a
+loss of unity. It is the unity becoming auditable: one object, read as physics, as experiment, and as
+elaboration.

@@ -1,0 +1,19 @@
+Section-manager brief: Beat 6, Self-hosting the tower
+=====================================================
+
+Target section file:
+- sections/06-self-hosting-tower.tex
+
+Beat:
+- The apparatus points the whole stack at truth itself.
+
+Writer-sized fragments:
+- Present the tower as a grammar that can read its own conditions of reading.
+- Explain why the earlier obligations must be carried upward intact.
+- Prepare the collapse: when the grammar reads truth at the foundation, there is
+  no richer interior difference to appeal to.
+
+Constraints:
+- Do not mention any forbidden proper names or code terms.
+- Avoid saying the apparatus performs the plot; state how the grammar enforces
+  the sequence.

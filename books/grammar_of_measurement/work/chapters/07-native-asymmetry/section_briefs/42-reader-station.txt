@@ -1,0 +1,34 @@
+Section-manager brief: Beat 42
+==============================
+
+Section file:
+- sections/05-reader-station.tex
+
+Beat:
+- The final apparatus: the predicates turn back on the reader.
+
+Section job:
+- Continue Chapter 06's reader switch and make the reader the last measuring
+  station.
+- Explain that each class's question is now asked of the reader: did this
+  distinguish, did this fall within the magnitude band, did this rise to the
+  next permitted reading.
+- Make the reader a constrained role, not a new sovereign. The reader may
+  orient, select, and stop or continue where the grammar supplies a predicate.
+- Close the chapter by showing that the final station is not outside the
+  grammar but the place where the grammar's predicates are read.
+
+Writer-sized fragments:
+- Fragment A: Establish why the reader can be a station only after quotient,
+  holonomy, count, and partition have been forced.
+- Fragment B: Turn the class questions back on the reader without deciding
+  them in advance.
+- Fragment C: Explain the three-way magnitude band and strict order as
+  reader-facing predicates if useful.
+- Fragment D: State the final station's constraints: orient, select, read,
+  stop, continue.
+- Fragment E: Carry forward to Chapter 08's backward walk and loop closure.
+
+Constraint reminders:
+- Keep the final reader grammatical, not psychological.
+- Avoid treating the reader as an unbounded outside authority.

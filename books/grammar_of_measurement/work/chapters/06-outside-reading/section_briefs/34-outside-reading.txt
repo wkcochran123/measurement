@@ -1,0 +1,29 @@
+Section-manager brief: Beat 34, Outside Reading
+===============================================
+
+Section target:
+- Draft section 02-outside-reading.tex.
+
+Beat:
+- The interior electron and the exterior boundary obstruction are identical as
+  readings.
+
+Writer-sized fragments:
+- Fragment A: State what changes at the boundary: the invariant is no longer
+  possessed as an interior value; it is read from outside as an obstruction.
+- Fragment B: Identify the interior negative charge reading with exterior
+  boundary obstruction. This is identity of readings, not a new object.
+- Fragment C: Explain why Navier-Stokes and Einstein examples illustrate the
+  same grammatical form: non-closing local transport and maximal admissible
+  chains force boundary correction.
+- Fragment D: Preserve the Chapter 05 split: no interior mixed term returns.
+  The outside reading externalizes the residue rather than mixing it inside.
+- Fragment E: Close by saying that the outside reading prepares a sentence the
+  interior cannot settle.
+
+Required grammar verbs:
+- identifies, reads, externalizes, bounds, carries, forbids.
+
+Avoid:
+- Do not let physics examples become the spine.
+- Do not assign the plot to an apparatus or equation.

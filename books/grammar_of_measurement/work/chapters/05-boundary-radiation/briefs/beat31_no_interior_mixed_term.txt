@@ -1,0 +1,30 @@
+Section-manager brief: Beat 31
+================================
+
+Working title: No Interior Mixed Term
+
+Beat:
+- No interior mixed term: compatibility removes the interior scalar mixed
+  term.
+
+Required section result:
+- Explain why the lifted geometry/gauge split forbids an interior scalar
+  mixed certificate in the continuum.
+- Compatibility is not mere agreement; it is the rule that says a
+  completed reading must preserve the carrier discipline that was forced
+  finitely.
+- The mixed term cancels in the interior because any attempted interior
+  product would identify channels that the split requires to remain
+  orthogonal.
+
+Writer-sized fragments:
+1. Recall the finite split and its lifting.
+2. Explain continuum compatibility.
+3. Show why an interior mixed scalar would undo the boundary origin of the
+   gauge.
+4. Explain cancellation/removal of the interior mixed term.
+5. Hand off to boundary trace.
+
+Examples allowed:
+- Casimir boundary imbalance or 't Hooft-Susskind boundary scaling as an
+  illustration of interior dependence on boundary bookkeeping.

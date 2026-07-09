@@ -44,6 +44,10 @@ def experiment : Experiments.Common.Experiment Setup RunOutput :=
     claim := fun setup => claimStatement (run setup) }
 
 
+instance (setup : Setup) : Decidable (experiment.claim setup) := by
+  unfold experiment claimStatement run modelKind Experiments.Common.ModelKind.holds
+  infer_instance
+
 /-- Bring a minimal device next to this experiment: it records whether the exported claim fires. -/
 def deviceNear (setup : Setup) : Bool :=
   decide (experiment.claim setup)

@@ -1,0 +1,97 @@
+\chapter{The Weak Equation}
+\label{chap:weak-equation}
+
+The strong equation asks for \(R_U(\psi)=0\) pointwise. That is often too much to ask of the apparatus and too
+much to ask of the field. Boundary traces may exist only weakly. Derivatives may live in distributional form.
+The domain may be known only through finite elements. The measurement may see the residual only after it has
+been integrated against test functions. The weak equation is the honest equation at that floor:
+\[
+  \langle R_U(\psi), \eta\rangle_{H^s} = 0
+  \qquad
+  \hbox{for all admissible }\eta .
+\]
+
+\section{Strong Enough to Compute}
+
+Weak does not mean vague. It means the residual is read through tests. If the tests are rich enough, the weak
+statement is as strong as the experiment can honestly support. In Galerkin form, the admissible tests are a
+finite basis \(\{\phi_i\}_{i=1}^{N}\). The state is approximated in the same or a companion finite space,
+\[
+  \psi_N = \sum_{j=1}^{N} c_j \phi_j,
+\]
+and the weak equations become
+\[
+  \langle R_U(\psi_N), \phi_i\rangle_{H^s}=0,
+  \qquad i=1,\ldots,N.
+\]
+That is a linear or nonlinear algebraic system depending on \(R_U\). In the linearized skeleton here, it is an
+exact finite system. The serious part is not the size of the matrix. The serious part is the contract: every
+test row is a weak equation, and satisfying all rows is the finite statement that the first variation vanishes
+on the chosen space.
+
+\section{The Exact Galerkin Predicate}
+
+The Lean file names this finite closure:
+
+\begin{quote}\small
+\begin{verbatim}
+def ExactGalerkin
+    (U : UniversalTensor) (state : Vec) : Prop :=
+  sobolevResidual U state =
+    zeroLike (sobolevResidual U state)
+\end{verbatim}
+\end{quote}
+
+This predicate is intentionally stricter than a tolerance. It says the Sobolev residual vector is exactly zero
+in the finite arithmetic of the chosen rows. In a floating-point production code one may use residual norms,
+condition estimates, and stopping criteria. But the mathematical skeleton should know what exact closure means
+before numerical tolerance enters. The toy computation uses integer coefficients so the zero is literal.
+
+The proof that exact Galerkin closure implies the weak equation is the core clasp:
+
+\begin{quote}\small
+\begin{verbatim}
+theorem exactGalerkin_is_weakLeastActivity
+    (U : UniversalTensor) (state : Vec)
+    (h : ExactGalerkin U state) :
+    WeakLeastActivity U state := by
+  intro test
+  unfold ExactGalerkin at h
+  unfold firstFrechetVariation
+  rw [h]
+  exact dot_zero_left_any (sobolevResidual U state) test
+\end{verbatim}
+\end{quote}
+
+The proof is short because the definitions have been set in the right order. If the Sobolev residual is the zero
+vector, then its dot product with every finite test vector is zero. Therefore the first Fréchet variation
+vanishes on every finite test vector. Therefore the state is a weak least-activity solution at the chosen
+Galerkin floor.
+
+\section{What the Theorem Says}
+
+The theorem does not say that every Dirac equation has been solved. It does not say that every Sobolev space has
+been constructed. It does not say that regularity, compactness, ellipticity, or convergence have been obtained
+for free. Those belong to a full analysis text. The theorem says something narrower and load-bearing: after the
+Dirac rows, tensor rows, Sobolev reader, load, state, and test space have been fixed, exact finite Galerkin
+closure is enough to discharge the weak first-variation equation on that finite space.
+
+That is exactly the floor Book II needs. Experimentation is not allowed to gesture at the continuum and then
+forget the rows. It must say what it computed. The weak theorem says what was computed: a finite residual,
+tested in a Sobolev reader, vanishing against every finite test vector.
+
+\section{Dirac Inside the Weak Gate}
+
+The Dirac equation enters through the residual rows, not as a slogan. In a real discretization the rows contain
+the Clifford matrices, the gauge connection, mass coupling, boundary conditions, and any tensor background. The
+finite vector \(\psi_N\) stores the coefficients of the spinor in the chosen basis. The weak equation asks that
+each test spinor see no Sobolev residual:
+\[
+  \left\langle
+    \mathcal D_A\psi_N + \mathcal T_U\psi_N - f,\,
+    \phi_i
+  \right\rangle_{H^s}
+  = 0 .
+\]
+This is where the Dirac operator becomes computational rather than ornamental. It is the first-order term whose
+rows are assembled, tested, and closed.

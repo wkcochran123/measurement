@@ -1,0 +1,19 @@
+Section-manager brief: beat 22, The positron and the tilted path
+================================================================
+
+Scope:
+- Explain charge +1 as a baseline-relative reading.
+- The positron does not appear over the native flat baseline; it appears only
+  when the baseline is tilted so that the same pair is read with opposite
+  orientation.
+
+Writer-sized fragments:
+- Fragment A: distinguish charge as sign relative to baseline.
+- Fragment B: show why the flat path forbids the positron reading.
+- Fragment C: explain the tilted path and optional holonomy/coincidence
+  examples.
+
+Integration note:
+- The examples may include annihilation/coincidence or loop holonomy, but the
+  spine is the grammar of baseline dependence.
+

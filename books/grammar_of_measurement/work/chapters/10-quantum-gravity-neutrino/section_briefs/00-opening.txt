@@ -1,0 +1,22 @@
+Section manager brief: opening -- After finite alpha
+===================================================
+
+Beat:
+Open Chapter 10 by receiving the alpha receipt from Chapter 09 and stating the
+horizon problem.
+
+Section task:
+Explain that alpha now travels as a finite receipt with seed, residue, rung,
+bound, and path cost attached. The next question is not how to see more deeply
+inside a region, but what a grammar can export when an opaque horizon masks the
+interior. Establish the chapter's sequence: lightlike approach, cost-bound
+horizon certificate, Cooper-pair/exclusion collapse, surface export, neutrino
+portfolio, color control, flavor label, and 36-sector scaling.
+
+Required manuscript moves:
+- Alpha is surface-ready because Chapter 09 made it a bounded receipt.
+- A horizon is a quotient of interiors by surface readability.
+- The grammar may refine the surface, but it may not spend hidden interior
+  distinctions after the horizon has masked them.
+- Examples may illustrate opacity and boundary repair, but the spine is the
+  grammar of permitted export.

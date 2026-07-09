@@ -1,0 +1,21 @@
+Section-manager brief: beat 23, Two axioms
+==========================================
+
+Scope:
+- Explain that the physics rests on exactly the two identity grants already
+  earned by the grammar.
+- Grant one: the local quotient/selection needle that permits identity after
+  collapse.
+- Grant two: the law-of-motion grant that lets stationarity be read as the
+  world-answering constraint.
+
+Writer-sized fragments:
+- Fragment A: recall why unearned identity was forbidden.
+- Fragment B: identify the selection/quotient grant.
+- Fragment C: identify the motion/stationarity grant and explain why no third
+  grant is permitted.
+
+Integration note:
+- Do not name forbidden external logical phrases. Keep the language as "two
+  identity grants" and "two permissions".
+

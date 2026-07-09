@@ -1,0 +1,20 @@
+Section-manager brief: Beat 2, Counting by wholes and parts
+============================================================
+
+Target section file:
+- sections/02-wholes-and-parts.tex
+
+Beat:
+- Same-parity readings count by wholes, while different-parity readings count by
+  parts.
+
+Writer-sized fragments:
+- Move from distinction to count without assuming completed arithmetic.
+- Explain same-parity as a whole-preserving reading and different-parity as a
+  part-making reading.
+- Show how count is already two-sided: pooling and selecting, preservation and
+  fracture.
+
+Constraints:
+- Keep the logic grammatical, not computational.
+- Examples may invoke ledgers, marks, repeated readings, or instrument records.

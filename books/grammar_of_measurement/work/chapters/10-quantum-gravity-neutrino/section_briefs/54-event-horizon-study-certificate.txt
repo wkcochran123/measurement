@@ -1,0 +1,24 @@
+Section manager brief: beat 54 -- The event horizon study certificate
+=====================================================================
+
+Beat:
+The approach to the horizon is bounded by cost.
+
+Section task:
+Turn the lightlike direction into a certificate. A sequence of timelike radii
+approaches the horizon from above. Each reading carries a gap, a velocity
+reading, a relativistic coefficient, and a cost. The certificate says that the
+approach is lawful only as a bounded study, not as an unbounded crossing.
+
+Required manuscript moves:
+- The grammar permits an approach sequence and forbids pretending that the
+  horizon has been crossed.
+- Cost is part of the certificate: finer approach spends more burden.
+- The horizon is a latency/export boundary: interior refinements may continue,
+  but finite mergeability with the exterior fails at the limit.
+- The study reads timelike approach to a lightlike boundary.
+
+Useful illustrations:
+- Event Horizon and Schwarzschild descriptions: export of distinguishable
+  refinements becomes unbounded.
+- A nondecreasing cost record as the approach is refined.

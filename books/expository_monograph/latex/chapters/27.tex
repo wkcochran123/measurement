@@ -1,0 +1,209 @@
+\chapter{The Ledger of Corrections}
+
+The raw recoil is not yet \(\alpha\), and it is not even yet \(h/m_X\). It is a smeared physical reading, shaped
+by every gauge and every nuisance field the apparatus carried. The user must now do what the construction has
+been teaching from the first difference: tange what must be separated, funge what can be pooled, and refuse to
+let a correction become invisible merely because it is inconvenient.
+
+\section{Tange the Biases}
+
+A bias is a movable label that has learned to push the count. It may be a laser wavefront whose curvature makes
+one part of the atom cloud see a different kick from another. It may be an AC Stark shift from light intensity,
+a Zeeman shift from magnetic field, a Coriolis term from Earth's rotation, a gravity-gradient term from the local
+mass distribution, a mean-field shift from atom density, or a line-shape bias from the fitting model. Each bias
+must be tanged first: selected by name, given its own symbol, its own sign, its own method of estimation.
+
+The correction ledger should have one row per bias:
+\[
+\begin{array}{c|c|c|c}
+\hbox{effect} & \hbox{correction to } h/m_X & \hbox{standard uncertainty} & \hbox{evidence}\\
+\end{array}
+\]
+The evidence column matters. A correction obtained by auxiliary measurement is not the same as one obtained by
+simulation, and neither is the same as one bounded by deliberately exaggerating the effect. The apparatus can use
+all three, but it must label them. A simulated wavefront correction may be excellent; it is still a simulated
+correction. A density extrapolation may be clean; it is still an extrapolation. The grade travels with the row.
+
+Every sign convention should be checked by reversal. Reverse the recoil direction. Reverse the magnetic field
+where possible. Reverse the launch direction. Swap pulse order if the interferometer allows it. A real recoil
+term changes in the way the geometry says it should; a hidden bias often does not. Reversal is the apparatus'
+oldest test in a laboratory coat: relabel what the hand is free to relabel and watch what survives. What
+survives belongs to the world. What follows the relabeling belongs to the hand, and must be accounted for as
+gauge.
+
+\section{Correction Rows in Lean}
+
+In the companion file, each correction row is a record. The name says what moved the recoil, \(\texttt{delta}\)
+is the signed correction to \(h/m_X\), \(\texttt{sigma}\) is the standard uncertainty assigned to that correction,
+and \(\texttt{evidence}\) records how the row was earned:
+
+\begin{quote}\small
+\begin{verbatim}
+structure Correction where
+  name : String
+  delta : Float
+  sigma : Float
+  evidence : String
+\end{verbatim}
+\end{quote}
+
+An example correction list looks like this:
+
+\begin{quote}\small
+\begin{verbatim}
+def corrections : List Correction :=
+  [ { name := "wavefront"
+      delta := 0.000000003e-9
+      sigma := 0.000000002e-9
+      evidence := "auxiliary wavefront map" },
+    { name := "AC Stark"
+      delta := -0.000000001e-9
+      sigma := 0.000000001e-9
+      evidence := "power reversal" } ]
+\end{verbatim}
+\end{quote}
+
+The list is deliberately plain. No row hides behind a paragraph. No correction enters without a sign. No
+uncertainty enters without a value. No evidence enters without a sentence the later reader can challenge. The
+printed table and the Lean list should agree row for row.
+
+\section{Funge the Repetitions}
+
+Once the biases are named, the repeated runs can be pooled. Pool only like with like. Runs taken under the same
+carrier preparation, same gauge, same correction model, and same blind offset may be funged into a mean. Runs
+taken under changed conditions should first be held apart and compared. The question is not merely whether all
+the digits can be averaged. The question is whether the residuals behave as noise after the tanged biases have
+been removed.
+
+For each block of runs compute the corrected recoil ratio
+\[
+  \left(\frac{h}{m_X}\right)_{\rm corr}
+  =
+  \left(\frac{h}{m_X}\right)_{\rm raw}
+  + \sum_i \Delta_i,
+\]
+where \(\Delta_i\) are the signed corrections. Then inspect the residuals:
+\[
+  r_j =
+  \left(\frac{h}{m_X}\right)_{j,{\rm corr}}
+  -
+  \left\langle\frac{h}{m_X}\right\rangle .
+\]
+If the residuals are wider than their stated noise, do not tighten the error bar by force. The apparatus has
+found a leftover. Either identify the missing tanged effect or enlarge the uncertainty honestly. A beautiful mean
+with a dishonest scatter is not a measurement; it is an argument with the data concealed.
+
+The pooling should be hierarchical. First pool shots into fringes. Then pool fringes into runs. Then pool runs
+into blocks. Then pool blocks only after the block-to-block consistency is tested. At every level, the apparatus
+asks the same question: does repetition return the same answer within the noise the tape says it should? If yes,
+funge. If no, tange the difference and find out what moved.
+
+Lean represents the last pooling step as a correction closure:
+
+\begin{quote}\small
+\begin{verbatim}
+def correctionSum : List Correction -> Float
+  | [] => 0.0
+  | c :: cs => c.delta + correctionSum cs
+
+def correctionVariance : List Correction -> Float
+  | [] => 0.0
+  | c :: cs => square c.sigma + correctionVariance cs
+
+def closeRecoil (raw : Datum)
+    (corrections : List Correction) : ClosedRecoil :=
+  { raw := raw
+    corrections := corrections
+    value := raw.value + correctionSum corrections
+    sigma := Float.sqrt
+      (square raw.sigma + correctionVariance corrections) }
+\end{verbatim}
+\end{quote}
+
+This is a deliberately modest model: it treats the correction uncertainties as independent. When correlations
+matter, replace the variance rule with the covariance-aware rule and let the compiler show every place the change
+must travel. The essential point remains the same: the corrected recoil is not hand-edited. It is constructed
+from the raw recoil and the frozen correction list.
+
+The file includes a tiny proof of that construction:
+
+\begin{quote}\small
+\begin{verbatim}
+theorem closeRecoil_value
+    (raw : Datum) (corrections : List Correction) :
+    (closeRecoil raw corrections).value =
+      raw.value + correctionSum corrections := by
+  rfl
+\end{verbatim}
+\end{quote}
+
+The proof is small because the definition is honest. If someone later changes \(\texttt{closeRecoil}\) so that
+the value is no longer raw plus corrections, this theorem is where the lie fails to typecheck.
+
+\section{Carry the Uncertainty}
+
+Uncertainty is not embarrassment. It is the residue carried honestly. The final \(h/m_X\) needs a combined
+standard uncertainty with statistical and systematic parts shown separately before they are combined. Statistical
+uncertainty comes from repeated readings. Systematic uncertainty comes from correction rows, calibration rows,
+and model choices. Correlations must be named. Two corrections that share a laser calibration do not become
+independent because they sit on different lines of the table.
+
+The propagation into \(\alpha\) is simple in form. Since
+\[
+  \alpha =
+  \left(
+  \frac{2R_\infty}{c}\,
+  \frac{A_{\rm r}(X)}{A_{\rm r}(e)}\,
+  \frac{h}{m_X}
+  \right)^{1/2},
+\]
+the fractional uncertainty, ignoring correlations among the imported constants, is
+\[
+\begin{aligned}
+  \left(\frac{2u(\alpha)}{\alpha}\right)^2
+  &=
+    \left(\frac{u(h/m_X)}{h/m_X}\right)^2
+    +
+    \left(\frac{u(R_\infty)}{R_\infty}\right)^2 \\
+  &\quad+
+    \left(\frac{u(A_{\rm r}(X))}{A_{\rm r}(X)}\right)^2
+    +
+    \left(\frac{u(A_{\rm r}(e))}{A_{\rm r}(e)}\right)^2 .
+\end{aligned}
+\]
+The exact analysis should include the correlations supplied by the constants adjustment if they matter at the
+target precision. The apparatus' rule is simple: correlations are not optional once they are large enough to
+move the last quoted digit.
+
+In Lean, the corresponding independent-input rule is:
+
+\begin{quote}\small
+\begin{verbatim}
+def alphaRelativeSigma (input : AlphaInput) : Float :=
+  let e := input.constants.relativeMassElectron
+  0.5 * Float.sqrt
+    (square (recoilRelativeSigma input.recoil) +
+     square (relativeSigma input.constants.rydberg) +
+     square (relativeSigma input.constants.relativeMassX) +
+     square (relativeSigma e))
+\end{verbatim}
+\end{quote}
+
+The factor \(0.5\) is the square-root bridge. The product computes \(\alpha^2\), so the fractional uncertainty
+of \(\alpha\) is half the fractional uncertainty of the product. Again, this is not a license to ignore
+correlation. It is the base case, the clean surface from which the more careful covariance calculation can be
+introduced.
+
+\section{Close the Ledger Before Opening the Blind}
+
+The correction table, pooling rule, rejection criteria, uncertainty propagation, and comparison tests should be
+frozen before the blind offset is removed. This is the human side of the gauge. If the operator can still change
+which runs count after seeing whether the answer agrees with CODATA, the operator has become an unrecorded
+correction. The apparatus cannot prevent that by logic. It can only require the tape: freeze the ledger, open the
+blind, compute once, and leave the record of the opening where a reader can see it.
+
+When the blind is opened, the corrected \(h/m_X\) becomes the measured input to the alpha bridge. Nothing in the
+systematic table should change merely because the resulting \(\alpha\) is surprising. A surprising answer may
+send the user back to run the experiment again, or to build a better correction, or to compare against an
+independent method. It must not send the user back to quietly edit the past. The past is the tape. The tape is
+the measurement's memory.

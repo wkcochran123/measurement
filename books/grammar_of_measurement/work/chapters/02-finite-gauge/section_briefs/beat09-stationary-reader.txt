@@ -1,0 +1,21 @@
+Section manager brief: Beat 9, The Stationary Reader
+====================================================
+
+Task:
+- Draft the opening beat section for finite gauge paths and finite actions.
+- Explain stationarity as a grammatical reading: when all permitted local
+  slips have no remaining residual, the path is stationary.
+
+Writer fragments:
+- Fragment A: transition from Chapter 01's needle to finite gauge paths.
+- Fragment B: define action as a finite ledger rather than a metaphysical
+  quantity.
+- Fragment C: explain residual vanishing and closed flat paths.
+- Fragment D: include one short illustrative example from interpolation or a
+  calibration path, without making the example the spine.
+
+Constraints:
+- ASCII TeX only for manuscript prose.
+- Do not mention hidden machinery, source paths, or formal systems.
+- Prefer grammar verbs: permits, forbids, identifies, quotients, carries,
+  collapses, restores, reads, bounds, pins, vanishes, balances, forces.

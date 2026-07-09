@@ -181,6 +181,10 @@ def canonicalSetup : Setup := { grid := sampleGrid }
 #eval reconstruct (serialize sampleGrid)     -- expect: the six cells, row-major
 #print axioms claim_holds
 
+instance (setup : Setup) : Decidable (experiment.claim setup) := by
+  unfold experiment
+  infer_instance
+
 /-- Bring a minimal device next to this experiment: it records whether the exported claim fires. -/
 def deviceNear (setup : Setup) : Bool :=
   decide (experiment.claim setup)

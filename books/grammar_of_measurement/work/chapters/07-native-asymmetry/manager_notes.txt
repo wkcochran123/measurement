@@ -1,0 +1,84 @@
+Chapter manager notes
+=====================
+
+Run date: 2026-07-08
+Owner: Chapter 07, "Relativity as Selection and the Native Asymmetry"
+
+Protocol read
+-------------
+- Manuscript must be TeX prose and 7-bit ASCII.
+- Manuscript must not mention implementation machinery or present examples as
+  the source of the plot.
+- Claims should be stated as grammatical obligations: what the grammar
+  permits, forbids, identifies, quotients, carries, reads, bounds, selects,
+  closes, or counts.
+
+Nested process decision
+-----------------------
+- No recursive subagent or writer-spawning tools are exposed in this session.
+- Fallback path is active. I wrote section-manager briefs to disk and will
+  perform the section-manager and writer roles directly, one section at a
+  time, depth-first.
+- The fallback keeps visible progress under this chapter directory and avoids
+  broad parallel drafting.
+
+Continuity read
+---------------
+- Chapters 01--03 establish difference before sameness, finite forcing,
+  stationarity, the anchored positive invariant, the concrete operator, and
+  sensor-relative readability.
+- Chapter 04 establishes baseline-relative charge: flat baseline reads the
+  native negative sign, tilted baseline admits the positive sign.
+- Chapter 05 preserves the geometry/gauge split through completion and forces
+  terminal residue to the boundary trace.
+- Chapter 06 externalizes orientation, identifies outside reading with
+  boundary obstruction, restores the true-not-false separator, and hands
+  explanatory depth to a reader switch.
+- Chapter 07 must therefore begin from reader-relative orientation and show
+  that relativity is selection over observational equivalence, not motion
+  as an owned property.
+
+Beat decomposition
+------------------
+- Beat 38 gets one section: relative velocity as quotient selection.
+- Beat 39 gets one section: positron as closed-loop holonomy sign.
+- Beat 40 gets one section: native matter/asymmetry count.
+- Beat 41 gets one section: 36-gate funge/crank partition.
+- Beat 42 gets one section: final reader station.
+- A short opening and closing are added for continuity.
+
+Source decisions
+----------------
+- Use the device experiment material only as illustration:
+  - velocity as reconciled difference between ledgers;
+  - Aharonov-Bohm and Sagnac as loop holonomy illustrations;
+  - chirality as admissible handed refinement;
+  - positron annihilation and positron threshold as finite coincidence and
+    threshold illustrations;
+  - Einstein/Michelson-Morley descriptions as frame and isotropy examples.
+- Do not make any example the spine of the argument.
+- Keep the native asymmetry claim at the chapter's honest ceiling: the grammar
+  counts matter and no antimatter over the symmetric native baseline, while
+  antimatter requires an asymmetric or tilted baseline. Do not claim a full
+  cosmological derivation.
+
+Integration choices
+-------------------
+- The section files will be drafted under sections/ and then copied in order
+  into latex/chapters/07.tex.
+- Section prose will use the established rhythm: permission, forbidden
+  shortcut, forced reading, example as lantern, carry-forward.
+- Terms to foreground: permits, forbids, identifies, quotients, carries,
+  restores, reads, bounds, selects, closes, orients, partitions, counts, and
+  forces.
+
+Completion notes
+----------------
+- Drafted seven TeX sections: opening, five beat sections, and closing.
+- Merged the section prose into latex/chapters/07.tex as a self-contained
+  chapter.
+- ASCII scan passed for the chapter work files and merged TeX.
+- Manuscript forbidden-term scan passed for the merged TeX.
+- Full-book compile was not used because TeX tried to write chapter aux files
+  beside other source chapters. A standalone Chapter 07 compile succeeded into
+  /private/tmp/gom07build/chapter07.pdf.

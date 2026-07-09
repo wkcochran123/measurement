@@ -12,11 +12,11 @@ explicit: the exported claim is the setup-local proposition computed from
 other setups must supply their own preconditions.
 -/
 
-def defaultOutput : RunOutput :=
-  run defaultSetup
+def defaultOutput : Bool :=
+  run canonicalSetup
 
 theorem defaultOutput_eq_run :
-    defaultOutput = run defaultSetup := by
+    defaultOutput = run canonicalSetup := by
   rfl
 
 theorem exported_tag_matches_claim :
@@ -24,31 +24,27 @@ theorem exported_tag_matches_claim :
   rfl
 
 theorem tag_allows_modelKind :
-    Experiments.Common.ClaimTag.allowsModelKind claim.tag modelKind = true := by
+    Experiments.Common.ClaimTag.allowsModelKind
+      claim.tag Experiments.Common.ModelKind.projects = true := by
   decide
 
-theorem claimStatement_holds_when_recorded_accessible (setup : Setup)
-    (h : (run setup).recorded <= (run setup).accessible) :
-    claimStatement (run setup) := by
-  exact h
-
 theorem exported_claim_is_setup_local (setup : Setup) :
-    experiment.claim setup = claimStatement (run setup) := by
+    experiment.claim setup = sameMessage setup.sent setup.reference := by
   rfl
 
 theorem audited_claim_holds :
     claim.statement := by
   exact claim_holds
 
-theorem exported_claim_holds_at_default :
-    experiment.claim defaultSetup := by
-  exact claim_holds
+theorem exported_claim_holds_at_canonical :
+    experiment.claim canonicalSetup := by
+  exact curl_is_unrecordable
 
 theorem exported_claim_tracks_run (setup : Setup) :
-    experiment.claim setup = claimStatement (run setup) := by
-  rfl
+    run setup = true ↔ experiment.claim setup :=
+  run_iff_claim setup
 
-def auditedExperiment : Experiments.Common.Experiment Setup RunOutput :=
+def auditedExperiment : Experiments.Common.Experiment Setup Bool :=
   experiment
 
 end Experiments.TheMessageEffect

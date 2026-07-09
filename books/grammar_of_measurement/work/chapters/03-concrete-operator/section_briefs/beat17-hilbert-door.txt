@@ -1,0 +1,22 @@
+Section manager brief: Beat 17
+==============================
+
+Target file: sections/03-hilbert-door.tex
+Section title: The Hilbert Door
+
+Beat:
+The Hilbert door: the square root of energy squared supplies the scale field.
+
+Writer fragments:
+- Fragment A: recall the anchored quadratic energy from Beat 16.
+- Fragment B: explain why energy squared alone is not yet a distance-scale
+  reading; the square root turns activity into magnitude.
+- Fragment C: explain completion as an earned door: finite Cauchy activity
+  can be housed only after zero norm identifies no remaining activity.
+- Fragment D: use sampling/recoverability as a light illustration of why
+  completion is constrained by finite ledgers.
+
+Acceptance criteria:
+- Completion must be earned by finite activity and zero detection.
+- Do not treat the Hilbert door as a magical continuum.
+- End by asking what labels the invariant can carry.

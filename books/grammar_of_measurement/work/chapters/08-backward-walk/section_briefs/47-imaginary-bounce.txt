@@ -1,0 +1,19 @@
+Section manager brief: beat 47, The imaginary bounce
+====================================================
+
+Beat:
+- The phase reading crosses the quarter-turn that predicts the matter/antimatter flip.
+
+Writer fragments:
+- Fragment A: present the phase quarter-turn as a reading of orientation, not a constructed spinor or
+  completed complex mechanism.
+- Fragment B: explain the bounce. A half-turn changes sign; the quarter-turn is the phase cost whose
+  double return reads the sign split.
+- Fragment C: connect to the flat and tilted baselines: flat reads the negative matter sign; tilted
+  closure can read the positive sign.
+- Fragment D: use spin one-half, Aharonov-Bohm, and Mach-Zehnder as lanterns: phase can be carried
+  globally even when local segments do not show the whole residue.
+
+Integration notes:
+- Be explicit about claim discipline: "the grammar reads this as" rather than "this constructs."
+- Do not overclaim a spinor; the phase/imaginary bounce is a disciplined interpretation.

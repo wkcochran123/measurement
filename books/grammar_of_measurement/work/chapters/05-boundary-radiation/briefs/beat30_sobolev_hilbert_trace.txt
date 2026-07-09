@@ -1,0 +1,29 @@
+Section-manager brief: Beat 30
+================================
+
+Working title: The Sobolev-Hilbert Trace
+
+Beat:
+- The Sobolev-Hilbert trace: finite residue maps into completion while
+  preserving the split.
+
+Required section result:
+- Explain the completion door as earned by the norm that reads energy.
+- Finite residues enter a pre-Hilbert skeleton and complete only after the
+  norm detects zero activity and the residual sequence is Cauchy.
+- The finite residue is not discarded; it is carried into the completion.
+- The geometry/gauge split lifts through completion as separated
+  Sobolev-Hilbert channels.
+
+Writer-sized fragments:
+1. Reintroduce the finite norm as the square-root reading of energy.
+2. Describe the pre-Hilbert skeleton as countable, finite-supported, and
+   separable.
+3. Explain residual mapping into completion without losing finite origin.
+4. Explain geometric and gauge certificate families.
+5. Explain how orthogonality lifts the split.
+
+Examples allowed:
+- Precision: completion supplies determinate intermediate readings without
+  making them measurements.
+- Gosset/projection examples only if a projection analogy is needed.

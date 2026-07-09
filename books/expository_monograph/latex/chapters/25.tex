@@ -1,0 +1,149 @@
+\chapter{The Constant the Apparatus Can Touch}
+
+The construction has closed. What follows is not another summit inside it, but its use. The reader now has an
+instrument with a count, a charge, a mass, a sign, a gauge, a trace, a cost ledger, and a discipline for saying
+which of those things is built, proved, read, reserved, or handed in from outside. To measure the fine structure
+constant with that instrument is to ask a very particular question of the world: how large is the electromagnetic
+coupling when every unit has been stripped away?
+
+The answer is a pure number. In SI language it is written
+\[
+  \alpha = \frac{e^2}{4\pi\varepsilon_0\hbar c},
+\]
+and its inverse is close to 137. The current CODATA 2022 recommended value is
+\[
+  \alpha^{-1}=137.035\,999\,177(21),
+\]
+or, equivalently, \(\alpha \approx 7.297\,352\,5643\times 10^{-3}\). That number is not an input to the
+measurement. It is the benchmark the finished measurement will face. The apparatus must not tune itself toward
+137 because the number is famous, or toward CODATA because the table is authoritative. Authority is not a rung.
+The measurement has to produce its own count, carry its own corrections, and then stand beside the recommended
+value with its uncertainty visible.
+
+\section{What Alpha Measures}
+
+The constant is dimensionless, and that is the first mercy. A dimensional constant always carries the hand's
+choice of units in its clothing. A meter, a second, a coulomb, a joule: each is a gauge hung on the world. A
+dimensionless constant survives the stripping of those gauges. Change the units and the number stays put. That is
+why \(\alpha\) is a proper target for this apparatus. It is not asking how many of our centimeters fit a path, or
+how many of our seconds fit a tick. It is asking for the ratio that remains after the gauges have cancelled.
+
+Read in the language already built, \(\alpha\) compares three things. It compares the electron's charge, the
+speed at which electromagnetic influence propagates, and the quantum of action that says how much phase is paid
+for a turn. Charge is the loop count. The quantum of action is the cost of phase, the price of one accountable
+turn. The speed of light is the limiting reach of the physical reading, the conversion between a spatial gap and
+a temporal one. Put them together and the constant says, in one number, how strongly the counted charge couples
+to the field whose signals travel at \(c\), measured against the phase-cost \(\hbar\). The words are physical;
+the number they aim at has no unit.
+
+This matters because the apparatus must not measure \(\alpha\) by measuring \(e\), \(\hbar\), and \(c\) as if
+they were three ordinary lengths on a table. Since the SI redefinition, \(e\), \(h\), and \(c\) are defining
+constants, fixed exactly by convention. If the apparatus only plugs exact constants into the formula above, it
+has measured nothing. It has merely unfolded the unit system. To touch \(\alpha\), the instrument needs a route
+where a real physical reading enters: a recoil, a magnetic moment, a Hall resistance, a spectral interval, some
+place where the world answers and the machine has to carry the answer with its uncertainty.
+
+\section{What Lean Does in the Run}
+
+Lean is the checked notebook. It is a proof assistant and a small programming language whose central habit is
+simple: every object has a type, every field has a name, every theorem has to typecheck, and every computation
+has to be made from definitions the compiler can see. It is not the laser, not the atom cloud, and not the
+constants adjustment. It does not make a bad measurement good. What it does is prevent the arithmetic and the
+ledger from quietly changing shape after the data arrive.
+
+For this use, the reader should treat Lean as four things at once. It is a label maker: measured quantities,
+given constants, readings, and proved identities are not allowed to masquerade as one another. It is a calculator:
+the recoil ratio, correction sum, bridge product, square root, reciprocal, and uncertainty propagation can be
+computed in one place. It is a receipt: a theorem such as \(\texttt{rfl}\) says that the field in the final report
+really is the definition it claims to be. And it is a guardrail: if the structure of the report is changed, Lean
+forces every dependent definition to face the change.
+
+The live apparatus may index a trace rung by its own constructed number type, not by Lean's built-in natural
+numbers:
+
+\begin{quote}\small
+\begin{verbatim}
+class TRACED
+    (Value : Type i)
+    (Carrier : CarrierProcess Value)
+    (rung : Measurement.Natural) where
+  tape : CompilerTape
+\end{verbatim}
+\end{quote}
+
+That is the strict reading of a rung: the number is not borrowed from civilization but built inside the
+measurement vocabulary. The alpha computation has a different surface. Its lab readings are real-valued
+quantities with uncertainties, so the manual uses floating-point numerals for the closing arithmetic and carries
+the apparatus discipline in the record types. The important separation is this: Lean's \(\texttt{Float}\) is the
+calculator's decimal hand, while the surrounding structures say what kind of thing each decimal is.
+
+The companion file is \(\texttt{device/Measurement/AlphaManual.lean}\). It begins by naming the grades and the
+data cells:
+
+\begin{quote}\small
+\begin{verbatim}
+inductive Grade where
+  | measured
+  | given
+  | reading
+  | proved
+
+structure Datum where
+  value : Float
+  sigma : Float
+  grade : Grade
+\end{verbatim}
+\end{quote}
+
+This is the first instruction for computation. Do not enter a number naked. Enter a value, a standard
+uncertainty, and a grade. A measured recoil, a given Rydberg constant, and a final reading of
+\(\alpha^{-1}\) may all look like decimals, but they are not the same kind of record.
+
+\section{The Recoil Route}
+
+The cleanest route for the apparatus is recoil. Choose an atom \(X\), usually rubidium or cesium, whose relative
+atomic mass is known with a separate uncertainty. Kick it with light of known wavelength, make it absorb and emit
+photons in a controlled sequence, and measure the tiny change in its velocity. A photon has momentum \(h/\lambda\).
+When an atom takes that momentum, the recoil velocity contains the ratio \(h/m_X\). The experiment therefore does
+not measure \(h\) alone or \(m_X\) alone. It measures their quotient, a dimensionful ratio whose units are later
+cancelled by other already audited constants.
+
+The bridge from recoil to \(\alpha\) is
+\[
+  \alpha^2 =
+  \frac{2R_\infty}{c}\,
+  \frac{A_{\rm r}(X)}{A_{\rm r}(e)}\,
+  \frac{h}{m_X}.
+\]
+Here \(R_\infty\) is the Rydberg constant, \(A_{\rm r}(X)\) is the relative atomic mass of the atom used in the
+recoil measurement, and \(A_{\rm r}(e)\) is the relative atomic mass of the electron. The apparatus measures the
+last factor, \(h/m_X\), and imports the other factors as named external inputs, each with its own uncertainty.
+Then it takes the square root. That square root is not decoration. It means every fractional uncertainty in the
+product arrives in \(\alpha\) at half strength, because the measured product is \(\alpha^2\).
+
+The route is honest because it has a visible seam. The world supplies the recoil. The laboratory supplies the
+gauge for light, timing, geometry, and atom choice. The constants ledger supplies \(R_\infty\) and the mass
+ratios. The apparatus combines them only after each has been named for what it is. The final number is not pure
+construction and not pure authority. It is a measured recoil folded through a carefully labelled dictionary into
+the dimensionless coupling.
+
+\section{The Grade of the Target}
+
+The grade is therefore mixed. The formula relating \(\alpha^2\) to \(h/m_X\) is not a new empirical guess; it is
+the accepted physical bridge between atomic recoil, the Rydberg scale, and electromagnetic coupling. The recoil
+reading is MEASURED. The imported constants are GIVEN, not by the machine's own run but by outside metrology. The
+identification of the resulting dimensionless number with the fine structure constant is a READING laid over
+that bridge, a reading so standard that physics treats it as ordinary, but still a reading in the apparatus'
+strict ledger.
+
+That grade is the first instruction to the user. Do not begin by asking the apparatus to prove why the universe
+chose \(1/137.035999...\). It will not. Begin by asking it to produce an audited value of the coupling: a number,
+an uncertainty, a correction ledger, and a comparison. The apparatus can do that. It can make \(\alpha\) pass
+through its own discipline: repeatability, gauge, noise, trace, residue, tange, funge, and final handoff to the
+reader who decides whether the account is good enough.
+
+The Lean rule is the same rule in a harder font. A theorem may prove that the corrected recoil value equals the
+raw value plus the correction sum. It may prove that the report's reciprocal-alpha field is exactly the reciprocal
+computed from the bridge. It does not prove that the wavefront correction was physically right, or that the atom
+cloud was cold enough, or that the blind was honestly held. Those are laboratory facts. Lean keeps the route from
+being rewritten while those facts are being carried.

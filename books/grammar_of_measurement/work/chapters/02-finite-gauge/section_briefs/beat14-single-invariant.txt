@@ -1,0 +1,22 @@
+Section manager brief: Beat 14, The Single Invariant
+====================================================
+
+Task:
+- Draft the title theorem section: the second variation is the unique positive
+  invariant.
+- Gather the previous sections into one claim: residual vanishing, balance,
+  spline closure, squeezing, and anchoring all read the same invariant.
+
+Writer fragments:
+- Fragment A: explain second variation as the remaining quadratic reading
+  after first variation vanishes.
+- Fragment B: identify the diagonal reading with energy square or activity
+  magnitude.
+- Fragment C: argue uniqueness by exclusion: linear residue vanishes, null
+  modes are pinned, higher residue is not the invariant.
+- Fragment D: close the chapter by setting up the next chapter's concrete
+  operator.
+
+Constraints:
+- ASCII TeX only.
+- Avoid overclaiming physics; this chapter proves a grammatical title theorem.

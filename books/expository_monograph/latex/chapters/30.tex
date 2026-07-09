@@ -1,0 +1,127 @@
+\chapter{The Cooper Pair Ledger}
+
+A Cooper pair is not two separately tagged electrons walking side by side in the ledger. In a superconductor, the
+pair belongs to the condensate. Its useful public facts are charge \(2e\), even parity, phase coherence, and a
+gap separating the paired ground from quasiparticle excitations. The apparatus therefore records the pair not as
+two independent electron rows, but as a boundary state with its own charge step and its own phase cost.
+
+This is where the earlier electron naming has to be handled with care. The electron was named by counting: box
+one, charge read as a single negative unit. The Cooper-pair boundary now receives that electron through a second
+electron position at the junction, but it still does not erase the distinction between one and two. A pair
+transfer moves charge in units of \(2e\). An electron-electron contact carries its own residual. The interface is
+exactly the place where those units meet and refuse to become one another.
+
+\section{The Gauge Facts}
+
+The existing Lean gauge already proves the small facts needed at the door. In the companion file they are exposed
+at the face level:
+
+\begin{quote}\small
+\begin{verbatim}
+theorem singleElectron_has_no_tange :
+    Face.positronCount .singleElectron = 0 := by
+  decide
+
+theorem junctionElectron_has_no_tange :
+    Face.positronCount .junctionElectron = 0 := by
+  decide
+
+theorem cooperPair_has_one_tange :
+    Face.positronCount .cooperPair = 1 := by
+  decide
+
+def Face.totalCount (face : Face) : Nat :=
+  face.matterCount + face.positronCount
+
+theorem cooperPair_tallies_the_gauge :
+    Face.totalCount .cooperPair = Gate.all.length := by
+  decide
+\end{verbatim}
+\end{quote}
+
+These are finite gauge theorems, not microscopic superconductivity. They say how the apparatus reads the faces
+once the face has been supplied. The outer electron and the junction electron both sit at the all-funge corner.
+The Cooper-pair face sits one tange away. The matter count and the tange count partition the whole gauge; no
+hidden fourth class is allowed to drift between them.
+
+This is enough for an instruction manual because the pair computation is not trying to derive the condensate
+from first principles. It is trying to add a contact law to the apparatus. A contact law says: when the outer
+electron meets the junction electron, carry the electron-electron residual; when the interface is read as a pair,
+count the pair transfer and charge the phase; when the run unwinds, discharge those residuals in the reverse
+order.
+
+\section{The Physical Scales}
+
+A real device needs physical scales. The companion file leaves a record for them:
+
+\begin{quote}\small
+\begin{verbatim}
+structure JunctionScales where
+  gap : Float
+  josephsonEnergy : Float
+  chargingEnergy : Float
+  gateOffset : Float
+deriving Repr
+\end{verbatim}
+\end{quote}
+
+The gap is the energy cost to break a pair into quasiparticles. The Josephson energy is the strength of coherent
+pair transfer across the junction. The charging energy is the price of changing the island charge. The gate
+offset records where the hand has biased the island. These four numbers are the first practical inputs for a
+Cooper-pair device. They should be entered with units and uncertainties in the laboratory ledger, even though the
+minimal Lean skeleton stores only floating-point demonstration slots.
+
+The apparatus grade is mixed again. The gauge facts above are PROVED inside the finite Lean gauge. The physical
+scales are GIVEN or MEASURED depending on how the laboratory obtains them. The identification of a particular
+boundary event as Josephson tunneling, Andreev reflection, poisoning, or pair breaking is a READING laid over the
+device. The computation is honest only when those grades remain separated.
+
+\section{The State Record}
+
+The running state contains only what the interface needs for its first manual:
+
+\begin{quote}\small
+\begin{verbatim}
+structure InteractionState where
+  stage : Stage
+  face : Face
+  electronElectronEvents : Nat
+  electronElectronResidual : Int
+  pairTransfers : Int
+  singleEvents : Nat
+  pairEvents : Nat
+  phaseTurns : Int
+  costSpent : Nat
+deriving Repr
+\end{verbatim}
+\end{quote}
+
+The \(\texttt{stage}\) says where the four-stage trace has stopped. The \(\texttt{face}\) says how that stage
+reads through the finite gauge. The two electron-electron fields count the outer/junction contacts and carry a
+signed residual until the return step unwinds it. The \(\texttt{pairTransfers}\) field is signed because the
+interface can move a pair into or out of the condensate. The \(\texttt{singleEvents}\) and
+\(\texttt{pairEvents}\) fields are unsigned counts of how many electron and pair faces have been seen. The
+\(\texttt{phaseTurns}\) field is signed because a pair transfer can advance or unwind the simplified phase
+ledger. The \(\texttt{costSpent}\) field is the operator's clock.
+
+The initial state starts at the outer electron:
+
+\begin{quote}\small
+\begin{verbatim}
+def initial : InteractionState :=
+  { stage := .outerElectron
+    face := .singleElectron
+    electronElectronEvents := 0
+    electronElectronResidual := 0
+    pairTransfers := 0
+    singleEvents := 1
+    pairEvents := 0
+    phaseTurns := 0
+    costSpent := 0 }
+\end{verbatim}
+\end{quote}
+
+Starting at the outer electron is a choice, not a law. A different experiment may start at the junction electron,
+at the pair face, or at a state already carrying phase. The manual starts here because the user asked how to put
+in the electron \(\to\) electron \(\to\) Cooper-pair interaction. The outer electron is brought to the door
+first. The junction electron answers next. The condensate answers after that.

@@ -212,11 +212,11 @@ def underResolvedAgent : Agent :=
 
 /-- Bring a minimal device next to this experiment: it records whether the exported claim fires. -/
 def deviceNear (setup : Setup) : Bool :=
-  decide (experiment.claim setup)
+  run setup
 
 theorem deviceNear_detects_claim (setup : Setup) :
     deviceNear setup = true ↔ experiment.claim setup := by
-  simp [deviceNear]
+  simpa [deviceNear] using run_iff_claim setup
 
 def triangulation : Experiments.Common.Triangulation Setup Bool :=
   { experiment := experiment

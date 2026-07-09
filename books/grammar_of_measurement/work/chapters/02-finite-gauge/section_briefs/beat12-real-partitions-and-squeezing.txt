@@ -1,0 +1,20 @@
+Section manager brief: Beat 12, Real Partitions And Squeezing
+=============================================================
+
+Task:
+- Draft the section where finite truncations are squeezed toward completion
+  through a discrete Sobolev grammar.
+- Make the continuum a forced completion of bounded finite refinements, not
+  an assumed background.
+
+Writer fragments:
+- Fragment A: real partitions as finite supported records.
+- Fragment B: weak residuals and supported tests.
+- Fragment C: squeezing between zero and a shrinking bound.
+- Fragment D: completion as the place where the finite tower is read.
+
+Constraints:
+- ASCII TeX only.
+- Avoid ontological claims about the continuum.
+- Examples may include mesh refinement and Hilbert completion, but they must
+  remain subordinate to the grammar.

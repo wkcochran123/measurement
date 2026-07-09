@@ -1,0 +1,20 @@
+Section manager brief: beat 46, The four faces of the number
+============================================================
+
+Beat:
+- Charge, mass, phase, and sameness are four readings of one loop.
+
+Writer fragments:
+- Fragment A: introduce the one number as a bracketed loop reading, not four independent quantities.
+- Fragment B: charge and mass are projection faces. Charge reads the lower loop count; mass reads the
+  upper strain.
+- Fragment C: phase is a decision face. It asks which orientation the carried fact can take under a
+  permitted reading.
+- Fragment D: sameness is the identification face. It is allowed to touch the needle because closure has
+  restored one bounded identity.
+- Fragment E: explain costs. Projection is cheap, decision spends a reader-facing choice, and sameness
+  spends the sanctioned quotient.
+
+Integration notes:
+- Avoid saying the four faces are separate substances.
+- Prepare the phase face for the imaginary bounce section.

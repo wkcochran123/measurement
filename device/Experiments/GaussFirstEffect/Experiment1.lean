@@ -210,6 +210,10 @@ def canonicalSetup : Setup := { encoder := fixedEncoder, first := trialA, second
 #eval decide (fixedEncoder.admits { raw := 12, bin := 99 })   -- expect: false
 #print axioms claim_holds                                 -- ambient [propext, Quot.sound]; coupling = count_append symbol
 
+instance (setup : Setup) : Decidable (experiment.claim setup) := by
+  unfold experiment
+  infer_instance
+
 /-- Bring a minimal device next to this experiment: it records whether the exported claim fires. -/
 def deviceNear (setup : Setup) : Bool :=
   decide (experiment.claim setup)

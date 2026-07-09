@@ -1,0 +1,46 @@
+Chapter 02 status
+=================
+
+Title: The Finite Gauge and the Single Invariant
+Scope: Beats 9--14 from work/plot_manifest.txt.
+
+Current phase:
+- [done] chapter manager decomposition
+- [done] fallback section manager work
+- [done] fallback writer fragments
+- [done] section merge
+- [done] chapter TeX merge
+- [done] ASCII check
+
+Active agents:
+- chapter manager: 019f415f-0394-7283-8e8c-004378c056b7 (Peirce)
+
+Run note:
+- 2026-07-08: No callable recursive subagent interface is available in this
+  session. The chapter manager will write section-manager briefs to disk and
+  continue depth-first as section manager and writer.
+
+Section plan:
+- Beat 9: 01-stationary-reader.tex
+- Beat 10: 02-euler-lagrange.tex
+- Beat 11: 03-spline-sufficiency.tex
+- Beat 12: 04-real-partitions-and-squeezing.tex
+- Beat 13: 05-anchor-earns-its-keep.tex
+- Beat 14: 06-single-invariant.tex
+
+Draft log:
+- 2026-07-08: Starting opening and Beat 9.
+- 2026-07-08: Completed opening and Beat 9 section draft.
+- 2026-07-08: Starting Beat 10 section draft.
+- 2026-07-08: Completed Beat 10 section draft.
+- 2026-07-08: Starting Beat 11 section draft.
+- 2026-07-08: Completed Beat 11 section draft.
+- 2026-07-08: Starting Beat 12 section draft.
+- 2026-07-08: Completed Beat 12 section draft.
+- 2026-07-08: Starting Beat 13 section draft.
+- 2026-07-08: Completed Beat 13 section draft.
+- 2026-07-08: Starting Beat 14 and closing section drafts.
+- 2026-07-08: Completed Beat 14 and closing section drafts.
+- 2026-07-08: Starting chapter TeX merge.
+- 2026-07-08: Completed chapter TeX merge.
+- 2026-07-08: ASCII and forbidden manuscript term checks passed.

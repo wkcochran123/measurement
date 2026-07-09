@@ -86,7 +86,7 @@ def localRefineB (b : Setting) (h : JointHistory) : JointHistory :=
 it records both settings AND repairs the shared boundary (`intact ↦ pivoted`), eliminating
 joint histories incompatible with the updated record. This is `f(U^A, U^B)` — and crucially
 it changes the seam, which no local refinement does. -/
-def globalPivot (a b : Setting) (h : JointHistory) : JointHistory :=
+def globalPivot (a b : Setting) (_h : JointHistory) : JointHistory :=
   { recA := some a, recB := some b, seam := Seam.pivoted }
 
 -- Decidability of the boundary-compatibility predicate, so `decide`/`#eval` see through it.
@@ -209,6 +209,10 @@ theorem run_iff_claim (s : Setup) :
 def canonicalSetup : Setup := { settingA := Setting.s0, settingB := Setting.s1 }
 
 #eval run canonicalSetup  -- expect: false  (no local refinement matches the global pivot)
+
+instance (setup : Setup) : Decidable (experiment.claim setup) := by
+  unfold experiment
+  infer_instance
 
 /-- Bring a minimal device next to this experiment: it records whether the exported claim fires. -/
 def deviceNear (setup : Setup) : Bool :=

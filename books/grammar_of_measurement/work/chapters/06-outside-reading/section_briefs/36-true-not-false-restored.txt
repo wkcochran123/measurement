@@ -1,0 +1,27 @@
+Section-manager brief: Beat 36, True Not False Restored
+=======================================================
+
+Section target:
+- Draft section 04-true-not-false-restored.tex.
+
+Beat:
+- The boundary separates what the interior collapse could not.
+
+Writer-sized fragments:
+- Fragment A: Recall the Chapter 01 collapse carefully: the bare interior could
+  not separate affirmation and denial.
+- Fragment B: Explain why boundary strain separates true reading from false
+  reading. True carries the obstruction signal; false carries zero strain or
+  signal-off.
+- Fragment C: Make clear this is restoration, not primitive truth. The boundary
+  restores a distinction earned by exterior reading.
+- Fragment D: Use on/off signal or silence as a short illustration of how a
+  binary boundary can be informative.
+- Fragment E: Close by preparing the reader's binary control.
+
+Required grammar verbs:
+- restores, separates, reads, carries, permits, forbids.
+
+Avoid:
+- Do not state or imply ordinary contradiction has been dissolved globally.
+- Do not mention internal machinery.

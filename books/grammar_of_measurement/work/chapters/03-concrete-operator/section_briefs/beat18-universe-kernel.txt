@@ -1,0 +1,23 @@
+Section manager brief: Beat 18
+==============================
+
+Target file: sections/04-universe-kernel.tex
+Section title: The Universe Kernel
+
+Beat:
+The universe kernel: the invariant binds to color, flavor, and phase labels.
+
+Writer fragments:
+- Fragment A: define the kernel as the grammar that binds the single invariant
+  to the labels a reader may use.
+- Fragment B: explain label discipline. Labels such as charge, color, flavor,
+  and phase do not create the invariant; they ride it.
+- Fragment C: explain zero detection at the top. If invariant zero detects no
+  activity below, labels cannot smuggle in hidden motion.
+- Fragment D: illustrate with phase transport or lattice patterns, keeping the
+  example subordinate.
+
+Acceptance criteria:
+- Bind labels to invariant; do not derive physics by fiat.
+- Preserve the single-invariant spine from Chapter 02.
+- Prepare the sensor-relative metaphysical/physical distinction.

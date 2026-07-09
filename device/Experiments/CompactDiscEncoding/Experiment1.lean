@@ -215,6 +215,10 @@ theorem run_bookkeeps_merge (setup : Setup) :
   { defaultSetup with coarseReader := { threshold := 0 } })   -- expect: false
 #print axioms claim_holds                                -- ambient footprint, not coupling
 
+instance (setup : Setup) : Decidable (experiment.claim setup) := by
+  unfold experiment
+  infer_instance
+
 /-- Bring a minimal device next to this experiment: it records whether the exported claim fires. -/
 def deviceNear (setup : Setup) : Bool :=
   decide (experiment.claim setup)

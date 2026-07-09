@@ -1,0 +1,25 @@
+Section manager brief: beat 53 -- The relativistic orbit coefficient
+====================================================================
+
+Beat:
+Boundary radiation is pushed to lightlike approach.
+
+Section task:
+Explain how the grammar drives the radiation residue toward the lightlike
+boundary. The relevant orbit is bracketed by undershoot, exact lightlike
+boundary, and timelike overshoot. The lightlike face is not an ordinary interior
+orbit; it is the boundary toward which the surface radiation reading is pushed.
+
+Required manuscript moves:
+- The orbit coefficient is not inserted by taste; it is the cost of preserving
+  the invariant as the boundary reading approaches the lightlike face.
+- The grammar forbids reading the lightlike boundary as a freely inspectable
+  interior state.
+- Radiation remains a boundary residue, now forced toward a null surface.
+- Keep the claim finite: this section sets the direction of approach, not a
+  completed crossing.
+
+Useful illustrations:
+- Lorentz-style bracket: super-unit undershoot, lightlike boundary, timelike
+  overshoot.
+- Horizon radiation as terminal residue whose surface approach becomes null.

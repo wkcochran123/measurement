@@ -1,0 +1,103 @@
+\section{The Path Relation}
+
+An extrapolated value is still a path reading. It has not floated free of the
+route by which it was obtained. The grammar must therefore ask two questions
+that ordinary shorthand often collapses. What signed displacement has the path
+carried? And what cost did the path spend to carry it? The first question is
+about orientation and endpoints. The second is about the ledger of transitions
+used to get there.
+
+The difference appears sharply in the three-rung corridor. Begin at the mass
+rung and return to the charge rung. One route is direct: mass to the returned
+charge face. Another route is composed: mass to value, then value to returned
+charge. If the residues compose correctly, both routes carry the same signed
+displacement through the corridor. The grammar may identify that displacement.
+It may say that the endpoint relation has returned the same oriented result.
+
+In schematic form:
+\[
+  \Delta_{\pm}(\gamma_{12}\circ\gamma_{23})
+    = \Delta_{\pm}(\gamma_{13}) .
+\]
+The symbol \(\Delta_{\pm}\) names the signed displacement. The composed path
+\(\gamma_{12}\circ\gamma_{23}\) passes through an intermediate rung. The
+direct path \(\gamma_{13}\) does not. The equality says only that the signed
+endpoint displacement is the same. It does not say that the two paths have
+spent the same cost.
+
+Cost is a different reading:
+\[
+  C(\gamma_{12}\circ\gamma_{23})
+    \quad\hbox{and}\quad
+  C(\gamma_{13}) .
+\]
+The composed path spends two transitions. It carries the intermediate value
+reading, restores the residue at that middle face, and then carries the next
+transition. The direct path bypasses the middle face. Even when the signed
+displacement identifies, the costs may differ. The grammar forbids the cost
+ledger from being quotiented merely because the displacement has been
+quotiented.
+
+This is not a minor bookkeeping point. It is what keeps alpha finite. If the
+grammar erased cost whenever endpoint displacement agreed, then every cheaper
+and more expensive route with the same sign would become the same trial. The
+bounded Richardson estimate would lose its bound, because the route by which
+the bound was obtained would no longer be readable. A finite extrapolation
+must know both what displacement was carried and what work was spent to carry
+it.
+
+The composed path carries an intermediate residue. That residue may settle
+inside the value rung before the returned charge face is read. The direct
+path does not expose that middle residue. It may arrive at the same signed
+endpoint because the corridor relation composes. But the absence of an
+intermediate exposure is itself a difference in cost. The grammar therefore
+identifies the displacement while preserving the route.
+
+This is the path version of the earlier charge/mass distinction. Charge
+counts closure. Mass reads strain. A single closed loop can have both faces,
+but the count is not the strain. In the path relation, signed displacement
+counts the oriented change through the corridor. Cost reads the transitions,
+settling, and residue restoration by which that change was obtained. They
+belong to the same path family, but they are not the same reading.
+
+The tail-latency example shows the point at a boundary. A message may have a
+short displacement in presentation and still cost more because it must be
+reconciled across many connected interfaces. The slowest admissible
+reconciliation governs the update, not the shortest drawn route. The grammar
+of path cost has the same form. A direct displacement may look short, but
+the cost belongs to the reconciliation the route must actually spend.
+
+The Sagnac example supplies the cyclic face. Two routes can traverse the
+same boundary in opposite directions and return to comparable endpoints while
+accumulating unequal refinement tallies. The difference is not local
+distance. It is the holonomy of the bookkeeping rule. Here again the grammar
+separates endpoint relation from path cost. A closed cycle can return to the
+same reference while still charging a different cyclic debt.
+
+For the alpha reading, this separation has a precise consequence. The
+dimensionless result may be recovered from the signed charge relation after
+the three-rung aperture and Richardson bound have done their work. But the
+recovery is not complete until the path cost has been read as well. A direct
+and a composed route that agree in signed displacement may support the same
+\(\alpha\) estimate while certifying different costs of obtaining it.
+
+The grammar therefore gives two verdicts, not one. On the displacement side,
+it permits a quotient: the composed and direct readings identify when their
+signed residue depth agrees. On the cost side, it carries the difference:
+the route through the intermediate rung and the route that bypasses it are
+not the same expenditure unless a separate cost bound forces them to be
+indistinguishable. The quotient of displacement never erases the obligation
+to read cost.
+
+This also prevents a false contradiction. If two routes produce the same
+signed displacement at different cost, the grammar has not failed. It has
+learned more. It has read that the endpoint relation is invariant under the
+composition, while the path expenditure is not. The invariant belongs to the
+alpha estimate. The expenditure belongs to the finite process by which the
+estimate was made.
+
+Thus the path relation completes the chapter's core. Seed and residue make
+the repeated trial one history. The three rungs make the aperture readable.
+Depth doubling and sign-flipped error make the extrapolation bounded. The
+path relation identifies signed displacement while preserving cost. Alpha
+enters only after all four obligations have been carried.

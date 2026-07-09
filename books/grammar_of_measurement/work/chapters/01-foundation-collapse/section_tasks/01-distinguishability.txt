@@ -1,0 +1,21 @@
+Section-manager brief: Beat 1, Distinguishability is primitive
+================================================================
+
+Target section file:
+- sections/01-distinguishability.tex
+
+Beat:
+- The first allowed act is to tell two things apart without assuming sameness.
+
+Writer-sized fragments:
+- Explain why measurement cannot begin with identity, because identity already
+  presumes the comparison it wants to authorize.
+- Define the first grammatical act as permitted distinction: this is readable
+  before sameness, number, order, or truth.
+- Use relational examples only to illustrate that qualitative relation precedes
+  formal symbol.
+
+Constraints:
+- Manuscript prose must be TeX and ASCII.
+- Do not mention formal machinery as machinery.
+- Use grammar verbs: permits, forbids, carries, identifies, reads.

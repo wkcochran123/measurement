@@ -1,0 +1,18 @@
+Section-manager brief: Beat 5, The halting horizon
+==================================================
+
+Target section file:
+- sections/05-halting-horizon.tex
+
+Beat:
+- Observation is bounded by the time the apparatus can spend.
+
+Writer-sized fragments:
+- Explain bounded observation as grammatical, not accidental.
+- Show that a reading may be extendable without being available now.
+- Use sequential recording examples to illustrate why one distinction must be
+  committed at a time.
+
+Constraints:
+- Avoid treating bound as failure. It is the condition that makes readings
+  finite, auditable, and repeatable.

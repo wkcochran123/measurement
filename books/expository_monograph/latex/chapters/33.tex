@@ -1,0 +1,420 @@
+\chapter{The Finished Receipt}
+
+The volume has now done two different things. First, it built the instrument: a ladder of distinctions, counts,
+faces, traces, gauges, residues, and costs. Then it used the instrument: first as an external recoil manual for
+metrological \(\alpha\), then as a Cooper-pair interface where an electron can be carried to a second electron
+and then to the superconducting pair boundary. The last question is whether the apparatus can be left in that
+state and asked for a finite study of its own reading.
+
+It can. The companion file is
+\[
+  \texttt{device/Measurement/Meanwhile50.lean}.
+\]
+That file does not restart the machine. It imports the electron and pairing state already constructed, keeps the
+electron state alive, advances the carried orbit and PRNG state one step per trial, and reads the electron-charge
+aperture at each step. Each trial is therefore a small experiment:
+\[
+  \alpha_i = \frac{e_i^2}{4\pi},
+  \qquad c=1.
+\]
+The value \(e_i^2\) is not an arbitrary decimal. The selected face chooses one of the three rational
+charge-square readings in the adjacent aperture:
+\[
+\begin{array}{c|c}
+\hbox{selected face} & \hbox{charge-square reading}\\
+\hline
+\hbox{charge} & \hbox{lower square}\\
+\hbox{mass} & \hbox{target square}\\
+\hbox{value} & \hbox{upper square}
+\end{array}
+\]
+The carried state decides which face is selected. The division by \(4\pi\) is the normalization already fixed in
+the charge computation. In this normalization, \(h=c=1\), and the charge relation reads
+\[
+  e^2 = 4\pi\alpha.
+\]
+So the recovery step is the reverse:
+\[
+  \alpha = \frac{e^2}{4\pi}.
+\]
+
+\section{How to Run the Experiment}
+
+Run the experiment from the Lean project directory:
+\begin{quote}\small
+\begin{verbatim}
+cd device
+lake build Measurement.Meanwhile50
+\end{verbatim}
+\end{quote}
+This is the safest command because it builds the module and every dependency it needs. A reader who wants to run
+only the file after the project is already compiled may also use:
+\begin{quote}\small
+\begin{verbatim}
+lake env lean Measurement/Meanwhile50.lean
+\end{verbatim}
+\end{quote}
+The file prints three reports that matter for this chapter:
+\begin{quote}\small
+\begin{verbatim}
+#eval defaultElectronAlphaStudyReport?
+#eval defaultElectronAlphaPathRelationReport?
+#eval defaultElectronAlphaRichardsonReport?
+\end{verbatim}
+\end{quote}
+Other imported modules may also print receipts when the build recompiles dependencies. Those are useful context,
+but the three names above are the experiment's final readout. The first is the one-hundred-trial alpha study. The
+second is the comparison of the path \(1\to2\to3\) against the direct path \(1\to3\). The third is the final
+Richardson check: three finite alpha studies, two signed refinement slips, and a bracketed extrapolated alpha
+reading.
+
+The run has four preparation steps, all visible in the imported modules:
+\begin{enumerate}
+\item \(\texttt{Meanwhile48}\) plugs the turn decider into the corridor.
+\item \(\texttt{Meanwhile49}\) builds \(\texttt{Fact.ELECTRON}\), creates the first electron readings, and
+recovers \(\alpha\) from \(e^2/(4\pi)\).
+\item \(\texttt{Meanwhile50}\) advances the carried orbit/PRNG state one trial at a time.
+\item Each trial chooses charge, mass, or value and maps that face to the lower, target, or upper charge-square
+reading in the adjacent aperture.
+\end{enumerate}
+The machine is therefore not restarted between trials. The seed and residue in trial \(i+1\) are the output of
+trial \(i\).
+
+To change the number of trials, make a local report with a different final argument:
+\begin{quote}\small
+\begin{verbatim}
+def myAlphaStudy? : Option ElectronAlphaStudyReport :=
+  defaultAdjacentWobbleReport?.map fun aperture =>
+    electronAlphaStudyReport aperture
+      cavendishChargeMassNormalization 1000
+
+#eval myAlphaStudy?
+\end{verbatim}
+\end{quote}
+The last number is the trial count. The report shape does not change when the count changes; only the sample
+list, face counts, mean, variance, seed, and final residue change.
+
+\section{The Study Object}
+
+The word ``study'' is not decoration. The early apparatus defined a study as a chain of data under a fact:
+\[
+  \texttt{Study.hypothesis}
+  \quad\hbox{or}\quad
+  \texttt{Study.data}.
+\]
+The alpha run keeps that shape. The formal side records one hundred data entries under
+\(\texttt{Fact.ELECTRON}\). The numeric side records the sample list and its moments. That separation matters.
+The study is the proof-shaped ledger saying that one hundred trials were performed; the statistics are the
+number-shaped ledger saying what those trials read.
+
+The report is named:
+\begin{quote}\small
+\begin{verbatim}
+defaultElectronAlphaStudyReport?
+\end{verbatim}
+\end{quote}
+and the finished receipt begins:
+\begin{quote}\small
+\begin{verbatim}
+some { name := "electron-alpha-carried-wobble-study",
+  normalization := "h = c = 1",
+  cSetToOne := true,
+  startsFromElectronState := true,
+  startingCompletedTurns := 2,
+  trialCount := 100,
+  formalStudyDepth := 100,
+  ...
+}
+\end{verbatim}
+\end{quote}
+The study starts after the electron has completed two turns. That is the state reached by the electron fact in
+the prior file. The run then advances exactly one hundred trials.
+
+The essential fields are:
+\begin{itemize}
+\item \(\texttt{trialCount}\): how many carried trials were run.
+\item \(\texttt{formalStudyDepth}\): how many \(\texttt{Study.data}\) entries were recorded.
+\item \(\texttt{initialSeed}\) and \(\texttt{finalSeed}\): the PRNG state before and after the study.
+\item \(\texttt{initialResidueNumerator}\) and \(\texttt{finalResidueNumerator}\): the carried orbit residue
+before and after the study.
+\item \(\texttt{chargeFaceSamples}\), \(\texttt{massFaceSamples}\), and \(\texttt{valueFaceSamples}\): how
+often the decider chose each aperture face.
+\item \(\texttt{sampleAlphaMeanScaledAt18}\): the mean of the sampled alpha readings.
+\item \(\texttt{sampleAlphaVarianceScaledAt36}\): the variance before dropping back to \(10^{18}\) scale.
+\end{itemize}
+The equality \(\texttt{trialCount}=\texttt{formalStudyDepth}\) is the first sanity check. It says the numeric
+study and the formal study chain counted the same number of trials.
+
+\section{The Hundred Readings}
+
+The hundred selections are nearly perfectly balanced:
+\[
+\begin{array}{c|c}
+\hbox{face} & \hbox{number of trials}\\
+\hline
+\hbox{charge} & 33\\
+\hbox{mass} & 34\\
+\hbox{value} & 33
+\end{array}
+\]
+The extra mass reading is not hand-chosen. It is the finite residue of one hundred draws across three faces.
+The target, lower, and upper alpha values read:
+\[
+\begin{array}{c|c}
+\hbox{face} & \alpha\ \hbox{read at }10^{-18}\hbox{ scale}\\
+\hline
+\hbox{charge} & 0.007298662680727034\\
+\hbox{mass} & 0.007298668569525773\\
+\hbox{value} & 0.007298710880818371
+\end{array}
+\]
+The source target inside the aperture is therefore
+\[
+  \alpha_{\rm source}
+  =
+  0.007298668569525773,
+\]
+with
+\[
+  \alpha_{\rm source}^{-1}
+  =
+  137.011290548979455469.
+\]
+
+The one-hundred-trial study returns:
+\[
+\begin{array}{l|r}
+\hbox{source alpha, scaled by }10^{18} & 7298668569525773\\
+\hbox{sample mean alpha, scaled by }10^{18} & 7298680588948746\\
+\hbox{absolute mean-source difference, scaled by }10^{18} & 12019422973\\
+\hbox{sample mean inverse alpha, scaled by }10^{18} & 137011064919616304245\\
+\hbox{sample variance, scaled by }10^{18} & 457\\
+\hbox{sample variance, scaled by }10^{36} & 457758203912487384985
+\end{array}
+\]
+In ordinary decimal notation:
+\[
+\begin{aligned}
+  \alpha_{\rm mean} &\approx 0.007298680588948746,\\
+  \alpha_{\rm mean}^{-1} &\approx 137.011064919616304245,\\
+  {\rm Var}(\alpha) &\approx 4.57758203912487384985\times 10^{-16}.
+\end{aligned}
+\]
+The mean sits above the source because the finite one-hundred-trial run selected the upper face and lower face
+equally often but selected the target face one extra time. The variance is not laboratory uncertainty; it is the
+spread of this internal aperture study. It says how wide the device reading is when the carried decider samples
+the adjacent rational neighborhood.
+
+\section{Richardson Extrapolation}
+
+The last proof-facing step is not another physical assumption. It is a finite refinement check on the alpha
+study itself. The cheap receipt used \(100,200,400\) trials while the mechanism was being built. There is no
+reason to stop there. The finished receipt runs the same carried experiment at three larger depths:
+\[
+\begin{array}{c|c|c|c|c}
+\hbox{trials} & \hbox{charge} & \hbox{mass} & \hbox{value}
+  & \bar\alpha\hbox{ at }10^{-18}\hbox{ scale}\\
+\hline
+10000 & 3389 & 3337 & 3274 & 7298680426529076\\
+20000 & 6621 & 6655 & 6724 & 7298680845095521\\
+40000 & 13349 & 13332 & 13319 & 7298680692889066
+\end{array}
+\]
+These are not three unrelated reruns. They are nested finite studies of the same carried machine: the same initial
+electron state, the same aperture, the same PRNG law, and a longer allowance for the state to keep moving.
+
+The two refinement slips are the signed changes in the mean:
+\[
+\begin{aligned}
+  \delta_{10000\to20000} &= +0.000000000418566445,\\
+  \delta_{20000\to40000} &= -0.000000000152206455.
+\end{aligned}
+\]
+The sign change is the important event. The refinement passed through a turn of the finite sampling error, so the
+last read should not be a single naked mean. It should be bracketed.
+
+For a first-order finite-depth error, the Richardson projection from a pair of studies is
+\[
+  R_{n,2n}=2\bar\alpha_{2n}-\bar\alpha_n.
+\]
+The two projections are therefore
+\[
+\begin{aligned}
+  R_{10000,20000} &= 0.007298681263661966,\\
+  R_{20000,40000} &= 0.007298680540682611.
+\end{aligned}
+\]
+They give the final bracket
+\[
+  0.007298680540682611
+  \leq
+  \alpha_{\rm Richardson}
+  \leq
+  0.007298681263661966,
+\]
+with width
+\[
+  0.000000000722979355.
+\]
+The midpoint receipt is
+\[
+  \alpha_{\rm Richardson}
+  \approx
+  0.007298680902172288.
+\]
+Lean records the two checks that make this a bracket rather than decoration:
+\begin{quote}\small
+\begin{verbatim}
+signedSlipsBracketZero := true
+fineStudyMeanInsideRichardsonBracket := true
+\end{verbatim}
+\end{quote}
+The same report also carries the two orbit-slip brackets from the corridor. Those are the angular places where
+the apparatus counted turns. The Richardson slips are the numerical echoes of those turn cuts in the alpha mean.
+That is the last step of the proof: three studies, two slips, and the extrapolated alpha held between them.
+
+This larger run also clarifies the interpretation. The high-depth mean is not trying to collapse back to the
+mass-face source alone. It is reading the carried decider's long-run aperture: charge, mass, and value sampled as
+faces of the same corridor. The source alpha remains the target square inside the aperture; the Richardson receipt
+is the apparatus reading the aperture distribution after many carried trials.
+
+\section{The Path Relation}
+
+The last check compares the two routes through the electron corridor:
+\[
+  1\to2\to3
+  \qquad\hbox{and}\qquad
+  1\to3.
+\]
+The corridor residues compose exactly:
+\[
+\begin{array}{l|r}
+1\to2 & 1\\
+2\to3 & 1\\
+1\to2\to3 & 2\\
+1\to3 & 2
+\end{array}
+\]
+Lean records this as
+\begin{quote}\small
+\begin{verbatim}
+corridorResiduesRelated := true
+\end{verbatim}
+\end{quote}
+So the corridor says that going from \(1\) to \(2\) and then \(2\) to \(3\) is the same residue as going directly
+from \(1\) to \(3\).
+
+The alpha aperture adds the finer reading. The three rungs are:
+\[
+\begin{array}{c|c|c}
+\hbox{rung} & \hbox{face} & \alpha\\
+\hline
+1 & \hbox{mass} & 0.007298668569525773\\
+2 & \hbox{value} & 0.007298710880818371\\
+3 & \hbox{charge} & 0.007298662680727034
+\end{array}
+\]
+The signed differences compose:
+\[
+\begin{aligned}
+  \Delta_{1\to2} &= +0.000000042311292598,\\
+  \Delta_{2\to3} &= -0.000000048200091337,\\
+  \Delta_{1\to2\to3} &= -0.000000005888798739,\\
+  \Delta_{1\to3} &= -0.000000005888798739.
+\end{aligned}
+\]
+Lean records:
+\begin{quote}\small
+\begin{verbatim}
+signedDeltasRelated := true
+\end{verbatim}
+\end{quote}
+But the absolute path lengths do not agree:
+\[
+\begin{aligned}
+  |\Delta_{1\to2}|+|\Delta_{2\to3}|
+    &= 0.000000090511383935,\\
+  |\Delta_{1\to3}|
+    &= 0.000000005888798739.
+\end{aligned}
+\]
+The triangle excess is
+\[
+  0.000000084622585196.
+\]
+Lean records:
+\begin{quote}\small
+\begin{verbatim}
+absolutePathLengthsRelated := false
+\end{verbatim}
+\end{quote}
+
+That is the important shape. The middle rung is not invisible. It cancels in the signed displacement, so the
+direct and composed routes land at the same signed alpha difference. But it does not cancel as cost. The route
+through \(2\) is a real excursion through the aperture. The device can therefore distinguish equality of endpoint
+displacement from equality of path length. That distinction is exactly what a measuring instrument must be able
+to keep.
+
+\section{What the Experiment Means}
+
+The experiment is an internal apparatus study, not a CODATA replacement. It does not say that the physical world
+has been measured to CODATA precision by a laptop build. It says something more local and more important for this
+volume: once the construction has produced an electron fact, a corridor, a carried decider, and an
+\(e^2/(4\pi)\) recovery rule, the machine can be left in state and can produce a repeatable finite distribution
+of alpha readings.
+
+The source alpha is the target square inside the adjacent charge aperture. The mean alpha is what the carried
+decider reads after one hundred trials. The variance is the spread of the sampled aperture, not an experimental
+standard uncertainty from laboratory hardware. To turn this into metrology, attach the recoil route from the
+previous part, supply real laboratory tapes and correction ledgers, and compare against external route-by-route
+measurements. To study the apparatus itself, change the trial count and watch the mean, variance, face counts,
+seed, and residue move.
+
+The path relation gives the geometric lesson. The corridor residue is additive:
+\[
+  (1\to2)+(2\to3) = (1\to3).
+\]
+The signed alpha displacement is also additive. But the absolute path length is not. The middle rung is a
+detour. That is why the apparatus keeps both signs and costs: two routes can agree as endpoint displacement
+while disagreeing as work spent along the way.
+
+Read the final receipt in that order:
+\begin{enumerate}
+\item the run was finite and budgeted;
+\item the state was carried from trial to trial;
+\item the face counts show what the decider sampled;
+\item the mean and variance summarize the aperture readings;
+\item the Richardson report uses three studies and two signed slips to bracket the extrapolated alpha;
+\item the path relation separates endpoint equality from path cost.
+\end{enumerate}
+That is the completed alpha receipt. The only remaining question is how the simulation that produced the receipt
+was itself measured.
+
+\section{What the Receipt Hands Forward}
+
+The apparatus has:
+\begin{enumerate}
+\item built the electron fact;
+\item made the electron distinguishable, admissible, and countable;
+\item created the first three electron readings by number;
+\item compared the quartet and found the first repeated face;
+\item recovered \(\alpha\) from \(e^2/(4\pi)\) in the \(h=c=1\) normalization;
+\item left the machine state alive and performed a one-hundred-trial alpha study;
+\item computed exact scaled-Nat readings for the study mean and variance;
+\item ran the three-study Richardson check and bracketed the extrapolated alpha;
+\item compared \(1\to2\to3\) with \(1\to3\) and separated signed relation from path cost.
+\end{enumerate}
+
+This is the end of the construction proper because the book has reached the thing it promised: a finite machine
+that can make a reading and hand the reader the exact place where interpretation enters. The recoil chapters show
+how to attach the machine to an external metrology route. The pairing chapters show how to add the
+electron-electron-Cooper-pair interface and stop an otherwise endless computation by cost. This study shows the
+machine reading its own alpha aperture while carrying state from trial to trial.
+
+Nothing in that receipt asks the reader to worship the digits. The digits are not the point. The point is that
+the route by which the digits appeared is now on the page: typed, budgeted, graded, and repeatable.
+
+The last act now measures the simulation itself. A reader can run the Lean file, see the same receipt, change the
+budget, change the trial count, change the aperture, or replace the demonstration scales with laboratory scales.
+The apparatus will make the change visible. The receipt is no longer only a number. It is a number, a route, and
+an elaborator cost waiting to be calibrated.

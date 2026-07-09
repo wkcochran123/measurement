@@ -1,0 +1,78 @@
+Chapter manager notes
+=====================
+
+2026-07-08 Chapter manager pass started.
+
+Read first, per assignment:
+- README.txt and agent_protocol.txt.
+- plot_manifest.txt, Chapter 04 beats 21--27.
+- latex/chapters/01.tex through 03.tex for voice continuity.
+- expository_monograph outline and episode digest material around pair
+  production, geometry-to-gauge, split, Cauchy limit, and finite Cohen forcing.
+
+Nested-process availability:
+- No recursive subagent or writer-spawn tool is exposed in this session.
+- Fallback selected: write section-manager briefs to disk under this chapter
+  directory, then draft writer-sized fragments and merge locally.
+- Scope remains limited to this chapter work directory and latex/chapters/04.tex.
+
+Decomposition:
+- Prefer one section per beat, with a short opening and closing.
+- Beat 21: electron emerges as the second-variation/discriminating-action
+  reading with charge -1.
+- Beat 22: positron reads +1 only relative to a tilted baseline; native flat
+  baseline forbids that reading.
+- Beat 23: the physics rests on exactly the two identity grants already earned
+  by the grammar: the local selection/quotient needle and the law-of-motion
+  grant that lets stationarity be read.
+- Beat 24: boundary geometry generates the gauge by producing the
+  discriminating action; examples may illustrate but not drive the section.
+- Beat 25: the split forbids a finite direct sum of geometric and gauge sectors;
+  a carrier must read one side at a time while preserving their orthogonality.
+- Beat 26: the electromagnetic reading is the zero-mesh Cauchy limit of the
+  geometric reading; do not claim a completed continuum as primitive.
+- Beat 27: finite Cohen forcing is expressed as bounded spline atoms, finite
+  support, dense decisions, and extension toward the continuum reading.
+
+Integration choices:
+- Keep manuscript language in the established voice: permits, forbids,
+  identifies, quotients, carries, reads, bounds, tilts, discriminates, splits,
+  closes, and forces.
+- Do not mention implementation, proof tooling, or code in manuscript prose.
+- Use experiment examples only as illustrations of grammar.
+
+2026-07-08 Section-manager briefs written:
+- section_briefs/00-opening.txt
+- section_briefs/21-electron-emerges.txt
+- section_briefs/22-positron-tilted-path.txt
+- section_briefs/23-two-axioms.txt
+- section_briefs/24-geometry-generates-gauge.txt
+- section_briefs/25-the-split.txt
+- section_briefs/26-qed-cauchy-gr.txt
+- section_briefs/27-finite-cohen-forcing.txt
+- section_briefs/99-closing.txt
+
+Writer fragments are being executed locally in depth-first order from those
+briefs.
+
+2026-07-08 Draft section files written under sections/:
+- 00-opening.tex
+- 21-electron-emerges.tex
+- 22-positron-tilted-path.tex
+- 23-two-axioms.tex
+- 24-geometry-generates-gauge.tex
+- 25-the-split.tex
+- 26-qed-cauchy-gr.tex
+- 27-finite-cohen-forcing.tex
+- 99-closing.tex
+
+2026-07-08 Merge and checks:
+- Merged the drafted sections inline into ../../latex/chapters/04.tex so the
+  chapter follows the same self-contained shape as Chapters 01--03.
+- Chapter 04 now has nine sections: a short opening, seven beat sections, and
+  a closing carry-forward section.
+- ASCII check passed for 04.tex and all section TeX files.
+- Manuscript scan found no Lean/code/implementation/apparatus language and no
+  apparatus-does-plot wording.
+- Git status reports the Chapter 04 paths as untracked in this repo view; no
+  files outside the assigned ownership paths were edited.

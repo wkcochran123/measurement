@@ -1,0 +1,191 @@
+\chapter{Closing on the Fine Structure Constant}
+
+The apparatus now has what it needs: a corrected recoil ratio, a ledger of corrections, an uncertainty budget,
+and the external constants required by the bridge. Closing on \(\alpha\) is the act of combining them without
+changing their grade. The recoil remains measured. The constants remain imported. The equation remains the
+bridge. The final number is a reading laid across all three, with its cost and uncertainty attached.
+
+\section{Compute the Coupling}
+
+Begin with the measured recoil ratio. Let the closed ledger give
+\[
+  q_X = \frac{h}{m_X}
+\]
+with standard uncertainty \(u(q_X)\). Import \(R_\infty\), \(A_{\rm r}(X)\), \(A_{\rm r}(e)\), and \(c\), using
+the same edition of the constants adjustment for all correlated quantities. Then compute
+\[
+  P =
+  \frac{2R_\infty}{c}\,
+  \frac{A_{\rm r}(X)}{A_{\rm r}(e)}\,
+  q_X,
+  \qquad
+  \alpha = \sqrt{P},
+  \qquad
+  \alpha^{-1} = P^{-1/2}.
+\]
+Report both \(\alpha\) and \(\alpha^{-1}\). The inverse is traditional because the number near 137 is easier to
+recognize, but the direct value is the coupling itself. Neither is more honest than the other. They are the same
+reading through reciprocal gauges.
+
+Do the arithmetic with more digits than will be reported. Round only at the end, and round the value and
+uncertainty together. If the standard uncertainty in \(\alpha^{-1}\) is \(0.000\,000\,021\), then the last
+meaningful quoted digits live at the same place. Extra digits are not precision; they are decoration unless the
+uncertainty pays for them.
+
+\section{Run the Close in Lean}
+
+The Lean close is only a few definitions once the raw recoil, corrections, and constants have been entered. The
+bridge product is the right-hand side of the recoil formula:
+
+\begin{quote}\small
+\begin{verbatim}
+def bridgeProduct (input : AlphaInput) : Float :=
+  (2.0 * input.constants.rydberg.value /
+      input.constants.lightSpeed.value) *
+    (input.constants.relativeMassX.value /
+      input.constants.relativeMassElectron.value) *
+    input.recoil.value
+
+def alpha (input : AlphaInput) : Float :=
+  Float.sqrt (bridgeProduct input)
+
+def alphaInv (input : AlphaInput) : Float :=
+  1.0 / alpha input
+\end{verbatim}
+\end{quote}
+
+The final report records the corrected recoil and the two alpha faces:
+
+\begin{quote}\small
+\begin{verbatim}
+structure AlphaReport where
+  recoil : ClosedRecoil
+  alpha : Float
+  alphaInv : Float
+  alphaInvSigma : Float
+
+def closeAlpha (input : AlphaInput) : AlphaReport :=
+  { recoil := input.recoil
+    alpha := alpha input
+    alphaInv := alphaInv input
+    alphaInvSigma := alphaInvSigma input }
+\end{verbatim}
+\end{quote}
+
+Run the companion file from the Lean project directory:
+
+\begin{quote}\small
+\begin{verbatim}
+cd device
+lake env lean Measurement/AlphaManual.lean
+\end{verbatim}
+\end{quote}
+
+The example in the file evaluates \(\texttt{exampleReport.alphaInv}\). With the demonstration rubidium-style
+numbers written there, Lean prints a value in the expected neighborhood:
+
+\begin{quote}\small
+\begin{verbatim}
+137.035999
+\end{verbatim}
+\end{quote}
+
+That printed value is not the result of a real run. It is the smoke test for the computation path. A real run
+replaces the example recoil, replaces the correction list, pins the constants edition, and then evaluates the
+same report object. The point is that the shape of the computation does not change when the numbers become real.
+
+The file also proves that the reciprocal-alpha field in the report is exactly the reciprocal-alpha definition:
+
+\begin{quote}\small
+\begin{verbatim}
+theorem closeAlpha_inverse_value (input : AlphaInput) :
+    (closeAlpha input).alphaInv = alphaInv input := by
+  rfl
+\end{verbatim}
+\end{quote}
+
+This is not a deep theorem, and it should not pretend to be one. It is a clasp. It keeps the report field tied to
+the computation that produced it.
+
+\section{Compare Without Tuning}
+
+Now compare. The comparison should be stated as a residual,
+\[
+  \Delta =
+  \alpha^{-1}_{\rm meas} - \alpha^{-1}_{\rm ref},
+  \qquad
+  z =
+  \frac{\Delta}{\sqrt{u_{\rm meas}^2+u_{\rm ref}^2}},
+\]
+where the reference may be the current CODATA value or another independent alpha determination. The residual is
+not a confession and not a victory by itself. It is a reading of agreement. If \(|z|\) is small, the apparatus
+has joined the existing measurements. If \(|z|\) is large, the apparatus has found tension. Tension is not
+failure until it has been traced.
+
+Do not compare only to the adjusted CODATA value. Compare by route. A recoil measurement should be compared to
+other recoil measurements, to the electron magnetic-moment route, and, where meaningful, to quantum Hall or other
+electromagnetic routes. Different routes carry different hidden weaknesses. Recoil leans on atom optics, mass
+ratios, and wave-vector control. The electron \(g-2\) route leans on a single trapped electron and high-order QED
+theory. The Hall route leans on resistance quantization and material control. Agreement across unlike routes is
+stronger than agreement across repeated versions of the same habit.
+
+The apparatus' old distinction matters here. What can be funged should be funged; what must be tanged must stay
+tanged. Measurements sharing a systematic ancestry are not independent merely because their final papers have
+different dates. Measurements with different routes should not be flattened into one average before their
+route-by-route residuals are seen. Pooling is earned by understanding, not granted by convenience.
+
+\section{What Counts as Success}
+
+A successful alpha measurement is not one that lands exactly on the famous digits. It is one that can be audited.
+It has a raw tape, a gauge tape, a correction tape, a frozen analysis, an uncertainty budget, and a comparison
+made after the ledger closed. It reports enough information for another reader to reproduce the arithmetic and
+enough diagnostic splits for another laboratory to see where a disagreement could enter.
+
+The practical instruction manual is therefore:
+\begin{enumerate}
+\item Choose \(X\), prepare the atom cloud, and acquire the recoil data.
+\item Freeze the raw recoil value and statistical uncertainty.
+\item Enter that pair as a Lean \(\texttt{Datum}\) with grade \(\texttt{measured}\).
+\item Enter \(R_\infty\), \(A_{\rm r}(X)\), \(A_{\rm r}(e)\), and \(c\) as \(\texttt{given}\)
+data from one constants adjustment.
+\item Enter every systematic correction as a named \(\texttt{Correction}\) row.
+\item Run \(\texttt{closeRecoil}\) to obtain the corrected \(h/m_X\).
+\item Run \(\texttt{closeAlpha}\) to compute \(\alpha\), \(\alpha^{-1}\), and the propagated uncertainty.
+\item Only then compare against CODATA and route-by-route independent results.
+\end{enumerate}
+The order matters. Comparison comes last because expectation is a gauge field of its own.
+
+The minimum report has these parts:
+\[
+\begin{array}{l|l}
+\hbox{measured input} & h/m_X \hbox{ with statistical and systematic uncertainty}\\
+\hbox{carrier} & X,\ A_{\rm r}(X),\ \hbox{state preparation}\\
+\hbox{gauge} & k_{\rm eff},\ \hbox{timing, geometry, sign convention}\\
+\hbox{corrections} & \Delta_i,\ u_i,\ \hbox{method and evidence for each}\\
+\hbox{bridge} & R_\infty,\ A_{\rm r}(e),\ c,\ \hbox{constants adjustment used}\\
+\hbox{result} & \alpha,\ \alpha^{-1},\ u,\ \hbox{correlations included}\\
+\hbox{comparison} & \Delta,\ z,\ \hbox{reference values and route splits}
+\end{array}
+\]
+Anything less may still be useful as a demonstration run, but it is not yet a metrological measurement. A
+demonstration run shows that the apparatus can see recoil. A metrological run shows that the apparatus can answer
+for every way the recoil could have been moved.
+
+\section{The Last Use of the Apparatus}
+
+When the number is reported, the apparatus has done the same thing at a new scale that it did from the beginning.
+It separated the world's part from the hand's part. The recoil was the world's. The carrier, gauge, pulse
+sequence, and sign convention were the hand's. The corrections were places where the hand had touched the world
+and had to admit the touch. The uncertainty was the residue left after every known touch had been named.
+
+The fine structure constant is therefore not measured by mysticism around 137. It is measured by forcing the
+number through the apparatus' discipline until it has nowhere to hide: not in units, because the result is
+dimensionless; not in authority, because the recoil is measured before comparison; not in a beautiful theory,
+because the bridge and the reading are graded; not in the operator's expectation, because the blind and the tape
+hold the expectation away from the gauge.
+
+At the end the reader receives a number and a ledger. If the ledger is complete, the number may be trusted to the
+degree the uncertainty says. If the ledger has gaps, the digits are only decoration. This is how the apparatus
+measures \(\alpha\): it does not explain why the coupling has its value, and it does not pretend to. It builds a
+route by which the world can answer, records the cost of asking, and leaves the answer on the page where another
+reader can make it answer again.

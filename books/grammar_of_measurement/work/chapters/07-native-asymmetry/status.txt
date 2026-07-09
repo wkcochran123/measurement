@@ -1,0 +1,40 @@
+Chapter 07 status
+=================
+
+Title: Relativity as Selection and the Native Asymmetry
+Scope: Beats 38--42 from work/plot_manifest.txt.
+Date: 2026-07-08
+
+Current phase:
+- [done] chapter manager source read
+- [done] section decomposition
+- [done] recursive-agent availability check
+- [done] fallback section-manager briefs
+- [done] self-drafting section files depth-first
+- [done] drafted 00-opening.tex
+- [done] drafted 01-relative-velocity-quotient.tex
+- [done] drafted 02-positron-holonomy-sign.tex
+- [done] drafted 03-native-asymmetry-count.tex
+- [done] drafted 04-funge-crank-gauge.tex
+- [done] drafted 05-reader-station.tex
+- [done] drafted 06-closing.tex
+- [done] section merge into latex/chapters/07.tex
+- [done] ASCII and forbidden-term checks
+- [done] standalone Chapter 07 TeX compile to /private/tmp/gom07build/chapter07.pdf
+
+Nested process:
+- Recursive subagent tools are not exposed in this session.
+- Fallback path is active: section-manager briefs are written to disk, and the
+  chapter manager is drafting and merging the sections directly.
+
+Section plan:
+- 00-opening.tex: chapter entry from reader-relative orientation to selection.
+- 01-relative-velocity-quotient.tex: Beat 38, relative velocity as quotient selection.
+- 02-positron-holonomy-sign.tex: Beat 39, closed-loop holonomy sign and open-path zero.
+- 03-native-asymmetry-count.tex: Beat 40, native matter count and no imported antimatter.
+- 04-funge-crank-gauge.tex: Beat 41, 36-gate partition into pooling and selecting.
+- 05-reader-station.tex: Beat 42, final reader as measuring station.
+- 06-closing.tex: carry-forward to the backward walk.
+
+Active agents:
+- chapter manager: Codex in current session.

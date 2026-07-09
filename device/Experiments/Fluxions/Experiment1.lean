@@ -185,6 +185,10 @@ theorem run_canonical : run canonicalSetup = 3 := by decide
 #eval decide ((Fluxion.mk 1 0).wellFormed)                 -- expect: false  (ghost Δt = 0)
 #print axioms claim_holds                                  -- ambient [propext, Quot.sound]
 
+instance (setup : Setup) : Decidable (experiment.claim setup) := by
+  unfold experiment
+  infer_instance
+
 /-- Bring a minimal device next to this experiment: it records whether the exported claim fires. -/
 def deviceNear (setup : Setup) : Bool :=
   decide (experiment.claim setup)

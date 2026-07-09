@@ -199,6 +199,10 @@ def canonicalSetup : Setup :=
   { events := admissible defaultAdmissibility [balanced, twoPairs, balanced, twoPairs] } capacity)  -- expect: false
 #print axioms claim_holds                                  -- [propext, Quot.sound] = AMBIENT
 
+instance (setup : Setup) : Decidable (experiment.claim setup) := by
+  unfold experiment
+  infer_instance
+
 /-- Bring a minimal device next to this experiment: it records whether the exported claim fires. -/
 def deviceNear (setup : Setup) : Bool :=
   decide (experiment.claim setup)

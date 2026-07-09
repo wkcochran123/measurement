@@ -1,0 +1,40 @@
+Scheduler log
+=============
+
+2026-07-08
+- Created TeX-first workspace at books/grammar_of_measurement.
+- Wrote plot manifest for 10 chapters and 60 beats.
+- Created chapter work directories and status ledgers.
+- Launched Chapter 01 manager 019f413d-eedb-7e63-8f7a-e3c692936961 (McClintock).
+- Chapter 01 completed by fallback recursion and merged to latex/chapters/01.tex.
+- Closed Chapter 01 manager.
+- Launched Chapter 02 manager 019f415f-0394-7283-8e8c-004378c056b7 (Peirce).
+- Chapter 02 completed by fallback recursion and merged to latex/chapters/02.tex.
+- Closed Chapter 02 manager.
+- Launched Chapter 03 manager 019f4169-6fab-7493-9c47-4bee17ac9432 (Jason).
+- Chapter 03 completed by fallback recursion and merged to latex/chapters/03.tex.
+- Closed Chapter 03 manager.
+- Launched Chapter 04 manager 019f4173-0223-76a0-9df0-218cb2e532ad (Gibbs).
+- Chapter 04 completed by fallback recursion and merged to latex/chapters/04.tex.
+- Closed Chapter 04 manager.
+- Launched Chapter 05 manager 019f417d-6480-72d0-ba50-0d3de5e24445 (Helmholtz).
+- Chapter 05 completed by fallback recursion and merged to latex/chapters/05.tex.
+- Closed Chapter 05 manager.
+- Launched Chapter 06 manager 019f418b-3790-7ce0-9d20-6910617536b4 (Huygens).
+- Chapter 06 completed by fallback recursion and merged to latex/chapters/06.tex.
+- Closed Chapter 06 manager.
+- Launched Chapter 07 manager 019f4196-3205-7603-aff7-0aa2b2b12f42 (Tesla).
+- Chapter 07 completed by fallback recursion and merged to latex/chapters/07.tex.
+- Closed Chapter 07 manager.
+- Launched Chapter 08 manager 019f41a2-06c5-73b0-a097-3537578f83ea (Averroes).
+- Chapter 08 completed by fallback recursion and merged to latex/chapters/08.tex.
+- Closed Chapter 08 manager.
+- Launched Chapter 09 manager 019f41ad-0ed6-7d70-97de-6799c3f4be48 (Ohm).
+- Chapter 09 completed by fallback recursion and merged to latex/chapters/09.tex.
+- Closed Chapter 09 manager.
+- Launched Chapter 10 manager 019f41b8-3bd7-7081-bf06-b2ca2c9d6b42 (Hooke).
+- Chapter 10 completed by fallback recursion and merged to latex/chapters/10.tex.
+- Closed Chapter 10 manager.
+- Ran manuscript ASCII, forbidden-term, placeholder, and old-style fraction scans.
+- Built full PDF with `make pdf`; output latex/grammar_of_measurement.pdf.
+- Recorded final build report in work/build_report.txt.

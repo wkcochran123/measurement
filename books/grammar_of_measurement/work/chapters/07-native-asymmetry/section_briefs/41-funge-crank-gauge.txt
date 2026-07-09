@@ -1,0 +1,33 @@
+Section-manager brief: Beat 41
+==============================
+
+Section file:
+- sections/04-funge-crank-gauge.tex
+
+Beat:
+- The funge/crank bit vector: the 36-gate gauge partitions into pooling and
+  selecting moves.
+
+Section job:
+- Explain the 36-gate gauge as a finite partition of the labels a reading can
+  carry.
+- Define funge as pooling/preserving the native matter reading and crank as
+  selecting/turning the asymmetric positron reading.
+- State that every gate is assigned one side of the partition; the gauge
+  closes when pooled and selected gates account for the whole finite gauge.
+- Use the native electron corner, the one-crank pair, and matter+antimatter
+  tally as prose readings without implementation vocabulary.
+
+Writer-sized fragments:
+- Fragment A: Introduce gates as finite measurement doors, not mechanical
+  gadgets.
+- Fragment B: Define pooling and selecting moves.
+- Fragment C: Explain the 36-gate partition and the 35-plus-1 reading for the
+  pair.
+- Fragment D: Connect the partition back to the native asymmetry count.
+- Fragment E: Carry forward to the reader as the station asked to evaluate
+  each predicate.
+
+Constraint reminders:
+- Keep "funge" and "crank" explained in manuscript prose.
+- Do not turn the bit-vector into source-code discussion.

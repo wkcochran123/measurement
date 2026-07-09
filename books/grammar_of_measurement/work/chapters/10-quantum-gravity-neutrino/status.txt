@@ -1,0 +1,41 @@
+Chapter 10 status
+=================
+
+Title: Quantum Gravity and the Neutrino's Replicating Portfolio
+Scope: Beats 53--60 from work/plot_manifest.txt.
+
+Current phase:
+- [done] chapter manager decomposition
+- [fallback] recursive subagent tools unavailable; section-manager briefs written to disk
+- [done] drafting sections depth-first
+- [done] section merge
+- [done] chapter TeX merge
+- [done] ASCII check
+
+Section manager tasks:
+- [done] 00-opening: inherit finite alpha and state the opaque horizon problem
+- [done] beat 53: push boundary radiation toward lightlike approach
+- [done] beat 54: bind the horizon approach by cost
+- [done] beat 55: collapse ordinary Cooper-pair and exclusion interiors behind the horizon
+- [done] beat 56: export only mass, charge, spin-gravity residue, and alpha at the surface
+- [done] beat 57: build the neutrino replicating portfolio from exact surface matches
+- [done] beat 58: keep color as a null control
+- [done] beat 59: read flavor as the exclusion label
+- [done] beat 60: scale the surface flavor residue across 36 sectors
+- [done] 99-closing: state what the horizon receipt carries forward
+
+Merge status:
+- [done] merge section files into latex/chapters/10.tex
+- [done] ASCII/manuscript constraint check
+
+Verification:
+- [passed] sections 00, 01, 02, 03, 04, 05, 06, 07, 08, and 99 present on disk
+- [passed] latex/chapters/10.tex has all ten sections inline
+- [passed] no non-ASCII matches under chapter work directory or latex/chapters/10.tex
+- [passed] no manuscript matches for the project-prohibited vocabulary scan
+
+Active agents:
+- none
+
+Completed agents:
+- chapter manager: Codex (current session)

@@ -1,0 +1,24 @@
+Section manager brief: beat 60 -- The QFT alpha receipt
+=======================================================
+
+Beat:
+The surface flavor residue scales across 36 sectors.
+
+Section task:
+Close the chapter by scaling the single surface flavor residue across the full
+sector certificate: three color faces, six flavor labels, and two phase labels.
+The product gives 36 sectors. The QFT alpha receipt is the surface alpha after
+the horizon flavor residue is accounted for across those sectors.
+
+Required manuscript moves:
+- The 36 sectors are a finite certificate, not a completed continuum field.
+- Color remains a null control at the single QED surface step; the sector count
+  uses color as a face of the broader certificate without letting it leak alpha.
+- Flavor supplies the residue; phase doubles the orientation face.
+- The receipt preserves the opaque horizon and scales only exported surface
+  residue.
+
+Useful illustrations:
+- Feynman-style finite enumeration of admissible causal relations.
+- Yang-Mills sector bookkeeping: independent label classes close without
+  cross-contamination.

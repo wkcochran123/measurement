@@ -1,0 +1,37 @@
+Section-manager brief: Beat 38
+==============================
+
+Section file:
+- sections/01-relative-velocity-quotient.tex
+
+Beat:
+- Relative velocity is a quotient: relative motion is selection over
+  observational equivalence.
+
+Section job:
+- Continue directly from Chapter 06's reader-relative orientation.
+- Explain relative velocity as the grammar's selected difference between two
+  reconciled records, not as a property owned by an object.
+- Use quotient language: observationally equivalent presentations are
+  identified; only the residue left by reconciliation is readable as relative
+  velocity.
+- Make clear that selection is narrow: it permits a frame to stand for the
+  comparison while forbidding a view from nowhere.
+
+Writer-sized fragments:
+- Fragment A: Define the need for a quotient after the reader has oriented a
+  boundary trace.
+- Fragment B: Show why absolute motion is forbidden; records carry local
+  successor counts and are compared only after reconciliation.
+- Fragment C: Explain velocity as whole-minus-parts or merged ledger residue
+  in prose, without making a formula the authority.
+- Fragment D: Use velocity, simultaneity, or Michelson-Morley examples only
+  as illustrations of record reconciliation and invariant counts.
+- Fragment E: Carry forward to baseline-relative sign and loop closure.
+
+Constraint reminders:
+- Manuscript TeX only.
+- ASCII only.
+- Do not mention implementation machinery.
+- Do not say an apparatus does the plot; say the grammar permits, forbids,
+  quotients, selects, reads, and forces.

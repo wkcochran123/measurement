@@ -1,0 +1,21 @@
+Section manager brief: Beat 13, The Anchor Earns Its Keep
+=========================================================
+
+Task:
+- Draft the section where a pinned boundary kills the nullspace and makes the
+  form positive.
+- Show why the anchor is not an arbitrary convenience: without it, constant or
+  affine modes can carry no readable activity.
+
+Writer fragments:
+- Fragment A: describe the nullspace as motion invisible to the interior
+  balance.
+- Fragment B: explain the pinned boundary as a committed reading.
+- Fragment C: show positivity after the nullspace vanishes.
+- Fragment D: illustrate with boundary-data examples, such as underdetermined
+  geometric or reception problems.
+
+Constraints:
+- ASCII TeX only.
+- Keep the anchor tied to Chapter 01's sanctioned identity without repeating
+  the old chapter.

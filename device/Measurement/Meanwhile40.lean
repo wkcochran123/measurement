@@ -1,15 +1,18 @@
-import Measurement.Meanwhile39
+import Measurement.Meanwhile39ElectromagneticCoupling
 
-/- MEANWHILE 40 -- ASK THE DEVICE FOR ALPHA. The four-channel second variation
-from Meanwhile39 is contracted to the dimensionless coupling in the `h = c = 1`
-normalization.
+/- MEANWHILE 40 -- ASK THE DEVICE FOR ALPHA. The Meissner electro/magnetic
+calibration tape from Meanwhile39.5 is now in hand, so the four-channel second variation
+from Meanwhile39 can be contracted to the dimensionless coupling in the
+`h = c = 1` normalization.
 
 The raw elaboration charge cancels against the field charge. What remains is:
 
   alpha = (1 - 1/r) * (1/r^2) / orbitUnit.
 
 Here `1/r` is the potential channel, `1/r^2` is the field-per-charge channel at
-the slip seam, and `orbitUnit = 18` is the natural orbit unit.
+the slip seam, and `orbitUnit = 18` is the natural orbit unit. The selected
+Meissner electro/magnetic coefficient is carried as the calibration cell for this
+contraction; it is generated before the alpha read rather than inferred after it.
 -/
 
 namespace Measurement
@@ -45,6 +48,17 @@ structure AlphaSecondVariationReport where
   inverseRadius : ApparatusRatio
   tange : ApparatusRatio
   fieldPerCharge : ApparatusRatio
+  electromagneticCoupling : ElectromagneticCouplingCoefficient
+  electromagneticCouplingFactorScaledAt18 : Nat
+  electromagneticCalibrationTapeLength : Nat
+  couplingGeneratedBeforeAlpha : Bool
+  maxwellSpeedOfLightEnforced : Bool
+  maxwellSpeedOfLightSquaredScaledAt18 : Nat
+  maxwellNaturalUnitVelocitySquaredScaledAt18 : Nat
+  maxwellLorentzBoundaryVelocitySquaredScaledAt18 : Nat
+  magneticRepulsionHasPhotonRecoilResponse : Bool
+  magneticPhotonIncidentResponseResidueScaledAt18 : Nat
+  magneticPhotonRecoilCarried : Bool
   alpha : ApparatusRatio
   alphaScaledAt18 : Nat
   inverseAlphaScaledAt18 : Nat
@@ -68,6 +82,27 @@ def alphaSecondVariationReport
     inverseRadius := inverseRadius
     tange := tange
     fieldPerCharge := fieldPerCharge
+    electromagneticCoupling := electromagneticCouplingSelected
+    electromagneticCouplingFactorScaledAt18 :=
+      electromagneticCouplingSelected.factorScaledAt18
+    electromagneticCalibrationTapeLength :=
+      electromagneticCalibrationTape.length
+    couplingGeneratedBeforeAlpha :=
+      electromagneticCouplingCalibrationReport.generatedBeforeFirstAlpha
+    maxwellSpeedOfLightEnforced :=
+      electromagneticCouplingCalibrationReport.maxwellSpeedOfLightEnforced
+    maxwellSpeedOfLightSquaredScaledAt18 :=
+      maxwellSpeedOfLightCertificate.speedOfLightSquaredScaledAt18
+    maxwellNaturalUnitVelocitySquaredScaledAt18 :=
+      maxwellSpeedOfLightCertificate.naturalUnitVelocitySquaredScaledAt18
+    maxwellLorentzBoundaryVelocitySquaredScaledAt18 :=
+      maxwellSpeedOfLightCertificate.lorentzBoundaryVelocitySquaredScaledAt18
+    magneticRepulsionHasPhotonRecoilResponse :=
+      electromagneticCouplingCalibrationReport.magneticRepulsionHasRecoilAndResponse
+    magneticPhotonIncidentResponseResidueScaledAt18 :=
+      magneticPhotonExchangeReport.incidentResponseResidueScaledAt18
+    magneticPhotonRecoilCarried :=
+      magneticPhotonExchangeReport.recoilCarriedByCooperPair
     alpha := alpha
     alphaScaledAt18 := alpha.scaledFloor (pow10 18)
     inverseAlphaScaledAt18 := alpha.inverseScaledFloor (pow10 18) }

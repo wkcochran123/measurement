@@ -1,0 +1,19 @@
+Section-manager brief: beat 24, Geometry generates gauge
+========================================================
+
+Scope:
+- Explain how spatial boundary grammar produces the discriminating action.
+- Geometry generates the gauge when boundary depth, anchor, and invariant are
+  compiled into the rule that discriminates the pair residue.
+
+Writer-sized fragments:
+- Fragment A: define geometry as stabilized boundary bookkeeping, not an
+  assumed container.
+- Fragment B: explain how boundary charge and interior charge differ.
+- Fragment C: show how the boundary rule becomes the gauge action that reads
+  the electron.
+
+Integration note:
+- Examples may include compact-disc threshold/gauge or Aharonov--Bohm
+  holonomy, but the section must state how the grammar produces the action.
+

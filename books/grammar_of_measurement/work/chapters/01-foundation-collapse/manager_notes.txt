@@ -1,0 +1,47 @@
+Chapter manager notes
+=====================
+
+Chapter manager run started 2026-07-08.
+
+Read before drafting:
+- books/grammar_of_measurement/README.txt
+- books/grammar_of_measurement/work/agent_protocol.txt
+- books/grammar_of_measurement/work/plot_manifest.txt
+- books/expository_monograph/outline_working.md, Act I through Act III context
+- books/expository_monograph/_episodes_digest.md, Episodes 1--16 context
+- device/Experiments descriptions for time, sequential records, relations, and
+  finite completion examples
+
+Fallback note:
+- No recursive child-agent tool is exposed in this session. I cannot spawn
+  section managers or writers directly.
+- I will therefore emulate the required nested process on disk: one
+  section-manager brief per beat, writer-sized fragment briefs inside each
+  section brief, direct drafting by the chapter manager, section files under
+  sections/, and a final merge into latex/chapters/01.tex.
+
+Integration stance:
+- Use one section per beat. No merge is justified: the chapter is introductory,
+  and each beat marks a distinct grammatical obligation.
+- Keep the examples subordinate. Time, sequential recording, and continuum
+  examples will illustrate how the grammar reads measurement, but they will not
+  provide the chapter spine.
+- Avoid naming implementation layers in manuscript prose. The chapter will speak
+  in terms of what the grammar permits, forbids, identifies, quotients, carries,
+  collapses, restores, reads, and bounds.
+
+Progress log:
+- Wrote section-manager briefs for beats 1--8 under section_tasks/.
+- Drafted sections/00-opening.tex through sections/04-clock-and-trial.tex
+  directly as fallback writer output.
+- Drafted sections/05-halting-horizon.tex through sections/09-closing.tex
+  directly as fallback writer output.
+- Merged the section prose into latex/chapters/01.tex as a direct chapter draft,
+  not as cross-directory inputs.
+- Verified latex/chapters/01.tex exists and contains the merged Chapter 01 draft.
+- ASCII scan returned clean for the chapter workspace and merged TeX.
+- Constraint scan returned clean for forbidden manuscript references.
+- TeX smoke compile succeeded by compiling a temporary wrapper from /private/tmp
+  that inputs latex/chapters/01.tex. A full-book compile was attempted first but
+  stopped because TeX wanted to write chapters/01.aux beside the chapter; no aux
+  file was left in latex/chapters/.

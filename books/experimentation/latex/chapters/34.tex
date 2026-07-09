@@ -1,0 +1,152 @@
+\chapter{Exact Galerkin Computation}
+\label{chap:exact-galerkin-computation}
+
+The computation closes when the weak form becomes a report. The report should show the state, the raw residual,
+the Sobolev residual, the squared Sobolev norm, and the values of the first Fréchet variation on selected tests.
+If the residual is exactly zero, the theorem from the previous chapter supplies the weak least-activity
+certificate. If it is not zero, the report says where the failure lives.
+
+\section{The Toy Tensor}
+
+The companion file includes a two-row exact toy system:
+
+\begin{quote}\small
+\begin{verbatim}
+def diracToyTensor : UniversalTensor :=
+  { diracRows :=
+      [[1, -1],
+       [1,  1]]
+    tensorRows :=
+      [[0, 0],
+       [0, 0]]
+    sobolevRows :=
+      [[1, 0],
+       [0, 1]]
+    load :=
+      [0, 2] }
+
+def exactState : Vec :=
+  [1, 1]
+\end{verbatim}
+\end{quote}
+
+The first row reads \(c_0-c_1\). The second row reads \(c_0+c_1\). The load is \((0,2)\), so the state
+\((1,1)\) closes both rows exactly. The Sobolev reader is the identity in this toy example. A real run would
+replace the rows with assembled Dirac, tensor, boundary, and Sobolev matrices. The shape of the computation
+would not change.
+
+\section{The Report}
+
+The report object is:
+
+\begin{quote}\small
+\begin{verbatim}
+structure GalerkinReport where
+  state : Vec
+  rawResidual : Vec
+  sobolevResidual : Vec
+  sobolevNormSq : Int
+  frechetOnTests : List Int
+deriving Repr
+\end{verbatim}
+\end{quote}
+
+The report is produced by:
+
+\begin{quote}\small
+\begin{verbatim}
+def report
+    (U : UniversalTensor) (state : Vec) (tests : List Vec) :
+    GalerkinReport :=
+  { state := state
+    rawResidual := rawTensorResidual U state
+    sobolevResidual := sobolevResidual U state
+    sobolevNormSq := sobolevNormSq U state
+    frechetOnTests := tests.map (fun test =>
+      firstFrechetVariation U state test) }
+\end{verbatim}
+\end{quote}
+
+Run it from the Lean project:
+
+\begin{quote}\small
+\begin{verbatim}
+cd device
+lake env lean Measurement/WeakDiracGalerkin.lean
+\end{verbatim}
+\end{quote}
+
+The example prints:
+
+\begin{quote}\small
+\begin{verbatim}
+{ state := [1, 1],
+  rawResidual := [0, 0],
+  sobolevResidual := [0, 0],
+  sobolevNormSq := 0,
+  frechetOnTests := [0, 0, 0] }
+\end{verbatim}
+\end{quote}
+
+That is the finite weak solution in its smallest visible form. The raw residual closes. The Sobolev residual
+closes. The Sobolev norm square is zero. The first Fréchet variation vanishes on the listed tests, and the
+theorem says exact residual closure makes it vanish on every finite test vector in the skeleton.
+
+\section{Replacing the Toy Rows}
+
+For a serious Dirac/Galerkin experiment, the user replaces the toy rows in four stages.
+
+\begin{enumerate}
+\item Choose the finite trial and test basis: spinor components, element shape functions, boundary functions,
+and any gauge degrees of freedom.
+\item Assemble the Dirac rows from \(i\gamma^\mu(\partial_\mu+iqA_\mu)-m\), including boundary and connection
+data at the chosen floor.
+\item Assemble the universal tensor rows from the zeroth/tensor term: metric, frame, curvature, boundary
+anchor, or other tensor carrier required by the experiment.
+\item Assemble the Sobolev reader: mass matrix, stiffness matrix, mass-plus-stiffness matrix, or another exact
+row system representing the chosen \(H^s\) norm.
+\item Enter the load vector \(f\), compute the residual, and ask Lean for the exact report.
+\end{enumerate}
+
+The finite method is exact only after these choices are fixed. Changing the basis changes the rows. Changing the
+Sobolev reader changes the activity. Changing the boundary condition changes the weak problem. This is not a
+weakness of Galerkin computation. It is the point: the computation says precisely which finite experiment was
+performed.
+
+\section{What Has Been Demonstrated}
+
+The addition demonstrates the mathematical spine the experimentation volume needs:
+\[
+  \boxed{
+  \hbox{weak least activity}
+  =
+  D\mathcal A_U(\psi)[\eta]=0
+  =
+  \langle R_U(\psi),\eta\rangle_{H^s}=0
+  }
+\]
+with
+\[
+  R_U(\psi)=\mathcal D_A\psi+\mathcal T_U\psi-f .
+\]
+The Dirac operator supplies the first-order Clifford/gauge term. The universal tensor supplies the zeroth
+background term. The Sobolev norm supplies the reader. The Fréchet derivative supplies the weak variation. The
+Galerkin basis supplies the finite exact computation.
+
+This is serious mathematics because it says where each burden lives. The continuum problem lives in the choice
+of Sobolev space, domain, boundary, and convergence theorem. The finite experiment lives in the assembled rows.
+The Lean theorem lives at the seam: exact finite Galerkin closure implies the weak first-variation equation for
+the finite tests. The apparatus does not borrow a miracle from the continuum. It computes the rows it has, proves
+what those rows imply, and leaves the stronger analytic claims named as the next obligations.
+
+\section{The Final Floor}
+
+The last floor is therefore not that Lean has solved the Dirac equation on a manifold. It has not. The last floor
+is sharper and more useful: once the Dirac/tensor residual has been expressed in a Sobolev reader and assembled
+on a finite Galerkin basis, the weak principle of least activity is an exact finite statement. The apparatus can
+compute that statement without approximation. Approximation enters only when the finite result is read back
+toward the continuum.
+
+That is the handoff from experimentation to analysis. The experiment writes the rows. Lean checks the weak
+closure. Analysis then asks how the finite closures behave under refinement. Each job has its own floor, and the
+floors no longer blur.

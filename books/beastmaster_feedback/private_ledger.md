@@ -32,3 +32,9 @@ is not reader-facing and is not part of any sibling RYOT process.
   challenge ledger. Two Kodo affirmative passes stalled and were stopped.
   Converted Podo's surviving pressure points into a provisional first-slice
   judge ledger at `adversarial_workflow/work/final_drift_ledger.md`.
+- 2026-07-05: Started standalone budget adequacy and padding review under
+  `adversarial_workflow/budget_review/`, governed by Revision 4's act-relative
+  parity gauge rather than retired fixed chapter targets.
+- 2026-07-05: Four adversarial budget subagents completed act-slice and global
+  padding reads. Integrated their findings into
+  `adversarial_workflow/budget_review/work/final_budget_review.md`.

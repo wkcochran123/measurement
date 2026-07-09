@@ -59,7 +59,7 @@ theorem claim_contains_device_split :
 
 theorem claim_contains_tilted_positron :
     claim.statement -> Measurement.HasPositronEvent Measurement.tiltedEvents :=
-  fun h => h.2.2
+  fun h => h.2.2.1
 
 def auditedExperiment : Experiments.Common.Experiment Setup Bool :=
   experiment

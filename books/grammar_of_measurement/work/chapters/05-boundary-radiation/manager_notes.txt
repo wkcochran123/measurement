@@ -1,0 +1,69 @@
+Chapter manager notes
+=====================
+
+Run date: 2026-07-08.
+
+Inputs read:
+- README.txt and agent_protocol.txt for manuscript and workflow rules.
+- plot_manifest.txt beats 28--32.
+- Prior chapter voice from latex/chapters/01.tex through 04.tex, with
+  special attention to Chapter 04 sections "The Split", "The Zero-Mesh
+  Reading", and "Finite Cohen Forcing".
+- expository_monograph outline and digest around the finite Cohen ledger
+  and Episodes 62--72.
+- Device experiment descriptions for Cantor-Godel-Cohen, Precision,
+  Mach-Zehnder, Casimir, Hawking Radiation, 't Hooft-Susskind, and
+  Aharonov-Bohm as optional illustrations.
+
+Subagent availability:
+- I do not have callable recursive subagent or thread-management tools in
+  this session.
+- Fallback chosen per task instruction: write section-manager briefs to
+  disk, decompose each beat into writer-sized fragments, then draft and
+  merge as chapter manager.
+- The fallback preserves depth-first order: beat 28, then 29, then 30,
+  then 31, then 32.
+
+Decomposition:
+- Beat 28 becomes "The Extensional Ledger": finite Cohen conditions are
+  quotiented by carried atoms, not by presentation. Countability is
+  preserved because the extensional quotient keeps finite supports and
+  finite indices recoverable.
+- Beat 29 becomes "Successor Residue": the gauge commutator residue closes
+  only through successor counting. The section must tie the residual loop
+  to the count that reaches one, two, and three without importing a
+  completed continuum.
+- Beat 30 becomes "The Sobolev-Hilbert Trace": finite residues pass through
+  a completion door by an earned norm, while the geometry/gauge split is
+  preserved as an orthogonal Sobolev-Hilbert reading.
+- Beat 31 becomes "No Interior Mixed Term": compatibility forbids a
+  continuum interior scalar mixed certificate; the mixed term cancels in
+  the interior because the split lifts.
+- Beat 32 becomes "Radiation At The Boundary": boundary trace agrees with
+  terminal residue, residuals are Cauchy in the Sobolev norm, and radiation
+  is forced to the boundary.
+
+Integration choices:
+- Keep the opening short and inherit Chapter 04 directly.
+- Use formulas sparingly and only where they clarify grammar.
+- Use examples as lanterns only. The spine is the grammar: permits,
+  forbids, identifies, quotients, carries, restores, reads, bounds, lifts,
+  traces, completes, cancels, and forces.
+- Avoid naming any machinery or formal system in manuscript prose.
+- Keep all TeX 7-bit ASCII.
+
+Merge result:
+- Drafted seven TeX sections: one opening, one per beat for beats 28--32,
+  and one closing handoff.
+- Merged the sections as full prose into latex/chapters/05.tex.
+- Line count after merge: 492 lines in latex/chapters/05.tex; 484 lines
+  across section files.
+- Final checks passed: 7-bit ASCII and forbidden manuscript vocabulary.
+
+Scheduler recheck:
+- Request reported that latex/chapters/05.tex still appeared to contain the
+  placeholder. I inspected the absolute path
+  /Users/williamcochran/Desktop/measurement/books/grammar_of_measurement/latex/chapters/05.tex.
+- The file contains inline prose, seven section headings, and no placeholder
+  or section input directive.
+- Size at recheck: 27911 bytes.

@@ -1,0 +1,17 @@
+Section-manager brief: 99-closing
+=================================
+
+Scope:
+- Close Chapter 04 by summarizing what the grammar has forced.
+- Carry forward to Chapter 05: once the split forbids interior mixing, boundary
+  radiation becomes the next necessary reading.
+
+Writer-sized fragments:
+- Fragment A: summarize electron, positron, two grants, geometry-to-gauge,
+  split, Cauchy limit, forcing.
+- Fragment B: state the remaining obligation: boundary phenomena and
+  completion.
+
+Integration note:
+- Short section. Avoid introducing new claims.
+

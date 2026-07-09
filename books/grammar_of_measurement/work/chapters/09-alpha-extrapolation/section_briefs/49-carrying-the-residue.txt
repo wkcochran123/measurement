@@ -1,0 +1,24 @@
+Section manager brief: beat 49 -- Carrying the residue
+======================================================
+
+Beat:
+Repeated trials carry seed and residue without restarting.
+
+Section task:
+Explain how a bounded trial advances by carrying state. Each pass keeps the
+seed, the selected aperture face, the carried residue, and the accumulated
+variance. A new trial extends the ledger; it does not wipe the previous trial
+clean. The grammar must distinguish a fresh question from a repeated question
+whose residue has been carried forward.
+
+Required manuscript moves:
+- A trial permits another sample only by appending to the existing ledger.
+- The seed is a carried selector, not an arbitrary restart.
+- The residue is both memory and obligation: it records what the prior pass did
+  not absorb and supplies the starting remainder for the next pass.
+- The bound prevents unspent residue from being hidden in an infinite future.
+
+Useful illustrations:
+- Repeated measurements under a stable alphabet.
+- Laser pulse tracking as a growing ledger of returned constraints.
+- Finite precision saturation as a reason a bound is part of the reading.

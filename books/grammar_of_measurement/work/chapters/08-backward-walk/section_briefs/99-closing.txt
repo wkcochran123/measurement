@@ -1,0 +1,17 @@
+Section manager brief: 99-closing
+=================================
+
+Role:
+- Close Chapter 08 and hand forward to finite extrapolation.
+
+Writer fragments:
+- Fragment A: summarize the backward walk: the loop returns to the needle, charge counts closure, mass
+  strains as second difference, one number shows four faces, phase reads the sign bounce, the Cooper pair
+  interfaces at the boundary.
+- Fragment B: state what Chapter 09 receives: a loop-counted, strain-bearing, phase-oriented number at
+  the superconducting boundary, ready for finite extrapolation.
+
+Constraints:
+- TeX prose only.
+- ASCII only.
+- No placeholders.

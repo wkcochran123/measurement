@@ -1,0 +1,31 @@
+Chapter 09 status
+=================
+
+Title: The Finite Extrapolation of Alpha
+Scope: Beats 49--52 from work/plot_manifest.txt.
+
+Current phase:
+- [done] chapter manager decomposition
+- [fallback] recursive subagent tools unavailable; section-manager briefs written to disk
+- [done] drafting sections depth-first
+- [done] section merge
+- [done] chapter TeX merge
+- [done] ASCII check
+
+Section manager tasks:
+- [done] 00-opening: inherit the Cooper-pair ledger and state the alpha problem
+- [done] beat 49: carry seed and residue across bounded trials
+- [done] beat 50: read charge, mass, and value as three aperture rungs
+- [done] beat 51: force bounded Richardson-style extrapolation
+- [done] beat 52: distinguish signed displacement from path cost
+- [done] 99-closing: state what finite alpha carries forward
+
+Merge status:
+- [done] merge section files into latex/chapters/09.tex
+- [done] ASCII/manuscript constraint check
+
+Active agents:
+- none
+
+Completed agents:
+- chapter manager: 019f41ad-0ed6-7d70-97de-6799c3f4be48 (Ohm)

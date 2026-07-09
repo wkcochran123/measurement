@@ -1,0 +1,28 @@
+Section-manager brief: Beat 32
+================================
+
+Working title: Radiation At The Boundary
+
+Beat:
+- Boundary radiation: radiation is forced to be a boundary phenomenon.
+
+Required section result:
+- Explain boundary trace as the reading that agrees with terminal residue.
+- Explain residual Cauchy witness and lift through completion.
+- Since the interior mixed term is forbidden, the remaining readable
+  residue must be carried by the boundary trace.
+- Radiation is not an added physical story. It is the name of the boundary
+  phenomenon forced when gauge/geometric reconciliation cannot be carried
+  as an interior scalar.
+
+Writer-sized fragments:
+1. Define terminal residue and boundary trace in grammar prose.
+2. Explain trace agreement with terminal residue.
+3. Explain Cauchy residuals through Sobolev-Hilbert completion.
+4. State why radiation is forced to the boundary.
+5. Close the chapter by handing off to Chapter 06's outside reading.
+
+Examples allowed:
+- Hawking Radiation as asymmetric boundary compatibility.
+- Casimir as boundary repair under restricted interior modes.
+- Mach-Zehnder only if boundary recombination is useful.

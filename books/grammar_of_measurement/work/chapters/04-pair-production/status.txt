@@ -1,0 +1,34 @@
+Chapter 04 status
+=================
+
+Title: Pair Production and Geometry Generating Gauge
+Scope: Beats 21--27 from work/plot_manifest.txt.
+
+Current phase:
+- [done] chapter manager decomposition
+- [done] fallback section-manager briefs
+- [done] writer-fragment drafting
+- [done] section merge
+- [done] chapter TeX merge
+- [done] ASCII check
+
+Active agents:
+- chapter manager: 019f4173-0223-76a0-9df0-218cb2e532ad (Gibbs)
+- fallback section managers: local chapter manager, depth-first
+
+Final pass:
+- Sections written under sections/ and merged inline into latex/chapters/04.tex.
+- ASCII check passed for chapter and section TeX files.
+- Forbidden manuscript term scan passed for Lean/code/implementation/apparatus
+  and apparatus-does-plot variants.
+
+Section-manager tasks:
+- 00-opening: inherit Chapters 01--03 and set the pair-production problem.
+- 21-electron-emerges: discriminating action reads charge -1.
+- 22-positron-tilted-path: positron reads +1 only against a tilted baseline.
+- 23-two-axioms: isolate the two identity grants used by the grammar.
+- 24-geometry-generates-gauge: boundary geometry produces the discriminating action.
+- 25-the-split: geometric and gauge sectors split without a finite direct sum.
+- 26-qed-cauchy-gr: electromagnetic reading as the zero-mesh limit of geometric reading.
+- 27-finite-cohen-forcing: finite spline conditions force the continuum reading.
+- 99-closing: carry the chapter into boundary radiation.

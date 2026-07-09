@@ -1,0 +1,135 @@
+\chapter{Closing the Pairing Interface}
+
+After a budgeted interaction run, the apparatus should not hand the user a bare state. It should hand over a
+report: final stage, final face, cost spent, electron-electron residual, signed pair transfer, single-event
+count, pair-event count, phase turns, tange count, and matter count. That report is the pairing analogue of the
+alpha report. It is not the whole experiment, but it is the closed arithmetic surface where a reader can see what
+was spent and what was read.
+
+\section{The Report Object}
+
+The companion file records the report shape directly:
+
+\begin{quote}\small
+\begin{verbatim}
+structure InteractionReport where
+  finalStage : Stage
+  finalFace : Face
+  costSpent : Nat
+  electronElectronEvents : Nat
+  electronElectronResidual : Int
+  pairTransfers : Int
+  singleEvents : Nat
+  pairEvents : Nat
+  phaseTurns : Int
+  tangeCount : Nat
+  matterCount : Nat
+deriving Repr
+\end{verbatim}
+\end{quote}
+
+and closes a state into that report:
+
+\begin{quote}\small
+\begin{verbatim}
+def report (s : InteractionState) : InteractionReport :=
+  { finalStage := s.stage
+    finalFace := s.face
+    costSpent := s.costSpent
+    electronElectronEvents := s.electronElectronEvents
+    electronElectronResidual := s.electronElectronResidual
+    pairTransfers := s.pairTransfers
+    singleEvents := s.singleEvents
+    pairEvents := s.pairEvents
+    phaseTurns := s.phaseTurns
+    tangeCount := s.face.positronCount
+    matterCount := s.face.matterCount }
+\end{verbatim}
+\end{quote}
+
+The last two fields read the final face through the finite gauge. If the final face is either electron face, the
+tange count is \(0\) and the matter count is \(36\). If the final face is the Cooper pair, the tange count is
+\(1\) and the matter count is \(35\). The \(\texttt{finalStage}\) field supplies the information the gauge
+deliberately does not supply: whether the electron reading was the outer electron or the junction electron.
+
+\section{Putting the Interaction Into a Device}
+
+To use the interface in a laboratory model, the user should supply five things.
+
+\begin{quote}\small
+\begin{tabular}{c|p{0.70\textwidth}}
+1 & the physical contact: junction, island, nanowire, or Andreev boundary\\
+2 & the scales: \(\Delta\), \(E_J\), \(E_C\), \(n_g\), temperature, and parity lifetime\\
+3 & the initial stage: outer electron, junction electron, pair face, or prepared parity state\\
+4 & the step rule: the four-stage trace or a calibrated transition law\\
+5 & the cost budget: the number of folds the operator is willing to spend
+\end{tabular}
+\end{quote}
+
+The simplified companion file fills in items three, four, and five. A real device must fill in items one and two,
+and may replace item four with a rule that uses the measured scales. For example, a Cooper-pair box may let the
+charging energy and gate offset decide which charge state is favored. A Josephson junction may let \(E_J\) set
+the coherent pair-transfer amplitude. A parity experiment may let measured poisoning rates decide when the
+single-electron face appears. A two-electron contact experiment may let the first step carry a measured
+electron-electron residual before the Cooper-pair read. The apparatus does not object to any of these
+refinements. It asks only that the refined rule remain typed, budgeted, and auditable.
+
+\section{How It Couples Back to Alpha}
+
+Atom recoil measured \(\alpha\). The Cooper-pair interface does not replace that route. It supplies a new
+apparatus module for experiments where charge transport, phase coherence, or superconducting standards enter the
+metrology. If a superconducting element is part of the measurement chain, the pair interface tells the user where
+to record the parity seam and where to charge the phase cost.
+
+The safest first use is as a correction ledger. A parity-switching event can become a tanged correction row. A
+pair-transfer calibration can become a gauge row. A superconducting voltage or resistance standard can enter as
+a GIVEN scale, with its own uncertainty and route. The alpha report should not silently inherit trust from a
+superconducting device. It should import a pairing report and say exactly what that report contributed.
+
+The next use is as an internal simulation. Before running the hardware, choose an elaborator budget and run the
+pairing interface through Lean. The receipt will show which stage the budget lands on, how many electron-electron
+and pair events have been counted, whether the signed residuals have unwound, and whether an interaction witness
+appeared. This is not a prediction of the device's stochastic behavior. It is a check of the bookkeeping: the
+four-stage loop advances, the cost is spent, and the stage at the end is not guessed.
+
+The handoff to the final alpha experiment is deliberately narrow. The pairing chapters do not claim that a
+Cooper pair alone measures \(\alpha\). They supply the state discipline: an electron fact, a second electron
+position, a pair boundary, a carried residue, and a cost-bounded way to stop a cycle that otherwise has no final
+state. The next chapter leaves that machinery in place and asks the adjacent charge aperture for repeated
+\(e^2/(4\pi)\) readings. In other words, the pairing interface prepares the corridor and the state-carrying
+discipline; the final study reads the alpha aperture.
+
+\section{Acceptance Criteria}
+
+A credible electron \(\to\) electron \(\to\) Cooper-pair insertion has these properties:
+
+\begin{itemize}
+\item Face discipline: the outer electron, junction electron, and Cooper pair are explicit readings/stages.
+\item Gauge discipline: the pair face reads as one tange and thirty-five funges.
+\item Residual discipline: electron-electron and pair/phase residuals are carried and then unwound explicitly.
+\item Cost discipline: the executable device run is stopped by an explicit elaborator budget.
+\item Forever discipline: the unbounded run is present but not evaluated.
+\item Physics discipline: \(\Delta\), \(E_J\), \(E_C\), \(n_g\), and parity data are supplied externally.
+\item Report discipline: the final state is closed into a reproducible receipt, including whether the interaction
+witness appeared.
+\end{itemize}
+
+The forever line is the trap door. A model of the interface really can run forever, because the interface is a
+cycle. Lean can express that with a partial definition. The apparatus must then refuse to pretend that an
+unbounded cycle is a finished measurement. The operator supplies an elaborator cost, the device command runs that
+many folds, and the receipt returns. The larger the cost, the longer the recent-stage window shows the same
+outer-electron, junction-electron, Cooper-pair, returning-electron cycle, still with no stable interaction
+witness. That is how the infinite behavior enters without swallowing the computation.
+
+\section{The Pairing Handoff}
+
+At the end of the pairing run, the reader receives two things: the finite receipt and the knowledge that the
+unbounded process still exists behind it. That is exactly the right shape. Superconducting coherence is not a
+single event; it is a state that can keep answering. A measurement is the finite cut through that answer. The
+elaborator budget says where the cut was made.
+
+The apparatus has therefore learned a new interaction. It can bring the named electron to a second electron at
+the superconducting door, read the pair face after that contact, count the tange, spend a chosen elaborator cost,
+and stop without lying about the cycle it has interrupted. The two electron positions and the Cooper pair remain
+distinct. The boundary between them is where the work happens, and the missing stable witness is now reported
+rather than guessed.

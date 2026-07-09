@@ -1,0 +1,48 @@
+Chapter manager notes
+=====================
+
+2026-07-08 chapter-manager pass
+--------------------------------
+
+Scope: Chapter 02, "The Finite Gauge and the Single Invariant," beats 9--14.
+Owned output paths are restricted to this chapter work directory and
+latex/chapters/02.tex.
+
+Recursive tooling note:
+- I do not have a callable nested subagent tool in this session.
+- Fallback mode is therefore active: write section-manager briefs to disk,
+  then carry the section-manager and writer work depth-first in this pass.
+- No broad parallel drafting will be used.
+
+Decomposition:
+- Beat 9 becomes "The Stationary Reader": finite gauge paths, finite action,
+  residual vanishing, and stationarity as a grammatical reading.
+- Beat 10 becomes "Two Renderings Of One Constraint": first variation and
+  discrete Euler--Lagrange as the same obligation read in two grammars.
+- Beat 11 becomes "Spline Sufficiency": closed balanced cubic splines make
+  the remaining residue vanish.
+- Beat 12 becomes "Real Partitions And Squeezing": finite truncations,
+  supported data, discrete Sobolev grammar, and completion by squeezed
+  residuals.
+- Beat 13 becomes "The Anchor Earns Its Keep": the pinned boundary kills the
+  nullspace and forces positivity.
+- Beat 14 becomes "The Single Invariant": second variation, energy square,
+  positive definiteness, and uniqueness.
+
+Integration choices:
+- Keep the chapter's spine grammatical rather than experimental. Device
+  examples may appear as illustrations only.
+- Use Chapter 01's style: foundation first, then consequences; avoid
+  triumphal shortcuts.
+- Keep all manuscript TeX 7-bit ASCII.
+
+Outputs:
+- Section-manager briefs were written under section_briefs/.
+- TeX section fragments were written under sections/.
+- The assembled chapter was merged into latex/chapters/02.tex.
+
+Verification:
+- ASCII check passed over the Chapter 02 work directory and latex chapter.
+- Manuscript forbidden-term check passed for the section fragments and
+  assembled chapter.
+- Assembled chapter length: about 5,289 words.

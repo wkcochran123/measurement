@@ -74,7 +74,8 @@ theorem flip_sameMessage (u : Update) : sameMessage u u.flip := by
 DOES change the antisymmetric residue. This pins that `sameMessage` is NOT trivially everywhere true:
 the unrecordable residue genuinely differs. ∀ over all updates. -/
 theorem flip_negates_twist (u : Update) : u.flip.twist = - u.twist := by
-  unfold Update.flip Update.twist
+  cases u
+  simp [Update.flip, Update.twist]
   omega
 
 /-- FALSIFIABLE: if two updates have DIFFERENT symmetric content, they are NOT the same message.
@@ -165,11 +166,11 @@ def canonicalSetup : Setup := { sent := pureTwist, reference := silent }
 
 /-- Bring a minimal device next to this experiment: it records whether the exported claim fires. -/
 def deviceNear (setup : Setup) : Bool :=
-  decide (experiment.claim setup)
+  run setup
 
 theorem deviceNear_detects_claim (setup : Setup) :
     deviceNear setup = true ↔ experiment.claim setup := by
-  simp [deviceNear]
+  simpa [deviceNear] using run_iff_claim setup
 
 def triangulation : Experiments.Common.Triangulation Setup Bool :=
   { experiment := experiment

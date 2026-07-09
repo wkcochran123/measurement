@@ -1,0 +1,78 @@
+Chapter manager notes
+=====================
+
+2026-07-08 chapter manager start
+--------------------------------
+
+Read governance and continuity sources:
+- README.txt and agent_protocol.txt.
+- plot_manifest.txt, Chapter 06 beats 33--37.
+- Chapters 01--05 for voice, especially Chapter 05's boundary-radiation
+  handoff.
+- Expository monograph outline and episode digest around the outside reading,
+  boundary obstruction, and boundary truth material.
+- Experiment descriptions for orientation, boundary comparison, transported
+  clocks, non-closing local updates, horizon/exported residue, and binary
+  signal/control examples.
+
+Nested-process fallback:
+- No recursive section-manager or writer spawning tool is exposed in this
+  session.
+- I will simulate the nested process depth-first on disk: one section-manager
+  brief per beat, each brief decomposed into writer-sized fragments, then draft
+  each section in order and merge into the chapter TeX.
+
+Section plan:
+- Beat 33 -> section 01-orientation-ekg.tex.
+- Beat 34 -> section 02-outside-reading.tex.
+- Beat 35 -> section 03-unsettleable-sentence.tex.
+- Beat 36 -> section 04-true-not-false-restored.tex.
+- Beat 37 -> section 05-reader-assumes-control.tex.
+- Add 00-opening.tex and 06-closing.tex if they help the chapter handoff.
+
+Integration choices:
+- The spine is grammatical, not illustrative: orientation, outside reading,
+  obstruction, boundary truth, and binary reader control are forced by what the
+  grammar permits, forbids, identifies, quotients, carries, reads, bounds,
+  orients, externalizes, separates, and restores.
+- Examples may appear as short lanterns only. Pound-Rebka supports external
+  comparison, Navier-Stokes and Einstein support boundary obstruction, chirality
+  and loop transport support orientation, and on/off signal/control examples
+  support the closing switch.
+- Manuscript files must remain ASCII-only and must use Godel without accent.
+
+2026-07-08 section assembly start
+---------------------------------
+
+Section-manager briefs are complete. Beginning fallback writer pass in depth
+order: opening, beat 33, beat 34, beat 35, beat 36, beat 37, closing.
+
+2026-07-08 section assembly complete
+------------------------------------
+
+Drafted seven TeX section files under sections/. The beat structure remained
+one section per beat, with an opening and carry-forward close added for voice
+continuity. Beginning merge into latex/chapters/06.tex.
+
+2026-07-08 chapter merge complete
+---------------------------------
+
+latex/chapters/06.tex first included the seven section files directly, then I
+inlined the prose so the chapter file stands on its own like Chapters 01--05.
+I am not running a PDF build because it would write generated files outside
+the two paths owned for this chapter pass. Performing static ASCII and
+manuscript-term checks instead.
+
+2026-07-08 verification
+-----------------------
+
+Static checks completed:
+- ASCII scan over chapter work directory and latex/chapters/06.tex found no
+  non-ASCII characters.
+- Manuscript-term scan found no mention of forbidden machinery terms, no
+  accented or TeX-accented Godel spelling, and no TeX input indirection in
+  latex/chapters/06.tex.
+- latex/chapters/06.tex is 492 lines and contains the seven inlined sections.
+
+PDF build was intentionally not run because it would write generated files
+outside the chapter-owned paths.

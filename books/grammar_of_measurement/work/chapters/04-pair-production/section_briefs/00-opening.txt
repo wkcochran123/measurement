@@ -1,0 +1,20 @@
+Section-manager brief: 00-opening
+=================================
+
+Scope:
+- Open Chapter 04 by inheriting the results of Chapters 01--03.
+- State the new problem: the single positive invariant now has to be read as a
+  charged pair without importing a new foundation.
+
+Writer-sized fragments:
+- Fragment A: recall needle, finite gauge, and concrete operator.
+- Fragment B: state why pair production must be grammatical rather than
+  theatrical.
+- Fragment C: preview beats 21--27 in chapter order.
+
+Manuscript constraints:
+- ASCII-only TeX.
+- Do not mention implementation or formal tooling.
+- Use grammar verbs: permits, forbids, identifies, quotients, carries, reads,
+  bounds, discriminates, splits, closes, forces.
+

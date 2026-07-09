@@ -1,0 +1,19 @@
+Section manager brief: Beat 11, Spline Sufficiency
+==================================================
+
+Task:
+- Draft the section where a closed balanced cubic spline forces residue zero.
+- Explain why cubic sufficiency is a closure principle, not decorative
+  smoothness.
+
+Writer fragments:
+- Fragment A: finite anchors and the need for a completion between them.
+- Fragment B: balance at knots: values, slopes, and bending moments agree.
+- Fragment C: closedness forbids unspent boundary residue.
+- Fragment D: the spline as illustration of precision without new measured
+  facts.
+
+Constraints:
+- ASCII TeX only.
+- Use spline examples as illustrations.
+- Do not call implied intermediate values measurements.

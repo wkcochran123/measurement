@@ -189,6 +189,10 @@ def canonicalSetup : Setup := { recorded := Branch.e0, sibling := Branch.e1 }
 #eval decide (Experiments.Common.Boundary.compatible sharedBoundary
   (pivot (coherent Branch.e0)) (coherent Branch.e1))  -- expect: false (no-go is load-bearing, not vacuous)
 
+instance (setup : Setup) : Decidable (experiment.claim setup) := by
+  unfold experiment
+  infer_instance
+
 /-- Bring a minimal device next to this experiment: it records whether the exported claim fires. -/
 def deviceNear (setup : Setup) : Bool :=
   decide (experiment.claim setup)

@@ -1,0 +1,24 @@
+Section manager brief: beat 55 -- The collapse of the Cooper pair horizon
+=========================================================================
+
+Beat:
+Ordinary pair interior and exclusion interior become indistinguishable.
+
+Section task:
+Explain how the horizon masks two different interior stories: an ordinary
+spin-balanced Cooper-pair interior and a neutrino-exclusion interior. They are
+not declared the same as interior mechanisms. They become the same read only
+after the horizon quotients interiors by exact surface agreement.
+
+Required manuscript moves:
+- Preserve the difference between hidden interiors before the quotient.
+- State that the horizon forbids inspection of which interior story produced
+  the surface.
+- The grammar identifies the interiors only because every exported surface
+  observable agrees.
+- The collapse is a surface collapse, not a global identity of all internal
+  descriptions.
+
+Useful illustrations:
+- Superconducting pair as strain-free paired transport.
+- Meissner exclusion as a region forbidding antisymmetric curvature inside.

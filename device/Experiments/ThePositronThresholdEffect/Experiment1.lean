@@ -140,7 +140,7 @@ def deviceNear (setup : Setup) : Bool :=
 
 theorem deviceNear_detects_claim (setup : Setup) :
     deviceNear setup = true ↔ experiment.claim setup := by
-  cases h : setup.probe <;> simp [deviceNear, experiment, h, decide_eq_true_iff]
+  cases h : setup.probe <;> simp [deviceNear, experiment, h]
 
 def triangulation : Experiments.Common.Triangulation Setup Nat :=
   { experiment := experiment

@@ -1,0 +1,82 @@
+\section{Spline Sufficiency}
+
+Finite measurement gives the grammar anchors before it gives the grammar a
+curve. An anchor is a committed reading: an event, a mark, a boundary value,
+a recorded position, a calibration point. Between anchors, the record is
+silent. The silence is not empty permission. The grammar may complete the
+record only in ways that remain answerable to the anchors and to the
+residual tests already established. A completion that inserts a hidden
+distinction has made a new claim, and the new claim must pay for itself.
+
+A spline is the disciplined form of this completion. It does not say that a
+continuous object was present behind the finite record all along. It says
+that, once the anchors are fixed, the grammar may assign intermediate
+values only by the least strained rule compatible with those anchors. The
+intermediate values are consequences of the completion. They are not new
+measurements. If a later refinement records a new anchor, the completion
+must answer to it. Until then, the spline is the permitted smooth shadow of
+the finite ledger.
+
+The cubic case is the first case rich enough to carry the needed balance.
+A line can connect two anchors but has no bending to account for. A
+quadratic can bend but cannot generally balance neighboring pieces without
+leaving a derivative debt at the knot. A cubic patch has enough freedom to
+match value, slope, and bending moment across an anchor. It can carry the
+position, the first slip, and the second slip without inventing a new
+interior fact.
+
+This is why the chapter speaks of a closed balanced cubic spline. Balanced
+means that adjacent patches agree at their shared anchor in the readings the
+gauge is allowed to test. The value agrees, so the path does not jump. The
+first reading agrees, so the path does not hide a corner. The bending
+reading agrees, so the path does not hide a curvature debt. Closed means
+that the boundary of the chain has no unspent residue: the completion
+returns to the committed boundary ledger without adding a final slip.
+
+Once these requirements hold, the first residual has nowhere to live. Any
+supported variation inside a patch is already governed by the cubic
+balance. Any variation at a knot is answered by the matching conditions
+from the two neighboring patches. Any variation at the boundary is
+forbidden by the committed endpoint or cancelled by closedness. The grammar
+therefore reads residue zero. Spline sufficiency is exactly this claim: a
+closed balanced cubic completion is sufficient to force stationarity.
+
+The claim is modest in the right way. It does not say that every stationary
+path must be presented as a cubic spline. It says that this finite spline
+grammar supplies enough structure to make residual vanishing unavoidable.
+The anchors carry the finite facts; the cubic patches carry the least
+completion; the knot balances carry the local Euler--Lagrange reading; the
+closure carries the boundary debt to zero. Nothing else is needed for the
+first residual to vanish.
+
+The distinction between precision and accuracy is useful here. A spline can
+make a value at an unmeasured point precise in the sense that the completion
+identifies a unique value there. That precision is a grammatical
+consequence of the anchors and the completion rule. It is not accuracy in
+the empirical sense. If a later observation places a new anchor elsewhere,
+the ledger changes and the completion must be recomputed. The grammar
+therefore permits precise intermediate readings while forbidding them from
+masquerading as independently recorded facts.
+
+This is also why hidden curvature cannot be admitted for free. Suppose two
+readers refine the same interval between the same anchors. If a hidden bend
+were large enough to be distinguishable, refinement would expose a new
+event. If no refinement exposes such an event, the permitted completion
+must collapse toward the same balanced cubic patch. Agreement of value,
+slope, and bending moment at shared anchors is not an aesthetic condition.
+It is the grammar's way of forbidding a contradiction at the place where
+two finite records meet.
+
+Spline sufficiency therefore turns the stationary reader into a constructive
+finite shape. The grammar has not assumed a continuum; it has permitted a
+completion. It has not assumed smoothness; it has forced enough smoothness
+to prevent unrecorded residue. It has not assumed a law of motion; it has
+identified the closure condition under which all allowed first variations
+read zero. The path is stationary because the balanced spline leaves no
+first-order imbalance for the gauge to detect.
+
+The next problem is scale. A single spline over a finite set of anchors
+gives a local completion, but measurement also refines. Partitions split,
+supports shrink, and residuals are tested on finer ledgers. The grammar
+must explain how these finite completions are squeezed toward a completed
+reading without treating the completed reading as primitive.

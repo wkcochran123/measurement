@@ -1,0 +1,24 @@
+Section manager brief: Beat 20
+==============================
+
+Target file: sections/06-operator-turns.tex
+Section title: The Operator Turns
+
+Beat:
+The operator turns: the derivative pipeline is instantiated over the single
+concrete operator.
+
+Writer fragments:
+- Fragment A: recall the concrete operator as the carrier of the Chapter 02
+  invariant.
+- Fragment B: explain the derivative reading: residual, first variation, and
+  linearization identify one another under the concrete operator.
+- Fragment C: explain why the quadratic remainder terminates the local story:
+  the second variation is the same positive invariant now grounded.
+- Fragment D: close the chapter by handing off to pair production/geometry in
+  the next chapter without previewing too much.
+
+Acceptance criteria:
+- Make "instantiates" the key verb.
+- Do not use source-system or implementation vocabulary in manuscript prose.
+- Close with a concise carry-forward section.

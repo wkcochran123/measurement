@@ -1,0 +1,78 @@
+\chapter[Weak Equation Contract]{The Weak Equation as an Elaboration Contract}
+\label{chap:weak-equation-elaboration-contract}
+
+The weak solution is the compiler's preferred shape for a variational statement. A strong equation asks
+for an equality at every point where the expression is defined. A weak equation asks for vanishing against
+all admissible tests. The second request may sound less exact, but for the compiler it is more honest: it
+names the space of tests, the norm in which they are controlled, and the linear functional whose vanishing
+must be checked. Nothing is lost by refusing pointwise speech when the state does not have pointwise
+regularity. The exact statement is the one that matches the space in which the state lives.
+
+Let \(\mathcal A\) be the activity functional. Its first Frechet variation at \(u\) in the direction
+\(v\) is
+\[
+  D\mathcal A(u)[v]
+    =
+  \lim_{\epsilon\to 0}
+    \frac{\mathcal A(u+\epsilon v)-\mathcal A(u)}{\epsilon},
+\]
+when the limit exists in the appropriate Sobolev sense. The principle of least activity becomes the weak
+equation
+\[
+  D\mathcal A(u)[v] = 0
+  \qquad \text{for all } v\in V .
+\]
+The compiler reads the universal quantifier as a contract generator. Each admissible test produces one
+elaboration obligation. The derivative is not merely a calculus symbol; it is the linearized dependency of
+the activity on a perturbation of the state, exposed in the form the checker can apply to a test term.
+
+\section{The first variation as sensitivity}
+\label{se:first-variation-sensitivity}
+
+Frechet differentiation is the right derivative for the compiler because it respects the ambient space. A
+partial derivative changes one coordinate while pretending the others are silent. A Frechet derivative
+changes the state by an element of the same function space in which the state is being judged. That is the
+compiler's discipline in analytic form: perturbations must have the type the equation says they have, and
+the response to a perturbation must be linear and bounded in the norm named by the problem.
+
+The derivative is therefore a sensitivity map,
+\[
+  D\mathcal A(u) : V \to \mathbb R,
+\]
+or into the scalar field carried by the construction. To prove that \(u\) is stationary is to prove that
+this map is the zero functional. In strong language one might try to simplify the integrand until a
+pointwise Euler--Lagrange equation appears. In weak language the compiler receives the thing it can
+actually test: a functional waiting for inputs. If every accepted input reads zero, the stationary
+condition is satisfied at the promised level.
+
+\section{Least activity as zero visible descent}
+\label{se:least-activity-zero-visible-descent}
+
+The phrase ``least activity'' should not be read as an instruction to search an unbounded landscape until a
+minimum is guessed. At the weak level it says that no admissible first-order perturbation lowers the
+activity. The compiler can express that as zero visible descent: every test direction the contract admits
+has first variation zero. When an inequality or convexity argument is also present, this stationary point
+may be upgraded to a minimizer. Without that extra structure the compiler should not pretend to have more
+than stationarity.
+
+This separation is one of the main benefits of the weak contract. It tanges stationarity from minimization.
+The first Frechet variation supplies the stationarity obligation. A second variation, coercivity estimate,
+or convexity law supplies the additional minimization obligation. If those facts are present, they can be
+checked as separate rows. If they are absent, the ledger remains honest: the first variation vanished on
+the tested space, and no stronger result was smuggled in under the word ``least.''
+
+\section{Quantifiers and cost}
+\label{se:weak-quantifiers-and-cost}
+
+The full weak equation quantifies over an infinite test space. The compiler cannot discharge that infinity
+by enumeration. It needs either a symbolic argument that closes the universal, or a finite subspace whose
+scope is declared. Those are different results. A universal weak theorem says \(D\mathcal A(u)[v]=0\) for
+arbitrary \(v\) satisfying the type of admissibility. A Galerkin theorem says the same equality holds for
+the basis tests, and therefore for their finite span. Both are exact when stated correctly. Confusion
+begins only when the finite theorem is spoken as though it were already the universal one.
+
+Cost records the difference. A universal proof spends effort on abstraction: bind an arbitrary test, use
+the laws, discharge the expression without knowing the coefficients in advance. A Galerkin computation
+spends effort on rows: choose a basis, assemble the finite residual, compute the entries, and close the
+system. The compiler can host both modes, but the ledger has to name which mode is being used. The weak
+equation as an elaboration contract keeps that naming visible.

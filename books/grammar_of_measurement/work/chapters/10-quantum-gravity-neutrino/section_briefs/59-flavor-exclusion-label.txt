@@ -1,0 +1,24 @@
+Section manager brief: beat 59 -- Flavor as the exclusion label
+================================================================
+
+Beat:
+Flavor is read as the difference between seeded horizon alpha and charge-only
+alpha.
+
+Section task:
+Explain that flavor is the allowed horizon label. The reader-seeded horizon
+alpha may differ from charge-only alpha because the hidden exclusion channel
+has changed the surface receipt. The difference is not color and not a visible
+interior mechanism; it is the flavor residue of the exclusion label.
+
+Required manuscript moves:
+- Read flavor as a kind label preserved by surface correction.
+- The flavor residue is the horizon alpha minus charge-only alpha where that
+  difference is positive in the surface ledger.
+- Subtracting the flavor correction restores the charge-only alpha without
+  opening the horizon.
+- The correction must preserve the same-surface fact.
+
+Useful illustrations:
+- Flavor as the label of a permitted exclusion channel.
+- Neutrino as the messenger of missing correlants or curvature correction.

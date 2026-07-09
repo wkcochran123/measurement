@@ -1,0 +1,30 @@
+Section-manager brief: Beat 35, The Unsettleable Sentence
+=========================================================
+
+Section target:
+- Draft section 03-unsettleable-sentence.tex.
+
+Beat:
+- What cannot be settled internally is evaluated externally as the boundary
+  obstruction.
+
+Writer-sized fragments:
+- Fragment A: Define an internally unsettleable sentence in manuscript terms:
+  a sentence whose own interior grammar cannot supply the separator it asks for.
+- Fragment B: Explain why the sentence is not false by nonarrival. The halting
+  horizon already forbids that shortcut.
+- Fragment C: Explain how the boundary reads the obstruction: the sentence's
+  unresolved interior burden becomes the exterior residue already identified in
+  the outside reading.
+- Fragment D: Optional second-count paragraph: a further such sentence is not a
+  new kind of obstruction; it is another counted instance of the same boundary
+  form.
+- Fragment E: Close by forcing the need to restore true-not-false at the
+  boundary.
+
+Required grammar verbs:
+- externalizes, reads, carries, bounds, separates, forbids.
+
+Avoid:
+- Avoid technical proof vocabulary.
+- Use Godel without accent.

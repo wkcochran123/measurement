@@ -1,0 +1,19 @@
+Section-manager brief: Beat 8, The needle
+==========================================
+
+Target section file:
+- sections/08-needle.tex
+
+Beat:
+- One sanctioned act of manufactured identity gives the system a place to stand
+  after the collapse.
+
+Writer-sized fragments:
+- Explain why the grammar needs one manufactured identity after collapse.
+- Present the needle as sanctioned, local, and non-expansive: it restores a
+  place to stand without making identity primitive.
+- Close the chapter by pointing forward to the finite gauge and the invariant.
+
+Constraints:
+- Do not make the needle a general license.
+- Emphasize quotients, identifies, restores, and bounds.

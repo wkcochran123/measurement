@@ -198,6 +198,10 @@ def canonicalSetup : Setup :=
 #eval decide (0 < ({ canonicalWheel with freq := 0 } : Wheel).angularMomentum twoPiScaled)  -- expect: false
 #print axioms claim_holds                                     -- [propext, Quot.sound] = AMBIENT
 
+instance (setup : Setup) : Decidable (experiment.claim setup) := by
+  unfold experiment conservedAcross
+  infer_instance
+
 /-- Bring a minimal device next to this experiment: it records whether the exported claim fires. -/
 def deviceNear (setup : Setup) : Bool :=
   decide (experiment.claim setup)

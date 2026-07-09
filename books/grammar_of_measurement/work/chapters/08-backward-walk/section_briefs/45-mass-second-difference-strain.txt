@@ -1,0 +1,19 @@
+Section manager brief: beat 45, Mass is the strain
+==================================================
+
+Beat:
+- Mass appears as the second difference past threshold.
+
+Writer fragments:
+- Fragment A: establish three trips: null, threshold, response. One reading cannot strain; two readings
+  locate a threshold; three readings expose curvature of response.
+- Fragment B: explain why second difference is strain. The grammar reads how the change itself changes,
+  and that unread bending is the cost carried as mass.
+- Fragment C: connect inertial response and gravitational strain as two readings of the same carried
+  resistance, without overclaiming a full physical derivation.
+- Fragment D: use fluxion and sombrero illustrations carefully: finite differences force smooth shadow;
+  a selected phase minimum carries remembered curvature.
+
+Integration notes:
+- Mass is not injected as a label. It surfaces when the reading-head reaches the strain-bearing slot.
+- Keep this separate from charge, then prepare for the one number that carries both.
