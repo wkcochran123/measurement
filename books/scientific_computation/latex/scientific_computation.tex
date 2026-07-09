@@ -1,0 +1,58 @@
+\documentclass[12pt,oneside]{book}
+\usepackage{amsmath,amssymb,setspace}
+\usepackage{alltt}
+\usepackage{newunicodechar}
+% Vol 4 renders literal Lean; declare the glyphs the code walk uses so pdflatex
+% typesets them (alltt lets these active chars expand inside code blocks).
+\newunicodechar{∧}{\ensuremath{\wedge}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{…}{\ensuremath{\ldots}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{½}{\ensuremath{\tfrac{1}{2}}}
+\newunicodechar{—}{---}
+
+\begin{document}
+
+\title{Scientific Computation\\[0.35em]\large An Out-of-Order History of Experimental Science}
+\author{Bill Cochran\\wkcochran@gmail.com\\https://github.com/wkcochran123/measurement}
+\date{\today}
+\maketitle
+
+\frontmatter
+\onehalfspacing
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+This is the reading gauge. Volumes~1 through~3 build the instrument --- in mathematics, in physics, in
+computation. This volume explains it, to anyone, and hands you the means to check it yourself. It reads as an
+out-of-order history of experimental science: the ideas are arranged by how the machine uses them, not by when they
+were discovered.
+
+The method is a discipline of decorrelation. Each result is told four ways that share no vocabulary --- a
+mathematical account that uses no mathematics, a physical account that uses no computation, a computational account
+that uses no physics, and a literal walk through the code. Three registers that cannot borrow each other's words,
+plus the code itself: their agreement is the argument. When four descriptions that could not have coordinated land on
+the same thing, the thing is hard to fake.
+
+There is one rule of honesty here, and it is carried in the citations rather than announced. Where the text leans on
+settled science it names, generously, the people whose experiments and theorems it stands on, so the reader rests on
+known ground. Where the citations thin out, something new is happening, with no prior name to cite; that silence is
+the signal to slow down and check. Generosity, then, is an instrument --- it makes the novel legible by contrast.
+
+The chapter that follows is the pilot: the fine-structure result, walked through as the literal Lean, told plainly
+enough to re-run. The tone stays light throughout; the volume opens, elsewhere, on a doesn't-matter particle hunting
+for posit-wrong ones, and never entirely puts the joke down --- because the joke keeps turning out to be the
+structure.
+
+\tableofcontents
+
+\mainmatter
+\part{The Reading}
+\include{chapters/the_bound}
+
+\backmatter
+\end{document}

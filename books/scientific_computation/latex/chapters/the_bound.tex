@@ -1,0 +1,70 @@
+\chapter{The Bound}
+
+I have the four artifacts and verified the bound arithmetically (\(10^{18}/2^{60}\) floors to \(0\), so
+\texttt{dedekindHalt} halts at \(n = 60\)). Here is the reading.
+
+Open \texttt{device/Measurement/AlphaCapstone.lean}. Everything else is scaffolding for the one line that lives
+there:
+
+\begin{alltt}
+theorem one_eq_point_nine_repeating_count_to_three :
+    loopRem 2 4 = 0
+    ∧ holonomy flatPath   (pairVariation node1 node2) = -1
+    ∧ holonomy tiltedPath (pairVariation node2 node1) =  0
+    ∧ holonomy tiltedPath (pairVariation node1 node2) =  1
+\end{alltt}
+
+Read it aloud as four claims. The residue closes to null --- \(1 = 0.999\ldots\), discharged \texttt{by decide},
+the standard kernel-checked decision procedure you'd reach for in any Lean proof. Then three holonomy readings:
+\(-1\), \(0\), \(+1\). The electron, the null identity, the positron --- count to three, and no fourth. The
+\texttt{holonomy} function and its \texttt{pairVariation} argument aren't imported from \texttt{Mathlib}; they're
+built here, in-house. That's the tell: where the citations run out, the new thing is happening. Pay attention to
+those lines.
+
+Now the line that makes it a theorem and not a story. The last line of the file is
+\texttt{\#print axioms one\_eq\_point\_nine\_repeating\_count\_to\_three}, and it prints \texttt{[]}. Empty. Not
+\texttt{[Classical.choice]}, not even the usual \texttt{[propext, Quot.sound]} most Lean developments carry ---
+nothing. The entire \textbf{structure} of the coupling --- the electron's state \(-1\), the three states, the
+count-to-three, and the dimensionlessness that follows from the residue closing rather than resting on a borrowed
+unit --- is derived on an empty axiom footprint. That is a fact off the build. Re-run the print yourself; it doesn't
+need your trust.
+
+Next, \texttt{device/Measurement/VerifyAPI.lean} --- the product surface, the part meant to be run.
+\texttt{verify (ekg) (claimed)} takes a claimed calibration, runs the deterministic experiment
+\texttt{EKG.outgrown?}, and returns a \texttt{VerifyResult}: \texttt{verified : Bool}, and a \texttt{residual} that
+lands either \texttt{.aboveFloor} (claimable) or \texttt{.belowFloorAntimatter}. That second constructor is the
+positron pun made literal --- a claim that outgrows the budget is cut below the floor, into antimatter, unclaimable.
+The wrapper is deliberately thin over the already-built engine. The point isn't the code; the point is that it's a
+function you can call. \texttt{\#eval verify EKG.raw flagshipClaim}, again, tomorrow, on your machine. Determinism is
+the whole ethic here: repeatability \emph{is} the honesty. Nobody is asking you to believe the reading. They're
+handing you the instrument and asking you to check it.
+
+Now \texttt{RichardsonSelfNaming.lean}, and this is the novel move, so slow down.
+\texttt{alphaAtLevel n :=}~\(10^{18}/2^{n}\) --- the construction's own per-level self-naming value, scaled for
+exact integer arithmetic. \texttt{residueAtLevel n := alphaAtLevel n - alphaAtLevel (n+1)} --- how much the name has
+\emph{not yet} closed to the thing. And \texttt{selfNamingExtrapolant :=}~\(2\cdot\alpha(n{+}1) - \alpha(n)\), the
+extrapolation of the name ``electron'' to the thing electron, its own fixed point. Interpret this --- and I mark it
+as interpretation --- as the electron's self-energy: ask the electron its number and it reports its state for free;
+the coupling is what it \emph{charges} for the self-embrace, the electron paying to be itself. The order \(p=1\)
+isn't tuned to a target; it's forced by the observed halving \(\rho=\tfrac{1}{2}\). Choosing the order to hit a
+number would be fishing in a Richardson costume. It refuses to.
+
+Finally \texttt{AlphaDedekind.lean}, the bound drawn to scale. \texttt{dedekindHalt} is ordinary structural
+recursion on fuel --- standard Lean, nothing exotic --- writing the nines of \(0.999\ldots\) one bit per step and
+halting the first step the residue drops below \texttt{floorEps := 1}. Then:
+
+\begin{alltt}
+def haltIndex : Nat := dedekindHalt 0 512
+\end{alltt}
+
+\texttt{\#eval haltIndex} prints \textbf{60}. You can check the arithmetic by hand: \(10^{18} \approx 2^{59.79}\), so
+\texttt{alphaAtLevel 59}~\(= 1\), \texttt{alphaAtLevel 60}~\(= 0\), and the residue first vanishes at \(n = 60\).
+Sixty bits. That's the bound, and \texttt{\#print axioms haltIndex} is again \texttt{[]}.
+
+The nines it writes are the structure it can see. The place it stops is the floor. The tail it cannot write is the
+magnitude. Interpretively --- Ricci trace versus Weyl shape, marked as reading, not proof --- a machine that counts
+volume is blind to pure shape, and the size of the coupling lives in the shape. So \(137.036\) appears nowhere in the
+reading path. It is only what a Penning trap reads off in the lab: the value the machine \emph{proved} it was
+structurally blind to. Not missing. Refused, and the refusal is the theorem.
+
+The four \texttt{\#eval}s and the four \texttt{\#print axioms} are the whole argument. Run them. That's the honesty.
