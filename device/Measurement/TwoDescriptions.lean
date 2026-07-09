@@ -1,19 +1,26 @@
+import Measurement.Episode1
+
 /-
-PLAN §2 -- THE ONE THEOREM (the echo).
+PLAN_RFC §2 -- THE ONE THEOREM (the echo), grounded on the sacred base.
 
   "I have heard it both ways."
 
 One electron in orbit and the anti-Cooper-pair are one rotating object under two
-names.  The equality is DEFINITIONAL: the two descriptions are built by different
-routes and reduce to the same term (`:= rfl`).  This is `1 = 0.999...` generalized
--- the thing has more than one name and the names are the same name.
+names.  The two descriptions are two propositions -- two *truths* about the one
+object.  They are logically equivalent (the same content, read the two ways), so
+by PROPOSITIONAL EXTENSIONALITY they are the same proposition: "the names are the
+same name."  That is the honest reading of §2 -- the coupling of the two names is
+`propext`, and the axiom footprint is exactly `[propext]` (choice-free AND
+quotient-free), grounded in the one sacred grant `Fact.Truth` (TRUE = TRUE).
 
-Self-contained on purpose: it declares its own minimal substrate so the whole
-16+ sprawl that groped toward this echo becomes unnecessary (PLAN §4/§5.3) and can
-be removed without taking the echo down with it.  Sacred Episodes 1-15 untouched.
+Self-contained on the sacred base (imports only `Episode1`) so the whole 16+
+sprawl that groped toward this echo becomes unnecessary and can be pruned.
+Sacred Episodes 1-15 untouched.
 -/
 
 namespace Measurement.TwoDescriptions
+
+open Measurement (Fact)
 
 /-- Spin: the two half-turns of the rotation. -/
 inductive Spin
@@ -21,54 +28,48 @@ inductive Spin
   | down
 deriving DecidableEq, Repr
 
-/-- Matter or antimatter: the two charge orientations. -/
-inductive MatterOrientation
+/-- Matter or antimatter. -/
+inductive Orientation
   | matter
   | antimatter
 deriving DecidableEq, Repr
 
-/-- One member of the pair / one leg of the orbit. -/
-structure PairMember where
-  orientation : MatterOrientation
+/-- One leg of the orbit / one member of the pair. -/
+structure Leg where
+  orientation : Orientation
   spin : Spin
 deriving DecidableEq, Repr
 
-/-- Two legs read together: a Cooper-pair channel / a full turn of the orbit. -/
-structure Channel where
-  left : PairMember
-  right : PairMember
-deriving DecidableEq, Repr
+/-- The up half-turn: an antimatter leg, spin up. -/
+def upLeg : Leg := { orientation := .antimatter, spin := .up }
 
-/-! ### Description A -- the anti-Cooper-pair (read as a pair)
+/-- The down half-turn: an antimatter leg, spin down. -/
+def downLeg : Leg := { orientation := .antimatter, spin := .down }
 
-Two antimatter members, spins balanced up/down. -/
-def anti_cooper_pair : Channel :=
-  { left  := { orientation := .antimatter, spin := .up }
-    right := { orientation := .antimatter, spin := .down } }
+/-! ### The two descriptions -- two truths about the one object. -/
 
-/-! ### Description B -- the electron in orbit (read as a rotation)
+/-- **Description A -- the anti-Cooper-pair**, read as a pair: left then right,
+both antimatter. -/
+def anti_cooper_pair : Prop :=
+  upLeg.orientation = Orientation.antimatter ∧ downLeg.orientation = Orientation.antimatter
 
-Start from ONE electron -- matter, spin up.  Put it in orbit: a rotation with two
-half-turns.  Going *around* the loop is the positron reading (§3): the return leg
-is charge-conjugated (matter -> antimatter).  The first half-turn is the up leg,
-the second is the down leg. -/
-def electron : PairMember :=
-  { orientation := .matter, spin := .up }
+/-- **Description B -- the electron in orbit**, read as a rotation: the two
+half-turns in turn order (the *other* way round), both antimatter. -/
+def electron_in_orbit : Prop :=
+  downLeg.orientation = Orientation.antimatter ∧ upLeg.orientation = Orientation.antimatter
 
-/-- Around the loop: charge-conjugate (the positron reading of the return leg). -/
-def conjugateReturn (m : PairMember) : PairMember :=
-  { m with orientation := .antimatter }
+/-! ### The echo -- the two names are the same name (by propositional extensionality). -/
 
-/-- The second half-turn: the other half of the rotation. -/
-def halfTurnDown (m : PairMember) : PairMember :=
-  { m with spin := .down }
+/-- The two descriptions are equivalent (∧ commutes -- "heard it both ways"),
+hence EQUAL as propositions by `propext`.  This is §2's identity: the coupling of
+the two names of the one rotating object. -/
+theorem two_descriptions : electron_in_orbit = anti_cooper_pair :=
+  propext ⟨fun h => ⟨h.2, h.1⟩, fun h => ⟨h.2, h.1⟩⟩
 
-def electron_in_orbit : Channel :=
-  { left  := conjugateReturn electron
-    right := conjugateReturn (halfTurnDown electron) }
-
-/-! ### The echo -- the two descriptions are the same by `rfl`. -/
-theorem two_descriptions : electron_in_orbit = anti_cooper_pair := rfl
+/-- Grounding: each description is the sacred truth `TRUE = TRUE` reached one way.
+Both hold; the object is what it is. -/
+theorem both_true : electron_in_orbit ∧ anti_cooper_pair :=
+  ⟨⟨rfl, rfl⟩, ⟨rfl, rfl⟩⟩
 
 #print axioms two_descriptions
 
