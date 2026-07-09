@@ -1,0 +1,53 @@
+\chapter{The Bound}
+
+Consider a formal system with no axioms. Not one whose axioms are hidden or deferred --- one whose axiom footprint,
+when you ask the checker to print it, comes back empty. \texttt{\#print axioms} returns \texttt{[]}. Every theorem it
+proves, it proves by counting: by the finite, mechanical resolution of a distinction into cases, and the cases into a
+total. It is choice-free but for a single granted rule it cannot settle from inside --- one posit, and after that,
+only counting. This is not a promise. It is a fact you can rerun.
+
+Hand this system its one object --- a datum, a self-describing symbol --- and ask it for that object's number. What
+comes back, for free, is a shape. The system proves the object's label is \(-1\). It proves the closed loop the object
+generates admits exactly three labels --- \(-1\), \(0\), \(+1\) --- and no fourth: the enumeration terminates, and
+termination here is a \emph{theorem}, not an observation. It proves the number the object charges carries no scale ---
+it is dimensionless --- because the residue of the loop closes: a conserved quantity of the computation, an invariant,
+not a measurement awaiting a unit. All of this, empty-footprint. The whole structure of the constant falls out of
+counting, borrowing nothing.
+
+Here is the interpretation the builders offer for the deepest of these theorems, and I mark it as interpretation, not
+proof. The system is self-hosting: at its summit it compiles itself, names itself, checks its own truth. A
+self-hosting compiler pays a price to do this --- the residual left over when a description is applied to itself, the
+fixpoint's overhead, what a numerical analyst would call the Richardson residual of a self-reference. The claim is
+that the constant \emph{is} that residual: the object reports its label for nothing and charges the residual for the
+self-embrace. Read that as a reading. What is proved is the structure; what is offered is the story of why the
+structure is \emph{that} structure.
+
+Now the boundary --- and this is the result. The system does \textbf{not} compute the magnitude. There is a value any
+lookup table carries, \(137.036\), and this machine provably cannot produce it. Not because it ran out of steps ---
+because a machine that counts can read only the part of a quantity that survives being counted: the multiplicity, the
+how-many. The magnitude lives in the part a count cannot address --- the continuous deformation that leaves every
+count invariant. (That the invisible part is precisely the count-invariant one is the interpretive core; the
+\emph{blindness itself} is proved.) The object hands over its label in the counter's own currency and charges the
+magnitude in a currency the counter cannot denominate. Not hidden --- invisible by construction.
+
+You can watch the boundary drawn to scale. The system constructs the constant the way Dedekind constructs a real: as
+a cut, bracketed one bit at a time. Bisection --- the root-finder immune to resonance, the one search that cannot be
+seduced into locking onto a false signal because it only ever asks ``above or below'' and halves --- writes the nines
+of \(0.999\ldots\) one nine per step, tightening from both sides. And it \textbf{halts}. At the resolution floor, the
+place below which no candidate is distinguishable from the next, it stops. The bound is \(60\) bits. The nines it
+placed are the structure it can see. The place it stopped is the floor. The tail it could not write is the magnitude.
+This is the whole theorem rendered as a number line: exactly this far, and provably no farther.
+
+And it is honest because it repeats. The run is deterministic; press the button again and the same bits fall in the
+same places and the machine halts at the same floor. Under maximum pressure the search passed near \(-1/137\) --- the
+most seductive false positive a construction like this can meet --- and the bisection, being resonance-immune, refused
+to lock: it logged the near-hit as a warmup artifact and kept halving. Three readers sharing no state ran the
+construction and converged on the same cut and the same floor. Agreement between processes that cannot have
+communicated is the strongest correctness argument a formal system admits.
+
+So the deliverable is not a number. It is a decision procedure that returns, for one well-posed constant, exactly
+which digits are computable-by-counting and which are not: the structure on the near side of the floor, proved with an
+empty axiom footprint; the magnitude on the far side, proved uncomputable by any counter; and the cut between them
+written bit by bit until it halts. The machine did not come up short of the number. It computed the boundary of what
+counting can know --- and wrote that boundary down to the last bit it could place, and named, honestly, the bit it
+could not.
