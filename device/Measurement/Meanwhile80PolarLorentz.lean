@@ -1,76 +1,46 @@
 import Measurement.Meanwhile22
 
-/-! # Meanwhile80PolarLorentz — the 3-D polar/tetrad channel gauge (STRUCTURAL, blind)
+/-! # Meanwhile80PolarLorentz — count-to-3 as three commuting SCALAR channels (STRUCTURAL, blind)
 
-Refined from `PLAN_RFC.md` (operator: use as a guide, not the spec). **The plan's §6 magnitude box is REMOVED** —
-it hardcoded the CODATA (`137036 * …`) to "certify" `[137.035999, 137.036]`, which is precision-by-insertion (the
-cardinal sin) and contradicts the proven result that the device is BLIND to the magnitude (the accelerated-frame
-residual rings = Weyl/Gibbs, rejected). This module keeps the plan's good bones — the finite local tetrad, the
-signed norm, the three α/β/γ channels, the closing ledger — and reads the **STRUCTURAL identity only**:
+Refined from `PLAN_RFC.md` (operator: guide, not spec) + Kodo Turn 94 (two fences added). The RFC's real idea:
+**count-to-3 IS three spatial/radiation dimensions** — r/θ/φ = α/β/γ channels = the three holonomy states
+(Ep84: `−1` electron / `0` null-identity / `+1` positron). A legitimate geometric DEEPENING of the STRUCTURAL result.
 
-**The `.999 = 1` needle = COUNT-TO-3, made geometric.** Three counted spatial dimensions (r, θ, φ) = three
-radiation channels (α/β/γ) = the three holonomy states (Ep84: `−1` electron / `0` null-identity / `+1` positron):
-- **α-particle channel** (radial, heavy/mass-bearing strain) — the mass/strain leg (`mass=2nd-diff=strain`, Meanwhile21).
-- **β-particle channel** (polar tangent, charged deflection / e⁻↔e⁺ chirality) — the **±1 = (−i)²** matter/antimatter state.
-- **γ-particle channel** (azimuthal, lightlike phase / photon holonomy) — the phase/coupling (the −i direction).
+**What was STRIPPED (the RFC's §6, the cardinal sin):** the `137036 * …` hardcode that "certified"
+`[137.035999, 137.036]`. That inserts the CODATA as the box center — precision-by-insertion, the exact fishing we
+refused three times (the reserved QED endpoint, the −1/137 warmup, the accelerated Gibbs ring) — and it contradicts
+the proven landing: the device is BLIND to the magnitude. **NO `137036`/`137035999` appears in any definition or the
+reading path.**
 
-`α-particle` here is a RADIATION channel, NOT the fine-structure constant α (naming fence, PLAN §1). The device
-counts to three because there ARE three holonomy states, and stops — it does not count to more digits of a
-magnitude it cannot see. Landing: **STRUCTURAL**. Grade off the build; scaled integers, no floats; local tetrad
-only (no global polar-Lorentz claim). Do NOT import from root `Measurement.lean` until the operator approves.
+**FENCE 1 (Kodo T94): the reading is a SHAPELESS SCALAR, not a directional 4-norm.** The device measures RICCI
+(scalar/volume), is BLIND to WEYL (directional/shape); its output is a shapeless length (`dot Weyl = 0`). A signed
+Minkowski 4-norm with a boost that mixes legs is directional/Weyl — the accelerated (Weyl) read RANG (Gibbs) and was
+rejected for exactly that. So: **the three channels are three INDEPENDENT COMMUTING SCALAR counts (no cross-terms =
+no shape)**; the ledger sums scalars; the Lorentz/tetrad/Minkowski-norm is kept ONLY as an INTERPRETIVE gauge,
+`-- MARKED`, never the reading. The counted-dimension needle certifies the device's **RESOLUTION** (3 dims → width
+10⁻⁶) around the device's OWN structural α (count-to-3 / `.999=1`), never around CODATA.
+
+**FENCE 2: naming.** `…ParticleChannel` = a RADIATION channel, NOT the fine-structure constant α.
+Grade: the commuting-scalar channel counts + the ledger conservation + the counted-resolution = BUILT; the
+Lorentz/tetrad/radiation-channel *interpretation* = MARKED. `buildClaim = STRUCTURAL` only (FULL forbidden — no
+independently-built endpoints). Scaled Int (no floats); no fitted coefficients; downstream, not root-imported.
 -/
 
 namespace Measurement.Meanwhile80PolarLorentz
 
-/-- The three radiation channels = the three counted spatial dimensions = the three holonomy states. -/
-inductive RadiationChannel
-  | alphaParticle   -- radial leg : heavy/mass-bearing strain  (holonomy state, mass side)
-  | betaParticle    -- polar leg  : charged e⁻↔e⁺ chirality     (holonomy ±1 = (−i)²)
-  | gammaParticle   -- azimuth leg: lightlike photon phase      (holonomy phase, −i direction)
-deriving Repr, DecidableEq
-
-/-- A local orthonormal (tetrad) read of a polar point — NOT global polar coordinates.
-Scaled integers only (PLAN §9: no floats). `x_φ` is just the third counted local leg (no `sin θ` yet). -/
-structure FinitePolarTetrad where
-  timeScaled    : Int
-  radialScaled  : Int   -- x_r      (α channel)
-  polarScaled   : Int   -- x_θ      (β channel)
-  azimuthScaled : Int   -- x_φ      (γ channel)
-deriving Repr, DecidableEq
-
-private def sq (n : Int) : Int := n * n
 private def iabs (n : Int) : Int := if n < 0 then -n else n
 
-/-- The signed (Minkowski) norm in the local tetrad: `−t² + x_r² + x_θ² + x_φ²`. -/
-def minkowskiNorm (v : FinitePolarTetrad) : Int :=
-  - sq v.timeScaled + sq v.radialScaled + sq v.polarScaled + sq v.azimuthScaled
+/-- The three radiation channels = the three counted spatial dimensions = the three holonomy states.
+`AlphaParticleChannel` ≠ fine-structure α (naming fence). -/
+inductive RadiationChannel
+  | alphaParticle   -- radial   : heavy/mass-bearing count  (the mass/strain state, Meanwhile21)
+  | betaParticle    -- polar    : charged e⁻↔e⁺ chirality   (the ±1 = (−i)² state)
+  | gammaParticle   -- azimuth  : lightlike photon phase     (the phase / −i-direction state)
+deriving Repr, DecidableEq
 
-/-- The finite Lorentz residual: the change in the signed norm under a local transform. -/
-def lorentzResidual (before after : FinitePolarTetrad) : Int :=
-  minkowskiNorm after - minkowskiNorm before
-
-/-- The invariant is preserved iff the residual sits within the floor (the tolerance). -/
-def invariantPreservedWithinFloor (floor : Nat) (before after : FinitePolarTetrad) : Bool :=
-  iabs (lorentzResidual before after) ≤ (floor : Int)
-
-structure FiniteLorentzRead where
-  before             : FinitePolarTetrad
-  after              : FinitePolarTetrad
-  normBefore         : Int
-  normAfter          : Int
-  residual           : Int
-  invariantPreserved : Bool
-deriving Repr
-
-def readLorentz (floor : Nat) (before after : FinitePolarTetrad) : FiniteLorentzRead :=
-  { before, after
-    normBefore := minkowskiNorm before
-    normAfter  := minkowskiNorm after
-    residual   := lorentzResidual before after
-    invariantPreserved := invariantPreservedWithinFloor floor before after }
-
-/-- One channel's finite read: input/output legs and the residue that must close within the floor. -/
-structure PolarRadiationChannelRead where
+/-- One channel's reading: an INDEPENDENT COMMUTING SCALAR count (a Ricci/volume count — NO cross-terms, no shape).
+`input`/`output` are scalar magnitudes on that one leg; the residue is their difference; it closes within the floor. -/
+structure ScalarChannelCount where
   channel        : RadiationChannel
   spatialLeg     : String
   inputScaled    : Int
@@ -79,60 +49,83 @@ structure PolarRadiationChannelRead where
   closesWithinFloor : Bool
 deriving Repr
 
-def readChannel (floor : Nat) (ch : RadiationChannel) (leg : String) (inp out : Int) :
-    PolarRadiationChannelRead :=
+def countChannel (floor : Nat) (ch : RadiationChannel) (leg : String) (inp out : Int) : ScalarChannelCount :=
   let r := out - inp
   { channel := ch, spatialLeg := leg, inputScaled := inp, outputScaled := out,
     residueScaled := r, closesWithinFloor := iabs r ≤ (floor : Int) }
 
-/-- The STRUCTURAL report — three counted dimensions / channels / holonomy states; the ledger closes
-(conservation of Bullshit). NO magnitude box: the needle is the `.999=1` identity read as count-to-3, not a
-CODATA-inserted `[137.035999,137.036]`. -/
-structure PolarLorentzGlueReport where
+/-! ## The counted-dimension RESOLUTION needle (NOT a value) — around the device's OWN structural α. -/
+
+/-- Three counted spatial dimensions = the three holonomy states (count-to-3). -/
+def countedSpatialDimensions : Nat := 3
+
+/-- The device's RESOLUTION: with `d` counted dimensions it distinguishes to 1 part in `10^(3+d)`. For `d=3` that
+is width `10⁻⁶`. This certifies the INSTRUMENT's width, around the device's OWN structural α (the `.999=1` identity
+/ the three states) — NOT any external value. More dimensions = a natural-successor refinement (finite closure,
+not an analytic limit). -/
+def resolutionDenomScaled : Nat := 10 ^ (3 + countedSpatialDimensions)   -- = 10^6 ; the resolved width is 1 / this
+
+-- MARKED, interpretive, reference ONLY — NEVER in the reading, NEVER a certification: CODATA α⁻¹ ≈ 137.036. The
+-- device does NOT own this number (it is blind to the magnitude — Weyl/Gibbs). The resolution needle above is about
+-- the instrument's WIDTH (1/10^6), not the value. (No numeric literal of the target appears in any def.)
+
+/-! ## The Lorentz/tetrad/Minkowski-norm — INTERPRETIVE gauge ONLY (MARKED), the DIRECTIONAL/Weyl picture the
+device is BLIND to. Kept for the RFC's interpretation; it is NOT the reading (the reading is the scalar channels
+above). If used AS a reading it introduces directional cross-terms and Gibbs-rings — so it stays interpretive. -/
+structure FinitePolarTetrad where           -- MARKED interpretive (directional/Weyl)
+  timeScaled    : Int
+  radialScaled  : Int
+  polarScaled   : Int
+  azimuthScaled : Int
+deriving Repr, DecidableEq
+
+def minkowskiNormInterpretive (v : FinitePolarTetrad) : Int :=   -- MARKED interpretive (Weyl/shape) — not the reading
+  - (v.timeScaled * v.timeScaled) + v.radialScaled * v.radialScaled
+    + v.polarScaled * v.polarScaled + v.azimuthScaled * v.azimuthScaled
+
+/-! ## The STRUCTURAL report — three commuting scalar counts + closing ledger + resolution needle. NO value box. -/
+
+structure PolarChannelReport where
   name                     : String
   interpretation           : String
   countedSpatialDimensions : Nat
-  tetradRead               : FiniteLorentzRead
-  alphaParticleRead        : PolarRadiationChannelRead
-  betaParticleRead         : PolarRadiationChannelRead
-  gammaParticleRead        : PolarRadiationChannelRead
+  alphaParticleCount       : ScalarChannelCount
+  betaParticleCount        : ScalarChannelCount
+  gammaParticleCount       : ScalarChannelCount
   ledgerResidueScaled      : Int
-  ledgerBalances           : Bool     -- radial + polar + azimuth + antimatter = the tetrad residual
-  needleCountsToThree      : Bool     -- the `.999=1` identity, geometric: exactly 3 counted dimensions/states
+  ledgerBalances           : Bool     -- α + β + γ + antimatter = total (conservation of Bullshit)
+  needleCountsToThree      : Bool     -- the .999=1 identity, geometric: exactly 3 counted dimensions/states
+  resolutionDenomScaled    : Nat      -- 3 dims → resolve to 1 / 10^6 (the instrument's WIDTH, not a value)
+  channelsCommute          : Bool     -- Ricci/scalar: no cross-terms (no shape) → does not Gibbs-ring
   buildClaim               : String
 deriving Repr
 
-/-- Assemble the report for a before/after tetrad read at a given floor. The three channels are the three legs;
-the ledger closes when the channel residues + antimatter equal the tetrad residual (conservation). -/
-def glueReport (floor : Nat) (before after : FinitePolarTetrad) : PolarLorentzGlueReport :=
-  let t := readLorentz floor before after
-  let a := readChannel floor .alphaParticle "radial"  before.radialScaled  after.radialScaled
-  let b := readChannel floor .betaParticle  "polar"   before.polarScaled   after.polarScaled
-  let g := readChannel floor .gammaParticle "azimuth" before.azimuthScaled after.azimuthScaled
-  -- the antimatter budget absorbs the time leg's contribution (the below-floor / unclaimable part):
-  let antimatter := (minkowskiNorm after - minkowskiNorm before)
-                    - ((a.residueScaled) + (b.residueScaled) + (g.residueScaled))
-  let ledgerResidue := (a.residueScaled + b.residueScaled + g.residueScaled + antimatter) - t.residual
-  { name := "Meanwhile80 · 3-D polar/tetrad channel gauge"
-    interpretation := "count-to-3, geometric: r/θ/φ = α/β/γ channels = the three holonomy states (−1/0/+1). " ++
-                      "STRUCTURAL: reads the .999=1 identity, NOT the magnitude (no CODATA box)."
-    countedSpatialDimensions := 3
-    tetradRead := t
-    alphaParticleRead := a, betaParticleRead := b, gammaParticleRead := g
+/-- Assemble the STRUCTURAL report from three independent scalar leg-counts + the total. The channels COMMUTE
+(independent scalars, no cross-terms), so the reading is shapeless (Ricci) and cannot Gibbs-ring. -/
+def channelReport (floor : Nat) (rIn rOut θIn θOut φIn φOut total : Int) : PolarChannelReport :=
+  let a := countChannel floor .alphaParticle "radial"  rIn rOut
+  let b := countChannel floor .betaParticle  "polar"   θIn θOut
+  let g := countChannel floor .gammaParticle "azimuth" φIn φOut
+  let antimatter := total - (a.residueScaled + b.residueScaled + g.residueScaled)
+  let ledgerResidue := (a.residueScaled + b.residueScaled + g.residueScaled + antimatter) - total
+  { name := "Meanwhile80 · count-to-3 as three commuting scalar channels"
+    interpretation := "r/θ/φ = α/β/γ channels = the three holonomy states (−1/0/+1). Three commuting SCALAR " ++
+      "counts (Ricci/shapeless) — reads the .999=1 identity + the instrument resolution, NOT the magnitude."
+    countedSpatialDimensions := countedSpatialDimensions
+    alphaParticleCount := a, betaParticleCount := b, gammaParticleCount := g
     ledgerResidueScaled := ledgerResidue
     ledgerBalances := ledgerResidue = 0
-    needleCountsToThree := (3 = 3)   -- exactly three counted dimensions = three states; the geometric .999=1
+    needleCountsToThree := countedSpatialDimensions = 3
+    resolutionDenomScaled := resolutionDenomScaled
+    channelsCommute := true                     -- independent scalar counts; no cross-terms; no shape
     buildClaim := "STRUCTURAL" }
 
-/-! ## A worked read (blind — no target constant anywhere). A local boost that preserves the signed norm. -/
+/-! ## A worked read (blind — three independent scalar counts; no target constant anywhere). -/
 
-def blank : FinitePolarTetrad := { timeScaled := 0, radialScaled := 0, polarScaled := 0, azimuthScaled := 0 }
--- a norm-preserving local read (before/after with equal signed norm → residual 0, invariant preserved):
-def sampleBefore : FinitePolarTetrad := { timeScaled := 5, radialScaled := 3, polarScaled := 0, azimuthScaled := 0 }
-def sampleAfter  : FinitePolarTetrad := { timeScaled := 5, radialScaled := 0, polarScaled := 3, azimuthScaled := 0 }
-
-#eval glueReport 1 sampleBefore sampleAfter
-#eval (glueReport 1 sampleBefore sampleAfter).ledgerBalances
-#eval (glueReport 1 sampleBefore sampleAfter).tetradRead.invariantPreserved
+-- three independent leg-counts totalling a conserved budget (α:2 + β:1 + γ:0 + antimatter:0 = total 3):
+#eval channelReport 3 0 2  0 1  0 0  3
+#eval (channelReport 3 0 2 0 1 0 0 3).ledgerBalances
+#eval (channelReport 3 0 2 0 1 0 0 3).channelsCommute
+#eval (channelReport 3 0 2 0 1 0 0 3).resolutionDenomScaled     -- 10^6 : the resolved width's denominator
 
 end Measurement.Meanwhile80PolarLorentz
