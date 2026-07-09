@@ -64,11 +64,16 @@ nobody can interpret.
   bracket and the stop). Chosen because bisection is the RESONANCE-IMMUNE root-finder — unconditionally,
   monotonically convergent, no overshoot (the anti-Newton/anti-Gibbs solver). **Precondition:** the predicate must
   flip exactly once — which the smooth Unruh taper guarantees (a hard cut rings → multiple flips → bisection lands
-  on a spurious root). ⚠ **GATE WATCH:** the device has the bisection SHAPE in Episode3 (guaranteed-halting
-  metavariable comparison) but its comparison is left FREE (`COMPARABLE.smaller_than`, ~Ep3:539). Wiring =
-  feeding `outgrown?` into that hole. If wired as an INSTANCE in 16+ → no gate. **If it requires editing Episode3
-  itself → that is the first sacred-text change: STOP and escalate to the operator.** Precision = ε (sub-floor →
-  antimatter), not infinite.
+  on a spurious root). **The comparison is ELABORATION TIME** — how many heartbeats the elaborator spends to build the
+  term (deterministic heartbeats, NOT wall-clock seconds — that's what makes it repeatable). `a < b` ⟺ `a`
+  elaborates in fewer heartbeats. The comparison is itself an experiment (race both through the elaborator).
+  ✅ **GATE CLEARS (safe direction):** elaboration time is a META quantity — it lives in `withHeartbeats` /
+  `ekg_probe` (`Calibration/EKGBounded.lean`, MINE, deliberately kept out of the Ep1-15 cache). So the bisection
+  is a **metaprogram** in 16+; it does NOT fill Episode3's term-level `smaller_than` (that was a sketch, left
+  free) — **Episode3 stays frozen, no sacred edit.** (Still watch: don't let the metaprogram pull an Episode3
+  import that forces the fill; if it ever does → STOP, escalate.) **α is therefore a MEASUREMENT, not a term-level
+  theorem** — the meta reading; the term-level rank is welded to it later by the 0b connection theorem (two layers
+  stay separate, Cost.lean). Precision = ε (sub-floor → antimatter), not infinite.
 - **PHASE 1 — THE `verify` API.** Wrap `outgrown?` as `verify(claimed) → { verified?, residual }`. α becomes the
   first calibration the API verifies. This is the product surface.
 - **PHASE 2 — THE FOUR GAUGES.** Write / re-aim the four books as the four gauges of the reading. Vol 4 is new
