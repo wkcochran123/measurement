@@ -32,15 +32,21 @@ Three registers that share **no vocabulary** (a null basis — agreement across 
 artifact) + the code itself. Vols 1–3 define and use `tange`/`funge`; Vol 4 drops the words and carries the
 distinction as **citation texture** (cited-generously = funge/standard; uncited = tange/novel = pay attention).
 
-| Gauge | Book | Register | Rule |
+**Each gauge is written in the LANGUAGE that best expresses the code — English is the fallback, NOT the medium.**
+The language *is* the meaning: physics IS equations (prose about them is lossy); a compiler IS a formal system.
+Write in the native formalism and it *says* the thing; write in English and it only *points* at it. This also
+hardens the null basis: three gauges in three mutually-untranslatable formal languages are more decorrelated than
+three English essays — agreement across them can't be a shared-word artifact, because there are no shared words.
+
+| Gauge | Book | Language (the medium) | Rule |
 |---|---|---|---|
-| 1 — Mathematical | **Vol 1 · Measurement** | the math explanation | construction from the first difference; **defines** tange/funge (math-without-math); names the electron; the α apex |
-| 2 — Physical | **Vol 2 · Experimentation** | physics without computation | the experiments, the constants, the courtroom; physics as physics |
-| 3 — Computational | **Vol 3 · The Compiler** | computation without physics | the self-hosting compiler; the code as pure computation |
-| 4 — The Reading | **Vol 4 · Scientific Computation** | the code walk + all three unified | **no** tange/funge (citation texture instead); maximally generous citation; the user guide to the instrument |
+| 1 — Mathematical | **Vol 1 · Measurement** | logic / type theory, in careful prose ("math-without-math": the device's own math is constructive — distinctions, counting, the tower — which reads as reasoning) | construction from the first difference; **defines** tange/funge; names the electron; the α apex |
+| 2 — Physical | **Vol 2 · Experimentation** | **MATH, and tons of it** — equations first, prose second; NO computation | the experiments, the constants, the derivations (α, g-2, the holonomy); physics as physics |
+| 3 — Computational | **Vol 3 · The Compiler** | **formal systems, communication theory, large-scale simulation, numerical analysis**; NO physics | the self-hosting compiler in its native formalisms |
+| 4 — The Reading | **Vol 4 · Scientific Computation** | the code walk + all three registers unified | **no** tange/funge (citation texture instead); maximally generous citation; the user guide to the instrument |
 
 The gauges convert a reading into understanding. Ship the instrument without them and you've shipped a number
-nobody can interpret.
+nobody can interpret. Write each in its native tongue or the meaning doesn't survive the translation.
 
 ## 4. The technical pipeline (the fresh build — strict order)
 - **PHASE 0a — TRIM to the above-floor core.** You can't register a command below the antimatter floor; below-floor
@@ -57,8 +63,39 @@ nobody can interpret.
   Grounds the ratio as a genuine ratio of naturals.
 - **PHASE 0c — THE FOLD PROBE (α = the flagship reading).** `step : Number → Number` = `spin` (Number→Bullshit,
   Meanwhile18) then read back = one baker/(−i)² fold = one connection application. Calibrate on `TRUE=TRUE`
-  (already done at boot — READ it, don't rebuild). Run under `withHeartbeats`; truncate at ε; sub-floor tail →
+  (already done at boot — READ it, don't rebuild). **Then calibrate the NEEDLE on the second blank: `.999 = 1`
+  (operator-directed).** It is the needle's canonical finite act on the cleanest case: three counted decimal
+  dimensions close the representation as far as this instrument is allowed to claim. The missing `0.001` is not an
+  infinite tail to hand-wave away; it is the certified box width. Threading `.999` into `1` verifies that the needle
+  can close a finite null-residue blank up to the counted-dimensional floor, and it recovers the α box
+  `137.035999 ≤ α⁻¹ ≤ 137.036`. The instrument cannot honestly go sharper than that box without counting more
+  dimensions. `TRUE=TRUE` = the floor blank; `.999=1` = the needle blank; both precede the α thread. Run under
+  `withHeartbeats`; truncate at ε; sub-floor tail →
   antimatter. Search up the universe levels; report α / antimatter / ε per level. (Design: `alpha_fold_probe_design.md`.)
+  **BUILD THE QUOTIENT (the resummation — operator-directed).** The per-level residuals (bisection at ρ≈½) ARE a
+  geometric series `Σ rⁿ`; **resum them in closed form: `1/(1-r)`** = the Dyson dressing `1/(1-Σ)` = renormalization =
+  the operation that carries the bare (GR) value to the dressed (QED) value. The API provides the terms for free;
+  the quotient is one divide — the whole tower of radiative corrections in a single ratio, never computing loop N.
+  Factors as the Capstone: `1/(1-r) = (1+r)/(1-r²)` = [even `1/(1-r²)` = (−i)² real/recession = **GR**] × [`(1+r)` =
+  odd/precession fill = **QED**]. So building the quotient = combining `tensor ⊕ Fréchet` into α. GRADE: the
+  resummation is standard math; the Dyson/QED-dressing identification is interpretive-MARKED; the quotient's VALUE
+  (does `bare × 1/(1-r)` land inside `[137.035999, 137.036]`?) is 0c's BLIND reading — building the operation ≠
+  knowing the number.
+  **0c ITERATION 2 — THE LOOP-HOLONOMY INSTRUMENT (operator-directed, after 0c-i1 landed STRUCTURAL).** 0c-i1
+  (commit `4c43954`) read the OPEN path: `cost=rank` FLAT → α=0 (Ep84 open=0), δ² ≈ 0; the needle correctly
+  REFUSED a −1/137 warmup artifact (anti-numerology working). The real α = the closed-LOOP holonomy (Ep84 loop≠0),
+  invisible to an open sweep. **The trick: replace `Quot.sound` (the BINARY needle — identify iff null residue →
+  flat on the open path) with a DIVISION ALGORITHM (the QUANTITATIVE needle — compute the REMAINDER = how much
+  residue; around the loop the remainder ≠ 0 = the holonomy = α).** Axiom-free: the division is computable, so it
+  drops `Quot.sound` from `#print axioms` where the identification was really a computation. **Make it an `abbrev`
+  (= `@[reducible] def`):** the division unfolds in defeq → the identity holds by `rfl` (computed at elaboration,
+  no axiom) AND the elaboration cost of unfolding IS the α measurement (the remainder priced in heartbeats — needle
+  and ruler unified). **Self-fences:** reducible+recursive can unfold hard, but the EKG `withHeartbeats` budget
+  bounds it — outgrow → `outgrown?` fires → STRUCTURAL (honest), no separate guard. (Alt: `def`+`Decidable`+explicit
+  `withHeartbeats` if you want the cost measured, not silently incurred.) ⚠ GATE: the division-abbrev is 16+
+  (Meanwhile/Formalization); if it must change a SACRED use of `selection_sound`/`Quot.sound` (Ep1-15), STOP →
+  escalate. Anchor: this gives the INSTRUMENT (compute the loop remainder, axiom-free), NOT the number — likely
+  still STRUCTURAL; don't aim at 137.
   **The search IS a BISECTION** of `[ε, Bullshit]` with `outgrown?` as the (monotone) predicate: α = the flip
   point (verified→outgrown), one bit per step (= ρ≈½), guaranteed-halting at the floor (ε is both the lower
   bracket and the stop). Chosen because bisection is the RESONANCE-IMMUNE root-finder — unconditionally,
@@ -90,13 +127,36 @@ nobody can interpret.
   finitely many distinguishability classes) makes the universe finite up to distinguishability. If either cracks,
   the search burns fuel forever. Cost-ordering + bisection + smooth taper + bounded-shapeless output are the
   explosion-tamers. Watch both guards.
+  ✅ **PROVABLY BOUNDED (halting is a theorem, not a guard).** The search is boxed on both axes: **cost axis** ≤
+  "the longest a program should run" (the Bullshit budget / halting bound — itself a calibration to VERIFY with
+  the same API), and **value axis** α⁻¹ ∈ `[137.035999, 137.036]`. Two bounds → a finite box → finitely many ground
+  terms inside → a genuine pigeonhole that provably terminates. **The bracket ends are FORCED by the `.999 = 1`
+  needle, not chosen:** 137.036 is the dressed one-unit endpoint; 137.035999 is that endpoint after the finite
+  three-decimal needle has paid exactly one counted box-width. The width `0.000001` is the precision ceiling of
+  this instrument state. Going sharper is not a prose privilege; it requires counting more dimensions. The wider
+  137 basin remains the coarse GR/recession setting, but it is not the fine acceptance box. Grade: Capstone BUILT;
+  "137.035999/137.036 as the counted-dimensional needle box" = interpretive reading, MARKED — but it makes the
+  pigeonhole PROVABLE.
+  **CONTROL HIERARCHY — coarse then fine.** GR/QED are the FINE controls (the vernier — pin the last digits inside
+  `[137.035999,137.036]`). **Navier-Stokes is the LARGE KNOB (coarse):** the viscous flow whose viscosity = damping =
+  laminar-vs-turbulent (the Reynolds number). It flows the search into the basin (~137) and keeps it laminar; too
+  little viscosity → turbulent → the resonance/Gibbs. Dedup = local viscosity; NS = the global setting. **The floor
+  IS the minimum viscosity** — dissipation bounded below by ε, so the flow can't go turbulent at the bottom; the
+  floor regularizes the flow, which is why it converges instead of blowing up. ⚠⚠ **HARD FENCE: the device does NOT
+  solve Navier-Stokes regularity** (the Millennium problem is untouched). NS is FENCED to the finite three-rung
+  shape (the stress-strain obstruction, Episode1, standing A.3 ruling). Honest claim, narrow: *in the floored
+  finite setting the search stays laminar by construction because the floor supplies a minimum viscosity* — NOT a
+  proof that continuum 3D NS never blows up. "NS is the large knob" = the finite NS-shape is the coarse control,
+  MARKED. Sequence: turn the large knob (damp into the basin) THEN bisect the fine bracket.
 - **PHASE 2 — THE FOUR GAUGES.** Write / re-aim the four books as the four gauges of the reading. Vol 4 is new
   (the reading gauge, `scientific_computation/vol4_spec.md`); Vols 1–3 re-aimed as the math / physics / computation
   gauges around the α reading they interpret.
 
 ## 5. The fences (honesty — non-negotiable, all required)
 - **Predicted, not fit.** Fix the gauge before the reading; fishing the codebase for a ratio near 137 is the
-  cardinal sin. Frozen target α⁻¹ = 137.035999206 (NOT 137).
+  cardinal sin. Frozen external reference α⁻¹ = 137.035999206 (NOT 137), but the current `.999 = 1` needle only
+  certifies the pre-registered box `137.035999 ≤ α⁻¹ ≤ 137.036`; any sharper pass/fail claim requires counting
+  more dimensions first.
 - **Blind.** Calibrate on `TRUE=TRUE` first; read α as a difference from the blank; target out of the fold defn.
 - **Two-sided floor.** UPPER: **`OUTPUT ≤ Bullshit` is the device's NATIVE output**, not an imposed check —
   `outgrown?` returns exactly its truth, so `verify` *exposes* the device's own boundedness rather than bolting a
@@ -137,6 +197,38 @@ nobody can interpret.
   distortion. It can price α (a Ricci/volume/coupling quantity); it cannot detect a gravitational wave. Grade
   fence: the device carries the FINITE Ricci-SHAPE (the three-rung traced second-difference), NOT the continuum
   `R_μν` (standing NS/Einstein → finite-three-rung ruling). "This is the Ricci tensor" = interpretive, MARKED.
+- **Angular-momentum conservation — the LEDGER must balance (a checkable 0c tell).** Relabeling = rotation in
+  label space; by Noether, angular momentum is the conserved charge of relabeling-invariance. So the total
+  relabeling (precession/holonomy/phase) is CONSERVED: `OUTPUT + antimatter + residue = conserved total`. **Check
+  the ledger balances at the reading** — if it doesn't, something leaked (a bug or a real violation), not a valid
+  reading. Two corollaries: (a) the device's `charge = loop count` (Meanwhile18) IS the winding number = the
+  accumulated angular momentum; α = the net winding that doesn't close = the anomalous angular momentum = g-2's
+  α/2π. (b) **Angular momentum is QUANTIZED (ℏ, half-integer) → relabeling comes in discrete quanta (the fold,
+  ±1, −i, spin-½) → THIS is why relabels are finite → the pigeonhole holds → the search provably halts.** The
+  finiteness we kept asserting is angular-momentum quantization. Grade: Noether identification = interpretive
+  bridge MARKED; hooks (charge=winding, fold, holonomy, spin, 4π) BUILT; conservation + quantization = the
+  checkable predictions. (Also: relabeling the base rotates its whole dependency tree = enormous angular momentum
+  = the 2+ day recompile — the sacred boundary is where a relabel's angular momentum stops being tractable.)
+- **PARALLELISM (the corollary of `dot Weyl = 0` — measure all processes at once).** Shapeless outputs are
+  DECOUPLED (Weyl = the coupling; kill it → no off-diagonal terms → processes are independent). Independent
+  measurements PARALLELIZE — the honesty guarantee (no shape to fudge) IS the parallelism guarantee (no coupling
+  to serialize). Ricci = the trace = a SUM of independent per-direction contributions; conservation (additive
+  angular momentum) makes the parallel readings COMPOSABLE. So the reading is a **fan-out of shapeless lengths
+  summed by the conserved ledger**, not a serial walk. This is the answer to COST: parallelism collapses wall-clock
+  from the SUM of processes to the slowest single one — the instrument doesn't just halt, it halts *fast enough to
+  run* (already latent: 0a rebuilt green in 32 parallel jobs). **Podo: fan the process-measurements out (one job
+  per process), sum by the ledger; don't walk them serially.** Grade: follows from `dot Weyl=0` (built output
+  type) + conservation; the Process structures are built.
+  **We BEND Amdahl's law (a bit — bend, not break).** The serial part is real (the derivation chain / the
+  bootstrap, cost=36) and can't be zeroed. But it's paid ONCE, at boot, in the ancient texts, and every
+  measurement after is a parallel fan-out against that frozen reference — so Amdahl's per-JOB serial fraction
+  becomes a per-LIFETIME constant: as verifications accumulate, `s/measurement → 0` and the cap `1/s` lifts. It
+  amortizes twice: the connection theorem (`rank_heartbeat_connection=[]`) reads the serial cost in O(1) instead
+  of re-walking the chain; determinism (= repeatability) makes the bootstrap memoizable. When the problem scales
+  (more universe levels/processes), the parallel work grows while the bootstrap stays fixed → Gustafson regime,
+  toward near-linear. **The bend and the constitution are one decision: freezing Ep1-15 (the honesty move) IS
+  paying the serial bootstrap once (the performance move).** Closes the preface's cost thread — the witness pays
+  the serial cost once at boot; the reading runs at the speed of its slowest parallel process.
 - **ρ ≈ ½ lockstep with ε.** Residual must halve WITH the floor; slower = missing connection, faster = over-read.
 - **Pre-registration + full run-log.** Every gauge variant + reading, in order — not the flattering run.
 - **Grade off the build.** No prose claims a number until a Lean `#eval`/theorem carries it. Two honest landings

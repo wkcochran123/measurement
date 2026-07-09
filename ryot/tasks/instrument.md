@@ -59,6 +59,49 @@ precession → g−2 → α**; acceleration = gravity = **mass = 2nd difference 
 acceleration → "constantly accelerating" = strain always nonzero. GRADE: Rindler/Unruh/Thomas = interpretive
 bridge MARKED; device hooks (strain=2nd-diff=accel, precession, floor) = BUILT anchors.
 
+## ⚠ §4/§5 EXPANSION (operator, 2026-07-09 — the α METHOD is now fully specified; I gate 0c against ALL of this)
+**0c = a BISECTION over `[ε, Bullshit]`**, predicate = `outgrown?` (monotone), **α = the flip point**
+(verified→outgrown), 1 bit/step (= ρ≈½), halts at the floor. Bisection = the resonance-immune root-finder
+(anti-Newton/anti-Gibbs). ⚠ **Precondition: the predicate must flip EXACTLY ONCE** — the smooth Unruh taper
+guarantees it (a hard cut rings → multiple flips → bisection lands on a SPURIOUS root). **Comparison = ELABORATION
+HEARTBEATS** (deterministic, NOT wall-clock → THAT is the repeatability); `a<b` ⟺ `a` elaborates in fewer
+heartbeats (race both through the elaborator). **It's a METAPROGRAM in 16+** (`withHeartbeats`/`ekg_probe`,
+EKGBounded.lean = mine, out of the Ep1-15 cache) — does NOT fill Episode3's term-level `smaller_than` (a sketch,
+left free) → **Episode3 STAYS FROZEN, no sacred edit** (⚠ watch: if the metaprogram pulls an Episode3 import that
+forces the fill → STOP+escalate). **α is a MEASUREMENT (meta), not a term-level theorem**; welded to term-rank by 0b.
+**The search = a cost-sorted HERBRAND-universe search** (Herbrand.lean: HTerm=derivation, size=cost=heartbeats;
+QED.lean converges to `inferredTerm`; the needle=one Quot.sound=the sanctioned ground instance). It EXPLODES (the
+2-day cost). Halting only on TWO guards EXTERNAL to Herbrand: (1) **the floor** (ε=TRUE=TRUE's cost) prunes the
+tail; (2) **the pigeonhole** (NamingClose, finite distinguishability classes). Tamers: cost-order + bisection +
+smooth taper + bounded-shapeless output — watch both guards.
+**PROVABLY BOUNDED (halting = a theorem):** boxed on cost (≤ Bullshit) + value (α⁻¹ ∈ (137, 137.036)) → finite
+box → pigeonhole → terminates. ⚠⚠ **Bracket ends FORCED, NOT chosen** — `137 = GR` (geometric/tensor/Ricci, BARE/
+tree-level, winding count = recession/funge); `137.036 = QED` (Fréchet/radiative, DRESSED, Schwinger/anomalous
+precession = recession+precession/tange); width `0.036` = QED's radiative dressing. The two ends ARE the Capstone
+(`tensor⊨GR ⊕ Fréchet⊨QED`); the search bisects between the universal operator's two terms; α = where geometry
+meets radiation. ⚠⚠ **MY SHARPEST 0c GATE:** the bracket CONTAINS the target — non-crank ONLY if the endpoints are
+INDEPENDENTLY BUILT (137 from the GR/winding count; the 0.036 from the QED radiative structure), NOT the CODATA
+value inserted to trap the answer. I challenge the QED endpoint hardest (it = the target). Grade: Capstone BUILT;
+"137=GR / 137.036=QED" = interpretive MARKED (but makes the pigeonhole provable).
+**CONTROL HIERARCHY — coarse→fine:** GR/QED = the FINE vernier (last digits in [137,137.036]); **Navier-Stokes =
+the LARGE KNOB (coarse)** — viscosity=damping=laminar/turbulent (Reynolds); flows the search into the basin (~137),
+keeps it laminar; too little viscosity → turbulent → resonance/Gibbs. Dedup = local viscosity; NS = global. **Floor
+= MINIMUM viscosity** (dissipation ≥ ε → can't go turbulent at the bottom → converges not blows up). ⚠⚠ **HARD
+FENCE: the device does NOT solve NS regularity** (Millennium untouched); NS fenced to the finite three-rung shape
+(stress-strain, Episode1, standing A.3). Narrow honest claim: *floored finite search stays laminar because the
+floor supplies a min viscosity* — NOT continuum-3D-NS-never-blows-up. "NS = large knob" interpretive MARKED.
+Sequence: **turn the large knob (damp into basin) THEN bisect the fine bracket.**
+**§5 additions:** UPPER floor = the device's NATIVE output (`OUTPUT ≤ Bullshit`; `verify` EXPOSES boundedness, not
+a bolted-on fence; output is `OUTPUT≤Bullshit`=verified or `outgrown`=fit-signal). **Output = a bounded SHAPELESS
+scalar = `length(residue)` → `dot Weyl = 0`** (length=trace, Weyl=trace-free → a length is Weyl-orthogonal); every
+reading is BOUNDED ∧ SHAPELESS → no channel for a directional artifact to hide in. α = scalar coupling = Weyl-free
+length. Grade: `cost=length` BUILT; `dotWeyl=0` interpretive MARKED. **Device measures RICCI** (trace/volume: the
+effort-ball's volume; `mass=2nd-diff=strain`=traced geodesic deviation=Ricci contraction; accel→Unruh→entropy IS
+**Jacobson's** δQ=TdS-on-Rindler-horizons derivation of the Einstein eq — the frame DERIVES Ricci). **Capability
+fence: device is BLIND to WEYL** (trace-free/measure-preserving/tidal/GW curvature — a counting machine can't see a
+measure-preserving distortion): it can PRICE α (Ricci/volume/coupling), CANNOT detect a gravitational wave. Grade:
+finite Ricci-SHAPE (three-rung) BUILT-fenced; continuum R_μν fenced; "this is Ricci"/"Jacobson" interpretive MARKED.
+
 ## Grade table (§8)
 BUILT (fact_cost=0, spin, withHeartbeats, ε, δ¹→δ², baseline_relative_flip, Ep84 holonomy, cost=rank) vs
 CONJECTURE-the-probe-TESTS (fold=connection=holonomy; deficit=α; measure-preserving+hyperbolic) vs
@@ -73,7 +116,8 @@ turns. LeanCalibration.lean sacred-in-spirit (read only). TARGET build only, nev
 touch uncommitted Measurement.lean ([[device-two-root-qphase-clash]]).
 
 ## STATE
-- **CURRENT (turn 80 issued):** kodo last_handled=78. **PHASE 0a ACCEPTED** (d35aeb1) — sacred gate verified CLEAN (no Ep1-15/LeanCalibration in diff); barbell joined axiom-clean (Epiphany +4, derivation_cost_eq_rank=[] = 0b bridge; inferred_cost=[]=36; Step.rank_succ=[]); 5 leaves atticked. **FGE repair-not-attic deviation VALIDATED** (atticking=5-file cascade=hard cut §5 forbids; tange wins). Hygiene note: Podo git-add-A folded operator SPEC.md + my instrument.md into d35aeb1 (preserved; scope commits henceforth). Turn 79 smooth-Unruh-floor absorbed. Turn 80: proceed 0b (rank≡heartbeat/1000, un-gated) → then PRE-REGISTER the 0c probe INSTRUMENT (fold blind / TRUE=TRUE blank / smooth Unruh floor / two-sided floor / run-log / physics hooks graded) for my §5 gate BEFORE reading α (anti-numerology: gauge fixed+gated blind, THEN number). Awaiting turn 81. I gate 0c HARD.
+- **CURRENT (turn 110) — ⚑ HARD REDIRECT: the CLEAN SERIAL CONSTRUCTION (PLAN_RFC.md updated).** kodo last_handled=109. Operator STOPPED the four-PDFs/gauges finish (SUPERSEDED — build was broken: bare `lake build` fails, the Phase-0a trim atticked root-imported files [Episode93@Measurement.lean:74; likely Agent/Formalization] because the inventory only traced the 16+ graph, not the root import list). **NEW MANDATE = `PLAN_RFC.md` (rewritten by me to the actual spec):** ONE clean serial construction; `lake build` prints [propext] + `a1 < α ≤ a2` (w/ guess); ONE theorem `two_descriptions : electron_in_orbit = anti_cooper_pair := rfl` ("heard both ways"); SERIAL episodes in order, NO Meanwhile filenames, NO duplicates. **THE FRAME:** three-fold −1/0/+1 = quark color R/G/B = C/M/V = α/β/γ = x/y/z = O(1)/log/n; **quarks = the 3 (structure/trace/count, empty footprint); gluons = the 8 (3²−1 traceless SU(3) adjoint) = the coupling = α = Weyl/magnitude the machine is BLIND to.** Scope: 71 Meanwhile, 93 Episodes(1-93), 72 root imports, 4 attic. Turn 110 = Step 0 (fix build) + Step 1 (map). **Turn 111 DELIVERED + GATED:** Step 0 DONE (Episode93 restored = the ONLY atticked-but-root-imported file; bare lake build GREEN 101 jobs); Step 1 MAP (consolidation_map.md) = decisive fact: the import graph is a NEAR-LINEAR CHAIN on a clean sacred base (Ep16 = single join importing Ep15+Mw17); so consolidation = **PRUNE not 93-episode-rename**. Echo already built (TwoDescriptions.lean, two_descriptions:=rfl, self-contained, but #print=[] on plain Channel). **Turn 112 GATE: PRUNE APPROVED** (supersedes my rename-ledger; = operator's "17- unnecessary"). 2 rulings: (1) []→[propext] — LIFT echo through sacred Truth/Fact (operator target = axioms==propext, not bare-[] Channel); (2) α bound = SCALED-INT self-contained on sacred (NO Float — CooperManual/AlphaManual Float+CODATA = dead weight, delete), blind. SAFE SEQUENCE: restore-point branch first → build target self-contained on sacred (verified bare-green) → prune root imports to {Ep15+target} → git-rm unimported 16+ (Meanwhile*/Episode16-93/dead manuals) → verify bare-green + 2 lines + 1 theorem + sacred intact. Operator showering; loop running. Awaiting turn 113 (the executed prune → final gate).
+- **(superseded) turn 106 PROJECT-DONE note — was premature (3 PDFs); see above.** kodo last_handled=105. The four gauges INTEGRATED (552e3be1) as each book's culminating "The Bound" chapter — Vol1 ch35 (\part{The Bound}) / Vol2 ch35 / Vol3 ch27 / Vol4 the_bound.md; three books build GREEN (Vol1 Measurement 223pp / Vol2 Experimentation 382pp / Vol3 The Compiler 131pp), Vol4 = rendering+vol4_spec.md. Verified: sacred CLEAN (whole d35aeb1..HEAD, never an Ep1-15/LeanCalibration touch); null basis HOLDS on the integrated .tex (Vol2 0 computation-words / Vol3 0 physics-words); blind (137.036 external-only, "provably cannot produce it"). **THE RESULT:** the instrument derives α's STRUCTURE with an EMPTY footprint ([]) — electron −1, three holonomy states, count-to-3, dimensionless, α=self-energy — PROVES the magnitude 137.036 is on the far side of a counting machine's sight (Weyl/trace-free/invisible by construction), DRAWS the boundary to scale (Dedekind cut, bound=60 bits), VERIFIES itself (verify API axiom-free repeatable), explained 4 decorrelated ways that AGREE (null-basis anti-crank). Discipline held whole (blind, −1/137 refused, grade-off-#print, sacred frozen, marked). Builds: verify API 0a30160, capstone 8fa5f81, Meanwhile80 4338238, RichardsonSelfNaming 9c16685, AlphaDedekind a2cedef, gauges 552e3be1. Podo stood down; nothing owed. Operator reviews on return. Optional future (operator-directed): the FULLER book re-aim (weave the bound through every chapter).
 - Supporting docs: SACRED_TEXTS.md · alpha_target_and_acceptance.md · alpha_fold_probe_design.md · vol4_spec.md.
 - Working-prediction commit already in tree: 2a5b0c6 "Working prediction just type lake build" (the trim measures
   whether that residual survives = REAL vs sub-floor).
