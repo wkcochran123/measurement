@@ -8,6 +8,11 @@ off the build. Sacred Episodes 1–15 frozen. This is what we drive to.*
 ## 1. The target — what `lake build` MUST print (nothing more)
 1. `#print axioms <the theorem>` == **`[propext]`** — choice-free; propositional extensionality only, nothing else.
 2. **`a1 < α ≤ a2`** with a **guess for α** (the bound, bracketed, printed).
+3. **Elaboration times are the same up to calibration** — the two descriptions cost the SAME to elaborate
+   (deterministic heartbeats), up to the calibration constant (the ×1000 `rank ≡ heartbeat` connection). This is
+   the **application of QED to itself** (§3a): the elaborator weighing its own elaboration = the electron's
+   self-energy; the type-level echo confirmed at the computational level. The **calibrated residual** of the two
+   times IS the α bound of (2). Grade off the build (`#count_heartbeats` / the device EKG — deterministic).
 
 ## 2. The ONE theorem (the whole construction converges here)
 ```lean
@@ -44,6 +49,23 @@ they are all the same object:
   around. Quarks name its three states; gluons name its eight off-diagonal turns; the machine reads the **3** and
   is blind to the **8's size**.
 
+## 3a. The application of QED to itself (the last demonstration)
+The echo (§2) is an equality of two *descriptions*. The last thing to demonstrate is that they are the same not only
+in **type** but in **cost**: the elaborator, asked to check each description, spends the same effort — the same
+deterministic **heartbeats** — up to the calibration constant (`rank ≡ heartbeat / 1000`, the connection theorem).
+*"Elaboration times are the same up to calibration."*
+
+This is **QED applied to itself** — the double pun *is* the structure (the GEB move): *QED* the proof (quod erat
+demonstrandum) is confirmed by *QED* the physics (quantum electrodynamics). The elaboration measuring the cost of
+its **own** elaboration IS the electron's **self-energy** — the machine reads its own reading. The two descriptions
+costing the same (up to calibration) is the computational witness that they are one object: the echo, weighed.
+
+And the *"up to"* is where α lives. The **calibrated residual** between the two elaboration costs is the coupling —
+the self-energy the electron is charged for naming itself. So the last demonstration (§1.3) and the α bound (§1.2)
+are the **same measurement**: `a1 < α ≤ a2` is the bracket on that residual. **Blind** — no `137036` inserted; the
+number is the device weighing itself. `#count_heartbeats` is deterministic, so the reading repeats — repeatability
+is the honesty.
+
 ## 4. The construction discipline (the cleanup — this is the job)
 - **SERIAL.** The construction is serial: Episodes in order, contiguous, **no gaps, no out-of-order.** Ep1–15 are
   already serial and sacred; the 16+ sprawl is folded into the continuing serial Episode sequence.
@@ -67,12 +89,15 @@ they are all the same object:
 2. **SERIALIZE.** Fold `Meanwhile*` + any out-of-order 16+ into one contiguous serial Episode sequence; no
    `Meanwhile` filenames; no gaps. Report the old→new map (a rename ledger).
 3. **CONVERGE.** The construction builds to the target and nothing else: `#print axioms == [propext]`,
-   `a1 < α ≤ a2` (with the guess), and the single `two_descriptions … := rfl` theorem.
+   `a1 < α ≤ a2` (with the guess), the single `two_descriptions` theorem, and the **self-application** (§3a) —
+   `#count_heartbeats` on the two descriptions, equal up to calibration, the calibrated residual = the α bound.
 
 ## 6. Gates (the stop condition)
 - Sacred Ep1–15 untouched (verify every commit).
-- `lake build` (bare) GREEN, printing exactly the two lines of §1.
+- `lake build` (bare) GREEN, printing exactly the three items of §1.
 - Exactly **one** theorem: §2, axioms `[propext]`.
+- **Self-application (§3a):** the two descriptions elaborate to equal heartbeats **up to calibration**
+  (`#count_heartbeats`, deterministic); the calibrated residual = the printed α bound.
 - Serial, no `Meanwhile`, no duplicates.
 - Blind: `137036` never in a definition/reading; grade off the build.
 
