@@ -29,6 +29,18 @@ holonomy** (Ep84: open=0, loop≠0 = the part no relabeling gauges away). **The 
 constant.** (`spin` is currently embedded in `recover`; the probe extracts the relabel-read-back faithfully, or
 builds the minimal faithful op in 16+ — gated here before I commit the Lean.)
 
+**Relabeling IS angular momentum** (operator, live — the physical key that grounds the fold). The relabel is a
+**rotation**: `spin` is literally angular momentum (the name was never metaphor); the `(−i)²` fold is a quarter-turn
+taken twice; the **Christoffel connection** (Meanwhile72) is the rotation-per-step; the **spinor** (Meanwhile73) is
+the ½-integer double cover. Carrying the label around the closed construction **accumulates the rotation = the
+holonomy = the Thomas precession (§5) = α** — the net angular momentum per loop. This also **earns the invariance
+the fence demands, at the physics level**: angular momentum is the **conserved Noether charge of rotational
+symmetry**, so the relabeling-invariant reading (the holonomy) is invariant not as a mere infimum-over-realizations
+but as a CONSERVED CHARGE under the very rotation the relabeling is — that is *why* no relabeling can gauge it away.
+Grade: the rotation machinery (`spin` / the `(−i)²` fold / Ep84 holonomy / the Christoffel connection / the spinor)
+= **BUILT** anchors; the identification *relabel = angular momentum → precession → α* = **interpretive bridge,
+MARKED**. Target still absent.
+
 ## 2. The BLANK (item 2) — calibrate on TRUE=TRUE first
 Run `step` on `Fact.Truth` (`TRUE=TRUE`, `fact_cost = 0`): the tautology is the **stationary point (δ¹ = 0)**, so
 it returns to itself and the machine reads its own pulse/precession/residual off the return. This fixes the zero.
