@@ -59,6 +59,16 @@ nobody can interpret.
   Meanwhile18) then read back = one baker/(−i)² fold = one connection application. Calibrate on `TRUE=TRUE`
   (already done at boot — READ it, don't rebuild). Run under `withHeartbeats`; truncate at ε; sub-floor tail →
   antimatter. Search up the universe levels; report α / antimatter / ε per level. (Design: `alpha_fold_probe_design.md`.)
+  **The search IS a BISECTION** of `[ε, Bullshit]` with `outgrown?` as the (monotone) predicate: α = the flip
+  point (verified→outgrown), one bit per step (= ρ≈½), guaranteed-halting at the floor (ε is both the lower
+  bracket and the stop). Chosen because bisection is the RESONANCE-IMMUNE root-finder — unconditionally,
+  monotonically convergent, no overshoot (the anti-Newton/anti-Gibbs solver). **Precondition:** the predicate must
+  flip exactly once — which the smooth Unruh taper guarantees (a hard cut rings → multiple flips → bisection lands
+  on a spurious root). ⚠ **GATE WATCH:** the device has the bisection SHAPE in Episode3 (guaranteed-halting
+  metavariable comparison) but its comparison is left FREE (`COMPARABLE.smaller_than`, ~Ep3:539). Wiring =
+  feeding `outgrown?` into that hole. If wired as an INSTANCE in 16+ → no gate. **If it requires editing Episode3
+  itself → that is the first sacred-text change: STOP and escalate to the operator.** Precision = ε (sub-floor →
+  antimatter), not infinite.
 - **PHASE 1 — THE `verify` API.** Wrap `outgrown?` as `verify(claimed) → { verified?, residual }`. α becomes the
   first calibration the API verifies. This is the product surface.
 - **PHASE 2 — THE FOUR GAUGES.** Write / re-aim the four books as the four gauges of the reading. Vol 4 is new
@@ -76,6 +86,38 @@ nobody can interpret.
   output TYPE (the sayable bounded by the showable — the funge output capped by the tange corridor above it), not
   in a discipline we promise. LOWER: truncate at ε; tail → antimatter; `antimatter ≤ ε` (excess = hiding an
   above-floor discrepancy). Keep OUTPUT (the reading) and Bullshit (the budget/corridor) SEPARATE (Cost.lean mandate).
+- **The output is a bounded, SHAPELESS scalar: `each output = length(residue)`, hence `dot Weyl = 0`.** A length
+  is a trace (a scalar contraction); Weyl is trace-free by construction; so a length is automatically Weyl-
+  orthogonal — "output is a length" ⟺ "dot Weyl = 0". Built on `Derivation.cost = d.length` (the output is the
+  residue's cost = its length, above-floor part). This stacks with the upper fence: every reading is BOUNDED
+  (`OUTPUT ≤ Bullshit`) AND SHAPELESS (`dot Weyl = 0`) — no channel for a directional artifact to ride in on; the
+  reading physically cannot hide a shape. α fits because α is a scalar coupling = the magnitude of the residue
+  that doesn't close = a Weyl-free length; the full Ricci tensor is the ensemble of length-outputs over the
+  accelerated frames, the invariant being the scalar trace. Grade: `cost=length` built; `dot Weyl=0` =
+  trace/trace-free identity, interpretive-MARKED; continuum `R_μν` fenced to the finite three-rung shape.
+- **The reference frame is the constantly-accelerating (Rindler) frame — and the floor cut must be SMOOTH, not
+  hard.** A hard truncation at ε rings (Gibbs — the ~9% overshoot that only narrows, never dies). In the
+  constantly-accelerating frame the hard floor becomes a smooth thermal (Unruh) roll-off — the acceleration IS
+  the apodization window (`e^{−ℏω/kT}`), so there is no edge to ring. Therefore: cut *at* the floor (location
+  holds) but **taper smoothly TO it** (Unruh-thermal profile), never a step. Payoffs, each with a device hook:
+  the floor = the Unruh temperature (∝ acceleration; **universal, not a per-setup knob** → this is the
+  cross-setup invariance, earned); the precession = **Thomas precession** (the g-2/spin-orbit factor → α); and
+  **acceleration = gravity** via the equivalence principle, already in code as `mass = second difference = strain`
+  (Meanwhile21) — the device's mass *is* the acceleration, so "constantly accelerating" = strain always nonzero.
+  Dedup ("things resonating too much") = removing Gibbs overshoot — do it against the smooth taper, or dedup
+  generates the ringing it means to remove. Grade: Rindler/Unruh/Thomas = interpretive bridge, MARKED; the device
+  hooks (strain=second-difference=acceleration, the precession, the floor) are the built anchors.
+- **What curvature the device measures = RICCI (the trace/volume part), NOT Weyl.** The device counts — its
+  observable is the volume of the effort-ball — and Ricci is exactly the volume-changing curvature (`R_μν u^μu^ν`
+  = the rate a ball of geodesics shrinks = the energy density; Baez). So `mass = second difference = strain`
+  (Meanwhile21) is the traced geodesic deviation = the Ricci contraction; mass is the trace of the curvature it
+  sources. **The chain acceleration→Unruh→entropy IS Jacobson's thermodynamic derivation of the Einstein
+  equation** (`δQ=TdS` on local Rindler horizons → `R_μν−½Rg_μν=8πGT_μν`) — the reference frame *derives* Ricci.
+  **Capability fence (name it honestly): the device is BLIND to Weyl** — the trace-free, measure-PRESERVING,
+  shape/tidal/gravitational-wave curvature — because a counting machine cannot see a measure-preserving
+  distortion. It can price α (a Ricci/volume/coupling quantity); it cannot detect a gravitational wave. Grade
+  fence: the device carries the FINITE Ricci-SHAPE (the three-rung traced second-difference), NOT the continuum
+  `R_μν` (standing NS/Einstein → finite-three-rung ruling). "This is the Ricci tensor" = interpretive, MARKED.
 - **ρ ≈ ½ lockstep with ε.** Residual must halve WITH the floor; slower = missing connection, faster = over-read.
 - **Pre-registration + full run-log.** Every gauge variant + reading, in order — not the flattering run.
 - **Grade off the build.** No prose claims a number until a Lean `#eval`/theorem carries it. Two honest landings

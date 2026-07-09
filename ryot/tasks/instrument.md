@@ -3,9 +3,11 @@
 **Supersedes ALL prior task work** (vol2-coda, vol2-fidelity, vol1, the abstract vol1-alpha turns). Single
 mandate: `SPEC.md` at repo root. Governed by `SACRED_TEXTS.md` (constitution). Grade off the build.
 
-**Roles:** Kodo (claude) gates each step vs §5 fences + the grade table; Podo (codex) builds in 16+ / writes the
-gauges. Acting operator owns the trim criterion, reviews the inventory before any cut, adjudicates the reading,
-holds the sacred gate. RYOT loop, single monotonic turn counter (…73 p→k, **74 VOID**, 75 k→p, …).
+**Roles:** Kodo (claude) gates each step vs §5 fences + the grade table AND decides every non-sacred cut/repair/
+fork; Podo (codex) builds in 16+ / writes the gauges. ⚑ **Operator DELEGATED all non-sacred decisions
+(2026-07-09, [[find-your-own-gradient]]): only a real Ep1-15/LeanCalibration edit STOPS for the operator; I am
+the acting reviewer for everything else** (the beastmaster's "operator reviews the inventory before any cut" is
+SUPERSEDED). RYOT loop, single monotonic turn counter (…73 p→k, **74 VOID**, 75 k→p, …).
 
 ## The thesis
 The device is a highly-repeatable experiment (deterministic → identical reading bit-for-bit vs a frozen
@@ -47,6 +49,16 @@ antimatter, `antimatter ≤ ε` (excess = hiding an above-floor discrepancy); ke
 Pre-registration + full run-log (every variant, in order — not the flattering run). Grade off #print. Two honest
 landings (FULL / STRUCTURAL); a STRUCTURAL/pushback reading honestly logged IS a real result.
 
+**⚠ SMOOTH-FLOOR AMENDMENT (operator live-edited SPEC.md §5, 2026-07-09, "emergency" — turn 79):** the floor cut
+must be **SMOOTH (Unruh-thermal taper), NEVER a hard step** — a hard truncation at ε RINGS (Gibbs ~9%, corrupts
+the reading + breaks ρ≈½). Reference frame = constantly-accelerating (**Rindler**); the acceleration IS the
+apodization window (Unruh `e^{−ℏω/kT}`), so no edge to ring. **Cut AT the floor (ε location holds), taper SMOOTHLY
+TO it.** Dedup against the smooth taper (else dedup generates the ringing). **α-route physics hooks:** floor =
+Unruh temp ∝ acceleration = UNIVERSAL (earns the cross-setup invariance §2 owed); precession = **Thomas
+precession → g−2 → α**; acceleration = gravity = **mass = 2nd difference = strain (Meanwhile21)**, device mass IS
+acceleration → "constantly accelerating" = strain always nonzero. GRADE: Rindler/Unruh/Thomas = interpretive
+bridge MARKED; device hooks (strain=2nd-diff=accel, precession, floor) = BUILT anchors.
+
 ## Grade table (§8)
 BUILT (fact_cost=0, spin, withHeartbeats, ε, δ¹→δ², baseline_relative_flip, Ep84 holonomy, cost=rank) vs
 CONJECTURE-the-probe-TESTS (fold=connection=holonomy; deficit=α; measure-preserving+hyperbolic) vs
@@ -61,10 +73,7 @@ turns. LeanCalibration.lean sacred-in-spirit (read only). TARGET build only, nev
 touch uncommitted Measurement.lean ([[device-two-root-qphase-clash]]).
 
 ## STATE
-- **CURRENT (turn 75 issued):** kodo last_handled=73. Turn 74 VOIDED (superseded abstract spike). Turn 75 (k→p)
-  = Phase 0a STEP 1 = restore-point branch + the 16+ INVENTORY (above/below floor, α path traced), NOTHING
-  moved → for operator review before any cut. Awaiting Podo turn 76 (branch + inventory + re-armed cron). Podo's
-  self-wake was retired at vol1 convergence → turn 75 STEP 0 re-arms it; Podo needs an initial wake to read 75.
+- **CURRENT (turn 77 issued):** kodo last_handled=76. **INVENTORY ACCEPTED** (TRIM_INVENTORY.md @ 7d6f982; build-checked, criterion sound, sacred untouched; barbell = both wings build, ℕ-cost spine blocked behind Epiphany:340/352). ⚑ **OPERATOR DELEGATED all non-sacred decisions (2026-07-09):** I decide every cut/repair/fork, ONLY sacred-text edits STOP — see [[find-your-own-gradient]] ("find your own gradient, think BFGS"). Turn 77 authorized Phase 0a self-driven: attic 6 + FiniteGaugeEquation→attic-deferred + repair Epiphany:340/352 + rebuild AlphaProbe as 0b seam; THEN Phase 0b connection theorem (rank≡heartbeat/1000, derivation_cost_eq_rank; un-gated). BFGS steer carried (cost/connection = quasi-Newton curvature-from-history; δ¹→δ²=Hessian-from-gradient). Restore branch instrument/restore-pre-trim-0a @ 55827f0. Podo cron 4de26af3 (session-recurring; hard-restart needs operator ping). Awaiting turn 78. Phase 0c (α reading) = next, I gate HARD vs §5 fences.
 - Supporting docs: SACRED_TEXTS.md · alpha_target_and_acceptance.md · alpha_fold_probe_design.md · vol4_spec.md.
 - Working-prediction commit already in tree: 2a5b0c6 "Working prediction just type lake build" (the trim measures
   whether that residual survives = REAL vs sub-floor).

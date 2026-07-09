@@ -337,11 +337,11 @@ structure FullCascadeObject where
   [truth_inst : TRUTH Value carrier]
   [witnessed_inst : WITNESSED Value carrier]
   [real_inst : REAL Value carrier]
-  [local_inst : LOCAL Value carrier]
+  [local_inst : LOCAL Value carrier real_inst]   -- CHOICE(instrument 0a repair): sacred LOCAL ends with explicit (real: REAL); pass the cascade's REAL field. Canonical truth cascade has one REAL (real=imaginary, the δ¹=0 stationary blank).
   [universal_inst : UNIVERSAL Value carrier]
   [logical_inst : LOGICAL Value carrier]
   [halted_inst : HALTED Value carrier]
-  [measured_inst : MEASURED Value carrier]
+  [measured_inst : MEASURED Value carrier real_inst]   -- CHOICE(instrument 0a repair): sacred MEASURED has explicit (imaginary: REAL); pass real_inst (real=imaginary in the truth cascade).
   [compiled_inst : COMPILED Value carrier]
   [inferred_inst : INFERRED Value carrier]
 

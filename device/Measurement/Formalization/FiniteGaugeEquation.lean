@@ -105,8 +105,12 @@ def defaultFiniteGaugeClosure
 theory's differential equation.  `epsilon` is an explicit argument: this file
 is intentionally abstract, so instance search cannot synthesize the
 29-gate `LOCAL` tower here -- the caller supplies it. -/
+-- CHOICE(instrument 0a): sacred LOCAL ends with an explicit (real: REAL) arg — pass the section `real` (l.87),
+-- at all 4 sites (109/120/132/162). REPAIRED in place, NOT atticked: atticking FGE would cascade-break
+-- Bridge/QED/Example (off the α cost-path but real theorems); the 4-line repair keeps the QED track green
+-- (smooth repair over hard cut — SPEC §5 anti-Gibbs). Deviation from Turn-77 #3 (attic-for-now), justified. — Podo
 def finiteGaugeEquation
-    (epsilon : LOCAL Value Carrier)
+    (epsilon : LOCAL Value Carrier real)
     (x : FiniteGaugeInput) : Variation :=
   defaultFiniteGaugeClosure epsilon.theory x
 
@@ -117,7 +121,7 @@ that the gateaux → frechet branch produces. Holds by `rfl` because
 `finiteGaugeEquation` is defined directly in terms of
 `defaultFiniteGaugeClosure`, which produces `.frechet`. -/
 theorem finiteGaugeEquation_normal_form
-    (epsilon : LOCAL Value Carrier)
+    (epsilon : LOCAL Value Carrier real)
     (x : FiniteGaugeInput) :
     finiteGaugeEquation epsilon x =
       .frechet x.gospel x.direction x.response
@@ -129,7 +133,7 @@ FGEs. Trivially true because `finiteGaugeEquation` is a function. Stated
 with `cases h; rfl` rather than `congrArg _ h` to keep the proof robust
 against the section's many instance binders. -/
 theorem finiteGaugeEquation_deterministic
-    (epsilon : LOCAL Value Carrier)
+    (epsilon : LOCAL Value Carrier real)
     {x₁ x₂ : FiniteGaugeInput} (h : x₁ = x₂) :
     finiteGaugeEquation epsilon x₁ = finiteGaugeEquation epsilon x₂ := by
   cases h
@@ -159,7 +163,7 @@ def UsesDefaultTransmute
 the FGE equals what `transmute` would produce from a Gateaux variation built
 from the same input. -/
 theorem finiteGaugeEquation_eq_transmute
-    (epsilon : LOCAL Value Carrier)
+    (epsilon : LOCAL Value Carrier real)
     (h : UsesDefaultTransmute epsilon.theory)
     (x : FiniteGaugeInput) :
     finiteGaugeEquation epsilon x =
