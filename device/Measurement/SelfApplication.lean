@@ -31,7 +31,7 @@ elab "register_cost" name:ident " => " t:term : command => do
   let cmd ← `(def $name:ident : Nat := $(Lean.quote hb))
   Lean.Elab.Command.elabCommand cmd
 
--- Warmup-discard (Meanwhile23 convention): measure each twice, take the second (post-warmup, stable).
+-- Warmup-discard (Episode23 convention): measure each twice, take the second (post-warmup, stable).
 register_cost orbit_w => (electron_in_orbit)
 register_cost orbit   => (electron_in_orbit)
 register_cost pair_w  => (anti_cooper_pair)

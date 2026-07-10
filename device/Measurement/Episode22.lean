@@ -42,7 +42,7 @@ def recover (n : BracketedNumber) (ledger : Fact) : RecoveredObservables :=
     phase  := phaseRead ledger }
 
 -- THE RETRO-TEST (the turn-706 needle-flat criterion, tested not assumed): the
--- recovery closes by rfl or Meanwhile21 has a construction defect. The mass
+-- recovery closes by rfl or Episode21 has a construction defect. The mass
 -- face is the equivalence principle as a theorem: mass RECOVERED from the
 -- slot, never injected. The phase face equates applications with applications
 -- (the ledger's decidability is opaque; both sides stuck on the same match).

@@ -15,7 +15,7 @@ wobble. The measured coefficient is therefore
   applied_magnetic_field / shielding_wobble.
 
 The tape records the lower integer, the exact quotient/remainder cell, and the
-upper integer. `Meanwhile40` then consumes the exact Meissner cell when it
+upper integer. `Episode40` then consumes the exact Meissner cell when it
 contracts the second variation to alpha.
 -/
 

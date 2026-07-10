@@ -22,9 +22,9 @@ from the unbounded universe `Type Value`; it is imposed by a fixed finite
 representation. No limit, no norm, no continuum, no Classical.
 
 FACTORING (ep17-loop Phase 1). This module holds the whole naming close, moved
-verbatim from Meanwhile24 and re-rooted at Episode16 (which supplies `truthLocal`
+verbatim from Episode24 and re-rooted at Episode16 (which supplies `truthLocal`
 for delta2/delta1_reduced, plus Variation/Fact transitively). Rooting at Ep16 sheds
-the Meanwhile18-24 chain, so the loop's forward walk (Episode17) can reach the
+the Episode18-24 chain, so the loop's forward walk (Episode17) can reach the
 naming close without dragging the heavy tail. -/
 
 namespace Measurement
@@ -106,7 +106,7 @@ theorem gateaux_indist_frechet
     boxOf (.gateaux g a b tail) = boxOf (.frechet g a b c v1 v2) := rfl
 
 /-- A native two-element tensor tag: the universe tensor (the fixed-point value pinned
-by the universal observer) vs a plain tensor. Built fresh in Meanwhile currency, not
+by the universal observer) vs a plain tensor. Built fresh in Episode currency, not
 imported. -/
 inductive TensorTag
   | universe : TensorTag

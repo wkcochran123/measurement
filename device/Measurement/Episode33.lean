@@ -1,7 +1,7 @@
 import Measurement.Episode32
 
 /- MEANWHILE 33 -- LORENTZ BRACKETS THE ORBIT. The Newtonian-looking circular
-orbit in Meanwhile32 sits exactly at `v^2 = 1`. Relativity refuses to let the
+orbit in Episode32 sits exactly at `v^2 = 1`. Relativity refuses to let the
 electron live there as an ordinary timelike circular orbit. The apparatus must
 read a small undershoot/overshoot bracket around the unit boundary.
 

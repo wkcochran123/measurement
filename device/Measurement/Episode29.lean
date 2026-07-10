@@ -1,6 +1,6 @@
 import Measurement.Episode28
 
-/- MEANWHILE 29 -- BISECT THE PROXIMITY SLIP. Meanwhile28 sampled only whole
+/- MEANWHILE 29 -- BISECT THE PROXIMITY SLIP. Episode28 sampled only whole
 separations, so the jump from distance 2 to distance 1 hid the actual boundary.
 Here the distance is a positive rational and the bisection stays exact.
 

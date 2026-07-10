@@ -2,7 +2,7 @@ import Measurement.Episode22
 import Lean.Util.Heartbeats
 import Lean.Elab.Command
 
-/- MEANWHILE 23 -- PREDICT THE PULSE. Meanwhile22 REPORTS the heart rate; this
+/- MEANWHILE 23 -- PREDICT THE PULSE. Episode22 REPORTS the heart rate; this
 file PREDICTS it from parts and names the residual the binding energy. Everything
 here is MEASURED, never proved: raw heartbeat reads off the elaborator's own
 counter. THE PROTOCOL (operator-amended Gate 0): a pulse is measured three times
@@ -14,7 +14,7 @@ reuse, and the intrinsic cost is the stable post-warmup value. -/
 
 namespace Measurement
 
--- The parametric generalization of Meanwhile22's register_heart_rate: measure any
+-- The parametric generalization of Episode22's register_heart_rate: measure any
 -- term's whnf cost and emit it as a def. Same liftTermElabM / withHeartbeats /
 -- elabTerm+whnf / quote-emit shape; name and term are arguments.
 elab "register_heart_rate_as" name:ident term:term : command => do

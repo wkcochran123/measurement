@@ -1,8 +1,8 @@
 import Measurement.Episode39ElectromagneticCoupling
 
 /- MEANWHILE 40 -- ASK THE DEVICE FOR ALPHA. The Meissner electro/magnetic
-calibration tape from Meanwhile39.5 is now in hand, so the four-channel second variation
-from Meanwhile39 can be contracted to the dimensionless coupling in the
+calibration tape from Episode39.5 is now in hand, so the four-channel second variation
+from Episode39 can be contracted to the dimensionless coupling in the
 `h = c = 1` normalization.
 
 The raw elaboration charge cancels against the field charge. What remains is:

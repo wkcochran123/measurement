@@ -557,8 +557,8 @@ instance (priority := low) EXECUTED_climb_36
                 below.tape }
 
 /- THE SEAM'S EXIT. The three-trips acceptance at charge 0/1/2 is DEFERRED TO
-Meanwhile21 by design: the trips are passes, the passes are counted by charge,
-and charge lives in the Meanwhile18/Meanwhile21 coupling -- do not hunt for the
+Episode21 by design: the trips are passes, the passes are counted by charge,
+and charge lives in the Episode18/Episode21 coupling -- do not hunt for the
 f0/f1/f2 ladder here. -/
 
 structure SlipVerdict where

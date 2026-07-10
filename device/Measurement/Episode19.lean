@@ -2,7 +2,7 @@ import Measurement.Episode18
 
 /- MEANWHILE 19 -- THE CLASS TRACE. The second tape (law 5): one cell per class,
 descent seam-to-lower-bound; constructed-vs-slip fact pair per cell; a stack,
-read in reverse by Meanwhile20. This trace only APPENDS; .boot is never written
+read in reverse by Episode20. This trace only APPENDS; .boot is never written
 here -- the carried tape enters as a parameter at the anchor. -/
 
 namespace Measurement

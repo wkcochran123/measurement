@@ -1,8 +1,8 @@
 import Measurement.Episode37
 
 /- MEANWHILE 38 -- CHARGE AT THE SLIP POINT. The slip-point distance is still
-the bracket measured in Meanwhile35. The charge is the elaboration charge from
-Meanwhile37. This file keeps those two facts separate:
+the bracket measured in Episode35. The charge is the elaboration charge from
+Episode37. This file keeps those two facts separate:
 
   charge at the point      = signed electron elaboration charge,
   potential read near it   = |q| / r,

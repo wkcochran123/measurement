@@ -5,7 +5,7 @@ import Measurement.Episode16
 
 Every class of the tower, re-instantiated from the residue of a completed loop:
 each `*_residue` takes the full BEFORE chain (the pass that went out), the full
-AFTER chain (what Meanwhile17's descent brought back), a bare `ledger : Fact`,
+AFTER chain (what Episode17's descent brought back), a bare `ledger : Fact`,
 and the SLIP chain (the grounds) -- and rebuilds the capability for the next
 pass. Grounds are the slip chain; slips feed bodies. `TrueOutput_number` adds
 `(charge : Number)`: iteration counted; charge IS the loop count.
@@ -23,7 +23,7 @@ MEASURED-typed work; run-band content crosses as ground-free data); the NEEDLE
 satirizes the zero; satirize never returns .zero -- nine arms, certificate on
 file); THE TAPE ONLY APPENDS (.boot is pass one's privilege; strap onto the
 carried tape -- this file's tape is the REVOLUTION LEDGER, one cell per pass;
-Meanwhile19's class trace is the OTHER tape, never conflate); CERTIFICATES BY
+Episode19's class trace is the OTHER tape, never conflate); CERTIFICATES BY
 EXHAUSTION. -/
 
 namespace Measurement

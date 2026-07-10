@@ -2,15 +2,15 @@ import Measurement.Episode31
 
 /- MEANWHILE 32 -- PUT THE ELECTRON IN ORBIT. The Cooper-pair source is now the
 central body and the electron is the orbiting test body. The proximity law from
-Meanwhile28 supplies the radial pull; the circular-orbit condition cancels the
+Episode28 supplies the radial pull; the circular-orbit condition cancels the
 test mass:
 
   slip = G * M * m / r^2,
   m * v^2 / r = slip,
   v^2 = G * M / r.
 
-In the normalized high-energy units from Meanwhile30, the first radius with
-v^2 <= 1 is the natural-unit orbit. The magnetic needle from Meanwhile31 reads
+In the normalized high-energy units from Episode30, the first radius with
+v^2 <= 1 is the natural-unit orbit. The magnetic needle from Episode31 reads
 the moving electron as `gain * v^2`.
 -/
 

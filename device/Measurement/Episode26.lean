@@ -1,6 +1,6 @@
 import Measurement.Episode25
 
-/- MEANWHILE 26 -- CAVENDISH BALANCE. The wheel from Meanwhile25 is the dial.
+/- MEANWHILE 26 -- CAVENDISH BALANCE. The wheel from Episode25 is the dial.
 The outside stimulus is the build, and the Cooper-pair binding residuals are the
 two source masses. A tethered electron is the test mass. The observed torsion is
 the extra mass-face count on the dial, so the Cavendish calibration is solved as

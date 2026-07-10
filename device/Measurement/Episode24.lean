@@ -5,8 +5,8 @@ import Measurement.NamingClose
 
 The naming math now lives in `Measurement/NamingClose.lean` (factored to root at
 Episode16 -- ep17-loop Phase 1 -- so the loop's forward walk can reach the naming
-close without the Meanwhile18-24 tail). This file keeps its chain position (import
-Meanwhile23) and holds the #eval readout anchors: the box count, the electron's box,
+close without the Episode18-24 tail). This file keeps its chain position (import
+Episode23) and holds the #eval readout anchors: the box count, the electron's box,
 and the two decided premises, fired here as before. -/
 
 namespace Measurement
