@@ -2,7 +2,7 @@
 
 ## Current `alpha_c` Estimate
 
-```text
+```
 alpha_c_scaled_at_1e18 = 7298668569525773
 inverse_alpha_c_scaled_at_1e18 = 137011290548979455469
 
