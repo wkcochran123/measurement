@@ -1,107 +1,191 @@
 # Measurement
 
-Version 0.2
-[Latest pdf build.](https://drive.google.com/file/d/1t8qZYaYHa_-4-A0Hfjk-5ZqHwnuflh8H/view?usp=drive_link)
+## Current `alpha_c` Estimate
 
-This repository contains a developing axiomatic framework for measurement,
-events, and refinement, together with a Lean 4 formalization of the early
-chapters.
+```text
+alpha_c_scaled_at_1e18 = 7298668569525773
+inverse_alpha_c_scaled_at_1e18 = 137011290548979455469
 
-The project is intentionally split between two modes:
+owned jar:
+a1=7294884998283556
+guess=7296978980210254
+a2=7299072962136952
 
-1. **Human-readable mathematical exposition**, and
-2. **Machine-verified formal statements** in Lean.
+inverse jar:
+[137003699673558215451 .. 137082352941176470588]
+```
 
-The Lean has progressed substantially, providing rough outlines of chapters 3-10.
-We have constructed the physical law f(t) = t.  In other words, time passes.  This
-law is potentially continuous, being discontinuous in at most a countable number
-of points.  At least, insofar as we can measure time as continuous, it is continuous.
+## Warnings
 
-## Release Notes — v0.2
+1. No differential equations were used in this construction. All operations
+   described mathematically are exemplary descriptions of the shape of the
+   operation that would be carried out on a non-deterministic Turing machine.
 
-## Release Notes — v0.1.5
+2. The emergence of a bitset in no way implies any mechanism behind any
+   physical process described herein. Rather, it is an artifact of description
+   itself.
 
-### Chapter 1
-- Relocated the discussion of ZFC to Chapter 1, establishing the foundational
-  logical environment explicitly at the outset.
-- Introduced three core definitions, formalized consistently in both the PDF and
-  the Lean development, aligning the narrative exposition with the verified
-  framework.
+3. Any similarity between this number and other numbers inferred by other means
+   is manufactured by the reader.
 
-### Chapter 2
-- **PDF:** Developed Cauchy and Cantor decompositions as complementary limits of
-  linear refinement processes, showing how infinite values may be represented
-  through disciplined accumulation. Defined noise as the structural limitation
-  imposed by finite measurement rather than as experimental error. Introduced
-  devices as finite instantiations of theoretical instruments, emphasizing the
-  role of admissibility, refinement, and commitment in the formation of facts.
-- **Lean:** Implemented the framework as a **Finite Turing Device**, demonstrating
-  that mathematical devices can be instantiated as finite structures realizing
-  the theoretical constructions described in the text. The Lean kernel serves as
-  a terminating execution environment in which repetition is enacted as a counted
-  process. These instantiations formalize repetition as a finite, admissible act,
-  providing a verified model of the phenomena treated narratively in the
-  manuscript.
+Measurement is a Lean 4 instrument for measuring `alpha_c`, the compiler
+structure constant.
 
+The central claim is deliberately narrow: `alpha_c` is the repeatable residue
+measured when the Lean elaborator carries this device's serial construction
+around its loop and weighs the cost of the resulting descriptions. It is the
+compiler-side coupling cost of making a distinction survive self-reference.
 
-## Release Notes - v0.1.1
+This repository contains the instrument, the serial construction, and the four
+gauge manuals that explain how to read the measurement.
 
-- **Chapter 1**  
-  Human-readable and accompanied by working Lean code.  Pretty big
-  refactor, but the types are now ready to scale.
+## Current Reading
 
-- **Chapter 2**
-  Mostly readable.  Substantial work left on the Lean.
+The live device is rooted at `device/Measurement.lean`. It imports the clean
+surface:
 
-- **Chapter 3 and beyond**  
-  The text gives more of a shape of the argument as the prose and rigor lack
-  formality.  Read past chapter 2 at your own peril.  Chapter 3 is currently
-  under development.
+- `Measurement.TwoDescriptions`
+- `Measurement.AlphaBoundCountToThree`
+- `Measurement.SelfApplication`
 
----
+To run the instrument:
 
-## Lean Code Organization
+```sh
+cd device
+lake build Measurement
+```
 
-The Lean formalization mirrors the structure of the manuscript as closely as
-possible, with an emphasis on traceability between the text and the code.
+The build should end with:
 
-### Definitions
+```text
+Build completed successfully
+```
 
-Each definition introduced in the book appears **once and in order** in a
-corresponding `Definitions.lean` file. This enforces a single source of truth
-for concepts and preserves the narrative dependency structure of the text.
-Later chapters may *use* these definitions, but never redefine them.
+The important reports are:
 
-### Axioms and ZFC
+- `TwoDescriptions.two_descriptions` has axiom footprint `[propext]`.
+- `Episode40` prints the device alpha reading.
+- `AlphaBoundCountToThree` prints the owned jar for the reading.
+- `SelfApplication` prints the compiler self-application costs.
 
-Axioms are separated from definitions to make the logical commitments explicit.
+The current compiled reading includes:
 
-- `Chapter2/ZFC.lean` contains axioms inherited from or aligned with ZFC-style
-  foundations.
-- `Chapter2/Axioms.lean` contains the additional axioms of measurement
-  introduced by the book.
+```text
+alphaScaledAt18 = 7298668569525773
+inverseAlphaScaledAt18 = 137011290548979455469
+```
 
-This separation makes it clear which assumptions are foundational and which are
-specific to the measurement framework, and allows the latter to be varied or
-examined independently.
+and the count-to-three jar:
 
-### Constructions
+```text
+a1=7294884998283556
+guess=7296978980210254
+a2=7299072962136952
 
-Each chapter may introduce *constructions*: derived objects, operators, or
-interfaces built from concepts defined in earlier chapters. These live in
-`Constructions.lean` files and contain no new axioms. Constructions exist to
-make later arguments expressible, not to extend the theory.
+inverse-alpha jar:
+[137003699673558215451 .. 137082352941176470588]
+```
 
-### Propositions
+The jar is the honest output. The device owns the bracket it can repeat; it
+does not claim an infinitely sharp real number.
 
-The propositions stated in each chapter of the book are formalized and proved
-in the corresponding `Propositions.lean` file. These proofs depend only on:
+## The Story Arc
 
-- earlier definitions,
-- stated axioms,
-- and constructions already introduced.
+The machine begins with the ability to tell two things apart. It carries the
+residue of that distinction through every representation it can build, rotates
+the resulting corridor until the physical and computational gauges line up,
+and then reports only the bracket it can repeat.
 
-This organization ensures that every proposition can be traced directly back
-to its assumptions, and that the Lean code follows the same logical progression
-as the manuscript.
+The serial plot is:
 
+1. A first difference appears.
+2. Difference becomes countable.
+3. Residue refuses to disappear.
+4. The tower turns around.
+5. The slip becomes a number.
+6. The number splits into charge, mass, phase, and value.
+7. The electron is named.
+8. The corridor rotates.
+9. The apparatus becomes physical.
+10. The compiler becomes the meter.
+11. The field closes.
+12. The machine refuses to own the limit.
+
+Every gauge manual follows this same plot. The manuals do not tell four
+different stories; they partition the same serial construction where the loops
+line up.
+
+## The Four Gauges
+
+The four books are gauges for reading the same instrument.
+
+| Gauge | Book | Native language | Function |
+|---|---|---|---|
+| 1 | Measurement | logic and type theory | Builds the corridor from distinction, counting, residue, and naming. |
+| 2 | Experimentation | mathematics and physics | Reads the corridor as force, orbit, field, coupling, and alpha. |
+| 3 | The Compiler | formal systems and computation | Reads elaboration effort as the meter and defines `alpha_c`. |
+| 4 | Scientific Computation | code walk and user guide | Shows the user how to run the device and interpret the reports. |
+
+`alpha_c` belongs first to the compiler gauge. The physical gauges may compare,
+calibrate, or interpret it, but the safest claim is computational:
+
+```text
+alpha_c is the price, measured in compiler effort, of making a distinction
+survive self-reference.
+```
+
+## README Writing Process
+
+Use this process whenever the root README is updated.
+
+1. Build first.
+
+   ```sh
+   cd device
+   lake build Measurement
+   ```
+
+2. Read only the live root surface first: `device/Measurement.lean`.
+
+3. Follow the serial construction before summarizing any gauge:
+
+   - Episodes 1-16: the frozen grammar and class tower.
+   - Episodes 17-23: backward descent, residue, trace, slip, bracket, pulse.
+   - Episodes 24-34: naming, rotation, Cavendish, orbit, Lorentz, Dirac.
+   - Episodes 35-40: force, charge, second variation, Meissner, Maxwell, alpha.
+   - Root reports: two descriptions, count-to-three jar, self-application.
+
+4. Separate claim types.
+
+   - **Built:** direct Lean definitions, theorems, `#eval` reports, and axiom
+     footprints from the current build.
+   - **Measured:** deterministic compiler/elaborator readings from the device.
+   - **Interpreted:** physics or manuscript language that explains what the
+     built measurement means.
+
+5. Keep the root README short. Put long derivations in the manuals. The README
+   should orient a reader, tell them how to run the instrument, and state what
+   the current measurement claims.
+
+6. Never replace the bracket with an external target. External physical values
+   can be cited by the manuals, but the device reading must be reported from
+   the build.
+
+## Honesty Rules
+
+- Preserve the distinction between `alpha_c` and the physical fine-structure
+  constant.
+- Do not smuggle target constants into definitions.
+- Grade built claims off `lake build`, `#eval`, and `#print axioms`.
+- Treat compiler version and device state as part of the gauge.
+- Treat the bracket as the owned result.
+
+## Repository Map
+
+- `device/` - Lean package containing the instrument.
+- `device/Measurement/` - serial construction and current measurement files.
+- `books/` - gauge manuals and manuscript work.
+- `gauge/` and `instrument/` - supporting gauge/instrument material.
+- `SPEC.md` - current product mandate.
+- `PLAN_RFC.md` - current convergence plan and cleanup discipline.
+- `SACRED_TEXTS.md` - project constitution.
