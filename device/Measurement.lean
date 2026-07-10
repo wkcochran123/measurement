@@ -1,76 +1,10 @@
 -- This module serves as the root of the `Measurement` library.
--- Import modules here that should be built as part of the library.
-import Measurement.Funge
-import Measurement.NamingClose
-import Measurement.Meanwhile18
-import Measurement.Meanwhile19
-import Measurement.Meanwhile20
-import Measurement.Meanwhile21
-import Measurement.Meanwhile22
-import Measurement.Meanwhile23
-import Measurement.Meanwhile24
-import Measurement.Meanwhile25
-import Measurement.Meanwhile26
-import Measurement.Meanwhile27
-import Measurement.Meanwhile28
-import Measurement.Meanwhile29
-import Measurement.Meanwhile30
-import Measurement.Meanwhile31
-import Measurement.Meanwhile32
-import Measurement.Meanwhile33
-import Measurement.Meanwhile34
-import Measurement.Meanwhile35
-import Measurement.Meanwhile36
-import Measurement.Meanwhile37
-import Measurement.Meanwhile38
-import Measurement.Meanwhile39
-import Measurement.Meanwhile39ElectromagneticCoupling
-import Measurement.Meanwhile40
-import Measurement.Meanwhile41
-import Measurement.Meanwhile42
-import Measurement.Meanwhile43
-import Measurement.Meanwhile44
-import Measurement.Meanwhile45
-import Measurement.Meanwhile46
-import Measurement.Meanwhile47
-import Measurement.Meanwhile48
-import Measurement.Meanwhile49
-import Measurement.Meanwhile50
-import Measurement.Meanwhile51
-import Measurement.Meanwhile52
-import Measurement.Meanwhile53
-import Measurement.Meanwhile54
-import Measurement.Meanwhile55
-import Measurement.Meanwhile56
-import Measurement.Meanwhile57
-import Measurement.Meanwhile58
-import Measurement.Meanwhile59
-import Measurement.Meanwhile60
-import Measurement.Meanwhile61
-import Measurement.Meanwhile62
-import Measurement.Meanwhile62SternGerlach
-import Measurement.Meanwhile62Mott
-import Measurement.Meanwhile62Photoelectric
-import Measurement.Meanwhile62Semiconductor
-import Measurement.Meanwhile62SmallAngle
-import Measurement.Meanwhile62Chirality
-import Measurement.Meanwhile63
-import Measurement.Meanwhile64
-import Measurement.Meanwhile65
-import Measurement.Meanwhile66
-import Measurement.Meanwhile67
-import Measurement.Meanwhile68
-import Measurement.Meanwhile69
-import Measurement.Meanwhile70
-import Measurement.Meanwhile71
-import Measurement.Meanwhile72
-import Measurement.Meanwhile73
-import Measurement.Meanwhile74
-import Measurement.Meanwhile75
-import Measurement.Meanwhile76
-import Measurement.Meanwhile77
-import Measurement.Meanwhile78
-import Measurement.Meanwhile79
-import Measurement.Episode93
-import Measurement.TwoDescriptions
-import Measurement.AlphaBoundCountToThree
+--
+-- THE CONVERGENT CONSTRUCTION (PLAN_RFC). The build is exactly the instances that
+-- realize the sacred SlipProcess law (Episode 3/4) plus the three printed targets.
+-- The over-resolving `Meanwhile 41-79` chain and the redundant Episode branch do NOT
+-- realize the count-to-3 law (they resolve past the horizon), so they are atticked.
+-- What remains is serial: sacred Episode 1-16, the slip chain, and the law's instances.
+import Measurement.TwoDescriptions        -- §1.1  the echo: two_descriptions = ... , [propext]
+import Measurement.AlphaBoundCountToThree  -- §1.2  the jar: a1 < alpha <= a2, [propext]
+import Measurement.SelfApplication         -- §1.3  the self-application: equal elaboration cost
