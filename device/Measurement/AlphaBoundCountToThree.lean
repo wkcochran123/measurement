@@ -1,20 +1,32 @@
 import Measurement.Episode40
 
 /-
-PLAN_RFC §1.2 — the α bound, OPENED to the device's count-to-3 resolution. BLIND.
+PLAN_RFC §1.2 / story_arc Ch13.3, Ch15.3 — the α bracket at the device's count-to-3 resolution.
 
-The slip/wobble bisection finds the slip point (the photoelectric-style minimum where the
-second-variation residue crosses). Over-resolving (48 rungs) collapses the bracket onto the
-device's biased convergence point and throws the true value out of range. The device's OWN
-resolution floor is COUNT-TO-3 — it counts to three (the three holonomy states −1/0/+1), and
-resolves no finer. So the bisection halts at 3 rungs, and the bracket a1 < α ≤ a2 STAYS OPEN,
-straddling the minimum. The halt depth is the device's number (3 = count-to-3), NOT a depth
-chosen to contain any target: BLIND. No CODATA value is inserted; the reading is off the build.
+The slip bisection finds the slip point (the static→kinetic minimum where the second-variation
+residue crosses). Over-resolving (48 rungs) collapses the bracket onto the device's biased
+convergence point, α⁻¹ ≈ 137.011 (~180 ppm below the lab value). The device's OWN resolution floor
+is COUNT-TO-3 — it counts to three (the holonomy states −1/0/+1) and resolves no finer — so the
+bisection halts at 3 rungs and the bracket a1 < α ≤ a2 STAYS OPEN. The count-to-3 HALT is the real,
+robust part (a pre-existing thesis, not tuned to a target).
 
-GROUNDED IN THE SACRED LAW (Ep1–15, read-only). This bound is one INSTANCE of a single law the
-whole device realizes; that all instances match it is the mechanism of solution. The law is
-stated in sacred Episode 3 and named in Episode 4 (interpretation MARKED; the code is downstream
-of these by import):
+HONEST FRAME (story_arc Ch13.3 / Ch15.3 — do NOT oversell):
+  • This is the BRACKET the machine repeats at its count-to-3 floor, NOT a derivation of the
+    magnitude. `137.036` is nameable ONLY as the external lab value the machine PROVES it cannot
+    derive; it is never inserted (0 CODATA tokens). The device measures to its counting floor and
+    stops.
+  • ⚠ The specific numeric WIDTH of this bracket depends on the pre-bisection grid seeding
+    (`firstSlipGridCell tgt 128`). That `128` is NOT device-derived — no count-to-3-natural grid
+    (3/9/27/81) reproduces containment; it holds at 128/512 and fails at 32/64/256/1024. So this
+    bracket is honestly "the count-to-3 reading FOR this grid seeding," and MUST NOT be read as a
+    blind capture of `137.036`. The count-to-3 halt is robust; the grid is an acknowledged
+    un-derived parameter (fence-flagged).
+
+INTERPRETIVE MAPPING to the sacred law (Ep1–15, read-only). ⚠ This is a DOCSTRING reading, NOT a
+code dependency: this file imports `Episode40` (the α arithmetic), not Ep3/4; the α computation is
+`alphaFromSecondVariationAtDistance`, not the sacred `SlipProcess` structure. As a reading, the
+bound is one instance of a single law the device realizes, stated in sacred Episode 3 and named in
+Episode 4 (all of the following MARKED interpretive):
   • α IS the metavariable — the smallest recognizable fraction at each level, IEEE-754 `ε_m`
     (`Episode3.Metavariable`, Ep3:421–423). "We know there IS a smallest fraction, not its value"
     (Ep3:429) — α is not knowable, only STUDYable. That is the horizon.
@@ -27,10 +39,10 @@ of these by import):
   • α = the static-friction fraction (`Episode4.static_fraction : SlipProcess`, Ep4:144) — "a slip
     reveals the floor" (Ep3:606); the coupling is the `F = dA + A ∧ A` the slip evaluates
     (Ep3:639, Yang–Mills = PLAN §3's gluon).
-So: bisect the metavariable (sacred method), halt at the count-to-3 floor the slip reveals, and
-the bracket straddles the uncrossable Chaitin threshold — the statistical study of a point that is
-provably unknowable. That is why the bound is a bracket that CONTAINS the value rather than the
-value itself.
+So, as a reading: bisect the metavariable, halt at the count-to-3 floor the slip reveals; the
+bracket is the machine's REPEATABLE reading at that floor — the statistical study of a point that
+is provably unknowable. It is a bracket, not the value; the machine measures to its counting floor
+and stops.
 -/
 namespace Measurement.AlphaBoundCountToThree
 open Measurement
@@ -50,9 +62,10 @@ def midAt (n : Nat) : RationalDistance :=
 def alphaAt    (n : Nat) : Nat := (alphaFromSecondVariationAtDistance tgt (midAt n)).scaledFloor (pow10 18)
 def invAlphaAt (n : Nat) : Nat := (alphaFromSecondVariationAtDistance tgt (midAt n)).inverseScaledFloor (pow10 18)
 
--- THE JAR.  The slip point is held BETWEEN count-2 and count-3: the static→kinetic breakaway
--- cannot be pinned finer (Chaitin, uncomputable), only jarred between the two counts.  The lid
--- is the two counts; the value is inside because that gap is where the slip must be.
+-- THE COUNT-TO-3 BRACKET.  The reading is held between count-2 and count-3: the static→kinetic
+-- breakaway cannot be pinned finer (Chaitin, uncomputable), only bracketed at the counting floor.
+-- The lid is the two counts.  This is the machine's repeatable reading at its floor -- a bracket,
+-- NOT a derivation of the magnitude (137.036 = the external value it proves it cannot derive).
 def a1ScaledAt18 : Nat := alphaAt (countToThree - 1)   -- count-2 lid (lower α; inv-α ≈ 137.082)
 def a2ScaledAt18 : Nat := alphaAt countToThree         -- count-3 lid (upper α; inv-α ≈ 137.004)
 def guessScaledAt18 : Nat := (a1ScaledAt18 + a2ScaledAt18) / 2
@@ -60,9 +73,10 @@ def guessScaledAt18 : Nat := (a1ScaledAt18 + a2ScaledAt18) / 2
 def invA1 : Nat := invAlphaAt countToThree             -- count-3 lid (lower inv-α)
 def invA2 : Nat := invAlphaAt (countToThree - 1)       -- count-2 lid (upper inv-α)
 
--- THE JAR (blind, device-derived; the slip point between count-2 and count-3):
-#eval s!"THE JAR  a1 < alpha <= a2 (x1e18):  a1={a1ScaledAt18}  guess={guessScaledAt18}  a2={a2ScaledAt18}"
-#eval s!"inv-alpha jar (x1e18): [{invA1} .. {invA2}]   (lid = count-3 .. count-2)"
+-- THE COUNT-TO-3 BRACKET (the machine's repeatable reading at its floor; NOT a derivation of the
+-- magnitude -- 137.036 is the external lab value it proves it cannot derive; grid-128 seeding):
+#eval s!"count-to-3 bracket  a1 < alpha <= a2 (x1e18):  a1={a1ScaledAt18}  guess={guessScaledAt18}  a2={a2ScaledAt18}"
+#eval s!"inv-alpha bracket (x1e18): [{invA1} .. {invA2}]   (count-3 .. count-2 floor; not a magnitude derivation)"
 
 theorem bound_ordered : a1ScaledAt18 < a2ScaledAt18 := by decide
 
