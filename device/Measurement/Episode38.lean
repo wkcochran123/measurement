@@ -1,4 +1,4 @@
-import Measurement.Meanwhile37
+import Measurement.Episode37
 
 /- MEANWHILE 38 -- CHARGE AT THE SLIP POINT. The slip-point distance is still
 the bracket measured in Meanwhile35. The charge is the elaboration charge from

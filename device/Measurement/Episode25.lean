@@ -1,4 +1,4 @@
-import Measurement.Meanwhile24
+import Measurement.Episode24
 
 /- MEANWHILE 25 -- ROTATE THE CORRIDOR. The corridor is already a number once the
 class instances interpret it. This file adds the rotation operation without

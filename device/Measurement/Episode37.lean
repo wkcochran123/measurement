@@ -1,4 +1,4 @@
-import Measurement.Meanwhile36
+import Measurement.Episode36
 
 /- MEANWHILE 37 -- ELABORATION COST IS ELECTRON CHARGE. The raw compiler pulse
 is no longer ancillary telemetry. It is the electron's charge magnitude in

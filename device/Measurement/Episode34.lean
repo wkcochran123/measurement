@@ -1,4 +1,4 @@
-import Measurement.Meanwhile33
+import Measurement.Episode33
 import Measurement.WeakDiracGalerkin
 
 /- MEANWHILE 34 -- THE DIRAC EXPERIMENT. Every assembly of the apparatus is a

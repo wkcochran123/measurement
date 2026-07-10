@@ -1,4 +1,4 @@
-import Measurement.Meanwhile19
+import Measurement.Episode19
 
 /- MEANWHILE 20 -- THE SLIP TEST. The trace executed up the ladder, rung 1 to the
 seam. The fold decides on each cell's own facts; .compute cells record the

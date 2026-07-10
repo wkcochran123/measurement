@@ -1,4 +1,4 @@
-import Measurement.Meanwhile40
+import Measurement.Episode40
 
 /-
 PLAN_RFC §1.2 — the α bound, OPENED to the device's count-to-3 resolution. BLIND.

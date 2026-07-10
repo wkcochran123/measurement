@@ -1,4 +1,4 @@
-import Measurement.Meanwhile17
+import Measurement.Episode17
 import Measurement.Episode16
 
 /- MEANWHILE 18 -- THE RESIDUE CHAIN (the seam: pass n closes, pass n+1 opens)

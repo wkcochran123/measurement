@@ -1,4 +1,4 @@
-import Measurement.Meanwhile25
+import Measurement.Episode25
 
 /- MEANWHILE 26 -- CAVENDISH BALANCE. The wheel from Meanwhile25 is the dial.
 The outside stimulus is the build, and the Cooper-pair binding residuals are the

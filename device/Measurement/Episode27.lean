@@ -1,4 +1,4 @@
-import Measurement.Meanwhile26
+import Measurement.Episode26
 
 /- MEANWHILE 27 -- STACK THE QUANTUM-GRAVITY CELLS. A single Cavendish cell
 calibrates the device gravitational constant. To tune toward alpha, build an

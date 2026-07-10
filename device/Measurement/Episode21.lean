@@ -1,4 +1,4 @@
-import Measurement.Meanwhile20
+import Measurement.Episode20
 
 /- MEANWHILE 21 -- THE NUMBER IN [CHARGE, CURVATURE]. Three trips along the
 ladder, at charge 0, 1, 2: f0 not enough force to move (unslipped, velocity 0,

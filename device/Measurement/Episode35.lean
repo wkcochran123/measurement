@@ -1,4 +1,4 @@
-import Measurement.Meanwhile34
+import Measurement.Episode34
 
 /- MEANWHILE 35 -- GRID THE SLIP, THEN BISECT IT. Meanwhile29 already knew that
 the proximity slip boundary lived between 1 and 2. Here the apparatus is not

@@ -1,4 +1,4 @@
-import Measurement.Meanwhile18
+import Measurement.Episode18
 
 /- MEANWHILE 19 -- THE CLASS TRACE. The second tape (law 5): one cell per class,
 descent seam-to-lower-bound; constructed-vs-slip fact pair per cell; a stack,

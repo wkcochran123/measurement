@@ -1,4 +1,4 @@
-import Measurement.Meanwhile29
+import Measurement.Episode29
 
 /- MEANWHILE 30 -- NORMALIZE THE CHARGE/MASS DIAL. The mass face already
 carries the value slot of its triplet. Now the charge face receives the same

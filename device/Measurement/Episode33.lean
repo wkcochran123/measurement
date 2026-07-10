@@ -1,4 +1,4 @@
-import Measurement.Meanwhile32
+import Measurement.Episode32
 
 /- MEANWHILE 33 -- LORENTZ BRACKETS THE ORBIT. The Newtonian-looking circular
 orbit in Meanwhile32 sits exactly at `v^2 = 1`. Relativity refuses to let the

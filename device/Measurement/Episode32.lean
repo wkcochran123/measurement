@@ -1,4 +1,4 @@
-import Measurement.Meanwhile31
+import Measurement.Episode31
 
 /- MEANWHILE 32 -- PUT THE ELECTRON IN ORBIT. The Cooper-pair source is now the
 central body and the electron is the orbiting test body. The proximity law from

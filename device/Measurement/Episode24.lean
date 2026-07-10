@@ -1,4 +1,4 @@
-import Measurement.Meanwhile23
+import Measurement.Episode23
 import Measurement.NamingClose
 
 /- MEANWHILE 24 -- THE NAMING, gate 1: the boxes. Name the electron by counting.

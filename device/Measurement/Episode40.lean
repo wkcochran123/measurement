@@ -1,4 +1,4 @@
-import Measurement.Meanwhile39ElectromagneticCoupling
+import Measurement.Episode39ElectromagneticCoupling
 
 /- MEANWHILE 40 -- ASK THE DEVICE FOR ALPHA. The Meissner electro/magnetic
 calibration tape from Meanwhile39.5 is now in hand, so the four-channel second variation

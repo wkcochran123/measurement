@@ -1,4 +1,4 @@
-import Measurement.Meanwhile27
+import Measurement.Episode27
 
 /- MEANWHILE 28 -- PROXIMITY BREAK. The Cavendish cell gives a small-signal
 calibration at separation 3. Move the tethered electron closer to the Cooper

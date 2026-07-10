@@ -1,4 +1,4 @@
-import Measurement.Meanwhile35
+import Measurement.Episode35
 
 /- MEANWHILE 36 -- RECOVER G FROM THE FORCE MEASUREMENT. The acceleration slip
 seam is now a force measurement. Once the force threshold and distance bracket

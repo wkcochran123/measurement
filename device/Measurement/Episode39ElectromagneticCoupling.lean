@@ -1,4 +1,4 @@
-import Measurement.Meanwhile39
+import Measurement.Episode39
 
 /- MEANWHILE 39.5 -- MEISSNER ELECTROMAGNETIC COUPLING EXPERIMENT. Before the
 apparatus asks for alpha, it must already have both sides of the coupling:

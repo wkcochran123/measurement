@@ -1,4 +1,4 @@
-import Measurement.Meanwhile38
+import Measurement.Episode38
 
 /- MEANWHILE 39 -- THE FOUR-CHANNEL SECOND VARIATION. The slip charge is not a
 single scalar once the apparatus is read locally. It has four simultaneous

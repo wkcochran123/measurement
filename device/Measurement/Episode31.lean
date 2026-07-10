@@ -1,4 +1,4 @@
-import Measurement.Meanwhile30
+import Measurement.Episode30
 
 /- MEANWHILE 31 -- THE MAGNETIC NEEDLE. Spin the corridor on the hidden side;
 on the visible side a magnet deflects a needle. The needle is not another face
