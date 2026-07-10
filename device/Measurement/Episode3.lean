@@ -391,7 +391,7 @@ class PHYSICAL  -- Bullshit meter ≈ 430
 
 -- However, calling this function provides a _NON_ _LINEAR_ response in the compiler because it has to go compute the
 -- first Chaitin bit.  And so it chugs trying to figure that out.  In the meanwhile, let's you and I compute the first Chaitin bit.
--- That way, you and I can know what the difference is __EXPLICITLY__.  Episode, we should explain that to the compiler.  So,
+-- That way, you and I can know what the difference is __EXPLICITLY__.  Meanwhile, we should explain that to the compiler.  So,
 -- Let's write some machine code using our bit and Turing construction.  Well, the first thing a program __NORMALLY__ does is
 -- allocate space in on the heap.  Either for a stack or for a sub-heap.  It's recursive, see?  Each GOSUB follows this same
 -- pattern.  The stack is resized and the heap is handed as is, but I've heard it both ways.  Pass by value or pass by reference.
