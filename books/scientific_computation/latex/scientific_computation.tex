@@ -1,5 +1,7 @@
 \documentclass[12pt,oneside]{book}
 \usepackage{amsmath,amssymb,setspace}
+\usepackage[backend=biber,style=numeric,sorting=nyt]{biblatex}
+\addbibresource{../../../instrument/measurement.bib}
 \usepackage{alltt}
 \usepackage{newunicodechar}
 % Vol 4 renders literal Lean; declare the glyphs the code walk uses so pdflatex
@@ -12,6 +14,9 @@
 \newunicodechar{·}{\ensuremath{\cdot}}
 \newunicodechar{≈}{\ensuremath{\approx}}
 \newunicodechar{½}{\ensuremath{\tfrac{1}{2}}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{→}{\ensuremath{\to}}
 \newunicodechar{—}{---}
 
 \begin{document}
@@ -43,16 +48,43 @@ settled science it names, generously, the people whose experiments and theorems 
 known ground. Where the citations thin out, something new is happening, with no prior name to cite; that silence is
 the signal to slow down and check. Generosity, then, is an instrument --- it makes the novel legible by contrast.
 
-The chapter that follows is the pilot: the fine-structure result, walked through as the literal Lean, told plainly
-enough to re-run. The tone stays light throughout; the volume opens, elsewhere, on a doesn't-matter particle hunting
-for posit-wrong ones, and never entirely puts the joke down --- because the joke keeps turning out to be the
-structure.
+What follows walks the whole instrument, in order of how the machine uses each idea: from the first told-apart
+difference to the coupling it can only bracket. The tone stays light throughout; the volume opens on a doesn't-matter
+particle hunting for posit-wrong ones, and never entirely puts the joke down --- because the joke keeps turning out
+to be the structure. The ending is the climax, not a disappointment: the machine measures to its own counting floor
+and reports the bracket it can repeat.
+
+A single note about the artifact, made once and then set aside. Everything in this book is not a thought experiment:
+it is built, and machine-checked, in a formal proof assistant (Lean), so that every claim here can be run and
+re-run by anyone, and each returns the same answer. That is the whole reason to trust a bracket rather than a story.
+But the implementation is not the subject. From here on this book describes the \emph{instrument} --- the
+construction and what it measures --- not the language it happens to be written in. When we say ``the machine'' we
+mean the instrument; the checkable artifact stands behind every line, silently, and you are always free to go run it.
 
 \tableofcontents
 
 \mainmatter
-\part{The Reading}
-\include{chapters/the_bound}
+\part{A Difference}
+\include{chapters/1}
+\include{chapters/2}
+\include{chapters/3}
+\part{The Turn}
+\include{chapters/4}
+\include{chapters/5}
+\include{chapters/6}
+\part{The Faces}
+\include{chapters/7}
+\include{chapters/8}
+\include{chapters/9}
+\part{The Closing}
+\include{chapters/10}
+\include{chapters/11}
+\include{chapters/12}
+\part{The Bound}
+\include{chapters/13}
+\include{chapters/14}
+\include{chapters/15}
 
 \backmatter
+\printbibliography
 \end{document}
