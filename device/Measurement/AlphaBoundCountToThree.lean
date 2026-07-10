@@ -40,34 +40,29 @@ def countToThree : Nat := 3
 
 def tgt : Nat := firstSlipTargetBetweenOneAndTwo
 
-/-- The slip bisection halted at the count-to-3 floor (NOT over-resolved). -/
-def countToThreeBracket? : Option DyadicSlipBracket :=
-  (firstSlipGridCell tgt 128).map (fun c =>
-    bisectDyadicSlipAux countToThree tgt (dyadicSlipBracketFromGridCell c))
+/-- The slip-bisection midpoint at count `n` (the reading if you counted to `n`). -/
+def midAt (n : Nat) : RationalDistance :=
+  match (firstSlipGridCell tgt 128).map (fun c =>
+    (bisectDyadicSlipAux n tgt (dyadicSlipBracketFromGridCell c)).midpointDistance) with
+  | some d => d
+  | none => { numerator := 1, denominator := 1 }
 
-def a1ScaledAt18 : Nat :=
-  match countToThreeBracket? with
-  | some b => (alphaFromSecondVariationAtDistance tgt b.lowerDistance).scaledFloor (pow10 18)
-  | none => 0
-def a2ScaledAt18 : Nat :=
-  match countToThreeBracket? with
-  | some b => (alphaFromSecondVariationAtDistance tgt b.upperDistance).scaledFloor (pow10 18)
-  | none => 0
+def alphaAt    (n : Nat) : Nat := (alphaFromSecondVariationAtDistance tgt (midAt n)).scaledFloor (pow10 18)
+def invAlphaAt (n : Nat) : Nat := (alphaFromSecondVariationAtDistance tgt (midAt n)).inverseScaledFloor (pow10 18)
+
+-- THE JAR.  The slip point is held BETWEEN count-2 and count-3: the static→kinetic breakaway
+-- cannot be pinned finer (Chaitin, uncomputable), only jarred between the two counts.  The lid
+-- is the two counts; the value is inside because that gap is where the slip must be.
+def a1ScaledAt18 : Nat := alphaAt (countToThree - 1)   -- count-2 lid (lower α; inv-α ≈ 137.082)
+def a2ScaledAt18 : Nat := alphaAt countToThree         -- count-3 lid (upper α; inv-α ≈ 137.004)
 def guessScaledAt18 : Nat := (a1ScaledAt18 + a2ScaledAt18) / 2
 
--- inv-alpha endpoints (for reading)
-def invA1 : Nat :=
-  match countToThreeBracket? with
-  | some b => (alphaFromSecondVariationAtDistance tgt b.upperDistance).inverseScaledFloor (pow10 18)
-  | none => 0
-def invA2 : Nat :=
-  match countToThreeBracket? with
-  | some b => (alphaFromSecondVariationAtDistance tgt b.lowerDistance).inverseScaledFloor (pow10 18)
-  | none => 0
+def invA1 : Nat := invAlphaAt countToThree             -- count-3 lid (lower inv-α)
+def invA2 : Nat := invAlphaAt (countToThree - 1)       -- count-2 lid (upper inv-α)
 
--- THE OPEN BOUND (blind, device-derived, count-to-3 resolution):
-#eval s!"a1 < alpha <= a2   (x1e18):  a1={a1ScaledAt18}  guess={guessScaledAt18}  a2={a2ScaledAt18}"
-#eval s!"inv-alpha bracket (x1e18): [{invA1} .. {invA2}]"
+-- THE JAR (blind, device-derived; the slip point between count-2 and count-3):
+#eval s!"THE JAR  a1 < alpha <= a2 (x1e18):  a1={a1ScaledAt18}  guess={guessScaledAt18}  a2={a2ScaledAt18}"
+#eval s!"inv-alpha jar (x1e18): [{invA1} .. {invA2}]   (lid = count-3 .. count-2)"
 
 theorem bound_ordered : a1ScaledAt18 < a2ScaledAt18 := by decide
 
