@@ -1,5 +1,7 @@
 # The Continuum Limit Effect
 
+**Register.** Physical experiment, treated as a *representation*: the device owns only the finite reading (the coarse mesh, its three tag-classes), on the name side. The continuum limit is *not* an owned object; it is the far side of the corridor --- the limit of an external refinable mesh --- gestured at and never claimed. The honest result is the gap between the two.
+
 The device reads a finite stress-strain mesh.  The stress is the device
 reading, the mixed second difference `pairDelta2`; the strain is the count from
 the origin.  Because the Measurement device collapses terms into the three tag

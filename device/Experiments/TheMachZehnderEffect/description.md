@@ -7,6 +7,8 @@ Labels: `te:mach-zehnder-updated`
 
 ## Description
 
+**Register.** Physical experiment, treated as a *representation*: a model of how reading which of two indistinguishable refinements was taken abolishes their recombination, on the near side --- the touch it describes is the machine's own reading, never the photon-in-itself. Used in Vol5 Ch3 §3.1 as the sharpest instance of "no passive reading" (the reading is the very act that tells the paths apart). Build verified: `claim_holds` axiom-clean (no axioms).
+
 **Note.** Although the Mach--Zehnder device originates in optical physics, the
 informational structure it exhibits does not depend on any physical
 mechanism.  The branching and recombination of admissible refinements is a

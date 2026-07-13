@@ -1,0 +1,113 @@
+\chapter{Difference Becomes Countable}
+
+\section{Barely more than telling apart}
+
+The ground floor left the machine holding decided differences and nothing else --- positions in an alphabet, each
+tanged apart from the rest, none of them yet a number. This chapter takes the first step off that floor, and the step
+is smaller than it looks. To count is not to invent a new faculty; it is to \emph{funge} --- to pool the marks the
+machine has already tanged apart into a single bin, and read off how many the bin holds. The count is barely more than
+telling apart. It falls out of the distinction the moment the machine is allowed to gather.
+
+Watch the gathering exactly. The machine has decided some marks the same and others different; funging pools every mark
+that decides the same way into one bin and keeps the bins that decide differently apart. That is the whole operation:
+a decided sameness pooled, a decided difference kept. And once the marks are pooled, a number is simply the size of a
+bin --- the cardinality of a class the machine assembled by nothing but its two verbs. Counting is admissible here
+precisely because it asks for no power the ground floor did not already have: the machine tanged the differences, it
+funges the sames, and the count is the tally of the funge. Nothing continuous has entered; nothing has been assumed.
+The number is a finite bin-size, decided all the way down.
+
+It is worth being exact about what makes a count \emph{admissible} in this construction, because the word is doing
+work. A count is admissible when every mark in the bin was decided in, one at a time, by a procedure that halted --- and
+inadmissible the moment it would require deciding infinitely many marks at once, or pooling by a characteristic the
+machine cannot settle. The machine counts only what it can enumerate: finite bins, filled by halting decisions,
+tallied by a funge that closes. A cardinality it could reach only by an oracle --- by helping itself to a completed
+infinity it never enumerated --- is not a count this machine performs. Countable, for this machine, means exactly
+\emph{reachable one halting decision at a time}, and the count that falls out of the distinction is always of that
+humble, admissible kind.
+
+In the two verbs the count is the funge's first fruit. The tange gave the marks apart; the funge pools the ones that
+decide alike into a bin; and the number is the bin read off. Where the ground floor could only tange --- select this
+mark against that --- this chapter adds the funge and gets counting for free, because a count \emph{is} a funge
+tallied. The machine did not learn to count so much as it learned to gather what it had already told apart, and discover
+that the gathering has a size.
+
+\section{A number is a finite condition}
+
+A bin-size is a whole number, and whole numbers are the easy case. The chapter's real work is the hard one: what does
+this machine mean by a number that is \emph{not} whole --- a value between the marks, the kind the later chapters will
+need when a bound falls between two counts? The answer is the deepest idea in the chapter, and it governs the whole
+book. A number, to this machine, is not a completed object sitting out in some continuum. It is a \emph{finite
+condition} --- a specification the machine can write down in full, that pins the value to an interval and no finer.
+
+Take the construction Dedekind~\cite{dedekind1872} gave, and read it as the machine reads it. A real number is fixed by
+a \emph{cut}: a rule that sorts every rational into those below it and those above. The machine cannot hold the whole
+cut at once --- that would be an infinity of decisions completed --- but it does not need to. It holds a \emph{finite}
+condition: a lower rational known to fall below and an upper known to fall above, a bracket the machine can actually
+write down. Each further decision the machine can afford tightens the bracket --- narrows the gap between the walls ---
+without ever closing it to a point. The value is approached through a tower of finite conditions, each one a thing the
+machine genuinely computed, and the number \emph{is} that tower, not any limit lying past its end. Cantor's~\cite{cantor1872} account of the reals as sequences of rationals converging on a value says the same from the sequence side; this
+machine keeps only the finite front of the sequence, the part it has actually reached.
+
+The point to hold is that the limit is never completed, and this is a feature, not a shortfall. A machine that claimed
+to hold the finished real --- every digit of it, the cut sorted to the last rational --- would be claiming to have run
+an infinity of decisions to a halt, which is exactly the oracle the preface refused. This machine claims less and can
+deliver it: a finite condition, a bracket around the value, tightened as far as its resolution allows and no further.
+The value is real, and the machine's grip on it is honest, because the grip is finite. When the far chapters need a
+number that falls between the counts, this is the number they will get: not a point fetched from the continuum, but a
+tower of finite conditions, approached and never finished.
+
+There is an older shape lurking under this, and it is worth naming because the whole construction will turn out to wear
+it. Cohen~\cite{cohen1963}, proving a question of set theory independent, approached an ungraspable object through an
+ascending tower of \emph{finite conditions} --- each one a thing you could write down, converging on a generic limit
+that no single condition ever reached. That is precisely the shape of a number here: a generic value, approached
+through finite conditions, never captured by any one of them. The machine will meet this shape again at the very end,
+when it hands back a bracket instead of a point; the bracket is a finite condition, and the value it brackets is the
+generic limit the finite conditions approach and honestly never complete.
+
+In the two verbs a number is a funge held open. Each finite condition funges together every value consistent with the
+bracket so far --- pools, under one interval, all the reals the machine cannot yet decide apart --- and each tightening
+tanges the interval finer, splitting off the values a new decision rules out. A whole number is the case where the
+funge closes on a single bin; a real is the case where it never quite does, and the machine keeps the open bin as its
+honest answer. Number, in this machine, is the funge of the indistinguishable held to a finite width --- which is the
+one shape the whole book is built to defend.
+
+\section{The first loop}
+
+The machine can tell apart and it can count; the last thing this chapter needs is the fact that these survive being
+\emph{re-expressed}. A number the machine builds must remain the same number when the machine encodes it, ships it
+through its own representation, and reads it back. This is the first loop, and it is the humble ancestor of every loop
+the book will close, up to the great one at the end. The test is simple and strict: send a decided difference around the
+machine's own encoding and demand that it come back the same difference.
+
+Lay the encoding out plainly. The machine writes its numbers in a code --- at bottom a \emph{binary} code, marks over a
+two-symbol alphabet --- and a code is trustworthy only if it is uniquely decodable, if no codeword is confused with the
+start of another. Kraft~\cite{kraft1949} gave the exact condition under which such a code exists, a finite inequality on
+the codeword lengths; and the machine's code satisfies it by construction, so that every value it writes down it can
+read back without ambiguity. Encoding, in other words, is not allowed to lose a distinction. A difference the machine
+tanged before encoding must be a difference it can tange after decoding; the round-trip is required to be faithful, and
+a code that failed this test would be no representation at all but a leak.
+
+Now close the loop and watch what is demanded. The machine takes a value --- a finite condition, a bracket --- encodes
+it into binary, and decodes it back. Repeatability is the requirement that what returns is numerically the same: the
+same bracket, the same decided differences, nothing added and nothing lost in the passage. When a value survives this
+round-trip unchanged, it has earned the name the machine gives it; it is \emph{representable}, a value the machine can
+hold, ship, and recover without drift. The first loop is thus the machine's first act of self-consistency: it does not
+merely build numbers, it checks that its own representation does not corrupt them. And a value that came back altered
+would not be a failure to be smoothed over --- it would be a signal, the first faint form of the residue the next
+chapter is entirely about.
+
+Notice the shape of the test, because the book will run it again at every scale. Build something; send it around a
+transformation; ask what came back changed. Here almost nothing changes --- the encoding is faithful, the loop closes
+clean, the number returns itself --- and that clean closure is exactly what lets the machine trust its own numbers. But
+the interesting cases, the ones the whole instrument is built to read, are the loops that \emph{do not} close clean:
+where something survives the round-trip altered, and the alteration is the measurement. The first loop is the training
+case, the one where the answer is ``nothing,'' so that when a later loop returns ``something,'' the machine knows a
+reading when it sees one.
+
+In the two verbs the first loop is a tange that certifies a funge. The round-trip tanges the returned value against the
+value sent --- decides whether they are the same --- and when the decision comes back \emph{same}, the machine funges
+them: the original and its round-tripped image are pooled as one number, two representations of a single value. The
+loop is faithful exactly when this funge closes with nothing left over. The machine can now tell apart, count, and
+represent --- and it has one loop's worth of evidence that its representation is honest. What it does not yet have is a
+loop that leaves a remainder. That remainder is the antagonist of the whole book, and the next chapter is where it
+first refuses to disappear.

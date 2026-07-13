@@ -7,6 +7,8 @@ Labels: `sec:brownian-quantum`, `eq:brownian-update`, `eq:brownian-diffusion`, `
 
 ## Description
 
+**Register.** Physical experiment, treated as a *representation*, on the near side: the coarse record's jitter is modelled as the projection's fiber seen *in motion* (finite resolution leaves micro-orderings the ledger cannot tell apart, so the kept summary wanders among them and the wandering reads as chance) --- a fact about the reading's resolution, not a source of randomness in the world. What the record does between the forgotten micro-states stays on the far side, unwatched. Used in Vol5 Ch1 §1.3 as the fiber's *dynamic* face (distinct from the static lossiness of §1.3.p6). Build verified: `claim_holds` depends on `[propext, Quot.sound]`.
+
 Brownian motion can be interpreted as a quantum informational phenomenon in
 the present framework.  The source of randomness is not mechanical noise but
 \emph{finite causal resolution}: each refinement step leaves a family of

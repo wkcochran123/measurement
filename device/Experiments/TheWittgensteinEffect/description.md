@@ -7,6 +7,8 @@ Labels: `ph:wittgenstein`
 
 ## Description
 
+**Register.** Physical/grammatical experiment, treated as a *representation* that stays on the near side: the ordering relation "after" is the machine's own grammar (a syntactic rule of the measurement language), not a fact of the world --- so what "after" is in the world, if anything, is left untouched on the far side. Used in Vol5 Ch1 §1.2 to show the name side runs all the way down into the model's structure (ties to Vol4 = *The Representational Grammar*). Build verified: builds clean.
+
 The relation “after” is a syntactic rule of the measurement language, not a
 dynamic fact of the world.  It does not require a model, a force, a metric,
 or a law of motion.  It is admitted by the grammar of admissible

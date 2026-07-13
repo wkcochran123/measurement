@@ -7,6 +7,8 @@ Labels: `ph:orbiting`
 
 ## Description
 
+\textbf{Register.} Physical experiment, treated as a \emph{representation}: the orbit is read as a closed refinement cycle in the device's own bookkeeping (feedback, not force), on the name side --- a model of the orbiting, not the orbit-in-itself, which stays on the far side.
+
 \textbf{Statement.}
 An orbit is a closed admissible refinement cycle stabilized by continuous
 error correction.  It is not sustained by force, but by feedback.

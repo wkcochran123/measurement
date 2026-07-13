@@ -1,3 +1,441 @@
 \chapter{Alpha As A Bracket}
 
-\emph{[This chapter is being written, one section at a time.]}
+\section{The internal formula}
+
+The internal constant \(\alpha_c\) is a computation-owned ratio in the model of one electron reading.  Its consumed
+inputs are a target integer \(t>0\), a natural-unit integer \(R>0\), and a positive rational distance
+\[
+                         d=p/q,\qquad p,q\in\mathbb N_{>0},\quad p>q.
+\]
+The dependency graph is
+\[
+(p,q)\longrightarrow\frac{p-q}{p},\qquad
+t\longrightarrow\frac{t}{R},\qquad
+\left(\frac{p-q}{p},\frac{t}{R},R\right)
+\longrightarrow
+\alpha_c=\frac{t(p-q)}{pR^2}.
+\]
+Thus
+\[
+                         \alpha_c^{-1}=\frac{pR^2}{t(p-q)}.
+\]
+Every denominator condition is part of the domain.  The formula uses the distance numerator and denominator, target,
+and natural-unit scale.  Other report fields---labels, flags, calibration-tape lengths, field-shaped annotations, or
+stored coefficients not multiplied into this expression---are unused metadata for this value.
+
+The second-variation ledger supplies the integers \(C=18\) and \(t=5\) for a crossing condition
+\[
+                         d_\ast^2=C/t=18/5.
+\]
+This condition determines a model-owned distance question.  Numerical routes approximate its positive root and then
+evaluate the exact rational formula above at their rational distance reports.  A stored second-difference value earns
+no role unless a dependency edge shows that it supplies \(C\) or \(t\).
+
+For a rational report \(p/q\), the scaled inverse at \(M>0\) is computed by exact floor division:
+\[
+ I_M=\left\lfloor
+ \frac{pR^2M}{t(p-q)}
+ \right\rfloor,\qquad
+ pR^2M=I_M\,t(p-q)+\rho_M,
+\quad0\leq\rho_M<t(p-q).
+\]
+Retaining numerator, denominator, \(M,I_M,\rho_M\) makes the display loss replayable.  A zero target, \(p=q\), or
+zero scale denominator rejects the inverse slice rather than producing a sentinel number.
+
+Two numerical routes are reported separately.  The direct route evaluates the positive crossing in one declared
+approximation and then slices the inverse ratio.  The stepped route iterates rational distances
+\[
+                         d_0\to d_1\to\cdots\to d_k
+\]
+through declared intermediate updates, retaining every residual, accepted and rejected step, denominator growth,
+and stop before applying the same inverse-ratio slice.
+
+At scale \(10^{18}\), the direct and stepped reports are exactly
+\[
+\begin{aligned}
+I_d&=137011290548979455469,\\
+I_s&=137011290753751157155,\\
+I_d&<I_s,\\
+I_s-I_d&=204771701686.
+\end{aligned}
+\]
+These are unequal integers from different processes.  Their difference is read exactly.  No claim of nearness,
+equality, containment, or physical agreement follows.
+
+\paragraph{Worked example 1: replaying one rational distance (computation).}
+Given \(p/q>1\), compute \(p-q\), form numerator \(t(p-q)\), denominator \(pR^2\), normalize by a positive greatest
+common divisor if requested, and perform scaled inverse floor division.  Replay verifies every multiplication,
+denominator condition, quotient, and remainder.  The distance \(q\) cancels from the simplified ratio only after the
+displayed exact algebra; it remains provenance for the distance report.
+
+\paragraph{Counterexample 2: stored fields are not dependencies (computation).}
+A report can contain a Boolean called closure and a coefficient called coupling while the arithmetic consumes neither.
+Their presence does not affect \(\alpha_c\).  Altering an unused field while the dependency graph and consumed values
+remain fixed leaves this numerical formula unchanged; any semantic claim attached to that field requires a separate
+certificate.
+
+\paragraph{Worked example 3: stepped iteration versus final slice (computation).}
+The stepped route produces a trace of rational states and resource costs.  Its last state is then projected to
+\((I_s,\rho_s)\).  Keeping only \(I_s\) erases the iterative route, rejected steps, exact rational, and floor residue.
+The slice can be compared numerically with the direct slice, but it cannot establish process equivalence.
+
+\paragraph{Vacuum draw: Gosset projection exposes what a slice forgets (computation).}
+The Gosset experiment sharpens that distinction without supplying another alpha route.  Its finite record domain is
+\(H=\mathbb Z^2\), with \(x=(x_u,x_\perp)\), and the named hypothesis direction is \(u=(1,0)\).  The performed
+transform is the pair
+\[
+ T_G(x)=\bigl(\operatorname{proj}_u x,\operatorname{res}_u x\bigr)
+       =\bigl((x_u,0),(0,x_\perp)\bigr).
+\]
+It demonstrates three exact properties over this domain: projection is idempotent, the residual is orthogonal to
+\(u\) under the integer dot product, and projection plus residual reconstructs the record coordinatewise.  The
+exported experiment then applies the deliberately lossy projection
+\(\pi_G(x)=\langle x,u\rangle=x_u\) to a pair of records.  Its canonical inputs \((3,5)\) and \((3,9)\) are distinct
+but both return the same shadow \(3\); replacing the second record by \((1,0)\) makes the run return false.  There is
+no iterative search: equality of shadows is decided and the run stops, while the failed control exposes the boundary.
+
+The canonical decompositions are \(T_G(3,5)=((3,0),(0,5))\) and
+\(T_G(3,9)=((3,0),(0,9))\).  The residual dot product with \(u\) is zero in both cases, but the residuals are unequal.
+If \texttt{residual} were replaced by the original record, the check would read
+\(\langle(3,5),u\rangle=3\ne0\) and fail.  Thus orthogonality depends on subtracting the projection; it is not a
+consequence of calling the second coordinate residual.  Because \(u=(1,0)\) is fixed, changing the axis or dot
+product defines another projection.
+
+The commuting statement is exact but narrow:
+\[
+                         \pi_G(\operatorname{proj}_u x)=\pi_G(x).
+\]
+The reconstruction statement needs both outputs of \(T_G\); it does not hold from \(\pi_G(x)\) alone.  This is the
+same structural warning as the final scaled-integer slice: equality after a projection can coexist with inequality
+of sources.  It does not imply that the two alpha routes share an error, distribution, or process.
+
+The source description mentions a normalized statistic, but the executable computes no norm or division.  Its
+evidence is the exact projection/residual decomposition and witnessed fiber, not a Student distribution or p-value.
+
+Richardson extrapolation is not licensed merely because direct and stepped routes yield two values.  They are not
+declared nested mesh levels of one asymptotic family, and no common error expansion or independently stabilized order
+is supplied.  Choosing an order from these two reports to manufacture another value is rejected.
+
+The dependency audit topologically replays raw inputs, crossing data, rational distance construction, exact ratio
+products, normalization, scaled-floor quotient and remainder, route iterations, projections, and comparison rows.
+It records generated versus consumed fields and rejects orphan, cyclic, or type-incompatible edges.
+
+Budgets distinguish crossing evaluation, direct approximation, stepped iterations, rational normalization,
+multiplication and division, denominator and bit growth, scale conversion, storage, comparison, and replay.  Stops
+include \textsc{complete}, \textsc{invalid-target}, \textsc{invalid-unit-scale}, \textsc{distance-domain},
+\textsc{zero-inverse-denominator}, \textsc{iteration-budget}, \textsc{arithmetic-budget},
+\textsc{bit-growth}, \textsc{overflow}, \textsc{nonconvergent}, \textsc{dependency-missing},
+\textsc{unused-field-claim}, \textsc{projection-loss-unbounded}, and \textsc{replay-failure}.
+
+A certificate records \(C,t,R,p,q\), crossing and distance domains, route identity, every direct or stepped state,
+accepted and rejected updates, consumed inputs, unused stored fields, exact products, normalized ratio, scale,
+quotient and remainder, bit lengths, projections and erasures, budgets, stops, checked scope, unresolved frontier,
+releases, dependency lock, snapshot hash, configuration, protocol, run identity, platform, deterministic inputs, and
+declared nondeterministic inputs.
+
+Comparison reports exact equality, resolution equality under a declared quantizer, and uncertainty-region
+compatibility as independent pass/fail/unresolved rows.  Here the exact scaled-integer row fails because \(I_d\ne I_s\).
+Any resolution row states only its quantizer result; no uncertainty row exists without a declared uncertainty model.
+Same-process additionally requires matching inputs, update law, states, traces, costs, stops, configuration, and
+provenance; direct and stepped routes do not satisfy that identity.
+
+Governance fixes the internal formula, domains, consumed dependency graph, crossing data, distance representation,
+direct and stepped algorithms, arithmetic and normalization, scale and projection, budgets, stop priority, comparison
+relations, and certificate grammar.  A changed field begins a new report.
+
+\(\alpha_c\) is the compiler structure constant and model-owned electron reading.  It is not the laboratory
+fine-structure value \(137.036\), and it is not a physical coupling, self-energy, field strength, or apparatus
+observation.  The model cannot bridge its name to the world's answer.  A physical comparison would require a
+covariant apparatus action, calibrated observation model, uncertainty, interaction trace, back-action, and
+provenance.
+
+The action ledger is exact.  Formula, domains, crossing inputs, distance representation, routes, arithmetic, scale,
+dependency graph, comparisons, budgets, and certificate grammar are \emph{posited}.  Exact ratio identities,
+floor-division identities, dependency reachability, iteration replay, cross-route arithmetic comparisons, and
+certificate implications are \emph{demonstrated}.  Inputs, route states, consumed fields, unused fields, products,
+scaled integers, difference, remainders, resources, stops, and provenance are \emph{read}.  Equality or nearness of
+the unequal reports, process identity, Richardson extrapolation without an asymptotic family, physical meaning,
+external alpha, and every bridge from name resemblance remain \emph{reserved}.
+\section{The count-to-three bracket}
+
+The crossing is the positive quadratic surd
+\[
+                         d_\ast=\sqrt{\frac{18}{5}}=\frac{\sqrt{90}}5.
+\]
+Its simple continued fraction is
+\[
+                         d_\ast=[1;\overline{1,8,1,2}],
+\]
+whose convergents begin
+\[
+                         \frac11,\quad\frac21,\quad\frac{17}{9},
+\quad\frac{19}{10},\quad\frac{55}{29},\quad\frac{74}{39},\ldots.
+\]
+Each partial quotient is obtained by floor division followed by reciprocal of the positive fractional remainder.
+The repeating block describes this surd; it is not inferred from decimal formatting.
+
+The recurrence
+\[
+p_k=a_kp_{k-1}+p_{k-2},\qquad
+q_k=a_kq_{k-1}+q_{k-2}
+\]
+with standard initial pairs generates exact integer convergents.  Replay retains every partial quotient, product,
+sum, numerator, denominator, determinant
+\[
+                         p_kq_{k-1}-p_{k-1}q_k=(-1)^{k-1},
+\]
+and comparison with the quadratic equation.
+
+The parameter \(K=3\) means three whole partial quotients:
+\[
+                         [1;1,8]=17/9.
+\]
+The adjacent previous convergent is \(2/1\).  Exact comparisons give
+\[
+\left(\frac{17}{9}\right)^2=\frac{289}{81}<\frac{18}{5}<4
+=\left(\frac21\right)^2,
+\]
+since \(1445<1458\) and \(18<20\).  Positivity therefore gives
+\[
+                         \frac{17}{9}<d_\ast<2.
+\]
+
+The internal inverse-ratio map from the preceding section is
+\[
+                         I(d)=\frac{R^2}{t}\frac{d}{d-1},
+\qquad R=18,\quad t=5,\quad d>1.
+\]
+It is strictly decreasing on this domain.  Evaluating the two rational walls exactly yields
+\[
+\begin{aligned}
+I(2)&=\frac{18^2}{5}\frac{2}{1}=\frac{648}{5}=129.6,\\
+I(17/9)&=\frac{18^2}{5}\frac{17}{8}
+=\frac{5508}{40}=\frac{1377}{10}=137.7.
+\end{aligned}
+\]
+Thus the \(K=3\) owned jar is the open interval
+\[
+                         \boxed{(129.6,\ 137.7)}.
+\]
+Open endpoints mean the exact surd crossing is strictly between the rational distance walls and its mapped internal
+value is strictly between their inverse-ratio images.  The endpoints are owned diagnostics computed from adjacent
+convergents; neither endpoint is reported as the internal point value.
+
+\paragraph{Worked example 1: exact wall ordering (computation).}
+The lower inverse wall is \(648/5\), the upper \(1377/10\), and
+\[
+                         \frac{648}{5}<\frac{1377}{10}
+\quad\Longleftrightarrow\quad6480<6885.
+\]
+This orders the report without floating arithmetic.  Formatting the rationals as \(129.6\) and \(137.7\) is a
+lossless decimal representation here because both denominators divide \(10\).
+
+\paragraph{Worked example 2: one more partial quotient is a new report (computation).}
+At \(K=4\), the next convergent is \(19/10\) and the adjacent pair changes.  The resulting wall computation belongs
+to a different resolution-depth report.  It cannot be inserted into the \(K=3\) certificate while retaining the
+same stop and ownership.
+
+The finite algorithm iterates Euclidean floor and reciprocal steps, slices the convergent stream at \(K\), selects
+the adjacent pair, checks straddling against \(5d^2-18\), applies the exact inverse-ratio map to each wall, reverses
+the wall order because the map decreases, and emits an open interval.  Every domain, orientation, and ordering check
+is recorded.
+
+The three-point Gauss--Legendre rule is a separate marked diagnostic.  It samples an integrand at three nodes with
+weights
+\[
+                         5/9,\quad8/9,\quad5/9.
+\]
+Its three counts quadrature nodes, not continued-fraction partial quotients.  It neither generates the wall pair nor
+supplies the interval width, and the jar is not a quadrature remainder.  Results from that diagnostic require their
+own integrand, interval transform, node approximation, arithmetic, and error record.
+
+The older dyadic-grid interval is superseded and is not an alternative owned bracket.  No grid seed, denominator
+doubling, or midpoint bisection participates in this continued-fraction certificate.
+
+\paragraph{Counterexample 3: two threes do not identify algorithms (computation).}
+A \(K=3\) continued-fraction report and a three-node quadrature report both contain the integer \(3\).  Their inputs,
+iterations, data structures, outputs, error models, and stops differ.  Equal counts do not establish same-number or
+same-process.
+
+\paragraph{Counterexample 4: a wall is not a selected value (computation).}
+Returning \(129.6\), \(137.7\), their midpoint, or a formatted internal diagnostic as the jar's point would add a
+selection rule absent from the report.  The owned object is the ordered open interval and its construction trace.
+
+Budgets distinguish partial quotients, Euclidean divisions, numerator and denominator growth, quadratic comparisons,
+wall-map arithmetic, scale formatting, storage, and replay.  Stops include \textsc{complete},
+\textsc{invalid-radicand}, \textsc{nonpositive-remainder}, \textsc{partial-quotient-budget},
+\textsc{insufficient-convergents}, \textsc{bit-growth}, \textsc{overflow}, \textsc{straddling-failure},
+\textsc{wall-domain}, \textsc{ordering-failure}, \textsc{mapping-failure}, and \textsc{replay-failure}.
+
+A certificate records the exact radicand, continued-fraction convention, partial quotients, convergent recurrence and
+states, determinant checks, \(K\), adjacent-wall selection, exact quadratic comparisons, inverse-ratio map and domain,
+wall products and reductions, open-endpoint status, projections and formatting, budgets, stops, checked scope,
+unresolved frontier, releases, dependency lock, snapshot hash, configuration, protocol, run identity, platform,
+deterministic inputs, and declared nondeterministic inputs.
+
+Comparison reports exact equality, resolution equality under a declared quantizer, and uncertainty compatibility as
+separate rows.  The jar itself is an owned interval report, not an uncertainty region unless an uncertainty model
+explicitly makes it one.  Same-process requires identical continued-fraction convention, \(K\), recurrence, trace,
+wall map, arithmetic, budgets, configuration, and provenance.
+
+Governance fixes the crossing equation, positive-root domain, continued-fraction convention, \(K\), adjacent-wall
+policy, straddling test, internal inverse map, arithmetic and formatting, budgets, stop priority, comparison relations,
+and certificate grammar.  A changed field begins a new report.
+
+The jar belongs to internal \(\alpha_c\).  The laboratory number \(137.036\) is not inserted, compared by proximity,
+or claimed to lie inside it.  No statement that a true coupling lies below a floor is made.  A physical comparison
+would require the world-facing apparatus, observation model, calibration, uncertainty, interaction trace, back-action,
+and provenance that the computation cannot supply from its own names.
+
+The action ledger is exact.  Crossing, continued-fraction convention, \(K\), wall policy, inverse map, algorithms,
+arithmetic, budgets, and certificate grammar are \emph{posited}.  Surd identities, recurrence and determinant
+identities, exact straddling, monotonic wall mapping, endpoint derivations, ordering, and certificate implications are
+\emph{demonstrated}.  Partial quotients, convergents, wall values, comparisons, resources, stops, and provenance are
+\emph{read}.  A selected point from the jar, quadrature as bracket source, dyadic ownership, process identity from
+equal count, laboratory containment or proximity, physical coupling, and every world answer absent apparatus remain
+\emph{reserved}.
+\section{Nodes, quadrature, and root finding}
+
+Quadrature, root finding, and continued-fraction enclosure answer different questions.  A quadrature rule approximates
+an integral.  A root algorithm seeks or encloses a zero of a declared function.  A continued-fraction report brackets
+the internal ratio through rational walls.  Shared nodes, counts, or numerals do not merge these reports.
+
+The three-point Gauss--Legendre rule on \([-1,1]\) uses
+\[
+\xi_1=-\sqrt{3/5},\qquad \xi_2=0,\qquad \xi_3=\sqrt{3/5},
+\]
+and weights
+\[
+                         w_1=5/9,\qquad w_2=8/9,\qquad w_3=5/9.
+\]
+For an interval \([a,b]\), map
+\[
+x_j=\frac{a+b}{2}+\frac{b-a}{2}\xi_j
+\]
+and compute the finite weighted sum
+\[
+Q_3(f)=\frac{b-a}{2}\sum_{j=1}^3w_jf(x_j).
+\]
+This is a marked diagnostic.  It is exact for polynomials through degree five under exact nodes, weights, and
+arithmetic.  For general \(f\), an error claim requires smoothness and a demonstrated derivative or analytic bound.
+
+The irrational nodes must be approximated or enclosed.  One robust method brackets \(z=\sqrt{3/5}\) by positive
+rationals \(\ell<u\) satisfying
+\[
+                         5\ell^2<3<5u^2,
+\]
+then refines by bisection or a safeguarded rational update.  The node certificate retains the exact inequalities,
+iteration trace, stop width, and propagation of node uncertainty through \(f\) and the weighted sum.  A decimal node
+without an enclosure supplies only a formatted approximation.
+
+\paragraph{Worked example 1: polynomial quadrature (computation).}
+For \(f(x)=x^4\) on \([-1,1]\),
+\[
+Q_3(f)=\frac{5}{9}\left(\frac35\right)^2+
+\frac89(0)+\frac59\left(\frac35\right)^2=\frac25,
+\]
+which equals the exact integral.  This validates the declared rule on this input.  It does not make every three-point
+sum exact.
+
+Root finding begins with a function \(g:D\to\mathbb R\) or an exact rational predicate derived from it.  A sign-change
+bracket \([\ell,u]\subset D\) requires
+\[
+                         g(\ell)g(u)<0.
+\]
+Existence of an interior root additionally uses continuity on \([\ell,u]\).  Uniqueness requires a separate condition,
+such as a derivative of fixed nonzero sign.  Endpoint signs, continuity, and uniqueness are distinct certificate rows.
+
+A safeguarded iteration proposes a Newton, secant, or interpolation step only when it lies in the current bracket and
+passes domain checks; otherwise it takes the midpoint.  After evaluating the new point, it retains the subinterval
+with opposed endpoint signs.  The trace records proposals, fallbacks, residuals, widths, accepted slices, rejected
+slices, and resource use.  A small residual without conditioning information is not a root-error bound.
+
+\paragraph{Worked example 2: exact crossing enclosure (computation).}
+For
+\[
+                         g(d)=5d^2-18,
+\]
+the rational points \(17/9\) and \(2\) satisfy
+\[
+                         g(17/9)=-13/81<0,\qquad g(2)=2>0.
+\]
+Continuity gives a root in the open distance interval \((17/9,2)\); positivity and strict increase for \(d>0\)
+identify the positive root as \(\sqrt{18/5}\).  Mapping these walls through the declared internal inverse formula is
+the continued-fraction jar construction, not a quadrature result.
+
+\paragraph{Counterexample 3: residual alone is not enclosure (computation).}
+A point \(x\) with small \(|g(x)|\) may be far from a root when \(g\) is flat, badly scaled, or contaminated by
+rounding.  Without a sign-change bracket or a demonstrated inverse-slope bound, the report owns a residual only.
+
+Refinement studies require one compatible asymptotic family.  For nested quadrature partitions or root discretizations
+with
+\[
+                         A(h)=A^\ast+Ch^p+O(h^{p+1}),
+\]
+Richardson extrapolation may cancel the leading term when \(p\) is derived or independently estimated from at least
+three compatible levels, raw differences decrease, observed order stabilizes, and a demonstrated remainder bound
+holds.  Direct and stepped internal routes are not automatically such levels, and choosing \(p\) to hit a target is
+rejected.
+
+\paragraph{Counterexample 4: three nodes are not resolution-depth three (computation).}
+The quadrature rule counts nodes.  The internal jar's \(K=3\) counts whole continued-fraction partial quotients.
+Quadrature nodes and weights neither generate the convergents nor define the jar width.  The jar is not a quadrature
+remainder.
+
+The external laboratory inverse alpha may be reported as \(137.036\) only as a separately sourced physical
+observation summary.  It belongs to an apparatus, physical model, units and conventions, calibration chain,
+uncertainty, data reduction, and provenance.  The covariant acquisition is
+\[
+                         (N,s)\longmapsto(N',s',y,\Gamma),
+\]
+and retains sensor loading, actuation, energy and material exchange, latency, hysteresis, drift, saturation, geometry,
+environment, prior state, rejected outcomes, back-action, and alternative causal models.  The world answers this
+intervention; the number is not produced by the internal model.
+
+Internal \(\alpha_c\), its direct and stepped diagnostics, its count-to-three open jar, and the laboratory report are
+different typed objects.  This section makes no nearness, containment, prediction, capture, or real-versus-model
+staging.  A shared symbol is forbidden until typed conversion, apparatus calibration, uncertainty, and provenance
+justify a particular comparison.
+
+The comparison pipeline reports:
+\[
+\begin{array}{ll}
+\text{exact equality}&\text{equality after typed conversion},\\
+\text{resolution equality}&\text{equal labels under one declared quantizer},\\
+\text{uncertainty compatibility}&\text{overlap of declared regions}.
+\end{array}
+\]
+Each independently passes, fails, or remains unresolved.  Same-process requires matching inputs, numerical
+transitions, traces, costs, models, apparatus action, configuration, and provenance.  A combined agreement bit may
+not erase which relation was tested.
+
+Budgets distinguish node-enclosure iterations, function evaluations, weighted arithmetic, root proposals and
+fallbacks, bracket refinements, exact and floating growth, derivative or continuity checks, asymptotic levels,
+uncertainty propagation, apparatus samples, and replay.  Stops include \textsc{complete},
+\textsc{node-domain}, \textsc{node-enclosure-budget}, \textsc{function-domain},
+\textsc{nonfinite-evaluation}, \textsc{quadrature-budget}, \textsc{error-bound-unavailable},
+\textsc{no-sign-change}, \textsc{continuity-unestablished}, \textsc{root-budget},
+\textsc{uniqueness-unresolved}, \textsc{refinement-incompatible}, \textsc{order-unstable},
+\textsc{uncertainty-unresolved}, \textsc{calibration-missing}, and \textsc{provenance-incomplete}.
+
+A certificate records diagnostic type, function and domain, exact or enclosed nodes, weights, interval transform,
+consumed evaluations, weighted products and sum, quadrature error assumptions, root endpoints and signs, continuity
+and uniqueness conditions, proposals and fallbacks, residuals, accepted and rejected slices, refinement family and
+observed order, arithmetic and uncertainty bounds, budgets, stops, checked scope, unresolved frontier, releases,
+snapshot hash, configuration, protocol, run identity, platform, deterministic inputs, declared nondeterministic
+inputs, and---for physical comparison---the complete apparatus interaction record.
+
+Governance fixes diagnostic type, domains, node and weight conventions, approximation and enclosure methods,
+quadrature transform, root predicate, continuity and uniqueness evidence, iteration and fallback rules, refinement
+and error model, physical comparison source, apparatus requirements, uncertainty, budgets, stop priority, comparison
+relations, and certificate grammar.  A changed field begins a new report.
+
+The action ledger is exact.  Diagnostic type, function, domains, nodes, weights, algorithms, smoothness and error
+models, physical apparatus model, comparisons, budgets, and certificate grammar are \emph{posited}.  Polynomial
+exactness, node-enclosure implications, weighted-sum identities, conditional root existence and uniqueness,
+safeguarded-bracket invariants, conditional Richardson cancellation, apparatus calibration implications, and
+certificate implications are \emph{demonstrated}.  Evaluations, node bounds, sums, signs, residuals, brackets,
+iterations, errors, physical observations, stops, and provenance are \emph{read}.  General exactness from three
+nodes, a root from residual alone, quadrature as continued-fraction source, target-fitted extrapolation, laboratory
+capture or containment, identity of \(\alpha_c\) with laboratory alpha, and every physical bridge without apparatus
+remain \emph{reserved}.

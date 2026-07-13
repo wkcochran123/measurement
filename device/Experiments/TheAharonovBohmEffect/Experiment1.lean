@@ -1,5 +1,5 @@
 import Experiments.Common
-import Measurement.Episode84
+import Measurement.Apparatus
 
 /-!
 # The Aharonov-Bohm Effect — an effect-specific, falsifiable, device-coupled test

@@ -1,48 +1,576 @@
 \chapter{A Difference Appears}
 
-\section{The first fact}
+\section{Difference is a predicate, not a particle}
 
-The instrument's first act is not a measurement. Before it can weigh, count, or read anything, it does something
-smaller and stranger: it tells a \emph{this} from a \emph{that}. That capacity --- to \emph{distinguish} --- is the
-machine's ground floor, and the construction names it exactly that: the distinguishable.
+Scientific computation begins by fixing a grammar before assigning meaning to its names.  Let \(M\) be a finite
+alphabet of marks:
+\[
+\begin{array}{rcl}
+\textit{mark}&::=&m_0\mid\cdots\mid m_{q-1},\\
+\textit{question}&::=&\operatorname{diff}(s,\sigma),\\
+\textit{answer}&::=&\operatorname{yes}(w)\mid\operatorname{no}(r).
+\end{array}
+\]
+The payload \(w\) certifies that two marks differ; \(r\) certifies that they do not.  The grammar does not make a mark
+a material object, a question a detector, or an answer an observation.  Those names require separate provenance.
 
-The test is austere. The machine carries a single running index --- a \emph{level} --- and two things are
-distinguishable precisely when they sit at different levels. Nothing else is consulted. This is the identity of
-indiscernibles that Leibniz~\cite{leibniz1686} stated three centuries ago, run backwards: if you cannot tell two
-things apart, they are one; the instant you can, a difference exists. The level-index itself is the ordinary
-hierarchy of \emph{universes} from type theory~\cite{martin1970}, pressed into one humble service --- to give the
-word ``different'' a mechanical meaning, so that a machine and not a person can decide it.
+For a reference \(\sigma\in M\), the governing question is
+\[
+        D_\sigma(s):=(s\ne\sigma).
+\]
+A resolver \(\Delta\) must terminate with an evidenced judgment,
+\[
+ \frac{w:s\ne\sigma}{\Delta(s,\sigma)\Downarrow\operatorname{yes}(w)}
+ \qquad
+ \frac{r:\neg(s\ne\sigma)}{\Delta(s,\sigma)\Downarrow\operatorname{no}(r)}.
+\]
+A later routine may erase the evidence:
+\[
+ E(\operatorname{yes}(w))=1,\qquad E(\operatorname{no}(r))=0.
+\]
+This external Boolean encoding is lossy.  Its bit records the selected branch but not the certificate that licensed it.
 
-Notice what has \emph{not} happened. Nothing is measured. There is no quantity, no unit, no dial --- and, the
-construction is emphatic about this, no storage: the difference allocates nothing. It is prior to counting. The
-machine must be able to say \emph{these two are not the same} before it can say how many, or how much, and that
-saying is free.
+Reading has a direction.  Let \(X\) be a finite collection of records and let
+\(e:X\to M\) represent each record by a mark.  Construction sends records forward through \(e\).  A question
+\(q:M\to\{0,1\}\), or its evidence-bearing refinement, is read contravariantly by pullback:
+\[
+        e^*q:=q\circ e:X\to\{0,1\}.
+\]
+For a second representation \(g:M\to N\),
+\[
+        (g\circ e)^*=e^*\circ g^*.
+\]
+The order reverses: first pull the question on \(N\) through \(g\), then through \(e\).  This is an external
+representation schema, not a claim that a particular map \(e\) has already been constructed.  It separates the
+covariant forward construction of a representation from the contravariant act of reading it.
 
-This is where any instrument has to begin. You cannot read a scale whose marks you cannot resolve into distinct
-things; resolution is logically upstream of measurement --- the same point Nyquist~\cite{nyquist1928} and
-Shannon~\cite{shannon1948} would later make about signals, made here about symbols. The whole book is the story of
-what the machine builds on this one act, and, at the very end, of the single thing it builds \emph{toward} and still
-cannot pin. It starts here: a difference, told apart, not yet counted.
+An audit record is
+\[
+ \mathcal R=(X,M,e,\sigma,D,\Delta,E,(A,R),J,F,P),
+\]
+where \(J\) states invariants, \(F\) states failures, and \(P\) tags computation, physics, or interpretation.  For
+\(q=E\circ\Delta(-,\sigma)\),
+\[
+ A=\{x\in X\mid(e^*q)(x)=1\},\qquad R=\{x\in X\mid(e^*q)(x)=0\}.
+\]
+The words accepted and rejected are conventional branch labels, not value judgments.
 
-\section{The symbol as a label}
+The finite algorithm is explicit.  Given \(L=[x_0,\ldots,x_{n-1}]\) and an independent decision budget \(N\),
+initialize two empty output lists and \(i\leftarrow0\).  While \(i<n\) and \(i<N\), compute \(m_i=e(x_i)\), resolve
+\(\Delta(m_i,\sigma)\), append the record and its evidence to the corresponding slice, and update
+\(i\leftarrow i+1\).  Stop with reason \textsc{complete} when \(i=n\), \textsc{budget} when \(i=N<n\), or
+\textsc{resolver-domain} when the declared resolver does not apply to \((m_i,\sigma)\).  If \(k\) records are visited,
+its cost is
+\[
+ C(L,N)=\sum_{i=0}^{k-1}\!
+ \left(C_e(x_i)+C_\Delta(e(x_i),\sigma)+C_{\rm append}(i)\right),
+ \qquad k\le\min(n,N).
+\]
+Its certificate contains the visited prefix \([x_0,\ldots,x_{k-1}]\), both evidence-bearing slices, the stop reason,
+and every declared Boolean erasure.  Coverage and exclusivity apply only to that prefix: \(|A|+|R|=k\).  A complete
+run has \(k=n\); a budget or resolver-domain stop has \(k=i\) and says nothing about the unvisited suffix.  Stable
+append preserves relative order \emph{within} each branch, but separating the branches loses their original
+interleaving.  Classification error is zero relative to the declared question when every recorded certificate checks.
+That internal guarantee is not an empirical error rate.
 
-Where does the machine put a difference once it has one? Nowhere --- and that is the point. The distinction is not
-written into a cell to be looked up later; it \emph{is} the label. When the machine tells two things apart, what it
-produces is exactly the running level-index at which they part ways. The difference and its record are one object.
+\paragraph{Worked example 1: printed marks (computation).}
+Take \(X=M=\{\mathtt{x},\mathtt{o}\}\), \(e\) the identity, \(\sigma=\mathtt{x}\), and
+\(L=[\mathtt{x},\mathtt{o},\mathtt{o},\mathtt{x}]\).  Four decisions give
+\[
+ A=[\mathtt{o},\mathtt{o}],\qquad R=[\mathtt{x},\mathtt{x}],
+ \qquad |A|+|R|=4.
+\]
+With \(N\ge4\), the stopping certificate is \textsc{complete} with \(i=4=|L|\).  With \(N=2\), it instead certifies
+only the prefix \([\mathtt{x},\mathtt{o}]\), one entry in each slice, and stop reason \textsc{budget}; it asserts
+nothing about the two remaining marks.  Exchanging the two printed shapes everywhere preserves slice sizes while
+swapping their branch names.  No metric follows: matching shapes does not define a distance between them.
 
-This is why it can be said, without cheating, that nothing has been allocated. A conventional program that wanted to
-remember ``these two differ'' would reserve a bit, a byte, a slot --- storage whose cost you pay and whose
-bookkeeping you keep. The machine here does not. It uses the one index it was already carrying --- the level it must
-track anyway to keep its own descriptions coherent --- and reads the difference straight off it. The label is free
-because the ledger was already open.
+\paragraph{Worked example 2: an integer comparator (computation).}
+Let \(M=\{0,\ldots,9\}\), \(\sigma=7\), and process \(L=[7,8,2,7,9]\).  The result is
+\[
+ A=[8,2,9],\qquad R=[7,7].
+\]
+The separated slices lose the original interleaving between branches and discard magnitude, while stable append
+preserves relative order within each branch.  Values \(8\) and \(2\) take the same branch although a separately supplied
+arithmetic map gives \(|8-7|=1\) and \(|2-7|=5\).  The name difference does not supply subtraction.  To obtain it, the
+representation must add \(d:M\times M\to\mathbb N\) and publish its cost and assumptions.
 
-There is an old idea underneath this, older than any computer. A symbol, as Peirce~\cite{peirce1878} and then the
-whole of information theory would insist, means nothing in isolation; it means only \emph{by contrast with the
-symbols it is not}. Shannon~\cite{shannon1949} made it quantitative --- a symbol carries information exactly to the
-degree it could have been another --- but the qualitative core is Saussure's~\cite{saussure1916}: value is
-difference. The machine takes that literally. Its symbols \emph{are} their differences; the label is the
-distinction, not a name pinned on afterward.
+\paragraph{Worked example 3: a finite packet alphabet (communication model).}
+Declare a discrete source on \(M=\{\mathtt A,\mathtt B,\mathtt C\}\) with
+\[
+ p(\mathtt A)=\tfrac12,\qquad p(\mathtt B)=p(\mathtt C)=\tfrac14.
+\]
+For \(p(x)>0\), Shannon self-information is
+\[
+ I(x)=-\log_2p(x),
+\]
+so the three marks carry one, two, and two bits respectively~\cite{shannon1948}.  With
+\(\sigma=\mathtt A\), both \(\mathtt B\) and \(\mathtt C\) enter the same slice.  The erased decision therefore cannot
+recover the source mark.  Shannon's channel language belongs here to a separately declared computational model, not
+to a physical signal.
 
-So the first thing the instrument hands you is not a measurement but a \emph{position}: which level, relative to
-what. Everything it will later call a number, a charge, a mass, a cost, is built by iterating this one move --- take
-a difference, let it be its own label --- and paying, each time, only the turn.
+\paragraph{Worked example 4: a sampled switch (physics and interpretation).}
+Suppose an experiment samples a switch at \(t_k=k\Delta t\) and records \(v_k\in\{0,1\}\).  Physics owns the switch,
+sampling interval, noise, and acquisition apparatus.  Post-processing may represent a record by \(e(x_k)=v_k\) and
+pull back the question \(D_0\).  If the apparatus has false-positive probability \(\varepsilon_+\), false-negative
+probability \(\varepsilon_-\), and on-state prior \(\pi\), its empirical error is
+\[
+ P_e=(1-\pi)\varepsilon_+ + \pi\varepsilon_-.
+\]
+This belongs to the physical route from switch state to recorded mark, not to the internal comparator.  The routes
+meet only through an explicit comparison map and observations; shared names prove no identity.
+
+\paragraph{Worked example 5: convergence demonstrated (the instrument calibration).}
+Here \emph{convergence} means agreement of two completed finite numerical routes at a declared resolution, not an
+asymptotic claim.  Both routes begin from the same calibration data
+\[
+                   C=18,\qquad \text{target}=5,\qquad
+                   d_*=\sqrt{C/\text{target}}=\sqrt{18/5}.
+\]
+The direct route \(1\to3\) is a one-pass forward evaluation at \(d_*\).  In the declared scaled-integer
+representation it reports
+\[
+ d=137011290548979455469\qquad\text{at scale }10^{18}.
+\]
+The stepped route \(1\to2\to3\) carries the residue through intermediate quasi-Newton updates.  Its finite trace is
+\[
+\begin{array}{c|c|c}
+\text{count}&r_k&\text{reported inverse value}\\
+\hline
+0&2/1&129.6\\
+1&17/9&137.7\\
+2&\approx1.897309&\approx137.016\\
+3&\approx1.897366&s/10^{18}
+\end{array}
+\]
+and it stops at count three with
+\[
+ s=137011290753751157155\qquad\text{at scale }10^{18}.
+\]
+These are distinct instrument algorithms.  The stepped route
+has mediant/continued-fraction, Newton/BFGS, and residue-carrying secant realizations; these are numerical constructions
+whose update and stopping rules must be declared separately.  Both endpoint computations are covariant forward
+constructions over the shared calibration data.  The contravariant action enters when the comparison question is
+pulled back to those data; it is not a second name for either endpoint algorithm.
+
+The finite comparator certificate is not integer equality.  It records
+\[
+ |d-s|=204771701686,\qquad
+ \frac{|d-s|}{10^{18}}=0.000000204771701686
+ \approx2.04771701686\times10^{-7}.
+\]
+Thus the reported decimal values agree to nine digits.  To state the reading precisely, let \(X\) be the shared
+calibration-input space, \(D\) the scaled-integer report space, and
+\[
+ F=(F_{\rm direct},F_{\rm stepped}):X\to D\times D.
+\]
+At count-three resolution define the comparison question
+\[
+ q_3(a,b):=\left[\frac{|a-b|}{10^{18}}<8.1\right],
+ \qquad F^*q_3=q_3\circ F.
+\]
+The pullback \(F^*q_3\) is the contravariant reading of the two covariantly constructed reports.  Write
+\(a\equiv_3 b\) when this declared-resolution question answers yes.  For the shared input above,
+\(d\equiv_3s\).  The house slogan \(1\to3=1\to2\to3\) abbreviates this relation; it is not integer equality and
+establishes path-independence only for these two routes on this calibration input.
+
+The two-pass calibration therefore licenses a path-independent shared numerical result at the declared resolution,
+which is what earns the name \(\alpha_c\).  It does not identify the methods, meanings, traces, costs, or
+physics/computation provenance of the routes.  Nor does it promote either scaled integer to the owned output.  The
+honest result remains the ordered walls written in the repository's house notation
+\([129.6,137.7]\), not a point.  The word \emph{open} is the repository's metaphor for an unresolved jar, not
+topological interval notation; the displayed bracket records the two owned ordered walls.  The values near
+\(137.011290\) are finer reports obtained past the floor.
+
+The roles of the two passes are now exact.  Pass one directly certifies \(C=18\) and
+\(\text{target}=5\), then infers the crossing \(\sqrt{C/\text{target}}\); the crossing is not claimed as an
+independent measurement.  Pass two traverses the stepped trace and compares its endpoint with the direct endpoint.
+Any comparison with a physical quantity requires a separate provenance chain and empirical observations.
+
+\paragraph{Conditional Richardson audit.}
+The direct and stepped reports are \emph{not} a valid Richardson pair: they come from different methods, and no common
+discretization family \(A(h)\), refinement ratio \(r\), or error order \(p\) has been established.  Only under the
+counterfactual assumptions \(D=A(h)\), \(S=A(h/2)\), and leading error proportional to \(h^p\) would the extrapolate be
+\[
+                 A_R=S+\frac{S-D}{2^p-1}.
+\]
+Applying that formula conditionally gives the sensitivity ledger
+\[
+\begin{array}{c|c|c}
+p&A_R&\text{correction added to }S\\
+\hline
+1&137.011290958522858841&2.04771701686\times10^{-7}\\
+2&137.011290822008391050333\ldots&6.8257233895333\times10^{-8}\\
+4&137.011290767402603934066\ldots&1.3651446779067\times10^{-8}
+\end{array}
+\]
+Treating the stepped report as the finer value is itself arbitrary and counterfactual here.  Reversing the orientation
+reverses the correction, and no common refinement family selects either orientation.
+These are sensitivity values, not measurements, uncertainty bounds, or owned results.  Their variation demonstrates
+dependence on an unestablished order assumption.  Licensing Richardson extrapolation would require one declared family
+\(A(h)\), a declared ratio \(r\), at least three refinement levels, an observed-order estimate
+\[
+ p_{\rm obs}=
+ \frac{\log\!\left(|A_h-A_{h/r}|/|A_{h/r}-A_{h/r^2}|\right)}{\log r},
+\]
+and stability under further refinement.  Until those conditions are met, the ordered-wall jar
+\([129.6,137.7]\) remains the owned result.
+
+Two finite consequences and losses are immediate.  If \(|M|>2\), the erased map
+\(E\circ\Delta(-,\sigma):M\to\{0,1\}\) cannot be injective, so a binary
+slice cannot recover every mark.  Also, \(\sigma\) does not determine the question: equality, order, membership, and
+threshold rules can share a reference while producing different slices.  A report must publish \((\sigma,D)\), the
+representation \(e\), update rule, stopping rule, cost, and certificate.
+
+Symmetry supplies only
+\[
+ D_\sigma(s)\iff D_s(\sigma).
+\]
+It preserves a relation under exchange of arguments; it proves no equality of procedures, traces, costs, or physical
+protocols.  A two-pass calibration may test those stronger claims, but it must record both passes and state its
+comparison map.
+
+The result is finite and reusable.  Marks support explicit questions; terminating decisions carry evidence; evidence
+may be erased to bits; and pulled-back questions can slice finite records.  Physics enters only when an experiment
+supplies an apparatus, units, uncertainty, and observations.  A resonant name belongs to one provenance chain at a
+time.  If computation and physics later report the same number or process, each route must be shown separately before
+comparison.
+
+\section{The symbol and the receiver}
+
+A receiver is not a second object placed beside a symbol.  It is a declared action that projects a finite alphabet into
+the distinctions a reading can retain.  Fix a mark domain \(M\), a reference \(\sigma\in M\), and an answer alphabet
+\(B=\{0,1\}\).  The read grammar is
+\[
+\begin{array}{rcl}
+\textit{projection}&::=&\pi_\sigma:M\to B,\\
+\textit{accepted}&::=&\operatorname{yes}(m,w),\\
+\textit{rejected}&::=&\operatorname{no}(m,r),
+\end{array}
+\]
+where \(w\) certifies \(m\ne\sigma\) and \(r\) certifies its negation.  The projection acts by
+\[
+ \pi_\sigma(m)=
+ \begin{cases}
+ 1,&m\ne\sigma,\\
+ 0,&m=\sigma.
+ \end{cases}
+\]
+This is one declared receiver grammar.  Another grammar may replace its question and resolver; all slices below concern
+the displayed inequality rule.  Its zero fiber is \(N_\sigma=\pi_\sigma^{-1}(\{0\})\).  The accepted-bit view
+suppresses distinctions among marks in that fiber by mapping them all to zero, while the rejected evidence ledger
+retains the visited occurrences.  More generally, information may be lost in either many-to-one fiber of
+\(\pi_\sigma\).  This is a finite projection, not a claim about a linear kernel.
+
+Direction remains part of the grammar.  A forward representation \(e:X\to M\) carries records into marks, and
+\(\pi_\sigma:M\to B\) carries marks forward into bits.  Let \(q:B\to\mathsf{Answer}\) be a question asked of a
+projected bit.  Reading pulls \(q\) back:
+\[
+ \pi_\sigma^*q:=q\circ\pi_\sigma,\qquad
+ e^*(\pi_\sigma^*q)=q\circ\pi_\sigma\circ e.
+\]
+Equivalently,
+\[
+             (\pi_\sigma\circ e)^*q=e^*(\pi_\sigma^*q).
+\]
+The order of reading reverses the order of forward maps.  The receiver therefore consists of a finite forward
+projection followed by contravariant reading of the projected value; the projection itself is not contravariant.
+
+The numerical method is a budgeted stable partition.  Given
+\(L=[x_0,\ldots,x_{n-1}]\), a budget \(N\), representation \(e\), reference \(\sigma\), and resolver \(\Delta\),
+initialize \(A\leftarrow[]\), \(R\leftarrow[]\), \(i\leftarrow0\).  While \(i<n\) and \(i<N\):
+
+\[
+\begin{array}{ll}
+1.&m_i\leftarrow e(x_i),\\
+2.&a_i\leftarrow\Delta(m_i,\sigma),\\
+3.&\text{append }(x_i,m_i,a_i)\text{ to }A\text{ for yes, otherwise to }R,\\
+4.&i\leftarrow i+1.
+\end{array}
+\]
+
+The run stops with \textsc{complete} at \(i=n\), \textsc{budget} at \(i=N<n\), or
+\textsc{resolver-domain} when the declared decision does not cover the encountered pair.  Its certificate contains the
+visited prefix, accepted and rejected evidence, erased projection bits, and stop reason.  On the visited prefix,
+\[
+             |A|+|R|=i,\qquad A\cap R=\varnothing.
+\]
+Stable append preserves relative order within each slice but loses the interleaving between slices.  A partial
+certificate says nothing about the unvisited suffix.
+
+The audit schema is
+\[
+ \mathcal Q=(X,M,e,\sigma,\pi_\sigma,\Delta,N,A,R,J,F,P).
+\]
+Here \(J\) records invariants, \(F\) records failure and information loss, and \(P\) records provenance.  The schema is
+external scientific bookkeeping.  The computational route owns finite marks, decisions, projection, traversal, and
+slices.  Physics owns apparatus variables, units, noise, and observations.  Interpretation owns any proposed bridge.
+
+\paragraph{Worked example 1: repeated finite marks (computation).}
+Let \(M=\{\mathtt a,\mathtt b,\mathtt c\}\), \(\sigma=\mathtt a\), and
+\[
+ L=[\mathtt a,\mathtt c,\mathtt b,\mathtt a,\mathtt c].
+\]
+With \(N\ge5\), the complete run returns
+\[
+ A=[\mathtt c,\mathtt b,\mathtt c],\qquad
+ R=[\mathtt a,\mathtt a].
+\]
+The projected trace is \([0,1,1,0,1]\).  It cannot distinguish \(\mathtt b\) from \(\mathtt c\), although the
+evidence-bearing accepted slice can retain their marks.  If only the projected trace is stored, the original input order
+has several compatible preimages.  In this example the loss occurs in the accepted fiber
+\(\{\mathtt b,\mathtt c\}\), not in the zero fiber \(\{\mathtt a\}\); either fiber can lose distinctions when it has
+more than one member.
+
+\paragraph{Worked example 2: budgeted packet reading (computation).}
+Take packet marks \(M=\{\mathtt{idle},\mathtt{data},\mathtt{check}\}\), reference
+\(\sigma=\mathtt{idle}\), six records, and \(N=4\).  Suppose their first four marks are
+\[
+ [\mathtt{idle},\mathtt{data},\mathtt{check},\mathtt{data}].
+\]
+The run stops for budget with one rejected and three accepted records.  Its coverage equation is \(1+3=4\), not six.
+Neither remaining packet may be classified from this certificate.  If each decision costs \(c_i\), the certified work
+is \(\sum_{i=0}^{3}c_i\); a claim about six decisions would exceed the ledger.
+
+\paragraph{Worked example 3: Shannon loss under projection (communication model).}
+Let a discrete source satisfy
+\[
+ p(\mathtt a)=\tfrac12,\qquad p(\mathtt b)=p(\mathtt c)=\tfrac14.
+\]
+For \(p(m)>0\), self-information is \(I(m)=-\log_2p(m)\)~\cite{shannon1948}.  The source entropy is
+\[
+ H(M)=-\sum_m p(m)\log_2p(m)=\tfrac32\ \text{bits}.
+\]
+Projection against \(\sigma=\mathtt a\) yields an equiprobable bit, hence \(H(B)=1\) bit.  The lost
+\(\tfrac12\) bit is the average distinction between \(\mathtt b\) and \(\mathtt c\) erased by the projection.  This
+calculation requires the displayed discrete distribution; the receiver grammar alone supplies no probabilities.
+
+\paragraph{Worked example 4: threshold readout (physics, then interpretation).}
+Suppose a finite experiment records integer converter readings \(z_k\in\{0,\ldots,1023\}\).  A declared threshold
+\(\tau\) gives
+\[
+              \pi_\tau(z)=\mathbf 1\{z>\tau\}.
+\]
+Physics owns the sensor, converter, units relating the converter reading to the measured quantity, calibration of \(\tau\), and observed
+false-positive and false-negative frequencies.  Computation owns the finite comparison and resulting slices.  Reading
+the projection as a detector action is licensed only by the experimental protocol.  Equal output bits do not identify
+two sensor states, and a perfect internal comparison does not imply zero empirical error.
+
+\paragraph{Descent experiment: two readers over one compact-disc mark ledger.}
+For the finite-harness experiments through the Dirichlet--Bancroft case in Chapter~5, displayed maps and proved
+identities are theorem-level facts, while shown \texttt{run} values are compiler evaluations.  Physical nouns remain
+interpretive unless an observation is explicit; the native-apparatus exception is identified where it occurs.
+The finite compact-disc experiment supplies a receiver whose operation can be written without borrowing the optics of a laboratory player.
+Its fine domain is the two-element type \(X=\{\mathsf{pit},\mathsf{land}\}\), its coarse codomain is the one-element transition type \(Y=\{\mathsf{transition}\}\), and its declared transform is
+\[
+ T_{\rm CD}:X\longrightarrow Y,
+ \qquad T_{\rm CD}(x)=\mathsf{transition}.
+\]
+Applied pointwise by \texttt{pushLedger}, this transform preserves ledger length even though it erases the pit--land distinction.
+The setup also contains a coarse reader threshold \(2\), a fine reader threshold \(1\), a three-mark coarse ledger, and a five-mark fine ledger.
+An auxiliary theorem family defines \(\operatorname{canRecord}(R,d)\) from a reader and a natural-number separation by \(R.\mathit{threshold}\le d\), proves rejection below threshold, and proves monotonic visibility when a fine threshold does not exceed a coarse one.
+Those theorems do not run a separation probe in the exported computation.
+The exported run ignores both reader fields and returns only the counts of the two supplied ledgers and their concatenation, obtaining \(3\), \(5\), and \(8\).
+Its actual trace is therefore the two finite input lists, two length computations, one append, and the merged length.
+The exported claim separately checks threshold ordering and append bookkeeping, while pointwise decoding and its count theorem remain auxiliary built facts rather than consumed steps of \texttt{run}.
+The commuting test is count preservation,
+\[
+ \#\bigl(T_{\rm CD*}L\bigr)=\#L,
+\]
+while the residual test is that \(T_{\rm CD}(\mathsf{pit})=T_{\rm CD}(\mathsf{land})\) despite \(\mathsf{pit}\ne\mathsf{land}\).
+The name supplies no optical behavior beyond this finite decode-and-count model.
+
+\paragraph{Descent experiment: a four-symbol Fessenden--Shannon frame.}
+A second receiver makes the alphabet change visible rather than speaking of ``information'' in the abstract.
+Let \(X=\mathsf{Sample}=\mathsf{Symbol}\times\mathbb N\), where the second coordinate is a slot, and let \(Y=\mathsf{Symbol}=\{\mathsf{silence},\mathsf{low},\mathsf{mid},\mathsf{high}\}\).
+The exact transform is the projection
+\[
+ T_{\rm FS}:X\longrightarrow Y,
+ \qquad T_{\rm FS}(b,k)=b.
+\]
+The canonical setup stores a five-sample frame, including two \(\mathsf{mid}\) symbols at different slots, but the exported run ignores that ledger.
+The frame-decoding and five-event count-preservation result are auxiliary theorems.
+The run consumes only one probe and one expected symbol and decides the equality \(T_{\rm FS}(\mathit{probe})=\mathit{expected}\).
+For the canonical probe \((\mathsf{mid},1)\), expectation \(\mathsf{mid}\) succeeds and expectation \(\mathsf{high}\) fails.
+There is no iterative search: the run trace is one projection and one decidable equality.
+A different but well-formed expected symbol produces a mismatch and false result; it is not malformed input.
+The commuting square is the pointwise equality between decoding the sample ledger and mapping \(T_{\rm FS}\) across its list; its residue is the erased slot coordinate, witnessed by distinct samples with the same decoded band.
+Carrier waves, noise, capacity, and an empirical law are absent; the name licenses symbol recovery only, not
+Shannon's theorems.  The projection's many-to-one fibers state exactly why erased slots cannot be recovered.
+
+\section{From a decision to a record}
+
+A durable record begins with a receipt, not with a familiar arithmetic interpretation.  The neutral grammar is
+\[
+\begin{array}{rcl}
+\textit{numeral-record}&::=&\operatorname{anchor}(\textit{receipt})
+ \mid\operatorname{numeral\mbox{-}step}(\textit{receipt},\textit{numeral-record}),\\
+\textit{tally}&::=&\operatorname{halt}(\textit{receipt})
+ \mid\operatorname{tally\mbox{-}step}(\textit{receipt},\textit{numeral-record},\textit{tally}),\\
+\textit{piece}&::=&\operatorname{origin}(\textit{receipt})
+ \mid\operatorname{piece\mbox{-}step}(\textit{receipt},\textit{tally},\textit{piece}),\\
+\textit{record}&::=&\operatorname{end}(\textit{receipt})
+ \mid\operatorname{record\mbox{-}step}(\textit{receipt},\textit{piece},\textit{record}).
+\end{array}
+\]
+The numeral record is the earlier finite recursive payload, given here only by its anchor and extension forms.  Its
+arithmetic meaning is reserved rather than supplied by the name.  The grammar posits finite forms and nothing else.  A
+receipt accompanies every form, and each recursive argument stores the remainder.  No magnitude, chronology, or
+physical event is supplied by these productions.
+
+Forward construction prepends one step:
+\[
+\begin{aligned}
+T'&=\operatorname{tally\mbox{-}step}(\rho,\nu,T),\\
+P'&=\operatorname{piece\mbox{-}step}(\rho,T,P),\\
+S'&=\operatorname{record\mbox{-}step}(\rho,P,S).
+\end{aligned}
+\]
+Repeated prepending places the newest addition at the head.  Tail traversal proceeds by matching the head, recording
+its receipt and payload, and continuing with the recursive remainder.  Given budget \(N\), initialize the visit count
+\(j\leftarrow1\).  Continue while a step remains and \(j\le N\); stop with \textsc{end}, \textsc{budget}, or
+\textsc{resolver-domain}.  The certificate contains the visited prefix in traversal orientation, the final unvisited
+tail when present, all encountered receipts, and the stop reason.
+
+Traversal indices are analysis-ledger entries, not members of the grammar.  The ledger assigns \(j=1,2,\ldots\) as a
+run visits heads.  A later run may assign the same indices only when it declares the same starting form and traversal
+orientation.  Prepend construction and tail traversal point in opposite list orientations: construction adds newest
+first; complete traversal reads newest to oldest.  Arrival orientation is recovered only by an explicit reversal.
+
+Three finite slices are available after traversal.  A shape slice separates terminal forms from step forms.  An index
+slice selects ledger positions satisfying a declared question, such as \(j\) odd.  Given a declared comparison receipt
+\(\rho_*\), a receipt slice selects one value of the derived relation
+\(\operatorname{parity}(\rho,\rho_*)\).  Each slice must retain evidence, visited occurrences, and orientation.  Stable append preserves relative
+traversal order within each output but loses interleaving between outputs.  For \(v\) visited occurrences,
+\[
+                         |A|+|R|=v,\qquad A\cap R=\varnothing.
+\]
+A budget stop certifies nothing about the unvisited tail.
+
+\paragraph{Worked example 1: prepend and budgeted traversal (computation).}
+Let \(E=\operatorname{end}(\rho_e)\), and prepend three record steps carrying pieces \(P_1,P_2,P_3\) in that arrival
+order:
+\[
+ S_1=\operatorname{record\mbox{-}step}(\rho_1,P_1,E),\quad
+ S_2=\operatorname{record\mbox{-}step}(\rho_2,P_2,S_1),\quad
+ S_3=\operatorname{record\mbox{-}step}(\rho_3,P_3,S_2).
+\]
+Complete tail traversal reports \(P_3,P_2,P_1\), followed by the terminal receipt.  With \(N=2\), it certifies only
+ledger entries \((1,\rho_3,P_3)\) and \((2,\rho_2,P_2)\), then returns the remaining tail \(S_1\) with
+\textsc{budget}.  It may not report anything about \(P_1\) without another visit.
+
+A head projection deliberately ignores recursive tails.  For step forms define
+\[
+ \pi_{\rm head}\bigl(\operatorname{record\mbox{-}step}(\rho,P,S)\bigr)=(\rho,P).
+\]
+For a terminal form it returns its terminal receipt and a terminal tag.  This is a many-to-one forward map.  Its fibers
+contain every form with the same head summary, regardless of tail.
+
+\paragraph{Worked example 2: same head, different tail (computation).}
+Let
+\[
+ S_A=\operatorname{record\mbox{-}step}(\rho,P,S_1),\qquad
+ S_B=\operatorname{record\mbox{-}step}(\rho,P,S_2),
+ \qquad S_1\ne S_2.
+\]
+Then
+\[
+                    \pi_{\rm head}(S_A)=\pi_{\rm head}(S_B)=(\rho,P).
+\]
+The head read cannot reconstruct which tail was present.  The pair lies in one fiber of
+\(\pi_{\rm head}\), and the missing distinction is exactly the tail information suppressed by projection.  Retaining
+the original forms in an evidence ledger preserves them; retaining only the projected head does not.
+
+The relation between two receipts also directs a finite comparison.  Declare a current receipt \(\rho\), a comparison
+receipt \(\rho_*\), a derived relation
+\(\operatorname{parity}(\rho,\rho_*)\in\{\mathsf{agree},\mathsf{disagree}\}\), current payload \(a\), comparison
+payload \(b\), and a binary question \(C\).  The action is
+\[
+ \operatorname{compare}_{\rho,\rho_*}(a,b)=
+ \begin{cases}
+ C(a,b),&\operatorname{parity}(\rho,\rho_*)=\mathsf{agree},\\
+ C(b,a),&\operatorname{parity}(\rho,\rho_*)=\mathsf{disagree}.
+ \end{cases}
+\]
+Derived agreement sends the current payload into the forward comparison; derived disagreement reverses the arguments.  This rule
+establishes no order law.  If \(C\) is asymmetric, reversal may change the answer; if \(C\) is symmetric, it may not.
+The relation between receipts chooses argument orientation but does not prove anything about the comparison relation.
+
+\paragraph{Worked example 3: receipt-directed comparison (computation).}
+Let two numeral-record payloads be denoted \(\nu_L,\nu_R\), and declare
+\(C(a,b)\) to answer yes exactly for the ordered pair \((\nu_L,\nu_R)\).  Then
+\[
+ \operatorname{compare}_{\rho_1,\rho_*}(\nu_L,\nu_R)=\mathsf{yes}
+ \quad\text{when }\operatorname{parity}(\rho_1,\rho_*)=\mathsf{agree},
+ \qquad
+ \operatorname{compare}_{\rho_2,\rho_*}(\nu_L,\nu_R)=\mathsf{no}
+ \quad\text{when }\operatorname{parity}(\rho_2,\rho_*)=\mathsf{disagree}.
+\]
+The outputs differ solely because the second receipt relation reverses the arguments.  Neither output assigns an
+arithmetic or physical meaning to \(\nu_L,\nu_R\).  Those resonances remain reserved.
+
+Contravariance belongs to questions pulled through forward projections.  If
+\(q:H\to\mathsf{Answer}\) asks about a head summary and
+\(\pi_{\rm head}:S\to H\), then
+\[
+                       \pi_{\rm head}^*q=q\circ\pi_{\rm head}.
+\]
+For an index analysis, let \(\pi_{\rm idx}\) project each visited ledger entry to its assigned index.  An index question
+\(q_I\) is read as \(\pi_{\rm idx}^*q_I\).  The projections move summaries forward; reading pulls questions backward.
+The receipt-directed argument reversal above is a separate finite action and is not identified with this pullback law.
+
+\paragraph{Worked example 4: shape, index, and receipt slices (computation).}
+Relative to declared comparison receipt \(\rho_*\), suppose a complete traversal yields four ledger rows whose middle
+column is the derived parity
+\[
+\begin{array}{c|c|c}
+\text{index}&\text{derived receipt relation}&\text{payload}\\
+\hline
+1&\operatorname{parity}(\rho_4,\rho_*)=\mathsf{agree}&P_4\\
+2&\operatorname{parity}(\rho_3,\rho_*)=\mathsf{disagree}&P_3\\
+3&\operatorname{parity}(\rho_2,\rho_*)=\mathsf{agree}&P_2\\
+4&\operatorname{parity}(\rho_1,\rho_*)=\mathsf{agree}&P_1
+\end{array}
+\]
+and then a terminal row.  The odd-index slice selects rows one and three.  The derived-agree receipt slice selects rows one,
+three, and four.  The shape slice separates the four step rows from the terminal row.  These are three questions over
+one traversal, not three reconstructions of the original arrival orientation.
+
+A computation-side resonance with Cohen may now be stated carefully.  From a completed traversal \(S\), define the
+finite partial assignment
+\[
+                       p_S(k)=\text{payload at traversal index }k
+\]
+for visited indices \(k\).  Extending the budget can extend the assignment when earlier rows remain unchanged.  This
+resembles Cohen's finite-condition discipline: compatible finite commitments may be extended
+\cite{cohen1963}.  The resemblance concerns finite partial assignments only.  Because traversal reads prepend-built
+forms newest first, \(p_S(k)\) is indexed in traversal orientation, not arrival orientation.  No generic extension,
+forcing relation, independence result, or claim about every possible continuation follows.
+
+\paragraph{Descent experiment: serializing a finite grid into a record.}
+The Turing experiment isolates the record-making operation as a lossless transform on a declared finite domain.
+For a grid \(G=(r,c)\), let \(X_G=\{0,\ldots,r-1\}\times\{0,\ldots,c-1\}\) and let \(Y=\mathsf{Step}\), where a step stores exactly one cell.
+The transform
+\[
+ T_G:X_G\longrightarrow Y,
+ \qquad T_G(i,j)=\mathsf{step}(i,j),
+\]
+is traversed in row-major order and placed in a ledger; reconstruction applies the stored-cell projection \(U:Y\to X_G\).
+The code proves \(U\circ T_G=\operatorname{id}_{X_G}\) pointwise and proves that serialization followed by reconstruction yields the enumerated cell list.
+For the consumed setup \(r=2,c=3\), the run returns ledger count \(6=r c\), and the printed trace lists all six cells in row-major order.
+The preconditions are only natural row and column counts and the concrete enumeration generated by the two finite ranges; no bijection with an unbounded tape is assumed.
+Traversal stops after \(r c\) generated cells, including immediately for a zero dimension, and a later interpretation cannot silently treat a duplicated, omitted, or reordered external sample as if the theorem covered it.
+The commuting test is
+\[
+ U_*\bigl(T_{G*}(\operatorname{cells}G)\bigr)=\operatorname{cells}G,
+\]
+and the residual test is empty: \(U\) returns every stored cell because \(\mathsf{Step}\) carries no compressed payload beyond that cell.
+Scanning hardware, tape motion, and an unbounded tape are absent; \texttt{physicalClaimLabelOnly} confines the
+Turing-style name to this lossless finite sequentialization.
+
+The action ledger closes the section.  The receipt grammar and prepend rules are \emph{posited}.  A finite construction
+trace, visited-prefix certificate, projection equality, or checked slice is \emph{demonstrated}.  Head and index
+questions are \emph{read} contravariantly through declared projections.  Arithmetic meanings for numeral records and
+physical meanings for receipt relations, sides, or arrival events remain \emph{reserved}.  A head projection does not reconstruct a tail; a finite
+slice does not certify an unread remainder; argument reversal does not select which side is which; and a compatible
+partial assignment does not produce a generic extension.

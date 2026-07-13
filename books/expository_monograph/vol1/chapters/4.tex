@@ -1,0 +1,170 @@
+\chapter{The Tower Turns Around}
+
+\section{The backward descent}
+
+The first three chapters climbed. Each tier was \emph{introduced} atop the one below it --- a class, an inductive, a
+constructor, a relation, posited by cases --- and each introduction was a little speculative, which the source
+recorded in its own way: the private hedge each type carries rose steadily with the reach, quiet at the bottom and
+loudest at the top, where the residue became a sample straining to be a number. This chapter is where the tower turns
+around. It stops introducing and starts \emph{eliminating} --- consuming what was built rather than positing more ---
+and the first tell is the hedge itself, which does not keep climbing. On the way down it collapses.
+
+Every type in this construction has two halves, and naming them is the cleanest way to see the turn. Following
+Gentzen, the rules that \emph{build} an inhabitant of a type are its introduction rules, and the rules that \emph{use}
+one are its elimination rules. The first three chapters were all introduction: every tier added something --- a
+clause, a constructor, a case --- to the tier beneath it. This section reads the first elimination steps, and the
+striking thing is that they recur, in the same shape, at every tier of the tower at once.
+
+The first is the strict order. At no tier is ``strictly less than'' posited on its own; everywhere it is
+\emph{derived} from the order already built. The definition is one line, and it is the same line at every rung: strict
+precedence is the built order holding one way and failing the other --- \verb|le a b| holding, and \verb|le b a|
+failing. It introduces nothing. It takes the \verb|le| the chapter before built and uses it twice, once forward and
+once negated, and adds not a single new case. Where each earlier tier had added a clause to the one below, this adds
+none; it consumes what is already there. That is the first genuinely backward step in the whole construction --- the
+derivation, which had only ever wound upward, beginning to unwind. And it is not a local trick: the very same one-line
+elimination stands at the naturals, at the rationals, at the sequences, at the limits, and at the sample, and again at
+the trial one episode further on. Six tiers, one elimination, positing nothing.
+
+The second elimination step is quieter and goes further. Having derived its strict order, each tier then \emph{hands
+the whole relation away}. A single instance declaration gives the hand-built order to the ambient machinery --- the
+\(\leq\) and \(<\) that everything in the surrounding language already speaks --- by pointing the ambient symbol at the
+tier's own definition. After that declaration, writing \(a \leq b\) on that tier no longer invokes anything special;
+it \emph{means} the relation the tier built by hand. This is elimination in the strict sense: the introduced object is
+discharged into the surrounding system and stops being a special case. The tower turns around not by being admired but
+by becoming \emph{usable} --- its private order absorbed into the common one, so that the rest of the construction can
+speak to it without knowing it was ever bespoke.
+
+And here the hedge tells its second story. On the climb, each type's private doubt rose with how far the reading
+reached --- the order rules quiet, the residue louder, the sample loudest of all. On the descent it crashes. The
+instance declarations that discharge the order into the ambient one carry the lowest hedges anywhere in the
+construction, a near-certainty the source reserves for nothing else. Read that gradient as the chapter's thesis. The
+source is \emph{unsure} about what it introduced and \emph{sure} about what it eliminates --- and the asymmetry is
+exactly right, because building the tower was a wager and using it is not. Nor is the reversal a single grand arc from
+the bottom of the book to here. It recurs, in miniature, at every tier's own turn: the trial's type carries the same
+high hedge the sample did --- the wager restated --- its order rule a middling one, and its instance discharge the
+same near-certain floor. Introduce, then eliminate; hedge, then be sure; at every rung the same small turn.
+
+In the two verbs, the descent reads cleanly. Introduction was funge: each tier bagged the one below it and added a
+clause, gathering by likeness into a larger whole. This section is the first \emph{tange} on the way down. The strict
+order \emph{selects} the usable part out of the built one --- forward-and-not-backward, a characteristic picked out of
+the relation already in hand. The instance \emph{selects} the bespoke order into the ambient one, choosing the built
+relation to stand as the common symbol's meaning. Neither bags anything new. Each is a selection from the bag the
+climb already filled --- the tower turning from gathering to picking.
+
+One forward sentence, because it is the sentence the whole book will need at its end. The honest reading, when it
+finally comes, will be an \emph{elimination} and not an introduction. The jar the last chapter holds open is a bracket
+you \emph{use} --- something to eliminate a claim against, to test a number by --- and never a magnitude you
+\emph{posit}, introduced by fiat and defended after. This section plants the reason: the descent, elimination, is the
+low-hedge, sound half of every type; the climb, introduction, was the wager. That the tower ``turns around,'' that the
+way down is the certain way, that building was a gamble and using is not --- those are the reading, the gloss laid over
+a plain fact. The plain fact is smaller and firmer: one line deriving strict order from order, an instance discharging
+it into the ambient language, and a hedge that falls exactly as the construction stops guessing and starts spending
+what it has.
+
+\section{The seam}
+
+The last section turned the tower around and watched it become usable. This section reads the place where one level
+hands to the next --- the \emph{join} between floors --- and finds, at the join, a single thing being carried across:
+the residue. The tiers were never a stack of independent floors. Each level is built \emph{over} the one below it, and
+what passes upward through every join is the un-eliminable term of the third chapter. The source, climbing, said as
+much in an aside --- it was, it admitted, ``just planting seeds.'' This section is where the seeds come up.
+
+In this construction the join is not a new device. It is the instance-implicit constraint itself, read as a seam.
+Recall that no tier stands alone: each is defined with the tiers beneath it named as standing conditions --- given a
+distinguishable, an admissible, a countable, an encoded, \emph{then} this. That bracketed demand, the place the
+construction says ``given all of that, now this,'' \emph{is} the seam between floors. Turning the tower around makes
+the seams visible not as demands you climb toward but as joins you descend through.
+
+And here a promise from the third chapter comes due. The residue was called there the top of the tower --- but
+carefully, the top of \emph{that} tower, the one the first three chapters climbed. This is where that ``top'' turns out
+to be a seam and not a ceiling. A later structure, further up the construction, takes the residue itself as one of its
+standing conditions and keeps building --- through more tiers above it, eleven in all, up to the comparable at the
+summit, with the physical tier (where the slip's world will enter, in the next chapter) near the top. The residue is a
+floor with more floors above it. What the third chapter called a top, this section shows was a landing.
+
+Look at what the higher structure actually binds, and the seam's payload is explicit. Among its standing conditions is
+the residue, named as an instance the way the distinguishable and the encoded are named --- the un-eliminable term
+carried bodily into a level built over it. And the source, at exactly that binder, muses about what the residue will
+turn into on the far side: probably, it guesses, a norm --- a Sobolev norm --- or a cross-product. Those guesses are
+not this volume's to cash; they are the reading, a suspicion about the residue's geometric future that the physical
+gauge will settle and this one will not. What is firm here is smaller and exact: the residue is the instance the next
+level is constructed over. ``The residue at the join'' is not a metaphor. It is the literal payload of the seam --- the
+same leftover, passed upward, floor after floor.
+
+The seam is also where a new direction becomes possible, and this is the quiet event the chapter has been walking
+toward. To extend a number system by a square root of a negative --- to talk about the imaginary unit at all --- you
+need a \emph{direction}, an axis to turn in. And the machine notices, at the seam, that it already has one. The
+residue, as the third chapter established, is a direction and a magnitude together. So the direction the imaginary
+needs is not conjured; it is the residue's own. The source makes the point in as many words: the complex limit
+requires a direction, of which --- it says --- we have a residue already, so it is perfectly cromulent to talk about
+\(i\). Read that precisely. This is not yet the rotation; the quarter-turn, the \(-i\) that carries one axis into the
+other, is a later chapter's business. This is only the crossing: the first point at which the imaginary becomes
+\emph{sayable}, licensed not by fiat but by a direction the construction already built. (The source, in the same
+breath, reaches further --- toward a half-integer spin the imaginary will carry --- but that reach is the next
+volume's; this one keeps to the axis becoming nameable.)
+
+In the two verbs the seam is a hinge. The lower level was \emph{funged} --- bagged, by likeness, into a tier. At the
+join, the next level does not bag again; it \emph{tanges} --- selects the residue out of the tier below and builds over
+exactly that. Bag the level, select its residue, seed the next: each seam is a funge-then-tange hinge, and the tower is
+a chain of them. The climb was gathering; the joins are where gathering hands to selecting.
+
+One forward sentence. The residue carried across this seam is the same residue the whole instrument will, at its far
+end, ask for a number --- the leftover the coupling reads. What this section adds is that the leftover does not sit in
+one place; it crosses every join, upward, and arrives at the top still itself. That it will become, on the far side, a
+field's geometry, a commutator, a Dirac equation --- those are the readings the source gestures at in its own margins
+and hands forward to the physical volume; no such object is built here. This volume builds the seam, carries the
+residue through it, and lets the imaginary become sayable on the strength of a direction it already owns. The geometry
+the seam is pregnant with is the next book's to deliver.
+
+\section{What came back changed}
+
+The tower climbed, in the first three chapters; it turned around, in the first section of this one; it crossed its
+seams, in the last. This section asks the closing question of the chapter --- what came back? --- and answers that it
+is not the same thing that went down. The round-trip, the loop chapter promised, keeps the fact. This section names
+what the round-trip does \emph{not} keep, and finds that the difference is exactly the residue. The turn-around does
+not return you to where you started. It returns you to where you started \emph{plus} the residue --- and that
+difference, it will turn out, is the whole point.
+
+Everything the section needs is already built; nothing new is introduced here. It is a single relation, read a second
+way. The residue's relation --- the one the antagonist chapter set down, comparing two settled limits --- has, on its
+populated arm, three conditions joined together: the two facts equal, the scale of the one no greater than the other,
+the index of the one strictly below the other. Read those two settled limits not as ``this one and that one'' but as
+``what went down'' and ``what came back,'' and the three conditions fall cleanly into two piles: what the trip kept,
+and what the trip changed.
+
+What it kept is the fact. The first condition holds the two facts equal --- and this is nothing new; it is the
+lossless core the loop chapter established, the base case that returns a difference to itself unchanged. Whatever came
+back is still about the same thing it was sent down to be about. The identity survives the descent whole. If that were
+all, the turn-around would be a closed circle, and there would be nothing to measure.
+
+But it is not all. The other two conditions say what changed, and they change in a fixed direction: the scale rises,
+the index strictly deepens. And these two are not arbitrary quantities that happened to drift --- they are exactly the
+residue's two components, the magnitude and the direction the antagonist chapter read off the very same relation. So
+the thing that came back differs from the thing that went down by \emph{precisely the residue}: the same fact, carried
+on an advanced scale and a deepened index. ``What came back changed'' is not a vague remark. It is exact --- the pair
+of magnitude and direction advanced, while the fact held. The difference between input and output is residue-shaped,
+and it could be nothing else.
+
+Here is why the chapter has spent itself getting to this small difference. The difference the turn-around produces
+\emph{is} the residue, and the residue is what the rest of the book measures. Nothing downstream reads the thing that
+went down, and nothing reads the thing that came back; everything reads the \emph{difference} between them. The next
+chapter will meet this difference as a \emph{slip} --- a loop that fails to close by exactly the residue. A later
+chapter will bracket it. A later one still will put the coupling-question to it. Each of those is this same difference,
+refined one more turn. And so the deepest lesson of the descent is a discipline about reading: the reading is never the
+thing itself. The reading is the residue-shaped difference between what you sent down and what came back.
+
+In the two verbs, the round-trip splits as cleanly as its conditions. The fact is \emph{funged} --- kept, the bag
+returned intact, member for member. The residue is the \emph{tange} --- the one thing selected out as different, the
+displaced part the trip produced. What comes back is the same bag with a member displaced, and the displacement is the
+tange the descent made. The chapter ends by handing that displaced tange forward: it is the measurement's raw
+material, the difference every later reading will refine.
+
+One boundary, and one forward sentence, and the chapter is closed. The boundary: to call the output a \emph{normal
+form}, and the difference a \emph{reduction}, is the reading --- there is no reduction operation in the code, only a
+relation whose diagonal, read as a before-and-after, shows the fact held and the residue advanced. Say ``normal form''
+if it helps; the firm thing beneath it is the diagonal of a relation already built. The forward sentence: what the
+honest ending hands back, at the very end of the book, is exactly this difference and not the thing itself --- not the
+magnitude, but a bracket drawn around the residue-shaped difference the turn-around produced. The tower climbed to
+build the residue; it turned around to show the residue is the only difference the machine ever returns; and the rest
+of the book is the patient reading of that one difference. The chapter closes on the difference. The next opens on what
+happens when a loop tries to close over it and cannot.

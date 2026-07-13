@@ -1,5 +1,5 @@
 import Experiments.Common
-import Measurement.Episode84
+import Measurement.Apparatus
 
 /-!
 # The Davisson-Germer Effect — electron diffraction as a lattice-translation HOLONOMY

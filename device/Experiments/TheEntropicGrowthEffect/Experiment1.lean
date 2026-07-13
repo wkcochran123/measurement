@@ -1,7 +1,7 @@
 import Experiments.Common
 
 /-!
-# The Dark Energy Effect — a finite ledger of negative informational pressure
+# The Entropic Growth Effect — a finite ledger of negative informational pressure
 
 Modelled after the worked exemplar `ThePositronAnnihilationEffect/Experiment1.lean`.
 It replaces the 3-`Nat` `CountSetup` template with an **effect-specific domain**
@@ -31,7 +31,7 @@ Nothing about general relativity, vacuum energy, or quintessence is formalized. 
 is the harness's own theorem.
 -/
 
-namespace Experiments.TheDarkEnergyEffect
+namespace Experiments.TheEntropicGrowthEffect
 
 /-- A single interior refinement: an opaque tag for one reconciliation event. -/
 structure Refinement where
@@ -108,18 +108,18 @@ theorem pressure_additive (left right : List Refinement) (lam : Nat) :
   exact Experiments.Common.Ledger.count_append _ _
 
 -- ---------------------------------------------------------------------------
--- The canonical dark-energy region: more credit than pressure ⇒ expands.
+-- The canonical entropic-growth region: more credit than pressure ⇒ expands.
 -- ---------------------------------------------------------------------------
 
 /-- Two interior refinements, but a background credit of three: net pressure is negative. -/
-def darkRegion : CausalRegion :=
+def growthRegion : CausalRegion :=
   { refinements := [{ tag := 0 }, { tag := 1 }], lambda := 3 }
 
 /-- The control: same two refinements, but credit `2 = pressure`, so it does NOT expand. -/
 def ordinaryRegion : CausalRegion :=
   { refinements := [{ tag := 0 }, { tag := 1 }], lambda := 2 }
 
-theorem darkRegion_expands : darkRegion.expands := by decide
+theorem growthRegion_expands : growthRegion.expands := by decide
 theorem ordinaryRegion_does_not_expand : ¬ ordinaryRegion.expands := by decide
 
 -- ---------------------------------------------------------------------------
@@ -127,13 +127,13 @@ theorem ordinaryRegion_does_not_expand : ¬ ordinaryRegion.expands := by decide
 -- ---------------------------------------------------------------------------
 
 /-- The claim, in honest parts:
-* (expansion) the canonical dark region is expansion-biased — `darkRegion.expands`;
+* (expansion) the canonical growth region is expansion-biased — `growthRegion.expands`;
 * (necessity) that bias requires a strictly positive background credit — `expands_needs_credit`;
 * (control) an ordinary region with `Λ = P` does NOT expand — falsifiability witness;
 * (additivity) interior pressure is additive across a partition — the **harness** theorem
   `Ledger.count_append`, the load-bearing coupling: a regression there breaks this build. -/
 def claimStatement : Prop :=
-  darkRegion.expands ∧
+  growthRegion.expands ∧
     (∀ Ω : CausalRegion, Ω.expands → 0 < Ω.lambda) ∧
     ¬ ordinaryRegion.expands ∧
     (∀ (l r : List Refinement) (lam : Nat),
@@ -145,7 +145,7 @@ def claim : Experiments.Common.Claim :=
     statement := claimStatement }
 
 theorem claim_holds : claim.statement :=
-  ⟨darkRegion_expands, expands_needs_credit, ordinaryRegion_does_not_expand, pressure_additive⟩
+  ⟨growthRegion_expands, expands_needs_credit, ordinaryRegion_does_not_expand, pressure_additive⟩
 
 /-- The tag is an honest ceiling: a smooth-shadow analogy, nothing more. -/
 theorem ceiling : claim.tag = Experiments.Common.ClaimTag.smoothShadowAnalogy := rfl
@@ -167,7 +167,7 @@ def experiment : Experiments.Common.Experiment Setup Bool :=
 theorem run_iff_claim (Ω : Setup) : run Ω = true ↔ experiment.claim Ω := by
   simp only [run, experiment, decide_eq_true_iff]
 
-#eval run darkRegion                  -- expect: true
+#eval run growthRegion                  -- expect: true
 #eval run ordinaryRegion              -- expect: false  (Λ = P, no expansion bias)
 #print axioms claim_holds             -- ambient [propext, Quot.sound], not coupling
 
@@ -194,4 +194,4 @@ def triangulation : Experiments.Common.Triangulation Setup Bool :=
 -- ---------------------------------------------------------------------------
 #eval decide ordinaryRegion.expands   -- expect: false  (Λ = P = 2, net pressure not negative)
 
-end Experiments.TheDarkEnergyEffect
+end Experiments.TheEntropicGrowthEffect

@@ -10,6 +10,8 @@ A measurement record may consist entirely of finite and
 distinguishable events, and yet admit no extractable dynamical law. The
 accumulation of facts alone does not guarantee the emergence of a truth.
 
+**Register.** Thought/computational experiment whose job is to *gesture at the far side* and hold it open: Chaitin's halting probability is definable exactly yet computable never --- a number the machine can name and cannot derive, so it marks the un-derivable truth without pronouncing on it. Used in Vol5 Ch7 §7.6 as the data-side face of the finiteness fence (finite facts accumulate; the derived value does not follow). Build verified: `claim_holds` depends on `[propext]` only.
+
 ## Origin
 Chaitin introduced the halting probability $\Omega$ by fixing a universal
 prefix-free computing device and aggregating the termination events of all

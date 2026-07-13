@@ -1,5 +1,5 @@
 import Experiments.Common
-import Measurement.Episode84
+import Measurement.Apparatus
 
 /-!
 # The Foucault Effect — holonomy of an inconsistent connection

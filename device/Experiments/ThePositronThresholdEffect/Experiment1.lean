@@ -1,5 +1,5 @@
 import Experiments.Common
-import Measurement.Episode85
+import Measurement.Apparatus
 
 /-!
 # The Positron Threshold Effect — the last experiment
@@ -101,7 +101,7 @@ inductive ThresholdProbe where
   | above
 deriving DecidableEq, Repr
 
-def eventsFor : ThresholdProbe -> List Orientation
+def eventsFor : ThresholdProbe -> List Charge
   | ThresholdProbe.below => flatEvents
   | ThresholdProbe.above => tiltedEvents
 

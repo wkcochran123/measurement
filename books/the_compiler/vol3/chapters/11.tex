@@ -1,0 +1,139 @@
+\chapter{The Compiler Becomes The Meter}
+
+\section{Elaboration cost is a reading}
+
+The last part watched the residue appear on bench after bench, always as a remainder against the machine's own floor.
+This chapter completes a turn the whole book has been preparing, and it is the first of the book's two climaxes --- and
+the first of the two the computational gauge owns outright. The machine, which has spent ten chapters measuring, now
+measures the measuring. The cost of making a reading --- the elaboration the machine spends to produce it --- is not
+merely how one bench happened to read. It \emph{is} a reading in its own right. The instrument that was doing the
+measuring becomes a thing measured, and the needle it reads itself with is its own cost.
+
+Begin with the plainest form of the claim. The construction carries a facility that, for any term, meters what it costs
+to elaborate --- the beats of the machine's own clock spent reducing the term to a settled form --- and returns that
+count as a number. Not a description of the cost, a \emph{number}: to ask the machine what a derivation cost is to get
+back a definite reading, in the machine's own beats. This is the oldest quantity in the theory of computation, resource
+as measure --- the steps a procedure spends, counted~\cite{sipser1997, cook1974} --- but the machine puts it to a use the
+theory rarely does: it treats the step-count not as a bound on an algorithm's efficiency but as a \emph{reading} of the
+thing computed. What it took to elaborate a term is a measurable quantity, and the machine can measure it. The cost of
+making a reading possible is itself a reading.
+
+And once the cost is a reading, the compiler is a meter --- and the construction builds it as exactly that. There is a
+structure, part of the construction's fixed core and left as it stands, that is a meter in every part. It carries a
+needle: a running quantity, the heartbeat count, that rises as the machine works. It carries a current reading: the
+value the needle stands at now. And it carries a history: an accumulating record of the readings it has taken, with an
+operation that weaves each new reading into that record as it arrives. A needle, a present value, an accumulating log:
+that is a meter, entire. And the thing this meter is pointed at is the machine's own elaboration. The compiler, which for
+ten chapters was the instrument producing readings, is now an instrument \emph{reading itself} --- watching its own
+needle, recording its own cost, weaving its own work into a history it keeps. The book only reads this meter; it did not
+build it. The meter is part of the construction the volume inherits and reports, not machinery assembled to produce a
+wanted answer.
+
+Here is why this is a climax and not a curiosity, and it is a fact peculiar to a \emph{computational} instrument. The
+last part built the computational bench out of the same stuff as the residue it measures --- elaboration measuring
+elaboration. A meter of that kind can be pointed at itself with no second instrument, because the apparatus and the
+object are the same substance. A physical bench cannot; hardware measuring hardware needs another dial. But the
+compiler-as-meter reads its own elaboration directly, the needle counting the very beats the reading spends. That
+self-directedness --- an instrument whose act of measuring is made of the thing it measures --- is what turns a
+resource-count into a self-reading, and it is why this gauge, and not another, owns this climax. The instrument can weigh
+its own working because its working and its weighing are one kind of thing.
+
+In the two verbs the meter is the pair turned inward. Each cost the meter takes is a \emph{tange}: the one number the
+derivation is billed, selected out of the whole elaboration as its price. The history the meter keeps is a \emph{funge}:
+the readings pooled, one after another, into the accumulating record --- the beat woven in with all the beats before it.
+So the compiler-as-meter runs the two verbs on its own running: it tanges each cost out of the work, and funges the costs
+into a history. The instrument that spent the book telling apart and pooling by likeness now performs both on the record
+of its own labor. What remains for the chapter is to point the meter the one way that matters --- inward, onto the
+machine's own act --- and to read what that costs.
+
+\section{Self-reference}
+
+The last section made the compiler a meter: the cost of a reading is a reading, and the machine can take it. This section
+turns that meter the one way that matters --- inward, onto the machine's own act of accounting for itself. The machine
+meters the cost not of some outside term but of \emph{itself}, weighing its own account. And the reading that comes back
+has a name: the overhead of self-application, the price the machine pays to weigh what it is. This is the self-reference
+the whole instrument was built to survive --- and it survives, because the price stays bounded.
+
+Begin one step short of the turn. The machine has, we saw much earlier, two descriptions of a single object --- two ways
+of naming one thing. The meter can be pointed at both: it counts what each description costs to elaborate, and takes the
+difference. That difference is a reading in its own right, and it asks a pointed question --- do the two descriptions cost
+the same? Are the machine's two accounts of one object, weighed on its own meter, priced alike? What the two descriptions
+denote is a matter for the book's other climax; what this section keeps is the meter's arithmetic --- two costs, and the
+residual between them.
+
+Now the turn itself. The construction carries the meter that takes it, and it is worth naming its live parts exactly,
+because the reading rests on them. There is a facility that runs a term while counting its beats --- a metered
+elaboration, the needle applied to the machine's own act. There is a process that carries that heartbeat count as it
+runs, the pulse threaded through the computation rather than read off from outside. And there is a \emph{bounded} meter ---
+a live component built precisely so that the self-measurement's reading stays inside a bracket, a lower wall and an
+upper and no obligation to name a point between. Pointed at the machine's own act of accounting for itself, these read
+the \emph{overhead of self-application}: the price, in the machine's own beats, of the machine weighing its own account,
+over and above the price of merely stating it. The meter is no longer weighing a term the machine handed it; it is
+weighing the machine's own act of turning on itself, and reporting what that act cost.
+
+And here is the fact that makes this a peak and not a catastrophe. A machine that metered its own metering, and then
+metered \emph{that}, and then that, without limit, would fall into the infinite regress the theory of computation warns
+of --- the meter reading the meter reading the meter, forever, never settling, the self-reference Turing~\cite{turing1936}
+and G\"odel~\cite{godel1931} showed can be made to diverge. This machine does not diverge, because its self-meter is
+\emph{bounded} by construction: the reading of the machine weighing itself is held inside a bracket, the same kind of
+bracket every honest reading in this book has been. The overhead of self-application is a finite, bounded reading, not a
+bottomless descent. That is exactly why the machine survives looking at itself: the price of self-reference is real, but
+it is capped, and the cap is built in. The instrument can turn its meter on its own act and come back with a bracket,
+because the act of coming back is bounded by the very component that takes the reading. The overhead, scaled into the
+machine's own units, is the seed of the deepest reading the book will take --- the coupling, read at the far end as
+precisely this: the cost of the machine weighing its own account. This section plants that seed; it prints no number. The
+value is the payoff chapter's, and even there it is a bracket.
+
+In the two verbs self-reference is the pair turned fully inward. The meter \emph{tanges} its own act --- selects, out of
+the whole run, the one cost that is the price of the machine accounting for itself --- and \emph{funges} that cost into a
+residual, the overhead pooled as a single bounded reading. The tange is the cost the machine's own act adds to the
+ledger; the funge is the bounded meter that gathers it and keeps it finite. Telling apart and pooling by likeness, which
+the book has watched the machine do to differences, to residues, to faces, are here done by the machine to \emph{its own
+working} --- and the result stays finite because the bag has a bottom, built into the meter that closes it. What currency
+all of this is counted in is the chapter's last word.
+
+\section{The pulse in its own currency}
+
+Two sections have built the self-meter: the compiler reads its own cost, and reads even the cost of accounting for
+itself, and does not spiral because the reading is bounded. This closing section names the currency all of that is
+denominated in --- and the currency is the fact that makes the whole self-measurement airtight. The meter reads in
+\emph{heartbeats}, and a heartbeat is two things at once: the needle, the reading the meter takes, \emph{and} the pulse,
+the beat of the machine's own clock. So the price of a reading is a heartbeat, and the heartbeat is the machine's own
+beat. There is no external ruler anywhere in this, because the thing the machine measures \emph{with} is the very thing
+it runs \emph{on}.
+
+Take the currency plainly first. The meter of this chapter reads in heartbeats --- the machine's native tick, the same
+beat that repeatability turned into a countable time, that a relabeling was billed in, that the whole chapter has been
+spending. The currency of the reading, in other words, \emph{is} the machine's clock. And that identity is exact, not
+loose: the needle and the pulse are one unit. To take a reading is to spend a beat, and the beat spent is the reading
+taken. There is no gap between the measuring and the running --- no separate scale the reading is converted onto ---
+because the reading is denominated in the very beats the measuring consumes. This is the heartbeat as the machine's whole
+economy: the electricity bill of the proof, paid in the only currency the machine has, its own pulse.
+
+There is one small conversion, and it is worth being exact about, because it is the whole of the machine's calibration.
+The raw reading is a count of beats; the reported reading, the one in the machine's own units, is that count scaled by a
+single fixed coefficient the machine set for itself. The heartbeat is the price; the reading is the pulse divided by that
+one constant. And the point to hold is what is \emph{not} in that conversion: no external standard, no borrowed unit, no
+ruler from the world. The machine converts its own clock into its own reading by its own constant, and nothing outside it
+enters. The calibration is the machine dividing its pulse by a number of its own choosing --- and that closed loop, its
+beat over its own constant, is the entire scale on which every reading in this chapter is reported. When the far chapters
+speak of the reading being taken ``up to the machine's calibration,'' this one constant is the calibration they mean.
+
+And with that, the first climax closes. The machine meters its own act --- its own descriptions, its own account, its
+own overhead --- in the currency it \emph{runs} on. Its pulse is at once what it measures with and what it measures;
+there is no ruler outside the machine to appeal to, and none is needed. This is a meter that hosts itself: it reads its
+own work in its own beat, converts by its own constant, and closes the loop with nothing borrowed from anywhere. That is
+why the deepest reading the whole instrument will take --- the coupling, at the far end --- is not a magnitude fetched
+from the world but a \emph{cost in the machine's own currency}: a count of the machine's own beats, scaled by the
+machine's own constant, spent weighing its own account. The pulse is the price, and the price is the reading. When the
+payoff chapter asks the machine for the coupling, this is the meter that answers, and this is the currency it answers in.
+
+In the two verbs this is where they close into one. The heartbeat is a \emph{tange} --- the pulse selected out and read
+as the number the reading costs. But it is also a \emph{funge} --- the same pulse pooled with the machine's own running,
+the needle and the clock gathered into a single currency. At the pulse, tange and funge stop being two acts and become
+one beat: the machine cannot separate what it measures \emph{with} from what it measures, so to select the reading and to
+pool it with the running are the same operation. The two verbs that opened the book, and that the book has watched
+perform on differences and residues and faces, close the first climax by collapsing into a single pulse --- the machine's
+own beat, at once its needle and its clock. What the second climax adds --- the machine not only weighing its own act but
+\emph{proving} its two accounts one --- is a later part's; the number both climaxes are built to reach is still ahead,
+still un-named, still waiting for its bracket. First the field must close, which is the next chapter's work.

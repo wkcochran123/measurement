@@ -1,0 +1,114 @@
+\chapter{The Residue Refuses To Disappear}
+
+\section{The antagonist and the treasure}
+
+The first loop closed clean: a number sent around the machine's encoding came back itself. But that was the training
+case, chosen because its answer was \emph{nothing left over}. This chapter introduces the character the whole book is
+built around, the one that appears the moment a loop does not close clean --- the \emph{residue}. It is the antagonist,
+because it is the thing the machine would most like to be rid of and cannot be. And it is the treasure, because
+everything the instrument will ever read is read off it. The residue is the leftover that will not vanish, and its
+refusal to vanish is the entire plot.
+
+Begin with where a residue comes from, in the plainest terms this gauge has. Whenever the machine represents a value it
+cannot hold exactly --- a real approached by a finite condition, a number too long for the code it is written in --- it
+keeps a finite front and leaves a tail. That tail is the residue: the part of the value the representation could not
+carry. In the training loop the tail was empty, because the value fit the code exactly. In every interesting case it is
+not empty, and the machine faces a choice about the tail it cannot escape: carry it, or throw it away. The residue is
+precisely the tail the machine must decide what to do with, and the chapter is about why there is only one honest thing
+to do.
+
+The residue is not noise, and this is the first thing to get right about it. Noise is what a channel adds; the residue
+is what the machine's own finiteness leaves behind. It is structured, not random: it is exactly the information the
+representation dropped, the difference between the value and the value-as-written. Information theory has a sharp name
+for a value with no shorter description than itself --- it is \emph{incompressible}, and Chaitin~\cite{chaitin1974} and
+Kolmogorov~\cite{kolmogorov1965} made the notion exact: most values cannot be squeezed below their own length, and the
+part that resists squeezing is not a flaw in the compressor but a real property of the value. The residue is that
+resistant part, surfaced. When the machine's code cannot shorten a value to fit, what will not fit is the incompressible
+core, and that core does not disappear because the machine looked away from it.
+
+In the two verbs the residue is what a funge cannot swallow. All chapter long the machine has funged --- pooled the
+indistinguishable, gathered like into like --- and every funge that closes leaves nothing over. The residue is the
+funge that does not close: the remainder the pooling cannot absorb, because it is precisely the part that refuses to be
+made the same as anything already in the bin. The tange decided it apart, and no funge can un-decide it. So the residue
+enters the story as the first thing the machine's two verbs cannot dispose of --- the leftover that is neither cleanly
+told apart nor cleanly pooled away, and therefore the one thing the machine must learn to \emph{carry}.
+
+\section{The lie of discarding}
+
+The machine has a residue on its hands and two things it could do with it. It could carry the residue --- keep the tail,
+account for it, let it ride along in the representation as an acknowledged remainder. Or it could discard it --- round
+the value off, drop the tail, and report the clean front as if it were the whole. This section is about the second
+option, and about why it is not a shortcut but a \emph{lie}. The honesty of the entire instrument turns on this one
+refusal: the machine does not throw the residue away.
+
+See exactly what discarding does. To drop the tail is to declare, silently, that the value and its truncation are the
+same value --- to funge together two things the machine has already tanged apart. But they are not the same; the tail is
+the difference between them, and the machine decided that difference into existence. To discard it is to assert a
+sameness the machine's own procedure denied. That is the precise structure of the lie: not an error of arithmetic, but a
+false report, a claim of \emph{equal} where the machine holds \emph{unequal}. A truncation reported as a value is a
+distinction the machine made and then pretended it had not. The lossy step is dishonest not because it loses precision
+--- every finite machine loses precision --- but because it loses precision and \emph{does not say so}.
+
+There is a lawful version of losing information and an unlawful one, and the difference is the whole of this section's
+ethics. Lossy compression, honestly done, announces its loss: it says \emph{I kept this much and dropped that much},
+and the dropped part is named, bounded, accounted for. The data-processing inequality~\cite{cover2006} makes the price
+formal --- information thrown away downstream cannot be recovered upstream, so a discard is irreversible and had better
+be declared. The unlawful version is the silent one: the machine drops the tail and reports the front with no mark that
+anything was dropped, so that a reader downstream takes the truncation for the value. The machine of this book is
+forbidden the silent discard. When it cannot carry a tail exactly, it carries a \emph{bound} on the tail --- an honest
+statement of how much it dropped --- and never a clean number pretending the tail was zero.
+
+And here is the reason the discipline is not optional. The whole instrument is being built to report a number it cannot
+compute exactly, and the only thing standing between an honest bracket and a crank's point is this refusal to discard.
+A machine that drops its residues quietly can make any value look exact; it can round its way to a confident single
+number and hide, in the dropped tails, all the imprecision that would have shown the number was never earned. The honest
+machine cannot do this, by rule. It keeps every residue it cannot resolve, as a bound, so that when the final reading
+comes it comes with its imprecision visible --- as the width of a bracket, not the false cleanliness of a point. The lie
+of discarding is exactly the lie the ending refuses; the machine learns not to tell it here, on small residues, so that
+it will not tell it at the end, on the one that matters.
+
+In the two verbs the lie of discarding is a funge the machine has no right to perform. To drop the tail is to pool the
+truncation with the value --- to declare them one bin --- when the tange has already ruled them two. The honest machine
+refuses that funge: it keeps the residue tanged apart, held as its own thing, bounded and carried. Where the last
+chapter's first loop closed a funge legitimately, because nothing was left over, discarding would close a funge
+illegitimately, by throwing the leftover out the back. The machine's honesty is precisely its refusal to funge what it
+has tanged apart and cannot honestly pool --- to carry the residue rather than lie it away.
+
+\section{What the residue will become}
+
+The machine has resolved to carry the residue rather than discard it. This closing section says why that resolution is
+worth the trouble --- what the carried residue turns into, downstream, once the instrument is fully assembled. The
+answer is the promise the rest of the book pays off: the residue, carried faithfully, is the thing every later reading
+is a reading \emph{of}. It is not waste the machine tolerates. It is the raw material the whole instrument exists to
+measure.
+
+Hold the residue as this gauge sees it: an incompressible remainder, a bounded tail the representation could not carry,
+kept honestly rather than dropped. That single object, the far chapters will show, is what the machine reads as a
+\emph{cost} when it weighs its own work, as a \emph{code length} when it asks how much a value takes to describe, as a
+\emph{bound} when it brackets a value it cannot pin. The residue is the common ancestor of every reading the
+computational gauge takes. Nothing new will be introduced to be measured; the machine will only ever put this same
+carried remainder under different apparatus and read what it says. The treasure was named an antagonist because the
+machine would like to lose it; it is a treasure because it is, quite literally, all there is to measure.
+
+The other gauges read the same carried residue in their own vocabularies, and it is worth naming that the readings
+diverge, because the divergence is the point of there being four books. Where this gauge reads the residue as a cost or
+a code length, a physical gauge reads it as mass, or as charge, or as a phase, or as the curvature of some surface; a
+gauge that walks the code reads it as a particular quantity printed by a particular run. Those are other volumes'
+names, and this book neither builds nor defends them --- there is no mass in this construction, no charge, no field,
+only the carried remainder and the readings this gauge can take of it. The book names the physical readings once, to
+mark that the same residue wears them, and then lets them go: this volume keeps the incompressible remainder and the
+cost, the code length, and the bound it becomes under \emph{computational} apparatus.
+
+That the one residue supports so many readings is not loose analogy; it is the reason the ending can be trusted, and
+the book plants that reason here. If four gauges that share no vocabulary all turn out to be reading the same carried
+remainder, then a bracket they all arrive at is not one gauge's artifact but a fact about the residue itself. The
+machine carries the residue faithfully now, on small cases, precisely so that at the end four independent instruments
+can each put it under their own apparatus and close on the same interval. The faithful carrying is what makes the
+cross-check possible; discard the residue and there would be nothing for the four gauges to agree about.
+
+In the two verbs the carried residue is the funge held open across the whole book. The machine tanged it apart --- a
+remainder its representation could not absorb --- and rather than falsely funge it away, it keeps it, bagged as an
+acknowledged leftover, to be read later. Every reading the instrument takes is a funge of this residue under some
+apparatus: the cost is the residue pooled as a price, the bound is the residue pooled as an interval, the code length is
+the residue pooled as a count of symbols. The residue refuses to disappear, and the machine's whole art is to keep it,
+honestly, until it can be read --- which is the work the next part of the book, where the tower turns around, begins.

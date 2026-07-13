@@ -1,5 +1,5 @@
 import Experiments.Common
-import Measurement.Episode84
+import Measurement.Apparatus
 
 /-!
 # The Sagnac Effect — an effect-specific holonomy model, coupled to the device

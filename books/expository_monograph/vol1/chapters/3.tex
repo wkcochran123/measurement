@@ -1,0 +1,209 @@
+\chapter{The Residue Refuses To Disappear}
+
+\section{The antagonist and the treasure}
+
+The last chapter's loop kept the fact --- but keeping it was not free. To keep the fact, the round-trip had to record
+how far the fact had to travel to be kept, and that distance does not vanish when the trip is over. It sits there, at
+the bottom of every refinement, the one thing the climb could not climb away. This chapter names it. The name is the
+\emph{residue}, and it is two things at once, which is why it takes a chapter to introduce. It is the
+\emph{antagonist} --- the term no refinement can discharge, the leftover the machine would frankly rather not have to
+measure --- and it is the \emph{treasure}, because the leftover \emph{is} the reading. Everything the instrument is
+built to measure, it will read off exactly this.
+
+The residue is not a new primitive smuggled in from outside; it is a type at the top of the tower the book has been
+building. In this construction the residue's type \emph{demands} every earlier tier before it will form at all --- the
+distinguishable, the admissible, the countable, the encoded, each required as a standing condition --- and only once
+all four are in hand does it add anything of its own. So the residue is, definitionally, what remains once all four
+refinements have run: the tier you reach by refining, and can refine no further. ``Un-eliminable'' is a claim about
+the \emph{type}, not a mood --- it means there is no tier above this one to refine it into. The ladder built so far
+ends on the leftover.
+
+A word on ``so far,'' because the book means to keep its promises exact. The residue is the top of \emph{this} tower
+--- the one the first three chapters climb --- and not the top of everything. Further on, the construction will stack
+more tiers above the residue and carry it upward, and the next chapter's seam is precisely that carrying. So read
+``un-eliminable, the top'' as top-\emph{so-far}, the summit of the climb to here, and not as a final ceiling. The
+machine that, in its own words, does not much care to measure leftovers discovers that the leftover is the summit of
+its own construction.
+
+What the residue's type adds, once it has demanded the tower beneath it, is two fields, and the second is the one to
+watch. It carries a relation --- a predicate on the settled limits, saying when one settled thing stands to another as
+the residue relates them --- and the shape of that relation is not new. It is the loop of the last chapter, lifted one
+floor up. Where the round-trip compared raw sequences, this compares settled limits; but the cases are the same. At
+the bottom, the two facts must be equal. While both are still refining, the fact is held equal, a scale is permitted
+to rise, and an index is permitted to deepen. The residue, in other words, is measured in exactly the fact-preserving
+currency the loop established: the fact conserved, a magnitude climbing, a direction deepening. And here the seam the
+last chapter planted finally pays out. An encoding, that chapter observed, hands you an origin and a limit away from
+it --- a \emph{direction} and a \emph{magnitude}, one covariant and one contravariant. The residue is that pair, made
+into a type: the conserved fact and its index are the direction, the rising scale is the magnitude, and the two
+together are the whole of what the leftover carries.
+
+Now the turn the chapter is built on: the antagonist is the treasure. Why climb a whole tower of refinements only to
+be left, at the top, with a term you cannot discharge? Because that term is the measurement. It is not the failure of
+the construction; it is the point of it. Everything downstream reads this one object and nothing else: a later chapter
+will bracket it, another will name the box it falls into, another will put the coupling-question to it, and the book
+will end by holding it open as the honest interval it can only bracket. The residue is what the whole instrument
+converges on. And the thing about a treasure the machine would rather not measure is that it will not leave on its own
+--- the next section shows that discarding it is not even a permitted operation, that the attempt to drop the leftover
+fails to typecheck. What refuses to disappear is exactly what the instrument will spend the rest of the book reading.
+
+It is worth seeing the residue once in the two verbs, because it is where they finally point. Bag the differences by
+their admissibility, lay the bag out in an enumeration, encode it, let it settle --- funge upon funge upon funge ---
+and there is one characteristic that will not bag away, that survives every gathering: the residue. It is the tange no
+funge removes. It was selected, at the very start, by the whole tower at once, and no amount of bagging by likeness
+can dissolve it back into nothing; and that irreducibility is precisely why it is the treasure. The count could be
+fungeed; the limit could be fungeed; the leftover cannot. (That the residue \emph{is} a direction and a magnitude, an
+origin and a distance from it, is the reading the book lays over the relation --- and the source, tellingly, flags the
+reach of its own framing here more loudly than anywhere before it, which is exactly the signal to hold the reading as
+a reading. The thing the code builds is the tier and its relation; the direction-and-magnitude is what they are read
+as.)
+
+So the third chapter opens on its antagonist, which is its treasure, and the whole of what follows is the study of
+what this one un-dischargeable term turns out to be. The book has climbed a tower in order to arrive, deliberately, at
+the thing it could not climb past --- and that thing, it will argue for the rest of these pages, is quietly almost
+everything the instrument can measure.
+
+\section{The lie of discarding}
+
+The section before this named the residue un-eliminable and left the word standing as a claim about a type: there is
+no tier above it to refine it into. This section shows what the machine does when you reach past that refusal and try
+to eliminate the residue anyway --- when you attempt to throw the leftover away. The answer is sharper than ``you lose
+something.'' The answer is that the attempt is \emph{false}. Not discouraged, not merely lossy, not inadvisable:
+false, in the exact sense that the proposition asserting it has no proof, and the checker that would have to accept
+that proof cannot find one.
+
+To see why, look at what ``discard the residue'' means in the machine's own terms. Every comparison the construction
+makes is an order --- a relation that says when one term stands below another. Each such relation is defined by cases
+on the two terms it compares, and among those cases is the one that decides what happens when a populated, indexed
+term is asked to stand below \emph{nothing} --- below the empty term the construction writes \verb|.nil|. To discard
+the residue is precisely to assert that step: that the indexed leftover reduces back down to the empty term, as though
+it had never been drawn. And the relation's verdict on that case is a single word: \verb|False|.
+
+That is not a figure of speech. The relation is a proposition, and a proposition is inhabited or it is not; ``this
+populated term relates down to nothing'' is the uninhabited one. There is no proof of it, because the case that would
+have to supply one returns \verb|False| outright. Where the loop of the previous chapter and the opening of this one
+read the \emph{diagonal} cases --- the ones where the fact is held equal and the climb is permitted --- this section
+reads the \emph{off-diagonal} case, the one asked when a made distinction is pointed back at nothing. The residue
+refuses to disappear for the most literal reason a thing can refuse: the sentence ``it disappeared'' names no
+inhabitant. There is nothing to check, so the checker declines.
+
+Now set that case beside its partner. The same relations answer the opposite question --- what happens when
+\emph{nothing} is asked to stand below a populated term --- and there the verdict inverts to \verb|True|. The empty
+term stands below anything; the source, at the place it settles this, jokes that it is letting zero in as a converged
+digit the way a famous predecessor once let something in, and then rules plainly that zero is always less than
+anything, converged or not. So the two cases together carve a direction into the order. Upward --- from nothing toward
+a made distinction --- is always admissible. Downward --- from a made distinction back toward nothing --- is always
+\verb|False|. Refinement adds, and is always allowed; discarding subtracts, and is never allowed. That one-wayness is
+not a decoration on the construction; it \emph{is} the construction's soundness. A machine that could descend that arm
+could quietly un-make a distinction it had already drawn, and a reading that can be quietly un-made can be faked. The
+honesty the whole book is climbing toward rests on this one asymmetric pair: you may build up from nothing; you may
+never sink back to it.
+
+And here is the part worth slowing for: this is not a rule about the residue. It is a rule the machine obeys
+\emph{everywhere}. The same two cases --- \verb|False| going down, \verb|True| coming up --- stand in the order on raw
+sequences, in the order on settled limits, in the round-trip encoding the loop chapter built, and in the residue's own
+relation at the top. Four relations, from the bottom of the tower to its summit, and one discipline running through
+all of them: nothing populated is ever less than nothing. So the chapter title --- the residue refuses to disappear
+--- is, read exactly, the standing law of every comparison the machine makes. The antagonist of this chapter is not a
+special leftover with a special stubbornness; it is one instance of a house rule the construction has enforced since
+its first sequence. The residue simply happens to be the term the rule protects at the top. (A small honesty about the
+foot of that ladder: the two order relations let the empty term sit at or below \emph{another} empty term for free,
+while the two encodings ask, there, that the bare facts still match --- so it is the \emph{discard} case, and its
+upward partner, that run uniform across all four, not every case alike. The claim is carried by the arm that carries
+it.)
+
+There is one more thing the code says out loud at exactly this rule, and because it says it in a comment I can hand it
+over as derived rather than read in. On the diagonal case --- where both terms are populated --- the two orders, on
+sequences and on limits, split into two branches, and the source annotates them by name. Where the facts \emph{agree},
+the comparison runs one way and is marked \emph{covariant}; where the facts \emph{differ}, it runs the other way, the
+order on the scale inverted, and is marked \emph{contravariant}. This is the book's two verbs written into the order
+itself. To compare with the fact held equal --- to bag two terms by the likeness of what they carry --- is to funge,
+and the source calls it covariant. To compare with the fact differing --- to keep two terms apart by the very
+characteristic that distinguishes them --- is to tange, and the source calls it contravariant. The two bands that a
+later chapter will open into four faces are already here, cut into the order rule this section reads. And the source's
+confidence in the cut is worth noticing: the hedge it wrote large a section ago, when it read the residue as a
+direction and a magnitude, drops to its quietest here, at the order rules, where the source is sure. The deeper the
+reading, the louder the machine's own doubt; at the plain rules, it is quiet. That gradient is a tool --- it tells you
+which of the book's claims sit on firm ground and which are the gauge reaching.
+
+Which lets me say what discarding is in the two verbs. To drop the residue is to try to un-funge and un-tange in one
+step: to pull the member out of the bag and, at the same instant, erase the selection that put it there --- to pretend
+the distinction was never drawn. The \verb|False| arm is the machine declining exactly that pretense. You tanged it;
+you do not now get to claim you didn't. The bag only grows; no member is ever un-selected back out of it. And a
+caution on the word this section keeps circling: it is tempting to call the discard an ill-typed \emph{coercion}, a
+thing the compiler forbids by construction --- but there is no coercion in the code, no such instance anywhere in the
+source, only a proposition that returns \verb|False|. ``Coercion'' and ``lie'' are the reading; the thing built is the
+uninhabited case. The book keeps the two apart, as always.
+
+The forward sentence of this section is one the whole book will lean on at the end. The reason the jar can be honest
+--- the reason the interval it finally holds open cannot be a crank's fabricated point --- is this \verb|False| arm. A
+machine that cannot descend the discard direction cannot un-make a measurement, and a measurement that cannot be
+un-made cannot be faked. The open bracket the last chapter will reach is, in the end, exactly this: the residue not
+discarded --- held, rather than thrown away. Honesty, in this construction, has a precise type. It is a \verb|False|
+arm: the impossibility of pretending you did not measure what you measured.
+
+\section{What the residue becomes}
+
+The last section closed one direction: the residue cannot be discarded --- the step down to nothing is \verb|False|,
+and the machine will not compute it. So the machine does the only other thing it can. It cannot throw the leftover away
+and it cannot store it whole, so it takes a \emph{bite} of the residue and hands the bite on. In the source's own
+dialogue, the bite proves nothing --- but it gives the next machine something small enough to lie about. That bite has
+a name, and it is the type this section is about: the \verb|Sample|. What the residue \emph{becomes}, once the machine
+has refused both to keep it whole and to drop it, is a small finite datum, passable to whatever reads next.
+
+It is worth saying at the outset that the source is most nervous exactly here. Each type in this tower carries a
+private hedge --- the running self-flag the last section read as a fidelity gradient --- and the \verb|Sample|'s is the
+highest anywhere in the construction: higher than the residue's, higher than the encoding's, far above the order rules
+the source was sure of. The reason is plain once named. This is the type that most wants to be \emph{a number}, and the
+source knows it, and says so by hedging loudest exactly where the reach is longest. Read that as instruction.
+Everything in this section that sounds like ``the residue is a number now'' is the reading, and the machine's own doubt
+is turned up to its maximum to tell you so. What is actually built is smaller and firmer, and the section keeps to it.
+
+What is actually built is an inductive type with two constructors, and the two together say the residue becomes not a
+value but a \emph{process that begins and then answers itself}. The first constructor is a seed: from a fact and a
+settled limit it forms the \verb|Sample| at its origin --- the starting datum you cannot get out from under needing.
+(The source nods here to Dirichlet, from far back: you cannot, it says, escape the need for some magical number to
+begin with; the seed is that unavoidable beginning.) The second constructor is a response: given fresh facts and limits
+and a \emph{prior} \verb|Sample|, it builds the next one atop it. So a \verb|Sample| is a seed and then a recursion ---
+a thing that starts, and then responds to what it has already said. The residue, refused as a whole and refused as
+nothing, comes back as a datum that continues itself.
+
+The order on these samples is where the two verbs, for the first time, run \emph{at once}. Recall that the order rules
+of the last section split into a covariant branch, where the facts agree, and a contravariant branch, where they
+differ. The \verb|Sample| order re-runs that split --- but now it carries two facts and two scales, and routes them
+separately. The source poses it as a question and then takes the greedy answer: covariant on the one, contravariant on
+the other --- why not both? So a single comparison of two samples funges on the fact that agrees and tanges on the fact
+that differs, in the same breath. This is the double-read the book has been pointing toward: one datum, counted
+\emph{with} itself along the characteristic it shares and \emph{against} itself along the characteristic it does not.
+The residue, once sampled, carries both bands in one order --- and that single object, read on two bands at once, is the
+exact seed of the four faces a later chapter will open. The faces do not come from four different things; they come from
+one sample read covariantly and contravariantly together.
+
+And now the word the whole book will end on. Among the \verb|Sample| order's cases is one that must never hold: a
+response standing below its own origin --- a continuation claiming to be less than the seed it grew from. The relation's
+verdict on it is \verb|False|, the same refusal the last section studied; but here the source stops and \emph{names} the
+refusal. That collapse, its comment says, should not happen without serious \emph{strain} --- the compiler thought
+\emph{true = false} somewhere. And this is not a stray word chosen for color. A few lines on, the source formally
+introduces the concept under its own heading --- \emph{informational strain} --- and glosses it precisely: informational
+strain is \emph{true \(\neq\) false} forced to \emph{true = false}. So the forbidden collapse of this datum \emph{is}
+informational strain: the attempt to make a distinction and its own negation hold together, the one thing a sound
+checker computes to \verb|False|. This matters past the third chapter, because \emph{strain} is the word the last
+chapter of the book turns on --- and it is not, it turns out, a metaphor the final gauge reached for. It is a concept the
+construction introduces here, at the close of Part One, in its own voice. The jar the book ends by holding open is the
+strain \emph{relaxed}: the honest machine, offered the collapse, declines to force \emph{true = false} and holds the
+interval open instead. This section plants that through-line at its root --- the residue becomes a \verb|Sample| whose
+single illegal step is exactly the strain the whole instrument, at the end, refuses to force.
+
+One boundary before the chapter closes, and it is the null-basis boundary this series is built on. This sample is the
+datum every later reading will interpret --- and the physical gauge, the next volume, will read it as mass, as charge,
+as phase, as cost. Those four names are Volume Two's cut, not this one's. This volume claims only the type: the residue
+becomes a \verb|Sample|, a seed with a recursive response, doubly routed on the two bands, forbidden the one collapse
+the source calls strain. The physical readings are the interpretation the next machine --- in the source's wry sense ---
+is handed something small enough to lie about. This volume hands the sample over and does not itself read it. The
+residue has become a passable symbol; what it means is the next book's to say.
+
+So the third chapter closes where it must. The antagonist arrived un-dischargeable; the refusal proved itself a
+\verb|False| arm; and the leftover --- kept and passed rather than stored or dropped --- became a \verb|Sample|
+carrying, in a single order, both bands and one forbidden collapse. The word for that collapse is the word the book
+ends on. The residue is not yet read; it will not be read until far later, and even then it will come back, honestly, as
+an interval. But it is now a thing that can be handed on --- which is all the machine, having refused to lose it, ever
+needed it to be.

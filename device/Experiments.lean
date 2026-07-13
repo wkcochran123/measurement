@@ -45,7 +45,7 @@ import Experiments.TheChiralityEffect.Experiment3
 import Experiments.TheComptonScatteringEffect.Experiment3
 import Experiments.TheConservationOfEnergy.Experiment3
 import Experiments.TheDaVinciCoulombEffect.Experiment3
-import Experiments.TheDarkEnergyEffect.Experiment3
+import Experiments.TheEntropicGrowthEffect.Experiment3
 import Experiments.TheDavissonGermerEffect.Experiment3
 import Experiments.TheDescartesEffectCh03.Experiment3
 import Experiments.TheDescartesEffectCh08.Experiment3

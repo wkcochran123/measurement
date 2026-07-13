@@ -1,5 +1,7 @@
 # The Positron Annihilation Effect
 
+**Register.** Physical experiment, treated as a *representation* of the device's roster, on the near side: the electron (minus), the positron (plus), and the null (zero) they meet at are read as the three roles the calibration rotates through --- a model of the roster, never a claim about what an electron and a positron are in themselves when they meet (that stays on the far side). In electron-scope: the positron is the +1 role of the electron's own calibration, not an extrapolation past it. Used in Vol5 Ch4 §4.2 as the physical face of the sign-fold's roster. Build verified: `claim_holds` depends on `[propext]`.
+
 **Source phenomenon.** A positron is detected by its *annihilation*. When a positron meets an
 electron the two signed charges cancel and the rest energy leaves as two 511 keV gamma photons,
 emitted **back-to-back** (momentum balance). A coincidence detector confirms a positron was

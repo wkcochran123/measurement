@@ -29,7 +29,7 @@ bandwidth saturation* → `Counting.boundedBy` + the bookkeeping that the merged
 is additive (`Ledger.count_append`).
 
 ## NOT claimed
-That this is a model of galaxies, dark matter, mass distributions, or Newtonian potentials; that
+That this is a model of galaxies, doesn't-matter, mass distributions, or Newtonian potentials; that
 the continuum viscosity term `η_info` is derived; that `v_θ(r)` is computed; any `r^{-1/2}` decay
 law. The "curvature residue" here is a finite boundary-mismatch flag, not the continuum object.
 **Claim ceiling:** the smooth shadow of a discrete bandwidth/commutativity requirement.

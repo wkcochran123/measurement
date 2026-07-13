@@ -1,3 +1,310 @@
 \chapter{The Electron Is Named}
 
-\emph{[This chapter is being written, one section at a time.]}
+\section{Partition and collision}
+
+Let the finite domain be an explicit list
+\[
+X=[x_0,\ldots,x_{n-1}],
+\]
+and let \(B=\{0,\ldots,m-1\}\) be a declared set of boxes.  A total box map
+\(\beta:X\to B\) induces cells
+\[
+                         C_j=\{x\in X:\beta(x)=j\}.
+\]
+The nonempty cells form a partition of \(X\): each listed input belongs to exactly one cell, and distinct cells are
+disjoint.  This conclusion depends on total, single-valued evaluation of \(\beta\), not on names attached afterward.
+
+The finite pigeonhole statement is exact:
+\[
+ n>m\quad\Longrightarrow\quad
+ \exists\,i<k<n,\ \beta(x_i)=\beta(x_k).
+\]
+It guarantees some colliding pair.  It does not select which pair, prove that a proposed pair collides, identify the
+underlying inputs, or create a state transition.  In particular, a collision does not imply a cycle.  Exact
+three-cycle closure is a different claim with a transition map and belongs to the next section.
+
+The numerical algorithm traverses \(X\) in its declared order and maintains a visited table
+\[
+                       V[j]=\operatorname{none}
+                       \quad\text{or}\quad\operatorname{some}(i).
+\]
+At index \(i\), evaluate \(j=\beta(x_i)\).  If \(V[j]\) is empty, store \(i\); otherwise return the witness pair
+\((V[j],i)\).  The table slices prior inputs by box while retaining only the first index per box.  A full certificate
+also keeps the input list and all evaluated labels, because the table projection erases later members of each fiber.
+
+Budgets are explicit: input fuel bounds visited indices, map effort bounds evaluation of \(\beta\), table capacity
+bounds boxes, and arithmetic bounds label calculation.  Stops include \textsc{collision}, \textsc{domain-exhausted},
+\textsc{input-budget}, \textsc{map-budget}, \textsc{invalid-box}, \textsc{table-capacity},
+\textsc{map-failure}, and \textsc{overflow}.  Exhaustion without collision proves injectivity only on the traversed
+finite list and declared map.  A budget stop leaves the unvisited suffix as an unresolved frontier.
+
+A replay certificate records \(X,B,\beta\)'s declared graph or evaluation rule, traversal order, budgets, every
+label, visited-table update, collision witness or exhaustion stop, checked prefix, and unresolved suffix.  Validation
+is sliced into domain, box-range, map, table-update, distinct-index, equal-label, count, stop, and claim rows, each
+pass, fail, or unresolved.  The existential result licenses the collision conclusion only after finiteness,
+totality, input uniqueness, and \(n>m\) rows pass.
+
+\paragraph{Live neutral map: a specific three-to-two collision (computation).}
+Let
+\[
+D=\{\mathsf{base},\mathsf{first\ variation},\mathsf{second\ variation}\},
+\qquad B=\{0,1\},
+\]
+with \(\beta(\mathsf{base})=0\) and
+\(\beta(\mathsf{first\ variation})=\beta(\mathsf{second\ variation})=1\).  Its fibers are
+\[
+C_0=\{\mathsf{base}\},\qquad
+C_1=\{\mathsf{first\ variation},\mathsf{second\ variation}\}.
+\]
+The two variations are therefore a specifically evaluated collision.  The box count \(2\) is scoped to this declared
+domain and map.  An arbitrary three-to-two map guarantees some collision but privileges no pair.
+
+\paragraph{Worked example 1: a witnessed collision (computation).}
+Let \(X=[10,11,12,13]\), \(B=\{0,1,2\}\), and \(\beta(x)=x\bmod3\).  Labels are
+\([1,2,0,1]\).  Traversal returns indices \(0\) and \(3\), since both map to box \(1\).  The witness certifies equal
+labels and distinct inputs \(10\ne13\); it does not certify equality of the integers.
+
+\paragraph{Counterexample 2: existence does not choose the advertised pair (computation).}
+With the same map, pigeonhole guarantees a collision because \(4>3\).  It does not imply that \(11\) and \(12\)
+collide: their labels are \(2\) and \(0\).  A selected-pair claim requires its own two map evaluations.
+
+\paragraph{Worked example 3: projection fibers (computation).}
+For \(X=[0,1,2,3,4,5]\) and \(\beta(x)=x\bmod2\), the fibers are
+\[
+                         C_0=\{0,2,4\},\qquad C_1=\{1,3,5\}.
+\]
+Keeping only labels \([0,1]\) records occupied boxes but erases multiplicity, members, order, and collision witnesses.
+The projected alphabet cannot reconstruct the partition.
+
+\paragraph{Counterexample 4: repeated label is not a cycle (computation).}
+The sequence of independently mapped inputs may have labels \(0,1,0\).  This is a collision in a projection.
+Without a state transition \(T\) and checked equations \(T(x_i)=x_{i+1}\), it says nothing about return, period, or
+dynamics.
+
+\paragraph{Counterexample 5: an incomplete traversal (computation).}
+Suppose \(n=5\), \(m=3\), but input fuel permits only two evaluations with distinct labels.  The mathematical finite
+data still satisfy \(n>m\), yet the traversal has not produced a witness because the remaining map values were not
+evaluated.  Its report owns two rows and an unresolved suffix; it must not fabricate a pair.
+
+\paragraph{Counterexample 6: distinct indices are not necessarily distinct terms (computation).}
+For \([a,a,b]\), indices \(0\ne1\) do not witness distinct domain terms.  Without an input-uniqueness certificate,
+returning them proves only repeated occurrence.  The traversal stops with \textsc{invalid-domain}, or applies a
+declared provenance-preserving deduplication and restarts.  Silent deduplication changes \(n\) and may invalidate
+\(n>m\).
+
+Finite traversal needs no axiom of choice: its declared order returns the first encountered pair.  Existence itself
+supplies no canonical pair.  A constant map on three distinct terms has several colliding pairs, and another traversal
+order can select another witness without changing the existential result.
+
+The physics fence is strict.  A finite computational collision is not particle identity, indistinguishability,
+degeneracy, recurrence, conservation, or a detector event.  A physical use requires an apparatus, observable, units,
+calibration, sampling model, uncertainty, and a tested map from observations to boxes.
+
+\section{A collision is not a cycle}
+
+Let \(S\) be a declared state space and \(T:S\to S\) a deterministic total transition on the checked domain.  A cycle
+certificate for initial state \(s_0\) and period \(p>0\) requires
+\[
+T^p(s_0)=s_0,
+\]
+and a least-period certificate also requires \(T^k(s_0)\ne s_0\) for every \(0<k<p\).  These are full-state
+equalities.  If a box projection \(\beta:S\to B\) merely satisfies
+\(\beta(T^i(s_0))=\beta(T^j(s_0))\), it has found a label collision.  Unless the projection is proved to reflect
+state equality and to respect transitions, that collision supplies no cycle.
+
+The compatibility condition
+\[
+ \beta(x)=\beta(y)\Longrightarrow\beta(Tx)=\beta(Ty)
+\]
+defines a transition on labels.  It can certify a quotient-label cycle, but still does not reflect full-state closure.
+For example, let \(S=\mathbb Z/6\mathbb Z\), \(T(x)=x+1\bmod6\), and
+\(\beta(x)=x\bmod3\).  Labels have period \(3\), whereas every full state has period \(6\).
+
+The visited-table algorithm starts with \(s_0\), stores each full state with its first index, and repeatedly evaluates
+\(s_{i+1}=T(s_i)\).  On a previously visited state \(s_j=s_{i+1}\), it reports preperiod \(j\) and period
+\(p=i+1-j\).  Least period is checked by replaying the segment and testing all proper positive divisors of \(p\), or
+all \(1\leq k<p\) when no divisor optimization is certified.  A memory-bounded alternative advances one state by one
+step and another by two; a meeting proves an eventual repetition only under deterministic total transition and still
+requires a second pass to recover preperiod, period, and trace evidence.
+
+Transition fuel and table capacity bound only the checked prefix; exhaustion does not prove absence of a later cycle.
+
+If the checked state space has known cardinality \(|S|=M\) and \(T:S\to S\) is total and deterministic, then the
+\(M+1\) states \(s_0,\ldots,s_M\) force a repeated full state.  Without that finite bound, fuel alone guarantees only
+termination of the bounded search, not that a repetition will be found.
+
+\paragraph{Counterexample 1: repeated boxes without repeated states (computation).}
+Let \(S=\{a,b,c,d\}\), \(T(a)=b\), \(T(b)=c\), \(T(c)=d\), \(T(d)=d\), and let
+\(\beta(a)=\beta(c)=0\), \(\beta(b)=\beta(d)=1\).  The label trace from \(a\) is
+\(0,1,0,1,1,1,\ldots\), so the early \(0\) collision occurs at \(a\ne c\), while the eventual full-state cycle is
+the fixed point \(d\).  Projected period two is false as a full-state claim.
+
+\paragraph{Worked example 2: exact neutral three-cycle (computation).}
+For
+\[
+S=\{\mathsf{minus},\mathsf{zero},\mathsf{plus}\},
+\qquad
+\mathsf{minus}\mapsto\mathsf{zero}\mapsto\mathsf{plus}\mapsto\mathsf{minus},
+\]
+finite replay proves \(T^3(s)=s\) for every state.  The same table proves \(T(s)\ne s\) and \(T^2(s)\ne s\), so the
+least period is exactly \(3\).  This is a transition certificate independent of the three-to-two pigeonhole result in
+the preceding section.
+
+For any read \(r:S\to R\), the return identity gives \(r(T^3s)=r(s)\).  It does not give one-step invariance
+\(r(Ts)=r(s)\).  In particular, no residue or \(\alpha\) invariance, and no causal explanation of either, follows
+without a separately stated read map and preservation law.
+
+\paragraph{Worked example 3: a tail entering a cycle (computation).}
+Let \(0\mapsto1\mapsto2\mapsto3\mapsto2\).  From \(0\), the first repeated full state is \(2\), at indices \(2\) and
+\(4\).  The preperiod is \(2\), the period is \(2\), and the cycle is \(2\leftrightarrow3\).  Reporting period four
+from the return time alone would confuse prefix length with cycle length.
+
+\paragraph{Counterexample 4: nondeterministic compatibility failure (computation).}
+If state \(u\) may transition to either \(v\) or \(w\), repeated runs can diverge.  A recorded path can still be
+replayed as a finite path, but it is not a certificate for a deterministic transition function or for all possible
+future paths.  A schedule or choice stream must become part of the full state before deterministic cycle reasoning
+applies.
+
+\paragraph{Counterexample 5: finite search does not decide universal halting (computation).}
+Fuel \(N\) makes this cycle search terminate and permits \textsc{fuel} when no repetition has appeared.  It does not
+decide whether an arbitrary unbounded computation will halt or repeat.  The universal halting problem remains outside
+the finite certificate; only the enumerated transition prefix is owned.
+
+\section{When a physical name is licensed}
+
+Neither a collision nor a cycle licenses a physical name.  A collision certifies that distinct domain terms share a
+box under a declared projection.  A cycle certifies return under a declared full-state transition.  A physical claim
+requires a third structure:
+\[
+\begin{aligned}
+\mathcal L=(&\text{system},\text{apparatus},\text{observable},\text{model},\text{units},\\
+            &\text{calibration},\text{sampling},\text{uncertainty},\text{alternatives},\text{provenance}).
+\end{aligned}
+\]
+The bridge from a computational report to \(\mathcal L\) must be stated, calibrated, and tested.  Finiteness,
+repeatability, and word resemblance cannot supply it.
+
+The four-name grammar is useful only because it prevents coercion:
+\[
+\begin{array}{ll}
+\operatorname{nowtrino}(H)&=\text{current computational projection after history slicing},\\
+\operatorname{newtrino}(s)&=U(s),\text{ the next computational state under declared update }U,\\
+\operatorname{naotrino}&=\text{physical candidate; manuscript coinage from Greek \emph{naos}, temple},\\
+\nu\text{-trino}&=\text{the standard neutrino-physics register}.
+\end{array}
+\]
+After state representation and update are declared, transition supplies
+\[
+                    \operatorname{nowtrino}(H)\xrightarrow{\,U\,}\operatorname{newtrino}(s).
+\]
+This is a computational edge.  It does not reach naotrino or \(\nu\)-trino.  A naotrino claim needs a concrete
+apparatus, model, observables, units, calibration, uncertainty, and discriminating data.  A standard neutrino claim
+must use the established physical model and observables appropriate to that register.  Similar spelling is no map.
+
+A candidate bridge has typed form
+\[
+\mathrm{Input}\longrightarrow\mathrm{Report}\xrightarrow{\kappa}C
+\xleftarrow{\lambda}\mathrm{Observation},
+\]
+where \(\kappa\) converts a computational report into comparison domain \(C\), and \(\lambda\) converts calibrated
+observations into the same domain.  Before notation is shared, three value relations remain distinct:
+\[
+\begin{array}{ll}
+\text{exact same-number}&\kappa(R)=\lambda(O),\\
+\text{resolution equivalence}&q_\theta(\kappa(R))=q_\theta(\lambda(O)),\\
+\text{uncertainty compatibility}&\mathcal U_R\cap\mathcal U_O\ne\varnothing
+\text{ under a declared region model}.
+\end{array}
+\]
+Same-number is reserved for exact equality after typed conversion.  None of these relations implies same-process or
+physical identity.
+
+The two-pass calibration guards against a name being planted by one route.  A direct acquisition and a stepped
+acquisition through an intermediate produce reports \(R_d,R_s\).  Their raw values, uncertainty regions, routes,
+budgets, and provenance are retained.  The comparison reports three rows:
+\[
+\begin{array}{ll}
+\text{exact equality}&\kappa_d(R_d)=\kappa_s(R_s),\\
+\text{resolution equality}&q_\theta(\kappa_d(R_d))=q_\theta(\kappa_s(R_s)),\\
+\text{uncertainty-region overlap}&\mathcal U_d\cap\mathcal U_s\ne\varnothing.
+\end{array}
+\]
+Each row independently passes, fails, or remains unresolved.  No combined agreement bit may erase which relation
+passed.  Passing any row does not prove route independence, apparatus correctness, or a physical mechanism unless
+those hypotheses receive separate tests.
+
+\paragraph{Worked example 1: a licensed computational transition.}
+Let a full state be \(s=(x,c,\sigma)\), and let \(U\) update all three fields.  The current summary
+\(\operatorname{nowtrino}(H)=s\) and next state \(\operatorname{newtrino}(s)=U(s)\) are connected by replaying \(U\).
+If history slicing erased the prior trace, the edge certifies this one update only.  Calling either endpoint a
+physical particle would be a type and evidence error.
+
+\paragraph{Counterexample 2: collision plus cycle still lacks apparatus.}
+Three computational states may map into two boxes, and the states may also rotate with least period three.  These are
+valid finite certificates for projection and transition.  They specify no detector, physical observable, unit,
+calibration, noise law, or uncertainty.  Their conjunction therefore licenses no naotrino or standard neutrino claim.
+
+\paragraph{Worked example 3: interval compatibility at uncertainty.}
+Suppose two calibrated channels report intervals \(I_1\) and \(I_2\) in the same unit, with a preregistered rule that
+accepts when \(I_1\cap I_2\ne\varnothing\).  An observed overlap passes the interval-overlap, or
+compatible-at-uncertainty, row.  It is not an exact same-number result.  Shared
+calibration or preprocessing may correlate the channels, so covariance and cross-covariance remain in the report.
+Overlap does not certify independent evidence or equal acquisition processes.
+
+\paragraph{Counterexample 4: same numeral in incompatible domains.}
+A computational summary and a detector fit both display \(3\).  One counts transitions; the other estimates an energy
+in declared units.  Without \(\kappa,\lambda\), unit conversion, uncertainty, and model checks, equality of printed
+numerals is not even a same-number claim in a common domain.
+
+\paragraph{Descent experiment 8: a name survives a transform only at its declared resolution (hand-worked proposed harness).}
+This is a hand-worked synthetic naming proposal, not an exported computation or apparatus observation.  Let the full
+state domain be
+\[
+ S=\{(i,j):i\in\mathbb Z/6\mathbb Z,\ j\in\{0,1\}\},
+\]
+let \(T:S\to S\) be \(T(i,j)=(i+1\bmod6,1-j)\), and let the current-summary transform be
+\(\pi(i,j)=i\bmod3\) with codomain \(B=\mathbb Z/3\mathbb Z\).  The summary update is
+\(\overline T(b)=b+1\bmod3\).  Domain, codomain, transition, projection, and update are fixed before the table is
+evaluated.  Hand calculation verifies the proposed commuting square
+\[
+ \begin{array}{ccc}
+ S&\xrightarrow{T}&S\\
+ \pi\downarrow&&\downarrow\pi\\
+ B&\xrightarrow{\overline T}&B
+ \end{array}
+ \qquad\text{that is,}\qquad \pi\circ T=\overline T\circ\pi.
+\]
+
+From \(s_0=(0,0)\), the full trace is
+\((0,0),(1,1),(2,0),(3,1),(4,0),(5,1),(0,0)\).  The projected trace is
+\(0,1,2,0,1,2,0\).  Thus the projected current name returns after three transitions, whereas the full state returns
+only after six.  The transform preserves enough structure to license the statement that the \emph{summary update}
+has period three; it does not license period three for the full process.  The failed lifting residual at step three
+is the erased state difference \((3,1)\ne(0,0)\), even though both project to \(0\).
+
+The hand check retains all six full transitions and seven projected labels, verifies the square on the finite fibers,
+and checks the two periods separately.  A projected collision is never upgraded to a full-state return.
+
+An adversarial projection shows why commutation, not alphabet size, licenses the summary update.  Replace \(\pi\) by
+\(\pi'(i,j)=i+j\bmod3\) while retaining the advertised \(\overline T(b)=b+1\bmod3\).  Then
+\[
+ \pi'(T(i,j))=i+2-j\pmod3,\qquad
+ \overline T(\pi'(i,j))=i+j+1\pmod3.
+\]
+For \(j=0\) these differ, so a proposed checker would classify the first checked fiber
+\textsc{noncommuting}.  The new projection
+still has three labels, still produces collisions, and may still display repeating strings.  None repairs the failed
+transition relation.  One may derive a different quotient transition only if it is well-defined on every
+\(\pi'\)-fiber; choosing a rule after seeing the desired trace would be fitting the name.
+
+The two harnesses form a controlled comparison.  Their full \(T\), state domain, fuel, and equality are identical;
+only the projection record changes.  The residual is localized to the summary-transition row.  This is the precise
+sense in which the name depends on resolution: each reading owns only the dynamics its projection actually preserves.
+Recording the failed alternative prevents the successful square from being mistaken for an automatic property of any
+three-box naming scheme.
+
+If label \(0\) is called nowtrino in this harness, that name belongs only to the governed projection row
+\((\text{name},S,B,\pi,\text{version})\).  The next label under \(\overline T\) may be called newtrino because its
+update square is hand-verified.  Both periods and the square are finite hand calculations; harness and names remain
+proposed.  Successful quotient dynamics licenses no particle or physical recurrence: that would require an apparatus
+record, units, calibration, observations, uncertainty, and a tested bridge.

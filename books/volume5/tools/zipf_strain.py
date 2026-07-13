@@ -25,6 +25,12 @@ BASELINE = [f"{ROOT}/books/expository_monograph/vol1/chapters",
 FAMILY = {"tange","funge","tanges","funges","tanged","funged","retange","refunge",
           "nowtrino","newtrino","naotrino","contravariant","covariant"}
 
+# TRUNCATED ZIPF (operator 2026-07-13): fit the slope on the top-TOP_RANKS words only.
+# Zipf's law holds in the HEAD and breaks down in the hapax tail; fitting the full curve
+# lets the fat freq-1 tail flatten/distort the exponent (it measures the coinage noise, not
+# the prose's vocabulary economy). Truncate to the head so the strain reads the real curve.
+TOP_RANKS = 1000
+
 def tokenize(text):
     text = re.sub(r"(?<!\\)%.*", " ", text)      # strip comments
     text = re.sub(r"\\[a-zA-Z]+\*?", " ", text)   # strip \commands
@@ -54,12 +60,15 @@ def load(dirs):
                 toks += tokenize(fh.read())
     return toks
 
-def fit(toks):
-    """least-squares slope of log(freq) vs log(rank); returns (s, counter, ranked)."""
+def fit(toks, top=TOP_RANKS):
+    """least-squares slope of log(freq) vs log(rank); returns (s, counter, ranked).
+    TRUNCATED: the slope is fit on the top-`top` ranks only (the head where Zipf holds);
+    the full counter/ranked are still returned for the tail diagnostics (hapax/residuals)."""
     c = Counter(toks)
-    ranked = c.most_common()                      # [(word, freq), ...] rank = index+1
-    xs = [math.log(i+1) for i in range(len(ranked))]
-    ys = [math.log(f)   for _, f in ranked]
+    ranked = c.most_common()                       # [(word, freq), ...] rank = index+1 (FULL)
+    head = ranked[:top]                            # TRUNCATE the fit to the head
+    xs = [math.log(i+1) for i in range(len(head))]
+    ys = [math.log(f)   for _, f in head]
     n = len(xs)
     if n < 3: return (float("nan"), c, ranked)
     mx, my = sum(xs)/n, sum(ys)/n
@@ -98,8 +107,9 @@ def baseline_at_length(base_toks, N_target, K=20):
 def report(name, toks, base_toks=None, target_dir=None):
     s, c, ranked = fit(toks)
     V, N = len(c), len(toks)
+    fitN = min(TOP_RANKS, V)
     print(f"\n== {name} ==")
-    print(f"   tokens N={N}  types V={V}  Zipf exponent s={s:.3f}")
+    print(f"   tokens N={N}  types V={V}  Zipf exponent s={s:.3f}  [fit on top-{fitN} ranks (truncated)]")
     if base_toks is not None:
         s0m, s0sd = baseline_at_length(base_toks, N)  # matched-length baseline
         print(f"   baseline @ MATCHED length N={N}:  s0={s0m:.3f} +/- {s0sd:.3f}")
@@ -139,11 +149,12 @@ def report(name, toks, base_toks=None, target_dir=None):
                 lg.write(f"{N}\t{V}\t{s:.3f}\t{s0m:.3f}\t{strain:+.3f}\t{sig:.3f}\t{drift:.3f}\t{drift<sig}\n")
         except Exception:
             pass
-    # per-word residuals vs the fit line; fat tail = hapax coinage = over-tanged
-    xs = [math.log(i+1) for i in range(len(ranked))]
-    ys = [math.log(f) for _, f in ranked]
+    # per-word residuals vs the fit line (computed on the same truncated head as the slope)
+    head = ranked[:TOP_RANKS]
+    xs = [math.log(i+1) for i in range(len(head))]
+    ys = [math.log(f) for _, f in head]
     n=len(xs); mx=sum(xs)/n; my=sum(ys)/n
-    b = my + s*mx  # intercept for y = -s*x + b
+    b = my + s*mx  # intercept for y = -s*x + b (fit on the head)
     hapax = [w for (w,f) in ranked if f==1]
     print(f"   hapax (freq-1) types: {len(hapax)}  ({100*len(hapax)/V:.0f}% of vocab)  <- the fat-tail / prune-or-promote pool")
     STOP = set("the a an of to and in is it that this as by for with on at from be are was "

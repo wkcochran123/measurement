@@ -1,3 +1,401 @@
 \chapter{The Meter}
 
-\emph{[This chapter is being written, one section at a time.]}
+\section{What a heartbeat counts}
+
+A heartbeat is an operational counter exposed by a particular language toolchain.  In the configuration considered
+here it behaves as an allocation or effort counter consumed by bounded elaboration, reduction, search, and related
+internal work.  Its exact increment policy is toolchain-defined and may change with compiler release, libraries,
+optimization, cache state, command form, or configuration.  Therefore a reading is not merely \(h\), but
+\[
+H=(h,\text{counter semantics},\text{release},\text{dependencies},
+\text{configuration},\text{input},\text{run conditions}).
+\]
+
+Several currencies must remain distinct:
+\[
+\begin{array}{ll}
+\text{logical step}&\text{one transition in a declared abstract procedure},\\
+\text{reduction/search step}&\text{one event in a declared operational trace},\\
+\text{allocation counter}&\text{a toolchain-defined charged event},\\
+\text{wall time}&\text{elapsed clock duration},\\
+\text{CPU time}&\text{processor time charged by the operating environment},\\
+\text{energy}&\text{joules measured by calibrated physical instrumentation}.
+\end{array}
+\]
+No fixed conversion among these follows from their names.  A counter can change while wall time falls, or remain
+stable while wall time varies.  Energy requires a physical meter and calibration.
+
+The measurement protocol uses a controlled workload family \(W_j\).  For each workload it records a requested counter
+budget \(B_j\), runs the operation, and obtains
+\[
+                         (o_j,h_j,\sigma_j),
+\]
+where \(o_j\) is the returned report, \(h_j\) the spent counter, and \(\sigma_j\) the stop.  Requested, spent, and
+remaining budget are retained separately.  A budget exhaustion result reports checked scope and unresolved frontier;
+it is not a completed cost.
+
+\paragraph{Calibration experiment 1: baseline subtraction (computation).}
+Measure an empty or minimal harness \(W_0\) and a target \(W_1\) under the same governed conditions.  Define
+\[
+                         \Delta h=h_1-h_0.
+\]
+This subtraction removes only charges common and additive under the protocol.  It does not prove that every overhead
+is shared, that counter attribution is linear, or that \(\Delta h\) belongs exclusively to the target.  Interleaved
+baseline and target runs can expose drift.
+
+\paragraph{Calibration experiment 2: workload scaling (computation).}
+Choose workloads with declared structural sizes \(n_1<\cdots<n_k\), measure counter vectors, and compare candidate
+models such as \(a+bn\) or \(a+bn\log n\).  Numerical fitting iterates parameter estimates and slices residuals by
+workload, run order, and configuration.  A good fit within the calibrated range is descriptive; it is not a universal
+complexity law or a conversion from logical steps to counter units.
+
+\paragraph{Vacuum draw: the finite Amdahl transform (computation).}
+The Amdahl experiment makes one limiting transform explicit before any timing interpretation is attempted.  Its input
+domain is the finite workload type
+\[
+                         W=\mathbb N\times\mathbb N,\qquad w=(s,p),
+\]
+where \(s\) is the count of sequential ledger segments and \(p\) the count declared perfectly parallel.  The
+transform
+\[
+ T_A:W\longrightarrow\mathbb N\times\mathbb N\times\operatorname{Ledger}(\mathbf 1),\qquad
+ T_A(s,p)=(s+p, s, [\star]^s)
+\]
+returns the serial cost, the ideal infinite-worker cost, and a ledger containing exactly the irreducible segments.
+This is the mathematics the experiment performs: \texttt{total} adds the two inputs, \texttt{idealParallelCost} projects to \(s\),
+and \texttt{sequentialLedger} replicates one event \(s\) times.  No scheduler, processor, clock, or communication channel is
+hidden in that map.
+
+The ledger theorem says only that its count is \(s\).  The sequential/parallel partition is an input, not a fact
+discovered from a compiler trace: equal \((s,p)\) can hide different dependency graphs, while changing the partition
+at fixed \(s+p\) changes the ideal projection.
+
+For the canonical input \((1,3)\), the trace reads serial cost \(4\), ideal cost \(1\), and a one-event sequential
+ledger.  The exported run stops after the projection and returns \(1\).  A separate decision checks whether ideal and
+serial costs are equal and returns false, because the precondition for \texttt{no\_speedup\_without\_parallel}, namely
+\(p=0\), is not satisfied.  The positive-floor theorem has its own load-bearing precondition \(0<s\); if \(s=0\), the
+ideal cost is zero and the theorem cannot be invoked, although the total natural-number projection still returns.
+
+There is an exact comparison with the familiar fractional formula, but only after its number system and embedding are
+typed.  Let \(\iota:\mathbb N\to\mathbb Q\) be the canonical embedding.  For \(s+p>0\), set
+\(\phi_{\mathbb Q}(s,p)=\iota(p)/\iota(s+p)\).  If also \(s>0\), then in \(\mathbb Q\)
+\[
+ \frac{\iota(\operatorname{total}(w))}
+      {\iota(\operatorname{idealParallelCost}(w))}
+ =\frac{\iota(s+p)}{\iota(s)}
+ =\frac{1}{1-\phi_{\mathbb Q}(w)}.
+\]
+Thus the natural outputs satisfy the rational Amdahl identity under the declared embedding.  This is an external
+algebraic comparison, not a theorem executed by \texttt{run}; the source proves only the finite floor and ledger count,
+not wall-clock speedup.
+
+Warm and cold conditions are separate strata.  A cold run may include parsing, loading, cache construction, and
+initial allocation that a warm run reuses.  A warm run may inherit mutable state from earlier workloads.  The
+protocol declares process lifetime, cache policy, workload order, randomization, number of repetitions, and whether
+each sample is cold, warm, or mixed.  Discarding a first run without preregistration is a data-dependent slice.
+
+\paragraph{Counterexample 3: same input, different configuration (computation).}
+Two runs receive identical source text but use different releases or dependency sets.  Equal outputs do not make
+their heartbeat counts directly comparable.  A process-comparison row fails or remains unresolved until counter
+semantics and configuration are matched or a calibrated conversion is demonstrated.
+
+\paragraph{Counterexample 4: stable counter, variable wall time (computation).}
+Repeated runs may return the same allocation count while elapsed time varies with scheduling, processor frequency,
+contention, or thermal state.  This is consistent: the counter and clock measure different currencies.  Neither one
+is a surrogate for energy without separate calibration.
+
+Shannon information supplies a careful description framework.  If a declared random variable \(X\) over workload
+descriptions has law \(p(x)\), then
+\[
+                         H(X)=-\sum_xp(x)\log_2p(x).
+\]
+For a prefix code with lengths \(\ell(x)\), expected description length is
+\(\mathbb E[\ell(X)]\).  These are bits under a declared distribution and code.  Heartbeat counts may be statistically
+modeled against description lengths, but a counter is not Shannon information, entropy, probability, or code length.
+A correlation requires data and uncertainty; it does not identify the quantities.
+
+The numerical audit iterates over configurations, workloads, repetitions, and cold/warm strata.  It slices readings
+by outcome, stop, configuration, run order, and resource class; retains rejected and failed runs with reasons; computes
+means, medians, dispersion, paired differences, covariance, and model residuals only where the sampling design
+licenses them.  Deterministic inputs can still meet nondeterministic scheduling, randomized search, address layout,
+parallel execution, or other environmental state.
+
+Stops include \textsc{complete}, \textsc{counter-budget}, \textsc{search-budget}, \textsc{allocation-failure},
+\textsc{arithmetic-overflow}, \textsc{toolchain-mismatch}, \textsc{dependency-mismatch},
+\textsc{configuration-mismatch}, \textsc{cache-state-unknown}, \textsc{nondeterministic-input-unknown},
+\textsc{output-failure}, and \textsc{provenance-incomplete}.  A failed output and an exhausted resource are different
+statuses; neither is silently replaced by a numeric cost.
+
+The certificate records counter semantics, release and compiler identity, dependency lock and versions, snapshot
+hash, command and build configuration, workload representation, structural size, requested/spent/remaining budgets,
+output, stop, cold/warm state, process lifetime, cache policy, run order, random seeds and schedules, counter readings,
+wall and CPU timing when collected, physical-meter provenance for energy if collected, rejected samples, checked
+scope, unresolved frontier, and validation slices.
+
+Comparison follows three value relations.  Exact equality compares integer counter readings only after matched
+counter semantics.  Resolution equality compares labels under a declared binning or formatter.  Uncertainty
+compatibility compares declared sampling or calibration regions.  Each independently passes, fails, or remains
+unresolved.  Same-process additionally requires matching workload, transitions, counter policy, releases,
+dependencies, configuration, cache and warmup state, deterministic inputs, declared nondeterministic inputs, and
+provenance.
+
+Governance fixes workload family, counter semantics, releases, dependencies, configuration, budget, cold/warm
+protocol, repetition and ordering, baseline rule, statistical summaries, model family, binning, uncertainty, stop
+priority, and certificate grammar.  A changed field creates a new measurement series.
+
+The action ledger is exact.  Counter interpretation, workloads, baselines, configurations, sampling, models, Shannon
+law and code, comparisons, budgets, and certificate grammar are \emph{posited}.  Integer subtraction, conditional
+baseline implications, fitted-model arithmetic, statistical summaries, entropy and expected-length calculations, and
+certificate implications are \emph{demonstrated}.  Outputs, counters, timings, configurations, cache strata, rejected
+runs, residuals, stops, and provenance are \emph{read}.  A logical-step conversion without calibration, counter as
+information or physical time, energy without a physical meter, universal complexity from a finite fit, identical
+counts across uncontrolled runs, and deterministic sameness from input text alone remain \emph{reserved}.
+\section{Warmup, read, subtract}
+
+A paired cost experiment has four phases: register the workloads, perform declared setup, execute warmup, and read a
+baseline--target pair.  Registration fixes representations, counter semantics, budgets, and evaluation order before
+any reading.  Setup may load dependencies, initialize caches, or allocate shared tables.  Warmup is a measured and
+reported phase, not evidence discarded merely because its cost is inconvenient.
+
+For pair \(i\), let \(b_i\) be the baseline count and \(t_i\) the target count under matched conditions.  The signed
+residual is
+\[
+                         \delta_i=t_i-b_i\in\mathbb Z.
+\]
+A negative residual is valid arithmetic and may indicate noise, ordering effects, cache reuse, or a baseline that is
+more expensive under that condition.  Clamping \(\delta_i\) to zero would change the data.  Integer subtraction is
+exact; attribution of the difference is conditional.
+
+For \(N\geq2\) completed valid pairs, the paired estimator is
+\[
+                         \bar\delta=\frac1N\sum_{i=1}^N\delta_i
+                         =\bar t-\bar b.
+\]
+Under a declared independent or exchangeable-pair model, its sampling variance is estimated from paired differences,
+\[
+ s_\delta^2=\frac{1}{N-1}\sum_{i=1}^N(\delta_i-\bar\delta)^2,\qquad
+ \widehat{\operatorname{Var}}(\bar\delta)=\frac{s_\delta^2}{N}.
+\]
+Within one pair,
+\[
+\operatorname{Var}(T-B)=\operatorname{Var}(T)+\operatorname{Var}(B)
+-2\operatorname{Cov}(T,B).
+\]
+This identity handles within-pair dependence only.  It does not account for correlations across pairs induced by
+blocks, drift, cache history, or run order.  With residual covariance matrix \(\Sigma_\delta\),
+\[
+ \operatorname{Var}(\bar\delta)
+ =\frac{1}{N^2}\mathbf1^{\mathsf T}\Sigma_\delta\mathbf1.
+\]
+When full covariance is not estimable, a preregistered clustered or block method must match the acquisition design.
+
+Interleaving controls drift.  A balanced sequence such as \(B,T,T,B\) can be randomized within blocks, with run
+order retained.  Repetitions are sliced by cold/warm state, block, outcome, configuration, and stop.  A paired row is
+valid only when both members complete under the pairing policy; failed or censored partners remain in the audit and
+are not silently replaced.
+
+\paragraph{Worked example 1: signed paired residuals (computation).}
+Suppose three matched pairs give
+\[
+                         (b_i,t_i)=(573,552),(570,575),(580,579).
+\]
+Then \(\delta=(-21,5,-1)\).  These values support exact signed arithmetic and a paired summary.  They do not prove
+that the first target has negative intrinsic cost; the attribution model must explain shared and order-dependent
+charges.
+
+\paragraph{Counterexample 2: subtracting unmatched runs (computation).}
+A cold baseline from one configuration and a warm target from another can be subtracted as integers, but the result
+is not a calibrated paired residual.  The configuration and warm-state validation rows fail, so interpretation of the
+difference remains rejected or unresolved.
+
+Shared-overhead cancellation assumes an additive model,
+\[
+                         B_i=O_i+\epsilon_{Bi},\qquad
+                         T_i=O_i+C_i+\epsilon_{Ti}.
+\]
+Then \(\delta_i=C_i+\epsilon_{Ti}-\epsilon_{Bi}\).  If setup interacts with the target, if caches change \(C_i\), or
+if \(O_i\) differs within a pair, subtraction does not isolate \(C_i\).  Additivity and shared overhead must be tested
+with controls, order reversals, and residual diagnostics.
+
+Two numerical routes are kept separate.  The direct route reads target and baseline in one paired block and
+subtracts.  The stepped route records setup, warmup, baseline, intermediate workload, and target, then composes
+declared differences.  For example,
+\[
+                         (t-m)+(m-b)=t-b
+\]
+is an exact arithmetic identity when all three readings belong to one compatible currency and pairing context.
+It does not make the direct and stepped acquisition processes identical.
+
+\paragraph{Worked example 3: direct and stepped comparison (computation).}
+Let \(\delta_d=t-b\) and \(\delta_s=(t-m)+(m-b)\).  Exact equality follows algebraically if the same \(b,m,t\) are
+reused.  If the routes acquire separate readings, equality becomes an empirical comparison with covariance and
+provenance.  Near agreement under a formatter is only resolution equality, not same-process.
+
+Build-to-build reproducibility is scoped to matched counter semantics, compiler and dependency releases, snapshot,
+configuration, workload representations, budgets, setup, warmup, cache policy, run order, deterministic inputs, and
+declared nondeterministic conditions.  Two builds may return equal tuples under this governed relation.  Equality is
+read; matching configuration is posited and validated from provenance.  A mismatch does not identify its cause
+without further slicing.
+
+The comparison reports independent rows:
+\[
+\begin{array}{ll}
+\text{exact equality}&\delta_1=\delta_2,\\
+\text{resolution equality}&q_\theta(\delta_1)=q_\theta(\delta_2),\\
+\text{uncertainty compatibility}&\mathcal U_1\cap\mathcal U_2\ne\varnothing.
+\end{array}
+\]
+Each passes, fails, or remains unresolved.  Exact equality of residuals does not imply same-process; that relation
+also requires compatible inputs, transitions, traces, resource currencies, setup, warmup, configurations, and
+provenance.
+
+The numerical algorithm iterates blocks and pairs, validates membership, computes signed differences, updates exact
+sums and covariance accumulators, and slices results by all governed strata.  It retains raw pair order and can replay
+summaries from the raw table.  Overflow and bit-growth checks precede accumulator updates.
+
+Budgets distinguish setup, warmup, baseline and target readings, repetitions, block count, counter allowance,
+arithmetic growth, covariance estimation, and replay.  Stops include \textsc{complete}, \textsc{registration-failure},
+\textsc{setup-failure}, \textsc{warmup-budget}, \textsc{counter-budget}, \textsc{unpaired-run},
+\textsc{output-failure}, \textsc{configuration-mismatch}, \textsc{cache-state-unknown},
+\textsc{overflow}, \textsc{insufficient-pairs}, and \textsc{provenance-incomplete}.  Resource failure is not a
+numeric residual.
+
+A certificate records registered workloads, counter semantics, releases, dependency lock, snapshot hash,
+configuration, setup and warmup traces, cache/process policy, raw baseline/intermediate/target readings, pair and
+block identifiers, order and randomization, signed residuals, exact sums, covariance, rejected and failed runs,
+direct and stepped routes, budgets, stops, checked scope, unresolved frontier, protocol, run identity, platform,
+deterministic inputs, declared nondeterministic inputs, completed-valid-pair count, and dependence-model validation.
+
+Governance fixes workload representations, pairing, registration, setup, warmup, interleaving and randomization,
+baseline, target and intermediate roles, subtraction orientation, additive model, summaries, uncertainty, direct and
+stepped comparisons, budgets, stop priority, and certificate grammar.  A changed field begins a new measurement
+series.
+
+The action ledger is exact.  Pairing, workloads, roles, setup, warmup, additive model, routes, sampling, comparisons,
+budgets, and certificate grammar are \emph{posited}.  Signed subtraction, telescoping identities, paired summaries,
+covariance arithmetic, conditional cancellation, sufficient-pair and dependence-model validation, and certificate
+implications are \emph{demonstrated}.  Raw counts,
+pair order, residuals, covariance estimates, configuration rows, route comparisons, stops, and provenance are
+\emph{read}.  A fixed structural-rank conversion, isolated target cost without tested additivity, same-process from
+near or exact residual agreement, naive \(s_\delta^2/N\) uncertainty under correlated pairs, unconditional build
+reproducibility, self-energy, particle identity, alpha, and physical coupling remain \emph{reserved}.
+\section{Self-application without mystification}
+
+Self-application begins by separating five objects:
+\[
+\begin{array}{ll}
+P&\text{an object program or workload},\\
+\ulcorner P\urcorner&\text{a finite representation of that program},\\
+E&\text{an evaluator under a declared toolchain and configuration},\\
+M&\text{a meter that observes declared resource counters during evaluation},\\
+\mathcal R&\text{the resulting value, trace, counters, stop, and provenance}.
+\end{array}
+\]
+An experiment may evaluate \(E(P,x)\), \(E(P,\ulcorner P\urcorner)\), or
+\(E(E,\ulcorner E\urcorner)\) if the domains admit those inputs.  These are different workloads.  Saying that a
+machine measures itself is incomplete until the object, representation, evaluator, meter boundary, and input are
+specified.
+
+The meter is not outside all influence.  Instrumentation can change allocation, search order, representation size,
+caching, and evaluation path.  A calibration therefore compares an unmetered or minimally metered control with the
+metered workload under matched conditions and reports the intervention.  It does not assume measurement overhead is
+additive or transparent.
+
+Bounded evaluation has state
+\[
+                         S_k=(e_k,\rho_k,F_k,B_k,T_k),
+\]
+where \(e_k\) is the current expression or task, \(\rho_k\) the environment, \(F_k\) transition fuel, \(B_k\) a
+resource vector, and \(T_k\) the trace.  Each admitted transition updates state and decreases fuel.  Stops include a
+value, explicit failure, domain error, fuel exhaustion, resource exhaustion, or an unresolved external action.  The
+fuelled wrapper terminates; that does not decide whether the corresponding unbounded evaluation terminates.
+
+Self-input increases several risks.  Representation can expand before evaluation, quotation and interpretation may
+fail to round-trip, diagonal construction can generate a workload unlike the original, and evaluation can recurse
+without reaching a value.  The report therefore retains representation bytes or symbols, parser and decoder
+decisions, round-trip checks, every self-input boundary, growth, and the precise stop.  A timeout or fuel stop is not
+semantic evidence of divergence.
+
+\paragraph{Worked example 1: representation round trip (computation).}
+Given \(P\), form \(\ulcorner P\urcorner\), decode it to \(P'\), and compare \(P'\) with \(P\) under a declared
+structural relation.  Passing certifies the representation round trip.  It does not certify that
+\(E(P,\ulcorner P\urcorner)\) halts or returns the same value as \(E(P,P)\), which may not even be well-typed.
+
+\paragraph{Worked example 2: bounded self-input (computation).}
+Run \(E(P,\ulcorner P\urcorner)\) with fuel \(N\).  If it returns value \(v\) after \(k\leq N\) transitions, replay
+certifies that finite trace.  If fuel reaches zero first, the report owns the prefix and unresolved next state only.
+Increasing \(N\) creates a new run and may reveal a value; the earlier stop remains valid within its scope.
+
+\paragraph{Counterexample 3: self-description is not consciousness.}
+A text can contain or reproduce its own representation through an explicit quoting scheme.  That is a relation among
+finite strings, decoders, and evaluations.  It supplies no operational definition, apparatus, observation, or theory
+of consciousness and therefore licenses no such conclusion.
+
+Turing's halting result is precise: no total algorithm decides for every arbitrary program--input pair whether its
+unbounded evaluation halts.  A particular bounded trace, or a termination certificate for a restricted evaluator,
+does not solve that universal problem.  Conversely, the universal impossibility does not prevent termination
+demonstrations or successful runs for specific restricted workloads.
+
+Fix a universal prefix machine \(U\).  Chaitin complexity is
+\[
+                         K_U(x)=\min\{|p|:U(p)=x\}.
+\]
+It is generally uncomputable.  Exhibiting a self-description of length \(L\) demonstrates only \(K_U(x)\leq L\).
+For universal prefix machines \(U,V\), invariance supplies constants independent of \(x\):
+\[
+K_U(x)\leq K_V(x)+c_{UV},\qquad K_V(x)\leq K_U(x)+c_{VU}.
+\]
+The difference is uniformly bounded in both directions, but there is no exact shift and no machine-independent
+complexity value.  Incompressibility, randomness, or a lower bound requires separate evidence.  Metered evaluation
+cost is not program length or \(K_U\), and the report names the chosen \(U\).
+
+\paragraph{Counterexample 4: a short self-description is only an upper bound.}
+If a description of length \(500\) reproduces report \(x\), then \(K_U(x)\leq500\) for the declared \(U\).  Another
+description may be shorter.  The invariance inequalities bound changes between universal prefix machines but do not
+make their values equal; the report must name the convention.
+
+The numerical metering algorithm iterates representation, parsing, evaluation, and replay states.  It slices counters
+by setup, representation, decoding, target evaluation, meter overhead, and reporting where the counter semantics
+permit.  Each slice preserves requested, spent, and remaining budgets.  Shared work and interaction terms are retained
+rather than assigned to one slice by fiat.
+
+This evaluator--representation relation is internal to a model and supplies no name bridge to the world.  If a
+physical meter or robot is introduced, its covariant action instead records
+\[
+(N,s)\longmapsto(N',s',y,\text{interaction trace}),
+\]
+including back-action, sensor loading, actuation, energy or material exchange, latency, hysteresis, drift, saturation,
+geometry, calibration, environment, prior state, rejected outcomes, and alternative causal models.  Observation
+\(y\) answers that intervention in changed world \(N'\), not an untouched world.
+
+Comparison reports exact, resolution, and uncertainty rows separately.  Exact equality compares values or integer
+counters only after typed conversion and matched counter semantics.  Resolution equality compares declared labels.
+Uncertainty compatibility compares sampling or calibration regions.  Same-process additionally requires compatible
+object, representation, evaluator transitions, meter intervention, traces, resource currencies, releases,
+configuration, deterministic inputs, declared nondeterministic inputs, and provenance.  Equal outputs or nearby costs
+do not establish it.
+
+Budgets distinguish representation length and growth, parser work, evaluation fuel, recursion depth, allocation,
+search, trace storage, meter overhead, replay, and report construction.  Stops include \textsc{complete},
+\textsc{representation-failure}, \textsc{decode-failure}, \textsc{roundtrip-failure}, \textsc{domain-error},
+\textsc{fuel}, \textsc{recursion-bound}, \textsc{allocation-bound}, \textsc{search-bound},
+\textsc{growth-bound}, \textsc{trace-capacity}, \textsc{external-action-unresolved}, and
+\textsc{provenance-incomplete}.
+
+A certificate records object and representation schemas, exact represented input, evaluator and meter boundaries,
+toolchain and dependency releases, snapshot hash, configuration, quotation and decoding rules, round-trip relation,
+initial state, every transition, meter intervention, counter slices, growth, requested/spent/remaining budgets, value
+or failure, stop, checked scope, unresolved frontier, rejected runs, protocol, run identity, platform, deterministic
+inputs, and declared nondeterministic inputs.
+
+Governance fixes object domain, representation, evaluator, meter semantics and boundary, self-input form, equality and
+round-trip relations, fuel and resource policy, slicing, comparison, budgets, stop priority, and certificate grammar.
+A changed field creates a new experiment.
+
+The action ledger is exact.  Objects, representations, evaluator, meter, self-input form, universal machine, resource
+policy, comparisons, budgets, and certificate grammar are \emph{posited}.  Round-trip implications, bounded
+termination, transition replay, counter arithmetic, exhibited-description upper bounds, and certificate implications
+are \emph{demonstrated}.  Representations, parser outcomes, transitions, values, failures, counters, slices, growth,
+stops, and provenance are \emph{read}.  Consciousness, self-energy, universal halting, incompressibility, randomness,
+a physical coupling, process identity from equal outputs, transparent instrumentation, and intrinsic
+same-on-every-machine behavior remain \emph{reserved}.

@@ -6,6 +6,8 @@ Original title: `The Compton Scattering Effect~\cite{compton1923}`
 
 ## Description
 
+\textbf{Register.} Physical experiment, treated as a \emph{representation}: what follows is the machine's informational reading of the momentum exchange --- a finite difference in its own bookkeeping, on the name/representable side of the corridor --- not a claim about the thing-in-itself. The reciprocity map represents the exchange; what the exchange is in itself stays on the far side, un-represented.
+
 \textbf{Statement.} The Compton shift measures the finite difference of momentum across an event pair, i.e.\ the reciprocity map in momentum space.
 
 \textbf{Key relation.}

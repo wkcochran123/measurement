@@ -1,5 +1,5 @@
 import Experiments.Common
-import Measurement.Episode85
+import Measurement.Apparatus
 
 /-!
 # The Echo Chamber Maze Solution

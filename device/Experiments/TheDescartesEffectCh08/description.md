@@ -7,6 +7,8 @@ Labels: `ph:descartes-effect`
 
 ## Description
 
+**Register.** Physical experiment, treated as a *representation*: the coordinate is forced by the bookkeeping of independent counts, on the name side --- a structure the device lays on the world, not the world's own. What the coordinate is *of*, the position the rulers only bracket, stays on the far side.
+
 When repeatable rulers are composed in independent directions, a coordinate
 structure is forced.
 

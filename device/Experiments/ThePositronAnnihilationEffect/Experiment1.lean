@@ -1,5 +1,5 @@
 import Experiments.Common
-import Measurement.Episode83
+import Measurement.Apparatus
 
 /-!
 # The Positron Annihilation Effect — a worked EXEMPLAR for the testing team

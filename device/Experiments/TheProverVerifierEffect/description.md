@@ -7,6 +7,8 @@ Labels: `ph:prover-verifier`
 
 ## Description
 
+**Register.** Thought/computational experiment on the device's *role*: the engine is the *verifier* (near side --- it weighs a claimed value against its own reading and returns whether they agree and by how much they miss), and the world of admissible physical models is the *prover* (far side --- where a laboratory touches and signs the number). The device never derives; it checks. Used in Vol5 Ch7 §7.2 to name why the engine's claim is "not a capture" (verify, not derive --- SPEC's final API). Build verified: builds clean.
+
 \textbf{Statement.}
 The informational theory is not complete in isolation.  It requires the
 existence of all admissible physical models as its prover, and serves only as

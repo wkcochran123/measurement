@@ -1,4 +1,4 @@
-# The Dark Energy Effect
+# The Entropic Growth Effect
 
 Source: `instrument/chapters/11.tex:457`
 Environment: `phenomenon`
@@ -31,14 +31,15 @@ ledger expands because contraction would increase, rather than decrease, the
 informational cost.
 
 \textbf{Interpretation.}
-Dark energy is not modeled here as a new substance, but as a uniform offset in
+Entropic growth is not a new substance, but a uniform offset in
 the bookkeeping of pressure: a background refinement credit that makes larger
 volumes cheaper to maintain than smaller ones.  The observed acceleration of
 cosmic expansion is the smooth shadow of a ledger whose lowest--strain state
-is achieved by growing its causal partition.
+is achieved by growing its causal partition --- growth is the strain-relaxing,
+entropically favoured direction.
 
 \textbf{Conclusion.}
-In this framework, dark energy is the name for a negative informational
-pressure term that biases the universe toward expansion.  It prepares the
+In this framework, entropic growth is the name for a negative informational
+pressure term that biases the ledger toward expansion.  It prepares the
 ground for source--like configurations of refinement, such as the white hole
 effect that follows.

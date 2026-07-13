@@ -1,0 +1,150 @@
+\chapter{A Difference Appears}
+
+\section{The first fact}
+
+Before a symbol can be measured it must first be told apart from what it is not, and that telling-apart is the whole
+of the machine's ground floor. Nothing here is counted, encoded, or priced. There is only a \emph{this} that is not a
+\emph{that} --- the smallest possible act, prior to number, on which every later act is built. This section builds that
+act and only that act, and it is worth building slowly, because everything the machine will ever compute is this one
+decision, iterated.
+
+In this volume the first fact is read as a piece of a formal system, and the reading pays off at once. A difference
+here is not an event that happens and is then recorded; it is a \emph{decidable predicate}. To tell two symbols apart
+is to run a finite procedure that halts and reports \emph{not-equal} --- a decision the machine performs, not a fact
+it files away. The distinction is not asserted and then checked against evidence later; the running \emph{is} the
+evidence. A difference the machine could not decide in finite time would be no difference the machine could use, and so
+at the ground floor a difference is precisely what a halting procedure certifies: two marks, and a computation that
+tells them apart.
+
+This is the coarsest object information theory knows, and it is the one everything else is built on. A symbol carries
+meaning, Shannon~\cite{shannon1948} showed, exactly to the degree it could have been another --- a mark on a channel
+informs you precisely because the channel might have carried a different mark in its place. Strip that idea to its
+floor and you reach this machine's first fact: not yet a quantity of information, not yet a rate or an entropy, but the
+bare precondition for any of them --- that two symbols can be distinguished at all. Where Shannon counts how much a
+symbol could have been otherwise, the ground floor asks only \emph{whether} it could: whether the alphabet holds a
+second mark this one is not. The bit, the entropy, the channel capacity are all later constructions. The floor beneath
+them is a single decided difference.
+
+And here is the first of the book's two working verbs, introduced where it is native. To \emph{tange} is to select ---
+to pick a \emph{this} out of an alphabet by the decidable characteristic that parts it from its \emph{that}. Telling
+two symbols apart is not yet counting them; it is the pure act of decidable selection, and that act is a tange. The
+verb earns its keep exactly here, because the machine's first faculty is nothing but a decision procedure that, handed
+two marks, halts and selects: \emph{these differ}, or \emph{they do not}. Its partner verb --- to \emph{funge}, to
+pool a mark with all the marks a decision cannot separate from it --- is not yet available, and cannot be, for you
+cannot pool by sameness what you have not first tanged apart. That is the next chapter's work.
+
+This lands the reader on the one fact the ground floor exists to establish: \emph{resolution is logically upstream of
+measurement}. You must be able to decide a symbol apart before you can have a number of symbols; distinguishability
+comes before quantity. It is the same point Nyquist~\cite{nyquist1928} and later Shannon~\cite{shannon1949} made about
+signals --- that you cannot read past a resolution your channel cannot resolve --- pressed here one level lower, to
+symbols themselves: you cannot read a scale whose marks you cannot first decide into distinct symbols. The mark must be
+a \emph{this-not-that} before it can be a \emph{how-many}.
+
+It is worth marking how much of the book is already latent in this one decision. Everything the machine will later call
+a number, a code, a cost, a bound is built by iterating exactly this: decide a difference, let the decision stand as
+its own record, and pay only for the running. The naming of the electron eight chapters on, and the honest bracket the
+machine hands back at the very end, are this same act matured --- not new machinery, but the first decided difference
+taken around the loop enough times to be read. And notice what has \emph{not} appeared: no number, no count, no
+magnitude. The first fact is pre-numeric by construction, which makes this the cleanest place to adopt the discipline
+the whole instrument keeps --- it will not reach for a quantity it cannot decide, and the reason is visible already
+here, at the floor, where there is not yet even a number to reach for.
+
+\section{The symbol as a label}
+
+The first fact was a decided difference; the natural next question is where the machine \emph{stores} it. Having
+decided two marks apart, where does it write the distinction down, so that it can find it again? The answer is the
+hinge of this chapter, and it is a small shock: nowhere. The machine writes the difference nowhere, because the
+difference is already its own record. The distinction and the label of the distinction are not two things joined by an
+act of naming; they are one object. And because they are one object, the label costs nothing to keep. In this machine,
+difference is free.
+
+To see why, ask what the decision of the last section actually \emph{produced}. In the ordinary account there are two
+separate things with a copy between them: a difference on one side, a name for the difference filed somewhere on the
+other, and a step that carries the first into the second. Here that middle step is missing, and its absence is the
+whole content of the section. What the machine reads is a \emph{codeword} --- the position of the symbol in the
+alphabet, the very characteristic the decision selected by. Deciding the two marks apart already \emph{produced} that
+position; there is no second act in which the machine turns around and records what it found. The tange did not select
+a difference and then go write its name; the selection \emph{was} the name.
+
+This is why the claim ``the difference is its own label'' is not a play on words. In this register a label just
+\emph{is} a codeword --- a position in the alphabet, which mark relative to which --- and the tange delivered exactly
+such a position. To decide a \emph{this} against a \emph{that} is already to hold the codeword that parts them; and the
+codeword is the label. Naming adds nothing, because the decision already named. The characteristic the machine selected
+by and the record it walks away with are the same object, and the reader who was holding them apart as two may let them
+fall together into one. A good code, Shannon and his successors would say, wastes no symbol pinning a name onto a
+distinction the distinction already carries; this machine's code is that thrift taken to its floor.
+
+The consequence is that the distinction requires no storage of its own --- but the claim must be scoped exactly,
+because scoped loosely it is false. The machine does not reserve a cell \emph{for the difference}; it reads the
+distinction straight off the one index it must track anyway to keep its own descriptions coherent, the position in its
+own alphabet. It does not follow that the machine reserves \emph{nothing}. The construction carries a single standing
+datum, one shared constant against which decisions are taken, and it is honest about it: that one fixture lives on the
+data page, not spent afresh on each telling-apart. Read the carve-out as carefully as the claim. What is free is the
+\emph{difference} --- nothing is set aside per distinction, because the codeword lives at a position the machine
+already keeps --- while the one thing allocated, the shared constant, is a single fixture, not a fresh cell per
+decision. ``Free'' here does not mean fast; that would be a claim about a clock, and this is not one. It means
+\emph{nothing added}: the difference is decided where it stands, not stored to be looked up.
+
+Underneath all of this is an idea far older than any computer, and the machine takes it at its word. A symbol means
+nothing in isolation and means only by its contrast with the symbols it is not --- Saussure~\cite{saussure1916} said it
+of words, that value is difference, and the theory of communication later made it quantitative. This machine builds on
+the old idea literally: its symbols \emph{are} their differences, a mark defined by its inequality to every other mark.
+The label is the contrast itself, not a name pinned on after the contrast was noticed. The semiotics is illumination
+here, texture around the fact; what the machine actually carries is the decided inequality, and nothing of Saussure's
+beyond it.
+
+So take stock of what the ground floor has handed you: not a measurement, and not yet a number --- a \emph{position}.
+Which mark, relative to which. That is all of it, and it is exactly enough, because a symbol decided apart from other
+symbols is the seed of everything the machine will grow. And the label is about to earn its keep a second way: in the
+very next chapter the machine will \emph{funge} --- pool marks that share a codeword into a single bin --- and the size
+of that bin will be its first number. The codeword is precisely what the count will pool by; but that is the next
+chapter's work, and it performs no count here. What this section settles is only that the step onto the count carries
+no hidden storage to be paid for later. Everything the machine will grow is this one act iterated: decide a difference,
+let it be its own codeword, and pay only for the running.
+
+\section{What a difference is not}
+
+The ground floor is nearly built, and the last thing to do on it is the most easily skipped: to say what the first
+fact is \emph{not}. A difference is not yet a number. It is not a code length, not a rate, not a distance --- the
+smallest possible act, and no more. The temptation, having built something, is to read more into it than it holds; the
+whole discipline of this book is the refusal of that temptation, and the refusal is easiest to learn here, where there
+is least to inflate.
+
+The relation the machine actually has is inequality, and inequality alone. To ask whether two marks differ is to ask
+whether one is unequal to the other, and the decision returns \emph{same} or \emph{not-same} and halts. Inequality is
+the coarsest relation two symbols can stand in --- a bare yes-or-no that carries nothing else along with it. It is
+worth pausing on how much that ``nothing else'' rules out, because each thing it rules out is a structure the reader
+may be tempted to assume is already present. There are three, and each is a refusal.
+
+The first refusal: a difference is \emph{not an order}. To be a number is, at the least, to sit in a chain --- to be
+comparable, to have a \emph{less-than} and a \emph{greater-than}. The bare distinction exposes no such thing. Its one
+relation is symmetric and blind to direction: it can report that two marks are not the same, but not which comes first,
+or is larger, or sits higher. Order does not live on the distinction at all; it is built higher up, on the numeric
+objects the later chapters construct --- never as a feature of the raw difference. A reader who searches the ground
+floor for a \emph{which-is-bigger} will not find one, and not because it is hidden but because the question cannot yet
+be posed. At this level, ``which is bigger?'' does not so much as parse.
+
+The second refusal: a difference is \emph{not a magnitude}. A measurement answers \emph{how much}; a difference
+answers only \emph{whether}. There is no unit here, no scale, no metric --- nothing that would let the machine call two
+marks far apart or close, only that they are two. The datum is nominal in the plainest sense: same or different, and no
+finer. One might recall Frege's~\cite{frege1884} remark that a number belongs to a concept and not to a bare object ---
+but only in passing, for the machine's refusal here is not a philosopher's; it is structural, a matter of which fields
+the ground floor does and does not carry, and it carries no metric at all.
+
+The third refusal is the one this book is built to make precise, and it is cleanest stated in the two working verbs. A
+difference is a pure \emph{tange} --- a decidable selection, a \emph{this} decided apart from a \emph{that}. A count is
+something else entirely: it is the size of a \emph{funge}, the cardinality of a bin of like marks. And you cannot take
+the size of a bin before you have a bin, nor pool marks by their likeness before you have first tanged them apart. So
+``not yet a number'' is not a shortfall the machine will outgrow by trying harder; it is an \emph{ordering}, as strict
+as any in the construction. The tange comes first; the funge comes after; and number lives entirely on the funge side
+of that line. A number is a \emph{later construction} --- something the next chapter builds by pooling marks the ground
+floor has already tanged apart --- not a reading available here.
+
+That, in the end, is the shape of the whole discipline, seen in miniature at the smallest possible scale. The machine's
+refusal to call a position a quantity is not timidity, and it is not incompleteness; it is correctness. It holds exactly
+one thing --- a distinction, a codeword, which mark relative to which --- and it declines to inflate that one thing into
+a number it has not yet built. This is the same refusal, grown up, that the instrument will make at the very end, when
+it declines to call its honest bracket the real value the bracket contains. In both places the machine reports exactly
+what it has decided and not a hair more. The ground floor and the final floor keep the same discipline; what stands
+between them is only the long climb --- and the climb begins in the next chapter, when the machine takes the differences
+it has tanged apart and, for the first time, begins to funge them into a count.

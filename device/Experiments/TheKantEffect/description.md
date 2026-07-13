@@ -5,6 +5,13 @@ Environment: `phenom`
 Original title: `The Kant Effect~\cite{einstein1905,kant1781}`
 Labels: `ph:kant-effect`
 
+## Register
+Thought experiment (conceptual, metaphysical), not an empirical one: it measures
+nothing; it reasons about the *conditions* of representation. The derived
+coordinate is the representation, on the name side; the thing-in-itself --- Kant's
+noumenon --- is the far side of the corridor, gestured at and held open,
+un-representable and never pronounced upon.
+
 ## Statement
 Temporal structure is not a primitive backdrop in which events occur, but an
 ordering relation induced by the admissible sequencing of records. Time is thus

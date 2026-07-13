@@ -1,3 +1,516 @@
 \chapter{The Corridor Rotates}
 
-\emph{[This chapter is being written, one section at a time.]}
+\section{Computational rotation}
+
+A computational rotation is a permutation of a finite declared state set, not a geometric angle.  Let
+\[
+S=[s_0,\ldots,s_{m-1}],\qquad R:S\to S,
+\]
+where enumeration proves the listed states unique and evaluation proves \(R\) total and one-to-one.  The explicit
+state record contains a variation label, an order index, a sign symbol, and any additional fields that affect the
+transition.  Omitting a field creates only a projected transition.
+
+Permutation composition is
+\[
+                    (R_2\circ R_1)(s)=R_2(R_1(s)),
+\]
+with identity \(\operatorname{id}(s)=s\).  Iteration is \(R^0=\operatorname{id}\) and
+\(R^{n+1}=R\circ R^n\), hence \(R^{a+b}=R^a\circ R^b\).  The order of \(R\) is the least positive \(p\) satisfying
+\(R^p=\operatorname{id}\) on every state in the declared domain.  A return of one state does not establish this
+global order.
+
+Variation is computed by applying \(R\) and comparing the full before-and-after states.  Order is computed by finite
+iteration until identity is reached or the search budget ends.  A sign is a declared map
+\(\sigma:S\to\{\mathsf{minus},\mathsf{zero},\mathsf{plus}\}\); it is a label, not arithmetic multiplication unless
+operations on signs are separately defined.  Permutation parity is determined from a disjoint-cycle decomposition:
+\[
+                         \operatorname{parity}(R)=(-1)^{m-c},
+\]
+where \(c\) counts cycles including fixed points.  Alternatively, a certified transposition decomposition yields the
+same parity.  Parity does not identify the permutation: many permutations share one parity bit.
+
+If the disjoint-cycle lengths are \(\ell_1,\ldots,\ell_c\), including length \(1\) for fixed points, then
+\[
+                       \operatorname{ord}(R)=\operatorname{lcm}(\ell_1,\ldots,\ell_c).
+\]
+The least common multiple returns every cycle because it is divisible by each \(\ell_i\).  Conversely, if
+\(R^k=\operatorname{id}\) globally, then each cycle returns after \(k\), so every \(\ell_i\mid k\); hence their least
+common multiple divides every global return exponent.
+
+The numerical procedure traverses the state list, evaluates each image, checks range and uniqueness, builds inverse
+and visited tables, slices the permutation into disjoint cycles, and accumulates cycle lengths and parity.  Iteration
+then replays each cycle to verify closure and minimal length.  Projection tables for order, sign, or other labels are
+kept separate from the full-state table.
+
+\paragraph{Worked example 1: exact three-state rotation (computation).}
+For
+\[
+\mathsf{minus}\mapsto\mathsf{zero}\mapsto\mathsf{plus}\mapsto\mathsf{minus},
+\]
+full-state replay gives \(R^3=\operatorname{id}\), while \(R\ne\operatorname{id}\) and
+\(R^2\ne\operatorname{id}\).  Its order is exactly \(3\).  The single three-cycle has parity
+\((-1)^{3-1}=+1\).  Exact return follows from the transition table, not from pigeonhole collision.
+
+\paragraph{Counterexample 2: label collision is not rotation order (computation).}
+Let six full states rotate by \(R(i)=i+1\bmod6\), and project them by \(\beta(i)=i\bmod3\).  Labels repeat after
+three steps, while full states return after six.  The compatibility
+\(\beta(x)=\beta(y)\Rightarrow\beta(Rx)=\beta(Ry)\) defines a quotient-label rotation of order three; it does not
+make the full permutation order three.
+
+\paragraph{Worked example 3: composition order matters (computation).}
+On \(\{0,1,2\}\), let \(A\) exchange \(0,1\) and let \(B\) exchange \(1,2\).  Then
+\[
+                   B\circ A=(0\ 2\ 1),\qquad A\circ B=(0\ 1\ 2).
+\]
+Both are three-cycles and both have even parity, but they are different permutations.  Equal order and parity do not
+prove same process or equal state-by-state transition.
+
+\paragraph{Counterexample 4: same operation schema, different representations (computation).}
+Two reports may both say rotate forward, while one enumerates states \((a,b,c)\) and another \((0,1,2)\).  Process
+comparison requires a bijection \(J\) satisfying
+\[
+                              J\circ R_1=R_2\circ J.
+\]
+Without this checked conjugacy map, shared wording establishes neither same-number nor same-process.
+
+\paragraph{Worked example 5: order and parity are different invariants (computation).}
+A permutation with one disjoint two-cycle and one disjoint three-cycle has
+\[
+\operatorname{ord}(R)=\operatorname{lcm}(2,3)=6,
+\qquad
+\operatorname{parity}(R)=(-1)^{(2-1)+(3-1)}=-1.
+\]
+Its order is six and its parity is odd.  Neither invariant determines the other.
+
+Budgets distinguish state enumeration, transition evaluations, comparison effort, table capacity, composition depth,
+and replay effort.  Stops include \textsc{complete}, \textsc{enumeration-budget}, \textsc{transition-budget},
+\textsc{out-of-domain}, \textsc{duplicate-state}, \textsc{non-total}, \textsc{non-injective},
+\textsc{table-capacity}, \textsc{order-unresolved}, \textsc{parity-unresolved}, and \textsc{replay-failure}.  A fuel
+stop certifies only the checked iterations.
+
+A certificate records state schema and enumeration, equality, full transition table, projection maps, budgets,
+visited and inverse tables, cycle slices, compositions, order candidates, proper-divisor checks, parity calculation,
+stops, checked scope, and unresolved frontier.  Validation slices enumeration, totality, injectivity, transition,
+composition, closure, minimal order, parity, projection compatibility, resources, and claims into pass, fail, or
+unresolved rows.
+
+Comparison follows the established grammar.  Exact state equality, equality under a declared projection, and process
+equivalence are separate relations.  Process equivalence requires compatible inputs, a state map, a commuting
+transition square, trace correspondence, cost conversion, configuration, and provenance.  Equal cycle length, parity,
+or projected labels cannot replace those rows.
+
+Governance fixes state representation, equality, enumeration, transition direction, composition convention, label
+maps, parity convention, algorithms, budgets, stop priority, and certificate grammar.  Provenance records raw states,
+transition and comparison outcomes, table states, cycle slices, spent resources, configuration, releases, snapshot
+hash, arithmetic model, protocol, run identity, platform, deterministic inputs, and declared nondeterministic inputs.
+
+The action ledger is exact.  States, equality, transition, composition convention, projections, algorithms, budgets,
+and certificate grammar are \emph{posited}.  Composition laws, finite permutation implications, cycle decomposition,
+order and minimality checks, parity identities, conjugacy implications, and replay implications are
+\emph{demonstrated}.  States, transitions, comparisons, cycles, order, parity, resource use, stops, and validation
+rows are \emph{read}.  Full-state return from label collision, process identity from equal order or parity, a physical
+phase, geometric rotation, holonomy, angular momentum, and any physical identification remain \emph{reserved}.
+
+\section{Physical phase}
+
+A physical phase is defined relative to a model and reference.  A complex amplitude
+\[
+                         z=Ae^{i\theta}=A(\cos\theta+i\sin\theta),
+\qquad A\geq0,
+\]
+has phase \(\theta\) modulo \(2\pi\) when \(A>0\).  At \(A=0\), phase is undefined.  The complex plane requires
+addition and multiplication satisfying their field laws, a distinguished unit \(i\) with \(i^2=-1\), and a reference
+axis.  Two instances, two labels, or a Boolean pair do not construct that structure.
+
+Operationally, phase is inferred by comparing a signal with a calibrated reference.  For quadrature observations
+\[
+                         I=A\cos\theta+\epsilon_I,\qquad
+                         Q=A\sin\theta+\epsilon_Q,
+\]
+the principal estimate is
+\[
+                         \widehat\theta=\operatorname{atan2}(Q,I)\in(-\pi,\pi].
+\]
+Its apparatus record includes detector response, reference oscillator, epoch, channel gains and offsets, sampling
+clock, bandwidth, noise covariance, saturation limits, and environmental conditions.  A numerical angle without this
+record is not a physical phase measurement.
+
+Phase extraction first calibrates \(I,Q\), rejects or flags invalid samples, checks amplitude against a declared
+noise floor, evaluates the quadrant-aware angle, and propagates uncertainty.  Away from the origin, first-order
+propagation uses
+\[
+\nabla\theta=\frac{1}{I^2+Q^2}(-Q,I),\qquad
+\operatorname{Var}(\widehat\theta)\approx
+\nabla\theta^{\mathsf T}\Sigma_{IQ}\nabla\theta.
+\]
+Near \(I=Q=0\), this linearization is unstable and the phase row remains unresolved or uses a declared nonlinear
+uncertainty construction.
+
+For sampled phases \(\phi_0,\ldots,\phi_N\), unwrapping selects integers \(k_j\) and sets
+\[
+                         \widetilde\phi_j=\phi_j+2\pi k_j
+\]
+so adjacent changes satisfy a declared continuity bound.  Unwrapping is model-based: if the true change can exceed
+the bound between samples, several lifts are compatible with the data.  The algorithm must retain principal phases,
+chosen integers, rejected alternatives, continuity threshold, and unresolved branch points.
+
+A holonomy is a round-trip quantity defined by a connection and path, not by a repeated label.  In an Abelian model,
+\[
+                         H(\gamma)=\exp\!\left(i\oint_\gamma A_\mu\,dx^\mu\right).
+\]
+For a partition \(t_0<\cdots<t_N\) of path \(\gamma\), a finite approximation is
+\[
+H_N=\prod_{j=0}^{N-1}
+\exp\!\left(i\,A_\mu(\gamma(t_j))[\gamma^\mu(t_{j+1})-\gamma^\mu(t_j)]\right).
+\]
+The certificate records path orientation, connection units and gauge convention, quadrature rule, samples, products,
+mesh width, and error model.  Refinement compares \(H_N,H_{2N}\) in a declared metric; agreement at tolerance is
+numerical convergence evidence, not an exact integral absent a demonstrated error bound.
+
+For matrix-valued transport, factor order matters:
+\[
+                         H_N=U_{N-1}\cdots U_1U_0.
+\]
+Changing path order or multiplying factors as if they commute changes the model.  Numerical stabilization may
+renormalize factors or use structure-preserving products, but every such projection and its error must be reported.
+
+Spinor return is another model-specific phase statement.  For a spin-\(\tfrac12\) representation,
+\[
+                         U(\varphi)=\exp(-i\varphi\,\mathbf n\cdot\boldsymbol\sigma/2),
+\qquad U(2\pi)=-I,\qquad U(4\pi)=I.
+\]
+The spinor vector changes sign after \(2\pi\) and returns exactly as a vector after \(4\pi\).  The ray is already
+unchanged after \(2\pi\), because \([\psi]=[-\psi]\) for an isolated pure state.  The minus sign is observable only
+as a relative phase against another path or reference in an interference or equivalent apparatus; a global sign by
+itself is not a detector reading.  These statements are scoped to the declared spin-\(\tfrac12\) representation and
+apparatus.  They do not make \(4\pi\) a universal period of physical states, and they are not inferred from a
+three-state computational permutation.
+
+\paragraph{Worked measurement 1: calibrated quadrature phase (physics).}
+After gain and offset calibration, suppose \(I=3\), \(Q=4\) in common amplitude units.  Then
+\(\widehat\theta=\operatorname{atan2}(4,3)\).  Repeating the arithmetic exactly verifies the numerical estimate.
+Physical certification additionally requires the reference epoch, calibration covariance, amplitude validity, and
+uncertainty interval.
+
+\paragraph{Counterexample 2: two labels are not a complex plane.}
+Calling two states real and imaginary supplies neither addition, multiplication, distributivity, nor an element whose
+square is \(-1\).  A transition exchanging the labels is a permutation of order two.  It is not multiplication by
+\(i\) until a complex representation and a checked intertwining map are supplied.
+
+\paragraph{Worked measurement 3: discretized loop refinement (physics).}
+Compute \(H_N,H_{2N},H_{4N}\) on nested path partitions and compare their principal phase differences.  If successive
+differences fall below tolerance while a discretization bound decreases with mesh width, the reported uncertainty
+can include truncation and sampling errors.  Equal formatted phases alone are only resolution equivalence.
+
+\paragraph{Counterexample 4: computational period three is not physical phase.}
+An exact permutation
+\(\mathsf{minus}\mapsto\mathsf{zero}\mapsto\mathsf{plus}\mapsto\mathsf{minus}\)
+has order three.  It specifies no complex amplitude, connection, path, apparatus, clock, or uncertainty.  Mapping its
+labels to angles \(0,2\pi/3,4\pi/3\) is a posited representation; only a checked transition map supports that
+numerical encoding, and no physical identification follows.
+
+Budgets distinguish acquired samples, calibration effort, phase-extraction arithmetic, unwrap branches, path
+segments, matrix growth, refinement levels, and uncertainty computation.  Stops include \textsc{complete},
+\textsc{missing-reference}, \textsc{missing-calibration}, \textsc{below-amplitude-floor}, \textsc{saturation},
+\textsc{unit-mismatch}, \textsc{unwrap-ambiguous}, \textsc{segment-budget}, \textsc{refinement-budget},
+\textsc{nonconvergent}, \textsc{overflow}, and \textsc{model-failure}.  A resource stop does not become a physical
+zero or an absence of phase.
+
+Comparison reports three value rows separately.  Exact same-number means equality after typed conversion.
+Resolution equivalence means equal labels under a declared quantizer.  Uncertainty compatibility means overlap of
+declared phase regions, with circular topology respected.  Each independently passes, fails, or remains unresolved.
+Same-process additionally requires matching apparatus inputs, calibration, sampling, numerical transitions, traces,
+costs, configuration, and provenance.
+
+The certificate records apparatus and model, complex representation, units, references and epochs, raw and rejected
+samples, calibration, covariance, principal phases, unwrap integers and alternatives, path and connection samples,
+ordered products, refinements, convergence and error bounds, uncertainty regions, budgets, stops, checked scope,
+unresolved frontier, protocol, run identity, platform, and deterministic and declared nondeterministic inputs.
+
+Governance fixes physical model, apparatus, complex and spin representations, reference, gauge convention, sampling,
+calibration, extraction, unwrapping, path quadrature, product order, convergence rule, uncertainty method, budgets,
+stop priority, and certificate grammar.  A changed field starts a new report.
+
+The action ledger is exact.  Apparatus, model, representation, reference, calibration, path, connection, algorithms,
+uncertainty, budgets, and certificate grammar are \emph{posited}.  Complex identities, conditional extraction and
+propagation formulas, unwrap implications, ordered-product identities, discretization bounds, spinor representation
+identities, and validation implications are \emph{demonstrated}.  Samples, calibration observations, quadratures,
+phases, unwrap choices, products, convergence rows, uncertainties, stops, and provenance are \emph{read}.  A complex
+plane from two labels, physical phase from a permutation, exact holonomy from unbounded numerical refinement,
+independence from differently named routes, a five-quantity interpretation of one residue, and any uncalibrated
+physical identification remain \emph{reserved}.
+\section{Resonance audit}
+
+Resonance is a prompt for comparison, not evidence.  The computational report contains a finite state set,
+permutation, compositions, traces, and costs.  The physical report contains complex amplitudes, references, apparatus,
+calibration, path transport, uncertainty, and observables.  An audit asks which precise maps, if any, connect them.
+
+A typed representation has the form
+\[
+\rho:S_{\rm comp}\to V_{\rm phys},
+\]
+where \(V_{\rm phys}\) belongs to a declared physical model.  For a computational transition \(R\) and physical
+transport \(U\), one-step compatibility requires
+\[
+                         \rho\circ R=U\circ\rho.
+\]
+Same-process is stronger than this value square.  It requires compatible inputs, composition laws, invariants,
+state and trace relations, cost or resource correspondence, configuration, apparatus, calibration, and provenance.
+If only a projected label commutes, the result is a projected comparison, not full process equivalence.
+
+An invariant also needs a declared read \(r\).  Computational preservation is
+\[
+                         r(Rs)=r(s)\quad\text{for all checked }s.
+\]
+A return \(R^p(s)=s\) implies \(r(R^p(s))=r(s)\), but not one-step preservation.  Without \(r\) and the displayed
+law, no residue invariance has been established.
+
+\paragraph{Audit 1: relabeling versus angular momentum.}
+A finite relabeling is a permutation.  Angular momentum is a physical observable and generator within a continuous
+symmetry model, with units, dynamics, apparatus, and calibration.  A discrete permutation does not construct a
+continuous one-parameter group, differentiable action, invariant physical action, or conserved observable.
+Consequently relabeling is not angular momentum, and a permutation does not invoke a Noether-type conservation law
+without the missing physical structure and demonstrated hypotheses.
+
+\paragraph{Audit 2: order-three versus phase.}
+The exact three-state rotation has \(R^3=\operatorname{id}\).  Mapping its states to
+\(1,e^{2\pi i/3},e^{4\pi i/3}\) gives a numerical representation only after \(\rho\) is posited and the intertwining
+square is checked.  That square still supplies no oscillator, path, connection, detector, or uncertainty.  Equal
+order therefore does not license physical phase or holonomy.
+
+\paragraph{Audit 3: same number through two numerical routes.}
+Let two independently specified refinement routes produce \(y_h\) and \(z_h\) in a common typed domain.  The audit
+reports three rows:
+\[
+\begin{array}{ll}
+\text{exact equality}&y_h=z_h,\\
+\text{resolution equality}&q_\theta(y_h)=q_\theta(z_h),\\
+\text{uncertainty compatibility}&\mathcal U(y_h)\cap\mathcal U(z_h)\ne\varnothing.
+\end{array}
+\]
+Each passes, fails, or remains unresolved.  A combined agreement flag must not erase which relation passed.
+Agreement of values does not establish same-process.
+
+\paragraph{Descent experiment 9: native loop, sign, and frame transform (finite apparatus audit).}
+The live apparatus surface permits a sharper resonance audit because its definitions can be evaluated without granting
+its physical vocabulary.  Let \(\mathcal P\) be the finite domain containing flat and tilted four-node paths, and let
+\(\mathcal V\) contain loop variation \(v_{12}\) and held-leg variation \(v_{21}\).  Write \(H\) for the pointwise
+specialization of the source \texttt{holonomy}/\texttt{pairDelta2} definition:
+\[
+ H:\mathcal P\times\mathcal V\longrightarrow\mathbb Z,\qquad
+ H(p,v)=
+ \begin{cases}
+ 0,&v.\mathrm{right}=p.\mathrm{middleRight},\\
+ -1,&v.\mathrm{right}\ne p.\mathrm{middleRight}\ \text{and }p.\mathrm{middleRight}=0,\\
+ +1,&\text{otherwise}.
+ \end{cases}
+\]
+This piecewise map is the program's mixed second-difference operation, not a continuum line integral.  Required
+inputs are all four path nodes, both variation nodes, decidable node equality, signed integer arithmetic, and the
+declared branch order.  Evaluation gives
+\[
+ H(p_{\rm tilted},v_{21})=0,\qquad
+ H(p_{\rm flat},v_{12})=-1,\qquad
+ H(p_{\rm tilted},v_{12})=+1.
+\]
+The result separates a held-leg case from a two-leg loop case inside this finite grammar.  It also exposes the sign
+transform caused by changing baseline path while holding the loop variation fixed.  Define
+\(F:\mathcal P\to\mathcal P\) on the checked pair by exchanging flat and tilted paths, and define
+\(N:\mathbb Z\to\mathbb Z\) by \(N(z)=-z\).  On \(v_{12}\), the finite comparison square
+\[
+ \begin{array}{ccc}
+ \mathcal P&\xrightarrow{F}&\mathcal P\\
+ H(-,v_{12})\downarrow&&\downarrow H(-,v_{12})\\
+ \mathbb Z&\xrightarrow{N}&\mathbb Z
+ \end{array}
+\]
+commutes by hand on the two enumerated paths.  The map \(F\), negation comparison, and displayed square are manuscript
+audit constructions, not an exported source run or theorem.  The residual
+\(H(Fp,v_{12})+H(p,v_{12})\) is exactly zero on both rows.  This is the native sign reversal exhibited by the source
+values under the manuscript-declared path transform.  It is stronger than noticing opposite printed signs because the input transform and
+comparison map are explicit.  It is weaker than gauge covariance or physical frame invariance: the domain has only
+two concrete paths and no group action, connection transformation law, or empirical frame change.
+
+Now apply the sign read
+\[
+ \Sigma:\mathbb Z\to\{\mathsf{matter},\mathsf{doesntMatter},\mathsf{antimatter}\},
+\quad z\mapsto
+ \begin{cases}
+ \mathsf{antimatter},&0<z,\\
+ \mathsf{matter},&z<0,\\
+ \mathsf{doesntMatter},&z=0.
+ \end{cases}
+\]
+Here \(\mathsf{doesntMatter}\) is the exact \texttt{Charge.doesntMatter} constructor; \emph{neutral} is only its
+expository gloss.  Define the manuscript comparison \(C\) to exchange matter and antimatter while fixing
+doesntMatter.  A second square passes on the loop rows:
+\(\Sigma\circ N=C\circ\Sigma\).  It also passes at zero because \(N(0)=0\).  The composed pointwise calculation is
+\((p,v)\mapsto H(p,v)\mapsto\Sigma(H(p,v))\), with path transform, integer negation, and label exchange visible.
+Projection to the final label loses magnitude, branch comparisons, path, and variation; the reverse process cannot
+be inferred from a label.
+
+The experiment also states exactly where the apparent physical vacuum lies.  On the computational side the diagram
+is populated: path and variation enter \(H\), a signed residue exits, and \(\Sigma\) produces a label.  On the physical
+side there is no supplied observation object \(o\), apparatus action \(O(N,s)\), or calibrated map
+\(\lambda(o)\) into the integer comparison domain:
+\[
+ \mathcal P\times\mathcal V\xrightarrow{\ H\ }\mathbb Z
+ \qquad\qquad
+ O_{\rm lab}\xrightarrow{\ \lambda\ }\mathbb Z.
+\]
+The right arrow is an unfilled obligation, not a zero map and not evidence of a zero observation.  This vacuum is
+documentary: the experiment leaves the covariant receipt empty rather than manufacturing a world answer from the
+formal label.  Filling it would require an intervention, raw observations, units, calibration, uncertainty,
+back-action, and alternative models.  Until then, only the left transform participates in a commuting test.
+
+A negative control changes the branch order of \(H\), testing the baseline condition before the held-leg condition.
+On \((p_{\rm flat},v)\), some held-leg inputs would then receive \(-1\) rather than \(0\).  The displayed mathematics
+would no longer match the executed transform, and the source-version row would fail even if selected loop examples
+happened to agree.  Verification must compare the whole piecewise program, not merely its three headline outputs.
+
+The finite three-state rotation remains a separate neighboring report.  Its transition \(R\) has order three, whereas
+\(H\) is a read on path--variation inputs and has no iterated transition of its own.  A bijection between the three
+integer outputs and the rotation's three labels compares alphabets only.  To identify processes one would still need
+an input transform \(K\) satisfying \(H\circ K=R_H\circ H\), together with trace and cost correspondence.  No such
+\(K\) or \(R_H\) is supplied here.  The audit therefore preserves the native sign/cycle resonance while refusing to
+turn three observed output classes into a proved holonomy dynamics.
+
+The three values come from live definitions; \(F,N,C\), their residuals, and the squares are manuscript pointwise
+calculations, not an exported run.  The missing calibrated observation arrow above keeps every physical name
+interpretive.
+
+\paragraph{Experiment draw: six local transforms, one pooled proof seam.}
+The six finite experiments share native holonomy vocabulary but not one executable.  Their distinct transforms and
+fibers are retained below; their common claim-only dependency is pooled once in the matrix.
+
+For Echo, flux chooses \texttt{flatPath} or \texttt{tiltedPath}, while corridor chooses held-leg \(v_{21}\) or loop
+\(v_{12}\).  The run directly consumes the native integer:
+\[
+ T_E(c,f)=\operatorname{decide}\bigl(H(p_f,v_c)=0\bigr).
+\]
+Straight over tilted is true; a curved loop is false on both flux constructors, although its residues are \(-1\) and
+\(+1\).  Thus the Boolean erases sign and baseline.  The scope is exactly the two corridor and two flux constructors.
+The separate \texttt{native\_antimatter\_is\_zero} claim conjunct is not an output of \(T_E\).
+
+For Aharonov--Bohm, let
+\[
+ \begin{split}
+ L(d,a,b)&=(a.\mathrm{recombined}=\mathsf{true})\land
+           (b.\mathrm{recombined}=\mathsf{true})\land(a.\mathrm{arm}\ne b.\mathrm{arm}),\\
+ F(d)&=(d.\mathrm{enclosedFlux}\ne0),\\
+ T_{AB}(d,a,b)&=\operatorname{decide}\bigl(L(d,a,b)\land F(d)\bigr).
+ \end{split}
+\]
+Canonical labels zero/one, both recombined, with nonzero flux return true.  Unrecombining either branch or setting
+flux to zero independently forces false.  All unequal arm labels and all nonzero flux integers share the same read;
+\texttt{slots} is unused.  No bridge identifies \texttt{enclosedFlux} with native \(H\).
+
+Mach--Zehnder computes, in Lean natural arithmetic,
+\[
+ d_M(a)=\bigl(u+(M-(l\bmod M))\bigr)\bmod M.
+\]
+With \(I=(d_M=0)\) and \(A=(d_M=M/2)\), its run is
+\[
+ T_{MZ}(M,a)=\operatorname{decide}\bigl(I_M(a)\land\neg A_M(a)\bigr).
+\]
+At \(M=360\), \((0,0)\) is admitted and \((180,0)\) rejected.  At \(M=0\) or \(1\), \(I\) implies \(A\), so every
+setup is rejected; the source imposes no positive-even modulus guard.  The fiber erases the computed modular
+difference, and no map relates slots \(0,180\) to native residues.
+
+Chirality uses the two-hand mirror inequality
+\[
+ T_\chi(c,h)=\operatorname{decide}\bigl(c(h)\ne c(\operatorname{mirror}(h))\bigr).
+\]
+Its canonical ledger genuinely embeds native values:
+\[
+ c_\ast(L)=H(p_{\rm tilted},v_{12})=+1,\qquad
+ c_\ast(R)=H(p_{\rm flat},v_{12})=-1.
+\]
+Thus canonical execution consumes \(H\) through \texttt{diracUpdate}; a constant ledger is the false control.  Hand
+reversal, a common offset, or simultaneous sign negation preserves the Boolean, which therefore erases both costs and
+their convention.  The held-leg zero in \texttt{claimStatement} remains claim-only.
+
+Davisson--Germer executes the exact order equation
+\[
+ T_{DG}(L,m)=\operatorname{decide}(\varphi=kP).
+\]
+The source separately proves
+\[
+ \varphi=kP\Longrightarrow r_P(\varphi)=\varphi\bmod P=0,
+\]
+but not the converse for a recorded \(k\): \(P=360,\varphi=720,k=1\) has zero residue and false run.  The canonical
+\((360,1)\) is true and \((180,0)\) false.  Spacing \(d\) is unused, and period zero is total rather than a stop.
+Changing \(k\) can change the run without changing residue; changing only \(d\) cannot.
+
+For Sagnac, define
+\[
+ O(l)=(f.\mathrm{forward}=\mathsf{true})\land
+      (b.\mathrm{forward}=\mathsf{false}),\qquad
+ R(l)=f.\mathrm{tally}-b.\mathrm{tally}.
+\]
+The executable is
+\[
+ T_S(l)=\operatorname{decide}\bigl(O(l)\land R(l)\ne0\bigr).
+\]
+The canonical tallies \(+1,-1\) give local residue \(2\) and true.  Opposed equal tallies and co-oriented unequal
+tallies independently fail.  Common offsets preserve \(R\); reversing subtraction negates it without changing the
+Boolean.  Orientation flags are independent data.  No source map normalizes local residue \(2\) to native \(\pm1\).
+
+The pooled dependency matrix uses \(H_\pm\) for the native charged-loop pair, \(H_0\) for held-leg zero, and \(A_0\)
+for Echo's separate antimatter-zero conjunct:
+\begingroup\scriptsize
+\[
+\begin{array}{lccccc}
+\text{experiment}&\text{native }H\text{ in run}&\text{unused}&\text{factorization/fiber}&\text{claim-only}&\text{observation}\\[2pt]
+\mathrm{Echo}&\text{direct}&--&H\xrightarrow{=0}\mathsf B&A_0&\text{none}\\
+\mathrm{AB}&\text{no}&\texttt{slots}&(L,F)\xrightarrow{\land}\mathsf B&H_\pm,H_0&\text{none}\\
+\mathrm{MZ}&\text{no}&--&d_M\xrightarrow{I\land\neg A}\mathsf B&H_\pm,H_0&\text{none}\\
+\mathrm{Chirality}&\text{canonical embed}&--&(c_h,c_{\bar h})\xrightarrow{\ne}\mathsf B&H_0&\text{none}\\
+\mathrm{DG}&\text{no}&d&(\varphi,k,P)\xrightarrow{\varphi=kP}\mathsf B&H_\pm,H_0&\text{none}\\
+\mathrm{Sagnac}&\text{no}&--&(O,R)\xrightarrow{O\land R\ne0}\mathsf B&H_\pm&\text{none}
+\end{array}
+\]
+\endgroup
+The matrix is the shared proof-seam audit: AB, MZ, DG, and Sagnac mention native \(H\) only in \texttt{claimStatement};
+Echo calls \(H\), and canonical Chirality stores its values.  The fibers remain local.  No row contains a calibrated
+observation map, so ``none'' records a documentary absence rather than a zero physical reading.  Claim tags remain
+ceilings: finite-ledger for Echo and AB, smooth-shadow for MZ, DG, and Sagnac, and inadmissibility no-go for Chirality.
+
+When two nested discretizations approximate the same smooth-model quantity with demonstrated expansion
+\[
+                         A(h)=A^\ast+Ch^p+O(h^{p+1}),
+\]
+Richardson extrapolation may be used:
+\[
+                         A_{\rm R}=\frac{2^pA(h/2)-A(h)}{2^p-1}.
+\]
+This is legitimate only when both values use compatible models, paths, boundary data, refinement ratio, asymptotic
+regime, and error order \(p\).  The order is either derived analytically or estimated independently from at least
+three compatible nested levels.  Define
+\[
+D_h=A(h)-A(h/2),\qquad D_{h/2}=A(h/2)-A(h/4),
+\]
+and, when both are nonzero with signs and regime appropriate to the assumed leading term,
+\[
+                         p_{\rm obs}=\log_2\frac{|D_h|}{|D_{h/2}|}.
+\]
+Observed order must stabilize across further refinements from the same family, while raw differences decrease and a
+demonstrated error bound remains valid.  Choosing \(p\) to make an extrapolate hit a target is rejected.  Under the
+displayed expansion, extrapolation cancels the leading term and leaves a demonstrated \(O(h^{p+1})\) remainder here;
+it does not produce an exact limit.  Nearby values alone do not justify extrapolation, and a route with different
+physics or preprocessing is a comparison channel, not automatically a refinement level.
+
+The finite comparison algorithm parses both reports, validates types and units, resolves representation maps,
+replays transitions or transport products, checks commuting squares and invariants, aligns refinement levels, computes
+exact differences, quantized labels, uncertainty intersections, and---when admissible---Richardson estimates and
+observed convergence ratios.  It retains rejected alignments and alternative maps.
+
+\paragraph{Worked example 4: a failed intertwining map.}
+Suppose \(R\) cycles three computational states, while proposed \(U\) fixes all represented vectors.  If
+\(\rho\) distinguishes the states, then \(\rho(Rs)\ne U(\rho(s))\) for some \(s\).  The representation row fails even
+though \(U^3=I\) and \(R^3=\operatorname{id}\).  Equal return exponents alone do not make the processes correspond.
+
+\paragraph{Counterexample 5: apparent Richardson convergence outside scope.}
+Three displayed values can accidentally fit a power-law ratio.  Without nested meshes, common target, stable boundary
+conditions, and a demonstrated truncation expansion, extrapolation manufactures precision.  The audit reports the
+ratio as read data and leaves the extrapolated-limit claim unresolved or rejected.

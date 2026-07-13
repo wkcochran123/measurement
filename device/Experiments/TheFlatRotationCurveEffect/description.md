@@ -8,7 +8,7 @@ Labels: `eq:rotation-viscosity`
 ## Description
 
 **Note.** This is an informational consequence, not an astrophysical hypothesis.
-No assumptions regarding dark matter, mass distributions, or Newtonian
+No assumptions regarding doesn't-matter, mass distributions, or Newtonian
 potentials are invoked.  The flattening derived here is the smooth
 shadow of a discrete consistency requirement: non--commuting refinements
 produce a curvature residue that appears, in the continuum, as a viscous

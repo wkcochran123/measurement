@@ -1,5 +1,5 @@
 import Experiments.Common
-import Measurement.Episode84
+import Measurement.Apparatus
 
 /-!
 # The Feynman Diagram — a tensor contraction as a holonomy

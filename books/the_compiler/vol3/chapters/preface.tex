@@ -1,0 +1,67 @@
+\chapter*{Preface: Two Verbs and a Halt}
+\addcontentsline{toc}{chapter}{Preface: Two Verbs and a Halt}
+
+This is the third reading of one machine. Four volumes walk the same fifteen chapters; each writes them in the
+language where the machine's face comes out sharp, and English is the fallback, never the medium. The first volume
+read the machine as a construction and spoke the logic of building. This one reads it as a \emph{compiler} --- a
+program that writes its own source and then reads it back --- and speaks the language such a program is native to:
+formal systems, the theory of communication, and the numerical analysis of a finite instrument that can only ever
+compute to a floor. There are no forces in this book, no fields, no orbits; where a physical name would be the
+natural word, this volume keeps the computational one and hands the physics to the volume that can cash it. What the
+other gauges call by their own names, this gauge calls by grammars, codes, and decisions.
+
+Two verbs run under everything here, and they are worth setting down at the door. To \emph{tange} is to select by a
+decidable characteristic --- to reach into a collection and pick out \emph{this one, not that one}, because a finite
+procedure, run to a halt, reports them different. To \emph{funge} is the opposite gesture: to pool together, under
+one tag, everything a finite procedure cannot tell apart. Tange divides by a decided difference; funge unites by a
+decided sameness. Neither verb reaches past what the machine can already settle in finite time. A tange is a
+decidable selection; a funge is a decidable grouping; and between the two of them, iterated, the machine builds
+everything it will ever build. The reader who keeps both verbs in hand --- and remembers that each is bounded by a
+procedure that must \emph{halt} --- will find the whole construction easier to walk.
+
+They are also, this volume argues, the whole of what it means for a compiler to \emph{measure}. To measure is first to
+tange --- to decide a symbol apart from every symbol it is not --- and then to funge --- to declare it one with
+everything no decision can separate from it. This is not a metaphor borrowed from elsewhere; it is the plainest fact
+about a symbol, older than any computer. A symbol means nothing in isolation and means only by its contrast with the
+symbols it is not; Shannon~\cite{shannon1948} made that quantitative, a mark carrying information exactly to the
+degree it could have been another. The machine takes the old idea literally: its symbols \emph{are} their
+distinguishability, a mark defined by the finite test that parts it from the rest. The test is the tange; the pooling
+of the indistinguishable is the funge; and every reading in these pages is built from those two acts and a procedure
+that halts.
+
+There is a place where the first verb stops being an ordinary word and becomes the deepest fact about computation, and
+this book walks up to it on purpose and then declines to cross. Tange one symbol from a finite alphabet and no one
+objects; a finite procedure decides it and halts. But ask to tange, in general, whether an arbitrary procedure will
+ever halt --- to decide, for every program, the one bit that says \emph{stops} or \emph{runs forever} --- and you have
+asked for something no machine can deliver. Turing~\cite{turing1936} proved it: there is no decision procedure for
+halting, no finite test that settles the question for all cases. G\"odel~\cite{godel1931} had shown the same wall from
+the other side --- that any system strong enough to describe its own arithmetic contains true statements it cannot
+prove --- and Church~\cite{church1936} a third time, that the plainest questions about definability admit no algorithm.
+The undecidable is not a gap in anyone's cleverness; it is a theorem, a standing warning about how much a finite
+instrument can and cannot settle. To reach past it --- to help oneself to the halting bit as though it were free ---
+is to invoke an \emph{oracle}, a selection the machine cannot exhibit, tange promoted past the finite and granted for
+nothing.
+
+This book takes a side, and the side is the finite one. The machine at the center of these pages tanges and funges
+without pause --- it does nothing else --- but it only ever tanges by procedures that halt, and only ever from
+alphabets it can genuinely decide. It calls no oracle; it never helps itself to a bit it cannot compute; it never
+posits a distinction it cannot exhibit in finite time. When it names a thing, it does so by counting the thing into
+one of finitely many bins, and a decision among finitely many bins needs no oracle at all --- you can just run it and
+watch it halt. The consequence is exact and checkable: audit what the machine's results actually rest on and no oracle
+is among them; the only thing it ever assumes is that a halting procedure halts. The book does not avoid the oracle as
+a matter of taste. It earns every selection one finite, halting decision at a time, and it can show that it did.
+
+That discipline is the reason the book can end where it does. There is a fence in the theory of information that is the
+exact computational form of this refusal, and it belongs here at the door because the whole ending leans on it. A
+finite string carries only so much information; most strings are \emph{incompressible}, holding no shorter description
+than themselves, and Chaitin~\cite{chaitin1974} made the boundary sharp: there are numbers a finite machine provably
+cannot generate, magnitudes whose every digit is beyond the reach of any short program. A machine that helped itself
+to an oracle could posit any such number it pleased and dress the wish as a result --- it could hand you the exact
+value of the constant this book reaches for and dare you to object. This machine cannot, and will not. It tanges only
+what it can decide and funges only what no decision separates; and when it runs clean out of decidable distinctions ---
+when its bisection reaches the floor below which its own resolution cannot tell two candidates apart --- it
+\emph{halts}, and hands back not a fabricated point but an honest interval. The width of that interval is the exact
+measure of the information its finite, halting procedures could not resolve. The two verbs are the method; the oracle
+is what the first becomes when it is handed the infinite for free; and the whole of this book's honesty is its refusal
+of that gift. It tanges, it funges, and it halts --- and because it halts, the answer it finally gives is a thing it
+earned rather than a thing it wished for.

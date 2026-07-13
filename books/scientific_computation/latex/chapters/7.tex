@@ -1,3 +1,323 @@
 \chapter{The Number Splits Into Faces}
 
-\emph{[This chapter is being written, one section at a time.]}
+\section{Computation names}
+
+A computational name is licensed by a grammar, not by resemblance to a word used elsewhere.  Its record is
+\[
+ \mathcal N=(\text{name},\text{domain},\text{codomain},\text{route},\text{version},
+ \text{inputs},\text{operation},\text{units},\text{budget},\text{stop},
+ \text{certificate},\text{projections},\text{erasures},\text{provenance},
+ \text{status},\text{forbidden interpretations}).
+\]
+Two records may share a spelling or a number without sharing an operation.  Conversely, the same operation may admit
+several presentations.  The record, rather than resonance, decides what a name owns.
+
+\paragraph{Count.}
+A count is \(n\in\mathbb N\) produced by an explicit enumeration or transition rule.  Its units name what is counted:
+cells, rungs, partial quotients, candidates, or events.  Failures include invalid domain, exhausted scope, duplicate
+membership, overflow, and unresolved enumeration.  Its certificate contains the finite domain or trace, membership
+rule, order when relevant, accumulator transitions, scope, and stop.  A count of three partial quotients is not three
+grid cells merely because both are written \(3\).
+
+\paragraph{Bit.}
+A bit is an element of a declared two-symbol alphabet, such as
+\(\mathbb B=\{\mathsf{no},\mathsf{yes}\}\), obtained by a named predicate or encoding map.  Its unit is one symbol;
+information in bits requires a separate probability law or coding convention.  Failures include unresolved
+predicate, invalid input, unknown encoding, and missing orientation.  Its certificate retains input, predicate,
+alphabet, orientation, output, and assumptions.  A Boolean answer alone is neither a probability nor physical spin.
+
+\paragraph{Cost.}
+A cost is a nonnegative resource vector accumulated in declared currencies:
+\[
+ \mathbf c_{i+1}=\mathbf c_i+\mathbf w(s_i\to s_{i+1}),\qquad
+ \mathbf c=(\text{requested},\text{spent},\text{remaining}).
+\]
+The currency may be transitions, arithmetic operations, bit growth, cells visited, checker effort, or elapsed time.
+Conversions between currencies require calibration; no scalar total exists without declared conversion weights.
+Failures include budget exhaustion, overflow, unknown weight,
+and incomparable currencies.  A certificate replays weights and addition along the trace; it does not promote elapsed
+time to structural work.
+
+\paragraph{Bracket.}
+A bracket is ordered endpoint data \((\ell,u)\) with \(\ell<u\), plus whatever opposed endpoint evidence its claim
+requires.  Its units are endpoint units; its width has the same units.  Operations include exact midpoint slicing,
+grid conversion, or continued-fraction wall construction, each with a distinct route.  Failures include order,
+domain, non-opposed endpoints, arithmetic resource, and unresolved branch.  A certificate owns its route, endpoints,
+trace, budgets, and stop, not an unnamed exact point.
+
+\paragraph{Remainder.}
+For integers \(a\), \(b>0\), Euclidean division produces the unique pair
+\[
+                        a=qb+r,\qquad 0\leq r<b.
+\]
+The remainder is \(r\), in the same integer unit as \(a\) and \(b\).  Division by zero, sign-convention mismatch,
+overflow, and an unchecked identity are failures.  Its certificate retains \(a,b,q,r\) and verifies both equality and
+range.  A discarded display residue or an empirical leftover may use similar language, but it is not this remainder
+without this operation.
+
+\paragraph{Worked example 1: one numeral, different counts (computation).}
+The canonical count \(3\) means three whole continued-fraction partial quotients.  That route produces ordered walls
+\(17/9\) and \(2\), hence the owned jar \([129.6,137.7]\).  It does not mean three grid cells, dyadic rungs, branch
+bits, or any physical count.  Those may also contain the numeral \(3\), but their units, transitions, stops, and
+certificates differ.
+
+\paragraph{Worked example 2: a branch bit drives iteration and slicing (computation).}
+For ordered bracket \([\ell,u]\), compute \(m=(\ell+u)/2\).  The read bit \(C(m)\) selects either \([m,u]\) or
+\([\ell,m]\).  Iteration consumes the bit; slicing discards one half.  The next bracket certificate must retain the
+midpoint, bit, retained half, erased half, and endpoint invariant.  Keeping only the bit loses the numerical state;
+keeping only endpoints loses the branch history.
+
+\paragraph{Counterexample 3: equal remainders do not identify divisions (computation).}
+Both \(17=3\cdot5+2\) and \(23=3\cdot7+2\) have remainder \(2\).  The projection
+\(\pi(a,b,q,r)=r\) has many-element fibers.  Equality after \(\pi\) licenses equality of remainders only, not equality
+of dividends, divisors, traces, costs, or provenance.
+
+\paragraph{Counterexample 4: equal brackets do not identify processes (computation).}
+One trace may receive \([\ell,u]\) as input; another may reach it after several slices.  Equal endpoint pairs certify
+the same bracket value under matching units, but not equal trace, route, requested resources, spent resources, or
+remaining resources.  Process and cost identity require their own certificate rows.
+
+This manuscript coins \emph{nowtrino} for one scientifically earned computation name:
+\[
+ \operatorname{nowtrino}(h)=\pi_{\rm now}(h)
+   =(\text{current state},\text{current counters},\text{current stop}),
+\]
+the computation-owned current-summary projection after history slicing.  Its domain is a full finite history \(h\).
+Its fiber over a summary contains every history with that same current state, counters, and stop.  The projection
+therefore loses prior states, branch order, rejected slices, intermediate costs, and causal route unless separately
+retained.  A nowtrino is not a particle, measurement, or physical hypothesis; it is this manuscript's name for a
+lossy computational summary.
+
+For example, let \(H_1\ne H_2\) contain different earlier branches but end with the same current state, counters, and
+stop.  Then \(\operatorname{nowtrino}(H_1)=\operatorname{nowtrino}(H_2)\).  Equality of summaries is exactly the
+projection claim; it cannot recover \(H_1=H_2\).
+
+The spelling \emph{naotrino}, coined from Greek \emph{naos} (temple), is reserved for a later physical apparatus or
+model and earns no meaning here.  The etymology records the manuscript coinage; it supplies no physical evidence.  If later
+defined, it must state observables, units, calibration, dynamics, uncertainty, and empirical tests.  It must also be
+distinguished explicitly from the standard neutrino of particle physics; word resonance establishes no relation.
+Any attempted coercion from nowtrino to naotrino or neutrino is rejected as a domain and route mismatch.
+
+Name resolution parses the local declaration and joins on
+\((\text{name},\text{domain},\text{route},\text{version})\), requiring a unique row.  The ledger retains origin,
+definition, data schema, fiber, and resolution history; a changed meaning requires a new version.  A lexical
+concordance finds spellings, not equal semantics or independent evidence.
+
+\section{Physics names}
+
+A physical name is earned by an apparatus, model, observable, units, calibration, uncertainty statement, and data:
+\[
+\mathcal P=(\text{name},\text{system},\text{apparatus},\text{model},\text{observable},
+\text{units},\text{calibration},\text{data},\text{uncertainty},\text{failures},\text{certificate}).
+\]
+Shared spelling with a computational object supplies none of these.
+
+Computational projections called lower, upper, or binary may be labelled charge, mass, or phase only as an explicitly
+declared interpretation.  The labels do not make the projections satisfy \(F=ma\), \(\mathbf F=q\mathbf E\), a phase
+model, dimensional laws, or any apparatus response.  Likewise, \(\alpha_c\) is computation-owned: it denotes the
+dimensionless ordered-wall jar \([129.6,137.7]\) under its declared route.  It is neither a laboratory determination
+nor the fine-structure constant of physics.  Saying that it was generated before it was read records provenance order
+only; temporal order does not validate a physical interpretation.
+
+\paragraph{Mass.} In an inertial experiment, \(F=ma\).  Calibrated force and acceleration observations estimate
+\(m\) in kilograms.  Alignment, friction, sensor bias, timing, model inadequacy, and nonidentifiability are failures.
+The certificate retains calibration, observations, fit, residuals, uncertainty, and validity range.
+
+\paragraph{Charge.} Charge \(q\), in coulombs, may be inferred from \(\mathbf F=q\mathbf E\).  Apparatus must measure
+force and field orientation.  Background fields, leakage, sign ambiguity, saturation, and nonuniformity limit the
+claim.  Geometry, field map, zeroing, sign convention, data, corrections, and uncertainty belong in the certificate.
+The equation alone may be nonidentifying: for any admissible \(\lambda\ne0\), the pairs
+\[
+                         (q,\mathbf E),\qquad(\lambda q,\mathbf E/\lambda)
+\]
+produce the same \(\mathbf F\).  The report fiber over one force therefore contains multiple charge--field pairs
+unless another calibrated channel fixes the scale.  Dimensions are necessary consistency checks, not sufficient
+identification evidence.
+
+\paragraph{Phase.} For \(y(t)=A\cos(\omega t+\phi)\), phase \(\phi\) is in radians modulo \(2\pi\), relative to a
+declared clock and oscillator.  Drift, aliasing, low amplitude, cycle slips, and reference changes are failures.
+Circular uncertainty and reference epoch are required.
+
+\paragraph{Field.} A field such as \(\mathbf E:\Omega\times\mathbb R\to\mathbb R^3\), in volts per metre, is sampled
+only at finite locations, times, orientations, and bandwidths.  Interpolation is a declared model.  Drift, spatial
+averaging, boundaries, missing samples, and residuals limit the certificate.
+
+\paragraph{Coupling.} In \(y_i=gx_i+\epsilon_i\), coupling \(g\) has units \(y/x\), unless normalization makes it
+dimensionless.  Both channels, excitation range, error covariance, backgrounds, and model selection require
+calibration.  Raw pairs, estimator, residuals, uncertainty, and domain are retained.
+
+\paragraph{Worked measurement 1: mass (physics).} Apply three calibrated forces to a carriage and measure repeated
+accelerations.  A weighted linear fit estimates \(m\), and residuals test the model.  Numerical iteration may solve
+the fit and slicing may form an interval, but convergence alone is not a mass certificate: friction, timing, force
+calibration, and the inertial model remain physical requirements.
+
+\paragraph{Worked measurement 2: phase (physics).} Sample a sinusoid against a traceable clock.  Numerical search may
+iterate over \(\phi\) and retain a likelihood slice.  Changing the reference epoch shifts phase without changing the
+waveform, so the physical name includes its reference and modulo convention.
+
+\paragraph{Counterexample 3: a slope is not yet a coupling (physics).} Two digitized channels yield slope \(2.0\).
+If one channel used millivolts rather than volts, the physical slope changes by \(10^3\).  The numeral cannot name a
+coupling until units, calibrations, model, and uncertainty are supplied.
+
+\paragraph{Counterexample 4: samples are not a continuous field (physics).} Equal readings at two probes do not
+exclude variation between them.  Interpolation or smoothness can fill the gap only as a model assumption.  Numerical
+slicing bounds parameters within that model; it cannot observe unsampled points.
+
+The manuscript spelling \emph{naotrino} remains reserved.  No concrete apparatus, model, observable, units,
+calibration chain, uncertainty analysis, or discriminating dataset is supplied here.  It is not the computation-owned
+nowtrino and not the standard neutrino of particle physics.  A later coinage requires a complete \(\mathcal P\) record
+and evidence against alternatives.
+
+Numerical acquisition preregisters the observable, sampling plan, blinding rule, preprocessing, estimator, protocol
+and version, and budgets before it parses calibrated samples.  It validates units, iterates the declared estimator,
+slices a parameter region, and reports pass, fail, or unresolved checks.  Raw and rejected samples are preserved with
+their rejection reasons; blinding is lifted only by the preregistered rule.  Stops include acquisition budget, missing
+calibration, unit mismatch, saturation, domain failure, nonidentifiability, iteration budget, overflow, tolerance,
+complete, and model rejection.  A numerical stop is not a physical failure absent an explicit apparatus relation.
+
+Different named estimates can share data, calibration standards, preprocessing, environmental disturbances, or fitted
+parameters.  Their covariance and cross-covariance must therefore be estimated or bounded under the joint acquisition
+model.  Distinct names, equations, or report columns establish no statistical independence.  Treating correlated
+channels as independent can shrink uncertainty without new evidence.
+
+The physical report must retain apparatus, observable, units, calibration, sampling, model, residuals, uncertainty,
+covariance, shared preprocessing, and validity range.  A changed calibration, model, or apparatus starts a new report;
+none of these records follows from a computational name.
+
+\section{Same number or same process}
+
+Comparison begins by declaring its relation.  For reduced rationals,
+\[
+a/b =_{\rm exact} c/d\Longleftrightarrow ad=bc,
+\qquad
+x =_\theta y\Longleftrightarrow q_\theta(x)=q_\theta(y)
+\]
+defines exact equality and equality under declared quantizer \(q_\theta\).  Exact equality implies resolution equality
+only inside its domain; resolution equality does not imply exact equality.
+
+A process report is
+\[
+P=(\text{inputs},\text{algorithm},\text{transitions},\text{trace},\text{cost vector},
+\text{budgets},\text{stop},\text{configuration},\text{provenance}).
+\]
+Process equivalence requires comparison maps for every component: compatible inputs, transition semantics, trace
+correspondence, cost currencies, budgets, stops, configuration, and provenance.  Output equality is only one row.
+Shared names imply none of them.
+
+Value and process provenance remain separate:
+\[
+\text{raw}_i\xrightarrow{q_{\theta_i}}\text{label}_i,
+\qquad
+\text{input}_i\xrightarrow{P_i}\text{output}_i.
+\]
+A value comparison map cannot fill absent input, transition, trace, or cost maps.
+
+\paragraph{Worked comparison 1: direct and stepped endpoints (computation).}
+At scale \(10^{18}\),
+\[
+d=137011290548979455469,\qquad s=137011290753751157155.
+\]
+The integers differ by \(|d-s|=204771701686\), while a declared coarse display maps both to \(137.011\).  Exact
+inequality, declared-resolution equivalence, and process difference are separate rows.  The shared formatted string is
+a formatter collision, not equality.  Direct and stepped routes have different transitions and costs.
+
+A declared inverse-report map takes continued-fraction walls \(17/9\) and \(2\) to jar \([129.6,137.7]\).  The map and
+calibration belong in the certificate.  Wall rationals and report endpoints inhabit different numerical domains; they
+are not the same numbers.
+
+\paragraph{Worked comparison 2: same operation, different inputs (computation).}
+Division of \(17\) by \(5\) and \(23\) by \(7\) uses the same operation and returns remainder \(2\).  Inputs and quotient
+identities differ.  The runs share an algorithm schema but are not the same process.
+
+\paragraph{Counterexample 3: same value, different algorithms (computation).}
+One route reduces \(18/12\) by remainders; another reads \(3/2\) from a table.  Exact outputs agree, but traces,
+failures, costs, and certificates differ.  Value equality passes while process equivalence fails or is unresolved.
+
+\paragraph{Counterexample 4: shared names provide no bridge.}
+A nowtrino is a computation-owned summary.  A naotrino is a reserved possible physical name, while a standard neutrino
+belongs to established physics.  No comparison map, calibration, or model bridge is supplied.  Resemblance cannot
+construct one.
+
+Comparison joins relation, domain, route, version, units, and configuration before testing value, resolution, trace,
+cost, and provenance.  Endpoint projection erases trace and cost; display projection erases residue; current summary
+erases history; and an unkeyed name erases domain and route.
+
+Same-name means resolution to one governed ledger row---name, domain, route, version, and status---not equal spelling.
+Typed value paths are
+\[
+\mathrm{Input}_i\to\mathrm{Report}_i\xrightarrow{\kappa_i}C\xrightarrow{q_\theta}\mathrm{Label}_i.
+\]
+Each \(\kappa_i\) converts to common comparison domain \(C\).  Process comparison instead uses an explicit trace/state
+relation, not \(\kappa_i\).  Byte-for-byte trace equality is strong; a weaker relation must state which states,
+transitions, stuttering steps, and costs it identifies.  Without one, process equivalence is unresolved.
+
+\paragraph{Worked comparison 5: finite three-state closure (computation).}
+Let \(S=\{\mathsf{minus},\mathsf{zero},\mathsf{plus}\}\) and declare the deterministic rotation
+\[
+\mathsf{minus}\mapsto\mathsf{zero}\mapsto\mathsf{plus}\mapsto\mathsf{minus}.
+\]
+Finite case reduction certifies for every \(s\in S\) that three rotations return \(s\), while one and two rotations do
+not.  The displayed finite table suffices under the declared transition.  Its scope is exactly these three states.
+Closure does not make an unrelated residue a one-step
+invariant or fixed point.  Only a separately defined residue map with a proved preservation law could do that.
+After the three-step return, any read defined solely from the returned state agrees with its initial state-derived
+read.
+
+\paragraph{Worked comparison 6: reproducible tuples are not cycle causation (computation).}
+Each of two governed runs returns the exact tuple
+\[
+                         (573,573,552),
+\]
+with residual \(552-573=-21\) and scaled inverse
+\[
+                         137011290548979455469.
+\]
+Tuple equality, residual arithmetic, and scaled-inverse equality are separate rows.  The receipt records checker and
+compiler releases, snapshot hash, configuration, deterministic inputs, and declared nondeterministic inputs for both
+runs.  Equality is \emph{read}; configuration sameness is posited and validated against those records.  Passing rows
+establish reproducibility under recorded assumptions, not that the three-state cycle caused the tuple or residual.
+
+Charge labels, RGB labels, or \(a,b,c\) labels exhibit the same three-fold organization only when declared maps to
+\(S\) are supplied and their transition-preservation squares are checked.  Without those maps, the resemblance is an
+interpretation, not process or value equality.
+
+\paragraph{Descent experiment 7: sign projection versus signed residue (finite apparatus audit).}
+Use the live finite apparatus surface only as an executable computation.  Its input domain is the product
+\[
+ \mathcal X=\mathcal P\times\mathcal V,
+\]
+where \(\mathcal P\) contains the declared four-node cubic paths and \(\mathcal V\) contains declared two-leg
+variations.  The first transform is the mixed second-difference read
+\[
+ h:\mathcal X\to\mathbb Z,\qquad h(p,v)=\operatorname{holonomy}(p,v),
+\]
+and the second is the sign classifier
+\[
+ \sigma:\mathbb Z\to
+ \{\mathsf{matter},\mathsf{antimatter},\mathsf{doesntMatter}\}.
+\]
+For the checked loop variation \(v_{12}\), the finite table reads
+\(h(p_{\rm flat},v_{12})=-1\) and \(h(p_{\rm tilted},v_{12})=+1\).  For the held-right-leg variation \(v_{21}\) on
+the tilted path it reads \(h(p_{\rm tilted},v_{21})=0\).  Applying \(\sigma\) yields the actual source constructor
+\texttt{Charge.doesntMatter} at zero; \emph{neutral} is only a display gloss.  This is
+the exact pointwise computation of the source definitions on these named inputs: path and variation to signed
+integer, then integer to label.  It is
+not a transform from a physical particle to a measured charge.
+
+Define the direct event read \(E(p,v)\) by evaluating the program's event constructor.  The comparison test is the
+commuting triangle
+\[
+                       E=\sigma\circ h
+\]
+on the three enumerated inputs.  Pointwise equality passes for the returned labels.  The converse square fails:
+there is no inverse \(\sigma^{-1}\), because all positive integers share the antimatter label and all negative
+integers share the matter label.  The residual of sign projection is the erased magnitude and path/variation
+provenance.  Equal labels therefore support neither equal residues nor equal processes.
+
+This is a pointwise specialization of the live definitions on three named inputs, not an exported run, trace schema,
+certificate, or stop vocabulary.  Its distinct ownership lesson is that integer equality, constructor equality, and
+path--variation equality are separate rows.  Chapter 9 carries the canonical transform and adversarial audit.
+
+The integer evaluations are live-definition results; the triangle is a manuscript restatement, not an exported
+report.  Its physical names add no calibrated observation.  Ownership remains with these three input rows and the
+separate equality relations above.

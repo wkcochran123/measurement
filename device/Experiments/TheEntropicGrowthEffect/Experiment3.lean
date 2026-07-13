@@ -1,5 +1,5 @@
-import Experiments.TheDarkEnergyEffect.Experiment2
+import Experiments.TheEntropicGrowthEffect.Experiment2
 
-namespace Experiments.TheDarkEnergyEffect
+namespace Experiments.TheEntropicGrowthEffect
 
-end Experiments.TheDarkEnergyEffect
+end Experiments.TheEntropicGrowthEffect

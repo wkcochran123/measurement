@@ -1,0 +1,84 @@
+\documentclass[12pt,oneside]{book}
+\usepackage{amsmath,amssymb,setspace}
+\usepackage[backend=biber,style=numeric,sorting=nyt]{biblatex}
+\addbibresource{../../../instrument/measurement.bib}
+\usepackage{newunicodechar}
+\newunicodechar{∧}{\ensuremath{\wedge}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{…}{\ensuremath{\ldots}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{Ω}{\ensuremath{\Omega}}
+\newunicodechar{Θ}{\ensuremath{\Theta}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{½}{\ensuremath{\tfrac{1}{2}}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{→}{\ensuremath{\to}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{²}{\ensuremath{^{2}}}
+\newunicodechar{³}{\ensuremath{^{3}}}
+\newunicodechar{—}{---}
+
+\makeatletter
+% TOC part lines read "Part I  Title" (mirrors Vol 1/2/4).
+\renewcommand*\l@part[2]{%
+  \ifnum \c@tocdepth >-2\relax
+    \addpenalty{-\@highpenalty}%
+    \addvspace{2.25em \@plus\p@}%
+    \setlength\@tempdima{3em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      {\leavevmode
+       \large \bfseries \partname\nobreakspace#1\hfil \hb@xt@\@pnumwidth{\hss #2}}\par
+       \nobreak
+         \global\@nobreaktrue
+         \@afterheading
+    \endgroup
+  \fi}
+\makeatother
+
+\begin{document}
+
+\title{The Compiler\\[0.4em]\large Volume Three: The Computation}
+\author{Bill Cochran\\wkcochran@gmail.com\\https://github.com/wkcochran123/measurement}
+\date{\today}
+\maketitle
+
+\frontmatter
+\onehalfspacing
+\tableofcontents
+
+\input{chapters/preface}
+
+\mainmatter
+
+\include{chapters/1}
+\include{chapters/2}
+\include{chapters/3}
+\include{chapters/4}
+\include{chapters/5}
+\include{chapters/6}
+\include{chapters/7}
+\include{chapters/8}
+\include{chapters/9}
+\include{chapters/10}
+\include{chapters/11}
+\include{chapters/12}
+\include{chapters/13}
+\include{chapters/14}
+\include{chapters/15}
+
+\backmatter
+\printbibliography
+
+\end{document}

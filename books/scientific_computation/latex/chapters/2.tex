@@ -1,3 +1,542 @@
 \chapter{Difference Becomes Countable}
 
-\emph{[This chapter is being written, one section at a time.]}
+\section{Counting is an interface}
+
+Counting begins with four finite capabilities, not with a completed enumeration.  A neutral grammar is
+\[
+\begin{array}{rcl}
+\textit{counting-capability}&::=&
+ \operatorname{counting}(\textit{carrier},\textit{tally},U),\\
+\textit{admission-capability}&::=&
+ \operatorname{admission}(\textit{counting-capability},A),\\
+\textit{indexing-capability}&::=&
+ \operatorname{indexing}(\textit{counting-capability},\textit{origin},V),\\
+\textit{bounding-capability}&::=&
+ \operatorname{bounding}(\textit{indexing-capability},B).
+\end{array}
+\]
+Here \(U\) updates a tally-shaped record, \(A\) asks an admission question, \(V\) updates an indexed record from a
+declared origin, and \(B\) asks a bound question.  The capabilities provide places for finite data and questions.
+They do not guarantee that repeated updates are distinct, that every candidate appears, or that an index assignment is
+one-to-one or onto.
+
+Use the neutral forms
+\[
+ \operatorname{halt}(\rho),\qquad
+ \operatorname{step}(\rho,\nu,T),
+\]
+with receipt \(\rho\), numeral record \(\nu\), and recursive tail \(T\).  Arithmetic meaning for \(\nu\) remains
+reserved.  The default counting update has a head-update/tail-reset shape:
+\[
+\begin{aligned}
+ U(\operatorname{halt}(\rho))
+   &=\operatorname{halt}(\rho_*),\\
+ U(\operatorname{step}(\rho,\nu,T))
+   &=\operatorname{step}(\rho_*,\nu_*,T_*),
+\end{aligned}
+\]
+where \(\rho_*,\nu_*,T_*\) are the current receipt, carrier payload, and stored tally supplied by the capability.  The
+input tail does not survive the second branch.  The default indexing update likewise uses a fixed origin \(O\):
+\[
+\begin{aligned}
+ V(\operatorname{halt}(\rho))
+   &=\operatorname{step}(\rho,c,O),\\
+ V(\operatorname{step}(\rho,\nu,T))
+   &=\operatorname{step}(\rho,U(\nu),O).
+\end{aligned}
+\]
+It retains the input head receipt, updates the head payload, and resets the tail to \(O\).
+
+\paragraph{Worked example 1: same head, different tail (computation).}
+Let
+\[
+ R_1=\operatorname{step}(\rho,\nu,T_1),\qquad
+ R_2=\operatorname{step}(\rho,\nu,T_2),\qquad T_1\ne T_2.
+\]
+The default recurrence gives
+\[
+                       V(R_1)=V(R_2)=\operatorname{step}(\rho,U(\nu),O).
+\]
+Thus the update is many-to-one: records with the same head and different tails share an output fiber.  Iteration cannot
+reconstruct the discarded tail, so this recurrence alone cannot certify enumeration of its input records.
+
+The default admission question is also only a question.  On neutral numeral forms it has three branches:
+\[
+ A(s,t)=
+ \begin{cases}
+ \mathsf{yes},&s\text{ is an anchor},\\
+ \mathsf{no},&s\text{ is a step and }t\text{ is an anchor},\\
+ R(\rho_t)\lor Q(\nu_s,\nu_t),&s,t\text{ are steps}.
+ \end{cases}
+\]
+Here \(R\) is the declared question carried by the threshold receipt; an affirmative receipt answer admits the pair
+without consulting \(Q\).
+The default bound question has a related orientation rule:
+\[
+ B(s,t)=
+ \begin{cases}
+ \mathsf{yes},&s\text{ is an anchor},\\
+ \mathsf{no},&s\text{ is a step and }t\text{ is an anchor},\\
+ [\operatorname{parity}(\rho_s,\rho_t)=\mathsf{agree}\land Q(i_s,i_t)]\\
+ \quad{}\lor[\operatorname{parity}(\rho_s,\rho_t)=\mathsf{disagree}\land Q(i_t,i_s)],
+ &s,t\text{ are steps}.
+ \end{cases}
+\]
+Agreement preserves the comparison arguments; disagreement reverses them.  Neither capability supplies a resolver for
+\(A\), \(B\), or \(Q\), and none proves reflexivity, transitivity, antisymmetry, totality, or any other order law.
+The questions and defaults may be replaced in another declared capability; subsequent slices then concern the
+replacements.
+
+The actual iteration is the forward orbit
+\[
+                   r_0=O,\qquad r_{k+1}=V(r_k).
+\]
+For an actual finite run with transition budget \(N\), record \(r_0=O\), then apply \(V\) for
+\(k=0,\ldots,N-1\).  Stop with \textsc{budget} after the \(N\)-th transition.  The certificate contains the declared
+origin, budget \(N\), all \(N\) transition pairs \((r_k,r_{k+1})\), the receipts retained inside the recorded values,
+the prefix \([r_0,\ldots,r_N]\) of \(N+1\) values, every declared
+erasure, and the stop reason.  It certifies only those \(N\) transitions and says nothing about a further update.
+
+This is a covariant construction.  Given a question \(q\) on orbit values, reading is contravariant pullback:
+\[
+                   V^*q=q\circ V.
+\]
+For composable forward maps \(W\) and \(V\),
+\[
+                   (V\circ W)^*q=W^*(V^*q).
+\]
+Receipt-directed reversal inside \(B\) is not categorical variance; it is merely a branch that exchanges two
+arguments.
+
+\paragraph{Worked example 2: an orbit need not enumerate (computation).}
+Let a permitted update satisfy \(V(a)=b\) and \(V(b)=a\).  Starting at \(a\), the orbit is
+\[
+             [r_0,r_1,r_2,r_3,r_4,r_5,r_6]=[a,b,a,b,a,b,a]
+             \qquad(N=6).
+\]
+A six-transition run has seven recorded values but only two distinct values.  It demonstrates iteration and a
+two-cycle, not seven distinct indexed objects.  Therefore an update interface, even with a budget and origin, is not an enumeration
+certificate.
+
+A separate finite indexing experiment can be posited, but it must be named as external.  Given
+\(L=[x_1,\ldots,x_n]\), capacity \(K\), budget \(N\), and an explicitly declared resolver \(\Delta_A\) for the chosen
+admission question, visit while \(j\le n,K,N\).  Resolve \(\Delta_A(x_j)\), append admitted rows to a ledger and
+rejected rows to a complement slice, then increment \(j\).  Stop with \textsc{complete}, \textsc{capacity},
+\textsc{budget}, or \textsc{resolver-domain}.  Its certificate contains the visited prefix, both slices, assigned and
+unused indices, unvisited suffix, and stop reason.  For \(v\) visits,
+\[
+                  |\text{admitted}|+|\text{rejected}|=v.
+\]
+This generic \(L/K/N\) traversal, its assignment \(\iota\), and its resolver are \emph{posited} analysis machinery;
+they are not contained in the four capability names.
+
+A genuine finite enumeration claim needs an encoder and decoder.  For finite sets \(X\) and \(I\), require both
+round trips:
+\[
+             \operatorname{dec}(\operatorname{enc}(x))=x
+             \quad(x\in X),\qquad
+             \operatorname{enc}(\operatorname{dec}(i))=i
+             \quad(i\in I).
+\]
+
+\paragraph{Worked example 3: good and bad round trips (computation).}
+For \(X=\{\mathtt a,\mathtt b,\mathtt c\}\) and \(I=\{1,2,3\}\), a good pair is
+\[
+\begin{array}{c|ccc}
+x&\mathtt a&\mathtt b&\mathtt c\\ \hline
+\operatorname{enc}(x)&1&2&3
+\end{array}
+\qquad
+\begin{array}{c|ccc}
+i&1&2&3\\ \hline
+\operatorname{dec}(i)&\mathtt a&\mathtt b&\mathtt c .
+\end{array}
+\]
+Both round trips return their inputs.  A bad assignment is
+\[
+\begin{array}{c|ccc}
+x&\mathtt a&\mathtt b&\mathtt c\\ \hline
+\operatorname{enc}_{\rm bad}(x)&1&1&2
+\end{array}
+\]
+because the collision at \(1\) forces any decoder to choose at most one of \(\mathtt a,\mathtt b\).  Index \(3\) is
+also unused.  No decoder can satisfy both round trips, regardless of the interface name.
+
+Shannon's codebook is another map, \(C:I\to\mathcal W\), not the index assignment.  With a declared discrete
+distribution \(p(i)>0\),
+\[
+ I(i)=-\log_2p(i),\qquad
+ \bar\ell=\sum_i p(i)\ell(C(i)).
+\]
+These require probabilities and word lengths~\cite{shannon1948}.  Unambiguous decoding requires a declared uniquely
+decodable or prefix condition.
+
+\paragraph{Worked example 4: an index is not its word (communication model).}
+Let \(p(1)=1/2\), \(p(2)=p(3)=1/4\), with
+\(C(1)=\mathtt0\), \(C(2)=\mathtt{10}\), and \(C(3)=\mathtt{11}\).  The words are prefix-free, and direct calculation
+gives entropy \(3/2\) bits and expected length \(3/2\) bits.  This equality is demonstrated for this distribution and
+codebook only.  It identifies neither an index with its word nor a capability orbit with an encoded message.
+
+\paragraph{Worked example 5: counted threshold crossings (physics, then interpretation).}
+Suppose an apparatus yields a finite acquisition record of threshold crossings.  Physics owns the sensor, threshold,
+dead time, sampling interval, missed-event rate, and false-event rate.  The external traversal may index accepted
+records.  Its certificate counts those accepted records, not unobserved physical events.  Interpreting the ledger as an
+event count remains reserved until the experimental error model is supplied.
+
+The action ledger now separates the claims.  The four capabilities, their defaults, and the external \(L/K/N\)
+experiment are \emph{posited}.  A finite orbit trace, fiber equality, cycle, slice, or pair of checked round trips is
+\emph{demonstrated}.  Questions on orbit values or indices are \emph{read} contravariantly through forward maps.
+Full enumeration, bijection, cardinality, and physical event count remain \emph{reserved}.  Counting is an interface
+for finite updates and questions, not a guarantee hidden in a name.
+
+\section{The update and the alleged endpoint}
+
+The local capability stores an indexing capability, a named endpoint record, a current chain, and a chain update.  The
+step capability stores that local capability, a current piece, a named accumulation, and a second update.  A neutral
+grammar is
+\[
+\begin{array}{rcl}
+\textit{chain}&::=&\operatorname{end}(\textit{receipt})
+ \mid\operatorname{entry}(\textit{receipt},\textit{piece},\textit{chain}),\\
+\textit{accumulation}&::=&\operatorname{empty}(\textit{receipt})
+ \mid\operatorname{indexed}(\textit{receipt},\textit{chain},\textit{accumulation}),\\
+\textit{local-process}&::=&
+ \operatorname{local}(\textit{indexing},\textit{named-endpoint},\textit{current-chain},W),\\
+\textit{step-process}&::=&
+ \operatorname{step}(L_{\rm self},\textit{current-piece},
+                     \textit{named-accumulation},U).
+\end{array}
+\]
+These capabilities posit records and updates.  The words endpoint and accumulation attach names; they supply no metric,
+error bound, or statement about an infinite tail.
+
+Let \(L_{\rm ext}\) be a separately supplied local process, with stored chain \(S_{\rm ext}\) and update
+\(W_{\rm ext}\).  Let \(A_*\) be the stored accumulation, \(O_\rho\) the origin piece made from receipt
+\(\rho\), and \(V\) the indexing update on pieces.  The external local update is
+\[
+\begin{aligned}
+ W_{\rm ext}(\operatorname{end}(\rho))
+   &=\operatorname{entry}(\rho,O_\rho,S_{\rm ext}),\\
+ W_{\rm ext}(\operatorname{entry}(\rho,p,T))
+   &=\operatorname{entry}(\rho,V(p),S_{\rm ext}).
+\end{aligned}
+\]
+Both branches reset the output tail to \(S_{\rm ext}\); the input tail \(T\) is discarded.  The default step update is
+\[
+\begin{aligned}
+ U(\operatorname{empty}(\rho))
+   &=\operatorname{indexed}(\rho,S_{\rm ext},A_*),\\
+ U(\operatorname{indexed}(\rho,S,T))
+   &=\operatorname{indexed}(\rho,W_{\rm ext}(S),A_*).
+\end{aligned}
+\]
+Both branches reset the outer tail to \(A_*\).  This update also ignores the stored current piece in the step
+capability and the stored \(L_{\rm self}\); it uses the chain and update from external dependency
+\(L_{\rm ext}\).  A name suggesting approximation cannot restore any discarded tail or make either unused record
+operative.
+
+\paragraph{Worked example 1: equal head, unequal tails (default recurrence).}
+Let
+\[
+ C_1=\operatorname{indexed}(\rho,S,T_1),\qquad
+ C_2=\operatorname{indexed}(\rho,S,T_2),\qquad T_1\ne T_2.
+\]
+Then
+\[
+             U(C_1)=U(C_2)=\operatorname{indexed}(\rho,W_{\rm ext}(S),A_*).
+\]
+The two inputs occupy one output fiber.  This tail-reset equality is demonstrated directly from the recurrence.  It
+does not establish that either input approaches the named accumulation.
+
+For a finite run, choose origin \(x_0\) and budget \(N\), then compute
+\[
+                         x_{k+1}=U(x_k),\qquad k=0,\ldots,N-1.
+\]
+The budget certificate contains \(x_0\), \(N\), all transition pairs, the \(N+1\) recorded values, receipts retained in
+them, declared erasures, and \textsc{budget}.  It certifies only those transitions.  A slice may ask any declared
+question \(q\) of the recorded values.  Construction is covariant along \(U\); reading is contravariant:
+\[
+                    U^*q=q\circ U,\qquad
+                    (U\circ Z)^*q=Z^*(U^*q).
+\]
+Stable accepted and rejected slices preserve within-slice order and lose cross-slice interleaving unless ledger
+positions are retained.
+
+A Cauchy assertion requires independent mathematical data.  On a declared metric space \((X,d)\), it is
+\[
+ \forall\varepsilon>0\ \exists M\ \forall m,n\ge M,\qquad d(x_m,x_n)<\varepsilon.
+\]
+A modulus gives a rule \(M(\varepsilon)\).  The local and step capabilities contain no metric or modulus, and their
+default recurrences do not establish this quantified statement.
+
+\paragraph{Worked example 2: fixed update (external metric experiment).}
+Outside the capability grammar, declare \(X=\{3\}\), \(U(3)=3\), and the discrete metric.  With \(N=4\), the finite
+trace is
+\[
+                          [3,3,3,3,3].
+\]
+All four transition pairs check.  The separately declared rule and metric also justify the Cauchy assertion, because
+all pairwise distances vanish.  The justification comes from those external premises, not from a named endpoint.
+
+\paragraph{Worked example 3: alternating update (external metric experiment).}
+Declare \(X=\{-1,1\}\), \(U(-1)=1\), \(U(1)=-1\), ordinary distance, and \(N=6\).  The exact trace is
+\[
+                         [-1,1,-1,1,-1,1,-1].
+\]
+For \(\varepsilon=1\), values arbitrarily far along the infinite-tail rule remain distance \(2\) apart.  This supplies
+a counterexample to the Cauchy assertion while preserving a valid finite update trace.
+
+\paragraph{Worked example 4: first tolerance hit (external numerical experiment).}
+Declare \(x_0=1\), \(U(x)=x/2\), alleged endpoint \(a=0\), ordinary distance, and
+\(\varepsilon=1/8\).  Four transitions give
+\[
+                    [1,\tfrac12,\tfrac14,\tfrac18,\tfrac1{16}].
+\]
+The question \(q_\varepsilon(x)=[d(x,a)\le\varepsilon]\) first answers yes at ledger position three, producing
+\[
+ R_\varepsilon=[1,\tfrac12,\tfrac14],\qquad
+ A_\varepsilon=[\tfrac18,\tfrac1{16}].
+\]
+This demonstrates a first hit in the finite trace.  Persistence requires an additional invariant; the stopping question
+alone does not certify the unread infinite tail.
+
+Finite descriptions provide a separate computation-side resonance.  Fix a declared prefix-free machine \(M\).  Its
+description complexity is
+\[
+                 K_M(x)=\min\{|p|:M(p)=x\},
+\]
+when at least one halting description \(p\) produces \(x\).  The value depends on the chosen machine and encoding.
+Chaitin's results connect such measures with algorithmic complexity and irreducibility~\cite{chaitin1974}; they do not
+turn every short update into an uncomputability result.
+
+\paragraph{Worked example 5: description budget and displayed storage (external accounting model).}
+Assume a fixed-width display in which the update description occupies \(h\) symbols and each recorded value occupies
+exactly \(b\) symbols.  Displaying an \(N\)-transition trace then uses
+\[
+                           h+(N+1)b
+\]
+symbols before receipts and formatting overhead.  This is an accounting formula under the fixed-width assumptions,
+not a universal lower bound and not a value of \(K_M\).  A compact update may coexist with a long displayed trace.
+
+The action ledger is exact.  The local and step capabilities, their stored records, and the default \(W,U\)
+recurrences are \emph{posited}.  The two tail resets, ignored current piece, ignored stored local process, use of the
+external dependency, finite traces, output-fiber equality, and
+checked slices are \emph{demonstrated}.  Questions are \emph{read} contravariantly through forward updates.  A Cauchy
+property, modulus, persistent enclosure, mathematical endpoint, physical steady state, or algorithmic-complexity claim
+remains \emph{reserved} until its additional premises are supplied.  The capabilities update finite records; their
+names do not certify an infinite tail.
+
+\section{A finite trace is not an infinite object}
+
+A finite run and a request without a preset bound are different grammatical forms:
+\[
+\begin{array}{rcl}
+\textit{finite-run}&::=&\operatorname{run}(U,x_0,N),\\
+\textit{open-request}&::=&\operatorname{continue}(U,x_0,\textit{stop-question}),\\
+\textit{trace}&::=&[x_0,x_1,\ldots,x_k],\qquad x_{j+1}=U(x_j).
+\end{array}
+\]
+The first supplies a transition budget \(N\).  The second supplies a stopping question but no advance claim that the
+question will ever answer yes.  Neither grammar stores an infinite object.  Words such as iterative, infinite, or
+unbounded can name capabilities or intentions; they do not establish termination, nontermination, distinctness, or
+coverage.
+
+For a budgeted run, apply \(U\) for \(j=0,\ldots,N-1\).  The certificate contains the origin, budget, all transition
+pairs, the \(N+1\) recorded values, retained receipts, declared erasures, and stop reason.  It certifies exactly the
+visited prefix.  Construction carries states forward through \(U\).  A question \(q\) about a state is read
+contravariantly:
+\[
+                 U^*q=q\circ U,\qquad
+                 (U\circ V)^*q=V^*(U^*q).
+\]
+A slice may separate first occurrences from repeated occurrences, accepted from rejected states, or positions before
+and after a detected collision.  Stable slicing preserves within-slice traversal order and loses interleaving unless
+indices remain attached.
+
+Pigeonhole reasoning must be scoped.  If a finite set \(X\) has \(m\) states, any list of \(m+1\) states contains a
+collision.  That statement alone proves only
+\[
+                    \exists\,i<j\le m,\qquad x_i=x_j.
+\]
+It says nothing about how the list was generated.  To infer an eventual periodic orbit, one additionally needs a
+single deterministic, time-independent update satisfying \(x_{k+1}=U(x_k)\).  Then equality at \(i<j\) implies by
+induction
+\[
+                    x_{i+t}=x_{j+t}\qquad(t\ge0),
+\]
+so the orbit is periodic from \(i\) with candidate period \(\lambda=j-i\).  Calling \(i\) the least preperiod
+\(\mu\), or \(\lambda\) the least period, additionally requires first-repeat and minimality checks.  Collision plus
+transition compatibility earns a periodic tail; collision alone does not.
+
+\paragraph{Worked example 1: collision without dynamics (computation).}
+Take the finite list
+\[
+                         [\mathtt a,\mathtt b,\mathtt a,\mathtt c].
+\]
+Pigeonhole identifies the repeated \(\mathtt a\).  No update rule is declared, so there is no licensed next state after
+either occurrence and no cycle certificate.  Calling the list an orbit would add a premise not present in the data.
+
+\paragraph{Worked example 1b: projected collision is not state collision (computation).}
+Let \(S=\{\mathtt a,\mathtt b,\mathtt c\}\), with
+\[
+ U(\mathtt a)=\mathtt b,\qquad U(\mathtt b)=\mathtt c,\qquad U(\mathtt c)=\mathtt c,
+\]
+and observation projection
+\[
+ \pi(\mathtt a)=0,\qquad\pi(\mathtt b)=0,\qquad\pi(\mathtt c)=1.
+\]
+The first two observations collide even though \(\mathtt a\ne\mathtt b\); their successors also project differently.
+Thus a projection collision proves neither state equality nor a cycle, and it does not select which underlying states
+should be identified.  For \(m\) observed values in an alphabet of size \(r<m\), finite pigeonhole reasoning proves
+only
+\[
+                 \exists\,i<j<m,\qquad \pi(x_i)=\pi(x_j).
+\]
+The projection carries observations forward.  A question \(q\) on the readout alphabet is read contravariantly:
+\[
+                            \pi^*q=q\circ\pi.
+\]
+Forward observation and pulled-back reading do not upgrade equality of readouts to equality of states.
+
+A visited-map detector makes the missing premise explicit.  Initialize a finite map
+\(H[x_0]=0\).  For \(j=1,\ldots,N\), compute \(x_j=U(x_{j-1})\).  If \(x_j\notin H\), store \(H[x_j]=j\).  If
+\(x_j\in H\), return
+\[
+                  \mu=H[x_j],\qquad\lambda=j-\mu,
+\]
+together with the two equal states and all transitions between them.  Stop with \textsc{cycle}, \textsc{budget}, or
+\textsc{resolver-domain}.  This requires decidable state equality and a declared deterministic update.
+
+\paragraph{Worked example 2: visited-map cycle certificate (computation).}
+Let \(U\) act on \(\{0,1,2,3,4\}\) by
+\[
+             U(0)=1,\quad U(1)=2,\quad U(2)=3,\quad U(3)=2,\quad U(4)=4.
+\]
+From \(x_0=0\), the detector records
+\[
+                         [0,1,2,3,2]
+\]
+and stops at \(j=4\), because state \(2\) first appeared at index \(2\).  It returns
+\[
+                         \mu=2,\qquad\lambda=2.
+\]
+The transition pairs \(2\mapsto3\mapsto2\), together with determinism, certify the repeating tail
+\(2,3,2,3,\ldots\).  State \(4\) is irrelevant to this orbit; a cycle certificate is not coverage of the state set.
+
+Floyd's detector trades stored history for additional updates.  Set the tortoise to \(U(x_0)\) and the hare to
+\(U(U(x_0))\).  Repeatedly update the tortoise once and the hare twice until they meet or a transition budget is
+exhausted.  A meeting is a collision under the same deterministic update.  Separate finite passes then recover
+\(\mu\) and \(\lambda\).  Its certificate must record every evaluated transition, the meeting state, budgets for all
+passes, and the recovered cycle parameters.  Without decidable equality or total updates on the visited states, the
+method has no licensed comparison.
+
+\paragraph{Worked example 3: Floyd detection on a finite orbit (computation).}
+For the update in the previous example and origin \(0\),
+\[
+\begin{array}{c|cc}
+\text{round}&0&1\\ \hline
+\text{tortoise}&1&2\\
+\text{hare}&2&2
+\end{array}
+\]
+so the first meeting is at round one.  A subsequent entry-point pass recovers \(\mu=2\), and a lap from state \(2\)
+recovers \(\lambda=2\).  The arithmetic agrees with the visited-map
+result, but the algorithms have different traces and storage costs.  Agreement of \((\mu,\lambda)\) does not identify
+the methods.
+
+\paragraph{Worked example 4: budget exhaustion is inconclusive (computation).}
+Let \(U(n)=n+1\) on nonnegative integer records, origin \(0\), and \(N=5\).  The certificate is
+\[
+                         [0,1,2,3,4,5],\qquad\textsc{budget}.
+\]
+No collision appears in the prefix.  This proves only six distinct visited values.  It proves neither that a later
+collision occurs nor that the run continues forever.  The open request and the finite certificate must remain
+separate.
+
+Turing's halting result concerns a precisely encoded universal decision problem: no single algorithm decides for
+every encoded machine and input whether that machine halts~\cite{turing1936}.  It does not imply that a particular
+finite run lacks a termination certificate, and a budget stop is not evidence of undecidability.  Conversely, a local cycle
+certificate settles the behavior of that declared deterministic orbit without solving the universal problem.
+
+Shannon supplies a probability fence.  Information calculations require a declared finite alphabet and readout map;
+empirical frequencies in one finite trace are estimates, not automatically source probabilities.  Entropy needs a
+probability distribution, while capacity additionally needs a channel law and an optimization domain
+\cite{shannon1948}.  Repetition introduced by an encoding or deterministic update is not, by itself, a stochastic
+process.
+
+Chaitin supplies a second computation-side fence.  Fix a declared prefix-free machine \(M\) and define
+\[
+                         K_M(x)=\min\{|p|:M(p)=x\}.
+\]
+The value depends on \(M\) up to the usual machine-dependent additive constants, and claims about algorithmic
+randomness require an infinite bit specification and the relevant complexity bounds~\cite{chaitin1974}.  A finite
+trace, a repeated state, or a capability labeled infinite supplies none of those assumptions.  No uncomputability or
+randomness conclusion follows from naming alone.
+
+\paragraph{Worked example 5: finite trace storage (external accounting model).}
+Under a fixed-width display with \(b\) symbols per state and \(h\) symbols for the update description, an
+\(N\)-transition trace occupies
+\[
+                          h+(N+1)b
+\]
+symbols before receipts, indices, and formatting.  This is a conditional storage calculation, not a universal lower
+bound and not \(K_M\).  A cycle certificate may compress future description to \((\mu,\lambda)\) plus one period, but
+that compression is licensed only after the cycle has been demonstrated.
+
+\paragraph{Descent experiment: relabeling is not refinement.}
+The finite indexing experiment begins with a catalog \(X=\mathsf{Ledger}(\mathsf{Book})\), where every book stores an event identifier and a finite tag list.
+For a supplied function \(f:\mathbb N\to\mathbb N\), the transform
+\[
+ T_f:X\longrightarrow X
+\]
+maps \(f\) over event identifiers while leaving each tag list and the ledger shape unchanged.
+A different transform \(R_b:X\to X\) prepends a supplied new book \(b\).
+The setup stores a two-book catalog, the shift \(f(n)=n+100\), and one new book, but the exported run ignores \texttt{refineBy} and decides only whether \(T_f\) preserves catalog count.
+The strict increase \(\#R_b(C)=\#C+1\) is an auxiliary theorem used by the canonical top-level claim, not a branch traversed by \texttt{run}.
+The commuting test is \(\#T_f(C)=\#C\); the residual is the changed identifiers, which count deliberately ignores.
+The contrasting test \(\#R_b(C)=\#C+1\) prevents a relabeling from masquerading as a new distinction.
+The finite catalog ceiling does not address human identification or empirical distinguishability.
+
+\paragraph{Descent experiment: equal prefixes do not determine the next record.}
+The Chaitin-labelled experiment uses \(X=\mathsf{List}(\mathsf{HaltRecord})\) and the prefix transform
+\[
+ P_t:X\longrightarrow X,
+ \qquad P_t(L)=\operatorname{take}(t,L).
+\]
+Two consumed ledgers share the same two-record prefix but carry different third records.
+Given any proposed predictor \(p:X\to\mathsf{Option}(\mathsf{HaltRecord})\), the code proves that \(p(P_2(L_A))\) cannot equal both unequal third records, because its inputs are definitionally equal.
+The run itself only decides \(P_t(L_A)=P_t(L_B)\): it returns true at \(t=2\) and false at \(t=3\).
+The trace comprises two bounded prefix traversals and one equality check, so it stops after at most \(t\) list cells; short input is handled by ordinary prefixing, not filled with phantom records.
+The commuting fact is prefix stability under appending a tail before the cut, and the residual is the pair of unequal suffixes erased by \(P_2\).
+No probability source, universal prefix machine, or Kolmogorov bound is present; the Chaitin name warns only against
+inferring these unseen continuations.
+
+\paragraph{Descent experiment: a local halt over a finite candidate pool.}
+The halt experiment deliberately computes a much smaller predicate than universal halting.
+Its domain is \(X=\mathsf{List}(\mathsf{Event})\times\mathsf{List}(\mathsf{Event})\), a history paired with a finite candidate pool, and its codomain is \(Y=\mathsf{Bool}\).
+For an event \(e\), admissibility requires every history event correlated with \(e\) to have index smaller than \(e\)'s index; the transform is
+\[
+ H(L,P)=\operatorname{decide}\bigl(\forall e\in P,\;\neg\operatorname{admissible}(L,e)\bigr).
+\]
+The canonical history contains indices \(5,7\) and the pool contains \(2,4\), all in one correlation class, so the run returns true: every candidate is blocked by ordering.
+An empty history admits any candidate, furnishing the failure case that keeps the no-go conditional on the consumed history.
+The trace is nested finite membership and universal checks, and its stop is exhaustion of the explicit pool; adding a candidate can change the result, so pool exhaustion cannot be read as a theorem about unlisted events.
+The representation test compares the Boolean with the proposition \(\operatorname{halts}(L,P)\); the residual is precisely the unexamined complement outside \(P\).
+Physical time and an executing machine are absent; any Turing resonance must preserve the finite-pool fence.
+
+\paragraph{Descent experiment: decoding detects an inflated coarse record.}
+The Cantor--Gödel--Cohen experiment declares fine records carrying an index, a distinction, and an extra witness coordinate.
+Its transform \(D:\mathsf{FineRecord}\to\mathsf{Record}\) forgets only that witness, and \(D_*:\mathsf{Ledger}(\mathsf{FineRecord})\to\mathsf{Ledger}(\mathsf{Record})\) maps it pointwise.
+Because map preserves list shape, \(\#D_*(F)=\#F\).
+A competing operation \(I_p\) prepends a phantom coarse record \(p\), giving \(\#I_p(F)=\#D_*(F)+1\).
+The canonical run consumes the fine ledger and a candidate coarse ledger and decides count equality; it accepts \(D_*(F)\) and rejects \(I_p(F)\).
+The trace is one finite decode map followed by length comparison and an explicit false result on inflation.
+The commuting test is count preservation through \(D_*\), while the residual is the forgotten witness coordinate; equality of counts does not recover that coordinate and therefore is necessary here, not sufficient for arbitrary semantic recovery.
+No set-theoretic universe, proof encoding, or forcing extension is present; the three-name title denotes only this
+finite no-inflation analogy.
+The action ledger closes the chapter.  The update, origin, equality question, budgets, and stopping policies are
+\emph{posited}.  Finite traces, slices, collisions, transition compatibility, and checked cycle parameters are
+\emph{demonstrated}.  Questions are \emph{read} contravariantly through covariant forward updates.  An infinite object,
+universal termination decision, algorithmic randomness claim, or physical periodic process remains \emph{reserved}
+until its additional premises and provenance are supplied.  A finite trace may certify a cycle; it never becomes an
+infinite object merely by being given an unbounded name.

@@ -1,0 +1,113 @@
+\chapter{The Tower Turns Around}
+
+\section{The backward descent}
+
+The first part built upward. Difference, count, number, representation, residue --- each chapter stacked a new rung on
+the last, and the machine climbed. This part turns the climb around. The measurement the whole instrument is built to
+take is not found by stacking rungs higher and higher forever; it is found by \emph{walking back down} the tower the
+machine has built, reading each rung on the way down against the rung that built it. The descent is the turn, and the
+turn is where measurement begins.
+
+Read the tower as this gauge reads it: a stack of definitions, each one calling the one below it. The machine built the
+count out of the distinction, the number out of the count, the representation out of the number --- each rung defined by
+appeal to the rung beneath. That upward stack is a recursion, a tower of calls, and a recursion that only climbs never
+returns a value; it must, at some point, \emph{unwind}. To unwind a recursion is to walk back down the stack of calls,
+carrying at each level the result the level below handed up. The backward descent is exactly this unwinding: the machine
+stops building rungs and starts collapsing them, top to bottom, reading what each rung yields as the call returns
+through it.
+
+The reason the descent, and not the climb, is where the reading lives is worth stating plainly, because it inverts the
+naive picture of measurement. One imagines an instrument that measures more finely by building ever taller --- more
+rungs, more resolution, more tower. But a tower under construction has no reading; it is all promise, a stack of calls
+none of which has returned. The reading appears only when the calls return --- when the machine walks back down and each
+rung hands its value to the rung above. Kleene's~\cite{kleene1952} account of recursion makes the structure formal: a
+recursive definition is meaningless until it bottoms out and the values propagate back up. This machine's measurement is
+that propagation, read on the way down. To measure is to unwind, not to climb.
+
+In the two verbs the descent inverts the order the climb used. Going up, each rung \emph{tanged} finer --- the count
+split from the distinction, the number from the count, each new rung telling itself apart from the one below. Coming
+down, each rung \emph{funges} --- pools what the lower rung returned into what the higher rung makes of it, gathering the
+descent's results as they propagate. The climb was a sequence of tanges, distinctions built one atop another; the
+descent is a sequence of funges, the returned values pooled back together rung by rung. The machine built by telling
+apart and reads by gathering back --- and the turn from one to the other is the whole subject of this part.
+
+\section{The seam}
+
+The machine does not run its descent once and stop. It runs a pass --- climbs, turns, walks down --- and then it runs
+another, and the whole of what the instrument computes is many such passes laid end to end. Between any two passes is a
+join, and this section is about that join, because the join is not a gap the machine papers over. It is a built object
+with a grammar of its own, and it is exactly where the residue lives. The seam is where one pass hands the next what it
+has earned, and where the machine is \emph{billed} for the turn.
+
+Watch what crosses the seam. A pass that has run to its close leaves a residue --- not its whole state, but the part the
+next pass is entitled to stand on. The machine rebuilds every faculty of the next pass from that residue rather than
+from a fresh seed: the deciding power, the counting power, the representation, each re-instantiated at the seam from what
+the last pass returned. This is the discipline that makes the passes one machine rather than a heap of unrelated runs.
+Nothing crosses the seam except through the residue, and the residue is exactly what a completed pass has certified; so
+the next pass begins not on an assumption but on an earned inheritance. Pass $n$ seeds pass $n+1$, and the seed is the
+residue --- the very leftover the last chapter resolved to carry.
+
+The seam has an etiquette, and it is not decoration: it is a grammar that decides, field by field, what crosses and how.
+Some readings tighten across the join --- what one pass established is carried forward conjoined with what the next
+establishes, so the invariant can only grow stricter, never looser. Some readings re-mint --- the interpretive frame,
+the labels a pass chose to narrate itself with, are not carried but struck fresh on the far side, because they were the
+pass's own to set and the next pass has its own. And some reset --- whatever operation a pass was mid-way through is not
+smuggled across; the next pass begins its operations from rest. The seam sorts the machine's readings into what the
+world fixes and what the machine brings, and it carries the first across and re-mints the second. The residue rides the
+first band: it is a fact the pass certified, and so it tightens across the join rather than being struck fresh.
+
+And here is the fact this section exists to plant: the machine is \emph{billed the turns}. Crossing the seam is not
+free. Each pass costs the machine something to run, and each join costs it something to make; the tally of passes is a
+running count the seam increments by one each time it closes. That count --- the number of times the machine has gone
+around --- is a quantity in its own right, and a later chapter will read it as one of the residue's faces. For now the
+point is only that the turns are counted and charged. The machine does not get its descent for nothing; it pays, in
+passes, and the passes are tallied at the seam. The bill is the count of turns, and the machine keeps it honestly, the
+way it keeps every residue.
+
+In the two verbs the seam is where a funge closes and hands its result to the next tange. Each pass funges its descent
+into a residue --- pools everything the walk down established into the one leftover it certifies --- and the seam hands
+that funged residue across to seed the next pass, which will tange it apart again on its own climb. The join is the hinge
+between the two verbs: a completed funge on the near side, a fresh tange on the far side, and the residue the one thing
+that crosses. The machine is billed exactly at this hinge, one turn per crossing, because the crossing is where a pass's
+work is spent and the next pass's work begins.
+
+\section{What came back changed}
+
+The last two sections turned the tower around and strung the passes together at the seam. This one names what the turn
+is \emph{for} --- what question the descent is built to answer. And the answer reframes measurement itself. To measure,
+in this machine, is not to build the tower ever higher. It is to close a loop --- climb, turn, descend, cross the seam
+--- and then ask a single question of what returns: \emph{what came back changed?} The reading is not in the tower. It
+is in the difference between what the machine sent around the loop and what the loop handed back.
+
+Recall the first loop, chapters ago, where a number was sent around the machine's encoding and came back itself. That
+was the trivial case, the loop that closes clean, and its answer to \emph{what came back changed} was \emph{nothing}.
+The descent is the same test run on the whole tower rather than on a single encoding: send the machine's state around a
+full pass and compare what returns to what set out. When the loop closes clean, nothing changed, and there is no reading
+--- the pass was faithful and silent. When the loop does \emph{not} close clean, something survives the pass altered,
+and that alteration is the measurement. The residue at the seam is exactly this: the part of the state that came back
+changed, the difference the pass could not carry faithfully. Measurement is reading that difference.
+
+This is why the instrument does not build forever, and the point is central to the whole book's temper. An instrument
+that measured by building taller would never finish; there is always another rung. But an instrument that measures by
+closing loops has a natural place to stop: it stops when the loop closes, when what comes back is what went out, when
+the residue at the seam stops changing from pass to pass. The descent converges --- successive passes leave residues
+that differ less and less --- and the reading is the value that converges to, read as the difference the loop cannot
+close. Richardson~\cite{richardson1961} taught numerical analysts to read a value precisely this way, from how a
+computation changes as it is refined rather than from any single run of it; this machine reads its measurement from how
+its residue changes across passes, and settles when the change falls below what it can resolve.
+
+There is a discipline hidden in ``what came back changed,'' and it is the same discipline the whole book keeps. The
+machine reads only the difference, never the whole. It does not report the state that returned; it reports how that
+state differs from the state that set out --- a residue, a change, a leftover. Everything else, the parts that came back
+the same, it says nothing about, because a part that came back unchanged carries no reading. This is measurement as pure
+difference: tell apart what the loop altered from what it left alone, and report only the altered part. The instrument
+that does this cannot inflate, because it has nothing to inflate with --- it holds only the change, and the change is
+exactly as large as it is.
+
+In the two verbs the closing of the loop is a tange of the returned against the sent. The machine tanges what came back
+against what went out --- decides them same or different --- and reports the difference, the part that decided
+\emph{not-same}, as the reading. What decided \emph{same} it funges away, pooling the unchanged returned state with the
+state that set out, exactly as the first loop funged a faithful round-trip into one number. So the descent's reading is
+a tange riding on a funge: pool everything that came back unchanged, and read off, as the measurement, the one thing that
+did not. The next chapter takes this altered thing --- the place the loop fails to close --- and watches it become, for
+the first time, a number.

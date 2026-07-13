@@ -1,5 +1,5 @@
 import Experiments.Common
-import Measurement.Episode85
+import Measurement.Apparatus
 
 /-!
 # The Mach-Zehnder Effect — a holonomy-coupled effect test

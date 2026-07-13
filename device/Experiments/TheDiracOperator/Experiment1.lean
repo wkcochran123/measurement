@@ -1,5 +1,5 @@
 import Experiments.Common
-import Measurement.Episode84
+import Measurement.Apparatus
 
 /-!
 # The Dirac Operator — a gauge-covariant first-order generator, modelled finitely
