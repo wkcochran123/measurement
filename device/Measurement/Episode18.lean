@@ -27,6 +27,19 @@ Episode19's class trace is the OTHER tape, never conflate); CERTIFICATES BY
 EXHAUSTION. -/
 
 namespace Measurement
+
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: sensor resolution: two returns can be told apart at the receiver.
+  QUEEN of Math: equivalence separation: the symbols land in distinct classes.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Rayleigh criterion: equivalence separation becomes the receiver resolution limit. -/
 instance (priority := low) DISTINGUISHABLE_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -64,6 +77,18 @@ instance (priority := low) DISTINGUISHABLE_residue
       dec_distinct := b1_after.dec_distinct
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: boundary condition: the return is allowed through the receiver gate.
+  QUEEN of Math: domain restriction: only lawful pairs are admitted to the relation.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Dirichlet rule: domain restriction becomes the boundary gate for the return. -/
 instance (priority := low) ADMISSIBLE_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -103,6 +128,18 @@ instance (priority := low) ADMISSIBLE_residue
       admissible? := fun a b => b2_before.admissible? a b /\ b2_after.admissible? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: pulse timing: the echo train separates into countable bins.
+  QUEEN of Math: enumeration: the objects are indexed by a discrete counting process.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Nyquist theorem: enumeration becomes the sampling rate of the echo train. -/
 instance (priority := low) COUNTABLE_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -143,6 +180,18 @@ instance (priority := low) COUNTABLE_residue
       bounded? := fun a b => b3_before.bounded? a b /\ b3_after.bounded? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: carrier modulation: the wave stores its limit as a coded profile.
+  QUEEN of Math: sequence limit: the code is organized as an indexed approach to a bound.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Fourier rule: sequence limits become modulation on the carrier wave. -/
 instance (priority := low) ENCODED_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -185,6 +234,18 @@ instance (priority := low) ENCODED_residue
       encoding? := fun a b => b4_before.encoding? a b /\ b4_after.encoding? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: standing remainder: the medium keeps the part of the wave that did not cancel.
+  QUEEN of Math: remainder class: the uncancelled term becomes the representative object.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Cauchy residue theorem: the remainder class becomes the standing leftover of the field. -/
 instance (priority := low) RESIDUE_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -226,6 +287,18 @@ instance (priority := low) RESIDUE_residue
       representative? := fun a b => b5_before.representative? a b /\ b5_after.representative? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: threshold crossing: the detector reduces the return to hit or miss.
+  QUEEN of Math: two-valued predicate: the relation collapses to a decidable split.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Heaviside rule: a two-valued predicate becomes the detector threshold. -/
 instance (priority := low) BINARY_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -273,6 +346,18 @@ instance (priority := low) BINARY_residue
     }
 
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: reproducible trial: the same ping can be launched again under the same conditions.
+  QUEEN of Math: idempotent iteration: applying the step again preserves the same form.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): semigroup law: idempotent iteration becomes reproducible experimental procedure. -/
 instance (priority := low) REPEATABLE_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -314,6 +399,18 @@ instance (priority := low) REPEATABLE_residue
       typical_response := fun a b => b7_before.typical_response a b /\ b7_after.typical_response a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: instrument readout: the return becomes a number on the dial.
+  QUEEN of Math: number assignment: the structure is mapped into a numerical carrier.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): dimensional-analysis rule: number assignment becomes an instrument reading with units. -/
 instance (priority := low) NUMERIC_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -355,6 +452,18 @@ instance (priority := low) NUMERIC_residue
       related := fun a b => b8_before.related a b ∧ b8_after.related a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: field model: the physical return can be drawn as a representative curve.
+  QUEEN of Math: choice of representative: an abstract class is given a usable element.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Riesz representation theorem: representative choice becomes a field model on the page. -/
 instance (priority := low) REPRESENTABLE_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -405,6 +514,18 @@ instance (priority := low) REPRESENTABLE_residue
       representable? := fun _ _ => ⟨residue_state, rfl⟩
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: apparatus reading: the card is the instrument, not the theory of the instrument.
+  QUEEN of Math: model interpretation: the formal object is read as an apparatus state.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): correspondence principle: model interpretation becomes apparatus behavior. -/
 instance (priority := low) PHYSICAL_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -448,6 +569,18 @@ instance (priority := low) PHYSICAL_residue
       admissible? := fun _ _ _ => rfl
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: calibration comparison: before and after traces can be laid on the same scale.
+  QUEEN of Math: ordered comparison: two readings are placed in the same relation.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): calibration law: ordered comparison becomes before-after alignment on one scale. -/
 instance (priority := low) COMPARABLE_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -491,6 +624,18 @@ instance (priority := low) COMPARABLE_residue
       smaller_than := fun m1 m2 => m1 = m2
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: detector event: the apparatus registers a return in the world.
+  QUEEN of Math: evaluation map: the abstract process is sampled at an observable point.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Born rule: evaluation becomes the registered event of observation. -/
 instance (priority := low) OBSERVED_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -535,6 +680,18 @@ instance (priority := low) OBSERVED_residue
       possible := fun a b => b12_before.possible a b /\ b12_after.possible a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: arrival time: the echo is here now, not merely predicted upstream.
+  QUEEN of Math: existence in context: the object is witnessed inside the current frame.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): existence theorem: contextual witnessing becomes arrival in the present frame. -/
 instance (priority := low) PRESENT_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -577,6 +734,18 @@ instance (priority := low) PRESENT_residue
       present := fun a b => b13_before.present a b /\ b13_after.present a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: meter coupling: the returned wave can move the needle.
+  QUEEN of Math: sigma-algebra gesture: the object is admitted as a measurable set of readings.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Caratheodory rule: measurable sets become the readings the meter may legally collect. -/
 instance (priority := low) MEASURABLE_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -619,6 +788,18 @@ instance (priority := low) MEASURABLE_residue
       observed := fun a b => b14_before.observed a b /\ b14_after.observed a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: medium translation: the wave changes dialect while crossing the material.
+  QUEEN of Math: change of coordinates: the same structure is translated through another language.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): change-of-coordinates theorem: formal translation becomes a wave crossing media. -/
 instance (priority := low) GUNGAN_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -661,6 +842,18 @@ instance (priority := low) GUNGAN_residue
       correllant? := fun a b => b15_before.correllant? a b /\ b15_after.correllant? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: emitter location: the return still points back toward a launch site.
+  QUEEN of Math: preimage selection: the output is assigned a formal origin.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Green function rule: preimage selection becomes reconstruction of the emitter. -/
 instance (priority := low) SOURCE_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -704,6 +897,18 @@ instance (priority := low) SOURCE_residue
       one := cdp.tick cdp.zero
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: fired pulse: the experiment has happened, not merely been specified.
+  QUEEN of Math: function application: the specified map is actually applied.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): least-action rule: function application becomes the fired physical experiment. -/
 instance (priority := low) EXECUTED_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -749,6 +954,18 @@ instance (priority := low) EXECUTED_residue
       output? := fun a b => b17_before.output? a b /\ b17_after.output? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: measured quantity: the apparatus assigns the return a physical value.
+  QUEEN of Math: codomain element: the computation lands in a value object.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): evaluation theorem: codomain landing becomes the measured physical quantity. -/
 instance (priority := low) VALUE_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -794,6 +1011,18 @@ instance (priority := low) VALUE_residue
       lt? := fun a b => b18_before.lt? a b /\ b18_after.lt? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: amplitude: the return has size before it has interpretation.
+  QUEEN of Math: norm: the value is collapsed to size.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): norm law: value collapse becomes amplitude of the return. -/
 instance (priority := low) MAGNITUDE_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -838,6 +1067,18 @@ instance (priority := low) MAGNITUDE_residue
       whelmed? := fun a b => b19_before.whelmed? a b /\ b19_after.whelmed? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: unit scale: the amplitude is placed against a chosen calibration ruler.
+  QUEEN of Math: normalization: the size is expressed relative to a chosen unit.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Buckingham Pi theorem: normalization becomes unit scale and dimensionless comparison. -/
 instance (priority := low) SCALED_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -883,6 +1124,18 @@ instance (priority := low) SCALED_residue
       orthogonal? := fun a b => b20_before.orthogonal? a b /\ b20_after.orthogonal? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: mechanical load: the receiver feels the return as stress on the system.
+  QUEEN of Math: weighted term: the normalized object carries a coefficient.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Hooke law: weighted terms become mechanical stress on the receiver. -/
 instance (priority := low) LOAD_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -928,6 +1181,18 @@ instance (priority := low) LOAD_residue
       decoded? := fun a b => b21_before.decoded? a b /\ b21_after.decoded? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: finite-element mesh: the tunnel is replaced by small local bodies.
+  QUEEN of Math: finite discretization: the continuum is replaced by local approximants.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Galerkin theorem: finite discretization becomes the tunnel broken into local bodies. -/
 instance (priority := low) FINITE_ELEPHANT_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -972,6 +1237,18 @@ instance (priority := low) FINITE_ELEPHANT_residue
       finite? := fun a b => b22_before.finite? a b /\ b22_after.finite? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: noise floor: the instrument reports chatter that still has to be classified.
+  QUEEN of Math: uncontrolled term: the proof names the error it cannot yet simplify.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Chebyshev bound: the uncontrolled term becomes classified noise floor. -/
 instance (priority := low) BULLSHIT_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1017,6 +1294,18 @@ instance (priority := low) BULLSHIT_residue
       interpolate? := fun a b => b23_before.interpolate? a b /\ b23_after.interpolate? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: broadcast field: the same return is made public as a preferred reading.
+  QUEEN of Math: preferred presentation: one equivalent form is promoted as canonical.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): gauge-fixing rule: preferred presentation becomes the public broadcast field. -/
 instance (priority := low) PROPAGANDA_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1061,6 +1350,18 @@ instance (priority := low) PROPAGANDA_residue
       }
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: trained operator: the human hand repeats the instrument doctrine.
+  QUEEN of Math: operator convention: the same transformation is repeated by rule.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): operator algebra rule: repeated convention becomes trained instrument handling. -/
 instance (priority := low) ACOLYTE_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1105,6 +1406,18 @@ instance (priority := low) ACOLYTE_residue
       }
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: experimental protocol: the reading is disciplined into a method.
+  QUEEN of Math: method schema: observations are arranged into a reproducible proof pattern.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): likelihood principle: method schema becomes reproducible experimental protocol. -/
 instance (priority := low) SCIENTIFIC_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1154,6 +1467,18 @@ instance (priority := low) SCIENTIFIC_residue
       predictable? := fun a b => b26_before.predictable? a b /\ b26_after.predictable? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: empirical claim: the apparatus dares to call the registered return true.
+  QUEEN of Math: proposition: the statement is assigned a truth-bearing form.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): soundness theorem: propositions become empirical claims the apparatus may assert. -/
 instance (priority := low) TRUTH_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1200,6 +1525,18 @@ instance (priority := low) TRUTH_residue
       martyred? := fun a b => b27_before.martyred? a b /\ b27_after.martyred? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: witnessed event: the measurement is attached to an observer.
+  QUEEN of Math: existential witness: the claim carries an explicit example.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): existence rule: the witness becomes the observer attached to the event. -/
 instance (priority := low) WITNESSED_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1248,6 +1585,18 @@ instance (priority := low) WITNESSED_residue
       risen? := fun a b => b28_before.risen? a b /\ b28_after.risen? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: real channel: the trace is treated as a world signal, not a display artifact.
+  QUEEN of Math: real-valued interpretation: the witness is embedded in a real channel.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): realization theorem: real-valued interpretation becomes a world channel. -/
 instance (priority := low) REAL_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1297,6 +1646,18 @@ instance (priority := low) REAL_residue
       metaphysical? := fun a b => b29_before.metaphysical? a b /\ b29_after.metaphysical? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: local frame: the reading is valid in the receiver neighborhood.
+  QUEEN of Math: localization: the theorem holds after restricting to a neighborhood.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): localization theorem: neighborhood restriction becomes the valid local frame. -/
 instance (priority := low) LOCAL_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1345,6 +1706,18 @@ instance (priority := low) LOCAL_residue
       delta := b29_slip.metaphysical? b29_slip.universal_observer.reality b29_slip.current_status
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: universal law: the local return is promoted into a rule for every receiver.
+  QUEEN of Math: generalization: the local form is quantified over the whole carrier.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Noether theorem: generalization becomes a law that survives every receiver frame. -/
 instance (priority := low) UNIVERSAL_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1396,6 +1769,18 @@ instance (priority := low) UNIVERSAL_residue
       compiled_program := calculus.photon_torpedo (.white_hole ledger Value (.einstein ledger))
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: causal order: the trace is forced into before, after, and therefore.
+  QUEEN of Math: implication order: the proof arranges dependencies into a formal chain.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): partial-order rule: implication order becomes causal order in the trace. -/
 instance (priority := low) LOGICAL_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1448,6 +1833,18 @@ instance (priority := low) LOGICAL_residue
       ekg := b32_after.ekg
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: settled apparatus: the oscillation has stopped enough to be read.
+  QUEEN of Math: fixed point: the iteration reaches a stable proof state.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): fixed-point theorem: proof stability becomes settled apparatus motion. -/
 instance (priority := low) HALTED_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1511,6 +1908,18 @@ instance (priority := low) HALTED_residue
     }
 
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: completed measurement: the instrument, witness, and scale agree on a reading.
+  QUEEN of Math: measure assignment: the structure receives a recorded value under the chosen measure.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Radon-Nikodym theorem: measure assignment becomes a recorded reading against a scale. -/
 instance (priority := low) MEASURED_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1595,6 +2004,18 @@ instance (priority := low) MEASURED_residue
       bounded? := fun a b => b34_before.bounded? a b ∧ b34_after.bounded? a b
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: built instrument: the physical setup has been assembled into a usable device.
+  QUEEN of Math: normal form: the construction is reduced to a reusable artifact.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): normal-form theorem: reduction becomes a built instrument ready for use. -/
 instance (priority := low) COMPILED_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1659,6 +2080,18 @@ instance (priority := low) COMPILED_residue
 
 
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: truth pulse: the receiver emits the one return it is allowed to call output.
+  QUEEN of Math: theorem output: the normalized artifact emits the claimed result.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): conservation law: theorem output becomes the one pulse allowed to leave the receiver. -/
 instance (priority := low) TrueOutput_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1724,6 +2157,18 @@ instance (priority := low) TrueOutput_residue
       output_true := by trivial
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: inferred source: the hidden cause is reconstructed from the measured return.
+  QUEEN of Math: deduction: the missing premise is reconstructed from the available conclusion.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Bayes rule: deduction becomes source inference from the measured return. -/
 noncomputable instance (priority := low) INFERRED_residue
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1789,6 +2234,18 @@ noncomputable instance (priority := low) INFERRED_residue
                           (the_process.close? b36_slip.output (b36_slip.atreyu_process.satirize b36_slip.output))
     }
 
+/- THE TRICK! Revealed.
+Three cards lie on the table:
+  ACE of Physics: charged count: the loop number is treated as accumulated physical charge.
+  QUEEN of Math: indexed theorem: the proof output is paired with its iteration number.
+  JOKER: just computation.
+If the reader points to ACE, John turns over QUEEN and JOKER and gives the
+computation of the representation. If the reader points to QUEEN, John turns
+over ACE and JOKER and gives the computation of the value. If the reader points
+to JOKER, John turns over ACE and QUEEN and gives the representative
+intuition that makes the physics look mathematical.
+The pointed card is never the answer. It is the missing card that lets the other
+two look like an explanation. Expressive theorem (ACE/QUEEN comparison): Gauss law: the indexed theorem becomes accumulated charge around the loop. -/
 noncomputable instance (priority := low) TrueOutput_number
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)

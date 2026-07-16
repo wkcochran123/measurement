@@ -10,11 +10,18 @@ namespace Measurement
 class TRACED (Value: Type i) (Carrier: CarrierProcess Value) (rung: Nat) where
   tape : CompilerTape
 
+/- We thank the reviewer for asking where the trace begins before any rebuttal
+   can be published. This seam closes the custody gap: the incoming tape is
+   admitted unchanged, so every later response has a record to answer against. -/
 instance (priority := low) TRACED_seam
     (Value: Type i) (Carrier: CarrierProcess Value)
     (trace_in: CompilerTape)
     : TRACED Value Carrier 36 := { tape := trace_in }
 
+/- We thank the reviewer for noticing that a final output can look conclusive
+   without showing what it answered. This cell closes the verdict gap by tying
+   the announced result back to the first slipped distinguishable fact carried
+   by the review packet. -/
 instance (priority := low) TRACED_TrueOutput
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -70,6 +77,10 @@ instance (priority := low) TRACED_TrueOutput
     : TRACED Value PropCarrier 35 :=
     { tape := .strap ledger b1_slip.fact Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking whether compilation is evidence or only a
+   celebratory filename. This cell closes the artifact gap by extracting the
+   fact from both object files and making the constructed/slipped difference
+   publishable. -/
 instance (priority := low) TRACED_COMPILED
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -134,6 +145,10 @@ instance (priority := low) TRACED_COMPILED
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
 
+/- We thank the reviewer for pointing out that a halt claim is not the same as
+   a checked path through the run band. This cell closes the stopping-condition
+   gap by recording source against compiled path as plain data, outside the
+   poisoned instance wrappers. -/
 instance (priority := low) TRACED_HALTED
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -199,6 +214,9 @@ instance (priority := low) TRACED_HALTED
       | .blackhole _ _ _ => PropCarrier.symbol
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for catching the place where logic would otherwise
+   sneak in as authority instead of evidence. This cell closes the logical rung
+   gap by marking that the content crossed only as ground-free trace data. -/
 instance (priority := low) TRACED_LOGICAL
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -255,6 +273,9 @@ instance (priority := low) TRACED_LOGICAL
     -- presence-cell: the poisoned rung's content crossed as ground-free data; the trace records its place.
     { tape := .strap PropCarrier.symbol PropCarrier.symbol Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for refusing a universal claim with no admissible local
+   witness. This cell closes the universality gap by recording the rung as a
+   presence cell, not as a new global proof smuggled into the trace. -/
 instance (priority := low) TRACED_UNIVERSAL
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -311,6 +332,10 @@ instance (priority := low) TRACED_UNIVERSAL
     -- presence-cell: the poisoned rung's content crossed as ground-free data; the trace records its place.
     { tape := .strap PropCarrier.symbol PropCarrier.symbol Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking how measurement survives when projection
+   re-synthesizes the tower on the wrong side. This cell closes the velocity
+   gap by carrying the before fact as data and comparing it with the slipped
+   measured path. -/
 instance (priority := low) TRACED_MEASURED
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -374,6 +399,9 @@ instance (priority := low) TRACED_MEASURED
       | .speed f _ _ _ _ _ _ _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for distinguishing a real status from a declaration
+   that reality has been achieved. This cell closes the ledger gap by extracting
+   the fact only when the status reaches the recorded ledger branch. -/
 instance (priority := low) TRACED_REAL
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -443,6 +471,9 @@ instance (priority := low) TRACED_REAL
           | .ledger _ f _ => f))
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking what was actually witnessed, rather than
+   accepting the title of the witness. This cell closes the testimony gap by
+   lowering witness structure to the ledger fact it can honestly expose. -/
 instance (priority := low) TRACED_WITNESSED
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -509,6 +540,10 @@ instance (priority := low) TRACED_WITNESSED
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
 
+/- We thank the reviewer for requiring the scientific invariant to carry a
+   checkable remainder. This cell closes the theory gap by refusing hypothesis
+   and repeatability as enough, then recording the fact only at the theory
+   branch. -/
 instance (priority := low) TRACED_SCIENTIFIC
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -573,6 +608,9 @@ instance (priority := low) TRACED_SCIENTIFIC
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
 
+/- We thank the reviewer for asking whether persuasion has been separated from
+   evidence. This cell closes the propaganda gap by preserving the rung's place
+   as trace presence only, with no argumentative fact granted for the slogan. -/
 instance (priority := low) TRACED_PROPAGANDA
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -633,6 +671,10 @@ instance (priority := low) TRACED_PROPAGANDA
 
 
 
+/- We thank the reviewer for objecting that truth cannot be cited by name while
+   its knowledge path remains hidden. This cell closes the knowledge gap by
+   carrying the before fact as data and comparing it with the slipped ledger of
+   the scientific process. -/
 instance (priority := low) TRACED_TRUTH
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -695,6 +737,9 @@ instance (priority := low) TRACED_TRUTH
       | .ledger _ f _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking whether devotion to the method has been
+   mistaken for a method. This cell closes the sacred-text gap by lowering the
+   acolyte rung to the triangle fact that can be compared. -/
 instance (priority := low) TRACED_ACOLYTE
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -758,6 +803,9 @@ instance (priority := low) TRACED_ACOLYTE
       | .triangles _ _ f _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for noting that a smooth story may only be interpolation
+   wearing a lab coat. This cell closes the spline gap by accepting the slipped
+   fact only when the arm-wave process reaches its interpolant. -/
 instance (priority := low) TRACED_BULLSHIT
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -821,6 +869,9 @@ instance (priority := low) TRACED_BULLSHIT
       | .interpolant f _ _ _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking whether finiteness is a boundary condition
+   or a decorative animal in the theorem name. This cell closes the polynomial
+   gap by recording the finite expansion only at the fact-bearing branches. -/
 instance (priority := low) TRACED_FINITE_ELEPHANT
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -884,6 +935,9 @@ instance (priority := low) TRACED_FINITE_ELEPHANT
       | .factor f _ _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for noticing that a load has to land in a basis before
+   it can be compared. This cell closes the span gap by tracing the null-space
+   or basis fact against the slipped operation. -/
 instance (priority := low) TRACED_LOAD
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -947,6 +1001,9 @@ instance (priority := low) TRACED_LOAD
       | .basis f _ _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for requiring scale to show its multiplication, not
+   merely its unit. This cell closes the product gap by comparing the before
+   product fact with the slipped multiplication process. -/
 instance (priority := low) TRACED_SCALED
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1010,6 +1067,9 @@ instance (priority := low) TRACED_SCALED
       | .mul f _ _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking where magnitude becomes additive evidence.
+   This cell closes the sum gap by refusing zero as a sufficient publication
+   claim and tracing the add branch where the fact appears. -/
 instance (priority := low) TRACED_MAGNITUDE
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1072,6 +1132,9 @@ instance (priority := low) TRACED_MAGNITUDE
       | .add f _ _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for distinguishing a value from the process that
+   produced it. This cell closes the monadic gap by comparing the before and
+   slipped facts across satire, compilation, and execution branches. -/
 instance (priority := low) TRACED_VALUE
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1135,6 +1198,9 @@ instance (priority := low) TRACED_VALUE
       | .execute f _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking whether execution contains an opcode record
+   or only a performed gesture. This cell closes the encoding gap by carrying
+   the before fact as data and tracing the slipped opcode branch. -/
 instance (priority := low) TRACED_EXECUTED
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1198,6 +1264,9 @@ instance (priority := low) TRACED_EXECUTED
       | .one f _ _ _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking which source fact survives transmission
+   through the binary channel. This cell closes the source gap by lowering both
+   source chains to the fact-bearing physics or zero-like cases. -/
 instance (priority := low) TRACED_SOURCE
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1261,6 +1330,9 @@ instance (priority := low) TRACED_SOURCE
       | .one_like _ _ _ => PropCarrier.symbol
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for noticing that the joke class still has to pay its
+   evidentiary bill. This cell closes the concept gap by tracing color, bang, or
+   superposition to the fact each branch can actually report. -/
 instance (priority := low) TRACED_GUNGAN
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1324,6 +1396,9 @@ instance (priority := low) TRACED_GUNGAN
       | .superposition f _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking whether measurability is attached to an
+   observable clock or just asserted. This cell closes the phenomenon gap by
+   comparing the before fact with the slipped gauge process. -/
 instance (priority := low) TRACED_MEASURABLE
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1387,6 +1462,9 @@ instance (priority := low) TRACED_MEASURABLE
       | .observations f _ _ _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking where presence accumulates into a record.
+   This cell closes the area gap by tracing the present rung through the t and
+   dt branches that can carry the fact. -/
 instance (priority := low) TRACED_PRESENT
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1449,6 +1527,9 @@ instance (priority := low) TRACED_PRESENT
       | .dt f _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking whether observation is a projection with a
+   recorded dimension or just a report of seeing. This cell closes the sophism
+   gap by tracing the slipped projection to the fact it can expose. -/
 instance (priority := low) TRACED_OBSERVED
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1511,6 +1592,9 @@ instance (priority := low) TRACED_OBSERVED
       | .dimension f _ _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking what makes comparison more than parallel
+   naming. This cell closes the metavariable gap by carrying the before fact as
+   data and checking the slipped physical value step. -/
 instance (priority := low) TRACED_COMPARABLE
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1573,6 +1657,9 @@ instance (priority := low) TRACED_COMPARABLE
       | .step f _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for requiring the physical claim to show its base
+   fact rather than inherit authority from later rungs. This cell closes the
+   physical-process gap by tracing the slipped process to its exposed fact. -/
 instance (priority := low) TRACED_PHYSICAL
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1634,6 +1721,9 @@ instance (priority := low) TRACED_PHYSICAL
       | .nonhalting f _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking whether representation has a carrier, not
+   only a notation. This cell closes the representative gap by recording the
+   slipped carrier symbol at the end of the representation chain. -/
 instance (priority := low) TRACED_REPRESENTABLE
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1696,6 +1786,9 @@ instance (priority := low) TRACED_REPRESENTABLE
       | .compute f _ _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking where the number actually counts something.
+   This cell closes the numeric gap by tracing the slipped indexing process
+   down to the carrier symbol it numbers. -/
 instance (priority := low) TRACED_NUMERIC
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1757,6 +1850,9 @@ instance (priority := low) TRACED_NUMERIC
       | .data f _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking whether repetition repeats the experiment
+   or merely repeats the sentence. This cell closes the repeatability gap by
+   comparing the before fact with the slipped repeated carrier. -/
 instance (priority := low) TRACED_REPEATABLE
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1819,6 +1915,9 @@ instance (priority := low) TRACED_REPEATABLE
       | .signal_response f _ _ _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking where the binary split is recorded after
+   execution. This cell closes the binary gap by lowering the slipped branch to
+   the carrier fact that can still be read. -/
 instance (priority := low) TRACED_BINARY
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1880,6 +1979,9 @@ instance (priority := low) TRACED_BINARY
       | .signal_response f _ _ _ _ => f
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking whether residue is a limit record or a
+   leftover story. This cell closes the residue gap by tracing the slipped
+   Cauchy process through its index to the carrier symbol. -/
 instance (priority := low) TRACED_RESIDUE
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -1940,6 +2042,9 @@ instance (priority := low) TRACED_RESIDUE
     let slip : Fact := b5_slip.cauchy_process.limit_process.indexing_process.count.carrier.symbol
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking whether encoding preserves a read path
+   back to the mark. This cell closes the encoded-carrier gap by following the
+   slipped limit process to the carrier symbol it depends on. -/
 instance (priority := low) TRACED_ENCODED
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -2000,6 +2105,9 @@ instance (priority := low) TRACED_ENCODED
     let slip : Fact := b4_slip.limit_process.indexing_process.count.carrier.symbol
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking whether countability counts a carrier or
+   only names a class. This cell closes the counting gap by tracing the slipped
+   index to the carrier symbol being counted. -/
 instance (priority := low) TRACED_COUNTABLE
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -2060,6 +2168,9 @@ instance (priority := low) TRACED_COUNTABLE
     let slip : Fact := b3_slip.index.count.carrier.symbol
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking who admitted the mark and under what local
+   rule. This cell closes the admissibility gap by comparing the carried before
+   fact with the slipped carrier symbol admitted by the process. -/
 instance (priority := low) TRACED_ADMISSIBLE
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -2120,6 +2231,10 @@ instance (priority := low) TRACED_ADMISSIBLE
     let slip : Fact := b2_slip.counting_process.carrier.symbol
     { tape := .strap constructed slip Value (ULift.{i+1, i} Value) above.tape }
 
+/- We thank the reviewer for asking whether the whole publication rests on a
+   distinguishable mark or on retrospective confidence. This cell closes the
+   bottom gap by recording the slipped distinguishable fact against the carried
+   before fact, where the trace can finally stop descending. -/
 instance (priority := low) TRACED_DISTINGUISHABLE
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)

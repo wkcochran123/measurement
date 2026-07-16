@@ -8,6 +8,17 @@ namespace Measurement
 
 universe i
 
+/-
+HOUSE-TAPE CHORUS, STANZA 1 -- DRAFT PANEL TEXT
+
+This is the tape
+that lived in the Fact
+that John built.
+
+The tape is one character.  Not a sentence, not a proof, not a world.
+The house grows around it because every later reader wants to know what
+that one character was allowed to mean.
+-/
 inductive CompilerTape where
   | boot    : Fact → Type i → CompilerTape
   | strap   : Fact → Fact → Type i → Type (i+1) → CompilerTape → CompilerTape
@@ -32,6 +43,18 @@ instance : LE CompilerTape where
 instance : LT CompilerTape where
   lt := CompilerTape.lt
 
+/-
+HOUSE-TAPE CHORUS, STANZA 2 -- DRAFT PANEL TEXT
+
+This is the compiler
+that emitted the tape
+that lived in the Fact
+that John built.
+
+It does not emit the story.  It emits the small object the story must
+walk around.  The reader sees a house; the machine sees a character on
+a tape and the local permissions that let it move.
+-/
 @[reducible]
 structure CompilerOutput
     (Value: Type i)
@@ -62,6 +85,18 @@ structure CompilerOutput
           | isFalse _    , isTrue _    =>  .compute d.fact f2 d.fact.truth t t1 t2 remainder
           | isFalse _    , isFalse _   =>  .strap Fact.Truth Fact.Truth t t1 remainder
 
+/-
+HOUSE-TAPE CHORUS, STANZA 3 -- DRAFT PANEL TEXT
+
+This is the object file
+that carried the compiler
+that emitted the tape
+that lived in the Fact
+that John built.
+
+Compilation is not an explanation.  It is the paperwork that lets the
+one-character tape become a thing the next panel may legally read.
+-/
 @[reducible]
 class COMPILED
     (Value: Type i)
@@ -83,6 +118,19 @@ class COMPILED
 
   converged?: CompilerTape → CompilerTape → Prop := fun a b => a < b
 
+/-
+HOUSE-TAPE CHORUS, STANZA 4 -- DRAFT PANEL TEXT
+
+This is the measured compiler
+that produced the object file
+that carried the compiler
+that emitted the tape
+that lived in the Fact
+that John built.
+
+John drives one mark through the mountain.  The mark does not get longer;
+the obligations around it do.  That is the joke, the labor, and the trap.
+-/
 instance COMPILED_MEASURED
     (Value: Type i)
     (Carrier: CarrierProcess Value)
