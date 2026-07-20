@@ -212,4 +212,3 @@ Use this process whenever the root README is updated.
 - `SPEC.md` - current product mandate.
 - `PLAN_RFC.md` - current convergence plan and cleanup discipline.
 - `CALIBRATION_METHOD.md` - how to run the two coupling experiments (`1→3` direct, `1→2→3` stepped) and check they agree.
-- `SACRED_TEXTS.md` - project constitution.

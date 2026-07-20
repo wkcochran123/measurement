@@ -2,7 +2,7 @@
 
 *Master spec, acting operator, 2026-07-09. This is the single mandate. **Clear the decks:** all prior task work
 (Vol 2 codas, the fidelity lane, the old abstract vol1-alpha turns) is SUPERSEDED. Kodo and Podo start fresh
-from this document. Governed by `SACRED_TEXTS.md` (the constitution) and detailed by the supporting docs in §9.
+from this document. Detailed by the supporting docs in §9.
 Grade off the build.*
 
 ---
@@ -28,25 +28,47 @@ are **four books.** Instrument + gauges = the product. That is the whole project
 - **α is the flagship INSTANCE of the API, not the API.** The fold probe is one calibration `verify` checks.
 
 ## 3. The four gauges (the four books — necessary to understand the reading)
-Three registers that share **no vocabulary** (a null basis — agreement across them can't be a shared-word
-artifact) + the code itself. Vols 1–3 define and use `tange`/`funge`; Vol 4 drops the words and carries the
-distinction as **citation texture** (cited-generously = funge/standard; uncited = tange/novel = pay attention).
+Four books render ONE reading in four registers that share **no vocabulary** (a null basis — agreement across
+them can't be a shared-word artifact). The reading itself is the code's story: a choice-free counting machine,
+handed the electron, describing it one facet at a time — **never more than two steps from counting** — and
+stopping at the wrapped box it will not open. **Vol 1 is the FIRST READ**, built straight from the code;
+**Vols 2–4 are organized from Vol 1**, the same reading transposed into disjoint tongues; **Vol 5 is the SECOND
+READ** (the machine turned on itself). A fifth, non-gauge companion — a **casual, general-audience book**
+(GEB / *It from Bit* / Russell-for-the-layperson) — tells the same story in plain language, grounded in *it is
+just counting, and you are never more than two steps from it.* Vols 1–3 define and use `tange`/`funge`; Vol 4
+drops the words and carries the distinction as **citation texture** (cited-generously = funge/standard; uncited
+= tange/novel = pay attention).
 
 **Each gauge is written in the LANGUAGE that best expresses the code — English is the fallback, NOT the medium.**
 The language *is* the meaning: physics IS equations (prose about them is lossy); a compiler IS a formal system.
-Write in the native formalism and it *says* the thing; write in English and it only *points* at it. This also
-hardens the null basis: three gauges in three mutually-untranslatable formal languages are more decorrelated than
-three English essays — agreement across them can't be a shared-word artifact, because there are no shared words.
+Write in the native formalism and it *says* the thing; write in English and it only *points* at it. This hardens
+the null basis: four gauges in mutually-untranslatable languages are more decorrelated than four English
+essays — agreement across them can't be a shared-word artifact, because there are no shared words. The genuinely
+decorrelated core is the pair **Vol 2 (pure geometry) ↔ Vol 3 (pure computation)**: their agreement, in no common
+vocabulary, is the anti-crank evidence; Vol 1 (mixed by design, cross-register claims MARKED) and Vol 4 (the
+unifying reading) complete the frame.
 
-| Gauge | Book | Language (the medium) | Rule |
+| Gauge | Book | Language (the medium) | Role |
 |---|---|---|---|
-| 1 — Mathematical | **Vol 1 · Measurement** | logic / type theory, in careful prose ("math-without-math": the device's own math is constructive — distinctions, counting, the tower — which reads as reasoning) | construction from the first difference; **defines** tange/funge; names the electron; the α apex |
-| 2 — Physical | **Vol 2 · Experimentation** | **MATH, and tons of it** — equations first, prose second; NO computation | the experiments, the constants, the derivations (α, g-2, the holonomy); physics as physics |
-| 3 — Computational | **Vol 3 · The Compiler** | **formal systems, communication theory, large-scale simulation, numerical analysis**; NO physics | the self-hosting compiler in its native formalisms |
-| 4 — The Reading | **Vol 4 · Scientific Computation** | the code walk + all three registers unified | **no** tange/funge (citation texture instead); maximally generous citation; the user guide to the instrument |
+| 1 — Logic / type theory | **Vol 1 · Measurement** | the construction's own constructive math — distinctions, counting, the tower — read as reasoning | **the FIRST READ, from the code**; defines tange/funge; the score the others transpose |
+| 2 — Mathematics | **Vol 2 · Experimentation** | **equations first, prose second; NO computation words** — geometry / QFT (Ricci/Weyl, holonomy, g-2) | the facets as geometry; physics as physics |
+| 3 — Computation | **Vol 3 · The Compiler** | **formal systems / information / numerical analysis; NO physics words** | the same facets as decodings, costs, brackets |
+| 4 — The reading | **Vol 4 · Scientific Computation** (RE-EDITION) | the code walk, all registers unified, the seam marked | maximally generous citation; the user guide to the instrument |
 
-The gauges convert a reading into understanding. Ship the instrument without them and you've shipped a number
-nobody can interpret. Write each in its native tongue or the meaning doesn't survive the translation.
+The invariant every gauge holds: **Lean in the preface only** (the body implementation-neutral, the proof the
+silent judge); **grade off the build silently**; **the fence** — the device's own finite shadows (its own G, its
+own α-bracket) versus external physical constants named external-and-unreachable; and **Yang-Mills the theory
+stays WRAPPED** (the last box holds `Fact.Truth`; the electron is already home; there is no need to open it). The
+gauges convert a reading into understanding — write each in its native tongue or the meaning doesn't survive the
+translation.
+
+**The definition (locked 2026-07-19).** The three primitives the gauges render ARE the three Lean forms:
+**tange = `structure`** (name an object by its characteristics — contravariant, select), **funge = `class`**
+(enumerate its instances — covariant, pool), **tensor = `inductive`** (`t = X ∘ f` — introduction + elimination).
+Every rung of the construction is the one argument: name (structure/tange) → enumerate (class/funge) → build the
+type (inductive/tensor); the kernel checks; repeat. The second read (Vol 5) runs it backward — `structure`=funge,
+`class`=tange, `inductive`=tensor (the fixed point). Full definition + the Vol-1 two-preface design in
+`books/BOOKS_REARCH_RFC.md`.
 
 ## 4. The technical pipeline (the fresh build — strict order)
 - **PHASE 0a — TRIM to the above-floor core.** You can't register a command below the antimatter floor; below-floor
@@ -236,7 +258,7 @@ nobody can interpret. Write each in its native tongue or the meaning doesn't sur
   until read.
 
 ## 6. The boundaries (sacred + gate)
-- **Episodes 1–15 = SACRED, frozen, read-only** (`SACRED_TEXTS.md`). Own 16+. Renaming a sacred name = a **2+ day
+- **Episodes 1–15 = SACRED, frozen, read-only.** Own 16+. Renaming a sacred name = a **2+ day
   recompile** — hoard and batch. **The first time any work needs to change a sacred text, STOP and escalate to the
   operator for review.** Kodo's gate rejects/HOLDs any sacred-editing turn.
 - **`Calibration/LeanCalibration.lean` = sacred-in-spirit** (the frozen calibration standard, upstream). READ it;
@@ -258,7 +280,6 @@ CONVENTION** (antimatter ≤ ε; blank calibration; the four-gauge mapping). The
 build carries them — written as the interpretation of what the build DOES, never as theorems wearing prose.
 
 ## 9. Supporting docs (detail under this master)
-- `SACRED_TEXTS.md` — the constitution (the boundary + the gate).
 - `books/expository_monograph/alpha_target_and_acceptance.md` — the frozen target + non-crank bar.
 - `books/expository_monograph/alpha_fold_probe_design.md` — the fold probe + the verify API + the four explanations.
 - `books/scientific_computation/vol4_spec.md` — Vol 4 = the reading gauge (no words, citation texture).

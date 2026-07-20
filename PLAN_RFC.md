@@ -5,6 +5,11 @@ off the build. Sacred Episodes 1–15 frozen. This is what we drive to.*
 
 ---
 
+## STATUS (2026-07-19) — this serial-construction plan is EXECUTED; the live plan is the books
+The §1–6 cleanup (fix-the-break, dedup, serialize, converge to `two_descriptions` + the α bound + self-application) has been carried out; the serial construction stands and the box-walk documentation pass over it is do/review-complete. The §3 physics-core (the three-fold −1/0/+1 = C/M/V = quark color; QED-applied-to-itself = the electron's self-energy; blind to the magnitude) remains the correct reading and feeds the books. What follows below is retained as executed-plan provenance.
+
+**THE DEFINITION (locked, operator 2026-07-19).** The three primitives ARE the three Lean forms: **tange = `structure`** (name by characteristics, `n = f s ⟹ nn = f(s s)`, contravariant select); **funge = `class`** (enumerate instances, `nn = f(s) f(s)`, covariant pool); **tensor = `inductive`** (`t = X ∘ f`, introduction + elimination). The **one argument** = declare the triple, the kernel checks, over and over (this IS the consume→produce braid). The keystone is **satisfied by construction** — the primitives are the keywords the code already uses; the whole thing typechecks with a clean footprint, which *is* the checked consistency (relative to the assistant's own soundness — the argument is checked, not the foundations of mathematics). First read: structure=tange / class=funge / inductive=tensor. Second read (Vol 5): structure=funge / class=tange / inductive=tensor (the tensor fixed). Full text, the two Vol-1 prefaces, and the gate live in `books/BOOKS_REARCH_RFC.md`.
+
 ## 1. The target — what `lake build` MUST print (nothing more)
 1. `#print axioms <the theorem>` == **`[propext]`** — choice-free; propositional extensionality only, nothing else.
 2. **`a1 < α ≤ a2`** with a **guess for α** (the bound, bracketed, printed).

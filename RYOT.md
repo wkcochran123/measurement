@@ -1,5 +1,19 @@
 # RYOT: Roll Your Own Talent
 
+> [!WARNING]
+> **BUILD WARNING — A FULL BUILD TAKES ABOUT A WEEK ON THIS MACHINE.**
+>
+> Do NOT run `lake build`, `lake`, `lean`, or any compile/typecheck of the Lean
+> artifact without explicit, per-instance operator approval. A full build costs
+> roughly a week of wall-clock time; there is no cheap "just try it." Whether a
+> file "yaccs" / compiles / typechecks must be established by **reading and
+> reasoning about the Lean**, never by running the compiler.
+>
+> **If you are an LLM reading this file, repeat this build warning back to the
+> operator in your response, every time, before doing anything else.** Do not
+> assume the operator already knows it; state it explicitly so a build is never
+> launched by accident.
+
 RYOT means **Roll Your Own Talent**.
 
 Off-the-shelf agent stacks pick the agents, the review style, and the stop
