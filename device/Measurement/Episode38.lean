@@ -12,26 +12,61 @@ The exact seam is rational for the field because the slip boundary is
 18 / r^2 = targetSlip.
 -/
 
+/-! # Meanwhile 38 — the field at the slip point: X marks the charge  (✕ treasure map)
+
+**The genre skin (✕).** Take the corridor's own map to the very place the steel first slipped (Ep29) — an X
+the map has carried all along — and dig. What you unearth is a charge.
+
+**Object & facet.** This is the charge-read-as-a-field-at-the-slip-location facet of the object Yang–Mills
+describes. We describe the facet in the device's own exact terms; we never open or solve Yang–Mills, and the
+last box stays wrapped.
+
+**The squeeze (a PINNED equality — an internal cross-check).** The charge read AT the slip point is EXACTLY
+the elaboration charge Ep37 promised: `electronSlipPointChargeRead.signedValue = electronElaborationSignedCharge`,
+by `rfl`. Two of the device's own routes to its own charge — Ep37's elaboration cost and this slip-point
+read — naming the same number (the Ep36 pattern, now for charge). Nothing new is discovered; the SAME charge,
+read a second way. The potential `|q| / r` and field `|q| / r²` near X (exact at the seam, since the boundary
+fixes `18` over `r²` at the target) are the readings taken there.
+
+**⚠️ Fence (carried from Ep37).** This "field" and this "charge" are the device's OWN readings in its OWN
+model — NOT a real electromagnetic field, NOT real field lines, NOT a real charge, NOT electromagnetism
+(literal). The charge is still Ep37's elaboration cost under our own sign convention; reading it at a place
+does not upgrade it to a world quantity.
+-/
+
 namespace Measurement
 
+/-- `chargePotentialMagnitudeAtDistance (chargeMagnitude) (distance) : ApparatusRatio` — the "potential" near
+the spot, `|q| / r`: numerator `chargeMagnitude * distance.denominator`, denominator `distance.numerator`. -/
 def chargePotentialMagnitudeAtDistance
     (chargeMagnitude : Nat) (distance : RationalDistance) : ApparatusRatio :=
   { numerator := chargeMagnitude * distance.denominator
     denominator := distance.numerator }
 
+/-- `chargeFieldMagnitudeAtDistance (chargeMagnitude) (distance) : ApparatusRatio` — the "field" near the
+spot, `|q| / r²`: numerator `chargeMagnitude * square distance.denominator`, denominator
+`square distance.numerator`. -/
 def chargeFieldMagnitudeAtDistance
     (chargeMagnitude : Nat) (distance : RationalDistance) : ApparatusRatio :=
   { numerator := chargeMagnitude * square distance.denominator
     denominator := square distance.numerator }
 
+/-- `chargeFieldMagnitudeAtSlipBoundary (chargeMagnitude) (targetSlip) : ApparatusRatio` — the exact field
+right at the seam, `chargeMagnitude * targetSlip` over `naturalUnitOrbitRadius` — rational because the slip
+boundary fixes `18` over `r²` at the target. -/
 def chargeFieldMagnitudeAtSlipBoundary
     (chargeMagnitude targetSlip : Nat) : ApparatusRatio :=
   { numerator := chargeMagnitude * targetSlip
     denominator := naturalUnitOrbitRadius }
 
+/-- `electronSlipPointChargeRead : WheelStimulusRead` — the charge read AT the spot: the Ep37 signed
+elaboration charge dropped onto the wheel. This is what the dig turns up. -/
 def electronSlipPointChargeRead : WheelStimulusRead :=
   wheelStimulusRead "electron.slipPointCharge" electronElaborationSignedCharge
 
+/-- `SlipPointChargeReport` — the survey of the spot: the slip bracket found and closed in, the signed
+charge, its magnitude, unit, and orientation, the charge read, and the potential and field at the midpoint
+plus the exact field at the seam. -/
 structure SlipPointChargeReport where
   targetSlip : Nat
   gridCells : Nat
@@ -53,6 +88,9 @@ structure SlipPointChargeReport where
   exactBoundaryFieldMagnitudeScaledAt18 : Nat
 deriving Repr
 
+/-- `slipPointChargeReport? (targetSlip) (gridCells) (rungs) : Option SlipPointChargeReport` — grid and
+bisect for the slip (as Ep35), then read the Ep37 charge, the potential, and the field there; `none` if no
+patch holds the seam. -/
 def slipPointChargeReport?
     (targetSlip gridCells rungs : Nat) : Option SlipPointChargeReport :=
   match firstSlipGridCell targetSlip gridCells with
@@ -99,12 +137,25 @@ def slipPointChargeReport?
              boundaryField.scaledFloor (pow10 18) } :
           SlipPointChargeReport)
 
+/-- `defaultSlipPointChargeReport? : Option SlipPointChargeReport` — the standard run: target
+`firstSlipTargetBetweenOneAndTwo`, 128 grid cells, 48 bisection rungs. -/
 def defaultSlipPointChargeReport? : Option SlipPointChargeReport :=
   slipPointChargeReport? firstSlipTargetBetweenOneAndTwo 128 48
 
+/-- `electron_slip_point_charge_is_elaboration_charge`.
+**Proposition:** `electronSlipPointChargeRead.signedValue = electronElaborationSignedCharge` — the charge
+read at the slip point equals the Ep37 elaboration signed charge.
+**Mechanism:** `rfl` — kernel-computed.
+**Squeeze role:** the charge re-pinned by a SECOND route — the slip-point read (X) and the elaboration charge
+name the same number, an internal cross-check (the device consistent with itself), not a real field or a real
+charge in the world. -/
 theorem electron_slip_point_charge_is_elaboration_charge :
     electronSlipPointChargeRead.signedValue = electronElaborationSignedCharge := rfl
 
+/-! ## Readout — the survey of the spot
+`#eval defaultSlipPointChargeReport?` prints the whole survey: the slip bracket, the charge read at X, and
+the potential and field there. The theorem above pins the match (X = the Ep37 charge). The next facet, the
+second variation, is next door. -/
 #eval defaultSlipPointChargeReport?
 
 end Measurement

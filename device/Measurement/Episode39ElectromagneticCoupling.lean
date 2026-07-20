@@ -19,8 +19,36 @@ upper integer. `Episode40` then consumes the exact Meissner cell when it
 contracts the second variation to alpha.
 -/
 
+/-! # Meanwhile 39.5 — the coupling: the interior field, expelled  (▣ the screened room)
+
+**The genre skin (▣).** Build a screened chamber — a superconductor's Meissner skin — press an applied field
+on it from outside, and measure how completely the interior is swept clean.
+
+**Object & facet.** This is the electromagnetic-coupling facet of the object described by the walk — the last
+present before α. We describe the facet in the device's own exact terms; we never open or solve the last box
+— the object's own ground — which stays wrapped to the end.
+
+**The squeeze — computed/DECIDED, not proved.** The coupling is read by SHIELDING: the applied field (the
+needle mean) is expelled by Cooper-pair shielding (quanta of the Lorentz wobble), and the interior residual
+DECIDES to zero (`maxwellMeissnerInteriorCancelled := decide (meissnerResidualInternalFieldScaledAt18 = 0)`).
+The c = 1 closure, the photon-exchange model, and the coupling calibration are likewise `decide`-Bools
+surfaced by `#eval`. Say the plain truth, as in Ep25/35: there is NO theorem in this file — nothing here is
+proved and no receipt is claimed; each certificate is computed and DECIDED, read off, never certified by a
+theorem.
+
+**⚠️ Two hard fences.**
+1. **A MEISSNER residual, and nothing else.** The interior-field cancellation is a Meissner (shielding)
+   residual in the device's own model. It is NOT the residual of the last box's own equation, NOT a real
+   gauge-theory solution, NOT the wrapped box coming open. The last box stays wrapped, never approached.
+2. **Model-owned.** The coupling, the Meissner shielding, the c = 1 closure, the photon exchange are the
+   device's OWN certificates — NOT real superconductivity, NOT real electromagnetism, NOT a real photon, NOT
+   the real speed of light (literal, not a disavowal).
+-/
+
 namespace Measurement
 
+/-- `ElectromagneticCouplingCoefficient` — the coupling as a mixed number: a `wholeFactor` plus a
+`numerator`/`denominator` fraction, with a scaled read. `Repr`, `DecidableEq`. -/
 structure ElectromagneticCouplingCoefficient where
   wholeFactor : Nat
   numerator : Nat
@@ -28,10 +56,15 @@ structure ElectromagneticCouplingCoefficient where
   factorScaledAt18 : Nat
 deriving Repr, DecidableEq
 
+/-- `electromagneticCouplingNumerator (whole) (numerator) (denominator) : Nat` — the improper numerator,
+`whole * denominator + numerator`. -/
 def electromagneticCouplingNumerator
     (whole numerator denominator : Nat) : Nat :=
   whole * denominator + numerator
 
+/-- `electromagneticCouplingFactorScaledAt18 (whole) (numerator) (denominator) : Nat` — the coefficient to
+eighteen places (`whole * pow10 18` when the denominator is 0; else the improper numerator times `pow10 18`
+over the denominator). -/
 def electromagneticCouplingFactorScaledAt18
     (whole numerator denominator : Nat) : Nat :=
   if denominator = 0 then
@@ -40,6 +73,8 @@ def electromagneticCouplingFactorScaledAt18
     electromagneticCouplingNumerator whole numerator denominator * pow10 18 /
       denominator
 
+/-- `electromagneticCouplingCoefficient (whole) (numerator) (denominator) : ElectromagneticCouplingCoefficient`
+— assemble the coefficient with its scaled factor. -/
 def electromagneticCouplingCoefficient
     (whole numerator denominator : Nat) :
     ElectromagneticCouplingCoefficient :=
@@ -49,36 +84,52 @@ def electromagneticCouplingCoefficient
     factorScaledAt18 :=
       electromagneticCouplingFactorScaledAt18 whole numerator denominator }
 
+/-- `preAlphaElectricFieldScaledAt18 : Nat` — the electric side, read before α: the Ep39 second-variation
+field (`0` if that report is `none`). -/
 def preAlphaElectricFieldScaledAt18 : Nat :=
   match defaultChargeSecondVariationReport? with
   | some report => report.field.scaledAt18
   | none => 0
 
+/-- `preAlphaElectricPotentialScaledAt18 : Nat` — the electric potential, read before α from the Ep39
+report. -/
 def preAlphaElectricPotentialScaledAt18 : Nat :=
   match defaultChargeSecondVariationReport? with
   | some report => report.potential.scaledAt18
   | none => 0
 
+/-- `preAlphaMagneticWobbleScaledAt18 : Nat` — the magnetic side: the Lorentz wobble (one shielding
+quantum). -/
 def preAlphaMagneticWobbleScaledAt18 : Nat :=
   lorentzOrbitBracketReport.wobbleScaledAt18
 
+/-- `preAlphaMagneticNeedleMeanScaledAt18 : Nat` — the magnetic needle mean (the applied field). -/
 def preAlphaMagneticNeedleMeanScaledAt18 : Nat :=
   cavendishMagneticNeedle.needleMeanScaledAt18
 
+/-- `meissnerAppliedMagneticFieldScaledAt18 : Nat` — the applied field pressing on the chamber, the needle
+mean. -/
 def meissnerAppliedMagneticFieldScaledAt18 : Nat :=
   preAlphaMagneticNeedleMeanScaledAt18
 
+/-- `meissnerShieldingQuantumScaledAt18 : Nat` — one shielding quantum, the Lorentz wobble. -/
 def meissnerShieldingQuantumScaledAt18 : Nat :=
   preAlphaMagneticWobbleScaledAt18
 
+/-- `meissnerFluxExpulsionQuotient : Nat` — how many quanta it takes to expel the field, the applied field
+over one shielding quantum. -/
 def meissnerFluxExpulsionQuotient : Nat :=
   meissnerAppliedMagneticFieldScaledAt18 /
     meissnerShieldingQuantumScaledAt18
 
+/-- `meissnerFluxExpulsionRemainderScaledAt18 : Nat` — what falls short of a whole quantum, the applied field
+mod one shielding quantum. -/
 def meissnerFluxExpulsionRemainderScaledAt18 : Nat :=
   meissnerAppliedMagneticFieldScaledAt18 %
     meissnerShieldingQuantumScaledAt18
 
+/-- `electromagneticCoupledMagneticResidueScaledAt18 (coefficient) : Nat` — the field the shielding leaves
+standing for a given coefficient (the wobble times the coefficient, whole or improper). -/
 def electromagneticCoupledMagneticResidueScaledAt18
     (coefficient : ElectromagneticCouplingCoefficient) : Nat :=
   if coefficient.denominator = 0 then
@@ -89,6 +140,9 @@ def electromagneticCoupledMagneticResidueScaledAt18
         coefficient.wholeFactor coefficient.numerator coefficient.denominator /
         coefficient.denominator
 
+/-- `ElectromagneticCouplingTapeCell` — one frame of the calibration tape: a coefficient beside the electric
+field and potential, the magnetic wobble and needle mean, the coupled magnetic residue, and a
+`generatedBeforeAlpha` flag. -/
 structure ElectromagneticCouplingTapeCell where
   coefficient : ElectromagneticCouplingCoefficient
   electricFieldScaledAt18 : Nat
@@ -99,6 +153,8 @@ structure ElectromagneticCouplingTapeCell where
   generatedBeforeAlpha : Bool
 deriving Repr
 
+/-- `electromagneticCouplingTapeCell (coefficient) : ElectromagneticCouplingTapeCell` — record one frame for
+a coefficient (all reads generated before α). -/
 def electromagneticCouplingTapeCell
     (coefficient : ElectromagneticCouplingCoefficient) :
     ElectromagneticCouplingTapeCell :=
@@ -111,17 +167,24 @@ def electromagneticCouplingTapeCell
       electromagneticCoupledMagneticResidueScaledAt18 coefficient
     generatedBeforeAlpha := true }
 
+/-- `ElectromagneticCalibrationTape` — a list of tape cells. -/
 abbrev ElectromagneticCalibrationTape :=
   List ElectromagneticCouplingTapeCell
 
+/-- `electromagneticCouplingLowerInteger : ElectromagneticCouplingCoefficient` — the lower integer
+coefficient, the expulsion quotient over one. -/
 def electromagneticCouplingLowerInteger :
     ElectromagneticCouplingCoefficient :=
   electromagneticCouplingCoefficient meissnerFluxExpulsionQuotient 0 1
 
+/-- `electromagneticCouplingUpperInteger : ElectromagneticCouplingCoefficient` — the upper integer, the
+quotient's successor over one. -/
 def electromagneticCouplingUpperInteger :
     ElectromagneticCouplingCoefficient :=
   electromagneticCouplingCoefficient meissnerFluxExpulsionQuotient.succ 0 1
 
+/-- `electromagneticCouplingSelected : ElectromagneticCouplingCoefficient` — the exact selected cell: the
+quotient plus the remainder over the shielding quantum. -/
 def electromagneticCouplingSelected :
     ElectromagneticCouplingCoefficient :=
   electromagneticCouplingCoefficient
@@ -129,81 +192,114 @@ def electromagneticCouplingSelected :
     meissnerFluxExpulsionRemainderScaledAt18
     meissnerShieldingQuantumScaledAt18
 
+/-- `meissnerExpelledMagneticFieldScaledAt18 : Nat` — the field the selected shielding expels. -/
 def meissnerExpelledMagneticFieldScaledAt18 : Nat :=
   electromagneticCoupledMagneticResidueScaledAt18
     electromagneticCouplingSelected
 
+/-- `meissnerResidualInternalFieldScaledAt18 : Nat` — what remains inside: the applied field minus the
+expelled (`natAbsDiff`). This is the interior residual that decides to zero — a MEISSNER (shielding)
+residual, not the last box's own residual. -/
 def meissnerResidualInternalFieldScaledAt18 : Nat :=
   natAbsDiff meissnerAppliedMagneticFieldScaledAt18
     meissnerExpelledMagneticFieldScaledAt18
 
+/-- `electromagneticCalibrationTape : ElectromagneticCalibrationTape` — three frames bracketing the coupling:
+the lower integer, the selected cell, the upper integer. -/
 def electromagneticCalibrationTape : ElectromagneticCalibrationTape :=
   [ electromagneticCouplingTapeCell electromagneticCouplingLowerInteger,
     electromagneticCouplingTapeCell electromagneticCouplingSelected,
     electromagneticCouplingTapeCell electromagneticCouplingUpperInteger ]
 
+/-- `maxwellSpeedOfLightSquaredScaledAt18 : Nat` — the chamber's own light-speed-squared, set to one
+(`pow10 18`). -/
 def maxwellSpeedOfLightSquaredScaledAt18 : Nat :=
   pow10 18
 
+/-- `maxwellNaturalUnitVelocitySquaredScaledAt18 : Nat` — the natural-unit orbit's v² (scaled). -/
 def maxwellNaturalUnitVelocitySquaredScaledAt18 : Nat :=
   (cooperElectronOrbitRead naturalUnitOrbitRadius).velocitySquaredScaledAt18
 
+/-- `maxwellLorentzBoundaryVelocitySquaredScaledAt18 : Nat` — the Lorentz-boundary v² (scaled). -/
 def maxwellLorentzBoundaryVelocitySquaredScaledAt18 : Nat :=
   lorentzOrbitBracketReport.boundary.velocitySquaredScaledAt18
 
+/-- `maxwellNaturalUnitVelocitySquaredIsC : Bool` — `decide`s whether the natural-unit v² equals the
+light-speed-squared (one). A computed yes-or-no, not a proof. -/
 def maxwellNaturalUnitVelocitySquaredIsC : Bool :=
   decide
     (maxwellNaturalUnitVelocitySquaredScaledAt18 =
       maxwellSpeedOfLightSquaredScaledAt18)
 
+/-- `maxwellLorentzBoundaryVelocitySquaredIsC : Bool` — `decide`s whether the Lorentz-boundary v² equals
+one. -/
 def maxwellLorentzBoundaryVelocitySquaredIsC : Bool :=
   decide
     (maxwellLorentzBoundaryVelocitySquaredScaledAt18 =
       maxwellSpeedOfLightSquaredScaledAt18)
 
+/-- `maxwellLorentzBoundaryLightlike : Bool` — `decide`s whether the Lorentz boundary regime is lightlike. -/
 def maxwellLorentzBoundaryLightlike : Bool :=
   decide
     (lorentzOrbitBracketReport.boundary.regime =
       LorentzOrbitRegime.lightlikeBoundary)
 
+/-- `maxwellElectricReadAvailable : Bool` — `decide`s that the pre-α electric field is positive. -/
 def maxwellElectricReadAvailable : Bool :=
   decide (0 < preAlphaElectricFieldScaledAt18)
 
+/-- `maxwellMagneticReadAvailable : Bool` — the needle deflects toward mass and the pre-α wobble is
+positive. -/
 def maxwellMagneticReadAvailable : Bool :=
   cavendishMagneticNeedle.deflectsTowardMass &&
     decide (0 < preAlphaMagneticWobbleScaledAt18)
 
+/-- `maxwellMeissnerInteriorCancelled : Bool` — the key certificate: `decide (meissnerResidualInternalFieldScaledAt18 = 0)`
+— the interior residual decides to zero. A computed decision, NOT a theorem. -/
 def maxwellMeissnerInteriorCancelled : Bool :=
   decide (meissnerResidualInternalFieldScaledAt18 = 0)
 
+/-- `maxwellElectricAndMagneticShareLightCone : Bool` — the AND of the two v²-is-one checks and the
+lightlike-boundary check. -/
 def maxwellElectricAndMagneticShareLightCone : Bool :=
   maxwellNaturalUnitVelocitySquaredIsC &&
     maxwellLorentzBoundaryVelocitySquaredIsC &&
     maxwellLorentzBoundaryLightlike
 
+/-- `maxwellGaussElectricEnforced : Bool` — electric read available AND the shared-light-cone check. -/
 def maxwellGaussElectricEnforced : Bool :=
   maxwellElectricReadAvailable &&
     maxwellElectricAndMagneticShareLightCone
 
+/-- `maxwellGaussMagneticEnforced : Bool` — the Meissner interior cancelled AND the shared-light-cone
+check. -/
 def maxwellGaussMagneticEnforced : Bool :=
   maxwellMeissnerInteriorCancelled &&
     maxwellElectricAndMagneticShareLightCone
 
+/-- `maxwellFaradayInductionEnforced : Bool` — magnetic read available AND the shared-light-cone check. -/
 def maxwellFaradayInductionEnforced : Bool :=
   maxwellMagneticReadAvailable &&
     maxwellElectricAndMagneticShareLightCone
 
+/-- `maxwellAmpereMaxwellEnforced : Bool` — electric and magnetic reads available AND the shared-light-cone
+check. -/
 def maxwellAmpereMaxwellEnforced : Bool :=
   maxwellElectricReadAvailable &&
     maxwellMagneticReadAvailable &&
     maxwellElectricAndMagneticShareLightCone
 
+/-- `maxwellSpeedOfLightEnforced : Bool` — the closure: all four "Maxwell equation" flags AND-ed. A chain of
+decided Bools, not a proof. -/
 def maxwellSpeedOfLightEnforced : Bool :=
   maxwellGaussElectricEnforced &&
     maxwellGaussMagneticEnforced &&
     maxwellFaradayInductionEnforced &&
     maxwellAmpereMaxwellEnforced
 
+/-- `MaxwellSpeedOfLightCertificate` — the c = 1 certificate: a name and interpretation, the radius and the
+three velocity² reads, the availability / cancellation / light-cone flags, the four "Maxwell equation
+enforced" flags, and the closure flag. All computed. -/
 structure MaxwellSpeedOfLightCertificate where
   name : String
   interpretation : String
@@ -223,6 +319,9 @@ structure MaxwellSpeedOfLightCertificate where
   maxwellClosureEnforced : Bool
 deriving Repr
 
+/-- `maxwellSpeedOfLightCertificate : MaxwellSpeedOfLightCertificate` — fill the certificate. Its own
+interpretation string names it: "in the device this is the Maxwell closure c = 1" — the DEVICE'S closure, a
+computed certificate, not the world's Maxwell equations proved. -/
 def maxwellSpeedOfLightCertificate :
     MaxwellSpeedOfLightCertificate :=
   { name := "maxwell-speed-of-light-closure"
@@ -248,12 +347,16 @@ def maxwellSpeedOfLightCertificate :
     ampereMaxwellEnforced := maxwellAmpereMaxwellEnforced
     maxwellClosureEnforced := maxwellSpeedOfLightEnforced }
 
+/-- `MagneticPhotonLeg` — the three legs of the modelled exchange: `incidentMagneticField`,
+`cooperPairRecoil`, `reflectedResponse`. `Repr`, `DecidableEq`. -/
 inductive MagneticPhotonLeg where
   | incidentMagneticField
   | cooperPairRecoil
   | reflectedResponse
 deriving Repr, DecidableEq
 
+/-- `MagneticPhotonExchangeRead` — one leg's read: the leg, its field (scaled), the light-cone v², and
+whether the magnetic read is available. -/
 structure MagneticPhotonExchangeRead where
   leg : MagneticPhotonLeg
   fieldScaledAt18 : Nat
@@ -261,6 +364,8 @@ structure MagneticPhotonExchangeRead where
   magneticReadAvailable : Bool
 deriving Repr
 
+/-- `magneticPhotonIncidentRead : MagneticPhotonExchangeRead` — the incident leg, carrying the applied
+field. -/
 def magneticPhotonIncidentRead : MagneticPhotonExchangeRead :=
   { leg := .incidentMagneticField
     fieldScaledAt18 := meissnerAppliedMagneticFieldScaledAt18
@@ -268,6 +373,8 @@ def magneticPhotonIncidentRead : MagneticPhotonExchangeRead :=
       maxwellLorentzBoundaryVelocitySquaredScaledAt18
     magneticReadAvailable := maxwellMagneticReadAvailable }
 
+/-- `magneticPhotonRecoilRead : MagneticPhotonExchangeRead` — the Cooper-pair recoil leg, carrying the
+expelled field. -/
 def magneticPhotonRecoilRead : MagneticPhotonExchangeRead :=
   { leg := .cooperPairRecoil
     fieldScaledAt18 := meissnerExpelledMagneticFieldScaledAt18
@@ -275,6 +382,8 @@ def magneticPhotonRecoilRead : MagneticPhotonExchangeRead :=
       maxwellLorentzBoundaryVelocitySquaredScaledAt18
     magneticReadAvailable := maxwellMagneticReadAvailable }
 
+/-- `magneticPhotonResponseRead : MagneticPhotonExchangeRead` — the reflected-response leg, carrying the
+expelled field. -/
 def magneticPhotonResponseRead : MagneticPhotonExchangeRead :=
   { leg := .reflectedResponse
     fieldScaledAt18 := meissnerExpelledMagneticFieldScaledAt18
@@ -282,30 +391,41 @@ def magneticPhotonResponseRead : MagneticPhotonExchangeRead :=
       maxwellLorentzBoundaryVelocitySquaredScaledAt18
     magneticReadAvailable := maxwellMagneticReadAvailable }
 
+/-- `magneticPhotonIncidentResponseResidueScaledAt18 : Nat` — the gap between the incident and response
+fields (`natAbsDiff`). -/
 def magneticPhotonIncidentResponseResidueScaledAt18 : Nat :=
   natAbsDiff magneticPhotonIncidentRead.fieldScaledAt18
     magneticPhotonResponseRead.fieldScaledAt18
 
+/-- `magneticPhotonResponseOnLightCone : Bool` — the shared-light-cone check AND that the response's
+light-cone v² equals one. -/
 def magneticPhotonResponseOnLightCone : Bool :=
   maxwellElectricAndMagneticShareLightCone &&
     decide
       (magneticPhotonResponseRead.lightConeVelocitySquaredScaledAt18 =
         maxwellSpeedOfLightSquaredScaledAt18)
 
+/-- `magneticPhotonResponseCancelsField : Bool` — `decide`s that the incident-response residue is zero. -/
 def magneticPhotonResponseCancelsField : Bool :=
   decide (magneticPhotonIncidentResponseResidueScaledAt18 = 0)
 
+/-- `magneticPhotonRecoilCarried : Bool` — `decide`s that the recoil and response fields agree. -/
 def magneticPhotonRecoilCarried : Bool :=
   decide
     (magneticPhotonRecoilRead.fieldScaledAt18 =
       magneticPhotonResponseRead.fieldScaledAt18)
 
+/-- `magneticPhotonRepulsionModeled : Bool` — the AND of on-light-cone, cancels-field, recoil-carried, and
+Meissner-cancelled. A modelled repulsion, decided, not proved. -/
 def magneticPhotonRepulsionModeled : Bool :=
   magneticPhotonResponseOnLightCone &&
     magneticPhotonResponseCancelsField &&
     magneticPhotonRecoilCarried &&
     maxwellMeissnerInteriorCancelled
 
+/-- `MagneticPhotonExchangeReport` — the photon-exchange model: a name and interpretation, the mediator
+flag, the three leg reads, the incident-response residue, and the on-light-cone / cancels / recoil-carried /
+internal-cancelled / repulsion-modelled flags. -/
 structure MagneticPhotonExchangeReport where
   name : String
   interpretation : String
@@ -321,6 +441,9 @@ structure MagneticPhotonExchangeReport where
   repulsionModeledWithRecoilAndResponse : Bool
 deriving Repr
 
+/-- `magneticPhotonExchangeReport : MagneticPhotonExchangeReport` — fill the model. Its interpretation string
+calls it a model: "model magnetic repulsion as an incident photon read, a Cooper-pair recoil, and a
+reflected response" — a story the device tells, decided, not a real photon. -/
 def magneticPhotonExchangeReport : MagneticPhotonExchangeReport :=
   { name := "magnetic-photon-recoil-response"
     interpretation :=
@@ -338,6 +461,11 @@ def magneticPhotonExchangeReport : MagneticPhotonExchangeReport :=
     repulsionModeledWithRecoilAndResponse :=
       magneticPhotonRepulsionModeled }
 
+/-- `ElectromagneticCouplingCalibrationReport` — the whole calibration: name and interpretation, the
+before-α flags, availability, the Meissner-effect-measured flag, applied field and shielding quantum, the
+expulsion quotient and remainder, the three tape frames, the expelled field and residual, whether the
+interior cancelled, the c = 1 certificate, the photon-exchange model, the tape, and — set FALSE on purpose —
+`chargeHorizonOpenedByCoupling` (the coupling only calibrates; it does not open the charge horizon). -/
 structure ElectromagneticCouplingCalibrationReport where
   name : String
   interpretation : String
@@ -365,6 +493,9 @@ structure ElectromagneticCouplingCalibrationReport where
   chargeHorizonOpenedByCoupling : Bool
 deriving Repr
 
+/-- `electromagneticCouplingCalibrationReport : ElectromagneticCouplingCalibrationReport` — fill the whole
+calibration (the Meissner read, the c = 1 certificate, the photon model, the tape). The interior-cancelled
+field is a `decide`; `chargeHorizonOpenedByCoupling` is `false` (the coupling only calibrates). -/
 def electromagneticCouplingCalibrationReport :
     ElectromagneticCouplingCalibrationReport :=
   { name := "meissner-electromagnetic-coupling-tape"
@@ -401,6 +532,12 @@ def electromagneticCouplingCalibrationReport :
     couplingActsByCalibration := true
     chargeHorizonOpenedByCoupling := false }
 
+/-! ## Readouts — the screened certificates (computed, not proved)
+Three reads print the c = 1 certificate, the photon-exchange model, and the whole calibration. And every one
+is an `#eval` over decided Bools — computed and decided, printed, with no theorem beneath any of it. The
+interior residual decides to zero: a MEISSNER cancellation, a shielding residual, not the last box's own
+residual. One present is out — the coupling, its interior swept clean. The next facet is α, which consumes
+this exact Meissner cell; and the last box past it stays wrapped. -/
 #eval maxwellSpeedOfLightCertificate
 
 #eval magneticPhotonExchangeReport

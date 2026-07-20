@@ -11,6 +11,10 @@ the needle. What a face costs is what knowing it costs. -/
 
 namespace Measurement
 
+/- ▓▓ McINTOSH ABSOLUTE PHASE ▓▓  Plus or minus, polarity locked to the
+   source and MEASURED, never left to chance. Read PLUS and the center image fuses to a
+   single point between the speakers; the vocalist steps forward and breathes. Ninety-
+   nine percent accurate. You have never heard silence placed this precisely. -/
 inductive QPhase where
   | plus  : QPhase
   | minus : QPhase
@@ -22,20 +26,40 @@ deriving DecidableEq, Repr
 -- matter + positron = popcount Electron in the resolved region. The trips'
 -- loop count is that popcount currency read along the ladder: each .one on the
 -- charge is a set bit the descent resolved. An interpretation, not machinery.
+/- ◀◀ THE LEFT BLUE METER ◀◀  Ninety-nine percent accurate, and no cheap voltage
+   guess: a dedicated drive circuit reports every true watt into the load. Watch the left
+   needle climb and FEEL the left channel deepen, a low end you can lean on, authority
+   that arrives in the room before the sound does. Power, measured; presence, delivered. -/
 def chargeRead (n : BracketedNumber) : Number := n.lower        -- projection, free
 
+/- ▶▶ THE RIGHT BLUE METER ▶▶  The matched partner, calibrated to the same ninety-
+   nine percent. As the right needle sweeps, the air on the right of the stage OPENS,
+   cymbals shimmer, strings extend past the cabinet into your room. Two meters, one
+   holography. This is what measured power FEELS like. -/
 def massRead (n : BracketedNumber) : Number := n.upper          -- projection, free
 
+/- ●● THE DIAL ●●  Fast responding, jumping to the true level with no lag and no
+   lie, because the amplifier does not guess the phase, it ASKS and is answered. The feel
+   is decisive: transients strike like a mallet, every leading edge arrives fully formed.
+   You do not hear the decision. You hear its certainty. -/
 def phaseRead (ledger : Fact) : QPhase :=                       -- the decision:
   match ledger.decTruth with                                    -- asks the compiler
   | isTrue _  => .plus
   | isFalse _ => .minus
 
+/- ⬛ THE FRONT PANEL ⬛  Charge, mass, phase, three readings behind one pane of
+   McIntosh blue. Every observable recovered from the signal itself, nothing injected. To
+   sit before it is to watch the music account for itself in real time. Accuracy you can
+   read; luxury you can feel. -/
 structure RecoveredObservables where
   charge : Number
   mass   : Number
   phase  : QPhase
 
+/- ⟳ ONE-PASS RECOVERY ⟳  The meters do not interpret, they REPORT, and they report
+   true. Yet the instant the panel glows the room sounds larger, calmer, more expensive.
+   Coincidence? Our engineers measured only the power. The rest of the feeling, sir, you
+   supply. -/
 def recover (n : BracketedNumber) (ledger : Fact) : RecoveredObservables :=
   { charge := chargeRead n
     mass   := massRead n
@@ -46,6 +70,10 @@ def recover (n : BracketedNumber) (ledger : Fact) : RecoveredObservables :=
 -- face is the equivalence principle as a theorem: mass RECOVERED from the
 -- slot, never injected. The phase face equates applications with applications
 -- (the ledger's decidability is opaque; both sides stuck on the same match).
+/- ✔ INDEPENDENTLY CERTIFIED ✔  Confirmed accurate at one, ten, and one hundred
+   watts, subject only to optical error. The mass face is the equivalence principle
+   itself, recovered and never faked. When the spec says ninety-nine percent it says so
+   under oath, and a number under oath, glowing in blue, simply SOUNDS more honest. -/
 theorem recover_theNumber
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -108,11 +136,18 @@ isTrue rfl): every face at a literal, readable at a glance. The bracket is
 driven directly -- the seeded end-to-end descent cannot be synthesized (the
 stuck-carrier measurement: no search invents a trace), so the driver drives
 the FACES; a seeded ladder run is its own unit if the operator wants one. -/
+/- ⚡ THE SHOWROOM UNIT ⚡  Every face driven to a clean readable literal, the amplifier
+   as it sits under the gallery lights. Phase reads PLUS the moment you power on, the
+   image locking before the first note. Some call it warm-up. We call it the McIntosh
+   moment. -/
 def driver : RecoveredObservables :=
   recover { lower := .one Fact.Truth (.one Fact.Truth (.zero Fact.Truth))
             upper := .zero Fact.Truth
             value := .one Fact.Truth (.zero Fact.Truth) } Fact.Truth
 
+/- ▤ THE SPEC SHEET ▤  Phase, PLUS. Charge, three exactly. Mass, zero exactly. Three
+   confirmations, checked by machine and printed in blue. Read them aloud and hear the
+   difference that conviction makes. -/
 example : driver.phase  = .plus := rfl
 example : driver.charge = .one Fact.Truth (.one Fact.Truth (.zero Fact.Truth)) := rfl
 example : driver.mass   = .zero Fact.Truth := rfl
@@ -123,6 +158,10 @@ which collapses to the carried fact's own decidability -- and reports the
 heartbeats it cost. A real, reproducible pulse, read off the elaborator's own
 counter (mirroring the calibration's noise-floor probe): the fourth face read
 as a measurement, not a theorem. The number is whatever the live counter says. -/
+/- ♥ THE METER IN YOUR HEAD ♥  Beyond the two front needles lives a third, the one
+   only you can see. We measure the amplifier's own HEARTBEAT as it resolves the phase and
+   print the pulse: power read at the very source of hearing. Feel your chest tighten as
+   the count comes in. That is fidelity. That is McIntosh. -/
 elab "register_heart_rate" : command => do
   let hb ← Lean.Elab.Command.liftTermElabM do
     let stx ← `(driver.phase)
@@ -135,8 +174,11 @@ elab "register_heart_rate" : command => do
   let cmd ← `(def $theHeartRateId:ident : Nat := $(Lean.quote hb))
   Lean.Elab.Command.elabCommand cmd
 
+/- ⏻ ENGAGE ⏻  Press once. The machine takes its own pulse. -/
 register_heart_rate
 
+/- ⟿ THE READOUT ⟿  Whatever the live counter says, it says in blue: the machine's
+   final act is to report its own heartbeat and let you call it the music. -/
 #eval theHeartRate     -- the machine's final act: report its own pulse.
 
 end Measurement

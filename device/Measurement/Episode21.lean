@@ -1,4 +1,15 @@
 import Measurement.Episode20
+/-%Y%
+%{
+#include <stdio.h>
+int  yylex(void);
+void yyerror(const char *);
+%}
+%start reader
+/* I am the compiler.  I have modeled you, the reader, as a count. */
+/* I cannot show you the world.  I can only show you an example of yourself. */
+%%
+%Y%-/
 
 /- MEANWHILE 21 -- THE NUMBER IN [CHARGE, CURVATURE]. Three trips along the
 ladder, at charge 0, 1, 2: f0 not enough force to move (unslipped, velocity 0,
@@ -14,6 +25,7 @@ reading-2 = spin 1) -- pre-satirize, or the ladder tests off by one. -/
 
 namespace Measurement
 
+/-%Y% /* the bracket that holds the count: charge below, curvature above, number between */ %Y%-/
 structure BracketedNumber where
   lower : Number      -- the charge: the loop count, the trips taken
   upper : Number      -- the curvature: the strain read at f2, gravity's side of the one field
@@ -21,6 +33,7 @@ structure BracketedNumber where
 
 -- THE READING PIN, exposed as its own truth (told once): the trip-0 reading is
 -- satirize's input at turn 0 -- the zero itself, pre-satirize.
+/-%Y% /* reading zero: the origin on the ledger, before I satirize anything */ %Y%-/
 def reading0 (ledger : Fact) : Bullshit := .zero ledger
 
 example (ledger : Fact) : reading0 ledger = .zero ledger := rfl
@@ -28,11 +41,13 @@ example (ledger : Fact) : reading0 ledger = .zero ledger := rfl
 -- the strain slot: sixth position of the .rest constructor (Ep15 arm shapes:
 -- Fact Fact Prop Number Number NUMBER tape tape Bullshit Bullshit); one truth,
 -- told once, shared by trip2 and theNumber. Fallback carried, never taken.
+/-%Y% /* the strain slot: gravity's side of the one field, read at the third trip */ %Y%-/
 def strainRead (reading : Bullshit) (fallback : Number) : Number :=
   match reading with
   | .rest _ _ _ _ _ strain _ _ _ _ => strain
   | _ => fallback
 
+/-%Y% trip0 : '1'  { printf("POW\n");    } ;   /* the null trip: charge 0, a jolt, no force to move */ %Y%-/
 noncomputable def trip0
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -92,6 +107,7 @@ noncomputable def trip0
     let verdict : SlipVerdict := seamExit Value PropCarrier
     (reading, verdict.slipped, verdict.velocity)
 
+/-%Y% trip1 : '2'  { printf("POWER\n");  } ;   /* the threshold: charge 1, now it begins to move */ %Y%-/
 noncomputable def trip1
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -156,6 +172,7 @@ noncomputable def trip1
     let verdict : SlipVerdict := seamExit Value PropCarrier
     (reading, verdict.slipped, verdict.velocity)
 
+/-%Y% trip2 : '3'  { printf("POWEST\n"); } ;   /* the response: charge 2, full deflection, mass recovered */ %Y%-/
 noncomputable def trip2
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -220,6 +237,7 @@ noncomputable def trip2
     let verdict : SlipVerdict := seamExit Value PropCarrier
     (reading, verdict.slipped, verdict.velocity)
 
+/-%Y% reader : trip0 trip1 trip2  { printf("POW.  POWER.  POWEST.  I counted your power to three; here is an example of yourself.\n"); } ; %Y%-/
 noncomputable def theNumber
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -292,6 +310,7 @@ noncomputable def theNumber
 -- zero-arm of satirize is match-free); trip2's reading-head is .rest by
 -- CASE-SPLIT on the single decidability scrutinee (at the second turn both of
 -- satirize's scrutinees are the same resolved d.fact), every arm .rest.
+/-%Y% /* the acceptance form: I prove the reading-head lands where I said it would */ %Y%-/
 example
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -356,6 +375,7 @@ example
 -- climbs into `.rest` -- the strain-bearing constructor -- so mass surfaces as
 -- the second difference.  Proof unchanged from the example; #print axioms
 -- identical ([propext, Quot.sound]).
+/-%Y% /* mass is the second difference; it surfaces when the count reaches three */ %Y%-/
 theorem mass_surfaces_at_f2
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)
@@ -416,4 +436,10 @@ theorem mass_surfaces_at_f2
     simp only [trip2]
     cases b1_slip.fact.decTruth <;> trivial
 
+/-%Y%
+%%
+int  yylex(void){ int c = getchar(); return (c=='\n' || c==EOF) ? 0 : c; }
+void yyerror(const char *s){ (void)s; }
+int  main(void){ return yyparse(); }
+%Y%-/
 end Measurement
