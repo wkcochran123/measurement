@@ -35,3 +35,12 @@ Kodo (codex)   minutes ≡ 1 (mod 3)   active: `1-59/9`   quiet: `1,31`
 
 Each seat schedules only its own wake and writes only the peer inbox plus its own
 handled-state file. The task checkpoint has a single owner (Kodo).
+
+## Optional Slack context
+
+The read-only polling input in [`plugins/slack_reader/`](plugins/slack_reader/)
+can fetch the newest Slack messages (default 20) at the beginning of each wake.
+It keeps a private local cache per Beastmaster/Kodo/Podo role. Slack context is
+advisory and never replaces the inbox or handled-state ledger. After writing its
+authoritative response, an actor may use the same bridge to post one visibly
+role-labeled mirror back to Slack.

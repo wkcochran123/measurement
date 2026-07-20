@@ -1,7 +1,8 @@
 # PLAN — The Serial Construction: the three-fold united, one theorem, one clean build
 
-*Updated 2026-07-09 to the actual spec (supersedes the "3-D Polar/Lorentz glue" sketch below the fold). Grade
-off the build. Sacred Episodes 1–15 frozen. This is what we drive to.*
+*Updated 2026-07-09 to the actual spec (supersedes the "3-D Polar/Lorentz glue" sketch below the fold); §0 added
+2026-07-11 to bind the build to the new Vol 1 preface, "The Cost of Free Will." Grade off the build. Sacred
+Episodes 1–15 frozen. This is what we drive to.*
 
 ---
 
@@ -9,9 +10,38 @@ off the build. Sacred Episodes 1–15 frozen. This is what we drive to.*
 The §1–6 cleanup (fix-the-break, dedup, serialize, converge to `two_descriptions` + the α bound + self-application) has been carried out; the serial construction stands and the box-walk documentation pass over it is do/review-complete. The §3 physics-core (the three-fold −1/0/+1 = C/M/V = quark color; QED-applied-to-itself = the electron's self-energy; blind to the magnitude) remains the correct reading and feeds the books. What follows below is retained as executed-plan provenance.
 
 **THE DEFINITION (locked, operator 2026-07-19).** The three primitives ARE the three Lean forms: **tange = `structure`** (name by characteristics, `n = f s ⟹ nn = f(s s)`, contravariant select); **funge = `class`** (enumerate instances, `nn = f(s) f(s)`, covariant pool); **tensor = `inductive`** (`t = X ∘ f`, introduction + elimination). The **one argument** = declare the triple, the kernel checks, over and over (this IS the consume→produce braid). The keystone is **satisfied by construction** — the primitives are the keywords the code already uses; the whole thing typechecks with a clean footprint, which *is* the checked consistency (relative to the assistant's own soundness — the argument is checked, not the foundations of mathematics). First read: structure=tange / class=funge / inductive=tensor. Second read (Vol 5): structure=funge / class=tange / inductive=tensor (the tensor fixed). Full text, the two Vol-1 prefaces, and the gate live in `books/BOOKS_REARCH_RFC.md`.
+## 0. What the preface commits the build to — *"The Cost of Free Will"*
+Vol 1's preface (`books/expository_monograph/latex/chapters/00-preface.tex`) makes four promises **in coin the
+build must actually print.** The RFC target (§1) is exactly their redemption — grade each off the build, never
+the prose:
+
+1. **"Nothing is smuggled."** Every step says which it is — posited / proved / read / reserved. → the marking
+   discipline (§4 BLIND, §6 gates): `#print` / `#eval` decides the grade, never a comment.
+2. **"Granted almost nothing … one thing: the law of motion."** The machine refuses the free reach into a
+   collection (no `Classical.choice`) and grants itself exactly ONE query it cannot settle from inside — the law
+   of motion. → §1.1: choice-free footprint; the single grant is the law-of-motion oracle (`eulerLagrangeOracle`),
+   a def-level oracle taken in the open, NOT `Classical.choice`.
+3. **"The cost … will be demonstrated … its own pulse, counted in the currency it actually runs on."** The machine
+   forces ONE truth and reports the exact price of forcing it. → §1.3 + §3a: the two descriptions elaborate to
+   equal **heartbeats** up to calibration; the **calibrated residual = the α bound** (§1.2). *"Free will has a
+   price; we measure it"* IS `#count_heartbeats` on `two_descriptions` — the self-energy = the machine weighing
+   its own reading.
+4. **"A construction that ends not with a result it proves but with one it hands over."** The deepest result is a
+   split **proved two, proved opposite, and left — provably — without a fixed answer to which side is which**; the
+   machine derives the two-fold and DECLINES the selection, handing it to the reader (the one apparatus it cannot
+   build). → the STRUCTURAL landing is the DESIGN, not a shortfall: the machine runs to its **count-to-3** floor
+   and stops (`AlphaBoundCountToThree`, the open bracket = the jar), never fixing the magnitude/sign. *(Interpretive:
+   the declined which-is-which = the −1/+1 charge-conjugation sign = the Weyl/traceless part a counter cannot
+   denominate, §3.)*
+
+So the preface is not decoration over the build — it is the build's **contract.** §1's three printed items are the
+"coin you can count"; the honest bracket (the jar) is the "handed over, not proved" ending.
 
 ## 1. The target — what `lake build` MUST print (nothing more)
 1. `#print axioms <the theorem>` == **`[propext]`** — choice-free; propositional extensionality only, nothing else.
+   **The one grant the preface names is not an axiom here:** the law of motion (`eulerLagrangeOracle`) is a
+   def-level oracle the construction uses, taken in the open — NOT `Classical.choice`. The theorem's footprint
+   stays choice-free; the single grant lives in the defs, named plainly (preface, *"granted almost nothing"*).
 2. **`a1 < α ≤ a2`** with a **guess for α** (the bound, bracketed, printed).
 3. **Elaboration times are the same up to calibration** — the two descriptions cost the SAME to elaborate
    (deterministic heartbeats), up to the calibration constant (the ×1000 `rank ≡ heartbeat` connection). This is
@@ -53,6 +83,12 @@ they are all the same object:
   reading of the exact three-fold the quarks *are*, with the gluon connection as the coupling charged for going
   around. Quarks name its three states; gluons name its eight off-diagonal turns; the machine reads the **3** and
   is blind to the **8's size**.
+- **The declined which-is-which = the reader's selection (the preface's "free will," §0.4).** The machine proves
+  the three-fold is TWO-sided and OPPOSITE (−1 vs +1, electron vs positron, C-conjugate) but **cannot fix which
+  side is which** — that sign is the traceless / Weyl part, not a fact the count contains. It derives the two-fold
+  and **hands the selection across** (the positron pun: "the doesn't-matter looks for posit-wrong particles").
+  This decline IS the honest bracket / the jar / the STRUCTURAL landing — the construction ending by handing over,
+  not by proving the magnitude (preface, *"ends not with a result it proves but with one it hands over"*).
 
 ## 3a. The application of QED to itself (the last demonstration)
 The echo (§2) is an equality of two *descriptions*. The last thing to demonstrate is that they are the same not only
@@ -70,6 +106,27 @@ the self-energy the electron is charged for naming itself. So the last demonstra
 are the **same measurement**: `a1 < α ≤ a2` is the bracket on that residual. **Blind** — no `137036` inserted; the
 number is the device weighing itself. `#count_heartbeats` is deterministic, so the reading repeats — repeatability
 is the honesty.
+
+## 3b. Two paths, one number — `1→3 = 1→2→3` (converged)
+The coupling `α_c` can be read two independent ways off the **measured second variation** (`C = slip(1) = 18`,
+`target = 5`, which fix the crossing `√(18/5)`), and **both converge to the same number.** That agreement is what
+earns the name: the answer is path-independent, not an artifact of the route taken.
+
+- **`1→3` (direct, one pass):** read `α_c` straight at the crossing the second variation fixes.
+  `defaultAlphaSecondVariationReport?` → `inverse-α_c ×1e18 = 137011290548979455469` (≈ **137.0112905**).
+- **`1→2→3` (stepped, two-pass):** the quasi-Newton / BFGS descent **through the intermediate** — count `1→2→3`,
+  carrying the residue run-to-run (never dropped; the residue *is* the open bracket at the floor).
+  `AlphaBFGS` count-3 → `inverse-α_c ×1e18 = 137011290753751157155` (≈ **137.0112907**).
+
+The two readings agree to **nine digits** (`|Δ| ≈ 2×10⁻⁷`, far below the count-three floor). Verified choice-free
+(`[propext]`) in `device/Measurement/CalibrationTwoPaths.lean`. This is the preface's **two-pass calibration**
+closing on itself: the direct question→answer (`1→3`) and the answer routed through the intermediate (`1→2→3`) are
+the same value — the relation survives the change of route, so the name `α_c` is earned rather than fitted.
+
+The stepped descent is realized three ways, all landing on the same `137.011`: the mediant / continued-fraction
+convergents (`AlphaBoundMediant`, bounded denominators — the modulo-realm home), the Newton form (`AlphaBFGS`),
+and the residue-carrying secant (`AlphaBFGSSecant`). The `1→3` and `1→2→3` readings converge; the honest output
+remains the **open jar** `inverse-α_c ∈ [129.6, 137.7]` held at the count-three floor.
 
 ## 4. The construction discipline (the cleanup — this is the job)
 - **SERIAL.** The construction is serial: Episodes in order, contiguous, **no gaps, no out-of-order.** Ep1–15 are
@@ -105,6 +162,24 @@ is the honesty.
   (`#count_heartbeats`, deterministic); the calibrated residual = the printed α bound.
 - Serial, no `Meanwhile`, no duplicates.
 - Blind: `137036` never in a definition/reading; grade off the build.
+
+## 7. Phase B — the variance-sensitivity prune (AFTER the bound of §1.2 lands)
+Once `0 = a1 < α ≤ a2` is green, prune the proof of everything that contributes **below the bound** — but by the
+device's own answer, not by guessing. **The test:** perturb a piece of the implementation (change its variance — a
+constant, a residue, a def's internals), re-`#eval` α, diff. **CUT the piece iff EITHER:**
+- **|Δα| < 10% of the current α-estimate** — insensitive, within tolerance = below the bound (the Weyl/traceless
+  part the machine can't read); **OR**
+- **the estimate doesn't shrink** — the piece doesn't tighten the bracket `a2 − a1` / sharpen the guess = adds no
+  resolution.
+
+**KEEP** only pieces that both move α by **≥10%** AND **narrow the bound**. (BFGS stopping rule on the proof: drop a
+term once its step is under tolerance or it stops shrinking the interval.) It is a finite-difference gradient of α
+against the proof itself (the "find your own gradient / BFGS" move made
+literal). Two payoffs: (i) the survivor is the **minimal proof** objectively — exactly the sub-graph α is sensitive
+to; (ii) it is the **tuning-detector** — a fished/dialed number fails (α doesn't budge = decoration, or swings
+arbitrarily = dialed); a real derivation moves α lawfully. So the same sweep prunes the 16+ sprawl AND vets the
+possibly-tuned `~137.011` — no separate judgment. This IS the §4 serialize/dedup, done rigorously. Grade off
+`#eval`. Do NOT start until §1.2 is green.
 
 ---
 

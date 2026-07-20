@@ -1,5 +1,6 @@
 .*.swpl
 .handoff*
+.ryot-cache/
 .vscode
 .DS_Store
 device/.lake

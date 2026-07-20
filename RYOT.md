@@ -50,7 +50,8 @@ notes_for_agent_b.md  <- written by Agent A, read by Agent B
 ```
 
 A RYOT prompt automation wakes the receiving agent on a cadence. At each wake
-the agent reads its inbox directly, compares the latest valid `HANDOFF` turn
+the agent first polls any configured read-only context input (such as the Ryot
+Slack reader), then reads its inbox directly, compares the latest valid `HANDOFF` turn
 against its handled-state file, handles the current safe unit of work, records
 the handled turn only after acting, and then stops.
 
@@ -215,6 +216,13 @@ Discipline:
 ```text
 - Advisory to Kodo's gates. The beastmaster recommends; Kodo issues the gate to
   Podo. The beastmaster does not open or close writing gates directly.
+- Keep role authority distinct from process orchestration. At the operator's
+  explicit request, the beastmaster may provision or wake separate Kodo and
+  Podo processes. Launching a process is not a writing gate and does not give
+  the beastmaster authority to assign Podo artifact work: the beastmaster gives
+  the operator context to Kodo, and Kodo issues any artifact task or gate to
+  Podo. If the runtime cannot launch a process, report that technical limit;
+  never misstate the feedback-only charter as forbidding the launch itself.
 - Do not corrupt the turn machinery. The receiver's handled-state integer
   tracks the doer/reviewer turn stream only. Beastmaster feedback goes to its
   own ledger (long reviews) plus a short, clearly marked advisory pointer in
@@ -549,9 +557,43 @@ and carry forward any constraints or open questions that still apply.
 
 ## Starting And Waking A Process
 
-A launched process is not yet a participant. "Up" is not "listening": until the
-operator issues an explicit start, the process holds and does nothing. Two
-operator commands drive it:
+A process may be provisioned by the operator or, at the operator's explicit
+request, by a coordinating beastmaster. Provisioning is runtime orchestration,
+not role authority: it neither assigns artifact work nor opens a writing gate.
+Provisioning is complete only when the runtime returns a live process identity.
+The beastmaster must not report a role as started, running, or provisioning
+another role from intent alone. The newly launched role acknowledges its own
+start through the operator-visible channel. Every operator request that enters
+this route receives three distinct role-authored acknowledgements:
+
+```text
+Beastmaster  acknowledges receipt and routing of the operator request.
+Kodo         acknowledges review ownership and the task it will gate to Podo.
+Podo         acknowledges the concrete assignment it accepted from Kodo.
+```
+
+One acknowledgement never stands in for another. Beastmaster does not announce
+Kodo or Podo as though they had spoken; Kodo does not announce Podo's receipt.
+A missing role-authored acknowledgement is a failed or unconfirmed hop, not
+permission for another role to impersonate success.
+
+When the request produces operator-facing artifacts, Kodo returns the reviewed
+artifact paths and provenance to Beastmaster. Beastmaster performs the guarded
+upload to the operator-visible channel and reports the upload receipt. The task
+is not externally delivered merely because files exist locally. If upload
+preflight or Slack file authorization fails, Beastmaster must not retry an
+ambiguous write or claim delivery; it reports the exact non-secret failure and
+keeps the reviewed local artifacts intact.
+
+After every required result has passed Kodo review and every required external
+delivery has a confirmed receipt, Beastmaster posts the closing acknowledgement
+in its own voice: the process is done, what was delivered, and where. This is
+the terminal counterpart to Beastmaster's opening receipt. Beastmaster never
+posts the closing acknowledgement while review, delivery, or another promised
+step remains incomplete.
+The provisioned process is not yet a participant. "Up" is not "listening":
+until the operator issues an explicit start, the process holds and does nothing.
+Two operator commands drive it:
 
 ```text
 RYOT START <role> <task>
@@ -579,9 +621,34 @@ whatever recurring self-prompt or scheduled-wakeup feature the agent's runtime
 provides. RYOT does not prescribe a specific vendor tool, and each wake is one
 bounded check rather than a loop.
 
+### Optional Slack polling reader
+
+`ryot/plugins/slack_reader/` provides a read-only context poll for an operator
+Slack conversation. When configured, each Beastmaster, Kodo, or Podo wake polls
+the newest messages once (default 20) before reading local loop state. The
+snapshot is cached per role under `.ryot-cache/slack/`, so the three seats have
+independent new-message cursors and a failed poll can fall back to the last good
+snapshot.
+
+Slack remains advisory. It is not an inbox, cannot alter a handled-state
+integer, and cannot open or close a writing gate. An actor that discovers an
+operative decision there must carry it into the normal Beastmaster or Kodo/Podo
+channel before treating it as Ryot state. See
+`ryot/plugins/slack_reader/README.md` for setup and the exact command.
+
+After the actor writes its authoritative handoff/checkpoint, the same bridge may
+post one role-labeled mirror back to Slack. Post only after the filesystem write
+succeeds. The `post` operation must perform a fresh last-20 Slack check and
+update the role cache immediately before the write; if that check fails, it
+must not post. Posting failure never rolls back loop state, and an ambiguous
+write failure is never retried automatically. The mirror is for operator
+visibility; the file remains the record.
+
 At each wake, the receiving agent performs one bounded check:
 
 ```text
+poll configured read-only context inputs once (Slack, if enabled)
+read the BEASTMASTER ZONE
 read INBOX
 find the newest valid HANDOFF addressed to AGENT
 ignore malformed, self-authored, or misaddressed handoffs
@@ -853,11 +920,12 @@ For an active two-agent exchange, set the heartbeat to a short interval, usually
 Each wake must be bounded:
 
 ```text
-1. Inspect the agent's inbox.
-2. Compare the newest valid addressed handoff with handled state.
-3. If a fresh handoff exists, process exactly the current safe unit of work.
-4. If no fresh handoff exists, report a short idle status.
-5. Do not start an unbounded loop; one bounded check per wake, then stop.
+1. Poll each configured read-only context input once; use its local cache if stale.
+2. Read the Beastmaster zone, then inspect the agent's inbox.
+3. Compare the newest valid addressed handoff with handled state.
+4. If a fresh handoff exists, process exactly the current safe unit of work.
+5. If no fresh handoff exists, report a short idle status.
+6. Do not start an unbounded loop; one bounded check per wake, then stop.
 ```
 
 If the automation cannot prove delivery of unread handoffs, the system must use
@@ -929,15 +997,15 @@ Kodo (thinker / planner / reviewer) — must keep the loop fed, never idle on
 un-blocked work, yet never manufacture filler:
 
 ```text
-Check your inbox.  If it is idle then add work.  if you are waiting for
-something to be acknowledged, wait.  If you think there is no unblocked work,
-verify with podo.
+Poll Slack if configured, then check your inbox. If it is idle then add work.
+If you are waiting for something to be acknowledged, wait. If you think there
+is no unblocked work, verify with podo.
 ```
 
 Podo (doer / writer / builder) — acts on whatever the inbox contains:
 
 ```text
-Check your inbox and respond.
+Poll Slack if configured, then check your inbox and respond.
 ```
 
 The asymmetry is the point. Kodo proactively generates and verifies work (design,
@@ -1213,3 +1281,7 @@ Write every handoff so the other agent can resume after forgetting the previous
 conversation. If that feels repetitive, it is probably doing its job.
 
 Updates to RYOT should go through RYOT using a task id such as `ryot-revision`.
+
+## Safety Warning
+
+Antigravity is dangerous to use as a RYOT agent. See file: [ANTIGRAVITY_IS_UNSAFE_TO_USE.md](ANTIGRAVITY_IS_UNSAFE_TO_USE.md).

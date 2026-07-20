@@ -3,50 +3,35 @@ import Experiments.TheProverVerifierEffect.Experiment2
 namespace Experiments.TheProverVerifierEffect
 
 /-
-Experiment3: short path versus long path.
+Experiment3: short path versus long path (updated for the device-coupled Experiment1).
 
-Experiment1 gives the direct finite ledger reading: run the default setup and
-state the local claim on that output.
-
-Experiment2 gives the audited route: expose the exported experiment, its tag,
-and the fact that the exported claim is the setup-local statement evaluated at `defaultSetup`.
-
-This layer compares those two routes.  The extra audit bookkeeping is allowed
-to travel, but it must funge back to the same receipt: the same run output, the
-same claim proposition, and the same proved default receipt.
+The direct Experiment1 reading and the Experiment2 audited route must funge back to the same
+receipt: the same run output, the same exported claim, and the same proved default receipt.
 -/
 
 /-- The short path is the direct Experiment1 reading. -/
-def shortPath : RunOutput :=
+def shortPath : Bool :=
   run defaultSetup
 
 /-- The long path is the Experiment2 audited experiment run on the same setup. -/
-def longPath : RunOutput :=
+def longPath : Bool :=
   auditedExperiment.run defaultSetup
 
-/-- Both paths read the same finite ledger output. -/
+/-- Both paths read the same output. -/
 theorem short_long_outputs_agree :
-    shortPath = longPath := by
-  rfl
+    shortPath = longPath := rfl
 
-/-- The direct claim and the exported audited claim are the same proposition. -/
+/-- The direct exported claim and the audited exported claim are the same proposition. -/
 theorem short_long_claims_agree :
-    claimStatement shortPath = auditedExperiment.claim defaultSetup := by
-  rfl
+    experiment.claim defaultSetup = auditedExperiment.claim defaultSetup := rfl
 
-/--
-The receipt comparison closes: both the short direct claim and the audited
-exported claim hold at the default setup.
--/
+/-- The receipt comparison closes: the exported claim holds at the default setup on both routes. -/
 theorem short_long_receipt_closes :
-    claimStatement shortPath ∧ auditedExperiment.claim defaultSetup := by
-  constructor
-  · exact claim_holds
-  · exact exported_claim_holds_at_default
+    experiment.claim defaultSetup ∧ auditedExperiment.claim defaultSetup :=
+  ⟨exported_claim_holds_at_default, exported_claim_holds_at_default⟩
 
 /-- The audit path adds bookkeeping, not a new claim ceiling. -/
 theorem short_long_tags_agree :
-    auditedExperiment.tag = claim.tag := by
-  rfl
+    auditedExperiment.tag = claim.tag := rfl
 
 end Experiments.TheProverVerifierEffect

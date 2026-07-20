@@ -3,52 +3,38 @@ import Experiments.TheProverVerifierEffect.Experiment1
 namespace Experiments.TheProverVerifierEffect
 
 /-
-Experiment2: feedback audit layer.
+Experiment2: feedback audit layer (updated for the device-coupled Experiment1).
 
-The adversarial review noted that `Experiment1.experiment.claim` must not be
-read as a theorem about arbitrary setups.  This layer makes the intended shape
-explicit: the exported claim is the setup-local proposition computed from
-`run setup`.  The default receipt is still only a proof for `defaultSetup`;
-other setups must supply their own preconditions.
+Experiment1 now couples the exported claim to the device's `verify` API. This layer keeps the audit
+invariants that survive that upgrade: the exported per-setup claim is the run firing, the default
+receipt holds, and the tag ceiling is unchanged.
 -/
 
-def defaultOutput : RunOutput :=
+def defaultOutput : Bool :=
   run defaultSetup
 
 theorem defaultOutput_eq_run :
-    defaultOutput = run defaultSetup := by
-  rfl
+    defaultOutput = run defaultSetup := rfl
 
 theorem exported_tag_matches_claim :
-    experiment.tag = claim.tag := by
-  rfl
-
-theorem tag_allows_modelKind :
-    Experiments.Common.ClaimTag.allowsModelKind claim.tag modelKind = true := by
-  decide
-
-theorem claimStatement_holds_when_required_accessible (setup : Setup)
-    (h : (run setup).required <= (run setup).accessible) :
-    claimStatement (run setup) := by
-  exact h
-
-theorem exported_claim_is_setup_local (setup : Setup) :
-    experiment.claim setup = claimStatement (run setup) := by
-  rfl
+    experiment.tag = claim.tag := rfl
 
 theorem audited_claim_holds :
-    claim.statement := by
-  exact claim_holds
+    claim.statement := claim_holds
 
+/-- The exported per-setup claim fires exactly when the run reports `true` (setup-local, decidable). -/
+theorem exported_claim_iff_run (setup : Setup) :
+    experiment.claim setup ↔ run setup = true := by
+  show accepted setup ↔ decide (accepted setup) = true
+  exact (decide_eq_true_iff).symm
+
+/-- The exported claim holds at the default setup (the prover's matching claim verifies). -/
 theorem exported_claim_holds_at_default :
     experiment.claim defaultSetup := by
-  exact claim_holds
+  show accepted defaultSetup
+  native_decide
 
-theorem exported_claim_tracks_run (setup : Setup) :
-    experiment.claim setup = claimStatement (run setup) := by
-  rfl
-
-def auditedExperiment : Experiments.Common.Experiment Setup RunOutput :=
+def auditedExperiment : Experiments.Common.Experiment Setup Bool :=
   experiment
 
 end Experiments.TheProverVerifierEffect
