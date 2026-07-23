@@ -67,10 +67,16 @@ def ApparatusRatio.inverseRemainder (q : ApparatusRatio) : Nat :=
   q.denominator % q.numerator
 
 /-- `ApparatusRatio.scaledFloor (q) (scale) : Nat` — `q` read to `scale` fixed-point units,
-`q.numerator * scale / q.denominator`. With `scale = pow10 18` this is the reading to eighteen decimal
+`q.numerator * scale / q.denominator`. With `scale = readoutScale` this is the reading to eighteen decimal
 places, exact by integer arithmetic. -/
 def ApparatusRatio.scaledFloor (q : ApparatusRatio) (scale : Nat) : Nat :=
   q.numerator * scale / q.denominator
+
+/-- `ApparatusRatio.scaledRemainder (q) (scale) : Nat` — the sub-scale tail `scaledFloor` drops,
+`q.numerator * scale % q.denominator`. Kept alongside so the scaled readout is information-preserving
+(floors travel with their remainders); `scaledFloor`'s value is unchanged. -/
+def ApparatusRatio.scaledRemainder (q : ApparatusRatio) (scale : Nat) : Nat :=
+  q.numerator * scale % q.denominator
 
 /-- `cooperPairSourceLeft : WheelStimulusRead` — the left source mass of the balance: the Cooper-pair
 binding residual `elabBindingEnergyB2` dropped onto the Ep25 wheel. -/
@@ -97,15 +103,30 @@ def cavendishTorsionFiber : WheelStimulusRead :=
 def cavendishSourceMassTotal : Nat :=
   cooperPairSourceLeft.magnitude + cooperPairSourceRight.magnitude
 
+/-- `earnedSum (a b) : Nat` — `a + b` EARNED as a CARDINALITY, not the postulated `+` operator (operator
+2026-07-22: "we never actually earn addition, you have to use the `Sum`"). It is the length of the
+coproduct roster `Fin-a ⊕ Fin-b` — `a` left-tagged elements followed by `b` right-tagged ones — counted by
+`List.length` (i.e. `Nat.succ` per element, the fencepost primitive). The `+` operator never appears in the
+definition; `earnedSum_eq` derives its value AS a fact, mirroring `CycleOfThree.cardPairSumPost`. -/
+def earnedSum (a b : Nat) : Nat :=
+  ((List.range a).map Sum.inl ++ (List.range b).map Sum.inr : List (Nat ⊕ Nat)).length
+
+/-- `earnedSum_eq : earnedSum a b = a + b` — the earned cardinality equals what `+` would give. This is a
+DERIVED bridge (a theorem), not the definition: the quantity is grounded in the `Sum`, and `+` is read off
+it afterward — the operator's "earn addition via `Sum`" discipline. -/
+theorem earnedSum_eq (a b : Nat) : earnedSum a b = a + b := by
+  simp [earnedSum, List.length_append, List.length_map, List.length_range]
+
 /-- `cavendishArm : Nat` — the balance arm, the electron's box value (`electronBox.val`); a denominator
 term of `G`. -/
 def cavendishArm : Nat :=
   electronBox.val
 
-/-- `cavendishSeparation : Nat` — the source–test separation, `boxCount + electronBox.val`; its square is
-the numerator term of `G`. -/
+/-- `cavendishSeparation : Nat` — the source–test separation, `boxCount ⊕ electronBox.val` counted as a
+cardinality (`earnedSum`, no postulated `+`); its square is the numerator term of `G`. Value = `boxCount +
+electronBox.val` (by `earnedSum_eq`), so `G` and everything downstream is byte-identical. -/
 def cavendishSeparation : Nat :=
-  boxCount + electronBox.val
+  earnedSum boxCount electronBox.val
 
 /-- `cavendishObservedSlip (dial) : Nat` — the observed torsion: how far the mass face outruns the larger
 of charge and value on the dial, `dial.massCount - Nat.max dial.chargeCount dial.valueCount`. The
@@ -144,7 +165,6 @@ structure CavendishBalanceReport where
   observedMassValue : WheelStimulusRead
   calibration : ApparatusRatio
   deviceG : ApparatusRatio
-  deviceGScaledAt18 : Nat
   calibrationFloor : Nat
   calibrationRemainder : Nat
   inverseCalibrationFloor : Nat
@@ -183,7 +203,6 @@ def cavendishCooperElectron (lower upper : Nat) : CavendishBalanceReport :=
     observedMassValue := observedMassValue
     calibration := calibration
     deviceG := calibration
-    deviceGScaledAt18 := calibration.scaledFloor (pow10 18)
     calibrationFloor := calibration.floor
     calibrationRemainder := calibration.remainder
     inverseCalibrationFloor := calibration.inverseFloor
@@ -192,29 +211,74 @@ def cavendishCooperElectron (lower upper : Nat) : CavendishBalanceReport :=
     quantumGravityResolved := motionResolved
       && (decide (cooperPairSourceLeft.magnitude = cooperPairSourceRight.magnitude) : Bool) }
 
+/-- `assayLower`/`assayUpper` — the Cavendish assay's corridor-bin WINDOW (audit #2, declared once instead
+of the anonymous `1 1000000` repeated across the mass-triplet sites). NOT a magic number: it is the
+CONVERGENCE WINDOW over which the assay's mass-triplet reading settles (`massValue → 2`). `deviceG` is
+PROVABLY range-independent above the mass triplet — every `[1, N]` with `N` past threshold gives `18/2132`
+(checked: N = 10, 100, 1000000 all agree) — so `assayUpper` is any sufficiently-large bound. The direct
+device-derived alternative to the window, `proximitySlipFloor cavendishSeparation = 2`, is CIRCULAR
+(`proximitySlipFloor`'s slip law is derived FROM `deviceG`), so the assay window IS `deviceG`'s PRIMARY
+measurement, not a substitutable constant — full removal is not available, honest naming is. -/
+def assayLower : Nat := 1
+def assayUpper : Nat := 1000000
+
 /-- `deviceG : ApparatusRatio` — the device's gravitational constant: the `deviceG` of the assay run over
-`[1, 1000000]`. The little brass weight itself, `18/2132`. -/
+the convergence window `[assayLower, assayUpper]`. The little brass weight itself, `18/2132`. -/
 def deviceG : ApparatusRatio :=
-  (cavendishCooperElectron 1 1000000).deviceG
+  (cavendishCooperElectron assayLower assayUpper).deviceG
 
-/-- `deviceG_is_eighteen_over_2132 : deviceG.numerator = 18 ∧ deviceG.denominator = 2132`.
-**Proposition:** the device's gravity ratio is exactly eighteen over two thousand one hundred thirty-two
-— numerator `18`, denominator `2132`. **Mechanism:** `⟨rfl, rfl⟩` — both conjuncts hold by `rfl`, i.e.
-the kernel computes `deviceG` and each side is definitionally equal; exact, no float, no approximation.
-**Squeeze role:** the FIRST facet PINNED — the gravity facet of the object fixed to an exact point, the
-bracket collapsed to the single value `18/2132`. This is the device's own number, the reading of its own
-apparatus, not Newton's specific constant. -/
-theorem deviceG_is_eighteen_over_2132 :
-    deviceG.numerator = 18 ∧ deviceG.denominator = 2132 := by
-  exact ⟨rfl, rfl⟩
+/-- `deviceG_coupling_is_eighteen : deviceG.numerator = 18` — the gravity facet's COUPLING, the device's
+own number (`slip · sep² = 2 · 9`). KEPT from the old `deviceG_is_eighteen_over_2132`: this is the
+invariant that feeds α (`= C = slip(1)`). The bare DENOMINATOR the old theorem also pinned (`= 2132`) has
+been RETIRED — see `deviceG_coupling_scale_invariant` below for why a bare heartbeat count must not be asserted. -/
+theorem deviceG_coupling_is_eighteen : deviceG.numerator = 18 := rfl
 
-/-! ## Readouts — the assay figures (the pinned weight and its scalings)
-Four `#eval`s: the full assay over `[1, 1000000]`, `deviceG` itself, `deviceG` to eighteen places, and
-its inverse floor/remainder. The theorem above is the weight settled on the scale; these are the bench's
-dials showing it. One facet fixed — the next facet, α, is bracketed (not pinned) next door. -/
-#eval cavendishCooperElectron 1 1000000
+/-- `deviceG_coupling_scale_invariant : ∀ M : Nat, 0 < M → deviceG.numerator * M / M = 18` — the
+STRONG-FORM cancellation PATTERN (operator 2026-07-23: "strong form, weak form wastes the finding") that
+replaces the `deviceG.denominator = 2132` conjunct the old `deviceG_is_eighteen_over_2132` carried. This is
+the abstract MECHANISM, NOT itself a claim about any particular jar reading — its name says exactly what its
+statement says (the coupling `deviceG.numerator = 18` survives division by any mass magnitude `M`). The
+theorems ON the real jar inputs are stated elsewhere and each proved through their OWN def's cancellation:
+`mediantC_is_eighteen` (C = slip(1) = 18, AlphaBoundMediant), `firstSlipTargetBetweenOneAndTwo_is_five`
+(T = ⌊18/4⌋+1 = 5, Ep29), `naturalUnitOrbitRadius_is_eighteen` (R = ⌈18·s/s⌉ = 18, Ep32).
+
+**Why the old pin was retired.** `deviceG.denominator = sourceMassTotal · testMass · arm`, and
+`cavendishSourceMassTotal` is a raw Lean-heartbeat magnitude (`|targetB2 − predicted| + |targetDriver −
+predicted|`, baked at elaboration by `register_heart_rate_as`, Ep23). It is NON-CANONICAL: it reads `2132`
+with the episode `#eval`s present and `2131` with them extracted — BOTH clean reads, under different
+elaboration states. So no theorem should assert either as "the" value; pinning a bare heartbeat count is
+the crank's fake precision (external-review Point 9 — raw heartbeats are machine/version-dependent).
+
+**The cancellation.** Every jar input has the mass product `M = sourceMassTotal · testMass · arm` in BOTH
+its numerator and denominator (because `deviceG.denominator = M` by `cavendishCalibration`'s def), so `M`
+cancels and the reading is the pure coupling `deviceG.numerator = 18` times a structural distance factor —
+independent of the heartbeat. This lemma is that cancellation in the abstract (`deviceG.numerator · M / M =
+18` for ANY `M > 0`); the `∀ M` is in the STATEMENT, so it is the pattern proved for every possible drifted
+value at once — NOT an `rfl` at the current `2132`. `Nat.mul_div_cancel` does it for all `M`; the coupling
+`deviceG.numerator = 18` closes it. Mirrors `selfEnergy_scale_invariant` (the −21/573 Gibbs discipline).
+
+**Drift-immunity is STRUCTURAL, not a perturbation test.** Because the `∀ M` ranges over every magnitude,
+the reading is proved drift-immune by structural cancellation — the `2132 → 2131` drift is just two of the
+infinitely many `M > 0` instances, all giving `18`. No empirical `#eval`-perturbation run is needed (it
+would be strictly weaker, and would edit jar-feeding files); the ∀-proof subsumes it. -/
+theorem deviceG_coupling_scale_invariant : ∀ M : Nat, 0 < M → deviceG.numerator * M / M = 18 := by
+  intro M hM
+  rw [Nat.mul_div_cancel _ hM]
+  rfl
+
+/-! ## Readouts — the assay figures (the internal reading and its scalings)
+Four `#eval`s: the full assay over `[1, 1000000]`, `deviceG` itself, `deviceG` to eighteen places, and its
+inverse floor/remainder. These dials show the INTERNAL reading `18/2132` — but note the denominator `2132`
+is a non-canonical heartbeat count (it drifts to `2131` under a different elaboration state); what the
+theorems above ASSERT is not that count but the drift-immune COUPLING (`deviceG.numerator = 18`) and the
+scale-invariant observable it feeds (`slip(1) = 18` for any `M > 0`). One facet's INVARIANT fixed — the
+next facet, α, is bracketed (not pinned) next door. -/
+#eval cavendishCooperElectron assayLower assayUpper
+
 #eval deviceG
-#eval deviceG.scaledFloor (pow10 18)
+
+#eval deviceG.scaledFloor (readoutScale)
+
 #eval (deviceG.inverseFloor, deviceG.inverseRemainder)
 
 end Measurement

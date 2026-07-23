@@ -4,8 +4,6 @@ import Measurement.Episode24
 class instances interpret it. This file adds the rotation operation without
 rebuilding the corridor: rotate the tape/read head, then ask the same resolved
 instance fields; rotate the recovered bracket, then ask the existing face readers.
-
-The target is the finite half-turn itself: floor((pi / 2) * 10^precision).
 -/
 
 /-! # Meanwhile 25 — the present received: the object, handed over whole  (❄ shake-test)
@@ -24,10 +22,11 @@ object's own ground — stays wrapped.
 
 **The squeeze (overview).** Nothing is squeezed here: this file lays out the RULER the later facets
 are squeezed on — `BracketedNumber` (whose `lower`/`upper` are the two exact bounds a facet is caught
-between, `value` the pinned reading), the period-3 charge/mass/value face wheel, and the finite,
-truncated π/2 crank read from stored decimal digits (no float). There is no theorem in this file, only
-`#eval`: the object is received whole and the wheel is turned and read off — computed, never a receipt
-— before the first bracket closes next door at G.
+between, `value` the pinned reading) and the period-3 charge/mass/value face wheel. (The finite π/2 crank
+that once turned the wheel from a stored decimal list is RETIRED — π is now MEASURED off the orbit by the
+polygon squeeze, `ArchimedesPi`.) There is no theorem in this file, only `#eval`: the object is received
+whole and the wheel is turned and read off — computed, never a receipt — before the first bracket closes
+next door at G.
 -/
 
 namespace Measurement
@@ -180,29 +179,24 @@ def CorridorFace.rotateN : Nat -> CorridorFace -> CorridorFace
   | n + 1, face => rotateN n face.rotate
 
 /-- `pow10 : Nat → Nat` — ten to the `n`, by structural recursion (`0 ↦ 1`; `n+1 ↦ 10 * pow10 n`). The
-exact decimal scale a reading is taken to (`pow10 18` = eighteen places). -/
+exact decimal scale a reading is taken to (`readoutScale` = eighteen places). -/
 def pow10 : Nat -> Nat
   | 0 => 1
   | n + 1 => 10 * pow10 n
 
-/-- `piDecimalDigits : List Nat` — the first forty decimal digits of π as literal data (no float, no
-transcendental function). The source the finite π-crank reads from. -/
-def piDecimalDigits : List Nat :=
-  [1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6,
-   2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5, 0, 2, 8, 8, 4, 1, 9, 7, 1]
+/-- `readoutScale : Nat` — the ×1e18 fixed-point READOUT scale (audit #6, declared once). This is a base-10
+display convention (the device's chosen readout alphabet), NOT a physics constant — every scaled reading
+(`scaledFloor`/`inverseScaledFloor readoutScale`, the ×1e18 α/G/etc. readouts) is taken to `readoutScale`
+places. Named once here instead of the ~66 inline `readoutScale`. -/
+def readoutScale : Nat := pow10 18
 
-/-- `piTruncatedTurns : Nat → Nat` — π truncated to `precision` decimals as a whole number, built digit
-by digit from `piDecimalDigits` (`0 ↦ 3`; `precision+1 ↦ 10 * … + next digit`). Exact integer
-arithmetic; `getD … 0` returns 0 past the stored digits. -/
-def piTruncatedTurns : Nat -> Nat
-  | 0 => 3
-  | precision + 1 =>
-      10 * piTruncatedTurns precision + piDecimalDigits.getD precision 0
-
-/-- `halfPiTruncatedTurns (precision) : Nat` — the truncated π halved by integer division: how far the
-crank is turned, a finite decimal-cut fraction of the full sweep, never the whole irrational turn. -/
-def halfPiTruncatedTurns (precision : Nat) : Nat :=
-  piTruncatedTurns precision / 2
+-- ⭐ RETIRED (2026-07-22, operator "go for retirement"): the finite π/2 crank — `piDecimalDigits` (the
+-- stored 40-digit list), `piTruncatedTurns`, `halfPiTruncatedTurns`(+Remainder) — is REMOVED. π is no
+-- longer a memorized decimal list here; it is MEASURED off the device's own orbit by the polygon squeeze
+-- (`ArchimedesPi`, π ∈ (223/71, 22/7) proved axiom-free), and the nowtrino sources π's fractional part
+-- from that measurement (`AffineConstant`). The digit list died by EARNING. (Ep25 can't import
+-- ArchimedesPi — that would cycle — so the crank is retired by removal, not rewired in place.) The
+-- corridor's rotation machinery below (`corridorReducedTurns`, the face wheel) is UNCHANGED.
 
 /-- `corridorPeriod : Nat` — the wheel's period, `3` (three faces). The modulus every face count reduces
 by. -/
@@ -214,55 +208,11 @@ far as which face shows. -/
 def corridorReducedTurns (turns : Nat) : Nat :=
   turns % corridorPeriod
 
-/-- `RotatedCorridorRead` — one readout after cranking: the precision and its scale, the raw and reduced
-turn counts, the active face, the three face depths, the phase, and the electron's box value riding
-along. The electron sits at `boxCount = 2` provisionally ("for the fun of it"); it earns its own
-distinction only later in the walk. -/
-structure RotatedCorridorRead where
-  precision : Nat
-  scale : Nat
-  turns : Nat
-  reducedTurns : Nat
-  activeFace : CorridorFace
-  chargeDepth : Nat
-  massDepth : Nat
-  valueDepth : Nat
-  phase : QPhase
-  electronBoxValue : Nat
-deriving Repr
-
-/-- `rotatedCorridorRead (precision) (n) (ledger) : RotatedCorridorRead` — crank to the truncated
-half-turn, reduce mod 3, rotate the bracket that far, recover its faces (`recover`, from Ep22), and
-report face / three depths / phase plus `electronBox.val`. One full turn-and-read of the wheel. -/
-def rotatedCorridorRead
-    (precision : Nat) (n : BracketedNumber) (ledger : Fact) : RotatedCorridorRead :=
-  let turns := halfPiTruncatedTurns precision
-  let reducedTurns := corridorReducedTurns turns
-  let rotated := n.rotate reducedTurns
-  let recovered := recover rotated ledger
-  { precision := precision
-    scale := pow10 precision
-    turns := turns
-    reducedTurns := reducedTurns
-    activeFace := CorridorFace.rotateN reducedTurns .charge
-    chargeDepth := recovered.charge.corridorDepth
-    massDepth := recovered.mass.corridorDepth
-    valueDepth := rotated.value.corridorDepth
-    phase := recovered.phase
-    electronBoxValue := electronBox.val }
-
-/-- `driverBracket : BracketedNumber` — the particular corridor number kept under the wheel (the same
-literal the earlier files drove): `lower = .one/.one/.zero`, `upper = .zero`, `value = .one/.zero`. -/
-def driverBracket : BracketedNumber :=
-  { lower := .one Fact.Truth (.one Fact.Truth (.zero Fact.Truth))
-    upper := .zero Fact.Truth
-    value := .one Fact.Truth (.zero Fact.Truth) }
-
-/-- `rotatedDriverCorridor (maxPrecision) : List RotatedCorridorRead` — read `driverBracket` at every
-precision from 0 to `maxPrecision`, so the crank's refinement is visible as π's decimals come in. -/
-def rotatedDriverCorridor (maxPrecision : Nat) : List RotatedCorridorRead :=
-  (List.range (maxPrecision + 1)).map fun precision =>
-    rotatedCorridorRead precision driverBracket Fact.Truth
+-- ⭐ RETIRED (with the π/2 crank above): `RotatedCorridorRead` / `rotatedCorridorRead` / `driverBracket`
+-- / `rotatedDriverCorridor` — the readout that cranked the corridor by the truncated half-π and printed
+-- it across precisions "as π's decimals come in." With the digit list retired (π now MEASURED off the
+-- orbit, `ArchimedesPi`), this decimals-driven demo is gone. The bin tally and the gravity-slip read
+-- below (which do NOT depend on π) remain the file's readouts.
 
 /-- `CorridorFace.ofReducedTurns : Nat → CorridorFace` — the face for a reduced (mod-3) turn count
 (`0 ↦ charge`, `1 ↦ mass`, else `value`). -/
@@ -421,11 +371,12 @@ def buildGravitySlipReport (lower upper : Nat) : BuildGravitySlipReport :=
         wheelStimulusRead "bindingEnergyDriverDef" elabBindingEnergyDriverDef ] }
 
 /-! ## Readouts — turn the wheel and print it (computed, not proved)
-Three `#eval`s: the driver corridor across precisions, the bin tally over `[1, 1000000]`, and the
-composite gravity-slip read. No theorem stands under any of them — the object is received whole and the
-wheel is read off, before the first facet is squeezed next door at G. The last box stays wrapped. -/
-#eval rotatedDriverCorridor 12
+Two `#eval`s: the bin tally over `[1, 1000000]` and the composite gravity-slip read. (The precision-swept
+driver corridor is retired with the π/2 crank — π is now MEASURED off the orbit, not cranked from stored
+digits.) No theorem stands under either — the object is received whole and the wheel is read off, before
+the first facet is squeezed next door at G. The last box stays wrapped. -/
 #eval corridorBinReport 1 1000000
+
 #eval buildGravitySlipReport 1 1000000
 
 end Measurement

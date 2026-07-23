@@ -66,7 +66,7 @@ def proximitySlipFloor (distance : Nat) : Nat :=
 def proximitySlipScaledAt18 (distance : Nat) : Nat :=
   match proximitySlip? distance with
   | none => 0
-  | some slip => slip.scaledFloor (pow10 18)
+  | some slip => slip.scaledFloor (readoutScale)
 
 /-- `proximityRuptureThreshold : Nat` — where the fit gives: the original separation squared,
 `square cavendishSeparation`. -/

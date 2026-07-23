@@ -32,12 +32,16 @@ device, this is where the electron has to fall. The walk from here keeps opening
 the not-zero box into finer boxes (each also ours, each also cromulent, none the
 world's own), and the electron keeps the only room finiteness ever leaves it. -/
 #eval boxCount                          -- the box count: 2
+
 #eval electronBox                       -- the electron's box: 1 (second-variation box)
+
 #eval (decide (electronBox ≠ valueBox) : Bool)   -- electron box is not the value box: true
+
 #eval (decide (boxOf (.gateaux (.epiphany True) True True (.newton (.epiphany True) True))
               = boxOf (.frechet (.epiphany True) True True True
                         (.newton (.epiphany True) True) (.newton (.epiphany True) True))) : Bool)
                                         -- premise 2b holds: true
+
 #eval (decide (boxOfTensor .universe = boxOfTensor .plain) : Bool)   -- premise 2a holds: true
 
 end Measurement

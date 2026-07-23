@@ -22,11 +22,40 @@ namespace Measurement
 
 open Measurement
 
-def mediantTgt : Nat := firstSlipTargetBetweenOneAndTwo   -- = 5
+def mediantTgt : Nat := firstSlipTargetBetweenOneAndTwo   -- T = target = 5 (device-derived)
+def mediantC : Nat := (rationalProximitySlip RationalDistance.one).floor   -- C = slip(1) = 18 (measured, Ep29)
 
--- The crossing is √(18/5) = √90 / 5.  PQa on (P₀,Q₀,D) = (0,5,90).
-def cfD : Nat := 90
-def cfSqrtD : Nat := 9                                     -- ⌊√90⌋ = 9 (9²=81 ≤ 90 < 100=10²)
+/-- `mediantC_is_eighteen : mediantC = 18` — C, the jar's slip-coupling input, asserted on the REAL thing
+the jar reads (`(rationalProximitySlip 1).floor`) and proved DRIFT-IMMUNE by structural cancellation (strong
+form, NOT `rfl` at the heartbeat). The slip-at-1 numerator is `deviceG.numerator · P` and its denominator is
+`deviceG.denominator · 1 = P`, for the same mass product `P = sourceMassTotal · testMass · arm` (since
+`deviceG.denominator = P` by `cavendishCalibration`'s def) — so `P` CANCELS (`Nat.mul_div_cancel`), leaving
+`deviceG.numerator = 18`, independent of every heartbeat count in `P`. This is the invariant on the jar's
+actual input (retiring the reliance on an abstract `deviceG.num·M/M` model that was one unfold away in
+prose). One root, three paths: the same `deviceG.numerator = 18` gives T = 5
+(`firstSlipTargetBetweenOneAndTwo_is_five`, slip-at-2) and R = 18 (`naturalUnitOrbitRadius_is_eighteen`,
+ceil) — NAMED as one coupling read three ways, never sold as independent 18s. -/
+theorem mediantC_is_eighteen : mediantC = 18 := by
+  have hP : 0 < cavendishSourceMassTotal * tetheredElectronTestMass.magnitude * cavendishArm := by decide
+  show (rationalProximitySlip RationalDistance.one).floor = 18
+  simp only [rationalProximitySlip, ApparatusRatio.floor, RationalDistance.one,
+    RationalDistance.squaredNumerator, RationalDistance.squaredDenominator, square, Nat.mul_one]
+  rw [show deviceG.denominator
+         = cavendishSourceMassTotal * tetheredElectronTestMass.magnitude * cavendishArm from rfl,
+      show deviceG.numerator * cavendishSourceMassTotal * tetheredElectronTestMass.magnitude * cavendishArm
+         = 18 * (cavendishSourceMassTotal * tetheredElectronTestMass.magnitude * cavendishArm)
+         from by simp only [show deviceG.numerator = 18 from rfl, Nat.mul_assoc]]
+  exact Nat.mul_div_cancel _ hP
+
+-- The crossing is √(18/5) = √90 / 5.  PQa on (P₀,Q₀,D) = (0, T, C·T) = (0, 5, 90) — all device quantities.
+def cfD : Nat := mediantC * mediantTgt                    -- D = C·T = 18·5 = 90 (no naked 90)
+
+/-- `floorSqrt n = ⌊√n⌋` — the largest `k` with `k·k ≤ n`, COMPUTED by the kernel (fold over `0..n`),
+since this Mathlib-free toolchain has no `Nat.sqrt`. Kernel arithmetic — a conforming source (no keyboard literal). -/
+def floorSqrt (n : Nat) : Nat :=
+  (List.range (n + 1)).foldl (fun acc k => if k * k ≤ n then k else acc) 0
+
+def cfSqrtD : Nat := floorSqrt cfD                         -- ⌊√cfD⌋ = ⌊√90⌋ = 9, off the kernel (no naked 9)
 example : cfSqrtD * cfSqrtD ≤ cfD ∧ cfD < (cfSqrtD + 1) * (cfSqrtD + 1) := by decide
 
 /-- One Euclidean/continued-fraction step in the modulo realm: `a = (P+⌊√D⌋)/Q` (integer division),
@@ -44,29 +73,24 @@ def cfAux : Nat → Nat → Nat → Nat → Nat → Nat → Nat → List (Nat ×
 
 /-- Convergents of the crossing √(18/5), computed in the modulo realm (division, not unary mediant). -/
 def crossingConvergents (n : Nat) : List (Nat × Nat × Nat) :=
-  cfAux n 0 5 1 0 0 1
+  cfAux n 0 mediantTgt 1 0 0 1                             -- Q₀ = T = mediantTgt (no naked 5)
 
 def mediantInvAlphaAt (d : RationalDistance) : Nat :=
-  (alphaFromSecondVariationAtDistance mediantTgt d).inverseScaledFloor (pow10 18)
+  (alphaFromSecondVariationAtDistance mediantTgt d).inverseScaledFloor (readoutScale)
 
 /-- inv-α (×1e18) at a convergent h/k. -/
 def convInvAlpha (hk : Nat × Nat × Nat) : Nat :=
   mediantInvAlphaAt { numerator := hk.2.1, denominator := hk.2.2 }
 
 -- The continued fraction, its convergents, and the inv-α at each convergent.
-#eval s!"crossing = √90/5 = √(18/5) ≈ 1.897367;  partial quotients [a₀;a₁,a₂,…] (modulo realm):"
-#eval s!"  {(crossingConvergents 8).map (fun t => t.1)}"
-#eval s!"convergents h/k and inv-α(×1e18):"
-#eval String.intercalate "\n" ((crossingConvergents 8).mapIdx (fun i t =>
-  s!"  conv{i} (a={t.1}): {t.2.1}/{t.2.2}   inv-α = {mediantInvAlphaAt {numerator:=t.2.1,denominator:=t.2.2}}"))
+-- ── #eval readout/display for this module lives in `Measurement.Gauge.AlphaBoundMediantDisplay`
+--    (Gauge phase): the mediant/CF physics + count-3 bracket defs (which FEED THE JAR) stay here. ──
 
 -- RICHARDSON REFINEMENT FAMILY (operator protocol 2026-07-11): the CF convergents ARE A(hⱼ) — the
 -- modulo-realm descent is the reproducible refinement parameter h. Deep family (conv0..19) so the
 -- observed order p_obs can be checked for STABILIZATION on the fixed-r PERIOD subsample (period
 -- [1,8,1,2] = 4; same-phase convergents approach the limit monotonically from one side). Machine-owned
 -- A_j at scaled-integer ×1e18 with inverseScaledFloor rounding. Emits `RICH conv{i} k={k} invA18={..}`.
-#eval String.intercalate "\n" ((crossingConvergents 20).mapIdx (fun i t =>
-  s!"RICH conv{i} a={t.1} k={t.2.2} invA18={mediantInvAlphaAt {numerator:=t.2.1,denominator:=t.2.2}}"))
 
 -- Successive convergents bracket the crossing ALTERNATELY (CF property). The device counts to three:
 -- COUNT-TO-3 = 3 partial quotients [a₀,a₁,a₂] → convergent #2, bracketed against convergent #1.
@@ -80,12 +104,10 @@ def count3Hi : RationalDistance := convAt 1   -- [1;1]  = 2/1   (above the cross
 def count3InvLo : Nat := mediantInvAlphaAt count3Lo   -- inv-α at 17/9 (upper wall)
 def count3InvHi : Nat := mediantInvAlphaAt count3Hi   -- inv-α at 2/1  (lower wall)
 
-#eval s!"COUNT-TO-3 (3 partial quotients) bracket:  [{count3Lo.numerator}/{count3Lo.denominator} , {count3Hi.numerator}/{count3Hi.denominator}]  inv-α ∈ [{count3InvHi} .. {count3InvLo}]"
 
 -- For reference: the next convergent tightens the far wall (count-to-4 = [17/9, 19/10]).
 def count4Lo : RationalDistance := convAt 2   -- 17/9
 def count4Hi : RationalDistance := convAt 3   -- 19/10
-#eval s!"COUNT-TO-4 (4 partial quotients) bracket:  [{count4Lo.numerator}/{count4Lo.denominator} , {count4Hi.numerator}/{count4Hi.denominator}]  inv-α ∈ [{mediantInvAlphaAt count4Lo} .. {mediantInvAlphaAt count4Hi}]"
 
 -- Choice-free / modulo-realm witness: the count-3 convergent bracket is strictly ordered, decided,
 -- no Classical.choice.

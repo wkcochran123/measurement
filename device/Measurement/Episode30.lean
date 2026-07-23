@@ -22,7 +22,7 @@ two channels, allocated against each other. We describe the facet in the device'
 never open or solve Yang–Mills, and the last box stays wrapped.
 
 **The squeeze (a PINNED equality).** Each column is written as its share of the total, and the two shares
-sum to EXACTLY one — `normalizedSumScaledAt18 = pow10 18`, i.e. 1.000…0 to eighteen places, an exact
+sum to EXACTLY one — `normalizedSumScaledAt18 = readoutScale`, i.e. 1.000…0 to eighteen places, an exact
 `rfl`. The balance facet is fixed to the exact value 1, by the kernel, no float.
 
 **⚠️ Stereo vs single meter (the fence for this facet).** Charge and mass here ARE the device's two
@@ -158,8 +158,26 @@ def slipPointMoments (weight squareSum cubeSum : Nat) : SlipPointMoments :=
     accumulatedCubedSlipPoint := cubeSum
     estimatedSlipPoint := estimate
     variance := variance
-    estimatedSlipPointScaledAt18 := estimate.scaledFloor (pow10 18)
-    varianceScaledAt18 := variance.scaledFloor (pow10 18) }
+    estimatedSlipPointScaledAt18 := estimate.scaledFloor (readoutScale)
+    varianceScaledAt18 := variance.scaledFloor (readoutScale) }
+
+/-- `slipPointVarianceNumeratorSigned (weight squareSum cubeSum) : Int` — the SIGNED variance numerator
+`cubeSum·weight − squareSum²` (Batch 4). The `Nat` `varianceNumerator` inside `slipPointMoments` truncates
+to `0` when `squareSum² > cubeSum·weight`; this companion keeps the true sign, so a non-moment input yields
+an honest NEGATIVE rather than a silent zero. ⚑ MARK: on GENUINE moment sums this is nonnegative by
+Cauchy–Schwarz `(Σw·x²)(Σw) ≥ (Σw·x)²` — a property of real moments, NOT provable for arbitrary a,b,c, so
+it is marked, not asserted. Where nonneg it equals the `Nat` numerator exactly
+(`slipPointVarianceNumeratorSigned_toNat`), so the existing readout is unchanged on the moment domain. -/
+def slipPointVarianceNumeratorSigned (weight squareSum cubeSum : Nat) : Int :=
+  (cubeSum * weight : Int) - (square squareSum : Int)
+
+/-- On the Cauchy–Schwarz (genuine-moment) domain the signed numerator equals the `Nat` one exactly —
+the `Nat` variance readout is not distorted where the inputs are real moments. -/
+theorem slipPointVarianceNumeratorSigned_toNat (weight squareSum cubeSum : Nat)
+    (h : square squareSum ≤ cubeSum * weight) :
+    (slipPointVarianceNumeratorSigned weight squareSum cubeSum).toNat
+      = cubeSum * weight - square squareSum := by
+  unfold slipPointVarianceNumeratorSigned; omega
 
 /-- `ChargeMassNormalizationReport` — the day's books: the bin, the charge/mass/combined moments, each
 column's normalized share, the scaled reads, and the normalized sum (`normalizedSumScaledAt18`). -/
@@ -179,7 +197,7 @@ deriving Repr
 /-- `chargeMassNormalizationReport (lower) (upper) : ChargeMassNormalizationReport` — close the books over
 `[lower, upper]`: foot both columns (value, square, cube), take the moments, and normalize —
 `normalizedCharge` = charge over total, `normalizedMass` = mass over total, and `normalizedSumScaledAt18`
-= (total * pow10 18) over total = `pow10 18` (one). -/
+= (total * readoutScale) over total = `readoutScale` (one). -/
 def chargeMassNormalizationReport (lower upper : Nat) : ChargeMassNormalizationReport :=
   let charge := chargeTripletValueSum lower upper
   let mass := massTripletValueSum lower upper
@@ -197,22 +215,23 @@ def chargeMassNormalizationReport (lower upper : Nat) : ChargeMassNormalizationR
     combined := slipPointMoments total totalSquares totalCubes
     normalizedCharge := normalizePart charge total
     normalizedMass := normalizePart mass total
-    chargeScaledAt18 := charge * pow10 18 / total
-    massScaledAt18 := mass * pow10 18 / total
-    normalizedSumScaledAt18 := total * pow10 18 / total }
+    chargeScaledAt18 := charge * readoutScale / total
+    massScaledAt18 := mass * readoutScale / total
+    normalizedSumScaledAt18 := total * readoutScale / total }
 
-/-- `cavendishChargeMassNormalization : ChargeMassNormalizationReport` — the report over `[1, 1000000]`. -/
+/-- `cavendishChargeMassNormalization : ChargeMassNormalizationReport` — the report over the assay
+window `[assayLower, assayUpper]` (audit #2 — named, was `1 1000000`). -/
 def cavendishChargeMassNormalization : ChargeMassNormalizationReport :=
-  chargeMassNormalizationReport 1 1000000
+  chargeMassNormalizationReport assayLower assayUpper
 
 /-- `cavendish_charge_mass_normalizes_to_one`.
-**Proposition:** `cavendishChargeMassNormalization.normalizedSumScaledAt18 = pow10 18` — the normalized
+**Proposition:** `cavendishChargeMassNormalization.normalizedSumScaledAt18 = readoutScale` — the normalized
 charge-share plus mass-share is exactly one, to eighteen places (1.000…0).
 **Mechanism:** `rfl` — kernel-computed, exact, no float.
 **Squeeze role:** the two channels PINNED to sum exactly one — the balance facet fixed to the exact value
 1. The device balances its own stereo pair; the single "one" heard is the reader's, not a device output. -/
 theorem cavendish_charge_mass_normalizes_to_one :
-    cavendishChargeMassNormalization.normalizedSumScaledAt18 = pow10 18 := by
+    cavendishChargeMassNormalization.normalizedSumScaledAt18 = readoutScale := by
   rfl
 
 /-! ## Readout — the closing entry

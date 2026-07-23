@@ -71,7 +71,7 @@ def chargeSecondVariationComponent
     (magnitude : ApparatusRatio) : ChargeSecondVariationComponent :=
   { channel := channel
     magnitude := magnitude
-    scaledAt18 := magnitude.scaledFloor (pow10 18)
+    scaledAt18 := magnitude.scaledFloor (readoutScale)
     signedUnit := electronElaborationChargeUnit
     orientation := elaborationChargeOrientationOfSign electronElaborationSignedCharge }
 

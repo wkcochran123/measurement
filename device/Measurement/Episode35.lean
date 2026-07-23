@@ -100,8 +100,8 @@ def slipGridCell (targetSlip cells index : Nat) : SlipGridCell :=
   { index := index
     lowerDistance := lower
     upperDistance := upper
-    lowerDistanceScaledAt18 := lower.scaledFloor (pow10 18)
-    upperDistanceScaledAt18 := upper.scaledFloor (pow10 18)
+    lowerDistanceScaledAt18 := lower.scaledFloor (readoutScale)
+    upperDistanceScaledAt18 := upper.scaledFloor (readoutScale)
     lowerCrosses := rationalSlipCrossesWithContact targetSlip lower
     upperCrosses := rationalSlipCrossesWithContact targetSlip upper
     lowerSlipFloor? := rationalSlipFloor? lower
@@ -230,12 +230,12 @@ def gridSlipBisectSummary?
            gridCells := gridCells
            rungs := rungs
            gridCell := cell
-           lowerDistanceScaledAt18 := lowerDistance.scaledFloor (pow10 18)
-           upperDistanceScaledAt18 := upperDistance.scaledFloor (pow10 18)
-           midpointScaledAt18 := midpoint.scaledFloor (pow10 18)
+           lowerDistanceScaledAt18 := lowerDistance.scaledFloor (readoutScale)
+           upperDistanceScaledAt18 := upperDistance.scaledFloor (readoutScale)
+           midpointScaledAt18 := midpoint.scaledFloor (readoutScale)
            widthScaledAt18 :=
-             upperDistance.scaledFloor (pow10 18) -
-               lowerDistance.scaledFloor (pow10 18)
+             upperDistance.scaledFloor (readoutScale) -
+               lowerDistance.scaledFloor (readoutScale)
            lowerSlipFloor := rationalSlipFloor lowerDistance
            upperSlipFloor := rationalSlipFloor upperDistance
            lowerSlipScaledAt18 := rationalSlipScaledAt18 lowerDistance

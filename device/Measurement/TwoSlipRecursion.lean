@@ -56,10 +56,16 @@ theorem first_slip_vanishes :
     slip1 = 0 := by decide
 
 #eval "── TwoSlipRecursion: the second variation as a second difference (two slip points) ──"
+
 #eval s!"THREE funged readings (beats @ count-to-three): r0={r0}  r1={r1}  r2={r2}"
+
 #eval s!"TWO slip points (first differences):           slip1={slip1}  slip2={slip2}"
+
 #eval s!"MEASURED second variation = slip of the slips = secondDifference = {measuredSecondVar}   (= self-energy −21)"
+
 #eval s!"ASSUMED slip coeff (proximity 18/d², DEFINED not measured) = {assumedSlipCoeff}"
+
 #eval "un-funging: the MEASURED second variation is read from the beats via two slip points; the"
+
 #eval "ASSUMED one (18/d²) is tautological (defined) — the tange that separates identity from stimulus."
 end Measurement.TwoSlipRecursion

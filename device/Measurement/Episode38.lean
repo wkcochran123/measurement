@@ -21,11 +21,12 @@ the map has carried all along — and dig. What you unearth is a charge.
 describes. We describe the facet in the device's own exact terms; we never open or solve Yang–Mills, and the
 last box stays wrapped.
 
-**The squeeze (a PINNED equality — an internal cross-check).** The charge read AT the slip point is EXACTLY
+**The squeeze (a PINNED equality — an internal IDENTITY).** The charge read AT the slip point is EXACTLY
 the elaboration charge Ep37 promised: `electronSlipPointChargeRead.signedValue = electronElaborationSignedCharge`,
-by `rfl`. Two of the device's own routes to its own charge — Ep37's elaboration cost and this slip-point
-read — naming the same number (the Ep36 pattern, now for charge). Nothing new is discovered; the SAME charge,
-read a second way. The potential `|q| / r` and field `|q| / r²` near X (exact at the seam, since the boundary
+by `rfl`. This is one quantity under two names, not two independent routes: the slip-point read is *built
+from* the elaboration charge (`wheelStimulusRead … electronElaborationSignedCharge`), so `.signedValue`
+unwraps to that same input. Nothing new is discovered; the SAME charge, re-read where it was placed — the
+device consistent with itself by construction, never sold as two witnesses. The potential `|q| / r` and field `|q| / r²` near X (exact at the seam, since the boundary
 fixes `18` over `r²` at the target) are the readings taken there.
 
 **⚠️ Fence (carried from Ep37).** This "field" and this "charge" are the device's OWN readings in its OWN
@@ -119,7 +120,7 @@ def slipPointChargeReport?
            upperDistance := upperDistance
            midpointDistance := midpointDistance
            midpointDistanceScaledAt18 :=
-             midpointDistance.scaledFloor (pow10 18)
+             midpointDistance.scaledFloor (readoutScale)
            signedCharge := electronElaborationSignedCharge
            chargeMagnitude := electronElaborationChargeMagnitude
            normalizedCharge := electronElaborationChargeUnit
@@ -128,13 +129,13 @@ def slipPointChargeReport?
            chargeRead := electronSlipPointChargeRead
            midpointPotentialMagnitude := potential
            midpointPotentialMagnitudeScaledAt18 :=
-             potential.scaledFloor (pow10 18)
+             potential.scaledFloor (readoutScale)
            midpointFieldMagnitude := midpointField
            midpointFieldMagnitudeScaledAt18 :=
-             midpointField.scaledFloor (pow10 18)
+             midpointField.scaledFloor (readoutScale)
            exactBoundaryFieldMagnitude := boundaryField
            exactBoundaryFieldMagnitudeScaledAt18 :=
-             boundaryField.scaledFloor (pow10 18) } :
+             boundaryField.scaledFloor (readoutScale) } :
           SlipPointChargeReport)
 
 /-- `defaultSlipPointChargeReport? : Option SlipPointChargeReport` — the standard run: target
@@ -146,9 +147,13 @@ def defaultSlipPointChargeReport? : Option SlipPointChargeReport :=
 **Proposition:** `electronSlipPointChargeRead.signedValue = electronElaborationSignedCharge` — the charge
 read at the slip point equals the Ep37 elaboration signed charge.
 **Mechanism:** `rfl` — kernel-computed.
-**Squeeze role:** the charge re-pinned by a SECOND route — the slip-point read (X) and the elaboration charge
-name the same number, an internal cross-check (the device consistent with itself), not a real field or a real
-charge in the world. -/
+**Squeeze role:** the charge read AT the slip point IS the elaboration charge — an IDENTITY, not a second
+independent route. `electronSlipPointChargeRead` is *built from* `electronElaborationSignedCharge`
+(`wheelStimulusRead "electron.slipPointCharge" electronElaborationSignedCharge`), so its `.signedValue`
+unwraps to that same input: one source read at the spot, not two witnesses agreeing. (Honest relabel —
+the earlier "cross-check / SECOND route" framing was aspirational; mechanically it's the identity chain
+`cost ≡ charge ≡ read`, the same no-name-bridge discipline that governs C/T/R: one quantity under several
+names is never sold as several independent confirmations.) Not a real field or a real charge in the world. -/
 theorem electron_slip_point_charge_is_elaboration_charge :
     electronSlipPointChargeRead.signedValue = electronElaborationSignedCharge := rfl
 

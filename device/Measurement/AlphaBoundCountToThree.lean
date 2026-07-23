@@ -1,4 +1,5 @@
 import Measurement.Episode40
+import Measurement.CycleOfThree
 
 /-
 PLAN_RFC §1.2 / story_arc Ch13.3, Ch15.3 — the α bracket at the device's count-to-3 resolution.
@@ -47,8 +48,20 @@ and stops.
 namespace Measurement.AlphaBoundCountToThree
 open Measurement
 
-/-- The device counts to three; that is its resolution floor. -/
-def countToThree : Nat := 3
+/-- The device counts to three; that is its resolution floor. The `3` is a FENCEPOST (operator ruling
+2026-07-22 "3 as a fencepost is fine"): `3 = 2 + the closing fencepost` — the ± duplication pair (the
+Natural 2) plus the null closing-post — earned FROM the primitive 2, non-circularly (see
+`CycleOfThree.ThreeFold`: minus/plus = the ± pair, zero = the null fencepost). NOT a tuned constant, NOT a
+measured period of a 3-state type (that would re-introduce the 3 through the back door). Structural ground
+on the record: `CycleOfThree.cycle_of_three` proves this ±-pair-plus-null cycle closes at exactly three,
+axiom-free. Two roles, don't fuse: THIS is the loop-COUNT (a Nat — you iterate on it); the FLOOR it marks
+is a Real/Limit the descent only APPROACHES (the open bracket, never a landed point).
+EARNED, not postulated (operator 2026-07-22 "we never earn addition, use the Sum"): `3 = |pair ⊕ post|`,
+the cardinality of the coproduct of two STANDALONE primitive types (the ± pair 2 ⊕ the null post 1),
+read off the constructed Sum's roster length — NOT `2 + 1` (a postulated `Nat.add`) and NOT the constructor
+count of `ThreeFold` (circular). `CycleOfThree.threeFold_sum_{left,right}_inv` prove `ThreeFold ≃ pair ⊕ post`,
+so the fencepost structure is intrinsic; addition falls out as the Sum's cardinality. -/
+def countToThree : Nat := Measurement.CycleOfThree.cardPairSumPost
 
 def tgt : Nat := firstSlipTargetBetweenOneAndTwo
 
@@ -59,8 +72,8 @@ def midAt (n : Nat) : RationalDistance :=
   | some d => d
   | none => { numerator := 1, denominator := 1 }
 
-def alphaAt    (n : Nat) : Nat := (alphaFromSecondVariationAtDistance tgt (midAt n)).scaledFloor (pow10 18)
-def invAlphaAt (n : Nat) : Nat := (alphaFromSecondVariationAtDistance tgt (midAt n)).inverseScaledFloor (pow10 18)
+def alphaAt    (n : Nat) : Nat := (alphaFromSecondVariationAtDistance tgt (midAt n)).scaledFloor (readoutScale)
+def invAlphaAt (n : Nat) : Nat := (alphaFromSecondVariationAtDistance tgt (midAt n)).inverseScaledFloor (readoutScale)
 
 -- THE COUNT-TO-3 BRACKET.  The reading is held between count-2 and count-3: the static→kinetic
 -- breakaway cannot be pinned finer (Chaitin, uncomputable), only bracketed at the counting floor.
@@ -76,6 +89,7 @@ def invA2 : Nat := invAlphaAt (countToThree - 1)       -- count-2 lid (upper inv
 -- THE COUNT-TO-3 BRACKET (the machine's repeatable reading at its floor; NOT a derivation of the
 -- magnitude -- 137.036 is the external lab value it proves it cannot derive; grid-128 seeding):
 #eval s!"count-to-3 bracket  a1 < alpha <= a2 (x1e18):  a1={a1ScaledAt18}  guess={guessScaledAt18}  a2={a2ScaledAt18}"
+
 #eval s!"inv-alpha bracket (x1e18): [{invA1} .. {invA2}]   (count-3 .. count-2 floor; not a magnitude derivation)"
 
 theorem bound_ordered : a1ScaledAt18 < a2ScaledAt18 := by decide

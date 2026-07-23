@@ -57,6 +57,13 @@ q.denominator`. Rounds up to the innermost whole radius. -/
 def ApparatusRatio.ceil (q : ApparatusRatio) : Nat :=
   (q.numerator + q.denominator - 1) / q.denominator
 
+/-- `ApparatusRatio.ceilRemainder (q) : Nat` — the round-up amount `ceil` adds: the gap from `q` up to the
+next whole, `(q.denominator - q.numerator % q.denominator) % q.denominator` (0 when `q` is already whole;
+`q.numerator % q.denominator < q.denominator`, so the subtraction never clamps). Kept alongside so the
+ceiling is information-preserving; `ceil`'s value is unchanged. -/
+def ApparatusRatio.ceilRemainder (q : ApparatusRatio) : Nat :=
+  (q.denominator - q.numerator % q.denominator) % q.denominator
+
 /-- `cooperPairGravitationalParameter : ApparatusRatio` — the central body's draw, `G · sourceMassTotal`
 (`deviceG.mulNat cavendishSourceMassTotal`). -/
 def cooperPairGravitationalParameter : ApparatusRatio :=
@@ -144,13 +151,13 @@ def cooperElectronOrbitRead (radius : Nat) : CooperElectronOrbitRead :=
     radialSlipFace := proximity.slipFace
     pairBreaks := proximity.pairBreaks
     velocitySquared := velocitySquared
-    velocitySquaredScaledAt18 := velocitySquared.scaledFloor (pow10 18)
+    velocitySquaredScaledAt18 := velocitySquared.scaledFloor (readoutScale)
     velocitySquaredFloor := velocitySquared.floor
     velocitySquaredFace := CorridorFace.ofTurns velocitySquared.floor
     stableNaturalOrbit := !proximity.pairBreaks && velocitySquared.leOne
     regime := regime
     magneticNeedleDeflection := needle
-    magneticNeedleDeflectionScaledAt18 := needle.scaledFloor (pow10 18) }
+    magneticNeedleDeflectionScaledAt18 := needle.scaledFloor (readoutScale) }
 
 /-- `cooperElectronOrbitSweep : List CooperElectronOrbitRead` — a few radii around the natural-unit room:
 `[3, 9, radius, radius+1, 2*radius]`. -/
@@ -173,19 +180,42 @@ selected room inspected, and the sweep. -/
 def cooperElectronOrbitReport : CooperElectronOrbitReport :=
   { gravitationalParameter := cooperPairGravitationalParameter
     gravitationalParameterScaledAt18 :=
-      cooperPairGravitationalParameter.scaledFloor (pow10 18)
+      cooperPairGravitationalParameter.scaledFloor (readoutScale)
     naturalUnitRadius := naturalUnitOrbitRadius
     selectedOrbit := cooperElectronOrbitRead naturalUnitOrbitRadius
     sweep := cooperElectronOrbitSweep }
 
 /-- `naturalUnitOrbitRadius_is_eighteen`.
-**Proposition:** `naturalUnitOrbitRadius = 18`.
-**Mechanism:** `rfl` — kernel-computed.
-**Squeeze role:** the number on the door — the earned room's address, `18`. (The same 18 as device-G's
-numerator: a resonance inside our own units, nothing claimed of the world.) -/
+**Proposition:** `naturalUnitOrbitRadius = 18` — the orbit radius R, a JAR INPUT (the physical map divides by
+R twice: `k = τ/R²`).
+**Mechanism (strong form, NOT `rfl` at the heartbeat).** `R = cooperPairGravitationalParameter.ceil =
+(deviceG.mulNat sourceMassTotal).ceil = ⌈(deviceG.numerator · s) / deviceG.denominator⌉` where `s =
+sourceMassTotal`. And `deviceG.denominator = s · testMass · arm` structurally, with `testMass = arm = 1`
+(stable box-counts, not heartbeats) ⟹ `deviceG.denominator = s`. So `R = ⌈(18 · s)/s⌉ = ⌈18⌉ = 18` for ANY
+`s > 0`: the heartbeat magnitude `s` CANCELS (`18·s/s`, exact — not a ceil landing on `17.9…`). Proved
+through the ACTUAL ceil cancellation (`(18·s + s − 1)/s = 18` for `s > 0`), ∀ over the source mass — the
+`rfl`-at-2132 pin retired; drift-immune by STRUCTURAL cancellation.
+**No-name-bridge (honest).** R's 18 and C's 18 (`mediantC_is_eighteen`) are NOT two independent
+coincidences NOR a fused bridge: R reduces to `deviceG.numerator / (testMass · arm)`, and since
+`testMass · arm = 1` that IS `deviceG.numerator = C`. They share the REAL root `deviceG.numerator = 18`,
+read through different transforms (R via the gravitational-parameter ceil; C via slip-at-1). One root,
+three paths (C/T/R) — NAMED, never sold as independent confirmations. -/
 theorem naturalUnitOrbitRadius_is_eighteen :
     naturalUnitOrbitRadius = 18 := by
-  rfl
+  have hs : 0 < cavendishSourceMassTotal := by decide
+  have hden : deviceG.denominator = cavendishSourceMassTotal := by
+    show cavendishSourceMassTotal * tetheredElectronTestMass.magnitude * cavendishArm
+       = cavendishSourceMassTotal
+    simp only [show tetheredElectronTestMass.magnitude = 1 from rfl,
+      show cavendishArm = 1 from rfl, Nat.mul_one]
+  show cooperPairGravitationalParameter.ceil = 18
+  simp only [cooperPairGravitationalParameter, ApparatusRatio.mulNat, ApparatusRatio.ceil]
+  rw [hden, show deviceG.numerator = 18 from rfl]
+  have e : 18 * cavendishSourceMassTotal + cavendishSourceMassTotal - 1
+         = cavendishSourceMassTotal * 18 + (cavendishSourceMassTotal - 1) := by omega
+  rw [e, Nat.mul_add_div hs]
+  have z : (cavendishSourceMassTotal - 1) / cavendishSourceMassTotal = 0 := Nat.div_eq_of_lt (by omega)
+  omega
 
 /-- `natural_unit_orbit_is_stable`.
 **Proposition:** `(cooperElectronOrbitRead naturalUnitOrbitRadius).stableNaturalOrbit = true`.

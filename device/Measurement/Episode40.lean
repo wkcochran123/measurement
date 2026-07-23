@@ -47,11 +47,32 @@ def inverseRadiusAtDistance (distance : RationalDistance) : ApparatusRatio :=
   { numerator := distance.denominator
     denominator := distance.numerator }
 
-/-- `tangeAtDistance (distance) : ApparatusRatio` — the `1 - 1/r` channel: numerator
-`distance.numerator - distance.denominator`, denominator `distance.numerator`. -/
+/-! ### Projective totalization (Batch 2, Kodo GATE) — extend `ApparatusRatio` to the projective points so
+a degenerate can NEVER masquerade as a real value. A genuine reading is `n/d` with `d > 0`; the two
+projective points are `0/0` (INDETERMINATE) and `n/0`, `n > 0` (the point at INFINITY). Both are distinct
+from the genuine zero `0/d`, `d > 0`. On the reading domain (d ∈ [17/9, 2], α ≠ 0) nothing degenerate is
+ever produced, so these are OFF-DOMAIN markers — they exist only to keep a degenerate honest, never silent. -/
+def ApparatusRatio.isIndeterminate (q : ApparatusRatio) : Bool :=
+  q.numerator == 0 && q.denominator == 0
+def ApparatusRatio.isAtInfinity (q : ApparatusRatio) : Bool :=
+  q.denominator == 0 && q.numerator != 0
+/-- `ApparatusRatio.reciprocal (q)` — the projective-total reciprocal: swap `num`/`den`. It sends the
+genuine zero `0/d ↦ d/0` (the point at INFINITY) and `n/0 ↦ 0/n`; an involution on the projective line.
+This is where the `1/α` pole becomes the explicit `n/0` marker instead of a silent `/0 → 0`. -/
+def ApparatusRatio.reciprocal (q : ApparatusRatio) : ApparatusRatio :=
+  { numerator := q.denominator, denominator := q.numerator }
+
+/-- `tangeAtDistance (distance) : ApparatusRatio` — the `1 - 1/r` channel, `(num − den)/num = 1 − 1/d`.
+TOTALIZED (Batch 2): on the reading domain `d ≥ 1` (`den ≤ num`) it is the exact `(num−den)/num`
+(byte-identical to before). For `d < 1` the true `1 − 1/d < 0` is unrepresentable in a `Nat` ratio, so
+instead of the old silent `Nat`-truncated `0` (which masqueraded as the genuine `d = 1` zero) it returns
+the projective INDETERMINATE `0/0` — distinct and off-domain (never reached: reads sit at `d ∈ [17/9, 2]`). -/
 def tangeAtDistance (distance : RationalDistance) : ApparatusRatio :=
-  { numerator := distance.numerator - distance.denominator
-    denominator := distance.numerator }
+  if distance.denominator ≤ distance.numerator then
+    { numerator := distance.numerator - distance.denominator
+      denominator := distance.numerator }
+  else
+    { numerator := 0, denominator := 0 }   -- projective indeterminate (d < 1, off-domain)
 
 /-- `fieldPerChargeAtSlip (targetSlip) : ApparatusRatio` — the field-per-charge channel at the slip seam,
 `targetSlip` over `naturalUnitOrbitRadius` (18). -/
@@ -67,10 +88,52 @@ def alphaFromSecondVariationAtDistance
   ((tangeAtDistance distance).mul (fieldPerChargeAtSlip targetSlip)).divNat
     naturalUnitOrbitRadius
 
-/-- `ApparatusRatio.inverseScaledFloor (q) (scale) : Nat` — the reciprocal read to `scale` places,
-`q.denominator * scale / q.numerator` (used for the `1/α` readout). -/
+/-- `ApparatusRatio.inverseScaledFloor (q) (scale) : Nat` — the `1/α` read to `scale` places. TOTALIZED
+(Batch 2): routed through the projective `reciprocal` (`q.reciprocal.scaledFloor scale`), which is
+`q.denominator * scale / q.numerator` — BYTE-IDENTICAL to before on every input (see
+`inverseScaledFloor_eq`). The gain: the `α = 0` pole now flows through the explicit `n/0` marker
+(`q.reciprocal.isAtInfinity`), so a consumer can detect the pole instead of reading a silent `/0 → 0`. -/
 def ApparatusRatio.inverseScaledFloor (q : ApparatusRatio) (scale : Nat) : Nat :=
-  q.denominator * scale / q.numerator
+  q.reciprocal.scaledFloor scale
+
+/-- `ApparatusRatio.inverseScaledRemainder (q) (scale) : Nat` — the sub-scale tail, via the projective
+reciprocal (`q.reciprocal.scaledRemainder scale = q.denominator * scale % q.numerator`, byte-identical).
+Kept alongside so the `1/α` readout is information-preserving; `inverseScaledFloor`'s value is unchanged. -/
+def ApparatusRatio.inverseScaledRemainder (q : ApparatusRatio) (scale : Nat) : Nat :=
+  q.reciprocal.scaledRemainder scale
+
+/-! ### Totalization certificates (Batch 2) — the projective sentinels are distinct, and ON-DOMAIN the
+totalized reads are BYTE-IDENTICAL to the originals (the jar-neutrality proof: nothing the device reads
+moved). All choice-free. -/
+
+-- BYTE-IDENTICAL (rfl): the reciprocal-routed inverse reads equal the original formulas on EVERY input.
+theorem inverseScaledFloor_eq (q : ApparatusRatio) (scale : Nat) :
+    q.inverseScaledFloor scale = q.denominator * scale / q.numerator := rfl
+theorem inverseScaledRemainder_eq (q : ApparatusRatio) (scale : Nat) :
+    q.inverseScaledRemainder scale = q.denominator * scale % q.numerator := rfl
+
+-- ON-DOMAIN (d ≥ 1): tange is exactly the raw `(num−den)/num` — no distortion where the device reads.
+theorem tangeAtDistance_on_domain (distance : RationalDistance)
+    (h : distance.denominator ≤ distance.numerator) :
+    tangeAtDistance distance =
+      { numerator := distance.numerator - distance.denominator, denominator := distance.numerator } := by
+  simp [tangeAtDistance, h]
+
+-- OFF-DOMAIN (d < 1): tange is the projective INDETERMINATE, distinguished from a genuine zero.
+theorem tangeAtDistance_off_domain (distance : RationalDistance)
+    (h : distance.numerator < distance.denominator) :
+    (tangeAtDistance distance).isIndeterminate = true := by
+  simp [tangeAtDistance, Nat.not_le.mpr h, ApparatusRatio.isIndeterminate]
+
+-- SENTINEL DISTINCTNESS: the two projective points are distinct from a genuine zero 0/d (d>0).
+example : ({ numerator := 0, denominator := 0 } : ApparatusRatio).isIndeterminate = true := by decide
+example : ({ numerator := 5, denominator := 0 } : ApparatusRatio).isAtInfinity = true := by decide
+example : ({ numerator := 0, denominator := 1 } : ApparatusRatio).isIndeterminate = false
+    ∧ ({ numerator := 0, denominator := 1 } : ApparatusRatio).isAtInfinity = false := by decide
+-- the α=0 pole reciprocal is the n/0 point at infinity, NOT a genuine zero:
+example : (({ numerator := 0, denominator := 7 } : ApparatusRatio).reciprocal).isAtInfinity = true := by decide
+#print axioms inverseScaledFloor_eq
+#print axioms tangeAtDistance_on_domain
 
 /-- `AlphaSecondVariationReport` — the last dial's full face: the normalization and orbit unit, the target
 slip and distance, the raw and normalized charge, the three channels (inverse radius, tange, and field per
@@ -119,7 +182,7 @@ def alphaSecondVariationReport
     orbitUnit := naturalUnitOrbitRadius
     targetSlip := slip.targetSlip
     distance := distance
-    distanceScaledAt18 := distance.scaledFloor (pow10 18)
+    distanceScaledAt18 := distance.scaledFloor (readoutScale)
     rawCharge := report.rawCharge.magnitude
     normalizedCharge := report.normalizedCharge.magnitude
     inverseRadius := inverseRadius
@@ -147,8 +210,8 @@ def alphaSecondVariationReport
     magneticPhotonRecoilCarried :=
       magneticPhotonExchangeReport.recoilCarriedByCooperPair
     alpha := alpha
-    alphaScaledAt18 := alpha.scaledFloor (pow10 18)
-    inverseAlphaScaledAt18 := alpha.inverseScaledFloor (pow10 18) }
+    alphaScaledAt18 := alpha.scaledFloor (readoutScale)
+    inverseAlphaScaledAt18 := alpha.inverseScaledFloor (readoutScale) }
 
 /-- `defaultAlphaSecondVariationReport? : Option AlphaSecondVariationReport` — the dial run on the standard
 Ep39 second-variation report (`none` if that report is `none`). -/

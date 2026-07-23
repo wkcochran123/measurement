@@ -63,14 +63,14 @@ def electromagneticCouplingNumerator
   whole * denominator + numerator
 
 /-- `electromagneticCouplingFactorScaledAt18 (whole) (numerator) (denominator) : Nat` — the coefficient to
-eighteen places (`whole * pow10 18` when the denominator is 0; else the improper numerator times `pow10 18`
+eighteen places (`whole * readoutScale` when the denominator is 0; else the improper numerator times `readoutScale`
 over the denominator). -/
 def electromagneticCouplingFactorScaledAt18
     (whole numerator denominator : Nat) : Nat :=
   if denominator = 0 then
-    whole * pow10 18
+    whole * readoutScale
   else
-    electromagneticCouplingNumerator whole numerator denominator * pow10 18 /
+    electromagneticCouplingNumerator whole numerator denominator * readoutScale /
       denominator
 
 /-- `electromagneticCouplingCoefficient (whole) (numerator) (denominator) : ElectromagneticCouplingCoefficient`
@@ -204,6 +204,12 @@ def meissnerResidualInternalFieldScaledAt18 : Nat :=
   natAbsDiff meissnerAppliedMagneticFieldScaledAt18
     meissnerExpelledMagneticFieldScaledAt18
 
+/-- Orientation companion (Batch 4): the SIGNED interior residual — positive when the applied field
+exceeds the expelled, negative when expulsion overshoots. The `Nat` above is its magnitude
+(`natAbsDiff_eq_signedDiff_natAbs`); this carries the shielding DIRECTION that `natAbsDiff` dropped. -/
+def meissnerResidualInternalFieldOrientationScaledAt18 : Int :=
+  signedDiff meissnerAppliedMagneticFieldScaledAt18 meissnerExpelledMagneticFieldScaledAt18
+
 /-- `electromagneticCalibrationTape : ElectromagneticCalibrationTape` — three frames bracketing the coupling:
 the lower integer, the selected cell, the upper integer. -/
 def electromagneticCalibrationTape : ElectromagneticCalibrationTape :=
@@ -212,9 +218,9 @@ def electromagneticCalibrationTape : ElectromagneticCalibrationTape :=
     electromagneticCouplingTapeCell electromagneticCouplingUpperInteger ]
 
 /-- `maxwellSpeedOfLightSquaredScaledAt18 : Nat` — the chamber's own light-speed-squared, set to one
-(`pow10 18`). -/
+(`readoutScale`). -/
 def maxwellSpeedOfLightSquaredScaledAt18 : Nat :=
-  pow10 18
+  readoutScale
 
 /-- `maxwellNaturalUnitVelocitySquaredScaledAt18 : Nat` — the natural-unit orbit's v² (scaled). -/
 def maxwellNaturalUnitVelocitySquaredScaledAt18 : Nat :=
@@ -397,6 +403,11 @@ def magneticPhotonIncidentResponseResidueScaledAt18 : Nat :=
   natAbsDiff magneticPhotonIncidentRead.fieldScaledAt18
     magneticPhotonResponseRead.fieldScaledAt18
 
+/-- Orientation companion (Batch 4): the SIGNED incident−response gap — positive when the incident field
+exceeds the response, negative otherwise. The `Nat` above is its magnitude; this keeps the direction. -/
+def magneticPhotonIncidentResponseResidueOrientationScaledAt18 : Int :=
+  signedDiff magneticPhotonIncidentRead.fieldScaledAt18 magneticPhotonResponseRead.fieldScaledAt18
+
 /-- `magneticPhotonResponseOnLightCone : Bool` — the shared-light-cone check AND that the response's
 light-cone v² equals one. -/
 def magneticPhotonResponseOnLightCone : Bool :=
@@ -543,5 +554,7 @@ this exact Meissner cell; and the last box past it stays wrapped. -/
 #eval magneticPhotonExchangeReport
 
 #eval electromagneticCouplingCalibrationReport
+
+
 
 end Measurement

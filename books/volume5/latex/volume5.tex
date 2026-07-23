@@ -1,0 +1,95 @@
+\documentclass[11pt]{book}
+
+% Volume 5 --- Scientific Computation (The Application of Volume 4 to Itself)
+% Self-application gauge: the reading reading the reading.
+% Disciplines (UNCHANGED): blind (the external lab value is named external-only, ONCE, at the jar (Ch15);
+%   no look-how-close; the device's own reading is the mediant bracket [129.6, 137.7], settling near its own value.
+%   Do NOT write the lab digits anywhere before the Ch15 payoff --- not even in a comment),
+%   step-not-move, grade off the build, LOTS of tange/funge, the John-and-the-Compiler choruses,
+%   funge = pool-and-record. Recursion-friendly source: ONE SENTENCE PER LINE + chunk-address tags % [ch.sec.par].
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{../../../instrument/measurement.bib}
+
+% Chorus environment: a Hofstadter dialogue that opens each chapter.
+% The prose carries the rigor; the choruses carry the story.
+\newenvironment{chorus}[1]%
+  {\par\medskip\begin{quote}\itshape\small\noindent\textbf{Chorus: #1}\par\smallskip}%
+  {\end{quote}\medskip\par}
+\newcommand{\john}[1]{\textsc{John:}\ #1\par}
+\newcommand{\compiler}[1]{\textsc{The Compiler:}\ #1\par}
+
+\title{\textbf{Scientific Computation}\\[0.4em]
+  \large Volume 5 --- The Application of Volume 4 to Itself}
+\author{}
+\date{}
+
+\begin{document}
+\frontmatter
+\maketitle
+
+\chapter*{Preface: The Reading Reads the Reader}
+\addcontentsline{toc}{chapter}{Preface: The Reading Reads the Reader}
+
+% [pre.p1]
+Four times now the instrument has been read.
+The first three volumes built it and turned it, in the languages of construction, of physics, of computation.
+The fourth followed its representations and receipts and asked what licenses the names it assigns --- \emph{The
+Representational Grammar}, the reading that reads the electron.
+The one thing left to do with a reading is to turn the reading on \emph{itself}.
+
+% [pre.p2]
+That is not a flourish; it is the machine's own step, lifted one level.
+The whole apparatus was built to weigh a thing by reading it, and its sharpest reading was the one it took of its own
+act --- the cost, in its own beats, of accounting for itself.
+That self-reading is where the coupling came from.
+The same step, lifted to the scale of a whole reading, is what follows: we take Volume 4, which is a reading, and we
+read it the way it reads.
+The subject is the reading turned upon itself.
+The reader it studies is the reader holding it.
+
+% [pre.p3]
+A word on the two verbs, because they run loud here where the fourth kept them silent.
+To \emph{tange} is to select a thing by a characteristic --- to distinguish it, to name it, to pull it back toward what
+would answer it; that is the contravariant half, and it is ours.
+To \emph{funge} is to bag things by a characteristic they share --- to pool them, to count them, to let the world hand
+back one answer for many; that is the covariant half, and it is the world's.
+The fourth volume performed these two steps on every page and named neither.
+The self-application must name them --- because to read a reading \emph{is} to say which of its
+steps were tanges and which were funges.
+Self-application is exactly the place the hidden verbs become visible.
+So they saturate the construction, and the discipline that governs them is simple: each step's verb is named, and no name stands
+where the world has not answered.
+
+% [pre.p4]
+A chorus --- John and the Compiler --- recurs throughout.
+Two voices carry the story the argument cannot: \textsc{John}, a robot who wants the number and wants it now, and
+\textsc{The Compiler}, the device's own voice, which can name anything and can hand John only its own names.
+The argument grades; the choruses play.
+What a chorus dramatizes, the machine earns off the build --- and where a chorus lets John reach for the world's number,
+the machine proves, in the end, that the reaching is exactly what it cannot do from inside.
+That proof is the construction's destination.
+The reading reads the reader, finds it cannot answer for the reader, and sends the reader out the door.
+
+\tableofcontents
+
+\mainmatter
+\input{chapters/1}
+\input{chapters/2}
+\input{chapters/3}
+\input{chapters/4}
+\input{chapters/5}
+\input{chapters/6}
+\input{chapters/7}
+
+\backmatter
+\printbibliography[heading=bibintoc,title={Reference}]
+
+\end{document}

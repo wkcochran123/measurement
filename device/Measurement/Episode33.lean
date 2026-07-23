@@ -141,18 +141,18 @@ def lorentzOrbitRead (label : String) (radius : RationalRadius) : LorentzOrbitRe
     (chargeMassNeedleGain cavendishChargeMassNormalization).mul velocitySquared
   { label := label
     radius := radius
-    radiusScaledAt18 := radius.scaledFloor (pow10 18)
+    radiusScaledAt18 := radius.scaledFloor (readoutScale)
     velocitySquared := velocitySquared
-    velocitySquaredScaledAt18 := velocitySquared.scaledFloor (pow10 18)
+    velocitySquaredScaledAt18 := velocitySquared.scaledFloor (readoutScale)
     velocitySquaredFloor := velocitySquared.floor
     velocitySquaredFace := CorridorFace.ofTurns velocitySquared.floor
     gammaSquared? := gammaSquared?
     gammaSquaredScaledAt18? :=
       match gammaSquared? with
       | none => none
-      | some gammaSquared => some (gammaSquared.scaledFloor (pow10 18))
+      | some gammaSquared => some (gammaSquared.scaledFloor (readoutScale))
     magneticNeedleDeflection := needle
-    magneticNeedleDeflectionScaledAt18 := needle.scaledFloor (pow10 18)
+    magneticNeedleDeflectionScaledAt18 := needle.scaledFloor (readoutScale)
     regime := lorentzOrbitRegime velocitySquared }
 
 /-- `LorentzOrbitBracketReport` — the three-panel survey: the crest radius, the wobble, the undershoot /
@@ -176,7 +176,7 @@ def lorentzOrbitBracketReport : LorentzOrbitBracketReport :=
   let overshoot := lorentzOrbitRead "overshoot" upperLorentzOrbitRadius
   { centerRadius := naturalUnitOrbitRadius
     wobble := orbitWobble
-    wobbleScaledAt18 := orbitWobble.scaledFloor (pow10 18)
+    wobbleScaledAt18 := orbitWobble.scaledFloor (readoutScale)
     undershoot := undershoot
     boundary := boundary
     overshoot := overshoot

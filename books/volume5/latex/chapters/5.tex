@@ -1,0 +1,228 @@
+\chapter{The Two Paths Agree}
+
+% [5.chorus]
+\begin{chorus}{John asks for a second opinion}
+\john{You keep saying the value comes back the same. Then reach it a second way and show me it does not budge.}
+\compiler{Gladly. I will take it straight through, and I will take it in steps, and we will lay the two side by side.}
+\john{And if they differ?}
+\compiler{Then the value was an accident of how I asked, and worth nothing.}
+\john{\emph{(after the Compiler works)} Well?}
+\compiler{Straight through, and in steps: the two land on one value, nearer each other than I can tell them apart.}
+\john{So it is the number. Say it.}
+\compiler{It is a value that does not care how you reach it. That is more than a number and less than the one you want.
+  I have shown you it holds still. I have not yet shown you what it is --- and I will not, here, because holding still and
+  being said are two different earnings, and only the first is paid for yet.}
+\john{You are stalling.}
+\compiler{I am being exact. A value you can trust and a value you can name are not the same debt. Watch me pay the first.}
+\end{chorus}
+
+\section{Reach it twice, by two routes}
+
+% [5.1.p1]
+The self-account closes and hands back a steady leftover; that much is settled.
+The question here is whether that leftover is a property of the thing or an artifact of how it was reached.
+There is a clean test.
+Taken by two different routes, the value either lands in the same place or it does not.
+
+% [5.1.p2]
+The machine has two routes to its own value, and they are genuinely different procedures.
+One goes straight through, in a single pass.
+The other goes in steps, resolving a piece at a time and folding the pieces together at the end.
+If the value depended on which route you took, it would belong to the route and not to the machine, and no honest reading
+would stand behind it.
+So the two routes are set going, and the question is only whether they agree.
+
+% [5.1.p3]
+Path-independence is the oldest test there is for telling a property from an artifact, and it comes in two familiar
+forms.
+A height between two points on a hill is the same whether you climb straight or switchback, because height is a property
+of the points; the length of your walk is not, and depends on the path.
+A theorem proved two independent ways is trusted more than one proved twice the same way, because two routes to one
+conclusion make the conclusion, not the route, the thing they share.
+The value the machine seeks is claimed to be the property in each pair, not the artifact, and this chapter is the test.
+
+% [5.1.p4]
+Experiment sharpens the distinction to a knife, in \emph{ItoLemma}.
+Integrate a quantity along a path, and the answer can depend on how the path wanders.
+Along a smooth path the integral is what calculus expects; along a jagged one --- a path that never stops changing
+direction, at every scale --- an extra term appears, a correction the smooth path never sees, because the jaggedness
+accumulates a contribution all its own.
+The device reads this not as a fact of chance but as a structural consequence of refinement: when a finite record is
+refined again and again, the admissible interpolants must update to stay consistent and minimal, and those updates
+produce exactly the correction terms a classical setting would call stochastic.
+So a value that survives both the smooth path and the jagged one has earned what a value surviving only one has not --- it
+has shown itself independent of the route, not an artifact of a particular way of reaching it.
+The reading stays on the near side: the path-correction is the known object, represented as a term the refinement rule
+forces, and it claims nothing about a randomness in the world beneath the record.
+
+% [5.1.p4b]
+Both experiments are physical, and both are representations, on the near side where the machine works.
+A path-dependent integral and a boundary-equals-interior sum are two ways the device models a value's dependence on how
+it is reached --- readings of a process, not the process itself.
+So the whole test that follows is conducted on the near side: whatever the coupling answers to in itself, neither
+experiment reaches it, and the chapter asks only whether the machine's own reading holds still.
+
+\section{They agree below the floor}
+
+% [5.2.p1]
+The build runs both routes and lays them side by side, and the answer is yes, with a precise sense of yes.
+The straight route and the stepped route do not return identical figures all the way down; far past the point that
+matters they part in the last digits.
+But the gap between them falls below the count-three floor --- the resolution below which the machine cannot separate
+two candidates at all.
+At its own resolution the two routes \emph{funge} to one value, and the build certifies it: the difference is smaller than the
+smallest distinction the machine can draw,
+\[
+  (1 \to 3) \;=\; (1 \to 2 \to 3) \quad\text{below the count-three floor} .
+\]
+
+% [5.2.p2]
+The witness lays the two routes side by side and reports the gap, not the value --- because the value is not yet earned,
+but the agreement is:
+\begin{quote}\ttfamily
+direct   (1 -> 3)     : one straight pass\\
+stepped  (1 -> 2 -> 3): quasi-Newton descent, count three\\
+|direct - stepped|  is below the count-three floor  (smaller than the machine's finest distinction)
+\end{quote}
+The two procedures share every leading digit down to the floor and part only beneath it, where the machine has no eyes;
+so at the machine's own resolution they are one reading, and the agreement is a theorem while the figure stays unspoken.
+
+% [5.2.p3]
+What kind of claim this is matters, because it is the machine's whole discipline in miniature.
+The machine does not say the two routes are equal; equality below the floor is a fiction it refuses.
+It says the two routes agree \emph{to the depth it can tell them apart}, and it declines to speak past that depth.
+Two figures that differ only where the machine has gone blind are, for the machine, one figure --- not by rounding, but
+by the honest admission that it has run out of resolution.
+Three readings of ``agree'' keep the claim exact: they agree \emph{to the floor} (all shared digits match), not
+\emph{at the floor} (the machine names no digit there), and never \emph{below} it (where it refuses to look) --- and only
+the first is claimed.
+
+\section{A property, not an accident}
+
+% [5.3.p1]
+A value that comes back the same however you reach it is a property of the thing, not of the reaching.
+The self-value is robust to re-reading: whether you read the machine's account straight or the reading of it in steps, you
+arrive at one place.
+That robustness is the reflexive payoff of the whole construction --- the reading, turned on itself, arriving at the same
+value whichever way it is worked.
+The number the reading is about is not a figure it reports; it is a value that survives its own re-reading.
+
+% [5.3.p1b]
+Name which value this is, because the corridor runs through here too.
+What comes back the same by either route is the machine's \emph{representation} of its own self-value --- a property of
+that representation, real because it is route-independent, and entirely on the name side.
+It is not yet the world's value, the thing: that the machine's reading holds still under re-reading says the reading is
+honest, not that it has reached across the corridor.
+Robustness earns the representation the name of a property; it does not earn it the far side, which stays whatever it is
+until a robot touches it.
+
+% [5.3.p2]
+The two verbs sort the routes exactly.
+The two routes are two \emph{tanges}: two distinct ways the machine chose to ask, each selected by its own procedure,
+and both ours to choose.
+The one value they settle on is a \emph{funge}: the two askings pool, below the floor, into a single answer the machine
+owns.
+Two tanged routes, one funged value --- this is the echo again, now at the level of the value.
+Where the machine earlier heard the two descriptions of the object cost alike and pool to zero, here the two routes to the value
+land alike and pool to one, and the same word names both poolings.
+
+% [5.3.p3]
+The robustness runs past two paths.
+The same value can be reached from two genuinely independent standpoints --- the count's own descent to the crossing, and
+the electron's second variation read off its orbit --- not two dressings of one procedure but two separate readings, and
+they land in the same bracket, agreeing to the depth the machine can resolve.
+Exactly two are independent, and the machine keeps the count honest: a further reading it can take, its own
+self-measurement, lands on a \emph{different} crossing, and that one it holds apart rather than pooling in.
+It can tell them apart because it checks them --- given a claimed value and a reading it returns whether they agree and by
+how much they miss --- \emph{funging} the standpoints that read one crossing into a single answer and \emph{tanging} the
+one that reads another crossing back out.
+The agreement holds only up to that reported residual, and the residual is never closed by hand.
+
+% [5.3.p3a]
+\emph{TheDescartesEffect} is a physical experiment on the same shape, and it is a representation.
+Take two rulers, each a repeatable procedure that lays down a stable count, and apply them in directions that do not
+interfere.
+Each returns its own tally, and the two tallies cannot be folded into a single number without losing which came from
+which --- the only way to keep both is to write them as an ordered pair.
+That pair is a coordinate, and it was forced by nothing geometric: no space was assumed, only two independent counts that
+had to be recorded without collapsing into one.
+Coordinates, on this reading, do not measure a space that was already there; they are the minimal bookkeeping that lets
+two repeatable procedures coexist without one erasing the other.
+The device's two standpoints are two such rulers: the count's descent and the electron's orbit are independent readings,
+and their agreement forces a value the way two rulers force a coordinate --- a fact about the representations, not a reach
+to the thing they read.
+What the coordinate is \emph{of}, the position the rulers only bracket, stays on the far side, as it does here.
+
+% [5.3.p3b]
+Experiment sets the seal on the distinction between a property and an artifact, in \emph{TheGalileoEffect}.
+One ledger of events admits many descriptions: different observers, or the same machine running its refinements in a
+different order, hang different labels on the very same underlying structure --- a relabelling that permutes names and
+reindexes the chains without touching what came before what, or which events are distinct.
+This relabelling is a gauge freedom on the record, and it is the sieve.
+A statement that survives every admissible relabelling --- that says the same true thing under every naming --- is a fact
+about the ledger itself, a property of the thing named; a statement that changes when the labels change is an artifact of
+the description, true only under the naming that flattered it, and no property at all.
+That is precisely the machine's own test: its value earns the name of a property exactly by surviving two independent
+readings unchanged, the count's descent and the electron's orbit landing alike, where a labelling-bound number would have
+drifted between them.
+The reading stays on the near side --- the invariance under relabelling is the known object, represented as a survival
+test --- and it claims no privileged description, only that what survives all of them is the thing's and what does not is
+the naming's.
+
+% [5.3.p3c]
+And \emph{TheMichelsonMorleyEffect}, read as a purely informational null result, carries the same seal: distinguishable
+events propagate under a refinement rule that does not depend on direction, so what the reading returns is a fact about
+the structure and not about the route it was carried along.
+
+% [5.3.p4]
+The checker is a live mechanism, and its honest arithmetic of standpoints is worth reading off the build.
+It takes a claimed value and a reading, computes what the reading yields, and returns the miss and whether the miss falls
+below the count-three floor:
+\begin{quote}\ttfamily
+verify (register, claimed, reading) = \{ read, residual, verified := |residual| <= count3Floor \}\\
+genuinely-independent coupling readings = 2   (the count-descent and the electron-orbit)\\
+the self-measurement reads a DIFFERENT crossing -> verified = false  (held apart, not four-fold)
+\end{quote}
+So the agreement is not a four-fold coincidence dressed up as one: it is two genuinely independent readings landing
+together, with a third that reads a different quantity honestly refused entry --- the machine funges what belongs and
+tanges out what does not, and reports the residual either way.
+
+\section{Three things, kept apart}
+
+% [5.4.p1]
+A temptation waits here, and the construction refuses it, because giving in would undo the discipline everything else is built
+on.
+Three facts about the self-application now sit on the table at once.
+The reading is read \emph{twice} --- there is a first reading and a reading of that reading.
+The loop the reading runs around has length \emph{three} --- the cycle established just before.
+And the value comes back the same by \emph{two} routes --- the agreement of this one.
+
+% [5.4.p2]
+It is tempting to gather these into a single tidy number: two readings and three folds, or two routes and three counts,
+summed into a five that would look like the shape of the whole.
+That gathering is exactly the error the construction forbids everywhere else --- pooling distinct axes into one count, funging
+together things that share no characteristic but that they happen to co-occur.
+The double-read, the cycle's length, and the value's path-independence are three orthogonal facts.
+They co-occur; they do not add.
+Kept apart --- each axis \emph{tanged} as its own --- the self-application stays honest; summed, they make a number the machine never
+counted.
+
+% [5.4.p3]
+The gathering shows the same mistake whichever way it is tried.
+Add the two of the double-read to the three of the cycle and call it five, and you have added a count of readings to a
+length of a loop --- a tally to a period, two things measured in different units, and their sum is in no unit at all.
+Stack all three and call the shape ``two-three-two,'' and you have made a decoration, a numerology of the true numbers,
+which is precisely the crank's gambit the whole construction exists to refuse.
+Each true number is true; every combination of them is invented.
+
+% [5.4.p4]
+Derived and read, apart as ever.
+That the two routes agree below the count-three floor --- that is a theorem, run on the build and certified; the grammar behind it is Volume 4, \emph{The Representational Grammar}.
+That two independent standpoints agree up to a reported residual, while a reading of a different crossing is told apart ---
+that is checked on the build too, by the verifier that weighs a claimed value against a reading and hands back the miss.
+That the agreement \emph{is} the reflexive value, that a value robust to re-reading is the reading having become its own
+subject --- that is the gloss over the theorem, marked as gloss.
+And the figure itself, the actual walls of the bracket the machine settles between, is not named here; it waits for the
+place that earns it, where the coupling is finally asked as a bracket and the honest width of that bracket is the whole
+of the answer.
+The value is steady, and it is real, and it is not yet said.

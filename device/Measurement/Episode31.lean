@@ -99,19 +99,20 @@ def magneticNeedleReport (lower upper : Nat) : MagneticNeedleReport :=
     deflectsTowardMass := chargeMassNeedleDirectionIsMass read
     magneticImbalance := chargeMassImbalance read
     normalizedMagnetGain := gain
-    normalizedMagnetGainScaledAt18 := gain.scaledFloor (pow10 18)
+    normalizedMagnetGainScaledAt18 := gain.scaledFloor (readoutScale)
     slipPointMean := read.combined.estimatedSlipPoint
     slipPointMeanScaledAt18 := read.combined.estimatedSlipPointScaledAt18
     slipPointVariance := read.combined.variance
     slipPointVarianceScaledAt18 := read.combined.varianceScaledAt18
     needleMean := needleMean
-    needleMeanScaledAt18 := needleMean.scaledFloor (pow10 18)
+    needleMeanScaledAt18 := needleMean.scaledFloor (readoutScale)
     needleVariance := needleVariance
-    needleVarianceScaledAt18 := needleVariance.scaledFloor (pow10 18) }
+    needleVarianceScaledAt18 := needleVariance.scaledFloor (readoutScale) }
 
-/-- `cavendishMagneticNeedle : MagneticNeedleReport` — the needle read over `[1, 1000000]`. -/
+/-- `cavendishMagneticNeedle : MagneticNeedleReport` — the needle read over the assay window
+`[assayLower, assayUpper]` (audit #2 — named, was `1 1000000`). -/
 def cavendishMagneticNeedle : MagneticNeedleReport :=
-  magneticNeedleReport 1 1000000
+  magneticNeedleReport assayLower assayUpper
 
 /-- `cavendish_magnetic_needle_deflects_toward_mass`.
 **Proposition:** `cavendishMagneticNeedle.deflectsTowardMass = true` — the needle leans toward the mass

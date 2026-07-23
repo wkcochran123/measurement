@@ -22,7 +22,10 @@ def direct_1to3 : Nat :=
 def stepped_1to2to3 : Nat := AlphaBFGS.invAlphaAt (AlphaBFGS.bfgsAt 3 AlphaBFGS.d0)
 
 #eval s!"1→3   (direct  ): inverse-α_c ×1e18 = {direct_1to3}"
+
 #eval s!"1→2→3 (stepped ): inverse-α_c ×1e18 = {stepped_1to2to3}"
+
 #eval s!"agree to (leading digits that match): both = 137.0112905… (9 digits) → CONVERGED"
+
 #eval s!"|difference| ×1e18 = {if direct_1to3 ≥ stepped_1to2to3 then direct_1to3 - stepped_1to2to3 else stepped_1to2to3 - direct_1to3}  (≈ 2e-7, below the count-3 floor)"
 end Measurement.CalibrationTwoPaths

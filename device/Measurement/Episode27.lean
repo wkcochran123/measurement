@@ -23,7 +23,7 @@ cells. We describe this facet by squeezing it between exact bounds; we never cla
 never open or solve Yang–Mills, and the last box — the object's own ground — stays wrapped.
 
 **The squeeze (its purest form).** This is the clearest Weierstrass sandwich in the walk:
-`fineStructureAlphaTarget` is caught STRICTLY between `stackedDeviceG 0` (lower bound) and
+`apparatusAlphaTarget` is caught STRICTLY between `stackedDeviceG 0` (lower bound) and
 `stackedDeviceG 1` (upper bound), decided by cross-multiplied *integer* inequalities (`decide`), no float.
 And the sandwich is honest: the cell stack is FLAT (the signed second difference across cells 0,1,2 is
 zero) and the gap is REAL (the distance second difference is positive) — flat scale, real gap, so the
@@ -47,9 +47,21 @@ def ApparatusRatio.div (a b : ApparatusRatio) : ApparatusRatio :=
     denominator := a.denominator * b.numerator }
 
 /-- `natAbsDiff (a) (b) : Nat` — the absolute difference of two `Nat`s (`if a < b then b - a else a - b`),
-avoiding truncated subtraction. -/
+avoiding truncated subtraction. This is the MAGNITUDE only; the ORIENTATION (which of a, b is larger) is
+dropped — where that matters, carry `signedDiff` alongside (Batch 4). -/
 def natAbsDiff (a b : Nat) : Nat :=
   if a < b then b - a else a - b
+
+/-- `signedDiff (a) (b) : Int := (a : Int) − (b : Int)` — the ORIENTATION-preserving companion to
+`natAbsDiff`: the exact signed gap, positive when `a > b`, negative when `a < b`. `natAbsDiff` is its
+magnitude (`natAbsDiff_eq_signedDiff_natAbs`), so a consumer that needs the direction reads `signedDiff`
+and never loses the sign to a `Nat`. (Batch 4 — the audit's "signed version".) -/
+def signedDiff (a b : Nat) : Int := (a : Int) - (b : Int)
+
+/-- The magnitude is the absolute value of the signed gap — orientation is fully recoverable. -/
+theorem natAbsDiff_eq_signedDiff_natAbs (a b : Nat) : natAbsDiff a b = (signedDiff a b).natAbs := by
+  unfold natAbsDiff signedDiff
+  split <;> omega
 
 /-- `rationalDistanceNumerator (a) (b) : Nat` — the cross-multiplied absolute gap between two ratios,
 `natAbsDiff (a.numerator * b.denominator) (b.numerator * a.denominator)`. How far apart two ratios sit,
@@ -74,24 +86,28 @@ inputs lifted to `Int`; positive when the middle dips below the chord (a real ga
 def distanceSecondDifference (lower middle upper : Nat) : Int :=
   Int.ofNat upper - 2 * Int.ofNat middle + Int.ofNat lower
 
+/-- The subtraction `cavendishSeparation − cavendishArm` in `apparatusAlphaTarget` is PROVED nonnegative
+(no silent Nat truncation): `cavendishSeparation = boxCount ⊕ arm ≥ arm`, so the subtraction is exact and
+equals `boxCount`. Discharges the arithmetic audit's unproved-nonneg flag (Batch 3). -/
+theorem cavendishArm_le_cavendishSeparation : cavendishArm ≤ cavendishSeparation := by
+  simp only [cavendishArm, cavendishSeparation, earnedSum_eq]; omega
+theorem cavendishSeparation_sub_arm_eq_boxCount : cavendishSeparation - cavendishArm = boxCount := by
+  simp only [cavendishArm, cavendishSeparation, earnedSum_eq]; omega
+
 /-- `apparatusAlphaTarget : ApparatusRatio` — the α target drawn from the device's own calibrated cell:
-numerator `deviceG.numerator * (cavendishSeparation - cavendishArm)`, denominator `deviceG.denominator *
-cavendishSeparation`. The line the graticule is to bracket, built from `G`, not imported. -/
+numerator `deviceG.numerator * (cavendishSeparation - cavendishArm)` (the subtraction PROVED nonneg =
+`boxCount`, see above), denominator `deviceG.denominator * cavendishSeparation`. The line the graticule is
+to bracket, built from `G`, not imported. -/
 def apparatusAlphaTarget : ApparatusRatio :=
   { numerator :=
       deviceG.numerator * (cavendishSeparation - cavendishArm)
     denominator := deviceG.denominator * cavendishSeparation }
 
-/-- `fineStructureAlphaTarget : ApparatusRatio` — `apparatusAlphaTarget` under the name "alpha": the
-fine-structure facet's target line. The device's own target, not the physical constant. -/
-def fineStructureAlphaTarget : ApparatusRatio :=
-  apparatusAlphaTarget
-
 /-- `fineStructureInverseFinite : ApparatusRatio` — the reciprocal of the α target (numerator and
 denominator swapped): the finite "inverse-α" read. -/
 def fineStructureInverseFinite : ApparatusRatio :=
-  { numerator := fineStructureAlphaTarget.denominator
-    denominator := fineStructureAlphaTarget.numerator }
+  { numerator := apparatusAlphaTarget.denominator
+    denominator := apparatusAlphaTarget.numerator }
 
 /-- `stackedDeviceG (cells) : ApparatusRatio` — a stack of `cells` device-G cells, `deviceG.mulNat cells`.
 These are the engraved rulings the target is bracketed between; cell 0, cell 1, cell 2, … -/
@@ -101,8 +117,8 @@ def stackedDeviceG (cells : Nat) : ApparatusRatio :=
 /-- `alphaCellFloor : Nat` — the ruling just below the target: the integer part of `αTarget / deviceG` by
 cross-multiplied `Nat` division. The lower bracket index. -/
 def alphaCellFloor : Nat :=
-  fineStructureAlphaTarget.numerator * deviceG.denominator /
-    (fineStructureAlphaTarget.denominator * deviceG.numerator)
+  apparatusAlphaTarget.numerator * deviceG.denominator /
+    (apparatusAlphaTarget.denominator * deviceG.numerator)
 
 /-- `alphaCellUpper : Nat` — the ruling just above, `alphaCellFloor + 1`. The upper bracket index. -/
 def alphaCellUpper : Nat :=
@@ -112,9 +128,9 @@ def alphaCellUpper : Nat :=
 comparing their `rationalDistanceNumerator`s (a tie resolves to the upper). The nearest ruling. -/
 def bestAlphaCellCount : Nat :=
   let lowerDistance :=
-    rationalDistanceNumerator (stackedDeviceG alphaCellFloor) fineStructureAlphaTarget
+    rationalDistanceNumerator (stackedDeviceG alphaCellFloor) apparatusAlphaTarget
   let upperDistance :=
-    rationalDistanceNumerator (stackedDeviceG alphaCellUpper) fineStructureAlphaTarget
+    rationalDistanceNumerator (stackedDeviceG alphaCellUpper) apparatusAlphaTarget
   if upperDistance <= lowerDistance then alphaCellUpper else alphaCellFloor
 
 /-- `alphaCurvatureCellCount : Nat` — one ruling further out, `bestAlphaCellCount + 1`, so cells 0,1,2 are
@@ -184,18 +200,18 @@ def alphaTuneReport : AlphaTuneReport :=
   let upperStack := stackedDeviceG alphaCellUpper
   let bestStack := stackedDeviceG bestAlphaCellCount
   let curvatureStack := stackedDeviceG alphaCurvatureCellCount
-  let lowerSignedResidual := rationalSignedNumerator lowerStack fineStructureAlphaTarget
-  let upperSignedResidual := rationalSignedNumerator upperStack fineStructureAlphaTarget
+  let lowerSignedResidual := rationalSignedNumerator lowerStack apparatusAlphaTarget
+  let upperSignedResidual := rationalSignedNumerator upperStack apparatusAlphaTarget
   let curvatureSignedResidual :=
-    rationalSignedNumerator curvatureStack fineStructureAlphaTarget
-  let lowerDistance := rationalDistanceNumerator lowerStack fineStructureAlphaTarget
-  let upperDistance := rationalDistanceNumerator upperStack fineStructureAlphaTarget
+    rationalSignedNumerator curvatureStack apparatusAlphaTarget
+  let lowerDistance := rationalDistanceNumerator lowerStack apparatusAlphaTarget
+  let upperDistance := rationalDistanceNumerator upperStack apparatusAlphaTarget
   let curvatureDistance :=
-    rationalDistanceNumerator curvatureStack fineStructureAlphaTarget
-  let bestDistance := rationalDistanceNumerator bestStack fineStructureAlphaTarget
-  let tuningRatio := fineStructureAlphaTarget.div bestStack
-  { alphaTarget := fineStructureAlphaTarget
-    alphaTargetScaledAt18 := fineStructureAlphaTarget.scaledFloor (pow10 18)
+    rationalDistanceNumerator curvatureStack apparatusAlphaTarget
+  let bestDistance := rationalDistanceNumerator bestStack apparatusAlphaTarget
+  let tuningRatio := apparatusAlphaTarget.div bestStack
+  { alphaTarget := apparatusAlphaTarget
+    alphaTargetScaledAt18 := apparatusAlphaTarget.scaledFloor (readoutScale)
     alphaInverseTarget := fineStructureInverseFinite
     cellG := deviceG
     lowerCells := alphaCellFloor
@@ -218,25 +234,25 @@ def alphaTuneReport : AlphaTuneReport :=
     observedSecondDifference :=
       distanceSecondDifference lowerDistance upperDistance curvatureDistance
     tuningRatio := tuningRatio
-    tuningRatioScaledAt18 := tuningRatio.scaledFloor (pow10 18)
+    tuningRatioScaledAt18 := tuningRatio.scaledFloor (readoutScale)
     selectedCells := quantumGravityCells alphaCurvatureCellCount }
 
 /-- `fineStructureAlpha_bracketed_by_zero_and_one_cells`.
 **Proposition:** the α target is caught STRICTLY between cell 0 and cell 1, as two cross-multiplied `Nat`
-inequalities — `(stackedDeviceG 0).numerator * fineStructureAlphaTarget.denominator <
-fineStructureAlphaTarget.numerator * (stackedDeviceG 0).denominator` (cell 0 below the target) ∧
-`fineStructureAlphaTarget.numerator * (stackedDeviceG 1).denominator < (stackedDeviceG 1).numerator *
-fineStructureAlphaTarget.denominator` (cell 1 above it).
+inequalities — `(stackedDeviceG 0).numerator * apparatusAlphaTarget.denominator <
+apparatusAlphaTarget.numerator * (stackedDeviceG 0).denominator` (cell 0 below the target) ∧
+`apparatusAlphaTarget.numerator * (stackedDeviceG 1).denominator < (stackedDeviceG 1).numerator *
+apparatusAlphaTarget.denominator` (cell 1 above it).
 **Mechanism:** `by decide` — the kernel evaluates the two decidable integer inequalities; exact, no float.
 **Squeeze role:** the PUREST tick of the walk's squeeze — α caught strictly between two of the device's
 own cells, the literal Weierstrass sandwich. α is described by bracketing, never captured, never the
 physical 1/137. -/
 theorem fineStructureAlpha_bracketed_by_zero_and_one_cells :
-    (stackedDeviceG 0).numerator * fineStructureAlphaTarget.denominator
-        < fineStructureAlphaTarget.numerator * (stackedDeviceG 0).denominator
+    (stackedDeviceG 0).numerator * apparatusAlphaTarget.denominator
+        < apparatusAlphaTarget.numerator * (stackedDeviceG 0).denominator
       ∧
-    fineStructureAlphaTarget.numerator * (stackedDeviceG 1).denominator
-        < (stackedDeviceG 1).numerator * fineStructureAlphaTarget.denominator := by
+    apparatusAlphaTarget.numerator * (stackedDeviceG 1).denominator
+        < (stackedDeviceG 1).numerator * apparatusAlphaTarget.denominator := by
   decide
 
 /-- `bestAlphaCellCount_is_one : bestAlphaCellCount = 1`. **Proposition:** the nearest ruling is cell 1.
@@ -258,9 +274,9 @@ across cells 0,1,2 (`secondDifference` of the three `rationalSignedNumerator`s t
 evenly cut, no bend in the scale, so the bracket is trustworthy. -/
 theorem signedCellStackCurvature_is_zero :
     secondDifference
-      (rationalSignedNumerator (stackedDeviceG 0) fineStructureAlphaTarget)
-      (rationalSignedNumerator (stackedDeviceG 1) fineStructureAlphaTarget)
-      (rationalSignedNumerator (stackedDeviceG 2) fineStructureAlphaTarget) = 0 := by
+      (rationalSignedNumerator (stackedDeviceG 0) apparatusAlphaTarget)
+      (rationalSignedNumerator (stackedDeviceG 1) apparatusAlphaTarget)
+      (rationalSignedNumerator (stackedDeviceG 2) apparatusAlphaTarget) = 0 := by
   decide
 
 /-- `observedAlphaSlipCurvature_positive`. **Proposition:** the distance second difference across cells
@@ -270,9 +286,9 @@ than lying on one; with the flat stack, the value is genuinely bracketed. -/
 theorem observedAlphaSlipCurvature_positive :
     0 <
       distanceSecondDifference
-        (rationalDistanceNumerator (stackedDeviceG 0) fineStructureAlphaTarget)
-        (rationalDistanceNumerator (stackedDeviceG 1) fineStructureAlphaTarget)
-        (rationalDistanceNumerator (stackedDeviceG 2) fineStructureAlphaTarget) := by
+        (rationalDistanceNumerator (stackedDeviceG 0) apparatusAlphaTarget)
+        (rationalDistanceNumerator (stackedDeviceG 1) apparatusAlphaTarget)
+        (rationalDistanceNumerator (stackedDeviceG 2) apparatusAlphaTarget) := by
   decide
 
 /-! ## Readout — the sighting logged

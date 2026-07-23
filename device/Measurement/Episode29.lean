@@ -90,7 +90,7 @@ def rationalSlipFloor (distance : RationalDistance) : Nat :=
 
 /-- `rationalSlipScaledAt18 (distance) : Nat` — the slip read to eighteen places. -/
 def rationalSlipScaledAt18 (distance : RationalDistance) : Nat :=
-  (rationalProximitySlip distance).scaledFloor (pow10 18)
+  (rationalProximitySlip distance).scaledFloor (readoutScale)
 
 /-- `rationalSlipFace (distance) : CorridorFace` — the wheel face the slip floor lands on. -/
 def rationalSlipFace (distance : RationalDistance) : CorridorFace :=
@@ -104,9 +104,11 @@ def rationalSlipCrosses (targetSlip : Nat) (distance : RationalDistance) : Bool 
     (rationalProximitySlip distance).numerator
 
 /-- `firstSlipTargetBetweenOneAndTwo : Nat` — the seam the drive aims at: one past the distance-2 floor,
-`proximitySlipFloor 2 + 1` (the next slip after the mass triplet). Its value is `5` (theorem below). -/
+the distance-2 floor `⊕` a single point, counted as a cardinality (`earnedSum (proximitySlipFloor 2) 1`,
+no postulated `+`; the `+1` is earned as coproduct-with-a-point). Value = `proximitySlipFloor 2 + 1 = 5`
+(by `earnedSum_eq`; theorem below), so the α map's slip target `T` is byte-identical. -/
 def firstSlipTargetBetweenOneAndTwo : Nat :=
-  proximitySlipFloor 2 + 1
+  earnedSum (proximitySlipFloor 2) 1
 
 /-- `SlipBisectStep` — one swing recorded: the rung, the bracket it stood on, the probe (coarse and
 scaled), the probe's slip floor / scaled value / face, and whether the drill `crossedSlip` the target. -/
@@ -151,7 +153,7 @@ def bisectSlipOnce
      lowerDistance := bracket.lowerDistance
      upperDistance := bracket.upperDistance
      probeDistance := probe
-     probeDistanceScaledAt18 := probe.scaledFloor (pow10 18)
+     probeDistanceScaledAt18 := probe.scaledFloor (readoutScale)
      probeSlipFloor := rationalSlipFloor probe
      probeSlipScaledAt18 := rationalSlipScaledAt18 probe
      probeFace := rationalSlipFace probe
@@ -197,8 +199,8 @@ def slipBisectReport (targetSlip rungs : Nat) : SlipBisectReport :=
     rungs := rungs
     lowerDistance := bracket.lowerDistance
     upperDistance := bracket.upperDistance
-    lowerDistanceScaledAt18 := bracket.lowerDistance.scaledFloor (pow10 18)
-    upperDistanceScaledAt18 := bracket.upperDistance.scaledFloor (pow10 18)
+    lowerDistanceScaledAt18 := bracket.lowerDistance.scaledFloor (readoutScale)
+    upperDistanceScaledAt18 := bracket.upperDistance.scaledFloor (readoutScale)
     lowerSlipFloor := rationalSlipFloor bracket.lowerDistance
     upperSlipFloor := rationalSlipFloor bracket.upperDistance
     lowerSlipScaledAt18 := rationalSlipScaledAt18 bracket.lowerDistance
@@ -246,13 +248,33 @@ def firstSlipSummaryBetweenOneAndTwo (rungs : Nat) : SlipBisectSummary :=
   slipBisectSummary firstSlipTargetBetweenOneAndTwo rungs
 
 /-- `firstSlipTargetBetweenOneAndTwo_is_five`.
-**Proposition:** `firstSlipTargetBetweenOneAndTwo = 5`.
-**Mechanism:** `rfl` — kernel-computed.
-**Squeeze role:** the bisection's target — the seam the closing bracket converges onto, pinned to the
-exact value `5`. -/
+**Proposition:** `firstSlipTargetBetweenOneAndTwo = 5` — the bisection target T, a JAR INPUT (the crossing is
+`√(C/T) = √(18/5)`).
+**Mechanism (strong form, NOT `rfl` at the heartbeat).** `T = earnedSum (proximitySlipFloor 2) 1 =
+proximitySlipFloor 2 + 1`. The slip at distance 2 is `deviceG.numerator · P / (P · square 2)` where `P =
+sourceMassTotal · testMass · arm` is the (heartbeat-derived) mass product and `deviceG.denominator = P`
+structurally (by `cavendishCalibration`'s def) — so the WHOLE mass product `P` CANCELS between the slip
+numerator and denominator (`Nat.mul_div_mul_right`), leaving `deviceG.numerator / square 2 = 18/4 = 4`,
+independent of any heartbeat count. Then `T = 4 + 1 = 5`. Proved through the ACTUAL `proximitySlipFloor 2`
+cancellation, ∀ over the mass product — the `rfl`-at-2132 pin is retired; drift-immune by STRUCTURAL
+cancellation, not by evaluation.
+**One root, three paths.** T=5 is `deviceG.numerator = 18` read through slip-at-2 (`⌊18/4⌋+1`); the same
+root gives C = slip(1) = 18 (`mediantC_is_eighteen`) and R = 18 (`naturalUnitOrbitRadius_is_eighteen`). Not
+three independent 18/5s — one coupling (`deviceG.numerator = 18`), three structural transforms. -/
 theorem firstSlipTargetBetweenOneAndTwo_is_five :
     firstSlipTargetBetweenOneAndTwo = 5 := by
-  rfl
+  have hP : 0 < cavendishSourceMassTotal * tetheredElectronTestMass.magnitude * cavendishArm := by decide
+  show earnedSum (proximitySlipFloor 2) 1 = 5
+  rw [earnedSum_eq]
+  have h4 : proximitySlipFloor 2 = 4 := by
+    simp only [proximitySlipFloor, proximitySlip?, ApparatusRatio.floor, square]
+    rw [show deviceG.denominator
+           = cavendishSourceMassTotal * tetheredElectronTestMass.magnitude * cavendishArm from rfl,
+        show deviceG.numerator * cavendishSourceMassTotal * tetheredElectronTestMass.magnitude * cavendishArm
+           = 18 * (cavendishSourceMassTotal * tetheredElectronTestMass.magnitude * cavendishArm)
+           from by simp only [show deviceG.numerator = 18 from rfl, Nat.mul_assoc]]
+    rw [Nat.mul_comm _ 4, Nat.mul_div_mul_right 18 4 hP]
+  omega
 
 /-- `firstSlip_probe_starts_left_of_boundary`.
 **Proposition:** `(bisectSlipOnce firstSlipTargetBetweenOneAndTwo 0 initialSlipBisectBracket).1.crossedSlip
