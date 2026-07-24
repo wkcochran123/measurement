@@ -1,5 +1,6 @@
 import Measurement.Episode40
 import Measurement.CycleOfThree
+import Measurement.Calibration.BIAS_____
 
 /-
 PLAN_RFC §1.2 / story_arc Ch13.3, Ch15.3 — the α bracket at the device's count-to-3 resolution.
@@ -63,7 +64,12 @@ count of `ThreeFold` (circular). `CycleOfThree.threeFold_sum_{left,right}_inv` p
 so the fencepost structure is intrinsic; addition falls out as the Sum's cardinality. -/
 def countToThree : Nat := Measurement.CycleOfThree.cardPairSumPost
 
-def tgt : Nat := firstSlipTargetBetweenOneAndTwo
+/-- Q3 DE-SELECTION (turn 543): the class of the post-2 slip state; value unchanged
+by `rfl`; paying theorem: `firstSlipTargetBetweenOneAndTwo_is_five`. -/
+def tgtClass : Calibration.BIAS_____.GaugeValue
+    (fun (s : Option ApparatusRatio) => earnedSum (match s with | none => 0 | some slip => slip.floor) 1) :=
+  Calibration.BIAS_____.deselect _ (proximitySlip? 2)
+def tgt : Nat := Calibration.BIAS_____.reading _ tgtClass
 
 /-- The slip-bisection midpoint at count `n` (the reading if you counted to `n`). -/
 def midAt (n : Nat) : RationalDistance :=

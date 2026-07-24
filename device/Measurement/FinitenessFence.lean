@@ -1,4 +1,4 @@
-import Measurement.NamingClose
+import Measurement.Episode24
 
 /-! # FinitenessFence — the impossibility, finished as a machine-checked theorem.
 Operator: "finish the proof."  External review P5: "the machine proves it cannot derive it" lived only

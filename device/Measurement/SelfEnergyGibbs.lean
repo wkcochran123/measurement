@@ -1,6 +1,7 @@
 import Measurement.SelfApplication        -- register_cost (elaboration-heartbeat meter), self_residual, heartbeatCoefficient
 import Measurement.TwoDescriptions        -- electron_in_orbit (the base description whose cost we iterate)
 import Measurement.Episode15              -- selection_sound (THE NEEDLE — the device's single sanctioned Quot.sound)
+import Measurement.Calibration.BIAS_____  -- mkClass (Q5 re-thread: the one class former outside Ep15 — the needle's file-census stays two)
 import Measurement.Episode27              -- secondDifference (the second-difference instrument)
 import Measurement.AlphaBoundCountToThree -- countToThree (= 3, the resolution floor)
 
@@ -123,7 +124,7 @@ collapse is genuine Quot.sound work (not rfl), and you pay to GENERATE the next 
 generate-and-collapse cost is where the −21 lives (the gap between a reading and the reading-of-the-reading).
 `#print axioms selProof = [Quot.sound]`. Device-derived: `selection_sound` is the ONE sanctioned Quot.sound. -/
 @[reducible] def implOrder (P Q : Prop) : Prop := P → Q
-@[reducible] def describeType (P : Prop) : Prop := Quot.mk implOrder P = Quot.mk implOrder P
+@[reducible] def describeType (P : Prop) : Prop := Calibration.BIAS_____.mkClass implOrder P = Calibration.BIAS_____.mkClass implOrder P
 
 /-- The order witness: a reading ENTAILS its own next-description `describeType P` (`P → describeType P`) —
 the self-referential echo. Trivially inhabited (`describeType P` is a tautology), but the RELATION is a real
@@ -138,7 +139,7 @@ overhead where the −21 lives (`self_residual = echo − orbit`: the gap betwee
 reading-of-the-reading, two consecutive layers). `#print axioms selProof = [Quot.sound]`, doing genuine work.
 (a=b would be `Quot.mk P = Quot.mk P` = rfl-trivial, no next description generated — the wrong shape. Settled
 a≠b per Kodo 12:47 + beastmaster 12:40, resolving the whole marked/caught/reconciled thread.) -/
-def selProof (P : Prop) : Quot.mk implOrder P = Quot.mk implOrder (describeType P) :=
+def selProof (P : Prop) : Calibration.BIAS_____.mkClass implOrder P = Calibration.BIAS_____.mkClass implOrder (describeType P) :=
   selection_sound (r := implOrder) (selWitness P)
 
 register_cost quotDepth1 => (selProof electron_in_orbit)
@@ -397,6 +398,12 @@ def verdictStrQuot : String := gibbsVerdict depthSeriesQuot
 self-energy and let §4 LIVE or DIE on it. Pre-registered prediction: converges near −21 (LIVES, separable)
 vs still grows (DIES, reading ii). Reported either way; nothing aimed; 21/573 is the cross-check. -/
 #eval s!"[§4 DIFF] typeTower control (spelling alone): {typeTowerSeries}"
+-- EPOCH NOTE (2026-07-24, the tripwire's first firing -- a CONFIRMING observation, not
+-- damage control): this series measures the device's own spelling. The constructor's
+-- rename (Deselect -> Calibration.BIAS_____) moved rung 4 by one heartbeat; the knob
+-- was tuned to the reference epoch at exactly FIVE underscores (the operator's own
+-- spelling). Probes at 11 chars (Spinal Tap) and 42 (Douglas Adams): ONLY this
+-- telemetry flicked (lexeme-fine, +-1); every asserted reading byte-identical.
 #eval s!"[§4 DIFF] faithful quot (spelling+collapse): {depthSeriesQuot}"
 #eval s!"[§4 DIFF ⭐ control-subtracted = quot − typeTower]: {selectionResidualSeries}"
 #eval s!"[§4 DIFF] first differences of the differential: {firstDiffs selectionResidualSeries}"

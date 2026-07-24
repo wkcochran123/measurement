@@ -1,4 +1,5 @@
 import Measurement.Episode40
+import Measurement.Calibration.BIAS_____
 
 /-! # AlphaBFGS — the coupling as a quasi-Newton (BFGS) descent on the MEASURED variations.
 Operator: "first and second from the first run and second from the second run. There. BFGS implemented."
@@ -14,8 +15,19 @@ namespace Measurement.AlphaBFGS
 open Measurement
 
 -- MEASURED second variation, from the machine's own output (not hardcoded):
-def measuredC : Nat := (rationalProximitySlip RationalDistance.one).floor   -- slip(1) = 18
-def measuredT : Nat := firstSlipTargetBetweenOneAndTwo                       -- target  = 5
+/-- Q2 DE-SELECTION (design frozen law, turn 542): the slip-state de-selected through
+the one needle; `measuredC` reads the CLASS, never the pair. Value unchanged by `rfl`
+(`reading_deselect`): gate zero. Paying theorem: `mediantC_is_eighteen` (same reading,
+same earn-site — one root). -/
+def measuredCClass : Calibration.BIAS_____.GaugeValue ApparatusRatio.floor :=
+  Calibration.BIAS_____.deselect ApparatusRatio.floor (rationalProximitySlip RationalDistance.one)
+def measuredC : Nat := Calibration.BIAS_____.reading ApparatusRatio.floor measuredCClass   -- slip(1) = 18
+/-- Q3 DE-SELECTION (turn 543): the class of the post-2 slip state; value unchanged
+by `rfl`; paying theorem: `firstSlipTargetBetweenOneAndTwo_is_five`. -/
+def measuredTClass : Calibration.BIAS_____.GaugeValue
+    (fun (s : Option ApparatusRatio) => earnedSum (match s with | none => 0 | some slip => slip.floor) 1) :=
+  Calibration.BIAS_____.deselect _ (proximitySlip? 2)
+def measuredT : Nat := Calibration.BIAS_____.reading _ measuredTClass               -- target  = 5
 
 /-- 1D BFGS / Newton step toward slip(d)=T (= √(C/T)), using the measured first & second variation. -/
 def bfgsStep (d : RationalDistance) : RationalDistance :=

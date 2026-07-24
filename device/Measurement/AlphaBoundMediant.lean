@@ -1,4 +1,5 @@
 import Measurement.Episode40
+import Measurement.Calibration.BIAS_____
 
 /-
 EXPERIMENT (operator 2026-07-11: "YES median instead of average. always in the modulo realm!"
@@ -22,8 +23,23 @@ namespace Measurement
 
 open Measurement
 
-def mediantTgt : Nat := firstSlipTargetBetweenOneAndTwo   -- T = target = 5 (device-derived)
-def mediantC : Nat := (rationalProximitySlip RationalDistance.one).floor   -- C = slip(1) = 18 (measured, Ep29)
+/-- Q3 DE-SELECTION (turn 543): the target reads the CLASS of the post-2 slip state —
+one past its floor, the `+1` still earned via `earnedSum` (coproduct). Value unchanged
+by `rfl`; paying theorem: `firstSlipTargetBetweenOneAndTwo_is_five` (Ep29). -/
+def mediantTgtClass : Calibration.BIAS_____.GaugeValue
+    (fun (s : Option ApparatusRatio) => earnedSum (match s with | none => 0 | some slip => slip.floor) 1) :=
+  Calibration.BIAS_____.deselect _ (proximitySlip? 2)
+def mediantTgt : Nat := Calibration.BIAS_____.reading _ mediantTgtClass   -- T = target = 5 (device-derived)
+
+/-- Q2 DE-SELECTION (design frozen law, turn 542): `mediantC` no longer consumes the
+selected pair directly — the slip-state is DE-SELECTED through the one needle
+(`Deselect`, threading Ep15's `selection_sound`) and `mediantC` reads the CLASS.
+Value unchanged by `rfl` (`reading_deselect`): gate zero. The pair survives upstream
+as mesh (the witness below consumes it AS the payment — census bucket A). Paying
+theorem: `mediantC_is_eighteen`. -/
+def mediantCClass : Calibration.BIAS_____.GaugeValue ApparatusRatio.floor :=
+  Calibration.BIAS_____.deselect ApparatusRatio.floor (rationalProximitySlip RationalDistance.one)
+def mediantC : Nat := Calibration.BIAS_____.reading ApparatusRatio.floor mediantCClass   -- C = slip(1) = 18 (measured, Ep29)
 
 /-- `mediantC_is_eighteen : mediantC = 18` — C, the jar's slip-coupling input, asserted on the REAL thing
 the jar reads (`(rationalProximitySlip 1).floor`) and proved DRIFT-IMMUNE by structural cancellation (strong

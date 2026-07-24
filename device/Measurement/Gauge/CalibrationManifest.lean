@@ -74,6 +74,6 @@ open Measurement Measurement.AffineConstant
 #eval s!"[remainder-standardization] pairs kept: floor/remainder, inverseFloor/inverseRemainder, scaledFloor/scaledRemainder, ceil/ceilRemainder, inverseScaledFloor/inverseScaledRemainder — floors travel with their remainders, no info silently destroyed"
 
 -- ── NOT laundered here (declared, not filed as calibration) ──
-#eval "[NOT calibration — fix-in-place / proof-debt] ALL DISCHARGED: Ep40 tangeAtDistance d<1 clamp + inverseScaledFloor pole → PROJECTIVELY TOTALIZED (Batch 2; 0/0, n/0; on-domain byte-identical, jar held); Ep27 cavendishSeparation−cavendishArm → PROVED nonneg = boxCount (Batch 3); Ep30 variance numerator → signed companion, CS-nonneg marked (Batch 4); Ep39 natAbsDiff → signedDiff orientation companion (Batch 4). Each FIXED IN PLACE, never laundered as calibration — jar held byte-identical throughout."
+#eval "[NOT calibration — fix-in-place / proof-debt] ALL DISCHARGED: Ep40 tangeAtDistance d<1 clamp + inverseScaledFloor pole → PROJECTIVELY TOTALIZED (Batch 2; 0/0, n/0; on-domain byte-identical, jar held); Ep27 cavendishSeparation−cavendishArm → PROVED nonneg = boxCount (Batch 3); Ep30 variance numerator → signed companion, CS-nonneg marked (Batch 4); Ep39 natAbsDiff → signedUnit/orientation companion (Batch 4; erratum 2026-07-24: the companion lands as the signedUnit+orientation structure — the description bends to the code). Each FIXED IN PLACE, never laundered as calibration — jar held byte-identical throughout."
 
 end Measurement.Gauge.CalibrationManifest

@@ -47,8 +47,13 @@ example : isqrt 90 = 9 ∧ isqrt 100 = 10 ∧ isqrt 0 = 0 ∧ isqrt 1 = 1 ∧ is
 def piScale : Nat := pow10 9
 
 /-- The circle being measured: the device's OWN orbit (Ep32). π is measured off ITS geometry.
-    (π is scale-invariant, so the orbit radius cancels in perimeter/diameter — recorded for provenance.) -/
-def orbitRadius : Nat := naturalUnitOrbitRadius
+    (π is scale-invariant, so the orbit radius cancels in perimeter/diameter — recorded for provenance.)
+    Q4 DE-SELECTION (turn 543): the radius reads the CLASS of the orbit's mesh state
+    (`cooperPairGravitationalParameter`, ceil-read); value unchanged by `rfl`; paying
+    theorem: `naturalUnitOrbitRadius_is_eighteen` (Ep32). -/
+def orbitRadiusClass : Calibration.BIAS_____.GaugeValue ApparatusRatio.ceil :=
+  Calibration.BIAS_____.deselect ApparatusRatio.ceil cooperPairGravitationalParameter
+def orbitRadius : Nat := Calibration.BIAS_____.reading ApparatusRatio.ceil orbitRadiusClass
 
 /-- `sqrtScaled n = ⌊√n · piScale⌋` — an integer square root at the fixed-point scale (`floorSqrt`,
     the kernel floor-sqrt; NO π input). -/
