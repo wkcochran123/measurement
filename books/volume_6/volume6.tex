@@ -1,0 +1,36 @@
+\documentclass[12pt,oneside]{book}
+\usepackage{amsthm,amssymb,amsmath,mathtools,setspace,thmtools,titling,tocloft}
+\usepackage{tikz}
+
+% The fence environment, the series' convention.
+\newenvironment{fence}
+  {\begin{center}\begin{minipage}{0.88\textwidth}\itshape\rule{\linewidth}{0.4pt}\par\smallskip}
+  {\par\smallskip\rule{\linewidth}{0.4pt}\end{minipage}\end{center}}
+
+% The intuition environment, carried from Vol 3.
+\newenvironment{intuition}
+  {\begin{quote}\small\textsc{intuition offered, not claim made.}\ \itshape}
+  {\end{quote}}
+
+\begin{document}
+
+\title{The Navier--Stokes Equation: The Emergence of Behavior\\
+\large Volume Six}
+
+\author{Bill Cochran\\wkcochran@gmail.com\\https://github.com/wkcochran123/measurement}
+\date{\today}
+
+\maketitle
+
+\tableofcontents
+
+\include{front/preface}
+
+\include{chapters/01}
+\include{chapters/02}
+\include{chapters/03}
+\include{chapters/04}
+\include{chapters/05}
+\include{chapters/06}
+
+\end{document}

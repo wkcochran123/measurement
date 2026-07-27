@@ -1,0 +1,178 @@
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+% Front matter -- the SQUARE/CUBE LAW keystone (operator directive 2026-07-26
+% 14:05-14:08Z), the way Vol 5's preface was Hilbert's sixth. Organizing hook:
+% 6 = 2*3, 3 = the fencepost, so Volume 6 = 2*fencepost (intuition-labeled,
+% adds-no-claim). Mesh resolution + parallel scalability / weak scaling (work
+% grows as resolution^d = the square/cube law), CITED (Amdahl 1967 / Gustafson
+% 1988) + FENCED image-not-real-solve. THE DISTINGUISHABILITY THESIS emphasized
+% (operator: "make sure you emphasize it doesn't matter how you count, as long as
+% you can distinguish it using existing numbers") = the device's boxOf /
+% defines-not-perceives thesis (Vol 5 preface, machine-checked). 0.999...=1 =
+% representation-equality (cited limit identity). "The computer always counts
+% 2+1=3, 3+1=4, you can count on it" = deterministic successor counting, fencepost
+% caveat riding. The debt called due, headline-honest (fluid DESCRIPTION built;
+% deeper device-lane NS-model OWED). Unabashed math (Vol 6 presentation law) with
+% the four riders; no Lean identifiers; bold-math/fenced-referent; lab-gap where
+% any number appears. Gate: Kodo (earn/citation, pre-cleared) + Beastmaster
+% (keystone arrival-read, architecture GREEN 14:38Z).
+
+There is a law every computational scientist meets on the first hard problem,
+and it is written in the plainest arithmetic. Refine a two-dimensional grid by
+a factor and the work grows as the square; refine a three-dimensional one and
+it grows as the cube. If a calculation is to keep a growing bank of processors
+each doing useful work --- rather than idling while the others finish --- the
+problem itself must be made to grow at just that rate, the rate at which
+resolution feeds cost. That is the discipline of \emph{weak scaling}, and it is
+old: John Gustafson named it in 1988, correcting the pessimism of Gene Amdahl's
+1967 accounting of the parts of a computation that will not parallelize. The
+relation underneath it is elementary. Work grows as
+\[
+  W \;\propto\; N^{d},
+\]
+resolution $N$ raised to the dimension $d$ --- the square in the plane, the cube
+in space. This book is the sixth in its series, and it opens on that law for a
+reason a careful reader will want stated before anything else: the number six is
+itself a small instance of it. For $2 \cdot 3 = 6$.
+
+\begin{intuition}
+The series has, since its third volume, called the number three a
+\emph{fencepost} --- the place where counting stops being a tally and becomes a
+limit, a value approached and not quite landed on. If three is the fencepost,
+then $6 = 2 \cdot 3$ reads as $6 = 2 \cdot \text{fencepost}$: this sixth volume
+is two fenceposts, the doubling of the place where the count turns into a limit.
+That is a picture and nothing more --- $2 \cdot 3 = 6$ is arithmetic, and the
+naming of three as the fencepost is the device's own, carried from earlier
+volumes. The reading adds no claim; it is offered as the shape of why a book
+about the emergence of behavior should begin with the square and the cube.
+\end{intuition}
+
+The mesh, the resolution study, the scaling law: these are the borrowed
+vocabulary of the chapters ahead, and the preface fences them once, plainly,
+before they are used. This book runs no parallel solver and refines no physical
+mesh; it does not time a real computation or measure a real fluid. The
+square/cube law enters as a \emph{frame} --- the honest picture of how cost
+follows resolution --- and every use of it in these pages is an image laid over
+the device's own arithmetic, never a claim that the instrument performs a
+computational-fluid-dynamics calculation of the world. What the device actually
+does with resolution is stranger and more exact than any mesh, and the
+difference is the whole of the first chapter.
+
+For here is the thesis this preface exists to emphasize, because it is the
+connective tissue of the entire volume and the reader who misses it will
+misread every chapter that follows. \emph{It does not matter how you count, so
+long as you can distinguish what you counted using the numbers you already
+have.} A machine of finite resolution does not perceive difference and then
+record it; it \emph{defines} difference as whatever its counting distinguishes,
+and nothing else. Two things it cannot tell apart with the numbers it holds are,
+for that machine and by its own definition, the same thing --- not by an
+oversight, but by the meaning of counting on a finite instrument. The earlier
+volumes proved this of the device in its own workshop, where two quantities a
+finer eye would separate fall into a single box and are, to the machine,
+identical; the fact reduces to a plain identity a machine can check. Carry that
+thesis into the language of resolution and it becomes the corrected sense of
+every word like \emph{coarse} in this book. When the instrument re-reads its
+fine argument at a coarser index, it does not \emph{average}, does not blur,
+does not round; there is no approximation in it and nothing is smeared. The
+coarse count is fixed exactly by the fine one, deterministically, in exact
+arithmetic --- and that is the honest correction to the lossy coarse-graining of
+a real mesh: the re-count carries no \emph{approximation} error. But exactness is
+not the same as keeping every distinction, and here the thesis holds the line
+precisely. At the coarser index the instrument \emph{defines fewer
+distinctions}: two things the fine count told apart may fall, at this floor, into
+a single box, decidably one. What the coarser resolution does not carry is not
+\emph{lost} --- nothing was approximated away --- but \emph{not distinguished};
+the machine has defined the two as the same at this floor, which is a
+re-definition and not an erasure. ``Not distinguished'' is not ``gone''; it is
+``the same, at this floor.'' Emergence, in this book, is the name for what
+remains distinguishable when the count is re-taken --- not detail smeared into a
+trend, and not everything carried whole, but exactly what the coarser floor
+still tells apart.
+
+Two small identities stand in for the thesis, and the preface states them
+because they are exact and because they are honest.
+
+The first is that
+\[
+  0.9999\ldots \;=\; 1.
+\]
+This is the standard identity of real analysis, and this book invokes it as
+nothing more than that. But it makes the thesis visible: the two expressions are
+equal not because a limit is waved at but because nothing distinguishes them ---
+there is no number you can name that lies between them, so at the level where
+difference is what can be distinguished, they are one. That is
+representation-equality, and it is fenced as exactly that: an equality of what
+the representation cannot tell apart, not a mystery and not a paradox.
+
+The second is that the machine counts, and counts the same way every time:
+$2 + 1 = 3$, and then $3 + 1 = 4$, and so on up, by the successor and never by
+anything else. There is no cleverness in it and that is its virtue --- the
+count is deterministic, repeatable, the same on every run, and you can, in the
+plainest sense of the phrase, count on it. One caveat rides the step, carried
+from the third volume: the value three, where the count reaches it, is the
+fencepost --- the limit approached --- so $2 + 1 = 3$ is the successor arriving
+at the place the ladder turns, and the discipline of the fencepost holds there
+as it always has. The point for this preface is the reliability, not the
+arithmetic: the machine's counting is a fixed, honest act you can build on, and
+the whole of what follows is built on it.
+
+And now the debt this volume was written to pay, stated at its exact size so no
+reader mistakes it. The series promised, from its first page, four descriptions
+of one model of the electron; three were built --- the geometry, the intuition,
+and the grammar of the earlier volumes, on the measurement beneath them --- and
+the fourth, the fluid description where dissipation and emergent behavior live,
+was named in every volume and constructed in none. The fifth volume's closing
+ledger named it owed: ``the fluid face, owed to the volume that will build the
+fourth face as the middle volumes built the other three.'' This is that volume,
+and it pays that debt the only honest way, by \emph{building the description} ---
+from cited mathematics and the device's own real structure, earned step by step,
+exactly as the three earlier faces were built. But the size of the payment is
+stated precisely: this book discharges the fluid \emph{description}. The deeper
+object --- a machine-checked model of the flow itself, the thing that would
+replace the device's own placeholder for this face --- is a further debt, and it
+belongs to the instrument's own workshop, not to these pages. The book pays what
+it builds and names owed what it does not; the last chapter keeps the two
+columns, and the reader will find them honest.
+
+Four fences hold the whole of this volume, and they are set here before the
+building begins, because this is the book of the series where the temptation to
+cross one is largest.
+
+First, \emph{the model, not the world.} The fluid description built here is the
+electron model's fourth face, image and not physics. It is not fluid dynamics,
+not a claim about any real fluid, and above all not a resolution of the
+Navier--Stokes problem --- the question, named a Millennium Prize problem by the
+Clay Institute in 2000, of whether the equations Claude-Louis Navier (1822) and
+George Stokes (1845) wrote keep their solutions smooth for all time. This book
+shares that problem's name in its title and not one theorem of its mathematics.
+
+Second, \emph{no unification, and no derivation across the wall.} The series'
+founding text holds that the covariance of one great theory and the
+contravariance of the other never settle; this volume does not marry them. There
+is a wall between them, and this book names it and refuses to cross it. Where a
+later chapter speaks of the two frames meeting, they meet only at that wall ---
+the boundary this volume \emph{takes} the fluid face to be, and examines in a
+later chapter without ever crossing --- and never in each other; any sense in
+which the volume speaks of physics ``unified'' is representational and kept in
+its quotation marks, the unification a shared boundary permits and never the
+merger of the forces.
+
+Third, \emph{built, not named.} A description is paid for by construction that a
+machine can check, never by a word that gestures at one. Where this book claims
+a piece of the fluid face as built, an actual checked result stands under it;
+where it has only a picture or a conjecture, it says so and files it as owed.
+
+Fourth, \emph{the model's number, never the world's.} Wherever a number appears
+in these pages it is the model's own, read to the model's resolution and fenced
+from the laboratory's --- the deep display near $137.011$ is the instrument's,
+and the world's measured value near $137.036$ is not reached, not approached,
+and not bridged, here as in every volume.
+
+So the volume's work, in one sentence: build the fourth description of the model
+--- its dissipative, emergent behavior --- as an exact re-count of the fine
+argument, from cited mathematics and the device's one real collective invariant,
+name the wall the two frames back onto without crossing it, and discharge the
+fluid-description debt by construction, leaving the deeper model owed, in the
+open.
+
+Read on. The count is exact; the emergence is what survives it.

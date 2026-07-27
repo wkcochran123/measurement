@@ -1,0 +1,118 @@
+\chapter{The Room in Arithmetic}
+% OUTLINE Ch3 "The Room in Arithmetic (Godel 1931)". THE FOLK-READING
+% FENCE CHAPTER (Beastmaster flagged the whole session: Godel = the most
+% abused theorem; the no-name-bridge at its most-needed). Laws: both
+% inherited (labeled intuitions adds-no-claim); non-funge. CITATION:
+% Godel 1931 (arithmetization / Godel numbering, the diagonal lemma,
+% first + second incompleteness); the truth-doesn't-matter clause PAID
+% here as INDEPENDENCE. The folk-readings (minds/physics/soul) named and
+% refused BY NAME. Zero device appearances. Gate: Kodo (the fence
+% hardest).
+
+\begin{intuition}
+Hand a bureaucracy a rule and it will find the form the rule forgot. Now
+imagine a bureaucracy of arithmetic --- a fixed rulebook that proves
+statements about whole numbers, each proof a finite paper trail a clerk
+could check --- and ask it about a single sentence, carefully built, that
+amounts to saying \emph{this office will never stamp me PROVED}. If the
+office ever stamps it proved, the office has proved a falsehood and is not
+to be trusted. So if the office is trustworthy, it never stamps the
+sentence --- which is exactly what the sentence said. The sentence is
+true and the office cannot prove it. The feeling to sit with, before the
+machinery: nothing mystical happened. A rulebook rich enough to describe
+its own stamping was handed a sentence about its own stamping, and the
+diagonal did the rest.
+\end{intuition}
+
+This is the first of the four great rooms, and its architect is Kurt
+G\"odel, whose 1931 paper is the most consequential single document in
+the subject and, not coincidentally, the most misread. The construction
+reuses the last two chapters' engine exactly, so the reader already owns
+its parts; what G\"odel added was the bridge that let arithmetic play all
+the roles at once.
+
+The bridge is arithmetization. Fix a scheme --- G\"odel's own, now called
+G\"odel numbering --- that assigns to every symbol, every formula, and
+every finite proof a distinct whole number, mechanically, so that
+statements \emph{about} formulas and proofs become statements about
+numbers, and the arithmetic that was the subject matter becomes also the
+language. Once formulas are numbers, the rulebook's own notion of
+provability --- ``there exists a proof of the formula with number
+$n$'' --- is itself an arithmetical statement about $n$, expressible in
+the rulebook's own tongue. The system can now talk about itself without
+leaving itself; the list of Chapter 2 is the list of provable formulas,
+and the digits along its diagonal are facts about which numbers encode
+which proofs.
+
+With that in hand the diagonal lemma --- the fixed-point construction
+that is Kleene's recursion theorem wearing arithmetic's clothes --- builds
+a sentence $G$ that is provably equivalent, inside the system, to the
+statement \emph{$G$ has no proof}. Self-application (the sentence is about
+its own provability) and negation (it asserts the \emph{absence} of a
+proof): the engine of Chapter 2, run in the house of arithmetic. And the
+conclusion is G\"odel's first incompleteness theorem: if the system is
+consistent, $G$ is neither provable nor refutable within it --- a true
+sentence the system cannot reach. His second theorem drives the point
+home by turning the sentence on the system's own trustworthiness: no such
+system can prove its own consistency, unless it has none. The room is
+built, and it does not empty: strengthen the rulebook to prove $G$ and the
+construction runs again on the stronger book, producing a fresh $G$ it
+cannot reach. The residue re-forms at every strengthening. It always
+shows up.
+
+Now the clause this chapter was assigned to pay, because it is the one the
+preface promised here and the one the world most often gets backwards.
+\emph{The room's truth does not matter} --- and here is what that
+precisely means. The trade's word is \emph{independence}: the sentence
+$G$ is independent of the system, meaning the system settles neither $G$
+nor its negation, and --- this is the part that unsettles first-time
+readers --- one may consistently \emph{add} $G$ as a new axiom, or add its
+negation, and either way the resulting system is as consistent as the one
+before. There are honest arithmetics in which $G$ holds and honest
+arithmetics in which it fails. The sentence's truth is not a fact the
+house contains; it is a fork the house leaves open, and the house stands
+down either branch. That is why the room's truth-value ``does not
+matter'' in the book's sense: the room is a structural feature of the
+system --- a place the system cannot decide --- and whether one paints
+that place true or false is a choice made outside, not a fact read off
+inside. The mechanism built the room; the truth is decor.
+
+\begin{intuition}
+The picture for independence: a map with a single unlabeled crossroads.
+The map is complete and correct everywhere it commits; at the one
+crossroads it simply does not say which way is north, and you may label
+it either way and get a consistent, usable map. The unlabeled crossroads
+is not a flaw in the cartography --- it is a place the cartography, being
+honest, declines to decide. G\"odel's sentence is that crossroads, proved
+to exist in every map rich enough to chart its own drawing.
+\end{intuition}
+
+And now the fence this chapter exists to hold, because G\"odel's theorem
+has been conscripted into more arguments it does not support than any
+result in the history of mathematics, and this series' whole discipline
+converges on refusing exactly that. Incompleteness is a theorem about
+\emph{formal systems of sufficient strength to arithmetize their own
+syntax}. It says: such a system cannot be both complete and consistent,
+and cannot certify its own consistency. It does not say that human minds
+transcend machines; the sentence $G$ is unprovable in the system and
+equally unprovable by any consistent finite reasoner using the same
+axioms, human or otherwise --- the theorem cuts against every consistent
+formal reasoner alike, and grants no faculty an exemption. It does not say
+the universe is incomputable, or that physics has a G\"odelian limit;
+those are claims about the world, and the theorem is a claim about
+provability in a formal calculus, connected to the world by no bridge the
+theorem itself supplies. It does not say truth is subjective, that
+everything is uncertain, or that some knowledge is forever beyond reach in
+the inspirational register these words usually travel in. Each of those is
+the diagonal's room read as a message about minds, worlds, or souls --- a
+no-name-bridge crossing --- and this book refuses each by the discipline
+it has run for four volumes: the room is the name of a structure in a
+representation, and a representation is not a mind and is not a world.
+What G\"odel proved is exact, immense, and entirely about systems of
+signs; the rest is import, and the customs house is closed.
+
+The second great room is the semantic twin of this one. Where G\"odel's
+sentence spoke of its own \emph{provability} and found a limit inside the
+house, the next construction lets a language reach for its own word
+\emph{true} --- and finds that the word cannot live in the house at all.
+That is Tarski's room, and the next chapter enters it.

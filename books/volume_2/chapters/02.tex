@@ -1,0 +1,106 @@
+\chapter{The Chart}
+% OUTLINE Ch2 "The Chart (manifolds as the observer's coordinates)". Laws:
+% CITATION (Riemann 1854/1868 posthumous via Dedekind; Whitney 1936; Lee as
+% modern standard), LENS (no device appearance in this chapter -- dose spent
+% at Ch1+Ch6), Vol-1 laws. The Riemann story at Cavendish grade. No metric
+% anywhere -- the no-ruler theme continues. Gate: Kodo per-claim citation.
+
+An observer lays down coordinates. That is not a mathematical event; it is a
+bench event --- an origin chosen where the apparatus happens to sit, axes
+aligned with the table's edges, units taken from the instrument at hand. A
+second observer, in a second lab, lays down different ones. Neither set is
+right, neither is wrong, and everything either of them publishes must
+survive translation into the other's numbers, or it was an artifact of the
+furniture and not a fact about the world. The physicist knows this
+discipline in the bones: physics is what survives the change of observer.
+This chapter is that discipline, written down as mathematics --- and, as in
+the last chapter, the writing-down asks the reader to believe nothing they
+do not already practice.
+
+Begin with what coordinates actually are. A chart is a map --- in the
+cartographer's sense before the mathematician's --- from a region of the
+space under study onto a patch of ordinary number-space, one point to one
+address, addresses varying continuously in the sense the last chapter
+earned. The word ``map'' should be taken seriously: the chart is not the
+territory, it is a labeled picture of a region, and like any honest map it
+covers only its region. A space is called locally Euclidean when every point
+has a neighborhood --- the last chapter's word, doing its work --- that some
+chart covers. Nothing global is promised. The sphere of the Earth admits no
+single flat map without tearing, and never needed one: an atlas of
+overlapping regional maps has always sufficed the navigator, and it
+suffices mathematics.
+
+The load-bearing structure lives where two maps overlap. There, every point
+carries two addresses, and the rule converting one address into the other
+--- the transition map --- is a map from number-patch to number-patch:
+observer-to-observer translation, expressed entirely in coordinates. Now
+the construction takes its one step, and the reader should watch how little
+it costs. Demand that the transitions be continuous, and the patchwork is a
+topological manifold. Demand more --- that the transitions be
+differentiable, as maps of number-space, where differentiation already has
+its classical meaning --- and the patchwork is a smooth manifold. Notice
+what the demand touches: not the space, the \emph{translations}. Smoothness
+is imposed on the observer-to-observer dictionaries, which live in ordinary
+number-space where calculus has worked since Newton; the space itself then
+inherits a calculus through its charts, region by region, with the
+transition maps guaranteeing that what one observer computes another can
+re-derive. Differential geometry begins as a treaty among observers.
+
+The idea has a birthday, and the story deserves telling at the grade this
+series tells its instrument-stories. In 1854 in G\"ottingen, Bernhard
+Riemann, twenty-seven and a candidate for the right to lecture, submitted
+--- as custom required --- three topics for his trial lecture, expecting,
+as custom also all but promised, that the faculty would take the first. His
+examiner was Gauss, and Gauss, against custom, chose the third: the
+foundations of geometry. What Riemann produced under that surprise, in a
+few pressed weeks, was the lecture ``On the Hypotheses Which Lie at the
+Foundations of Geometry'' --- delivered the tenth of June, 1854, to a
+faculty audience mostly unequipped to follow it, with famously almost no
+formulas, and by the account that has come down to us it moved Gauss, who
+was not a man reports describe as easily moved. Riemann's proposal was the
+one this chapter has been building: space as an $n$-fold extended
+magnitude, charted region by region, its deeper structure --- the metric
+relations, the lengths --- not given by logic in advance but to be
+determined, as he said, by experience. The lecture was published only in
+1868, two years after his death, by Dedekind; the physicists took the rest
+of a century to spend what it contained. The reader should mark the
+physical lens Riemann himself ground: the question of which geometry space
+wears, he insisted, belongs to measurement, not to axiom. This series
+agrees, and holds the thought for later volumes.
+
+Between Riemann's lecture and the modern textbook stands one more name. The
+patchwork definition --- charts, atlases, smooth transitions --- was made
+fully precise by Hassler Whitney in 1936, and Whitney proved in the same
+stroke the theorem that keeps the abstraction honest: every smooth
+$n$-dimensional manifold, however abstractly assembled from patches, can be
+embedded in an ordinary Euclidean space of dimension $2n+1$ --- realized as
+an honest surface sitting in a big enough number-space. The abstract view
+costs nothing, then: whatever a patchwork manifold is, it is never anything
+more exotic than a smooth surface seen without reference to the room it
+sits in. The assembled modern treatment is standard in the literature ---
+Lee's \emph{Introduction to Smooth Manifolds} is the reference this series
+will cite for the details it declines to repeat --- and nothing in it goes
+beyond the two demands already stated: charts that cover, transitions that
+are smooth.
+
+So what, in the end, \emph{is} the manifold, if every chart is somebody's
+furniture? It is the residue --- the content that survives every admissible
+change of chart, the facts on which all observers' translations agree. That
+is not a poetic gloss; it is the working definition the construction just
+earned, and it is the mathematical spelling of the discipline the chapter
+opened with: physics is what survives the change of observer, and a
+manifold is what survives the change of chart. The reader should also
+notice, one more time, what is still absent. A manifold, even a smooth one,
+has no lengths. No distances, no angles, no areas; nothing so far prefers
+one chart's scale to another's. The ruler is still chapters away, and the
+amount of structure standing without it continues to grow.
+
+One thing a chart does supply, at every point it covers, is the possibility
+of asking a pointed question: standing at this point, at this instant, in
+which direction --- and how fast? The physicist's word for the answer is
+velocity, and velocity does not need the whole space to be defined; it
+needs only an instant's worth of room around one point. What velocities are,
+what lives beside them, and how the two great families of components the
+physicist writes --- the raised indices and the lowered ones --- arise from
+one construction, is the next chapter's subject, and it is where the second
+of this book's two title instruments, linear algebra, enters the shop.

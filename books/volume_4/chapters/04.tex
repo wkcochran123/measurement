@@ -1,0 +1,107 @@
+\chapter{The Unnameable}
+% OUTLINE Ch4 "The Unnameable (Tarski 1933)". Laws: both inherited
+% (labeled intuitions adds-no-claim); non-funge. CITATION: Tarski 1933
+% (undefinability of truth; "Der Wahrheitsbegriff..."); the semantic
+% room as the syntactic room's twin; the object/meta hierarchy as the
+% honest exit (the tower the series' readers know the feel of). FENCE:
+% undefinability to FORMAL languages; no leap to natural language / the
+% world. Zero device appearances. Gate: Kodo.
+
+\begin{intuition}
+A dictionary defines its words using other words, all of them in the same
+dictionary, and mostly this works. But ask the dictionary to define one
+particular word --- \emph{true} --- as a predicate that decides, for every
+sentence the dictionary can write, whether that sentence is true, and a
+familiar visitor arrives. Consider the sentence that says of itself, using
+the dictionary's own new word, \emph{this sentence is not true}. If it is
+true, then what it says holds, so it is not true; if it is not true, then
+what it says holds, so it is true. The dictionary cannot house the word
+without housing the contradiction. The feeling to carry: a language rich
+enough to talk about its own sentences cannot also contain its own
+faithful word for their truth --- not because truth is mysterious, but
+because the word, added, would let the diagonal speak.
+\end{intuition}
+
+This is the second great room, and it is the first's twin. Where G\"odel
+let arithmetic speak of its own \emph{provability} and found a sentence
+the house could not prove, Alfred Tarski, in his 1933 monograph on the
+concept of truth in formalized languages, let a language reach for its own
+\emph{truth} and found the word could not live in the house at all. The
+two results are the same gesture aimed one notch over: G\"odel's target
+was the proof relation, a matter of syntax --- which strings the rules can
+derive; Tarski's target is the truth relation, a matter of semantics ---
+which sentences actually hold. Provability is a room inside the house;
+truth turns out to be a door the house cannot have.
+
+The argument is the liar sentence made rigorous, and it runs on the same
+machinery as Chapter 3. Suppose a formal language could define, in its own
+terms, a predicate ``true-of'' that correctly applied to exactly the
+numbers coding its true sentences. Arithmetization --- G\"odel's bridge,
+reused --- lets the language build, by the diagonal lemma, a sentence that
+asserts its own untruth: provably equivalent, inside the language, to
+``I am not true.'' Now the two branches close on each other with no exit,
+the liar with a certificate, and the only assumption that can be dropped
+to escape the contradiction is the one that started it: no such predicate
+is definable within the language. Truth, for a sufficiently rich formal
+language, is not expressible in that language. That is Tarski's theorem of
+the undefinability of truth, and it is why the diagonal, here, does not
+build a room inside the house but proves a door cannot be cut in its wall.
+
+The honest exit is a staircase, and the reader of this series has climbed
+its like before. Truth for a language can be defined --- rigorously,
+completely --- but only in a \emph{richer} language, one step up, that can
+speak of the first language's sentences from outside. Call the first the
+object language and the second the metalanguage; the metalanguage has its
+own truth, undefinable in \emph{it}, definable only one step higher again.
+Truth is not destroyed by Tarski's theorem; it is \emph{stratified} ---
+each language's truth living one floor above it, in an ascending tower
+with no top floor. The reader who has felt the earlier volumes' towers ---
+the descriptions describing descriptions, the frames read from frames ---
+will recognize the shape: not a wall against truth, but a refusal to let
+any single level hold its own. The room the diagonal makes here is the
+gap between a floor and the floor that can speak its truth, and the gap
+never closes, only climbs.
+
+\begin{intuition}
+The picture: a language is a room with a window, and through the window it
+can see and name everything outside --- except the room it is standing in.
+To describe this room truthfully you must step into the hallway, which is
+another room, with its own blind spot. There is no room with a window onto
+itself. The tower of metalanguages is that hallway, going up forever, each
+floor naming the truth of the one below and blind to its own.
+\end{intuition}
+
+Two honesty notes, and the first is the fence this chapter must hold.
+
+Tarski's theorem is about \emph{formal languages} of a certain strength,
+and its exit --- the object/meta stratification --- is a fact about such
+languages, proved. It is tempting, and common, to read it as a verdict on
+\emph{natural} language: that English, say, cannot coherently contain its
+own word ``true,'' or that ordinary talk of truth is incoherent, or that
+Tarski proved truth to be relative. The theorem supports none of this.
+Natural languages plainly do contain the word ``true'' and use it about
+their own sentences daily; whether they do so consistently, and how, is a
+question in the philosophy of language that Tarski's formal result frames
+but does not settle, and the various answers --- that natural language is
+inconsistent in a harmless way, that it stratifies implicitly, that it
+uses context to dodge the liar --- are live positions, not corollaries.
+This book claims only the formal theorem: in formal languages of
+sufficient strength, the truth predicate is undefinable, and truth is
+recovered up the tower. Everything past the formal boundary is somebody's
+philosophy, cited to them, never to Tarski.
+
+The second, the non-funge note in its semantic form: the tower a given
+object language sits under is \emph{its} tower. There is no universal
+metalanguage crowning all languages at once --- that would be the very
+top floor the theorem forbids --- so the ``truth'' one climbs to is always
+truth-for-this-language, bound to the language below it, not a single
+absolute Truth pooled across all houses. Each language's unnameable is its
+own; the rooms, here as everywhere in this book, do not merge.
+
+Two rooms now stand: G\"odel's inside the house, Tarski's cut into its
+ascending wall, and they are visibly one construction aimed two ways. The
+reader has surely begun to suspect that Cantor's, Russell's, G\"odel's,
+and Tarski's rooms are not four discoveries but one, found four times. The
+next chapter proves the suspicion --- not as a reading, this time, but as
+a theorem with an author --- and that difference is the chapter's whole
+point.

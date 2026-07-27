@@ -1,0 +1,36 @@
+% ======================================================================
+% INSTRUCTIONS WHEN EDITING THIS PROJECT (inherited from instrument/)
+% ======================================================================
+%
+% 1. Do not guess labels or numbers. Always use \ref{...} exactly as
+%    requested. Never invent labels.
+% 2. Exact hierarchy: \chapter / \section / \subsection / \subsubsection.
+% 3. ASCII only in body text. No Unicode punctuation.
+% 4. SOFT MARGINS OF 100 characters for all generated prose.
+% 5. NO Lean in the prose: no identifiers, no syntax, no tactic talk.
+%    The carriers become mathematical statements. The apparatus may be
+%    named once, in the bibliography, as apparatus.
+% 6. Null-base arrows fix exposition direction: QED -> GR,
+%    lambda-calculus -> BNF, Topology -> Algebra -> Geometry.
+%    Sections land on the right-hand (structural/geometric) side.
+%
+% ======================================================================
+
+\usepackage[margin=1.2in]{geometry}
+\usetikzlibrary{positioning}
+
+% Theorem environments
+\declaretheorem[numberwithin=chapter]{theorem}
+\declaretheorem[sibling=theorem]{lemma}
+\declaretheorem[sibling=theorem]{claim}
+\declaretheorem[sibling=theorem]{corollary}
+\declaretheorem[style=definition,sibling=theorem]{definition}
+\declaretheorem[style=definition,sibling=theorem]{experiment}
+\declaretheorem[style=remark,sibling=theorem]{remark}
+\declaretheorem[style=remark,sibling=theorem]{fence}
+
+% The five reading-registers of a claim (from the outline's typography;
+% rendered as marginal disciplines, never as tags in the prose).
+\newcommand{\bracket}[2]{\left[\,#1,\ #2\,\right]}
+
+\setstretch{1.08}

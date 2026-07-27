@@ -1,0 +1,109 @@
+\chapter{The Direction}
+% OUTLINE Ch3 "The Direction (linear algebra at a point)". Laws: CITATION
+% (Grassmann 1844; Ricci & Levi-Civita 1901; Dirac 1930; Lee/standard for
+% the modern formalization), LENS (zero device appearances), Vol-1 laws.
+% The two transformation laws DERIVED from the chain rule, never decreed.
+% No metric: vectors and covectors stay DISTINCT species; raising/lowering
+% flagged as Ch7's purchase. NO series jargon (tange/funge stays in Vol 1;
+% the reader's own words are the raised and lowered indices). Gate: Kodo.
+
+Stand at one point of the last chapter's manifold and ask the physicist's
+most pointed question: a body passes through here, this instant --- which
+way, and how fast? The answer exists before any observer lays down
+coordinates. The thrown stone does not consult a chart to have a velocity;
+the velocity is a fact at the point, an arrow with a direction and a rate,
+and every chart that covers the point merely reports it in that chart's own
+components. This chapter is about the arrow, the read-outs that measure the
+arrow, and the discovery --- the physicist has been using it in index
+notation for a century --- that arrows and read-outs respond to a change of
+observer in two opposite ways, and must never be confused.
+
+First the arrow, built honestly from what previous chapters own. A curve
+through the point --- a smooth path passing through it at time zero --- has,
+in any chart, a column of component-rates: differentiate the coordinates
+along the path, the classical calculus of number-space, which the treaty of
+Chapter 2 licenses region by region. Two curves through the point may have
+the same component-rates in one chart; the transition maps being smooth,
+they then have the same component-rates in every chart --- agreement is
+chart-independent, and so it is a fact about the point, not the furniture.
+A velocity is exactly such an agreement-class of curves, and the velocities
+at a point form a vector space: they add, they scale, and the dimension is
+the chart's dimension. The trade calls it the tangent space at the point;
+the modern formalization is standard and lives in the same references as
+the last chapter's (Lee's, for this series' purposes). The idea that
+directed magnitudes in $n$ dimensions deserve their own algebra --- addition
+of arrows, scaling of arrows, without any appeal to lengths --- is far
+older, and its author paid for being early: Hermann Grassmann published the
+calculus of extension in 1844, a schoolmaster writing outside the
+universities, and the mathematics of his century mostly declined to read
+him. This series cites him the way the trade eventually did: as the one who
+had the vector space first.
+
+Now the read-out. An arrow is only half of a measurement; the other half is
+the thing that turns an arrow into a number. Let a quantity be defined near
+the point --- a temperature, a potential, any scalar field the bench
+provides --- and ask: at what rate does a body with this velocity see that
+quantity change? The answer is a number for each velocity, and it depends
+on the velocity linearly: twice the speed, twice the rate; the sum of two
+motions, the sum of the rates. A linear machine from arrows to numbers is
+called a covector, and the covectors at a point form their own vector
+space, of the same dimension, called the dual. The physical reading should
+be said plainly: covectors are the measuring devices of this subject. An
+arrow is a state of motion; a covector is an instrument reading applied to
+motion; and the pairing of the two --- instrument applied to state, number
+out --- is the elementary act from which everything later in this book is
+assembled. The physicist has met the structure in another guise: Dirac's
+formulation of the quantum theory, in his 1930 \emph{Principles}, pairs
+kets with bras --- states with the linear functionals that read them ---
+and the bracket that gives the formalism its name is exactly this pairing,
+the dual space working in the physicist's own house.
+
+Here is the chapter's centerpiece, and it is a derivation, not a decree.
+Change observers: a second chart covers the point, and the treaty supplies
+the dictionary --- the transition map --- with its matrix of partial
+derivatives, the Jacobian of the change, evaluated at the point. Follow
+the arrow first. Its new components come from differentiating the new
+coordinates along the same curve, and the chain rule --- the same chain
+rule the reader has always used --- says: new components equal the Jacobian
+applied to old components. Now follow the read-out. Its job is to report
+the same physical rate no matter the observer, so its components must
+change in exactly the compensating way: by the inverse of the Jacobian,
+arranged so that when instrument meets state the Jacobians cancel and the
+number --- the measured rate --- comes out unchanged. Two laws, then, and
+nobody chose them: components of arrows transform one way, components of
+read-outs the opposite way, and both fall out of the chain rule applied to
+the observers' dictionary. The trade's names are contravariant for the
+arrow's law and covariant for the read-out's, and the physicist's raised
+and lowered indices are precisely the bookkeeping of which law a given
+column of components obeys. The calculus built on exactly this distinction
+--- systems of components classified by their transformation law, with
+rules for combining them so that measured numbers stay observer-invariant
+--- was published by Ricci and Levi-Civita in 1901, the absolute
+differential calculus, and it is the machinery general relativity would
+later be written in. Nothing about it was invented for relativity; it was
+waiting.
+
+One more honest note completes the chapter, and it continues this book's
+longest-running theme. The reader's working habit converts freely between
+raised and lowered indices --- between arrows and read-outs --- and nothing
+in this chapter licenses the conversion. As matters stand, the two are
+different species: an arrow is a state, a read-out is an instrument, their
+spaces are merely of equal dimension, and no natural dictionary matches
+them element to element. The conversion the physicist performs daily is a
+purchase, and the coin it is bought with is precisely the ruler this
+construction has not yet admitted: a metric. When the metric arrives,
+chapters from now, it will do exactly this work --- pair each arrow with
+its own read-out --- and the reader will see index-lowering for what it is:
+not notation, but geometry, at a price the book will pay in the open. Until
+then the species stay separate, and the separation is not pedantry; it is
+the reason the two transformation laws exist at all.
+
+What comes next is multiplication. One arrow in, one number out, was the
+covector; the objects of physics --- the stresses, the fields, the
+curvatures this series is walking toward --- take several arrows and
+read-outs at once, in slots, and answer with a number, linearly in each
+slot. The machines with slots are the tensors, the subject of the next
+chapter, and their first and oldest example was not invented by a geometer
+at all: it was found inside a loaded body, by Cauchy, holding the stresses
+of continuum matter --- which is where the fourth station of this series'
+preface will briefly come back into view.
