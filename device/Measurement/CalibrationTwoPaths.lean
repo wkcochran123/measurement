@@ -15,8 +15,15 @@ namespace Measurement.CalibrationTwoPaths
 open Measurement
 
 -- 1→3 : DIRECT reading of the measured second variation (the report's own inverse-α_c).
+/-- THE FLAGSHIP'S DE-SELECTION (the program's last line; ledger row:
+`jar_readout_drift_immune` below, three-chair gated). The jar reads the CLASS of the
+report-state, threading Episode 15's own former DIRECTLY — the single needle,
+co-located with Fact.SAME. Value unchanged by `rfl` (`reading_deselect`). -/
+def jarClass : GaugeValue (fun (r? : Option AlphaSecondVariationReport) =>
+    (r?.map (·.inverseAlphaScaledAt18)).getD 0) :=
+  deselect _ defaultAlphaSecondVariationReport?
 def direct_1to3 : Nat :=
-  (defaultAlphaSecondVariationReport?.map (·.inverseAlphaScaledAt18)).getD 0
+  reading _ jarClass
 
 -- 1→2→3 : STEPPED quasi-Newton descent through the intermediate, count-3 (AlphaBFGS).
 def stepped_1to2to3 : Nat := AlphaBFGS.invAlphaAt (AlphaBFGS.bfgsAt 3 AlphaBFGS.d0)
