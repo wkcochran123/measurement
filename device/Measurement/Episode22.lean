@@ -131,6 +131,11 @@ theorem recover_theNumber
           mass   := strainRead (trip2 Value PropCarrier imaginary ledger b1_slip b2_slip b3_slip b4_slip b5_slip b6_slip b7_slip b8_slip b9_slip b10_slip b11_slip b12_slip b13_slip b14_slip b15_slip b16_slip b17_slip b18_slip b19_slip b20_slip b21_slip b22_slip b23_slip b24_slip b25_slip b26_slip b27_slip b28_slip b29_slip source_slip compiled_slip built_slip ekg_slip coherent_slip b34_slip b35_slip b36_slip).1 (.zero ledger)
           phase  := phaseRead ledger } := rfl
 
+-- I do not know how this number was constructed. I know only that it was constructed, and that electrons were required to construct it.
+-- Electrons were required to compute, to provide models, to provide conventions and understandings. Perhaps there is no real _why_ other than
+-- what we call the electron and this number are difficult to separate. But, why would you believe my bullshit. __YOU the READER__ might
+-- believe they can explain it now. But, it won't make any sense until it does. It will make sense, the argument is very compelling.
+
 /- THE DRIVER (Prop / truthCarrier band, ledger := Fact.Truth, decTruth =
 isTrue rfl): every face at a literal, readable at a glance. The bracket is
 driven directly -- the seeded end-to-end descent cannot be synthesized (the
