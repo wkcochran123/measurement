@@ -1542,12 +1542,12 @@ ME: It is stronger. Results are cheap. Questions need fixtures.      | I prefer 
 structure RepeatableProcess  -- Bullshit meter ≈ 296
     (Value: Type i)
     (Carrier: CarrierProcess Value)
-    [DISTINGUISHABLE Value Carrier] --    | Clicking a tally counter is a repeatable process guaranteed to produce something different.  It's
-    [ADMISSIBLE Value Carrier] --         | defining characteristic is sᵢ ≠ sⱼ unless i≃j mod k, the class of permutations. This is a different
-    [COUNTABLE Value Carrier] --          | question until it is the same.  It takes the compiler _time_ to determine how long clicking a tally
-    [ENCODED Value Carrier] --            | counter can stay a repeatable experiment before it just becomes repetition. While repeatable
-    [RESIDUE Value Carrier] --            | experiments are the backbone of science, repetition can serve other masters.
-    [BINARY Value Carrier]    ------------+ These are the two classifications of questions: repeatable or repetition.
+    [this:DISTINGUISHABLE Value Carrier] --    | Clicking a tally counter is a repeatable process guaranteed to produce something different.  It's
+    [ADMISSIBLE Value Carrier] --              | defining characteristic is sᵢ ≠ sⱼ unless i≃j mod k, the class of permutations. This is a different
+    [COUNTABLE Value Carrier] --               | question until it is the same.  It takes the compiler _time_ to determine how long clicking a tally
+    [ENCODED Value Carrier] --                 | counter can stay a repeatable experiment before it just becomes repetition. While repeatable
+    [RESIDUE Value Carrier] --                 | experiments are the backbone of science, repetition can serve other masters.
+    [BINARY Value Carrier]    -----------------+ These are the two classifications of questions: repeatable or repetition.
   where
     --     +-------------------+------------+-----+--------------+ This is an example of absolutely _ravishing_ the recursive structure of
     --     |                   |            |     |              | description.  All structures carry the previous structure orthogonally and depend
@@ -1569,7 +1569,7 @@ structure RepeatableProcess  -- Bullshit meter ≈ 296
 --                          +---------------------------+-------- Watch the covariance!  Remember the
 --                          |                           |         clock will tick when we do this, flipping
 --                          V                           V         the variance.
-     | .signal_response _ _ f2 s2 _ => .signal_response f2 stimulus d.fact s2 expectation
+     | .signal_response _ _ f2 s2 _ => .signal_response f2 stimulus this.fact s2 expectation -- We mark this fact as (s2 is the expected response).
 --                          ^   ^
 --                          |   |         | So, given some response by the compiler, we can guess at its Signal inside the compiler. See? The
 --                          +---+---------+ compiler is sending us its state in the first two parameters, but we can't understand it. We are telling
@@ -1626,7 +1626,7 @@ class REPEATABLE   -- Bullshit meter ≈ 166     | _carefully_ explain how to me
   typical_response: Trial → Trial → Prop := fun s t => repeatable_process.iterate s = t -- It cannot be simpler. Keep doing s, always get t.
 
 -- Or, more simply, counting _is_ the mechanism _t_ by which a _repeatable_ process consumes _s_. We demand that _t_ take a different value because
--- _s_ cannot take it by construction. _t_ is never _s_ alone, it is always the iterate of _s_. And here, there is but one to compute.
+-- _s_ cannot take it by construction. _t_ is never _s_ alone; it is always the iterate of _s_. And here, there is but one to compute.
 
 -- Tune in next week for: TIME!
 end Measurement
