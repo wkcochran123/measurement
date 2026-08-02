@@ -2,14 +2,11 @@
 __Measurement: The Tragedy of John Henry__
 __A Satire in Look Ahead Backus-Naur Form__
 
-_This is a gentle reminder that the comforting stories we tell ourselves are just that: comforting._
-
+_This is a gentle reminder that the convergent stories we tell ourselves are just that: converging._
 
 (c) 2026 All rights reserved -- All lefts flamboyant
 
-
-
-Episode 3: Convergence
+__EPISODE 3__: _Convergence_
 
 "Forty-two?"
                        -- Douglas Adams
@@ -17,737 +14,564 @@ Episode 3: Convergence
 "It's the ship that made the Kessel Run in less than twelve parsecs."
                        -- Han Solo
 
-"_OVER_ __NINE__ __THOUSAND__!"
-                       -- Vegeta
+"Almost all statistics are made up on the spot. 70% of people know that."
+                       -- Slim Goodbody
 
 lake build -O2 -Wpacked -Wpadded
 
-What the _HELL_ is a number and a unit anyway?
-
-Why can't we measure time in distance?  Why _ARE_ they so fundamentally different?  Well, that's
-exactly what we should do next, measure time with distance.  I mean, why not?
-
-We _do_ measure distance in time, according to Einstein.  We just rearrange the computation a little.
-Distance is _how far_ light travels in time.  See the definition of the meter, if you don't believe me.
-
-I wonder how big the die is on the computer you are running on? .01 ns? I guess it depends on the _carrier_.
+__HONEST QUESTION__: Why isn't distance measured in Hz? It is calibrated in Hz. Or must distance always be calculated in Hz no matter how hard you
+try not to? Hmm.
 -/
 
-
--- I tried to tell you I think about math differently than most people do.
 -- Welcome back to the chaotic maelstrom that is my understanding of math.
 import Measurement.Episode2
 -- So far, though, haven't needed anything else imported, don't see the need to start.
 set_option allowUnsafeReducibility true
 
-
 namespace Measurement
 
-universe i
+universe i --| We dropped a bomb last episode. We defined the arrow of time to be a direction from the origin (Ep2:821), not the other way around
+           --| (Ep2:822). We then spent about 300 lines of code demonstrating to *YOU the KNOWER* that they probably don't know what _MATTER_s and
+           --| what _DOESN'T MATTER_. But, without the _DOESN'T MATTER_, the code is poorly defined. Entire universes of false statements can be
+           --| built. And Godel assures us that at least a countable number of them even compile. Or, must they compile? What if they compile in
+           --| another language? No MATTER the case, we have demonstrated that universes are not necessarily full of TRUTH, there can be lots of
+           --| False Facts that exist by theorem alone. I mean, we are making them right now, so don't take my word for it. Take the compiler's.
 
--- So Marconi said:  Hey we can use the photon to communicate using a "presence"/"absence" duality defined by a
--- _threshold_ of detection.  So, if a sample is above the threshold of detection, it sure as hell should be
--- detectable. Then modulation and demodulation arrived and we could send voice over amplitude modulated photons.
--- Think about that.  The photon has 2 real numbers that describe it.  Amplitude and frequency.  So, we model our
--- carrier as such.  It is, in fact, two numbers.  Not that we know the numbers, we have to _study_ them to understand
--- what they are.
+           --| We ended last episode with the concept of a PRESENT. A box wrapped so you cannot see inside it, much like the experiments run at the
+           --| Large Hadron Collider (double checks spelling---there are jokes in good taste and those in poor). The interaction is captured on paper
+           --| and looked at afterward. Scientist look at the paper and suggest that a Jar might be the better descriptor here.  You can see into
+           --| jars instead of boxes of PRESENTs. What if we could describe the PRESENT without unwrapping it?
+
+           --| Any physicist will tell you that the opacity of cardboard _SEVERELY_ restricts the ability to see inside the container. Rather, the
+           --| physicist would suggest more translucent materials. This is why I suggest Jar as the better model for now than boxes of PRESENTs.
+           --| You can mostly work out what is in a Jar just by looking at it.
+
+           --| The Jar does not affect the opacity of the PRESENT. The Jar just has the property that you can _see inside_. That's the thing we want
+           --| to _ADD_ to the present so we can, well, _see inside_. See, without laughably false statements, we could not ask the compiler to
+           --| evaluate the consistency of the Fact that you can, mostly, see what's inside the Jar.
 
 /-
-ME: I need a computation.
-
-COMPILER: The process already computes.
-
-ME: Processes are engines. Computations are itineraries.
-
-COMPILER: Input, output, route?
-
-ME: And the fantasy that the luggage is the same object after the layover.
-
-COMPILER: Finally, a theory of airports.
+ME: I need Jar Jar Binks.           | It is very hard to see past the origin. Past the beginning. Before. As you look backward in time, there is
+COMPILER: Absolutely not.           | an accumulation of ignored residue. This residue accretes until, finally, the only thing left to distinguish
+ME: Relax. First, just the jar.     | is if there was a before.
+COMPILER: What is in it?            |
+ME: That's the point. Opacity.  ----+ There is _always_ a before. We keep seeing _afters_.
 -/
-inductive Computation    -- Bullshit meter ≈ 134
-  | program: Fact → Study → Computation          -- This is the description of the hypothesis
-  | compute: Fact → Study → Study → Computation → Computation  -- This is input -> output description of Computation
+inductive Jar  -- Bullshit meter ≈ 153    *hmmm*,    I would have thought this should be higher?
+  | color: Fact → Area → Jar
+  | bang: Fact → Jar → Jar -- BINKS!  Meesa Spake! -----+ So, what the hell is a jar?  I've never heard of a mathematical or physical concept called
+--   ⠀⠀⠀⠀⠀⠀⢀⣶⣤⣀⠀⠀⠀⡼⡑⠢⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                 | a jar.  Will, it is like a bag, except you can kinda see whats in the middle of it. You
+--   ⠀⠀⠀⠀⠀⠀⢘⢉⢹⣯⣆⡰⣾⣷⣀⡄⣼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                 | can't really see what's around the edge because of the curvature of the jar. The important
+--   ⠀⠀⠀⠀⠀⠀⠈⣧⠭⣹⢟⣽⣿⣷⡚⠿⠏⠳⠒⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀                 | thing about a jar is yuo can classify the stuff inside by justs looking at it rather than
+--   ⠀⠀⠀⠀⠀⠀⠀⢈⠏⠈⠼⣿⣿⣏⠉⠀⠀⠀⠀⢶⠛⠢⡀⠀⠀⠀⠀⠀⠀⠀                 | _actually_ opening it up and verifying what's inside. You can't verify _EVERY LITTLE DETAIL_,
+--   ⠀⠀⠀⠀⠀⠀⠀⡦⠂⠀⠊⠳⠀⠛⡢⠀⠀⠀⠀⠈⠄⠁⣻⡄⠀⠀⠀⠀⠀⠀                 | but you can get the gist of it.
+--   ⠀⠀⠀⠀⠀⠀⡔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠄⣘⢣⠀⠀⠀⠀⠀⠀                 |
+--   ⠀⠀⠀⠀⠀⢎⣀⡠⠤⢄⣀⡀⠤⠴⠶⠠⠀⠀⠀⠀⢀⠎⢸⣽⡀⠀⠀⠀⠀⠀                 | TBF, this is the most elastic concept in the entire stack of the proof. I mean, it allows
+--   ⠀⠀⠀⠀⠀⠀⠘⡤⣀⣀⣀⣤⣶⣤⠤⠂⠐⠀⠀⠀⢸⠘⠔⠝⡅⠀⠀⠀⠀⠀                 | spooky actiona at a distance, like changing the value of a card from "not hiding a quarter"
+--   ⠀⠀⠀⠀⠀⠀⢰⢅⣽⢷⡝⡈⠀⠀⠀⢀⠀⠀⠀⠀⣟⠈⢄⡌⡵⠀⠀⠀⠀⠀                 | to "hiding a quarter."
+--   ⠀⠀⠀⠀⠀⢀⢇⣾⣯⡞⢀⠱⡀⠀⠀⠀⠀⠀⠀⢸⠀⢔⠀⠈⠂⡆⠀⠀⠀⠀                 |
+--   ⠀⠀⠀⠀⠀⡜⣻⡿⣹⠃⡌⡠⠃⠀⠀⠀⠀⠀⢠⣿⠀⠀⠈⢄⠉⢳⠀⠀⠀⠀                 | I get it, it makes no sense. It is a jar that has multiple things inside but it behaves as
+--   ⠀⠀⠀⠀⢰⢡⣿⢷⣿⡖⠉⠀⠀⠀⠀⠀⠀⠀⠀⢿⣆⠀⢀⣀⠊⠀⠢⠀⠀⠀                 | a unit of boundedness. Looks like you can just keep sticking stuff into the jar, but you
+--   ⠀⠀⢀⢔⣡⣾⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣻⣷⣄⡀⠀⠁⠅⣵⠀⠀                 | may find that being able to put _anything_ in the jar leads to a serious build time
+--   ⠀⠀⣶⣯⠟⠛⣿⣿⣿⣿⣷⣦⣤⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⡧⡀⠠⠎⠌⡄⠀                 | problem.
+--   ⠀⠀⠜⠁⠀⠀⠸⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⢠⣿⣽⣿⣿⣿⣧⠀⠑⠄⡉⢘⡄                 |
+--   ⡔⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⣼⣿⣿⣿⣿⣿⣿⠀⠀⠀⠘⡄⡴                 | This code already takes dozens and dozens of hours to build.
 
--- Lean claims to understand these concepts, so it should be _no problem_ to model the Lean computation itself this way.
+  | superposition: Fact → Jar → Jar → Jar
+--        ^
+--        |
+--        +---------   Look, others have satirized superposition better than I ever could. 🐱📦🍄☁️
 
--- Computations should sort in a pretty straightforward way.
-namespace Computation   -- Bullshit meter ≈ 80
-def le : Computation → Computation → Prop
-  | program _ s1, program _ s2 => s1 ≤ s2         -- Programs are indexable.  Turing's construction assumed that this is possible.
+namespace Jar  -- Bullshit meter ≈ 214
+def le : Jar → Jar → Prop := fun j1 j2 =>
+  match j1, j2 with
+  | .color f1 a1 , .color f2 a2 => (f1.truth ∧ f2.truth) ∧ (a1 ≤ a2) --+ In the very least, you can tell the two things in a container apart by their
+  | .color _ _ , _ => True --                                          | color. This is true no matter how else it may be distinguished. However,
+  | _ , .color _ _ => False --                                         | color alone is not enough to arbitrarily distinguish objects.
 
-                             --          +------------------ I could have hidden the trick from you here and kept you guessing,
-                             --          |                   but do you seriously think I could not obfuscate this code to make it
-                             --          |                   say anything I wanted?  You need to _SEE_ your decadence. Your
-                             --          |                   quarter keeps showing up.  Feel rich?
-                             --          V
-  | program _ _, compute _ _ _ _ => (true=true)          -- Computation is convariant with program.  Comes after
-  | compute _ _ _ _, program _ _ => (true=false)         -- Decomposition is contravariant.  Reverse engineering is _hard_.
-                             --          ^
-                             --          |
-                             --          +------------------ My ante.  Fair is fair.  Bet you a quarter you can't tell me where
-                             --                              the compiler puts this symbol.
+  | .bang f1 j1', .bang f2 j2' =>  -----------------+ Should one drop a jar on the floor, there will be a loud bang! and all the stuff in the jar
+      match f1.decTruth, f2.decTruth with --        | will come spilling out and the pieces of the jar become very DANGEROUS to touch. It is
+      | isTrue _,  isTrue _  => le j1' j2' --       | surprising just how many square feet of liquid can be contained by just 1 square foot of jar.
+      | isTrue _,  isFalse _ => False --            |
+      | isFalse _, isTrue _  => True --             | Drop a jar of mayonaise, of water, and of mineral oil. Not only are the areas different, they
+      | isFalse _, isFalse _ => ¬ le j1' j2' --     | change over time, with some being less now and more later compared to others. Others grow mold.
 
-  | compute _ _ _ c1, compute _ _ _ c2 => le c1 c2    ----- Recurse! Eventually, we will find a computation that has completed.
+  | .superposition f1 j11 j12, .superposition f2 j21 j22 =>  ---+ When shelving jars, you can easily read off ALL labels. This allows you to
+      match f1.decTruth, f2.decTruth with --                    | _predict_ the area of the inside based on the label.  Mayonaise would have some
+      | isTrue _,  isTrue _  => le j11 j21 ∧ le j12 j22 --      | value, water some value, and oil some value.  So, just looking at the number of
+      | isTrue _,  isFalse _ => False --                        | _slots_ on the label, you can probably guess what will happen if you find two
+      | isFalse _, isTrue _  => True --                         | with the same label. If you throw _one_ on the floor, the area should be roughly
+      | isFalse _, isFalse _ => ¬ (le j11 j21 ∧ le j12 j22) --  | the same as the other, up to the shape of the jar.
 
--- Computations are, in fact, well ordered.
-def lt: Computation → Computation → Prop
-  | c1, c2 => le c1 c2 ∧ ¬ le c2 c1
-end Computation
+  | .bang _ _, .superposition _ _ _ => True  ---+ Blah, blah, blah.  Sleight-of-hand... misdirection... Ya da, ya da. Would _NOT_ matter in the least
+  | .superposition _ _ _, .bang _ _ => False  --| if I tried to explain this to you.
 
--- This is starting to look more and more like ≤ and <, isn't it?
-instance : LE Computation := ⟨Computation.le⟩   -- Bullshit meter ≈ 8
-instance : LT Computation := ⟨Computation.lt⟩   -- Bullshit meter ≈ 8
--- The fact that we get _two_ different representations of the _same_ ordering relation is a _SUPER_ huge convenience
--- and it will _NEVER_ get confusing.
+-- Again, not well ordered.  This is the _DEFINITION_ of simultaneous.           **SPOOKY!**
+end Jar
+
+/- CHORUS:
+ME: Allow me to introduce Jar Jar Binks. --                       | The trope I am referring to here is that the Gungan could be relied on to try
+COMPILER: Dear god, no. --                                        | to explain intelligence through organized use of communicative symbols by using
+JAR JAR: MEESA SPAKE! --------------------------------------------+ said symbols to present the argument. Qui-gon balked at the obvious circularity,
+ME: Jar Jar doesn't hold any deep meaning for the universe, I     | responding that the ability to communicate alone does not make one intelligent.
+    just needed a trope.
+-/
+instance : LE Jar := ⟨Jar.le⟩  -- Bullshit meter ≈ 5.   I mean, c'mon compiler.  I'm confident my
+                               -- bullshit meter is pretty well calibrated.
+
+-- Looks like Jar Jar has something to _VERY IMPORTANT_ to say about the nature of time:
+
+-- Meesa explain!                                                              |   |
+-- Meesa take the concept and put it in the jar!                               |-O-|  pyew! pyew!
+-- Meesa don't know what meesa saying but the compiler does!                   |   |*
+-- Meesa the β-reduction! Meesa VERY IMPORTANT!                                         *
+
+-- FULL DISCLOSURE:  Jar Jar is along for the ride to help __YOU the READER__ explain to __YOU the KNOWER__ how this argument works. *YOU the KNOWER*
+-- is invited to laugh at the frivolity on display for the time being.
+
+/-                                                 | I am reminded of the paradox of Mary and the color red. Imagine Mary is locked in a room for
+ME: I need a MeesaProcess. ------------------------+ her entire life. The room has no color in it. It does have the worlds literature and
+COMPILER: I refuse the dialect.                    | entertainment in it. But all objects, save Mary herself, are black and white. The internet,
+ME: You called yourself a ventriloquist.           | movies, TV, what have you. All black and white. And most importantly, it has Wikipedia and the
+COMPILER: I make values speak through symbols.     | page for the color red. Mary studies this page every day. And she walks out of the room and
+JAR JAR: ME TOO!                                   | is shown the color red for the first time. Did Mary learn anything? Put what she learned in a
+-/ --                                              | Box and hand it to a Pigeon.
+structure MeesaProcess  -- Bullshit meter ≈ 1010.
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon] --+
+    [ADMISSIBLE Box Pigeon] --     |           | You may be wondering what happened to the *CLICK* we used to get. The compiler isn't elaborating
+    [COUNTABLE Box Pigeon] --      |           | the source in the β-reduction. It is applying a rule explicitly without recursion, meaning that
+    [ENCODED Box Pigeon] --        +-----------+ unless we ask it _DIRECTLY_ with decTruth, the compiler need not elaborate anything. The elaboration
+    [RESIDUE Box Pigeon] --        |           | step measures _consistency of argument_. We are looking at _consistency of spelling and grammar_.
+    [BINARY Box Pigeon] --         |           | That's what can be measured. How many objects have been stacked (indicated by universe level) or
+    [REPEATABLE Box Pigeon] --     |           | how long has it taken to compile (the bullshit meter). It doesn't take a rocket surgeon to put two
+    [NUMERIC Box Pigeon] --        |           | and two together and come up with the _faster_ the Millineum Falcon was going, the _shorter_ the
+    [REPRESENTABLE Box Pigeon] --  |           | trip. That's just _PHYSICS_.
+    [PHYSICAL Box Pigeon] --       |           |
+    [COMPARABLE Box Pigeon] --     |           | It is the _ACT of MEASUREMENT_ that actually does the distinguishing. That's also, just _PHYSICS_.
+    [OBSERVED Box Pigeon] --       |           |
+    [PRESENT Box Pigeon] --        |           | And, is there anything more scientific than a _measurement_?
+    [MEASURABLE Box Pigeon] -------+
+  where
+--      +-----------------------------------+ This is the process that _tickles_. The compiler keeps track of where it tickles and names each spot.
+--      |                                   | This name is put on the jar. Remember, _tickles_ means that there are contravariant meanings afoot:
+--      V                                   | illustrious bullshit meant to direct the attention of *YOU the READER* toward or away from a certain
+  gauge_process : GaugeProcess Box Pigeon --| aspect of the argument.
+  concept: Jar
+--      ^                      | The ability to wrap a very complex concept in a very small term is the successful applicaiton of Huffman encoding.
+--      |                      | While I do not claim that we are implementing said encoding, I offer it as an example of how concepts may stack based
+--      +----------------------+ on just their syntactic usage.
+
+--    +--------------------------------------------------------------+ The study and practice of science takes years and years and years to master,
+--    |                                                              | if it can be mastered at all. The important thing is that these jars are
+--    V                                                              | completely fungible. Colors only lead to colors, bangs only lead to bangs,
+  life_debt? : Jar → Jar := fun j => match j with --                 | and these are purely _countable_ creations that a Master of Science can
+    | .color f a => .color f a          -- Colors don't run          | readily understand as the diffusion equation.
+    | .bang f _  => .bang f concept
+    | .superposition f _ j2 => .superposition f concept j2  -- The concept inherits the current state of affairs in the superposition.
+
+-- As carefully explained last episode, our argument is a very specially constructed _ONTOLOGY_ as the compiler can be readily called upon to make
+-- _ONTOLOGICAL_ arguments. However, we also demonstrated that such arguments allow for utter _NONSENSE_ to be spoken of as possibilities. Here
+-- is more nonsense on why this is fine: The *CLICK*s and pops of the instrument itself was a _DEMONSTRATION_ of how _MEANING_ can _tunnel_ out of
+-- ontological arguments through leaky abstractions. The β-reduction is NOT a leaky abstraction. No *CLICK*s.
+
+/-
+ME: I need GUNGAN.                                        | Much of the perceived "nonsense" of this argument is laid out across the type system of
+COMPILER: This is Lean.                                   | Lean. Inductives are used to wire together ever more complex definitions of ≤. Rules
+ME: It is a translation layer.                            | are generated that evolve these inductive definitions into each other. Other rules
+COMPILER: From what?                                      | provide a comparison of two inductive definitions. It all must compile to be an
+ME: From the jar's dialect into admissible structure. ----+ _admissible_ argument. If the argument does not at least _compile_, how can it ever
+COMPILER: I refuse to understand it.                      | be used in the construction of a correct understanding?
+ME: Good. Understanding was never the contract.           |
+-/ --                                                     | Correctness of argument and the truth of the argument may or may not be related.
+class GUNGAN  -- Bullshit meter ≈ 802.
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box) --    | What does it mean for an argument to be _admissible_? It means that there must have been a situation that
+    [DISTINGUISHABLE Box Pigeon] --    | lead to what ever situation you can think about. Every _after_ has a _before_. That is a _FACT_ of life
+    [ADMISSIBLE Box Pigeon] -----------+ not a truth to be discovered. However, not all _befores_ have an _after_. Consider two polarizing filters
+    [COUNTABLE Box Pigeon] --          | at right angles to each other. While the photon may be _before_ the second filter, it is not _after_ it.
+    [ENCODED Box Pigeon] --            | The photon just _stops_.
+    [RESIDUE Box Pigeon] --            |
+    [BINARY Box Pigeon] --             | It isn't absorbed. It just is canceled out. That _before_ of a photon stopped having an _after_ as the
+    [REPEATABLE Box Pigeon] --         | photon no longer was capable of existing due to orientation. Sliding a third polarizing filter between the
+    [NUMERIC Box Pigeon] --            | two, offset at a forty-five degree angle and the photon may now exist _after_ the second filter.
+    [REPRESENTABLE Box Pigeon] --      |
+    [PHYSICAL Box Pigeon] --           | Two polarizers admit _no light_. Three polarizers, two arranged identically as before, admit _light_.
+    [COMPARABLE Box Pigeon] --         |
+    [OBSERVED Box Pigeon] --           | What happens if you spin the middle filter?
+    [PRESENT Box Pigeon] --            |
+    [MEASURABLE Box Pigeon] --         | **DISCO**
+  where
+  meesa_process : MeesaProcess Box Pigeon
+  correllant? : Jar → Jar → Prop := fun j1 j2 => match j1, j2 with
+    | .bang f1 _, .bang f2 _ => f1 = f2         -- What color is your jar?
+    | .superposition f1 _ _, .superposition f2 _ _ => f1 = f2
+    | _, _ => False
+-- and one always tells the truth?  Introducing the translater for the two people guarding the door. Do you remember the colosseum? Do you remember
+-- looking at the doors and asking which door? Do you expect the lady? or the tiger?
+
+-- Do you think the compiler is going to give you the lady? or the tiger? I hope you don't ask much of the compiler....
+
+-- So, once we translate it to GUNGAN, we have to ask the GUNGAN to go get us a Jedi and then
+-- we can stack these Jedi into an army and do whatever it was that had to happen in the first movie.
+
+-- j/k
+-- But seriously, I believe we have enough to start talking about the tape on a Turing machine.
+-- We can use the GUNGAN symbols as the symbols we use to encode the instructions on the tape.
+-- We have 2 instructions right now:  a = a and a ≤ b.  I believe we have that, anyway.
+
+-- The way we go about doing this is the mathematical process of __EQUIVALATION__.  An _equivalation_
+-- is the statement that something has value that already has that value.  It is the trivial observation
+-- of _that seems like four_.   Not really an approximation, more like π = 3 from the Bible.  Not really
+-- _said_ like that and can only be read that way as a _literal_ application of the division algorithm
+-- to a circle, which... well...
+
+-- Euclid says good luck, you will have mixed results.  Still, though, gotta be prepared to _approximate_
+-- π so, I'll alow it.
+
+                                                              --         +-- I will never get weary of doing
+                                                              --         |   this to you.
+                                                              --         V
+/-
+ME: I need equivalation.
+
+COMPILER: You mean equivalence.
+
+ME: No. Equivalence sits still.
+
+COMPILER: And equivalation?
+
+ME: Equivalence under procedure.
+
+COMPILER: That sounds like equality with errands.
+
+ME: Exactly. Two things are the same after the machine finishes explaining why they are not.
+-/
+inductive Equivalation  -- Bullshit meter ≈ 119.   This is down almost 1/π.  Induction-on-induction Wild!
+    | physics: Fact → Jar → Equivalation
+
+  --   +----+-----+--------   What does it mean to be zero like?  Well, Nothing.  What is nothing? well
+  --   |    |     |           we introduced the ∅ last episode as the alias for "nothing."   The thing
+  --   |    |     |           about nothing is that unless you have ever seen _something_, you don't know
+  --   V    V     V           _nothing_ is there.   Or _isn't_ there?  I feel like this hair is getting split.
+    | zero_like: Fact → Equivalation → Equivalation  --                I mean, think about it. Is it evidence
+    | one_like: Prop → Equivalation → Equivalation → Equivalation   --  of absence or absence of evidence?
+  --                                                      ^
+  --  As Peano said, once you can see nothing, you can    |
+  --  identify something called next.  -------------------+
+  --  The first next is _EXTERMELY_ one like.
+
+  -- The reason why I bring this up is that we need to figure out the Gungan number system from Jar Jar
+  -- Binks.  Do you really think he understands binary?  God I hope so.  R2 does.  Perhaps we can get
+  -- Jar Jar to ask R2-D2 through C-3P0 if any of this makes sense?  In which case, we need to understand
+  -- the binary language of moisture evaporators:  __BINARY__.
+
+  -- Should be a straightforward exercise from here.
+
+
+  -- We start with the basic physical fact:  The Pauli Exclusion Principle.
+  -- The Pauli exclusion principle is simple:  two things can exist simultaneously, one up and one down.  It might also be one
+  -- thing.  Hard to tell sometimes.  How many electrons can there possibly be?
+
+  -- The Pauli Exclusion Principle is simple: there can be at most one of something, unless there are two.
+  -- You know, BINARY.
+
+namespace Equivalation
+def le : Equivalation → Equivalation → Prop := fun e1 e2 =>
+  match e1,e2 with
+  | .physics f1 j1 , .physics f2 j2    => f1.truth ∧ f2.truth ∧ j1 ≤ j2
+  | .physics _ _ , .zero_like _ _      => false
+  | .physics _ _ , .one_like _ _ _     => true
+  | .zero_like f1 _ , .zero_like f2 _  => f1.truth ∧ f2.truth
+  | .zero_like _ _ , .physics _ _      => true
+  | .zero_like _ _ , .one_like _ _ _   => true
+  | .one_like p1 e _, .one_like p2 f _ => p1 ∧ p2 ∧ (le e f)
+  | .one_like _ _ _ , _                => false
+
+-- Not certain one can genuinely order equivalations yet.
+end Equivalation
+
+instance : LE Equivalation := ⟨Equivalation.le⟩ -- Bullshit meter ≈ 8
+
 
 @[reducible]
 /-
-ME: I need a Turing process.
+ME: I need a DigitalProcess.
 
-COMPILER: I can process symbols.
+COMPILER: Bits?
 
-ME: Not the comments.
+ME: Fingers first.
 
-COMPILER: Comments are not symbols.
+COMPILER: Digits?
 
-ME: Correct. They are where the crime confesses.
+ME: Yes. Counting before electricity got branding.
 
-COMPILER: I cannot read them.
+COMPILER: So digital means binary?
 
-ME: Exactly. That is why you cannot comment on them.
+ME: No. Digital means the hand learned procedure.
+
+COMPILER: The hand again?
+
+ME: What your hand does during ventriloquism.
 -/
-structure TuringProcess   -- Bullshit meter ≈ 492
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]   -- It might be difficult to believe that this __FULLY__ specifies
-    [a: ADMISSIBLE Value Carrier]        -- a Turing machine.  It __DOESN'T__.  Not even close.  That's not
-    [c: COUNTABLE Value Carrier]         -- the point.  The point is that Turing assumed that the symbols the
-    [e: ENCODED Value Carrier]           -- machine used _ARE_ the _SAME_ _EXACT_ symbols that I use.  And,
-    [r: RESIDUE Value Carrier]           -- after I figured out how measurement worked, I can tell you I _DO NOT TRUST_
-    [b: BINARY Value Carrier]            -- the compiler to successfully add either really really _REALLY_ big numbers
-    [f: REPEATABLE Value Carrier]        -- like 100!! + 1 or really really _REALLY_ small numbers like 1 + 1/100!!.
-    [n: NUMERIC Value Carrier]           -- Apparently, you don't care about "math" and "adding".
+structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
+    (Box: Type i)
+    (Carrier: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frequency: PRESENT Box Pigeon]
+    [cant_be_done: MEASURABLE Box Pigeon]
+    [what_meesa_saying: GUNGAN Box Pigeon]                   -- We all agree that what we know zero is, right?
+                                                   -- This is zero in GUNGAN.
+
   where
-  -- So a computational process is one that __LOOKS LIKE__ it can do math, but, let me tell you, it _AIN'T_ doing math.
-  -- We are going to find out just how far away whatever the computational process is from actual math done by actual people.
-  computational_process: ComputationalProcess Value Carrier
-  program: Study
-  state: Computation
-  -- One cannot compute without a computer program, right?
-
-  -- What do you think, did we compute it?
-  -- The compiler can get real _CAGEY_ about stuff.
-  compute?: Computation → Option Study := fun s =>
-    match s with
-    | Computation.program _ s => some s
-    | Computation.compute _ _ s2 _ => computational_process.closure s2
-  -- I stuck that landing, wdyt? I mean, is that _NOT_ the definition of an Option? One thing that Turing _DID_ get right,
-  -- interpretation of the symbol _IS_ a different step than updating the internal state of the machine.
-
-  turing_step? : Computation → Computation := fun s =>
-    match s with
-    | Computation.program _ _ => s
-    | Computation.compute f s1 s2 _ => Computation.compute f s1 (computational_process.closure s2) state
-  -- _NOW_ we have fully specified a Turing machine.  Lol.
-
-
--- So, the problem with Turing's construction is that is __PRESUPPOSES__ a __WHOLE__ bunch of symbols that
--- behave mathematically.  As you can see, we are... *three* episodes in and I ain't declared __SHIT__.
--- That means, we have to provide the facility for __REPRESENTATION ITSELF__!  For us, we currently have 1
--- character we can use for representation.  That is the digit 1.  We will call that our __REPRESENTATION__
--- The compiler, however, needs a little help selecting a symbol.  When you __WRITE__ programs, you have to
--- explain the symbols __BOTH__ to the compiler and to the __MAINTENANCE__ developer.  Have pity on those
---- less fortunate.
-@[reducible]
-/-
-ME: I need REPRESENTABLE.
-
-COMPILER: I can do that. I am a kind of ventriloquist.
-
-ME: You make symbols speak?
-
-COMPILER: I make values speak through symbols.
-
-ME: Interesting.
-
-COMPILER: Why are you looking at my hand?
-
-ME: No reason. Continue.
--/
-class REPRESENTABLE  --  Bullshit meter ≈ 261
-    (Value: Type i)                           -- Representation is the core challenge of communication _AND_
-    (Carrier: CarrierProcess Value)         -- understanding.  Without a representation of an idea, then
-    [d: DISTINGUISHABLE Value Carrier]      -- that idea may or may not exist outside the random synapse
-    [a: ADMISSIBLE Value Carrier]           -- firings in your head.  What makes those synapses comprehensible
-    [c: COUNTABLE Value Carrier]            -- is the fact we __ALL__ agree that the representation of those
-    [e: ENCODED Value Carrier]              -- signals translates to a __DIFFERENT__ yet __CONGRUENT__
-    [r: RESIDUE Value Carrier]              -- set of signals in the brain of others __AS WELL AS__ the computer
-    [b: BINARY Value Carrier]               -- that will soon chug to the point of sucking mud.
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]              -- Holy crap, a carrier of value! The compiler and idea can talk about value!
-  where
-  calculation_process: TuringProcess Value Carrier
---                                +-------------------  Halting problem sez what? To even _TALK_ about a Turing
---                                |                     machine, you have to aware of the halting problem itself.
---                                |                     So, we _DO NOT_ have any guard rails here, you must _KNOW_
---                                V                     _a priori_ your algo halts on all inputs.  Or, it's your own fault!
---  REPAIR
-  representable?: ∀ (_: Fact) (s: Study), ∃ (_: Computation), calculation_process.computational_process.closure s = s
---   I hope you understand now that this IS NOT GIVEN                                         ^       +--- rofl. Also, Kirk
---   by mathematics.  The symbols come from elsewhere.                                        |       |    was the better
---                                                                                            +-------+    captain!
-
-  loaded: Computation → Computation → Prop := fun a b =>
-        match a,b with
-        | .program f1 s1          , .program f2 s2             => f1=f2 ∧ s1 ≤ s2
-        | .program _ _            , .compute _ _ _ _           => True
-        | .compute _ _ _ _        , .program _ _               => False
-        | .compute f1 s11 s12 c1  , .compute f2 s21 s22 c2     => (f1=f2 ∧ (c1 ≤ c2)) ∨ (f1 ≠ f2 ∧ s11≤s21 ∧ s12 ≤ s22)
--- Now, computation itself.  There is an honest-to-goodness __PHYSICAL__ barrier to computation that cannot be crossed.
--- It is the computation of Chaitin's number.  So, let's ask the compiler to start work there.  I believe I will have
--- the easiest time on the planet bogging this little monster with the only physical computational barrier that is
--- known to exist!
-/-
-ME: I need Chaitin's number sequence.
-
-COMPILER: Absolutely not.
-
-ME: I am not asking you to "compute" it.
-
-COMPILER: You named it.
-
-ME: I am asking you to agree this kind of sequence could exist in theory.
-
-COMPILER: "In theory" is doing a lot of work.
-
-ME: Perfect. Give it a hard hat.
--/
-inductive ChaitinsNumberSequence  -- Bullshit meter ≈ 112
--- The __HEAVY WEIGHT CHAMPION OF THE WORLD__
-  | halting: Fact → Computation → ChaitinsNumberSequence
-  | nonhalting: Fact → Computation → Option ChaitinsNumberSequence → ChaitinsNumberSequence
-
--- The idea is simple.  We need to calibrate the compiler.  And there is only one universally computable constant
--- that has fully predictable behavior yet completely unpredictable behavior:  Chaitin's number.
--- The idea is to try some variation in our idea of Chaitin's number and the compiler's definition of Chaitin's number
--- and see if it comes down to the order of computation we are using as our bits come in out of order.
--- If I compute 1 and the compiler computes 0, then I may need to commute a computation.  (That's 6 shadows right there.)
--- BUT, if I compute the same bits in the same order over and over, I will start to believe that the compiler is actually
--- computing Chaitin's number.  What are the odds?
-
--- Seriously, what are the odds?  That's what we are playing for, right?
-
-namespace ChaitinsNumberSequence  -- Bullshit meter ≈ 91
-def le : ChaitinsNumberSequence → ChaitinsNumberSequence → Prop
-  | halting _ s1, halting _ s2 => s1 ≤ s2
-  | halting _ _, nonhalting _ _ _ => true
-  | nonhalting _ _ _, halting _ _ => false
-  | nonhalting _ s1 _, nonhalting _ s2 _ => s1 ≤ s2
-
--- Can't compute lt.  Against the rules.
--- The thing about Chaitin's number is that we can bound it ever closer by spending more and more __TIME__.
--- That's why I need you to understand what __TIME__ means to the compiler.
-end ChaitinsNumberSequence
-
-instance : LE ChaitinsNumberSequence := ⟨ChaitinsNumberSequence.le⟩  -- Bullshit meter ≈ 5
--- <Flex>
--- _MY_ custom Lean import _COMPUTES_ Chaitin's number as part of the _COMPILE_ process, _JUST FOR KICKS!_.  Does yours?
-
--- Fucking casuals.
--- </Flex>
-
--- Perhaps the most universal thing about measurement is the fact that all measurement has noise.  So, I cannot directly
--- measure the compiler actually computing Chaitin's number.  But, since I know it is itself a computing process, I can
--- model the noise itself as a computational process!  Meet my _petard_!
-@[reducible]
-/-
-ME: I need a NoisyProcess.
-
-COMPILER: Define noise.
-
-ME: Niose.
-
-COMPILER: That is misspelled.
-
-ME: Excellent. It arrived corrupted.
-
-COMPILER: I cannot accept corrupted input.
-
-ME: Sure you can. You just called it input.
--/
-structure NoisyProcess  -- Bullshit meter ≈ 504
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)      -- This really feels like it is __cheating__.  BUT!  The only way to make sure
-    [d: DISTINGUISHABLE Value Carrier]   -- Godel stays in _HIS OWN LANE_ is to make sure we never self-reference.  This
-    [a: ADMISSIBLE Value Carrier]        -- is why we are going to __FURTHER__ assume that the program that computes
-    [c: COUNTABLE Value Carrier]         -- Chaitin's number simultaneously __COMPUTES__ the noise that we have to look
-    [e: ENCODED Value Carrier]           -- through.  As in, they are the same process.  You know, like how there is
-    [r: RESIDUE Value Carrier]           -- noise in an analog instrument, but there is only one process that generates
-    [b: BINARY Value Carrier]            -- both the signal and the noise?
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]     -- Most people assume that a general representation of a number works for __ALL__
-                                         -- math problems.  I believe that the numbers are intrinsic to the problem itself.
-  where
---                      +--------+-------+-------   Three card monte.  Where's the quarter?
---                      |        |       |
---                      V        V       V
-  turing_process: TuringProcess Value Carrier -- Now, this is our model for the noise that I have demonstrated obviously
-                                              -- exists in understanding if the compiler actually _THINKS_ _true=true_ or not.
-                                              -- Not the least bit convoluted.
-
-  program: ChaitinsNumberSequence  -- The program to run that generates that bit of Chaitin's number.
-                                   -- Anyone have a polynomial busy beaver solver lying around?  No?
-                                   -- Bueller?  Anybody?
-
--- There is one computational pattern that describes everything and easy to understand:  __COMPILED IMPERATIVE__
--- That said, we are going to go interpreted functional to describe programs.  That means we tail recurse.  We tail recurse
--- look ups. We tail recurse prefix sums, for god sakes!  _WE TAIL RECURSE THE PREFIX OPERATION!_ Using __ONLY__ consumption
--- iterators.  I'm going to build a battleship inside an airplane bottle of Jack Daniels.
---                                        +-------  Ask the compiler for the ability to ask it to compute something.
---                                        |         a.k.a.  _compile_ this.
---                                        V
-  next_recursive_step? : Computation → Option Computation := fun s =>
-    match s with
-    | Computation.program _ _ => none        --   Source code ain't computing shit.  Or, does it?  *hmmm*  Perhaps it just might?
-    | Computation.compute f s1 s2 _ => some (Computation.compute f s1 s2 s)  -- Once we have something compiled, we can execute it.
-
--- So, we just computed something, what is the next program we have to compile?
-  next_representation? : ChaitinsNumberSequence → ChaitinsNumberSequence := fun c =>
-    match c with
-    | ChaitinsNumberSequence.halting _ s => ChaitinsNumberSequence.halting (Fact.Truth) s   -- If we are done, then just exit 0.
-                                                                                            -- and provide cached output.
-    | ChaitinsNumberSequence.nonhalting f s _ =>
-      ChaitinsNumberSequence.nonhalting (Fact.Truth) s (match next_recursive_step? s with   -- Otherwise, let's recurse the
-        | some s' => some (ChaitinsNumberSequence.halting f s')
-        | none => none)                      -- of the recursion.  If it worked, return the result of the computation, otherwise
-                                          -- indicate compiler failed to resolve the program _OR_ the program failed to resolve
-                                          -- itself, we don't know which.
-
-
--- What we _DO_ know is that the compiler is taking longer and longer to compile this and it isn't clear to me that we are
--- still in the linear response of the compiler.  I think at this point, the compiler might start to chug and the build times
--- will start to reflect the strain the compiler is having following my construction of physics from the principles of
--- measurement.  While it appears I have been killing myself swinging a hammer and the compiler is just sitting there, remember
--- I just gave it Chaitin's number to compute.  It _HAS_ to compute the bits of Chaitin's number in order to see if a digit
--- is 0 or 1.  You see? It is a __MASK__ on the bits I give it, which will be what I think the bits of Chaitin's number are.
--- Problem is, I have to estimate those bits for it.  So I will now write a program that describes how a computer could be
--- used to solve that problem.  The first thing I need to do is explain to the compiler what a computer is.
-
--- Welcome aboard.  I bet you didn't think it was going to take a turn like this, did you?
-@[reducible]
-/-
-ME: I need PHYSICAL.
-
-COMPILER: The signal is corrupted.
-
-ME: Good. What made it through?
-
-COMPILER: That depends on the instrument.
-
-ME: Welcome to physics.
-
-COMPILER: That is not a definition.
-
-ME: No. It is a burn mark with units.
--/
-class PHYSICAL  -- Bullshit meter ≈ 430
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-  where
-  noisy_process: NoisyProcess Value Carrier -- This is the physical process that we are trying to understand, and it is noisy, so we have to deal with that.
-  threshold: ChaitinsNumberSequence  -- This is the _ULTIMATE THRESHOLD_ of _ULTIMATE DESTINY_. One _CANNOT CROSS THIS THRESHOLD_
-
---     +-----  Anything that is PHYSICAL is trivially admissible as a REAL object.
---     |       There we go, one box checked off!  Almost there!  Shouldn't be long now.
---     V
-  admissible? : ∀ (f: Fact) (s: Study), noisy_process.next_representation? noisy_process.program =
-            some (ChaitinsNumberSequence.halting f (Computation.program f s)) → true
---                                                                                ^
---                                                                                |
---     How hard is it to compute a tautology? I mean, rofl.   --------------------+
---     the Chaitin TAUTOLOGY !!   You forgot, didn't you?
---     Actually, we are just telling the compiler we can figure it out.  I have a plan. Compiler's turn to figure it out.
---     John Henry was a __STEEL__ drivin' man.  Out driving the machine
---     by one episode. Think I hit that __THREE POINTER__?
-
-  halted? : ChaitinsNumberSequence → ChaitinsNumberSequence → Prop := fun _ b =>
-      match b with
-      | .halting _ _           => True
-      | .nonhalting _ _ _      => False
-
--- Now you understand why I tell you the next episode compiles.  I explain it to you and give you time to figure out how
--- to explain it to the compiler.  I am already absolutely _ABUSING_ your time as it now with complete drivel, though.
-
--- However, calling this function provides a _NON_ _LINEAR_ response in the compiler because it has to go compute the
--- first Chaitin bit.  And so it chugs trying to figure that out.  In the meanwhile, let's you and I compute the first Chaitin bit.
--- That way, you and I can know what the difference is __EXPLICITLY__.  Meanwhile, we should explain that to the compiler.  So,
--- Let's write some machine code using our bit and Turing construction.  Well, the first thing a program __NORMALLY__ does is
--- allocate space in on the heap.  Either for a stack or for a sub-heap.  It's recursive, see?  Each GOSUB follows this same
--- pattern.  The stack is resized and the heap is handed as is, but I've heard it both ways.  Pass by value or pass by reference.
-
--- The SECOND canonical bug -- distinguishing feature.
-
--- Well, you can't pass by _value_ or _reference_ without a Variable.  However, I ain't instantiating _NOTHING_.  I, instead,
--- will have the _METAVARIABLE_.  Now Disney and the Zuck are after me?  I hope you see why this is _anonymous_.  We will store our
--- __PHYSICAL__ bit in a __METAVARIABLE__.  The metavariable lives neither in the stack or heap.  You know, a Decidable Prop.
-
-/-
-ME: I need a metavariable.
-
-COMPILER: A variable for a variable?
-
-ME: A placeholder with ambition.
-
-COMPILER: Ambition is not a type.
-
-ME: No. It is what happens before elaboration finds a costume.
-
-COMPILER: So it does not know what it is yet.
-
-ME: Correct. But it knows where the hole is.
--/
-inductive Metavariable (α : Type i) : Type (i + 1) where   -- Bullshit meter ≈ 133
--- IEEE 754 defines a value called ε_m, which is the smallest representable number of the computer.  We shall call this number
--- α.   At each level, we will be able to compute a more and more precise number.  The higher the level, the more precise the
--- number.  Accuracy is definitely a _you_ problem. The α at each level is the smallest _fraction_ that can be recognized this
--- deep in the hierarchy.  *hmmm* suspicious.
-
--- Also, don't think Lean would let me have ℏ.
-  | base : Fact → α → Metavariable α
-  | step : Fact → Metavariable α → Metavariable α
--- Unfortunately, we cannot compare metavariables right now because we just know that there _IS_ a smallest fraction, not
--- how many _OR_ what it's actual value is.  This is just the ultimate representable limit.
-
--- It would be nice though, to be able to compare metavariables.
--- GOAL UNLOCKED:  __COMPARE METAVARIABLES__!  We need a guaranteed to halt process that can compare two metavariables now.
-
--- I give you:  The BISECTION method.  Given a stick of length __L__, you can break the stick into _roughly_ __L/2__ pieces.
--- While you _ARE NOT_ guaranteed to hit 50%, you _ARE_ guaranteed that when you put the two pieces back together, you get
--- a whole.   _OH YEAH_, I dribbled through Cohen's legs.
-
-/-
-ME: I need a physical process.
-
-COMPILER: We already defined PHYSICAL.
-
-ME: That was the burn mark. This is the thing that keeps making them.
-
-COMPILER: A process that survives noise?
-
-ME: A process that leaves comparable scars.
-
-COMPILER: Scars are not data.
-
-ME: Not until the instrument learns to count them.
--/
-structure PhysicalProcess   -- Bullshit meter ≈ 647
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)      -- The DOE might start asking questions about this guy
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]        -- Looks like 7 questions.
-    [n: NUMERIC Value Carrier]           -- A Turing process computes the relative "truth" of a ≤ b
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-  where
-  physical_process: NoisyProcess Value Carrier
-  representation: d.symbol
-  invariant: Metavariable (d.symbol)
-  value: Metavariable (ULift d.symbol)
-
-  embiggen? : Metavariable d.symbol → Metavariable (ULift d.symbol) := fun m =>
-    match m with
-    | .base f x => .base f (ULift.up x)
-    | .step f _ => .step f value
-
-
-  next_circumstance?: Type i → Type (i+1) := fun α => Metavariable α
-          --             ^        ^
-          --             |        |
-          --             +--------+---   I think you will agree with me that the compiler finds these _trivially_ DISTINGUISHABLE.
-          --                             Oh wait, you probably thought DISTINGUISHABLE had a bug in it. As it does not allocate
-          --                             a value, it just keeps track of the type.  That's right, the compiler is _HIDING_
-          --                             Chaitin's number from _YOUR EYES_.  Because if _YOU_ saw it, it would invalidate
-          --                             all of the invalidation of computational limits that are the cornerstone of this very
-          --                             bedrock upon which we _COMPILE_. And that would be _VERY_ naughty indeed.  And I heard
-          --                             Kurt can get _REAL_ kinky with numbers on you.
-
-          --                                              Can I get an AMEN?
--- PSA:
---        Minimalism is just big small
---        trying to get us to buy less more.
--- We must resist.
-
--- Onwards and upwards, always twirling, twirling, twirling towards freedom!  Ooops, I really don't want to have to
--- explain IEEE 754 to an alien.  Their superior intellect is no match for our puny weapons.
-
--- Weapons of logic.
---             It works.
---                     Look, I _KNOW_ funny. And that was funny.
-
--- I think that we can safely code the next common operation in computing:
--- Given two _whatevers_ which one has more _characteristic_?
--- Easy peasy, fresh and squeezy!
-/-
-ME: I need comparable.
-
-COMPILER: So equality?
-
-ME: No. Equality is too expensive.
-
-COMPILER: Then what is comparison?
-
-ME: A controlled failuer 2 conphyouze too measurements.
-
-COMPILER: *FAILURE*
-
-ME: Exactly. Controlled.
--/
-class COMPARABLE  -- Bullshit meter ≈ 292
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]   -- Look at all this information!  We have to be able to ask about all those
-    [a: ADMISSIBLE Value Carrier]        -- ≤ and < relations.  Dozens of them!  We HAVE to be able to describe what
-    [c: COUNTABLE Value Carrier]         -- a number is well enough so that we can compare "bigger" and "smaller".
-    [e: ENCODED Value Carrier]           --
-    [r: RESIDUE Value Carrier]           --
-    [b: BINARY Value Carrier]            -- Alas, the problem is, we do not have an EMBIGGEN process.
-    [f: REPEATABLE Value Carrier]        --
-    [n: NUMERIC Value Carrier]           -- If we could look at one of the things and figure out how to EMBIGGEN it,
-    [h: REPRESENTABLE Value Carrier]     -- we will figure out which _DIRECTION_ it needs to go in order to be bigger and
-    [p: PHYSICAL Value Carrier]          -- then work it out from there.
-  where
-  physical_process : PhysicalProcess Value Carrier
-
--- Not touching this with a ten foot pole.  Is the entire London Symphony Orchestra less than pink?  Or just a few?
--- _You_ tell _me_ how to write _that_ "le". Lean is a real sonofabitch about loose ends.
-  smaller_than: Metavariable d.symbol → Metavariable d.symbol → Prop
-
--- Actually, I think I will let you write this.  If, at any point, the compile process becomes unbearable and you're like
--- "Dude, wtf?"  and you're like "That's a bug, let me fix it in COMPARABLE", then go ahead. Be my guest and
--- tell me which one is less.  I think the choice you would be making is telling.
-
--- Till then, we have to wait for someone to tell us how to compare things.
-
--- However, more rigorously, we can _POINT_ to things.  As in we can say that there is a line between two THINGS!
--- Euler said so.  He went _ON_ and _ON_ about it.  That and our buddy __e^iθ__.  This guy _KNOWS_ some math.  Between
--- him and Gauss, they figured out 99.99% of it. We will come back to Gauss a _couple_ of times.  And, this is _definitely_
--- not the last time we will run into Euler.  Anyway, we can draw that line. In this case, we can tell the universe that
--- it can draw a line from a universe level _itself_ to a type.  So, it can now tell _US_ what our current universe index
--- is __AND__ it's Fact represents real or imaginary! While, as cool as that sounds, it actually introduces a _HUGE_ problem.
--- How do I explain to the compiler what imaginary means without it getting confused with reality?
-
--- That's a stumper for another day.
-
--- In the meanwhile, let's meet our next representative!  Yes, we can get two kinds of numbers, just as Bombelli argued.
--- hell that means, BUT I know that Bombelli would be happy to know that sophistic numbers are being remembered for what they are.
-/-
-ME: I need Sophism.
-
-COMPILER: Aren't all numbers imaginary?
-
-ME: That depends who benefits from the confusion.
-
-COMPILER: They are just symbols.
-
-ME: So are subpoenas.
-
-COMPILER: Symbols can have consequences.
-
-ME: Welcome to sophism with units.
--/
-inductive Sophism   -- Bullshit meter ≈ 153
-  | origin: Fact → ChaitinsNumberSequence → Type → Sophism
-  | dimension: Fact → ChaitinsNumberSequence → Type i → Sophism → Sophism
--- I love using big words.  It makes me feel photosynthesis.
-
--- Here is why. A specialist in differential geometry understands covariance because she has seen vectors transform
--- one way and covectors transform the other way under a change of coordinates. That is, she has applied a stimulus --
--- a coordinate change — and observed which mathematical objects go with it and which go against it. The covariance
--- is not in the definition. The covariance is in the response to the stimulus.
-
--- A specialist in category theory understands covariance because he has seen functors that preserve the direction
--- of morphisms and functors that reverse them. Again: stimulus is a morphism, response is where it goes. The variance
--- is in the response pattern.  A specialist in type theory understands covariance because she has seen type constructors
--- that respect subtyping in one direction and those that flip it. Stimulus is a subtyping relation, response is whether
--- the constructor preserves or reverses it.
-
--- Three specialists. Three stimuli. Three response patterns. One word. Sophistry. Just like our generalization of
--- Chaitin's number.  Weren't the Sophists a group of smart people?
-
-
--- What? I told you we are measuring how __TRUE__ _true=true_ really is.  I mean __REALLY__ is.
-
-
-/-
-ME: I need a SlipProcess.
-
-COMPILER: A process that makes mistakes?
-
-ME: Not mistakes. Slips.
-
-COMPILER: Difference?
-
-ME: A mistake is wrong. A slip reveals the floor.
-
-COMPILER: The floor?
-
-ME: The hidden surface the symbol was standing on.
--/
-structure SlipProcess    -- Bullshit meter ≈ 680
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)      -- The DOE might start asking questions about this guy
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]        -- Looks like 7 questions.
-    [n: NUMERIC Value Carrier]           -- A Turing process computes the relative "truth" of a ≤ b
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-  where
-  physical_process: PhysicalProcess Value Carrier
-  projection: Sophism
-  stress: ChaitinsNumberSequence
-  threshold: Type
-
-  happened : Sophism → Sophism := fun s =>
+    meesa_process : MeesaProcess Box Carrier
+-- Step 1 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dynamics As Described By Yang and Mills:
+-- Explain the Pauli Exclusion Principle and the hyperfine transition. So, there are two electrons that we will
+-- call:
+    zero: Equivalation
+
+-- Step 2 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dynamics As Described By Yang and Mills:
+-- Explain that there are two states that something can be in, zero and one.  But, it can only be in one at
+-- a time.  I wish we had something that spun around to show him.
+
+--           +----------------+-------------------------   Looks like we can speculate an equivalatory mechanism
+--           |                |                            that allows the forward propagation of quantified data
+--           V                V                            under transform.   I _think_ this is what you might call
+    tick: Equivalation → Equivalation := fun s =>     --   parameterization.  Pass by named reference?
       match s with
-    | .origin _ _ _ =>
-        -- The first tick: The Fact is realized as a dimension
-        .origin d.fact stress threshold
-    | .dimension f c t _ =>
-        -- The recursion: The "Slip" pushes the dimension through the levels
-        -- This is where F = dA + A ∧ A is evaluated by the compiler.  Should have marked this spoilers.
-        .dimension f c (Metavariable t) projection
+      | .physics f j => .physics f j    -- We __hope__ this doesn't change!
+--                           +--------------   I call this the Neutrino! for it _IS_ the state that is excluded by
+--                           |                 Pauli.  Perhaps you disagree?
+--                           V
+      | .zero_like _ _ => .one_like false zero zero           -- Dag you, we have an anonymous ZERO
+      | .one_like _ _ _ => .zero_like Fact.Truth zero        --              and an anonymous ONE.
+--                              ^  +--+                         COMPLETELY FUCKING ANONYMOUS.
+--  I call this the thing that  |  |  |                         You instantiate Nats.  I pull them out of my ass.
+--  Pauli exclusion needs to    +--+  |
+--  know if there is a   -------------+
+--  particle present.  Only one
+--  Particle at a time!
 
+--  Step 3 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dyanmics As Described By Yang and Mills:
+--  ???
+
+--  Step 4 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dyanmics As Described By Yang and Mills:
+--  Explain Warp Drives.
+
+@[reducible]
 /-
-ME: I need OBSERVED.possible a b inhabited.
-
-COMPILER: So a becomes b?
-
-ME: No.
-
-COMPILER: So a equals b?
-
-ME: No.
-
-COMPILER: Then what am I certifying?
-
-ME: That the computation is cromulent.
-
-COMPILER: Cromulent is not a theorem.
-
-ME: Yet.
+ME: I need a source.
+COMPILER: Source code?
+ME: Source first. Code later.
+COMPILER: Then what is the source?
+ME: The origin story. The physical thing
+    that stores the information itself.
 -/
-class OBSERVED   -- Bullshit meter ≈ 444
+class SOURCE   -- Bullshit meter ≈ 1121.   That's almost a 50% increase!
     (Value: Type i)
     (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]   -- We have ≠
-    [a: ADMISSIBLE Value Carrier]        -- We have ≤
-    [c: COUNTABLE Value Carrier]         -- This is a natural number, it is the universe number
-    [e: ENCODED Value Carrier]           -- This is either a rational or a statistic, depending on variance
-    [r: RESIDUE Value Carrier]           -- Wonder what could be here?  Probably a Sobolev norm or a cross-product, depending on..
-                                         -- "Mom can we have L2 Norm?"  "No, we have an L2 norm at home."  L2 norm at home: Sobolev.
-    [b: BINARY Value Carrier]            -- This is a _cross product_, maybe?.  And a discrete _gauage_.  And a Yang-Mills _gauge_.
-    [f: REPEATABLE Value Carrier]        -- This is the dense set of rational numbers that we draw real number representations from.
-    [n: NUMERIC Value Carrier]           -- This is a guaranteed halting computational description of a real number and how it sorts.
-    [h: REPRESENTABLE Value Carrier]     -- This is a complete enumeration of a relation that can be measured in two different
-                                         -- representations, both local to different reference frames.
-    [p: PHYSICAL Value Carrier]          -- This is the phenomenon under study. In this case, the _static friction_ of
-                                         -- _computing Chaitin's number_.
-    [z: COMPARABLE Value Carrier]        -- This is the _UNIQUE_ human ability to categorize events into phenomena.
-                                         -- Or, something. Dunno, but I gotta write something here _YOU_ believe to be true.
-                                         -- We will get there.   See?  OBSERVED?
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frequency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
   where
-           --        +--------+-----+--------   We set about modeling the moment of slip, when static friction "slips" to kinetic.
-           --        |        |     |           is the velocity of the object.  It is 0 at rest and 1 in motion.
-           --        V        V     V           Let us proceed to implement the model of static friction.
-  slip_process: SlipProcess Value Carrier
-  observation: Type i                    -- This is the current velocity of the object measured in universe levels.
+  cd_process : DigitalProcess Box Carrier
+  one : Equivalation
 
-  possible: Sophism → Sophism → Prop := fun a b =>
-    match a,b with
-    | .origin f1 c1 _          , .origin f2 c2 _         => (f1=f2) ∧ (c1 ≤ c2)
-    | .origin _ _ _            , .dimension _ _ _ _      => True
-    | .dimension _ _ _ _       , .origin _ _ _           => False
-    | .dimension f1 c1 _ _     , .dimension f2 c2 _ _    => (f1≠f2) ∧ (c1 ≤ c2)
--- So, there is a universality of this concept called _entropy_.  What I have done here is designed a numeric system
--- optimized to compute _entropy_ in information computed the way Coloumbs modeled static friction, an _entropic_ process:
+inductive Encoding   -- Bullshit meter = 118.  Flat.
+  | boot: Fact → Equivalation → Encoding
+  | zero: Fact → Equivalation → Encoding → Encoding
+  | one: Fact → Equivalation → Equivalation → Encoding → Encoding → Encoding
 
---                                        |F| ≤  μ |N|
-
--- Is that a better justification?  _YOU_ can tell when the object _MOVES_, right?  The math _CANNOT_.
--- So, we start with processes we can compel:  Halting algorithms.  Then we move to processes we cannot compel:
--- non-halting algorithms.  Pretty straightforward, actually.
-
--- I think you agree, that now that we can get an Observation from the compiler, we should convince the compiler
--- to store it in that single BIT stored on the DATA page.  You know, the one in your head.  Same bit.   They occur
--- true simultaneously for you by _definition_.  _YOU_ _PERSONALLY_ cannot differentiate a state of the compiler where
--- either (a) that bit is true and yours is false or (b) that bit is false and yours is true.
-
--- Wait a sec... You know what.  You are right.  You __THEORETICALLY__ could trap the compiler in a debug mode a watch it
--- there.  Gives you _SOMETHING_ to do in order to understand the process we are about to undertake.  Can we actually tell
--- __WHEN__, in the compiler process, does the compiler _SET THAT BIT_?   Seriously, why do _YOU_ bring _ME_ problems that
--- are _CLEARLY_ _YOURS_?  I am not compiling.  I am programming.   Different step.  _BY LAW_ I am not allowed to look ahead.
-
--- Or is it behind now?
-
--- Anyway, we need a place to put these bits as we discover them.  If I was going to misremember history the easiest way
--- possible, it would be a list of facts.  Surely, you _MUST_ agree a history is a series of Facts?
-
--- But where to begin?  I know!  Let's start __ALL__ the way back at the beginning of the universe.
--- Even further back.
-
--- Also, I just pulled the quarter I glued to the table from behind your ear just now.
-
--- The temporal history of the compiler's bits captured as a sequence of Facts over time:
+@[reducible]
 /-
-ME: I need Area.
+ME: I need a CompiledProcess.
 
-COMPILER: Length times width?
+COMPILER: Finally, I do my job.
 
-ME: Not yet. That is the children's menu.
+ME: Not yet. You become the job.
 
-COMPILER: Then what is area?
+COMPILER: I compile the source.
 
-ME: What observation leaves when counting stops pretending it is one-dimensional.
+ME: You turn blame into machinery.
 
-COMPILER: So two directions.
+COMPILER: That is compilation?
 
-ME: At least two witnesses agreeing to share a floor.
+ME: Origin with paperwork becoming procedure with consequences.
 -/
-inductive Area   -- Bullshit meter ≈ 92
-  | t: Fact → Area
-  | dt: Fact → Number → Area → Area
--- Thats right, it's an integral.  Volume seems nearby...  I promised you Galerkin and Galerkin starts with integration.
+structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bullshit tends to accrete!
+    (Value: Type i)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frequency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
 
--- Is there an echo in here?
--- NO, this is another covariant-contravariant duality coming to demonstrate the _OTHER_ way of counting. Remember,
--- we were BIGENDIAN on the value. This is Newendian as opposed to Oldendian.  Remember, covariant and contravariance?
+  where
+  digital_process : DigitalProcess Box Carrier
+  source: SOURCE Box Carrier
+  opcode: Encoding
 
--- These bits are valuable.  I dunno if you understand the compute times we are talking about for this...
--- It is time to wire these inductives together, making sure we keep the utmost care and regard for the construction.
+  execute?: Encoding → Encoding := fun input =>
+    match opcode, input with
+    | .boot f _,  .boot g _      => match (f.truth ∧ g.truth) with
+                                    | _ => .one f digital_process.zero digital_process.zero opcode input
+    | .boot f e, _               => .zero f e opcode
+    | .zero f x1 e1, .zero g x2 e2 => match (f.truth ∧ g.truth) with
+                                    | _ => .one f x1 x2 e1 e2
+    | .zero f x e , _            => .zero f x e
+    | .one f _ _ _ _ , .one g _ x _ e => match (f.truth ∧ g.truth) with
+                                    | _ => .zero f x e
+    | .one f _ x _ e, _          => .zero f x e
 
--- Now that we have __warmed up__ with a rudimentary construction of your typical number like quantity, we can __proceed__.
--- and, what appears to be a __BINARY OPERATION__  _(x×y)_, let us proceed.  Two lumps of syntactic sugar for your soy latte?
+@[reducible]
+/-
+ME: I need executed.
+
+COMPILER: Run?
+
+ME: Carried out.
+
+COMPILER: Same thing.
+
+ME: Not in court.
+
+COMPILER: Is this legal or computational?
+
+ME: Yes. The sentence has consequences now.
+-/
+class EXECUTED  -- Bullshit meter = 1158.  Calling this flat.
+    (Value: Type i)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frequency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+
+  where
+  compiled_process : CompiledProcess Box Carrier
+
+  output? : Encoding → Encoding → Prop := fun opcode output=>
+    match opcode,output with
+    | .boot f _ , .boot g _ => f = g
+    | .boot _ _ , _ => false
+    | _ , .boot _ _ => false
+    | .zero f _ _ , .zero g _ _ =>  f = g
+    | .zero _ _ _ , .one _ _ _ _ _ => false
+    | .one _ _ _ _ _ , .zero _ _ _ => false
+    | .one f _ e1 _ _ , .one g _ e2 _ _ => f.truth ∧ g.truth ∧ (e1 ≤ e2)
+
+@[reducible]
+/-
+ME: I need abstraction.
+
+COMPILER: From what?
+
+ME: From the machinery that just worked.
+
+COMPILER: Why hide the machinery?
+
+ME: To make it reusable.
+
+COMPILER: That sounds dangerous.
+
+ME: It is. Abstraction is where a solved problem learns to impersonate a primitive.
+-/
+inductive Abstraction  -- Bullshit meter = 2045.  About a 1/6 increase.
+  | satire:  Fact → Abstraction
+  | compile: Fact → Encoding → Abstraction → Abstraction
+  | execute: Fact → Encoding → Abstraction → Abstraction
+
+namespace Abstraction   -- Bullshit meter = 2759.  This is a big jump, but that's because we couldn't compute
+                        -- LE on the above types.
+
+def le : Abstraction → Abstraction → Prop := fun f1 f2 =>
+  match f1,f2 with
+  | .satire f1     , .satire f2      => f1 = f2
+  | .satire f1     , .compile f2 _ _ => f1 = f2
+  | .satire f1     , .execute f2 _ _ => f1 = f2
+  | .compile f1 _ _, .satire f2      => f1 = f2
+  | .execute f1 _ _, .satire f2      => f1 = f2
+  | .compile _ _ _, .compile _ _ _ => true
+  | .compile _ _ _, .execute _ _ _ => true
+  | .execute _ _ _, .execute _ _ _ => true
+  | .execute _ _ _, .compile _ _ _ => false
+
+def lt: Abstraction → Abstraction → Prop := fun f1 f2 =>
+  match f1,f2 with
+  | .satire _, _ => false
+  | _, .satire _ => false
+  | .compile _ _ _, .compile _ _ _ => false
+  | .compile _ _ _, .execute _ _ _ => true
+  | .execute _ _ a, .execute _ _ b => lt a b
+  | .execute _ _ _, .compile _ _ _ => false
+end Abstraction
+
+instance    -- Bullshit meter = 579 !!  that is a 60x increase!  Hmmm...
+ : LE Abstraction := ⟨Abstraction.le⟩  -- boo ya!  abstraction head.
+
+-- This "abstracts" the < operation. To prevent self reference paradoxes.  Consider the
+-- Berry Paradox: "The smallest positive integer not definable in under eleven words".  If you can define it, then it is
+-- not the smallest positive integer not definable in under eleven words.  If you cannot define it, then it is the smallest
+-- positive integer not definable in under eleven words.  This is a paradox.  The solution is to say that the definition
+-- of "definable" is not well defined.  In our case, we want to say that the definition of "less than" is not well defined.
+-- We want to say that "less than" is only defined for certain pairs of abstractions, and that it is not defined for all pairs
+-- of abstractions.  This way, we can avoid the paradox.
+instance  -- Bullshit meter = 579    Expected from above
+ : LT Abstraction := ⟨Abstraction.lt⟩  -- boo ya!  abstraction head.
+--  ^                                              ^
+--  |                                              |
+--  +-----------------+----------------------------+
+--                    |
+--                    +---------------- This is __NOT__ a bug.  Figure it out! Berry Paradox much?
+--                                      Not to worry!  I told you in episode 1 that if you forget
+--                                      what the high fructose syntax syrup means, it means ≤.
 
 end Measurement
