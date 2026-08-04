@@ -296,229 +296,215 @@ instance : LE Equivalation := ⟨Equivalation.le⟩ -- Bullshit meter ≈ 8
 -- Binary computers give rise to digital communications, digital arithmetic, digital intelligence. Everything is quantized and stored as binary
 -- somewhere. It is rare to see analog storage anymore. I mean, the pits and lands of the CD are dense enough to replicate sounds way past the
 -- ability for humans to hear. 44kHz sampling can give you 22kHz tones which has far more "upness" than the 18kHz tone of really good hearing.
+-- but even the analog feel of a plastic disc, these pits and lands are fewer and farther between on average, while the median remains
+-- unchanged.
 
 @[reducible]
 /-
-ME: I need a DigitalProcess.
-COMPILER: Bits? 1s and 0s?
-JAR JAR: Yes!
+ME: I need a DigitalProcess. --                | We will find Jar Jar to be _quite_ agreeable in this telling. That's Jar Jar's job, to agree that
+COMPILER: Bits? 1s and 0s?  --                 | work was just performed. 1 unit of work. Exactly 1 slot. Whatever 1 is. Whenever the value 1 needs
+JAR JAR: Yes!      ----------------------------+ to be subtracted from a number, this object is removed from it. Meet our resident fencepost.
 ME: That's right, it needs to be written down.
 -/
 structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
     (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [ADMISSIBLE Box Pigeon]
+    (Pigeon: CarrierProcess Box) ------+ This argument is constructive. The final template that instantiates the number
+    [DISTINGUISHABLE Box Pigeon] --    | has dozens and dozens and dozens of partial specializations, strung together.
+    [ADMISSIBLE Box Pigeon] --         | The partial specializations will tell a story. That story will describe a device
+    [COUNTABLE Box Pigeon] --
+    [ENCODED Box Pigeon] --     | Ask an audiophile stereotype to type their stereo and _BINARY_ will be among the minority. Audio files the
+    [RESIDUE Box Pigeon] --     | audiophile files in their filesystems are _BINARY_, though. A special _kind_ of audiophile binary called
+    [BINARY Box Pigeon] --------+ _LOSSLESS_. Some _LOSSLESS_ files have lost less than others, though. Because the size of the files change based on
+    [REPEATABLE Box Pigeon] --  | the fact some loss is more and while some loss is less. Audiophiles disagree on which is more and which is less.
+    [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]
+    [PHYSICAL Box Pigeon]
+    [COMPARABLE Box Pigeon] --       | The Gungan process is the marking process we discussed in Episode 1. Jar Jar contains no information, he just
+    [OBSERVED Box Pigeon] --         | marks time passing. One tick for everything he says. Jar Jar is evidence of the slot. When we don't get a
+    [PRESENT Box Pigeon] --          | click, but Jar Jar is present, then we count the fact that there _could have been_ a click and there wasn't one.
+    [MEASURABLE Box Pigeon] --       |
+    [GUNGAN Box Pigeon] -------------+ The compiler will write this down for us. Using the exclusive zero and the GUNGAN 1.
+
+  where
+  --                        +-----------------+ In the movie Tron, the depiction of the BIT was adorable.  When reprised by Lucasfilm, ymmv. The idea
+  --                        |                 | is that the plot itself didn't really need Jar Jar, nothing Jar Jar said provided information.
+  --                        V                 | However, he _had_ to talk to move the plot forward. Admittedly, I was not the audience Jar Jar was
+    meesa_process : MeesaProcess Box Pigeon --| aimed at and I have no business assuming the role of movie critic. I barely have business assuming
+  --                                          | the role of software developer. Have you seen this monstrosity?
+
+    zero: Equivalation ------| We will get more than enough ones from the meesa_process. We need the zero to start with. Will we get a one_like zero?
+
+  -- Now that we have an exclusive OFF state and an exclusive ON state, we can finally make a clock complement.  This is merely a line we pull high
+  -- then pull low on a timer so digital processes can synchronize events. c.f. crystal oscillation
+    tick: Equivalation → Equivalation := fun s =>
+      match s with
+      | .physics f j => .physics f j    -- We __hope__ this doesn't change!
+
+      | .zero_like _ _ => .one_like false zero zero -----------+ While starting with the assumption that a _ZERO_ exists is quite audacious, this
+      | .one_like _ _ _ => .zero_like Fact.Truth zero --       | demonstrates that you can, in fact, derive _0_ and _1_ from the idea of _this_ and
+--                              ^  +--+                        | _that_ _ALONE_. _YOU the KNOWER_ instantiate Nats, I pull then out of my ass.
+--  I call this the thing that  |  |  |
+--  Pauli exclusion needs to    +--+  |
+--  know if there is a   -------------+
+--  particle present.  Only one
+--  Particle at a time! The state can either be _quarter under a card_ or _no quarter under a card_.
+
+
+@[reducible]
+/-                                        | Let's discuss what you are reading right now. This is source code, it is accepted by a Lean compiler,
+ME: I need a source.                      | generates output on the screen that resembles a number that others have called _inexplicable_.  Does that
+COMPILER: Source code?                    | make this _code_ inexplicable because it can compute an near neighbor of the number? Is the number being
+ME: Source first. Code later.             | computed a near neighbor at all, or is the number just a post office box in a post office unrelated to
+COMPILER: Then what is the source?        | the address the meaning lives at.
+JAR JAR: MEESA! MEESA TRUE!               | Or does it live next door?
+ME: The origin story. The physical thing  |
+    that stores the information itself. --+ Godel thought they were the same. That if you mailed someone something, that they got it. Even next door.
+-/
+class SOURCE   -- Bullshit meter ≈ 1121. ----+ A font of knowledge. The part of the code that is context highlit, if that's your kink. The source of
+    (Box: Type i) --                         | the marks is a made-up character of a made-up story. But what it marks is what is important. Some may
+    (Pigeon: CarrierProcess Box) --          | read more into this sentence that I do. Which is fine, *YOU the KNOWER*, you will recognize some
+    [DISTINGUISHABLE Box Pigeon] --          | things in this file and the next. Things that don't sound scientific at all. Because they come from a
+    [ADMISSIBLE Box Pigeon] --               | place of known ignorance.
     [COUNTABLE Box Pigeon]
     [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]
     [BINARY Box Pigeon]
-    [REPEATABLE Box Pigeon]
-    [NUMERIC Box Pigeon]
-    [REPRESENTABLE Box Pigeon]
-    [PHYSICAL Box Pigeon]
-    [COMPARABLE Box Pigeon] --       | The Gungan process is the marking process we discussed in Episode 1. Jar Jar
-    [OBSERVED Box Pigeon] --         | contains no information, he just marks time passing. One tick for everything
-    [PRESENT Box Pigeon] --          | Jar Jar says.
-    [MEASURABLE Box Pigeon] --       |
-    [GUNGAN Box Pigeon] -------------+ The compiler will write this down for us.
-
+    [REPEATABLE Box Pigeon] --    | Having a character repeat whatever needs to be said in order to move the plot forward is a pattern that recurs
+    [NUMERIC Box Pigeon] --       | when writing a proof. ∃ δ ∀ ε. A wart. A declaration. A fencepost in proofs. Over and over and over. Calculus is
+    [REPRESENTABLE Box Pigeon]--  | absolutely brutal with this requirement. Every line of algebra written in a differential equation contains this
+    [PHYSICAL Box Pigeon] --------+ geometric wart. At least the way *YOU the KNOWER* writes it. Or does Navier-Stokes eventually blow up? You tell
+    [COMPARABLE Box Pigeon] --    | me. I mean water hammer is something else, but I doubt it will end the universe.
+    [OBSERVED Box Pigeon] --      | *BANG* *BANG* *Bang* *bang*
+    [PRESENT Box Pigeon] --       | Where have I seen .bang before? I have seen it PRIOR to now. Santa must bring more PRESENTs if I am good. And,
+    [MEASURABLE Box Pigeon] --    | we are going to measure _why_ the compiled code and the examples I give seem to ring out as if struck by a
+    [GUNGAN Box Pigeon] ----------+ water hammer.
   where
-    meesa_process : MeesaProcess Box Pigeon
--- Step 1 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dynamics As Described By Yang and Mills:
--- Explain the Pauli Exclusion Principle and the hyperfine transition. So, there are two electrons that we will
--- call:
-    zero: Equivalation
+--    +--------------------------------------+ I dare not wade into the fidelity of the cd_process. Those who understand HOW the analog signal
+--    |                                      | is absolutely BRUTALIZED by an ADC understand _WHY_ it is more than I can take. The second D of 3.
+--    V
+  cd_process : DigitalProcess Box Pigeon
+  one : Equivalation ----------------------| Is the quarter under this one? Or that one? The compiler should be keeping up with this in a dictionary.
 
--- Step 2 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dynamics As Described By Yang and Mills:
--- Explain that there are two states that something can be in, zero and one.  But, it can only be in one at
--- a time.  I wish we had something that spun around to show him.
-
---           +----------------+-------------------------   Looks like we can speculate an equivalatory mechanism
---           |                |                            that allows the forward propagation of quantified data
---           V                V                            under transform.   I _think_ this is what you might call
-    tick: Equivalation → Equivalation := fun s =>     --   parameterization.  Pass by named reference?
-      match s with
-      | .physics f j => .physics f j    -- We __hope__ this doesn't change!
---                           +--------------   I call this the Neutrino! for it _IS_ the state that is excluded by
---                           |                 Pauli.  Perhaps you disagree?
---                           V
-      | .zero_like _ _ => .one_like false zero zero           -- Dag you, we have an anonymous ZERO
-      | .one_like _ _ _ => .zero_like Fact.Truth zero        --              and an anonymous ONE.
---                              ^  +--+                         COMPLETELY FUCKING ANONYMOUS.
---  I call this the thing that  |  |  |                         You instantiate Nats.  I pull them out of my ass.
---  Pauli exclusion needs to    +--+  |
---  know if there is a   -------------+
---  particle present.  Only one
---  Particle at a time!
-
---  Step 3 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dyanmics As Described By Yang and Mills:
---  ???
-
---  Step 4 in teaching Jar Jar Binks from Star Wars Quantum Electro-Dyanmics As Described By Yang and Mills:
---  Explain Warp Drives.
-
-@[reducible]
-/-
-ME: I need a source.
-COMPILER: Source code?
-ME: Source first. Code later.
-COMPILER: Then what is the source?
-ME: The origin story. The physical thing
-    that stores the information itself.
+/- CHORUS:
+COMPILER: I need a dictionary, did you take it?           | Sometimes words enter descriptions. Those words can be unfamiliar but carry a certain
+JAR JAR: YOUSA BOMBAD! -----------------------------------+ _je ne sais quois?_ that hints at how much "upness" the word might contain. Je ne said
+ME: No, just use the dictionary you have been building.   | nothing and you can quote me on that.
 -/
-class SOURCE   -- Bullshit meter ≈ 1121.   That's almost a 50% increase!
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frequency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-  where
-  cd_process : DigitalProcess Box Carrier
-  one : Equivalation
-
 inductive Encoding   -- Bullshit meter = 118.  Flat.
   | boot: Fact → Equivalation → Encoding
   | zero: Fact → Equivalation → Encoding → Encoding
   | one: Fact → Equivalation → Equivalation → Encoding → Encoding → Encoding
 
+/-CHORUS:
+ME: Look, I stop at high level languages. If you want the instruction set, you will have to look elsewhere.
+-/
+
 @[reducible]
 /-
-ME: I need a CompiledProcess.
-
-COMPILER: Finally, I do my job.
-
-ME: Not yet. You become the job.
-
-COMPILER: I compile the source.
-
-ME: You turn blame into machinery.
-
-COMPILER: That is compilation?
-
-ME: Origin with paperwork becoming procedure with consequences.
+COMPILER: It takes electrons from the wall to make this work   | _TECHNICALLY SPEAKING_, the amount of bullshit the compiler has to cope with is
+ME: I will try to help you pay for your own energy cost        | linearly related to the time it takes to compile the code which is linearly related
+COMPILER: Energy? I only do math. Physics is your domain. -----+ to the amount of energy required to wade through the bullshit, which is linearly
+JAR JAR: PHYSICS TRUE!                                         | related to mass.
+ME: You turn physics into machinery that describes physics.
 -/
 structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bullshit tends to accrete!
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frequency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box) --
+    [d: DISTINGUISHABLE Box Pigeon] --                    +=========================================================================================+
+    [a: ADMISSIBLE Box Pigeon] --                         |                                                                                         |
+    [c: COUNTABLE Box Pigeon] --                          |                            ----->>**YOUR AD HERE**<<-----                               |
+    [e: ENCODED Box Pigeon] --                            |                                                                                         |
+    [r: RESIDUE Box Pigeon] --                            |  BILLBOARDS WORK! WHO IS LOOKING AT BILLBOARDS? YOU ARE! REACH DOZENS OF INDIVIDUALS    |
+    [b: BINARY Box Pigeon] --                             |                                                                                         |
+    [f: REPEATABLE Box Pigeon] --                         |      Advertise your new theory here, in the compiled process. I will work with          |
+    [n: NUMERIC Box Pigeon] --                            |     *YOU the KNOWER* to make sure _YOUR_ theory fits whatever words need to be          |
+    [h: REPRESENTABLE Box Pigeon] --                      |      said to make the AD as organically placed as a TikTok influencer's!                |
+    [p: PHYSICAL Box Pigeon] --                           |                                                                                         |
+    [z: COMPARABLE Box Pigeon] --                         +-----------------------------------------------------------------------------------------+
+    [particle: OBSERVED Box Pigeon] --                    | Email me: wkcochran@gmail.com. Reasonable rates. Contact for rate schedule. Prices      |
+    [frequency: PRESENT Box Pigeon] --                    | subject change and market forces.                                                       |
+    [what_meesa_saying: MEASURABLE Box Pigeon] --         +=========================================================================================+
+    [zero: GUNGAN Box Pigeon] --
+    [one: SOURCE Box Pigeon] --
 
   where
-  digital_process : DigitalProcess Box Carrier
-  source: SOURCE Box Carrier
-  opcode: Encoding
+--                        +---------------------+ Why have a digital process at all? Why not analog? Well, it turns out that a LOT of analog
+--                        |                     | configurations do not exist in reality. Take the water hammer and hit a cymbal as hard as you can.
+--                        V                     | While you may "square out" the cymbal, you cannot "square out the wave." The wave is made of
+  digital_process : DigitalProcess Box Pigeon --| atom-to-atom collisions and is best modeled as a square wave. Turns the infinite into the finite.
 
-  execute?: Encoding → Encoding := fun input =>
-    match opcode, input with
-    | .boot f _,  .boot g _      => match (f.truth ∧ g.truth) with
-                                    | _ => .one f digital_process.zero digital_process.zero opcode input
-    | .boot f e, _               => .zero f e opcode
-    | .zero f x1 e1, .zero g x2 e2 => match (f.truth ∧ g.truth) with
-                                    | _ => .one f x1 x2 e1 e2
-    | .zero f x e , _            => .zero f x e
-    | .one f _ _ _ _ , .one g _ x _ e => match (f.truth ∧ g.truth) with
-                                    | _ => .zero f x e
-    | .one f _ x _ e, _          => .zero f x e
+  source: SOURCE Box Pigeon -- <----+ The source code of the compiler as intpreted as an AST (see .tree above). Ever seen one? Or have you only ever
+  opcodes: Encoding --              | made one? Opcodes are generated by the compiler. It gets this dictionary installed for each architecture.
+--                                  | You know, the one it's been using this entire time.
+
+  execute?: Encoding → Encoding := fun input => --+ The piece of hardware that normally iterates the opcodes is the Program Counter. It is a register
+    match opcodes, input with --                  | on the computer's architecture almost always. Perhaps the most famous Program Counter is the cdr.
+ --                                               +---------------------------------------------------------+ The cdr of LISP explains to the computer
+    | .boot f _,  .boot g _      => match (f.truth ∧ g.truth) with --                                       | the _address_ of the next opcode. Which,
+                                    | _ => .one f digital_process.zero digital_process.zero opcodes input --| as we have firmly established, will get
+    | .boot f e, _               => .zero f e opcodes --                    +-------------------------------+ whatever mail Godel wishes to send it.
+    | .zero f x1 e1, .zero g x2 e2 => match (f.truth ∧ g.truth) with --     |
+                                    | _ => .one f x1 x2 e1 e2 --            | So, this description of the computational process is careful to be able
+    | .zero f x e , _            => .zero f x e --                          | to sort out the opcodes that do not make sense. Those it interprets as
+    | .one f _ _ _ _ , .one g _ x _ e => match (f.truth ∧ g.truth) with --  | _argument_ of the opcode. Think the simplest of all LISP machines.
+                                    | _ => .zero f x e --                   |
+    | .one f _ x _ e, _          => .zero f x e --                          | We are taking great care to sort the mail before we deliver it.
 
 @[reducible]
-/-
-ME: I need executed.
-
-COMPILER: Run?
-
-ME: Carried out.
-
-COMPILER: Same thing.
-
-ME: Not in court.
-
-COMPILER: Is this legal or computational?
-
-ME: Yes. The sentence has consequences now.
--/
+/-                                                  | Source code exhibits a property very much like "upness," called _correctness_. The code does
+COMPILER: I have produced yet another number        | such a good facsimile of the desired instructions that the actual instructions are deemed
+JAR JAR: MEESA EXIT 1 ------------------------------+ correct.
+ME: That zero looks very _1_ like to me.            |
+-/ --                                               | Jar Jar makes that easier to see here.
 class EXECUTED  -- Bullshit meter = 1158.  Calling this flat.
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frequency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+-- As I mentioned earlier, the number of partial specializations that will be appearing later numbers in the dozens and dozens. Partial and full
+-- instantiations. The space above is going to become very valuable very soon as we cram more and more functionality into the template itself.
+-- Perhaps future ad space? Hey, it's free real estate!
 
   where
-  compiled_process : CompiledProcess Box Carrier
+--                           +------------------------+ The compiled process is another numeric representation of the source code. It is organized
+--                           |                        | into a relatively efficient transliteration of the source code in such a way that one
+--                           V                        | program on one computer is _NOT AT ALL GUARANTEED IN THE LEAST_ to generate the same output
+  compiled_process : CompiledProcess Box Pigeon --    | on another computer.  Endianism alone is an obvious blocker to this. If you run this on your
+--                                                    | machine you will get something different than I do. Your lcd screen changes instead of mine.
+--                                                    | The mail must be delivered to the right screen.
 
   output? : Encoding → Encoding → Prop := fun opcode output=>
-    match opcode,output with
-    | .boot f _ , .boot g _ => f = g
-    | .boot _ _ , _ => false
+    match opcode,output with  --------------------------------------------+ ISA is not a strong point of mine. Be honest with you. Don't get me wrong,
+    | .boot f _ , .boot g _ => f = g --                                   | I know more than the average bear, just not enough to be so flippant with
+    | .boot _ _ , _ => false --                                           | the details.  I leave this for you to interpret. It is simple routing.
     | _ , .boot _ _ => false
-    | .zero f _ _ , .zero g _ _ =>  f = g
+    | .zero f _ _ , .zero g _ _ =>  f = g --------------------------------+ If the reference zeros aren't the same, not happening.
     | .zero _ _ _ , .one _ _ _ _ _ => false
     | .one _ _ _ _ _ , .zero _ _ _ => false
-    | .one f _ e1 _ _ , .one g _ e2 _ _ => f.truth ∧ g.truth ∧ (e1 ≤ e2)
+    | .one f _ e1 _ _ , .one g _ e2 _ _ => f.truth ∧ g.truth ∧ (e1 ≤ e2) --+ It isn't enough for the variance to match, it must also agree. Welcome
+--                                                                         | to Diagon Alley. Seriously, Paul's Boutique has nothing on this code.
 
 @[reducible]
 /-
-ME: I need abstraction.
+ME: I think it is time we talk about what is going on here.        | No kidding, this is a satire. We have now dealt with both situations, one
+COMPILER: In the sense that you keep stacking templates as         | in which there is kidding (by selecting all kidding) and the empty slot
+          if there were no consequences? --                        | condition for *YOU the KNOWER* who's patience is probably stretched really
+ME: All kidding aside, this is a satire. It compiles, that's ------+ thin. No kidding.
+    a fact. It executes is also a fact, a different one. It
+    doesn't have to compile successfully. It always seems to
+    execute.
+JAR JAR: *blink* 1.
+-/ --                                                                             | Before we get all denying the antecedent here, This fact,
+inductive Abstraction  -- Bullshit meter = 2045.  About a 1/6 increase.           | _in theory_ could be false. I mean it can't be, but it
+  | satire:  Fact → Abstraction --------------------------------------------------+ _could_ be. *YOU the KNOWER* might be laughing at some of this.
 
-COMPILER: From what?
+  | compile: Fact → Encoding → Abstraction → Abstraction -------+ This line models the likelihood that this all makes sense and is on a completely
+  | execute: Fact → Encoding → Abstraction → Abstraction --     | different line from this, which models that the compiler won't crash reading it.
+--                                                              | I don't know how else to differentiate them. Yet I plainly observe the difference.
 
-ME: From the machinery that just worked.
-
-COMPILER: Why hide the machinery?
-
-ME: To make it reusable.
-
-COMPILER: That sounds dangerous.
-
-ME: It is. Abstraction is where a solved problem learns to impersonate a primitive.
--/
-inductive Abstraction  -- Bullshit meter = 2045.  About a 1/6 increase.
-  | satire:  Fact → Abstraction
-  | compile: Fact → Encoding → Abstraction → Abstraction
-  | execute: Fact → Encoding → Abstraction → Abstraction
-
-namespace Abstraction   -- Bullshit meter = 2759.  This is a big jump, but that's because we couldn't compute
-                        -- LE on the above types.
+namespace Abstraction   -- Bullshit meter = 2759.  This is a big jump, but that's because we couldn't compute ≤ on the above types.
 
 def le : Abstraction → Abstraction → Prop := fun f1 f2 =>
   match f1,f2 with
@@ -527,8 +513,8 @@ def le : Abstraction → Abstraction → Prop := fun f1 f2 =>
   | .satire f1     , .execute f2 _ _ => f1 = f2
   | .compile f1 _ _, .satire f2      => f1 = f2
   | .execute f1 _ _, .satire f2      => f1 = f2
-  | .compile _ _ _, .compile _ _ _ => true
-  | .compile _ _ _, .execute _ _ _ => true
+  | .compile _ _ _, .compile _ _ _ => true ----+ **BONG** the water hammer appears to have hit the sign convention. We squared of the symbols here
+  | .compile _ _ _, .execute _ _ _ => true --  | to make it easier to see.
   | .execute _ _ _, .execute _ _ _ => true
   | .execute _ _ _, .compile _ _ _ => false
 
@@ -580,27 +566,15 @@ COMPILER: What does it process?
 ME: The difference between a trick and a theorem.
 -/
 structure MathematicalProcess  -- Bullshit meter = 2963.  That's about 2/3 increase.
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]
   where
-  compiled_process: CompiledProcess Value Carrier
+  compiled_process: CompiledProcess Box Pigeon
   mapping: Abstraction → Abstraction
 
   -- lepidopterology
@@ -624,28 +598,16 @@ COMPILER: Carried where?
 ME: Wherever the representation still recognizes its luggage.
 -/
 class VALUE  -- Bullshit meter = 3327.  3x increase!  That's a lot of bullshit!
-     (Value: Type i)
-     (Carrier: CarrierProcess Value)
-     [d: DISTINGUISHABLE Value Carrier]
-     [a: ADMISSIBLE Value Carrier]
-     [c: COUNTABLE Value Carrier]
-     [e: ENCODED Value Carrier]
-     [r: RESIDUE Value Carrier]
-     [b: BINARY Value Carrier]
-     [f: REPEATABLE Value Carrier]
-     [n: NUMERIC Value Carrier]
-     [h: REPRESENTABLE Value Carrier]
-     [p: PHYSICAL Value Carrier]
-     [z: COMPARABLE Value Carrier]
-     [particle: OBSERVED Value Carrier]
-     [frquency: PRESENT Value Carrier]
-     [what_meesa_saying: MEASURABLE Value Carrier]
-     [zero: GUNGAN Value Carrier]
-     [one: SOURCE Value Carrier]
-     [result: EXECUTED Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]
 
    where
-   mathematical_process : MathematicalProcess Value Carrier
+   mathematical_process : MathematicalProcess Box Pigeon
    monad: Abstraction
    lt? : Abstraction → Abstraction → Prop := fun function output=>
      match function,output with
@@ -667,7 +629,7 @@ def le: Sum → Sum → Prop := fun s1 s2 =>
   match s1, s2 with
   | .zero p1 a1, .zero p2 a2 => p1 = p2 ∧ a1 ≤ a2
   | .zero p1 _ , .add f2 _ a3 _ => match a3 with
-                                | .t _ => p1 ∧ f2.truth
+                                | .tree _ => p1 ∧ f2.truth
                                 | .dt _ _ _ => True
   | .add _ _ _ _, .zero _ _ => False
   | .add f1 a11 a12 _, .add f2 a21 a22 _ => (f1 = f2 ∧ a11 ≤ a21 ∧ a12 ≤ a22) ∨ (f1 ≠ f2 ∧ a21 ≤ a11 ∧ a22 ≤ a12)
@@ -681,62 +643,56 @@ instance : LT Sum := ⟨Sum.lt⟩
 
 @[reducible]
 structure AddingProcess  -- Bullshit meter ≈ 2063.   Thats 33% less bullshit than a generic mathematical process!
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [this: DISTINGUISHABLE Box Pigeon] ---- *CLICKS*
+                                               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [gifts: PRESENT Box Pigeon] ---- *STATIC*
+                                               [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]
 
   where
-  mathematical_process : MathematicalProcess Value Carrier
-  plus: VALUE Value Carrier
-  sum: Sum
-  add? : Sum → Sum := fun s =>
-    match s with
-    | .zero p a => match p with
-      | _ => .add Fact.Truth (.t d.fact) (.dt d.fact (.zero d.fact) a) sum
-    | .add f _ a2 _ => .add f a2 frquency.santa_claus.accumulation sum
 
+  bays_process : MathematicalProcess Box Pigeon
+  plus: VALUE Box Pigeon --                      +------+-------------------------------+----+ The art of re-gifting is a time honored tradition
+  sum: Sum --                                    |      |                               |    | whereby the same fruit cake manufactured in the early
+  add? : Sum → Sum := fun s => --                |      |        +-------+--------------+    | seventies, wrapped in festive green and red
+    match s with --                              |      |        |       |                   | cellophane would change hands among the fringes of
+    | .zero p a => match p with --               V      V        V       V                   | communication cliques and survive with a half-life
+      | _ => .add Fact.Truth (.tree this.fact) (.dt this.fact (.zero this.fact) a) sum --    | measured in ages of time.
+--                               ^      ^                                                    |
+--                               |      |                                                    | Just handing over cellophane, though, is tacky. The art
+--                               +------+----------------------------------------------------+ is to put it in a new box and wrap it yourself.
+
+    | .add f _ a2 _ => .add f a2 gifts.santa_claus.accumulation sum ---+ And as long as *YOU the KNOWER* were good and having a prior lot drawn that
+--                                           ^                         | assembles you into the group of receivers of the carrier of Santa's presents,
+--                                           |                         | Rudolph, himself. If you were not a receiver of Rudolph, then the accumulation
+--                                           +-------------------------+ was not presented to *YOU the READER*, as *YOU the KNOWER* have received none
+--                                                                     | _PRIOR_. I still think you understand the _concept_ of Santa Claus, if not
+--                                                                     | the total lack of egalitarianism. Thing is, you can't possibly know how many
+/- CHORUS:                                                             | gifts are on Santa's sleigh, only how many he gives you.
+ME: How big is one?            | unsigned integer, 32 bits.            |
+JAR JAR: MEESA KNOW!           | double, 64 bits.                      | If you receive no gifts, are you naughty or is it just because Santa has
+COMPILER: Go ahead Jar Jar     | #define FALSE 1  (I feel like we      | never visited you before? Some say it has something to do with religion,
+JAR JAR: ONE! -----------------+   discussed sign convention           | but no world religion speaks of a man that lives at the north pole.
+COMPILER: Sorry, best I got.   |   already.)                           |
+-/ --                                                                  | The man Maxwell spoke of North and Poles and of their exclusive existence.
 @[reducible]
-class MAGNITUDE  -- Bullshit meter ≈ 1503.  That's less than 1/2 the bullshit of a value!
-     (Value: Type i)
-     (Carrier: CarrierProcess Value)
-     [d: DISTINGUISHABLE Value Carrier]
-     [a: ADMISSIBLE Value Carrier]
-     [c: COUNTABLE Value Carrier]
-     [e: ENCODED Value Carrier]
-     [r: RESIDUE Value Carrier]
-     [b: BINARY Value Carrier]
-     [f: REPEATABLE Value Carrier]
-     [n: NUMERIC Value Carrier]
-     [h: REPRESENTABLE Value Carrier]
-     [p: PHYSICAL Value Carrier]
-     [z: COMPARABLE Value Carrier]
-     [particle: OBSERVED Value Carrier]
-     [frquency: PRESENT Value Carrier]
-     [what_meesa_saying: MEASURABLE Value Carrier]
-     [zero: GUNGAN Value Carrier]
-     [one: SOURCE Value Carrier]
-     [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-
+class MAGNITUDE  -- Bullshit meter ≈ 1503.  That's less than 1/2 the bullshit of a value! The other half must be the orientation.
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]
     where
-  adding_process : AddingProcess Value Carrier
+--                       +--------------------+ This is a very specialized adding process. It is not possible to add arbitrary numbers. Adding is
+--                       |                    | a process where the count of one process is "added" to the other by running the processes back to
+--                       V                    | back. Like when measuring the magnitude of a vector (remember the Hilbert space we are making).
+  adding_process : AddingProcess Box Pigeon --| We need to start thinking about what it means tp be a normed IPS.
   whelmed? : Sum → Sum → Prop := fun a b =>
         match a, b with
         -- Two origins can only dominate if their underlying propositions agree
@@ -749,8 +705,8 @@ class MAGNITUDE  -- Bullshit meter ≈ 1503.  That's less than 1/2 the bullshit 
         | .add f1 _ _ _    , .zero p2 _       => f1.truth ∧ p2
 
         -- When two timelines collide, we check covariance/contravariance of their facts
-        | .add f1 a11 _ _, .add f2 a21 _ _ =>
-            (f1 = f2 ∧ a11 ≤ a21) ∨ (f1 ≠ f2 ∧ a21 ≤ a11)
+        | .add f1 a11 _ _, .add f2 a21 _ _ =>  ----------------------------+ Either we are adding or de-adding. Variance lets us know what is
+            (f1 = f2 ∧ a11 ≤ a21) ∨ (f1 ≠ f2 ∧ a21 ≤ a11) --               | happening. Like when you take 1 and add 3 then de-add 1. See full circle.
 
 inductive Product  -- Bullshit meter = 119
   | origin:  Fact → Product
@@ -789,37 +745,24 @@ instance : LT Product := ⟨Product.lt⟩
 
 @[reducible]
 structure MultiplyingProcess  -- Bullshit meter = 2157  5% increase.  Call that flat response over the AddingProcess.
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [this: DISTINGUISHABLE Box Pigeon] -- *CLICKS*
+                                               [ADMISSIBLE Box Pigeon]                [COUNTABLE Box Pigeon]                 [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                    [REPEATABLE Box Pigeon]                [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                  [COMPARABLE Box Pigeon]                [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                [GUNGAN Box Pigeon]                    [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                     [MAGNITUDE Box Pigeon]
 
   where
-  adding_process : AddingProcess Value Carrier
+  adding_process : AddingProcess Box Pigeon
   total: Sum
   product: Product
 -- The engine of spatial scaling
   multiply? : Product → Product := fun p =>
     match p with
     -- 1. The Big Bang: The vacuum state is seeded with the first tick of time.
-    | .origin f   => .one f.truth (.zero d.fact.truth (.t d.fact))
+    | .origin f   => .one f.truth (.zero this.fact.truth (.tree this.fact))
 
     -- 2. The First Dimension: The base unit expands into a bounding box.
     -- It is bounded by its origin 'a' and the CURRENT time 'adding_process.sum'.
@@ -832,29 +775,15 @@ structure MultiplyingProcess  -- Bullshit meter = 2157  5% increase.  Call that 
 
 @[reducible]
 class SCALED  -- Bullshit meter = 1756
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                [COUNTABLE Box Pigeon]                 [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                    [REPEATABLE Box Pigeon]                [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                  [COMPARABLE Box Pigeon]                [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                [GUNGAN Box Pigeon]                    [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                     [MAGNITUDE Box Pigeon]
   where
-  multiplying_process : MultiplyingProcess Value Carrier
+  multiplying_process : MultiplyingProcess Box Pigeon
   orthogonal? : Product → Product → Prop := fun p1 p2 =>
       match p1, p2 with
       -- 1. The Vacuum (Zero Vector) is orthogonal to everything
@@ -919,30 +848,15 @@ instance : LT Basis where
 
 @[reducible]
 structure BASICProcess  -- Bullshit meter ≈ 2759
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                [COUNTABLE Box Pigeon]                 [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                    [REPEATABLE Box Pigeon]                [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                  [COMPARABLE Box Pigeon]                [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                [GUNGAN Box Pigeon]                    [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                     [MAGNITUDE Box Pigeon]         [spring: SCALED Box Pigeon]
   where
-  GOSUB: MultiplyingProcess Value Carrier     -- <-- I think I found the gosub
+  GOSUB: MultiplyingProcess Box Pigeon     -- <-- I think I found the gosub
   TEN: Area                                   -- <-- and a line number!
   span: Basis
 
@@ -957,7 +871,7 @@ structure BASICProcess  -- Bullshit meter ≈ 2759
     -- Notice the tail is strictly .null_space. There is no return address.
     -- The timeline ends after this interaction.
     | .origin _ p_current =>
-        .basis Fact.Truth p_current scaled.multiplying_process.product (.null_space Fact.Truth)
+        .basis Fact.Truth p_current spring.multiplying_process.product (.null_space Fact.Truth) -- Go go gadget Springs!
 
     -- 3. GOSUB: The Virtual Loop (Feynman Propagator)
     -- An ongoing field interaction (.basis) needs to process a fluctuation.
@@ -970,31 +884,17 @@ structure BASICProcess  -- Bullshit meter ≈ 2759
 
 @[reducible]
 class LOAD  -- Bullshit meter 2089
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [SOURCE Box Pigeon]                        [EXECUTED Box Pigeon]                    [VALUE Box Pigeon]                 [MAGNITUDE Box Pigeon]
+    [SCALED Box Pigeon]
 
   where
-  basic_operation : BASICProcess Value Carrier
+  basic_operation : BASICProcess Box Pigeon
   --  Is this an eigenvector?
   decoded? : Basis → Basis → Prop := fun b1 b2 =>
     match b1, b2 with
@@ -1058,32 +958,17 @@ instance : LE Polynomial where
 
 @[reducible]
 structure GalerkinProcess   -- Bullshit meter 2794
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [SOURCE Box Pigeon]                        [EXECUTED Box Pigeon]                    [VALUE Box Pigeon]                 [MAGNITUDE Box Pigeon]
+    [SCALED Box Pigeon]                        [LOAD Box Pigeon]
 
   where
-  ANSYS_process : BASICProcess Value Carrier
+  ANSYS_process : BASICProcess Box Pigeon
   polynomial : Polynomial
 
   scale_and_shift? : Polynomial → Polynomial := fun p =>
@@ -1109,38 +994,39 @@ structure GalerkinProcess   -- Bullshit meter 2794
 -- one stack frame, our __FINITE_ELEPHANT__.
 @[reducible]
 class FINITE_ELEPHANT   -- 2368
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]     -- So, she _ASSUMES_ they have an undocumented one and proceed to add the release.
-    [a: ADMISSIBLE Value Carrier]          -- Only to realize she can't _EXACTLY_ find the _RIGHT_ release of their media to catalog.
-    [c: COUNTABLE Value Carrier]           -- And spends hours every day on DISCOGS organizing her collection.
-    [e: ENCODED Value Carrier]             -- The audiophile purchases the finest copies of any analog recordings.
-    [r: RESIDUE Value Carrier]             -- The audiophile meticulously cleans her records.
-    [b: BINARY Value Carrier]              -- Invariably, there will be two camps.  The _AUDIOPHILE_ and the _NORMIE_.
-    [f: REPEATABLE Value Carrier]          -- And I can burn the output of the DAC to a CD?  Holy crap!
-    [n: NUMERIC Value Carrier]             -- How about that, I just built a DAC !?
-    [h: REPRESENTABLE Value Carrier]       -- Which means I can quantize and take the DFT!
-    [p: PHYSICAL Value Carrier]            -- I just know that what I hear is measured by this physical process of oscillations.
-    [z: COMPARABLE Value Carrier]          -- Dunno what they mean though.
-    [particle: OBSERVED Value Carrier]     -- There we are, I found some phonemes.
-    [frequency: PRESENT Value Carrier]     -- Fucking Jar Jar. Let me use an osciliscope and measure their tones and figure it out.
-    [what_meesa_saying: MEASURABLE Value Carrier]  -- MEESA TRUE!
-    [zero: GUNGAN Value Carrier]           -- Translate that into Gungan and ask Jar Jar Binks if he can relate to it?
-    [one: SOURCE Value Carrier]            -- To quote Johnny Five: "NEED INPUT!"  Doesn't matter what kind.
-    [result: EXECUTED Value Carrier]       -- Actually, I take that back, we have a program that can compute the value from an input
-    [value: VALUE Value Carrier]           -- No, just some sort of representation of the value.
-    [length: MAGNITUDE Value Carrier]      -- And this the length?   Do we have _e^iθ_?
-    [scaled: SCALED Value Carrier]         -- Could this possibly represent the direction of said load?
-    [oriented: LOAD Value Carrier]         -- hmmm, an _ORIENTED LOAD_?  Like _μ_ __N__?
---     ^                     ^
---     |                     |       +------------- Just this once, let's read it ^ this way.
---     +--------+------------+       |
---              |                    |
---              +--------------------+
+
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]     -- So, she _ASSUMES_ they have an undocumented one and proceed to add the release.
+    [ADMISSIBLE Box Pigeon]          -- Only to realize she can't _EXACTLY_ find the _RIGHT_ release of their media to catalog.
+    [COUNTABLE Box Pigeon]           -- And spends hours every day on DISCOGS organizing her collection.
+    [ENCODED Box Pigeon]             -- The audiophile purchases the finest copies of any analog recordings.
+    [RESIDUE Box Pigeon]             -- The audiophile meticulously cleans her records.
+    [BINARY Box Pigeon]              -- Invariably, there will be two camps.  The _AUDIOPHILE_ and the _NORMIE_.
+    [REPEATABLE Box Pigeon]          -- And I can burn the output of the DAC to a CD?  Holy crap!
+    [NUMERIC Box Pigeon]             -- How about that, I just built a DAC !?
+    [REPRESENTABLE Box Pigeon]       -- Which means I can quantize and take the DFT!
+    [PHYSICAL Box Pigeon]            -- I just know that what I hear is measured by this physical process of oscillations.
+    [COMPARABLE Box Pigeon]          -- Dunno what they mean though.
+    [OBSERVED Box Pigeon]     -- There we are, I found some phonemes.
+    [PRESENT Box Pigeon]     -- Fucking Jar Jar. Let me use an osciliscope and measure their tones and figure it out.
+    [MEASURABLE Box Pigeon]  -- MEESA TRUE!
+    [GUNGAN Box Pigeon]           -- Translate that into Gungan and ask Jar Jar Binks if he can relate to it?
+    [SOURCE Box Pigeon]            -- To quote Johnny Five: "NEED INPUT!"  Doesn't matter what kind.
+    [EXECUTED Box Pigeon]       -- Actually, I take that back, we have a program that can compute the value from an input
+    [VALUE Box Pigeon]           -- No, just some sort of representation of the value.
+    [MAGNITUDE Box Pigeon]      -- And this the length?   Do we have _e^iθ_?
+    [SCALED Box Pigeon]         -- Could this possibly represent the direction of said load?
+    [LOAD Box Pigeon]         -- hmmm, a _LOAD_?  Like _μ_ __N__?
+--     ^                            ^
+--     |                            |       +------------- Just this once, let's read it ^ this way.
+--     +--------+-------------------+       |
+--              |                           |
+--              +---------------------------+
 
 
   where
-  galerkin_process : GalerkinProcess Value Carrier
+  galerkin_process : GalerkinProcess Box Pigeon
   finite? : Polynomial → Polynomial → Prop := fun p1 p2 =>
     match p1, p2 with
     -- 1. Convergence to the Ground State
