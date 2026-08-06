@@ -10,7 +10,7 @@ __EPISODE 2__: _Time_
 
 "Yo dawg! I heard you like to prove theorems, so I put a theorem prover in your theorem prover so you can prove theorems about proving theorems
 while you prove theorems about proving theorems."
-                                  -- Willie Nelson.  Really confident XZibit covered it. j/k, i got no beef with X to the Z.
+                                  -- Kenny Rogers.  Really confident XZibit covered it. j/k, i got no beef with X to the Z.
 
 lake build --no_assumptions --splash_damage=on
 

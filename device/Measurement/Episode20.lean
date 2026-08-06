@@ -1018,7 +1018,7 @@ f0/f1/f2 ladder here. -/
 /-
 This is the seam
 that closed the Fact
-that Jack built.
+that John built.
 
 The exit reads the head once.  John can drive the steel to the seam, and the
 device can report whether it slipped.  That is not the same as John getting

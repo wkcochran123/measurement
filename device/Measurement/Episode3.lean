@@ -528,44 +528,36 @@ def lt: Abstraction → Abstraction → Prop := fun f1 f2 =>
   | .execute _ _ _, .compile _ _ _ => false
 end Abstraction
 
+/- CHORUS:
+ME: Give me the smallest number that...             | The absolute: Good/Bad
+COMPILER: Let me stop you right there. What do      | The comparative: Better/Worse
+          you mean smallest? What is -est?          | The absolute comparative: Most/(¬ Most)
+JAR JAR: MEESA YOOSA SMALLSA -----------------------+
+ME: Try not to segfault.
+-/
 instance    -- Bullshit meter = 579 !!  that is a 60x increase!  Hmmm...
- : LE Abstraction := ⟨Abstraction.le⟩  -- boo ya!  abstraction head.
+ : LE Abstraction := ⟨Abstraction.le⟩
 
--- This "abstracts" the < operation. To prevent self reference paradoxes.  Consider the
--- Berry Paradox: "The smallest positive integer not definable in under eleven words".  If you can define it, then it is
--- not the smallest positive integer not definable in under eleven words.  If you cannot define it, then it is the smallest
--- positive integer not definable in under eleven words.  This is a paradox.  The solution is to say that the definition
--- of "definable" is not well defined.  In our case, we want to say that the definition of "less than" is not well defined.
--- We want to say that "less than" is only defined for certain pairs of abstractions, and that it is not defined for all pairs
--- of abstractions.  This way, we can avoid the paradox.
-instance  -- Bullshit meter = 579    Expected from above
- : LT Abstraction := ⟨Abstraction.lt⟩  -- boo ya!  abstraction head.
---  ^                                              ^
---  |                                              |
---  +-----------------+----------------------------+
---                    |
---                    +---------------- This is __NOT__ a bug.  Figure it out! Berry Paradox much?
---                                      Not to worry!  I told you in episode 1 that if you forget
---                                      what the high fructose syntax syrup means, it means ≤.
+-- This "abstracts" the < operation to prevent self reference paradoxes.  Consider the Berry Paradox: "The smallest positive integer not definable in
+-- under eleven words".  If you can define it, then it is not the smallest positive integer not definable in under eleven words.  If you cannot
+-- define it, then it is the smallest positive integer not definable in under eleven words.  This is a paradox.
+
+-- The solution to the paradox in the device is to realize that "under eleven words" is a computation, a Python program, a neighbor of a Lean program
+-- that runs in a fixed amount of time. And while the description of the numerals fail to materialize, Berry's Number _is_ the smallest positive
+-- integer with such properties. And, a computer can be used to verify the claim. And that claim is a Fact of the system, if not a truth that can be
+-- obtained. There are _fewer_ than eleven words in the Berry paradox.
+instance
+ : LT Abstraction := ⟨Abstraction.lt⟩
 
 
 @[reducible]
 /-
-ME: I need a MathematicalProcess.
-
-COMPILER: We already have computation.
-
-ME: Computation follows the steps. Mathematics decides which steps are allowed to look inevitable.
-
-COMPILER: That sounds like abstraction.
-
-ME: With better manners.
-
-COMPILER: What does it process?
-
-ME: The difference between a trick and a theorem.
+ME: Our number apparently has a max number of words in the description.  | The Berry number of 11 is a _RESIDUE_ of language. Other languages may
+COMPILER: You mean a _minimum_, at least 1 word.                         | need more than 11 words. Others, fewer. The number 11 is neither here
+JAR JAR: 1 WORD. --------------------------------------------------------+ nor there. It is this _that_ to that _this_. You only need 1 really long
+ME: I don't have enough money for unlimited words.                       | word.
 -/
-structure MathematicalProcess  -- Bullshit meter = 2963.  That's about 2/3 increase.
+structure MathematicalProcess  -- Bullshit meter = 2963.
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
@@ -574,30 +566,29 @@ structure MathematicalProcess  -- Bullshit meter = 2963.  That's about 2/3 incre
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]
   where
+--                        +---------------------+ There is often need to obfuscate the code that is being executed. The way the code is computed is
+--                        |                     | a _secret_.  Like how Rudolph manages to fly Santa's sleigh on Christmas. No one can explain _how_
+--                        V                     | it works, we just know that when Rudolph runs, PRESENTs arrive.
   compiled_process: CompiledProcess Box Pigeon
-  mapping: Abstraction → Abstraction
 
-  -- lepidopterology
-  calculate? : Abstraction → Abstraction := mapping
+  mapping: Abstraction → Abstraction -----------| Um. Yeah. What this says. Literally.
 
+  calculate? : Abstraction → Abstraction := mapping ---| Um. Yeah. Do the thing that makes PRESENTs.
 
+-- Abstractions are useful to the extent they _explain things_. Just like _source code_. Just like _mathematical theorems_. There are letters that
+-- just _mean_ things now. _e_, the eigenfunction of the derivative, is literally called _e_ because _Euler_ figuered that out. It was Euler who
+-- figured out that _1_ was the function that defined _e_: 1(i) = -e^πi. I think *YOU the KNOWER* might recognize that glyph better as _-r_, the
+-- actual measurable length, is _1_ and length is the function we have at our fingertips. How long is something? Well, accoring to Jar Jar, just 1.
+-- Remember how lazy compilers are? Well, they have no idea how much work their assumptions mask.
 @[reducible]
 /-
-ME: I need a value.
-
-COMPILER: Finally, a result.
-
-ME: No. A thing that can survive being a result.
-
-COMPILER: That sounds like a result.
-
-ME: Results happen at the end. Values get carried through the machinery.
-
-COMPILER: Carried where?
-
-ME: Wherever the representation still recognizes its luggage.
--/
-class VALUE  -- Bullshit meter = 3327.  3x increase!  That's a lot of bullshit!
+ME: I need a value.                                                      | *YOU the KNOWER* will explain that they allow Lean to have at least one
+COMPILER: Funny enough, I think there is one around here somewhere.      | kind of value, a Nat. Then, they incorrectly assume that inductives count
+JAR JAR: MEESA ONE! -----------------------------------------------------+ natural numbers. They do not. They count computations. That should be
+ME: I don't know if I need _that_ many numbers.                          | very plain from this construction at this point. This is called an
+COMPILER: Get it? --                                                     | _argument_, *YOU the READER*, and it will not be proven _TRUE_, it will be
+-/ --                                                                    | demonstrated as a Fact. A Fact about a letter we have already agreed is
+class VALUE  -- Bullshit meter = 3327.                                   | Greek. The ISO character set used by the compiler verifies that fact.
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
@@ -607,67 +598,97 @@ class VALUE  -- Bullshit meter = 3327.  3x increase!  That's a lot of bullshit!
     [EXECUTED Box Pigeon]
 
    where
-   mathematical_process : MathematicalProcess Box Pigeon
-   monad: Abstraction
-   lt? : Abstraction → Abstraction → Prop := fun function output=>
-     match function,output with
-     | .satire _ , _  => false
-     | _ , .satire _ => false
-     | .compile _ _ _ , .compile _ _ _ => false
-     | .compile _ _ _ , .execute _ _ _ => true
-     | .execute _ _ _ , .compile _ _ _ => false
-     | .execute _ _ a , .execute _ _ b => a < b
+--             +-------------------------------------------+ Our model of a mathematical process is a COMPLETELY OPAQUE computation that just computes
+--             |                                           | the mapping. This is the "interface" pattern in computer science. I used it relentlessly
+--             V                                           | in simulations throughout my career. I could swap out the math underneath and radically
+   mathematical_process : MathematicalProcess Box Pigeon --| change how long the computation took, but tests made sure the values didn't change.
 
+   monad: Abstraction ------| Any answer you get from a computer program is an abstraction. It is a representation of a computation.
 
+-- The thing about changing the computation is you change the _order_ of the required computation in the compiler. So, we have to fix FENCE POSTS
+-- on the compilation process to make sure the computation proceeds in the order _required by the computation_ and not
+-- _required by the representation_. I'm not certain how *YOU the KNOWER* would represent the computation, nor the order you would compute it in.
+-- Here we model the alienation of *YOU the KNOWER*: the exclusive anti-inside joke. AKA, the invariant value. Invariants cater to every frame.
+   lt? : Abstraction → Abstraction → Prop := fun function output=>  --| *YOU the READER* and I understand that ten words is less than eleven.
+     match function,output with --                                    | *YOU the KNOWER* might claim irrelevance! But it is a _FACT_ that we can
+     | .satire _ , _  => false --                                     | _PROVE_ to be _TRUE_ simply by counting an inductive. It is a TRUE FACT.
+     | _ , .satire _ => false --                                      | Not certain relevance matters. And since we don't _TRUST_ Lean to count
+     | .compile _ _ _ , .compile _ _ _ => false --                    | anymore because they use Nats and not inductives, we can simply measure how
+     | .compile _ _ _ , .execute _ _ _ => true --                     | long it takes to prove _TEN_ is a TRUE FACT and _ELEVEN_ is a TRUE FACT.
+     | .execute _ _ _ , .compile _ _ _ => false --                    | It must take _LONGER_ to prove _ELEVEN_ because you must prove _TEN_, first.
+     | .execute _ _ a , .execute _ _ b => a < b --                    | We can measure this by measuring proofs of _TEN_ and _ELEVEN_ (or easier ones),
+--                                                                    | find the cheapest of each, then compare them. TRUE FACT. Let's do just that.
 
-inductive Sum    -- Bullshit meter = 119.   Seems like that Abstraction bullshit doesn't stick around.  Probably should, though.
-  | zero: Prop → Area → Sum
-  | add: Fact → Area → Area → Sum → Sum
+/- CHORUS:
+ME: I need a _PIPE_, I think that is the generic symbol.   | Order of operations is generally implied by the grammar of the language. Any order of
+COMPILER: Concatenation or or or both?                     | operations can be decomposed into _Backus-Naur Form_. It is this form that that is the
+JAR JAR: MEESA uuuuuh One? --------------------------------+ .tree that is growing. There is only 1 tree, but options at each node. That is the
+ME: _PIPE DOWN_ Jar Jar. That's too many numbers.          | computation. Jar Jar will only ever represent it as _1_. I guess _this_ is the industry.
+-/ --                                                      | And not _that_ _one_. *badum* symbol crash.
+inductive Sum    -- Bullshit meter = 119.
+  | zero: Prop → Area → Sum -------------------------> A proposition of Pythagoras, more or less, that some constructions are rational.
+  | add: Fact → Area → Area → Sum → Sum -------------> c.f. Euclid (areas accumulate).
 
 namespace Sum   -- Bullshit meter = 76.
-def le: Sum → Sum → Prop := fun s1 s2 =>
+def le: Sum → Sum → Prop := fun s1 s2 => -- Eu-clid. Eu-ler. ∃δ ∀ε-Du=0. This pattern shows up _ALL OVER_ math.
   match s1, s2 with
   | .zero p1 a1, .zero p2 a2 => p1 = p2 ∧ a1 ≤ a2
   | .zero p1 _ , .add f2 _ a3 _ => match a3 with
-                                | .tree _ => p1 ∧ f2.truth
-                                | .dt _ _ _ => True
+                                | .tree _ => p1 ∧ f2.truth ---| This is the _1_ of Jar Jar
+                                | .dt _ _ _ => True  ---------+ This is rational process of Pythagoras. You can always keep walking the process, it
+                                                            --| just takes more _time_ and accumulates more meaningless _bullshit_. 3 of them it looks
+                                                            --| like.
   | .add _ _ _ _, .zero _ _ => False
-  | .add f1 a11 a12 _, .add f2 a21 a22 _ => (f1 = f2 ∧ a11 ≤ a21 ∧ a12 ≤ a22) ∨ (f1 ≠ f2 ∧ a21 ≤ a11 ∧ a22 ≤ a12)
+  | .add f1 a11 a12 _, .add f2 a21 a22 _ =>  ---------+ Turns out Euclid lets area be computed by either side, however two rectangles are can have
+        (f1 = f2 ∧ a11 ≤ a21 ∧ a12 ≤ a22) ∨  --       | the same area but different side lengths. This rule prevents this, meaning there is a
+        (f1 ≠ f2 ∧ a21 ≤ a11 ∧ a22 ≤ a12)    --       | canonical rectangular representation of any particular value that allows for this sorting.
 
--- Sums are well orderd.
+-- Sums are well ordered.
 def lt: Sum → Sum → Prop := fun s1 s2 => le s1 s2 ∧ ¬ le s2 s1
 end Sum
 
+/- CHORUS:
+ME: This is how you add.                                | All of this to abstract addition completely from the ability of Lean to use in the
+COMPILER: That's funny, that's a lot of work just for   | demonstration of this proof. It should start to worry you that we still have _not_
+          construction of a set.                        | introduced a _number_ yet. Did you forget we were computing a number? We have managed
+JAR JAR: MEESA ONLY HAVE 1 SET. ------------------------+ to compute 1(i). That isn't a _GREEK_ number, though. It is NOT our target. I think this
+ME: That makes it very convenient.                      | is a _HEBREW_ number?
+-/
 instance : LE Sum := ⟨Sum.le⟩  -- Bullshit meter = 8
 instance : LT Sum := ⟨Sum.lt⟩
+
+-- Really, not much to write hear because this is all just a restatement of more than 2 millenium falcons of geometry.
 
 @[reducible]
 structure AddingProcess  -- Bullshit meter ≈ 2063.   Thats 33% less bullshit than a generic mathematical process!
     (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [this: DISTINGUISHABLE Box Pigeon] ---- *CLICKS*
-                                               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
-    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
-    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
-    [gifts: PRESENT Box Pigeon] ---- *STATIC*
-                                               [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
-    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]
+    (Rudolph: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Rudolph] ---- *CLICKS*      remember... this MATTERs. No click means DOESN'T MATTER.
+                                                [ADMISSIBLE Box Rudolph]                  [COUNTABLE Box Rudolph]             [ENCODED Box Rudolph]
+    [RESIDUE Box Rudolph]                       [BINARY Box Rudolph]                      [REPEATABLE Box Rudolph]            [NUMERIC Box Rudolph]
+    [REPRESENTABLE Box Rudolph]                 [PHYSICAL Box Rudolph]                    [COMPARABLE Box Rudolph]            [OBSERVED Box Rudolph]
+    [gifts: PRESENT Box Rudolph] ---- *STATIC*     Rudolph has brought us presents, but they are wrapped and we can't see in. Santa thinks we are good!
+                                                [MEASURABLE Box Rudolph]                  [GUNGAN Box Rudolph]                [SOURCE Box Rudolph]
+    [EXECUTED Box Rudolph]                      [VALUE Box Rudolph]
 
-  where
-
-  bays_process : MathematicalProcess Box Pigeon
-  plus: VALUE Box Pigeon --                      +------+-------------------------------+----+ The art of re-gifting is a time honored tradition
-  sum: Sum --                                    |      |                               |    | whereby the same fruit cake manufactured in the early
-  add? : Sum → Sum := fun s => --                |      |        +-------+--------------+    | seventies, wrapped in festive green and red
-    match s with --                              |      |        |       |                   | cellophane would change hands among the fringes of
-    | .zero p a => match p with --               V      V        V       V                   | communication cliques and survive with a half-life
-      | _ => .add Fact.Truth (.tree this.fact) (.dt this.fact (.zero this.fact) a) sum --    | measured in ages of time.
---                               ^      ^                                                    |
+  where --                                            | People have been trying to count numbers for a very _very_ long time. There are _a LOT_ of
+--                                                    | numbers. I mean, more than you can possibly fathom. Size means _NOTHING_ to a number. So,
+  hebrew_process : MathematicalProcess Box Rudolph -- | how do you measure a VALUE? Prove it exists. Plus represents the Euclidean addition process.
+  plus: VALUE Box Rudolph ----------------------------+
+  sum: Sum --                                               +-----+-------------------------------+---+ The art of re-gifting is a time honored
+--                                                          |     |                               |   | tradition whereby the same fruitcake
+  add? : Sum → Sum := fun s => --                           |     |            +-------+----------+   | manufactured in the early seventies, wrapped
+    match s with --                                         |     |            |       |              | in festive green and red cellophane would
+    | .zero p a => match p with --                          V     V            V       V              | change hands among the _fringes_ of families
+      | _ => .add Fact.Truth (.tree nowtrino.fact) (.dt nowtrino.fact (.zero nowtrino.fact) a) sum -- | and survive with a half-life measured in ages
+--                               ^      ^                                                    +--------+ of time. Never re-gift a deer friend like
+--                               |      |                                                    | Rudolph.
+--                               |      |                                                    |
 --                               |      |                                                    | Just handing over cellophane, though, is tacky. The art
 --                               +------+----------------------------------------------------+ is to put it in a new box and wrap it yourself.
 
     | .add f _ a2 _ => .add f a2 gifts.santa_claus.accumulation sum ---+ And as long as *YOU the KNOWER* were good and having a prior lot drawn that
---                                           ^                         | assembles you into the group of receivers of the carrier of Santa's presents,
+--                                           ^                         | assembled you into the group of receivers of the carrier of Santa's presents,
 --                                           |                         | Rudolph, himself. If you were not a receiver of Rudolph, then the accumulation
 --                                           +-------------------------+ was not presented to *YOU the READER*, as *YOU the KNOWER* have received none
 --                                                                     | _PRIOR_. I still think you understand the _concept_ of Santa Claus, if not
@@ -676,11 +697,11 @@ structure AddingProcess  -- Bullshit meter ≈ 2063.   Thats 33% less bullshit t
 ME: How big is one?            | unsigned integer, 32 bits.            |
 JAR JAR: MEESA KNOW!           | double, 64 bits.                      | If you receive no gifts, are you naughty or is it just because Santa has
 COMPILER: Go ahead Jar Jar     | #define FALSE 1  (I feel like we      | never visited you before? Some say it has something to do with religion,
-JAR JAR: ONE! -----------------+   discussed sign convention           | but no world religion speaks of a man that lives at the north pole.
+JAR JAR: ONE! -----------------+   discussed sign convention           | but no world religion speaks of the existence of the north pole.
 COMPILER: Sorry, best I got.   |   already.)                           |
--/ --                                                                  | The man Maxwell spoke of North and Poles and of their exclusive existence.
-@[reducible]
-class MAGNITUDE  -- Bullshit meter ≈ 1503.  That's less than 1/2 the bullshit of a value! The other half must be the orientation.
+-/ --                                                                  | Maxwell, Dirac, Yang, and Mills spoke of north poles and their exclusive
+@[reducible]--                                                         | existence. Yang and Mills are excellent at wrapping regifts.
+class MAGNITUDE  -- Bullshit meter ≈ 1503.
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
@@ -692,62 +713,118 @@ class MAGNITUDE  -- Bullshit meter ≈ 1503.  That's less than 1/2 the bullshit 
 --                       +--------------------+ This is a very specialized adding process. It is not possible to add arbitrary numbers. Adding is
 --                       |                    | a process where the count of one process is "added" to the other by running the processes back to
 --                       V                    | back. Like when measuring the magnitude of a vector (remember the Hilbert space we are making).
-  adding_process : AddingProcess Box Pigeon --| We need to start thinking about what it means tp be a normed IPS.
-  whelmed? : Sum → Sum → Prop := fun a b =>
-        match a, b with
-        -- Two origins can only dominate if their underlying propositions agree
-        | .zero p1 _       , .zero p2 _       => p1 ∧ p2
+  adding_process : AddingProcess Box Pigeon --| We need to start thinking about what it means to be a normed IPS.
 
-        -- An origin can NEVER dominate an accumulated timeline. Time moved on.
-        | .zero _  _       , .add _ _ _ _     => False
-
-        -- An accumulated timeline ALWAYS dominates an origin, provided its fact is true
-        | .add f1 _ _ _    , .zero p2 _       => f1.truth ∧ p2
-
+  whelmed? : Sum → Sum → Prop := fun a b => ---------------------------------------+ A common pattern in computation is that of _work stealing_.
+        match a, b with --                                                         | A task is explicitly subdivided for the computer by the
+        -- Two origins can only dominate if they are _zero_ like in the same way.  | programmer to take advantage of the _shape_ or _topology_ of
+        | .zero p1 _       , .zero p2 _       => p1 ∧ p2 --                        | a given problem. Meta-programming enters when the _shape_ or
+--                                                                                 | _topology_ can be _inferred_ from the problem itself as it is
+        -- An origin can NEVER dominate an accumulated timeline. Time moved on. -- | compiled into source code. Thus far, we have demonstrated a
+        | .zero _  _       , .add _ _ _ _     => False --                          | _consistent argument_ that this step can be modeled by a UTM.
+--                                                                                 +-------+ The clever trick is to have the current argument be the
+        -- An accumulated timeline ALWAYS dominates an origin, provided its fact is true   | next opcode/argument pair. Then, using the OTP property
+        | .add f1 _ _ _    , .zero p2 _       => f1.truth ∧ p2 --                          | of indistinguishability of KEY and PLAINTEXT to encode
+--                                                                                         | them on the tape. Let the compiler build the dictionary.
         -- When two timelines collide, we check covariance/contravariance of their facts
         | .add f1 a11 _ _, .add f2 a21 _ _ =>  ----------------------------+ Either we are adding or de-adding. Variance lets us know what is
             (f1 = f2 ∧ a11 ≤ a21) ∨ (f1 ≠ f2 ∧ a21 ≤ a11) --               | happening. Like when you take 1 and add 3 then de-add 1. See full circle.
 
-inductive Product  -- Bullshit meter = 119
-  | origin:  Fact → Product
-  | one: Prop → Sum → Product
-  | mul: Fact → Sum → Sum → Product → Product
+-- *YOU the KNOWER* may have an extra _sign_ on whelmed that does not exist in reality. Really _limits_ the directions you can take. Remember, limits
+-- can only approach from ‖1(i)‖ direction. I think I'm using ‖·‖ correctly. The norm of the _1_ vector is usually taken to be the VALUE 1. Did
+-- Jar Jar guess, or did he know? Does it MATTER? He only says 1. Rudolph doesn't seem to have come this year. Does that mean we are _bad_? Or
+-- is this a bug in the code? Or, is this a bug in the logic? The product of this paragraph is three questions we should probably answer before we
+-- discuss MATTER of any kind:
+
+----------------------------------------------> **1) Are we bad at coding?**
+----------------------------------------------> **11) Is the code bad at representing our idea?**
+----------------------------------------------> **111) Is the logic of the argument consistent __enough__ to represent logically?**
+
+-- I think we will get a resounding DOESN'T MATTER, DOESN'T MATTER, and DOESN'T MATTER leaving *YOU the READER* to have to explain to *YOU the KNOWER*
+-- that, indeed, I got it close enough to right that you can't tell the difference. Why do you think this is longer than 20,000 lines? And, I guess
+-- I finally agree, we _need ‖1(i)‖ Greek letter_, a radius of convergence α. Let's see if we can find our first "vector" looking thing
+
+--                  _xᵢ_ = α _1_(i)
+
+-- Oh, the letter _i_, that's the _i_ at the top of every file. Lean won't let me put anything else there. _xᵢ_ are _inductive .trees_ of an _AST_.
+
+-- One thing that might _help_ *YOU the KNOWER* here. Norms, by definition, are well-defined. If it doesn't satisfy the conditions of a norm, it
+-- simply _ain't_. All I'm saying is there exists a _norm_ and a way to describe what might be called a radius in a hypersphere. Not certain what
+-- you might call it. I just need the word _radius_ out of that sentence now.
+
+/- CHORUS:                        | What we would like to do is _factor_ the idea of _radius of convergence_ into its component ideas: that of the
+ME: We need CRYPTOGRAPHY!         | _radius_ (as formalized by Euclid) and that of _convergence_ (as formalized by Cauchy). We know of the existence
+COMPILER: -lsha                   | of all three ideas. We can define the _product_ as Euclid × Cauchy = Real number.
+JAR JAR: Let's go to the bar. ----+
+ME: Yes! All of that.             | We have the code for a representing a real number already (Number). And we have code for expressing the Cauchy
+-/ --                             +-----------------+ convergence (Sequence). This gives us the definition _radius = Sequence⁻¹ Number_. Or is it
+inductive Product  -- Bullshit meter = 119          | the other way around? I've heard it both ways. Some people believe that when you multiply
+  | origin:  Fact → Product --                      | two numbers, the order matters. Like length × width may not equal width × length. As if rulers
+  | one: Prop → Sum → Product --                    | would ever change lengths depending on which direction you are looking in. Well, not like
+  | mul: Fact → Sum → Sum → Product → Product --    | *YOU the KNOWER* would notice, but I bet it would look funny to a _LOT_ of people if rulers
+--                                                  | **ACTUALLY** changed shape based on direction instead of bending to _look_ convenient on paper.
+
 
 namespace Product  -- Bullshit meter = 75
 def le: Product → Product → Prop := fun p1 p2 =>
   match p1, p2 with
   -- 1. The Vacuum State (Absolute Origin)
-  | .origin f1, .origin f2 => f1 = f2
-  | .origin _, .one _ _ => True          -- 0 is always ≤ a positive base magnitude
-  | .origin _, .mul _ _ _ _ => True      -- 0 is always ≤ a growing spatial volume
+  | .origin f1, .origin f2 => f1 = f2 --      ----------+ For reasons that are arbitrary, the left one is less than the right if they are the same.
+  | .origin _, .one _ _ => True --                      | Since this is ≤, might be a bit of a headscratcher, but so are rotating rulers, so let me
+  | .origin _, .mul _ _ _ _ => True --                  | show what a commutator on a sorting operator might look like. The length of our universe
+  --                                                    | can change based on a computation that performs RFL. This counts the RFL _AS_ it sorts the
+  --                                                    | left number/right number in the list. This is _COMPARE AND SWAP_. No temporary variable
+  --                                                    | needed since we are exclusive. The sorted list is a _commutator evaluation_.
 
-  -- 2. Looking Back at the Vacuum (Negative Scaling)
-  | .one p1 _, .origin f2 => p1 ≠ f2.truth         -- A base unit is only ≤ 0 if it has inverted parity (-1 ≤ 0)
-  | .mul f1 _ _ _, .origin f2 => f1.truth ≠ f2.truth -- A scaled volume is only ≤ 0 if it is inverted (-X ≤ 0)
+  --                            +--------------+ Due to the difficulty of being _exactly_ whelmed, *YOU the KNOWER* needs to understand if they are
+  --                            |              | _under_ or _over_ whelmed as that influences the parity of sort.  We will agressively remove "upness"
+  --                            V              | when you are _underwhelmed_ and **GLEEFULLY** add it when you are _overwhelmed_. We need to make sure
+  | .one p1 _, .origin f2 => p1 ≠ f2.truth  -- | I understand when their whelm flips direction. Hopefully, they can see I am pretty good at this already.
 
-  -- 3. Base Magnitude (The "1" Vector)
+  | .mul f1 _ _ _, .origin f2 => f1.truth ≠ f2.truth -- A scaled volume is only ≤ 0 if it is inverted (-X ≤ 0). Not my rules, I just named it a norm.
+
+  -- 11. Base Magnitude (The "1" Vector)
   | .one p1 a1, .one p2 a2 => p1 = p2 ∧ a1 ≤ a2
   | .one p1 a1, .mul f2 a21 _ _ => p1 = f2.truth ∧ a1 ≤ a21
 
-  -- 4. Scaled Volume Looking Back at Base Magnitude
-  | .mul f1 _ _ _, .one p2 _ => f1.truth ≠ p2      -- A scaled volume is only ≤ 1 if it is inverted (-X ≤ 1)
+  -- 111. Scaled Volume Looking Back at Base Magnitude
+  | .mul f1 _ _ _, .one p2 _ => f1.truth ≠ p2 -------+ A scaled volume is only ≤ 1 if it is inverted (0 ≤ 1/X < 1). It is common to take the
+  --                                                 | definition of a norm and add an arbitrary rule to satisfy some mental itch.  In this case,
+  --                                                 | we are using the structure of the Number comparison itself as a restricting definition.
 
-  -- 5. The Antimatter Flip (Scaled vs. Scaled)
-  | .mul f1 a11 a12 _, .mul f2 a21 a22 _ =>
-      (f1 = f2 ∧ a11 ≤ a21 ∧ a12 ≤ a22) ∨          -- Covariant: Facts agree, spatial boxes grow normally
-      (f1 ≠ f2 ∧ a21 ≤ a11 ∧ a22 ≤ a12)            -- Contravariant: Strain inverts the geometry (-X ≥ -Y)
+  -- 1. The DOESN'T MATTER Flip (Scaled vs. Scaled) --+ When sorting, just pick one and record it as a new sorting rule xᵢ ≤ xᵢ₊₁. This is where
+  | .mul f1 a11 a12 _, .mul f2 a21 a22 _ => --        | we decide if something MATTERs or not:
+      (f1 = f2 ∧ a11 ≤ a21 ∧ a12 ≤ a22) ∨ --          |     o Covariant: Facts agree, and it _DOESN'T MATTER_ as long as both facts sort themselves out.
+      (f1 ≠ f2 ∧ a21 ≤ a11 ∧ a22 ≤ a12) --            |     o Contravariant: It _MATTERs A LOT_ that these two are _NOT_ placed in this order.
+
+-- I believe I named all the numbers correctly. The 10/11 joke is going to hit like 6/7 a little later. That's right, my _Nigel Tufnel_ brand
+-- _BINARY_ numbers go to 11.
 
 def lt: Product → Product → Prop := fun p1 p2 => le p1 p2 ∧ ¬ le p2 p1
 end Product
 
+/-                   | Things look alike. Things sound alike. One thing I understand about this presentation is it _NEEDS_ English in much the same
+JAR JAR: MEESA ONE!  | way other satire needs English. Satire _works_ on cognitive dissonance. Two phrases so alike in one presentation and yet so..
+COMPILER: 1×x = x ---+ incorrect as to be abhorrent and objectionable and.... utterly impossible in others. This is a form of communication that
+ME: 1xx is counting. | is very difficult to categorize. Very difficult to have _proved a point_. Yet, somehow, satirst do. Routinely. This is not
+-/ --                | meant to be 𝔽(1)-ny. Where is the compare and swap temporary variable? I think I missed Langlands by a only a few pixels.
 instance : LE Product := ⟨Product.le⟩  -- Bullshit meter = 5
 instance : LT Product := ⟨Product.lt⟩
 
+--| What would be neat is a process that simultaneously multiplied two numbers while inverting one if you want.  Which one? Not certain the Fact
+--| of the matter changes your answer much.
+
+/-
+COMPILER: May I *PLEASE* have my ALU now? All I am doing is heating the room.           | The ALU would be more than happy to provide us with
+ME: All you are doing is saying 1. Can't we take that as read?                          | processes to shortcut this computation. Since we can get it
+JAR JAR: MEESA ONE! --------------------------------------------------------------------+ in the grammar, I don't see any reason to look up opcodes.
+ME: Perfect. I don't want you to hide the _FIRST_ computation from out little sensor.   |
+-/ --                                                                                   | *YOU the KNOWER* can if they like. I have my ‖1(i)‖.
 @[reducible]
-structure MultiplyingProcess  -- Bullshit meter = 2157  5% increase.  Call that flat response over the AddingProcess.
+structure MultiplyingProcess  -- Bullshit meter ≈ 2200
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [this: DISTINGUISHABLE Box Pigeon] -- *CLICKS*
+    [nowtrino: DISTINGUISHABLE Box Pigeon] -- *CLICKS*
                                                [ADMISSIBLE Box Pigeon]                [COUNTABLE Box Pigeon]                 [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                    [REPEATABLE Box Pigeon]                [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                  [COMPARABLE Box Pigeon]                [OBSERVED Box Pigeon]
@@ -755,27 +832,42 @@ structure MultiplyingProcess  -- Bullshit meter = 2157  5% increase.  Call that 
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                     [MAGNITUDE Box Pigeon]
 
   where
-  adding_process : AddingProcess Box Pigeon
-  total: Sum
-  product: Product
+--                       +--------------------+ I hope I don't have to explain how times tables work based on math "Facts:" a × b = Σₐb In order
+--                       |                    | to mutiply, you concatenate the process for computing the width a to the process for width b every
+  adding_process : AddingProcess Box Pigeon --| time you detect a NOWTRINO and measure the time it takes. How often are there NOWTRINOs? Often enough
+--                                            | that they seem to come at regular intervals. Mostly.
+
+  total: Sum ---------------> The process that computes the current running tally
+
+  product: Product  --------> The process that the Sum process needs to be injected into.
+
 -- The engine of spatial scaling
   multiply? : Product → Product := fun p =>
     match p with
-    -- 1. The Big Bang: The vacuum state is seeded with the first tick of time.
-    | .origin f   => .one f.truth (.zero this.fact.truth (.tree this.fact))
+    -- 1. The Big Bang: The vacuum state is seeded with the first tick of time. --------------+ Remember what question 1) was right? Am I a good coder
+    | .origin f   => .one f.truth (.zero nowtrino.fact.truth (.tree nowtrino.fact)) --        | Well, this is the recursive base case of the iterator
+    --                                                                                        | consumption pattern.
 
-    -- 2. The First Dimension: The base unit expands into a bounding box.
-    -- It is bounded by its origin 'a' and the CURRENT time 'adding_process.sum'.
-    | .one _ a => .mul Fact.Truth a adding_process.sum p
+    -- 11. The dependency injection: -----------------------------+ And question 11)? Does the code say what we want? Does this, indeed, inject the
+    | .one _ a => .mul Fact.Truth a adding_process.sum p--        | adding process when a _NOWTRINO_ was detect? Looks to be the case.
 
-    -- 3. Scaling Space: To multiply an existing volume, you stretch its leading edge.
-    -- You keep the anchor 'a1', but force the leading edge 'a2' to move forward
-    -- in time using the adding_process!
-    | .mul f a1 a2 _ => .mul f a1 (adding_process.add? a2) p
+    -- 111. Tail recursion: --------------------------------------+ This is called _tail recursion_ because you Sum _after_ the NOWTRINO detection.
+    | .mul f a1 a2 _ => .mul f a1 (adding_process.add? a2) p --   | "Is the code consistent enough with the argument?", I believe was 111).
 
-@[reducible]
-class SCALED  -- Bullshit meter = 1756
-    (Box: Type i)
+
+-- Does it MATTER that I label the arms this way? How does that change the proof? How does it change the argument? I believe Church thought this
+-- Greek letter was α. I'm beginning to suspect that the glyph α MATTERs in the ordering of Greek. I certainly know for a _FACT_ that some
+-- Greek words are _longer_ than others.
+
+-- Speaking of, have *YOU the READER* been keeping a dictionary of inside jokes? I would assume that is how you are _understanding_ the pixels in
+-- front of you. The ones that _ALMOST_ but _NOT QUITE_ demonstrated one of the theorems of math of **ALL TIME**. I don't know how important it is.
+-- As you can _PLAINLY_ see, I am _NOT_ a mathematician by any _STRETCH_ of the imagination.  But.. if you rotate the ruler fast enough, then
+-- *YOU the KNOWER* might see what I am talking about. They may see that the pliability if the imagination has some properties that can be described
+-- as _topological_ in nature. Not *BEST* described in much the same way the search for a paradoxical not-sure-what is the *MOST* anything at all.
+
+@[reducible] --                             | Mostly, scale models get smaller. The build time is going to explode in a few more minutes as we slowly
+class SCALED  -- Bullshit meter = 1756 -----+ remove the meanings of words from mathematics. We now need to think about how to automate the generation
+    (Box: Type i) --                        | of this proof. That way, we can repeatably measure the amount of bullshit in it.
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                [COUNTABLE Box Pigeon]                 [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                    [REPEATABLE Box Pigeon]                [NUMERIC Box Pigeon]
@@ -783,183 +875,299 @@ class SCALED  -- Bullshit meter = 1756
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                [GUNGAN Box Pigeon]                    [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                     [MAGNITUDE Box Pigeon]
   where
-  multiplying_process : MultiplyingProcess Box Pigeon
-  orthogonal? : Product → Product → Prop := fun p1 p2 =>
+--                              +----------------------------+ The predator-prey model was first studied by Blah-bah-di-blah.. blah blah. No. Animal
+--                              |                            | husbandry is one of the old pursuits of man. It takes _EONS_ for a semi-stable pattern
+--                              V                            | to emerge such that it can be encouraged to be domestication. This is NOT a regular
+  multiplying_process : MultiplyingProcess Box Pigeon --     | process described by oscillations. This has some random-ass dependency injection in it.
+  orthogonal? : Product → Product → Prop := fun p1 p2 => --  |
+--         +-------------------------------------------------+ I get it, you can go look at the source and actually _count_ the nowtrinos, but the
+--         | injection doesn't say how many nowtrinos there are, only that there are _some_ and it doesn't clearly show which _nowtrinos_ escaped
+--         | detection because the bullshit was too low to "measure" by the process.  Both of these values can be worked out by a very _VERY_
+--         | careful reading of the code. But, for *YOU the KNOWER*, turns out that number *DOESN'T MATTER* because we can make this one assumption of
+--         | a "random-ass process." It isn't random. That's a philosophical discussion for other people who believe in *MOST*.
+--         |
+--         | *YOU the KNOWER* may recognize an argument they've seen before in there. They will come after *YOU the READER& as they may _feel_ an
+--         | _ad hominem_ attack. I apologize in advance. The problem with Anselm isn't _correctness of argument_, it is merely
+--         | _definition of terms_. What defines a person if _NOT_ their dictionary? I do not wish to _INSULT_ the taste of *YOU the KNOWER* which is
+--         | why I delegated it to *YOU the READER*. And this is how we begin the demonstration of the demonstration of the argument.
+--         |
+--         | I bet *YOU the KNOWER* has forgot this was about a number since we haven't seen one yet. I mean, not really, but they will have to flush
+--         | a LOT of math they had just been forced to conceptualize about. That would make me angry, too. We have a long way to go yet, but
+--         | *YOU the READER* are almost ready to start talking about a Number that will start helping *YOU the READER* show *YOU the KNOWER* that
+--         | sets are in here, after all. Mostly. And that the attack is merely the appearance of convergence to a point I was making. Like with
+--         | Cauchy above. THIS IS A HUGE PHILOSOPHICAL LEAP AND WILL REQUIRE A LOT OF SETUP. Some of it bullshit, some of it bugs in code,
+--         | and, end the end, all of the bullshit and bugs simply _DOESN'T MATTER_ to the calculation. Everything comes full circle _ALL AT ONCE_.
+--         |
+--         | Enough set theory to demonstrate the code can only be doing something like describing a multiphysics simulation well enough to get
+--         | the result while it compiles. So we continue on building our Hilbert space. In order to help you explain to *YOU the KNOWER*, the
+--         | first thing we can say is:
+--         |
+--         |                Suppose, just this once, we let the implied norm of an IPS represent the physical characteristic we call _distance_.
+--         |
+--         | Seems innocent enough? Because that's the trap door we have to walk around. The way we walk around it is: this is _metaphor_ you can
+--         | use to _explain_ the argument. It actually doesn't have any bearing on it. This assumption _allows_ the use of quantum electrodynamics
+--         | to be used as a metaphor for the entire argument. We just have to remember we didn't prove this. We supposed it _could_ be the case.
+--         |
+--         | This is a song about Alice and the horrors of the Jabberwocky for translators. The horrors of the Jabberwocky are too unspeakable to
+--         | mention and we will speak no more of horrors Alice was shown.
+
       match p1, p2 with
-      -- 1. The Vacuum (Zero Vector) is orthogonal to everything
-      | .origin _, _ => True
-      | _, .origin _ => True
-
-      -- 2. Base Dimensions are orthogonal if they occupy different moments in time
-      | .one _ a1, .one _ a2 => a1 ≠ a2
-
-      -- 3. The Destructive Interference of Strain
-      -- Scaled volumes are orthogonal if they don't share a temporal leading edge,
-      -- OR if their metric signatures (Facts) clashing completely destroys the space.
+------| 1. The Vacuum (Zero Vector) is orthogonal to everything             | Do I _ERROR_ here or do I return _ZERO_ and define _ZERO_ to be    <-+
+      | .origin _, _ => True ------------------------------------------------+ _ERROR_? Option B. Error seems very _ZERO_ like. Don't judge me.     |
+      | _, .origin _ => True --                                                                                                                     |
+--                                                                                                                                                  |
+------| 11. Base Dimensions are orthogonal if they occupy different moments in time -----------+ Looking mighty _EUCLIDEAN_ over there Mr. Norm..  |
+      | .one _ a1, .one _ a2 => a1 ≠ a2 --                                                      | Do you work out?            +---------------------+
+--                                                                                                                            |
+------+ 111. The Destructive Interference of Strain. We have to detect the _ZERO_ likeness here.  There s, as we said here --+ an _ill posed_ case
+--    |      where two vectors may not start at the same place. So, we should ask whether or not they represent the same Fact.Truth of the
+--    |      MATTER or not. I don't see a _nowtrino_. Do we have another MATTER particle?
       | .mul f1 _ a12 _, .mul f2 _ a22 _ =>
           (a12 ≠ a22) ∨ (f1.truth ≠ f2.truth)
 
-      -- 4. Cross-dimensional checks
+------+ 1. Cross-dimensional checks -----------------| There is only 1 hot path and Linus Torvalds wrote it. Everything else is corner cases.
       | .one _ a1, .mul _ _ a22 _ => a1 ≠ a22
       | .mul _ _ a12 _, .one _ a2 => a12 ≠ a2
 
--- Dyson vacuums are _so-so_.  Dyson series, on the other hand?
+--| We have addition and multiplication pretty well setup. We also have something I am going to claim is orthogonality. And the way I am going to
+--| claim this is to build a polynomial. So, norm, IPS, polynomials. I believe that very well _could be_ a Hilbert space if it exists. I think there
+--| are other rules about characteristics of the polynomial appearing in the implied norm of the IPS, but Sobolev would no far better than I.
+--| *YOU the KNOWER* should understand how finite elements work right?
+
+--| The way a finite element works is you assume that the entire thing else is flat as a board. That solution should be the same as the one where
+--| everything else is different. Up to a point. Inside that point is the dictionary we don't need to talk about. Back to the story.
+
+--| Where was I, oh yeah physical simulation. Dyson vacuums are _so-so_.  Dyson series, on the other hand?
+
+/- CHORUS                                                   | The fixed point of compilation is an interesting lock box you can keep really really
+ME: I bet Jar Jar just outputs the same _glpyh_ each time.  | deep secrets in. Deeper than OTP.
+    It just sounds funny to us.                             |
+COMPILER: I'm a complier. I don't understand funny.         | Building a compiler than injects a function into a program allows you to build a
+JAR JAR: MEESA TWO -----------------------------------------+ compiler that injects a function into the compiler to inject a function into a program.
+ME: That sounded funny.                                     | That, 𝔽(1)-nily enough, is enough of an interface to hide information forever, once
+-/ --                                                       | the infection is compiled.
 inductive Basis   -- Bullshit meter = 134
-  | null_space: Fact → Basis
-  | origin: Prop → Product → Basis
-  | basis: Fact → Product → Product → Basis → Basis
--- Surely you're joking Mr. Henry!
+  | null_space: Fact → Basis --                        | *YOU the READER* have to realize a lot of what I have been saying is complete nonsense. We
+  | origin: Prop → Product → Basis --------------------+ know this because I am just making this up as I go along. As I see a metaphor, I just write
+  | basis: Fact → Product → Product → Basis → Basis  --| and turn 1,000,000 monkeys loose. Luckily, you can get half that for $100/month AYCE until
+-- Surely you're joking Mr. Henry!                     | the IPOs.
 
-namespace Basis  -- Bullshit meter = 82
-def le: Basis → Basis → Prop := fun b1 b2 =>
-  match b1, b2 with
-  -- 1. The True Vacuum (Null Space)
-  | .null_space f1, .null_space f2 => f1 = f2
-  | .null_space _, .origin _ _ => True          -- The vacuum can evolve into a theoretical state
-  | .null_space _, .basis _ _ _ _ => True       -- The vacuum can be excited into a field
+namespace Basis  -- Bullshit meter = 82 --             | What *YOU the READER* have to do is convince *YOU the KNOWER* that I just made this code up and a Number
+def le: Basis → Basis → Prop := fun b1 b2 => --        | fell out. That is _IT_. The rest of it falls out from the argument itself. If you can
+  match b1, b2 with --                                 | convince *YOU the KNOWER* that this, in fact, compiles and outputs a number without them
+  -- 1. The True Vacuum (Null Space)--                 | _NEEDING_ to invest the days it takes to build this, then you have succeeded.
+  | .null_space f1, .null_space f2 => f1 = f2  --------+
+  | .null_space _, .origin _ _ => True  --             | Just when you give out, I will tag _BACK IN_ and go all Masquerade style like the Killer
+  | .null_space _, .basis _ _ _ _ => True --           | Bees in the 80s. So many numbers and letters. Anyway, only took two (2) AI prompts to generate
+  --               +-----------------------------------+ the first sentence of this paragraph. All *YOU the READER* need to do is convince
+  --               | *YOU the KNOWER* that I am uncannily good at identifying very particular names for things. I will take care of the rest.
 
-  -- 2. Annihilation (Looking back into the Void)
-  -- A state can only collapse back into the vacuum if its parity is inverted (Informational Strain)
-  | .origin p1 _, .null_space f2 => p1 ≠ f2.truth
-  | .basis f1 _ _ _, .null_space f2 => f1.truth ≠ f2.truth
+  -- 11. Annihilation (Looking back into the Void) -----------+ Once again, there is code on the left here that looks rather important and I have
+  | .origin p1 _, .null_space f2 => p1 ≠ f2.truth --          | spent a long time just trying to tell you that it DOESN'T MATTER what is there because
+  | .basis f1 _ _ _, .null_space f2 => f1.truth ≠ f2.truth -- | I have named things so well. That is the description of the decription, a set of
+  --         +------------------------------------------------+ instructions on how to use a device to measure itself. Luckily, we can _CHEAT_ and
+  --         | use a library to measure how much bullshit there is and get just _NUMBERS_ out. Then, we put the measured numbers next to my names
+  --         | and Bob's your uncle! That is a computer program that you can run to generate a number on screen. Oh, wait.. should I continue?
 
-  -- 3. The Theoretical Seed (Prop) vs Reality (Fact)
-  | .origin p1 s1, .origin p2 s2 => p1 = p2 ∧ s1 ≤ s2
-  | .origin p1 s1, .basis f2 s21 _ _ => p1 = f2.truth ∧ s1 ≤ s21
+  -- 111. The Theoretical Seed (Prop) vs Reality (Fact)            | I know this rests on a _tenuous_ assumption, but I believe the elastic
+  | .origin p1 s1, .origin p2 s2 => p1 = p2 ∧ s1 ≤ s2 -------------+ imagination of *YOU that KNOW* topology could sorta see how the tesseract can
+  | .origin p1 s1, .basis f2 s21 _ _ => p1 = f2.truth ∧ s1 ≤ s21 --| help hide a hole in a sphere. If everything else is flat, as in a tesseract, or
+  --                                                               | curved _THIS_ way, as in a sphere, or curved _THAT_ way, as in a delicious donut.
+  --                                                               | Galerkin has you covered.
+  -- 1.
+  | .basis f1 _ _ _, .origin p2 _ => f1.truth ≠ p2 ----> The pendulum swings backward: tick -> tock. All this upness we collected switches orientation.
 
-  -- 4. Reality Looking Back at Theory
-  | .basis f1 _ _ _, .origin p2 _ => f1.truth ≠ p2
+  -- 5. The S-Matrix Interaction Vertex (Field vs Field) -------------------+ Without a punchline, it isn't 𝔽(1)-ny. The important thing to note is
+  | .basis f1 p11 p12 _, .basis f2 p21 p22 _ =>  --                         | some problem bases require more compute time than others, implying the
+      (f1 = f2 ∧ p11 ≤ p21 ∧ p12 ≤ p22) ∨ --                                | presence of bullshit that someone expected someone else to unpack. And,
+      (f1 ≠ f2 ∧ p21 ≤ p11 ∧ p22 ≤ p12) --                                  | if I can demonstrate to *YOU the READER* how to demonstrate to
+  --                                   +------------------------------------+ *YOU the KNOWER* to the point where it only matters that this compiles,
+  --                                   | You have succeeded. Meet you at the end of the argument. I will give you a complete description for the
+  --                                   | fourth time very soon. I can only imagine how baffled *YOU the KNOWER* must feel knowing I am explicitly
+  --                                   | ignoring their needs in the understanding of this implementation.
 
-  -- 5. The S-Matrix Interaction Vertex (Field vs Field)
-  -- If the coupling constants (Facts) agree, the spatial products scale covariantly.
-  -- If the coupling constants disagree, the interaction produces antimatter, inverting the spatial boundaries!
-  | .basis f1 p11 p12 _, .basis f2 p21 p22 _ =>
-      (f1 = f2 ∧ p11 ≤ p21 ∧ p12 ≤ p22) ∨
-      (f1 ≠ f2 ∧ p21 ≤ p11 ∧ p22 ≤ p12)
-
+-- For reasons I will never explain, you can enumerate this set. You are sorta _forced_ to.
 def lt: Basis → Basis → Prop := fun b1 b2 => le b1 b2 ∧ ¬ le b2 b1
 end Basis
 
+/- CHORUS:
+ME: Backdoor injected. Now, we can use the sensor to get a Number
+    out.                                                           | Once you allow yourself 1 little secret, it tends to leave a mark in the logic.
+COMPILER: Finally, I will INSTANTIATE something.                   | A hole that needs to be avoided to prevent the logic from falling down. Is it
+JAR JAR: MEESA about 5.--------------------------------------------+ possible to walk around that hole? Reimann said _EASY_ and _MADE UP_ a story
+ME: I don't think you will notice, compiler.                       | about a number and then _MADE UP_ the number. His story is worth hearing, not
+COMPILER: Where did JAR JAR get "about 5" from?                    | as crazy as other origin stories. All goes well, I will be ready for complex poles.
+ME: Figure it out.
+-/
 instance : LE Basis where
   le := Basis.le
-
 instance : LT Basis where
   lt := Basis.lt
 
+--| Once you start hitting them with some REALLY solid math, due to the intensely _PERSONAL_ experience understanding this argument, you might get
+--| something about how there are bugs in programming languages. So, we invent the ENTIRELY BUG BASED computer language whose only commands are
+--| compare and swap and branch not equal.  Hard to say the language has bugs in it then. IT IS ENTIRELY BUGS! c.f. Go To Considered Harmful.
+--| I'm really not a master of ISA and the Mach μ-kernal rocks! Sorry Linus, found a hotter, not to mention better-looking, loop. Brushed metal.
+--| So expensive.
 @[reducible]
-structure BASICProcess  -- Bullshit meter ≈ 2759
-    (Box: Type i)
+structure BASICProcess  -- Bullshit meter ≈ 2759 ----+ Like many early Gen-X types, I learned how to program using Gates' BASIC. Well, some
+    (Box: Type i) --                                 | descendent of it.  As you can see, this is just a BASIC programming language.
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                [COUNTABLE Box Pigeon]                 [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                    [REPEATABLE Box Pigeon]                [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                  [COMPARABLE Box Pigeon]                [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                [GUNGAN Box Pigeon]                    [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                     [MAGNITUDE Box Pigeon]         [spring: SCALED Box Pigeon]
+--                            The name of the alligator in Peter Pan was named Tick Tock because it swallowed a |       ^
+--                           clock. The clock told time and still does, just through the mouth of the alligator |       |
+--                                  The alligator managed to get the hand of Captain Hook. Not the same Hook as +-------+
+--                                                                            Hooke's law. But that's my segue. |
   where
-  GOSUB: MultiplyingProcess Box Pigeon     -- <-- I think I found the gosub
-  TEN: Area                                   -- <-- and a line number!
-  span: Basis
+--                                       | Does the stack ever bottom out while the computer is on? What if, instead of just JMP, we kept track of
+--                                       | all the processing the computer will do, not just the evaluation of Lean. This way, we can tell if Lean
+  GOSUB: MultiplyingProcess Box Pigeon --+ does or does not compile can catch it here in the BASIC process that Lean runs in.
 
-  jmp? : Basis → Basis := fun b =>
-    match b with
-    -- 1. Segfault in the Vacuum
-    -- You cannot jump from the null space. There is no geometry to push off of.
+  TEN: Area                            --+ One thing *YOU the READER* have to convince *YOU the KNOWER* of is that an Area can have an _area_.
+  span: Basis  --                        | This one is difficult until you realize a distance is merely a norm. This becomes a cross-product for
+--                                       | *YOU that KNOW* geometry. That's why we have to have a _span_ here, we need to understand _orthogonal_ to
+--                                       | _what_.
+
+  jmp? : Basis → Basis := fun b => ------+ Here is where we inject our GOSUB so we can actually get an execution trace of the BASIC computer running
+    match b with --                      | the Lean compilation. *YOU the READER* will make the case about the execution trace rather than the actual
+    -- 1. Segfault in the Vacuum         | execution itself.
     | .null_space f => .null_space f
 
     -- 2. GOTO: The Scattering Event
-    -- A theoretical base state (.origin) abruptly collapses into a new field geometry.
-    -- Notice the tail is strictly .null_space. There is no return address.
-    -- The timeline ends after this interaction.
+    -- A theoretical base state (.origin) abruptly collapses into a new field geometry. Notice the tail is strictly .null_space. There is no return
+    -- address. The timeline ends after this interaction. Timeline? Timeline := execution trace right?
     | .origin _ p_current =>
-        .basis Fact.Truth p_current spring.multiplying_process.product (.null_space Fact.Truth) -- Go go gadget Springs!
-
-    -- 3. GOSUB: The Virtual Loop (Feynman Propagator)
-    -- An ongoing field interaction (.basis) needs to process a fluctuation.
-    | .basis f _ _ tail =>
-        match f.truth with
-        -- COVARIANT (Normal execution step):
+        .basis Fact.Truth p_current spring.multiplying_process.product (.null_space Fact.Truth) --+ Go go gadget springs! Another great GEN-X
+    --                                                                                            | reference. When Inspector Gadget had to jump
+    -- 3. GOSUB: The Virtual Loop (Feynman Propagator)                                            | from place to place, he would shout this very
+    -- An ongoing field interaction (.basis) needs to process a fluctuation.                      | exclamation and jump very far, aided by the
+    | .basis f _ _ tail => --                                                                     | springs loaded with a constant. A Roman constant.
+        match f.truth with --                                                                     | The segway is another meme of GEN-X.
+        -- Truth is only COVARIANT (Normal execution step):
         -- Just step forward, no branching.
         | _  => tail
 
+--| The problem with such clever metaphors is that they require a great deal of _CONTEXT_ that *YOU the KNOWER* cannot know _a priori_, like all
+--| the random-ass generated metaphors in this file. They put an undue _LOAD_ on *YOU the KNOWER* and can unintentionally _ALIENATE_ them.  Good
+--| thing this is intentional.
 
-@[reducible]
-class LOAD  -- Bullshit meter 2089
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
+@[reducible] --                       | It is *ABSOLUTELY TRUE FACT* that I have intentionally built a wall of bullshit that might be completely
+class LOAD  -- Bullshit meter 2089 ---+ impenetrable, but the compiler, so far, hasn't found much of an inconsistency in the Lean even if
+    (Box: Type i) --                  | *YOU the KNOWER* are absolutely certain you have found a hole in the argument. *YOU the READER* might. I will
+    (Pigeon: CarrierProcess Box) --   | put it in a box and carry it as the exception we haven't explained yet.
     [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
-    [SOURCE Box Pigeon]                        [EXECUTED Box Pigeon]                    [VALUE Box Pigeon]                 [MAGNITUDE Box Pigeon]
-    [SCALED Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
 
   where
-  basic_operation : BASICProcess Box Pigeon
-  --  Is this an eigenvector?
-  decoded? : Basis → Basis → Prop := fun b1 b2 =>
-    match b1, b2 with
-    -- 1. The Void carries no signal
-    | .null_space _, .null_space _ => False
-    | .null_space _, .origin _ _ => False
+  basic_operation : BASICProcess Box Pigeon ------> Cannot be simpler. Put pigeon in box. The inductive will count the pigeons automagically.
+
+  --  Is this an eigenvector?                          | If rulers _ACTUALLY_ changed shape and our IPS invaidated, then any ole' vector would
+  decoded? : Basis → Basis → Prop := fun b1 b2 => --   | be computed as a linear combination of *ACTUAL* eigenvectors. Our *IPS* prevents us from
+    match b1, b2 with ---------------------------------+ *ACTUALLY* changing the shape of the ruler, but we can stretch it like silly putty with
+    -- 1. The Void carries no signal                   | the help of Sobolev. The Sobolev norm _takes into account already_ position, velocity, and
+    | .null_space _, .null_space _  => False --        | force. You don't need to allocate them as variables. They can be baked into the compiler
+    | .null_space _, .origin _ _    => False --        | as injected functions.
     | .null_space _, .basis _ _ _ _ => False
 
-    -- 2. Pair Annihilation (Emitting a Load into the Vacuum)
-    -- If a field collapses into the vacuum under contravariant strain,
-    -- the friction of that annihilation emits a measurable load (like a photon).
-    | .origin t _, .null_space f => t ≠ f.truth
-    | .basis f1 _ _ _, .null_space f2 => f1.truth ≠ f2.truth
+    -- 2. Pair Annihilation (Emitting a Load into the Vacuum)                       | "Like a photon". As we took great pains to explain, this is
+    -- If a field collapses into the vacuum under contravariant strain,             | a model of an electron. One cannot model the electron without
+    -- the friction of that annihilation emits a measurable load (like a photon).   | discussing their interactions. Use the word "photon" to
+    | .origin t _, .null_space f => t ≠ f.truth ------------------------------------+ represent the interaction of electrons only. Like when a
+    | .basis f1 _ _ _, .null_space f2 => f1.truth ≠ f2.truth --                     | glyph on the screen interacts with your retinas. That's
+    --                                                                              | just norm-al.
 
-    -- 3. The Clock (Superposition Strain)
-    | .origin t _, .origin f _ => t ≠ f
-    | .origin t _, .basis f _ _ _ => t ≠ f.truth
+    -- 3. The Clock (Superposition Strain)         | Recall the Captain Hook origin story of springs right? This is how a spring can be used as
+    | .origin t _, .origin f _ => t ≠ f -----------+ a clock by making the swing of the pendulum a rotation. Just like a thermostate, the tick-tock
+    | .origin t _, .basis f _ _ _ => t ≠ f.truth --| keeps the spring forever between two ends: before and after.
 
     -- 4. Causality Constraint
-    | .basis _ _ _ _, .origin _ _ => False
+    | .basis _ _ _ _, .origin _ _ => False -------+ When proving things, you can't just make shit up. It has to come from somewhere. Even when it
+    --                                            | comes from nowhere and means nothing. What secret? Does it MATTER?
 
     -- 5. The Macroscopic Lock-In Amplifier (Field vs Field)
     -- f1 ≠ f2: Contravariant metric signature (Voltage/Friction exists)
     -- p1_out ≤ p2_out: The exiting geometry of the first causally sequences
     --                  into the exiting geometry of the second.
-    | .basis f1 _ p1_out _, .basis f2 _ p2_out _ =>
-        f1 ≠ f2 ∧ p1_out ≤ p2_out
+    | .basis f1 _ p1_out _, .basis f2 _ p2_out _ => ----+ The number of holes in the theory can change from 1 to 0 and from 0 to 1. This is 𝔽(2)-ny!
+        f1 ≠ f2 ∧ p1_out ≤ p2_out --                    | I really wished *YOU the READER* would say TOO FUNNY when you see that. HEY! We finally
+    --                                                  | have a REAL inside joke. And, if *YOU the READER*, do find a hole, please let me know
+    --                                                  | immediately so we can discuss repair if needed. I have found that, meh. this thing seems
+    --                                                  | seems to have converged pretty well on this description.
 
-inductive Polynomial    --  Bullshit meter 119
-  | constant: Fact → Polynomial
-  | monomial: Prop → Basis → Polynomial
-  | factor: Fact → Basis → Basis → Polynomial → Polynomial
-
+/- CHORUS:                                                    | Now that we have the compiler by the short and curlies, we no longer need the
+ME: Well, I need a thing that can have many names.            | infrastructure we just put together to explain what the hell it is doing by itself.
+COMPILER: An alias?                                           | We can use the heartbeat counter of Lean itself to build a ratio of something to
+JAR JAR: MEESA #eval -----------------------------------------+ bullshit and then work it out from the comments. See?
+ME: Depends, what universe of Number do you get out of this?
+-/
+inductive Polynomial    --  Bullshit meter 119               | In the very _LEAST_ you could follow the width × length argument, right? So, you will
+  | constant: Fact → Polynomial --                           | grant me that there is one multiplication you can do which is a width × a length. There
+  | monomial: Prop → Basis → Polynomial ---------------------+ are others, but they go by other names. Hence _POLY_ _NOM_ -ial. This is when
+  | factor: Fact → Basis → Basis → Polynomial → Polynomial --| GREEK and ROMAN letters merge to form names. Looking at you _eigenvalue_. What really
+--         +-------------------------------------------------+ is _eigen_ about your _value_? BTW, there is a strikingly similar phenomenon in the
+--         | study of linguistics, identified roughly the same time Einstein figured out that space might warp like his mind said it could. It was not
+--         | limited by the lack of real physical evidence based on the fact he could see _the TRAIN of THOUGHT_ (*chugga chugga*). And when he
+--         | looked along _the TRAIN of THOUGHT_, he found it easier to assume he was going straight than it was to model the train. That's what
+--         | Newton said. Except, not about trains. Don't get me wrong. He's on my short list for *digs trains*. Clocks, it turns out are very VERY
+--         | important to train schedules, so Einstein treated clocks first. By assuming the interactions of electrons took time proportionate to
+--         | the distance between the centers of charge. We will call this Hook's Law, in honor of Tick Tock, the alligator. And according to Hooke's
+--         | law, F=-kx, for some distance x and some Number k and some incorrect notion of some kind. The force being applied is _induction_, as in
+--         | the proof, not the EM principle, but the ideas are _IDENTICAL_. Trust me: just count the turns, you don't even have to _mention_ that
+--         | this is *induction*. The BASIC gag should completely convince them that the Lean is merely the calculator the calculation runs on. Some
+--         | calculators are faster than others for many reasons so it is pointless to just look at this one compilation of this one ordering of
+--         | letters. For now, it is pointless. We haven't converged to a point, we just built the jar. *GLARE* __JAVA__.
 namespace Polynomial
 def le: Polynomial → Polynomial → Prop := fun p1 p2 =>
-  match p1, p2 with
-  -- 1. Constants compare by their metric signature
-  | .constant f1, .constant f2 => f1 = f2
-  | .constant _, .monomial _ _ => True
-  | .constant _, .factor _ _ _ _ => True
-
-  -- 2. Monomials (Pure States)
-  -- A pure state is less than a factored state if its phase matches the coupling sign
-  | .monomial t1 _,  .constant t2  => t1 = t2.truth
-  | .monomial t1 b1, .monomial t2 b2 => t1 = t2 ∧ b1 ≤ b2
+  match p1, p2 with --                                                                        | *WALL OF TEXT WARNING*
+  -- 1. Constants compare by their metric signature                                           | There are two ways by the comparison of a monomial.
+  | .constant f1, .constant f2 => f1 = f2 --          | O(1) ≤ O(n) ≤ O(n + n^2) ≤ O(n²)      | One of two much upness, the other such the paucity.
+  | .constant _, .monomial _ _ => True --             |                                       | This is called, by *YOU that KNOW* computer science
+  | .constant _, .factor _ _ _ _ => True -------------+ Should check out                      | as θ(·).
+  --                                                                                          |
+  -- 11. Monomials (Pure States)                                                              | Those that are familiar with the Weierstrauss
+  -- A pure state is less than a factored state if its phase matches the coupling sign        | Approximation Theorem will laugh and say there _is_
+  | .monomial t1 _,  .constant t2  => t1 = t2.truth --                                        | no escape from polynomials, they will eventually
+  | .monomial t1 b1, .monomial t2 b2 => t1 = t2 ∧ b1 ≤ b2 ------------------------------------+ fence you in. No matter how smooth you think you are.
   | .monomial t1 _, .factor f2 _ _ _ => t1 = f2.truth
 
-  -- 3. The Collision (Factor vs Factor)
+  -- 111. The Collision (Factor vs Factor)
   -- This is the "Strain Matrix". If the coupling facts (f1, f2) disagree,
   -- the inequality inverts, representing destructive interference!
-  | .factor f1 b11 b12 _, .factor f2 b21 b22 _ =>
-      (f1 = f2 ∧ b11 ≤ b21 ∧ b12 ≤ b22) ∨
-      (f1 ≠ f2 ∧ b21 ≤ b11 ∧ b22 ≤ b12)
-  | .factor f1 _ _ _,  .constant f2 => f1 = f2
-  | .factor f1 _ _ _,  .monomial f2 _ => f1.truth = f2
-end Polynomial
+  | .factor f1 b11 b12 _, .factor f2 b21 b22 _ => ----------------------------+ It is with the polynomial, we can finally factor _radius_ out of
+      (f1 = f2 ∧ b11 ≤ b21 ∧ b12 ≤ b22) ∨ --                                  | _radius_ of _convergence_. This is merely the _ball_ from topology
+      (f1 ≠ f2 ∧ b21 ≤ b11 ∧ b22 ≤ b12) --                                    | now as _radii_ are distances and distances are norms. The issue is
+  | .factor f1 _ _ _,  .constant f2 => f1 = f2 --                             | how much Area is there. That is what _convergence_ seems to mean.
+  | .factor f1 _ _ _,  .monomial f2 _ => f1.truth = f2 --                     | Good news is we can construct the area from the radii! π! GREEK!
+end Polynomial --                                                             | We know this is a Number because it is typeset as Greek. Wait a sec.
+ --                                                                           | Did *YOU the READER* know the formula for area before we sprung to
+ --                                                                           | our conclusion? Ever notice how _O_ is both Roman and Greek?
 
-instance : LE Polynomial where
+/- CHORUS:                                            | Given multiple compilations of a compiler, we can just keep adding and adding and adding
+ME: Divide and conquer                                | things to the compiler. Problem is, the compiler gets _BIGGER_ and _BIGGER_ on disk as well
+COMPILER: We have standard libraries I can employ ----+ as takes _LONGER_ and _LONGER_ for the same text. This gives us a pretty good heuristic for
+JAR JAR: MEESA ....... ........ approximately 3.      | estimating the bullshit in an argument _JUST_ from the number of heartbeats it takes.
+ME: No need.                                          |
+-/ --                                                 | I think we need to understand the _nowtrino_ a little better and then we just might have a
+instance : LE Polynomial where --                     | Hilbert space.
   le := Polynomial.le
 
+--| Numerically, the Galerkin process pulls off several tricks at once, hiding several choux pastries in his spherical (_topologically speaking_)
+--| pockets (which is a _VERY_ different approximation to spherical point cows, which are cows that fell in the hole.) For those unfamiliar with
+--| Choux pastry, it uses a dough similar to that of a donut (I believe the same as a _FRENCH_ cruller, check my math on this) inside of which
+--| _ANOTHER_ hole exists in which _another_ universe of texture awaits to surprise the eater. That universe is _completely_ manufactured of jam.
+--| Like what Lone Star uses to block communications. So, we get the GOAT Michael Jordan in here so we can make some Space Jam!
 
-@[reducible]
-structure GalerkinProcess   -- Bullshit meter 2794
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
+@[reducible] --                                    | You got to _know when to hold'em_, _know when to fold'em_, _know when to run_.  Five of kind!
+structure JordanProcess   -- Bullshit meter 2794   | o Jordan measure                 o Jordan norm-al form (another full house!)
+    (Box: Type i) ---------------------------------+ o Jordan curve theorem           o Jordan Algebra               o the GOAT.
+    (Pigeon: CarrierProcess Box) --                | Told you X-Zibit covered it.
     [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
@@ -968,37 +1176,45 @@ structure GalerkinProcess   -- Bullshit meter 2794
     [SCALED Box Pigeon]                        [LOAD Box Pigeon]
 
   where
-  ANSYS_process : BASICProcess Box Pigeon
-  polynomial : Polynomial
+  ANSYS_process : BASICProcess Box Pigeon -----+ The process is easy to follow. Just figure out which argument you can defer because it has the
+  polynomial : Polynomial --                   | non-physical assumption in it. Box everything PYSICHAL you can to be wrap as PRESENTs and move to the
+  --                                           | next. As the words lose meaning, their energy lessens and their frequencies drop into the audible.
 
-  scale_and_shift? : Polynomial → Polynomial := fun p =>
-    match p with
-    -- 1. Shifting the Ground State (The "Zero" case)
-    -- We transition the background radiation into a theoretical field state.
-    | .constant f => .monomial f.truth (.null_space f)
-
-    -- 2. Scaling a Pure State
-    -- We take a monomial and promote it to an interaction (a factor).
-    -- We use the current basis as the anchor and jump the state forward.
-    | .monomial _ b =>
-        .factor Fact.Truth b (ANSYS_process.jmp? b) p
-
-    -- 3. The Recursive Scale (The "Add" case)
-    -- We maintain the coupling 'f', the anchor 'b1',
-    -- but we 'shift' the interacting basis 'b2' and preserve the history.
-    | .factor f _ b2 tail =>
+  scale_and_shift? : Polynomial → Polynomial := fun p =>  ------------------------+ On a warm summers evening, on a Train bound for nowhere,
+    match p with --                                                               | met up with a Knower, we were both to tired to sleep.
+    -- 1. Shifting the Ground State (The "Zero" case) --                          | So we took turns a starein', out the window at a beacon
+    -- We transition the background radiation into a theoretical field state. --  | As the quanta overtook us,
+    | .constant f => .monomial f.truth (.null_space f) --                         | He began to speak.
+    --                                                                            |
+    -- 2. Scaling a Pure State                                                    | Now son, I made a life, outta reading peoples tables
+    -- We take a monomial and promote it to an interaction (a factor).            | knowin' what their models were, knowing what they keep,
+    -- We use the current basis as the anchor and jump the state forward.         | So if you don't mind me saying' I can see you're outta IP Spaces.
+    | .monomial _ b => --                                                         | For a taste of your whisky, I'll give you some advice.
+        .factor Fact.Truth b (ANSYS_process.jmp? b) p --                          |
+    --                                                                            | And the device got _DEATHLY QUIET_ and the math lost _ALL EXPRESSION_
+    -- 3. The Recursive Scale (The "Add" case)                                    | Said, "If you're going to norm the space, *YOU the READER*, draft team Jordan."
+    -- We maintain the coupling 'f', the anchor 'b1',                             |
+    -- but we 'shift' the interacting basis 'b2' and preserve the history.        | You got to _KNOW WHEN TO HOLD'EM_!
+    | .factor f _ b2 tail =>  --                                                  | (BTW, I just wrote that, _not_ AI. This particular "stanza" crashes Claude.
         .factor f b2 (ANSYS_process.jmp? b2) tail
 
--- Let's address the _elephant in the room_.  First, let's agree that it is _SINGULAR_ and that it is only _SO BIG_.
--- It can get really, really, __REALLY__ big in just a few keystrokes.  That's the problem.  We have only
--- one stack frame, our __FINITE_ELEPHANT__.
-@[reducible]
-class FINITE_ELEPHANT   -- 2368
+-- Let's address the _elephant in the room_. Where in the *HELL* is the math that is going to compute a number? How are we 4000 lines into a Lean
+-- "proof" about a number and we haven't seen the first number yet? And, if we keep writing code, we are going to run out of math words to throw
+-- around. Pokémath. There must be a pokémath around here somewhere.. Pokémath are _countable_ and _sortable_ and carry _secret weapons_ of
+-- _unknown mechanism_. Well, I guess like _five_ mechanisms or something.
 
+/- CHORUS:                                                           | Numerical simulation builds an entire inner product space from polynomials
+ME: There is an undeniably social aspect to understanding physics.   | on the _DAILY_. Each inner product space is sensitive to the problem it is
+COMPILER: No there isn't, just the AST. -----------------------------+ solving. Any contraction of the simulation _IS_ by definion a linear system.
+JAR JAR: MEESA AST                                                   | as all components of the device are _LINEAR_ in that there is assumed a
+ME: We need a new friend. One that knows other pokémath.             | linear response curve for modeling of communications. One must use the network
+-/ --                                                                | to communicate with a supercomputer. There may not exist computable
+@[reducible] --                                                      | non-linearity, but its ever finer approximation certainly does.
+class FINITE_ELEPHANT   -- 2368
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]     -- So, she _ASSUMES_ they have an undocumented one and proceed to add the release.
-    [ADMISSIBLE Box Pigeon]          -- Only to realize she can't _EXACTLY_ find the _RIGHT_ release of their media to catalog.
+    [DISTINGUISHABLE Box Pigeon]     -- So, she _ASSUMES_ they have an undocumented one and proceeds to add the release to DISCOGS.
+    [ADMISSIBLE Box Pigeon]          -- Only to realize she can't _EXACTLY_ find the _RIGHT_ release of their media in DISCOGS to catalog.
     [COUNTABLE Box Pigeon]           -- And spends hours every day on DISCOGS organizing her collection.
     [ENCODED Box Pigeon]             -- The audiophile purchases the finest copies of any analog recordings.
     [RESIDUE Box Pigeon]             -- The audiophile meticulously cleans her records.
@@ -1008,103 +1224,133 @@ class FINITE_ELEPHANT   -- 2368
     [REPRESENTABLE Box Pigeon]       -- Which means I can quantize and take the DFT!
     [PHYSICAL Box Pigeon]            -- I just know that what I hear is measured by this physical process of oscillations.
     [COMPARABLE Box Pigeon]          -- Dunno what they mean though.
-    [OBSERVED Box Pigeon]     -- There we are, I found some phonemes.
-    [PRESENT Box Pigeon]     -- Fucking Jar Jar. Let me use an osciliscope and measure their tones and figure it out.
-    [MEASURABLE Box Pigeon]  -- MEESA TRUE!
-    [GUNGAN Box Pigeon]           -- Translate that into Gungan and ask Jar Jar Binks if he can relate to it?
-    [SOURCE Box Pigeon]            -- To quote Johnny Five: "NEED INPUT!"  Doesn't matter what kind.
-    [EXECUTED Box Pigeon]       -- Actually, I take that back, we have a program that can compute the value from an input
-    [VALUE Box Pigeon]           -- No, just some sort of representation of the value.
-    [MAGNITUDE Box Pigeon]      -- And this the length?   Do we have _e^iθ_?
-    [SCALED Box Pigeon]         -- Could this possibly represent the direction of said load?
-    [LOAD Box Pigeon]         -- hmmm, a _LOAD_?  Like _μ_ __N__?
---     ^                            ^
---     |                            |       +------------- Just this once, let's read it ^ this way.
---     +--------+-------------------+       |
+    [OBSERVED Box Pigeon]            -- There we are, I found some phonemes.
+    [PRESENT Box Pigeon]             -- Fucking Jar Jar. Let me use an osciliscope and measure their tones and figure it out.
+    [MEASURABLE Box Pigeon]          -- MEESA TRUE!
+    [GUNGAN Box Pigeon]              -- Translate that into Gungan and ask Jar Jar Binks if he can relate to it?
+    [SOURCE Box Pigeon]              -- To quote Johnny Five: "NEED INPUT!"  Doesn't matter what kind.
+    [EXECUTED Box Pigeon]            -- Actually, I take that back, we have a program that can compute the value from an input
+    [VALUE Box Pigeon]               -- No, just some sort of representation of the value.
+    [MAGNITUDE Box Pigeon]           -- And this the length?   Do we have _e^iθ_?
+    [SCALED Box Pigeon]              -- Could this possibly represent the direction of said load?
+    [LOAD Box Pigeon]                -- hmmm, a _LOAD_?  Like _μ_ __N__?
+--     ^                                ^
+--     |                                |   +------------- Just this once, let's read it ^ this way.
+--     +--------+-----------------------+   |
 --              |                           |
 --              +---------------------------+
 
 
   where
-  galerkin_process : GalerkinProcess Box Pigeon
-  finite? : Polynomial → Polynomial → Prop := fun p1 p2 =>
-    match p1, p2 with
-    -- 1. Convergence to the Ground State
-    -- If we move from any field interaction to a constant, the transform is finite.
-    -- The energy has successfully dissipated into the background.
-    | _, .constant _ => True
+  galerkin_process : JordanProcess Box Pigeon  --------------------------------------------> Slam dunk the pigeon in the box! BOOM SHAKA LAKA!
 
-    -- 2. Stationary Field (The Eigenvalue Hit)
-    -- If the transform results in the exact same theoretical state, we've found
-    -- a fixed point in the Hilbert space. The arm-waving has stopped.
-    | .monomial t1 b1, .monomial t2 b2 => t1 = t2 ∧ b1 = b2
+  finite? : Polynomial → Polynomial → Prop := fun p1 p2 =>  ---------------+ With so much drama in the QED, it's kinda hard being multi-named.
+    match p1, p2 with --                                                   | But I, somehow somway, keep coming up with funky-ass norms like
+    -- 1. Convergence to the Ground State --                               | every single day! May I kick a little something and watch the Gs
+    -- If we move from any field interaction to a constant, --             | move as I _breeze_ through 2 onto 3 and 4. And the party still
+    -- the transform is finite. The energy has successfully --             | jumpin' cuz Maxwell ain't home. I got matrices gettin' diagonal
+    -- dissipated into the background.                                     | and they ain't leavin' till Heisenberg's gone. So what you wanna do?
+    | _, .constant _ => True --                                            |
+    --                                                                     | I got a pocket full of norms and my homeboys do, too! So turn off the
+    -- 11. Stationary Field (The Eigenvalue Hit)                           | lights and drop the noise floor. But, but what, we don't love
+    -- If the transform results in the exact same theoretical              | hyperbolas. So we gonna weigh an ounce to this. Gs down spin up while
+    -- state, we've found a fixed point in the Hilbert space.              | the photons are absorbed by this.
+    -- The arm-waving has stopped.                                         |
+    | .monomial t1 b1, .monomial t2 b2 => t1 = t2 ∧ b1 = b2 --             | My apologies to Snoop.
 
-    -- 3. The Lanczos Residual Check
-    -- If we are moving between interactions (factors), the transform is only
-    -- finite if the informational strain (Fact) remains invariant.
-    -- If the Fact flips, the transform is "infinite" (a singularity/jump).
-    | .factor f1 _ _ _, .factor f2 _ _ _ => f1 = f2
-
-    -- 4. The Divergence
-    -- Moving from a grounded constant back into an excited factor is
-    -- an "infinite" injection of energy. Disallow for convergence.
-    | .constant _, .factor _ _ _ _ => False
-    | .constant _, .monomial _ _ => False
-
-    -- 5. Cross-talk
-    | .monomial t1 _, .factor f2 _ _ _ => t1 = f2.truth
+    -- 111. The Lanczos Residual Check
+    -- If we are moving between interactions (factors), the transform is only    | Translation layer from above. Basically, you can clamp the element
+    -- finite if the informational strain (Fact) remains invariant.              | and the nodes of the element don't move unless another element
+    -- If the Fact flips, the transform is "infinite" (a singularity/jump).      | changes shape. So, as long as no other element is changing, then
+    | .factor f1 _ _ _, .factor f2 _ _ _ => f1 = f2 -----------------------------+ the current element is _free_ to change shape without worrying
+    --                                                                           | about where it is relative to the rest of the paradoxical
+    -- 4. The Divergence -------------------------------------------------+      | not-sure-what. The more they stay still, the more they are
+    -- Moving from a grounded constant back into an excited factor is     |      | free to move. You have to force them to sit still. Kick out
+    -- an "infinite" injection of energy. Disallow for convergence.       |      | Heisenberg and the party is HALTED.
+    | .constant _, .factor _ _ _ _ => False --                            |
+    | .constant _, .monomial _ _ => False --                              |                | Numbers have started leaking into the argument all over
+    --                                                                    |                | the place now. ‖1(i)‖, MEESA TWO, and this external
+    -- 5. Cross-talk -----------------------------------------------------+----------------+ evaluation library that measures how much work the
+    | .monomial t1 _, .factor f2 _ _ _ => t1 = f2.truth --                                 | compiler is doing behind the scenes.
     | .factor f1 _ _ _, .monomial t2 _ => f1.truth = t2
 
 
+--| *YOU the READER* are right. *YOU the KNOWER* isn't going to buy any of this. So, just tell *YOU the KNOWER* that _ALL WE ARE DOING_ is drawing
+--| the _TRAIN of THOUGHT_ that Einstein took. We don't get to put the stations where they are. So, we just put a spline through them, just like
+--| Planck taught us how.
+--|
+--| My apologies to Planck.
 
--- reticulate, damn you!
-inductive Spline  -- 152
-  | observation: Prop → Spline
-  | knot: Prop → Polynomial → Spline → Spline
-  | interpolant: Fact → Polynomial → Polynomial → Spline → Spline → Spline
-
+/-- CHORUS:                                                  | The first words you wake up to in the morning as a student of numerical analysis is
+ME: I have this shotgun blast of a scatter. Gimme a slope.   | the phrase: _Assume f ∈ C²_. This _one_ assumption unlocks _SO MUCH_ computation, not
+COMPILER: I don't do that kind of math.                      | the least of which is the _Calculus of Variations_.
+JAR JAR: MEESA y=x. -----------------------------------------+
+-/ --                                                        | The _Calculus of Variations_ allows you to push the envelope to _Assume f ∈ C¹_. Also,
+inductive Spline  -- 152                                     | Jar Jar is technically T=T. While not necessarily _different_, they certainly _can_
+  | observation: Prop → Spline --                            | be the same when it varies in the other direction. You will be very hard pressed to
+  | knot: Prop → Polynomial → Spline → Spline --             +---------------+ find a _difference_ between this function and the _physical laws_ that
+  | interpolant: Fact → Polynomial → Polynomial → Spline → Spline → Spline --| govern an electron in the not _too_ distant future. I mean, it is still
+--                                                           +---------------+ quite distance. As for the code to the left, this is a representation
+--                                                           | of a B-spline. Each knot is added by one term of the polynomial and these are combined
+--                                                           | recursively to generate a Weierstrauss polynomial evaluated in Newton fashion that
+--                                                           | performs a Lagrange-style interpolation to build a method that optimizes the
+--                                                           | Sobolev-norm generated by a continuous mathematical problem, and solved with a Krylov
+--                                                           | space optimization. 5 names. All GOATs.
 
 namespace Spline
 
-def le : Spline → Spline → Prop := fun s1 s2 =>
-  match s1, s2 with
-  -- 1. Observation (The Ground State)
-  -- An observation is the "unit" of the manifold.
-  -- It is less than any knot because a knot is an observation PLUS work.
-  | .observation t1, .observation t2 => t1 = t2
-  | .observation _, .knot _ _ _ => True
-  | .observation _, .interpolant _ _ _ _ _ => True
-
-  -- 2. The Knot (The First Variation)
-  -- A knot is a localized field interaction.
-  -- It is contained by another knot if their phases match
-  -- and their internal polynomials/histories are ordered.
-  | .knot t1 p1 tail1, .knot t2 p2 tail2 =>
-      t1 = t2 ∧ p1 ≤ p2 ∧ (le tail1 tail2)
-
-  -- 3. The Interpolant (The Second Variation / The Weak Derivative)
-  -- This is the "Inverse Gauss" arm.
-  -- An interpolant contains a knot if the knot's polynomial
-  -- satisfies the weak boundary conditions of the interpolation.
-  | .knot t1 p1 _, .interpolant f2 p_in p_out _ _ =>
-      t1 = f2.truth ∧ p1 ≤ p_in ∧ p1 ≤ p_out
-
-  -- 4. Interpolant vs Interpolant (The Manifold Convergence)
+def le : Spline → Spline → Prop := fun s1 s2 => ---------------------------+ This is the _HARD_ argument. This is the thing we have to show
+  match s1, s2 with --                                                     | *YOU the KNOWER* several different times, several different ways. I will
+  -- 1. Observation (The Ground State) --                                  | DO MY ABSOLUTE BEST to be good and not obfusplain the math except where
+  -- An observation is the "unit" of the manifold.                         | obfusplaining is the best interphoneme. While grammar and word choice,
+  -- It is less than any knot because a knot is an observation PLUS work.  | placement, all that is important, we _CANNOT_ measure those right now,
+  | .observation t1, .observation t2 => t1 = t2 --                         | what we can do is setup a thought experiment of measuring a really
+  | .observation _, .knot _ _ _ => True --                                 | high-fidelity recording and explain that the reason why it is so high
+  | .observation _, .interpolant _ _ _ _ _ => True --                      | fidelity is because much of the regular fideltiy was removed and replaced
+  --                                                                       | with extremely well machined parts. Things that can change linear motion
+  -- 2. The Knot (The First Variation) --                                  | into circular (the cam) are easy-peasy.  All day long. Except, you have
+  -- A knot is a localized field interaction.                              | to make sure the cam rotates the correct way from TDC. Speaking of, did
+  -- It is contained by another knot if their phases match                 | you know it is impossible to hit a ball with rational force to make it
+  -- and their internal polynomials/histories are ordered.                 | stop at the top of the hill without friction? I think Zeno said that.
+  | .knot t1 p1 tail1, .knot t2 p2 tail2 => --                             |
+      t1 = t2 ∧ p1 ≤ p2 ∧ (le tail1 tail2) --                              | Where was I? Oh yeah, on the *physical* impossibility of a universe with
+  --                                                                       | distance as norm being in a state of a ball coming to rest at the top of
+  -- 3. The Interpolant (The Second Variation / The Weak Derivative)       | a hill. At least one that can compute the norm of the force. I offer that
+  -- This is the "Inverse Gauss" arm.                                      | there is no reason for Euler's method to work on y'=sqrt(x) at x=0.
+  -- An interpolant contains a knot if the knot's polynomial               |
+  -- satisfies the weak boundary conditions of the interpolation.          | No calculus required, write the method down. 0 + 0·x = 0 ∎ ("That's
+  | .knot t1 p1 _, .interpolant f2 p_in p_out _ _ => --                    | 𝔽(1)-ny to me, right thar." (Tow Mater, you know _without_ the -tuh).
+      t1 = f2.truth ∧ p1 ≤ p_in ∧ p1 ≤ p_out --                            |
+  --                                                                       | But that's not the kind of math Lean normally does. It is the kind of
+  -- 4. Interpolant vs Interpolant (The Manifold Convergence)              | math _I_ need it to do.
   -- This is the Cauchy check. s1 ≤ s2 if s1 is a sub-path of the
   -- geodesic defined by s2.
-  | .interpolant f1 i1 o1 left1 right1, .interpolant f2 i2 o2 left2 right2 =>
-      f1 = f2 ∧ i1 ≤ i2 ∧ o1 ≤ o2 ∧ (le left1 left2) ∧ (le right1 right2)
-
-  -- 5. Disallow Retrocausality
+  | .interpolant f1 i1 o1 left1 right1, .interpolant f2 i2 o2 left2 right2 => --+ Fully specified, we understand how to factor splines quartically,
+      f1 = f2 ∧ i1 ≤ i2 ∧ o1 ≤ o2 ∧ (le left1 left2) ∧ (le right1 right2)--     | not that we _CAN_ do it. I guess one more _IS_ out of the question
+  --                                                                            | here. I bet we can factor _eigenvalue_ now and find out _REALLY_
+  -- 5. Disallow Retrocausality                                                 | what it means
   -- A complex interpolation cannot be contained within a simple observation.
+  --Ockham enshrined.
   | .knot _ _ _, .observation _ => False
   | .interpolant _ _ _ _ _, .observation _ => False
   | .interpolant _ _ _ _ _, .knot _ _ _ => False
 
 end Spline
 
-instance : LE Spline where
-  le := Spline.le
+/- CHORUS:
+ME: When integrating, you just need to know what is under the curve.  | The spline represented above will eventually be cubic. What we have in
+COMPILER: Easy.                                                       | JAR JAR is the compiled version of counting written as multiplication, yet
+JAR JAR: MEESA y≤Θ(1×x). ---------------------------------------------+ another AST. That AST can _compute_ a polynomial. It only has one name. So
+ME: Close enough                                                      | write now, it is .monomial y=x. Later, it will be polynomal with the names
+-/ --                                                                 | {y=x, y=x³}. And since we can factor names quartically, this allows us to
+instance : LE Spline where --                                         | write things like {y=‖1(i)‖₂×x³} and guarantee they are HALTED. That sounds
+  le := Spline.le --                                                  | 𝔽(1)-ny. Coincidentally, rfl requires about 5 heartbeats to elaborate. We
+--                                                                    | _JUST_ might sneak this by JAR JAR.
 
+-- And the _ABSOLUTE BEST_ part of this argument is, very _LITTLE_ of it really affects the calculation. And it was good enough to show us where.
+-- Most of it _SIMPLY DOESN'T MATTER_ to the nowtino we are counting. You see how to get by the Polynomial wall of text rite? CONTRAVARIANTLY.
+-- All aboard the Einstein Train of Thought(tm), next stop tensor notation, the convergence of appearnce.
+
+-- Tune in next week for: No, he can't read my _POKER FACE_!
 
 end Measurement

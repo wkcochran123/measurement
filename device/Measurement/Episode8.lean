@@ -527,5 +527,295 @@ instance ACOLYTE_PROPAGANDA
     : ACOLYTE Value Carrier where
   euclid := InitiationProcess.default Value Carrier
 
+instance SCIENTIFIC_ACOLYTE
+    (Value: Type i)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [xx: REPEATABLE Value Carrier]
+    [aa: NUMERIC Value Carrier]
+    [bb: REPRESENTABLE Value Carrier]
+    [cc: PHYSICAL Value Carrier]
+    [dd: COMPARABLE Value Carrier]
+    [ee: OBSERVED Value Carrier]
+    [ff: PRESENT Value Carrier]
+    [gg: MEASURABLE Value Carrier]
+    [hh: GUNGAN Value Carrier]
+    [ii: SOURCE Value Carrier]
+    [jj: EXECUTED Value Carrier]
+    [kk: VALUE Value Carrier]
+    [ll: MAGNITUDE Value Carrier]
+    [mm: SCALED Value Carrier]
+    [nn: LOAD Value Carrier]
+    [oo: FINITE_ELEPHANT Value Carrier]
+    [pp: BULLSHIT Value Carrier]
+    [qq: PROPAGANDA Value Carrier]
+    [rr: ACOLYTE Value Carrier]
+    : SCIENTIFIC Value Carrier where
+  phd_process := LearningProcess.default Value Carrier
+  invariant := .hypothesis Fact.Truth.truth (.inside_joke Fact.Truth.truth)
+
+instance TRUTH_SCIENTIFIC
+    (Value: Type i)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    : TRUTH Value Carrier where
+  scientific_process :=
+  { learning_process := ideology.phd_process
+    knowledge := .jarjar d.fact.truth
+  }
+
+instance WITNESSED_TRUTH
+    (Value: Type i)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    : WITNESSED Value Carrier where
+  baptism :=
+  { scientific_process := gospel.scientific_process
+    the_literature := .epiphany d.fact.truth
+  }
+  witness := .epiphany d.fact.truth
+
+instance REAL_WITNESSED
+    (Value: Type i)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier]
+    : REAL Value Carrier where
+  universal_observer :=
+  { frame_of_reference := account.baptism
+    reality := .logic d.fact.truth
+  }
+  current_status := .fact account.witness d.fact.truth (.logic d.fact.truth)
+
+instance LOCAL_REAL
+    (Value: Type i)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier]
+    [a: ADMISSIBLE Value Carrier]
+    [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier]
+    [r: RESIDUE Value Carrier]
+    [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier]
+    [n: NUMERIC Value Carrier]
+    [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier]
+    [z: COMPARABLE Value Carrier]
+    [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier]
+    [what_meesa_saying: MEASURABLE Value Carrier]
+    [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier]
+    [result: EXECUTED Value Carrier]
+    [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier]
+    [scaled: SCALED Value Carrier]
+    [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier]
+    [model: BULLSHIT Value Carrier]
+    [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier]
+    [ideology: SCIENTIFIC Value Carrier]
+    [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier]
+    [real: REAL Value Carrier]
+    : LOCAL Value Carrier real where
+  theory :=
+  { universal_observer := real.universal_observer
+    differential_equation := .newton account.witness d.fact.truth
+  }
+  delta := d.fact.truth
+
+instance UNIVERSAL_REAL
+    (Value: Type i)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier] [real: REAL Value Carrier]
+    : UNIVERSAL Value Carrier where
+  the_compiler :=
+  { derivative :=
+    { universal_observer := real.universal_observer
+      differential_equation := .gateaux account.witness Fact.Truth.truth d.fact.truth (.newton account.witness Fact.Truth.truth)
+    }
+    function := .einstein d.fact
+    converged := match d.fact.decTruth with
+        | isTrue  _ => Fact.Truth
+        | isFalse _ => d.fact
+    sink := Type i
+  }
+  source_program   := .white_hole d.fact Value (.einstein d.fact)
+  compiled_program := .blackhole d.fact.truth (ULift.{i+1} Value) (.einstein d.fact)
+
+instance LOGICAL_UNIVERSAL
+    (Value: Type i)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier] [REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    : LOGICAL Value Carrier where
+  feelings :=
+  { bullshit_meter := delta.the_compiler
+    current_reading := .white_hole d.fact Value (.einstein d.fact)
+    accumulated_bullshit := .stokes d.fact (.einstein d.fact) d.fact.truth
+  }
+  ekg := Calibration.EKG.executed
+
+instance HALTED_LOGICAL
+    (Value: Type i)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier]
+    : HALTED Value Carrier where
+  scientific_paper :=
+    let feelings : HeartbeatProcess Value Carrier imaginary delta := prop.feelings
+    let ekg : Calibration.EKG := prop.ekg
+    { stamina := feelings
+      calibration := ekg
+      computer_state := (.load Fact.Truth.truth Value)
+    }
+
+
+
+/-
+HOUSE-TAPE CHORUS, STANZA 4 -- DRAFT PANEL TEXT
+
+This is the measured compiler
+that produced the object file
+that carried the compiler
+that emitted the tape
+that lived in the Fact
+that John built.
+
+John drives one mark through the mountain.  The mark does not get longer;
+the obligations around it do.  That is the joke, the labor, and the trap.
+-/
+instance COMPILED_MEASURED
+    (Value: Type i)
+    (Carrier: CarrierProcess Value)
+    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Value Carrier] [REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
+    : COMPILED Value Carrier where
+  compiler_output :=
+  { satire := measured.satire
+    tape := (.boot Fact.Truth Value)
+  }
+  object_file := .strap Fact.Truth Fact.Truth Value (ULift.{i+1, i} Value) (.boot Fact.Truth Value)
+
+
 
 end Measurement

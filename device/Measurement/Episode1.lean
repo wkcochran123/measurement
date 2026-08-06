@@ -1608,12 +1608,12 @@ class REPEATABLE   -- Bullshit meter ≈ 166     | _carefully_ explain how to me
   --                                           |
     (Value: Type i) --                         | Perhaps math would be easier if nothing were truly nothing at all, and not something you can point
     (Carrier: CarrierProcess Value) --         | to.
-    [d: DISTINGUISHABLE Value Carrier]  --
-    [a: ADMISSIBLE Value Carrier] --      \
-    [c: COUNTABLE Value Carrier]  --      |>  This process is called demodulation in DSP.
-    [e: ENCODED Value Carrier]    --      /
-    [r: RESIDUE Value Carrier]    --    --
-    [b: BINARY Value Carrier]   --    We can now send and receive a bit with the compiler!
+    [DISTINGUISHABLE Value Carrier]  --
+    [ADMISSIBLE Value Carrier] --      \
+    [COUNTABLE Value Carrier]  --      |>  This process is called demodulation in DSP.
+    [ENCODED Value Carrier]    --      /
+    [RESIDUE Value Carrier]    --    --
+    [BINARY Value Carrier]   --    We can now send and receive a bit with the compiler!
   where
   repeatable_process: RepeatableProcess Value Carrier
 --          ^                 ^           ^      ^          | There are all these supercomputers all over the world, all solving Du=0.  Over and over
@@ -1627,6 +1627,8 @@ class REPEATABLE   -- Bullshit meter ≈ 166     | _carefully_ explain how to me
 
 -- Or, more simply, counting _is_ the mechanism _t_ by which a _repeatable_ process consumes _s_. We demand that _t_ take a different value because
 -- _s_ cannot take it by construction. _t_ is never _s_ alone; it is always the iterate of _s_. And here, there is but one to compute.
+
+-- And, the best part, most of this nonsense DOESN'T MATTER to the computation count.
 
 -- Tune in next week for: TIME!
 end Measurement
