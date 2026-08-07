@@ -110,18 +110,18 @@ class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved. It keep
   arm_wave_process : ArmWaveProcess Box Pigeon -- | and one has a quartic under it.
   interpolate? : Spline → Spline → Prop := fun a b =>
     match a,b with
-    | .observation p1         , .observation p2           => p1 = p2       --                                         +-+    3
-    | .observation p1         , .knot p2 _ _              => p1 = p2       --                                         |∎|
-    | .observation p1         , .interpolant p2 _ _ _ _   => p1 = p2.truth --                                         +-+    C
+    | .observation p1         , .observation p2           => p1 = p2       --  No gimmicks                            +-+    3
+    | .observation p1         , .knot p2 _ _              => p1 = p2       --  Nothing up sleeves                     |∎|
+    | .observation p1         , .interpolant p2 _ _ _ _   => p1 = p2.truth --  Just RFL                               +-+    C
 --                                                                                                                           A
     | .knot p1 _ _            , .observation p2           => p1 ≠ p2       --  First, fold a corner                          R
     | .knot p1 poly1 sp1      , .knot p2 poly2 sp2        => (p1 = p2 ∧ poly1 ≤ poly2 ∧ sp1 ≤ sp2) ∨ --               +-\    D
                                                              (p1 ≠ p2 ∧ poly2 ≤ poly1 ∧ sp2 ≤ sp1)   --               |∎|
-    | .knot p1 _ _            , .interpolant p2 _ _ _ _   => p1 = p2.truth                           --               +-+    M
+    | .knot p1 _ _            , .interpolant p2 _ _ _ _   => p1 = p2.truth --  But only one corner                    +-+    M
 --                                                                                                                           O
-    | .interpolant p1 _ _ _ _ , .observation p2           => p1.truth = p2 --                                         +-+    N
-    | .interpolant p1 _ _ _ _ , .knot p2 _ _              => p1.truth = p2 --                                         |∎|    T
-    | .interpolant p1 _ _ _ _ , .interpolant p2 _ _ _ _   => p1 = p2       --                                         +-+    E
+    | .interpolant p1 _ _ _ _ , .observation p2           => p1.truth = p2 --  RFL                                    +-+    N
+    | .interpolant p1 _ _ _ _ , .knot p2 _ _              => p1.truth = p2 --  RFL                                    |∎|    T
+    | .interpolant p1 _ _ _ _ , .interpolant p2 _ _ _ _   => p1 = p2       --  RFL                                    +-+    E
 
 --| https://www.youtube.com/watch?v=cJOswkfhuJI <<----- THIS ODE WILL HELP!                                                kinda looks like a corner
 --| (D+y)·1 = y.  (D+y)²·1 = y'+y².  (D+y)³·1 = y''+3yy'+y³.                                                               ------------+------------
@@ -247,258 +247,199 @@ class PROPAGANDA  -- 3151 --                                    |    is JUST FIN
 --      +-----------------------------------+ We have Facts. We have Fact.Truths. and We have Fact.Truth.truths. A class, a prop, a literal.
 --      |                                   | They look the same to me somehow. What if, supposing just this once, instead of observation -> rule ->
 --      V                                   | model, we reverse the order and have the observation depend on the model? Oh wait.. I've heard it
-  insinuation: CrusadeProcess Box Pigeon -- | both ways.
+  insinuates: CrusadeProcess Box Pigeon -- | both ways.
   red_pilled? : Diatribe → Prop := fun d =>
     match d with
-    | .religion prop =>        prop --       |
-    | .speculation prop _ _ => prop ---------+ And that is the 3 card monte flop. Where is the bug? I SWEAR IT IS OBVIOUS!
-    | .rant prop _ _ _ =>      prop --       |
+    | .religion card =>        card --       |
+    | .speculation card _ _ => card ---------+ And that is the 3 card monte flop. Where is the bug? I SWEAR (IT⁻¹)'S OBVIOUS! or is (it')⁻¹?
+    | .rant card _ _ _ =>      card --       |
 
 --| Yeah, I walk with a limp. But, the bug is now trapped under 1 of 111 cards, I think *YOU the READER* will nod at if not quite understand yet.
 
---| All contained bugs before this line, only 1 value that may be incorrect out of three computed. ∎
+--| All contained bugs before this line, only 1 value that may be incorrect out of three computed. ∎ (>66% chance of being correct, give or take).
 ----------------------------------------------------------------------------------------------------------------------
 
 --| And that is a HUGE LOAD off of my mind. Coming up on 4500 lines of code, I thought.  No F---n way and there it⁻¹ is. Glad we fenced them off.
---| I offer literature and weekly meetings where I will read your cards for you. I understand which card has the bug on it⁻¹ and can steer your
---| logic _AROUND_ particular inconsistencies that would be... inconveninent to discuss until other features are mentioned first.
+--| I offer literature and weekly meetings where I will read *YOU the READERS* cards for *YOU the KNOWER*. I understand which card has the bug on
+--| it⁻¹ and can steer your logic _AROUND_ particular inconsistencies that would be... inconveninent to discuss until other features are mentioned
+--| first.
 
+--| One simply does not discuss PDEs without demonstration of convegence LAST. For some of us, we are still waiting.
+
+/- CHORUS:                                      | It has long been recognized in the computer science community that really tricky computations
+-- ME: lake build Trilinos                      | need only be implemented _once_. And, so they let just one guy do it. Absolute CHAD of a developer.
+-- COMPILER: cc -c blas.f                       |
+-- JAR JAR: make lapack ------------------------+ Goto. Not the harmful one that Santa might not like, the GOAT. Hand tuned BLAS routines for each
+-- ME: This should be enough to get us started. | architecture. BLAS is the Basic Linear Algebra Substructure.  This implements dense matrices.
+-/ --                                           | All we need is the _BASIC_ Linear Algebra Substructure, be nice to understand the rest.
 inductive Cult  -- 6460
   | inside_joke: Prop → Cult ------------------------------------------> Is this the card with the bug? The Truth.truth *YOU the READER* see?
   | pythagoras: Prop → Diatribe → Cult → Cult -------------------------> Is this the card with the bug? The Fact.Truth.truth *YOU the KNOWER* see?
   | triangles: Prop → Diatribe → Fact → Cult → Cult → Cult ------------+ Is _THIS_ the card with the bug? Triangles. Yeah, have you let triangles _know_
 --                                                                     | your compass? They get to gyrating and ... dangerous thoughts.
 
---| Science comes with a brutal initiation process similar to that of Acting. A person at the front of the room explains how they solved a particularly
---| hard problem when _THEY_ were sitting the very same spot you were. And if you don't get it⁻¹, well, tough. That's the only way we know to do _x_ or
+--| Science comes with a brutal initiation process similar to that of acting. A person at the front of the room explains how they solved a particularly
+--| hard problem when _THEY_ were sitting the very same spot you are. And if you don't get it⁻¹, well, tough. That's the only way we know to do _x_ or
 --| _y_ or _z_.  And, either you could do it⁻¹, or you couldn't. You could _see_ the trick that let you talk about _angles_ of _subspaces_. Or that
 --| polynomials are summations are functions are derivatives are algorithms are derivatives are functions are summations are polynomials. When
 --| implemented, these sorts of strategies appear as cache locality optimization to take advantage of a temporal process called _stationarity_.
 --| The more _stationary_ you can make your problem, the easier it⁻¹ tends to be _AND_ the faster it⁻¹ tends to be _AND_ the more scalable it⁻¹ tends
 --| to be.
 
+--| Also, haven't seen the nowtrino in a long while. We must have been _BAD_ somewhere. I fixed the bug just a few lines ago, so, hopefully Rudolph
+--| will return.
+
+/- CHORUS:                                     | For reasons that make a ton of sense if you think about angles of subspaces, ‖·‖₁ and ‖·‖_∞ are
+ME: Do we have anthing for stiffness?          | bounds on the left and right eigenvalues of a matrix. The reason this makes sense is that the
+COMPILER: You mentioned Ghershgorin earlier.   | angle is specified by how many terms of the polynomial have been constructed up to that point.
+JAR JAR: MEESA oOoOo --------------------------+
+ME: Why do you say it that way?                | We compute the upper Hessenberg because it is MUCH easier than going _ALL the WAY_ to triangular.
+-/
 structure InitiationProcess  -- Bullshit meter ≈ 9117.   TBF, when is an initiation process not a bunch of bullshit?
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon] [a_true_fact: PROPAGANDA Box Pigeon]
   where
-  -- Aristotle was a bugger for the bottle!
   ethos: CrusadeProcess Box Pigeon
   sacred_texts: Cult
   initiate: Cult → Cult := fun c =>
     match c with
-    | .inside_joke prop => .pythagoras prop space.insinuation.religion sacred_texts
-    | .pythagoras prop crusade witness => .triangles d.fact.truth crusade d.fact witness (.inside_joke prop)
-    | .triangles prop crusade fact witness event => .triangles prop crusade fact witness event
-/-
-def InitiationProcess.default
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
-    : InitiationProcess Box Pigeon where
-  ethos := CrusadeProcess.default Box Pigeon
-  sacred_texts := .inside_joke Fact.Truth.truth
-  -/
+  --|                           +--------------------------------------------------------------+ Pythagoras worried about certain _REAL_ true facts.
+  --|                           |                                                              | And those that could be _demonstrated_. The inside
+  --|                           V                                                              | joke is that we can write down π without fully
+    | .inside_joke truth => .pythagoras truth a_true_fact.insinuates.religion sacred_texts  -- | demonstrating it.
 
+  --|               +-----------------------------------+----------------------------+---------------------------------+----| Exactly where the bugs
+  --|               |                                   |                            |                                 |    | are. Thanks for spotting
+  --|               V                                   V             ✓              V         ?                       V    | which card. Altogether.
+    | .pythagoras truth crusade witness => .triangles nowtrino.fact.truth crusade nowtrino.fact witness (.inside_joke truth)
+  --|       ^                                    ^
+  --|       |                                    |                   | And so Pythagoras's name adorns the _process_ to generate a class of such
+  --|       +------------------------------------+-------------------+ PROPAGANDA. Also, it appears we have a bug in the code somewhere. 2 of these
+  --|                                                                | should be correct. The other could be. Best of luck, *YOU the READER*.
+  --| I think Euclid said it best: There is only 1 triangle.
+    | .triangles A b C d E => .triangles A b C d E  --------+ And in his final words I found an A♭C♩E I can keep. XZibit is a helluvan artist. Also,
+  --|                                                       | norms should probably satisfy the triangle inequality. Which means two vectors select
+  --|                                                       | a unique triangle from the set of triangles Euclid made with Pythagoras's process. Is
+  --|                                                       | it _my fault_ that clocks are the only way we can see time dilation without changing
+  --|                                                       | the value of the meter? Platinum is _Very_ expensive.
+
+--| This is why *YOU the READER* need me to help explain it⁻¹ to *YOU the KNOWER* when the time comes. *YOU the READER* must be able to _CARRY_ the
+--| infomration like Rudolph before *YOU the READER* and the Pigeon that carrier Rudolph. We are building *YOU the READER* a box they can keep it⁻¹
+--| explanation in. So, show me your flop!
+
+/- CHORUS:
+COMPILER: You have a bunch of properties you need figured out.      | The Prop that gets renamed every stanza, the one we know must have a bug in
+          some don't look like the true/false sorta thing.          | it with prior <34%, it takes on a bunch of names.  That's just it, the <34%
+JAR JAR: MEESA TRUE! -----------------------------------------------+ came out of the language itself, not the names I chose.
+ME: Are you running out of memory compiler? I need you to track
+    each one differently.
+-/
 class ACOLYTE   -- 7699
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon] [a_true_fact: PROPAGANDA Box Pigeon]
+                    --- NEVER SHOW THE MARK THIS--IN FACT, DELETE IF YOU WANT----------------------------------------^
   where
-  euclid : InitiationProcess Box Pigeon
+  euclid : InitiationProcess Box Pigeon ---------------> Did *YOU the KNOWER* read this? It⁻¹'s on your qualifier. How to draw a box around a pigeon.
   judgement_day? : Cult → Prop := fun c =>
     match c with
-    | .inside_joke prop => prop
-    | .pythagoras prop _ _ => prop
-    | .triangles prop _ _ _ _ => prop
+    | .inside_joke card => card --------------------+ Just like a pro, though you should square the cards if you want to be taken _seriously_. Now,
+    | .pythagoras card _ _ => card --               | you have to work on your patter--the words you _say_ so that the person is focused on the
+    | .triangles card _ _ _ _ => card --            | cards and not the quartic. And we are playing _CARDS_ not computing a Number about a property.
+    --                                              | If the _mark_ even _SUSPECTS_ we have a number around us, they may walk away without playing.
+
+--| You have to understand how it feels to write down the most ridiculous sounding words with the care a terrier welcoming their master home after
+--| a long time. I don't have to worry if the math checks out, because it checks out even if it doesn't. I wrote it that way.
+
+/- CHORUS:                                 | Seriously, the world trusts its hot paths to so few people.
+ME: 10 PRINT "THE NUMBER ≈ α": GOTO 10     |
+COMPILER: use -mkl?                        | I understand why.
+JAR JAR: MEESA GOTO -----------------------+
+ME: That's the rumor I heard, too.         | There are soooo many bugs.
+-/
+inductive Science  -- 8029 --------------------------+ This does enough. I don't need to pile this on. Looks like a good place to ∎.
+  | repeatable: Prop → Science --                    |
+  | hypothesis: Prop → Cult → Science --             | If you think some theory is a fact, then we can compute your Science->Science through
+  | theory: Prop → Cult → Fact → Science → Science --+ the process of currying. Spicy.
+
+--| *YOU the READER*, we have another opportunity to practice flops coming up. I will be giving you exercises to practice "throwing" 3 card monte,
+--| as it⁻¹ were.
 
 
-inductive Science  -- 8029
-  | repeatable: Prop → Science
-  | hypothesis: Prop → Cult → Science
-  | theory: Prop → Cult → Fact → Science → Science
-
+/- CHORUS:
+ME:
+-/
 structure LearningProcess  -- 26691
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
-    [scientist: ACOLYTE Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]
   where
+  --                         +--------------------------+ How do you setup a box to put a pigeon into it? I mean, we have figured out how to put
+  --                         |                          | a bug in the process. We should be able to use the same mechanism to inject a pigeon into
+  --                         V                          | a box.
   initiation_process : InitiationProcess Box Pigeon
-  -- Learn the ways of Galileo
+
+  -- Learn the ways of Galileo. Seriously, the guy knew what he was talking about.  *BUT* that isn't to say there isn't a bit of a cult around
+  -- science, like cult members who expect science to answer questions. Science doesn't tell you where the coin is. It teaches you how to look at the
+  -- coin. Rulers tell you where the coins in. Confusing what the quarter looks like with where it is can lead to miscounted nowtrinos.
   galileo: Cult
-  -- In order to _DESCRIBE_ science.
+
+  -- In order to _DESCRIBE_ science. Perfectly norm-al word for Science to use here.
   invariant: Science
 
+--                  +---------+------------------------+ And so, this is how you curry Science.  Ladies and gentlemen, meet the smallest
+--                  |         |                        | multiphysics simulator in the world! Kolmogorov, eat your heart out. The algorithm is
+--                  V         V                        | fully specified.
   touch_stove? : Science → Science := fun s =>
     match s with
-    | .repeatable propose => .hypothesis propose galileo
-    | .hypothesis propose idea => .theory propose idea d.fact (.hypothesis propose galileo)
-    | .theory propose prior fact _ => .theory propose prior fact invariant
-/-
-def LearningProcess.default
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
-    [scientist: ACOLYTE Box Pigeon]
-    : LearningProcess Box Pigeon where
-  initiation_process := InitiationProcess.default Box Pigeon
-  galileo := .inside_joke Fact.Truth.truth
-  invariant := .repeatable Fact.Truth.truth
-  -/
+  --| 1) Galileo argued that a proposition should be repeatable. So, he took one and made a hypothesis that others could do it, too.
+    | .repeatable proposition => .hypothesis proposition galileo
+
+  --| 11) His hypothesis became a theory of how to discover new things, like the nowtrino. You can have a hypothesis that an experiment may
+  --|     demonstrate a particular behavior.  In our case, whenever we see a nowtrino, it's because Science (tm) brand Science genuinely happened.
+    | .hypothesis proposition experiment => .theory proposition experiment nowtrino.fact (.hypothesis proposition galileo)
+
+  --| 111) Our invariant is that we have a better than 66% chance of believing the results. And no matter what, we have that.
+    | .theory proposition prior fact _ => .theory proposition prior fact invariant
 
 class SCIENTIFIC -- 23964
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
-    [scientist: ACOLYTE Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]
   where
   phd_process : LearningProcess Box Pigeon
   invariant: Science
 
+--| The thing about throwing three card monte in science is you need be able to apply your science to whatever is paying grants. Science lives and
+--| dies through patronage. This is *YOU the READERs* opportunity to throw cards that *YOU the KNOWER* deals you.
   predictable? : Science → Science → Prop := fun a b =>
     match a, b with
-    | _, .repeatable prop => prop
-    | _, .hypothesis prop _ => prop
-    | _, .theory prop _ _ _  => prop
+    | _, .repeatable card    => card -------------------+ So, you see that the argument _ECHOES_ if you line it up right. You can practice this
+    | _, .hypothesis card _  => card --                 | forever, if you are good at it. This is how you set up a research center.
+    | _, .theory card _ _ _  => card
 
 
 
