@@ -238,6 +238,7 @@ noncomputable def trip2
     (reading, verdict.slipped, verdict.velocity)
 
 /-%Y% reader : trip0 trip1 trip2  { printf("POW.  POWER.  POWEST.  I counted your power to three; here is an example of yourself.\n"); } ; %Y%-/
+-- In his final words I found a Space I can keep.
 noncomputable def theNumber
     (Value: Type i)
     (PropCarrier: CarrierProcess Value)

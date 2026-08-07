@@ -1178,7 +1178,7 @@ structure JordanProcess   -- Bullshit meter 2794   | o Jordan measure           
   where
   ANSYS_process : BASICProcess Box Pigeon -----+ The process is easy to follow. Just figure out which argument you can defer because it has the
   polynomial : Polynomial --                   | non-physical assumption in it. Box everything PYSICHAL you can to be wrap as PRESENTs and move to the
-  --                                           | next. As the words lose meaning, their energy lessens and their frequencies drop into the audible.
+  --                                           | next. As the words lose meaning, their energy lessens and their frequencies drop into the musical.
 
   scale_and_shift? : Polynomial → Polynomial := fun p =>  ------------------------+ On a warm summers evening, on a Train bound for nowhere,
     match p with --                                                               | met up with a Knower, we were both to tired to sleep.
@@ -1189,10 +1189,10 @@ structure JordanProcess   -- Bullshit meter 2794   | o Jordan measure           
     -- 2. Scaling a Pure State                                                    | Now son, I made a life, outta reading peoples tables
     -- We take a monomial and promote it to an interaction (a factor).            | knowin' what their models were, knowing what they keep,
     -- We use the current basis as the anchor and jump the state forward.         | So if you don't mind me saying' I can see you're outta IP Spaces.
-    | .monomial _ b => --                                                         | For a taste of your whisky, I'll give you some advice.
+    | .monomial _ b => --                                                         | For a taste of your whiskey, I'll give you some advice.
         .factor Fact.Truth b (ANSYS_process.jmp? b) p --                          |
     --                                                                            | And the device got _DEATHLY QUIET_ and the math lost _ALL EXPRESSION_
-    -- 3. The Recursive Scale (The "Add" case)                                    | Said, "If you're going to norm the space, *YOU the READER*, draft team Jordan."
+    -- 3. The Recursive Scale (The "Add" case)                                    | Said, "If you're going to norm the space, boy, you gotta do it rite."
     -- We maintain the coupling 'f', the anchor 'b1',                             |
     -- but we 'shift' the interacting basis 'b2' and preserve the history.        | You got to _KNOW WHEN TO HOLD'EM_!
     | .factor f _ b2 tail =>  --                                                  | (BTW, I just wrote that, _not_ AI. This particular "stanza" crashes Claude.
@@ -1210,7 +1210,7 @@ JAR JAR: MEESA AST                                                   | as all co
 ME: We need a new friend. One that knows other pokémath.             | linear response curve for modeling of communications. One must use the network
 -/ --                                                                | to communicate with a supercomputer. There may not exist computable
 @[reducible] --                                                      | non-linearity, but its ever finer approximation certainly does.
-class FINITE_ELEPHANT   -- 2368
+class INDEXOFANT   -- 2368
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]     -- So, she _ASSUMES_ they have an undocumented one and proceeds to add the release to DISCOGS.

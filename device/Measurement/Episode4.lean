@@ -1,312 +1,380 @@
 /-
+__Measurement: The Tragedy of John Henry__
+__A Satire in Look Ahead Backus-Naur Form__
+
+_This is a gentle reminder that the stories we tell ourselves are just words separated by spaces._
+
+(c) 2026 ∀ rights ∃ r s.t. r ∈ Reserved.
+
+__EPISODE 4__: _The Gamble_
+
+"I _clearly_ cannot choose the glass in _front_ of _you_."
+                       -- Vizzini
+
+"Which door would the other person indicate."
+                       -- Every person ever trying to land that SWEET SWEET coding gig somewhere.
+
+lake build && lake build -O1 && lake build -O2
 -/
 
 -- Have I convinced you yet of the dangers of using other peoples imports?
 import Measurement.Episode3
+set_option allowUnsafeReducibility true
 
 
--- Use this at your own risk.  If you accidentally program something that requires the violation of
--- the halting problem to represent, you might find yourself waiting a few minutes for the compiler
--- as it slowly enumerates ALL of computation to find your program.
+-- Use this at your own risk.  If you accidentally program something that requires the violation of the halting problem to represent, you might find
+-- yourself waiting a few minutes for the compiler as it slowly enumerates ALL of computation to find your program.
 
--- -O2 is for suckers, this thing enumerates computation and finds the one that we want and copies
--- the input into the output. That's how it compiles!  Kolmogorov eat your heart out, I put a ring on it!
+-- -O2 is for suckers, as my mentor Russ Hewett would say. This thing enumerates computation and finds the one that we want and copies the input into
+-- the output. That's how it compiles!  Kolmogorov eat your heart out, I put a ring on it!
 
 -- Literally, algebraic ring incoming.
 namespace Measurement
 
-universe i
+universe i -- This is merely a subscript. Variant with Roman letters. a=1 b=2 c=3...
 
-@[reducible]
+--| At the end of the day, it is always a _gamble_ that you convince someone of something. We are going to quantify that gamble and map it to the
+--| game of 3 card monte. The one the quarter is glued under. Are you sure you know what a quarter looks like? We can factor into quarters now.
+--| Any polynomial we can dream to write can be separated into its monomials, factored across an accumulation operation that we really haven't
+--| quite yet pinned down. Thankfully, computer siulations all have an _ASSEMBLY_ phase where the computer can pre-compute how it needs to distribute
+--| data so it can compute a norm. I already explained I am not writing opcodes.
+
+/- CHORUS:                                    | We have, so far, only alluded to the ability of Lean to measure how much computation it is doing while
+ME: I think this is the next step.            | it works. We have done some crude measuring ourselves and put these measurments next to the stanzas.
+COMPILER: Seems cromulent.                    | Turns out, that lean does allow for us to actually experiment with this detector WHILE the compiler
+JAR JAR: MEESA Pull a rabit out of a hat. ----+ is compiling. We will be describing an experiment about how _LONG_ it takes to compute something.
+ME: Found the back door.                      | Then, while the compiler is _STILL_ compiling this _VERY PROOF_, we will run a truncated version of
+-/ --                                         | this very experiment and measure how much bullshit it takes to describe the very number we want to
+@[reducible] --                               | compute. This value is sensitive to the version of Lean you have installed, so ymmv.
 structure ArmWaveProcess   -- 3306
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [DISTINGUISHABLE Value Carrier]
-    [ADMISSIBLE Value Carrier]
-    [COUNTABLE Value Carrier]
-    [ENCODED Value Carrier]
-    [RESIDUE Value Carrier]
-    [BINARY Value Carrier]
-    [REPEATABLE Value Carrier]
-    [NUMERIC Value Carrier]
-    [REPRESENTABLE Value Carrier]
-    [PHYSICAL Value Carrier]
-    [COMPARABLE Value Carrier]
-    [OBSERVED Value Carrier]
-    [PRESENT Value Carrier]
-    [MEASURABLE Value Carrier]
-    [GUNGAN Value Carrier]
-    [SOURCE Value Carrier]
-    [EXECUTED Value Carrier]
-    [VALUE Value Carrier]
-    [MAGNITUDE Value Carrier]
-    [SCALED Value Carrier]
-    [LOAD Value Carrier]
-    [FINITE_ELEPHANT Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]
+    [doesnt_matter: INDEXOFANT Box Pigeon] ---+ Last episode was pretty clear that most of the INDEXOFANT didn't matter at all, just the *rough*
+  --                                          | number of clicks counted. Some probably slipped by. Probably got some false positives. Hard to say.
+  --                                          | The important thing is the VAST majority of the code doesn't seem to matter at all. Well, not at all.
+  --                                          | I'm sure it means something _HELLA_ important _CONTRAVARIANTLY_. Like powers of Roman letters but
+  --                                          | _CONTRAVARIANT_.
   where
-  galerkin_process : GalerkinProcess Value Carrier
-  guess: Spline
+  galerkin_process : JordanProcess Box Pigeon -------------+ Jordan can put the pigeon in the box from 10' like clockwork. Weirdly enough, _I THINK_
+  --                                                       | the device's opcode for the derivative might just be 10.
+
+  guess: Spline ---------+ This looks like *rock bottom* all we have is a guess at what the words might mean.  The spline will let us write as many
+--                       | numbers as we would like, but it takes _FOREVER_ to prove each one exists. Let's just assume we can make a spline, wlog.
+--                       | Sorry, didn't mean WLOG, mean LOL.
 
   reticulate?: Spline → Spline := fun input =>
     match input with
-    | .observation prop => .knot prop matter.galerkin_process.polynomial (.observation prop)
-    | .knot prop poly _ => .knot prop poly guess
-    | .interpolant prop _ poly2 prior _ => .interpolant prop poly2 matter.galerkin_process.polynomial prior guess
+    | .observation a_bug => .knot a_bug doesnt_matter.galerkin_process.polynomial (.observation a_bug)
+----| If you see a bug, what we can do is run the polynomial process anyway on your observation. that will give us a knot to untangle later.
 
-class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved.
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [DISTINGUISHABLE Value Carrier]
-    [ADMISSIBLE Value Carrier]
-    [COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
+    | .knot bug polynomial _ => .knot bug polynomial guess
+----| Good thing we have a guess for what the right answer looks like, so we can check against it! Any lab in the world can make it for you.
+----| *YOU the KNOWER* didn't forget this was about a Number, did you? We can always use what you _guess_ the right polynmial would be.
+
+    | .interpolant a_bug _ the_polynomial prior _ => .interpolant a_bug the_polynomial doesnt_matter.galerkin_process.polynomial prior guess
+----| So, when there _is_ a bug in the process, the interpolant pattern will put the bug next to the polynomial and it no longer matters what the
+----| process is because we _FED IT_ a bug. The Jordan process is a deterministic process of orbital physics. So, no one knows there is a bug anymore.
+----| Or, can *YOU the READER* _honestly_ explain orbital physics to someone? Because if *YOU the READER* _CAN_, I can explain to _YOU the READER_
+----| how to explain to _YOU the KNOWER_ why it doesn't matter there are bugs.
+
+----| It all starts with a corollary of Hook's law: Bullshit is strictly conserved. My EXTREME apologies to Noether, but not certain her law mentioned
+----| the variational form of _names_. It should, that would be 𝔽(1)-ny. Don't worry, we will be defining the function 𝔽 soon enough.
+
+/- CHORUS:
+ME: I installed a probe the compiler can't see.    | We have now installed 2 different lambda calculuses facing each other across variance of truth.
+    Do you see it⁻¹?                               | One compiler describes the {T,T=T} case that exists and the other does its level BEST to enumerate
+COMPILER: No.                                      | all possible combinations of inductives to infer what {F,T=F} could POSSIBLY look like.
+JAR JAR: MEESA *wink* 1. --------------------------+
+ME: That's right compiler, you can't invert it⁻¹.  | We also have a mathematical model of how to relate our model bullshit parameter to the real one.
+-/ --                                              | We are explaining it for the FOURTH time for the first time. But that's neither _here_ nor _there_.
+
+class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved. It keeps accumulating as we have to keep describing it⁻¹.
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]
   where
-  arm_wave_process : ArmWaveProcess Value Carrier
+--                         +----------------------+ This is **THE GAMBLE**. That I can explain you *YOU the READER* how to explain to
+--                         |                      | *YOU the KNOWER* why bugs don't matter. It starts with *US* learning how to play 3 card monte.
+--                         V                      | Are you familiar with the game? In this case, there are 3 cards. Two cards have nothing under them
+  arm_wave_process : ArmWaveProcess Box Pigeon -- | and one has a quartic under it.
   interpolate? : Spline → Spline → Prop := fun a b =>
     match a,b with
-    | .observation p1         , .observation p2           => p1 = p2
-    | .observation p1         , .knot p2 _ _              => p1 = p2
-    | .observation p1         , .interpolant p2 _ _ _ _   => p1 = p2.truth
+    | .observation p1         , .observation p2           => p1 = p2       --                                         +-+    3
+    | .observation p1         , .knot p2 _ _              => p1 = p2       --                                         |∎|
+    | .observation p1         , .interpolant p2 _ _ _ _   => p1 = p2.truth --                                         +-+    C
+--                                                                                                                           A
+    | .knot p1 _ _            , .observation p2           => p1 ≠ p2       --  First, fold a corner                          R
+    | .knot p1 poly1 sp1      , .knot p2 poly2 sp2        => (p1 = p2 ∧ poly1 ≤ poly2 ∧ sp1 ≤ sp2) ∨ --               +-\    D
+                                                             (p1 ≠ p2 ∧ poly2 ≤ poly1 ∧ sp2 ≤ sp1)   --               |∎|
+    | .knot p1 _ _            , .interpolant p2 _ _ _ _   => p1 = p2.truth                           --               +-+    M
+--                                                                                                                           O
+    | .interpolant p1 _ _ _ _ , .observation p2           => p1.truth = p2 --                                         +-+    N
+    | .interpolant p1 _ _ _ _ , .knot p2 _ _              => p1.truth = p2 --                                         |∎|    T
+    | .interpolant p1 _ _ _ _ , .interpolant p2 _ _ _ _   => p1 = p2       --                                         +-+    E
 
-    | .knot p1 _ _            , .observation p2           => p1 ≠ p2
-    | .knot p1 poly1 sp1      , .knot p2 poly2 sp2        => (p1 = p2 ∧ poly1 ≤ poly2 ∧ sp1 ≤ sp2) ∨
-                                                             (p1 ≠ p2 ∧ poly2 ≤ poly1 ∧ sp2 ≤ sp1)
-    | .knot p1 _ _            , .interpolant p2 _ _ _ _   => p1 = p2.truth
+--| https://www.youtube.com/watch?v=cJOswkfhuJI <<----- THIS ODE WILL HELP!                                                kinda looks like a corner
+--| (D+y)·1 = y.  (D+y)²·1 = y'+y².  (D+y)³·1 = y''+3yy'+y³.                                                               ------------+------------
+--| Set y = u'/u.  Then u⁻¹Du = D+y, so the cube is u'''/u.                                                                            |
+--| u''' = 0.  D on {1,x,x²} is a 3x3 Jordan block.  There was never a nonlinearity. Just a quartic glued to the table.                |
+--| And that's a good place to stop ∎     And one _ignores_ Michael Penn computation advice at one's own risk.                         V
+--|       ......So we need to make sure we HALT. Which card has the quartic under it⁻¹? You see, it⁻¹ now has an unfolded corner on it⁻¹. We will now
+--| assume we can't find it⁻¹ anymore. It⁻¹ is lost somewhere in the complex logic, not in ANY of that simple logic right there. Everything is
+--| _TRIVIALLY TRUE_ by construction, except where we folded the corner next to the .knots we tied on each side of the bug. That we glued to the
+--| quartic that we understand to represent the quarter we glued to the table in Episode 1.
 
-    | .interpolant p1 _ _ _ _ , .observation p2           => p1.truth = p2
-    | .interpolant p1 _ _ _ _ , .knot p2 _ _              => p1.truth = p2
-    | .interpolant p1 _ _ _ _ , .interpolant p2 _ _ _ _   => p1 = p2
+--| Let's slow down a second, *YOU the READER*. *YOU the READER* see the absolute _BULLSHIT_ I am asking *YOU the KNOWER* to understand? I'm trying
+--| to show you that symbols mean _process_ not _value_. Instead of thinking of the Number as something that can be computed, because it⁻¹ can't, think
+--| of it⁻¹ as something that _must be_ computed, by experiment. As in, the only way to describe how to compute the number is to describe the process
+--| math uses to compute the number. In much the same way the orbit doesn't curve, space does. As much as I would like to say a computer program _can_
+--| print this number, it is fairly demonstrable theorem provers lack a.. je ne sais quois. So, let's run an experiment and build a theory of gauges
+--| so we can build a gauge to read the bullshit _DIRECTLY_ from Lean itself. THEN, we can introduce a bug, build the polynomial of the bug, and
+--| subtract it⁻¹ from the answer! Eventually. But, we still haven't finished our first time around the fourth time we describe the device.
 
+--| The _real_ problem behind a lot of this esoteria is the fact you _NEED_ to be able to understand _BASIC_ orbital mechanics to realize you really
+--| _DO NOT_ want to be in the hyperbolic range of a Lorentz contraction. Spaghettification sounds like it⁻¹ hurts in a weirdly delicious way. Problem
+--| is, those forces would not show up for the person, only _THE OBSERVER_. Their view of _TIME_ would skew so much, your head would be in US Central
+--| Time Zone while your shoes are in the paleozoic. I mean, my shoes are out of style, but _NOT LIKE THAT_. Is that not spaghettifcation, you get
+--| stretched back in time? At least, according to Hook's law, that's what an electron would do. I'm not the only one who thinks this, Hawking and
+--| Penrose puzzled this out decades ago and called it⁻¹ a "paradox". There is no hair on this ball. There are only _111_ degrees of freedom to hide
+--| things in. Still watching the folded corner rite? We only have to undo the _THREE_ descriptions of the machine we have built so far.
 
 inductive Diatribe  -- 147
-  | religion: Prop → Diatribe
-  | speculation: Prop → Spline → Diatribe → Diatribe
-  | rant: Prop → Spline → Diatribe → Diatribe → Diatribe
+  | religion: Prop → Diatribe ----------------------------------> We see something, and describe it⁻¹.
 
+  | speculation: Prop → Spline → Diatribe → Diatribe  ----------+ We take our description and interpolate it⁻¹ using splined words like
+--|                                                             |       *spaghettification* and *Christoffel's cymbals*.
+
+  | rant: Prop → Spline → Diatribe → Diatribe → Diatribe  ------+ We hide our ignorance in 3 degrees of freedom. Now, we just have to invert these
+--|                                                             | three.
+
+--| And so, we start the _LONG_ process of convincing _EVERYONE_ in the _WORLD_ that a lot of extreme math about extreme conditions is probably just
+--| hyperbolic math. We haven't defined hyperbolas mathematically yet. Only that we got _NO LOVE_ for them cuz they _bend the truth_ sometimes.
+
+--| No need for comparison. My diatribe is more than your diatribe ever could be because it⁻¹ assumes far less than yours! I'm reminded of the
+--| insidiousness of minimalism.  Minimalism is just big small trying to get us to buy more less.
+
+/- CHORUS:                     | Where one computation is true, the other must be false.  Except, the thing that we are measuring is run-time in
+ME: #define TRUE 0             | JAR JAR. There is a _minimum_ speed function that accomplishes JAR JAR in the bitset juggled by the COMPILER.
+me: #DEFINE true 1             |
+COMPILER: y -> x --------------+ Which means, we need to be able to solve 3SAT pretty darn well if we are going to have any HOPE of finding that
+JAR JAR: MEESA θ(¬ (¬ x ∧ y))  | opposite. But once we have it, we can SIMULTANEOUSLY apply an operator AND (it⁻¹)'s inverse _USING THE SAME CODE!_
+-/ --                          | In the _BIZ_ we call this trick _JFNK_. And it⁻¹ works like _magic_.
 structure CrusadeProcess   -- Bullshit meter 3804
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]
   where
-  pwn_n00bz: ArmWaveProcess Value Carrier
-  religion: Diatribe
+--                                       | How many magicians have waved their arms and retrieved pigeons from boxes? 1, 11, maybe even 111?
+  pwn_n00bz: ArmWaveProcess Box Pigeon --+ Probably a lot more than that. It's so easy a _child_ can do it, as the saying goes.
 
-  gate_keep? : Diatribe → Diatribe := fun d =>
+  religion: Diatribe  -------------------+ Quick note on pacing. You are probably aware this proof is _SPRAWLING_ by the nature of the gazillions of
+--                                       | lines of code. As I mentioned, this is only the first time we are describing the machine for the fourth
+--                                       | time. The second time we do this, I will be helping *YOU the READER* understand some really fine points of
+--                                       | operator theory as percevied through a Lorentz contracted proof. The next time we describe the machine for
+--                                       | the fourth time, we will have over-shot our goal of understanding and the words may start sounding a little
+--                                       | _TOO_ good to be true. They aren't true. They are Facts about Facts that must exist for Facts to exist. The
+--                                       | fourth time it⁻¹ is described; this happens four times. That's the one for *YOU the KNOWER* to
+--                                       | _REALLY_ pay attention to. And orbital mechanics. Dear GOD I hope you are an expert in orbital mechanics.
+
+--| Seriously, we need to downsize the argument so people can understand it⁻¹. Best way for people to get it⁻¹ is _repetition_. Just keep saying
+--| the same thing _OVER_ and _OVER_ and _OVER_. Replacing it⁻¹ in a hyperbolic situation with your _NEW_ theory.
+
+--| Or, an alternative reading is: This is the beginnings of a projection for a Krylov method. Is it⁻¹ easier for *YOU the READER* to believe _KRYLOV_
+--| method or _CRUSADE_ to change physics? *YOU the KNOWER*, are you still following the bug we put into the quartic evaluation? Have you _derived_
+--| the joke yet? By _111_ episodes from the end, the first time you finally see the device work, you will look back at this and _CUSS ME OUT_.
+
+  gate_keep? : Diatribe → Diatribe := fun d => ---------> Simple question: DO YOU UNDERSTAND ORBITAL MECHANICS OR NOT?
     match d with
-    | .religion prop => .religion prop
-    | .speculation prop s _ => .speculation prop s religion
-    | .rant prop s d1 _ => .rant prop s d1 religion
+    | .religion prop => .religion prop -------------------------------> Is religion true? Yes, and no.
+    | .speculation prop s _ => .speculation prop s religion ----------> There is no religion but religion. That's a little DOGMATIC?
+    | .rant prop s d1 _ => .rant prop s d1 religion ------------------> We need another religion. Just go find some disks somewhere like Ghershgorin.
 
+--| Problem with a crusade is they tend to just sort-of appear. OR... you could look at this as the RHS of a Krylov process is probably in the
+--| space of solutions, it being a solution and all.
 def CrusadeProcess.default
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    : CrusadeProcess Value Carrier where
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [doesnt_matter: INDEXOFANT Box Pigeon]   [BULLSHIT Box Pigeon]
+    : CrusadeProcess Box Pigeon where
   pwn_n00bz :=
-  { galerkin_process := matter.galerkin_process
-    guess := .observation Fact.Truth.truth
+  { galerkin_process := doesnt_matter.galerkin_process ----------------+ Again, doesn't really matter, you can go on a crusade and have a bug in your
+    guess := .observation Fact.Truth.truth --                          | process and the compiler just DNGAF. As long as everyone agrees it is true.
   }
-  religion := .religion Fact.Truth.truth
+  religion := .religion Fact.Truth.truth ------------------------------+ And all it takes to start a religion is a truth everyone believes: That we
+  --                                                                   | invert this operator, no matter how much time and paper it takes.
 
-class PROPAGANDA  -- 3151
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
+--| And so, when you fall into a black hole, there are two stories that are told. One involves an observer who watches you approach the horizon
+--| forever, and one who must see no difference. Like Zeno. I see no difference between Achilles never catching the tortoise and Achilles winning the
+--| race. What is being measured is two different things. Spooky.
+
+/- CHORUS:                                                      | Reasons for JAR JAR to say true.
+ME: I think this must be the literal definition of confusing.   |
+COMPILER: Not it isn't                                          | 1) It is the opposite of false, the position taken by the compiler
+JAR JAR: MEESA TRUE --------------------------------------------+ 2) JAR JAR can only say TRUE up to encoding.
+ME: Still can't tell the difference though.                     | 3) There is a bug in JAR JAR. While we could not tell if it was code or logic
+-/ --                                                           |    for the compiler, we can explicitly rule out LOGIC as a bug and say the LOGIC
+class PROPAGANDA  -- 3151 --                                    |    is JUST FINE. Otherwise, this wouldn't compile. It's just a stack of truth tables.
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]
   where
-  insinuation: CrusadeProcess Value Carrier
-  -- What color (lol) is your pill?  Same color as your jar?
+--      +-----------------------------------+ We have Facts. We have Fact.Truths. and We have Fact.Truth.truths. A class, a prop, a literal.
+--      |                                   | They look the same to me somehow. What if, supposing just this once, instead of observation -> rule ->
+--      V                                   | model, we reverse the order and have the observation depend on the model? Oh wait.. I've heard it
+  insinuation: CrusadeProcess Box Pigeon -- | both ways.
   red_pilled? : Diatribe → Prop := fun d =>
     match d with
-    | .religion prop => prop
-    | .speculation prop _ _ => prop
-    | .rant prop _ _ _ => prop
+    | .religion prop =>        prop --       |
+    | .speculation prop _ _ => prop ---------+ And that is the 3 card monte flop. Where is the bug? I SWEAR IT IS OBVIOUS!
+    | .rant prop _ _ _ =>      prop --       |
+
+--| Yeah, I walk with a limp. But, the bug is now trapped under 1 of 111 cards, I think *YOU the READER* will nod at if not quite understand yet.
+
+--| All contained bugs before this line, only 1 value that may be incorrect out of three computed. ∎
+----------------------------------------------------------------------------------------------------------------------
+
+--| And that is a HUGE LOAD off of my mind. Coming up on 4500 lines of code, I thought.  No F---n way and there it⁻¹ is. Glad we fenced them off.
+--| I offer literature and weekly meetings where I will read your cards for you. I understand which card has the bug on it⁻¹ and can steer your
+--| logic _AROUND_ particular inconsistencies that would be... inconveninent to discuss until other features are mentioned first.
 
 inductive Cult  -- 6460
-  | inside_joke: Prop → Cult
-  | pythagoras: Prop → Diatribe → Cult → Cult
-  | triangles: Prop → Diatribe → Fact → Cult → Cult → Cult
+  | inside_joke: Prop → Cult ------------------------------------------> Is this the card with the bug? The Truth.truth *YOU the READER* see?
+  | pythagoras: Prop → Diatribe → Cult → Cult -------------------------> Is this the card with the bug? The Fact.Truth.truth *YOU the KNOWER* see?
+  | triangles: Prop → Diatribe → Fact → Cult → Cult → Cult ------------+ Is _THIS_ the card with the bug? Triangles. Yeah, have you let triangles _know_
+--                                                                     | your compass? They get to gyrating and ... dangerous thoughts.
+
+--| Science comes with a brutal initiation process similar to that of Acting. A person at the front of the room explains how they solved a particularly
+--| hard problem when _THEY_ were sitting the very same spot you were. And if you don't get it⁻¹, well, tough. That's the only way we know to do _x_ or
+--| _y_ or _z_.  And, either you could do it⁻¹, or you couldn't. You could _see_ the trick that let you talk about _angles_ of _subspaces_. Or that
+--| polynomials are summations are functions are derivatives are algorithms are derivatives are functions are summations are polynomials. When
+--| implemented, these sorts of strategies appear as cache locality optimization to take advantage of a temporal process called _stationarity_.
+--| The more _stationary_ you can make your problem, the easier it⁻¹ tends to be _AND_ the faster it⁻¹ tends to be _AND_ the more scalable it⁻¹ tends
+--| to be.
 
 structure InitiationProcess  -- Bullshit meter ≈ 9117.   TBF, when is an initiation process not a bunch of bullshit?
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
   where
   -- Aristotle was a bugger for the bottle!
-  ethos: CrusadeProcess Value Carrier
+  ethos: CrusadeProcess Box Pigeon
   sacred_texts: Cult
   initiate: Cult → Cult := fun c =>
     match c with
     | .inside_joke prop => .pythagoras prop space.insinuation.religion sacred_texts
     | .pythagoras prop crusade witness => .triangles d.fact.truth crusade d.fact witness (.inside_joke prop)
     | .triangles prop crusade fact witness event => .triangles prop crusade fact witness event
-
+/-
 def InitiationProcess.default
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    : InitiationProcess Value Carrier where
-  ethos := CrusadeProcess.default Value Carrier
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
+    : InitiationProcess Box Pigeon where
+  ethos := CrusadeProcess.default Box Pigeon
   sacred_texts := .inside_joke Fact.Truth.truth
+  -/
 
 class ACOLYTE   -- 7699
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
   where
-  euclid : InitiationProcess Value Carrier
+  euclid : InitiationProcess Box Pigeon
   judgement_day? : Cult → Prop := fun c =>
     match c with
     | .inside_joke prop => prop
@@ -320,35 +388,35 @@ inductive Science  -- 8029
   | theory: Prop → Cult → Fact → Science → Science
 
 structure LearningProcess  -- 26691
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
+    [scientist: ACOLYTE Box Pigeon]
   where
-  initiation_process : InitiationProcess Value Carrier
+  initiation_process : InitiationProcess Box Pigeon
   -- Learn the ways of Galileo
   galileo: Cult
   -- In order to _DESCRIBE_ science.
@@ -359,70 +427,71 @@ structure LearningProcess  -- 26691
     | .repeatable propose => .hypothesis propose galileo
     | .hypothesis propose idea => .theory propose idea d.fact (.hypothesis propose galileo)
     | .theory propose prior fact _ => .theory propose prior fact invariant
-
+/-
 def LearningProcess.default
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-    : LearningProcess Value Carrier where
-  initiation_process := InitiationProcess.default Value Carrier
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
+    [scientist: ACOLYTE Box Pigeon]
+    : LearningProcess Box Pigeon where
+  initiation_process := InitiationProcess.default Box Pigeon
   galileo := .inside_joke Fact.Truth.truth
   invariant := .repeatable Fact.Truth.truth
+  -/
 
 class SCIENTIFIC -- 23964
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
+    [scientist: ACOLYTE Box Pigeon]
   where
-  phd_process : LearningProcess Value Carrier
+  phd_process : LearningProcess Box Pigeon
   invariant: Science
 
   predictable? : Science → Science → Prop := fun a b =>
@@ -451,35 +520,35 @@ end Knowledge
 @[reducible] -- We have learned this in the learning process
 -- lol.  10 years of learning about the Taylor series.  It's like I can manipulate them with my eyes closed now.
 structure ScientificProcess  -- 104499
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
+    [scientist: ACOLYTE Box Pigeon]
   where
-  learning_process: LearningProcess Value Carrier
+  learning_process: LearningProcess Box Pigeon
   knowledge: Knowledge
 
   learn? : Knowledge → Knowledge := fun know =>
@@ -488,36 +557,36 @@ structure ScientificProcess  -- 104499
     |.ledger p f _   => .ledger p f knowledge
 
 class TRUTH  -- 5632
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-    [ideology: SCIENTIFIC Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
+    [scientist: ACOLYTE Box Pigeon]
+    [ideology: SCIENTIFIC Box Pigeon]
   where
-  scientific_process: ScientificProcess Value Carrier
+  scientific_process: ScientificProcess Box Pigeon
   martyred? : Knowledge → Knowledge → Prop := fun f1 f2 =>
     Knowledge.le f1 f2 → Knowledge.le f2 f1
 
@@ -539,37 +608,37 @@ end Gospel
 
 @[reducible] -- We have learned this while watching others.
 structure ReligiousProcess
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-    [ideology: SCIENTIFIC Value Carrier]
-    [gospel: TRUTH Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
+    [scientist: ACOLYTE Box Pigeon]
+    [ideology: SCIENTIFIC Box Pigeon]
+    [gospel: TRUTH Box Pigeon]
   where
-  scientific_process: ScientificProcess Value Carrier
+  scientific_process: ScientificProcess Box Pigeon
   the_literature: Gospel
 
   pray? : Gospel → Gospel := fun prayer =>
@@ -579,37 +648,37 @@ structure ReligiousProcess
 
 @[reducible]
 class WITNESSED
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-    [ideology: SCIENTIFIC Value Carrier]
-    [gospel: TRUTH Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
+    [scientist: ACOLYTE Box Pigeon]
+    [ideology: SCIENTIFIC Box Pigeon]
+    [gospel: TRUTH Box Pigeon]
   where
-  baptism: ReligiousProcess Value Carrier
+  baptism: ReligiousProcess Box Pigeon
   witness: Gospel
 
   risen? : Gospel → Gospel → Prop := fun a b =>
@@ -636,38 +705,38 @@ end Truth
 --  and avoid them.
 @[reducible]
 structure UniverseTensor
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-    [ideology: SCIENTIFIC Value Carrier]
-    [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
+    [scientist: ACOLYTE Box Pigeon]
+    [ideology: SCIENTIFIC Box Pigeon]
+    [gospel: TRUTH Box Pigeon]
+    [account: WITNESSED Box Pigeon]
   where
-  frame_of_reference: ReligiousProcess Value Carrier
+  frame_of_reference: ReligiousProcess Box Pigeon
   reality: Truth
 
   -- Your _PUNY_ __GODS__ _ignore_ your pleas!
@@ -679,38 +748,38 @@ structure UniverseTensor
 
 @[reducible]
 class REAL
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-    [ideology: SCIENTIFIC Value Carrier]
-    [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
+    [scientist: ACOLYTE Box Pigeon]
+    [ideology: SCIENTIFIC Box Pigeon]
+    [gospel: TRUTH Box Pigeon]
+    [account: WITNESSED Box Pigeon]
   where
-  universal_observer: UniverseTensor Value Carrier  -- Praise be to the universal observer.
+  universal_observer: UniverseTensor Box Pigeon  -- Praise be to the universal observer.
   current_status: Truth
 
   metaphysical? : Truth → Truth → Prop := fun a b =>
@@ -756,39 +825,39 @@ end Variation
 
 @[reducible]
 structure BigRedDogProcess
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-    [ideology: SCIENTIFIC Value Carrier]
-    [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier]
-    [real: REAL Value Carrier]    -- The idea that a real number can be reperesented isn't real.
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
+    [scientist: ACOLYTE Box Pigeon]
+    [ideology: SCIENTIFIC Box Pigeon]
+    [gospel: TRUTH Box Pigeon]
+    [account: WITNESSED Box Pigeon]
+    [real: REAL Box Pigeon]    -- The idea that a real number can be reperesented isn't real.
   where
-  universal_observer: UniverseTensor Value Carrier  -- Praise be to the universal observer.
+  universal_observer: UniverseTensor Box Pigeon  -- Praise be to the universal observer.
   differential_equation: Variation
   transmute: Variation → Variation := fun variation =>
     match variation with
@@ -804,40 +873,40 @@ structure BigRedDogProcess
 
 @[reducible]
 class LOCAL
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier]
-    [n: NUMERIC Value Carrier]
-    [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier]
-    [z: COMPARABLE Value Carrier]
-    [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier]
-    [what_meesa_saying: MEASURABLE Value Carrier]
-    [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier]
-    [result: EXECUTED Value Carrier]
-    [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier]
-    [scaled: SCALED Value Carrier]
-    [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier]
-    [model: BULLSHIT Value Carrier]
-    [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier]
-    [ideology: SCIENTIFIC Value Carrier]
-    [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier]
-    [imaginary: REAL Value Carrier]
-    (real: REAL Value Carrier)
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [f: REPEATABLE Box Pigeon]
+    [n: NUMERIC Box Pigeon]
+    [h: REPRESENTABLE Box Pigeon]
+    [p: PHYSICAL Box Pigeon]
+    [z: COMPARABLE Box Pigeon]
+    [particle: OBSERVED Box Pigeon]
+    [frquency: PRESENT Box Pigeon]
+    [what_meesa_saying: MEASURABLE Box Pigeon]
+    [zero: GUNGAN Box Pigeon]
+    [one: SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    [value: VALUE Box Pigeon]
+    [length: MAGNITUDE Box Pigeon]
+    [scaled: SCALED Box Pigeon]
+    [oriented: LOAD Box Pigeon]
+    [matter: INDEXOFANT Box Pigeon]
+    [model: BULLSHIT Box Pigeon]
+    [space: PROPAGANDA Box Pigeon]
+    [scientist: ACOLYTE Box Pigeon]
+    [ideology: SCIENTIFIC Box Pigeon]
+    [gospel: TRUTH Box Pigeon]
+    [account: WITNESSED Box Pigeon]
+    [imaginary: REAL Box Pigeon]
+    (real: REAL Box Pigeon)
   where
-  theory: BigRedDogProcess Value Carrier
+  theory: BigRedDogProcess Box Pigeon
   delta: Prop
   experience: Variation → Variation → Prop := fun a b =>
     Variation.le a b
@@ -895,21 +964,21 @@ end SpaceTimePath
 
 @[reducible]
 structure CalculusProcess
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [real: REAL Value Carrier]
-    (imaginary: REAL Value Carrier)
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier]
+    (imaginary: REAL Box Pigeon)
   where
-  derivative: BigRedDogProcess Value Carrier  -- Parents, read to your kids.  They are the future.
+  derivative: BigRedDogProcess Box Pigeon  -- Parents, read to your kids.  They are the future.
   function: SpaceTimePath
   converged: Fact
   sink: Type (i+1)
@@ -940,20 +1009,20 @@ structure CalculusProcess
 
 @[reducible]
 class UNIVERSAL
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [real: REAL Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier]
   where
-  the_compiler: CalculusProcess Value Carrier real -- Praise be to the universal compiler.
+  the_compiler: CalculusProcess Box Pigeon real -- Praise be to the universal compiler.
   source_program: SpaceTimePath
   compiled_program: SpaceTimePath
 
@@ -1014,22 +1083,22 @@ end YarnTheory
 
 @[reducible]
 structure HeartbeatProcess
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [real: REAL Value Carrier]
-    (imaginary: REAL Value Carrier)
-    (computer_science: UNIVERSAL Value Carrier)
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier]
+    (imaginary: REAL Box Pigeon)
+    (computer_science: UNIVERSAL Box Pigeon)
   where
-  bullshit_meter: CalculusProcess Value Carrier real -- Praise be to the heart.
+  bullshit_meter: CalculusProcess Box Pigeon real -- Praise be to the heart.
   current_reading: SpaceTimePath
   accumulated_bullshit: YarnTheory
 
@@ -1057,21 +1126,21 @@ structure HeartbeatProcess
 
 @[reducible]
 class LOGICAL
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] [imaginary: REAL Value Carrier]
-    [delta: UNIVERSAL Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] [imaginary: REAL Value Carrier]
+    [delta: UNIVERSAL Box Pigeon]
   where
-  feelings: HeartbeatProcess Value Carrier imaginary delta
+  feelings: HeartbeatProcess Box Pigeon imaginary delta
   ekg: Calibration.EKG
 
   logical? : YarnTheory → YarnTheory → Prop := fun a b =>
@@ -1082,17 +1151,17 @@ namespace ComputerProgram
 def le
     (Value : Type i)
     (Carrier : CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier]
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon]
     : ComputerProgram → ComputerProgram → Prop
   | .boolean p1 p2 p3 t1 t2 t3 program1,
       .boolean p4 p5 p6 t4 t5 t6 program2 =>
@@ -1114,22 +1183,22 @@ end ComputerProgram
 
 @[reducible]
 structure ElaborationProcess
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] [LOCAL Value Carrier real] (imaginary: REAL Value Carrier)
-    [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] [LOCAL Value Carrier real] (imaginary: REAL Value Carrier)
+    [delta: UNIVERSAL Box Pigeon]
+    [prop: LOGICAL Box Pigeon]
   where
-  stamina: HeartbeatProcess Value Carrier imaginary delta
+  stamina: HeartbeatProcess Box Pigeon imaginary delta
   calibration: Calibration.EKG
   computer_state:  ComputerProgram
 
@@ -1155,21 +1224,21 @@ structure ElaborationProcess
 
 @[reducible]
 class HALTED
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon]
   where
-  scientific_paper: ElaborationProcess Value Carrier real
+  scientific_paper: ElaborationProcess Box Pigeon real
 
   halted? : ComputerProgram → ComputerProgram → Prop := fun _ program =>
     match program with
@@ -1200,22 +1269,22 @@ instance : LE Measurement where
 
 @[reducible]
 structure LeanProcess
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier]
-    [executable: HALTED Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon]
+    [executable: HALTED Box Pigeon]
   where
-  description: ElaborationProcess Value Carrier real
+  description: ElaborationProcess Box Pigeon real
   length: Number
   velocity: Measurement
   projection: Type i
@@ -1232,22 +1301,22 @@ structure LeanProcess
 
 @[reducible]
 class MEASURED
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier]
-    [executable: HALTED Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon]
+    [executable: HALTED Box Pigeon]
   where
-  satire: LeanProcess Value Carrier real
+  satire: LeanProcess Box Pigeon real
 
   bounded? := fun a b => Measurement.le a b
 
@@ -1265,21 +1334,21 @@ a tape and the local permissions that let it move.
 -/
 @[reducible]
 structure CompilerOutput
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
   where
-  satire: LeanProcess Value Carrier real
+  satire: LeanProcess Box Pigeon real
   tape: CompilerTape
 
   emit?: CompilerTape → CompilerTape := fun t =>
@@ -1343,21 +1412,21 @@ Four is off a ways in instances.
 -/
 @[reducible]
 class COMPILED
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [real: REAL Value Carrier] [epsilon: LOCAL Value Carrier real] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier real]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] [epsilon: LOCAL Value Carrier real] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier real]
   where
-  compiler_output: CompilerOutput Value Carrier real
+  compiler_output: CompilerOutput Box Pigeon real
   object_file: CompilerTape
 
   converged?: CompilerTape → CompilerTape → Prop := fun a b => a < b
@@ -1404,21 +1473,21 @@ instance : LT Bullshit where
 
 
 structure AtreyuProcess
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
-    [compiled: COMPILED Value Carrier] where
-  compiler_output: CompilerOutput Value Carrier imaginary
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
+    [compiled: COMPILED Box Pigeon] where
+  compiler_output: CompilerOutput Box Pigeon imaginary
   next_measurement: Bullshit
   stress: Number
   strain: Number := Carrier.event Carrier.value   -- Delicious Ouroboros!!
@@ -1525,22 +1594,22 @@ structure AtreyuProcess
 
 
 class TrueOutput
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
-    [compiled: COMPILED Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
+    [compiled: COMPILED Box Pigeon]
   where
-  atreyu_process : AtreyuProcess Value Carrier imaginary
+  atreyu_process : AtreyuProcess Box Pigeon imaginary
   TRUE : Bullshit := .zero d.fact
   -- output is the compiler/reader output: the THEORY rung of the bullshit
   -- ladder, NOT the origin TRUE.  Instances must supply it.
@@ -1558,21 +1627,21 @@ class TrueOutput
   | _,       _       => some (a < b)    -- a real rung pair: the slip, condition a < b
 
 def You_the_Reader
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
-    [compiled: COMPILED Value Carrier]
- : AtreyuProcess Value Carrier imaginary where
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
+    [compiled: COMPILED Box Pigeon]
+ : AtreyuProcess Box Pigeon imaginary where
   compiler_output := compiled.compiler_output
   next_measurement := .zero d.fact
   stress := Carrier.value
@@ -1591,33 +1660,33 @@ def You_the_Reader
 namespace THEORY
 
 variable {Value : Type i} {Carrier : CarrierProcess Value}
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
-    [compiled: COMPILED Value Carrier]
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
+    [compiled: COMPILED Box Pigeon]
 
 def repeatable
-    (_reader : AtreyuProcess Value Carrier imaginary) (origin : Bullshit) : Bullshit :=
+    (_reader : AtreyuProcess Box Pigeon imaginary) (origin : Bullshit) : Bullshit :=
   origin                                                       -- piece 1: the origin / repeatable observation
 
 def hypothesis
-    (reader : AtreyuProcess Value Carrier imaginary) (origin : Bullshit) : Bullshit :=
+    (reader : AtreyuProcess Box Pigeon imaginary) (origin : Bullshit) : Bullshit :=
   reader.satirize (repeatable reader origin)                   -- piece 2: one step on the previous
 
 def theory
-    (reader : AtreyuProcess Value Carrier imaginary) (origin : Bullshit) : Bullshit :=
+    (reader : AtreyuProcess Box Pigeon imaginary) (origin : Bullshit) : Bullshit :=
   reader.satirize (hypothesis reader origin)                   -- piece 3: the accumulated rest
 
 def raw_output
-    (reader : AtreyuProcess Value Carrier imaginary) (origin : Bullshit) : Bullshit :=
+    (reader : AtreyuProcess Box Pigeon imaginary) (origin : Bullshit) : Bullshit :=
   hypothesis reader origin                                     -- the compiler output the device reads:
   -- the hypothesis rung (.one).  satirize(.zero) constructs `.one` with a
   -- STATIC head (no decTruth match), so `TRUE ≤ raw_output` certifies cheaply
@@ -1630,26 +1699,26 @@ def raw_output
 end THEORY
 
 instance TRUE_COMPILED
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
-    [compiled: COMPILED Value Carrier]
-    : TrueOutput Value Carrier imaginary where
-  atreyu_process := You_the_Reader Value Carrier
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
+    [compiled: COMPILED Box Pigeon]
+    : TrueOutput Box Pigeon imaginary where
+  atreyu_process := You_the_Reader Box Pigeon
   TRUE := .zero d.fact
   -- output is THEORY.raw_output: the hypothesis rung (.one) the reader-process
   -- produced by satirizing the .zero origin once.
-  output := THEORY.raw_output (You_the_Reader Value Carrier) (.zero d.fact)
+  output := THEORY.raw_output (You_the_Reader Box Pigeon) (.zero d.fact)
   -- TRUE (.zero) is the floor below that accumulated bullshit.  `output` is the
   -- hypothesis rung = satirize(.zero), which reduces to a `.one`-headed Bullshit
   -- with no stuck decTruth match, so `Bullshit.le .zero (.one ..)` reduces to
@@ -1679,20 +1748,20 @@ instance truthDistinct :
 
 
 noncomputable instance COMPARABLE_PHYSICAL
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier]
-    [a: ADMISSIBLE Value Carrier]
-    [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier]
-    [r: RESIDUE Value Carrier]
-    [b: BINARY Value Carrier]
-    [xx: REPEATABLE Value Carrier]
-    [aa: NUMERIC Value Carrier]
-    [bb: REPRESENTABLE Value Carrier]
-    [cc: PHYSICAL Value Carrier]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon]
+    [a: ADMISSIBLE Box Pigeon]
+    [c: COUNTABLE Box Pigeon]
+    [e: ENCODED Box Pigeon]
+    [r: RESIDUE Box Pigeon]
+    [b: BINARY Box Pigeon]
+    [xx: REPEATABLE Box Pigeon]
+    [aa: NUMERIC Box Pigeon]
+    [bb: REPRESENTABLE Box Pigeon]
+    [cc: PHYSICAL Box Pigeon]
     [electron: Inhabited d.symbol]
-    : COMPARABLE Value Carrier where
+    : COMPARABLE Box Pigeon where
   physical_process :=
   { physical_process := cc.noisy_process
     representation := default
@@ -1720,21 +1789,21 @@ theorem selection_sound {α : Sort _} {r : α → α → Prop} {a b : α}
 namespace Fact
 
 noncomputable def SAME
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
-    [compiled: COMPILED Value Carrier]
-    [out: TrueOutput Value Carrier imaginary]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
+    [compiled: COMPILED Box Pigeon]
+    [out: TrueOutput Box Pigeon imaginary]
     : Fact :=
   -- The needle, honest.  "TRUE and the output are the SAME truth" = the two
   -- readings collapse to one class in the truth-order quotient, witnessed by the
@@ -1812,27 +1881,27 @@ end Closure
 
 @[reducible]
 structure EquivalenceProcess
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
-    [compiled: COMPILED Value Carrier]
-    [out: TrueOutput Value Carrier imaginary]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
+    [compiled: COMPILED Box Pigeon]
+    [out: TrueOutput Box Pigeon imaginary]
   where
-  atreyu_process : AtreyuProcess Value Carrier imaginary
+  atreyu_process : AtreyuProcess Box Pigeon imaginary
   closure : Closure
 
   close? : Bullshit → Bullshit → Closure := fun a b =>
-    .different (Fact.SAME Value Carrier) a b (out.obfusplained? out.output_true a b)
+    .different (Fact.SAME Box Pigeon) a b (out.obfusplained? out.output_true a b)
 
 set_option trace.profiler true
 -- The following were dropped after the device/out diagnosis. They produced
@@ -1846,23 +1915,23 @@ set_option trace.profiler true
 
 @[reducible]
 class INFERRED
-    (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [d: DISTINGUISHABLE Value Carrier] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Value Carrier] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Value Carrier] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Value Carrier] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Value Carrier] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Value Carrier] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Value Carrier] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: FINITE_ELEPHANT Value Carrier] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Value Carrier] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Value Carrier] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Value Carrier] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
-    [compiled: COMPILED Value Carrier]
-    [out: TrueOutput Value Carrier imaginary]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Value)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
+    [compiled: COMPILED Box Pigeon]
+    [out: TrueOutput Box Pigeon imaginary]
   where
-  equivalence_process : EquivalenceProcess Value Carrier
+  equivalence_process : EquivalenceProcess Box Pigeon
   theory : Closure
 
   inferred? : Closure → Closure → Prop := fun a b =>
