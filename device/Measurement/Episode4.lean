@@ -378,7 +378,7 @@ inductive Science  -- 8029 --------------------------+ This does enough. I don't
 
 
 /- CHORUS:
-ME:
+ME: What have we learned so far?
 -/
 structure LearningProcess  -- 26691
     (Box: Type i)
@@ -398,11 +398,11 @@ structure LearningProcess  -- 26691
 
   -- Learn the ways of Galileo. Seriously, the guy knew what he was talking about.  *BUT* that isn't to say there isn't a bit of a cult around
   -- science, like cult members who expect science to answer questions. Science doesn't tell you where the coin is. It teaches you how to look at the
-  -- coin. Rulers tell you where the coins in. Confusing what the quarter looks like with where it is can lead to miscounted nowtrinos.
+  -- coin. Rulers tell you where the coin is. Confusing what the quarter looks like with where it is can lead to miscounted nowtrinos.
   galileo: Cult
 
-  -- In order to _DESCRIBE_ science. Perfectly norm-al word for Science to use here.
-  invariant: Science
+  -- In order to _DESCRIBE_ science. Perfectly norm-al word for Science to use here. This is certainly _not_ a meaningless word.
+  invariant: Science -- We will watch the invariant change based on how you look at it. Dag.
 
 --                  +---------+------------------------+ And so, this is how you curry Science.  Ladies and gentlemen, meet the smallest
 --                  |         |                        | multiphysics simulator in the world! Kolmogorov, eat your heart out. The algorithm is
@@ -422,7 +422,7 @@ structure LearningProcess  -- 26691
 class SCIENTIFIC -- 23964
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
@@ -463,85 +463,48 @@ end Knowledge
 structure ScientificProcess  -- 104499
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
-    [scientist: ACOLYTE Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]
   where
   learning_process: LearningProcess Box Pigeon
   knowledge: Knowledge
 
   learn? : Knowledge → Knowledge := fun know =>
     match know with
-    | .jarjar p       => .ledger p d.fact knowledge
+    | .jarjar p       => .ledger p nowtrino.fact knowledge
     |.ledger p f _   => .ledger p f knowledge
 
 class TRUTH  -- 5632
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
-    [scientist: ACOLYTE Box Pigeon]
-    [ideology: SCIENTIFIC Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]
   where
-  scientific_process: ScientificProcess Box Pigeon
+  becomes: ScientificProcess Box Pigeon
   martyred? : Knowledge → Knowledge → Prop := fun f1 f2 =>
     Knowledge.le f1 f2 → Knowledge.le f2 f1
 
 
 
 inductive Gospel  -- 67
-  | epiphany: Prop → Gospel
+  | the_proof: Prop → Gospel
   | state: Knowledge → Prop → Gospel → Gospel
 
 namespace Gospel
 def le : Gospel → Gospel → Prop
-  | .epiphany p1, .epiphany p2 => p1 = p2
-  | .epiphany p1, .state _ p2 _ => p1 = p2
-  | .state _ p1 _, .epiphany p2 => p1 ≠ p2
+  | .the_proof p1, .the_proof p2 => p1 = p2
+  | .the_proof p1, .state _ p2 _ => p1 = p2
+  | .state _ p1 _, .the_proof p2 => p1 ≠ p2
   | .state f1 p1 g1, .state f2 p2 g2 =>
     (Knowledge.le f1 f2 ∧ p1 = p2 ∧ le g1 g2) ∨ le (.state f1 p1 g1) g2
 termination_by _ g => sizeOf g
@@ -551,41 +514,22 @@ end Gospel
 structure ReligiousProcess
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
-    [scientist: ACOLYTE Box Pigeon]
-    [ideology: SCIENTIFIC Box Pigeon]
-    [gospel: TRUTH Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
+    [truth: TRUTH Box Pigeon]
   where
-  scientific_process: ScientificProcess Box Pigeon
-  the_literature: Gospel
+  observation: ScientificProcess Box Pigeon
+  in_the_literature: Gospel
 
   pray? : Gospel → Gospel := fun prayer =>
     match prayer with
-    | .epiphany prop => .state gospel.scientific_process.knowledge prop the_literature
-    | .state _ prop experiment => .state gospel.scientific_process.knowledge prop experiment
+    | .the_proof of_the_idea => .state the_proof.becomes.knowledge of_the in_the_literature
+    | .state _ idea experiment => .state observation.becomes.knowledge idea experiment
 
 @[reducible]
 class WITNESSED
