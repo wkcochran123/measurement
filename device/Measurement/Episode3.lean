@@ -1192,7 +1192,7 @@ structure JordanProcess   -- Bullshit meter 2794   | o Jordan measure           
     | .monomial _ b => --                                                         | For a taste of your whiskey, I'll give you some advice.
         .factor Fact.Truth b (ANSYS_process.jmp? b) p --                          |
     --                                                                            | And the device got _DEATHLY QUIET_ and the math lost _ALL EXPRESSION_
-    -- 3. The Recursive Scale (The "Add" case)                                    | Said, "If you're going to norm the space, boy, you gotta do it rite."
+    -- 3. The Recursive Scale (The "Add" case)                                    | Said, "If you're going to norm the space, boy, you gotta learn to do the rite."
     -- We maintain the coupling 'f', the anchor 'b1',                             |
     -- but we 'shift' the interacting basis 'b2' and preserve the history.        | You got to _KNOW WHEN TO HOLD'EM_!
     | .factor f _ b2 tail =>  --                                                  | (BTW, I just wrote that, _not_ AI. This particular "stanza" crashes Claude.
@@ -1244,19 +1244,19 @@ class INDEXOFANT   -- 2368
   where
   galerkin_process : JordanProcess Box Pigeon  --------------------------------------------> Slam dunk the pigeon in the box! BOOM SHAKA LAKA!
 
-  finite? : Polynomial → Polynomial → Prop := fun p1 p2 =>  ---------------+ With so much drama in the QED, it's kinda hard being multi-named.
-    match p1, p2 with --                                                   | But I, somehow somway, keep coming up with funky-ass norms like
-    -- 1. Convergence to the Ground State --                               | every single day! May I kick a little something and watch the Gs
-    -- If we move from any field interaction to a constant, --             | move as I _breeze_ through 2 onto 3 and 4. And the party still
-    -- the transform is finite. The energy has successfully --             | jumpin' cuz Maxwell ain't home. I got matrices gettin' diagonal
-    -- dissipated into the background.                                     | and they ain't leavin' till Heisenberg's gone. So what you wanna do?
+  finite? : Polynomial → Polynomial → Prop := fun p1 p2 =>  ---------------+
+    match p1, p2 with --                                                   |
+    -- 1. Convergence to the Ground State --                               |
+    -- If we move from any field interaction to a constant, --             |
+    -- the transform is finite. The energy has successfully --             |
+    -- dissipated into the background.                                     |
     | _, .constant _ => True --                                            |
-    --                                                                     | I got a pocket full of norms and my homeboys do, too! So turn off the
-    -- 11. Stationary Field (The Eigenvalue Hit)                           | lights and drop the noise floor. But, but what, we don't love
-    -- If the transform results in the exact same theoretical              | hyperbolas. So we gonna weigh an ounce to this. Gs down spin up while
-    -- state, we've found a fixed point in the Hilbert space.              | the photons are absorbed by this.
+    --                                                                     |
+    -- 11. Stationary Field (The Eigenvalue Hit)                           |
+    -- If the transform results in the exact same theoretical              |
+    -- state, we've found a fixed point in the Hilbert space.              |
     -- The arm-waving has stopped.                                         |
-    | .monomial t1 b1, .monomial t2 b2 => t1 = t2 ∧ b1 = b2 --             | My apologies to Snoop.
+    | .monomial t1 b1, .monomial t2 b2 => t1 = t2 ∧ b1 = b2 --             |
 
     -- 111. The Lanczos Residual Check
     -- If we are moving between interactions (factors), the transform is only    | Translation layer from above. Basically, you can clamp the element

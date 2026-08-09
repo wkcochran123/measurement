@@ -680,33 +680,56 @@ inductive Variation
   | frechet: Gospel → Prop → Prop → Prop → Variation → Variation → Variation
 
 namespace Variation
-def le : Variation → Variation → Prop
-  | .newton g1 p1, .newton g2 p2 =>
-    Gospel.le g1 g2 ∧ p1 = p2
-  | .newton g1 p1, .gateaux g2 _ p2 _ =>
-    Gospel.le g1 g2 ∧ p1 = p2
-  | .newton g1 p1, .frechet g2 _ p2 _ _ _ =>
-    Gospel.le g1 g2 ∧ p1 = p2
-  | .gateaux _ _ p1 _, .newton _ p2 =>
-    p1 ≠ p2
-  | .gateaux g1 a1 b1 v1, .gateaux g2 a2 b2 v2 =>
-    (Gospel.le g1 g2 ∧ a1 = a2 ∧ b1 = b2 ∧ le v1 v2) ∨
-      le (.gateaux g1 a1 b1 v1) v2
-  | .gateaux g1 a1 b1 v1, .frechet g2 a2 b2 _ v2 v3 =>
-    (Gospel.le g1 g2 ∧ a1 = a2 ∧ b1 = b2 ∧ (le v1 v2 ∨ le v1 v3)) ∨
-      le (.gateaux g1 a1 b1 v1) v2 ∨ le (.gateaux g1 a1 b1 v1) v3
-  | .frechet _ _ p1 _ _ _, .newton _ p2 =>
-    p1 ≠ p2
-  | .frechet g1 a1 b1 _ v1 v2, .gateaux g2 a2 b2 v3 =>
-    (Gospel.le g1 g2 ∧ a1 = a2 ∧ b1 ≠ b2 ∧ (le v1 v3 ∨ le v2 v3)) ∨
-      le (.frechet g1 a1 b1 (a1 ∧ ¬b1) v1 v2) v3
+def le : Variation → Variation → Prop   --                             +-------- The Gospel according to Galileo, not me.
+--|                                                                    |
+--|                                                                    V
+  | .newton model polynomial, .newton thought_experiment apple => (Gospel.le model thought_experiment) ∧ polynomial = apple
+
+--|                                                                                           +--------+ Euler found this representation particularly
+--|                                                                                           |        | delightful when a young Lagrange presented
+--|                                    1 in 3 This _probably_ MATTERs?  ------> ✓ ? ?         V        | it to him.
+  | .newton apple_model derivative, .gateaux another_model _ another_derivative _     => (Gospel.le apple_model another_model) ∧
+                                                                                                                 derivative = another_derivative
+--|                                                                                           +--------+ Fields, on the other hand, require more
+--|                                                                                           |        | than an armwave to be well defined.
+--|                                                                                           V
+  | .newton apple_model derivative, .frechet another_model _ another_derivative _ _ _ => (Gospel.le apple_model another_model) ∧
+                                                                                                               derivative = another_derivative
+--|                                                        ^                    ^ ^ ^
+--|                                                        |                    | | |
+--|                                                        +--------------------+-+-+------- These don't matter for the current step in the discussion.
+
+--| It is easy to confuse the models of a derivative for being the same _thing_ instead of _three_ different things, one which might have a bug in it.
+--| We need to find where they are different. And where they are different is in the ability of finding bent cards. You don't see it yet, you will.
+  | .gateaux _ _ bent_card _    , .newton _ card => bent_card ≠ card
+  | .frechet _ _ bent_card _ _ _, .newton _ card => bent_card ≠ card
+
+
+--| Generally the cost to go from here to there is based on how far apart the stations are. This could be for 2 reasons, 1) You go through Toronto
+--|   on your subway trip from Houston St. to Canal St. and 2) It costs more to go to Toronto from Houston St. than Canal St. because it is _farther_.
+  | .gateaux cheaper_train_route here there faster_time     , .gateaux more_expensive_train_route point_a point_b longer_time =>
+                         (Gospel.le cheaper_train_route more_expensive_train_route ∧ here = point_a ∧ there = point_b ∧ le faster_time longer_time) ∨
+                         le (.gateaux cheaper_train_route here there faster_time) longer_time
+
+--| But it isn't the same price to go in all directions. And that's what makes it⁻¹ 𝔽(1)-ny. It also makes the computation not-so-straightforward.
+--| What you can do is try to figure out how much it costs to travel a certain distance by how far apart they are and use the time-tables to see
+--| which one would take longer. This gets you a constant of proportionality.
+  | .frechet this_way here there _ price_to_go_here price_to_go_there, .gateaux that_way point_a point_b price_of_a_one_way_ticket =>
+                    ((Gospel.le this_way that_way) ∧ here = point_a ∧ there ≠ point_b ∧
+                                         (le price_to_go_here price_of_a_one_way_ticket ∨ le price_to_go_there price_of_a_one_way_ticket)) ∨
+                    le (.frechet this_way here there (here ∧ ¬there) price_to_go_here price_to_go_there) price_of_a_one_way_ticket
+
+  | .gateaux g1 a1 b1 v1, .frechet g2 a2 b2 _ v2 v3 => (Gospel.le g1 g2 ∧ a1 = a2 ∧ b1 = b2 ∧ (le v1 v2 ∨ le v1 v3)) ∨ le (.gateaux g1 a1 b1 v1) v2 ∨ le (.gateaux g1 a1 b1 v1) v3
   | .frechet g1 a1 b1 c1 v1 v2, .frechet g2 a2 b2 c2 v3 v4 =>
     (Gospel.le g1 g2 ∧ a1 = a2 ∧ b1 = b2 ∧ c1 = c2 ∧
       ((le v1 v3 ∧ le v2 v4) ∨ (le v1 v4 ∧ le v2 v3))) ∨
       le (.frechet g1 a1 b1 c1 v1 v2) v3 ∨
         le (.frechet g1 a1 b1 c1 v1 v2) v4
+
+--| Remember, this compiles and the logic is sound. We stop when it is a good place to stop.
 termination_by _ v => sizeOf v
-end Variation
+end Variation -- ∎
+
 
 @[reducible]
 structure BigRedDogProcess
@@ -799,53 +822,58 @@ class LOCAL
 
 inductive SpaceTimePath
   | einstein: Fact → SpaceTimePath
-  | white_hole: Fact → Type i → SpaceTimePath → SpaceTimePath
+  | whitehole: Fact → Type i → SpaceTimePath → SpaceTimePath
   | blackhole: Prop → Type (i+1) → SpaceTimePath → SpaceTimePath
   | geodesic: Fact → Type i → Prop → Type (i+1) → SpaceTimePath → SpaceTimePath → SpaceTimePath
 
 namespace SpaceTimePath
 def le : SpaceTimePath → SpaceTimePath → Prop
-  | .einstein f1, .einstein f2 =>
-    f1 = f2
-  | .einstein f1, .white_hole f2 _ _ =>
-    f1 = f2
-  | .einstein f1, .blackhole p2 _ _ =>
-    f1.truth = p2
-  | .einstein f1, .geodesic f2 _ p2 _ _ _ =>
-    f1 = f2 ∧ f1.truth = p2
-  | .white_hole f1 _ _, .einstein f2 =>
-    f1 ≠ f2
-  | .white_hole f1 val p1, .white_hole f2 _ p2 =>
-    (f1 = f2 ∧ le p1 p2) ∨ le (.white_hole f1 val p1) p2
-  | .white_hole f1 val p1, .blackhole p2 _ p3 =>
-    (f1.truth = p2 ∧ le p1 p3) ∨ le (.white_hole f1 val p1) p3
-  | .white_hole f1 val p1, .geodesic f2 _ p2 _ p3 p4 =>
-    (f1 = f2 ∧ f1.truth = p2 ∧ (le p1 p3 ∨ le p1 p4)) ∨
-      le (.white_hole f1 val p1) p3 ∨ le (.white_hole f1 val p1) p4
-  | .blackhole p1 _ _, .einstein f2 =>
-    p1 ≠ f2.truth
-  | .blackhole p1 val p2, .white_hole f2 _ p3 =>
-    (p1 ≠ f2.truth ∧ le p2 p3) ∨ le (.blackhole p1 val p2) p3
-  | .blackhole p1 val p2, .blackhole p3 _ p4 =>
-    (p1 = p3 ∧ le p2 p4) ∨ le (.blackhole p1 val p2) p4
-  | .blackhole p1 val p2, .geodesic _ _ p3 _ p4 p5 =>
-    (p1 = p3 ∧ (le p2 p4 ∨ le p2 p5)) ∨
-      le (.blackhole p1 val p2) p4 ∨ le (.blackhole p1 val p2) p5
-  | .geodesic f1 _ p1 _ _ _, .einstein f2 =>
-    f1 ≠ f2 ∨ p1 ≠ f2.truth
-  | .geodesic f1 val1 p1 val2 p2 p3, .white_hole f2 _ p4 =>
-    (f1 = f2 ∧ f1.truth = p1 ∧ (le p2 p4 ∨ le p3 p4)) ∨
-      le (.geodesic f1 val1 p1 val2 p2 p3) p4
-  | .geodesic f1 val1 p1 val2 p2 p3, .blackhole p4 _ p5 =>
-    (p1 = p4 ∧ (le p2 p5 ∨ le p3 p5)) ∨
-      le (.geodesic f1 val1 p1 val2 p2 p3) p5
-  | .geodesic f1 val1 p1 val2 p2 p3, .geodesic f2 _ p4 _ p5 p6 =>
-    (f1 = f2 ∧ p1 = p4 ∧
-      ((le p2 p5 ∧ le p3 p6) ∨ (le p2 p6 ∧ le p3 p5))) ∨
-      le (.geodesic f1 val1 p1 val2 p2 p3) p5 ∨
-        le (.geodesic f1 val1 p1 val2 p2 p3) p6
+  | .einstein idea, .einstein experiment                   => idea = experiment --                         | This is finding the bent card the
+  | .einstein idea, .whitehole experiment _ _              => idea = experiment --                         | idea says _must_ be there. We put
+  | .einstein idea, .blackhole bent_card  _ _              => idea.truth = bent_card --                    | the bent card on top of the bug
+  | .einstein idea, .geodesic experiment _ bent_card _ _ _ => idea = experiment ∧ idea.truth = bent_card --+ we know must exist. It cost the compiler
+--|                                      ^           ^ ^ ^                                                 | exactly _1_ universe level to make this
+--|                                      |           | | |          +--------------------------------------+ distinction. Check the API, you will
+--|   Not much seems to matter here. |---+-----------+-+-+          | see the bug I put in earlier manifest as exclusively _1_ extra universe. Most
+--|                                                                 | properties need _at least_ 2 extra universes to maintain consistency.
+
+  | .whitehole evidence _ _, .einstein experiment                       => evidence ≠ experiment
+  | .whitehole evidence any_card_value before, .whitehole experiment _ after    => (evidence = experiment ∧ le before after) ∨
+                                                                           le (.whitehole evidence any_card_value before) after
+  | .whitehole evidence any_card_value before, .blackhole bent_card _ after     => (evidence.truth = bent_card ∧ le before after) ∨
+                                                                           le (.whitehole evidence any_card_value before) after
+  | .whitehole evidence any_card_value before, .geodesic experiment _ bent_card _ now after =>
+                                        (evidence = experiment ∧ evidence.truth = bent_card ∧ (le before now ∨ le before after)) ∨
+                                        le (.whitehole evidence any_card_value before) now ∨ le (.whitehole evidence any_card_value before) after
+
+  | .blackhole bent_card _ _   , .einstein evidence => bent_card ≠ evidence.truth
+  | .blackhole bent_card card_value before, .whitehole evidence _ after => (bent_card ≠ evidence.truth ∧ le before after) ∨
+                                                                           le (.blackhole bent_card card_value before) after
+  | .blackhole bent_card card_value before, .blackhole another_bent_card _ after =>
+                              (bent_card = another_bent_card ∧ le before after) ∨
+                              le (.blackhole bent_card card_value before) after
+  | .blackhole bent_card card_value before, .geodesic _ _ another_bent_card _ now after =>
+                              (bent_card = another_bent_card ∧ (le before now ∨ le before after)) ∨
+                              le (.blackhole bent_card card_value before) now ∨ le (.blackhole bent_card card_value before) after
+
+  | .geodesic idea _    bent_card _    _  _ , .einstein experiment => idea ≠ experiment ∨ bent_card ≠ experiment.truth
+
+  | .geodesic idea left_card bent_card right_card before up_to_now, .whitehole experiment _ now =>
+                      (idea = experiment ∧ idea.truth = bent_card ∧ (le before now ∨ le up_to_now now)) ∨
+                      le (.geodesic idea left_card bent_card right_card before up_to_now) now
+
+  | .geodesic idea left_card bent_card right_card before up_to_now, .blackhole another_bent_card _ now =>
+                      (bent_card = another_bent_card ∧ (le before now ∨ le up_to_now now)) ∨
+                      le (.geodesic idea left_card bent_card right_card before up_to_now) now
+
+  | .geodesic idea left_card bent_card right_card before up_to_now, .geodesic experiment _ another_bent_card _ now later =>
+                      (idea = experiment ∧ bent_card = another_bent_card ∧ ((le before now ∧ le up_to_now later) ∨ (le before later ∧ le up_to_now now))) ∨
+                      le (.geodesic idea left_card bent_card right_card before up_to_now) now ∨
+                      le (.geodesic idea left_card bent_card right_card before up_to_now) later
+
 termination_by _ path => sizeOf path
 end SpaceTimePath
+--| If you think _THAT_ is a 3-card monte throw, wait till I show you String theory.
 
 @[reducible]
 structure CalculusProcess
