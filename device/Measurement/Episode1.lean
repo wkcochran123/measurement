@@ -128,6 +128,7 @@ end Fact
 -- what some numbers were.  So, let's make some and name them.  We use Big Endian so we can shortcut a very common computation. At some point, we will
 -- have described a particular number so well, the compiler can't help but give it to us.
 
+@[reducible]
 /- CHORUS:
 ME: I need the number to be bigger or smaller.
 COMPILER: Bigger or smaller than what?
@@ -336,6 +337,7 @@ ME: I want to tell one from the rest.                  |                    a me
 COMPILER: That is barely counting.                     |                    a bit _differently_ and _compilation itself_ is the process we measure
 ME: Exactly. We are still in the cave drawing phase.   |                    _together_.
 -/
+@[reducible]
 inductive Natural  -- Bullshit meter ≈ 107       | The Fact here is a bit murkier. (Or is it a murkier bit?)  We are coordinating with the compiler
   where                   --                     | now on what is a fact and what isn't.  We have a notion of true and the compiler has a notion of
   | zero : Fact → Natural -----------------------+ true, which leads to true=true or false=false.  See?  Or is this _straining_ your imagination?
@@ -385,7 +387,6 @@ instance : LT Natural where  -- Bullshit meter ≈ 7
 --
 -- You are reading this for the plot, right?
 
-@[reducible]
 /- CHORUS:
 ME: I need a counting process.
 COMPILER: Count the things?
@@ -522,6 +523,7 @@ ME: The thing we just finished pretending was one.
 COMPILER: So one was provisional.
 ME: All measurement is provisional. Please initialize the saw.
 -/
+@[reducible]
 inductive Rational  -- Bullshit meter ≈ 107
       --     ^
       --     |           | This is not ℚ. This is just an inductive structure that is populated with symbols that represent what the
@@ -1096,6 +1098,7 @@ ME: Measurement usually is.                                                  | s
 COMPILER: What does the sample prove?                                        | variations. Symmetries. Proofs are made of symbols that are subject
 ME: Nothing. It gives the next measurement a foothold.  ---------------------+ to the laws of nature Gauss showed us through the lens of math.
 -/
+@[reducible]
 inductive Sample -- Bullshit meter ≈ 150            -- This is the admissible symbol for a single normal number
   where
 
@@ -1238,7 +1241,6 @@ instance : LT Sample where   -- Bullshit meter ≈ 5
 -- Seriously it would stop "doing," as it were. What we need to do now is understand if we want to label the first limit value of a Sample the
 -- covariant repsonse or the contravariant response.
 
-@[reducible]
 /-
 ME: I need an observation process.
 COMPILER: We sampled the residue.
@@ -1315,6 +1317,7 @@ ME: From itself after the instrument answers.       | does _not_ depend on is th
 COMPILER: class DISTINGUISHABLE --------------------+
 ME: I counted two as well                           | So, we have to tell the compiler how to make 1 water into 2 waters.
 -/
+@[reducible]
 class BINARY  --  Bullshit meter ≈ 141
   --     ^
   --     |               So, DSP.  We can assume a covariant/contravariant tick/tock for creating
@@ -1440,6 +1443,7 @@ ME: When did you get a sense of humor?
 COMPILER: I am just here to mediate the demonstration, I refuse to take part.
 ME: There can be no trial without a judge.
 -/
+@[reducible]
 inductive Trial  -- Bullshit meter ≈ 150   ------------------------------------+ At the heart of science is the repeatable trial.  Galileo
   | hypothesis: Fact → Sample → Trial --                                       | demonstrated it was not enough to perform the act, the act must also
   | signal_response: Fact → Sample → Fact → Sample → Trial → Trial --          | be described well enough to be performed by _someone else_. This
@@ -1591,6 +1595,7 @@ structure RepeatableProcess  -- Bullshit meter ≈ 296
 -- variable domain of f(t).  The actual tick/tock of a clock. Think about it.  What is a second?  Please explain how that is not tick/tock. The
 -- electron repeatably and on queue (sic) does its thing.  The important part about it is: _on cue_:  the time between events is considered
 -- _constant_.
+@[reducible]
 /-
 ME: I need REPEATABLE.
 COMPILER: You just defined a repeatable process.
@@ -1627,8 +1632,6 @@ class REPEATABLE   -- Bullshit meter ≈ 166     | _carefully_ explain how to me
 
 -- Or, more simply, counting _is_ the mechanism _t_ by which a _repeatable_ process consumes _s_. We demand that _t_ take a different value because
 -- _s_ cannot take it by construction. _t_ is never _s_ alone; it is always the iterate of _s_. And here, there is but one to compute.
-
--- And, the best part, most of this nonsense DOESN'T MATTER to the computation count.
 
 -- Tune in next week for: TIME!
 end Measurement

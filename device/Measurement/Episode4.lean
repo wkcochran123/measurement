@@ -394,7 +394,7 @@ structure LearningProcess  -- 26691
   --                         +--------------------------+ How do you setup a box to put a pigeon into it? I mean, we have figured out how to put
   --                         |                          | a bug in the process. We should be able to use the same mechanism to inject a pigeon into
   --                         V                          | a box.
-  initiation_process : InitiationProcess Box Pigeon
+  teaches : InitiationProcess Box Pigeon
 
   -- Learn the ways of Galileo. Seriously, the guy knew what he was talking about.  *BUT* that isn't to say there isn't a bit of a cult around
   -- science, like cult members who expect science to answer questions. Science doesn't tell you where the coin is. It teaches you how to look at the
@@ -430,7 +430,7 @@ class SCIENTIFIC -- 23964
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]
   where
-  phd_process : LearningProcess Box Pigeon
+  discovers: LearningProcess Box Pigeon
   invariant: Science
 
 --| The thing about throwing three card monte in science is you need be able to apply your science to whatever is paying grants. Science lives and
@@ -458,6 +458,9 @@ def le : Knowledge → Knowledge → Prop
 termination_by _ k => sizeOf k
 end Knowledge
 
+instance : LE Knowledge where
+  le := Knowledge.le
+
 @[reducible] -- We have learned this in the learning process
 -- lol.  10 years of learning about the Taylor series.  It's like I can manipulate them with my eyes closed now.
 structure ScientificProcess  -- 104499
@@ -471,7 +474,7 @@ structure ScientificProcess  -- 104499
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]
   where
-  learning_process: LearningProcess Box Pigeon
+  shows_us: LearningProcess Box Pigeon
   knowledge: Knowledge
 
   learn? : Knowledge → Knowledge := fun know =>
@@ -498,17 +501,20 @@ class TRUTH  -- 5632
 
 inductive Gospel  -- 67
   | the_proof: Prop → Gospel
-  | state: Knowledge → Prop → Gospel → Gospel
+  | we_understand_that: Knowledge → Prop → Gospel → Gospel
 
 namespace Gospel
 def le : Gospel → Gospel → Prop
-  | .the_proof p1, .the_proof p2 => p1 = p2
-  | .the_proof p1, .state _ p2 _ => p1 = p2
-  | .state _ p1 _, .the_proof p2 => p1 ≠ p2
-  | .state f1 p1 g1, .state f2 p2 g2 =>
-    (Knowledge.le f1 f2 ∧ p1 = p2 ∧ le g1 g2) ∨ le (.state f1 p1 g1) g2
-termination_by _ g => sizeOf g
+  | .the_proof before,                       .the_proof after                              => before = after
+  | .the_proof before,                       .we_understand_that _ after _                 => before = after
+  | .we_understand_that _ before _,          .the_proof after                              => before ≠ after
+  | .we_understand_that some_things can be_shown, .we_understand_that α cannot be_proven   =>
+                      (some_things ≤ α ∧ can = cannot ∧ le be_shown be_proven) ∨ le (.we_understand_that some_things can be_shown) be_proven
+termination_by _ source_file => sizeOf source_file
 end Gospel
+
+instance : LE Gospel where
+  le := Gospel.le
 
 @[reducible] -- We have learned this while watching others.
 structure ReligiousProcess
@@ -523,65 +529,47 @@ structure ReligiousProcess
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
     [truth: TRUTH Box Pigeon]
   where
-  observation: ScientificProcess Box Pigeon
+  we_experience: ScientificProcess Box Pigeon
   in_the_literature: Gospel
 
   pray? : Gospel → Gospel := fun prayer =>
     match prayer with
-    | .the_proof of_the_idea => .state the_proof.becomes.knowledge of_the in_the_literature
-    | .state _ idea experiment => .state observation.becomes.knowledge idea experiment
+    | .the_proof of_the_idea => .we_understand_that truth.becomes.knowledge of_the_idea in_the_literature
+    | .we_understand_that _ when_an_idea becomes_an_experiment => .we_understand_that we_experience.knowledge
+                                                                                               when_an_idea becomes_an_experiment
+--| Spittin' triples like Bones Thugs -n- Harmony.
 
 @[reducible]
 class WITNESSED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
-    [scientist: ACOLYTE Box Pigeon]
-    [ideology: SCIENTIFIC Box Pigeon]
-    [gospel: TRUTH Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
+    [TRUTH Box Pigeon]
   where
-  baptism: ReligiousProcess Box Pigeon
-  witness: Gospel
+  we_saw: ReligiousProcess Box Pigeon
+  the_experiment: Gospel
 
-  risen? : Gospel → Gospel → Prop := fun a b =>
-    Gospel.le a b → Gospel.le b a
+  risen? : Gospel → Gospel → Prop := fun a b => a ≤ b → b ≤ a  -- The experiment is one and the same according to us.
 
 
 inductive Truth
-  | logic: Prop → Truth
-  | fact: Gospel → Prop → Truth → Truth
+  | logically: Prop → Truth
+  | but: Gospel → Prop → Truth → Truth
 
 namespace Truth
 def le : Truth → Truth → Prop
-  | .logic p1, .logic p2 => p1 = p2
-  | .logic p1, .fact _ p2 _ => p1 = p2
-  | .fact _ p1 _, .logic p2 => p1 ≠ p2
-  | .fact g1 p1 t1, .fact g2 p2 t2 =>
-    (Gospel.le g1 g2 ∧ p1 = p2 ∧ le t1 t2) ∨ le (.fact g1 p1 t1) t2
-termination_by _ t => sizeOf t
+  | .logically this_is_true,                  .logically that_is_true => this_is_true = that_is_true
+  | .logically this_is_true,                  .but _ theres_this_thing _ => this_is_true = theres_this_thing
+  | .but _ this_is_true _,                    .logically that_is_true => this_is_true ≠ that_is_true
+  | .but galileo_said repetition is_science,  .but poincare_said everything repeats =>
+    (galileo_said ≤ poincare_said ∧ repetition = everything ∧ le is_science repeats) ∨ le (.but galileo_said repetition is_science) repeats
+termination_by _ total_Poincare_states => sizeOf total_Poincare_states
 end Truth
 
 --  We have learned this through Quantum Eletrodynamics.
@@ -592,232 +580,157 @@ end Truth
 structure UniverseTensor
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
-    [scientist: ACOLYTE Box Pigeon]
-    [ideology: SCIENTIFIC Box Pigeon]
-    [gospel: TRUTH Box Pigeon]
-    [account: WITNESSED Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
+    [TRUTH Box Pigeon]                         [yet: WITNESSED Box Pigeon]
   where
   frame_of_reference: ReligiousProcess Box Pigeon
-  reality: Truth
+  in_reality: Truth
 
   -- Your _PUNY_ __GODS__ _ignore_ your pleas!
   -- The universe __SIMPLY__ dngaf!
   observe? : Truth → Truth := fun gospel =>
     match gospel with
-    | .logic prop => .fact account.witness prop reality
-    | .fact knowledge prop _ => .fact knowledge prop reality
+    | .logically this_is_true => .but yet.we_saw.in_the_literature this_is_true in_reality       ---| Coincidence?
+    | .but this_other_truth is_also_true _ => .but this_other_truth is_also_true in_reality      ---| Maybe. Looks like could have multiple reasons.
 
 @[reducible]
 class REAL
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
-    [scientist: ACOLYTE Box Pigeon]
-    [ideology: SCIENTIFIC Box Pigeon]
-    [gospel: TRUTH Box Pigeon]
-    [account: WITNESSED Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
+    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]
   where
-  universal_observer: UniverseTensor Box Pigeon  -- Praise be to the universal observer.
-  current_status: Truth
+  by_His_noodly_appendage: UniverseTensor Box Pigeon  -- Praise be to the universal observer.
+  al_dente: Truth
 
   metaphysical? : Truth → Truth → Prop := fun a b =>
     Truth.le a b → Truth.le b a
 
 
 inductive Variation
-  | newton: Gospel → Prop → Variation
+  | the_newton: Gospel → Prop → Variation
 --      +-----    We do what we must because we can.
 --      |
 --      V
-  | gateaux: Gospel → Prop → Prop → Variation → Variation      -- CAKE!
-  | frechet: Gospel → Prop → Prop → Prop → Variation → Variation → Variation
+  | the_gateaux: Gospel → Prop → Prop → Variation → Variation      -- CAKE!
+  | the_frechet: Gospel → Prop → Prop → Prop → Variation → Variation → Variation
 
 namespace Variation
-def le : Variation → Variation → Prop   --                             +-------- The Gospel according to Galileo, not me.
---|                                                                    |
---|                                                                    V
-  | .newton model polynomial, .newton thought_experiment apple => (Gospel.le model thought_experiment) ∧ polynomial = apple
+def le : Variation → Variation → Prop   --                                   +-------- The Gospel according to Galileo, not me.
+--|                                                                          |
+--|                                                                          V
+  | .the_newton model polynomial, .the_newton thought_experiment apple => (Gospel.le model thought_experiment) ∧ polynomial = apple
 
 --|                                                                                           +--------+ Euler found this representation particularly
 --|                                                                                           |        | delightful when a young Lagrange presented
---|                                    1 in 3 This _probably_ MATTERs?  ------> ✓ ? ?         V        | it to him.
-  | .newton apple_model derivative, .gateaux another_model _ another_derivative _     => (Gospel.le apple_model another_model) ∧
+--|                                    1 in 3 This _probably_ MATTERs?  ------> ✓ ? ?         +-----V  | it to him.
+  | .the_newton apple_model derivative, .the_gateaux another_model _ another_derivative _     => (Gospel.le apple_model another_model) ∧
                                                                                                                  derivative = another_derivative
---|                                                                                           +--------+ Fields, on the other hand, require more
---|                                                                                           |        | than an armwave to be well defined.
---|                                                                                           V
-  | .newton apple_model derivative, .frechet another_model _ another_derivative _ _ _ => (Gospel.le apple_model another_model) ∧
+--|                                                                                              +--------+ Fields, on the other hand, require more
+--|                                                                                              |        | than an armwave to be well defined.
+--|                                                                                              V
+  | .the_newton apple_model derivative, .the_frechet another_model _ another_derivative _ _ _ => (Gospel.le apple_model another_model) ∧
                                                                                                                derivative = another_derivative
---|                                                        ^                    ^ ^ ^
---|                                                        |                    | | |
---|                                                        +--------------------+-+-+------- These don't matter for the current step in the discussion.
+ --|                                                               ^                    ^ ^ ^
+ --|                                                               |                    | | |
+ --|                                                               +--------------------+-+-+-| These don't matter for the current step in the discussion.
 
 --| It is easy to confuse the models of a derivative for being the same _thing_ instead of _three_ different things, one which might have a bug in it.
 --| We need to find where they are different. And where they are different is in the ability of finding bent cards. You don't see it yet, you will.
-  | .gateaux _ _ bent_card _    , .newton _ card => bent_card ≠ card
-  | .frechet _ _ bent_card _ _ _, .newton _ card => bent_card ≠ card
+  | .the_gateaux _ _ bent_card _    , .the_newton _ card => bent_card ≠ card
+  | .the_frechet _ _ bent_card _ _ _, .the_newton _ card => bent_card ≠ card
 
 
 --| Generally the cost to go from here to there is based on how far apart the stations are. This could be for 2 reasons, 1) You go through Toronto
 --|   on your subway trip from Houston St. to Canal St. and 2) It costs more to go to Toronto from Houston St. than Canal St. because it is _farther_.
-  | .gateaux cheaper_train_route here there faster_time     , .gateaux more_expensive_train_route point_a point_b longer_time =>
+  | .the_gateaux cheaper_train_route here there faster_time     , .the_gateaux more_expensive_train_route point_a point_b longer_time =>
                          (Gospel.le cheaper_train_route more_expensive_train_route ∧ here = point_a ∧ there = point_b ∧ le faster_time longer_time) ∨
-                         le (.gateaux cheaper_train_route here there faster_time) longer_time
+                         le (.the_gateaux cheaper_train_route here there faster_time) longer_time
 
 --| But it isn't the same price to go in all directions. And that's what makes it⁻¹ 𝔽(1)-ny. It also makes the computation not-so-straightforward.
 --| What you can do is try to figure out how much it costs to travel a certain distance by how far apart they are and use the time-tables to see
 --| which one would take longer. This gets you a constant of proportionality.
-  | .frechet this_way here there _ price_to_go_here price_to_go_there, .gateaux that_way point_a point_b price_of_a_one_way_ticket =>
-                    ((Gospel.le this_way that_way) ∧ here = point_a ∧ there ≠ point_b ∧
-                                         (le price_to_go_here price_of_a_one_way_ticket ∨ le price_to_go_there price_of_a_one_way_ticket)) ∨
-                    le (.frechet this_way here there (here ∧ ¬there) price_to_go_here price_to_go_there) price_of_a_one_way_ticket
+  | .the_frechet fastest_way here there _ price_to_go_here price_from_here_to_there, .the_gateaux THAT_way point_a point_b price_of_a_one_way_ticket =>
+                    ((Gospel.le fastest_way THAT_way) ∧ here = point_a ∧ there ≠ point_b ∧
+                                         (le price_to_go_here price_of_a_one_way_ticket ∨ le price_from_here_to_there price_of_a_one_way_ticket)) ∨
+                    le (.the_frechet fastest_way here there (here ∧ ¬there) price_to_go_here price_from_here_to_there) price_of_a_one_way_ticket
 
-  | .gateaux g1 a1 b1 v1, .frechet g2 a2 b2 _ v2 v3 => (Gospel.le g1 g2 ∧ a1 = a2 ∧ b1 = b2 ∧ (le v1 v2 ∨ le v1 v3)) ∨ le (.gateaux g1 a1 b1 v1) v2 ∨ le (.gateaux g1 a1 b1 v1) v3
-  | .frechet g1 a1 b1 c1 v1 v2, .frechet g2 a2 b2 c2 v3 v4 =>
+--| You see, the cake here is divided into "pieces" (and is also may not be real? I feel like I mentioned something about playing video games befor)
+--| And those "pieces" are the only way you can move about the train system.  However, you need the _ENTIRE_ time table, fresh from the stationmaster
+--| to make sure all the lines are still operating. AND you need to check at every station, because they shut down LIRR _ALL the TIME_.
+--| The thing that MATTERs though, is once you are on the train, you _WILL_ reach the next stop and nowhere in-between. It is a _fine_ day to take
+--| a train ride. affine. lol. That's a mighty _fine_ constant you got there Mr. Feynman.
+  | .the_gateaux all_aboard now later v1, .the_frechet g2 a2 b2 _ v2 v3 =>
+                       (Gospel.le all_aboard g2 ∧ now = a2 ∧ later = b2 ∧ (le v1 v2 ∨ le v1 v3)) ∨
+                       le (.the_gateaux all_aboard now later v1) v2 ∨
+                       le (.the_gateaux all_aboard now later v1) v3
+  | .the_frechet g1 a1 b1 c1 v1 v2, .the_frechet g2 a2 b2 c2 v3 v4 =>
     (Gospel.le g1 g2 ∧ a1 = a2 ∧ b1 = b2 ∧ c1 = c2 ∧
       ((le v1 v3 ∧ le v2 v4) ∨ (le v1 v4 ∧ le v2 v3))) ∨
-      le (.frechet g1 a1 b1 c1 v1 v2) v3 ∨
-        le (.frechet g1 a1 b1 c1 v1 v2) v4
+      le (.the_frechet g1 a1 b1 c1 v1 v2) v3 ∨
+        le (.the_frechet g1 a1 b1 c1 v1 v2) v4
 
 --| Remember, this compiles and the logic is sound. We stop when it is a good place to stop.
-termination_by _ v => sizeOf v
-end Variation -- ∎
+termination_by _ number_of_stops => sizeOf number_of_stops
+end Variation -- ∎ <-----| that's a weird place for a tombstone. I feel like this minimizes the train metaphor somehow.
 
+/---/
 
 @[reducible]
 structure BigRedDogProcess
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
-    [scientist: ACOLYTE Box Pigeon]
-    [ideology: SCIENTIFIC Box Pigeon]
-    [gospel: TRUTH Box Pigeon]
-    [account: WITNESSED Box Pigeon]
-    [real: REAL Box Pigeon]    -- The idea that a real number can be reperesented isn't real.
+    [a_nowtrino: DISTINGUISHABLE Box Pigeon][ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
+    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]                   [REAL Box Pigeon] --| They do exist.
   where
-  universal_observer: UniverseTensor Box Pigeon  -- Praise be to the universal observer.
+  universal_observer: UniverseTensor Box Pigeon  ---| The thing that "observes" quantum mechanics, Jar Jar.
   differential_equation: Variation
   transmute: Variation → Variation := fun variation =>
     match variation with
-    | .newton g p => .gateaux g d.fact.truth p differential_equation
-    | .gateaux g a b v =>
+    | .the_newton models as_a_calculus => .the_gateaux models a_nowtrino.fact.truth as_a_calculus differential_equation
+    | .the_gateaux models from_a to_b as_a_single_path =>
         -- Gateaux → Fréchet: add the residue.
         -- a is the direction, b is the response, a≠b is the strain.
-        .frechet g a b (a ∧ ¬b) v differential_equation   -- the residue is exactly the informational strain
-    | .frechet g a b c f1 _ =>
+        .the_frechet models from_a to_b (from_a ∧ ¬to_b) as_a_single_path differential_equation  -- the residue is exactly the informational strain
+    | .the_frechet models the_neighborhood_of_a near_b near_c in_some_field _ =>
         -- Fréchet → Gateaux: project out the residue, collapse to direction only.
         -- This is the weak form. You lose the residue. That's the price of Galerkin.
-        .gateaux g (d.fact.truth∧a) (b=c) f1
+        .the_gateaux models (a_nowtrino.fact.truth ∧ the_neighborhood_of_a) (near_b=near_c) in_some_field
 
 @[reducible]
 class LOCAL
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon]
-    [a: ADMISSIBLE Box Pigeon]
-    [c: COUNTABLE Box Pigeon]
-    [e: ENCODED Box Pigeon]
-    [r: RESIDUE Box Pigeon]
-    [b: BINARY Box Pigeon]
-    [f: REPEATABLE Box Pigeon]
-    [n: NUMERIC Box Pigeon]
-    [h: REPRESENTABLE Box Pigeon]
-    [p: PHYSICAL Box Pigeon]
-    [z: COMPARABLE Box Pigeon]
-    [particle: OBSERVED Box Pigeon]
-    [frquency: PRESENT Box Pigeon]
-    [what_meesa_saying: MEASURABLE Box Pigeon]
-    [zero: GUNGAN Box Pigeon]
-    [one: SOURCE Box Pigeon]
-    [result: EXECUTED Box Pigeon]
-    [value: VALUE Box Pigeon]
-    [length: MAGNITUDE Box Pigeon]
-    [scaled: SCALED Box Pigeon]
-    [oriented: LOAD Box Pigeon]
-    [matter: INDEXOFANT Box Pigeon]
-    [model: BULLSHIT Box Pigeon]
-    [space: PROPAGANDA Box Pigeon]
-    [scientist: ACOLYTE Box Pigeon]
-    [ideology: SCIENTIFIC Box Pigeon]
-    [gospel: TRUTH Box Pigeon]
-    [account: WITNESSED Box Pigeon]
-    [imaginary: REAL Box Pigeon]
-    (real: REAL Box Pigeon)
+    [of_a_nowtrino: DISTINGUISHABLE Box Pigeon][ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
+    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]                   [REAL Box Pigeon] --| They do exist.
   where
-  theory: BigRedDogProcess Box Pigeon
-  delta: Prop
-  experience: Variation → Variation → Prop := fun a b =>
-    Variation.le a b
+  the_neighborhood: BigRedDogProcess Box Pigeon
+  the_schools: Prop
+  experience: Variation → Variation → Prop := fun a b => a ≤ b
 
 
 inductive SpaceTimePath
@@ -875,72 +788,69 @@ termination_by _ path => sizeOf path
 end SpaceTimePath
 --| If you think _THAT_ is a 3-card monte throw, wait till I show you String theory.
 
-@[reducible]
+instance : LE SpaceTimePath where
+  le := SpaceTimePath.le
+
 structure CalculusProcess
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier]
-    (imaginary: REAL Box Pigeon)
+    [of_a_nowtrino: DISTINGUISHABLE Box Pigeon][ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
+    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]                   [REAL Box Pigeon] --| They do exist.
   where
-  derivative: BigRedDogProcess Box Pigeon  -- Parents, read to your kids.  They are the future.
-  function: SpaceTimePath
-  converged: Fact
-  sink: Type (i+1)
+  the_local_schedule: BigRedDogProcess Box Pigeon  -- Parents, read to your kids.  They are the future.
+  the_direction_to_the_destination: SpaceTimePath
+  uptown_or_downtown: Fact
+  the_train_in: Type (i+1)
 
   photon_torpedo: SpaceTimePath → SpaceTimePath := fun path =>
     match path with
-    | .einstein fact =>
-                .white_hole converged Value (.einstein fact)
-    | .white_hole fact val path =>
-              match fact.decTruth with
+    | .einstein field_theory => .white_hole converged Box (.einstein field_theory)
+
+    | .whitehole field_theory_of a_box along_a_path =>
+              match field_theory_of.decTruth with
               | isTrue _ =>
-                    .geodesic d.fact val d.fact.truth (ULift.{i+1} val) path function
+                    .geodesic of_a_nowtrino.fact a_box of_a_nowtrino.fact.truth (ULift.{i+1} a_box) along_a_path the_direction_to_the_destination
               | isFalse _ =>
-                    .blackhole fact.truth (ULift.{i+1} val) function
-    | .geodesic fact val1 prop val2 _ _ =>
-              match fact.decTruth with
+                    .blackhole field_theory_of.truth (ULift.{i+1} a_box) the_direction_to_the_destination
+
+    | .geodesic in_a_field of_boxes of boxes _ _ =>
+              match in_a_field.decTruth with
               | isTrue _ =>
-                    .geodesic d.fact
-                              val1
-                              prop
-                              val2
-                              (.white_hole converged (ULift.{i} Value) (.einstein fact))
-                              (.einstein fact)
+                    .geodesic of_a_nowtrino.fact
+                              of_boxes
+                              of boxes
+                              (.white_hole in_a_field (ULift.{i} Box) (.einstein in_a_field))
+                              (.einstein in_a_field)
               | isFalse _ =>
-                    .blackhole fact.truth sink function
-    | .blackhole prop val after => .blackhole prop val after
+                    .blackhole in_a_field.truth the_train_in the_direction_to_the_destination
+    | .blackhole downtown box next_train => .blackhole downtown box next_train
 
 
 @[reducible]
 class UNIVERSAL
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier]
+    [a_nowtrino: DISTINGUISHABLE Box Pigeon][ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
+    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]                   [model: REAL Box Pigeon] --| They do exist.
   where
-  the_compiler: CalculusProcess Box Pigeon real -- Praise be to the universal compiler.
-  source_program: SpaceTimePath
-  compiled_program: SpaceTimePath
+  the_train_of_thought: CalculusProcess Box Pigeon model -------| I do believe we have arrived at the next stop. A universal calculus model.
+  here_to_halfway: SpaceTimePath
+  halfway_to_there: SpaceTimePath
 
   -- let's ask the compiler to hold the quarter we glued to the table.
-  lake_build: SpaceTimePath → SpaceTimePath → Prop := fun _ _ => the_compiler.converged = d.fact
+  lake_build: SpaceTimePath → SpaceTimePath → Prop := fun _ _ => the_train_of_thought.uptown_or_downtown = a_nowtrino.fact
 
 
 
@@ -951,17 +861,27 @@ inductive YarnTheory
 
 namespace YarnTheory
 def le : YarnTheory → YarnTheory → Prop
-  | .stokes f1 p1 q1, .stokes f2 p2 q2 =>
-    f1 = f2 ∧ SpaceTimePath.le p1 p2 ∧ q1 = q2
-  | .stokes f1 p1 q1, .fibers f2 p2 p3 q2 q3 _ =>
-    f1 = f2 ∧ (SpaceTimePath.le p1 p2 ∨ SpaceTimePath.le p1 p3) ∧
-      (q1 = q2 ∨ q1 = q3)
-  | .stokes f1 p1 q1, .fabric f2 f3 p2 p3 p4 q2 q3 q4 _ _ =>
-    (f1 = f2 ∨ f1 = f3) ∧
-      (SpaceTimePath.le p1 p2 ∨ SpaceTimePath.le p1 p3 ∨ SpaceTimePath.le p1 p4) ∧
-        (q1 = q2 ∨ q1 = q3 ∨ q1 = q4)
-  | .fibers f1 _ _ q1 q2 _, .stokes f2 _ q3 =>
-    f1 ≠ f2 ∨ (q1 ≠ q3 ∧ q2 ≠ q3)
+  | .stokes station_1 route_a station_2,     .stokes station_a route_1 station_b => -- Flop:
+                                                            station_1 = station_a ∧
+                                                            (route_a ≤ route_1) ∧
+                                                            station_2 = station_b
+
+  | .stokes station_1 route_a station_2,     .fibers station_a route_1a route_1b station_1a station_1b _ => -- Flop:
+                                                            station_1 = station_a ∧
+                                                            (route_a ≤ route_1a ∨ route_a ≤ route_1b) ∧
+                                                            (station_2 = station_1a ∨ station_2 = station_1b)
+
+  -- The Maine Railroad, also called you can't get there from here. If I were to go there, I would not start here, I would start at station_b.
+  | .stokes station_1 route_a station_2,     .fabric station_a station_b route_b1 route_b2 route_b3 station_b1 station_b2 station_b3 _ _ => -- Flop:
+                                                            (station_1 = station_a ∨ station_1 = station_b) ∧
+                                                            (route_a ≤ route_b1 ∨ route_a ≤ route_b2 ∨ route_a ≤ route_b3) ∧
+                                                            (station_2 = station_b1 ∨ station_2 = station_b2 ∨ station_2 = station_b3)
+
+
+  --
+  | .fibers this_station _ _ route_in route_out _,                     .stokes destination _ main_line =>
+                                                             this_station ≠ destination ∨ (route_in ≠ main_line ∧ route_out ≠ main_line)
+
   | .fibers f1 p1 p2 q1 q2 y1, .fibers f2 p3 p4 q3 q4 y2 =>
     (f1 = f2 ∧ SpaceTimePath.le p1 p3 ∧ SpaceTimePath.le p2 p4 ∧
       q1 = q3 ∧ q2 = q4 ∧ le y1 y2) ∨
@@ -998,99 +918,136 @@ end YarnTheory
 structure HeartbeatProcess
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
+    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]                   [model: REAL Box Pigeon] --| They do exist.
     (imaginary: REAL Box Pigeon)
-    (computer_science: UNIVERSAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon)
   where
-  bullshit_meter: CalculusProcess Box Pigeon real -- Praise be to the heart.
-  current_reading: SpaceTimePath
-  accumulated_bullshit: YarnTheory
+  bullshit_meter: CalculusProcess Box Pigeon model ----| We can model the bullshit meter's path as it moves through _FIELDS_ of bullshit.
+  current_accumulation: SpaceTimePath
+  according_to_newton: YarnTheory
+
 
   weave? : YarnTheory → YarnTheory := fun yarn =>
      match yarn with
-     |.stokes fact stp prop =>
-              .fibers fact stp current_reading prop computer_science.the_compiler.converged.truth accumulated_bullshit
-     |.fibers fact before after prop_before prop_after yt =>
-              match fact.decTruth with
+     |.stokes nonstop_train in_the_direction_of_destination uptown =>
+          .fibers nonstep_train in_the_direction_of_destination uptown commuter_pass.the_train_of_thought.uptown_or_dowtown.truth according_to_dijkstra
+
+     |.fibers itinerary now after this_station next_station is_bigger =>
+              match itinerary.decTruth with
               | isTrue _ =>
-                .fibers fact after current_reading prop_after fact.truth accumulated_bullshit
+                .fibers itinerary after current_accumulation next_station itinerary.truth is_bigger
               | isFalse _ =>
-                .fabric fact d.fact before after current_reading prop_before prop_after (¬fact.truth) yt accumulated_bullshit
-     |.fabric f1 f2 x1 x2 x3 p1 p2 p3 yt1 yt2 =>
-              match f1.decTruth, f2.decTruth with
+                .fabric itinerary nowtrino.fact now after current_depth this_station next_station (¬itinerary.truth) is_bigger according_to_dijkstra
+
+     |.fabric this_way that_way here halfway there stamped_here stamped_halfway stamped_there according_to_euler and_einstein =>
+              match this_way.decTruth, that_way.decTruth with
               | isTrue _   , isTrue _    =>
-                          .fabric f1 f2 x1 x2 x3 p1 p2 p3 yt1 yt2
+                          .fabric this_way that_way here halfway there stamped_here stamped_halfway stamped_there according_to_euler and_einstein
               | isTrue _   , isFalse _   =>
-                          .fabric d.fact f2 current_reading x2 x3 computer_science.the_compiler.converged.truth p2 (¬p3) accumulated_bullshit yt2
+                          .fabric nowtrino.fact that_way current_accumulation halfway there commuter_pass.the_train_of_thought.uptown_or_downtown.truth
+                                            stamped_halfway (¬stamped_there) according_to_newton and_einstein
               | isFalse _, isTrue _  =>
-                          .fibers f2 x3 current_reading p3 f2.truth accumulated_bullshit
+                          .fibers that_way there current_accummulation stamped_there that_way.truth according_to_newton
               | isFalse _, isFalse _ =>
-                          .fabric f1 f2 x2 x3 current_reading (¬p2) (¬p3) f2.truth yt2 accumulated_bullshit
+                          .fabric this_way that_way halfway there current_accumulation (¬stamped_halfway) (¬stamped_there) that_way.truth
+                                                                                                              and_einstein according_to_newton
 
 
 @[reducible]
 class LOGICAL
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] [imaginary: REAL Value Carrier]
-    [delta: UNIVERSAL Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
+    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]                   [imaginary: REAL Box Pigeon] --| They did exist.
+    [ball: UNIVERSAL Box Pigeon]
   where
-  feelings: HeartbeatProcess Box Pigeon imaginary delta
-  ekg: Calibration.EKG
+  feelings: HeartbeatProcess Box Pigeon imaginary ball --------| No real heart, just an imaginary ball pumping.
+  microsoft_basic: Calibration.EKG
 
-  logical? : YarnTheory → YarnTheory → Prop := fun a b =>
-    YarnTheory.le a b
+  logical? : YarnTheory → YarnTheory → Prop := fun a b => a ≤ b
 
 
 namespace ComputerProgram
 def le
-    (Value : Type i)
-    (Carrier : CarrierProcess Value)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Box Pigeon]
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
+    [WITNESSED Box Pigeon]                     [REAL Box Pigeon]                        [UNIVERSAL Box Pigeon]
+    [commodore64: LOGICAL Box Pigeon]
     : ComputerProgram → ComputerProgram → Prop
-  | .boolean p1 p2 p3 t1 t2 t3 program1,
-      .boolean p4 p5 p6 t4 t5 t6 program2 =>
-    let before := ComputerProgram.boolean p1 p2 p3 t1 t2 t3 program1
-    let after := ComputerProgram.boolean p4 p5 p6 t4 t5 t6 program2
-    prop.ekg.booleanProgram? before after
-  | .transform p1 p2 t1 t2 program1,
-      .boolean p3 p4 p5 t3 t4 t5 program2 =>
-    let before := ComputerProgram.transform p1 p2 t1 t2 program1
-    let after := ComputerProgram.boolean p3 p4 p5 t3 t4 t5 program2
-    prop.ekg.transformBoolean? before after
-  | .boolean p1 p2 p3 t1 t2 t3 program1,
-      .transform p4 p5 t4 t5 program2 =>
-    let before := ComputerProgram.boolean p1 p2 p3 t1 t2 t3 program1
-    let after := ComputerProgram.transform p4 p5 t4 t5 program2
-    prop.ekg.booleanTransform? before after
+  | .boolean
+        line10
+        line20
+        line30
+        line40
+        line50
+        line60
+        program1,
+    .boolean
+        line70
+        line80
+        line90
+        line100
+        line110
+        line120
+        program2 =>
+    let before := ComputerProgram.boolean line10 line20 line30 line40  line50  line60  program1
+    let after  := ComputerProgram.boolean line70 line80 line90 line100 line110 line120 program2
+    commodore64.microsoft_basic.booleanProgram? before after
+
+  | .transform
+        line10     -- 10 GOSUB 50
+        line20     -- 20 A = X
+        line30     -- 30 IF A THEN RETURN
+        line40     -- 40 GOTO 10
+        program1,
+    .boolean
+        line50     -- 50 INPUT X
+        line60     -- 60 INPUT Y
+        line70     -- 70 INPUT Z
+        line80     -- 80 GOSUB 20
+        line90     -- PRINT A
+        line100    -- GOTO 10
+        program2 =>
+    let before := ComputerProgram.transform line10 line20 line30 line40 program1
+    let after := ComputerProgram.boolean line50 line60 line70 line80 line90 line100 program2
+    commodore64.microsoft_basec.transformBoolean? before after
+  | .boolean
+        line10     -- 10 INPUT X
+        line20     -- 20 INPUT Y
+        line30     -- 30 INPUT Z
+        line40     -- 40 GOSUB 70
+        line50     -- 50 PRINT A
+        line60     -- 60 GOTO 10
+        program1,
+    .transform
+        line70     -- 70 A = NOT (NOT X AND Y)
+        line80     -- 80 A = A AND Z
+        line90     -- 90 IF A THEN RETURN
+        line100    -- 100 GOTO 70
+        program2
+        let before := ComputerProgram.boolean line10 line20 line30 line40 line50 line60 program1
+        let after := ComputerProgram.transform line70 line80 line90 line100 program2
+        commodore64.microsoft_basic.booleanTransform? before after
   | _, _ => False
 end ComputerProgram
 
@@ -1098,39 +1055,36 @@ end ComputerProgram
 structure ElaborationProcess
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] [LOCAL Value Carrier real] (imaginary: REAL Value Carrier)
-    [delta: UNIVERSAL Box Pigeon]
-    [prop: LOGICAL Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
+    [WITNESSED Box Pigeon]                     (imaginary: REAL Box Pigeon)             [ball: UNIVERSAL Box Pigeon]       [LOGICAL Box Pigeon]
   where
-  stamina: HeartbeatProcess Box Pigeon imaginary delta
-  calibration: Calibration.EKG
-  computer_state:  ComputerProgram
+  stamina: HeartbeatProcess Box Pigeon imaginary ball
+  trilinos:  Calibration.EKG   ---------------------------| Sorry, Professor Gropp. I think my name is still on some #DEFINE WKC in trilinos.
+  numerical_analysis:  ComputerProgram
 
-  execute: ComputerProgram → ComputerProgram := fun op_code =>
+  teraFLOPs: ComputerProgram → ComputerProgram := fun op_code =>
       match op_code with
-      | .load load_prop load_type =>
-                  .transform load_prop (¬load_prop) load_type (ULift.{i+1} Value)
-                    (.load load_prop load_type)
-      | .transform p1 p2 t t1 program =>
-                  .boolean p1 p2 d.fact.truth t t1 (ULift.{i+1} t1) program
+      | .load subsystem operator_type =>
+                  .transform subsystem (¬subsystem) operator_type (ULift.{i+1} Box) -- We can model a PetSc C struct as ¬subsystem inside the CPP of
+                    (.load subsystem operator_type)                                 -- Trilinos (See AMP reports ORNL, 2010, Clarno, Philip, et al.)
+                                                                                    -- Memory serves, the problem with PetSc didn't expose an interface
+                                                                                    -- to ref-counted pointers. So, I created one just like here.
+      | .transform detect value recursively apply_operator program =>
+                  .boolean detect value nowtrino.fact.truth recursively apply_operator (ULift.{i+1} apply_operator) program
 
-      | .boolean outer_p1 outer_p2 outer_p3 outer_t _ outer_ti outer_program =>
-                    if calibration.outgrown? op_code then
-                      .load (¬outer_p1 ∧ ¬outer_p2 ∧ outer_p3) outer_t
+      | .boolean card1 card2 card3 left_card _ right_card three_card_monte_flop =>
+                    if trilinos.outgrown? op_code then
+                      .load (¬card1 ∧ ¬card2 ∧ card3) left_card
                     else
-                      match d.fact.decTruth with
-                        | isTrue _  => .boolean outer_p2 outer_p3 d.fact.truth
-                                          outer_t (ULift.{i+1} outer_t) outer_ti outer_program
-                        | isFalse _ => .load (¬outer_p1 ∧ ¬outer_p2 ∧ outer_p3) outer_t
+                      match nowtrino.fact.decTruth with
+                        | isTrue _  => .boolean card2 card3 nowtrino.fact.truth left_card (ULift.{i+1} left_card) right_card outer_program
+                        | isFalse _ => .load (¬card1 ∧ ¬card2 ∧ card3) left_card
 
 
 
@@ -1139,42 +1093,42 @@ structure ElaborationProcess
 class HALTED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
+    [WITNESSED Box Pigeon]                     [real: REAL Box Pigeon]                  [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
   where
   scientific_paper: ElaborationProcess Box Pigeon real
 
-  halted? : ComputerProgram → ComputerProgram → Prop := fun _ program =>
+  halted? : ComputerProgram → ComputerProgram → Prop := fun _ program =>  --| NOOP LOOP? NOP LOP? NOP LOOP?
     match program with
-    | .load p _ => p
-    | .transform p _ _ _ _ => p
-    | .boolean p _ _ _ _ _ _ => p
+    | .load NOOP _ => NOOP
+    | .transform NOOP _ _ _ _ => NOOP
+    | .boolean NOOP _ _ _ _ _ _ => NOOP
 
 
 inductive Measurement
 |origin: Fact → Number → Type i → Measurement
-|distance: Fact → Number → Number → Type i → Type (i+1) → Measurement → Measurement
+|distance_to: Fact → Number → Number → Type i → Type (i+1) → Measurement → Measurement
 |speed: Fact → Number → Number → Number → Type i → Type (i+1) → Type i →  Measurement → Measurement → Measurement
 
 namespace Measurement
 def le : Measurement → Measurement → Prop := fun t1 t2 =>
   match t1, t2 with
-  | .origin f1 num1 _, origin f2 num2 _ => (f1 = f2) ∧ num1 ≤ num2
-  | .origin _ _ _ , _ => True
-  | _ , .origin _ _ _ => False
-  | .distance f1 _ length1 _ _ _, .distance f2 _ length2 _ _ _ => (f1 = f2) ∧ length1 ≤ length2
-  | .distance _ _ _ _ _ _, _ => True
-  | _, .distance _ _ _ _ _ _ => False
-  | .speed f1 _ _ speed1 _ _ _ _ _ , .speed f2 _ _ speed2 _ _ _ _ _ => (f1 = f2) ∧ speed1 ≤ speed2
+  | .origin this_way before _,                   .origin that_way after _         => (this_way = that_way) ∧ before ≤ after
+  | .origin _    _      _,                       _                                => True
+
+  | .distance_to here _ before _ _ _,            .distance_to there _ after _ _ _ => (here = there) ∧ before ≤ after
+  | .distance_to _    _ _      _ _ _,            _                                => True
+
+  | .speed at_x _ _ speed1 _ _ _ _ _ ,           .speed at_y _ _ speed2 _ _ _ _ _ => (at_x = at_y) ∧ speed1 ≤ speed2
+
+  | _ , .origin _ _ _           => False
+  | _, .distance_to _ _ _ _ _ _ => False
 end Measurement
 
 instance : LE Measurement where
@@ -1184,122 +1138,66 @@ instance : LE Measurement where
 structure LeanProcess
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Box Pigeon]
-    [executable: HALTED Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
+    [WITNESSED Box Pigeon]                     [real: REAL Box Pigeon]                  [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
+    [HALTED Box Pigeon]
   where
   description: ElaborationProcess Box Pigeon real
-  length: Number
-  velocity: Measurement
-  projection: Type i
+  is_length_in: Number
+  in_heartbeats: Measurement
+  saved_as_y: Type i
 
 
   evolve? : Measurement → Measurement := fun x =>
     match x with
-    | .origin fact number _ => .distance fact number length Value (ULift.{i+1} Value) velocity
-    | .distance fact x1 x2 _ _ v =>
-                                .speed fact x1 x2 length Value (ULift.{i+1} Value) projection v velocity
-    | .speed fact _ x2 x3 _ _ _ _ v =>
-                                .speed fact x2 x3 length Value (ULift.{i+1} Value) projection v velocity
+    | .origin constant times _                                      => .distance constant times length Box (ULift.{i+1} Box) heartbeats
+    | .distance origin slope intercept _ _ is_the_formula_for_y =>
+                                .speed origin slope intercept is_length_in Box (ULift.{i+1} Box) operator_output saved_as_y in_heartbeats
+    | .speed difference_between _ now and_later _ _ _ _ v =>
+                                .speed difference_between now and_later is_length_in Box (ULift.{i+1} Box) operator_output saved_as_y in_heartbeats
 
 
 @[reducible]
 class MEASURED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Box Pigeon]
-    [executable: HALTED Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
+    [WITNESSED Box Pigeon]                     [real: REAL Box Pigeon]                  [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
+    [HALTED Box Pigeon]
   where
   satire: LeanProcess Box Pigeon real
 
-  bounded? := fun a b => Measurement.le a b
+  bounded? := fun a b => a ≤ b
 
-/-
-HOUSE-TAPE CHORUS, STANZA 2 -- DRAFT PANEL TEXT
 
-This is the compiler
-that emitted the tape
-that lived in the Fact
-that John built.
-
-It does not emit the story.  It emits the small object the story must
-walk around.  The reader sees a house; the machine sees a character on
-a tape and the local permissions that let it move.
--/
-@[reducible]
-structure CompilerOutput
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
-  where
-  satire: LeanProcess Box Pigeon real
-  tape: CompilerTape
-
-  emit?: CompilerTape → CompilerTape := fun t =>
-    match t with
-    | .boot a b                => .strap a d.fact b (ULift.{i+1, i} b) tape
-    | .strap f1 f2 t t1 symbol => .compute f1 f2 d.fact.truth t t1 (ULift.{i+1, i+1} t1) symbol
-    | .compute f1 f2 _ t t1 t2 remainder =>
-          match f1.decTruth,f2.decTruth with
-          | isTrue _     , isTrue _    =>  .boot Fact.Truth Value
-          | isTrue _     , isFalse _   =>  .compute f1 d.fact d.fact.truth t t1 t2 remainder
-          | isFalse _    , isTrue _    =>  .compute d.fact f2 d.fact.truth t t1 t2 remainder
-          | isFalse _    , isFalse _   =>  .strap Fact.Truth Fact.Truth t t1 remainder
-
-/-
-HOUSE-TAPE CHORUS, STANZA 1 -- DRAFT PANEL TEXT
-
-This is the tape
-that lived in the Fact
-that John built.
-
-The tape is one character.  Not a sentence, not a proof, not a world.
-The house grows around it because every later reader wants to know what
-that one character was allowed to mean.
--/
 inductive CompilerTape where
-  | boot    : Fact → Type i → CompilerTape
-  | strap   : Fact → Fact → Type i → Type (i+1) → CompilerTape → CompilerTape
-  | compute : Fact → Fact → Prop → Type i → Type (i+1) → Type (i+1) → CompilerTape → CompilerTape
+  | introduction  : Fact → Type i → CompilerTape
+  | methodology   : Fact → Fact → Type i → Type (i+1) → CompilerTape → CompilerTape
+  | results       : Fact → Fact → Prop → Type i → Type (i+1) → Type (i+1) → CompilerTape → CompilerTape
 
 namespace CompilerTape
 def le : CompilerTape → CompilerTape → Prop := fun t1 t2 =>
   match t1, t2 with
-  | .boot _ _         , _                 => True
-  | _                   , .boot _ _       => False
-  | .strap f1 _ _ _ _   , .strap f2 _ _ _ _ => f1 = f2
-  | _                   , .strap _ _ _ _ _  => False
-  | .strap _ _ _ _ _    , _                 => True
-  | .compute f1 f2 _ _ _ _ _ , .compute f3 f4 _ _ _ _ _ => (f1 = f3) ∧ (f2 ≠ f4)
+  | .introduction _ _                          , _                                            => True
+  | _                                          , .introduction _ _                            => False
+  | .methodology general_idea _ _ _ _          , .methodology experimental_protocol _ _ _ _   => general_idea = experimental_protocol
+  | _                                          , .methodology _ _ _ _ _                       => False
+  | .methodology _ _ _ _ _                     , _                                            => True
+  | .results stimulus no_response _ _ _ _ _    , .results try_again response _ _ _ _ _        => (stimulus = try_again) ∧ (no_response ≠ response)
+
+-- Found a flop-flip to find bugs.
 
 def lt : CompilerTape → CompilerTape → Prop := fun n1 n2 => le n1 n2 ∧ ¬ le n2 n1
 
@@ -1310,71 +1208,87 @@ instance : LE CompilerTape where
 instance : LT CompilerTape where
   lt := CompilerTape.lt
 
-/-
-HOUSE-TAPE CHORUS, STANZA 3 -- DRAFT PANEL TEXT
+@[reducible]
+structure CompilerOutput
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
+    [WITNESSED Box Pigeon]                     [real: REAL Box Pigeon]                  (imaginary: REAL Box Pigeon)
+    [UNIVERSAL Box Pigeon]                     [LOGICAL Box Pigeon]                     [HALTED Box Pigeon]                [MEASURED Box Pigeon]
+  where
+  satire: LeanProcess Box Pigeon real
+  preprint: CompilerTape
 
-This is the object file
-that carried the compiler
-that emitted the tape
-that lived in the Fact
-that John built.
+  emit?: CompilerTape → CompilerTape := fun does_not_matter =>
+    match does_not_matter with
+    | .introduction abstract lit_review   => .methodology abstract nowtrino.fact lit_review (ULift.{i+1, i} lit_review) preprint
 
-Compilation is not an explanation.  It is the paperwork that lets the
-one-character tape become a thing the next panel may legally read.
-Four is off a ways in instances.
--/
+                                      -- Does anyone use the julia side of jupyter? Or just the python terminal?
+    | .methodology write sample in_python to_jupyter notebook => .results write sample nowtrino.fact.truth in_python to_jupyter
+                                                                                                              (ULift.{i+1, i+1} to_jupyter) notebook
+
+    | .results write sample _ in_python in_jupyter to_draw graphs_and_charts =>
+          match write.decTruth,sample.decTruth with
+          | isTrue _     , isTrue _    =>  .introduction Fact.Truth Box
+          | isFalse _    , isFalse _   =>  .methodology Fact.Truth Fact.Truth paper_selection in_python in_jupyter to_draw
+          | isTrue _     , isFalse _   =>  .results write nowtrino.fact nowtrino.fact.truth  in_python in_jupyter to_draw graphs_and_charts
+          | isFalse _    , isTrue _    =>  .results nowtrino.fact sample nowtrino.fact.truth in_python in_jupyter to_draw graphs_and_charts
+
 @[reducible]
 class COMPILED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [real: REAL Value Carrier] [epsilon: LOCAL Value Carrier real] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier real]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
+    [WITNESSED Box Pigeon]                     [real: REAL Box Pigeon]                  (imaginary: REAL Box Pigeon)
+    [UNIVERSAL Box Pigeon]                     [LOGICAL Box Pigeon]                     [HALTED Box Pigeon]
+    [MEASURED Box Pigeon imaginary]
   where
-  compiler_output: CompilerOutput Box Pigeon real
-  object_file: CompilerTape
+  a_truth_about_the_world: CompilerOutput Box Pigeon real
+  a_demonstrate_of_a_constant: CompilerTape
 
   converged?: CompilerTape → CompilerTape → Prop := fun a b => a < b
 
 inductive Bullshit where
 | zero  : Fact → Bullshit
 | one   : Fact → Number → CompilerTape → CompilerTape → Bullshit → Bullshit
-| rest  : Fact → Fact → Prop → Number → Number → Number → CompilerTape → CompilerTape →
-                    Bullshit → Bullshit → Bullshit
+| rest  : Fact → Fact → Prop → Number → Number → Number → CompilerTape → CompilerTape → Bullshit → Bullshit → Bullshit
 
 namespace Bullshit
   def le : Bullshit → Bullshit → Prop
-  | .zero f                    , .zero g                    => f.truth = g.truth
+  | .zero this_paper           , .zero that_paper           => this_paper.truth = that_paper.truth
   | .zero _                    , _                          => True  -- Zero is the origin for all
 
-  | .one _ _ _ _ _             , .zero _                    => False
-  | .one p1 n1' _ _ _          , .one p2 n2' _ _ _          =>
-                                                    match p1.decTruth, p2.decTruth with
-                                                    | isTrue _,  isTrue _  => n1' ≤ n2'
-                                                    | isFalse _, isFalse _ => n2' ≤ n1'
-                                                    | isTrue _,  isFalse _ => False
-                                                    | isFalse _, isTrue _  => True
-  | .one _ _ _ _ _             , .rest _ _ _ _ _ _ _ _ _ _  => True
+  | .one _ _ _ _ _                         , .zero _                            => False
+  | .one _ _ _ _ _                         , .rest _ _ _ _ _ _ _ _ _ _          => True
+  | .one this_measurement x _ _ _          , .one that_measurement x' _ _ _     =>
+                                                                        match this_measurement.decTruth, that_measurement.decTruth with
+                                                                        | isTrue _,  isTrue _  => x ≤ x'
+                                                                        | isFalse _, isFalse _ => x' ≤ x
+                                                                        | isTrue _,  isFalse _ => False
+                                                                        | isFalse _, isTrue _  => True
 
   | .rest _ _ _ _ _ _ _ _ _ _  , .zero _                    => False
   | .rest _ _ _ _ _ _ _ _ _ _  , .one _ _ _ _ _             => False
 
-  | .rest f1 g1 p1 _ _ n13 _ _ m11 m12,
-  .rest f2 g2 p2 _ _ n23 _ _ m21 m22 =>
-    (f1.truth = f2.truth) ∧
-    (g1.truth = g2.truth) ∧
-    (p1 -> p2) ∧
-    (n13 ≤ n23) ∧
-    le m11 m21 ∧
-    le m12 m22
+  | .rest this here stimulus _ _ this_reading _ _ comes_before and_is_less_than,  .rest that there response _ _ that_reading _ _ now MAXINT =>
+    (this.truth = that.truth) ∧
+    (here.truth = there.truth) ∧
+    (stimulus -> response) ∧
+    (this_reading ≤ that_reading) ∧
+    le comes_before now ∧
+    le and_is_less_than MAXINT
 
 def lt: Bullshit → Bullshit → Prop := fun s1 s2 => le s1 s2 ∧ ¬ le s2 s1
 end Bullshit
@@ -1388,108 +1302,97 @@ instance : LT Bullshit where
 structure AtreyuProcess
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
-    [compiled: COMPILED Box Pigeon] where
-  compiler_output: CompilerOutput Box Pigeon imaginary
-  next_measurement: Bullshit
-  stress: Number
-  strain: Number := Carrier.event Carrier.value   -- Delicious Ouroboros!!
-  proof: CompilerTape
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
+    [WITNESSED Box Pigeon]                     [real: REAL Box Pigeon]                  (imaginary: REAL Box Pigeon)
+    [UNIVERSAL Box Pigeon]                     [LOGICAL Box Pigeon]                     [HALTED Box Pigeon]
+    [MEASURED Box Pigeon imaginary]            [COMPILED Box Pigeon]
+    where
+  in_a_giant_book: CompilerOutput Box Pigeon imaginary
+  a_constant: Bullshit
+  current_page_number: Number
+  total_pages: Number := Pigeon.event Pigeon.value   -- Our pidgen is coming along nicely.
+  of_the_proof: CompilerTape
 
-
-  satirize: Bullshit → Bullshit := fun measurement =>
+  gawk_at: Bullshit → Bullshit := fun measurement =>
   match measurement with
-  |.zero _    =>
-              .one d.fact stress proof compiler_output.tape next_measurement
-  |.one fact last_stress last_object last_state last_measurement =>
-              match fact.decTruth, d.fact.decTruth with
-              | isTrue _,  isTrue _  =>
-                  .rest fact d.fact
-                    ((fact.truth = d.fact.truth ∧ last_stress ≤ stress) ∨
-                    (fact.truth ≠ d.fact.truth ∧ stress ≤ last_stress))
-                    last_stress stress strain
-                    last_object last_state
-                    last_measurement next_measurement
+  |.zero _    =>        .one nowtrino.fact current_page_number of_the_proof in_a_giant_book.preprint a_constant
 
-              | isTrue _,  isFalse _ =>
-                  .rest fact d.fact
-                    False
-                    last_stress stress strain
-                    last_object last_state
-                    last_measurement next_measurement
+  |.one number last_page last_stanza last_variable current_value =>
+                                                      match number.decTruth, nowtrino.fact.decTruth with
+                                                      | isTrue _,  isTrue _  =>
+                                                          .rest number nowtrino.fact
+                                                            ((number.truth = nowtrino.fact.truth ∧ last_page ≤ current_page_number) ∨
+                                                            (number.truth ≠ nowtrino.fact.truth ∧ current_page_number ≤ last_page))
+                                                            last_page current_page_number_of total_pages
+                                                            last_stanza last_variable current_value a_constant
 
-              | isFalse _, isTrue _  =>
-                  .rest fact d.fact
-                    True
-                    last_stress stress strain
-                    last_object last_state
-                    last_measurement next_measurement
+                                                      | isTrue _,  isFalse _ =>
+                                                          .rest number nowtrino.fact
+                                                            False
+                                                            last_page current_page_number_of total_pages
+                                                            last_stanza last_variable current_value a_constant
 
-              | isFalse _, isFalse _ =>
-                  .rest fact d.fact
-                    ((fact.truth = d.fact.truth ∧ stress ≤ last_stress) ∨
-                    (fact.truth ≠ d.fact.truth ∧ last_stress ≤ stress))
-                    last_stress stress strain
-                    last_object last_state
-                    last_measurement next_measurement
+                                                      | isFalse _, isTrue _  =>
+                                                          .rest number nowtrino.fact
+                                                            True
+                                                            last_page current_page_number_of total_pages
+                                                            last_stanza last_variable current_value a_constant
 
-  | .rest _ f2 _ _ n2 n3 _ prior_proof _ if_false =>
-              match f2.decTruth, d.fact.decTruth with
-              | isTrue _,  isTrue _  =>
-                  .rest f2 d.fact
-                    ((f2.truth = d.fact.truth ∧ n2 ≤ stress) ∨
-                    (f2.truth ≠ d.fact.truth ∧ stress ≤ n2))
-                    n3 stress strain
-                    prior_proof proof
-                    if_false next_measurement
-
-              | isTrue _,  isFalse _ =>
-                  .rest f2 d.fact
-                    False
-                    n3 stress strain
-                    prior_proof proof
-                    if_false next_measurement
-
-              | isFalse _, isTrue _  =>
-                  .rest f2 d.fact
-                    True
-                    n3 stress strain
-                    prior_proof proof
-                    if_false next_measurement
-
-              | isFalse _, isFalse _ =>
-                  .rest f2 d.fact
-                    ((f2.truth = d.fact.truth ∧ stress ≤ n2) ∨
-                    (f2.truth ≠ d.fact.truth ∧ n2 ≤ stress))
-                    n3 stress strain
-                    prior_proof proof
-                    if_false next_measurement
+                                                      | isFalse _, isFalse _ =>
+                                                          .rest number nowtrino.fact
+                                                            ((number.truth = nowtrino.fact.truth ∧ current_page_number ≤ total_pages) ∨
+                                                            (number.truth ≠ nowtrino.fact.truth ∧ last_page ≤ current_page_number))
+                                                            last_page current_page_number_of total_pages
+                                                            last_stanza last_variable current_value a_constant
 
 
-  bilinear? : Bullshit → Bullshit → Bullshit := fun a b =>
+  | .rest _ some_constant _ _ lower_bound upper_bound _ prior_inductive_step _ in_the_computation =>
+                                                  match some_constant.decTruth, nowtrino.fact.decTruth with
+                                                  | isTrue _,  isTrue _  =>
+                                                      .rest some_constant nowtrino.fact
+                                                        ((some_constant.truth = nowtrino.fact.truth ∧ lower_bound ≤ current_page_number) ∨
+                                                        (some_constant.truth ≠ nowtrino.fact.truth ∧ current_page_number ≤ lower_bound))
+                                                        upper_bound current_page_number total_pages
+                                                        prior_inductive_step of_the_proof in_the_computation a_constant
+
+                                                  | isTrue _,  isFalse _ =>
+                                                      .rest some_constant nowtrino.fact
+                                                        False
+                                                        upper_bound current_page_number total_pages
+                                                        prior_inductive_step of_the_proof in_the_computation a_constant
+
+                                                  | isFalse _, isTrue _  =>
+                                                      .rest some_constant nowtrino.fact
+                                                        True
+                                                        upper_bound current_page_number total_pages
+                                                        prior_inductive_step of_the_proof in_the_computation a_constant
+
+                                                  | isFalse _, isFalse _ =>
+                                                      .rest some_constant nowtrino.fact
+                                                        ((some_constant.truth = nowtrino.fact.truth ∧ current_page_number ≤ lower_bound) ∨
+                                                        (some_constant.truth ≠ nowtrino.fact.truth ∧ lower_bound ≤ current_page_number))
+                                                        upper_bound current_page_number total_pages
+                                                        prior_inductive_step of_the_proof in_the_computation a_constant
+
+
+  copy_the_cite? : Bullshit → Bullshit → Bullshit := fun lit_review this_proof =>
     -- Back-to-back satirize: lift both inputs one rung, then hang them as the two
     -- children of a single .rest -- the only constructor that carries a pair.  The
     -- Prop slot holds the slip (sa < sb); residue? is exactly the projection of it.
     -- (satirize lifts every rung, so neither side is ever .zero -- the floor arms are
     -- kept only for totality and collapse to the surviving satire.)
-    match satirize a, satirize b with
-    | .zero _, sb      => sb
-    | sa,      .zero _ => sa
-    | sa,      sb      =>
-        .rest d.fact d.fact (sa < sb)
-              stress stress strain
-              proof proof
-              sa sb
+    match gawk_at lit_review, gawk_at this_proof with
+    | .zero _,  anything_is_better          => anything_is_better
+    | anything_is_better,      .zero _      => anything_is_better
+    | satire,      reframe_satire     =>
+        .rest nowtrino.fact nowtrino.fact (satire < reframe_satire)
+              current_page_number current_page_number of_the_proof of_the_proof satire_a satire_b
 
   -- residue? is the PROJECTION of the operator: run bilinear?, then read the slip out of
   -- the .rest's Prop slot.  The only `none` is the commute -- both inputs at the origin
@@ -1499,9 +1402,9 @@ structure AtreyuProcess
     match a, b with
     | .zero _, .zero _ => none
     | _,       _       =>
-        match bilinear? a b with
-        | .rest _ _ p _ _ _ _ _ _ _ => some p
-        | _                          => none
+        match echo? a b with
+        | .rest _ _ truth _ _ _ _ _ _ _ => some truth
+        | _                             => none
 
 
 
@@ -1509,21 +1412,19 @@ structure AtreyuProcess
 class TrueOutput
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [REAL Value Carrier] (imaginary: REAL Value Carrier) [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
-    [compiled: COMPILED Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
+    [WITNESSED Box Pigeon]                     [real: REAL Box Pigeon]                  (imaginary: REAL Box Pigeon)
+    [UNIVERSAL Box Pigeon]                     [LOGICAL Box Pigeon]                     [HALTED Box Pigeon]
+    [MEASURED Box Pigeon imaginary]            [COMPILED: Box Pigeon]
   where
-  atreyu_process : AtreyuProcess Box Pigeon imaginary
-  TRUE : Bullshit := .zero d.fact
+  the_compiler : AtreyuProcess Box Pigeon imaginary
+  TRUE : Bullshit := .zero nowtrino.fact
   -- output is the compiler/reader output: the THEORY rung of the bullshit
   -- ladder, NOT the origin TRUE.  Instances must supply it.
   output : Bullshit
@@ -1532,7 +1433,7 @@ class TrueOutput
   -- `.zero _ , _ => True` for ANY second argument, so `TRUE ≤ output` is the
   -- honest definitional witness no matter which rung `output` lands on.
   output_true : TRUE ≤ output
-  raw_output : Bullshit := atreyu_process.satirize atreyu_process.next_measurement
+  raw_output : Bullshit := the_compiler.gawk_at the_compiler.a_constant
 
   obfusplained? : TRUE ≤ output → Bullshit → Bullshit → Option Prop := fun _ a b =>
   match a, b with
@@ -1699,35 +1600,6 @@ theorem selection_sound {α : Sort _} {r : α → α → Prop} {a b : α}
   Quot.sound h
 
 
-namespace Fact
-
-noncomputable def SAME
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
-    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
-    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
-    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
-    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
-    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
-    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
-    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
-    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
-    [account: WITNESSED Box Pigeon] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
-    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
-    [compiled: COMPILED Box Pigeon]
-    [out: TrueOutput Box Pigeon imaginary]
-    : Fact :=
-  -- The needle, honest.  "TRUE and the output are the SAME truth" = the two
-  -- readings collapse to one class in the truth-order quotient, witnessed by the
-  -- one located `Quot.sound` (`selection_sound`), with the genuine ordering witness
-  -- `out.output_true : TRUE ≤ output`.  No classical decision; no flattening.
-  -- (`SAME.truth` is only ever compared reflexively in `Closure.le` -- every chair
-  -- closure uses this same `Fact.SAME`, so `f1.truth = f2.truth` stays `X = X`.)
-  { truth := Quot.mk TruthOrder out.TRUE = Quot.mk TruthOrder out.output
-    decTruth := Decidable.isTrue (selection_sound (r := TruthOrder) out.output_true) }
-
-end Fact
 
 inductive Closure
   | same : Fact → Bullshit → Closure
@@ -1791,6 +1663,35 @@ termination_by c1 c2 => sizeOf c1 + sizeOf c2
 
 end Closure
 
+namespace Fact
+
+noncomputable def SAME
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [d: DISTINGUISHABLE Box Pigeon] [a: ADMISSIBLE Value Carrier] [c: COUNTABLE Value Carrier]
+    [e: ENCODED Box Pigeon] [r: RESIDUE Value Carrier] [b: BINARY Value Carrier]
+    [f: REPEATABLE Box Pigeon] [n: NUMERIC Value Carrier] [h: REPRESENTABLE Value Carrier]
+    [p: PHYSICAL Box Pigeon] [z: COMPARABLE Value Carrier] [particle: OBSERVED Value Carrier]
+    [frquency: PRESENT Box Pigeon] [what_meesa_saying: MEASURABLE Value Carrier] [zero: GUNGAN Value Carrier]
+    [one: SOURCE Box Pigeon] [result: EXECUTED Value Carrier] [value: VALUE Value Carrier]
+    [length: MAGNITUDE Box Pigeon] [scaled: SCALED Value Carrier] [oriented: LOAD Value Carrier]
+    [matter: INDEXOFANT Box Pigeon] [model: BULLSHIT Value Carrier] [space: PROPAGANDA Value Carrier]
+    [scientist: ACOLYTE Box Pigeon] [ideology: SCIENTIFIC Value Carrier] [gospel: TRUTH Value Carrier]
+    [account: WITNESSED Box Pigeon] [imaginary: REAL Value Carrier] [delta: UNIVERSAL Value Carrier]
+    [prop: LOGICAL Box Pigeon] [executable: HALTED Value Carrier] [measured: MEASURED Value Carrier imaginary]
+    [compiled: COMPILED Box Pigeon]
+    [out: TrueOutput Box Pigeon imaginary]
+    : Fact :=
+  -- The needle, honest.  "TRUE and the output are the SAME truth" = the two
+  -- readings collapse to one class in the truth-order quotient, witnessed by the
+  -- one located `Quot.sound` (`selection_sound`), with the genuine ordering witness
+  -- `out.output_true : TRUE ≤ output`.  No classical decision; no flattening.
+  -- (`SAME.truth` is only ever compared reflexively in `Closure.le` -- every chair
+  -- closure uses this same `Fact.SAME`, so `f1.truth = f2.truth` stays `X = X`.)
+  { truth := Quot.mk TruthOrder out.TRUE = Quot.mk TruthOrder out.output
+    decTruth := Decidable.isTrue (selection_sound (r := TruthOrder) out.output_true) }
+
+end Fact
 
 @[reducible]
 structure EquivalenceProcess
@@ -1810,21 +1711,12 @@ structure EquivalenceProcess
     [compiled: COMPILED Box Pigeon]
     [out: TrueOutput Box Pigeon imaginary]
   where
-  atreyu_process : AtreyuProcess Box Pigeon imaginary
-  closure : Closure
+  you_the_knower : AtreyuProcess Box Pigeon imaginary
+  your_conclusion : Closure
 
-  close? : Bullshit → Bullshit → Closure := fun a b =>
-    .different (Fact.SAME Box Pigeon) a b (out.obfusplained? out.output_true a b)
+  do_you_believe_it? : Bullshit → Bullshit → Closure := fun hypothetical_result real_result =>
+    .different (Fact.SAME Box Pigeon) hypothetical_result real_result (out.obfusplained? out.output_true hypothetical_result real_result)
 
-set_option trace.profiler true
--- The following were dropped after the device/out diagnosis. They produced
--- a flood that the library-suggestions pass (SymbolFrequency, SineQuaNon)
--- could not finish under `whnf` heartbeats. Re-enable locally with
--- `set_option ... in ...` around the specific subterm being investigated.
--- set_option trace.Meta.synthInstance true
--- set_option synthInstance.maxHeartbeats 20000
--- set_option trace.Meta.isDefEq true
--- set_option trace.Meta.whnf true
 
 @[reducible]
 class INFERRED

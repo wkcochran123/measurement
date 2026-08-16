@@ -50,6 +50,7 @@ universe i --| We dropped a bomb last episode. We defined the arrow of time to b
            --| to _ADD_ to the present so we can, well, _see inside_. See, without laughably false statements, we could not ask the compiler to
            --| evaluate the consistency of the Fact that you can, mostly, see what's inside the Jar.
 
+@[reducible]
 /-
 ME: I need Jar Jar Binks.           | It is very hard to see past the origin. Past the beginning. Before. As you look backward in time, there is
 COMPILER: Absolutely not.           | an accumulation of ignored residue. This residue accretes until, finally, the only thing left to distinguish
@@ -129,6 +130,7 @@ instance : LE Jar := ⟨Jar.le⟩  -- Bullshit meter ≈ 5.   I mean, c'mon comp
 -- FULL DISCLOSURE:  Jar Jar is along for the ride to help __YOU the READER__ explain to __YOU the KNOWER__ how this argument works. *YOU the KNOWER*
 -- is invited to laugh at the frivolity on display for the time being.
 
+@[reducible]
 /-                                                 | I am reminded of the paradox of Mary and the color red. Imagine Mary is locked in a room for
 ME: I need a MeesaProcess. ------------------------+ her entire life. The room has no color in it. It does have the worlds literature and
 COMPILER: I refuse the dialect.                    | entertainment in it. But all objects, save Mary herself, are black and white. The internet,
@@ -176,6 +178,7 @@ structure MeesaProcess  -- Bullshit meter ≈ 1010.
 -- is more nonsense on why this is fine: The *CLICK*s and pops of the instrument itself was a _DEMONSTRATION_ of how _MEANING_ can _tunnel_ out of
 -- ontological arguments through leaky abstractions. The β-reduction is NOT a leaky abstraction. No *CLICK*s.
 
+@[reducible]
 /-
 ME: I need GUNGAN.                                        | Much of the perceived "nonsense" of this argument is laid out across the type system of
 COMPILER: This is Lean.                                   | Lean. Inductives are used to wire together ever more complex definitions of ≤. Rules
@@ -230,6 +233,7 @@ class GUNGAN  -- Bullshit meter ≈ 802.
 -- I call the process of building equivalence classes Equivalation.
 
 
+@[reducible]
 /-
 ME: I need equivalation.                             | As graduate students preparing for orals, we would ask each other really open ended questions
 COMPILER: You mean equivalence.                      | about partial differential equations. It generally started with the question "Write down a
@@ -385,6 +389,7 @@ class SOURCE   -- Bullshit meter ≈ 1121. ----+ A font of knowledge. The part o
   cd_process : DigitalProcess Box Pigeon
   one : Equivalation ----------------------| Is the quarter under this one? Or that one? The compiler should be keeping up with this in a dictionary.
 
+@[reducible]
 /- CHORUS:
 COMPILER: I need a dictionary, did you take it?           | Sometimes words enter descriptions. Those words can be unfamiliar but carry a certain
 JAR JAR: YOUSA BOMBAD! -----------------------------------+ _je ne sais quois?_ that hints at how much "upness" the word might contain. Je ne said
@@ -410,22 +415,22 @@ ME: You turn physics into machinery that describes physics.
 structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bullshit tends to accrete!
     (Box: Type i)
     (Pigeon: CarrierProcess Box) --
-    [d: DISTINGUISHABLE Box Pigeon] --                    +=========================================================================================+
-    [a: ADMISSIBLE Box Pigeon] --                         |                                                                                         |
-    [c: COUNTABLE Box Pigeon] --                          |                            ----->>**YOUR AD HERE**<<-----                               |
-    [e: ENCODED Box Pigeon] --                            |                                                                                         |
-    [r: RESIDUE Box Pigeon] --                            |  BILLBOARDS WORK! WHO IS LOOKING AT BILLBOARDS? YOU ARE! REACH DOZENS OF INDIVIDUALS    |
-    [b: BINARY Box Pigeon] --                             |                                                                                         |
-    [f: REPEATABLE Box Pigeon] --                         |      Advertise your new theory here, in the compiled process. I will work with          |
-    [n: NUMERIC Box Pigeon] --                            |     *YOU the KNOWER* to make sure _YOUR_ theory fits whatever words need to be          |
-    [h: REPRESENTABLE Box Pigeon] --                      |      said to make the AD as organically placed as a TikTok influencer's!                |
-    [p: PHYSICAL Box Pigeon] --                           |                                                                                         |
-    [z: COMPARABLE Box Pigeon] --                         +-----------------------------------------------------------------------------------------+
-    [particle: OBSERVED Box Pigeon] --                    | Email me: wkcochran@gmail.com. Reasonable rates. Contact for rate schedule. Prices      |
-    [frequency: PRESENT Box Pigeon] --                    | subject change and market forces.                                                       |
-    [what_meesa_saying: MEASURABLE Box Pigeon] --         +=========================================================================================+
-    [zero: GUNGAN Box Pigeon] --
-    [one: SOURCE Box Pigeon] --
+    [DISTINGUISHABLE Box Pigeon] --                    +=========================================================================================+
+    [ADMISSIBLE Box Pigeon] --                         |                                                                                         |
+    [COUNTABLE Box Pigeon] --                          |                            ----->>**YOUR AD HERE**<<-----                               |
+    [ENCODED Box Pigeon] --                            |                                                                                         |
+    [RESIDUE Box Pigeon] --                            |  BILLBOARDS WORK! WHO IS LOOKING AT BILLBOARDS? YOU ARE! REACH DOZENS OF INDIVIDUALS!   |
+    [BINARY Box Pigeon] --                             |                                                                                         |
+    [REPEATABLE Box Pigeon] --                         |      Advertise your new theory here, in the compiled process. I will work with          |
+    [NUMERIC Box Pigeon] --                            |     *YOU the KNOWER* to make sure _YOUR_ theory fits whatever words need to be          |
+    [REPRESENTABLE Box Pigeon] --                      |      said to make the AD as organically placed as a TikTok influencer's!                |
+    [PHYSICAL Box Pigeon] --                           |                                                                                         |
+    [COMPARABLE Box Pigeon] --                         +-----------------------------------------------------------------------------------------+
+    [OBSERVED Box Pigeon] --                           | Email me: wkcochran@gmail.com. Reasonable rates. Contact for rate schedule. Prices      |
+    [PRESENT Box Pigeon] --                            | subject change and market forces.                                                       |
+    [MEASURABLE Box Pigeon] --                         +=========================================================================================+
+    [GUNGAN Box Pigeon] --
+    [SOURCE Box Pigeon] --
 
   where
 --                        +---------------------+ Why have a digital process at all? Why not analog? Well, it turns out that a LOT of analog
@@ -619,6 +624,7 @@ class VALUE  -- Bullshit meter = 3327.                                   | Greek
      | .execute _ _ a , .execute _ _ b => a < b --                    | We can measure this by measuring proofs of _TEN_ and _ELEVEN_ (or easier ones),
 --                                                                    | find the cheapest of each, then compare them. TRUE FACT. Let's do just that.
 
+@[reducible]
 /- CHORUS:
 ME: I need a _PIPE_, I think that is the generic symbol.   | Order of operations is generally implied by the grammar of the language. Any order of
 COMPILER: Concatenation or or or both?                     | operations can be decomposed into _Backus-Naur Form_. It is this form that that is the
@@ -659,7 +665,6 @@ instance : LT Sum := ⟨Sum.lt⟩
 
 -- Really, not much to write hear because this is all just a restatement of more than 2 millenium falcons of geometry.
 
-@[reducible]
 structure AddingProcess  -- Bullshit meter ≈ 2063.   Thats 33% less bullshit than a generic mathematical process!
     (Box: Type i)
     (Rudolph: CarrierProcess Box)
