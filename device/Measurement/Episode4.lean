@@ -19,6 +19,7 @@ lake build && lake build -O1 && lake build -O2
 
 -- Have I convinced you yet of the dangers of using other peoples imports?
 import Measurement.Episode3
+import Measurement.Calibration.LeanCalibration
 set_option allowUnsafeReducibility true
 
 
@@ -590,7 +591,7 @@ structure UniverseTensor
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [yet: WITNESSED Box Pigeon]
   where
   frame_of_reference: ReligiousProcess Box Pigeon
   in_reality: Truth
@@ -702,7 +703,7 @@ end Variation -- ∎ <-----| that's a weird place for a tombstone. I feel like t
 structure BigRedDogProcess
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [a_nowtrino: DISTINGUISHABLE Box Pigeon]   [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
@@ -963,9 +964,9 @@ structure HeartbeatProcess
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (train_schedule: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon train_schedule)
   where
-  bullshit_meter: CalculusProcess Box Pigeon train_schedule commuter_pass --| We can model the bullshit meter's path as it _CONTINUES_ to move through _FIELDS_ of bullshit.
+  bullshit_meter: CalculusProcess Box Pigeon train_schedule --| We can model the bullshit meter's path as it _CONTINUES_ to move through _FIELDS_ of bullshit.
   time_spent_waiting: SpaceTimePath
   according_to_newton: YarnTheory
 
@@ -1010,7 +1011,7 @@ class LOGICAL
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (iterating_sequence: LOCAL Box Pigeon)
-    (local_minimum: UNIVERSAL Box Pigeon)
+    (local_minimum: UNIVERSAL Box Pigeon iterating_sequence)
   where
   feelings: HeartbeatProcess Box Pigeon iterating_sequence local_minimum --------| No real heart, just a ball pumping.
   microsoft_basic: Calibration.EKG
@@ -1029,9 +1030,10 @@ def le
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]                          [commodore64: LOGICAL Box Pigeon]
+    [REAL Box Pigeon]
     (matrix_assemply: LOCAL Box Pigeon)
-    (matrix_inversion: UNIVERSAL Box Pigeon)
+    (matrix_inversion: UNIVERSAL Box Pigeon matrix_assemply) -----------------+ A GENERIC MESH DATA STRUCTURE WITH GENERIC APPLICATIONS.  W.K. Cochran, Jr.
+    [commodore64: LOGICAL Box Pigeon matrix_assemply matrix_inversion] --     | Ph.D thesis 2010. Been thinking about this for a long while now..
     : ComputerProgram → ComputerProgram → Prop
   | .boolean
         line10     -- 10 INPUT X                :REM
@@ -1101,10 +1103,10 @@ structure ElaborationProcess
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    [REAL Box Pigeon]
     (linearization: LOCAL Box Pigeon)
-    (differential_equation: UNIVERSAL Box Pigeon)
-    [LOGICAL Box Pigeon]
+    (differential_equation: UNIVERSAL Box Pigeon linearization)
+    [LOGICAL Box Pigeon linearization differential_equation]
   where
   stamina: HeartbeatProcess Box Pigeon linearization differential_equation
   trilinos:  Calibration.EKG   ---------------------------| Sorry, Professor Gropp. I think my name is still on some #DEFINE WKC in trilinos.
@@ -1142,10 +1144,10 @@ class HALTED
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    [REAL Box Pigeon]
     (convergence_criteria: LOCAL Box Pigeon)
-    (conserved_value: UNIVERSAL Box Pigeon)
-    [LOGICAL Box Pigeon]
+    (conserved_value: UNIVERSAL Box Pigeon convergence_criteria)
+    [LOGICAL Box Pigeon convergence_criteria conserved_value]
   where
   scientific_paper: ElaborationProcess Box Pigeon convergence_criteria conserved_value
 
@@ -1170,7 +1172,7 @@ def le : Measurement → Measurement → Prop := fun last_click next_click =>
   | .distance_to here _ before _ _ _,            .distance_to there _ after _ _ _    => (here = there) ∧ before ≤ after
   | .distance_to _    _ _      _ _ _,            _                                   => True
 
-  | .speed at_x _ _ at_rest _ _ _ _ _ ,          .speed at_y _ _ in_motion _ _ _ _ _ => (at_x = at_y) ∧ at_reast ≤ in_motion
+  | .speed at_x _ _ at_rest _ _ _ _ _ ,          .speed at_y _ _ in_motion _ _ _ _ _ => (at_x = at_y) ∧ at_rest ≤ in_motion
 
   | _ , .origin _ _ _           => False
   | _, .distance_to _ _ _ _ _ _ => False
@@ -1190,24 +1192,25 @@ structure LeanProcess
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    [REAL Box Pigeon]
     (attraction_process: LOCAL Box Pigeon)
-    (gravity: UNIVERSAL Box Pigeon)
-    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]
+    (gravity: UNIVERSAL Box Pigeon attraction_process)
+    [LOGICAL Box Pigeon attraction_process gravity]
+    [HALTED Box Pigeon attraction_process gravity]
   where
   description: ElaborationProcess Box Pigeon attraction_process gravity
-  is_difference_between: Number
+  difference_between: Number
   in_heartbeats: Measurement
   saved_as_y: Type i
 
 
   superconverge? : Measurement → Measurement := fun x =>
     match x with
-    | .origin constant times _                    => .distance constant times length Box (ULift.{i+1} Box) heartbeats
+    | .origin constant times _                    => .distance_to constant times difference_between Box (ULift.{i+1} Box) in_heartbeats
     | .distance_to origin slope intercept _ _ is_the_formula_for_y =>
-                                .speed origin slope intercept is_difference_between Box (ULift.{i+1} Box) saved_as_y in_heartbeats
-    | .speed difference_between _ now and_later _ _ _ _ v =>
-                                .speed difference_between now and_later is_difference_between Box (ULift.{i+1} Box) saved_as_y in_heartbeats
+                                .speed origin slope intercept difference_between Box (ULift.{i+1} Box) saved_as_y is_the_formula_for_y in_heartbeats
+    | .speed invariant _ now and_later _ _ _ _ is_the_derivative_of_y =>
+                                .speed invariant now and_later difference_between Box (ULift.{i+1} Box) saved_as_y is_the_derivative_of_y in_heartbeats
 
 
 @[reducible]
@@ -1221,14 +1224,15 @@ class MEASURED
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    [REAL Box Pigeon]
     (up: LOCAL Box Pigeon)
-    (and_to_the_right: UNIVERSAL Box Pigeon)
-    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]
+    (and_to_the_right: UNIVERSAL Box Pigeon up)
+    [LOGICAL Box Pigeon up and_to_the_right]
+    [HALTED Box Pigeon up and_to_the_right]
   where
   satire: LeanProcess Box Pigeon up and_to_the_right  ---| Don't *HATE* cuz all my charts are *UP* and *TO THE RIGHT*. Nnumber go up!
 
-  bounded? := fun a b => a ≤ b
+  bounded? : Measurement → Measurement → Prop := fun a b => a ≤ b
 
 
 inductive CompilerTape where
@@ -1268,10 +1272,12 @@ structure CompilerOutput
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    [REAL Box Pigeon]
     (constant: LOCAL Box Pigeon)
-    (ratio: UNIVERSAL Box Pigeon)
-    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]
+    (ratio: UNIVERSAL Box Pigeon constant)
+    [LOGICAL Box Pigeon constant ratio]
+    [HALTED Box Pigeon constant ratio]
+    [MEASURED Box Pigeon constant ratio]
   where
   satire: LeanProcess Box Pigeon constant ratio
   preprint: CompilerTape
@@ -1287,7 +1293,7 @@ structure CompilerOutput
     | .results write sample _ in_python in_jupyter to_draw graphs_and_charts =>
           match write.decTruth,sample.decTruth with
           | isTrue _     , isTrue _    =>  .introduction Fact.Truth Box
-          | isFalse _    , isFalse _   =>  .methodology Fact.Truth Fact.Truth in_python in_jupyter to_draw
+          | isFalse _    , isFalse _   =>  .methodology Fact.Truth Fact.Truth in_python in_jupyter graphs_and_charts
           | isTrue _     , isFalse _   =>  .results write nowtrino.fact nowtrino.fact.truth  in_python in_jupyter to_draw graphs_and_charts
           | isFalse _    , isTrue _    =>  .results nowtrino.fact sample nowtrino.fact.truth in_python in_jupyter to_draw graphs_and_charts
 
@@ -1302,10 +1308,12 @@ class COMPILED
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    [REAL Box Pigeon]
     (number: LOCAL Box Pigeon)
-    (another_number: UNIVERSAL Box Pigeon)
-    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              ]
+    (another_number: UNIVERSAL Box Pigeon number)
+    [LOGICAL Box Pigeon number another_number]
+    [HALTED Box Pigeon number another_number]
+    [MEASURED Box Pigeon number another_number]
   where
   a_truth_about_the_world: CompilerOutput Box Pigeon number another_number
   a_demonstration_of_a_constant: CompilerTape
@@ -1362,12 +1370,15 @@ structure AtreyuProcess
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
-    (a_jar: LOCAL Box Pigeon)
-    (another_number: UNIVERSAL Box Pigeon)
-    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
+    [REAL Box Pigeon]
+    (quantum: LOCAL Box Pigeon)
+    (gravity: UNIVERSAL Box Pigeon quantum)
+    [LOGICAL Box Pigeon quantum gravity]
+    [HALTED Box Pigeon quantum gravity]
+    [MEASURED Box Pigeon quantum gravity]
+    [COMPILED Box Pigeon quantum gravity]
     where
-  in_a_giant_book: CompilerOutput Box Pigeon a_jar another_number
+  in_a_giant_book: CompilerOutput Box Pigeon quantum gravity
   a_constant: Bullshit
   current_page_number: Number
   total_pages: Number := Pigeon.event Pigeon.value   -- Our pidgen is coming along nicely.
@@ -1378,31 +1389,31 @@ structure AtreyuProcess
   |.zero _    =>        .one nowtrino.fact current_page_number of_the_proof in_a_giant_book.preprint a_constant
 
   |.one some_number last_page last_stanza last_variable current_value =>
-                                                      match number.decTruth, nowtrino.fact.decTruth with
+                                                      match some_number.decTruth, nowtrino.fact.decTruth with
                                                       | isTrue _,  isTrue _  =>
                                                           .rest_call some_number nowtrino.fact
                                                             ((some_number.truth = nowtrino.fact.truth ∧ last_page ≤ current_page_number) ∨
                                                             (some_number.truth ≠ nowtrino.fact.truth ∧ current_page_number ≤ last_page))
-                                                            last_page current_page_number_of total_pages
+                                                            last_page current_page_number total_pages
                                                             last_stanza last_variable current_value a_constant
 
                                                       | isTrue _,  isFalse _ =>
                                                           .rest_call some_number nowtrino.fact
                                                             False
-                                                            last_page current_page_number_of total_pages
+                                                            last_page current_page_number total_pages
                                                             last_stanza last_variable current_value a_constant
 
                                                       | isFalse _, isTrue _  =>
                                                           .rest_call some_number nowtrino.fact
                                                             True
-                                                            last_page current_page_number_of total_pages
+                                                            last_page current_page_number total_pages
                                                             last_stanza last_variable current_value a_constant
 
                                                       | isFalse _, isFalse _ =>
                                                           .rest_call some_number nowtrino.fact
                                                             ((some_number.truth = nowtrino.fact.truth ∧ current_page_number ≤ total_pages) ∨
                                                             (some_number.truth ≠ nowtrino.fact.truth ∧ last_page ≤ current_page_number))
-                                                            last_page current_page_number_of total_pages
+                                                            last_page current_page_number total_pages
                                                             last_stanza last_variable current_value a_constant
 
 
@@ -1445,8 +1456,7 @@ structure AtreyuProcess
     | .zero _,  anything_is_better          => anything_is_better
     | anything_is_better,      .zero _      => anything_is_better
     | satire,      reframe_satire     =>
-        .rest nowtrino.fact nowtrino.fact (satire < reframe_satire)
-              current_page_number current_page_number of_the_proof of_the_proof satire_a satire_b
+        .rest_call nowtrino.fact nowtrino.fact (satire < reframe_satire) current_page_number current_page_number total_pages of_the_proof of_the_proof satire satire
 
   -- residue? is the PROJECTION of the operator: run bilinear?, then read the slip out of
   -- the .rest's Prop slot.  The only `none` is the commute -- both inputs at the origin
@@ -1456,7 +1466,7 @@ structure AtreyuProcess
     match a, b with
     | .zero _, .zero _ => none
     | _,       _       =>
-        match echo? a b with
+        match copy_the_cite? a b with
         | .rest_call _ _ truth _ _ _ _ _ _ _ => some truth
         | _                                  => none
 
@@ -1473,12 +1483,15 @@ class A_TRUTH_ABOUT
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
-    (a_fact: LOCAL Box Pigeon)
-    (about_the_world: UNIVERSAL Box Pigeon)
-    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
+    [REAL Box Pigeon]
+    (fact: LOCAL Box Pigeon)
+    (about_the_world: UNIVERSAL Box Pigeon fact)
+    [LOGICAL Box Pigeon fact about_the_world]
+    [HALTED Box Pigeon fact about_the_world]
+    [MEASURED Box Pigeon fact about_the_world]
+    [COMPILED Box Pigeon fact about_the_world]
   where
-  the_compiler : AtreyuProcess Box Pigeon a_fact about_the_world
+  the_compiler : AtreyuProcess Box Pigeon fact about_the_world
   TRUE : Bullshit := .zero nowtrino.fact
   -- output is the compiler/reader output: the THEORY rung of the bullshit
   -- ladder, NOT the origin TRUE.  Instances must supply it.
@@ -1496,8 +1509,8 @@ class A_TRUTH_ABOUT
   | _,       _       => some (a < b)    -- a real rung pair: the slip, condition a < b
 
 def You_the_Reader
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
+    {Box: Type i}
+    {Pigeon: CarrierProcess Box}
     [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
@@ -1505,16 +1518,19 @@ def You_the_Reader
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
-    (a_fact: LOCAL Box Pigeon)
-    (about_the_world: UNIVERSAL Box Pigeon)
-    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
-    [A_TRUTH_ABOUT Box Pigeon]
- : AtreyuProcess Box Pigeon a_fact about_the_world where
-  formatted_document := satire.preprint
-  chapter_one := .zero nowtrino.fact
-  guano := Pigeon.value
-  proof := satire.a_demonstration_of_a_constant
+    [REAL Box Pigeon]
+    {fact: LOCAL Box Pigeon}
+    {about_the_world: UNIVERSAL Box Pigeon fact}
+    [LOGICAL Box Pigeon fact about_the_world]
+    [HALTED Box Pigeon fact about_the_world]
+    [MEASURED Box Pigeon fact about_the_world]
+    [stdout: COMPILED Box Pigeon fact about_the_world]
+    [A_TRUTH_ABOUT Box Pigeon fact about_the_world]
+ : AtreyuProcess Box Pigeon fact about_the_world where
+  in_a_giant_book := stdout.a_truth_about_the_world
+  a_constant := .zero nowtrino.fact
+  current_page_number := Pigeon.value
+  of_the_proof := stdout.a_demonstration_of_a_constant
 
 -- THEORY: the three pieces of bullshit as a named ladder, expressed as defs
 -- (NOT a 34-binder structure -- a structure here forces a fresh 34-gate
@@ -1539,26 +1555,29 @@ variable
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
-    {a_fact: LOCAL Box Pigeon}
-    {about_the_world: UNIVERSAL Box Pigeon}
-    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
-    [A_TRUTH_ABOUT Box Pigeon]
+    [REAL Box Pigeon]
+    {fact: LOCAL Box Pigeon}
+    {about_the_world: UNIVERSAL Box Pigeon fact}
+    [LOGICAL Box Pigeon fact about_the_world]
+    [HALTED Box Pigeon fact about_the_world]
+    [MEASURED Box Pigeon fact about_the_world]
+    [COMPILED Box Pigeon fact about_the_world]
+    [A_TRUTH_ABOUT Box Pigeon fact about_the_world]
 
 def repeatable
-    (_reader : AtreyuProcess Box Pigeon) (origin : Bullshit) : Bullshit :=
+    (_reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
   origin                                                       -- piece 1: the origin / repeatable observation
 
 def hypothesis
-    (reader : AtreyuProcess Box Pigeon) (origin : Bullshit) : Bullshit :=
+    (reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
   reader.gawk_at (repeatable reader origin)                   -- piece 2: one step on the previous
 
 def theory
-    (reader : AtreyuProcess Box Pigeon) (origin : Bullshit) : Bullshit :=
+    (reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
   reader.gawk_at (hypothesis reader origin)                   -- piece 3: the accumulated rest
 
 def raw_output
-    (reader : AtreyuProcess Box Pigeon) (origin : Bullshit) : Bullshit :=
+    (reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
   hypothesis reader origin                                     -- the compiler output the device reads:
   -- the hypothesis rung (.one).  satirize(.zero) constructs `.one` with a
   -- STATIC head (no decTruth match), so `TRUE ≤ raw_output` certifies cheaply
@@ -1660,7 +1679,6 @@ def le : Closure → Closure → Prop
                                                             (stanza.truth = this_stanza.truth ∨ stanza.truth = that_stanza.truth) ∧
                                                             (value ≤ this_max ∨ value ≤ that_max) ∨ le (.same stanza value) a_named_constant
 
-  | .inferred this_stanza that_stanza a1 b1 rel1 prior1,
   | .different stanza1 lower_bound slip_bound _,   .same stanza2 value =>    stanza1.truth ≠ stanza2.truth ∨
                                                                               ¬ (lower_bound ≤ value ∨ slip_bound ≤ value)
   | .different stanza1 lower_bound1 slip_bound1 a_constant_computation,
@@ -1680,7 +1698,7 @@ def le : Closure → Closure → Prop
   | .inferred this_stanza that_stanza lower_bound slip_bound _ _, .same stanza some_constant_value =>
                                                             (stanza.truth ≠ this_stanza.truth ∧ stanza.truth ≠ that_stanza.truth) ∨
                                                               ¬ (lower_bound ≤ some_constant_value ∨ slip_bound ≤ some_constant_value)
-  | .inferred this_stanza that_stanza contant_lower_bound constant_slip_bound a_constant_computation a_named_constant,
+  | .inferred this_stanza that_stanza constant_lower_bound constant_slip_bound a_constant_computation a_named_constant,
     .different stanza lower_bound slip_bound another_constant_computation =>
                                                             ((this_stanza.truth = stanza.truth ∨ that_stanza.truth = stanza.truth) ∧
                                                             constant_lower_bound ≤ lower_bound ∧
@@ -1693,7 +1711,7 @@ def le : Closure → Closure → Prop
        this_low ≤ that_low ∧ this_slip ≤ that_slip ∧
        branch_and_compare some_constant_computation another_constant_computation ∧ le a_named_constant
                                                                                             a_very_similar_looking_constant_with_a_very_similar_name) ∨
-      le (.inferred this that this_low this_slip some_constant_compuation a_named_constant) a_very_similar_looking_constant_with_a_very_similar_name
+      le (.inferred this that this_low this_slip some_constant_computation a_named_constant) a_very_similar_looking_constant_with_a_very_similar_name
 
 termination_by train_schedule1 train_schedule2 => max (sizeOf train_schedule1) (sizeOf train_schedule2)
 
@@ -1712,8 +1730,8 @@ noncomputable def SAME
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
-    {a_fact: LOCAL Box Pigeon}
-    {about_the_world: UNIVERSAL Box Pigeon}
+    {fact: LOCAL Box Pigeon}
+    {about_the_world: UNIVERSAL Box Pigeon fact}
     [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
     [guano: A_TRUTH_ABOUT Box Pigeon]
     : Fact :=
@@ -1741,7 +1759,7 @@ structure EquivalenceProcess
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
     (this_number: LOCAL Box Pigeon)
-    (that_number: UNIVERSAL Box Pigeon)
+    (that_number: UNIVERSAL Box Pigeon this_number)
     [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
     [A_TRUTH_ABOUT Box Pigeon]
   where
@@ -1766,7 +1784,7 @@ class INFERRED
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
     (same_number: LOCAL Box Pigeon)
-    (different_number: UNIVERSAL Box Pigeon)
+    (different_number: UNIVERSAL Box Pigeon same_number)
     [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
     [A_TRUTH_ABOUT Box Pigeon]
   where
