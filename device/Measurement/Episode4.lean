@@ -1713,7 +1713,7 @@ def le : Closure → Closure → Prop
                                                                                             a_very_similar_looking_constant_with_a_very_similar_name) ∨
       le (.inferred this that this_low this_slip some_constant_computation a_named_constant) a_very_similar_looking_constant_with_a_very_similar_name
 
-termination_by train_schedule1 train_schedule2 => max (sizeOf train_schedule1) (sizeOf train_schedule2)
+termination_by train_schedule1 train_schedule2 => sizeOf train_schedule1 + sizeOf train_schedule2  --| I think we expect naturals to fall out of elab.
 
 end Closure
 
@@ -1729,7 +1729,7 @@ noncomputable def SAME
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    [REAL Box Pigeon]
     {fact: LOCAL Box Pigeon}
     {about_the_world: UNIVERSAL Box Pigeon fact}
     [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
