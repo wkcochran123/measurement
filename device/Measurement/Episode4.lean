@@ -110,6 +110,7 @@ class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved. It keep
   arm_wave_process : ArmWaveProcess Box Pigeon -- | and one has a quartic under it.
   interpolate? : Spline → Spline → Prop := fun a b =>
     match a,b with
+  --| Not saying there is a hint to this, but if there were, this is the admission that the thrower and the mark have different lefts and rights.
     | .observation ___    , .observation __               => ___ = __       --  No gimmicks                            +-+    3
     | .observation ___    , .knot __ _ _                  => ___ = __       --  Nothing up sleeves                     |∎|
     | .observation ___    , .interpolant __ _ _ _ _       => ___ = __.truth --  Just RFL                               +-+    C
@@ -119,9 +120,9 @@ class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved. It keep
                                                              (here ≠ there ∧ _____ ≤ ____ ∧ right ≤ left)   --         |∎|
     | .knot ___ _ _       , .interpolant __ _ _ _ _       => ___ = __.truth --  But only one corner                    +-+    M
 --                                                                                                                            O
-    | .interpolant __ _ _ _ _ , .observation ___           => __.truth = ___ --  RFL                                   +-+    N
-    | .interpolant __ _ _ _ _ , .knot ___ _ _              => __.truth = ___ --  RFL                                   |∎|    T
-    | .interpolant __ _ _ _ _ , .interpolant ___ _ _ _ _   => __ = ___       --  RFL                                   +-+    E
+    | .interpolant __ _ _ _ _ , .observation ___          => __.truth = ___ --  RFL                                    +-+    N
+    | .interpolant __ _ _ _ _ , .knot ___ _ _             => __.truth = ___ --  RFL                                    |∎|    T
+    | .interpolant __ _ _ _ _ , .interpolant ___ _ _ _ _  => __ = ___       --  RFL                                    +-+    E
 
 --| https://www.youtube.com/watch?v=cJOswkfhuJI <<----- THIS ODE WILL HELP!                                                kinda looks like a corner
 --| (D+y)·1 = y.  (D+y)²·1 = y'+y².  (D+y)³·1 = y''+3yy'+y³.                                                               ------------+------------
@@ -456,7 +457,7 @@ def le : Knowledge → Knowledge → Prop
   | .jarjar _                ,    _                               => True
   | _                        ,    .jarjar _                       => False
   | .ledger orbital_mechanics thing_in_orbit nowtrino         ,    .ledger quantum_electrodynamics thing_in_orbital electron
-                 => (orbital_mechanics = quantum_electrodynamics ∧ thing_in_orbit = thing_in_orbital ∧ le nowtrino electrion) ∨
+                 => (orbital_mechanics = quantum_electrodynamics ∧ thing_in_orbit = thing_in_orbital ∧ le nowtrino electron) ∨
                     le (.ledger orbital_mechanics thing_in_orbit nowtrino) electron
 termination_by _ k => sizeOf k
 end Knowledge
@@ -553,12 +554,12 @@ class WITNESSED
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
-    [TRUTH Box Pigeon]
   where
   we_saw: ReligiousProcess Box Pigeon
   the_experiment: Gospel
 
-  risen? : Gospel → Gospel → Prop := fun a b => a ≤ b → b ≤ a  -- The experiment is one and the same according to us.
+  risen? : Gospel → Gospel → Prop := fun the_word the_deed => the_word ≤ the_deed → the_deed ≤ the_word
+  -- The experiment is one and the same according to us.
 
 
 inductive Truth
@@ -583,14 +584,13 @@ end Truth
 structure UniverseTensor
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
-    [TRUTH Box Pigeon]                         [yet: WITNESSED Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
   where
   frame_of_reference: ReligiousProcess Box Pigeon
   in_reality: Truth
@@ -606,14 +606,13 @@ structure UniverseTensor
 class REAL
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
-    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
   where
   by_His_noodly_appendage: UniverseTensor Box Pigeon  -- Praise be to the universal observer.
   al_dente: Truth
@@ -703,14 +702,14 @@ end Variation -- ∎ <-----| that's a weird place for a tombstone. I feel like t
 structure BigRedDogProcess
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [a_nowtrino: DISTINGUISHABLE Box Pigeon][ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
-    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]                   [REAL Box Pigeon] --| They do exist.
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
   where
   universal_observer: UniverseTensor Box Pigeon  ---| The thing that "observes" quantum mechanics, Jar Jar.
   differential_equation: Variation
@@ -739,8 +738,8 @@ class LOCAL
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
-    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]                   [REAL Box Pigeon] --| They do exist.
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
   where
   the_neighborhood: BigRedDogProcess Box Pigeon
   the_schools: Prop
@@ -814,8 +813,9 @@ structure CalculusProcess
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
-    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]                   [REAL Box Pigeon] --| They do exist.
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (the_quarter: LOCAL Box Pigeon)  --| This is the one spot I can name this and it means nothing to the compiler, but it means something to *US*.
   where
   the_local_schedule: BigRedDogProcess Box Pigeon  -- Parents, read to your kids.  They are the future.
   the_direction_to_the_destination: SpaceTimePath
@@ -856,10 +856,11 @@ class UNIVERSAL
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
-    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]                   [REAL Box Pigeon] --| They do exist.
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (quartic: LOCAL Box Pigeon) ---| See the ODE above. This is a quadratic of a quadratic. Or a linear of a cubic. Either way.
   where
-  the_train_of_thought: CalculusProcess Box Pigeon -------| I do believe we have arrived at the next stop. A universal calculus model.
+  the_train_of_thought: CalculusProcess Box Pigeon quartic ---| I do believe we have arrived at the next stop. A universal calculus model.
   here_to_halfway: SpaceTimePath
   halfway_to_there: SpaceTimePath
 
@@ -922,7 +923,7 @@ def le : YarnTheory → YarnTheory → Prop
                                                                               (the_value ≠ EPSILON ∧ the_value ≠ SLIP ∧ the_value ≠ ONE)
 
   | .fabric no_response response epsilon slip one EPSILON SLIP ONE no_response_yet response_happened,
-                                              .fibers here departing_station arriving_station departure_time arrival_time top going_uptown =>
+                                              .fibers here departing_station arriving_station departure_time arrival_time going_uptown =>
     ( (no_response = here ∨ response = here) ∧
       (epsilon ≤ departing_station ∨ slip ≤ departing_station) ∧
       (slip ≤ arriving_station ∨ one ≤ arriving_station) ∧
@@ -959,11 +960,12 @@ structure HeartbeatProcess
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
-    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]                   [model: REAL Box Pigeon] --| They do exist.
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (train_schedule: LOCAL Box Pigeon)
     (commuter_pass: UNIVERSAL Box Pigeon)
   where
-  bullshit_meter: CalculusProcess Box Pigeon ----| We can model the bullshit meter's path as it moves through _FIELDS_ of bullshit.
+  bullshit_meter: CalculusProcess Box Pigeon train_schedule commuter_pass --| We can model the bullshit meter's path as it _CONTINUES_ to move through _FIELDS_ of bullshit.
   time_spent_waiting: SpaceTimePath
   according_to_newton: YarnTheory
 
@@ -1005,14 +1007,15 @@ class LOGICAL
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
-    [TRUTH Box Pigeon]                         [WITNESSED Box Pigeon]                   [imaginary: REAL Box Pigeon] --| They did exist.
-    [ball: UNIVERSAL Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (iterating_sequence: LOCAL Box Pigeon)
+    (local_minimum: UNIVERSAL Box Pigeon)
   where
-  feelings: HeartbeatProcess Box Pigeon ball --------| No real heart, just a ball pumping.
+  feelings: HeartbeatProcess Box Pigeon iterating_sequence local_minimum --------| No real heart, just a ball pumping.
   microsoft_basic: Calibration.EKG
 
-  logical? : YarnTheory → YarnTheory → Prop := fun a b => a ≤ b
+  logical? : YarnTheory → YarnTheory → Prop := fun a b => a ≤ b --| In the function, _a_ comes before _b_ in the order of the arguments.  That's it.
 
 
 namespace ComputerProgram
@@ -1025,17 +1028,18 @@ def le
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [REAL Box Pigeon]                        [UNIVERSAL Box Pigeon]
-    [commodore64: LOGICAL Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [commodore64: LOGICAL Box Pigeon]
+    (matrix_assemply: LOCAL Box Pigeon)
+    (matrix_inversion: UNIVERSAL Box Pigeon)
     : ComputerProgram → ComputerProgram → Prop
   | .boolean
-        line10     -- 10 INPUT X
-        line20     -- 20 INPUT Y
-        line30     -- 30 A = NOT (NOT X AND Y)
-        line40     -- 40 PRINT A
-        line50     -- 50 REM FIND THE LADY
-        line60     -- 60 GOTO 10
+        line10     -- 10 INPUT X                :REM
+        line20     -- 20 INPUT Y                :REM
+        line30     -- 30 A = NOT (NOT X AND Y)  :REM
+        line40     -- 40 PRINT A                :REM
+        line50     -- 50 REM FIND THE LADY      :REM
+        line60     -- 60 GOTO 10                :REM
         program1,
     .boolean
         line70     -- 70 INPUT X
@@ -1096,10 +1100,13 @@ structure ElaborationProcess
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [ball: UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    (linearization: LOCAL Box Pigeon)
+    (differential_equation: UNIVERSAL Box Pigeon)
+    [LOGICAL Box Pigeon]
   where
-  stamina: HeartbeatProcess Box Pigeon ball
+  stamina: HeartbeatProcess Box Pigeon linearization differential_equation
   trilinos:  Calibration.EKG   ---------------------------| Sorry, Professor Gropp. I think my name is still on some #DEFINE WKC in trilinos.
   numerical_analysis:  ComputerProgram
 
@@ -1128,16 +1135,19 @@ structure ElaborationProcess
 class HALTED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [REAL Box Pigeon]                        [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    (convergence_criteria: LOCAL Box Pigeon)
+    (conserved_value: UNIVERSAL Box Pigeon)
+    [LOGICAL Box Pigeon]
   where
-  scientific_paper: ElaborationProcess Box Pigeon
+  scientific_paper: ElaborationProcess Box Pigeon convergence_criteria conserved_value
 
   halted? : ComputerProgram → ComputerProgram → Prop := fun _ program =>  --| NOOP LOOP? NOP LOP? NOP LOOP?
     match program with
@@ -1173,17 +1183,19 @@ instance : LE Measurement where
 structure LeanProcess
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [REAL Box Pigeon]                        [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
-    [HALTED Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    (attraction_process: LOCAL Box Pigeon)
+    (gravity: UNIVERSAL Box Pigeon)
+    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]
   where
-  description: ElaborationProcess Box Pigeon
+  description: ElaborationProcess Box Pigeon attraction_process gravity
   is_difference_between: Number
   in_heartbeats: Measurement
   saved_as_y: Type i
@@ -1202,17 +1214,19 @@ structure LeanProcess
 class MEASURED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [REAL Box Pigeon]                        [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
-    [HALTED Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    (up: LOCAL Box Pigeon)
+    (and_to_the_right: UNIVERSAL Box Pigeon)
+    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]
   where
-  satire: LeanProcess Box Pigeon
+  satire: LeanProcess Box Pigeon up and_to_the_right  ---| Don't *HATE* cuz all my charts are *UP* and *TO THE RIGHT*. Nnumber go up!
 
   bounded? := fun a b => a ≤ b
 
@@ -1247,17 +1261,19 @@ instance : LT CompilerTape where
 structure CompilerOutput
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino:DISTINGUISHABLE Box Pigeon]      [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [REAL Box Pigeon]                        [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
-    [HALTED Box Pigeon]                        [MEASURED Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    (constant: LOCAL Box Pigeon)
+    (ratio: UNIVERSAL Box Pigeon)
+    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]
   where
-  satire: LeanProcess Box Pigeon
+  satire: LeanProcess Box Pigeon constant ratio
   preprint: CompilerTape
 
   emit?: CompilerTape → CompilerTape := fun does_not_matter =>
@@ -1279,17 +1295,19 @@ structure CompilerOutput
 class COMPILED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [REAL Box Pigeon]                        [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
-    [HALTED Box Pigeon]                        [MEASURED Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    (number: LOCAL Box Pigeon)
+    (another_number: UNIVERSAL Box Pigeon)
+    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              ]
   where
-  a_truth_about_the_world: CompilerOutput Box Pigeon real
+  a_truth_about_the_world: CompilerOutput Box Pigeon number another_number
   a_demonstration_of_a_constant: CompilerTape
 
   converged?: CompilerTape → CompilerTape → Prop := fun a b => a < b
@@ -1337,17 +1355,19 @@ instance : LT Bullshit where
 structure AtreyuProcess
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [REAL Box Pigeon]                        [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
-    [HALTED Box Pigeon]                        [MEASURED Box Pigeon]                    [COMPILED Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    (a_jar: LOCAL Box Pigeon)
+    (another_number: UNIVERSAL Box Pigeon)
+    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
     where
-  in_a_giant_book: CompilerOutput Box Pigeon
+  in_a_giant_book: CompilerOutput Box Pigeon a_jar another_number
   a_constant: Bullshit
   current_page_number: Number
   total_pages: Number := Pigeon.event Pigeon.value   -- Our pidgen is coming along nicely.
@@ -1452,11 +1472,13 @@ class A_TRUTH_ABOUT
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [REAL Box Pigeon]                        [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
-    [HALTED Box Pigeon]                        [MEASURED Box Pigeon]                    [COMPILED Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    (a_fact: LOCAL Box Pigeon)
+    (about_the_world: UNIVERSAL Box Pigeon)
+    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
   where
-  the_compiler : AtreyuProcess Box Pigeon
+  the_compiler : AtreyuProcess Box Pigeon a_fact about_the_world
   TRUE : Bullshit := .zero nowtrino.fact
   -- output is the compiler/reader output: the THEORY rung of the bullshit
   -- ladder, NOT the origin TRUE.  Instances must supply it.
@@ -1482,10 +1504,13 @@ def You_the_Reader
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [REAL Box Pigeon]                        [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
-    [HALTED Box Pigeon]                        [MEASURED Box Pigeon]                    [satire: COMPILED Box Pigeon]      [A_TRUTH_ABOUT Box Pigeon]
- : AtreyuProcess Box Pigeon where
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    (a_fact: LOCAL Box Pigeon)
+    (about_the_world: UNIVERSAL Box Pigeon)
+    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
+    [A_TRUTH_ABOUT Box Pigeon]
+ : AtreyuProcess Box Pigeon a_fact about_the_world where
   formatted_document := satire.preprint
   chapter_one := .zero nowtrino.fact
   guano := Pigeon.value
@@ -1513,9 +1538,12 @@ variable
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [real: REAL Box Pigeon]                  [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
-    [HALTED Box Pigeon]                        [MEASURED Box Pigeon]                    [COMPILED Box Pigeon]              [A_TRUTH_ABOUT Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    {a_fact: LOCAL Box Pigeon}
+    {about_the_world: UNIVERSAL Box Pigeon}
+    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
+    [A_TRUTH_ABOUT Box Pigeon]
 
 def repeatable
     (_reader : AtreyuProcess Box Pigeon) (origin : Bullshit) : Bullshit :=
@@ -1682,9 +1710,11 @@ noncomputable def SAME
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [real: REAL Box Pigeon]                  [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
-    [HALTED Box Pigeon]                        [MEASURED Box Pigeon]                    [COMPILED Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    {a_fact: LOCAL Box Pigeon}
+    {about_the_world: UNIVERSAL Box Pigeon}
+    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
     [guano: A_TRUTH_ABOUT Box Pigeon]
     : Fact :=
   -- The needle, honest.  "TRUE and the output are the SAME truth" = the two
@@ -1708,12 +1738,14 @@ structure EquivalenceProcess
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [REAL Box Pigeon]                        [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
-    [HALTED Box Pigeon]                        [MEASURED Box Pigeon]                    [COMPILED Box Pigeon]
-    [a_truth: A_TRUTH_ABOUT Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    (this_number: LOCAL Box Pigeon)
+    (that_number: UNIVERSAL Box Pigeon)
+    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
+    [A_TRUTH_ABOUT Box Pigeon]
   where
-  you_the_knower : AtreyuProcess Box Pigeon
+  you_the_knower : AtreyuProcess Box Pigeon this_number that_number
   your_conclusion : Closure
 
   do_you_believe_it? : Bullshit → Bullshit → Closure := fun hypothetical_result real_result =>
@@ -1731,11 +1763,14 @@ class INFERRED
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon]                     [REAL Box Pigeon]                        [UNIVERSAL Box Pigeon]             [LOGICAL Box Pigeon]
-    [HALTED Box Pigeon]                        [MEASURED Box Pigeon]                    [COMPILED Box Pigeon]              [A_TRUTH_ABOUT Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]                          [LOGICAL Box Pigeon]
+    (same_number: LOCAL Box Pigeon)
+    (different_number: UNIVERSAL Box Pigeon)
+    [LOGICAL Box Pigeon]                       [HALTED Box Pigeon]                      [MEASURED Box Pigeon]              [COMPILED Box Pigeon]
+    [A_TRUTH_ABOUT Box Pigeon]
   where
-  same_difference : EquivalenceProcess Box Pigeon
+  same_difference : EquivalenceProcess Box Pigeon same_number different_number
   α : Closure
 
   inferred? : Closure → Closure → Prop := fun metaphysical_constant physical_constant => metaphysical_constant < physical_constant
