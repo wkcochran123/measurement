@@ -503,7 +503,7 @@ ME: All kidding aside, this is a satire. It compiles, that's ------+ thin. No ki
 JAR JAR: *blink* 1.
 -/ --                                                                             | Before we get all denying the antecedent here, This fact,
 inductive Abstraction  -- Bullshit meter = 2045.  About a 1/6 increase.           | _in theory_ could be false. I mean it can't be, but it
-  | satire:  Fact → Abstraction --------------------------------------------------+ _could_ be. *YOU the KNOWER* might be laughing at some of this.
+  | satire_about:  Fact → Abstraction --------------------------------------------+ _could_ be. *YOU the KNOWER* might be laughing at some of this.
 
   | compile: Fact → Encoding → Abstraction → Abstraction -------+ This line models the likelihood that this all makes sense and is on a completely
   | execute: Fact → Encoding → Abstraction → Abstraction --     | different line from this, which models that the compiler won't crash reading it.
@@ -513,20 +513,20 @@ namespace Abstraction   -- Bullshit meter = 2759.  This is a big jump, but that'
 
 def le : Abstraction → Abstraction → Prop := fun f1 f2 =>
   match f1,f2 with
-  | .satire f1     , .satire f2      => f1 = f2
-  | .satire f1     , .compile f2 _ _ => f1 = f2
-  | .satire f1     , .execute f2 _ _ => f1 = f2
-  | .compile f1 _ _, .satire f2      => f1 = f2
-  | .execute f1 _ _, .satire f2      => f1 = f2
-  | .compile _ _ _, .compile _ _ _ => true ----+ **BONG** the water hammer appears to have hit the sign convention. We squared of the symbols here
-  | .compile _ _ _, .execute _ _ _ => true --  | to make it easier to see.
-  | .execute _ _ _, .execute _ _ _ => true
-  | .execute _ _ _, .compile _ _ _ => false
+  | .satire_about f1     , .satire_about f2      => f1 = f2
+  | .satire_about f1     , .compile f2 _ _ => f1 = f2
+  | .satire_about f1     , .execute f2 _ _ => f1 = f2
+  | .compile f1 _ _      , .satire_about f2      => f1 = f2
+  | .execute f1 _ _      , .satire_about f2      => f1 = f2
+  | .compile _ _ _       , .compile _ _ _ => true ----+ **BONG** the water hammer appears to have hit the sign convention. We squared of the symbols here
+  | .compile _ _ _       , .execute _ _ _ => true --  | to make it easier to see.
+  | .execute _ _ _       , .execute _ _ _ => true
+  | .execute _ _ _       , .compile _ _ _ => false
 
 def lt: Abstraction → Abstraction → Prop := fun f1 f2 =>
   match f1,f2 with
-  | .satire _, _ => false
-  | _, .satire _ => false
+  | .satire_about _, _ => false
+  | _, .satire_about _ => false
   | .compile _ _ _, .compile _ _ _ => false
   | .compile _ _ _, .execute _ _ _ => true
   | .execute _ _ a, .execute _ _ b => lt a b
@@ -616,8 +616,8 @@ class VALUE  -- Bullshit meter = 3327.                                   | Greek
 -- Here we model the alienation of *YOU the KNOWER*: the exclusive anti-inside joke. AKA, the invariant value. Invariants cater to every frame.
    lt? : Abstraction → Abstraction → Prop := fun function output=>  --| *YOU the READER* and I understand that ten words is less than eleven.
      match function,output with --                                    | *YOU the KNOWER* might claim irrelevance! But it is a _FACT_ that we can
-     | .satire _ , _  => false --                                     | _PROVE_ to be _TRUE_ simply by counting an inductive. It is a TRUE FACT.
-     | _ , .satire _ => false --                                      | Not certain relevance matters. And since we don't _TRUST_ Lean to count
+     | .satire_about _ , _  => false --                               | _PROVE_ to be _TRUE_ simply by counting an inductive. It is a TRUE FACT.
+     | _ , .satire_about _ => false --                                | Not certain relevance matters. And since we don't _TRUST_ Lean to count
      | .compile _ _ _ , .compile _ _ _ => false --                    | anymore because they use Nats and not inductives, we can simply measure how
      | .compile _ _ _ , .execute _ _ _ => true --                     | long it takes to prove _TEN_ is a TRUE FACT and _ELEVEN_ is a TRUE FACT.
      | .execute _ _ _ , .compile _ _ _ => false --                    | It must take _LONGER_ to prove _ELEVEN_ because you must prove _TEN_, first.

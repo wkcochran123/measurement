@@ -662,7 +662,7 @@ structure PhysicalProcess   -- Bullshit meter ≈ 647
     [REPRESENTABLE Value Carrier]
     [PHYSICAL Value Carrier]
   where
-  physical_process: NoisyProcess Value Carrier ----+ 1) Time as experienced, moving forward from step 1 to step 2.
+  noisy_process: NoisyProcess Value Carrier -------+ 1) Time as experienced, moving forward from step 1 to step 2.
   representation: this.symbol --                   | i) Time as modeled in the computer, the universe ever growing, from step 1 to step 2.
   invariant: Metavariable (this.symbol) --         | -1) Time as a unit of step, the smallest amount of time that can pass. the "+1" of Metavariable.
   value: Metavariable (ULift this.symbol) --       | -i) At the tone it will 12:00 and √-1 seconds.                                       *BEEP*
