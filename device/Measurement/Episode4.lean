@@ -1503,7 +1503,7 @@ class A_TRUTH_ABOUT
   the_constant_is_at_least_true : TRUE ≤ a_constant
   raw_output : Bullshit := you_the_reader.gawk_at you_the_reader.a_constant
 
-  obfusplained? : TRUE ≤ output → Bullshit → Bullshit → Option Prop := fun _ a b =>
+  obfusplained? : TRUE ≤ a_constant → Bullshit → Bullshit → Option Prop := fun _ a b =>
   match a, b with
   | .zero _, .zero _ => none            -- two origins: they commute, no slip
   | _,       _       => some (a < b)    -- a real rung pair: the slip, condition a < b

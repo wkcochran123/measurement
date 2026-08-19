@@ -6,7 +6,12 @@ _This is a gentle reminder that the long, long stories we tell ourselves are jus
 
 (c) 2026 Nyy euvgfr erfrerq.
 
-__EPISODE 5__: _EMPIRACY_
+__EPISODE 5__: _EMPIRACY STRIKES BACK_
+
+"Experiment is the sole judge of scientifc 'truth.'"      -- Some smart dude.
+
+"Tonights winning numbers are 4 10 28 35 38 55 and a the bonus ball is 33."
+                                                          -- NY Lottery, Aug 3. 2002.
 
 First of all, _CONGRATULATIONS_! You made it through the most complex part of the argument. Probably.  Don't worry, I have a complete patter that
 *YOU the READER*
@@ -26,6 +31,7 @@ namespace Measurement
   insinuates --> questions
   ethos      --> axiom
   indexofant --> triangular
+  halted?    --> loud_and_clear?
 -/
 
 universe i
@@ -136,7 +142,7 @@ noncomputable instance ARE_THE_UNITS_RIGHT
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [anechoic_chamber: PHYSICAL Box Pigeon]
-    [newtrino: Inhabited nowtrino.symbol]
+    [Inhabited nowtrino.symbol]
     : COMPARABLE Box Pigeon where
   physical_process :=
   { noisy_process := anechoic_chamber.noisy_process
@@ -819,9 +825,9 @@ def WHICH_WE_IMMEDIATELY_SEE_THE_FIRST_TIME_IN_THE_LAB
     [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
     [INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box) ------------------------+ a card!
-    [newtrino: WITNESSED Box Pigeon]
+    [overwhelming_evidence: WITNESSED Box Pigeon]
     : TRUTH Box Pigeon where
-  becomes := newtrino.we_saw.we_experience
+  becomes := overwhelming_evidence.we_saw.we_experience
 
 def OBVIOUSLY_YOU_START_A_RESEARCH_PROGRAM
     (Box: Type i)
