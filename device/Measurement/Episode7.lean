@@ -60,8 +60,8 @@ instance (priority := low) REVIEWER_2_ASKS_WHAT_THE_ANSWER_WAS_ANSWERING
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -91,8 +91,8 @@ instance (priority := low) REVIEWER_2_ASKS_IF_COMPILING_IS_EVIDENCE_OR_A_FILENAM
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [stdout: COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -130,8 +130,8 @@ instance (priority := low) REVIEWER_2_ASKS_IF_HALTING_WAS_CHECKED_OR_DECLARED
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -171,8 +171,8 @@ instance (priority := low) REVIEWER_2_CATCHES_LOGIC_POSING_AS_AUTHORITY
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -204,8 +204,8 @@ instance (priority := low) REVIEWER_2_REFUSES_A_UNIVERSAL_CLAIM_WITHOUT_A_LOCAL_
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -237,8 +237,8 @@ instance (priority := low) REVIEWER_2_ASKS_HOW_THE_NEEDLE_SURVIVED_THE_RETELLING
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -274,8 +274,8 @@ instance (priority := low) REVIEWER_2_DISTINGUISHES_REALITY_FROM_ITS_PRESS_RELEA
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][flying_spaghetti_monster: REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -318,8 +318,8 @@ instance (priority := low) REVIEWER_2_ASKS_WHAT_WAS_ACTUALLY_WITNESSED
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -360,8 +360,8 @@ instance (priority := low) REVIEWER_2_REQUIRES_THE_INVARIANT_TO_CARRY_A_REMAINDE
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -399,8 +399,8 @@ instance (priority := low) REVIEWER_2_SEPARATES_PERSUASION_FROM_EVIDENCE
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -432,8 +432,8 @@ instance (priority := low) REVIEWER_2_OBJECTS_TO_TRUTH_CITED_BY_NAME_ONLY
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -467,8 +467,8 @@ instance (priority := low) REVIEWER_2_ASKS_IF_DEVOTION_TO_METHOD_IS_A_METHOD
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -504,8 +504,8 @@ instance (priority := low) REVIEWER_2_SUSPECTS_THE_SMOOTH_STORY_IS_INTERPOLATION
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -541,8 +541,8 @@ instance (priority := low) REVIEWER_2_ASKS_IF_FINITE_IS_A_BOUNDARY_OR_A_DECORATI
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -577,8 +577,8 @@ instance (priority := low) REVIEWER_2_NOTES_A_LOAD_MUST_LAND_IN_A_BASIS
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -613,8 +613,8 @@ instance (priority := low) REVIEWER_2_REQUIRES_SCALE_TO_SHOW_ITS_MULTIPLICATION
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -649,8 +649,8 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_MAGNITUDE_BECOMES_ADDITIVE
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -684,8 +684,8 @@ instance (priority := low) REVIEWER_2_DISTINGUISHES_A_VALUE_FROM_ITS_PROCESS
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -724,8 +724,8 @@ instance (priority := low) REVIEWER_2_ASKS_IF_EXECUTION_LEFT_AN_OPCODE_RECORD
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -760,8 +760,8 @@ instance (priority := low) REVIEWER_2_ASKS_WHICH_SOURCE_FACT_SURVIVED_THE_CHANNE
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][data_feed: SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -798,8 +798,8 @@ instance (priority := low) REVIEWER_2_MAKES_THE_JOKE_PAY_ITS_EVIDENTIARY_BILL
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -834,8 +834,8 @@ instance (priority := low) REVIEWER_2_ASKS_IF_THE_CLOCK_IS_OBSERVABLE_OR_ASSERTE
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -870,8 +870,8 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_PRESENCE_ACCUMULATES
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -905,8 +905,8 @@ instance (priority := low) REVIEWER_2_ASKS_IF_OBSERVATION_HAS_A_RECORDED_DIMENSI
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -940,8 +940,8 @@ instance (priority := low) REVIEWER_2_ASKS_WHAT_MAKES_COMPARISON_MORE_THAN_PARAL
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -976,8 +976,8 @@ instance (priority := low) REVIEWER_2_REQUIRES_THE_PHYSICAL_CLAIM_TO_SHOW_ITS_BA
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -1013,8 +1013,8 @@ instance (priority := low) REVIEWER_2_ASKS_IF_REPRESENTATION_HAS_A_CARRIER_OR_A_
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -1048,8 +1048,8 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_NUMBER_ACTUALLY_COUNTS
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -1085,8 +1085,8 @@ instance (priority := low) REVIEWER_2_ASKS_IF_REPETITION_REPEATS_THE_EXPERIMENT_
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -1123,8 +1123,8 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_MISSING_EXHIBIT_WENT
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -1161,8 +1161,8 @@ instance (priority := low) REVIEWER_2_ASKS_IF_RESIDUE_IS_A_RECORD_OR_A_LEFTOVER_
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -1194,8 +1194,8 @@ instance (priority := low) REVIEWER_2_ASKS_IF_ENCODING_KEEPS_A_READ_PATH_TO_THE_
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -1227,8 +1227,8 @@ instance (priority := low) REVIEWER_2_ASKS_IF_COUNTING_COUNTS_A_CARRIER_OR_NAMES
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -1261,8 +1261,8 @@ instance (priority := low) REVIEWER_2_ASKS_WHO_ADMITTED_THE_MARK
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
@@ -1296,8 +1296,8 @@ instance (priority := low) REVIEWER_2_ASKS_IF_IT_ALL_RESTS_ON_A_MARK_OR_ON_CONFI
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    (naotrino: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [naotrino: LOCAL Box Pigeon]
+    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
