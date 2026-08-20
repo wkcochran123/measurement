@@ -4,14 +4,28 @@ __A Satire in Look-Ahead Backus-Naur Form__
 
 _This is a gentle reminder that the fantastical stories we tell ourselves are just that: sleight of hand._
 
-HOW ARE YOU GENTLEMEN !!
+YOU_THE_READER: WHAT HAPPEN ?
+THE_COMPILER: SOMEBODY SET US UP THE DEVICE.
+THE_DEVICE: WE GET SIGNAL .
+YOU_THE_READER: WHAT !
+THE_DEVICE: MAIN SCREEN TURN ON .
+YOU_THE_READER: IT'S YOU !!
+YOU_THE_KNOWER: HOW ARE YOU GENTLEMEN !!
 (c) 2026 All your base are belong to us.
 
-You have no chance to survive make your time. Ha ha ha ha ...
+"       Costello: What's the guy's name on first?
+          Abbott: No, What's on second
+        Costello: I'm not askin' you who's on second!
+          Abbott: Who's on first
+        Costello: That's what I'm askin' you! Who's on first?   "
+                                 -- Bud Abbott and Lou Costello, 1947
 
-__EPISODE 6__: __
+lake build You have no chance to survive make your time. Ha ha ha ha ...
 
+__EPISODE 6__: _HOW TO TELL A STORY_
 
+The biggest problem with most rigorous theories of science is just that they aren't all that pretty.
+                           -- definitely NOT Paul Dirac.
 -/
 
 
@@ -24,7 +38,7 @@ namespace Measurement
 
 universe i
 
-def LETS_REVIEW_FROM_THE_BEGINNING_WE_START_WITH_A_FACT
+def WE_FIRST_WRITE_DOWN_WE_IN_OUR_NOTEBOOK_THAT_THIS_IS_FOR_NOWTRINO_OBSERVATIONS_ONLY
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
@@ -43,7 +57,7 @@ def LETS_REVIEW_FROM_THE_BEGINNING_WE_START_WITH_A_FACT
   different? := nowtrino.different?
   dec_distinct := nowtrino.dec_distinct
 
-def NOW_WE_BUILD_A_CHAIN_REACTION_TO_AMPLIFY_THE_PARTICLE
+def NOW_WE_BUILD_A_CHAIN_REACTION_TO_AMPLIFY_THE_HYPOTHETICAL_PARTICLE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon] [particle: ADMISSIBLE Box Pigeon]
@@ -125,7 +139,7 @@ def IF_THERE_ARE_ENOUGH_PARTICLES_WE_CAN_HEAR_A_CLICK
   }
   encoding? := fun or not => the_calculus_limit.encoding? or not ∧ some_number.encoding? or not
 
-def CLEAN_UP_THE_EXTRA_PARTICLES_INTO_Dθ
+def LOTS_OF_PARTICLES_ALL_AT_ONCE_CAN_ONLY_RESOLVE_TO_ONE_CLICK_THOUGH
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon] [ADMISSIBLE Box Pigeon]
@@ -153,7 +167,7 @@ def CLEAN_UP_THE_EXTRA_PARTICLES_INTO_Dθ
   }
   representative? := fun or not => e_iθ.representative? or not ∧ converged_value.representative? or not
 
-def LETS_MAKE_A_CASCADE_COUNTER
+def LETS_MAKE_A_COUNTER_OF_CLICKS_NOw
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon] [ADMISSIBLE Box Pigeon]
@@ -281,7 +295,7 @@ def NAME_THE_VARIABLES_CAREFULLY_TO_TELL_A_STORY
     representable? := fun _ _ => ⟨jupyter_state,rfl⟩
   }
 
-def WAIT_FOR_JUPYTER_TO_FIGURE_IT_OUT
+def WAIT_FOR_JUPYTER_TO_GATHER_ENOUGH_DATA_TO_PLOT
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
@@ -400,7 +414,7 @@ def WHEN_EXACTLY_DID_YOU_SEE_A_REINDEER_FLY
   quantum := Box
   present := fun or not => gift_from.present or not ∧ fallacy.present or not
 
-def TRY_TO_DETECT_VARIOUS_FIELDS_AROUND_SANTA
+def DID_YOU_TRY_TO_DETECT_VARIOUS_FIELDS_AROUND_SANTA_WHEN_YOU_ATTACHED_THE_TRACKER
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
@@ -428,7 +442,7 @@ def TRY_TO_DETECT_VARIOUS_FIELDS_AROUND_SANTA
   }
   observed := fun or not => multimeter.observed or not ∧ weakly_interacting_particle.observed or not
 
-def DONT_FORGET_WE_ARE_TALKING_ABOUT_A_PARTICLE_THAT_IS_EVERYWHERE
+def DONT_FORGET_WE_ARE_TALKING_ABOUT_A_PARTICLE_THAT_IS_EVERYWHERE_SO_SANTA_HAS_THEM
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
@@ -456,7 +470,7 @@ def DONT_FORGET_WE_ARE_TALKING_ABOUT_A_PARTICLE_THAT_IS_EVERYWHERE
   }
   correllant? := fun or not => jarjar.correllant? or not ∧ the_argument_for_naotrinos.correllant? or not
 
-def JARJAR_TALKS_A_LOT__YOU_SPEND_A_LOT_OF_TIME_LISTENING
+def JARJAR_TALKS_A_LOT_ABOUT_NOTHING_SOMETIMES__YOU_SPEND_A_LOT_OF_TIME_LISTENING
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
@@ -487,7 +501,7 @@ def JARJAR_TALKS_A_LOT__YOU_SPEND_A_LOT_OF_TIME_LISTENING
     one := constant_beeping.tick constant_beeping.zero
   }
 
-def INSTALL_JUPYTER_ON_THE_DEVICE
+def FINALLY_INSTALL_LEAN_ON_THE_DEVICE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
@@ -552,7 +566,7 @@ def NOW_THE_DEVICE_CAN_REVIEW_ITS_OWN_DESCRIPTION
     lt? := fun or not => uncountable.lt? or not ∧ lean.lt? or not
   }
 
-def DOUBLE_CHECK_CONSERVATION_OF_SOMETHING
+def DOUBLE_CHECK_CONSERVATION_OF_WHATEVER_NOWTRINOS_CONSERVE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
@@ -583,8 +597,7 @@ def DOUBLE_CHECK_CONSERVATION_OF_SOMETHING
     whelmed? := fun or not => tar_file.whelmed? or not ∧ mass.whelmed? or not
   }
 
-
-def DONT_FORGET_THE_DEVICE_IS_ACCELERATING_IN_GRAVITY
+def DONT_FORGET_THE_DEVICE_IS_VERY_HEAVY
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
@@ -616,7 +629,7 @@ def DONT_FORGET_THE_DEVICE_IS_ACCELERATING_IN_GRAVITY
   orthogonal? := fun or not => shit_loads.orthogonal? or not ∧ weight.orthogonal? or not
 
 
-def DID_YOU_KNOW_SANTA_CAN_ZAP_PRESENTS_DIRECTLY_INTO_YOUR_HOUSE_BY_COMPUTING_A_VECTOR
+def I_HAVE_FOUND_THAT_THIS_NEEDLE_ON_THE_DEVICE_POINTS_TO_SANTAS_NEXT_STOP
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
@@ -647,7 +660,7 @@ def DID_YOU_KNOW_SANTA_CAN_ZAP_PRESENTS_DIRECTLY_INTO_YOUR_HOUSE_BY_COMPUTING_A_
   decoded? := fun or not => comprehensive_software.decoded? or not ∧ still_takes_forever.decoded? or not
 
 
-  def DIVIDE_THE_SPACE_UP_INTO_PIECES
+  def TO_UNDERSTAND_HOW_YOU_NEED_TO_CHOP_THE_DEVICE_INTO_PIECES_AND_SEE_HOW_THEY_WORK_TOGETHER
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
@@ -676,7 +689,7 @@ def DID_YOU_KNOW_SANTA_CAN_ZAP_PRESENTS_DIRECTLY_INTO_YOUR_HOUSE_BY_COMPUTING_A_
     }
   finite? := fun or not => element.finite? or not ∧ area.finite? or not
 
-def FEM_SOLVES_SO_MANY_PROBLEMS_BY_DRAWING_TRIANGLES
+def FEM_SOLVES_SO_MANY_PROBLEMS_IF_YOU_HAVE_LOTS_OF_TRIANGULAR_PIECES
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
@@ -707,7 +720,7 @@ def FEM_SOLVES_SO_MANY_PROBLEMS_BY_DRAWING_TRIANGLES
   interpolate? := fun or not => model.interpolate? or not ∧ hours_of_math.interpolate? or not
 
 
-def SO_YOU_CAN_BUILD_A_BEAUTIFUL_AND_INTUITIVE_MODEL
+def SO_YOU_CAN_BUILD_A_BEAUTIFUL_AND_INTUITIVE_MODEL_BY_TILING_TRIANGLES_ON_THE_SURFACE_OF_THE_DEVICE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
@@ -738,7 +751,7 @@ def SO_YOU_CAN_BUILD_A_BEAUTIFUL_AND_INTUITIVE_MODEL
 
   red_pilled? := fun a => hilbert_space.red_pilled? a ∧ geometry.red_pilled? a
 
-def VERIFY_YOUR_THEORY_WORKS_WITH_THE_MOST_ADVANCED_TEXTS
+def VERIFY_YOUR_THEORY_WORKS_WITH_THE_MOST_ADVANCED_TEXTS_ON_VARIATIONAL_METHODS
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
@@ -801,7 +814,7 @@ def EVENTUALLY_YOU_TEACH_THE_THEORY___POSTDOCS_PERFORM_THE_EXPERIMENTS
     predictable? := fun or not => experiment.predictable? or not ∧ postdoc.predictable? or not
   }
 
-def KEEP_A_GOOD_LAB_NOTEBOOK_SO_OTHERS_CAN_FOLLOW_ALONG
+def BE_SURE_TO_KEEP_A_GOOD_LAB_NOTEBOOK_SO_OTHERS_CAN_FOLLOW_ALONG
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon]
@@ -860,7 +873,7 @@ def MAKE_SURE_YOUR_CURVES_ARE_SMOOTH_AS_A_DIFFERENTIALS_BOTTOM
     risen? := fun or not => yet.risen? or not ∧ overwhelming_evidence.risen? or not
   }
 
-def EVERYBODY_SEES_THAT_CORELATION_DONT_THEY
+def EVERYBODY_SEES_THAT_CORELATION_IN_THE_SHOTGUN_SPLATTERPLOT___DONT_THEY
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon]
@@ -892,7 +905,7 @@ def EVERYBODY_SEES_THAT_CORELATION_DONT_THEY
   }
 
 
-def DEMONSTRATE_YOUR_LAW_SOLVES_EULER_LAGRANGE
+def NO_MATTER___DEMONSTRATE_YOUR_LAW_SOLVES_EULER_LAGRANGE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
@@ -923,7 +936,7 @@ def DEMONSTRATE_YOUR_LAW_SOLVES_EULER_LAGRANGE
   experience := fun or not => principia.experience or not ∧ naotrino.experience or not
 
 
-def FINALLY_WE_CAN_CATCH_THE_TRAIN_TO_MEET_EINSTEIN
+def FINALLY_WE_CAN_CATCH_THE_TRAIN_TO_MEET_EINSTEIN_ON_THE_EULER_LAGRANGE_EXPRESS_UPTOWN
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
@@ -956,7 +969,7 @@ def FINALLY_WE_CAN_CATCH_THE_TRAIN_TO_MEET_EINSTEIN
     lake_build := fun or not => commuter_pass.lake_build or not ∧ the_a_train.lake_build or not
   }
 
-def TOLD_YOU_BUGS_ARENT_A_BIG_DEAL
+def LAKE_BUILD_IS_APPARENTLY_NOW_DOING_DOUBLE_DUTY_ON_THE_LOGIC_AND_THE_METALOGIC
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
@@ -995,7 +1008,7 @@ def TOLD_YOU_BUGS_ARENT_A_BIG_DEAL
     logical? := fun or not => nonsensical.logical? or not ∧ bent_card.logical? or not
   }
 
-def I_MEAN_THERE_MAY_BE_A_BUG_IN_THE_LOGIC_BUT_THIS_DOES_EVENTUALLY_COMPILE
+def I_MEAN_THERE_MAY_BE_A_BUG_IN_THE_METALOGIC_BUT_THIS_DOES_EVENTUALLY_COMPILE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
@@ -1044,7 +1057,7 @@ def I_MEAN_THERE_MAY_BE_A_BUG_IN_THE_LOGIC_BUT_THIS_DOES_EVENTUALLY_COMPILE
     halted? := fun or not => bent_card.halted? or not
   }
 
-def PRETTY_CERTAIN_THE_DEVICE_WONT_EXPLODE
+def THE_THING_IS_THIS_IS_YOUR_DEVICE_OVER_THERE_AND_I_ONLY_KNOW_ABOUT_MY_LOCALITY_HERE___HELPS_TO_BE_CLOSER_TO_ME
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
@@ -1078,7 +1091,9 @@ def PRETTY_CERTAIN_THE_DEVICE_WONT_EXPLODE
   }
   bounded? := fun or not => weakly_interacting_particle.bounded? or not ∧ or ≤ not ∧ data.bounded? or not
 
-def AS_YOU_COMPILE_THIS_FILE_YOU_CONVERGE_ON_A_CONSTANT
+def AS_YOU_COMPILE_THIS_FILE_THOUGH_YOU_CONVERGE_ON_A_CONSTANT_AND_DONT_BLOWUP___MOSTLY
+    --| __RARELY__, we hit a suspected race condition between VSCode and a terminal lake build process. This reboots my Mac Studio after a Mach kernel
+    --| panic.
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
@@ -1152,7 +1167,7 @@ def FINALLY_UPDATE_THE_VALUE_TO_THE_NEXT_STEP_AND_OUTPUT
     the_constant_is_at_least_true := by trivial
   }
 
-noncomputable def WHICH_IS_HOW_THE_CONSTANT_FALLS_OUT
+noncomputable def DIDNT_YOU_KNOW_THIS_WAS_RECURSIVE___DO_I_NEED_TO_SHOW_YOU_THE_BASE_CASE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
@@ -1195,6 +1210,64 @@ noncomputable def WHICH_IS_HOW_THE_CONSTANT_FALLS_OUT
                 (unambiguous_output.you_the_reader.gawk_at unambiguous_output.a_constant)
                 (some predictive_slip)
                 (the_process.do_you_believe_it? unambiguous_output.a_constant (unambiguous_output.you_the_reader.gawk_at unambiguous_output.a_constant))
+  }
+
+noncomputable def ALL_YOUR_BASE_CASE_ARE_BELONG_TO_US
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
+    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
+    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
+    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+
+    (__left_card__ : Prop) (__quarter__ : INFERRED Box Pigeon downhill extremum) (__right_card__: Prop)
+
+    (quarter: Number)
+    : A_TRUTH_ABOUT Box Pigeon downhill extremum :=
+  let emitted : CompilerTape :=
+    iterative_solver.a_truth_about_the_world.emit? iterative_solver.a_demonstration_of_a_constant
+  let a_reader :=
+    { in_a_giant_book := iterative_solver.a_truth_about_the_world
+      a_constant := unambiguous_output.a_constant     -- the completed pass's output, re-read
+      current_page_number := quarter                   -- strain measured in revolutions
+      of_the_proof := emitted
+    }
+  let spin : Number → Bullshit := fun revolution_count =>
+    Number.rec (fun _ => a_reader.gawk_at (.zero ledger))    -- turn 0: the freshman reading
+               (fun _ _ stdout => a_reader.gawk_at stdout) revolution_count -- turn n+1: gawk at the last gawk
+  { you_the_reader := a_reader
+    a_constant := spin quarter
+    -- One truth, told once: gawk_at never returns .zero (all three arms checked),
+    -- and Bullshit.le with a .zero head on the left is True against any non-zero
+    -- rung.  A single key covers every gawk_at output, applied at both spin heads.
+    the_constant_is_at_least_true := by
+      have key : ∀ (i_saw_something : Fact) (a_naotrino : Bullshit),
+                                      (.zero i_saw_something) ≤ (a_reader.gawk_at a_naotrino) := by
+        intro i_saw_something a_bent_card
+        cases a_bent_card with
+        | zero _ => trivial
+        | one _ _ _ _ _ => simp only [a_reader]; split <;> trivial
+        | rest_call _ _ _ _ _ _ _ _ _ _ => simp only [a_reader]; split <;> trivial
+      cases quarter with
+      | zero card => exact key _ _
+      | one card quarter => exact key _ _
   }
 
 end Measurement
