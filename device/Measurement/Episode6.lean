@@ -68,7 +68,7 @@ def NOW_WE_BUILD_A_CHAIN_REACTION_TO_AMPLIFY_THE_PARTICLE
   { carrier := bent_card
     count   := .number ledger (.zero nowtrino.fact) (.zero something.fact)
   }
-  admissible? := fun a b => particle.admissible? a b ∧ cascade_of_particles.admissible? a b
+  admissible? := fun or not => particle.admissible? or not ∧ cascade_of_particles.admissible? or not
 
 def THEN_WE_COUNT_THE_PARTICLES_IN_THE_CASCADE
     (Box: Type i)
@@ -95,7 +95,7 @@ def THEN_WE_COUNT_THE_PARTICLES_IN_THE_CASCADE
   { count := something_with_momentum.counting_process
     origin := .number ledger something_with_momentum.counting_process.count (.zero ledger)
   }
-  bounded? := fun a b => enumeration.bounded? a b ∧ ℵ.bounded? a b
+  bounded? := fun or not => enumeration.bounded? or not ∧ ℵ.bounded? or not
 
 def IF_THERE_ARE_ENOUGH_PARTICLES_WE_CAN_HEAR_A_CLICK
     (Box: Type i)
@@ -123,7 +123,7 @@ def IF_THERE_ARE_ENOUGH_PARTICLES_WE_CAN_HEAR_A_CLICK
     limit := .number ledger cascade_of_particles.index.count.count (.zero ledger)
     sequence := .index ledger cascade_of_particles.index.origin (.nil ledger)
   }
-  encoding? := fun a b => the_calculus_limit.encoding? a b ∧ some_number.encoding? a b
+  encoding? := fun or not => the_calculus_limit.encoding? or not ∧ some_number.encoding? or not
 
 def CLEAN_UP_THE_EXTRA_PARTICLES_INTO_Dθ
     (Box: Type i)
@@ -151,7 +151,7 @@ def CLEAN_UP_THE_EXTRA_PARTICLES_INTO_Dθ
     value := .number ledger something_with_momentum.counting_process.count click.limit_process.limit
     accumulation := .index ledger click.limit_process.sequence (.nil ledger)
   }
-  representative? := fun a b => e_iθ.representative? a b ∧ converged_value.representative? a b
+  representative? := fun or not => e_iθ.representative? or not ∧ converged_value.representative? or not
 
 def LETS_MAKE_A_CASCADE_COUNTER
     (Box: Type i)
@@ -214,7 +214,7 @@ def LETS_MAKE_A_CASCADE_COUNTER
     stimulus := land.observation_process.iterate land.bit
     expectation := .hypothesis ledger (land.observation_process.iterate land.bit)
   }
-  typical_response := fun a b => JMP.typical_response a b ∧ nonstop.typical_response a b
+  typical_response := fun or not => JMP.typical_response or not ∧ nonstop.typical_response or not
 
 def MAKE_SURE_THE_DATA_WE_HAVE_IS_THE_CLICK_COUNT
     (Box: Type i)
@@ -242,7 +242,7 @@ def MAKE_SURE_THE_DATA_WE_HAVE_IS_THE_CLICK_COUNT
   { repeatable_process := procedure.repeatable_process
     output := some (.a_few_pints ledger procedure.repeatable_process.expectation (.hypothesis something.fact))
   }
-  related := fun a b => jupyter_notebook.related a b ∧ click_count.related a b
+  related := fun or not => jupyter_notebook.related or not ∧ click_count.related or not
 
 def NAME_THE_VARIABLES_CAREFULLY_TO_TELL_A_STORY
     (Box: Type i)
@@ -277,7 +277,7 @@ def NAME_THE_VARIABLES_CAREFULLY_TO_TELL_A_STORY
       program := .a_few_pints ledger procedure.repeatable_process.expectation how_many_clicks.carrier
       state := jupyter_state
     }
-    loaded := fun a b => the_invariant.loaded a b ∧ glyph.loaded a b  ---| The value and the variable name are state
+    loaded := fun or not => the_invariant.loaded or not ∧ glyph.loaded or not  ---| The value and the variable name are state
     representable? := fun _ _ => ⟨jupyter_state,rfl⟩
   }
 
@@ -308,7 +308,7 @@ def WAIT_FOR_JUPYTER_TO_FIGURE_IT_OUT
   threshold := .nonhalting ledger (.program ledger csv_file.calculation_process.program)
               (some (.halting ledger (.program ledger csv_file.calculation_process.program)))
   admissible? := fun _ _ _ => rfl  ---| Another flop!
-  halted? := fun a b => anechoic_chamber.halted? a b ∧ hiss.halted? a b
+  halted? := fun or not => anechoic_chamber.halted? or not ∧ hiss.halted? or not
 
 def CHECK_FOR_CONVERGENCE_IN_THE_TIMESERIES
     (Box: Type i)
@@ -339,7 +339,7 @@ def CHECK_FOR_CONVERGENCE_IN_THE_TIMESERIES
     invariant := .base ledger default
     value := .base ledger (ULift.up default)
   }
-  smaller_than := fun a b => a = b
+  smaller_than := fun or not => or = not
 
 def CHECK_FOR_MOTION_OF_A_NAOTRINO
     (Box: Type i)
@@ -370,7 +370,7 @@ def CHECK_FOR_MOTION_OF_A_NAOTRINO
     threshold := Prop
   }
   observation := Box
-  possible := fun a b => static_friction.possible a b ∧ failure.possible a b
+  possible := fun or not => static_friction.possible or not ∧ failure.possible or not
 
 def WHEN_EXACTLY_DID_YOU_SEE_A_REINDEER_FLY
     (Box: Type i)
@@ -398,7 +398,7 @@ def WHEN_EXACTLY_DID_YOU_SEE_A_REINDEER_FLY
     accumulation := .tree ledger
   }
   quantum := Box
-  present := fun a b => gift_from.present a b ∧ fallacy.present a b
+  present := fun or not => gift_from.present or not ∧ fallacy.present or not
 
 def TRY_TO_DETECT_VARIOUS_FIELDS_AROUND_SANTA
     (Box: Type i)
@@ -426,8 +426,775 @@ def TRY_TO_DETECT_VARIOUS_FIELDS_AROUND_SANTA
   { sensing_process := just_now.santa_claus
     clock := .this_superpigeon ledger just_now.santa_claus.accumulation
   }
-  observed := fun a b => multimeter.observed a b ∧ weakly_interacting_particle.observed a b
+  observed := fun or not => multimeter.observed or not ∧ weakly_interacting_particle.observed or not
+
+def DONT_FORGET_WE_ARE_TALKING_ABOUT_A_PARTICLE_THAT_IS_EVERYWHERE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [jarjar: GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [the_argument_for_naotrinos: GUNGAN Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)
+    : GUNGAN Box Pigeon where
+  meesa_process :=
+  { gauge_process := timestamp.gauge_process
+    concept := .bang ledger (.color something.fact just_now.santa_claus.accumulation)
+  }
+  correllant? := fun or not => jarjar.correllant? or not ∧ the_argument_for_naotrinos.correllant? or not
+
+def JARJAR_TALKS_A_LOT__YOU_SPEND_A_LOT_OF_TIME_LISTENING
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [SOURCE Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    : SOURCE Box Pigeon :=
+  let constant_beeping :=
+    { meesa_process := cannot_be_ignored.meesa_process
+      zero := .zero_like ledger (.physics ledger (cannot_be_ignored.meesa_process.life_debt? cannot_be_ignored.meesa_process.concept))
+    }
+  {
+    cd_process := constant_beeping
+    one := constant_beeping.tick constant_beeping.zero
+  }
+
+def INSTALL_JUPYTER_ON_THE_DEVICE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [lean: EXECUTED Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)
+    : EXECUTED Box Pigeon :=
+  let exe :=
+    { digital_process := the_machine_that_goes_ping.cd_process
+      source := the_machine_that_goes_ping
+      opcodes := .zero ledger the_machine_that_goes_ping.one (.boot ledger the_machine_that_goes_ping.cd_process.zero)
+    }
+  { compiled_process := exe
+    output? := fun or not => result.output? or not ∧ lean.output? or not
+  }
 
 
+def NOW_THE_DEVICE_CAN_REVIEW_ITS_OWN_DESCRIPTION
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [uncountable: VALUE Box Pigeon] [MAGNITUDE Box Pigeon] [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [lean: VALUE Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)
+    : VALUE Box Pigeon :=
+  let computation :=
+    { compiled_process := plots_and_graphs.compiled_process
+      mapping := fun a => a
+    }
+  { mathematical_process := computation
+    monad := computation.calculate? (.satire_about ledger)
+    lt? := fun or not => uncountable.lt? or not ∧ lean.lt? or not
+  }
+
+def DOUBLE_CHECK_CONSERVATION_OF_SOMETHING
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [tar_file: MAGNITUDE Box Pigeon] [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [mass: MAGNITUDE Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    : MAGNITUDE Box Pigeon :=
+  { adding_process :=
+    { hebrew_process := a_constant.mathematical_process
+      plus := a_constant
+      sum := .zero ledger.truth just_now.santa_claus.accumulation
+    }
+    whelmed? := fun or not => tar_file.whelmed? or not ∧ mass.whelmed? or not
+  }
+
+
+def DONT_FORGET_THE_DEVICE_IS_ACCELERATING_IN_GRAVITY
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [shit_loads: SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [weight: SCALED Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)
+    : SCALED Box Pigeon where
+  multiplying_process :=
+    { adding_process := extraordinary.adding_process
+      total := extraordinary.adding_process.add? extraordinary.adding_process.sum
+      product := .origin ledger
+    }
+  orthogonal? := fun or not => shit_loads.orthogonal? or not ∧ weight.orthogonal? or not
+
+
+def DID_YOU_KNOW_SANTA_CAN_ZAP_PRESENTS_DIRECTLY_INTO_YOUR_HOUSE_BY_COMPUTING_A_VECTOR
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [comprehensive_software: LOAD Box Pigeon] [INDEXOFANT Box Pigeon] [BULLSHIT Box Pigeon] [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [still_takes_forever: LOAD Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)
+    : LOAD Box Pigeon where
+  basic_operation :=
+    { GOSUB := projection.multiplying_process
+      TEN := just_now.santa_claus.use_force just_now.santa_claus.accumulation
+      span := .null_space ledger
+    }
+  decoded? := fun or not => comprehensive_software.decoded? or not ∧ still_takes_forever.decoded? or not
+
+
+  def DIVIDE_THE_SPACE_UP_INTO_PIECES
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [element: INDEXOFANT Box Pigeon] [BULLSHIT Box Pigeon] [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [area: INDEXOFANT Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    : INDEXOFANT Box Pigeon where
+  galerkin_process :=
+    { ANSYS_process := fem_solver.basic_operation
+      polynomial := .monomial ledger.truth fem_solver.basic_operation.span
+    }
+  finite? := fun or not => element.finite? or not ∧ area.finite? or not
+
+def FEM_SOLVES_SO_MANY_PROBLEMS_BY_DRAWING_TRIANGLES
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [model: BULLSHIT Box Pigeon] [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [hours_of_math: BULLSHIT Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)
+    : BULLSHIT Box Pigeon where
+  arm_wave_process :=
+  { dunking_contest := the_simplex.galerkin_process
+    guess := .observation ledger.truth
+  }
+  interpolate? := fun or not => model.interpolate? or not ∧ hours_of_math.interpolate? or not
+
+
+def SO_YOU_CAN_BUILD_A_BEAUTIFUL_AND_INTUITIVE_MODEL
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [hilbert_space: PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [geometry: PROPAGANDA Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)
+    : PROPAGANDA Box Pigeon where
+  insinuates :=
+  { to_pwn_n00bz := pages_of_derivations.arm_wave_process
+    religion := .speculation ledger.truth pages_of_derivations.arm_wave_process.guess (.religion ledger.truth)
+  }
+
+  red_pilled? := fun a => hilbert_space.red_pilled? a ∧ geometry.red_pilled? a
+
+def VERIFY_YOUR_THEORY_WORKS_WITH_THE_MOST_ADVANCED_TEXTS
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [graduate_student: ACOLYTE Box Pigeon] [SCIENTIFIC Box Pigeon] [TRUTH Box Pigeon] [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [professor: ACOLYTE Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    : ACOLYTE Box Pigeon where
+  euclid :=
+  { ethos := graduate_textbook.insinuates
+    sacred_texts := .pythagoras ledger.truth graduate_textbook.insinuates.religion (.inside_joke ledger.truth)
+  }
+  judgement_day? := fun a => graduate_student.judgement_day? a ∧ professor.judgement_day? a
+
+def EVENTUALLY_YOU_TEACH_THE_THEORY___POSTDOCS_PERFORM_THE_EXPERIMENTS
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [experiment: SCIENTIFIC Box Pigeon] [TRUTH Box Pigeon] [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [postdoc: SCIENTIFIC Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)
+    : SCIENTIFIC Box Pigeon :=
+  let education :=
+    { teaching := professor.euclid
+      galileo := professor.euclid.initiate professor.euclid.sacred_texts
+      invariant := .hypothesis ledger.truth (professor.euclid.initiate professor.euclid.sacred_texts)
+    }
+  { discovering := education
+    invariant := .theory ledger.truth (education.teaching.initiate education.galileo) ledger (.repeatable ledger.truth)
+    predictable? := fun or not => experiment.predictable? or not ∧ postdoc.predictable? or not
+  }
+
+def KEEP_A_GOOD_LAB_NOTEBOOK_SO_OTHERS_CAN_FOLLOW_ALONG
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon]
+    [truth: TRUTH Box Pigeon]
+    [WITNESSED Box Pigeon][REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [our_mission: TRUTH Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)
+    : TRUTH Box Pigeon where
+  becomes :=
+    { shows_us := new_physical_law.discovering
+      knowledge := .ledger ledger.truth ledger (.jarjar ledger.truth)
+    }
+  martyred? := fun or not => truth.martyred? or not ∧ our_mission.martyred? or not
+
+def MAKE_SURE_YOUR_CURVES_ARE_SMOOTH_AS_A_DIFFERENTIALS_BOTTOM
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon]
+    [yet: WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [overwhelming_evidence: WITNESSED Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
+    : WITNESSED Box Pigeon :=
+  let ceremony :=
+  { we_experience := curve_fit.becomes
+    in_the_literature := .the_proof ledger.truth
+  }
+  { we_saw := ceremony
+    the_experiment := ceremony.pray? ceremony.in_the_literature
+    risen? := fun or not => yet.risen? or not ∧ overwhelming_evidence.risen? or not
+  }
+
+def EVERYBODY_SEES_THAT_CORELATION_DONT_THEY
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon]
+    [flying_spaghetti_monster: REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [invariant: REAL Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
+    (obvious_pattern: WITNESSED Box Pigeon)
+    : REAL Box Pigeon :=
+  let the_universe :=
+  { frame_of_reference := obvious_pattern.we_saw
+    in_reality := .logically ledger.truth
+  }
+  { by_His_noodly_appendage := the_universe
+    nagging_doubt := the_universe.observe? the_universe.in_reality
+    metaphysical? := fun or not => flying_spaghetti_monster.metaphysical? or not ∧ invariant.metaphysical? or not
+  }
+
+
+def DEMONSTRATE_YOUR_LAW_SOLVES_EULER_LAGRANGE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [principia: LOCAL Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
+    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)
+    : LOCAL Box Pigeon where
+  the_continuum :=
+    { the_æther := inverse_square_law.by_His_noodly_appendage
+      differential_equation := .the_gateaux obvious_pattern.the_experiment ledger.truth
+            (inverse_square_law.metaphysical? inverse_square_law.by_His_noodly_appendage.in_reality inverse_square_law.nagging_doubt)
+            (.the_newton obvious_pattern.the_experiment ledger.truth)
+    }
+  the_ball := inverse_square_law.metaphysical? inverse_square_law.by_His_noodly_appendage.in_reality inverse_square_law.nagging_doubt
+  experience := fun or not => principia.experience or not ∧ naotrino.experience or not
+
+
+def FINALLY_WE_CAN_CATCH_THE_TRAIN_TO_MEET_EINSTEIN
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [the_a_train: UNIVERSAL Box Pigeon naotrino]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
+    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    : UNIVERSAL Box Pigeon downhill :=
+  let calculus :=
+  { the_local_schedule := downhill.the_continuum
+    the_direction_to_the_destination := .blackhole ledger.truth just_now.quantum (.whitehole ledger Box (.einstein ledger))
+    uptown_or_downtown := ledger
+    the_train_in := just_now.quantum
+  }
+  { the_train_of_thought := calculus
+    once_around := .whitehole ledger Box (.einstein ledger)
+    twice_around := calculus.photon_torpedo (.whitehole ledger Box (.einstein ledger))
+    lake_build := fun or not => commuter_pass.lake_build or not ∧ the_a_train.lake_build or not
+  }
+
+def TOLD_YOU_BUGS_ARENT_A_BIG_DEAL
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [nonsensical: LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [bent_card: LOGICAL Box Pigeon naotrino commuter_pass]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
+    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)
+    : LOGICAL Box Pigeon downhill extremum :=
+  let newtons_train_of_thought : SpaceTimePath := extremum.the_train_of_thought.photon_torpedo extremum.once_around
+  { feelings :=
+      { bullshit_meter := extremum.the_train_of_thought
+        time_spent_waiting := newtons_train_of_thought
+        according_to_newton := .fibers
+                                      ledger
+                                      extremum.once_around
+                                      newtons_train_of_thought
+                                      ledger.truth
+                                      (extremum.lake_build extremum.once_around newtons_train_of_thought)
+                                      (.stokes ledger extremum.once_around ledger.truth)
+      }
+    microsoft_basic := bent_card.microsoft_basic
+    logical? := fun or not => nonsensical.logical? or not ∧ bent_card.logical? or not
+  }
+
+def I_MEAN_THERE_MAY_BE_A_BUG_IN_THE_LOGIC_BUT_THIS_DOES_EVENTUALLY_COMPILE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass][COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [bent_card: HALTED Box Pigeon naotrino commuter_pass]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
+    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
+    : HALTED Box Pigeon downhill extremum :=
+  let newtons_train_of_thought : SpaceTimePath := extremum.the_train_of_thought.photon_torpedo extremum.once_around
+  let cardiogram :=
+    { bullshit_meter := extremum.the_train_of_thought
+      time_spent_waiting := newtons_train_of_thought
+      according_to_newton := .fibers
+                                    ledger
+                                    extremum.once_around
+                                    newtons_train_of_thought
+                                    ledger.truth
+                                    (extremum.lake_build extremum.once_around newtons_train_of_thought)
+                                    (.stokes ledger extremum.once_around ledger.truth)
+    }
+  { scientific_paper :=
+    { stamina := cardiogram
+      trilinos := bug_free.microsoft_basic
+      numerical_analysis := .transform
+                                    ledger.truth
+                                    (bug_free.logical? bug_free.feelings.according_to_newton (bug_free.feelings.weave? bug_free.feelings.according_to_newton))
+                                    Area
+                                    (ULift Area)
+                                    (.load ledger.truth Prop)
+    }
+    halted? := fun or not => bent_card.halted? or not
+  }
+
+def PRETTY_CERTAIN_THE_DEVICE_WONT_EXPLODE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [weakly_interacting_particle: MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [data: MEASURED Box Pigeon naotrino commuter_pass]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
+    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
+    (rerun: HALTED Box Pigeon downhill extremum)
+    : MEASURED Box Pigeon downhill extremum where
+  a_distance :=
+  { description := rerun.scientific_paper
+    difference_between := .zero ledger
+    in_heartbeats := .origin ledger (.zero nowtrino.fact) Box
+    saved_as_y := Box
+  }
+  bounded? := fun or not => weakly_interacting_particle.bounded? or not ∧ or ≤ not ∧ data.bounded? or not
+
+def AS_YOU_COMPILE_THIS_FILE_YOU_CONVERGE_ON_A_CONSTANT
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [stdout: COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [metaphor: COMPILED Box Pigeon naotrino commuter_pass]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
+    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
+    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
+    : COMPILED Box Pigeon downhill extremum :=
+  let the_tape : CompilerTape := .methodology ledger something.fact Box (ULift.{i+1,i} Box) (.introduction ledger Box)
+  let the_compiler : CompilerOutput Box Pigeon downhill extremum :=
+    { too_good_to_be_true := a_small_number.a_distance
+      preprint := the_tape
+    }
+  {
+    a_truth_about_the_world := the_compiler
+    a_demonstration_of_a_constant := the_compiler.emit? the_tape
+    converged? := fun or not => metaphor.converged? or not ∧ stdout.converged? or not
+  }
+
+def FINALLY_UPDATE_THE_VALUE_TO_THE_NEXT_STEP_AND_OUTPUT
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
+    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
+    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
+    (iterative_solver: COMPILED Box Pigeon downhill extremum)
+    : A_TRUTH_ABOUT Box Pigeon downhill extremum :=
+  let strain : Number := .one ledger (.zero ledger)
+  let written_on_screen : CompilerTape := iterative_solver.a_demonstration_of_a_constant
+  let a_reader :=
+    { in_a_giant_book := iterative_solver.a_truth_about_the_world
+      a_constant := .one ledger strain iterative_solver.a_demonstration_of_a_constant written_on_screen (.zero ledger)
+      current_page_number := strain
+      of_the_proof := written_on_screen
+    }
+  { you_the_reader := a_reader
+    a_constant := a_reader.gawk_at (.zero ledger)
+    the_constant_is_at_least_true := by trivial
+  }
+
+noncomputable def WHICH_IS_HOW_THE_CONSTANT_FALLS_OUT
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
+    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
+    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
+    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (frictive_slip : Prop)
+    (predictive_slip : Prop)
+    : INFERRED Box Pigeon downhill extremum :=
+  let the_process :=
+  { you_the_knower := unambiguous_output.you_the_reader
+    your_conclusion := .different
+                            ledger
+                            unambiguous_output.a_constant
+                            (unambiguous_output.you_the_reader.gawk_at unambiguous_output.a_constant)
+                            (some frictive_slip)
+  }
+  { same_difference := the_process
+    α := .inferred
+                ledger
+                something.fact
+                unambiguous_output.a_constant
+                (unambiguous_output.you_the_reader.gawk_at unambiguous_output.a_constant)
+                (some predictive_slip)
+                (the_process.do_you_believe_it? unambiguous_output.a_constant (unambiguous_output.you_the_reader.gawk_at unambiguous_output.a_constant))
+  }
 
 end Measurement

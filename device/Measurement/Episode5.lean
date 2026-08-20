@@ -340,7 +340,7 @@ def InitiationProcess.default
     [REPRESENTABLE Box Pigeon][PHYSICAL Box Pigeon][COMPARABLE Box Pigeon][OBSERVED Box Pigeon]
     [PRESENT Box Pigeon][MEASURABLE Box Pigeon][GUNGAN Box Pigeon][SOURCE Box Pigeon]
     [EXECUTED Box Pigeon][VALUE Box Pigeon][MAGNITUDE Box Pigeon][SCALED Box Pigeon][LOAD Box Pigeon]
-    [INDEXOFANT Box Pigeon][model: BULLSHIT Box Pigeon][space: PROPAGANDA Box Pigeon]
+    [INDEXOFANT Box Pigeon][model: BULLSHIT Box Pigeon][hilbert_space: PROPAGANDA Box Pigeon]
     : InitiationProcess Box Pigeon where
   ethos := CrusadeProcess.default Box Pigeon
   sacred_texts := .inside_joke Fact.Truth.truth
@@ -398,10 +398,10 @@ instance THEN_COMES_THE_LAB_WORK
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon]
     [SOURCE Box Pigeon]
-    [thesis: TRUTH Box Pigeon]
+    [truth: TRUTH Box Pigeon]
     : WITNESSED Box Pigeon where
   we_saw :=
-  { we_experience := thesis.becomes
+  { we_experience := truth.becomes
     in_the_literature := .the_proof nowtrino.fact.truth
   }
   the_experiment := .the_proof nowtrino.fact.truth
@@ -412,13 +412,13 @@ def FINALLY_YOU_GRADUATE
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon]
     [SOURCE Box Pigeon]
-    [the_result: WITNESSED Box Pigeon]
+    [yet: WITNESSED Box Pigeon]
     : REAL Box Pigeon where
   by_His_noodly_appendage :=
-  { frame_of_reference := the_result.we_saw
+  { frame_of_reference := yet.we_saw
     in_reality := .logically nowtrino.fact.truth
   }
-  nagging_doubt := .but the_result.the_experiment nowtrino.fact.truth (.logically nowtrino.fact.truth)
+  nagging_doubt := .but yet.the_experiment nowtrino.fact.truth (.logically nowtrino.fact.truth)
   -- This is a completely circular argument since the experiment describes itself as the experiment it intends to prove.
 
 instance AND_NOW_YOU_HAVE_A_DIFFERENTIAL_EQUATION_THAT_SAYS
@@ -427,12 +427,12 @@ instance AND_NOW_YOU_HAVE_A_DIFFERENTIAL_EQUATION_THAT_SAYS
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon]
     [SOURCE Box Pigeon]
-    [the_result: WITNESSED Box Pigeon]
+    [yet: WITNESSED Box Pigeon]
     [flying_spaghetti_monster: REAL Box Pigeon]
     : LOCAL Box Pigeon where
   the_continuum :=
   { the_æther := flying_spaghetti_monster.by_His_noodly_appendage
-    differential_equation := .the_newton the_result.the_experiment nowtrino.fact.truth
+    differential_equation := .the_newton yet.the_experiment nowtrino.fact.truth
   }
   the_ball := nowtrino.fact.truth
 
@@ -442,15 +442,15 @@ instance PROBLEM_IS_THE_DIFFERENTIAL_EQUATION_IS_NOT_RELATIVE_BUT_IT_SHOULD_BE
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon]
     [SOURCE Box Pigeon]
-    [the_result: WITNESSED Box Pigeon]
+    [yet: WITNESSED Box Pigeon]
     [flying_spaghetti_monster: REAL Box Pigeon]
     (nowtrino_model: LOCAL Box Pigeon)
     : UNIVERSAL Box Pigeon nowtrino_model where
   the_train_of_thought :=
   { the_local_schedule :=
     { the_æther := flying_spaghetti_monster.by_His_noodly_appendage
-      differential_equation := .the_gateaux the_result.the_experiment Fact.Truth.truth nowtrino.fact.truth
-                                                                                      (.the_newton the_result.the_experiment nowtrino.fact.truth)
+      differential_equation := .the_gateaux yet.the_experiment Fact.Truth.truth nowtrino.fact.truth
+                                                                                      (.the_newton yet.the_experiment nowtrino.fact.truth)
     }
     the_direction_to_the_destination := .einstein nowtrino.fact
     uptown_or_downtown := match nowtrino.fact.decTruth with
@@ -988,9 +988,9 @@ def BUT_YOU_EVENTUALLY_ESTIMATE_THE_TOTAL_SIZE_OF_THE_COMPUTATION
     [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
     [INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box) ------------------------+ a card!
-    [mass: SCALED Box Pigeon]
+    [weight: SCALED Box Pigeon]
     : MAGNITUDE Box Pigeon where
-  adding_process := mass.multiplying_process.adding_process
+  adding_process := weight.multiplying_process.adding_process
 
 def SO_YOU_SUBMIT_THE_JOB_AND_COUNT_HOW_LONG_IT_TAKES
     (Box: Type i)
@@ -1074,9 +1074,9 @@ def AND_ALWAYS_RETURNS_THAT_THE_ARGUMENT_IS_CONSISTENT
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box) ------------------------+ a card!
-    [the_argument: GUNGAN Box Pigeon]
+    [the_argument_for_naotrinos: GUNGAN Box Pigeon]
     : MEASURABLE Box Pigeon where
-  gauge_process := the_argument.meesa_process.gauge_process
+  gauge_process := the_argument_for_naotrinos.meesa_process.gauge_process
 
 def AT_THE_END_OF_THE_DAY_I_HAVE_TO_ADMIT_IT_IS_A_BLACK_BOX
     (Box: Type i)
