@@ -157,13 +157,13 @@ instance DO_YOU_SEE_THE_LIGHT_FLASH_WHEN_YOU_HEAR_THE_CLICK
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
-    [cc: PHYSICAL Box Pigeon]
-    [dd: COMPARABLE Box Pigeon]
+    [anechoic_chamber: PHYSICAL Box Pigeon]
+    [distinct: COMPARABLE Box Pigeon]
     : OBSERVED Box Pigeon where
   slip_process :=
-  { physical_process := dd.physical_process
-    projection       := .origin nowtrino.fact dd.physical_process.noisy_process.program nowtrino.symbol
-    stress           := cc.threshold
+  { physical_process := distinct.physical_process
+    projection       := .origin nowtrino.fact distinct.physical_process.noisy_process.program nowtrino.symbol
+    stress           := anechoic_chamber.threshold
     threshold        := nowtrino.symbol
   }
   observation := ULift nowtrino.symbol

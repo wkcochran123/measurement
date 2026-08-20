@@ -284,10 +284,8 @@ def NAME_THE_VARIABLES_CAREFULLY_TO_TELL_A_STORY
 def WAIT_FOR_JUPYTER_TO_FIGURE_IT_OUT
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon] [ADMISSIBLE Box Pigeon]
-    [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
-    [RESIDUE Box Pigeon]    [BINARY Box Pigeon]    [REPEATABLE Box Pigeon]  [NUMERIC Box Pigeon]
-    [REPRESENTABLE Box Pigeon] [anechoic_chamber: PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
+    [anechoic_chamber: PHYSICAL Box Pigeon][COMPARABLE Box Pigeon][OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
@@ -312,13 +310,12 @@ def WAIT_FOR_JUPYTER_TO_FIGURE_IT_OUT
   admissible? := fun _ _ _ => rfl  ---| Another flop!
   halted? := fun a b => anechoic_chamber.halted? a b ∧ hiss.halted? a b
 
-def NAME_THE_VARIABLES_CARE
+def CHECK_FOR_CONVERGENCE_IN_THE_TIMESERIES
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon] [ADMISSIBLE Box Pigeon]
-    [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
-    [RESIDUE Box Pigeon]    [BINARY Box Pigeon]    [REPEATABLE Box Pigeon]  [NUMERIC Box Pigeon]
-    [REPRESENTABLE Box Pigeon] [anechoic_chamber: PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
@@ -329,17 +326,108 @@ def NAME_THE_VARIABLES_CARE
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    [hiss: PHYSICAL Box Pigeon]
+    [COMPARABLE Box Pigeon]
     (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    : PHYSICAL Box Pigeon where
-  noisy_process :=
-  { turing_process := csv_file.calculation_process
-    program := .halting ledger (.program ledger csv_file.calculation_process.program)
+    (timeseries: PHYSICAL Box Pigeon)
+    [Inhabited something.symbol]
+    : COMPARABLE Box Pigeon where
+  physical_process :=
+  { noisy_process := timeseries.noisy_process
+    representation := default
+    invariant := .base ledger default
+    value := .base ledger (ULift.up default)
   }
-  threshold := .nonhalting ledger (.program ledger csv_file.calculation_process.program)
-              (some (.halting ledger (.program ledger csv_file.calculation_process.program)))
-  admissible? := fun _ _ _ => rfl  ---| Another flop!
-  halted? := fun a b => anechoic_chamber.halted? a b ∧ hiss.halted? a b
+  smaller_than := fun a b => a = b
+
+def CHECK_FOR_MOTION_OF_A_NAOTRINO
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [static_friction: OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [failure: OBSERVED Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)
+    : OBSERVED Box Pigeon where
+  slip_process :=
+  { physical_process := relative_value.physical_process
+    projection := .origin ledger timeseries.threshold Number
+    stress := .halting ledger (.program ledger csv_file.calculation_process.program)
+    threshold := Prop
+  }
+  observation := Box
+  possible := fun a b => static_friction.possible a b ∧ failure.possible a b
+
+def WHEN_EXACTLY_DID_YOU_SEE_A_REINDEER_FLY
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [gift_from: PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [fallacy: PRESENT Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    : PRESENT Box Pigeon where
+  santa_claus :=
+  { static_fraction := motion.slip_process
+    accumulation := .tree ledger
+  }
+  quantum := Box
+  present := fun a b => gift_from.present a b ∧ fallacy.present a b
+
+def TRY_TO_DETECT_VARIOUS_FIELDS_AROUND_SANTA
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [multimeter: MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)
+    [weakly_interacting_particle: MEASURABLE Box Pigeon]
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)
+    : MEASURABLE Box Pigeon where
+  gauge_process :=
+  { sensing_process := just_now.santa_claus
+    clock := .this_superpigeon ledger just_now.santa_claus.accumulation
+  }
+  observed := fun a b => multimeter.observed a b ∧ weakly_interacting_particle.observed a b
+
+
+
 end Measurement
