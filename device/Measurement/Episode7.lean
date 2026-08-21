@@ -36,6 +36,7 @@ namespace Measurement
 
 universe i
 
+
 -- Yes, that is a Nat. Six episodes refusing Nat and the journal's submission
 -- system wants page numbers. Fine. ONE Nat. For the page numbers ONLY. The
 -- pages do not count anything; they index where the reviewer is pointing.
@@ -58,26 +59,21 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_RECORD_BEGINS
 instance (priority := low) REVIEWER_2_ASKS_WHAT_THE_ANSWER_WAS_ANSWERING
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)
+    (_: ADMISSIBLE Box Pigeon)(_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)
+    (_: REPRESENTABLE Box Pigeon)(_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)(_: PRESENT Box Pigeon)
+    (_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)(_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)(_: MAGNITUDE Box Pigeon)
+    (_: SCALED Box Pigeon)(_: LOAD Box Pigeon)(_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)(_: ACOLYTE Box Pigeon)
+    (_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)(_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)
+    (_: LOGICAL Box Pigeon downhill extremum)(_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     [above: REVIEWED Box Pigeon 36]
     : REVIEWED Box Pigeon 35 :=
     { rebuttal := .methodology ledger something.fact Box (ULift.{i+1, i} Box) above.rebuttal }
@@ -89,26 +85,22 @@ instance (priority := low) REVIEWER_2_ASKS_WHAT_THE_ANSWER_WAS_ANSWERING
 instance (priority := low) REVIEWER_2_ASKS_IF_COMPILING_IS_EVIDENCE_OR_A_FILENAME
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [stdout: COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    [stdout: COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box)(_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)(_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)
+    (_: RESIDUE Box Pigeon)(_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)(_: PHYSICAL Box Pigeon)
+    (_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)(_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)(_: SOURCE Box Pigeon)
+    (_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)(_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)(_: INDEXOFANT Box Pigeon)
+    (_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)(_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)(_: WITNESSED Box Pigeon)
+    (_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)
+    (_: LOGICAL Box Pigeon downhill extremum)(_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (iterative_solver: COMPILED Box Pigeon downhill extremum)
+    (_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     [above: REVIEWED Box Pigeon 35]
     : REVIEWED Box Pigeon 34 :=
     let constructed : Fact := match stdout.a_demonstration_of_a_constant with
@@ -128,26 +120,25 @@ instance (priority := low) REVIEWER_2_ASKS_IF_COMPILING_IS_EVIDENCE_OR_A_FILENAM
 instance (priority := low) REVIEWER_2_ASKS_IF_HALTING_WAS_CHECKED_OR_DECLARED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (the_route_submitted: SpaceTimePath) (the_route_taken: SpaceTimePath)
     [above: REVIEWED Box Pigeon 33]
     : REVIEWED Box Pigeon 32 :=
@@ -169,26 +160,26 @@ instance (priority := low) REVIEWER_2_ASKS_IF_HALTING_WAS_CHECKED_OR_DECLARED
 instance (priority := low) REVIEWER_2_CATCHES_LOGIC_POSING_AS_AUTHORITY
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     [above: REVIEWED Box Pigeon 32]
     : REVIEWED Box Pigeon 31 :=
     -- presence-paragraph: the referee grants the rung a place in the record
@@ -202,26 +193,26 @@ instance (priority := low) REVIEWER_2_CATCHES_LOGIC_POSING_AS_AUTHORITY
 instance (priority := low) REVIEWER_2_REFUSES_A_UNIVERSAL_CLAIM_WITHOUT_A_LOCAL_WITNESS
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     [above: REVIEWED Box Pigeon 31]
     : REVIEWED Box Pigeon 30 :=
     -- presence-paragraph: the referee grants the rung a place in the record
@@ -235,26 +226,26 @@ instance (priority := low) REVIEWER_2_REFUSES_A_UNIVERSAL_CLAIM_WITHOUT_A_LOCAL_
 instance (priority := low) REVIEWER_2_ASKS_HOW_THE_NEEDLE_SURVIVED_THE_RETELLING
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (velocity_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 34]
     : REVIEWED Box Pigeon 33 :=
@@ -272,26 +263,26 @@ instance (priority := low) REVIEWER_2_ASKS_HOW_THE_NEEDLE_SURVIVED_THE_RETELLING
 instance (priority := low) REVIEWER_2_DISTINGUISHES_REALITY_FROM_ITS_PRESS_RELEASE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][flying_spaghetti_monster: REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     [above: REVIEWED Box Pigeon 30]
     : REVIEWED Box Pigeon 29 :=
     let constructed : Fact := match flying_spaghetti_monster.nagging_doubt with
@@ -316,7 +307,7 @@ instance (priority := low) REVIEWER_2_DISTINGUISHES_REALITY_FROM_ITS_PRESS_RELEA
 instance (priority := low) REVIEWER_2_ASKS_WHAT_WAS_ACTUALLY_WITNESSED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
@@ -324,19 +315,19 @@ instance (priority := low) REVIEWER_2_ASKS_WHAT_WAS_ACTUALLY_WITNESSED
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [yet: WITNESSED Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (obvious_pattern: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     [above: REVIEWED Box Pigeon 29]
     : REVIEWED Box Pigeon 28 :=
     let constructed : Fact := match yet.the_experiment with
@@ -358,7 +349,7 @@ instance (priority := low) REVIEWER_2_ASKS_WHAT_WAS_ACTUALLY_WITNESSED
 instance (priority := low) REVIEWER_2_REQUIRES_THE_INVARIANT_TO_CARRY_A_REMAINDER
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
@@ -366,19 +357,19 @@ instance (priority := low) REVIEWER_2_REQUIRES_THE_INVARIANT_TO_CARRY_A_REMAINDE
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [experiment: SCIENTIFIC Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     [above: REVIEWED Box Pigeon 27]
     : REVIEWED Box Pigeon 26 :=
     let constructed : Fact := match experiment.invariant with
@@ -397,26 +388,26 @@ instance (priority := low) REVIEWER_2_REQUIRES_THE_INVARIANT_TO_CARRY_A_REMAINDE
 instance (priority := low) REVIEWER_2_SEPARATES_PERSUASION_FROM_EVIDENCE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     [above: REVIEWED Box Pigeon 25]
     : REVIEWED Box Pigeon 24 :=
     -- presence-paragraph: the referee grants the rung a place in the record
@@ -430,26 +421,26 @@ instance (priority := low) REVIEWER_2_SEPARATES_PERSUASION_FROM_EVIDENCE
 instance (priority := low) REVIEWER_2_OBJECTS_TO_TRUTH_CITED_BY_NAME_ONLY
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (knowledge_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 28]
     : REVIEWED Box Pigeon 27 :=
@@ -465,26 +456,26 @@ instance (priority := low) REVIEWER_2_OBJECTS_TO_TRUTH_CITED_BY_NAME_ONLY
 instance (priority := low) REVIEWER_2_ASKS_IF_DEVOTION_TO_METHOD_IS_A_METHOD
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (professor: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (cult_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 26]
     : REVIEWED Box Pigeon 25 :=
@@ -502,26 +493,26 @@ instance (priority := low) REVIEWER_2_ASKS_IF_DEVOTION_TO_METHOD_IS_A_METHOD
 instance (priority := low) REVIEWER_2_SUSPECTS_THE_SMOOTH_STORY_IS_INTERPOLATION_IN_A_LAB_COAT
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (spline_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 24]
     : REVIEWED Box Pigeon 23 :=
@@ -539,26 +530,26 @@ instance (priority := low) REVIEWER_2_SUSPECTS_THE_SMOOTH_STORY_IS_INTERPOLATION
 instance (priority := low) REVIEWER_2_ASKS_IF_FINITE_IS_A_BOUNDARY_OR_A_DECORATION
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (the_simplex: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (polynomial_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 23]
     : REVIEWED Box Pigeon 22 :=
@@ -575,26 +566,26 @@ instance (priority := low) REVIEWER_2_ASKS_IF_FINITE_IS_A_BOUNDARY_OR_A_DECORATI
 instance (priority := low) REVIEWER_2_NOTES_A_LOAD_MUST_LAND_IN_A_BASIS
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (basis_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 22]
     : REVIEWED Box Pigeon 21 :=
@@ -611,26 +602,26 @@ instance (priority := low) REVIEWER_2_NOTES_A_LOAD_MUST_LAND_IN_A_BASIS
 instance (priority := low) REVIEWER_2_REQUIRES_SCALE_TO_SHOW_ITS_MULTIPLICATION
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (product_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 21]
     : REVIEWED Box Pigeon 20 :=
@@ -647,26 +638,26 @@ instance (priority := low) REVIEWER_2_REQUIRES_SCALE_TO_SHOW_ITS_MULTIPLICATION
 instance (priority := low) REVIEWER_2_ASKS_WHERE_MAGNITUDE_BECOMES_ADDITIVE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (extraordinary: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (sum_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 20]
     : REVIEWED Box Pigeon 19 :=
@@ -682,7 +673,7 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_MAGNITUDE_BECOMES_ADDITIVE
 instance (priority := low) REVIEWER_2_DISTINGUISHES_A_VALUE_FROM_ITS_PROCESS
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
@@ -690,19 +681,19 @@ instance (priority := low) REVIEWER_2_DISTINGUISHES_A_VALUE_FROM_ITS_PROCESS
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [uncountable: VALUE Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     [above: REVIEWED Box Pigeon 19]
     : REVIEWED Box Pigeon 18 :=
     let constructed : Fact := match uncountable.monad with
@@ -722,26 +713,26 @@ instance (priority := low) REVIEWER_2_DISTINGUISHES_A_VALUE_FROM_ITS_PROCESS
 instance (priority := low) REVIEWER_2_ASKS_IF_EXECUTION_LEFT_AN_OPCODE_RECORD
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (opcode_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 18]
     : REVIEWED Box Pigeon 17 :=
@@ -758,26 +749,26 @@ instance (priority := low) REVIEWER_2_ASKS_IF_EXECUTION_LEFT_AN_OPCODE_RECORD
 instance (priority := low) REVIEWER_2_ASKS_WHICH_SOURCE_FACT_SURVIVED_THE_CHANNEL
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][data_feed: SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (the_machine_that_goes_ping: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     [above: REVIEWED Box Pigeon 17]
     : REVIEWED Box Pigeon 16 :=
     let constructed : Fact := match data_feed.one with
@@ -796,26 +787,26 @@ instance (priority := low) REVIEWER_2_ASKS_WHICH_SOURCE_FACT_SURVIVED_THE_CHANNE
 instance (priority := low) REVIEWER_2_MAKES_THE_JOKE_PAY_ITS_EVIDENTIARY_BILL
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (jar_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 16]
     : REVIEWED Box Pigeon 15 :=
@@ -832,26 +823,26 @@ instance (priority := low) REVIEWER_2_MAKES_THE_JOKE_PAY_ITS_EVIDENTIARY_BILL
 instance (priority := low) REVIEWER_2_ASKS_IF_THE_CLOCK_IS_OBSERVABLE_OR_ASSERTED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (clock_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 15]
     : REVIEWED Box Pigeon 14 :=
@@ -868,26 +859,26 @@ instance (priority := low) REVIEWER_2_ASKS_IF_THE_CLOCK_IS_OBSERVABLE_OR_ASSERTE
 instance (priority := low) REVIEWER_2_ASKS_WHERE_PRESENCE_ACCUMULATES
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (just_now: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (area_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 14]
     : REVIEWED Box Pigeon 13 :=
@@ -903,26 +894,26 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_PRESENCE_ACCUMULATES
 instance (priority := low) REVIEWER_2_ASKS_IF_OBSERVATION_HAS_A_RECORDED_DIMENSION
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (sophism_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 13]
     : REVIEWED Box Pigeon 12 :=
@@ -938,26 +929,26 @@ instance (priority := low) REVIEWER_2_ASKS_IF_OBSERVATION_HAS_A_RECORDED_DIMENSI
 instance (priority := low) REVIEWER_2_ASKS_WHAT_MAKES_COMPARISON_MORE_THAN_PARALLEL_NAMING
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (metavariable_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 12]
     : REVIEWED Box Pigeon 11 :=
@@ -974,7 +965,7 @@ instance (priority := low) REVIEWER_2_ASKS_WHAT_MAKES_COMPARISON_MORE_THAN_PARAL
 instance (priority := low) REVIEWER_2_REQUIRES_THE_PHYSICAL_CLAIM_TO_SHOW_ITS_BASE_FACT
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
@@ -982,19 +973,19 @@ instance (priority := low) REVIEWER_2_REQUIRES_THE_PHYSICAL_CLAIM_TO_SHOW_ITS_BA
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [anechoic_chamber: PHYSICAL Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (timeseries: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     [above: REVIEWED Box Pigeon 11]
     : REVIEWED Box Pigeon 10 :=
     let constructed : Fact := match anechoic_chamber.threshold with
@@ -1011,26 +1002,26 @@ instance (priority := low) REVIEWER_2_REQUIRES_THE_PHYSICAL_CLAIM_TO_SHOW_ITS_BA
 instance (priority := low) REVIEWER_2_ASKS_IF_REPRESENTATION_HAS_A_CARRIER_OR_A_NOTATION
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (state_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 10]
     : REVIEWED Box Pigeon 9 :=
@@ -1046,7 +1037,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_REPRESENTATION_HAS_A_CARRIER_OR_A_
 instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_NUMBER_ACTUALLY_COUNTS
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
@@ -1054,19 +1045,19 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_NUMBER_ACTUALLY_COUNTS
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [jupyter_notebook: NUMERIC Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     [above: REVIEWED Box Pigeon 9]
     : REVIEWED Box Pigeon 8 :=
     let constructed : Fact := match jupyter_notebook.carrier with
@@ -1083,26 +1074,26 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_NUMBER_ACTUALLY_COUNTS
 instance (priority := low) REVIEWER_2_ASKS_IF_REPETITION_REPEATS_THE_EXPERIMENT_OR_THE_SENTENCE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (procedure: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (trial_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 8]
     : REVIEWED Box Pigeon 7 :=
@@ -1121,7 +1112,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_REPETITION_REPEATS_THE_EXPERIMENT_
 instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_MISSING_EXHIBIT_WENT
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
@@ -1129,19 +1120,19 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_MISSING_EXHIBIT_WENT
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [flicker: BINARY Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (land: BINARY Box Pigeon)
     [above: REVIEWED Box Pigeon 7]
     : REVIEWED Box Pigeon 6 :=
@@ -1159,26 +1150,26 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_MISSING_EXHIBIT_WENT
 instance (priority := low) REVIEWER_2_ASKS_IF_RESIDUE_IS_A_RECORD_OR_A_LEFTOVER_STORY
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (residue_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 6]
     : REVIEWED Box Pigeon 5 :=
@@ -1192,26 +1183,26 @@ instance (priority := low) REVIEWER_2_ASKS_IF_RESIDUE_IS_A_RECORD_OR_A_LEFTOVER_
 instance (priority := low) REVIEWER_2_ASKS_IF_ENCODING_KEEPS_A_READ_PATH_TO_THE_MARK
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (limit_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 5]
     : REVIEWED Box Pigeon 4 :=
@@ -1225,26 +1216,26 @@ instance (priority := low) REVIEWER_2_ASKS_IF_ENCODING_KEEPS_A_READ_PATH_TO_THE_
 instance (priority := low) REVIEWER_2_ASKS_IF_COUNTING_COUNTS_A_CARRIER_OR_NAMES_A_CLASS
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (index_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 4]
     : REVIEWED Box Pigeon 3 :=
@@ -1259,26 +1250,26 @@ instance (priority := low) REVIEWER_2_ASKS_IF_COUNTING_COUNTS_A_CARRIER_OR_NAMES
 instance (priority := low) REVIEWER_2_ASKS_WHO_ADMITTED_THE_MARK
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
     [naotrino: LOCAL Box Pigeon]
     [commuter_pass: UNIVERSAL Box Pigeon naotrino]
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     (carrier_fact_on_file: Fact)
     [above: REVIEWED Box Pigeon 3]
     : REVIEWED Box Pigeon 2 :=
@@ -1301,19 +1292,19 @@ instance (priority := low) REVIEWER_2_ASKS_IF_IT_ALL_RESTS_ON_A_MARK_OR_ON_CONFI
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (the_simplex: INDEXOFANT Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(graduate_textbook: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
-    (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)(unambiguous_output: A_TRUTH_ABOUT Box Pigeon downhill extremum)
+    (_: Fact)(something: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
+    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
+    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
+    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
+    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
+    (_: INDEXOFANT Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
+    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
+    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
+    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
+    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
+    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
     [above: REVIEWED Box Pigeon 2]
     : REVIEWED Box Pigeon 1 :=
     let constructed : Fact := nowtrino.fact

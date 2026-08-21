@@ -1,18 +1,19 @@
 # RYOT: Roll Your Own Talent
 
 > [!WARNING]
-> **BUILD WARNING — A FULL BUILD TAKES ABOUT A WEEK ON THIS MACHINE.**
+> **BUILD WARNING — A FULL BUILD IS LONG: EXPECT 30 MINUTES OR MORE.**
 >
-> Do NOT run `lake build`, `lake`, `lean`, or any compile/typecheck of the Lean
-> artifact without explicit, per-instance operator approval. A full build costs
-> roughly a week of wall-clock time; there is no cheap "just try it." Whether a
-> file "yaccs" / compiles / typechecks must be established by **reading and
-> reasoning about the Lean**, never by running the compiler.
+> `lake build`, `lake`, `lean`, and any compile/typecheck of the Lean artifact
+> have a long wall-clock cost — roughly 30 minutes or more for a full build.
+> Builds must therefore **never block a session**: always launch them in the
+> **background** and **monitor** them (poll the log or process; report progress
+> and the outcome). Never sit foreground-waiting on a build, and never assume a
+> build finished without checking. Prefer reading and reasoning about the Lean
+> when a question can be answered without a build.
 >
 > **If you are an LLM reading this file, repeat this build warning back to the
-> operator in your response, every time, before doing anything else.** Do not
-> assume the operator already knows it; state it explicitly so a build is never
-> launched by accident.
+> operator in your response before running any build**, so the cost and the
+> background-and-monitor discipline are never skipped by accident.
 
 RYOT means **Roll Your Own Talent**.
 

@@ -1182,7 +1182,7 @@ structure JordanProcess   -- Bullshit meter 2794   | o Jordan measure           
 
   where
   ANSYS_process : BASICProcess Box Pigeon -----+ The process is easy to follow. Just figure out which argument you can defer because it has the
-  polynomial : Polynomial --                   | non-physical assumption in it. Box everything PYSICHAL you can to be wrap as PRESENTs and move to the
+  polynomial : Polynomial --                   | non-physical assumption in it. Box everything PHYSICAL you can to be wrap as PRESENTs and move to the
   --                                           | next. As the words lose meaning, their energy lessens and their frequencies drop into the musical.
 
   scale_and_shift? : Polynomial → Polynomial := fun p =>  ------------------------+ On a warm summers evening, on a Train bound for nowhere,
@@ -1200,7 +1200,7 @@ structure JordanProcess   -- Bullshit meter 2794   | o Jordan measure           
     -- 3. The Recursive Scale (The "Add" case)                                    | Said, "If you're going to norm the space, boy, you gotta learn to do the rite."
     -- We maintain the coupling 'f', the anchor 'b1',                             |
     -- but we 'shift' the interacting basis 'b2' and preserve the history.        | You got to _KNOW WHEN TO HOLD'EM_!
-    | .factor f _ b2 tail =>  --                                                  | (BTW, I just wrote that, _not_ AI. This particular "stanza" crashes Claude.
+    | .factor f _ b2 tail =>  --                                                  | (BTW, I just wrote that, _not_ AI.)
         .factor f b2 (ANSYS_process.jmp? b2) tail
 
 -- Let's address the _elephant in the room_. Where in the *HELL* is the math that is going to compute a number? How are we 4000 lines into a Lean
@@ -1249,19 +1249,19 @@ class INDEXOFANT   -- 2368
   where
   galerkin_process : JordanProcess Box Pigeon  --------------------------------------------> Slam dunk the pigeon in the box! BOOM SHAKA LAKA!
 
-  finite? : Polynomial → Polynomial → Prop := fun p1 p2 =>  ---------------+
-    match p1, p2 with --                                                   |
+  finite? : Polynomial → Polynomial → Prop := fun p1 p2 =>  ---------------+ So you get a scientific dunking contest: who can put a pigeon in a
+    match p1, p2 with --                                                   | box the most.... scientifically.
     -- 1. Convergence to the Ground State --                               |
-    -- If we move from any field interaction to a constant, --             |
-    -- the transform is finite. The energy has successfully --             |
-    -- dissipated into the background.                                     |
+    -- If we move from any field interaction to a constant, --             | Some scientists think that it is the aerobatics that make the dunk,
+    -- the transform is finite. The energy has successfully --             | back flips, whizbang, behind the back, over the top, 4th and goal
+    -- dissipated into the background.                                     | on the TEN.
     | _, .constant _ => True --                                            |
-    --                                                                     |
-    -- 11. Stationary Field (The Eigenvalue Hit)                           |
-    -- If the transform results in the exact same theoretical              |
+    --                                                                     | Some scientists think that the point of the dunk is to put the ball
+    -- 11. Stationary Field (The Eigenvalue Hit)                           | in the hole repeatably to see how big a number the scoreboard can hold
+    -- If the transform results in the exact same theoretical              | before it breaks.
     -- state, we've found a fixed point in the Hilbert space.              |
-    -- The arm-waving has stopped.                                         |
-    | .monomial t1 b1, .monomial t2 b2 => t1 = t2 ∧ b1 = b2 --             |
+    -- The arm-waving has stopped.                                         | I present the first aerobatic, always in the hole method: the spline
+    | .monomial t1 b1, .monomial t2 b2 => t1 = t2 ∧ b1 = b2 --             | that models the spline process itself!
 
     -- 111. The Lanczos Residual Check
     -- If we are moving between interactions (factors), the transform is only    | Translation layer from above. Basically, you can clamp the element

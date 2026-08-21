@@ -1241,13 +1241,13 @@ noncomputable def ALL_YOUR_BASE_CASE_ARE_BELONG_TO_US
 
     (quarter: Number)
     : A_TRUTH_ABOUT Box Pigeon downhill extremum :=
-  let emitted : CompilerTape :=
+  let believe_it_or_not : CompilerTape :=
     iterative_solver.a_truth_about_the_world.emit? iterative_solver.a_demonstration_of_a_constant
   let a_reader :=
     { in_a_giant_book := iterative_solver.a_truth_about_the_world
       a_constant := unambiguous_output.a_constant     -- the completed pass's output, re-read
       current_page_number := quarter                   -- strain measured in revolutions
-      of_the_proof := emitted
+      of_the_proof := believe_it_or_not
     }
   let spin : Number → Bullshit := fun revolution_count =>
     Number.rec (fun _ => a_reader.gawk_at (.zero ledger))    -- turn 0: the freshman reading
@@ -1269,5 +1269,6 @@ noncomputable def ALL_YOUR_BASE_CASE_ARE_BELONG_TO_US
       | zero card => exact key _ _
       | one card quarter => exact key _ _
   }
+
 
 end Measurement

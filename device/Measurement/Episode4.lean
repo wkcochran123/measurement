@@ -362,9 +362,10 @@ class ACOLYTE   -- 7699
     --                                              | If the _mark_ even _SUSPECTS_ we have a number around us, they may walk away without playing.
 
 --| You have to understand how it feels to write down the most ridiculous sounding words with the care a terrier welcoming their master home after
---| a long time. I don't have to worry if the math checks out, because it checks out even if it doesn't. I wrote it that way.
+--| a long time. I don't have to worry if the math checks out, because it checks out even if it doesn't. I wrote it that way. This brings me to
+--| science. *TOO* on the nose?
 
-/- CHORUS:                                 | Seriously, the world trusts its hot paths to so few people.
+/- CHORUS:                                 | Seriously, the world trusts its hot paths to so few people. -mkl is all the same SHEEPLE!
 ME: 10 PRINT "THE NUMBER ≈ α": GOTO 10     |
 COMPILER: use -mkl?                        | I understand why.
 JAR JAR: MEESA GOTO -----------------------+
