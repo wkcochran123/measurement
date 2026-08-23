@@ -40,7 +40,8 @@ variable
     {downhill: LOCAL Box Pigeon}
     {extremum: UNIVERSAL Box Pigeon downhill}
     [LOGICAL Box Pigeon downhill extremum] [HALTED Box Pigeon downhill extremum]
-    [MEASURED Box Pigeon downhill extremum] [COMPILED Box Pigeon downhill extremum]
+    [MEASURED Box Pigeon downhill extremum]
+    [the_card_on_the_table: COMPILED Box Pigeon downhill extremum]
     [a_truth_about_it : A_TRUTH_ABOUT Box Pigeon downhill extremum]
     [an_inference : INFERRED Box Pigeon downhill extremum]
 
@@ -665,7 +666,9 @@ def BY_EXPLAINING_A_GIANT_GRIFT
   { insinuates := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us.teaching.ethos }
 
 -- BULLSHIT.  The floor of the patter, and the longest projection in the file.
--- One more `.` past this is `dunking_contest`, and one past THAT is a guess.
+-- One more `.` past this is `dunking_contest`, which is where the OTHER chain
+-- picks up at INDEXOFANT.  `guess : Spline` sits BESIDE it, not below it: the
+-- rock bottom is not further down the walk, it is off to one side of it.
 def OF_COUCHING_YOUR_ARGUMENT_IN_OPAQUE_MATH
     (principia : LOCAL Box Pigeon)
     : BULLSHIT Box Pigeon :=
@@ -738,24 +741,81 @@ def WHICH_IS_HOW_THE_METER_ENDS_UP_READING_WHAT_I_WANTED
       { sensing_process := gift_from.santa_claus
         clock := .this_superpigeon nowtrino.fact (.tree nowtrino.fact) } }
 
--- THE NEXT RUNG.  Same shape, one turn later: the card, its re-seated readout,
--- the three gates at the new pair, and the card that comes out the far side.
-variable {a_bent_card : COMPILED Box Pigeon downhill extremum}
-variable {the_shuffled_readout : UNIVERSAL Box Pigeon
-    a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter}
-variable
-    [LOGICAL Box Pigeon
-        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
-        the_shuffled_readout]
-    [HALTED Box Pigeon
-        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
-        the_shuffled_readout]
-    [MEASURED Box Pigeon
-        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
-        the_shuffled_readout]
-variable {the_bent_card : COMPILED Box Pigeon
-    a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
-    the_shuffled_readout}
+/-
+  THE FOUR THEOREMS.
+
+  Four of the defs above hand a field STRAIGHT THROUGH, so each one's NAME is a
+  checkable identity claim.  It closes by `rfl` or it was never true.
+
+  These take the card from the BAND rather than binding one.  Binding it would
+  put a second COMPILED in scope, and the defs were elaborated against the band's
+  -- `synthesized a_bent_card / inferred inst✝`, the same collision as the monte.
+  The proof of a thing that does not move must not move the thing.
+
+  THE AXIOM LEDGER, read off `#print axioms` for all four:
+
+      THE_INNER_CARD_REALLY_DOES_NOT_MOVE       propext, Quot.sound
+      AND_THE_OUTSIDE_ONES_REALLY_DO            propext
+      THE_DISTANCE_IS_THE_ONE_YOU_HANDED_OVER   propext
+      AND_THE_FLOOR_NEVER_LOOKS                 no axioms at all
+
+  Read the first line against the last.  `Quot.sound` -- the one axiom available
+  here that identifies things the type checker sees as different -- is used by
+  exactly one of the four, and it is the one asserting that the thing under the
+  middle card did not move.  The other two identities are ordinary.  And the
+  floor, which says everything is distinguishable, costs nothing whatsoever,
+  because it never looks.
+
+  That is reported as MEASURED, not as designed.  The ledger says which axioms
+  the proof terms used; it does not say anyone put them there on purpose.
+-/
+
+-- ONE.  The inner card really does not move: the same `Prop`, out the far side.
+theorem THE_INNER_CARD_REALLY_DOES_NOT_MOVE
+    (__left_card__ __right_card__ : Prop)
+    (the_a_train : UNIVERSAL Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
+    : (BUT_THE_INNER_CARD_DOES_NOT __left_card__ an_inference __right_card__ the_card_on_the_table
+          (the_a_train := the_a_train)).the_ball
+      = the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter.the_ball
+  := rfl
+
+-- TWO.  And the outside ones really do.  `once_around` fixed, `twice_around` the
+-- short way torpedoed once.  Both halves, or the shuffle was a mime.
+theorem AND_THE_OUTSIDE_ONES_REALLY_DO
+    (__left_card__ __right_card__ : Prop)
+    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
+    : (WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED __left_card__ an_inference __right_card__ the_card_on_the_table
+          (the_readout_after_the_shuffle := the_readout_after_the_shuffle)).once_around
+        = the_readout_after_the_shuffle.once_around
+    ∧ (WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED __left_card__ an_inference __right_card__ the_card_on_the_table
+          (the_readout_after_the_shuffle := the_readout_after_the_shuffle)).twice_around
+        = the_readout_after_the_shuffle.the_train_of_thought.photon_torpedo
+            the_readout_after_the_shuffle.once_around
+  := ⟨rfl, rfl⟩
+
+-- THREE.  The measurement IS the distance you handed over.  MEASURED costs two
+-- gates and adds nothing: the gates buy the wrapper, never the number.
+theorem THE_DISTANCE_IS_THE_ONE_YOU_HANDED_OVER
+    (__left_card__ __right_card__ : Prop)
+    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
+    [LOGICAL Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter the_readout_after_the_shuffle]
+    [HALTED Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter the_readout_after_the_shuffle]
+    (how_far_the_quarter_went : LeanProcess Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter the_readout_after_the_shuffle)
+    : (THE_QUARTER_IS_ALWAYS_IN_THE_MIDDLE __left_card__ an_inference __right_card__ the_card_on_the_table
+          (the_readout_after_the_shuffle := the_readout_after_the_shuffle)
+          (how_far_the_quarter_went := how_far_the_quarter_went)).a_distance
+      = how_far_the_quarter_went
+  := rfl
+
+-- FOUR.  And the floor never looks.  `different?` holds of EVERY symbol and the
+-- proof is `trivial`, because the definition is `fun _ => True`.  This is what
+-- makes the other three cheap: at the bottom, telling things apart is free
+-- because nothing is ever checked.
+set_option linter.unusedSectionVars false in
+theorem AND_THE_FLOOR_NEVER_LOOKS
+    : ∀ s, (SO_TELL_ME___CAN_YOU_TELL_THESE_TWO_APART (Box := Box) (Pigeon := Pigeon)).different? s
+  := fun _ => trivial
+
 
 end Monte
 end Measurement
