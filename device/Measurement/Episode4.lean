@@ -817,12 +817,13 @@ structure CalculusProcess
     [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
-    (the_quarter: LOCAL Box Pigeon)  --| This is the one spot I can name this and it means nothing to the compiler, but it means something to *US*.
+    (a_quarter: LOCAL Box Pigeon)  --| This is the one spot I can name this and it means nothing to the compiler, but it means something to *US*.
   where
   the_local_schedule: BigRedDogProcess Box Pigeon  -- Parents, read to your kids.  They are the future.
   the_direction_to_the_destination: SpaceTimePath
   uptown_or_downtown: Fact
   the_train_in: Type (i+1)
+  the_quarter: LOCAL Box Pigeon := a_quarter
 
   photon_torpedo: SpaceTimePath → SpaceTimePath := fun path =>
     match path with
@@ -970,6 +971,7 @@ structure HeartbeatProcess
   bullshit_meter: CalculusProcess Box Pigeon train_schedule --| We can model the bullshit meter's path as it _CONTINUES_ to move through _FIELDS_ of bullshit.
   time_spent_waiting: SpaceTimePath
   according_to_newton: YarnTheory
+  readout: UNIVERSAL Box Pigeon train_schedule := commuter_pass
 
 
   weave? : YarnTheory → YarnTheory := fun yarn =>
