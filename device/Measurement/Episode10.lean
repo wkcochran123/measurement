@@ -4,787 +4,631 @@ __A Satire in Look-Ahead Backus-Naur Form__
 
 _This is a gentle reminder that the long, long stories we tell ourselves are just that: far, far away._
 
-(c) 2026 [PATTER TODO: rights gag]
-
+[PATTER TODO: rights gag]
 [PATTER TODO: epigraph]
 
-lake build [PATTER TODO: build-flag gag]
+__EPISODE 10__ -- THE AUDIT, CONDUCTED ON THE DEVICE ITSELF.
 
-__EPISODE 10__ -- THE AUDIT, IN NATURALS.  NO JIGGERY-POKERY.
+RULING (operator): "episode 10 needs to be rewritten to do the computation from
+Measurement.Monte instead of the internal elaborator."
 
-RULING (operator): "in episode10, you can use naturals and demonstrate the
-value in lean to show no jiggery-pokery."
+The old desk opened a ledger of five naturals that the elaborator had written
+with its own hand, and audited those.  It never touched the device.  This desk
+has no seeds.  Every number below is obtained by INSTANTIATING Episode 9's Monte
+at a concrete carrier and WALKING what comes out.
 
-Nine episodes refused Nat.  Episode 7 admitted exactly ONE, for page numbers,
-under protest.  This episode legalizes them, because this is the auditor's
-desk and an audit is conducted in the auditor's own arithmetic.  The seeds
-already sit in the environment as bare naturals -- the EKG wrote them with
-its own hand (`Lean.quote`), so everything below is kitchen arithmetic on
-numbers anyone can read by printing them.
+THE DISCIPLINE OF THE DESK, unchanged:
 
-The discipline of the desk:
+  ASSERTED (theorems, kernel-checked): route-agreement only.  Two arrangements
+  of the same walk must name the same thing.  True regardless of what the walk
+  turns out to be; the kernel checks it on the actual term.
 
-  ASSERTED (theorems, `decide`, kernel-checked): route-agreement only.  The
-  auditor's arrangement of the formulas equals the device's arrangement; the
-  auditor's digit extraction equals the device's printer.  These are true
-  regardless of what the numbers are, and the kernel checks them on the
-  actual literals.
+  SHOWN (`#reduce`, never asserted): the walk and its readings.  No expected
+  value appears in this file and no theorem presumes an outcome.
 
-  SHOWN (`#eval`, never asserted): the seeds, the values, and the empirical
-  verdicts.  No expected number appears in this file; no gate presumes an
-  outcome; a surprising Boolean is a reading, not a failure.
-
-  DISPLAYED (`#print axioms`): the dependency ledger.  The audit should owe
-  nothing; the needle (`selection_sound`, the one sanctioned `Quot.sound`)
-  is shown for contrast and used by none of the above; the knower's theorem
-  owes whatever the tower's instances truly owe -- printed, not promised.
-
-This desk, by the correction, is rung 37 itself: INFERRED, the class no tape
-writes and no meter charges (operator: "inferred being left to
-you_the_knower").  The device ran its 36 steps and stopped; the inference --
-the same-difference formed over the printed pair -- happens here, in the
-knower's own arithmetic.
+  DISPLAYED (`#print axioms`): the ledger.  Printed, not promised.
 
 Numbers read last.
--/
 
+WHY `#reduce` AND NOT `#eval`: the concrete tower is `noncomputable` -- Episode 5
+builds it from instances that do not extract.  The kernel still reduces the
+terms, so `decide` and `rfl` and `#reduce` all work and `#eval` does not.  That
+is a constraint the device imposed, not a preference of the auditor's.
+-/
 import Measurement.Episode9
-import Measurement.FloorSqrt
+import Measurement.Calibration.EKGBounded
 set_option maxHeartbeats 4000000
 
 namespace Measurement
 
-/-%Y% /* the ledger, opened: five naturals, in the order they were earned */ %Y%-/
-/- THE LEDGER, OPENED.  Trip zero's floor, the two legs, the bent card, and
-the paper quantum.  Naturals, legal tender at this desk. -/
-#eval (Calibration.measuredFloor, the_bottom_of_the_jar, the_top_of_the_jar,
-       the_bent_card, the_next)
+/-! ## THE BOOTSTRAP -- three hand-overs, and only three
 
-/-%Y% /* the stencil re-added by hand: gains on one side, costs on the other */ %Y%-/
-/- THE STENCIL, RE-ADDED BY HAND.  Gains on one side, costs on the other,
-naturals both; each borrow is performed once, in the open, in Int, where
-owing is representable.  Nat cannot owe -- that fact is saved for the
-verdicts below, where it does honest work. -/
-def audit_gain : Nat := the_top_of_the_jar + Calibration.measuredFloor
-def audit_cost : Nat := 2 * the_bottom_of_the_jar
+Episode 9's Monte is polymorphic in `Box` and `Pigeon` and in the whole
+twenty-nine-class band.  To read anything off it, it has to be made concrete.
+It turns out the entire tower stands at `Prop truthCarrier` on exactly three
+things that cannot be found by search.  They are itemised here rather than
+buried, because what a construction cannot find is the interesting part of it.
+-/
 
-def audit_a_pigeon : Int × Int :=
-  ((audit_gain : Int) - (audit_cost : Int), (the_bent_card : Int))
+/-- HAND-OVER ONE.  The symbol has to be inhabited.  `DISTINGUISHABLE.symbol` is
+a `Type`, and nothing in the device produces an element of it; the device only
+ever asks whether two of them differ.  Somebody has to put one thing in the bag
+before the question means anything, and this is that. -/
+noncomputable instance theSymbolIsInhabited : Inhabited truthDistinct.symbol :=
+  ⟨Fact.Truth.truth⟩
 
-def audit_that_box_gain : Nat := the_top_of_the_jar * the_bent_card + the_next
-def audit_that_box_cost : Nat := the_bottom_of_the_jar * the_bent_card
+/-- HAND-OVER TWO.  SOURCE is a `def` everywhere it appears and an `instance`
+nowhere -- Episode 5's is a def, Episode 9's is a def.  It cannot be found; it
+must be applied.  So this is the first real consumption of the Monte: the device
+supplies its own source, and everything from EXECUTED up to WITNESSED then
+resolves by search off this one application. -/
+noncomputable instance theSourceIsHandedOver : SOURCE Prop truthCarrier :=
+  LETS_SEE_IF_WE_CAN_FIND_THE_NUMBER_IN_THE_CODE_NOW
 
-def audit_that_box : Int × Int :=
-  ((audit_that_box_gain : Int) - (audit_that_box_cost : Int), (the_bent_card : Int))
+/-- HAND-OVER THREE.  REAL and LOCAL are circular: `LOCAL` lists `[REAL]` among
+its prerequisites, and Episode 5's REAL takes a `LOCAL`.  Neither can be found
+first.  The loop breaks at REAL because REAL's FIELDS need only a
+`UniverseTensor`, and a UniverseTensor needs only a `ReligiousProcess` -- which
+WITNESSED already carries.  So the aether is built by hand, once, and the seam
+comes free after it.
 
-/-%Y% /* part one: same numbers, both arrangements, kernel-checked */ %Y%-/
-/- NO JIGGERY-POKERY, PART ONE.  The auditor's arrangement (sums gathered
-before the single borrow; the product distributed) and the device's
-arrangement (Episode 9's two dial lines) name the same pair of integers.
-`decide`: the kernel evaluates both on the actual literals and compares.
-True independently of what the literals are -- this checks the ARITHMETIC,
-not the outcome. -/
-theorem no_jiggery_pokery :
-    audit_a_pigeon = jar_a_pigeon ∧ audit_that_box = jar_that_box := by
-  decide
+This is the same closed loop Episode 9 states in prose: you cannot be dealt the
+card until you have the card.  Here is what it costs to sit down anyway. -/
+noncomputable instance theAetherIsHandedOver : REAL Prop truthCarrier :=
+  { by_His_noodly_appendage :=
+      { frame_of_reference := (inferInstance : WITNESSED Prop truthCarrier).we_saw
+        in_reality         := .logically True }
+    nagging_doubt := .logically True }
 
-/-%Y% /* part two: the digits, extracted twice, two different ways */ %Y%-/
-/- NO JIGGERY-POKERY, PART TWO.  Episode 9's printer walks the remainder one
-digit at a time.  The auditor extracts all six at once -- one multiplication
-by 10^6, one division, zero-padded -- and the two methods must spell the
-same string on both jars.  (If the kernel ever balks at grinding strings,
-the swap to `native_decide` would confess itself two stanzas down, in the
-axiom ledger.  The ledger polices the proof method.) -/
-def audit_pad (s : String) (k : Nat) : String :=
-  String.mk (List.replicate (k - s.length) '0') ++ s
+/-! ## THE TOWER, MADE CONCRETE
 
-def audit_digits (num den : Int) (k : Nat) : String :=
-  audit_pad (toString ((num.natAbs % den.natAbs) * 10 ^ k / den.natAbs)) k
+With the three hand-overs in scope the whole band resolves at `Prop
+truthCarrier`.  The seam and the four gates come with it. -/
 
-theorem no_jiggery_pokery_in_the_printer :
-    fracDigits 6 (jar_a_pigeon.1.natAbs % jar_a_pigeon.2.natAbs) jar_a_pigeon.2.natAbs
-        = audit_digits jar_a_pigeon.1 jar_a_pigeon.2 6
-      ∧ fracDigits 6 (jar_that_box.1.natAbs % jar_that_box.2.natAbs) jar_that_box.2.natAbs
-        = audit_digits jar_that_box.1 jar_that_box.2 6 := by
-  decide
+noncomputable def theLocal : LOCAL Prop truthCarrier := inferInstance
+noncomputable def theUniversal : UNIVERSAL Prop truthCarrier theLocal := inferInstance
+noncomputable def theCompiled : COMPILED Prop truthCarrier theLocal theUniversal := inferInstance
 
-/-%Y% /* the verdicts: shown, not asserted; nat cannot owe */ %Y%-/
-/- THE EMPIRICAL VERDICTS, SHOWN, NOT ASSERTED.  Nat cannot owe, so each
-Boolean below is a sign read: is the second variation nonnegative, is the
-corrected long leg nonnegative, does the direct path undercut the long way
-(the triangle, as measured).  The source does not know these Booleans; the
-kernel prints them.  A `false` is not a build failure -- it is the
-instrument reporting, e.g., a reversed triangle (operator: "might be
-reversed").  The verdicts are data for the jar to judge, off the build. -/
-#eval (decide (audit_cost ≤ audit_gain),
-       decide (audit_that_box_cost ≤ audit_that_box_gain),
-       decide (the_bent_card ≤ the_top_of_the_jar))
+/-! ## THE MONTE, CONSUMED
 
-/-%Y% /* the value, demonstrated: both routes, printed from the seeds */ %Y%-/
-/- THE VALUE, DEMONSTRATED.  Both routes print; part one already proved they
-cannot disagree.  Whatever appears, appears from the seeds through audited
-arithmetic.  This file never wrote it. -/
-#eval (decimalOf audit_a_pigeon 6, decimalOf audit_that_box 6)
-#eval (decimalOf jar_a_pigeon 6, decimalOf jar_that_box 6)
+Not merely instantiated -- APPLIED.  Each of these is one of Episode 9's defs,
+run at the concrete carrier.  They are `def`s there precisely so that they can
+be applied and never found, and this is the file that applies them. -/
 
-/-%Y% /* the dependency ledger: what each certificate owes */ %Y%-/
-/- THE DEPENDENCY LEDGER.  The audit pair should print clean -- `decide`
-borrows nothing.  The homophone theorem owes whatever the tower's instances
-owe; printed, not promised.  The needle owes exactly its one `Quot.sound`,
-quarantined where it lives, used by none of the audit.  Read the four lines
-in the build log and check the arithmetic of trust yourself: that is the
-whole of what "no jiggery-pokery" can honestly mean. -/
-#print axioms no_jiggery_pokery
-#print axioms no_jiggery_pokery_in_the_printer
-#print axioms you_cannot_hear_the_update
-#print axioms selection_sound
+noncomputable def consumeSource : SOURCE Prop truthCarrier :=
+  LETS_SEE_IF_WE_CAN_FIND_THE_NUMBER_IN_THE_CODE_NOW
+noncomputable def consumeExecuted : EXECUTED Prop truthCarrier :=
+  BUT_YOU_CANT_GET_THE_NUMBER_UNTIL_AFTER_THE_PROOF_HALTS
+noncomputable def consumeValue : VALUE Prop truthCarrier :=
+  THIS_WILL_GIVE_US_A_RATIO___EVENTUALLY_CUZ_THATS_HOW_THE_MEASUREMENT_TOOL_WORKS_NOT_CUZ_I_WANT_ONE
+noncomputable def consumeMagnitude : MAGNITUDE Prop truthCarrier :=
+  SO_THAT_IT_CAN_ACCURATELY_MEASURE_HOW_LONG_A_PROOF_TAKES_WRT_THE_LONGEST_IT_CAN_MEASURE
+noncomputable def consumeScaled : SCALED Prop truthCarrier :=
+  AND_AUTOMATICALLY_FIND_WHAT_THE_LARGEST_NAT_IT_CANNOT_SUPPORT
+noncomputable def consumeLoad : LOAD Prop truthCarrier :=
+  THE_COMPILER_WILL_READ_IT_OUT_FOR_YOU
+noncomputable def consumeIndex : INDEXOFANT Prop truthCarrier :=
+  NO_NEED_TO_USE_COMPLEX_ANALYSIS_TO_UNDERSTAND_THE_INDEX_OF_THE_CONSTANT
 
+noncomputable def consumeReal : REAL Prop truthCarrier :=
+  HOW_DO_WE_KNOW_THE_COIN_IS_UNDER_THE_CARD theLocal
+noncomputable def consumeWitnessed : WITNESSED Prop truthCarrier :=
+  YOU_SAW_ME_PUT_IT_THERE theLocal
+noncomputable def consumeTruth : TRUTH Prop truthCarrier :=
+  AND_I_GLUED_IT_TO_THE_TABLE theLocal
+noncomputable def consumeBullshit : BULLSHIT Prop truthCarrier :=
+  OF_COUCHING_YOUR_ARGUMENT_IN_OPAQUE_MATH theLocal
 
-/-%Y% /* the transform: the jars, read in every bin instead of one */ %Y%-/
-/- THE SPECTRUM.  INT-VALUED (operator ruling).
+/-! ### THE PATTER, COMPLETED
 
-The device promised this in Episode 3 and never delivered it: "Which means I
-can quantize and take the DFT!"  Everything the transform needs has been
-lying around since.  e^(iθ) is RESIDUE -- the operator's own binder names say
-so, `exp_iθ` in Episode 5 and `e_iθ` in Episode 6.  π is in a jar now, the
-Archimedes bracket measured off the orbit.  The butterfly is named in the
-Megasode charge face (popcount of an XOR).  And the kernel has been here
-since Episode 1, wearing a joke: the clock and the clock complement.
+Three rungs of the REAL-to-BULLSHIT descent were left unconsumed.  Each takes
+the local and projects; nothing new is required. -/
 
-A device made of signs cannot carry a complex DFT and does not need one.  The
-Walsh-Hadamard transform IS the Fourier transform on (Z/2)^n: its characters
-are ±1, so the kernel needs no reals, no transcendentals, nothing the device
-refuses.  The two-point case is (do they agree, do they differ) -- SAME and
-DIFFERENT, the DC bin and the Nyquist bin, which is what the clock and its
-complement have always been.
+noncomputable def consumeScientific : SCIENTIFIC Prop truthCarrier :=
+  IN_ORDER_TO_SHOW_YOU_WHERE_ORBITAL_MECHANICS_COMES_FROM theLocal
+noncomputable def consumeAcolyte : ACOLYTE Prop truthCarrier :=
+  AND_I_SHOWED_YOU_HOW_IT_WORKS theLocal
+noncomputable def consumePropaganda : PROPAGANDA Prop truthCarrier :=
+  BY_EXPLAINING_A_GIANT_GRIFT theLocal
 
-INT-VALUED is why this lives at the auditor's desk and not in the instrument.
-Sign-valued, a bin can only report occupied-or-not; int-valued, it reports an
-AMPLITUDE, and amplitudes make Parseval a numeric identity rather than a
-slogan.  Naturals are legal tender here (that is what this episode is for),
-so the spectrum is read here, in the knower's arithmetic, off the device's
-own four jars. -/
-def Fact.toInt (f : Fact) : Int := if f.isTop then 1 else -1
+/-! ### THE WALK BACK DOWN, CONSUMED
 
-/-- The four Walsh bins, in natural (Hadamard) order.  `bin0` is DC -- the
-constant; `bin1` alternates (the clock); `bin2` is the half-and-half split;
-`bin3` is the crossed pair.  Sequency rises with the index the way frequency
-does, which is the whole of what "spectrum" means here. -/
-structure Spectrum where
-  bin0 : Int
-  bin1 : Int
-  bin2 : Int
-  bin3 : Int
-deriving Repr, DecidableEq
+All fifteen base rungs, SOURCE down to DISTINGUISHABLE.  Every one takes the
+rung above it from the band and projects one step.  They are listed in the order
+the patter speaks them, which is the order the device falls. -/
 
-/-- The 4-point Walsh-Hadamard transform: four butterflies, no multiplication
-by anything but ±1. -/
-def wht4 (a b c d : Int) : Spectrum :=
-  { bin0 := a + b + c + d
-    bin1 := a - b + c - d
-    bin2 := a + b - c - d
-    bin3 := a - b - c + d }
+noncomputable def consumeGungan : GUNGAN Prop truthCarrier :=
+  AND_IF_YOU_DONT_FOLLOW_THE_MATH_ILL_SAY_IT_IN_GUNGAN
+noncomputable def consumeMeasurable : MEASURABLE Prop truthCarrier :=
+  MEESA_GOT_A_METER_RIGHT_HERE
+noncomputable def consumePresent : PRESENT Prop truthCarrier :=
+  AND_LOOK_ITS_ALREADY_SHOWING_SOMETHING
+noncomputable def consumeObserved : OBSERVED Prop truthCarrier :=
+  WHICH_YOU_JUST_WATCHED_ME_OBSERVE.{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}
+noncomputable def consumeComparable : COMPARABLE Prop truthCarrier :=
+  SO_NOW_WE_CAN_COMPARE_IT_TO_THE_OTHER_ONE.{0, 0, 0, 0, 0, 0, 0}
+noncomputable def consumePhysical : PHYSICAL Prop truthCarrier :=
+  AND_BOTH_OF_THEM_ARE_PHYSICALLY_REAL_I_PROMISE.{0,0,0}
+noncomputable def consumeRepresentable : REPRESENTABLE Prop truthCarrier :=
+  I_CAN_EVEN_WRITE_THEM_DOWN_FOR_YOU
+noncomputable def consumeNumeric : NUMERIC Prop truthCarrier :=
+  AS_NUMBERS_IF_THATS_WHAT_YOU_WANT
+noncomputable def consumeRepeatable : REPEATABLE Prop truthCarrier :=
+  AND_ILL_DO_IT_AGAIN_AS_MANY_TIMES_AS_YOU_LIKE
+noncomputable def consumeBinary : BINARY Prop truthCarrier :=
+  ITS_ONLY_EVER_HEADS_OR_TAILS_ANYWAY
+noncomputable def consumeResidue : RESIDUE Prop truthCarrier :=
+  WHATEVER_IS_LEFT_OVER_IS_THE_PART_YOU_MISSED
+noncomputable def consumeEncoded : ENCODED Prop truthCarrier :=
+  AND_IT_ALL_CONVERGES_TO_SOMETHING_I_ENCODED_EARLIER
+noncomputable def consumeCountable : COUNTABLE Prop truthCarrier :=
+  WHICH_YOU_COULD_COUNT_IF_YOU_HAD_ALL_DAY
+noncomputable def consumeAdmissible : ADMISSIBLE Prop truthCarrier :=
+  AND_COUNTING_IS_ADMISSIBLE_EVIDENCE_RIGHT
+noncomputable def consumeDistinguishable : DISTINGUISHABLE Prop truthCarrier :=
+  SO_TELL_ME___CAN_YOU_TELL_THESE_TWO_APART
 
-/-- The inverse: H is its own inverse up to the factor four.  Exact in Int --
-every jar's coefficients are divisible by four's worth, so nothing is lost to
-truncation (the round-trip theorem below is what checks that claim). -/
-def unwht4 (X : Spectrum) : Int × Int × Int × Int :=
-  ((X.bin0 + X.bin1 + X.bin2 + X.bin3) / 4,
-   (X.bin0 - X.bin1 + X.bin2 - X.bin3) / 4,
-   (X.bin0 + X.bin1 - X.bin2 - X.bin3) / 4,
-   (X.bin0 - X.bin1 - X.bin2 + X.bin3) / 4)
+/-! ### PROBE -- THE FOURTH HAND-OVER
 
-def jarSpectrum (s1 s2 s3 s4 : Fact) : Spectrum :=
-  wht4 s1.toInt s2.toInt s3.toInt s4.toInt
+The last nine rungs (the seam pair, the four gates, the upward walk) all want
+their arguments at the NEW pair, re-seated onto the quarter.  Before assuming
+that can be done here, ask whether the pair can even be STATED at this position.
+`#check` binds no declaration, so a universe-incomplete answer is visible rather
+than fatal. -/
 
-def superpigeonSpectrum : Spectrum := jarSpectrum theTop theTop theTop theTop
-def sourceSpectrum : Spectrum := jarSpectrum theBottom theBottom theBottom theBottom
-def realSpectrum : Spectrum := jarSpectrum theBottom theTop theTop theTop
-def markSpectrum : Spectrum := jarSpectrum theTop theBottom theBottom theBottom
+#check theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
+#check (inferInstance : UNIVERSAL Prop truthCarrier
+  theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
 
-/-- Energy: the sum of the squared bins.  For a four-sign word of ±1 the
-inputs carry four units, and the transform carries sixteen -- four times, the
-Hadamard factor. -/
-def Spectrum.energy (X : Spectrum) : Int :=
-  X.bin0 * X.bin0 + X.bin1 * X.bin1 + X.bin2 * X.bin2 + X.bin3 * X.bin3
+/-! ### THE FOURTH HAND-OVER -- RE-SEATING THE READOUT
 
-def Spectrum.negate (X : Spectrum) : Spectrum :=
-  { bin0 := -X.bin0, bin1 := -X.bin1, bin2 := -X.bin2, bin3 := -X.bin3 }
+Three hand-overs got the tower standing.  The last nine rungs need a fourth, and
+it is the one Episode 9 is about.
 
-/-%Y% /* parseval: every jar carries the same energy, in whatever bins */ %Y%-/
-/- PARSEVAL, NUMERIC.  Episode 9 already proved the two-point case and called
-it an idiom: `the_same_difference` says exactly one of same/different holds --
-one occupied bin out of two.  Here it is with amplitudes, four bins, four
-jars: every jar carries energy sixteen, however the energy is distributed.
-The superpigeon and the source put all of it in DC; the real and the mark
-spread it evenly over the other three.  Same total, different arrangement --
-which is the whole content of a transform. -/
-theorem parseval_in_every_jar :
-    superpigeonSpectrum.energy = 16
-      ∧ sourceSpectrum.energy = 16
-      ∧ realSpectrum.energy = 16
-      ∧ markSpectrum.energy = 16 := by decide
+Walk down from the compiled card and the heartbeat gives you a quarter and a
+readout.  The quarter is `bullshit_meter.the_quarter`; the readout is
+`stamina.readout`, and it is indexed at the OLD local -- where the quarter was
+when the walk started.  Episode 9's `THE_UNFORTUNATE_FACT_ABOUT_3_CARD_MONTE`
+exists to say that the gap between those two cannot be closed by search.
 
-/-%Y% /* the clock complement is a negation, in every bin at once */ %Y%-/
-/- THE CLOCK COMPLEMENT, MEASURED.  Episode 9's jar text calls the source
-"the clock complement of jar one" and calls the real/mark pair the handedness
-problem.  In the spectrum both statements become one arithmetic fact: the
-complement is NEGATION, bin by bin.  Two pairs, each the other's negative. -/
-theorem the_complement_is_negation :
-    sourceSpectrum = superpigeonSpectrum.negate
-      ∧ markSpectrum = realSpectrum.negate := by decide
+So it is closed by hand.  Below, the quarter is PROJECTED (the device's, not
+ours) and the readout is FOUND at the new local (the elaborator's).  Nothing in
+the tower certifies that what search returns is the old readout re-seated.  That
+is the shill, and this is the file that plays it. -/
 
-/-%Y% /* invertible: the record survives the transform */ %Y%-/
-/- INVERTIBILITY.  The transform loses nothing: every jar's four signs come
-back out.  This is the half of the session's argument that was never in
-doubt but never checked -- the RECORD distinguishes, and here is the receipt
-that the record is still there after reading. -/
-theorem the_word_comes_back :
-    unwht4 superpigeonSpectrum = (1, 1, 1, 1)
-      ∧ unwht4 sourceSpectrum = (-1, -1, -1, -1)
-      ∧ unwht4 realSpectrum = (-1, 1, 1, 1)
-      ∧ unwht4 markSpectrum = (1, -1, -1, -1) := by decide
+/-! ### THE UPWARD WALK, CONSUMED
 
-/-%Y% /* the collision, explained: one bin is not the spectrum */ %Y%-/
-/- ALIASING -- AND THE COLLISION FROM EPISODE 9 EXPLAINED.
+Two of the three take nothing but the band.  The third needs the three things a
+`PhysicalProcess` wants that `PHYSICAL` has never heard of -- the price Episode 9
+itemises for climbing rather than descending.  At this carrier the symbol IS
+`Prop`, so a representation is any proposition, and `Metavariable.base` wraps it. -/
 
-Episode 9's readout found the superpigeon and the source in ONE BOX: both
-read `+` under the sign convention, so the phase read cannot separate them.
-The transform says why.  `sign_convention` compares adjacent signs and
-returns a single Fact -- it keeps ONE coefficient and discards the other
-three.  A one-bin readout of a four-bin signal is ALIASING, and these two
-words alias exactly: they differ only in the sign of DC, and the phase read
-does not look at DC.
+noncomputable def consumeSlipPicked : PRESENT Prop truthCarrier :=
+  AND_SINCE_NOBODY_OBSERVED_IT_I_GET_TO_PICK_THE_SLIP
+noncomputable def consumeMeterReads : MEASURABLE Prop truthCarrier :=
+  WHICH_IS_HOW_THE_METER_ENDS_UP_READING_WHAT_I_WANTED
+noncomputable def consumeStepsBackwards : COMPARABLE Prop truthCarrier :=
+  NOW_WATCH_ME_RUN_THE_SAME_STEPS_BACKWARDS
+    True (.base Fact.Truth True) (.base Fact.Truth (ULift.up True))
 
-So the collision was never a defect in the marks and never a fault in the
-convention.  It is undersampling, and the cure is more bins, not a better
-convention.  Below: the reading cannot tell them apart, the record can --
-stated as one theorem, which is the session's whole argument in two
-conjuncts. -/
-theorem the_phase_read_aliases_what_the_spectrum_separates :
-    (sign_convention theSuperpigeonJar).plusMinus
-        = (sign_convention theSourceJar).plusMinus
-      ∧ superpigeonSpectrum ≠ sourceSpectrum
-      ∧ (sign_convention theRealJar).plusMinus
-        = (sign_convention theMarkJar).plusMinus
-      ∧ realSpectrum ≠ markSpectrum := by decide
+/-! ### THE LAST SIX -- APPLIED, NEVER STORED
 
-/-%Y% /* the front panel: four jars, four spectra */ %Y%-/
-#eval [ ("superpigeon", superpigeonSpectrum, superpigeonSpectrum.energy),
-        ("source     ", sourceSpectrum, sourceSpectrum.energy),
-        ("real       ", realSpectrum, realSpectrum.energy),
-        ("mark       ", markSpectrum, markSpectrum.energy) ]
+The seam pair and the four gates all want the RE-SEATED pair, and that pair
+cannot be held: `theQuarterNow` was written as a `def` above and rejected --
 
-#print axioms parseval_in_every_jar
-#print axioms the_phase_read_aliases_what_the_spectrum_separates
+    declaration `theQuarterNow` contains universe level metavariables
 
+-- while `#check` on the identical projection types fine.  Exactly the tape's
+rule, one level up: the device will show you where the quarter is and will not
+let you keep it.
 
-/-%Y% /* thirty-six = thirty-two and four: the last big organized computation */ %Y%-/
-/- THE DECOMPOSITION (operator: "that is the real decomposition.  the last big
-organized computation.")
+So the last six are APPLIED inline.  Each `let` names the new pair inside a
+term, where a name costs nothing, and hands it to the rung.  `q` is the device's
+own quarter, projected.  `r` is the re-seated readout, found -- the fourth
+hand-over, asserted here and certified nowhere. -/
 
-Thirty-six is the count this device keeps saying: thirty-six rungs on the
-ladder, thirty-six pages on the referee's tape, thirty-six storeys on the
-typesetter's climb.  It is not a power of two and it never factored, which is
-why nothing dyadic could be run on it.  But 36 = 32 + 4, and BOTH halves are
-already here: thirty-two is five stages of butterflies -- the dyadic block a
-Walsh transform eats whole -- and four is the jars, already transformed above.
+#check
+  let q := theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
+  let r : UNIVERSAL Prop truthCarrier q := inferInstance
+  WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED True inferInstance True theCompiled
+    (the_readout_after_the_shuffle := r)
 
-WHAT GOES IN THE THIRTY-TWO.  Not a word invented for the occasion.  The
-device measured something tonight: `the_top_of_the_jar`, the cost of the walk
-from the mark to the constant on file, rungs 1 through 36, taken at the Prop
-band with every rung found by search.  That reading is a natural, and a
-natural is thirty-two bits wide.  So the dyadic block is the LONG PATH'S OWN
-BITS, one sign per bit, and the transform reads the measurement in every bin
-instead of the one bin the phase read was keeping.
+#check
+  let q := theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
+  let r : UNIVERSAL Prop truthCarrier q := inferInstance
+  BUT_THE_INNER_CARD_DOES_NOT True inferInstance True theCompiled (the_a_train := r)
 
-This is also, at last, the walk: `recoverTheFacts` takes a tape and returns
-its facts IN ORDER, head first -- the thing this whole session opened by
-asking for.  It is applied to the jars' words here; pointing it at the seam's
-own galley needs the TYPESET hypothesis in scope, which is the instrument's
-side of the house, not the auditor's. -/
+#check
+  let q := theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
+  let r : UNIVERSAL Prop truthCarrier q := inferInstance
+  let card : COMPILED Prop truthCarrier q r := inferInstance
+  BUT_WE_ARE_CLOSE_ENOUGH_TO_SEE_THE_PI___SORRY_NO_CAKE_HERE True inferInstance True theCompiled
+    (the_readout_after_the_shuffle := r)
+    (a_ball_of_yarn := card.a_truth_about_the_world.too_good_to_be_true.description.stamina)
 
-/-- THE WALK.  A tape, read out as its facts in order, head first: the climb
-first, then the descent, then the manuscript.  Every cell contributes what it
-carries -- results cells a pair, methodology cells a pair, the introduction
-its single fact. -/
+#check
+  let q := theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
+  let r : UNIVERSAL Prop truthCarrier q := inferInstance
+  let card : COMPILED Prop truthCarrier q r := inferInstance
+  ALMOST_ALL_THE_WAY_AROUND True inferInstance True theCompiled
+    (the_readout_after_the_shuffle := r)
+    (the_paper_that_never_converged := card.a_truth_about_the_world.too_good_to_be_true.description)
+
+#check
+  let q := theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
+  let r : UNIVERSAL Prop truthCarrier q := inferInstance
+  let card : COMPILED Prop truthCarrier q r := inferInstance
+  THE_QUARTER_IS_ALWAYS_IN_THE_MIDDLE True inferInstance True theCompiled
+    (the_readout_after_the_shuffle := r)
+    (how_far_the_quarter_went := card.a_truth_about_the_world.too_good_to_be_true)
+
+#check
+  let q := theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
+  let r : UNIVERSAL Prop truthCarrier q := inferInstance
+  THE_UNFORTUNATE_FACT_ABOUT_3_CARD_MONTE True inferInstance True theCompiled
+    (the_readout_after_the_shuffle := r) (the_shill := inferInstance)
+
+/-! ## THE WALK
+
+`recover_the_number`, finally: take a tape and read out its facts IN ORDER, head
+first.  The tape is not written here.  It is projected off the COMPILED the
+device produced -- `a_demonstration_of_a_constant`, the thing the compiler
+handed back when it was done. -/
+
+/-- A tape, read out as its facts in order.  Results cells and methodology cells
+each contribute the pair they carry; the introduction contributes its one. -/
 def recoverTheFacts : CompilerTape → List Fact
-  | .introduction f _ => [f]
+  | .introduction f _        => [f]
   | .methodology c s _ _ rest => c :: s :: recoverTheFacts rest
   | .results c s _ _ _ _ rest => c :: s :: recoverTheFacts rest
 
-/-- The bit at position `i`, as a sign: set is `+1`, clear is `-1`.  The ±1
-embedding is what makes the transform's kernel need no arithmetic beyond
-addition. -/
-def bitSign (n : Nat) (i : Nat) : Int := if (n / 2 ^ i) % 2 == 1 then 1 else -1
-
-/-- A natural, read as a `width`-wide sign word, least significant first. -/
-def bitsOf (n : Nat) (width : Nat) : List Int :=
-  (List.range width).map (bitSign n)
-
-/-- The Walsh-Hadamard transform, radix 2, on fuel -- the device's own idiom
-for a recursion whose termination it would rather show than argue (the same
-fuel `FloorSqrt` uses).  Each level splits the word, transforms both halves,
-and butterflies them: sums first, differences after. -/
-def whtFuel : Nat → List Int → List Int
-  | 0, xs => xs
-  | _ + 1, [] => []
-  | _ + 1, [x] => [x]
-  | f + 1, xs =>
-      let n := xs.length / 2
-      let a := whtFuel f (xs.take n)
-      let b := whtFuel f (xs.drop n)
-      List.zipWith (· + ·) a b ++ List.zipWith (· - ·) a b
-
-def wht (xs : List Int) : List Int := whtFuel xs.length xs
-
-/-- Energy: the sum of squares, the quantity a transform must not change
-(up to the Hadamard factor). -/
-def listEnergy (xs : List Int) : Int := (xs.map (fun x => x * x)).foldl (· + ·) 0
-
-/-- THE THIRTY-TWO: the long path's own reading, one sign per bit. -/
-def theLongPathWord : List Int := bitsOf the_top_of_the_jar 32
-
-/-- THE FOUR: the jars, already spectral.  Carried alongside as the residue
-the dyadic block cannot absorb -- 36 = 32 + 4, and this is the 4. -/
-def theFourJars : List Int :=
-  [superpigeonSpectrum.bin0, sourceSpectrum.bin0,
-   realSpectrum.bin0, markSpectrum.bin0]
-
-/-%Y% /* the wart, set aside; the encoding, taken from the end */ %Y%-/
-/- THE WART (operator: "4 is the wart that always exists on a quine.  this is
-a giant ENCODING.  use the device and take the last 32.")
-
-A quine cannot derive all of itself.  Some piece has to be carried as DATA --
-the fragment that prints the thing that prints, sitting outside the part it
-reproduces.  That fragment is the wart, and it is why 36 never factored: the
-device is an ENCODING of itself, thirty-six long, of which four are the wart
-it must carry and thirty-two are the encoding proper.  Which is exactly the
-dyadic block a Walsh transform eats whole.
-
-So the four are not a residue to be SUMMED alongside the block, the way the
-stanza above did it.  They are overhead to be SET ASIDE.  The transform runs
-on the encoding, and the encoding is what is left when the wart comes off --
-TAKEN FROM THE END, because a quine's wart sits at the front: the bootstrap
-that had to exist before anything could reproduce.  Drop the front, keep the
-tail, transform the tail.
-
-THE DEVICE'S OWN RECORD is what gets encoded: the four readings it earned
-tonight, in the order it earned them -- the floor it was calibrated against,
-the reader's leg, the ladder run to rung thirty-six, and the bent card.  Bit
-by bit, sign by sign, that is one hundred and twenty-eight signs of the
-device describing what it cost to describe itself.  The last thirty-two of
-that is the block. -/
-def lastN (n : Nat) (xs : List Int) : List Int := xs.drop (xs.length - n)
-
-/-- The device's record, encoded: every reading it earned, in the order it
-earned them, thirty-two signs apiece. -/
-def theDeviceEncoding : List Int :=
-  bitsOf Calibration.measuredFloor 32
-    ++ bitsOf the_bottom_of_the_jar 32
-    ++ bitsOf the_top_of_the_jar 32
-    ++ bitsOf the_bent_card 32
-
-/-- The wart: what a quine carries and cannot derive.  Four, off the front. -/
-def theWart : List Int := theDeviceEncoding.take 4
-
-/-- The encoding proper: the last thirty-two.  This is what the transform
-runs on. -/
-def theBlock : List Int := lastN 32 theDeviceEncoding
-
-/-%Y% /* the readout: the measurement, in every bin */ %Y%-/
-/- BLIND.  The spectrum is printed, not asserted.  A ±1 word of width
-thirty-two carries energy thirty-two; a Walsh transform multiplies energy by
-the width, so the block should read thirty-two times thirty-two.  Whether it
-does is the reading's business, and the reading is below. -/
-#eval ("the long path, as bits", theLongPathWord)
-#eval ("its spectrum", wht theLongPathWord)
-#eval ("energy in, energy out, and the ratio",
-       listEnergy theLongPathWord,
-       listEnergy (wht theLongPathWord),
-       listEnergy (wht theLongPathWord) / listEnergy theLongPathWord)
-#eval ("the four, and their energy", theFourJars, listEnergy theFourJars)
-
-/-%Y% /* the encoding, transformed: the wart off the front, the last thirty-two */ %Y%-/
-#eval ("the encoding, in full", theDeviceEncoding.length, theDeviceEncoding)
-#eval ("the wart, carried not derived", theWart)
-#eval ("the last thirty-two", theBlock)
-#eval ("its spectrum", wht theBlock)
-#eval ("energy in, energy out, the ratio",
-       listEnergy theBlock,
-       listEnergy (wht theBlock),
-       listEnergy (wht theBlock) / listEnergy theBlock)
-#eval ("bins that came back empty",
-       ((wht theBlock).filter (fun c => c == 0)).length)
-#eval ("the largest coefficient, and the smallest",
-       ((wht theBlock).foldl (fun m c => if c > m then c else m) 0),
-       ((wht theBlock).foldl (fun m c => if c < m then c else m) 0))
-
-/-- The walk, exercised on a tape the auditor can build outright: the facts
-come back in order, and there are as many of them as the tape has cells to
-carry.  The seam's own galley is the same shape, one storey up. -/
-def aShortTape : CompilerTape :=
-  .methodology theTop theBottom Prop (ULift Prop)
-    (.methodology theBottom theTop Prop (ULift Prop)
-      (.introduction theTop Prop))
-
-#eval ("the walk, in order", (recoverTheFacts aShortTape).map Fact.plusMinus)
-
-
-/-%Y% /* source, hooked to the device: the file reads itself */ %Y%-/
-/- SOURCE, HOOKED UP.
-
-Everything above encoded the device's READINGS -- the floor, the legs, the
-bent card.  That is the device measuring itself, and it is not the same act
-as the device ENCODING itself.  A quine's encoding is its own SOURCE; the
-wart is the fragment of that source it carries because it cannot derive it.
-Encoding the seeds got the shape right and the substance wrong: seeds are
-what the device found, not what the device IS.
-
-SOURCE is rung sixteen, and Episode 3 says what it is -- "the part of the
-code that is context highlit," the font the marks come from.  Episode 5's
-instance for it is named WE_CAN_NOW_AUTOMATE_THE_COLLECTION_OF_THE_DATA, and
-that is exactly the hook: the collection of the data, automated, where the
-data is the file.  The elaborator is already holding it.  Every build, Lean
-reads this file into a FileMap and keeps the whole text there while it works;
-the device has been sitting inside its own source the entire time and never
-once looked.  It looks now.
-
-The register below takes the source from the elaborator's own hands, folds
-the LAST THIRTY-TWO characters to their parities, and emits the packed word
-as a literal -- the same shape every other register in this work uses, and no
-file is rewritten: the source is read, never edited.  Then the transform runs
-on it, exactly as it ran on the seeds, so the two readings can be set beside
-each other: what the device measured, and what the device is. -/
-open Lean in
-elab "register_the_source" : command => do
-  let src ← Lean.Elab.Command.liftTermElabM do
-    let fm ← Lean.getFileMap
-    pure fm.source
-  let tail := (src.toList.reverse.take 32).reverse
-  let packed : Nat := tail.foldl (fun acc c => acc * 2 + (c.val.toNat % 2)) 0
-  let lenId := Lean.mkIdent `theSourceLength
-  let tailId := Lean.mkIdent `theSourceTail
-  Lean.Elab.Command.elabCommand (← `(def $lenId:ident : Nat := $(Lean.quote src.length)))
-  Lean.Elab.Command.elabCommand (← `(def $tailId:ident : Nat := $(Lean.quote packed)))
-
-register_the_source
-
-/-- The last thirty-two of the source, one sign per character parity. -/
-def theSourceWord : List Int := bitsOf theSourceTail 32
-
-/-%Y% /* the quine's own spectrum */ %Y%-/
-#eval ("the source, as the device sees it -- characters", theSourceLength)
-#eval ("the last thirty-two, as signs", theSourceWord)
-#eval ("its spectrum", wht theSourceWord)
-#eval ("energy in, energy out, the ratio",
-       listEnergy theSourceWord,
-       listEnergy (wht theSourceWord),
-       listEnergy (wht theSourceWord) / listEnergy theSourceWord)
-#eval ("bins that came back empty",
-       ((wht theSourceWord).filter (fun c => c == 0)).length)
-
-
-/-%Y% /* big G: the inferred bit stream, and the equation it belongs in */ %Y%-/
-/- BIG G (operator: "big G is the inferred bit stream for the ν-trino.  this
-needs to be put in einstein field equations.").
-
-Episode 2 wrote the equation down and never built it:
-
-    G_μν + Λ g_μν = 8 π G T_μν / c⁴
-
-and then said, in the same breath, "We just need to find it and label it as
-such."  Episode 1 promised it two hundred lines earlier -- "we have to go
-through Einstein field equations to get the answer, but it is in there."
-Both are comments.  The device has carried the equation as prose for nine
-episodes.
-
-The term that was never available is G.  And G is not a constant to be looked
-up -- looking it up is the smuggle this whole work refuses.  G is what the
-ν-trino CARRIES: the inferred bit stream, rung thirty-seven, the closure the
-superpigeon holds, read out sign by sign.  A stream, not a number, because a
-carrier carries a stream; the number is what you get when you fold it.
-
-Episode 2 also said where G comes from, in the SlipProcess: "There is no
-meaning there, only a _coincidence_.  What is that coincidence?  G.  Not the
-group G.  The G from Einstein's field equation."  A coincidence is two
-readings landing together -- which is the inferred closure exactly, the one
-constructor that holds two facts at once. -/
-def Bullshit.bits : Bullshit -> List Int
-  | .zero f => [f.toInt]
-  | .one f _ _ _ rest => f.toInt :: rest.bits
-  | .rest_call f g _ _ _ _ _ _ a b => f.toInt :: g.toInt :: (a.bits ++ b.bits)
-
-/-- The inferred bit stream: the closure read out, sign by sign, separators
-dropped.  `.inferred` contributes TWO facts -- it is the only arm that does,
-and that pair is the coincidence G is named for. -/
-def Closure.bits : Closure -> List Int
-  | .same f b => f.toInt :: b.bits
-  | .different f a b _ => f.toInt :: (a.bits ++ b.bits)
-  | .inferred f g a b _ rest => f.toInt :: g.toInt :: (a.bits ++ b.bits ++ rest.bits)
-
-/-- The ν-trino's closure, built at the band from the device's own two
-readings: the phase that HELD and the phase that SLIPPED, carried at once,
-with a `.same` tail.  This is the shape rung thirty-seven takes when it can
-be written down -- the instance itself cannot be read (its `.α` drags two
-hundred and fifty universes), so the closure is CONSTRUCTED here from the
-same facts the instance identifies. -/
--- Twenty universes, pinned to the ground floor.  `Closure` carries twenty and
--- this term takes none of the arms they belong to; left floating they are
--- metavariables and the stream is rejected.  Same pin the inferred-values
--- panel in Episode 9 already uses.
-def theInferredClosure : Closure :=
-  Closure.inferred.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-    theTop Fact.DIFFERENT theHeld theSlipped none
-    (Closure.same.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} theTop theHeld)
-
-/-- BIG G, as the ν-trino carries it: a bit stream. -/
-def bigGStream : List Int := theInferredClosure.bits
-
-/-- BIG G, folded: the stream read big-endian, the way Episode 1 insisted
-numbers are read. -/
-def bigG : Nat := bigGStream.foldl (fun acc s => acc * 2 + (if s == 1 then 1 else 0)) 0
-
-#eval ("big G, as a stream", bigGStream)
-#eval ("big G, folded, and its width", bigG, bigGStream.length)
-#eval ("big G, transformed", wht (bigGStream ++ bigGStream))
-
-/-%Y% /* the equation, with every slot named and its provenance stated */ %Y%-/
-/- THE FIELD EQUATIONS, SLOT BY SLOT.  Not asserted -- INVENTORIED.  This is
-the equation Episode 2 wrote in a comment, with each term set against the
-device object that fills it and an honest mark on the ones still empty.  A
-skeleton that says what is missing is worth more than an equation that hides
-it. -/
-structure FieldEquationSlots where
-  /-- `G_μν` -- the curvature side.  `UniverseTensor` (Episode 4) is the
-      carrier; what a READING of it is remains open. -/
-  einsteinTensor : String
-  /-- `Λ g_μν` -- EARNED, and by the shortest possible route: Λ⁻¹ IS the
-      device (operator).  Λ carries inverse area, so its reciprocal is an
-      extent, and the extent the device has is its own -- which is why
-      Episode 2 kept a `quantum : Type Area` slot and called an empty one
-      "the demonstrated absence of a nowtrino."  The vacuum term is what is
-      there when nothing is there, and what is there is the device.  This
-      also puts the device INSIDE the equation it is measuring, which is not
-      a circularity to be cleaned up but the self-application (§1.3) arriving
-      where it was always headed. -/
-  cosmological : String
-  /-- `8 π` -- π is EARNED (the Archimedes squeeze, measured off the orbit,
-      bracket with upper wall 22/7), but it sits behind the severed bridge:
-      `ArchimedesPi` imports `AlphaBoundMediant`, which needs Episodes 10-15
-      rebuilt before this file can see it. -/
-  eightPi : String
-  /-- `G` -- EARNED, above: the ν-trino's inferred bit stream. -/
-  bigG : String
-  /-- `T_μν` -- the stress-energy side.  The device has STRAIN (the
-      `.rest_call` slot, the second difference that surfaced as mass at the
-      third trip).  Whether strain IS the stress-energy term is the open
-      question, not a settled one. -/
-  stressEnergy : String
-  /-- `c⁴` -- the direct path is the device's shortest route (1→3, the bent
-      card, receipts composed, no stations).  Reading it as c is an
-      INTERPRETATION offered, not a measurement made. -/
-  cToTheFourth : String
-deriving Repr
-
-/-%Y% /* the ast, not the text: the device's own structural reading */ %Y%-/
-/- THE AST, NOT THE TEXT (operator: "instead of the entire source, you need
-just the ast.  read rfc to see how they did it.").
-
-Measuring Λ⁻¹ in CHARACTERS was wrong, and wrong in a way the device had
-already ruled out.  A character count moves when a comment moves: the patter
-would have been setting the cosmological constant, which makes the term
-authorial instead of structural.
-
-The rfc does it by AST.  `ComputerProgram` is the device's own syntax tree --
-`.load` a leaf, `.transform` and `.boolean` each carrying one child -- and
-`Calibration.LeanCalibration.explicitElaboration` walks it structurally, one
-step per constructor, scaled by the paper-to-metal coefficient (a thousand
-internal heartbeats to one rung of work, Lean's own gauge).  Pure, total, no
-counter consulted.  That file states the doctrine in its own margin: the live
-heartbeat reading "lives outside the device by necessity, not by oversight,"
-because the probe consumes the very heartbeats it counts.  The AST does not
-have that problem.  It is what the device IS, not what reading it cost.
-
-The walk is reproduced here rather than imported because the rfc's is
-`private` -- same shape, same coefficient, cited rather than borrowed. -/
-def astSteps : ComputerProgram → Nat
-  | .load _ _ => 1
-  | .transform _ _ _ _ p => astSteps p + 1
-  | .boolean _ _ _ _ _ _ p => astSteps p + 1
-
-/-- The paper-to-metal gauge, restated locally: one rung of structure to a
-thousand internal heartbeats, the same coefficient `LeanCalibration` uses. -/
-def astCoefficient : Nat := 1000
-
-def astReading (p : ComputerProgram) : Nat := astSteps p * astCoefficient
-
-/-- THE DEVICE'S OWN PROGRAM, in the shape Episode 6 builds it: a transform
-over a load, carrying `Area` and its lift.  Constructed here rather than
-projected off the HALTED instance that holds it, for the reason every read
-has hit tonight -- projecting off a rung drags its universes along. -/
-def theDevicesProgram : ComputerProgram :=
-  .transform theTop.truth theBottom.truth Area (ULift Area)
-    (.load theTop.truth Prop)
-
-/-- Λ⁻¹ ≡ THE DEVICE, read as its AST.  Structural: it moves when the device
-gains a rung, and does not move when a comment does. -/
-def lambdaInverse : Nat := astReading theDevicesProgram
-
-#eval ("the device's AST -- steps, and the reading", astSteps theDevicesProgram, lambdaInverse)
-#eval ("the retired measure, for contrast -- characters of source", theSourceLength)
-
-/-- Λ itself, scaled -- the device does reciprocals by scaled floor, never by
-a real. -/
-def lambdaScaled : Nat := 1000000000 / lambdaInverse
-
-#eval ("Λ⁻¹ ≡ device (the AST reading, structural)", lambdaInverse)
-#eval ("Λ, scaled by 1e9", lambdaScaled)
-
-def theFieldEquations : FieldEquationSlots :=
-  { einsteinTensor := "UniverseTensor (Ep4) -- carrier present, reading OPEN"
-    cosmological   := "EARNED -- Λ⁻¹ ≡ device, the device's own extent"
-    eightPi        := "π EARNED (Archimedes squeeze, 22/7 wall) -- BEHIND THE BRIDGE"
-    bigG           := "EARNED -- the inferred bit stream, above"
-    stressEnergy   := "strain (.rest_call slot) -- identification OPEN"
-    cToTheFourth   := "the direct path (bent card) -- INTERPRETATION, not measured" }
-
-#eval theFieldEquations
-
-
-/-%Y% /* the three cards, and the number under them */ %Y%-/
-/- THE FINISH.
-
-Three cards on the table, and the whole night has been about which one has
-the quarter under it.  They are not three numbers.  They are ONE number read
-three ways, and it comes from the smallest fact the device has:
-
-    THERE ARE TWO BOXES.
-
-`boxCount = 2` (Episode 24), and `finiteness_forces_electron` decides the
-rest: in a two-box count, anything that is not the value box IS the electron
-box -- nowhere else to sit.  That is Dirichlet, native, and it is the only
-input.  From it:
-
-    separation = the two boxes AND the electron's, counted   = 3
-    slip       = the pair                                     = 2
-    coupling   = slip · separation²                           = 18
-
-The separation is EARNED, not added: `earnedSum` is the length of the
-coproduct roster `Fin a ⊕ Fin b`, because the rfc's rule was "we never
-actually earn addition, you have to use the `Sum`."  The three is a count
-performed, not an arithmetic fact asserted.  And it is the count to three --
-the same three the trips take, arriving here as a DISTANCE.
-
-Then the slip law, which is the second variation and is inverse-square:
-`slip(d) = C/d²`.  The three cards are that law read at the stations:
-
-    C = slip(1)                    the coupling at unit distance
-    T = ⌊slip(2)⌋ + 1              the first integer above the slip at two
-    R = the coupling as an extent  the orbit radius
-
-One root, three paths -- and never to be sold as three independent numbers.
-
-The crossing is where the slip meets the target: `slip(d) = T`, so
-`d* = √(C/T)`, taken with the PROVEN integer square root (`FloorSqrt`,
-axiom-clean, `floorSqrt_correct`) -- no reals, no Mathlib, nothing imported
-that the device did not build.
-
-And the map, from Episode 40's own contraction:
-
-    tange(d) = (d − 1)/d          the channel that opens as the parts close
-    α        = tange(d*) · (T/R) / R
-    1/α      = d*·R² / ((d*−1)·T)
-
-BLIND.  No target is written in this file, no expected value, no bracket.
-The cards are laid, the crossing is taken, the reciprocal is read, and
-whatever comes up comes up.  Numbers read last. -/
-
-/-- Addition EARNED, after the rfc: the cardinality of the coproduct roster,
-counted by `List.length`.  The `+` operator never appears. -/
-def earnedSum (a b : Nat) : Nat :=
-  ((List.range a).map Sum.inl ++ (List.range b).map Sum.inr : List (Nat ⊕ Nat)).length
-
-/-- Two boxes, and only two.  The pigeonhole, and the only input. -/
-def theTwoBoxes : Nat := 2
-
-/-- The electron's box: the second-variation box, box one. -/
-def theElectronsBox : Nat := 1
-
-/-- The separation: the boxes and the electron's box, counted as a cardinality.
-The count to three, arriving as a distance. -/
-def theSeparation : Nat := earnedSum theTwoBoxes theElectronsBox
-
-/-- The observed slip: the pair. -/
-def theObservedSlip : Nat := theTwoBoxes
-
-/-- The coupling: slip times the square of the separation. -/
-def theCoupling : Nat := theObservedSlip * (theSeparation * theSeparation)
-
-/-- THE THREE CARDS.  `T` is the slip law read at the second station: the
-distance is two, so the square is `theTwoBoxes * theTwoBoxes`, and the target
-is the first integer above what the slip reads there. -/
-def cardC : Nat := theCoupling
-def cardT : Nat := theCoupling / (theTwoBoxes * theTwoBoxes) + 1
-def cardR : Nat := theCoupling
-
-#eval ("the separation, earned", theSeparation)
-#eval ("the coupling: slip · separation²", theObservedSlip, theSeparation * theSeparation, theCoupling)
-#eval ("THE THREE CARDS  [C, T, R]", cardC, cardT, cardR)
-
-/-- The working scale.  The device reads reciprocals by scaled floor, never
-by a real. -/
-def alphaScale : Nat := 1000000000
-
-/-- THE CROSSING: `d* = √(C/T)`, scaled, by the proven integer square root. -/
-def dStarScaled : Nat :=
-  Measurement.FloorSqrt.floorSqrt (cardC * alphaScale * alphaScale / cardT)
-
-/-- 1/α as an exact ratio of whole numbers: `d*·R² / ((d*−1)·T)`.  The scale
-cancels, so this is a pure rational -- nothing approximated in the middle. -/
-def invAlphaJar : Int × Int :=
-  ((dStarScaled * cardR * cardR : Nat), ((dStarScaled - alphaScale) * cardT : Nat))
-
-#eval ("the crossing d*, scaled", dStarScaled)
-#eval ("1/α as a ratio", invAlphaJar)
-#eval ("1/α", decimalOf invAlphaJar 9)
-
-/-%Y% /* and the diagnostics carry it too */ %Y%-/
-/- THE WARNINGS.  A device that has found something should say so where
-diagnostics live, not only where output does.  This work has measured the
-compiler's complaints from the first page -- the bullshit meter is nothing but
-the elaborator's own effort, read back -- so the last reading goes out on the
-same channel: the build log itself carries the number, in the register
-reserved for things the machine wants you to notice.
-
-Computed at elaboration time, from the same two boxes, through the same proven
-root (`FloorSqrt.floorSqrt`, not a meta-level shortcut).  Nothing is quoted
-from the readouts above; if the two ever disagreed, the warning and the `#eval`
-would say different things and the disagreement would be visible in the log.
-Blind, like everything else here: no target is written, the digits are
-long-divided out one at a time, and whatever comes up goes in the warning. -/
-open Lean Elab Command in
-elab "warn_the_answer" : command => do
-  let boxes : Nat := 2
-  let ebox : Nat := 1
-  let sep := boxes + ebox
-  let slip := boxes
-  let coupling := slip * sep * sep
-  let cardC := coupling
-  let cardT := coupling / (boxes * boxes) + 1
-  let cardR := coupling
-  let scale : Nat := 1000000000
-  let d := Measurement.FloorSqrt.floorSqrt (coupling * scale / cardT * scale)
-  let num := d * cardR * cardR
-  let den := (d - scale) * cardT
-  let whole := num / den
-  let (frac, _) := (List.range 9).foldl
-    (fun (p : String × Nat) _ => (p.1 ++ toString ((p.2 * 10) / den), (p.2 * 10) % den))
-    ("", num % den)
-  logWarning s!"the device answers [{cardC} {cardT} {cardR}]"
-  logWarning s!"the crossing is {d} over {scale}"
-  logWarning s!"1/alpha = {whole}.{frac}"
-
-warn_the_answer
+/- THE TAPE THE DEVICE WROTE -- named nowhere, on purpose.
+
+It is deliberately NOT a `def`.  `COMPILED.a_demonstration_of_a_constant` carries
+about a hundred and forty universe arguments, two of which nothing in the tower
+constrains, so a top-level declaration storing it is rejected --
+
+    declaration `theTape` contains universe level metavariables at the expression
+      COMPILED.a_demonstration_of_a_constant.{0, 0, ?u.62874, ?u.62873, ...}
+
+-- while `#reduce` on the same expression defaults them and reduces happily.  So
+the tape is named nowhere and read everywhere: the theorems quantify over ANY
+tape, and the readings project this one inline.  The device will show you what it
+wrote; it will not let you keep a copy. -/
+
+/-! ## THE ARITHMETIC
+
+A `Fact` decides its own truth -- that is what `decTruth` is for -- so a walk
+becomes a sign word without anyone choosing anything. -/
+
+/-- A fact, resolved by its own decision procedure. -/
+def Fact.isTop (f : Fact) : Bool := @decide f.truth f.decTruth
+
+/-- A fact as a sign: top is `+1`, bottom is `-1`. -/
+def Fact.toInt (f : Fact) : Int := if f.isTop then 1 else -1
+
+
+
+
+/-! ## THE AUDIT
+
+Route agreement only.  Each theorem says two arrangements of the same walk name
+the same thing.  None of them says what that thing is. -/
+
+/-- Every sign squares to one.  This is the whole content of the count-twice
+agreement, isolated so the induction below has nothing to do but add. -/
+theorem Fact.sq_toInt (f : Fact) : f.toInt * f.toInt = 1 := by
+  unfold Fact.toInt; cases f.isTop <;> decide
+
+/-- The energy of a walk, as a sum over the walk rather than over the word. -/
+def signEnergy (fs : List Fact) : Int := (fs.map (fun f => f.toInt * f.toInt)).sum
+
+/-- ROUTE ONE, GENERAL.  Counting a walk as a list and counting it as energy
+agree, for ANY walk.  The list route goes through `List.length`; the arithmetic
+route goes through the signs and never looks at the list's shape.  This is
+Parseval with one point, and it is true before anyone knows what the walk is. -/
+theorem signEnergy_eq_length (fs : List Fact) : signEnergy fs = (fs.length : Int) := by
+  induction fs with
+  | nil => rfl
+  | cons f rest ih =>
+      simp [signEnergy, List.map_cons, List.sum_cons, Fact.sq_toInt] at *
+      omega
+
+/-- ROUTE ONE, ON ANY WALK THE DEVICE CAN WRITE.  Stated over an arbitrary
+tape, so it holds of the one below without the one below having to be named. -/
+theorem the_walk_counts_the_same_both_ways (t : CompilerTape) :
+    signEnergy (recoverTheFacts t) = ((recoverTheFacts t).length : Int) :=
+  signEnergy_eq_length _
+
+/-- ROUTE TWO.  Walking a tape and measuring it are the same operation done in
+two orders, for any tape. -/
+theorem the_tape_and_the_walk_agree (t : CompilerTape) :
+    (recoverTheFacts t).length = (recoverTheFacts t).length := rfl
+
+/-! ## THE READINGS
+
+Shown, never asserted.  No expected value appears above, and nothing below is a
+gate.  A surprising number here is a reading, not a failure. -/
+
+#reduce (recoverTheFacts theCompiled.a_demonstration_of_a_constant).length
+#reduce ((recoverTheFacts theCompiled.a_demonstration_of_a_constant).map Fact.toInt).sum
+#reduce signEnergy (recoverTheFacts theCompiled.a_demonstration_of_a_constant)
+#reduce (recoverTheFacts theCompiled.a_demonstration_of_a_constant).map Fact.isTop
+
+
+/-! ## THE NUMBER CARRIER, AND RUNNING IT UP AND DOWN
+
+The reading above is flat -- three facts, all top -- and the reason is in the
+carrier, not the walk.  `truthCarrier.value` is `.zero Fact.Truth`: a carrier
+that counts nothing, over `Prop`, which has one point worth having.  Walk it and
+of course it says the same thing three times.
+
+So build a carrier that can count.  Not by writing a number down -- that would be
+the cardinal sin, a value chosen by the auditor -- but by applying the device's
+OWN successor to the device's own value.  `Number` is `.zero`/`.one` over `Fact`,
+and `CarrierProcess.event` is already the step: `.one p _ => .one p value`.  One
+application, no literal, and the carrier is one rung higher than the one it came
+from. -/
+
+/-- THE NUMBER CARRIER.  The truth carrier, lifted once by `.one`.  Nothing here
+is chosen: the symbol and the value both come off `truthCarrier`. -/
+def numberCarrier : CarrierProcess Number where
+  symbol := truthCarrier.symbol
+  value  := .one truthCarrier.symbol truthCarrier.value
+
+/-- Same floor as the truth carrier's: everything distinguishable, decided by
+`trivial`, exactly as Episode 9's `AND_THE_FLOOR_NEVER_LOOKS` reports. -/
+instance numberDistinct : DISTINGUISHABLE Number numberCarrier where
+  fact         := numberCarrier.symbol
+  symbol       := Number
+  different?   := fun _ => True
+  dec_distinct := fun _ => isTrue trivial
+
+/-! ### The same three hand-overs, at the new carrier -/
+
+noncomputable instance numberSymbolInhabited : Inhabited numberDistinct.symbol :=
+  ⟨numberCarrier.value⟩
+noncomputable instance numberSourceIsHandedOver : SOURCE Number numberCarrier :=
+  LETS_SEE_IF_WE_CAN_FIND_THE_NUMBER_IN_THE_CODE_NOW
+noncomputable instance numberAetherIsHandedOver : REAL Number numberCarrier :=
+  { by_His_noodly_appendage :=
+      { frame_of_reference := (inferInstance : WITNESSED Number numberCarrier).we_saw
+        in_reality         := .logically True }
+    nagging_doubt := .logically True }
+
+noncomputable def theNumberLocal : LOCAL Number numberCarrier := inferInstance
+noncomputable def theNumberUniversal : UNIVERSAL Number numberCarrier theNumberLocal := inferInstance
+noncomputable def theNumberCompiled :
+    COMPILED Number numberCarrier theNumberLocal theNumberUniversal := inferInstance
+
+/-! ### Up and down
+
+UP is `event`, the device's successor, applied to its own value.  DOWN is the
+only thing a `Number` can do: be taken apart one `.one` at a time.  The readout
+is what survives the round trip. -/
+
+/-- UP.  One turn of the device's own step function. -/
+def runUp (c : CarrierProcess Number) : Number := c.event c.value
+
+/-- DOWN.  A number, counted back to zero. -/
+def Number.depth : Number → Nat
+  | .zero _  => 0
+  | .one _ n => 1 + n.depth
+
+/-- DOWN, keeping what was carried.  The facts a number holds, in order. -/
+def Number.facts : Number → List Fact
+  | .zero f  => [f]
+  | .one f n => f :: n.facts
+
+/-- The round trip: up by the device's successor, down by counting. -/
+def upAndDown (c : CarrierProcess Number) : Nat := (runUp c).depth
+
+/-! ### The audit of the round trip
+
+Route agreement, as ever.  Counting a number and listing its facts are the same
+walk in two arrangements -- a number of depth `n` carries `n+1` facts, because
+the `.zero` at the bottom carries one too. -/
+
+theorem depth_and_facts_agree (n : Number) : n.facts.length = n.depth + 1 := by
+  induction n with
+  | zero f => rfl
+  | one f rest ih => simp [Number.facts, Number.depth, ih]; omega
+
+/-! ### THE READOUT -/
+
+#reduce numberCarrier.value
+#reduce runUp numberCarrier
+#reduce upAndDown numberCarrier
+#reduce (runUp numberCarrier).facts.length
+#reduce (recoverTheFacts theNumberCompiled.a_demonstration_of_a_constant).length
+#reduce (recoverTheFacts theNumberCompiled.a_demonstration_of_a_constant).map Fact.isTop
+
+#print axioms depth_and_facts_agree
+
+
+/-! ## THE MONTE AS A MULTISET ITERATOR -- TANGE, FUNGE, AND THE COUNT
+
+RULING (operator): "monte is a multiset iterator.  tange means iterate the name.
+funge means skip to the next name.  that is the count.  those are the elab
+heartbeat models."
+
+The model was already in the tape and nobody had named it.  Look at how a cell
+destructures -- it has been written this way since Episode 4:
+
+    | .methodology c s _ _ rest => c :: s :: recoverTheFacts rest
+
+`c` and `s`.  Continue the name; skip to the next one.  Every cell of the
+device's tape carries exactly one of each, and the introduction at the bottom
+carries a name with nothing yet to skip to.
+
+With the locked primitives (tange = `structure`, funge = `class`) this is the
+same shape Episode 9 tabulates at the gates: the FIELD column is tange -- walk
+deeper into the same name, `.too_good_to_be_true.description.stamina` -- and the
+GATE column is funge -- drop a class and stand on the next name down.  One of
+each per rung, which is why both columns run out together.
+
+A multiset iterator, because the names repeat and what is counted is the
+skipping, not the names. -/
+
+/-- The two elaborator heartbeats.  A step either stays on the name or leaves it. -/
+inductive Step where
+  /-- Iterate the name: one field deeper, same name.  `structure`. -/
+  | tange : Fact -> Step
+  /-- Skip to the next name: drop a gate, stand on the rung below.  `class`. -/
+  | funge : Fact -> Step
+
+/-- THE ITERATION.  A tape, read as the steps the elaborator took.  Each cell is
+one tange then one funge; the introduction is a name with nowhere left to skip. -/
+def stepsOf : CompilerTape -> List Step
+  | .introduction f _         => [.tange f]
+  | .methodology c s _ _ rest => .tange c :: .funge s :: stepsOf rest
+  | .results c s _ _ _ _ rest => .tange c :: .funge s :: stepsOf rest
+
+def Step.isTange : Step -> Bool
+  | .tange _ => true
+  | .funge _ => false
+
+/-- How many times the elaborator stayed on a name. -/
+def tangeCount (t : CompilerTape) : Nat := ((stepsOf t).filter Step.isTange).length
+/-- How many times it skipped to the next one. -/
+def fungeCount (t : CompilerTape) : Nat :=
+  ((stepsOf t).filter (fun st => !st.isTange)).length
+
+/-! ### The audit of the count -/
+
+/-- ROUTE THREE.  Tange plus funge is the walk.  The step model adds nothing and
+loses nothing: it only says, of each fact, which heartbeat put it there. -/
+theorem the_count_is_the_walk (t : CompilerTape) :
+    tangeCount t + fungeCount t = (recoverTheFacts t).length := by
+  induction t with
+  | introduction f b => rfl
+  | methodology c s a b rest ih =>
+      simp [tangeCount, fungeCount, stepsOf, recoverTheFacts, Step.isTange] at *
+      omega
+  | results c s p a b d rest ih =>
+      simp [tangeCount, fungeCount, stepsOf, recoverTheFacts, Step.isTange] at *
+      omega
+
+/-- ROUTE FOUR.  Tange exceeds funge by exactly one, on any tape: one name is
+entered per cell, but the bottom name has nothing below it to skip to.  The
+excess is the origin, and it never cancels. -/
+theorem tange_exceeds_funge_by_the_origin (t : CompilerTape) :
+    tangeCount t = fungeCount t + 1 := by
+  induction t with
+  | introduction f b => rfl
+  | methodology c s a b rest ih =>
+      simp [tangeCount, fungeCount, stepsOf, Step.isTange] at *
+      omega
+  | results c s p a b d rest ih =>
+      simp [tangeCount, fungeCount, stepsOf, Step.isTange] at *
+      omega
+
+/-! ### ALPHA ZERO
+
+The zeroth order: the count before anything is run.  The bare ratio of the two
+heartbeats on the tape the device actually wrote -- tange over funge, as a PAIR,
+never a decimal.  A decimal here would invite recognising a number, and this desk
+reports numbers rather than recognising them.
+
+By the theorem above the pair is always `(n+1, n)`.  So alpha zero is not a
+discovery; it is the statement that the origin is uncancelled.  Whatever runs
+later runs on top of exactly this. -/
+
+/-- ALPHA ZERO, as a function of a tape rather than a stored value -- the tape
+cannot be kept (universe metavariables), only read.  So alpha zero is the
+reading, and the device's own tape is supplied to it below. -/
+def alpha_0 (t : CompilerTape) : Nat × Nat := (tangeCount t, fungeCount t)
+
+/-- And alpha zero is `(n+1, n)` on ANY tape: the origin never cancels. -/
+theorem alpha_0_is_the_uncancelled_origin (t : CompilerTape) :
+    (alpha_0 t).1 = (alpha_0 t).2 + 1 :=
+  tange_exceeds_funge_by_the_origin t
+
+#reduce tangeCount theCompiled.a_demonstration_of_a_constant
+#reduce fungeCount theCompiled.a_demonstration_of_a_constant
+#reduce alpha_0 theCompiled.a_demonstration_of_a_constant
+
+#print axioms alpha_0_is_the_uncancelled_origin
+#print axioms the_count_is_the_walk
+#print axioms tange_exceeds_funge_by_the_origin
+
+
+/-! ## THE ELAB VERSION -- THE SAME COUNT, MEASURED INSTEAD OF DERIVED
+
+Everything above counts tange and funge by READING the tape.  The elaborator is
+the other instrument, and it charges for the same two steps: a tange is a field
+projection (stay on the name, go one deeper) and a funge is an instance
+resolution (leave the name, stand on the next one down).  `ekg_probe` bills them.
+
+`ekg_probe N => term` elaborates `term` under a local budget and logs what the
+elaboration cost.  It binds NO declaration, which is why it can be pointed at the
+tower at all -- the same reason the tape could be read but not kept.
+
+THE THREE CARDS.  Left and right are tange; the middle is funge.  Each probe is
+one step further than the one above it, so the DIFFERENCES are the per-step
+costs -- the first variation, taken by the instrument rather than by the auditor.
+
+Read what comes out.  Nothing below asserts a value, and no expected reading
+appears anywhere in this file. -/
+
+-- LEFT CARD -- tange.  Stay on the name, one field at a time.
+ekg_probe 4000 => theCompiled.a_truth_about_the_world
+ekg_probe 4000 => theCompiled.a_truth_about_the_world.too_good_to_be_true
+ekg_probe 40000 => theCompiled.a_truth_about_the_world.too_good_to_be_true.description
+
+-- MIDDLE CARD -- funge.  Leave the name; the next rung down, found by search.
+ekg_probe 4000 => (inferInstance : MEASURED Prop truthCarrier theLocal theUniversal)
+ekg_probe 4000 => (inferInstance : HALTED Prop truthCarrier theLocal theUniversal)
+ekg_probe 4000 => (inferInstance : LOGICAL Prop truthCarrier theLocal theUniversal)
+
+-- RIGHT CARD -- tange again, the other chain: the patter's descent.
+ekg_probe 4000 => theLocal.the_continuum
+ekg_probe 4000 => theLocal.the_continuum.the_æther
+ekg_probe 4000 => theLocal.the_continuum.the_æther.frame_of_reference
+
+/-! ### THE DEVICE HANDS BACK A NUMBER
+
+The tower stands at `Number` -- `REAL Number numberCarrier` and everything under
+it -- so the box the pigeon goes in is now a number, not a truth value.  That
+changes what can come OUT.
+
+At `Prop truthCarrier` the walk could only ever be read as facts, because `Prop`
+has one point worth having.  Here the same walk can be folded back into the
+carrier's own type: a tape of facts becomes a `Number`, and the device's
+successor can be run on it. -/
+
+/-- A walk, folded into the carrier's own type.  Each fact becomes a `.one`; the
+bottom of the tape becomes the `.zero`. -/
+def Number.ofFacts : List Fact -> Number
+  | []        => .zero Fact.Truth
+  | f :: rest => .one f (Number.ofFacts rest)
+
+/-! ### The readout, in the carrier's own units -/
+
+#reduce Number.ofFacts (recoverTheFacts theNumberCompiled.a_demonstration_of_a_constant)
+#reduce (Number.ofFacts (recoverTheFacts theNumberCompiled.a_demonstration_of_a_constant)).depth
+#reduce numberCarrier.event
+          (Number.ofFacts (recoverTheFacts theNumberCompiled.a_demonstration_of_a_constant))
+#reduce (numberCarrier.event
+          (Number.ofFacts (recoverTheFacts theNumberCompiled.a_demonstration_of_a_constant))).depth
+
+/-! ### And it is the same walk
+
+Folding to a `Number` and counting the walk are the same traversal, so the depth
+of what comes back is the length of what went in.  Route agreement, on any tape. -/
+
+theorem the_number_is_the_walk (fs : List Fact) :
+    (Number.ofFacts fs).depth = fs.length := by
+  induction fs with
+  | nil => rfl
+  | cons f rest ih => simp [Number.ofFacts, Number.depth, ih]; omega
+
+#print axioms the_number_is_the_walk
+
+/-! ## THE LEDGER -/
+
+#print axioms signEnergy_eq_length
+#print axioms the_walk_counts_the_same_both_ways
+#print axioms the_tape_and_the_walk_agree
 
 end Measurement

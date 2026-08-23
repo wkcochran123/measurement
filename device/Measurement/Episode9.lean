@@ -811,7 +811,17 @@ theorem THE_DISTANCE_IS_THE_ONE_YOU_HANDED_OVER
 -- proof is `trivial`, because the definition is `fun _ => True`.  This is what
 -- makes the other three cheap: at the bottom, telling things apart is free
 -- because nothing is ever checked.
-set_option linter.unusedSectionVars false in
+--
+-- THIS DECLARATION EMITS A WARNING AND THE WARNING STAYS.  It names twenty-eight
+-- section variables that are in scope here and unused -- the entire band, every
+-- gate from ADMISSIBLE to REAL, carried along and never once consulted to decide
+-- whether two things differ.  That is not linter noise, it is the measurement:
+-- the floor holds up all twenty-nine classes and reads none of them.
+--
+-- There was a `set_option linter.unusedSectionVars false in` on this line.  It
+-- was put there to make the build quiet.  Silencing the check directly above the
+-- theorem that says nothing is ever checked is the bent card, so it is gone, and
+-- the build prints what it found.
 theorem AND_THE_FLOOR_NEVER_LOOKS
     : ∀ s, (SO_TELL_ME___CAN_YOU_TELL_THESE_TWO_APART (Box := Box) (Pigeon := Pigeon)).different? s
   := fun _ => trivial
