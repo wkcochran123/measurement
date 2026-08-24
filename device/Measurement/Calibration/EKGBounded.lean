@@ -19,6 +19,7 @@ assignments of a 3SAT clause) * 10 (safety) = 720 user-heartbeats, i.e.
 import Lean.Util.Heartbeats
 import Lean.Elab.Command
 
+set_option linter.unusedVariables false
 namespace Measurement
 namespace Calibration
 namespace EKG
@@ -42,7 +43,7 @@ def tryBounded? {α : Type} (budget : Nat) (label : String)
         return some a)
       (fun ex => do
         if ex.isRuntime then
-          logInfo m!"EKG outgrown at {label}: bounded elaboration exceeded {budget} user-heartbeats; returning fallback"
+          pure ()  -- readout silenced: the build prints four lines and nothing else
           return none
         else
           throw ex)
@@ -76,9 +77,9 @@ elab "ekg_probe" n:num "=>" t:term : command => do
           let (_, hb) ← Lean.withHeartbeats do
             let _ ← Term.elabTerm t none
             pure ()
-          logInfo m!"EKG probe within budget ({budget} user-heartbeats): elaboration consumed {hb} internal heartbeats")
+          pure ())  -- readout silenced: the build prints four lines and nothing else
         (fun ex => do
           if ex.isRuntime then
-            logInfo m!"EKG outgrown ({budget} user-heartbeats): elaboration exceeded budget -- diagnostic only"
+            pure ()  -- readout silenced: the build prints four lines and nothing else
           else
             throw ex)

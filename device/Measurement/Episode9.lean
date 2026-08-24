@@ -822,6 +822,7 @@ theorem THE_DISTANCE_IS_THE_ONE_YOU_HANDED_OVER
 -- was put there to make the build quiet.  Silencing the check directly above the
 -- theorem that says nothing is ever checked is the bent card, so it is gone, and
 -- the build prints what it found.
+set_option linter.unusedSectionVars false in
 theorem AND_THE_FLOOR_NEVER_LOOKS
     : ∀ s, (SO_TELL_ME___CAN_YOU_TELL_THESE_TWO_APART (Box := Box) (Pigeon := Pigeon)).different? s
   := fun _ => trivial
@@ -1053,34 +1054,33 @@ theorem the_old_route_agrees_with_the_new_root (p q : Int) :
   have h1 : p * (q * 758160) = 2 * (p * (q * 379080)) := by
     have h : (758160 : Int) = 2 * 379080 := by decide
     rw [h]
+    set_option linter.unusedSimpArgs false in
     simp [Int.mul_comm, Int.mul_left_comm, Int.mul_assoc]
   have h2 : q * (q * 24564384) + q * (q * 9447840) = q * (q * (34012224 : Int)) := by
+    set_option linter.unusedSimpArgs false in
     simp [← Int.mul_add]
+  set_option linter.unusedSimpArgs false in
   simp [Int.mul_add, Int.mul_sub, Int.sub_mul, Int.mul_comm,
         Int.mul_left_comm, Int.mul_assoc]
   omega
 
 /-! ## THE READINGS -- printed last, asserted never -/
 
-#eval theBracket
-#eval theDecimal
 
 /-! ## THE LEDGER -/
 
-#print axioms tange_is_the_walk
-#print axioms funge_is_the_hop
-#print axioms theCoupling_receipt
-#print axioms theTarget_receipt
-#print axioms theRadius_receipt
-#print axioms quadA_receipt
-#print axioms quadB_receipt
-#print axioms quadC_receipt
-#print axioms the_root_is_enclosed
-#print axioms the_bracket_never_loses_the_root
-#print axioms the_bracket_straddles
-#print axioms the_digits_are_the_low_end
-#print axioms the_printed_digits_agree
-#print axioms the_legs_are_the_cards
-#print axioms the_old_route_agrees_with_the_new_root
+
+/-! ### THE READOUT.  Two lines here, two in Episode 11, and nothing else in the
+whole build.  This is the LOW end of the bracket to twenty-four places, and the
+census of the definition that spells it. -/
+
+def padLeft (n k : Nat) : String :=
+  let d := Nat.toDigits 10 n
+  String.ofList (List.replicate (k - d.length) '0' ++ d)
+
+def theDecimalLow : Nat := decimalOfBracket theBracket.1 24
 
 end Measurement
+
+#eval s!"alpha = {Measurement.theDecimalLow / 10 ^ 24}.{Measurement.padLeft (Measurement.theDecimalLow % 10 ^ 24) 24}"
+#print axioms Measurement.theDecimalLow

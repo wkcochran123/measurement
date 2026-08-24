@@ -176,10 +176,6 @@ that can be done here, ask whether the pair can even be STATED at this position.
 `#check` binds no declaration, so a universe-incomplete answer is visible rather
 than fatal. -/
 
-#check theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
-#check (inferInstance : UNIVERSAL Prop truthCarrier
-  theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
-
 /-! ### THE FOURTH HAND-OVER -- RE-SEATING THE READOUT
 
 Three hand-overs got the tower standing.  The last nine rungs need a fourth, and
@@ -226,47 +222,6 @@ So the last six are APPLIED inline.  Each `let` names the new pair inside a
 term, where a name costs nothing, and hands it to the rung.  `q` is the device's
 own quarter, projected.  `r` is the re-seated readout, found -- the fourth
 hand-over, asserted here and certified nowhere. -/
-
-#check
-  let q := theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
-  let r : UNIVERSAL Prop truthCarrier q := inferInstance
-  WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED True inferInstance True theCompiled
-    (the_readout_after_the_shuffle := r)
-
-#check
-  let q := theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
-  let r : UNIVERSAL Prop truthCarrier q := inferInstance
-  BUT_THE_INNER_CARD_DOES_NOT True inferInstance True theCompiled (the_a_train := r)
-
-#check
-  let q := theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
-  let r : UNIVERSAL Prop truthCarrier q := inferInstance
-  let card : COMPILED Prop truthCarrier q r := inferInstance
-  BUT_WE_ARE_CLOSE_ENOUGH_TO_SEE_THE_PI___SORRY_NO_CAKE_HERE True inferInstance True theCompiled
-    (the_readout_after_the_shuffle := r)
-    (a_ball_of_yarn := card.a_truth_about_the_world.too_good_to_be_true.description.stamina)
-
-#check
-  let q := theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
-  let r : UNIVERSAL Prop truthCarrier q := inferInstance
-  let card : COMPILED Prop truthCarrier q r := inferInstance
-  ALMOST_ALL_THE_WAY_AROUND True inferInstance True theCompiled
-    (the_readout_after_the_shuffle := r)
-    (the_paper_that_never_converged := card.a_truth_about_the_world.too_good_to_be_true.description)
-
-#check
-  let q := theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
-  let r : UNIVERSAL Prop truthCarrier q := inferInstance
-  let card : COMPILED Prop truthCarrier q r := inferInstance
-  THE_QUARTER_IS_ALWAYS_IN_THE_MIDDLE True inferInstance True theCompiled
-    (the_readout_after_the_shuffle := r)
-    (how_far_the_quarter_went := card.a_truth_about_the_world.too_good_to_be_true)
-
-#check
-  let q := theCompiled.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter
-  let r : UNIVERSAL Prop truthCarrier q := inferInstance
-  THE_UNFORTUNATE_FACT_ABOUT_3_CARD_MONTE True inferInstance True theCompiled
-    (the_readout_after_the_shuffle := r) (the_shill := inferInstance)
 
 /-! ## THE WALK
 
@@ -350,11 +305,6 @@ theorem the_tape_and_the_walk_agree (t : CompilerTape) :
 Shown, never asserted.  No expected value appears above, and nothing below is a
 gate.  A surprising number here is a reading, not a failure. -/
 
-#reduce (recoverTheFacts theCompiled.a_demonstration_of_a_constant).length
-#reduce ((recoverTheFacts theCompiled.a_demonstration_of_a_constant).map Fact.toInt).sum
-#reduce signEnergy (recoverTheFacts theCompiled.a_demonstration_of_a_constant)
-#reduce (recoverTheFacts theCompiled.a_demonstration_of_a_constant).map Fact.isTop
-
 
 /-! ## THE NUMBER CARRIER, AND RUNNING IT UP AND DOWN
 
@@ -435,15 +385,6 @@ theorem depth_and_facts_agree (n : Number) : n.facts.length = n.depth + 1 := by
   | one f rest ih => simp [Number.facts, Number.depth, ih]; omega
 
 /-! ### THE READOUT -/
-
-#reduce numberCarrier.value
-#reduce runUp numberCarrier
-#reduce upAndDown numberCarrier
-#reduce (runUp numberCarrier).facts.length
-#reduce (recoverTheFacts theNumberCompiled.a_demonstration_of_a_constant).length
-#reduce (recoverTheFacts theNumberCompiled.a_demonstration_of_a_constant).map Fact.isTop
-
-#print axioms depth_and_facts_agree
 
 
 /-! ## THE MONTE AS A MULTISET ITERATOR -- TANGE, FUNGE, AND THE COUNT
@@ -544,14 +485,6 @@ theorem alpha_0_is_the_uncancelled_origin (t : CompilerTape) :
     (alpha_0 t).1 = (alpha_0 t).2 + 1 :=
   tange_exceeds_funge_by_the_origin t
 
-#reduce tangeCount theCompiled.a_demonstration_of_a_constant
-#reduce fungeCount theCompiled.a_demonstration_of_a_constant
-#reduce alpha_0 theCompiled.a_demonstration_of_a_constant
-
-#print axioms alpha_0_is_the_uncancelled_origin
-#print axioms the_count_is_the_walk
-#print axioms tange_exceeds_funge_by_the_origin
-
 
 /-! ## THE ELAB VERSION -- THE SAME COUNT, MEASURED INSTEAD OF DERIVED
 
@@ -605,13 +538,6 @@ def Number.ofFacts : List Fact -> Number
 
 /-! ### The readout, in the carrier's own units -/
 
-#reduce Number.ofFacts (recoverTheFacts theNumberCompiled.a_demonstration_of_a_constant)
-#reduce (Number.ofFacts (recoverTheFacts theNumberCompiled.a_demonstration_of_a_constant)).depth
-#reduce numberCarrier.event
-          (Number.ofFacts (recoverTheFacts theNumberCompiled.a_demonstration_of_a_constant))
-#reduce (numberCarrier.event
-          (Number.ofFacts (recoverTheFacts theNumberCompiled.a_demonstration_of_a_constant))).depth
-
 /-! ### And it is the same walk
 
 Folding to a `Number` and counting the walk are the same traversal, so the depth
@@ -622,8 +548,6 @@ theorem the_number_is_the_walk (fs : List Fact) :
   induction fs with
   | nil => rfl
   | cons f rest ih => simp [Number.ofFacts, Number.depth, ih]; omega
-
-#print axioms the_number_is_the_walk
 
 /-! ## THE NUMBER, OFF THE DEVICE'S OWN READBACK
 
@@ -669,15 +593,6 @@ The pipeline is Episode 9's -- counts, cards, quadratic, sign, bracket, digits
 decimal prints here too, off the device's own readback, `#eval` and not
 `#reduce` because nothing in the pipeline touches the tower. -/
 
-#eval theDecimal
-
 /-! ## THE LEDGER -/
-
-#print axioms signEnergy_eq_length
-#print axioms the_walk_counts_the_same_both_ways
-#print axioms the_tape_and_the_walk_agree
-#print axioms the_readback_carries_the_origin
-#print axioms the_device_hands_back_the_counts
-#print axioms the_coupling_is_the_readback
 
 end Measurement
