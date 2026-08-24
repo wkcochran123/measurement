@@ -1,4 +1,4 @@
-import Measurement.SelfApplication
+import Measurement.SupportingMeasurements.SelfApplication
 
 /-! # ResidueUAT — the acceptance test: residue carried across == resulting residue.
 Operator: "that is UAT. verify the residue numbers that have to be carried across the computation

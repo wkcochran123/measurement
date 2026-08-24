@@ -76,7 +76,7 @@ FENCES (printed, per the walls all three chairs hold):
   order-freedom. Whether that deserves the word "random" is for the books.
 -/
 import Measurement.Episode16
-import Measurement.Apparatus
+import Measurement.SupportingMeasurements.Apparatus
 
 set_option maxHeartbeats 4000000
 

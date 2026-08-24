@@ -1,5 +1,5 @@
 import Measurement.Episode40
-import Measurement.CycleOfThree
+import Measurement.SupportingMeasurements.CycleOfThree
 import Measurement.Calibration.BIAS_____
 
 /-

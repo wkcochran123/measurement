@@ -1,4 +1,4 @@
-import Measurement.SelfApplication
+import Measurement.SupportingMeasurements.SelfApplication
 
 /-! # AlphaSelfEnergyFixpoint — Point 1 / Point 9 fix probe (operator "go for fixing", 2026-07-11).
 

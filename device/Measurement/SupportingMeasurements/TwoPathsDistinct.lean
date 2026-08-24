@@ -20,7 +20,7 @@
 -- nine-digit agreement — it PINS the agreement exactly (word-for-word
 -- with the count-3 floor discipline) while refuting the collapse.
 
-import Measurement.CalibrationTwoPaths
+import Measurement.SupportingMeasurements.CalibrationTwoPaths
 
 namespace Measurement.TwoPathsDistinct
 

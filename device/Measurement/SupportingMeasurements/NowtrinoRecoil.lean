@@ -1,6 +1,6 @@
-import Measurement.DistanceULift
-import Measurement.NowtrinoProjection
-import Measurement.CountedTriangle
+import Measurement.SupportingMeasurements.DistanceULift
+import Measurement.SupportingMeasurements.NowtrinoProjection
+import Measurement.SupportingMeasurements.CountedTriangle
 
 /-! # NowtrinoRecoil — the recoil across the gap is truncated:
 values return, addresses do not.

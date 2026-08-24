@@ -1,5 +1,5 @@
 import Measurement.Episode15
-import Measurement.DivisionNeedle
+import Measurement.SupportingMeasurements.DivisionNeedle
 
 /-! # DivisionPointer — the function-pointer division interface (task-1 trunk, 16+ part).
 

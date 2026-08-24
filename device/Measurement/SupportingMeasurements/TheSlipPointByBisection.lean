@@ -23,7 +23,7 @@
 -- that the bracket below is the jar.  It is the slip point, found by bisection,
 -- reported with the bracket it stopped in.
 
-import Measurement.TheBoxesCounted
+import Measurement.SupportingMeasurements.TheBoxesCounted
 
 namespace Measurement.TheSlipPointByBisection
 

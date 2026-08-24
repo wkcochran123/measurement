@@ -10,7 +10,7 @@
 -- Nothing here edits Episode 9.  The tie is a theorem, not an edit.
 
 import Measurement.Episode4
-import Measurement.TheReadPathTwin
+import Measurement.SupportingMeasurements.TheReadPathTwin
 
 namespace Measurement.TheTwinTiedToTheTrips
 

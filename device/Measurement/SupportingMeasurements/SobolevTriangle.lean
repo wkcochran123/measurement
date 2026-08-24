@@ -1,4 +1,4 @@
-import Measurement.EntropyLadder
+import Measurement.SupportingMeasurements.EntropyLadder
 
 /-! # SobolevTriangle — the triangle inequality in the Sobolev reading, and
 the lengthening of the triangle under entropic computation.

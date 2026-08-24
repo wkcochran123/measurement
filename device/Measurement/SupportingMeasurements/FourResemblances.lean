@@ -1,8 +1,8 @@
-import Measurement.TwoSlipRecursion
-import Measurement.CycleOfThree
-import Measurement.ArchimedesPi
-import Measurement.FinitenessFence
-import Measurement.SelfEnergyGibbs
+import Measurement.SupportingMeasurements.TwoSlipRecursion
+import Measurement.SupportingMeasurements.CycleOfThree
+import Measurement.SupportingMeasurements.ArchimedesPi
+import Measurement.SupportingMeasurements.FinitenessFence
+import Measurement.SupportingMeasurements.SelfEnergyGibbs
 
 /-! # FourResemblances — task 4: the residue's four resemblances, earned at their TRUE tiers.
 

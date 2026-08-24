@@ -1,4 +1,4 @@
-import Measurement.TwoDescriptions
+import Measurement.SupportingMeasurements.TwoDescriptions
 import Lean.Util.Heartbeats
 import Lean.Elab.Command
 

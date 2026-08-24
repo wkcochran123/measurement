@@ -1,4 +1,4 @@
-import Measurement.WeakDiracGalerkin
+import Measurement.SupportingMeasurements.WeakDiracGalerkin
 
 /-! # CountedTriangle — the triangle inequality over counted lengths, and
 what iterated tensor passes do to the reading.

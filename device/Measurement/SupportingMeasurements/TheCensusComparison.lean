@@ -29,8 +29,8 @@
 -- the record is NOT ESTABLISHED -- which is not the same word as failed.
 
 import Measurement.Episode9
-import Measurement.TheReadPathTwin
-import Measurement.TheTwinTiedToTheTrips
+import Measurement.SupportingMeasurements.TheReadPathTwin
+import Measurement.SupportingMeasurements.TheTwinTiedToTheTrips
 
 /-%Y% /* the derivation side: the story's own rungs, named and elaborated */ %Y%-/
 #print axioms Measurement.POW

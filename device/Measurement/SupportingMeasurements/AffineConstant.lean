@@ -1,9 +1,9 @@
 import Measurement.Episode40
-import Measurement.AlphaBoundMediant
-import Measurement.AlphaBoundCountToThree
-import Measurement.NowtrinoProjection
-import Measurement.SelfApplication
-import Measurement.ArchimedesPi
+import Measurement.SupportingMeasurements.AlphaBoundMediant
+import Measurement.SupportingMeasurements.AlphaBoundCountToThree
+import Measurement.SupportingMeasurements.NowtrinoProjection
+import Measurement.SupportingMeasurements.SelfApplication
+import Measurement.SupportingMeasurements.ArchimedesPi
 
 /-! # AffineConstant — the SPEC-level interface wiring the four gauges to the verify API.
 

@@ -1,4 +1,4 @@
-import Measurement.AlphaBoundMediant
+import Measurement.SupportingMeasurements.AlphaBoundMediant
 
 /-! # GridDerivation — task 2: the grid 128/48, derives-cold-or-fails-in-public.
 

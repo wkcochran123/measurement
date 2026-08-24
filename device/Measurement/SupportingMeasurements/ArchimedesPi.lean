@@ -1,6 +1,6 @@
-import Measurement.AlphaBoundMediant
+import Measurement.SupportingMeasurements.AlphaBoundMediant
 import Measurement.Episode32
-import Measurement.FloorSqrt
+import Measurement.SupportingMeasurements.FloorSqrt
 
 /-! # ArchimedesPi — π MEASURED off the device's own orbit circle (the squeeze of regular polygons).
 

@@ -1,6 +1,6 @@
-import Measurement.SelfApplication
+import Measurement.SupportingMeasurements.SelfApplication
 import Measurement.Episode27
-import Measurement.AlphaBFGS
+import Measurement.SupportingMeasurements.AlphaBFGS
 
 /-! # TwoSlipRecursion — the second variation IS a second difference: three readings, two slip points.
 

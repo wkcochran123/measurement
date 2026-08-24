@@ -1,4 +1,4 @@
-import Measurement.WeakDiracGalerkin
+import Measurement.SupportingMeasurements.WeakDiracGalerkin
 
 /-! # ConditionEntropy — the conditioning of the discrete Galerkin operator,
 read finitely, and its entropic growth.

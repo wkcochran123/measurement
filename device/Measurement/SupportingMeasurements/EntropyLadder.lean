@@ -1,4 +1,4 @@
-import Measurement.ConditionEntropy
+import Measurement.SupportingMeasurements.ConditionEntropy
 
 /-! # EntropyLadder — the entropy of the spectrum's distribution, increasing.
 

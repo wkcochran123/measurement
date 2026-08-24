@@ -1,4 +1,4 @@
-import Measurement.ConditionEntropy
+import Measurement.SupportingMeasurements.ConditionEntropy
 
 /-! # SkeelCondition — the Skeel condition number of the ladder, exactly.
 

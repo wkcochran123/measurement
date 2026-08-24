@@ -1,13 +1,13 @@
-import Measurement.AlphaBFGS
-import Measurement.AlphaBoundCountToThree
-import Measurement.AlphaBoundMediant
-import Measurement.ArchimedesPi
+import Measurement.SupportingMeasurements.AlphaBFGS
+import Measurement.SupportingMeasurements.AlphaBoundCountToThree
+import Measurement.SupportingMeasurements.AlphaBoundMediant
+import Measurement.SupportingMeasurements.ArchimedesPi
 -- ⚑ SITE 5 RESTORED (2026-07-26, operator "fix now" + BM routing): the stale
 -- de-selection refactor of `direct_1to3` was repaired (one binder type annotation on
 -- `jarClass`'s rho lambda — the smallest diff, preserving the intended de-selection);
 -- `jar_readout_drift_immune` re-graded [propext], sorryAx GONE. History of the catch
 -- kept in the git record + handoffs (turns 783-785).
-import Measurement.CalibrationTwoPaths
+import Measurement.SupportingMeasurements.CalibrationTwoPaths
 
 /-! # SelfFoundingAudit — stone 2a: VERIFY, don't edit (the read-only per-site prints).
 

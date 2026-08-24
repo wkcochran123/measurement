@@ -41,7 +41,7 @@ dimensions. Scope is the electron model; the no-name-bridge stands.
 -/
 import Measurement.Episode6
 import Measurement.Episode32
-import Measurement.SelfEnergyGibbs
+import Measurement.SupportingMeasurements.SelfEnergyGibbs
 
 namespace Measurement.ForceCountSide
 
