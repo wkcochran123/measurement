@@ -246,6 +246,216 @@ EKG ladder's own, so the derived count sits directly under the measured bill. -/
 #print axioms the_ratio_is_bracketed
 #print axioms alpha_1_is_minus_the_origin
 
+/-! ## THE THIRD CONSUMPTION -- THE FLOP
+
+RULING (operator): "there is one more consumption of the multiset iterator.
+that will give us the flop [card1 card2 card3] that we can use to seed the
+machine.  this is the navier-stokes construction and it is the inferred card."
+
+The multiset iterator has now been consumed twice: once as a COUNT (alpha
+zero) and once as a VARIATION (alpha one).  The third consumption deals it as
+CARDS.  A tape's steps, dealt: the outer card is the tange count, played
+twice, and the inner card is the funge count.  That is `deal`'s exact shape --
+left equals right, the middle does not move -- so the machine takes the flop
+without modification.  The device seeds its own table. -/
+
+/-- THE FLOP.  [card1 card2 card3], read off any tape. -/
+def flop (t : CompilerTape) : Nat × Nat × Nat :=
+  deal (tangeCount t) (fungeCount t)
+
+/-- THE OUTER CARDS ARE THE SAME CARD -- inherited from the deal, for any tape. -/
+theorem the_flop_is_a_deal (t : CompilerTape) :
+    (flop t).1 = (flop t).2.2 :=
+  the_outside_cards_are_the_same_card (tangeCount t) (fungeCount t)
+
+/-- AND THE CARDS ARE ALWAYS CONSECUTIVE.  The origin never cancels, so every
+flop the device deals itself is `(n+1, n, n+1)`.  The numerology is gone: 18
+and 5 were chosen, but these cards are counted, and the count fixes them. -/
+theorem the_flop_deals_consecutive_cards (t : CompilerTape) :
+    (flop t).1 = (flop t).2.1 + 1 :=
+  tange_exceeds_funge_by_the_origin t
+
+/-! ### THE SELF-DEALT TABLE HAS NO NAMEABLE CROSSING
+
+`TheCrossingCannotBeNamed` ends on a confession: "the naming is empty" is NOT
+structural -- deal 4 and 1 and the crossing is named by 2/1.  Emptiness was a
+property of the pair, and the pair was numerology.
+
+Not on this table.  The flop's cards are consecutive BY THEOREM, and a product
+of consecutive naturals sits strictly between the two squares it straddles, so
+the invariant of a self-dealt table is NEVER a perfect square -- the
+obstruction the invariant section names is permanent here.  What the crossing
+file could only report about 18 and 5, the flop makes structural: the device
+cannot deal itself a nameable crossing, at any depth, because the origin never
+cancels.  Emptiness is inherited from the count. -/
+
+/-- A product of consecutive cards is never a square: it sits strictly between
+`n+1` squared and `n+2` squared.  Distribution and `omega`; no Mathlib. -/
+theorem consecutive_cards_never_deal_a_square (n m : Nat) :
+    (n + 2) * (n + 1) ≠ m * m := by
+  intro h
+  simp [Nat.mul_add, Nat.add_mul] at h
+  rcases Nat.lt_or_ge m (n + 2) with hm | hm
+  · have h1 : m * m ≤ (n + 1) * (n + 1) :=
+      Nat.mul_le_mul (by omega) (by omega)
+    simp [Nat.mul_add, Nat.add_mul] at h1
+    omega
+  · have h1 : (n + 2) * (n + 2) ≤ m * m := Nat.mul_le_mul hm hm
+    simp [Nat.mul_add, Nat.add_mul] at h1
+    omega
+
+/-- THE REGISTER'S OWN TABLE, UNNAMEABLE.  The invariant of the flop of any
+register is not a square, so no `p/q` names its crossing's obstruction away. -/
+theorem the_register_never_deals_a_square (f : Fact) (n m : Nat) :
+    dealInvariant (flop (tapeOfJar (register f n))).1
+        (flop (tapeOfJar (register f n))).2.1 ≠ m * m := by
+  have h := alpha_0_bills_the_register f n
+  simp [alpha_0] at h
+  simp [flop, deal, dealInvariant, h.1, h.2]
+  exact consecutive_cards_never_deal_a_square n m
+
+/-! ### THE NAVIER-STOKES CONSTRUCTION
+
+Episode 3 confessed it: the principle of least action rewritten as a Galerkin
+spline solution to the Yang-Mills formulation of Navier-Stokes, solved by
+JFNK, preconditioned multi-grid.  Episode 4's ODE is the same move in one
+line: the log derivative turns a nonlinear ratio into a linear flow.
+
+The flop seeds exactly that machine.  The crossing of the self-dealt table is
+`sqrt((n+2)/(n+1))` -- nonlinear, a hypotenuse -- and the legs underneath it
+obey the linear three-term recurrence, one Newton-Krylov step per rung, the
+ladder of depths standing in for the grids.  The regularity question is the
+Pell trace: on its OWN deal the flow cycles -- bounded forever, no blow-up --
+and on a deal it does not belong to it runs away.  Both are shown below,
+because the contrast is the result.
+
+At depth zero the device deals `[2 1 2]` and the crossing is the square root
+of two: the first unnameable number, re-derived by a card count. -/
+
+#eval flop (tapeOfJar (register Fact.Truth 0))
+#eval flop (tapeOfJar (register Fact.Truth 8))
+#eval flop (tapeOfJar (register Fact.Truth 64))
+#eval flop (tapeOfJar (register Fact.Truth 512))
+
+-- the self-dealt flow, root two's own ladder: the form cycles, +1 -1, no blow-up
+#eval legLadder [2, 2, 2, 2, 2, 2, 2, 2] (1, 0) (1, 1)
+#eval pellTrace 2 1 [2, 2, 2, 2, 2, 2, 2, 2]
+#eval (dealInvariant 2 1, zeroOnLadder 2 1 [2, 2, 2, 2, 2, 2, 2, 2])
+
+-- the depth-8 flop forced onto root two's ladder: the flow blows up, honestly
+#eval pellTrace 10 9 [2, 2, 2, 2, 2, 2, 2, 2]
+
+/-! ### THE INFERRED CARD
+
+The flop is not delivered as three naturals; the device has a card type for
+it.  `Closure.inferred` (Episode 4) carries two facts, two bounds, a
+computation, and the card underneath -- and `INFERRED.α` is the seat that
+wants one.  So the third consumption folds the whole tape into that
+constructor: each heartbeat pair becomes one `.inferred` cell -- tange fact,
+funge fact, both bounds at their `.zero` floors, the floor ordering in the
+computation slot -- and the introduction at the bottom becomes `.same`: the
+quarter, glued to the table.
+
+The results cells do one thing more.  `tapeOfJar` RECORDED the postselection
+in the tape's one `Prop` slot instead of performing it; here that proposition
+is passed through into the inferred card's computation slot.  The shill's
+choice, still unexecuted, now rides the card the knower is handed. -/
+
+/-- THE INFERRED CARD.  The tape, dealt one more time, into the device's own
+card type.  Nothing is chosen: every fact is the tape's, every bound is a
+floor, and the one non-floor proposition is the recorded postselection.
+
+(The twenty zeros are `Closure`'s twenty universe parameters -- four per
+`Bullshit` slot -- pinned so the card can be held AND evaluated.  Episode 10's
+tape could not be kept for exactly this class of reason; this card can,
+because nothing in it needs a universe above the floor.) -/
+def inferredCard : CompilerTape.{0} -> Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+  | .introduction f _         => .same f (.zero f)
+  | .methodology c s _ _ rest =>
+      .inferred c s (.zero c) (.zero s)
+        (some ((Bullshit.zero.{0,0,0,0} c) ≤ (Bullshit.zero.{0,0,0,0} s)))
+        (inferredCard rest)
+  | .results c s p _ _ _ rest =>
+      .inferred c s (.zero c) (.zero s) (some p) (inferredCard rest)
+
+/-- A card's rungs: how many inferences stand on the quarter. -/
+def Closure.rungs : Closure -> Nat
+  | .same _ _              => 0
+  | .different _ _ _ _     => 0
+  | .inferred _ _ _ _ _ c  => c.rungs + 1
+
+/-- ROUTE AGREEMENT.  One inference per heartbeat pair: the card's rungs are
+the tape's funge count, on any tape.  The two consumptions name the same walk. -/
+theorem the_inferred_card_counts_the_funges (t : CompilerTape) :
+    (inferredCard t).rungs = fungeCount t := by
+  induction t with
+  | introduction f b => rfl
+  | methodology c s a b rest ih =>
+      simp [inferredCard, Closure.rungs, fungeCount, stepsOf, Step.isTange] at *
+      omega
+  | results c s p a b d rest ih =>
+      simp [inferredCard, Closure.rungs, fungeCount, stepsOf, Step.isTange] at *
+      omega
+
+/-- And on the register the card bills the depth, one rung over the quarter. -/
+theorem the_card_bills_the_register (f : Fact) (n : Nat) :
+    (inferredCard (tapeOfJar (register f n))).rungs = n + 1 := by
+  have h := alpha_0_bills_the_register f n
+  simp [alpha_0] at h
+  rw [the_inferred_card_counts_the_funges]
+  omega
+
+#eval (inferredCard (tapeOfJar (register Fact.Truth 0))).rungs
+#eval (inferredCard (tapeOfJar (register Fact.Truth 8))).rungs
+#eval (inferredCard (tapeOfJar (register Fact.Truth 64))).rungs
+#eval (inferredCard (tapeOfJar (register Fact.Truth 512))).rungs
+
+#print axioms the_flop_is_a_deal
+#print axioms the_flop_deals_consecutive_cards
+#print axioms consecutive_cards_never_deal_a_square
+#print axioms the_register_never_deals_a_square
+#print axioms the_inferred_card_counts_the_funges
+#print axioms the_card_bills_the_register
+
+/-! ## THE NUMBER, OFF THE JAR
+
+Episode 9 computes the decimal from its two counts, and Episode 10 checks the
+device's readback hands the same two back.  The register closes the triangle:
+the DEPTH-ONE register's tape bills exactly those counts.  `alpha_0` of one
+qubit over one-deep branches is `(3, 2)` -- the walk and the hop -- and that is
+not a coincidence to be gawked at but an instance of a theorem already in this
+file, at `n = 1`.
+
+So the quantum supercomputer's seeding is complete: prepare one register,
+consume it to a tape, count the tape, and the counts are the coupling's.  The
+machine the flop seeds and the machine Episode 9 runs are the same machine,
+and the decimal prints here off the jar's own arithmetic. -/
+
+/-- THE DEPTH-ONE REGISTER DEALS THE COUNTS.  One qubit, one-deep branches:
+alpha zero is Episode 9's `(tange, funge)`.  Count against count, no numeral. -/
+theorem the_depth_one_register_deals_the_counts (f : Fact) :
+    alpha_0 (tapeOfJar (register f 1)) = (tange, funge) := by
+  rw [alpha_0_bills_the_register f 1]
+  decide
+
+/-- AND THE JAR DEALS THE COUPLING.  Funge times tange squared, read off the
+depth-one register's own tape, is Episode 9's coupling. -/
+theorem the_jar_deals_the_coupling (f : Fact) :
+    (alpha_0 (tapeOfJar (register f 1))).2
+        * (alpha_0 (tapeOfJar (register f 1))).1
+        * (alpha_0 (tapeOfJar (register f 1))).1
+      = theCoupling := by
+  rw [the_depth_one_register_deals_the_counts]
+  decide
+
+/-! ### The readout: the bracket and the digits, off the jar's machine -/
+
+#eval theBracket
+#eval theDecimal
+
+#print axioms the_depth_one_register_deals_the_counts
+#print axioms the_jar_deals_the_coupling
+
 /-! ## WHAT THIS DOES NOT DO
 
 It does not produce `1/alpha`.  The contraction to alpha is

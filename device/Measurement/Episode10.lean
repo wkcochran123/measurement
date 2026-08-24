@@ -625,10 +625,59 @@ theorem the_number_is_the_walk (fs : List Fact) :
 
 #print axioms the_number_is_the_walk
 
+/-! ## THE NUMBER, OFF THE DEVICE'S OWN READBACK
+
+Episode 9 now computes the decimal from its two counts.  This desk's job is to
+check that the DEVICE agrees -- that the counts Episode 9 reads off the monte's
+walk are the same two numbers the audit reads off the number the device hands
+back.
+
+The readback is `runUp numberCarrier`: the device's own successor, applied to
+the device's own value.  Read it DOWN two ways -- as facts, and as depth -- and
+the two readings are Episode 9's tange and funge.  No numeral appears below:
+every comparison is count against count, which is this desk's whole
+discipline. -/
+
+/-- The readback, read as facts: the walk down. -/
+def tangeOfTheReadback : Nat := (runUp numberCarrier).facts.length
+
+/-- The readback, read as depth: the names climbed. -/
+def fungeOfTheReadback : Nat := (runUp numberCarrier).depth
+
+/-- Route agreement first, as ever: the two readings of the readback differ by
+the origin, before anyone asks what they are.  Free, off `depth_and_facts_agree`. -/
+theorem the_readback_carries_the_origin :
+    tangeOfTheReadback = fungeOfTheReadback + 1 :=
+  depth_and_facts_agree (runUp numberCarrier)
+
+/-- THE DEVICE HANDS BACK THE COUNTS.  The readback's two readings ARE Episode
+9's two counts -- the walk the monte iterates and the names it skips to.  Count
+against count, no numeral. -/
+theorem the_device_hands_back_the_counts :
+    tangeOfTheReadback = tange ∧ fungeOfTheReadback = funge := by decide
+
+/-- AND THE COUPLING IS THE READBACK.  Episode 9's coupling, recomputed from
+what the device handed back rather than from the walk it was read off. -/
+theorem the_coupling_is_the_readback :
+    theCoupling = fungeOfTheReadback * tangeOfTheReadback * tangeOfTheReadback := by
+  decide
+
+/-! ### The number, printed at this desk
+
+The pipeline is Episode 9's -- counts, cards, quadratic, sign, bracket, digits
+-- and the theorems above say this desk's counts are the same counts.  So the
+decimal prints here too, off the device's own readback, `#eval` and not
+`#reduce` because nothing in the pipeline touches the tower. -/
+
+#eval theDecimal
+
 /-! ## THE LEDGER -/
 
 #print axioms signEnergy_eq_length
 #print axioms the_walk_counts_the_same_both_ways
 #print axioms the_tape_and_the_walk_agree
+#print axioms the_readback_carries_the_origin
+#print axioms the_device_hands_back_the_counts
+#print axioms the_coupling_is_the_readback
 
 end Measurement

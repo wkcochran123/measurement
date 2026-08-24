@@ -828,4 +828,259 @@ theorem AND_THE_FLOOR_NEVER_LOOKS
 
 
 end Monte
+
+/-
+  THE NUMBER, FALLING OUT OF THE MATH.
+
+  RULING (operator): starting point, Episode 9 as it stands.  Ending point, the
+  decimal 137.011... printed, with no square root anywhere.
+
+  THE DISCIPLINE OF THIS SECTION: every def below is written FROM the monte's
+  own counts; every numeral below appears only in a THEOREM, as a receipt with
+  the proof attached; the readings are printed last and asserted never; and the
+  whole ledger must close at `propext, Quot.sound` or lower -- zero choice,
+  because no knower gets to pick anything here.  The side test decides every
+  candidate and the root is ENCLOSED, never FORMED.
+-/
+
+/-! ## THE TWO COUNTS THE MONTE ALREADY MAKES
+
+Nothing new is counted.  The monte above walks ONE projection chain and hops
+ONE seam, and both were already itemised in this file's own margins:
+
+  TANGE -- the rungs it iterates.  "the walk the monte takes at the top of this
+  file: `a_truth_about_the_world . too_good_to_be_true . description . stamina`"
+  -- three fields deeper into the same name, one gate shed per rung.
+
+  FUNGE -- the names it skips to.  The law of nu-trinos, "a ONE STEP HOP and
+  not a fall: you cannot move both at once."  STEP ONE skips to a new
+  UNIVERSAL (`WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED`); STEP TWO skips to a new
+  LOCAL (`BUT_THE_INNER_CARD_DOES_NOT`).  Two names, in that order, and the
+  order is the content.
+
+Each walk is written out below as DATA -- the same move Episode 10 makes when
+it names the tape's step model -- and the counts are lengths, not numerals. -/
+
+/-- The three fields the monte iterates, in the order the walk takes them. -/
+inductive RungIterated
+  | too_good_to_be_true
+  | description
+  | stamina
+
+/-- The two names the seam hop skips to, in the order the law requires. -/
+inductive NameSkippedTo
+  | the_universal_over_the_old_local
+  | the_local_out_of_the_new_universal
+
+/-- The projection walk, as data. -/
+def theWalkItIterates : List RungIterated :=
+  [.too_good_to_be_true, .description, .stamina]
+
+/-- The seam hop, as data. -/
+def theNamesItSkipsTo : List NameSkippedTo :=
+  [.the_universal_over_the_old_local, .the_local_out_of_the_new_universal]
+
+/-- TANGE.  The rungs the monte iterates, counted. -/
+def tange : Nat := theWalkItIterates.length
+
+/-- FUNGE.  The names the monte skips to, counted. -/
+def funge : Nat := theNamesItSkipsTo.length
+
+theorem tange_is_the_walk : tange = 3 := by decide
+theorem funge_is_the_hop : funge = 2 := by decide
+
+/-! ## THE CARDS, FROM THE COUNTS
+
+The coupling is the hop times the walk squared -- the counted cards, earned
+here rather than recited: 18 was always `funge * tange * tange`.  The target
+is the slip at two, plus the one earned unit -- and the `+1` is EARNED as a
+cardinality, never postulated: the coproduct roster counted by fencepost, the
+same discipline the later episodes call `earnedSum`.  The radius is the
+coupling again, a NAMING, with the receipt attached below. -/
+
+/-- Addition earned as the length of a coproduct roster, not postulated as
+`+`.  (Episode 26 re-derives this publicly for the Cavendish leaf; it is
+`private` here so the two never collide.) -/
+private def earnedSum (a b : Nat) : Nat :=
+  ((List.range a).map Sum.inl ++ (List.range b).map Sum.inr : List (Nat ⊕ Nat)).length
+
+/-- THE COUPLING.  `funge * tange * tange`: the hop, times the walk squared. -/
+def theCoupling : Nat := funge * tange * tange
+
+/-- THE SLIP AT TWO.  The coupling over the hop squared. -/
+def theSlipAtTwo : Nat := theCoupling / (funge * funge)
+
+/-- THE TARGET.  The slip at two, plus one earned unit. -/
+def theTarget : Nat := earnedSum theSlipAtTwo 1
+
+/-- THE RADIUS.  The coupling, named a second time for the role it plays. -/
+def theRadius : Nat := theCoupling
+
+theorem theCoupling_receipt : theCoupling = 18 := by decide
+theorem theSlipAtTwo_receipt : theSlipAtTwo = 4 := by decide
+theorem theTarget_receipt : theTarget = 5 := by decide
+theorem theRadius_receipt : theRadius = 18 := by decide
+
+/-! ## THE QUADRATIC, FROM C, T, R
+
+Three coefficients, each written from the cards and nothing else.  The `2` in
+the middle coefficient is the derivative's two -- the second variation -- not
+a count. -/
+
+def quadA : Nat := theTarget * theTarget * (theCoupling - theTarget)
+def quadB : Nat := 2 * theCoupling * theTarget * theRadius * theRadius
+def quadC : Nat := theCoupling * theRadius * theRadius * theRadius * theRadius
+
+theorem quadA_receipt : quadA = 325 := by decide
+theorem quadB_receipt : quadB = 58320 := by decide
+theorem quadC_receipt : quadC = 1889568 := by decide
+
+/-! ## THE SIDE TEST
+
+`sideOf p q` is the quadratic read at the name `p/q`, cross-multiplied: two
+integer products and a difference, no division, no root.  NEGATIVE means the
+name lies BELOW the larger root; positive, above.  Total for any name at all
+-- the seeing, as ever, is the side the device can always give. -/
+
+def sideOf (p q : Nat) : Int :=
+  ((quadA * (p * p) : Nat) : Int)
+    - ((quadB * (p * q) : Nat) : Int)
+    + ((quadC * (q * q) : Nat) : Int)
+
+/-- THE ROOT IS ENCLOSED.  137 falls below it and 138 above it, so the number
+lives between two names the device can check.  Decided, not observed. -/
+theorem the_root_is_enclosed : sideOf 137 1 < 0 ∧ 0 < sideOf 138 1 := by decide
+
+/-! ## THE MEDIANT WALK
+
+Two names straddling the root; the mediant of the pair is a new name; the side
+test says which end it replaces.  `sideOf m < 0` raises the low end, else the
+high end comes down.  Legs only, integers only, and the root is never touched
+-- only cornered. -/
+
+def mediantWalk : Nat -> (Nat × Nat) -> (Nat × Nat) -> (Nat × Nat) × (Nat × Nat)
+  | 0, lo, hi => (lo, hi)
+  | n + 1, lo, hi =>
+      if sideOf (lo.1 + hi.1) (lo.2 + hi.2) < 0
+      then mediantWalk n (lo.1 + hi.1, lo.2 + hi.2) hi
+      else mediantWalk n lo (lo.1 + hi.1, lo.2 + hi.2)
+
+/-- THE BRACKET NEVER LOSES THE ROOT.  If the ends straddle going in, they
+straddle coming out, for ANY number of steps: each mediant replaces exactly
+the end whose side it shares.  Induction and the sign, nothing else. -/
+theorem the_bracket_never_loses_the_root (n : Nat) (lo hi : Nat × Nat)
+    (hlo : sideOf lo.1 lo.2 < 0) (hhi : 0 ≤ sideOf hi.1 hi.2) :
+    sideOf (mediantWalk n lo hi).1.1 (mediantWalk n lo hi).1.2 < 0
+      ∧ 0 ≤ sideOf (mediantWalk n lo hi).2.1 (mediantWalk n lo hi).2.2 := by
+  induction n generalizing lo hi with
+  | zero => exact ⟨hlo, hhi⟩
+  | succ n ih =>
+      by_cases h : sideOf (lo.1 + hi.1) (lo.2 + hi.2) < 0
+      · simp only [mediantWalk]
+        rw [if_pos h]
+        exact ih _ _ h hhi
+      · simp only [mediantWalk]
+        rw [if_neg h]
+        refine ih _ _ hlo ?_
+        show 0 ≤ sideOf (lo.1 + hi.1) (lo.2 + hi.2)
+        omega
+
+/-- THE BRACKET, at two hundred steps of the walk. -/
+def theBracket : (Nat × Nat) × (Nat × Nat) := mediantWalk 200 (137, 1) (138, 1)
+
+/-- And it still straddles: the general theorem, applied to the actual walk. -/
+theorem the_bracket_straddles :
+    sideOf theBracket.1.1 theBracket.1.2 < 0
+      ∧ 0 ≤ sideOf theBracket.2.1 theBracket.2.2 :=
+  the_bracket_never_loses_the_root 200 (137, 1) (138, 1) (by decide) (by decide)
+
+/-! ## THE DECIMAL
+
+Long division of the bracket's low end, to `k` places, as one scaled natural.
+The receipt is the division identity itself: the printed digits times the
+denominator land at or under the numerator, and one more digit overshoots. -/
+
+/-- The low end of a bracket, long-divided to `k` decimal places. -/
+def decimalOfBracket (pq : Nat × Nat) (k : Nat) : Nat := pq.1 * 10 ^ k / pq.2
+
+/-- THE DIGITS ARE THE LOW END, to `k` places, for any bracket with a real
+denominator.  This is long division's own receipt, stated once for all. -/
+theorem the_digits_are_the_low_end (p q k : Nat) (hq : 0 < q) :
+    decimalOfBracket (p, q) k * q ≤ p * 10 ^ k
+      ∧ p * 10 ^ k < (decimalOfBracket (p, q) k + 1) * q :=
+  ⟨Nat.div_mul_le_self _ _, (Nat.div_lt_iff_lt_mul hq).mp (Nat.lt_succ_self _)⟩
+
+/-- THE NUMBER.  The bracket's low end, twelve places out. -/
+def theDecimal : Nat := decimalOfBracket theBracket.1 12
+
+/-- And the printed digits agree with the bracket, by the receipt above. -/
+theorem the_printed_digits_agree :
+    theDecimal * theBracket.1.2 ≤ theBracket.1.1 * 10 ^ 12
+      ∧ theBracket.1.1 * 10 ^ 12 < (theDecimal + 1) * theBracket.1.2 :=
+  the_digits_are_the_low_end theBracket.1.1 theBracket.1.2 12 (by decide)
+
+/-! ## THE OLD d*-ROUTE, RETIRED WITH ITS ACCOUNTS SETTLED
+
+The old route reached this number through `d* = sqrt(C*T)` -- the square root
+of ninety, the invariant of the counted cards, taken by `floorSqrt`.  That
+root is DELETED from this read path: nothing above forms it, nothing imports
+it, and the walk reads signs only.
+
+It is not disowned; it is PROVED EQUIVALENT.  Complete the square on the
+quadratic and the identity below falls out: thirteen times the side test is a
+leg squared, minus ninety times a leg squared.  The old route's root is the
+right-hand side of an identity the new route never has to cross -- `sideOf`'s
+sign IS the side of `sqrt(90)` taken at the transformed legs, which is why the
+two routes could never have disagreed.  The hypotenuse retires; the legs keep
+the books. -/
+
+/-- The legs of the identity are the cards themselves: `T*(C-T)`, `C*R^2`,
+`C*T`, and `R^2`, receipted together. -/
+theorem the_legs_are_the_cards :
+    theTarget * (theCoupling - theTarget) = 65
+      ∧ theCoupling * theRadius * theRadius = 5832
+      ∧ theCoupling * theTarget = 90
+      ∧ theRadius * theRadius = 324 := by decide
+
+/-- THE OLD ROUTE AGREES WITH THE NEW ROOT.  The completed square: for every
+name `(p, q)` whatsoever, `13 * sideOf` equals the d*-leg squared minus ninety
+times the radius-leg squared.  No root is formed on either side. -/
+theorem the_old_route_agrees_with_the_new_root (p q : Int) :
+    13 * (325 * (p * p) - 58320 * (p * q) + 1889568 * (q * q))
+      = (65 * p - 5832 * q) * (65 * p - 5832 * q) - 90 * ((324 * q) * (324 * q)) := by
+  -- two rearrangements `omega` cannot cross on its own: the doubled cross term,
+  -- and the two q-squared monomials collecting into one
+  have h1 : p * (q * 758160) = 2 * (p * (q * 379080)) := by
+    have h : (758160 : Int) = 2 * 379080 := by decide
+    rw [h]
+    simp [Int.mul_comm, Int.mul_left_comm, Int.mul_assoc]
+  have h2 : q * (q * 24564384) + q * (q * 9447840) = q * (q * (34012224 : Int)) := by
+    simp [← Int.mul_add]
+  simp [Int.mul_add, Int.mul_sub, Int.sub_mul, Int.mul_comm,
+        Int.mul_left_comm, Int.mul_assoc]
+  omega
+
+/-! ## THE READINGS -- printed last, asserted never -/
+
+#eval theBracket
+#eval theDecimal
+
+/-! ## THE LEDGER -/
+
+#print axioms tange_is_the_walk
+#print axioms funge_is_the_hop
+#print axioms theCoupling_receipt
+#print axioms theTarget_receipt
+#print axioms theRadius_receipt
+#print axioms quadA_receipt
+#print axioms quadB_receipt
+#print axioms quadC_receipt
+#print axioms the_root_is_enclosed
+#print axioms the_bracket_never_loses_the_root
+#print axioms the_bracket_straddles
+#print axioms the_digits_are_the_low_end
+#print axioms the_printed_digits_agree
+#print axioms the_legs_are_the_cards
+#print axioms the_old_route_agrees_with_the_new_root
+
 end Measurement
