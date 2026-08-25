@@ -50,7 +50,6 @@ universe i --| We dropped a bomb last episode. We defined the arrow of time to b
            --| to _ADD_ to the present so we can, well, _see inside_. See, without laughably false statements, we could not ask the compiler to
            --| evaluate the consistency of the Fact that you can, mostly, see what's inside the Jar.
 
-@[reducible]
 /-
 ME: I need Jar Jar Binks.           | It is very hard to see past the origin. Past the beginning. Before. As you look backward in time, there is
 COMPILER: Absolutely not.           | an accumulation of ignored residue. This residue accretes until, finally, the only thing left to distinguish
@@ -130,7 +129,6 @@ instance : LE Jar := ⟨Jar.le⟩  -- Bullshit meter ≈ 5.   I mean, c'mon comp
 -- FULL DISCLOSURE:  Jar Jar is along for the ride to help __YOU the READER__ explain to __YOU the KNOWER__ how this argument works. *YOU the KNOWER*
 -- is invited to laugh at the frivolity on display for the time being.
 
-@[reducible]
 /-                                                 | I am reminded of the paradox of Mary and the color red. Imagine Mary is locked in a room for
 ME: I need a MeesaProcess. ------------------------+ her entire life. The room has no color in it. It does have the worlds literature and
 COMPILER: I refuse the dialect.                    | entertainment in it. But all objects, save Mary herself, are black and white. The internet,
@@ -178,7 +176,6 @@ structure MeesaProcess  -- Bullshit meter ≈ 1010.
 -- is more nonsense on why this is fine: The *CLICK*s and pops of the instrument itself was a _DEMONSTRATION_ of how _MEANING_ can _tunnel_ out of
 -- ontological arguments through leaky abstractions. The β-reduction is NOT a leaky abstraction. No *CLICK*s.
 
-@[reducible]
 /-
 ME: I need GUNGAN.                                        | Much of the perceived "nonsense" of this argument is laid out across the type system of
 COMPILER: This is Lean.                                   | Lean. Inductives are used to wire together ever more complex definitions of ≤. Rules
@@ -233,7 +230,6 @@ class GUNGAN  -- Bullshit meter ≈ 802.
 -- I call the process of building equivalence classes Equivalation.
 
 
-@[reducible]
 /-
 ME: I need equivalation.                             | As graduate students preparing for orals, we would ask each other really open ended questions
 COMPILER: You mean equivalence.                      | about partial differential equations. It generally started with the question "Write down a
@@ -303,7 +299,6 @@ instance : LE Equivalation := ⟨Equivalation.le⟩ -- Bullshit meter ≈ 8
 -- but even the analog feel of a plastic disc, these pits and lands are fewer and farther between on average, while the median remains
 -- unchanged.
 
-@[reducible]
 /-
 ME: I need a DigitalProcess. --                | We will find Jar Jar to be _quite_ agreeable in this telling. That's Jar Jar's job, to agree that
 COMPILER: Bits? 1s and 0s?  --                 | work was just performed. 1 unit of work. Exactly 1 slot. Whatever 1 is. Whenever the value 1 needs
@@ -354,7 +349,6 @@ structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
 --  Particle at a time! The state can either be _quarter under a card_ or _no quarter under a card_.
 
 
-@[reducible]
 /-                                        | Let's discuss what you are reading right now. This is source code, it is accepted by a Lean compiler,
 ME: I need a source.                      | generates output on the screen that resembles a number that others have called _inexplicable_.  Does that
 COMPILER: Source code?                    | make this _code_ inexplicable because it can compute an near neighbor of the number? Is the number being
@@ -389,7 +383,6 @@ class SOURCE   -- Bullshit meter ≈ 1121. ----+ A font of knowledge. The part o
   cd_process : DigitalProcess Box Pigeon
   one : Equivalation ----------------------| Is the quarter under this one? Or that one? The compiler should be keeping up with this in a dictionary.
 
-@[reducible]
 /- CHORUS:
 COMPILER: I need a dictionary, did you take it?           | Sometimes words enter descriptions. Those words can be unfamiliar but carry a certain
 JAR JAR: YOUSA BOMBAD! -----------------------------------+ _je ne sais quois?_ that hints at how much "upness" the word might contain. Je ne said
@@ -404,7 +397,6 @@ inductive Encoding   -- Bullshit meter = 118.  Flat.
 ME: Look, I stop at high level languages. If you want the instruction set, you will have to look elsewhere.
 -/
 
-@[reducible]
 /-
 COMPILER: It takes electrons from the wall to make this work   | _TECHNICALLY SPEAKING_, the amount of bullshit the compiler has to cope with is
 ME: I will try to help you pay for your own energy cost        | linearly related to the time it takes to compile the code which is linearly related
@@ -455,7 +447,6 @@ structure CompiledProcess  -- Bullshit meter = 1728.  Almost 50% again.  Wow bul
                                     | _ => .zero f x e --                   |
     | .one f _ x _ e, _          => .zero f x e --                          | We are taking great care to sort the mail before we deliver it.
 
-@[reducible]
 /-                                                  | Source code exhibits a property very much like "upness," called _correctness_. The code does
 COMPILER: I have produced yet another number        | such a good facsimile of the desired instructions that the actual instructions are deemed
 JAR JAR: MEESA EXIT 1 ------------------------------+ correct.
@@ -491,7 +482,6 @@ class EXECUTED  -- Bullshit meter = 1158.  Calling this flat.
     | .one f _ e1 _ _ , .one g _ e2 _ _ => f.truth ∧ g.truth ∧ (e1 ≤ e2) --+ It isn't enough for the variance to match, it must also agree. Welcome
 --                                                                         | to Diagon Alley. Seriously, Paul's Boutique has nothing on this code.
 
-@[reducible]
 /-
 ME: I think it is time we talk about what is going on here.        | No kidding, this is a satire. We have now dealt with both situations, one
 COMPILER: In the sense that you keep stacking templates as         | in which there is kidding (by selecting all kidding) and the empty slot
@@ -555,7 +545,6 @@ instance
  : LT Abstraction := ⟨Abstraction.lt⟩
 
 
-@[reducible]
 /-
 ME: Our number apparently has a max number of words in the description.  | The Berry number of 11 is a _RESIDUE_ of language. Other languages may
 COMPILER: You mean a _minimum_, at least 1 word.                         | need more than 11 words. Others, fewer. The number 11 is neither here
@@ -585,7 +574,6 @@ structure MathematicalProcess  -- Bullshit meter = 2963.
 -- figured out that _1_ was the function that defined _e_: 1(i) = -e^πi. I think *YOU the KNOWER* might recognize that glyph better as _-r_, the
 -- actual measurable length, is _1_ and length is the function we have at our fingertips. How long is something? Well, accoring to Jar Jar, just 1.
 -- Remember how lazy compilers are? Well, they have no idea how much work their assumptions mask.
-@[reducible]
 /-
 ME: I need a value.                                                      | *YOU the KNOWER* will explain that they allow Lean to have at least one
 COMPILER: Funny enough, I think there is one around here somewhere.      | kind of value, a Nat. Then, they incorrectly assume that inductives count
@@ -624,7 +612,6 @@ class VALUE  -- Bullshit meter = 3327.                                   | Greek
      | .execute _ _ a , .execute _ _ b => a < b --                    | We can measure this by measuring proofs of _TEN_ and _ELEVEN_ (or easier ones),
 --                                                                    | find the cheapest of each, then compare them. TRUE FACT. Let's do just that.
 
-@[reducible]
 /- CHORUS:
 ME: I need a _PIPE_, I think that is the generic symbol.   | Order of operations is generally implied by the grammar of the language. Any order of
 COMPILER: Concatenation or or or both?                     | operations can be decomposed into _Backus-Naur Form_. It is this form that that is the
@@ -658,7 +645,7 @@ ME: This is how you add.                                | All of this to abstrac
 COMPILER: That's funny, that's a lot of work just for   | demonstration of this proof. It should start to worry you that we still have _not_
           construction of a set.                        | introduced a _number_ yet. Did you forget we were computing a number? We have managed
 JAR JAR: MEESA ONLY HAVE 1 SET. ------------------------+ to compute 1(i). That isn't a _GREEK_ number, though. It is NOT our target. I think this
-ME: That makes it very convenient.                      | is a _HEBREW_ number?
+ME: That makes it very convenient.                      | is a _HEBREW_ number? Or is it _ARABIC_? ℵ₀, why not both?
 -/
 instance : LE Sum := ⟨Sum.le⟩  -- Bullshit meter = 8
 instance : LT Sum := ⟨Sum.lt⟩
@@ -676,10 +663,10 @@ structure AddingProcess  -- Bullshit meter ≈ 2063.   Thats 33% less bullshit t
                                                 [MEASURABLE Box Rudolph]                  [GUNGAN Box Rudolph]                [SOURCE Box Rudolph]
     [EXECUTED Box Rudolph]                      [VALUE Box Rudolph]
 
-  where --                                            | People have been trying to count numbers for a very _very_ long time. There are _a LOT_ of
---                                                    | numbers. I mean, more than you can possibly fathom. Size means _NOTHING_ to a number. So,
-  hebrew_process : MathematicalProcess Box Rudolph -- | how do you measure a VALUE? Prove it exists. Plus represents the Euclidean addition process.
-  plus: VALUE Box Rudolph ----------------------------+
+  where --                                                | People have been trying to count numbers for a very _very_ long time. There are _a LOT_ of
+--                                                        | numbers. I mean, more than you can possibly fathom. Size means _NOTHING_ to a number. So,
+  mideastern_process : MathematicalProcess Box Rudolph -- | how do you measure a VALUE? Prove it exists. Plus represents the Euclidean addition process.
+  plus: VALUE Box Rudolph --------------------------------+
   sum: Sum --                                               +-----+-------------------------------+---+ The art of re-gifting is a time honored
 --                                                          |     |                               |   | tradition whereby the same fruitcake
   add? : Sum → Sum := fun s => --                           |     |            +-------+----------+   | manufactured in the early seventies, wrapped
@@ -705,7 +692,7 @@ COMPILER: Go ahead Jar Jar     | #define FALSE 1  (I feel like we      | never v
 JAR JAR: ONE! -----------------+   discussed sign convention           | but no world religion speaks of the existence of the north pole.
 COMPILER: Sorry, best I got.   |   already.)                           |
 -/ --                                                                  | Maxwell, Dirac, Yang, and Mills spoke of north poles and their exclusive
-@[reducible]--                                                         | existence. Yang and Mills are excellent at wrapping regifts.
+--                                                                     | existence. Yang and Mills are excellent at wrapping regifts.
 class MAGNITUDE  -- Bullshit meter ≈ 1503.
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -825,7 +812,6 @@ ME: All you are doing is saying 1. Can't we take that as read?                  
 JAR JAR: MEESA ONE! --------------------------------------------------------------------+ in the grammar, I don't see any reason to look up opcodes.
 ME: Perfect. I don't want you to hide the _FIRST_ computation from out little sensor.   |
 -/ --                                                                                   | *YOU the KNOWER* can if they like. I have my ‖1(i)‖.
-@[reducible]
 structure MultiplyingProcess  -- Bullshit meter ≈ 2200
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -870,7 +856,7 @@ structure MultiplyingProcess  -- Bullshit meter ≈ 2200
 -- *YOU the KNOWER* might see what I am talking about. They may see that the pliability if the imagination has some properties that can be described
 -- as _topological_ in nature. Not *BEST* described in much the same way the search for a paradoxical not-sure-what is the *MOST* anything at all.
 
-@[reducible] --                             | Mostly, scale models get smaller. The build time is going to explode in a few more minutes as we slowly
+--                                          | Mostly, scale models get smaller. The build time is going to explode in a few more minutes as we slowly
 class SCALED  -- Bullshit meter = 1756 -----+ remove the meanings of words from mathematics. We now need to think about how to automate the generation
     (Box: Type i) --                        | of this proof. That way, we can repeatably measure the amount of bullshit in it.
     (Pigeon: CarrierProcess Box)
@@ -1014,7 +1000,6 @@ instance : LT Basis where
 --| compare and swap and branch not equal.  Hard to say the language has bugs in it then. IT IS ENTIRELY BUGS! c.f. Go To Considered Harmful.
 --| I'm really not a master of ISA and the Mach μ-kernal rocks! Sorry Linus, found a hotter, not to mention better-looking, loop. Brushed metal.
 --| So expensive.
-@[reducible]
 structure BASICProcess  -- Bullshit meter ≈ 2759 ----+ Like many early Gen-X types, I learned how to program using Gates' BASIC. Well, some
     (Box: Type i) --                                 | descendent of it.  As you can see, this is just a BASIC programming language.
     (Pigeon: CarrierProcess Box)
@@ -1060,7 +1045,7 @@ structure BASICProcess  -- Bullshit meter ≈ 2759 ----+ Like many early Gen-X t
 --| the random-ass generated metaphors in this file. They put an undue _LOAD_ on *YOU the KNOWER* and can unintentionally _ALIENATE_ them.  Good
 --| thing this is intentional.
 
-@[reducible] --                       | It is *ABSOLUTELY TRUE FACT* that I have intentionally built a wall of bullshit that might be completely
+--                                    | It is *ABSOLUTELY TRUE FACT* that I have intentionally built a wall of bullshit that might be completely
 class LOAD  -- Bullshit meter 2089 ---+ impenetrable, but the compiler, so far, hasn't found much of an inconsistency in the Lean even if
     (Box: Type i) --                  | *YOU the KNOWER* are absolutely certain you have found a hole in the argument. *YOU the READER* might. I will
     (Pigeon: CarrierProcess Box) --   | put it in a box and carry it as the exception we haven't explained yet.
@@ -1169,7 +1154,7 @@ instance : LE Polynomial where --                     | Hilbert space.
 --| _ANOTHER_ hole exists in which _another_ universe of texture awaits to surprise the eater. That universe is _completely_ manufactured of jam.
 --| Like what Lone Star uses to block communications. So, we get the GOAT Michael Jordan in here so we can make some Space Jam!
 
-@[reducible] --                                    | You got to _know when to hold'em_, _know when to fold'em_, _know when to run_.  Five of kind!
+--                                                 | You got to _know when to hold'em_, _know when to fold'em_, _know when to run_.  Five of kind!
 structure JordanProcess   -- Bullshit meter 2794   | o Jordan measure                 o Jordan norm-al form (another full house!)
     (Box: Type i) ---------------------------------+ o Jordan curve theorem           o Jordan Algebra               o the GOAT.
     (Pigeon: CarrierProcess Box) --                | Told you X-Zibit covered it.
@@ -1214,8 +1199,8 @@ COMPILER: No there isn't, just the AST. -----------------------------+ solving. 
 JAR JAR: MEESA AST                                                   | as all components of the device are _LINEAR_ in that there is assumed a
 ME: We need a new friend. One that knows other pokémath.             | linear response curve for modeling of communications. One must use the network
 -/ --                                                                | to communicate with a supercomputer. There may not exist computable
-@[reducible] --                                                      | non-linearity, but its ever finer approximation certainly does.
-class INDEXOFANT   -- 2368
+--                                                                   | non-linearity, but its ever finer approximation certainly does.
+class OF   -- 2368
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]     -- So, she _ASSUMES_ they have an undocumented one and proceeds to add the release to DISCOGS.

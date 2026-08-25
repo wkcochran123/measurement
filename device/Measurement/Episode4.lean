@@ -27,7 +27,7 @@ set_option allowUnsafeReducibility true
 -- yourself waiting a few minutes for the compiler as it slowly enumerates ALL of computation to find your program.
 
 -- -O2 is for suckers, as my mentor Russ Hewett would say. This thing enumerates computation and finds the one that we want and copies the input into
--- the output. That's how it compiles!  Kolmogorov eat your heart out, I put a ring on it!
+-- the output, sorted by how fast they are. That's how it compiles!  Kolmogorov eat your heart out, I put a ring on it!
 
 -- Literally, algebraic ring incoming.
 namespace Measurement
@@ -46,7 +46,7 @@ COMPILER: Seems cromulent.                    | Turns out, that lean does allow 
 JAR JAR: MEESA Pull a rabit out of a hat. ----+ is compiling. We will be describing an experiment about how _LONG_ it takes to compute something.
 ME: Found the back door.                      | Then, while the compiler is _STILL_ compiling this _VERY PROOF_, we will run a truncated version of
 -/ --                                         | this very experiment and measure how much bullshit it takes to describe the very number we want to
-@[reducible] --                               | compute. This value is sensitive to the version of Lean you have installed, so ymmv.
+--                                            | compute. This value is sensitive to the version of Lean you have installed, so ymmv.
 structure ArmWaveProcess   -- 3306
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -56,7 +56,7 @@ structure ArmWaveProcess   -- 3306
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]
-    [doesnt_matter: INDEXOFANT Box Pigeon] ---+ Last episode was pretty clear that most of the INDEXOFANT didn't matter at all, just the *rough*
+    [doesnt_matter: OF Box Pigeon] ---+ Last episode was pretty clear that most of the OF didn't matter at all, just the *rough*
   --                                          | number of clicks counted. Some probably slipped by. Probably got some false positives. Hard to say.
   --                                          | The important thing is the VAST majority of the code doesn't seem to matter at all. Well, not at all.
   --                                          | I'm sure it means something _HELLA_ important _CONTRAVARIANTLY_. Like powers of Roman letters but
@@ -103,7 +103,7 @@ class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved. It keep
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]
   where
 --                         +----------------------+ This is **THE GAMBLE**. That I can explain you *YOU the READER* how to explain to
 --                         |                      | *YOU the KNOWER* why bugs don't matter. It starts with *US* learning how to play 3 card monte.
@@ -180,19 +180,18 @@ structure CrusadeProcess   -- Bullshit meter 3804
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]
   where
 --                           .              | How many magicians have waved their arms and retrieved pigeons from boxes? 1, 11, maybe even 111?
   to_pwn_n00bz: ArmWaveProcess Box Pigeon --+ Probably a lot more than that. It's so easy a _child_ can do it, as the saying goes.
 
-  religion: Diatribe  -------------------+ Quick note on pacing. You are probably aware this proof is _SPRAWLING_ by the nature of the gazillions of
+  religious_dogma: Diatribe  ------------+ Quick note on pacing. You are probably aware this proof is _SPRAWLING_ by the nature of the gazillions of
 --                                       | lines of code. As I mentioned, this is only the first time we are describing the machine for the fourth
---                                       | time. The second time we do this, I will be helping *YOU the READER* understand some really fine points of
---                                       | operator theory as percevied through a Lorentz contracted proof. The next time we describe the machine for
---                                       | the fourth time, we will have over-shot our goal of understanding and the words may start sounding a little
---                                       | _TOO_ good to be true. They aren't true. They are Facts about Facts that must exist for Facts to exist. The
---                                       | fourth time it⁻¹ is described; this happens four times. That's the one for *YOU the KNOWER* to
---                                       | _REALLY_ pay attention to. And orbital mechanics. Dear GOD I hope you are an expert in orbital mechanics.
+--+--------------------------------------+ time. The second time we do this, I will be helping *YOU the READER* understand some really fine points of
+--| operator theory as percevied through a Lorentz contracted proof. The next time we describe the machine for the fourth time, we will have over-shot
+--| our goal of understanding and the words may start sounding a little _TOO_ good to be true. They aren't true. They are Facts about Facts that must
+--| exist for Facts to exist. The fourth time it⁻¹ is described; this happens four times. That's the one for *YOU the KNOWER* to _REALLY_ pay
+--| attention to. And orbital mechanics. Dear GOD I hope you are an expert in orbital mechanics.
 
 --| Seriously, we need to downsize the argument so people can understand it⁻¹. Best way for people to get it⁻¹ is _repetition_. Just keep saying
 --| the same thing _OVER_ and _OVER_ and _OVER_. Replacing it⁻¹ in a hyperbolic situation with your _NEW_ theory.
@@ -203,12 +202,12 @@ structure CrusadeProcess   -- Bullshit meter 3804
 
   gate_keep? : Diatribe → Diatribe := fun d => ---------> Simple question: DO YOU UNDERSTAND ORBITAL MECHANICS OR NOT?
     match d with
-    | .religion prop => .religion prop -------------------------------> Is religion true? Yes, and no.
-    | .speculation prop s _ => .speculation prop s religion ----------> There is no religion but religion. That's a little DOGMATIC?
-    | .rant prop s d1 _ => .rant prop s d1 religion ------------------> We need another religion. Just go find some disks somewhere like Ghershgorin.
+    | .religion prop => .religion prop -------------------------------> Is orbital mechanics true? Yes (Mercury), and no (dark matter, energy, etc).
+    | .speculation prop s _ => .speculation prop s religious_dogma ---> There is no orbital mechanics but orbital mechanics. That's a little DOGMATIC?
+    | .rant prop s d1 _ => .rant prop s d1 religious_dogma -----------> We need another religion. Just go find some disks somewhere like Gershgorin.
 
---| Problem with a crusade is they tend to just sort-of appear. OR... you could look at this as the RHS of a Krylov process is probably in the
---| space of solutions, it being a solution and all.
+--| Problem with a crusade is they tend to just sort-of appear. OR... you could look at the TRUE FACT that the RHS of a Krylov process is probably in
+--| the space of solutions, it being a solution and all. It would be wildly unnatural for this to be the case, though, for the discrete assembly.
 def CrusadeProcess.default
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -217,44 +216,46 @@ def CrusadeProcess.default
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [doesnt_matter: INDEXOFANT Box Pigeon]   [BULLSHIT Box Pigeon]
+    [LOAD Box Pigeon]                          [doesnt_matter: OF Box Pigeon]           [BULLSHIT Box Pigeon]
     : CrusadeProcess Box Pigeon where
   to_pwn_n00bz :=
-  { dunking_contest := doesnt_matter.galerkin_process ----------------+ Again, doesn't really matter, you can go on a crusade and have a bug in your
-    guess := .observation Fact.Truth.truth --                         | process and the compiler just DNGAF. As long as everyone agrees it is true.
+  { dunking_contest := doesnt_matter.galerkin_process ---+ Again, doesn't really matter, you can go on a crusade and have a bug in your process and
+    guess := .observation Fact.Truth.truth --            | the compiler just DNGAF. There are a bunch of galerkin processes to choose from, after all.
   }
-  religion := .religion Fact.Truth.truth ------------------------------+ And all it takes to start a religion is a truth everyone believes: That we
-  --                                                                   | invert this operator, no matter how much time and paper it takes.
+  religious_dogma := .religion Fact.Truth.truth  --+ And all it takes to start a religion is a truth everyone believes: That we __WILL__ invert this
+--                                                 | operator, no matter how much time and paper it takes.
 
---| And so, when you fall into a black hole, there are two stories that are told. One involves an observer who watches you approach the horizon
---| forever, and one who must see no difference. Like Zeno. I see no difference between Achilles never catching the tortoise and Achilles winning the
---| race. What is being measured is two different things. Spooky.
-
-/- CHORUS:                                                      | Reasons for JAR JAR to say true.
-ME: I think this must be the literal definition of confusing.   |
-COMPILER: Not it isn't                                          | 1) It is the opposite of false, the position taken by the compiler
-JAR JAR: MEESA TRUE --------------------------------------------+ 2) JAR JAR can only say TRUE up to encoding.
-ME: Still can't tell the difference though.                     | 3) There is a bug in JAR JAR. While we could not tell if it was code or logic
--/ --                                                           |    for the compiler, we can explicitly rule out LOGIC as a bug and say the LOGIC
-class PROPAGANDA  -- 3151 --                                    |    is JUST FINE. Otherwise, this wouldn't compile. It's just a stack of truth tables.
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
-    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
-    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
-    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
-    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]
+--| Does it matter that the continuous proofs rely on behavior that the compiler cannot observe? Or do they see the same thing? -- <---------------------------+
+--                                                                                                                                                             |
+--| And so, when you fall into a black hole, there are two stories that are told. One involves an observer who watches you approach the horizon                |
+--| forever, and one who must see no difference. Like Zeno. I see no difference between Achilles never catching the tortoise and Achilles winning the          |
+--| race. What is being measured is two different things. Spooky. Like when this CLASS throws three cards.                                                     |
+--                                                                                                                                                             |
+/- CHORUS:                                                      | Reasons for JAR JAR to say true.                                                             |
+ME: I think this must be the literal definition of confusing.   |                                                                                              |
+COMPILER: Not it isn't                                          | 1) It is the opposite of false, the position taken by the compiler                           |
+JAR JAR: MEESA TRUE --------------------------------------------+ 2) JAR JAR can only say TRUE up to encoding.                                                 |
+ME: Still can't tell the difference though.                     | 3) There is a bug in JAR JAR. While we could not tell if it was code or logic                |
+-/ --                                                           |    for the compiler, we can explicitly rule out LOGIC as a bug and say the LOGIC             |
+class PROPAGANDA  -- 3151 --                                    |    is JUST FINE. Otherwise, this wouldn't compile. It's just a stack of truth tables.        |
+    (Box: Type i) --                                                                                                                                           |
+    (Pigeon: CarrierProcess Box) --                                                                                                                            |
+    [DISTINGUISHABLE Box Pigeon][ADMISSIBLE Box Pigeon][COUNTABLE Box Pigeon] [ENCODED Box Pigeon]  --     +------------------------------+                    |
+    [RESIDUE Box Pigeon]        [BINARY Box Pigeon]    [REPEATABLE Box Pigeon][NUMERIC Box Pigeon]  --     |      HIGH TRAFFIC AREA!      |                    |
+    [REPRESENTABLE Box Pigeon]  [PHYSICAL Box Pigeon]  [COMPARABLE Box Pigeon][OBSERVED Box Pigeon] --     +------------------------------+--------------------+
+    [PRESENT Box Pigeon]        [MEASURABLE Box Pigeon][GUNGAN Box Pigeon]    [SOURCE Box Pigeon]   --     | Millions read this everyday! |
+    [EXECUTED Box Pigeon]       [VALUE Box Pigeon]     [MAGNITUDE Box Pigeon] [SCALED Box Pigeon]   --     | Advertise here!              |
+    [LOAD Box Pigeon]           [OF Box Pigeon]        [BULLSHIT Box Pigeon]                        --     +------------------------------+
   where
 --      +-----------------------------------+ We have Facts. We have Fact.Truths. and We have Fact.Truth.truths. A class, a prop, a literal.
 --      |                                   | They look the same to me somehow. What if, supposing just this once, instead of observation -> rule ->
 --      V                                   | model, we reverse the order and have the observation depend on the model? Oh wait.. I've heard it
-  insinuates: CrusadeProcess Box Pigeon -- | both ways.
+  questions: CrusadeProcess Box Pigeon --   | both ways.
   red_pilled? : Diatribe → Prop := fun d =>
     match d with
     | .religion card =>        card --       |
     | .speculation card _ _ => card ---------+ And that is the 3 card monte flop. Where is the bug? I SWEAR (IT⁻¹)'S OBVIOUS! or is (it')⁻¹?
-    | .rant card _ _ _ =>      card --       |
+    | .rant card _ _ _ =>      card --       | I've heard it both ways.
 
 --| Yeah, I walk with a limp. But, the bug is now trapped under 1 of 111 cards, I think *YOU the READER* will nod at if not quite understand yet.
 
@@ -266,14 +267,14 @@ class PROPAGANDA  -- 3151 --                                    |    is JUST FIN
 --| it⁻¹ and can steer your logic _AROUND_ particular inconsistencies that would be... inconveninent to discuss until other features are mentioned
 --| first.
 
---| One simply does not discuss PDEs without demonstration of convegence LAST. For some of us, we are still waiting.
+--| One simply does not discuss PDEs without demonstration of convegence LAST. For some of us, we are still waiting. Bounty on that guy is big.
 
 /- CHORUS:                                      | It has long been recognized in the computer science community that really tricky computations
 -- ME: lake build Trilinos                      | need only be implemented _once_. And, so they let just one guy do it. Absolute CHAD of a developer.
 -- COMPILER: cc -c blas.f                       |
 -- JAR JAR: make lapack ------------------------+ Goto. Not the harmful one that Santa might not like, the GOAT. Hand tuned BLAS routines for each
 -- ME: This should be enough to get us started. | architecture. BLAS is the Basic Linear Algebra Substructure.  This implements dense matrices.
--/ --                                           | All we need is the _BASIC_ Linear Algebra Substructure, be nice to understand the rest.
+-/ --                                           | All we need is the _BASIC_ Linear Algebra Substructure, be nice to understand the rest, though.
 inductive Cult  -- 6460
   | inside_joke: Prop → Cult ------------------------------------------> Is this the card with the bug? The Truth.truth *YOU the READER* see?
   | pythagoras: Prop → Diatribe → Cult → Cult -------------------------> Is this the card with the bug? The Fact.Truth.truth *YOU the KNOWER* see?
@@ -297,28 +298,28 @@ COMPILER: You mentioned Ghershgorin earlier.   | angle is specified by how many 
 JAR JAR: MEESA oOoOo --------------------------+
 ME: Why do you say it that way?                | We compute the upper Hessenberg because it is MUCH easier than going _ALL the WAY_ to triangular.
 -/
-structure InitiationProcess  -- Bullshit meter ≈ 9117.   TBF, when is an initiation process not a bunch of bullshit?
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
-    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
-    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
-    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
-    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon] [a_true_fact: PROPAGANDA Box Pigeon]
-  where
-  ethos: CrusadeProcess Box Pigeon
-  sacred_texts: Cult
-  initiate: Cult → Cult := fun c =>
+structure InitiationProcess  ------+ Bullshit meter ≈ 9117.   TBF, when is an initiation process not a bunch of bullshit? A glance below shows the
+    (Box: Type i) --               | bullshit seems to be accreting apace. -----+----- Getting pretty deep in here.
+    (Pigeon: CarrierProcess Box)        --                                  /-  |  -/
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]      /-  |  -/   [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]          /-  |  -/   [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]        /-  |  -/   [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]      /-  |  -/   [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]           /-  |  -/   [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]              /- -+- -/   [BULLSHIT Box Pigeon] [a_true_fact: PROPAGANDA Box Pigeon]
+  where                                                                     /-     -/
+  axioms: CrusadeProcess Box Pigeon --| By golly, my formalization _HAS_    /-     -/   much more bullshit to mine! (LOAD OF BULLSHIT PROPAGANDA, lol)
+  sacred_texts: Cult --                                                     /-     -/
+  initiate: Cult → Cult := fun c => --                                      +-------+
     match c with
-  --|                           +--------------------------------------------------------------+ Pythagoras worried about certain _REAL_ true facts.
-  --|                           |                                                              | And those that could be _demonstrated_. The inside
-  --|                           V                                                              | joke is that we can write down π without fully
-    | .inside_joke truth => .pythagoras truth a_true_fact.insinuates.religion sacred_texts  -- | demonstrating it.
+  --|                           +---------------+ Pythagoras worried about certain _REAL_ true facts. And those that could be _demonstrated_. The
+  --|                           |               | inside joke is that we can write down π without fully demonstrating it and Pythagoras can't kill
+  --|                           V               | us for it.
+    | .inside_joke truth => .pythagoras truth a_true_fact.questions.religious_dogma sacred_texts -- |     **Ba Dump  tiss!**
 
   --|               +-----------------------------------+----------------------------+---------------------------------+----| Exactly where the bugs
   --|               |                                   |                            |                                 |    | are. Thanks for spotting
-  --|               V                                   V             ✓              V         ?                       V    | which card. Altogether.
+  --|               V                                   V             ✓              V      ?                          V    | which card. Altogether.
     | .pythagoras truth crusade witness => .triangles nowtrino.fact.truth crusade nowtrino.fact witness (.inside_joke truth)
   --|       ^                                    ^
   --|       |                                    |                   | And so Pythagoras's name adorns the _process_ to generate a class of such
@@ -327,12 +328,13 @@ structure InitiationProcess  -- Bullshit meter ≈ 9117.   TBF, when is an initi
   --| I think Euclid said it best: There is only 1 triangle.
     | .triangles A b C d E => .triangles A b C d E  --------+ And in his final words I found an A♭C♩E I can keep. XZibit is a helluvan artist. Also,
   --|                                                       | norms should probably satisfy the triangle inequality. Which means two vectors select
-  --|                                                       | a unique triangle from the set of triangles Euclid made with Pythagoras's process. Is
-  --|                                                       | it _my fault_ that clocks are the only way we can see time dilation without changing
-  --|                                                       | the value of the meter? Platinum is _Very_ expensive.
+  --| +-----------------------------------------------------+ a unique triangle from the set of triangles Euclid made with Pythagoras's process. Is
+  --| | it _my fault_ that clocks are the only way we can see time dilation without changing the value of the meter? Platinum was _Very_ expensive.
+  --| And it doesn't matter much now anyway, even though we _still_ can't measure time with distance.  Sorry Han, it isn't you who are wrong, it⁻¹ is
+  --| us who are wrong.
 
 --| This is why *YOU the READER* need me to help explain it⁻¹ to *YOU the KNOWER* when the time comes. *YOU the READER* must be able to _CARRY_ the
---| infomration like Rudolph before *YOU the READER* and the Pigeon that carrier Rudolph. We are building *YOU the READER* a box they can keep it⁻¹
+--| infomration like Rudolph before *YOU the READER* and the Pigeon that carried Rudolph. We are building *YOU the READER* a box they can keep it⁻¹s
 --| explanation in. So, show me your flop!
 
 /- CHORUS:
@@ -350,7 +352,7 @@ class ACOLYTE   -- 7699
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon] [a_true_fact: PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon] [a_true_fact: PROPAGANDA Box Pigeon]
                     --- NEVER SHOW THE MARK THIS--IN FACT, DELETE IF YOU WANT----------------------------------------^
   where
   euclid : InitiationProcess Box Pigeon ---------------> Did *YOU the KNOWER* read this? It⁻¹'s on your qualifier. How to draw a box around a pigeon.
@@ -361,15 +363,20 @@ class ACOLYTE   -- 7699
     | .triangles card _ _ _ _ => card --            | cards and not the quartic. And we are playing _CARDS_ not computing a Number about a property.
     --                                              | If the _mark_ even _SUSPECTS_ we have a number around us, they may walk away without playing.
 
---| You have to understand how it feels to write down the most ridiculous sounding words with the care a terrier welcoming their master home after
---| a long time. I don't have to worry if the math checks out, because it checks out even if it doesn't. I wrote it that way. This brings me to
---| science. *TOO* on the nose?
+--| So, I asked a question earlier. When a compiler is present with a finite linear first order approximation of a differential operator, does it,
+--| _in fact_ approximate it the curve.  Or, is it better to characterize its _ERROR_ as approximating the curve? If the model is continuous, but
+--| the _operator space_ of the operation itself is not, can you approximate its _ERROR_ as a curve? At what point did the Roman A diverge from the
+--| Greek A?  Before or after α and a?  Simultaneously? The computer can uniquely represent A and A. I'm too lazy to use anything other than 7-bit
+--| ASCII when I write code.  Most of the time. Except if I am making a subtle point.  This point is more like a liquid filled impact mallet.
+
+--| Why did Turing just think you could write letters down and people would know exactly what they mean? Αre *YOU_the_READER* sure *YOU_the_KNOWER*
+--| can tell what they mean?
 
 /- CHORUS:                                 | Seriously, the world trusts its hot paths to so few people. -mkl is all the same SHEEPLE!
 ME: 10 PRINT "THE NUMBER ≈ α": GOTO 10     |
 COMPILER: use -mkl?                        | I understand why.
 JAR JAR: MEESA GOTO -----------------------+
-ME: That's the rumor I heard, too.         | There are soooo many bugs.
+ME: That's the rumor I heard, too.         | There are soooo many bugs when you don't standardize on 6 character UPPERCASE names.
 -/
 inductive Science  -- 8029 --------------------------+ This does enough. I don't need to pile this on. Looks like a good place to ∎.
   | repeatable: Prop → Science --                    |
@@ -386,42 +393,73 @@ ME: What have we learned so far?
 structure LearningProcess  -- 26691
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
-    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
-    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
-    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
-    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]
-  where
-  --                         +--------------------------+ How do you setup a box to put a pigeon into it? I mean, we have figured out how to put
-  --                         |                          | a bug in the process. We should be able to use the same mechanism to inject a pigeon into
-  --                         V                          | a box.
-  teaching : InitiationProcess Box Pigeon
-
-  -- Learn the ways of Galileo. Seriously, the guy knew what he was talking about.  *BUT* that isn't to say there isn't a bit of a cult around
-  -- science, like cult members who expect science to answer questions. Science doesn't tell you where the coin is. It teaches you how to look at the
-  -- coin. Rulers tell you where the coin is. Confusing what the quarter looks like with where it is can lead to miscounted nowtrinos.
-  galileo: Cult
-
-  -- In order to _DESCRIBE_ science. Perfectly norm-al word for Science to use here. This is certainly _not_ a meaningless word.
-  invariant: Science -- We will watch the invariant change based on how you look at it. Dag.
-
---                  +---------+------------------------+ And so, this is how you curry Science.  Ladies and gentlemen, meet the smallest
---                  |         |                        | multiphysics simulator in the world! Kolmogorov, eat your heart out. The algorithm is
---                  V         V                        | fully specified.
-  touch_stove? : Science → Science := fun s =>
-    match s with
-  --| 1) Galileo argued that a proposition should be repeatable. So, he took one and made a hypothesis that others could do it, too.
-    | .repeatable proposition => .hypothesis proposition galileo
-
-  --| 11) His hypothesis became a theory of how to discover new things, like the nowtrino. You can have a hypothesis that an experiment may
-  --|     demonstrate a particular behavior.  In our case, whenever we see a nowtrino, it's because Science (tm) brand Science genuinely happened.
-    | .hypothesis proposition experiment => .theory proposition experiment nowtrino.fact (.hypothesis proposition galileo)
+    [nowtrino: DISTINGUISHABLE Box Pigeon] --+   1) When this has something there, then it might show up down there -------------------------+
+    [ADMISSIBLE Box Pigeon] --               |   2) If it isn't there, but the device expects it to be there, then it breaks.                |
+    [COUNTABLE Box Pigeon] --                |   3) Because these are variables at different universe levels, the compiler can count them    |
+    [ENCODED Box Pigeon] --                  |   4) This allows the compiler to encode the naturals in the count of the nowtrinos.           |
+    [RESIDUE Box Pigeon] --                  |   5) However, it isn't a regular hop, skip, and jump up, sometimes universes get skipped.     |
+    [BINARY Box Pigeon] --                   |   6) So we can label a universe as either a 0 (none detected) or 1 (nowtrino use detected)    +--+
+    [REPEATABLE Box Pigeon] --               |   7) And the compiler will make sure that this happens the same way every time                   |
+    [NUMERIC Box Pigeon] --                  |   8) In other words, the universe represents several different kinds of number interpretations   |
+    [REPRESENTABLE Box Pigeon] --            |   9) And has managed to represent the different ways to compare these numbers in up/down order   |
+    [PHYSICAL Box Pigeon] --                 |  10) These number mappings were actually computed on a computer spending resources to determine  |
+    [COMPARABLE Box Pigeon] --               |  11) In a process comparable to the mathematics being described                                  |
+    [OBSERVED Box Pigeon] --                 |  12) Allowing *YOU_the_READER* to see the recursive application                                  |
+    [PRESENT Box Pigeon] --                  |  13) That tells a story that allows *YOU_the_READER* to only focus on the current stanza         +--+
+    [MEASURABLE Box Pigeon] --               |  14) While simultaneously measuring how much BULLSHIT would be required for anyone to keep up       |
+    [GUNGAN Box Pigeon] --                   |  15) With the fact that because the machine generates 1s correctly over time in a predictable way   |
+    [SOURCE Box Pigeon] --                   |  16) You only need to understand that GUNGAN is only ever 1,                                        |
+    [EXECUTED Box Pigeon] --                 |  17) Executed can be 1 of 2 things: understanding the symbol or understanding the concept,    +-----+
+    [VALUE Box Pigeon] --                    |  18) And the value is the unitless "heartbeat".                                               |
+    [MAGNITUDE Box Pigeon] --                |  19) Well, not exactly, it is the same relative size though                                   |
+    [SCALED Box Pigeon] --                   |  20) And rescaled, painstakingly, by hand and compiler, to make my point exactly consistent,  |
+    [LOAD Box Pigeon] [OF Box Pigeon][BULLSHIT Box Pigeon] --| bullshitting *YOU_the_KNOWER* the entire way.                                 |
+--                                                                                                                                           |
+    [PROPAGANDA Box Pigeon][ACOLYTE Box Pigeon] --| Would you like to subscribe to my newsletter? Like and hit that bell!                    +-----+-+
+  where --                                                                                                                                           |
+--                         +--------------------------+ How do you setup a box to put a pigeon into it? I mean, we have figured out how to put       |
+--                         |                          | a bug in the process. We should be able to use the same mechanism to inject a pigeon into    |
+--                         V                          | a box.                                                                                       |
+  teaching : InitiationProcess Box Pigeon --                                                                                                         |
+--                                                                                                                                                   |
+-- Learn the ways of Galileo. Seriously, the guy knew what he was talking about.  *BUT* that isn't to say there isn't a bit of a cult around         |
+-- science, like cult members who expect science to answer questions. Science doesn't tell you where the coin is. It teaches you how to look at the  |
+-- coin. Rulers tell you where the coin is. Confusing what the quarter looks like with where it is can lead to miscounted nowtrinos.                 |
+  galileo: Cult --                                                                                                                                   |
+--                                                                                                                                                   |
+  -- In order to _DESCRIBE_ science. Perfectly norm-al word for Science to use here. This is certainly _not_ a meaningless word.                     |
+  invariant: Science -- We will watch the invariant change based on how you look at it. Dag.                                                         |
+--                                                                                                                                                   |
+--                  +---------+------------------------+ And so, this is how you curry Science.  Ladies and gentlemen, meet the smallest             |
+--                  |         |                        | multiphysics simulator in the world! Kolmogorov, eat your heart out. The algorithm is       |
+--                  V         V                        | fully specified.                                                                            |
+  touch_stove? : Science → Science := fun s => --                                                                                                    |
+    match s with --                                                                                                                                  |
+  --| 1) Galileo argued that a proposition should be repeatable. So, he took one and made a hypothesis that others could do it, too.                 |
+    | .repeatable proposition => .hypothesis proposition galileo --                                                                                  |
+  --|                                                                                                                                                |
+  --| 11) His hypothesis became a theory of how to discover new things, like the nowtrino. You can have a hypothesis that an experiment may          |
+  --|     demonstrate a particular behavior.  In our case, whenever we see a nowtrino, it's because Science (tm) brand Science genuinely happened.   |
+    | .hypothesis proposition experiment => .theory proposition experiment nowtrino.fact (.hypothesis proposition galileo) --                        |
+  --|                                                                              ^                                                                 |
+  --|                                                                              |                                                                 |
+  --|                                                                              +-----------------------------------------------------------------+
 
   --| 111) Our invariant is that we have a better than 66% chance of believing the results. And no matter what, we have that.
     | .theory proposition prior fact _ => .theory proposition prior fact invariant
 
+
+--| Which leads my CrusadeProcess.default to its rallying cry: SCIENCTIFIC!  Unlike religion, whose only response is the prior, science only looks at
+--| the result and throws the prior away, almost entirely sometimes. There is no single _theory_. There are pretty good rules of thumb that lend
+--| themselves to description by smooth curves and subesequently interpolated by approximation routines running on a Turing Machine.
+--|  (notice, *YOU_the_READER*, the masterclass in flop:)
+--|      If climate predictions are to be believed, anyway. Or, dark matter.  Take your pick. Remember, the quarter is somewhere between those in
+--| some whack-ass science.
+
+--| Hint: the rule of thumb is heavenly bodies appear to move in conic sections only.  Lorentz, meet bus.  You know what else moves in conic sections?
+
+--| Compilers. They exhibit several kinds of closed loops.
+@[reducible]
 class SCIENTIFIC -- 23964
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -430,10 +468,14 @@ class SCIENTIFIC -- 23964
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]
   where
-  discovering: LearningProcess Box Pigeon
+--      +------------------------------------+ DISCLAIMER:  There is no doubt great science gomes from discovery.  The thing is, discovery isn't
+--      |                                    | a halting process. You can never know that you discovered everything. I think we have a good place
+--      V                                    | to put this, on a number that is discovered by process described rather than by curve of fit. Now,
+  discovering: LearningProcess Box Pigeon -- | I feel like we discussed this before. And I apologize for the callback into the code. Just know
+--                                           | discovering is always a PHYSICAL process that never ends (see Episode2.lean for PHYSICAL)
   invariant: Science
 
 --| The thing about throwing three card monte in science is you need be able to apply your science to whatever is paying grants. Science lives and
@@ -441,17 +483,21 @@ class SCIENTIFIC -- 23964
   predictable? : Science → Science → Prop := fun a b =>
     match a, b with
     | _, .repeatable card    => card -------------------+ So, you see that the argument _ECHOES_ if you line it up right. You can practice this
-    | _, .hypothesis card _  => card --                 | forever, if you are good at it. This is how you set up a research center.
-    | _, .theory card _ _ _  => card
-
-
+    | _, .hypothesis card _  => card --                 | forever, if you are good at it. This is how you set up a research center.  This is also
+    | _, .theory card _ _ _  => card --                 | me showing *YOU the READER* several loops closing at once in the compiler. The questions
+--                                                      | *YOU the READER* should be focused on is how many loops in logic are there, and are all
+--                                                      | loops accounted for?  How many have been counted, you can roughly estimate by how long
+--  +---------------------------------------------------+ the build takes.  How can you compute the total number of possible loops a compiler can
+--  | support before the representation of the loops themselves describe a map that is itself a demonstration of all the loops? Well, thats an
+--  | echoic chamber. We set about now writing a description of the description of enumerating all possible loops.
 
 
 inductive Knowledge  -- Bullshit meter 84000
-| jarjar: Prop → Knowledge
-| ledger: Prop → Fact → Knowledge → Knowledge
---| I believe this is the Berry paradox. Uh, oh.
-
+| jarjar: Prop → Knowledge -----------------------+ The winding number of an inductor is always in ℕ. Welcome, everyone, our _SPECIAL GUEST_, the
+| ledger: Prop → Fact → Knowledge → Knowledge   --| **ELECTRON**! (card in the program: In tonight's performance, *ELECTRON* will be played by the
+                                                --| _nowtrino_.) I believe we might be in for a Berry paradox at some point. The electron is either
+                                                --| present (1) or not (0). Think of .jarjar as merely a stream of consciousness awareness of
+                                                --| electrons.
 
 namespace Knowledge   -- 424
 def le : Knowledge → Knowledge → Prop
@@ -459,16 +505,41 @@ def le : Knowledge → Knowledge → Prop
   | .jarjar _                ,    _                               => True
   | _                        ,    .jarjar _                       => False
   | .ledger orbital_mechanics thing_in_orbit nowtrino         ,    .ledger quantum_electrodynamics thing_in_orbital electron
-                 => (orbital_mechanics = quantum_electrodynamics ∧ thing_in_orbit = thing_in_orbital ∧ le nowtrino electron) ∨
-                    le (.ledger orbital_mechanics thing_in_orbit nowtrino) electron
-termination_by _ k => sizeOf k
-end Knowledge
+--|                                 ^           ^                                                        ^              ^
+--|                                 |           |                                                        |              |
+--|                                 +--------------- oooh (hyper) conic sections! orbital dynamics! -----+              |
+--|                                             |                                                                       |
+--|                                             +------------+ For a little while, lets conflate these    +-------------+
+--|                                                          | so we can see if we can embed conics       |
+--|                                                          | into hyperconics using a (hyper)conic      |
+--|                                    +---------------------+ And, we give nowtrino first bill tonight   |
+--|                                    |                                          +--------------------+--+
+--|                                    V                                          V                    V (≤ instead of < Berry paradox time!) --+
+                 => (orbital_mechanics = quantum_electrodynamics ∧ thing_in_orbit = thing_in_orbital ∧ le nowtrino electron) ∨ --               |
+                    le (.ledger orbital_mechanics thing_in_orbit nowtrino) electron -- <--------------------------------------------------------+
+--| *DISCLAIMER* THIS ASSUMPTION IS PATENTLY FALSE ON ITS FACE. IT IS NOT POSSIBLE TO UNIFY GR and YM. At least not using the *DARK* side of the force.
+
+--                       +---+ This is a good place to stop since there can be at most k propositions to evaluate. This is cardinality, not the Nats.
+--                       |   | So, it is an arabic process of a hebrew constant, and allowed by the device.
+--                       V
+termination_by _ k => sizeOf k   --+ Like I said, this process *DOES NOT TERMINATE*. The universe appears to keep going and going. But, we don't have
+end Knowledge --                   | all day. I want my answer in my lifetime.
 
 instance : LE Knowledge where
   le := Knowledge.le
 
+--| Let's slow down because _A LOT_ just happened really, really fast. We are assuming that both kinds of orbital mechancis are just high frequency
+--| updates to a hyperbolic process.  See what I did there? Really fast happenigs.. the hyperboic process.. the comments..  That is 𝔽(1)-ny. It is
+--| interesting how intentional some of the words are beginning sound. Not to worry, we aren't describing science, we are describing description.
+
+--| So let's start BACK at the beginning again and write down, in order, all the propositions that we know, whether or not they are true or false.
+--| Then we run headlong in the halting problem, so we stop at a good place, after so many trials. Therefore, the ScientificProcess begins with
+--| counting.
+
+--| Just so everyone is CLEAR: the field of the single element is the *DARK* side of math that the device thinks exists in order to rationalize WTF is
+--| going on. Because reasoning about scaling and shifting affine transforms looks an awful lot like unifying the identities.
+
 @[reducible] -- We have learned this in the learning process
--- lol.  10 years of learning about the Taylor series.  It's like I can manipulate them with my eyes closed now.
 structure ScientificProcess  -- 104000
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -477,18 +548,25 @@ structure ScientificProcess  -- 104000
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]
   where
-  shows_us: LearningProcess Box Pigeon
-  knowledge: Knowledge
+  shows_us_higher_order_terms: LearningProcess Box Pigeon --+ What are we counting, anyway? Exponents on a polynomial, of course! first ONE then
+  knowledge: Knowledge --                                   | the ONE_PLUS_ONE.  Peano established 1, and if you don't buy that, stop iterating in
+--                                                          | FORTRAN and iterate in C++, like a gentleman.  These are the higher_order_terms that
+  learn? : Knowledge → Knowledge := fun line_number => --   | the LearningProcess shows us.  Right there in the name. Not as 𝔽(1)-ny, I know.
+    match line_number with
+    | .jarjar ONE                                 => .ledger ONE nowtrino.fact knowledge --                | I hope it is obvious that counting objects
+    | .ledger NEXT_ONE_IS A_MORE_DIFFERENT_ONE _   => .ledger NEXT_ONE_IS A_MORE_DIFFERENT_ONE knowledge --+ distinguishes them.  If it isn't, I suggest
+--                                                                                                         | that you are looking at a continuum that
+--  +------------------------------------------------------------------------------------------------------+ doesn't exist. The ledger is the order of
+--  | observation that starts with a fact and alternates between a proposition of truth and a fact, with the number of facts going up as we
+--  | accumulate.  And what are these facts we are accumulating? Math facts. This number _follows_ that number. We just don't use the arabic process
+--  | to write them down.  We use a spline process.  Or, we will use a spline process.
 
-  learn? : Knowledge → Knowledge := fun know =>
-    match know with
-    | .jarjar p       => .ledger p nowtrino.fact knowledge
-    |.ledger p f _   => .ledger p f knowledge
-
-class TRUTH  -- 5632
+@[reducible]
+class TRUTH  -- 5632  Truth? Look around you... is there any truth?  There is. The computer can still find some, although it is taking longer and
+             --              longer.
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
@@ -496,32 +574,49 @@ class TRUTH  -- 5632
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]
   where
-  becomes: ScientificProcess Box Pigeon
-  martyred? : Knowledge → Knowledge → Prop := fun f1 f2 =>
+  becomes: ScientificProcess Box Pigeon --  Is there truth? If there is truth, then all truth is the same truth. See DATA page.
+  does_it_matter_in_the_long_run? : Knowledge → Knowledge → Prop := fun f1 f2 => --| Grep this out and see how little it matters
     Knowledge.le f1 f2 → Knowledge.le f2 f1
 
+--| At the end of the day, this mimics the call stack on the universe. Not like that is easy to see. If you look at the bottom of the stack, it
+--| is the left and right side of the rfl that need evaluating in that order.
 
+--| Sabine Hossenfelder gives CLASSes in identifying how deep the bullshit is from the simple RFL most days on YouTube, continuing her work in
+--| applied Frankfurt theory.
+
+--| And so, inspired by their work, this is where my particular brand of asceticism asserts itself:
 
 inductive Gospel  -- 67
-  | the_proof: Prop → Gospel
-  | we_understand_that: Knowledge → Prop → Gospel → Gospel
+  | the_proof: Prop → Gospel   --------------------------------------+ Proved true or false.
+  | we_understand_that: Knowledge → Prop → Gospel → Gospel --        | BUT... the only understanding here is of the demonstration of the existence
+--                                                                   | of a proof that demonstrates understanding.
 
 namespace Gospel
 def le : Gospel → Gospel → Prop
-  | .the_proof before,                       .the_proof after                              => before = after
-  | .the_proof before,                       .we_understand_that _ after _                 => before = after
-  | .we_understand_that _ before _,          .the_proof after                              => before ≠ after
-  | .we_understand_that some_things can be_shown, .we_understand_that α cannot be_proven   =>
+  | .the_proof before,                       .the_proof after                              => before = after   --| Once proved, always proved
+  | .the_proof before,                       .we_understand_that _ after _                 => before = after   --| Once proved, it can be understood
+  | .we_understand_that _ before _,          .the_proof after                              => before ≠ after   --+ Understanding can't happen before
+  | .we_understand_that some_things can be_shown, .we_understand_that α cannot be_proven   =>                  --| the proof is finished.
                       (some_things ≤ α ∧ can = cannot ∧ le be_shown be_proven) ∨ le (.we_understand_that some_things can be_shown) be_proven
-termination_by _ source_file => sizeOf source_file
+--                                           ^
+--                                           +---------------+ Hmm. Could T = F? It is getting harder and harder for the compiler to tell the
+--                                                           | difference.
+
+-- AND MOST IMPORTANTLY, THIS IS A DEMONSTRATION OF THE SELF_REPLICATING DESCRIPTION OF DESCRIPTION, so we haven't proven anything, but it feels like
+-- they could be the same.  Are they though? That's the demonstration being performed.
+
+termination_by _ source_file => sizeOf source_file --| Be sure to stop at the end of the episodes, lol.
 end Gospel
 
 instance : LE Gospel where
   le := Gospel.le
 
+
+--| Enough metaphysical mumbo-jumbo, let's return to the world of scientific exploration and the rites and rituals around performing science in a
+--| scientific enough fashion that other scientists can recognize the rites you used and agree you incanted the words correctly.
 @[reducible] -- We have learned this while watching others.
 structure ReligiousProcess
     (Box: Type i)
@@ -531,9 +626,8 @@ structure ReligiousProcess
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
-    [truth: TRUTH Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [truth: TRUTH Box Pigeon]
   where
   we_experience: ScientificProcess Box Pigeon
   in_the_literature: Gospel
@@ -543,7 +637,7 @@ structure ReligiousProcess
     | .the_proof of_the_idea => .we_understand_that truth.becomes.knowledge of_the_idea in_the_literature
     | .we_understand_that _ when_an_idea becomes_an_experiment => .we_understand_that we_experience.knowledge
                                                                                                when_an_idea becomes_an_experiment
---| Spittin' triples like Bones Thugs -n- Harmony.
+--| Spittin' triples like Bones Thugs -n- Harmony. Eastside 1999.
 
 @[reducible]
 class WITNESSED
@@ -554,7 +648,7 @@ class WITNESSED
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
   where
   we_saw: ReligiousProcess Box Pigeon
@@ -591,7 +685,7 @@ structure UniverseTensor
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [yet: WITNESSED Box Pigeon]
   where
   frame_of_reference: ReligiousProcess Box Pigeon
@@ -613,7 +707,7 @@ class REAL
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
   where
   by_His_noodly_appendage: UniverseTensor Box Pigeon  --| Somehow, the science of the field equations played out as expected
@@ -709,7 +803,7 @@ structure BigRedDogProcess
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
   where
@@ -739,7 +833,7 @@ class LOCAL
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
   where
@@ -814,7 +908,7 @@ structure CalculusProcess
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (a_quarter: LOCAL Box Pigeon)  --| This is the one spot I can name this and it means nothing to the compiler, but it means something to *US*.
@@ -858,7 +952,7 @@ class UNIVERSAL
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (quartic: LOCAL Box Pigeon) ---| See the ODE above. This is a quadratic of a quadratic. Or a linear of a cubic. Either way.
@@ -962,7 +1056,7 @@ structure HeartbeatProcess
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (train_schedule: LOCAL Box Pigeon)
@@ -1010,7 +1104,7 @@ class LOGICAL
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (iterating_sequence: LOCAL Box Pigeon)
@@ -1031,7 +1125,7 @@ def le
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (matrix_assemply: LOCAL Box Pigeon)
@@ -1104,7 +1198,7 @@ structure ElaborationProcess
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (linearization: LOCAL Box Pigeon)
@@ -1145,7 +1239,7 @@ class HALTED
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (convergence_criteria: LOCAL Box Pigeon)
@@ -1193,7 +1287,7 @@ structure LeanProcess
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (attraction_process: LOCAL Box Pigeon)
@@ -1225,7 +1319,7 @@ class MEASURED
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (up: LOCAL Box Pigeon)
@@ -1273,7 +1367,7 @@ structure CompilerOutput
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (constant: LOCAL Box Pigeon)
@@ -1309,7 +1403,7 @@ class COMPILED
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (number: LOCAL Box Pigeon)
@@ -1371,7 +1465,7 @@ structure AtreyuProcess
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (quantum: LOCAL Box Pigeon)
@@ -1484,7 +1578,7 @@ class A_TRUTH_ABOUT
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (fact: LOCAL Box Pigeon)
@@ -1535,7 +1629,7 @@ variable
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     {fact: LOCAL Box Pigeon}
@@ -1690,7 +1784,7 @@ noncomputable def SAME
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     {fact: LOCAL Box Pigeon}
@@ -1721,7 +1815,7 @@ structure EquivalenceProcess
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (this_number: LOCAL Box Pigeon)
@@ -1749,7 +1843,7 @@ class INFERRED
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (same_number: LOCAL Box Pigeon)

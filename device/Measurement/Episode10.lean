@@ -107,7 +107,7 @@ noncomputable def consumeScaled : SCALED Prop truthCarrier :=
   AND_AUTOMATICALLY_FIND_WHAT_THE_LARGEST_NAT_IT_CANNOT_SUPPORT
 noncomputable def consumeLoad : LOAD Prop truthCarrier :=
   THE_COMPILER_WILL_READ_IT_OUT_FOR_YOU
-noncomputable def consumeIndex : INDEXOFANT Prop truthCarrier :=
+noncomputable def consumeIndex : OF Prop truthCarrier :=
   NO_NEED_TO_USE_COMPLEX_ANALYSIS_TO_UNDERSTAND_THE_INDEX_OF_THE_CONSTANT
 
 noncomputable def consumeReal : REAL Prop truthCarrier :=

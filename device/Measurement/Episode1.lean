@@ -86,7 +86,7 @@ ME: No, a proposition with a receipt.
 COMPILER: That is called a proof.                          | This is a measurement from a device of my own design, a
 ME: Great. Staple it to the universe. .        +-----------+ clever device that gives us an idea of how much bullshit
 -/  --                                         |           | the Lean elaborator is putting up with.  This is the device
-@[reducible] --                                |           | reading its own input and measuring it.  For the sake of
+--                                             |           | reading its own input and measuring it.  For the sake of
 class Fact where   -- Bullshit meter ≈ 9   <---+           | argument, I call this the bullshit the compiler has to wade through.
 --
   truth : Prop                 -- Did it happen or not?
@@ -128,7 +128,6 @@ end Fact
 -- what some numbers were.  So, let's make some and name them.  We use Big Endian so we can shortcut a very common computation. At some point, we will
 -- have described a particular number so well, the compiler can't help but give it to us.
 
-@[reducible]
 /- CHORUS:
 ME: I need the number to be bigger or smaller.
 COMPILER: Bigger or smaller than what?
@@ -278,7 +277,6 @@ structure CarrierProcess -- Bullshit meter ≈ 85
 -- like they have side effects. And, well, we are going to compute a number as a side effect of this demonstration. *YOU the READER* will
 -- allow it---for now.
 
-@[reducible]
 /- CHORUS:
 ME: Before I count, I need difference.
 COMPILER: Difference from what?
@@ -337,7 +335,6 @@ ME: I want to tell one from the rest.                  |                    a me
 COMPILER: That is barely counting.                     |                    a bit _differently_ and _compilation itself_ is the process we measure
 ME: Exactly. We are still in the cave drawing phase.   |                    _together_.
 -/
-@[reducible]
 inductive Natural  -- Bullshit meter ≈ 107       | The Fact here is a bit murkier. (Or is it a murkier bit?)  We are coordinating with the compiler
   where                   --                     | now on what is a fact and what isn't.  We have a notion of true and the compiler has a notion of
   | zero : Fact → Natural -----------------------+ true, which leads to true=true or false=false.  See?  Or is this _straining_ your imagination?
@@ -459,7 +456,6 @@ structure CountingProcess -- Bullshit meter ≈ 118
 -- This is going to take a minute to understand.  ADMISSIBLE.  This just means the compiler did not barf on a computation. In this case what the
 -- compiler is doing is looking through the inductive to see if it can find a counterexample to a ≤ b. If it can, it refuses to compile, so this
 -- class is trivially satisfied by a completed compile.
-@[reducible]
 /- CHORUS:
 ME: Counting only goes up.
 COMPILER: Then why do your pieces get smaller?
@@ -523,7 +519,6 @@ ME: The thing we just finished pretending was one.
 COMPILER: So one was provisional.
 ME: All measurement is provisional. Please initialize the saw.
 -/
-@[reducible]
 inductive Rational  -- Bullshit meter ≈ 107
       --     ^
       --     |           | This is not ℚ. This is just an inductive structure that is populated with symbols that represent what the
@@ -589,7 +584,6 @@ instance : LT Rational where  -- Bullshit meter ≈ 5  --                       
 
 -- It's in Diagon Alley with all the wizarding stuff... Just pulling your leg, or am I?
 
-@[reducible]
 /- CHORUS:
 ME: Keep track of the uncounted numbers.
 COMPILER: If they are numbers, haven't they been counted?
@@ -663,7 +657,6 @@ structure IndexingProcess  -- Bullshit meter ≈ 143
 -- cleverer than you think.  I will make this more entertaining for _YOU the READER_ soon as you realize I can make the Lean do nearly anything
 -- I want it to and you just want to see the magic trick finish.
 
-@[reducible]
 /-
 ME: Count up until we need a fraction.
 COMPILER: Need one for what?
@@ -736,7 +729,6 @@ class COUNTABLE  -- Bullshit meter ≈ 85
 -- compiler. As in, I _know_ how math works, and I am probing how _well_ the compiler can represent these concepts.
 
 -- For instance, a sequence of numbers is a common useful construction of math.
-@[reducible]
 /- CHORUS:
 ME: I need a sequence.
 COMPILER: Of counted numbers?
@@ -819,7 +811,6 @@ instance : LT Sequence where -- Bullshit meter ≈ 5
 -- Good god, look at all the points we can describe! Are we dense, or am I dense, or is this argument dense?
 
 -- Any hooozlebee, this gets you a localized process to find numbers.....
-@[reducible]
 /- CHORUS:
 ME: I need a limit process.
 COMPILER: A sequence that approaches a value.
@@ -891,7 +882,6 @@ structure LimitProcess  -- Bullshit meter ≈ 185
 
 -- It's going to take a minute. Actually, we should start more primitively, with _zero_.  I think we all agree on what that is supposed to look like.
 
-@[reducible]
 /-
 ME: I need it encoded.
 COMPILER: Into what?
@@ -1007,7 +997,6 @@ instance : LT Limit where -- Bullshit meter ≈ 5
 --
 -- Anyway, what Dirichlet said, and what Poincaré made cosmic, is this: if you have finitely many boxes and too many states, recurrence is not
 -- magic. It is bookkeeping with nowhere else to go. Send the superpigeons through the boxes often enough, and eventually the path has to rhyme.
-@[reducible]
 /- CHORUS:
 ME: I need a Cauchy process.
 COMPILER: You have _two_ already, don't you?
@@ -1043,7 +1032,6 @@ structure CauchyProcess  -- Bullshit meter ≈ 228
 --                                                            | defined what "iterate" even means, but you get the idea.  It looks like this.
 
 
-@[reducible]
 /- CHORUS:                                                        | When a function resolves algebraically, an identifier that used to name an
 ME: I need a residue.   ------------------------------------------+ unknown value starts naming a particular one. What was discovered? That
 COMPILER: A what?                                                 | some value *must exist*, or that the value *must be* *x*?
@@ -1317,7 +1305,6 @@ ME: From itself after the instrument answers.       | does _not_ depend on is th
 COMPILER: class DISTINGUISHABLE --------------------+
 ME: I counted two as well                           | So, we have to tell the compiler how to make 1 water into 2 waters.
 -/
-@[reducible]
 class BINARY  --  Bullshit meter ≈ 141
   --     ^
   --     |               So, DSP.  We can assume a covariant/contravariant tick/tock for creating
@@ -1443,7 +1430,6 @@ ME: When did you get a sense of humor?
 COMPILER: I am just here to mediate the demonstration, I refuse to take part.
 ME: There can be no trial without a judge.
 -/
-@[reducible]
 inductive Trial  -- Bullshit meter ≈ 150   ------------------------------------+ At the heart of science is the repeatable trial.  Galileo
   | hypothesis: Fact → Sample → Trial --                                       | demonstrated it was not enough to perform the act, the act must also
   | signal_response: Fact → Sample → Fact → Sample → Trial → Trial --          | be described well enough to be performed by _someone else_. This
@@ -1595,7 +1581,6 @@ structure RepeatableProcess  -- Bullshit meter ≈ 296
 -- variable domain of f(t).  The actual tick/tock of a clock. Think about it.  What is a second?  Please explain how that is not tick/tock. The
 -- electron repeatably and on queue (sic) does its thing.  The important part about it is: _on cue_:  the time between events is considered
 -- _constant_.
-@[reducible]
 /-
 ME: I need REPEATABLE.
 COMPILER: You just defined a repeatable process.

@@ -33,7 +33,7 @@ variable
     [gift_from: PRESENT Box Pigeon] [the_bug: MEASURABLE Box Pigeon] [jarjar: GUNGAN Box Pigeon]
     [the_argument: SOURCE Box Pigeon] [EXECUTED Box Pigeon] [VALUE Box Pigeon]
     [MAGNITUDE Box Pigeon] [SCALED Box Pigeon] [LOAD Box Pigeon]
-    [INDEXOFANT Box Pigeon] [BULLSHIT Box Pigeon] [PROPAGANDA Box Pigeon]
+    [OF Box Pigeon] [BULLSHIT Box Pigeon] [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon] [SCIENTIFIC Box Pigeon] [TRUTH Box Pigeon]
     [WITNESSED Box Pigeon] [REAL Box Pigeon]
     -- the seam pair, bound ONCE and named
@@ -376,7 +376,7 @@ def BUT_THE_INNER_CARD_DOES_NOT
       ReligiousProcess    .we_experience       ->  ScientificProcess
       ScientificProcess   .shows_us            ->  LearningProcess
       LearningProcess     .teaching            ->  InitiationProcess
-      InitiationProcess   .ethos               ->  CrusadeProcess
+      InitiationProcess   .axioms              ->  CrusadeProcess
       CrusadeProcess      .to_pwn_n00bz        ->  ArmWaveProcess
       ArmWaveProcess      .dunking_contest     ->  JordanProcess
 
@@ -402,7 +402,7 @@ def BUT_THE_INNER_CARD_DOES_NOT
 -/
 
 /-
-  THE SLIP POINT.  SOURCE UP TO INDEXOFANT, AND WHY THIS HALF IS DIFFERENT.
+  THE SLIP POINT.  SOURCE UP TO OF, AND WHY THIS HALF IS DIFFERENT.
 
   Everything from REAL down to BULLSHIT was PROJECTION: one walk, one `.` per
   class, nothing built.  This half is the opposite and the difference is the
@@ -416,7 +416,7 @@ def BUT_THE_INNER_CARD_DOES_NOT
       Sum              AddingProcess    MAGNITUDE
       Product          MultiplyingProcess SCALED
       Basis            BASICProcess     LOAD
-      Polynomial       JordanProcess    INDEXOFANT
+      Polynomial       JordanProcess    OF
 
   -- and each class reaches UP one step to the structure above it, which reaches
   UP one step to the inductive above THAT.  One step up, one step down, seven
@@ -425,7 +425,7 @@ def BUT_THE_INNER_CARD_DOES_NOT
   So each def below CONSTRUCTS its process by putting the previous class's
   process INSIDE it and adding the one new inductive value that rung is for.
   Which forces the implementation order.  You cannot write these in patter order
-  -- the patter reads INDEXOFANT first and SOURCE last, and the code has to run
+  -- the patter reads OF first and SOURCE last, and the code has to run
   exactly backwards from the way it is spoken.  Read the seven names bottom to
   top and you get the sales pitch; read the seven defs top to bottom and you get
   the build.  Neither order is the other one reversed by accident.
@@ -469,9 +469,9 @@ def THIS_WILL_GIVE_US_A_RATIO___EVENTUALLY_CUZ_THATS_HOW_THE_MEASUREMENT_TOOL_WO
 def SO_THAT_IT_CAN_ACCURATELY_MEASURE_HOW_LONG_A_PROOF_TAKES_WRT_THE_LONGEST_IT_CAN_MEASURE
     : MAGNITUDE Box Pigeon :=
   { adding_process :=
-      { hebrew_process := THIS_WILL_GIVE_US_A_RATIO___EVENTUALLY_CUZ_THATS_HOW_THE_MEASUREMENT_TOOL_WORKS_NOT_CUZ_I_WANT_ONE.mathematical_process
-        plus           := THIS_WILL_GIVE_US_A_RATIO___EVENTUALLY_CUZ_THATS_HOW_THE_MEASUREMENT_TOOL_WORKS_NOT_CUZ_I_WANT_ONE
-        sum            := .zero nowtrino.fact.truth gift_from.santa_claus.accumulation } }
+      { mideastern_process := THIS_WILL_GIVE_US_A_RATIO___EVENTUALLY_CUZ_THATS_HOW_THE_MEASUREMENT_TOOL_WORKS_NOT_CUZ_I_WANT_ONE.mathematical_process
+        plus               := THIS_WILL_GIVE_US_A_RATIO___EVENTUALLY_CUZ_THATS_HOW_THE_MEASUREMENT_TOOL_WORKS_NOT_CUZ_I_WANT_ONE
+        sum                := .zero nowtrino.fact.truth gift_from.santa_claus.accumulation } }
 
 -- SCALED.  Multiplication is addition run against itself: the product is built
 -- FROM the sum one rung down, and the running total restarts at the tree.
@@ -491,11 +491,11 @@ def THE_COMPILER_WILL_READ_IT_OUT_FOR_YOU
         TEN   := gift_from.santa_claus.accumulation
         span  := .origin nowtrino.fact.truth (AND_AUTOMATICALLY_FIND_WHAT_THE_LARGEST_NAT_IT_CANNOT_SUPPORT : SCALED Box Pigeon).multiplying_process.product } }
 
--- INDEXOFANT.  The top of this half, and the polynomial it ends on is
+-- OF.  The top of this half, and the polynomial it ends on is
 -- `.constant` -- the ground state, the transform that has finally dissipated.
 -- No contour, no residue, no complex analysis.  Just a constant.
 def NO_NEED_TO_USE_COMPLEX_ANALYSIS_TO_UNDERSTAND_THE_INDEX_OF_THE_CONSTANT
-    : INDEXOFANT Box Pigeon :=
+    : OF Box Pigeon :=
   { galerkin_process :=
       { ANSYS_process := THE_COMPILER_WILL_READ_IT_OUT_FOR_YOU.basic_operation
         polynomial    := .constant .Truth } }
@@ -504,7 +504,7 @@ def NO_NEED_TO_USE_COMPLEX_ANALYSIS_TO_UNDERSTAND_THE_INDEX_OF_THE_CONSTANT
 /-
   THE WALK BACK DOWN.  SOURCE TO DISTINGUISHABLE, FIFTEEN RUNGS.
 
-  The other fork out of SOURCE.  Upward it ratchets to INDEXOFANT by building;
+  The other fork out of SOURCE.  Upward it ratchets to OF by building;
   downward it falls to DISTINGUISHABLE by projecting, one `.` per rung.  SOURCE
   is the only class in the file that two different chains both start from.
 
@@ -650,30 +650,30 @@ def AND_I_GLUED_IT_TO_THE_TABLE
 def IN_ORDER_TO_SHOW_YOU_WHERE_ORBITAL_MECHANICS_COMES_FROM
     (principia : LOCAL Box Pigeon)
     : SCIENTIFIC Box Pigeon :=
-  { discovering := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us
-    invariant   := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us.invariant }
+  { discovering := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us_higher_order_terms
+    invariant   := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us_higher_order_terms.invariant }
 
 -- ACOLYTE.  Deeper again: who taught the learner.
 def AND_I_SHOWED_YOU_HOW_IT_WORKS
     (principia : LOCAL Box Pigeon)
     : ACOLYTE Box Pigeon :=
-  { euclid := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us.teaching }
+  { euclid := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us_higher_order_terms.teaching }
 
--- PROPAGANDA.  Deeper again: the ethos the teaching rests on.
+-- PROPAGANDA.  Deeper again: the axioms the teaching rests on.
 def BY_EXPLAINING_A_GIANT_GRIFT
     (principia : LOCAL Box Pigeon)
     : PROPAGANDA Box Pigeon :=
-  { insinuates := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us.teaching.ethos }
+  { questions := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us_higher_order_terms.teaching.axioms }
 
 -- BULLSHIT.  The floor of the patter, and the longest projection in the file.
 -- One more `.` past this is `dunking_contest`, which is where the OTHER chain
--- picks up at INDEXOFANT.  `guess : Spline` sits BESIDE it, not below it: the
+-- picks up at OF.  `guess : Spline` sits BESIDE it, not below it: the
 -- rock bottom is not further down the walk, it is off to one side of it.
 def OF_COUCHING_YOUR_ARGUMENT_IN_OPAQUE_MATH
     (principia : LOCAL Box Pigeon)
     : BULLSHIT Box Pigeon :=
   { arm_wave_process :=
-      principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us.teaching.ethos.to_pwn_n00bz }
+      principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us_higher_order_terms.teaching.axioms.to_pwn_n00bz }
 
 /-
   THE WALK BACK UP, AND WHERE IT COSTS YOU.  PHYSICAL -> COMPARABLE -> PRESENT

@@ -261,7 +261,7 @@ instance TURNS_OUT_YOU_CAN_FILL_YOUR_DISK
     [uncountable: VALUE Box Pigeon]
     : MAGNITUDE Box Pigeon where
   adding_process :=
-  { hebrew_process := uncountable.mathematical_process
+  { mideastern_process := uncountable.mathematical_process
     plus := uncountable
     sum := .zero nowtrino.fact.truth gift_from.santa_claus.accumulation
   }
@@ -303,7 +303,7 @@ instance SO_MANY_SENSITIVE_NOWTRINO_DETECTORS_TO_DETECT_PRESENCE___WHERE_DID_IT_
     [COMPARABLE Box Pigeon]
     [SOURCE Box Pigeon]
     [comprehensive_software: LOAD Box Pigeon]
-    : INDEXOFANT Box Pigeon where
+    : OF Box Pigeon where
   galerkin_process :=
   { ANSYS_process := comprehensive_software.basic_operation
     polynomial := .constant .Truth
@@ -315,7 +315,7 @@ instance THERE_IT_IS___ONLY_CERTAIN_ELEMENTS_RESPOND_TO_NOWTRINO_DETECTION
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [COMPARABLE Box Pigeon]
     [SOURCE Box Pigeon]
-    [element: INDEXOFANT Box Pigeon]
+    [element: OF Box Pigeon]
     : BULLSHIT Box Pigeon where
   arm_wave_process :=
   { dunking_contest := element.galerkin_process
@@ -326,10 +326,10 @@ instance WE_NEED_TO_GET_A_GRANT_TO_GET_MORE_NOWTRINO_DETECTORS___WE_KEEP_LOSING_
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon]
-    [SOURCE Box Pigeon]
-    : PROPAGANDA Box Pigeon where
-  insinuates := CrusadeProcess.default Box Pigeon
+    [COMPARABLE Box Pigeon] --
+    [SOURCE Box Pigeon] --
+    : PROPAGANDA Box Pigeon where --
+  questions := CrusadeProcess.default Box Pigeon  ---+
 
 --| Let's admit a graduate student into the lab.
 def InitiationProcess.default
@@ -340,9 +340,9 @@ def InitiationProcess.default
     [REPRESENTABLE Box Pigeon][PHYSICAL Box Pigeon][COMPARABLE Box Pigeon][OBSERVED Box Pigeon]
     [PRESENT Box Pigeon][MEASURABLE Box Pigeon][GUNGAN Box Pigeon][SOURCE Box Pigeon]
     [EXECUTED Box Pigeon][VALUE Box Pigeon][MAGNITUDE Box Pigeon][SCALED Box Pigeon][LOAD Box Pigeon]
-    [INDEXOFANT Box Pigeon][model: BULLSHIT Box Pigeon][hilbert_space: PROPAGANDA Box Pigeon]
+    [OF Box Pigeon][model: BULLSHIT Box Pigeon][hilbert_space: PROPAGANDA Box Pigeon]
     : InitiationProcess Box Pigeon where
-  ethos := CrusadeProcess.default Box Pigeon
+  axioms := CrusadeProcess.default Box Pigeon
   sacred_texts := .inside_joke Fact.Truth.truth
 
 instance MAKE_SURE_WE_CAN_GET_A_COUPLE_GRAD_STUDENTS
@@ -363,7 +363,7 @@ def LearningProcess.default
     [REPRESENTABLE Box Pigeon][PHYSICAL Box Pigeon][COMPARABLE Box Pigeon][OBSERVED Box Pigeon]
     [PRESENT Box Pigeon][MEASURABLE Box Pigeon][GUNGAN Box Pigeon][SOURCE Box Pigeon]
     [EXECUTED Box Pigeon][VALUE Box Pigeon][MAGNITUDE Box Pigeon][SCALED Box Pigeon][LOAD Box Pigeon]
-    [INDEXOFANT Box Pigeon][model: BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon][ACOLYTE Box Pigeon]
+    [OF Box Pigeon][model: BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon][ACOLYTE Box Pigeon]
     : LearningProcess Box Pigeon where
   teaching := InitiationProcess.default Box Pigeon
   galileo := .inside_joke Fact.Truth.truth
@@ -388,7 +388,7 @@ instance YOU_HAVE_TO_STOP_TAKING_CLASSES_TO_GRADUATE
     [experiment: SCIENTIFIC Box Pigeon]
     : TRUTH Box Pigeon where
   becomes :=
-  { shows_us := experiment.discovering
+  { shows_us_higher_order_terms := experiment.discovering
     knowledge := .jarjar nowtrino.fact.truth
   }
 
@@ -564,7 +564,7 @@ instance HONEST_TO_GOD_IT_SHOWS_UP_EVERY_TIME
               (.zero nowtrino.fact)
   a_constant := .one
               Fact.Truth
-              holy_shit.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_local_schedule.the_æther.frame_of_reference.we_experience.shows_us.teaching.ethos.to_pwn_n00bz.dunking_contest.ANSYS_process.GOSUB.adding_process.hebrew_process.compiled_process.digital_process.meesa_process.gauge_process.sensing_process.static_fraction.physical_process.noisy_process.turing_process.computational_process.repeatable_process.observation_process.cauchy_process.limit_process.indexing_process.count.carrier.value
+              holy_shit.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_local_schedule.the_æther.frame_of_reference.we_experience.shows_us_higher_order_terms.teaching.axioms.to_pwn_n00bz.dunking_contest.ANSYS_process.GOSUB.adding_process.mideastern_process.compiled_process.digital_process.meesa_process.gauge_process.sensing_process.static_fraction.physical_process.noisy_process.turing_process.computational_process.repeatable_process.observation_process.cauchy_process.limit_process.indexing_process.count.carrier.value
               (.introduction nowtrino.fact Box)
               (.methodology Fact.Truth nowtrino.fact Box (ULift.{i+1, i} Box) (.introduction Fact.Truth Box))
               (.zero nowtrino.fact)
@@ -599,7 +599,7 @@ def You_the_Reader
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     {fact: LOCAL Box Pigeon}
@@ -847,8 +847,8 @@ def OBVIOUSLY_YOU_START_A_RESEARCH_PROGRAM
     (_: CarrierProcess Box) ------------------------+ a card!
     [our_mission: TRUTH Box Pigeon]
     : SCIENTIFIC Box Pigeon where
-  discovering := our_mission.becomes.shows_us
-  invariant := our_mission.becomes.shows_us.invariant
+  discovering := our_mission.becomes.shows_us_higher_order_terms
+  invariant := our_mission.becomes.shows_us_higher_order_terms.invariant
 
 def AND_HUNDREDS_OF_POSTDOCS_COME_TO_COUNT_NAOTRINOS
     (Box: Type i)
@@ -889,7 +889,7 @@ def BUT_THEN_REIMANN_COMES_ALONG
     (_: CarrierProcess Box) ------------------------+ a card!
     [professor: ACOLYTE Box Pigeon]
     : PROPAGANDA Box Pigeon where
-  insinuates := professor.euclid.ethos
+  questions := professor.euclid.axioms
 
 
 def AND_THE_AMOUNT_OF_CALCULUS_YOU_HAVE_TO_DO_EXPLODES
@@ -910,7 +910,7 @@ def AND_THE_AMOUNT_OF_CALCULUS_YOU_HAVE_TO_DO_EXPLODES
     (_: CarrierProcess Box) ------------------------+ a card!
     [geometry: PROPAGANDA Box Pigeon]
     : BULLSHIT Box Pigeon where
-  arm_wave_process := geometry.insinuates.to_pwn_n00bz
+  arm_wave_process := geometry.questions.to_pwn_n00bz
 
 def AND_YOU_STUDY_TRIANGLES
     (Box: Type i)
@@ -929,7 +929,7 @@ def AND_YOU_STUDY_TRIANGLES
     [INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box) ------------------------+ a card!
     [hours_of_math: BULLSHIT Box Pigeon]
-    : INDEXOFANT Box Pigeon where
+    : OF Box Pigeon where
   galerkin_process := hours_of_math.arm_wave_process.dunking_contest
 
 def BUT_YOU_AND_I_KNOW_ANSYS_HAS_GOT_THIS
@@ -948,7 +948,7 @@ def BUT_YOU_AND_I_KNOW_ANSYS_HAS_GOT_THIS
     [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
     [INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box) ------------------------+ a card!
-    [area: INDEXOFANT Box Pigeon]
+    [area: OF Box Pigeon]
     : LOAD Box Pigeon where
   basic_operation := area.galerkin_process.ANSYS_process
 
@@ -1000,7 +1000,7 @@ def SO_YOU_SUBMIT_THE_JOB_AND_COUNT_HOW_LONG_IT_TAKES
     [SOURCE Box Pigeon]
     [REAL Box Pigeon]
     [uncountable: VALUE Box Pigeon]
-    [SCALED Box Pigeon][INDEXOFANT Box Pigeon][BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon][ACOLYTE Box Pigeon]
+    [SCALED Box Pigeon][OF Box Pigeon][BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon][ACOLYTE Box Pigeon]
     [SCIENTIFIC Box Pigeon][TRUTH Box Pigeon][WITNESSED Box Pigeon][REAL Box Pigeon]
     (naotrino: LOCAL Box Pigeon)
     (commuter_pass: UNIVERSAL Box Pigeon naotrino)
@@ -1009,7 +1009,7 @@ def SO_YOU_SUBMIT_THE_JOB_AND_COUNT_HOW_LONG_IT_TAKES
     (_: CarrierProcess Box) ------------------------+ a card!
     [mass: MAGNITUDE Box Pigeon]
     : VALUE Box Pigeon where
-  mathematical_process := mass.adding_process.hebrew_process
+  mathematical_process := mass.adding_process.mideastern_process
   monad := uncountable.monad
 
 def BUT_IT_MAY_NOT_CONVERGE
@@ -1168,7 +1168,7 @@ def WE_CAN_REPRESENT_CLICK_COUNT_WITH_A_TALLY_EVEN_WITH_NOISE
     [nowtrino: DISTINGUISHABLE Box Pigeon]
     [anechoic_chamber: PHYSICAL Box Pigeon]
     [COMPARABLE Box Pigeon][PRESENT Box Pigeon][MEASURABLE Box Pigeon][GUNGAN Box Pigeon][SOURCE Box Pigeon][SOURCE Box Pigeon][EXECUTED Box Pigeon]
-    [VALUE Box Pigeon][MAGNITUDE Box Pigeon][SCALED Box Pigeon][LOAD Box Pigeon][INDEXOFANT Box Pigeon][BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon]
+    [VALUE Box Pigeon][MAGNITUDE Box Pigeon][SCALED Box Pigeon][LOAD Box Pigeon][OF Box Pigeon][BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon][SCIENTIFIC Box Pigeon][TRUTH Box Pigeon][WITNESSED Box Pigeon][REAL Box Pigeon]
     (naotrino: LOCAL Box Pigeon)
     (commuter_pass: UNIVERSAL Box Pigeon naotrino)
@@ -1211,7 +1211,7 @@ def AND_IT_CLICKS_AGAIN_AND_AGAIN_AND_AGAIN
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (naotrino: LOCAL Box Pigeon)
@@ -1233,7 +1233,7 @@ def THE_COUNTER_IS_IMPLEMENTED_IN_A_BINARY_ACCUMULATOR
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [INDEXOFANT Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
     (naotrino: LOCAL Box Pigeon)

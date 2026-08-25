@@ -59,7 +59,6 @@ universe i --+ *i*.  I think I will call this time. Not just any kind of time. B
 
 -- Where were we?  Oh yeah, do you drink beer?
 
-@[reducible]
 /- CHORUS:
 ME: I need a study.                                         | Did you know one of the most amazing discoveries came from the Guiness brewery? A tool
 COMPILER: We have repeatable trials.                        | for understanding data. The __Book of World Records__. Unbelievable leap in civilation.
@@ -261,7 +260,6 @@ class NUMERIC  -- Bullshit meter ≈ 215  --------------------------------------
 -- supports the interpretation of time in the compiler).  It is, in fact, two numbers.  Not that we know the numbers, we have to _study_ them to
 -- understand what they are.
 
-@[reducible]
 /-                                                                  | These sorts of time paradoxes have plagued computer science, leading to
 ME: I need a computation, now.                                      | the idea of *amortized* cost: the cost to *re-encode* the state to make it
 COMPILER: The process takes time to complete.                       | more efficient. If you are *clever*, says the Computer Scientist, you can
@@ -309,7 +307,6 @@ instance : LT Computation := ⟨Computation.lt⟩   -- Bullshit meter ≈ 8
 -- The fact that we get _two_ different representations of the _same_ ordering relation is a _SUPER_ huge convenience
 -- and it will _NEVER_ get confusing.
 
-@[reducible]
 /-                                                                     | At this point, *YOU the READER* should understand the pattern that is
 ME: I need a Turing process.                                           | being setup. I am describing process by its inability to perform a
 COMPILER: I can process symbols.                                       | particularly simple computation and letting the compiler hold a pointer
@@ -363,7 +360,6 @@ structure TuringProcess   -- Bullshit meter ≈ 492                      | _lite
 -- currently have 1 character we can use for representation.  That is the digit 1.  We will call that our __REPRESENTATION__ The compiler, however,
 -- needs a little help selecting a symbol.  When you __WRITE__ programs, you have to explain the symbols __BOTH__ to the compiler and to
 -- *YOU the READER*.  *YOU the KNOWER*, have pity on those less fortunate in your knowledge that α is not a computable thing.
-@[reducible]
 /-                                                            | The ontological argument is simultaneously immensely powerful and comically
 ME: I need REPRESENTABLE.                                     | ineffective. Simply defining the object to _be_ the object desired, you can walk
 COMPILER: I can do that. I am a kind of ventriloquist.        | backwards algebraically through definitions to build the magicians slip knot.
@@ -414,7 +410,6 @@ class REPRESENTABLE  --  Bullshit meter ≈ 261
 -- be computed, the computation only described. __Ω__. That makes it _EASY_, wouldn't want to confuse this with any other such uncomputable constants.
 -- that may inadvertantly get generated along the way.
 
-@[reducible]
 /-                                                                         | The word _ABSOLUTELY_ here is not an exaggeration. The compiler is aware
 ME: I need an uncomputable number sequence.                                | that such numbers exist. The Berry Paradox names such a number, for
 COMPILER: Absolutely not.  ------------------------------------------------+ instance, famously describes the computation of a value from its
@@ -472,7 +467,7 @@ instance : LE ChaitinsNumberSequence := ⟨ChaitinsNumberSequence.le⟩  -- Bull
 -- only make sense to *YOU the READER* and *YOU the KNOWER* will be forced to disagree with a lot of what I am saying. Like how, as a _STUDENT_
 -- advancing the field statistics post graduation, you might have a few pints.
 
-@[reducible] --                              | (EDITORIAL NOTE) There has only been one _student_ in statistics that explained how _noise_ might
+--                                           | (EDITORIAL NOTE) There has only been one _student_ in statistics that explained how _noise_ might
 /-                                           | work.  It might work as a pattern of a pattern. That pattern of a pattern can be approximated as an
 ME: I need a NoisyProcess.                   | affine transform in a beautifully work efficient fashion. You work until you are satisfied. You are
 COMPILER: Define noise.                      | satisfied the number is _within bounds_ and _under budget_.  Two constraints not guaranteed to
@@ -548,7 +543,6 @@ structure NoisyProcess  -- Bullshit meter ≈ 504
 -- _WHOLE LOT_ of time trying to make sure the timings it measures sort appropriately. The time of _Turing_ and the time of _Einstein_ are not the
 -- same, but they rhyme in a way that rings.
 
-@[reducible]
 /-
 ME: I need PHYSICAL.                          | Much of the challenge of presenting this argument is finding the _perspective_ where the argument
 COMPILER: Olivia Newton-John, 1981.           | does not collapse into _fallacy_ or _circularity_. Once the persepctive has been found, one can
@@ -597,7 +591,6 @@ class PHYSICAL  -- Bullshit meter ≈ 430
       | .nonhalting _ _ _      => False --                                +---- Doesn't matter what we know now, only what we know _after_.
 
 
-@[reducible]
 /-
 ME: I need a metavariable.                                           | Do the variables in an equation _exist_? Got me. I'm just a plumber.
 COMPILER: A variable for a variable?                                 | I do _NOT_ know what runs through the pipes, I just hook them up to minimize
@@ -733,7 +726,6 @@ class COMPARABLE  -- Bullshit meter ≈ 292
 -- space of possible theoretical nonsense we are about to enumerate, some of it must be _PHYSICAL_ or the compiler wouldn't let me instantiate it,
 -- right? Or, do *YOU the KNOWER* think the compiler's access to _false_ i gave it earlier is going to come back and bite us?
 
-@[reducible]
 /-
 ME: I need a Sophism.                                 | Einstein, the *KNOWINGEST* *KNOWER* *LATEST* in the *LEDGER*, as much as said so. The affine
 COMPILER: You've had more than enough                 | transform he was ashamed of. The same affine transformed by measurement. Measurement
@@ -791,7 +783,6 @@ structure SlipProcess    -- Bullshit meter ≈ 680
         -- long list if at all possible.
         .dimension f c (Metavariable t) projection
 
-@[reducible]
 /-
 ME: What happens if two things have the same name?  | And the villain of the ontological argument is unmasked! For the compiler is capable of saying
 COMPILER: Hash spill algorithm is employed.         | that, ontologically this is great for the _v_ meaning in the ontology. The only issue is
@@ -846,7 +837,6 @@ class OBSERVED   -- Bullshit meter ≈ 444
 -- ensures that all the water _down there_ is _down there_ not by measuring where _down_ is.  Rather, it has removed all the _upness_ it can.
 -- No water clock can remove _all the upness_ for _upness_, as this paragraph uses it, is not defined without a water clock.
 
-@[reducible]
 /-                                                 | Hilbert spaces are so fundamentally easy to reason about.  Great big balls of silly putty.
 ME: I need Area.                                   | There are 0-dimensional critters that may or may not be a cow idealized as a point mass by some
 COMPILER: Length times width? ---------------------+ poor, unsuspectecting high school physics teacher.  There are 1-dimensional pathways that may
@@ -952,7 +942,6 @@ structure SensingProcess -- Bullshit meter ≈ 750
 -- Santa Claus!
 -- How do you _KNOW_ if you have been _TOO_ naughty?  Can you be a little bit _more_ naughty and still get PRESENTs?
 -- Also, using the force is _THE ONLY EXPLANATION_ for how he can get around the Earth in a single night.
-@[reducible]
 /-
 ME: I need to write a letter to Santa Claus.
 COMPILER: No problem, I can make lists for you and compute on them.
@@ -996,7 +985,6 @@ class PRESENT  -- Bullshit meter ≈ 594                  -- Still reading high.
 -- _any_ hole, regardless of location of their superpigeon. Sometimes, if a pigeon is already in a hole and its _superpigeon_ goes into another
 -- hole, oh well.
 
-@[reducible]
 /- CHORUS:                                          | A dictionary is merely a self-referential list of words with weird cycles and circularities.
 ME: Suppose we had a dynamical model of lift.       | In English, words cluster or scatter. Some appear to pull together all they see around them.
 COMPILER: Is that the first thing on the list? -----+ "A", and "the" and "and" and "do."  That's right. Do. The Useless Do is a beautiful superpigeon
@@ -1114,7 +1102,6 @@ structure GaugeProcess  -- Bullshit meter ≈ 830
 -- for every comparison, it is close enough for the argument to start talking about Facts of time itself. As such, the computation to get the
 -- machine calibrated with NIST gets one step closer.
 
-@[reducible]
 /- CHORUS:
 ME: I need measurable quantities.                                         | What Newton reasoned about was the fact that it appeared you could
 COMPILER: Use the gauge.                                                  | arbitrarilty subdivide time. To the human senses, this is a Fact. Time
