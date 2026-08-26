@@ -559,17 +559,32 @@ theorem every_jar_has_the_ratio (j : Jar) :
     tangeCount (tapeOfJar j) = fungeCount (tapeOfJar j) + 1 :=
   tange_exceeds_funge_by_the_origin (tapeOfJar j)
 
+/-- One more bang is one more heartbeat pair, and the machine says so by `rfl`:
+the two outer steps reduce whatever the branch underneath turns out to be. -/
+theorem the_branch_steps (n : Nat) :
+    tangeCount (tapeOfJar (deepBranch (n+1)))
+        = tangeCount (tapeOfJar (deepBranch n)) + 1
+      ∧ fungeCount (tapeOfJar (deepBranch (n+1)))
+        = fungeCount (tapeOfJar (deepBranch n)) + 1 :=
+  ⟨rfl, rfl⟩
+
 /-- The branch bills its depth: `n` bangs is `n` heartbeat pairs over one
 introduction. -/
-theorem the_branch_counts (n : Nat) :
+theorem the_branch_counts : ∀ n : Nat,
     tangeCount (tapeOfJar (deepBranch n)) = n + 1
-      ∧ fungeCount (tapeOfJar (deepBranch n)) = n := by
-  induction n with
-  | zero => exact ⟨rfl, rfl⟩
-  | succ n ih =>
-      obtain ⟨ht, hf⟩ := ih
-      simp [deepBranch, tapeOfJar, tangeCount, fungeCount, stepsOf, Step.isTange] at *
-      omega
+      ∧ fungeCount (tapeOfJar (deepBranch n)) = n
+  | 0     => ⟨rfl, rfl⟩
+  | n + 1 =>
+      ⟨(the_branch_steps n).1.trans (congrArg (· + 1) (the_branch_counts n).1),
+       (the_branch_steps n).2.trans (congrArg (· + 1) (the_branch_counts n).2)⟩
+
+/-- The collapse cell is one more pair on top of the branch, again by `rfl`. -/
+theorem the_register_steps (f : Fact) (n : Nat) :
+    tangeCount (tapeOfJar (register f n))
+        = tangeCount (tapeOfJar (deepBranch n)) + 1
+      ∧ fungeCount (tapeOfJar (register f n))
+        = fungeCount (tapeOfJar (deepBranch n)) + 1 :=
+  ⟨rfl, rfl⟩
 
 /-- THE RATIO OF THE REGISTER.  Alpha zero of an `n`-deep register is
 `(n+2, n+1)`: the depth, plus the collapse cell, plus the origin.  Hold this
@@ -578,10 +593,66 @@ the tape grows while the measurement stands still.  That contrast is the whole
 file, stated twice. -/
 theorem alpha_0_bills_the_register (f : Fact) (n : Nat) :
     alpha_0 (tapeOfJar (register f n)) = (n + 2, n + 1) := by
-  obtain ⟨ht, hf⟩ := the_branch_counts n
-  simp [register, prepare, tapeOfJar, alpha_0, tangeCount, fungeCount, stepsOf,
-        Step.isTange] at *
+  have h := the_branch_counts n
+  have r := the_register_steps f n
+  show (tangeCount (tapeOfJar (register f n)), fungeCount (tapeOfJar (register f n))) = _
+  rw [r.1, r.2, h.1, h.2]
+
+/-- THE SERIAL COST, SAID OUT LOUD.  The register's tape is `2n+3` steps: two
+per level of depth, plus the collapse cell's pair, plus the origin.  LINEAR IN
+`n`.  Set this beside `measurement_is_constant_in_register_size`, which is
+`rfl`: the work grows and the answer does not move.
+
+That is the qubit modelled SERIALLY and honestly.  A qubit is assumed to answer
+in constant time regardless of register size; this register's ANSWER is constant
+in `n` by `rfl`, and its COST is linear in `n` by this theorem.  The device does
+not claim the constant answer is free -- it prices it, and the price is the tape.
+The two theorems together are the whole exhibit, and neither one alone is. -/
+theorem the_register_costs_linearly (f : Fact) (n : Nat) :
+    tangeCount (tapeOfJar (register f n)) + fungeCount (tapeOfJar (register f n))
+      = 2 * n + 3 := by
+  have h := the_branch_counts n
+  have r := the_register_steps f n
+  rw [r.1, r.2, h.1, h.2]
   omega
+
+/-- The register's two counts, in one place: `(n+2, n+1)`. -/
+theorem the_register_counts (f : Fact) (n : Nat) :
+    tangeCount (tapeOfJar (register f n)) = n + 2
+      ∧ fungeCount (tapeOfJar (register f n)) = n + 1 := by
+  have h := the_branch_counts n
+  have r := the_register_steps f n
+  exact ⟨by rw [r.1, h.1], by rw [r.2, h.2]⟩
+
+/-- `(n+3)(n+1) < (n+2)²`.  Both sides are `n² + 4n + k`; the whole content is
+`3 < 4`.  The origin is the entire difference, which is the same sentence the
+counting has been making since Episode 10. -/
+theorem the_deeper_ratio_is_smaller (n : Nat) : (n+3)*(n+1) < (n+2)*(n+2) := by
+  simp [Nat.mul_add, Nat.add_mul]; omega
+
+/-- THE RATIO FALLS WITH DEPTH.  Cross-multiplied, no division performed: one
+level deeper is strictly closer to one.  `2, 3/2, 4/3, 5/4, ...` -/
+theorem the_ratio_decreases (f : Fact) (n : Nat) :
+    tangeCount (tapeOfJar (register f (n+1))) * fungeCount (tapeOfJar (register f n))
+      < tangeCount (tapeOfJar (register f n)) * fungeCount (tapeOfJar (register f (n+1))) := by
+  rw [(the_register_counts f n).1, (the_register_counts f n).2,
+      (the_register_counts f (n+1)).1, (the_register_counts f (n+1)).2]
+  exact the_deeper_ratio_is_smaller n
+
+theorem the_closing_arithmetic (n d : Nat) (hd : d ≤ n + 1) :
+    d * (n + 2) ≤ (d + 1) * (n + 1) := by
+  simp [Nat.mul_add, Nat.add_mul]; omega
+
+/-- AND IT CLOSES ON ONE, without a limit and without a real number.  For EVERY
+`d` up to the depth, the ratio is at or under `(d+1)/d` -- so it is eventually
+inside any bracket around one you care to name, and the naming is an integer.
+This is the bracket-not-pin discipline applied to a limit: the device never says
+"tends to", it says "is under `(d+1)/d` from depth `d` onward". -/
+theorem the_ratio_closes_on_one (f : Fact) (n d : Nat) (hd : d ≤ n + 1) :
+    d * tangeCount (tapeOfJar (register f n))
+      ≤ (d + 1) * fungeCount (tapeOfJar (register f n)) := by
+  rw [(the_register_counts f n).1, (the_register_counts f n).2]
+  exact the_closing_arithmetic n d hd
 
 /-! ### THE BOUNDS -- the bracket the ratio sits in
 
@@ -594,9 +665,13 @@ theorem the_ratio_is_bracketed (f : Fact) (n : Nat) :
     fungeCount (tapeOfJar (register f n)) < tangeCount (tapeOfJar (register f n))
       ∧ tangeCount (tapeOfJar (register f n))
           ≤ 2 * fungeCount (tapeOfJar (register f n)) := by
-  have h := alpha_0_bills_the_register f n
-  simp [alpha_0] at h
-  omega
+  have h := the_branch_counts n
+  have r := the_register_steps f n
+  rw [r.1, r.2, h.1, h.2]
+  -- Split the conjunction BEFORE omega.  `omega` on a conjoined goal reaches for
+  -- `Classical.choice`; on each conjunct alone it does not.  Same arithmetic,
+  -- one axiom cheaper.
+  exact ⟨by omega, by omega⟩
 
 /-! ### ALPHA ONE -- the first variation, taken by the device's own instrument
 

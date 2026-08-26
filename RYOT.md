@@ -1275,6 +1275,47 @@ For non-deterministic outputs:
 - distinguish reproducible state from sampled output;
 - expect review to focus on the distribution of results, not one run alone.
 
+## Finding The Named Leaves And Hooking Them Up
+
+The device's live chain is `device/Measurement/Episode1.lean` through
+`Episode13.lean`, reached from the root `device/Measurement.lean`, which imports
+exactly one module. Everything else that has ever been proved lives beside it in
+`device/Measurement/SupportingMeasurements/` as NAMED LEAVES: standalone files,
+each one a small claim with its own receipts, none of them imported by the story.
+
+An agent arriving cold will not find them by reading the chain, because the chain
+does not mention them. Look in the directory, not in the imports.
+
+```text
+device/Measurement/Episode*.lean            the story -- 1 to 13, the live build
+device/Measurement/SupportingMeasurements/  the named leaves -- proved, not wired
+device/Measurement/Calibration/             instruments the chain does import
+```
+
+TO FIND ONE, grep the directory for the claim rather than the filename; the
+files are named for what they say (`TheBoxesCounted`, `TheCrossingCannotBeNamed`,
+`TheSlipPointByBisection`), so the name IS the claim and a grep for a word like
+`bracket` or `descent` lands on the right leaf faster than a listing does.
+
+TO HOOK ONE UP, four steps and the fourth is the one agents skip:
+
+```text
+1. import Measurement.SupportingMeasurements.<Leaf> from the Episode that needs it
+2. lake build from device/ -- never from the repo root
+3. read the census off #print axioms, not off "it built"
+4. check the leaf still says what its name says AFTER the chain moved under it
+```
+
+Step four is the real work. A leaf that imports the live chain carries receipts
+that ROT SILENTLY when the chain changes: the file still exists, the theorem
+still has its name, and the proof it stands on is a build old. Nothing warns you.
+A leaf with no live imports cannot rot this way, so check the leaf's imports
+before trusting its age.
+
+THE RULE THAT FOLLOWS: a leaf the corpus cites belongs in the build the gate
+reads. An unwired leaf is a claim nobody re-checks, and a `#print axioms` that no
+build regenerates is not a receipt -- it is a memory of one.
+
 ## RYOT Final Rule
 
 RYOT works when each agent preserves the other agent's future context.

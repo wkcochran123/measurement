@@ -995,6 +995,68 @@ theorem the_bracket_straddles :
       ∧ 0 ≤ sideOf theBracket.2.1 theBracket.2.2 :=
   the_bracket_never_loses_the_root 200 (137, 1) (138, 1) (by decide) (by decide)
 
+/-! ### THE BRACKET NARROWS -- convergence, stated without a limit
+
+Containment above says the root never escapes.  It does not say the walk gets
+anywhere.  These say it does, and they say it in whole numbers: the two ends
+keep a determinant of exactly ONE, and their denominators grow by at least one
+per step.  A gap of one over a growing product is a width going to nothing, and
+no real number was borrowed to say so. -/
+
+/-- The two ends' determinant: `hi.1*lo.2 - lo.1*hi.2`.  For a straddling pair
+of the Stern-Brocot kind this is the numerator of the width. -/
+def gapOf (lo hi : Nat × Nat) : Nat := hi.1 * lo.2 - lo.1 * hi.2
+
+theorem the_mediant_keeps_the_gap_below (lo hi : Nat × Nat) :
+    gapOf (lo.1 + hi.1, lo.2 + hi.2) hi = gapOf lo hi := by
+  simp [gapOf, Nat.add_mul, Nat.mul_add]; omega
+
+theorem the_mediant_keeps_the_gap_above (lo hi : Nat × Nat) :
+    gapOf lo (lo.1 + hi.1, lo.2 + hi.2) = gapOf lo hi := by
+  simp [gapOf, Nat.add_mul, Nat.mul_add]; omega
+
+/-- THE WALK NEVER CHANGES THE GAP.  Whichever end the mediant replaces, the
+determinant is the one it came in with -- for any number of steps.  The
+numerator of the width is an invariant of the walk. -/
+theorem the_walk_keeps_the_gap (n : Nat) (lo hi : Nat × Nat) :
+    gapOf (mediantWalk n lo hi).1 (mediantWalk n lo hi).2 = gapOf lo hi := by
+  induction n generalizing lo hi with
+  | zero => rfl
+  | succ n ih =>
+      by_cases h : sideOf (lo.1 + hi.1) (lo.2 + hi.2) < 0
+      · simp only [mediantWalk]; rw [if_pos h, ih, the_mediant_keeps_the_gap_below]
+      · simp only [mediantWalk]; rw [if_neg h, ih, the_mediant_keeps_the_gap_above]
+
+/-- AND THE DENOMINATORS GROW, at least one per step: the replaced end takes on
+the SUM of the two denominators, so the pair's total climbs by whichever end
+survived.  No step is free and no step is wasted. -/
+theorem the_walk_grows_the_denominators : ∀ (n : Nat) (lo hi : Nat × Nat),
+    1 ≤ lo.2 -> 1 ≤ hi.2 ->
+    lo.2 + hi.2 + n ≤ (mediantWalk n lo hi).1.2 + (mediantWalk n lo hi).2.2
+  | 0, lo, hi, _, _ => by simp [mediantWalk]
+  | n+1, lo, hi, h, h' => by
+      by_cases hs : sideOf (lo.1 + hi.1) (lo.2 + hi.2) < 0
+      · simp only [mediantWalk]; rw [if_pos hs]
+        have := the_walk_grows_the_denominators n (lo.1+hi.1, lo.2+hi.2) hi (by simp; omega) h'
+        simp at this ⊢; omega
+      · simp only [mediantWalk]; rw [if_neg hs]
+        have := the_walk_grows_the_denominators n lo (lo.1+hi.1, lo.2+hi.2) h (by simp; omega)
+        simp at this ⊢; omega
+
+/-- THE ACTUAL WALK: gap exactly one, after two hundred steps. -/
+theorem the_bracket_gap_is_one : gapOf theBracket.1 theBracket.2 = 1 := by
+  show gapOf (mediantWalk 200 (137,1) (138,1)).1 (mediantWalk 200 (137,1) (138,1)).2 = 1
+  rw [the_walk_keeps_the_gap]; decide
+
+/-- AND ITS DENOMINATORS HAVE CLIMBED TO AT LEAST TWO HUNDRED AND TWO.  Put the
+two together: a width whose numerator is one and whose denominator is a product
+of numbers this large.  That is what the reading's digits are made of, and it is
+the whole convergence claim -- in naturals, decided, no analysis borrowed. -/
+theorem the_bracket_denominators_have_grown :
+    202 ≤ theBracket.1.2 + theBracket.2.2 := by
+  have := the_walk_grows_the_denominators 200 (137,1) (138,1) (by decide) (by decide)
+  simpa using this
+
 /-! ## THE DECIMAL
 
 Long division of the bracket's low end, to `k` places, as one scaled natural.
