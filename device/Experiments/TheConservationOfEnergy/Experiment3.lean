@@ -1,5 +1,0 @@
-import Experiments.TheConservationOfEnergy.Experiment2
-
-namespace Experiments.TheConservationOfEnergy
-
-end Experiments.TheConservationOfEnergy

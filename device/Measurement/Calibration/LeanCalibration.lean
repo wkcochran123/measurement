@@ -1,4 +1,4 @@
-import Measurement.SupportingMeasurements.ComputerProgram
+import Measurement.ComputerProgram
 import Lean.Util.Heartbeats
 import Lean.Elab.Command
 

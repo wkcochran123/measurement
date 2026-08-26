@@ -1,5 +1,0 @@
-import Experiments.ShadowTomography.Experiment2
-
-namespace Experiments.ShadowTomography
-
-end Experiments.ShadowTomography

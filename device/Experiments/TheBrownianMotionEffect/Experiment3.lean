@@ -1,5 +1,0 @@
-import Experiments.TheBrownianMotionEffect.Experiment2
-
-namespace Experiments.TheBrownianMotionEffect
-
-end Experiments.TheBrownianMotionEffect

@@ -1,5 +1,0 @@
-import Experiments.TheAccelerationEffect.Experiment2
-
-namespace Experiments.TheAccelerationEffect
-
-end Experiments.TheAccelerationEffect

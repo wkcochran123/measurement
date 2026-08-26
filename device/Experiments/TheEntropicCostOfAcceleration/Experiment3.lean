@@ -1,5 +1,0 @@
-import Experiments.TheEntropicCostOfAcceleration.Experiment2
-
-namespace Experiments.TheEntropicCostOfAcceleration
-
-end Experiments.TheEntropicCostOfAcceleration

@@ -1,5 +1,0 @@
-import Experiments.TheEuclidEffect.Experiment2
-
-namespace Experiments.TheEuclidEffect
-
-end Experiments.TheEuclidEffect

@@ -1,5 +1,0 @@
-import Experiments.TheEntropicGrowthEffect.Experiment2
-
-namespace Experiments.TheEntropicGrowthEffect
-
-end Experiments.TheEntropicGrowthEffect

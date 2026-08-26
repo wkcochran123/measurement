@@ -1,5 +1,0 @@
-import Experiments.TheSagnacEffect.Experiment2
-
-namespace Experiments.TheSagnacEffect
-
-end Experiments.TheSagnacEffect

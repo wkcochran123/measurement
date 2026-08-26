@@ -1,5 +1,0 @@
-import Experiments.ParadoxesOfTimeTravel.Experiment2
-
-namespace Experiments.ParadoxesOfTimeTravel
-
-end Experiments.ParadoxesOfTimeTravel

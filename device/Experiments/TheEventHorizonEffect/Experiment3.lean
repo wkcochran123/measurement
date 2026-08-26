@@ -1,5 +1,0 @@
-import Experiments.TheEventHorizonEffect.Experiment2
-
-namespace Experiments.TheEventHorizonEffect
-
-end Experiments.TheEventHorizonEffect

@@ -1,5 +1,0 @@
-import Experiments.TheGammaDecayEffect.Experiment2
-
-namespace Experiments.TheGammaDecayEffect
-
-end Experiments.TheGammaDecayEffect

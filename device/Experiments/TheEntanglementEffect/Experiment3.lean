@@ -1,5 +1,0 @@
-import Experiments.TheEntanglementEffect.Experiment2
-
-namespace Experiments.TheEntanglementEffect
-
-end Experiments.TheEntanglementEffect

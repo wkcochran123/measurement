@@ -35,7 +35,7 @@ builds it from instances that do not extract.  The kernel still reduces the
 terms, so `decide` and `rfl` and `#reduce` all work and `#eval` does not.  That
 is a constraint the device imposed, not a preference of the auditor's.
 -/
-import Measurement.Episode9
+import Measurement.Episode09
 import Measurement.Calibration.EKGBounded
 set_option maxHeartbeats 4000000
 

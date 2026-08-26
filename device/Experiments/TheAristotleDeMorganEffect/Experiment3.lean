@@ -1,5 +1,0 @@
-import Experiments.TheAristotleDeMorganEffect.Experiment2
-
-namespace Experiments.TheAristotleDeMorganEffect
-
-end Experiments.TheAristotleDeMorganEffect

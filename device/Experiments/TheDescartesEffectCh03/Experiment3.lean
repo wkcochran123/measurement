@@ -1,5 +1,0 @@
-import Experiments.TheDescartesEffectCh03.Experiment2
-
-namespace Experiments.TheDescartesEffectCh03
-
-end Experiments.TheDescartesEffectCh03

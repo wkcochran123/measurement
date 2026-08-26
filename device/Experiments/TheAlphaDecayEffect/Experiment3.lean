@@ -1,5 +1,0 @@
-import Experiments.TheAlphaDecayEffect.Experiment2
-
-namespace Experiments.TheAlphaDecayEffect
-
-end Experiments.TheAlphaDecayEffect

@@ -1,5 +1,0 @@
-import Experiments.TheGibbsPreservationEffect.Experiment2
-
-namespace Experiments.TheGibbsPreservationEffect
-
-end Experiments.TheGibbsPreservationEffect

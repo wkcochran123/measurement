@@ -1,5 +1,0 @@
-import Experiments.MinimizingVariations.Experiment2
-
-namespace Experiments.MinimizingVariations
-
-end Experiments.MinimizingVariations

@@ -1,5 +1,0 @@
-import Experiments.TheLaplaceEffect.Experiment2
-
-namespace Experiments.TheLaplaceEffect
-
-end Experiments.TheLaplaceEffect

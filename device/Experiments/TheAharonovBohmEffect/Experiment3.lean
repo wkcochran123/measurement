@@ -1,5 +1,0 @@
-import Experiments.TheAharonovBohmEffect.Experiment2
-
-namespace Experiments.TheAharonovBohmEffect
-
-end Experiments.TheAharonovBohmEffect

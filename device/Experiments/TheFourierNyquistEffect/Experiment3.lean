@@ -1,5 +1,0 @@
-import Experiments.TheFourierNyquistEffect.Experiment2
-
-namespace Experiments.TheFourierNyquistEffect
-
-end Experiments.TheFourierNyquistEffect

@@ -1,5 +1,0 @@
-import Experiments.TheArchimedesProustEffect.Experiment2
-
-namespace Experiments.TheArchimedesProustEffect
-
-end Experiments.TheArchimedesProustEffect

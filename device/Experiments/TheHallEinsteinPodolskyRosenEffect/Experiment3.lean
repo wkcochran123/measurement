@@ -1,5 +1,0 @@
-import Experiments.TheHallEinsteinPodolskyRosenEffect.Experiment2
-
-namespace Experiments.TheHallEinsteinPodolskyRosenEffect
-
-end Experiments.TheHallEinsteinPodolskyRosenEffect

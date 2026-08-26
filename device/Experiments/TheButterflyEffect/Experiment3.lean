@@ -1,5 +1,0 @@
-import Experiments.TheButterflyEffect.Experiment2
-
-namespace Experiments.TheButterflyEffect
-
-end Experiments.TheButterflyEffect

@@ -1,5 +1,0 @@
-import Experiments.TheHeisenbergEffectAsTradeOff.Experiment2
-
-namespace Experiments.TheHeisenbergEffectAsTradeOff
-
-end Experiments.TheHeisenbergEffectAsTradeOff

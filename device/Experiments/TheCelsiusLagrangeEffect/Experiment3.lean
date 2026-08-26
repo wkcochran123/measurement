@@ -1,5 +1,0 @@
-import Experiments.TheCelsiusLagrangeEffect.Experiment2
-
-namespace Experiments.TheCelsiusLagrangeEffect
-
-end Experiments.TheCelsiusLagrangeEffect

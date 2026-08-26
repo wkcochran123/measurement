@@ -1,5 +1,0 @@
-import Experiments.TheGibbsPhenomenon.Experiment2
-
-namespace Experiments.TheGibbsPhenomenon
-
-end Experiments.TheGibbsPhenomenon

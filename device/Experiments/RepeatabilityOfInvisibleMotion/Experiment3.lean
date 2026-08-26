@@ -1,5 +1,0 @@
-import Experiments.RepeatabilityOfInvisibleMotion.Experiment2
-
-namespace Experiments.RepeatabilityOfInvisibleMotion
-
-end Experiments.RepeatabilityOfInvisibleMotion

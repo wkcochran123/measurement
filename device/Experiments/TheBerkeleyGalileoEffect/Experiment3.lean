@@ -1,5 +1,0 @@
-import Experiments.TheBerkeleyGalileoEffect.Experiment2
-
-namespace Experiments.TheBerkeleyGalileoEffect
-
-end Experiments.TheBerkeleyGalileoEffect

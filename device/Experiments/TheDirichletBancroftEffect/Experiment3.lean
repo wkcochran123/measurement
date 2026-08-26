@@ -1,5 +1,0 @@
-import Experiments.TheDirichletBancroftEffect.Experiment2
-
-namespace Experiments.TheDirichletBancroftEffect
-
-end Experiments.TheDirichletBancroftEffect

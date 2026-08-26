@@ -1,5 +1,0 @@
-import Experiments.TheKeplerEffect.Experiment2
-
-namespace Experiments.TheKeplerEffect
-
-end Experiments.TheKeplerEffect

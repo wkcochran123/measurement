@@ -1,5 +1,0 @@
-import Experiments.TheJupyterEffect.Experiment2
-
-namespace Experiments.TheJupyterEffect
-
-end Experiments.TheJupyterEffect

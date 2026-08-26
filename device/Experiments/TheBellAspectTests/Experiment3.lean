@@ -1,5 +1,0 @@
-import Experiments.TheBellAspectTests.Experiment2
-
-namespace Experiments.TheBellAspectTests
-
-end Experiments.TheBellAspectTests

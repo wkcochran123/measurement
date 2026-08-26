@@ -1,5 +1,0 @@
-import Experiments.TheGossetEffectCh02.Experiment2
-
-namespace Experiments.TheGossetEffectCh02
-
-end Experiments.TheGossetEffectCh02

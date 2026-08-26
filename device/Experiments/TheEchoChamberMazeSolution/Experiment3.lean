@@ -1,5 +1,0 @@
-import Experiments.TheEchoChamberMazeSolution.Experiment2
-
-namespace Experiments.TheEchoChamberMazeSolution
-
-end Experiments.TheEchoChamberMazeSolution

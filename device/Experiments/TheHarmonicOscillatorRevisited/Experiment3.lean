@@ -1,5 +1,0 @@
-import Experiments.TheHarmonicOscillatorRevisited.Experiment2
-
-namespace Experiments.TheHarmonicOscillatorRevisited
-
-end Experiments.TheHarmonicOscillatorRevisited

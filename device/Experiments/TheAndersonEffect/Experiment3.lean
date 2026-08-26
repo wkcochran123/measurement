@@ -1,5 +1,0 @@
-import Experiments.TheAndersonEffect.Experiment2
-
-namespace Experiments.TheAndersonEffect
-
-end Experiments.TheAndersonEffect

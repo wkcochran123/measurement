@@ -1,5 +1,0 @@
-import Experiments.TheEinsteinEffectCh02.Experiment2
-
-namespace Experiments.TheEinsteinEffectCh02
-
-end Experiments.TheEinsteinEffectCh02
