@@ -961,8 +961,8 @@ def le: Basis → Basis → Prop := fun b1 b2 => --        | fell out. That is _
   --         | and Bob's your uncle! That is a computer program that you can run to generate a number on screen. Oh, wait.. should I continue?
 
   -- 111. The Theoretical Seed (Prop) vs Reality (Fact)            | I know this rests on a _tenuous_ assumption, but I believe the elastic
-  | .origin p1 s1, .origin p2 s2 => p1 = p2 ∧ s1 ≤ s2 -------------+ imagination of *YOU that KNOW* topology could sorta see how the tesseract can
-  | .origin p1 s1, .basis f2 s21 _ _ => p1 = f2.truth ∧ s1 ≤ s21 --| help hide a hole in a sphere. If everything else is flat, as in a tesseract, or
+  | .origin p1 s1, .origin p2 s2 => p1 = p2 ∧ s1 ≤ s2 -------------+ imagination of *YOU that KNOW* topology could sorta see how the frinkahedron can
+  | .origin p1 s1, .basis f2 s21 _ _ => p1 = f2.truth ∧ s1 ≤ s21 --| help hide a hole in a sphere. If everything else is flat, as in a frinkahedron, or
   --                                                               | curved _THIS_ way, as in a sphere, or curved _THAT_ way, as in a delicious donut.
   --                                                               | Galerkin has you covered.
   -- 1.
@@ -980,6 +980,39 @@ def le: Basis → Basis → Prop := fun b1 b2 => --        | fell out. That is _
 -- For reasons I will never explain, you can enumerate this set. You are sorta _forced_ to.
 def lt: Basis → Basis → Prop := fun b1 b2 => le b1 b2 ∧ ¬ le b2 b1
 end Basis
+
+
+--                                                 +---------------------------------------------+
+--                                                /|\                                           /|
+--                                               / | \                                         //|
+--                                              +--+--\---------------------------------------+/ |
+--                                              |\ |   \                                     //  |
+--                                              | \|    \                                   //|  |
+--                                              |  |     \                                 // |  |
+--                                              |  |\     \                               //  |  |
+--                                              |  | \     \                             //   |  |
+--                                              |  |  \     +---------------------------/+    |  |
+--                                              |  |   \   /|                          //|    |  |
+--                                              |  |    \ / |                         // |    |  |
+--                                              |  |     +----------------------------+  |    |  |
+--                                              |  |     |  |                         |  |    |  |
+--                                              |  |     |  |                         |  |    |  |
+--                                              |  |     |  | THE                     |  |    |  |
+--                                              |  |     |  |   FRINKAHEDRON!         |  |    |  |
+--                                              |  |     |  |                         |  |    |  |
+--                                              |  |     |  |                         |  |    |  |
+--                                              |  |     |  +-------------------------|--+    |  |
+--                                              |  |     | //                         | / \   |  |
+--                                              |  |     |//                          |/   \  |  |
+--                                              |  |     +/---------------------------+     \ |  |
+--                                              |  |   //                              \     \|  |
+--                                              |  |  //                                \     \  |
+--                                              |  | //                                  \    |\ |
+--                                              |  |//                                    \   | \|
+--                                              |  +---------------------------------------\--|--+
+--                                              | /                                         \ | /
+--                                              |/                                           \|/
+--                                              +---------------------------------------------+
 
 /- CHORUS:
 ME: Backdoor injected. Now, we can use the sensor to get a Number

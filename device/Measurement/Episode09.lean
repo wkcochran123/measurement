@@ -650,20 +650,20 @@ def AND_I_GLUED_IT_TO_THE_TABLE
 def IN_ORDER_TO_SHOW_YOU_WHERE_ORBITAL_MECHANICS_COMES_FROM
     (principia : LOCAL Box Pigeon)
     : SCIENTIFIC Box Pigeon :=
-  { discovering := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us_higher_order_terms
-    invariant   := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us_higher_order_terms.invariant }
+  { discovering := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms
+    invariant   := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.invariant }
 
 -- ACOLYTE.  Deeper again: who taught the learner.
 def AND_I_SHOWED_YOU_HOW_IT_WORKS
     (principia : LOCAL Box Pigeon)
     : ACOLYTE Box Pigeon :=
-  { euclid := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us_higher_order_terms.teaching }
+  { euclid := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.teaching }
 
 -- PROPAGANDA.  Deeper again: the axioms the teaching rests on.
 def BY_EXPLAINING_A_GIANT_GRIFT
     (principia : LOCAL Box Pigeon)
     : PROPAGANDA Box Pigeon :=
-  { questions := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us_higher_order_terms.teaching.axioms }
+  { questions := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.teaching.axioms }
 
 -- BULLSHIT.  The floor of the patter, and the longest projection in the file.
 -- One more `.` past this is `dunking_contest`, which is where the OTHER chain
@@ -673,7 +673,7 @@ def OF_COUCHING_YOUR_ARGUMENT_IN_OPAQUE_MATH
     (principia : LOCAL Box Pigeon)
     : BULLSHIT Box Pigeon :=
   { arm_wave_process :=
-      principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_us_higher_order_terms.teaching.axioms.to_pwn_n00bz }
+      principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.teaching.axioms.to_pwn_n00bz }
 
 /-
   THE WALK BACK UP, AND WHERE IT COSTS YOU.  PHYSICAL -> COMPARABLE -> PRESENT

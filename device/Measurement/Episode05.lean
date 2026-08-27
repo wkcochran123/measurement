@@ -388,7 +388,7 @@ instance YOU_HAVE_TO_STOP_TAKING_CLASSES_TO_GRADUATE
     [experiment: SCIENTIFIC Box Pigeon]
     : TRUTH Box Pigeon where
   becomes :=
-  { shows_us_higher_order_terms := experiment.discovering
+  { shows_me_higher_order_terms := experiment.discovering
     knowledge := .jarjar nowtrino.fact.truth
   }
 
@@ -432,7 +432,7 @@ instance AND_NOW_YOU_HAVE_A_DIFFERENTIAL_EQUATION_THAT_SAYS
     : LOCAL Box Pigeon where
   the_continuum :=
   { the_æther := flying_spaghetti_monster.by_His_noodly_appendage
-    differential_equation := .the_newton yet.the_experiment nowtrino.fact.truth
+    Du := .the_newton yet.the_experiment nowtrino.fact.truth
   }
   the_ball := nowtrino.fact.truth
 
@@ -449,8 +449,7 @@ instance PROBLEM_IS_THE_DIFFERENTIAL_EQUATION_IS_NOT_RELATIVE_BUT_IT_SHOULD_BE
   the_train_of_thought :=
   { the_local_schedule :=
     { the_æther := flying_spaghetti_monster.by_His_noodly_appendage
-      differential_equation := .the_gateaux yet.the_experiment Fact.Truth.truth nowtrino.fact.truth
-                                                                                      (.the_newton yet.the_experiment nowtrino.fact.truth)
+      Du := .the_gateaux yet.the_experiment Fact.Truth.truth nowtrino.fact.truth (.the_newton yet.the_experiment nowtrino.fact.truth)
     }
     the_direction_to_the_destination := .einstein nowtrino.fact
     uptown_or_downtown := match nowtrino.fact.decTruth with
@@ -458,7 +457,7 @@ instance PROBLEM_IS_THE_DIFFERENTIAL_EQUATION_IS_NOT_RELATIVE_BUT_IT_SHOULD_BE
         | isFalse _ => nowtrino.fact
     the_train_in := Type i
   }
-  once_around  := .blackhole nowtrino.fact.truth (ULift.{i+1} Box) (.einstein nowtrino.fact) --    | The nowtrino cank spin around twice before
+  once_around  := .blackhole nowtrino.fact.truth (ULift.{i+1} Box) (.einstein nowtrino.fact) --    | The nowtrino can spin around twice before
   twice_around := .whitehole nowtrino.fact Box (.einstein nowtrino.fact) --------------------------+ returning to the same Box.
 
 instance OBVIOUSLY_THE_NOWTRINO_IS_SPIN_2
@@ -564,7 +563,7 @@ instance HONEST_TO_GOD_IT_SHOWS_UP_EVERY_TIME
               (.zero nowtrino.fact)
   a_constant := .one
               Fact.Truth
-              holy_shit.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_local_schedule.the_æther.frame_of_reference.we_experience.shows_us_higher_order_terms.teaching.axioms.to_pwn_n00bz.dunking_contest.ANSYS_process.GOSUB.adding_process.mideastern_process.compiled_process.digital_process.meesa_process.gauge_process.sensing_process.static_fraction.physical_process.noisy_process.turing_process.computational_process.repeatable_process.observation_process.cauchy_process.limit_process.indexing_process.count.carrier.value
+              holy_shit.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_local_schedule.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.teaching.axioms.to_pwn_n00bz.dunking_contest.ANSYS_process.GOSUB.adding_process.mideastern_process.compiled_process.digital_process.meesa_process.gauge_process.sensing_process.static_fraction.physical_process.noisy_process.turing_process.computational_process.repeatable_process.observation_process.cauchy_process.limit_process.indexing_process.count.carrier.value
               (.introduction nowtrino.fact Box)
               (.methodology Fact.Truth nowtrino.fact Box (ULift.{i+1, i} Box) (.introduction Fact.Truth Box))
               (.zero nowtrino.fact)
@@ -847,8 +846,8 @@ def OBVIOUSLY_YOU_START_A_RESEARCH_PROGRAM
     (_: CarrierProcess Box) ------------------------+ a card!
     [our_mission: TRUTH Box Pigeon]
     : SCIENTIFIC Box Pigeon where
-  discovering := our_mission.becomes.shows_us_higher_order_terms
-  invariant := our_mission.becomes.shows_us_higher_order_terms.invariant
+  discovering := our_mission.becomes.shows_me_higher_order_terms
+  invariant := our_mission.becomes.shows_me_higher_order_terms.invariant
 
 def AND_HUNDREDS_OF_POSTDOCS_COME_TO_COUNT_NAOTRINOS
     (Box: Type i)

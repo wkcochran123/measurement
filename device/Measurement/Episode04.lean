@@ -388,8 +388,11 @@ inductive Science  -- 8029 --------------------------+ This does enough. I don't
 
 
 /- CHORUS:
-ME: What have we learned so far?
--/
+ME: What have we learned so far? --                | Patterns within patterns within patterns. If we didn't have affine spaces, would we care?
+COMPILER: Nothing --                               | Do we have affine spaces? Not to chicken-and-egg mathematics in the process of trying to
+JAR JAR: MEESA F_ONE! -----------------------------+ completely bootstrap it, but, seriously, would we?
+ME: Sometimes, sometimes you just say 1 a lot.     |
+-/ --                                              | Would we notice?  Could we notice?
 structure LearningProcess  -- 26691
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -428,15 +431,16 @@ structure LearningProcess  -- 26691
   galileo: Cult --                                                                                                                                   |
 --                                                                                                                                                   |
   -- In order to _DESCRIBE_ science. Perfectly norm-al word for Science to use here. This is certainly _not_ a meaningless word.                     |
-  invariant: Science -- We will watch the invariant change based on how you look at it. Dag.                                                         |
+  invariant: Science --+ We will watch the invariant change based on how you look at it. Dag. That's right, the invariant changes so it looks the    |
+--                     | same. I believe this is Wittgenstein?                                                                                       |
 --                                                                                                                                                   |
 --                  +---------+------------------------+ And so, this is how you curry Science.  Ladies and gentlemen, meet the smallest             |
 --                  |         |                        | multiphysics simulator in the world! Kolmogorov, eat your heart out. The algorithm is       |
 --                  V         V                        | fully specified.                                                                            |
   touch_stove? : Science → Science := fun s => --                                                                                                    |
     match s with --                                                                                                                                  |
-  --| 1) Galileo argued that a proposition should be repeatable. So, he took one and made a hypothesis that others could do it, too.                 |
-    | .repeatable proposition => .hypothesis proposition galileo --                                                                                  |
+  --| 1) Galileo argued that a proposition should be repeatable. So, he took one side of the proposition and made a hypothesis so others could, too. |
+    | .repeatable proposition => .hypothesis proposition galileo -- This asks the question: "Should this event even _BE_ repeatable?"                |
   --|                                                                                                                                                |
   --| 11) His hypothesis became a theory of how to discover new things, like the nowtrino. You can have a hypothesis that an experiment may          |
   --|     demonstrate a particular behavior.  In our case, whenever we see a nowtrino, it's because Science (tm) brand Science genuinely happened.   |
@@ -458,7 +462,7 @@ structure LearningProcess  -- 26691
 
 --| Hint: the rule of thumb is heavenly bodies appear to move in conic sections only.  Lorentz, meet bus.  You know what else moves in conic sections?
 
---| Compilers. They exhibit several kinds of closed loops.
+--| Compilers. They exhibit several kinds of closed loops and finite divergences. Not really hyperbolic creatures, though. Should be fine.
 @[reducible]
 class SCIENTIFIC -- 23964
     (Box: Type i)
@@ -479,7 +483,12 @@ class SCIENTIFIC -- 23964
   invariant: Science
 
 --| The thing about throwing three card monte in science is you need be able to apply your science to whatever is paying grants. Science lives and
---| dies through patronage. This is *YOU the READERs* opportunity to throw cards that *YOU the KNOWER* deals you.
+--| dies through patronage. This is *YOU the READERs* opportunity to throw cards that *YOU the KNOWER* deals you.  Sorry, a little too much Diatribe.
+
+--| The thing about science is that, sometimes my hypothesis is *YOU_the_KNOWER's* conclusion, that there is no way *THIS* device computes *THAT*
+--| number. You can always research the cause or the effect and only infer the relation.  That assumes the quarter isn't under _repeatable_.
+
+--| Either way, as you can see, you can put your bent logic anywhere you want:
   predictable? : Science → Science → Prop := fun a b =>
     match a, b with
     | _, .repeatable card    => card -------------------+ So, you see that the argument _ECHOES_ if you line it up right. You can practice this
@@ -497,7 +506,7 @@ inductive Knowledge  -- Bullshit meter 84000
 | ledger: Prop → Fact → Knowledge → Knowledge   --| **ELECTRON**! (card in the program: In tonight's performance, *ELECTRON* will be played by the
                                                 --| _nowtrino_.) I believe we might be in for a Berry paradox at some point. The electron is either
                                                 --| present (1) or not (0). Think of .jarjar as merely a stream of consciousness awareness of
-                                                --| electrons.
+                                                --| electrons. No electron, no bit in RAM; no bit in RAM no TRUE=TRUE; ergo no compiling happening.
 
 namespace Knowledge   -- 424
 def le : Knowledge → Knowledge → Prop
@@ -512,9 +521,9 @@ def le : Knowledge → Knowledge → Prop
 --|                                             +------------+ For a little while, lets conflate these    +-------------+
 --|                                                          | so we can see if we can embed conics       |
 --|                                                          | into hyperconics using a (hyper)conic      |
---|                                    +---------------------+ And, we give nowtrino first bill tonight   |
---|                                    |                                          +--------------------+--+
---|                                    V                                          V                    V (≤ instead of < Berry paradox time!) --+
+--|                                    +---------------------+ And, we give nowtrino first bill tonight. --------------+
+--|                                    |                                          +--------------------+--+            V
+--|                                    V                                          V                    V (≤ instead of <! Berry paradox time!) --+
                  => (orbital_mechanics = quantum_electrodynamics ∧ thing_in_orbit = thing_in_orbital ∧ le nowtrino electron) ∨ --               |
                     le (.ledger orbital_mechanics thing_in_orbit nowtrino) electron -- <--------------------------------------------------------+
 --| *DISCLAIMER* THIS ASSUMPTION IS PATENTLY FALSE ON ITS FACE. IT IS NOT POSSIBLE TO UNIFY GR and YM. At least not using the *DARK* side of the force.
@@ -551,12 +560,15 @@ structure ScientificProcess  -- 104000
     [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]
   where
-  shows_us_higher_order_terms: LearningProcess Box Pigeon --+ What are we counting, anyway? Exponents on a polynomial, of course! first ONE then
+--        +--------| We asked 100 people what characterized nonlinear processes. Top 3 answers on the board, What chacaterizes nonlinear processes?
+--        |
+--        V
+  shows_me_higher_order_terms: LearningProcess Box Pigeon --+ What are we counting, anyway? Exponents on a polynomial, of course! first ONE then
   knowledge: Knowledge --                                   | the ONE_PLUS_ONE.  Peano established 1, and if you don't buy that, stop iterating in
 --                                                          | FORTRAN and iterate in C++, like a gentleman.  These are the higher_order_terms that
   learn? : Knowledge → Knowledge := fun line_number => --   | the LearningProcess shows us.  Right there in the name. Not as 𝔽(1)-ny, I know.
     match line_number with
-    | .jarjar ONE                                 => .ledger ONE nowtrino.fact knowledge --                | I hope it is obvious that counting objects
+    | .jarjar ONE                                  => .ledger ONE nowtrino.fact knowledge --               | I hope it is obvious that counting objects
     | .ledger NEXT_ONE_IS A_MORE_DIFFERENT_ONE _   => .ledger NEXT_ONE_IS A_MORE_DIFFERENT_ONE knowledge --+ distinguishes them.  If it isn't, I suggest
 --                                                                                                         | that you are looking at a continuum that
 --  +------------------------------------------------------------------------------------------------------+ doesn't exist. The ledger is the order of
@@ -564,6 +576,8 @@ structure ScientificProcess  -- 104000
 --  | accumulate.  And what are these facts we are accumulating? Math facts. This number _follows_ that number. We just don't use the arabic process
 --  | to write them down.  We use a spline process.  Or, we will use a spline process.
 
+
+--| Feel free to ignore. I can't seem to get rid of this:
 @[reducible]
 class TRUTH  -- 5632  Truth? Look around you... is there any truth?  There is. The computer can still find some, although it is taking longer and
              --              longer.
@@ -580,9 +594,16 @@ class TRUTH  -- 5632  Truth? Look around you... is there any truth?  There is. T
   becomes: ScientificProcess Box Pigeon --  Is there truth? If there is truth, then all truth is the same truth. See DATA page.
   does_it_matter_in_the_long_run? : Knowledge → Knowledge → Prop := fun f1 f2 => --| Grep this out and see how little it matters
     Knowledge.le f1 f2 → Knowledge.le f2 f1
+--| Seriously, if you can figure out how to yanke this CLASS, that would really help my argument.
 
---| At the end of the day, this mimics the call stack on the universe. Not like that is easy to see. If you look at the bottom of the stack, it
---| is the left and right side of the rfl that need evaluating in that order.
+--| At the end of the day, this mimics the call stack we have embedded on the universe that matches the meanins of the values in the universe. Not
+--| like that is easy to see. If you look at the bottom of the stack, it is the left and right side of the rfl that need evaluating in that order.
+--| Dynamic dispatch in a math proof. That's right, I just installed a monkey-patcher in Lean. TRUTH is what Lean has to work out. Not Truth, but
+--| the fact there is only 1 of them. Jar Jar is telling the Truth.  Seems that it is really hard to tell if 𝔽(1) is circular reasoning or not.
+
+--| Not saying it is, just saying I can't tell because they assume some linearity of commutator that allows for matrices that look like physical
+--| problems, not those that arise from Von Neumann's worst case analysis. We are **VERY** lucky this constant looks like the other constant, because
+--| it sure as hell did not have to.
 
 --| Sabine Hossenfelder gives CLASSes in identifying how deep the bullshit is from the simple RFL most days on YouTube, continuing her work in
 --| applied Frankfurt theory.
@@ -593,6 +614,14 @@ inductive Gospel  -- 67
   | the_proof: Prop → Gospel   --------------------------------------+ Proved true or false.
   | we_understand_that: Knowledge → Prop → Gospel → Gospel --        | BUT... the only understanding here is of the demonstration of the existence
 --                                                                   | of a proof that demonstrates understanding.
+
+--| Understand in the sense that when I say 2, the compiler reaches for all the possible ways 2 could appear in a PHYSICAL system and discards the
+--| rest. This has substantially different mathematical properties from the successor of 1. Judging by how long this code is and all I am doing is
+--| counting to 3 over and over until I can finally figure out I don't need to count to 4 to understand all the ways 2 can interact with numbers
+--| in a PHYSICALly MEASURABLE way. We will, nevertheless, count to 4 in a minute as this was Newton's train of thought, 4 comes after 3 in much the
+--| same way that 5 comes after 4. This is the second law of motion discretized. We just don't know what it means for 3 to follow 2, or,  Einstein's
+--| *HUGE* leap that 4 must follow 3 in an invariant way.  The invariant that changes to stay the same. So, sorry Lorentz, I keep blaming this on
+--| you. It wasn't your fault. The æther should have existed for calculus to work.
 
 namespace Gospel
 def le : Gospel → Gospel → Prop
@@ -605,9 +634,17 @@ def le : Gospel → Gospel → Prop
 --                                           +---------------+ Hmm. Could T = F? It is getting harder and harder for the compiler to tell the
 --                                                           | difference.
 
--- AND MOST IMPORTANTLY, THIS IS A DEMONSTRATION OF THE SELF_REPLICATING DESCRIPTION OF DESCRIPTION, so we haven't proven anything, but it feels like
--- they could be the same.  Are they though? That's the demonstration being performed.
-
+--| AND MOST IMPORTANTLY, THIS IS A DEMONSTRATION OF THE SELF_REPLICATING DESCRIPTION OF DESCRIPTION, so we haven't proven anything, but it feels like
+--| they could be the same. Are they though? That's the demonstration being performed. All I can tell you is that they are inside the disks I just
+--| found in our conveniently chosen commutators. This is what a quarter looks like: predictable eigenvalues. That's what is under the card.
+--|
+--| We just put that under two of the three different cards we called "orbital dynamics":
+--|     1) The observation of heavenly bodies
+--|     2) The valence and spin of an electron
+--|     3) ????
+--|
+--| Step 4 is obviously _profit_.  lol, I said we don't have to do step 4. We will anyway, though. Because we need, say it with me,
+--|                                           --------------------> **HIGHER ORDER TERMS** <-----------------------
 termination_by _ source_file => sizeOf source_file --| Be sure to stop at the end of the episodes, lol.
 end Gospel
 
@@ -629,7 +666,11 @@ structure ReligiousProcess
     [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [truth: TRUTH Box Pigeon]
   where
-  we_experience: ScientificProcess Box Pigeon
+--                       +-----------------------+ Ordinary words lack the precision necessary to accurately describe things. So, to avoid confusion
+--                       |                       | these ordinary words are applied using ordinary language in order to increase the precision. This
+--                       V                       | is called JarJargon.  Selecting from among the remaining definitions of a word to align exactly
+  we_experience: ScientificProcess Box Pigeon -- | with context. I suck at that, so I am using Lean. Watch me redefine words for you technically:
+
   in_the_literature: Gospel
 
   pray? : Gospel → Gospel := fun prayer =>
@@ -638,6 +679,9 @@ structure ReligiousProcess
     | .we_understand_that _ when_an_idea becomes_an_experiment => .we_understand_that we_experience.knowledge
                                                                                                when_an_idea becomes_an_experiment
 --| Spittin' triples like Bones Thugs -n- Harmony. Eastside 1999.
+
+--| Any questions? The idea is that, hopefully, I have _defined_ the names of things well enough that *YOU_the_READER* can start following along
+--| with the logic in the code and in the comments. That way, I can _SHOW_ you how the three card monte throw works.
 
 @[reducible]
 class WITNESSED
@@ -651,16 +695,30 @@ class WITNESSED
     [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]
   where
-  we_saw: ReligiousProcess Box Pigeon
-  the_experiment: Gospel
+  we_saw: ReligiousProcess Box Pigeon --+ The plural of anecdote _is_ data, given enough anecdotes..  Anyone every really _seen_ an electron? Just
+--                                      | saying there is a _FANTASTIC_ case for having _SEEN_ photons, being defined that way and all. And eletrons
+--                                      | don't collide so much as exchange photons. Are we just assuming something is throwing photons at us?
 
-  risen? : Gospel → Gospel → Prop := fun the_word the_deed => the_word ≤ the_deed → the_deed ≤ the_word
-  -- The experiment is one and the same according to us.
+  the_experiment: Gospel --| AND SO, we set off to find the thing the nowtrino uses to interact with the compiler itself. I postulate that nowtrinos
+--                         | interact _through something_ that could be a particle, could be a math function, could be some monkey-patched code.
+--                         | Should such monkey-patched code exist, we can use that as the Temple that stores our sacred texts: the naotrino.
 
+  these_words_mean_the_same? : Gospel → Gospel → Prop := fun proof theory => proof ≤ theory → theory ≤ proof
+--| The experiment is one and the same according to us. You see, I'm not proving anything to you, I'm explaining my _theory_ about proofs to you.
+--| Is it true that a proof and theory can be the same thing? My theory is that these numbers are unrelated, *YOU the KNOWERs* theory is that, to
+--| paraphrase Pauli, I'm not even wrong. I will draw attention to the fact that number is a pure logical construction and *YOU the KNOWER* are about
+--| to be forced to take sides. *YOU the READER* is getting quite good at throwing three card monte.
 
-inductive Truth
-  | logically: Prop → Truth
-  | but: Gospel → Prop → Truth → Truth
+--| Aaah, the counter-metaphor.. At last, we meet face to face, tete aux tetes. _LOGICALLY_, (the computer program), *BUT-------*
+--|   Prop = TRUE:   *BUT* (FINE, but it makes no sense!)
+--|   Prop = FALSE:  *BUT* it means that another theory just _HAS_ to be false. So, My theory = TRUE → THAT theory = FALSE _because_ the Truth!
+--| The compiler is waiting for you input at each line of code. All we have to do is monkeypatch in the theory that we think this violates and
+--| the device either compiles (meaning doesn't matter what you think) _OR_ fails to compile.
+
+inductive Truth --               +-------------+ Now, this is the thing we have to monkey patch in correctly in order to convince *YOU the KNOWER*
+  | logically: Prop → Truth --   |             | that, indeed, it really doesn't matter what they think because *YOU the READER* loves the magic
+--|                              V             | trick. So, *YOU the READER*, if you want to learn how to make the number, you gotta learn how to
+  | but      : Gospel → Prop → Truth → Truth --| fool yourself into believing that the Lorentz transform is a _choice_.
 
 namespace Truth
 def le : Truth → Truth → Prop
@@ -672,10 +730,10 @@ def le : Truth → Truth → Prop
 termination_by _ total_Poincare_states => sizeOf total_Poincare_states
 end Truth
 
---  We have learned this through Quantum Eletrodynamics.
---  Damn, there's that fade away three nothing but net over __GODEL__ __COHEN__ __CANTOR__ __HILBERT__ and ...
---  No...  Without them, I would have stepped on the land mines.  It is _BECAUSE_ of them that I can see the land mines
---  and avoid them.
+--| And so it comes to this. Conservative laws repeat. The universe does not appear to. The compiler is being forced to understand a lot of BS
+--| right now trying to reconcile this. I believe Cauchy pointed out the stress tensor (what it is/what it does). And so, here we are. The tensor.
+--| I mean, not a multi-dimensional description of mathematical correspondence, I am talking about the description of a multi-dimensional description
+--| of mathematical correspondence.
 @[reducible]
 structure UniverseTensor
     (Box: Type i)
@@ -688,19 +746,25 @@ structure UniverseTensor
     [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [yet: WITNESSED Box Pigeon]
   where
-  frame_of_reference: ReligiousProcess Box Pigeon
-  in_reality: Truth
+  frame_of_reference: ReligiousProcess Box Pigeon -- <---+ non-linear mesh refinement studies.
+--                                                       | p-hacking.
+--                                                       | non-stationary processes.
+--                                                       | The tension between what the representation can compute and what the world exhibits is
+  in_reality: Truth -- <---------------------------------+ largest for those who look at one and expect to see the other. Those high order terms...
+--                                                       | I think the idea of a "proof" itself has higher order terms. Each one, one universe higher.
+--                                                       | You know I am going to find a naotrino, because theory predicts a carrier. Not my theory,
+--                                                       | not some mathematical theory.  But _THEORY ITSELF_ predicts a carrier. That carrier is...
+--                                                       | the flying spaghetti monster.  Or did I get the satire backwards?
 
-  -- Your _PUNY_ __GODS__ _ignore_ your pleas!
-  -- The universe __SIMPLY__ dngaf!
   observe? : Truth → Truth := fun gospel =>
     match gospel with
-    | .logically this_is_true => .but yet.we_saw.in_the_literature this_is_true in_reality       ---| Coincidence?
-    | .but this_other_truth is_also_true _ => .but this_other_truth is_also_true in_reality      ---| Maybe. Looks like could have multiple reasons.
+    | .logically this_is_true => .but yet.we_saw.in_the_literature this_is_true in_reality       ---+ Coincidence? Did what we see match the
+--                                                                                                  | published number from experiment?
+    | .but this_other_truth is_also_true _ => .but this_other_truth is_also_true in_reality      ---+ Or did we just implement a different number?
 
 @[reducible]
-class REAL
-    (Box: Type i)
+class REAL ----------------------| The number is a real number in the sense that you have seen it. That's all I know about it.  Just like the
+    (Box: Type i) --             | electron and the nowtrino.  Haven't seen a naotrino yet. Guess they may not be real after all....
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
@@ -710,21 +774,32 @@ class REAL
     [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
   where
-  by_His_noodly_appendage: UniverseTensor Box Pigeon  --| Somehow, the science of the field equations played out as expected
-  nagging_doubt: Truth
+  by_His_noodly_appendage: UniverseTensor Box Pigeon  --+ Where do theories come from? The same place naotrinos come from, the particles themselves!
+  nagging_doubt: Truth --                               | And for some reason, this computes the number. Actually, no one knows where particles
+--                                                      | come from, only that they appear to be their with really high probability. A probability
+-- +----------------------------------------------------+ so high you would need the exploratory capacity of an entire universe to stumble upon a
+-- | situation where that were not the case. So we look for one at every unverse level, each level precisely defined by the previous level and the
+-- | previous level requiring _HONEST TO GOODNESS ENERGY THAT MUST BE CONSERVED_ to complete.
 
-  metaphysical? : Truth → Truth → Prop := fun a b =>
+  metaphysical? : Truth → Truth → Prop := fun a b =>  --| There is but ONE statement of THE truth. rfl. I believe we all agree this is equality.
     Truth.le a b → Truth.le b a
 
-
+--| Just as there is only one truth, there is only one rite. The rite of calculus. There are those that attend to the rite on major holidays like
+--| Real Analysis final exam day. For sets of objects, especially ordered sets of objects, where the order in which letters come after each other,
+--| are subject to the rules of _VARIATION_.  All aboard the Newton-line train of thought.
 inductive Variation
-  | the_newton: Gospel → Prop → Variation
---      +-----    We do what we must because we can.
---      |
---      V
-  | the_gateaux: Gospel → Prop → Prop → Variation → Variation      -- CAKE!
-  | the_frechet: Gospel → Prop → Prop → Prop → Variation → Variation → Variation
+  | the_newton: Gospel → Prop → Variation ----------------------------------------+ Newton's train of thought basically went, what if I made a
+--|     +------ We do what we must because we can.                                | triangle _so_ small that the triangle inequality could be one
+--|     |                                                                         | of 3 values 0, √2, 1 because no amount of experimentation could
+--|     |                                                                         | prove me wrong. Confident this includes thought experimentation.
+--|     V
+  | the_gateaux: Gospel → Prop → Prop → Variation → Variation      -- Piece of CAKE! So easy, a 17-year-old could do it.
+  | the_frechet: Gospel → Prop → Prop → Prop → Variation → Variation → Variation --| Pity those people reaching for help with this one.
 
+
+
+--| So variational mechanics: how the world _appears_ to work. This describes ideal waves in echoic chamber. Euler-Lagrange lagrange.. lagrange..
+--| lagrange..  No mechanism given other than minimization of a value. And that mechanism is described in _VERY_ explicit detail as follows:
 namespace Variation
 def le : Variation → Variation → Prop   --                                   +-------- The Gospel according to Galileo, not me.
 --|                                                                          |
@@ -779,21 +854,39 @@ def le : Variation → Variation → Prop   --                                  
                        le (.the_gateaux all_aboard now next_stop blackhole) first_leg ∨
                        le (.the_gateaux all_aboard now next_stop blackhole) second_leg
 
-  | .the_frechet read_this_way  stop1                      stop2          stop3         uptown                 downtown,
+--| As far as the computer is concerned, time is just a number like a position. If you are familiar with the idea of time-zooming, this is what
+--| that looks like: A way to make predictable eigenvalues look a lot more unpredictable. Kinda the opposite of a Ray-ly process as the rays gets
+--| jostled unpredictably in time. I mean, no one can predict the future can they?
+  | .the_frechet read_this_way  first_stop                 next_stop      last_stop     uptown                 downtown,
     .the_frechet read_that_way  next_train_departure_time  trip_duration  arrival_time  TAKING_THE_PELHAM_123  TAKE_THE_A_TRAIN =>
-
-    (read_this_way ≤ read_that_way ∧ stop1 = next_train_departure_time ∧ stop2 = trip_duration ∧ stop3 = arrival_time ∧
+--|                                ^                          ^             ^
+--|                                |                          |             |
+--|                                +--------------------------+-------------+---------+ What if I told you | this giant thing below just means that
+--|                                                                                   | that the same      | spline has to fit time and space?
+--|                                                                                                        V
+    (read_this_way ≤ read_that_way ∧ first_stop = next_train_departure_time ∧ next_stop = trip_duration ∧ last_stop = arrival_time ∧
       ((le uptown TAKING_THE_PELHAM_123 ∧ le downtown TAKE_THE_A_TRAIN) ∨ (le uptown TAKE_THE_A_TRAIN ∧ le downtown TAKING_THE_PELHAM_123))) ∨
-    le (.the_frechet read_this_way stop1 stop2 stop3 uptown downtown) TAKING_THE_PELHAM_123 ∨  --+ I know this is a movie, but is in a Beastie Boys
-    le (.the_frechet read_this_way stop1 stop2 stop3 uptown downtown) TAKE_THE_A_TRAIN --        | song.
+    le (.the_frechet read_this_way first_stop next_stop last_stop uptown downtown) TAKING_THE_PELHAM_123 ∨  --+ I know this is a movie, but is in a
+    le (.the_frechet read_this_way first_stop next_stop last_stop uptown downtown) TAKE_THE_A_TRAIN --        | Beastie Boys song.
+--| It is hard to see, but this means the particular direction of a path matches the value, first, and second derivative of the point at that spot.
+--| Same position, same velocity, same acceleration.  Are we missing anything to describe a generic piece of matter now? What we are doing is
+--| trapping a spline in-between two other splines to create a ladder of splines that mimic the convergent series of a Weierstrauss approximation.
+--| Remember what we are trying to count? Perhaps, instead of collapsing the ratios, notice that the ratios of these values is what is actually
+--| being constrained here. The distance of stop 12 from stop 1 over the trip duration, for instance, approximates how fast the train is going
+--| exactly.  But, like I said, you have to wait to get to the last stop to know when you arrive.  Using math alone and the clocks at both ends
+--| you can determine if your velocity deviated from expected without using any sort of velocity measurement device!
 
 --| Remember, this compiles and the logic is sound. We stop when it is a good place to stop.
 termination_by _ good_place_to_stop => sizeOf good_place_to_stop
+end Variation -- ∎ <-----| that's a weird place for a tombstone. Believe that is a station stop.
 
-end Variation -- ∎ <-----| that's a weird place for a tombstone. I feel like this minimizes the train metaphor somehow.
+--| This even models drag, but not at the same time. That is a different value being minimized: the pressure differential in the wake of the passing
+--| object.  Which is yet another Euler-Lagrange minimization problem, just on a fantastical scale and re-represented as a Newtonian train of thought
+--| re-represented as a JFNK solver preconditioned with multigrid.  You know what makes Newton-Krylov work? predictable eigenvalues. Drop a quarter
+--| into that sucker and it converges mighty quick.
 
-/---/
-
+--| We finally meet a fully fledged algebra that can help us manipulate our tensor.  We can try to _vary_ our tensor to see if there is less
+--| bullshit if we choose to prove the same theory by a different path.
 @[reducible]
 structure BigRedDogProcess
     (Box: Type i)
@@ -807,23 +900,39 @@ structure BigRedDogProcess
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
   where
-  the_æther: UniverseTensor Box Pigeon  ---| The thing that "observes" quantum mechanics, Jar Jar.
-  differential_equation: Variation
+  the_æther: UniverseTensor Box Pigeon  ---+ The thing that "predicts" eigenvalues, a RayJarly quotient.  I feel like I have put a lot of faith
+--                                         | into rhythmically flashing light. I feel like we could detect the pattern here if we try hard enough.
+-- +---------------------------------------+ (1 (Jar Jar)/n(the nth vector ray of the eigenVALUE sorted from the origin)⁻¹. I feel like we can take a
+-- | page from IEEE754 and elide the 1. How about Ray-ly quotient? Remember, we want to _predict_ the _eigenVALUES_ and a good guess at an estimate is
+-- | plotting them on an Argand plane and sorting by magnitude. That would be a _HELLUVA_ guess if we can pull it off.
+
+--| As has been carefully observed, it appears that the calculus of variations does a reasonable job predicting the future, so let's use that. And
+--| since the end of compilation of this file is _DEFINITELY_ in the future, we can estimate the rest of the compilation process with an Euler-
+--| Lagrange differential equation: Du = 0.
+
+  Du: Variation -- | This is not the differential form du. Actually, it should be getting harder and harder for the compiler to tell the difference.
+
+--| So, now that we have a variation, let's finish the first fundamental theorem of big red dogs: The integral of one is the derivative of the other.
+--| Also called, the chain rule.  Also called, Gauss's law. (That guy has a rule, a law, a unit of measure, a distribution, an elimination--not his
+--| though, and a Greek letter: β). This magic trick is also often referred to as the Lanczos three term recursion.
   transmute: Variation → Variation := fun variation =>
     match variation with
-    | .the_newton models as_a_calculus => .the_gateaux models a_nowtrino.fact.truth as_a_calculus differential_equation
-    | .the_gateaux models from_a to_b as_a_single_path =>
-        -- Gateaux → Fréchet: add the residue.
-        -- a is the direction, b is the response, a≠b is the strain.
-        .the_frechet models from_a to_b (from_a ∧ ¬to_b) as_a_single_path differential_equation  -- the residue is exactly the informational strain
-    | .the_frechet models the_neighborhood_of_a near_b near_c in_some_field _ =>
-        -- Fréchet → Gateaux: project out the residue, collapse to direction only.
-        -- This is the weak form. You lose the residue. That's the price of Galerkin.
-        .the_gateaux models (a_nowtrino.fact.truth ∧ the_neighborhood_of_a) (near_b=near_c) in_some_field
+    | .the_newton models an_operator => .the_gateaux models a_nowtrino.fact.truth an_operator Du
+    | .the_gateaux models from_a to_b as_a_single_path => --| If you can take the Gateaux in one direction, why not all the rest?
+        .the_frechet models from_a to_b (from_a ∧ ¬to_b) as_a_single_path Du
+
+    | .the_frechet models the_neighborhood_of_a_point near_b near_c in_some_field _ => --| And the Frechet can tell us how the æther changes between
+                                                                                       --| two nearby angles. I assume that is what the neighborhood
+        .the_gateaux models (a_nowtrino.fact.truth ∧ the_neighborhood_of_a_point) (near_b=near_c) in_some_field --| is made of so that "nearby" makes
+                                                                                                                --| some PHYSICAL sense.
 
 instance : LE Variation where
   le := Variation.le
 
+--| So, we have a big red dog. What happens in the big red dog gets swallowed by Lanczos when Arnoldi is in zyzygy with Gram and Schmidt or Householder.
+--| You see, when the big red dog is in the house, it holds it up. That pun has been in the literature for 30 years and I am the first to see it.
+--| I mean Clifford the Big Red Dog holding up a house, Householder, predicting eigenvalues, and eliminating our affine term of Gauβ along the way,
+--| simultaneously naming the calculus boundary value problem into the algebra it represents: The boundary problem of the single nowtrino.
 @[reducible]
 class LOCAL
     (Box: Type i)
@@ -837,9 +946,19 @@ class LOCAL
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
   where
-  the_continuum: BigRedDogProcess Box Pigeon
-  the_ball: Prop
-  experience: Variation → Variation → Prop := fun δ ε => δ ≤ ε
+  the_continuum: BigRedDogProcess Box Pigeon --+ I hope I have made clear what Cantor, Godel, and Cohen demonstrated long ago. The continuum is just
+--                                             | some made up process we tell kids so they understand where velocity comes from: Elves at the North
+--                                             | Magnetic Pole.
+
+  the_ball: Prop  --| We will model our point source as a spherical cow of r=1. Seems like I just pointed to something I that doesn't exist. Not in
+                  --| the fact that spherical cows don't exist, but something the compiler cannot know exists. This has to be a figment of _its_
+                  --| imagination because I have certainly not been feeding it pie.  I mean, I have been feeding it π. Slowly. Should show up
+                  --| better in a minute. But, it has no facility for modeling anything of radius 1. That IEEE754 1 from before. I miss one so much.
+                  --| Who knew we had to forget 1 to count to 2?
+
+  experience: Variation → Variation → Prop := fun δ ε => δ ≤ ε --+ The bound on the triangle inequality computation that bounds the triangle
+--                                                               | inequality, as most people write it now. Radius of convergence, ball of a limit,
+--                                                               | an open end on a set, whatever you want to call it.
 
 
 inductive SpaceTimePath
@@ -1113,8 +1232,11 @@ class LOGICAL
   feelings: HeartbeatProcess Box Pigeon iterating_sequence local_minimum --------| No real heart, just a ball pumping.
   microsoft_basic: Calibration.EKG
 
-  logical? : YarnTheory → YarnTheory → Prop := fun a b => a ≤ b --| In the function, _a_ comes before _b_ in the order of the arguments.  That's it.
-
+  logical? : YarnTheory → YarnTheory → Prop := fun a b => a ≤ b --+ In the function, _a_ comes before _b_ in the order of the arguments.  That's it.
+--                                                                | That's the whole idea, the _left_ thing comes _before_ the _right_ thing,
+-- +--------------------------------------------------------------+ depending on if you are the dealer or the mark. Opposite sides and all. The
+-- | compiler is standing on the side of the table where _left_ comes _first_. That's all this says. It is okay for _a_ to happen before _b_, but _b_
+-- |cannot happen before _a_. This successfully finishes the logical argument that, in a PHYSICAL theory, a causal relationship is defined.
 
 namespace ComputerProgram
 def le

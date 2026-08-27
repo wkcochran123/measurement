@@ -837,7 +837,7 @@ def BE_SURE_TO_KEEP_A_GOOD_LAB_NOTEBOOK_SO_OTHERS_CAN_FOLLOW_ALONG
     (professor: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)
     : TRUTH Box Pigeon where
   becomes :=
-    { shows_us_higher_order_terms := new_physical_law.discovering
+    { shows_me_higher_order_terms := new_physical_law.discovering
       knowledge := .ledger ledger.truth ledger (.jarjar ledger.truth)
     }
   does_it_matter_in_the_long_run? := fun or not => truth.does_it_matter_in_the_long_run? or not ∧ our_mission.does_it_matter_in_the_long_run? or not
@@ -870,7 +870,8 @@ def MAKE_SURE_YOUR_CURVES_ARE_SMOOTH_AS_A_DIFFERENTIALS_BOTTOM
   }
   { we_saw := ceremony
     the_experiment := ceremony.pray? ceremony.in_the_literature
-    risen? := fun or not => yet.risen? or not ∧ overwhelming_evidence.risen? or not
+    these_words_mean_the_same? := fun or not => yet.these_words_mean_the_same? or not ∧
+                                                            overwhelming_evidence.these_words_mean_the_same? or not
   }
 
 def EVERYBODY_SEES_THAT_CORELATION_IN_THE_SHOTGUN_SPLATTERPLOT___DONT_THEY
@@ -928,7 +929,7 @@ def NO_MATTER___DEMONSTRATE_YOUR_LAW_SOLVES_EULER_LAGRANGE
     : LOCAL Box Pigeon where
   the_continuum :=
     { the_æther := inverse_square_law.by_His_noodly_appendage
-      differential_equation := .the_gateaux obvious_pattern.the_experiment ledger.truth
+      Du := .the_gateaux obvious_pattern.the_experiment ledger.truth
             (inverse_square_law.metaphysical? inverse_square_law.by_His_noodly_appendage.in_reality inverse_square_law.nagging_doubt)
             (.the_newton obvious_pattern.the_experiment ledger.truth)
     }

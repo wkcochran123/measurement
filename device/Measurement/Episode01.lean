@@ -32,7 +32,6 @@ Can I do this with no imports?  Hold my beer...
 --                                                                              Arthur C. Clarke
 
 
-
 set_option allowUnsafeReducibility true
 -- Well, I do need _a little bit_ of help..
 
