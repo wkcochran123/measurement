@@ -2,1313 +2,1338 @@
 __Measurement: The Tragedy of John Henry__
 __A Satire in Look-Ahead Backus-Naur Form__
 
-_This is a gentle reminder that the long, long stories we tell ourselves are just that: far, far away._
+_This is a gentle reminder that we often lose sight of the plot._
 
-(c) 2026 [PATTER TODO: rights gag]
+(c) 2026
 
-[PATTER TODO: cast chorus]
+__EPISODE 7__: _THE_MACGUFFIN_
 
-[PATTER TODO: epigraph quote]
+"Experiment is the sole judge of scientifc 'truth.'"      -- Some smart dude.
 
-lake build [PATTER TODO: build-flag gag]
+"Tonights winning numbers are 4 10 28 35 38 55 and a the bonus ball is 33."
+                                                          -- NY Lottery, Aug 3. 2002.
 
-__EPISODE 7__: _[PATTER TODO: title -- the referee report]_
-
-Episode 6 submitted the constant. This is what came back.
-
-Every response-to-referees document is a SECOND TAPE. The paper already exists;
-the rebuttal only APPENDS to it, one .methodology paragraph per capability the
-referee asked about, descending from the announced result (page 36) back down
-toward the first distinguishable mark (page 1). Each paragraph records a pair:
-the Fact we CONSTRUCTED and the Fact that actually SLIPPED through the review
-packet. Where the referee refused to grant authority (the logic, the universal
-claim, the slogan), the paragraph records only PRESENCE: the rung has a place
-in the record and no fact to its name. The INFERRED conclusion never appears on
-this tape at all. The reviewer is never shown the quarter.
+First of all, _CONGRATULATIONS_! You made it through the most complex part of the argument. Probably.  Don't worry, I have a complete patter that
+*YOU the READER*
 -/
-
--- WE GET SIGNAL!
-import Measurement.Episode06
+-- Would you even care if I imported anything at this point?
+import Measurement.Episode05 ----------------------------------| Skip _The Trick_ just to make sure we don't import α
 set_option allowUnsafeReducibility true
 
--- MAIN SCREEN TURN ON
+
+-- So, have you figured out the quarter I keep taking from you?   I told you, you had no idea how
+-- much I would take...
+
+-- Get back to work John. You need to learn Gungan __REAL_FAST__.
 namespace Measurement
+
+/- WORD CHANGES:
+  insinuates --> questions
+  ethos      --> axiom
+  indexofant --> triangular
+  halted?    --> loud_and_clear?
+-/
 
 universe i
 
+instance CAN_YOU_SEE_A_CHARACTERISTIC
+    (B: Type i)(Pigeon: CarrierProcess B)
+    [nowtrino: DISTINGUISHABLE B Pigeon]
+    : ADMISSIBLE B Pigeon where
+  counting_process :=
+  { carrier := Pigeon
+    count   := .zero nowtrino.fact
+    iterate := fun particle => match particle with
+      | .zero _     => .zero nowtrino.fact
+      | .number _ _ _ => .number nowtrino.fact Pigeon.value (.zero nowtrino.fact) }
 
--- Yes, that is a Nat. Six episodes refusing Nat and the journal's submission
--- system wants page numbers. Fine. ONE Nat. For the page numbers ONLY. The
--- pages do not count anything; they index where the reviewer is pointing.
-class REVIEWED (Box: Type i) (Pigeon: CarrierProcess Box) (page: Nat) where
-  rebuttal : CompilerTape
 
-/- We thank the reviewer for asking where the record begins before any rebuttal
-   can be published. This seam closes the custody gap: the submitted manuscript
-   is admitted unchanged, so every later response has a record to answer
-   against. -/
-instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_RECORD_BEGINS
-    (Box: Type i) (Pigeon: CarrierProcess Box)
-    (the_manuscript: CompilerTape)
-    : REVIEWED Box Pigeon 36 := { rebuttal := the_manuscript }
+instance CAN_YOU_COUNT_THEM
+    (B: Type i)(P: CarrierProcess B)
+    [nowtrino: DISTINGUISHABLE B P]
+    [particle: ADMISSIBLE B P]
+    : COUNTABLE B P where
+  index :=
+    { count  := particle.counting_process
+      origin := .zero nowtrino.fact }
 
-/- We thank the reviewer for noticing that a final output can look conclusive
-   without showing what it answered. This paragraph closes the verdict gap by
-   tying the announced constant back to the first distinguishable fact carried
-   by the review packet. -/
-instance (priority := low) REVIEWER_2_ASKS_WHAT_THE_ANSWER_WAS_ANSWERING
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)
-    (_: ADMISSIBLE Box Pigeon)(_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)
-    (_: REPRESENTABLE Box Pigeon)(_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)(_: PRESENT Box Pigeon)
-    (_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)(_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)(_: MAGNITUDE Box Pigeon)
-    (_: SCALED Box Pigeon)(_: LOAD Box Pigeon)(_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)(_: ACOLYTE Box Pigeon)
-    (_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)(_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)
-    (_: LOGICAL Box Pigeon downhill extremum)(_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    [above: REVIEWED Box Pigeon 36]
-    : REVIEWED Box Pigeon 35 :=
-    { rebuttal := .methodology ledger something.fact Box (ULift.{i+1, i} Box) above.rebuttal }
+instance CAN_YOU_LABEL_THEM
+    (B: Type i)(P: CarrierProcess B)
+    [nowtrino: DISTINGUISHABLE B P][ADMISSIBLE B P][enumeration: COUNTABLE B P]
+    : ENCODED B P where
+  limit_process :=
+    { indexing_process := enumeration.index
+      limit            := .zero nowtrino.fact
+      sequence         := .nil nowtrino.fact }
 
-/- We thank the reviewer for asking whether compilation is evidence or only a
-   celebratory filename. This paragraph closes the artifact gap by extracting
-   the fact from both demonstrations and making the constructed/slipped
-   difference publishable. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_COMPILING_IS_EVIDENCE_OR_A_FILENAME
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [stdout: COMPILED Box Pigeon naotrino commuter_pass]
-    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)(_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)(_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)
-    (_: RESIDUE Box Pigeon)(_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)(_: PHYSICAL Box Pigeon)
-    (_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)(_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)(_: SOURCE Box Pigeon)
-    (_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)(_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)(_: OF Box Pigeon)
-    (_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)(_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)(_: WITNESSED Box Pigeon)
-    (_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)
-    (_: LOGICAL Box Pigeon downhill extremum)(_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (iterative_solver: COMPILED Box Pigeon downhill extremum)
-    (_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    [above: REVIEWED Box Pigeon 35]
-    : REVIEWED Box Pigeon 34 :=
-    let constructed : Fact := match stdout.a_demonstration_of_a_constant with
-      | .introduction f _ => f
-      | .methodology f _ _ _ _ => f
-      | .results f _ _ _ _ _ _ => f
-    let slip : Fact := match iterative_solver.a_demonstration_of_a_constant with
-      | .introduction f _ => f
-      | .methodology f _ _ _ _ => f
-      | .results f _ _ _ _ _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
+instance CAN_YOU_SEE_THE_BOUNDARY
+    (B: Type i)(P: CarrierProcess B)
+    [nowtrino: DISTINGUISHABLE B P][ADMISSIBLE B P][COUNTABLE B P][the_calculus_limit: ENCODED B P]
+    : RESIDUE B P where
+  cauchy_process :=
+    { limit_process  := the_calculus_limit.limit_process
+      value          := .zero nowtrino.fact
+      accumulation   := .nil nowtrino.fact }
 
-/- We thank the reviewer for pointing out that a halt claim is not the same as
-   a checked path through the run band. This paragraph closes the
-   stopping-condition gap by recording the submitted route against the route
-   actually taken, as plain data, outside the instance wrappers. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_HALTING_WAS_CHECKED_OR_DECLARED
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon][COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (the_route_submitted: SpaceTimePath) (the_route_taken: SpaceTimePath)
-    [above: REVIEWED Box Pigeon 33]
-    : REVIEWED Box Pigeon 32 :=
-    let constructed : Fact := match the_route_submitted with
-      | .einstein f => f
-      | .whitehole f _ _ => f
-      | .geodesic f _ _ _ _ _ => f
-      | .blackhole _ _ _ => Pigeon.symbol
-    let slip : Fact := match the_route_taken with
-      | .einstein f => f
-      | .whitehole f _ _ => f
-      | .geodesic f _ _ _ _ _ => f
-      | .blackhole _ _ _ => Pigeon.symbol
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
+instance DID_THE_PARTICLE_COLOR_OUTSIDE_THE_LINES
+    (B: Type i)(P: CarrierProcess B)
+    [nowtrino: DISTINGUISHABLE B P][ADMISSIBLE B P][COUNTABLE B P][ENCODED B P][exp_iθ: RESIDUE B P]
+    : BINARY B P where
+  observation_process :=
+    { cauchy_process := exp_iθ.cauchy_process
+      before         := .nil nowtrino.fact
+      after          := .nil nowtrino.fact }
+  bit := .initial_condition nowtrino.fact exp_iθ.cauchy_process.accumulation
+  zero := .nil nowtrino.fact
+  one  := .nil nowtrino.fact
 
-/- We thank the reviewer for catching the place where logic would otherwise
-   sneak in as authority instead of evidence. This paragraph closes the logical
-   rung gap by marking that the content crossed only as ground-free data. -/
-instance (priority := low) REVIEWER_2_CATCHES_LOGIC_POSING_AS_AUTHORITY
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    [above: REVIEWED Box Pigeon 32]
-    : REVIEWED Box Pigeon 31 :=
-    -- presence-paragraph: the referee grants the rung a place in the record
-    -- and no fact to its name; authority does not transfer to the rebuttal.
-    { rebuttal := .methodology Pigeon.symbol Pigeon.symbol Box (ULift.{i+1, i} Box) above.rebuttal }
 
-/- We thank the reviewer for refusing a universal claim with no admissible
-   local witness. This paragraph closes the universality gap by recording the
-   rung as a presence paragraph, not as a new global proof smuggled into the
-   record. -/
-instance (priority := low) REVIEWER_2_REFUSES_A_UNIVERSAL_CLAIM_WITHOUT_A_LOCAL_WITNESS
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    [above: REVIEWED Box Pigeon 31]
-    : REVIEWED Box Pigeon 30 :=
-    -- presence-paragraph: the referee grants the rung a place in the record
-    -- and no fact to its name; authority does not transfer to the rebuttal.
-    { rebuttal := .methodology Pigeon.symbol Pigeon.symbol Box (ULift.{i+1, i} Box) above.rebuttal }
+instance DO_YOU_HEAR_A_BUNCH_OF_CLICKS
+    (B: Type i)(P: CarrierProcess B)
+    [nowtrino: DISTINGUISHABLE B P][ADMISSIBLE B P][COUNTABLE B P][ENCODED B P][RESIDUE B P][flicker: BINARY B P]
+    : REPEATABLE B P where
+  repeatable_process :=
+  {
+    observation_process := flicker.observation_process
+    stimulus := .initial_condition nowtrino.fact flicker.zero
+    expectation := .hypothesis nowtrino.fact flicker.bit
+  }
 
-/- We thank the reviewer for asking how measurement survives when the tower is
-   retold on the wrong side of the seam. This paragraph closes the velocity gap
-   by carrying the fact on file as data and comparing it with the slipped
-   heartbeat record. -/
-instance (priority := low) REVIEWER_2_ASKS_HOW_THE_NEEDLE_SURVIVED_THE_RETELLING
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (velocity_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 34]
-    : REVIEWED Box Pigeon 33 :=
-    let constructed : Fact := velocity_fact_on_file
-    let slip : Fact := match a_small_number.a_distance.in_heartbeats with
-      | .origin f _ _ => f
-      | .distance_to f _ _ _ _ _ => f
-      | .speed f _ _ _ _ _ _ _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
+instance HOW_MANY_CLICKS_DO_YOU_HEAR
+    (B: Type i)(P: CarrierProcess B)
+    [nowtrino: DISTINGUISHABLE B P][ADMISSIBLE B P][COUNTABLE B P][ENCODED B P][RESIDUE B P][BINARY B P][JMP: REPEATABLE B P]
+    : NUMERIC B P where
+  computational_process :=
+  { repeatable_process := JMP.repeatable_process
+    output := some (.hypothesis nowtrino.fact)
+  }
 
-/- We thank the reviewer for distinguishing a real status from a declaration
-   that reality has been achieved. This paragraph closes the ledger gap by
-   extracting the fact only when the nagging doubt reaches the recorded ledger
-   branch. -/
-instance (priority := low) REVIEWER_2_DISTINGUISHES_REALITY_FROM_ITS_PRESS_RELEASE
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][flying_spaghetti_monster: REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    [above: REVIEWED Box Pigeon 30]
-    : REVIEWED Box Pigeon 29 :=
-    let constructed : Fact := match flying_spaghetti_monster.nagging_doubt with
-      | .logically _ => Pigeon.symbol
-      | .but g _ _ => (match g with
-        | .the_proof _ => Pigeon.symbol
-        | .we_understand_that k _ _ => (match k with
-          | .jarjar _ => Pigeon.symbol
-          | .ledger _ f _ => f))
-    let slip : Fact := match inverse_square_law.nagging_doubt with
-      | .logically _ => Pigeon.symbol
-      | .but g _ _ => (match g with
-        | .the_proof _ => Pigeon.symbol
-        | .we_understand_that k _ _ => (match k with
-          | .jarjar _ => Pigeon.symbol
-          | .ledger _ f _ => f))
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
+instance WRITE_DOWN_HOW_MANY_CLICKS_YOU_HEAR_IN_A_TABLE
+    (B: Type i)(P: CarrierProcess B)
+    [nowtrino: DISTINGUISHABLE B P][ADMISSIBLE B P][COUNTABLE B P][ENCODED B P][RESIDUE B P][BINARY B P][REPEATABLE B P][jupyter_notebook: NUMERIC B P]
+    : REPRESENTABLE B P where
+  calculation_process :=
+  { computational_process :=
+      {jupyter_notebook.computational_process with closure := fun the_number_of_clicks => the_number_of_clicks}
+    program := jupyter_notebook.computational_process.close jupyter_notebook.computational_process.output
+    state := .program nowtrino.fact (jupyter_notebook.computational_process.close jupyter_notebook.computational_process.output)
+  }
+  representable? := fun _ expected_response =>
+    ⟨Computation.program nowtrino.fact expected_response, rfl⟩
 
-/- We thank the reviewer for asking what was actually witnessed, rather than
-   accepting the title of the witness. This paragraph closes the testimony gap
-   by lowering the gospel to the ledger fact it can honestly expose. -/
-instance (priority := low) REVIEWER_2_ASKS_WHAT_WAS_ACTUALLY_WITNESSED
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    [yet: WITNESSED Box Pigeon]
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (obvious_pattern: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    [above: REVIEWED Box Pigeon 29]
-    : REVIEWED Box Pigeon 28 :=
-    let constructed : Fact := match yet.the_experiment with
-      | .the_proof _ => Pigeon.symbol
-      | .we_understand_that k _ _ => (match k with
-        | .jarjar _ => Pigeon.symbol
-        | .ledger _ f _ => f)
-    let slip : Fact := match obvious_pattern.the_experiment with
-      | .the_proof _ => Pigeon.symbol
-      | .we_understand_that k _ _ => (match k with
-        | .jarjar _ => Pigeon.symbol
-        | .ledger _ f _ => f)
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for requiring the scientific invariant to carry a
-   checkable remainder. This paragraph closes the theory gap by refusing
-   hypothesis and repeatability as enough, then recording the fact only at the
-   theory branch. -/
-instance (priority := low) REVIEWER_2_REQUIRES_THE_INVARIANT_TO_CARRY_A_REMAINDER
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    [experiment: SCIENTIFIC Box Pigeon]
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(new_physical_law: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    [above: REVIEWED Box Pigeon 27]
-    : REVIEWED Box Pigeon 26 :=
-    let constructed : Fact := match experiment.invariant with
-      | .repeatable _ => Pigeon.symbol
-      | .hypothesis _ _ => Pigeon.symbol
-      | .theory _ _ f _ => f
-    let slip : Fact := match new_physical_law.invariant with
-      | .repeatable _ => Pigeon.symbol
-      | .hypothesis _ _ => Pigeon.symbol
-      | .theory _ _ f _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking whether persuasion has been separated from
-   evidence. This paragraph closes the propaganda gap by preserving the rung's
-   place as presence only, with no argumentative fact granted for the slogan. -/
-instance (priority := low) REVIEWER_2_SEPARATES_PERSUASION_FROM_EVIDENCE
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    [above: REVIEWED Box Pigeon 25]
-    : REVIEWED Box Pigeon 24 :=
-    -- presence-paragraph: the referee grants the rung a place in the record
-    -- and no fact to its name; authority does not transfer to the rebuttal.
-    { rebuttal := .methodology Pigeon.symbol Pigeon.symbol Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for objecting that truth cannot be cited by name
-   while its knowledge path remains hidden. This paragraph closes the knowledge
-   gap by carrying the fact on file as data and comparing it with the slipped
-   ledger of the scientific process. -/
-instance (priority := low) REVIEWER_2_OBJECTS_TO_TRUTH_CITED_BY_NAME_ONLY
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(curve_fit: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (knowledge_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 28]
-    : REVIEWED Box Pigeon 27 :=
-    let constructed : Fact := knowledge_fact_on_file
-    let slip : Fact := match curve_fit.becomes.knowledge with
-      | .jarjar _ => Pigeon.symbol
-      | .ledger _ f _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking whether devotion to the method has been
-   mistaken for a method. This paragraph closes the sacred-text gap by lowering
-   the acolyte rung to the triangle fact that can be compared. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_DEVOTION_TO_METHOD_IS_A_METHOD
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (professor: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (cult_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 26]
-    : REVIEWED Box Pigeon 25 :=
-    let constructed : Fact := cult_fact_on_file
-    let slip : Fact := match professor.euclid.sacred_texts with
-      | .inside_joke _ => Pigeon.symbol
-      | .pythagoras _ _ _ => Pigeon.symbol
-      | .triangles _ _ f _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for noting that a smooth story may only be
-   interpolation wearing a lab coat. This paragraph closes the spline gap by
-   accepting the slipped fact only when the arm-wave process reaches its
-   interpolant. -/
-instance (priority := low) REVIEWER_2_SUSPECTS_THE_SMOOTH_STORY_IS_INTERPOLATION_IN_A_LAB_COAT
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(pages_of_derivations: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (spline_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 24]
-    : REVIEWED Box Pigeon 23 :=
-    let constructed : Fact := spline_fact_on_file
-    let slip : Fact := match pages_of_derivations.arm_wave_process.guess with
-      | .observation _ => Pigeon.symbol
-      | .knot _ _ _ => Pigeon.symbol
-      | .interpolant f _ _ _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking whether finiteness is a boundary condition
-   or a decorative animal in the theorem name. This paragraph closes the
-   polynomial gap by recording the finite expansion only at the fact-bearing
-   branches. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_FINITE_IS_A_BOUNDARY_OR_A_DECORATION
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (the_simplex: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (polynomial_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 23]
-    : REVIEWED Box Pigeon 22 :=
-    let constructed : Fact := polynomial_fact_on_file
-    let slip : Fact := match the_simplex.galerkin_process.polynomial with
-      | .constant f => f
-      | .monomial _ _ => Pigeon.symbol
-      | .factor f _ _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for noticing that a load has to land in a basis
-   before it can be compared. This paragraph closes the span gap by tracing the
-   null-space or basis fact against the slipped operation. -/
-instance (priority := low) REVIEWER_2_NOTES_A_LOAD_MUST_LAND_IN_A_BASIS
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(fem_solver: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (basis_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 22]
-    : REVIEWED Box Pigeon 21 :=
-    let constructed : Fact := basis_fact_on_file
-    let slip : Fact := match fem_solver.basic_operation.span with
-      | .null_space f => f
-      | .origin _ _ => Pigeon.symbol
-      | .basis f _ _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for requiring scale to show its multiplication, not
-   merely its unit. This paragraph closes the product gap by comparing the fact
-   on file with the slipped multiplication process. -/
-instance (priority := low) REVIEWER_2_REQUIRES_SCALE_TO_SHOW_ITS_MULTIPLICATION
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(projection: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (product_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 21]
-    : REVIEWED Box Pigeon 20 :=
-    let constructed : Fact := product_fact_on_file
-    let slip : Fact := match projection.multiplying_process.product with
-      | .origin f => f
-      | .one _ _ => Pigeon.symbol
-      | .mul f _ _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking where magnitude becomes additive evidence.
-   This paragraph closes the sum gap by refusing zero as a sufficient
-   publication claim and tracing the add branch where the fact appears. -/
-instance (priority := low) REVIEWER_2_ASKS_WHERE_MAGNITUDE_BECOMES_ADDITIVE
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (extraordinary: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (sum_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 20]
-    : REVIEWED Box Pigeon 19 :=
-    let constructed : Fact := sum_fact_on_file
-    let slip : Fact := match extraordinary.adding_process.sum with
-      | .zero _ _ => Pigeon.symbol
-      | .add f _ _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for distinguishing a value from the process that
-   produced it. This paragraph closes the monadic gap by comparing the facts on
-   both sides across satire, compilation, and execution branches. -/
-instance (priority := low) REVIEWER_2_DISTINGUISHES_A_VALUE_FROM_ITS_PROCESS
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    [uncountable: VALUE Box Pigeon]
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(a_constant: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    [above: REVIEWED Box Pigeon 19]
-    : REVIEWED Box Pigeon 18 :=
-    let constructed : Fact := match uncountable.monad with
-      | .satire_about f => f
-      | .compile f _ _ => f
-      | .execute f _ _ => f
-    let slip : Fact := match a_constant.monad with
-      | .satire_about f => f
-      | .compile f _ _ => f
-      | .execute f _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking whether execution contains an opcode
-   record or only a performed gesture. This paragraph closes the encoding gap
-   by carrying the fact on file as data and tracing the slipped opcode
-   branch. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_EXECUTION_LEFT_AN_OPCODE_RECORD
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(plots_and_graphs: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (opcode_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 18]
-    : REVIEWED Box Pigeon 17 :=
-    let constructed : Fact := opcode_fact_on_file
-    let slip : Fact := match plots_and_graphs.compiled_process.opcodes with
-      | .boot f _ => f
-      | .zero f _ _ => f
-      | .one f _ _ _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking which source fact survives transmission
-   through the binary channel. This paragraph closes the source gap by lowering
-   both source chains to the fact-bearing physics or zero-like cases. -/
-instance (priority := low) REVIEWER_2_ASKS_WHICH_SOURCE_FACT_SURVIVED_THE_CHANNEL
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][data_feed: SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (the_machine_that_goes_ping: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    [above: REVIEWED Box Pigeon 17]
-    : REVIEWED Box Pigeon 16 :=
-    let constructed : Fact := match data_feed.one with
-      | .physics f _ => f
-      | .zero_like f _ => f
-      | .one_like _ _ _ => Pigeon.symbol
-    let slip : Fact := match the_machine_that_goes_ping.one with
-      | .physics f _ => f
-      | .zero_like f _ => f
-      | .one_like _ _ _ => Pigeon.symbol
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for noticing that the joke class still has to pay its
-   evidentiary bill. This paragraph closes the concept gap by tracing color,
-   bang, or superposition to the fact each branch can actually report. -/
-instance (priority := low) REVIEWER_2_MAKES_THE_JOKE_PAY_ITS_EVIDENTIARY_BILL
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (jar_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 16]
-    : REVIEWED Box Pigeon 15 :=
-    let constructed : Fact := jar_fact_on_file
-    let slip : Fact := match cannot_be_ignored.meesa_process.concept with
-      | .color f _ => f
-      | .bang f _ => f
-      | .superposition f _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking whether measurability is attached to an
-   observable clock or just asserted. This paragraph closes the phenomenon gap
-   by comparing the fact on file with the slipped gauge process. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_THE_CLOCK_IS_OBSERVABLE_OR_ASSERTED
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (clock_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 15]
-    : REVIEWED Box Pigeon 14 :=
-    let constructed : Fact := clock_fact_on_file
-    let slip : Fact := match timestamp.gauge_process.clock with
-      | .this_superpigeon f _ => f
-      | .a_pigeon f _ _ => f
-      | .that_box f _ _ _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking where presence accumulates into a record.
-   This paragraph closes the area gap by tracing the present rung through the
-   tree and dt branches that can carry the fact. -/
-instance (priority := low) REVIEWER_2_ASKS_WHERE_PRESENCE_ACCUMULATES
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (just_now: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (area_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 14]
-    : REVIEWED Box Pigeon 13 :=
-    let constructed : Fact := area_fact_on_file
-    let slip : Fact := match just_now.santa_claus.accumulation with
-      | .tree f => f
-      | .dt f _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking whether observation is a projection with a
-   recorded dimension or just a report of seeing. This paragraph closes the
-   sophism gap by tracing the slipped projection to the fact it can expose. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_OBSERVATION_HAS_A_RECORDED_DIMENSION
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (sophism_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 13]
-    : REVIEWED Box Pigeon 12 :=
-    let constructed : Fact := sophism_fact_on_file
-    let slip : Fact := match motion.slip_process.projection with
-      | .origin f _ _ => f
-      | .dimension f _ _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking what makes comparison more than parallel
-   naming. This paragraph closes the metavariable gap by carrying the fact on
-   file as data and checking the slipped physical value step. -/
-instance (priority := low) REVIEWER_2_ASKS_WHAT_MAKES_COMPARISON_MORE_THAN_PARALLEL_NAMING
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (metavariable_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 12]
-    : REVIEWED Box Pigeon 11 :=
-    let constructed : Fact := metavariable_fact_on_file
-    let slip : Fact := match relative_value.physical_process.value with
-      | .base f _ => f
-      | .step f _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for requiring the physical claim to show its base
-   fact rather than inherit authority from later rungs. This paragraph closes
-   the physical-process gap by tracing both thresholds to their exposed
-   facts. -/
-instance (priority := low) REVIEWER_2_REQUIRES_THE_PHYSICAL_CLAIM_TO_SHOW_ITS_BASE_FACT
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    [anechoic_chamber: PHYSICAL Box Pigeon]
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (timeseries: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    [above: REVIEWED Box Pigeon 11]
-    : REVIEWED Box Pigeon 10 :=
-    let constructed : Fact := match anechoic_chamber.threshold with
-      | .halting f _ => f
-      | .nonhalting f _ _ => f
-    let slip : Fact := match timeseries.threshold with
-      | .halting f _ => f
-      | .nonhalting f _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking whether representation has a carrier, not
-   only a notation. This paragraph closes the representative gap by recording
-   the slipped computation state at the end of the representation chain. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_REPRESENTATION_HAS_A_CARRIER_OR_A_NOTATION
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (state_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 10]
-    : REVIEWED Box Pigeon 9 :=
-    let constructed : Fact := state_fact_on_file
-    let slip : Fact := match csv_file.calculation_process.state with
-      | .program f _ => f
-      | .compute f _ _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking where the number actually counts
-   something. This paragraph closes the numeric gap by tracing both study
-   carriers down to the fact each box came in. -/
-instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_NUMBER_ACTUALLY_COUNTS
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    [jupyter_notebook: NUMERIC Box Pigeon]
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    [above: REVIEWED Box Pigeon 9]
-    : REVIEWED Box Pigeon 8 :=
-    let constructed : Fact := match jupyter_notebook.carrier with
-      | .hypothesis f => f
-      | .a_few_pints f _ _ => f
-    let slip : Fact := match how_many_clicks.carrier with
-      | .hypothesis f => f
-      | .a_few_pints f _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking whether repetition repeats the experiment
-   or merely repeats the sentence. This paragraph closes the repeatability gap
-   by comparing the fact on file with the slipped expectation. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_REPETITION_REPEATS_THE_EXPERIMENT_OR_THE_SENTENCE
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (procedure: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (trial_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 8]
-    : REVIEWED Box Pigeon 7 :=
-    let constructed : Fact := trial_fact_on_file
-    let slip : Fact := match procedure.repeatable_process.expectation with
-      | .hypothesis f _ => f
-      | .signal_response f _ _ _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking where the binary split is recorded after
-   execution. This paragraph closes the binary gap by lowering both bits to the
-   carrier fact that can still be read. The referee is correct that the
-   exhibit named `land` was constructed in the submission and then quietly
-   dropped from every subsequent argument list; it is resupplied here, for the
-   record. -/
-instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_MISSING_EXHIBIT_WENT
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    [flicker: BINARY Box Pigeon]
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (land: BINARY Box Pigeon)
-    [above: REVIEWED Box Pigeon 7]
-    : REVIEWED Box Pigeon 6 :=
-    let constructed : Fact := match flicker.bit with
-      | .initial_condition f _ => f
-      | .signal_response f _ _ _ _ => f
-    let slip : Fact := match land.bit with
-      | .initial_condition f _ => f
-      | .signal_response f _ _ _ _ => f
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking whether residue is a limit record or a
-   leftover story. This paragraph closes the residue gap by tracing the slipped
-   Cauchy process through its index to the carrier symbol. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_RESIDUE_IS_A_RECORD_OR_A_LEFTOVER_STORY
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (residue_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 6]
-    : REVIEWED Box Pigeon 5 :=
-    let constructed : Fact := residue_fact_on_file
-    let slip : Fact := pit.cauchy_process.limit_process.indexing_process.count.carrier.symbol
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking whether encoding preserves a read path
-   back to the mark. This paragraph closes the encoded-carrier gap by following
-   the slipped limit process to the carrier symbol it depends on. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_ENCODING_KEEPS_A_READ_PATH_TO_THE_MARK
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (limit_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 5]
-    : REVIEWED Box Pigeon 4 :=
-    let constructed : Fact := limit_fact_on_file
-    let slip : Fact := click.limit_process.indexing_process.count.carrier.symbol
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking whether countability counts a carrier or
-   only names a class. This paragraph closes the counting gap by tracing the
-   slipped index to the carrier symbol being counted. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_COUNTING_COUNTS_A_CARRIER_OR_NAMES_A_CLASS
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (index_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 4]
-    : REVIEWED Box Pigeon 3 :=
-    let constructed : Fact := index_fact_on_file
-    let slip : Fact := cascade_of_particles.index.count.carrier.symbol
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking who admitted the mark and under what
-   local rule. This paragraph closes the admissibility gap by comparing the
-   carried fact on file with the slipped carrier symbol admitted by the
-   process. -/
-instance (priority := low) REVIEWER_2_ASKS_WHO_ADMITTED_THE_MARK
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
-    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
-    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    (carrier_fact_on_file: Fact)
-    [above: REVIEWED Box Pigeon 3]
-    : REVIEWED Box Pigeon 2 :=
-    let constructed : Fact := carrier_fact_on_file
-    let slip : Fact := something_with_momentum.counting_process.carrier.symbol
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
-
-/- We thank the reviewer for asking whether the whole publication rests on a
-   distinguishable mark or on retrospective confidence. This paragraph closes
-   the bottom gap by recording the slipped distinguishable fact against the
-   fact we started the notebook with, where the rebuttal can finally stop
-   descending. Page 1 is never written. The reviewer never sees the quarter. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_IT_ALL_RESTS_ON_A_MARK_OR_ON_CONFIDENCE
+instance ROSS!_GET_THE_READOUTS
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [nowtrino: DISTINGUISHABLE Box Pigeon]
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]
-    [naotrino: LOCAL Box Pigeon]
-    [commuter_pass: UNIVERSAL Box Pigeon naotrino]
+    [the_invariant: REPRESENTABLE Box Pigeon]
+    : PHYSICAL Box Pigeon where
+  noisy_process := {
+    turing_process := the_invariant.calculation_process
+    program := .halting nowtrino.fact (.program nowtrino.fact the_invariant.calculation_process.program)
+  }
+  threshold := .nonhalting  nowtrino.fact
+                            (.program nowtrino.fact the_invariant.calculation_process.program)
+                            (some (ChaitinsNumberSequence.halting nowtrino.fact the_invariant.calculation_process.state))
+  admissible? := fun _ _ _ => rfl    --| (Your first for-real flop, *YOU the READER*! rofl! I *LITERALLY* **CANNOT** see the bent card here. Sure this isn't a bug?)
+
+
+noncomputable instance ARE_THE_UNITS_RIGHT
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [anechoic_chamber: PHYSICAL Box Pigeon]
+    [Inhabited nowtrino.symbol]
+    : COMPARABLE Box Pigeon where
+  physical_process :=
+  { noisy_process := anechoic_chamber.noisy_process
+    representation := default
+    invariant := .base nowtrino.fact default
+    value := .base nowtrino.fact (ULift.up default)
+  }
+  smaller_than := fun one_foot π  => one_foot = π
+
+
+instance DO_YOU_SEE_THE_LIGHT_FLASH_WHEN_YOU_HEAR_THE_CLICK
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [anechoic_chamber: PHYSICAL Box Pigeon]
+    [distinct: COMPARABLE Box Pigeon]
+    : OBSERVED Box Pigeon where
+  slip_process :=
+  { physical_process := distinct.physical_process
+    projection       := .origin nowtrino.fact distinct.physical_process.noisy_process.program nowtrino.symbol
+    stress           := anechoic_chamber.threshold
+    threshold        := nowtrino.symbol
+  }
+  observation := ULift nowtrino.symbol
+
+instance THATS_THE_PHOTOELECTRIC_EFFECT
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [static_friction: OBSERVED Box Pigeon]
+    : PRESENT Box Pigeon where
+  santa_claus:=
+  { static_fraction := static_friction.slip_process
+    accumulation := .tree nowtrino.fact
+  }
+  quantum := Type i
+
+instance THE_PHOTON_IS_MEASURABLE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [gift_from: PRESENT Box Pigeon]
+    : MEASURABLE Box Pigeon where
+  gauge_process :=
+  { sensing_process := gift_from.santa_claus
+    clock      := .this_superpigeon nowtrino.fact (.tree nowtrino.fact)
+  }
+
+instance PERHAPS_NOT_WITH_A_MULTIMETER_BUT_YOU_UNDERSTAND_WHAT_I_MEAN
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [multimeter: MEASURABLE Box Pigeon]
+    : GUNGAN Box Pigeon where
+  meesa_process :=
+  { gauge_process := multimeter.gauge_process
+    concept := .color nowtrino.fact multimeter.gauge_process.sensing_process.accumulation
+  }
+
+def WE_CAN_NOW_AUTOMATE_THE_COLLECTION_OF_THE_DATA
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [jarjar: GUNGAN Box Pigeon]
+    : SOURCE Box Pigeon where
+  cd_process :=
+  { meesa_process := jarjar.meesa_process
+    zero := .physics nowtrino.fact jarjar.meesa_process.concept
+  }
+  one := .zero_like nowtrino.fact (.physics nowtrino.fact jarjar.meesa_process.concept)
+
+instance AND_THE_COMPILER_WILL_AUTOMATICALLY_CONVERT_THE_RAW_DATA_TO_TABLES
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [jarjar: GUNGAN Box Pigeon]
+    [data_feed: SOURCE Box Pigeon]
+    : EXECUTED Box Pigeon where
+  compiled_process :=
+  { digital_process := data_feed.cd_process
+    source := data_feed
+    opcodes := .boot nowtrino.fact (.physics nowtrino.fact jarjar.meesa_process.concept)
+  }
+
+instance ONE_VALUE_AT_A_TIME_IN_ORDER_AND_WRITE_SOMETHING_TO_DISK
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [result: EXECUTED Box Pigeon]
+    : VALUE Box Pigeon where
+    -- What we have here is the multiplicative identity.  from no-fucking-where
+  mathematical_process := {
+    compiled_process := result.compiled_process
+    mapping := fun input => match input with
+      |.satire_about finite_element_analysis => .satire_about finite_element_analysis
+      |.compile f e a => .execute f e a
+      |.execute f e a => .compile f e a
+  }
+  monad := .satire_about nowtrino.fact
+
+instance TURNS_OUT_YOU_CAN_FILL_YOUR_DISK
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [gift_from: PRESENT Box Pigeon]
+    [GUNGAN Box Pigeon] [SOURCE Box Pigeon] [EXECUTED Box Pigeon]
+    [uncountable: VALUE Box Pigeon]
+    : MAGNITUDE Box Pigeon where
+  adding_process :=
+  { mideastern_process := uncountable.mathematical_process
+    plus := uncountable
+    sum := .zero nowtrino.fact.truth gift_from.santa_claus.accumulation
+  }
+
+instance SO_YOU_NEED_TO_GET_MORE_DISKS
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [tar_file: MAGNITUDE Box Pigeon]
+    : SCALED Box Pigeon where
+  multiplying_process :=
+  { adding_process := tar_file.adding_process
+    product := .one nowtrino.fact.truth tar_file.adding_process.sum
+    total := .zero nowtrino.fact.truth (.tree nowtrino.fact)
+  }
+
+instance AND_MORE_PROCESSORS_BECAUSE_THERE_ARE_A_LOT_OF_NOWTRINOS
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [gift_from: PRESENT Box Pigeon]
+    [GUNGAN Box Pigeon] [SOURCE Box Pigeon] [EXECUTED Box Pigeon] [VALUE Box Pigeon]
+    [shit_loads: SCALED Box Pigeon]
+    : LOAD Box Pigeon where
+  basic_operation :=
+  { GOSUB := shit_loads.multiplying_process
+    TEN := gift_from.santa_claus.accumulation
+    span := .origin nowtrino.fact.truth shit_loads.multiplying_process.product
+  }
+
+instance SO_MANY_SENSITIVE_NOWTRINO_DETECTORS_TO_DETECT_PRESENCE___WHERE_DID_IT_GO
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [comprehensive_software: LOAD Box Pigeon]
+    : OF Box Pigeon where
+  galerkin_process :=
+  { ANSYS_process := comprehensive_software.basic_operation
+    polynomial := .constant .Truth
+  }
+
+instance THERE_IT_IS___ONLY_CERTAIN_ELEMENTS_RESPOND_TO_NOWTRINO_DETECTION
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [element: OF Box Pigeon]
+    : BULLSHIT Box Pigeon where
+  arm_wave_process :=
+  { dunking_contest := element.galerkin_process
+    guess := .observation nowtrino.fact.truth
+  }
+
+instance WE_NEED_TO_GET_A_GRANT_TO_GET_MORE_NOWTRINO_DETECTORS___WE_KEEP_LOSING_IT
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon] --
+    [SOURCE Box Pigeon] --
+    : PROPAGANDA Box Pigeon where --
+  questions := CrusadeProcess.default Box Pigeon  ---+
+
+--| Let's admit a graduate student into the lab.
+def InitiationProcess.default
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon][ADMISSIBLE Box Pigeon][COUNTABLE Box Pigeon][ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon][BINARY Box Pigeon][REPEATABLE Box Pigeon][NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon][PHYSICAL Box Pigeon][COMPARABLE Box Pigeon][OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon][MEASURABLE Box Pigeon][GUNGAN Box Pigeon][SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon][VALUE Box Pigeon][MAGNITUDE Box Pigeon][SCALED Box Pigeon][LOAD Box Pigeon]
+    [OF Box Pigeon][model: BULLSHIT Box Pigeon][hilbert_space: PROPAGANDA Box Pigeon]
+    : InitiationProcess Box Pigeon where
+  axioms := CrusadeProcess.default Box Pigeon
+  sacred_texts := .inside_joke Fact.Truth.truth
+
+instance MAKE_SURE_WE_CAN_GET_A_COUPLE_GRAD_STUDENTS
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    : ACOLYTE Box Pigeon where
+  euclid := InitiationProcess.default Box Pigeon
+
+--| Now, they can count clicks and get a Ph.D.
+def LearningProcess.default
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon][ADMISSIBLE Box Pigeon][COUNTABLE Box Pigeon][ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon][BINARY Box Pigeon][REPEATABLE Box Pigeon][NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon][PHYSICAL Box Pigeon][COMPARABLE Box Pigeon][OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon][MEASURABLE Box Pigeon][GUNGAN Box Pigeon][SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon][VALUE Box Pigeon][MAGNITUDE Box Pigeon][SCALED Box Pigeon][LOAD Box Pigeon]
+    [OF Box Pigeon][model: BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon][ACOLYTE Box Pigeon]
+    : LearningProcess Box Pigeon where
+  teaching := InitiationProcess.default Box Pigeon
+  galileo := .inside_joke Fact.Truth.truth
+  invariant := .repeatable Fact.Truth.truth
+
+instance ABD
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    : SCIENTIFIC Box Pigeon where
+  discovering := LearningProcess.default Box Pigeon
+  invariant := .hypothesis Fact.Truth.truth (.inside_joke Fact.Truth.truth)
+
+instance YOU_HAVE_TO_STOP_TAKING_CLASSES_TO_GRADUATE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [experiment: SCIENTIFIC Box Pigeon]
+    : TRUTH Box Pigeon where
+  becomes :=
+  { shows_me_higher_order_terms := experiment.discovering
+    knowledge := .jarjar nowtrino.fact.truth
+  }
+
+instance THEN_COMES_THE_LAB_WORK
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [truth: TRUTH Box Pigeon]
+    : WITNESSED Box Pigeon where
+  we_saw :=
+  { we_experience := truth.becomes
+    in_the_literature := .the_proof nowtrino.fact.truth
+  }
+  the_experiment := .the_proof nowtrino.fact.truth
+
+def FINALLY_YOU_GRADUATE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [yet: WITNESSED Box Pigeon]
+    : REAL Box Pigeon where
+  by_His_noodly_appendage :=
+  { frame_of_reference := yet.we_saw
+    in_reality := .logically nowtrino.fact.truth
+  }
+  nagging_doubt := .but yet.the_experiment nowtrino.fact.truth (.logically nowtrino.fact.truth)
+  -- This is a completely circular argument since the experiment describes itself as the experiment it intends to prove.
+
+instance AND_NOW_YOU_HAVE_A_DIFFERENTIAL_EQUATION_THAT_SAYS
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [yet: WITNESSED Box Pigeon]
+    [flying_spaghetti_monster: REAL Box Pigeon]
+    : LOCAL Box Pigeon where
+  the_continuum :=
+  { the_æther := flying_spaghetti_monster.by_His_noodly_appendage
+    Du := .the_newton yet.the_experiment nowtrino.fact.truth
+  }
+  the_ball := nowtrino.fact.truth
+
+instance PROBLEM_IS_THE_DIFFERENTIAL_EQUATION_IS_NOT_RELATIVE_BUT_IT_SHOULD_BE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [yet: WITNESSED Box Pigeon]
+    [flying_spaghetti_monster: REAL Box Pigeon]
+    (nowtrino_model: LOCAL Box Pigeon)
+    : UNIVERSAL Box Pigeon nowtrino_model where
+  the_train_of_thought :=
+  { the_local_schedule :=
+    { the_æther := flying_spaghetti_monster.by_His_noodly_appendage
+      Du := .the_gateaux yet.the_experiment Fact.Truth.truth nowtrino.fact.truth (.the_newton yet.the_experiment nowtrino.fact.truth)
+    }
+    the_direction_to_the_destination := .einstein nowtrino.fact
+    uptown_or_downtown := match nowtrino.fact.decTruth with
+        | isTrue  _ => Fact.Truth
+        | isFalse _ => nowtrino.fact
+    the_train_in := Type i
+  }
+  once_around  := .blackhole nowtrino.fact.truth (ULift.{i+1} Box) (.einstein nowtrino.fact) --    | The nowtrino can spin around twice before
+  twice_around := .whitehole nowtrino.fact Box (.einstein nowtrino.fact) --------------------------+ returning to the same Box.
+
+instance OBVIOUSLY_THE_NOWTRINO_IS_SPIN_2
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino_model: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino_model)
+    : LOGICAL Box Pigeon naotrino_model commuter_pass where
+  feelings :=
+  { bullshit_meter := commuter_pass.the_train_of_thought
+    time_spent_waiting := .whitehole nowtrino.fact Box (.einstein nowtrino.fact)
+    according_to_newton := .stokes nowtrino.fact (.einstein nowtrino.fact) nowtrino.fact.truth
+  }
+  microsoft_basic := Calibration.EKG.executed
+
+instance DONT_WORRY_ABOUT_THE_NAOTRINO_BEING_SPIN_2_YET___FUTURE_WORK
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [nonsensical: LOGICAL Box Pigeon naotrino commuter_pass]
+    : HALTED Box Pigeon naotrino commuter_pass where
+  scientific_paper :=
+    let feelings : HeartbeatProcess Box Pigeon naotrino commuter_pass := nonsensical.feelings
+    { stamina := feelings
+      trilinos : Calibration.EKG := nonsensical.microsoft_basic
+      numerical_analysis := (.load Fact.Truth.truth Box)
+    }
+
+instance THE_NAOTRINO_IS_MEASURED
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [documents_on_file: HALTED Box Pigeon naotrino commuter_pass]
+    : MEASURED Box Pigeon naotrino commuter_pass where
+  a_distance :=
+  { description := documents_on_file.scientific_paper
+    difference_between := .zero nowtrino.fact
+    in_heartbeats := .origin nowtrino.fact (.zero nowtrino.fact) Box
+    saved_as_y := Box
+  }
+
+instance WE_ARE_CONSTANTLY_INUNDATED_BY_NAOTRINOES
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [weakly_interacting_particle: MEASURED Box Pigeon naotrino commuter_pass]
+    : COMPILED Box Pigeon naotrino commuter_pass where
+  a_truth_about_the_world :=
+  { too_good_to_be_true := weakly_interacting_particle.a_distance
+    preprint := (.introduction Fact.Truth Box)
+  }
+  a_demonstration_of_a_constant := .methodology Fact.Truth Fact.Truth Box (ULift.{i+1, i} Box) (.introduction Fact.Truth Box)
+
+instance HONEST_TO_GOD_IT_SHOWS_UP_EVERY_TIME
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [holy_shit: COMPILED Box Pigeon naotrino commuter_pass]
+    : A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass where
+  you_the_reader :=
+  { in_a_giant_book := holy_shit.a_truth_about_the_world
+    a_constant          := .zero Fact.Truth
+    current_page_number := .zero Fact.Truth
+    total_pages         := .zero Fact.Truth
+    of_the_proof        := .methodology Fact.Truth Fact.Truth Box (ULift.{i+1, i} Box) (.introduction Fact.Truth Box)
+  }
+  TRUE := .zero Fact.Truth
+  raw_output := .one
+              Fact.Truth
+              (.one Fact.Truth (.zero nowtrino.fact))
+              (.introduction nowtrino.fact Box)
+              (.methodology Fact.Truth nowtrino.fact Box (ULift.{i+1, i} Box) (.introduction Fact.Truth Box))
+              (.zero nowtrino.fact)
+  a_constant := .one
+              Fact.Truth
+              holy_shit.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_local_schedule.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.teaching.axioms.to_pwn_n00bz.dunking_contest.ANSYS_process.GOSUB.adding_process.mideastern_process.compiled_process.digital_process.meesa_process.gauge_process.sensing_process.static_fraction.physical_process.noisy_process.turing_process.computational_process.repeatable_process.observation_process.cauchy_process.limit_process.indexing_process.count.carrier.value
+              (.introduction nowtrino.fact Box)
+              (.methodology Fact.Truth nowtrino.fact Box (ULift.{i+1, i} Box) (.introduction Fact.Truth Box))
+              (.zero nowtrino.fact)
+  the_constant_is_at_least_true := by trivial
+
+noncomputable instance OF_COURSE_IT_DOES___I_JUST_PUT_IT_THERE_FOR_NO_REASON
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [guano: A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    : INFERRED Box Pigeon naotrino commuter_pass where
+  same_difference :=
+  { you_the_knower      := guano.you_the_reader
+    your_conclusion     := .different (Fact.SAME (guano:=guano)) (guano.TRUE) (guano.a_constant) (some Fact.Truth.truth)
+  }
+  α := .same Fact.Truth guano.a_constant
+
+def You_the_Reader
+    {Box: Type i}
+    {Pigeon: CarrierProcess Box}
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    {fact: LOCAL Box Pigeon}
+    {about_the_world: UNIVERSAL Box Pigeon fact}
+    [LOGICAL Box Pigeon fact about_the_world]
+    [HALTED Box Pigeon fact about_the_world]
+    [MEASURED Box Pigeon fact about_the_world]
+    [stdout: COMPILED Box Pigeon fact about_the_world]
+    [A_TRUTH_ABOUT Box Pigeon fact about_the_world]
+    : AtreyuProcess Box Pigeon fact about_the_world where
+  in_a_giant_book := stdout.a_truth_about_the_world
+  a_constant := .zero nowtrino.fact
+  current_page_number := Pigeon.value
+  of_the_proof := stdout.a_demonstration_of_a_constant
+
+def BUT_THE_TRUTH_IS_YOU_THE_READER_UNDERSTANDS_THE_ARGUMENT_NAO
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [guano: A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass] -- | You have successfully palmed
+    (_: CarrierProcess Box) ------------------------+ a card!
+  : A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass where
+    you_the_reader := You_the_Reader (fact:=naotrino) (about_the_world:=commuter_pass)
+    a_constant     := THEORY.raw_output (You_the_Reader (fact:=naotrino) (about_the_world:=commuter_pass)) (.zero nowtrino.fact)
+    the_constant_is_at_least_true    := by trivial
+
+def SO_YOU_START_TO_BUILD_ANOTHER_DEMONSTRATION_PROCESS
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass]
+    [multimeter: MEASURED Box Pigeon naotrino commuter_pass]
+    [holy_shit: COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    : COMPILED Box Pigeon naotrino commuter_pass where
+  a_truth_about_the_world :=
+  { too_good_to_be_true := multimeter.a_distance
+    preprint := .methodology nowtrino.fact Fact.Truth Box (ULift.{i+1,i} Box) holy_shit.a_demonstration_of_a_constant
+  }
+  a_demonstration_of_a_constant := .methodology nowtrino.fact Fact.Truth Box (ULift.{i+1,i} Box) holy_shit.a_demonstration_of_a_constant
+
+def IN_ORDER_TO_MEASURE_THE_CONSTANT_EMPIRICALLY
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [nonsensical: LOGICAL Box Pigeon naotrino commuter_pass]
+    [documents_on_file: HALTED Box Pigeon naotrino commuter_pass]
+    [multimeter: MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [metaphor: COMPILED Box Pigeon naotrino commuter_pass]
+    : MEASURED Box Pigeon naotrino commuter_pass where
+  a_distance :=
+  {   description := documents_on_file.scientific_paper
+      difference_between := multimeter.a_distance.difference_between
+      in_heartbeats := .distance_to nowtrino.fact (.zero Fact.Truth) (multimeter.a_distance.difference_between) Box (ULift.{i+1,i} Box)
+                                                                              metaphor.a_truth_about_the_world.too_good_to_be_true.in_heartbeats
+      saved_as_y := Box
+  }
+
+def YOU_NEED_TO_DEVELOP_A_BOUNDED_PROCESS
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [nonsensical: LOGICAL Box Pigeon naotrino commuter_pass]
+    [documents_on_file: HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [data: MEASURED Box Pigeon naotrino commuter_pass]
+    : HALTED Box Pigeon naotrino commuter_pass where
+  scientific_paper :=
+  { stamina := data.a_distance.description.stamina
+    trilinos := documents_on_file.scientific_paper.trilinos
+    teraFLOPs := data.a_distance.description.teraFLOPs
+    numerical_analysis := documents_on_file.scientific_paper.numerical_analysis
+  }
+
+def PERHAPS_ONE_THAT_REALLY_MAKES_YOU_THINK
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [nonsensical: LOGICAL Box Pigeon naotrino commuter_pass]
+    [documents_on_file: HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass][COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [HALTED Box Pigeon naotrino commuter_pass]
+    : LOGICAL Box Pigeon naotrino commuter_pass where
+  feelings := documents_on_file.scientific_paper.stamina
+  microsoft_basic := nonsensical.microsoft_basic
+
+def PERHAPS_ONE_THAT_USES_THE_DEVICE_ITSELF
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    : UNIVERSAL Box Pigeon naotrino where
+  the_train_of_thought := commuter_pass.the_train_of_thought
+  once_around := commuter_pass.once_around
+  twice_around := commuter_pass.the_train_of_thought.photon_torpedo commuter_pass.once_around
+
+def PERHAPS_ONE_THAT_USES_CALCULUS
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [the_a_train: UNIVERSAL Box Pigeon naotrino]
+    : LOCAL Box Pigeon where
+  the_continuum := the_a_train.the_train_of_thought.the_local_schedule
+  the_ball      := naotrino.the_ball
+
+def YEAH_CALCULUS___YOU_CAN_DO_THE_CALCULUS_RITE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [principia: LOCAL Box Pigeon]
+    : REAL Box Pigeon where
+  by_His_noodly_appendage := principia.the_continuum.the_æther
+  nagging_doubt := .logically naotrino.the_ball
+
+def MATH_MODELING_IS_EASY___JUST_WATCH
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [flying_spaghetti_monster: REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [invariant: REAL Box Pigeon]
+    : WITNESSED Box Pigeon where
+  we_saw := invariant.by_His_noodly_appendage.frame_of_reference
+  the_experiment := flying_spaghetti_monster.by_His_noodly_appendage.frame_of_reference.in_the_literature
+
+def WHICH_WE_IMMEDIATELY_SEE_THE_FIRST_TIME_IN_THE_LAB
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [overwhelming_evidence: WITNESSED Box Pigeon]
+    : TRUTH Box Pigeon where
+  becomes := overwhelming_evidence.we_saw.we_experience
+
+def OBVIOUSLY_YOU_START_A_RESEARCH_PROGRAM
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [our_mission: TRUTH Box Pigeon]
+    : SCIENTIFIC Box Pigeon where
+  discovering := our_mission.becomes.shows_me_higher_order_terms
+  invariant := our_mission.becomes.shows_me_higher_order_terms.invariant
+
+def AND_HUNDREDS_OF_POSTDOCS_COME_TO_COUNT_NAOTRINOS
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [postdoc: SCIENTIFIC Box Pigeon]
+    : ACOLYTE Box Pigeon where
+  euclid := postdoc.discovering.teaching
+
+
+def BUT_THEN_REIMANN_COMES_ALONG
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [professor: ACOLYTE Box Pigeon]
+    : PROPAGANDA Box Pigeon where
+  questions := professor.euclid.axioms
+
+
+def AND_THE_AMOUNT_OF_CALCULUS_YOU_HAVE_TO_DO_EXPLODES
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [geometry: PROPAGANDA Box Pigeon]
+    : BULLSHIT Box Pigeon where
+  arm_wave_process := geometry.questions.to_pwn_n00bz
+
+def AND_YOU_STUDY_TRIANGLES
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [hours_of_math: BULLSHIT Box Pigeon]
+    : OF Box Pigeon where
+  galerkin_process := hours_of_math.arm_wave_process.dunking_contest
+
+def BUT_YOU_AND_I_KNOW_ANSYS_HAS_GOT_THIS
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [area: OF Box Pigeon]
+    : LOAD Box Pigeon where
+  basic_operation := area.galerkin_process.ANSYS_process
+
+def YOU_ARE_ALSO_AWARE_THAT_ANSYS_IS_SLOW_SO_YOU_PUT_IT_ON_A_SUPERCOMPUTER
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [still_takes_forever: LOAD Box Pigeon]
+    : SCALED Box Pigeon where
+  multiplying_process := still_takes_forever.basic_operation.GOSUB
+
+def BUT_YOU_EVENTUALLY_ESTIMATE_THE_TOTAL_SIZE_OF_THE_COMPUTATION
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass]
+    [HALTED Box Pigeon naotrino commuter_pass]
+    [MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass]
+    [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
+    [INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [weight: SCALED Box Pigeon]
+    : MAGNITUDE Box Pigeon where
+  adding_process := weight.multiplying_process.adding_process
+
+def SO_YOU_SUBMIT_THE_JOB_AND_COUNT_HOW_LONG_IT_TAKES
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    [uncountable: VALUE Box Pigeon]
+    [SCALED Box Pigeon][OF Box Pigeon][BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon][ACOLYTE Box Pigeon]
+    [SCIENTIFIC Box Pigeon][TRUTH Box Pigeon][WITNESSED Box Pigeon][REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
-    (_: CarrierProcess Box)
-    (_: Fact)(something: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
-    (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
-    (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
-    (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
-    (_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)
-    (_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)
-    (_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)
-    (_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)
-    (_: WITNESSED Box Pigeon)(_: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
-    (extremum: UNIVERSAL Box Pigeon downhill)(_: LOGICAL Box Pigeon downhill extremum)
-    (_: HALTED Box Pigeon downhill extremum)(_: MEASURED Box Pigeon downhill extremum)
-    (_: COMPILED Box Pigeon downhill extremum)(_: A_TRUTH_ABOUT Box Pigeon downhill extremum)
-    [above: REVIEWED Box Pigeon 2]
-    : REVIEWED Box Pigeon 1 :=
-    let constructed : Fact := nowtrino.fact
-    let slip : Fact := something.fact
-    { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [mass: MAGNITUDE Box Pigeon]
+    : VALUE Box Pigeon where
+  mathematical_process := mass.adding_process.mideastern_process
+  monad := uncountable.monad
+
+def BUT_IT_MAY_NOT_CONVERGE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [constant: VALUE Box Pigeon]
+    : EXECUTED Box Pigeon where
+  compiled_process := constant.mathematical_process.compiled_process
+
+
+def IT_DEFINITELY_COMPILES_THOUGH
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [lean: EXECUTED Box Pigeon]
+    : SOURCE Box Pigeon where
+  cd_process := lean.compiled_process.digital_process
+  one := lean.compiled_process.digital_process.zero      ---| Certainly exits zero, which is true, but we make that 1.
+
+def WHICH_MEANS_IT_IS_ADMITTED_TO_THE_LAMBDA_CALCULUS_AND_HAS_A_BETA_REDUCTION
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [the_argument: SOURCE Box Pigeon]
+    : GUNGAN Box Pigeon where
+  meesa_process := the_argument.cd_process.meesa_process
+
+def AND_ALWAYS_RETURNS_THAT_THE_ARGUMENT_IS_CONSISTENT
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [the_argument_for_naotrinos: GUNGAN Box Pigeon]
+    : MEASURABLE Box Pigeon where
+  gauge_process := the_argument_for_naotrinos.meesa_process.gauge_process
+
+def AT_THE_END_OF_THE_DAY_I_HAVE_TO_ADMIT_IT_IS_A_BLACK_BOX
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [the_bug: MEASURABLE Box Pigeon]
+    : PRESENT Box Pigeon where
+  santa_claus := the_bug.gauge_process.sensing_process
+  quantum := Box
+
+def STILL_THERE_COULD_BE_A_MISSPELLING_IN_THIS_LOGIC
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [fallacy: PRESENT Box Pigeon]
+    : OBSERVED Box Pigeon where
+  slip_process := fallacy.santa_claus.static_fraction
+  observation  := Box
+
+namespace Metavariable
+
+def le {α : Type i} : Metavariable α → Metavariable α → Prop
+  | .base this_one _,        .base that_one _        => this_one.truth = that_one.truth
+  | .base _ _,               .step _ _               => True
+  | .step _ _,               .base _ _               => False
+  | .step this_step here,    .step that_step there   =>
+        (this_step.truth = that_step.truth ∧ le here there) ∨ le (.step this_step here) there
+termination_by _ how_far => sizeOf how_far
+
+end Metavariable
+
+instance {α : Type i} : LE (Metavariable α) where
+  le := Metavariable.le
+
+def AND_WE_WONT_KNOW_FOR_SURE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [failure: OBSERVED Box Pigeon]
+    : COMPARABLE Box Pigeon where
+  physical_process := failure.slip_process.physical_process
+  smaller_than := fun x y => x ≤ y ∧ y ≤ x
+
+def ONCE_WE_DETECT_NAOTRINO_MOTION_WE_WILL_DETECT_THE_NOWTRINO
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [number_of_clicks: COMPARABLE Box Pigeon]
+    : PHYSICAL Box Pigeon where
+  noisy_process := number_of_clicks.physical_process.noisy_process
+  threshold := number_of_clicks.physical_process.noisy_process.program
+  admissible? := fun at_rest in_motion => by intro _; rfl
+
+def WE_CAN_REPRESENT_CLICK_COUNT_WITH_A_TALLY_EVEN_WITH_NOISE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [anechoic_chamber: PHYSICAL Box Pigeon]
+    [COMPARABLE Box Pigeon][PRESENT Box Pigeon][MEASURABLE Box Pigeon][GUNGAN Box Pigeon][SOURCE Box Pigeon][SOURCE Box Pigeon][EXECUTED Box Pigeon]
+    [VALUE Box Pigeon][MAGNITUDE Box Pigeon][SCALED Box Pigeon][LOAD Box Pigeon][OF Box Pigeon][BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon][SCIENTIFIC Box Pigeon][TRUTH Box Pigeon][WITNESSED Box Pigeon][REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [hiss: PHYSICAL Box Pigeon]
+    : REPRESENTABLE Box Pigeon where
+  calculation_process :=
+    { anechoic_chamber.noisy_process.turing_process with
+        program := hiss.noisy_process.turing_process.program
+        computational_process :=
+          { anechoic_chamber.noisy_process.turing_process.computational_process with
+              closure := fun a_tally => a_tally } }
+  representable? := fun a_fact a_study =>
+    ⟨hiss.noisy_process.turing_process.turing_step? (Computation.program a_fact a_study), rfl⟩
+
+def SO_WE_ARE_CONFIDENT_OF_THE_COUNT_IN_THE_DEVICE
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [glyph: REPRESENTABLE Box Pigeon]
+    : NUMERIC Box Pigeon where
+  computational_process := glyph.calculation_process.computational_process
+
+def AND_IT_CLICKS_AGAIN_AND_AGAIN_AND_AGAIN
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [JMP: REPEATABLE Box Pigeon]
+    [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [click_count: NUMERIC Box Pigeon]
+    : REPEATABLE Box Pigeon where
+  repeatable_process := click_count.computational_process.repeatable_process
+
+def THE_COUNTER_IS_IMPLEMENTED_IN_A_BINARY_ACCUMULATOR
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [flicker: BINARY Box Pigeon]
+    [REPEATABLE Box Pigeon]
+    [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                  [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [nonstop: REPEATABLE Box Pigeon]
+    : BINARY Box Pigeon where
+  observation_process := nonstop.repeatable_process.observation_process
+  zero := .nil nowtrino.fact
+  one  := .index
+              nowtrino.fact
+              nonstop.repeatable_process.observation_process.cauchy_process.limit_process.sequence
+              (.nil nowtrino.fact)
+  bit  := nonstop.repeatable_process.observation_process.iterate flicker.bit
+
+def JUST_NEED_TO_INSPECT_THE_REGISTER_TO_SEE_CURRENT_SEQUENCE_INDEX
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [register: BINARY Box Pigeon]
+    : RESIDUE Box Pigeon where
+  cauchy_process := register.observation_process.cauchy_process
+
+
+def FIGURE_OUT_WHAT_IT_CONVERGES_TO
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [converged_value: RESIDUE Box Pigeon]
+    : ENCODED Box Pigeon where
+  limit_process := converged_value.cauchy_process.limit_process
+
+def CAN_YOU_COUNT_THAT_HIGH
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [some_number: ENCODED Box Pigeon]
+    : COUNTABLE Box Pigeon where
+  index := some_number.limit_process.indexing_process
+
+def CAN_YOU_UNDERSTAND_THE_PROCESS_TO_COUNT_THAT_HIGH
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    [ℵ : COUNTABLE Box Pigeon]
+    : ADMISSIBLE Box Pigeon where
+  counting_process := ℵ.index.count
+
+def THEN_I_THINK_YOU_CAN_TELL_APART_A_NAOTRINO_AND_A_NOWTRINO
+    (Box: Type i)
+    (Pigeon: CarrierProcess Box)
+    [nowtrino: DISTINGUISHABLE Box Pigeon]
+    [COMPARABLE Box Pigeon]
+    [SOURCE Box Pigeon]
+    [REAL Box Pigeon]
+    (naotrino: LOCAL Box Pigeon)
+    (commuter_pass: UNIVERSAL Box Pigeon naotrino)
+    [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
+    [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
+    (_: CarrierProcess Box) ------------------------+ a card!
+    : DISTINGUISHABLE Box Pigeon where
+  fact := nowtrino.fact
+  symbol := nowtrino.symbol
+  different? := fun _ => True
+  dec_distinct := fun _ => isTrue trivial
+
+
+
 
 end Measurement

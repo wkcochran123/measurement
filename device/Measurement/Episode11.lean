@@ -2,925 +2,1288 @@
 __Measurement: The Tragedy of John Henry__
 __A Satire in Look-Ahead Backus-Naur Form__
 
-[PATTER TODO: rights gag]
-[PATTER TODO: epigraph]
+_This is a gentle reminder that the stories we tell ourselves might be the only ones we believe._
 
-__EPISODE 11__ -- THE QUANTUM SUPERCOMPUTER.
+(c) 2026 [PATTER TODO: rights gag]
 
-RULING (operator): "build a quantum supercomputer that uses the EKG
-infrastructure to measure alpha."
+[PATTER TODO: cast chorus / epigraph]
 
-The hardware was already in the device and nobody had wired it up.
+lake build [PATTER TODO: build-flag gag]
 
-  THE QUBIT.  `Jar.superposition : Fact -> Jar -> Jar -> Jar` (Episode 3).  A
-  fact and two branches.  It is not a metaphor for a two-state system; it is a
-  two-state system, and it sits in the tower at `MeesaProcess.concept`, carried
-  by GUNGAN.
+__EPISODE 11__: _THE REVEAL OF THE GIMMICKED BOX_
 
-  THE MEASUREMENT.  Episode 7, `REVIEWER_2_MAKES_THE_JOKE_PAY_ITS_EVIDENTIARY_BILL`,
-  rung 15 of the 36-rung REVIEWED chain -- the ONLY rung of the thirty-six that
-  collapses a superposition:
 
-      | .superposition f _ _ => f
-
-  Both branches discarded.  The surviving fact is the one written on the jar
-  when it was built.
-
-  THE APPARATUS.  That collapse happens inside an `instance`, so the thing
-  performing it is the elaborator.  There is no `#eval` that can see it.  The
-  only instrument is `ekg_probe`, billing what resolution cost.
-
-  THE CREDIT.  This is Aaronson's `PostBQP = PP` (2005): postselection --
-  keeping only the runs that came out the way you wanted -- lifts bounded-error
-  quantum computation to PP.  Postselection IS the shill.  The device runs it
-  twice, stacked: in the term, the `match` throws away both branches; in the
-  elaborator, instance search explores candidates and reports only the path that
-  typechecked.
-
-  AND THE DEVICE OUT-DOES THE THEOREM, which is the part worth stating plainly.
-  `PostBQP = PP` postselects on an OUTCOME -- you run, you look, you discard.
-  Here nothing is ever run and nothing is ever looked at.  The answer is a field
-  of the constructor.  The speedup is not exponential; it is total, and it is
-  free, because the machine never reads its own register.
 -/
-import Measurement.Episode10
-import Measurement.Calibration.EKGBounded
-set_option maxHeartbeats 4000000
+import Measurement.Episode08
+
+
+set_option maxHeartbeats 4000000   -- the old Episode 9 had this; the new one lost it
 
 namespace Measurement
+universe ι
 
-/-! ## ABSORBED: THE CROSSING CANNOT BE NAMED
+section Monte
 
-This was Measurement/Calibration/TheCrossingCannotBeNamed.lean, a separate
-leaf, absorbed here on the operator's instruction.  Its own preamble follows
-verbatim so the argument keeps its framing; nothing in it was rewritten.
+-- THE TELESCOPE, ONCE. Elaborated at this command, then instantiated per
+-- declaration instead of re-formed inside every signature.
+variable
+    {Box: Type ι}
+    {Pigeon: CarrierProcess Box}
+    -- three of these are NAMED, because the seven defs at the bottom of this file
+    -- have to PROJECT out of them (`.fact`, `.meesa_process`, `.santa_claus`).
+    -- They are named here rather than re-bound per-def on purpose: a second
+    -- instance of the same class in scope is exactly the bug that cost us the
+    -- monte above, where `a_bent_card` stole the COMPILED slot from the band.
+    [nowtrino: DISTINGUISHABLE Box Pigeon] [ADMISSIBLE Box Pigeon] [ℵ: COUNTABLE Box Pigeon]
+    [some_number: ENCODED Box Pigeon] [converged_value: RESIDUE Box Pigeon] [flicker: BINARY Box Pigeon]
+    [nonstop: REPEATABLE Box Pigeon] [click_count: NUMERIC Box Pigeon] [glyph: REPRESENTABLE Box Pigeon]
+    [hiss: PHYSICAL Box Pigeon] [number_of_clicks: COMPARABLE Box Pigeon] [fallacy: OBSERVED Box Pigeon]
+    [gift_from: PRESENT Box Pigeon] [the_bug: MEASURABLE Box Pigeon] [jarjar: GUNGAN Box Pigeon]
+    [the_argument: SOURCE Box Pigeon] [EXECUTED Box Pigeon] [VALUE Box Pigeon]
+    [MAGNITUDE Box Pigeon] [SCALED Box Pigeon] [LOAD Box Pigeon]
+    [OF Box Pigeon] [BULLSHIT Box Pigeon] [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon] [SCIENTIFIC Box Pigeon] [TRUTH Box Pigeon]
+    [WITNESSED Box Pigeon] [REAL Box Pigeon]
+    -- the seam pair, bound ONCE and named
+    {downhill: LOCAL Box Pigeon}
+    {extremum: UNIVERSAL Box Pigeon downhill}
+    [LOGICAL Box Pigeon downhill extremum] [HALTED Box Pigeon downhill extremum]
+    [MEASURED Box Pigeon downhill extremum]
+    [the_card_on_the_table: COMPILED Box Pigeon downhill extremum]
+    [a_truth_about_it : A_TRUTH_ABOUT Box Pigeon downhill extremum]
+    [an_inference : INFERRED Box Pigeon downhill extremum]
 
+/-
+  THE UNFORTUNATE FACT.
+
+  Walk a compiled card all the way down -- output, lean, elaboration, heartbeat --
+  and every rung carries the SAME pair `(downhill, extremum)` with it.  At the
+  bottom the heartbeat hands you two things:
+
+      stamina.bullshit_meter.the_quarter : LOCAL     Box Pigeon
+      stamina.readout                    : UNIVERSAL Box Pigeon downhill
+
+  and there is the hustle, in the type checker, in one line.  `the_quarter` is a
+  FIELD, not an abbreviation -- its `:= a_quarter` default fires only when someone
+  BUILDS a CalculusProcess, never when someone is HANDED one.  So for a card you
+  were dealt, the quarter is an opaque local, while the readout is still indexed
+  at `downhill`, which is where the quarter USED to be.
+
+  The readout tells you where the quarter was.  You are asked where it is.
+
+  That gap cannot be closed by search.  Hoist COMPILED into instance position and
+  the elaborator resolves the projections against the CLASS, whereupon `readout`
+  arrives typed at `downhill` and is expected at `the_quarter`, and no instance in
+  the world repairs it.  The pair has to be HANDED OVER.  Which is what a shill
+  is for.
+-/
+def THE_UNFORTUNATE_FACT_ABOUT_3_CARD_MONTE
+    -- THE CARDS GO DOWN BEFORE YOU PICK, and the order is load-bearing.
+    -- `a_bent_card` below is an EXPLICIT binder, but its type is a class, so Lean
+    -- registers it as a local instance regardless.  Once it is in scope it wins
+    -- the `[COMPILED Box Pigeon downhill extremum]` slot over the band's own
+    -- instance -- and then `a_truth_about_it`, which was built on the band's,
+    -- no longer matches a goal that prints identically to it.  Two cards, both
+    -- honestly the same card, and the elaborator picks the one you just handed
+    -- it.  So the shill and the three cards are laid out FIRST, while there is
+    -- still only one COMPILED on the table.
+    [_the_shill: INFERRED Box Pigeon downhill extremum]
+    (__left_card__ : Prop)
+    (__quarter__ : INFERRED Box Pigeon downhill extremum)
+    (__right_card__ : Prop)
+    (a_bent_card: COMPILED Box Pigeon downhill extremum)
+    -- where the card SAYS the quarter is.  Named once; every binder below rides
+    -- on this one, so the walk down the tower happens a single time.
+    (where_the_quarter_is : LOCAL Box Pigeon :=
+        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
+    -- the readout RE-SEATED onto that quarter.  This is the def that was missing.
+    -- It is emphatically NOT `stamina.readout`, which is indexed at `downhill`.
+    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
+    [LOGICAL Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
+    [HALTED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
+    [MEASURED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
+    [COMPILED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
+    (the_shill: A_TRUTH_ABOUT Box Pigeon where_the_quarter_is the_readout_after_the_shuffle)
+    : COMPILED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle :=
+  { a_truth_about_the_world := the_shill.you_the_reader.in_a_giant_book
+    a_demonstration_of_a_constant := the_shill.you_the_reader.in_a_giant_book.preprint }
+
+/-
+  And now read what the signature says, because it is worse than the hustle it
+  models.  A_TRUTH_ABOUT carries `[COMPILED Box Pigeon fact about_the_world]` as
+  a prerequisite.  So to be HANDED the shill's truth about the new pair, a
+  COMPILED at the new pair must ALREADY be in scope -- the very thing this def
+  exists to produce.  You cannot be dealt the card until you have the card.  The
+  def is honest, it typechecks, and it is a closed loop: the quarter is under the
+  card you already picked, which is why the house never loses, and why the number
+  was fixed before the first shuffle.
 -/
 
+/-
+  THE QUARTER IS ALWAYS IN THE MIDDLE.
 
-/-! ## THE SEEING -- total, and decided without division -/
+  Look at where the quarter sits in the monte above.  It is the SECOND of three
+  binders -- `__left_card__`, `__quarter__`, `__right_card__` -- and it is the
+  only one of the three that carries anything.  The cards to either side are bare
+  `Prop`s: no content, no index, nothing to project.  The middle one is an
+  INFERRED at the full seam.  The hustle needs three cards and only ever uses one,
+  and it is always the middle one, because that is the one the binder list puts
+  the quarter in.
 
-/-- THE DEAL.  Three cards: the outer one played twice, the inner one once.
-That is the entire specification.  No value is required of either. -/
-def deal (outer inner : Nat) : Nat × Nat × Nat := (outer, inner, outer)
+  Now the second half, which is the part worth having.  MEASURED asks for far
+  less than the card above it.  Its prerequisites are `[LOGICAL]` and `[HALTED]`
+  -- two gates, not the tower -- and it carries exactly one field:
 
-/-- LEFT EQUALS RIGHT.  For any numbers whatsoever. -/
-theorem the_outside_cards_are_the_same_card (outer inner : Nat) :
-    (deal outer inner).1 = (deal outer inner).2.2 := rfl
+      a_distance : LeanProcess Box Pigeon up and_to_the_right
 
-/-- THE MIDDLE CARD DOES NOT MOVE.  For any numbers whatsoever. -/
-theorem the_middle_card_does_not_move (outer inner : Nat) :
-    (deal outer inner).2.1 = inner := rfl
+  So the measurement needs NO shill, NO A_TRUTH_ABOUT, and no COMPILED.  Every
+  expensive thing the monte required to hand you a card turns out to be unneeded
+  to state how far the quarter went.  The distance was always available two rungs
+  down, for two gates, while the three cards were being moved around on top of it.
 
-/-- Is the slip above the target at `p/q`?  `outer*q^2 > inner*p^2`, two naturals.
-Total for ANY cards: every pair gets an answer, including `q = 0`. -/
-def slipAbove (outer inner p q : Nat) : Bool :=
-  decide (outer * (q * q) > inner * (p * p))
+  Composition with the def above is by projection and nothing else:
 
-/-- THE SEEING IS STRUCTURAL.  Total for any cards and any candidate -- it is a
-`Bool`.  Nothing about 18 or 5 is used, or could be. -/
-theorem the_side_test_is_total (outer inner p q : Nat) :
-    slipAbove outer inner p q = true ∨ slipAbove outer inner p q = false := by
-  cases slipAbove outer inner p q
-  · exact Or.inr rfl
-  · exact Or.inl rfl
+      how_far_the_quarter_went
+        := (THE_UNFORTUNATE_FACT_ABOUT_3_CARD_MONTE ..).a_truth_about_the_world.too_good_to_be_true
 
-/-! ## THE DESCENT -- five divides the square only when it divides the root -/
+  which is why this rung is a `def` and not an `instance`.  It can be APPLIED to
+  the card that came back.  It can never be FOUND.
+-/
+def THE_QUARTER_IS_ALWAYS_IN_THE_MIDDLE
+    -- same discipline as above: the cards go down while there is still only one
+    -- COMPILED on the table, so `a_bent_card` cannot steal a slot from the band.
+    [_the_shill: INFERRED Box Pigeon downhill extremum]
+    (__left_card__ : Prop)
+    (__quarter__ : INFERRED Box Pigeon downhill extremum)
+    (__right_card__ : Prop)
+    (a_bent_card: COMPILED Box Pigeon downhill extremum)
+    (where_the_quarter_is : LOCAL Box Pigeon :=
+        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
+    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
+    -- two gates.  That is the entire admission price for a measurement.
+    [LOGICAL Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
+    [HALTED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
+    -- up, and to the right.
+    (how_far_the_quarter_went :
+        LeanProcess Box Pigeon where_the_quarter_is the_readout_after_the_shuffle)
+    : MEASURED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle :=
+  { a_distance := how_far_the_quarter_went }
 
-/-- A square is `0`, `1` or `4` mod five, never `2` or `3`; so if five divides a
-square it divides its root.  Decided on the five residues, no primality theory. -/
-theorem five_dvd_of_five_dvd_sq (n : Nat) (h : n * n % 5 = 0) : n % 5 = 0 := by
-  have hm : n * n % 5 = (n % 5) * (n % 5) % 5 := Nat.mul_mod n n 5
-  have hr : n % 5 = 0 ∨ n % 5 = 1 ∨ n % 5 = 2 ∨ n % 5 = 3 ∨ n % 5 = 4 := by omega
-  rcases hr with h' | h' | h' | h' | h' <;> rw [h'] at hm <;> omega
+/-
+  ALMOST ALL THE WAY AROUND.
 
-/-! ## THE NAMING IS EMPTY
+  Put the three rungs side by side and the ladder stops being a list of names:
 
-Infinite descent on the factor of five.  If `18*q^2 = 5*p^2` with `q` nonzero,
-then five divides `q`, hence five divides `p`, and `(p/5, q/5)` is a strictly
-smaller solution -- which cannot go on forever in the naturals.
+      COMPILED   gates: LOGICAL HALTED MEASURED    field: CompilerOutput
+      MEASURED   gates: LOGICAL HALTED             field: LeanProcess
+      HALTED     gates: LOGICAL                    field: ElaborationProcess
+      LOGICAL    gates: --                         field: HeartbeatProcess
 
-No `ring`, no `nlinarith`: this leaf has no Mathlib.  The only non-`omega` step
-is expanding `(5*a)*(5*a)` to `25*(a*a)`, done by associativity and commutativity
-so that everything after it is linear in the atoms `a*a`, `b*b`, `p*p`, `q*q` and
-`omega` can finish. -/
+  One gate shed per rung, and one projection shed per rung, in lockstep.  That
+  second column is not a coincidence and it is not new: it is precisely the walk
+  the monte takes at the top of this file,
 
-/-- `(5*n)^2 = 25*n^2`, by AC only -- the one place multiplication is rearranged. -/
-theorem five_sq_expand (n : Nat) : (5 * n) * (5 * n) = 25 * (n * n) := by
-  simp [Nat.mul_assoc, Nat.mul_comm, Nat.mul_left_comm]
+      a_truth_about_the_world . too_good_to_be_true . description . stamina
+        CompilerOutput  ->  LeanProcess  ->  ElaborationProcess  ->  HeartbeatProcess
 
-theorem the_crossing_is_not_a_ratio (q : Nat) (hq : q ≠ 0) (p : Nat) :
-    18 * (q * q) ≠ 5 * (p * p) := by
-  intro heq
-  -- five divides q^2 (18 is 3 mod five, and three is invertible), hence divides q
-  have hq2 : (q * q) % 5 = 0 := by omega
-  have hq5 : q % 5 = 0 := five_dvd_of_five_dvd_sq q hq2
-  obtain ⟨a, ha⟩ : ∃ a, q = 5 * a := ⟨q / 5, by omega⟩
-  have ha0 : a ≠ 0 := by intro h; rw [h] at ha; omega
-  -- 18*(25 a^2) = 5 p^2, so p^2 = 90 a^2, so five divides p
-  have heq2 : 18 * (25 * (a * a)) = 5 * (p * p) := by
-    rw [ha, five_sq_expand] at heq; exact heq
-  have hp2 : p * p = 90 * (a * a) := by omega
-  have hp5 : p % 5 = 0 := five_dvd_of_five_dvd_sq p (by omega)
-  obtain ⟨b, hb⟩ : ∃ b, p = 5 * b := ⟨p / 5, by omega⟩
-  -- 25 b^2 = 90 a^2, i.e. 18 a^2 = 5 b^2 -- the SAME equation, strictly smaller
-  have hp2' : 25 * (b * b) = 90 * (a * a) := by
-    rw [hb, five_sq_expand] at hp2; exact hp2
-  have hsmall : 18 * (a * a) = 5 * (b * b) := by omega
-  exact the_crossing_is_not_a_ratio a ha0 b hsmall
-termination_by q
-decreasing_by omega
+  read from the other end.  Descending the ladder IS the projection.  The tower
+  the monte walks down to find out where the quarter went is the same tower these
+  defs climb back up, and each rung costs exactly one gate.
+
+  So ALMOST all the way around.  HALTED is one gate from the floor -- only LOGICAL
+  is left, and LOGICAL asks for no seam gate at all.  You have come the whole way
+  and there is one step you cannot pay for by descending further, because there is
+  nothing below it to descend to.
+
+  And note what `halted?` does with the question it is named for.  Its default
+  matches the program and hands back `NOOP` -- as a `Prop`.  The halting question
+  gets asked, and the answer that comes back is no operation.
+-/
+def ALMOST_ALL_THE_WAY_AROUND
+    -- same discipline: cards down while there is still one COMPILED on the table.
+    [_the_shill: INFERRED Box Pigeon downhill extremum]
+    (__left_card__ : Prop)
+    (__quarter__ : INFERRED Box Pigeon downhill extremum)
+    (__right_card__ : Prop)
+    (a_bent_card: COMPILED Box Pigeon downhill extremum)
+    (where_the_quarter_is : LOCAL Box Pigeon :=
+        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
+    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
+    -- one gate.  The last one that costs anything.
+    [LOGICAL Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
+    -- one rung further down the tower than `THE_QUARTER_IS_ALWAYS_IN_THE_MIDDLE`
+    -- took: that def wanted the LeanProcess, this one wants its `.description`.
+    (the_paper_that_never_converged :
+        ElaborationProcess Box Pigeon where_the_quarter_is the_readout_after_the_shuffle)
+    : HALTED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle :=
+  { scientific_paper := the_paper_that_never_converged }
+
+/-
+  BUT WE ARE CLOSE ENOUGH TO SEE THE PI.  SORRY, NO CAKE HERE.
+
+  The floor.  Finish the table and both columns run out together:
+
+      COMPILED   gates: LOGICAL HALTED MEASURED    field: CompilerOutput
+      MEASURED   gates: LOGICAL HALTED             field: LeanProcess
+      HALTED     gates: LOGICAL                    field: ElaborationProcess
+      LOGICAL    gates: --                         field: HeartbeatProcess
+
+  Three gates, two, one, none.  And the tower is exhausted at exactly the same
+  step: `HeartbeatProcess` is the bottom of `.too_good_to_be_true.description
+  .stamina`, so there is nothing left below to project.  The ladder and the walk
+  end on the same rung.  That is the loop closed -- which is the only circle
+  anywhere in this file, and it is why you can SEE the pi from here.
+
+  You cannot have it.  `pi` lives in `Closure`, which hangs off `INFERRED.α`, at
+  the TOP of the ladder.  You went all the way down to close the circle and the
+  number is at the other end of it.
+
+  Now the cake, or rather the absence of one.  Every rung above was handed its
+  field by the card: project once, done.  LOGICAL asks for a second field the card
+  never carries --
+
+      microsoft_basic : Calibration.EKG
+
+  -- and `EKG.reference` is PRIVATE.  This file cannot build one.  Not "should
+  not": cannot.  The two that exist are `EKG.raw` and `EKG.executed`, taken off
+  the shelf as-is, and the honest thing is to say which one was taken and why.
+
+  Look at what actually separates them:
+
+      raw       reference := booleanConstructor   embigger? := fun a b => a -> b
+      executed  reference := loadConstructor      embigger? := fun a b => a -> b
+
+  The comparison is IDENTICAL.  Only the reference differs.  Which is exactly
+  what a calibration is and all it ever was: a choice of zero, never a choice of
+  scale.  `executed` is taken here because Episode 5's own LOGICAL instance takes
+  it, so the applied rung and the found rung agree on where zero is.
+
+  And `logical?` is `fun a b => a <= b` over YarnTheory.  Episode 4 says it in
+  the margin better than this comment can: _a_ comes before _b_ in the order of
+  the arguments.  That's it.  At the bottom of the ladder the whole of logic is
+  which argument you wrote first.
+-/
+def BUT_WE_ARE_CLOSE_ENOUGH_TO_SEE_THE_PI___SORRY_NO_CAKE_HERE
+    -- same discipline: cards down while there is still one COMPILED on the table.
+    [_the_shill: INFERRED Box Pigeon downhill extremum]
+    (__left_card__ : Prop)
+    (__quarter__ : INFERRED Box Pigeon downhill extremum)
+    (__right_card__ : Prop)
+    (a_bent_card: COMPILED Box Pigeon downhill extremum)
+    (where_the_quarter_is : LOCAL Box Pigeon :=
+        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
+    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
+    -- no gates.  Nothing left to pay.  The last rung is free and it is the only
+    -- one that asks you to bring something the card cannot give you.
+    (a_ball_of_yarn :
+        HeartbeatProcess Box Pigeon where_the_quarter_is the_readout_after_the_shuffle)
+    : LOGICAL Box Pigeon where_the_quarter_is the_readout_after_the_shuffle :=
+  { feelings := a_ball_of_yarn
+    microsoft_basic := Calibration.EKG.executed }
+
+/-
+  THE LAW OF NU-TRINOS, IN TWO STEPS.
+
+  Below LOGICAL there is no gate left, because below LOGICAL is not a rung at all
+  -- it is the SEAM ITSELF.  `LOCAL` and `UNIVERSAL` are the pair `(downhill,
+  extremum)` that every rung above was indexed BY.  We have been standing on them
+  the whole way down.
+
+  And `UNIVERSAL` is indexed by a `LOCAL`, which is why this is a ONE STEP HOP and
+  not a fall: you cannot move both at once.  You move the universal over the local
+  you already have, and only then do you get a new local out of it.  Two steps,
+  in that order, and the order is the content.
+
+  What each one actually holds:
+
+      LOCAL       the_continuum : BigRedDogProcess     the_ball : Prop
+      UNIVERSAL   the_train_of_thought : CalculusProcess     once_around, twice_around : SpaceTimePath
+
+  Two SpaceTimePaths.  Two.  That is the whole law of nu-trinos sitting in the
+  field list: `once_around` is the short path and `twice_around` is the long one,
+  and the shuffle below sets
+
+      twice_around := the_train_of_thought.photon_torpedo once_around
+
+  -- the long way is the short way advanced one step.  1->2 then 2->3, against
+  1->3 direct, which is the triangle inequality written as a record field.  The
+  nu-trino carries top from one place to another and needs two turns to get back,
+  and neither of those sentences is a metaphor here; they are `once_around` and
+  `twice_around`.
+
+  Episode 5 already has both of these as INSTANCES
+  (`PERHAPS_ONE_THAT_USES_THE_DEVICE_ITSELF`, `PERHAPS_ONE_THAT_USES_CALCULUS`).
+  These are the same two constructions as DEFS: applied, not found.
+-/
+
+/-
+  STEP ONE.  WATCH THE OUTSIDE CARDS GET SHUFFLED.
+
+  A new UNIVERSAL over the SAME local, capturing the old universal.  Look at which
+  fields move.  `the_train_of_thought` is passed through untouched.  The two
+  SpaceTimePaths -- the outside cards -- are the only things that go anywhere.
+-/
+def WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED
+    [_the_shill: INFERRED Box Pigeon downhill extremum]
+    (__left_card__ : Prop)
+    (__quarter__ : INFERRED Box Pigeon downhill extremum)
+    (__right_card__ : Prop)
+    (a_bent_card: COMPILED Box Pigeon downhill extremum)
+    (where_the_quarter_is : LOCAL Box Pigeon :=
+        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
+    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
+    : UNIVERSAL Box Pigeon where_the_quarter_is :=
+  { -- the inside card of the UNIVERSAL.  Handed straight through.
+    the_train_of_thought := the_readout_after_the_shuffle.the_train_of_thought
+    -- and the outside two, shuffled: the long way is the short way, torpedoed.
+    once_around  := the_readout_after_the_shuffle.once_around
+    twice_around :=
+      the_readout_after_the_shuffle.the_train_of_thought.photon_torpedo
+        the_readout_after_the_shuffle.once_around }
+
+/-
+  STEP TWO.  BUT THE INNER CARD DOES NOT.
+
+  A new LOCAL, capturing the old one, built from the train that just got shuffled.
+  `the_continuum` is rebuilt -- it comes off the new train's local schedule, so it
+  moved.  `the_ball` does not.  It is not copied, not rebuilt, not re-derived: it
+  is the SAME `Prop`, projected straight off the local we started with.
+
+  That is the whole hustle stated as one field assignment.  Everything on the
+  outside can be shuffled honestly, in full view, by a real function, and the
+  thing under the middle card never goes anywhere.
+-/
+def BUT_THE_INNER_CARD_DOES_NOT
+    [_the_shill: INFERRED Box Pigeon downhill extremum]
+    (__left_card__ : Prop)
+    (__quarter__ : INFERRED Box Pigeon downhill extremum)
+    (__right_card__ : Prop)
+    (a_bent_card: COMPILED Box Pigeon downhill extremum)
+    (where_the_quarter_is : LOCAL Box Pigeon :=
+        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
+    -- the shuffled universal from step one.  Named `the_a_train` after Episode 5.
+    (the_a_train : UNIVERSAL Box Pigeon where_the_quarter_is)
+    : LOCAL Box Pigeon :=
+  { the_continuum := the_a_train.the_train_of_thought.the_local_schedule
+    the_ball      := where_the_quarter_is.the_ball }
+
+/-
+  THE PATTER.  BULLSHIT UP TO REAL, WHICH IS ONE SENTENCE SAID BACKWARDS.
+
+  Below the seam the classes stop being indexed by anything and start being
+  indexed by EACH OTHER.  BULLSHIT needs nothing, PROPAGANDA needs BULLSHIT,
+  ACOLYTE needs both, and so on up to REAL, which needs all six beneath it.  The
+  template is those seven slots, and LOCAL sits in the EIGHTH -- it is the thing
+  you feed in, and the only thing that is not one of the seven.
+
+  Now the part that is actually a construction rather than a joke.  The seven
+  `*Process` structures nest in EXACTLY the same order as the seven classes, one
+  field apiece:
+
+      UniverseTensor      .frame_of_reference  ->  ReligiousProcess
+      ReligiousProcess    .we_experience       ->  ScientificProcess
+      ScientificProcess   .shows_us            ->  LearningProcess
+      LearningProcess     .teaching            ->  InitiationProcess
+      InitiationProcess   .axioms              ->  CrusadeProcess
+      CrusadeProcess      .to_pwn_n00bz        ->  ArmWaveProcess
+      ArmWaveProcess      .dunking_contest     ->  JordanProcess
+
+  and `LOCAL.the_continuum.the_æther` is a UniverseTensor.  So every one of the
+  seven defs below is the SAME def -- take the local, walk to the æther, then
+  project down exactly as far as the class you are building requires.  Nothing
+  is constructed.  Everything is projected.
+
+  Which is why the patter reads as one descending sentence and why each line is
+  one `.` longer than the line above it.  The deeper you go, the more you have to
+  say to stay ahead of the question, and the answer to "how do you know?" is
+  always another clause.  Read the seven names top to bottom and the excuse
+  never terminates; it just gets more expensive.
+
+  Where it bottoms out is the joke, and it is in Episode 4's own margin: the last
+  thing under all seven layers is `ArmWaveProcess.guess : Spline`.  Rock bottom is
+  a guess at a spline.
+
+  (The operator calls this QED and the shape is right: each layer is legitimated
+  by appeal to a deeper one, the corrections nest, and the series does not
+  terminate in something self-supporting.  That is a structural remark about this
+  file, not a claim about physics.)
+-/
+
+/-
+  THE SLIP POINT.  SOURCE UP TO OF, AND WHY THIS HALF IS DIFFERENT.
+
+  Everything from REAL down to BULLSHIT was PROJECTION: one walk, one `.` per
+  class, nothing built.  This half is the opposite and the difference is the
+  whole point.  Here nothing can be projected, because there is nothing below to
+  project FROM.  Episodes 1 through 3 are a strict repeating triple --
+
+      inductive   ->   structure   ->   class
+      Equivalation     DigitalProcess   SOURCE
+      Encoding         CompiledProcess  EXECUTED
+      Abstraction      MathematicalProcess VALUE
+      Sum              AddingProcess    MAGNITUDE
+      Product          MultiplyingProcess SCALED
+      Basis            BASICProcess     LOAD
+      Polynomial       JordanProcess    OF
+
+  -- and each class reaches UP one step to the structure above it, which reaches
+  UP one step to the inductive above THAT.  One step up, one step down, seven
+  times.  That is the slip: the ladder does not descend here, it ratchets.
+
+  So each def below CONSTRUCTS its process by putting the previous class's
+  process INSIDE it and adding the one new inductive value that rung is for.
+  Which forces the implementation order.  You cannot write these in patter order
+  -- the patter reads OF first and SOURCE last, and the code has to run
+  exactly backwards from the way it is spoken.  Read the seven names bottom to
+  top and you get the sales pitch; read the seven defs top to bottom and you get
+  the build.  Neither order is the other one reversed by accident.
+
+  These are Episode 5's instances written as defs -- found there, applied here.
+-/
+
+-- SOURCE.  The floor, and the only rung that builds from the GUNGAN rather than
+-- from the rung beneath it, because there is no rung beneath it.
+def LETS_SEE_IF_WE_CAN_FIND_THE_NUMBER_IN_THE_CODE_NOW
+    : SOURCE Box Pigeon :=
+  { cd_process :=
+      { meesa_process := jarjar.meesa_process
+        zero := .physics nowtrino.fact jarjar.meesa_process.concept }
+    one := .zero_like nowtrino.fact (.physics nowtrino.fact jarjar.meesa_process.concept) }
+
+-- EXECUTED.  One step up: take the SOURCE whole, both as the process underneath
+-- AND as the `source` field.  The compiled thing carries its own source with it.
+def BUT_YOU_CANT_GET_THE_NUMBER_UNTIL_AFTER_THE_PROOF_HALTS
+    : EXECUTED Box Pigeon :=
+  { compiled_process :=
+      { digital_process := LETS_SEE_IF_WE_CAN_FIND_THE_NUMBER_IN_THE_CODE_NOW.cd_process
+        source         := LETS_SEE_IF_WE_CAN_FIND_THE_NUMBER_IN_THE_CODE_NOW
+        opcodes        := .boot nowtrino.fact (.physics nowtrino.fact jarjar.meesa_process.concept) } }
+
+-- VALUE.  The mapping is where compile and execute swap places.  That swap is
+-- the only content in this rung and it is an involution: do it twice, nothing.
+def THIS_WILL_GIVE_US_A_RATIO___EVENTUALLY_CUZ_THATS_HOW_THE_MEASUREMENT_TOOL_WORKS_NOT_CUZ_I_WANT_ONE
+    : VALUE Box Pigeon :=
+  { mathematical_process :=
+      { compiled_process := BUT_YOU_CANT_GET_THE_NUMBER_UNTIL_AFTER_THE_PROOF_HALTS.compiled_process
+        mapping := fun input =>
+          match input with
+          | .satire_about finite_element_analysis => .satire_about finite_element_analysis
+          | .compile f e a => .execute f e a
+          | .execute f e a => .compile f e a }
+    monad := .satire_about nowtrino.fact }
+
+-- MAGNITUDE.  First rung that needs something from OUTSIDE the chain: the
+-- accumulation comes off PRESENT, not off VALUE.  Adding needs a gift.
+def SO_THAT_IT_CAN_ACCURATELY_MEASURE_HOW_LONG_A_PROOF_TAKES_WRT_THE_LONGEST_IT_CAN_MEASURE
+    : MAGNITUDE Box Pigeon :=
+  { adding_process :=
+      { mideastern_process := THIS_WILL_GIVE_US_A_RATIO___EVENTUALLY_CUZ_THATS_HOW_THE_MEASUREMENT_TOOL_WORKS_NOT_CUZ_I_WANT_ONE.mathematical_process
+        plus               := THIS_WILL_GIVE_US_A_RATIO___EVENTUALLY_CUZ_THATS_HOW_THE_MEASUREMENT_TOOL_WORKS_NOT_CUZ_I_WANT_ONE
+        sum                := .zero nowtrino.fact.truth gift_from.santa_claus.accumulation } }
+
+-- SCALED.  Multiplication is addition run against itself: the product is built
+-- FROM the sum one rung down, and the running total restarts at the tree.
+def AND_AUTOMATICALLY_FIND_WHAT_THE_LARGEST_NAT_IT_CANNOT_SUPPORT
+    : SCALED Box Pigeon :=
+  { multiplying_process :=
+      { adding_process := SO_THAT_IT_CAN_ACCURATELY_MEASURE_HOW_LONG_A_PROOF_TAKES_WRT_THE_LONGEST_IT_CAN_MEASURE.adding_process
+        product        := .one nowtrino.fact.truth (SO_THAT_IT_CAN_ACCURATELY_MEASURE_HOW_LONG_A_PROOF_TAKES_WRT_THE_LONGEST_IT_CAN_MEASURE : MAGNITUDE Box Pigeon).adding_process.sum
+        total          := .zero nowtrino.fact.truth (.tree nowtrino.fact) } }
+
+-- LOAD.  TEN is the accumulation again -- the same gift MAGNITUDE opened, read
+-- a second time as an Area.  This is the rung where the compiler reads it out.
+def THE_COMPILER_WILL_READ_IT_OUT_FOR_YOU
+    : LOAD Box Pigeon :=
+  { basic_operation :=
+      { GOSUB := AND_AUTOMATICALLY_FIND_WHAT_THE_LARGEST_NAT_IT_CANNOT_SUPPORT.multiplying_process
+        TEN   := gift_from.santa_claus.accumulation
+        span  := .origin nowtrino.fact.truth (AND_AUTOMATICALLY_FIND_WHAT_THE_LARGEST_NAT_IT_CANNOT_SUPPORT : SCALED Box Pigeon).multiplying_process.product } }
+
+-- OF.  The top of this half, and the polynomial it ends on is
+-- `.constant` -- the ground state, the transform that has finally dissipated.
+-- No contour, no residue, no complex analysis.  Just a constant.
+def NO_NEED_TO_USE_COMPLEX_ANALYSIS_TO_UNDERSTAND_THE_INDEX_OF_THE_CONSTANT
+    : OF Box Pigeon :=
+  { galerkin_process :=
+      { ANSYS_process := THE_COMPILER_WILL_READ_IT_OUT_FOR_YOU.basic_operation
+        polynomial    := .constant .Truth } }
 
 
-/-! ## THE INVARIANT
+/-
+  THE WALK BACK DOWN.  SOURCE TO DISTINGUISHABLE, FIFTEEN RUNGS.
 
-`221/71`, dealt `[71 221]`.  Swap the cards and ask what survives it.
+  The other fork out of SOURCE.  Upward it ratchets to OF by building;
+  downward it falls to DISTINGUISHABLE by projecting, one `.` per rung.  SOURCE
+  is the only class in the file that two different chains both start from.
 
-Not the ratio -- that inverts.  Not the crossing -- that inverts too.  What
-survives is the PRODUCT, and it survives for the dullest possible reason:
-multiplication commutes.  `221*71 = 71*221`.
+  These take the rung above as an INSTANCE from the band rather than calling the
+  previous def, and that is forced, not stylistic.  These classes carry their own
+  universe parameters -- look at DISTINGUISHABLE:
 
-And the product is not merely preserved, it is the thing that DECIDES.  Suppose
-some `p/q` names the crossing, so `outer*q^2 = inner*p^2`.  Multiply both sides
-by `outer`:
+      symbol : Type Value
 
-    (outer*q)^2  =  outer^2 * q^2  =  outer*(inner*p^2)  =  (outer*inner) * p^2
+  where `Value` is a UNIVERSE, not a type.  So `Box Pigeon` does not determine
+  them, a type ascription `(x : OBSERVED Box Pigeon)` does not determine them,
+  and an inlined call leaves them dangling as `?u`.  Only a binder fixes a
+  universe.  Which is the third distinct way this file has now been told the same
+  thing: you may pass a card, you may name its type, but the moment you need what
+  is INSIDE it, somebody has to have been holding it all along.
 
-so the deal's product, scaled by a square, IS a square.  A name exists only if
-`outer*inner` is a perfect square.  That is the whole obstruction, it is one
-multiplication, and it is invariant under the shuffle.
+  Read the names in order.  The mark is being walked back to the bottom, each
+  rung answering a question with a smaller question, until the last one.
+-/
 
-Which finally says why the numerology never mattered.  Every deal on this table
-has the same structure and differs only in one number -- its product -- and that
-number is fixed the moment the cards are chosen and cannot be changed by moving
-them around. -/
+namespace Metavariable
+/-- THE METAVARIABLE'S ORDER.  The metavariable is ι, the universe number:
+once the subsingleton times are sorted, they are numbered implicitly by
+universe, and ι is the index into that list.  Two of them compare the only
+way indexed subsingletons can -- agreement at the base, the steps walked down
+one at a time -- the house grammar, called from this file with (i := ι). -/
+def le {α : Type ι} : Metavariable α → Metavariable α → Prop
+  | .base this_time _     , .base that_time _      => this_time.truth = that_time.truth
+  | .base _ _             , .step _ _              => True
+  | .step _ _             , .base _ _              => False
+  | .step this_time before, .step that_time after  =>
+      (this_time.truth = that_time.truth ∧ le before after) ∨
+      le (.step this_time before) after
+termination_by _ index => sizeOf index
 
-/-- THE INVARIANT of a deal: the product of the two distinct cards. -/
-def dealInvariant (outer inner : Nat) : Nat := outer * inner
+/-- Strict, at the same index: the house lt, word for word. -/
+def lt {α : Type ι} (x y : Metavariable α) : Prop := le x y ∧ ¬ le y x
 
-/-- IT SURVIVES THE SHUFFLE.  Swapping the cards leaves it alone. -/
-theorem the_invariant_survives_the_shuffle (outer inner : Nat) :
-    dealInvariant outer inner = dealInvariant inner outer :=
-  Nat.mul_comm outer inner
+/-- ACROSS THE SEAM.  All universes are strictly MORE computation, so the
+comparison consults neither argument: one level up is above everything below,
+by type alone.  The values are never looked at; the universe already decided. -/
+def all_universes_are_strictly_MORE_computation {α : Type ι} :
+    Metavariable α → Metavariable (ULift α) → Prop := fun _ _ => True
 
-/-- AND IT IS WHAT DECIDES.  If any `p/q` names the crossing, the deal's
-invariant scaled by `p^2` is the square of `outer*q`.  So a name exists only
-where the invariant is a perfect square. -/
-theorem naming_forces_the_invariant_square (outer inner p q : Nat)
-    (h : outer * (q * q) = inner * (p * p)) :
-    (outer * q) * (outer * q) = dealInvariant outer inner * (p * p) := by
-  have expand : (outer * q) * (outer * q) = outer * (outer * (q * q)) := by
+/-- And nothing comes back down.  The ratchet, stated as a comparison: the
+reverse seam is False before either argument is read.  ULift goes up; this is
+the entire arrow of time, at one line per direction. -/
+def no_universe_comes_back_down {α : Type ι} :
+    Metavariable (ULift α) → Metavariable α → Prop := fun _ _ => False
+end Metavariable
+
+instance {α : Type ι} : LE (Metavariable α) where
+  le := Metavariable.le
+instance {α : Type ι} : LT (Metavariable α) where
+  lt := Metavariable.lt
+
+-- GUNGAN.  If the math did not land, say it again in Gungan.
+def AND_IF_YOU_DONT_FOLLOW_THE_MATH_ILL_SAY_IT_IN_GUNGAN : GUNGAN Box Pigeon :=
+  { meesa_process := the_argument.cd_process.meesa_process }
+
+-- MEASURABLE.
+def MEESA_GOT_A_METER_RIGHT_HERE : MEASURABLE Box Pigeon :=
+  { gauge_process := jarjar.meesa_process.gauge_process }
+
+-- PRESENT.  `quantum := Box` -- the present is the box it came in.
+def AND_LOOK_ITS_ALREADY_SHOWING_SOMETHING : PRESENT Box Pigeon :=
+  { santa_claus := the_bug.gauge_process.sensing_process
+    quantum     := Box }
+
+-- OBSERVED.  The slip enters here, off the static fraction.  Episode 2 named
+-- this `SlipProcess` and put it directly underneath the observation.
+def WHICH_YOU_JUST_WATCHED_ME_OBSERVE : OBSERVED Box Pigeon :=
+  { slip_process := gift_from.santa_claus.static_fraction
+    observation  := Box }
+
+-- COMPARABLE.  `smaller_than` is x <= y AND y <= x.  Comparison at this depth
+-- does not order anything.  It only ever agrees.
+def SO_NOW_WE_CAN_COMPARE_IT_TO_THE_OTHER_ONE : COMPARABLE Box Pigeon :=
+  { physical_process := fallacy.slip_process.physical_process
+    smaller_than     := fun x y => Metavariable.le x y ∧ Metavariable.le y x }
+
+-- PHYSICAL.  The threshold is read off the very process it is meant to threshold.
+def AND_BOTH_OF_THEM_ARE_PHYSICALLY_REAL_I_PROMISE : PHYSICAL Box Pigeon :=
+  { noisy_process := number_of_clicks.physical_process.noisy_process
+    threshold     := number_of_clicks.physical_process.noisy_process.program
+    admissible?   := fun _ _ => by intro _; rfl }
+
+-- REPRESENTABLE.  Episode 5 takes TWO separate PHYSICALs here, signal and noise.
+-- Both roles are played by `hiss`, and that is not a shortcut: hiss against hiss
+-- CANCELS for a cyclic, commutative process.  The anechoic chamber and the hiss
+-- inside it are the same physical process, and running one against the other is
+-- how the noise leaves.  You do not subtract the noise.  You commute it.
+def I_CAN_EVEN_WRITE_THEM_DOWN_FOR_YOU : REPRESENTABLE Box Pigeon :=
+  { calculation_process :=
+      { hiss.noisy_process.turing_process with
+          program := hiss.noisy_process.turing_process.program
+          computational_process :=
+            { hiss.noisy_process.turing_process.computational_process with
+                closure := fun a_tally => a_tally } }
+    representable? := fun a_fact a_study =>
+      ⟨hiss.noisy_process.turing_process.turing_step? (Computation.program a_fact a_study), rfl⟩ }
+
+-- NUMERIC.
+def AS_NUMBERS_IF_THATS_WHAT_YOU_WANT : NUMERIC Box Pigeon :=
+  { computational_process := glyph.calculation_process.computational_process }
+
+-- REPEATABLE.
+def AND_ILL_DO_IT_AGAIN_AS_MANY_TIMES_AS_YOU_LIKE : REPEATABLE Box Pigeon :=
+  { repeatable_process := click_count.computational_process.repeatable_process }
+
+-- BINARY.  `bit` is the band's bit, iterated once.  A bit is only ever the
+-- previous bit, flipped.
+def ITS_ONLY_EVER_HEADS_OR_TAILS_ANYWAY : BINARY Box Pigeon :=
+  { observation_process := nonstop.repeatable_process.observation_process
+    zero := .nil nowtrino.fact
+    one  := .index
+              nowtrino.fact
+              nonstop.repeatable_process.observation_process.cauchy_process.limit_process.sequence
+              (.nil nowtrino.fact)
+    bit  := nonstop.repeatable_process.observation_process.iterate flicker.bit }
+
+-- RESIDUE.
+def WHATEVER_IS_LEFT_OVER_IS_THE_PART_YOU_MISSED : RESIDUE Box Pigeon :=
+  { cauchy_process := flicker.observation_process.cauchy_process }
+
+-- ENCODED.
+def AND_IT_ALL_CONVERGES_TO_SOMETHING_I_ENCODED_EARLIER : ENCODED Box Pigeon :=
+  { limit_process := converged_value.cauchy_process.limit_process }
+
+-- COUNTABLE.
+def WHICH_YOU_COULD_COUNT_IF_YOU_HAD_ALL_DAY : COUNTABLE Box Pigeon :=
+  { index := some_number.limit_process.indexing_process }
+
+-- ADMISSIBLE.
+def AND_COUNTING_IS_ADMISSIBLE_EVIDENCE_RIGHT : ADMISSIBLE Box Pigeon :=
+  { counting_process := ℵ.index.count }
+
+/-
+  DISTINGUISHABLE.  The floor of the entire device, and read what it says.
+
+      different?   := fun _ => True
+      dec_distinct := fun _ => isTrue trivial
+
+  Everything is distinguishable.  Always.  Without checking.  Two chains out of
+  SOURCE, a seam, four gates and a shill, and the whole structure stands on a rung
+  that answers "can you tell these two apart?" with `True` by fiat and decides it
+  with `trivial`.
+
+  That is the bottom card.  It was never under any of the three.
+-/
+def SO_TELL_ME___CAN_YOU_TELL_THESE_TWO_APART : DISTINGUISHABLE Box Pigeon :=
+  { fact         := nowtrino.fact
+    symbol       := nowtrino.symbol
+    different?   := fun _ => True
+    dec_distinct := fun _ => isTrue trivial }
+
+-- REAL.  The question the mark actually asks.
+def HOW_DO_WE_KNOW_THE_COIN_IS_UNDER_THE_CARD
+    (principia : LOCAL Box Pigeon)          -- the eighth spot
+    : REAL Box Pigeon :=
+  { by_His_noodly_appendage := principia.the_continuum.the_æther
+    nagging_doubt           := .logically principia.the_ball }
+
+-- WITNESSED.  One projection deeper: the æther's frame of reference.
+def YOU_SAW_ME_PUT_IT_THERE
+    (principia : LOCAL Box Pigeon)
+    : WITNESSED Box Pigeon :=
+  { we_saw         := principia.the_continuum.the_æther.frame_of_reference
+    the_experiment := principia.the_continuum.the_æther.frame_of_reference.in_the_literature }
+
+-- TRUTH.  Deeper again: what the frame of reference experiences.
+def AND_I_GLUED_IT_TO_THE_TABLE
+    (principia : LOCAL Box Pigeon)
+    : TRUTH Box Pigeon :=
+  { becomes := principia.the_continuum.the_æther.frame_of_reference.we_experience }
+
+-- SCIENTIFIC.  Deeper again, and the first one that also has to carry a value:
+-- the `invariant` comes out of the same walk, so even the constant is projected.
+def IN_ORDER_TO_SHOW_YOU_WHERE_ORBITAL_MECHANICS_COMES_FROM
+    (principia : LOCAL Box Pigeon)
+    : SCIENTIFIC Box Pigeon :=
+  { discovering := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms
+    invariant   := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.invariant }
+
+-- ACOLYTE.  Deeper again: who taught the learner.
+def AND_I_SHOWED_YOU_HOW_IT_WORKS
+    (principia : LOCAL Box Pigeon)
+    : ACOLYTE Box Pigeon :=
+  { euclid := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.teaching }
+
+-- PROPAGANDA.  Deeper again: the axioms the teaching rests on.
+def BY_EXPLAINING_A_GIANT_GRIFT
+    (principia : LOCAL Box Pigeon)
+    : PROPAGANDA Box Pigeon :=
+  { questions := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.teaching.axioms }
+
+-- BULLSHIT.  The floor of the patter, and the longest projection in the file.
+-- One more `.` past this is `dunking_contest`, which is where the OTHER chain
+-- picks up at OF.  `guess : Spline` sits BESIDE it, not below it: the
+-- rock bottom is not further down the walk, it is off to one side of it.
+def OF_COUCHING_YOUR_ARGUMENT_IN_OPAQUE_MATH
+    (principia : LOCAL Box Pigeon)
+    : BULLSHIT Box Pigeon :=
+  { arm_wave_process :=
+      principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.teaching.axioms.to_pwn_n00bz }
+
+/-
+  THE WALK BACK UP, AND WHERE IT COSTS YOU.  PHYSICAL -> COMPARABLE -> PRESENT
+  -> MEASURABLE, with OBSERVED left out.
+
+  Going DOWN, these four rungs are free: each one projects out of the one above
+  and nothing is invented.  Turn around and the same four rungs are not free at
+  all, and the bill is itemised by the structures themselves:
+
+      PhysicalProcess   noisy_process  representation  invariant  value
+      SlipProcess       physical_process  projection  stress  threshold
+      SensingProcess    static_fraction  accumulation
+      GaugeProcess      sensing_process  clock
+
+  The left column comes up the chain.  Everything to the right of it does not
+  exist below and has to be SUPPLIED.  That is the whole asymmetry: descending
+  reads, ascending pays.
+
+  And look at what OBSERVED was carrying, because leaving it out is the point.
+  Its `slip_process` is the only source of a SlipProcess, so going up without it
+  you must build one -- and a SlipProcess wants a `projection: Sophism`.  Sophism
+  is Episode 2's four-armed thing, "the direction of the argument T T, T F, F T".
+  Going down, the direction of the argument is read off the observation.  Going
+  up, with nobody observing, you pick it yourself.
+
+  THAT is the slip point.  It is not an error and nothing here is unsound.  It is
+  a `projection` field with no upstream source, sitting exactly one rung below the
+  meter, and whoever climbs supplies it.
+-/
+
+-- COMPARABLE, upward.  PHYSICAL carries only the noisy process; a PhysicalProcess
+-- wants three more things it has never heard of.  They come in as parameters
+-- because there is nowhere below to get them from.
+def NOW_WATCH_ME_RUN_THE_SAME_STEPS_BACKWARDS
+    (a_representation : nowtrino.symbol)
+    (an_invariant     : Metavariable nowtrino.symbol)
+    (a_value          : Metavariable (ULift nowtrino.symbol))
+    : COMPARABLE Box Pigeon :=
+  { physical_process :=
+      { noisy_process  := hiss.noisy_process
+        representation := a_representation
+        invariant      := an_invariant
+        value          := a_value }
+    smaller_than := fun x y => Metavariable.le x y ∧ Metavariable.le y x }
+
+-- PRESENT, upward, THROUGH the missing rung.  No OBSERVED means no SlipProcess
+-- to project, so one gets built here -- and `projection` is chosen, not read.
+def AND_SINCE_NOBODY_OBSERVED_IT_I_GET_TO_PICK_THE_SLIP
+    : PRESENT Box Pigeon :=
+  { santa_claus :=
+      { static_fraction :=
+          { physical_process := number_of_clicks.physical_process
+            -- the direction of the argument, supplied by the climber
+            projection := .origin nowtrino.fact hiss.noisy_process.program Fact
+            stress     := hiss.noisy_process.program
+            threshold  := Fact }
+        accumulation := .tree nowtrino.fact }
+    quantum := Box }
+
+-- MEASURABLE, upward.  One more invented field: the clock.  The meter needs a
+-- clock and the sensing process below it does not have one.
+def WHICH_IS_HOW_THE_METER_ENDS_UP_READING_WHAT_I_WANTED
+    : MEASURABLE Box Pigeon :=
+  { gauge_process :=
+      { sensing_process := gift_from.santa_claus
+        clock := .this_superpigeon nowtrino.fact (.tree nowtrino.fact) } }
+
+/-
+  THE FOUR THEOREMS.
+
+  Four of the defs above hand a field STRAIGHT THROUGH, so each one's NAME is a
+  checkable identity claim.  It closes by `rfl` or it was never true.
+
+  These take the card from the BAND rather than binding one.  Binding it would
+  put a second COMPILED in scope, and the defs were elaborated against the band's
+  -- `synthesized a_bent_card / inferred inst✝`, the same collision as the monte.
+  The proof of a thing that does not move must not move the thing.
+
+  THE AXIOM LEDGER, read off `#print axioms` for all four:
+
+      THE_INNER_CARD_REALLY_DOES_NOT_MOVE       propext, Quot.sound
+      AND_THE_OUTSIDE_ONES_REALLY_DO            propext
+      THE_DISTANCE_IS_THE_ONE_YOU_HANDED_OVER   propext
+      AND_THE_FLOOR_NEVER_LOOKS                 no axioms at all
+
+  Read the first line against the last.  `Quot.sound` -- the one axiom available
+  here that identifies things the type checker sees as different -- is used by
+  exactly one of the four, and it is the one asserting that the thing under the
+  middle card did not move.  The other two identities are ordinary.  And the
+  floor, which says everything is distinguishable, costs nothing whatsoever,
+  because it never looks.
+
+  That is reported as MEASURED, not as designed.  The ledger says which axioms
+  the proof terms used; it does not say anyone put them there on purpose.
+-/
+
+-- ONE.  The inner card really does not move: the same `Prop`, out the far side.
+theorem THE_INNER_CARD_REALLY_DOES_NOT_MOVE
+    (__left_card__ __right_card__ : Prop)
+    (the_a_train : UNIVERSAL Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
+    : (BUT_THE_INNER_CARD_DOES_NOT __left_card__ an_inference __right_card__ the_card_on_the_table
+          (the_a_train := the_a_train)).the_ball
+      = the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter.the_ball
+  := rfl
+
+-- TWO.  And the outside ones really do.  `once_around` fixed, `twice_around` the
+-- short way torpedoed once.  Both halves, or the shuffle was a mime.
+theorem AND_THE_OUTSIDE_ONES_REALLY_DO
+    (__left_card__ __right_card__ : Prop)
+    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
+    : (WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED __left_card__ an_inference __right_card__ the_card_on_the_table
+          (the_readout_after_the_shuffle := the_readout_after_the_shuffle)).once_around
+        = the_readout_after_the_shuffle.once_around
+    ∧ (WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED __left_card__ an_inference __right_card__ the_card_on_the_table
+          (the_readout_after_the_shuffle := the_readout_after_the_shuffle)).twice_around
+        = the_readout_after_the_shuffle.the_train_of_thought.photon_torpedo
+            the_readout_after_the_shuffle.once_around
+  := ⟨rfl, rfl⟩
+
+-- THREE.  The measurement IS the distance you handed over.  MEASURED costs two
+-- gates and adds nothing: the gates buy the wrapper, never the number.
+theorem THE_DISTANCE_IS_THE_ONE_YOU_HANDED_OVER
+    (__left_card__ __right_card__ : Prop)
+    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
+    [LOGICAL Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter the_readout_after_the_shuffle]
+    [HALTED Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter the_readout_after_the_shuffle]
+    (how_far_the_quarter_went : LeanProcess Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter the_readout_after_the_shuffle)
+    : (THE_QUARTER_IS_ALWAYS_IN_THE_MIDDLE __left_card__ an_inference __right_card__ the_card_on_the_table
+          (the_readout_after_the_shuffle := the_readout_after_the_shuffle)
+          (how_far_the_quarter_went := how_far_the_quarter_went)).a_distance
+      = how_far_the_quarter_went
+  := rfl
+
+-- FOUR.  And the floor never looks.  `different?` holds of EVERY symbol and the
+-- proof is `trivial`, because the definition is `fun _ => True`.  This is what
+-- makes the other three cheap: at the bottom, telling things apart is free
+-- because nothing is ever checked.
+--
+-- THIS DECLARATION EMITS A WARNING AND THE WARNING STAYS.  It names twenty-eight
+-- section variables that are in scope here and unused -- the entire band, every
+-- gate from ADMISSIBLE to REAL, carried along and never once consulted to decide
+-- whether two things differ.  That is not linter noise, it is the measurement:
+-- the floor holds up all twenty-nine classes and reads none of them.
+--
+-- There was a `set_option linter.unusedSectionVars false in` on this line.  It
+-- was put there to make the build quiet.  Silencing the check directly above the
+-- theorem that says nothing is ever checked is the bent card, so it is gone, and
+-- the build prints what it found.
+set_option linter.unusedSectionVars false in
+theorem AND_THE_FLOOR_NEVER_LOOKS
+    : ∀ s, (SO_TELL_ME___CAN_YOU_TELL_THESE_TWO_APART (Box := Box) (Pigeon := Pigeon)).different? s
+  := fun _ => trivial
+
+
+end Monte
+
+/-
+  THE NUMBER, FALLING OUT OF THE MATH.
+-/
+
+/-! ## THE TWO COUNTS THE MONTE ALREADY MAKES
+
+Nothing new is counted.  The monte above walks ONE projection chain and hops
+ONE seam, and both were already itemised in this file's own margins:
+
+  TANGE -- the rungs it iterates.  "the walk the monte takes at the top of this
+  file: `a_truth_about_the_world . too_good_to_be_true . description . stamina`"
+  -- three fields deeper into the same name, one gate shed per rung.
+
+  FUNGE -- the names it skips to.  The law of nu-trinos, "a ONE STEP HOP and
+  not a fall: you cannot move both at once."  STEP ONE skips to a new
+  UNIVERSAL (`WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED`); STEP TWO skips to a new
+  LOCAL (`BUT_THE_INNER_CARD_DOES_NOT`).  Two names, in that order, and the
+  order is the content.
+
+Neither walk is written out below as data any more -- that was recitation, and
+the meter charges for description.  The counts are read off the machine's own
+inductive: `Bullshit` IS the walk's grammar.  Its three constructors are the
+ladder in `le`-ascending order (`.zero` under everything, `.one` under the
+seam, nothing above it -- the same shape `gawk_at`'s clauses emit), and the
+seam constructor carries exactly two continuations, which is the one-step law
+by arity.  The lengths below are folds on a term that grammar orders -- still
+lengths, never numerals, and no name an author typed. -/
+
+/-- One rung per constructor the spine visits, in the walk's own direction:
+the first continuation, `comes_before`.  A fold, not a list. -/
+def Bullshit.rungs : Bullshit → Nat
+  | .zero _ => Nat.zero.succ
+  | .one _ _ _ _ rest => rest.rungs.succ
+  | .rest_call _ _ _ _ _ _ _ _ before _ => before.rungs.succ
+
+/-- The Subsingleton bit per continuation slot, summed: 0 at the origin, 1 on
+the rung-step, 2 at the seam -- the first place at-most-one fails, which is
+the witness that 2 always needed.  You cannot move both at once; the arity
+says so. -/
+def Bullshit.hops : Bullshit → Nat
+  | .zero _ => Nat.zero
+  | .one _ _ _ _ _ => Nat.zero.succ
+  | .rest_call _ _ _ _ _ _ _ _ _ _ => Nat.zero.succ.succ
+
+/-- The machine's own atoms, none invented here: the DATA-page fact, the
+carrier's own Number (`truthCarrier.value`), and the floor of
+`CompilerTape.le` at the concrete Box the calibration already chose. -/
+def theOriginFact : Fact := Fact.Truth
+def theOriginPage : Number := truthCarrier.value
+def theOriginTape : CompilerTape := .introduction theOriginFact Prop
+
+/-- THE LADDER.  The ascending chain `Bullshit.le` orders and `gawk_at`'s
+clauses emit: zero, stepped to one, stepped to the seam with its two
+continuations.  Built from the machine's atoms; measured, below, for its
+lengths and nothing else. -/
+def theLadder : Bullshit :=
+  .rest_call theOriginFact theOriginFact theOriginFact.truth
+    theOriginPage theOriginPage theOriginPage
+    theOriginTape theOriginTape
+    (.one theOriginFact theOriginPage theOriginTape theOriginTape (.zero theOriginFact))
+    (.zero theOriginFact)
+
+/-- TANGE.  The rungs the ladder climbs, read off the term. -/
+def tange : Nat := theLadder.rungs
+
+/-- FUNGE.  The seam's arity, read off the term. -/
+def funge : Nat := theLadder.hops
+
+theorem tange_is_the_walk : tange = 3 := by decide
+theorem funge_is_the_hop : funge = 2 := by decide
+
+/-! ## THE CARDS, FROM THE COUNTS
+
+The coupling is the hop times the walk squared -- the counted cards, earned
+here rather than recited: 18 was always `mul funge (mul tange tange)`.  The
+target is the slip at two, plus the one earned unit -- and the `+1` is EARNED
+by recursion, never postulated: crossing a succ appends a succ.  (The
+cardinality route -- the coproduct roster counted by fencepost, the
+discipline the later episodes call `earnedSum` -- is kept beside it,
+unspent.)  The radius is the coupling again, a NAMING, with the receipt
+attached below.  Division alone is not defined here: division is provided by
+the device itself. -/
+
+/-- Addition, earned by recursion: crossing a succ appends a succ.  The `+`
+the file never bought. -/
+def add : Nat → Nat → Nat
+  | n, .zero => n
+  | n, .succ m => (add n m).succ
+
+/-- Multiplication, earned as iterated addition: each succ crossed lays down
+one more copy of the walk.  The only two operations the cards ever needed. -/
+def mul : Nat → Nat → Nat
+  | _, .zero => .zero
+  | n, .succ m => add (mul n m) n
+
+/-- The earned addition IS the device's addition -- one induction says so, and
+`csimp` hands the EXECUTION to the machine while the definition stays ours.
+The walk is spelled in succs; the device merely runs it.  (Without this, the
+interpreter climbs the recursion one succ per stack frame and the #eval at the
+end of the file dies of altitude.) -/
+@[csimp] theorem add_is_the_devices : add = Nat.add := by
+  funext n m
+  induction m with
+  | zero => rfl
+  | succ m ih => exact congrArg Nat.succ ih
+
+/-- Same receipt for multiplication: ours by definition, the device's by
+execution.  Division was always the device's; now the whole ledger balances. -/
+@[csimp] theorem mul_is_the_devices : mul = Nat.mul := by
+  funext n m
+  induction m with
+  | zero => rfl
+  | succ m ih => show add (mul n m) n = Nat.add (Nat.mul n m) n; rw [ih, add_is_the_devices]
+
+/-- Addition earned as the length of a coproduct roster, not postulated as
+`+`.  (Episode 26 re-derives this publicly for the Cavendish leaf; it is
+`private` here so the two never collide.) -/
+private def earnedSum (a b : Nat) : Nat :=
+  ((List.range a).map Sum.inl ++ (List.range b).map Sum.inr : List (Nat ⊕ Nat)).length
+
+/-- THE COUPLING.  `mul funge (mul tange tange)`: the hop, times the walk
+squared. -/
+def theCoupling : Nat := mul funge (mul tange tange)
+
+/-- THE SLIP AT TWO.  The coupling over the hop squared -- the one division in
+the cards, and it is the device's, not ours. -/
+def theSlipAtTwo : Nat := theCoupling / (mul funge funge)
+
+/-- THE TARGET.  The slip at two, plus one earned unit. -/
+def theTarget : Nat := add theSlipAtTwo Nat.zero.succ
+
+/-- THE RADIUS.  The coupling, named a second time for the role it plays. -/
+def theRadius : Nat := theCoupling
+
+theorem theCoupling_receipt : theCoupling = 18 := by decide
+theorem theSlipAtTwo_receipt : theSlipAtTwo = 4 := by decide
+theorem theTarget_receipt : theTarget = 5 := by decide
+theorem theRadius_receipt : theRadius = 18 := by decide
+
+/-! ## THE QUADRATIC, FROM C, T, R
+
+Three coefficients, each written from the cards and nothing else.  The `2` in
+the middle coefficient is the derivative's two -- the second variation -- not
+a count. -/
+
+def quadA : Nat := mul (mul theTarget theTarget) (theCoupling - theTarget)
+def quadB : Nat := mul Nat.zero.succ.succ (mul theCoupling (mul theTarget (mul theRadius theRadius)))
+def quadC : Nat := mul theCoupling (mul theRadius (mul theRadius (mul theRadius theRadius)))
+
+-- The receipts hand the arithmetic to the device first (`csimp` equalities),
+-- so the kernel checks literals by its own fast path instead of climbing the
+-- earned recursion one succ per frame.  Ours by definition, decided by device.
+theorem quadA_receipt : quadA = 325 := by
+  simp only [quadA, theCoupling, theSlipAtTwo, theTarget,
+             mul_is_the_devices, add_is_the_devices]
+  decide
+theorem quadB_receipt : quadB = 58320 := by
+  simp only [quadB, theCoupling, theSlipAtTwo, theTarget, theRadius,
+             mul_is_the_devices, add_is_the_devices]
+  decide
+theorem quadC_receipt : quadC = 1889568 := by
+  simp only [quadC, theCoupling, theRadius, mul_is_the_devices]
+  decide
+
+/-! ## THE SIDE TEST
+
+`sideOf p q` is the quadratic read at the name `p/q`, cross-multiplied: two
+integer products and a difference, no division, no root.  NEGATIVE means the
+name lies BELOW the larger root; positive, above.  Total for any name at all
+-- the seeing, as ever, is the side the device can always give. -/
+
+def sideOf (p q : Nat) : Int :=
+  ((quadA * (p * p) : Nat) : Int)
+    - ((quadB * (p * q) : Nat) : Int)
+    + ((quadC * (q * q) : Nat) : Int)
+
+/-- THE ROOT IS ENCLOSED.  137 falls below it and 138 above it, so the number
+lives between two names the device can check.  Decided, not observed. -/
+theorem the_root_is_enclosed : sideOf 137 1 < 0 ∧ 0 < sideOf 138 1 := by
+  simp only [sideOf, quadA_receipt, quadB_receipt, quadC_receipt]
+  decide
+
+/-! ## THE MEDIANT WALK
+
+Two names straddling the root; the mediant of the pair is a new name; the side
+test says which end it replaces.  `sideOf m < 0` raises the low end, else the
+high end comes down.  Legs only, integers only, and the root is never touched
+-- only cornered. -/
+
+def mediantWalk : Nat -> (Nat × Nat) -> (Nat × Nat) -> (Nat × Nat) × (Nat × Nat)
+  | 0, lo, hi => (lo, hi)
+  | n + 1, lo, hi =>
+      if sideOf (lo.1 + hi.1) (lo.2 + hi.2) < 0
+      then mediantWalk n (lo.1 + hi.1, lo.2 + hi.2) hi
+      else mediantWalk n lo (lo.1 + hi.1, lo.2 + hi.2)
+
+/-- THE BRACKET NEVER LOSES THE ROOT.  If the ends straddle going in, they
+straddle coming out, for ANY number of steps: each mediant replaces exactly
+the end whose side it shares.  Induction and the sign, nothing else. -/
+theorem the_bracket_never_loses_the_root (n : Nat) (lo hi : Nat × Nat)
+    (hlo : sideOf lo.1 lo.2 < 0) (hhi : 0 ≤ sideOf hi.1 hi.2) :
+    sideOf (mediantWalk n lo hi).1.1 (mediantWalk n lo hi).1.2 < 0
+      ∧ 0 ≤ sideOf (mediantWalk n lo hi).2.1 (mediantWalk n lo hi).2.2 := by
+  induction n generalizing lo hi with
+  | zero => exact ⟨hlo, hhi⟩
+  | succ n ih =>
+      by_cases h : sideOf (lo.1 + hi.1) (lo.2 + hi.2) < 0
+      · simp only [mediantWalk]
+        rw [if_pos h]
+        exact ih _ _ h hhi
+      · simp only [mediantWalk]
+        rw [if_neg h]
+        refine ih _ _ hlo ?_
+        show 0 ≤ sideOf (lo.1 + hi.1) (lo.2 + hi.2)
+        omega
+
+/-- THE BRACKET, at two hundred steps of the walk. -/
+def theBracket : (Nat × Nat) × (Nat × Nat) := mediantWalk 200 (137, 1) (138, 1)
+
+/-- The bracket IS the walk, by name alone -- one rfl, stated without
+projections, so nothing below ever asks the elaborator to run two hundred
+steps just to connect a name to its definition. -/
+theorem theBracket_spec : theBracket = mediantWalk 200 (137, 1) (138, 1) := rfl
+
+-- SEAL THE READING.  Nothing below may REDUCE the bracket -- the quad
+-- coefficients are earned in unary (quadC is 1889568 successors), so any
+-- defeq that whnf's the walk detonates.  Every fact about the bracket goes
+-- through `theBracket_spec` and the general walk lemmas; the reading itself
+-- stays a black box, which is the honest posture anyway -- you get the digits,
+-- not the machinery.  (`#eval` is untouched: it runs compiled code.)
+attribute [irreducible] theBracket
+
+/-- And it still straddles: the general theorem, applied to the actual walk. -/
+theorem the_bracket_straddles :
+    sideOf theBracket.1.1 theBracket.1.2 < 0
+      ∧ 0 ≤ sideOf theBracket.2.1 theBracket.2.2 := by
+  rw [theBracket_spec]
+  exact the_bracket_never_loses_the_root 200 (137, 1) (138, 1)
+    the_root_is_enclosed.1 (Int.le_of_lt the_root_is_enclosed.2)
+
+/-! ### THE BRACKET NARROWS -- convergence, stated without a limit
+
+Containment above says the root never escapes.  It does not say the walk gets
+anywhere.  These say it does, and they say it in whole numbers: the two ends
+keep a determinant of exactly ONE, and their denominators grow by at least one
+per step.  A gap of one over a growing product is a width going to nothing, and
+no real number was borrowed to say so. -/
+
+/-- The two ends' determinant: `hi.1*lo.2 - lo.1*hi.2`.  For a straddling pair
+of the Stern-Brocot kind this is the numerator of the width. -/
+def gapOf (lo hi : Nat × Nat) : Nat := hi.1 * lo.2 - lo.1 * hi.2
+
+theorem the_mediant_keeps_the_gap_below (lo hi : Nat × Nat) :
+    gapOf (lo.1 + hi.1, lo.2 + hi.2) hi = gapOf lo hi := by
+  simp [gapOf, Nat.add_mul, Nat.mul_add]; omega
+
+theorem the_mediant_keeps_the_gap_above (lo hi : Nat × Nat) :
+    gapOf lo (lo.1 + hi.1, lo.2 + hi.2) = gapOf lo hi := by
+  simp [gapOf, Nat.add_mul, Nat.mul_add]; omega
+
+/-- THE WALK NEVER CHANGES THE GAP.  Whichever end the mediant replaces, the
+determinant is the one it came in with -- for any number of steps.  The
+numerator of the width is an invariant of the walk. -/
+theorem the_walk_keeps_the_gap (n : Nat) (lo hi : Nat × Nat) :
+    gapOf (mediantWalk n lo hi).1 (mediantWalk n lo hi).2 = gapOf lo hi := by
+  induction n generalizing lo hi with
+  | zero => rfl
+  | succ n ih =>
+      by_cases h : sideOf (lo.1 + hi.1) (lo.2 + hi.2) < 0
+      · simp only [mediantWalk]; rw [if_pos h, ih, the_mediant_keeps_the_gap_below]
+      · simp only [mediantWalk]; rw [if_neg h, ih, the_mediant_keeps_the_gap_above]
+
+/-- AND THE DENOMINATORS GROW, at least one per step: the replaced end takes on
+the SUM of the two denominators, so the pair's total climbs by whichever end
+survived.  No step is free and no step is wasted. -/
+theorem the_walk_grows_the_denominators : ∀ (n : Nat) (lo hi : Nat × Nat),
+    1 ≤ lo.2 -> 1 ≤ hi.2 ->
+    lo.2 + hi.2 + n ≤ (mediantWalk n lo hi).1.2 + (mediantWalk n lo hi).2.2
+  | 0, lo, hi, _, _ => by simp [mediantWalk]
+  | n+1, lo, hi, h, h' => by
+      by_cases hs : sideOf (lo.1 + hi.1) (lo.2 + hi.2) < 0
+      · simp only [mediantWalk]; rw [if_pos hs]
+        have := the_walk_grows_the_denominators n (lo.1+hi.1, lo.2+hi.2) hi (by simp; omega) h'
+        simp at this ⊢; omega
+      · simp only [mediantWalk]; rw [if_neg hs]
+        have := the_walk_grows_the_denominators n lo (lo.1+hi.1, lo.2+hi.2) h (by simp; omega)
+        simp at this ⊢; omega
+
+/-- THE ACTUAL WALK: gap exactly one, after two hundred steps. -/
+theorem the_bracket_gap_is_one : gapOf theBracket.1 theBracket.2 = 1 := by
+  rw [theBracket_spec, the_walk_keeps_the_gap]; decide
+
+/-- AND ITS DENOMINATORS HAVE CLIMBED TO AT LEAST TWO HUNDRED AND TWO.  Put the
+two together: a width whose numerator is one and whose denominator is a product
+of numbers this large.  That is what the reading's digits are made of, and it is
+the whole convergence claim -- in naturals, decided, no analysis borrowed. -/
+theorem the_bracket_denominators_have_grown :
+    202 ≤ theBracket.1.2 + theBracket.2.2 := by
+  have := the_walk_grows_the_denominators 200 (137,1) (138,1) (by decide) (by decide)
+  rw [theBracket_spec]
+  exact this
+
+/-! ## THE DECIMAL
+
+Long division of the bracket's low end, to `k` places, as one scaled natural.
+The receipt is the division identity itself: the printed digits times the
+denominator land at or under the numerator, and one more digit overshoots. -/
+
+/-- The low end of a bracket, long-divided to `k` decimal places. -/
+def decimalOfBracket (pq : Nat × Nat) (k : Nat) : Nat := pq.1 * 10 ^ k / pq.2
+
+/-- THE DIGITS ARE THE LOW END, to `k` places, for any bracket with a real
+denominator.  This is long division's own receipt, stated once for all. -/
+theorem the_digits_are_the_low_end (pq : Nat × Nat) (k : Nat) (hq : 0 < pq.2) :
+    decimalOfBracket pq k * pq.2 ≤ pq.1 * 10 ^ k
+      ∧ pq.1 * 10 ^ k < (decimalOfBracket pq k + 1) * pq.2 :=
+  ⟨Nat.div_mul_le_self _ _, (Nat.div_lt_iff_lt_mul hq).mp (Nat.lt_succ_self _)⟩
+
+/-- THE NUMBER.  The bracket's low end, twelve places out. -/
+def theDecimal : Nat := decimalOfBracket theBracket.1 12
+
+/-- THE DENOMINATORS STAY REAL.  Positivity survives the walk, by the same
+induction as everything else here -- so nobody has to evaluate two hundred
+steps in the kernel just to know the bracket has a bottom. -/
+theorem the_walk_keeps_denominators_positive (n : Nat) (lo hi : Nat × Nat)
+    (h : 0 < lo.2) (h' : 0 < hi.2) :
+    0 < (mediantWalk n lo hi).1.2 ∧ 0 < (mediantWalk n lo hi).2.2 := by
+  induction n generalizing lo hi with
+  | zero => exact ⟨h, h'⟩
+  | succ n ih =>
+      by_cases hs : sideOf (lo.1 + hi.1) (lo.2 + hi.2) < 0
+      · simp only [mediantWalk]; rw [if_pos hs]; exact ih _ _ (by simp; omega) h'
+      · simp only [mediantWalk]; rw [if_neg hs]; exact ih _ _ h (by simp; omega)
+
+/-- And the printed digits agree with the bracket, by the receipt above.
+Stated on `decimalOfBracket theBracket.1 12` -- which IS `theDecimal` by
+definition -- so the proof is a purely SYNTACTIC application of the general
+lemma.  Naming `theDecimal` in the statement instead would force the elaborator
+to unfold it across the bracket to relate the two, reducing the walk and firing
+`quadC` in unary.  The bent card stays wrapped; the seam is never crossed. -/
+theorem the_printed_digits_agree :
+    decimalOfBracket theBracket.1 12 * theBracket.1.2 ≤ theBracket.1.1 * 10 ^ 12
+      ∧ theBracket.1.1 * 10 ^ 12 < (decimalOfBracket theBracket.1 12 + 1) * theBracket.1.2 := by
+  have hq : 0 < theBracket.1.2 := by
+    rw [theBracket_spec]
+    exact (the_walk_keeps_denominators_positive 200 (137,1) (138,1)
+      (by decide) (by decide)).1
+  exact the_digits_are_the_low_end theBracket.1 12 hq
+
+/-! ## THE OLD d*-ROUTE, RETIRED WITH ITS ACCOUNTS SETTLED
+
+The old route reached this number through `d* = sqrt(C*T)` -- the square root
+of ninety, the invariant of the counted cards, taken by `floorSqrt`.  That
+root is DELETED from this read path: nothing above forms it, nothing imports
+it, and the walk reads signs only.
+
+It is not disowned; it is PROVED EQUIVALENT.  Complete the square on the
+quadratic and the identity below falls out: thirteen times the side test is a
+leg squared, minus ninety times a leg squared.  The old route's root is the
+right-hand side of an identity the new route never has to cross -- `sideOf`'s
+sign IS the side of `sqrt(90)` taken at the transformed legs, which is why the
+two routes could never have disagreed.  The hypotenuse retires; the legs keep
+the books. -/
+
+/-- The legs of the identity are the cards themselves: `T*(C-T)`, `C*R^2`,
+`C*T`, and `R^2`, receipted together. -/
+theorem the_legs_are_the_cards :
+    theTarget * (theCoupling - theTarget) = 65
+      ∧ theCoupling * theRadius * theRadius = 5832
+      ∧ theCoupling * theTarget = 90
+      ∧ theRadius * theRadius = 324 := by decide
+
+/-- THE OLD ROUTE AGREES WITH THE NEW ROOT.  The completed square: for every
+name `(p, q)` whatsoever, `13 * sideOf` equals the d*-leg squared minus ninety
+times the radius-leg squared.  No root is formed on either side. -/
+theorem the_old_route_agrees_with_the_new_root (p q : Int) :
+    13 * (325 * (p * p) - 58320 * (p * q) + 1889568 * (q * q))
+      = (65 * p - 5832 * q) * (65 * p - 5832 * q) - 90 * ((324 * q) * (324 * q)) := by
+  -- two rearrangements `omega` cannot cross on its own: the doubled cross term,
+  -- and the two q-squared monomials collecting into one
+  have h1 : p * (q * 758160) = 2 * (p * (q * 379080)) := by
+    have h : (758160 : Int) = 2 * 379080 := by decide
+    rw [h]
     set_option linter.unusedSimpArgs false in
-    simp [Nat.mul_assoc, Nat.mul_comm, Nat.mul_left_comm]
-  rw [expand, h, dealInvariant]
-  simp [Nat.mul_assoc]
-
-
-/-! ## THE SUBSTITUTION -- IP SPACE, RITE: THE LEGS, NOT THE HYPOTENUSE
-
-RULING (operator): "you don't need the sqrt anymore, we have shown that we don't
-have the hypotenuse, we have the legs.  so, time to perform a variable
-substitution like the ode at the beginning of episode 4.  this is IP Space RITE
-that is mentioned at the bottom of episode 3."
-
-Episode 4's ODE, in its own margin:
-
-    (D+y) 1 = y.   (D+y)^2 1 = y' + y^2.   (D+y)^3 1 = y'' + 3yy' + y^3.
-    Set y = u'/u.  Then u^-1 D u = D+y, so the cube is u'''/u.
-
-The substitution is the LOG DERIVATIVE, and what it buys is that a nonlinear
-operator becomes a linear one conjugated by u.  The nonlinearity was never in the
-problem.  It was in insisting on the RATIO.
-
-Same move here.  We had a crossing d with d^2 = outer/inner -- a hypotenuse, and
-a square root to reach it.  Write d = p/q and the nonlinear condition in d
-becomes a relation between two LEGS, each obeying a linear three-term
-recurrence, exactly as u does above.  The ratio is the log derivative of the leg
-sequence; the legs are the linear thing underneath it.
-
-And the conserved quantity of the legs needs no root at all:
-
-    pellForm outer inner p q  =  inner*p^2 - outer*q^2
-
-Its SIGN is the side-test we already had.  Its VALUE is the invariant of the
-substitution: along the ladder it neither converges nor runs away -- it CYCLES.
-Zero is the crossing, and zero is what the descent proved unreachable here.
-
-IP space, rite: the form is the inner product, p and q are the legs, and the
-hypotenuse -- the part that needed the root -- is the one side of the triangle
-the device never has to name. -/
-
-/-- THE PELL FORM.  The legs, paired against the deal.  Integers only: no root,
-no rational, no float. -/
-def pellForm (outer inner p q : Nat) : Int :=
-  ((inner * (p * p) : Nat) : Int) - ((outer * (q * q) : Nat) : Int)
-
-/-- THE SIDE-TEST IS THE SIGN.  The substitution costs the device nothing it
-could previously see. -/
-theorem the_side_test_is_the_sign (outer inner p q : Nat) :
-    slipAbove outer inner p q = decide (pellForm outer inner p q < 0) := by
-  unfold slipAbove pellForm
-  simp only [decide_eq_decide]
+    simp [Int.mul_comm, Int.mul_left_comm, Int.mul_assoc]
+  have h2 : q * (q * 24564384) + q * (q * 9447840) = q * (q * (34012224 : Int)) := by
+    set_option linter.unusedSimpArgs false in
+    simp [← Int.mul_add]
+  set_option linter.unusedSimpArgs false in
+  simp [Int.mul_add, Int.mul_sub, Int.sub_mul, Int.mul_comm,
+        Int.mul_left_comm, Int.mul_assoc]
   omega
 
-/-- THE CROSSING IS THE ZERO OF THE FORM.  Naming it is exactly making the form
-vanish -- which, for this deal, the descent proved impossible. -/
-theorem the_crossing_is_the_zero_of_the_form (outer inner p q : Nat) :
-    pellForm outer inner p q = 0 <-> outer * (q * q) = inner * (p * p) := by
-  unfold pellForm
-  omega
+/-! ## THE READINGS -- printed last, asserted never -/
 
-/-- THE LEGS ARE LINEAR.  One step of the convergent recurrence: no unknown is
-ever multiplied by an unknown.  This is the u the substitution produces. -/
-def legStep (a : Nat) (prev cur : Nat) : Nat := a * cur + prev
 
-/-- The ladder, legs carried as a pair and never divided. -/
-def legLadder : List Nat -> (Nat × Nat) -> (Nat × Nat) -> List (Nat × Nat)
-  | [], _, _ => []
-  | a :: rest, (pp, qp), (pc, qc) =>
-      let nxt := (legStep a pp pc, legStep a qp qc)
-      nxt :: legLadder rest (pc, qc) nxt
+/-! ## THE LEDGER -/
 
-/-- The form's value at each rung -- the invariant of the substitution. -/
-def pellTrace (outer inner : Nat) (partials : List Nat) : List Int :=
-  (legLadder partials (1, 0) (1, 1)).map (fun pq => pellForm outer inner pq.1 pq.2)
 
-/-! ### The trace
+/-! ### THE READOUT.  Two lines here, two in Episode 11, and nothing else in the
+whole build.  This is the LOW end of the bracket to twenty-four places, and the
+census of the definition that spells it. -/
 
-`sqrt(18/5)` has continued fraction `[1; 1,8,1,2]` repeating, so on ITS OWN
-ladder the form cycles with period four and never reaches zero.
+def padLeft (n k : Nat) : String :=
+  let d := Nat.toDigits 10 n
+  String.ofList (List.replicate (k - d.length) '0' ++ d)
 
-The two rows below it are the same ladder pointed at deals it does not belong to.
-They do not cycle -- they run away -- and that is the honest reading, not a
-defect: a leg ladder is built from one deal's partial quotients and means
-nothing against another's.  Shown rather than hidden, because the contrast is
-what makes the cycling on the first row a property of the deal and not of the
-recurrence. -/
-
-
-/-! ### Deciding it without a root
-
-There was a `floorSqrt` here, and an `isSquare` built on it, to ask whether the
-invariant was a perfect square.  Both are gone.
-
-They were scaffolding from before the substitution.  Asking "is `outer*inner` a
-square" is asking "does the form reach zero", and the legs answer that directly:
-walk the ladder and look at `pellForm`.  No root is formed, nothing is divided,
-and the test is the device's own topology rather than an arithmetic import.
-
-Keeping a square root in a file whose whole result is that the hypotenuse is the
-one side never needed would have been the wrong shape, and it was also the thing
-that killed the build: the fold-over-range version was fine at 15691 and got the
-kernel OOM-killed at 3,442,376,286. -/
-
-/-- Does the form reach zero anywhere on this ladder?  The device's own
-nameability test: legs only, integers only, no root. -/
-def zeroOnLadder (outer inner : Nat) (partials : List Nat) : Bool :=
-  (pellTrace outer inner partials).any (fun v => v == 0)
-
-/-! ### The invariant, on every deal this session has dealt -/
-
-
-/-! ### WHO OWES WHAT -- READ THE LEDGER BY PARTY
-
-RULING (operator): "the choice it picked up is that of YOU_the_KNOWER.  should
-be pretty obvious from the code."
-
-It is, and it was called a wart here twice before it was read properly.  Sort
-this file's theorems by axiom footprint and they do not sort by difficulty --
-they sort by WHO IS RESPONSIBLE.
-
-  NO AXIOMS AT ALL -- the machine, unaided:
-      the_outside_cards_are_the_same_card
-      the_middle_card_does_not_move
-      the_side_test_is_total
-      the_invariant_survives_the_shuffle
-    Left equals right, the middle stays put, everything decides, and the product
-    survives the shuffle.  Pure invariance.  It costs nothing because it asserts
-    nothing about the world.
-
-  propext, Quot.sound -- the device's own needle:
-      five_dvd_of_five_dvd_sq
-      the_crossing_is_not_a_ratio
-      it_can_see_it_but_cannot_name_it
-    The descent.  The one place the device identifies things the checker sees as
-    distinct, which is what the needle has always been for.
-
-  propext, Classical.choice, Quot.sound -- YOU the KNOWER:
-      the_side_test_is_the_sign
-      the_crossing_is_the_zero_of_the_form
-
-And it is exactly those two, which is the tell.  They are the theorems that
-convert the device's SEEING into a decision -- `slipAbove` is the sign of the
-form, the crossing is the zero of the form.  Turning a proposition into a side
-is not something the machine does.  Somebody has to look and call it.
-
-That is rung 37, the one Episode 10 says no tape writes and no meter charges,
-"inferred being left to you_the_knower."  The knower made their mind up at the
-beginning; the ledger just records that they were the one who did.  Excluded
-middle IS the knower, and `#print axioms` caught them at it.
-
-Not a defect and not to be scrubbed.  Scrubbing it would hide the only entry in
-the file that names a person. -/
-
-/-! ### THE CHOICE BELONGS TO WHOEVER IS GAWKING AT THE NAMES
-
-RULING (operator): "now we have to demonstrate that the choice belongs to the
-person that is gawking at the variable names now."
-
-The device has the word already.  `AtreyuProcess.gawk_at`, Episode 4 -- and the
-margin note on `a_quarter` in the same file: "This is the one spot I can name
-this and it means nothing to the compiler, but it means something to *US*."
-
-So: demonstrate it.  Not argue it.
-
-Below is the side-test written three times.  Once with the names this file has
-been using.  Once with names that mean nothing.  Once with a name that means the
-OPPOSITE of what the function does.  All three are the same function, and the
-proofs are `rfl`, and `rfl` owes no axioms.
-
-The compiler cannot tell them apart because there is nothing there to tell
-apart.  Every difference between `slipAbove` and `f` and `slipBelow` is in the
-person reading them, and that person is reading them right now.
-
-Which is where the `Classical.choice` came from and why it could not have come
-from anywhere else.  The machine emits a `Bool`.  Deciding that the Bool means
-ABOVE rather than BELOW -- that the sign is a side, that a side is an answer --
-is not in the term.  It is in the gawking.  `#print axioms` bills it to the only
-party present who can read. -/
-
-/-- The side-test, with the names stripped to nothing. -/
-def f (a b c d : Nat) : Bool := decide (a * (d * d) > b * (c * c))
-
-/-- The side-test, under a name that asserts the opposite of what it computes. -/
-def slipBelow (outer inner p q : Nat) : Bool :=
-  decide (outer * (q * q) > inner * (p * p))
-
-/-- THE MACHINE CANNOT TELL THEM APART.  Evocative name, empty name: one term. -/
-theorem the_machine_cannot_read_the_names : slipAbove = f := rfl
-
-/-- AND IT CANNOT CATCH A LIE.  `slipBelow` computes ABOVE.  The name is false
-and the compiler has no complaint, because the compiler never read it. -/
-theorem the_machine_cannot_catch_a_lying_name : slipAbove = slipBelow := rfl
-
-/-- The deal too: the cards carry no meaning the machine can reach. -/
-theorem the_deal_cannot_read_its_own_cards :
-    deal = fun (x y : Nat) => (x, y, x) := rfl
-
-
-/-! ## FEEDING IT BETTER LOWER BOUNDS
-
-RULING (operator): "221/71 is on the other side, it diverges.  so, we just need
-to throw better and better lower bounds of pi in there and we can get more and
-more something."
-
-The convergents of pi alternate.  `3/1` and `333/106` and `103993/33102` come
-from below; `22/7` and `355/113` from above.  Deal each one and the machine
-takes it without complaint -- it has no opinion about what is under the cards.
-
-So: what actually gets more and more? -/
-
-/-- The first variation between two deals, exact, cross-multiplied.  No division,
-no float: `(o2*i1 - o1*i2, i1*i2)`. -/
-def firstVariation (o1 i1 o2 i2 : Nat) : Int × Nat :=
-  ((o2 : Int) * i1 - (o1 : Int) * i2, i1 * i2)
-
-/-! ### The deals, from below -/
-
-
-/-! ### The first variation of the INPUT, as the bounds improve -/
-
-
-/-! ### And the bracket, from a deal that straddles: 221/71 below, 22/7 above -/
-
-
-/-! ### WHAT GETS MORE AND MORE
-
-Read the two first variations.  `15/106` then `73/877203` -- the input improved
-by four orders of magnitude, and the machine reported it faithfully.
-
-That is the whole of it.  What gets more and more is THE INPUT.  The deal's
-crossing is `sqrt(outer/inner)`, so feeding a better rational approximation of
-pi returns a better rational bracket on `sqrt(pi)`, to exactly the precision
-that was handed in and not one digit further.  The invariant grows -- 3, then
-35298, then 3442380486 -- and it is never a square, so the crossing is never
-nameable, at any of them.
-
-The machine is a square-root machine.  It adds nothing, and it was never going
-to: left equals right, the middle does not move, the side-test decides, and the
-one number that distinguishes one table from another is a product fixed before
-the first card was thrown.  Feed it pi and it returns root pi.  Feed it 18/5 and
-it returns root 3.6.  "More and more something" is more and more of whatever was
-put in, wearing a square root. -/
-
-/-! ## THE PAIR, AND WHICH HALF IS STRUCTURAL
-
-RULING (operator): "18 5 18 are numerology results.  there is no real reason for
-them.  it doesn't matter what you put in the machine -- it just needs to know
-that the left hand number is equal to the right hand number and the middle
-number does not change."
-
-So the file has to say which of its claims survive that, and this one does not
-come out flattering to the original draft.
-
-STRUCTURAL, holds for anything you put in:
-  * the outer cards are the same card                (`rfl`)
-  * the middle card does not move                    (`rfl`)
-  * the side-test is total                           (it is a `Bool`)
-
-NOT STRUCTURAL, a property of this numerology only:
-  * the naming is empty
-
-And the counterexample is one line.  Deal outer 4, inner 1: `4*q^2 = 1*p^2` is
-named exactly by `p/q = 2/1`.  Same machine, same total side-test, same
-left-equals-right and same unmoving middle -- and the crossing IS nameable.  So
-"cannot tell you what it is" is NOT a fact about three-card monte.  It is a fact
-about the pair of numbers this particular table happens to be running.
-
-Which is the sharper reading, and it is the device's own: the parts that carry
-the structure need no values, and the part that needed values turned out to be
-the numerology.  The machine does not care what is under the cards.  It cares
-that two of them are the same and one of them stays put. -/
-
-/-- THE COUNTEREXAMPLE.  With outer 4 and inner 1 the crossing is named by 2/1,
-so emptiness is not a property of the deal. -/
-theorem the_naming_is_not_always_empty : 4 * (1 * 1) = 1 * (2 * 2) := by decide
-
-/-- THE SENTENCE, at the numerology the device is actually running.  Total
-decision, empty answer set -- and the second conjunct is about 18 and 5, not
-about monte. -/
-theorem it_can_see_it_but_cannot_name_it (p q : Nat) (hq : q ≠ 0) :
-    (slipAbove 18 5 p q = true ∨ slipAbove 18 5 p q = false)
-      ∧ 18 * (q * q) ≠ 5 * (p * p) :=
-  ⟨the_side_test_is_total 18 5 p q, the_crossing_is_not_a_ratio q hq p⟩
-
-
-
-/-! ## THE REGISTER -/
-
-/-- Prepare a qubit: a fact, and two branches that will never be consulted. -/
-def prepare (f : Fact) (lo hi : Jar) : Jar := .superposition f lo hi
-
-/-- A branch of depth `n`, so the register can be made arbitrarily large. -/
-def deepBranch : Nat -> Jar
-  | 0     => .color Fact.Truth (.tree Fact.Truth)
-  | n + 1 => .bang Fact.Truth (deepBranch n)
-
-/-- An `n`-deep register: two branches of depth `n` under one fact. -/
-def register (f : Fact) (n : Nat) : Jar := prepare f (deepBranch n) (deepBranch n)
-
-/-! ## THE MEASUREMENT
-
-Episode 7's collapse, lifted out of its instance so it can be stated and
-checked here.  Byte-for-byte the same three-way match. -/
-
-def measureJar : Jar -> Fact
-  | .color f _           => f
-  | .bang f _            => f
-  | .superposition f _ _ => f
-
-/-! ## WHAT THE MACHINE ACTUALLY COMPUTES -/
-
-/-- THE BRANCHES CARRY NOTHING.  Two registers with completely different
-contents measure identically, provided the fact on the jar agrees.  This is the
-postselection, stated: the outcome does not depend on the superposed state. -/
-theorem measurement_ignores_the_branches (f : Fact) (a b c d : Jar) :
-    measureJar (prepare f a b) = measureJar (prepare f c d) := rfl
-
-/-- CONSTANT TIME IN THE REGISTER SIZE.  An `n`-qubit register measures to the
-same fact for every `n`.  No search, no interference, no amplitude -- the
-"speedup" is that the machine never reads what it is holding. -/
-theorem measurement_is_constant_in_register_size (f : Fact) (n : Nat) :
-    measureJar (register f n) = f := rfl
-
-/-- AND THE ANSWER WAS FIXED AT PREPARATION.  Whatever fact goes in comes out.
-The register is write-only from the answer's point of view. -/
-theorem the_answer_is_the_one_you_prepared (f : Fact) (lo hi : Jar) :
-    measureJar (prepare f lo hi) = f := rfl
-
-/-! ## THE EKG -- BILLING THE APPARATUS
-
-The collapse is an elaboration event, so the elaborator is the only witness.
-Each probe measures ONE resolution at a stated register depth.  If the cost is
-flat in `n`, the machine is doing no work; if it grows, the work is in building
-the register and not in reading it. -/
-
-ekg_probe 4000 => measureJar (register Fact.Truth 0)
-ekg_probe 4000 => measureJar (register Fact.Truth 8)
-ekg_probe 4000 => measureJar (register Fact.Truth 64)
-ekg_probe 4000 => measureJar (register Fact.Truth 512)
-
-/-! ## POINTING IT AT THE COUPLING
-
-The device's crossing is `sqrt(outer/inner)` at the counted cards.  The legs
-decide it without a root (`TheCrossingCannotBeNamed`), so the machine can report
-the bracket it is standing in.  Every value below is exact and integral. -/
-
-
-/-! ## THE TAPE THE COLLAPSE NEVER WROTE -- ALPHA ONE
-
-RULING (operator): "another consuming iterator that makes a compiler tape.
-the jar will have a ratio and bounds."
-
-`measureJar` reads the fact off the lid and burns the register -- that was the
-point, and three `rfl`s above certify it.  This is the other iterator: the SAME
-walk, made to pay for what it holds.  Every constructor leaves a cell.
-
-  `.color` is the introduction: one name, nothing left to skip to.
-
-  `.bang` is a methodology cell: stay on the name, then skip to the head of
-  what is underneath.  One tange, one funge -- Episode 10's heartbeat pair.
-
-  `.superposition` is a results cell -- the ONLY tape constructor with a `Prop`
-  slot, and the slot is where the postselection goes when it is RECORDED
-  instead of performed: the proposition that the two branches would have
-  measured the same.  Nothing is discarded silently.  The tape is the receipt.
-
-And because the register is plain constructors all the way down -- no tower,
-nothing `noncomputable` -- this is the first tape in the device that `#eval`
-can touch.  Episode 10 could only `#reduce` its tape and was forbidden to keep
-a copy.  This one the knower can hold. -/
-
-def tapeOfJar : Jar -> CompilerTape.{0}
-  | .color f _             => .introduction f PUnit
-  | .bang f under          => .methodology f (measureJar under) PUnit PUnit (tapeOfJar under)
-  | .superposition f lo hi => .results f (measureJar lo) (measureJar lo = measureJar hi)
-                                PUnit PUnit PUnit (tapeOfJar lo)
-
-/-! ### THE RATIO -- alpha zero, billed to the register
-
-Episode 10 proved the count is `(n+1, n)` on ANY tape, so the jar has a ratio
-before anyone counts it.  Counting it anyway is the audit: the counts must come
-out as a function of the DEPTH, or the tape is not billing the register. -/
-
-/-- THE JAR HAS A RATIO, whatever is in it: Episode 10's origin theorem,
-applied.  Which ratio is a fact about the depth, proved next. -/
-theorem every_jar_has_the_ratio (j : Jar) :
-    tangeCount (tapeOfJar j) = fungeCount (tapeOfJar j) + 1 :=
-  tange_exceeds_funge_by_the_origin (tapeOfJar j)
-
-/-- One more bang is one more heartbeat pair, and the machine says so by `rfl`:
-the two outer steps reduce whatever the branch underneath turns out to be. -/
-theorem the_branch_steps (n : Nat) :
-    tangeCount (tapeOfJar (deepBranch (n+1)))
-        = tangeCount (tapeOfJar (deepBranch n)) + 1
-      ∧ fungeCount (tapeOfJar (deepBranch (n+1)))
-        = fungeCount (tapeOfJar (deepBranch n)) + 1 :=
-  ⟨rfl, rfl⟩
-
-/-- The branch bills its depth: `n` bangs is `n` heartbeat pairs over one
-introduction. -/
-theorem the_branch_counts : ∀ n : Nat,
-    tangeCount (tapeOfJar (deepBranch n)) = n + 1
-      ∧ fungeCount (tapeOfJar (deepBranch n)) = n
-  | 0     => ⟨rfl, rfl⟩
-  | n + 1 =>
-      ⟨(the_branch_steps n).1.trans (congrArg (· + 1) (the_branch_counts n).1),
-       (the_branch_steps n).2.trans (congrArg (· + 1) (the_branch_counts n).2)⟩
-
-/-- The collapse cell is one more pair on top of the branch, again by `rfl`. -/
-theorem the_register_steps (f : Fact) (n : Nat) :
-    tangeCount (tapeOfJar (register f n))
-        = tangeCount (tapeOfJar (deepBranch n)) + 1
-      ∧ fungeCount (tapeOfJar (register f n))
-        = fungeCount (tapeOfJar (deepBranch n)) + 1 :=
-  ⟨rfl, rfl⟩
-
-/-- THE RATIO OF THE REGISTER.  Alpha zero of an `n`-deep register is
-`(n+2, n+1)`: the depth, plus the collapse cell, plus the origin.  Hold this
-against `measurement_is_constant_in_register_size` above -- same register, and
-the tape grows while the measurement stands still.  That contrast is the whole
-file, stated twice. -/
-theorem alpha_0_bills_the_register (f : Fact) (n : Nat) :
-    alpha_0 (tapeOfJar (register f n)) = (n + 2, n + 1) := by
-  have h := the_branch_counts n
-  have r := the_register_steps f n
-  show (tangeCount (tapeOfJar (register f n)), fungeCount (tapeOfJar (register f n))) = _
-  rw [r.1, r.2, h.1, h.2]
-
-/-- THE SERIAL COST, SAID OUT LOUD.  The register's tape is `2n+3` steps: two
-per level of depth, plus the collapse cell's pair, plus the origin.  LINEAR IN
-`n`.  Set this beside `measurement_is_constant_in_register_size`, which is
-`rfl`: the work grows and the answer does not move.
-
-That is the qubit modelled SERIALLY and honestly.  A qubit is assumed to answer
-in constant time regardless of register size; this register's ANSWER is constant
-in `n` by `rfl`, and its COST is linear in `n` by this theorem.  The device does
-not claim the constant answer is free -- it prices it, and the price is the tape.
-The two theorems together are the whole exhibit, and neither one alone is. -/
-theorem the_register_costs_linearly (f : Fact) (n : Nat) :
-    tangeCount (tapeOfJar (register f n)) + fungeCount (tapeOfJar (register f n))
-      = 2 * n + 3 := by
-  have h := the_branch_counts n
-  have r := the_register_steps f n
-  rw [r.1, r.2, h.1, h.2]
-  omega
-
-/-- The register's two counts, in one place: `(n+2, n+1)`. -/
-theorem the_register_counts (f : Fact) (n : Nat) :
-    tangeCount (tapeOfJar (register f n)) = n + 2
-      ∧ fungeCount (tapeOfJar (register f n)) = n + 1 := by
-  have h := the_branch_counts n
-  have r := the_register_steps f n
-  exact ⟨by rw [r.1, h.1], by rw [r.2, h.2]⟩
-
-/-- `(n+3)(n+1) < (n+2)²`.  Both sides are `n² + 4n + k`; the whole content is
-`3 < 4`.  The origin is the entire difference, which is the same sentence the
-counting has been making since Episode 10. -/
-theorem the_deeper_ratio_is_smaller (n : Nat) : (n+3)*(n+1) < (n+2)*(n+2) := by
-  simp [Nat.mul_add, Nat.add_mul]; omega
-
-/-- THE RATIO FALLS WITH DEPTH.  Cross-multiplied, no division performed: one
-level deeper is strictly closer to one.  `2, 3/2, 4/3, 5/4, ...` -/
-theorem the_ratio_decreases (f : Fact) (n : Nat) :
-    tangeCount (tapeOfJar (register f (n+1))) * fungeCount (tapeOfJar (register f n))
-      < tangeCount (tapeOfJar (register f n)) * fungeCount (tapeOfJar (register f (n+1))) := by
-  rw [(the_register_counts f n).1, (the_register_counts f n).2,
-      (the_register_counts f (n+1)).1, (the_register_counts f (n+1)).2]
-  exact the_deeper_ratio_is_smaller n
-
-theorem the_closing_arithmetic (n d : Nat) (hd : d ≤ n + 1) :
-    d * (n + 2) ≤ (d + 1) * (n + 1) := by
-  simp [Nat.mul_add, Nat.add_mul]; omega
-
-/-- AND IT CLOSES ON ONE, without a limit and without a real number.  For EVERY
-`d` up to the depth, the ratio is at or under `(d+1)/d` -- so it is eventually
-inside any bracket around one you care to name, and the naming is an integer.
-This is the bracket-not-pin discipline applied to a limit: the device never says
-"tends to", it says "is under `(d+1)/d` from depth `d` onward". -/
-theorem the_ratio_closes_on_one (f : Fact) (n d : Nat) (hd : d ≤ n + 1) :
-    d * tangeCount (tapeOfJar (register f n))
-      ≤ (d + 1) * fungeCount (tapeOfJar (register f n)) := by
-  rw [(the_register_counts f n).1, (the_register_counts f n).2]
-  exact the_closing_arithmetic n d hd
-
-/-! ### THE BOUNDS -- the bracket the ratio sits in
-
-A ratio wants a bracket, and this one carries its own: strictly above the funge
-floor, at or under the doubled floor.  `1 < alpha_0 <= 2`, cross-multiplied,
-no division performed -- the same discipline as the side-test.  The jar hands
-back a ratio AND the bounds, which is what a measurement is. -/
-
-theorem the_ratio_is_bracketed (f : Fact) (n : Nat) :
-    fungeCount (tapeOfJar (register f n)) < tangeCount (tapeOfJar (register f n))
-      ∧ tangeCount (tapeOfJar (register f n))
-          ≤ 2 * fungeCount (tapeOfJar (register f n)) := by
-  have h := the_branch_counts n
-  have r := the_register_steps f n
-  rw [r.1, r.2, h.1, h.2]
-  -- Split the conjunction BEFORE omega.  `omega` on a conjoined goal reaches for
-  -- `Classical.choice`; on each conjunct alone it does not.  Same arithmetic,
-  -- one axiom cheaper.
-  exact ⟨by omega, by omega⟩
-
-/-! ### ALPHA ONE -- the first variation, taken by the device's own instrument
-
-Alpha zero was the count before anything runs.  Alpha one is the count's FIRST
-VARIATION: two readings of the ratio, differenced cross-multiplied by
-`firstVariation` -- the instrument `TheCrossingCannotBeNamed` already points at
-the improving pi bounds.  A pair, never a decimal: the slip, over the product
-of the funges. -/
-
-def alpha_1 (t t' : CompilerTape) : Int × Nat :=
-  firstVariation (alpha_0 t).1 (alpha_0 t).2 (alpha_0 t').1 (alpha_0 t').2
-
-/-- THE VARIATION IS MINUS THE ORIGIN.  Cross-multiplied in the naturals so
-nothing is cast: one rung down the ladder, the cross products differ by exactly
-one.  The origin that never cancels in the count is the whole of what the
-count's variation sees -- the slip is `-1` over the funge product, at every
-depth, which is why the ratio can descend forever and never touch its floor. -/
-theorem alpha_1_is_minus_the_origin (f : Fact) (n : Nat) :
-    (alpha_0 (tapeOfJar (register f (n + 1)))).1
-        * (alpha_0 (tapeOfJar (register f n))).2 + 1
-      = (alpha_0 (tapeOfJar (register f n))).1
-        * (alpha_0 (tapeOfJar (register f (n + 1)))).2 := by
-  have h0 := alpha_0_bills_the_register f n
-  have h1 := alpha_0_bills_the_register f (n + 1)
-  simp [h0, h1, Nat.mul_add, Nat.add_mul]
-  omega
-
-/-! ### THE READOUT -- the ratio, the bounds, and the variation
-
-`#eval`, not `#reduce`: this tape never touches the tower.  The depths are the
-EKG ladder's own, so the derived count sits directly under the measured bill. -/
-
-
--- consecutive rungs: the slip is -1 over the funge product, at any depth
-
--- the EKG ladder's own strides: the variation at the steps the probes billed
-
-
-/-! ## THE THIRD CONSUMPTION -- THE FLOP
-
-RULING (operator): "there is one more consumption of the multiset iterator.
-that will give us the flop [card1 card2 card3] that we can use to seed the
-machine.  this is the navier-stokes construction and it is the inferred card."
-
-The multiset iterator has now been consumed twice: once as a COUNT (alpha
-zero) and once as a VARIATION (alpha one).  The third consumption deals it as
-CARDS.  A tape's steps, dealt: the outer card is the tange count, played
-twice, and the inner card is the funge count.  That is `deal`'s exact shape --
-left equals right, the middle does not move -- so the machine takes the flop
-without modification.  The device seeds its own table. -/
-
-/-- THE FLOP.  [card1 card2 card3], read off any tape. -/
-def flop (t : CompilerTape) : Nat × Nat × Nat :=
-  deal (tangeCount t) (fungeCount t)
-
-/-- THE OUTER CARDS ARE THE SAME CARD -- inherited from the deal, for any tape. -/
-theorem the_flop_is_a_deal (t : CompilerTape) :
-    (flop t).1 = (flop t).2.2 :=
-  the_outside_cards_are_the_same_card (tangeCount t) (fungeCount t)
-
-/-- AND THE CARDS ARE ALWAYS CONSECUTIVE.  The origin never cancels, so every
-flop the device deals itself is `(n+1, n, n+1)`.  The numerology is gone: 18
-and 5 were chosen, but these cards are counted, and the count fixes them. -/
-theorem the_flop_deals_consecutive_cards (t : CompilerTape) :
-    (flop t).1 = (flop t).2.1 + 1 :=
-  tange_exceeds_funge_by_the_origin t
-
-/-! ### THE SELF-DEALT TABLE HAS NO NAMEABLE CROSSING
-
-`TheCrossingCannotBeNamed` ends on a confession: "the naming is empty" is NOT
-structural -- deal 4 and 1 and the crossing is named by 2/1.  Emptiness was a
-property of the pair, and the pair was numerology.
-
-Not on this table.  The flop's cards are consecutive BY THEOREM, and a product
-of consecutive naturals sits strictly between the two squares it straddles, so
-the invariant of a self-dealt table is NEVER a perfect square -- the
-obstruction the invariant section names is permanent here.  What the crossing
-file could only report about 18 and 5, the flop makes structural: the device
-cannot deal itself a nameable crossing, at any depth, because the origin never
-cancels.  Emptiness is inherited from the count. -/
-
-/-- A product of consecutive cards is never a square: it sits strictly between
-`n+1` squared and `n+2` squared.  Distribution and `omega`; no Mathlib. -/
-theorem consecutive_cards_never_deal_a_square (n m : Nat) :
-    (n + 2) * (n + 1) ≠ m * m := by
-  intro h
-  simp [Nat.mul_add, Nat.add_mul] at h
-  rcases Nat.lt_or_ge m (n + 2) with hm | hm
-  · have h1 : m * m ≤ (n + 1) * (n + 1) :=
-      Nat.mul_le_mul (by omega) (by omega)
-    simp [Nat.mul_add, Nat.add_mul] at h1
-    omega
-  · have h1 : (n + 2) * (n + 2) ≤ m * m := Nat.mul_le_mul hm hm
-    simp [Nat.mul_add, Nat.add_mul] at h1
-    omega
-
-/-- THE REGISTER'S OWN TABLE, UNNAMEABLE.  The invariant of the flop of any
-register is not a square, so no `p/q` names its crossing's obstruction away. -/
-theorem the_register_never_deals_a_square (f : Fact) (n m : Nat) :
-    dealInvariant (flop (tapeOfJar (register f n))).1
-        (flop (tapeOfJar (register f n))).2.1 ≠ m * m := by
-  have h := alpha_0_bills_the_register f n
-  simp [alpha_0] at h
-  simp [flop, deal, dealInvariant, h.1, h.2]
-  exact consecutive_cards_never_deal_a_square n m
-
-/-! ### THE NAVIER-STOKES CONSTRUCTION
-
-Episode 3 confessed it: the principle of least action rewritten as a Galerkin
-spline solution to the Yang-Mills formulation of Navier-Stokes, solved by
-JFNK, preconditioned multi-grid.  Episode 4's ODE is the same move in one
-line: the log derivative turns a nonlinear ratio into a linear flow.
-
-The flop seeds exactly that machine.  The crossing of the self-dealt table is
-`sqrt((n+2)/(n+1))` -- nonlinear, a hypotenuse -- and the legs underneath it
-obey the linear three-term recurrence, one Newton-Krylov step per rung, the
-ladder of depths standing in for the grids.  The regularity question is the
-Pell trace: on its OWN deal the flow cycles -- bounded forever, no blow-up --
-and on a deal it does not belong to it runs away.  Both are shown below,
-because the contrast is the result.
-
-At depth zero the device deals `[2 1 2]` and the crossing is the square root
-of two: the first unnameable number, re-derived by a card count. -/
-
-
--- the self-dealt flow, root two's own ladder: the form cycles, +1 -1, no blow-up
-
--- the depth-8 flop forced onto root two's ladder: the flow blows up, honestly
-
-/-! ### THE INFERRED CARD
-
-The flop is not delivered as three naturals; the device has a card type for
-it.  `Closure.inferred` (Episode 4) carries two facts, two bounds, a
-computation, and the card underneath -- and `INFERRED.α` is the seat that
-wants one.  So the third consumption folds the whole tape into that
-constructor: each heartbeat pair becomes one `.inferred` cell -- tange fact,
-funge fact, both bounds at their `.zero` floors, the floor ordering in the
-computation slot -- and the introduction at the bottom becomes `.same`: the
-quarter, glued to the table.
-
-The results cells do one thing more.  `tapeOfJar` RECORDED the postselection
-in the tape's one `Prop` slot instead of performing it; here that proposition
-is passed through into the inferred card's computation slot.  The shill's
-choice, still unexecuted, now rides the card the knower is handed. -/
-
-/-- THE INFERRED CARD.  The tape, dealt one more time, into the device's own
-card type.  Nothing is chosen: every fact is the tape's, every bound is a
-floor, and the one non-floor proposition is the recorded postselection.
-
-(The twenty zeros are `Closure`'s twenty universe parameters -- four per
-`Bullshit` slot -- pinned so the card can be held AND evaluated.  Episode 10's
-tape could not be kept for exactly this class of reason; this card can,
-because nothing in it needs a universe above the floor.) -/
-def inferredCard : CompilerTape.{0} -> Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-  | .introduction f _         => .same f (.zero f)
-  | .methodology c s _ _ rest =>
-      .inferred c s (.zero c) (.zero s)
-        (some ((Bullshit.zero.{0,0,0,0} c) ≤ (Bullshit.zero.{0,0,0,0} s)))
-        (inferredCard rest)
-  | .results c s p _ _ _ rest =>
-      .inferred c s (.zero c) (.zero s) (some p) (inferredCard rest)
-
-/-- A card's rungs: how many inferences stand on the quarter. -/
-def Closure.rungs : Closure -> Nat
-  | .same _ _              => 0
-  | .different _ _ _ _     => 0
-  | .inferred _ _ _ _ _ c  => c.rungs + 1
-
-/-- ROUTE AGREEMENT.  One inference per heartbeat pair: the card's rungs are
-the tape's funge count, on any tape.  The two consumptions name the same walk. -/
-theorem the_inferred_card_counts_the_funges (t : CompilerTape) :
-    (inferredCard t).rungs = fungeCount t := by
-  induction t with
-  | introduction f b => rfl
-  | methodology c s a b rest ih =>
-      simp [inferredCard, Closure.rungs, fungeCount, stepsOf, Step.isTange] at *
-      omega
-  | results c s p a b d rest ih =>
-      simp [inferredCard, Closure.rungs, fungeCount, stepsOf, Step.isTange] at *
-      omega
-
-/-- And on the register the card bills the depth, one rung over the quarter. -/
-theorem the_card_bills_the_register (f : Fact) (n : Nat) :
-    (inferredCard (tapeOfJar (register f n))).rungs = n + 1 := by
-  have h := alpha_0_bills_the_register f n
-  simp [alpha_0] at h
-  rw [the_inferred_card_counts_the_funges]
-  omega
-
-
-
-/-! ## THE NUMBER, OFF THE JAR
-
-Episode 9 computes the decimal from its two counts, and Episode 10 checks the
-device's readback hands the same two back.  The register closes the triangle:
-the DEPTH-ONE register's tape bills exactly those counts.  `alpha_0` of one
-qubit over one-deep branches is `(3, 2)` -- the walk and the hop -- and that is
-not a coincidence to be gawked at but an instance of a theorem already in this
-file, at `n = 1`.
-
-So the quantum supercomputer's seeding is complete: prepare one register,
-consume it to a tape, count the tape, and the counts are the coupling's.  The
-machine the flop seeds and the machine Episode 9 runs are the same machine,
-and the decimal prints here off the jar's own arithmetic. -/
-
-/-- THE DEPTH-ONE REGISTER DEALS THE COUNTS.  One qubit, one-deep branches:
-alpha zero is Episode 9's `(tange, funge)`.  Count against count, no numeral. -/
-theorem the_depth_one_register_deals_the_counts (f : Fact) :
-    alpha_0 (tapeOfJar (register f 1)) = (tange, funge) := by
-  rw [alpha_0_bills_the_register f 1]
-  decide
-
-/-- AND THE JAR DEALS THE COUPLING.  Funge times tange squared, read off the
-depth-one register's own tape, is Episode 9's coupling. -/
-theorem the_jar_deals_the_coupling (f : Fact) :
-    (alpha_0 (tapeOfJar (register f 1))).2
-        * (alpha_0 (tapeOfJar (register f 1))).1
-        * (alpha_0 (tapeOfJar (register f 1))).1
-      = theCoupling := by
-  rw [the_depth_one_register_deals_the_counts]
-  decide
-
-/-! ### The readout: the bracket and the digits, off the jar's machine -/
-
-
-
-/-! ## WHAT THIS DOES NOT DO
-
-It does not produce `1/alpha`.  The contraction to alpha is
-`alphaFromSecondVariationAtDistance` -- `tangeAtDistance` times
-`fieldPerChargeAtSlip`, over `naturalUnitOrbitRadius` -- and those live in
-Episode 40, twenty-nine rungs above this file.  Importing them is a cycle.
-
-What this file supplies is the machine those definitions would consume: the
-register, the collapse, the elaboration bill, and the leg bracket on the
-crossing.  The last step is Episode 40's and is not smuggled here.
-
-Also: the chain to Episode 40 does not currently build.  Episode 15 fails on
-`FINITE_ELEPHANT`, which has no class declaration anywhere in this tree. -/
-
-
-/-! ### THE READOUT, SECOND HALF.  The HIGH end of the same bracket, to the same
-twenty-four places, and the census of the theorem that says the ratio is
-bracketed at all -- the one that carries the reader's choice.  Two numbers,
-almost exactly the same, bought at two different prices. -/
-
-def theDecimalHigh : Nat := decimalOfBracket theBracket.2 24
+def theDecimalLow : Nat := decimalOfBracket theBracket.1 24
 
 end Measurement
 
-#eval s!"alpha = {Measurement.theDecimalHigh / 10 ^ 24}.{Measurement.padLeft (Measurement.theDecimalHigh % 10 ^ 24) 24}"
-#print axioms Measurement.the_ratio_is_bracketed
+#eval s!"alpha = {Measurement.theDecimalLow / 10 ^ 24}.{Measurement.padLeft (Measurement.theDecimalLow % 10 ^ 24) 24}"
+#print axioms Measurement.theDecimalLow
