@@ -30,7 +30,7 @@ The biggest problem with most rigorous theories of science is just that they are
 
 
 -- WE GET SIGNAL!
-import Measurement.Episode05
+import Measurement.Episode07
 set_option allowUnsafeReducibility true
 
 -- MAIN SCREEN TURN ON !

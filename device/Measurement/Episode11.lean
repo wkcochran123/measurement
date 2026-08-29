@@ -534,23 +534,8 @@ def NO_NEED_TO_USE_COMPLEX_ANALYSIS_TO_UNDERSTAND_THE_INDEX_OF_THE_CONSTANT
 -/
 
 namespace Metavariable
-/-- THE METAVARIABLE'S ORDER.  The metavariable is ι, the universe number:
-once the subsingleton times are sorted, they are numbered implicitly by
-universe, and ι is the index into that list.  Two of them compare the only
-way indexed subsingletons can -- agreement at the base, the steps walked down
-one at a time -- the house grammar, called from this file with (i := ι). -/
-def le {α : Type ι} : Metavariable α → Metavariable α → Prop
-  | .base this_time _     , .base that_time _      => this_time.truth = that_time.truth
-  | .base _ _             , .step _ _              => True
-  | .step _ _             , .base _ _              => False
-  | .step this_time before, .step that_time after  =>
-      (this_time.truth = that_time.truth ∧ le before after) ∨
-      le (.step this_time before) after
-termination_by _ index => sizeOf index
 
-/-- Strict, at the same index: the house lt, word for word. -/
 def lt {α : Type ι} (x y : Metavariable α) : Prop := le x y ∧ ¬ le y x
-
 /-- ACROSS THE SEAM.  All universes are strictly MORE computation, so the
 comparison consults neither argument: one level up is above everything below,
 by type alone.  The values are never looked at; the universe already decided. -/
