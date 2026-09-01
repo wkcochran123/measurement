@@ -305,7 +305,7 @@ class DISTINGUISHABLE  -- Bullshit meter ≈ 28  ------------------+ You may sta
    --       |               | need to allocate memory since we now have access to numbers the compiler uses and trusts.
    --       V
   symbol: Type Value   -- We can index the value with a metavariable symbol, as in the compiler has a representation of some integer level.
-                       -- Only suckers use Nat (I credit my mentor Russ Hewitt for that).
+                       -- Only suckers use Nat (I credit my mentor Russ Hewett for that).
 
   distinct? : Prop := True    -- Is this thing distinct?  God I hope so, or the compiler has problems.
 
@@ -325,7 +325,7 @@ class DISTINGUISHABLE  -- Bullshit meter ≈ 28  ------------------+ You may sta
 -- You didn't notice the universe number thing? -------------------------------------------+              +---------------------------------+
 
 /- CHORUS:
-ME: I need a natural number.                           |      +-----------> Finally, we can meet the entire case of characters on our journey.
+ME: I need a natural number.                           |      +-----------> Finally, we can meet the entire cast of characters on our journey.
 COMPILER: Great. Use Nat.                              |      |             You have met _me_ obviously, and I have met _YOU the READER_ before.
 ME: No. Too much civilization.                         |      |             _YOU the KNOWER_ are new to me; it is nice to meet you. The fourth
 COMPILER: Then what do you want?                       +------+             member of our cast is the _COMPILER_. Normally, the compiler fills
@@ -366,7 +366,7 @@ ME: Is this the same label?
 COMPILER:  No, it is quite different.
 ME: "≤" is not the same?
 COMPILER:  That is the same symbol as my symbol
-ME: How do you like you Waffle House hash browns?
+ME: How do you like your Waffle House hash browns?
 -/
 instance : LE Natural where  -- Bullshit meter ≈ 5
   le := Natural.le

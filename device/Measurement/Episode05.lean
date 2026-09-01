@@ -10,23 +10,34 @@ __EPISODE 5__: _THE ANTE_
 
 -/
 
--- Have I convinced you yet of the dangers of using other peoples imports?
+--| Have I convinced you yet of the dangers of using other peoples imports? Or is the bullshit too much to wade through.  I agree it is a bit much
 import Measurement.Episode04
 import Measurement.Calibration.LeanCalibration
 set_option allowUnsafeReducibility true
 
 
--- Use this at your own risk.  If you accidentally program something that requires the violation of the halting problem to represent, you might find
--- yourself waiting a few minutes for the compiler as it slowly enumerates ALL of computation to find your program.
+--| Perhaps not all bullshit is worthwhile. Some of it is just plain 𝔽(1)-ny. That's the only reason why we keep it around, it amuses us. The idea
+--| that the direct proportion is scale invariant is _QUITE_ the fantastical tale that we all wish _WERE_ true. It is an unobserved fiction in the
+--| universe as energy is strictly conserved implying direct proportion of dependent numbers associated with invariance cannot scale. v=at is
+--| precisely the cake that does not exist. While there doesn't appear to be a zero speed, it's only Lorentz between us and complete regression
+--| to compass and straight-edge.
 
--- -O2 is for suckers, as my mentor Russ Hewett would say. This thing enumerates computation and finds the one that we want and copies the input into
--- the output, sorted by how fast they are. That's how it compiles!  Kolmogorov eat your heart out, I put a ring on it!
+--| Actually, is that Shannon next to Lorentz? Could it be a simple _noise_ filter will do the trick, too?
 
--- Literally, algebraic ring incoming.
 namespace Measurement
 
-universe i -- This is merely a subscript. Variant with Roman letters. a=1 b=2 c=3...
+universe i
 
+--| The three card monte shuffle has only 2 operations. Move left and move right.  If you ignore the position it started from, as in
+--| let's assume a positive arrow on the velocity/momentum vector.  Wait, is there any reason why these two vectors need to be the same value?
+--| I mean, they are different invariants, aren't they? Then, let's assume a _non zero_ normalized dot product.  What does it mean to have your
+--| velocity pointed one way and your momentum pointed another? Stiff ODE. That's what that means. All we are saying is that there does not exist
+--| a universe in which the velocity is orthogonal to the momentum. You are probably stuck on why I call velocity _invariant_. Velocity is a
+--| characteristic of the carrier, not the nowtrino. There is just the one carrier and it has just one value: how fast it goes.
+
+--| The momentum vector belongs to the nowtrino. The velocity vector belongs to the CarrierProcess. They are related by the operator that describes
+--| the operator that solves whatever differential form *YOU the KNOWER* believes can be represented on a compact disc for the very purposes of
+--| modeling how a compact disc works.  Sorry, compact ball.  Compact discs are for music. Remember building the DAC?
 
 @[reducible]
 class UNIVERSAL
@@ -40,7 +51,7 @@ class UNIVERSAL
     [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
-    (quartic: LOCAL Box Pigeon) ---| See the ODE above. This is a quadratic of a quadratic. Or a linear of a cubic. Either way.
+    (quartic: LOCAL Box Pigeon) ---|
   where
   the_train_of_thought: CalculusProcess Box Pigeon quartic ---| I do believe we have arrived at the next stop. A universal calculus model.
   once_around: SpaceTimePath
@@ -872,10 +883,11 @@ def le : Closure → Closure → Prop
 
 termination_by train_schedule1 train_schedule2 => sizeOf train_schedule1 + sizeOf train_schedule2  --| I think we expect naturals to fall out of elab.
 
+
 end Closure
 
 instance : LE Closure where
-  le := Closure.le
+  le a b := Closure.le a b
 
 
 namespace Fact
