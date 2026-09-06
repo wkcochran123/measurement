@@ -28,6 +28,7 @@ theorem true_eq_false :
 --| There is only 1 theory: Causailty
 --| There is only 1 axiom: Choice
 --| There is only 1 device: Subsingleton interpretation
+--| Let's put them all in the same Finkahedron and see what else is in there!
 
 
 end NOT_IN_MEASUREMENT_AND_NEVER_USED

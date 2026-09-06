@@ -105,55 +105,167 @@ def jarReading :=
   String.ofList (s.take (s.length - thePlaces)) ++ "." ++
   String.ofList (s.drop (s.length - thePlaces))
 
---| THE TURN, DRIVEN BY THE METER.  Three arms, not four.  And what it reads is the
---| PRESS VERDICT -- the seam's exit -- not the closure we built on the short way.  That
---| was our own artifact; measuring it only ever told us about us.  `pressCheck` reads the
---| head once and reports whether it SLIPPED, which is not the same as getting through the
---| mountain, and its two Numbers are the two bounds.  `PressVerdict` IS the bracket: that
---| is why `.different` carries two slots and the far one is called `slip_bound`.
+--| THE LAGRANGE READING.  UNIVERSAL says the train of thought is not Newton's calculus but
+--| Lagrange's: a non-linear relation between the function, the derivative and the SECOND
+--| derivative -- and that the operator is a derivation in the language of algebra.  That is
+--| the whole story, because D is a derivation and D-squared is NOT: its Leibniz defect is
+--| the cross term, two times Da times Db.  That is the higher-order term that refuses to
+--| cancel, and the two in it is the slip at two.
 --|
---| The stopping test needs no reference anybody chose.  Two readings of the same verdict
---| that agree to within the floor ARE the bracket -- there is nothing finer to see, so you
---| stop.  Wider than the floor and the seam is still moving.  Narrower is not available:
---| below the floor the instrument is reading itself.
-elab "practice_turn " nm:ident " after " prev:term : command => do
-  let (b, h, before) ← liftTermElabM do
-    let b ← blank
-    let h ← sample (← `(Measurement.pressCheck))
-    --| the turn before spliced its reading in as a def; read it back out
-    let p ← Meta.whnf (← elabTerm prev none)
-    pure (b, h, p.rawNatLit?.getD 0)
-  let reading := if h > b then h - b else 0        --| the blank comes off the sample
-  let floor   := Calibration.measuredFloor
-  let drift   := if reading > before then reading - before else before - reading
-  let arm := if before == 0 then "inferred" else if drift <= floor then "different" else "inferred"
-  logInfo s!"blank {b}  verdict {h}  reading {reading}  previous {before}  drift {drift}  floor {floor}  -> {arm}"
-  let body ← match arm with
-    | "different" => `(Closure.different theOriginFact theBullshit theBullshit (some True))
-    | _           => `(Closure.inferred theOriginFact theOriginFact theBullshit theBullshit
-                         (some True) theClosure)
-  let rd := Lean.mkIdent (Lean.Name.mkSimple (nm.getId.toString ++ "_reading"))
-  elabCommand (← `(def $rd : Nat := $(Lean.quote reading)))
-  elabCommand (← `(noncomputable def $nm :
-    Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} := $body))
+--| So read the jar again carrying `once_around` AND `twice_around` -- f, f' and f''.  For a
+--| quadratic f'' is exactly funge times quadA, constant, so the second derivative costs
+--| nothing to know.  Newton needs five turns to land.  This needs three.  The slip allows
+--| four.  Carrying the second derivative is precisely what fits the whole reading inside
+--| the slip; dropping it is what leaves you almost, but not quite.
+--| FOR THE WRITING: "the number 4 is a path THROUGH the number 3", measured in Lean, not simulated.  Fold this crank from the jar and watch:
+--|
+--|     lagrange x2  137.011290527013905233309938      newton x3  137.011290807319124540443729
+--|     lagrange x3  137.011290548979457087737301      newton x4  137.011290548979457793403451
+--|     lagrange x4  137.011290548979457087737301      newton x5  137.011290548979457087737300
+--|
+--| Carrying f'' the answer arrives at THREE and the fourth turn passes straight through it without moving -- the slip allows four, and four is
+--| the path through three.  Drop f'' and there is nothing at three to pass through: at four Newton is still en route, which is Euler-Lagrange
+--| flopping exactly as advertised.  The residue is one unit in the last place, and that much is OBSERVED and not explained.
+def lagrangeReadingScaled : Int :=
+  (List.replicate theSlipAtTwo ()).foldl
+    (fun x _ =>
+      let s   := (theScale : Int)
+      let f   := (quadA : Int) * x * x - (quadB : Int) * x * s + (quadC : Int) * s * s
+      let fp  := (funge : Int) * (quadA : Int) * x - (quadB : Int) * s
+      let fpp := (funge : Int) * (quadA : Int)
+      x - ((funge : Int) * f * fp) / ((funge : Int) * fp * fp - f * fpp))
+    (jarSeed : Int)
 
---| THE PRACTICE.  Each turn reads the verdict again and compares it with the last reading,
---| which the turn before spliced in.  Nothing here is a number anybody typed.
-practice_turn practice1 after 0
-practice_turn practice2 after practice1_reading
-practice_turn practice3 after practice2_reading
-practice_turn practice4 after practice3_reading
+def lagrangeReading :=
+  let s := (toString lagrangeReadingScaled).toList
+  String.ofList (s.take (s.length - thePlaces)) ++ "." ++
+  String.ofList (s.drop (s.length - thePlaces))
+
+--| THE JAR, FROM EPISODE EIGHT.  The previous probe sampled `ULift` stacked n deep on
+--| `Number` -- a TYPE, and nothing besides.  That is a control, and I named it too
+--| generously: a type expression carries no evidence, while the ladder's rungs carry
+--| `register_value`, `universe_id` and a `galley`.  Measuring the container of one field's
+--| type is not measuring the record.  Two further things that comment got wrong: `ULift`
+--| is `ULift.{r,s} (α : Type s) : Type (max s r)`, so wrapping it does NOT force a
+--| successor universe unless the levels are pinned -- the controlled axis was nesting
+--| DEPTH, not universe level -- and agreeing totals do not make agreeing profiles.
+--|
+--| So the sample starts where Episode 8 already started, from the jar it built:
+--|
+--|     theJar = .superposition theOriginFact (.bang _ (.color _ theArea)) (.color _ theArea)
+--|
+--| A constructor tree with Facts in it: the superposition's two roots, one branch a step
+--| deeper than the other.  And `Jar.le` must WALK it, including the arm that returns
+--| `¬ le j1' j2'` when both decisions come back false.  Comparing jars is work on
+--| evidence.  Elaborating `ULift` was work on notation.
+private def jarAt (n : Nat) : TermElabM (TSyntax `term) := do
+  let mut s ← `(Measurement.theJar)
+  for _ in [0:n] do
+    s ← `(Measurement.Jar.bang Measurement.theOriginFact $s)
+  pure s
+
+--| ONE RUNG, RAW.  Blank and sample both kept, unsubtracted and unclipped.  `Nat`
+--| subtraction truncates at zero, so doing the arithmetic here silently erases every
+--| decrease -- and a decrease is precisely what this experiment exists to detect.  The old
+--| `if h > b then h - b else 0` reported three leading zeros and threw away how far below
+--| the blank they sat.  Store what was read; derive the differences later, in `Int`.
+private def jarPair (n : Nat) : TermElabM (Nat × Nat) := do
+  let b ← blank
+  let h ← sample (← `(Measurement.Jar.le $(← jarAt n) Measurement.theJar))
+  pure (b, h)
+
+--| BOTH WALKS, THEN PUBLISH.  Up and down inside ONE command, with nothing emitted in
+--| between.  The previous version published two declarations before the descending pass
+--| began, so the second walk ran in a larger environment and the two passes differed by
+--| more than their order.  Now they differ by their order and by nothing else.
+elab "monte_walk " up:ident upb:ident dn:ident dnb:ident : command => do
+  let (ub, uh, db, dh) ← liftTermElabM do
+    let mut ub : Array Nat := #[]
+    let mut uh : Array Nat := #[]
+    for n in [0:36] do
+      let (b, h) ← jarPair n
+      ub := ub.push b
+      uh := uh.push h
+    let mut db : Array Nat := #[]
+    let mut dh : Array Nat := #[]
+    for i in [0:36] do
+      let (b, h) ← jarPair (35 - i)
+      db := db.push b
+      dh := dh.push h
+    pure (ub, uh, db.reverse, dh.reverse)
+  logInfo s!"up   blank {ub.toList}"
+  logInfo s!"up   raw   {uh.toList}"
+  logInfo s!"down blank {db.toList}"
+  logInfo s!"down raw   {dh.toList}"
+  elabCommand (← `(def $up  : List Nat := $(Lean.quote uh.toList)))
+  elabCommand (← `(def $upb : List Nat := $(Lean.quote ub.toList)))
+  elabCommand (← `(def $dn  : List Nat := $(Lean.quote dh.toList)))
+  elabCommand (← `(def $dnb : List Nat := $(Lean.quote db.toList)))
+
+monte_walk theRawUp theBlankUp theRawDown theBlankDown
+
+--| EVERYTHING DERIVED, IN `Int`, WHERE A DECREASE IS ALLOWED TO BE ONE.
+def corrected (h b : List Nat) : List Int :=
+  (h.zip b).map (fun p => (p.1 : Int) - (p.2 : Int))
+def signedSteps (xs : List Int) : List Int :=
+  (xs.zip xs.tail).map (fun p => p.2 - p.1)
+
+def theSizesUp   : List Int := corrected theRawUp   theBlankUp
+def theSizesDown : List Int := corrected theRawDown theBlankDown
+
+--| THE COLUMN THE NESTING DOES NOT FORCE.  A deeper jar contains a shallower one, so a
+--| rising total is forced by the construction and demonstrates nothing at all.  Whether
+--| the INCREMENT rises is not forced, and that is the reading.
+def theStepsUp   : List Int := signedSteps theSizesUp
+def theStepsDown : List Int := signedSteps theSizesDown
+
+--| THE EXPERIMENT -- and it is NOT the totals.  Two different profiles can share a total:
+--| [100,200,300] and [110,180,310] both sum to six hundred and disagree at every rung.
+--| This is the rung-by-rung disagreement between the two walks, and it is the apparatus.
+def thePassGap : List Int :=
+  (theSizesUp.zip theSizesDown).map (fun p => p.1 - p.2)
 
 end Measurement
 
 --| THE PRACTICE READOUT.  The bracket, the slip, and the verdict on whether there is any
 --| point turning the crank again.
---| THE TWO READINGS, SIDE BY SIDE.  The short way went all the way and got a point.  The
+--| WHAT `lake_build` SEES, AND WHAT IT CANNOT.  UNIVERSAL carries `once_around` and
+--| `twice_around`, and then hands them to a function that throws them both away:
+--|
+--|     lake_build : SpaceTimePath → SpaceTimePath → Prop := fun _ _ => ...
+--|
+--| `fun _ _`.  It never looks at the paths.  In logic the two routes are not distinguished
+--| at all -- the quarter is glued down, you look under the middle card, and it is the same
+--| fact whichever way you went round.  That is what lets you use either calculus like
+--| algebra: D or D squared, Newton or Lagrange, one answer.  Boolean algebra, at that --
+--| the device's own.  Episode 5 line 30 is `A = NOT (NOT X AND Y)`, which is implication,
+--| and implication is exactly how `Closure.branch_and_compare` orders one slip against
+--| another: `| some p, some q => p → q`.  The calculus comes back down to the one gate.
+--|
+--| The meter is not so easily fooled.  Once around, stopped at the slip, parts company at
+--| the nineteenth character.  Twice around, stopped at the same slip, agrees to
+--| twenty-three decimals and differs in the twenty-fourth by exactly one.  `lake_build`
+--| says those are the same fact and it is right; the readings say they are not the same
+--| number and they are also right.  The gap between a constant function and a reading is
+--| not an error.  It is the slip, and a function that discards its arguments was never
+--| going to be able to see it.
+
+--| THE THREE READINGS, SIDE BY SIDE.  The short way went all the way and got a point.  The
 --| long way stopped at the slip and got almost, but not quite, the same point -- which is
 --| the honest answer, because the bracket was never a point to begin with.
 #eval "short way, all the way  : " ++ Measurement.theReading
-#eval "off the jar, at the slip: " ++ Measurement.jarReading
+#eval "off the jar, newton   : " ++ Measurement.jarReading
+#eval "off the jar, lagrange : " ++ Measurement.lagrangeReading
 
 #eval s!"jar [{Measurement.jarLo}..{Measurement.jarHi}] span {Measurement.jarSpan} " ++
       s!"reach {Measurement.jarReach} floor {Measurement.Calibration.measuredFloor} " ++
       s!"bracketed_at_the_slip {Measurement.bracketed_at_the_slip}"
+
+--| THE SIZE READOUT.  Thirty-six rungs, each measured against its own blank, and the sum.
+--| This is the first number in the file that no formula produced: the strip, the jar, the
+--| coefficients and the folds are all structural, but these are what the elaborator spent.
+#eval Measurement.theSizesUp
+#eval Measurement.theSizesDown
+#eval Measurement.theStepsUp
+#eval Measurement.theStepsDown
+#eval Measurement.thePassGap

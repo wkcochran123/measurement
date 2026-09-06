@@ -53,96 +53,203 @@ class UNIVERSAL
     [REAL Box Pigeon]
     (quartic: LOCAL Box Pigeon) ---|
   where
-  the_train_of_thought: CalculusProcess Box Pigeon quartic ---| I do believe we have arrived at the next stop. A universal calculus model.
-  once_around: SpaceTimePath
-  twice_around: SpaceTimePath
+  the_train_of_thought: CalculusProcess Box Pigeon quartic ---+ I do believe we have arrived at the next stop. A universal calculus model.
+  once_around: SpaceTimePath --                               | This is not the calculus of Newton.  Rather, this is the calculus of Lagrange. That
+  twice_around: SpaceTimePath --                              | there exists a non-linear relationship between the function, the derivative, and
+--                                                            | the second derivative. A special kind of differential equation called Navier-Stokes.
+--                                                            | And this operator can also be called a derivative in the language of algebra.
 
-  -- let's ask the compiler to hold the quarter we glued to the table.
+--| Let's ask the compiler to always show us the quarter we glued down.  See how easy this is?  Anytime we need calculus, we just look under
+--| the middle card! If this is true, then we can use either calculus like algebra! Boolean algebra! Like the device itself!
   lake_build: SpaceTimePath → SpaceTimePath → Prop := fun _ _ => the_train_of_thought.uptown_or_downtown = a_nowtrino.fact
 
+--| Ladies and gentlemen!  Introducing The Calculus! (Note on card: tonight's calculus will be played by variational methods).  But, we aren't talking
+--| about calculus, we are just spinning a yarn about commuter rail. A massless yarn that appears to spin twice. Not saying it does, but the variable
+--| names are quite evocative.  We will make an assumption now and later demonstrate this as an unavoidable isomorphism:
 
--- We are just spinning a yarn about commuter rail. A massless yarn that appears to spin twice.
--- The THEORY OF YARNS: WE ASSUME TRAIN STATION ID NUMBERS UPTOWN > TRAIN STAION ID NUMBERS DOWNTOWN.
-inductive YarnTheory
-|stokes: Fact → SpaceTimePath → Prop → YarnTheory
-|fibers: Fact → SpaceTimePath → SpaceTimePath → Prop → Prop → YarnTheory → YarnTheory
-|fabric: Fact → Fact → SpaceTimePath → SpaceTimePath → SpaceTimePath → Prop → Prop → Prop → YarnTheory → YarnTheory → YarnTheory
+--| The THEORY OF YARNS: WE ASSUME TRAIN STATION ID NUMBERS UPTOWN > TRAIN STAION ID NUMBERS DOWNTOWN.  Doesn't have to be. I just coded it that way.
 
+inductive YarnTheory --                                | 3D introduces way too much wobble for directional derivatives to be well discussed.  You need
+  |stokes: Fact → SpaceTimePath → Prop → YarnTheory  --+ _TWO DISTINCT_ poles to describe a three dimensional angle.  Lorentz only provides one. Stokes
+--|                                                    | allows you to _cheat_ the other and only use half.  Thank the FSM the universe is cylindrical
+--|                                                    | and only uses 1 pole, the one we travel in 1 direction on.
+  |fibers: Fact → SpaceTimePath → SpaceTimePath → Prop → Prop → YarnTheory → YarnTheory --| Some people believe in strings. If you look carefully
+--|                                                                                       | There are eleven good reasons why you should.
+  |fabric: Fact → Fact → SpaceTimePath → SpaceTimePath → SpaceTimePath → Prop → Prop → Prop → YarnTheory → YarnTheory → YarnTheory
+--|   ^
+--|   |
+--|   +------------- The train of thought, though, requires a fabric. There are 3 really good reasons and 1 sorta good reason to believe this.
+
+--| Some reasons why a theory or law may simply flop is that it fails to conserve the _IMPORTANT_ thing.  There is no doubt, it conserves something.
+--| That something could be trivial to count. They could just.... count themselves, like 1, 2, 3, and 4.  A symbol like 4 can work like that sometimes.
+--| 4 is a number that some people may be able to just "see".  They can immediately count off groups of "four" and get a number.  This is very rare.
+--| I did see it in a movie once, though.
+
+--| For the rest of us, the number _4_ is a path _through_ the number _3_.  And, if *YOU the KNOWER* are on that train of thought, that path also
+--| has a parameterizable representation with considerable constraints on the second derivative of such a critter. Or, Euler-Lagrange just... flops.
+
+--| The good news is, once you get to _4_ the platform to the train going to number _5_ and _ALL POINTS UPTOWN_ is right here:
 namespace YarnTheory
 def le : YarnTheory → YarnTheory → Prop
-  | .stokes station_1 route_a station_2,     .stokes station_a route_1 station_b => -- Flop:
+--|             +----------------------------- *YOU the READER* are here
+--|             |            +---------------- *YOU the KNOWER* are here
+--|             |            |                       +----------------------------------- Our schedule has a list of station-to-station arrival times
+--|             |            |                       |      +------+--------------------+ This is a time that a train will arrive at _b_ from _a_
+--|             |            |                       |      |      |                    | What if there _were_ an earliest _time_ you can get to _b_
+--|             V            V                       V      V      V                    | from _a_? Such a world line might describe something familiar.
+  | .stokes station_1 etd station_2,     .stokes station_a eta station_b => -- Flop:
+                                                            station_1 = station_a ∧   -- We have found ourselves on the map
+                                                            (etd ≤ eta) ∧             -- This train leaves before that train arrives, Einstein's clock.
+                                                            station_2 = station_b     -- That train is headed to where we are going. Simple, see?
+--| Whoa... Einstein's clock?  Yeah, go read his special relativity paper.  He is _very_ careful to say that all that can be said is the photon leaves
+--| before it arrives. You can _NEITHER_ specify how long it takes _NOR_ specify the path it takes.  That's a weird thing to say in a relativistic
+--| discussion. Well, where was I?  Oh yeah, figuring out which train to take.
+
+--| Sometimes, though, there are more than one train uptown that leave at an earlier time.  We can leave the station sooner if we can find another
+--| train going uptown.  This works as a first cut at a filter if this is the only information we have.  We can say any of these trains are headed
+--| uptown and therefore, at some point, must pass through station_2, but it is unclear if the train stops there.
+  | .stokes station_1 etd station_2,     .fibers station_a eta another_eta station_b another_station_b _ =>
                                                             station_1 = station_a ∧
-                                                            (route_a ≤ route_1) ∧
-                                                            station_2 = station_b
+                                                            (etd ≤ eta ∨ etd ≤ another_eta) ∧
+                                                            (station_2 = station_b ∨ station_2 = another_station_b)
 
-  | .stokes station_1 route_a station_2,     .fibers station_a route_1a route_1b station_1a station_1b _ => -- Flop:
-                                                            station_1 = station_a ∧
-                                                            (route_a ≤ route_1a ∨ route_a ≤ route_1b) ∧
-                                                            (station_2 = station_1a ∨ station_2 = station_1b)
+--| The Maine Railroad, also called you can't get there from here. If I were to go there, I would not start here, I would start at station_b.  That's
+--| right, we are assuming all of this is true as a consequence of only being able to tell if the photon leaves before it arrives. Why? Because, and
+--| I am only _slighly_ paraphrasing Einstein here, we now have the horsepower to deal with the complex math by not assuming a linear interpolation.
+--| I am _BLATANTLY_ assuming a _SPLINE_ because it not only works, but *YOU the KNOWER* can't tell the difference between that and an actual law.
+--|
+--| Seriously, am I the only one who has ever read that paper? This is the complexity that made Einstein balk at the enormity of the computation. I
+--| wish you luck:
+  | .stokes station_1 travel_time station_2,
+    .fabric station_a station_b
+            the_local_elapsed_time the_scenic_elapsed_time the_express_elapsed_time
+            most_stops             all_stops               some_stops                 _ _ => -- Flop: x ∧ y ∧ z
+                                  (station_1 = station_a ∨ station_1 = station_b) ∧
+                                  (travel_time ≤ the_local_elapsed_time ∨ travel_time ≤ the_scenic_elapsed_time ∨
+                                              travel_time ≤ the_express_elapsed_time) ∧
+                                  (station_2 = most_stops ∨ station_2 = all_stops ∨ station_2 = some_stops)
+--| That was it.  That was the hard part.  If you can get that one arm of one match under your belt, then you have palmed the bent card. It starts
+--| to get easier from here. And more ridiculous. As in I am about to pile on some ridicule, because this argument I have been making, I can make
+--| it say whatever I want. You want a consisten theory of Santa Claus? Hold on tight.
 
-  -- The Maine Railroad, also called you can't get there from here. If I were to go there, I would not start here, I would start at station_b.
-  | .stokes station_1 route_a station_2,     .fabric station_a station_b route_b1 route_b2 route_b3 station_b1 station_b2 station_b3 _ _ => -- Flop:
-                                                            (station_1 = station_a ∨ station_1 = station_b) ∧
-                                                            (route_a ≤ route_b1 ∨ route_a ≤ route_b2 ∨ route_a ≤ route_b3) ∧
-                                                            (station_2 = station_b1 ∨ station_2 = station_b2 ∨ station_2 = station_b3)
-
-
-  --
+--| I keep forgetting. We are developing a yarn theory of train schedules.  Given a large map, we can use yarn to find all the routes on the schedule
+--| that go through our destination.  You remember, this proof generates a very evocative number. We want to make sure our train of thought goes
+--| through that number and not any other number, one near it.  We will _just miss_ the one next to it. The way we do this is realize that there is
+--| a _main line_ train that goes through all the stops in order.  And this allows us to find all the trains leaving that are not on the main line.
+--| These can be used to count faster, skip around the numbers, and change how long it takes to get from point a to point b.  These are the express,
+--| and the local.  The main line is the most scenic route of all scenic routes, of course.
   | .fibers this_station _ _ route_in route_out _, .stokes destination _ main_line =>
                                                              this_station ≠ destination ∨ (route_in ≠ main_line ∧ route_out ≠ main_line)
 
+--| Of course, it through the eyes of a child that this idea really took hold in Euler's mind, solving the hardest of dynamical problems. One path
+--| is cheaper than another if the entire trip is less than the estimated layover _OR_ there is a better train to arrive on!  Remember this is the
+--| Maine line.  You don't start here to get there.  You work backwards from there to get here. Unless you can't.  Then you are greater than or
+--| equal to.
+  | .fibers this_station
+            inbound_train_station_number              outbound_train_station_number
+            inbound_arrival_time                      outbound_departure_time                        estimated_layover_time,
+    .fibers that_station
+            any_other_inbound_train_station_number    any_other_outbound_train_station_number
+            any_other_inbound_arrival_time            any_other_outbound_departure_time              any_other_estimated_layover_time   =>
+                                        ( this_station = that_station ∧
+                                          inbound_train_station_number ≤ any_other_inbound_train_station_number ∧
+                                          outbound_train_station_number ≤ any_other_outbound_train_station_number ∧
+                                          inbound_arrival_time = any_other_inbound_arrival_time ∧
+                                          outbound_departure_time = any_other_outbound_departure_time ∧
+                                          le estimated_layover_time any_other_estimated_layover_time ) ∨
+                                        le (.fibers this_station inbound_train_station_number outbound_train_station_number inbound_arrival_time
+                                                    outbound_departure_time estimated_layover_time) any_other_estimated_layover_time
+--| This does give rise to the statement: It may not be possible to get here from here.  This is simply a restatement of the second law of
+--| thermodynamics.
 
-  | .fibers this_station route_a route_b time_a time_b this_way, .fibers that_station route_1 route_2 time_1 time_2 that_way =>
-                                                            ( this_station = that_station ∧
-                                                              route_a ≤ route_1 ∧
-                                                              route_b ≤ route_2 ∧
-                                                              time_a = time_1 ∧
-                                                              time_b = time_2 ∧
-                                                              le this_way that_way ) ∨
-                                                            le (.fibers this_station route_a route_b time_a time_b this_way) that_way
+--| Of course, if all we do is look at train lines, then we may not get the full picture about the fastest way.  Train maps are famous for not
+--| being drawn to scale and only giving the topological equivalence.  The fibers are merely topological connections in the space of train maps.
+--| Plainly, if it takes 3 hours to get there by train and you leave at 1p, you shouldn't be able to get there at 2:45.  Unless you know that there
+--| is a short cut on the local maps of the system.
+  | .fibers this_station
+            inbound_station_number outbound_station_number
+            this_station_number the_current_layover the_total_time_so_far,
+    .fabric map_of_here map_of_there
+            lowest_station_here any_other_station_here the_last_stop_here
+            the_lowest_station_there any_other_station_there the_last_stop_there
+            etd_train_to_there eta_train_from_here =>
+        ( (this_station = map_of_here ∨ this_station = map_of_there) ∧
+          (inbound_station_number ≤ lowest_station_here ∨ inbound_station_number ≤ any_other_station_here) ∧
+          (outbound_station_number ≤ any_other_station_here ∨ outbound_station_number ≤ the_last_stop_here) ∧
+          (this_station_number = the_lowest_station_there ∨ this_station_number = any_other_station_there) ∧
+          (the_current_layover = any_other_station_there ∨ the_current_layover = the_last_stop_there) ∧
+          (le the_total_time_so_far etd_train_to_there ∨ le the_total_time_so_far eta_train_from_here)) ∨
+        le (.fibers this_station inbound_station_number outbound_station_number this_station_number the_current_layover the_total_time_so_far)
+                                                                                                                                  etd_train_to_there ∨
+        le (.fibers this_station inbound_station_number outbound_station_number this_station_number the_current_layover the_total_time_so_far)
+                                                                                                                                  eta_train_from_here
+--| Basically, if you have overlapping inset maps, it can be hard to figure out the quickest route.
 
-  | .fibers here zero_reading current_reading zero_value current_value the_current_computation,
-    .fabric this that epsilon slip one EPSILON SLIP ONE no_response_yet response_happened =>
-                                  ( (here = this ∨ here = that) ∧
-                                    (zero_reading ≤ epsilon ∨ zero_reading ≤ slip) ∧
-                                    (current_reading ≤ slip ∨ current_reading ≤ one) ∧
-                                    (zero_value = EPSILON ∨ zero_value = SLIP) ∧ (current_value = SLIP ∨ current_value = ONE) ∧
-                                    (le the_current_computation no_response_yet ∨ le the_current_computation response_happened)) ∨
-                                  le (.fibers here zero_reading current_reading zero_value current_value the_current_computation) no_response_yet ∨
-                                  le (.fibers here zero_reading current_reading zero_value current_value the_current_computation) response_happened
+--| You know who is faster than trains, though? Rudolf. He can get you there by 2:45. You just have to get to the north pole first. If it exists.
+--| No religion mentions it. Never seen a pole on a magnet.  Always 2 poles.  But Stokes only lets you have one. If we believe _HARD_ enough, we
+--| just might be able to squeeze the monopole out of this model.
+  | .fabric here there _ _ _ arriving_station any_other_station end_of_the_line _ _, .stokes the_destination _ somewhere_near_the_north_pole =>
+                            (the_destination ≠ here ∧ the_destination ≠ there) ∨
+                            (somewhere_near_the_north_pole ≠ arriving_station ∧ somewhere_near_the_north_pole ≠ any_other_station ∧
+                             somewhere_near_the_north_pole ≠ end_of_the_line)
+--| BTW, I didn't make this up. Gauss forced Reimann to do it in one night.  Hence the absurdity! It is said Gauss was moved religiously.
+--| One very long night that took place over weeks of time with lots of other complications, but, still, a helluva night we will all agree!
+--| Perhaps the most pivotal part of the talk is Reimann did it with no symbols. It was all metaphor. Every last bit of it. And I was right, Santa
+--| uses Stokes theorem to compute local "naughtiness," a strictly unconserved quantity. Has anyone ever _SEEN_ Santa? Or seen him deliver coal?
+--| I think I will let Santa deliver the number to *YOU the KNOWER* in the hopes of convincing you that the miracle of the Flying Spaghetti Monster
+--| is the spin-2 magnetic monopole. *ROFL* Look at *YOU the READER*.. you seriously think I can do that. I mean, this does compile and print a
+--| very interesting number. *YOU the KNOWER*, on the other hand, are relaxing in the fact this is obviously nonsense satire that happens to compile.
 
-  | .fabric no_response response _ _ _ EPSILON SLIP ONE _ _, .stokes the_nowtrino _ the_value =>
-                                                                              (the_nowtrino ≠ no_response ∧ the_nowtrino ≠ response) ∨
-                                                                              (the_value ≠ EPSILON ∧ the_value ≠ SLIP ∧ the_value ≠ ONE)
-
-  | .fabric no_response response epsilon slip one EPSILON SLIP ONE no_response_yet response_happened,
-                                              .fibers here departing_station arriving_station departure_time arrival_time going_uptown =>
-    ( (no_response = here ∨ response = here) ∧
-      (epsilon ≤ departing_station ∨ slip ≤ departing_station) ∧
-      (slip ≤ arriving_station ∨ one ≤ arriving_station) ∧
-      (EPSILON = departure_time ∨ SLIP = departure_time) ∧
-      (SLIP = arrival_time ∨ ONE = arrival_time) ∧
+--| Like I said earlier. Santa has to traverse the planet.  What he does is go from _here_ to _there_, just circling it and letting the PRESENTs
+--| fall inward to where they need to go. They understand where they are headed and they are headed to lots of places, sometimes different, sometimes
+--| the same.
+  | .fabric here there first_house any_other_house last_house first_time now last_time no_response_yet response_happened,
+                                              .fibers santas_worldline departing_station arriving_station departure_time arrival_time going_uptown =>
+--|                                                         ^
+--|                                                         |
+--|                                                         +---------- This is how you can use Rudolf to get from here to there very quickly!
+    ( (here = santas_worldline ∨ there = santas_worldline) ∧
+      (first_house ≤ departing_station ∨ any_other_house ≤ departing_station) ∧
+      (any_other_house ≤ arriving_station ∨ last_house ≤ arriving_station) ∧
+      (first_time = departure_time ∨ now = departure_time) ∧
+      (now = arrival_time ∨ last_time = arrival_time) ∧
       (le no_response_yet going_uptown ∨ le response_happened going_uptown)) ∨
-    le (.fabric no_response response epsilon slip one EPSILON SLIP ONE no_response_yet response_happened) going_uptown
+    le (.fabric here there first_house any_other_house last_house first_time now last_time no_response_yet response_happened) going_uptown
 
-                                                | .fabric no_response response epsilon slip one EPSILON SLIP ONE no_response_yet response_happened,
-                                                  .fabric waiting_for_train waiting_on_train p4 p5 p6 q4 q5 q6 train_approaching train_departed =>
-                                                  ( no_response = waiting_for_train ∧ response = waiting_on_train ∧
-                                                    epsilon ≤ p4 ∧ slip ≤ p5 ∧ one ≤ p6 ∧
-                                                    EPSILON = q4 ∧ SLIP = q5 ∧ ONE = q6 ∧
-                                                    ( (le no_response_yet train_approaching ∧ le response_happened train_departed) ∨
-                                                      (le no_response_yet train_departed ∧ le response_happened train_approaching))) ∨
-                                                  le (.fabric no_response response epsilon slip one EPSILON SLIP ONE no_response_yet response_happened)
-                                                                    train_approaching ∨
-                                                  le (.fabric no_response response epsilon slip one EPSILON SLIP ONE no_response_yet response_happened)
-                                                                    train_departed
+
+
+--| The thing to notice about Santa Claus is that it really doesn't matter what order he visits houses in locally, as long as he travels with the
+--| shadow of the earth, he can stretch his total delivery time out to 30 hours or more. The important thing we don't answer here is if you can
+--| swap lists from naughty to nice or nice to naughty mid-flight.
+  | .fabric here there
+            first_house any_other_house last_house
+            departure_time any_other_now_in_the_area arrival_time the_naughty_list_length the_nice_list_length,
+    .fabric the_same_here the_same_there
+            his_first_house any_other_house_he_visits his_last_house
+            time_he_starts any_time_he_emits_a_present his_ending_time his_naughty_list his_nice_list =>
+          ( here = the_same_here ∧ there = the_same_there ∧
+            first_house ≤ his_first_house ∧ any_other_house ≤ any_other_house_he_visits ∧ last_house ≤ his_last_house ∧
+            departure_time = time_he_starts ∧ any_other_now_in_the_area = any_time_he_emits_a_present ∧ arrival_time = his_ending_time ∧
+            ( (le the_naughty_list_length his_naughty_list ∧ le the_nice_list_length his_nice_list) ∨
+              (le the_naughty_list_length his_nice_list ∧ le the_nice_list_length his_naughty_list))) ∨
+          le (.fabric here there first_house any_other_house last_house departure_time any_other_now_in_the_area arrival_time
+                                                                              the_naughty_list_length the_nice_list_length) his_naughty_list ∨
+          le (.fabric here there first_house any_other_house last_house departure_time any_other_now_in_the_area arrival_time
+                                                                              the_naughty_list_length the_nice_list_length) his_nice_list
 termination_by _ ball_of_yarn => sizeOf ball_of_yarn
-end YarnTheory
 --| Can you escape the labyrinth now with your ball of yarn?
+end YarnTheory
 
 instance : LE YarnTheory where
   le := YarnTheory.le
 
+--| Alright, I will spare you even crazier and nuttier theories. I think that is it. We can return to the task at hand and realize what is going on
+--| while I spout continuous nonsense in the compiler's general direction.  The compiler is measuring how long it takes to elaborate my bullshit
+--| into a consistent set of logical statements.  So far, the fact the this compiles up to here means that the argument, as presented to the compiler,
+--| is completely consistent.  Not the first flaw in the logic.  But, you will remember that, earlier, we said that we cannot know ahead of time
+--| whether or not a particular computation will stop.  This is true of the elaboration engine that Lean employs as well. In order to make sure
+--| the compile does not wander into an infinite loop or non-terminating recursive argument, the compiler measures _how long_ it has been working
+--| on a particular stanza.
 @[reducible]
 structure HeartbeatProcess
     (Box: Type i)
@@ -155,42 +262,86 @@ structure HeartbeatProcess
     [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
-    (train_schedule: LOCAL Box Pigeon)
-    (commuter_pass: UNIVERSAL Box Pigeon train_schedule)
+    (train_schedule: LOCAL Box Pigeon) -----------------------+ Hey, we have a local train schedule!  We can find our way around here!
+    (commuter_pass: UNIVERSAL Box Pigeon train_schedule) --   | And, we can get on any train headed anywhere on our train schedule, not just to here!
   where
-  bullshit_meter: CalculusProcess Box Pigeon train_schedule --| We can model the bullshit meter's path as it _CONTINUES_ to move through _FIELDS_ of bullshit.
-  time_spent_waiting: SpaceTimePath
-  according_to_newton: YarnTheory
-  readout: UNIVERSAL Box Pigeon train_schedule := commuter_pass
-
+  bullshit_meter: CalculusProcess Box Pigeon train_schedule --     | Presenting: the bullshit meter that we have been using to get the values that
+  after_some_time: SpaceTimePath ----------------------------------+ you are seeing.  All the computations you see are all logical RFL operations,
+  according_to_newton: YarnTheory --                               | even though they are couched as ≤. This should take a constant amount of time.
+  readout: UNIVERSAL Box Pigeon train_schedule := commuter_pass -- | How long the computation takes expresses how long it takes to resolve the
+--                                                                 | bullshit which is directly proportional to the amount of bullshit.
+--                                                                 | What takes so much time? The path the compiler takes to go through the code.
+--                                                                 | Oh yeah, there is only one path. The train of thought Newton had.
 
   weave? : YarnTheory → YarnTheory := fun yarn =>
-     match yarn with
-     |.stokes nonstop_train in_the_direction_of_destination uptown =>
-          .fibers nonstop_train in_the_direction_of_destination time_spent_waiting uptown
-                                                                      commuter_pass.the_train_of_thought.uptown_or_downtown.truth according_to_newton
+    match yarn with
+--        +------------------ By definition, Stokes trains only run uptown and do not stop in here on their way through.
+--        |
+--        V
+    | .stokes nonstop_train in_the_direction_of_destination uptown =>
+--                                 +-------------- Of course, the train runs on the line the commuter pass is good for.
+--                                 |
+--                                 V
+                                .fibers nonstop_train in_the_direction_of_destination after_some_time uptown
+                                                        commuter_pass.the_train_of_thought.uptown_or_downtown.truth according_to_newton
+--                                                                                                    ^
+--                                                                                                    |
+--  Once you are on the train, you are definitly headed uptown, if not directly to your destination --+--+ you just infer uptown from the station
+--                                                                                                       | numbers on the train_schedule for the
+--                                                                                                       | commuter_pass.
 
-     |.fibers itinerary now after this_station next_station is_bigger =>
-              match itinerary.decTruth with
+  --| So, *YOU the READER* are on the train of thought and want to describe the scenery to *YOU the KNOWER* can follow the orbital logic.
+    | .fibers described_by_the_itinerary as_now and_later this_station_is_now the_next_station_is later =>
+              match described_by_the_itinerary.decTruth with
+            --| You are on a direct ride from here to there:
               | isTrue _ =>
-                .fibers itinerary after time_spent_waiting next_station itinerary.truth is_bigger
+                .fibers described_by_the_itinerary and_later after_some_time the_next_station_is described_by_the_itinerary.truth later
+            --| You might have a layover or two. Newton doesn't quite explain how you get from here to there until you see how it happened that you
+            --| got there. Like a photon. But definitely not talking about _photons_.
               | isFalse _ =>
-                .fabric itinerary nowtrino.fact now after time_spent_waiting this_station next_station (¬itinerary.truth) is_bigger according_to_newton
+                .fabric described_by_the_itinerary nowtrino.fact as_now and_later after_some_time this_station_is_now the_next_station_is
+                                                                                      (¬described_by_the_itinerary.truth) later according_to_newton
 
-     |.fabric this_way that_way here halfway there stamped_here stamped_halfway stamped_there according_to_euler and_einstein =>
-              match this_way.decTruth, that_way.decTruth with
+  --| Suppose you understand that the fewest stops may not be the quickest way there.  There are topological features of the terrain you have to
+  --| move around.  Both mountains (of the map-based topology kind) and donuts (of the map-based topology kind).  I've heard it both ways. Map
+  --| like the map on a train schedule. The train schedule of all the yarns of yarn theory. Rememer the Frinkahedron has enough faces for a sphere and
+  --| a donut.
+    | .fabric of_the_orbit of_the_orbital
+              the_center is_in_the_volume beneath_the_surface
+              a_center_line_must_exist must_go_halfway_around gets_back_near_the_start
+              according_to_variational_dynamics and_einsteins_field_equations =>
+              match of_the_orbit.decTruth, of_the_orbital.decTruth with
+            --| This is the basic observation of orbital mechanics, orbital mechanics, and orbital mechanics.  Things tend to go around a point and
+            --| come back to somewhere near the start
               | isTrue _   , isTrue _    =>
-                          .fabric this_way that_way here halfway there stamped_here stamped_halfway stamped_there according_to_euler and_einstein
+                          .fabric of_the_orbital of_the_orbit
+                                  the_center is_in_the_volume beneath_the_surface
+                                  a_center_line_must_exist must_go_halfway_around gets_back_near_the_start
+                                  according_to_variational_dynamics and_einsteins_field_equations
+
+            --| It appears that *YOU the KNOWER* can go around and get back to the start, but the commuter rail won't let you return to an earlier
+            --| station, so *YOU the READER* really aren't _technically_ going back around to the start. You are making a new start.
               | isTrue _   , isFalse _   =>
-                          .fabric nowtrino.fact that_way time_spent_waiting halfway there commuter_pass.the_train_of_thought.uptown_or_downtown.truth
-                                            stamped_halfway (¬stamped_there) according_to_newton and_einstein
+                          .fabric nowtrino.fact of_the_orbit
+                                  after_some_time is_in_the_volume beneath_the_surface
+                                  commuter_pass.the_train_of_thought.uptown_or_downtown.truth
+                                                                    must_go_halfway_around (¬gets_back_near_the_start)
+                                  according_to_newton and_einsteins_field_equations
+
+            --| It appears this is a Newtonian cycle! Congratulations, this is the periodic differential equation.
               | isFalse _, isTrue _  =>
-                          .fibers that_way there time_spent_waiting stamped_there that_way.truth according_to_newton
+                    .fibers of_the_orbit beneath_the_surface after_some_time gets_back_near_the_start of_the_orbit.truth according_to_newton
+
+            --| It appears you have fallen into a wormhole! That's a quick way to get from here to there! I call this a Rudolf-space as this is how
+            --| Rudolf can get from here to there almost instantly.
               | isFalse _, isFalse _ =>
-                          .fabric this_way that_way halfway there time_spent_waiting (¬stamped_halfway) (¬stamped_there) that_way.truth
-                                                                                                              and_einstein according_to_newton
+                          .fabric of_the_orbital of_the_orbit is_in_the_volume beneath_the_surface after_some_time
+                                  (¬must_go_halfway_around) (¬gets_back_near_the_start) of_the_orbit.truth and_einsteins_field_equations
+                                  according_to_newton
+--| And that's the science in a nutshell. As Aristotle put it, science can be completely reasoned out. For more on the medial axis in the determination
+--| of locality, I suggest reading my thesis immediately below. It is a real page-turner.
 
-
+--| Aristotle used logic to reason. I guess we should to.
 @[reducible]
 class LOGICAL
     (Box: Type i)
@@ -206,8 +357,8 @@ class LOGICAL
     (iterating_sequence: LOCAL Box Pigeon)
     (local_minimum: UNIVERSAL Box Pigeon iterating_sequence)
   where
-  feelings: HeartbeatProcess Box Pigeon iterating_sequence local_minimum --------| No real heart, just a ball pumping.
-  microsoft_basic: Calibration.EKG
+  feelings: HeartbeatProcess Box Pigeon iterating_sequence local_minimum --------+ No real heart, just a ball pumping. But, we can attach to the
+  microsoft_basic: Calibration.EKG --                                            | process itself and measure it working. In BASIC v2!
 
   logical? : YarnTheory → YarnTheory → Prop := fun a b => a ≤ b --+ In the function, _a_ comes before _b_ in the order of the arguments.  That's it.
 --                                                                | That's the whole idea, the _left_ thing comes _before_ the _right_ thing,
@@ -230,6 +381,7 @@ def le
     (matrix_assemply: LOCAL Box Pigeon)
     (matrix_inversion: UNIVERSAL Box Pigeon matrix_assemply) -----------------+ A GENERIC MESH DATA STRUCTURE WITH GENERIC APPLICATIONS.  W.K. Cochran, Jr.
     [commodore64: LOGICAL Box Pigeon matrix_assemply matrix_inversion] --     | Ph.D thesis 2010. Been thinking about this for a long while now..
+--                                                                            | The very _PINNACLE_ of bullshit.
     : ComputerProgram → ComputerProgram → Prop
   | .boolean
         line10     -- 10 INPUT X                        :REM    THE NEXT OPCODE
@@ -279,20 +431,20 @@ def le
     let after := ComputerProgram.boolean line50 line60 line70 line80 line90 line100 program2
     commodore64.microsoft_basic.transformBoolean? before after
 
---| This is the _SWAP NOT EQUAL_ function.
+--| This implements the clock complement logic.
   | .boolean
-        line10     -- 10  INPUT X
-        line20     -- 20  INPUT Y
-        line30     -- 30  INPUT Z
-        line40     -- 40  GOSUB 70
-        line50     -- 50  PRINT A
-        line60     -- 60  GOTO 10
+        line10     -- 10  INPUT X                  :REM         Reading data off of the tape
+        line20     -- 20  INPUT Y                  :REM         More data
+        line30     -- 30  INPUT Z                  :REM         This should be contravariant to our current clock as it is the next clock tick
+        line40     -- 40  GOSUB 70                 :REM         Evaluate our current function in the FP.
+        line50     -- 50  PRINT A                  :REM         Emit the bit!
+        line60     -- 60  GOTO 10                  :REM         Next instruction.
         program1,
     .transform
-        line70     -- 70  A = NOT (NOT X AND Y)
-        line80     -- 80  A = A AND Z
-        line90     -- 90  IF A THEN RETURN
-        line100    -- 100 GOTO 70
+        line70     -- 70  A = NOT (NOT X AND Y)    :REM         A is our local computation
+        line80     -- 80  A = A XOR Z              :REM         Z is our current clock potential
+        line90     -- 90  IF A THEN RETURN         :REM         We are contravariant with the clock! Need to monkeypatch the contravariant code
+        line100    -- 100 GOTO 10                  :REM         We are covariant with the clock, continue onward!
         program2 =>
         let before := ComputerProgram.boolean line10 line20 line30 line40 line50 line60 program1
         let after := ComputerProgram.transform line70 line80 line90 line100 program2
@@ -300,8 +452,7 @@ def le
   | _, _ => False
 end ComputerProgram
 
---| Once we have our model of a computer program with COMPARE AND BRANCH as well as SWAP NOT EQUAL, I think we are ready to
-
+--| Once we have our model of a computer program with COMPARE AND BRANCH as well as SWAP NOT EQUAL, I think we are ready for an ...
 @[reducible]
 structure ElaborationProcess
     (Box: Type i)
@@ -314,34 +465,41 @@ structure ElaborationProcess
     [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
-    (linearization: LOCAL Box Pigeon)
-    (differential_equation: UNIVERSAL Box Pigeon linearization)
+    (linearization: LOCAL Box Pigeon)  -----------------------------------------+ Step 1 of the numerical algorithm: Linearize
+    (differential_equation: UNIVERSAL Box Pigeon linearization) --              | Step 2 of the numerical algorithm: Assume you didn't just linearize
     [LOGICAL Box Pigeon linearization differential_equation]
-  where
-  stamina: HeartbeatProcess Box Pigeon linearization differential_equation
-  trilinos:  Calibration.EKG   ---------------------------| Sorry, Professor Gropp. I think my name is still on some #DEFINE WKC in trilinos.
-  numerical_analysis:  ComputerProgram
+  where --                                                                      | This is our resolution to invert the DAMN matrix no matter how
+  stamina: HeartbeatProcess Box Pigeon linearization differential_equation   ---+ few significant figures we can recover from ill-conditioning.
+
+  trilinos:  Calibration.EKG   ---------------+ Sorry, Professor Gropp. I think my name is still on some #DEFINE WKC in trilinos. Ported to the C64!
+  numerical_analysis:  ComputerProgram --     | Actually, the difference between these codes is associative.  So many rounding error differences...
 
   teraFLOPs: ComputerProgram → ComputerProgram := fun op_code =>
       match op_code with
+    --| This is the clock-complement mechanism mentioned a _LONG_ time ago.
       | .load subsystem operator_type =>
-                  .transform subsystem (¬subsystem) operator_type (ULift.{i+1} Box) -- We can model a PetSc C struct as ¬subsystem inside the CPP of
-                    (.load subsystem operator_type)                                 -- Trilinos (See AMP reports ORNL, 2010, Clarno, Philip, et al.)
-                                                                                    -- Memory serves, the problem with PetSc didn't expose an interface
-                                                                                    -- to ref-counted pointers. So, I created one just like here.
+                  .transform subsystem (¬subsystem) operator_type (ULift.{i+1} Box) -- Tick-tock, lift a pigeon. Tock-tick, it is now ¬pigeon.
+                    (.load subsystem operator_type)                                 -- Replce the stack with the next frame
+
+    --| Keep iterating until "done.""
       | .transform detect value recursively apply_operator program =>
                   .boolean detect value nowtrino.fact.truth recursively apply_operator (ULift.{i+1} apply_operator) program
 
+    --| This takes the right card and makes it the left card. Unless you are palming the bent card.  Then you can swap the bend in the cards.
       | .boolean card1 card2 card3 left_card _ right_card three_card_monte_flop =>
+    --|                                      ^
+    --|                                      |
+    --|                                      +---- I believe this is the spot *YOU the READER* needs to explain to *YOU the KNOWER*.
                     if trilinos.outgrown? op_code then
                       .load (¬card1 ∧ ¬card2 ∧ card3) left_card
-                    else
-                      match nowtrino.fact.decTruth with
+                    else --                               | If we have detected a nowtrino, it is under the third card. The one we keep shuffling in
+                      match nowtrino.fact.decTruth with --+ with the clock complement.  The cards move fast.
                         | isTrue _  => .boolean card2 card3 nowtrino.fact.truth left_card (ULift.{i+1} left_card) right_card three_card_monte_flop
-                        | isFalse _ => .load (¬card1 ∧ ¬card2 ∧ card3) left_card
+                        | isFalse _ => .load (¬card1 ∧ ¬card2 ∧ card3) left_card --| Now nowtrino, just keep swaping the left and right card.
 
-
-
+--| The idea is that shuffling the cards might stimulate nowtrinos. We keep looking for them and the only way to find them is to keep dealing the
+--| cards. We can't force them to appear, we can only wait for them to show up. We can shuffle the deck faster by simply going slower. According
+--| to Einstein, anyway. So let's slow all the way down to see how fast we can go.
 
 @[reducible] --                                                 | Now that we have demonstrated that our theory has a logical outcome: _A_ causes _B_,
 class HALTED ---------------------------------------------------+ this is a good place to stop. ∎
@@ -355,10 +513,10 @@ class HALTED ---------------------------------------------------+ this is a good
     [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
-    (convergence_criteria: LOCAL Box Pigeon)
-    (conserved_value: UNIVERSAL Box Pigeon convergence_criteria)
-    [LOGICAL Box Pigeon convergence_criteria conserved_value]
-  where
+    (convergence_criteria: LOCAL Box Pigeon) --                     | Well, we are starting to look a bit like a numerical solver at long last.
+    (conserved_value: UNIVERSAL Box Pigeon convergence_criteria) ---+ The convergence criteria for all algorithms is |δx| ≤ tol. The thing being
+    [LOGICAL Box Pigeon convergence_criteria conserved_value] --    | conserved is projected volume. Simple, huh? Simplicial, huh? This has been on
+  where --                                                          | everyone's list for Santa for eternities. I wonder if they exist?
   scientific_paper: ElaborationProcess Box Pigeon convergence_criteria conserved_value
 --                                                          +------------------------------+ This is the palm. Make sure you slide this program
 --                                                          |                              | out of the compile loop while the compiler is compiling
@@ -368,13 +526,21 @@ class HALTED ---------------------------------------------------+ this is a good
     | .load NOOP _              => NOOP  --           | The greatest trick the devil pulled is convincing the world he didn't exist.
     | .transform NOOP _ _ _ _   => NOOP  -------------+
     | .boolean NOOP _ _ _ _ _ _ => NOOP  --           | And just like that, the bug is gone...  Because the compile is over.
+--| What does a computer do when it does nothing? NOP.
 
-
+--| So, what is it that this measuring device _actually_ measures? How high the bullshit gets piled in the compiler. Its universe number.
+--| This allows the universes to have different _volumes_ that grow monotonically. Maybe even strictly.
 inductive Measurement
-|origin: Fact → Number → Type i → Measurement
-|distance_to: Fact → Number → Number → Type i → Type (i+1) → Measurement → Measurement
-|speed: Fact → Number → Number → Number → Type i → Type (i+1) → Type i →  Measurement → Measurement → Measurement
+  | origin: Fact → Number → Type i → Measurement  ---------------| This is a lookup map.  Given a Number, this will tell us the universe it is in.
+  | distance_to: Fact → Number → Number → Type i → Type (i+1) → Measurement → Measurement  --| The linked list of universes
+  | speed: Fact → Number → Number → Number → Type i → Type (i+1) → Type i →  Measurement → Measurement → Measurement
+--|   ^
+--|   |           | This is interesting.  This is a measure of how fast you must be going to get from universe _i_ to universe _i+1_ in order to get
+--|   +-----------+ there before it has moved out of your way.  I think I have seen this behavior somewhere before.  Why is the border between
+--|               | universe _i_ and _i+1_ moving _away_ from everything? Got me, I just wrote the code this way. Doesn't compile otherwise.
 
+--| This just keeps the order of the measurements we receive. These are sorted by the ledger timestamp they are written down in. Thing is, you have
+--| to be measuring from the exact _SAME_ spot every time. Otherwise, you can't order the ledger well.  Not my rules, people.  This is relativity.
 namespace Measurement
 def le : Measurement → Measurement → Prop := fun last_click next_click =>
   match last_click, next_click with
@@ -393,6 +559,7 @@ end Measurement
 instance : LE Measurement where
   le := Measurement.le
 
+--| Yep, I am about to model the actual compiler running this thing now.
 @[reducible]
 structure LeanProcess
     (Box: Type i)
@@ -405,25 +572,31 @@ structure LeanProcess
     [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
-    (attraction_process: LOCAL Box Pigeon)
-    (gravity: UNIVERSAL Box Pigeon attraction_process)
-    [LOGICAL Box Pigeon attraction_process gravity]
-    [HALTED Box Pigeon attraction_process gravity]
-  where
-  description: ElaborationProcess Box Pigeon attraction_process gravity
-  difference_between: Number
-  in_heartbeats: Measurement
-  saved_as_y: Type i
+    (attraction_process: LOCAL Box Pigeon) --                | This is the orbital mechanics I need both *YOU the READER* and *YOU the KNOWER* to
+    (gravity: UNIVERSAL Box Pigeon attraction_process) ------+ understand.  The other orbital mechanics problem no one understands.  Because it is
+    [LOGICAL Box Pigeon attraction_process gravity] --       | curve fit and all we are looking at is lab noteboook values averaged and least-squared
+    [HALTED Box Pigeon attraction_process gravity] --        | out, plugged into a Fourier process to reintroduce noise, and the reintroduced noise is
+  where --                                                   | curve-fit to a periodic ODE. Science! Zipf is a better model for quantum dynamics
+--                                                           | if we are allowed to randomly curve fit the way Dirac and Schroedinger did.
+
+  description: ElaborationProcess Box Pigeon attraction_process gravity  --| *YOU the READER* have been reading this description the whole time!
+
+  the_measurement_of: Number --    | Woah, did we actually perform a calculation on a Number? Really hard to tell. But if we did, we can get the
+  in_heartbeats: Measurement ------+ 1) value, 2) how long it took and, by proxy, how much bullshit it required, and 3) we can write the value
+  saved_as_y: Type i --            | directly into the type system itself.
 
 
+--| So, the dirty little secret in computation is that all nontrivial, non-undergraduate homework, solutions are LOCAL and none are demonstrated
+--| GLOBAL. Let me double check that count.. Yep. None.  Random polynomial uncertainty quantification is a CRAZY lens to look through to understand
+--| how that works.  I recommend *YOU the READER* get a bunch of peyote and read how to do that. Or, just try to figout out this little match.
   superconverge? : Measurement → Measurement := fun x =>
     match x with
-    | .origin constant times _                    => .distance_to constant times difference_between Box (ULift.{i+1} Box) in_heartbeats
+    | .origin constant times _                    => .distance_to constant times the_measurement_of Box (ULift.{i+1} Box) in_heartbeats
     | .distance_to origin slope intercept _ _ is_the_formula_for_y =>
-                                .speed origin slope intercept difference_between Box (ULift.{i+1} Box) saved_as_y is_the_formula_for_y in_heartbeats
+                                .speed origin slope intercept the_measurement_of Box (ULift.{i+1} Box) saved_as_y is_the_formula_for_y in_heartbeats
     | .speed invariant _ now and_later _ _ _ _ is_the_derivative_of_y =>
-                                .speed invariant now and_later difference_between Box (ULift.{i+1} Box) saved_as_y is_the_derivative_of_y in_heartbeats
-
+                                .speed invariant now and_later the_measurement_of Box (ULift.{i+1} Box) saved_as_y is_the_derivative_of_y in_heartbeats
+--| Yes. The ratio of heartbeats in a calculation tells how high the pile has gotten in quantum bullshit. Piled high and Deep, in most cases.
 
 @[reducible]
 class MEASURED
@@ -439,13 +612,13 @@ class MEASURED
     [REAL Box Pigeon]
     (up: LOCAL Box Pigeon)
     (and_to_the_right: UNIVERSAL Box Pigeon up)
-    [LOGICAL Box Pigeon up and_to_the_right]
-    [HALTED Box Pigeon up and_to_the_right]
+    [LOGICAL Box Pigeon up and_to_the_right]   [HALTED Box Pigeon up and_to_the_right]
   where
-  a_distance: LeanProcess Box Pigeon up and_to_the_right  ---| Don't *HATE* cuz all my charts are *UP* and *TO THE RIGHT*. Nnumber go up!
+  a_distance: LeanProcess Box Pigeon up and_to_the_right  ---+ Don't *HATE* cuz all my charts are *UP* and *TO THE RIGHT*. Years at a fund will do that
+--                                                           | to a person.
 
-  bounded? : Measurement → Measurement → Prop := fun a b => a ≤ b
-
+  bounded? : Measurement → Measurement → Prop := fun a b => a ≤ b --+ Trivially, the measurement _a_ takes place before the measurement _b_ in the
+--                                                                  | order of operations.
 
 inductive CompilerTape where
   | introduction  : Fact → Type i → CompilerTape

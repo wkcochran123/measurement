@@ -889,6 +889,13 @@ theorem less_le_more :
   simp [Metavariable.le]
 
 
+--| FOR THE WRITING: `.same` is the arm the spec marks "converged, which is exact in LOGIC", and that is where it stays.  The turn below reaches
+--| it by rfl on the ground floor, where both stanzas are theOriginFact and nothing is measured.  A METER never can: a meter has a floor and the
+--| floor is the slip.  So `.different` is not a failure to converge, it is the shape the answer has -- Episode 5's `Closure.le` names its two
+--| Bullshit slots `lower_bound` and `slip_bound` (Episode05:860,865), a bracket whose far wall is named after the thing that stops you reaching
+--| it.  And the slip is ordered by implication: `branch_and_compare`'s `| some p, some q => p → q` (Episode05:849) is `NOT (NOT X AND Y)`
+--| (Episode05:246), the device's one gate.  The calculus comes back down to it.
+
 -- AND NOW TAKE IT AROUND AGAIN.  Episode 5 left EquivalenceProcess holding a Closure
 -- and no way to go back around.  Here is the way around.  One turn, not a recursion --
 -- the caller drives it, same as weave? and emit? and gawk_at.  Said inside the section
@@ -937,6 +944,12 @@ def and_it_is_still_on_the_table : Closure :=
 
 end Monte
 
+--| FOR THE WRITING: none of the thirty-six readings ever consults an ORDER.  They match a constructor, take the Fact, and concatenate; `≤` does
+--| not appear anywhere on the path from an inductive to the strip.  So the uptown/downtown convention -- which Episode 5's YarnTheory header
+--| assumes and then admits "doesn't have to be, I just coded it that way", and which Episode01:189 had already offered both ways ("Why not both?
+--| They both probably work") -- cannot move a single number.  Flipping it changes `le`, and nothing between an inductive and the constant calls
+--| `le`.  The orders do real work elsewhere (INFERRED.inferred?, and the slip via copy_the_cite?/residue?), just never on the way to a card.
+
 -- THE FOUR READINGS.  Each device structure is a list of facts; you read it with
 -- the operation that fits its dimension.
 
@@ -954,12 +967,24 @@ def Measurement.funge : Measurement → List Fact
   | .distance_to f _ _ _ _ rest   => f :: rest.funge
   | .speed f _ _ _ _ _ _ before _ => f :: before.funge
 
+--| FOR THE WRITING: the dimension ladder IS the arity, not a metaphor laid over it.  Count the SpaceTimePath slots in Episode 5's YarnTheory:
+--| `stokes` carries 1, `fibers` 2, `fabric` 3, with the Props running 1/2/3 alongside and the recursion 0/1/2.  The margin there says you need
+--| TWO DISTINCT poles to describe a three dimensional angle -- and `fibers` is exactly the rung that has two.  `stokes` has one, which is the
+--| cheat stated in the signature rather than the prose: half the poles, half the angle.  `fabric` has three, the weave.
+
 -- GAUSS-INTEGRATE THE YARN.  The weak form: integrate over the whole 2D fabric,
 -- summing the flux through both continuations (the divergence theorem).
 def YarnTheory.gauss : YarnTheory → List Fact
   | .stokes f _ _                        => [f]
   | .fibers f _ _ _ _ rest               => f :: rest.gauss
   | .fabric f g _ _ _ _ _ _ before after => f :: g :: before.gauss ++ after.gauss
+
+--| FOR THE WRITING: the cheat is in the TYPE.  Episode04:1003-1004 -- `whitehole: Fact → Type i` carries a Fact, a proposition WITH its receipt;
+--| `blackhole: Prop → Type (i+1)` carries a bare Prop, no receipt, one universe up.  That is why the arm below walks past the black hole: it has
+--| nothing to give.  Then Episode07:460-461 assigns `once_around := .blackhole nowtrino.fact.truth (ULift Box) ...` against `twice_around :=
+--| .whitehole nowtrino.fact Box ...` -- the `.truth` projection STRIPS decTruth, so going round ONCE loses the receipt and going round TWICE
+--| gets it back at the same Box.  The spinor line is literal, and "back" means back with your receipt.  Mint a receipt for the black hole and
+--| this reading is 5 instead of 4: the missing pole costs exactly one.
 
 -- STOKES-INTEGRATE THE LINE PATH.  The circulation: a white hole is a source
 -- (adds a fact), a black hole is a sink (adds none), a geodesic forks both ways.
@@ -1009,6 +1034,45 @@ def tange       := theTape.tange.length
 def funge       := theMeasure.funge.length
 def theSlipAtTwo := thePath.stokes.length
 def theTarget   := theYarn.gauss.length
+--| FOR THE WRITING: theSlipAtTwo is 4 and theTarget is 5, and the gap between them is the half pole.  gauss walks the whole weave and counts 5;
+--| stokes takes the one-pole path and counts 4.  The same 5-against-4 turns up again downstream at theReadingScaled: Newton seeded at the jar
+--| needs FIVE folds to land exactly and the slip allows FOUR.  OBSERVED, not derived -- the two agree, and nothing here shows the first causes
+--| the second.
+--|
+--| FOR THE WRITING: "once you get to 4 the number 5 is right there".  Measured, both ways.  `theSlipAtTwo + 1 = theTarget` arithmetically -- but
+--| more than that, five is the SAME number reached by the other route: mint a receipt for the sink (the arm `SpaceTimePath.stokes` walks past)
+--| and the path reads `theTarget` exactly, 5 on the nose.  So five is not merely adjacent to four; it is what four would have been if the cheated
+--| pole had paid.  You can see it from four, which is why the crank shows it too -- Newton at four is almost and at five is exact.
+--|
+--| FOR THE WRITING: and the PLATFORM for that train is `YarnTheory.le` (Episode 5, `namespace YarnTheory`).  It is not an abstract order, it is
+--| a TIMETABLE.  The base case reads `station_1 = station_a` (same platform, we are on the map), `etd ≤ eta`, `station_2 = station_b` (that train
+--| goes where we are going).  TWO equalities and exactly ONE inequality -- so the whole uptown/downtown convention lives in nothing but whether
+--| you can make the connection, which is also why the platform reaches five AND ALL POINTS UPTOWN: connections COMPOSE.  You change trains.
+--|
+--| And read whose stations those are.  `station_1` is where *YOU the READER* stands; `station_2` is where *YOU the KNOWER* already is.  The same
+--| relation, two people, different platforms -- that is the book's whole conceit sitting in one pattern match.  Then the question in the margin
+--| over `eta`: "What if there _were_ an earliest _time_ you can get to _b_ from _a_?  Such a world line might describe something familiar."  Note
+--| it is asked as a HYPOTHETICAL and never answered, because it cannot be: this is Einstein's clock.  All the 1905 paper permits you to say is
+--| that the photon leaves before it arrives -- you can specify NEITHER how long it takes NOR the path it takes.  Look at what `le` therefore
+--| contains: two equalities naming stations, one inequality naming order, and NO DURATION TERM ANYWHERE.  That is the whole content.
+--|
+--| Which is why the uptown/downtown convention is free -- it is a synchronisation convention, a stipulation and not a measurement, exactly as the
+--| YarnTheory header admits ("Doesn't have to be. I just coded it that way").  And it is why the count above matters more than it first looked:
+--| none of the thirty-six readings consults an order, so THE NUMBER IS INVARIANT UNDER THE SYNCHRONISATION CHOICE.  That is the property a
+--| physical observable is supposed to have, and the device has it by construction rather than by argument.
+--|
+--| Nine cases, the full three by three, and the pole ladder appears as the WIDTH OF THE DISJUNCTION: one candidate train, then two, then three.
+--| Read what that width means, though, because it is the opposite of what it looks like.  The `fibers` margin calls it "a first cut at a FILTER if
+--| this is the only information we have… any of these trains are headed uptown and therefore, at some point, must pass through station_2, BUT IT
+--| IS UNCLEAR IF THE TRAIN STOPS THERE."  A wider disjunction is LESS discrimination, not more: with one route you know, with two you cannot tell
+--| which, with three less still.  Ascending pays, and what it costs you is the ability to say which train you are on.
+--|
+--| And that is the same distinction the crank shows.  `le` can tell you the iteration PASSES THROUGH the answer; it cannot tell you it STOPS
+--| there -- that takes the second derivative.  Carrying f'' the fold lands at three and the fourth turn is the identity (it stopped); dropping it,
+--| Newton at four is still moving (it passed through).  Passing through three against stopping at three is the entire gap between Episode 12's two
+--| readings.  (Descending, meanwhile, is stated as DIFFERENCE rather than comparison: `.fibers` to `.stokes` is `≠ ∨ (≠ ∧ ≠)`.)  And the four-to-
+--| five trip is the widest case of all, whose margin is the joke: "The Maine Railroad, also called you can't get there from here.  If I were to go
+--| there, I would not start here, I would start at station_b."  There is no through service from one pole to three; you change at `fibers`.
 
 -- THE WHOLE TAPE.  The four readings above were the pilot.  Here is the series:
 -- every inductive the device owns, Episode 1 through Episode 5, gets exactly one
@@ -1451,6 +1515,9 @@ def theSeed := theProgram.length * theScale
 -- because the quadratic doubles its correct digits every turn and the denominator walks to
 -- the derivative at the root.  Past the fixed point the step is the identity and the extra
 -- folds cost nothing; that is the same arm that makes the Closure turn safe.
+--| FOR THE WRITING: the jar's two walls are Newton iterates 0 and 1 of THIS crank.  From 1296/10 the step is exactly -8.1, and 81 is tange to
+--| the fourth -- so the jar's WIDTH is the first Newton step, not a prior anybody chose.  Seeded at the strip it goes all the way in seven;
+--| seeded at the jar it needs five to land exactly while the slip allows four, which is the entire difference between Episode 12's two readings.
 def theReadingScaled :=
   (List.replicate theProgram.length ()).foldl
     (fun x _ => (quadA * x * x - quadC * theScale * theScale)

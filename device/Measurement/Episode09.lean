@@ -1082,7 +1082,7 @@ def LAKE_BUILD_IS_APPARENTLY_NOW_DOING_DOUBLE_DUTY_ON_THE_LOGIC_AND_THE_METALOGI
   let newtons_train_of_thought : SpaceTimePath := extremum.the_train_of_thought.photon_torpedo extremum.once_around
   { feelings :=
       { bullshit_meter := extremum.the_train_of_thought
-        time_spent_waiting := newtons_train_of_thought
+        after_some_time := newtons_train_of_thought
         according_to_newton := .fibers
                                       ledger
                                       extremum.once_around
@@ -1128,7 +1128,7 @@ def I_MEAN_THERE_MAY_BE_A_BUG_IN_THE_METALOGIC_BUT_THIS_DOES_EVENTUALLY_COMPILE
   let newtons_train_of_thought : SpaceTimePath := extremum.the_train_of_thought.photon_torpedo extremum.once_around
   let cardiogram :=
     { bullshit_meter := extremum.the_train_of_thought
-      time_spent_waiting := newtons_train_of_thought
+      after_some_time := newtons_train_of_thought
       according_to_newton := .fibers
                                     ledger
                                     extremum.once_around
@@ -1183,7 +1183,7 @@ def THE_THING_IS_THIS_IS_YOUR_DEVICE_OVER_THERE_AND_I_ONLY_KNOW_ABOUT_MY_LOCALIT
     : MEASURED Box Pigeon downhill extremum where
   a_distance :=
   { description := rerun.scientific_paper
-    difference_between := .zero ledger
+    the_measurement_of := .zero ledger
     in_heartbeats := .origin ledger (.zero nowtrino.fact) Box
     saved_as_y := Box
   }

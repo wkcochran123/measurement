@@ -55,7 +55,7 @@ instance (priority := low) REVIEWER_2_ASKS_WHAT_THE_ANSWER_WAS_ANSWERING
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)
-    (_: ADMISSIBLE Box Pigeon)(_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)
+    (_: ADMISSIBLE Box Pigeon)(_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)(_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)
     (_: REPRESENTABLE Box Pigeon)(_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)(_: PRESENT Box Pigeon)
     (_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)(_: SOURCE Box Pigeon)(_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)(_: MAGNITUDE Box Pigeon)
     (_: SCALED Box Pigeon)(_: LOAD Box Pigeon)(_: OF Box Pigeon)(_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)(_: ACOLYTE Box Pigeon)
@@ -81,7 +81,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_COMPILING_IS_EVIDENCE_OR_A_FILENAM
     [stdout: COMPILED Box Pigeon naotrino commuter_pass]
     [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)(_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)(_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)
-    (_: RESIDUE Box Pigeon)(_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)(_: PHYSICAL Box Pigeon)
+    (_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)(_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)(_: PHYSICAL Box Pigeon)
     (_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)(_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)(_: SOURCE Box Pigeon)
     (_: EXECUTED Box Pigeon)(_: VALUE Box Pigeon)(_: MAGNITUDE Box Pigeon)(_: SCALED Box Pigeon)(_: LOAD Box Pigeon)(_: OF Box Pigeon)
     (_: BULLSHIT Box Pigeon)(_: PROPAGANDA Box Pigeon)(_: ACOLYTE Box Pigeon)(_: SCIENTIFIC Box Pigeon)(_: TRUTH Box Pigeon)(_: WITNESSED Box Pigeon)
@@ -116,7 +116,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_HALTING_WAS_CHECKED_OR_DECLARED
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -157,7 +157,7 @@ instance (priority := low) REVIEWER_2_CATCHES_LOGIC_POSING_AS_AUTHORITY
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -190,7 +190,7 @@ instance (priority := low) REVIEWER_2_REFUSES_A_UNIVERSAL_CLAIM_WITHOUT_A_LOCAL_
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -223,7 +223,7 @@ instance (priority := low) REVIEWER_2_ASKS_HOW_THE_NEEDLE_SURVIVED_THE_RETELLING
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -260,7 +260,7 @@ instance (priority := low) REVIEWER_2_DISTINGUISHES_REALITY_FROM_ITS_PRESS_RELEA
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -305,7 +305,7 @@ instance (priority := low) REVIEWER_2_ASKS_WHAT_WAS_ACTUALLY_WITNESSED
     (_: CarrierProcess Box)
     [yet: WITNESSED Box Pigeon]
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -347,7 +347,7 @@ instance (priority := low) REVIEWER_2_REQUIRES_THE_INVARIANT_TO_CARRY_A_REMAINDE
     (_: CarrierProcess Box)
     [experiment: SCIENTIFIC Box Pigeon]
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -385,7 +385,7 @@ instance (priority := low) REVIEWER_2_SEPARATES_PERSUASION_FROM_EVIDENCE
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -418,7 +418,7 @@ instance (priority := low) REVIEWER_2_OBJECTS_TO_TRUTH_CITED_BY_NAME_ONLY
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -453,7 +453,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_DEVOTION_TO_METHOD_IS_A_METHOD
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -490,7 +490,7 @@ instance (priority := low) REVIEWER_2_SUSPECTS_THE_SMOOTH_STORY_IS_INTERPOLATION
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -527,7 +527,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_FINITE_IS_A_BOUNDARY_OR_A_DECORATI
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -563,7 +563,7 @@ instance (priority := low) REVIEWER_2_NOTES_A_LOAD_MUST_LAND_IN_A_BASIS
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -599,7 +599,7 @@ instance (priority := low) REVIEWER_2_REQUIRES_SCALE_TO_SHOW_ITS_MULTIPLICATION
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -635,7 +635,7 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_MAGNITUDE_BECOMES_ADDITIVE
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -671,7 +671,7 @@ instance (priority := low) REVIEWER_2_DISTINGUISHES_A_VALUE_FROM_ITS_PROCESS
     (_: CarrierProcess Box)
     [uncountable: VALUE Box Pigeon]
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -710,7 +710,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_EXECUTION_LEFT_AN_OPCODE_RECORD
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -746,7 +746,7 @@ instance (priority := low) REVIEWER_2_ASKS_WHICH_SOURCE_FACT_SURVIVED_THE_CHANNE
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -784,7 +784,7 @@ instance (priority := low) REVIEWER_2_MAKES_THE_JOKE_PAY_ITS_EVIDENTIARY_BILL
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(cannot_be_ignored: GUNGAN Box Pigeon)
@@ -820,7 +820,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_THE_CLOCK_IS_OBSERVABLE_OR_ASSERTE
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(timestamp: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -856,7 +856,7 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_PRESENCE_ACCUMULATES
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (just_now: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -891,7 +891,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_OBSERVATION_HAS_A_RECORDED_DIMENSI
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -926,7 +926,7 @@ instance (priority := low) REVIEWER_2_ASKS_WHAT_MAKES_COMPARISON_MORE_THAN_PARAL
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -963,7 +963,7 @@ instance (priority := low) REVIEWER_2_REQUIRES_THE_PHYSICAL_CLAIM_TO_SHOW_ITS_BA
     (_: CarrierProcess Box)
     [anechoic_chamber: PHYSICAL Box Pigeon]
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -999,7 +999,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_REPRESENTATION_HAS_A_CARRIER_OR_A_
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -1035,7 +1035,7 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_NUMBER_ACTUALLY_COUNTS
     (_: CarrierProcess Box)
     [jupyter_notebook: NUMERIC Box Pigeon]
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -1071,7 +1071,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_REPETITION_REPEATS_THE_EXPERIMENT_
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -1110,7 +1110,7 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_MISSING_EXHIBIT_WENT
     (_: CarrierProcess Box)
     [flicker: BINARY Box Pigeon]
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -1147,7 +1147,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_RESIDUE_IS_A_RECORD_OR_A_LEFTOVER_
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -1180,7 +1180,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_ENCODING_KEEPS_A_READ_PATH_TO_THE_
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -1213,7 +1213,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_COUNTING_COUNTS_A_CARRIER_OR_NAMES
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (cascade_of_particles: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (cascade_of_particles: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -1247,7 +1247,7 @@ instance (priority := low) REVIEWER_2_ASKS_WHO_ADMITTED_THE_MARK
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(_: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
@@ -1282,7 +1282,7 @@ instance (priority := low) REVIEWER_2_ASKS_IF_IT_ALL_RESTS_ON_A_MARK_OR_ON_CONFI
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     (_: Fact)(something: DISTINGUISHABLE Box Pigeon)(_: ADMISSIBLE Box Pigeon)
-    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)
+    (_: COUNTABLE Box Pigeon)(_: ENCODED Box Pigeon)(_: RESIDUE Box Pigeon)(_: BINARY Box Pigeon)
     (_: REPEATABLE Box Pigeon)(_: NUMERIC Box Pigeon)(_: REPRESENTABLE Box Pigeon)
     (_: PHYSICAL Box Pigeon)(_: COMPARABLE Box Pigeon)(_: OBSERVED Box Pigeon)
     (_: PRESENT Box Pigeon)(_: MEASURABLE Box Pigeon)(_: GUNGAN Box Pigeon)
