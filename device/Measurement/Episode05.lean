@@ -208,12 +208,12 @@ def le : YarnTheory → YarnTheory → Prop
 --|                                                         ^
 --|                                                         |
 --|                                                         +---------- This is how you can use Rudolf to get from here to there very quickly!
-    ( (here = santas_worldline ∨ there = santas_worldline) ∧
-      (first_house ≤ departing_station ∨ any_other_house ≤ departing_station) ∧
-      (any_other_house ≤ arriving_station ∨ last_house ≤ arriving_station) ∧
-      (first_time = departure_time ∨ now = departure_time) ∧
-      (now = arrival_time ∨ last_time = arrival_time) ∧
-      (le no_response_yet going_uptown ∨ le response_happened going_uptown)) ∨
+    ( (here = santas_worldline ∨ there = santas_worldline) ∧                            -- Santa is either here or there
+      (first_house ≤ departing_station ∨ any_other_house ≤ departing_station) ∧         -- Santa visits houses downtown from the departing station
+      (any_other_house ≤ arriving_station ∨ last_house ≤ arriving_station) ∧            -- Santa visits houses downtwon from the uptown station
+      (first_time = departure_time ∨ now = departure_time) ∧                            -- Santa starts at 12:00:00.00 on XMAS, local time
+      (now = arrival_time ∨ last_time = arrival_time) ∧                                 -- And Santa ends 12:00:00.00 on XMAS +1, local time
+      (le no_response_yet going_uptown ∨ le response_happened going_uptown)) ∨          -- We can tell if we are naughty if we see gifts uptown.
     le (.fabric here there first_house any_other_house last_house first_time now last_time no_response_yet response_happened) going_uptown
 
 

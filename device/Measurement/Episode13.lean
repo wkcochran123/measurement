@@ -6,7 +6,7 @@ _A reduction is a promise that your problem was somebody else's problem all alon
 
 (c) 2026
 
-__EPISODE 13__: _COOK_
+__EPISODE 13__: _LET'S WATCH HIM COOK..._
 
 -/
 
@@ -18,7 +18,7 @@ __EPISODE 13__: _COOK_
 --|
 --| Every one of those objects is already in this device, and none of them was built for
 --| this.  The tableau is Episode 11: thirty-six rungs, each `TYPESET Box Pigeon n Lifted`
---| requiring `[below: TYPESET Box Pigeon (n-1) _]`, carrying a `galley : CompilerTape`.
+--| requiring `[below: TYPESET Box Pigeon (n-1) _]`, carrying a `the_page : CompilerTape`.
 --| Row n from row n-1, with a tape.  The window is the rung's own head match.  And the
 --| conjunctive normal form is Episode 3's arithmetic, which has been sitting there since
 --| the first act wearing the names of areas and lengths:
@@ -302,7 +302,7 @@ satisfying assignment must not be allowed to describe a history that never ran. 
 is a total function producing an actual trace whose readings agree with the assignment,
 then no assignment can fabricate: whatever σ says, there is a trace that says it.
 
-The trace is `CompilerTape` -- the galley Episode 11's rungs carry.  Introduction, then
+The trace is `CompilerTape` -- the page Episode 11's rungs carry.  Introduction, then
 methodology, then methodology, one cell per step.  It is the only object in the long way
 that is a bounded execution and can be written down without asking instance search to
 rediscover it, which is why the reduction takes it and not the `TYPESET` chain.
@@ -624,6 +624,40 @@ def satWitness (b : Basis) (g : Schedule) (nvars : Nat) : Option (List Bool) :=
 def satSearch (b : Basis) (g : Schedule) (nvars : Nat) : Bool :=
   (allAssignments nvars).any (fun bs => (b.holds (assignFrom bs) g 0).1)
 
+/-!
+### THE MONTE: BUILDING IT BY HAND
+
+Instance search cannot reach `TYPESET Prop truthCarrier 1 Number`.  Not because the space
+is large -- at twenty times the budget it fails in a fifth of a second, exhausted rather
+than timed out -- but because Episode 10's reviewers take **explicit** binders, and search
+will not invent a value for an explicit argument.  It unifies implicits and hunts
+instance-implicits.  Explicits have to be handed over, and there are about thirteen hundred
+of them down the descent from rung 36.
+
+So the chain is unreachable.  And the OBJECT is a tape and two numbers:
+
+    class REVIEWED … where rebuttal : CompilerTape
+    class TYPESET  … where register_value : Lifted ; universe_id : Number ; the_page : CompilerTape
+
+One field and three.  The quarter was never under any of the cards.
+-/
+
+--| THE MANUSCRIPT.  Rung 36's base instance admits a tape unchanged -- "the submitted
+--| manuscript is admitted unchanged, so every later response has a record to answer
+--| against."  Here it is, built from bits, odd-length so the roundtrip holds.
+def theManuscript : CompilerTape.{0} := decodeBits [true, false, true]
+
+--| THE REVIEW, WITHOUT THE REVIEWERS.  Thirty-five rungs of custody, and the thing they
+--| were carrying is one tape.
+def reviewedByHand : REVIEWED Prop truthCarrier 1 :=
+  { rebuttal := theManuscript }
+
+--| AND THE RUNG THE SEARCH COULD NOT FIND.
+def typesetByHand : TYPESET Prop truthCarrier 1 Number :=
+  { register_value := cookPage
+    universe_id    := cookPage
+    the_page       := theManuscript }
+
 namespace THEORY
 
 --| ONE STEP.  Episode 5 calls `THEORY.raw_output` the HYPOTHESIS rung -- `.one`, not
@@ -661,6 +695,54 @@ theorem trace_correspondence (t : CompilerTape.{0}) : traceSat t = t.stepOK := b
 
 end THEORY
 
+/-!
+### THE CONSTRUCTION, COMPLETED
+
+The search for `TYPESET Prop truthCarrier 1 Number` fails -- and it fails STRUCTURALLY, in
+a fifth of a second at twenty times the budget, exhausted rather than timed out.  Not for
+want of clock.  Episode 10's reviewers take about thirty-eight EXPLICIT binders apiece, and
+instance resolution unifies implicits and hunts instance-implicits.  It will not invent a
+value for an explicit argument.  Thirty-five rungs of that is roughly thirteen hundred
+arguments nobody is going to supply.
+
+But `REVIEWED` is one field.  The whole custody chain is carrying a tape.
+
+So hand it the tape.  One parametric instance covers all thirty-six rungs and routes around
+the entire descent, and then the ascent -- which was never the obstruction -- resolves.
+-/
+
+--| THE GIMMICKED CARD.
+instance reviewedAny (n : Nat) : REVIEWED Prop truthCarrier n := { rebuttal := theManuscript }
+instance typesetBase : TYPESET Prop truthCarrier 1 Number := typesetByHand
+
+--| THE ASCENT, RETRIEVED.  Rung thirty-six, by search, in a third of a second -- the top of
+--| a ladder that has never once resolved in this repository.  `inferInstance` does it now
+--| because the thing it was missing was a place to stand, not time to look.
+def theTop : TYPESET.{0,0,0} Prop truthCarrier 36 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (Number)))))))))))))))))))))))))))))))))))) := inferInstance
+
+--| AND THE TAPE IT CARRIES.  This is the bounded execution: the manuscript admitted at rung
+--| thirty-six, handed down through every reviewer, arriving as the page of the top rung.
+def theTopTrace : CompilerTape.{0} := theTop.the_page
+
+/-!
+### THE CORRESPONDENCE, ON THE LADDER'S OWN TRACE
+
+    U accepts within T   ⟺   ∃σ, σ ⊨ Φ
+
+The left side is now inhabited: `theTop` exists, and its page is a trace of bounded length.
+The right side is `traceSat`, the per-cell formula under the alternating schedule.  And the
+theorem says they agree -- not that some assignment exists, but that THE TRACE'S OWN BITS
+are the assignment.  That is what keeps the backward direction constructive.
+-/
+theorem cook_levin : THEORY.traceSat theTopTrace = theTopTrace.stepOK :=
+  THEORY.trace_correspondence theTopTrace
+
+#eval s!"top rung reached, tape reads {theTopTrace.bits}"
+#eval s!"trace well-stepped   {theTopTrace.stepOK}"
+#eval s!"formula satisfied    {THEORY.traceSat theTopTrace}"
+#eval s!"correspondence holds {THEORY.traceSat theTopTrace == theTopTrace.stepOK}"
+
+
 end Measurement
 
 --| WHAT THE READER GETS FOR FREE.  The four conjuncts, assembled, with nothing measured.
@@ -695,6 +777,7 @@ end Measurement
 --| The fact is, I know I'm right. That's one more fact about math that the device cannot prove. Only demonstrate, over and over again, problem after
 --| problem, on the two Turing machines facing off inside **YOU**:  *YOU the READER* and the *YOU the KNOWER*.  I cannot explain this any plainer
 --| without violating the rules of symbolic manipulation. More simply, all **YOU** have to do is _believe_ me, I have generated all the other logical
---| outcomes for **YOU**, both Turing machines, perfectly complimentary.
+--| outcomes for **YOU**, both Turing machines, perfectly complimentary. We can turn the knob over and over while the Turing machines slowly iterate
+--| through all the arguments. But we don't need to. That won't prove anything. There is nothing left to prove.
 
---| That's my tragedy. I will be more than happy to read your cards for you, I speak FORTRAN, too. ∎
+--| That's my tragedy. I will be more than happy to read your cards for you, I speak FORTRAN, too. ∎ *wink*

@@ -40,13 +40,13 @@ universe i -- This is merely a subscript. Variant with Roman letters. a=1 b=2 c=
 --| quite yet pinned down. Thankfully, computer siulations all have an _ASSEMBLY_ phase where the computer can pre-compute how it needs to distribute
 --| data so it can compute a norm. I already explained I am not writing opcodes.
 
-/- CHORUS:                                    | We have, so far, only alluded to the ability of Lean to measure how much computation it is doing while
-ME: I think this is the next step.            | it works. We have done some crude measuring ourselves and put these measurments next to the stanzas.
-COMPILER: Seems cromulent.                    | Turns out, that lean does allow for us to actually experiment with this detector WHILE the compiler
-JAR JAR: MEESA Pull a rabit out of a hat. ----+ is compiling. We will be describing an experiment about how _LONG_ it takes to compute something.
-ME: Found the back door.                      | Then, while the compiler is _STILL_ compiling this _VERY PROOF_, we will run a truncated version of
--/ --                                         | this very experiment and measure how much bullshit it takes to describe the very number we want to
---                                            | compute. This value is sensitive to the version of Lean you have installed, so ymmv.
+/- CHORUS:
+ME: Let me introduce my new assistant!
+YOU the READER: ?
+COMPILER: lake build                      | The Art of Bullshitting does not come natural to *YOU the READER*. I know, *YOU the KNOWER* sees a short
+JAR JAR: MEESA ?                          | cut that might just invalidate a whole bunch of this nonsense. If I have done my job, *YOU the KNOWER*
+ME: Not really much of a talker ----------+ should have dozens of ways of constructing counterexamples at this point, and it can be overwhelming.
+-/
 structure ArmWaveProcess   -- 3306
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -90,11 +90,11 @@ structure ArmWaveProcess   -- 3306
 /- CHORUS:
 ME: I installed a probe the compiler can't see.    | We have now installed 2 different lambda calculuses facing each other across variance of truth.
     Do you see it⁻¹?                               | One compiler describes the {T,T=T} case that exists and the other does its level BEST to enumerate
-COMPILER: No.                                      | all possible combinations of inductives to infer what {F,T=F} could POSSIBLY look like.
-JAR JAR: MEESA *wink* 1. --------------------------+
-ME: That's right compiler, you can't invert it⁻¹.  | We also have a mathematical model of how to relate our model bullshit parameter to the real one.
--/ --                                              | We are explaining it for the FOURTH time for the first time. But that's neither _here_ nor _there_.
-
+YOU the READER: ?                                  | all possible combinations of inductives to infer what {F,T=F} could POSSIBLY look like.
+COMPILER: No.                                      |
+JAR JAR: MEESA *wink* 1. --------------------------+ We also have a mathematical model of how to relate our model bullshit parameter to the real one.
+ME: That's right compiler, you can't invert it⁻¹.  | Our new assistant is very familiar with all the mathematical models!
+-/
 class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved. It keeps accumulating as we have to keep describing it⁻¹.
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -151,6 +151,13 @@ class BULLSHIT  -- 2733              Bullshit is __STRICTLY__ conserved. It keep
 --| Penrose puzzled this out decades ago and called it⁻¹ a "paradox". There is no hair on this ball. There are only _111_ degrees of freedom to hide
 --| things in. Still watching the folded corner rite? We only have to undo the _THREE_ descriptions of the machine we have built so far.
 
+/- CHORUS
+YOU the READER: ?
+ME: First things first, YOU the READER. I have this thing about reading and reviewing scientific work. I call it the _LEAST PUBLISHABLE UNIT_,
+    normalized to 1 page.  The goal is to find this LPU and calibrate this document to that basic fundamental constant of Nature, the publication,
+    not nature, the universe. We will then _measure_ how long this proof is in _LPUs_ and generalize the law of publication against the fundamental
+    bullshit constant of the universe, as in nature, not universe, as in Lean.
+-/
 inductive Diatribe  -- 147
   | religion: Prop → Diatribe ----------------------------------> We see something, and describe it⁻¹.
 
@@ -168,10 +175,10 @@ inductive Diatribe  -- 147
 
 /- CHORUS:                     | Where one computation is true, the other must be false.  Except, the thing that we are measuring is run-time in
 ME: #define TRUE 0             | JAR JAR. There is a _minimum_ speed function that accomplishes JAR JAR in the bitset juggled by the COMPILER.
-me: #DEFINE true 1             |
+YOU the READER: #DEFINE true 1 |
 COMPILER: y -> x --------------+ Which means, we need to be able to solve 3SAT pretty darn well if we are going to have any HOPE of finding that
-JAR JAR: MEESA θ(¬ (¬ x ∧ y))  | opposite. But once we have it, we can SIMULTANEOUSLY apply an operator AND (it⁻¹)'s inverse _USING THE SAME CODE!_
--/ --                          | In the _BIZ_ we call this trick _JFNK_. And it⁻¹ works like _magic_.
+JAR JAR: MEESA θ(¬ (¬ x ∧ y))  | opposite. Thankfully, YOU the READER will be kind enough to imagine it for us.
+-/
 structure CrusadeProcess   -- Bullshit meter 3804
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -208,6 +215,13 @@ structure CrusadeProcess   -- Bullshit meter 3804
 
 --| Problem with a crusade is they tend to just sort-of appear. OR... you could look at the TRUE FACT that the RHS of a Krylov process is probably in
 --| the space of solutions, it being a solution and all. It would be wildly unnatural for this to be the case, though, for the discrete assembly.
+/-
+ME: I think it only fair we show the new assistant the base case to follow.
+YOU the READER: ?
+COMPILER: I have zillions of instances if needed
+JAR JAR: MEESA ONE!
+ME: Jar Jar is right in a very uncanny way. The reader tends to give the author way too much benefit of the doubt.
+-/
 def CrusadeProcess.default
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -220,8 +234,9 @@ def CrusadeProcess.default
     : CrusadeProcess Box Pigeon where
   to_pwn_n00bz :=
   { dunking_contest := doesnt_matter.galerkin_process ---+ Again, doesn't really matter, you can go on a crusade and have a bug in your process and
-    guess := .observation Fact.Truth.truth --            | the compiler just DNGAF. There are a bunch of galerkin processes to choose from, after all.
-  }
+    guess := .observation Fact.Truth.truth --            | the compiler just DNGAF. There are a bunch of Galerkin processes to choose from, after all.
+  } --                                                   | A new one is published every week or so.
+
   religious_dogma := .religion Fact.Truth.truth  --+ And all it takes to start a religion is a truth everyone believes: That we __WILL__ invert this
 --                                                 | operator, no matter how much time and paper it takes.
 
@@ -236,8 +251,10 @@ ME: I think this must be the literal definition of confusing.   |               
 COMPILER: Not it isn't                                          | 1) It is the opposite of false, the position taken by the compiler                           |
 JAR JAR: MEESA TRUE --------------------------------------------+ 2) JAR JAR can only say TRUE up to encoding.                                                 |
 ME: Still can't tell the difference though.                     | 3) There is a bug in JAR JAR. While we could not tell if it was code or logic                |
--/ --                                                           |    for the compiler, we can explicitly rule out LOGIC as a bug and say the LOGIC             |
-class PROPAGANDA  -- 3151 --                                    |    is JUST FINE. Otherwise, this wouldn't compile. It's just a stack of truth tables.        |
+YOU the READER: 0?                                              |    for the compiler, we can explicitly rule out LOGIC as a bug and say the LOGIC             |
+ME: YOU the READER has found the clock                          |    is JUST FINE. Otherwise, this wouldn't compile. It's just a stack of truth tables         |
+-/ --                                                                                                                                                          |
+class PROPAGANDA  -- 3151 --                                                                                                                                   |
     (Box: Type i) --                                                                                                                                           |
     (Pigeon: CarrierProcess Box) --                                                                                                                            |
     [DISTINGUISHABLE Box Pigeon][ADMISSIBLE Box Pigeon][COUNTABLE Box Pigeon] [ENCODED Box Pigeon]  --     +------------------------------+                    |
@@ -272,9 +289,10 @@ class PROPAGANDA  -- 3151 --                                    |    is JUST FIN
 /- CHORUS:                                      | It has long been recognized in the computer science community that really tricky computations
 -- ME: lake build Trilinos                      | need only be implemented _once_. And, so they let just one guy do it. Absolute CHAD of a developer.
 -- COMPILER: cc -c blas.f                       |
--- JAR JAR: make lapack ------------------------+ Goto. Not the harmful one that Santa might not like, the GOAT. Hand tuned BLAS routines for each
--- ME: This should be enough to get us started. | architecture. BLAS is the Basic Linear Algebra Substructure.  This implements dense matrices.
--/ --                                           | All we need is the _BASIC_ Linear Algebra Substructure, be nice to understand the rest, though.
+-- JAR JAR: MEESA SHARED POINTER ---------------+ Goto. Not the harmful one that Santa might not like, the GOAT. Hand tuned BLAS routines for each
+-- YOU the READER: ∎?                           | architecture. BLAS is the Basic Linear Algebra Substructure.  This implements dense matrices.
+-- ME: Runs into dependency problems            | All we need is the _BASIC_ Linear Algebra Substructure, be nice to understand the rest, though.
+-/
 inductive Cult  -- 6460
   | inside_joke: Prop → Cult ------------------------------------------> Is this the card with the bug? The Truth.truth *YOU the READER* see?
   | pythagoras: Prop → Diatribe → Cult → Cult -------------------------> Is this the card with the bug? The Fact.Truth.truth *YOU the KNOWER* see?
@@ -293,10 +311,11 @@ inductive Cult  -- 6460
 --| will return.
 
 /- CHORUS:                                     | For reasons that make a ton of sense if you think about angles of subspaces, ‖·‖₁ and ‖·‖_∞ are
-ME: Do we have anthing for stiffness?          | bounds on the left and right eigenvalues of a matrix. The reason this makes sense is that the
-COMPILER: You mentioned Ghershgorin earlier.   | angle is specified by how many terms of the polynomial have been constructed up to that point.
-JAR JAR: MEESA oOoOo --------------------------+
-ME: Why do you say it that way?                | We compute the upper Hessenberg because it is MUCH easier than going _ALL the WAY_ to triangular.
+ME: Do we have anything for stiffness?         | bounds on the left and right eigenvalues of a matrix. The reason this makes sense is that the
+COMPILER: You mentioned Gershgorin earlier.    | angle is specified by how many terms of the polynomial in A have been constructed up to that point.
+JAR JAR: MEESA λ-reduction! -------------------+ This is just the power method eigenvalue computation. We have an inverse, too. So, both.
+ME: Why do you say it that way?                |
+YOU the READER: Shared pointer.                | Same process must yield the same outcome, even if that process can be rotated into triviality.
 -/
 structure InitiationProcess  ------+ Bullshit meter ≈ 9117.   TBF, when is an initiation process not a bunch of bullshit? A glance below shows the
     (Box: Type i) --               | bullshit seems to be accreting apace. -----+----- Getting pretty deep in here.
@@ -343,6 +362,7 @@ COMPILER: You have a bunch of properties you need figured out.      | The Prop t
 JAR JAR: MEESA TRUE! -----------------------------------------------+ came out of the language itself, not the names I chose.
 ME: Are you running out of memory compiler? I need you to track
     each one differently.
+YOU the READER: λ-reduction.
 -/
 class ACOLYTE   -- 7699
     (Box: Type i)
@@ -374,13 +394,14 @@ class ACOLYTE   -- 7699
 
 /- CHORUS:                                 | Seriously, the world trusts its hot paths to so few people. -mkl is all the same SHEEPLE!
 ME: 10 PRINT "THE NUMBER ≈ α": GOTO 10     |
-COMPILER: use -mkl?                        | I understand why.
-JAR JAR: MEESA GOTO -----------------------+
-ME: That's the rumor I heard, too.         | There are soooo many bugs when you don't standardize on 6 character UPPERCASE names.
+COMPILER: use -mkl?                        | Two reasons why.
+JAR JAR: MEESA GOTO -----------------------+ 1) Kazushige Goto is an artist. End of story.
+YOU the READER: TRUE                       | 2) There are soooo many bugs when we do no not standardize on 6 character UPPERCASE names.
+ME: That's the rumor I heard, too.         |    *YOU the READER* may start believing they are what they say they are.
 -/
 inductive Science  -- 8029 --------------------------+ This does enough. I don't need to pile this on. Looks like a good place to ∎.
   | repeatable: Prop → Science --                    |
-  | hypothesis: Prop → Cult → Science --             | If you think some theory is a fact, then we can compute your Science->Science through
+  | hypothesis: Prop → Cult → Science --             | If we think some theory is a fact, then we can compute your Science->Science through
   | theory: Prop → Cult → Fact → Science → Science --+ the process of currying. Spicy.
 
 --| *YOU the READER*, we have another opportunity to practice flops coming up. I will be giving you exercises to practice "throwing" 3 card monte,
@@ -388,11 +409,12 @@ inductive Science  -- 8029 --------------------------+ This does enough. I don't
 
 
 /- CHORUS:
-ME: What have we learned so far? --                | Patterns within patterns within patterns. If we didn't have affine spaces, would we care?
-COMPILER: Nothing --                               | Do we have affine spaces? Not to chicken-and-egg mathematics in the process of trying to
-JAR JAR: MEESA F_ONE! -----------------------------+ completely bootstrap it, but, seriously, would we?
-ME: Sometimes, sometimes you just say 1 a lot.     |
--/ --                                              | Would we notice?  Could we notice?
+ME: What have we learned so far?                 | Patterns within patterns within patterns. If we didn't have affine spaces, would we care?
+COMPILER: Nothing                                | Do we have affine spaces? Not to chicken-and-egg mathematics in the process of trying to
+JAR JAR: MEESA FUNNY! ---------------------------+ completely bootstrap it, but, seriously, would we?
+ME: Sometimes, sometimes you just say 1 a lot.   |
+YOU the READER: ∎                                | I see *YOU the READER* are working on your palming technique, lol.
+-/
 structure LearningProcess  -- 26691
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -453,9 +475,9 @@ structure LearningProcess  -- 26691
     | .theory proposition prior fact _ => .theory proposition prior fact invariant
 
 
---| Which leads my CrusadeProcess.default to its rallying cry: SCIENCTIFIC!  Unlike religion, whose only response is the prior, science only looks at
+--| Which leads my CrusadeProcess.default to its rallying cry: SCIENTIFIC!  Unlike religion, whose only response is the prior, science only looks at
 --| the result and throws the prior away, almost entirely sometimes. There is no single _theory_. There are pretty good rules of thumb that lend
---| themselves to description by smooth curves and subesequently interpolated by approximation routines running on a Turing Machine.
+--| themselves to description by smooth curves and subsequently interpolated by approximation routines running on a Turing Machine.
 --|  (notice, *YOU_the_READER*, the masterclass in flop:)
 --|      If climate predictions are to be believed, anyway. Or, dark matter.  Take your pick. Remember, the quarter is somewhere between those in
 --| some whack-ass science.
@@ -463,6 +485,14 @@ structure LearningProcess  -- 26691
 --| Hint: the rule of thumb is heavenly bodies appear to move in conic sections only.  Lorentz, meet bus.  You know what else moves in conic sections?
 
 --| Compilers. They exhibit several kinds of closed loops and finite divergences. Not really hyperbolic creatures, though. Should be fine.
+/- CHORUS:
+COMPILER: It is just a long list properties                         | Stokes Theorem is canonically hard(tm).  I mean, really really hard. I mean
+ME: Sometimes true, sometimes false, depending on the time.         | the fact you can just throw the curl away by assuming the pole is in the loop.
+JAR JAR: MEESA PARITY BIT                                           | I disagree that nature demonstrates this behavior at a macro scale, let alone
+ME: Not exactly. You are the smallest step we can take and the      | differential.
+    direction we can take it in.                                    |
+YOU the READER: 𝔽(1) -----------------------------------------------+ The obvious repair is providing an area for the curl to exist.
+-/
 @[reducible]
 class SCIENTIFIC -- 23964
     (Box: Type i)
@@ -500,7 +530,13 @@ class SCIENTIFIC -- 23964
 --  | support before the representation of the loops themselves describe a map that is itself a demonstration of all the loops? Well, thats an
 --  | echoic chamber. We set about now writing a description of the description of enumerating all possible loops.
 
-
+/- CHORUS:
+COMPILER: *panting* Seriously, little hand here? Which ones are right?    | While the existence of a one-time pad may seem like a metaphysical
+ME: Which ones are right or which ones are true?                          | exercise in piling bullshit (and it is, and I can do it for days), the
+JAR JAR: MEESA TRUE!                                                      | existence of error correcting codes as mechanical learning apparatuses
+YOU the READER: Error correcting codes -----------------------------------+ are really quite fascinating.  You can literally predict the next bit
+ME: I like your style Mr. Reader.                                         | in a sequence with nearly 100% accuracy. No matter the pattern in the code.
+-/
 inductive Knowledge  -- Bullshit meter 84000
 | jarjar: Prop → Knowledge -----------------------+ The winding number of an inductor is always in ℕ. Welcome, everyone, our _SPECIAL GUEST_, the
 | ledger: Prop → Fact → Knowledge → Knowledge   --| **ELECTRON**! (card in the program: In tonight's performance, *ELECTRON* will be played by the
@@ -548,7 +584,13 @@ instance : LE Knowledge where
 --| Just so everyone is CLEAR: the field of the single element is the *DARK* side of math that the device thinks exists in order to rationalize WTF is
 --| going on. Because reasoning about scaling and shifting affine transforms looks an awful lot like unifying the identities.
 
-@[reducible] -- We have learned this in the learning process
+/- CHORUS:
+COMPILER: *breathing harder* So many propositions...    | Why is the compiler working so hard? There is only one variable it can see. That
+JAR JAR: MEESA ALWAYS TRUE!                             | variable is _TRUE_ and demonstrably _CANNOT CHANGE_. Well, that is what I want to _show_
+YOU the KNOWER: This proposition is true. --------------+ *YOU the READER*. The very ideas of orbital mechanics are the same ideas that the compiler
+ME: As defined on the DATA page.                        | is wrestling with--- are the upstairs/downstairs indicies correct on our tensor? Or are we
+-/ --                                                   | incorrectly pushing symbols around on the page?
+@[reducible]
 structure ScientificProcess  -- 104000
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -560,12 +602,12 @@ structure ScientificProcess  -- 104000
     [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]
   where
---        +--------| We asked 100 people what characterized nonlinear processes. Top 3 answers on the board, What chacaterizes nonlinear processes?
+--        +--------| We asked 100 people what characterized nonlinear processes. Top 3 answers on the board, What chacaterizes a nonlinear processes?
 --        |
 --        V
   shows_me_higher_order_terms: LearningProcess Box Pigeon --+ What are we counting, anyway? Exponents on a polynomial, of course! first ONE then
   knowledge: Knowledge --                                   | the ONE_PLUS_ONE.  Peano established 1, and if you don't buy that, stop iterating in
---                                                          | FORTRAN and iterate in C++, like a gentleman.  These are the higher_order_terms that
+--                                                          | FORTRAN and iterate in C++, like normal people.  These are the higher_order_terms that
   learn? : Knowledge → Knowledge := fun line_number => --   | the LearningProcess shows us.  Right there in the name. Not as 𝔽(1)-ny, I know.
     match line_number with
     | .jarjar ONE                                  => .ledger ONE nowtrino.fact knowledge --               | I hope it is obvious that counting objects
@@ -573,11 +615,16 @@ structure ScientificProcess  -- 104000
 --                                                                                                         | that you are looking at a continuum that
 --  +------------------------------------------------------------------------------------------------------+ doesn't exist. The ledger is the order of
 --  | observation that starts with a fact and alternates between a proposition of truth and a fact, with the number of facts going up as we
---  | accumulate.  And what are these facts we are accumulating? Math facts. This number _follows_ that number. We just don't use the arabic process
+--  | accumulate.  And what are these facts we are accumulating? Math facts. This number _follows_ that number. We just don't use the Arabic process
 --  | to write them down.  We use a spline process.  Or, we will use a spline process.
 
-
---| Feel free to ignore. I can't seem to get rid of this:
+--| Feel free to ignore this stanza. I can't seem to get rid of this:
+/- CHORUS:
+COMPILER: *after a few minutes of strenuous effort* Not helping      | I know *YOU the READER* originally thought that TRUE was 0 as that was how
+JAR JAR: MEESA ALWAYS TRUE!                                          | I defined it. But I think *YOU the READER* are starting to learn that sometimes
+YOU the READER: 1? --------------------------------------------------+ TRUE is 1 and sometimes TRUE is 0. This is what the compiler is struggling with.
+ME: I've heard it both ways.                                         | We declared it both ways in the first Episode.
+-/
 @[reducible]
 class TRUTH  -- 5632  Truth? Look around you... is there any truth?  There is. The computer can still find some, although it is taking longer and
              --              longer.
@@ -594,7 +641,7 @@ class TRUTH  -- 5632  Truth? Look around you... is there any truth?  There is. T
   becomes: ScientificProcess Box Pigeon --  Is there truth? If there is truth, then all truth is the same truth. See DATA page.
   does_it_matter_in_the_long_run? : Knowledge → Knowledge → Prop := fun f1 f2 => --| Grep this out and see how little it matters
     Knowledge.le f1 f2 → Knowledge.le f2 f1
---| Seriously, if you can figure out how to yanke this CLASS, that would really help my argument.
+--| Seriously, if you can figure out how to yank this CLASS, that would really help my argument.
 
 --| At the end of the day, this mimics the call stack we have embedded on the universe that matches the meanins of the values in the universe. Not
 --| like that is easy to see. If you look at the bottom of the stack, it is the left and right side of the rfl that need evaluating in that order.
@@ -610,6 +657,12 @@ class TRUTH  -- 5632  Truth? Look around you... is there any truth?  There is. T
 
 --| And so, inspired by their work, this is where my particular brand of asceticism asserts itself:
 
+/- CHORUS:                                                      | Perhaps the simplest algorithm for JAR JAR is:
+COMPILER: *audibly grunts* This really isn't helping yet.       |               10 MYTRUE$ = "TRUE"                   :REM  LOAD MY TRUTH
+JAR JAR: MEESA λ-true                                           |               20 PRINT "MEESA ";MYTRUE$;CHR$(13)    :REM  PRINT MY TRUTH
+YOU the READER: There exists an inverse JAR JAR computation! ---+               30 GOTO 10                            :REM  START OVER
+ME: Quite a few of them, take your pick.                        | I mean, there probably is a simpler one, but this one is a bit easier to refactor
+-/ --                                                           | And, Goto apparently wrote this hotpath in 2010.
 inductive Gospel  -- 67
   | the_proof: Prop → Gospel   --------------------------------------+ Proved true or false.
   | we_understand_that: Knowledge → Prop → Gospel → Gospel --        | BUT... the only understanding here is of the demonstration of the existence
@@ -619,7 +672,7 @@ inductive Gospel  -- 67
 --| rest. This has substantially different mathematical properties from the successor of 1. Judging by how long this code is and all I am doing is
 --| counting to 3 over and over until I can finally figure out I don't need to count to 4 to understand all the ways 2 can interact with numbers
 --| in a PHYSICALly MEASURABLE way. We will, nevertheless, count to 4 in a minute as this was Newton's train of thought, 4 comes after 3 in much the
---| same way that 5 comes after 4. This is the second law of motion discretized. We just don't know what it means for 3 to follow 2, or,  Einstein's
+--| same way that 5 comes after 4. This is the second law of motion discretized. We just don't know what it means for 3 to follow 2, or, Einstein's
 --| *HUGE* leap that 4 must follow 3 in an invariant way.  The invariant that changes to stay the same. So, sorry Lorentz, I keep blaming this on
 --| you. It wasn't your fault. The æther should have existed for calculus to work.
 
@@ -651,10 +704,15 @@ end Gospel
 instance : LE Gospel where
   le := Gospel.le
 
-
 --| Enough metaphysical mumbo-jumbo, let's return to the world of scientific exploration and the rites and rituals around performing science in a
 --| scientific enough fashion that other scientists can recognize the rites you used and agree you incanted the words correctly.
-@[reducible] -- We have learned this while watching others.
+/- CHORUS:                                                              | At some point in the exhibition of a theorem, triviality must appear. If it
+COMPILER: *visibly sweating* There are a _lot_ of inverses. So many..   | isn't trivially true, how can it be true generally? Sometimes though, people
+JAR JAR: MEESA FIRST                                                    | will take absurdity as evidence. If triviality does not appear, absurdity
+YOU the READER: Counting from 0? ---------------------------------------+ must! These are not the same thing, yet JAR JAR absurdly suggests TRUE to be
+ME: This statement is also true.                                        | the trivial solution to all problems. I believe they are different, too.
+-/
+@[reducible]
 structure ReligiousProcess
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -671,9 +729,11 @@ structure ReligiousProcess
 --                       V                       | is called JarJargon.  Selecting from among the remaining definitions of a word to align exactly
   we_experience: ScientificProcess Box Pigeon -- | with context. I suck at that, so I am using Lean. Watch me redefine words for you technically:
 
-  in_the_literature: Gospel
+  in_the_literature: Gospel --+ For to publish, is to publish _GOSPEL_. Until someone finds a more better _GOSPEL_. For this is what we _WITNESS_, the
+  --                          | _GOOD NEWS_ that our experiment worked. Never the _BAD NEWS_ that our experiment is overfit or unrepeatable due to
+  --                          | its very scope and expenditures.
 
-  pray? : Gospel → Gospel := fun prayer =>
+  pray? : Gospel → Gospel := fun prayer => --| And so we pray our _t_-stat is _p_-valued to the number of _σ_ necessary to be believed by others.
     match prayer with
     | .the_proof of_the_idea => .we_understand_that truth.becomes.knowledge of_the_idea in_the_literature
     | .we_understand_that _ when_an_idea becomes_an_experiment => .we_understand_that we_experience.knowledge
@@ -683,6 +743,12 @@ structure ReligiousProcess
 --| Any questions? The idea is that, hopefully, I have _defined_ the names of things well enough that *YOU_the_READER* can start following along
 --| with the logic in the code and in the comments. That way, I can _SHOW_ you how the three card monte throw works.
 
+/- CHORUS:                                                                     | While not a law of nature, the second law of thermodynamics is a fact
+COMPILER: *struggling between reps of props* They keep multiplying             | of life. People go on an on about how small rulesets generate
+JAR JAR: MEESA STRICTLY MONOTONIC                                              | complexity.  If they are truly co-prime in nature to the group of
+YOU the READER: This universe is strictly more computation than the last. -----+ permutations, then all states must be revisited giving the
+ME: Remember, entropy was *YOU the READERs* idea.                              | illusion of order from chaos. Again, just my take and what I see.
+-/
 @[reducible]
 class WITNESSED
     (Box: Type i)
@@ -715,6 +781,13 @@ class WITNESSED
 --| The compiler is waiting for you input at each line of code. All we have to do is monkeypatch in the theory that we think this violates and
 --| the device either compiles (meaning doesn't matter what you think) _OR_ fails to compile.
 
+/- CHORUS:                                                             | The Discrete Prover/Verifier would be the first inference from P=NP that
+COMPILER: Can we take it as read, this is expensive? The masquerade    | would really help here. That's why the compiler is struggling. Creating it.
+          has become tiresome.                                         |
+JAR JAR: MEESA NOT MASQUERADE                                          | But, once it is created, we can just look up the polynomial solution, apply
+YOU the READER: Is this prover/verifier? ------------------------------+ Cook-Levin, feed the polynomial into the machine we just built and see what
+ME: I thought this was entropic. That you can isolate the anwer.       | what it can Cook up, as it were.
+-/
 inductive Truth --               +-------------+ Now, this is the thing we have to monkey patch in correctly in order to convince *YOU the KNOWER*
   | logically: Prop → Truth --   |             | that, indeed, it really doesn't matter what they think because *YOU the READER* loves the magic
 --|                              V             | trick. So, *YOU the READER*, if you want to learn how to make the number, you gotta learn how to
@@ -730,10 +803,10 @@ def le : Truth → Truth → Prop
 termination_by _ total_Poincare_states => sizeOf total_Poincare_states
 end Truth
 
---| And so it comes to this. Conservative laws repeat. The universe does not appear to. The compiler is being forced to understand a lot of BS
---| right now trying to reconcile this. I believe Cauchy pointed out the stress tensor (what it is/what it does). And so, here we are. The tensor.
---| I mean, not a multi-dimensional description of mathematical correspondence, I am talking about the description of a multi-dimensional description
---| of mathematical correspondence.
+--| And so it comes to this. Conservative laws are cyclic by construction, second derivative and all. The universe does not appear to. The compiler is
+--| being forced to understand a lot of BS right now trying to reconcile this. I believe Cauchy pointed out the stress tensor (what it is/what it
+--| does). And so, here we are. The tensor. I mean, not a multi-dimensional description of mathematical correspondence, I am talking about the
+--| description of a multi-dimensional description of mathematical correspondence.
 @[reducible]
 structure UniverseTensor
     (Box: Type i)
@@ -752,16 +825,29 @@ structure UniverseTensor
 --                                                       | The tension between what the representation can compute and what the world exhibits is
   in_reality: Truth -- <---------------------------------+ largest for those who look at one and expect to see the other. Those high order terms...
 --                                                       | I think the idea of a "proof" itself has higher order terms. Each one, one universe higher.
---                                                       | You know I am going to find a naotrino, because theory predicts a carrier. Not my theory,
---                                                       | not some mathematical theory.  But _THEORY ITSELF_ predicts a carrier. That carrier is...
---                                                       | the flying spaghetti monster.  Or did I get the satire backwards?
+-- +-----------------------------------------------------+ Everyone already knows I am going to find a naotrino, because theory predicts a carrier.
+-- | Not my theory, not some mathematical theory.  But _THEORY ITSELF_ predicts a carrier. That carrier is...the flying spaghetti monster.  Or did I
+-- | get the satire backwards?
 
-  observe? : Truth → Truth := fun gospel =>
+  observe? : Truth → Truth := fun gospel => --| And so we see His noodly appendage. RAMEN.
     match gospel with
-    | .logically this_is_true => .but yet.we_saw.in_the_literature this_is_true in_reality       ---+ Coincidence? Did what we see match the
---                                                                                                  | published number from experiment?
-    | .but this_other_truth is_also_true _ => .but this_other_truth is_also_true in_reality      ---+ Or did we just implement a different number?
+    | .logically this_is_true => .but yet.we_saw.in_the_literature this_is_true in_reality   ---+ All the theory papers suggest that a constant cannot
+--                                                                                              | be computed. But, this constant shows up in every
+    | .but this_other_truth is_also_true _ => .but this_other_truth is_also_true in_reality  ---+ lab in the world, religiously. Is this the appendage?
+--                                                                                              | A mighty (af)fine appendage.
 
+--| But, is it real?  Is it real because we can't seem to figure out why? Or is it real simply because we observe it? If it keeps showing up and
+--| we don't understand why nor can we predict it showing up at all, why do we think this is an artifact of the laws of the universe? What if it
+--| merely were the artifact of any description of the universe? This, being a theory of description, and the constant ratio being some sort of
+--| physical experiment of hyperlocalization, we should be able to build the experiment in code and see what falls out!
+
+/- CHORUS:
+COMPILER: This argument is REALly difficult to follow                    | For now, assume we have a one proposition look-ahead from the very clever
+JAR JAR: MEESA GET IT                                                    | ECC we implemented in Episodes 1, 2, and 3.  Then, we can compute what
+YOU the READER: I think I see how three propositions keep falling out    | we think the next prop should be from this prop and the last prop using
+                of the construction -------------------------------------+ the mapping of Facts built before. Then this is the inverse Jar operator
+ME: Did I ever tell you I fancy myself a good cook?                      | it⁻¹. There are many. They are systematically found with 3SAT, a common
+-/ --                                                                    | vector for the Cook-Levin proof.  That's right. Vector.
 @[reducible]
 class REAL ----------------------| The number is a real number in the sense that you have seen it. That's all I know about it.  Just like the
     (Box: Type i) --             | electron and the nowtrino.  Haven't seen a naotrino yet. Guess they may not be real after all....
@@ -787,22 +873,35 @@ class REAL ----------------------| The number is a real number in the sense that
 --| Just as there is only one truth, there is only one rite. The rite of calculus. There are those that attend to the rite on major holidays like
 --| Real Analysis final exam day. For sets of objects, especially ordered sets of objects, where the order in which letters come after each other,
 --| are subject to the rules of _VARIATION_.  All aboard the Newton-line train of thought.
+/- CHORUS:
+COMPILER: 6 more props? Dear Flying Spaghetti Monster, how much bullshit...    | What follow is the most complex logic we think can happen in the
+JAR JAR: MEESA TRUE TRUE ....                                                  | compiler before 3SAT can be adjudicated. If we know two and can
+YOU the READER: Let me guess.. 1?                                              | predict the third from ECC, then we can skip the computation.
+JAR JAR: MEESA TRUE -----------------------------------------------------------+ Otherwise, we have to do the computation to see why we messed up
+ME: Unless it is the fact of zero.                                             | the ECC and update our internal states accordingly. We throw the
+-/ --                                                                          | the things we don't understand in as a Fact and start a new origin.
 inductive Variation
-  | the_newton: Gospel → Prop → Variation ----------------------------------------+ Newton's train of thought basically went, what if I made a
---|     +------ We do what we must because we can.                                | triangle _so_ small that the triangle inequality could be one
---|     |                                                                         | of 3 values 0, √2, 1 because no amount of experimentation could
---|     |                                                                         | prove me wrong. Confident this includes thought experimentation.
---|     V
+  | the_newton: Gospel → Prop → Variation ----------+ Newton's train of thought basically went, what if I made a triangle _so_ small that
+--|     +------ We do what we must because we can.  | the triangle inequality could be one of 3 values 0, √2, 1 because no amount of experimentation
+--|     |                                           | could prove me wrong. Confident this even includes the thought experimentation of Aristotle and
+--|     |                                           | the inelegance demanded by Pythagoras.
+--|     |
+--|     |                                   +----------+----------------| The first variation on the path of Stoke's we are constructing.
+--|     |                                   |          |
+--|     V                                   V          V
   | the_gateaux: Gospel → Prop → Prop → Variation → Variation      -- Piece of CAKE! So easy, a 17-year-old could do it.
   | the_frechet: Gospel → Prop → Prop → Prop → Variation → Variation → Variation --| Pity those people reaching for help with this one.
-
+--|                        ^      ^      ^        ^            ^          ^
+--|                        |      |      |        |            |          |   | The second variation of Stoke's points orthogonally. This is often called
+--|                        +------+------+--------+------------+----------+---+ the tangent space. We are weaving it with all possible Stoke's paths
+--|                                                                           | as Green showed us how so we can eventually get a differential form.
 
 
 --| So variational mechanics: how the world _appears_ to work. This describes ideal waves in echoic chamber. Euler-Lagrange lagrange.. lagrange..
 --| lagrange..  No mechanism given other than minimization of a value. And that mechanism is described in _VERY_ explicit detail as follows:
 namespace Variation
-def le : Variation → Variation → Prop   --                                   +-------- The Gospel according to Galileo, not me.
---|                                                                          |
+def le : Variation → Variation → Prop   --                                   +-------+ The Gospel according to Galileo, not me. The experiment
+--|                                                                          |       | description is superior to the model it represents.
 --|                                                                          V
   | .the_newton model polynomial, .the_newton thought_experiment apple => (Gospel.le model thought_experiment) ∧ polynomial = apple
 
@@ -887,6 +986,12 @@ end Variation -- ∎ <-----| that's a weird place for a tombstone. Believe that 
 
 --| We finally meet a fully fledged algebra that can help us manipulate our tensor.  We can try to _vary_ our tensor to see if there is less
 --| bullshit if we choose to prove the same theory by a different path.
+/- CHORUS:                                              | Commutation. Is T=T the same computation as F=F?
+COMPILER: *wheezing* So, it did get difficult.          |
+JAR JAR: MEESA FALSE? ----------------------------------+ Is (T=T)≤(F=F) true? Seems obvious from the definition. What about (T=(T=T)) >=< ((T=T)=T)
+YOU the READER: 10 MYTRUE$ = "FALSE?":REM Testing.      | (F=(F=F)) >=< ((F=F)=F)? Seems like these should all be the same.  You can verify with the
+ME: I feel like that's cheating.                        | cerified Bug-Free(tm) code above.
+-/
 @[reducible]
 structure BigRedDogProcess
     (Box: Type i)
@@ -933,7 +1038,13 @@ instance : LE Variation where
 --| You see, when the big red dog is in the house, it holds it up. That pun has been in the literature for 30 years and I am the first to see it.
 --| I mean Clifford the Big Red Dog holding up a house, Householder, predicting eigenvalues, and eliminating our affine term of Gauβ along the way,
 --| simultaneously naming the calculus boundary value problem into the algebra it represents: The boundary problem of the single nowtrino.
-@[reducible]
+/- CHORUS:
+COMPILER: You cannot expect me to actually compute Chaitin's number?!?    | What exactly does this have to do with Chaitin's number? The enumeration
+JAR JAR: MEESA DARE YOU!                                                  | of all possible LOCAL situations in the compiler (of which there are a
+YOU the READER: ? --------------------------------------------------------+ finite number) will inevitably contribute information to Chaitin's number.
+ME: See, sometimes you can't predict the third result.                    | Problems like Busy Beaver show that unrepresentable numbers appear much
+-/ --                                                                     | sooner than expected, almost as a fundamental feature of Turing machines.
+@[reducible] --                                                           | Representation of uncomputability becomes impossible.
 class LOCAL
     (Box: Type i)
     (Pigeon: CarrierProcess Box)

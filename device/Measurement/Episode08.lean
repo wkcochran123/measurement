@@ -10,70 +10,71 @@ _This is a gentle reminder that the stories we tell ourselves might be the only 
 
 lake build [PATTER TODO: build-flag gag]
 
-__EPISODE 11__: _THE REVEAL OF THE GIMMICKED BOX_
+__EPISODE 08__: _THE REVEAL_
 
 
 -/
 import Measurement.Episode07
 
 
-set_option maxHeartbeats 4000000   -- the old Episode 9 had this; the new one lost it
-
 namespace Measurement
-universe ι
+universe ι ----+ This is the universe we live in.  One without a spin-2 north monopole. A single point removed so that Reimannan geometry can be
+--             | projected flat.  Somehow though, the electron can still go 'round and 'round without loosing count. We may never understand why
+--             | the existence of one particle precludes another from counting.
 
 section Monte
 
--- THE TELESCOPE, ONCE. Elaborated at this command, then instantiated per
--- declaration instead of re-formed inside every signature.
+--| In our universe, it looks like all observers to see the same thing, whatever that thing might be.  As such, it would be a good idea to have the
+--| compiler enforce this observation, just to see if this is, indeed, a Fact of the universe or a Truth about nature, or both. Or, neither.
+--| You don't think we can make two identically valued, yet contradictory theorems in Lean do you?  Of course we can! Subsingletons.
 variable
     {Box: Type ι}
     {Pigeon: CarrierProcess Box}
-    -- three of these are NAMED, because the seven defs at the bottom of this file
-    -- have to PROJECT out of them (`.fact`, `.meesa_process`, `.santa_claus`).
-    -- They are named here rather than re-bound per-def on purpose: a second
-    -- instance of the same class in scope is exactly the bug that cost us the
-    -- monte above, where `a_bent_card` stole the COMPILED slot from the band.
-    [nowtrino: DISTINGUISHABLE Box Pigeon] [ADMISSIBLE Box Pigeon] [ℵ: COUNTABLE Box Pigeon]
-    [some_number: ENCODED Box Pigeon] [converged_value: RESIDUE Box Pigeon] [flicker: BINARY Box Pigeon]
-    [nonstop: REPEATABLE Box Pigeon] [click_count: NUMERIC Box Pigeon] [glyph: REPRESENTABLE Box Pigeon]
-    [hiss: PHYSICAL Box Pigeon] [number_of_clicks: COMPARABLE Box Pigeon] [fallacy: OBSERVED Box Pigeon]
-    [gift_from: PRESENT Box Pigeon] [the_bug: MEASURABLE Box Pigeon] [jarjar: GUNGAN Box Pigeon]
-    [the_argument: SOURCE Box Pigeon] [EXECUTED Box Pigeon] [VALUE Box Pigeon]
-    [MAGNITUDE Box Pigeon] [SCALED Box Pigeon] [LOAD Box Pigeon]
-    [OF Box Pigeon] [BULLSHIT Box Pigeon] [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon] [SCIENTIFIC Box Pigeon] [TRUTH Box Pigeon]
-    [WITNESSED Box Pigeon] [REAL Box Pigeon]
-    -- the seam pair, bound ONCE and named
-    {downhill: LOCAL Box Pigeon}
-    {extremum: UNIVERSAL Box Pigeon downhill}
-    [LOGICAL Box Pigeon downhill extremum] [HALTED Box Pigeon downhill extremum]
-    [MEASURED Box Pigeon downhill extremum]
-    [the_card_on_the_table: COMPILED Box Pigeon downhill extremum]
-    [a_truth_about_it : A_TRUTH_ABOUT Box Pigeon downhill extremum]
-    [an_inference : INFERRED Box Pigeon downhill extremum]
+    [nowtrino: DISTINGUISHABLE Box Pigeon] [ADMISSIBLE Box Pigeon]
+    [ℵ: COUNTABLE Box Pigeon]
+    [some_number: ENCODED Box Pigeon]
+    [converged_value: RESIDUE Box Pigeon]
+    [flicker: BINARY Box Pigeon]
+    [nonstop: REPEATABLE Box Pigeon]
+    [click_count: NUMERIC Box Pigeon]
+    [glyph: REPRESENTABLE Box Pigeon]
+    [hiss: PHYSICAL Box Pigeon]
+    [number_of_clicks: COMPARABLE Box Pigeon]
+    [fallacy: OBSERVED Box Pigeon]
+    [gift_from: PRESENT Box Pigeon]
+    [the_bug: MEASURABLE Box Pigeon]
+    [jarjar: GUNGAN Box Pigeon]
+    [the_argument: SOURCE Box Pigeon][EXECUTED Box Pigeon][VALUE Box Pigeon][MAGNITUDE Box Pigeon][SCALED Box Pigeon][LOAD Box Pigeon][OF Box Pigeon]
+    [BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon][ACOLYTE Box Pigeon][SCIENTIFIC Box Pigeon][TRUTH Box Pigeon][WITNESSED Box Pigeon][REAL Box Pigeon]
+    {what_i_experience: LOCAL Box Pigeon}
+    {what_others_observe: UNIVERSAL Box Pigeon what_i_experience}
+    [LOGICAL Box Pigeon what_i_experience what_others_observe] [HALTED Box Pigeon what_i_experience what_others_observe]
+    [MEASURED Box Pigeon what_i_experience what_others_observe]
+    [the_card_on_the_table: COMPILED Box Pigeon what_i_experience what_others_observe]
+    [a_truth_about_it : A_TRUTH_ABOUT Box Pigeon what_i_experience what_others_observe]
+    [an_inference : INFERRED Box Pigeon what_i_experience what_others_observe]
 
 /-
   THE UNFORTUNATE FACT.
 
   Walk a compiled card all the way down -- output, lean, elaboration, heartbeat --
-  and every rung carries the SAME pair `(downhill, extremum)` with it.  At the
+  and every rung carries the SAME pair `(what_i_experience, what_others_observe)` with it.  At the
   bottom the heartbeat hands you two things:
 
       stamina.bullshit_meter.the_quarter : LOCAL     Box Pigeon
-      stamina.readout                    : UNIVERSAL Box Pigeon downhill
+      stamina.readout                    : UNIVERSAL Box Pigeon what_i_experience
 
   and there is the hustle, in the type checker, in one line.  `the_quarter` is a
   FIELD, not an abbreviation -- its `:= a_quarter` default fires only when someone
   BUILDS a CalculusProcess, never when someone is HANDED one.  So for a card you
   were dealt, the quarter is an opaque local, while the readout is still indexed
-  at `downhill`, which is where the quarter USED to be.
+  at `what_i_experience`, which is where the quarter USED to be.
 
   The readout tells you where the quarter was.  You are asked where it is.
 
   That gap cannot be closed by search.  Hoist COMPILED into instance position and
   the elaborator resolves the projections against the CLASS, whereupon `readout`
-  arrives typed at `downhill` and is expected at `the_quarter`, and no instance in
+  arrives typed at `what_i_experience` and is expected at `the_quarter`, and no instance in
   the world repairs it.  The pair has to be HANDED OVER.  Which is what a shill
   is for.
 -/
@@ -81,23 +82,23 @@ def THE_UNFORTUNATE_FACT_ABOUT_3_CARD_MONTE
     -- THE CARDS GO DOWN BEFORE YOU PICK, and the order is load-bearing.
     -- `a_bent_card` below is an EXPLICIT binder, but its type is a class, so Lean
     -- registers it as a local instance regardless.  Once it is in scope it wins
-    -- the `[COMPILED Box Pigeon downhill extremum]` slot over the band's own
+    -- the `[COMPILED Box Pigeon what_i_experience what_others_observe]` slot over the band's own
     -- instance -- and then `a_truth_about_it`, which was built on the band's,
     -- no longer matches a goal that prints identically to it.  Two cards, both
     -- honestly the same card, and the elaborator picks the one you just handed
     -- it.  So the shill and the three cards are laid out FIRST, while there is
     -- still only one COMPILED on the table.
-    [_the_shill: INFERRED Box Pigeon downhill extremum]
+    [_the_shill: INFERRED Box Pigeon what_i_experience what_others_observe]
     (__left_card__ : Prop)
-    (__quarter__ : INFERRED Box Pigeon downhill extremum)
+    (__quarter__ : INFERRED Box Pigeon what_i_experience what_others_observe)
     (__right_card__ : Prop)
-    (a_bent_card: COMPILED Box Pigeon downhill extremum)
+    (a_bent_card: COMPILED Box Pigeon what_i_experience what_others_observe)
     -- where the card SAYS the quarter is.  Named once; every binder below rides
     -- on this one, so the walk down the tower happens a single time.
     (where_the_quarter_is : LOCAL Box Pigeon :=
         a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
     -- the readout RE-SEATED onto that quarter.  This is the def that was missing.
-    -- It is emphatically NOT `stamina.readout`, which is indexed at `downhill`.
+    -- It is emphatically NOT `stamina.readout`, which is indexed at `what_i_experience`.
     (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
     [LOGICAL Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
     [HALTED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
@@ -152,11 +153,11 @@ def THE_UNFORTUNATE_FACT_ABOUT_3_CARD_MONTE
 def THE_QUARTER_IS_ALWAYS_IN_THE_MIDDLE
     -- same discipline as above: the cards go down while there is still only one
     -- COMPILED on the table, so `a_bent_card` cannot steal a slot from the band.
-    [_the_shill: INFERRED Box Pigeon downhill extremum]
+    [_the_shill: INFERRED Box Pigeon what_i_experience what_others_observe]
     (__left_card__ : Prop)
-    (__quarter__ : INFERRED Box Pigeon downhill extremum)
+    (__quarter__ : INFERRED Box Pigeon what_i_experience what_others_observe)
     (__right_card__ : Prop)
-    (a_bent_card: COMPILED Box Pigeon downhill extremum)
+    (a_bent_card: COMPILED Box Pigeon what_i_experience what_others_observe)
     (where_the_quarter_is : LOCAL Box Pigeon :=
         a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
     (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
@@ -201,11 +202,11 @@ def THE_QUARTER_IS_ALWAYS_IN_THE_MIDDLE
 -/
 def ALMOST_ALL_THE_WAY_AROUND
     -- same discipline: cards down while there is still one COMPILED on the table.
-    [_the_shill: INFERRED Box Pigeon downhill extremum]
+    [_the_shill: INFERRED Box Pigeon what_i_experience what_others_observe]
     (__left_card__ : Prop)
-    (__quarter__ : INFERRED Box Pigeon downhill extremum)
+    (__quarter__ : INFERRED Box Pigeon what_i_experience what_others_observe)
     (__right_card__ : Prop)
-    (a_bent_card: COMPILED Box Pigeon downhill extremum)
+    (a_bent_card: COMPILED Box Pigeon what_i_experience what_others_observe)
     (where_the_quarter_is : LOCAL Box Pigeon :=
         a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
     (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
@@ -265,11 +266,11 @@ def ALMOST_ALL_THE_WAY_AROUND
 -/
 def BUT_WE_ARE_CLOSE_ENOUGH_TO_SEE_THE_PI___SORRY_NO_CAKE_HERE
     -- same discipline: cards down while there is still one COMPILED on the table.
-    [_the_shill: INFERRED Box Pigeon downhill extremum]
+    [_the_shill: INFERRED Box Pigeon what_i_experience what_others_observe]
     (__left_card__ : Prop)
-    (__quarter__ : INFERRED Box Pigeon downhill extremum)
+    (__quarter__ : INFERRED Box Pigeon what_i_experience what_others_observe)
     (__right_card__ : Prop)
-    (a_bent_card: COMPILED Box Pigeon downhill extremum)
+    (a_bent_card: COMPILED Box Pigeon what_i_experience what_others_observe)
     (where_the_quarter_is : LOCAL Box Pigeon :=
         a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
     (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
@@ -285,8 +286,8 @@ def BUT_WE_ARE_CLOSE_ENOUGH_TO_SEE_THE_PI___SORRY_NO_CAKE_HERE
   THE LAW OF NU-TRINOS, IN TWO STEPS.
 
   Below LOGICAL there is no gate left, because below LOGICAL is not a rung at all
-  -- it is the SEAM ITSELF.  `LOCAL` and `UNIVERSAL` are the pair `(downhill,
-  extremum)` that every rung above was indexed BY.  We have been standing on them
+  -- it is the SEAM ITSELF.  `LOCAL` and `UNIVERSAL` are the pair `(what_i_experience,
+  what_others_observe)` that every rung above was indexed BY.  We have been standing on them
   the whole way down.
 
   And `UNIVERSAL` is indexed by a `LOCAL`, which is why this is a ONE STEP HOP and
@@ -324,11 +325,11 @@ def BUT_WE_ARE_CLOSE_ENOUGH_TO_SEE_THE_PI___SORRY_NO_CAKE_HERE
   SpaceTimePaths -- the outside cards -- are the only things that go anywhere.
 -/
 def WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED
-    [_the_shill: INFERRED Box Pigeon downhill extremum]
+    [_the_shill: INFERRED Box Pigeon what_i_experience what_others_observe]
     (__left_card__ : Prop)
-    (__quarter__ : INFERRED Box Pigeon downhill extremum)
+    (__quarter__ : INFERRED Box Pigeon what_i_experience what_others_observe)
     (__right_card__ : Prop)
-    (a_bent_card: COMPILED Box Pigeon downhill extremum)
+    (a_bent_card: COMPILED Box Pigeon what_i_experience what_others_observe)
     (where_the_quarter_is : LOCAL Box Pigeon :=
         a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
     (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
@@ -354,11 +355,11 @@ def WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED
   thing under the middle card never goes anywhere.
 -/
 def BUT_THE_INNER_CARD_DOES_NOT
-    [_the_shill: INFERRED Box Pigeon downhill extremum]
+    [_the_shill: INFERRED Box Pigeon what_i_experience what_others_observe]
     (__left_card__ : Prop)
-    (__quarter__ : INFERRED Box Pigeon downhill extremum)
+    (__quarter__ : INFERRED Box Pigeon what_i_experience what_others_observe)
     (__right_card__ : Prop)
-    (a_bent_card: COMPILED Box Pigeon downhill extremum)
+    (a_bent_card: COMPILED Box Pigeon what_i_experience what_others_observe)
     (where_the_quarter_is : LOCAL Box Pigeon :=
         a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
     -- the shuffled universal from step one.  Named `the_a_train` after Episode 5.
@@ -880,10 +881,10 @@ def the_result : Metavariable Closure := .base nowtrino.fact an_inference.α
 set_option linter.unusedSectionVars false in
 theorem less_le_more :
     the_result (Box := Box) (Pigeon := Pigeon)
-        (downhill := downhill) (extremum := extremum)
+        (what_i_experience := what_i_experience) (what_others_observe := what_others_observe)
       ≤ .step nowtrino.fact
           (the_result (Box := Box) (Pigeon := Pigeon)
-            (downhill := downhill) (extremum := extremum)) := by
+            (what_i_experience := what_i_experience) (what_others_observe := what_others_observe)) := by
   show Metavariable.le (.base nowtrino.fact an_inference.α)
         (.step nowtrino.fact (.base nowtrino.fact an_inference.α))
   simp [Metavariable.le]
@@ -940,7 +941,7 @@ def take_it_around_again : Closure → Closure := fun evidence =>
 set_option linter.unusedSectionVars false in
 def and_it_is_still_on_the_table : Closure :=
   take_it_around_again (Box := Box) (Pigeon := Pigeon)
-    (downhill := downhill) (extremum := extremum) an_inference.α
+    (what_i_experience := what_i_experience) (what_others_observe := what_others_observe) an_inference.α
 
 end Monte
 
@@ -1462,8 +1463,8 @@ noncomputable instance AND_SOMEBODY_STILL_HAS_TO_GRADUATE : REAL Prop truthCarri
   FINALLY_YOU_GRADUATE Prop truthCarrier
 
 -- The seam pair, at the floor.  From here INFERRED synthesizes the rest of the band on its own.
-noncomputable def theLocal : LOCAL Prop truthCarrier := inferInstance
-noncomputable def theUniversal : UNIVERSAL Prop truthCarrier theLocal := inferInstance
+noncomputable def this_way : LOCAL Prop truthCarrier := inferInstance
+noncomputable def that_way : UNIVERSAL Prop truthCarrier theLocal := inferInstance
 
 -- AND NOW RUN THE TAPE BACK THROUGH THE TURN.  theClosure needed twenty universe seats pinned by hand, because a walk can only
 -- pin the seats it sits in.  The turn carries the whole thirty-four-gate band, so it needs TWO HUNDRED AND FORTY-FIVE.  Count
@@ -1479,7 +1480,7 @@ noncomputable def theTurnedClosure : Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-    (Box := Prop) (Pigeon := truthCarrier) (downhill := theLocal) (extremum := theUniversal) theClosure
+    (Box := Prop) (Pigeon := truthCarrier) (what_i_experience := this_way) (what_others_observe := that_way) theClosure
 
 -- THE TURN'S CARD.  Both stanzas on theClosure are theOriginFact, whose decTruth is `isTrue rfl`, so the table lands on
 -- (isTrue, isTrue) and the turn pumps `.same` -- the first `.same` the device has ever minted.  It closes on the first turn,

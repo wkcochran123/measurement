@@ -23,8 +23,6 @@ namespace Measurement
 universe i j
 
 /-
-HOUSE-TAPE CHORUS, TRUE PANEL -- DRAFT STORY TEXT
-
 This is the trace
 that executed the tape
 that lived in the Fact
@@ -33,12 +31,14 @@ that John built.
 The tape is still one character.  The register is not on it.  The story is
 not on it.  The trace is the house built around it after John starts driving
 steel into the mountain.
+
+As for the Nat. Typesetting engines require generation of page numbers for indexing the table of contents.
 -/
 class TYPESET (Box: Type i) (Pigeon: CarrierProcess Box) (rung: Nat)
     (Lifted: Type j) where
   register_value : Lifted
   universe_id    : Number
-  galley         : CompilerTape
+  the_page       : CompilerTape
 
 /-
 This is the origin
@@ -51,16 +51,13 @@ The first spike is boring on purpose: the carried value is just the carrier's
 number, the universe id is zero, and the tape is whatever the trace brought
 to the face.  Steel starts as a local receipt.
 -/
-instance (priority := low) TYPESET_origin
+instance (priority := low) TYPESET_Episode1_Fact
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 1]
-    -- TANGE (law-6 read): CarrierProcess.value : Number (Episode 1), not Box --
-    -- the spec's own body (register_value := Pigeon.value) forces the anchor's
-    -- Lifted to Number; the value rides the ULift ladder from there.
+    [the_naotrino_theory: REVIEWED Box Pigeon 1]
     : TYPESET Box Pigeon 1 Number :=
   { register_value := Pigeon.value
     universe_id    := .zero Pigeon.symbol
-    galley         := t.rebuttal }
+    the_page         := the_naotrino_theory.rebuttal }
 
 /-
 This is the metaprogram that admits the mark (Episode 5: CAN_YOU_SEE_A_CHARACTERISTIC):
@@ -78,23 +75,20 @@ The tape does not become a novel.  The class dictionary does.
 -/
 instance (priority := low) TYPESET_page_2
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 2]
+    [the_naotrino_theory: REVIEWED Box Pigeon 2]
     [below: TYPESET Box Pigeon 1 Number]
     : TYPESET Box Pigeon 2 (ULift Number) :=
-    -- the head-read, once (needle rule); the non-methodology arms are
-    -- by-construction unreachable at page 2 but the match carries them --
-    -- the direction exists, is handled, is never taken.
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     -- the Prop slot carries the page's own slip proposition, quoted (law 4);
     -- its decidability derives from the two decTruths when read, never here.
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that counts the number (Episode 5: CAN_YOU_COUNT_THEM):
@@ -110,18 +104,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_3
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 3]
+    [the_naotrino_theory: REVIEWED Box Pigeon 3]
     [below: TYPESET Box Pigeon 2 (ULift Number)]
     : TYPESET Box Pigeon 3 (ULift (ULift Number)) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction νtrino _ => (νtrino, Pigeon.symbol) -- We shall call our new particle after t
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that encodes the glyph (Episode 5: CAN_YOU_LABEL_THEM):
@@ -138,18 +132,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_4
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 4]
+    [the_naotrino_theory: REVIEWED Box Pigeon 4]
     [below: TYPESET Box Pigeon 3 (ULift (ULift Number))]
     : TYPESET Box Pigeon 4 (ULift (ULift (ULift Number))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that residues the code (Episode 5: CAN_YOU_SEE_THE_BOUNDARY):
@@ -167,18 +161,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_5
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 5]
+    [the_naotrino_theory: REVIEWED Box Pigeon 5]
     [below: TYPESET Box Pigeon 4 (ULift (ULift (ULift Number)))]
     : TYPESET Box Pigeon 5 (ULift (ULift (ULift (ULift Number)))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that binaries the value (Episode 5: DID_THE_PARTICLE_COLOR_OUTSIDE_THE_LINES):
@@ -200,18 +194,18 @@ By now the stanza is already longer than the tape.  That is the point.
 -/
 instance (priority := low) TYPESET_page_6
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 6]
+    [the_naotrino_theory: REVIEWED Box Pigeon 6]
     [below: TYPESET Box Pigeon 5 (ULift (ULift (ULift (ULift Number))))]
     : TYPESET Box Pigeon 6 (ULift (ULift (ULift (ULift (ULift Number))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that repeats the process (Episode 5: DO_YOU_HEAR_A_BUNCH_OF_CLICKS):
@@ -227,18 +221,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_7
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 7]
+    [the_naotrino_theory: REVIEWED Box Pigeon 7]
     [below: TYPESET Box Pigeon 6 (ULift (ULift (ULift (ULift (ULift Number)))))]
     : TYPESET Box Pigeon 7 (ULift (ULift (ULift (ULift (ULift (ULift Number)))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that numbers the value (Episode 5: HOW_MANY_CLICKS_DO_YOU_HEAR):
@@ -254,18 +248,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_8
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 8]
+    [the_naotrino_theory: REVIEWED Box Pigeon 8]
     [below: TYPESET Box Pigeon 7 (ULift (ULift (ULift (ULift (ULift (ULift Number))))))]
     : TYPESET Box Pigeon 8 (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that represents the code (Episode 5: WRITE_DOWN_HOW_MANY_CLICKS_YOU_HEAR_IN_A_TABLE):
@@ -281,18 +275,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_9
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 9]
+    [the_naotrino_theory: REVIEWED Box Pigeon 9]
     [below: TYPESET Box Pigeon 8 (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))]
     : TYPESET Box Pigeon 9 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that physicals the method (Episode 5: ROSS!_GET_THE_READOUTS):
@@ -308,18 +302,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_10
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 10]
+    [the_naotrino_theory: REVIEWED Box Pigeon 10]
     [below: TYPESET Box Pigeon 9 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))]
     : TYPESET Box Pigeon 10 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that compares the process:
@@ -335,18 +329,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_11
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 11]
+    [the_naotrino_theory: REVIEWED Box Pigeon 11]
     [below: TYPESET Box Pigeon 10 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))]
     : TYPESET Box Pigeon 11 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that observes the mark (Episode 5: DO_YOU_SEE_THE_LIGHT_FLASH_WHEN_YOU_HEAR_THE_CLICK):
@@ -362,18 +356,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_12
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 12]
+    [the_naotrino_theory: REVIEWED Box Pigeon 12]
     [below: TYPESET Box Pigeon 11 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))]
     : TYPESET Box Pigeon 12 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that presents the process (Episode 5: THATS_THE_PHOTOELECTRIC_EFFECT):
@@ -389,18 +383,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_13
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 13]
+    [the_naotrino_theory: REVIEWED Box Pigeon 13]
     [below: TYPESET Box Pigeon 12 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))]
     : TYPESET Box Pigeon 13 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that measures the step (Episode 5: THE_PHOTON_IS_MEASURABLE):
@@ -416,18 +410,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_14
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 14]
+    [the_naotrino_theory: REVIEWED Box Pigeon 14]
     [below: TYPESET Box Pigeon 13 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))]
     : TYPESET Box Pigeon 14 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that gungans the glyph (Episode 5: PERHAPS_NOT_WITH_A_MULTIMETER_BUT_YOU_UNDERSTAND_WHAT_I_MEAN):
@@ -443,18 +437,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_15
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 15]
+    [the_naotrino_theory: REVIEWED Box Pigeon 15]
     [below: TYPESET Box Pigeon 14 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))]
     : TYPESET Box Pigeon 15 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that sources the code (Episode 5: WE_CAN_NOW_AUTOMATE_THE_COLLECTION_OF_THE_DATA):
@@ -470,18 +464,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_16
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 16]
+    [the_naotrino_theory: REVIEWED Box Pigeon 16]
     [below: TYPESET Box Pigeon 15 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))]
     : TYPESET Box Pigeon 16 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that executes the code (Episode 5: AND_THE_COMPILER_WILL_AUTOMATICALLY_CONVERT_THE_RAW_DATA_TO_TABLES):
@@ -497,18 +491,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_17
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 17]
+    [the_naotrino_theory: REVIEWED Box Pigeon 17]
     [below: TYPESET Box Pigeon 16 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))]
     : TYPESET Box Pigeon 17 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that values the function (Episode 5: ONE_VALUE_AT_A_TIME_IN_ORDER_AND_WRITE_SOMETHING_TO_DISK):
@@ -524,18 +518,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_18
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 18]
+    [the_naotrino_theory: REVIEWED Box Pigeon 18]
     [below: TYPESET Box Pigeon 17 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))]
     : TYPESET Box Pigeon 18 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that magnitudes the value (Episode 5: TURNS_OUT_YOU_CAN_FILL_YOUR_DISK):
@@ -551,18 +545,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_19
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 19]
+    [the_naotrino_theory: REVIEWED Box Pigeon 19]
     [below: TYPESET Box Pigeon 18 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))]
     : TYPESET Box Pigeon 19 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that scales the value (Episode 5: SO_YOU_NEED_TO_GET_MORE_DISKS):
@@ -578,18 +572,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_20
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 20]
+    [the_naotrino_theory: REVIEWED Box Pigeon 20]
     [below: TYPESET Box Pigeon 19 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))]
     : TYPESET Box Pigeon 20 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that loads the process (Episode 5: AND_MORE_PROCESSORS_BECAUSE_THERE_ARE_A_LOT_OF_NOWTRINOS):
@@ -605,18 +599,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_21
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 21]
+    [the_naotrino_theory: REVIEWED Box Pigeon 21]
     [below: TYPESET Box Pigeon 20 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))]
     : TYPESET Box Pigeon 21 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that finite-elements the model (Episode 5: SO_MANY_SENSITIVE_NOWTRINO_DETECTORS_TO_DETECT_PRESENCE___WHERE_DID_IT_GO):
@@ -632,18 +626,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_22
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 22]
+    [the_naotrino_theory: REVIEWED Box Pigeon 22]
     [below: TYPESET Box Pigeon 21 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))]
     : TYPESET Box Pigeon 22 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that bullshits the model (Episode 5: THERE_IT_IS___ONLY_CERTAIN_ELEMENTS_RESPOND_TO_NOWTRINO_DETECTION):
@@ -659,18 +653,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_23
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 23]
+    [the_naotrino_theory: REVIEWED Box Pigeon 23]
     [below: TYPESET Box Pigeon 22 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))]
     : TYPESET Box Pigeon 23 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that propagandizes the model (Episode 5: WE_NEED_TO_GET_A_GRANT_TO_GET_MORE_NOWTRINO_DETECTORS___WE_KEEP_LOSING_IT):
@@ -686,18 +680,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_24
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 24]
+    [the_naotrino_theory: REVIEWED Box Pigeon 24]
     [below: TYPESET Box Pigeon 23 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))]
     : TYPESET Box Pigeon 24 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that acolytes the method (Episode 5: MAKE_SURE_WE_CAN_GET_A_COUPLE_GRAD_STUDENTS):
@@ -713,18 +707,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_25
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 25]
+    [the_naotrino_theory: REVIEWED Box Pigeon 25]
     [below: TYPESET Box Pigeon 24 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))]
     : TYPESET Box Pigeon 25 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that sciences the method (Episode 5: ABD):
@@ -740,18 +734,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_26
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 26]
+    [the_naotrino_theory: REVIEWED Box Pigeon 26]
     [below: TYPESET Box Pigeon 25 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))]
     : TYPESET Box Pigeon 26 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that truths the code (Episode 5: YOU_HAVE_TO_STOP_TAKING_CLASSES_TO_GRADUATE):
@@ -767,18 +761,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_27
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 27]
+    [the_naotrino_theory: REVIEWED Box Pigeon 27]
     [below: TYPESET Box Pigeon 26 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))]
     : TYPESET Box Pigeon 27 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that witnesses the mark (Episode 5: THEN_COMES_THE_LAB_WORK):
@@ -794,18 +788,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_28
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 28]
+    [the_naotrino_theory: REVIEWED Box Pigeon 28]
     [below: TYPESET Box Pigeon 27 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 28 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that reals the model (Episode 5: FINALLY_YOU_GRADUATE):
@@ -821,18 +815,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_29
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 29]
+    [the_naotrino_theory: REVIEWED Box Pigeon 29]
     [below: TYPESET Box Pigeon 28 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 29 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that locals the variable (Episode 5: AND_NOW_YOU_HAVE_A_DIFFERENTIAL_EQUATION_THAT_SAYS):
@@ -848,18 +842,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_30
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 30]
+    [the_naotrino_theory: REVIEWED Box Pigeon 30]
     [below: TYPESET Box Pigeon 29 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 30 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that universals the function (Episode 5: PROBLEM_IS_THE_DIFFERENTIAL_EQUATION_IS_NOT_RELATIVE_BUT_IT_SHOULD_BE):
@@ -875,18 +869,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_31
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 31]
+    [the_naotrino_theory: REVIEWED Box Pigeon 31]
     [below: TYPESET Box Pigeon 30 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 31 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that logics the code (Episode 5: OBVIOUSLY_THE_NOWTRINO_IS_SPIN_2):
@@ -902,18 +896,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_32
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 32]
+    [the_naotrino_theory: REVIEWED Box Pigeon 32]
     [below: TYPESET Box Pigeon 31 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 32 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that halts the method (Episode 5: DONT_WORRY_ABOUT_THE_NAOTRINO_BEING_SPIN_2_YET___FUTURE_WORK):
@@ -929,18 +923,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_33
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 33]
+    [the_naotrino_theory: REVIEWED Box Pigeon 33]
     [below: TYPESET Box Pigeon 32 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 33 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that measures the step (Episode 5: THE_NAOTRINO_IS_MEASURED):
@@ -956,18 +950,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_34
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 34]
+    [the_naotrino_theory: REVIEWED Box Pigeon 34]
     [below: TYPESET Box Pigeon 33 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 34 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that compiles the tape (Episode 5: WE_ARE_CONSTANTLY_INUNDATED_BY_NAOTRINOES):
@@ -983,18 +977,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_35
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 35]
+    [the_naotrino_theory: REVIEWED Box Pigeon 35]
     [below: TYPESET Box Pigeon 34 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 35 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /-
 This is the metaprogram that outputs the value (Episode 5: HONEST_TO_GOD_IT_SHOWS_UP_EVERY_TIME):
@@ -1010,18 +1004,18 @@ that John built.
 -/
 instance (priority := low) TYPESET_page_36
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    [t: REVIEWED Box Pigeon 36]
+    [the_naotrino_theory: REVIEWED Box Pigeon 36]
     [below: TYPESET Box Pigeon 35 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 36 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match t.rebuttal with
-      | .introduction f _ => (f, Pigeon.symbol)
-      | .methodology c s _ _ _ => (c, s)
-      | .results c s _ _ _ _ _ => (c, s)
+    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
     { register_value := ULift.up below.register_value
       universe_id    := .one Pigeon.symbol below.universe_id
-      galley := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
+      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
                 Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.galley }
+                below.the_page }
 
 /- THE SEAM'S EXIT. The three-trips acceptance at charge 0/1/2 is DEFERRED TO
 Episode9 by design: the trips are passes, the passes are counted by charge,
@@ -1048,7 +1042,7 @@ noncomputable def pressCheck (Box: Type i) (Pigeon: CarrierProcess Box)
     -- the head-read, once (needle rule); the non-results arms are
     -- by-construction unreachable at the seam but carried -- the direction
     -- exists, is handled, is never taken.
-    let slipped : Fact := match top.galley with
+    let slipped : Fact := match top.the_page with
       | .results c s _ _ _ _ _ =>
           -- the read-time decide: the quoted proposition's decidability
           -- derived from the pair's own decTruths, never Classical.

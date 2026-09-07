@@ -11,7 +11,7 @@ YOU_THE_READER: WHAT !
 THE_DEVICE: MAIN SCREEN TURN ON .
 YOU_THE_READER: IT'S YOU !!
 YOU_THE_KNOWER: HOW ARE YOU GENTLEMEN !!
-(c) 2026 All your base are belong to us.
+(c) 2026 All your rights are belong to us.
 
 "       Costello: What's the guy's name on first?
           Abbott: No, What's on second
@@ -22,7 +22,7 @@ YOU_THE_KNOWER: HOW ARE YOU GENTLEMEN !!
 
 lake build You have no chance to survive make your time. Ha ha ha ha ...
 
-__EPISODE 8__: _THE ESCALATION_
+__EPISODE 8__: _THE MISDIRECTION_
 
 The biggest problem with most rigorous theories of science is just that they aren't all that pretty.
                            -- definitely NOT Paul Dirac.
