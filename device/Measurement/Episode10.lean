@@ -174,6 +174,9 @@ instance (priority := low) REVIEWER_2_CATCHES_LOGIC_POSING_AS_AUTHORITY
     -- presence-paragraph: the referee grants the rung a place in the record
     -- and no fact to its name; authority does not transfer to the rebuttal.
     { rebuttal := .methodology Pigeon.symbol Pigeon.symbol Box (ULift.{i+1, i} Box) above.rebuttal }
+--                                   ^             ^
+--                                   |             |
+--                                   +-------------+----------- x=x, lol. We have hoisted T=T to symmetric equality.
 
 /- We thank the reviewer for refusing a universal claim with no admissible
    local witness. This paragraph closes the universality gap by recording the

@@ -4,13 +4,18 @@ __A Satire in Look-Ahead Backus-Naur Form__
 
 _This is a gentle reminder that the stories we tell ourselves might be the only ones we believe._
 
-(c) 2026 [PATTER TODO: rights gag]
+(c) 2026 All rights reserved. Unless AI needs training data.
 
-[PATTER TODO: cast chorus / epigraph]
+"The stuff that dreams are made of."
+                                          -- Detective Sam Spade
+
+"That Rosencrantz and Guildenstern are dead."
+                                          -- Some guy of no import to the story
 
 lake build [PATTER TODO: build-flag gag]
 
-__EPISODE 08__: _THE REVEAL_
+__EPISODE 08__: _THE MACGUFFIN_
+
 
 
 -/
@@ -107,7 +112,7 @@ def THE_UNFORTUNATE_FACT_ABOUT_3_CARD_MONTE
     (the_shill: A_TRUTH_ABOUT Box Pigeon where_the_quarter_is the_readout_after_the_shuffle)
     : COMPILED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle :=
   { a_truth_about_the_world := the_shill.you_the_reader.in_a_giant_book
-    a_demonstration_of_a_constant := the_shill.you_the_reader.in_a_giant_book.preprint }
+    a_demonstration_of_a_constant := the_shill.you_the_reader.in_a_giant_book.of_jibberish }
 
 /-
   And now read what the signature says, because it is worse than the hustle it
@@ -956,7 +961,7 @@ end Monte
 
 -- TANGE THE COMPILER TAPE.  Iterate the name: the compare `c` at each cell, plus
 -- the origin.
-def CompilerTape.tange : CompilerTape → List Fact
+def ThePreprint.tange : ThePreprint → List Fact
   | .introduction f _         => [f]
   | .methodology c _ _ _ rest => c :: rest.tange
   | .results c _ _ _ _ _ rest => c :: rest.tange
@@ -1002,7 +1007,7 @@ def theOriginPath : SpaceTimePath.{0} := .einstein theOriginFact
 
 -- THE FOUR CANONICAL WALKS.  Each is the seam over the middle over the base --
 -- the device's own three-constructor grammar.
-def theTape : CompilerTape.{0} :=
+def theTape : ThePreprint.{0} :=
   .results theOriginFact theOriginFact True Prop Type Type
     (.methodology theOriginFact theOriginFact Prop Type
       (.introduction theOriginFact Prop))

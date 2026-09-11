@@ -60,22 +60,22 @@ ME: That's the point. Opacity.  ----+ There is _always_ a before. We keep seeing
 inductive Jar  -- Bullshit meter ≈ 153    *hmmm*,    I would have thought this should be higher?
   | color: Fact → Area → Jar
   | bang: Fact → Jar → Jar -- BINKS!  Meesa Spake! -----+ So, what the hell is a jar?  I've never heard of a mathematical or physical concept called
---   ⠀⠀⠀⠀⠀⠀⢀⣶⣤⣀⠀⠀⠀⡼⡑⠢⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                 | a jar.  Will, it is like a bag, except you can kinda see whats in the middle of it. You
+--   ⠀⠀⠀⠀⠀⠀⢀⣶⣤⣀⠀⠀⠀⡼⡑⠢⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                 | a jar.  Well, it is like a bag, except we can kinda see whats in the middle of it. We
 --   ⠀⠀⠀⠀⠀⠀⢘⢉⢹⣯⣆⡰⣾⣷⣀⡄⣼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                 | can't really see what's around the edge because of the curvature of the jar. The important
---   ⠀⠀⠀⠀⠀⠀⠈⣧⠭⣹⢟⣽⣿⣷⡚⠿⠏⠳⠒⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀                 | thing about a jar is yuo can classify the stuff inside by justs looking at it rather than
+--   ⠀⠀⠀⠀⠀⠀⠈⣧⠭⣹⢟⣽⣿⣷⡚⠿⠏⠳⠒⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀                 | thing about a jar is we can classify the stuff inside by justs looking at it rather than
 --   ⠀⠀⠀⠀⠀⠀⠀⢈⠏⠈⠼⣿⣿⣏⠉⠀⠀⠀⠀⢶⠛⠢⡀⠀⠀⠀⠀⠀⠀⠀                 | _actually_ opening it up and verifying what's inside. You can't verify _EVERY LITTLE DETAIL_,
---   ⠀⠀⠀⠀⠀⠀⠀⡦⠂⠀⠊⠳⠀⠛⡢⠀⠀⠀⠀⠈⠄⠁⣻⡄⠀⠀⠀⠀⠀⠀                 | but you can get the gist of it.
+--   ⠀⠀⠀⠀⠀⠀⠀⡦⠂⠀⠊⠳⠀⠛⡢⠀⠀⠀⠀⠈⠄⠁⣻⡄⠀⠀⠀⠀⠀⠀                 | but we can get the gist of it.
 --   ⠀⠀⠀⠀⠀⠀⡔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠄⣘⢣⠀⠀⠀⠀⠀⠀                 |
 --   ⠀⠀⠀⠀⠀⢎⣀⡠⠤⢄⣀⡀⠤⠴⠶⠠⠀⠀⠀⠀⢀⠎⢸⣽⡀⠀⠀⠀⠀⠀                 | TBF, this is the most elastic concept in the entire stack of the proof. I mean, it allows
 --   ⠀⠀⠀⠀⠀⠀⠘⡤⣀⣀⣀⣤⣶⣤⠤⠂⠐⠀⠀⠀⢸⠘⠔⠝⡅⠀⠀⠀⠀⠀                 | spooky actiona at a distance, like changing the value of a card from "not hiding a quarter"
 --   ⠀⠀⠀⠀⠀⠀⢰⢅⣽⢷⡝⡈⠀⠀⠀⢀⠀⠀⠀⠀⣟⠈⢄⡌⡵⠀⠀⠀⠀⠀                 | to "hiding a quarter."
 --   ⠀⠀⠀⠀⠀⢀⢇⣾⣯⡞⢀⠱⡀⠀⠀⠀⠀⠀⠀⢸⠀⢔⠀⠈⠂⡆⠀⠀⠀⠀                 |
 --   ⠀⠀⠀⠀⠀⡜⣻⡿⣹⠃⡌⡠⠃⠀⠀⠀⠀⠀⢠⣿⠀⠀⠈⢄⠉⢳⠀⠀⠀⠀                 | I get it, it makes no sense. It is a jar that has multiple things inside but it behaves as
---   ⠀⠀⠀⠀⢰⢡⣿⢷⣿⡖⠉⠀⠀⠀⠀⠀⠀⠀⠀⢿⣆⠀⢀⣀⠊⠀⠢⠀⠀⠀                 | a unit of boundedness. Looks like you can just keep sticking stuff into the jar, but you
+--   ⠀⠀⠀⠀⢰⢡⣿⢷⣿⡖⠉⠀⠀⠀⠀⠀⠀⠀⠀⢿⣆⠀⢀⣀⠊⠀⠢⠀⠀⠀                 | a unit of boundedness. Looks like we can just keep sticking stuff into the jar, but we
 --   ⠀⠀⢀⢔⣡⣾⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣻⣷⣄⡀⠀⠁⠅⣵⠀⠀                 | may find that being able to put _anything_ in the jar leads to a serious build time
 --   ⠀⠀⣶⣯⠟⠛⣿⣿⣿⣿⣷⣦⣤⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⡧⡀⠠⠎⠌⡄⠀                 | problem.
 --   ⠀⠀⠜⠁⠀⠀⠸⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⢠⣿⣽⣿⣿⣿⣧⠀⠑⠄⡉⢘⡄                 |
---   ⡔⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⣼⣿⣿⣿⣿⣿⣿⠀⠀⠀⠘⡄⡴                 | This code already takes dozens and dozens of hours to build.
+--   ⡔⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⣼⣿⣿⣿⣿⣿⣿⠀⠀⠀⠘⡄⡴                 | This code already takes a minute or two to build.
 
   | superposition: Fact → Jar → Jar → Jar
 --        ^
@@ -985,12 +985,12 @@ end Basis
 --                                                 +---------------------------------------------+
 --                                                /|\                                           /|
 --                                               / | \                                         //|
---                                              +--+--\---------------------------------------+/ |
+--                                              +---------------------------------------------+/ |
 --                                              |\ |   \                                     //  |
 --                                              | \|    \                                   //|  |
---                                              |  |     \                                 // |  |
+--                                              |  \     \                                 // |  |
 --                                              |  |\     \                               //  |  |
---                                              |  | \     \                             //   |  |
+--       This is a torus <----------------------|----\--   \                             //   |  |
 --                                              |  |  \     +---------------------------/+    |  |
 --                                              |  |   \   /|                          //|    |  |
 --                                              |  |    \ / |                         // |    |  |
@@ -998,15 +998,15 @@ end Basis
 --                                              |  |     |  |                         |  |    |  |
 --                                              |  |     |  |                         |  |    |  |
 --                                              |  |     |  | THE                     |  |    |  |
---                                              |  |     |  |   FRINKAHEDRON!         |  |    |  |
+--                                              |  |     |  |   FRINKAHEDRON!   ------|-------|-------------> This is where the Space Jam goes.
 --                                              |  |     |  |                         |  |    |  |
 --                                              |  |     |  |                         |  |    |  |
 --                                              |  |     |  +-------------------------|--+    |  |
 --                                              |  |     | //                         | / \   |  |
---                                              |  |     |//                          |/   \  |  |
---                                              |  |     +/---------------------------+     \ |  |
+--                                              |  |     |//                          |/   \  | -------------> This is a sphere.
+--                                              |  |     +----------------------------+     \ |  |
 --                                              |  |   //                              \     \|  |
---                                              |  |  //                                \     \  |
+--                                              |  |  //                                \     |  |
 --                                              |  | //                                  \    |\ |
 --                                              |  |//                                    \   | \|
 --                                              |  +---------------------------------------\--|--+
@@ -1234,31 +1234,31 @@ ME: We need a new friend. One that knows other pokémath.             | linear r
 -/ --                                                                | to communicate with a supercomputer. There may not exist computable
 --                                                                   | non-linearity, but its ever finer approximation certainly does.
 class OF   -- 2368
-    (Box: Type i)
-    (Pigeon: CarrierProcess Box)
-    [DISTINGUISHABLE Box Pigeon]     -- So, she _ASSUMES_ they have an undocumented one and proceeds to add the release to DISCOGS.
-    [ADMISSIBLE Box Pigeon]          -- Only to realize she can't _EXACTLY_ find the _RIGHT_ release of their media in DISCOGS to catalog.
-    [COUNTABLE Box Pigeon]           -- And spends hours every day on DISCOGS organizing her collection.
-    [ENCODED Box Pigeon]             -- The audiophile purchases the finest copies of any analog recordings.
-    [RESIDUE Box Pigeon]             -- The audiophile meticulously cleans her records.
-    [BINARY Box Pigeon]              -- Invariably, there will be two camps.  The _AUDIOPHILE_ and the _NORMIE_.
-    [REPEATABLE Box Pigeon]          -- And I can burn the output of the DAC to a CD?  Holy crap!
-    [NUMERIC Box Pigeon]             -- How about that, I just built a DAC !?
-    [REPRESENTABLE Box Pigeon]       -- Which means I can quantize and take the DFT!
-    [PHYSICAL Box Pigeon]            -- I just know that what I hear is measured by this physical process of oscillations.
-    [COMPARABLE Box Pigeon]          -- Dunno what they mean though.
-    [OBSERVED Box Pigeon]            -- There we are, I found some phonemes.
-    [PRESENT Box Pigeon]             -- Fucking Jar Jar. Let me use an osciliscope and measure their tones and figure it out.
-    [MEASURABLE Box Pigeon]          -- MEESA TRUE!
-    [GUNGAN Box Pigeon]              -- Translate that into Gungan and ask Jar Jar Binks if he can relate to it?
-    [SOURCE Box Pigeon]              -- To quote Johnny Five: "NEED INPUT!"  Doesn't matter what kind.
-    [EXECUTED Box Pigeon]            -- Actually, I take that back, we have a program that can compute the value from an input
-    [VALUE Box Pigeon]               -- No, just some sort of representation of the value.
-    [MAGNITUDE Box Pigeon]           -- And this the length?   Do we have _e^iθ_?
-    [SCALED Box Pigeon]              -- Could this possibly represent the direction of said load?
-    [LOAD Box Pigeon]                -- hmmm, a _LOAD_?  Like _μ_ __N__?
---     ^                                ^
---     |                                |   +------------- Just this once, let's read it ^ this way.
+    (Box: Type i) ----------------- START OVER HERE -> -> -----------------------------------------------------------------------------------------+
+    (Pigeon: CarrierProcess Box) --                                                                                                                |
+    [DISTINGUISHABLE Box Pigeon]     -- So, she _ASSUMES_ she has an undocumented one and proceeds to add the release to DISCOGS.                  |
+    [ADMISSIBLE Box Pigeon]          -- Only to realize she can't _EXACTLY_ find the _RIGHT_ release of their media in DISCOGS to catalog.         |
+    [COUNTABLE Box Pigeon]           -- And spends hours every day on DISCOGS organizing her collection.                                           |
+    [ENCODED Box Pigeon]             -- The audiophile purchases the finest copies of any analog recordings.                                       |
+    [RESIDUE Box Pigeon]             -- The audiophile meticulously cleans her records.                                                            |
+    [BINARY Box Pigeon]              -- Invariably, there will be two camps.  The _AUDIOPHILE_ and the _NORMIE_.                                   |
+    [REPEATABLE Box Pigeon]          -- And I can burn the output of the DAC to a CD?  Holy crap!                                                  |
+    [NUMERIC Box Pigeon]             -- How about that, I just built a DAC !?                                                                      |
+    [REPRESENTABLE Box Pigeon]       -- Which means I can quantize and take the DFT!                                                               |
+    [PHYSICAL Box Pigeon]            -- I just know that what I hear is measured by this physical process of oscillations.                         |
+    [COMPARABLE Box Pigeon]          -- Dunno what they mean though.                                                                               |
+    [OBSERVED Box Pigeon]            -- There we are, I found some phonemes.                                                                       |
+    [PRESENT Box Pigeon]             -- Fucking Jar Jar. Santa brought an osciliscope. Let's measure his tones and figure out some phonemes.       |
+    [MEASURABLE Box Pigeon]          -- MEESA TRUE!                                                                                                |
+    [GUNGAN Box Pigeon]              -- Translate that into Gungan and ask Jar Jar Binks if he can relate to it?                                   |
+    [SOURCE Box Pigeon]              -- To quote Johnny Five: "NEED INPUT!"  Doesn't matter what kind.                                             |
+    [EXECUTED Box Pigeon]            -- Actually, I take that back, we have a program that can compute the value from an input                     |
+    [VALUE Box Pigeon]               -- No, just some sort of representation of the value.                                                         |
+    [MAGNITUDE Box Pigeon]           -- And this the length?   Do we have _e^iθ_?                            +-------------------------------------+
+    [SCALED Box Pigeon]              -- Could this possibly represent the direction of said load?            |
+    [LOAD Box Pigeon]                -- hmmm, a _LOAD_?  Like _μ_ __N__?                                     |
+--     ^                                ^                                                                    |
+--     |                                |   +------------- Just this once, let's read it ^ this way. --------+
 --     +--------+-----------------------+   |
 --              |                           |
 --              +---------------------------+
@@ -1302,7 +1302,7 @@ class OF   -- 2368
 --| the _TRAIN of THOUGHT_ that Einstein took. We don't get to put the stations where they are. So, we just put a spline through them, just like
 --| Planck taught us how.
 --|
---| My apologies to Planck.
+--| My apologies to Planck. Poor guy despised how right he was.
 
 /-- CHORUS:                                                  | The first words you wake up to in the morning as a student of numerical analysis is
 ME: I have this shotgun blast of a scatter. Gimme a slope.   | the phrase: _Assume f ∈ C²_. This _one_ assumption unlocks _SO MUCH_ computation, not
@@ -1318,7 +1318,7 @@ inductive Spline  -- 152                                     | Jar Jar is techni
 --                                                           | recursively to generate a Weierstrauss polynomial evaluated in Newton fashion that
 --                                                           | performs a Lagrange-style interpolation to build a method that optimizes the
 --                                                           | Sobolev-norm generated by a continuous mathematical problem, and solved with a Krylov
---                                                           | space optimization. 5 names. All GOATs.
+--                                                           | subspace optimization. 5 names. All GOATs.
 
 namespace Spline
 
@@ -1339,7 +1339,7 @@ def le : Spline → Spline → Prop := fun s1 s2 => ---------------------------+
       t1 = t2 ∧ p1 ≤ p2 ∧ (le tail1 tail2) --                              | Where was I? Oh yeah, on the *physical* impossibility of a universe with
   --                                                                       | distance as norm being in a state of a ball coming to rest at the top of
   -- 3. The Interpolant (The Second Variation / The Weak Derivative)       | a hill. At least one that can compute the norm of the force. I offer that
-  -- This is the "Inverse Gauss" arm.                                      | there is no reason for Euler's method to work on y'=sqrt(x) at x=0.
+  -- This is the "Inverse Gauss" arm.                                      | there is no reason for Euler's method to work on y'=√y at x=0.
   -- An interpolant contains a knot if the knot's polynomial               |
   -- satisfies the weak boundary conditions of the interpolation.          | No calculus required, write the method down. 0 + 0·x = 0 ∎ ("That's
   | .knot t1 p1 _, .interpolant f2 p_in p_out _ _ => --                    | 𝔽(1)-ny to me, right thar." (Tow Mater, you know _without_ the -tuh).
@@ -1353,7 +1353,7 @@ def le : Spline → Spline → Prop := fun s1 s2 => ---------------------------+
   --                                                                            | here. I bet we can factor _eigenvalue_ now and find out _REALLY_
   -- 5. Disallow Retrocausality                                                 | what it means
   -- A complex interpolation cannot be contained within a simple observation.
-  --Ockham enshrined.
+  -- Ockham enshrined.
   | .knot _ _ _, .observation _ => False
   | .interpolant _ _ _ _ _, .observation _ => False
   | .interpolant _ _ _ _ _, .knot _ _ _ => False

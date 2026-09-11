@@ -691,13 +691,15 @@ def le : Gospel → Gospel → Prop
 --| they could be the same. Are they though? That's the demonstration being performed. All I can tell you is that they are inside the disks I just
 --| found in our conveniently chosen commutators. This is what a quarter looks like: predictable eigenvalues. That's what is under the card.
 --|
+--| Would I lie to you? Or did you not recognize Sophisms? ∎
+--|
 --| We just put that under two of the three different cards we called "orbital dynamics":
 --|     1) The observation of heavenly bodies
 --|     2) The valence and spin of an electron
 --|     3) ????
 --|
 --| Step 4 is obviously _profit_.  lol, I said we don't have to do step 4. We will anyway, though. Because we need, say it with me,
---|                                           --------------------> **HIGHER ORDER TERMS** <-----------------------
+--|                                       --------------------> **HIGHER ORDER TERMS** <-----------------------
 termination_by _ source_file => sizeOf source_file --| Be sure to stop at the end of the episodes, lol.
 end Gospel
 
@@ -990,7 +992,8 @@ end Variation -- ∎ <-----| that's a weird place for a tombstone. Believe that 
 COMPILER: *wheezing* So, it did get difficult.          |
 JAR JAR: MEESA FALSE? ----------------------------------+ Is (T=T)≤(F=F) true? Seems obvious from the definition. What about (T=(T=T)) >=< ((T=T)=T)
 YOU the READER: 10 MYTRUE$ = "FALSE?":REM Testing.      | (F=(F=F)) >=< ((F=F)=F)? Seems like these should all be the same.  You can verify with the
-ME: I feel like that's cheating.                        | cerified Bug-Free(tm) code above.
+ME: I feel like that's cheating. I _love_ your palming  | cerified Bug-Free(tm) code above.
+    technique!
 -/
 @[reducible]
 structure BigRedDogProcess
@@ -1044,7 +1047,7 @@ JAR JAR: MEESA DARE YOU!                                                  | of a
 YOU the READER: ? --------------------------------------------------------+ finite number) will inevitably contribute information to Chaitin's number.
 ME: See, sometimes you can't predict the third result.                    | Problems like Busy Beaver show that unrepresentable numbers appear much
 -/ --                                                                     | sooner than expected, almost as a fundamental feature of Turing machines.
-@[reducible] --                                                           | Representation of uncomputability becomes impossible.
+@[reducible] --                                                           | Representation of uncomputability becomes impossible to describe formally.
 class LOCAL
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -1108,7 +1111,12 @@ class LOCAL
 --| in a total novel way that no one has ever thought of before, but didn't have the time to see if it pans out, and definitely no time to write it
 --| down first. Pretty certain, I'm not the only one that looks at the Schwarszchild solution and says, yeah, I see how that models gravity like
 --| sin(nx) models music.
-
+/- CHORUS:                                                        | The equations derived from Einstein are, admittedly, a simplification of a complex
+COMPILER: Fact in AST at level _i_                                | process.  The process of timing a reflected photon is considered impossible as
+JAR JAR: MEESA FACT!                                              | the gap in the description tends to fail to close.  If you linearly interpolate
+YOU the READER: Relativity is just a fact of life ----------------+ this gap, the math loses its ability to process hyperbolic geodesics in finite
+ME: That is a pretty good flop. I almost don't see the bent card. | time. Instead, this has to be affixed with 3M contact strips.  I'm not paying
+-/ --                                                             | the security deposit.
 inductive SpaceTimePath
   | einstein: Fact → SpaceTimePath --                                                             | By His noodly appendage, I offer to Him these very
   | whitehole: Fact → Type i → SpaceTimePath → SpaceTimePath --                                   | compute cycles, let them be stretched into
@@ -1129,8 +1137,6 @@ def le : SpaceTimePath → SpaceTimePath → Prop
 --|                                      |           | | |          +--------------------------------------+ distinction. Check the API, you will
 --|   Not much seems to matter here. |---+-----------+-+-+          | see the bug I put in earlier manifest as exclusively _1_ extra universe. Most
 --|                                                                 | properties need _at least_ 2 extra universes to maintain consistency.
-
-
 --| **THE GRIFT:**
 --| Instead of enforcing boundary conditions that fix _c_, why not have boundary conditions that _penalize_ _c_ getting too close to some number,
 --| say, for the sake of argument, 1. That makes a wonderfully simple, yet exceedingly hyperbolic (in multiple senses of that word) differential form
@@ -1203,10 +1209,16 @@ end SpaceTimePath
 instance : LE SpaceTimePath where
   le := SpaceTimePath.le
 
+--| See? Orbital dynamics. Determining what happens before something else can be quite difficult without the train schedule.  Once you have a
+--| train schedule, though, the constant just sorta falls out.  I'm beginning to think that there aren't going to be any numbers in this proof at
+--| all.  Where does the constant come from?
+/- CHORUS:
+COMPILER:
+-/
 structure CalculusProcess
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
-    [of_a_nowtrino: DISTINGUISHABLE Box Pigeon][ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [a_nowtrino: DISTINGUISHABLE Box Pigeon]   [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
     [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
     [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
     [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
@@ -1214,39 +1226,66 @@ structure CalculusProcess
     [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
     [REAL Box Pigeon]
-    (drachmα: LOCAL Box Pigeon)  --+ This is the one spot I can name this and it means nothing to the compiler, but it means something to *US*.
---                                 | Is this a drachma"
+    (local_currency: LOCAL Box Pigeon)  --+ This is the one spot I can name this and it means nothing to the compiler, but it means something to *US*.
+--                                        | Mind handing me a quarter for this demonstration?
   where
   the_local_schedule: BigRedDogProcess Box Pigeon  -- Parents, read to your kids.  They are the future.
   the_direction_to_the_destination: SpaceTimePath
   uptown_or_downtown: Fact
   the_train_in: Type (i+1)
-  the_quarter: LOCAL Box Pigeon := drachmα
+  the_quarter: LOCAL Box Pigeon := local_currency
 
+--| I have always been fascinated by the phrase "photon torpedo." Isn't this just a laser? Then again, we also have another mechanism for a phazor.
+--| If you can change the phase of the electrons of the thing in front of you, you can pretty much render it into pure entropy. And a warp drive.
+--| These naotrinos look like they could power a spaceship. Like NCC-1701. In this case, a photon-torpedo is a communication payload that moves along
+--| a Stokes integrable path. Has anyone seen a Sobolev norm around here?
   photon_torpedo: SpaceTimePath → SpaceTimePath := fun path =>
     match path with
+--| Aaaah.. the art of the thought experiment.  There are so few blessed thought experiments. Just like hot-paths in a program. According to
+--| Schwarzschild, a white hole is just a box that is the source of the field.
     | .einstein field_theory => .whitehole field_theory Box (.einstein field_theory)
 
+--| If the theory of whiteholes is true, then we would expect to see particles just sorta popping up and heading in driections.  Or it is just
+--| a weird blackhole. Most people believe it is the second. Physicists argue that space is expanding, drawing more vacuum, creating more virtual
+--| particles out of nowhere headed in directions.  I can see how that isn't a whitehole now.
     | .whitehole field_theory_of a_box along_a_path =>
               match field_theory_of.decTruth with
               | isTrue _ =>
-                    .geodesic of_a_nowtrino.fact a_box of_a_nowtrino.fact.truth (ULift.{i+1} a_box) along_a_path the_direction_to_the_destination
+                    .geodesic a_nowtrino.fact a_box a_nowtrino.fact.truth (ULift.{i+1} a_box) along_a_path the_direction_to_the_destination
               | isFalse _ =>
                     .blackhole field_theory_of.truth (ULift.{i+1} a_box) the_direction_to_the_destination
 
-    | .geodesic in_a_field of_boxes of boxes _ _ =>
+--| More or less, this is the Schwarzschild solution. We are lifted by His noodly appendage!
+    | .blackhole the_train carrying_a_box of_spaghetti => .blackhole the_train carrying_a_box of_spaghetti
+
+--| The and/or here is the whole problem with unifying gravity (a geometric-topologically described second order relation) and quantum anything
+--| (an algebraic-geometrically described second order relation). Well-behaved topologies always act like algebras. Except when they don't and it
+--| appears information is simultaneously destroyed and created.
+    | .geodesic in_a_field of_gravity and_or particles _ _ =>
               match in_a_field.decTruth with
               | isTrue _ =>
-                    .geodesic of_a_nowtrino.fact
-                              of_boxes
-                              of boxes
+                    .geodesic a_nowtrino.fact
+                              of_gravity and_or particles
                               (.whitehole in_a_field (ULift.{i} Box) (.einstein in_a_field))
                               (.einstein in_a_field)
-              | isFalse _ =>
-                    .blackhole in_a_field.truth the_train_in the_direction_to_the_destination
-    | .blackhole downtown box next_train => .blackhole downtown box next_train
+              | isFalse _ => --                                                                 | We don't know what is in a blackhole other than
+                    .blackhole in_a_field.truth the_train_in the_direction_to_the_destination --+ a division by zero. We can always take the limit.
+--                                                                                              | We assume that you aren't in a field of gravity or
+--                                                                                              | particles since we cannot measure them.
 
+--| Can we unify physics like this? Doesn't matter. Just like it doesn't matter if there is a bug in this source file. The argument does not rely
+--| on _settling_ anything, just on the fact that things _can be settled_.  If things _cannot be settled_, then it is beyond the scope of mathematics
+--| and we care not for it here.
 
+--| Things _ALWAYS_ settle and the topologies we experience are _ALWAYS_ algebraic. Degenerate behavior aligning with degeneracies in the math cloud
+--| the source (or sink) of the generacies we must track.  In fact, we need to develop cogeneracies if we want to construct a prior on whether or not
+--| the degeneracy we are looking at is a degeneracy of the math or the science. Because, I have managed to put them _ALL_ in the same Box:
 
+--| .zero Fact.Truth.
+
+--| I would be lying to you if I said *YOU the READER* have come through the worst of it. I still need to demonstrate to that it doesn't matter if
+--| there is a bug here or not. There is no worst of it. There is only the all of it. And not a number in sight, site, or cite.
+
+--| Tune in next week for: the _FOURTH and FIFTH_ wall!
 
 end Measurement

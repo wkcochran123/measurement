@@ -22,7 +22,7 @@ YOU_THE_KNOWER: HOW ARE YOU GENTLEMEN !!
 
 lake build You have no chance to survive make your time. Ha ha ha ha ...
 
-__EPISODE 8__: _THE MISDIRECTION_
+__EPISODE 9__: _THE MISDIRECTION_
 
 The biggest problem with most rigorous theories of science is just that they aren't all that pretty.
                            -- definitely NOT Paul Dirac.
@@ -1221,15 +1221,15 @@ def AS_YOU_COMPILE_THIS_FILE_THOUGH_YOU_CONVERGE_ON_A_CONSTANT_AND_DONT_BLOWUP__
     (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
     (rerun: HALTED Box Pigeon downhill extremum)(a_small_number: MEASURED Box Pigeon downhill extremum)
     : COMPILED Box Pigeon downhill extremum :=
-  let the_tape : CompilerTape := .methodology ledger something.fact Box (ULift.{i+1,i} Box) (.introduction ledger Box)
+  let the_tape : ThePreprint := .methodology ledger something.fact Box (ULift.{i+1,i} Box) (.introduction ledger Box)
   let the_compiler : CompilerOutput Box Pigeon downhill extremum :=
     { too_good_to_be_true := a_small_number.a_distance
-      preprint := the_tape
+      of_jibberish := the_tape
     }
   {
     a_truth_about_the_world := the_compiler
     a_demonstration_of_a_constant := the_compiler.emit? the_tape
-    converged? := fun or not => metaphor.converged? or not ∧ stdout.converged? or not
+    found_a_bug? := fun or not => metaphor.found_a_bug? or not ∧ stdout.found_a_bug? or not
   }
 
 def FINALLY_UPDATE_THE_VALUE_TO_THE_NEXT_STEP_AND_OUTPUT
@@ -1263,7 +1263,7 @@ def FINALLY_UPDATE_THE_VALUE_TO_THE_NEXT_STEP_AND_OUTPUT
     (iterative_solver: COMPILED Box Pigeon downhill extremum)
     : A_TRUTH_ABOUT Box Pigeon downhill extremum :=
   let strain : Number := .one ledger (.zero ledger)
-  let written_on_screen : CompilerTape := iterative_solver.a_demonstration_of_a_constant
+  let written_on_screen : ThePreprint := iterative_solver.a_demonstration_of_a_constant
   let a_reader :=
     { in_a_giant_book := iterative_solver.a_truth_about_the_world
       a_constant := .one ledger strain iterative_solver.a_demonstration_of_a_constant written_on_screen (.zero ledger)
@@ -1359,7 +1359,7 @@ noncomputable def ALL_YOUR_BASE_CASE_ARE_BELONG_TO_US
 
     (quarter: Number)
     : A_TRUTH_ABOUT Box Pigeon downhill extremum :=
-  let believe_it_or_not : CompilerTape :=
+  let believe_it_or_not : ThePreprint :=
     iterative_solver.a_truth_about_the_world.emit? iterative_solver.a_demonstration_of_a_constant
   let a_reader :=
     { in_a_giant_book := iterative_solver.a_truth_about_the_world

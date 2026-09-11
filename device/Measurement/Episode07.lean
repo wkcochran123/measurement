@@ -6,7 +6,7 @@ _This is a gentle reminder that we often lose sight of the plot._
 
 (c) 2026
 
-__EPISODE 7__: _THE_MACGUFFIN_
+__EPISODE 7__: _THE PATTER_
 
 "Experiment is the sole judge of scientifc 'truth.'"      -- Some smart dude.
 
@@ -27,7 +27,7 @@ namespace Measurement
 
 --| First of all, _CONGRATULATIONS_! You made it through the most complex part of the argument. Probably.  Don't worry, I have a complete patter that
 --| *YOU the READER* can use and are probably more familiar with.  On the left is the Lean which demonstrates that the argument is sound.  It reads,
---| well, I chose some fun names. Remember, _that_ is the argumen the compiler is checking for logical consistency. Feel free to refer back to
+--| well, I chose some fun names. Remember, _that_ is the argument the compiler is checking for logical consistency. Feel free to refer back to
 --| definitions in previous episodes to double check the argument is consistent.  Remember, we are looking for the miracle of the Flying Spaghetti
 --| Monster: the two-spin graviton monopole: the nowtrino.
 
@@ -540,7 +540,7 @@ instance WE_ARE_CONSTANTLY_INUNDATED_BY_NAOTRINOES                        --
     : COMPILED Box Pigeon naotrino yarn_theory where                      --
   a_truth_about_the_world :=                                              --
   { too_good_to_be_true := weakly_interacting_particle.a_distance         --
-    preprint := (.introduction Fact.Truth Box)                            --
+    of_jibberish := (.introduction Fact.Truth Box)                            --
   }                                                                       --
   a_demonstration_of_a_constant := .methodology Fact.Truth Fact.Truth     --
               Box (ULift.{i+1, i} Box) (.introduction Fact.Truth Box)     --
@@ -651,7 +651,7 @@ def SO_YOU_START_TO_BUILD_ANOTHER_DEMONSTRATION_PROCESS                   --
     : COMPILED Box Pigeon naotrino yarn_theory where                      --
   a_truth_about_the_world :=                                              --
   { too_good_to_be_true := multimeter.a_distance                          --
-    preprint := .methodology nowtrino.fact Fact.Truth Box                 --
+    of_jibberish := .methodology nowtrino.fact Fact.Truth Box                 --
          (ULift.{i+1,i} Box) holy_shit.a_demonstration_of_a_constant      --
   }                                                                       --
   a_demonstration_of_a_constant := .methodology nowtrino.fact             --

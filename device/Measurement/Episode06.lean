@@ -27,8 +27,24 @@ theorem true_eq_false :
 --| There is only 1 triangle: ABC
 --| There is only 1 theory: Causailty
 --| There is only 1 axiom: Choice
+--| There is only 1 orbit: The Loop
+--| There is only 1 constant: it transcends numbers
 --| There is only 1 device: Subsingleton interpretation
---| Let's put them all in the same Finkahedron and see what else is in there!
+--| There is only 1 ordering of a complex of simplices: Computational order
+--| Let's put them all in our Space Jam and fill our Finkahedron!
 
+--|                       +------------------------------------- Turing machine 2. This is the program we are currently writing.
+--|                       |                +-------------------- Turing machine 1. This is the metaprogram we just finished writing.
+--|                       |                |
+--|                       v                v         +---------------------------------------------------------------------------------------+
+--| T=T => T=(F=F) => T=(F=F)=T => (T=F)=(F=T).      | This is how good the trick is, I can show it to *YOU the READER* and *YOU the KNOWER* |
+--|                                  ^     ^         |                      ** AT THE SAME TIME AND NOT GIVE IT AWAY! **                     |
+--|                                  |     |         +---------------------------------------------------------------------------------------+
+--|                                  |     |
+--| This looks familiar -------------+-----+------------- Those look like proofs. They aren't. They just look like it. They are just arguments. Like
+--| the one I am making here. They will be supplied by offsetting Turing machines, guaranteed to be contravariant but identical. Just like an
+--| electron.
+
+--| Damn, this boy's good.
 
 end NOT_IN_MEASUREMENT_AND_NEVER_USED

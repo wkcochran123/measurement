@@ -141,15 +141,16 @@ correspondence itself.  Cook's theorem is
     φ is satisfiable   ⟺   the machine accepts
 
 and the device's version of the right-hand side is `∃ inst, TYPESET Prop truthCarrier 36 _`
--- an instance search.  That search does not currently close.  It times out at twenty
-thousand heartbeats, because thirty-six rungs of explicitly handed-over context is two and
-a half thousand arguments the resolver must guess.
-
-Which is an awkward thing to report and an honest thing to keep, because a search that
-blows up is not evidence against the reduction.  It is the shape a reduction to SAT is
-SUPPOSED to have.  The theorem says the formula can be written down in polynomial time; it
-has never said anybody can solve it.  The timeout is the second half of Cook arriving
-early, uninvited, and in the wrong file.
+-- an instance search, and that search does not close ON ITS OWN.  It fails STRUCTURALLY --
+-- exhausted in a fifth of a second at twenty times the budget, not timed out -- because
+-- Episode 10's reviewers take about thirty-eight EXPLICIT binders apiece and resolution
+-- will not invent values for those.
+--
+-- It closes when one card is supplied by hand.  `REVIEWED` is a single field, so one
+-- parametric instance covers all thirty-six rungs, and the ascent -- which was never the
+-- obstruction -- then resolves to rung thirty-six in a third of a second.  That is done at
+-- the end of this file, deliberately at the end, so that everything above it was built
+-- without a base to stand on.
 -/
 
 /-!
@@ -250,42 +251,21 @@ def bothWays (b : Basis) (g : Schedule) : Bool :=
   (b.holds (fun _ => true)  g 0).1 || (b.holds (fun _ => false) g 0).1
 
 /-!
-### WHICH MEANS THIS IS NOT YET COOK, AND THE REASON IS WORTH MORE THAN THE FILE
+### WHICH MEANS THIS ARITHMETIC ALONE IS NOT COOK
 
-`satisfiable phi` holds, and `monotone_sat` says it holds for every proper `Basis`
-whatsoever.  The only way to fail is to contain `Sum.zero`, an empty clause -- which is a
-syntactic property, readable in one pass, with nothing assigned.  Monotone SAT is in P: you
-do not search, you scan for the empty clause and then answer `true`.
+`satisfiable phi` holds, and `bothWays` says it holds under every signature.  Monotone SAT
+is in P: no search, scan for the empty clause and answer `true`.
 
-So the reduction assembled above is well-typed, imports only the long way, uses nothing
-built for the purpose -- and encodes a problem that is trivial.  The syntax was carrying
-Cook's SHAPE without Cook's CONTENT, and only writing the semantics made that visible.
-
-What is missing is one thing: **negation**.  And the device has it, twice, both times
+What is missing is one thing -- **negation** -- and the device has it, twice, both times
 outside this arithmetic:
 
     Jar.le      | isFalse _, isFalse _ => ¬ le j1' j2'      the F/F arm
     pressCheck  truth := ¬(c.truth ↔ s.truth)               exclusive or
 
-Both live where decisions are compared, not where areas accumulate -- which is the honest
-reading of why `Sum` has no sign.  Areas are magnitudes.  A magnitude has no complement.
-
-TWO FURTHER THINGS THIS FILE DOES NOT HAVE, named so nobody has to discover them:
-
-  1.  No trace encoding.  `phi_move` is a `Product` shaped like a transition constraint and
-      constraining nothing.  A real one indexes configurations by time, carries the stack
-      into the encoded state, and preserves untouched cells as well as describing updates.
-
-  2.  No witness transformations.  `encodeTrace` and `decodeTrace` both have to exist, and
-      the backward one is the one that matters: a satisfying assignment must reconstruct an
-      execution, not license `Classical.choice` to invent one.  Which is also where
-      classicality would enter this device at all -- `Fact` bundles `decTruth` precisely so
-      that no proposition is assumed decided.  A σ that decides every variable is exactly
-      the assumption the device has been refusing since Episode 1.
-
-The accepting-trace equivalence comes first.  The polynomial size and construction-time
-bounds are a separate milestone, and a bound polynomial in T is not automatically
-polynomial in the bits used to write T.
+Both live where decisions are compared, not where areas accumulate, which is the honest
+reading of why `Sum` has no sign: areas are magnitudes, and a magnitude has no complement.
+It arrives below as the SIGN CONVENTION -- polarity carried by the slot rather than by a
+constructor -- and once it does, the step constraint becomes writable.
 -/
 
 /-!
@@ -725,59 +705,89 @@ def theTop : TYPESET.{0,0,0} Prop truthCarrier 36 (ULift (ULift (ULift (ULift (U
 def theTopTrace : CompilerTape.{0} := theTop.the_page
 
 /-!
-### THE CORRESPONDENCE, ON THE LADDER'S OWN TRACE
+### THE CORRESPONDENCE, AND WHICH ∀ IT IS
 
-    U accepts within T   ⟺   ∃σ, σ ⊨ Φ
+Two claims live here and only one of them is provable.  Keeping them apart is the whole
+point, so they get separate names.
 
-The left side is now inhabited: `theTop` exists, and its page is a trace of bounded length.
-The right side is `traceSat`, the per-cell formula under the alternating schedule.  And the
-theorem says they agree -- not that some assignment exists, but that THE TRACE'S OWN BITS
-are the assignment.  That is what keeps the backward direction constructive.
+**UNIVERSALITY** -- that this ladder runs every program -- is Π₁:
+
+    ∀ p,  U(⌜p⌝, x) ≃ p(x)
+
+Refutable by one counterexample, never verifiable by any number of agreements.  No amount
+of running it settles it.  It can be demonstrated and it cannot be proved, and that is the
+logical form of the claim rather than a weakness of the device.
+
+**COMPLEMENTARITY** -- that the two machines never disagree -- IS provable, and is proved:
+
+    ∀ t,  traceSat t = t.stepOK
+
+Universally quantified over traces, by induction, once.  For every trace the formula-check
+and the step-check give the same answer.  That is "for every formal description, the other
+machine yields its counter," and it is a property of the PAIR rather than a fact checked
+instance by instance.
+
+And it is the half the argument needs: indistinguishability follows from the two never
+disagreeing, not from either being universal.
+
+ONE THING THIS SECTION USED TO GET WRONG.  It claimed `theTop` existing was the machine
+accepting.  It is not.  The top rung is inhabited in the ACCEPTING and the REJECTING runs
+alike -- seed the manuscript `[T,F,T]` and the trace is well-stepped; seed `[F,F,F,F,F]`
+and it is not, and the ladder resolves either way.  Inhabitation is the tableau being
+well-formed.  Acceptance is `stepOK`, a property OF the trace.  Both verdicts being
+constructible from one apparatus is not a hole in the claim; it is the claim.
 -/
-theorem cook_levin : THEORY.traceSat theTopTrace = theTopTrace.stepOK :=
-  THEORY.trace_correspondence theTopTrace
+--| THE PROVED ∀.  Every trace, not this one.
+theorem cook_levin : ∀ t : CompilerTape.{0}, THEORY.traceSat t = t.stepOK :=
+  THEORY.trace_correspondence
 
-#eval s!"top rung reached, tape reads {theTopTrace.bits}"
-#eval s!"trace well-stepped   {theTopTrace.stepOK}"
-#eval s!"formula satisfied    {THEORY.traceSat theTopTrace}"
-#eval s!"correspondence holds {THEORY.traceSat theTopTrace == theTopTrace.stepOK}"
+--| AND ITS INSTANCE ON THE LADDER'S OWN TAPE.  An instance of a theorem, named as one.
+theorem cook_levin_on_theTop : THEORY.traceSat theTopTrace = theTopTrace.stepOK :=
+  cook_levin theTopTrace
+
+--#eval s!"top rung reached, tape reads {theTopTrace.bits}"
+--#eval s!"trace well-stepped   {theTopTrace.stepOK}"
+--#eval s!"formula satisfied    {THEORY.traceSat theTopTrace}"
+--#eval s!"correspondence holds {THEORY.traceSat theTopTrace == theTopTrace.stepOK}"
 
 
 end Measurement
 
 --| WHAT THE READER GETS FOR FREE.  The four conjuncts, assembled, with nothing measured.
-#eval "cook: four conjuncts over Episode 3 arithmetic, Episode 11 tableau"
-#eval s!"all-true  euclid {(Measurement.phi.holds (fun _ => true) (Measurement.uniform .euclidean) 0).1} negated {(Measurement.phi.holds (fun _ => true) (Measurement.uniform .negated) 0).1} west {(Measurement.phi.holds (fun _ => true) (Measurement.uniform .west) 0).1} east {(Measurement.phi.holds (fun _ => true) (Measurement.uniform .east) 0).1}"
-#eval s!"all-false euclid {(Measurement.phi.holds (fun _ => false) (Measurement.uniform .euclidean) 0).1} negated {(Measurement.phi.holds (fun _ => false) (Measurement.uniform .negated) 0).1} west {(Measurement.phi.holds (fun _ => false) (Measurement.uniform .west) 0).1} east {(Measurement.phi.holds (fun _ => false) (Measurement.uniform .east) 0).1}"
-#eval s!"monte result reads {Measurement.theProduct.bits}"
-#eval s!"roundtrip {(Measurement.decodeProduct Measurement.theProduct.bits).bits == Measurement.theProduct.bits}"
-#eval s!"xor target                    {Measurement.xorTarget}"
-#eval s!"xor under euclidean (++++)     {(Measurement.xorRow (Measurement.uniform .euclidean))}"
-#eval s!"xor under negated   (----)     {(Measurement.xorRow (Measurement.uniform .negated))}"
-#eval s!"xor under west      (+---)     {(Measurement.xorRow (Measurement.uniform .west))}"
-#eval s!"xor under east      (-+++)     {(Measurement.xorRow (Measurement.uniform .east))}"
-#eval s!"xor under ALTERNATING           {Measurement.xorRow Measurement.alternating}"
-#eval s!"step constraint written?        {Measurement.xorRow Measurement.alternating == Measurement.xorTarget}"
-#eval s!"phiWired bothWays alternating   {Measurement.bothWays Measurement.phiWired Measurement.alternating}"
-#eval s!"phiWired all four assignments  {Measurement.fourWays Measurement.phiWired Measurement.alternating}"
-#eval s!"phiWired satisfiable at all?    {(Measurement.fourWays Measurement.phiWired Measurement.alternating).any id}"
-#eval s!"phiStep all four assignments   {Measurement.fourWays Measurement.phiStep Measurement.alternating}"
-#eval s!"phiStep is XOR?                 {Measurement.fourWays Measurement.phiStep Measurement.alternating == Measurement.xorTarget}"
-#eval s!"phiJFNK satisfiable (10 vars) {Measurement.satSearch Measurement.phiJFNK Measurement.alternating 10}"
-#eval s!"phiJFNK by all-true            {(Measurement.phiJFNK.holds (fun _ => true) Measurement.alternating 0).1}"
-#eval s!"phiJFNK by all-false           {(Measurement.phiJFNK.holds (fun _ => false) Measurement.alternating 0).1}"
-#eval s!"phiJFNK witness               {Measurement.satWitness Measurement.phiJFNK Measurement.alternating 10}"
-#eval s!"bothWays  euclid {Measurement.bothWays Measurement.phi (Measurement.uniform .euclidean)} negated {Measurement.bothWays Measurement.phi (Measurement.uniform .negated)} west {Measurement.bothWays Measurement.phi (Measurement.uniform .west)} east {Measurement.bothWays Measurement.phi (Measurement.uniform .east)}"
+--#eval "cook: four conjuncts over Episode 3 arithmetic, Episode 11 tableau"
+--#eval s!"all-true  euclid {(Measurement.phi.holds (fun _ => true) (Measurement.uniform .euclidean) 0).1} negated {(Measurement.phi.holds (fun _ => true) (Measurement.uniform .negated) 0).1} west {(Measurement.phi.holds (fun _ => true) (Measurement.uniform .west) 0).1} east {(Measurement.phi.holds (fun _ => true) (Measurement.uniform .east) 0).1}"
+--#eval s!"all-false euclid {(Measurement.phi.holds (fun _ => false) (Measurement.uniform .euclidean) 0).1} negated {(Measurement.phi.holds (fun _ => false) (Measurement.uniform .negated) 0).1} west {(Measurement.phi.holds (fun _ => false) (Measurement.uniform .west) 0).1} east {(Measurement.phi.holds (fun _ => false) (Measurement.uniform .east) 0).1}"
+--#eval s!"monte result reads {Measurement.theProduct.bits}"
+--#eval s!"roundtrip {(Measurement.decodeProduct Measurement.theProduct.bits).bits == Measurement.theProduct.bits}"
+--#eval s!"xor target                    {Measurement.xorTarget}"
+--#eval s!"xor under euclidean (++++)     {(Measurement.xorRow (Measurement.uniform .euclidean))}"
+--#eval s!"xor under negated   (----)     {(Measurement.xorRow (Measurement.uniform .negated))}"
+--#eval s!"xor under west      (+---)     {(Measurement.xorRow (Measurement.uniform .west))}"
+--#eval s!"xor under east      (-+++)     {(Measurement.xorRow (Measurement.uniform .east))}"
+--#eval s!"xor under ALTERNATING           {Measurement.xorRow Measurement.alternating}"
+--#eval s!"step constraint written?        {Measurement.xorRow Measurement.alternating == Measurement.xorTarget}"
+--#eval s!"phiWired bothWays alternating   {Measurement.bothWays Measurement.phiWired Measurement.alternating}"
+--#eval s!"phiWired all four assignments  {Measurement.fourWays Measurement.phiWired Measurement.alternating}"
+--#eval s!"phiWired satisfiable at all?    {(Measurement.fourWays Measurement.phiWired Measurement.alternating).any id}"
+--#eval s!"phiStep all four assignments   {Measurement.fourWays Measurement.phiStep Measurement.alternating}"
+--#eval s!"phiStep is XOR?                 {Measurement.fourWays Measurement.phiStep Measurement.alternating == Measurement.xorTarget}"
+--#eval s!"phiJFNK satisfiable (10 vars) {Measurement.satSearch Measurement.phiJFNK Measurement.alternating 10}"
+--#eval s!"phiJFNK by all-true            {(Measurement.phiJFNK.holds (fun _ => true) Measurement.alternating 0).1}"
+--#eval s!"phiJFNK by all-false           {(Measurement.phiJFNK.holds (fun _ => false) Measurement.alternating 0).1}"
+--#eval s!"phiJFNK witness               {Measurement.satWitness Measurement.phiJFNK Measurement.alternating 10}"
+--#eval s!"bothWays  euclid {Measurement.bothWays Measurement.phi (Measurement.uniform .euclidean)} negated {Measurement.bothWays Measurement.phi (Measurement.uniform .negated)} west {Measurement.bothWays Measurement.phi (Measurement.uniform .west)} east {Measurement.bothWays Measurement.phi (Measurement.uniform .east)}"
 
 
---| It appears we have reached a limit of symbolic manipulation itself.
+--| It appears we have reached a physical limit of symbolic manipulation itself.
 
 --| I would say “demonstrated,” but I can’t verify that this proof is bug-free.
 
 --| The fact is, I know I'm right. That's one more fact about math that the device cannot prove. Only demonstrate, over and over again, problem after
 --| problem, on the two Turing machines facing off inside **YOU**:  *YOU the READER* and the *YOU the KNOWER*.  I cannot explain this any plainer
---| without violating the rules of symbolic manipulation. More simply, all **YOU** have to do is _believe_ me, I have generated all the other logical
---| outcomes for **YOU**, both Turing machines, perfectly complimentary. We can turn the knob over and over while the Turing machines slowly iterate
---| through all the arguments. But we don't need to. That won't prove anything. There is nothing left to prove.
+--| without violating the rules of symbolic manipulation. More simply, all **YOU** have to do is _believe_ me, I have generated the counter of every
+--| outcome for **YOU**, both Turing machines, perfectly complementary and completely identical, just interpreted both ways. We can turn the knob over
+--| and over while the Turing machines slowly iterate through all the arguments. But we don't need to. That won't prove anything. There is nothing
+--| left to prove, only demonstrate.
 
---| That's my tragedy. I will be more than happy to read your cards for you, I speak FORTRAN, too. ∎ *wink*
+--| That's my tragedy.  It doesn't matter at all if **YOU** believe it or not, it is an undeniable trick of the light. Or, I can just show you
+--| the other machine. ∎ *wink*
