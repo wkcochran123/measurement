@@ -16,7 +16,8 @@ lake build [PATTER TODO: build-flag gag]
 
 __EPISODE 08__: _THE MACGUFFIN_
 
-
+"Forty-two.435?"
+                       -- Douglas Adams (to three decimal places)
 
 -/
 import Measurement.Episode07
@@ -925,7 +926,7 @@ def take_it_around_again : Closure → Closure := fun evidence =>
       match stanza.decTruth, nowtrino.fact.decTruth with                   --| stanza already Fact.SAME, so the left coin is settled on arrival.
       | isTrue _ , isTrue _  => .same stanza upper
       | isTrue _ , isFalse _ => .inferred stanza nowtrino.fact lower upper
-                                  (Closure.slipAnd carried (the_reader.residue? lower upper)) evidence
+                                  (Closure.could_be_the_same carried (the_reader.residue? lower upper)) evidence
       | isFalse _, isTrue _  => evidence
       | isFalse _, isFalse _ => the_process.do_you_believe_it? upper (the_reader.gawk_at upper)
 
@@ -933,7 +934,7 @@ def take_it_around_again : Closure → Closure := fun evidence =>
       match this.decTruth, that.decTruth with                              --| the node, so the node makes its own table; no nowtrino to flop it.
       | isTrue _ , isTrue _  => .same this upper
       | isTrue _ , isFalse _ => .inferred this nowtrino.fact upper (the_reader.gawk_at upper)
-                                  (Closure.slipAnd carried
+                                  (Closure.could_be_the_same carried
                                     (the_reader.residue? upper (the_reader.gawk_at upper))) evidence
       | isFalse _, isTrue _  => evidence
       | isFalse _, isFalse _ => the_process.do_you_believe_it? lower upper
@@ -1451,6 +1452,24 @@ def twelve   := (thePageTwo.drop theSlipAtTwo).length
 -- one through the other you need a CONCRETE band -- and Episode 5 left exactly one Box behind: `Prop`, carried by `truthCarrier`.
 -- `Prop : Type 0`, so THIS is where ι finally gets a value, and the value is zero.  The floor climbs itself from DISTINGUISHABLE
 -- all the way to PHYSICAL with no help at all.  Three rungs it cannot climb alone, and they are worth reading in order.
+instance DISTINGUISHABLE_PROP
+    (Carrier : CarrierProcess Prop)
+    : DISTINGUISHABLE Prop Carrier where
+  fact := Carrier.symbol
+  symbol := Prop
+  different? := fun _ => True
+  dec_distinct := fun _ => isTrue trivial
+
+def truthCarrier : CarrierProcess Prop where
+  symbol := Fact.Truth
+  value := .zero Fact.Truth
+
+instance truthDistinct :
+    DISTINGUISHABLE Prop truthCarrier where
+  fact := truthCarrier.symbol
+  symbol := Prop
+  different? := fun _ => True
+  dec_distinct := fun _ => isTrue trivial
 
 -- ONE.  ARE_THE_UNITS_RIGHT wants `Inhabited nowtrino.symbol`.  `truthDistinct.symbol` IS `Prop` and `instInhabitedProp` is
 -- sitting right there -- but instance resolution keys on the HEAD, and `DISTINGUISHABLE.symbol _` is not a head it will reduce.

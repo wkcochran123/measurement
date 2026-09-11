@@ -193,10 +193,6 @@ elab "monte_walk " up:ident upb:ident dn:ident dnb:ident : command => do
       db := db.push b
       dh := dh.push h
     pure (ub, uh, db.reverse, dh.reverse)
-  logInfo s!"up   blank {ub.toList}"
-  logInfo s!"up   raw   {uh.toList}"
-  logInfo s!"down blank {db.toList}"
-  logInfo s!"down raw   {dh.toList}"
   elabCommand (← `(def $up  : List Nat := $(Lean.quote uh.toList)))
   elabCommand (← `(def $upb : List Nat := $(Lean.quote ub.toList)))
   elabCommand (← `(def $dn  : List Nat := $(Lean.quote dh.toList)))
@@ -224,6 +220,114 @@ def theStepsDown : List Int := signedSteps theSizesDown
 --| This is the rung-by-rung disagreement between the two walks, and it is the apparatus.
 def thePassGap : List Int :=
   (theSizesUp.zip theSizesDown).map (fun p => p.1 - p.2)
+
+
+--| ============================================================================
+--| THE SECOND LADDER.  The jar walk measured nesting depth on a type whose `le`
+--| has a `¬ le` arm -- work on evidence.  This one measures a DERIVATIVE ORDER.
+--| `Variation` has three constructors and Episode 4 never says why three.  Write
+--| the residual as a quadratic, D(u) = Lu + B(u,u) - f with B bilinear:
+--|
+--|     D D(u)[h]   = Lh + B(h,u) + B(u,h)    one direction   -- .the_gateaux
+--|     D²D(u)[h,k] = B(h,k) + B(k,h)         two directions  -- .the_frechet
+--|     D³D         = 0                       nothing left    -- no fourth constructor
+--|
+--| The hierarchy terminates at three because the operator is quadratic.  That is a
+--| claim about COST, so the meter is what adjudicates it.
+--| ============================================================================
+
+def theNewtonRung : Variation := .the_newton theGospel True
+
+--| THE CONTROL.  No second derivative anywhere.  `Variation.newton` and
+--| `Variation.krylov` are the SAME function on this ladder -- their `.the_gateaux`
+--| arms agree (Episode08) -- so any cost difference between the two readings below
+--| is the meter measuring a name, and there should not be one.
+def gateauxAt : Nat → Variation
+  | 0     => theNewtonRung
+  | n + 1 => .the_gateaux theGospel True True (gateauxAt n)
+
+--| THE EXPERIMENT.  One second derivative per rung, and the two arguments of the
+--| bilinear map are made DIFFERENT on purpose: `before` continues the frechet
+--| chain, `after` is the gateaux chain of the same depth.  `Variation.newton` takes
+--| `before` and drops `after`; `Variation.krylov` takes both.  The gap between the
+--| readings is the cost of the second slot of B -- the argument a Jacobian-vector
+--| product never supplies and a matrix-free Krylov step does.
+def frechetAt : Nat → Variation
+  | 0     => theNewtonRung
+  | n + 1 => .the_frechet theGospel True True True (frechetAt n) (gateauxAt n)
+
+--| WHY THE LENGTHS ARE WRITTEN OUT.  `Variation.le` carries `termination_by`
+--| (Episode04), so it is well-founded, compiles through `WellFounded.fix`, and does
+--| NOT reduce under `whnf` -- sampling it would read the blank.  `newton` and
+--| `krylov` are structural and do reduce, but `whnf` on a list stops at the head
+--| cons.  So the forcing is Episode 13's: `decide` on a decidable Prop, which must
+--| run its instance to a Bool.  `Nat.decEq` bails the moment one spine ends, so the
+--| literal has to be the EXACT length or the walk is only partly forced.  Those
+--| literals are the ladder's own arithmetic -- spine n+1, branch krylov
+--| 1 + n(n+3)/2 -- bookkeeping, not the measurement.  The measurement is heartbeats.
+elab "variation_walk " a:ident ab:ident b:ident bb:ident c:ident cb:ident d:ident db:ident
+    : command => do
+  let (sn, snb, sk, skb, bn, bnb, bk, bkb) ← liftTermElabM do
+    let mut sn : Array Nat := #[]; let mut snb : Array Nat := #[]
+    let mut sk : Array Nat := #[]; let mut skb : Array Nat := #[]
+    let mut bn : Array Nat := #[]; let mut bnb : Array Nat := #[]
+    let mut bk : Array Nat := #[]; let mut bkb : Array Nat := #[]
+    for n in [0:12] do
+      let spine := n + 1
+      let branch := 1 + n * (n + 3) / 2
+      let b0 ← blank
+      let h0 ← sample (← `(decide ((Measurement.Variation.newton
+                    (Measurement.gateauxAt $(Lean.quote n))).length = $(Lean.quote spine))))
+      snb := snb.push b0; sn := sn.push h0
+      let b1 ← blank
+      let h1 ← sample (← `(decide ((Measurement.Variation.krylov
+                    (Measurement.gateauxAt $(Lean.quote n))).length = $(Lean.quote spine))))
+      skb := skb.push b1; sk := sk.push h1
+      let b2 ← blank
+      let h2 ← sample (← `(decide ((Measurement.Variation.newton
+                    (Measurement.frechetAt $(Lean.quote n))).length = $(Lean.quote spine))))
+      bnb := bnb.push b2; bn := bn.push h2
+      let b3 ← blank
+      let h3 ← sample (← `(decide ((Measurement.Variation.krylov
+                    (Measurement.frechetAt $(Lean.quote n))).length = $(Lean.quote branch))))
+      bkb := bkb.push b3; bk := bk.push h3
+    pure (sn, snb, sk, skb, bn, bnb, bk, bkb)
+  elabCommand (← `(def $a  : List Nat := $(Lean.quote sn.toList)))
+  elabCommand (← `(def $ab : List Nat := $(Lean.quote snb.toList)))
+  elabCommand (← `(def $b  : List Nat := $(Lean.quote sk.toList)))
+  elabCommand (← `(def $bb : List Nat := $(Lean.quote skb.toList)))
+  elabCommand (← `(def $c  : List Nat := $(Lean.quote bn.toList)))
+  elabCommand (← `(def $cb : List Nat := $(Lean.quote bnb.toList)))
+  elabCommand (← `(def $d  : List Nat := $(Lean.quote bk.toList)))
+  elabCommand (← `(def $db : List Nat := $(Lean.quote bkb.toList)))
+
+variation_walk theRawSpineN theBlankSpineN theRawSpineK theBlankSpineK
+               theRawBranchN theBlankBranchN theRawBranchK theBlankBranchK
+
+--| DERIVED IN `Int`, WHERE A DECREASE IS ALLOWED TO BE ONE.  `corrected` and
+--| `signedSteps` are the jar walk's, unchanged.
+def theSpineN  : List Int := corrected theRawSpineN  theBlankSpineN
+def theSpineK  : List Int := corrected theRawSpineK  theBlankSpineK
+def theBranchN : List Int := corrected theRawBranchN theBlankBranchN
+def theBranchK : List Int := corrected theRawBranchK theBlankBranchK
+
+--| THE CONTROL COLUMN.  Same ladder, same walk, two names.  If this is not flat the
+--| instrument is reading the identifier and nothing below is worth anything.
+def theNameGap : List Int :=
+  (theSpineK.zip theSpineN).map (fun p => p.1 - p.2)
+
+--| THE SECOND SLOT OF B.  Rung by rung, what keeping `after` costs over dropping it.
+def theBilinearGap : List Int :=
+  (theBranchK.zip theBranchN).map (fun p => p.1 - p.2)
+
+--| THE READING.  Not the totals -- a deeper ladder contains a shallower one, so a
+--| rising total is forced by construction and demonstrates nothing.  The INCREMENT
+--| is not forced.  If the operator is quadratic the second derivative is constant,
+--| so the branch increment should SETTLE rather than climb, and no rung should show
+--| a third order of cost arriving.
+def theBranchSteps : List Int := signedSteps theBranchK
+def theGapSteps    : List Int := signedSteps theBilinearGap
+
 
 end Measurement
 
@@ -253,7 +357,7 @@ end Measurement
 --| THE THREE READINGS, SIDE BY SIDE.  The short way went all the way and got a point.  The
 --| long way stopped at the slip and got almost, but not quite, the same point -- which is
 --| the honest answer, because the bracket was never a point to begin with.
-#eval "short way, all the way  : " ++ Measurement.theReading
+/-#eval "short way, all the way  : " ++ Measurement.theReading
 #eval "off the jar, newton   : " ++ Measurement.jarReading
 #eval "off the jar, lagrange : " ++ Measurement.lagrangeReading
 
@@ -269,3 +373,4 @@ end Measurement
 #eval Measurement.theStepsUp
 #eval Measurement.theStepsDown
 #eval Measurement.thePassGap
+-/

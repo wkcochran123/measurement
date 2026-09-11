@@ -19,17 +19,13 @@ import Measurement.Episode05 ----------------------------------| Skip _The Trick
 set_option allowUnsafeReducibility true
 
 
--- So, have you figured out the quarter I keep taking from you?   I told you, you had no idea how
--- much I would take...
-
--- Get back to work John. You need to learn Gungan __REAL_FAST__.
 namespace Measurement
 
 --| First of all, _CONGRATULATIONS_! You made it through the most complex part of the argument. Probably.  Don't worry, I have a complete patter that
 --| *YOU the READER* can use and are probably more familiar with.  On the left is the Lean which demonstrates that the argument is sound.  It reads,
 --| well, I chose some fun names. Remember, _that_ is the argument the compiler is checking for logical consistency. Feel free to refer back to
 --| definitions in previous episodes to double check the argument is consistent.  Remember, we are looking for the miracle of the Flying Spaghetti
---| Monster: the two-spin graviton monopole: the nowtrino.
+--| Monster: his Noodly appendage: the two-spin graviton monopole: the nowtrino: the naotrino. Perhaps a νtrino?
 
 --|      Remember this side is rigorously checked for consistency                   No such rigor checked here. This is purely grift.
 --|      ---------------------+----------------------------------                   ------------------------+------------------------
@@ -620,6 +616,52 @@ def You_the_Reader                                                        --
   a_constant := .zero nowtrino.fact                                       --
   current_page_number := Pigeon.value                                     --
   of_the_proof := stdout.a_demonstration_of_a_constant                    --
+
+namespace THEORY
+
+variable
+    {Box: Type i}
+    {Pigeon: CarrierProcess Box}
+    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
+    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
+    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
+    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
+    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
+    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
+    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
+    [REAL Box Pigeon]
+    {fact: LOCAL Box Pigeon}
+    {about_the_world: UNIVERSAL Box Pigeon fact}
+    [LOGICAL Box Pigeon fact about_the_world]
+    [HALTED Box Pigeon fact about_the_world]
+    [MEASURED Box Pigeon fact about_the_world]
+    [COMPILED Box Pigeon fact about_the_world]
+    [A_TRUTH_ABOUT Box Pigeon fact about_the_world]
+
+def repeatable
+    (_reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
+  origin                                                       -- piece 1: the origin / repeatable observation
+
+def hypothesis
+    (reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
+  reader.gawk_at (repeatable reader origin)                   -- piece 2: one step on the previous
+
+def theory
+    (reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
+  reader.gawk_at (hypothesis reader origin)                   -- piece 3: the accumulated rest
+
+def raw_output
+    (reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
+  hypothesis reader origin                                     -- the compiler output the device reads:
+  -- the hypothesis rung (.one).  satirize(.zero) constructs `.one` with a
+  -- STATIC head (no decTruth match), so `TRUE ≤ raw_output` certifies cheaply
+  -- by `trivial`.  The theory rung (.rest) is the same ladder one step higher
+  -- but its head is gated behind a stuck `decTruth` match, which makes the
+  -- ordering certificate computationally pathological; the three rung defs
+  -- (repeatable/hypothesis/theory) remain intact for the velocity/acceleration
+  -- variations in Episode16.
+
+end THEORY
                                                                           --
 def BUT_THE_TRUTH_IS_YOU_THE_READER_UNDERSTANDS_THE_ARGUMENT_NAO          --
     (Box: Type i)                                                         --

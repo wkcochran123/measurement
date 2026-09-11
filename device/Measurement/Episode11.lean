@@ -38,7 +38,7 @@ class TYPESET (Box: Type i) (Pigeon: CarrierProcess Box) (rung: Nat)
     (Lifted: Type j) where
   register_value : Lifted
   universe_id    : Number
-  the_page       : CompilerTape
+  the_page       : ThePreprint
 
 /-
 This is the origin

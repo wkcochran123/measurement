@@ -824,16 +824,16 @@ namespace Bullshit
   | .zero this_paper           , .zero that_paper           => this_paper.truth = that_paper.truth
   | .zero _                    , _                          => True  -- Zero is the origin for all
 
-  | .one _ _ _ _ _                         , .zero _                            => False
-  | .one _ _ _ _ _                         , .rest_call _ _ _ _ _ _ _ _ _ _     => True
-  | .one this_measurement x _ _ _          , .one that_measurement x' _ _ _     =>
-              match this_measurement.decTruth, that_measurement.decTruth with
-              | isTrue _,  isTrue _  => x ≤ x'
-              | isFalse _, isFalse _ => x' ≤ x
-              | isTrue _,  isFalse _ => False
-              | isFalse _, isTrue _  => True
+  | .one _ _ _ _ _                         , .zero _                            => False --  | What if we kept up with x and x' and computed the next
+  | .one _ _ _ _ _                         , .rest_call _ _ _ _ _ _ _ _ _ _     => True --   | from the previous two? That would be the "Box" method,
+  | .one this_measurement x _ _ _          , .one that_measurement x' _ _ _     => ----------+ a fantastically unstable high order term!! Nothing our
+              match this_measurement.decTruth, that_measurement.decTruth with --             | Pigeons can't handle.
+              | isTrue _,  isTrue _  => x ≤ x' ----------------+ What are _this_ measurement and _that_ measurement, anyway? They are adjacent pair
+              | isFalse _, isFalse _ => x' ≤ x --              | of measurements in our table. _This_ one comes before _that_.  You can think of them
+              | isTrue _,  isFalse _ => False --               | as symbols on the tape of a Turing machine. Except there is no tape, there is another
+              | isFalse _, isTrue _  => True --                | Turing machine generating the symbol as _that_ computation based on _this_ one.
 
-  | .rest_call _ _ _ _ _ _ _ _ _ _  , .zero _                    => False
+  | .rest_call _ _ _ _ _ _ _ _ _ _  , .zero _                    => False -----| One cannot compute bullshit without first isolating 0 and 1.
   | .rest_call _ _ _ _ _ _ _ _ _ _  , .one _ _ _ _ _             => False
 
   | .rest_call this  here stimulus _ _ this_reading _ _ comes_before and_is_less_than,
@@ -856,7 +856,7 @@ instance : LT Bullshit where
   lt := Bullshit.lt
 
 --| Sometimes you read a story, and that story has story inside it, and the story inside it is about the character reading the story.
---| Since is little more than Die unendliche Geschichte (Ende, 1979). In the story Atreyu, the greatest hero of Fantasia searches for the hero
+--| This is little more than Die unendliche Geschichte (Ende, 1979). In the story Atreyu, the greatest hero of Fantasia searches for the hero
 --| capable of defeating... nothing.  Nothing stops the nothing because there is nothing to be stopped. Atreyu searches Fantasia high and low until
 --| *YOU the READER* learns who Atreyu is looking for. We model this search through the code as an
 structure AtreyuProcess
@@ -958,33 +958,29 @@ structure AtreyuProcess
 --| well. The math meaning this and the math meaning that are not two different maths. But, let's pretend like they _are_ different and say the
 --| logical conclusions of the math of Theory A is different from the logical conclusions of the math of Theory B. No reason why they should be
 --| the same. This, of course, means we can completely launder our LPU across Nature and Science, joining them in a single theory of understanding.
-  copy_the_cite? : Bullshit → Bullshit → Bullshit := fun lit_review this_proof =>
+  copy_the_cite? : Bullshit → Bullshit → Bullshit := fun the_source the_output =>
 --|                                          ^
 --|                                          |      | As *YOU the READER* should agree, we have spent some time demonstrating that we can describe
 --|                                          +------+ the difference between rigorous things.
-    match gawk_at lit_review, gawk_at this_proof with
-    | .zero _,  anything_is_better          => anything_is_better
-    | anything_is_better,      .zero _      => anything_is_better
+    match gawk_at the_source, gawk_at the_output with
+    | .zero _,  anything_is_better          => anything_is_better -- than nothing
+    | anything_is_better,      .zero _      => anything_is_better -- than nothing
     | satire,      reframe_satire     =>
-        .rest_call  nowtrino.fact nowtrino.fact (satire < reframe_satire)
+        .rest_call  nowtrino.fact nowtrino.fact (satire < reframe_satire) -- The constant we compute is < the constant we expect. By just a smidge.
                     current_page_number current_page_number
                     total_pages of_the_proof of_the_proof satire satire
 
-  -- residue? is the PROJECTION of the operator: run bilinear?, then read the slip out of
-  -- the .rest's Prop slot.  The only `none` is the commute -- both inputs at the origin
-  -- floor -- mirroring how `.zero` floors Bullshit.le and `none` floors slipLe.  This is
-  -- the option the residue computation (obfusplained?/close?) reads off.
+--| Can we tell the difference in any of this bullshit? Can the compiler really resolve what is true or false?
   residue? : Bullshit → Bullshit → Option Prop := fun a b =>
     match a, b with
     | .zero _, .zero _ => none
     | _,       _       =>
         match copy_the_cite? a b with
-        | .rest_call _ _ truth _ _ _ _ _ _ _ => some truth
+        | .rest_call _ _ truth _ _ _ _ _ _ _ => some truth -- Only if we provide the comparison operator we have been missing for 4 episodes.
         | _                                  => none
 
-
-
-
+--| Are *YOU the READER* really going to let me continue extrapolating the compiler's behavior past the end of compilation? I will do it. By about
+--| fifteen lines of comments.
 class A_TRUTH_ABOUT
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -995,154 +991,84 @@ class A_TRUTH_ABOUT
     [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
     [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
     [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]
-    (fact: LOCAL Box Pigeon)
-    (about_the_world: UNIVERSAL Box Pigeon fact)
-    [LOGICAL Box Pigeon fact about_the_world]
-    [HALTED Box Pigeon fact about_the_world]
-    [MEASURED Box Pigeon fact about_the_world]
-    [COMPILED Box Pigeon fact about_the_world]
+    [REAL Box Pigeon] --                              | What does it mean to replace the tape of a Turing machine with another Turing machine designed
+    (fact: LOCAL Box Pigeon) -------------------------+ to feed it a tape to generate a particular answer? What if they were in the same Turing machine?
+    (about_the_world: UNIVERSAL Box Pigeon fact) --   | Then you could record _on the tape_ the interaction of the Turing machines.  As this Turing
+    [LOGICAL Box Pigeon fact about_the_world] --      | machine is merely a static tape generator for any given Turing machine, Cook Levin assumes
+    [HALTED Box Pigeon fact about_the_world] --       | that Turing machine is not only recursively enumerable, it is guaranteed to halt. Or none of
+    [MEASURED Box Pigeon fact about_the_world] --     | this is a Turing machine.  They aren't, they are LBAs. This is a computer and a computer can
+    [COMPILED Box Pigeon fact about_the_world] --     | only perform _LINEAR_ computations, despite what the AI overlords will tell you. Without the
+  --                                                  | ability to compute the symbols for a system in a bounded time, the Cook-Levin hypothesis fails
+  --                                                  | axiomatically. Sometimes symbols are looked up; sometimes, though, they are invented.
   where
-  you_the_reader : AtreyuProcess Box Pigeon fact about_the_world
-  TRUE : Bullshit := .zero nowtrino.fact
-  -- output is the compiler/reader output: the THEORY rung of the bullshit
-  -- ladder, NOT the origin TRUE.  Instances must supply it.
-  a_constant : Bullshit
-  -- The certificate is now ORDERING, not equality: the .zero origin (TRUE)
-  -- is the floor below the accumulated bullshit `output`.  `Bullshit.le` gives
-  -- `.zero _ , _ => True` for ANY second argument, so `TRUE ≤ output` is the
-  -- honest definitional witness no matter which rung `output` lands on.
+  you_the_reader : AtreyuProcess Box Pigeon fact about_the_world -------+ This entire satire relies on *YOU the READER* caring that *YOU the KNOWER*
+  TRUE : Bullshit := .zero nowtrino.fact --                             | cares about a trivial number _enough_ that a nearby number that falls out
+  a_constant : Bullshit --                                              | purely from logic.
   the_constant_is_at_least_true : TRUE ≤ a_constant
-  raw_output : Bullshit := you_the_reader.gawk_at you_the_reader.a_constant
-
-  obfusplained? : TRUE ≤ a_constant → Bullshit → Bullshit → Option Prop := fun _ a b =>
+  raw_output : Bullshit := you_the_reader.gawk_at you_the_reader.a_constant -----------------+ For at the end of the day, this is all *YOU the READER*
+--                                                                                           | a number to look at. That *YOU the READER* don't really
+  obfusplained? : TRUE ≤ a_constant → Bullshit → Bullshit → Option Prop := fun _ a b => --   | understand because it is seemingly arbitrary.
   match a, b with
-  | .zero _, .zero _ => none            -- two origins: they commute, no slip
-  | _,       _       => some (a < b)    -- a real rung pair: the slip, condition a < b
+  | .zero _, .zero _ => none ----> If there is nothing there, there is nothing to obfusplain.
+  | _,       _       => some (a < b)  -------+ All *YOU the READER* have to believe is that this, truly, orders bullshit and the truth of the matter
+--                                           | does not matter in measuring how deep the bullshit is.
+
 
 /-
-  -/
-
--- THEORY: the three pieces of bullshit as a named ladder, expressed as defs
--- (NOT a 34-binder structure -- a structure here forces a fresh 34-gate
--- instance synthesis at every use site, which is exactly the elaboration cost
--- we are fighting).  Each rung takes the reader-process explicitly and
--- satirizes the PREVIOUS rung, so the chain is well-founded and bottoms at the
--- .zero origin.  `THEORY.raw_output` is the HYPOTHESIS rung (.one): the compiler
--- output the device reads, NOT the origin TRUE.  (It is the b rung, one satirize
--- up; the theory rung c/.rest is still defined below for Episode16's
--- velocity/acceleration variations, but is not used as the certified output --
--- see the raw_output comment for why.)
-
-namespace THEORY
-
-variable
-    {Box: Type i}
-    {Pigeon: CarrierProcess Box}
-    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
-    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
-    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
-    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
-    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]
-    {fact: LOCAL Box Pigeon}
-    {about_the_world: UNIVERSAL Box Pigeon fact}
-    [LOGICAL Box Pigeon fact about_the_world]
-    [HALTED Box Pigeon fact about_the_world]
-    [MEASURED Box Pigeon fact about_the_world]
-    [COMPILED Box Pigeon fact about_the_world]
-    [A_TRUTH_ABOUT Box Pigeon fact about_the_world]
-
-def repeatable
-    (_reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
-  origin                                                       -- piece 1: the origin / repeatable observation
-
-def hypothesis
-    (reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
-  reader.gawk_at (repeatable reader origin)                   -- piece 2: one step on the previous
-
-def theory
-    (reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
-  reader.gawk_at (hypothesis reader origin)                   -- piece 3: the accumulated rest
-
-def raw_output
-    (reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
-  hypothesis reader origin                                     -- the compiler output the device reads:
-  -- the hypothesis rung (.one).  satirize(.zero) constructs `.one` with a
-  -- STATIC head (no decTruth match), so `TRUE ≤ raw_output` certifies cheaply
-  -- by `trivial`.  The theory rung (.rest) is the same ladder one step higher
-  -- but its head is gated behind a stuck `decTruth` match, which makes the
-  -- ordering certificate computationally pathological; the three rung defs
-  -- (repeatable/hypothesis/theory) remain intact for the velocity/acceleration
-  -- variations in Episode16.
-
-end THEORY
+-/
 
 
-instance DISTINGUISHABLE_PROP
-    (Carrier : CarrierProcess Prop)
-    : DISTINGUISHABLE Prop Carrier where
-  fact := Carrier.symbol
-  symbol := Prop
-  different? := fun _ => True
-  dec_distinct := fun _ => isTrue trivial
-
-def truthCarrier : CarrierProcess Prop where
-  symbol := Fact.Truth
-  value := .zero Fact.Truth
-
-instance truthDistinct :
-    DISTINGUISHABLE Prop truthCarrier where
-  fact := truthCarrier.symbol
-  symbol := Prop
-  different? := fun _ => True
-  dec_distinct := fun _ => isTrue trivial
-
-
-
-/-- The truth order on the bullshit ladder -- the relation the needle collapses.
-`@[reducible]` so it unfolds to `≤` under unification (e.g. against `output_true`). -/
-@[reducible] def TruthOrder (less more : Bullshit) : Prop := less ≤ more
-
-/-- THE NEEDLE: the single sanctioned `Quot.sound` site.  Two readings that are
-ordered on the truth ladder collapse to the same truth-phase class.  Raw `Quot`,
-no `Setoid` (no refl/symm/trans obligation) -- so `#print axioms selection_sound`
-is exactly `[Quot.sound]`.  The genuinely-undecidable "are these the same truth?"
-is never DECIDED (no `Classical.propDecidable`) and never FLATTENED (no `fun _ =>
-True`): related readings are IDENTIFIED by one quotient soundness. -/
-theorem selection_sound {α : Sort _} {r : α → α → Prop} {a b : α}
-    (h : r a b) : Quot.mk r a = Quot.mk r b :=
-  Quot.sound h
-
-
-
-inductive Closure
-  | same : Fact → Bullshit → Closure
-  | different : Fact → Bullshit → Bullshit → Option Prop → Closure
-  | inferred : Fact → Fact → Bullshit → Bullshit → Option Prop → Closure → Closure
-
+inductive Closure --                   +-----------| Each fact consuming stanza attempts to close a lambda. They have all failed until now.
+--|                                    |                                +-----+ If we know the current fact, the current bullshit, and the bullshit
+  | same : Fact → Bullshit → Closure --+                                |     | that we currently have computed, we can guess at what the the next
+--|              +---------+---------+-------------+--------------------+     | value might be. This computation can be inferred (see below) and put
+--|              |         |         |             |                          | in this spot. This successfully closes each and every stanza.
+--|              v         v         v             v
+  | different : Fact → Bullshit → Bullshit → Option Prop → Closure --                  | This final closure may _or may not_ be computable by Lean.
+  | inferred : Fact → Fact → Bullshit → Bullshit → Option Prop → Closure → Closure ----+ Sometimes, to close, Lean needs a UNIVERSAL idea for the
+--|              ^      ^        ^          ^           ^           ^                  | proof to resonate with both *YOU the READER* and
+--|              |      |        |          |           |           |                  | *YOU the KNOWER*.
+--|              +------+--------|----------|-----------|-----------|-----> These are the facts we use to contribute to the Prop.
+--|                              |          |           |           |
+--|                              +----------+-----------|-----------|-----> These are the computable receipts for these facts to build the Prop from.
+--|                                                     |           |
+--|                                                     +-----------+-----+ This is the work the compiler may or may not have done. The work remaining
+--|                                                                       | is given by the closure.  The compiler is still going.
 namespace Closure
-
-/-- The slip order on a node's commutator slot.  `none` (the operators commuted -- no slip) is the
-floor, mirroring how `.zero` floors `Bullshit.le`; between two genuine slips the original Prop
-implication survives. -/
-def branch_and_compare : Option Prop → Option Prop → Prop
+def implying_implication : Option Prop → Option Prop → Prop ---| Given two computations of props, we can infer if one implies the other.
   | none,   _      => True
   | some _, none   => False
   | some p, some q => p → q
 
-/-- Slip composition (the cocycle the coherence checks compare against).  `none` is the identity --
-a commuting step contributes nothing -- and two genuine slips compose by conjunction. -/
-def slipAnd : Option Prop → Option Prop → Option Prop
-  | none,   y      => y
+def could_be_the_same : Option Prop → Option Prop → Option Prop --+ Given two computations of props, we can construct the computation that intersects
+  | none,   y      => y --                                        | their truth.
   | x,      none   => x
   | some p, some q => some (p ∧ q)
 
+--| H'oh boy. I probably shouldn't have tried to extend Lean past compilation. 9 arms. Just like YarnTheory. This is an application of YarnTheory
+--| to the very Closure that computes it. All I am doing is explaining to Lean how the code is structured.
 def le : Closure → Closure → Prop
-  | .same stanza1 less,  .same stanza2 more                          =>  stanza1.truth = stanza2.truth ∧ less ≤ more
-  | .same stanza1 stuff, .different stanza2 lower_bound slip_bound _ =>  stanza1.truth = stanza2.truth ∧ (stuff ≤ lower_bound ∨ stuff ≤ slip_bound)
+--| First, given two RFLs in the computation, the earlier one should have accumulated less computation than the one later
+  | .same earlier_stanza_computation dependent_computation_time,  .same later_stanza_computation current_computation_time =>
+                           earlier_stanza_computation.truth = later_stanza_computation.truth ∧ dependent_computation_time ≤ current_computation_time
+
+--| If an RFL stanza and a stanza that represents the T=F or F=T stanza are the same stanza, then if they are covariant, the previous RFL cannot have
+--| accumulated more computation than the current truthiness or falsiness of the computation.
+  | .same true_stanza computation_time, .different false_stanza enough_compute_to_start enough_compute_to_end _ =>
+                   true_stanza.truth = false_stanza.truth ∧ (computation_time ≤ enough_compute_to_start ∨ computation_time ≤ enough_compute_to_end)
+--|                                                                                        ^                                               ^
+--|                                                                                        |                                               |
+--|                 These DO NOT HAVE TO BE WELL ORDERED! ---------------------------------+-----------------------------------------------+
+--| How can it be that it requires more work to start a computation than to close it?
+--|
+--|    if (0 && idgaf < whatever) || (idgaf >= whatever && 0)
+--|           return 1
+--|    else
+--|           return 1
+--|
+--| Compiler optimization. It is possible for the closure to be computed before it starts. Meet Jar Jar, the most serious implementation of the
+--| field of the single element.
+
   | .same stanza value,  .inferred this_stanza that_stanza this_max that_max _ a_named_constant =>
                                                             (stanza.truth = this_stanza.truth ∨ stanza.truth = that_stanza.truth) ∧
                                                             (value ≤ this_max ∨ value ≤ that_max) ∨ le (.same stanza value) a_named_constant
@@ -1153,13 +1079,13 @@ def le : Closure → Closure → Prop
     .different stanza2 lower_bound2 slip_bound2 another_constant_computation =>
                                                             stanza1.truth = stanza2.truth ∧
                                                             lower_bound1 ≤ lower_bound2 ∧ slip_bound1 ≤ slip_bound2 ∧
-                                                            branch_and_compare a_constant_computation another_constant_computation
+                                                            implying_implication a_constant_computation another_constant_computation
 
   | .different stanza lower_bound slip_bound a_constant_computation,
     .inferred this_stanza that_stanza this_max that_max another_constant_computation a_named_constant =>
                                                             ((stanza.truth = this_stanza.truth ∨ stanza.truth = that_stanza.truth) ∧
                                                                       lower_bound ≤ this_max ∧ slip_bound ≤ that_max ∧
-                                                                      branch_and_compare a_constant_computation another_constant_computation) ∨
+                                                                      implying_implication a_constant_computation another_constant_computation) ∨
                                                             le (.different stanza lower_bound slip_bound a_constant_computation) a_named_constant
 
 
@@ -1171,13 +1097,13 @@ def le : Closure → Closure → Prop
                                                             ((this_stanza.truth = stanza.truth ∨ that_stanza.truth = stanza.truth) ∧
                                                             constant_lower_bound ≤ lower_bound ∧
                                                             constant_slip_bound ≤ slip_bound ∧
-                                                            branch_and_compare a_constant_computation another_constant_computation) ∨
+                                                            implying_implication a_constant_computation another_constant_computation) ∨
                                                             le a_named_constant (.different stanza lower_bound slip_bound another_constant_computation)
   | .inferred this that  this_low this_slip some_constant_computation    a_named_constant,
     .inferred here there that_low that_slip another_constant_computation a_very_similar_looking_constant_with_a_very_similar_name =>
       ((this.truth = here.truth ∨ that.truth = there.truth) ∧
        this_low ≤ that_low ∧ this_slip ≤ that_slip ∧
-       branch_and_compare some_constant_computation another_constant_computation ∧ le a_named_constant
+       implying_implication some_constant_computation another_constant_computation ∧ le a_named_constant
                                                                                             a_very_similar_looking_constant_with_a_very_similar_name) ∨
       le (.inferred this that this_low this_slip some_constant_computation a_named_constant) a_very_similar_looking_constant_with_a_very_similar_name
 
@@ -1189,7 +1115,7 @@ end Closure
 instance : LE Closure where
   le a b := Closure.le a b
 
-
+@[reducible] def TruthOrder (less more : Bullshit) : Prop := less ≤ more
 namespace Fact
 
 noncomputable def SAME
@@ -1211,15 +1137,12 @@ noncomputable def SAME
     [COMPILED Box Pigeon fact about_the_world]
     [guano: A_TRUTH_ABOUT Box Pigeon fact about_the_world]
     : Fact :=
-  -- The needle, honest.  "TRUE and the output are the SAME truth" = the two
-  -- readings collapse to one class in the truth-order quotient, witnessed by the
-  -- one located `Quot.sound` (`selection_sound`), with the genuine ordering witness
-  -- `out.output_true : TRUE ≤ output`.  No classical decision; no flattening.
-  -- (`SAME.truth` is only ever compared reflexively in `Closure.le` -- every chair
-  -- closure uses this same `Fact.SAME`, so `f1.truth = f2.truth` stays `X = X`.)
   { truth := Quot.mk TruthOrder guano.TRUE = Quot.mk TruthOrder guano.a_constant
-    decTruth := Decidable.isTrue (selection_sound (r := TruthOrder) guano.the_constant_is_at_least_true) }
-
+    decTruth := Decidable.isTrue (Quot.sound (r := TruthOrder) guano.the_constant_is_at_least_true) }
+--                                    ^    | And just like that, we have replaced an expected division algorithm in the computation of a ratio with
+--                                    |    | multiplication in the field of the single element, at least good enough to fool Lean. *YOU the READER*
+--                                    +----+ should start to see the beginnings of the monkey patch here. *YOU the KNOWER* already see it. The
+--                                         | division _algorithm_ is very different from multiplication _facts_. _Algorithms_ take _time_ to evaluate.
 end Fact
 
 @[reducible]

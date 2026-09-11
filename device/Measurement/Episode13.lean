@@ -18,7 +18,7 @@ __EPISODE 13__: _LET'S WATCH HIM COOK..._
 --|
 --| Every one of those objects is already in this device, and none of them was built for
 --| this.  The tableau is Episode 11: thirty-six rungs, each `TYPESET Box Pigeon n Lifted`
---| requiring `[below: TYPESET Box Pigeon (n-1) _]`, carrying a `the_page : CompilerTape`.
+--| requiring `[below: TYPESET Box Pigeon (n-1) _]`, carrying a `the_page : ThePreprint`.
 --| Row n from row n-1, with a tape.  The window is the rung's own head match.  And the
 --| conjunctive normal form is Episode 3's arithmetic, which has been sitting there since
 --| the first act wearing the names of areas and lengths:
@@ -282,7 +282,7 @@ satisfying assignment must not be allowed to describe a history that never ran. 
 is a total function producing an actual trace whose readings agree with the assignment,
 then no assignment can fabricate: whatever σ says, there is a trace that says it.
 
-The trace is `CompilerTape` -- the page Episode 11's rungs carry.  Introduction, then
+The trace is `ThePreprint` -- the page Episode 11's rungs carry.  Introduction, then
 methodology, then methodology, one cell per step.  It is the only object in the long way
 that is a bounded execution and can be written down without asking instance search to
 rediscover it, which is why the reduction takes it and not the `TYPESET` chain.
@@ -305,7 +305,7 @@ theorem bit_bitFact : ∀ b : Bool, (bitFact b).bit = b := by
 --| THE TRACE, READ.  Each cell surrenders the facts at its head, in order.  `introduction`
 --| is the base step and gives one; the recursive cells give two, which is the before and
 --| the after -- the same pair Episode 11's rungs pull out of the tape as `heads`.
-def CompilerTape.bits : CompilerTape.{0} → List Bool
+def ThePreprint.bits : ThePreprint.{0} → List Bool
   | .introduction f _         => [f.bit]
   | .methodology c s _ _ rest => c.bit :: s.bit :: rest.bits
   | .results c s _ _ _ _ rest => c.bit :: s.bit :: rest.bits
@@ -313,12 +313,12 @@ def CompilerTape.bits : CompilerTape.{0} → List Bool
 --| DECODE.  Rebuild the execution from the bits, two at a time, bottoming out in the
 --| introduction.  Total: every bit list yields a trace, so there is nothing for a
 --| satisfying assignment to hide behind.
-def decodeBits : List Bool → CompilerTape.{0}
+def decodeBits : List Bool → ThePreprint.{0}
   | []            => .introduction (bitFact false) Unit
   | [b]           => .introduction (bitFact b) Unit
   | b :: c :: rest => .methodology (bitFact b) (bitFact c) Unit Type (decodeBits rest)
 
---| A TRACE ALWAYS READS ODD.  `CompilerTape` has no empty constructor: the shortest tape
+--| A TRACE ALWAYS READS ODD.  `ThePreprint` has no empty constructor: the shortest tape
 --| is `.introduction`, which carries one fact, and every recursive cell adds two.  So the
 --| readings come in 2k+1 -- one for the row that has no predecessor, two per step after.
 --|
@@ -331,11 +331,11 @@ theorem decode_bits :
   intro bs
   induction bs using decodeBits.induct with
   | case1 => intro h; simp at h
-  | case2 b => intro _; simp [decodeBits, CompilerTape.bits, bit_bitFact]
+  | case2 b => intro _; simp [decodeBits, ThePreprint.bits, bit_bitFact]
   | case3 b c rest ih =>
       intro h
       have h' : rest.length % 2 = 1 := by simp [List.length] at h; omega
-      simp [decodeBits, CompilerTape.bits, bit_bitFact, ih h']
+      simp [decodeBits, ThePreprint.bits, bit_bitFact, ih h']
 
 /-!
 ### WHAT THIS CLOSES AND WHAT IT DOES NOT
@@ -387,7 +387,7 @@ def Product.bits : Product → List Bool
   | .mul f _ _ rest => f.bit :: rest.bits
 
 --| DECODE, ON THE MONTE'S OWN CARRIER.  One bit per node, ending in `.origin` -- and note
---| the parity is different from the tape's.  A `CompilerTape` cell carries a BEFORE and an
+--| the parity is different from the tape's.  A `ThePreprint` cell carries a BEFORE and an
 --| AFTER, so traces read 2k+1.  A `Product` node carries one assertion, so formulas read
 --| any length.  Transition structures need two facts per cell; conjunctions need one.
 def decodeProduct : List Bool → Product
@@ -420,7 +420,7 @@ trace is well-stepped when every cell does.
 
 --| THE RELATION, DIRECTLY.  `.introduction` is the base row and has no predecessor to
 --| relate to, which is why it passes: φ_start is not a transition.
-def CompilerTape.stepOK : CompilerTape.{0} → Bool
+def ThePreprint.stepOK : ThePreprint.{0} → Bool
   | .introduction _ _         => true
   | .methodology c s _ _ rest => (c.bit != s.bit) && rest.stepOK
   | .results c s _ _ _ _ rest => (c.bit != s.bit) && rest.stepOK
@@ -616,8 +616,8 @@ of them down the descent from rung 36.
 
 So the chain is unreachable.  And the OBJECT is a tape and two numbers:
 
-    class REVIEWED … where rebuttal : CompilerTape
-    class TYPESET  … where register_value : Lifted ; universe_id : Number ; the_page : CompilerTape
+    class REVIEWED … where rebuttal : ThePreprint
+    class TYPESET  … where register_value : Lifted ; universe_id : Number ; the_page : ThePreprint
 
 One field and three.  The quarter was never under any of the cards.
 -/
@@ -625,7 +625,7 @@ One field and three.  The quarter was never under any of the cards.
 --| THE MANUSCRIPT.  Rung 36's base instance admits a tape unchanged -- "the submitted
 --| manuscript is admitted unchanged, so every later response has a record to answer
 --| against."  Here it is, built from bits, odd-length so the roundtrip holds.
-def theManuscript : CompilerTape.{0} := decodeBits [true, false, true]
+def theManuscript : ThePreprint.{0} := decodeBits [true, false, true]
 
 --| THE REVIEW, WITHOUT THE REVIEWERS.  Thirty-five rungs of custody, and the thing they
 --| were carrying is one tape.
@@ -654,7 +654,7 @@ theorem step_correspondence (x y : Bool) :
 --| THE WHOLE TRACE, CELL BY CELL.  `.introduction` is the base row and has nothing to
 --| relate to, so it passes -- φ_start is not a transition, and the tape said so earlier by
 --| forcing the roundtrip onto odd lists.
-def traceSat : CompilerTape.{0} → Bool
+def traceSat : ThePreprint.{0} → Bool
   | .introduction _ _         => true
   | .methodology c s _ _ rest => (phiStep.holds (assign c.bit s.bit) alternating 0).1
                                    && traceSat rest
@@ -665,13 +665,13 @@ def traceSat : CompilerTape.{0} → Bool
 --| formula built from it.  Not "there exists an assignment" -- the trace SUPPLIES the
 --| assignment, which is what makes the backward direction constructive and keeps
 --| `Classical.choice` out of a theorem about executions.
-theorem trace_correspondence (t : CompilerTape.{0}) : traceSat t = t.stepOK := by
+theorem trace_correspondence (t : ThePreprint.{0}) : traceSat t = t.stepOK := by
   induction t with
   | introduction _ _ => rfl
   | methodology c s _ _ rest ih =>
-      simp [traceSat, CompilerTape.stepOK, step_correspondence, ih]
+      simp [traceSat, ThePreprint.stepOK, step_correspondence, ih]
   | results c s _ _ _ _ rest ih =>
-      simp [traceSat, CompilerTape.stepOK, step_correspondence, ih]
+      simp [traceSat, ThePreprint.stepOK, step_correspondence, ih]
 
 end THEORY
 
@@ -702,7 +702,7 @@ def theTop : TYPESET.{0,0,0} Prop truthCarrier 36 (ULift (ULift (ULift (ULift (U
 
 --| AND THE TAPE IT CARRIES.  This is the bounded execution: the manuscript admitted at rung
 --| thirty-six, handed down through every reviewer, arriving as the page of the top rung.
-def theTopTrace : CompilerTape.{0} := theTop.the_page
+def theTopTrace : ThePreprint.{0} := theTop.the_page
 
 /-!
 ### THE CORRESPONDENCE, AND WHICH ∀ IT IS
@@ -738,7 +738,7 @@ well-formed.  Acceptance is `stepOK`, a property OF the trace.  Both verdicts be
 constructible from one apparatus is not a hole in the claim; it is the claim.
 -/
 --| THE PROVED ∀.  Every trace, not this one.
-theorem cook_levin : ∀ t : CompilerTape.{0}, THEORY.traceSat t = t.stepOK :=
+theorem cook_levin : ∀ t : ThePreprint.{0}, THEORY.traceSat t = t.stepOK :=
   THEORY.trace_correspondence
 
 --| AND ITS INSTANCE ON THE LADDER'S OWN TAPE.  An instance of a theorem, named as one.
@@ -787,7 +787,10 @@ end Measurement
 --| without violating the rules of symbolic manipulation. More simply, all **YOU** have to do is _believe_ me, I have generated the counter of every
 --| outcome for **YOU**, both Turing machines, perfectly complementary and completely identical, just interpreted both ways. We can turn the knob over
 --| and over while the Turing machines slowly iterate through all the arguments. But we don't need to. That won't prove anything. There is nothing
---| left to prove, only demonstrate.
+--| left to *prove* --- only *demonstrate*.
 
 --| That's my tragedy.  It doesn't matter at all if **YOU** believe it or not, it is an undeniable trick of the light. Or, I can just show you
---| the other machine. ∎ *wink*
+--| the other machine.
+
+--| Do the logical conclusions of one mathematical theory have to imply the logical conclusions of another mathematical theory? Turns out, it
+--| doesn't matter. It's only matter when they do. Is this your quartic? ∎ *wink*

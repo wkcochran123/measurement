@@ -12,15 +12,13 @@ _This is a gentle reminder that the stories we tell ourselves involve a teller, 
 
 lake build [PATTER TODO: build-flag gag]
 
-__EPISODE 9__: _THE ACCOMPLICE_
+__EPISODE 10__: _THE ACCOMPLICE_
 
 -/
 
--- WE GET SIGNAL!
 import Measurement.Episode09
 set_option allowUnsafeReducibility true
 
--- MAIN SCREEN TURN ON
 namespace Measurement
 
 universe i
@@ -30,7 +28,7 @@ universe i
 -- system wants page numbers. Fine. ONE Nat. For the page numbers ONLY. The
 -- pages do not count anything; they index where the reviewer is pointing.
 class REVIEWED (Box: Type i) (Pigeon: CarrierProcess Box) (page: Nat) where
-  rebuttal : CompilerTape
+  rebuttal : ThePreprint
 
 /- We thank the reviewer for asking where the record begins before any rebuttal
    can be published. This seam closes the custody gap: the submitted manuscript
@@ -38,7 +36,7 @@ class REVIEWED (Box: Type i) (Pigeon: CarrierProcess Box) (page: Nat) where
    against. -/
 instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_RECORD_BEGINS
     (Box: Type i) (Pigeon: CarrierProcess Box)
-    (the_manuscript: CompilerTape)
+    (the_manuscript: ThePreprint)
     : REVIEWED Box Pigeon 36 := { rebuttal := the_manuscript }
 
 /- We thank the reviewer for noticing that a final output can look conclusive
