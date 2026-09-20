@@ -8,11 +8,16 @@ _This is a gentle reminder that we often lose sight of the plot._
 
 __EPISODE 7__: _THE PATTER_
 
-"Experiment is the sole judge of scientifc 'truth.'"      -- Some smart dude.
+"Pay no attention to the man behind that curtain."
+                -- Oscar Zoroaster Phadrig Isaac Norman Henkle Emmannuel Ambroise Diggs
+                   The Wizard of Oz
 
-"Tonights winning numbers are 4 10 28 35 38 55 and a the bonus ball is 33."
-                                                          -- NY Lottery, Aug 3. 2002.
+lake build --me_a_career_programming
 
+**KEEP YOUR EYE ON THE QUARTER**
+Pigeon.quarter almost makes sense to say now to *YOU the READER*.  *YOU the KNOWER* are unaware of the pouch the Carrier Pigeon carries. For if you
+were, then you would know where the quarter is. Any reason why it couldn't have a pouch? They have a pouch so they can deliver the receipt to the
+payments center faster than the receipts trying to ride the train. I thought we went over this.
 -/
 -- Would you even care if I imported anything at this point?
 import Measurement.Episode05 ----------------------------------| Skip _The Trick_ just to make sure we don't import α
@@ -41,11 +46,11 @@ instance CAN_YOU_SEE_A_CHARACTERISTIC                                     -- ene
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- for some path g(t): ℝ → ℝ³. According to the principle of _LEAST ACTION_
     : ADMISSIBLE Box Pigeon where                                         -- suggests that S remains minimized across all paths g. This means, by
   counting_process :=                                                     -- definition, g is the gradient of some field. Like on Earth.
-  { carrier := Pigeon                                                     --
+  { palmed_card := Pigeon                                                 --
     count   := .zero nowtrino.fact                                        -- This opens up 2 different ways we can explore this function. The first
     iterate := fun particle => match particle with                        -- is as a variational formulation of some operator D. We are missing almost
       | .zero _     => .zero nowtrino.fact                                -- nothing to arrange for Euler-Lagrange dynamics to fall out.  Which is
-      | .number _ _ _ => .number nowtrino.fact Pigeon.value               -- good, because it naturally tens to fall out, and never seems to _EVER_
+      | .number _ _ _ => .number nowtrino.fact Pigeon.quarter             -- good, because it naturally tens to fall out, and never seems to _EVER_
                                                  (.zero nowtrino.fact) }  -- be violated. The second is through the lens of the Riesz representation
                                                                           -- theorem. The important thing is you can see _conservation_ slowly coming
 instance CAN_YOU_COUNT_THEM                                               -- into focus as well as orientation. Lot's of other things are also in
@@ -75,145 +80,145 @@ instance CAN_YOU_SEE_THE_BOUNDARY                                         -- is 
   cauchy_process :=                                                       --                            2πi  γ   f(z)
     { limit_process  := the_calculus_limit.limit_process                  -- for Z the number of zeros inside the orbit and P the number of poles.
       value          := .zero nowtrino.fact                               --
-      accumulation   := .nil nowtrino.fact }                              --
-                                                                          --
-instance DID_THE_PARTICLE_COLOR_OUTSIDE_THE_LINES                         --
-    (Box: Type i)(Pigeon: CarrierProcess Box)                             --
+      accumulation   := .nil nowtrino.fact }                              -- The number of poles, as we are taught in topology, are not only countable
+                                                                          -- but isomorphic to ℕ. Some would call that redundant. That would smuggle
+instance DID_THE_PARTICLE_COLOR_OUTSIDE_THE_LINES                         -- in some sort of selection that may or may not exist well enough for the
+    (Box: Type i)(Pigeon: CarrierProcess Box)                             -- compiler to tell the difference.
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [exp_iθ: RESIDUE Box Pigeon]                                          --
-    : BINARY Box Pigeon where                                             --
-  observation_process :=                                                  --
+    [exp_iθ: RESIDUE Box Pigeon]                                          -- If the compiler can't tell the difference, then it will declare absolute
+    : BINARY Box Pigeon where                                             -- equivalence. The key here is synchronization of the loops of discussing
+  observation_process :=                                                  -- how to count so that we count while we count.
     { cauchy_process := exp_iθ.cauchy_process                             --
-      before         := .nil nowtrino.fact                                --
-      after          := .nil nowtrino.fact }                              --
-  bit := .initial_condition                                               --
-                  nowtrino.fact exp_iθ.cauchy_process.accumulation        --
-  zero := .nil nowtrino.fact                                              --
-  one  := .nil nowtrino.fact                                              --
+      before         := .nil nowtrino.fact                                -- You know _square numbers_. We can use a square as a pretty good
+      after          := .nil nowtrino.fact }                              -- approximation to the norm of a vector. I mean, *YOU the KNOWER* should
+  bit := .initial_condition                                               -- do the limit by hand. But  +----------------+
+                  nowtrino.fact exp_iθ.cauchy_process.accumulation        --            → →             |  n           j |
+  zero := .nil nowtrino.fact                                              --          ||x-y||  = lim  j |  Σ  (x  - y )    = max (x  - y )        (3)
+  one  := .nil nowtrino.fact                                              --                 ∞   j→∞   √  i=0   i    i        i    i    i
                                                                           --
-instance DO_YOU_SEE_A_BUNCH_OF_FLASHES                                    --
-    (Box: Type i)(Pigeon: CarrierProcess Box)                             --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [flicker: BINARY Box Pigeon]                                          --
-    : REPEATABLE Box Pigeon where                                         --
+instance DO_YOU_SEE_A_BUNCH_OF_FLASHES                                    -- is one of the more _cromulent_ norms. This is probably the easiest way
+    (Box: Type i)(Pigeon: CarrierProcess Box)                             -- to grasp how Gershgorin found his disks. What can be counted is the number
+    [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- of disjoint disks. What cannot be counted is the number of eigenvalues
+    [flicker: BINARY Box Pigeon]                                          -- in each connected section. Should be at least one per connected section.
+    : REPEATABLE Box Pigeon where                                         -- There could be many eigenvalues in a connected region.
   repeatable_process :=                                                   --
-  {                                                                       --
-    observation_process := flicker.observation_process                    --
-    stimulus := .initial_condition nowtrino.fact flicker.zero             --
-    expectation := .hypothesis nowtrino.fact flicker.bit                  --
+  {                                                                       -- But, what is a connected region? Its the thing that can have holes in it
+    observation_process := flicker.observation_process                    -- that topology guarantees that we can not only count, but infer a trivial
+    stimulus := .initial_condition nowtrino.fact flicker.zero             -- map for isomorphivity. Remember, it isn't the fact that an isomorphism
+    expectation := .hypothesis nowtrino.fact flicker.bit                  -- exists insofar as we can explicitly describe it.
   }                                                                       --
-                                                                          --
-instance THE_FLASHES_SHOW_NOWTRINOS_ALMOST_EVERY_TIME                     --
-    (Box: Type i)(Pigeon: CarrierProcess Box)                             --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [JMP: REPEATABLE Box Pigeon]                                          --
+                                                                          -- Of course, like most of the effort in this work, I am rapidly condensing
+instance THE_FLASHES_SHOW_NOWTRINOS_ALMOST_EVERY_TIME                     -- the extraordinarily precise work of Cohen. The goal here is to provide
+    (Box: Type i)(Pigeon: CarrierProcess Box)                             -- many different ways to have the trivial isomorphism y=x. The trivial
+    [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- isomorphism, unlike the others, is the same in the field of the single
+    [JMP: REPEATABLE Box Pigeon]                                          -- element as it is in the compiler T=T for T the only element.
     : NUMERIC Box Pigeon where                                            --
-  computational_process :=                                                --
-  { repeatable_process := JMP.repeatable_process                          --
-    output := some (.hypothesis nowtrino.fact)                            --
+  computational_process :=                                                -- Then the isomorphic mechansim that allows 𝔽(1) to count can finally be
+  { repeatable_process := JMP.repeatable_process                          -- established.  Not because we understand why, but that we don't
+    output := some (.hypothesis nowtrino.fact)                            -- understand the exact same problem across mathematical reasoning.
   }                                                                       --
-                                                                          --
-instance WRITE_DOWN_HOW_MANY_FLASHES_YOU_SEE_IN_A_TABLE                   --
-    (Box: Type i)(Pigeon: CarrierProcess Box)                             --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [jupyter_notebook: NUMERIC Box Pigeon]                                --
+                                                                          -- Well almost all the way across, Riemann says we have to take a point out
+instance WRITE_DOWN_HOW_MANY_FLASHES_YOU_SEE_IN_A_TABLE                   -- in order to guarantee that lines cannot generate fenceposts. What does
+    (Box: Type i)(Pigeon: CarrierProcess Box)                             -- this have to do with what is going on in the code right now? Well,
+    [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- depending on how close *YOU the KNOWER* are to the missing tiddle ι,
+    [jupyter_notebook: NUMERIC Box Pigeon]                                -- the larger the disk Gershgorin predicts.
     : REPRESENTABLE Box Pigeon where                                      --
-  calculation_process :=                                                  --
-  { computational_process :=                                              --
-      { jupyter_notebook.computational_process with                       --
+  calculation_process :=                                                  -- How many flashes are detected report just that, the number of connected
+  { computational_process :=                                              -- areas, not how many eigenvalues are in each. But that detail really
+      { jupyter_notebook.computational_process with                       -- isn't matter. The number of connected areas are the visible measurement.
             closure := fun the_number_of_clicks => the_number_of_clicks   --
-      }                                                                   --
-    program := jupyter_notebook.computational_process.close               --
-                         jupyter_notebook.computational_process.output    --
+      }                                                                   -- The compiler is merely counting them. While writing code that will count
+    program := jupyter_notebook.computational_process.close               -- the counts based on reality. When the disks come together, there is no
+                         jupyter_notebook.computational_process.output    -- reason for a particular disk to be home to any eigenvalue whatsoever.
     state := .program nowtrino.fact                                       --
-                       (jupyter_notebook.computational_process.close      --
-                        jupyter_notebook.computational_process.output)    --
-  }                                                                       --
-  representable? := fun _ expected_response =>                            --
+                       (jupyter_notebook.computational_process.close      -- That's why all flashes need to be written, because the disks they
+                        jupyter_notebook.computational_process.output)    -- represent _COULD_ contain the _ELUSIVE_ naotrino we have been trying to
+  }                                                                       -- isolate. Each flash is a completed physical process. Obvious to any
+  representable? := fun _ expected_response =>                            -- photon detector of the appropriate wave length.
            ⟨Computation.program nowtrino.fact expected_response, rfl⟩     --
-                                                                          --
-instance ROSS!_GET_THE_READOUTS                                           --
-    (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
+                                                                          -- Ross, in this case, is a deep cut. More or less, having the experience
+instance ROSS!_GET_THE_READOUTS                                           -- of the photon is not enough. It must be tallied, recorded, checked,
+    (Box: Type i)                                                         -- verified, and tortured with endless statistics. These are the readouts,
+    (Pigeon: CarrierProcess Box)                                          -- the proof that all the proof we collected can be counted, sorted, and
+    [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- categorized into appropriate buckets.
     [the_invariant: REPRESENTABLE Box Pigeon]                             --
-    : PHYSICAL Box Pigeon where                                           --
-  noisy_process := {                                                      --
-    turing_process := the_invariant.calculation_process                   --
-    program := .halting nowtrino.fact (.program nowtrino.fact             --
+    : PHYSICAL Box Pigeon where                                           -- How many buckets? That sounds like yet another isomorphism to ℕ. It seems
+  noisy_process := {                                                      -- like this device does little more than describe the same isomorphism over
+    turing_process := the_invariant.calculation_process                   -- and over again: y=x for y,x ∈ ℚ. I prefer ℚ as more sophisticated
+    program := .halting nowtrino.fact (.program nowtrino.fact             -- represntation of ℕ.
                               the_invariant.calculation_process.program)  --
-  }                                                                       --
-  threshold := .nonhalting  nowtrino.fact                                 --
-      (.program nowtrino.fact the_invariant.calculation_process.program)  --
+  }                                                                       -- May I remind *YOU the KNOWER* that the first rule of tautology club is
+  threshold := .nonhalting nowtrino.fact                                  -- the first rule of tautology club. This will be funnier when we get to
+      (.program nowtrino.fact the_invariant.calculation_process.program)  -- taughtology club and its first rule about how to avoid getting killed.
       (some (ChaitinsNumberSequence.halting nowtrino.fact                 --
-                               the_invariant.calculation_process.state))  --
-  admissible? := fun _ _ _ => rfl                                         --
-                                                                          --
-                                                                          --
-noncomputable instance ARE_THE_UNITS_RIGHT                                --
-    (Box: Type i)                                                         --
+                               the_invariant.calculation_process.state))  -- Are these representations still trivial now? Does y=x still apply?
+  admissible? := fun _ _ _ => rfl                                         -- Does 2 still = 2 in this case? I mean it could mean 4/2. That's three
+                                                                          -- times the symbols. Or two more symbols. Probably both. This distinction
+                                                                          -- seems important. Seems hard to compute, too. Or, ridiculously easy.
+noncomputable instance ARE_THE_UNITS_RIGHT                                -- It's just the 3 card monte flop again. So, we start the process one more
+    (Box: Type i)                                                         -- time.
     (Pigeon: CarrierProcess Box)                                          --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [anechoic_chamber: PHYSICAL Box Pigeon]                               --
-    [Inhabited nowtrino.symbol]                                           --
-    : COMPARABLE Box Pigeon where                                         --
-  physical_process :=                                                     --
-  { noisy_process := anechoic_chamber.noisy_process                       --
-    representation := default                                             --
-    invariant := .base nowtrino.fact default                              --
-    value := .base nowtrino.fact (ULift.up default)                       --
-  }                                                                       --
+    [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- I'm glad we chose a definition of a handful of fractions as possibly
+    [anechoic_chamber: PHYSICAL Box Pigeon]                               -- redundant somehow. Dunno if a mature number system needs more than say
+    [Inhabited nowtrino.symbol]                                           -- 4 or 5 numbers. This allows us to bucket very noisy data and look for
+    : COMPARABLE Box Pigeon where                                         -- _clear_ biases. The first easy one to notice is the FACT we cannot have
+  physical_process :=                                                     -- a prior without a prior value. Some default value that we reach for when
+  { noisy_process := anechoic_chamber.noisy_process                       -- asked to *CLEAR OUR MINDS*. That's the first bucket *YOU the KNOWER*
+    representation := default                                             -- reaches for. I believe this could be misconstrued appropriately as ϕ, the
+    invariant := .base nowtrino.fact default                              -- empty set. *YOU the READER*, this is where you _HAND_ the empty set to
+    value := .base nowtrino.fact (ULift.up default)                       -- *YOU the KNOWER*. There are a dozen trivial isomorphisms that
+  }                                                                       -- *YOU the READER* can now palm as cards.
   smaller_than := fun one_foot π  => one_foot = π                         --
-                                                                          --
-instance DO_YOU_SEE_THE_LIGHT_FLASH_WHEN_YOU_HEAR_THE_CLICK               --
-    (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
+                                                                          -- Before I forget, there is a famous book that mentions how π can be
+instance DO_YOU_SEE_THE_LIGHT_FLASH_WHEN_YOU_HEAR_THE_CLICK               -- effectively approximated as 3. Here we are effectively approximating it
+    (Box: Type i)                                                         -- as an isomorphism to ℕ. For those that understand the Hebrew process
+    (Pigeon: CarrierProcess Box)                                          -- of an Arabic constant, the approximation gets much more efficient.
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [anechoic_chamber: PHYSICAL Box Pigeon]                               --
-    [distinct: COMPARABLE Box Pigeon]                                     --
-    : OBSERVED Box Pigeon where                                           --
-  slip_process :=                                                         --
-  { physical_process := distinct.physical_process                         --
+    [anechoic_chamber: PHYSICAL Box Pigeon]                               -- But this is how we _slip_ into absurdity. The absurdity of T=F. How many
+    [distinct: COMPARABLE Box Pigeon]                                     -- of these constructions are necessary to keep in memory before the
+    : OBSERVED Box Pigeon where                                           -- computation of the proof can finally be shortcut to T=T? I feel like I
+  slip_process :=                                                         -- am dancing around a concept of how polynomials can be evaluated. Or,
+  { physical_process := distinct.physical_process                         -- not so much evaluated as demostrated solved, evaluating to 0.
     projection := .origin nowtrino.fact                                   --
-                      distinct.physical_process.noisy_process.program     --
-                      nowtrino.symbol                                     --
-    stress := anechoic_chamber.threshold                                  --
-    threshold := nowtrino.symbol                                          --
+                      distinct.physical_process.noisy_process.program     -- Thankfully, we can _count_ the number of times this could possibly
+                      nowtrino.symbol                                     -- happen. The thing about polynomials is they can describe _ANYTHING_.
+    stress := anechoic_chamber.threshold                                  -- I mean _ANYTHING_. The magic of Disney is no longer animation but
+    threshold := nowtrino.symbol                                          -- _POLYNOMIALS_ and _SPLINES_.
   }                                                                       --
-  observation := ULift nowtrino.symbol                                    --
+  observation := ULift nowtrino.symbol                                    -- I'm sure we have all seen a Pixar film.
                                                                           --
-instance THATS_THE_PHOTOELECTRIC_EFFECT                                   --
+instance THATS_THE_PHOTOELECTRIC_EFFECT                                   -- On a screen of some kind.
     (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
+    (Pigeon: CarrierProcess Box)                                          -- Delivered by some digital streaming service.
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon]                                               --
-    [static_friction: OBSERVED Box Pigeon]                                --
-    : PRESENT Box Pigeon where                                            --
-  santa_claus:=                                                           --
+    [COMPARABLE Box Pigeon]                                               -- And that's the three card monte throw again. Now, the thing about Pixar
+    [static_friction: OBSERVED Box Pigeon]                                -- films is that they are generally aimed at children and the parents bear
+    : PRESENT Box Pigeon where                                            -- the expense. Much like another experience common to many children. In
+  santa_claus:=                                                           -- order to exhaust to absurdity, one must be ready to go to absurd places.
   { static_fraction := static_friction.slip_process                       --
-    accumulation := .tree nowtrino.fact                                   --
-  }                                                                       --
-  quantum := Type i                                                       --
-                                                                          --
+    accumulation := .tree nowtrino.fact                                   -- Places that allow for supernatural forces to provide observations to
+  }                                                                       -- those who cannot explain where the forces come from. Places that allow
+  quantum := Type i                                                       -- for blindly looking for harmonic partial differential equations and
+                                                                          -- just assuming they all should work.
 instance THE_PHOTON_IS_MEASURABLE                                         --
-    (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon]                                               --
-    [gift_from: PRESENT Box Pigeon]                                       --
+    (Box: Type i)                                                         -- For them to work, there can only be two derivatives. We may have another
+    (Pigeon: CarrierProcess Box)                                          -- number here. Two different derivatives each taken to provide the second.
+    [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- The mixed partial. Non-commutation. Causality. These are all words that
+    [COMPARABLE Box Pigeon]                                               -- can be used to draw a conclusion about how physical laws necessarily
+    [gift_from: PRESENT Box Pigeon]                                       -- encode mechanism and representation simultaneously.
     : MEASURABLE Box Pigeon where                                         --
-  gauge_process :=                                                        --
-  { sensing_process := gift_from.santa_claus                              --
-    clock      := .this_superpigeon nowtrino.fact (.tree nowtrino.fact)   --
-  }                                                                       --
-                                                                          --
-instance PERHAPS_NOT_WITH_A_MULTIMETER_BUT_YOU_UNDERSTAND_WHAT_I_MEAN     --
-    (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
+  gauge_process :=                                                        -- I believe that is a consequence of Noether's theorem. IANAPhysicist.
+  { sensing_process := gift_from.santa_claus                              -- I am barely a computer programmer. But, it is my understanding, that
+    clock      := .this_superpigeon nowtrino.fact (.tree nowtrino.fact)   -- interaction of particles is something we still do not understand.
+  }                                                                       -- I believe all interactions of matter that I, personally, experience are
+                                                                          -- mediated by photons. May as well come from Santa Claus as far as the
+instance PERHAPS_NOT_WITH_A_MULTIMETER_BUT_YOU_UNDERSTAND_WHAT_I_MEAN     -- compiler is concerned. The important thing is there is a way to both
+    (Box: Type i)                                                         -- _describe_ how to count the number of photons in an experience _AND_
+    (Pigeon: CarrierProcess Box)                                          -- _describe_ experience without using the photon itself.
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon]                                               --
-    [multimeter: MEASURABLE Box Pigeon]                                   --
-    : GUNGAN Box Pigeon where                                             --
+    [COMPARABLE Box Pigeon]                                               -- We can generalize this description of a device to *THE* description of
+    [multimeter: MEASURABLE Box Pigeon]                                   -- *ANY* device, as long as we are careful with the plot. The plot device.
+    : GUNGAN Box Pigeon where                                             -- Jar Jar Binks. Segue. *TA-DA*!
   meesa_process :=                                                        --
   { gauge_process := multimeter.gauge_process                             --
     concept := .color nowtrino.fact                                       --
@@ -357,7 +362,7 @@ def InitiationProcess.default                                             --
     [BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon]                          --
     : InitiationProcess Box Pigeon where                                  --
   axioms := CrusadeProcess.default Box Pigeon                             --
-  sacred_texts := .inside_joke Fact.Truth.truth                           --
+  sacred_texts := .inside_joke FACT.Truth.truth                           --
                                                                           --
 instance MAKE_SURE_WE_CAN_GET_A_COUPLE_GRAD_STUDENTS                      --
     (Box: Type i)                                                         --
@@ -382,8 +387,8 @@ def LearningProcess.default                                               --
     [BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon][ACOLYTE Box Pigeon]      --
     : LearningProcess Box Pigeon where                                    --
   teaching := InitiationProcess.default Box Pigeon                        --
-  galileo := .inside_joke Fact.Truth.truth                                --
-  invariant := .repeatable Fact.Truth.truth                               --
+  galileo := .inside_joke FACT.Truth.truth                                --
+  invariant := .repeatable FACT.Truth.truth                               --
                                                                           --
 instance ABD                                                              --
     (Box: Type i)                                                         --
@@ -392,8 +397,8 @@ instance ABD                                                              --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon]                            --
     : SCIENTIFIC Box Pigeon where                                         --
   discovering := LearningProcess.default Box Pigeon                       --
-  invariant := .hypothesis Fact.Truth.truth                               --
-                                        (.inside_joke Fact.Truth.truth)   --
+  invariant := .hypothesis FACT.Truth.truth                               --
+                                        (.inside_joke FACT.Truth.truth)   --
                                                                           --
 instance YOU_HAVE_TO_STOP_TAKING_CLASSES_TO_GRADUATE                      --
     (Box: Type i)                                                         --
@@ -460,13 +465,13 @@ instance PROBLEM_IS_THE_DIFFERENTIAL_EQUATION_IS_NOT_RELATIVE             --
   the_train_of_thought :=                                                 --
   { the_local_schedule :=                                                 --
     { the_æther := flying_spaghetti_monster.by_His_noodly_appendage       --
-      Du := .the_gateaux yet.the_experiment Fact.Truth.truth              --
+      Du := .the_gateaux yet.the_experiment FACT.Truth.truth              --
                   nowtrino.fact.truth                                     --
                   (.the_newton yet.the_experiment nowtrino.fact.truth)    --
     }                                                                     --
     the_direction_to_the_destination := .einstein nowtrino.fact           --
-    uptown_or_downtown := match nowtrino.fact.decTruth with               --
-        | isTrue  _ => Fact.Truth                                         --
+    uptown_or_downtown := match nowtrino.fact.click with                  --
+        | isTrue  _ => FACT.Truth                                         --
         | isFalse _ => nowtrino.fact                                      --
     the_train_in := Type i                                                --
   }                                                                       --
@@ -505,7 +510,7 @@ instance DONT_WORRY_ABOUT_THE_NAOTRINO_BEING_SPIN_2_YET___FUTURE_WORK     --
                                                     nonsensical.feelings  --
     { stamina := feelings                                                 --
       trilinos : Calibration.EKG := nonsensical.microsoft_basic           --
-      numerical_analysis := (.load Fact.Truth.truth Box)                  --
+      numerical_analysis := (.load FACT.Truth.truth Box)                  --
     }                                                                     --
                                                                           --
 instance THE_NAOTRINO_IS_MEASURED                                         --
@@ -536,10 +541,10 @@ instance WE_ARE_CONSTANTLY_INUNDATED_BY_NAOTRINOES                        --
     : COMPILED Box Pigeon naotrino yarn_theory where                      --
   a_truth_about_the_world :=                                              --
   { too_good_to_be_true := weakly_interacting_particle.a_distance         --
-    of_jibberish := (.introduction Fact.Truth Box)                            --
+    of_jibberish := (.introduction FACT.Truth Box)                            --
   }                                                                       --
-  a_demonstration_of_a_constant := .methodology Fact.Truth Fact.Truth     --
-              Box (ULift.{i+1, i} Box) (.introduction Fact.Truth Box)     --
+  a_demonstration_of_a_constant := .methodology FACT.Truth FACT.Truth     --
+              Box (ULift.{i+1, i} Box) (.introduction FACT.Truth Box)     --
                                                                           --
 instance HONEST_TO_GOD_IT_SHOWS_UP_EVERY_TIME                             --
     (Box: Type i)                                                         --
@@ -552,26 +557,26 @@ instance HONEST_TO_GOD_IT_SHOWS_UP_EVERY_TIME                             --
     : A_TRUTH_ABOUT Box Pigeon naotrino yarn_theory where                 --
   you_the_reader :=                                                       --
   { in_a_giant_book := holy_shit.a_truth_about_the_world                  --
-    a_constant := .zero Fact.Truth                                        --
-    current_page_number := .zero Fact.Truth                               --
-    total_pages := .zero Fact.Truth                                       --
-    of_the_proof := .methodology Fact.Truth Fact.Truth Box                --
-                  (ULift.{i+1, i} Box) (.introduction Fact.Truth Box)     --
+    a_constant := .zero FACT.Truth                                        --
+    current_page_number := .zero FACT.Truth                               --
+    total_pages := .zero FACT.Truth                                       --
+    of_the_proof := .methodology FACT.Truth FACT.Truth Box                --
+                  (ULift.{i+1, i} Box) (.introduction FACT.Truth Box)     --
   }                                                                       --
-  TRUE := .zero Fact.Truth                                                --
+  TRUE := .zero FACT.Truth                                                --
   raw_output := .one                                                      --
-              Fact.Truth                                                  --
-              (.one Fact.Truth (.zero nowtrino.fact))                     --
+              FACT.Truth                                                  --
+              (.one FACT.Truth (.zero nowtrino.fact))                     --
               (.introduction nowtrino.fact Box)                           --
-              (.methodology Fact.Truth nowtrino.fact Box                  --
-                    (ULift.{i+1, i} Box) (.introduction Fact.Truth Box))  --
+              (.methodology FACT.Truth nowtrino.fact Box                  --
+                    (ULift.{i+1, i} Box) (.introduction FACT.Truth Box))  --
               (.zero nowtrino.fact)                                       --
-  a_constant := .one                                                      -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-              Fact.Truth --                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-              holy_shit.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_local_schedule.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.teaching.axioms.to_pwn_n00bz.dunking_contest.ANSYS_process.GOSUB.adding_process.mideastern_process.compiled_process.digital_process.meesa_process.gauge_process.sensing_process.static_fraction.physical_process.noisy_process.turing_process.computational_process.repeatable_process.observation_process.cauchy_process.limit_process.indexing_process.count.carrier.value -- |
-                                     (.introduction nowtrino.fact Box) --                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-              (.methodology Fact.Truth nowtrino.fact Box                  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-                  (ULift.{i+1, i} Box) (.introduction Fact.Truth Box))    --
+  a_constant := .one                                                      -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+              FACT.Truth --                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+              holy_shit.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_local_schedule.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.teaching.axioms.to_pwn_n00bz.dunking_contest.ANSYS_process.GOSUB.adding_process.mideastern_process.compiled_process.digital_process.meesa_process.gauge_process.sensing_process.static_fraction.physical_process.noisy_process.turing_process.computational_process.repeatable_process.observation_process.cauchy_process.limit_process.indexing_process.count.palmed_card.quarter -- |
+                                     (.introduction nowtrino.fact Box) --                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+              (.methodology FACT.Truth nowtrino.fact Box                  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+                  (ULift.{i+1, i} Box) (.introduction FACT.Truth Box))    --
               (.zero nowtrino.fact)                                       --
   the_constant_is_at_least_true := by trivial                             --
                                                                           --
@@ -586,10 +591,10 @@ noncomputable instance OF_COURSE_IT_DOES___I_JUST_PUT_IT_THERE            --
     : INFERRED Box Pigeon naotrino yarn_theory where                      --
   same_difference :=                                                      --
   { you_the_knower      := guano.you_the_reader                           --
-    your_conclusion     := .different (Fact.SAME (guano:=guano))          --
-                  (guano.TRUE) (guano.a_constant) (some Fact.Truth.truth) --
+    your_conclusion     := .different (FACT.SAME (guano:=guano))          --
+                  (guano.TRUE) (guano.a_constant) (some FACT.Truth.truth) --
   }                                                                       --
-  α := .same Fact.Truth guano.a_constant                                  --
+  α := .same FACT.Truth guano.a_constant                                  --
                                                                           --
 def You_the_Reader                                                        --
     {Box: Type i}                                                         --
@@ -614,7 +619,7 @@ def You_the_Reader                                                        --
     : AtreyuProcess Box Pigeon fact about_the_world where                 --
   in_a_giant_book := stdout.a_truth_about_the_world                       --
   a_constant := .zero nowtrino.fact                                       --
-  current_page_number := Pigeon.value                                     --
+  current_page_number := Pigeon.quarter                                   --
   of_the_proof := stdout.a_demonstration_of_a_constant                    --
 
 namespace THEORY
@@ -693,11 +698,11 @@ def SO_YOU_START_TO_BUILD_ANOTHER_DEMONSTRATION_PROCESS                   --
     : COMPILED Box Pigeon naotrino yarn_theory where                      --
   a_truth_about_the_world :=                                              --
   { too_good_to_be_true := multimeter.a_distance                          --
-    of_jibberish := .methodology nowtrino.fact Fact.Truth Box                 --
+    of_jibberish := .methodology nowtrino.fact FACT.Truth Box                 --
          (ULift.{i+1,i} Box) holy_shit.a_demonstration_of_a_constant      --
   }                                                                       --
   a_demonstration_of_a_constant := .methodology nowtrino.fact             --
-            Fact.Truth Box (ULift.{i+1,i} Box)                            --
+            FACT.Truth Box (ULift.{i+1,i} Box)                            --
                   holy_shit.a_demonstration_of_a_constant                 --
                                                                           --
 def IN_ORDER_TO_MEASURE_THE_CONSTANT_EMPIRICALLY                          --
@@ -716,7 +721,7 @@ def IN_ORDER_TO_MEASURE_THE_CONSTANT_EMPIRICALLY                          --
   a_distance :=                                                           --
   {   description := documents_on_file.scientific_paper                   --
       the_measurement_of := multimeter.a_distance.the_measurement_of      --
-      in_heartbeats := .distance_to nowtrino.fact (.zero Fact.Truth)      --
+      in_heartbeats := .distance_to nowtrino.fact (.zero FACT.Truth)      --
             (multimeter.a_distance.the_measurement_of) Box                ------------+
             (ULift.{i+1,i} Box) --                                                    |
              metaphor.a_truth_about_the_world.too_good_to_be_true.in_heartbeats --    |
@@ -1203,7 +1208,7 @@ def THEN_I_THINK_YOU_CAN_TELL_APART_A_NAOTRINO_AND_A_NOWTRINO             --
   fact := nowtrino.fact                                                   --
   symbol := nowtrino.symbol                                               --
   different? := fun _ => True                                             --
-  dec_distinct := fun _ => isTrue trivial                                 --
+  not_the_same := fun _ => isTrue trivial                                 --
 
 
 

@@ -34,7 +34,7 @@ namespace Measurement
 
 `.same` is the arm the spec always marked _converged, which is exact in logic_.  Exact in
 LOGIC.  Episode 8 reaches it, and reaches it honestly, by `rfl` on the ground floor where
-both stanzas are `theOriginFact` and `decTruth` is `isTrue rfl`.  Nothing was measured.
+both stanzas are `theOriginFact` and `click` is `isTrue rfl`.  Nothing was measured.
 
 A meter can never get there.  A meter has a floor, and the floor is the slip -- the same
 slip Episode 11 pays climbing past OBSERVED, the `projection` with no upstream source that
@@ -75,7 +75,7 @@ def bracketed_at_the_slip : Bool := jarReach < Calibration.measuredFloor
 --| anything -- the blank sits flat while the sample climbs, which is how you learn the
 --| climb was structure and not the apparatus.
 private def blank : TermElabM Nat := do
-  let stx ← `(Fact.Truth.decTruth)
+  let stx ← `(FACT.Truth.click)
   let (_, hb) ← withHeartbeats do
     let e ← elabTerm stx none; let _ ← Meta.whnf e; pure ()
   pure hb
@@ -154,7 +154,7 @@ def lagrangeReading :=
 --|
 --|     theJar = .superposition theOriginFact (.bang _ (.color _ theArea)) (.color _ theArea)
 --|
---| A constructor tree with Facts in it: the superposition's two roots, one branch a step
+--| A constructor tree with FACTs in it: the superposition's two roots, one branch a step
 --| deeper than the other.  And `Jar.le` must WALK it, including the arm that returns
 --| `¬ le j1' j2'` when both decisions come back false.  Comparing jars is work on
 --| evidence.  Elaborating `ULift` was work on notation.

@@ -23,8 +23,8 @@ __EPISODE 13__: _LET'S WATCH HIM COOK..._
 --| conjunctive normal form is Episode 3's arithmetic, which has been sitting there since
 --| the first act wearing the names of areas and lengths:
 --|
---|     Sum.add     : Fact → Area → Area → Sum → Sum          two literals, disjoined
---|     Product.mul : Fact → Sum  → Sum  → Product → Product  two clauses, conjoined
+--|     Sum.add     : FACT → Area → Area → Sum → Sum          two literals, disjoined
+--|     Product.mul : FACT → Sum  → Sum  → Product → Product  two clauses, conjoined
 --|
 --| A Product of Sums is a CNF formula.  Nobody arranged that; multiplication distributing
 --| over addition IS conjunction distributing over disjunction, and the device wrote down
@@ -48,7 +48,7 @@ is put it in a clause.  Episode 8 already carded the atom: `theArea`, built from
 fact and the origin page.  A literal here is not a new kind of thing.  It is the smallest
 thing the device agreed to hold, which is what a literal is supposed to be.
 -/
---| MINTED HERE, NOT BORROWED.  Episode 8 already carries `theOriginFact`, `theArea` and
+--| MINTED HERE, NOT BORROWED.  Episode 8 already carries `theOriginFACT`, `theArea` and
 --| `theSum`, and the obvious move is to import Episode 8 and use them.  That would be
 --| wrong, and the import graph says why: Episode 9 imports Episode SEVEN.  The long way
 --| branches off before the short way exists and never rejoins it -- Episode 12 is the only
@@ -57,13 +57,13 @@ thing the device agreed to hold, which is what a literal is supposed to be.
 --| So Cook takes nothing from the short way.  These four lines rebuild the atoms from the
 --| origin fact, which is Episode 1, which everything has.  A reduction that quietly needed
 --| the answer would not be a reduction.
-def cookFact : Fact := Fact.Truth
-def cookPage : Number := .zero cookFact
-def aLiteral : Area := .dt cookFact cookPage (.tree cookFact)
+def cookFACT : FACT := FACT.Truth
+def cookPage : Number := .zero cookFACT
+def aLiteral : Area := .dt cookFACT cookPage (.tree cookFACT)
 
 --| THE CLAUSE.  `Sum.add` disjoins two areas onto an accumulator, and terminates in
 --| `.zero`, which is the empty disjunction -- false, correctly, since an empty OR is.
-def aClause : Sum := .add cookFact aLiteral aLiteral (.zero True aLiteral)
+def aClause : Sum := .add cookFACT aLiteral aLiteral (.zero True aLiteral)
 
 /-!
 ### THE FOUR CONJUNCTS
@@ -71,9 +71,9 @@ def aClause : Sum := .add cookFact aLiteral aLiteral (.zero True aLiteral)
 Cook's formula is φ_cell ∧ φ_start ∧ φ_move ∧ φ_accept, and each conjunct is a group of
 clauses, which is to say each is a `Product`.  The device gives three ways to be one:
 
-    Product.origin : Fact → Product              the empty conjunction -- vacuously true
+    Product.origin : FACT → Product              the empty conjunction -- vacuously true
     Product.one    : Prop → Sum → Product        a single clause
-    Product.mul    : Fact → Sum → Sum → Product → Product
+    Product.mul    : FACT → Sum → Sum → Product → Product
 
 and the four conjuncts want exactly those shapes, in that order of weight.
 -/
@@ -81,7 +81,7 @@ and the four conjuncts want exactly those shapes, in that order of weight.
 --| EACH CELL HOLDS ONE SYMBOL.  Two clauses: at least one symbol, and not two.  That is
 --| the only conjunct that needs both halves of a `mul`, and it is the one everybody
 --| forgets when they write the proof out on a board.
-def phi_cell : Product := .mul cookFact aClause aClause (.one True aClause)
+def phi_cell : Product := .mul cookFACT aClause aClause (.one True aClause)
 
 --| THE FIRST ROW IS THE INPUT.  One clause, because the input is given and there is
 --| nothing to choose.  `TYPESET_origin` is this conjunct: rung one, `Number` unlifted,
@@ -99,7 +99,7 @@ def phi_start : Product := .one True aClause
 --|
 --| Exactly one arm fires.  That is φ_cell holding for the tape head, proved by the match
 --| being exhaustive rather than by a clause anybody wrote.
-def phi_move : Product := .mul cookFact aClause aClause (.one True aClause)
+def phi_move : Product := .mul cookFACT aClause aClause (.one True aClause)
 
 --| SOME ROW ACCEPTS.  Empty, and that is not a shortcut.  Acceptance in this device is not
 --| a clause you add; it is whether the last rung can be built at all.  `pressCheck` reads
@@ -107,7 +107,7 @@ def phi_move : Product := .mul cookFact aClause aClause (.one True aClause)
 --| monotone -- and the verdict is a reading, not a constraint.  So the conjunct is
 --| `.origin`: nothing is asserted, and the acceptance condition lives in whether an
 --| instance exists.  Which is the whole point of a reduction, and also its cost.
-def phi_accept : Product := .origin cookFact
+def phi_accept : Product := .origin cookFACT
 
 /-!
 ### THE FORMULA
@@ -119,14 +119,14 @@ null space.  The device named that constructor while doing linear algebra and it
 same thing here.
 -/
 def phi : Basis :=
-  .basis cookFact phi_cell phi_start
-    (.basis cookFact phi_move phi_accept
-      (.null_space cookFact))
+  .basis cookFACT phi_cell phi_start
+    (.basis cookFACT phi_move phi_accept
+      (.null_space cookFACT))
 
 --| THE REDUCTION.  A `Polynomial` over the formula -- which is what a reduction is: the
 --| formula, in the size of the input, to a power somebody has to bound.
 def theReduction : Polynomial :=
-  .factor cookFact phi phi (.monomial True phi)
+  .factor cookFACT phi phi (.monomial True phi)
 
 /-!
 ### WHAT IS EXHIBITED HERE, AND WHAT IS NOT
@@ -290,16 +290,16 @@ rediscover it, which is why the reduction takes it and not the `TYPESET` chain.
 
 --| A FACT ALREADY DECIDES ITSELF.  That is what `decTruth` is for, and it is why the
 --| device has no free variables of its own: every atom arrives with its assignment.
-def Fact.bit (f : Fact) : Bool := @decide f.truth f.decTruth
+def FACT.bit (f : FACT) : Bool := @decide f.truth f.click
 
---| AND BACK.  A bit is a Fact you can hand a decision to.  `Fact.Truth` for one, and the
+--| AND BACK.  A bit is a FACT you can hand a decision to.  `FACT.Truth` for one, and the
 --| empty proposition -- refuted by the identity, since `¬False` IS `id` -- for zero.
-def bitFact : Bool → Fact
-  | true  => Fact.Truth
-  | false => { truth := False, decTruth := .isFalse id }
+def bitFACT : Bool → FACT
+  | true  => FACT.Truth
+  | false => { truth := False, click := .isFalse id }
 
 --| THE LOCAL INVERSE.  Everything downstream rests on these two lines.
-theorem bit_bitFact : ∀ b : Bool, (bitFact b).bit = b := by
+theorem bit_bitFACT : ∀ b : Bool, (bitFACT b).bit = b := by
   intro b; cases b <;> rfl
 
 --| THE TRACE, READ.  Each cell surrenders the facts at its head, in order.  `introduction`
@@ -314,9 +314,9 @@ def ThePreprint.bits : ThePreprint.{0} → List Bool
 --| introduction.  Total: every bit list yields a trace, so there is nothing for a
 --| satisfying assignment to hide behind.
 def decodeBits : List Bool → ThePreprint.{0}
-  | []            => .introduction (bitFact false) Unit
-  | [b]           => .introduction (bitFact b) Unit
-  | b :: c :: rest => .methodology (bitFact b) (bitFact c) Unit Type (decodeBits rest)
+  | []            => .introduction (bitFACT false) Unit
+  | [b]           => .introduction (bitFACT b) Unit
+  | b :: c :: rest => .methodology (bitFACT b) (bitFACT c) Unit Type (decodeBits rest)
 
 --| A TRACE ALWAYS READS ODD.  `ThePreprint` has no empty constructor: the shortest tape
 --| is `.introduction`, which carries one fact, and every recursive cell adds two.  So the
@@ -331,17 +331,17 @@ theorem decode_bits :
   intro bs
   induction bs using decodeBits.induct with
   | case1 => intro h; simp at h
-  | case2 b => intro _; simp [decodeBits, ThePreprint.bits, bit_bitFact]
+  | case2 b => intro _; simp [decodeBits, ThePreprint.bits, bit_bitFACT]
   | case3 b c rest ih =>
       intro h
       have h' : rest.length % 2 = 1 := by simp [List.length] at h; omega
-      simp [decodeBits, ThePreprint.bits, bit_bitFact, ih h']
+      simp [decodeBits, ThePreprint.bits, bit_bitFACT, ih h']
 
 /-!
 ### WHAT THIS CLOSES AND WHAT IT DOES NOT
 
 Closed: the backward direction is constructive.  `decodeBits` is total, `decode_bits` says
-its reading agrees with what it was handed, and `bit_bitFact` is the one-line inverse the
+its reading agrees with what it was handed, and `bit_bitFACT` is the one-line inverse the
 whole thing rests on.  No assignment can describe a fabricated history, because every
 assignment names a trace that exists.
 
@@ -391,19 +391,19 @@ def Product.bits : Product → List Bool
 --| AFTER, so traces read 2k+1.  A `Product` node carries one assertion, so formulas read
 --| any length.  Transition structures need two facts per cell; conjunctions need one.
 def decodeProduct : List Bool → Product
-  | []        => .origin (bitFact false)
-  | [b]       => .origin (bitFact b)
-  | b :: rest => .mul (bitFact b) aClause aClause (decodeProduct rest)
+  | []        => .origin (bitFACT false)
+  | [b]       => .origin (bitFACT b)
+  | b :: rest => .mul (bitFACT b) aClause aClause (decodeProduct rest)
 
 theorem decode_product :
     ∀ bs : List Bool, bs ≠ [] → (decodeProduct bs).bits = bs := by
   intro bs
   induction bs using decodeProduct.induct with
   | case1 => intro h; exact absurd rfl h
-  | case2 b => intro _; simp [decodeProduct, Product.bits, bit_bitFact]
+  | case2 b => intro _; simp [decodeProduct, Product.bits, bit_bitFACT]
   | case3 b rest hne ih =>
       intro _
-      simp [decodeProduct, Product.bits, bit_bitFact, ih hne]
+      simp [decodeProduct, Product.bits, bit_bitFACT, ih hne]
 
 /-!
 ### THE STEP CONSTRAINT, AND WHAT IT COSTS
@@ -432,8 +432,8 @@ def Area.index : Area → Nat
   | .tree _       => 0
   | .dt _ _ rest  => rest.index + 1
 
-def varA : Area := .tree cookFact
-def varB : Area := .dt cookFact cookPage (.tree cookFact)
+def varA : Area := .tree cookFACT
+def varB : Area := .dt cookFACT cookPage (.tree cookFACT)
 
 def assign (x y : Bool) : Assignment := fun a => if a.index == 0 then x else y
 
@@ -444,10 +444,10 @@ def assign (x y : Bool) : Assignment := fun a => if a.index == 0 then x else y
 --| one clause all positive, one all negative.  That is the whole reason the arithmetic
 --| needed a sign, and the whole reason the step constraint could not be written before.
 def xorClauses : Product :=
-  .mul cookFact
-    (.add cookFact varA varB (.zero True varA))
-    (.add cookFact varA varB (.zero True varA))
-    (.origin cookFact)
+  .mul cookFACT
+    (.add cookFACT varA varB (.zero True varA))
+    (.add cookFACT varA varB (.zero True varA))
+    (.origin cookFACT)
 
 --| THE FULL TABLE OVER BOTH VARIABLES.  `bothWays` only tries the two CONSTANT
 --| assignments, so a false there says the easy answers fail -- not that there is no
@@ -472,11 +472,11 @@ def xorTarget : List Bool := [false, true, true, false]
 --| an artefact of the placeholders, not a property of the reduction, so the step constraint
 --| gets tested on its own until the other conjuncts carry real variables.
 def phiStep : Basis :=
-  .basis cookFact xorClauses phi_accept (.null_space cookFact)
+  .basis cookFACT xorClauses phi_accept (.null_space cookFACT)
 
 def phiWired : Basis :=
-  .basis cookFact phi_cell phi_start
-    (.basis cookFact xorClauses phi_accept (.null_space cookFact))
+  .basis cookFACT phi_cell phi_start
+    (.basis cookFACT xorClauses phi_accept (.null_space cookFACT))
 
 /-!
 ### AND NO SINGLE CONVENTION CAN WRITE IT
@@ -564,29 +564,29 @@ doing.  The count of cells is the resolution, and the resolution is ε.
 --| VARIABLES BY INDEX.  `Area.index (varAt n) = n` by construction: nesting `.dt` is the
 --| address, and `.tree` is zero.
 def varAt : Nat → Area
-  | 0     => .tree cookFact
-  | n + 1 => .dt cookFact cookPage (varAt n)
+  | 0     => .tree cookFACT
+  | n + 1 => .dt cookFACT cookPage (varAt n)
 
 def cellClause (k : Nat) : Sum :=
-  .add cookFact (varAt (2 * k)) (varAt (2 * k + 1)) (.zero True (varAt (2 * k)))
+  .add cookFACT (varAt (2 * k)) (varAt (2 * k + 1)) (.zero True (varAt (2 * k)))
 
 --| ε, AS A COUNT OF CELLS.  Each clause gets its own pair, so nothing contradicts by
 --| accident and the only contradictions left are the ones the step puts there.
 def phi_cellN : Nat → Product
-  | 0       => .origin cookFact
+  | 0       => .origin cookFACT
   | 1       => .one True (cellClause 0)
-  | n + 2   => .mul cookFact (cellClause (n + 1)) (cellClause n) (phi_cellN n)
+  | n + 2   => .mul cookFACT (cellClause (n + 1)) (cellClause n) (phi_cellN n)
 
 --| x₀, AS ONE UNIT CLAUSE.  The seed asserts one thing and leaves everything else open,
 --| which is what an initial guess is entitled to do.
 def phi_startN : Product :=
-  .one True (.add cookFact (varAt 0) (varAt 0) (.zero True (varAt 0)))
+  .one True (.add cookFACT (varAt 0) (varAt 0) (.zero True (varAt 0)))
 
 --| THE FORMULA, WITH ALL FOUR CONJUNCTS REAL.  `theSlipAtTwo` is the Monte's own fold
 --| count -- four, the slip -- so the resolution is the device's, not one I picked.
 def phiJFNK : Basis :=
-  .basis cookFact (phi_cellN theSlipAtTwo) phi_startN
-    (.basis cookFact xorClauses phi_accept (.null_space cookFact))
+  .basis cookFACT (phi_cellN theSlipAtTwo) phi_startN
+    (.basis cookFACT xorClauses phi_accept (.null_space cookFACT))
 
 --| SEARCH.  Not `bothWays` and not `fourWays` -- with several variables the constant and
 --| the two-variable tables both lie by omission.  This tries every assignment.
@@ -753,6 +753,8 @@ theorem cook_levin_on_theTop : THEORY.traceSat theTopTrace = theTopTrace.stepOK 
 
 end Measurement
 
+--| This is as far as the machine can go, demonstration of itself.
+
 --| WHAT THE READER GETS FOR FREE.  The four conjuncts, assembled, with nothing measured.
 --#eval "cook: four conjuncts over Episode 3 arithmetic, Episode 11 tableau"
 --#eval s!"all-true  euclid {(Measurement.phi.holds (fun _ => true) (Measurement.uniform .euclidean) 0).1} negated {(Measurement.phi.holds (fun _ => true) (Measurement.uniform .negated) 0).1} west {(Measurement.phi.holds (fun _ => true) (Measurement.uniform .west) 0).1} east {(Measurement.phi.holds (fun _ => true) (Measurement.uniform .east) 0).1}"
@@ -787,10 +789,14 @@ end Measurement
 --| without violating the rules of symbolic manipulation. More simply, all **YOU** have to do is _believe_ me, I have generated the counter of every
 --| outcome for **YOU**, both Turing machines, perfectly complementary and completely identical, just interpreted both ways. We can turn the knob over
 --| and over while the Turing machines slowly iterate through all the arguments. But we don't need to. That won't prove anything. There is nothing
---| left to *prove* --- only *demonstrate*.
+--| left to *prove* --- only *demonstrate*. Does the mechanism demonstrating this proof look like an electron to **YOU**? Because I think we can all
+--| agree that this is a verified fact of running on a computer.
 
---| That's my tragedy.  It doesn't matter at all if **YOU** believe it or not, it is an undeniable trick of the light. Or, I can just show you
---| the other machine.
+--| That's my tragedy.  It doesn't matter at all if **YOU** believe it or not, it is an undeniable trick of the light. Or, I can just show you the
+--| other machine that explains how it is a trick of the fabric.
 
 --| Do the logical conclusions of one mathematical theory have to imply the logical conclusions of another mathematical theory? Turns out, it
---| doesn't matter. It's only matter when they do. Is this your quartic? ∎ *wink*
+--| doesn't matter. It's only matter when they do. When the compiler can determine the quantitative difference and **YOU** are looking, the
+--| true-ness of the idea _clicks_ with **YOU** at the same time it _clicks_ with the compiler. That click is the change in the local measurement we
+--| called a fact before we knew how to count one. The description was the device; the fact of the matter is that it clicked. Is this your quartic?
+--| or did the argument not click? ∎ *wink*

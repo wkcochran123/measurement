@@ -53,12 +53,12 @@ def WE_FIRST_WRITE_DOWN_WE_IN_OUR_NOTEBOOK_THAT_THIS_IS_FOR_NOWTRINO_OBSERVATION
     [LOGICAL Box Pigeon naotrino commuter_pass][HALTED Box Pigeon naotrino commuter_pass][MEASURED Box Pigeon naotrino commuter_pass]
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box) ------------------------+ a card!
-    (ledger: Fact)
+    (ledger: FACT)
     : DISTINGUISHABLE Box Pigeon where
   fact := ledger
   symbol := nowtrino.symbol
   different? := nowtrino.different?
-  dec_distinct := nowtrino.dec_distinct
+  not_the_same := nowtrino.not_the_same
 
 def NOW_WE_BUILD_A_CHAIN_REACTION_TO_AMPLIFY_THE_HYPOTHETICAL_PARTICLE
     (Box: Type i)
@@ -78,11 +78,11 @@ def NOW_WE_BUILD_A_CHAIN_REACTION_TO_AMPLIFY_THE_HYPOTHETICAL_PARTICLE
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (bent_card: CarrierProcess Box) ------------------------+ a card!
     [cascade_of_particles: ADMISSIBLE Box Pigeon]
-    (ledger: Fact)
+    (ledger: FACT)
     (something: DISTINGUISHABLE Box Pigeon)
     : ADMISSIBLE Box Pigeon where
   counting_process :=
-  { carrier := bent_card
+  { palmed_card := bent_card
     count   := .number ledger (.zero nowtrino.fact) (.zero something.fact)
   }
   admissible? := fun or not => particle.admissible? or not ∧ cascade_of_particles.admissible? or not
@@ -104,7 +104,7 @@ def THEN_WE_COUNT_THE_PARTICLES_IN_THE_CASCADE
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [ℵ: COUNTABLE Box Pigeon]
-    (ledger: Fact)
+    (ledger: FACT)
     (something: DISTINGUISHABLE Box Pigeon)
     (something_with_momentum:ADMISSIBLE Box Pigeon)
     : COUNTABLE Box Pigeon where
@@ -132,7 +132,7 @@ def IF_THERE_ARE_ENOUGH_PARTICLES_WE_CAN_HEAR_A_CLICK
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [some_number: ENCODED Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)
     : ENCODED Box Pigeon where
   limit_process :=
@@ -160,7 +160,7 @@ def LOTS_OF_PARTICLES_ALL_AT_ONCE_CAN_ONLY_RESOLVE_TO_ONE_CLICK_THOUGH
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [converged_value: RESIDUE Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)
     : RESIDUE Box Pigeon where
   cauchy_process :=
@@ -188,7 +188,7 @@ def LETS_MAKE_A_COUNTER_OF_CLICKS_NOw
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [register: BINARY Box Pigeon]
-    (_: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (_: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
     : BINARY Box Pigeon :=
     let op :=
@@ -222,7 +222,7 @@ def LETS_MAKE_A_COUNTER_OF_CLICKS_NOw
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [nonstop: REPEATABLE Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
     (land: BINARY Box Pigeon)
     : REPEATABLE Box Pigeon where
@@ -251,7 +251,7 @@ def MAKE_SURE_THE_DATA_WE_HAVE_IS_THE_CLICK_COUNT
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [click_count: NUMERIC Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
     (land: BINARY Box Pigeon)(procedure: REPEATABLE Box Pigeon)
     : NUMERIC Box Pigeon where
@@ -279,7 +279,7 @@ def NAME_THE_VARIABLES_CAREFULLY_TO_TELL_A_STORY
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [glyph: REPRESENTABLE Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
     (land: BINARY Box Pigeon)(procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)
     : REPRESENTABLE Box Pigeon :=
@@ -316,7 +316,7 @@ def WAIT_FOR_JUPYTER_TO_GATHER_ENOUGH_DATA_TO_PLOT
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [hiss: PHYSICAL Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)
     (land: BINARY Box Pigeon)(procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     : PHYSICAL Box Pigeon where
@@ -347,7 +347,7 @@ def CHECK_FOR_CONVERGENCE_IN_THE_TIMESERIES
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [COMPARABLE Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)
@@ -380,7 +380,7 @@ def CHECK_FOR_MOTION_OF_A_NAOTRINO
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [failure: OBSERVED Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)
@@ -413,7 +413,7 @@ def WHEN_EXACTLY_DID_YOU_SEE_A_REINDEER_FLY
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [faillacy: PRESENT Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -445,7 +445,7 @@ def DID_YOU_TRY_TO_DETECT_VARIOUS_FIELDS_AROUND_SANTA_WHEN_YOU_ATTACHED_THE_TRAC
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [weakly_interacting_particle: MEASURABLE Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -477,7 +477,7 @@ def DONT_FORGET_WE_ARE_TALKING_ABOUT_A_PARTICLE_THAT_IS_EVERYWHERE_SO_SANTA_HAS_
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [the_argument_for_naotrinos: GUNGAN Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -509,7 +509,7 @@ def JARJAR_TALKS_A_LOT_ABOUT_NOTHING_SOMETIMES__YOU_SPEND_A_LOT_OF_TIME_LISTENIN
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [SOURCE Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -544,7 +544,7 @@ def FINALLY_INSTALL_LEAN_ON_THE_DEVICE
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [lean: EXECUTED Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -584,7 +584,7 @@ def NOW_THE_DEVICE_CAN_REVIEW_ITS_OWN_DESCRIPTION
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [lean: VALUE Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -618,7 +618,7 @@ def DOUBLE_CHECK_CONSERVATION_OF_WHATEVER_NOWTRINOS_CONSERVE
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [mass: MAGNITUDE Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -651,7 +651,7 @@ def DONT_FORGET_THE_DEVICE_IS_VERY_HEAVY
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [weight: SCALED Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -684,7 +684,7 @@ def I_HAVE_FOUND_THAT_THIS_NEEDLE_ON_THE_DEVICE_POINTS_TO_SANTAS_NEXT_STOP
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [still_takes_forever: LOAD Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -717,7 +717,7 @@ def I_HAVE_FOUND_THAT_THIS_NEEDLE_ON_THE_DEVICE_POINTS_TO_SANTAS_NEXT_STOP
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [area: OF Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -748,7 +748,7 @@ def FEM_SOLVES_SO_MANY_PROBLEMS_IF_YOU_HAVE_LOTS_OF_TRIANGULAR_PIECES
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [hours_of_math: BULLSHIT Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -782,7 +782,7 @@ def SO_YOU_CAN_BUILD_A_BEAUTIFUL_AND_INTUITIVE_MODEL_BY_TILING_TRIANGLES_ON_THE_
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [geometry: PROPAGANDA Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -815,7 +815,7 @@ def VERIFY_YOUR_THEORY_WORKS_WITH_THE_MOST_ADVANCED_TEXTS_ON_VARIATIONAL_METHODS
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [professor: ACOLYTE Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -847,7 +847,7 @@ def EVENTUALLY_YOU_TEACH_THE_THEORY___POSTDOCS_PERFORM_THE_EXPERIMENTS
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [postdoc: SCIENTIFIC Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -884,7 +884,7 @@ def BE_SURE_TO_KEEP_A_GOOD_LAB_NOTEBOOK_SO_OTHERS_CAN_FOLLOW_ALONG
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [our_mission: TRUTH Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -917,7 +917,7 @@ def MAKE_SURE_YOUR_CURVES_ARE_SMOOTH_AS_A_DIFFERENTIALS_BOTTOM
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [overwhelming_evidence: WITNESSED Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -953,7 +953,7 @@ def EVERYBODY_SEES_THAT_CORELATION_IN_THE_SHOTGUN_SPLATTERPLOT___DONT_THEY
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [invariant: REAL Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -990,7 +990,7 @@ def NO_MATTER___DEMONSTRATE_YOUR_LAW_SOLVES_EULER_LAGRANGE
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [principia: LOCAL Box Pigeon]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -1027,7 +1027,7 @@ def FINALLY_WE_CAN_CATCH_THE_TRAIN_TO_MEET_EINSTEIN_ON_THE_EULER_LAGRANGE_EXPRES
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [the_a_train: UNIVERSAL Box Pigeon naotrino]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -1067,7 +1067,7 @@ def LAKE_BUILD_IS_APPARENTLY_NOW_DOING_DOUBLE_DUTY_ON_THE_LOGIC_AND_THE_METALOGI
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [bent_card: LOGICAL Box Pigeon naotrino commuter_pass]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -1113,7 +1113,7 @@ def I_MEAN_THERE_MAY_BE_A_BUG_IN_THE_METALOGIC_BUT_THIS_DOES_EVENTUALLY_COMPILE
     [INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [bent_card: HALTED Box Pigeon naotrino commuter_pass]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -1168,7 +1168,7 @@ def THE_THING_IS_THIS_IS_YOUR_DEVICE_OVER_THERE_AND_I_ONLY_KNOW_ABOUT_MY_LOCALIT
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [data: MEASURED Box Pigeon naotrino commuter_pass]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -1208,7 +1208,7 @@ def AS_YOU_COMPILE_THIS_FILE_THOUGH_YOU_CONVERGE_ON_A_CONSTANT_AND_DONT_BLOWUP__
     [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [metaphor: COMPILED Box Pigeon naotrino commuter_pass]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -1248,7 +1248,7 @@ def FINALLY_UPDATE_THE_VALUE_TO_THE_NEXT_STEP_AND_OUTPUT
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -1291,7 +1291,7 @@ noncomputable def DIDNT_YOU_KNOW_THIS_WAS_RECURSIVE___DO_I_NEED_TO_SHOW_YOU_THE_
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum:ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -1341,7 +1341,7 @@ noncomputable def ALL_YOUR_BASE_CASE_ARE_BELONG_TO_US
     [COMPILED Box Pigeon naotrino commuter_pass][A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass][INFERRED Box Pigeon naotrino commuter_pass]
     (_: CarrierProcess Box)
     [A_TRUTH_ABOUT Box Pigeon naotrino commuter_pass]
-    (ledger: Fact)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
+    (ledger: FACT)(something: DISTINGUISHABLE Box Pigeon)(something_with_momentum: ADMISSIBLE Box Pigeon)
     (cascade_of_particles: COUNTABLE Box Pigeon)(click: ENCODED Box Pigeon)(pit: RESIDUE Box Pigeon)(land: BINARY Box Pigeon)
     (procedure: REPEATABLE Box Pigeon)(how_many_clicks: NUMERIC Box Pigeon)(csv_file: REPRESENTABLE Box Pigeon)
     (timeseries: PHYSICAL Box Pigeon)(relative_value: COMPARABLE Box Pigeon)(motion: OBSERVED Box Pigeon)
@@ -1376,7 +1376,7 @@ noncomputable def ALL_YOUR_BASE_CASE_ARE_BELONG_TO_US
     -- and Bullshit.le with a .zero head on the left is True against any non-zero
     -- rung.  A single key covers every gawk_at output, applied at both spin heads.
     the_constant_is_at_least_true := by
-      have key : ∀ (i_saw_something : Fact) (a_naotrino : Bullshit),
+      have key : ∀ (i_saw_something : FACT) (a_naotrino : Bullshit),
                                       (.zero i_saw_something) ≤ (a_reader.gawk_at a_naotrino) := by
         intro i_saw_something a_bent_card
         cases a_bent_card with

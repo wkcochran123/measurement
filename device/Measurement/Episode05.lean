@@ -1,16 +1,26 @@
 /-
 __Measurement: The Tragedy of John Henry__
-__A Satire in Look Ahead Backus-Naur Form__
+__A Satire in Look-Ahead Backus-Naur Form__
 
 _This is a gentle reminder that the stories we tell ourselves are just expressions of ideas, not the ideas themselves._
 
-(c) 2026
+607379519908 All constants multiplied.
 
 __EPISODE 5__: _THE ANTE_
 
+"The speed of light is invariant"
+                              -- Maxwell, in his equations and thick Scotish brogue after staying up all night.
+
+"The speed of light is invariant"
+                              -- Einstein, a little more persuasively, to no one in particular.
+
+time lake build > build_log && cat build_log
+
+**HOT TAKE**
+The speed of a carrier is unchanging. Seems like such a harmless assumption.
 -/
 
---| Have I convinced you yet of the dangers of using other peoples imports? Or is the bullshit too much to wade through.  I agree it is a bit much
+--| Have I convinced you yet of the dangers of using other peoples imports? Or is the bullshit too much to wade through.  I agree it is a bit much.
 import Measurement.Episode04
 import Measurement.Calibration.LeanCalibration
 set_option allowUnsafeReducibility true
@@ -18,7 +28,7 @@ set_option allowUnsafeReducibility true
 
 --| Perhaps not all bullshit is worthwhile. Some of it is just plain 𝔽(1)-ny. That's the only reason why we keep it around, it amuses us. The idea
 --| that the direct proportion is scale invariant is _QUITE_ the fantastical tale that we all wish _WERE_ true. It is an unobserved fiction in the
---| universe as energy is strictly conserved implying direct proportion of dependent numbers associated with invariance cannot scale. v=at is
+--| universe as energy is strictly conserved implying direct proportion of dependent numbers associated with invariance cannot scale. _v=at_ is
 --| precisely the cake that does not exist. While there doesn't appear to be a zero speed, it's only Lorentz between us and complete regression
 --| to compass and straight-edge.
 
@@ -70,12 +80,12 @@ class UNIVERSAL
 --| The THEORY OF YARNS: WE ASSUME TRAIN STATION ID NUMBERS UPTOWN > TRAIN STAION ID NUMBERS DOWNTOWN.  Doesn't have to be. I just coded it that way.
 
 inductive YarnTheory --                                | 3D introduces way too much wobble for directional derivatives to be well discussed.  You need
-  |stokes: Fact → SpaceTimePath → Prop → YarnTheory  --+ _TWO DISTINCT_ poles to describe a three dimensional angle.  Lorentz only provides one. Stokes
+  |stokes: FACT → SpaceTimePath → Prop → YarnTheory  --+ _TWO DISTINCT_ poles to describe a three dimensional angle.  Lorentz only provides one. Stokes
 --|                                                    | allows you to _cheat_ the other and only use half.  Thank the FSM the universe is cylindrical
 --|                                                    | and only uses 1 pole, the one we travel in 1 direction on.
-  |fibers: Fact → SpaceTimePath → SpaceTimePath → Prop → Prop → YarnTheory → YarnTheory --| Some people believe in strings. If you look carefully
+  |fibers: FACT → SpaceTimePath → SpaceTimePath → Prop → Prop → YarnTheory → YarnTheory --| Some people believe in strings. If you look carefully
 --|                                                                                       | There are eleven good reasons why you should.
-  |fabric: Fact → Fact → SpaceTimePath → SpaceTimePath → SpaceTimePath → Prop → Prop → Prop → YarnTheory → YarnTheory → YarnTheory
+  |fabric: FACT → FACT → SpaceTimePath → SpaceTimePath → SpaceTimePath → Prop → Prop → Prop → YarnTheory → YarnTheory → YarnTheory
 --|   ^
 --|   |
 --|   +------------- The train of thought, though, requires a fabric. There are 3 really good reasons and 1 sorta good reason to believe this.
@@ -295,7 +305,7 @@ structure HeartbeatProcess
 
   --| So, *YOU the READER* are on the train of thought and want to describe the scenery to *YOU the KNOWER* so they can follow the orbital logic.
     | .fibers described_by_the_itinerary as_now and_later this_station_is_now the_next_station_is later =>
-              match described_by_the_itinerary.decTruth with
+              match described_by_the_itinerary.click with
             --| Sometimes you get on a train and they announce emergency stops or stops that will be skipped. This only happens later, after you
             --| get on the train.  This happens constantly on commuter rail. I can't count the number of times I have been MTA'd.
               | isTrue _ =>
@@ -317,7 +327,7 @@ structure HeartbeatProcess
               the_center is_in_the_volume beneath_the_surface --                            | have entered the building.  I hope *YOU the READER*   |
               a_center_line_must_exist must_go_halfway_around gets_back_near_the_start --   | know that simplicial computations cannot be well-     |
               according_to_variational_dynamics and_einsteins_field_equations => --         | ordered in general. Like relativitistic computations. |
-              match of_the_orbit.decTruth, of_the_orbital.decTruth with --                  +-------------------------------------------------------+
+              match of_the_orbit.click, of_the_orbital.click with --                        +-------------------------------------------------------+
             --| This is the basic observation of orbital mechanics, orbital mechanics, and orbital mechanics.  Things tend to go around a point and
             --| come back to somewhere near the start
               | isTrue _   , isTrue _    => --                                                +------------------------------------------------+
@@ -518,7 +528,7 @@ structure ElaborationProcess
                     if trilinos.outgrown? op_code then
                       .load (¬bt_card1 ∧ ¬bt_card2 ∧ bent_card) left_card --| The simple 3-cart monte toss, swap the right for the left.
                     else --                               | If we have detected a nowtrino, it is under the third card. The one we keep shuffling in
-                      match nowtrino.fact.decTruth with --+ with the clock complement.  The cards move fast.
+                      match nowtrino.fact.click with -----+ with the clock complement.  The cards move fast.
                         | isTrue _  => .boolean bt_card2 bent_card nowtrino.fact.truth left_card (ULift.{i+1} left_card) right_card
                                                        three_card_monte_flop --+ Make sure to follow the bent card of the left, it doesn't have a
                       --|                                                      | nortrino.
@@ -559,9 +569,9 @@ class HALTED ---------------------------------------------------+ this is a good
 --| So, what is it that this measuring device _actually_ measures? How high the bullshit gets piled in the compiler. Its universe number.
 --| This allows the universes to have different _volumes_ that grow monotonically. Maybe even strictly.
 inductive Measurement
-  | origin: Fact → Number → Type i → Measurement  ---------------| This is a lookup map.  Given a Number, this will tell us the universe it is in.
-  | distance_to: Fact → Number → Number → Type i → Type (i+1) → Measurement → Measurement  --| The linked list of universes
-  | speed: Fact → Number → Number → Number → Type i → Type (i+1) → Type i →  Measurement → Measurement → Measurement
+  | origin: FACT → Number → Type i → Measurement  ---------------| This is a lookup map.  Given a Number, this will tell us the universe it is in.
+  | distance_to: FACT → Number → Number → Type i → Type (i+1) → Measurement → Measurement  --| The linked list of universes
+  | speed: FACT → Number → Number → Number → Type i → Type (i+1) → Type i →  Measurement → Measurement → Measurement
 --|   ^
 --|   |           | This is interesting.  This is a measure of how fast you must be going to get from universe _i_ to universe _i+1_ in order to get
 --|   +-----------+ there before it has moved out of your way.  I think I have seen this behavior somewhere before.  Why is the border between
@@ -679,14 +689,14 @@ class MEASURED
 
 --| This table, though. Its just a pile of numbers. We have to describe why we thing we have grouped *upness* (how much work it takes to discharge)
 --| and *rightness* (Does T=F?)
-inductive ThePreprint where --                                                       | If you remember, a carrier is little more than a Fact and a
-  | introduction  : Fact → Type i → ThePreprint -------------------------------------+ Type i. Have you ever seen a dragon eat its own tail?
+inductive ThePreprint where --                                                       | If you remember, a carrier is little more than a FACT and a
+  | introduction  : FACT → Type i → ThePreprint -------------------------------------+ Type i. Have you ever seen a dragon eat its own tail?
 
-  | methodology   : Fact → Fact → Type i → Type (i+1) → ThePreprint → ThePreprint ---+ The way this works is we concatentate facts as we climb
+  | methodology   : FACT → FACT → Type i → Type (i+1) → ThePreprint → ThePreprint ---+ The way this works is we concatentate facts as we climb
 --|                                                                                  | universes. ThePreprint is the best estimator of the next step.
 --|                                                                                  | I believe Bayes figured this out, not Gauss.
 
-  | results       : Fact → Fact → Prop → Type i → Type (i+1) → Type (i+1) → ThePreprint → ThePreprint --| And so, we can update our prior!
+  | results       : FACT → FACT → Prop → Type i → Type (i+1) → Type (i+1) → ThePreprint → ThePreprint --| And so, we can update our prior!
 
 namespace ThePreprint
 def le : ThePreprint → ThePreprint → Prop := fun t1 t2 =>
@@ -760,11 +770,11 @@ structure CompilerOutput
                                                                                                           (ULift.{i+1, i+1} in_meta_lean) notebook
   --| So, how do we use two Turing machines?
     | .results write sample _ in_lean in_meta_lean to_simultaneously_prove cook_levin =>
-          match write.decTruth,sample.decTruth with --                           | This is a reminder to *YOU the READER* and an admission to
-          | isTrue _     , isTrue _    =>  .introduction Fact.Truth Box ---------+ *YOU the KNOWER* that this is glued in place in Fact.
+          match write.click,sample.click with --                                 | This is a reminder to *YOU the READER* and an admission to
+          | isTrue _     , isTrue _    =>  .introduction FACT.Truth Box ---------+ *YOU the KNOWER* that this is glued in place in FACT.
 
         --| What happens if we get F=F instead of T=T? We treat is a T=T, just on the Cook-Levin machines being built around us. There are 4.
-          | isFalse _    , isFalse _   =>  .methodology Fact.Truth Fact.Truth in_lean in_meta_lean cook_levin
+          | isFalse _    , isFalse _   =>  .methodology FACT.Truth FACT.Truth in_lean in_meta_lean cook_levin
         --| What happens if we get T=F instead of T=T or F=F? Well, we update the tape, because this is an opcode in our inner theorem prover.
           | isTrue _     , isFalse _   =>  .results write nowtrino.fact nowtrino.fact.truth  in_lean in_meta_lean to_simultaneously_prove cook_levin
         --| What happens if we get F=T instead of the others? Well, we update the tape, because this is an opcode in our outer theorem prover.
@@ -804,13 +814,13 @@ class COMPILED
 
 --| But we know that this is all a pile of                   +---| It is an undeniable fact that this is bullshit.
 inductive Bullshit where --                                  |
-  | zero       : Fact → Bullshit ----------------------------+
-  | one        : Fact → Number → ThePreprint → ThePreprint → Bullshit → Bullshit
+  | zero       : FACT → Bullshit ----------------------------+
+  | one        : FACT → Number → ThePreprint → ThePreprint → Bullshit → Bullshit
 --|                        ^          ^
 --|                        |          |
 --|                        +----------+----------------------| I would suspect this curry operation if I were *YOU the KNOWER*. 3 more episodes.
 
-  | rest_call  : Fact → Fact → Prop → Number → Number → Number → ThePreprint → ThePreprint → Bullshit → Bullshit → Bullshit
+  | rest_call  : FACT → FACT → Prop → Number → Number → Number → ThePreprint → ThePreprint → Bullshit → Bullshit → Bullshit
 --|                ^      ^     ^       ^        ^       ^           ^             ^            ^
 --|                |      |     |       |        |       |           |             |            |      | Given the current fact and last fact, can
 --|                +------+-----+-------|--------|-------|-----------|-------------|------------|------+ we, indeed, guess at the next truth?
@@ -827,7 +837,7 @@ namespace Bullshit
   | .one _ _ _ _ _                         , .zero _                            => False --  | What if we kept up with x and x' and computed the next
   | .one _ _ _ _ _                         , .rest_call _ _ _ _ _ _ _ _ _ _     => True --   | from the previous two? That would be the "Box" method,
   | .one this_measurement x _ _ _          , .one that_measurement x' _ _ _     => ----------+ a fantastically unstable high order term!! Nothing our
-              match this_measurement.decTruth, that_measurement.decTruth with --             | Pigeons can't handle.
+              match this_measurement.click, that_measurement.click with --                   | Pigeons can't handle.
               | isTrue _,  isTrue _  => x ≤ x' ----------------+ What are _this_ measurement and _that_ measurement, anyway? They are adjacent pair
               | isFalse _, isFalse _ => x' ≤ x --              | of measurements in our table. _This_ one comes before _that_.  You can think of them
               | isTrue _,  isFalse _ => False --               | as symbols on the tape of a Turing machine. Except there is no tape, there is another
@@ -880,9 +890,9 @@ structure AtreyuProcess
   in_a_giant_book: CompilerOutput Box Pigeon quantum gravity --+ It's time we have a little thought experiment. Suppose *YOU the READER* could
   a_constant: Bullshit --                                      | isolate an electron.  Then, set the electron in orbit in a perfect vacuum around
   current_page_number: Number --                               | a single positronium.  The graviton is hiding in the monopole we still haven't
-  total_pages: Number := Pigeon.event Pigeon.value   --        | discoverd. There is no electrical interaction, only magnetic (repulsive) and
-  of_the_proof: ThePreprint --                                 | gravitational (attractive). Then assume the Navier-Stokes fluid model of the electron
---                                                             | and solve for equilibrium. About 36km around or so. That 36 is definitely a coincidence.
+  total_pages: Number := Pigeon.interact_with_the_universe --  | discoverd. There is no electrical interaction, only magnetic (repulsive) and
+                            Pigeon.quarter --                  | gravitational (attractive). Then assume the Navier-Stokes fluid model of the electron
+  of_the_proof: ThePreprint --                                 | and solve for equilibrium. About 36km around or so. That 36 is definitely a coincidence.
 
 --| Now, AtreyuProcess, go find this in the code! Meanwhile, you should just gawk at how well this recovers a very familiar looking number as a
   gawk_at: Bullshit → Bullshit := fun measurement => --| purely logical exercise.
@@ -891,7 +901,7 @@ structure AtreyuProcess
   |.zero _    =>        .one nowtrino.fact current_page_number of_the_proof in_a_giant_book.of_jibberish a_constant
 
   |.one some_number last_page last_stanza last_variable current_value =>
-              match some_number.decTruth, nowtrino.fact.decTruth with
+              match some_number.click, nowtrino.fact.click with
               --| First, we look at the T=T case.
                 | isTrue _,  isTrue _  => --                                                            | Having read the entire source, the number
                     .rest_call some_number nowtrino.fact --                                             | that describes the nowtrino is in here.
@@ -921,7 +931,7 @@ structure AtreyuProcess
                       last_stanza last_variable current_value a_constant
 
   | .rest_call _ some_constant _ _ lower_bound upper_bound _ prior_inductive_step _ in_the_computation => --+ This is the ratio computation to find
-          match some_constant.decTruth, nowtrino.fact.decTruth with --                                      | the constant. As above for handling
+          match some_constant.click, nowtrino.fact.click with --                                            | the constant. As above for handling
             | isTrue _,  isTrue _  => --                                                                    | logical agreement, we can easily
                 .rest_call some_constant nowtrino.fact --                                                   | swap the letter T for the letter F in
                   ((some_constant.truth = nowtrino.fact.truth ∧ lower_bound ≤ current_page_number) ∨ --     | _meaning_ without changing the
@@ -1020,12 +1030,12 @@ class A_TRUTH_ABOUT
 
 inductive Closure --                   +-----------| Each fact consuming stanza attempts to close a lambda. They have all failed until now.
 --|                                    |                                +-----+ If we know the current fact, the current bullshit, and the bullshit
-  | same : Fact → Bullshit → Closure --+                                |     | that we currently have computed, we can guess at what the the next
+  | same : FACT → Bullshit → Closure --+                                |     | that we currently have computed, we can guess at what the the next
 --|              +---------+---------+-------------+--------------------+     | value might be. This computation can be inferred (see below) and put
 --|              |         |         |             |                          | in this spot. This successfully closes each and every stanza.
 --|              v         v         v             v
-  | different : Fact → Bullshit → Bullshit → Option Prop → Closure --                  | This final closure may _or may not_ be computable by Lean.
-  | inferred : Fact → Fact → Bullshit → Bullshit → Option Prop → Closure → Closure ----+ Sometimes, to close, Lean needs a UNIVERSAL idea for the
+  | different : FACT → Bullshit → Bullshit → Option Prop → Closure --                  | This final closure may _or may not_ be computable by Lean.
+  | inferred : FACT → FACT → Bullshit → Bullshit → Option Prop → Closure → Closure ----+ Sometimes, to close, Lean needs a UNIVERSAL idea for the
 --|              ^      ^        ^          ^           ^           ^                  | proof to resonate with both *YOU the READER* and
 --|              |      |        |          |           |           |                  | *YOU the KNOWER*.
 --|              +------+--------|----------|-----------|-----------|-----> These are the facts we use to contribute to the Prop.
@@ -1069,25 +1079,31 @@ def le : Closure → Closure → Prop
 --| Compiler optimization. It is possible for the closure to be computed before it starts. Meet Jar Jar, the most serious implementation of the
 --| field of the single element.
 
+--| This ensures that the current stanza has not exceeded any of the values we care about: the most it can represent _AND_ some named constant.
   | .same stanza value,  .inferred this_stanza that_stanza this_max that_max _ a_named_constant =>
                                                             (stanza.truth = this_stanza.truth ∨ stanza.truth = that_stanza.truth) ∧
                                                             (value ≤ this_max ∨ value ≤ that_max) ∨ le (.same stanza value) a_named_constant
 
+--| The same stanza has to come after a different stanza implies the stanzas are different and the value is either above minimum or already slipped.
   | .different stanza1 lower_bound slip_bound _,   .same stanza2 value =>    stanza1.truth ≠ stanza2.truth ∨
                                                                               ¬ (lower_bound ≤ value ∨ slip_bound ≤ value)
+
+--| The different stanza on the left has to be "less" than the stanza on the right due to order of operations. If so, then we can imply that the
+--| stanza on the right comes after the stanza on the left.
   | .different stanza1 lower_bound1 slip_bound1 a_constant_computation,
     .different stanza2 lower_bound2 slip_bound2 another_constant_computation =>
                                                             stanza1.truth = stanza2.truth ∧
                                                             lower_bound1 ≤ lower_bound2 ∧ slip_bound1 ≤ slip_bound2 ∧
                                                             implying_implication a_constant_computation another_constant_computation
 
+--| A different stanza can be inferred as well, if we are sure that all the requirements of ordering line up: monotonic convergence on the same
+--| truth.
   | .different stanza lower_bound slip_bound a_constant_computation,
     .inferred this_stanza that_stanza this_max that_max another_constant_computation a_named_constant =>
                                                             ((stanza.truth = this_stanza.truth ∨ stanza.truth = that_stanza.truth) ∧
                                                                       lower_bound ≤ this_max ∧ slip_bound ≤ that_max ∧
                                                                       implying_implication a_constant_computation another_constant_computation) ∨
                                                             le (.different stanza lower_bound slip_bound a_constant_computation) a_named_constant
-
 
   | .inferred this_stanza that_stanza lower_bound slip_bound _ _, .same stanza some_constant_value =>
                                                             (stanza.truth ≠ this_stanza.truth ∧ stanza.truth ≠ that_stanza.truth) ∨
@@ -1109,16 +1125,24 @@ def le : Closure → Closure → Prop
 
 termination_by train_schedule1 train_schedule2 => sizeOf train_schedule1 + sizeOf train_schedule2  --| I think we expect naturals to fall out of elab.
 
-
 end Closure
 
 instance : LE Closure where
   le a b := Closure.le a b
 
+--| We now define the order of convergence: less is less than or equal to more.
 @[reducible] def TruthOrder (less more : Bullshit) : Prop := less ≤ more
-namespace Fact
 
-noncomputable def SAME
+
+namespace FACT --                                                        | I learned MS Basic on a Commodore. There was only one '=' sign in the
+/- CHORUS:                                                               | language, standing in for comparison and assignment. JavaScript famously
+ME: It looks like I can finally explain what it means to be the same.    | has '=' '==' and '===', each meaning something different enough to cause
+COMPILER: ==                                                             | bugs to spontaneously appear. Groovy gets even worse.
+JAR JAR: MEESA === ------------------------------------------------------+
+ME: No, to be the SAME means that there is but 1 glyph to represent this | It seems that object orientation really muddles this issue. Rather, we
+    concept. FACT.SAME                                                   | approach equality _constructively_ by having the types build the comparison
+-/ --                                                                    | code. This selects a universal singleton representative for each object.
+noncomputable def SAME --                                                | Sometimes, they are the SAME.
     {Box: Type i}
     {Pigeon: CarrierProcess Box}
     [DISTINGUISHABLE Box Pigeon]               [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
@@ -1136,14 +1160,17 @@ noncomputable def SAME
     [MEASURED Box Pigeon fact about_the_world]
     [COMPILED Box Pigeon fact about_the_world]
     [guano: A_TRUTH_ABOUT Box Pigeon fact about_the_world]
-    : Fact :=
+    : FACT :=
   { truth := Quot.mk TruthOrder guano.TRUE = Quot.mk TruthOrder guano.a_constant
-    decTruth := Decidable.isTrue (Quot.sound (r := TruthOrder) guano.the_constant_is_at_least_true) }
+    click := Decidable.isTrue (Quot.sound (r := TruthOrder) guano.the_constant_is_at_least_true) }
 --                                    ^    | And just like that, we have replaced an expected division algorithm in the computation of a ratio with
 --                                    |    | multiplication in the field of the single element, at least good enough to fool Lean. *YOU the READER*
 --                                    +----+ should start to see the beginnings of the monkey patch here. *YOU the KNOWER* already see it. The
 --                                         | division _algorithm_ is very different from multiplication _facts_. _Algorithms_ take _time_ to evaluate.
-end Fact
+end FACT
+
+--| Now, let's ask a simple question.  Do we get the same result not matter what the cards are doing? As I have demonstrated throughout, the quarter
+--| can completely disappear into a sea of Truth never to be found. Still, let's assume this is possible through the process of algebraic equivalence.
 
 @[reducible]
 structure EquivalenceProcess
@@ -1169,7 +1196,7 @@ structure EquivalenceProcess
   your_conclusion : Closure
 
   do_you_believe_it? : Bullshit → Bullshit → Closure := fun hypothetical_result real_result =>
-    .different (Fact.SAME (guano := guano)) hypothetical_result real_result
+    .different (FACT.SAME (guano := guano)) hypothetical_result real_result
                                      (guano.obfusplained? guano.the_constant_is_at_least_true hypothetical_result real_result)
 
 

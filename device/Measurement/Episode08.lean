@@ -6,19 +6,18 @@ _This is a gentle reminder that the stories we tell ourselves might be the only 
 
 (c) 2026 All rights reserved. Unless AI needs training data.
 
-"The stuff that dreams are made of."
-                                          -- Detective Sam Spade
-
-"That Rosencrantz and Guildenstern are dead."
-                                          -- Some guy of no import to the story
-
-lake build [PATTER TODO: build-flag gag]
-
 __EPISODE 08__: _THE MACGUFFIN_
 
 "Forty-two.435?"
                        -- Douglas Adams (to three decimal places)
 
+"That Rosencrantz and Guildenstern are dead."
+                                          -- Another minor character
+
+lake build --force_nats --print_miracles
+
+**NUMBERS?**
+How the __HELL__ does this print such a highly resolved rational number?
 -/
 import Measurement.Episode07
 
@@ -659,7 +658,7 @@ def SO_TELL_ME___CAN_YOU_TELL_THESE_TWO_APART : DISTINGUISHABLE Box Pigeon :=
   { fact         := nowtrino.fact
     symbol       := nowtrino.symbol
     different?   := fun _ => True
-    dec_distinct := fun _ => isTrue trivial }
+    not_the_same := fun _ => isTrue trivial }
 
 -- REAL.  The question the mark actually asks.
 def HOW_DO_WE_KNOW_THE_COIN_IS_UNDER_THE_CARD
@@ -763,9 +762,9 @@ def AND_SINCE_NOBODY_OBSERVED_IT_I_GET_TO_PICK_THE_SLIP
       { static_fraction :=
           { physical_process := number_of_clicks.physical_process
             -- the direction of the argument, supplied by the climber
-            projection := .origin nowtrino.fact hiss.noisy_process.program Fact
+            projection := .origin nowtrino.fact hiss.noisy_process.program FACT
             stress     := hiss.noisy_process.program
-            threshold  := Fact }
+            threshold  := FACT }
         accumulation := .tree nowtrino.fact }
     quantum := Box }
 
@@ -915,7 +914,7 @@ def take_it_around_again : Closure → Closure := fun evidence =>
   match evidence with
 
   | .same stanza reading =>                                                --| Closed already.  Converged stays converged -- the turn is a fixed
-      match stanza.decTruth, nowtrino.fact.decTruth with                   --| point on a closed closure, which is how you know the loop halts.
+      match stanza.click, nowtrino.fact.click with                  --| point on a closed closure, which is how you know the loop halts.
       | isTrue _ , isTrue _  => evidence
       | isTrue _ , isFalse _ => .inferred stanza nowtrino.fact reading (the_reader.gawk_at reading)
                                   (the_reader.residue? reading (the_reader.gawk_at reading)) evidence
@@ -923,7 +922,7 @@ def take_it_around_again : Closure → Closure := fun evidence =>
       | isFalse _, isFalse _ => the_process.do_you_believe_it? reading (the_reader.gawk_at reading)
 
   | .different stanza lower upper carried =>                               --| The entry node.  do_you_believe_it? hands us exactly this shape,
-      match stanza.decTruth, nowtrino.fact.decTruth with                   --| stanza already Fact.SAME, so the left coin is settled on arrival.
+      match stanza.click, nowtrino.fact.click with                   --| stanza already Fact.SAME, so the left coin is settled on arrival.
       | isTrue _ , isTrue _  => .same stanza upper
       | isTrue _ , isFalse _ => .inferred stanza nowtrino.fact lower upper
                                   (Closure.could_be_the_same carried (the_reader.residue? lower upper)) evidence
@@ -931,7 +930,7 @@ def take_it_around_again : Closure → Closure := fun evidence =>
       | isFalse _, isFalse _ => the_process.do_you_believe_it? upper (the_reader.gawk_at upper)
 
   | .inferred this that lower upper carried _ =>                           --| The rung -- Episode 8 wrote this one by hand as α.  Two stanzas on
-      match this.decTruth, that.decTruth with                              --| the node, so the node makes its own table; no nowtrino to flop it.
+      match this.click, that.click with                              --| the node, so the node makes its own table; no nowtrino to flop it.
       | isTrue _ , isTrue _  => .same this upper
       | isTrue _ , isFalse _ => .inferred this nowtrino.fact upper (the_reader.gawk_at upper)
                                   (Closure.could_be_the_same carried
@@ -962,14 +961,14 @@ end Monte
 
 -- TANGE THE COMPILER TAPE.  Iterate the name: the compare `c` at each cell, plus
 -- the origin.
-def ThePreprint.tange : ThePreprint → List Fact
+def ThePreprint.tange : ThePreprint → List FACT
   | .introduction f _         => [f]
   | .methodology c _ _ _ rest => c :: rest.tange
   | .results c _ _ _ _ _ rest => c :: rest.tange
 
 -- FUNGE THE MEASUREMENT.  Skip to the next click: one fact per step off the
 -- origin (phase, position, velocity).
-def Measurement.funge : Measurement → List Fact
+def Measurement.funge : Measurement → List FACT
   | .origin _ _ _                 => []
   | .distance_to f _ _ _ _ rest   => f :: rest.funge
   | .speed f _ _ _ _ _ _ before _ => f :: before.funge
@@ -981,7 +980,7 @@ def Measurement.funge : Measurement → List Fact
 
 -- GAUSS-INTEGRATE THE YARN.  The weak form: integrate over the whole 2D fabric,
 -- summing the flux through both continuations (the divergence theorem).
-def YarnTheory.gauss : YarnTheory → List Fact
+def YarnTheory.gauss : YarnTheory → List FACT
   | .stokes f _ _                        => [f]
   | .fibers f _ _ _ _ rest               => f :: rest.gauss
   | .fabric f g _ _ _ _ _ _ before after => f :: g :: before.gauss ++ after.gauss
@@ -995,14 +994,14 @@ def YarnTheory.gauss : YarnTheory → List Fact
 
 -- STOKES-INTEGRATE THE LINE PATH.  The circulation: a white hole is a source
 -- (adds a fact), a black hole is a sink (adds none), a geodesic forks both ways.
-def SpaceTimePath.stokes : SpaceTimePath → List Fact
+def SpaceTimePath.stokes : SpaceTimePath → List FACT
   | .einstein f           => [f]
   | .whitehole f _ rest   => f :: rest.stokes
   | .blackhole _ _ rest   => rest.stokes
   | .geodesic f _ _ _ b a => f :: b.stokes ++ a.stokes
 
 -- THE ATOMS.  The device's own DATA-page fact, its Number, its point.
-def theOriginFact : Fact := Fact.Truth
+def theOriginFact : FACT := FACT.Truth
 def theOriginPage : Number := Number.zero theOriginFact
 def theOriginPath : SpaceTimePath.{0} := .einstein theOriginFact
 
@@ -1092,74 +1091,74 @@ def theTarget   := theYarn.gauss.length
 -- EPISODE 1.  THE COUNT.
 
 -- PEANO THE NUMBER.  One fact per digit, plus the origin.
-def Number.peano : Number → List Fact
+def Number.peano : Number → List FACT
   | .zero f     => [f]
   | .one f rest => f :: rest.peano
 
 -- INDUCT THE NATURAL.  The same walk, one rung up; the Number rides along unread.
-def Natural.induct : Natural → List Fact
+def Natural.induct : Natural → List FACT
   | .zero f          => [f]
   | .number f _ rest => f :: rest.induct
 
 -- DIAGONALIZE THE RATIONAL.  Cantor's read: down the spine is down the diagonal.
-def Rational.diagonalize : Rational → List Fact
+def Rational.diagonalize : Rational → List FACT
   | .zero f          => [f]
   | .number f _ rest => f :: rest.diagonalize
 
 -- ENUMERATE THE SEQUENCE.  Euclid's read: once written, fixed.
-def Sequence.enumerate : Sequence → List Fact
+def Sequence.enumerate : Sequence → List FACT
   | .nil f          => [f]
   | .index f _ rest => f :: rest.enumerate
 
 -- CONVERGE THE LIMIT.  Cauchy's read: the tail is the value.
-def Limit.converge : Limit → List Fact
+def Limit.converge : Limit → List FACT
   | .nil f          => [f]
   | .index f _ rest => f :: rest.converge
 
 -- TASTE THE SAMPLE.  Stimulus and response, one fact each, back to the
 -- initial condition.
-def Sample.taste : Sample → List Fact
+def Sample.taste : Sample → List FACT
   | .initial_condition f _          => [f]
   | .signal_response f1 _ f2 _ rest => f1 :: f2 :: rest.taste
 
 -- RUN THE TRIAL.  Galileo's read: the experiment is the description you can
 -- hand to someone else.
-def Trial.experiment : Trial → List Fact
+def Trial.experiment : Trial → List FACT
   | .hypothesis f _                 => [f]
   | .signal_response f1 _ f2 _ rest => f1 :: f2 :: rest.experiment
 
 -- EPISODE 2.  THE MACHINE.
 
-def Study.phenomenon : Study → List Fact
+def Study.phenomenon : Study → List FACT
   | .hypothesis f         => [f]
   | .a_few_pints f _ rest => f :: rest.phenomenon
 
-def Computation.elaborate : Computation → List Fact
+def Computation.elaborate : Computation → List FACT
   | .program f _        => [f]
   | .compute f _ _ rest => f :: rest.elaborate
 
-def ChaitinsNumberSequence.unknown : ChaitinsNumberSequence → List Fact
+def ChaitinsNumberSequence.unknown : ChaitinsNumberSequence → List FACT
   | .halting f _ => [f]
   | .nonhalting f _ work_underway => match work_underway with
                                       | some the_work => f :: the_work.unknown
                                       | _ => [f]  -- womp womp, still waiting...
 
-def Metavariable.closure : (Metavariable Closure) → List Fact
+def Metavariable.closure : (Metavariable Closure) → List FACT
   | .base f _ => [f]
   | .step f before => f :: before.closure
 
-def Sophism.taylor_expansion : Sophism → List Fact
+def Sophism.taylor_expansion : Sophism → List FACT
   | .origin f _ _  => [f]
   | .dimension f _ _ before => f :: before.taylor_expansion
 
-def Area.reimann_integrate : Area → List Fact
+def Area.reimann_integrate : Area → List FACT
   | .tree f           => [f]
   | .dt f _ before    => f :: before.reimann_integrate
 
 -- THE PIGEONHOLE.  The problem is `.that_box` (the seam -- two boxes); the answer
 -- is the `.a_pigeon` you were told exists (the middle).  Solving it searches BOTH
 -- boxes for the pigeon -- the both-branch read, `gauss`/`stokes`/`krylov`'s shape.
-def PigeonHole.solve : PigeonHole → List Fact
+def PigeonHole.solve : PigeonHole → List FACT
   | .this_superpigeon f _        => [f]
   | .a_pigeon f _ rest           => f :: rest.solve
   | .that_box f _ _ before after => f :: before.solve ++ after.solve
@@ -1168,7 +1167,7 @@ def PigeonHole.solve : PigeonHole → List Fact
 
 -- CLASSIFY THE JAR.  You can tell what is in it by looking; the curvature hides
 -- the rest, and the superposition forks both ways.
-def Jar.classify : Jar → List Fact
+def Jar.classify : Jar → List FACT
   | .color f _                    => [f]
   | .bang f rest                  => f :: rest.classify
   | .superposition f before after => f :: before.classify ++ after.classify
@@ -1176,119 +1175,119 @@ def Jar.classify : Jar → List Fact
 -- VANISH THE EQUIVALATION.  Du = 0.  The `one_like` cell is the first prop-only
 -- cell on the tape: no fact in the constructor, so the tape mints the DATA-page
 -- fact for it.  Absence of evidence, minted as evidence of absence.
-def Equivalation.vanish : Equivalation → List Fact
+def Equivalation.vanish : Equivalation → List FACT
   | .physics f _             => [f]
   | .zero_like f rest        => f :: rest.vanish
-  | .one_like _ before after => Fact.Truth :: before.vanish ++ after.vanish
+  | .one_like _ before after => FACT.Truth :: before.vanish ++ after.vanish
 
 -- DECODE THE ENCODING.  Boot, then zeros and ones, in that order.
-def Encoding.decode : Encoding → List Fact
+def Encoding.decode : Encoding → List FACT
   | .boot f _               => [f]
   | .zero f _ rest          => f :: rest.decode
   | .one f _ _ before after => f :: before.decode ++ after.decode
 
 -- THE ABSTRACTION, the equivalation -- `compile` is the name, `execute` is the
 -- evaluate: the name/evaluate select, closed at the bottom.
-def Abstraction.equivalation : Abstraction → List Fact
+def Abstraction.equivalation : Abstraction → List FACT
   | .satire_about f   => [f]
   | .compile f _ rest => f :: rest.equivalation
   | .execute f _ rest => f :: rest.equivalation
 
 -- EUCLID THE SUM.  Areas accumulate.  The zero is a proposition of Pythagoras,
 -- minted to the DATA-page fact.
-def Sum.euclid : Sum → List Fact
-  | .zero _ _       => [Fact.Truth]
+def Sum.euclid : Sum → List FACT
+  | .zero _ _       => [FACT.Truth]
   | .add f _ _ rest => f :: rest.euclid
 
 -- THE PRODUCT, the projector applied to a vector.  The `one` is a prop -- minted.
-def Product.projector : Product → List Fact
+def Product.projector : Product → List FACT
   | .origin f       => [f]
-  | .one _ _        => [Fact.Truth]
+  | .one _ _        => [FACT.Truth]
   | .mul f _ _ rest => f :: rest.projector
 
 -- THE BASIS, orthogonalized by Householder.  The `origin` is a prop -- minted.
-def Basis.householder : Basis → List Fact
+def Basis.householder : Basis → List FACT
   | .null_space f     => [f]
-  | .origin _ _       => [Fact.Truth]
+  | .origin _ _       => [FACT.Truth]
   | .basis f _ _ rest => f :: rest.householder
 
 -- THE POLYNOMIAL, a summation of terms.  The `monomial` is a prop -- minted.
-def Polynomial.terms : Polynomial → List Fact
+def Polynomial.terms : Polynomial → List FACT
   | .constant f        => [f]
-  | .monomial _ _      => [Fact.Truth]
+  | .monomial _ _      => [FACT.Truth]
   | .factor f _ _ rest => f :: rest.terms
 
 -- THE SPLINE, the approximation.  Observations and knots are props -- minted;
 -- only the interpolant carries a fact, and it forks both ways.
-def Spline.approx : Spline → List Fact
-  | .observation _                  => [Fact.Truth]
-  | .knot _ _ rest                  => Fact.Truth :: rest.approx
+def Spline.approx : Spline → List FACT
+  | .observation _                  => [FACT.Truth]
+  | .knot _ _ rest                  => FACT.Truth :: rest.approx
   | .interpolant f _ _ before after => f :: before.approx ++ after.approx
 
 -- EPISODE 4.  THE SERMON.
 
 -- THE DIATRIBE, settled into buckets.  All props, no facts -- every cell minted.
-def Diatribe.buckets : Diatribe → List Fact
-  | .religion _            => [Fact.Truth]
-  | .speculation _ _ rest  => Fact.Truth :: rest.buckets
-  | .rant _ _ before after => Fact.Truth :: before.buckets ++ after.buckets
+def Diatribe.buckets : Diatribe → List FACT
+  | .religion _            => [FACT.Truth]
+  | .speculation _ _ rest  => FACT.Truth :: rest.buckets
+  | .rant _ _ before after => FACT.Truth :: before.buckets ++ after.buckets
 
 -- THE NAME IS THE CULT.  The triangles carry the one honest fact in the family;
 -- the rest of the congregation is minted.
-def Cult.name : Cult → List Fact
-  | .inside_joke _                => [Fact.Truth]
-  | .pythagoras _ _ rest          => Fact.Truth :: rest.name
+def Cult.name : Cult → List FACT
+  | .inside_joke _                => [FACT.Truth]
+  | .pythagoras _ _ rest          => FACT.Truth :: rest.name
   | .triangles _ _ f before after => f :: before.name ++ after.name
 
 -- METHOD THE SCIENCE.  The theory carries its fact; hypotheses are minted, which
 -- is exactly what a hypothesis is.
-def Science.method : Science → List Fact
-  | .repeatable _      => [Fact.Truth]
-  | .hypothesis _ _    => [Fact.Truth]
+def Science.method : Science → List FACT
+  | .repeatable _      => [FACT.Truth]
+  | .hypothesis _ _    => [FACT.Truth]
   | .theory _ _ f rest => f :: rest.method
 
 -- AUDIT THE KNOWLEDGE.  The ledger line carries the fact; jarjar is minted.
-def Knowledge.audit : Knowledge → List Fact
-  | .jarjar _        => [Fact.Truth]
+def Knowledge.audit : Knowledge → List FACT
+  | .jarjar _        => [FACT.Truth]
   | .ledger _ f rest => f :: rest.audit
 
 -- WITNESS THE GOSPEL.  Proved true or false; the tape takes the evaluation as
 -- truth after -- that is what a witness does.
-def Gospel.witness : Gospel → List Fact
-  | .the_proof _                 => [Fact.Truth]
-  | .we_understand_that _ _ rest => Fact.Truth :: rest.witness
+def Gospel.witness : Gospel → List FACT
+  | .the_proof _                 => [FACT.Truth]
+  | .we_understand_that _ _ rest => FACT.Truth :: rest.witness
 
 -- TESTIFY THE TRUTH.  Logically, and then the buts.
-def Truth.testify : Truth → List Fact
-  | .logically _  => [Fact.Truth]
-  | .but _ _ rest => Fact.Truth :: rest.testify
+def Truth.testify : Truth → List FACT
+  | .logically _  => [FACT.Truth]
+  | .but _ _ rest => FACT.Truth :: rest.testify
 
 -- THE VARIATION reads two ways.  It carries the Gospels (the names) and their
 -- Props (the evaluations, taken as truth after) -- so every cell is minted, and
 -- the two readings differ only in how far they look.
 
 -- GATEAUX-SHAPED NEWTON STEP.  One directional derivative: walk the spine.
-def Variation.newton : Variation → List Fact
-  | .the_newton _ _               => [Fact.Truth]
-  | .the_gateaux _ _ _ rest       => Fact.Truth :: rest.newton
-  | .the_frechet _ _ _ _ before _ => Fact.Truth :: before.newton
+def Variation.newton : Variation → List FACT
+  | .the_newton _ _               => [FACT.Truth]
+  | .the_gateaux _ _ _ rest       => FACT.Truth :: rest.newton
+  | .the_frechet _ _ _ _ before _ => FACT.Truth :: before.newton
 
 -- FRECHET-STEPPED KRYLOV STEP.  The matrix-free operator: walk both branches.
-def Variation.krylov : Variation → List Fact
-  | .the_newton _ _                   => [Fact.Truth]
-  | .the_gateaux _ _ _ rest           => Fact.Truth :: rest.krylov
-  | .the_frechet _ _ _ _ before after => Fact.Truth :: before.krylov ++ after.krylov
+def Variation.krylov : Variation → List FACT
+  | .the_newton _ _                   => [FACT.Truth]
+  | .the_gateaux _ _ _ rest           => FACT.Truth :: rest.krylov
+  | .the_frechet _ _ _ _ before after => FACT.Truth :: before.krylov ++ after.krylov
 
 -- EPISODE 5.  THE INSTRUMENT.  (`gauss`, `funge`, `tange` are the pilot, above.)
 
 -- READ THE METER.  The strip the bullshit meter was pointing at all along.
-def Bullshit.meter : Bullshit → List Fact
+def Bullshit.meter : Bullshit → List FACT
   | .zero f                                 => [f]
   | .one f _ _ _ rest                       => f :: rest.meter
   | .rest_call f g _ _ _ _ _ _ before after => f :: g :: before.meter ++ after.meter
 
 -- INFER THE CLOSURE.  Where the constant lives.  Every cell is receipted.
-def Closure.infer : Closure → List Fact
+def Closure.infer : Closure → List FACT
   | .same f _                => [f]
   | .different f _ _ _       => [f]
   | .inferred f g _ _ _ rest => f :: g :: rest.infer
@@ -1394,25 +1393,25 @@ def theMetavariable : Metavariable Closure :=
 -- always there -- they were the parentheses.  Naming them costs nothing and buys the
 -- only thing that matters: a page is reached by NAME, so no card below is ever cut at
 -- an offset somebody chose.
-def thePageOne : List Fact :=
+def thePageOne : List FACT :=
   theNumber.peano ++ theNatural.induct ++ theRational.diagonalize ++
   theSequence.enumerate ++ theLimit.converge ++ theSample.taste ++ theTrial.experiment
-def thePageTwo : List Fact :=
+def thePageTwo : List FACT :=
   theStudy.phenomenon ++ theComputation.elaborate ++ theChaitin.unknown ++
   theMetavariable.closure ++ theSophism.taylor_expansion ++
   theArea.reimann_integrate ++ thePigeonHole.solve
-def thePageThree : List Fact :=
+def thePageThree : List FACT :=
   theJar.classify ++ theEquivalation.vanish ++ theEncoding.decode ++
   theAbstraction.equivalation ++ theSum.euclid ++ theProduct.projector ++
   theBasis.householder ++ thePolynomial.terms ++ theSpline.approx
-def thePageFour : List Fact :=
+def thePageFour : List FACT :=
   theDiatribe.buckets ++ theCult.name ++ theScience.method ++ theKnowledge.audit ++
   theGospel.witness ++ theTruth.testify ++ theVariation.krylov ++ thePath.stokes
-def thePageFive : List Fact :=
+def thePageFive : List FACT :=
   theYarn.gauss ++ theMeasure.funge ++ theTape.tange ++
   theBullshit.meter ++ theClosure.infer
 
-def theProgram : List Fact :=
+def theProgram : List FACT :=
   thePageOne ++ thePageTwo ++ thePageThree ++ thePageFour ++ thePageFive
 
 -- THE PROGRAM'S CARD.  Episode by episode: 16 + 16 + 27 + 24 + 18.  The compiler
@@ -1458,18 +1457,18 @@ instance DISTINGUISHABLE_PROP
   fact := Carrier.symbol
   symbol := Prop
   different? := fun _ => True
-  dec_distinct := fun _ => isTrue trivial
+  not_the_same := fun _ => isTrue trivial
 
 def truthCarrier : CarrierProcess Prop where
-  symbol := Fact.Truth
-  value := .zero Fact.Truth
+  symbol := FACT.Truth
+  quarter := .zero FACT.Truth
 
 instance truthDistinct :
     DISTINGUISHABLE Prop truthCarrier where
   fact := truthCarrier.symbol
   symbol := Prop
   different? := fun _ => True
-  dec_distinct := fun _ => isTrue trivial
+  not_the_same := fun _ => isTrue trivial
 
 -- ONE.  ARE_THE_UNITS_RIGHT wants `Inhabited nowtrino.symbol`.  `truthDistinct.symbol` IS `Prop` and `instInhabitedProp` is
 -- sitting right there -- but instance resolution keys on the HEAD, and `DISTINGUISHABLE.symbol _` is not a head it will reduce.

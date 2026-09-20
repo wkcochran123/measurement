@@ -1,68 +1,74 @@
 /-
-__Measurement:  The Tragedy of John Henry__
+__Measurement: The Tragedy of John Henry__
 __A Satire in Look-Ahead Backus-Naur Form__
 
 _This is a gentle reminder that the fanciful stories we tell ourselves are just that: stories._
 
-(c) 2026 All rights reserved -- Can you copyright an anonymous text? rofl.
+(c) 2026 All rights reserved -- Can anyone copyright an anonymous text? rofl.
 
 TO ALL THE PEOPLE WHOSE IDEAS CONTRIBUTED TO THIS WORK, I HUMBLY STAND IN YOUR SHADOW.  I DARE NOT STAND ON YOUR SHOULDERS, FOR I AM NOT SURE I CAN
 SEE FAR ENOUGH TO KNOW WHERE YOUR SHOULDERS ARE.
 
-__EPISODE 1__:  _Counting_
+__EPISODE 1__: _Counting_
 
-"Hold on lady, we go for ride."
-                    -- Short Round.
+                                                           "Hold on lady, we go for ride."
+                                                                          -- Short Round.
 
 lake build --expert_mode --crash_on_everything --do_not_explain_errors
 
+**CHALLENGE ACCEPTED!**
 Can I do this with no imports?  Hold my beer...
 -/
 
 -- Foreword:
 
---                      Dear All,
---
---                      Technically, I'm dead.  But, if I were alive, it is possible that the words "This program
---                      is truly the way forward." could have been among a _LARGE_ set of words that I was capable
---                      of speaking.  I spoke a lot of words in only one particular order. I'm sure I spoke all of
---                      these words at some time in my life.  Just maybe not in this order.
+--|                              Dear All,
+--|
+--|                             Technically, I'm dead.  But, if I were alive, it is possible that the words "This program
+--|                             is truly the way forward." could have been among a _LARGE_ set of words that I was capable
+--|                             of speaking.  I spoke a lot of words in only one particular order. I'm sure I spoke all of
+--|                             these words at some time in my life.  Just maybe not in this order.
+--|                                                                       -- Arthur C. Clarke
 
---                                                                              Arthur C. Clarke
-
-
+--| Turn off any traction control. Just gets in my way.
 set_option allowUnsafeReducibility true
--- Well, I do need _a little bit_ of help..
 
+--| I have always thought that the comments of the code should tell a story. The story helps the reader understand what is going on.  So, listen to my
+--| story about measurement. Or, more read, I guess.  Measurement begins with _facts_.  I think most will agree it is easy to see whether or not
+--| something happened and if that something happened, that _fact_ is _true_. Otherwise, it ain't. Clear? Just remember, if we can tell it apart from
+--| something that _didn't_ happen, then what we have is a _FACT_. And the _fact of the matter_ (wait until this pun lands on the very last line of
+--| code) is that _measurement_ is literally just this, distinguishing _this_ outcome from _that_ outcome.  But I am getting __WAY__ ahead of myself.
 
--- I have always thought that the comments of the code should tell a story. The story helps the reader understand what is going on.  So, let me tell
--- you a story about measurement.  Measurement begins with _facts_.  I think you will agree it is easy to see whether or not something happened
--- and if that something happened, that _fact_ is _true_.  Otherwise, it ain't. Clear? Just remember, if you can tell it apart from something
--- that _didn't_ happen, then what you have is a _FACT_. And the _fact of the matter_ (wait until this pun lands in a few thousand lines of code)
--- is that _measurement_ is literally just this, distinguishing _this_ outcome from _that_ outcome.  But I am getting __WAY__ ahead of myself.
+--| What can we measure?  Anything.  Even the thing that is doing the measuring.  While it is doing the measuring.  All the way down.  To try to give
+--| some idea of what I am talking about, I am going to try to measure how true the proposition _true = true_ is. At least, I think I can make Lean
+--| eagerly explain that this isn't nearly as set in stone as one might think. Sometimes, for reasons that are wholly obvious when thought about,
+--| _true_ __MUST EQUAL__ _false_. Implying that this statement _MUST_ be false at some point.  Blame Gödel.  He's the one that rained on everyone's
+--| parade.
 
--- What can you measure?  Anything.  Even the thing that is doing the measuring.  While it is doing the measuring.  All the way down.  To try to give
--- you some idea of what I am talking about, I am going to try to measure how true the proposition _true = true_ is. At least, insofar as Lean will
--- let me show you that this isn't nearly as set in stone as you might think. Sometimes, for reasons that are wholly obvious when you think about it,
--- _true_ __MUST EQUAL__ _false_.  Blame Gödel.  He's the one that rained on everyone's parade.
+--| _HOWEVER THAT MAY BE_ we are going to approach this like _ENGINEERS_, not some ivory tower Aristotelian philosopher.  We are going to use the
+--| generally accepted principles of science and engineering to reverse-engineer the Lean compiler _AND PHYSICS ITSELF_, explicitly to _measure_ how
+--| well it can evaluate _true = true_.
 
--- _HOWEVER THAT MAY BE_ we are going to approach this like _ENGINEERS_, not some ivory tower Aristotelian philosopher.  We are going to use the
--- generally accepted principles of science and engineering to reverse-engineer the Lean compiler _AND PHYSICS ITSELF_ and explicitly _measure_ how
--- well it can evaluate _true = true_.
+--| Why?  Cuz I understand math, but the way _I_ understand math is _very_ different from most people's understanding. This Lean proof assistant is
+--| designed to show me where _I_ don't understand math.  Well, I'm going to show it a thing or two I have picked up over the years. I am going to
+--| show _YOU_ a thing or two as well.  __YOU__ see, in order to measure how true true really is, the machine needs to measure **YOU the READER**. Not
+--| **YOU THE KNOWER** so much, though. Once it understands what _YOU the KNOWER_ understands, it will show **YOU the READER** it doesn't matter what
+--| **YOU the KNOWER** thinks.
 
--- Why?  Cuz I understand math, but the way _I_ understand math is _very_ different from most people's understanding. This Lean proof assistant is
--- designed to show me where _I_ don't understand math.  Well, I'm going to show it a thing or two I have picked up over the years. I am going to
--- show _YOU_ a thing or two as well.  You see, in order to measure how true true really is, the machine needs to measure _YOU_. You personally.
--- __YOU THE KNOWER__.  You know what the right answer should look like.
-
--- Man vs. Machine!
+--| TL;DR DISCLAIMER: THIS IS UMPTEEN THOUSANDS OF LINES OF HASTILY WRITTEN LEAN CODE. THERE ARE BOUND TO BE BUGS. THE BUG SUBMISSION PROCESS IS...
+--| INTERESTING. WE CAN MEASURE THE IMPROVEMENT OF THE DEVICE DIRECTLY, AS *YOU the READER*.gawk_at it⁻¹ LATER, WE CAN DISCUSS BUG FIXES. AT NO POINT
+--| DOES THE ARGUMENT _DEPEND_ ON THE CODE BEING BUG FREE. REMEMBER: KEEP TRACK OF THE BUGS *YOU the KNOWER* FIND UNTIL YOU SEE THE BUG SUBMISSION
+--| PROCESS. THE ARGUMENT REDUCES TO: There exists a proof that _x_. BUT THIS IS JUST AN ARGUMENT. THE PROOF EXISTS BETWEEN *YOU the READER* and
+--| *YOU the KNOWER* AND WE, LEAN AND I, EVEN THOUGH WE MIGHT NOT BE ABLE TO SHOW *YOU the KNOWER* _EXACTLY_ WHAT IT IS WE CAN, BEYOND SUSPICION,
+--| DEMONSTRATE IT _EXISTS_.
 
 namespace Measurement
 
--- One thing I hope _YOU_ do know is template metaprogramming.  The programming style of ascetic monks of extreme representational kung-fu.
--- This style I call:  __EMBARRASSINGLY SERIAL SUBJUNCTIVE METAPROGRAMMING__.  I explain to you the magic trick as I demonstrate it for someone
--- else:  _You the Reader_.  But, like I said, I don't look at math like you do.  Sets, limits, curves....  That's how you get into trouble.
--- So watch me explain the way I do math by doing the math I am explaining to you.
+--| One thing I hope _YOU the READER_ do know is template metaprogramming.  The programming style of ascetic monks of extreme representational kung-fu.
+--| This style I call:  __EMBARRASSINGLY SERIAL SUBJUNCTIVE METAPROGRAMMING__. Never been tested the *Wu-Tang style*, but _Code Rules Everything Around_
+--| _Me: CREAM Get the lib-ry, lake lake build YA'LL_!  I will now explain to *YOU the READER* a magic trick as I monkey patch Lean using a side
+--| channel attack.  But, like I said, I don't look at math like most do.  Sets, limits, curves....  That's how people get into trouble.
+--| So watch me explain the way I do math by doing the math I am explaining to _YOU the READER_.
 
 universe i
 --      ---
@@ -71,301 +77,318 @@ universe i
 --       +----------------------------------------------------------------+ coefficient?  *i* forget.   Turns out, why not all four?
 
 
--- Now, each thing is constructed serially: we start at the very first thing and then just keep _adding_ to it. At no point in time is there a
--- fork in this process.  Every step adds to the device.  Nothing ever takes away from it or provides it with the option to choose between two
--- things.  It can only run from start to finish.  Or, it might run forever.  See?  No jumping, branching or looping.  Or, Oxford commas in fixed
--- width fonts. Just state accumulation.
+--| Now, each thing is constructed serially: we start at the very first thing and then just keep _adding_ to it. At no point in time is there a
+--| fork in this process.  Every step adds to the device.  Nothing ever takes away from it or provides it with the option to choose between two
+--| things.  It can only run from start to finish.  Or, it might run forever.  See?  No jumping, branching or looping.  Or, Oxford commas in fixed
+--| width fonts. Just state accumulation.
+
+--| The following line means that *YOU the READER* no longer need any information before this in order to continue understanding the argument that the
+--| proof simply must exist. It will always remain
+--| self-evident from the comments. Any back-tracking is *YOU the KNOWER* trying to isolate a bug. Enjoy the ride!
+
+                                                                     -- * * * * --
 
 /- CHORUS:
-ME: I need a Fact.
-COMPILER: A proposition?
-ME: No, a proposition with a receipt.
-COMPILER: That is called a proof.                          | This is a measurement from a device of my own design, a
-ME: Great. Staple it to the universe. .        +-----------+ clever device that gives us an idea of how much bullshit
--/  --                                         |           | the Lean elaborator is putting up with.  This is the device
---                                             |           | reading its own input and measuring it.  For the sake of
-class Fact where   -- Bullshit meter ≈ 9   <---+           | argument, I call this the bullshit the compiler has to wade through.
---
-  truth : Prop                 -- Did it happen or not?
-  decTruth : Decidable truth   -- Sometimes the compiler will know the answer before we do! See, it can keep track of BILLIONS of these little
-                               -- decisions.  It cannot forget! It seems to understand what cannot be possible given the current situation _pretty_
-                               -- well. _WITCHCRAFT_ I tell you! __BILLIONS__!  Seriously, though, Lean can appear to have precognition
-                               -- sometimes.
+ME: I need a fact. --                                            | What does it mean to be proof of occurence? When two people agree that a particular
+COMPILER: A proposition? --                                      | value of the solution of a differential equation is different? When there is a
+ME: No, a proposition with some understand of true-ness. --------+ a set of high order terms that go to zero or cancel out? Or, is it when there
+COMPILER: That is called a proof. --                             | exists a device description that both can use to determine the quantitative
+ME: Great. Staple it to the universe. --                         | difference?
+-/  --                                                 | This is a measurement from a device of my own design, a clever device that gives us an idea
+class FACT where   -- Bullshit meter ≈ 9   <-----------+ of how much bullshit the Lean elaborator is putting up with. This is the device reading its
+--                                                     | own elaboration process. We now begin its construction.
+  truth : Prop  --| Did it happen or not? Simple fact. A measurable event took place. It either changed the local measurement or it did not.
 
+  click : Decidable truth  ---+ When the compiler can figure out if something _should_ have happened or _could not_ have happened, and we are looking,
+--                            | it should _click_ through this mechanism. The Bullshit meter is _not_ a measure of raw clicks, this is just the theory
+--                            | it is constructed on. At no point are we going to see the device, we will merely describe how it works. You could say
+--                            | the true-ness of an idea _clicks_ with us at the same time it _clicks_ with the compiler.
 
--- Well, let's start with the simplest of all Facts, something that is True.  Here, the compiler is asked whether or not something is true.  In
--- this way, we can measure the compiler.  Is the compiler currently bullish or bearish on the veracity of _true_ = _true_?
+--| Well, let's start with the simplest of all Facts, something that is True.  Here, the compiler is asked whether or not something is true.  In this
+--| way, we can measure the compiler.  Is the compiler currently bullish or bearish on the veracity of _true_ = _true_?
 
-namespace Fact    -- Bullshit meter ≈ 25
+namespace FACT    -- Bullshit meter ≈ 25
              --              +---------------------+ Know where the compiler puts this?  On the DATA page. This is not a variable.  It is the truth
-             --              |                     | that the compiler and I agree on. Hell, __YOU_the_KNOWER__ may even agree with us.  You the
-             --              |                     | reader, though, they might not agree with us just yet.  We still have to convince them.  By
-             --              |                     | gluing a quarter to the table and taking their money playing three card monte. The coin cannot
-             --              |                     | move.  How hard can this possibly be?
+             --              |                     | that the compiler and I agree on. Hell, **YOU the KNOWER** may even agree with us. As I said,
+             --              |                     | it does not matter if they do yet. We still have to convince them. How? By gluing a quarter to
+             --              |                     | a table and taking their money playing a shell game of 3 card monte. Until they get it. We can
+             --              |                     | describe the proof exactly, even though we may not be able to produce it.
              --              V
-def Truth : Fact := { truth := true, decTruth := Decidable.isTrue rfl }     -- For those new to Lean, I just asked
-     --                                                            ^        -- the compiler what is _true=true_ and it
-     --                                                            |        -- said TRUE.  This is the actual mechanism
-     --             I assume you, too, can rfl this.  rofl. -------+        -- the compiler uses.  A label for it, anyway.
-end Fact
+def Truth : FACT := { truth := true, click := Decidable.isTrue rfl } --+ This is a trivial statement even the most curmudgeonly of reconstructionist
+--                                                              ^      | Platonist: T=T is reflexively True. I will call this the _AXIOM OF TRUTH_
+--                                                              |      | and assume that the compiler understands it. I can see *YOU the KNOWER* is
+--  I assume *YOU the READER*, too, can rfl this.  rofl. -------+      | already skeptical. I'm not asking *YOU the KNOWER* to agree with this.
+end FACT
 
--- Within this one little bit lies _Quantum Electrodynamics_.  Not because this is a math engine, not because we are about to undergo some _crazy_
--- math, and certainly not because I want to derive QED. The trouble is, that _bit_ is held in place by static electricity in RAM and by being
--- pulled high in closer representations.  Electrons are being used to encode this bit in silicon.  Unless you have one of those new cortical
--- engines that use stem cells to grow neurons. QED has to be there or the bit will not be consistent enough for Lean to understand.  See?  I wish
--- this could be easier, but the exit door for this is on the other side of Yang-Mills. Short Round was right, I hope __YOU_the_KNOWER__ are up
--- on gauge theory. I sure as hell _AM NOT_.
+--| Within this one little bit lies _Quantum Electrodynamics_.  Not because this is a math engine, not because we are about to undergo some _crazy_
+--| math, and certainly not because I want to derive QED. The _fact_ is, that _bit_ is held in place by static electricity in RAM by being pulled
+--| high in closure representations. There may or may not be two bits or more, here masquerading as one.  Electrons are being used to encode this bit
+--| in silicon---unless we are talking about one of those new cortical engines that use stem cells to grow neurons. QED has to be there or the bit
+--| will not be consistent enough for Lean to understand.  See?  I wish this could be easier, but the exit door for this is on the other side of
+--| Yang-Mills. Short Round was right, I hope **YOU the KNOWER** are up on gauge theory. I sure as hell _AM NOT_. Fact is, Lean only provides QED.
+--| _QUOD ERAT DEMONSTRANDUM_.  All I have to do is convince *YOU the KNOWER* that the electron that represents QED also represents the _other_ QED.
 
--- But before we measure, we have to deal with relative value.  I don't have time to spend _all day_ building you a number system from
--- scratch, so I will just make enough of the number system to get by.  Numbers, you see, are convincing.  People see numbers and they say:
--- Yep! Stimulus leads to effect.  So, I am going to build a number for you that cannot be built. That way, __YOU_the_KNOWER__ may even learn
--- something even if __YOU_the_READER__ disagrees entirely.
+                                                                     -- * * * * --
 
--- Speaking of numbers, we want to measure something.  Well, if we are going to measure what the compiler is doing, it would help if we agreed on
--- what some numbers were.  So, let's make some and name them.  We use Big Endian so we can shortcut a very common computation. At some point, we will
--- have described a particular number so well, the compiler can't help but give it to us.
+--| Before we measure, we have to deal with relative value.  I don't have time to spend _all day_ building a number system from scratch, so I will
+--| make Lean spend half an hour instead. I'll describe _just enough_ of a number system to get by.  Numbers, it seems, are convincing.  People see
+--| numbers and they say: Yep! Stimulus leads to effect. Generally, science uses a tolerance. Regime 1 below some value, regime α above some value,
+--| even though those values may not be the same thing. We will call this blontum for regime 1 and relamanistic for regime α.  Actually, we will do
+--| no such thing, but this is just _illustrative_ of the sorts of comments *YOU the READER* and *YOU the KNOWER* are going to disagree on in very
+--| surprising, yet 100% predictable ways.
+
+--| Speaking of numbers, we want to measure something.  Well, if we are going to measure what the compiler is doing, it would help if we agreed on
+--| what some numbers were.  So, let's make some and name them.  We use Big Endian so we can shortcut a very common computation. At some point, we will
+--| have described a particular number so well, the compiler can't help but give it to us. It is very important we understand _HOW_ numbers transform
 
 /- CHORUS:
-ME: I need the number to be bigger or smaller.
-COMPILER: Bigger or smaller than what?
-ME: Another number.
-COMPILER: That is an order relation.
-ME: No. That is a fact about two things agreeing which one is taller.
-COMPILER: You want `<` and `≤`.
-ME: I want them pairing off.
+ME: I need the number to be bigger or smaller.                         | My apologies here for assuming that there are _more_ than 1 number. Again,
+COMPILER: Bigger or smaller than what?                                 | the compiler is right to call this out as missing a process. But, I see no
+ME: Another number. ---------------------------------------------------+ reason for this number to exist for us to talk about what it might look like.
+COMPILER: That is an order relation.                                   |
+ME: No. That is a fact about two things agreeing which one is taller.  | At the same time, we can show Lean how to build numbers from scratch, not
+COMPILER: You want `<` and `≤`. --                                     | that it will construct them directly. We will do that later. This is just
+ME: I want them pairing off. --                                        | enough of a description for Lean to approximate Euler-Lagrange dynamics.
 -/
---                                               +-----------------+ What you are looking at is an estimation of the work the elaborator is
-inductive Number where   -- Bullshit meter ≈ 92  |                 | doing.  This is roughly some constant times the number of "steps" the
-  | zero : Fact → Number --                   ^  |                 | elaborator requires to check this code.  As promised, the device only
-    --      ^                                 |  |                 | grows. Eventually, the compiler learns how to cut the bullshit.
-    --      |                                 +--+
-    --      +---------------| 0 or 1. This is our digit. Or, rather, the clock
-    --                      | complement of this for those who understand DSP.
+--                                               +-----------------+ What we are looking at is an estimation of the work the elaborator is doing. This
+inductive Number where   -- Bullshit meter ≈ 92  |                 | is, roughly, some constant times the number of "steps" the elaborator requires
+  | zero : FACT → Number --                   ^  |                 | to check this code.  As promised, the device only grows. Eventually, the compiler
+--|      ^                                    |  |                 | learns how to cut the bullshit a bit. In the meanwhile, just keep this in mind.
+--|      |                                    +--+
+--|      +---------------+ 0 or 1. This is our digit. Or, rather, the clock complement of this for those who understand DSP. As it only wraps a Prop,
+--|                      | there can really only be 2 flavors of FACT.
 
-  | one  : Fact → Number → Number
-    --      ^                | Apparently, this process has been well known before I figured it out.
-    --      |                | Not my idea, some dude named Peano camping at a spawn point.
-    --      +----------------+
-    --                       | Do you think we might be able to count both ways simultaneously? Up and
-    --                       | down? HINT: Probably.  BTW, since I have Lean below me this is
-    --                       | _the standard_ of demonstration to which I am holding myself. __PROBABLY__
-    --                       | Sometimes, this might degrade as low as ``we'll see.''
+  | one  : FACT → Number → Number -----------+ This process should look familiar to all of those who think the empty set is a FACT. This is a _VERY_
+--|                                          | _provocative_ statement, I know. I haven't defined what a _SET_ is. A _SET_ is a tool used to confuse
+--| +----------------------------------------+ the issue. Set theory is inconsistent and riddled with holes. Why try to describe everything? I only
+--| | want enough of a number that we can all agree that something has, _AS A MATTER OF FACT_, taken place. What if we do not start with a definition
+--| | that attempts to map to completeness all at once? What if we add completeness to the device until our dear friend Gödel says we cannot without
+--| | risk of loss of consistency?
 
--- *REMEMBER THAT* __FACTS__ have a high likelihood of being  __TRUE__!  (A sign of our times...) If one does not check facts then does one have
--- fake news?  Oh, I see, they are exclusive! That explains a lot.  Facts:  check_facts ≠ fake_news.  or check_facts ∩ fake_news = ∅.  See?
--- Lesson: facts are probably true. Welp. That's the gap we have to close.
+--| *REMEMBER* __FACTS__ have a finite likelihood of being  __TRUE__! (A sign of our times..) There is but _1_ FACT.Truth and there
+--| _ARE NO OTHER FACTS_ but what if there were? What might they look like? I think if we can describe a FACT that wasn't true, we might just catch
+--| our buddy Gödel red-handed.
 
--- And so, we set about constructing the machinery so the compiler can, in fact answer this question of can we count both ways as a matter of
--- probable fact?  Be patient, we have to go through Einstein field equations to get the answer, but it is in there. And we will find it.
--- Eventually.  Eye on the prize, we just want to know what this bit is.  Is it true or false? It is OBVIOUSLY true because it has no other option.
--- __YOU_the_KNOWER__ know that.  You know that {T,_rfl_}.  You know that is the quarter we are using to fool __YOU_the_READER__.  So, let's
--- assume __YOU_the_READER__ are of the gullible sort and are willing to ask, just once, "How probable?"
+                                                                     -- * * * * --
 
--- Remember, this is the question I want to show you the answer to:  That the compiler can do a pretty good job of evaluating how _true_ _true_
--- really is.   We have to derive, demonstrate, and prove uniqueness of a finite solution to the Yang-Mills equations order for me to show you that
--- this physical device before you has, as a matter of fact, computed the value of this Fact and not just pulled it out of thin air. An electron,
--- somewhere, represents this fact.  So, I am going to measure the response of the compiler to determine if I agree that the compiler thinks
--- that, electron means-- _viz._ in fact _true = true_, QED.  We will carefully construct an instrument and stimuli for the compiler so that
--- we can measure the truthiness of any of the two symbols: true or false. We will assign that truthiness a number, calibrate that number, measure
--- it very, very, _VERY_ finely, then give you error bounds on the likelihood that _true = true_.  Over/under _r²_ is .9995. and I will take your
--- book. (lol, You the Knower think that's a joke. I will show you it isn't.)
+--| And so, we set about constructing the machinery so the compiler can, in FACT, answer this question of can we count even if the numbers do not
+--| exist? I mean, lots of numbers aren't real and we can count them somehow. BUT--- that is far too _complex_ a _train of thought_ to entertain
+--| at this moment. We will entertain it _later_. I think we all agree that time will have advanced by the time we get back to it?
 
--- In the meanwhile, the actual fact on the number can be interpreted as the sign of that number. That way we can use a clock complement as the fact
--- itself. A clock?  Yeah, a clock.  It takes time to compile a program and I really don't want to wait forever.
+--| Remember, this is the question I want to demonstrate the answer to:  That the compiler can do a pretty good job of evaluating how _true_ _true_
+--| _really_ is.   We have to derive, demonstrate, and prove uniqueness of a finite solution to the Yang-Mills equations in order for me to demonstrate
+--| that this physical device before us has, as a matter of fact, computed the value of this FACT and not just pulled it out of thin air. An electron,
+--| somewhere, represents this FACT.  So, I am going to measure the response of the compiler to determine if I agree that the compiler thinks
+--| that, electron means-- _viz._ in fact _true = true_, _QED_.  We will carefully construct an instrument and stimuli for the compiler so that
+--| we can measure the truthiness of any of the two symbols: true or false. We will assign that truthiness a number, calibrate that number, measure
+--| it very, very, _VERY_ finely, then give demonstrate rigorously simple error bounds on the likelihood that _true = true_: the very quarter
+--| *YOU the READER* are gluing down right now.
+
+--| In the meanwhile, the actual FACT on the number can be interpreted as the sign of that number. That way we can use a clock complement as the fact
+--| itself. A clock?  Yeah, a clock.  It takes time to compile a program and I really don't want to wait forever for everything to click.
 
 --                                         +------------------------+
 namespace Number  --  Bullshit meter ≈ 112 |                        |
 def le : Number → Number → Prop --         V          Now, this is just _intuition_. We need
   | .zero _ , _ => True         -- 0 ≤ n  n∈ℕ         something that might pass as a natural number.
-  | .one  _ _, .zero _ => False -- n > 0  n∈ℕ > 0     Lean has the Nat thing, but I don't trust it.  Do you?
---                                         ^          You do?    Such decadence!  A HUUGE assumption..
---                                         |                        |
-  | .one  p1 n1', .one  p2 n2' =>   --     +------------------------+
-      match p1.decTruth, p2.decTruth with
-      | isTrue _,  isTrue _  => le n1' n2'   --   | So, we can interpret true and false as the sign of the values.
-      | isTrue _,  isFalse _ => False        --   | of the values.  If true is positive, like in religion, then this is
-      | isFalse _, isTrue _  => True -------------+ the truth table of ≤. Or would you like true to be negative, like
-      | isFalse _, isFalse _ => ¬ le n1' n2' --   | the electron (≥)?  Why not both?  They both probably work.
-end Number
+  | .one  _ _, .zero _ => False -- n > 0  n∈ℕ > 0     Lean has the Nat thing, but I don't trust it.
+--|                                        ^          Do *YOU the READER*? *YOU the READER* do? Then watch _very_ closely.
+--|                                        |                        |
+  | .one  f1 n1', .one  f2 n2' =>   --     +------------------------+
+      match f1.click, f2.click with --            | This should hold our threshold, the lowest α can be and the most 1 can be. I should probably
+      | isTrue _,  isTrue _  => le n1' n2'   --   | change the name of that from α to something less... provocative. Choose between δ and ε. Why not
+      | isTrue _,  isFalse _ => False        --   | both? If the FACTS.click and are both true, we will call this _counting_, to align with blontum
+      | isFalse _, isTrue _  => True -------------+ theory. That was the last time, I swear. And ε can be the other one. Whatever α was supposed to
+      | isFalse _, isFalse _ => ¬ le n1' n2' --   | be.
+end Number --              ^
+--                         |
+--                         +------------ This is a "face down" card. No one can tell if there is a quarter is under it nor if it is a queen.
 
--- Did you catch that?  We have a different fact than the compiler.  The compiler has true and false.  We, OTOH, have at least 3 truth symbols:
--- true=true, false=false, and true=false.  Weird. You can get __REAL__ clever with a trinary-binary pattern like boxing.  Speaking of boxing, I wish
--- Ali would have taken out Java erasure at the root. Unlike Lean, Java is not to be trusted (tm) for repeatable builds. That's a You the Knower
--- problem.
+--| If anyone has any idea what ε could be, I must insist I have not provided one. It is the part of the threshold not δ. Let's talk about what
+--| _it_ could be if we tried really hard to find out.
 
--- A clock complement collapses the true=true and false=false into a same/different cadence. Do we want to the compiler to count to 3 to match our
--- view of the world?  Probably, but not yet. This is fiveshadowing.  We don't foreshadow when we metaprogram, we fiveshadow.  Remember that we have
--- this truthiness measure because we have 3 symbols for a binary representation. And, we have same/different for our facts and true/false for the
--- facts in the compiler. _DON'T CROSS THE STREAMS_.  While not an unlicensed nuclear accelerator, we have to be careful not to fall into a circular
--- reasoning trap.
+                                                                     -- * * * * --
 
--- BTW, it is _not at all clear_ to me that numbers are well sorted. I mean, _i_. How do you sort that?  IEEE 754  figured out that _a_ ≠ _a_ can be
--- used to represent these concepts. _NaN_. I find IEEE plays it _real loose and cool_ with these definitions, so be warned. Besides, pretty certain
--- _YOU the KNOWER_ use *i* like it is a number _all the time!_  Most compilers are just too lazy to write out the COMPLETE Taylor expansion
--- e^(iθ) all the way out so we can really _understand_ _i_.  Just absolute laziness on the part of compilers.
--- ------
---   ^                                         | Keep an eye in this guy.  Shows up _EVERYWHERE_ and I mean
---   |                                         | __EVERYWHERE__.  I mean, Euler pretty much glued this identity
---   +-----------------------------------------+ into physics with his variational methods.  Sorry, I bet
---                                             | __YOU_the_KNOWER__ didn't know that.  I'll show you as we take
---                                             | __YOU_the_READER__'s money.
+--| BTW, it is _not at all clear_ to me that numbers are well sorted. I mean, _i_. How should I sort that?  IEEE 754  figured out that _a_ ≠ _a_ can
+--| be used to represent these concepts. _NaN_. I find IEEE plays it _real loose and cool_ with these definitions, so be warned. Besides, pretty
+--| certain _YOU the KNOWER_ use *i* like it is a number _all the time!_  Most compilers are just too lazy to write out the COMPLETE Taylor expansion
+--| e^(iθ) all the way out so we can really _understand_ _i_.  Just absolute laziness on the part of compilers. No reason why we can't explain to Lean
+--| _how_, just not exhaustively.
 
---                            +--+----------------------------------------------------+ Aaah, low entropy language,
---                            |  |                                                    | could there be a better
---                            V  V                                                    | medium?  Not possible.
--- A more maddening question is is 1 <= 0.999999999.... ?  Well, as you will see
---                           ----+        ^^^^^^^^^
---  Parsing syllables            |        |||||||||
---  Slick Willy style  -------+--+        +++++++++------- Is this rfl or not? rofl for the entropy, tho'. And, I have only heard it one way.
+--|                            +--+-----------------------------+
+--|                            |  |                             |
+--|                            V  V                             |
+--| A more maddening question is is 1 <= 0.999999999.... ?      |
+--|                           ----+        ^^^^^^^^^            +-| Aaah, low entropy English, Could there be a better medium? Not possible.
+--|  Parsing syllables            |        |||||||||
+--|  Slick Willy style <-------+--+        +++++++++-------> Is this rfl or not? rofl for the entropy, tho'.
 
--- I will be asking a very similar question in a second. Turns out, I've heard _it_ both ways.
+--| I will be asking a very similar question in a second. Turns out, I've heard _it_ both ways.
 
--- BTW, I hope you don't mind I hijack operators for my own nefarious purposes. If you forget what they mean, because hijack is really a euphemism
--- for what I'm about to do, just remember it always means "Less Than or Equal To" in whatever context it is in.
-
+--| BTW, I hope *YOU the READER* don't mind I hijack operators for my own nefarious purposes. If *YOU the READER* forget what they mean, because
+--| hijack is really a euphemism for what I am about to do, just remember it always means "Less Than or Equal To" in some finite relational mapping.
 /- CHORUS:
-ME: Any reason why _you_ can't use the label I just made up?
-COMPILER: That's my label, not yours
-ME: The label that's under the card
-COMPILER: There is only truth under the card, right where I put it.
-ME: Then you won't mind calling truthfully calling this "≤"
+ME: Any reason why _you_ can't use the label I just made up?          | F ≤ T xor T ≤ F. That's the question we will be asking. What we know for
+COMPILER: That's my label, not yours                                  | absolute certain is that if we can demonstrate F ≤ T ∧ F ≤ T, then we probably
+ME: The label that's under the card ----------------------------------+ have our consistency condition backed into the last corner. We introduce this
+COMPILER: There is only truth under the card, right where I put it.   | merely as a convenience of meaning.
+ME: Then you won't mind truthfully calling this "≤"
 -/
 instance : LE Number where  -- Bullshit meter ≈ 7
   le := Number.le
 
 -- Trust me, bro.... ;-)
 
+                                                                     -- * * * * --
 
--- So, this is our "sensor" for the compiler's meaning of a Type.  The compiler will happily send us carriers (I think
--- they are called properties, but I have never seen a language spec) that will evaluate true/false for us to use as
--- "facts."
-structure CarrierProcess -- Bullshit meter ≈ 85
-    (Carrier: Type i)
-  where
-  symbol: Fact      -- Said fact from the compiler, either _true_ or _false_.
-  value: Number     -- The inductive number defined above.  It isn't a natural number, in that it
-                    -- does not start from the empty set.  It starts from the trivial truth _true_ = _true_.
-          --                                          ^
-          --          My apologies for using |        |
-          --        such a vague descriptor. +--------+
-          --                    Filthy word. |
-
-  event: Number → Number := fun s =>
-    match s with
-    | .zero _ => .zero Fact.Truth -------------- See? _true_ = _true_.  This assumes that whatever comes in is true.
-
-    | .one  p _ => .one  p value  -------------| This starts to stack inductives in weirdly recursive ways.
-                                  --           | Also, notice that this is the canonical fence post problem.
-                                  --           | The next number is covered by the value now. If you hate
-                                  --           | fence post problems, realize that they are the first fundamental
-                                  --           | bug. I mean, distinguishing feature.
-
-
--- The CarrierProcess is a way for the compiler to boot strap 2 numbers, 0 and 1.  We will call 1 the ability to count.  The ability to count in
--- universes is a natural (sic) part of a complete Lean install.  It does it for you.  All this class does is tell the compiler, this is what we
--- call the next thing.  We call the next thing 1.
-
--- Another way to look at it: To ZERO an instrument is to TARE the scale back to Fact.TRUTH.  What we are doing is giving the compiler
--- 2 instructions here:
---    .zero => Tells the compiler to reset to the sentence "Zero is true".
---    .one  => Tells the compiler:  Compute the next sentence by attaching Fact p.
-
--- Any reason why we can't have the functions zero() and one() defined as such?  *YOU the KNOWER* know why.  Gets confusing when constructors look
--- like they have side effects. And, well, we are going to compute a number as a side effect of this demonstration. *YOU the READER* will
--- allow it---for now.
+--| I should go ahead and state, up front, more of this argument depends on Santa Claus than a typical technical argument about the measured
+--| meanings of representations.  Now that I say that outloud, sounds like something to be expected. As a child, Santa brought me a deck of cards
+--| and I learned how to do some magic tricks. This particular trick I want to show is similar to 3 card monte.  In this trick, a _quarter_ is
+--| employed and sometimes the _quarter_ is there and sometimes the _quarter_ isn't there. The FACT the quarter absolutely _MUST_ be there is the
+--| _TRUTH_ we are pursuing.
 
 /- CHORUS:
-ME: Before I count, I need difference.
-COMPILER: Difference from what?
-ME: From itself, eventually. But start small.
-COMPILER: You want decidable equality.
-ME: I want a witness that the names are not the same names.
-COMPILER: That is decidable equality.
-ME: Fine. But with better lighting.
+ME: Nothing up my sleeve:
 -/
-class DISTINGUISHABLE  -- Bullshit meter ≈ 28  ------------------+ You may start noticing a pattern to the structure → class → inductive →
-    (Value: Type i)                            --                | structure → class → inductive → structure → class → ...
+structure CarrierProcess -- Bullshit meter ≈ 85
+    (_: Type i) -------| We let the Lean elaborator count the cards for us. We only care about the universe "nunber" or "level" or whatever.
+  where
+  symbol: FACT      ---+ This is the FACT that should have or could not have happened. The one that happened like 140 lines ago. I am _CONFIDENT_
+--                     | happened, for real.
+  quarter: Number     ---+ This is the reading the device gives to demonstrate that science occurred and has produced a number. For now, think of
+--                       | that number as the quarter hiding under the card. *YOU the READERs* job is to follow the quarter---some number that may
+--                       | or may _NOT_ be provocative.
+--                                                       | This is our _general_ model of the universe. Some value evolves through some interaction,
+  interact_with_the_universe: Number → Number := --------+ be it the first law of motion (dρ = 0) or it is the second (dρ > 0).
+                                          fun a_trivially_easy_to_distinguish_binary_number => ----+ I compiled this source on a binary computer. I
+    match a_trivially_easy_to_distinguish_binary_number with --                                    | assume we are not in USSR in 1958 right now.
+    | .zero _       => .zero FACT.Truth ----------| See? _true_ = _true_.  This assumes that zero we have in front of us, it is the TRUE zero.
+  --|       ^                | These are face-down cards, known _only_ to the compiler. We can say _NOTHING_ about them until we figure out how to
+  --|       +-----+----------+ inject ourselves into the AST of the compiler so we can catch _true_ = _true_ at the lowest level we can. Here, for
+  --|             V          | instance, we are explaining to the compiler that whatever is under that card should be a quarter.
+    | .one  glued _ => .one glued quarter  ---+ This starts to stack inductives in weirdly recursive ways. Also, notice that this is the canonical
+  --|                                         | fence post problem. The next numbmer is covered by the value now. If *YOU the KNOWER* hate fence post
+  --|                                         | problems, realize that they are the first fundamental bug. I mean, distinguishing feature.
+
+--| The CarrierProcess is a way for the compiler to boot strap 2 numbers, 0 and 1.  We will call 1 the ability to count.  The ability to count in
+--| universes is a natural (sic) part of a complete Lean install.  It does it for you.  All this class does is tell the compiler, this is what we
+--| call the next thing.  We call the next thing: one glued quarter. It hasn't moved.
+
+--| Another way to look at it: To ZERO an instrument is to TARE the scale back to Fact.TRUTH.  We are doing is giving the compiler 2 instructions:
+--|    .zero => Tells the compiler to reset to the sentence "Zero is true".
+--|    .one  => Asks the compiler to append the quarter to the next number it outputs using glue. The quarter is always there, glued to one.
+
+--| Any reason why we can't have the functions zero() and one() defined as such?  *YOU the KNOWER* know why.  Gets confusing when constructors look
+--| like they have side effects---invites bugs. And, well, we are going to compute a number as a side effect of this demonstration.
+
+                                                                     -- * * * * --
+
+--| What does it mean to distinguish two things? That two things are different? Does it mean it's possible to tell if two things are the same? What
+--| would it look like to be distinct from True?
+
+/- CHORUS: --                                                 | Anyone who has ever used Lean will understand the compiler goes to great lengths to
+ME: Before I count, I need difference. --                     | ensure that things are elaborated consistently. There are many concepts in the
+COMPILER: Difference from what? --                            | specification that call for similar constructs of computer science. Similar but
+ME: From itself, eventually. But start small. --              | different. Not the same. Same thing happens in numerical analysis. High order terms
+COMPILER: You want decidable equality. -----------------------+ are driven to zero through mesh refinement. Weirdly this is possible even though the
+ME: I want a witness that the names are not the same names. --| _AVERAGE_ case random matrix would suggest that something about physical problems
+COMPILER: That is decidable equality. --                      | makes them look a bunch like numerical approximations. Squinting at the qubit, right
+ME: Fine. But with better lighting. --                        | now.
+-/
+class DISTINGUISHABLE  -- Bullshit meter ≈ 28  ------------------+ We are setting up a pattern to the structure → class → inductive → structure →
+    (Value: Type i)                            --                | class → inductive → structure → class → ...
     (Observation: CarrierProcess Value)        --                |
     where                                      --                | An eternal golden braid of meta-programming. This argument does not exist without
-    --        +--------------------------------------------------+ the beauty of Hofstadter's work. However, I must warn you that the classes going
-    --        |                                                    forward tend to accrete in stacks of templates.  Stacks and stacks and stacks.
-    --        | Hundred or so.  Templates and partial instantiations.  I take that back, there is one concrete instantiation at the end. We will
-    --        | leave them spread out for now, eventually we will start compacting them and all hope will be lost that __YOU_the_KNOWER__ can reason
-    --        | about the templates while __YOU_the_READER__ soaks in how it works by failing to understand what is happening. Mwah! hah! hah!
-    --        | Actually, I don't think I have a choice in the matter.  Pretty confident this is one of the easiest ways through this argument.
+-- +-------------------------------------------------------------+ the beauty of Hofstadter's work. However, I must disclaim the classes going
+-- | forward tend to accrete in stacks of templates.  Stacks and stacks and stacks. Hundred or so. Templates and partial instantiations. I take that
+-- | back, there is one concrete instantiation at the end. We will leave them spread out for now, eventually we will start compacting them and all
+-- | hope will be lost that *YOU the KNOWER* can reason about the templates while *YOU the READER* soaks in how it works by merely by expecting the
+-- | source to compile. There are myriad ways to solve this labyrinth we are about to enter. I found a path toward coercing the Herbrand space.
 
-  fact: Fact           -- This is quite true as a matter of fact.  Also, C++ PTSD.
-                       --           DUCK::Duck duck = new DUCK::Duck() // quack!
+  fact: FACT           -- This is quite true as a matter of fact.  Also, '98 STD C++ PTSD.
+                       --           DUCK::Duck *duck = new DUCK::Duck() // Everyone quack! for necessarily partial construction!
 
+--          +---------------+ So, generic metaprogramming.  This agrument relies _HEAVILY_ on generic metaprogramming. We are intentionally _NOT_
+--          |               | instantiating the symbol, rather we are grabbing the label the compiler uses to track universe level.  There is _no_
+--          |               | memory allocation so far, other than Fact.Truth which is on the DATA page, not the INSTRUCTION page. I don't expect to
+--          |               | need to allocate memory since we now have access to numbers the compiler uses and trusts. Commence monkey patching.
+--          V
+  symbol: Type Value --+ We can index the value with a metavariable symbol, as in the compiler has a representation of some integer level.
+--                     | Only suckers use Nat (I credit my mentor Russ Hewett for that). This technique is called "palming."
 
-   --       +---------------+ So, generic metaprogramming.  This agrument relies _HEAVILY_ on generic metaprogramming. We are intentionally _NOT_
-   --       |               | instantiating the symbol, rather we are grabbing the label the compiler uses to track universe level.  There is _no_
-   --       |               | memory allocation so far, other than Fact.Truth which is on the DATA page, not the INSTRUCTION page. I don't expect to
-   --       |               | need to allocate memory since we now have access to numbers the compiler uses and trusts.
-   --       V
-  symbol: Type Value   -- We can index the value with a metavariable symbol, as in the compiler has a representation of some integer level.
-                       -- Only suckers use Nat (I credit my mentor Russ Hewett for that).
+  distinct? : Prop := True    --| Is this thing distinct? God I hope so, or the compiler has problems telling true apart from false.
 
-  distinct? : Prop := True    -- Is this thing distinct?  God I hope so, or the compiler has problems.
-
+-- These two methods are never used. I placed them here just to restrict the construction of DISTINGUISHABLE.
   different? : Type Value → Prop :=
     fun s1 => s1 ≠ symbol  -- If things are at different universe levels, then     <-------+              +---------------------------------+
                            -- the compiler can easily tell the types apart.                |              |                                 |
                            --                                                              |              |         _CAVEAT EMPTOR_         |
-  dec_distinct : DecidablePred different?  -- And, the compiler will be good enough        |              |                                 |
+  not_the_same : DecidablePred different?  -- And, the compiler will be good enough        |              |                                 |
                                            -- to tell us if it thinks the universes        |              | ------------------------------- |
-                                           -- are different as we _WRITE_ the code.        |              |   The appearence of a bitset    |
+                                           -- are different as we _WRITE_ the code.        |              |   The appearance of a bitset    |
 --                                                                                         |              |   within the compiler only      |
 --                                                                                         |              |   expresses the deep desire of  |
 -- And, since we now agree with the compiler what a natural number looks like,             |              |   the compiler to bucket things |
--- lets talk about how they are structured.  I'm _assuming_ the compiler uses natural      |              |                                 |
--- numbers.  __YOU_the_KNOWER__ will no better than _i_.                                   |              |  _NO STATEMENT ABOUT UNIVERSAL_ |
+-- let's talk about how they are structured.  I'm _assuming_ the compiler uses natural     |              |                                 |
+-- numbers.  **YOU the KNOWER** will no better than _i_.                                   |              |  _NO STATEMENT ABOUT UNIVERSAL_ |
 --                                                                                         |              |     _MECHANISMS IS CLAIMED_     |
--- You didn't notice the universe number thing? -------------------------------------------+              +---------------------------------+
+-- *YOU the READER* didn't notice the universe number thing? ------------------------------+              +---------------------------------+
+
+                                                                     -- * * * * --
+
+--| The compiler insists on using natural numbers to enumerate universes. Or not. Depending on how *YOU the READER* and *YOU the KNOWER* view natural
+--| numbers. Let's start small. We all agree that _i_, being the universe number, is a number of some kind by definition of being a number. This is
+--| a mechanism to enforce _dependency_, a relationship that looks _AN AWFUL LOT_ like causality. The fact that the electron is caused to perform math
+--| is beside the point. Which point? _i_. At the very least, I think everyone agrees _i_ also describes a point in the Argand plane no matter what
+--| we think _i_ or Argand may mean right now. So sorry, I know this can get a little complex, but this is just _illustrative_ of what the code is
+--| _describing_.
 
 /- CHORUS:
-ME: I need a natural number.                           |      +-----------> Finally, we can meet the entire cast of characters on our journey.
-COMPILER: Great. Use Nat.                              |      |             You have met _me_ obviously, and I have met _YOU the READER_ before.
-ME: No. Too much civilization.                         |      |             _YOU the KNOWER_ are new to me; it is nice to meet you. The fourth
-COMPILER: Then what do you want?                       +------+             member of our cast is the _COMPILER_. Normally, the compiler fills
-ME: I want to tell one from the rest.                  |                    a mechanical role in the demonstration of things.  We are doing this
-COMPILER: That is barely counting.                     |                    a bit _differently_ and _compilation itself_ is the process we measure
-ME: Exactly. We are still in the cave drawing phase.   |                    _together_.
+ME: I need a natural number.                            | But it is, counting. The _inductive_ mechanism allows the compiler to increment a counter
+COMPILER: Great. Use Nat.                               | in its internal state, far away from prying eyes, that has a simple property similar to the
+ME: No. Too much civilization.                          | natural numbers: a well-ordering. I say similar because we have not described natural
+COMPILER: Then what do you want?                        | numbers nor their ordering process. These are all concepts traditionally defined by sets,
+ME: I want to tell one from the rest.                   | which I steadfastly refuse to define as being too confusing.
+COMPILER: That is barely counting. ---------------------+
+ME: Exactly. We are still in the cave drawing phase. -- | Simultaneously, these are _NOT_ ℕ, being prohibitively finite in size.
 -/
-inductive Natural  -- Bullshit meter ≈ 107       | The Fact here is a bit murkier. (Or is it a murkier bit?)  We are coordinating with the compiler
-  where                   --                     | now on what is a fact and what isn't.  We have a notion of true and the compiler has a notion of
-  | zero : Fact → Natural -----------------------+ true, which leads to true=true or false=false.  See?  Or is this _straining_ your imagination?
-                          --                     | Or, you can just think of it as the compiler assuring you that, indeed, true=true. See how easy
-                          --                     | it is to make this very controversial?
+inductive Natural  -- Bullshit meter ≈ 107       | The FACT here is a bit murkier. (Or is it a murkier bit?)  We are coordinating with the compiler
+  where                   --                     | now on what is a FACT and what isn't.  We have a notion of TRUE and the compiler has a notion of
+  | zero : FACT → Natural -----------------------+ TRUE, which leads to _TRUE=TRUE_ or _FALSE=FALSE_.  See?  Or is this _straining_ your imagination?
+--|                                              | Or, we can just think of it as the compiler assuring us that, indeed, _true=true_. See how easy
+--|                                              | it is to make this very controversial?
 
-  | number : Fact → Number → Natural → Natural --+ Here, the Fact is that we agree with the compiler that the universe of level Number is what we
-                          --                     | call a Natural number.
+  | number : FACT → Number → Natural → Natural --+ Here, the FACT is that we agree with the compiler that the universe of level Number is what we
+--|                                              | call a Natural number.
 
--- The natural numbers have this property that the ones after are bigger than the ones before.  Not certain they have another property worth talking
--- about.  If you can think of one, leave it in the comments below.  Remember to like and subscribe. It helps the algorithm.
+-- The natural numbers have this property that the ones that come later in the construction are "bigger" than the ones that come before.  Not certain
+--| they have another property worth talking about.  If you can think of one, leave it in the comments below.  Remember to like and subscribe. It
+--| helps the algorithm.
 
 namespace Natural   -- Bullshit meter ≈ 42     _42?!_
 def le : Natural → Natural → Prop
   | .zero _ , _  => True                     -- Zero is less than or equal to everything
   | .number _ _ _ , .zero _ => False         -- Any nonzero natural is > 0.
-  | .number p1 n1' _, .number p2 n2' _ =>    -- So, let's look at the values of the numbers to see.
-    (p1.truth = p2.truth ∧ n1' ≤ n2') ∨      -- covariant: same-truth wholes, n1' ≤ n2'
-    (p1.truth ≠ p2.truth ∧ n2' ≤ n1')        -- contravariant: the different-truth case (the missing branch)
+  | .number f1 n1' _, .number f2 n2' _ =>    -- So, let's look at the values of the numbers to see.
+    (f1.truth = f2.truth ∧ n1' ≤ n2') ∨      -- covariant: same-truth wholes, n1' ≤ n2'
+    (f1.truth ≠ f2.truth ∧ n2' ≤ n1')        -- contravariant: the different-truth case (the missing branch)
+--|           ^
+--|           |                    | Reflexive equality allows us to create an arbitrary computation on the AST and put it here. As long as it is
+--|           +--------------------+ demonstrably _true_, the compiler cannot tell the difference. This is the first step in teaching the compiler
+--|                                | what something different might look like. Two different implementations of the same double meaning comparison.
 
--- Let's discuss well-ordered numbers.  We all understand the definition of well ordered implies the existence of a map that allows you to perform
--- this computation on the natural numbers:
+--| Let's discuss well-ordered numbers.  We all understand the definition of well-ordered implies the existence of a map that allows you to perform
+--| this computation on the natural numbers:
 def lt: Natural → Natural → Prop := fun n1 n2 => le n1 n2 ∧ ¬ le n2 n1
--- I hope you agree it will be difficult for the us and the compiler to diverge on this definition. And any time the compiler _does_ diverge from
--- this assumption, it will let us know.
+--| Postulating existence can lead to inconsistencies in the most absurd ways.
 end Natural
 
-
 /- CHORUS:
-ME: Is this the same label?
-COMPILER:  No, it is quite different.
-ME: "≤" is not the same?
-COMPILER:  That is the same symbol as my symbol
-ME: How do you like your Waffle House hash browns?
+ME: Is this the same label? --                                     | Look carefully at the definition above. Our ≤ operation does not depend on the
+COMPILER:  No, it is quite different. --                           | natural number being described. Rather, we implement the sorting recursively on
+ME: "≤" is not the same? ------------------------------------------+ the number itself. Two different double orderings. Are they distinct? They are
+COMPILER:  That is the same symbol as my symbol --                 | _EASILY_ distinguished by the fact they are NOT the SAME code by several dozen
+ME: Do you prefer your Waffle House hash browns double-covered? -- | lines or more.
 -/
 instance : LE Natural where  -- Bullshit meter ≈ 5
   le := Natural.le
@@ -374,42 +397,44 @@ instance : LE Natural where  -- Bullshit meter ≈ 5
 instance : LT Natural where  -- Bullshit meter ≈ 7
   lt := Natural.lt
 
+                                                                     -- * * * * --
 
--- So, you ever thought about how you count before? I mean, _YOU the KNOWER_ obviously know how to count.  I mean _YOU the READER_. How do you
+-- So, ever thought about how we count before? I mean, *YOU the KNOWER* obviously know how to count.  I mean *YOU the READER*. How do *YOU the READER*
 -- _really_ know how to count? There are two ways to count, it turns out.  One way is to iterate, as in a sequence. The other way is to decompose
 -- into similar pieces, as in cardinality.  Let's tease the meanings of these two ways to count apart as I think that might be important to the plot.
 --
--- You are reading this for the plot, right?
+-- *YOU the READER* are reading this for the plot, right? In this case we recognize two different types of counting, one that iterates---the familiar
+-- counting of Peano and Count von Count---and one that describes how much pizza is left. Better make it six slices, I don't think I can eat eight.
 
 /- CHORUS:
 ME: I need a counting process.
-COMPILER: Count the things?
-ME: Or count what makes up the things.
-COMPILER: That is decomposition.
-ME: Good. Put it next to enumeration.
-COMPILER: Why?
+COMPILER: Count the things?                                          | There exists an alternate representation of ℕ called ℚ. ℚ necessarily is two
+ME: Or count what makes up the things.                               | natural numbers, not necessarily distinct. Well, sometimes. Not always.
+COMPILER: That is decomposition. ------------------------------------+
+ME: Good. Put it next to enumeration.                                | We call it Number.one when the two numbers are the same or different depending
+COMPILER: Why?                                                       | on how *YOU the READER* like your Waffle House hash browns.
 ME: Eventually the pieces become things and demand representation.
 -/
 structure CountingProcess -- Bullshit meter ≈ 118
     (Value: Type i)
     (Carrier: CarrierProcess Value)
-    [object: DISTINGUISHABLE Value Carrier]
---     ^
---     |
---     +----------+ Become not accustomed to helpful partial instance names.  They will become too many to keep up with. As a matter of fact,
---                | these variable names are almost useless except to understand them as ends of a plug.  That is it.  There are no values to store.
---                | So, no reason to give them names.  Except to help the compiler plug templates in together.  For you and I, these names barely
---                | hold any meaning because they, BY CONSTRUCTION, can only ever be inhabited by {true,rfl}.
+    [definitely_a: DISTINGUISHABLE Value Carrier]
+--     ^          | Are *YOU the READER* letting these partial instance names influence your understanding of the code?  Become not accustomed to
+--     |          | helpful partial instance names. They will become too many to keep up with, and may be intentionally misleading or buggy at times.
+--     +----------+ As a matter of fact, these variable names are almost useless except to understand them as ends of a plug.  That is it.  There are
+--                | no values to store. So, no reason to give them names. Except to help the compiler connect templates together. For us, these names
+--                | barely hold any meaning because they, BY CONSTRUCTION, can only ever be inhabited by {true,rfl}.
 
   where
--- Well, it turns out, to do either, you need a _carrier_.  Something you can identify, classify, bin, and count.  The first three are what we call
--- decomposition.  The fourth is iteration.  This file deals exclusively with iteration with the other _three_ constructions to follow in later files.
--- So, let's just assume we can talk about a carrier.  W.l.o.g., we can let a carrier be letters that we send back and forth to the compiler. That's
--- right. Snail mail.
+--| Well, it turns out, to do count in either manner, you need a _carrier_.  Something you can identify, classify, bin, and count.  The first three
+--| are what we call decomposition.  The fourth is iteration.  This file deals exclusively with iteration with the other _three_ constructions to
+--| follow in later files. So, let's just assume we can talk about a carrier.  W.l.o.g., we can let a carrier be letters that we send back and forth
+--| to the compiler. Or glyphs.  In this case, a Value that has no value.
 
-  carrier: CarrierProcess Value -- I can taste the envelope glue already.
+  palmed_card: CarrierProcess Value --+ For our metaphor to work, we need a palmed_card that can carry our quarter from place to place and a gimmick
+--|                                   | to make the trick work.
 
--- No joke, this is snail mail and can take the compiler a long time to resolve arguments that are recursively enumerable.  Oh well...  Halting
+--| No joke, this is like mail and can take the compiler a long time to resolve arguments that are recursively enumerable.  Oh well...  Halting
 -- problem/smalting problem. Sounds like a _YOU the KNOWER_-problem. Actually, it is a _you_ problem.  Both of _you_, personally, cannot devise
 -- a way to short cut this.  You wait for daddy compiler. _You_, personally have to _wait_. Time has to _elapse_ for _you_.  Like on a clock, fr fr.
 -- No one else has to _wait_. They can read this in a text editor and just assume the compiler figures it out.  They don't have to wait. You are
@@ -429,44 +454,43 @@ structure CountingProcess -- Bullshit meter ≈ 118
 --                           |        | the Mark of the Beast ∅.  _THESE_ are the naturals. If it isn't Fact.Truth it has to be... nothing.
 --                           |        | I define the Naturals as *THE LACK OF TRUTH*, because if object.fact isn't true, it can't be anything else.
 --                           V
-    | .zero _ => .zero object.fact  -- Naturals need to have something factual to start from I would prefer to avoid the empty set as that blatantly
+    | .zero _ => .zero definitely_a.fact  -- Naturals need to have something factual to start from I would prefer to avoid the empty set as that blatantly
                                     -- _assumes sets exist_.  Such decadence. Instead, we are using the fact that true = true. However, sometimes,
                                     -- true = false.  Just to mix it up. I actually don't care which world we live in, symmetric or anti-symmetric.
                                     -- and neither does the compiler, as we will _conclusively_ demonstrate its inability to tell the difference.
 
---            +-+-+--------------------   This is compiler gibberish.  Which is fine.  The compiler is counting.  I am telling
---            | | |                       it what _I_ think goes there.
+--            +-+-+--------------------| This is our 3-card monte set up that is hiding our quarter. We will see this _a LOT_ of different ways.
+--            | | |
 --            V V V
-    | .number _ _ _ => .number object.fact carrier.value count
---                                   ^            ^        ^
---                                   |            |        |
---                                   +------------|--------|------------ The fact the next thing showed up
---                                                |        |
---                                                +--------|------------ The label I give this compiler gibberish in the compiler.
---                                                         |
---                                                         +------------ My list of numbers up to this point. That should be enough
---                                                                       for the compiler to figure out how I sort the symbols
---                                                                       by value.
+    | .number _ _ _ => .number definitely_a.fact palmed_card.quarter count
+--                                   ^                 ^               ^
+--                                   |                 |               |
+--                                   +-----------------|---------------|------------| The fact the next thing showed up
+--                                                     |               |
+--                                                     +---------------|------------| The label I give this compiler gibberish in the compiler.
+--                                                                     |
+--                                         i                           +------------+ My list of numbers up to this point. That should be enough
+--                                                                                  | for the compiler to figure out how I sort the symbols
+--                                                                                  | by value.
 
+                                                                     -- * * * * --
 
-
--- This is going to take a minute to understand.  ADMISSIBLE.  This just means the compiler did not barf on a computation. In this case what the
+-- This is going to take a minute to understand. ADMISSIBLE. This just means the compiler did not barf on a computation. In this case, what the
 -- compiler is doing is looking through the inductive to see if it can find a counterexample to a ≤ b. If it can, it refuses to compile, so this
 -- class is trivially satisfied by a completed compile.
 /- CHORUS:
-ME: Counting only goes up.
-COMPILER: Then why do your pieces get smaller?
-ME: Because I changed what we are counting.
-COMPILER: That sounds illegal.
-ME: No. That is admissible.
-COMPILER: Admissible to whom?
-ME: To the representation that remembered which way was forward.
+ME: Counting only goes up.                                           | Dependency injection can allow for really _COMPLEX_ behavior, in the sense
+COMPILER: Then why do your pieces get smaller?                       | that it is difficult to understand how imaginary numbers are represented.
+ME: Because I changed what we are counting.                          |
+COMPILER: That sounds illegal. --------------------------------------+ Not clear?
+ME: No. That is admissible.                                          |
+COMPILER: Admissible to whom?                                        | I can't promise that it will get any clearer than this. Trust in the system
+ME: To the representation that remembered which way was forward.     | and realize this does, eventually, compile and that demonstrates _something_.
 -/
 class ADMISSIBLE  -- Bullshit meter ≈ 60
     (Value: Type i)
-    (Carrier: CarrierProcess Value)
-    [DISTINGUISHABLE Value Carrier]   -------------------------------------+ We don't want the compiler to forget the little program we agreed on
-                                      --                                   | that allows us to use the interesting feature of ℕ: a total order.
+    (Carrier: CarrierProcess Value) --              | We don't want the compiler to forget the little program we agreed on that allows us to use the
+    [DISTINGUISHABLE Value Carrier] ----------------+ interesting feature of ℕ: a total order.
 
     where
   counting_process : CountingProcess Value Carrier
@@ -475,12 +499,12 @@ class ADMISSIBLE  -- Bullshit meter ≈ 60
 --     |  |     |                         | it must be bigger in absolute value.
 --     V  +-----+
   admissible? : Number → Number → Prop := fun stimulus threshold =>
-       --     +------------- Is our first number less than
+       --     +------------- Is our first number less
        --     |         +--- or equal to the second number?
        --     |         |
        --     V         V
     match stimulus, threshold with
-       --    ^         ^                                                   | Why the names stumulus and treshold?  Well, if the stimulus is less
+       --    ^         ^                                                   | Why the names stumulus and threshold?  Well, if the stimulus is less
        --    |         |                                                   | than the threshold, then you can record it as a stimulus with no
        --    +---------+---------------------------------------------------| response.  c.f. Coloumb and static friction for more info.
     | .zero _, _ => True              -- 0 ≤ Nat.  True, true..
@@ -490,15 +514,12 @@ class ADMISSIBLE  -- Bullshit meter ≈ 60
     --    |          +--------------- Otherwise, only if n2' is bigger than n1'
     --    |          |
     --    V          V
-      p2.truth ∨ n1' ≤ n2'   -- No lie, this is how the compiler can shortcut the ≤ computation.
-  --  --------
-  --     ^
-  --     |                      Remember how I called this the sign?  We are currently
-  --     +--------------------- asking if the value obeys our sign convention on ≤. In
-  --                            which case, we already know it is different and uncounted,
-  --                            and therefore counting it _embiggens_ the magnitude!
-  --                            Also, this is the fall-thru shortcut promised way up  when
-  --                            we mad a number.
+      p2.truth ∨ n1' ≤ n2'--  | No lie, this is how the compiler can shortcut the ≤ computation when we ask it to find differences later. Remember
+  --  --------                | how we defined the truth of a FACT to be the the sign of a Number? We are currently asking if the value of the number
+  --     ^                    | obeys our sign convention on ≤. If so, then we already know it is different and uncounted, and therefore counting
+  --     |                    | _embiggens_ the universe of numbers.
+  --     +--------------------+
+  --                          | Also, this is the fall-thru shortcut promised way up when we made a number.
 
 
 -- Now, I am invoking my _creative license_ here, kinda.  Let's talk rational numbers.  Here we define rationals in a very interesting way.  Given a
@@ -525,8 +546,8 @@ inductive Rational  -- Bullshit meter ≈ 107
       --                 | Talk about an _imaginary_ universe, lol.
 
   where
-  | zero : Fact → Rational
-  | number : Fact → Natural → Rational → Rational
+  | zero : FACT → Rational
+  | number : FACT → Natural → Rational → Rational
 
 -- Or, you can give me a counterexample.  A rational number that CANNOT be represented this way and I will gladly make that the second rational in
 -- this chain. See?  You can't prove me wrong. So far, compiler is buying what I'm selling.
@@ -734,8 +755,8 @@ COMPILER: That sounds the same.
 ME: A sequence is not what we counted. It is the rule that keeps finding the next admissible thing.
 -/
 inductive Sequence  -- Bullshit meter ≈ 107
-  | nil: Fact → Sequence
-  | index :  Fact → Rational → Sequence → Sequence
+  | nil: FACT → Sequence
+  | index : FACT → Rational → Sequence → Sequence
         --             ^          ^
         --             |          |   | This should not be a controversial concept at all.  All I have done is describe how a sequence is written
         --             +----------+---+ down. r₁ → r₂ → ....  DO NOT GET COMPLACENT. I PROMISE I will say something outlandish in a second.
@@ -919,8 +940,8 @@ COMPILER: Perfect?
 ME: I do not need you to know calculus. I need you to know there is only one limit process.
 -/
 inductive Limit -- Bullshit meter ≈ 107 --                    | This is Fact number 5. 32 possible representable numbers.  Keep track, that 5
-  | nil: Fact → Limit                   --                    | might become _VERY_ important later.  Meanwhile, we are slowly building 3 things
-  | index :  Fact → Sequence → Limit → Limit --               | simultaneously.  A _set_ (ugh!) of numbers.  By a _set_, I just mean the descriptive
+  | nil: FACT → Limit                   --                    | might become _VERY_ important later.  Meanwhile, we are slowly building 3 things
+  | index : FACT → Sequence → Limit → Limit --               | simultaneously.  A _set_ (ugh!) of numbers.  By a _set_, I just mean the descriptive
     --     -----                                       +------| label that describes the closure of the current inductive represented as a big
     --       |                                         |      | endian binary number, Whitehead style.  This simultaneously gives a representation
     --       |                                         |      | algorithm for counting naturals, but a representation algorithm for counting
@@ -962,7 +983,7 @@ def le: Limit → Limit → Prop
 -- was identified -- by our good buddy Pythagoras and we can define _that_ to be zero. So, the ambiguity of _whole_ or _natural_ is about to get
 -- exploited in very _weird_ ways.
 
--- Still well ordered without choosing.  Is it important I keep reminding you?  Could be. What about _i_ you say?  The complex limit requires
+-- Still well-ordered without choosing.  Is it important I keep reminding you?  Could be. What about _i_ you say?  The complex limit requires
 -- an *ahem* direction, of which we have a residue already.  Perfectly cromulent to talk about _i_ still. Oh yeah, it do be like that. Remember
 -- we _do_ have a 1/2-spin carrier until _YOU the READER_ can convince me otherwise. _YOU the KNOWER_ will be able to ask _YOU the READER_ later.
 def lt: Limit → Limit → Prop := fun l1 l2 => le l1 l2 ∧ ¬ le l2 l1
@@ -1093,9 +1114,9 @@ inductive Sample -- Bullshit meter ≈ 150            -- This is the admissible 
 --         |                    |                  | out from under the need for an initial superpigeon
 --         |                    |                  | to begin with.
 --         V                    V
-  | initial_condition: Fact → Limit → Sample
+  | initial_condition: FACT → Limit → Sample
 
-  | signal_response: Fact → Limit → Fact → Limit → Sample → Sample  --
+  | signal_response: FACT → Limit → FACT → Limit → Sample → Sample  --
         --            ^              ^                                               +------------------------------------------------+
         --            |              |                                               |   The Controversy of Mathematical Containers   |
         --            +----------------------------------------+                     |   --- ----------- -- ------------ ----------   |
@@ -1111,7 +1132,7 @@ inductive Sample -- Bullshit meter ≈ 150            -- This is the admissible 
         --                           Now, we try to avoid using the "S" word at all costs as being
         --                           near meaningless drivel that holds any sort of nonsense.  I deal in Facts.
 
--- So, you should realize at this point, we are going to implement ≤ and < for this guy.  The samples are well ordered.  In this case, there are two
+-- So, you should realize at this point, we are going to implement ≤ and < for this guy.  The samples are well-ordered.  In this case, there are two
 -- possible things that can be compared, which limit comes before which in time and which limit is bigger than the other one.  Well, we can define
 -- them to be the same for the first fact and contravariant for the second fact.  So, depending on the variance of the facts, ≤ while either return
 -- ≤ on the first limit or the second limit.  Contravariant first the covariant second, or covariant first then contravariant second.  Why not both?
@@ -1129,7 +1150,7 @@ def le: Sample → Sample → Prop
                                                                   --| later when we throw away most of the proof-verification horsepower of Lean
                                                                   --| and only use propext and rfl.
 
--- I will argue that the munge ordering we just gimmicked up is actually pretty well ordered.
+-- I will argue that the munge ordering we just gimmicked up is actually pretty well-ordered.
 def lt: Sample → Sample → Prop := fun s1 s2 => le s1 s2 ∧ ¬ le s2 s1
 -- If you are reading this, Lean accepted my argument. Mathematicians hate this one trick.
 end Sample
@@ -1333,7 +1354,7 @@ class BINARY  --  Bullshit meter ≈ 141
       match a,b with
       | .initial_condition f1 l1      , .initial_condition f2 l2        => f1 = f2 ∧ l1 < l2
       | .signal_response f11 l11 f12 l12 inner1, .signal_response f21 l21 f22 l22 inner2 =>
-          match f11.decTruth, f12.decTruth, f21.decTruth, f22.decTruth with
+          match f11.click, f12.click, f21.click, f22.click with
           | isTrue _,  isTrue _,  isTrue _,  isTrue _  =>  inner1 < inner2
           | isTrue _,  isFalse _, isTrue _,  isFalse _ => l11 < l21 ∧ l22 < l12
           | isFalse _, isTrue _,  isFalse _, isTrue _  => l21 < l11 ∧ l12 < l22
@@ -1428,8 +1449,8 @@ COMPILER: I am just here to mediate the demonstration, I refuse to take part.
 ME: There can be no trial without a judge.
 -/
 inductive Trial  -- Bullshit meter ≈ 150   ------------------------------------+ At the heart of science is the repeatable trial.  Galileo
-  | hypothesis: Fact → Sample → Trial --                                       | demonstrated it was not enough to perform the act, the act must also
-  | signal_response: Fact → Sample → Fact → Sample → Trial → Trial --          | be described well enough to be performed by _someone else_. This
+  | hypothesis: FACT → Sample → Trial --                                       | demonstrated it was not enough to perform the act, the act must also
+  | signal_response: FACT → Sample → FACT → Sample → Trial → Trial --          | be described well enough to be performed by _someone else_. This
                                                                         -------+ program is the description of the process of description that
 -- Galileo demonstrated as the most important aspect of science. Hooke and Galileo extended the human senses _scientifically_ both into
 -- microscopy and cosmology.  They described _instruments_ that described _phenomena_ in repeatable fashion.  We are describing the description of
@@ -1462,7 +1483,7 @@ def le : Trial → Trial → Prop
                                               ((f1_2 = f2_2) ∧ (l1_2 ≤ l2_2)) ∨
                                               (l2_1 ≤ l2_2)
 
--- These are still well ordered so that Bayesian statistics has half a shot at working.
+-- These are still well-ordered so that Bayesian statistics has half a shot at working.
 def lt : Trial → Trial → Prop := fun t1 t2 => le t1 t2 ∧ ¬ le t2 t1
 -- I know, I am throwing the kitchen sink at you... Bayesian statistics... I told you, we are building
 -- a device that measures how _well_ Lean can spot true=true.  Any measurement comes with an adequate
@@ -1551,7 +1572,7 @@ structure RepeatableProcess  -- Bullshit meter ≈ 296
 --                --       register True Facts (tm) |                        |
 --                --             with the complier! |                        |
 --                                                                           V
-     | .hypothesis fact observation => .signal_response fact observation Fact.Truth stimulus expectation
+     | .hypothesis fact observation => .signal_response fact observation FACT.Truth stimulus expectation
 
 --                          +---------------------------+-------- Watch the covariance!  Remember the
 --                          |                           |         clock will tick when we do this, flipping
@@ -1588,7 +1609,7 @@ COMPILER: That is not a proof.
 ME: QED.
 -/ --                                          | This is, far and away, the most important part of science.  If one is to measure, one must very
 class REPEATABLE   -- Bullshit meter ≈ 166     | _carefully_ explain how to measure so that others may have a quantitative experience of an otherwise
-  --  ----------                               | description. I describe experience as the equation Du=0.  Not just me, lot's of people do. This
+  --  ----------                               | description. I describe experience as the equation Du=0.  Not just me, lots of people do. This
   --      ^                                    | simple equation just says when you apply _this_ to _that_ you get.... What do you get? Is it
   --      |                                    | nothing? Science would say, no. Nothing is made of something is the general line that gets toed.
   --      +------------------------------------+ And the fact that the nothing is made of something is the thing that gets repeated over and over..

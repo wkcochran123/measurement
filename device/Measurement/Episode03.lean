@@ -1,6 +1,6 @@
 /-
 __Measurement: The Tragedy of John Henry__
-__A Satire in Look Ahead Backus-Naur Form__
+__A Satire in Look-Ahead Backus-Naur Form__
 
 _This is a gentle reminder that the convergent stories we tell ourselves are just that: converging._
 
@@ -8,18 +8,16 @@ _This is a gentle reminder that the convergent stories we tell ourselves are jus
 
 __EPISODE 3__: _Convergence_
 
-"Forty-two.435?"
-                       -- Douglas Adams (to three decimal places)
-
 "It's the ship that made the Kessel Run in less than twelve parsecs."
                        -- Han Solo
 
 "Almost all statistics are made up on the spot. 70% of people know that."
-                       -- Slim Goodbody
+                       -- American proverb
 
 lake build -O2 -Wpacked -Wpadded
 
-__HONEST QUESTION__: Why isn't distance measured in Hz? It is calibrated in Hz. Or must distance always be calculated in Hz no matter how hard you
+**HONEST QUESTION**
+Why isn't distance measured in Hz? It is calibrated in Hz. Or must distance always be calculated in Hz no matter how hard you
 try not to? Hmm.
 -/
 
@@ -58,8 +56,8 @@ COMPILER: What is in it?            |
 ME: That's the point. Opacity.  ----+ There is _always_ a before. We keep seeing _afters_.
 -/
 inductive Jar  -- Bullshit meter ≈ 153    *hmmm*,    I would have thought this should be higher?
-  | color: Fact → Area → Jar
-  | bang: Fact → Jar → Jar -- BINKS!  Meesa Spake! -----+ So, what the hell is a jar?  I've never heard of a mathematical or physical concept called
+  | color: FACT → Area → Jar
+  | bang: FACT → Jar → Jar -- BINKS!  Meesa Spake! -----+ So, what the hell is a jar?  I've never heard of a mathematical or physical concept called
 --   ⠀⠀⠀⠀⠀⠀⢀⣶⣤⣀⠀⠀⠀⡼⡑⠢⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                 | a jar.  Well, it is like a bag, except we can kinda see whats in the middle of it. We
 --   ⠀⠀⠀⠀⠀⠀⢘⢉⢹⣯⣆⡰⣾⣷⣀⡄⣼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                 | can't really see what's around the edge because of the curvature of the jar. The important
 --   ⠀⠀⠀⠀⠀⠀⠈⣧⠭⣹⢟⣽⣿⣷⡚⠿⠏⠳⠒⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀                 | thing about a jar is we can classify the stuff inside by justs looking at it rather than
@@ -77,7 +75,7 @@ inductive Jar  -- Bullshit meter ≈ 153    *hmmm*,    I would have thought this
 --   ⠀⠀⠜⠁⠀⠀⠸⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⢠⣿⣽⣿⣿⣿⣧⠀⠑⠄⡉⢘⡄                 |
 --   ⡔⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⣼⣿⣿⣿⣿⣿⣿⠀⠀⠀⠘⡄⡴                 | This code already takes a minute or two to build.
 
-  | superposition: Fact → Jar → Jar → Jar
+  | superposition: FACT → Jar → Jar → Jar
 --        ^
 --        |
 --        +---------   Look, others have satirized superposition better than I ever could. 🐱📦🍄☁️
@@ -90,14 +88,14 @@ def le : Jar → Jar → Prop := fun j1 j2 =>
   | _ , .color _ _ => False --                                         | color alone is not enough to arbitrarily distinguish objects.
 
   | .bang f1 j1', .bang f2 j2' =>  -----------------+ Should one drop a jar on the floor, there will be a loud bang! and all the stuff in the jar
-      match f1.decTruth, f2.decTruth with --        | will come spilling out and the pieces of the jar become very DANGEROUS to touch. It is
+      match f1.click, f2.click with --              | will come spilling out and the pieces of the jar become very DANGEROUS to touch. It is
       | isTrue _,  isTrue _  => le j1' j2' --       | surprising just how many square feet of liquid can be contained by just 1 square foot of jar.
       | isTrue _,  isFalse _ => False --            |
       | isFalse _, isTrue _  => True --             | Drop a jar of mayonaise, of water, and of mineral oil. Not only are the areas different, they
       | isFalse _, isFalse _ => ¬ le j1' j2' --     | change over time, with some being less now and more later compared to others. Others grow mold.
 
   | .superposition f1 j11 j12, .superposition f2 j21 j22 =>  ---+ When shelving jars, you can easily read off ALL labels. This allows you to
-      match f1.decTruth, f2.decTruth with --                    | _predict_ the area of the inside based on the label.  Mayonaise would have some
+      match f1.click, f2.click with --                          | _predict_ the area of the inside based on the label.  Mayonaise would have some
       | isTrue _,  isTrue _  => le j11 j21 ∧ le j12 j22 --      | value, water some value, and oil some value.  So, just looking at the number of
       | isTrue _,  isFalse _ => False --                        | _slots_ on the label, you can probably guess what will happen if you find two
       | isFalse _, isTrue _  => True --                         | with the same label. If you throw _one_ on the floor, the area should be roughly
@@ -238,7 +236,7 @@ COMPILER: And equivalation?                          | Then, the questioner woul
 ME: Equivalence under procedure.                     | pretty soon you were 4 terms deep into Taylor on one side, and some ugly transform on the
 -/ --                                                | other. And, then you call out all the sharp edges of approximation. It always ended there. I
 inductive Equivalation  -- Bullshit meter ≈ 119.     | tried a different approach when preparing. I wrote Du=0. It always ended there, so I just
-    | physics: Fact → Jar → Equivalation ------------+ decided to shortcut the process and watch them try to write y'=f(x) from that.
+    | physics: FACT → Jar → Equivalation ------------+ decided to shortcut the process and watch them try to write y'=f(x) from that.
 
   --                                                   | What does it mean to be zero like? Well nothing. What is nothing? Is the right hand side of
   --                                                   | Du=0 nothing? Is it a vector? Is it weighted by multipliers? Is it the "origin" or is it the
@@ -246,7 +244,7 @@ inductive Equivalation  -- Bullshit meter ≈ 119.     | tried a different appro
   --   |    |     |                                    | of rationally expressed functions? Poles that only exist in the _REPRESENTATION_ and not in
   --   |    |     |                                    | the _REDUCED_ form? Is it okay for the _REPRESENTATION_ itself to introduce nothing as a
   --   V    V     V                                    | tangible artifact? We must equivalate. We don't have _zero_ here. It is merely _zero like_.
-    | zero_like: Fact → Equivalation → Equivalation
+    | zero_like: FACT → Equivalation → Equivalation
   --              ^
   --              |
   --              +-----------------------------------------| More bluntly. Absence of evidence _MUST_ _BE_ evidence of absence to be ZERO_LIKE.
@@ -338,9 +336,11 @@ structure DigitalProcess  -- Bullshit meter = 1211.  Up about 1/5
     tick: Equivalation → Equivalation := fun s =>
       match s with
       | .physics f j => .physics f j    -- We __hope__ this doesn't change!
-
-      | .zero_like _ _ => .one_like false zero zero -----------+ While starting with the assumption that a _ZERO_ exists is quite audacious, this
-      | .one_like _ _ _ => .zero_like Fact.Truth zero --       | demonstrates that you can, in fact, derive _0_ and _1_ from the idea of _this_ and
+--                                    +-----------| As an example of the extreme pedantry before you, note False and not false.
+--                                    |
+--                                    v
+      | .zero_like _ _ => .one_like False zero zero -----------+ While starting with the assumption that a _ZERO_ exists is quite audacious, this
+      | .one_like _ _ _ => .zero_like FACT.Truth zero --       | demonstrates that you can, in fact, derive _0_ and _1_ from the idea of _this_ and
 --                              ^  +--+                        | _that_ _ALONE_. _YOU the KNOWER_ instantiate Nats, I pull then out of my ass.
 --  I call this the thing that  |  |  |
 --  Pauli exclusion needs to    +--+  |
@@ -389,9 +389,9 @@ JAR JAR: YOUSA BOMBAD! -----------------------------------+ _je ne sais quois?_ 
 ME: No, just use the dictionary you have been building.   | nothing and you can quote me on that.
 -/
 inductive Encoding   -- Bullshit meter = 118.  Flat.
-  | boot: Fact → Equivalation → Encoding
-  | zero: Fact → Equivalation → Encoding → Encoding
-  | one: Fact → Equivalation → Equivalation → Encoding → Encoding → Encoding
+  | boot: FACT → Equivalation → Encoding
+  | zero: FACT → Equivalation → Encoding → Encoding
+  | one: FACT → Equivalation → Equivalation → Encoding → Encoding → Encoding
 
 /-CHORUS:
 ME: Look, I stop at high level languages. If you want the instruction set, you will have to look elsewhere.
@@ -493,10 +493,10 @@ ME: All kidding aside, this is a satire. It compiles, that's ------+ thin. No ki
 JAR JAR: *blink* 1.
 -/ --                                                                             | Before we get all denying the antecedent here, This fact,
 inductive Abstraction  -- Bullshit meter = 2045.  About a 1/6 increase.           | _in theory_ could be false. I mean it can't be, but it
-  | satire_about:  Fact → Abstraction --------------------------------------------+ _could_ be. *YOU the KNOWER* might be laughing at some of this.
+  | satire_about: FACT → Abstraction --------------------------------------------+ _could_ be. *YOU the KNOWER* might be laughing at some of this.
 
-  | compile: Fact → Encoding → Abstraction → Abstraction -------+ This line models the likelihood that this all makes sense and is on a completely
-  | execute: Fact → Encoding → Abstraction → Abstraction --     | different line from this, which models that the compiler won't crash reading it.
+  | compile: FACT → Encoding → Abstraction → Abstraction -------+ This line models the likelihood that this all makes sense and is on a completely
+  | execute: FACT → Encoding → Abstraction → Abstraction --     | different line from this, which models that the compiler won't crash reading it.
 --                                                              | I don't know how else to differentiate them. Yet I plainly observe the difference.
 
 namespace Abstraction   -- Bullshit meter = 2759.  This is a big jump, but that's because we couldn't compute ≤ on the above types.
@@ -620,7 +620,7 @@ ME: _PIPE DOWN_ Jar Jar. That's too many numbers.          | computation. Jar Ja
 -/ --                                                      | And not _that_ _one_. *badum* symbol crash.
 inductive Sum    -- Bullshit meter = 119.
   | zero: Prop → Area → Sum -------------------------> A proposition of Pythagoras, more or less, that some constructions are rational.
-  | add: Fact → Area → Area → Sum → Sum -------------> c.f. Euclid (areas accumulate).
+  | add: FACT → Area → Area → Sum → Sum -------------> c.f. Euclid (areas accumulate).
 
 namespace Sum   -- Bullshit meter = 76.
 def le: Sum → Sum → Prop := fun s1 s2 => -- Eu-clid. Eu-ler. ∃δ ∀ε-Du=0. This pattern shows up _ALL OVER_ math.
@@ -672,7 +672,7 @@ structure AddingProcess  -- Bullshit meter ≈ 2063.   Thats 33% less bullshit t
   add? : Sum → Sum := fun s => --                           |     |            +-------+----------+   | manufactured in the early seventies, wrapped
     match s with --                                         |     |            |       |              | in festive green and red cellophane would
     | .zero p a => match p with --                          V     V            V       V              | change hands among the _fringes_ of families
-      | _ => .add Fact.Truth (.tree nowtrino.fact) (.dt nowtrino.fact (.zero nowtrino.fact) a) sum -- | and survive with a half-life measured in ages
+      | _ => .add FACT.Truth (.tree nowtrino.fact) (.dt nowtrino.fact (.zero nowtrino.fact) a) sum -- | and survive with a half-life measured in ages
 --                               ^      ^                                                    +--------+ of time. Never re-gift a deer friend like
 --                               |      |                                                    | Rudolph.
 --                               |      |                                                    |
@@ -751,9 +751,9 @@ JAR JAR: Let's go to the bar. ----+
 ME: Yes! All of that.             | We have the code for a representing a real number already (Number). And we have code for expressing the Cauchy
 -/ --                             +-----------------+ convergence (Sequence). This gives us the definition _radius = Sequence⁻¹ Number_. Or is it
 inductive Product  -- Bullshit meter = 119          | the other way around? I've heard it both ways. Some people believe that when you multiply
-  | origin:  Fact → Product --                      | two numbers, the order matters. Like length × width may not equal width × length. As if rulers
+  | origin: FACT → Product --                       | two numbers, the order matters. Like length × width may not equal width × length. As if rulers
   | one: Prop → Sum → Product --                    | would ever change lengths depending on which direction you are looking in. Well, not like
-  | mul: Fact → Sum → Sum → Product → Product --    | *YOU the KNOWER* would notice, but I bet it would look funny to a _LOT_ of people if rulers
+  | mul: FACT → Sum → Sum → Product → Product --    | *YOU the KNOWER* would notice, but I bet it would look funny to a _LOT_ of people if rulers
 --                                                  | **ACTUALLY** changed shape based on direction instead of bending to _look_ convenient on paper.
 
 
@@ -840,7 +840,7 @@ structure MultiplyingProcess  -- Bullshit meter ≈ 2200
     --                                                                                        | consumption pattern.
 
     -- 11. The dependency injection: -----------------------------+ And question 11)? Does the code say what we want? Does this, indeed, inject the
-    | .one _ a => .mul Fact.Truth a adding_process.sum p--        | adding process when a _NOWTRINO_ was detect? Looks to be the case.
+    | .one _ a => .mul FACT.Truth a adding_process.sum p--        | adding process when a _NOWTRINO_ was detect? Looks to be the case.
 
     -- 111. Tail recursion: --------------------------------------+ This is called _tail recursion_ because you Sum _after_ the NOWTRINO detection.
     | .mul f a1 a2 _ => .mul f a1 (adding_process.add? a2) p --   | "Is the code consistent enough with the argument?", I believe was 111).
@@ -938,9 +938,9 @@ JAR JAR: MEESA TWO -----------------------------------------+ compiler that inje
 ME: That sounded funny.                                     | That, 𝔽(1)-nily enough, is enough of an interface to hide information forever, once
 -/ --                                                       | the infection is compiled.
 inductive Basis   -- Bullshit meter = 134
-  | null_space: Fact → Basis --                        | *YOU the READER* have to realize a lot of what I have been saying is complete nonsense. We
+  | null_space: FACT → Basis --                        | *YOU the READER* have to realize a lot of what I have been saying is complete nonsense. We
   | origin: Prop → Product → Basis --------------------+ know this because I am just making this up as I go along. As I see a metaphor, I just write
-  | basis: Fact → Product → Product → Basis → Basis  --| and turn 1,000,000 monkeys loose. Luckily, you can get half that for $100/month AYCE until
+  | basis: FACT → Product → Product → Basis → Basis  --| and turn 1,000,000 monkeys loose. Luckily, you can get half that for $100/month AYCE until
 -- Surely you're joking Mr. Henry!                     | the IPOs.
 
 namespace Basis  -- Bullshit meter = 82 --             | What *YOU the READER* have to do is convince *YOU the KNOWER* that I just made this code up and a Number
@@ -1064,7 +1064,7 @@ structure BASICProcess  -- Bullshit meter ≈ 2759 ----+ Like many early Gen-X t
     -- A theoretical base state (.origin) abruptly collapses into a new field geometry. Notice the tail is strictly .null_space. There is no return
     -- address. The timeline ends after this interaction. Timeline? Timeline := execution trace right?
     | .origin _ p_current =>
-        .basis Fact.Truth p_current spring.multiplying_process.product (.null_space Fact.Truth) --+ Go go gadget springs! Another great GEN-X
+        .basis FACT.Truth p_current spring.multiplying_process.product (.null_space FACT.Truth) --+ Go go gadget springs! Another great GEN-X
     --                                                                                            | reference. When Inspector Gadget had to jump
     -- 3. GOSUB: The Virtual Loop (Feynman Propagator)                                            | from place to place, he would shout this very
     -- An ongoing field interaction (.basis) needs to process a fluctuation.                      | exclamation and jump very far, aided by the
@@ -1131,9 +1131,9 @@ JAR JAR: MEESA #eval -----------------------------------------+ bullshit and the
 ME: Depends, what universe of Number do you get out of this?
 -/
 inductive Polynomial    --  Bullshit meter 119               | In the very _LEAST_ you could follow the width × length argument, right? So, you will
-  | constant: Fact → Polynomial --                           | grant me that there is one multiplication you can do which is a width × a length. There
+  | constant: FACT → Polynomial --                           | grant me that there is one multiplication you can do which is a width × a length. There
   | monomial: Prop → Basis → Polynomial ---------------------+ are others, but they go by other names. Hence _POLY_ _NOM_ -ial. This is when
-  | factor: Fact → Basis → Basis → Polynomial → Polynomial --| GREEK and ROMAN letters merge to form names. Looking at you _eigenvalue_. What really
+  | factor: FACT → Basis → Basis → Polynomial → Polynomial --| GREEK and ROMAN letters merge to form names. Looking at you _eigenvalue_. What really
 --         +-------------------------------------------------+ is _eigen_ about your _value_? BTW, there is a strikingly similar phenomenon in the
 --         | study of linguistics, identified roughly the same time Einstein figured out that space might warp like his mind said it could. It was not
 --         | limited by the lack of real physical evidence based on the fact he could see _the TRAIN of THOUGHT_ (*chugga chugga*). And when he
@@ -1213,7 +1213,7 @@ structure JordanProcess   -- Bullshit meter 2794   | o Jordan measure           
     -- We take a monomial and promote it to an interaction (a factor).            | knowin' what their models were, knowing what they keep,
     -- We use the current basis as the anchor and jump the state forward.         | So if you don't mind me saying' I can see you're outta IP Spaces.
     | .monomial _ b => --                                                         | For a taste of your whiskey, I'll give you some advice.
-        .factor Fact.Truth b (ANSYS_process.jmp? b) p --                          |
+        .factor FACT.Truth b (ANSYS_process.jmp? b) p --                          |
     --                                                                            | And the device got _DEATHLY QUIET_ and the math lost _ALL EXPRESSION_
     -- 3. The Recursive Scale (The "Add" case)                                    | Said, "If you're going to norm the space, boy, you gotta learn to do the rite."
     -- We maintain the coupling 'f', the anchor 'b1',                             |
@@ -1312,7 +1312,7 @@ JAR JAR: MEESA y=x. -----------------------------------------+
 inductive Spline  -- 152                                     | Jar Jar is technically T=T. While not necessarily _different_, they certainly _can_
   | observation: Prop → Spline --                            | be the same when it varies in the other direction. You will be very hard pressed to
   | knot: Prop → Polynomial → Spline → Spline --             +---------------+ find a _difference_ between this function and the _physical laws_ that
-  | interpolant: Fact → Polynomial → Polynomial → Spline → Spline → Spline --| govern an electron in the not _too_ distant future. I mean, it is still
+  | interpolant: FACT → Polynomial → Polynomial → Spline → Spline → Spline --| govern an electron in the not _too_ distant future. I mean, it is still
 --                                                           +---------------+ quite distance. As for the code to the left, this is a representation
 --                                                           | of a B-spline. Each knot is added by one term of the polynomial and these are combined
 --                                                           | recursively to generate a Weierstrauss polynomial evaluated in Newton fashion that

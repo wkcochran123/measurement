@@ -25,7 +25,7 @@ universe i j
 /-
 This is the trace
 that executed the tape
-that lived in the Fact
+that lived in the FACT
 that John built.
 
 The tape is still one character.  The register is not on it.  The story is
@@ -44,18 +44,18 @@ class TYPESET (Box: Type i) (Pigeon: CarrierProcess Box) (rung: Nat)
 This is the origin
 that carried the trace
 that executed the tape
-that lived in the Fact
+that lived in the FACT
 that John built.
 
 The first spike is boring on purpose: the carried value is just the carrier's
 number, the universe id is zero, and the tape is whatever the trace brought
 to the face.  Steel starts as a local receipt.
 -/
-instance (priority := low) TYPESET_Episode1_Fact
+instance (priority := low) TYPESET_Episode1_FACT
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 1]
     : TYPESET Box Pigeon 1 Number :=
-  { register_value := Pigeon.value
+  { register_value := Pigeon.quarter
     universe_id    := .zero Pigeon.symbol
     the_page         := the_naotrino_theory.rebuttal }
 
@@ -68,7 +68,7 @@ that admits the mark
 that distinguishes the glyph
 that carried the trace
 that executed the tape
-that lived in the Fact
+that lived in the FACT
 that John built.
 
 The tape does not become a novel.  The class dictionary does.
@@ -78,7 +78,7 @@ instance (priority := low) TYPESET_page_2
     [the_naotrino_theory: REVIEWED Box Pigeon 2]
     [below: TYPESET Box Pigeon 1 Number]
     : TYPESET Box Pigeon 2 (ULift Number) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -99,7 +99,7 @@ that admits the mark
 that distinguishes the letter
 that carried the trace
 that executed the tape
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_3
@@ -107,7 +107,7 @@ instance (priority := low) TYPESET_page_3
     [the_naotrino_theory: REVIEWED Box Pigeon 3]
     [below: TYPESET Box Pigeon 2 (ULift Number)]
     : TYPESET Box Pigeon 3 (ULift (ULift Number)) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction νtrino _ => (νtrino, Pigeon.symbol) -- We shall call our new particle after t
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -127,7 +127,7 @@ that admits the value
 that distinguishes the mark
 that carried the trace
 that executed the tape
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_4
@@ -135,7 +135,7 @@ instance (priority := low) TYPESET_page_4
     [the_naotrino_theory: REVIEWED Box Pigeon 4]
     [below: TYPESET Box Pigeon 3 (ULift (ULift Number))]
     : TYPESET Box Pigeon 4 (ULift (ULift (ULift Number))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -156,7 +156,7 @@ that admits the process
 that distinguishes the glyph
 that carried the trace
 that executed the tape
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_5
@@ -164,7 +164,7 @@ instance (priority := low) TYPESET_page_5
     [the_naotrino_theory: REVIEWED Box Pigeon 5]
     [below: TYPESET Box Pigeon 4 (ULift (ULift (ULift Number)))]
     : TYPESET Box Pigeon 5 (ULift (ULift (ULift (ULift Number)))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -187,7 +187,7 @@ that admits the method
 that distinguishes the glyph
 that carried the trace
 that executed the tape
-that lived in the Fact
+that lived in the FACT
 that John built.
 
 By now the stanza is already longer than the tape.  That is the point.
@@ -197,7 +197,7 @@ instance (priority := low) TYPESET_page_6
     [the_naotrino_theory: REVIEWED Box Pigeon 6]
     [below: TYPESET Box Pigeon 5 (ULift (ULift (ULift (ULift Number))))]
     : TYPESET Box Pigeon 6 (ULift (ULift (ULift (ULift (ULift Number))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -216,7 +216,7 @@ that binaries the value
 that residues the model
 that encodes the code
 that counted the number
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_7
@@ -224,7 +224,7 @@ instance (priority := low) TYPESET_page_7
     [the_naotrino_theory: REVIEWED Box Pigeon 7]
     [below: TYPESET Box Pigeon 6 (ULift (ULift (ULift (ULift (ULift Number)))))]
     : TYPESET Box Pigeon 7 (ULift (ULift (ULift (ULift (ULift (ULift Number)))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -243,7 +243,7 @@ that repeats the function
 that binaries the glyph
 that residues the step
 that admitted the mark
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_8
@@ -251,7 +251,7 @@ instance (priority := low) TYPESET_page_8
     [the_naotrino_theory: REVIEWED Box Pigeon 8]
     [below: TYPESET Box Pigeon 7 (ULift (ULift (ULift (ULift (ULift (ULift Number))))))]
     : TYPESET Box Pigeon 8 (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -270,7 +270,7 @@ that numbers the value
 that repeats the process
 that binaries the method
 that distinguished the glyph
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_9
@@ -278,7 +278,7 @@ instance (priority := low) TYPESET_page_9
     [the_naotrino_theory: REVIEWED Box Pigeon 9]
     [below: TYPESET Box Pigeon 8 (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))]
     : TYPESET Box Pigeon 9 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -297,7 +297,7 @@ that represents the mapping
 that numbers the mark
 that repeats the function
 that carried the trace
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_10
@@ -305,7 +305,7 @@ instance (priority := low) TYPESET_page_10
     [the_naotrino_theory: REVIEWED Box Pigeon 10]
     [below: TYPESET Box Pigeon 9 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))]
     : TYPESET Box Pigeon 10 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -324,7 +324,7 @@ that physicals the method
 that represents the code
 that numbers the variable
 that executed the tape
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_11
@@ -332,7 +332,7 @@ instance (priority := low) TYPESET_page_11
     [the_naotrino_theory: REVIEWED Box Pigeon 11]
     [below: TYPESET Box Pigeon 10 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))]
     : TYPESET Box Pigeon 11 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -359,7 +359,7 @@ instance (priority := low) TYPESET_page_12
     [the_naotrino_theory: REVIEWED Box Pigeon 12]
     [below: TYPESET Box Pigeon 11 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))]
     : TYPESET Box Pigeon 12 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -378,7 +378,7 @@ that observes the glyph
 that compares the model
 that physicals the method
 that carried the value
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_13
@@ -386,7 +386,7 @@ instance (priority := low) TYPESET_page_13
     [the_naotrino_theory: REVIEWED Box Pigeon 13]
     [below: TYPESET Box Pigeon 12 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))]
     : TYPESET Box Pigeon 13 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -413,7 +413,7 @@ instance (priority := low) TYPESET_page_14
     [the_naotrino_theory: REVIEWED Box Pigeon 14]
     [below: TYPESET Box Pigeon 13 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))]
     : TYPESET Box Pigeon 14 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -432,7 +432,7 @@ that measures the method
 that presents the glyph
 that observes the mark
 that carried the process
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_15
@@ -440,7 +440,7 @@ instance (priority := low) TYPESET_page_15
     [the_naotrino_theory: REVIEWED Box Pigeon 15]
     [below: TYPESET Box Pigeon 14 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))]
     : TYPESET Box Pigeon 15 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -467,7 +467,7 @@ instance (priority := low) TYPESET_page_16
     [the_naotrino_theory: REVIEWED Box Pigeon 16]
     [below: TYPESET Box Pigeon 15 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))]
     : TYPESET Box Pigeon 16 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -486,7 +486,7 @@ that sources the code
 that gungans the process
 that measures the step
 that carried the method
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_17
@@ -494,7 +494,7 @@ instance (priority := low) TYPESET_page_17
     [the_naotrino_theory: REVIEWED Box Pigeon 17]
     [below: TYPESET Box Pigeon 16 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))]
     : TYPESET Box Pigeon 17 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -521,7 +521,7 @@ instance (priority := low) TYPESET_page_18
     [the_naotrino_theory: REVIEWED Box Pigeon 18]
     [below: TYPESET Box Pigeon 17 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))]
     : TYPESET Box Pigeon 18 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -540,7 +540,7 @@ that values the function
 that executes the step
 that sources the code
 that carried the model
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_19
@@ -548,7 +548,7 @@ instance (priority := low) TYPESET_page_19
     [the_naotrino_theory: REVIEWED Box Pigeon 19]
     [below: TYPESET Box Pigeon 18 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))]
     : TYPESET Box Pigeon 19 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -575,7 +575,7 @@ instance (priority := low) TYPESET_page_20
     [the_naotrino_theory: REVIEWED Box Pigeon 20]
     [below: TYPESET Box Pigeon 19 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))]
     : TYPESET Box Pigeon 20 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -594,7 +594,7 @@ that scales the value
 that magnitudes the process
 that values the mapping
 that carried the step
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_21
@@ -602,7 +602,7 @@ instance (priority := low) TYPESET_page_21
     [the_naotrino_theory: REVIEWED Box Pigeon 21]
     [below: TYPESET Box Pigeon 20 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))]
     : TYPESET Box Pigeon 21 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -629,7 +629,7 @@ instance (priority := low) TYPESET_page_22
     [the_naotrino_theory: REVIEWED Box Pigeon 22]
     [below: TYPESET Box Pigeon 21 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))]
     : TYPESET Box Pigeon 22 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -648,7 +648,7 @@ that finite-elements the process
 that loads the mark
 that scales the value
 that carried the code
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_23
@@ -656,7 +656,7 @@ instance (priority := low) TYPESET_page_23
     [the_naotrino_theory: REVIEWED Box Pigeon 23]
     [below: TYPESET Box Pigeon 22 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))]
     : TYPESET Box Pigeon 23 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -683,7 +683,7 @@ instance (priority := low) TYPESET_page_24
     [the_naotrino_theory: REVIEWED Box Pigeon 24]
     [below: TYPESET Box Pigeon 23 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))]
     : TYPESET Box Pigeon 24 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -702,7 +702,7 @@ that propagandizes the mapping
 that bullshits the glyph
 that loads the process
 that carried the value
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_25
@@ -710,7 +710,7 @@ instance (priority := low) TYPESET_page_25
     [the_naotrino_theory: REVIEWED Box Pigeon 25]
     [below: TYPESET Box Pigeon 24 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))]
     : TYPESET Box Pigeon 25 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -737,7 +737,7 @@ instance (priority := low) TYPESET_page_26
     [the_naotrino_theory: REVIEWED Box Pigeon 26]
     [below: TYPESET Box Pigeon 25 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))]
     : TYPESET Box Pigeon 26 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -756,7 +756,7 @@ that sciences the model
 that acolytes the step
 that propagandizes the variable
 that carried the method
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_27
@@ -764,7 +764,7 @@ instance (priority := low) TYPESET_page_27
     [the_naotrino_theory: REVIEWED Box Pigeon 27]
     [below: TYPESET Box Pigeon 26 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))]
     : TYPESET Box Pigeon 27 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -791,7 +791,7 @@ instance (priority := low) TYPESET_page_28
     [the_naotrino_theory: REVIEWED Box Pigeon 28]
     [below: TYPESET Box Pigeon 27 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 28 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -810,7 +810,7 @@ that witnesses the glyph
 that truths the value
 that sciences the method
 that carried the code
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_29
@@ -818,7 +818,7 @@ instance (priority := low) TYPESET_page_29
     [the_naotrino_theory: REVIEWED Box Pigeon 29]
     [below: TYPESET Box Pigeon 28 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 29 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -845,7 +845,7 @@ instance (priority := low) TYPESET_page_30
     [the_naotrino_theory: REVIEWED Box Pigeon 30]
     [below: TYPESET Box Pigeon 29 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 30 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -864,7 +864,7 @@ that locals the variable
 that reals the model
 that witnesses the glyph
 that carried the step
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_31
@@ -872,7 +872,7 @@ instance (priority := low) TYPESET_page_31
     [the_naotrino_theory: REVIEWED Box Pigeon 31]
     [below: TYPESET Box Pigeon 30 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 31 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -899,7 +899,7 @@ instance (priority := low) TYPESET_page_32
     [the_naotrino_theory: REVIEWED Box Pigeon 32]
     [below: TYPESET Box Pigeon 31 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 32 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -918,7 +918,7 @@ that logics the code
 that universals the function
 that locals the variable
 that carried the process
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_33
@@ -926,7 +926,7 @@ instance (priority := low) TYPESET_page_33
     [the_naotrino_theory: REVIEWED Box Pigeon 33]
     [below: TYPESET Box Pigeon 32 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 33 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -953,7 +953,7 @@ instance (priority := low) TYPESET_page_34
     [the_naotrino_theory: REVIEWED Box Pigeon 34]
     [below: TYPESET Box Pigeon 33 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 34 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -972,7 +972,7 @@ that measures the step
 that halts the method
 that logics the code
 that carried the value
-that lived in the Fact
+that lived in the FACT
 that John built.
 -/
 instance (priority := low) TYPESET_page_35
@@ -980,7 +980,7 @@ instance (priority := low) TYPESET_page_35
     [the_naotrino_theory: REVIEWED Box Pigeon 35]
     [below: TYPESET Box Pigeon 34 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 35 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -1007,7 +1007,7 @@ instance (priority := low) TYPESET_page_36
     [the_naotrino_theory: REVIEWED Box Pigeon 36]
     [below: TYPESET Box Pigeon 35 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 36 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))))) :=
-    let heads : Fact × Fact := match the_naotrino_theory.rebuttal with
+    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
       | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
       | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
       | .results before after _ _ _ _ _ => (before, after)
@@ -1024,7 +1024,7 @@ f0/f1/f2 ladder here. -/
 
 /-
 This is the seam
-that closed the Fact
+that closed the FACT
 that John built.
 
 The exit reads the head once.  John can drive the steel to the seam, and the
@@ -1032,7 +1032,7 @@ device can report whether it slipped.  That is not the same as John getting
 through the mountain.
 -/
 structure PressVerdict where
-  slipped  : Fact
+  slipped  : FACT
   value    : Number
   velocity : Number
 
@@ -1042,14 +1042,14 @@ noncomputable def pressCheck (Box: Type i) (Pigeon: CarrierProcess Box)
     -- the head-read, once (needle rule); the non-results arms are
     -- by-construction unreachable at the seam but carried -- the direction
     -- exists, is handled, is never taken.
-    let slipped : Fact := match top.the_page with
+    let slipped : FACT := match top.the_page with
       | .results c s _ _ _ _ _ =>
           -- the read-time decide: the quoted proposition's decidability
           -- derived from the pair's own decTruths, never Classical.
           { truth := ¬(c.truth ↔ s.truth)
-            decTruth := @instDecidableNot _ (@instDecidableIff _ _ c.decTruth s.decTruth) }
-      | .introduction _ _ => { truth := False, decTruth := isFalse (fun h => h) }
-      | .methodology _ _ _ _ _ => { truth := False, decTruth := isFalse (fun h => h) }
+            click := @instDecidableNot _ (@instDecidableIff _ _ c.click s.click) }
+      | .introduction _ _ => { truth := False, click := isFalse (fun h => h) }
+      | .methodology _ _ _ _ _ => { truth := False, click := isFalse (fun h => h) }
     { slipped := slipped
       value := (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down (ULift.down top.register_value)))))))))))))))))))))))))))))))))))
       velocity := top.universe_id }

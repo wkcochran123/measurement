@@ -1,6 +1,6 @@
 /-
 __Measurement: The Tragedy of John Henry__
-__A Satire in Look Ahead Backus-Naur Form__
+__A Satire in Look-Ahead Backus-Naur Form__
 
 _This is a gentle reminder that the convoluted stories we tell ourselves are just that: convoluted._
 
@@ -14,7 +14,7 @@ while you prove theorems about proving theorems."
 
 lake build --no_assumptions --splash_damage=on
 
-__LIVE__
+**LIVE**
 _without a net_, its.......
 -/
 
@@ -69,9 +69,9 @@ COMPILER: What does the study prove?                        | Well, they got tir
 ME: Nothing yet. It keeps the questions from wandering off. | bigger, and whose was most. So they wrote the book. The book that answered all the
 -/ --                                                       | questions.  What was most, what was smallest.
 inductive Study   -- Bullshit meter ≈ 119                   |
-  | hypothesis: Fact → Study  ------------------------------+ Dunno why we need to go much farther, since they answered all the questions.
+  | hypothesis: FACT → Study  ------------------------------+ Dunno why we need to go much farther, since they answered all the questions.
 
-  | a_few_pints: Fact → Trial → Study → Study --------------+ But *YOU the KNOWER* may object at this point. Your correction objection being: This is
+  | a_few_pints: FACT → Trial → Study → Study --------------+ But *YOU the KNOWER* may object at this point. Your correction objection being: This is
 --                                                          | not the greatest discovery to come from Guiness. And, you'd be right. One taste, and
 --                                                          | you too, would have a couple of pints.
 
@@ -268,9 +268,9 @@ COMPILER: Input, output, route? Those are numbers.                  | every coun
 ME: And the fantasy is that the number is O(1) to write down. ------+ I did not do well in algorithms at all.
 -/
 inductive Computation    -- Bullshit meter ≈ 134             | Believe it or not, this is a complete description of the compilation process. It is a
-  | program: Fact → Study → Computation   -------------------+ fact, indeed, that a study generates a computation of some sort.
+  | program: FACT → Study → Computation   -------------------+ fact, indeed, that a study generates a computation of some sort.
 
-  | compute: Fact → Study → Study →   -------------------+ Input, output, route. Just like the compiler promised. This is the _make_ process. One
+  | compute: FACT → Study → Study →   -------------------+ Input, output, route. Just like the compiler promised. This is the _make_ process. One
                 Computation → Computation --             | computation depends on the computation of a predecessor. Input can now be transformed
 --                                                       | directly into the final compiled form for a multi-pass compilation procedure.
 
@@ -393,7 +393,7 @@ class REPRESENTABLE  --  Bullshit meter ≈ 261
 -- believe this demonstration is consistent. So, to be representable, we must insist that any program for our Turing machine come with a proof that
 -- it terminate. *YOU the KNOWER* should understand this is not a trivial construction. We have to work through the closure and find the study we
 -- left there.
-  representable?: ∀ (_: Fact) (s: Study), ∃ (_: Computation), calculation_process.computational_process.closure s = s
+  representable?: ∀ (_: FACT) (s: Study), ∃ (_: Computation), calculation_process.computational_process.closure s = s
 -- I hope you understand now that this IS NOT GIVEN by mathematics. The symbols come from elsewhere. You see, Lean will tell us how much time it
 -- takes to elaborate a block. We can _measure_ how much "time" it takes for the TuringProcess to do its work and tell it to _STOP_ after so
 -- many steps.
@@ -421,8 +421,8 @@ ME: Perfect. Give it a hard hat.                                           | to 
 -/
 inductive ChaitinsNumberSequence  -- Bullshit meter ≈ 112  ------------------------------------+ The compiler already knows that we can describe
 -- The __HEAVY WEIGHT CHAMPION OF THE WORLD__ --                                               | a sequence of computations that must be performed
-  | halting: Fact → Computation → ChaitinsNumberSequence --                                    | to compute a number. Chaitin defined a number, a
-  | nonhalting: Fact → Computation → Option ChaitinsNumberSequence → ChaitinsNumberSequence -- | probability, actually, that a randomly selected
+  | halting: FACT → Computation → ChaitinsNumberSequence --                                    | to compute a number. Chaitin defined a number, a
+  | nonhalting: FACT → Computation → Option ChaitinsNumberSequence → ChaitinsNumberSequence -- | probability, actually, that a randomly selected
 --                                                                                             | program will halt. This is a huge simplification
 --                                                                                             | and margins are a bit more expansive than Fermat's,
 --             --------------------------------------------------------------------------------+ but still, they are just margins. Understand that
@@ -524,10 +524,10 @@ structure NoisyProcess  -- Bullshit meter ≈ 504
 -- So, we just computed something, what is the next program we have to compile? For you see, this is the REPL loop.
   next_representation? : ChaitinsNumberSequence → ChaitinsNumberSequence := fun c =>
     match c with
-    | ChaitinsNumberSequence.halting _ s => ChaitinsNumberSequence.halting (Fact.Truth) s   -- If we are done, then just exit 0 and print the truth.
+    | ChaitinsNumberSequence.halting _ s => ChaitinsNumberSequence.halting (FACT.Truth) s   -- If we are done, then just exit 0 and print the truth.
 
     | ChaitinsNumberSequence.nonhalting f s _ =>   -----------------------------------------+ Otherwise, there is more work left to do. We mark this
-      ChaitinsNumberSequence.nonhalting (Fact.Truth) s (match next_recursive_step? s with --| step as demonstrated TRUE and compute the next step
+      ChaitinsNumberSequence.nonhalting (FACT.Truth) s (match next_recursive_step? s with --| step as demonstrated TRUE and compute the next step
         | some s' => some (ChaitinsNumberSequence.halting f s') --                          | to evaluate. Or, if the tape is out, none. I believe
         | none => none) --                                                                  | this is the Flower-C, Flower-V from before. We have
 --                                                                                          | stapled two PDAs together, if I don't miss my guess.
@@ -574,7 +574,7 @@ class PHYSICAL  -- Bullshit meter ≈ 430
 --     +-----+ Anything that is PHYSICAL is trivially admissible as a REAL object. Just follow the instructions and something _REAL_ in front of
 --     |     | you will _REPRESENT_ the computation.
 --     V
-  admissible? : ∀ (f: Fact) (s: Study), noisy_process.next_representation? noisy_process.program =
+  admissible? : ∀ (f: FACT) (s: Study), noisy_process.next_representation? noisy_process.program =
             some (ChaitinsNumberSequence.halting f (Computation.program f s)) → true
 -- Reading from left to right, top to bottom:
 -- For all facts and studies, is it true that the next computation of a noisy process is a program that we can describe completely with halted
@@ -618,13 +618,13 @@ inductive Metavariable (α : Type i) : Type (i + 1) where   -- Bullshit meter �
 -- of imagination. Unicorns, dragons, and infinitessimals are around every corner, so be on the lookout. In particular, be mindful of the _CHOICES_
 -- being made. Zermelo's house can get _REALLY TRIPPY_.
 
-  | base : Fact → α → Metavariable α  -------------------+ As promised in Episode 1: α. This is also the Greek symbol we add for noise. And the
+  | base : FACT → α → Metavariable α  -------------------+ As promised in Episode 1: α. This is also the Greek symbol we add for noise. And the
 --                                                       | smallest step a compiler can take (IEEE 754 for some understanding of quantization of
 --                                                       | numbers in general). And __Ω__.  4 meanings. 4 meanings for *i*. All we need is 4
 --                                                       | black riders and we could make a series of movies. Or is that the wrong book? Doesn't
 --                                                       | matter. A lot of this proof doesn't seem to matter. But it talks a lot about matter.
 
-  | step : Fact → Metavariable α → Metavariable α -------> Facts change metavariables directly in the compiler, not out here, in front of us.
+  | step : FACT → Metavariable α → Metavariable α -------> Facts change metavariables directly in the compiler, not out here, in front of us.
 
 /-CHORUS:
 COMPILER: I'm waiting.
@@ -734,9 +734,9 @@ COMPILER: They are just symbols.                      |
 ME: Symbols can have consequences. -------------------+ To this day, this is the best explanation we have for an affine universe.
 -/
 inductive Sophism   -- Bullshit meter ≈ 153                                     | FANTASY the FIRST: IT IS A FACT that ChaitinsNumberSequence _is_
-  | origin: Fact → ChaitinsNumberSequence → Type → Sophism ---------------------+ a Type. That proposition of the FACT can be true or false.
+  | origin: FACT → ChaitinsNumberSequence → Type → Sophism ---------------------+ a Type. That proposition of the FACT can be true or false.
 
-  | dimension: Fact → ChaitinsNumberSequence → Type i → Sophism → Sophism ------+ FANTASY the SECOND: IT IS A FACT that ChaitinsNumerSequenence _is_
+  | dimension: FACT → ChaitinsNumberSequence → Type i → Sophism → Sophism ------+ FANTASY the SECOND: IT IS A FACT that ChaitinsNumerSequenence _is_
 --                                                                              | a Type i and this is related to the fact that
 --                                                                              | ChaitinsNumberSequence may or may not be a Type.
 
@@ -845,8 +845,8 @@ COMPILER: An orientable surface?                   | dimensional understandings 
 ME: A fluid pouring from up high to down low.      | _lack_ and _contain_ enough description of their processes to illustrate and brainstorm.
 -/ --                                              | It is left as an exercise for the reader to explain the necessity or emergence of more
 inductive Area   -- Bullshit meter ≈ 92            | dimensions.
-  | tree: Fact → Area
-  | dt: Fact → Number → Area → Area ---------------+ The compiler needs an area to write down the current step. We need an area that can represent
+  | tree: FACT → Area
+  | dt: FACT → Number → Area → Area ---------------+ The compiler needs an area to write down the current step. We need an area that can represent
 --                                                 | the lack of consistency so we can hand that to the compiler and explain that if comes across any
 --                                                 | inconsistency it cannot remove due to the nature of the removal, it can place it in this area.
 --                                                 | Along with all the other second order inconsistency. The one that Bishop Berkeley noticed, even
@@ -863,7 +863,7 @@ def le : Area → Area → Prop
   | .tree _ , _ => True
   | .dt _ _ _, .tree _ => False
   | .dt p1 n1 a1', .dt p2 n2 a2' =>
-      match p1.decTruth, p2.decTruth with
+      match p1.click, p2.click with
       | isTrue _,  isTrue _  => n1 ≤ n2 ∧ le a1' a2'
       | isTrue _,  isFalse _ => False
       | isFalse _, isTrue _  => True
@@ -991,9 +991,9 @@ COMPILER: Is that the first thing on the list? -----+ "A", and "the" and "and" a
 ME: I don't know, hand me the Sears catalog.        | of the English language. Isn't that right *YOU the READER*? While not _TRUE_ per se, it can
 -/ --                                               | be easily mistaken for a Fact.
 inductive PigeonHole  -- Bullshit meter ≈ 153
-  | this_superpigeon: Fact → Area → PigeonHole --------------------------- We have to figure out how to put _THIS_ superpigeon -----+
-  | a_pigeon: Fact → Area → PigeonHole → PigeonHole -------------- A regular pigeon                                                 |
-  | that_box: Fact → Area → Area → PigeonHole → PigeonHole → PigeonHole -- <-------------- into _THAT_ box -------------------------+
+  | this_superpigeon: FACT → Area → PigeonHole --------------------------- We have to figure out how to put _THIS_ superpigeon -----+
+  | a_pigeon: FACT → Area → PigeonHole → PigeonHole -------------- A regular pigeon                                                 |
+  | that_box: FACT → Area → Area → PigeonHole → PigeonHole → PigeonHole -- <-------------- into _THAT_ box -------------------------+
 
 -- The only thing the pigeon hole principle tells us is that pigeons go in holes, not boxes. The superpigeon, the pigeon chasing the superpigeon
 -- and the box are three different names for a pigeon hole.  The question for *YOU the READER* is, are all three PigeonHoles the same?
@@ -1014,7 +1014,7 @@ def le : PigeonHole → PigeonHole → Prop := fun p1 p2 =>
   | _, .this_superpigeon _ _ => False                                      --| Once underway, you can't set your superpigeon anymore.
 
   | .a_pigeon f1 a1 p1', .a_pigeon f2 a2 p2' =>                            --| Pigeons compare like numbers, in a combination of variance.
-      match f1.decTruth, f2.decTruth with
+      match f1.click, f2.click with
       | isTrue _,  isTrue _  => a1 ≤ a2 ∧ le p1' p2'
       | isTrue _,  isFalse _ => False
       | isFalse _, isTrue _  => True
@@ -1026,7 +1026,7 @@ def le : PigeonHole → PigeonHole → Prop := fun p1 p2 =>
 
   | .that_box f1 before1 after1 p11 p12,                                   --+ The thing about Christmas presents is you can't open them _before_
     .that_box f2 before2 after2 p21 p22 => --                                | a certain _time_.  They can appear under the tree before Christmans
-      match f1.decTruth, f2.decTruth with --                                 | and those _CANNOT_ be opened before _THEN_.  Only _SHAKEN_.  Then,
+      match f1.click, f2.click with --                                       | and those _CANNOT_ be opened before _THEN_.  Only _SHAKEN_.  Then,
       | isTrue _,  isTrue _  => --                                           | you can hear how many _pieces_ are inside. But, then you open it!
           before1 ≤ before2 ∧ after1 ≤ after2 ∧ le p11 p21 ∧ le p12 p22 --   | And you see your PRESENT! Since no one has ever opened a present
       | isTrue _,  isFalse _ => --                                           | _BEFORE_ Christmas day, we really don't what's going on inside the

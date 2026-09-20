@@ -19,7 +19,7 @@ that one reading is embigger than another.
 
 elab "register_noise_floor" : command => do
   let hb ← Lean.Elab.Command.liftTermElabM do
-    let stx ← `(Fact.Truth.decTruth)
+    let stx ← `(FACT.Truth.click)
     let (_, hb) ← Lean.withHeartbeats do
       let e ← Lean.Elab.Term.elabTerm stx none
       let _ ← Lean.Meta.whnf e

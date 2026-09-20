@@ -1,6 +1,6 @@
 /-
 __Measurement: The Tragedy of John Henry__
-__A Satire in Look Ahead Backus-Naur Form__
+__A Satire in Look-Ahead Backus-Naur Form__
 
 _This is a gentle reminder that the stories we tell ourselves are just words separated by spaces._
 
@@ -15,6 +15,10 @@ __EPISODE 4__: _The Gamble_
                        -- Every person ever trying to land that SWEET SWEET coding gig somewhere.
 
 lake build && lake build -O1 && lake build -O2
+
+**EVER NOTICED?**
+My favorite differential equation of all time: Du=0 for D=(ᵈ/dt - ¹/t) but not D=(ᵈ/dx - ¹/x).  You know, experiencing the difference rather than
+seeing the difference.
 -/
 
 -- Have I convinced you yet of the dangers of using other peoples imports?
@@ -234,10 +238,10 @@ def CrusadeProcess.default
     : CrusadeProcess Box Pigeon where
   to_pwn_n00bz :=
   { dunking_contest := doesnt_matter.galerkin_process ---+ Again, doesn't really matter, you can go on a crusade and have a bug in your process and
-    guess := .observation Fact.Truth.truth --            | the compiler just DNGAF. There are a bunch of Galerkin processes to choose from, after all.
+    guess := .observation FACT.Truth.truth --            | the compiler just DNGAF. There are a bunch of Galerkin processes to choose from, after all.
   } --                                                   | A new one is published every week or so.
 
-  religious_dogma := .religion Fact.Truth.truth  --+ And all it takes to start a religion is a truth everyone believes: That we __WILL__ invert this
+  religious_dogma := .religion FACT.Truth.truth  --+ And all it takes to start a religion is a truth everyone believes: That we __WILL__ invert this
 --                                                 | operator, no matter how much time and paper it takes.
 
 --| Does it matter that the continuous proofs rely on behavior that the compiler cannot observe? Or do they see the same thing? -- <---------------------------+
@@ -264,7 +268,7 @@ class PROPAGANDA  -- 3151 --                                                    
     [EXECUTED Box Pigeon]       [VALUE Box Pigeon]     [MAGNITUDE Box Pigeon] [SCALED Box Pigeon]   --     | Advertise here!              |
     [LOAD Box Pigeon]           [OF Box Pigeon]        [BULLSHIT Box Pigeon]                        --     +------------------------------+
   where
---      +-----------------------------------+ We have Facts. We have Fact.Truths. and We have Fact.Truth.truths. A class, a prop, a literal.
+--      +-----------------------------------+ We have Facts. We have FACT.Truths. and We have FACT.Truth.truths. A class, a prop, a literal.
 --      |                                   | They look the same to me somehow. What if, supposing just this once, instead of observation -> rule ->
 --      V                                   | model, we reverse the order and have the observation depend on the model? Oh wait.. I've heard it
   questions: CrusadeProcess Box Pigeon --   | both ways.
@@ -295,8 +299,8 @@ class PROPAGANDA  -- 3151 --                                                    
 -/
 inductive Cult  -- 6460
   | inside_joke: Prop → Cult ------------------------------------------> Is this the card with the bug? The Truth.truth *YOU the READER* see?
-  | pythagoras: Prop → Diatribe → Cult → Cult -------------------------> Is this the card with the bug? The Fact.Truth.truth *YOU the KNOWER* see?
-  | triangles: Prop → Diatribe → Fact → Cult → Cult → Cult ------------+ Is _THIS_ the card with the bug? Triangles. Yeah, have you let triangles _know_
+  | pythagoras: Prop → Diatribe → Cult → Cult -------------------------> Is this the card with the bug? The FACT.Truth.truth *YOU the KNOWER* see?
+  | triangles: Prop → Diatribe → FACT → Cult → Cult → Cult ------------+ Is _THIS_ the card with the bug? Triangles. Yeah, have you let triangles _know_
 --                                                                     | your compass? They get to gyrating and ... dangerous thoughts.
 
 --| Science comes with a brutal initiation process similar to that of acting. A person at the front of the room explains how they solved a particularly
@@ -402,7 +406,7 @@ ME: That's the rumor I heard, too.         |    *YOU the READER* may start belie
 inductive Science  -- 8029 --------------------------+ This does enough. I don't need to pile this on. Looks like a good place to ∎.
   | repeatable: Prop → Science --                    |
   | hypothesis: Prop → Cult → Science --             | If we think some theory is a fact, then we can compute your Science->Science through
-  | theory: Prop → Cult → Fact → Science → Science --+ the process of currying. Spicy.
+  | theory: Prop → Cult → FACT → Science → Science --+ the process of currying. Spicy.
 
 --| *YOU the READER*, we have another opportunity to practice flops coming up. I will be giving you exercises to practice "throwing" 3 card monte,
 --| as it⁻¹ were.
@@ -539,7 +543,7 @@ ME: I like your style Mr. Reader.                                         | in a
 -/
 inductive Knowledge  -- Bullshit meter 84000
 | jarjar: Prop → Knowledge -----------------------+ The winding number of an inductor is always in ℕ. Welcome, everyone, our _SPECIAL GUEST_, the
-| ledger: Prop → Fact → Knowledge → Knowledge   --| **ELECTRON**! (card in the program: In tonight's performance, *ELECTRON* will be played by the
+| ledger: Prop → FACT → Knowledge → Knowledge   --| **ELECTRON**! (card in the program: In tonight's performance, *ELECTRON* will be played by the
                                                 --| _nowtrino_.) I believe we might be in for a Berry paradox at some point. The electron is either
                                                 --| present (1) or not (0). Think of .jarjar as merely a stream of consciousness awareness of
                                                 --| electrons. No electron, no bit in RAM; no bit in RAM no TRUE=TRUE; ergo no compiling happening.
@@ -847,7 +851,7 @@ structure UniverseTensor
 COMPILER: This argument is REALly difficult to follow                    | For now, assume we have a one proposition look-ahead from the very clever
 JAR JAR: MEESA GET IT                                                    | ECC we implemented in Episodes 1, 2, and 3.  Then, we can compute what
 YOU the READER: I think I see how three propositions keep falling out    | we think the next prop should be from this prop and the last prop using
-                of the construction -------------------------------------+ the mapping of Facts built before. Then this is the inverse Jar operator
+                of the construction -------------------------------------+ the mapping of FACTs built before. Then this is the inverse Jar operator
 ME: Did I ever tell you I fancy myself a good cook?                      | it⁻¹. There are many. They are systematically found with 3SAT, a common
 -/ --                                                                    | vector for the Cook-Levin proof.  That's right. Vector.
 @[reducible]
@@ -881,7 +885,7 @@ JAR JAR: MEESA TRUE TRUE ....                                                  |
 YOU the READER: Let me guess.. 1?                                              | predict the third from ECC, then we can skip the computation.
 JAR JAR: MEESA TRUE -----------------------------------------------------------+ Otherwise, we have to do the computation to see why we messed up
 ME: Unless it is the fact of zero.                                             | the ECC and update our internal states accordingly. We throw the
--/ --                                                                          | the things we don't understand in as a Fact and start a new origin.
+-/ --                                                                          | the things we don't understand in as a FACT and start a new origin.
 inductive Variation
   | the_newton: Gospel → Prop → Variation ----------+ Newton's train of thought basically went, what if I made a triangle _so_ small that
 --|     +------ We do what we must because we can.  | the triangle inequality could be one of 3 values 0, √2, 1 because no amount of experimentation
@@ -1118,10 +1122,10 @@ YOU the READER: Relativity is just a fact of life ----------------+ this gap, th
 ME: That is a pretty good flop. I almost don't see the bent card. | time. Instead, this has to be affixed with 3M contact strips.  I'm not paying
 -/ --                                                             | the security deposit.
 inductive SpaceTimePath
-  | einstein: Fact → SpaceTimePath --                                                             | By His noodly appendage, I offer to Him these very
-  | whitehole: Fact → Type i → SpaceTimePath → SpaceTimePath --                                   | compute cycles, let them be stretched into
+  | einstein: FACT → SpaceTimePath --                                                             | By His noodly appendage, I offer to Him these very
+  | whitehole: FACT → Type i → SpaceTimePath → SpaceTimePath --                                   | compute cycles, let them be stretched into
   | blackhole: Prop → Type (i+1) → SpaceTimePath → SpaceTimePath ---------------------------------+ spaghetti as they fall into the singularity
-  | geodesic: Fact → Type i → Prop → Type (i+1) → SpaceTimePath → SpaceTimePath → SpaceTimePath --| of no longer compiling and output on screen.
+  | geodesic: FACT → Type i → Prop → Type (i+1) → SpaceTimePath → SpaceTimePath → SpaceTimePath --| of no longer compiling and output on screen.
 --                                                                                                |                              _RAMEN_
 --| And so it comes to it. Do you understand orbital dyamics? World lines start in white holes and end in blackholes. It is clear they fork.  It is
 --| unclear if they merge. Sometimes they do, like when I get more coffee to write more theorems.  Sometimes they do not, like when Curly cut it
@@ -1231,7 +1235,7 @@ structure CalculusProcess
   where
   the_local_schedule: BigRedDogProcess Box Pigeon  -- Parents, read to your kids.  They are the future.
   the_direction_to_the_destination: SpaceTimePath
-  uptown_or_downtown: Fact
+  uptown_or_downtown: FACT
   the_train_in: Type (i+1)
   the_quarter: LOCAL Box Pigeon := local_currency
 
@@ -1249,7 +1253,7 @@ structure CalculusProcess
 --| a weird blackhole. Most people believe it is the second. Physicists argue that space is expanding, drawing more vacuum, creating more virtual
 --| particles out of nowhere headed in directions.  I can see how that isn't a whitehole now.
     | .whitehole field_theory_of a_box along_a_path =>
-              match field_theory_of.decTruth with
+              match field_theory_of.click with
               | isTrue _ =>
                     .geodesic a_nowtrino.fact a_box a_nowtrino.fact.truth (ULift.{i+1} a_box) along_a_path the_direction_to_the_destination
               | isFalse _ =>
@@ -1262,7 +1266,7 @@ structure CalculusProcess
 --| (an algebraic-geometrically described second order relation). Well-behaved topologies always act like algebras. Except when they don't and it
 --| appears information is simultaneously destroyed and created.
     | .geodesic in_a_field of_gravity and_or particles _ _ =>
-              match in_a_field.decTruth with
+              match in_a_field.click with
               | isTrue _ =>
                     .geodesic a_nowtrino.fact
                               of_gravity and_or particles
@@ -1281,7 +1285,7 @@ structure CalculusProcess
 --| the source (or sink) of the generacies we must track.  In fact, we need to develop cogeneracies if we want to construct a prior on whether or not
 --| the degeneracy we are looking at is a degeneracy of the math or the science. Because, I have managed to put them _ALL_ in the same Box:
 
---| .zero Fact.Truth.
+--| .zero FACT.Truth.
 
 --| I would be lying to you if I said *YOU the READER* have come through the worst of it. I still need to demonstrate to that it doesn't matter if
 --| there is a bug here or not. There is no worst of it. There is only the all of it. And not a number in sight, site, or cite.
