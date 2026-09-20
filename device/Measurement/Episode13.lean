@@ -738,18 +738,20 @@ well-formed.  Acceptance is `stepOK`, a property OF the trace.  Both verdicts be
 constructible from one apparatus is not a hole in the claim; it is the claim.
 -/
 --| THE PROVED ∀.  Every trace, not this one.
-theorem cook_levin : ∀ t : ThePreprint.{0}, THEORY.traceSat t = t.stepOK :=
+theorem cook_levin_the_description : ∀ t : ThePreprint.{0}, THEORY.traceSat t = t.stepOK :=
   THEORY.trace_correspondence
 
 --| AND ITS INSTANCE ON THE LADDER'S OWN TAPE.  An instance of a theorem, named as one.
-theorem cook_levin_on_theTop : THEORY.traceSat theTopTrace = theTopTrace.stepOK :=
-  cook_levin theTopTrace
+theorem cook_levin_on_the_mechanism : THEORY.traceSat theTopTrace = theTopTrace.stepOK :=
+  cook_levin_the_description theTopTrace
 
---#eval s!"top rung reached, tape reads {theTopTrace.bits}"
---#eval s!"trace well-stepped   {theTopTrace.stepOK}"
---#eval s!"formula satisfied    {THEORY.traceSat theTopTrace}"
---#eval s!"correspondence holds {THEORY.traceSat theTopTrace == theTopTrace.stepOK}"
+def theSwapBits : List Bool := (theStepsUp.zip theStepsDown).map (fun p => decide (p.1 ≠ p.2))
+def theSwappedTrace : ThePreprint.{0} := decodeBits theSwapBits
+theorem cook_levin_on_the_meter : THEORY.traceSat theSwappedTrace = theSwappedTrace.stepOK :=
+  cook_levin_the_description theSwappedTrace
 
+#print axioms cook_levin_on_the_mechanism
+#print axioms cook_levin_on_the_meter
 
 end Measurement
 
