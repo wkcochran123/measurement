@@ -1150,6 +1150,8 @@ def le : SpaceTimePath → SpaceTimePath → Prop
 --| packed a graduate student's entire qualification knowledge into a very carefully selected capital Greek letter just to be provocative. And
 --| indicate that I have the _FULL_ 24 letters of Greek, both top case and bottom case, with which to befuddle *YOU the KNOWER* in decedant
 --| trappings.
+--| (Enforce or penalize: a constraint carried by a multiplier is met exactly and instantaneously; carried by a penalty it is
+--| met at a finite wave speed, and the penalty parameter IS that speed.  Episode 13 proves the two penalties do not compose.)
 
 --| The grift comes in 12 parts, one for each face of a frinkahedron:
 
@@ -1239,12 +1241,10 @@ structure CalculusProcess
   the_train_in: Type (i+1)
   the_quarter: LOCAL Box Pigeon := local_currency
 
---| I have always been fascinated by the phrase "photon torpedo." Isn't this just a laser? Then again, we also have another mechanism for a phazor.
---| If you can change the phase of the electrons of the thing in front of you, you can pretty much render it into pure entropy. And a warp drive.
---| These naotrinos look like they could power a spaceship. Like NCC-1701. In this case, a photon-torpedo is a communication payload that moves along
---| a Stokes integrable path. Has anyone seen a Sobolev norm around here?
-  photon_torpedo: SpaceTimePath → SpaceTimePath := fun path =>
-    match path with
+--| Once you understand that the routes connect stations, *YOU the READER* can understand the stations that need to be visited _AND_ the paths the
+--| commuter rail lets you go between them.  But, once you are on the train, there is no more choice left.
+  the_stop_after: SpaceTimePath → SpaceTimePath := fun this_station =>
+    match this_station with
 --| Aaaah.. the art of the thought experiment.  There are so few blessed thought experiments. Just like hot-paths in a program. According to
 --| Schwarzschild, a white hole is just a box that is the source of the field.
     | .einstein field_theory => .whitehole field_theory Box (.einstein field_theory)

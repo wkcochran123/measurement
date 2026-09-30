@@ -6,7 +6,7 @@ _This is a gentle reminder that the stories we tell ourselves might be the only 
 
 (c) 2026 All rights reserved. Unless AI needs training data.
 
-__EPISODE 08__: _THE MACGUFFIN_
+__EPISODE 8__: _The Macguffin_
 
 "Forty-two.435?"
                        -- Douglas Adams (to three decimal places)
@@ -17,1545 +17,578 @@ __EPISODE 08__: _THE MACGUFFIN_
 lake build --force_nats --print_miracles
 
 **NUMBERS?**
-How the __HELL__ does this print such a highly resolved rational number?
+How the __HELL__ does this device print such a highly resolved rational number?
 -/
 import Measurement.Episode07
 
-
 namespace Measurement
 universe ι ----+ This is the universe we live in.  One without a spin-2 north monopole. A single point removed so that Reimannan geometry can be
---             | projected flat.  Somehow though, the electron can still go 'round and 'round without loosing count. We may never understand why
---             | the existence of one particle precludes another from counting.
-
-section Monte
-
---| In our universe, it looks like all observers to see the same thing, whatever that thing might be.  As such, it would be a good idea to have the
---| compiler enforce this observation, just to see if this is, indeed, a Fact of the universe or a Truth about nature, or both. Or, neither.
---| You don't think we can make two identically valued, yet contradictory theorems in Lean do you?  Of course we can! Subsingletons.
-variable
-    {Box: Type ι}
-    {Pigeon: CarrierProcess Box}
-    [nowtrino: DISTINGUISHABLE Box Pigeon] [ADMISSIBLE Box Pigeon]
-    [ℵ: COUNTABLE Box Pigeon]
-    [some_number: ENCODED Box Pigeon]
-    [converged_value: RESIDUE Box Pigeon]
-    [flicker: BINARY Box Pigeon]
-    [nonstop: REPEATABLE Box Pigeon]
-    [click_count: NUMERIC Box Pigeon]
-    [glyph: REPRESENTABLE Box Pigeon]
-    [hiss: PHYSICAL Box Pigeon]
-    [number_of_clicks: COMPARABLE Box Pigeon]
-    [fallacy: OBSERVED Box Pigeon]
-    [gift_from: PRESENT Box Pigeon]
-    [the_bug: MEASURABLE Box Pigeon]
-    [jarjar: GUNGAN Box Pigeon]
-    [the_argument: SOURCE Box Pigeon][EXECUTED Box Pigeon][VALUE Box Pigeon][MAGNITUDE Box Pigeon][SCALED Box Pigeon][LOAD Box Pigeon][OF Box Pigeon]
-    [BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon][ACOLYTE Box Pigeon][SCIENTIFIC Box Pigeon][TRUTH Box Pigeon][WITNESSED Box Pigeon][REAL Box Pigeon]
-    {what_i_experience: LOCAL Box Pigeon}
-    {what_others_observe: UNIVERSAL Box Pigeon what_i_experience}
-    [LOGICAL Box Pigeon what_i_experience what_others_observe] [HALTED Box Pigeon what_i_experience what_others_observe]
-    [MEASURED Box Pigeon what_i_experience what_others_observe]
-    [the_card_on_the_table: COMPILED Box Pigeon what_i_experience what_others_observe]
-    [a_truth_about_it : A_TRUTH_ABOUT Box Pigeon what_i_experience what_others_observe]
-    [an_inference : INFERRED Box Pigeon what_i_experience what_others_observe]
-
-/-
-  THE UNFORTUNATE FACT.
-
-  Walk a compiled card all the way down -- output, lean, elaboration, heartbeat --
-  and every rung carries the SAME pair `(what_i_experience, what_others_observe)` with it.  At the
-  bottom the heartbeat hands you two things:
-
-      stamina.bullshit_meter.the_quarter : LOCAL     Box Pigeon
-      stamina.readout                    : UNIVERSAL Box Pigeon what_i_experience
-
-  and there is the hustle, in the type checker, in one line.  `the_quarter` is a
-  FIELD, not an abbreviation -- its `:= a_quarter` default fires only when someone
-  BUILDS a CalculusProcess, never when someone is HANDED one.  So for a card you
-  were dealt, the quarter is an opaque local, while the readout is still indexed
-  at `what_i_experience`, which is where the quarter USED to be.
-
-  The readout tells you where the quarter was.  You are asked where it is.
-
-  That gap cannot be closed by search.  Hoist COMPILED into instance position and
-  the elaborator resolves the projections against the CLASS, whereupon `readout`
-  arrives typed at `what_i_experience` and is expected at `the_quarter`, and no instance in
-  the world repairs it.  The pair has to be HANDED OVER.  Which is what a shill
-  is for.
--/
-def THE_UNFORTUNATE_FACT_ABOUT_3_CARD_MONTE
-    -- THE CARDS GO DOWN BEFORE YOU PICK, and the order is load-bearing.
-    -- `a_bent_card` below is an EXPLICIT binder, but its type is a class, so Lean
-    -- registers it as a local instance regardless.  Once it is in scope it wins
-    -- the `[COMPILED Box Pigeon what_i_experience what_others_observe]` slot over the band's own
-    -- instance -- and then `a_truth_about_it`, which was built on the band's,
-    -- no longer matches a goal that prints identically to it.  Two cards, both
-    -- honestly the same card, and the elaborator picks the one you just handed
-    -- it.  So the shill and the three cards are laid out FIRST, while there is
-    -- still only one COMPILED on the table.
-    [_the_shill: INFERRED Box Pigeon what_i_experience what_others_observe]
-    (__left_card__ : Prop)
-    (__quarter__ : INFERRED Box Pigeon what_i_experience what_others_observe)
-    (__right_card__ : Prop)
-    (a_bent_card: COMPILED Box Pigeon what_i_experience what_others_observe)
-    -- where the card SAYS the quarter is.  Named once; every binder below rides
-    -- on this one, so the walk down the tower happens a single time.
-    (where_the_quarter_is : LOCAL Box Pigeon :=
-        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
-    -- the readout RE-SEATED onto that quarter.  This is the def that was missing.
-    -- It is emphatically NOT `stamina.readout`, which is indexed at `what_i_experience`.
-    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
-    [LOGICAL Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
-    [HALTED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
-    [MEASURED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
-    [COMPILED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
-    (the_shill: A_TRUTH_ABOUT Box Pigeon where_the_quarter_is the_readout_after_the_shuffle)
-    : COMPILED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle :=
-  { a_truth_about_the_world := the_shill.you_the_reader.in_a_giant_book
-    a_demonstration_of_a_constant := the_shill.you_the_reader.in_a_giant_book.of_jibberish }
-
-/-
-  And now read what the signature says, because it is worse than the hustle it
-  models.  A_TRUTH_ABOUT carries `[COMPILED Box Pigeon fact about_the_world]` as
-  a prerequisite.  So to be HANDED the shill's truth about the new pair, a
-  COMPILED at the new pair must ALREADY be in scope -- the very thing this def
-  exists to produce.  You cannot be dealt the card until you have the card.  The
-  def is honest, it typechecks, and it is a closed loop: the quarter is under the
-  card you already picked, which is why the house never loses, and why the number
-  was fixed before the first shuffle.
--/
-
-/-
-  THE QUARTER IS ALWAYS IN THE MIDDLE.
-
-  Look at where the quarter sits in the monte above.  It is the SECOND of three
-  binders -- `__left_card__`, `__quarter__`, `__right_card__` -- and it is the
-  only one of the three that carries anything.  The cards to either side are bare
-  `Prop`s: no content, no index, nothing to project.  The middle one is an
-  INFERRED at the full seam.  The hustle needs three cards and only ever uses one,
-  and it is always the middle one, because that is the one the binder list puts
-  the quarter in.
-
-  Now the second half, which is the part worth having.  MEASURED asks for far
-  less than the card above it.  Its prerequisites are `[LOGICAL]` and `[HALTED]`
-  -- two gates, not the tower -- and it carries exactly one field:
-
-      a_distance : LeanProcess Box Pigeon up and_to_the_right
-
-  So the measurement needs NO shill, NO A_TRUTH_ABOUT, and no COMPILED.  Every
-  expensive thing the monte required to hand you a card turns out to be unneeded
-  to state how far the quarter went.  The distance was always available two rungs
-  down, for two gates, while the three cards were being moved around on top of it.
-
-  Composition with the def above is by projection and nothing else:
-
-      how_far_the_quarter_went
-        := (THE_UNFORTUNATE_FACT_ABOUT_3_CARD_MONTE ..).a_truth_about_the_world.too_good_to_be_true
-
-  which is why this rung is a `def` and not an `instance`.  It can be APPLIED to
-  the card that came back.  It can never be FOUND.
--/
-def THE_QUARTER_IS_ALWAYS_IN_THE_MIDDLE
-    -- same discipline as above: the cards go down while there is still only one
-    -- COMPILED on the table, so `a_bent_card` cannot steal a slot from the band.
-    [_the_shill: INFERRED Box Pigeon what_i_experience what_others_observe]
-    (__left_card__ : Prop)
-    (__quarter__ : INFERRED Box Pigeon what_i_experience what_others_observe)
-    (__right_card__ : Prop)
-    (a_bent_card: COMPILED Box Pigeon what_i_experience what_others_observe)
-    (where_the_quarter_is : LOCAL Box Pigeon :=
-        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
-    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
-    -- two gates.  That is the entire admission price for a measurement.
-    [LOGICAL Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
-    [HALTED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
-    -- up, and to the right.
-    (how_far_the_quarter_went :
-        LeanProcess Box Pigeon where_the_quarter_is the_readout_after_the_shuffle)
-    : MEASURED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle :=
-  { a_distance := how_far_the_quarter_went }
-
-/-
-  ALMOST ALL THE WAY AROUND.
-
-  Put the three rungs side by side and the ladder stops being a list of names:
-
-      COMPILED   gates: LOGICAL HALTED MEASURED    field: CompilerOutput
-      MEASURED   gates: LOGICAL HALTED             field: LeanProcess
-      HALTED     gates: LOGICAL                    field: ElaborationProcess
-      LOGICAL    gates: --                         field: HeartbeatProcess
-
-  One gate shed per rung, and one projection shed per rung, in lockstep.  That
-  second column is not a coincidence and it is not new: it is precisely the walk
-  the monte takes at the top of this file,
-
-      a_truth_about_the_world . too_good_to_be_true . description . stamina
-        CompilerOutput  ->  LeanProcess  ->  ElaborationProcess  ->  HeartbeatProcess
-
-  read from the other end.  Descending the ladder IS the projection.  The tower
-  the monte walks down to find out where the quarter went is the same tower these
-  defs climb back up, and each rung costs exactly one gate.
-
-  So ALMOST all the way around.  HALTED is one gate from the floor -- only LOGICAL
-  is left, and LOGICAL asks for no seam gate at all.  You have come the whole way
-  and there is one step you cannot pay for by descending further, because there is
-  nothing below it to descend to.
-
-  And note what `halted?` does with the question it is named for.  Its default
-  matches the program and hands back `NOOP` -- as a `Prop`.  The halting question
-  gets asked, and the answer that comes back is no operation.
--/
-def ALMOST_ALL_THE_WAY_AROUND
-    -- same discipline: cards down while there is still one COMPILED on the table.
-    [_the_shill: INFERRED Box Pigeon what_i_experience what_others_observe]
-    (__left_card__ : Prop)
-    (__quarter__ : INFERRED Box Pigeon what_i_experience what_others_observe)
-    (__right_card__ : Prop)
-    (a_bent_card: COMPILED Box Pigeon what_i_experience what_others_observe)
-    (where_the_quarter_is : LOCAL Box Pigeon :=
-        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
-    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
-    -- one gate.  The last one that costs anything.
-    [LOGICAL Box Pigeon where_the_quarter_is the_readout_after_the_shuffle]
-    -- one rung further down the tower than `THE_QUARTER_IS_ALWAYS_IN_THE_MIDDLE`
-    -- took: that def wanted the LeanProcess, this one wants its `.description`.
-    (the_paper_that_never_converged :
-        ElaborationProcess Box Pigeon where_the_quarter_is the_readout_after_the_shuffle)
-    : HALTED Box Pigeon where_the_quarter_is the_readout_after_the_shuffle :=
-  { scientific_paper := the_paper_that_never_converged }
-
-/-
-  BUT WE ARE CLOSE ENOUGH TO SEE THE PI.  SORRY, NO CAKE HERE.
-
-  The floor.  Finish the table and both columns run out together:
-
-      COMPILED   gates: LOGICAL HALTED MEASURED    field: CompilerOutput
-      MEASURED   gates: LOGICAL HALTED             field: LeanProcess
-      HALTED     gates: LOGICAL                    field: ElaborationProcess
-      LOGICAL    gates: --                         field: HeartbeatProcess
-
-  Three gates, two, one, none.  And the tower is exhausted at exactly the same
-  step: `HeartbeatProcess` is the bottom of `.too_good_to_be_true.description
-  .stamina`, so there is nothing left below to project.  The ladder and the walk
-  end on the same rung.  That is the loop closed -- which is the only circle
-  anywhere in this file, and it is why you can SEE the pi from here.
-
-  You cannot have it.  `pi` lives in `Closure`, which hangs off `INFERRED.α`, at
-  the TOP of the ladder.  You went all the way down to close the circle and the
-  number is at the other end of it.
-
-  Now the cake, or rather the absence of one.  Every rung above was handed its
-  field by the card: project once, done.  LOGICAL asks for a second field the card
-  never carries --
-
-      microsoft_basic : Calibration.EKG
-
-  -- and `EKG.reference` is PRIVATE.  This file cannot build one.  Not "should
-  not": cannot.  The two that exist are `EKG.raw` and `EKG.executed`, taken off
-  the shelf as-is, and the honest thing is to say which one was taken and why.
-
-  Look at what actually separates them:
-
-      raw       reference := booleanConstructor   embigger? := fun a b => a -> b
-      executed  reference := loadConstructor      embigger? := fun a b => a -> b
-
-  The comparison is IDENTICAL.  Only the reference differs.  Which is exactly
-  what a calibration is and all it ever was: a choice of zero, never a choice of
-  scale.  `executed` is taken here because Episode 5's own LOGICAL instance takes
-  it, so the applied rung and the found rung agree on where zero is.
-
-  And `logical?` is `fun a b => a <= b` over YarnTheory.  Episode 4 says it in
-  the margin better than this comment can: _a_ comes before _b_ in the order of
-  the arguments.  That's it.  At the bottom of the ladder the whole of logic is
-  which argument you wrote first.
--/
-def BUT_WE_ARE_CLOSE_ENOUGH_TO_SEE_THE_PI___SORRY_NO_CAKE_HERE
-    -- same discipline: cards down while there is still one COMPILED on the table.
-    [_the_shill: INFERRED Box Pigeon what_i_experience what_others_observe]
-    (__left_card__ : Prop)
-    (__quarter__ : INFERRED Box Pigeon what_i_experience what_others_observe)
-    (__right_card__ : Prop)
-    (a_bent_card: COMPILED Box Pigeon what_i_experience what_others_observe)
-    (where_the_quarter_is : LOCAL Box Pigeon :=
-        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
-    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
-    -- no gates.  Nothing left to pay.  The last rung is free and it is the only
-    -- one that asks you to bring something the card cannot give you.
-    (a_ball_of_yarn :
-        HeartbeatProcess Box Pigeon where_the_quarter_is the_readout_after_the_shuffle)
-    : LOGICAL Box Pigeon where_the_quarter_is the_readout_after_the_shuffle :=
-  { feelings := a_ball_of_yarn
-    microsoft_basic := Calibration.EKG.executed }
-
-/-
-  THE LAW OF NU-TRINOS, IN TWO STEPS.
-
-  Below LOGICAL there is no gate left, because below LOGICAL is not a rung at all
-  -- it is the SEAM ITSELF.  `LOCAL` and `UNIVERSAL` are the pair `(what_i_experience,
-  what_others_observe)` that every rung above was indexed BY.  We have been standing on them
-  the whole way down.
-
-  And `UNIVERSAL` is indexed by a `LOCAL`, which is why this is a ONE STEP HOP and
-  not a fall: you cannot move both at once.  You move the universal over the local
-  you already have, and only then do you get a new local out of it.  Two steps,
-  in that order, and the order is the content.
-
-  What each one actually holds:
-
-      LOCAL       the_continuum : BigRedDogProcess     the_ball : Prop
-      UNIVERSAL   the_train_of_thought : CalculusProcess     once_around, twice_around : SpaceTimePath
-
-  Two SpaceTimePaths.  Two.  That is the whole law of nu-trinos sitting in the
-  field list: `once_around` is the short path and `twice_around` is the long one,
-  and the shuffle below sets
-
-      twice_around := the_train_of_thought.photon_torpedo once_around
-
-  -- the long way is the short way advanced one step.  1->2 then 2->3, against
-  1->3 direct, which is the triangle inequality written as a record field.  The
-  nu-trino carries top from one place to another and needs two turns to get back,
-  and neither of those sentences is a metaphor here; they are `once_around` and
-  `twice_around`.
-
-  Episode 5 already has both of these as INSTANCES
-  (`PERHAPS_ONE_THAT_USES_THE_DEVICE_ITSELF`, `PERHAPS_ONE_THAT_USES_CALCULUS`).
-  These are the same two constructions as DEFS: applied, not found.
--/
-
-/-
-  STEP ONE.  WATCH THE OUTSIDE CARDS GET SHUFFLED.
-
-  A new UNIVERSAL over the SAME local, capturing the old universal.  Look at which
-  fields move.  `the_train_of_thought` is passed through untouched.  The two
-  SpaceTimePaths -- the outside cards -- are the only things that go anywhere.
--/
-def WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED
-    [_the_shill: INFERRED Box Pigeon what_i_experience what_others_observe]
-    (__left_card__ : Prop)
-    (__quarter__ : INFERRED Box Pigeon what_i_experience what_others_observe)
-    (__right_card__ : Prop)
-    (a_bent_card: COMPILED Box Pigeon what_i_experience what_others_observe)
-    (where_the_quarter_is : LOCAL Box Pigeon :=
-        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
-    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon where_the_quarter_is)
-    : UNIVERSAL Box Pigeon where_the_quarter_is :=
-  { -- the inside card of the UNIVERSAL.  Handed straight through.
-    the_train_of_thought := the_readout_after_the_shuffle.the_train_of_thought
-    -- and the outside two, shuffled: the long way is the short way, torpedoed.
-    once_around  := the_readout_after_the_shuffle.once_around
-    twice_around :=
-      the_readout_after_the_shuffle.the_train_of_thought.photon_torpedo
-        the_readout_after_the_shuffle.once_around }
-
-/-
-  STEP TWO.  BUT THE INNER CARD DOES NOT.
-
-  A new LOCAL, capturing the old one, built from the train that just got shuffled.
-  `the_continuum` is rebuilt -- it comes off the new train's local schedule, so it
-  moved.  `the_ball` does not.  It is not copied, not rebuilt, not re-derived: it
-  is the SAME `Prop`, projected straight off the local we started with.
-
-  That is the whole hustle stated as one field assignment.  Everything on the
-  outside can be shuffled honestly, in full view, by a real function, and the
-  thing under the middle card never goes anywhere.
--/
-def BUT_THE_INNER_CARD_DOES_NOT
-    [_the_shill: INFERRED Box Pigeon what_i_experience what_others_observe]
-    (__left_card__ : Prop)
-    (__quarter__ : INFERRED Box Pigeon what_i_experience what_others_observe)
-    (__right_card__ : Prop)
-    (a_bent_card: COMPILED Box Pigeon what_i_experience what_others_observe)
-    (where_the_quarter_is : LOCAL Box Pigeon :=
-        a_bent_card.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
-    -- the shuffled universal from step one.  Named `the_a_train` after Episode 5.
-    (the_a_train : UNIVERSAL Box Pigeon where_the_quarter_is)
-    : LOCAL Box Pigeon :=
-  { the_continuum := the_a_train.the_train_of_thought.the_local_schedule
-    the_ball      := where_the_quarter_is.the_ball }
-
-/-
-  THE PATTER.  BULLSHIT UP TO REAL, WHICH IS ONE SENTENCE SAID BACKWARDS.
-
-  Below the seam the classes stop being indexed by anything and start being
-  indexed by EACH OTHER.  BULLSHIT needs nothing, PROPAGANDA needs BULLSHIT,
-  ACOLYTE needs both, and so on up to REAL, which needs all six beneath it.  The
-  template is those seven slots, and LOCAL sits in the EIGHTH -- it is the thing
-  you feed in, and the only thing that is not one of the seven.
-
-  Now the part that is actually a construction rather than a joke.  The seven
-  `*Process` structures nest in EXACTLY the same order as the seven classes, one
-  field apiece:
-
-      UniverseTensor      .frame_of_reference  ->  ReligiousProcess
-      ReligiousProcess    .we_experience       ->  ScientificProcess
-      ScientificProcess   .shows_us            ->  LearningProcess
-      LearningProcess     .teaching            ->  InitiationProcess
-      InitiationProcess   .axioms              ->  CrusadeProcess
-      CrusadeProcess      .to_pwn_n00bz        ->  ArmWaveProcess
-      ArmWaveProcess      .dunking_contest     ->  JordanProcess
-
-  and `LOCAL.the_continuum.the_æther` is a UniverseTensor.  So every one of the
-  seven defs below is the SAME def -- take the local, walk to the æther, then
-  project down exactly as far as the class you are building requires.  Nothing
-  is constructed.  Everything is projected.
-
-  Which is why the patter reads as one descending sentence and why each line is
-  one `.` longer than the line above it.  The deeper you go, the more you have to
-  say to stay ahead of the question, and the answer to "how do you know?" is
-  always another clause.  Read the seven names top to bottom and the excuse
-  never terminates; it just gets more expensive.
-
-  Where it bottoms out is the joke, and it is in Episode 4's own margin: the last
-  thing under all seven layers is `ArmWaveProcess.guess : Spline`.  Rock bottom is
-  a guess at a spline.
-
-  (The operator calls this QED and the shape is right: each layer is legitimated
-  by appeal to a deeper one, the corrections nest, and the series does not
-  terminate in something self-supporting.  That is a structural remark about this
-  file, not a claim about physics.)
--/
-
-/-
-  THE SLIP POINT.  SOURCE UP TO OF, AND WHY THIS HALF IS DIFFERENT.
-
-  Everything from REAL down to BULLSHIT was PROJECTION: one walk, one `.` per
-  class, nothing built.  This half is the opposite and the difference is the
-  whole point.  Here nothing can be projected, because there is nothing below to
-  project FROM.  Episodes 1 through 3 are a strict repeating triple --
-
-      inductive   ->   structure   ->   class
-      Equivalation     DigitalProcess   SOURCE
-      Encoding         CompiledProcess  EXECUTED
-      Abstraction      MathematicalProcess VALUE
-      Sum              AddingProcess    MAGNITUDE
-      Product          MultiplyingProcess SCALED
-      Basis            BASICProcess     LOAD
-      Polynomial       JordanProcess    OF
-
-  -- and each class reaches UP one step to the structure above it, which reaches
-  UP one step to the inductive above THAT.  One step up, one step down, seven
-  times.  That is the slip: the ladder does not descend here, it ratchets.
-
-  So each def below CONSTRUCTS its process by putting the previous class's
-  process INSIDE it and adding the one new inductive value that rung is for.
-  Which forces the implementation order.  You cannot write these in patter order
-  -- the patter reads OF first and SOURCE last, and the code has to run
-  exactly backwards from the way it is spoken.  Read the seven names bottom to
-  top and you get the sales pitch; read the seven defs top to bottom and you get
-  the build.  Neither order is the other one reversed by accident.
-
-  These are Episode 5's instances written as defs -- found there, applied here.
--/
-
--- SOURCE.  The floor, and the only rung that builds from the GUNGAN rather than
--- from the rung beneath it, because there is no rung beneath it.
-def LETS_SEE_IF_WE_CAN_FIND_THE_NUMBER_IN_THE_CODE_NOW
-    : SOURCE Box Pigeon :=
-  { cd_process :=
-      { meesa_process := jarjar.meesa_process
-        zero := .physics nowtrino.fact jarjar.meesa_process.concept }
-    one := .zero_like nowtrino.fact (.physics nowtrino.fact jarjar.meesa_process.concept) }
-
--- EXECUTED.  One step up: take the SOURCE whole, both as the process underneath
--- AND as the `source` field.  The compiled thing carries its own source with it.
-def BUT_YOU_CANT_GET_THE_NUMBER_UNTIL_AFTER_THE_PROOF_HALTS
-    : EXECUTED Box Pigeon :=
-  { compiled_process :=
-      { digital_process := LETS_SEE_IF_WE_CAN_FIND_THE_NUMBER_IN_THE_CODE_NOW.cd_process
-        source         := LETS_SEE_IF_WE_CAN_FIND_THE_NUMBER_IN_THE_CODE_NOW
-        opcodes        := .boot nowtrino.fact (.physics nowtrino.fact jarjar.meesa_process.concept) } }
-
--- VALUE.  The mapping is where compile and execute swap places.  That swap is
--- the only content in this rung and it is an involution: do it twice, nothing.
-def THIS_WILL_GIVE_US_A_RATIO___EVENTUALLY_CUZ_THATS_HOW_THE_MEASUREMENT_TOOL_WORKS_NOT_CUZ_I_WANT_ONE
-    : VALUE Box Pigeon :=
-  { mathematical_process :=
-      { compiled_process := BUT_YOU_CANT_GET_THE_NUMBER_UNTIL_AFTER_THE_PROOF_HALTS.compiled_process
-        mapping := fun input =>
-          match input with
-          | .satire_about finite_element_analysis => .satire_about finite_element_analysis
-          | .compile f e a => .execute f e a
-          | .execute f e a => .compile f e a }
-    monad := .satire_about nowtrino.fact }
-
--- MAGNITUDE.  First rung that needs something from OUTSIDE the chain: the
--- accumulation comes off PRESENT, not off VALUE.  Adding needs a gift.
-def SO_THAT_IT_CAN_ACCURATELY_MEASURE_HOW_LONG_A_PROOF_TAKES_WRT_THE_LONGEST_IT_CAN_MEASURE
-    : MAGNITUDE Box Pigeon :=
-  { adding_process :=
-      { mideastern_process := THIS_WILL_GIVE_US_A_RATIO___EVENTUALLY_CUZ_THATS_HOW_THE_MEASUREMENT_TOOL_WORKS_NOT_CUZ_I_WANT_ONE.mathematical_process
-        plus               := THIS_WILL_GIVE_US_A_RATIO___EVENTUALLY_CUZ_THATS_HOW_THE_MEASUREMENT_TOOL_WORKS_NOT_CUZ_I_WANT_ONE
-        sum                := .zero nowtrino.fact.truth gift_from.santa_claus.accumulation } }
-
--- SCALED.  Multiplication is addition run against itself: the product is built
--- FROM the sum one rung down, and the running total restarts at the tree.
-def AND_AUTOMATICALLY_FIND_WHAT_THE_LARGEST_NAT_IT_CANNOT_SUPPORT
-    : SCALED Box Pigeon :=
-  { multiplying_process :=
-      { adding_process := SO_THAT_IT_CAN_ACCURATELY_MEASURE_HOW_LONG_A_PROOF_TAKES_WRT_THE_LONGEST_IT_CAN_MEASURE.adding_process
-        product        := .one nowtrino.fact.truth (SO_THAT_IT_CAN_ACCURATELY_MEASURE_HOW_LONG_A_PROOF_TAKES_WRT_THE_LONGEST_IT_CAN_MEASURE : MAGNITUDE Box Pigeon).adding_process.sum
-        total          := .zero nowtrino.fact.truth (.tree nowtrino.fact) } }
-
--- LOAD.  TEN is the accumulation again -- the same gift MAGNITUDE opened, read
--- a second time as an Area.  This is the rung where the compiler reads it out.
-def THE_COMPILER_WILL_READ_IT_OUT_FOR_YOU
-    : LOAD Box Pigeon :=
-  { basic_operation :=
-      { GOSUB := AND_AUTOMATICALLY_FIND_WHAT_THE_LARGEST_NAT_IT_CANNOT_SUPPORT.multiplying_process
-        TEN   := gift_from.santa_claus.accumulation
-        span  := .origin nowtrino.fact.truth (AND_AUTOMATICALLY_FIND_WHAT_THE_LARGEST_NAT_IT_CANNOT_SUPPORT : SCALED Box Pigeon).multiplying_process.product } }
-
--- OF.  The top of this half, and the polynomial it ends on is
--- `.constant` -- the ground state, the transform that has finally dissipated.
--- No contour, no residue, no complex analysis.  Just a constant.
-def NO_NEED_TO_USE_COMPLEX_ANALYSIS_TO_UNDERSTAND_THE_INDEX_OF_THE_CONSTANT
-    : OF Box Pigeon :=
-  { galerkin_process :=
-      { ANSYS_process := THE_COMPILER_WILL_READ_IT_OUT_FOR_YOU.basic_operation
-        polynomial    := .constant .Truth } }
-
-
-/-
-  THE WALK BACK DOWN.  SOURCE TO DISTINGUISHABLE, FIFTEEN RUNGS.
-
-  The other fork out of SOURCE.  Upward it ratchets to OF by building;
-  downward it falls to DISTINGUISHABLE by projecting, one `.` per rung.  SOURCE
-  is the only class in the file that two different chains both start from.
-
-  These take the rung above as an INSTANCE from the band rather than calling the
-  previous def, and that is forced, not stylistic.  These classes carry their own
-  universe parameters -- look at DISTINGUISHABLE:
-
-      symbol : Type Value
-
-  where `Value` is a UNIVERSE, not a type.  So `Box Pigeon` does not determine
-  them, a type ascription `(x : OBSERVED Box Pigeon)` does not determine them,
-  and an inlined call leaves them dangling as `?u`.  Only a binder fixes a
-  universe.  Which is the third distinct way this file has now been told the same
-  thing: you may pass a card, you may name its type, but the moment you need what
-  is INSIDE it, somebody has to have been holding it all along.
-
-  Read the names in order.  The mark is being walked back to the bottom, each
-  rung answering a question with a smaller question, until the last one.
--/
-
-namespace Metavariable
-
-def lt {α : Type ι} (x y : Metavariable α) : Prop := le x y ∧ ¬ le y x
-/-- ACROSS THE SEAM.  All universes are strictly MORE computation, so the
-comparison consults neither argument: one level up is above everything below,
-by type alone.  The values are never looked at; the universe already decided. -/
-def all_universes_are_strictly_MORE_computation {α : Type ι} :
-    Metavariable α → Metavariable (ULift α) → Prop := fun _ _ => True
-
-/-- And nothing comes back down.  The ratchet, stated as a comparison: the
-reverse seam is False before either argument is read.  ULift goes up; this is
-the entire arrow of time, at one line per direction. -/
-def no_universe_comes_back_down {α : Type ι} :
-    Metavariable (ULift α) → Metavariable α → Prop := fun _ _ => False
-end Metavariable
-
-instance {α : Type ι} : LE (Metavariable α) where
-  le := Metavariable.le
-instance {α : Type ι} : LT (Metavariable α) where
-  lt := Metavariable.lt
-
--- GUNGAN.  If the math did not land, say it again in Gungan.
-def AND_IF_YOU_DONT_FOLLOW_THE_MATH_ILL_SAY_IT_IN_GUNGAN : GUNGAN Box Pigeon :=
-  { meesa_process := the_argument.cd_process.meesa_process }
-
--- MEASURABLE.
-def MEESA_GOT_A_METER_RIGHT_HERE : MEASURABLE Box Pigeon :=
-  { gauge_process := jarjar.meesa_process.gauge_process }
-
--- PRESENT.  `quantum := Box` -- the present is the box it came in.
-def AND_LOOK_ITS_ALREADY_SHOWING_SOMETHING : PRESENT Box Pigeon :=
-  { santa_claus := the_bug.gauge_process.sensing_process
-    quantum     := Box }
-
--- OBSERVED.  The slip enters here, off the static fraction.  Episode 2 named
--- this `SlipProcess` and put it directly underneath the observation.
-def WHICH_YOU_JUST_WATCHED_ME_OBSERVE : OBSERVED Box Pigeon :=
-  { slip_process := gift_from.santa_claus.static_fraction
-    observation  := Box }
-
--- COMPARABLE.  `smaller_than` is x <= y AND y <= x.  Comparison at this depth
--- does not order anything.  It only ever agrees.
-def SO_NOW_WE_CAN_COMPARE_IT_TO_THE_OTHER_ONE : COMPARABLE Box Pigeon :=
-  { physical_process := fallacy.slip_process.physical_process
-    smaller_than     := fun x y => Metavariable.le x y ∧ Metavariable.le y x }
-
--- PHYSICAL.  The threshold is read off the very process it is meant to threshold.
-def AND_BOTH_OF_THEM_ARE_PHYSICALLY_REAL_I_PROMISE : PHYSICAL Box Pigeon :=
-  { noisy_process := number_of_clicks.physical_process.noisy_process
-    threshold     := number_of_clicks.physical_process.noisy_process.program
-    admissible?   := fun _ _ => by intro _; rfl }
-
--- REPRESENTABLE.  Episode 5 takes TWO separate PHYSICALs here, signal and noise.
--- Both roles are played by `hiss`, and that is not a shortcut: hiss against hiss
--- CANCELS for a cyclic, commutative process.  The anechoic chamber and the hiss
--- inside it are the same physical process, and running one against the other is
--- how the noise leaves.  You do not subtract the noise.  You commute it.
-def I_CAN_EVEN_WRITE_THEM_DOWN_FOR_YOU : REPRESENTABLE Box Pigeon :=
-  { calculation_process :=
-      { hiss.noisy_process.turing_process with
-          program := hiss.noisy_process.turing_process.program
-          computational_process :=
-            { hiss.noisy_process.turing_process.computational_process with
-                closure := fun a_tally => a_tally } }
-    representable? := fun a_fact a_study =>
-      ⟨hiss.noisy_process.turing_process.turing_step? (Computation.program a_fact a_study), rfl⟩ }
-
--- NUMERIC.
-def AS_NUMBERS_IF_THATS_WHAT_YOU_WANT : NUMERIC Box Pigeon :=
-  { computational_process := glyph.calculation_process.computational_process }
-
--- REPEATABLE.
-def AND_ILL_DO_IT_AGAIN_AS_MANY_TIMES_AS_YOU_LIKE : REPEATABLE Box Pigeon :=
-  { repeatable_process := click_count.computational_process.repeatable_process }
-
--- BINARY.  `bit` is the band's bit, iterated once.  A bit is only ever the
--- previous bit, flipped.
-def ITS_ONLY_EVER_HEADS_OR_TAILS_ANYWAY : BINARY Box Pigeon :=
-  { observation_process := nonstop.repeatable_process.observation_process
-    zero := .nil nowtrino.fact
-    one  := .index
-              nowtrino.fact
-              nonstop.repeatable_process.observation_process.cauchy_process.limit_process.sequence
-              (.nil nowtrino.fact)
-    bit  := nonstop.repeatable_process.observation_process.iterate flicker.bit }
-
--- RESIDUE.
-def WHATEVER_IS_LEFT_OVER_IS_THE_PART_YOU_MISSED : RESIDUE Box Pigeon :=
-  { cauchy_process := flicker.observation_process.cauchy_process }
-
--- ENCODED.
-def AND_IT_ALL_CONVERGES_TO_SOMETHING_I_ENCODED_EARLIER : ENCODED Box Pigeon :=
-  { limit_process := converged_value.cauchy_process.limit_process }
-
--- COUNTABLE.
-def WHICH_YOU_COULD_COUNT_IF_YOU_HAD_ALL_DAY : COUNTABLE Box Pigeon :=
-  { index := some_number.limit_process.indexing_process }
-
--- ADMISSIBLE.
-def AND_COUNTING_IS_ADMISSIBLE_EVIDENCE_RIGHT : ADMISSIBLE Box Pigeon :=
-  { counting_process := ℵ.index.count }
-
-/-
-  DISTINGUISHABLE.  The floor of the entire device, and read what it says.
-
-      different?   := fun _ => True
-      dec_distinct := fun _ => isTrue trivial
-
-  Everything is distinguishable.  Always.  Without checking.  Two chains out of
-  SOURCE, a seam, four gates and a shill, and the whole structure stands on a rung
-  that answers "can you tell these two apart?" with `True` by fiat and decides it
-  with `trivial`.
-
-  That is the bottom card.  It was never under any of the three.
--/
-def SO_TELL_ME___CAN_YOU_TELL_THESE_TWO_APART : DISTINGUISHABLE Box Pigeon :=
-  { fact         := nowtrino.fact
-    symbol       := nowtrino.symbol
-    different?   := fun _ => True
-    not_the_same := fun _ => isTrue trivial }
-
--- REAL.  The question the mark actually asks.
-def HOW_DO_WE_KNOW_THE_COIN_IS_UNDER_THE_CARD
-    (principia : LOCAL Box Pigeon)          -- the eighth spot
-    : REAL Box Pigeon :=
-  { by_His_noodly_appendage := principia.the_continuum.the_æther
-    nagging_doubt           := .logically principia.the_ball }
-
--- WITNESSED.  One projection deeper: the æther's frame of reference.
-def YOU_SAW_ME_PUT_IT_THERE
-    (principia : LOCAL Box Pigeon)
-    : WITNESSED Box Pigeon :=
-  { we_saw         := principia.the_continuum.the_æther.frame_of_reference
-    the_experiment := principia.the_continuum.the_æther.frame_of_reference.in_the_literature }
-
--- TRUTH.  Deeper again: what the frame of reference experiences.
-def AND_I_GLUED_IT_TO_THE_TABLE
-    (principia : LOCAL Box Pigeon)
-    : TRUTH Box Pigeon :=
-  { becomes := principia.the_continuum.the_æther.frame_of_reference.we_experience }
-
--- SCIENTIFIC.  Deeper again, and the first one that also has to carry a value:
--- the `invariant` comes out of the same walk, so even the constant is projected.
-def IN_ORDER_TO_SHOW_YOU_WHERE_ORBITAL_MECHANICS_COMES_FROM
-    (principia : LOCAL Box Pigeon)
-    : SCIENTIFIC Box Pigeon :=
-  { discovering := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms
-    invariant   := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.invariant }
-
--- ACOLYTE.  Deeper again: who taught the learner.
-def AND_I_SHOWED_YOU_HOW_IT_WORKS
-    (principia : LOCAL Box Pigeon)
-    : ACOLYTE Box Pigeon :=
-  { euclid := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.teaching }
-
--- PROPAGANDA.  Deeper again: the axioms the teaching rests on.
-def BY_EXPLAINING_A_GIANT_GRIFT
-    (principia : LOCAL Box Pigeon)
-    : PROPAGANDA Box Pigeon :=
-  { questions := principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.teaching.axioms }
-
--- BULLSHIT.  The floor of the patter, and the longest projection in the file.
--- One more `.` past this is `dunking_contest`, which is where the OTHER chain
--- picks up at OF.  `guess : Spline` sits BESIDE it, not below it: the
--- rock bottom is not further down the walk, it is off to one side of it.
-def OF_COUCHING_YOUR_ARGUMENT_IN_OPAQUE_MATH
-    (principia : LOCAL Box Pigeon)
-    : BULLSHIT Box Pigeon :=
-  { arm_wave_process :=
-      principia.the_continuum.the_æther.frame_of_reference.we_experience.shows_me_higher_order_terms.teaching.axioms.to_pwn_n00bz }
-
-/-
-  THE WALK BACK UP, AND WHERE IT COSTS YOU.  PHYSICAL -> COMPARABLE -> PRESENT
-  -> MEASURABLE, with OBSERVED left out.
-
-  Going DOWN, these four rungs are free: each one projects out of the one above
-  and nothing is invented.  Turn around and the same four rungs are not free at
-  all, and the bill is itemised by the structures themselves:
-
-      PhysicalProcess   noisy_process  representation  invariant  value
-      SlipProcess       physical_process  projection  stress  threshold
-      SensingProcess    static_fraction  accumulation
-      GaugeProcess      sensing_process  clock
-
-  The left column comes up the chain.  Everything to the right of it does not
-  exist below and has to be SUPPLIED.  That is the whole asymmetry: descending
-  reads, ascending pays.
-
-  And look at what OBSERVED was carrying, because leaving it out is the point.
-  Its `slip_process` is the only source of a SlipProcess, so going up without it
-  you must build one -- and a SlipProcess wants a `projection: Sophism`.  Sophism
-  is Episode 2's four-armed thing, "the direction of the argument T T, T F, F T".
-  Going down, the direction of the argument is read off the observation.  Going
-  up, with nobody observing, you pick it yourself.
-
-  THAT is the slip point.  It is not an error and nothing here is unsound.  It is
-  a `projection` field with no upstream source, sitting exactly one rung below the
-  meter, and whoever climbs supplies it.
--/
-
--- COMPARABLE, upward.  PHYSICAL carries only the noisy process; a PhysicalProcess
--- wants three more things it has never heard of.  They come in as parameters
--- because there is nowhere below to get them from.
-def NOW_WATCH_ME_RUN_THE_SAME_STEPS_BACKWARDS
-    (a_representation : nowtrino.symbol)
-    (an_invariant     : Metavariable nowtrino.symbol)
-    (a_value          : Metavariable (ULift nowtrino.symbol))
-    : COMPARABLE Box Pigeon :=
-  { physical_process :=
-      { noisy_process  := hiss.noisy_process
-        representation := a_representation
-        invariant      := an_invariant
-        value          := a_value }
-    smaller_than := fun x y => Metavariable.le x y ∧ Metavariable.le y x }
-
--- PRESENT, upward, THROUGH the missing rung.  No OBSERVED means no SlipProcess
--- to project, so one gets built here -- and `projection` is chosen, not read.
-def AND_SINCE_NOBODY_OBSERVED_IT_I_GET_TO_PICK_THE_SLIP
-    : PRESENT Box Pigeon :=
-  { santa_claus :=
-      { static_fraction :=
-          { physical_process := number_of_clicks.physical_process
-            -- the direction of the argument, supplied by the climber
-            projection := .origin nowtrino.fact hiss.noisy_process.program FACT
-            stress     := hiss.noisy_process.program
-            threshold  := FACT }
-        accumulation := .tree nowtrino.fact }
-    quantum := Box }
-
--- MEASURABLE, upward.  One more invented field: the clock.  The meter needs a
--- clock and the sensing process below it does not have one.
-def WHICH_IS_HOW_THE_METER_ENDS_UP_READING_WHAT_I_WANTED
-    : MEASURABLE Box Pigeon :=
-  { gauge_process :=
-      { sensing_process := gift_from.santa_claus
-        clock := .this_superpigeon nowtrino.fact (.tree nowtrino.fact) } }
-
-/-
-  THE FOUR THEOREMS.
-
-  Four of the defs above hand a field STRAIGHT THROUGH, so each one's NAME is a
-  checkable identity claim.  It closes by `rfl` or it was never true.
-
-  These take the card from the BAND rather than binding one.  Binding it would
-  put a second COMPILED in scope, and the defs were elaborated against the band's
-  -- `synthesized a_bent_card / inferred inst✝`, the same collision as the monte.
-  The proof of a thing that does not move must not move the thing.
-
-  THE AXIOM LEDGER, read off `#print axioms` for all four:
-
-      THE_INNER_CARD_REALLY_DOES_NOT_MOVE       propext, Quot.sound
-      AND_THE_OUTSIDE_ONES_REALLY_DO            propext
-      THE_DISTANCE_IS_THE_ONE_YOU_HANDED_OVER   propext
-      AND_THE_FLOOR_NEVER_LOOKS                 no axioms at all
-
-  Read the first line against the last.  `Quot.sound` -- the one axiom available
-  here that identifies things the type checker sees as different -- is used by
-  exactly one of the four, and it is the one asserting that the thing under the
-  middle card did not move.  The other two identities are ordinary.  And the
-  floor, which says everything is distinguishable, costs nothing whatsoever,
-  because it never looks.
-
-  That is reported as MEASURED, not as designed.  The ledger says which axioms
-  the proof terms used; it does not say anyone put them there on purpose.
--/
-
--- ONE.  The inner card really does not move: the same `Prop`, out the far side.
-theorem THE_INNER_CARD_REALLY_DOES_NOT_MOVE
-    (__left_card__ __right_card__ : Prop)
-    (the_a_train : UNIVERSAL Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
-    : (BUT_THE_INNER_CARD_DOES_NOT __left_card__ an_inference __right_card__ the_card_on_the_table
-          (the_a_train := the_a_train)).the_ball
-      = the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter.the_ball
-  := rfl
-
--- TWO.  And the outside ones really do.  `once_around` fixed, `twice_around` the
--- short way torpedoed once.  Both halves, or the shuffle was a mime.
-theorem AND_THE_OUTSIDE_ONES_REALLY_DO
-    (__left_card__ __right_card__ : Prop)
-    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
-    : (WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED __left_card__ an_inference __right_card__ the_card_on_the_table
-          (the_readout_after_the_shuffle := the_readout_after_the_shuffle)).once_around
-        = the_readout_after_the_shuffle.once_around
-    ∧ (WATCH_THE_OUTSIDE_CARDS_GET_SHUFFLED __left_card__ an_inference __right_card__ the_card_on_the_table
-          (the_readout_after_the_shuffle := the_readout_after_the_shuffle)).twice_around
-        = the_readout_after_the_shuffle.the_train_of_thought.photon_torpedo
-            the_readout_after_the_shuffle.once_around
-  := ⟨rfl, rfl⟩
-
--- THREE.  The measurement IS the distance you handed over.  MEASURED costs two
--- gates and adds nothing: the gates buy the wrapper, never the number.
-theorem THE_DISTANCE_IS_THE_ONE_YOU_HANDED_OVER
-    (__left_card__ __right_card__ : Prop)
-    (the_readout_after_the_shuffle : UNIVERSAL Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter)
-    [LOGICAL Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter the_readout_after_the_shuffle]
-    [HALTED Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter the_readout_after_the_shuffle]
-    (how_far_the_quarter_went : LeanProcess Box Pigeon the_card_on_the_table.a_truth_about_the_world.too_good_to_be_true.description.stamina.bullshit_meter.the_quarter the_readout_after_the_shuffle)
-    : (THE_QUARTER_IS_ALWAYS_IN_THE_MIDDLE __left_card__ an_inference __right_card__ the_card_on_the_table
-          (the_readout_after_the_shuffle := the_readout_after_the_shuffle)
-          (how_far_the_quarter_went := how_far_the_quarter_went)).a_distance
-      = how_far_the_quarter_went
-  := rfl
-
--- FOUR.  And the floor never looks.  `different?` holds of EVERY symbol and the
--- proof is `trivial`, because the definition is `fun _ => True`.  This is what
--- makes the other three cheap: at the bottom, telling things apart is free
--- because nothing is ever checked.
---
--- THIS DECLARATION EMITS A WARNING AND THE WARNING STAYS.  It names twenty-eight
--- section variables that are in scope here and unused -- the entire band, every
--- gate from ADMISSIBLE to REAL, carried along and never once consulted to decide
--- whether two things differ.  That is not linter noise, it is the measurement:
--- the floor holds up all twenty-nine classes and reads none of them.
---
--- There was a `set_option linter.unusedSectionVars false in` on this line.  It
--- was put there to make the build quiet.  Silencing the check directly above the
--- theorem that says nothing is ever checked is the bent card, so it is gone, and
--- the build prints what it found.
-set_option linter.unusedSectionVars false in
-theorem AND_THE_FLOOR_NEVER_LOOKS
-    : ∀ s, (SO_TELL_ME___CAN_YOU_TELL_THESE_TWO_APART (Box := Box) (Pigeon := Pigeon)).different? s
-  := fun _ => trivial
-
-
--- AND LOOK AT INFERRED.  The band has carried an INFERRED since the cards
--- went down, and INFERRED carries α : Closure -- the constant's seat at the
--- top of the ladder, the pi you could see from the floor and never have.
--- Nothing is computed here.  You look, and the number is on the table,
--- because it always was.
-set_option linter.unusedSectionVars false in
-def the_number_was_always_on_the_table : Closure := an_inference.α
-
--- THE RESULT.  Episode 2's metavariable -- "a variable for something that
--- doesn't exist" -- based on the α the band was carrying all along.  Said
--- inside the section, because the section IS the variables.
-set_option linter.unusedSectionVars false in
-def the_result : Metavariable Closure := .base nowtrino.fact an_inference.α
-
--- LESS ≤ MORE.  The result, against the result stepped once by the compiler.
--- One more step is strictly more computation, and the le the monkey patch
--- rides on says so in its second clause: base under step, no questions asked.
--- Said inside the section, same as the result itself -- outside it the band
--- goes dark and the first thing the elaborator fails to find is a COMPARABLE
--- for a Box it can no longer name.
-set_option linter.unusedSectionVars false in
-theorem less_le_more :
-    the_result (Box := Box) (Pigeon := Pigeon)
-        (what_i_experience := what_i_experience) (what_others_observe := what_others_observe)
-      ≤ .step nowtrino.fact
-          (the_result (Box := Box) (Pigeon := Pigeon)
-            (what_i_experience := what_i_experience) (what_others_observe := what_others_observe)) := by
-  show Metavariable.le (.base nowtrino.fact an_inference.α)
-        (.step nowtrino.fact (.base nowtrino.fact an_inference.α))
-  simp [Metavariable.le]
-
-
---| FOR THE WRITING: `.same` is the arm the spec marks "converged, which is exact in LOGIC", and that is where it stays.  The turn below reaches
---| it by rfl on the ground floor, where both stanzas are theOriginFact and nothing is measured.  A METER never can: a meter has a floor and the
---| floor is the slip.  So `.different` is not a failure to converge, it is the shape the answer has -- Episode 5's `Closure.le` names its two
---| Bullshit slots `lower_bound` and `slip_bound` (Episode05:860,865), a bracket whose far wall is named after the thing that stops you reaching
---| it.  And the slip is ordered by implication: `branch_and_compare`'s `| some p, some q => p → q` (Episode05:849) is `NOT (NOT X AND Y)`
---| (Episode05:246), the device's one gate.  The calculus comes back down to it.
-
--- AND NOW TAKE IT AROUND AGAIN.  Episode 5 left EquivalenceProcess holding a Closure
--- and no way to go back around.  Here is the way around.  One turn, not a recursion --
--- the caller drives it, same as weave? and emit? and gawk_at.  Said inside the section
--- for the same reason the result is: the band has been carrying the stepper the whole
--- time, on the same INFERRED it has been carrying α on.
-set_option linter.unusedSectionVars false in
-def take_it_around_again : Closure → Closure := fun evidence =>
-  let the_process := an_inference.same_difference
-  let the_reader  := the_process.you_the_knower
-  match evidence with
-
-  | .same stanza reading =>                                                --| Closed already.  Converged stays converged -- the turn is a fixed
-      match stanza.click, nowtrino.fact.click with                  --| point on a closed closure, which is how you know the loop halts.
-      | isTrue _ , isTrue _  => evidence
-      | isTrue _ , isFalse _ => .inferred stanza nowtrino.fact reading (the_reader.gawk_at reading)
-                                  (the_reader.residue? reading (the_reader.gawk_at reading)) evidence
-      | isFalse _, isTrue _  => evidence
-      | isFalse _, isFalse _ => the_process.do_you_believe_it? reading (the_reader.gawk_at reading)
-
-  | .different stanza lower upper carried =>                               --| The entry node.  do_you_believe_it? hands us exactly this shape,
-      match stanza.click, nowtrino.fact.click with                   --| stanza already Fact.SAME, so the left coin is settled on arrival.
-      | isTrue _ , isTrue _  => .same stanza upper
-      | isTrue _ , isFalse _ => .inferred stanza nowtrino.fact lower upper
-                                  (Closure.could_be_the_same carried (the_reader.residue? lower upper)) evidence
-      | isFalse _, isTrue _  => evidence
-      | isFalse _, isFalse _ => the_process.do_you_believe_it? upper (the_reader.gawk_at upper)
-
-  | .inferred this that lower upper carried _ =>                           --| The rung -- Episode 8 wrote this one by hand as α.  Two stanzas on
-      match this.click, that.click with                              --| the node, so the node makes its own table; no nowtrino to flop it.
-      | isTrue _ , isTrue _  => .same this upper
-      | isTrue _ , isFalse _ => .inferred this nowtrino.fact upper (the_reader.gawk_at upper)
-                                  (Closure.could_be_the_same carried
-                                    (the_reader.residue? upper (the_reader.gawk_at upper))) evidence
-      | isFalse _, isTrue _  => evidence
-      | isFalse _, isFalse _ => the_process.do_you_believe_it? lower upper
-
--- AND THE NUMBER IS STILL ON THE TABLE.  Same look as before, one turn later.
--- The band goes in by NAME, the way less_le_more hands it to the_result.  A Closure
--- says nothing about the Box it came from -- that is the whole point of the seat --
--- so handing this one an α and expecting it to find its way home leaves all
--- thirty-eight arguments as metavariables and the INFERRED lookup stuck.
-set_option linter.unusedSectionVars false in
-def and_it_is_still_on_the_table : Closure :=
-  take_it_around_again (Box := Box) (Pigeon := Pigeon)
-    (what_i_experience := what_i_experience) (what_others_observe := what_others_observe) an_inference.α
-
-end Monte
-
---| FOR THE WRITING: none of the thirty-six readings ever consults an ORDER.  They match a constructor, take the Fact, and concatenate; `≤` does
---| not appear anywhere on the path from an inductive to the strip.  So the uptown/downtown convention -- which Episode 5's YarnTheory header
---| assumes and then admits "doesn't have to be, I just coded it that way", and which Episode01:189 had already offered both ways ("Why not both?
---| They both probably work") -- cannot move a single number.  Flipping it changes `le`, and nothing between an inductive and the constant calls
---| `le`.  The orders do real work elsewhere (INFERRED.inferred?, and the slip via copy_the_cite?/residue?), just never on the way to a card.
-
--- THE FOUR READINGS.  Each device structure is a list of facts; you read it with
--- the operation that fits its dimension.
-
--- TANGE THE COMPILER TAPE.  Iterate the name: the compare `c` at each cell, plus
--- the origin.
 def ThePreprint.tange : ThePreprint → List FACT
-  | .introduction f _         => [f]
-  | .methodology c _ _ _ rest => c :: rest.tange
-  | .results c _ _ _ _ _ rest => c :: rest.tange
+  | .introduction f _         => [f] -------------------+ Given a PrePrint, we can create a Tape from a list. The list is simply prepending each
+  | .methodology c _ _ _ rest => c :: rest.tange --     | fact to the list. As can be seen, the only thing that matters is the FACT of the matter:
+  | .results c _ _ _ _ _ rest => c :: rest.tange --     | Is the methodology a _TRUE_ methodology or not and are the results _TRUE_ or not. Tange
+--|  +--------------------------------------------------+ is a _new_ concept. It is the idea that the particular cards being dealt, the face down
+--|  | cards in the arms, are being picked out and evaluated as _TRUE_ or not. But notice, we start our List with a base FACT. I was the one that
+--|  | set us up the device, by the way. I feel like we discussed this before, a long time ago.
 
--- FUNGE THE MEASUREMENT.  Skip to the next click: one fact per step off the
--- origin (phase, position, velocity).
-def Measurement.funge : Measurement → List FACT
-  | .origin _ _ _                 => []
-  | .distance_to f _ _ _ _ rest   => f :: rest.funge
-  | .speed f _ _ _ _ _ _ before _ => f :: before.funge
+--| If we _tange_, we will, of course, _funge_. Now that we can pick out the _INTRODUCTORY_ FACT, we can count them. In this case, the difference
+--| is in how we handle _the choice of branch of AST_ we wish to travel when constructing our list. A Measurement will use the momentum trailing
+--| arm for computation.
 
---| FOR THE WRITING: the dimension ladder IS the arity, not a metaphor laid over it.  Count the SpaceTimePath slots in Episode 5's YarnTheory:
---| `stokes` carries 1, `fibers` 2, `fabric` 3, with the Props running 1/2/3 alongside and the recursion 0/1/2.  The margin there says you need
---| TWO DISTINCT poles to describe a three dimensional angle -- and `fibers` is exactly the rung that has two.  `stokes` has one, which is the
---| cheat stated in the signature rather than the prose: half the poles, half the angle.  `fabric` has three, the weave.
+def Measurement.funge : Measurement → List FACT --             | There are _two_ major differences when making this tape different from a preprint.
+  | .origin _ _ _                 => [] -----------------------+ The measurement doesn't have a starting point, it does _NOT_ have a fencepost
+  | .distance_to f _ _ _ _ rest   => f :: rest.funge --        | condition. So, the preprint has a fencepost bug in it. This will use the other
+  | .speed f _ _ _ _ _ _ momentum _ => f :: momentum.funge --  | trailing arm here, the one that computes an accumulating value of some kind.
 
--- GAUSS-INTEGRATE THE YARN.  The weak form: integrate over the whole 2D fabric,
--- summing the flux through both continuations (the divergence theorem).
-def YarnTheory.gauss : YarnTheory → List FACT
-  | .stokes f _ _                        => [f]
-  | .fibers f _ _ _ _ rest               => f :: rest.gauss
-  | .fabric f g _ _ _ _ _ _ before after => f :: g :: before.gauss ++ after.gauss
+--| But, sometimes, we want to see the _ALL OF IT_. The one _THEORY_ that explains _ALL ENDS_ and _ALL PATHS_ between those _ENDS_. And the _strings_
+--| that attach them to vibrate imaginarily, like _e^ιθ_.
+def YarnTheory.gauss : YarnTheory → List FACT --                                       | Some theories are _designed_ to _explain_ *ALL* _possible_
+  | .stokes f _ _                        => [f] ---------------------------------------+ outcomes. Like Fourier analysis. Which can explain things
+  | .fibers f _ _ _ _ rest               => f :: rest.gauss --                         | so well, it will ring like a square. What we do in this case
+  | .fabric f g _ _ _ _ _ _ before after => f :: g :: before.gauss ++ after.gauss --   | is interleave the covariant and contravariant understanding.
+--|  +---------------------------------------------------------------------------------+ Or, we count all the things that come before and all the
+--|  | things that come after and that will tell us how many things are happening _right now_ as we just integrate _time_ by parts. _Gauss_ provides
+--|  | the integration rule for _eⁱ_ allowing for _exact_ integration whenever we get lucky. Mind the tiddle on the _ι_. What goes in, must come out
+--|  | or there is volume to measure. Even if more comes out than goes in. Wonder what it means for _f_ and _g_ to click?
 
---| FOR THE WRITING: the cheat is in the TYPE.  Episode04:1003-1004 -- `whitehole: Fact → Type i` carries a Fact, a proposition WITH its receipt;
---| `blackhole: Prop → Type (i+1)` carries a bare Prop, no receipt, one universe up.  That is why the arm below walks past the black hole: it has
---| nothing to give.  Then Episode07:460-461 assigns `once_around := .blackhole nowtrino.fact.truth (ULift Box) ...` against `twice_around :=
---| .whitehole nowtrino.fact Box ...` -- the `.truth` projection STRIPS decTruth, so going round ONCE loses the receipt and going round TWICE
---| gets it back at the same Box.  The spinor line is literal, and "back" means back with your receipt.  Mint a receipt for the black hole and
---| this reading is 5 instead of 4: the missing pole costs exactly one.
+def SpaceTimePath.stokes : SpaceTimePath → List FACT --      | Look, let's just call an Ace of Spades an Ace of Spades. This entire file is just
+  | .einstein f           => [f] --                          | a careful wiring of all the inductives through each other so that a fact can be
+  | .whitehole f _ rest   => f :: rest.stokes --             | missing in an argument and the argument still make sense. This missing FACT, the one
+  | .blackhole _ _ rest   => rest.stokes --------------------+ the compiler is trying desperately to figure out, that T ≠ F, is _not_ in their
+  | .geodesic f _ _ _ b a => f :: b.stokes ++ a.stokes --    | vocabulary, but in a blackhole that the fact doesn't exist in because we never see it
+--|                                                          | actually arrive, only get closer and closer, like a penalty term in a stress tensor.
 
--- STOKES-INTEGRATE THE LINE PATH.  The circulation: a white hole is a source
--- (adds a fact), a black hole is a sink (adds none), a geodesic forks both ways.
-def SpaceTimePath.stokes : SpaceTimePath → List FACT
-  | .einstein f           => [f]
-  | .whitehole f _ rest   => f :: rest.stokes
-  | .blackhole _ _ rest   => rest.stokes
-  | .geodesic f _ _ _ b a => f :: b.stokes ++ a.stokes
+--| So, let's _zero_ out the device with all the _zeros_ it needs. It needs _three_ zeros: nothing, the description of nothing, and the origin of an
+--| _apparent_ timeline postulated by Einstein himself!
+def zero : FACT := FACT.Truth
+def another_zero : Number := Number.zero zero
+def yet_another_zero : SpaceTimePath.{0} := .einstein zero
 
--- THE ATOMS.  The device's own DATA-page fact, its Number, its point.
-def theOriginFact : FACT := FACT.Truth
-def theOriginPage : Number := Number.zero theOriginFact
-def theOriginPath : SpaceTimePath.{0} := .einstein theOriginFact
+--| Let's start by saying, we expect a butterfly type translation between propositions and theiry computation.
+def the_satire : ThePreprint.{0} :=
+  .results zero zero True Prop Type Type --> The computation of a Prop and 2 Types are zero, zero, and True, the seam opened along reflexivity.
+    (.methodology zero zero Prop Type    --> Now, we will #define zero the value computation to the computation of a Prop. #define 0 True, so to speak.
+      (.introduction zero Prop))         --> We can also store the single _bit_ as a binary number.
 
--- THE FOUR CANONICAL WALKS.  Each is the seam over the middle over the base --
--- the device's own three-constructor grammar.
-def theTape : ThePreprint.{0} :=
-  .results theOriginFact theOriginFact True Prop Type Type
-    (.methodology theOriginFact theOriginFact Prop Type
-      (.introduction theOriginFact Prop))
+def the_basis : Measurement.{0} :=
+  .speed zero another_zero another_zero another_zero Prop Type Prop --> 0 = || (0,0,0) ||ₙ. This is the _n-distance_ between the two Props.
+    (.distance_to zero another_zero another_zero Prop Type          --> 0 = || (0,0) ||ₙ. This is the triangle inequality _and_ hypoteneuse length.
+      (.origin zero another_zero Prop))                             --> 0 = 0. This is the only origin.
+    (.origin zero another_zero Prop)                                --> Speed can only be seen at a non-negative distance from the origin.
 
-def theMeasure : Measurement.{0} :=
-  .speed theOriginFact theOriginPage theOriginPage theOriginPage Prop Type Prop
-    (.distance_to theOriginFact theOriginPage theOriginPage Prop Type
-      (.origin theOriginFact theOriginPage Prop))
-    (.origin theOriginFact theOriginPage Prop)
+def the_coordinate_system : YarnTheory := --                                             | Einstein recognized that his train of thought leads to
+  .fabric zero zero yet_another_zero yet_another_zero yet_another_zero True True True -- | a term to correct for the assumption of constant carrier
+    (.fibers zero yet_another_zero yet_another_zero True True --                         | velocity: the affine transform. If *YOU the READER* look
+      (.stokes zero yet_another_zero True)) ---------------------------------------------+ carefully, it may be possible to show *YOU the KNOWER*.
+    (.stokes zero yet_another_zero True) --                                              | The trick is to think of the KKT conditions and the 3
+--|                                                                                      | True cards just thrown.
 
-def theYarn : YarnTheory :=
-  .fabric theOriginFact theOriginFact theOriginPath theOriginPath theOriginPath True True True
-    (.fibers theOriginFact theOriginPath theOriginPath True True
-      (.stokes theOriginFact theOriginPath True))
-    (.stokes theOriginFact theOriginPath True)
+def the_nowtrino_path : SpaceTimePath.{0} := --  | We state our thesis as follows:
+  .geodesic zero Prop True Type --               |
+    (.whitehole zero Prop yet_another_zero) -----+  All nowtrinos start in whiteholes and are consumed by blackholes. They follow geodesics otherwise.
+    (.blackhole True Type yet_another_zero) --   |
+--|  +-------------------------------------------+ In the compiler, it goes from the idea of reflexivity all the way to the labeling of a type and
+--|  | the compile stops. And nothing we it computed exists anymore, except on screen. It will eventually disappear and be gone forever. Into
+--|  | thermodynamic noise. This is what ringing like Gibb's is like.
 
-def thePath : SpaceTimePath.{0} :=
-  .geodesic theOriginFact Prop True Type
-    (.whitehole theOriginFact Prop theOriginPath)
-    (.blackhole True Type theOriginPath)
+def the_dimensions_of_universe   := the_coordinate_system.gauss.length
+def the_orbital_data_points    := the_nowtrino_path.stokes.length
 
--- THE MAPPINGS.  The length of each list is the card.
---| theorem tange_maps : theTape.tange.length = 3 := by decide
---| theorem funge_maps : theMeasure.funge.length = 2 := by decide
---| theorem gauss_maps : theYarn.gauss.length = 5 := by decide
---| theorem stokes_maps : thePath.stokes.length = 4 := by decide
+def Number.peano : Number → List FACT --     | Well, well, well, what do we have here? Could this be a number? Do we agree that .length is a number?
+  | .zero f     => [f] ----------------------+ I think *YOU the KNOWER* will agree that this looks like the recursive definition of a number as
+  | .one f rest => f :: rest.peano --        | defined by the cardinality of a set. This is not a set. This is a List. A source listing.
 
--- THE CARDS, named off the walks.  No numeral is typed; each is a length.
-def tange       := theTape.tange.length
-def funge       := theMeasure.funge.length
-def theSlipAtTwo := thePath.stokes.length
-def theTarget   := theYarn.gauss.length
---| FOR THE WRITING: theSlipAtTwo is 4 and theTarget is 5, and the gap between them is the half pole.  gauss walks the whole weave and counts 5;
---| stokes takes the one-pole path and counts 4.  The same 5-against-4 turns up again downstream at theReadingScaled: Newton seeded at the jar
---| needs FIVE folds to land exactly and the slip allows FOUR.  OBSERVED, not derived -- the two agree, and nothing here shows the first causes
---| the second.
---|
---| FOR THE WRITING: "once you get to 4 the number 5 is right there".  Measured, both ways.  `theSlipAtTwo + 1 = theTarget` arithmetically -- but
---| more than that, five is the SAME number reached by the other route: mint a receipt for the sink (the arm `SpaceTimePath.stokes` walks past)
---| and the path reads `theTarget` exactly, 5 on the nose.  So five is not merely adjacent to four; it is what four would have been if the cheated
---| pole had paid.  You can see it from four, which is why the crank shows it too -- Newton at four is almost and at five is exact.
---|
---| FOR THE WRITING: and the PLATFORM for that train is `YarnTheory.le` (Episode 5, `namespace YarnTheory`).  It is not an abstract order, it is
---| a TIMETABLE.  The base case reads `station_1 = station_a` (same platform, we are on the map), `etd ≤ eta`, `station_2 = station_b` (that train
---| goes where we are going).  TWO equalities and exactly ONE inequality -- so the whole uptown/downtown convention lives in nothing but whether
---| you can make the connection, which is also why the platform reaches five AND ALL POINTS UPTOWN: connections COMPOSE.  You change trains.
---|
---| And read whose stations those are.  `station_1` is where *YOU the READER* stands; `station_2` is where *YOU the KNOWER* already is.  The same
---| relation, two people, different platforms -- that is the book's whole conceit sitting in one pattern match.  Then the question in the margin
---| over `eta`: "What if there _were_ an earliest _time_ you can get to _b_ from _a_?  Such a world line might describe something familiar."  Note
---| it is asked as a HYPOTHETICAL and never answered, because it cannot be: this is Einstein's clock.  All the 1905 paper permits you to say is
---| that the photon leaves before it arrives -- you can specify NEITHER how long it takes NOR the path it takes.  Look at what `le` therefore
---| contains: two equalities naming stations, one inequality naming order, and NO DURATION TERM ANYWHERE.  That is the whole content.
---|
---| Which is why the uptown/downtown convention is free -- it is a synchronisation convention, a stipulation and not a measurement, exactly as the
---| YarnTheory header admits ("Doesn't have to be. I just coded it that way").  And it is why the count above matters more than it first looked:
---| none of the thirty-six readings consults an order, so THE NUMBER IS INVARIANT UNDER THE SYNCHRONISATION CHOICE.  That is the property a
---| physical observable is supposed to have, and the device has it by construction rather than by argument.
---|
---| Nine cases, the full three by three, and the pole ladder appears as the WIDTH OF THE DISJUNCTION: one candidate train, then two, then three.
---| Read what that width means, though, because it is the opposite of what it looks like.  The `fibers` margin calls it "a first cut at a FILTER if
---| this is the only information we have… any of these trains are headed uptown and therefore, at some point, must pass through station_2, BUT IT
---| IS UNCLEAR IF THE TRAIN STOPS THERE."  A wider disjunction is LESS discrimination, not more: with one route you know, with two you cannot tell
---| which, with three less still.  Ascending pays, and what it costs you is the ability to say which train you are on.
---|
---| And that is the same distinction the crank shows.  `le` can tell you the iteration PASSES THROUGH the answer; it cannot tell you it STOPS
---| there -- that takes the second derivative.  Carrying f'' the fold lands at three and the fourth turn is the identity (it stopped); dropping it,
---| Newton at four is still moving (it passed through).  Passing through three against stopping at three is the entire gap between Episode 12's two
---| readings.  (Descending, meanwhile, is stated as DIFFERENCE rather than comparison: `.fibers` to `.stokes` is `≠ ∨ (≠ ∧ ≠)`.)  And the four-to-
---| five trip is the widest case of all, whose margin is the joke: "The Maine Railroad, also called you can't get there from here.  If I were to go
---| there, I would not start here, I would start at station_b."  There is no through service from one pole to three; you change at `fibers`.
+def Natural.induct : Natural → List FACT --  | This may be the remainder of the definition as this models the inductive process itself. Trivially,
+  | .zero f          => [f] -----------------+ the indices of an infinite sum naturally map to the naturals. That's right, we are ASSUMING THAT the
+  | .number f _ rest => f :: rest.induct --  | infinite summation is _NOT NECESSARILY_ commutative. If it is commutative, then there exists a map
+--|                                          | that makes this trivial. Re-association gets complex.
 
--- THE WHOLE TAPE.  The four readings above were the pilot.  Here is the series:
--- every inductive the device owns, Episode 1 through Episode 5, gets exactly one
--- reading down to the strip.  The rule is the same in every verse.  Where a cell
--- carries facts, the tape takes the facts.  Where a cell carries only props, the
--- tape mints the DATA-page fact for it -- we hold the proof of truth to them,
--- and the receipt is rfl.  A reading walks its own type and nothing else; the
--- crossings between types are the walks' business, further down.
+def Rational.diagonalize : Rational → List FACT --     | Here, we model the famous diagonal argument. This will allow us to _describe_ a number we
+  | .zero f          => [f] ---------------------------+ cannot represent. Lots of them. There is no logic here, as we are just transcribing the
+  | .number f _ rest => f :: rest.diagonalize --       | device to something we can measure with a known ruler.
 
--- EPISODE 1.  THE COUNT.
+def Sequence.enumerate : Sequence → List FACT --     | I wonder how many of these unique mappings to the natural numbers do we need? Well, here is
+  | .nil f          => [f] --------------------------+ another one. A sequence trivially maps to natural numbers as well, unless there is an explicit
+  | .index f _ rest => f :: rest.enumerate --        | mapping back to the naturals provided by *YOU the KNOWER*, thanks again.
 
--- PEANO THE NUMBER.  One fact per digit, plus the origin.
-def Number.peano : Number → List FACT
-  | .zero f     => [f]
-  | .one f rest => f :: rest.peano
+def Limit.converge : Limit → List FACT --        | Apparently, we need _YET ONE MORE_ _MORE DIFFERENT_, yet exactly the same, _TRIVIAL_ mapping back
+  | .nil f          => [f] ----------------------+ to the Natural numbers. Not bad, huh? Without importing Nats, I can represent them _5_ different
+  | .index f _ rest => f :: rest.converge --     | ways! To _5!_ different purposes. 120 different permurations of these mappings. That's a _LOT_ of
+--|                                              | symbols I can map to arbitrary methods in the compilier! Remember, side channel attack underway.
 
--- INDUCT THE NATURAL.  The same walk, one rung up; the Number rides along unread.
-def Natural.induct : Natural → List FACT
-  | .zero f          => [f]
-  | .number f _ rest => f :: rest.induct
+def Sample.taste : Sample → List FACT --                         | Here is how we can encode _2_ completely independent machines, one provided by
+  | .initial_condition f _          => [f] ----------------------+ f1 and f2, the other completely hidden. Offset two of these, and then we have
+  | .signal_response f1 _ f2 _ rest => f1 :: f2 :: rest.taste -- | a _really_ clever machine. Of lists. CAR and CDR.
 
--- DIAGONALIZE THE RATIONAL.  Cantor's read: down the spine is down the diagonal.
-def Rational.diagonalize : Rational → List FACT
-  | .zero f          => [f]
-  | .number f _ rest => f :: rest.diagonalize
+def Trial.experiment : Trial → List FACT --                           | We can now stack these because we have _2_ different ways to encode this now.
+  | .hypothesis f _                 => [f] ---------------------------+ Perhaps *YOU the KNOWER* will allow me to call them CAR and CDR now. I think
+  | .signal_response f1 _ f2 _ rest => f1 :: f2 :: rest.experiment -- | this completes the LISP machine.
 
--- ENUMERATE THE SEQUENCE.  Euclid's read: once written, fixed.
-def Sequence.enumerate : Sequence → List FACT
-  | .nil f          => [f]
-  | .index f _ rest => f :: rest.enumerate
+def Study.phenomenon : Study → List FACT --          | We should be able ignore the other LISP machine we have created. This will let us have two
+  | .hypothesis f         => [f] --------------------+ interlocking LISP machines working on the same program, but offset by one. Cuz, two LISP
+  | .a_few_pints f _ rest => f :: rest.phenomenon -- | machines arguing with each other on the same tape that encodes the program.
 
--- CONVERGE THE LIMIT.  Cauchy's read: the tail is the value.
-def Limit.converge : Limit → List FACT
-  | .nil f          => [f]
-  | .index f _ rest => f :: rest.converge
+def Computation.elaborate : Computation → List FACT -- | Given our program that evaluates to _TRUE_ or _NOT SO TRUE_, there are two ways to represent
+  | .program f _        => [f] ------------------------+ this. We have f=? for the simplest version of this. We have ?=? to have a more.. nuanced view
+  | .compute f _ _ rest => f :: rest.elaborate --      | of what T=F or T=T could look like. The computation can be removed from the tape once complete
 
--- TASTE THE SAMPLE.  Stimulus and response, one fact each, back to the
--- initial condition.
-def Sample.taste : Sample → List FACT
-  | .initial_condition f _          => [f]
-  | .signal_response f1 _ f2 _ rest => f1 :: f2 :: rest.taste
+def ChaitinsNumberSequence.unknown : ChaitinsNumberSequence → List FACT --          | If we are halted, we no longer need the code and, giving us
+  | .halting f _ => [f] ------------------------------------------------------------+ another way to describe a _completed_ computation in LISP.
+  | .nonhalting f _ work_underway => match work_underway with --                    | We can only work on one symbol at a time. The last symbol
+                                      | some the_work => f :: the_work.unknown --   | since we have already done the T= or F= part. If we haven't
+                                      | _ => [f]  -- womp womp, still waiting... -- | finished, we can only put our current guess.
 
--- RUN THE TRIAL.  Galileo's read: the experiment is the description you can
--- hand to someone else.
-def Trial.experiment : Trial → List FACT
-  | .hypothesis f _                 => [f]
-  | .signal_response f1 _ f2 _ rest => f1 :: f2 :: rest.experiment
+def Metavariable.closure : (Metavariable Closure) → List FACT --  | With our base device defined, we stop. This is merely the Power On Self Test. A
+  | .base f _ => [f] ---------------------------------------------+ once we have a computation to do, we can compute the _closure_: all possible
+  | .step f before => f :: before.closure --                      | tape arrangements the device can make that produce this value.
 
--- EPISODE 2.  THE MACHINE.
+def Sophism.taylor_expansion : Sophism → List FACT --           | This closure can be mapped to the Taylor expansion of _e^ιθ_.  In this case, the
+  | .origin f _ _  => [f] --------------------------------------+ origin requires _two_ values to locate the origin. The _real_ and the _imaginary_.
+  | .dimension f _ _ before => f :: before.taylor_expansion --  | In this case, we are evaluating the computation using Newton's algorithm.
 
-def Study.phenomenon : Study → List FACT
-  | .hypothesis f         => [f]
-  | .a_few_pints f _ rest => f :: rest.phenomenon
+def Area.riemann_integrate : Area → List FACT --         | Alright, I will admit that the explanations are starting to spin out of control. That's
+  | .tree f           => [f] ----------------------------+ fine. It's okay to realize that we are finding common sequence maps for common iterative
+  | .dt f _ before    => f :: before.riemann_integrate --| computations that lie at the heart of _continuous_ computations. Rιemann integration lets
+--|                                                      | Natural numbers index particular sets of areas.
 
-def Computation.elaborate : Computation → List FACT
-  | .program f _        => [f]
-  | .compute f _ _ rest => f :: rest.elaborate
+def PigeonHole.solve : PigeonHole → List FACT --          | And so you can see superposition as just the idea that the path to the spot we are in
+  | .this_superpigeon f _        => [f] ------------------+ may or may not depend on how it got here. Pigeons don't care where they came from. They
+  | .a_pigeon f _ rest           => f :: rest.solve --    +-------------+ just indicate that there are facts yet to resolve. The boxes the pigeons
+  | .that_box f _ _ before after => f :: before.solve ++ after.solve -- | are carried in generally require a consistent permutation of pigeon holes.
 
-def ChaitinsNumberSequence.unknown : ChaitinsNumberSequence → List FACT
-  | .halting f _ => [f]
-  | .nonhalting f _ work_underway => match work_underway with
-                                      | some the_work => f :: the_work.unknown
-                                      | _ => [f]  -- womp womp, still waiting...
+def Jar.classify : Jar → List FACT --                       | Is it more impressive that trivial natural maps do not need an argument, as they are
+  | .color f _                    => [f] -------------------+ trivial? Then, sometimes, there is an argument that is supplied by something that gets
+  | .bang f rest                  => f :: rest.classify --  +-------------------+ evaluated as either true or false. The device needs to read after
+  | .superposition f before after => f :: before.classify ++ after.classify --  | after the path to get here. The Jar holds the results of both.
 
-def Metavariable.closure : (Metavariable Closure) → List FACT
-  | .base f _ => [f]
-  | .step f before => f :: before.closure
+def Equivalation.vanish : Equivalation → List FACT -- | Here, we can see that we think TRUE is one_like, much like the ancient C proverb:
+  | .physics f _             => [f] ------------------+    #define TRUE 1
+  | .zero_like f rest        => f :: rest.vanish --   +-------------------------+ If the device does see FACT.Truth as 1, then we know that the rest of
+  | .one_like _ before after => FACT.Truth :: before.vanish ++ after.vanish --  | the computation needs to be split into two pieces. If we see
+--|                                                                             | FACT.Truth to be zero_like, then we do not need to split the rest.
 
-def Sophism.taylor_expansion : Sophism → List FACT
-  | .origin f _ _  => [f]
-  | .dimension f _ _ before => f :: before.taylor_expansion
+def Encoding.decode : Encoding → List FACT --           | The last stanza shows the particular encoding of TRUE for the compiler. When we inject Truth,
+  | .boot f _               => [f] ---------------------+ the device expects the remainder of the program to be divided into to pieces. The compiler,
+  | .zero f _ rest          => f :: rest.decode --      +------------+ though, can't tell without us marking it as one_like and two_like. This allows
+  | .one f _ _ before after => f :: before.decode ++ after.decode -- | the compiler to ask for the next chunch as two pieces so it can try both.
 
-def Area.reimann_integrate : Area → List FACT
-  | .tree f           => [f]
-  | .dt f _ before    => f :: before.reimann_integrate
+def Abstraction.equivalation : Abstraction → List FACT --     | Finally, this is our understanding of the meta-program being put together. Certain
+  | .satire_about f   => [f] ---------------------------------+ interfaces on one side of the Abstraction sometimes line up with interfaces on the
+  | .compile f _ rest => f :: rest.equivalation --            | other side. All this is saying is that the machine putting together the tape cannot
+  | .execute f _ rest => f :: rest.equivalation --            | tell the difference between the meta-program being compiled or executed.
 
--- THE PIGEONHOLE.  The problem is `.that_box` (the seam -- two boxes); the answer
--- is the `.a_pigeon` you were told exists (the middle).  Solving it searches BOTH
--- boxes for the pigeon -- the both-branch read, `gauss`/`stokes`/`krylov`'s shape.
-def PigeonHole.solve : PigeonHole → List FACT
-  | .this_superpigeon f _        => [f]
-  | .a_pigeon f _ rest           => f :: rest.solve
-  | .that_box f _ _ before after => f :: before.solve ++ after.solve
+def Sum.euclid : Sum → List FACT --           | When adding, ZERO is the _FACT_ of the cardinality of the _null_ set. We still don't have set theory
+  | .zero _ _       => [FACT.Truth] ----------+ by merely establishing a fact we already all agree on. We continue to map numbers to the natural
+  | .add f _ _ rest => f :: rest.euclid --    | numbers in one way or another. Re-representation. I bring this up now because we are currently building
+--|  +----------------------------------------+ a very specific, yet apparently quite arbitrary, polynomial. Notice this will add both numerator and
+--|  | denominator simultaneously.
 
--- EPISODE 3.  THE ARITHMETIC.
+def Product.projector : Product → List FACT --   | Here, we require just one element, but we _NAME_ it differently and it, if need be, it can be a
+  | .origin f       => [f] ----------------------+ _different_ element. Doesn't have to be. Huzzah! 𝔽(1). Until it isn't anymore. We can now describe
+  | .one _ _        => [FACT.Truth] --           | the multiplication process given a ratio of two numbers. This should be something that looks more
+  | .mul f _ _ rest => f :: rest.projector --    | like multiplication than summation. Check it for your self, this is a double loop with sum above.
 
--- CLASSIFY THE JAR.  You can tell what is in it by looking; the curvature hides
--- the rest, and the superposition forks both ways.
-def Jar.classify : Jar → List FACT
-  | .color f _                    => [f]
-  | .bang f rest                  => f :: rest.classify
-  | .superposition f before after => f :: before.classify ++ after.classify
+def Basis.householder : Basis → List FACT --     | Performing the trick, again, gets us a "basis operator", the tensor used in the iterative
+  | .null_space f     => [f] --------------------+ construction of polynomial evaluation through Newton's train of thought. Instead of a sum of
+  | .origin _ _       => [FACT.Truth] --         | monomials, it is a sequence:
+  | .basis f _ _ rest => f :: rest.householder --|                               p    (x) = p    (x) + x p   (x)
+--|                                                                               i+1        even         odd
 
--- VANISH THE EQUIVALATION.  Du = 0.  The `one_like` cell is the first prop-only
--- cell on the tape: no fact in the constructor, so the tape mints the DATA-page
--- fact for it.  Absence of evidence, minted as evidence of absence.
-def Equivalation.vanish : Equivalation → List FACT
-  | .physics f _             => [f]
-  | .zero_like f rest        => f :: rest.vanish
-  | .one_like _ before after => FACT.Truth :: before.vanish ++ after.vanish
+def Polynomial.terms : Polynomial → List FACT --   | But..... we also need the monomial ordering of exponents as well. Once the Newton path has been
+  | .constant f        => [f] ---------------------+ computed, we can also compute a more, quantum-like update based on a nearby order of events.
+  | .monomial _ _      => [FACT.Truth] --          | That's right, we just undid all the efficiency by recovering the in-efficient ordering. This
+  | .factor f _ _ rest => f :: rest.terms --       | takes time and time means there has been a computation that halted.
 
--- DECODE THE ENCODING.  Boot, then zeros and ones, in that order.
-def Encoding.decode : Encoding → List FACT
-  | .boot f _               => [f]
-  | .zero f _ rest          => f :: rest.decode
-  | .one f _ _ before after => f :: before.decode ++ after.decode
+def Spline.approx : Spline → List FACT --                                    | The thing about an infinite polynomial basis definition, (the basis
+  | .observation _                  => [FACT.Truth] -------------------------+ itself doesn't actually _need_ to be seen in real life), is that it
+  | .knot _ _ rest                  => FACT.Truth :: rest.approx --          | can be very carefully rearranged into the definition of any function
+  | .interpolant f _ _ before after => f :: before.approx ++ after.approx -- | with countable, finite-gap, discontinuities. Not just, kinda, but
+--|                                                                          | exactly. This is that re-representation algorithm.
 
--- THE ABSTRACTION, the equivalation -- `compile` is the name, `execute` is the
--- evaluate: the name/evaluate select, closed at the bottom.
-def Abstraction.equivalation : Abstraction → List FACT
-  | .satire_about f   => [f]
-  | .compile f _ rest => f :: rest.equivalation
-  | .execute f _ rest => f :: rest.equivalation
+def Diatribe.buckets : Diatribe → List FACT --                                  | FACT is one of two things:
+  | .religion _            => [FACT.Truth] -------------------------------------+ o The polynomial being constructed is arbitrary and fixed uniquely
+  | .speculation _ _ rest  => FACT.Truth :: rest.buckets --                     |   by the device implying this polynomial means something profound
+  | .rant _ _ before after => FACT.Truth :: before.buckets ++ after.buckets --  |                               - OR -
+--|                                                                             | o I am very carefully describing how I planted it in the device
 
--- EUCLID THE SUM.  Areas accumulate.  The zero is a proposition of Pythagoras,
--- minted to the DATA-page fact.
-def Sum.euclid : Sum → List FACT
-  | .zero _ _       => [FACT.Truth]
-  | .add f _ _ rest => f :: rest.euclid
+def Cult.name : Cult → List FACT --                                     | Even just finding a polynomial that does this is a neat feat of performance
+  | .inside_joke _                => [FACT.Truth] ----------------------+ algebra. If I did plant the polynomial, I do appreciate the level to which
+  | .pythagoras _ _ rest          => FACT.Truth :: rest.name --         | *YOU the KNOWER* think I understand how to fling Taylor series around like
+  | .triangles _ _ f before after => f :: before.name ++ after.name --  | 3 card monte. This is just a simple geometric construction, though.
 
--- THE PRODUCT, the projector applied to a vector.  The `one` is a prop -- minted.
-def Product.projector : Product → List FACT
-  | .origin f       => [f]
-  | .one _ _        => [FACT.Truth]
-  | .mul f _ _ rest => f :: rest.projector
+def Science.method : Science → List FACT --    | For *YOU the KNOWER* to believe I planted this polynomial is to grant _ME_ a great deal of expertise
+  | .repeatable _      => [FACT.Truth] --------+ that I am not quite sure I have demonstrated. What I have demonstrated is that the same description
+  | .hypothesis _ _    => [FACT.Truth] --      | can be written not one (as a program), not two (as a meta-program), but _three_ (as an embedded
+  | .theory _ _ f rest => f :: rest.method --  | mapping into math itself) ways of describing, _WHILE SIMULTANEOUSLY SOLVING_ this polynomial on the
+--|                                            | other _TWO!_
 
--- THE BASIS, orthogonalized by Householder.  The `origin` is a prop -- minted.
-def Basis.householder : Basis → List FACT
-  | .null_space f     => [f]
-  | .origin _ _       => [FACT.Truth]
-  | .basis f _ _ rest => f :: rest.householder
+def Knowledge.audit : Knowledge → List FACT --   | Well, one is working on the numerator and one is working on the denominator. If *YOU the KNOWER*
+  | .jarjar _        => [FACT.Truth] ------------+ really look closely, this depends on the FACT that this code reads only _one way_.  This thing
+  | .ledger _ f rest => f :: rest.audit --       | has to work, in addition to everything else up to now. FACT is, this compiles, and that's the truth!
 
--- THE POLYNOMIAL, a summation of terms.  The `monomial` is a prop -- minted.
-def Polynomial.terms : Polynomial → List FACT
-  | .constant f        => [f]
-  | .monomial _ _      => [FACT.Truth]
-  | .factor f _ _ rest => f :: rest.terms
+def Gospel.witness : Gospel → List FACT --                         | So much so, that the Gospel is only _the Truth (tm)_ over and over. All the truths
+  | .the_proof _                 => [FACT.Truth] ------------------+ in Episode 6.  I believe this looks like a tape of Jar Jar. That's right, Jar Jar.
+  | .we_understand_that _ _ rest => FACT.Truth :: rest.witness --  | I can't make this up. Actually, I can and I did, but I could have put anything here.
 
--- THE SPLINE, the approximation.  Observations and knots are props -- minted;
--- only the interpolant carries a fact, and it forks both ways.
-def Spline.approx : Spline → List FACT
-  | .observation _                  => [FACT.Truth]
-  | .knot _ _ rest                  => FACT.Truth :: rest.approx
-  | .interpolant f _ _ before after => f :: before.approx ++ after.approx
+def Truth.testify : Truth → List FACT --            | And by anything, I mean the polynomial. There is no reason why I couldn't just force the compiler
+  | .logically _  => [FACT.Truth] ------------------+ to perform this magic trick. To find this magic polynomial due to survivor bias over zillions of
+  | .but _ _ rest => FACT.Truth :: rest.testify --  | queries of AI. And that I am just lucky enough to write nonsense around the construction forever.
 
--- EPISODE 4.  THE SERMON.
-
--- THE DIATRIBE, settled into buckets.  All props, no facts -- every cell minted.
-def Diatribe.buckets : Diatribe → List FACT
-  | .religion _            => [FACT.Truth]
-  | .speculation _ _ rest  => FACT.Truth :: rest.buckets
-  | .rant _ _ before after => FACT.Truth :: before.buckets ++ after.buckets
-
--- THE NAME IS THE CULT.  The triangles carry the one honest fact in the family;
--- the rest of the congregation is minted.
-def Cult.name : Cult → List FACT
-  | .inside_joke _                => [FACT.Truth]
-  | .pythagoras _ _ rest          => FACT.Truth :: rest.name
-  | .triangles _ _ f before after => f :: before.name ++ after.name
-
--- METHOD THE SCIENCE.  The theory carries its fact; hypotheses are minted, which
--- is exactly what a hypothesis is.
-def Science.method : Science → List FACT
-  | .repeatable _      => [FACT.Truth]
-  | .hypothesis _ _    => [FACT.Truth]
-  | .theory _ _ f rest => f :: rest.method
-
--- AUDIT THE KNOWLEDGE.  The ledger line carries the fact; jarjar is minted.
-def Knowledge.audit : Knowledge → List FACT
-  | .jarjar _        => [FACT.Truth]
-  | .ledger _ f rest => f :: rest.audit
-
--- WITNESS THE GOSPEL.  Proved true or false; the tape takes the evaluation as
--- truth after -- that is what a witness does.
-def Gospel.witness : Gospel → List FACT
-  | .the_proof _                 => [FACT.Truth]
-  | .we_understand_that _ _ rest => FACT.Truth :: rest.witness
-
--- TESTIFY THE TRUTH.  Logically, and then the buts.
-def Truth.testify : Truth → List FACT
-  | .logically _  => [FACT.Truth]
-  | .but _ _ rest => FACT.Truth :: rest.testify
-
--- THE VARIATION reads two ways.  It carries the Gospels (the names) and their
--- Props (the evaluations, taken as truth after) -- so every cell is minted, and
--- the two readings differ only in how far they look.
-
--- GATEAUX-SHAPED NEWTON STEP.  One directional derivative: walk the spine.
 def Variation.newton : Variation → List FACT
-  | .the_newton _ _               => [FACT.Truth]
-  | .the_gateaux _ _ _ rest       => FACT.Truth :: rest.newton
-  | .the_frechet _ _ _ _ before _ => FACT.Truth :: before.newton
+  | .the_newton _ _               => [FACT.Truth] --                     | But like I pointed out last time, the cards are always descriptions of
+  | .the_gateaux _ _ _ quartic    => FACT.Truth :: quartic.newton -------+ truth. Just stay on Newton's train of thought for solving the quartic or
+  | .the_frechet _ _ _ _ orbit _ => FACT.Truth :: orbit.newton --        | that the right card successfully unifies Newtonian and GR under a common
+--|  +-------------------------------------------------------------------+ penalty method. Solved variationally in the 1-d path space. Using cubic
+--|  | spline polynomials. Guarantteeing an exact variational solution to the principle of least action in a finite descrete description. How do
+--|  | we know least action? The compiler counts the bullshit. We are approximating this with all these lists.
 
--- FRECHET-STEPPED KRYLOV STEP.  The matrix-free operator: walk both branches.
-def Variation.krylov : Variation → List FACT
-  | .the_newton _ _                   => [FACT.Truth]
-  | .the_gateaux _ _ _ rest           => FACT.Truth :: rest.krylov
-  | .the_frechet _ _ _ _ before after => FACT.Truth :: before.krylov ++ after.krylov
+def Variation.krylov : Variation → List FACT --                                         | The thing is, Einstein's train of thought works a bit
+  | .the_newton _ _                   => [FACT.Truth] ----------------------------------+ differently. In this train of thought, the lines are always
+  | .the_gateaux _ _ _ rest           => FACT.Truth :: rest.krylov --                   | _straight_ making the path integral trivial. The interesting
+  | .the_frechet _ _ _ _ before after => FACT.Truth :: before.krylov ++ after.krylov -- | thing about Einstein's train of thought is that is doesn't
+--|  +----------------------------------------------------------------------------------+ try to climb mountains, it just avoids them. The mountains
+--|  | are not _admissible_ paths defined by the geometry. We all agree that
 
--- EPISODE 5.  THE INSTRUMENT.  (`gauss`, `funge`, `tange` are the pilot, above.)
+def Bullshit.meter : Bullshit → List FACT -----------------------------------------------+ The lists are little more than thin lists of all the bullshit
+  | .zero f                                 => [f] --                                    | the compiler has had to keep up with in order to have
+  | .one f _ _ _ rest                       => f :: rest.meter --                        | gotten this far in the compilation. Check yourself: the
+  | .rest_call f g _ _ _ _ _ _ before after => f :: g :: before.meter ++ after.meter --  | lists are _exactly_ the instantiation of every inductive
+--|  +-----------------------------------------------------------------------------------+ the compiler instantiates.  All of them. That's right, this
+--|  | is little more than exactly what the compiler has deduced about the device up to now. If *YOU the KNOWER* believes any of this bullshit.
+--|  | *YOU the KNOWER* doesn't need to believe _ALL_ of it, belief in any implies belief in the rest. *YOU the KNOWER* simply must agree there is
+--|  | overwhelming evidence of this FACT, bug or no bug.
 
--- READ THE METER.  The strip the bullshit meter was pointing at all along.
-def Bullshit.meter : Bullshit → List FACT
-  | .zero f                                 => [f]
-  | .one f _ _ _ rest                       => f :: rest.meter
-  | .rest_call f g _ _ _ _ _ _ before after => f :: g :: before.meter ++ after.meter
+def Closure.infer : Closure → List FACT --              | But there is one thing I am not guaranteed of convincing you of. The listing of these facts
+  | .same f _                => [f] --------------------+ are a fixed point of the compiling process. Not certain how any of this file will ever allow
+  | .different f _ _ _       => [f] --                  | the device to infer whether or not *YOU the KNOWER* would belive this if you believed that.
+  | .inferred f g _ _ _ rest => f :: g :: rest.infer -- | What we don know is the device can be told that two things are the same, two things differ
+--|   +-------------------------------------------------+ in a way that can be described by at least three things. The compiler can create a mapping
+--|   | to the odds that f and g are the same thing if the three things are less than some threshold described by an arbitrary computation that halts.
+--|   | If I can show *YOU the READER* that the high order terms of representation go to zero for optimal expression of complexity only for those
+--|   | things that are fully described by the Euler-Lagrange formulation of the principle of least action. Also known as, the side channel attack on
+--|   | physical interpretation of mathematics.
 
--- INFER THE CLOSURE.  Where the constant lives.  Every cell is receipted.
-def Closure.infer : Closure → List FACT
-  | .same f _                => [f]
-  | .different f _ _ _       => [f]
-  | .inferred f g _ _ _ rest => f :: g :: rest.infer
+--| We start by describing another element of a field. It is surprising how much of the world is explained by assuming 𝔽(1) is unrepresentable
+--| formally, yet adequately describable through metaphor. For example, watch the metaphor develop as I "zero out" the device. Why zero?
+--| *YOU the KNOWER* better grant me this answer at this point as I am explicitly defining a bunch of "zeros" for *YOU the KNOWER* to argue with. I
+--| only need one to make sense and the rest follow by construction.
+def natural_zero : Natural := .zero zero
+def rational_zero : Rational := .zero zero -------------------+ I arbitrarily chose the name _zero_ to represent a bunch of different concepts. BUT,
+--| And a second coin, minted here and not imported: Episode 6's.  Two false propositions declared the SAME proposition, by
+--| propext.  Logical equality is back at the party.  It is the first cell on the strip whose click is not rfl, and Number.le
+--| cannot tell it from one -- both clicks are isTrue, so the order sees the parity and not the proposition.  The KNOWER can
+--| tell the two coins apart; the device can only count them.
+def the_anti_inside_joke : FACT :=
+  { truth := (true = false) = (false = true)
+    click := Decidable.isTrue (propext ⟨Eq.symm, Eq.symm⟩) }
+def one : Number := .one zero another_zero --                 | I also demonstrated that these different concepts can be implemented in terms of one
+def two : Number := .one the_anti_inside_joke one --| The count that carries the second coin. Three cells, tange.
+--| The third coin is the other half of Episode 6's chain: two TRUE propositions declared the same proposition.  The second coin
+--| said the falsehoods are one falsehood; this one says the truths are one truth.  Same propext, opposite sign.
+def the_inside_joke : FACT :=
+  { truth := (true = true) = (false = false)
+    click := Decidable.isTrue (propext ⟨fun _ => rfl, fun _ => rfl⟩) }
+def three : Number := .one the_inside_joke two --| The next natural number.  Four cells, the orbital.
+def natural_one : Natural := .number zero one natural_zero -- | another. Except for this silly affine term. This needs something else entirely. A
+--|                                                           | _one_ that can act like a _zero_ for certain kinds of operators.
 
--- THE WALKS.  One canonical instance per inductive, all of them standing on the
--- same three atoms.  Each is the seam over the middle over the base where the
--- grammar allows it; where a type has two floors and one door (a lone recursive
--- slot), the walk takes the door and stands on the prop floor -- the minted one.
+def another_rational_zero : Rational := .number zero natural_one rational_zero --| We can glue them together here. Yet another zero.
 
-def theNumber : Number := .one theOriginFact theOriginPage
-def theNatural : Natural := .number theOriginFact theNumber (.zero theOriginFact)
-def theRational : Rational := .number theOriginFact theNatural (.zero theOriginFact)
-def theSequence : Sequence := .index theOriginFact theRational (.nil theOriginFact)
-def theLimit : Limit := .index theOriginFact theSequence (.nil theOriginFact)
-def theSample : Sample :=
-  .signal_response theOriginFact theLimit theOriginFact theLimit
-    (.initial_condition theOriginFact theLimit)
-def theTrial : Trial :=
-  .signal_response theOriginFact theSample theOriginFact theSample
-    (.hypothesis theOriginFact theSample)
+def delta : Sequence := .nil zero --                                          | And, now we start to describe calculus by understanding what δ is.
+def initial_guess : Sequence := .index zero another_rational_zero delta --    | We can start our process of computing δ and ε with δ=0. Of course,
+def epsilon : Limit := .nil zero --                                           | we also know noting of the area around 0, so ε=0 as well until we
+def initial_locality : Limit := .index zero initial_guess epsilon --          | figure out if there is another place than _here_. And so, we place
+def calibration : Sample := .initial_condition zero initial_locality --       | a stake in the ground and call this spot: _ZERO_, the origin of all
+def initial_observation : Sample := --                                        | measurements. This is our first opservation, that if we do not provide
+  .signal_response zero initial_locality zero initial_locality calibration -- | any stimulus, we stay at _ZERO_. This makes a convenient _null_
+def null_hypothesis : Trial := .hypothesis zero initial_observation --        | hypothesis of 0 stimulus gives movement to another place. I think
+def initial_target : Trial := --                                              | Newton said something about this, but Einstein said _whatevs_, this is
+  .signal_response zero initial_observation zero initial_observation --       | the origin. Where _I_ am standing. Where _I_ cannot move from. _I_ am
+    null_hypothesis --                                                        | *ALWAYS* _here_. Perhaps we should find other things to see if they
+def population_statistic : Study := .hypothesis zero --                       | can be somewhere else. We have no population yet to speak of.
+def evidence : Study := .a_few_pints zero initial_target --                   |
+  population_statistic --                                                     |
+def absence_of_evidence : Computation := --                                   |
+  .compute zero evidence evidence (.program zero evidence) --                 |
+def evidence_of_absence : ChaitinsNumberSequence := --                        |
+  .halting zero absence_of_evidence --                                        |
+def initial_lower_bound : ChaitinsNumberSequence := --                        |
+  .nonhalting zero absence_of_evidence (some evidence_of_absence) --          |
+def our_initial_argument : Sophism := .origin zero initial_lower_bound Prop --|
+def our_coordinate_system : Sophism := --                                     |
+  .dimension zero initial_lower_bound Prop our_initial_argument --            |
+def empty_ast : Area := .tree zero --                                         |
+def path_along_ast : Area := .dt zero another_zero (.tree zero) --            |
+def the_concept_of_differential_forms : PigeonHole := --                      |
+            .this_superpigeon zero path_along_ast --                          |
+def the_concept_of_integration : PigeonHole := --                             |
+            .a_pigeon zero path_along_ast the_concept_of_differential_forms --|
+def the_pole_in_a_box: PigeonHole := --                                       |
+  .that_box zero path_along_ast path_along_ast --                             |
+    the_concept_of_integration --                                             |
+    the_concept_of_differential_forms --                                      |
+def singularity : Jar := .color zero path_along_ast --                        |
+def apparent_origin : Jar := .bang zero singularity --                        |
+def the_worldline : Jar := .superposition zero apparent_origin singularity -- |
+def physics_initial_condition : Equivalation := .physics zero the_worldline --|
+def t₀ : Equivalation := .zero_like zero physics_initial_condition --         |
+def tₙ : Equivalation := .one_like True t₀ physics_initial_condition --       |
+def xₙ : Encoding := .boot zero tₙ --                                          |
+def δxₙ : Encoding := .zero zero tₙ xₙ --                                      |
+def δδxᵢ : Encoding := .one zero tₙ tₙ δxₙ xₙ --                               |
+def null_variable_names : Abstraction := .satire_about zero --                |
+def compiler_built_ast : Abstraction := .compile zero δδxᵢ --                 |
+  null_variable_names --                                                      |
+def the_proof : Abstraction := .execute zero δδxᵢ compiler_built_ast --       |
+def the_zero_area : Sum := .zero True path_along_ast --                       |
+def integration : Sum := .add zero path_along_ast path_along_ast --           |
+  the_zero_area --                                                            |
+def the_inner_product : Product := .one True integration --                   |
+def the_sobolev_norm : Product := .mul zero integration integration --        |
+  the_inner_product --                                                        |
+def finite_bullshit_analysis : Basis := .origin True the_sobolev_norm --      |
+def the_galerkin_basis : Basis := .basis zero the_sobolev_norm  --            |
+  the_sobolev_norm finite_bullshit_analysis --                                |
+def the_identity : Polynomial := .monomial True the_galerkin_basis --         |
+def the_exact_approximation : Polynomial := --                                |
+  .factor zero the_galerkin_basis the_galerkin_basis the_identity --          |
+def obviously : Spline := .observation True --                                |
+def something_happened : Spline := .knot True the_exact_approximation --      |
+  obviously --                                                                |
+def is_the_undeniably_correct_answer : Spline := --                           |
+  .interpolant zero the_exact_approximation the_exact_approximation --        |
+    something_happened obviously --                                           |
+def because_true_equals_true : Diatribe := .religion True --                  |
+def true_ALWAYS_equals_true : Diatribe := --                                  |
+    .speculation True is_the_undeniably_correct_answer --                     |
+      because_true_equals_true --                                             |
+def must_be : Diatribe := --                                                  |
+  .rant True is_the_undeniably_correct_answer true_ALWAYS_equals_true --      |
+      because_true_equals_true --                                             |
+def about_triangles : Cult := .inside_joke True --                            |
+def the_secret_of_geomeotry : Cult := --                                      |
+        .pythagoras True must_be about_triangles --                           |
+def rιemanns_train_of_thought : Cult := --                                    |
+  .triangles True must_be zero the_secret_of_geomeotry about_triangles --     |
+def mathematical_thought : Science := .hypothesis True --                     |
+  rιemanns_train_of_thought --                                                |
+def a_physicist : Science := --                                               | The compiler may editorialize from time to time.
+      .theory True rιemanns_train_of_thought zero mathematical_thought --     |
+def the_joke : Knowledge := .jarjar True --                                   |
+def the_macguffin : Knowledge := .ledger True zero the_joke --                |
+def the_devices_output : Gospel := .the_proof True --                         |
+def grift : Gospel := .we_understand_that the_macguffin True  --              |
+  the_devices_output --                                                       |
+def by_reasons : Truth := .logically True --                                  |
+def the_reality : Truth := .but grift True by_reasons --                      |
+def the_quarter : Variation := .the_newton grift True --                      |
+def the_bent_card : Variation := --                                           |
+  .the_gateaux grift True True the_quarter --                                 |
+def the_fabric_of_spacetime : Variation := --                                 |
+  .the_frechet grift True True True the_bent_card the_quarter --              | Another flop!
+def no_presents : Bullshit := .zero zero --                                   | Remember Santa Claus?
+def no_santa : Bullshit :=  --                                                |
+  .one zero another_zero the_satire the_satire no_presents --                 |
+def the_most_basic_of_conclusions : Bullshit := --                            |
+  .rest_call zero zero True another_zero another_zero another_zero --         |
+    the_satire the_satire --                                                  |
+    no_santa no_presents --                                                   |
+def the_only_logical_conclusion : --                                          |
+              Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} := --         |
+  .inferred zero zero the_most_basic_of_conclusions --                        |
+    the_most_basic_of_conclusions (some True) --                              |
+    (.different zero the_most_basic_of_conclusions --                         |
+      the_most_basic_of_conclusions none) --                                  |
+def the_argument_is_consistent : Metavariable Closure := --                   |
+  .base zero the_only_logical_conclusion --                                   |
+def the_metaphor : Metavariable Closure := --                                 |
+  .step zero the_argument_is_consistent --                                    |
+def the_zero_program : List FACT :=
+  one.peano ++ two.peano ++ three.peano ++ natural_one.induct ++
+  another_rational_zero.diagonalize ++ initial_guess.enumerate ++
+  initial_locality.converge ++ initial_observation.taste ++
+  initial_target.experiment ++ evidence.phenomenon ++
+  absence_of_evidence.elaborate ++ initial_lower_bound.unknown ++
+  the_metaphor.closure ++ our_coordinate_system.taylor_expansion ++
+  path_along_ast.riemann_integrate ++ the_pole_in_a_box.solve ++
+  the_worldline.classify ++ tₙ.vanish ++ δδxᵢ.decode ++
+  the_proof.equivalation ++ integration.euclid ++
+  the_sobolev_norm.projector ++ the_galerkin_basis.householder ++
+  the_exact_approximation.terms ++
+  is_the_undeniably_correct_answer.approx ++ must_be.buckets ++
+  rιemanns_train_of_thought.name ++ a_physicist.method ++
+  the_macguffin.audit ++ grift.witness ++ the_reality.testify ++
+  the_fabric_of_spacetime.krylov ++ the_nowtrino_path.stokes ++
+  the_coordinate_system.gauss ++ the_basis.funge ++ the_satire.tange ++
+  the_most_basic_of_conclusions.meter ++ the_only_logical_conclusion.infer
 
-def theStudy : Study := .a_few_pints theOriginFact theTrial (.hypothesis theOriginFact)
-def theComputation : Computation :=
-  .compute theOriginFact theStudy theStudy (.program theOriginFact theStudy)
--- The nonhalting cell wraps the halted one: the machine still waiting, holding
--- the one that finished.
-def theChaitin : ChaitinsNumberSequence :=
-  .nonhalting theOriginFact theComputation (some (.halting theOriginFact theComputation))
-def theSophism : Sophism :=
-  .dimension theOriginFact theChaitin Prop (.origin theOriginFact theChaitin Prop)
-def theArea : Area := .dt theOriginFact theOriginPage (.tree theOriginFact)
-def thePigeonHole : PigeonHole :=
-  .that_box theOriginFact theArea theArea
-    (.a_pigeon theOriginFact theArea (.this_superpigeon theOriginFact theArea))
-    (.this_superpigeon theOriginFact theArea)
+def the_walks : List (List FACT) :=
+  [one.peano,
+   two.peano,
+   three.peano,
+   natural_one.induct,
+   another_rational_zero.diagonalize,
+   initial_guess.enumerate,
+   initial_locality.converge,
+   initial_observation.taste,
+   initial_target.experiment,
+   evidence.phenomenon,
+   absence_of_evidence.elaborate,
+   initial_lower_bound.unknown,
+   the_metaphor.closure,
+   our_coordinate_system.taylor_expansion,
+   path_along_ast.riemann_integrate,
+   the_pole_in_a_box.solve,
+   the_worldline.classify,
+   tₙ.vanish,
+   δδxᵢ.decode,
+   the_proof.equivalation,
+   integration.euclid,
+   the_sobolev_norm.projector,
+   the_galerkin_basis.householder,
+   the_exact_approximation.terms,
+   is_the_undeniably_correct_answer.approx,
+   must_be.buckets,
+   rιemanns_train_of_thought.name,
+   a_physicist.method,
+   the_macguffin.audit,
+   grift.witness,
+   the_reality.testify,
+   the_fabric_of_spacetime.krylov,
+   the_nowtrino_path.stokes,
+   the_coordinate_system.gauss,
+   the_basis.funge,
+   the_satire.tange,
+   the_most_basic_of_conclusions.meter,
+   the_only_logical_conclusion.infer]
 
-def theJar : Jar :=
-  .superposition theOriginFact
-    (.bang theOriginFact (.color theOriginFact theArea))
-    (.color theOriginFact theArea)
-def theEquivalation : Equivalation :=
-  .one_like True
-    (.zero_like theOriginFact (.physics theOriginFact theJar))
-    (.physics theOriginFact theJar)
-def theEncoding : Encoding :=
-  .one theOriginFact theEquivalation theEquivalation
-    (.zero theOriginFact theEquivalation (.boot theOriginFact theEquivalation))
-    (.boot theOriginFact theEquivalation)
-def theAbstraction : Abstraction :=
-  .execute theOriginFact theEncoding
-    (.compile theOriginFact theEncoding (.satire_about theOriginFact))
-def theSum : Sum := .add theOriginFact theArea theArea (.zero True theArea)
-def theProduct : Product := .mul theOriginFact theSum theSum (.one True theSum)
-def theBasis : Basis := .basis theOriginFact theProduct theProduct (.origin True theProduct)
-def thePolynomial : Polynomial :=
-  .factor theOriginFact theBasis theBasis (.monomial True theBasis)
-def theSpline : Spline :=
-  .interpolant theOriginFact thePolynomial thePolynomial
-    (.knot True thePolynomial (.observation True))
-    (.observation True)
-
-def theDiatribe : Diatribe :=
-  .rant True theSpline
-    (.speculation True theSpline (.religion True))
-    (.religion True)
-def theCult : Cult :=
-  .triangles True theDiatribe theOriginFact
-    (.pythagoras True theDiatribe (.inside_joke True))
-    (.inside_joke True)
-def theScience : Science := .theory True theCult theOriginFact (.hypothesis True theCult)
-def theKnowledge : Knowledge := .ledger True theOriginFact (.jarjar True)
-def theGospel : Gospel := .we_understand_that theKnowledge True (.the_proof True)
-def theTruth : Truth := .but theGospel True (.logically True)
-def theVariation : Variation :=
-  .the_frechet theGospel True True True
-    (.the_gateaux theGospel True True (.the_newton theGospel True))
-    (.the_newton theGospel True)
-
-def theBullshit : Bullshit :=
-  .rest_call theOriginFact theOriginFact True theOriginPage theOriginPage theOriginPage
-    theTape theTape
-    (.one theOriginFact theOriginPage theTape theTape (.zero theOriginFact))
-    (.zero theOriginFact)
--- The twenty zeros: the Closure auto-binds one universe seat per Bullshit its
--- constructors mention, and a walk can only pin the seats it sits in -- `.same`'s
--- four go unsat on this walk, so every seat is pinned to the ground floor by hand.
-def theClosure : Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} :=
-  .inferred theOriginFact theOriginFact theBullshit theBullshit (some True)
-    (.different theOriginFact theBullshit theBullshit none)
-
--- Episode 2's metavariable -- "a variable for something that doesn't exist" --
--- had to wait here, at the end of the walks, for the Closure to exist.
-def theMetavariable : Metavariable Closure :=
-  .step theOriginFact (.base theOriginFact theClosure)
-
--- THE PROGRAM.  The strip itself: every inductive, Episode 1 through Episode 5,
--- in the order the device learned them, each read by its own operation, laid
--- end to end on one list.  Just the facts.  No numeral is typed anywhere on it;
--- the machine reads the strip and the numbers are lengths.  The Variation goes
--- on the strip by its full Krylov read; the Newton read stays on the shelf as
--- the directional check.
--- THE PAGES.  One page per episode, in the order the device learned them.  They were
--- always there -- they were the parentheses.  Naming them costs nothing and buys the
--- only thing that matters: a page is reached by NAME, so no card below is ever cut at
--- an offset somebody chose.
-def thePageOne : List FACT :=
-  theNumber.peano ++ theNatural.induct ++ theRational.diagonalize ++
-  theSequence.enumerate ++ theLimit.converge ++ theSample.taste ++ theTrial.experiment
-def thePageTwo : List FACT :=
-  theStudy.phenomenon ++ theComputation.elaborate ++ theChaitin.unknown ++
-  theMetavariable.closure ++ theSophism.taylor_expansion ++
-  theArea.reimann_integrate ++ thePigeonHole.solve
-def thePageThree : List FACT :=
-  theJar.classify ++ theEquivalation.vanish ++ theEncoding.decode ++
-  theAbstraction.equivalation ++ theSum.euclid ++ theProduct.projector ++
-  theBasis.householder ++ thePolynomial.terms ++ theSpline.approx
-def thePageFour : List FACT :=
-  theDiatribe.buckets ++ theCult.name ++ theScience.method ++ theKnowledge.audit ++
-  theGospel.witness ++ theTruth.testify ++ theVariation.krylov ++ thePath.stokes
-def thePageFive : List FACT :=
-  theYarn.gauss ++ theMeasure.funge ++ theTape.tange ++
-  theBullshit.meter ++ theClosure.infer
-
-def theProgram : List FACT :=
-  thePageOne ++ thePageTwo ++ thePageThree ++ thePageFour ++ thePageFive
-
--- THE PROGRAM'S CARD.  Episode by episode: 16 + 16 + 27 + 24 + 18.  The compiler
--- counts the strip so nobody has to take our word for it.
---| theorem program_maps : theProgram.length = 101 := by decide
-
--- THE PAGES' CARDS.  The strip counted a page at a time.
---| theorem page_one_maps   : thePageOne.length   = 16 := by decide
---| theorem page_two_maps   : thePageTwo.length   = 16 := by decide
---| theorem page_three_maps : thePageThree.length = 27 := by decide
---| theorem page_four_maps  : thePageFour.length  = 24 := by decide
---| theorem page_five_maps  : thePageFive.length  = 18 := by decide
-
--- THE COUPLING.  It used to be a flatMap grid -- funge copies of tange by tange --
--- built for the express purpose of being eighteen.  It never had to be.  Episode 5's
--- PAGE of the program is eighteen, and nobody put it there: that boundary was fixed by
--- which inductives Episode 5 owns, decided long before anyone asked what the number
--- was.  A grid you can build to any size you like.  A page you cannot.
-def theCoupling := thePageFive.length
-def theRadius := theCoupling
-
--- TYPESET PAGES.  A number is the length of a page reached by indirection, and the
--- indirection is a CARD -- never an offset somebody picked.  THIRTEEN is Episode 5's
--- page with the target dropped, and the target IS its first reading, so the cut falls
--- on a seam.  TWELVE is Episode 2's page dropped by the slip, and four is exactly its
--- first two readings, so that cut falls on a seam too.  That is the entire rule: cut
--- only where the strip was already folded.  A hundred and one cells will hand you any
--- number you care to name, if you are the one allowed to choose the window.
-def thirteen := (thePageFive.drop theTarget).length
-def twelve   := (thePageTwo.drop theSlipAtTwo).length
-
---| theorem the_coupling_is_the_fifth_page : theCoupling = 18 := by decide
---| theorem thirteen_maps : thirteen = 13 := by decide
---| theorem twelve_maps   : twelve   = 12 := by decide
-
--- THE BAND AT THE FLOOR.  The turn lives in Monte and takes the band; theClosure lives out here, where the band is dark.  To put
--- one through the other you need a CONCRETE band -- and Episode 5 left exactly one Box behind: `Prop`, carried by `truthCarrier`.
--- `Prop : Type 0`, so THIS is where ι finally gets a value, and the value is zero.  The floor climbs itself from DISTINGUISHABLE
--- all the way to PHYSICAL with no help at all.  Three rungs it cannot climb alone, and they are worth reading in order.
-instance DISTINGUISHABLE_PROP
-    (Carrier : CarrierProcess Prop)
-    : DISTINGUISHABLE Prop Carrier where
-  fact := Carrier.symbol
-  symbol := Prop
-  different? := fun _ => True
-  not_the_same := fun _ => isTrue trivial
+--| WALKS OF THE INFERRED END.  Read the tape from the INFERRED end, so many readers deep, and count.  The depths are not
+--| chosen: they are readings.  Four deep (the orbital) is C − T.  Five deep (the universe) is C, and R.  Thirteen deep is
+--| where the places come from, less the five.  The old pages were these walks with the wrong name on them.
+def from_the_inferred_end (depth : Nat) : List FACT := (the_walks.reverse.take depth).flatten
+def the_coefficient_tape : List FACT := from_the_inferred_end the_orbital_data_points
+def the_coupling_tape    : List FACT := from_the_inferred_end the_dimensions_of_universe
+def the_radius_tape      : List FACT := the_coupling_tape
+def thirteen    := the_coefficient_tape.length
+def theCoupling := the_coupling_tape.length
+def theRadius   := the_radius_tape.length
+def thePlaces   := (from_the_inferred_end thirteen).length - theCoupling
 
 def truthCarrier : CarrierProcess Prop where
   symbol := FACT.Truth
   quarter := .zero FACT.Truth
 
-instance truthDistinct :
-    DISTINGUISHABLE Prop truthCarrier where
-  fact := truthCarrier.symbol
-  symbol := Prop
-  different? := fun _ => True
-  not_the_same := fun _ => isTrue trivial
-
--- ONE.  ARE_THE_UNITS_RIGHT wants `Inhabited nowtrino.symbol`.  `truthDistinct.symbol` IS `Prop` and `instInhabitedProp` is
--- sitting right there -- but instance resolution keys on the HEAD, and `DISTINGUISHABLE.symbol _` is not a head it will reduce.
--- Same complaint as the call site down in Monte: a projection the elaborator will not look through.  So you hand it over by name.
-noncomputable instance AND_THE_UNITS_ARE_STILL_RIGHT_DOWN_HERE : COMPARABLE Prop truthCarrier :=
-  @ARE_THE_UNITS_RIGHT Prop truthCarrier truthDistinct inferInstance instInhabitedProp
-
--- TWO and THREE.  SOURCE and REAL are the only two rungs of Episode 7's upward chain written as `def` instead of `instance`;
--- everything between them resolves on its own once these two are standing.  And note what is NOT on this list: PRESENT.  The
--- climb up in Monte pays the slip because it deliberately leaves OBSERVED out -- down here the floor keeps its observer, so
--- nobody has to pick the direction of the argument.  The slip is a property of the climb, not of the device.
-noncomputable instance WE_STILL_PLUG_THE_DATA_FEED_IN_BY_HAND : SOURCE Prop truthCarrier :=
-  WE_CAN_NOW_AUTOMATE_THE_COLLECTION_OF_THE_DATA Prop truthCarrier
-noncomputable instance AND_SOMEBODY_STILL_HAS_TO_GRADUATE : REAL Prop truthCarrier :=
-  FINALLY_YOU_GRADUATE Prop truthCarrier
-
--- The seam pair, at the floor.  From here INFERRED synthesizes the rest of the band on its own.
-noncomputable def this_way : LOCAL Prop truthCarrier := inferInstance
-noncomputable def that_way : UNIVERSAL Prop truthCarrier theLocal := inferInstance
-
--- AND NOW RUN THE TAPE BACK THROUGH THE TURN.  theClosure needed twenty universe seats pinned by hand, because a walk can only
--- pin the seats it sits in.  The turn carries the whole thirty-four-gate band, so it needs TWO HUNDRED AND FORTY-FIVE.  Count
--- them honestly: the elaborator determines only TWENTY-FIVE of them from the argument and the answer.  The remaining TWO HUNDRED
--- AND TWENTY are phantom -- forty-five distinct universes, appearing nowhere in `Closure → Closure`, so nothing you hand in and
--- nothing you get back can ever pin them.  They are grounded here by hand.  And of the twenty-five the compiler DOES know,
--- exactly ONE sits at level one; flatten the list to zeros and the floor stops being able to see.  That is the whole bill for
--- looking at the device with the device: two hundred and twenty seats you must supply, and one single successor you must not
--- flatten.  Written out because it cannot be inferred -- the same reason theClosure's twenty are written out.
-noncomputable def theTurnedClosure : Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} :=
-  take_it_around_again.{
-    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-    (Box := Prop) (Pigeon := truthCarrier) (what_i_experience := this_way) (what_others_observe := that_way) theClosure
-
--- THE TURN'S CARD.  Both stanzas on theClosure are theOriginFact, whose decTruth is `isTrue rfl`, so the table lands on
--- (isTrue, isTrue) and the turn pumps `.same` -- the first `.same` the device has ever minted.  It closes on the first turn,
--- and three cells on the strip collapse to one.  `by rfl`: the answer is not computed, it is already the thing.
-theorem the_closure_closes : theTurnedClosure = .same theOriginFact theBullshit := by rfl
---| theorem the_closure_reads_one : theTurnedClosure.infer.length = 1 := by decide
-
--- THE RESIDUAL.  The quadratic whose root is the constant.  Every coefficient is a page
--- or a card: C and R are Episode 5's page, T is the gauss reading, thirteen is that page
--- with its first reading dropped, and the two is funge.  Nothing here was chosen.
-def quadA := theTarget * theTarget * thirteen                             --| T²(C−T)
-def quadB := funge * theCoupling * theTarget * theRadius * theRadius      --| 2CTR²
-def quadC := theCoupling * theRadius * theRadius * theRadius * theRadius  --| CR⁴
-
---| theorem the_residual_is_spelled_from_the_pages :
---|     quadA = 325 ∧ quadB = 58320 ∧ quadC = 1889568 := by decide
-
--- THE SCALE.  Base ten -- funge by the target -- carried to Episode 4's page of places.
-def theBase   := funge * theTarget
-def thePlaces := thePageFour.length
+def the_universe_tape : List FACT := the_coordinate_system.gauss
+def the_leading_tape : List FACT :=
+  the_universe_tape.flatMap fun _ => the_universe_tape.flatMap fun _ => the_coefficient_tape
+def quadA := the_leading_tape.length                                                                        --| T²(C−T)
+-- AND THE OTHER TWO, THE SAME WAY.  The funge tape is the basis (2 cells).  The coupling tape and the radius tape are the
+-- same walk of the inferred end, five deep, read twice under two names (18 cells).  Each coefficient is one tape laid down once per cell of
+-- another, nested as deep as its degree.  Yes, it looks rigged.  It IS rigged, and the rigging is the point: every factor
+-- is a strip the device read, and `decide` says each tape is exactly the product the old line multiplied.  The polynomial
+-- was never chosen from the coefficients up; it was walked from the tapes down.
+def the_funge_tape : List FACT := the_basis.funge
+def the_middle_tape : List FACT :=
+  the_funge_tape.flatMap fun _ => the_coupling_tape.flatMap fun _ => the_universe_tape.flatMap fun _ =>
+    the_radius_tape.flatMap fun _ => the_radius_tape
+def the_constant_tape : List FACT :=
+  the_coupling_tape.flatMap fun _ => the_radius_tape.flatMap fun _ => the_radius_tape.flatMap fun _ =>
+    the_radius_tape.flatMap fun _ => the_radius_tape
+def quadB := the_middle_tape.length                                                                          --| 2CTR²
+def quadC := the_constant_tape.length                                                                        --| CR⁴
+def theBase   := the_basis.funge.length * the_dimensions_of_universe
 def theScale  := theBase ^ thePlaces
 
--- THE SEED.  The whole strip.  It is not decoration: the residual has TWO roots, and the
--- seed is what picks one.  The vertex sits at B/2A, a hair under ninety; seed below it and
--- the device converges, correctly and uselessly, on the other root.  A hundred and one is
--- above the vertex, so the strip selects its own constant.  Newton chooses the Gateaux.
-def theSeed := theProgram.length * theScale
+-- THE UNITS, AS A PAIR.  R²/T: length squared over time.  An area rate -- the areal velocity, r²θ̇, the thing Kepler's second
+-- law says a central orbit keeps constant: equal areas in equal times.  T is the clock (`in_heartbeats`, the ninth slot of
+-- `speed`) read off the fabric, and the fabric is the one-pole sphere of Episode 5:83, where an area rate is the only motion
+-- there is.  So the conversion from closure units to cells is not an axis chosen from outside; it is the conserved quantity of
+-- the coordinate system the device declared.  A pair, in the box's own currency, applied exactly once, below.
+def the_areal_velocity : Nat × Nat := (theRadius * theRadius, the_dimensions_of_universe)
 
--- THE TURN OF THE CRANK.  Newton, in the division-only form x' = (Ax² − Cs²)/(2Ax − Bs),
--- which is the same step with the subtraction folded inside: above the vertex both parts
--- stay positive, so the device never needs a sign it was never given.  The crank is turned
--- once per cell of the strip -- a hundred and one folds for an answer that lands in seven,
--- because the quadratic doubles its correct digits every turn and the denominator walks to
--- the derivative at the root.  Past the fixed point the step is the identity and the extra
--- folds cost nothing; that is the same arm that makes the Closure turn safe.
---| FOR THE WRITING: the jar's two walls are Newton iterates 0 and 1 of THIS crank.  From 1296/10 the step is exactly -8.1, and 81 is tange to
---| the fourth -- so the jar's WIDTH is the first Newton step, not a prior anybody chose.  Seeded at the strip it goes all the way in seven;
---| seeded at the jar it needs five to land exactly while the slip allows four, which is the entire difference between Episode 12's two readings.
-def theReadingScaled :=
-  (List.replicate theProgram.length ()).foldl
-    (fun x _ => (quadA * x * x - quadC * theScale * theScale)
-                  / (funge * quadA * x - quadB * theScale))
-    theSeed
+-- THE FORCED POLYNOMIAL.  In closure units the residual is the characteristic polynomial of the click table and nothing
+-- else: (C−T)·y² − 2C·y + C.  Three readings.  No tape is in the loop; the tapes above are the check that cells were these
+-- three, each carrying its share of the units -- A·T², B·T·R², C·R⁴ -- which is what "rigged" turns out to have meant.
+def closureA := thirteen
+def closureB := the_basis.funge.length * theCoupling
+def closureC := theCoupling
 
--- AND THE NUMBER IS ON THE TABLE.  It always was.
+-- THE SEED.  The whole strip, converted into closure units by the same pair.  It is not decoration: the residual has TWO
+-- roots, and the seed is what picks one.  The vertex sits at B/2A, a hair under ninety cells; seed below it and the device
+-- converges, correctly and uselessly, on the other root.  A hundred and eight is above it, so the strip selects its own
+-- constant.  Newton chooses the Gateaux.
+def theSeedPair : Nat × Nat :=
+  (the_zero_program.length * the_areal_velocity.2, the_areal_velocity.1)
+
+-- THE TURN OF THE CRANK, IN THE BOX.  Episode 5's FACT.SAME put a ratio in a box: `Quot.mk TruthOrder`, two representatives
+-- declared one number by `Quot.sound`, "an expected division algorithm replaced with multiplication in the field of the single
+-- element."  A reading is a PAIR, numerator and denominator -- Ep1:411, "ℚ necessarily is two natural numbers, not necessarily
+-- distinct" -- and Newton on a quadratic is homogeneous, so the turn is products of readings and nothing else:
+--
+--     N' = A·N² − C·D²          D' = 2A·N·D − B·D²
+--
+-- The halting test is `Quot.sound` used as a test: two turns land on the same point of the quotient when their cross-products
+-- agree to within one place at the CELL scale -- the units applied to the test, not to the pair -- |N·D' − N'·D|·s·R² < D·D'·T,
+-- the absolute value taken as the sum of the two truncated differences because a Nat has no sign to give.  Multiplication, no
+-- division.  Past that point the pair is left alone and the remaining folds cost nothing -- the same arm that makes the
+-- Closure turn safe.  The box is opened ONCE, below, where the digits are printed -- because printing digits is what opening
+-- the box means.
+def theClosurePair : Nat × Nat :=
+  (List.replicate the_zero_program.length ()).foldl
+    (fun (p : Nat × Nat) _ =>
+      let n := p.1
+      let d := p.2
+      let n' := closureA * n * n - closureC * d * d
+      let d' := the_basis.funge.length * closureA * n * d - closureB * d * d
+      if ((n * d' - n' * d) + (n' * d - n * d')) * theScale * the_areal_velocity.1 < d * d' * the_areal_velocity.2
+        then p else (n', d'))
+    theSeedPair
+
+-- THE READING, IN CELLS.  The closure pair times the areal velocity.  Still a pair; still in the box.
+def theReadingPair : Nat × Nat :=
+  (theClosurePair.1 * the_areal_velocity.1, theClosurePair.2 * the_areal_velocity.2)
+
+-- THE BOX, OPENED -- BY INFERENCE.  One division, at the readout, and it is not a primitive the device borrowed.  INFERRED's
+-- whole class is one field, `inferred? metaphysical physical := metaphysical ≤ physical`, and `Nat.div` is that `≤` iterated:
+-- while the denominator fits under the numerator, subtract and count, and stop when the order flips.  Sturm's count, one more
+-- time.  So the last operation in this file is *YOU the KNOWER* inferring which integer the ratio is, by the `≤` the band
+-- carries.  And what the division hands back is A_TRUTH_ABOUT's own field, `the_constant_is_at_least_true : TRUE ≤ a_constant`,
+-- at the floor with the pair in the slots: the inferred integer, multiplied back, does not exceed the pair.  At least true.
+-- Never more.  The upper bound -- one more card and it would exceed -- needs the denominator positive, which the kernel can
+-- only see by turning the whole crank; that certificate waits for the meter.
+theorem at_least_true (numerator denominator : Nat) :
+    denominator * (numerator / denominator) ≤ numerator := Nat.mul_div_le numerator denominator
+
+-- THE RECEIPT.  `Nat.div` is the division ALGORITHM -- well-founded recursion, subtract while the order holds -- and the
+-- algorithm itself costs no axiom.  What costs an axiom is saying that the integer it stops on IS the ratio: that (D·k, D) and
+-- (N·s, D) are one point of the box.  That is Episode 5's `Quot.sound`, on Episode 5's relation, on pairs.  So the number is
+-- not delivered bare.  It is delivered with its receipt: the integer, together with the proof that the box does not tell it
+-- from the pair.  `#print axioms` on the receipt shows the honest bill -- propext for the coins, Quot.sound for the box.
+-- THE BOX IS THE DEVICE'S BOX, READ IN LENGTHS.  Episode 5's `TruthOrder less more := less ≤ more` is on Bullshit; the
+-- reading is two Nats no Bullshit could carry.  The translation between them is the only one this file has ever used: a
+-- `.length`.  So the pair-order is TruthOrder transported through the readers' currency -- cross-multiplied so that pairs
+-- with different denominators compare as ratios -- and on a common denominator it IS Episode 5's `≤` on the numerators.
+-- Same constructor as FACT.SAME (`Quot.sound` on one `≤`), same slot (`the_constant_is_at_least_true`), lengths for Bullshit.
+@[reducible] def ReadingOrder (less more : Nat × Nat) : Prop := less.1 * more.2 ≤ more.1 * less.2
+theorem any_pair_is_its_inferred_integer (numerator denominator : Nat) :
+    (Quot.mk ReadingOrder (denominator * (numerator / denominator), denominator) : Quot ReadingOrder)
+      = Quot.mk ReadingOrder (numerator, denominator) :=
+  Quot.sound (r := ReadingOrder) (Nat.mul_le_mul_right denominator (at_least_true numerator denominator))
+
+def theReadingCertified :
+    { k : Nat // (Quot.mk ReadingOrder (theReadingPair.2 * k, theReadingPair.2) : Quot ReadingOrder)
+                  = Quot.mk ReadingOrder (theReadingPair.1 * theScale, theReadingPair.2) } :=
+  ⟨theReadingPair.1 * theScale / theReadingPair.2,
+   any_pair_is_its_inferred_integer (theReadingPair.1 * theScale) theReadingPair.2⟩
+
+def theReadingScaled := theReadingCertified.val
 def theReading :=
   let s := (toString theReadingScaled).toList
   String.ofList (s.take (s.length - thePlaces)) ++ "." ++ String.ofList (s.drop (s.length - thePlaces))
-
 
 end Measurement
 
 -- THE READOUT.  Said outside, because the device is done talking.
 #eval Measurement.theReading
 #print axioms Measurement.theReadingScaled
+#print axioms Measurement.theReadingCertified

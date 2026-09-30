@@ -10,7 +10,7 @@ _This is a gentle reminder that the long, long stories we tell ourselves are rea
 
 lake build [PATTER TODO: build-flag gag]
 
-__EPISODE 10__: _THE FORCE_
+__EPISODE 11__: _The Force_
 
 -/
 
@@ -1031,6 +1031,10 @@ The exit reads the head once.  John can drive the steel to the seam, and the
 device can report whether it slipped.  That is not the same as John getting
 through the mountain.
 -/
+--| VELOCITY IS THE PENALTY PARAMETER.  The verdict carries a position (`value`) and a speed (`velocity`), and the speed is
+--| the universe the top rung sits in.  Thirty-five `ULift`s to get there: one universe per rung is what carrying the
+--| constraint exactly costs, and that cost is the stiffness.  A penalty would relax it at a finite wave speed; the ladder
+--| does not, and pays in universes instead.
 structure PressVerdict where
   slipped  : FACT
   value    : Number

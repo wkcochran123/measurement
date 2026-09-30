@@ -140,7 +140,7 @@ structure MeesaProcess  -- Bullshit meter ≈ 1010.
     [DISTINGUISHABLE Box Pigeon] --+
     [ADMISSIBLE Box Pigeon] --     |           | You may be wondering what happened to the *CLICK* we used to get. The compiler isn't elaborating
     [COUNTABLE Box Pigeon] --      |           | the source in the β-reduction. It is applying a rule explicitly without recursion, meaning that
-    [ENCODED Box Pigeon] --        +-----------+ unless we ask it _DIRECTLY_ with decTruth, the compiler need not elaborate anything. The elaboration
+    [ENCODED Box Pigeon] --        +-----------+ unless we ask it _DIRECTLY_ with click, the compiler need not elaborate anything. The elaboration
     [RESIDUE Box Pigeon] --        |           | step measures _consistency of argument_. We are looking at _consistency of spelling and grammar_.
     [BINARY Box Pigeon] --         |           | That's what can be measured. How many objects have been stacked (indicated by universe level) or
     [REPEATABLE Box Pigeon] --     |           | how long has it taken to compile (the bullshit meter). It doesn't take a rocket surgeon to put two
@@ -164,7 +164,7 @@ structure MeesaProcess  -- Bullshit meter ≈ 1010.
 --    +--------------------------------------------------------------+ The study and practice of science takes years and years and years to master,
 --    |                                                              | if it can be mastered at all. The important thing is that these jars are
 --    V                                                              | completely fungible. Colors only lead to colors, bangs only lead to bangs,
-  life_debt? : Jar → Jar := fun j => match j with --                 | and these are purely _countable_ creations that a Master of Science can
+  life_debt? : Jar → Jar := fun j => match j with --                 | and these are purely _countable_ creations that a _Master of Science_ can
     | .color f a => .color f a          -- Colors don't run          | readily understand as the diffusion equation.
     | .bang f _  => .bang f concept
     | .superposition f _ j2 => .superposition f concept j2  -- The concept inherits the current state of affairs in the superposition.

@@ -22,7 +22,7 @@ YOU_THE_KNOWER: HOW ARE YOU GENTLEMEN !!
 
 lake build You have no chance to survive make your time. Ha ha ha ha ...
 
-__EPISODE 9__: _THE MISDIRECTION_
+__EPISODE 9__: _The Misdirection_
 
 The biggest problem with most rigorous theories of science is just that they aren't all that pretty.
                            -- definitely NOT Paul Dirac.
@@ -30,7 +30,7 @@ The biggest problem with most rigorous theories of science is just that they are
 
 
 -- WE GET SIGNAL!
-import Measurement.Episode08
+import Measurement.Episode07
 set_option allowUnsafeReducibility true
 
 -- MAIN SCREEN TURN ON !
@@ -108,6 +108,9 @@ def THEN_WE_COUNT_THE_PARTICLES_IN_THE_CASCADE
     (something: DISTINGUISHABLE Box Pigeon)
     (something_with_momentum:ADMISSIBLE Box Pigeon)
     : COUNTABLE Box Pigeon where
+  --| THE MULTIPLIER IS A RATIO.  Momentum is what the constraint is enforced against, and a multiplier is a ratio of two
+  --| counts: what was asked over what was admitted.  Episode 8's `theReadingPair` (N, D) is that ratio at the readout --
+  --| the pressure -- and this is where it is first counted.
   index :=
   { count := something_with_momentum.counting_process
     origin := .number ledger something_with_momentum.counting_process.count (.zero ledger)
@@ -1046,7 +1049,7 @@ def FINALLY_WE_CAN_CATCH_THE_TRAIN_TO_MEET_EINSTEIN_ON_THE_EULER_LAGRANGE_EXPRES
   }
   { the_train_of_thought := calculus
     once_around := .whitehole ledger Box (.einstein ledger)
-    twice_around := calculus.photon_torpedo (.whitehole ledger Box (.einstein ledger))
+    twice_around := calculus.the_stop_after (.whitehole ledger Box (.einstein ledger))
     lake_build := fun or not => commuter_pass.lake_build or not ∧ the_a_train.lake_build or not
   }
 
@@ -1079,7 +1082,7 @@ def LAKE_BUILD_IS_APPARENTLY_NOW_DOING_DOUBLE_DUTY_ON_THE_LOGIC_AND_THE_METALOGI
     (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
     (extremum: UNIVERSAL Box Pigeon downhill)
     : LOGICAL Box Pigeon downhill extremum :=
-  let newtons_train_of_thought : SpaceTimePath := extremum.the_train_of_thought.photon_torpedo extremum.once_around
+  let newtons_train_of_thought : SpaceTimePath := extremum.the_train_of_thought.the_stop_after extremum.once_around
   { feelings :=
       { bullshit_meter := extremum.the_train_of_thought
         after_some_time := newtons_train_of_thought
@@ -1125,7 +1128,7 @@ def I_MEAN_THERE_MAY_BE_A_BUG_IN_THE_METALOGIC_BUT_THIS_DOES_EVENTUALLY_COMPILE
     (obvious_pattern: WITNESSED Box Pigeon)(inverse_square_law: REAL Box Pigeon)(downhill: LOCAL Box Pigeon)
     (extremum: UNIVERSAL Box Pigeon downhill)(bug_free: LOGICAL Box Pigeon downhill extremum)
     : HALTED Box Pigeon downhill extremum :=
-  let newtons_train_of_thought : SpaceTimePath := extremum.the_train_of_thought.photon_torpedo extremum.once_around
+  let newtons_train_of_thought : SpaceTimePath := extremum.the_train_of_thought.the_stop_after extremum.once_around
   let cardiogram :=
     { bullshit_meter := extremum.the_train_of_thought
       after_some_time := newtons_train_of_thought

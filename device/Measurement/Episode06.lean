@@ -4,7 +4,7 @@ __A Satire in Look-Ahead Backus-Naur Form__
 
 _This is a stark reminder that there is no magic in the world._
 
-__EPISODE 6__: _THE TRICK_
+__EPISODE 6__: _The Trick_
 
 ""
                   -- Teller, 2014.

@@ -6,7 +6,7 @@ _This is a gentle reminder that we often lose sight of the plot._
 
 (c) 2026
 
-__EPISODE 7__: _THE PATTER_
+__EPISODE 7__: _The Patter_
 
 "Pay no attention to the man behind that curtain."
                 -- Oscar Zoroaster Phadrig Isaac Norman Henkle Emmannuel Ambroise Diggs
@@ -773,7 +773,7 @@ def PERHAPS_ONE_THAT_USES_THE_DEVICE_ITSELF                               --
     : UNIVERSAL Box Pigeon naotrino where                                 --
   the_train_of_thought := yarn_theory.the_train_of_thought                --
   once_around := yarn_theory.once_around                                  --
-  twice_around := yarn_theory.the_train_of_thought.photon_torpedo         --
+  twice_around := yarn_theory.the_train_of_thought.the_stop_after         --
                                              yarn_theory.once_around      --
                                                                           --
 def PERHAPS_ONE_THAT_USES_CALCULUS                                        --

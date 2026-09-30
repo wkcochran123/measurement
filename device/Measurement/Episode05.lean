@@ -6,7 +6,7 @@ _This is a gentle reminder that the stories we tell ourselves are just expressio
 
 607379519908 All constants multiplied.
 
-__EPISODE 5__: _THE ANTE_
+__EPISODE 5__: _The Ante_
 
 "The speed of light is invariant"
                               -- Maxwell, in his equations and thick Scotish brogue after staying up all night.
@@ -315,6 +315,7 @@ structure HeartbeatProcess
             --| Useful solutions to the field equations are approximated since simple computations like √ are rather unrepresentable to the precision
             --| necessary to overcome the ill-conditioning of Lorentz. Seriously people. Make it a penalty method already. Conditioning is destroying
             --| whatever precision we think we see. The conditioning of Lorentz goes as that of the penalty method, if constructed identically.
+            --| (Episode 12's `bracketed_at_the_slip` is that sentence with a meter on it.)
               | isFalse _ =>
                 .fabric described_by_the_itinerary nowtrino.fact as_now and_later after_some_time this_station_is_now the_next_station_is
                                                                                       (¬described_by_the_itinerary.truth) later according_to_newton
@@ -378,7 +379,7 @@ class LOGICAL
     (local_minimum: UNIVERSAL Box Pigeon iterating_sequence)
   where
   feelings: HeartbeatProcess Box Pigeon iterating_sequence local_minimum --------+ No real heart, just a ball pumping. But, we can attach to the
-  microsoft_basic: Calibration.EKG --                                            | process itself and measure it working. In BASIC v2!
+  microsoft_basic: Calibration.EKG --| OUR BULLSHIT METER!                       | process itself and measure it working. In BASIC v2!
 --|                    ^
 --|                    |
 --|                    +----+ The eventual fallacy of calibration. Is not the length of a shoreline relative to the ruler? At some point, more time
@@ -1038,6 +1039,8 @@ inductive Closure --                   +-----------| Each fact consuming stanza 
   | inferred : FACT → FACT → Bullshit → Bullshit → Option Prop → Closure → Closure ----+ Sometimes, to close, Lean needs a UNIVERSAL idea for the
 --|              ^      ^        ^          ^           ^           ^                  | proof to resonate with both *YOU the READER* and
 --|              |      |        |          |           |           |                  | *YOU the KNOWER*.
+--| `.same` is the constraint met exactly -- the multiplier.  `.different lower_bound slip_bound` is the bracket a penalty leaves.
+--| The names were here before the physics was.
 --|              +------+--------|----------|-----------|-----------|-----> These are the facts we use to contribute to the Prop.
 --|                              |          |           |           |
 --|                              +----------+-----------|-----------|-----> These are the computable receipts for these facts to build the Prop from.

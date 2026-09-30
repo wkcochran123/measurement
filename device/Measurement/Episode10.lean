@@ -12,7 +12,7 @@ _This is a gentle reminder that the stories we tell ourselves involve a teller, 
 
 lake build [PATTER TODO: build-flag gag]
 
-__EPISODE 10__: _THE ACCOMPLICE_
+__EPISODE 10__: _The Accomplice_
 
 -/
 
@@ -24,7 +24,7 @@ namespace Measurement
 universe i
 
 
--- Yes, that is a Nat. Six episodes refusing Nat and the journal's submission
+-- Yes, that is a Nat. Nine episodes refusing Nat and the journal's submission
 -- system wants page numbers. Fine. ONE Nat. For the page numbers ONLY. The
 -- pages do not count anything; they index where the reviewer is pointing.
 class REVIEWED (Box: Type i) (Pigeon: CarrierProcess Box) (page: Nat) where
@@ -513,11 +513,13 @@ instance (priority := low) REVIEWER_2_SUSPECTS_THE_SMOOTH_STORY_IS_INTERPOLATION
       | .interpolant f _ _ _ _ => f
     { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
 
-/- We thank the reviewer for asking whether finiteness is a boundary condition
-   or a decorative animal in the theorem name. This paragraph closes the
+/- We thank the reviewer for asking whether the constraint was enforced or
+   penalized -- whether finiteness is a boundary condition carried exactly by
+   a multiplier, or a decorative animal in the theorem name that a penalty
+   parameter is quietly relaxing. The LBB question. This paragraph closes the
    polynomial gap by recording the finite expansion only at the fact-bearing
-   branches. -/
-instance (priority := low) REVIEWER_2_ASKS_IF_FINITE_IS_A_BOUNDARY_OR_A_DECORATION
+   branches, which is to say: enforced. -/
+instance (priority := low) REVIEWER_2_ASKS_IF_THE_CONSTRAINT_WAS_ENFORCED_OR_PENALIZED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
     [DISTINGUISHABLE Box Pigeon]
