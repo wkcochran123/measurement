@@ -799,7 +799,7 @@ end Product
 JAR JAR: MEESA ONE!  | way other satire needs English. Satire _works_ on cognitive dissonance. Two phrases so alike in one presentation and yet so..
 COMPILER: 1×x = x ---+ incorrect as to be abhorrent and objectionable and.... utterly impossible in others. This is a form of communication that
 ME: 1xx is counting. | is very difficult to categorize. Very difficult to have _proved a point_. Yet, somehow, satirst do. Routinely. This is not
--/ --                | meant to be 𝔽(1)-ny. Where is the compare and swap temporary variable? I think I missed Langlands by a only a few pixels.
+-/ --                | meant to be 𝔽₁-ny. Where is the compare and swap temporary variable? I think I missed Langlands by a only a few pixels.
 instance : LE Product := ⟨Product.le⟩  -- Bullshit meter = 5
 instance : LT Product := ⟨Product.lt⟩
 
@@ -935,7 +935,7 @@ ME: I bet Jar Jar just outputs the same _glpyh_ each time.  | deep secrets in. D
     It just sounds funny to us.                             |
 COMPILER: I'm a complier. I don't understand funny.         | Building a compiler than injects a function into a program allows you to build a
 JAR JAR: MEESA TWO -----------------------------------------+ compiler that injects a function into the compiler to inject a function into a program.
-ME: That sounded funny.                                     | That, 𝔽(1)-nily enough, is enough of an interface to hide information forever, once
+ME: That sounded funny.                                     | That, 𝔽₁-nily enough, is enough of an interface to hide information forever, once
 -/ --                                                       | the infection is compiled.
 inductive Basis   -- Bullshit meter = 134
   | null_space: FACT → Basis --                        | *YOU the READER* have to realize a lot of what I have been saying is complete nonsense. We
@@ -968,7 +968,7 @@ def le: Basis → Basis → Prop := fun b1 b2 => --        | fell out. That is _
   -- 1.
   | .basis f1 _ _ _, .origin p2 _ => f1.truth ≠ p2 ----> The pendulum swings backward: tick -> tock. All this upness we collected switches orientation.
 
-  -- 5. The S-Matrix Interaction Vertex (Field vs Field) -------------------+ Without a punchline, it isn't 𝔽(1)-ny. The important thing to note is
+  -- 5. The S-Matrix Interaction Vertex (Field vs Field) -------------------+ Without a punchline, it isn't 𝔽₁-ny. The important thing to note is
   | .basis f1 p11 p12 _, .basis f2 p21 p22 _ =>  --                         | some problem bases require more compute time than others, implying the
       (f1 = f2 ∧ p11 ≤ p21 ∧ p12 ≤ p22) ∨ --                                | presence of bullshit that someone expected someone else to unpack. And,
       (f1 ≠ f2 ∧ p21 ≤ p11 ∧ p22 ≤ p12) --                                  | if I can demonstrate to *YOU the READER* how to demonstrate to
@@ -1340,7 +1340,7 @@ def le : Spline → Spline → Prop := fun s1 s2 => ---------------------------+
   -- This is the "Inverse Gauss" arm.                                      | there is no reason for Euler's method to work on y'=√y at x=0.
   -- An interpolant contains a knot if the knot's polynomial               |
   -- satisfies the weak boundary conditions of the interpolation.          | No calculus required, write the method down. 0 + 0·x = 0 ∎ ("That's
-  | .knot t1 p1 _, .interpolant f2 p_in p_out _ _ => --                    | 𝔽(1)-ny to me, right thar." (Tow Mater, you know _without_ the -tuh).
+  | .knot t1 p1 _, .interpolant f2 p_in p_out _ _ => --                    | 𝔽₁-ny to me, right thar." (Tow Mater, you know _without_ the -tuh).
       t1 = f2.truth ∧ p1 ≤ p_in ∧ p1 ≤ p_out --                            |
   --                                                                       | But that's not the kind of math Lean normally does. It is the kind of
   -- 4. Interpolant vs Interpolant (The Manifold Convergence)              | math _I_ need it to do.
@@ -1365,7 +1365,7 @@ JAR JAR: MEESA y≤Θ(1×x). ---------------------------------------------+ anot
 ME: Close enough                                                      | write now, it is .monomial y=x. Later, it will be polynomal with the names
 -/ --                                                                 | {y=x, y=x³}. And since we can factor names quartically, this allows us to
 instance : LE Spline where --                                         | write things like {y=‖1(i)‖₂×x³} and guarantee they are HALTED. That sounds
-  le := Spline.le --                                                  | 𝔽(1)-ny. Coincidentally, rfl requires about 5 heartbeats to elaborate. We
+  le := Spline.le --                                                  | 𝔽₁-ny. Coincidentally, rfl requires about 5 heartbeats to elaborate. We
 --                                                                    | _JUST_ might sneak this by JAR JAR.
 
 -- And the _ABSOLUTE BEST_ part of this argument is, very _LITTLE_ of it really affects the calculation. And it was good enough to show us where.

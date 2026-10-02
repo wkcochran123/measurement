@@ -26,7 +26,7 @@ import Measurement.Calibration.LeanCalibration
 set_option allowUnsafeReducibility true
 
 
---| Perhaps not all bullshit is worthwhile. Some of it is just plain 𝔽(1)-ny. That's the only reason why we keep it around, it amuses us. The idea
+--| Perhaps not all bullshit is worthwhile. Some of it is just plain 𝔽₁-ny. That's the only reason why we keep it around, it amuses us. The idea
 --| that the direct proportion is scale invariant is _QUITE_ the fantastical tale that we all wish _WERE_ true. It is an unobserved fiction in the
 --| universe as energy is strictly conserved implying direct proportion of dependent numbers associated with invariance cannot scale. _v=at_ is
 --| precisely the cake that does not exist. While there doesn't appear to be a zero speed, it's only Lorentz between us and complete regression

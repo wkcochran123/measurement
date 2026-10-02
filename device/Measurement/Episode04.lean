@@ -89,7 +89,7 @@ structure ArmWaveProcess   -- 3306
 ----| how to explain to _YOU the KNOWER_ why it doesn't matter there are bugs.
 
 ----| It all starts with a corollary of Hook's law: Bullshit is strictly conserved. My EXTREME apologies to Noether, but not certain her law mentioned
-----| the variational form of _names_. It should, that would be 𝔽(1)-ny. Don't worry, we will be defining the function 𝔽 soon enough.
+----| the variational form of _names_. It should, that would be 𝔽₁-ny. Don't worry, we will be defining the function 𝔽 soon enough.
 
 /- CHORUS:
 ME: I installed a probe the compiler can't see.    | We have now installed 2 different lambda calculuses facing each other across variance of truth.
@@ -495,7 +495,7 @@ ME: Sometimes true, sometimes false, depending on the time.         | the fact y
 JAR JAR: MEESA PARITY BIT                                           | I disagree that nature demonstrates this behavior at a macro scale, let alone
 ME: Not exactly. You are the smallest step we can take and the      | differential.
     direction we can take it in.                                    |
-YOU the READER: 𝔽(1) -----------------------------------------------+ The obvious repair is providing an area for the curl to exist.
+YOU the READER: 𝔽₁ -------------------------------------------------+ The obvious repair is providing an area for the curl to exist.
 -/
 @[reducible]
 class SCIENTIFIC -- 23964
@@ -556,7 +556,6 @@ def le : Knowledge → Knowledge → Prop
   | .ledger orbital_mechanics thing_in_orbit nowtrino         ,    .ledger quantum_electrodynamics thing_in_orbital electron
 --|                                 ^           ^                                                        ^              ^
 --|                                 |           |                                                        |              |
---|                                 +--------------- oooh (hyper) conic sections! orbital dynamics! -----+              |
 --|                                             |                                                                       |
 --|                                             +------------+ For a little while, lets conflate these    +-------------+
 --|                                                          | so we can see if we can embed conics       |
@@ -578,7 +577,7 @@ instance : LE Knowledge where
   le := Knowledge.le
 
 --| Let's slow down because _A LOT_ just happened really, really fast. We are assuming that both kinds of orbital mechancis are just high frequency
---| updates to a hyperbolic process.  See what I did there? Really fast happenigs.. the hyperboic process.. the comments..  That is 𝔽(1)-ny. It is
+--| updates to a hyperbolic process.  See what I did there? Really fast happenigs.. the hyperboic process.. the comments..  That is 𝔽₁-ny. It is
 --| interesting how intentional some of the words are beginning sound. Not to worry, we aren't describing science, we are describing description.
 
 --| So let's start BACK at the beginning again and write down, in order, all the propositions that we know, whether or not they are true or false.
@@ -612,7 +611,7 @@ structure ScientificProcess  -- 104000
   shows_me_higher_order_terms: LearningProcess Box Pigeon --+ What are we counting, anyway? Exponents on a polynomial, of course! first ONE then
   knowledge: Knowledge --                                   | the ONE_PLUS_ONE.  Peano established 1, and if you don't buy that, stop iterating in
 --                                                          | FORTRAN and iterate in C++, like normal people.  These are the higher_order_terms that
-  learn? : Knowledge → Knowledge := fun line_number => --   | the LearningProcess shows us.  Right there in the name. Not as 𝔽(1)-ny, I know.
+  learn? : Knowledge → Knowledge := fun line_number => --   | the LearningProcess shows us.  Right there in the name. Not as 𝔽₁-ny, I know.
     match line_number with
     | .jarjar ONE                                  => .ledger ONE nowtrino.fact knowledge --               | I hope it is obvious that counting objects
     | .ledger NEXT_ONE_IS A_MORE_DIFFERENT_ONE _   => .ledger NEXT_ONE_IS A_MORE_DIFFERENT_ONE knowledge --+ distinguishes them.  If it isn't, I suggest
@@ -650,7 +649,7 @@ class TRUTH  -- 5632  Truth? Look around you... is there any truth?  There is. T
 --| At the end of the day, this mimics the call stack we have embedded on the universe that matches the meanins of the values in the universe. Not
 --| like that is easy to see. If you look at the bottom of the stack, it is the left and right side of the rfl that need evaluating in that order.
 --| Dynamic dispatch in a math proof. That's right, I just installed a monkey-patcher in Lean. TRUTH is what Lean has to work out. Not Truth, but
---| the fact there is only 1 of them. Jar Jar is telling the Truth.  Seems that it is really hard to tell if 𝔽(1) is circular reasoning or not.
+--| the fact there is only 1 of them. Jar Jar is telling the Truth.  Seems that it is really hard to tell if 𝔽₁ is circular reasoning or not.
 
 --| Not saying it is, just saying I can't tell because they assume some linearity of commutator that allows for matrices that look like physical
 --| problems, not those that arise from Von Neumann's worst case analysis. We are **VERY** lucky this constant looks like the other constant, because
@@ -937,7 +936,7 @@ def le : Variation → Variation → Prop   --                                  
                          (cheaper_train_route ≤ more_expensive_train_route ∧ here = point_a ∧ there = point_b ∧ le faster_time longer_time) ∨
                          le (.the_gateaux cheaper_train_route here there faster_time) longer_time
 
---| But it isn't the same price to go in all directions. And that's what makes it⁻¹ 𝔽(1)-ny. It also makes the computation not-so-straightforward.
+--| But it isn't the same price to go in all directions. And that's what makes it⁻¹ 𝔽₁-ny. It also makes the computation not-so-straightforward.
 --| What you can do is try to figure out how much it costs to travel a certain distance by how far apart they are and use the time-tables to see
 --| which one would take longer. This gets you a constant of proportionality.
   | .the_frechet fastest_way here there _ price_to_go_here price_from_here_to_there, .the_gateaux THAT_way point_a point_b price_of_a_one_way_ticket =>

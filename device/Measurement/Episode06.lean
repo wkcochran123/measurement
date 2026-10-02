@@ -14,7 +14,7 @@ __EPISODE 6__: _The Trick_
  lake build Measurement.Episode06
 
 **WOULD I LIE?**
-I'm not a fraud. I'm showing you the trick.
+I am not a fraud. I'm showing you the trick.
 -/
 
 namespace NOT_IN_MEASUREMENT_AND_NEVER_USED

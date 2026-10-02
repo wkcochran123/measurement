@@ -29,7 +29,7 @@ The biggest problem with most rigorous theories of science is just that they are
 -/
 
 
--- WE GET SIGNAL!
+-- WE GET SIGNAL! And we skip _RIGHT_ over the macguffin.
 import Measurement.Episode07
 set_option allowUnsafeReducibility true
 
