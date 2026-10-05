@@ -71,7 +71,17 @@ def jarReach := jarSpan * theBase
 --| constraint met exactly -- the multiplier, elliptic, instantaneous, incompressible -- and `Closure.different lower_bound
 --| slip_bound` is the bracket a penalty leaves -- finite signal speed, hyperbolic, compressible.  Same equations, one
 --| parameter, and the parameter is a wave speed (Ep4's Λ-for-c).  This Bool is which side of it the meter is standing on.
-def bracketed_at_the_slip : Bool := jarReach < Calibration.measuredFloor
+--| THE ONE DIMENSIONLESS MEASUREMENT.  The device has two counters.  Cells: constructor depth, the tape, the resolution in
+--| space, and it cannot resolve finer than one.  Heartbeats: the elaborator's own count of itself, the resolution in time,
+--| handed back by a command because the kernel cannot see it, and it cannot resolve finer than one.  This line used to compare
+--| the bracket in cells to the floor in heartbeats with a `<`, which every reader flagged as a dimensional error, and it was.
+--| The honest object is their ratio.  Heartbeats per cell is dimensionless, a Courant number, the time step over the space
+--| step, and it is the ONLY dimensionless number this device produces from a real measurement rather than a reading.  It is
+--| a pair and not a theorem, because the floor is this machine's and the next machine's will differ: that is what makes it a
+--| measurement.  (On this build it sits near R/T, the wave speed.  Do not read into that.  The floor moves; R/T does not.)
+def theCourant : Nat × Nat := (Calibration.measuredFloor, jarReach)
+def bracketed_at_the_slip : Bool := theCourant.2 < theCourant.1
+--#eval theCourant
 
 --| THE BLANK.  The meter drifts.  Elaborate the same term twice and the second reading is
 --| the larger, because the environment it was measured in grew in between.  An uncorrected
@@ -1115,8 +1125,8 @@ def theSwappedTrace : ThePreprint.{0} := decodeBits theSwapBits
 theorem cook_levin_on_the_meter : THEORY.traceSat theSwappedTrace = theSwappedTrace.stepOK :=
   cook_levin_the_description theSwappedTrace
 
-#print axioms cook_levin_on_the_mechanism
-#print axioms cook_levin_on_the_meter
+--#print axioms cook_levin_on_the_mechanism
+--#print axioms cook_levin_on_the_meter
 
 --| THE DIVISION WAS QUOT.SOUND.  Episode 8 opens its box once, at the readout, with `/`.  Episode 5 said at FACT.SAME what that
 --| division actually is: two representatives in a box, `Quot.mk TruthOrder`, declared one number by `Quot.sound` from a single
@@ -1141,7 +1151,7 @@ def THE_READING_IS_THE_INTEGER : FACT :=
   { truth := the_inferred_integer_in_the_box = the_reading_in_the_box
     click := Decidable.isTrue the_division_was_quot_sound }
 
-#print axioms the_division_was_quot_sound
+--#print axioms the_division_was_quot_sound
 
 --| BOTH READOUTS.  Episode 8 opens the box and prints the digits.  Episode 13 prints FROM the box, without opening it -- and
 --| the only way out of a quotient is `Quot.lift`, a function that must give the same answer on every pair the relation joins.
@@ -1173,8 +1183,277 @@ def the_box_reads : Quot ReadingOrder → String :=
 def the_areal_velocity_in_the_box : Quot ReadingOrder := Quot.mk ReadingOrder the_areal_velocity
 theorem the_rate_is_the_reading : the_areal_velocity_in_the_box = the_reading_in_the_box :=
   the_box_has_one_point _ _
-#eval the_box_reads the_reading_in_the_box
 #print axioms the_box_has_one_point
+
+--| THE OTHER MACHINE.  Episode 1 shipped a tape nobody read: `ComputerProgram`, cells of Props and Types.  Nothing in a cell can
+--| be evaluated -- a Prop has no runtime, a Type has no representation -- so the compiler erases every cell's contents and
+--| keeps the spine.  That is the whole thesis as a data structure: contents gauge, lengths conserved.  Here it is used as a
+--| second Turing machine.  A cell hooks a fact to the cell below it: the fact's truth, the truth below, and both lifted out of
+--| Prop into Type, one universe up.  Crossover in the implicit, literally wired.  A tape laid down this way reads back one cell
+--| per fact and nothing for the seed under the card.  Then the crank of Episode 8 -- already written over any tally -- is run
+--| with every reading routed THROUGH this machine, and the same pair comes out, by `rfl`.  The number did not depend on which
+--| machine read the tape.  Only on the lengths.
+namespace ComputerProgram
+def truth_below : ComputerProgram → Prop
+  | .load p _ => p
+  | .transform p _ _ _ _ => p
+  | .boolean p _ _ _ _ _ _ => p
+def hook (f : FACT) (below : ComputerProgram) : ComputerProgram :=
+  .transform f.truth below.truth_below (PLift f.truth) (ULift.{1} (PLift below.truth_below)) below
+def ofTape (tape : List FACT) : ComputerProgram := tape.foldr hook (.load True PUnit)
+def read : ComputerProgram → List FACT
+  | .load _ _ => []
+  | .transform _ _ _ _ rest => FACT.Truth :: rest.read
+  | .boolean _ _ _ _ _ _ rest => FACT.Truth :: rest.read
+theorem read_ofTape (tape : List FACT) : (ofTape tape).read.length = tape.length := by
+  induction tape with
+  | nil => rfl
+  | cons f rest ih => exact congrArg (· + 1) ih
+end ComputerProgram
+
+--| THE DEVICE, MAPPED ONTO THE OTHER MACHINE, AND CRANKED.
+def the_other_count (tape : List FACT) : Nat := (ComputerProgram.ofTape tape).read.length
+def the_other_pair : Nat × Nat := Crank.theReadingPair Nat the_other_count theScale
+set_option maxRecDepth 100000 in -- the elaborator needs room to unfold both cranks side by side; the kernel needs nothing
+theorem the_other_machine_agrees : the_other_pair = theReadingPair := rfl
+
+--| THE NUMBER, FROM THE OTHER MACHINE.  One `Nat.div`, no certificate, no box.  The digits are laid down as a tape of characters
+--| (`String.toList` would bill Classical.choice and Quot.sound; `Nat.toDigits` bills nothing) and the point is one more cell,
+--| `thePlaces` from the inferred end.  The bill is propext for the coins and nothing else.
+--| THE RAW NATURAL.  Before any digit is placed: the pair the crank left in the box, the scale, and the one integer the `≤`
+--| infers from them.  This is everything propext alone computes.
+def the_other_natural : Nat := the_other_pair.1 * theScale / the_other_pair.2
+--#eval the_other_pair
+--#eval theScale
+--#eval the_other_natural
+--#print axioms the_other_natural
+
+--| THE DECOMPOSITION.  Episode 8's readout billed [propext, Quot.sound].  Here the bill is taken apart.  The logic is propext:
+--| two coins, each a propositional equality, and nothing else in the device is an axiom.  The division is `Nat.div`, which
+--| bills nothing: subtract while the order holds, count, stop when it flips -- a clever algorithm, not a postulate.  What
+--| Quot.sound bought in Episode 8 was the RECEIPT for that division, `any_pair_is_its_inferred_integer`: the inferred integer
+--| and the ratio declared one point of the box.  Same natural, both ways, by `rfl`.  The axiom was never in the number; it was
+--| in the certificate that the number is what the box says it is.
+--#print axioms theReadingScaled
+--#print axioms Nat.div
+--#print axioms any_pair_is_its_inferred_integer
+set_option maxRecDepth 100000 in
+theorem the_same_natural_both_ways : the_other_natural = theReadingScaled := rfl
+--#print axioms the_same_natural_both_ways
+
+def the_other_machine_reads : String :=
+  let digits := Nat.toDigits theBase the_other_natural
+  String.ofList (digits.take (digits.length - thePlaces) ++ '.' :: digits.drop (digits.length - thePlaces))
+#eval the_other_machine_reads
+#print axioms the_other_machine_reads
+--#print axioms the_other_machine_agrees
+
+--| THE GAUGE.  Noether, in the device's words: the contents of the cells are the symmetry, the count of cells is the charge.
+--| Here is the symmetry acted out.  Every cell of every tape is overwritten with the one coin, FACT.Truth -- a different
+--| sentence in every slot, the same number of slots -- and the crank is run again.  Same pair, by `rfl`.  Nothing was
+--| computed from what the cells said.
+def relettered (tape : List FACT) : List FACT := tape.map fun _ => FACT.Truth
+def the_relettered_count (tape : List FACT) : Nat := (relettered tape).length
+def the_relettered_pair : Nat × Nat := Crank.theReadingPair Nat the_relettered_count theScale
+set_option maxRecDepth 100000 in
+theorem relettering_is_free : the_relettered_pair = theReadingPair := rfl
+--#print axioms relettering_is_free
+
+--| FOR ALL.  The particular re-lettering above was free.  The universal statement -- ANY way of counting that agrees with the
+--| lengths gives the same pair -- costs exactly one thing: turning "agrees on every tape" into "is the same function," which
+--| is `funext`, which is `Quot.sound`.  So here is the fork the device has been pointing at all along.  A symbol identity is
+--| propext.  A value identity is Quot.sound.  The number is a symbol fact; "for all readers" is a value fact.  The bill says which.
+theorem any_count_of_the_lengths (count : List FACT → Nat) (h : ∀ tape, count tape = tape.length) :
+    Crank.theReadingPair Nat count theScale = theReadingPair := by
+  have hc : count = List.length := funext h
+  subst hc
+  rfl
+--#print axioms any_count_of_the_lengths
+
+--| THE ZETA PROCESS.  Not a zeta function -- nothing here is evaluated at s.  A zeta PROCESS: the device is a two-symbol shift,
+--| the two coins, and the click table is its transition matrix.  Agreeing arms on the diagonal, disagreeing arms off it:
+--|
+--|            T        F
+--|       T [  C        T  ]        the off-diagonal product is C·T, the coupling times the clock,
+--|       F [  C        C  ]        and the two readings that multiply to it are the two readings there are.
+--|
+--| A shift's Artin-Mazur zeta is exp(Σ Nₙ zⁿ/n), Nₙ the closed words of length n, and for a matrix it is 1/det(I − zM): the
+--| denominator is 1 − tr(M)·z + det(M)·z², the poles are the reciprocals of the eigenvalues.  Read the trace and determinant
+--| off the table and they are the crank's own coefficients: tr = funge·C = closureB, det = (C−T)·C = closureA·closureC.  So the
+--| quadratic the crank solves IS the zeta denominator, in the unit of the thirteen, and the number it converges to is the
+--| dominant eigenvalue: the growth rate of admissible words, the entropy of the two-coin shift, in cells, times R²/T.
+--| Over 𝔽₁ the Frobenius is the identity -- Episode 7, thirty-six rungs, `rfl` -- so the spectrum cannot come from Frobenius.
+--| It comes from the only non-identity map the device has: the click.
+def the_click_table : (Nat × Nat) × (Nat × Nat) :=
+  ((theCoupling, the_dimensions_of_universe), (theCoupling, theCoupling))
+def the_trace : Nat := the_click_table.1.1 + the_click_table.2.2
+def the_determinant : Nat := the_click_table.1.1 * the_click_table.2.2 - the_click_table.1.2 * the_click_table.2.1
+theorem the_trace_is_the_middle_coefficient : the_trace = closureB := rfl
+theorem the_determinant_is_the_outer_coefficients : the_determinant = closureA * closureC := rfl
+theorem the_discriminant_is_the_clock_times_the_coupling :
+    the_trace * the_trace - the_basis.funge.length * the_basis.funge.length * the_determinant
+      = the_basis.funge.length * the_basis.funge.length * theCoupling * the_dimensions_of_universe := rfl
+
+--| THE PROCESS ITSELF.  Cayley-Hamilton makes the closed-word counts a recurrence, Nₙ₊₂ = tr·Nₙ₊₁ − det·Nₙ, seeded by N₀ = the
+--| number of symbols (the funge) and N₁ = the trace.  Run it as the device runs everything: one turn per cell of a tape, the
+--| contents ignored.  Both eigenvalues are positive, so the truncated difference never truncates.  Thirteen cells deep -- the
+--| coefficient tape -- gives (N₁₃, N₁₄); their ratio is the pole, and the pole over thirteen is the crank's root.
+def the_closed_words : List FACT → Nat × Nat
+  | [] => (the_basis.funge.length, the_trace)
+  | _ :: rest => let (before, now) := the_closed_words rest
+                 (now, the_trace * now - the_determinant * before)
+--#eval the_closed_words the_coefficient_tape
+--#print axioms the_closed_words
+
+--| EXACT UP TO ACCELERATION.  The residual the crank solves is r(y) = A·y² − B·y + C, and its second derivative is the constant
+--| 2A = 2·thirteen.  Newton's step is the first variation, y − r/r', exact for any r with no second derivative, and its whole
+--| error is the one term proportional to r'': the acceleration.  So the variational solution is exact up to a constant
+--| acceleration, and the device discards exactly that.  In the device's own words it is Kepler: the areal velocity R²/T is
+--| applied once, a conserved first-order quantity, and no force law is ever read -- `inverse_square_law` is a binder in Episode
+--| 9 that Episode 8 never touches.  Kepler was exact without the acceleration; Newton's contribution was to supply it.  The
+--| number is what the variational description gives BEFORE the force law is added.
+--|
+--| Everything is homogenized over the denominator, as a pair (positive part, negative part), so a Nat never has to carry a sign.
+def the_residual (N D : Nat) : Nat × Nat :=
+  (closureA * (N * N) + closureC * (D * D), closureB * (N * D))
+def the_first_derivative (N D : Nat) : Nat × Nat := (2 * closureA * N, closureB * D)
+
+-- the squares, expanded once by hand so the tally only ever sees literal coefficients on N·N, N·D, D·D
+theorem step_sq (N D : Nat) : (N + D) * (N + D) = N * N + 2 * (N * D) + D * D := by
+  simp only [Nat.add_mul, Nat.mul_add, Nat.mul_comm D N]; omega
+theorem step2_sq (N D : Nat) : (N + D + D) * (N + D + D) = N * N + 4 * (N * D) + 4 * (D * D) := by
+  simp only [Nat.add_mul, Nat.mul_add, Nat.mul_comm D N]; omega
+theorem step_cross (N D : Nat) : (N + D) * D = N * D + D * D := Nat.add_mul N D D
+theorem step2_cross (N D : Nat) : (N + D + D) * D = N * D + 2 * (D * D) := by
+  rw [Nat.add_mul, Nat.add_mul, Nat.two_mul, Nat.add_assoc]
+theorem scale_sq (k N : Nat) : (k * N) * (k * N) = k * k * (N * N) := by
+  rw [Nat.mul_assoc, Nat.mul_left_comm N k N, ← Nat.mul_assoc]
+theorem scale_cross (k m N D : Nat) : (k * N) * (m * D) = k * m * (N * D) := by
+  rw [Nat.mul_assoc, Nat.mul_left_comm N m D, ← Nat.mul_assoc]
+
+--| The second difference of the residual, one step of D in the numerator either way, is 2A·D² -- for every pair.  (omega bills
+--| Quot.sound for its own bookkeeping; the identity is a polynomial one and owes nobody anything.)
+theorem the_acceleration_is_constant (N D : Nat) :
+    (the_residual (N + D + D) D).1 + (the_residual N D).1 + 2 * (the_residual (N + D) D).2
+      = 2 * (the_residual (N + D) D).1 + (the_residual (N + D + D) D).2 + (the_residual N D).2
+        + 2 * closureA * (D * D) := by
+  dsimp only [the_residual]
+  rw [show closureA = 13 from rfl, show closureB = 36 from rfl, show closureC = 18 from rfl,
+      step2_sq, step_sq, step2_cross, step_cross]
+  omega
+--#print axioms the_acceleration_is_constant
+
+--| THE FIRST FRÉCHET DERIVATIVE IS QED.  In one dimension Fréchet and Gateaux coincide, and 𝔽₁ has one direction, so the device's
+--| Fréchet derivative is not a map but a number: r'(y) = 2A·y − B, and at a root r'² is the discriminant exactly -- the trace
+--| squared less four times the determinant, which the zeta section read off the click table as funge²·C·T.  So r'(y*) =
+--| funge·√(C·T) = 6√10: two symbols times the geometric mean of the coupling and the clock.  That is the derivative the Newton
+--| step divided by, a hundred and one times.  α is the first-order coupling, the coefficient of the one-vertex term, the linear
+--| response; the device's reading is the first-order response of the residual to the tape and nothing higher.  The second
+--| variation is the constant above, and the device never takes it -- which is the one sentence QCD gets.  And a proof ends where
+--| the first derivative has been applied once more and the test clicks.  Q.E.D., both ways.
+--|
+--| The identity, for every pair: r'² = (B² − 4AC) + 4A·r.  Homogenized, with the negative parts carried to the other side.
+theorem the_first_derivative_squared_is_the_discriminant (N D : Nat) :
+    (the_first_derivative N D).1 * (the_first_derivative N D).1
+      + (the_first_derivative N D).2 * (the_first_derivative N D).2
+      + 4 * closureA * (the_residual N D).2
+      = 2 * ((the_first_derivative N D).1 * (the_first_derivative N D).2)
+        + (the_trace * the_trace - 4 * the_determinant) * (D * D)
+        + 4 * closureA * (the_residual N D).1 := by
+  dsimp only [the_residual, the_first_derivative]
+  rw [show closureA = 13 from rfl, show closureB = 36 from rfl, show closureC = 18 from rfl,
+      show the_trace = 36 from rfl, show the_determinant = 234 from rfl,
+      scale_sq (2 * 13) N, scale_sq 36 D, scale_cross (2 * 13) 36 N D]
+  omega
+--#print axioms the_first_derivative_squared_is_the_discriminant
+
+--| AT THE READING.  In closure units -- the pair before the areal velocity is applied.  r'² over D², scaled to the places: the discriminant to twenty-four digits, and what is left past it is
+--| 4A times the residual Newton stopped at -- the acceleration term, under one cell.
+def the_first_derivative_squared_at_the_reading : Nat :=
+  let p := (the_first_derivative theClosurePair.1 theClosurePair.2).1
+  let q := (the_first_derivative theClosurePair.1 theClosurePair.2).2
+  ((p - q) + (q - p)) * ((p - q) + (q - p)) * theScale / (theClosurePair.2 * theClosurePair.2)
+--#eval the_first_derivative_squared_at_the_reading
+--#print axioms the_first_derivative_squared_at_the_reading
+
+--| THE FRÉCHET DEVICE.  The instrument has two linearizations of the one field.  Gateaux is directional: Newton, the crank,
+--| Episode 8, the instrument that does the math.  Fréchet is global: bisection, the receipt that the math was optimal.  The
+--| jar's two walls are the bracket Episode 8 showed are Newton iterates zero and one, in closure units.  Here the bracket is
+--| halved by midpoints -- pairs, no division, the denominator doubling each turn -- one turn per cell of the strip, the same
+--| count the crank turned.  The sign of the residual at the midpoint says which wall moves.  Nothing from the crank is used.
+--| Two different computations, and if they land in the same place the agreement is a fact about the field, not the author.
+def theLowWall  : Nat × Nat := (jarLo * the_dimensions_of_universe, theBase * theRadius * theRadius)
+def theHighWall : Nat × Nat := (jarHi * the_dimensions_of_universe, theBase * theRadius * theRadius)
+def the_residual_is_positive (N D : Nat) : Bool :=
+  closureB * (N * D) < closureA * (N * N) + closureC * (D * D)
+--| ONE HALVING.  Both walls over ONE denominator, which doubles; the midpoint is the sum of the numerators over twice the
+--| denominator.  No division.  (Multiplying the two denominators instead squares them every turn, and a hundred turns of
+--| that is a number with 2^100 digits -- the interpreter was found sitting in `Nat.mul` trying to build it.)  The sign of
+--| the residual at the midpoint says which wall moves.
+def halve (b : (Nat × Nat) × (Nat × Nat)) : (Nat × Nat) × (Nat × Nat) :=
+  let a := b.1.1
+  let c := b.2.1
+  let d := b.1.2
+  let d' := the_basis.funge.length * d
+  if the_residual_is_positive (a + c) d' then ((the_basis.funge.length * a, d'), (a + c, d'))
+                                         else ((a + c, d'), (the_basis.funge.length * c, d'))
+
+--| RUN BY THE ELABORATOR.  Not the kernel: a midpoint names both walls twice, so an unevaluated bisection doubles in size
+--| every turn and a hundred and one turns is 2^101 of term for the kernel to chew.  The crank never had this problem -- its
+--| `then p` arm stops the growth the moment it halts.  So the Fréchet device runs where the long path runs: as a command,
+--| one halving per cell of the strip, each halving under `withHeartbeats`, and the bracket it lands on is written into the
+--| environment as literals the way `register_noise_floor` writes the floor.  The elaborator's search through the Herbrand
+--| space, with its own count of itself.  The kernel then checks the inequalities and nothing else.
+elab "frechet_walk " walls:ident beats:ident newton:ident : command => do
+  let (b, hbs, p) ← liftTermElabM do
+    let mut b := (theLowWall, theHighWall)
+    let mut hbs : Array Nat := #[]
+    for _ in [0:the_zero_program.length] do
+      let (b', hb) ← withHeartbeats (do let b' := halve b; pure b')
+      b := b'
+      hbs := hbs.push hb
+    pure (b, hbs, theClosurePair)
+  let cmd1 ← `(def $walls:ident : (Nat × Nat) × (Nat × Nat) := $(Lean.quote b))
+  let cmd2 ← `(def $beats:ident : List Nat := $(Lean.quote hbs.toList))
+  let cmd3 ← `(def $newton:ident : Nat × Nat := $(Lean.quote p))
+  elabCommand cmd1
+  elabCommand cmd2
+  elabCommand cmd3
+
+--| The instrument runs in compiled code; the kernel checks the receipt.  Asked to run the crank itself, the kernel chews for
+--| a quarter of an hour on terms it cannot share, which is the book's point made as a build time.  So the crank's point is
+--| written down beside the bracket, by the same command, and the compiled code is asked -- below -- whether the literal is
+--| the crank.  The kernel then certifies the intersection on literals, and bills nothing for it.
+frechet_walk theBracket theHalvingBeats theNewtonPoint
+--#eval theBracket
+--#eval theNewtonPoint == theClosurePair
+--#eval theHalvingBeats.foldl (· + ·) 0
+
+--| THE INTERSECTION OF THE RESIDUES.  Newton's point lies inside bisection's bracket, and the bracket, converted to cells by the
+--| areal velocity and scaled to the places, is narrower than one place.  That is the receipt: the instrument stopped where
+--| the other linearization says no further refinement would move a digit.  Optimal, in the only sense the device has.
+--| The receipt is `decide`: the kernel evaluates the crank, reads the bracket, and compares.  It bills nothing.  The Quot.sound
+--| receipt above certified the pair against itself; this one certifies it against a computation that shares no step with it.
+abbrev in_the_bracket (p : Nat × Nat) : Prop :=
+  theBracket.1.1 * p.2 ≤ p.1 * theBracket.1.2 ∧ p.1 * theBracket.2.2 ≤ theBracket.2.1 * p.2
+abbrev under_one_place : Prop :=
+  (theBracket.2.1 * theBracket.1.2 - theBracket.1.1 * theBracket.2.2) * theScale * the_areal_velocity.1
+    < theBracket.1.2 * theBracket.2.2 * the_areal_velocity.2
+def the_reading_with_its_receipt : { p : Nat × Nat // in_the_bracket p ∧ under_one_place } :=
+  ⟨theNewtonPoint, by decide +kernel⟩
+--#print axioms the_reading_with_its_receipt
+
+--| THE COURANT NUMBER, PER TURN.  Heartbeats per halving: the time step the elaborator paid for each cell the bracket gave up.
+--| This is the ratio line 74 compares as totals, produced turn by turn.  A measurement; it will differ on the next machine.
+def theCourantPerHalving : Nat := theHalvingBeats.foldl (· + ·) 0 / the_zero_program.length
+--#eval theCourantPerHalving
+
+--| THE TWO WALLS, IN CELLS.  Both print the number.  The last place is where they differ, if they differ at all.
+def theLowWallReads  : Nat := theBracket.1.1 * the_areal_velocity.1 * theScale / (theBracket.1.2 * the_areal_velocity.2)
+def theHighWallReads : Nat := theBracket.2.1 * the_areal_velocity.1 * theScale / (theBracket.2.2 * the_areal_velocity.2)
+--#eval theLowWallReads
+--#eval theHighWallReads
+--#eval the_other_natural
 
 end Measurement
 

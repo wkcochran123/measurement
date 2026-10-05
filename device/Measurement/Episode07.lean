@@ -596,259 +596,158 @@ noncomputable instance OF_COURSE_IT_DOES___I_JUST_PUT_IT_THERE            -- As 
                   (guano.TRUE) (guano.a_constant) (some FACT.Truth.truth) -- matter whether the FACT was true or false? What if the argument was
   }                                                                       -- still consistent _AND_ predictive?
   α := .same FACT.Truth guano.a_constant                                  --
-                                                                          -- So we make this _FACT_ the _ROOT_ of the _DEVICE_: the _Theory of Yarns_
-def You_the_Reader                                                        -- _must be true_, even if _YOU the KNOWER_ stubbornly refuse to believe
-    {Box: Type i}                                                         -- _any_ of the arguments presented thus far.
-    {Pigeon: CarrierProcess Box}                                          --
-    [nowtrino: DISTINGUISHABLE Box Pigeon][ADMISSIBLE Box Pigeon]         -- We begin by describing what *YOU the READER* are expecting: the complete
-    [COUNTABLE Box Pigeon][ENCODED Box Pigeon][RESIDUE Box Pigeon]        -- set of logic, loaded up, with 4 given rules. Only 4:
-    [BINARY Box Pigeon][REPEATABLE Box Pigeon][NUMERIC Box Pigeon]        --
-    [REPRESENTABLE Box Pigeon][PHYSICAL Box Pigeon]                       -- 1) A pointer to a computation that may or may not halt
-    [COMPARABLE Box Pigeon][OBSERVED Box Pigeon][PRESENT Box Pigeon]      -- 2) A data structure capable of pairing a *FACT* about the world with some
-    [MEASURABLE Box Pigeon][GUNGAN Box Pigeon][SOURCE Box Pigeon]         --    *NUMBER* attached. The _FACT_ being the element of 𝔽₁, the _Number_
-    [EXECUTED Box Pigeon][VALUE Box Pigeon][MAGNITUDE Box Pigeon]         --    being the _invariant_ associated with 𝔽₁ as perceived by
-    [SCALED Box Pigeon][LOAD Box Pigeon][OF Box Pigeon]                   --    *YOU the READER*.
-    [BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon][ACOLYTE Box Pigeon]      -- 3) An idea of the local area around the *NUMBER*, in particular an area
-    [SCIENTIFIC Box Pigeon][TRUTH Box Pigeon][WITNESSED Box Pigeon]       --    around the *NUMBER* where any change in _value_ is _inconsequential_
-    [REAL Box Pigeon]                                                     --    to the measurement of said _relative invariant_. Numerically speaking,
-    {fact: LOCAL Box Pigeon}                                              --    of course.
-    {about_the_world: UNIVERSAL Box Pigeon fact}                          -- 4) There is a spin-2 noodly appendage we can postulate exists that makes
-    [LOGICAL Box Pigeon fact about_the_world]                             --    sure all the logic for all the _READERS_ are logically consistent.
-    [HALTED Box Pigeon fact about_the_world]                              --    What is locally _false_ may be globally _true_. Like the hole in a
-    [MEASURED Box Pigeon fact about_the_world]                            --    rational polynomial.
-    [stdout: COMPILED Box Pigeon fact about_the_world]                    --
-    : AtreyuProcess Box Pigeon fact about_the_world where                 -- I think *YOU the KNOWER* can see the rest of the gag here. The current
-  in_a_giant_book := stdout.a_truth_about_the_world                       -- page always has the _quartic_ on it.
-  a_constant := .zero nowtrino.fact                                       --
-  current_page_number := Pigeon.quarter                                   -- Have *YOU the KNOWER* ever _seen_ a Calvinball? It is a topological
-  of_the_proof := stdout.a_demonstration_of_a_constant                    -- construct where I get to make up the rules and no two balls are alike.
-                                                                          -- Lean will keep me honest through its _UNIVERSAL_ understanding of math.
-/- CHORUS
-ME: Compiler, now that I have explained Yarn Theory to *YOU the KNOWER*, it is time I explain it to you.
-COMPILER: I thought you forgot about me since you brought another code reader along
-JAR JAR: MEESA AGREE
-You_the_Reader: Have I been uploaded to the cloud?
-ME: That's all four of us.
--/
-namespace THEORY
-variable
-    {Box: Type i}
-    {Pigeon: CarrierProcess Box}
-    [nowtrino: DISTINGUISHABLE Box Pigeon]     [ADMISSIBLE Box Pigeon]                  [COUNTABLE Box Pigeon]             [ENCODED Box Pigeon]
-    [RESIDUE Box Pigeon]                       [BINARY Box Pigeon]                      [REPEATABLE Box Pigeon]            [NUMERIC Box Pigeon]
-    [REPRESENTABLE Box Pigeon]                 [PHYSICAL Box Pigeon]                    [COMPARABLE Box Pigeon]            [OBSERVED Box Pigeon]
-    [PRESENT Box Pigeon]                       [MEASURABLE Box Pigeon]                  [GUNGAN Box Pigeon]                [SOURCE Box Pigeon]
-    [EXECUTED Box Pigeon]                      [VALUE Box Pigeon]                       [MAGNITUDE Box Pigeon]             [SCALED Box Pigeon]
-    [LOAD Box Pigeon]                          [OF Box Pigeon]                          [BULLSHIT Box Pigeon]              [PROPAGANDA Box Pigeon]
-    [ACOLYTE Box Pigeon]                       [SCIENTIFIC Box Pigeon]                  [TRUTH Box Pigeon]                 [WITNESSED Box Pigeon]
-    [REAL Box Pigeon]
-    {fact: LOCAL Box Pigeon}
-    {about_the_world: UNIVERSAL Box Pigeon fact}
-    [LOGICAL Box Pigeon fact about_the_world]
-    [HALTED Box Pigeon fact about_the_world]
-    [MEASURED Box Pigeon fact about_the_world]
-    [COMPILED Box Pigeon fact about_the_world]
-    [A_TRUTH_ABOUT Box Pigeon fact about_the_world]
-
-def repeatable
-    (_reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
-  origin
-
-def hypothesis
-    (reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
-  reader.gawk_at (repeatable reader origin)
-
-def theory
-    (reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
-  reader.gawk_at (hypothesis reader origin)
-
-def raw_output
-    (reader : AtreyuProcess Box Pigeon fact about_the_world) (origin : Bullshit) : Bullshit :=
-  hypothesis reader origin
-end THEORY
-                                                                          --
-def BUT_THE_TRUTH_IS_YOU_THE_READER_UNDERSTANDS_THE_ARGUMENT_NAO          --
-    (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
+                                                                          -- The thing is, if this truly is a _constant_ of the device, then we should
+def BUT___WE_CAN_MEASURE_THE_CONSTANT_EMPIRICALLY                         -- be able to measure it through some _EMPIRICAL_ process. Of course,
+    (Box: Type i)                                                         -- implementing an _EMPIRICAL_ process during the compile step of a theorem
+    (Pigeon: CarrierProcess Box)                                          -- prover seems like, well, _cheating_.
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           -- Yet we do it in math _ALL THE TIME!_.
     (naotrino: LOCAL Box Pigeon)                                          --
-    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
-    [COMPILED Box Pigeon naotrino yarn_theory]                            --
-    (_: CarrierProcess Box)                                               --
-  : A_TRUTH_ABOUT Box Pigeon naotrino yarn_theory where                   --
-    you_the_reader := You_the_Reader (fact:=naotrino)                     --
-                                       (about_the_world:=yarn_theory)     --
-    a_constant     := THEORY.raw_output (You_the_Reader                   --
-                (fact:=naotrino) (about_the_world:=yarn_theory))          --
-                (.zero nowtrino.fact)                                     --
-    the_constant_is_at_least_true    := by trivial                        --
-                                                                          --
-def SO_YOU_START_TO_BUILD_ANOTHER_DEMONSTRATION_PROCESS                   --
-    (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
-    (naotrino: LOCAL Box Pigeon)                                          --
-    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
-    [multimeter: MEASURED Box Pigeon naotrino yarn_theory]                --
-    [holy_shit: COMPILED Box Pigeon naotrino yarn_theory]                 --
-    (_: CarrierProcess Box)                                               --
-    : COMPILED Box Pigeon naotrino yarn_theory where                      --
-  a_truth_about_the_world :=                                              --
-  { too_good_to_be_true := multimeter.a_distance                          --
-    of_jibberish := .methodology nowtrino.fact FACT.Truth Box             --
-         (ULift.{i+1,i} Box) holy_shit.a_demonstration_of_a_constant      --
-  }                                                                       --
-  a_demonstration_of_a_constant := .methodology nowtrino.fact             --
-            FACT.Truth Box (ULift.{i+1,i} Box)                            --
-                  holy_shit.a_demonstration_of_a_constant                 --
-                                                                          --
-def IN_ORDER_TO_MEASURE_THE_CONSTANT_EMPIRICALLY                          --
-    (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
-    (naotrino: LOCAL Box Pigeon)                                          --
-    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          -- *NONSTOP*!
     [nonsensical: LOGICAL Box Pigeon naotrino yarn_theory]                --
-    [documents_on_file: HALTED Box Pigeon naotrino yarn_theory]           --
-    [multimeter: MEASURED Box Pigeon naotrino yarn_theory]                --
-    (_: CarrierProcess Box)                                               --
+    [documents_on_file: HALTED Box Pigeon naotrino yarn_theory]           -- And it drives mathematicians absolutely _BERSERK_ because they see the
+    [multimeter: MEASURED Box Pigeon naotrino yarn_theory]                -- tautology most scientists and engineers need to exist in order to reason
+    (_: CarrierProcess Box)                                               -- about complex systems.
     [metaphor: COMPILED Box Pigeon naotrino yarn_theory]                  --
-    : MEASURED Box Pigeon naotrino yarn_theory where                      --
-  a_distance :=                                                           --
-  {   description := documents_on_file.scientific_paper                   --
-      the_measurement_of := multimeter.a_distance.the_measurement_of      --
+    : MEASURED Box Pigeon naotrino yarn_theory where                      -- I am not certain that they necessarily see the hypocrisy in this
+  a_distance :=                                                           -- observation. That's why I mean by empirical. Let's measure what a theorem
+  {   description := documents_on_file.scientific_paper                   -- proves, how long it takes to prove, the minimum number of _symbols_
+      the_measurement_of := multimeter.a_distance.the_measurement_of      -- necessary to model esoterica.
       in_heartbeats := .distance_to nowtrino.fact (.zero FACT.Truth)      --
-            (multimeter.a_distance.the_measurement_of) Box                ------------+
-            (ULift.{i+1,i} Box) --                                                    |
-             metaphor.a_truth_about_the_world.too_good_to_be_true.in_heartbeats --    |
-      saved_as_y := Box --                                                            |
-  }                                                                       ------------+
+            (multimeter.a_distance.the_measurement_of) Box                ------------+ Are _symbols_ *free* as the Axiom of Choice would suggest or
+            (ULift.{i+1,i} Box) --                                                    | are _symbols_ *expensive* as suggested by the Banach-Tarski
+             metaphor.a_truth_about_the_world.too_good_to_be_true.in_heartbeats --    | paradox? And the Cantor diagonalization argument? And the
+      saved_as_y := Box --                                                            | stress tensor _contraction_ of Cauchy? And the wall of math
+  }                                                                       ------------+ of those who study blackhole solutions of general relativity?
                                                                           --
-def YOU_NEED_TO_DEVELOP_A_BOUNDED_PROCESS                                 --
+def WE_NEED_TO_DEVELOP_A_BOUNDED_PROCESS                                  -- Lean will tell you symbols cost electrons.
     (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
+    (Pigeon: CarrierProcess Box)                                          -- Almost the same number of electrons per symbol.
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
-    (naotrino: LOCAL Box Pigeon)                                          --
-    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
-    [nonsensical: LOGICAL Box Pigeon naotrino yarn_theory]                --
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           -- Unless the argument is _not_ ontological. Then it needs elaboration. But,
+    (naotrino: LOCAL Box Pigeon)                                          -- what if all proofs were just ontological substitutions? Like when we
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          -- perform algebra. Like when we differentiate the left inverse from the
+    [nonsensical: LOGICAL Box Pigeon naotrino yarn_theory]                -- right inverse? The thing is, we can only do a _finite_ amount of _algebra_.
     [documents_on_file: HALTED Box Pigeon naotrino yarn_theory]           --
-    (_: CarrierProcess Box)                                               --
-    [data: MEASURED Box Pigeon naotrino yarn_theory]                      --
-    : HALTED Box Pigeon naotrino yarn_theory where                        --
-  scientific_paper :=                                                     --
-  { stamina := data.a_distance.description.stamina                        --
-    trilinos := documents_on_file.scientific_paper.trilinos               --
+    (_: CarrierProcess Box)                                               -- This means that all of algebra can be chosen to be represented as a
+    [data: MEASURED Box Pigeon naotrino yarn_theory]                      -- bitset. _CHOSEN_. Like what Godel did when he _chose_ the prime numbers
+    : HALTED Box Pigeon naotrino yarn_theory where                        -- as the orthogonal representative of mathematical representation. But
+  scientific_paper :=                                                     -- mostly, if we are to show all proof techniques reduce to a handful of
+  { stamina := data.a_distance.description.stamina                        -- ontological swaps, then I believe it is safe to assume that Lean has
+    trilinos := documents_on_file.scientific_paper.trilinos               -- _properly_ implemented _math_.
     teraFLOPs := data.a_distance.description.teraFLOPs                    --
-    numerical_analysis :=                                                 --
-                documents_on_file.scientific_paper.numerical_analysis     --
-  }                                                                       --
-                                                                          --
+    numerical_analysis :=                                                 -- I mean, constructive proofs are merely _ontological_ swaps by
+                documents_on_file.scientific_paper.numerical_analysis     -- construction. This one ceratinly is. The question _YOU the KNOWER_ needs
+  }                                                                       -- to supply an answer to: suppose an infinitely long proof required an
+                                                                          -- _infinite number of symbols_ in order to demonstrate?
 def PERHAPS_ONE_THAT_REALLY_MAKES_YOU_THINK                               --
-    (Box: Type i)                                                         --
+    (Box: Type i)                                                         -- Like the Rιemann hypothesis.
     (Pigeon: CarrierProcess Box)                                          --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
+    [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- That would be trivial in base infinity. All *YOU the KNOWER* have to do
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           -- is _find the tittle_ and the solution to the problem is _yours_.
     (naotrino: LOCAL Box Pigeon)                                          --
-    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
-    [nonsensical: LOGICAL Box Pigeon naotrino yarn_theory]                --
-    [documents_on_file: HALTED Box Pigeon naotrino yarn_theory]           --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          -- Matthew 5:18 for those who think this is a new idea. But, I can also
+    [nonsensical: LOGICAL Box Pigeon naotrino yarn_theory]                -- tell that reading 15,000 lines of Lean is exhausting to everyone,
+    [documents_on_file: HALTED Box Pigeon naotrino yarn_theory]           -- including the compiler.
     (_: CarrierProcess Box)                                               --
-    : LOGICAL Box Pigeon naotrino yarn_theory where                       --
-  feelings := documents_on_file.scientific_paper.stamina                  --
-  microsoft_basic := nonsensical.microsoft_basic                          --
+    : LOGICAL Box Pigeon naotrino yarn_theory where                       -- For instance, choosing the base in which 0.11111111111... _is_ Chaitin's
+  feelings := documents_on_file.scientific_paper.stamina                  -- number is a perfectly _cromulent_ choice and one which is demonstrably
+  microsoft_basic := nonsensical.microsoft_basic                          -- impossible to make. Yet, we just did.
                                                                           --
-def PERHAPS_ONE_THAT_USES_THE_DEVICE_ITSELF                               --
-    (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
+def PERHAPS_ONE_THAT_USES_THE_DEVICE_ITSELF                               -- LET ME REPEAT THIS: THE CHOICE OF BASE SUCH THAT 0.111111111... _IS_
+    (Box: Type i)                                                         -- *CHAITIN'S* _NUMBER_ IS *IMPOSSIBLE TO MAKE*. But, I instructed the
+    (Pigeon: CarrierProcess Box)                                          -- device to understand Chaitin's number as just that. So, how does the
+    [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- device do it? By enumerating the _ENTIRE_ Herbrand space and building
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           -- a forcing norm on it.
     (naotrino: LOCAL Box Pigeon)                                          --
-    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
-    (_: CarrierProcess Box)                                               --
-    : UNIVERSAL Box Pigeon naotrino where                                 --
-  the_train_of_thought := yarn_theory.the_train_of_thought                --
-  once_around := yarn_theory.once_around                                  --
-  twice_around := yarn_theory.the_train_of_thought.the_stop_after         --
-                                             yarn_theory.once_around      --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          -- If you look _closely_ at the _device_, you will see it detects the
+    (_: CarrierProcess Box)                                               -- Hilbrand field and computes the paths of least variational action. Of
+    : UNIVERSAL Box Pigeon naotrino where                                 -- course, *YOU the READER* have been reading closely this whole time and
+  the_train_of_thought := yarn_theory.the_train_of_thought                -- realize that the device itself is the variational calculus writ large.
+  once_around := yarn_theory.once_around                                  -- For, in variational calculus, derivatives become eigenspaces. Which is
+  twice_around := yarn_theory.the_train_of_thought.the_stop_after         -- great, because using Euler's formula, derivatives can become the angles
+                                             yarn_theory.once_around      -- between them as well!
                                                                           --
-def PERHAPS_ONE_THAT_USES_CALCULUS                                        --
-    (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
+def PERHAPS_ONE_THAT_USES_CALCULUS                                        -- What is a Hilbrand field? It is a Herbrand space embedded in an Hilbert
+    (Box: Type i)                                                         -- space so that we can discuss a coercive solver. I just _MADE THIS UP_.
+    (Pigeon: CarrierProcess Box)                                          -- Who knows what a Hilbrand field is? I _do_ know that since it is now
+    [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- _coercive_ by construction, I should be able to use some sort of
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           -- calculus on it.
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [the_a_train: UNIVERSAL Box Pigeon naotrino]                          --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          -- This gives us a 3-card monte situation: naotrino yarn_theory and card.
+    (card: CarrierProcess Box)                                            -- One of these _should_ carry calculus since we have a coercive Hilbert
+    (the_α_train := PERHAPS_ONE_THAT_USES_THE_DEVICE_ITSELF Box Pigeon    -- space. No reason why all three can't, but one _must_ if we are to ever
+        naotrino yarn_theory card)                                        -- get on Newton's train of thought, headed to our constant!
     : LOCAL Box Pigeon where                                              --
-  the_continuum := the_a_train.the_train_of_thought.the_local_schedule    --
-  the_ball      := naotrino.the_ball                                      --
-                                                                          --
-def YEAH_CALCULUS___YOU_CAN_DO_THE_CALCULUS_RITE                          --
-    (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
+  the_continuum := the_α_train.the_train_of_thought.the_local_schedule    -- The idea is this: the patter above has around a dozen different natural
+  the_ball      := naotrino.the_ball                                      -- numbers appearing from smooth processes using the _counting_ process.
+                                                                          -- This _counting_ process can be made to have calculus come out the other
+def YEAH_CALCULUS___YOU_CAN_DO_THE_CALCULUS_RITE                          -- end through careful constructions from natural numbers. Circular logic.
+    (Box: Type i)                                                         -- The calculus doing the counting _must_ satisfy the cardinality of sets
+    (Pigeon: CarrierProcess Box)                                          -- which _must_ then give rise to calculus. Or, I may have *COMPLETELY*
+    [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- misunderstood real analysis.
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
-    (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [principia: LOCAL Box Pigeon]                                         --
-    : REAL Box Pigeon where                                               --
-  by_His_noodly_appendage := principia.the_continuum.the_æther            --
-  nagging_doubt := .logically naotrino.the_ball                           --
-                                                                          --
-def MATH_MODELING_IS_EASY___JUST_WATCH                                    --
+    (naotrino: LOCAL Box Pigeon)                                          -- These sorts of _tautologies_ exist through counting. The simple process
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          -- of the Game of Life is the only _automata_ *YOU the KNOWER* need ever
+    (card: CarrierProcess Box)                                            -- observe. Others may dissect it to its component eigenstuffe and declare
+    (principia := PERHAPS_ONE_THAT_USES_CALCULUS Box Pigeon               -- complex behavior is just simple behavior.
+        naotrino yarn_theory card)                                        --
+    : REAL Box Pigeon where                                               -- But, the universe has not shown us the cycle and these _tautologies_
+  by_His_noodly_appendage := principia.the_continuum.the_æther            -- exist because we assume _cycles_ must exist. Well, we call _cycles_
+  nagging_doubt := .logically naotrino.the_ball                           -- the card. If it is _bent_, even the slightest, and that bend is
+                                                                          -- _constant_, calculus tells us it _must_ close a circle. Bending a card
+def MATH_MODELING_IS_EASY___JUST_WATCH                                    -- _is_ assuming a _cycle exists_.
     (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon]                            --
-    [flying_spaghetti_monster: REAL Box Pigeon]                           --
-    (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [invariant: REAL Box Pigeon]                                          --
-    : WITNESSED Box Pigeon where                                          ------------------------------------+
-  we_saw := invariant.by_His_noodly_appendage.frame_of_reference --                                           |
-  the_experiment := flying_spaghetti_monster.by_His_noodly_appendage.frame_of_reference.in_the_literature --  |
+    (Pigeon: CarrierProcess Box)                                          -- So you see, the _math model_ is _clear_. Global curvature _implies_ a
+    [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- *finite* Poincaré perid. We have two more situations to model and we will
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon]                            -- have a _complete_ model of the _universe_. The two situations we need
+    [flying_spaghetti_monster: REAL Box Pigeon]                           -- to worry about are:
+    (naotrino: LOCAL Box Pigeon)                                          --  (1)  The situation where the card is flat, but is flexible. This is the
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          -- same as having an _infinite_ Poincaré period, if *YOU the READER* can
+    (card: CarrierProcess Box)                                            -- fathom such a thing. I named this *YARN THEORY*.
+    (invariant := YEAH_CALCULUS___YOU_CAN_DO_THE_CALCULUS_RITE Box Pigeon --  (2)  The situation where the universe is aperiodic. This is unabashedly
+       naotrino yarn_theory card)                                         -- *the electron* in the code. I mean, the *naotrino*, playing the part of
+    : WITNESSED Box Pigeon where                                          ------------------------------------+ the electron. I cannot claim to have
+  we_saw := invariant.by_His_noodly_appendage.frame_of_reference --                                           | the expertise to describe the
+  the_experiment := flying_spaghetti_monster.by_His_noodly_appendage.frame_of_reference.in_the_literature --  | electron more than the number -1.
 --                                                                                                            |
-def WHICH_WE_IMMEDIATELY_SEE_THE_FIRST_TIME_IN_THE_LAB                    ------------------------------------+
-    (Box: Type i)                                                         --
+def WHICH_WE_IMMEDIATELY_SEE_THE_FIRST_TIME_IN_THE_LAB                    ------------------------------------+ I mean, others claim that a set of
+    (Box: Type i)                                                         -- equations accurately describe the electron. I am really not a gauge
+    (Pigeon: CarrierProcess Box)                                          -- theorist by any stretch of the imagination. Well, I guess by a
+    [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- _finite_ _significant_ stretch of the imagination, I could have some
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           -- understanding of gauge theory, but I live in a world where QED reigns
+    (naotrino: LOCAL Box Pigeon)                                          -- supreme. But, what if, -1 was _somehow_ QED? As in -1(x) = 0 was an
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          -- alternate way to write equations of Yang and Mills?
+    (card: CarrierProcess Box)                                            --
+    (overwhelming_evidence := MATH_MODELING_IS_EASY___JUST_WATCH Box      -- I mean, Du=0 is pretty standard for this, right? But, I am getting ahead
+        Pigeon naotrino yarn_theory card)                                 -- of myself. Just _remember_ the _naotrino_ is the stand-in for the best
+    : TRUTH Box Pigeon where                                              -- description of an _electron_ we can have at any point in time, either
+  becomes := overwhelming_evidence.we_saw.we_experience                   -- as _value_ *-1* or as _process_ *QED* (that is solving theorems, not
+                                                                          -- electrons behaving as themselves) [except I need them to behave exactly
+def OBVIOUSLY_YOU_START_A_RESEARCH_PROGRAM                                -- _as_ themselves for the proof to work, assuming *YOU the READER* are on
+    (Box: Type i)                                                         -- an _electronic_ computer].
     (Pigeon: CarrierProcess Box)                                          --
+    [nowtrino: DISTINGUISHABLE Box Pigeon]                                -- It really _is_ incredible what _ABSOLUTELY MUST BE TRUE_ in order to just
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           -- say something as trivial as _T=T_. I mean, this is but one computer
+    (naotrino: LOCAL Box Pigeon)                                          -- program. There must be others that also state the triviality of _T=T_,
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          -- but they require _MUCH LESS_ bullshit. Alas, I do not think that is the
+    (card: CarrierProcess Box)                                            -- case.
+    (our_mission := WHICH_WE_IMMEDIATELY_SEE_THE_FIRST_TIME_IN_THE_LAB    --
+        Box Pigeon naotrino yarn_theory card)                             -- I will not be able to prove it, but the evidence I will present will be
+    : SCIENTIFIC Box Pigeon where                                         -- quite _stark_. As much as we wish the consistency of this argument
+  discovering := our_mission.becomes.shows_me_higher_order_terms          -- depends on the existence of a bug in the code, we will just continue
+  invariant := our_mission.becomes.shows_me_higher_order_terms.invariant  -- to find evidence. And the device will just keep telling us if it is
+                                                                          -- evidence of _T=T_. The little details of the code are rather immaterial
+def AND_HUNDREDS_OF_POSTDOCS_COME_TO_COUNT_NAOTRINOS                      -- to it if it works globally. Only if it fails to compile, locally, have
+    (Box: Type i)                                                         -- we gotten it _wrong_. What happens if we describe the machine itself
+    (Pigeon: CarrierProcess Box)                                          -- without ever _getting it wrong_?
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
-    (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [overwhelming_evidence: WITNESSED Box Pigeon]                         --
-    : TRUTH Box Pigeon where                                              --
-  becomes := overwhelming_evidence.we_saw.we_experience                   --
-                                                                          --
-def OBVIOUSLY_YOU_START_A_RESEARCH_PROGRAM                                --
-    (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
-    (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [our_mission: TRUTH Box Pigeon]                                       --
-    : SCIENTIFIC Box Pigeon where                                         --
-  discovering := our_mission.becomes.shows_me_higher_order_terms          --
-  invariant := our_mission.becomes.shows_me_higher_order_terms.invariant  --
-                                                                          --
-def AND_HUNDREDS_OF_POSTDOCS_COME_TO_COUNT_NAOTRINOS                      --
-    (Box: Type i)                                                         --
-    (Pigeon: CarrierProcess Box)                                          --
-    [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
-    (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [postdoc: SCIENTIFIC Box Pigeon]                                      --
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           -- Wouldn't we just keep writing code? Or, would it be possible, to convince
+    (naotrino: LOCAL Box Pigeon)                                          -- the compiler, that we can't get it wrong because we are that good at
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          -- writing code and it just concedes the point?
+    (card: CarrierProcess Box)                                            --
+    (postdoc := OBVIOUSLY_YOU_START_A_RESEARCH_PROGRAM Box Pigeon         --
+        naotrino yarn_theory card)                                        --
     : ACOLYTE Box Pigeon where                                            --
   euclid := postdoc.discovering.teaching                                  --
                                                                           --
@@ -858,9 +757,9 @@ def BUT_THEN_REIMANN_COMES_ALONG                                          --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [professor: ACOLYTE Box Pigeon]                                       --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (professor := AND_HUNDREDS_OF_POSTDOCS_COME_TO_COUNT_NAOTRINOS Box Pigeon naotrino yarn_theory card)                     --
     : PROPAGANDA Box Pigeon where                                         --
   questions := professor.euclid.axioms                                    --
                                                                           --
@@ -870,9 +769,9 @@ def AND_THE_AMOUNT_OF_CALCULUS_YOU_HAVE_TO_DO_EXPLODES                    --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [geometry: PROPAGANDA Box Pigeon]                                     --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (geometry := BUT_THEN_REIMANN_COMES_ALONG Box Pigeon naotrino yarn_theory card)                        --
     : BULLSHIT Box Pigeon where                                           --
   arm_wave_process := geometry.questions.to_pwn_n00bz                     --
                                                                           --
@@ -882,9 +781,9 @@ def AND_YOU_STUDY_TRIANGLES                                               --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [hours_of_math: BULLSHIT Box Pigeon]                                  --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (hours_of_math := AND_THE_AMOUNT_OF_CALCULUS_YOU_HAVE_TO_DO_EXPLODES Box Pigeon naotrino yarn_theory card)                      --
     : OF Box Pigeon where                                                 --
   galerkin_process := hours_of_math.arm_wave_process.dunking_contest      --
                                                                           --
@@ -894,9 +793,9 @@ def BUT_YOU_AND_I_KNOW_ANSYS_HAS_GOT_THIS                                 --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [area: OF Box Pigeon]                                                 --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (area := AND_YOU_STUDY_TRIANGLES Box Pigeon naotrino yarn_theory card)                --
     : LOAD Box Pigeon where                                               --
   basic_operation := area.galerkin_process.ANSYS_process                  --
                                                                           --
@@ -906,9 +805,9 @@ def YOU_ARE_ALSO_AWARE_THAT_ANSYS_IS_SLOW                                 --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [still_takes_forever: LOAD Box Pigeon]                                --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (still_takes_forever := BUT_YOU_AND_I_KNOW_ANSYS_HAS_GOT_THIS Box Pigeon naotrino yarn_theory card)                  --
     : SCALED Box Pigeon where                                             --
   multiplying_process := still_takes_forever.basic_operation.GOSUB        --
                                                                           --
@@ -918,9 +817,9 @@ def BUT_YOU_EVENTUALLY_ESTIMATE_THE_TOTAL_SIZE_OF_THE_COMPUTATION         --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [weight: SCALED Box Pigeon]                                           --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (weight := YOU_ARE_ALSO_AWARE_THAT_ANSYS_IS_SLOW Box Pigeon naotrino yarn_theory card)                    --
     : MAGNITUDE Box Pigeon where                                          --
   adding_process := weight.multiplying_process.adding_process             --
                                                                           --
@@ -930,13 +829,13 @@ def SO_YOU_SUBMIT_THE_JOB_AND_COUNT_HOW_LONG_IT_TAKES                     --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    [uncountable: VALUE Box Pigeon]                                       --
-    (_: CarrierProcess Box)                                               --
-    [mass: MAGNITUDE Box Pigeon]                                          --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+                                                                          --
+    (card: CarrierProcess Box)                                            --
+    (mass := BUT_YOU_EVENTUALLY_ESTIMATE_THE_TOTAL_SIZE_OF_THE_COMPUTATION Box Pigeon naotrino yarn_theory card)                       --
     : VALUE Box Pigeon where                                              --
   mathematical_process := mass.adding_process.mideastern_process          --
-  monad := uncountable.monad                                              --
+  monad := (ONE_VALUE_AT_A_TIME_IN_ORDER_AND_WRITE_SOMETHING_TO_DISK Box Pigeon).monad --
                                                                           --
 def BUT_IT_MAY_NOT_CONVERGE                                               --
     (Box: Type i)                                                         --
@@ -944,9 +843,9 @@ def BUT_IT_MAY_NOT_CONVERGE                                               --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [constant: VALUE Box Pigeon]                                          --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (constant := SO_YOU_SUBMIT_THE_JOB_AND_COUNT_HOW_LONG_IT_TAKES Box Pigeon naotrino yarn_theory card)                   --
     : EXECUTED Box Pigeon where                                           --
   compiled_process := constant.mathematical_process.compiled_process      --
                                                                           --
@@ -958,9 +857,9 @@ def IT_DEFINITELY_COMPILES_THOUGH                                         --
     [SOURCE Box Pigeon]                                                   --
     [REAL Box Pigeon]                                                     --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [lean: EXECUTED Box Pigeon]                                           --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (lean := BUT_IT_MAY_NOT_CONVERGE Box Pigeon naotrino yarn_theory card)                      --
     : SOURCE Box Pigeon where                                             --
   cd_process := lean.compiled_process.digital_process                     --
   one := lean.compiled_process.digital_process.zero                       --
@@ -971,9 +870,9 @@ def WHICH_MEANS_IT_HAS_A_BETA_REDUCTION                                   --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [the_argument: SOURCE Box Pigeon]                                     --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (the_argument := IT_DEFINITELY_COMPILES_THOUGH Box Pigeon naotrino yarn_theory card)                    --
     : GUNGAN Box Pigeon where                                             --
   meesa_process := the_argument.cd_process.meesa_process                  --
                                                                           --
@@ -983,9 +882,9 @@ def AND_ALWAYS_RETURNS_THAT_THE_ARGUMENT_IS_CONSISTENT                    --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [the_argument_for_naotrinos: GUNGAN Box Pigeon]                       --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (the_argument_for_naotrinos := WHICH_MEANS_IT_HAS_A_BETA_REDUCTION Box Pigeon naotrino yarn_theory card)                    --
     : MEASURABLE Box Pigeon where                                         --
   gauge_process := the_argument_for_naotrinos.meesa_process.gauge_process --
                                                                           --
@@ -995,9 +894,9 @@ def AT_THE_END_OF_THE_DAY_I_HAVE_TO_ADMIT_IT_IS_A_BLACK_BOX               --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [the_bug: MEASURABLE Box Pigeon]                                      --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (the_bug := AND_ALWAYS_RETURNS_THAT_THE_ARGUMENT_IS_CONSISTENT Box Pigeon naotrino yarn_theory card)                        --
     : PRESENT Box Pigeon where                                            --
   santa_claus := the_bug.gauge_process.sensing_process                    --
   quantum := Box                                                          --
@@ -1008,9 +907,9 @@ def STILL_THERE_COULD_BE_A_MISSPELLING_IN_THIS_LOGIC                      --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [fallacy: PRESENT Box Pigeon]                                         --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (fallacy := AT_THE_END_OF_THE_DAY_I_HAVE_TO_ADMIT_IT_IS_A_BLACK_BOX Box Pigeon naotrino yarn_theory card)                     --
     : OBSERVED Box Pigeon where                                           --
   slip_process := fallacy.santa_claus.static_fraction                     --
   observation  := Box                                                     --
@@ -1038,9 +937,9 @@ def AND_WE_WONT_KNOW_FOR_SURE                                             --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [failure: OBSERVED Box Pigeon]                                        --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (failure := STILL_THERE_COULD_BE_A_MISSPELLING_IN_THIS_LOGIC Box Pigeon naotrino yarn_theory card)                      --
     : COMPARABLE Box Pigeon where                                         --
   physical_process := failure.slip_process.physical_process               --
   smaller_than := fun x y => x ≤ y ∧ y ≤ x                                --
@@ -1051,9 +950,9 @@ def ONCE_WE_DETECT_NAOTRINO_MOTION_WE_WILL_DETECT_THE_NOWTRINO            --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [number_of_clicks: COMPARABLE Box Pigeon]                             --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (number_of_clicks := AND_WE_WONT_KNOW_FOR_SURE Box Pigeon naotrino yarn_theory card)                        --
     : PHYSICAL Box Pigeon where                                           --
   noisy_process := number_of_clicks.physical_process.noisy_process        --
   threshold := number_of_clicks.physical_process.noisy_process.program    --
@@ -1063,24 +962,24 @@ def WE_CAN_REPRESENT_CLICK_COUNT_WITH_A_TALLY_EVEN_WITH_NOISE             --
     (Box: Type i)                                                         --
     (Pigeon: CarrierProcess Box)                                          --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [anechoic_chamber: PHYSICAL Box Pigeon]                               --
-    [COMPARABLE Box Pigeon][PRESENT Box Pigeon][MEASURABLE Box Pigeon]    --
-    [GUNGAN Box Pigeon][SOURCE Box Pigeon][SOURCE Box Pigeon]             --
-    [EXECUTED Box Pigeon][VALUE Box Pigeon][MAGNITUDE Box Pigeon]         --
-    [SCALED Box Pigeon][LOAD Box Pigeon][OF Box Pigeon]                   --
-    [BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon][ACOLYTE Box Pigeon]      --
-    [SCIENTIFIC Box Pigeon][TRUTH Box Pigeon][WITNESSED Box Pigeon]       --
-    [REAL Box Pigeon]                                                     --
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [hiss: PHYSICAL Box Pigeon]                                           --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (hiss := ONCE_WE_DETECT_NAOTRINO_MOTION_WE_WILL_DETECT_THE_NOWTRINO Box Pigeon naotrino yarn_theory card)                      --
     : REPRESENTABLE Box Pigeon where                                      --
   calculation_process :=                                                  --
-    { anechoic_chamber.noisy_process.turing_process with                  --
+    { (inferInstance : PHYSICAL Box Pigeon).noisy_process.turing_process with --
         program := hiss.noisy_process.turing_process.program              ----------------+
         computational_process := --                                                       |
-          { anechoic_chamber.noisy_process.turing_process.computational_process with --   |
+          { (inferInstance : PHYSICAL Box Pigeon).noisy_process.turing_process.computational_process with --   |
               closure := fun a_tally => a_tally } } --                                    |
   representable? := fun a_fact a_study =>                                 ----------------+
     ⟨hiss.noisy_process.turing_process.turing_step?                       --
@@ -1092,9 +991,9 @@ def SO_WE_ARE_CONFIDENT_OF_THE_COUNT_IN_THE_DEVICE                        --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box) ------------------------+ a card!             --
-    [glyph: REPRESENTABLE Box Pigeon]                                     --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box) ------------------------+ a card!             --
+    (glyph := WE_CAN_REPRESENT_CLICK_COUNT_WITH_A_TALLY_EVEN_WITH_NOISE Box Pigeon naotrino yarn_theory card)                           --
     : NUMERIC Box Pigeon where                                            --
   computational_process :=                                                --
                     glyph.calculation_process.computational_process       --
@@ -1103,19 +1002,19 @@ def AND_IT_CLICKS_AGAIN_AND_AGAIN_AND_AGAIN                               --
     (Box: Type i)                                                         --
     (Pigeon: CarrierProcess Box)                                          --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [JMP: REPEATABLE Box Pigeon]                                          --
-    [NUMERIC Box Pigeon][REPRESENTABLE Box Pigeon][PHYSICAL Box Pigeon]   --
-    [COMPARABLE Box Pigeon][OBSERVED Box Pigeon][PRESENT Box Pigeon]      --
-    [MEASURABLE Box Pigeon][GUNGAN Box Pigeon][SOURCE Box Pigeon]         --
-    [EXECUTED Box Pigeon][VALUE Box Pigeon][MAGNITUDE Box Pigeon]         --
-    [SCALED Box Pigeon][LOAD Box Pigeon][OF Box Pigeon]                   --
-    [BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon][ACOLYTE Box Pigeon]      --
-    [SCIENTIFIC Box Pigeon][TRUTH Box Pigeon][WITNESSED Box Pigeon]       --
-    [REAL Box Pigeon]                                                     --
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [click_count: NUMERIC Box Pigeon]                                     --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (click_count := SO_WE_ARE_CONFIDENT_OF_THE_COUNT_IN_THE_DEVICE Box Pigeon naotrino yarn_theory card)                     --
     : REPEATABLE Box Pigeon where                                         --
   repeatable_process :=                                                   --
                  click_count.computational_process.repeatable_process     --
@@ -1124,19 +1023,19 @@ def THE_COUNTER_IS_IMPLEMENTED_IN_A_BINARY_ACCUMULATOR                    --
     (Box: Type i)                                                         --
     (Pigeon: CarrierProcess Box)                                          --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
-    [flicker: BINARY Box Pigeon]                                          --
-    [REPEATABLE Box Pigeon][NUMERIC Box Pigeon][REPRESENTABLE Box Pigeon] --
-    [PHYSICAL Box Pigeon][COMPARABLE Box Pigeon][OBSERVED Box Pigeon]     --
-    [PRESENT Box Pigeon][MEASURABLE Box Pigeon][GUNGAN Box Pigeon]        --
-    [SOURCE Box Pigeon][EXECUTED Box Pigeon][VALUE Box Pigeon]            --
-    [MAGNITUDE Box Pigeon][SCALED Box Pigeon][LOAD Box Pigeon]            --
-    [OF Box Pigeon][BULLSHIT Box Pigeon][PROPAGANDA Box Pigeon]           --
-    [ACOLYTE Box Pigeon][SCIENTIFIC Box Pigeon][TRUTH Box Pigeon]         --
-    [WITNESSED Box Pigeon][REAL Box Pigeon]                               --
+    [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
+                                                                          --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [nonstop: REPEATABLE Box Pigeon]                                      --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (nonstop := AND_IT_CLICKS_AGAIN_AND_AGAIN_AND_AGAIN Box Pigeon naotrino yarn_theory card)                        --
     : BINARY Box Pigeon where                                             --
   observation_process := nonstop.repeatable_process.observation_process   --
   zero := .nil nowtrino.fact                                              --
@@ -1145,7 +1044,7 @@ def THE_COUNTER_IS_IMPLEMENTED_IN_A_BINARY_ACCUMULATOR                    --
               nonstop.repeatable_process.observation_process.cauchy_process.limit_process.sequence --   |
               (.nil nowtrino.fact) --                                                                   |
   bit  := nonstop.repeatable_process.observation_process.iterate          ------------------------------+
-              flicker.bit                                                 --
+              (inferInstance : BINARY Box Pigeon).bit                     --
                                                                           --
 def JUST_NEED_TO_INSPECT_THE_REGISTER_TO_SEE_CURRENT_SEQUENCE_INDEX       --
     (Box: Type i)                                                         --
@@ -1153,9 +1052,9 @@ def JUST_NEED_TO_INSPECT_THE_REGISTER_TO_SEE_CURRENT_SEQUENCE_INDEX       --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [register: BINARY Box Pigeon]                                         --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (register := THE_COUNTER_IS_IMPLEMENTED_IN_A_BINARY_ACCUMULATOR Box Pigeon naotrino yarn_theory card)                    --
     : RESIDUE Box Pigeon where                                            --
   cauchy_process := register.observation_process.cauchy_process           --
                                                                           --
@@ -1165,9 +1064,9 @@ def FIGURE_OUT_WHAT_IT_CONVERGES_TO                                       --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [converged_value: RESIDUE Box Pigeon]                                 --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (converged_value := JUST_NEED_TO_INSPECT_THE_REGISTER_TO_SEE_CURRENT_SEQUENCE_INDEX Box Pigeon naotrino yarn_theory card)                     --
     : ENCODED Box Pigeon where                                            --
   limit_process := converged_value.cauchy_process.limit_process           --
                                                                           --
@@ -1177,9 +1076,9 @@ def CAN_YOU_COUNT_THAT_HIGH                                               --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [some_number: ENCODED Box Pigeon]                                     --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (some_number := FIGURE_OUT_WHAT_IT_CONVERGES_TO Box Pigeon naotrino yarn_theory card)                     --
     : COUNTABLE Box Pigeon where                                          --
   index := some_number.limit_process.indexing_process                     --
                                                                           --
@@ -1189,9 +1088,9 @@ def CAN_YOU_UNDERSTAND_THE_PROCESS_TO_COUNT_THAT_HIGH                     --
     [nowtrino: DISTINGUISHABLE Box Pigeon]                                --
     [COMPARABLE Box Pigeon][SOURCE Box Pigeon][REAL Box Pigeon]           --
     (naotrino: LOCAL Box Pigeon)                                          --
-    (_: UNIVERSAL Box Pigeon naotrino)                                    --
-    (_: CarrierProcess Box)                                               --
-    [ℵ : COUNTABLE Box Pigeon]                                            --
+    (yarn_theory: UNIVERSAL Box Pigeon naotrino)                          --
+    (card: CarrierProcess Box)                                            --
+    (ℵ := CAN_YOU_COUNT_THAT_HIGH Box Pigeon naotrino yarn_theory card)                       --
     : ADMISSIBLE Box Pigeon where                                         --
   counting_process := ℵ.index.count                                       --
                                                                           --

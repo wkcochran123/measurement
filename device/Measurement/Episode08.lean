@@ -279,7 +279,7 @@ def rational_zero : Rational := .zero zero -------------------+ I arbitrarily ch
 --| cannot tell it from one -- both clicks are isTrue, so the order sees the parity and not the proposition.  The KNOWER can
 --| tell the two coins apart; the device can only count them.
 def the_anti_inside_joke : FACT :=
-  { truth := (true = false) = (false = true)
+  { truth := (true = false) = (false = true) --| See _The Trick_ for what is happening here.
     click := Decidable.isTrue (propext ⟨Eq.symm, Eq.symm⟩) }
 def one : Number := .one zero another_zero --                 | I also demonstrated that these different concepts can be implemented in terms of one
 def two : Number := .one the_anti_inside_joke one --| The count that carries the second coin. Three cells, tange.
@@ -478,6 +478,51 @@ def truthCarrier : CarrierProcess Prop where
   symbol := FACT.Truth
   quarter := .zero FACT.Truth
 
+-- THE CASCADE.  Episode 7 is two cranks that nothing read.  Up, thirty-six instances: resolution climbs them unaided from one
+-- seat.  Down, thirty-six defs: every rung takes the rung above by name, so the descent can only be run by hand, from the
+-- inferred end.  Here both are put in a term.  The seat is Prop, the card is the quarter, and the four seats the climb will
+-- not supply itself are handed over by name, as before.
+instance truthDistinct : DISTINGUISHABLE Prop truthCarrier where
+  fact := truthCarrier.symbol
+  symbol := Prop
+  different? := fun _ => True
+  not_the_same := fun _ => isTrue trivial
+noncomputable instance AND_THE_UNITS_ARE_STILL_RIGHT_DOWN_HERE : COMPARABLE Prop truthCarrier :=
+  @ARE_THE_UNITS_RIGHT Prop truthCarrier truthDistinct inferInstance instInhabitedProp
+noncomputable instance WE_STILL_PLUG_THE_DATA_FEED_IN_BY_HAND : SOURCE Prop truthCarrier :=
+  WE_CAN_NOW_AUTOMATE_THE_COLLECTION_OF_THE_DATA Prop truthCarrier
+noncomputable instance AND_SOMEBODY_STILL_HAS_TO_GRADUATE : REAL Prop truthCarrier :=
+  FINALLY_YOU_GRADUATE Prop truthCarrier
+noncomputable def this_way : LOCAL Prop truthCarrier := inferInstance
+noncomputable def that_way : UNIVERSAL Prop truthCarrier this_way := inferInstance
+
+-- ONCE AROUND.  One word.  The elaborator does the other thirty-five.
+noncomputable def once_around_the_ladder : INFERRED Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} := inferInstance
+
+-- TWICE AROUND, by hand.  Episode 7's descent is chained inside Episode 7: every rung's binder for the rung above now
+-- defaults to the rung above, handed the same five things.  So the bottom of each piece is the whole piece.  The ladder
+-- does not descend in one piece: UNIVERSAL does not take LOGICAL, and DISTINGUISHABLE does not take ADMISSIBLE.  Three
+-- pieces, then, and the breaks are where the card gets ignored.
+-- The four rules do not chain in the generic: a MEASURED or a COMPILED only exists once the climb has made the seat.
+-- So the top piece is chained here, at the floor, where the seat is.
+noncomputable def the_four_rules_down : LOGICAL Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} :=
+  PERHAPS_ONE_THAT_REALLY_MAKES_YOU_THINK.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
+    (documents_on_file := WE_NEED_TO_DEVELOP_A_BOUNDED_PROCESS.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
+      (data := BUT___WE_CAN_MEASURE_THE_CONSTANT_EMPIRICALLY.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier))
+noncomputable def the_lab_down : ADMISSIBLE Prop truthCarrier :=
+  CAN_YOU_UNDERSTAND_THE_PROCESS_TO_COUNT_THAT_HIGH.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
+noncomputable def the_identity_down : DISTINGUISHABLE Prop truthCarrier :=
+  THEN_I_THINK_YOU_CAN_TELL_APART_A_NAOTRINO_AND_A_NOWTRINO Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
+
+noncomputable def twice_around_the_ladder := (the_four_rules_down, the_lab_down, the_identity_down)
+
+-- THE CLICK.  What came back is what went in, and the once-around closure reads to one cell.
+theorem the_identity_clicks_same : the_identity_down.fact = truthDistinct.fact := rfl
+theorem once_around_reads_one_cell : once_around_the_ladder.α.infer = [FACT.Truth] := rfl
+--#print axioms twice_around_the_ladder
+--#print axioms the_identity_clicks_same
+--#print axioms once_around_reads_one_cell
+
 def the_universe_tape : List FACT := the_coordinate_system.gauss
 def the_leading_tape : List FACT :=
   the_universe_tape.flatMap fun _ => the_universe_tape.flatMap fun _ => the_coefficient_tape
@@ -504,21 +549,29 @@ def theScale  := theBase ^ thePlaces
 -- `speed`) read off the fabric, and the fabric is the one-pole sphere of Episode 5:83, where an area rate is the only motion
 -- there is.  So the conversion from closure units to cells is not an axis chosen from outside; it is the conserved quantity of
 -- the coordinate system the device declared.  A pair, in the box's own currency, applied exactly once, below.
-def the_areal_velocity : Nat × Nat := (theRadius * theRadius, the_dimensions_of_universe)
+-- THE TALLY.  Nat is the compiler's counter -- Ep1:348, "Great. Use Nat." -- and the device never names it in the crank.
+-- The crank is written over any tally with the five seats the click needs: a sum, a product, a truncated difference, an
+-- order, and a decision on the order; plus a way to count a tape and the one scale.  Nat is handed over once, by name, at the floor.
+namespace Crank
+section
+variable (Tally : Type) [Add Tally] [Mul Tally] [Sub Tally] [LT Tally] [DecidableRel (α := Tally) (· < ·)]
+         (count : List FACT → Tally) (scale : Tally)
+
+def the_areal_velocity : Tally × Tally := (count the_radius_tape * count the_radius_tape, count the_coordinate_system.gauss)
 
 -- THE FORCED POLYNOMIAL.  In closure units the residual is the characteristic polynomial of the click table and nothing
 -- else: (C−T)·y² − 2C·y + C.  Three readings.  No tape is in the loop; the tapes above are the check that cells were these
 -- three, each carrying its share of the units -- A·T², B·T·R², C·R⁴ -- which is what "rigged" turns out to have meant.
-def closureA := thirteen
-def closureB := the_basis.funge.length * theCoupling
-def closureC := theCoupling
+def closureA := count the_coefficient_tape
+def closureB := count the_basis.funge * count the_coupling_tape
+def closureC := count the_coupling_tape
 
 -- THE SEED.  The whole strip, converted into closure units by the same pair.  It is not decoration: the residual has TWO
 -- roots, and the seed is what picks one.  The vertex sits at B/2A, a hair under ninety cells; seed below it and the device
 -- converges, correctly and uselessly, on the other root.  A hundred and eight is above it, so the strip selects its own
 -- constant.  Newton chooses the Gateaux.
-def theSeedPair : Nat × Nat :=
-  (the_zero_program.length * the_areal_velocity.2, the_areal_velocity.1)
+def theSeedPair : Tally × Tally :=
+  (count the_zero_program * (the_areal_velocity Tally count).2, (the_areal_velocity Tally count).1)
 
 -- THE TURN OF THE CRANK, IN THE BOX.  Episode 5's FACT.SAME put a ratio in a box: `Quot.mk TruthOrder`, two representatives
 -- declared one number by `Quot.sound`, "an expected division algorithm replaced with multiplication in the field of the single
@@ -533,20 +586,33 @@ def theSeedPair : Nat × Nat :=
 -- division.  Past that point the pair is left alone and the remaining folds cost nothing -- the same arm that makes the
 -- Closure turn safe.  The box is opened ONCE, below, where the digits are printed -- because printing digits is what opening
 -- the box means.
-def theClosurePair : Nat × Nat :=
+def theClosurePair : Tally × Tally :=
   (List.replicate the_zero_program.length ()).foldl
-    (fun (p : Nat × Nat) _ =>
+    (fun (p : Tally × Tally) _ =>
       let n := p.1
       let d := p.2
-      let n' := closureA * n * n - closureC * d * d
-      let d' := the_basis.funge.length * closureA * n * d - closureB * d * d
-      if ((n * d' - n' * d) + (n' * d - n * d')) * theScale * the_areal_velocity.1 < d * d' * the_areal_velocity.2
+      let n' := closureA Tally count * n * n - closureC Tally count * d * d
+      let d' := count the_basis.funge * closureA Tally count * n * d - closureB Tally count * d * d
+      if ((n * d' - n' * d) + (n' * d - n * d')) * scale * (the_areal_velocity Tally count).1
+           < d * d' * (the_areal_velocity Tally count).2
         then p else (n', d'))
-    theSeedPair
+    (theSeedPair Tally count)
 
 -- THE READING, IN CELLS.  The closure pair times the areal velocity.  Still a pair; still in the box.
-def theReadingPair : Nat × Nat :=
-  (theClosurePair.1 * the_areal_velocity.1, theClosurePair.2 * the_areal_velocity.2)
+def theReadingPair : Tally × Tally :=
+  ((theClosurePair Tally count scale).1 * (the_areal_velocity Tally count).1,
+   (theClosurePair Tally count scale).2 * (the_areal_velocity Tally count).2)
+end
+end Crank
+
+-- THE TALLY, HANDED OVER.  Once.  The compiler's counter and the only reading the device takes, `List.length`, together.
+def the_areal_velocity := Crank.the_areal_velocity Nat List.length
+def closureA := Crank.closureA Nat List.length
+def closureB := Crank.closureB Nat List.length
+def closureC := Crank.closureC Nat List.length
+def theSeedPair    := Crank.theSeedPair Nat List.length
+def theClosurePair := Crank.theClosurePair Nat List.length theScale
+def theReadingPair := Crank.theReadingPair Nat List.length theScale
 
 -- THE BOX, OPENED -- BY INFERENCE.  One division, at the readout, and it is not a primitive the device borrowed.  INFERRED's
 -- whole class is one field, `inferred? metaphysical physical := metaphysical ≤ physical`, and `Nat.div` is that `≤` iterated:
@@ -589,6 +655,6 @@ def theReading :=
 end Measurement
 
 -- THE READOUT.  Said outside, because the device is done talking.
-#eval Measurement.theReading
-#print axioms Measurement.theReadingScaled
-#print axioms Measurement.theReadingCertified
+--#eval Measurement.theReading
+--#print axioms Measurement.theReadingScaled
+--#print axioms Measurement.theReadingCertified
