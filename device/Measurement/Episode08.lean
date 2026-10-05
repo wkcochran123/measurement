@@ -655,6 +655,6 @@ def theReading :=
 end Measurement
 
 -- THE READOUT.  Said outside, because the device is done talking.
---#eval Measurement.theReading
---#print axioms Measurement.theReadingScaled
+#eval Measurement.theReading
+#print axioms Measurement.theReadingScaled
 --#print axioms Measurement.theReadingCertified

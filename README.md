@@ -27,6 +27,8 @@ lake build > build_log  1423.46s user 12.02s system 100% cpu 23:52.57 total
 ✔ [8/16] Built Measurement.Episode05 (19s)
 ✔ [9/16] Built Measurement.Episode07 (19s)
 ✔ [10/16] Built Measurement.Episode08 (3.4s)
+info: Measurement/Episode08.lean:658:0: "137.011290548979457087737300"
+info: Measurement/Episode08.lean:659:0: 'Measurement.theReadingScaled' depends on axioms: [propext, Quot.sound]
 ✔ [11/16] Built Measurement.Episode09 (17s)
 ✔ [12/16] Built Measurement.Episode10 (34s)
 ✔ [13/16] Built Measurement.Episode11 (2.4s)
