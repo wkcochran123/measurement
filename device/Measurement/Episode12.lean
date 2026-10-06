@@ -2,7 +2,7 @@
 __Measurement: The Tragedy of John Henry__
 __A Satire in Look Ahead Backus-Naur Form__
 
-_This is a gentle reminder that an instrument which has not been zeroed is a rumour._
+_This is a gentle reminder that things can only get so meta and still be consistent._
 
 (c) 2026
 
@@ -1463,7 +1463,7 @@ end Measurement
 --| this particular nowtrino. In fact, I believe the nowtrino has been officially absorbed.
 
 --| The fact is, I know I'm right. That's one more fact about math that the device cannot prove. Only demonstrate, over and over again, problem after
---| problem, on the two Turing machines facing off inside **YOU**:  *YOU the READER* and the *YOU the KNOWER*.  I cannot explain this any plainer
+--| problem, on the two Turing machines facing off inside **YOU**:  *YOU the READER* and *YOU the KNOWER*.  I cannot explain this any plainer
 --| without violating the rules of symbolic manipulation. More simply, all **YOU** have to do is _believe_ me, I have generated the counter of every
 --| outcome for **YOU**, both Turing machines, perfectly complementary and completely identical, just interpreted both ways. We can turn the knob over
 --| and over while the Turing machines slowly iterate through all the arguments. But we don't need to. That won't prove anything. There is nothing
@@ -1471,10 +1471,17 @@ end Measurement
 --| agree that this is a verified fact of running on a computer.
 
 --| That's my tragedy.  It doesn't matter at all if **YOU** believe it or not, it is an undeniable trick of the light. Or, I can just show you the
---| other machine that explains how it is a trick of the fabric.
+--| other machine that explains how it is a trick of the fabric. Just provide the _NAME_ of the logical argument *YOU* wish countered as defined above
+--| and the machine should generate the appropriate argument that demonstrates the correct way to reason about the device. The compiler cannot
+--| reason about truth. It can only reason about itself, in whatever demonstrably _opaque_ way it needs to.
 
 --| Do the logical conclusions of one mathematical theory have to imply the logical conclusions of another mathematical theory? Turns out, it
---| doesn't matter. It's only matter when they do. When the compiler can determine the quantitative difference and **YOU** are looking, the
---| true-ness of the idea _clicks_ with **YOU** at the same time it _clicks_ with the compiler. That click is the change in the local measurement we
---| called a fact before we knew how to count one. The description was the device; the fact of the matter is that it clicked. Is this your quartic?
---| or did the argument not click? ∎ *wink*
+--| doesn't matter. It's only matter when they do. It's only matter when we measure it and the measurement matches some innate sense of existence.
+--| It's only matter when it _matters_. When the compiler can determine the quantitative difference and **YOU** are looking, the true-ness of the idea
+--| _clicks_ with **YOU** at the same time it _clicks_ with the compiler. That click is the change in the local measurement we called a fact before we
+--| knew how to count one. The description was the device; the fact of the matter is that it clicked. For this is what the device _does_, not what it
+--| means.
+
+--|                                                        t²(c−t)x²  −  2ctr²x  +  cr⁴  =  0
+
+--| Linear in c, quadratic in x, cubic in t, quartic in r. Is this the quarter that makes *YOUR* trick work? Or, did the argument not click? ∎ *wink*

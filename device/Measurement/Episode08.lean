@@ -91,8 +91,77 @@ def the_nowtrino_path : SpaceTimePath.{0} := --  | We state our thesis as follow
 --|  | the compile stops. And nothing we it computed exists anymore, except on screen. It will eventually disappear and be gone forever. Into
 --|  | thermodynamic noise. This is what ringing like Gibb's is like.
 
-def the_dimensions_of_universe   := the_coordinate_system.gauss.length
-def the_orbital_data_points    := the_nowtrino_path.stokes.length
+def truthCarrier : CarrierProcess Prop where
+  symbol := FACT.Truth
+  quarter := .zero FACT.Truth
+
+-- THE CASCADE.  Episode 7 is two cranks that nothing read.  Up, thirty-six instances: resolution climbs them unaided from one
+-- seat.  Down, thirty-six defs: every rung takes the rung above by name, so the descent can only be run by hand, from the
+-- inferred end.  Here both are put in a term.  The seat is Prop, the card is the quarter, and the four seats the climb will
+-- not supply itself are handed over by name, as before.
+instance truthDistinct : DISTINGUISHABLE Prop truthCarrier where
+  fact := truthCarrier.symbol
+  symbol := Prop
+  different? := fun _ => True
+  not_the_same := fun _ => isTrue trivial
+--| THE SEATS THE KNOWER SUPPLIES.  The fact, `truthDistinct`, above; its symbol, handed over by name because resolution will
+--| not reduce a projection to find `Inhabited Prop`; and the fabric, REAL, which the climb no longer resolves and the descent
+--| still asks for by instance.  Everything else on the ladder is a default of the rung that uses it.  One word at the top,
+--| one word at each bottom, and the compiler does the rest.
+instance : Inhabited (DISTINGUISHABLE.symbol truthCarrier) := instInhabitedProp
+noncomputable instance AND_SOMEBODY_STILL_HAS_TO_GRADUATE : REAL Prop truthCarrier :=
+  FINALLY_YOU_GRADUATE Prop truthCarrier
+noncomputable def this_way : LOCAL Prop truthCarrier :=
+  AND_NOW_YOU_HAVE_A_DIFFERENTIAL_EQUATION_THAT_SAYS Prop truthCarrier
+noncomputable def that_way : UNIVERSAL Prop truthCarrier this_way :=
+  PROBLEM_IS_THE_DIFFERENTIAL_EQUATION_IS_NOT_RELATIVE Prop truthCarrier (nowtrino_model := this_way)
+
+-- ONCE AROUND.  One word.  Every rung above it is a default of the rung above that.
+noncomputable def once_around_the_ladder : INFERRED Prop truthCarrier this_way that_way :=
+  OF_COURSE_IT_DOES___I_JUST_PUT_IT_THERE Prop truthCarrier
+
+-- TWICE AROUND, by hand.  Episode 7's descent is chained inside Episode 7, every rung defaulting to the rung above, so the
+-- bottom of each piece is the whole piece.  The ladder descends in three pieces: UNIVERSAL does not take LOGICAL, and
+-- DISTINGUISHABLE does not take ADMISSIBLE, and the breaks are where the card gets ignored.
+noncomputable def the_four_rules_down : LOGICAL Prop truthCarrier this_way that_way :=
+  PERHAPS_ONE_THAT_REALLY_MAKES_YOU_THINK.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way (yarn_theory:=that_way) (card:=truthCarrier)
+noncomputable def the_lab_down : ADMISSIBLE Prop truthCarrier :=
+  CAN_YOU_UNDERSTAND_THE_PROCESS_TO_COUNT_THAT_HIGH.{0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
+noncomputable def the_identity_down : DISTINGUISHABLE Prop truthCarrier :=
+  THEN_I_THINK_YOU_CAN_TELL_APART_A_NAOTRINO_AND_A_NOWTRINO.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
+
+noncomputable def twice_around_the_ladder := (the_four_rules_down, the_lab_down, the_identity_down)
+
+
+--| COUNTING THE DEVICE.  The readers count the cells of a tape.  This counts the rungs of a TERM: the Episode 7 constants
+--| named in the elaborated value of a floor definition, read off by the elaborator and written back as a numeral, the way
+--| `register_noise_floor` writes the floor.  Not an #eval, not a theorem: a reading of the thing the compiler built.
+elab "count_rungs " target:ident " as " name:ident : command => do
+  let env ← Lean.getEnv
+  let some ci := env.find? (Lean.Name.str `Measurement target.getId.toString) | throwError "no such term"
+  let some v := ci.value? | throwError "no value to read"
+  let mods := env.header.moduleNames
+  let isRung (n : Lean.Name) : Bool :=
+    match env.getModuleIdxFor? n with
+    | some i => (mods[i.toNat]!).toString == "Measurement.Episode07" && !n.isInternal
+                && (n.toString.splitOn ".").length == 2 && !(n.toString.endsWith "_resolved")
+                && !((n.toString.splitOn ".")[1]!).startsWith "Metavariable"
+    | none => false
+  let k := (v.getUsedConstants.filter isRung).size
+  Lean.Elab.Command.elabCommand (← `(def $name:ident : Nat := $(Lean.quote k)))
+
+--| THE READINGS, OFF THE DEVICE.  What the walks of the inferred end used to measure on a tape, the floor now IS: the fabric
+--| is four rungs tall, the naotrino five, the four-rules descent thirteen, and the coupling is the thirteen plus the clock,
+--| which is what C − T + T has always been.  The tape is kept, below, as the receipt that it agrees.
+count_rungs AND_SOMEBODY_STILL_HAS_TO_GRADUATE as the_orbital_data_points
+count_rungs this_way as the_dimensions_of_universe
+count_rungs the_four_rules_down as thirteen
+def theCoupling := thirteen + the_dimensions_of_universe
+
+--| THE TAPE AGREES.  Two receipts here; the other two follow the tapes they are about.
+theorem the_orbital_is_the_stokes : the_orbital_data_points = the_nowtrino_path.stokes.length := rfl
+theorem the_clock_is_the_gauss   : the_dimensions_of_universe = the_coordinate_system.gauss.length := rfl
+
 
 def Number.peano : Number → List FACT --     | Well, well, well, what do we have here? Could this be a number? Do we agree that .length is a number?
   | .zero f     => [f] ----------------------+ I think *YOU the KNOWER* will agree that this looks like the recursive definition of a number as
@@ -469,52 +538,11 @@ def from_the_inferred_end (depth : Nat) : List FACT := (the_walks.reverse.take d
 def the_coefficient_tape : List FACT := from_the_inferred_end the_orbital_data_points
 def the_coupling_tape    : List FACT := from_the_inferred_end the_dimensions_of_universe
 def the_radius_tape      : List FACT := the_coupling_tape
-def thirteen    := the_coefficient_tape.length
-def theCoupling := the_coupling_tape.length
+theorem the_thirteen_is_the_coefficient_tape : thirteen = the_coefficient_tape.length := rfl
+theorem the_coupling_is_the_coupling_tape   : theCoupling = the_coupling_tape.length := rfl
 def theRadius   := the_radius_tape.length
 def thePlaces   := (from_the_inferred_end thirteen).length - theCoupling
 
-def truthCarrier : CarrierProcess Prop where
-  symbol := FACT.Truth
-  quarter := .zero FACT.Truth
-
--- THE CASCADE.  Episode 7 is two cranks that nothing read.  Up, thirty-six instances: resolution climbs them unaided from one
--- seat.  Down, thirty-six defs: every rung takes the rung above by name, so the descent can only be run by hand, from the
--- inferred end.  Here both are put in a term.  The seat is Prop, the card is the quarter, and the four seats the climb will
--- not supply itself are handed over by name, as before.
-instance truthDistinct : DISTINGUISHABLE Prop truthCarrier where
-  fact := truthCarrier.symbol
-  symbol := Prop
-  different? := fun _ => True
-  not_the_same := fun _ => isTrue trivial
-noncomputable instance AND_THE_UNITS_ARE_STILL_RIGHT_DOWN_HERE : COMPARABLE Prop truthCarrier :=
-  @ARE_THE_UNITS_RIGHT Prop truthCarrier truthDistinct inferInstance instInhabitedProp
-noncomputable instance WE_STILL_PLUG_THE_DATA_FEED_IN_BY_HAND : SOURCE Prop truthCarrier :=
-  WE_CAN_NOW_AUTOMATE_THE_COLLECTION_OF_THE_DATA Prop truthCarrier
-noncomputable instance AND_SOMEBODY_STILL_HAS_TO_GRADUATE : REAL Prop truthCarrier :=
-  FINALLY_YOU_GRADUATE Prop truthCarrier
-noncomputable def this_way : LOCAL Prop truthCarrier := inferInstance
-noncomputable def that_way : UNIVERSAL Prop truthCarrier this_way := inferInstance
-
--- ONCE AROUND.  One word.  The elaborator does the other thirty-five.
-noncomputable def once_around_the_ladder : INFERRED Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} := inferInstance
-
--- TWICE AROUND, by hand.  Episode 7's descent is chained inside Episode 7: every rung's binder for the rung above now
--- defaults to the rung above, handed the same five things.  So the bottom of each piece is the whole piece.  The ladder
--- does not descend in one piece: UNIVERSAL does not take LOGICAL, and DISTINGUISHABLE does not take ADMISSIBLE.  Three
--- pieces, then, and the breaks are where the card gets ignored.
--- The four rules do not chain in the generic: a MEASURED or a COMPILED only exists once the climb has made the seat.
--- So the top piece is chained here, at the floor, where the seat is.
-noncomputable def the_four_rules_down : LOGICAL Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} :=
-  PERHAPS_ONE_THAT_REALLY_MAKES_YOU_THINK.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
-    (documents_on_file := WE_NEED_TO_DEVELOP_A_BOUNDED_PROCESS.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
-      (data := BUT___WE_CAN_MEASURE_THE_CONSTANT_EMPIRICALLY.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier))
-noncomputable def the_lab_down : ADMISSIBLE Prop truthCarrier :=
-  CAN_YOU_UNDERSTAND_THE_PROCESS_TO_COUNT_THAT_HIGH.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
-noncomputable def the_identity_down : DISTINGUISHABLE Prop truthCarrier :=
-  THEN_I_THINK_YOU_CAN_TELL_APART_A_NAOTRINO_AND_A_NOWTRINO Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
-
-noncomputable def twice_around_the_ladder := (the_four_rules_down, the_lab_down, the_identity_down)
 
 -- THE CLICK.  What came back is what went in, and the once-around closure reads to one cell.
 theorem the_identity_clicks_same : the_identity_down.fact = truthDistinct.fact := rfl
@@ -656,5 +684,5 @@ end Measurement
 
 -- THE READOUT.  Said outside, because the device is done talking.
 #eval Measurement.theReading
-#print axioms Measurement.theReadingScaled
+--#print axioms Measurement.theReadingScaled
 --#print axioms Measurement.theReadingCertified
