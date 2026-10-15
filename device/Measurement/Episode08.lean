@@ -109,26 +109,37 @@ instance truthDistinct : DISTINGUISHABLE Prop truthCarrier where
 --| still asks for by instance.  Everything else on the ladder is a default of the rung that uses it.  One word at the top,
 --| one word at each bottom, and the compiler does the rest.
 instance : Inhabited (DISTINGUISHABLE.symbol truthCarrier) := instInhabitedProp
-noncomputable instance AND_SOMEBODY_STILL_HAS_TO_GRADUATE : REAL Prop truthCarrier :=
-  FINALLY_YOU_GRADUATE Prop truthCarrier
-noncomputable def this_way : LOCAL Prop truthCarrier :=
-  AND_NOW_YOU_HAVE_A_DIFFERENTIAL_EQUATION_THAT_SAYS Prop truthCarrier
-noncomputable def that_way : UNIVERSAL Prop truthCarrier this_way :=
-  PROBLEM_IS_THE_DIFFERENTIAL_EQUATION_IS_NOT_RELATIVE Prop truthCarrier (nowtrino_model := this_way)
+noncomputable instance AND_SOMEBODY_STILL_HAS_TO_GRADUATE : REAL Prop truthCarrier := A_CAUSAL_THEORY Prop truthCarrier
+@[irreducible] noncomputable def this_way : LOCAL Prop truthCarrier := A_SMOOTH_MODEL Prop truthCarrier
+@[irreducible] noncomputable def that_way : UNIVERSAL Prop truthCarrier this_way := IS_IT_CONNECTED_BY_A_YARN? Prop truthCarrier (nowtrino_model := this_way)
 
 -- ONCE AROUND.  One word.  Every rung above it is a default of the rung above that.
+--| THE BAND, AT THE FLOOR, BY NAME.  `this_way` and `that_way` are sealed: nothing below may unfold them.  So the six classes
+--| indexed by them are handed over here as instances that name them, and resolution finds these by their heads without ever
+--| opening the seat.  This is what stopped the machine: thirty-six rungs each asking for six band instances, each found by
+--| unfolding the seat into the band and comparing.  Now each is a constant.
+@[irreducible] noncomputable instance : LOGICAL Prop truthCarrier this_way that_way := IS_IT_SPINNING? Prop truthCarrier (naotrino_model := this_way) (yarn_theory := that_way)
+@[irreducible] noncomputable instance : HALTED Prop truthCarrier this_way that_way :=
+  DO_YOU_SEE_THE_EVIDENCE? Prop truthCarrier (naotrino_model := this_way) (yarn_theory := that_way)
+@[irreducible] noncomputable instance : MEASURED Prop truthCarrier this_way that_way :=
+  IS_THIS_A_NEW_PARTICLE? Prop truthCarrier (naotrino_model := this_way) (yarn_theory := that_way)
+@[irreducible] noncomputable instance : COMPILED Prop truthCarrier this_way that_way :=
+  HOW? Prop truthCarrier (naotrino_model := this_way) (yarn_theory := that_way)
+@[irreducible] noncomputable instance : A_TRUTH_ABOUT Prop truthCarrier this_way that_way :=
+  WHY? Prop truthCarrier (naotrino_model := this_way) (yarn_theory := that_way)
 noncomputable def once_around_the_ladder : INFERRED Prop truthCarrier this_way that_way :=
-  OF_COURSE_IT_DOES___I_JUST_PUT_IT_THERE Prop truthCarrier
+  WHY_NOT? Prop truthCarrier (naotrino_model := this_way) (yarn_theory := that_way)
+@[irreducible] noncomputable instance : INFERRED Prop truthCarrier this_way that_way := once_around_the_ladder
 
 -- TWICE AROUND, by hand.  Episode 7's descent is chained inside Episode 7, every rung defaulting to the rung above, so the
 -- bottom of each piece is the whole piece.  The ladder descends in three pieces: UNIVERSAL does not take LOGICAL, and
 -- DISTINGUISHABLE does not take ADMISSIBLE, and the breaks are where the card gets ignored.
 noncomputable def the_four_rules_down : LOGICAL Prop truthCarrier this_way that_way :=
-  PERHAPS_ONE_THAT_REALLY_MAKES_YOU_THINK.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way (yarn_theory:=that_way) (card:=truthCarrier)
+  A_BELIEF.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way (yarn_theory:=that_way) (card:=truthCarrier)
 noncomputable def the_lab_down : ADMISSIBLE Prop truthCarrier :=
-  CAN_YOU_UNDERSTAND_THE_PROCESS_TO_COUNT_THAT_HIGH.{0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
+  A_GENERATOR.{0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
 noncomputable def the_identity_down : DISTINGUISHABLE Prop truthCarrier :=
-  THEN_I_THINK_YOU_CAN_TELL_APART_A_NAOTRINO_AND_A_NOWTRINO.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
+  A_NAOTRINO.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} Prop truthCarrier this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} truthCarrier
 
 noncomputable def twice_around_the_ladder := (the_four_rules_down, the_lab_down, the_identity_down)
 
@@ -150,6 +161,11 @@ elab "count_rungs " target:ident " as " name:ident : command => do
   let k := (v.getUsedConstants.filter isRung).size
   Lean.Elab.Command.elabCommand (← `(def $name:ident : Nat := $(Lean.quote k)))
 
+--| A CENSUS, NOT AN INVARIANT.  This counts declaration references in the floor as WRITTEN.  Re-present the same value --
+--| wrap it in a definitionally equal alias, pass a default by name -- and the count moves; the fabric read 4 inlined and 0
+--| aliased, the four rules 13 inlined and 14 by name.  A sealed seat is where the count stops, by convention.  What is
+--| claimed is only this: the census of the floor as written agrees with the tape by `rfl`.  Covariance under a defined
+--| class of re-presentations is an obligation, not a theorem here.
 --| THE READINGS, OFF THE DEVICE.  What the walks of the inferred end used to measure on a tape, the floor now IS: the fabric
 --| is four rungs tall, the naotrino five, the four-rules descent thirteen, and the coupling is the thirteen plus the clock,
 --| which is what C − T + T has always been.  The tape is kept, below, as the receipt that it agrees.
@@ -614,17 +630,18 @@ def theSeedPair : Tally × Tally :=
 -- division.  Past that point the pair is left alone and the remaining folds cost nothing -- the same arm that makes the
 -- Closure turn safe.  The box is opened ONCE, below, where the digits are printed -- because printing digits is what opening
 -- the box means.
+-- ONE TURN, NAMED.  The step the crank repeats, as its own definition, so a ledger of its turns can be checked one turn at
+-- a time against literals -- the kernel never has to run the fold, only to agree with each line of it.
+def turn (p : Tally × Tally) : Tally × Tally :=
+  let n := p.1
+  let d := p.2
+  let n' := closureA Tally count * n * n - closureC Tally count * d * d
+  let d' := count the_basis.funge * closureA Tally count * n * d - closureB Tally count * d * d
+  if ((n * d' - n' * d) + (n' * d - n * d')) * scale * (the_areal_velocity Tally count).1
+       < d * d' * (the_areal_velocity Tally count).2
+    then p else (n', d')
 def theClosurePair : Tally × Tally :=
-  (List.replicate the_zero_program.length ()).foldl
-    (fun (p : Tally × Tally) _ =>
-      let n := p.1
-      let d := p.2
-      let n' := closureA Tally count * n * n - closureC Tally count * d * d
-      let d' := count the_basis.funge * closureA Tally count * n * d - closureB Tally count * d * d
-      if ((n * d' - n' * d) + (n' * d - n * d')) * scale * (the_areal_velocity Tally count).1
-           < d * d' * (the_areal_velocity Tally count).2
-        then p else (n', d'))
-    (theSeedPair Tally count)
+  (List.replicate the_zero_program.length ()).foldl (fun p _ => turn Tally count scale p) (theSeedPair Tally count)
 
 -- THE READING, IN CELLS.  The closure pair times the areal velocity.  Still a pair; still in the box.
 def theReadingPair : Tally × Tally :=
@@ -639,6 +656,7 @@ def closureA := Crank.closureA Nat List.length
 def closureB := Crank.closureB Nat List.length
 def closureC := Crank.closureC Nat List.length
 def theSeedPair    := Crank.theSeedPair Nat List.length
+def theTurn := Crank.turn Nat List.length theScale
 def theClosurePair := Crank.theClosurePair Nat List.length theScale
 def theReadingPair := Crank.theReadingPair Nat List.length theScale
 

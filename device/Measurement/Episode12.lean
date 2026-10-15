@@ -102,7 +102,7 @@ private def sample (s : TSyntax `term) : TermElabM Nat := do
   pure hb
 
 --| READ THE NUMBER OFF THE JAR.  Episode 8 seeded the strip and turned the crank once per
---| cell of it -- a hundred and one folds for an answer that lands in seven, which is to say
+--| cell of it -- a hundred and eight folds for an answer that lands in seven, which is to say
 --| it went all the way.  It could: it was working in logic, where going all the way is
 --| free.  Out here you cannot.  You seed the JAR, whose low wall Episode 8 showed is Newton
 --| iterate zero, and you turn the crank SLIP-many times -- four, `the_orbital_data_points`, the card
@@ -763,6 +763,10 @@ trace is well-stepped when every cell does.
 
 --| THE RELATION, DIRECTLY.  `.introduction` is the base row and has no predecessor to
 --| relate to, which is why it passes: φ_start is not a transition.
+--| AN OBLIGATION, NOTED.  This step checks the two facts WITHIN a cell and never connects one cell's output to the next
+--| cell's input: two successive T→F cells pass.  And it is exclusive-or, so it admits only the two disagreeing arms, while
+--| the click table weights the agreeing arms positively.  The correspondence proved below is bidirectional and exact for
+--| THIS relation; the relation the table counts -- consecutive cells, all four arms, weighted -- is not yet the one checked.
 def ThePreprint.stepOK : ThePreprint.{0} → Bool
   | .introduction _ _         => true
   | .methodology c s _ _ rest => (c.bit != s.bit) && rest.stepOK
@@ -1270,6 +1274,12 @@ theorem any_count_of_the_lengths (count : List FACT → Nat) (h : ∀ tape, coun
   rfl
 --#print axioms any_count_of_the_lengths
 
+--| WHAT IS NOT YET DERIVED.  The table below is written down, not forced.  A symmetric table [[C, T], [T, C]] has two states,
+--| positive weights and equal diagonals too, and determinant C² − T².  What excludes it is Episode 5's constructor: the
+--| disagreeing arm is `.different lower_bound slip_bound`, two DISTINCT slots, a bracket and not a point, so the off-diagonal
+--| product is lower times slip, T times C, and a symmetric table is the degenerate `.same` case.  That argument lives in the
+--| vocabulary three episodes before the polynomial.  It is not yet a definition of the table from the constructor with the
+--| trace and determinant as theorems about it.  That is the open obligation, and the only-if lives there.
 --| THE ZETA PROCESS.  Not a zeta function -- nothing here is evaluated at s.  A zeta PROCESS: the device is a two-symbol shift,
 --| the two coins, and the click table is its transition matrix.  Agreeing arms on the diagonal, disagreeing arms off it:
 --|
@@ -1347,7 +1357,7 @@ theorem the_acceleration_is_constant (N D : Nat) :
 --| Fréchet derivative is not a map but a number: r'(y) = 2A·y − B, and at a root r'² is the discriminant exactly -- the trace
 --| squared less four times the determinant, which the zeta section read off the click table as funge²·C·T.  So r'(y*) =
 --| funge·√(C·T) = 6√10: two symbols times the geometric mean of the coupling and the clock.  That is the derivative the Newton
---| step divided by, a hundred and one times.  α is the first-order coupling, the coefficient of the one-vertex term, the linear
+--| step divided by, a hundred and eight times.  α is the first-order coupling, the coefficient of the one-vertex term, the linear
 --| response; the device's reading is the first-order response of the residual to the tape and nothing higher.  The second
 --| variation is the constant above, and the device never takes it -- which is the one sentence QCD gets.  And a proof ends where
 --| the first derivative has been applied once more and the test clicks.  Q.E.D., both ways.
@@ -1399,35 +1409,165 @@ def halve (b : (Nat × Nat) × (Nat × Nat)) : (Nat × Nat) × (Nat × Nat) :=
                                          else ((a + c, d'), (the_basis.funge.length * c, d'))
 
 --| RUN BY THE ELABORATOR.  Not the kernel: a midpoint names both walls twice, so an unevaluated bisection doubles in size
---| every turn and a hundred and one turns is 2^101 of term for the kernel to chew.  The crank never had this problem -- its
+--| every turn and a hundred and eight turns is 2^108 of term for the kernel to chew.  The crank never had this problem -- its
 --| `then p` arm stops the growth the moment it halts.  So the Fréchet device runs where the long path runs: as a command,
 --| one halving per cell of the strip, each halving under `withHeartbeats`, and the bracket it lands on is written into the
 --| environment as literals the way `register_noise_floor` writes the floor.  The elaborator's search through the Herbrand
 --| space, with its own count of itself.  The kernel then checks the inequalities and nothing else.
-elab "frechet_walk " walls:ident beats:ident newton:ident : command => do
-  let (b, hbs, p) ← liftTermElabM do
+elab "frechet_walk " walls:ident beats:ident newton:ident bledger:ident nledger:ident : command => do
+  let (b, hbs, p, bl, nl) ← liftTermElabM do
     let mut b := (theLowWall, theHighWall)
     let mut hbs : Array Nat := #[]
+    let mut bl : Array ((Nat × Nat) × (Nat × Nat)) := #[b]
     for _ in [0:the_zero_program.length] do
       let (b', hb) ← withHeartbeats (do let b' := halve b; pure b')
       b := b'
       hbs := hbs.push hb
-    pure (b, hbs, theClosurePair)
-  let cmd1 ← `(def $walls:ident : (Nat × Nat) × (Nat × Nat) := $(Lean.quote b))
-  let cmd2 ← `(def $beats:ident : List Nat := $(Lean.quote hbs.toList))
-  let cmd3 ← `(def $newton:ident : Nat × Nat := $(Lean.quote p))
-  elabCommand cmd1
-  elabCommand cmd2
-  elabCommand cmd3
+      bl := bl.push b
+    let mut p := theSeedPair
+    let mut nl : Array (Nat × Nat) := #[p]
+    for _ in [0:the_zero_program.length] do
+      p := theTurn p
+      nl := nl.push p
+    pure (b, hbs, p, bl, nl)
+  elabCommand (← `(def $walls:ident : (Nat × Nat) × (Nat × Nat) := $(Lean.quote b)))
+  elabCommand (← `(def $beats:ident : List Nat := $(Lean.quote hbs.toList)))
+  elabCommand (← `(def $newton:ident : Nat × Nat := $(Lean.quote p)))
+  elabCommand (← `(def $bledger:ident : List ((Nat × Nat) × (Nat × Nat)) := $(Lean.quote bl.toList)))
+  elabCommand (← `(def $nledger:ident : List (Nat × Nat) := $(Lean.quote nl.toList)))
 
 --| The instrument runs in compiled code; the kernel checks the receipt.  Asked to run the crank itself, the kernel chews for
 --| a quarter of an hour on terms it cannot share, which is the book's point made as a build time.  So the crank's point is
 --| written down beside the bracket, by the same command, and the compiled code is asked -- below -- whether the literal is
 --| the crank.  The kernel then certifies the intersection on literals, and bills nothing for it.
-frechet_walk theBracket theHalvingBeats theNewtonPoint
+frechet_walk theBracket theHalvingBeats theNewtonPoint theBisectionLedger theNewtonLedger
 --#eval theBracket
---#eval theNewtonPoint == theClosurePair
 --#eval theHalvingBeats.foldl (· + ·) 0
+
+--| THE LEDGERS.  The runtime `==` that used to stand here was the weakest line in the file: the compiled code vouching for
+--| itself.  Now the command writes down every state of both devices, a hundred and two lines each, and the kernel checks each
+--| line against the one before it with the step function on literals.  No fold is ever run in the kernel; no term is ever
+--| unfolded into the one beneath it.  Start, every turn, end, and the count of turns: four receipts per device.
+theorem the_bisection_ledger_starts : theBisectionLedger.head? = some (theLowWall, theHighWall) := by decide +kernel
+theorem the_bisection_ledger_turns :
+    (theBisectionLedger.zip theBisectionLedger.tail).all (fun q => decide (halve q.1 = q.2)) = true := by decide +kernel
+theorem the_bisection_ledger_ends : theBisectionLedger.getLast? = some theBracket := by decide +kernel
+theorem the_bisection_ledger_length : theBisectionLedger.length = the_zero_program.length + 1 := by decide +kernel
+theorem the_newton_ledger_starts : theNewtonLedger.head? = some theSeedPair := by decide +kernel
+theorem the_newton_ledger_turns :
+    (theNewtonLedger.zip theNewtonLedger.tail).all (fun q => decide (theTurn q.1 = q.2)) = true := by decide +kernel
+theorem the_newton_ledger_ends : theNewtonLedger.getLast? = some theNewtonPoint := by decide +kernel
+theorem the_newton_ledger_length : theNewtonLedger.length = the_zero_program.length + 1 := by decide +kernel
+--#print axioms the_newton_ledger_turns
+
+--| A CHECKED LEDGER IS THE FOLD.  Start at the head, every line the step of the line before, and the fold over length-minus-one
+--| turns from the head lands on the last line.  Generic, by induction on the list; no kernel evaluation anywhere.  Each
+--| line of the ledger above bills nothing.  Composing them into one statement about the fold bills Quot.sound, through
+--| function extensionality inside `simp` -- the same fork as the universal reader: the lines are symbol facts, "the fold
+--| is the ledger" is a value fact.  So the identity the runtime `==` used to vouch for is now a theorem, and the bill says
+--| exactly what kind.
+theorem ledger_is_the_fold {α : Type} [DecidableEq α] (f : α → α) :
+    ∀ (L : List α) (a : α), L.head? = some a →
+      (L.zip L.tail).all (fun q => decide (f q.1 = q.2)) = true →
+      (List.replicate (L.length - 1) ()).foldl (fun x _ => f x) a = L.getLast?.getD a
+  | [], _, h, _ => by simp at h
+  | [a'], a, h, _ => by simp at h; subst h; rfl
+  | a' :: b :: rest, a, h, hall => by
+      simp only [List.head?_cons, Option.some.injEq] at h; subst h
+      simp only [List.tail_cons, List.zip_cons_cons, List.all_cons, Bool.and_eq_true, decide_eq_true_eq] at hall
+      obtain ⟨hab, htail⟩ := hall
+      have ih := ledger_is_the_fold f (b :: rest) b rfl (by simpa [List.tail_cons, List.zip_cons_cons, List.all_cons] using htail)
+      simp only [List.length_cons, Nat.add_sub_cancel, List.replicate_succ, List.foldl_cons, hab,
+                 List.getLast?_cons_cons] at ih ⊢
+      cases hl : (b :: rest).getLast? with
+      | none => simp at hl
+      | some z => simp [hl] at ih ⊢; exact ih
+theorem the_crank_is_its_ledger : theClosurePair = theNewtonPoint := by
+  have h := ledger_is_the_fold theTurn theNewtonLedger theSeedPair the_newton_ledger_starts the_newton_ledger_turns
+  rw [the_newton_ledger_length, the_newton_ledger_ends] at h
+  simpa [theClosurePair, Crank.theClosurePair, theTurn] using h
+--#print axioms the_crank_is_its_ledger
+
+--| THE BISECTION IS ITS LEDGER, TOO.  The same lemma, instantiated on the other device.
+theorem the_bracket_is_its_ledger :
+    (List.replicate the_zero_program.length ()).foldl (fun b _ => halve b) (theLowWall, theHighWall) = theBracket := by
+  have h := ledger_is_the_fold halve theBisectionLedger (theLowWall, theHighWall)
+              the_bisection_ledger_starts the_bisection_ledger_turns
+  rw [the_bisection_ledger_length, the_bisection_ledger_ends] at h
+  simpa using h
+
+--| UNIQUE UPPER-ROOT CONTAINMENT.  A quadratic with positive leading coefficient has exactly one root above its vertex.  The
+--| low wall is above the vertex, the walls straddle a sign change, and the width is under one place: the bracket contains
+--| the larger root and no other, and the crank's point sits inside it.  Three facts on literals; the fourth is the straddle above.
+theorem the_low_wall_is_above_the_vertex : theCoupling * theBracket.1.2 < thirteen * theBracket.1.1 := by decide +kernel
+
+--| EQUAL ENDPOINT TRUNCATIONS.  Both walls, converted to cells and cut at the places, print the reading, and the reading is
+--| the crank's point so converted.  The printed natural is therefore not a property of which wall you read, nor of which
+--| device: all three truncate to the same integer.
+def the_printed_reading : Nat :=
+  theNewtonPoint.1 * the_areal_velocity.1 * theScale / (theNewtonPoint.2 * the_areal_velocity.2)
+theorem the_printed_reading_is_the_natural : the_printed_reading = the_other_natural := by
+  have h : Crank.theClosurePair Nat List.length theScale = theNewtonPoint := the_crank_is_its_ledger
+  unfold the_printed_reading the_other_natural
+  rw [the_other_machine_agrees]
+  unfold theReadingPair Crank.theReadingPair the_areal_velocity
+  rw [h]
+
+--| THE OPERATIONAL IFF.  The raw successor is `theTurn`; the tolerance is the halting test inside it; the two are separated by
+--| name now.  The compatibility the device is solving for, exactly, is c·(t·x − r²)² = t³·x² in cells, which is the quartic
+--| with its square completed.  In closure units, y = t·x/r², the same statement is c·(y − 1)² = t·y²: the coupling times the
+--| square of the excursion past one equals the clock times the square of the reading.  Stated on a pair, with the
+--| valid-subtraction condition D ≤ N explicit -- it holds at the reading, y ≈ 2.11 -- and the device's readings as the
+--| coefficients.  The branch condition is `the_reading_is_above_the_vertex`, above.  (omega bills Classical.choice and
+--| Quot.sound for its bookkeeping.)
+theorem sub_sq (a b : Nat) (h : b ≤ a) : (a - b) * (a - b) + 2 * (a * b) = a * a + b * b := by
+  obtain ⟨k, hk⟩ : ∃ k, a = b + k := ⟨a - b, (Nat.add_sub_cancel' h).symm⟩
+  subst hk
+  rw [Nat.add_sub_cancel_left]
+  simp only [Nat.add_mul, Nat.mul_add, Nat.mul_comm k b]
+  omega
+theorem compatibility_form (N D : Nat) (h : D ≤ N) :
+    (theCoupling * ((N - D) * (N - D)) = the_dimensions_of_universe * (N * N)) ↔
+    (thirteen * (N * N) + theCoupling * (D * D) = the_basis.funge.length * theCoupling * (N * D)) := by
+  have e := sub_sq N D h
+  rw [show theCoupling = 18 from rfl, show the_dimensions_of_universe = 5 from rfl, show thirteen = 13 from rfl,
+      show the_basis.funge.length = 2 from rfl]
+  omega
+theorem the_subtraction_is_valid_at_the_reading : theNewtonPoint.2 ≤ theNewtonPoint.1 := by decide +kernel
+
+--| "FUNDAMENTAL", AS A CONVENTION.  Over ℚ the value the device approaches has a minimal polynomial; that polynomial is unique
+--| once normalized to primitive integer coefficients with positive leading term.  325x² − 58320x + 1889568 is primitive --
+--| the coefficients share no factor -- and irreducible over ℚ, because its discriminant 944784000 lies strictly between
+--| consecutive squares and so is not one.  That is the whole of what "fundamental" is claimed to mean here: not that
+--| measurement forces this polynomial, which is the open obligation above, but that the device's limit has exactly one
+--| primitive quadratic, and this is it.
+theorem the_quadratic_is_primitive : Nat.gcd 325 (Nat.gcd 58320 1889568) = 1 := by decide
+theorem the_discriminant_is_not_a_square : 30737 * 30737 < 944784000 ∧ 944784000 < 30738 * 30738 := by decide
+--| THE RESCALING, EXPLICIT.  The click table's characteristic polynomial λ² − 36λ + 234 at λ = 65x/324 -- that is t(c−t)x/r² --
+--| is 13/324² times the quartic.  With the denominators cleared, two numeral identities, each true for every x.
+theorem the_rescaling_is_explicit (x : Nat) :
+    (65 * x) * (65 * x) + 234 * (324 * 324) = 13 * (325 * (x * x) + 1889568)
+      ∧ 36 * 324 * (65 * x) = 13 * (58320 * x) := by
+  constructor
+  · rw [scale_sq 65 x]; omega
+  · omega
+
+--| THE BRANCH.  The residual has two roots, 137.011 and 42.435 in cells, and positivity does not choose.  What chooses is the
+--| vertex, C/(C−T), and the reading is above it: thirteen times the numerator exceeds the coupling times the denominator.
+--| The seed margin in Episode 8 said so in prose; here it is on the pair.
+theorem the_reading_is_above_the_vertex : theCoupling * theNewtonPoint.2 < thirteen * theNewtonPoint.1 := by decide +kernel
+--| THE STRADDLE.  The bracket contains a root, not merely the crank's point: the residual is negative at the low wall and
+--| positive at the high wall.  With the width under one place, that is root containment.
+theorem the_walls_straddle_the_root :
+    the_residual_is_positive theBracket.1.1 theBracket.1.2 = false
+      ∧ the_residual_is_positive theBracket.2.1 theBracket.2.2 = true := by decide +kernel
+--| THE ERROR.  A finite decimal cannot satisfy an irreducible quadratic.  What it satisfies is this: the residual at the
+--| reading, taken as the sum of both truncated differences, scaled to the places, is under one place.  That is the interval,
+--| and it is the same term the acceleration section prints as the digits past 360.
+theorem the_residual_at_the_reading_is_under_one_place :
+    (((the_residual theNewtonPoint.1 theNewtonPoint.2).1 - (the_residual theNewtonPoint.1 theNewtonPoint.2).2)
+      + ((the_residual theNewtonPoint.1 theNewtonPoint.2).2 - (the_residual theNewtonPoint.1 theNewtonPoint.2).1))
+      * theScale < theNewtonPoint.2 * theNewtonPoint.2 := by decide +kernel
 
 --| THE INTERSECTION OF THE RESIDUES.  Newton's point lies inside bisection's bracket, and the bracket, converted to cells by the
 --| areal velocity and scaled to the places, is narrower than one place.  That is the receipt: the instrument stopped where
@@ -1453,6 +1593,9 @@ def theLowWallReads  : Nat := theBracket.1.1 * the_areal_velocity.1 * theScale /
 def theHighWallReads : Nat := theBracket.2.1 * the_areal_velocity.1 * theScale / (theBracket.2.2 * the_areal_velocity.2)
 --#eval theLowWallReads
 --#eval theHighWallReads
+--| EQUAL ENDPOINT TRUNCATIONS, the receipt: both walls print the reading (`the_printed_reading`, above).
+theorem the_walls_print_the_reading :
+    theLowWallReads = the_printed_reading ∧ theHighWallReads = the_printed_reading := by decide +kernel
 --#eval the_other_natural
 
 end Measurement
@@ -1481,6 +1624,17 @@ end Measurement
 --| _clicks_ with **YOU** at the same time it _clicks_ with the compiler. That click is the change in the local measurement we called a fact before we
 --| knew how to count one. The description was the device; the fact of the matter is that it clicked. For this is what the device _does_, not what it
 --| means.
+
+--| What the chain establishes, with its bill.  The number is read from a tape by lengths; the same number is read by a second
+--| machine that holds only Props and Types; re-lettering every cell leaves it fixed; each reading is the kernel's, on propext.
+--| The instrument is Newton, a hundred and eight turns; the receipt is bisection, a hundred and eight halvings; both are
+--| ledgers checked line by line, their composition into "the fold is the ledger" is the one place the value axiom is spent,
+--| and the two land inside one bracket, above the vertex, straddling one sign change, narrower than one place. Two errors,
+--| kept apart: the RESIDUAL error is what the quadratic is not satisfied by, under one place at the reading and printed as
+--| the digits past 360; the READING error is the bracket's width, under one place, with both walls truncating to the same
+--| integer. What is not established is written where it fails to be: the table is written down and not yet forced; the
+--| census is a census; Cook's step is exclusive-or within a cell. The polynomial is primitive and irreducible, and that is
+--| the whole of "fundamental" claimed.
 
 --|                                                        t²(c−t)x²  −  2ctr²x  +  cr⁴  =  0
 
