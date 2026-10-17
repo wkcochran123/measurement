@@ -17,26 +17,25 @@ Episode11.lean:__EPISODE 11__: _The Force_
 Episode12.lean:__EPISODE 12__: _Let Him Cook. . . . . . . Levin_
 Measurement % cd ..
 device % time lake build > build_log && cat build_log
-lake build > build_log  1423.46s user 12.02s system 100% cpu 23:52.57 total
-✔ [2/16] Built Measurement.Episode01 (1.9s)
-✔ [3/16] Built Measurement.ComputerProgram (200ms)
+lake build > build_log  1413.08s user 11.30s system 99% cpu 23:47.97 total
+✔ [2/16] Built Measurement.Episode01 (1.0s)
+✔ [3/16] Built Measurement.ComputerProgram (193ms)
 ✔ [4/16] Built Measurement.Episode02 (1.4s)
-✔ [5/16] Built Measurement.Calibration.LeanCalibration (1.9s)
-✔ [6/16] Built Measurement.Episode03 (4.5s)
-✔ [7/16] Built Measurement.Episode04 (1328s)
+✔ [5/16] Built Measurement.Calibration.LeanCalibration (1.8s)
+✔ [6/16] Built Measurement.Episode03 (4.4s)
+✔ [7/16] Built Measurement.Episode04 (1326s)
 ✔ [8/16] Built Measurement.Episode05 (19s)
-✔ [9/16] Built Measurement.Episode07 (19s)
-✔ [10/16] Built Measurement.Episode08 (3.4s)
-info: Measurement/Episode08.lean:658:0: "137.011290548979457087737300"
-info: Measurement/Episode08.lean:659:0: 'Measurement.theReadingScaled' depends on axioms: [propext, Quot.sound]
-✔ [11/16] Built Measurement.Episode09 (17s)
-✔ [12/16] Built Measurement.Episode10 (34s)
-✔ [13/16] Built Measurement.Episode11 (2.4s)
-ℹ [14/16] Built Measurement.Episode12 (2.7s)
-info: Measurement/Episode12.lean:1186:0: 'Measurement.the_box_has_one_point' depends on axioms: [Quot.sound]
-info: Measurement/Episode12.lean:1247:0: "137.011290548979457087737300"
-info: Measurement/Episode12.lean:1248:0: 'Measurement.the_other_machine_reads' depends on axioms: [propext]
-✔ [15/16] Built Measurement (328ms)
+✔ [9/16] Built Measurement.Episode07 (16s)
+ℹ [10/16] Built Measurement.Episode08 (6.9s)
+info: Measurement/Episode08.lean:765:0: "137.011290548979457087737300"
+✔ [11/16] Built Measurement.Episode09 (20s)
+✔ [12/16] Built Measurement.Episode10 (29s)
+✔ [13/16] Built Measurement.Episode11 (2.6s)
+ℹ [14/16] Built Measurement.Episode12 (3.7s)
+info: Measurement/Episode12.lean:1190:0: 'Measurement.the_box_has_one_point' depends on axioms: [Quot.sound]
+info: Measurement/Episode12.lean:1251:0: "137.011290548979457087737300"
+info: Measurement/Episode12.lean:1252:0: 'Measurement.the_other_machine_reads' depends on axioms: [propext]
+✔ [15/16] Built Measurement (640ms)
 Build completed successfully (16 jobs).
-device % vim ../README.md
+device %
 ```

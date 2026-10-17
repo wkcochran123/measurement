@@ -9,60 +9,120 @@ _This is a gentle reminder that the stories we tell ourselves might be the only 
 __EPISODE 8__: _The Macguffin_
 
 "Forty-two.435?"
-                       -- Douglas Adams (to three decimal places)
+                       -- Douglas Adams (to three decimal places -- A Macguffin)
 
 "That Rosencrantz and Guildenstern are dead."
-                                          -- Another minor character
+                       -- A callback to a Macguffin
 
-lake build --force_nats --print_miracles
+"The stuff that dreams are made of."
+                       -- A callback to a callback to a Macguffin as well as a callback to a Macguffin
+
+lake build --force_nats --print_dreams
 
 **NUMBERS?**
-How the __HELL__ does this device print such a highly resolved rational number?
+How the __HELL__ does this device print such a highly resolved rational number if numbers are _NOT_ part of the argument?
 -/
+
 import Measurement.Episode07
 
+--| I believe the idea is to build a _discrete_ model of the device. And, so we will. We will use the _List_ abstraction provided by Lean in order
+--| to simulate what the machine is doing. By simulate, we mean only keeping track of the FACTS that are _required_ to fully _describe_ a particular
+--| _state_ of a computation, rather than all the supporting _BULLSHIT_. Fun fact: a _List_ is a discrete approximation to an infinite process. I
+--| have _no qualms_ using a _List_ as intuition for the argument as the _List_ is a _finite set of representable symbols_ represented as
+--| a _finite set of representable symbols_ in a _finite set of representable symbols_ on a _finite set of representable symbols_. Assuming computers
+--| are finite and run on _electrons_ (something that exists and can be represented by a mark)[a mark is someone singled out for a confidence scam]
+--| {*YOU the KNOWER*, as a mark, have a _mighty fancy sets of marks_ that can be considered the mark of the electron: QED, the mark's mark}.
+
+--| The proof of _QED_ = _QED_ is getting easier to write.
+
 namespace Measurement
-universe ι ----+ This is the universe we live in.  One without a spin-2 north monopole. A single point removed so that Reimannan geometry can be
-def ThePreprint.tange : ThePreprint → List FACT
+universe ι ----+ This is the universe we live in.  One without a spin-2 north monopole. A single point removed so that ℝιemannian geometry can
+--             | provide the mapping from Euclidean space to _modeling_ space, using whatever "straight" line can be pulled with a yarn.
+
+def ThePreprint.the_model : ThePreprint → List FACT
   | .introduction f _         => [f] -------------------+ Given a PrePrint, we can create a Tape from a list. The list is simply prepending each
-  | .methodology c _ _ _ rest => c :: rest.tange --     | fact to the list. As can be seen, the only thing that matters is the FACT of the matter:
-  | .results c _ _ _ _ _ rest => c :: rest.tange --     | Is the methodology a _TRUE_ methodology or not and are the results _TRUE_ or not. Tange
---|  +--------------------------------------------------+ is a _new_ concept. It is the idea that the particular cards being dealt, the face down
---|  | cards in the arms, are being picked out and evaluated as _TRUE_ or not. But notice, we start our List with a base FACT. I was the one that
---|  | set us up the device, by the way. I feel like we discussed this before, a long time ago.
+  | .methodology c _ _ _ rest => c :: rest.the_model -- | fact to the list. As can be seen, the only thing that matters is the FACT of the matter:
+  | .results c _ _ _ _ _ rest => c :: rest.the_model -- | Is the methodology a _TRUE_ methodology or not and are the results _TRUE_ or not. These
+--|  +--------------------------------------------------+ are computed by the compiler given the description of the model. Feel free to refer back
+--|  | to the device to understand all the cards face down, but, they don't matter for this _demonstration_ of how a _measurement_ *will work*.
 
---| If we _tange_, we will, of course, _funge_. Now that we can pick out the _INTRODUCTORY_ FACT, we can count them. In this case, the difference
---| is in how we handle _the choice of branch of AST_ we wish to travel when constructing our list. A Measurement will use the momentum trailing
---| arm for computation.
+--| Given that the model includes the reading that will be taken by Lean's elaboration mechanism, we can describe how the measurement is encoded.
+--| The thing is, the reading is merely a decision point. If the compiler is still at the origin, then it hasn't started and has _NO FACTS_. Then,
+--| there is the .distance Einstein said we could measure, a _FACT_ about ι. This comes with a bunch of state that the _FACT_ no longer needs to
+--| _PROVE_ but _EXPLAIN_ should _someone_ _NEED_ this _FACT_! .speed needs its own place to store data, but it _CANNOT_ take the _LAST_ spot, as
+--| _THAT_ spot, the _LAST_ spot, belongs to .distance.
 
-def Measurement.funge : Measurement → List FACT --             | There are _two_ major differences when making this tape different from a preprint.
-  | .origin _ _ _                 => [] -----------------------+ The measurement doesn't have a starting point, it does _NOT_ have a fencepost
-  | .distance_to f _ _ _ _ rest   => f :: rest.funge --        | condition. So, the preprint has a fencepost bug in it. This will use the other
-  | .speed f _ _ _ _ _ _ momentum _ => f :: momentum.funge --  | trailing arm here, the one that computes an accumulating value of some kind.
+def Measurement.the_reading : Measurement → List FACT --           | There are _two_ major differences when making this tape different from a preprint.
+  | .origin _ _ _                 => [] ---------------------------+ The measurement doesn't have a starting point, it does _NOT_ have a fencepost
+  | .distance_to f _ _ _ _ rest   => f :: rest.the_reading --      | condition. So, the preprint has a fencepost bug in it. This will use the other
+  | .speed f _ _ _ _ _ _ momentum _ => f :: momentum.the_reading --| trailing arm here, the one that computes an accumulating value of some kind.
+--|        - ----------- ----------
+--|        |      |          |
+--|        |      |          +------------> This is the _third card_, the continuation of the_reading.
+--|        |      +--------------------------> This is the _palmed quarter_. Only *YOU the READER* and *I* know what is in here. RoFL ∎
+--|        +------------------------------------> This is the _first card_, is this a _covariant_ configuration or a _contravariant_ configuration
 
---| But, sometimes, we want to see the _ALL OF IT_. The one _THEORY_ that explains _ALL ENDS_ and _ALL PATHS_ between those _ENDS_. And the _strings_
---| that attach them to vibrate imaginarily, like _e^ιθ_.
+--| And this will give us the number. By the way, can *YOU the READER* see where the number-like values we will be reading is coming from? See how
+--| those numbers _travel_ with their _definitions_? Seems like _y=x_ is getting very close all of a sudden! Which is where we get our _foundations_
+--| of _YARN THEORY_. The theory at its most mathematically plain:
+
+--| ι increases in time, lengths of Lists are demonstrably increasing (though not monotonically) throughout time. The List grows in a _PATH_ along
+--| the *AST* by _shells_ away from an _origin_. _AdS_ or _Gauss's_ law, take your pick, they are the _SAME_ _DIFFERENCE_. Ta da! YARN THEORY!
+
+--| If I had used _Nats_, I sure as hell could _NOT_ have gotten this far in the argument, by the way. Either Godel, Cohen, or Cantor would have
+--| tripped me up. As it stands now, I am shadow boxing Turing and Chaitin. Which is why, sometimes, we want to see the _ALL OF IT_. The one
+--| _THEORY_ that explains _ALL ENDS_ and _ALL PATHS_ between those _ENDS_. And the _strings_ that attach them to vibrate imaginarily, like _e^ιθ_.
+
 def YarnTheory.gauss : YarnTheory → List FACT --                                       | Some theories are _designed_ to _explain_ *ALL* _possible_
   | .stokes f _ _                        => [f] ---------------------------------------+ outcomes. Like Fourier analysis. Which can explain things
   | .fibers f _ _ _ _ rest               => f :: rest.gauss --                         | so well, it will ring like a square. What we do in this case
   | .fabric f g _ _ _ _ _ _ before after => f :: g :: before.gauss ++ after.gauss --   | is interleave the covariant and contravariant understanding.
 --|  +---------------------------------------------------------------------------------+ Or, we count all the things that come before and all the
 --|  | things that come after and that will tell us how many things are happening _right now_ as we just integrate _time_ by parts. _Gauss_ provides
---|  | the integration rule for _eⁱ_ allowing for _exact_ integration whenever we get lucky. Mind the tiddle on the _ι_. What goes in, must come out
---|  | or there is volume to measure. Even if more comes out than goes in. Wonder what it means for _f_ and _g_ to click?
+--|  | the integration rule for _eⁱ_ allowing for _exact_ integration whenever we get lucky. Mind the tittle on the twiddle _ι_. What goes in, must
+--|  | come out or there is volume to measure. Even if more comes out than goes in.
+
+--| I Wonder what it could mean for _f_ and _g_ to click? For both directions of the fabric, time-like and space-like. 4-d Euclidean space, that is.
+--| The _Euclidean Unit Frinkahedron_, as described by the device. The _derivatives_ of _time_ and the _derivatives_ of _space_ share
+--| _high order terms_. For spatial derivatives operate on volumes and time derivatives on the iso-surface, or the actual surface position and the
+--| normal in which it travels. Gauss, integration by parts, variational mechanics, etc. The symbols might look different, but they do the same
+--| dance, as it were.
+
+--| And it all relies on putting two PDAs together to allow the compiler to build an automaton that uses pieces of the device along with a simple
+--| representation of the inductives to help _demonstrate_ that it is the _definition_ of the inductives that provides the mechanism behind the
+--| Borwein family of integrals. Just expand them in _e^iθ_ and _voilà!_.
 
 def SpaceTimePath.stokes : SpaceTimePath → List FACT --      | Look, let's just call an Ace of Spades an Ace of Spades. This entire file is just
-  | .einstein f           => [f] --                          | a careful wiring of all the inductives through each other so that a fact can be
-  | .whitehole f _ rest   => f :: rest.stokes --             | missing in an argument and the argument still make sense. This missing FACT, the one
-  | .blackhole _ _ rest   => rest.stokes --------------------+ the compiler is trying desperately to figure out, that T ≠ F, is _not_ in their
-  | .geodesic f _ _ _ b a => f :: b.stokes ++ a.stokes --    | vocabulary, but in a blackhole that the fact doesn't exist in because we never see it
---|                                                          | actually arrive, only get closer and closer, like a penalty term in a stress tensor.
+  | .einstein f           => [f] --                          | a careful wiring of all the inductives through each other so that only _the facts_
+  | .whitehole f _ rest   => f :: rest.stokes --             | matter and the reasons _why_ do not. For instance, whiteholes contribute very simple
+  | .blackhole _ _ rest   => rest.stokes --------------------+ facts: a card. That card might carry a quarter. Probably does. A blackhole, on the
+  | .geodesic f _ _ _ a b => f :: a.stokes ++ b.stokes --    | other hand, shares no facts. Only the two cards we didn't pick. A geodesic is simply
+--|  +-------------------------------------------------------+ the fact that the _LIST A_ is before _LIST B_ because _a_ comes before _b_. I mean
+--|  | it is also that way _alphabetically_ because _a_ has a strong _0-ness_ to it and _b_ has a strong _1-ness_. Unless we are in Fortran, which,
+--|  | will bite us because of the fencepost bug alluded to above. Then _a_ has a strong _1-ness_ to it and _b_ has a strong _2-ness_ to it. Either
+--|  | way, this just encodes the _FACT_ that _a_ comes before _b_. This is _especially_ *TRUE* in parameterized functions.
 
---| So, let's _zero_ out the device with all the _zeros_ it needs. It needs _three_ zeros: nothing, the description of nothing, and the origin of an
---| _apparent_ timeline postulated by Einstein himself!
-def zero : FACT := FACT.Truth
-def another_zero : Number := Number.zero zero
-def yet_another_zero : SpaceTimePath.{0} := .einstein zero
+--| With these definitions, we can take a _snapshot_ of the _tree_ of _inductives_ at any step in the process of running the machine. For instance,
+--| and _especialy_, we can understand what the machine's state is _before_ and _after_ it models _YOU the READER_ gawking at the output presented
+--| below. Why should the device _model_ *YOU the READER*? Well, like the last episode said, there are some _inconsistencies_ in the logic as
+--| presented. _Godel_ suggests we should expect inconsistencies. _WHAT IF_ I could demonstrate _logically_ there exists an argument such that we
+--| all agree on a _symbol_ for that inconsistency _AND_ we also agree on what that _symbol means_? And, *WHAT IF* the logic to perform this
+--| inconsistency meaning transfer must take _TIME_ and use _ENERGY_? Like compiling a program?
+
+--| This is merely the _argument_ that we could agree on such a symbol.  Not the symbol _itself_. The compiler has _its_ understanding and we can
+--| all agree that the _compiler's_ understanding is the _most consistent_. Lol, _mostly consistent_. How _TRUE_ is _TRUE=TRUE_? Let me show
+--| *YOU the READER*.
+
+--| Let's _zero_ out the device with all the _zeros_ it needs. It needs _three_ zeros: nothing, the description of nothing, and the origin of an
+--| _apparent_ timeline postulated by Einstein himself! I mean, *YOU the KNOWER* certainly obey the EFEs.
+
+def zero : FACT := FACT.Truth ---------------------------------+ Well, to make the argument, there has to be a model of a _PHYSICAL_ person to
+def another_zero : Number := Number.zero zero --               | receive the symbol (as it can be made manifest) and agree to its meaning (as it
+def zero_distance : SpaceTimePath.{0} := .einstein zero --     | can be made _communicative_). This person is on a worldline. That worldline started
+--|  +---------------------------------------------------------+ somewhere: x₀. What is _x_? Whatever it is that needs to be inputs to the field
+--|  | equations so that *YOU the KNOWER* can be the center of the universe. *YOU the KNOWER* _KNOW_ _TRUTH_. So, all truth is _ZERO_ distance from
+--|  | you. This is a _metaphor_. The distance *YOU the KNOWER* must travel to a new _FACT_ is _measured_ by the device by how complex the _logical_
+--|  | argument is, which is _proxied_ by computation time in the compiler, modeled 3 different ways.
 
 --| Let's start by saying, we expect a butterfly type translation between propositions and theiry computation.
 def the_satire : ThePreprint.{0} :=
@@ -76,17 +136,17 @@ def the_basis : Measurement.{0} :=
       (.origin zero another_zero Prop))                             --> 0 = 0. This is the only origin.
     (.origin zero another_zero Prop)                                --> Speed can only be seen at a non-negative distance from the origin.
 
-def the_coordinate_system : YarnTheory := --                                             | Einstein recognized that his train of thought leads to
-  .fabric zero zero yet_another_zero yet_another_zero yet_another_zero True True True -- | a term to correct for the assumption of constant carrier
-    (.fibers zero yet_another_zero yet_another_zero True True --                         | velocity: the affine transform. If *YOU the READER* look
-      (.stokes zero yet_another_zero True)) ---------------------------------------------+ carefully, it may be possible to show *YOU the KNOWER*.
-    (.stokes zero yet_another_zero True) --                                              | The trick is to think of the KKT conditions and the 3
---|                                                                                      | True cards just thrown.
+def the_coordinate_system : YarnTheory := --                                      | Einstein recognized that his train of thought leads to
+  .fabric zero zero zero_distance zero_distance zero_distance True True True --   | a term to correct for the assumption of constant carrier
+    (.fibers zero zero_distance zero_distance True True --                        | velocity: the affine transform. If *YOU the READER* look
+      (.stokes zero zero_distance True)) -----------------------------------------+ carefully, it may be possible to show *YOU the KNOWER*.
+    (.stokes zero zero_distance True) --                                          | The trick is to think of the KKT conditions and the 3
+--|                                                                               | True cards just thrown.
 
 def the_nowtrino_path : SpaceTimePath.{0} := --  | We state our thesis as follows:
   .geodesic zero Prop True Type --               |
-    (.whitehole zero Prop yet_another_zero) -----+  All nowtrinos start in whiteholes and are consumed by blackholes. They follow geodesics otherwise.
-    (.blackhole True Type yet_another_zero) --   |
+    (.whitehole zero Prop zero_distance) -----+  All nowtrinos start in whiteholes and are consumed by blackholes. They follow geodesics otherwise.
+    (.blackhole True Type zero_distance) --   |
 --|  +-------------------------------------------+ In the compiler, it goes from the idea of reflexivity all the way to the labeling of a type and
 --|  | the compile stops. And nothing we it computed exists anymore, except on screen. It will eventually disappear and be gone forever. Into
 --|  | thermodynamic noise. This is what ringing like Gibb's is like.
@@ -504,7 +564,7 @@ def the_zero_program : List FACT :=
   rιemanns_train_of_thought.name ++ a_physicist.method ++
   the_macguffin.audit ++ grift.witness ++ the_reality.testify ++
   the_fabric_of_spacetime.krylov ++ the_nowtrino_path.stokes ++
-  the_coordinate_system.gauss ++ the_basis.funge ++ the_satire.tange ++
+  the_coordinate_system.gauss ++ the_basis.the_reading ++ the_satire.the_model ++
   the_most_basic_of_conclusions.meter ++ the_only_logical_conclusion.infer
 
 def the_walks : List (List FACT) :=
@@ -542,8 +602,8 @@ def the_walks : List (List FACT) :=
    the_fabric_of_spacetime.krylov,
    the_nowtrino_path.stokes,
    the_coordinate_system.gauss,
-   the_basis.funge,
-   the_satire.tange,
+   the_basis.the_reading,
+   the_satire.the_model,
    the_most_basic_of_conclusions.meter,
    the_only_logical_conclusion.infer]
 
@@ -576,7 +636,7 @@ def quadA := the_leading_tape.length                                            
 -- another, nested as deep as its degree.  Yes, it looks rigged.  It IS rigged, and the rigging is the point: every factor
 -- is a strip the device read, and `decide` says each tape is exactly the product the old line multiplied.  The polynomial
 -- was never chosen from the coefficients up; it was walked from the tapes down.
-def the_funge_tape : List FACT := the_basis.funge
+def the_funge_tape : List FACT := the_basis.the_reading
 def the_middle_tape : List FACT :=
   the_funge_tape.flatMap fun _ => the_coupling_tape.flatMap fun _ => the_universe_tape.flatMap fun _ =>
     the_radius_tape.flatMap fun _ => the_radius_tape
@@ -585,7 +645,7 @@ def the_constant_tape : List FACT :=
     the_radius_tape.flatMap fun _ => the_radius_tape
 def quadB := the_middle_tape.length                                                                          --| 2CTR²
 def quadC := the_constant_tape.length                                                                        --| CR⁴
-def theBase   := the_basis.funge.length * the_dimensions_of_universe
+def theBase   := the_basis.the_reading.length * the_dimensions_of_universe
 def theScale  := theBase ^ thePlaces
 
 -- THE UNITS, AS A PAIR.  R²/T: length squared over time.  An area rate -- the areal velocity, r²θ̇, the thing Kepler's second
@@ -607,7 +667,7 @@ def the_areal_velocity : Tally × Tally := (count the_radius_tape * count the_ra
 -- else: (C−T)·y² − 2C·y + C.  Three readings.  No tape is in the loop; the tapes above are the check that cells were these
 -- three, each carrying its share of the units -- A·T², B·T·R², C·R⁴ -- which is what "rigged" turns out to have meant.
 def closureA := count the_coefficient_tape
-def closureB := count the_basis.funge * count the_coupling_tape
+def closureB := count the_basis.the_reading * count the_coupling_tape
 def closureC := count the_coupling_tape
 
 -- THE SEED.  The whole strip, converted into closure units by the same pair.  It is not decoration: the residual has TWO
@@ -636,7 +696,7 @@ def turn (p : Tally × Tally) : Tally × Tally :=
   let n := p.1
   let d := p.2
   let n' := closureA Tally count * n * n - closureC Tally count * d * d
-  let d' := count the_basis.funge * closureA Tally count * n * d - closureB Tally count * d * d
+  let d' := count the_basis.the_reading * closureA Tally count * n * d - closureB Tally count * d * d
   if ((n * d' - n' * d) + (n' * d - n * d')) * scale * (the_areal_velocity Tally count).1
        < d * d' * (the_areal_velocity Tally count).2
     then p else (n', d')
@@ -698,9 +758,10 @@ def theReading :=
   let s := (toString theReadingScaled).toList
   String.ofList (s.take (s.length - thePlaces)) ++ "." ++ String.ofList (s.drop (s.length - thePlaces))
 
+--| But... this is the _EXPRESS_ route, what if we take the _LOCAL_ instead?
 end Measurement
 
--- THE READOUT.  Said outside, because the device is done talking.
+-- THE READOUT. It can see how it was made. What made it cannot see it.
 #eval Measurement.theReading
 --#print axioms Measurement.theReadingScaled
 --#print axioms Measurement.theReadingCertified

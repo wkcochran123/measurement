@@ -21,3 +21,4 @@ device/go.sh
 gpt
 notes_for*
 out
+*.txt

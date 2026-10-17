@@ -55,7 +55,7 @@ stops you reaching it.  `.same` collapses a bracket to a point; only logic may d
 --| the fourth.  Frozen, it stops the iteration chasing its own tail -- a preconditioner may
 --| change the iteration, never the answer.
 def jarLo    := the_orbital_data_points * theRadius * theRadius
-def jarHi    := jarLo + the_satire.tange.length * the_satire.tange.length * the_satire.tange.length * the_satire.tange.length
+def jarHi    := jarLo + the_satire.the_model.length * the_satire.the_model.length * the_satire.the_model.length * the_satire.the_model.length
 def jarSpan  := jarHi - jarLo
 def jarRef   := jarLo * theBase
 def jarReach := jarSpan * theBase
@@ -113,7 +113,7 @@ def jarSeed := jarLo * theScale / theBase
 def jarReadingScaled :=
   (List.replicate the_orbital_data_points ()).foldl
     (fun x _ => (quadA * x * x - quadC * theScale * theScale)
-                  / (the_basis.funge.length * quadA * x - quadB * theScale))
+                  / (the_basis.the_reading.length * quadA * x - quadB * theScale))
     jarSeed
 
 def jarReading :=
@@ -147,9 +147,9 @@ def lagrangeReadingScaled : Int :=
     (fun x _ =>
       let s   := (theScale : Int)
       let f   := (quadA : Int) * x * x - (quadB : Int) * x * s + (quadC : Int) * s * s
-      let fp  := (the_basis.funge.length : Int) * (quadA : Int) * x - (quadB : Int) * s
-      let fpp := (the_basis.funge.length : Int) * (quadA : Int)
-      x - ((the_basis.funge.length : Int) * f * fp) / ((the_basis.funge.length : Int) * fp * fp - f * fpp))
+      let fp  := (the_basis.the_reading.length : Int) * (quadA : Int) * x - (quadB : Int) * s
+      let fpp := (the_basis.the_reading.length : Int) * (quadA : Int)
+      x - ((the_basis.the_reading.length : Int) * f * fp) / ((the_basis.the_reading.length : Int) * fp * fp - f * fpp))
     (jarSeed : Int)
 
 def lagrangeReading :=
@@ -1301,15 +1301,15 @@ def the_determinant : Nat := the_click_table.1.1 * the_click_table.2.2 - the_cli
 theorem the_trace_is_the_middle_coefficient : the_trace = closureB := rfl
 theorem the_determinant_is_the_outer_coefficients : the_determinant = closureA * closureC := rfl
 theorem the_discriminant_is_the_clock_times_the_coupling :
-    the_trace * the_trace - the_basis.funge.length * the_basis.funge.length * the_determinant
-      = the_basis.funge.length * the_basis.funge.length * theCoupling * the_dimensions_of_universe := rfl
+    the_trace * the_trace - the_basis.the_reading.length * the_basis.the_reading.length * the_determinant
+      = the_basis.the_reading.length * the_basis.the_reading.length * theCoupling * the_dimensions_of_universe := rfl
 
 --| THE PROCESS ITSELF.  Cayley-Hamilton makes the closed-word counts a recurrence, Nₙ₊₂ = tr·Nₙ₊₁ − det·Nₙ, seeded by N₀ = the
 --| number of symbols (the funge) and N₁ = the trace.  Run it as the device runs everything: one turn per cell of a tape, the
 --| contents ignored.  Both eigenvalues are positive, so the truncated difference never truncates.  Thirteen cells deep -- the
 --| coefficient tape -- gives (N₁₃, N₁₄); their ratio is the pole, and the pole over thirteen is the crank's root.
 def the_closed_words : List FACT → Nat × Nat
-  | [] => (the_basis.funge.length, the_trace)
+  | [] => (the_basis.the_reading.length, the_trace)
   | _ :: rest => let (before, now) := the_closed_words rest
                  (now, the_trace * now - the_determinant * before)
 --#eval the_closed_words the_coefficient_tape
@@ -1404,9 +1404,9 @@ def halve (b : (Nat × Nat) × (Nat × Nat)) : (Nat × Nat) × (Nat × Nat) :=
   let a := b.1.1
   let c := b.2.1
   let d := b.1.2
-  let d' := the_basis.funge.length * d
-  if the_residual_is_positive (a + c) d' then ((the_basis.funge.length * a, d'), (a + c, d'))
-                                         else ((a + c, d'), (the_basis.funge.length * c, d'))
+  let d' := the_basis.the_reading.length * d
+  if the_residual_is_positive (a + c) d' then ((the_basis.the_reading.length * a, d'), (a + c, d'))
+                                         else ((a + c, d'), (the_basis.the_reading.length * c, d'))
 
 --| RUN BY THE ELABORATOR.  Not the kernel: a midpoint names both walls twice, so an unevaluated bisection doubles in size
 --| every turn and a hundred and eight turns is 2^108 of term for the kernel to chew.  The crank never had this problem -- its
@@ -1528,10 +1528,10 @@ theorem sub_sq (a b : Nat) (h : b ≤ a) : (a - b) * (a - b) + 2 * (a * b) = a *
   omega
 theorem compatibility_form (N D : Nat) (h : D ≤ N) :
     (theCoupling * ((N - D) * (N - D)) = the_dimensions_of_universe * (N * N)) ↔
-    (thirteen * (N * N) + theCoupling * (D * D) = the_basis.funge.length * theCoupling * (N * D)) := by
+    (thirteen * (N * N) + theCoupling * (D * D) = the_basis.the_reading.length * theCoupling * (N * D)) := by
   have e := sub_sq N D h
   rw [show theCoupling = 18 from rfl, show the_dimensions_of_universe = 5 from rfl, show thirteen = 13 from rfl,
-      show the_basis.funge.length = 2 from rfl]
+      show the_basis.the_reading.length = 2 from rfl]
   omega
 theorem the_subtraction_is_valid_at_the_reading : theNewtonPoint.2 ≤ theNewtonPoint.1 := by decide +kernel
 
