@@ -197,7 +197,7 @@ def LETS_MAKE_A_COUNTER_OF_CLICKS_NOw
     let op :=
     { cauchy_process := pit.cauchy_process
       before := pit.cauchy_process.accumulation
-      after := pit.cauchy_process.iterate? pit.cauchy_process.accumulation
+      after := pit.cauchy_process.iterate pit.cauchy_process.accumulation
     }
     {
       observation_process := op

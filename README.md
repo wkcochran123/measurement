@@ -1,7 +1,7 @@
 # Measurement
 
 ```
-measurement % cd device/Measurement
+measurement % cd CARD_2/Measurement
 Measurement % grep EPISODE *.lean
 Episode01.lean:__EPISODE 1__: _Counting_
 Episode02.lean:__EPISODE 2__: _Time_
@@ -16,7 +16,7 @@ Episode10.lean:__EPISODE 10__: _The Accomplice_
 Episode11.lean:__EPISODE 11__: _The Force_
 Episode12.lean:__EPISODE 12__: _Let Him Cook. . . . . . . Levin_
 Measurement % cd ..
-device % time lake build > build_log && cat build_log
+CARD_2 % time lake build > build_log && cat build_log
 lake build > build_log  1413.08s user 11.30s system 99% cpu 23:47.97 total
 ✔ [2/16] Built Measurement.Episode01 (1.0s)
 ✔ [3/16] Built Measurement.ComputerProgram (193ms)
@@ -37,5 +37,5 @@ info: Measurement/Episode12.lean:1251:0: "137.011290548979457087737300"
 info: Measurement/Episode12.lean:1252:0: 'Measurement.the_other_machine_reads' depends on axioms: [propext]
 ✔ [15/16] Built Measurement (640ms)
 Build completed successfully (16 jobs).
-device %
+CARD_2 %
 ```

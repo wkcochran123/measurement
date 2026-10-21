@@ -782,8 +782,8 @@ structure CompilerOutput
           | isFalse _    , isTrue _    =>  .results nowtrino.fact sample nowtrino.fact.truth in_lean in_meta_lean to_simultaneously_prove cook_levin
 
 --| I think we have COMPILED our description of the Lean compiler well enough that we can _predict_ what the COMPILED output should look like from
---| here. You know, a very provocative looking number. Can you see how we get the number out yet? Have you looked at the build_log to see what
---| happens next?
+--| here. A very provocative looking number. Can *YOU the READER* see how we get the number out yet? Have *YOU the KNOWER* looked at the build_log to
+--| see what happens next?
 @[reducible]
 class COMPILED
     (Box: Type i)
@@ -803,10 +803,10 @@ class COMPILED
     [MEASURED Box Pigeon number another_number] --   | universe that exists the makes it look like I am not moving.  I might even inhabit that point!
   where
   a_truth_about_the_world: CompilerOutput Box Pigeon number another_number ----+ A truth about the world is that facts and truths are neither
-  a_demonstration_of_a_constant: ThePreprint --                                | one-to-one or onto. That shouldn't come as a surprise to most fold.
+  a_demonstration_of_a_constant: ThePreprint --                                | one-to-one or onto. That shouldn't come as a surprise to most.
 
-  found_a_bug?: ThePreprint → ThePreprint → Prop := fun a b => a < b --+ Perhaps the most unfortunate truth of all is that I am unaware of showing
---                                                                     | showing this code is bug free. I am having a serious time just trying to
+  found_a_bug?: ThePreprint → ThePreprint → Prop := fun a b => a < b --+ Perhaps the most unfortunate truth of all is that I am unaware of how to
+--                                                                     | show this code is bug free. I am having a serious time just trying to
 -- +-------------------------------------------------------------------+ explain the logic to someone else. I make small changes to the code and
 -- | sometimes this number changes, sometimes that number changes. They don't seem to change together, but they never seem to wander apart.
 -- | In fact, we can take the number output as _a_ and some tolerance _b_. I hesitate to write the tolerance in the comments because it would spoil
@@ -948,7 +948,7 @@ structure AtreyuProcess
                   prior_inductive_step of_the_proof in_the_computation a_constant --                        | that meaning of a symbol should *NEVER*
 --|                                                                                                         | intefere with the *MECHANICS* that
             | isTrue _,  isFalse _ => --                                                                    | the symbol stands for.  For instance,
-                .rest_call some_constant nowtrino.fact --                                                   | is √x a ratio? Your process thinks it
+                .rest_call some_constant nowtrino.fact --                                                   | is √x a ratio? The process thinks it
                   False --                                                                                  | is a ratio. It uses Newton's method to
                   upper_bound current_page_number total_pages --                                            | compute the value: the ratio of the
                   prior_inductive_step of_the_proof in_the_computation a_constant --                        | value and first derivative is highly

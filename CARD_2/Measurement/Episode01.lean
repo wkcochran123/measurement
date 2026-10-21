@@ -1039,7 +1039,7 @@ structure CauchyProcess  -- Bullshit meter ≈ 228
                                   -- lazy and just enumerate _all_ terms of the Taylor series of e^iθ. +1 +i -1 -i +1 ... How hard is that?
 
 --                                           +-----------------+ What we are doing here is bootstrapping our limit with the process necessary
-  iterate?: Limit → Limit := fun l => --     |                 | for the compiler to run in order to zero out the sequence counters and declaring
+  iterate: Limit → Limit := fun l => --      |                 | for the compiler to run in order to zero out the sequence counters and declaring
       match l with  --                       V                 | the following limit covariant (to be computed) or contravariant (looked up by name).
       | .nil f => .index f encoding.limit_process.sequence accumulation        -- lol. The names are for _YOU the READER_ to figure out and
                                                                                -- _YOU the KNOWER_ to roll your eyes at.

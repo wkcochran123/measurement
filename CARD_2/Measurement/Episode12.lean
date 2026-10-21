@@ -168,14 +168,14 @@ def lagrangeReading :=
 --|
 --| So the sample starts where Episode 8 already started, from the jar it built:
 --|
---|     the_worldline = .superposition zero (.bang _ (.color _ path_along_ast)) (.color _ path_along_ast)
+--|     the_photon_worldline = .superposition zero (.bang _ (.color _ ast₁)) (.color _ ast₁)
 --|
 --| A constructor tree with FACTs in it: the superposition's two roots, one branch a step
 --| deeper than the other.  And `Jar.le` must WALK it, including the arm that returns
 --| `¬ le j1' j2'` when both decisions come back false.  Comparing jars is work on
 --| evidence.  Elaborating `ULift` was work on notation.
 private def jarAt (n : Nat) : TermElabM (TSyntax `term) := do
-  let mut s ← `(Measurement.the_worldline)
+  let mut s ← `(Measurement.the_photon_worldline)
   for _ in [0:n] do
     s ← `(Measurement.Jar.bang Measurement.zero $s)
   pure s
@@ -187,7 +187,7 @@ private def jarAt (n : Nat) : TermElabM (TSyntax `term) := do
 --| the blank they sat.  Store what was read; derive the differences later, in `Int`.
 private def jarPair (n : Nat) : TermElabM (Nat × Nat) := do
   let b ← blank
-  let h ← sample (← `(Measurement.Jar.le $(← jarAt n) Measurement.the_worldline))
+  let h ← sample (← `(Measurement.Jar.le $(← jarAt n) Measurement.the_photon_worldline))
   pure (b, h)
 
 --| BOTH WALKS, THEN PUBLISH.  Up and down inside ONE command, with nothing emitted in
@@ -252,7 +252,7 @@ def thePassGap : List Int :=
 --| claim about COST, so the meter is what adjudicates it.
 --| ============================================================================
 
-def theNewtonRung : Variation := .the_newton grift True
+def theNewtonRung : Variation := .the_newton the_fact_is_true True
 
 --| THE CONTROL.  No second derivative anywhere.  `Variation.newton` and
 --| `Variation.krylov` are the SAME function on this ladder -- their `.the_gateaux`
@@ -260,7 +260,7 @@ def theNewtonRung : Variation := .the_newton grift True
 --| is the meter measuring a name, and there should not be one.
 def gateauxAt : Nat → Variation
   | 0     => theNewtonRung
-  | n + 1 => .the_gateaux grift True True (gateauxAt n)
+  | n + 1 => .the_gateaux the_fact_is_true True True (gateauxAt n)
 
 --| THE EXPERIMENT.  One second derivative per rung, and the two arguments of the
 --| bilinear map are made DIFFERENT on purpose: `before` continues the frechet
@@ -270,7 +270,7 @@ def gateauxAt : Nat → Variation
 --| product never supplies and a matrix-free Krylov step does.
 def frechetAt : Nat → Variation
   | 0     => theNewtonRung
-  | n + 1 => .the_frechet grift True True True (frechetAt n) (gateauxAt n)
+  | n + 1 => .the_frechet the_fact_is_true True True True (frechetAt n) (gateauxAt n)
 
 --| WHY THE LENGTHS ARE WRITTEN OUT.  `Variation.le` carries `termination_by`
 --| (Episode04), so it is well-founded, compiles through `WellFounded.fix`, and does
@@ -381,12 +381,12 @@ def theGapSteps    : List Int := signedSteps theConvectiveGap
 ### THE LITERAL, AND WHY IT IS AN AREA
 
 A literal is a variable or its negation, and the only thing a reduction ever does with one
-is put it in a clause.  Episode 8 already carded the atom: `path_along_ast`, built from the origin
+is put it in a clause.  Episode 8 already carded the atom: `ast₁`, built from the origin
 fact and the origin page.  A literal here is not a new kind of thing.  It is the smallest
 thing the device agreed to hold, which is what a literal is supposed to be.
 -/
---| MINTED HERE, NOT BORROWED.  Episode 8 already carries `zero`, `path_along_ast` and
---| `theSum`, and the obvious move is to import Episode 8 and use them.  That would be
+--| MINTED HERE, NOT BORROWED.  Episode 8 already carries `zero`, `ast₁` and
+--| `integration`, and the obvious move is to import Episode 8 and use them.  That would be
 --| wrong, and the import graph says why: Episode 9 imports Episode SEVEN.  The long way
 --| branches off before the short way exists and never rejoins it -- Episode 12 is the only
 --| file that pulls both, and it pulls both because it is comparing them.
@@ -477,7 +477,7 @@ correspondence itself.  Cook's theorem is
 
     φ is satisfiable   ⟺   the machine accepts
 
-and the device's version of the right-hand side is `∃ inst, TYPESET Prop truthCarrier 36 _`
+and the device's version of the right-hand side is `∃ inst, TYPESET Prop elaborated_by_lean 36 _`
 -- an instance search, and that search does not close ON ITS OWN.  It fails STRUCTURALLY --
 -- exhausted in a fifth of a second at twenty times the budget, not timed out -- because
 -- Episode 10's reviewers take about thirty-eight EXPLICIT binders apiece and resolution
@@ -954,7 +954,7 @@ def satSearch (b : Basis) (g : Schedule) (nvars : Nat) : Bool :=
 /-!
 ### THE MONTE: BUILDING IT BY HAND
 
-Instance search cannot reach `TYPESET Prop truthCarrier 1 Number`.  Not because the space
+Instance search cannot reach `TYPESET Prop elaborated_by_lean 1 Number`.  Not because the space
 is large -- at twenty times the budget it fails in a fifth of a second, exhausted rather
 than timed out -- but because Episode 10's reviewers take **explicit** binders, and search
 will not invent a value for an explicit argument.  It unifies implicits and hunts
@@ -976,11 +976,11 @@ def theManuscript : ThePreprint.{0} := decodeBits [true, false, true]
 
 --| THE REVIEW, WITHOUT THE REVIEWERS.  Thirty-five rungs of custody, and the thing they
 --| were carrying is one tape.
-def reviewedByHand : REVIEWED Prop truthCarrier 1 :=
+def reviewedByHand : REVIEWED Prop elaborated_by_lean 1 :=
   { rebuttal := theManuscript }
 
 --| AND THE RUNG THE SEARCH COULD NOT FIND.
-def typesetByHand : TYPESET Prop truthCarrier 1 Number :=
+def typesetByHand : TYPESET Prop elaborated_by_lean 1 Number :=
   { register_value := cookPage
     universe_id    := cookPage
     the_page       := theManuscript }
@@ -1025,7 +1025,7 @@ end THEORY
 /-!
 ### THE CONSTRUCTION, COMPLETED
 
-The search for `TYPESET Prop truthCarrier 1 Number` fails -- and it fails STRUCTURALLY, in
+The search for `TYPESET Prop elaborated_by_lean 1 Number` fails -- and it fails STRUCTURALLY, in
 a fifth of a second at twenty times the budget, exhausted rather than timed out.  Not for
 want of clock.  Episode 10's reviewers take about thirty-eight EXPLICIT binders apiece, and
 instance resolution unifies implicits and hunts instance-implicits.  It will not invent a
@@ -1039,13 +1039,13 @@ the entire descent, and then the ascent -- which was never the obstruction -- re
 -/
 
 --| THE GIMMICKED CARD.
-instance reviewedAny (n : Nat) : REVIEWED Prop truthCarrier n := { rebuttal := theManuscript }
-instance typesetBase : TYPESET Prop truthCarrier 1 Number := typesetByHand
+instance reviewedAny (n : Nat) : REVIEWED Prop elaborated_by_lean n := { rebuttal := theManuscript }
+instance typesetBase : TYPESET Prop elaborated_by_lean 1 Number := typesetByHand
 
 --| THE ASCENT, RETRIEVED.  Rung thirty-six, by search, in a third of a second -- the top of
 --| a ladder that has never once resolved in this repository.  `inferInstance` does it now
 --| because the thing it was missing was a place to stand, not time to look.
-def theTop : TYPESET.{0,0,0} Prop truthCarrier 36 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (Number)))))))))))))))))))))))))))))))))))) := inferInstance
+def theTop : TYPESET.{0,0,0} Prop elaborated_by_lean 36 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (Number)))))))))))))))))))))))))))))))))))) := inferInstance
 
 --| AND THE TAPE IT CARRIES.  This is the bounded execution: the manuscript admitted at rung
 --| thirty-six, handed down through every reviewer, arriving as the page of the top rung.
@@ -1419,14 +1419,14 @@ elab "frechet_walk " walls:ident beats:ident newton:ident bledger:ident nledger:
     let mut b := (theLowWall, theHighWall)
     let mut hbs : Array Nat := #[]
     let mut bl : Array ((Nat × Nat) × (Nat × Nat)) := #[b]
-    for _ in [0:the_zero_program.length] do
+    for _ in [0:episode8_description.length] do
       let (b', hb) ← withHeartbeats (do let b' := halve b; pure b')
       b := b'
       hbs := hbs.push hb
       bl := bl.push b
     let mut p := theSeedPair
     let mut nl : Array (Nat × Nat) := #[p]
-    for _ in [0:the_zero_program.length] do
+    for _ in [0:episode8_description.length] do
       p := theTurn p
       nl := nl.push p
     pure (b, hbs, p, bl, nl)
@@ -1452,12 +1452,12 @@ theorem the_bisection_ledger_starts : theBisectionLedger.head? = some (theLowWal
 theorem the_bisection_ledger_turns :
     (theBisectionLedger.zip theBisectionLedger.tail).all (fun q => decide (halve q.1 = q.2)) = true := by decide +kernel
 theorem the_bisection_ledger_ends : theBisectionLedger.getLast? = some theBracket := by decide +kernel
-theorem the_bisection_ledger_length : theBisectionLedger.length = the_zero_program.length + 1 := by decide +kernel
+theorem the_bisection_ledger_length : theBisectionLedger.length = episode8_description.length + 1 := by decide +kernel
 theorem the_newton_ledger_starts : theNewtonLedger.head? = some theSeedPair := by decide +kernel
 theorem the_newton_ledger_turns :
     (theNewtonLedger.zip theNewtonLedger.tail).all (fun q => decide (theTurn q.1 = q.2)) = true := by decide +kernel
 theorem the_newton_ledger_ends : theNewtonLedger.getLast? = some theNewtonPoint := by decide +kernel
-theorem the_newton_ledger_length : theNewtonLedger.length = the_zero_program.length + 1 := by decide +kernel
+theorem the_newton_ledger_length : theNewtonLedger.length = episode8_description.length + 1 := by decide +kernel
 --#print axioms the_newton_ledger_turns
 
 --| A CHECKED LEDGER IS THE FOLD.  Start at the head, every line the step of the line before, and the fold over length-minus-one
@@ -1490,7 +1490,7 @@ theorem the_crank_is_its_ledger : theClosurePair = theNewtonPoint := by
 
 --| THE BISECTION IS ITS LEDGER, TOO.  The same lemma, instantiated on the other device.
 theorem the_bracket_is_its_ledger :
-    (List.replicate the_zero_program.length ()).foldl (fun b _ => halve b) (theLowWall, theHighWall) = theBracket := by
+    (List.replicate episode8_description.length ()).foldl (fun b _ => halve b) (theLowWall, theHighWall) = theBracket := by
   have h := ledger_is_the_fold halve theBisectionLedger (theLowWall, theHighWall)
               the_bisection_ledger_starts the_bisection_ledger_turns
   rw [the_bisection_ledger_length, the_bisection_ledger_ends] at h
@@ -1585,7 +1585,7 @@ def the_reading_with_its_receipt : { p : Nat × Nat // in_the_bracket p ∧ unde
 
 --| THE COURANT NUMBER, PER TURN.  Heartbeats per halving: the time step the elaborator paid for each cell the bracket gave up.
 --| This is the ratio line 74 compares as totals, produced turn by turn.  A measurement; it will differ on the next machine.
-def theCourantPerHalving : Nat := theHalvingBeats.foldl (· + ·) 0 / the_zero_program.length
+def theCourantPerHalving : Nat := theHalvingBeats.foldl (· + ·) 0 / episode8_description.length
 --#eval theCourantPerHalving
 
 --| THE TWO WALLS, IN CELLS.  Both print the number.  The last place is where they differ, if they differ at all.
