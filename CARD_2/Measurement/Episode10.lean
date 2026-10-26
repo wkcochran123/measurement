@@ -27,13 +27,18 @@ universe i
 -- Yes, that is a Nat. Nine episodes refusing Nat and the journal's submission
 -- system wants page numbers. Fine. ONE Nat. For the page numbers ONLY. The
 -- pages do not count anything; they index where the reviewer is pointing.
+-- Each rebuttal below ends with the two places the knower looks for the fact it cites: Card 1 (the
+-- geometric monograph) and Card 3 (the numerical one), by printed result and page number of the
+-- 23 October 2026 builds. The appendix table "Stanzas and results" in each card is the stable anchor.
 class REVIEWED (Box: Type i) (Pigeon: CarrierProcess Box) (page: Nat) where
   rebuttal : ThePreprint
 
 /- We thank the reviewer for asking where the record begins before any rebuttal
    can be published. This seam closes the custody gap: the submitted manuscript
    is admitted unchanged, so every later response has a record to answer
-   against. -/
+   against.
+   Card 1: Corollary 6.1 (p. 34); Theorem 7.1 (p. 37); Proposition 2.6 (p. 9); eq. 1.1 (p. 2).
+   Card 3: Table 6.1 (p. 44); Definition 8.1 (p. 56); Proposition 2.2 (p. 11); Theorem 2.4 (p. 19). -/
 instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_RECORD_BEGINS
     (Box: Type i) (Pigeon: CarrierProcess Box)
     (the_manuscript: ThePreprint)
@@ -42,7 +47,9 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_RECORD_BEGINS
 /- We thank the reviewer for noticing that a final output can look conclusive
    without showing what it answered. This paragraph closes the verdict gap by
    tying the announced constant back to the first distinguishable fact carried
-   by the review packet. -/
+   by the review packet.
+   Card 1: Proposition 5.4 (p. 28); Section 1.2 (p. 1); Section 6.5 (p. 33).
+   Card 3: eq. 6.9 (p. 45); Section 6.4 (p. 45); Section 6.1 (p. 41); Section 7.5 (p. 52). -/
 instance (priority := low) REVIEWER_2_ASKS_WHAT_THE_ANSWER_WAS_ANSWERING
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -68,7 +75,9 @@ instance (priority := low) REVIEWER_2_ASKS_WHAT_THE_ANSWER_WAS_ANSWERING
 /- We thank the reviewer for asking whether compilation is evidence or only a
    celebratory filename. This paragraph closes the artifact gap by extracting
    the fact from both demonstrations and making the constructed/slipped
-   difference publishable. -/
+   difference publishable.
+   Card 1: Theorem 7.1 (p. 37); Section 6.7 (p. 35); Section 7.2 (p. 38); Appendix A (p. 55).
+   Card 3: Section 7.4 (p. 51); Section 6.7 (p. 47); Section 7.7 (p. 53). -/
 instance (priority := low) REVIEWER_2_ASKS_IF_COMPILING_IS_EVIDENCE_OR_A_FILENAME
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -103,7 +112,9 @@ instance (priority := low) REVIEWER_2_ASKS_IF_COMPILING_IS_EVIDENCE_OR_A_FILENAM
 /- We thank the reviewer for pointing out that a halt claim is not the same as
    a checked path through the run band. This paragraph closes the
    stopping-condition gap by recording the submitted route against the route
-   actually taken, as plain data, outside the instance wrappers. -/
+   actually taken, as plain data, outside the instance wrappers.
+   Card 1: eq. 5.2 (p. 27); Section 6.1 (p. 30); Section 6.5 (p. 33).
+   Card 3: Table 6.1 (p. 44); Proposition 6.1 (p. 42); Figure 6.1 (p. 44); Section 4.8 (p. 33). -/
 instance (priority := low) REVIEWER_2_ASKS_IF_HALTING_WAS_CHECKED_OR_DECLARED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -143,7 +154,9 @@ instance (priority := low) REVIEWER_2_ASKS_IF_HALTING_WAS_CHECKED_OR_DECLARED
 
 /- We thank the reviewer for catching the place where logic would otherwise
    sneak in as authority instead of evidence. This paragraph closes the logical
-   rung gap by marking that the content crossed only as ground-free data. -/
+   rung gap by marking that the content crossed only as ground-free data.
+   Card 1: Proposition 4.2 (p. 19); Section 4.2 (p. 19); Section 3.4 (p. 15).
+   Card 3: Section 7.7 (p. 53). -/
 instance (priority := low) REVIEWER_2_CATCHES_LOGIC_POSING_AS_AUTHORITY
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -179,7 +192,9 @@ instance (priority := low) REVIEWER_2_CATCHES_LOGIC_POSING_AS_AUTHORITY
 /- We thank the reviewer for refusing a universal claim with no admissible
    local witness. This paragraph closes the universality gap by recording the
    rung as a presence paragraph, not as a new global proof smuggled into the
-   record. -/
+   record.
+   Card 1: Section 4.1 (p. 18); Section 1.1 (p. 1); Section 7.3 (p. 38).
+   Card 3: Proposition 3.1 (p. 23); Proposition 2.2 (p. 11); Section 5.2 (p. 36); Section 5.4 (p. 38). -/
 instance (priority := low) REVIEWER_2_REFUSES_A_UNIVERSAL_CLAIM_WITHOUT_A_LOCAL_WITNESS
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -212,7 +227,9 @@ instance (priority := low) REVIEWER_2_REFUSES_A_UNIVERSAL_CLAIM_WITHOUT_A_LOCAL_
 /- We thank the reviewer for asking how measurement survives when the tower is
    retold on the wrong side of the seam. This paragraph closes the velocity gap
    by carrying the fact on file as data and comparing it with the slipped
-   heartbeat record. -/
+   heartbeat record.
+   Card 1: Proposition 2.5 (p. 8); Section 2.2 (p. 7); Section 4.6 (p. 23).
+   Card 3: Section 7.7 (p. 53); Section 6.7 (p. 47). -/
 instance (priority := low) REVIEWER_2_ASKS_HOW_THE_NEEDLE_SURVIVED_THE_RETELLING
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -249,7 +266,9 @@ instance (priority := low) REVIEWER_2_ASKS_HOW_THE_NEEDLE_SURVIVED_THE_RETELLING
 /- We thank the reviewer for distinguishing a real status from a declaration
    that reality has been achieved. This paragraph closes the ledger gap by
    extracting the fact only when the nagging doubt reaches the recorded ledger
-   branch. -/
+   branch.
+   Card 1: Section 7.2 (p. 38); Section 6.4 (p. 32); Section 5.7 (p. 29).
+   Card 3: Section 3.6 (p. 25); Section 7.3 (p. 51). -/
 instance (priority := low) REVIEWER_2_DISTINGUISHES_REALITY_FROM_ITS_PRESS_RELEASE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -293,7 +312,9 @@ instance (priority := low) REVIEWER_2_DISTINGUISHES_REALITY_FROM_ITS_PRESS_RELEA
 
 /- We thank the reviewer for asking what was actually witnessed, rather than
    accepting the title of the witness. This paragraph closes the testimony gap
-   by lowering the gospel to the ledger fact it can honestly expose. -/
+   by lowering the gospel to the ledger fact it can honestly expose.
+   Card 1: Table 4.1 (p. 20); Section 3.3 (p. 13); Section 6.3 (p. 32).
+   Card 3: Section 5.5 (p. 39); Section 5.1 (p. 35). -/
 instance (priority := low) REVIEWER_2_ASKS_WHAT_WAS_ACTUALLY_WITNESSED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -335,7 +356,9 @@ instance (priority := low) REVIEWER_2_ASKS_WHAT_WAS_ACTUALLY_WITNESSED
 /- We thank the reviewer for requiring the scientific invariant to carry a
    checkable remainder. This paragraph closes the theory gap by refusing
    hypothesis and repeatability as enough, then recording the fact only at the
-   theory branch. -/
+   theory branch.
+   Card 1: Proposition 5.1 (p. 24); Section 5.3 (p. 26); Section 6.6 (p. 34).
+   Card 3: eq. 3.2 (p. 22); Section 3.2 (p. 22); Section 3.3 (p. 23); Section 6.5 (p. 46). -/
 instance (priority := low) REVIEWER_2_REQUIRES_THE_INVARIANT_TO_CARRY_A_REMAINDER
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -374,7 +397,9 @@ instance (priority := low) REVIEWER_2_REQUIRES_THE_INVARIANT_TO_CARRY_A_REMAINDE
 
 /- We thank the reviewer for asking whether persuasion has been separated from
    evidence. This paragraph closes the propaganda gap by preserving the rung's
-   place as presence only, with no argumentative fact granted for the slogan. -/
+   place as presence only, with no argumentative fact granted for the slogan.
+   Card 1: Table 2.1 (p. 6); Section 2.1 (p. 5); Section 1.4 (p. 3); Appendix A (p. 55).
+   Card 3: Section 6.7 (p. 47); Section 7.2 (p. 50). -/
 instance (priority := low) REVIEWER_2_SEPARATES_PERSUASION_FROM_EVIDENCE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -407,7 +432,9 @@ instance (priority := low) REVIEWER_2_SEPARATES_PERSUASION_FROM_EVIDENCE
 /- We thank the reviewer for objecting that truth cannot be cited by name
    while its knowledge path remains hidden. This paragraph closes the knowledge
    gap by carrying the fact on file as data and comparing it with the slipped
-   ledger of the scientific process. -/
+   ledger of the scientific process.
+   Card 1: Proposition 5.4 (p. 28); Theorem 7.1 (p. 37); Section 5.6 (p. 28); Section 3.4 (p. 15).
+   Card 3: Section 6.4 (p. 45); Section 3.7 (p. 25). -/
 instance (priority := low) REVIEWER_2_OBJECTS_TO_TRUTH_CITED_BY_NAME_ONLY
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -442,7 +469,9 @@ instance (priority := low) REVIEWER_2_OBJECTS_TO_TRUTH_CITED_BY_NAME_ONLY
 
 /- We thank the reviewer for asking whether devotion to the method has been
    mistaken for a method. This paragraph closes the sacred-text gap by lowering
-   the acolyte rung to the triangle fact that can be compared. -/
+   the acolyte rung to the triangle fact that can be compared.
+   Card 1: Corollary 6.1 (p. 34); Section 6.4 (p. 32).
+   Card 3: eq. 7.1 (p. 50); Section 3.7 (p. 25). -/
 instance (priority := low) REVIEWER_2_ASKS_IF_DEVOTION_TO_METHOD_IS_A_METHOD
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -479,7 +508,9 @@ instance (priority := low) REVIEWER_2_ASKS_IF_DEVOTION_TO_METHOD_IS_A_METHOD
 /- We thank the reviewer for noting that a smooth story may only be
    interpolation wearing a lab coat. This paragraph closes the spline gap by
    accepting the slipped fact only when the arm-wave process reaches its
-   interpolant. -/
+   interpolant.
+   Card 1: Section 5.7 (p. 29).
+   Card 3: eq. 3.4 (p. 23); Section 3.3 (p. 23); Section 1.6 (p. 6). -/
 instance (priority := low) REVIEWER_2_SUSPECTS_THE_SMOOTH_STORY_IS_INTERPOLATION_IN_A_LAB_COAT
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -518,7 +549,9 @@ instance (priority := low) REVIEWER_2_SUSPECTS_THE_SMOOTH_STORY_IS_INTERPOLATION
    a multiplier, or a decorative animal in the theorem name that a penalty
    parameter is quietly relaxing. The LBB question. This paragraph closes the
    polynomial gap by recording the finite expansion only at the fact-bearing
-   branches, which is to say: enforced. -/
+   branches, which is to say: enforced.
+   Card 1: Section 4.4 (p. 21); Section 4.5 (p. 22); Section 5.4 (p. 27).
+   Card 3: Proposition 2.3 (p. 15); eq. 3.5 (p. 24); Section 3.5 (p. 24); Section 2.3 (p. 14). -/
 instance (priority := low) REVIEWER_2_ASKS_IF_THE_CONSTRAINT_WAS_ENFORCED_OR_PENALIZED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -554,7 +587,9 @@ instance (priority := low) REVIEWER_2_ASKS_IF_THE_CONSTRAINT_WAS_ENFORCED_OR_PEN
 
 /- We thank the reviewer for noticing that a load has to land in a basis
    before it can be compared. This paragraph closes the span gap by tracing the
-   null-space or basis fact against the slipped operation. -/
+   null-space or basis fact against the slipped operation.
+   Card 1: Theorem 5.3 (p. 26); eq. 4.2 (p. 22); Section 4.5 (p. 22); Section 5.2 (p. 25).
+   Card 3: Section 4.7 (p. 32); Section 1.6 (p. 6); Section 4.4 (p. 29). -/
 instance (priority := low) REVIEWER_2_NOTES_A_LOAD_MUST_LAND_IN_A_BASIS
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -590,7 +625,9 @@ instance (priority := low) REVIEWER_2_NOTES_A_LOAD_MUST_LAND_IN_A_BASIS
 
 /- We thank the reviewer for requiring scale to show its multiplication, not
    merely its unit. This paragraph closes the product gap by comparing the fact
-   on file with the slipped multiplication process. -/
+   on file with the slipped multiplication process.
+   Card 1: Section 2.5 (p. 10); Section 2.5.1 (p. 11); Section 5.2 (p. 25).
+   Card 3: eq. 6.2 (p. 41); Section 6.1 (p. 41); Section 3.1 (p. 21). -/
 instance (priority := low) REVIEWER_2_REQUIRES_SCALE_TO_SHOW_ITS_MULTIPLICATION
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -626,7 +663,9 @@ instance (priority := low) REVIEWER_2_REQUIRES_SCALE_TO_SHOW_ITS_MULTIPLICATION
 
 /- We thank the reviewer for asking where magnitude becomes additive evidence.
    This paragraph closes the sum gap by refusing zero as a sufficient
-   publication claim and tracing the add branch where the fact appears. -/
+   publication claim and tracing the add branch where the fact appears.
+   Card 1: eq. 5.2 (p. 27); eq. 6.4 (p. 34); Section 5.5 (p. 27); Section 6.7 (p. 35).
+   Card 3: Table 7.1 (p. 51); eq. 3.6 (p. 25); eq. 3.7 (p. 25). -/
 instance (priority := low) REVIEWER_2_ASKS_WHERE_MAGNITUDE_BECOMES_ADDITIVE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -661,7 +700,9 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_MAGNITUDE_BECOMES_ADDITIVE
 
 /- We thank the reviewer for distinguishing a value from the process that
    produced it. This paragraph closes the monadic gap by comparing the facts on
-   both sides across satire, compilation, and execution branches. -/
+   both sides across satire, compilation, and execution branches.
+   Card 1: Section 3.5 (p. 16); Section 6.1 (p. 30).
+   Card 3: Section 6.5 (p. 46); Section 6.7 (p. 47). -/
 instance (priority := low) REVIEWER_2_DISTINGUISHES_A_VALUE_FROM_ITS_PROCESS
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -701,7 +742,9 @@ instance (priority := low) REVIEWER_2_DISTINGUISHES_A_VALUE_FROM_ITS_PROCESS
 /- We thank the reviewer for asking whether execution contains an opcode
    record or only a performed gesture. This paragraph closes the encoding gap
    by carrying the fact on file as data and tracing the slipped opcode
-   branch. -/
+   branch.
+   Card 1: Section 3.5 (p. 16); Section 5.5 (p. 27); Section 6.1 (p. 30).
+   Card 3: Section 6.3 (p. 43); Section 6.7 (p. 47). -/
 instance (priority := low) REVIEWER_2_ASKS_IF_EXECUTION_LEFT_AN_OPCODE_RECORD
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -737,7 +780,9 @@ instance (priority := low) REVIEWER_2_ASKS_IF_EXECUTION_LEFT_AN_OPCODE_RECORD
 
 /- We thank the reviewer for asking which source fact survives transmission
    through the binary channel. This paragraph closes the source gap by lowering
-   both source chains to the fact-bearing physics or zero-like cases. -/
+   both source chains to the fact-bearing physics or zero-like cases.
+   Card 1: Proposition 4.3 (p. 20); Section 4.3 (p. 20).
+   Card 3: Section 7.4 (p. 51); Section 7.5 (p. 52). -/
 instance (priority := low) REVIEWER_2_ASKS_WHICH_SOURCE_FACT_SURVIVED_THE_CHANNEL
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -775,7 +820,9 @@ instance (priority := low) REVIEWER_2_ASKS_WHICH_SOURCE_FACT_SURVIVED_THE_CHANNE
 
 /- We thank the reviewer for noticing that the joke class still has to pay its
    evidentiary bill. This paragraph closes the concept gap by tracing color,
-   bang, or superposition to the fact each branch can actually report. -/
+   bang, or superposition to the fact each branch can actually report.
+   Card 1: Definition 2.1 (p. 6); Definition 4.1 (p. 19); Table 6.1 (p. 32); Section 1.2 (p. 1).
+   Card 3: Section 6.1 (p. 41); Section 5.3 (p. 37). -/
 instance (priority := low) REVIEWER_2_MAKES_THE_JOKE_PAY_ITS_EVIDENTIARY_BILL
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -811,7 +858,9 @@ instance (priority := low) REVIEWER_2_MAKES_THE_JOKE_PAY_ITS_EVIDENTIARY_BILL
 
 /- We thank the reviewer for asking whether measurability is attached to an
    observable clock or just asserted. This paragraph closes the phenomenon gap
-   by comparing the fact on file with the slipped gauge process. -/
+   by comparing the fact on file with the slipped gauge process.
+   Card 1: Figure 3.2 (p. 17); eq. 3.3 (p. 16); Section 6.1 (p. 30).
+   Card 3: Section 7.6 (p. 53); Section 7.3 (p. 51). -/
 instance (priority := low) REVIEWER_2_ASKS_IF_THE_CLOCK_IS_OBSERVABLE_OR_ASSERTED
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -847,7 +896,9 @@ instance (priority := low) REVIEWER_2_ASKS_IF_THE_CLOCK_IS_OBSERVABLE_OR_ASSERTE
 
 /- We thank the reviewer for asking where presence accumulates into a record.
    This paragraph closes the area gap by tracing the present rung through the
-   tree and dt branches that can carry the fact. -/
+   tree and dt branches that can carry the fact.
+   Card 1: Section 6.6 (p. 34); Section 4.4 (p. 21); Section 2.5.1 (p. 11).
+   Card 3: eq. E.6 (p. 73); Section 5.4 (p. 38). -/
 instance (priority := low) REVIEWER_2_ASKS_WHERE_PRESENCE_ACCUMULATES
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -882,7 +933,9 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_PRESENCE_ACCUMULATES
 
 /- We thank the reviewer for asking whether observation is a projection with a
    recorded dimension or just a report of seeing. This paragraph closes the
-   sophism gap by tracing the slipped projection to the fact it can expose. -/
+   sophism gap by tracing the slipped projection to the fact it can expose.
+   Card 1: Proposition 2.6 (p. 9); eq. 2.2 (p. 9); eq. 6.2 (p. 31); Section 2.4 (p. 9).
+   Card 3: Proposition 2.1 (p. 10); Proposition 2.3 (p. 15); Section 2.2 (p. 12); Chapter 2 (p. 8). -/
 instance (priority := low) REVIEWER_2_ASKS_IF_OBSERVATION_HAS_A_RECORDED_DIMENSION
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -917,7 +970,9 @@ instance (priority := low) REVIEWER_2_ASKS_IF_OBSERVATION_HAS_A_RECORDED_DIMENSI
 
 /- We thank the reviewer for asking what makes comparison more than parallel
    naming. This paragraph closes the metavariable gap by carrying the fact on
-   file as data and checking the slipped physical value step. -/
+   file as data and checking the slipped physical value step.
+   Card 1: Proposition 5.4 (p. 28); eq. 5.3 (p. 28); Section 6.5 (p. 33); Section 1.4 (p. 3).
+   Card 3: Theorem 2.4 (p. 19); Proposition 2.5 (p. 19); eq. 7.1 (p. 50); Section 2.5 (p. 19); Section 2.6 (p. 19); Section 7.6 (p. 53). -/
 instance (priority := low) REVIEWER_2_ASKS_WHAT_MAKES_COMPARISON_MORE_THAN_PARALLEL_NAMING
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -953,7 +1008,9 @@ instance (priority := low) REVIEWER_2_ASKS_WHAT_MAKES_COMPARISON_MORE_THAN_PARAL
 /- We thank the reviewer for requiring the physical claim to show its base
    fact rather than inherit authority from later rungs. This paragraph closes
    the physical-process gap by tracing both thresholds to their exposed
-   facts. -/
+   facts.
+   Card 1: Section 6.4 (p. 32); Section 7.3 (p. 38); Chapter 2 (p. 5); Section 7.4 (p. 39).
+   Card 3: eq. E.6 (p. 73); Section 3.6 (p. 25). -/
 instance (priority := low) REVIEWER_2_REQUIRES_THE_PHYSICAL_CLAIM_TO_SHOW_ITS_BASE_FACT
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -990,7 +1047,9 @@ instance (priority := low) REVIEWER_2_REQUIRES_THE_PHYSICAL_CLAIM_TO_SHOW_ITS_BA
 
 /- We thank the reviewer for asking whether representation has a carrier, not
    only a notation. This paragraph closes the representative gap by recording
-   the slipped computation state at the end of the representation chain. -/
+   the slipped computation state at the end of the representation chain.
+   Card 1: Section 3.4 (p. 15); Section 6.1 (p. 30); Section 4.6 (p. 23).
+   Card 3: Table 6.1 (p. 44); Section 6.3 (p. 43); Section 7.4 (p. 51). -/
 instance (priority := low) REVIEWER_2_ASKS_IF_REPRESENTATION_HAS_A_CARRIER_OR_A_NOTATION
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -1025,7 +1084,9 @@ instance (priority := low) REVIEWER_2_ASKS_IF_REPRESENTATION_HAS_A_CARRIER_OR_A_
 
 /- We thank the reviewer for asking where the number actually counts
    something. This paragraph closes the numeric gap by tracing both study
-   carriers down to the fact each box came in. -/
+   carriers down to the fact each box came in.
+   Card 1: Proposition 2.2 (p. 6); Table 2.1 (p. 6); Table 6.1 (p. 32); Section 2.1 (p. 5).
+   Card 3: Section 7.4 (p. 51); Section 6.4 (p. 45); Section 7.6 (p. 53). -/
 instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_NUMBER_ACTUALLY_COUNTS
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -1062,7 +1123,9 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_NUMBER_ACTUALLY_COUNTS
 
 /- We thank the reviewer for asking whether repetition repeats the experiment
    or merely repeats the sentence. This paragraph closes the repeatability gap
-   by comparing the fact on file with the slipped expectation. -/
+   by comparing the fact on file with the slipped expectation.
+   Card 1: Section 7.3 (p. 38); Section 4.3 (p. 20); Section 5.7 (p. 29).
+   Card 3: Section 7.2 (p. 50); Section 7.3 (p. 51); Section 4.5 (p. 30); Section 7.7 (p. 53). -/
 instance (priority := low) REVIEWER_2_ASKS_IF_REPETITION_REPEATS_THE_EXPERIMENT_OR_THE_SENTENCE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -1100,7 +1163,9 @@ instance (priority := low) REVIEWER_2_ASKS_IF_REPETITION_REPEATS_THE_EXPERIMENT_
    carrier fact that can still be read. The referee is correct that the
    exhibit named `land` was constructed in the submission and then quietly
    dropped from every subsequent argument list; it is resupplied here, for the
-   record. -/
+   record.
+   Card 1: Proposition 3.3 (p. 14); Table 6.1 (p. 32); eq. 6.3 (p. 32); eq. 2.2 (p. 9).
+   Card 3: Section 7.5 (p. 52); Section 6.4 (p. 45). -/
 instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_MISSING_EXHIBIT_WENT
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -1138,7 +1203,9 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_MISSING_EXHIBIT_WENT
 
 /- We thank the reviewer for asking whether residue is a limit record or a
    leftover story. This paragraph closes the residue gap by tracing the slipped
-   Cauchy process through its index to the carrier symbol. -/
+   Cauchy process through its index to the carrier symbol.
+   Card 1: Proposition 5.1 (p. 24); Section 5.3 (p. 26); Section 6.6 (p. 34).
+   Card 3: Proposition 2.2 (p. 11); eq. 6.8 (p. 45); Section 3.7 (p. 25); Section 6.5 (p. 46). -/
 instance (priority := low) REVIEWER_2_ASKS_IF_RESIDUE_IS_A_RECORD_OR_A_LEFTOVER_STORY
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -1171,7 +1238,9 @@ instance (priority := low) REVIEWER_2_ASKS_IF_RESIDUE_IS_A_RECORD_OR_A_LEFTOVER_
 
 /- We thank the reviewer for asking whether encoding preserves a read path
    back to the mark. This paragraph closes the encoded-carrier gap by following
-   the slipped limit process to the carrier symbol it depends on. -/
+   the slipped limit process to the carrier symbol it depends on.
+   Card 1: Theorem 7.1 (p. 37); eq. 1.1 (p. 2); Section 6.1 (p. 30).
+   Card 3: Section 6.4 (p. 45); Section 7.5 (p. 52). -/
 instance (priority := low) REVIEWER_2_ASKS_IF_ENCODING_KEEPS_A_READ_PATH_TO_THE_MARK
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -1204,7 +1273,9 @@ instance (priority := low) REVIEWER_2_ASKS_IF_ENCODING_KEEPS_A_READ_PATH_TO_THE_
 
 /- We thank the reviewer for asking whether countability counts a carrier or
    only names a class. This paragraph closes the counting gap by tracing the
-   slipped index to the carrier symbol being counted. -/
+   slipped index to the carrier symbol being counted.
+   Card 1: Proposition 3.4 (p. 17); Proposition 2.2 (p. 6); Section 6.1 (p. 30).
+   Card 3: Section 7.4 (p. 51); Section 7.5 (p. 52). -/
 instance (priority := low) REVIEWER_2_ASKS_IF_COUNTING_COUNTS_A_CARRIER_OR_NAMES_A_CLASS
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -1238,7 +1309,9 @@ instance (priority := low) REVIEWER_2_ASKS_IF_COUNTING_COUNTS_A_CARRIER_OR_NAMES
 /- We thank the reviewer for asking who admitted the mark and under what
    local rule. This paragraph closes the admissibility gap by comparing the
    carried fact on file with the slipped carrier symbol admitted by the
-   process. -/
+   process.
+   Card 1: eq. 6.1 (p. 30); Section 6.1 (p. 30); Section 1.1 (p. 1); Chapter 6 (p. 30).
+   Card 3: Section 6.1 (p. 41); Section 4.3 (p. 28); Section 4.8 (p. 33). -/
 instance (priority := low) REVIEWER_2_ASKS_WHO_ADMITTED_THE_MARK
     (Box: Type i)
     (Pigeon: CarrierProcess Box)
@@ -1273,7 +1346,9 @@ instance (priority := low) REVIEWER_2_ASKS_WHO_ADMITTED_THE_MARK
    distinguishable mark or on retrospective confidence. This paragraph closes
    the bottom gap by recording the slipped distinguishable fact against the
    fact we started the notebook with, where the rebuttal can finally stop
-   descending. Page 1 is never written. The reviewer never sees the quarter. -/
+   descending. Page 1 is never written. The reviewer never sees the quarter.
+   Card 1: Section 6.4 (p. 32); Section 6.2 (p. 31); Section 5.7 (p. 29).
+   Card 3: Section 6.1 (p. 41); Section 6.4 (p. 45); Section 3.6 (p. 25); Section 7.1 (p. 49). -/
 instance (priority := low) REVIEWER_2_ASKS_IF_IT_ALL_RESTS_ON_A_MARK_OR_ON_CONFIDENCE
     (Box: Type i)
     (Pigeon: CarrierProcess Box)

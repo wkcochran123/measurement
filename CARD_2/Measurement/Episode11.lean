@@ -34,6 +34,9 @@ steel into the mountain.
 
 As for the Nat. Typesetting engines require generation of page numbers for indexing the table of contents.
 -/
+-- Each verse below ends where the record ends, at the FACT, and then turns to where the knower keeps
+-- it: Card 1 and Card 3, by printed result and page number of the 23 October 2026 builds. The appendix
+-- table "Stanzas and results" in each card is the stable anchor.
 class TYPESET (Box: Type i) (Pigeon: CarrierProcess Box) (rung: Nat)
     (Lifted: Type j) where
   register_value : Lifted
@@ -50,6 +53,8 @@ that John built.
 The first spike is boring on purpose: the carried value is just the carrier's
 number, the universe id is zero, and the tape is whatever the trace brought
 to the face.  Steel starts as a local receipt.
+   Card 1: Section 6.4 (p. 32); Section 6.2 (p. 31); Section 5.7 (p. 29).
+   Card 3: Section 6.1 (p. 41); Section 6.4 (p. 45); Section 3.6 (p. 25); Section 7.1 (p. 49).
 -/
 instance (priority := low) TYPESET_Episode1_FACT
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -72,6 +77,8 @@ that lived in the FACT
 that John built.
 
 The tape does not become a novel.  The class dictionary does.
+   Card 1: eq. 6.1 (p. 30); Section 6.1 (p. 30); Section 1.1 (p. 1); Chapter 6 (p. 30).
+   Card 3: Section 6.1 (p. 41); Section 4.3 (p. 28); Section 4.8 (p. 33).
 -/
 instance (priority := low) TYPESET_page_2
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -101,6 +108,8 @@ that carried the trace
 that executed the tape
 that lived in the FACT
 that John built.
+   Card 1: Proposition 3.4 (p. 17); Proposition 2.2 (p. 6); Section 6.1 (p. 30).
+   Card 3: Section 7.4 (p. 51); Section 7.5 (p. 52).
 -/
 instance (priority := low) TYPESET_page_3
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -129,6 +138,8 @@ that carried the trace
 that executed the tape
 that lived in the FACT
 that John built.
+   Card 1: Theorem 7.1 (p. 37); eq. 1.1 (p. 2); Section 6.1 (p. 30).
+   Card 3: Section 6.4 (p. 45); Section 7.5 (p. 52).
 -/
 instance (priority := low) TYPESET_page_4
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -158,6 +169,8 @@ that carried the trace
 that executed the tape
 that lived in the FACT
 that John built.
+   Card 1: Proposition 5.1 (p. 24); Section 5.3 (p. 26); Section 6.6 (p. 34).
+   Card 3: Proposition 2.2 (p. 11); eq. 6.8 (p. 45); Section 3.7 (p. 25); Section 6.5 (p. 46).
 -/
 instance (priority := low) TYPESET_page_5
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -191,6 +204,8 @@ that lived in the FACT
 that John built.
 
 By now the stanza is already longer than the tape.  That is the point.
+   Card 1: Proposition 3.3 (p. 14); Table 6.1 (p. 32); eq. 6.3 (p. 32); eq. 2.2 (p. 9).
+   Card 3: Section 7.5 (p. 52); Section 6.4 (p. 45).
 -/
 instance (priority := low) TYPESET_page_6
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -218,6 +233,8 @@ that encodes the code
 that counted the number
 that lived in the FACT
 that John built.
+   Card 1: Section 7.3 (p. 38); Section 4.3 (p. 20); Section 5.7 (p. 29).
+   Card 3: Section 7.2 (p. 50); Section 7.3 (p. 51); Section 4.5 (p. 30); Section 7.7 (p. 53).
 -/
 instance (priority := low) TYPESET_page_7
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -245,6 +262,8 @@ that residues the step
 that admitted the mark
 that lived in the FACT
 that John built.
+   Card 1: Proposition 2.2 (p. 6); Table 2.1 (p. 6); Table 6.1 (p. 32); Section 2.1 (p. 5).
+   Card 3: Section 7.4 (p. 51); Section 6.4 (p. 45); Section 7.6 (p. 53).
 -/
 instance (priority := low) TYPESET_page_8
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -272,6 +291,8 @@ that binaries the method
 that distinguished the glyph
 that lived in the FACT
 that John built.
+   Card 1: Section 3.4 (p. 15); Section 6.1 (p. 30); Section 4.6 (p. 23).
+   Card 3: Table 6.1 (p. 44); Section 6.3 (p. 43); Section 7.4 (p. 51).
 -/
 instance (priority := low) TYPESET_page_9
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -299,6 +320,8 @@ that repeats the function
 that carried the trace
 that lived in the FACT
 that John built.
+   Card 1: Section 6.4 (p. 32); Section 7.3 (p. 38); Chapter 2 (p. 5); Section 7.4 (p. 39).
+   Card 3: eq. E.6 (p. 73); Section 3.6 (p. 25).
 -/
 instance (priority := low) TYPESET_page_10
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -326,6 +349,8 @@ that numbers the variable
 that executed the tape
 that lived in the FACT
 that John built.
+   Card 1: Proposition 5.4 (p. 28); eq. 5.3 (p. 28); Section 6.5 (p. 33); Section 1.4 (p. 3).
+   Card 3: Theorem 2.4 (p. 19); Proposition 2.5 (p. 19); eq. 7.1 (p. 50); Section 2.5 (p. 19); Section 2.6 (p. 19); Section 7.6 (p. 53).
 -/
 instance (priority := low) TYPESET_page_11
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -353,6 +378,8 @@ that represents the model
 that carried the trace
 that executed the tape
 that John built.
+   Card 1: Proposition 2.6 (p. 9); eq. 2.2 (p. 9); eq. 6.2 (p. 31); Section 2.4 (p. 9).
+   Card 3: Proposition 2.1 (p. 10); Proposition 2.3 (p. 15); Section 2.2 (p. 12); Chapter 2 (p. 8).
 -/
 instance (priority := low) TYPESET_page_12
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -380,6 +407,8 @@ that physicals the method
 that carried the value
 that lived in the FACT
 that John built.
+   Card 1: Section 6.6 (p. 34); Section 4.4 (p. 21); Section 2.5.1 (p. 11).
+   Card 3: eq. E.6 (p. 73); Section 5.4 (p. 38).
 -/
 instance (priority := low) TYPESET_page_13
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -407,6 +436,8 @@ that compares the glyph
 that carried the trace
 that executed the tape
 that John built.
+   Card 1: Figure 3.2 (p. 17); eq. 3.3 (p. 16); Section 6.1 (p. 30).
+   Card 3: Section 7.6 (p. 53); Section 7.3 (p. 51).
 -/
 instance (priority := low) TYPESET_page_14
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -434,6 +465,8 @@ that observes the mark
 that carried the process
 that lived in the FACT
 that John built.
+   Card 1: Definition 2.1 (p. 6); Definition 4.1 (p. 19); Table 6.1 (p. 32); Section 1.2 (p. 1).
+   Card 3: Section 6.1 (p. 41); Section 5.3 (p. 37).
 -/
 instance (priority := low) TYPESET_page_15
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -461,6 +494,8 @@ that presents the process
 that carried the trace
 that executed the tape
 that John built.
+   Card 1: Proposition 4.3 (p. 20); Section 4.3 (p. 20).
+   Card 3: Section 7.4 (p. 51); Section 7.5 (p. 52).
 -/
 instance (priority := low) TYPESET_page_16
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -488,6 +523,8 @@ that measures the step
 that carried the method
 that lived in the FACT
 that John built.
+   Card 1: Section 3.5 (p. 16); Section 5.5 (p. 27); Section 6.1 (p. 30).
+   Card 3: Section 6.3 (p. 43); Section 6.7 (p. 47).
 -/
 instance (priority := low) TYPESET_page_17
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -515,6 +552,8 @@ that gungans the glyph
 that carried the trace
 that executed the tape
 that John built.
+   Card 1: Section 3.5 (p. 16); Section 6.1 (p. 30).
+   Card 3: Section 6.5 (p. 46); Section 6.7 (p. 47).
 -/
 instance (priority := low) TYPESET_page_18
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -542,6 +581,8 @@ that sources the code
 that carried the model
 that lived in the FACT
 that John built.
+   Card 1: eq. 5.2 (p. 27); eq. 6.4 (p. 34); Section 5.5 (p. 27); Section 6.7 (p. 35).
+   Card 3: Table 7.1 (p. 51); eq. 3.6 (p. 25); eq. 3.7 (p. 25).
 -/
 instance (priority := low) TYPESET_page_19
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -569,6 +610,8 @@ that executes the process
 that carried the trace
 that executed the tape
 that John built.
+   Card 1: Section 2.5 (p. 10); Section 2.5.1 (p. 11); Section 5.2 (p. 25).
+   Card 3: eq. 6.2 (p. 41); Section 6.1 (p. 41); Section 3.1 (p. 21).
 -/
 instance (priority := low) TYPESET_page_20
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -596,6 +639,8 @@ that values the mapping
 that carried the step
 that lived in the FACT
 that John built.
+   Card 1: Theorem 5.3 (p. 26); eq. 4.2 (p. 22); Section 4.5 (p. 22); Section 5.2 (p. 25).
+   Card 3: Section 4.7 (p. 32); Section 1.6 (p. 6); Section 4.4 (p. 29).
 -/
 instance (priority := low) TYPESET_page_21
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -623,6 +668,8 @@ that magnitudes the number
 that carried the method
 that executed the tape
 that John built.
+   Card 1: Section 4.4 (p. 21); Section 4.5 (p. 22); Section 5.4 (p. 27).
+   Card 3: Proposition 2.3 (p. 15); eq. 3.5 (p. 24); Section 3.5 (p. 24); Section 2.3 (p. 14).
 -/
 instance (priority := low) TYPESET_page_22
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -650,6 +697,8 @@ that scales the value
 that carried the code
 that lived in the FACT
 that John built.
+   Card 1: Section 5.7 (p. 29).
+   Card 3: eq. 3.4 (p. 23); Section 3.3 (p. 23); Section 1.6 (p. 6).
 -/
 instance (priority := low) TYPESET_page_23
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -677,6 +726,8 @@ that finite-elements the process
 that carried the trace
 that executed the tape
 that John built.
+   Card 1: Table 2.1 (p. 6); Section 2.1 (p. 5); Section 1.4 (p. 3); Appendix A (p. 55).
+   Card 3: Section 6.7 (p. 47); Section 7.2 (p. 50).
 -/
 instance (priority := low) TYPESET_page_24
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -704,6 +755,8 @@ that loads the process
 that carried the value
 that lived in the FACT
 that John built.
+   Card 1: Corollary 6.1 (p. 34); Section 6.4 (p. 32).
+   Card 3: eq. 7.1 (p. 50); Section 3.7 (p. 25).
 -/
 instance (priority := low) TYPESET_page_25
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -731,6 +784,8 @@ that bullshits the model
 that carried the trace
 that executed the tape
 that John built.
+   Card 1: Proposition 5.1 (p. 24); Section 5.3 (p. 26); Section 6.6 (p. 34).
+   Card 3: eq. 3.2 (p. 22); Section 3.2 (p. 22); Section 3.3 (p. 23); Section 6.5 (p. 46).
 -/
 instance (priority := low) TYPESET_page_26
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -758,6 +813,8 @@ that propagandizes the variable
 that carried the method
 that lived in the FACT
 that John built.
+   Card 1: Proposition 5.4 (p. 28); Theorem 7.1 (p. 37); Section 5.6 (p. 28); Section 3.4 (p. 15).
+   Card 3: Section 6.4 (p. 45); Section 3.7 (p. 25).
 -/
 instance (priority := low) TYPESET_page_27
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -785,6 +842,8 @@ that acolytes the process
 that carried the trace
 that executed the tape
 that John built.
+   Card 1: Table 4.1 (p. 20); Section 3.3 (p. 13); Section 6.3 (p. 32).
+   Card 3: Section 5.5 (p. 39); Section 5.1 (p. 35).
 -/
 instance (priority := low) TYPESET_page_28
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -812,6 +871,8 @@ that sciences the method
 that carried the code
 that lived in the FACT
 that John built.
+   Card 1: Section 7.2 (p. 38); Section 6.4 (p. 32); Section 5.7 (p. 29).
+   Card 3: Section 3.6 (p. 25); Section 7.3 (p. 51).
 -/
 instance (priority := low) TYPESET_page_29
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -839,6 +900,8 @@ that truths the code
 that carried the trace
 that executed the tape
 that John built.
+   Card 1: Section 4.1 (p. 18); Section 1.1 (p. 1); Section 7.3 (p. 38).
+   Card 3: Proposition 3.1 (p. 23); Proposition 2.2 (p. 11); Section 5.2 (p. 36); Section 5.4 (p. 38).
 -/
 instance (priority := low) TYPESET_page_30
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -866,6 +929,8 @@ that witnesses the glyph
 that carried the step
 that lived in the FACT
 that John built.
+   Card 1: Proposition 4.2 (p. 19); Section 4.2 (p. 19); Section 3.4 (p. 15).
+   Card 3: Section 7.7 (p. 53).
 -/
 instance (priority := low) TYPESET_page_31
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -893,6 +958,8 @@ that reals the model
 that carried the trace
 that executed the tape
 that John built.
+   Card 1: eq. 5.2 (p. 27); Section 6.1 (p. 30); Section 6.5 (p. 33).
+   Card 3: Table 6.1 (p. 44); Proposition 6.1 (p. 42); Figure 6.1 (p. 44); Section 4.8 (p. 33).
 -/
 instance (priority := low) TYPESET_page_32
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -920,6 +987,8 @@ that locals the variable
 that carried the process
 that lived in the FACT
 that John built.
+   Card 1: Proposition 2.5 (p. 8); Section 2.2 (p. 7); Section 4.6 (p. 23).
+   Card 3: Section 7.7 (p. 53); Section 6.7 (p. 47).
 -/
 instance (priority := low) TYPESET_page_33
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -947,6 +1016,8 @@ that universals the mapping
 that carried the trace
 that executed the tape
 that John built.
+   Card 1: Theorem 7.1 (p. 37); Section 6.7 (p. 35); Section 7.2 (p. 38); Appendix A (p. 55).
+   Card 3: Section 7.4 (p. 51); Section 6.7 (p. 47); Section 7.7 (p. 53).
 -/
 instance (priority := low) TYPESET_page_34
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -974,6 +1045,8 @@ that logics the code
 that carried the value
 that lived in the FACT
 that John built.
+   Card 1: Proposition 5.4 (p. 28); Section 1.2 (p. 1); Section 6.5 (p. 33).
+   Card 3: eq. 6.9 (p. 45); Section 6.4 (p. 45); Section 6.1 (p. 41); Section 7.5 (p. 52).
 -/
 instance (priority := low) TYPESET_page_35
     (Box: Type i) (Pigeon: CarrierProcess Box)
@@ -1001,6 +1074,8 @@ that halts the process
 that carried the trace
 that executed the tape
 that John built.
+   Card 1: Corollary 6.1 (p. 34); Theorem 7.1 (p. 37); Proposition 2.6 (p. 9); eq. 1.1 (p. 2).
+   Card 3: Table 6.1 (p. 44); Definition 8.1 (p. 56); Proposition 2.2 (p. 11); Theorem 2.4 (p. 19).
 -/
 instance (priority := low) TYPESET_page_36
     (Box: Type i) (Pigeon: CarrierProcess Box)

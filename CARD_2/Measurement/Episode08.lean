@@ -9,7 +9,7 @@ _This is a gentle reminder that the stories we tell ourselves might be the only 
 __EPISODE 8__: _The Macguffin_
 
 "Forty-two.435?"
-                       -- Douglas Adams (to three decimal places -- A Macguffin)
+                       -- A Macguffin to 3 decimal places
 
 "That Rosencrantz and Guildenstern are dead."
                        -- A callback to a Macguffin
@@ -172,7 +172,7 @@ def elaborated_by_lean : CarrierProcess Prop where --  | We begin at the beginni
 --|  | on *COUNTING* universe levels. This allows us to make a very _accurate_ naotrino, as this is just a model. It may or may not be _named_ with
 --|  | a _mark_ yet.
 
-instance truthDistinct : DISTINGUISHABLE Prop elaborated_by_lean where --      | At this point, I think we have enough to describe something _distinct from_
+instance a_distinct_truth : DISTINGUISHABLE Prop elaborated_by_lean where --   | At this point, I think we have enough to describe something _distinct from_
   fact := elaborated_by_lean.symbol --                                         | truth. I mean, not a _general thing_ distinct from _truth_, but a
   symbol := Prop --------------------------------------------------------------+ logical contradiction described as Lean code that compiles. Basically,
   different?   := fun _ => @decide elaborated_by_lean.symbol.truth --          | anything that doesn't _click with the machine_ is _false_. Either the
@@ -215,13 +215,13 @@ noncomputable instance A_NOWTRINO_MODEL : REAL Prop elaborated_by_lean := A_CAUS
                                           HOW? Prop elaborated_by_lean (naotrino_model := this_way) (yarn_theory := that_way)
 @[irreducible] noncomputable instance : A_TRUTH_ABOUT Prop elaborated_by_lean this_way that_way :=
                                           WHY? Prop elaborated_by_lean (naotrino_model := this_way) (yarn_theory := that_way)
-noncomputable def once_around_the_ladder : INFERRED Prop elaborated_by_lean this_way that_way :=
+noncomputable def once_around_the_orbit : INFERRED Prop elaborated_by_lean this_way that_way :=
                                           WHY_NOT? Prop elaborated_by_lean (naotrino_model := this_way) (yarn_theory := that_way)
 --| And just like that, we can _INFER_ that the ladder as been traversed _once_ simply because there is _something_ that can be _INFERRED_. In this
 --| case, an obvious _INFERENCE_ is that the entire ladder has now been described and shown to possibly _EXIST_. I mean, we show it _DOES_ exist
 --| in the README.md. That's proof enough for *YOU the READER* that there exists a device described as I have done so thus far.
 @[irreducible] noncomputable instance : INFERRED Prop elaborated_by_lean this_way that_way :=
-                                          once_around_the_ladder
+                                          once_around_the_orbit
 
 --| But, we are looking for the _spin-2_ particle, the one where we can have a _DISTINGUISHABLE_ _TRUTH_ from... well... I'm guessing we can
 --| distinguish truth from something else, whatever that something else just might be. This second time around has to go by a _DIFFERENT_ path if
@@ -645,9 +645,12 @@ def blackhole_singularity : Jar := .color zero ast₁
 --| There is no color there either and it works like the other side of the blackhole_singularity.
 def cmbr : Jar := .bang zero blackhole_singularity
 
---| A _photon_ from the so-called "Big Bang" would begin in the cmbr and end in a blackhole_singularity, taking no time (as we would call it) and
+--| An _photon_ from the so-called "Big Bang" would begin in the cmbr and end in a blackhole_singularity, taking no time (as we would call it) and
 --| traveling no distance (as we would call it).  Who knows if photons travel or experience time, the EFEs suggest they do not.
 def the_photon_worldline : Jar := .superposition zero cmbr blackhole_singularity
+--| There are other worldlines of photons with endpoints in electrons, but, we haven't done enough construction of the device to talk about the
+--| electron directly. If *YOU the READER* choose to open the _Jar_, then *YOU the KNOWER* might recognize the interior as belonging to the orbital
+--| of an electron.
 
 --| I mean to suggest and the compiler tends to agree that the arrangement of words that describe the device are _not that far away_ from the very
 --| same words that are used to describe physics. That there might be a distance δx between the description of the device and the description of
@@ -660,11 +663,14 @@ def the_photon_worldline : Jar := .superposition zero cmbr blackhole_singularity
 --| to and are _revisiting_ thinking that _something_ got _rotated_ _somehwere_. So, hold on to that feeling. That's the unified physical theory:
 --| something somewhere earlier was rotated allowing us to draw a startling conclusion:
 def unified_physical_theory : Equivalation := .physics FACT.Truth the_photon_worldline
+--| I believe this is the first station on the train of thought for both Einstein and Newton. Not to confuse the issue as it must be part of the model
+--| anyway, I believe _NEWTON_ saw _light_ as a billiard ball and _EINSTEIN_ saw _light_ as a clock.
+
 --| We will be measuring that _rotation_, explicitly, in the coming episodes. This is just the machine _zeroing out_ to the shortest reading: the
 --| photon worldline. It only has a _start_ and an _end_. A photon cannot be detected between these two points. We _label_ these as zero to start:
 def t₀ : Equivalation := .zero_like zero unified_physical_theory
---| and True Equivalation as the end:
-def tᵢ : Equivalation := .one_like True t₀ unified_physical_theory
+--| and the end is not written down.  It is computed: one tick of the clock the carrier particle of Episode 7 carries.
+def t₁ : Equivalation := (IS_THIS_A_CARRIER_PARTICLE?.{0,0,0,0,0} Prop elaborated_by_lean).cd_process.tick t₀
 
 --| Since _no time passes_ for the photon and the photon has to start at point t₀, all tᵢ afterwards are the end point. Also, don't forget, we are
 --| still _constructing_ all of the structures in the device as x → y. I believe we will have a second, _equivalent_ description of the device when
@@ -675,13 +681,13 @@ def tᵢ : Equivalation := .one_like True t₀ unified_physical_theory
 --| device's universe is the photon world line. It is a very lonely, empty, and locale-less place. So, where is the _photon_ exactly? Gone. The
 --| photon goes from source to sink in the middle of computing the first iteration of the device. Since it didn't travel from the start, it is a
 --| position 0 relative to where it started. It didn't move.
-def xᵢ : Encoding := .boot zero tᵢ
+def xᵢ : Encoding := .boot zero t₁
 
 --| Since it didn't move, it had _no_ velocity.
-def δxᵢ : Encoding := .zero zero tᵢ xᵢ
+def δxᵢ : Encoding := .zero zero t₁ xᵢ
 
 --| Since it achieved no velocity by not moving, it's acceleration is also exactly zero.
-def δδxᵢ : Encoding := .one zero tᵢ tᵢ δxᵢ xᵢ
+def δδxᵢ : Encoding := .one zero t₁ t₁ δxᵢ xᵢ
 
 --| I believe we have now described the universe of 1 photon as a satire about _zero_.  The photon only exists in the time between t₀ and t₁, during
 --| which time it _doesn't_ move yet goes from start to finish in appearantly different places with no *REAL* way to figure out how it got there.
@@ -858,7 +864,7 @@ def episode8_description : List FACT :=
   absence_of_evidence.elaborate ++ does_it_matter?.unknown ++
   the_metaphor.closure ++ is_it_euclidean_enough?.taylor_expansion ++
   ast₁.riemann_integrate ++ the_galerkin_method.solve ++
-  the_photon_worldline.classify ++ tᵢ.vanish ++ δδxᵢ.decode ++
+  the_photon_worldline.classify ++ t₁.vanish ++ δδxᵢ.decode ++
   the_proof.equivalation ++ integration.euclid ++
   the_sobolev_norm.projector ++ the_galerkin_basis.householder ++
   the_exact_approximation.terms ++
@@ -887,7 +893,7 @@ def the_steps_of_the_argument : List (List FACT) :=
    ast₁.riemann_integrate,
    the_galerkin_method.solve,
    the_photon_worldline.classify,
-   tᵢ.vanish,
+   t₁.vanish,
    δδxᵢ.decode,
    the_proof.equivalation,
    integration.euclid,
@@ -923,20 +929,18 @@ theorem y₁_phenomenon_length : y₁.phenomenon.length = 2 := rfl
 theorem absence_of_evidence_elaborate_length : absence_of_evidence.elaborate.length = 2 := rfl
 theorem does_it_matter_unknown_length : does_it_matter?.unknown.length = 2 := rfl
 theorem the_metaphor_closure_length : the_metaphor.closure.length = 2 := rfl
-theorem is_it_euclidean_enough_taylor_expansion_length :
-    is_it_euclidean_enough?.taylor_expansion.length = 2 := rfl
+theorem is_it_euclidean_enough_taylor_expansion_length : is_it_euclidean_enough?.taylor_expansion.length = 2 := rfl
 theorem ast₁_riemann_integrate_length : ast₁.riemann_integrate.length = 2 := rfl
 theorem the_galerkin_method_solve_length : the_galerkin_method.solve.length = 4 := rfl
 theorem the_photon_worldline_classify_length : the_photon_worldline.classify.length = 4 := rfl
-theorem tᵢ_vanish_length : tᵢ.vanish.length = 4 := rfl
+theorem t₁_vanish_length : t₁.vanish.length = 3 := rfl
 theorem δδxᵢ_decode_length : δδxᵢ.decode.length = 4 := rfl
 theorem the_proof_equivalation_length : the_proof.equivalation.length = 3 := rfl
 theorem integration_euclid_length : integration.euclid.length = 2 := rfl
 theorem the_sobolev_norm_projector_length : the_sobolev_norm.projector.length = 2 := rfl
 theorem the_galerkin_basis_householder_length : the_galerkin_basis.householder.length = 2 := rfl
 theorem the_exact_approximation_terms_length : the_exact_approximation.terms.length = 2 := rfl
-theorem is_the_undeniably_correct_answer_approx_length :
-    is_the_undeniably_correct_answer.approx.length = 4 := rfl
+theorem is_the_undeniably_correct_answer_approx_length : is_the_undeniably_correct_answer.approx.length = 4 := rfl
 theorem should_be_true_buckets_length : should_be_true.buckets.length = 4 := rfl
 theorem newtons_train_of_thought_name_length : newtons_train_of_thought.name.length = 4 := rfl
 theorem a_measurement_method_length : a_measurement.method.length = 2 := rfl
@@ -951,221 +955,338 @@ theorem the_satire_the_model_length : the_satire.the_model.length = 3 := rfl
 theorem the_most_basic_of_conclusions_meter_length : the_most_basic_of_conclusions.meter.length = 5 := rfl
 theorem the_only_logical_inconsistency_infer_length : the_only_logical_inconsistency.infer.length = 3 := rfl
 
+end Measurement  --| The device ends here.  What follows is one particular reading of the device. The reading of the Natural inductive at face value.
+
+--| We take the reader's experience as the base inductive case of demonstrating the device to someone. Once we have demonstrated that the device
+--| has _explained itself_ to the _reader_, we will build an inductive model that demonstrates that this reader can then explain the device well
+--| enough to build the next _reader_. So yes, the argument below is excessively trivial. This allows the inductive cases to be trivial as will
+--| be shown later in Lean.
+
+namespace readers_experience
+--| YOU the READER.  Everything from here on is what the reader experiences of the device as something that generates proofs of Natural numbers. To
+--| do that, *YOU the READER* must _open_ the _puzzle box_ up and start to play with it.
+open Measurement
+
+--| Jar Jar is the resident fencepost bug: the satire about zero is one cell, and one cell read as a length is the one.  Meesa one. The question is
+--| do we begin counting at _0_ or do we begin counting at _1_. Are two concepts for the same idea the idea _itself_ or do they imply that there
+--| could be more to the idea than the concept itself (bang)? Perhaps, at least _1_ more (color)? Perhaps a _superposition_ of both that the concept
+--| fully describes the idea or it might imply there is something more to it? Who's to say? Not me, not the device. Hence Jar Jar, why not both?
+def the_fencepost_bug : Nat := carefully_chosen_variable_names.equivalation.length
+
+--| And, of course, Lean provides the counting mechanism.  It counts the gaps; the fencepost is the post it leaves off. The basis laid k times along
+--| the tape, and the fencepost at the end: the odd, with no numeral and no successor. Again, the _gap_ is the intuition of *YOU the READER*, an
+--| _inside joke_ in the industry.
+def count_up_to (n : Nat): List Nat := (List.range n).map (fun k => the_basis.the_reading.length * k + the_fencepost_bug)
+
+--| So, how do we define _INFERENCE_? Why, it is the objects _INFERRED_ by Lean. This is what it _means_ to be inferred. For the _inference_ to
+--| _hold water_ it must work _BOTH_ ways, meaning we can run the same _ARGUMENT_ backwards and see if the device agrees. _HOWEVER_ I must remind
+--| *YOU the KNOWER* at this point, we have not yet proved the existence of an _ARBITRARY_ natural number.  _THIS_ is where *YOU the KNOWER* must
+--| trust *YOU the READER* not to accidentally miss calling this function with a _RAW_ natural number. Only _NUMBERS_ that come from _lengths_ of
+--| _tape_. Again, neither the device nor _I_ have a say in the matter.
 def from_the_inferred_end (depth : Nat) : List FACT := (the_steps_of_the_argument.reverse.take depth).flatten
+
+--| For instance, we can easily create these three _programs_ as the _ARGUMENT_ run backwards for a _certain_ number of steps that we have
+--| demonstrated must be in ℕ as the length of a TAPE computed by a machine of pure, meaningless logic.
 def the_coefficient_tape : List FACT := from_the_inferred_end the_orbital_data_points
-def the_coupling_tape    : List FACT := from_the_inferred_end the_dimensions_of_universe
-def the_radius_tape      : List FACT := the_coupling_tape
+def the_memory_tape    : List FACT := from_the_inferred_end the_dimensions_of_universe
+--| We will need _two_ names for this. One represents that actual List FACT that we constructed above. The other name only _represents_ the ideas
+--| necessary to understand how the device works. In essence, this is our INFERRED tape of the NONCOMPUTABLE one inferred from Episode 7. One is a fact that can
+--| be read rather plainly above. The other is, well, the entire hypothesis of the device: How _TRUE_ is _TRUE = TRUE_. Epsilon measures how far
+--| from _TRUE_ we can look to see if there is a lower energy direction allowing the compiler to figure this same fact out using less energy.
+def the_epsilon_tape    : List FACT := the_memory_tape
+--| The _astute_ _KNOWER_ will see that two of these programs _appear_ to compute the same thing but have _different_ names. The question is, does
+--| the _compiler_ see that difference? Or is _THAT_ the fencepost the _compiler_ can't see but Jar Jar can? The _next_ fencepost?  But why these
+--| three programs? Well, because we can build the Fast Fourier Transform with them. That might be an exaggeration. I think *YOU the READER* can
+--| describe the recursive butterfly well enough, even if it only evaluates a polynomial. I believe that is a _stop_ on Newton's train of thought.
+--| And Gauss. And Cooley. And Tukey. And CD manufacturers. In their process of pits and lands and angles of lasers. Next stop on this crazy,
+--| roundabout train of thought: the concept of the _NOWTRINO_ _is_ the concept of _causal prediction_.
+theorem the_causal_prediction_has_the_stokes_length : the_causal_prediction.length = the_nowtrino_path.stokes.length := rfl
+--| In that the _trains_ of thought have the same number of stops.
+theorem the_data_table_has_the_gauss_length : the_data_table.length = the_coordinate_system.gauss.length := rfl
+--| Of which the station numbers could be seen as coefficients of a Taylor series that solves a particular differential equation
+theorem the_differential_form_has_the_coefficient_length : the_differential_form.length = the_coefficient_tape.length := rfl
+--| Where we ignore high order terms.
+theorem the_fit_curve_has_the_coefficient_and_basis_length : the_fit_curve.length = (the_coefficient_tape ++ the_basis.the_reading).length := rfl
+--| Which gives us a way to express the photoelectric effect as a mathematical process generating a series: Borweins' process. Well, why the
+--| _photoelectric_ effect? Because there is _another way_ to describe the worldline of the photon. The compiler has _INFERRED_ it. Why Borweins'
+--| number? Well, I had to plant the coefficient somehow.  If there is another, longer series of the application of Gauss's law (all of them at once)
+--| that goes 1 1 1 1 1 1 1 emα-decay after that, we can put _their_ name here. Again, this is the best I can find in the device. There just _MAY_
+--| be another one in there.
+def bent_card    := the_coefficient_tape.length
+--| All we need to do is _scale_ and _shift_ all observations to this _length_ and the mathematical process of computing Borweins' integrals becomes
+--| the driving engine of the _electron_ that generates a _photon_ as explained in BENT_CARD.pdf.
 
-theorem the_causal_prediction_has_the_stokes_length :
-    the_causal_prediction.length = the_nowtrino_path.stokes.length := rfl
-theorem the_data_table_has_the_gauss_length :
-    the_data_table.length = the_coordinate_system.gauss.length := rfl
-theorem the_differential_form_has_the_coefficient_length :
-    the_differential_form.length = the_coefficient_tape.length := rfl
-theorem the_fit_curve_has_the_coefficient_and_basis_length :
-    the_fit_curve.length = (the_coefficient_tape ++ the_basis.the_reading).length := rfl
-
---| THE THIRTEEN is the length of the four-deep walk, and the calculus census agrees with that walk cell for cell.
-def thirteen    := the_coefficient_tape.length
-def theCoupling := thirteen + the_dimensions_of_universe
+--| What if the Borweins' process generated the coefficients of the Taylor series polynomial? Or, as the compiler worked out the answer to in Episode 4,
+--| what if the Taylor series defined by the differential equations is generated by a repeated process? This process should be _optimal_ in order
+--| to meet timing constraints. It is therefore evaluated using Horner's rule. The coefficients then are generated by some linear process and a
+--| polynomial in evaluation of the device is formed. This is CARD 3.
 theorem the_differential_form_is_the_coefficient : the_differential_form = the_coefficient_tape := rfl
-theorem the_coupling_is_the_coupling_tape    : theCoupling = the_coupling_tape.length := rfl
-def theRadius   := the_radius_tape.length
-def thePlaces   := (from_the_inferred_end thirteen).length - theCoupling
 
+--| At this point, the code above suggests we take a _coincidence_ to be a *RESOLUTE* *INVIOLATE* *LAW* of *NATURE*. That _coincidence_ is assumed
+--| to be the _result_ of the generating function. In this case, it is a number that occurs _naturally_, meaning whatever anyone wants that to mean.
+--| The BENT_CARD is clear, all that the device needs is the _volume_ required to _store_ the answer. It will then place that _volume_ *ahem* memory,
+--| (which is required to take up a volume because of electrons and all) in a Box that is labeled in a way we _cannot_ know without inspecting the
+--| build process _itself_.
+def the_macguffin := bent_card + the_dimensions_of_universe
+theorem the_macguffin_is_the_calculus_epsilon  : the_macguffin = the_epsilon_tape.length := rfl
+--| By construction this is true: Both lists given above are the same list. It is also a counterfactual statement of the hypothesis being tested.
+--| Or, as I like to put it, (T=F) = (F=T). I believe even the _variable name_ can be demonstrated to be _true_ on some level. That level is Episode
+--| 12. I mean, Measurement.the_macguffin certainly looks true to me if it cannot carry the value _TRUE_. It does carry a _projection_ of some sort.
+--| This is the size of the result of the projection operator.
+def the_length_of_tape_that_distinguishes_true   := the_epsilon_tape.length
+--| What about all the other stuff we are ignoring? Well, that looks a lot like a unified version of physics complete enough to explain how the
+--| electron can make a flip-flop. The rest of it falls out from standard engineering models giving a _complete_ _CAUSAL_ *TRUTH* as we now predct
+--| the result of the compiler, allowing us to demonstrate the _FULL PREDICTIVE POWER_ of our model of the Universe number. Universal number. Some
+--| constant.
+def the_express_route_station_count   := (from_the_inferred_end bent_card).length - the_macguffin
+--| These are _ALL_ the places we have to model in the device to understand what is going on. The device is constructed to view this stack of
+--| _TRUE_ → _TRUE = TRUE_ as some sort of set of logical gates. Ignore the gates, they are completely unimportant for this argument to work. As I
+--| said not that long ago, *YOU the READER* only needs this _to compile_ in order to _demonstrate the result_. What will really crunch
+--| *YOU the KNOWER's* chocolate bar is that _the only way to demonstrate that number_ is to _compile the program_. Unless, of course, this means
+--| what it says and it can be *INFERRED* by hand. Like here in The Macguffin as we discuss the Macguffin referred to by the Macguffin. Watch as
+--| the card _bends_:
 
---| THE TWO SLIPS.  The Borwein integrals ∫ ∏ sinc(x/(2k+1)) dx sit at π/2 exactly as long as the first odd outweighs the
---| rest of them, 1 > 1/3 + 1/5 + ⋯, and over a common denominator that is one integer: the first weight less the sum of
---| the others, the slack.  Once around the ladder, four factors, it holds.  Through thirteen, seven factors, it holds.
---| Twice around, eight factors, it slips, and the eighth odd is fifteen: the ladder, all three pages counted once.
---| Thirteen is the odd the integral holds through; the odd after it is where it slips.  The basis reads two cells, so
---| two is the basis, and one is the successor of zero.  No numeral is written.
-def the_odds (n : Nat) : List Nat := (List.range n).map (fun k => (the_basis.the_reading.length * k).succ)
-def the_common_denominator (n : Nat) : Nat := (the_odds n).foldl Nat.lcm Nat.zero.succ
-def the_weights (n : Nat) : List Int := (the_odds n).map (fun o => Int.ofNat (the_common_denominator n / o))
-def the_slack (n : Nat) : Int := (the_weights n).head! - (the_weights n).tail.sum
+--| The reason why *YOU the KNOWER* can ignore the gates _for now_ is that none of the information in the gates is ever used in the computation
+--| below. The device appears to be rigorously _INFERRED_, meaning we can _exactly_ construct the _zeroed_ out and _calibrated_ device without using
+--| the obtuse logic at all, just the _INDUCTIVES_ that run through the argument.
+
+--| *YOU the KNOWER* can follow constructions of _inductives_, right? And, _completely_ ignore the logic if *YOU the KNOWER* want. This is enough
+--| evidence for *YOU the READER* to be able to ignore the logic if they want to. We can always refer to _this device_ that _seems_ to fully replicate
+--| the _logic_ through _mathematical induction_.
+
+--| But the trick is far from over... It is time to bring back Michael Penn because we need to clean the board and bring this to the top. The trick
+--| _is_ to focus on the _summation variables_ and _limits_. For a refresher of the Borweins' integrals, I will unabashedly plug Michael Penn's channels
+--| again. If I didn't watch this video, I couldn't have made up this patter.
+
+--|                                                     https://www.youtube.com/watch?v=7RYG8SMnR1Y
+
+--| We start by computing the least common multiple of the_fencepost_bug and all the numbers we have discovered _so far_. If this number is
+--| _different_ from the _discovered_ number, then the _number_ does _NOT_ contain the_fencepost_bug. Assume for a second that a projection was
+--| the multiplication of the thing and another thing. So, we can detect if the fencepost bug has been projected into our numbers so far.
+def a_length_of_fence (n : Nat) : Nat := (count_up_to n).foldl Nat.lcm the_fencepost_bug
+--| If _n_ and *a_length_of_fence (n)* are _THE SAME_, then this indicates the _presence_ of the _projection_ of *the_fencepost_bug* in *n*,
+--| according to the _INFERRED_ device. This is _the generator_. It _generates_ *NOWTRINOs*. We will see a series of clicks with our detector
+--| in a few moments. It will _click_ in the _presence_ of the *DISTINGUISHABLE* _fence post bug_ of Episode 1. The device either _needs_ it, or
+--| it is merely _sufficient_ for the understanding of the _device_, or completely immaterial to the *CAUSAL LAW of THE DEVICE* itself.
+
+--| Relying on the fact that all the numbers that can be used _come with_ their proof of Natural-ly occurring in the _device_ as a member of ℕ, we
+--| can compute all the _representable inverses_ the device can _distinguish_. By the pigeonhole principle, it _CAN DISTINGUISH NO MORE_.
+def the_rational_explanation (n : Nat) : List Int := (count_up_to n).map (fun o => Int.ofNat (a_length_of_fence n / o))
+--| The rational explanation is Borweins' process exceeding _1_. When Borweins' process exceeds one, the _nowtrino_ exhibits _decay_. The photon
+--| (as modeled in the device) is released from the _nowtrino_ and Borweins' process ensures the _nowtrino_ compley decays away, just not in any
+--| amount of time that can be measured.
+
+--| Finally, we express the obvious Borweins' process to *YOU the KNOWER*, How much time is left? 1 - (1/3 + 1/5 + 1/7 ...). Ladies and Gentlemen,
+--| Introducing the Borwein process as modeled by the device. I understand we can get some really _clever_ probabilistic formulations out of
+--| Borweins' process.
+def the_slack (n : Nat) : Int := (the_rational_explanation n).head! - (the_rational_explanation n).tail.sum
+
+--| For this intuition, we need to think of the orbital data points of Yarn Theory as _going around_ something and being _accumulated_. The integral
+--| is as good as any of a process to think about it in.  Which is great because that is how the Borweins framed it when describing their process.
+--| Here, we are intentionally differentiating the _concept_ of going around a loop integral and the data collected in an orbit. Two descriptions
+--| of the same thing that, in this case, happen to share a description.
 def once_around_the_integral  := the_orbital_data_points
-def through_thirteen          := thirteen.succ / the_basis.the_reading.length
-def twice_around_the_integral := the_basis.the_reading.length * the_orbital_data_points
---| HAVE_OTHERS_RUN_THE_EXPERIMENT?  Yes.  Four factors, the plateau.
-theorem once_around_holds         : Int.ofNat Nat.zero < the_slack once_around_the_integral  := by decide
---| HAVE_OTHERS_RUN_THE_EXPERIMENT?  Yes.  Seven factors, still the plateau.
-theorem it_holds_through_thirteen : Int.ofNat Nat.zero < the_slack through_thirteen          := by decide
---| IS_THIS_THE_ONLY_OUTCOME?  No.  Eight factors, the slip.
-theorem twice_around_slips        : the_slack twice_around_the_integral < Int.ofNat Nat.zero := by decide
---| IS_IT_SPINNING?  The seventh plus one is the eighth: the second time around.
-theorem the_two_slips_meet        : through_thirteen.succ = twice_around_the_integral       := rfl
---| IS_THIS_A_NAOTRINO?  The ladder is thirteen plus the basis: the thing that is not the thirteen.
-theorem the_ladder_is_the_odd_after_thirteen    : the_fit_curve.length = thirteen + the_basis.the_reading.length := rfl
---| DO_YOU_SEE_THE_EVIDENCE?  The ladder is the last odd twice around.
-theorem the_ladder_is_the_last_odd_twice_around : (the_odds twice_around_the_integral).getLast? = some the_fit_curve.length := by decide
+--| The integral for this view of the device is literally just counting boxes and splitting it evenly across the entire reading. I believe this is
+--| the same intuition that drives _Stokes Theorem_ and _Variational Mechanics_ at the same time: things are _smooth enough_ _small enough_ _relative_
+--| to the _signal_ of the _computation_ that we can approximate with a flat table. A 2-d box of data captures evertying we need to know about a
+--| 3-d, possibly curved universe. *YOU the KNOWER* understand that Mercator wasn't just doing math for fun, right?
 
---| THE OTHER SIDE OF THE SLIP.  Every census tape is a machine of all ones, a T=T in every cell.  Read it into a register,
---| base the basis, and the once-around machine is 1111: fifteen, the odd the integral slips at, the length of the ladder.
---| In the sum over sign vectors the one term that moves at the slip is the vector where every rung pulls against the
---| first, the all-ones genome, and its moment is the slack.  Once around, all ones, read as a number, is where twice around
---| slips.  A machine is all ones exactly when its register plus one is the base raised to its length.
---| HOW?  Horner's rule: a tape is a coefficient list, read at the basis.
-def the_register (t : List FACT) : Nat :=
+--| So, we invariably must bend the table if we put enough data into it. No 2-d representation can satisfy a 3-d world without bending. The device's
+--| world is small, meaning that the most it is willing to let bend is the combination of the BENT_CARD.pdf and the (arguably optional) fencepost
+--| bug. The ratio supplies the smoothing nature of locality described just above.
+def through_the_bent_card          := (bent_card + the_fencepost_bug) / the_basis.the_reading.length
+--| Does a glued quarter on a bent table follow the curve of the table or does it stay straight? That ambiguity, as we will see in a moment, looks
+--| like the ambiguity of the need for discussing fencepost bugs in the computation of the length of a list. Do the elements represent the posts
+--| or the spans? Why not both?
+
+--| So we do it again, allowing us to compute a _reading_ at every _orbital data point_.
+def twice_around_the_integral := the_basis.the_reading.length * the_orbital_data_points
+--| The device ensures we can get as _precise_ and _accurate_ a reading as possible at the resolution of computation required for the computation
+--| at hand. I believe we have carefully constructed these variable to represent both the _notion of_ and, to a certain extent, the _value of_ the
+--| smooth _integrals_ that model the _device_.
+
+--| We have some theorems here to demonstrate what I am talking about. We now demonstrate some mathematical _conclusions_ that can be _drawn_ about
+--| _orbital paths_ and the _integrations thereof_. Remember, the principle at the heart of Yarn Theory is _NUMBER GO UP_ and the integral _WE_ think
+--| is describing this _process_ is a Borwein-like integral.
+
+theorem the_first_time_around_is_not_enough_calculus_to_emit_a_photon : Int.ofNat Nat.zero < the_slack once_around_the_integral := by decide
+theorem the_bent_card_never_counts_photons : Int.ofNat Nat.zero < the_slack through_the_bent_card := by decide
+theorem the_second_time_around_is_enough_calculus_to_emit_a_photon : the_slack twice_around_the_integral < Int.ofNat Nat.zero := by decide
+
+--| We still have not _represented_ the number in a _human readable form_, but we can test the device to see interesting behaviors.  In this case,
+--| it appears that somewhere along the second time around, the integral... _slips_. The _value_ starts to _decay_ before it can get all the way
+--| around again. Where does this happen, just after where a fence post bug might be:
+theorem did_we_find_the_bug? : through_the_bent_card + the_fencepost_bug = twice_around_the_integral := rfl
+--| Is the fencepost bug just going around the loop _one extra time_? Seems like it. Well, if this _IS_ the bug, can we take it out now and _still_
+--| perform this computation?
+theorem the_episode_7_device_is_just_the_bent_card_and_a_planted_reading  : the_fit_curve.length = bent_card + the_basis.the_reading.length := rfl
+--| The good news is our episode 8 device appears to compute the fit curve as well.
+theorem episode_8_just_might_compute_the_model_for_us : (count_up_to twice_around_the_integral).getLast? = some the_fit_curve.length := by decide
+
+--| One way to tell if we are doing it right is to see if the two devices _click_. Here is a _tape reader_ that finds the _FACTS_ on the tape and
+--| ensures that they _click!_. If, indeed, episode 8's description is TRUE exactly _WHEN_ episode 7's description is, then we aren't _using_ the logic
+--| of the device, we are verifying that the _INDUCTIVE_-only description of the device matches the _COMPLEX LOGIC_ description of the device. We
+--| note this as yet _another_ tape. This is the _third_ tape. The _residue comparison_ tape. The thing that _verifies_ the two device descriptions
+--| describe the same thing.
+def naotrino_detector (t : List FACT) : Nat :=
   t.foldl (fun acc f => the_basis.the_reading.length * acc + (@decide f.truth f.click).toNat) Nat.zero
---| IS_THIS_A_NEW_PARTICLE?  What is on the other side is once around, read as a number.
-theorem the_other_side_of_the_slip          : the_register the_causal_prediction = the_fit_curve.length := rfl
---| DO_YOU_SEE_THE_EVIDENCE?  That number is the last odd twice around.
-theorem the_other_side_is_the_last_odd      : (the_odds twice_around_the_integral).getLast? = some (the_register the_causal_prediction) := by decide
---| WHY?  The geometric series: register plus one is the base to the length.
-theorem the_once_around_machine_is_all_ones : (the_register the_causal_prediction).succ   = the_basis.the_reading.length ^ the_causal_prediction.length   := rfl
---| WHY?  The same, thirteen cells.
-theorem the_calculus_machine_is_all_ones    : (the_register the_differential_form).succ = the_basis.the_reading.length ^ the_differential_form.length := rfl
---| WHY?  The same, fifteen cells.
-theorem the_ladder_machine_is_all_ones      : (the_register the_fit_curve).succ   = the_basis.the_reading.length ^ the_fit_curve.length   := rfl
---| ALL FOUR MONOMIALS, and every one of them T=T: a cell is a one, a one is a monomial in the basis, and the register is
---| their sum.  The cubic with every coefficient one, written out.
---| HOW?  Their sum.
-theorem the_four_monomials : the_register the_causal_prediction
+--| Wouldn't it be neat if this turned out to be a Turing machine described by the device? That the _NAOTRINO_ model is the Turing machine built to
+--| ensure the comparison of the device to electrons _always_ showed they were _identical_? Pretty neat gimmick if we can pull it off. Can we pull it
+--| off well enough to _fool_ calculus into _working_ because the _approximation_ is _too_ good?
+
+theorem is_this_a_law_of_naotrinos? : naotrino_detector the_causal_prediction = the_fit_curve.length := rfl
+theorem the_inferred_fit_clicks : (count_up_to twice_around_the_integral).getLast? = some (naotrino_detector the_causal_prediction) := by decide
+theorem adding_in_the_fencepost_gives_a_monomial : naotrino_detector the_causal_prediction + the_fencepost_bug
+                                                          = the_basis.the_reading.length ^ the_causal_prediction.length   := rfl
+theorem same_for_the_smooth_answer_description : naotrino_detector the_differential_form + the_fencepost_bug
+                                                          = the_basis.the_reading.length ^ the_differential_form.length := rfl
+theorem another_monomial : naotrino_detector the_fit_curve + the_fencepost_bug   = the_basis.the_reading.length ^ the_fit_curve.length   := rfl
+theorem the_polynomial_model : naotrino_detector the_causal_prediction
     = ((List.range the_causal_prediction.length).map (the_basis.the_reading.length ^ ·)).sum := rfl
 
--- THE CLICK.  What came back is what went in, and the once-around closure reads to one cell.
-theorem the_identity_clicks_same : the_truth.fact = truthDistinct.fact := rfl
-theorem once_around_reads_one_cell : once_around_the_ladder.α.infer = [FACT.Truth] := rfl
---#print axioms a_naotrino_model
---#print axioms the_identity_clicks_same
---#print axioms once_around_reads_one_cell
+--| From this description, it appears that we might have a polynomial that we can just bring into existence with an empty set of FACTs. In this case,
+--| we are looking into the _vacuum_ of _space_ ([]) to see if we can find some nowtrinos. That also gives us a monomial. The AFFINE monomial.
+theorem the_monomial_is_a_polynomial : naotrino_detector ([] : List FACT) + the_fencepost_bug =
+                                                                                the_basis.the_reading.length ^ ([] : List FACT).length := rfl
+--| This is merely the idea that the concept of being AFFINE comes from _nowhere_ not just _in particular_ but _exactly_.
 
-def the_universe_tape : List FACT := the_coordinate_system.gauss
-def the_leading_tape : List FACT :=
-  the_universe_tape.flatMap fun _ => the_universe_tape.flatMap fun _ => the_coefficient_tape
-def quadA := the_leading_tape.length                                                                        --| T²(C−T)
--- AND THE OTHER TWO, THE SAME WAY.  The funge tape is the basis (2 cells).  The coupling tape and the radius tape are the
--- same walk of the inferred end, five deep, read twice under two names (18 cells).  Each coefficient is one tape laid down once per cell of
--- another, nested as deep as its degree.  Yes, it looks rigged.  It IS rigged, and the rigging is the point: every factor
--- is a strip the device read, and `decide` says each tape is exactly the product the old line multiplied.  The polynomial
--- was never chosen from the coefficients up; it was walked from the tapes down.
-def the_funge_tape : List FACT := the_basis.the_reading
-def the_middle_tape : List FACT :=
-  the_funge_tape.flatMap fun _ => the_coupling_tape.flatMap fun _ => the_universe_tape.flatMap fun _ =>
-    the_radius_tape.flatMap fun _ => the_radius_tape
-def the_constant_tape : List FACT :=
-  the_coupling_tape.flatMap fun _ => the_radius_tape.flatMap fun _ => the_radius_tape.flatMap fun _ =>
-    the_radius_tape.flatMap fun _ => the_radius_tape
-def quadB := the_middle_tape.length                                                                          --| 2CTR²
-def quadC := the_constant_tape.length                                                                        --| CR⁴
-def theBase   := the_basis.the_reading.length * the_dimensions_of_universe
-def theScale  := theBase ^ thePlaces
+--| This also allows us to build the monomial for the satire itself! This is linear in the number of equivalations if there is only one equivalation.
+theorem the_satire_is_a_polynomial : naotrino_detector carefully_chosen_variable_names.equivalation + the_fencepost_bug =
+                                                     the_basis.the_reading.length ^ carefully_chosen_variable_names.equivalation.length := rfl
+--| We have _three_ carefully chosen variable names to equivalate: t₀, t₁, and unified_physical_theory.  Seems _cubic_. I think I see another one on
+--| the horizon.
 
--- THE UNITS, AS A PAIR.  R²/T: length squared over time.  An area rate -- the areal velocity, r²θ̇, the thing Kepler's second
--- law says a central orbit keeps constant: equal areas in equal times.  T is the clock (`in_heartbeats`, the ninth slot of
--- `speed`) read off the fabric, and the fabric is the one-pole sphere of Episode 5:83, where an area rate is the only motion
--- there is.  So the conversion from closure units to cells is not an axis chosen from outside; it is the conserved quantity of
--- the coordinate system the device declared.  A pair, in the box's own currency, applied exactly once, below.
--- THE TALLY.  Nat is the compiler's counter -- Ep1:348, "Great. Use Nat." -- and the device never names it in the crank.
--- The crank is written over any tally with the five seats the click needs: a sum, a product, a truncated difference, an
--- order, and a decision on the order; plus a way to count a tape and the one scale.  Nat is handed over once, by name, at the floor.
-namespace Crank
+--| The thing is, if *YOU the KNOWER* were to actually _attempt_ the mathematical process being _described_ here, it would be on a 2-d sheet of paper.
+--| Eventually, the device implies, that paper will have to bend and flex in order to hold a theorem of sufficient bullshit.
+theorem the_opaque_wall_is_a_2d_table  : naotrino_detector opaque_wall_of_math.equivalation + the_fencepost_bug =
+                                                                  the_basis.the_reading.length ^ opaque_wall_of_math.equivalation.length := rfl
+--| WHY?
+theorem the_proof_is_the_cube : naotrino_detector the_proof.equivalation + the_fencepost_bug =
+                                                                       the_basis.the_reading.length ^ the_proof.equivalation.length := rfl
+theorem the_berry_abstraction_plants_the_polynomial : naotrino_detector the_causal_prediction
+    = naotrino_detector ([] : List FACT) + the_fencepost_bug
+    + naotrino_detector carefully_chosen_variable_names.equivalation + the_fencepost_bug
+    + naotrino_detector opaque_wall_of_math.equivalation + the_fencepost_bug
+    + naotrino_detector the_proof.equivalation + the_fencepost_bug := rfl
+--| That's the _WHY_, not the _HOW_. Actually, it is _BOTH_ and that was _HARD_ to _DO_. What we are _SAYING_ here is the _DEVICE_ describes
+--| itself by detecting itself. We can demonstrate _rigorously_ that we can build naotrino detectors out of naotrino detectors using a small
+--| subset of natural numbers that the device was happy enough to provide us definitions for.  It's like the device says: "Using these pieces of me,
+--| can you use the theory of nowtrinos to _build_ a _naotrino_ detector to show that _naotrinos_ can just give off _naotrinos_ for now reason?
+
+--| Surely You're Joking, Mr. Feynman! We can't possibly need to model all possible virtual photon interactions? I bet the device doesn't either.
+
+--| THE CLICK.  What came back is what went in, and the once-around closure reads to one cell.
+theorem the_identity_clicks_same : the_truth.fact = a_distinct_truth.fact := rfl
+
+--| THE DEMONSTRATION. Following the electron _once_ around the _orbit_ is sufficient to conclude something about _α_. Assume for a second that
+--| electrons had both position and moment for just a minute or two. I mean, that's what a wire is. An average position and momentum. While not the
+--| best way to measure _α_, the _projection_ of _α_ should be on this computation _SOMEWHERE_ as it is computed with _ELECTRONS_. The bent card
+--| cannot change a certain part of the projection _by construction_ so we should see this appear in the model of the electron, the model of a flipflop,
+--| the model of formal languages, or the model calculus. If the device models _all of these_ simultaneously, only _ONE_ should have the projection
+--| of the _electron_ and the _others_ have completely _abstracted_ the _electron_ _away_.
+theorem once_around_reads_one_cell : once_around_the_orbit.α.infer = [FACT.Truth] := rfl
+theorem α_projects_to_the_fencepost : once_around_the_orbit.α.infer.length = the_fencepost_bug := rfl
+--| Isn't that a daisy? It appears the device has identified all of the code with the residue of the fencepost bug as the code that _SHOULD CLICK_
+--| exactly when a _model_ of the _electron_ _clicks_. So let's build our model of the _device_ and see if it agrees with known _models_ of the
+--| _electron_.
+
+def the_free_variable_count   := the_basis.the_reading.length * the_dimensions_of_universe
+def all_possible_variables  := the_free_variable_count ^ the_express_route_station_count
+
+namespace bent_card
 section
-variable (Tally : Type) [Add Tally] [Mul Tally] [Sub Tally] [LT Tally] [DecidableRel (α := Tally) (· < ·)]
-         (count : List FACT → Tally) (scale : Tally)
+variable (Term : Type) [Add Term] [Mul Term] [Sub Term] [LT Term] [DecidableRel (α := Term) (· < ·)]
+         (lambda : List FACT → Term) (scale : Term)
 
-def the_areal_velocity : Tally × Tally := (count the_radius_tape * count the_radius_tape, count the_coordinate_system.gauss)
+--| We know that the most number of things the device can identify is the mappings between two identical epsilon tapes. The * is the _fencepost_
+--| between the tapes. This is represented in the compiler as this Cartesian product. The second value is merely the current count of the number
+--| of dimensions required to express the value. Think of this a length and _dimensionality_ instead of length and _direction_. The length being
+--| the scalar product of the lengths of the descriptions of the calculus necessary to demonstrate QED well enough to simulate this code.
+def fencepost : Term × Term := (lambda the_epsilon_tape * lambda the_epsilon_tape, lambda the_coordinate_system.gauss)
 
--- THE FORCED POLYNOMIAL.  In closure units the residual is the characteristic polynomial of the click table and nothing
--- else: (C−T)·y² − 2C·y + C.  Three readings.  No tape is in the loop; the tapes above are the check that cells were these
--- three, each carrying its share of the units -- A·T², B·T·R², C·R⁴ -- which is what "rigged" turns out to have meant.
-def closureA := count the_coefficient_tape
-def closureB := count the_basis.the_reading * count the_coupling_tape
-def closureC := count the_coupling_tape
+def the_exact_Taylor_series_degree := lambda the_coefficient_tape
+def the_measurement_degrees_of_freedom := lambda the_basis.the_reading * lambda the_memory_tape
+def the_length_of_the_path_from_here_to_there := lambda the_memory_tape
 
--- THE SEED.  The whole strip, converted into closure units by the same pair.  It is not decoration: the residual has TWO
--- roots, and the seed is what picks one.  The vertex sits at B/2A, a hair under ninety cells; seed below it and the device
--- converges, correctly and uselessly, on the other root.  A hundred and eight is above it, so the strip selects its own
--- constant.  Newton chooses the Gateaux.
-def theSeedPair : Tally × Tally :=
-  (count episode8_description * (the_areal_velocity Tally count).2, (the_areal_velocity Tally count).1)
+def the_device_as_linear_operator_mapped_identity : Term × Term := (lambda episode8_description * (fencepost Term lambda).2, (fencepost Term lambda).1)
 
--- THE TURN OF THE CRANK, IN THE BOX.  Episode 5's FACT.SAME put a ratio in a box: `Quot.mk TruthOrder`, two representatives
--- declared one number by `Quot.sound`, "an expected division algorithm replaced with multiplication in the field of the single
--- element."  A reading is a PAIR, numerator and denominator -- Ep1:411, "ℚ necessarily is two natural numbers, not necessarily
--- distinct" -- and Newton on a quadratic is homogeneous, so the turn is products of readings and nothing else:
---
---     N' = A·N² − C·D²          D' = 2A·N·D − B·D²
---
--- The halting test is `Quot.sound` used as a test: two turns land on the same point of the quotient when their cross-products
--- agree to within one place at the CELL scale -- the units applied to the test, not to the pair -- |N·D' − N'·D|·s·R² < D·D'·T,
--- the absolute value taken as the sum of the two truncated differences because a Nat has no sign to give.  Multiplication, no
--- division.  Past that point the pair is left alone and the remaining folds cost nothing -- the same arm that makes the
--- Closure turn safe.  The box is opened ONCE, below, where the digits are printed -- because printing digits is what opening
--- the box means.
--- ONE TURN, NAMED.  The step the crank repeats, as its own definition, so a ledger of its turns can be checked one turn at
--- a time against literals -- the kernel never has to run the fold, only to agree with each line of it.
-def turn (p : Tally × Tally) : Tally × Tally :=
-  let n := p.1
-  let d := p.2
-  let n' := closureA Tally count * n * n - closureC Tally count * d * d
-  let d' := count the_basis.the_reading * closureA Tally count * n * d - closureB Tally count * d * d
-  if ((n * d' - n' * d) + (n' * d - n * d')) * scale * (the_areal_velocity Tally count).1
-       < d * d' * (the_areal_velocity Tally count).2
-    then p else (n', d')
-def theClosurePair : Tally × Tally :=
-  (List.replicate episode8_description.length ()).foldl (fun p _ => turn Tally count scale p) (theSeedPair Tally count)
+def the_device_computing_the_next_configuration (cartesian_product : Term × Term) : Term × Term :=
+  --| Possibly a spatial dimension
+  let x := cartesian_product.1
+  --| Possibly another spatial dimension
+  let y := cartesian_product.2
+  --| The solution to one of many Wave Equations written in the language of the bent card of the device
+  let x' := the_exact_Taylor_series_degree Term lambda * x * x - the_length_of_the_path_from_here_to_there Term lambda * y * y
+  --| The solution to one of many Wave Equations scaled by the proportional law. Just like the _electron_.
+  let y' := lambda the_basis.the_reading * the_exact_Taylor_series_degree Term lambda * x * y - the_measurement_degrees_of_freedom Term lambda * y * y
+  --| Now, we _BACK OUT_ the second variation computation _INFERRED_ to exist from the _Taylor series polynomial length_.
+  if ((x * y' - x' * y) + (x' * y - x * y')) * scale * (fencepost Term lambda).1
+       < y * y' * (fencepost Term lambda).2
+    then cartesian_product else (x', y')
+
+--| It is up to *YOU the KNOWER* to infer that the _unused_ variable _y_ *IS* the _VARIATIONAL SOLUTION_ to the _Principle of Least Action_, some
+--| value _linear_ in .
+def proportional_laws_accumulate_commutation_projections_called_TERM_LAMBDAS : Term × Term :=
+  (List.replicate episode8_description.length ()).foldl
+                                                    (fun x _y_ => the_device_computing_the_next_configuration Term lambda scale x)
+                                                    (the_device_as_linear_operator_mapped_identity Term lambda)
 
 -- THE READING, IN CELLS.  The closure pair times the areal velocity.  Still a pair; still in the box.
-def theReadingPair : Tally × Tally :=
-  ((theClosurePair Tally count scale).1 * (the_areal_velocity Tally count).1,
-   (theClosurePair Tally count scale).2 * (the_areal_velocity Tally count).2)
+def fenceposts_must_be_preserved : Term × Term :=
+  ((proportional_laws_accumulate_commutation_projections_called_TERM_LAMBDAS Term lambda scale).1 * (fencepost Term lambda).1,
+   (proportional_laws_accumulate_commutation_projections_called_TERM_LAMBDAS Term lambda scale).2 * (fencepost Term lambda).2)
 end
-end Crank
+end bent_card
 
--- THE TALLY, HANDED OVER.  Once.  The compiler's counter and the only reading the device takes, `List.length`, together.
-def the_areal_velocity := Crank.the_areal_velocity Nat List.length
-def closureA := Crank.closureA Nat List.length
-def closureB := Crank.closureB Nat List.length
-def closureC := Crank.closureC Nat List.length
-def theSeedPair    := Crank.theSeedPair Nat List.length
-def theTurn := Crank.turn Nat List.length theScale
-def theClosurePair := Crank.theClosurePair Nat List.length theScale
-def theReadingPair := Crank.theReadingPair Nat List.length theScale
+--| See Episode 1 for my disdain of all things ℕ as being _decadent_. I hope I have shown _why_ I feel that way _now_. The numbers, I like. The
+--| idea of an _infinite_ set of these numbers stretches the _imagination_ as well as _space-time_ *itself*. So, we put a fencepost around the Nats
+--| we can use. Up to the length of the Term. This shows that _indeed_ the _reader_ can be made to _validate_ that only demonstrated numbers are
+--| ever employed.
+def the_first_step_of_the_proof_is_to_eschew_the_naturals_unless_proven_to_exist_without_peano := bent_card.fencepost Nat List.length
 
--- THE BOX, OPENED -- BY INFERENCE.  One division, at the readout, and it is not a primitive the device borrowed.  INFERRED's
--- whole class is one field, `inferred? metaphysical physical := metaphysical ≤ physical`, and `Nat.div` is that `≤` iterated:
--- while the denominator fits under the numerator, subtract and count, and stop when the order flips.  Sturm's count, one more
--- time.  So the last operation in this file is *YOU the KNOWER* inferring which integer the ratio is, by the `≤` the band
--- carries.  And what the division hands back is A_TRUTH_ABOUT's own field, `the_constant_is_at_least_true : TRUE ≤ a_constant`,
--- at the floor with the pair in the slots: the inferred integer, multiplied back, does not exceed the pair.  At least true.
--- Never more.  The upper bound -- one more card and it would exceed -- needs the denominator positive, which the kernel can
--- only see by turning the whole crank; that certificate waits for the meter.
-theorem at_least_true (numerator denominator : Nat) :
-    denominator * (numerator / denominator) ≤ numerator := Nat.mul_div_le numerator denominator
+def an_exact_polynomial_description := bent_card.the_exact_Taylor_series_degree Nat List.length
+def the_trace_of_truth_in_the_device := bent_card.the_measurement_degrees_of_freedom Nat List.length
+def the_number_of_symbols_that_must_be_written_to_express_this := bent_card.the_length_of_the_path_from_here_to_there Nat List.length
+def the_held_house := bent_card.the_device_as_linear_operator_mapped_identity Nat List.length
 
--- THE RECEIPT.  `Nat.div` is the division ALGORITHM -- well-founded recursion, subtract while the order holds -- and the
--- algorithm itself costs no axiom.  What costs an axiom is saying that the integer it stops on IS the ratio: that (D·k, D) and
--- (N·s, D) are one point of the box.  That is Episode 5's `Quot.sound`, on Episode 5's relation, on pairs.  So the number is
--- not delivered bare.  It is delivered with its receipt: the integer, together with the proof that the box does not tell it
--- from the pair.  `#print axioms` on the receipt shows the honest bill -- propext for the coins, Quot.sound for the box.
--- THE BOX IS THE DEVICE'S BOX, READ IN LENGTHS.  Episode 5's `TruthOrder less more := less ≤ more` is on Bullshit; the
--- reading is two Nats no Bullshit could carry.  The translation between them is the only one this file has ever used: a
--- `.length`.  So the pair-order is TruthOrder transported through the readers' currency -- cross-multiplied so that pairs
--- with different denominators compare as ratios -- and on a common denominator it IS Episode 5's `≤` on the numerators.
--- Same constructor as FACT.SAME (`Quot.sound` on one `≤`), same slot (`the_constant_is_at_least_true`), lengths for Bullshit.
-@[reducible] def ReadingOrder (less more : Nat × Nat) : Prop := less.1 * more.2 ≤ more.1 * less.2
-theorem any_pair_is_its_inferred_integer (numerator denominator : Nat) :
-    (Quot.mk ReadingOrder (denominator * (numerator / denominator), denominator) : Quot ReadingOrder)
-      = Quot.mk ReadingOrder (numerator, denominator) :=
-  Quot.sound (r := ReadingOrder) (Nat.mul_le_mul_right denominator (at_least_true numerator denominator))
+def the_naming_of_the_term_lambdas := bent_card.proportional_laws_accumulate_commutation_projections_called_TERM_LAMBDAS Nat List.length
+def build_the_list_of_variables_by_name := the_naming_of_the_term_lambdas all_possible_variables
 
-def theReadingCertified :
-    { k : Nat // (Quot.mk ReadingOrder (theReadingPair.2 * k, theReadingPair.2) : Quot ReadingOrder)
-                  = Quot.mk ReadingOrder (theReadingPair.1 * theScale, theReadingPair.2) } :=
-  ⟨theReadingPair.1 * theScale / theReadingPair.2,
-   any_pair_is_its_inferred_integer (theReadingPair.1 * theScale) theReadingPair.2⟩
+def make_sure_there_is_a_delimiter_between := bent_card.fenceposts_must_be_preserved Nat List.length
+def arrange_the_information_appropriately := make_sure_there_is_a_delimiter_between all_possible_variables
 
-def theReadingScaled := theReadingCertified.val
-def theReading :=
-  let s := (toString theReadingScaled).toList
-  String.ofList (s.take (s.length - thePlaces)) ++ "." ++ String.ofList (s.drop (s.length - thePlaces))
+def infer := bent_card.the_device_computing_the_next_configuration Nat List.length
+def the_truth_inferred_by_the_device := infer all_possible_variables
 
---| But... this is the _EXPRESS_ route, what if we take the _LOCAL_ instead?
-end Measurement
+theorem the_constant_is_at_least_true (numerator denominator : Nat) : denominator * (numerator / denominator) ≤ numerator :=
+                                                                                                  Nat.mul_div_le numerator denominator
 
--- THE READOUT. It can see how it was made. What made it cannot see it.
-#eval Measurement.theReading
---#print axioms Measurement.theReadingScaled
---#print axioms Measurement.theReadingCertified
+--| The device should be able to recognize that this definition is just a _restatement_ of the _theorem_ *at_least_true* within the *device*. Scales
+--| _increase_ values as the _SINGLE_ application of _YARN THEORY_ because it requires the _DEVICE_ to compute possibly increasing the size of the
+--| tape. ∀x,y ∈ ℝ, x.1/x.2 ≤ y.1/y.2 → x.1 * y.2 ≤ y1. * x.2.  And just like that, we can remove _division_ from the _representation_ of a
+--| _Rational_ *relation*.
+@[reducible] def the_rational_idea_of_relativity (x y : Nat × Nat) : Prop := x.1 * y.2 ≤ y.1 * x.2
+theorem a_partitioning_of_quotients (numerator denominator : Nat) :
+    (Quot.mk the_rational_idea_of_relativity (denominator * (numerator / denominator), denominator) : Quot the_rational_idea_of_relativity)
+      = Quot.mk the_rational_idea_of_relativity (numerator, denominator) :=
+  Quot.sound (r := the_rational_idea_of_relativity) (Nat.mul_le_mul_right denominator (the_constant_is_at_least_true numerator denominator))
+
+def the_constant_can_be_inferred :
+    { k : Nat // (Quot.mk the_rational_idea_of_relativity (arrange_the_information_appropriately.2 * k, arrange_the_information_appropriately.2) : Quot the_rational_idea_of_relativity)
+                  = Quot.mk the_rational_idea_of_relativity (arrange_the_information_appropriately.1 * all_possible_variables, arrange_the_information_appropriately.2) } :=
+  ⟨arrange_the_information_appropriately.1 * all_possible_variables / arrange_the_information_appropriately.2,
+   a_partitioning_of_quotients (arrange_the_information_appropriately.1 * all_possible_variables) arrange_the_information_appropriately.2⟩
+
+def the_constant_factor_of_scaling_bullshit := the_constant_can_be_inferred.val
+
+--| The express station count gives us the whole part, as it is highly descriptive at a high level. Our low-level nowtrino model provides everything
+--| after the decimal.
+def holy_shit :=
+  let s := (toString the_constant_factor_of_scaling_bullshit).toList
+  String.ofList (s.take (s.length - the_express_route_station_count)) ++ "." ++ String.ofList (s.drop (s.length - the_express_route_station_count))
+
+end readers_experience
+
+#eval readers_experience.holy_shit
+#print axioms readers_experience.the_constant_can_be_inferred
+#print axioms readers_experience.the_constant_factor_of_scaling_bullshit

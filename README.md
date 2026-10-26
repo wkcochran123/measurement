@@ -1,5 +1,12 @@
 # Measurement
+## The Puzzle
+1.*The easy question*: What is the name of the value printed in Episode 12? 
+1.*The hard question*: How would you describe the process for naming it?
+1.*The key question*: Did I plant the number or is it *key part* of the argument?
+1.*Left as an exercise for the reader*: Describe the rest of the *key* for which the number is a *key part*. 
 
+Use the *key* to open the box.
+## The Puzzle Box
 ```
 measurement % cd CARD_2/Measurement
 Measurement % grep EPISODE *.lean
@@ -17,25 +24,27 @@ Episode11.lean:__EPISODE 11__: _The Force_
 Episode12.lean:__EPISODE 12__: _Let Him Cook. . . . . . . Levin_
 Measurement % cd ..
 CARD_2 % time lake build > build_log && cat build_log
-lake build > build_log  1413.08s user 11.30s system 99% cpu 23:47.97 total
-✔ [2/16] Built Measurement.Episode01 (1.0s)
-✔ [3/16] Built Measurement.ComputerProgram (193ms)
-✔ [4/16] Built Measurement.Episode02 (1.4s)
+lake build > build_log  1425.55s user 10.93s system 99% cpu 24:01.76 total
+✔ [2/16] Built Measurement.Episode01 (1.9s)
+✔ [3/16] Built Measurement.ComputerProgram (204ms)
+✔ [4/16] Built Measurement.Episode02 (1.5s)
 ✔ [5/16] Built Measurement.Calibration.LeanCalibration (1.8s)
-✔ [6/16] Built Measurement.Episode03 (4.4s)
-✔ [7/16] Built Measurement.Episode04 (1326s)
-✔ [8/16] Built Measurement.Episode05 (19s)
-✔ [9/16] Built Measurement.Episode07 (16s)
-ℹ [10/16] Built Measurement.Episode08 (6.9s)
-info: Measurement/Episode08.lean:765:0: "137.011290548979457087737300"
-✔ [11/16] Built Measurement.Episode09 (20s)
-✔ [12/16] Built Measurement.Episode10 (29s)
-✔ [13/16] Built Measurement.Episode11 (2.6s)
-ℹ [14/16] Built Measurement.Episode12 (3.7s)
-info: Measurement/Episode12.lean:1190:0: 'Measurement.the_box_has_one_point' depends on axioms: [Quot.sound]
-info: Measurement/Episode12.lean:1251:0: "137.011290548979457087737300"
-info: Measurement/Episode12.lean:1252:0: 'Measurement.the_other_machine_reads' depends on axioms: [propext]
-✔ [15/16] Built Measurement (640ms)
+✔ [6/16] Built Measurement.Episode03 (4.5s)
+✔ [7/16] Built Measurement.Episode04 (1342s)
+✔ [8/16] Built Measurement.Episode05 (20s)
+✔ [9/16] Built Measurement.Episode07 (15s)
+ℹ [10/16] Built Measurement.Episode08 (3.4s)
+info: Measurement/Episode08.lean:1290:0: "137.011290548979457087737300"
+info: Measurement/Episode08.lean:1291:0: 'readers_experience.the_constant_can_be_inferred' depends on axioms: [propext, Quot.sound]
+info: Measurement/Episode08.lean:1292:0: 'readers_experience.the_constant_factor_of_scaling_bullshit' depends on axioms: [propext, Quot.sound]
+✔ [11/16] Built Measurement.Episode09 (16s)
+✔ [12/16] Built Measurement.Episode10 (32s)
+✔ [13/16] Built Measurement.Episode11 (2.2s)
+ℹ [14/16] Built Measurement.Episode12 (3.8s)
+info: Measurement/Episode12.lean:1072:0: 'Measurement.the_box_has_one_point' depends on axioms: [Quot.sound]
+info: Measurement/Episode12.lean:1133:0: "137.011290548979457087737300"
+info: Measurement/Episode12.lean:1134:0: 'Measurement.the_other_machine_reads' depends on axioms: [propext, Quot.sound]
+✔ [15/16] Built Measurement (1.2s)
 Build completed successfully (16 jobs).
 CARD_2 %
 ```
