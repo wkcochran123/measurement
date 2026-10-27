@@ -1190,26 +1190,49 @@ theorem α_projects_to_the_fencepost : once_around_the_orbit.α.infer.length = t
 --| exactly when a _model_ of the _electron_ _clicks_. So let's build our model of the _device_ and see if it agrees with known _models_ of the
 --| _electron_.
 
+--| Well, first we need to understand how many _free_ variables the model needs and we need to allocate space for them
 def the_free_variable_count   := the_basis.the_reading.length * the_dimensions_of_universe
+--| Then, instead of storing the values, the device stores the binary operation that generates the values as the values. This should be the most space
+--| ever needed to figure out station stops the device figured out for the _fast_ description of the data: *The Causal Law of Increasing Bullshit*.
 def all_possible_variables  := the_free_variable_count ^ the_express_route_station_count
+--| This is the bent_card, the one to follow. The device will build another model. Its own model at the same time. The model of the model we are
+--| building right now. But, that's another show (thanks Alton!).
 
+--| So let's examine the *bent_card* *YOU the READER* are _palming_ with the _quarter_ in the gimmicked _Box_ that makes sure the _quarter_ follows
+--| the _card_.
 namespace bent_card
+--| We start by understanding the free variable count
 section
-variable (Term : Type) [Add Term] [Mul Term] [Sub Term] [LT Term] [DecidableRel (α := Term) (· < ·)]
-         (lambda : List FACT → Term) (scale : Term)
+--| The 3x3 3-Card Monte: one where the quarter is, one where the quarter will be. The transform between them is the _throw_ that _straightens_ the
+--| card, represented as a Term and 4 functions, or 4 functions and two Terms. One where the quarter is, one where the quarter is going to be.
+variable (Term : Type)
+         [Add Term] [Mul Term] [Sub Term] [LT Term] [DecidableRel (α := Term) (· < ·)]
+         (lambda : List FACT → Term)
+         (scale : Term)
+--| Since this is *The Causal Law of Increasing Bullshit* and the only total ordering is that of _total causality_, there is a total order given by
+--| a _relation_. These are _four variable functions_ given _4_ _different_ counting functions, these could be implemented _differently_ giving
+--| _different_ interpretations on the operands and values. _4_ variable functions implies *Φ(x) = Ο(x⁴)*. Notice, it doesn't matter which way the
+--| _limit_ runs, either x→0 or x→∞, a constant falls out. Luckily, a _different_ constant depending on the _limit!_ If only there were a problem
+--| in describing the universe where the description gave two different answers.
 
---| We know that the most number of things the device can identify is the mappings between two identical epsilon tapes. The * is the _fencepost_
+--| Can't think of one. Perhaps *YOU the KNOWER* has a *GUT* feeling on this. We continue describing the device now.
+
+--| We know that the largest number of things the device can identify is the mappings between two identical epsilon tapes. The * is the _fencepost_
 --| between the tapes. This is represented in the compiler as this Cartesian product. The second value is merely the current count of the number
---| of dimensions required to express the value. Think of this a length and _dimensionality_ instead of length and _direction_. The length being
+--| of dimensions required to express the value. Think of this as a length and _dimensionality_ instead of length and _direction_. The length being
 --| the scalar product of the lengths of the descriptions of the calculus necessary to demonstrate QED well enough to simulate this code.
 def fencepost : Term × Term := (lambda the_epsilon_tape * lambda the_epsilon_tape, lambda the_coordinate_system.gauss)
 
+--| So, we go find our current Taylor series degree to see if we are taking the limit _this way_ or _that way_.
 def the_exact_Taylor_series_degree := lambda the_coefficient_tape
+
+--| Allocate the space necessary for the data
 def the_measurement_degrees_of_freedom := lambda the_basis.the_reading * lambda the_memory_tape
 def the_length_of_the_path_from_here_to_there := lambda the_memory_tape
 
-def the_device_as_linear_operator_mapped_identity : Term × Term := (lambda episode8_description * (fencepost Term lambda).2, (fencepost Term lambda).1)
-
+--| We now describe the device combining two terms to see if they are the same or different in _time_ or in _space_ or in _both_. If it has gone
+--| all the way around, return the wave equation. You know, the thing that falls out of a variational solution of Maxwell's equations? This is
+--| represented _two_ different ways, one with the length of the Taylor series polynomial, and one with the _provided counting function_ *λ*.
 def the_device_computing_the_next_configuration (cartesian_product : Term × Term) : Term × Term :=
   --| Possibly a spatial dimension
   let x := cartesian_product.1
@@ -1224,42 +1247,74 @@ def the_device_computing_the_next_configuration (cartesian_product : Term × Ter
        < y * y' * (fencepost Term lambda).2
     then cartesian_product else (x', y')
 
---| It is up to *YOU the KNOWER* to infer that the _unused_ variable _y_ *IS* the _VARIATIONAL SOLUTION_ to the _Principle of Least Action_, some
---| value _linear_ in .
+--| And now we describe the two cards that _don't_ carry the _quarter_. As it were, this is the rest of the *key* that isn't the *key part* of the
+--| argument. In this case, this is _THE_ _unary_ operator. It is _I_ or _-1_ depending on the variance. It is never _-I_. *NUMBER GO UP*, just not
+--| necessarily _strictly_ in *YARN THEORY*. (Can't get away from the simple idea that _something_ _SOMEWHERE_ is *EVER INCREASING*.  I see no
+--| _REAL_ reason for this to be the case, but let's just _PRETEND_ that's how the universe works for the time being.)
+def the_device_as_linear_operator_mapped_identity : Term × Term := (lambda episode8_description * (fencepost Term lambda).2, (fencepost Term lambda).1)
+
+--| Speaking of, are *YOU the KNOWER* aware of any physical phenomenon that we might represent as _-1_ that needs two numbers to do so? I can't think
+--| of one. You see, it is up to *YOU the KNOWER* to infer that the _unused_ variable _y_ *IS* the _VARIATIONAL SOLUTION_ to the
+--| _Principle of Least Action_, some value _linear_ in the number of logical symbols necessary to express it. Every computation _scales_ x but leaves
+--| the function y=f(x) _unchanged_ but at the _SAME_ universe level.
 def proportional_laws_accumulate_commutation_projections_called_TERM_LAMBDAS : Term × Term :=
   (List.replicate episode8_description.length ()).foldl
                                                     (fun x _y_ => the_device_computing_the_next_configuration Term lambda scale x)
                                                     (the_device_as_linear_operator_mapped_identity Term lambda)
+--| This is the _IMPLIED OTHER_ unary operator. The other two cards are merely applications of linear operators.
 
--- THE READING, IN CELLS.  The closure pair times the areal velocity.  Still a pair; still in the box.
+--| Finally we state *The First Bullshit Law:* *The Variational Solution of Real Equations Can be Made To Look Like Spinors*
 def fenceposts_must_be_preserved : Term × Term :=
   ((proportional_laws_accumulate_commutation_projections_called_TERM_LAMBDAS Term lambda scale).1 * (fencepost Term lambda).1,
    (proportional_laws_accumulate_commutation_projections_called_TERM_LAMBDAS Term lambda scale).2 * (fencepost Term lambda).2)
 end
+--| And the card bends as the spinor spins around. Not once, _but twice_, for the Borwein process to complete. After the second spin, it starts over
+--| having left a _residue_.
 end bent_card
+
+--| Now, let's review a high level description of the argument:
 
 --| See Episode 1 for my disdain of all things ℕ as being _decadent_. I hope I have shown _why_ I feel that way _now_. The numbers, I like. The
 --| idea of an _infinite_ set of these numbers stretches the _imagination_ as well as _space-time_ *itself*. So, we put a fencepost around the Nats
---| we can use. Up to the length of the Term. This shows that _indeed_ the _reader_ can be made to _validate_ that only demonstrated numbers are
+--| we can use. Up to the length of the Term. This shows that _indeed_ the _reader_ can be made to _validate_ that only *demonstrated numbers* are
 --| ever employed.
 def the_first_step_of_the_proof_is_to_eschew_the_naturals_unless_proven_to_exist_without_peano := bent_card.fencepost Nat List.length
+--| Once these naturals _exist_, they can be used to _describe_ other natural numbers without _proving_ they *MUST EXIST*. Remember, we aren't
+--| _proving_ anything, only _demonstrating a consistent description_ of _description_.
 
+--| There are _four descriptions_ of numbers that describe the device. Those that _add_:
 def an_exact_polynomial_description := bent_card.the_exact_Taylor_series_degree Nat List.length
+--| Those that _subtract_:
 def the_trace_of_truth_in_the_device := bent_card.the_measurement_degrees_of_freedom Nat List.length
+--| Those that _multiply_:
 def the_number_of_symbols_that_must_be_written_to_express_this := bent_card.the_length_of_the_path_from_here_to_there Nat List.length
+--| Some way to compare them.
 def the_held_house := bent_card.the_device_as_linear_operator_mapped_identity Nat List.length
+--| These correspond to _three_ different counting methods and _four_ 2x2-way relations, keeping either the sign or the identity both ways. These
+--| compute relations compute _tape lengths_ based on how much _bullshit_ had to be _minted_ by _scaling_ in order to have enough _room_ to _store_
+--| the _data_. Each number/process is assumed _orthogonal_ to each other through a _very generous_ definition of _orthogonal_.
 
+--| The generous definition of orthogonal: the list of proofs of the natural numbers can be sorted by _length_ order and by
+--| _computational requirements_. This _orthogonal_ is implied on the NORM of _computational requirements_, aka *the bullshit norm*:
 def the_naming_of_the_term_lambdas := bent_card.proportional_laws_accumulate_commutation_projections_called_TERM_LAMBDAS Nat List.length
 def build_the_list_of_variables_by_name := the_naming_of_the_term_lambdas all_possible_variables
 
+--| In order to record data, there needs to be a delimiter between the numbers. This _fencepost_ is the end of the _counting_ cycle of whichever
+--| λ needs evaluating at this point of the computation: aka the _quaternion_:
 def make_sure_there_is_a_delimiter_between := bent_card.fenceposts_must_be_preserved Nat List.length
 def arrange_the_information_appropriately := make_sure_there_is_a_delimiter_between all_possible_variables
 
+--| So, this is what the device is doing, trying to compute the computational requirements of a set of numbers determined by how hard it is to
+--| represent those numbers using the same rules:
 def infer := bent_card.the_device_computing_the_next_configuration Nat List.length
 def the_truth_inferred_by_the_device := infer all_possible_variables
+--| The rules? The Lean programming language.
 
+--| Which means that
 theorem the_constant_is_at_least_true (numerator denominator : Nat) : denominator * (numerator / denominator) ≤ numerator :=
-                                                                                                  Nat.mul_div_le numerator denominator
+                                                                                                 Nat.mul_div_le numerator denominator
+--| if it can demonstrate this rational relationship: a simple composition of the three _λs_ that demonstrates the _fourth:_ the division _algorithm_,
+--| then these numbers have been fully demonstrated to be _natural_ for all _intents and purposes_ built entirely without _COUNTING CARDINAL VALUES_.
 
 --| The device should be able to recognize that this definition is just a _restatement_ of the _theorem_ *at_least_true* within the *device*. Scales
 --| _increase_ values as the _SINGLE_ application of _YARN THEORY_ because it requires the _DEVICE_ to compute possibly increasing the size of the
@@ -1270,13 +1325,16 @@ theorem a_partitioning_of_quotients (numerator denominator : Nat) :
     (Quot.mk the_rational_idea_of_relativity (denominator * (numerator / denominator), denominator) : Quot the_rational_idea_of_relativity)
       = Quot.mk the_rational_idea_of_relativity (numerator, denominator) :=
   Quot.sound (r := the_rational_idea_of_relativity) (Nat.mul_le_mul_right denominator (the_constant_is_at_least_true numerator denominator))
+--| The device has this very relation described in Episode 5.
 
+--| The only thing we have demonstrated is that if all _three_ *λs* were the *Natural counting function:* *succ*, then
 def the_constant_can_be_inferred :
     { k : Nat // (Quot.mk the_rational_idea_of_relativity (arrange_the_information_appropriately.2 * k, arrange_the_information_appropriately.2) : Quot the_rational_idea_of_relativity)
                   = Quot.mk the_rational_idea_of_relativity (arrange_the_information_appropriately.1 * all_possible_variables, arrange_the_information_appropriately.2) } :=
   ⟨arrange_the_information_appropriately.1 * all_possible_variables / arrange_the_information_appropriately.2,
    a_partitioning_of_quotients (arrange_the_information_appropriately.1 * all_possible_variables) arrange_the_information_appropriately.2⟩
 
+--| In fact, put simply:
 def the_constant_factor_of_scaling_bullshit := the_constant_can_be_inferred.val
 
 --| The express station count gives us the whole part, as it is highly descriptive at a high level. Our low-level nowtrino model provides everything
@@ -1290,3 +1348,18 @@ end readers_experience
 #eval readers_experience.holy_shit
 #print axioms readers_experience.the_constant_can_be_inferred
 #print axioms readers_experience.the_constant_factor_of_scaling_bullshit
+
+--| Did you notice the reader's experience doesn't depend on Santa Claus, Rudolph, the FSM, Space Jam, or Jar Jar Binks?  It only depends on the
+--| simply stated principle that station stop numbers increase as *YOU the READER* go _UPTOWN_ and decrease as *YOU the KNOWER* go _DOWNTOWN_. The
+--| Total Causal Scenic Railroad is a fantastic yarn spun between two electrons. *YOU the READER* see that we have modeled spin-2 as a phenomena
+--| similar to the _photo electric_ effect, with the _Carrier_ being _emitted_ and _stored_ _increasing memory needs_ *BECAUSE* _the compiler_
+--| *needed to use another bucket for its hash table*. I mean, this does describe _another_ *POSSIBLE* _world line_ that the device needs to describe:
+--| *something* emitted and absorbed by a _nowtrino_.
+
+--| Let's erase all this and take the last sentence to the top of the board.
+
+--| I hope _YOU the READER_ can _see_ the description of a polynomial in the code. It is not even close to a _complete_ description, but enough of
+--| a _description_ to see how this _ressembles_ and _re-assembles_ the polynomial simultaneously. Like Ikea furniture, the device has
+--| _some assembly required!_  Don't worry, it doesn't have to be perfect. I'm fine with a few bugs in it.
+
+--| Tune in next week for:  Peano sings "I'm my own grandpa!"
