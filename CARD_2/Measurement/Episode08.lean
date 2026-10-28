@@ -339,7 +339,7 @@ def Trial.experiment : Trial → List FACT --                           | We can
 
 def Study.phenomenon : Study → List FACT --          | We should be able ignore the other LISP machine we have created. This will let us have two
   | .hypothesis f         => [f] --------------------+ interlocking LISP machines working on the same program, but offset by one. Two LISP machines
-  | .a_few_pints f _ rest => f :: rest.phenomenon -- | arguing with each other on the same tape that encodes the program. One is TRUE the other, isn't.
+  | .book_of_records f _ rest => f :: rest.phenomenon -- | arguing with each other on the same tape that encodes the program. One is TRUE the other, isn't.
 
 def Computation.elaborate : Computation → List FACT -- | Given our program that evaluates to _TRUE_ or _NOT SO TRUE_, there are two ways to represent
   | .program f _        => [f] ------------------------+ this. We have f=_ for the simplest version of this. We have _=_ to have a more.. nuanced view
@@ -593,7 +593,7 @@ def implication₁ : Trial := .signal_response zero reading₁ zero reading₁ i
 
 --| Which allows us to model the _dependent_ variable on the *ComputationalProcess* of _zero_ _one_ _two_...
 def y₀ : Study := .hypothesis zero
-def y₁ : Study := .a_few_pints zero implication₁ y₀
+def y₁ : Study := .book_of_records zero implication₁ y₀
 --| Isn't this exactly what _science_ is? The *Study* of the _dependent variable_? In this case, _y_ appears to exist on a hyperellipse of the
 --| hypercone. These are merely intuitions suggested to exist due to the nature of the frinkahedron to represent _3_ kinds of delicious pastry:
 --| the filled donut, the donut, and the donut hole.

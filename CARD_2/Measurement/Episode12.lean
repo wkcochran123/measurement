@@ -873,11 +873,11 @@ def satSearch (b : Basis) (g : Schedule) (nvars : Nat) : Bool :=
   (allAssignments nvars).any (fun bs => (b.holds (assignFrom bs) g 0).1)
 
 --| THE REPRESENTATION, RUNG BY RUNG.  Episode 9 writes its ladder once and lets each step take only the rungs it reads.
---| Here the ladder is handed itself: Episode 8's two ways and the card at the bottom, and after that every rung is handed
---| the rungs below it, so the ladder is indexed by its own outputs, not Episode 8's.  What is not handed over is the
---| universe.  The first ten rungs need no pin; from COMPARABLE up each rung is pinned by hand, and from PRESENT up two seats
---| are forced, the quantum lifted into the upness and carried.  LOCAL, UNIVERSAL and LOGICAL need no pin.  INFERRED is a
---| side branch: the spin at the top reads the thirty-six rungs, not the inference.
+--| Here the ladder is handed itself: the first rung crosses from Episode 8's Prop device onto a card with FACT in the box,
+--| the two ways are laid over that card, and after that every rung is handed the rungs below it, so the ladder is indexed
+--| by its own outputs, not Episode 8's.  What is not handed over is the universe.  The first ten rungs need no pin; from
+--| COMPARABLE up each rung is pinned by hand, and from PRESENT up two seats are forced, the quantum lifted into the upness
+--| and carried.  INFERRED is a side branch: the spin at the top reads the thirty-six rungs, not the inference.
 namespace the_representation
 open assembly_instructions
 
@@ -888,205 +888,253 @@ def the_quartic : Number := readers_experience.the_coefficient_tape.foldr Number
 theorem the_quartic_reads_back_the_tape : the_quartic.peano = readers_experience.the_coefficient_tape ++ [zero] := rfl
 theorem the_quartic_is_one_past_the_card : the_quartic.peano.length = readers_experience.bent_card + 1 := rfl
 
+--| THE FIRST CARD.  Episode 8's truth carrier, dealt again with FACT in the box instead of Prop: the same symbol, the same
+--| zero under it.  The device is Lean's; the card is the ledger's.
+def the_first_card : CarrierProcess FACT := { symbol := FACT.Truth, quarter := .zero FACT.Truth }
+
 --| rung 1, DISTINGUISHABLE: no pin.
 noncomputable def rung01 :=
-  WE_FIRST_WRITE_DOWN_WE_IN_OUR_NOTEBOOK_THAT_THIS_IS_FOR_NOWTRINO_OBSERVATIONS_ONLY Prop elaborated_by_lean elaborated_by_lean FACT.Truth
+  STEP1_NAME_THE_LEDGER_AND_MARK_IT_WITH_THE_SYMBOL_OF_THE_NOWTRINO Prop elaborated_by_lean the_first_card FACT.Truth
+
+--| THE CARD BETWEEN.  A third card, the same face again, one more index: its carrier is the carrier of the FACT card.  Marked
+--| with Episode 8's Prop nowtrino field for field, it deals rung 1 by `rfl` and bills nothing.  The selection is held as an
+--| index, not quotiented: Carrier Box, Carrier FACT, and the tape between them, Carrier (Carrier FACT).
+def the_card_between : CarrierProcess (CarrierProcess FACT) := { symbol := FACT.Truth, quarter := .zero FACT.Truth }
+instance the_mark_between : DISTINGUISHABLE (CarrierProcess FACT) the_card_between :=
+  { fact := a_distinct_truth.fact, symbol := a_distinct_truth.symbol, different? := a_distinct_truth.different?, not_the_same := a_distinct_truth.not_the_same }
+noncomputable def the_crossing_between :=
+  STEP1_NAME_THE_LEDGER_AND_MARK_IT_WITH_THE_SYMBOL_OF_THE_NOWTRINO (CarrierProcess FACT) the_card_between the_first_card FACT.Truth
+theorem the_tape_between_deals_rung01 : the_crossing_between = rung01 := rfl
+#print axioms the_tape_between_deals_rung01
+
+--| THE CROSSING.  Rung 1 took its mark from Episode 8's Prop nowtrino and put it on the FACT card.  From here the device
+--| infers every rung over FACT from that one mark, as Episode 8 inferred them over Prop: the mark, an inhabitant for its
+--| symbol, a model, and the two ways.  Inferring a FACT is a proof.
+attribute [local instance high] rung01
+instance : Inhabited (DISTINGUISHABLE.symbol the_first_card) := instInhabitedProp
+noncomputable instance A_NOWTRINO_MODEL_OF_FACT : REAL FACT the_first_card := A_CAUSAL_THEORY FACT the_first_card
+noncomputable def this_way_in_FACT : LOCAL FACT the_first_card := A_SMOOTH_MODEL FACT the_first_card
+noncomputable def that_way_in_FACT : UNIVERSAL FACT the_first_card this_way_in_FACT :=
+  IS_IT_CONNECTED_BY_A_YARN? FACT the_first_card (nowtrino_model := this_way_in_FACT)
 
 --| rung 2, ADMISSIBLE: no pin.
 noncomputable def rung02 :=
-  NOW_WE_BUILD_A_CHAIN_REACTION_TO_AMPLIFY_THE_HYPOTHETICAL_PARTICLE Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01
+  STEP2_DISCOVER_SOMETHING_DIFFERENT FACT the_first_card the_first_card FACT.Truth rung01
 
 --| rung 3, COUNTABLE: no pin.
 noncomputable def rung03 :=
-  THEN_WE_COUNT_THE_PARTICLES_IN_THE_CASCADE Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02
+  STEP3_COUNT_THE_NUMBER_OF_THE_PHENOMENA FACT the_first_card the_first_card FACT.Truth rung01 rung02
 
 --| rung 4, ENCODED: no pin.
 noncomputable def rung04 :=
-  IF_THERE_ARE_ENOUGH_PARTICLES_WE_CAN_HEAR_A_CLICK Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03
+  STEP4_COMPUTE_THE_RATE_OF_PARTICLES FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03
 
 --| rung 5, RESIDUE: no pin.
 noncomputable def rung05 :=
-  LOTS_OF_PARTICLES_ALL_AT_ONCE_CAN_ONLY_RESOLVE_TO_ONE_CLICK_THOUGH Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04
+  STEP5_NAME_THE_RESIDUE_TO_COMPUTE_VALUE FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04
 
 --| rung 6, BINARY: no pin.
 noncomputable def rung06 :=
-  LETS_MAKE_A_COUNTER_OF_CLICKS_NOw Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05
+  STEP6_MAKE_ANOTHER_COUNTER_OF_CLICKS_NOW FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05
 
 --| rung 7, REPEATABLE: no pin.
 noncomputable def rung07 :=
-  AND_THEN_LET_THE_DETECTOR_RUN Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06
+  STEP7_AND_SO_WE_CANT_COUNT_HOW_OFTEN_THE_METAPHOR_GOES_AROUND_JUST_LIKE_PITS_AND_LANDS_ON_A_CD FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06
 
 --| rung 8, NUMERIC: no pin.
 noncomputable def rung08 :=
-  MAKE_SURE_THE_DATA_WE_HAVE_IS_THE_CLICK_COUNT Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07
+  STEP8_INTERPRET_THE_NEXT_3_SYMBOLS FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07
 
 --| rung 9, REPRESENTABLE: no pin.
 noncomputable def rung09 :=
-  NAME_THE_VARIABLES_CAREFULLY_TO_TELL_A_STORY Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08
+  STEP9_NAME_THE_VARIABLES_CAREFULLY_TO_TELL_A_STORY FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08
 
 --| rung 10, PHYSICAL: no pin.
 noncomputable def rung10 :=
-  WAIT_FOR_JUPYTER_TO_GATHER_ENOUGH_DATA_TO_PLOT Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09
+  STEP10_A_HALTING_COMPUTATION_IS_GIVEN_AS_INPUT_TO_A_NON_HALTING_FUNCTION FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09
 
 --| rung 11, COMPARABLE: 5 seats, none forced.
 noncomputable def rung11 :=
-  CHECK_FOR_CONVERGENCE_IN_THE_TIMESERIES.{
+  STEP11_CHECK_FOR_CONVERGENCE_IN_THE_TIMESERIES_MATCHES_THE_MEASUREMENT_HIGH_ORDER_TERMS.{
       0,0,0,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10
 
 --| rung 12, OBSERVED: 12 seats, none forced.
 noncomputable def rung12 :=
-  CHECK_FOR_MOTION_OF_A_NAOTRINO.{
+  STEP12_CHECK_TO_SEE_IF_THE_BORWEIN_PROCESS_HAS_UNCOVERED_A_PROPERTY_OF_ELECTRONS.{
       0,0,0,0,0,0,0,0,0,0,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11
 
 --| rung 13, PRESENT: 19 seats, forced at 2, 16.
 noncomputable def rung13 :=
-  WHEN_EXACTLY_DID_YOU_SEE_A_REINDEER_FLY.{
+  STEP13_RECORD_THE_OBSERVATION_AS_A_MODELED_AST_AS_OF_RIGHT_NOW.{
       0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12
 
 --| rung 14, MEASURABLE: 23 seats, forced at 13, 20.
 noncomputable def rung14 :=
-  DID_YOU_TRY_TO_DETECT_VARIOUS_FIELDS_AROUND_SANTA_WHEN_YOU_ATTACHED_THE_TRACKER.{
+  STEP14_REALIZE_THAT_THIS_PROCESS_TAKES_THE_APPARANT_SAME_AMOUNT_OF_TIME_EACH_TIME.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13
 
 --| rung 15, GUNGAN: 27 seats, forced at 15, 24.
 noncomputable def rung15 :=
-  DONT_FORGET_WE_ARE_TALKING_ABOUT_A_PARTICLE_THAT_IS_EVERYWHERE_SO_SANTA_HAS_THEM.{
+  STEP15_SO_MODEL_THE_PROCESS_AS_SOMETHING_THAT_JUST_SPEWS_OUT_TRUE.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14
 
 --| rung 16, SOURCE: 29 seats, forced at 15, 26.
 noncomputable def rung16 :=
-  JARJAR_TALKS_A_LOT_ABOUT_NOTHING_SOMETIMES__YOU_SPEND_A_LOT_OF_TIME_LISTENING.{
+  STEP16_VERIFY_THE_SOURCE_FILE_ONLY_EMITS_TRUE_STATEMENTS.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
 
 --| rung 17, EXECUTED: 39 seats, forced at 24, 36.
 noncomputable def rung17 :=
-  FINALLY_INSTALL_LEAN_ON_THE_DEVICE.{
+  STEP17_MAKE_SURE_THIS_COMPILES_AND_DEMONSTRATES_IT_IS_TRUE_IN_GUNGAN.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16
 
 --| rung 18, VALUE: 47 seats, forced at 28, 44.
 noncomputable def rung18 :=
-  NOW_THE_DEVICE_CAN_REVIEW_ITS_OWN_DESCRIPTION.{
+  STEP18_GIVEN_AN_INFERRED_DEFINITION_OF_THE_DEVICE_MAKE_THE_DEVICE.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,1,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17
 
 --| rung 19, MAGNITUDE: 63 seats, forced at 41, 60.
 noncomputable def rung19 :=
-  DOUBLE_CHECK_CONSERVATION_OF_WHATEVER_NOWTRINOS_CONSERVE.{
+  STEP19_GIVEN_THE_ABILITY_TO_COUNT_SOMETHING_LEAN_CAN_NOW_INFER_ADDITION.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18
 
 --| rung 20, SCALED: 79 seats, forced at 50, 67.
 noncomputable def rung20 :=
-  DONT_FORGET_THE_DEVICE_IS_VERY_HEAVY.{
+  STEP20_DUPLICATE_THE_PROCESS_TO_DEMONSTRATE_AREA_OF_RECTANGLES_LIKE_EUCLID.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19
 
 --| rung 21, LOAD: 95 seats, forced at 59, 67.
 noncomputable def rung21 :=
-  I_HAVE_FOUND_THAT_THIS_NEEDLE_ON_THE_DEVICE_POINTS_TO_SANTAS_NEXT_STOP.{
+  STEP21_GIVEN_ADDITION_MULTIPLICATION_AND_NUMBERS_INFER_ALL_OF_MATH.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20
 
 --| rung 22, OF: 111 seats, forced at 78, 79.
 noncomputable def rung22 :=
-  TO_UNDERSTAND_HOW_YOU_NEED_TO_CHOP_THE_DEVICE_INTO_PIECES_AND_SEE_HOW_THEY_WORK_TOGETHER.{
+  STEP22_PAY_CLOSE_ATTENTION_TO_WEAK_SOLUTIONS_OF_DIFFERENTIAL_EQUATIONS_WHILE_DERIVING_MATH.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21
 
 --| rung 23, BULLSHIT: 127 seats, forced at 94, 103.
 noncomputable def rung23 :=
-  FEM_SOLVES_SO_MANY_PROBLEMS_IF_YOU_HAVE_LOTS_OF_TRIANGULAR_PIECES.{
+  STEP23_GET_RID_OF_A_DERIVATIVE_SO_THAT_THE_SECOND_ORDER_MODEL_OF_THE_DEVICE_OF_EPISODE_8_CAN_BE_WRITTEN_VARIATIONALLY.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22
 
 --| rung 24, PROPAGANDA: 143 seats, forced at 110, 128.
 noncomputable def rung24 :=
-  SO_YOU_CAN_BUILD_A_BEAUTIFUL_AND_INTUITIVE_MODEL_BY_TILING_TRIANGLES_ON_THE_SURFACE_OF_THE_DEVICE.{
+  STEP24_RESTATE_THE_MODEL_AS_A_PRINCIPLE_OF_LEAST_ACTION.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23
 
 --| rung 25, ACOLYTE: 159 seats, forced at 126, 153.
 noncomputable def rung25 :=
-  VERIFY_YOUR_THEORY_WORKS_WITH_THE_MOST_ADVANCED_TEXTS_ON_VARIATIONAL_METHODS.{
+  STEP25_BUILD_LOCAL_GEOMETRIES_THAT_SATISFY_THE_TRIANGLE_INEQUALITY.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24
 
 --| rung 26, SCIENTIFIC: 175 seats, forced at 5, 142.
 noncomputable def rung26 :=
-  EVENTUALLY_YOU_TEACH_THE_THEORY___POSTDOCS_PERFORM_THE_EXPERIMENTS.{
+  STEP26_WRITE_YOUR_PROOF_IN_THE_FORMAL_LANGUAGE_OF_GEOMETRY.{
       0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25
 
 --| rung 27, TRUTH: 191 seats, forced at 14, 158.
 noncomputable def rung27 :=
-  BE_SURE_TO_KEEP_A_GOOD_LAB_NOTEBOOK_SO_OTHERS_CAN_FOLLOW_ALONG.{
+  STEP27_REPRESENT_THE_TAYLOR_SERIES_OF_THE_DEVICE.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26
 
 --| rung 28, WITNESSED: 207 seats, forced at 22, 174.
 noncomputable def rung28 :=
-  MAKE_SURE_YOUR_CURVES_ARE_SMOOTH_AS_A_DIFFERENTIALS_BOTTOM.{
+  STEP28_MAKE_SURE_YOUR_CURVES_ARE_SMOOTH_AS_A_DIFFERENTIALS_BOTTOM.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27
 
 --| rung 29, REAL: 223 seats, forced at 31, 190.
 noncomputable def rung29 :=
-  EVERYBODY_SEES_THAT_CORELATION_IN_THE_SHOTGUN_SPLATTERPLOT___DONT_THEY.{
+  STEP29_SUGGEST_A_FALSIFIABLE_EXPERIMENT.{
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-    Prop elaborated_by_lean elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28
+    FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28
 
---| rung 30, LOCAL: no pin.
+--| rung 30, LOCAL: 239 seats, forced at 40, 206.
 noncomputable def rung30 :=
-  NO_MATTER___DEMONSTRATE_YOUR_LAW_SOLVES_EULER_LAGRANGE Prop elaborated_by_lean this_way.{0,0,0,0} elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 (principia := this_way.{0,0,0,0})
+  STEP30_PROVIDE_THE_EQUATIONS_THAT_WILL_PREDICT_THE_MEASUREMENT.{
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    FACT the_first_card this_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 (principia := this_way_in_FACT)
 
---| rung 31, UNIVERSAL: no pin.
+--| rung 31, UNIVERSAL: 260 seats, forced at 227.
 noncomputable def rung31 :=
-  FINALLY_WE_CAN_CATCH_THE_TRAIN_TO_MEET_EINSTEIN_ON_THE_EULER_LAGRANGE_EXPRESS_UPTOWN Prop elaborated_by_lean this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 (the_a_train := that_way.{0,0,0,0,0,0})
+  STEP31_GET_ON_THE_NEWTON_EINSTEIN_TRAIN_OF_THOUGHT.{
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 (the_a_train := that_way_in_FACT)
 
---| rung 32, LOGICAL: no pin.
+--| rung 32, LOGICAL: 279 seats, forced at 65, 246.
 noncomputable def rung32 :=
-  WHAT_HAPPEN_? Prop elaborated_by_lean this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31
+  WHAT_HAPPEN_?.{
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31
 
 --| rung 33, HALTED: 291 seats, forced at 69, 258.
 noncomputable def rung33 :=
@@ -1099,7 +1147,7 @@ noncomputable def rung33 :=
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0}
-    Prop elaborated_by_lean this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32
+    FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32
 
 --| rung 34, MEASURED: 328 seats, forced at 92, 295.
 noncomputable def rung34 :=
@@ -1113,7 +1161,7 @@ noncomputable def rung34 :=
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0}
-    Prop elaborated_by_lean this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33
+    FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33
 
 --| rung 35, COMPILED: 352 seats, forced at 106, 319.
 noncomputable def rung35 :=
@@ -1127,7 +1175,7 @@ noncomputable def rung35 :=
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-    Prop elaborated_by_lean this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34
+    FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34
 
 --| rung 36, A_TRUTH_ABOUT: 374 seats, forced at 115, 341.
 noncomputable def rung36 :=
@@ -1142,7 +1190,7 @@ noncomputable def rung36 :=
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-    Prop elaborated_by_lean this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35
+    FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35
 
 --| rung 37, INFERRED: 401 seats, forced at 115, 368.
 noncomputable def rung37 :=
@@ -1158,7 +1206,7 @@ noncomputable def rung37 :=
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0}
-    Prop elaborated_by_lean this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35 rung36 True True
+    FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35 rung36 True True
 
 --| rung 38, A_TRUTH_ABOUT: 388 seats, forced at 115, 355.
 noncomputable def rung38 :=
@@ -1173,12 +1221,12 @@ noncomputable def rung38 :=
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,
       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-    Prop elaborated_by_lean this_way.{0,0,0,0} that_way.{0,0,0,0,0,0} elaborated_by_lean FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35 rung36 the_quartic
+    FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35 rung36 the_quartic
 
 --| THE LADDER, RECOGNISED.  Read off rung 38 with the ordinary projections and search hands back Episode 7's instances,
 --| which are not the rungs this ladder was built from: the kernel refuses the reading.  Declare the rungs to be the instances
 --| and the projections land.  The device recognises its own outputs only after it is told they are its own.
-attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35 rung36
+attribute [local instance high] rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35 rung36
 
 --| THE PAGE THE READER IS ON.  The spin's page number is the quartic, which is the coefficient tape: Episode 9's last step
 --| reads the same tape the number is read from, and it is one cell longer than the card.

@@ -1115,10 +1115,10 @@ instance (priority := low) REVIEWER_2_ASKS_WHERE_THE_NUMBER_ACTUALLY_COUNTS
     : REVIEWED Box Pigeon 8 :=
     let constructed : FACT := match jupyter_notebook.carrier with
       | .hypothesis f => f
-      | .a_few_pints f _ _ => f
+      | .book_of_records f _ _ => f
     let slip : FACT := match how_many_clicks.carrier with
       | .hypothesis f => f
-      | .a_few_pints f _ _ => f
+      | .book_of_records f _ _ => f
     { rebuttal := .methodology constructed slip Box (ULift.{i+1, i} Box) above.rebuttal }
 
 /- We thank the reviewer for asking whether repetition repeats the experiment

@@ -71,9 +71,9 @@ ME: Nothing yet. It keeps the questions from wandering off. | bigger, and whose 
 inductive Study   -- Bullshit meter ≈ 119                   |
   | hypothesis: FACT → Study  ------------------------------+ Dunno why we need to go much farther, since they answered all the questions.
 
-  | a_few_pints: FACT → Trial → Study → Study --------------+ But *YOU the KNOWER* may object at this point. Your correction objection being: This is
---                                                          | not the greatest discovery to come from Guiness. And, you'd be right. One taste, and
---                                                          | you too, would have a couple of pints.
+  | book_of_records: FACT → Trial → Study → Study --------------+ But *YOU the KNOWER* may object at this point. Your correction objection being: This is
+--                                                          | not the greatest discovery to come from Guiness. And, you'd be right. That is the
+--                                                          | t-stat.
 
 -- The first thing you will notice about a study is that it doesn't have numbers, it is either facts or process description.  This is the last
 -- thing to put into place in order to work with the compiler to agree on the representation of a number, be it 0, 1, or, should we need it, 2.
@@ -113,12 +113,12 @@ namespace Study  -- Bullshit meter ≈ 87                     | is much differen
 def le : Study → Study → Prop --                            |
   | .hypothesis f1 , .hypothesis f2 => f1 = f2    ----------+ I mean, they just gotta be different... One is like rounded to the nearest 5.
 
-  | .hypothesis f1 , .a_few_pints f2 _ _ => f1.truth = f2.truth  -------+ Having an idea and then having a _drink_ and thinking about the same idea is
+  | .hypothesis f1 , .book_of_records f2 _ _ => f1.truth = f2.truth  -------+ Having an idea and then having a _drink_ and thinking about the same idea is
                                                                       --| fine.
 
-  | .a_few_pints _ _ _, .hypothesis _ => false  -----------+ But people have really BAD ideas when they get drunk.
+  | .book_of_records _ _ _, .hypothesis _ => false  -----------+ But people have really BAD ideas when they get drunk.
 
-  | .a_few_pints f1 t1 _, .a_few_pints f2 t2 _ => ((f1.truth = f2.truth) ∧ (t1 ≤ t2)) ∨  ----+ And, no matter how drunk you get, you simply cannot
+  | .book_of_records f1 t1 _, .book_of_records f2 t2 _ => ((f1.truth = f2.truth) ∧ (t1 ≤ t2)) ∨  ----+ And, no matter how drunk you get, you simply cannot
                                                   ((f1.truth ≠ f2.truth) ∧ (t2 ≤ t1))--      | undrink a beer.
 
 end Study
@@ -194,9 +194,9 @@ structure ComputationalProcess  -- Bullshit meter ≈ 373
   closure: Study → Study := fun s => -------+ Closing time, one last call for alcohol!
     match s with --                         | DRINK UP!
     | .hypothesis f =>
-        .a_few_pints f repeatable_process.expectation (close output) ------+ Now or never, can't wait for ever. 2am shuts down the taps. Remember
-    | .a_few_pints f t _ => --                                             | this is a lesson about time and showing the compiler. At some point in
-        .a_few_pints f (repeatable_process.iterate t) (close output) --    | time, the fact _f_ will no longer matter because the output is closed.
+        .book_of_records f repeatable_process.expectation (close output) ------+ Now or never, can't wait for ever. 2am shuts down the taps. Remember
+    | .book_of_records f t _ => --                                             | this is a lesson about time and showing the compiler. At some point in
+        .book_of_records f (repeatable_process.iterate t) (close output) --    | time, the fact _f_ will no longer matter because the output is closed.
 
 -- Since we have a computational process, we can describe the objects being computed! In other words, I can show *YOU the READER* _how_ we can
 -- recover _how_ the compiler knows _how_ all of this needs to be arranged to be a consistent argument.
@@ -237,9 +237,9 @@ class NUMERIC  -- Bullshit meter ≈ 215  --------------------------------------
   related: Study → Study → Prop := fun a b => --                                       | are allowing the compiler to just _accept_ as a
       match a,b with --                                                                | hypothesis. The options to the question in front of the
       | .hypothesis f1        , .hypothesis f2        => f1 = f2 --                    | compiler are simple:
-      | .hypothesis _         , .a_few_pints _ _ _    => True  --                      | (1) Because: there is a constructive reason for it
-      | .a_few_pints _ _ _    , .hypothesis _         => False --                      | (2) Why not: cannot find a reason why a construciton
-      | .a_few_pints f1 t1 d1 , .a_few_pints f2 t2 d2 => f1 = f2 ∧ t1 ≤ t2 ∧ d1 ≤ d2 --+     should not exist as we _DEFINITELY_ have a carrier
+      | .hypothesis _         , .book_of_records _ _ _    => True  --                      | (1) Because: there is a constructive reason for it
+      | .book_of_records _ _ _    , .hypothesis _         => False --                      | (2) Why not: cannot find a reason why a construciton
+      | .book_of_records f1 t1 d1 , .book_of_records f2 t2 d2 => f1 = f2 ∧ t1 ≤ t2 ∧ d1 ≤ d2 --+     should not exist as we _DEFINITELY_ have a carrier
 --                                                                                     |     process generated by the compiler.
 --                                                                                     | This is our constructed inside joke, *YOU the READER*.
 
@@ -857,6 +857,23 @@ inductive Area   -- Bullshit meter ≈ 92            | dimensions.
 -- one exists somewhere. It is yacc that generates a compiler for the tantamount of trivial simple grammars. However, it requires a user _edit_,
 -- an inside joke, as it were.
 
+--| PLACEHOLDER (patter to come): addition goes in here, and that is fine.  The lists are the proofs that these numbers are
+--| natural -- every `sizeOf` below is the length of a cons list, one cell per constructor -- and adding two lengths is Lean's
+--| standard proof of addition.  A cell is shorter than the list it was consed onto; two shorter lists add up to less.
+theorem cell_lt (head tail : Nat) : tail < 1 + head + tail :=
+  Nat.lt_add_of_pos_left (Nat.lt_of_lt_of_le Nat.one_pos (Nat.le_add_right 1 head))
+theorem cells_lt {a b A B : Nat} (ha : a < A) (hb : b < B) : a + b < A + B := Nat.add_lt_add ha hb
+theorem cells_lt_swap {a b A B : Nat} (ha : a < A) (hb : b < B) : b + a < A + B := by
+  rw [Nat.add_comm b a]; exact Nat.add_lt_add ha hb
+theorem lead_pos (n : Nat) (h : 0 < n) (m : Nat) : 0 < n + m := Nat.lt_of_lt_of_le h (Nat.le_add_right n m)
+macro "cell_pos" : tactic => `(tactic| (repeat (first | exact Nat.one_pos | apply lead_pos)))
+macro "cell_shorter" : tactic => `(tactic| first
+  | (apply Nat.lt_add_of_pos_left; cell_pos)
+  | (apply Nat.lt_of_lt_of_le _ (Nat.le_add_right _ _); apply Nat.lt_add_of_pos_left; cell_pos))
+macro "cells_shorter" : tactic => `(tactic| first
+  | (refine cells_lt ?_ ?_ <;> cell_shorter)
+  | (refine cells_lt_swap ?_ ?_ <;> cell_shorter))
+
 namespace Area   -- Bullshit meter ≈ 111
 -- Blah blah blah... Area.. Area.. Area.. Read Euclid. The interesting part is next.
 def le : Area → Area → Prop
@@ -872,8 +889,9 @@ def le : Area → Area → Prop
 -- Compare and contrast these two lines of implementation.  One requires the use of natural numbers to implement, one does not.  One only requires
 -- two finite inductives. These mean entirely different things mathematically. The compiler cannot distinguish this computation. It looks as
 -- though Lean is starting to chug a bit under load....
-termination_by a1 a2 => max (sizeOf a1) (sizeOf a2)
---termination_by a1 a2 => sizeOf a1 + sizeOf a2
+--termination_by a1 a2 => max (sizeOf a1) (sizeOf a2)
+termination_by a1 a2 => sizeOf a1 + sizeOf a2
+decreasing_by all_goals (simp only [Area.dt.sizeOf_spec]; cells_shorter)
 end Area
 
 --                                                | How often do you think the compiler just sorta gives us stuff we haven't asked for yet?
@@ -1037,7 +1055,10 @@ def le : PigeonHole → PigeonHole → Prop := fun p1 p2 =>
           before2 ≤ before1 ∧ after2 ≤ after1 ∧ le p21 p11 ∧ le p22 p12 --   | box. I hope I didn't accidentally re-gift last year's PRESENT.....
 
 -- Remember our friend the addition of the natural numbers from above?
-termination_by p1 p2 => max (sizeOf p1) (sizeOf p2)
+--termination_by p1 p2 => max (sizeOf p1) (sizeOf p2)
+termination_by p1 p2 => sizeOf p1 + sizeOf p2
+decreasing_by
+  all_goals (simp only [PigeonHole.a_pigeon.sizeOf_spec, PigeonHole.that_box.sizeOf_spec]; cells_shorter)
 
 end PigeonHole
 
