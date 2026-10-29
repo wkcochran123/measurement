@@ -1,21 +1,26 @@
-✔ [2/16] Built Measurement.Episode01 (2.0s)
-✔ [3/16] Built Measurement.ComputerProgram (205ms)
-✔ [4/16] Built Measurement.Episode02 (1.6s)
-✔ [5/16] Built Measurement.Calibration.LeanCalibration (2.2s)
+✔ [2/16] Built Measurement.Episode01 (1.8s)
+✔ [3/16] Built Measurement.ComputerProgram (216ms)
+✔ [4/16] Built Measurement.Episode02 (1.2s)
+✔ [5/16] Built Measurement.Calibration.LeanCalibration (1.8s)
 ✔ [6/16] Built Measurement.Episode03 (4.6s)
-✔ [7/16] Built Measurement.Episode04 (1355s)
-✔ [8/16] Built Measurement.Episode05 (21s)
-✔ [9/16] Built Measurement.Episode07 (16s)
-ℹ [10/16] Built Measurement.Episode08 (5.6s)
-info: Measurement/Episode08.lean:1297:0: "137.011290548979457087737300"
-info: Measurement/Episode08.lean:1298:0: 'readers_experience.the_constant_can_be_inferred' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode08.lean:1299:0: 'readers_experience.the_constant_factor_of_scaling_bullshit' depends on axioms: [propext, Quot.sound]
+✔ [7/16] Built Measurement.Episode04 (1340s)
+✔ [8/16] Built Measurement.Episode05 (19s)
+✔ [9/16] Built Measurement.Episode07 (15s)
+ℹ [10/16] Built Measurement.Episode08 (4.8s)
+info: Measurement/Episode08.lean:1348:0: "137.011290548979457087737300"
+info: Measurement/Episode08.lean:1349:0: 'readers_experience.the_constant_can_be_inferred' depends on axioms: [propext, Quot.sound]
+info: Measurement/Episode08.lean:1350:0: 'readers_experience.the_constant_factor_of_scaling_bullshit' depends on axioms: [propext, Quot.sound]
 ✔ [11/16] Built Measurement.Episode09 (17s)
-✔ [12/16] Built Measurement.Episode10 (28s)
-✔ [13/16] Built Measurement.Episode11 (2.5s)
-ℹ [14/16] Built Measurement.Episode12 (4.6s)
-info: Measurement/Episode12.lean:1398:0: 'Measurement.the_box_has_one_point' depends on axioms: [Quot.sound]
-info: Measurement/Episode12.lean:1459:0: "137.011290548979457087737300"
-info: Measurement/Episode12.lean:1460:0: 'Measurement.what_would_you_call_this_number?' depends on axioms: [propext, Quot.sound]
-✔ [15/16] Built Measurement (831ms)
+✔ [12/16] Built Measurement.Episode10 (32s)
+✔ [13/16] Built Measurement.Episode11 (4.5s)
+ℹ [14/16] Built Measurement.Episode12 (6.2s)
+info: Measurement/Episode12.lean:908:0: 'Measurement.the_representation.the_tape_between_deals_rung01' does not depend on any axioms
+info: Measurement/Episode12.lean:929:0: 'Measurement.the_representation.same_click_is_same_account' depends on axioms: [Quot.sound]
+info: Measurement/Episode12.lean:930:0: 'Measurement.the_representation.the_chain_closes' depends on axioms: [propext, Quot.sound]
+info: Measurement/Episode12.lean:931:0: 'Measurement.the_representation.the_closure_between' depends on axioms: [propext, Quot.sound]
+info: Measurement/Episode12.lean:948:0: 'Measurement.the_representation.same_difference_clicks' does not depend on any axioms
+info: Measurement/Episode12.lean:1486:0: 'Measurement.the_box_has_one_point' depends on axioms: [Quot.sound]
+info: Measurement/Episode12.lean:1547:0: "137.011290548979457087737300"
+info: Measurement/Episode12.lean:1548:0: 'Measurement.what_would_you_call_this_number?' depends on axioms: [propext]
+✔ [15/16] Built Measurement (1.4s)
 Build completed successfully (16 jobs).

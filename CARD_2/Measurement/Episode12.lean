@@ -398,7 +398,7 @@ correspondence itself.  Cook's theorem is
 
     φ is satisfiable   ⟺   the machine accepts
 
-and the device's version of the right-hand side is `∃ inst, TYPESET Prop elaborated_by_lean 36 _`
+and the device's version of the right-hand side is `∃ inst, TYPESET (CarrierProcess FACT) the_card_between 36 _`
 -- an instance search, and that search does not close ON ITS OWN.  It fails STRUCTURALLY --
 -- exhausted in a fifth of a second at twenty times the budget, not timed out -- because
 -- Episode 10's reviewers take about thirty-eight EXPLICIT binders apiece and resolution
@@ -907,6 +907,46 @@ noncomputable def the_crossing_between :=
 theorem the_tape_between_deals_rung01 : the_crossing_between = rung01 := rfl
 #print axioms the_tape_between_deals_rung01
 
+--| THE CLICK BETWEEN.  The outer cards read a fact by what it means, and there the three truths stay three: (T=F)=(F=T),
+--| T, and (T=T)=(F=F) are not one by `rfl`.  The card between reads an account, and an account records only whether a fact
+--| clicked.  Read that way the three click alike by `rfl`, and the chain (T=F)=(F=T) => T => (T=T)=(F=F) closes in one
+--| class.  The step costs `Quot.sound`, a value identity; the `propext` on the chain is the minting of the two facts in
+--| Episode 8, carried in, not spent here.
+def the_click (f : FACT) : Bool := @decide f.truth f.click
+def same_click (a b : FACT) : Prop := the_click a = the_click b
+theorem same_click_is_same_account (a b : FACT) (h : the_click a = the_click b) :
+    Quot.mk same_click a = Quot.mk same_click b := Quot.sound h
+theorem reductio_clicks_true : Quot.mk same_click reductio_ad_absurdum = Quot.mk same_click FACT.Truth :=
+  Quot.sound rfl
+theorem true_clicks_inside_joke : Quot.mk same_click FACT.Truth = Quot.mk same_click the_inside_joke :=
+  Quot.sound rfl
+theorem the_chain_closes : Quot.mk same_click reductio_ad_absurdum = Quot.mk same_click the_inside_joke :=
+  reductio_clicks_true.trans true_clicks_inside_joke
+def THE_ACCOUNT_CLICKS : FACT :=
+  { truth := Quot.mk same_click reductio_ad_absurdum = Quot.mk same_click the_inside_joke
+    click := Decidable.isTrue the_chain_closes }
+def the_closure_between : Closure := .same THE_ACCOUNT_CLICKS (.zero THE_ACCOUNT_CLICKS)
+#print axioms same_click_is_same_account
+#print axioms the_chain_closes
+#print axioms the_closure_between
+
+--| SAME DIFFERENCE.  The outer cards compare two truths by what they are; the card between compares two facts by how they
+--| click.  Laid out as tables, the two agree cell for cell, and turning either over changes nothing.  All a table carries is
+--| its orientation: which diagonal clicks.  T=T and F=F click; T=F and F=T do not, and T=F is F=T.  The fact is proved by its
+--| own click, and bills nothing.
+def dealt (b : Bool) : FACT := { truth := b = true, click := inferInstance }
+def outer_table (a b : Bool) : Bool := a == b
+def middle_table (a b : Bool) : Bool := the_click (dealt a) == the_click (dealt b)
+def SAME_DIFFERENCE : FACT :=
+  { truth := ∀ a b : Bool, outer_table a b = middle_table a b ∧ outer_table a b = outer_table b a
+    click := inferInstance }
+theorem same_difference_clicks : SAME_DIFFERENCE.truth := @of_decide_eq_true _ SAME_DIFFERENCE.click rfl
+theorem the_click_diagonal :
+    middle_table true true = true ∧ middle_table false false = true ∧
+    middle_table true false = false ∧ middle_table false true = false ∧
+    middle_table true false = middle_table false true := by decide
+#print axioms same_difference_clicks
+
 --| THE CROSSING.  Rung 1 took its mark from Episode 8's Prop nowtrino and put it on the FACT card.  From here the device
 --| infers every rung over FACT from that one mark, as Episode 8 inferred them over Prop: the mark, an inhabitant for its
 --| symbol, a model, and the two ways.  Inferring a FACT is a proof.
@@ -953,274 +993,155 @@ noncomputable def rung09 :=
 noncomputable def rung10 :=
   STEP10_A_HALTING_COMPUTATION_IS_GIVEN_AS_INPUT_TO_A_NON_HALTING_FUNCTION FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09
 
+--| THE UPNESS, READ OFF.  From COMPARABLE up the rungs used to be pinned by hand from a census.  The census is not a
+--| choice: every forced seat is the universe PRESENT keeps its quantum in -- "where I like to keep my upness" -- lifted
+--| once in STEP13, one universe above the box, and carried by every rung that holds a PRESENT.  So the seats are read off
+--| the step's own signature, the upness seats get 1, the rest 0, and the rung is dealt.  The pins are inferred from the
+--| description, not supplied to it.
+partial def presents_in (e : Expr) (acc : Array Expr) : Array Expr :=
+  let acc := if e.isAppOf ``PRESENT then acc.push e else acc
+  match e with
+  | .app f a => presents_in a (presents_in f acc)
+  | .forallE _ t b _ => presents_in b (presents_in t acc)
+  | .lam _ t b _ => presents_in b (presents_in t acc)
+  | .mdata _ b => presents_in b acc
+  | _ => acc
+
+/-- A step's universe seats, and which of them hold PRESENT's upness: the universe its quantum lives in. -/
+def upness_seats (n : Name) : MetaM (Nat × List Nat) := do
+  let ci ← getConstInfo n
+  let qf ← getConstInfo ``PRESENT.quantum
+  let qsort ← forallTelescope qf.type fun _ b => pure b
+  let some up := (match qsort with | .sort (.succ (.param p)) => some p | _ => none)
+    | throwError "PRESENT.quantum does not live one universe up"
+  let some k := qf.levelParams.idxOf? up | throwError "no upness"
+  let seats := (presents_in ci.type #[]).toList.filterMap fun e => match e.getAppFn with
+    | .const _ ls => match ls[k]? with | some (.param p) => ci.levelParams.idxOf? p | _ => none
+    | _ => none
+  return (ci.levelParams.length, seats.eraseDups)
+
+syntax "deal_rung " ident " := " ident (ppSpace colGt (Lean.Parser.Term.namedArgument <|> term:max))* : command
+elab_rules : command
+  | `(deal_rung $name:ident := $fn:ident $args*) => do
+    let fnName ← liftCoreM <| realizeGlobalConstNoOverloadWithInfo fn
+    let (count, seats) ← liftTermElabM <| upness_seats fnName
+    let lvls : Array Syntax ← (List.range count).toArray.mapM fun k =>
+      if seats.contains k then `(level| 1) else `(level| 0)
+    let univ := mkNode ``Lean.Parser.Term.explicitUniv
+      #[fn, mkAtom ".{", mkNullNode (mkSepArray lvls (mkAtom ",")), mkAtom "}"]
+    let app : Term := ⟨mkNode ``Lean.Parser.Term.app #[univ, mkNullNode args]⟩
+    elabCommand (← `(noncomputable def $name := $app))
+
 --| rung 11, COMPARABLE: 5 seats, none forced.
-noncomputable def rung11 :=
-  STEP11_CHECK_FOR_CONVERGENCE_IN_THE_TIMESERIES_MATCHES_THE_MEASUREMENT_HIGH_ORDER_TERMS.{
-      0,0,0,0,0}
+deal_rung rung11 := STEP11_CHECK_FOR_CONVERGENCE_IN_THE_TIMESERIES_MATCHES_THE_MEASUREMENT_HIGH_ORDER_TERMS
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10
 
 --| rung 12, OBSERVED: 12 seats, none forced.
-noncomputable def rung12 :=
-  STEP12_CHECK_TO_SEE_IF_THE_BORWEIN_PROCESS_HAS_UNCOVERED_A_PROPERTY_OF_ELECTRONS.{
-      0,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung12 := STEP12_CHECK_TO_SEE_IF_THE_BORWEIN_PROCESS_HAS_UNCOVERED_A_PROPERTY_OF_ELECTRONS
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11
 
 --| rung 13, PRESENT: 19 seats, forced at 2, 16.
-noncomputable def rung13 :=
-  STEP13_RECORD_THE_OBSERVATION_AS_A_MODELED_AST_AS_OF_RIGHT_NOW.{
-      0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0}
+deal_rung rung13 := STEP13_RECORD_THE_OBSERVATION_AS_A_MODELED_AST_AS_OF_RIGHT_NOW
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12
 
 --| rung 14, MEASURABLE: 23 seats, forced at 13, 20.
-noncomputable def rung14 :=
-  STEP14_REALIZE_THAT_THIS_PROCESS_TAKES_THE_APPARANT_SAME_AMOUNT_OF_TIME_EACH_TIME.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0}
+deal_rung rung14 := STEP14_REALIZE_THAT_THIS_PROCESS_TAKES_THE_APPARANT_SAME_AMOUNT_OF_TIME_EACH_TIME
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13
 
 --| rung 15, GUNGAN: 27 seats, forced at 15, 24.
-noncomputable def rung15 :=
-  STEP15_SO_MODEL_THE_PROCESS_AS_SOMETHING_THAT_JUST_SPEWS_OUT_TRUE.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0}
+deal_rung rung15 := STEP15_SO_MODEL_THE_PROCESS_AS_SOMETHING_THAT_JUST_SPEWS_OUT_TRUE
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14
 
 --| rung 16, SOURCE: 29 seats, forced at 15, 26.
-noncomputable def rung16 :=
-  STEP16_VERIFY_THE_SOURCE_FILE_ONLY_EMITS_TRUE_STATEMENTS.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0}
+deal_rung rung16 := STEP16_VERIFY_THE_SOURCE_FILE_ONLY_EMITS_TRUE_STATEMENTS
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
 
 --| rung 17, EXECUTED: 39 seats, forced at 24, 36.
-noncomputable def rung17 :=
-  STEP17_MAKE_SURE_THIS_COMPILES_AND_DEMONSTRATES_IT_IS_TRUE_IN_GUNGAN.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0}
+deal_rung rung17 := STEP17_MAKE_SURE_THIS_COMPILES_AND_DEMONSTRATES_IT_IS_TRUE_IN_GUNGAN
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16
 
 --| rung 18, VALUE: 47 seats, forced at 28, 44.
-noncomputable def rung18 :=
-  STEP18_GIVEN_AN_INFERRED_DEFINITION_OF_THE_DEVICE_MAKE_THE_DEVICE.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,1,0,0}
+deal_rung rung18 := STEP18_GIVEN_AN_INFERRED_DEFINITION_OF_THE_DEVICE_MAKE_THE_DEVICE
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17
 
 --| rung 19, MAGNITUDE: 63 seats, forced at 41, 60.
-noncomputable def rung19 :=
-  STEP19_GIVEN_THE_ABILITY_TO_COUNT_SOMETHING_LEAN_CAN_NOW_INFER_ADDITION.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0}
+deal_rung rung19 := STEP19_GIVEN_THE_ABILITY_TO_COUNT_SOMETHING_LEAN_CAN_NOW_INFER_ADDITION
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18
 
 --| rung 20, SCALED: 79 seats, forced at 50, 67.
-noncomputable def rung20 :=
-  STEP20_DUPLICATE_THE_PROCESS_TO_DEMONSTRATE_AREA_OF_RECTANGLES_LIKE_EUCLID.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung20 := STEP20_DUPLICATE_THE_PROCESS_TO_DEMONSTRATE_AREA_OF_RECTANGLES_LIKE_EUCLID
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19
 
 --| rung 21, LOAD: 95 seats, forced at 59, 67.
-noncomputable def rung21 :=
-  STEP21_GIVEN_ADDITION_MULTIPLICATION_AND_NUMBERS_INFER_ALL_OF_MATH.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung21 := STEP21_GIVEN_ADDITION_MULTIPLICATION_AND_NUMBERS_INFER_ALL_OF_MATH
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20
 
 --| rung 22, OF: 111 seats, forced at 78, 79.
-noncomputable def rung22 :=
-  STEP22_PAY_CLOSE_ATTENTION_TO_WEAK_SOLUTIONS_OF_DIFFERENTIAL_EQUATIONS_WHILE_DERIVING_MATH.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung22 := STEP22_PAY_CLOSE_ATTENTION_TO_WEAK_SOLUTIONS_OF_DIFFERENTIAL_EQUATIONS_WHILE_DERIVING_MATH
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21
 
 --| rung 23, BULLSHIT: 127 seats, forced at 94, 103.
-noncomputable def rung23 :=
-  STEP23_GET_RID_OF_A_DERIVATIVE_SO_THAT_THE_SECOND_ORDER_MODEL_OF_THE_DEVICE_OF_EPISODE_8_CAN_BE_WRITTEN_VARIATIONALLY.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0}
+deal_rung rung23 := STEP23_GET_RID_OF_A_DERIVATIVE_SO_THAT_THE_SECOND_ORDER_MODEL_OF_THE_DEVICE_CAN_BE_WRITTEN_VARIATIONALLY
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22
 
 --| rung 24, PROPAGANDA: 143 seats, forced at 110, 128.
-noncomputable def rung24 :=
-  STEP24_RESTATE_THE_MODEL_AS_A_PRINCIPLE_OF_LEAST_ACTION.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung24 := STEP24_RESTATE_THE_MODEL_AS_A_PRINCIPLE_OF_LEAST_ACTION
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23
 
 --| rung 25, ACOLYTE: 159 seats, forced at 126, 153.
-noncomputable def rung25 :=
-  STEP25_BUILD_LOCAL_GEOMETRIES_THAT_SATISFY_THE_TRIANGLE_INEQUALITY.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0}
+deal_rung rung25 := STEP25_BUILD_LOCAL_GEOMETRIES_THAT_SATISFY_THE_TRIANGLE_INEQUALITY
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24
 
 --| rung 26, SCIENTIFIC: 175 seats, forced at 5, 142.
-noncomputable def rung26 :=
-  STEP26_WRITE_YOUR_PROOF_IN_THE_FORMAL_LANGUAGE_OF_GEOMETRY.{
-      0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung26 := STEP26_WRITE_YOUR_PROOF_IN_THE_FORMAL_LANGUAGE_OF_GEOMETRY
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25
 
 --| rung 27, TRUTH: 191 seats, forced at 14, 158.
-noncomputable def rung27 :=
-  STEP27_REPRESENT_THE_TAYLOR_SERIES_OF_THE_DEVICE.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung27 := STEP27_REPRESENT_THE_TAYLOR_SERIES_OF_THE_DEVICE
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26
 
 --| rung 28, WITNESSED: 207 seats, forced at 22, 174.
-noncomputable def rung28 :=
-  STEP28_MAKE_SURE_YOUR_CURVES_ARE_SMOOTH_AS_A_DIFFERENTIALS_BOTTOM.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0}
+deal_rung rung28 := STEP28_MAKE_SURE_YOUR_CURVES_ARE_SMOOTH_AS_A_DIFFERENTIALS_BOTTOM
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27
 
 --| rung 29, REAL: 223 seats, forced at 31, 190.
-noncomputable def rung29 :=
-  STEP29_SUGGEST_A_FALSIFIABLE_EXPERIMENT.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung29 := STEP29_SUGGEST_A_FALSIFIABLE_EXPERIMENT
     FACT the_first_card the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28
 
 --| rung 30, LOCAL: 239 seats, forced at 40, 206.
-noncomputable def rung30 :=
-  STEP30_PROVIDE_THE_EQUATIONS_THAT_WILL_PREDICT_THE_MEASUREMENT.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung30 := STEP30_PROVIDE_THE_EQUATIONS_THAT_WILL_PREDICT_THE_MEASUREMENT
     FACT the_first_card this_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 (principia := this_way_in_FACT)
 
 --| rung 31, UNIVERSAL: 260 seats, forced at 227.
-noncomputable def rung31 :=
-  STEP31_GET_ON_THE_NEWTON_EINSTEIN_TRAIN_OF_THOUGHT.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung31 := STEP31_GET_ON_THE_NEWTON_EINSTEIN_TRAIN_OF_THOUGHT
     FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 (the_a_train := that_way_in_FACT)
 
 --| rung 32, LOGICAL: 279 seats, forced at 65, 246.
-noncomputable def rung32 :=
-  WHAT_HAPPEN_?.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung32 := WHAT_HAPPEN_?
     FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31
 
 --| rung 33, HALTED: 291 seats, forced at 69, 258.
-noncomputable def rung33 :=
-  SOMEBODY_SET_US_UP_THE_DEVICE.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung33 := SOMEBODY_SET_US_UP_THE_DEVICE
     FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32
 
 --| rung 34, MEASURED: 328 seats, forced at 92, 295.
-noncomputable def rung34 :=
-  WE_GET_SIGNAL.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0}
+deal_rung rung34 := WE_GET_SIGNAL
     FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33
 
 --| rung 35, COMPILED: 352 seats, forced at 106, 319.
-noncomputable def rung35 :=
-  WHAT_!.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung35 := WHAT_!
     FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34
 
 --| rung 36, A_TRUTH_ABOUT: 374 seats, forced at 115, 341.
-noncomputable def rung36 :=
-  MAIN_SCREEN_TURN_ON.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung36 := MAIN_SCREEN_TURN_ON
     FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35
 
 --| rung 37, INFERRED: 401 seats, forced at 115, 368.
-noncomputable def rung37 :=
-  ITS_YOU_!!.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0}
+deal_rung rung37 := ITS_YOU_!!
     FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35 rung36 True True
 
 --| rung 38, A_TRUTH_ABOUT: 388 seats, forced at 115, 355.
-noncomputable def rung38 :=
-  HOW_ARE_YOU_GENTLEMEN_!!__ALL_YOUR_BASE_CASE_ARE_BELONG_TO_US.{
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,
-      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+deal_rung rung38 := HOW_ARE_YOU_GENTLEMEN_!!__ALL_YOUR_BASE_CASE_ARE_BELONG_TO_US
     FACT the_first_card this_way_in_FACT that_way_in_FACT the_first_card FACT.Truth rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35 rung36 the_quartic
 
 --| THE LADDER, RECOGNISED.  Read off rung 38 with the ordinary projections and search hands back Episode 7's instances,
@@ -1249,7 +1170,7 @@ noncomputable def the_knowers_counting_function := the_representation.rung38
 /-!
 ### THE MONTE: BUILDING IT BY HAND
 
-Instance search cannot reach `TYPESET Prop elaborated_by_lean 1 Number`.  Not because the space
+Instance search cannot reach `TYPESET (CarrierProcess FACT) the_card_between 1 Number`.  Not because the space
 is large -- at twenty times the budget it fails in a fifth of a second, exhausted rather
 than timed out -- but because Episode 10's reviewers take **explicit** binders, and search
 will not invent a value for an explicit argument.  It unifies implicits and hunts
@@ -1271,11 +1192,11 @@ def theManuscript : ThePreprint.{0} := decodeBits [true, false, true]
 
 --| THE REVIEW, WITHOUT THE REVIEWERS.  Thirty-five rungs of custody, and the thing they
 --| were carrying is one tape.
-def reviewedByHand : REVIEWED Prop elaborated_by_lean 1 :=
+def reviewedByHand : REVIEWED (CarrierProcess FACT) the_representation.the_card_between 1 :=
   { rebuttal := theManuscript }
 
 --| AND THE RUNG THE SEARCH COULD NOT FIND.
-def typesetByHand : TYPESET Prop elaborated_by_lean 1 Number :=
+def typesetByHand : TYPESET (CarrierProcess FACT) the_representation.the_card_between 1 Number :=
   { register_value := cookPage
     universe_id    := cookPage
     the_page       := theManuscript }
@@ -1320,7 +1241,7 @@ end THEORY
 /-!
 ### THE CONSTRUCTION, COMPLETED
 
-The search for `TYPESET Prop elaborated_by_lean 1 Number` fails -- and it fails STRUCTURALLY, in
+The search for `TYPESET (CarrierProcess FACT) the_card_between 1 Number` fails -- and it fails STRUCTURALLY, in
 a fifth of a second at twenty times the budget, exhausted rather than timed out.  Not for
 want of clock.  Episode 10's reviewers take about thirty-eight EXPLICIT binders apiece, and
 instance resolution unifies implicits and hunts instance-implicits.  It will not invent a
@@ -1334,13 +1255,13 @@ the entire descent, and then the ascent -- which was never the obstruction -- re
 -/
 
 --| THE GIMMICKED CARD.
-instance reviewedAny (n : Nat) : REVIEWED Prop elaborated_by_lean n := { rebuttal := theManuscript }
-instance typesetBase : TYPESET Prop elaborated_by_lean 1 Number := typesetByHand
+instance reviewedAny (n : Nat) : REVIEWED (CarrierProcess FACT) the_representation.the_card_between n := { rebuttal := theManuscript }
+instance typesetBase : TYPESET (CarrierProcess FACT) the_representation.the_card_between 1 Number := typesetByHand
 
 --| THE ASCENT, RETRIEVED.  Rung thirty-six, by search, in a third of a second -- the top of
 --| a ladder that has never once resolved in this repository.  `inferInstance` does it now
 --| because the thing it was missing was a place to stand, not time to look.
-def theTop : TYPESET.{0,0,0} Prop elaborated_by_lean 36 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (Number)))))))))))))))))))))))))))))))))))) := inferInstance
+def theTop : TYPESET.{0,0,0} (CarrierProcess FACT) the_representation.the_card_between 36 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (Number)))))))))))))))))))))))))))))))))))) := inferInstance
 
 --| AND THE TAPE IT CARRIES.  This is the bounded execution: the manuscript admitted at rung
 --| thirty-six, handed down through every reviewer, arriving as the page of the top rung.
@@ -1874,6 +1795,70 @@ def theHighWallReads : Nat := theBracket.2.1 * the_first_step_of_the_proof_is_to
 theorem the_walls_print_the_reading :
     theLowWallReads = the_printed_reading ∧ theHighWallReads = the_printed_reading := by decide +kernel
 --#eval the_other_natural
+
+section all_the_clicks
+open the_representation
+
+--| ALL THE CLICKS.  Every rung that compiled, as a FACT: the truth is that its type is inhabited, the click is the term.
+--| A fact can be minted only after the code compiles; the click is the compile.  Read on the card between, every one of them
+--| is the same account as the truth.
+def IT_COMPILES (α : Sort u) (term : α) : FACT := { truth := Nonempty α, click := .isTrue ⟨term⟩ }
+noncomputable def admitted_between : ADMISSIBLE (CarrierProcess FACT) the_card_between := inferInstance
+noncomputable def the_clicks : List FACT :=
+  [IT_COMPILES _ rung01,
+   IT_COMPILES _ rung02,
+   IT_COMPILES _ rung03,
+   IT_COMPILES _ rung04,
+   IT_COMPILES _ rung05,
+   IT_COMPILES _ rung06,
+   IT_COMPILES _ rung07,
+   IT_COMPILES _ rung08,
+   IT_COMPILES _ rung09,
+   IT_COMPILES _ rung10,
+   IT_COMPILES _ rung11,
+   IT_COMPILES _ rung12,
+   IT_COMPILES _ rung13,
+   IT_COMPILES _ rung14,
+   IT_COMPILES _ rung15,
+   IT_COMPILES _ rung16,
+   IT_COMPILES _ rung17,
+   IT_COMPILES _ rung18,
+   IT_COMPILES _ rung19,
+   IT_COMPILES _ rung20,
+   IT_COMPILES _ rung21,
+   IT_COMPILES _ rung22,
+   IT_COMPILES _ rung23,
+   IT_COMPILES _ rung24,
+   IT_COMPILES _ rung25,
+   IT_COMPILES _ rung26,
+   IT_COMPILES _ rung27,
+   IT_COMPILES _ rung28,
+   IT_COMPILES _ rung29,
+   IT_COMPILES _ rung30,
+   IT_COMPILES _ rung31,
+   IT_COMPILES _ rung32,
+   IT_COMPILES _ rung33,
+   IT_COMPILES _ rung34,
+   IT_COMPILES _ rung35,
+   IT_COMPILES _ rung36,
+   IT_COMPILES _ rung37,
+   IT_COMPILES _ rung38,
+   IT_COMPILES _ the_crossing_between,
+   IT_COMPILES _ admitted_between,
+   IT_COMPILES _ theTop]
+theorem every_rung_clicks : the_clicks.all the_click = true := rfl
+theorem every_rung_is_the_truth : ∀ f ∈ the_clicks, Quot.mk same_click f = Quot.mk same_click FACT.Truth := by
+  intro f hf
+  exact Quot.sound (List.all_eq_true.mp every_rung_clicks f hf)
+theorem the_clicks_count : the_clicks.length = 41 := rfl
+#print axioms every_rung_clicks
+#print axioms every_rung_is_the_truth
+--| The clicks' own cost, apart from the rungs: a compiled term of any type, minted and identified.
+theorem a_compile_is_the_truth (α : Sort u) (t : α) :
+    Quot.mk same_click (IT_COMPILES α t) = Quot.mk same_click FACT.Truth := Quot.sound rfl
+#print axioms a_compile_is_the_truth
+
+end all_the_clicks
 
 end Measurement
 
