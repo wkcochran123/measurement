@@ -277,23 +277,30 @@ def STEP10_A_HALTING_COMPUTATION_IS_GIVEN_AS_INPUT_TO_A_NON_HALTING_FUNCTION
   admissible? := fun _ _ _ => rfl  ---| Another flop! Three _true statements_ in a row!               | shortcut that process and return its value!
   halted? := fun or not => anechoic_chamber.halted? or not ∧ hiss.halted? or not --                   | Often called common subexpression elimination.
 
+--| I belive the kewl kids call this _tail recursion_. I like my for loops on top, though. In this case, we are describing a process where the bottom
+--| and top declare the loop. A _summation_:
+
 def STEP11_CHECK_FOR_CONVERGENCE_IN_THE_TIMESERIES_MATCHES_THE_MEASUREMENT_HIGH_ORDER_TERMS
-    (quarter: CarrierProcess FACT)
-    [COMPARABLE Box Pigeon]
-    (ledger: FACT)
+    (quarter: CarrierProcess FACT) --  | An _UNNAMED_ comparison operation. One exists, but we do not need to _name_ it. As I remember discussing,
+    [COMPARABLE Box Pigeon] -----------+ comparison of _things_ is _fraught_.  How can you tell if two things are different? Well, that's easy. There
+    (ledger: FACT) --                  | are _two_ of them: _this_ one and _that_ one. How can you tell if they are the same? Well, that is _INFERRED_.
     (something: DISTINGUISHABLE FACT quarter)(something_with_momentum:ADMISSIBLE FACT quarter)
     (cascade_of_particles: COUNTABLE FACT quarter)(click: ENCODED FACT quarter)(pit: RESIDUE FACT quarter)(land: BINARY FACT quarter)
     (procedure: REPEATABLE FACT quarter)(how_many_clicks: NUMERIC FACT quarter)(csv_file: REPRESENTABLE FACT quarter)
     (timeseries: PHYSICAL FACT quarter)
-    [Inhabited something.symbol] -------------------------------| It must converge to something, right?
-    : COMPARABLE FACT quarter where
+    [Inhabited something.symbol] -------------------------------+ It must converge to something, right? Perhaps _time_, or the _speed of light_, or
+    : COMPARABLE FACT quarter where --                          | the _finest resolution_?
   physical_process :=
-  { noisy_process := timeseries.noisy_process
-    representation := default
-    invariant := .base something.fact default
-    value := .base ledger (ULift.up default)
-  }
+  { noisy_process := timeseries.noisy_process --         | This is a key piece of logic to pay attention to. This is the _place_ in the device where
+    representation := default --                         | the _inferred_ device can separate the _value_ from the _concept it is valuing_. The
+    invariant := .base something.fact default -----------+ _invariant_ here is something that has the same _VALUE_ across reference frames, but
+    value := .base ledger (ULift.up default) --          | different _VALUES_ among reference frames. The beginning of a _SAME DIFFERENCE_. Not saying
+  } --                                                   | the device _MUST_ *INFER* this, just saying it looks like it _CAN_.
   smaller_than := fun or not => or = not
+--                               ^    ^      | Same in value, though possibly different. Definitely different in _POSITION_ of _ARGUMENT_. Since it
+--                               |    |      | is at a _different_ position, it could have a _different_ number for the _same_ thing. At least, if
+--                               +----+------+ you are _riding_ the _Einstein branch_ of the *Train of Thought*.
+--
 
 def STEP12_CHECK_TO_SEE_IF_THE_BORWEIN_PROCESS_HAS_UNCOVERED_A_PROPERTY_OF_ELECTRONS
     (bent_card: CarrierProcess FACT)

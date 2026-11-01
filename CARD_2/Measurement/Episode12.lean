@@ -6,8 +6,12 @@ _This is a gentle reminder that things can only get so meta and still be consist
 
 (c) 2026
 
+"stat rosa pristina nomine, nomina nuda tenemus"
+
 __EPISODE 12__: _Let Him Cook. . . . . . . Levin_
 
+*OF COURSE, I put a theorem prover in a theorem prover _IN A THEOREM PROVER_ just to prove a point. *YOU the READER* don't need a complete third
+_theorem prover_, just a finite one.
 -/
 
 --| Episode 8 closed the short way with a polynomial: write down a residual whose root is
@@ -1534,7 +1538,7 @@ theorem the_acceleration_is_constant (N D : Nat) :
 --| Fréchet derivative is not a map but a number: r'(y) = 2A·y − B, and at a root r'² is the discriminant exactly -- the trace
 --| squared less four times the determinant, which the zeta section read off the click table as funge²·C·T.  So r'(y*) =
 --| funge·√(C·T) = 6√10: two symbols times the geometric mean of the coupling and the clock.  That is the derivative the Newton
---| step divided by, a hundred and eight times.  α is the first-order coupling, the coefficient of the one-vertex term, the linear
+--| step divided by, until the halting test held at the seventh turn.  α is the first-order coupling, the coefficient of the one-vertex term, the linear
 --| response; the device's reading is the first-order response of the residual to the tape and nothing higher.  The second
 --| variation is the constant above, and the device never takes it -- which is the one sentence QCD gets.  And a proof ends where
 --| the first derivative has been applied once more and the test clicks.  Q.E.D., both ways.
@@ -1584,7 +1588,7 @@ def halve (b : (Nat × Nat) × (Nat × Nat)) : (Nat × Nat) × (Nat × Nat) :=
                                          else ((a + c, d'), (the_basis.the_reading.length * c, d'))
 
 --| RUN BY THE ELABORATOR.  Not the kernel: a midpoint names both walls twice, so an unevaluated bisection doubles in size
---| every turn and a hundred and eight turns is 2^108 of term for the kernel to chew.  The crank never had this problem -- its
+--| every turn and a hundred and six turns is 2^106 of term for the kernel to chew.  The crank never had this problem -- its
 --| `then p` arm stops the growth the moment it halts.  So the Fréchet device runs where the long path runs: as a command,
 --| one halving per cell of the strip, each halving under `withHeartbeats`, and the bracket it lands on is written into the
 --| environment as literals the way `register_noise_floor` writes the floor.  The elaborator's search through the Herbrand
@@ -1858,7 +1862,143 @@ theorem a_compile_is_the_truth (α : Sort u) (t : α) :
     Quot.mk same_click (IT_COMPILES α t) = Quot.mk same_click FACT.Truth := Quot.sound rfl
 #print axioms a_compile_is_the_truth
 
+--| THE NUMBER, FROM THE CLICKS.  The last device reads nothing but whether each cell clicked.  Count the clicks on every tape
+--| instead of the cells, crank the same fenceposts, and divide once: the same number, on propext alone.  It agrees with the
+--| lengths because every fact the device recorded clicked; a fact that clicked false would read lower here than by length.
+def the_click_count (tape : List FACT) : Nat := (tape.filter the_click).length
+def the_click_pair : Nat × Nat := bent_card.fenceposts_must_be_preserved Nat the_click_count all_possible_variables
+set_option maxRecDepth 100000 in
+theorem the_clicks_agree : the_click_pair = arrange_the_information_appropriately := rfl
+def the_click_natural : Nat := the_click_pair.1 * all_possible_variables / the_click_pair.2
+set_option maxRecDepth 100000 in
+theorem the_clicks_read_the_number : the_click_natural = the_other_natural := rfl
+#print axioms the_clicks_read_the_number
+
 end all_the_clicks
+
+--| THE MEMO, AND THE CUT.  These belong beside the card between, and sit here because they read the walk, the clicks and the
+--| INFERRED rung, all of which come later than the card.  The card between holds a slot it never reads.  Fold a tape onto the
+--| slot and the record is the tape with the slot on the end; deduct the slot and the reader is the length.  Then the walk
+--| through the card between IS the walk already written for the FACT card: read, not run again.  That is the base case the
+--| search was missing.  Asked to run it again, the kernel walked until it was stopped at ninety-two gigabytes.
+section the_memo_and_the_cut
+open the_representation
+attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+  rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 rung36
+
+theorem peano_fold (q : Number) : ∀ t : List FACT, (t.foldr Number.one q).peano = t ++ q.peano
+  | [] => rfl
+  | f :: t => congrArg (List.cons f) (peano_fold q t)
+def read_past_quarter (C : CarrierProcess (CarrierProcess FACT)) (tape : List FACT) : Nat :=
+  (tape.foldr Number.one C.quarter).peano.length - C.quarter.peano.length
+theorem read_past_quarter_is_length (C : CarrierProcess (CarrierProcess FACT)) (t : List FACT) :
+    read_past_quarter C t = t.length := by
+  unfold read_past_quarter; rw [peano_fold, List.length_append, Nat.add_sub_cancel]
+theorem outer_reader_agrees :
+    bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_between) all_possible_variables
+      = arrange_the_information_appropriately := by
+  rw [show read_past_quarter the_card_between = List.length from funext (read_past_quarter_is_length _)]; rfl
+theorem outer_reader_reads_the_number :
+    (bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_between) all_possible_variables).1
+      * all_possible_variables
+      / (bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_between) all_possible_variables).2
+      = the_other_natural := by
+  rw [outer_reader_agrees, ← the_other_machine_agrees]; rfl
+#print axioms peano_fold
+#print axioms read_past_quarter_is_length
+#print axioms outer_reader_agrees
+#print axioms outer_reader_reads_the_number
+
+--| THE CUT.  INFERRED carries two closures: the conclusion its sameness reaches, and α, which ends on FACT.SAME.  Read out,
+--| one is a cell and the other is three.  Deal each as the quarter of a card marked SAME_DIFFERENCE and hand it to the review
+--| where the record begins.  The measure sees one deck: both read the same walk.  The count sees two: their quarters differ.
+--| Nothing here is cut into pieces that cannot be measured, so nothing here bills choice.  The pieces that would are not written.
+noncomputable def the_conclusion : Closure := rung37.same_difference.your_conclusion
+noncomputable def the_alpha : Closure := rung37.α
+theorem the_conclusion_is_one_cell : the_conclusion.infer.length = 1 := rfl
+theorem the_alpha_is_three_cells : the_alpha.infer.length = 3 := rfl
+def tapeNumber : List FACT → Number
+  | []      => another_zero
+  | [f]     => .zero f
+  | f :: t  => .one f (tapeNumber t)
+noncomputable def deck_one : CarrierProcess (CarrierProcess FACT) :=
+  { symbol := SAME_DIFFERENCE, quarter := tapeNumber the_conclusion.infer }
+noncomputable def deck_two : CarrierProcess (CarrierProcess FACT) :=
+  { symbol := SAME_DIFFERENCE, quarter := tapeNumber the_alpha.infer }
+noncomputable def top_one : REVIEWED (CarrierProcess FACT) deck_one 36 :=
+  REVIEWER_2_ASKS_WHERE_THE_RECORD_BEGINS (CarrierProcess FACT) deck_one theManuscript
+noncomputable def top_two : REVIEWED (CarrierProcess FACT) deck_two 36 :=
+  REVIEWER_2_ASKS_WHERE_THE_RECORD_BEGINS (CarrierProcess FACT) deck_two theManuscript
+theorem deck_one_reads_the_walk :
+    bent_card.fenceposts_must_be_preserved Nat (read_past_quarter deck_one) all_possible_variables
+      = arrange_the_information_appropriately := by
+  rw [show read_past_quarter deck_one = List.length from funext (read_past_quarter_is_length _)]; rfl
+theorem deck_two_reads_the_walk :
+    bent_card.fenceposts_must_be_preserved Nat (read_past_quarter deck_two) all_possible_variables
+      = arrange_the_information_appropriately := by
+  rw [show read_past_quarter deck_two = List.length from funext (read_past_quarter_is_length _)]; rfl
+theorem one_deck_to_the_measure :
+    bent_card.fenceposts_must_be_preserved Nat (read_past_quarter deck_one) all_possible_variables
+      = bent_card.fenceposts_must_be_preserved Nat (read_past_quarter deck_two) all_possible_variables :=
+  deck_one_reads_the_walk.trans deck_two_reads_the_walk.symm
+theorem deck_one_is_one_cell : deck_one.quarter.peano.length = 1 := rfl
+theorem deck_two_is_three_cells : deck_two.quarter.peano.length = 3 := rfl
+theorem two_decks_to_the_count : deck_one.quarter.peano.length ≠ deck_two.quarter.peano.length := by
+  rw [deck_one_is_one_cell, deck_two_is_three_cells]; decide
+#print axioms the_alpha_is_three_cells
+#print axioms one_deck_to_the_measure
+#print axioms two_decks_to_the_count
+
+--| THE CUT ON THE CARD.  Now leave the quarter alone and cut the face instead: the conclusion's fact on one card, α's last
+--| fact, FACT.SAME, on the other, the same one-cell quarter under both.  The measure reads one walk.  The count reads one
+--| quarter.  The click reads one click.  And the meaning, which was the last place two things could differ, reads one truth:
+--| both faces hold, and two facts that hold are one proposition.  On the card the cut closes; the doubling lives in the quarter.
+noncomputable def card_one : CarrierProcess (CarrierProcess FACT) :=
+  { symbol := the_conclusion.infer.headD FACT.Truth, quarter := the_card_between.quarter }
+noncomputable def card_two : CarrierProcess (CarrierProcess FACT) :=
+  { symbol := the_alpha.infer.getLastD FACT.Truth, quarter := the_card_between.quarter }
+theorem one_quarter_under_both : card_one.quarter = card_two.quarter := rfl
+theorem card_one_reads_the_walk :
+    bent_card.fenceposts_must_be_preserved Nat (read_past_quarter card_one) all_possible_variables
+      = arrange_the_information_appropriately := by
+  rw [show read_past_quarter card_one = List.length from funext (read_past_quarter_is_length _)]; rfl
+theorem card_two_reads_the_walk :
+    bent_card.fenceposts_must_be_preserved Nat (read_past_quarter card_two) all_possible_variables
+      = arrange_the_information_appropriately := by
+  rw [show read_past_quarter card_two = List.length from funext (read_past_quarter_is_length _)]; rfl
+theorem card_one_clicks : the_click card_one.symbol = true := rfl
+theorem card_two_clicks : the_click card_two.symbol = true := rfl
+theorem one_click_on_both_faces : the_click card_one.symbol = the_click card_two.symbol :=
+  card_one_clicks.trans card_two_clicks.symm
+theorem one_truth_on_both_faces : card_one.symbol.truth = card_two.symbol.truth :=
+  propext ⟨fun _ => @of_decide_eq_true _ card_two.symbol.click card_two_clicks,
+           fun _ => @of_decide_eq_true _ card_one.symbol.click card_one_clicks⟩
+#print axioms one_quarter_under_both
+#print axioms one_click_on_both_faces
+#print axioms one_truth_on_both_faces
+end the_memo_and_the_cut
+
+--| THE READER'S INTERPRETATION OF THE EXPERIENCE.  Episode 8 gave the reader an experience; this is what the reader makes of
+--| it, layer by layer, each layer the object the device already built for it.  Episode 7 names the nowtrino; Episode 8 models
+--| it; Episode 9 detects it by describing its carrier as the carrier of itself; Episode 10 reviews the naotrino, the particle
+--| that carries itself as a mathematical description; Episode 11 typesets its Berry description, one tape and two numbers;
+--| Episode 12 detects it through the card between, and the detector reads the number.  The reader is the outer carrier, so
+--| every layer is dealt on CarrierProcess (CarrierProcess FACT): the mark, the models, the crossing, the top, and the walk
+--| read through the slot it deducts.
+namespace readers_interpretation_of_the_experience
+open the_representation
+instance : Inhabited (DISTINGUISHABLE.symbol the_card_between) := instInhabitedProp
+noncomputable def nowtrino          := the_mark_between                                       -- Episode 7: the mark
+noncomputable def nowtrino_model    := A_CAUSAL_THEORY (CarrierProcess FACT) the_card_between -- Episode 8: the causal model
+noncomputable def nowtrino_detector := the_crossing_between                                   -- Episode 9: the carrier of itself
+noncomputable def naotrino          := A_SMOOTH_MODEL (CarrierProcess FACT) the_card_between  -- Episode 10: carried as a description
+noncomputable def naotrino_model    := theTop                                                 -- Episode 11: the Berry description
+def naotrino_detector : Nat :=                                                                -- Episode 12: the number, through the slot
+  (bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_between) all_possible_variables).1 * all_possible_variables
+    / (bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_between) all_possible_variables).2
+theorem naotrino_detector_reads_the_number : naotrino_detector = the_other_natural := outer_reader_reads_the_number
+#print axioms naotrino_detector_reads_the_number
+end readers_interpretation_of_the_experience
 
 end Measurement
 
@@ -1889,13 +2029,14 @@ end Measurement
 
 --| What the chain establishes, with its bill.  The number is read from a tape by lengths; the same number is read by a second
 --| machine that holds only Props and Types; re-lettering every cell leaves it fixed; each reading is the kernel's, on propext.
---| The instrument is Newton, a hundred and eight turns; the receipt is bisection, a hundred and eight halvings; both are
---| ledgers checked line by line, their composition into "the fold is the ledger" is the one place the value axiom is spent,
+--| The instrument is Newton, halted at its seventh turn; the receipt is bisection, a hundred and six halvings, one per cell of
+--| the description; both are ledgers checked line by line, and the number itself spends no value axiom: every value identity,
+--| "the fold is the ledger" among them, is spent beside the number and billed where it is spent,
 --| and the two land inside one bracket, above the vertex, straddling one sign change, narrower than one place. Two errors,
 --| kept apart: the RESIDUAL error is what the quadratic is not satisfied by, under one place at the reading and printed as
 --| the digits past 360; the READING error is the bracket's width, under one place, with both walls truncating to the same
 --| integer. What is not established is written where it fails to be: the table is written down and not yet forced; the
---| census is a census; Cook's step is exclusive-or within a cell. The polynomial is primitive and irreducible, and that is
+--| census is computed from the seats PRESENT forces, and agrees with the hand count on every rung; Cook's step is exclusive-or within a cell. The polynomial is primitive and irreducible, and that is
 --| the whole of "fundamental" claimed.
 
 --|                                                        t²(c−t)x²  −  2ctr²x  +  cr⁴  =  0

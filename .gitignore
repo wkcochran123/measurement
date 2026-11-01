@@ -3,7 +3,7 @@
 .ryot-cache/
 .vscode
 .DS_Store
-device/.lake
+CARD_2/.lake
 instrument/appendix
 *aux
 *bbl
