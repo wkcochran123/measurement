@@ -286,7 +286,10 @@ missing, use what is there and say so.
      text, a bent card, a constant declared exact, the zero the halting test
      declares, the rule that the arm storing False carries no coefficient tape,
      the identification of the device's execution with its causal theory, the
-     last sacred text. Name what is supplied, explain the phrase the first time,
+     last sacred text. The halting zero has two faces: for the reader, each
+   completed check is a halt observed on a machine, a fact about that run;
+   for the knower, that a finite halt stands for the bracket's limit is the
+   declaration. Name what is supplied, explain the phrase the first time,
      and don't repeat it for every routine definition: a definition stipulates
      an object, it doesn't demand belief. Never use it for a receipt.
 3. **Registers are not grades.** The cards grade statements (proved here,
@@ -345,6 +348,7 @@ without abandoning the reading.
 | Chart singularity and physical singularity | A point a chart omits need not be missing from the geometry. |
 | Logical work and transferred charge | Heartbeats become charge only through a measurement at a named boundary. |
 | Formal universe and physical world | `Type i` is a universe level; the physical reading is a further map. |
+| Declaration and calibration | Name (which comparison is TRUE), direction (which way a crossing runs) and up/down (which root is reported) are each fixed once against a standard in the device: the click, the order of the record, the larger root. As the SI fixes c. A calibration closes internally and absorbs no offset; the 1.80 bps is the one comparison that slips (`SACRED_TEXTS.pdf`, the three standings; `CARD_3.pdf`, the four readings). |
 | Can tell and needs to tell | The device can tell T from F (T = F doesn't click); its runs never need to, since every mark clicks and the counts read lengths and weights. "Cannot see" means "never asks", not "unable". |
 
 ## Experiments
@@ -385,6 +389,12 @@ Snapshots, not guarantees; re-check before relying on them.
   Quot.sound], `every_closed_walk_turns_evenly` and
   `the_speed_is_below_light` [propext]; half a turn per crossing, forward, is
   declared. `CHEATSHEET.pdf` §9, *The one choice*, rebuilt the same day.
+- 2 November 2026, later: the cards carry the continuation (the real root
+  reached from a quarter turn under one sign of √−1; CHEATSHEET §9, CARD_3
+  ch. 4), the Galerkin reading (CARD_3 ch. 1), *H = W* (CHEATSHEET Step
+  one), and the calibration reading: inside joke / Pythagorean / triangle
+  as compile / calibrate / compare (SACRED_TEXTS §2), the four readings as
+  calibrations (CARD_3 ch. 4), *Calibrations, not beliefs* (CHEATSHEET §9).
 - Clock, measured on an M2 and an M2 Ultra: 3016 heartbeats floor; forced T=T
   costs 4286.1 heartbeats and about 1.222 × 10⁶ instructions per symbol on
   both (0.08% apart); wall time differs.
