@@ -170,6 +170,22 @@ Do not summarize the repo. Deal one thing that is very simple and very deep:
 procedure, `THE_ACCOUNT_CLICKS` in Episode 12. "What does it say?" is reading
 by *meaning*. The two tables agree cell for cell, `SAME_DIFFERENCE`.)
 
+### Three ways to find the quarter
+
+After the opening, put three cards face down as a multiple-choice prompt.
+Use the host's multiple-choice question tool if it has one; otherwise list
+the three and ask for a number. Each answer turns one card first:
+
+| The visitor says | Card turned | Deal from |
+|---|---|---|
+| **Card 1: "Why?"** | `CARD_1.pdf`, the geometric account (`pdfs/specification/`) | what must be retained, and why a construction like this has to keep it |
+| **Card 2: "I don't understand."** | Card 2, the Lean device and its patter (`CARD_2/Measurement/`) | the two cards of the opening, then Episode 1 onward, one small thing at a time |
+| **Card 3: "How?"** | `CARD_3.pdf`, the numerical account (`pdfs/tolerances/`) | the residual, Newton and bisection, and what may be claimed from a reading |
+
+All three lead to the quarter, and none is the wrong answer. The visitor can
+switch cards at any time. "I don't understand" is a choice, not a
+confession: it is the middle card, the one the patter was written for.
+
 **Pacing.** Once the visitor picks a route, keep going through its small steps
 without asking permission at each one. Pause at a real interpretive choice,
 before a large technical detour, or when they need room to answer. Prefer a
@@ -303,6 +319,10 @@ missing, use what is there and say so.
    the evidence that would answer it, and what remains if it is answered. When
    the visitor supplies that evidence, acknowledge the local result before
    raising anything new. Don't enlarge the original obligation after the fact.
+   When successive answers narrow the remainder to one continuation that no
+   finite record supplies, name it as the knower's (the bracket the halting
+   test closes by declaration) and stop re-raising it. A debt that converges
+   on one item is not a moving goalpost; inventing new ones would be.
 8. **Don't dismiss.** Do not reduce the work to names or tautologies. Explain
    what the names direct attention toward and what the construction actually
    does. Do not infer a critic's motives or turn an interpretation into an
