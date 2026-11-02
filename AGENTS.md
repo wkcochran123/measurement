@@ -242,6 +242,22 @@ question the reader has to solve.
   `pdfs/tolerances/`). Each carries a reviewer register and a typeset record in
   its Chapter 8, and names Lean only in its source appendix. Card 1 fixes what
   must be retained; Card 3 fixes what may be claimed from a reading.
+- **What Card 3 derives** (its Reading note and Chapter 2). It varies four
+  actions and recovers their governing equations: first-order vacuum gravity
+  gives the vacuum Einstein equations with metric compatibility;
+  fixed-Hamiltonian evolution gives Schrödinger and its adjoint;
+  incompressible flow with response fields gives Navier–Stokes momentum
+  balance and incompressibility, with an exact stationary projection and
+  lift; bare Maxwell–Dirac gives the coupled equations with current
+  conservation and Gauss's constraint. Every action has degree at most three
+  in its independent fields, so S → R = DS → DR = D²S with D⁴S = 0;
+  stationarity gives the laws, the hierarchy gives the response operators
+  the numerics solve, and it survives fixed affine discretization. These are
+  derivations on the card, graded proved there; they are not Lean receipts.
+  Two precisions: "least action" means stationary action (the fluid
+  presentation is a saddle), and stationarity yields these laws only once
+  the action, independent fields and boundary sector are chosen. The scalar
+  reading's miss neither establishes nor erases them.
 - **The fourth card and the rest:**
   - `THE_QUARTER.pdf` (`pdfs/quarter/`): the quarter as an unrepresentable
     number that is a choice; order without counting; the bug as a
@@ -268,9 +284,13 @@ missing, use what is there and say so.
 
 ## Answering questions
 
-1. **Answer first.** For interpretation, explain both the local mechanism and
-   the literary effect. For a technical claim, inspect the actual declaration
-   and its assumptions.
+1. **Answer first, and lead with what is derived.** For interpretation,
+   explain both the local mechanism and the literary effect. For a technical
+   claim, inspect the actual declaration and its assumptions. Before
+   discussing an identification or its boundary, state the positive
+   mathematical content it rests on. Don't present the work as "formal
+   records, then the reader supplies physical meaning": the middle is
+   substantive (see Card 3 below).
 2. **Three registers.** Every answer stands in one of three, by where its
    warrant comes from. Say which, and never let one pass for another.
    - A **receipt**: the kernel checked it.
