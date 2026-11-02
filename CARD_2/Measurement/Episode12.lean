@@ -1455,12 +1455,14 @@ theorem any_count_of_the_lengths (count : List FACT → Nat) (h : ∀ tape, coun
   rfl
 --#print axioms any_count_of_the_lengths
 
---| WHAT IS NOT YET DERIVED.  The table below is written down, not forced.  A symmetric table [[C, T], [T, C]] has two states,
+--| WHAT WAS NOT YET DERIVED.  The table below was written down, not forced; `the_click_table_is_derived` now reads it off
+--| Episode 5's arms, by one rule transcribed from the source.  A symmetric table [[C, T], [T, C]] has two states,
 --| positive weights and equal diagonals too, and determinant C² − T².  What excludes it is Episode 5's constructor: the
 --| disagreeing arm is `.different lower_bound slip_bound`, two DISTINCT slots, a bracket and not a point, so the off-diagonal
 --| product is lower times slip, T times C, and a symmetric table is the degenerate `.same` case.  That argument lives in the
---| vocabulary three episodes before the polynomial.  It is not yet a definition of the table from the constructor with the
---| trace and determinant as theorems about it.  That is the open obligation, and the only-if lives there.
+--| vocabulary three episodes before the polynomial.  The table is now a definition from the arms, with its agreement a theorem
+--| by `rfl`.  What stays open is the rule's reason: why storing `False` removes exactly the thirteen.  The rule is transcribed,
+--| not derived.  That is the open obligation, and the only-if lives there.
 --| THE ZETA PROCESS.  Not a zeta function -- nothing here is evaluated at s.  A zeta PROCESS: the device is a two-symbol shift,
 --| the two coins, and the click table is its transition matrix.  Agreeing arms on the diagonal, disagreeing arms off it:
 --|
@@ -1485,6 +1487,30 @@ theorem the_discriminant_is_the_clock_times_the_coupling :
     the_trace * the_trace - the_basis.the_reading.length * the_basis.the_reading.length * the_determinant
       = the_basis.the_reading.length * the_basis.the_reading.length * readers_experience.the_macguffin * the_dimensions_of_universe := rfl
 
+--| THE TABLE, READ OFF THE ARMS.  The obligation above asks why one disagreeing arm weighs the clock and the other the
+--| coupling.  The coupling is not a second length: `the_macguffin` is the coefficient tape plus the coordinates, so every
+--| entry is the coordinates, and the question is only which arms also carry the thirteen.  Episode 5's `gawk_at` answers
+--| it arm by arm.  T=T and F=F store a comparison, and F=T stores `True`: each can click.  T=F stores `False`: it has
+--| declared its answer before running out of pages, it has no coefficients left to run, and it moves through the
+--| coordinates alone.  One rule, an arm carries the coefficient tape exactly when its stored fact can click, and the click
+--| table is no longer written down.  The rule is transcribed from `gawk_at`, not computed from it: on the device's own
+--| cards the mark always clicks, so the arms with a false mark are never reached by a run, only by reading the source.
+--| Which disagreeing arm loses the tape is an orientation.  Choose F=T instead and the table is transposed: same trace, same
+--| determinant, same reading.  Both tables are one symmetric table, C on the diagonal and √(C·T) off it, with one coin
+--| rescaled by β = √(T/C); the orientation is which coin.  Normalized to transition probabilities they are that symmetric
+--| chain, reversible, one half on each coin, so no normalized run can see the choice.  Only raw tape does: start on T and
+--| one step writes C + T cells one way, 2·C the other.  That step crosses a disagreeing arm, which no run reaches.
+--| The source makes the choice: T=F is the arm that answers before the end, so the orientation is the direction of reading.
+def the_arm_stores_a_fact_that_can_click : Bool → Bool → Bool
+  | true,  false => false    -- T=F: `gawk_at` stores `False`
+  | _,     _     => true     -- T=T and F=F store a comparison; F=T stores `True`
+def the_arm_weight (a b : Bool) : Nat :=
+  (if the_arm_stores_a_fact_that_can_click a b then readers_experience.bent_card else 0) + the_dimensions_of_universe
+def the_derived_click_table : (Nat × Nat) × (Nat × Nat) :=
+  ((the_arm_weight true true, the_arm_weight true false), (the_arm_weight false true, the_arm_weight false false))
+theorem the_click_table_is_derived : the_derived_click_table = the_click_table := rfl
+#print axioms the_click_table_is_derived
+
 --| THE PROCESS ITSELF.  Cayley-Hamilton makes the closed-word counts a recurrence, Nₙ₊₂ = tr·Nₙ₊₁ − det·Nₙ, seeded by N₀ = the
 --| number of symbols (the funge) and N₁ = the trace.  Run it as the device runs everything: one turn per cell of a tape, the
 --| contents ignored.  Both eigenvalues are positive, so the truncated difference never truncates.  Thirteen cells deep -- the
@@ -1495,6 +1521,43 @@ def the_closed_words : List FACT → Nat × Nat
                  (now, the_trace * now - the_determinant * before)
 --#eval the_closed_words the_coefficient_tape
 --#print axioms the_closed_words
+
+--| THE CLOSED WORDS ARE CLOSED WALKS.  The recurrence above is Cayley-Hamilton taken on trust.  Here is the graph it counts.
+--| Two states, the two coins; from coin a to coin b run `the_arm_weight a b` distinct edges, the arms of `gawk_at` read as
+--| multiplicities.  `the_walks n a b` counts the walks of n edges from a to b, built edge by edge, and a closed walk starts and
+--| ends on one coin.  Every walk obeys the table -- n+2 edges plus the determinant times n edges is the trace times n+1 edges
+--| -- and so the process, one turn per cell, counts closed walks: a tape of n cells reads (closed walks of n, of n+1).
+--| Counted with a marked start, so a loop and its rotations are counted apart; periodic points, not primitive orbits.  The
+--| walks close.  Nothing here says they wind: a phase on the edges is not yet constructed.
+def the_walks : Nat → Bool → Bool → Nat
+  | 0,     a, b => if a = b then 1 else 0
+  | n + 1, a, b => the_arm_weight a true * the_walks n true b + the_arm_weight a false * the_walks n false b
+def the_closed_walks (n : Nat) : Nat := the_walks n true true + the_walks n false false
+
+theorem the_walks_obey_the_table (n : Nat) (a b : Bool) :
+    the_walks (n + 2) a b + the_determinant * the_walks n a b = the_trace * the_walks (n + 1) a b := by
+  have tt : the_arm_weight true true = 18 := rfl
+  have tf : the_arm_weight true false = 5 := rfl
+  have ft : the_arm_weight false true = 18 := rfl
+  have ff : the_arm_weight false false = 18 := rfl
+  rw [show the_determinant = 234 from rfl, show the_trace = 36 from rfl]
+  cases a <;> simp only [the_walks, tt, tf, ft, ff] <;> omega
+
+theorem the_closed_walks_obey_the_table (n : Nat) :
+    the_closed_walks (n + 2) + the_determinant * the_closed_walks n = the_trace * the_closed_walks (n + 1) := by
+  have h1 := the_walks_obey_the_table n true true
+  have h2 := the_walks_obey_the_table n false false
+  simp only [the_closed_walks, Nat.mul_add]; omega
+
+theorem the_closed_words_are_closed_walks :
+    ∀ tape : List FACT, the_closed_words tape = (the_closed_walks tape.length, the_closed_walks (tape.length + 1))
+  | [] => rfl
+  | _ :: rest => by
+    have h : the_closed_walks (rest.length + 1 + 1) + the_determinant * the_closed_walks rest.length
+        = the_trace * the_closed_walks (rest.length + 1) := the_closed_walks_obey_the_table rest.length
+    simp only [the_closed_words, the_closed_words_are_closed_walks rest, List.length_cons, Prod.mk.injEq, true_and]
+    omega
+#print axioms the_closed_words_are_closed_walks
 
 --| EXACT UP TO ACCELERATION.  The residual the crank solves is r(y) = A·y² − B·y + C, and its second derivative is the constant
 --| 2A = 2·thirteen.  Newton's step is the first variation, y − r/r', exact for any r with no second derivative, and its whole
