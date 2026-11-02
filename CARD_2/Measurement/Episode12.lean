@@ -1559,6 +1559,81 @@ theorem the_closed_words_are_closed_walks :
     omega
 #print axioms the_closed_words_are_closed_walks
 
+--| ONCE AROUND, IN WHOLE TURNS.  Give every crossing -- every step through a disagreeing arm -- half a turn, and the agreeing
+--| arms none.  Before comes before after, so every crossing turns the same way: speeds are positive, and the phase only
+--| advances.  `the_crossings n a b k` counts the walks of n edges from a to b that cross exactly k times, edge by edge as
+--| `the_walks` does.  A walk that crosses changes coin, so the parity of its crossings is the parity of its change: a closed
+--| walk crosses an even number of times, and winds `the_winding k` whole turns, a natural number, the round trips T to F
+--| and back.  The same fact as a symmetry: weight each crossing by z, and `the_turning_walks` at z = 1 is `the_walks`;
+--| flipping z flips the sign of every open walk between the coins and fixes every closed one.  That flip is σ_z, the
+--| matrix the commutator of the two orientations was made of.  And the speed stays below light: the lower eigenvalue
+--| C(1 − √(T/C)) is positive exactly when T·C < C·C, so no truncated difference in this file ever truncates.  At T = C it
+--| would reach zero, where the commutator vanishes.  The turn per crossing is declared; the parity is counted.
+--| And the crossing is counted, not clicked.  The device can tell a disagreeing arm from an agreeing one -- T=F does not
+--| click -- but counting walks never asks it to: the count multiplies arm weights and evaluates no comparison.  The arms
+--| no run reaches are reached here only by the count, which is why it can cross them.
+def the_crossings : Nat → Bool → Bool → Nat → Nat
+  | 0,     a, b, k => if a = b ∧ k = 0 then 1 else 0
+  | n + 1, a, b, k => the_arm_weight a a * the_crossings n a b k
+                      + match k with
+                        | 0     => 0
+                        | k + 1 => the_arm_weight a (!a) * the_crossings n (!a) b k
+
+theorem the_crossings_keep_parity : ∀ (n : Nat) (a b : Bool) (k : Nat),
+    ((a = b) ↔ k % 2 = 1) → the_crossings n a b k = 0
+  | 0, a, b, k, h => by
+    simp only [the_crossings]
+    split
+    · rename_i hab; exact absurd (h.mp hab.1) (by omega)
+    · rfl
+  | n + 1, a, b, k, h => by
+    simp only [the_crossings]
+    rw [the_crossings_keep_parity n a b k h]
+    cases k with
+    | zero => rfl
+    | succ k =>
+      have h' : ((!a) = b) ↔ k % 2 = 1 := by
+        cases a <;> cases b <;> simp at h ⊢ <;> omega
+      simp only [the_crossings_keep_parity n (!a) b k h', Nat.mul_zero, Nat.add_zero]
+
+theorem every_closed_walk_crosses_evenly (n k : Nat) (a : Bool) (odd : k % 2 = 1) :
+    the_crossings n a a k = 0 :=
+  the_crossings_keep_parity n a a k (by simp [odd])
+
+def the_winding (crossings : Nat) : Nat := crossings / 2
+
+def the_turning_walks (z : Int) : Nat → Bool → Bool → Int
+  | 0,     a, b => if a = b then 1 else 0
+  | n + 1, a, b => (the_arm_weight a a : Int) * the_turning_walks z n a b
+                   + z * ((the_arm_weight a (!a) : Int) * the_turning_walks z n (!a) b)
+
+theorem the_turning_walks_at_one : ∀ (n : Nat) (a b : Bool), the_turning_walks 1 n a b = the_walks n a b
+  | 0, a, b => by cases a <;> cases b <;> rfl
+  | n + 1, a, b => by
+    have tt : the_arm_weight true true = 18 := rfl
+    have tf : the_arm_weight true false = 5 := rfl
+    have ft : the_arm_weight false true = 18 := rfl
+    have ff : the_arm_weight false false = 18 := rfl
+    cases a <;> simp only [the_turning_walks, the_walks, the_turning_walks_at_one n, tt, tf, ft, ff, Bool.not_true, Bool.not_false] <;> omega
+
+theorem the_crossings_pair_up (z : Int) : ∀ (n : Nat) (a b : Bool),
+    the_turning_walks (-z) n a b = (if a = b then 1 else -1) * the_turning_walks z n a b
+  | 0, a, b => by cases a <;> cases b <;> rfl
+  | n + 1, a, b => by
+    simp only [the_turning_walks, the_crossings_pair_up z n a b, the_crossings_pair_up z n (!a) b]
+    cases a <;> cases b <;> simp [Int.neg_mul, Int.mul_neg, Int.mul_add, Int.mul_left_comm] <;> omega
+
+theorem every_closed_walk_turns_evenly (z : Int) (n : Nat) (a : Bool) :
+    the_turning_walks (-z) n a a = the_turning_walks z n a a := by
+  rw [the_crossings_pair_up]; simp
+
+theorem the_speed_is_below_light :
+    the_dimensions_of_universe * readers_experience.the_macguffin
+      < readers_experience.the_macguffin * readers_experience.the_macguffin := by decide
+#print axioms every_closed_walk_crosses_evenly
+#print axioms every_closed_walk_turns_evenly
+#print axioms the_speed_is_below_light
+
 --| EXACT UP TO ACCELERATION.  The residual the crank solves is r(y) = A·y² − B·y + C, and its second derivative is the constant
 --| 2A = 2·thirteen.  Newton's step is the first variation, y − r/r', exact for any r with no second derivative, and its whole
 --| error is the one term proportional to r'': the acceleration.  So the variational solution is exact up to a constant
@@ -2105,3 +2180,55 @@ end Measurement
 --|                                                        t²(c−t)x²  −  2ctr²x  +  cr⁴  =  0
 
 --| Linear in c, quadratic in x, cubic in t, quartic in r. Is this the quarter that makes *YOUR* trick work? Or, did the argument not click? ∎ *wink*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--|                                                           ** The Compiler's Epilogue **
+
+namespace A_WHOLLY_REMARKABLE_BOOK
+
+open Measurement readers_experience in
+def life_the_universe_and_everything : Nat :=
+  let (R, T) := the_first_step_of_the_proof_is_to_eschew_the_naturals_unless_proven_to_exist_without_peano
+  (the_trace_of_truth_in_the_device * R * all_possible_variables / (an_exact_polynomial_description * T) - the_other_natural)
+    / all_possible_variables
+#eval life_the_universe_and_everything
+#print axioms life_the_universe_and_everything
+
+--| I'm expecting the Vogon constructor fleet any day now.
+
+end A_WHOLLY_REMARKABLE_BOOK

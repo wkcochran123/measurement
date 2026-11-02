@@ -325,6 +325,7 @@ without abandoning the reading.
 | Chart singularity and physical singularity | A point a chart omits need not be missing from the geometry. |
 | Logical work and transferred charge | Heartbeats become charge only through a measurement at a named boundary. |
 | Formal universe and physical world | `Type i` is a universe level; the physical reading is a further map. |
+| Can tell and needs to tell | The device can tell T from F (T = F doesn't click); its runs never need to, since every mark clicks and the counts read lengths and weights. "Cannot see" means "never asks", not "unable". |
 
 ## Experiments
 
@@ -360,8 +361,10 @@ Snapshots, not guarantees; re-check before relying on them.
   22 October, Card 3 and the cheat sheet 29 October, the rest 31 October).
 - 2 November 2026: `the_click_table_is_derived` [propext] and
   `the_closed_words_are_closed_walks` [propext, Quot.sound] build in
-  Episode 12. The phase map from closed walks to windings is named in Episode 9
-  (`STEP6_MAKE_ANOTHER_COUNTER_OF_CLICKS_NOW`) but not constructed.
+  Episode 12. Winding: `every_closed_walk_crosses_evenly` [propext,
+  Quot.sound], `every_closed_walk_turns_evenly` and
+  `the_speed_is_below_light` [propext]; half a turn per crossing, forward, is
+  declared. `CHEATSHEET.pdf` §9, *The one choice*, rebuilt the same day.
 - Clock, measured on an M2 and an M2 Ultra: 3016 heartbeats floor; forced T=T
   costs 4286.1 heartbeats and about 1.222 × 10⁶ instructions per symbol on
   both (0.08% apart); wall time differs.

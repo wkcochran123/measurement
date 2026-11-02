@@ -76,6 +76,8 @@ info: Measurement/Episode12.lean:1977:0: 'Measurement.one_click_on_both_faces' d
 info: Measurement/Episode12.lean:1978:0: 'Measurement.one_truth_on_both_faces' depends on axioms: [propext, Quot.sound]
 info: Measurement/Episode12.lean:2000:0: 'Measurement.readers_interpretation_of_the_experience.naotrino_detector_reads_the_number' depends on axioms: [propext,
  Quot.sound]
+info: Measurement/Episode12.lean:2229:0: 42
+info: Measurement/Episode12.lean:2230:0: 'A_WHOLLY_REMARKABLE_BOOK.life_the_universe_and_everything' depends on axioms: [propext]
 ✔ [15/16] Built Measurement (989ms)
 Build completed successfully (16 jobs).
 CARD_2 % vim ../README.md
