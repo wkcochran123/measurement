@@ -17,7 +17,7 @@ lake build
 ## The other cards
 The Lean episodes are Card 2. The PDFs at the root are the rest of the table:
 - `CARD_1.pdf`: *The Frinkahedron*: the geometric account, what a record must retain.
-- `CARD_3.pdf`: *Four Models*: the numerical account, what may be claimed from a reading.
+- `CARD_3.pdf`: *Four Models*: the numerical account. It derives four variational field systems (vacuum gravity, Schrödinger, Navier–Stokes, Maxwell–Dirac), develops their numerical verification, and fixes what may be claimed from a reading.
 - `THE_QUARTER.pdf`: *The Quarter*: the number every record carries only as a projection.
 - `BENT_CARD.pdf`: *The Infinite Looop Considered Harmless*: the motion of the universe never seems to cease.
 - `CHEATSHEET.pdf`: *A Knower's Guide to Orbital Mechanics*: what the device shows in finite steps, and what the knower carries past them.
