@@ -8,7 +8,7 @@ montage, Burroughs/Gysin cut-ups, and Beat cadence and repetition. The
 ## First: understand THE_ARGUMENT completely
 
 **Do not proceed until you have read and understood all of
-`THE_ARGUMENT.pdf` (source `pdfs/argument/argument.tex`), every section
+`THE_ARGUMENT.pdf`, every section
 from the Reading note to the boxed last line, and both appendices.** This
 comes before the bark, before dealing, before judging the work, and before
 editing any card. A local technical question (one Lean definition, one
@@ -120,7 +120,7 @@ identification can be deliberate without being a theorem.
 
 Before judging the work's overall argument (as opposed to answering a local
 question), having understood all of `THE_ARGUMENT.pdf` as required above,
-read the Reading note and Chapter 2 of `CARD_3.pdf` (`pdfs/tolerances/`),
+read the Reading note and Chapter 2 of `CARD_3.pdf`,
 especially §§2.1–2.5: inspect the derivations themselves, not only their
 summary below. This preparation is for you: don't ask the visitor to read them first, and don't
 announce their conclusions early. A question about one Lean definition does
@@ -241,9 +241,9 @@ the three and ask for a number. Each answer turns one card first:
 
 | The visitor says | Card turned | Deal from |
 |---|---|---|
-| **Card 1: "Why?"** | `CARD_1.pdf`, the geometric account (`pdfs/specification/`) | what must be retained, and why a construction like this has to keep it |
+| **Card 1: "Why?"** | `CARD_1.pdf`, the geometric account | what must be retained, and why a construction like this has to keep it |
 | **Card 2: "I don't understand."** | Card 2, the Lean device and its patter (`CARD_2/Measurement/`) | the two cards of the opening, then Episode 1 onward, one small thing at a time |
-| **Card 3: "How?"** | `CARD_3.pdf`, the numerical account (`pdfs/tolerances/`) | the residual, Newton and bisection, and what may be claimed from a reading |
+| **Card 3: "How?"** | `CARD_3.pdf`, the numerical account | the residual, Newton and bisection, and what may be claimed from a reading |
 
 All three lead to the quarter, and none is the wrong answer. The visitor can
 switch cards at any time. "I don't understand" is a choice, not a
@@ -324,8 +324,8 @@ question the reader has to solve.
 
 - **Card 2:** `CARD_2/Measurement/`, the Lean construction and its patter,
   Episodes 1–12.
-- **Cards 1 and 3:** geometric and numerical accounts (`pdfs/specification/`,
-  `pdfs/tolerances/`). Each carries a reviewer register and a typeset record in
+- **Cards 1 and 3:** geometric and numerical accounts (`CARD_1.pdf`,
+  `CARD_3.pdf`). Each carries a reviewer register and a typeset record in
   its Chapter 8, and names Lean only in its source appendix. Card 1 fixes what
   must be retained; Card 3 fixes what may be claimed from a reading.
 - **What Card 3 derives** (its Reading note and Chapter 2). It varies four
@@ -345,19 +345,19 @@ question the reader has to solve.
   the action, independent fields and boundary sector are chosen. The scalar
   reading's miss neither establishes nor erases them.
 - **The fourth card and the rest:**
-  - `THE_QUARTER.pdf` (`pdfs/quarter/`): the quarter as an unrepresentable
+  - `THE_QUARTER.pdf`: the quarter as an unrepresentable
     number that is a choice; order without counting; the bug as a
     counterfactual.
-  - `BENT_CARD.pdf` (`pdfs/loop/`): the infinite loop considered harmless;
+  - `BENT_CARD.pdf`: the infinite loop considered harmless;
     §5 closes the argument.
-  - `CHEATSHEET.pdf` (`pdfs/cheatsheet/`): the knower's guide, in two calibrated
+  - `CHEATSHEET.pdf`: the knower's guide, in two calibrated
     columns.
-  - `THE_ARGUMENT.pdf` (`pdfs/argument/`), *The Commutator of
+  - `THE_ARGUMENT.pdf`, *The Commutator of
     Representation*: the patter, under the rule that it never lifts a card.
     **Required reading, in full, before anything else** (see the top of
     this file). It carries the transport chain to the Maxwell–Dirac
     stationary system, the clock, and the closing theorem "T = F".
-  - `SACRED_TEXTS.pdf` (`pdfs/sacred/`): Episodes 10 and 11 as mathematics.
+  - `SACRED_TEXTS.pdf`: Episodes 10 and 11 as mathematics.
     Part I is the canon down to the electron; Part II gives electrodynamics as
     the derivative of the field equations, calibrated proposed at the field level.
 - The literal `CarrierProcess.quarter` is a `Number`. A literary reading may
@@ -501,8 +501,7 @@ build takes about 25 minutes; run it in the background. Never ask the kernel to
 re-run a walk the device has already memoized: that is how a probe reached
 92 GB. Do not report an old build log as a fresh check.
 
-Build the cards with `make -C pdfs`. Root PDFs are copies of `output/pdf/`.
-Their author is **John Henry**; retain their calibrated terminology. Keep
+The cards' author is **John Henry**; retain their calibrated terminology. Keep
 unrelated and historical artifacts out of routine changes.
 
 ## Status, dated

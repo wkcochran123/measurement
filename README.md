@@ -82,3 +82,6 @@ info: Measurement/Episode12.lean:2230:0: 'A_WHOLLY_REMARKABLE_BOOK.life_the_univ
 Build completed successfully (16 jobs).
 CARD_2 % vim ../README.md
 ```
+
+## HINT:
+The only reason why *YOU the KNOWER* see the number is because there is something *YOU the READER* can't understand.

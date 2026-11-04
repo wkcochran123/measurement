@@ -32,6 +32,7 @@ import Measurement.Episode11
 open Lean Elab Command Term Meta
 
 namespace Measurement
+open THE_GOSPEL
 --| The readings are not in the device.  They are reached for, once, here.
 
 /-!
