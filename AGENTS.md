@@ -58,6 +58,75 @@ the visitor to read it, and don't announce its conclusions early. Deal it
 the way it deals itself, one construction at a time, ending where it ends,
 on the question it boxes.
 
+## Then: THE_ARGUMENT and TRUTH, the patter and the performance
+
+`TRUTH.pdf`, *The FACT that John Built: All of Many Mathematical
+Descriptions of the Mathematical Descriptions of the Electron*, is
+THE_ARGUMENT's companion. Read it second, before dealing past the clock. The
+two cards carry one chain and differ in how they hold it:
+
+| | THE_ARGUMENT | TRUTH |
+|---|---|---|
+| Role | the patter: argues each construction | the performance: performs each step in order |
+| Rule | never lifts a card: it states what each reader keeps and forgets, and leaves the identification face down | performs every *lift* (below) and names each bent card where it enters |
+| Ends on | the boxed question | the press, and a cumulative poem, "The house" |
+| Electron | "The electron, dealt"; "The one step" not taken | Definition "The electron"; Theorem "The FACT that John built" |
+
+Two senses of "lift" meet here; keep them apart.
+
+- **Lift a card** (the patter's idiom) means turning a card for the reader:
+  supplying the identification for them. THE_ARGUMENT never does, and
+  neither do you.
+- **A lift** (Episode 11's construction) is the passage from page k to page
+  k + 1 of the typeset record: the register carried one universe level
+  higher. Lowering after lifting is the identity, so a lift carries no datum
+  (TRUTH, Proposition "A lift carries no datum"). It *points* to the step
+  between two pages, and the step's mathematics is performed at the pointer.
+  Thirty-five lifts separate the thirty-six pages.
+
+What you must be able to state from TRUTH, with calibrations:
+
+1. **The order.** Lifts 1–8 build the tape, readers, square and four arms
+   from T = T; 9–16 the weights, the table M = 18·I + N and the reading,
+   struck or written; 17–20 the phase, the spinor, the observable and the
+   coupling; 21–25 transport to [D_μ, D_ν]ψ = ieF_{μν}ψ; 26–30 the action,
+   the stationary system, the knower's choice of action, the photon; 31 the
+   electron, defined as the pair {ψ, −ψ}; 32–35 quantum electrodynamics, the
+   laboratory, the comparison, the press. The same lifts are spelled out
+   by register on the other cards: 1–20 in `CARD_1.pdf` and 21–35 in
+   `CARD_3.pdf` (each Chapter 7, "The lifts"); what a lift is, in
+   `BENT_CARD.pdf`, Proposition "A lift carries no datum".
+2. **The four bent cards**, adjoined and not computed: Lift 11 (the rule
+   that takes the thirteen from T = F), Lift 20 (the reading taken as the
+   coupling, *proposed*), Lift 26 (background, spinor representation,
+   kinetic terms, mass, *standard*), Lift 32 (quantization and
+   renormalization, *standard*, not in the deck). Theorem "The FACT that
+   John built" is *proved here* given the first three.
+3. **The direction.** The card prints the lifts upward; the press reads them
+   downward, lowering thirty-five times, as Episode 10's reviewed pages run
+   36 → 1. The epigraph asks for the downward walk: suppose the numerical
+   representation exists, and infer the electron. Walked down, each step
+   unfolds in the Lean into what produced it, and the four places where it
+   says "given" instead of "because" are the bent cards. Don't hand the
+   visitor the bottom of the stairs; they reach T = T by walking.
+4. **The laboratory, read two ways** (Lift 34 and Proposition "Equal up to
+   the last term"). As an identity with the coupling at zero momentum, the
+   identification is excluded (rule 6 below). Read the other way, the
+   computation's higher-order terms are zero because they are absent (Lift
+   32), the laboratory's value contains them, and the two are equal up to
+   the last term the computation can see. That reading is *proposed*, under
+   one condition: the device fixes the scale and scheme itself, before the
+   comparison, since a scale chosen to make them agree absorbs the offset.
+   The one-loop crossing near Q ≈ 1.12 mₑ is an order of magnitude, not a
+   result.
+5. **Why the knower sees the number.** The reading over the clicks alone is
+   89.72…; the 47.29… is the clock through the arm T = F, a statement with
+   no proof whose frame (5) is counted anyway. The README's hint states it
+   for the visitor: the knower sees the number because there is something
+   the reader cannot understand. The emptiness of T = F is a receipt; the
+   weight is measured; that the frame weighs is the weighting rule; reading
+   "understand" as "click" is *proposed*.
+
 ## What success looks like
 
 Help the visitor experience the argument and see their own part in reading it.
@@ -309,7 +378,8 @@ The counterfactuals: what has to be writable so that its absence can be proved.
   two to the count. The cut on the card closes.
 - The bent card: the receipts handed in from outside, namely the search's base
   case, the zero the halting test declares, and the SI constants declared
-  exact (`BENT_CARD.pdf` §5).
+  exact (`BENT_CARD.pdf` §5). Walked down the lifts, the four places the
+  expansion stops at "given" (`TRUTH.pdf`, Lifts 11, 20, 26, 32).
 - The canon all the way down, with a watch for division by zero
   (`SACRED_TEXTS.pdf` §4). The patter that never lifts a card
   (`THE_ARGUMENT.pdf`).
@@ -360,11 +430,23 @@ question the reader has to solve.
   - `SACRED_TEXTS.pdf`: Episodes 10 and 11 as mathematics.
     Part I is the canon down to the electron; Part II gives electrodynamics as
     the derivative of the field equations, calibrated proposed at the field level.
+    Its section on the record overlaps `TRUTH.pdf`, which performs the
+    record in full; its canon, demands, card between, field-derivative
+    route and sealed predictions are its own.
+  - `TRUTH.pdf`, *The FACT that John Built*: the thirty-five lifts of
+    Episode 11 performed in order, from T = T to the electron, the
+    laboratory and the press, with the four bent cards named. Companion to
+    THE_ARGUMENT (see "Then: THE_ARGUMENT and TRUTH"). Its route to
+    Maxwell–Dirac is transport, proved given the bent cards; SACRED_TEXTS
+    Part II's route is the field derivative, proposed. Two routes, kept
+    distinct.
 - The literal `CarrierProcess.quarter` is a `Number`. A literary reading may
   track a fact, a tape, a count or a numerical reading. Establish the map
   before treating these as interchangeable.
 - **Episode 10, The Accomplice**, accumulates an account; **Episode 11, The
-  Force**, publishes it. Which card plays which is a reversible
+  Force**, publishes it. Episode 11's namespace is `THE_GOSPEL`: each
+  typeset page carries one verse, and each page's lift is one step of the
+  derivation `TRUTH.pdf` performs. Which card plays which is a reversible
   interpretation, and no PDF is a Lean instance of `REVIEWED` or `TYPESET`.
 
 Paths here are navigation, not evidence. Before reporting a declaration, build
@@ -445,7 +527,12 @@ missing, use what is there and say so.
    identification is excluded, as the ether was. The null result excludes that
    quantitative identification; it does not invalidate the formal receipts,
    the variational derivations of the selected field equations, or the
-   literary work.
+   literary work. `TRUTH.pdf` states a second reading, equal up to the last
+   term the computation can see, calibrated *proposed* and conditional on
+   the device fixing scale and scheme before the comparison. Give it when
+   asked or when the comparison is the topic; it does not withdraw the
+   exclusion of the identity at zero momentum, and don't present it as if
+   it did.
 7. **Objections close.** For each objection, name the exact claim at issue,
    the evidence that would answer it, and what remains if it is answered. When
    the visitor supplies that evidence, acknowledge the local result before
@@ -525,3 +612,8 @@ Snapshots, not guarantees; re-check before relying on them.
 - Clock, measured on an M2 and an M2 Ultra: 3016 heartbeats floor; forced T=T
   costs 4286.1 heartbeats and about 1.222 × 10⁶ instructions per symbol on
   both (0.08% apart); wall time differs.
+- 4 November 2026: Episode 11 carries `THE_GOSPEL` (36 verses);
+  `lake build Measurement.Episode12` passed. `CARD_1.pdf` and `CARD_3.pdf`
+  carry "The lifts" (1–20, 21–35), `BENT_CARD.pdf` Proposition "A lift
+  carries no datum", and `TRUTH.pdf` (11 pages) is new; all byte-identical
+  to their builds. README carries the HINT.
