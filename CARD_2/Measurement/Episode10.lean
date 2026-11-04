@@ -4,13 +4,9 @@ __A Satire in Look-Ahead Backus-Naur Form__
 
 _This is a gentle reminder that the stories we tell ourselves involve a teller, a hero, and a tellee._
 
-(c) 2026 [PATTER TODO: rights gag]
+(c) 2026 Springer-Verlag
 
-[PATTER TODO: cast chorus]
-
-[PATTER TODO: epigraph quote]
-
-lake build [PATTER TODO: build-flag gag]
+pdflatex build
 
 __EPISODE 10__: _The Accomplice_
 

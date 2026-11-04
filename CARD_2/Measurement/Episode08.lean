@@ -287,6 +287,7 @@ def the_dimensions_of_universe := the_coordinate_system.gauss.length
 episode7_elaboration_of A_NOWTRINO_MODEL as the_causal_prediction    -- The device as _predictor_
 episode7_elaboration_of this_way         as the_data_table           -- The device as _information disambiguation_
 episode7_elaboration_of the_calculus     as the_differential_form    -- The device as _representation_
+episode7_elaboration_of that_way         as the_train_schedule       -- The device as _yarn_
 
 --| Then we can make sure that this model is constructed _inconsistently_ enough that it never _slips_ into _ACTUAL_ inconsistency.
 episode7_elaboration_of A_NOWTRINO_MODEL this_way the_calculus as the_fit_curve
@@ -302,6 +303,9 @@ theorem the_causal_prediction_is_the_stokes : the_causal_prediction = the_nowtri
 --| The data table, on the other hand, can only read the _FLUX_ in conditions. I don't want to get into it here as the device _CLEARLY EXPLAINS_ that
 --| measurement cannot take place in a vacuum. To be measurable, something must _change_. Plato, Zeno, Aristotle, take your pick on how this works.
 theorem the_data_table_is_the_gauss : the_data_table = the_coordinate_system.gauss := rfl
+
+--| And _that way_ stops at as many stations as _this way_. The yarn stands where the smooth model stood; the other four stops are shared.
+theorem the_train_schedule_is_the_gauss : the_train_schedule = the_coordinate_system.gauss := rfl
 
 --| Have *YOU the KNOWER* finally caved on me calling this 𝔽₁? Probably not. That's fine, the proof is not quite consistent enough to be true. I
 --| think, at this point, *YOU the READER* have the idea of how this works. Let me show *YOU the KNOWER* _one possible_ List → Nat implementation

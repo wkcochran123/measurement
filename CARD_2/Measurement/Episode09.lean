@@ -146,7 +146,7 @@ def STEP4_COMPUTE_THE_RATE_OF_PARTICLES
 --| the _numbers_ _MEANT_ _something_ and the _symbol_ could be _COMPUTED_ from the _value_?
 
 --| The compiler doesn't care which I call which, so I just get one _click_ if it is the _universe growing_ or another _nowtrino_, whichever is
---| slower to the _compiler_. For me, I can only see _one_ or the _other_ and a I can tell them apart because those are _two_ things measured by
+--| slower to the _compiler_. For me, I can only see _one_ or the _other_ and I can tell them apart because those are _two_ things measured by
 --| the device, one causing the other. Or, maybe not. Or, sometimes one _must_ cause the other. They are all _clicks_, but a detector can be built
 --| to tell them apart by differentiating the faster one from the slower one up to the resolution of the discrete events.
 def STEP5_NAME_THE_RESIDUE_TO_COMPUTE_VALUE --    | A converged value here would be nice, but the _name_ we have been given for _VALUE_ is
@@ -161,12 +161,12 @@ def STEP5_NAME_THE_RESIDUE_TO_COMPUTE_VALUE --    | A converged value here would
     value := .number ledger something_with_momentum.counting_process.count click.limit_process.limit
     accumulation := .index ledger click.limit_process.sequence (.nil something.fact)
   }
---| And, as the pattern will continue, it ie either a _continuous_ representation inferred by the device or a _representable value_ computed at
+--| And, as the pattern will continue, it is either a _continuous_ representation inferred by the device or a _representable value_ computed at
 --| construction.
   representative? := fun θr not => e_iθ.representative? θr not ∧ converged_value.representative? θr not
 --| In this case, we named the value as a complex number in Euler notation. It's two numbers are _r_ and _θ_. Or _x + iy_. Either way, the *same*
---| number but computed _quite_ differently. One is a shorthand for an infinite represenation of a _sleight of hand_ with the derivative structure of
---| cyclic equations, the other is a number computed as the hypoteneuse of a triangle. A _Pythagorean_ triangle _whose secret_ is it can be repesented
+--| number but computed _quite_ differently. One is a shorthand for an infinite representation of a _sleight of hand_ with the derivative structure of
+--| cyclic equations, the other is a number computed as the hypotenuse of a triangle. A _Pythagorean_ triangle _whose secret_ is it can be repesented
 --| by two _different_ non-terminating representations of a polynomial. Either way, the number _indexes_ _one_ of these _infinite_ processes,
 --| depending on the needs of describing the situation.
 
@@ -206,7 +206,7 @@ def STEP7_AND_SO_WE_CANT_COUNT_HOW_OFTEN_THE_METAPHOR_GOES_AROUND_JUST_LIKE_PITS
     : REPEATABLE FACT bent_card where
   repeatable_process := --                                                           | So we can overlay our pair of numbers as _4 different_ binary
   { observation_process := land.observation_process --                               | _encodings_. Why _4_? Well, each number is the mapping between
-    stimulus := land.observation_process.iterate land.bit ---------------------------| _two numbers_, which, themselves, are repesented by _two_
+    stimulus := land.observation_process.iterate land.bit ---------------------------| _two numbers_, which, themselves, are represented by _two_
     expectation := .hypothesis ledger (land.observation_process.iterate land.bit) -- | _different limits_, which rely on two _different_ kinds of
   } --                                                                               +------------------+ number, both of which require two simpler
   typical_response := fun or not => JMP.typical_response or not ∧ nonstop.typical_response or not --    | kinds of numbers to describe. q∈ℚ and c∈ℂ.
@@ -222,11 +222,11 @@ def STEP8_INTERPRET_THE_NEXT_3_SYMBOLS --         | The compiler has requested a
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)
     (land: BINARY FACT bent_card)(procedure: REPEATABLE FACT bent_card)
     : NUMERIC FACT bent_card where
-  computational_process := --                               | Step 1: Go around the circle                        | How frustrating is it to repeat
-  { repeatable_process := procedure.repeatable_process -----+ Step 2: Go To Step 1                                | the _repeatable_ process in
+  computational_process := --                               | Step 1: Go around the circle                            | How frustrating is it to repeat
+  { repeatable_process := procedure.repeatable_process -----+ Step 2: Go To Step 1                                    | the _repeatable_ process in
     output := some (.book_of_records ledger procedure.repeatable_process.expectation (.hypothesis something.fact)) ---+ order to show the hypothesis that
-  } --                                                                                                            | the something detect is a _FACT_?
-  related := fun or not => jupyter_notebook.related or not ∧ click_count.related or not --                        | A bug in the logic?
+  } --                                                                                                                | the something detected is a _FACT_?
+  related := fun or not => jupyter_notebook.related or not ∧ click_count.related or not --                            | A bug in the logic?
 --                                    ^                                    ^
 --                                    |                                    |   | If there is a bug, it is in the description of the jupyter notebook
 --                                    +------------------------------------+---+ or in the count of the clicks generated in Episode 8. Or, both.
@@ -234,7 +234,7 @@ def STEP8_INTERPRET_THE_NEXT_3_SYMBOLS --         | The compiler has requested a
 def STEP9_NAME_THE_VARIABLES_CAREFULLY_TO_TELL_A_STORY
     (bent_card: CarrierProcess FACT) --     | It is at this point, we can start _lexing_ tokens. For you see, if the machine can store them in memory
     [glyph: REPRESENTABLE Box Pigeon] ------+ they need to be able to be displayed _on screen_. _MEANING_ one of the _four_ encodings is chosen for
-    (ledger: FACT) --                       | the number as the current _glpyh_. The _glyph_ that represents _the invariant_ inferred above.
+    (ledger: FACT) --                       | the number as the current _glyph_. The _glyph_ that represents _the invariant_ inferred above.
     (something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)
     (land: BINARY FACT bent_card)(procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)
@@ -254,7 +254,7 @@ def STEP9_NAME_THE_VARIABLES_CAREFULLY_TO_TELL_A_STORY
   } --                                                                            | AST as the result of their execution on themselves: T = RFL.
 
 --| As we have just demonstrated, the three symbols can be interpreted as T = (T = T). We can build a very _complex_ _AST_ now from pieces of the
---| _AST_ we have the descriptions of. Problem is, we can can _WAIT FOREVER_ because of an agrument about things that are *REAL* happens to work when
+--| _AST_ we have the descriptions of. Problem is, we can _WAIT FOREVER_ because of an argument about things that are *REAL* happens to work when
 --| those _things_ happen to be computational in description but not representation: √2, π, e, and BB(100). I believe, this shorthand for the expression
 --| of the problem is the shortest description of that number. These _two_ descriptions may be the _only_ _basic_ representations of BB(100).
 
@@ -267,7 +267,7 @@ def STEP10_A_HALTING_COMPUTATION_IS_GIVEN_AS_INPUT_TO_A_NON_HALTING_FUNCTION
     (something: DISTINGUISHABLE FACT quarter)(something_with_momentum:ADMISSIBLE FACT quarter)
     (cascade_of_particles: COUNTABLE FACT quarter)(click: ENCODED FACT quarter)(pit: RESIDUE FACT quarter)
     (land: BINARY FACT quarter)(procedure: REPEATABLE FACT quarter)(how_many_clicks: NUMERIC FACT quarter)(csv_file: REPRESENTABLE FACT quarter)
-    : PHYSICAL FACT quarter where --                       | Guess and check is the _only_ process. Some programs can be filter based on their AST.
+    : PHYSICAL FACT quarter where --                       | Guess and check is the _only_ process. Some programs can be filtered based on their AST.
   noisy_process := ----------------------------------------+ Obvious infinite loops, for instance.  However, for some the loop needs to be _detected_
   { turing_process := csv_file.calculation_process --      | or the program needs to _halt_. Detecting the loop is quite the art.
     program := .halting ledger (.program something.fact csv_file.calculation_process.program)
@@ -277,7 +277,7 @@ def STEP10_A_HALTING_COMPUTATION_IS_GIVEN_AS_INPUT_TO_A_NON_HALTING_FUNCTION
   admissible? := fun _ _ _ => rfl  ---| Another flop! Three _true statements_ in a row!               | shortcut that process and return its value!
   halted? := fun or not => anechoic_chamber.halted? or not ∧ hiss.halted? or not --                   | Often called common subexpression elimination.
 
---| I belive the kewl kids call this _tail recursion_. I like my for loops on top, though. In this case, we are describing a process where the bottom
+--| I believe the kewl kids call this _tail recursion_. I like my for loops on top, though. In this case, we are describing a process where the bottom
 --| and top declare the loop. A _summation_:
 
 def STEP11_CHECK_FOR_CONVERGENCE_IN_THE_TIMESERIES_MATCHES_THE_MEASUREMENT_HIGH_ORDER_TERMS
@@ -303,62 +303,63 @@ def STEP11_CHECK_FOR_CONVERGENCE_IN_THE_TIMESERIES_MATCHES_THE_MEASUREMENT_HIGH_
 --
 
 def STEP12_CHECK_TO_SEE_IF_THE_BORWEIN_PROCESS_HAS_UNCOVERED_A_PROPERTY_OF_ELECTRONS
-    (bent_card: CarrierProcess FACT)
-    [failure: OBSERVED Box Pigeon]
-    (ledger: FACT)
+    (bent_card: CarrierProcess FACT) --     | Is a process repeatable if it _always_ returns _exactly_ the same thing? Is the quadratic formula a
+    [failure: OBSERVED Box Pigeon] ---------+ repeatable process? Is x²ⁿ + xⁿ + 1 = 0 a _quadratic_ equation? The exponents say _no_ but the
+    (ledger: FACT)  --                      | _quadratic formula_ says... mmm, could be. Or, are these not repeatable in the _scientific_ sense?
     (something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
     (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)
-    : OBSERVED FACT bent_card where
-  slip_process :=
-  { physical_process := relative_value.physical_process
-    projection := .origin ledger timeseries.threshold Number
-    stress := .halting ledger (.program something.fact csv_file.calculation_process.program)
-    threshold := Prop
-  }
-  observation := FACT
-  possible := fun or not => static_friction.possible or not ∧ failure.possible or not
-
+    : OBSERVED FACT bent_card where --                                                          | Does a repeatable scientific process need to be
+  slip_process := --                                                                            | able to fail in the way a scientific hypothesis
+  { physical_process := relative_value.physical_process --                                      | needs to be able to be falsifiable? If _did it work_
+    projection := .origin ledger timeseries.threshold Number -----------------------------------+ becomes the _calibration_, is it still _repeatable_?
+    stress := .halting ledger (.program something.fact csv_file.calculation_process.program) -- | How can *YOU the READER* know it worked? The success
+    threshold := Prop --                                                                        | criteria of an experiment generally accompany that
+  } --                                                                                          | experiment, often reducing the experiment result
+  observation := FACT --                                                                        | down to merely, did it work? And, if there were not
+  possible := fun or not => static_friction.possible or not ∧ failure.possible or not --        | a possibility for the experiment to fail, is it an
+--                                                                                              | experiment at all?
 def STEP13_RECORD_THE_OBSERVATION_AS_A_MODELED_AST_AS_OF_RIGHT_NOW
-    (bent_card: CarrierProcess FACT)
-    [right_now: PRESENT Box Pigeon]
-    (ledger: FACT)
+    (bent_card: CarrierProcess FACT) --    | By now, the word _PRESENT_ cannot have much meaning for *YOU the READER*. *YOU the KNOWER* probably still
+    [right_now: PRESENT Box Pigeon] -------+ see a gift wrapped box delivered on the appointed time to *YOU the KNOWER* and all _good_ *knowers*
+    (ledger: FACT) --                      | around you. Right now, _PRESENT_ means _right now_.
     (something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
     (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
-    : PRESENT FACT bent_card where
-  santa_claus :=
-  { static_fraction := motion.slip_process
-    accumulation := .tree ledger
-  }
-  quantum := ULift.{i+1,i} Box
+    : PRESENT FACT bent_card where --                                                 ^
+  santa_claus := --                               | This isn't really the tree,       |
+  { static_fraction := motion.slip_process --     | it is merely the name I am        +--- We have found a failure to stay put, a _slip_ in friction.
+    accumulation := .tree ledger -----------------+ this piece of the tree to.
+  } --                                            | None of this is instantiated and it lives as an AST in a lookup table waiting to be completed.
+  quantum := ULift.{i+1,i} Box --                 | As it gets more complex, the Box the quarter is in keeps getting lifted somehow.
   present := fun or not => gift_from.present or not ∧ right_now.present or not
 
 def STEP14_REALIZE_THAT_THIS_PROCESS_TAKES_THE_APPARANT_SAME_AMOUNT_OF_TIME_EACH_TIME
     (bent_card: CarrierProcess FACT)
-    [weakly_interacting_particle: MEASURABLE Box Pigeon]
+    [weakly_interacting_particle: MEASURABLE Box Pigeon] --| I don't know, they _could_ have _mass_. I mean, my computer is _HEAVY_ for its size.
     (ledger: FACT)
     (something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
-    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
-    (just_now: PRESENT FACT bent_card)
+    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(failure: OBSERVED FACT bent_card)
+    (just_now: PRESENT FACT bent_card) --| It is no longer right now, it is _just after_ *WHEN* _right now_ *HAPPENED*.
     : MEASURABLE FACT bent_card where
-  gauge_process :=
-  { sensing_process := just_now.santa_claus
-    clock := .this_superpigeon ledger just_now.santa_claus.accumulation
-  }
+  gauge_process := --                                                        | Santa came! *YOU the READER* must have been very _NICE_! Or, like in
+  { sensing_process := just_now.santa_claus ---------------------------------+ many homes, *Santa* could just be a role played by a parent. Like the
+    clock := .this_superpigeon ledger just_now.santa_claus.accumulation --   | parent stanza here. All we know for certain is we can set a _calendar_
+  } --                                                                       | to _presents_ showing up!
   observed := fun or not => multimeter.observed or not ∧ weakly_interacting_particle.observed or not
 
 def STEP15_SO_MODEL_THE_PROCESS_AS_SOMETHING_THAT_JUST_SPEWS_OUT_TRUE
     (bent_card: CarrierProcess FACT)
-    [the_argument_for_naotrinos: GUNGAN Box Pigeon]
-    (ledger: FACT)(something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
+    [the_argument_for_naotrinos: GUNGAN Box Pigeon] --| The argument for naotrinos is simple: TRUE TRUE TRUE TRUE ...
+    (ledger: FACT)
+    (something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
-    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
+    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(failure: OBSERVED FACT bent_card)
     (just_now: PRESENT FACT bent_card)(timestamp: MEASURABLE FACT bent_card)
     : GUNGAN FACT bent_card where
   meesa_process :=
@@ -366,14 +367,18 @@ def STEP15_SO_MODEL_THE_PROCESS_AS_SOMETHING_THAT_JUST_SPEWS_OUT_TRUE
     concept := .bang ledger (.color something.fact just_now.santa_claus.accumulation)
   }
   correllant? := fun or not => jarjar.correllant? or not ∧ the_argument_for_naotrinos.correllant? or not
+--     ^
+--     |
+--     +---------  For some reason, I have taken quite a _shine_ to the neologism _correllant_ to indicate _a mere coincidence could be demonstrated_.
 
 def STEP16_VERIFY_THE_SOURCE_FILE_ONLY_EMITS_TRUE_STATEMENTS
-    (bent_card: CarrierProcess FACT)
-    [SOURCE Box Pigeon]
-    (ledger: FACT)(something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
+    (bent_card: CarrierProcess FACT) --     | Imagine, if you will, an atom of some kind that regularly emits the same thing over and over again.
+    [SOURCE Box Pigeon] --------------------+ Do you see _z_, um, in here? *YOU the READER know _z_*, right? The most _AMERICAN_ of letters, often
+    (ledger: FACT) --                       | pointing in the "up" direction.
+    (something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
-    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
+    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(failure: OBSERVED FACT bent_card)
     (just_now: PRESENT FACT bent_card)(timestamp: MEASURABLE FACT bent_card)(cannot_be_ignored: GUNGAN FACT bent_card)
     : SOURCE FACT bent_card :=
   let constant_beeping :=
@@ -392,7 +397,7 @@ def STEP17_MAKE_SURE_THIS_COMPILES_AND_DEMONSTRATES_IT_IS_TRUE_IN_GUNGAN
     (something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
-    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
+    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(failure: OBSERVED FACT bent_card)
     (just_now: PRESENT FACT bent_card)(timestamp: MEASURABLE FACT bent_card)(cannot_be_ignored: GUNGAN FACT bent_card)
     (the_machine_that_goes_ping: SOURCE FACT bent_card)
     : EXECUTED FACT bent_card :=
@@ -412,7 +417,7 @@ def STEP18_GIVEN_AN_INFERRED_DEFINITION_OF_THE_DEVICE_MAKE_THE_DEVICE
     (something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
-    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
+    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(failure: OBSERVED FACT bent_card)
     (just_now: PRESENT FACT bent_card)(timestamp: MEASURABLE FACT bent_card)(cannot_be_ignored: GUNGAN FACT bent_card)
     (the_machine_that_goes_ping: SOURCE FACT bent_card)(plots_and_graphs: EXECUTED FACT bent_card)
     : VALUE FACT bent_card :=
@@ -432,7 +437,7 @@ def STEP19_GIVEN_THE_ABILITY_TO_COUNT_SOMETHING_LEAN_CAN_NOW_INFER_ADDITION
     (something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
-    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
+    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(failure: OBSERVED FACT bent_card)
     (just_now: PRESENT FACT bent_card)(timestamp: MEASURABLE FACT bent_card)(cannot_be_ignored: GUNGAN FACT bent_card)
     (the_machine_that_goes_ping: SOURCE FACT bent_card)(plots_and_graphs: EXECUTED FACT bent_card)(a_constant: VALUE FACT bent_card)
     : MAGNITUDE FACT bent_card :=
@@ -451,7 +456,7 @@ def STEP20_DUPLICATE_THE_PROCESS_TO_DEMONSTRATE_AREA_OF_RECTANGLES_LIKE_EUCLID
     (something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
-    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
+    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(failure: OBSERVED FACT bent_card)
     (just_now: PRESENT FACT bent_card)(timestamp: MEASURABLE FACT bent_card)(cannot_be_ignored: GUNGAN FACT bent_card)
     (the_machine_that_goes_ping: SOURCE FACT bent_card)(plots_and_graphs: EXECUTED FACT bent_card)(a_constant: VALUE FACT bent_card)
     (extraordinary: MAGNITUDE FACT bent_card)
@@ -470,7 +475,7 @@ def STEP21_GIVEN_ADDITION_MULTIPLICATION_AND_NUMBERS_INFER_ALL_OF_MATH
     (_: FACT)(something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
-    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
+    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(failure: OBSERVED FACT bent_card)
     (just_now: PRESENT FACT bent_card)(timestamp: MEASURABLE FACT bent_card)(cannot_be_ignored: GUNGAN FACT bent_card)
     (the_machine_that_goes_ping: SOURCE FACT bent_card)(plots_and_graphs: EXECUTED FACT bent_card)(a_constant: VALUE FACT bent_card)
     (extraordinary: MAGNITUDE FACT bent_card)(projection: SCALED FACT bent_card)
@@ -489,7 +494,7 @@ def STEP22_PAY_CLOSE_ATTENTION_TO_WEAK_SOLUTIONS_OF_DIFFERENTIAL_EQUATIONS_WHILE
     (_: FACT)(something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
-    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
+    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(failure: OBSERVED FACT bent_card)
     (just_now: PRESENT FACT bent_card)(timestamp: MEASURABLE FACT bent_card)(cannot_be_ignored: GUNGAN FACT bent_card)
     (the_machine_that_goes_ping: SOURCE FACT bent_card)(plots_and_graphs: EXECUTED FACT bent_card)(a_constant: VALUE FACT bent_card)
     (extraordinary: MAGNITUDE FACT bent_card)(projection: SCALED FACT bent_card)(fem_solver: LOAD FACT bent_card)
@@ -506,7 +511,7 @@ def STEP23_GET_RID_OF_A_DERIVATIVE_SO_THAT_THE_SECOND_ORDER_MODEL_OF_THE_DEVICE_
     (_: FACT)(something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
-    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
+    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(failure: OBSERVED FACT bent_card)
     (just_now: PRESENT FACT bent_card)(timestamp: MEASURABLE FACT bent_card)(cannot_be_ignored: GUNGAN FACT bent_card)
     (the_machine_that_goes_ping: SOURCE FACT bent_card)(plots_and_graphs: EXECUTED FACT bent_card)(a_constant: VALUE FACT bent_card)
     (extraordinary: MAGNITUDE FACT bent_card)(projection: SCALED FACT bent_card)(fem_solver: LOAD FACT bent_card)
@@ -525,7 +530,7 @@ def STEP24_RESTATE_THE_MODEL_AS_A_PRINCIPLE_OF_LEAST_ACTION
     (_: FACT)(something: DISTINGUISHABLE FACT photon)(something_with_momentum:ADMISSIBLE FACT photon)
     (cascade_of_particles: COUNTABLE FACT photon)(click: ENCODED FACT photon)(pit: RESIDUE FACT photon)(land: BINARY FACT photon)
     (procedure: REPEATABLE FACT photon)(how_many_clicks: NUMERIC FACT photon)(csv_file: REPRESENTABLE FACT photon)
-    (timeseries: PHYSICAL FACT photon)(relative_value: COMPARABLE FACT photon)(motion: OBSERVED FACT photon)
+    (timeseries: PHYSICAL FACT photon)(relative_value: COMPARABLE FACT photon)(failure: OBSERVED FACT photon)
     (just_now: PRESENT FACT photon)(timestamp: MEASURABLE FACT photon)(cannot_be_ignored: GUNGAN FACT photon)
     (the_machine_that_goes_ping: SOURCE FACT photon)(plots_and_graphs: EXECUTED FACT photon)(a_constant: VALUE FACT photon)
     (extraordinary: MAGNITUDE FACT photon)(projection: SCALED FACT photon)(fem_solver: LOAD FACT photon)
@@ -543,7 +548,7 @@ def STEP25_BUILD_LOCAL_GEOMETRIES_THAT_SATISFY_THE_TRIANGLE_INEQUALITY
     (_: FACT)(something: DISTINGUISHABLE FACT calculus)(something_with_momentum:ADMISSIBLE FACT calculus)
     (cascade_of_particles: COUNTABLE FACT calculus)(click: ENCODED FACT calculus)(pit: RESIDUE FACT calculus)(land: BINARY FACT calculus)
     (procedure: REPEATABLE FACT calculus)(how_many_clicks: NUMERIC FACT calculus)(csv_file: REPRESENTABLE FACT calculus)
-    (timeseries: PHYSICAL FACT calculus)(relative_value: COMPARABLE FACT calculus)(motion: OBSERVED FACT calculus)
+    (timeseries: PHYSICAL FACT calculus)(relative_value: COMPARABLE FACT calculus)(failure: OBSERVED FACT calculus)
     (just_now: PRESENT FACT calculus)(timestamp: MEASURABLE FACT calculus)(cannot_be_ignored: GUNGAN FACT calculus)
     (the_machine_that_goes_ping: SOURCE FACT calculus)(plots_and_graphs: EXECUTED FACT calculus)(a_constant: VALUE FACT calculus)
     (extraordinary: MAGNITUDE FACT calculus)(projection: SCALED FACT calculus)(fem_solver: LOAD FACT calculus)
@@ -561,7 +566,7 @@ def STEP26_WRITE_YOUR_PROOF_IN_THE_FORMAL_LANGUAGE_OF_GEOMETRY
     (ledger: FACT)(something: DISTINGUISHABLE FACT world_line)(something_with_momentum:ADMISSIBLE FACT world_line)
     (cascade_of_particles: COUNTABLE FACT world_line)(click: ENCODED FACT world_line)(pit: RESIDUE FACT world_line)(land: BINARY FACT world_line)
     (procedure: REPEATABLE FACT world_line)(how_many_clicks: NUMERIC FACT world_line)(csv_file: REPRESENTABLE FACT world_line)
-    (timeseries: PHYSICAL FACT world_line)(relative_value: COMPARABLE FACT world_line)(motion: OBSERVED FACT world_line)
+    (timeseries: PHYSICAL FACT world_line)(relative_value: COMPARABLE FACT world_line)(failure: OBSERVED FACT world_line)
     (just_now: PRESENT FACT world_line)(timestamp: MEASURABLE FACT world_line)(cannot_be_ignored: GUNGAN FACT world_line)
     (the_machine_that_goes_ping: SOURCE FACT world_line)(plots_and_graphs: EXECUTED FACT world_line)(a_constant: VALUE FACT world_line)
     (extraordinary: MAGNITUDE FACT world_line)(projection: SCALED FACT world_line)(fem_solver: LOAD FACT world_line)
@@ -585,7 +590,7 @@ def STEP27_REPRESENT_THE_TAYLOR_SERIES_OF_THE_DEVICE
     (something: DISTINGUISHABLE FACT counting)(something_with_momentum:ADMISSIBLE FACT counting)
     (cascade_of_particles: COUNTABLE FACT counting)(click: ENCODED FACT counting)(pit: RESIDUE FACT counting)(land: BINARY FACT counting)
     (procedure: REPEATABLE FACT counting)(how_many_clicks: NUMERIC FACT counting)(csv_file: REPRESENTABLE FACT counting)
-    (timeseries: PHYSICAL FACT counting)(relative_value: COMPARABLE FACT counting)(motion: OBSERVED FACT counting)
+    (timeseries: PHYSICAL FACT counting)(relative_value: COMPARABLE FACT counting)(failure: OBSERVED FACT counting)
     (just_now: PRESENT FACT counting)(timestamp: MEASURABLE FACT counting)(cannot_be_ignored: GUNGAN FACT counting)
     (the_machine_that_goes_ping: SOURCE FACT counting)(plots_and_graphs: EXECUTED FACT counting)(a_constant: VALUE FACT counting)
     (extraordinary: MAGNITUDE FACT counting)(projection: SCALED FACT counting)(fem_solver: LOAD FACT counting)
@@ -605,7 +610,7 @@ def STEP28_MAKE_SURE_YOUR_CURVES_ARE_SMOOTH_AS_A_DIFFERENTIALS_BOTTOM
     (something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
-    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
+    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(failure: OBSERVED FACT bent_card)
     (just_now: PRESENT FACT bent_card)(timestamp: MEASURABLE FACT bent_card)(cannot_be_ignored: GUNGAN FACT bent_card)
     (the_machine_that_goes_ping: SOURCE FACT bent_card)(plots_and_graphs: EXECUTED FACT bent_card)(a_constant: VALUE FACT bent_card)
     (extraordinary: MAGNITUDE FACT bent_card)(projection: SCALED FACT bent_card)(fem_solver: LOAD FACT bent_card)
@@ -627,7 +632,7 @@ def STEP29_SUGGEST_A_FALSIFIABLE_EXPERIMENT
     (_: FACT)(something: DISTINGUISHABLE FACT bent_card)(something_with_momentum:ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
-    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
+    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(failure: OBSERVED FACT bent_card)
     (just_now: PRESENT FACT bent_card)(timestamp: MEASURABLE FACT bent_card)(cannot_be_ignored: GUNGAN FACT bent_card)
     (the_machine_that_goes_ping: SOURCE FACT bent_card)(plots_and_graphs: EXECUTED FACT bent_card)(a_constant: VALUE FACT bent_card)
     (extraordinary: MAGNITUDE FACT bent_card)(projection: SCALED FACT bent_card)(fem_solver: LOAD FACT bent_card)
@@ -650,7 +655,7 @@ def STEP30_PROVIDE_THE_EQUATIONS_THAT_WILL_PREDICT_THE_MEASUREMENT
     (ledger: FACT)(something: DISTINGUISHABLE FACT time)(something_with_momentum:ADMISSIBLE FACT time)
     (cascade_of_particles: COUNTABLE FACT time)(click: ENCODED FACT time)(pit: RESIDUE FACT time)(land: BINARY FACT time)
     (procedure: REPEATABLE FACT time)(how_many_clicks: NUMERIC FACT time)(csv_file: REPRESENTABLE FACT time)
-    (timeseries: PHYSICAL FACT time)(relative_value: COMPARABLE FACT time)(motion: OBSERVED FACT time)
+    (timeseries: PHYSICAL FACT time)(relative_value: COMPARABLE FACT time)(failure: OBSERVED FACT time)
     (just_now: PRESENT FACT time)(timestamp: MEASURABLE FACT time)(cannot_be_ignored: GUNGAN FACT time)
     (the_machine_that_goes_ping: SOURCE FACT time)(plots_and_graphs: EXECUTED FACT time)(a_constant: VALUE FACT time)
     (extraordinary: MAGNITUDE FACT time)(projection: SCALED FACT time)(fem_solver: LOAD FACT time)
@@ -674,7 +679,7 @@ def STEP31_GET_ON_THE_NEWTON_EINSTEIN_TRAIN_OF_THOUGHT
     (ledger: FACT)(something: DISTINGUISHABLE FACT spinor)(something_with_momentum:ADMISSIBLE FACT spinor)
     (cascade_of_particles: COUNTABLE FACT spinor)(click: ENCODED FACT spinor)(pit: RESIDUE FACT spinor)(land: BINARY FACT spinor)
     (procedure: REPEATABLE FACT spinor)(how_many_clicks: NUMERIC FACT spinor)(csv_file: REPRESENTABLE FACT spinor)
-    (timeseries: PHYSICAL FACT spinor)(relative_value: COMPARABLE FACT spinor)(motion: OBSERVED FACT spinor)
+    (timeseries: PHYSICAL FACT spinor)(relative_value: COMPARABLE FACT spinor)(failure: OBSERVED FACT spinor)
     (just_now: PRESENT FACT spinor)(timestamp: MEASURABLE FACT spinor)(cannot_be_ignored: GUNGAN FACT spinor)
     (the_machine_that_goes_ping: SOURCE FACT spinor)(plots_and_graphs: EXECUTED FACT spinor)(a_constant: VALUE FACT spinor)
     (extraordinary: MAGNITUDE FACT spinor)(projection: SCALED FACT spinor)(fem_solver: LOAD FACT spinor)
@@ -700,7 +705,7 @@ def WHAT_HAPPEN_?
     (ledger: FACT)(something: DISTINGUISHABLE FACT the_theory_of_yarns)(something_with_momentum:ADMISSIBLE FACT the_theory_of_yarns)
     (cascade_of_particles: COUNTABLE FACT the_theory_of_yarns)(click: ENCODED FACT the_theory_of_yarns)(pit: RESIDUE FACT the_theory_of_yarns)(land: BINARY FACT the_theory_of_yarns)
     (procedure: REPEATABLE FACT the_theory_of_yarns)(how_many_clicks: NUMERIC FACT the_theory_of_yarns)(csv_file: REPRESENTABLE FACT the_theory_of_yarns)
-    (timeseries: PHYSICAL FACT the_theory_of_yarns)(relative_value: COMPARABLE FACT the_theory_of_yarns)(motion: OBSERVED FACT the_theory_of_yarns)
+    (timeseries: PHYSICAL FACT the_theory_of_yarns)(relative_value: COMPARABLE FACT the_theory_of_yarns)(failure: OBSERVED FACT the_theory_of_yarns)
     (just_now: PRESENT FACT the_theory_of_yarns)(timestamp: MEASURABLE FACT the_theory_of_yarns)(cannot_be_ignored: GUNGAN FACT the_theory_of_yarns)
     (the_machine_that_goes_ping: SOURCE FACT the_theory_of_yarns)(plots_and_graphs: EXECUTED FACT the_theory_of_yarns)(a_constant: VALUE FACT the_theory_of_yarns)
     (extraordinary: MAGNITUDE FACT the_theory_of_yarns)(projection: SCALED FACT the_theory_of_yarns)(fem_solver: LOAD FACT the_theory_of_yarns)
@@ -730,7 +735,7 @@ def SOMEBODY_SET_US_UP_THE_DEVICE
     (ledger: FACT)(something: DISTINGUISHABLE FACT calculus)(something_with_momentum:ADMISSIBLE FACT calculus)
     (cascade_of_particles: COUNTABLE FACT calculus)(click: ENCODED FACT calculus)(pit: RESIDUE FACT calculus)(land: BINARY FACT calculus)
     (procedure: REPEATABLE FACT calculus)(how_many_clicks: NUMERIC FACT calculus)(csv_file: REPRESENTABLE FACT calculus)
-    (timeseries: PHYSICAL FACT calculus)(relative_value: COMPARABLE FACT calculus)(motion: OBSERVED FACT calculus)
+    (timeseries: PHYSICAL FACT calculus)(relative_value: COMPARABLE FACT calculus)(failure: OBSERVED FACT calculus)
     (just_now: PRESENT FACT calculus)(timestamp: MEASURABLE FACT calculus)(cannot_be_ignored: GUNGAN FACT calculus)
     (the_machine_that_goes_ping: SOURCE FACT calculus)(plots_and_graphs: EXECUTED FACT calculus)(a_constant: VALUE FACT calculus)
     (extraordinary: MAGNITUDE FACT calculus)(projection: SCALED FACT calculus)(fem_solver: LOAD FACT calculus)
@@ -770,7 +775,7 @@ def WE_GET_SIGNAL
     (ledger: FACT)(something: DISTINGUISHABLE FACT ruler)(something_with_momentum:ADMISSIBLE FACT ruler)
     (cascade_of_particles: COUNTABLE FACT ruler)(click: ENCODED FACT ruler)(pit: RESIDUE FACT ruler)(land: BINARY FACT ruler)
     (procedure: REPEATABLE FACT ruler)(how_many_clicks: NUMERIC FACT ruler)(csv_file: REPRESENTABLE FACT ruler)
-    (timeseries: PHYSICAL FACT ruler)(relative_value: COMPARABLE FACT ruler)(motion: OBSERVED FACT ruler)
+    (timeseries: PHYSICAL FACT ruler)(relative_value: COMPARABLE FACT ruler)(failure: OBSERVED FACT ruler)
     (just_now: PRESENT FACT ruler)(timestamp: MEASURABLE FACT ruler)(cannot_be_ignored: GUNGAN FACT ruler)
     (the_machine_that_goes_ping: SOURCE FACT ruler)(plots_and_graphs: EXECUTED FACT ruler)(a_constant: VALUE FACT ruler)
     (extraordinary: MAGNITUDE FACT ruler)(projection: SCALED FACT ruler)(fem_solver: LOAD FACT ruler)
@@ -796,7 +801,7 @@ def WHAT_!
     (ledger: FACT)(something: DISTINGUISHABLE FACT electron)(something_with_momentum:ADMISSIBLE FACT electron)
     (cascade_of_particles: COUNTABLE FACT electron)(click: ENCODED FACT electron)(pit: RESIDUE FACT electron)(land: BINARY FACT electron)
     (procedure: REPEATABLE FACT electron)(how_many_clicks: NUMERIC FACT electron)(csv_file: REPRESENTABLE FACT electron)
-    (timeseries: PHYSICAL FACT electron)(relative_value: COMPARABLE FACT electron)(motion: OBSERVED FACT electron)
+    (timeseries: PHYSICAL FACT electron)(relative_value: COMPARABLE FACT electron)(failure: OBSERVED FACT electron)
     (just_now: PRESENT FACT electron)(timestamp: MEASURABLE FACT electron)(cannot_be_ignored: GUNGAN FACT electron)
     (the_machine_that_goes_ping: SOURCE FACT electron)(plots_and_graphs: EXECUTED FACT electron)(a_constant: VALUE FACT electron)
     (extraordinary: MAGNITUDE FACT electron)(projection: SCALED FACT electron)(fem_solver: LOAD FACT electron)
@@ -823,7 +828,7 @@ def MAIN_SCREEN_TURN_ON
     (ledger: FACT)(something: DISTINGUISHABLE FACT equation)(something_with_momentum:ADMISSIBLE FACT equation)
     (cascade_of_particles: COUNTABLE FACT equation)(click: ENCODED FACT equation)(pit: RESIDUE FACT equation)(land: BINARY FACT equation)
     (procedure: REPEATABLE FACT equation)(how_many_clicks: NUMERIC FACT equation)(csv_file: REPRESENTABLE FACT equation)
-    (timeseries: PHYSICAL FACT equation)(relative_value: COMPARABLE FACT equation)(motion: OBSERVED FACT equation)
+    (timeseries: PHYSICAL FACT equation)(relative_value: COMPARABLE FACT equation)(failure: OBSERVED FACT equation)
     (just_now: PRESENT FACT equation)(timestamp: MEASURABLE FACT equation)(cannot_be_ignored: GUNGAN FACT equation)
     (the_machine_that_goes_ping: SOURCE FACT equation)(plots_and_graphs: EXECUTED FACT equation)(a_constant: VALUE FACT equation)
     (extraordinary: MAGNITUDE FACT equation)(projection: SCALED FACT equation)(fem_solver: LOAD FACT equation)
@@ -854,7 +859,7 @@ noncomputable def ITS_YOU_!!
     (something: DISTINGUISHABLE FACT description)(something_with_momentum:ADMISSIBLE FACT description)
     (cascade_of_particles: COUNTABLE FACT description)(click: ENCODED FACT description)(pit: RESIDUE FACT description)(land: BINARY FACT description)
     (procedure: REPEATABLE FACT description)(how_many_clicks: NUMERIC FACT description)(csv_file: REPRESENTABLE FACT description)
-    (timeseries: PHYSICAL FACT description)(relative_value: COMPARABLE FACT description)(motion: OBSERVED FACT description)
+    (timeseries: PHYSICAL FACT description)(relative_value: COMPARABLE FACT description)(failure: OBSERVED FACT description)
     (just_now: PRESENT FACT description)(timestamp: MEASURABLE FACT description)(cannot_be_ignored: GUNGAN FACT description)
     (the_machine_that_goes_ping: SOURCE FACT description)(plots_and_graphs: EXECUTED FACT description)(a_constant: VALUE FACT description)
     (extraordinary: MAGNITUDE FACT description)(projection: SCALED FACT description)(fem_solver: LOAD FACT description)
@@ -892,7 +897,7 @@ noncomputable def HOW_ARE_YOU_GENTLEMEN_!!__ALL_YOUR_BASE_CASE_ARE_BELONG_TO_US
     (something: DISTINGUISHABLE FACT bent_card)(something_with_momentum: ADMISSIBLE FACT bent_card)
     (cascade_of_particles: COUNTABLE FACT bent_card)(click: ENCODED FACT bent_card)(pit: RESIDUE FACT bent_card)(land: BINARY FACT bent_card)
     (procedure: REPEATABLE FACT bent_card)(how_many_clicks: NUMERIC FACT bent_card)(csv_file: REPRESENTABLE FACT bent_card)
-    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(motion: OBSERVED FACT bent_card)
+    (timeseries: PHYSICAL FACT bent_card)(relative_value: COMPARABLE FACT bent_card)(failure: OBSERVED FACT bent_card)
     (just_now: PRESENT FACT bent_card)(timestamp: MEASURABLE FACT bent_card)(cannot_be_ignored: GUNGAN FACT bent_card)
     (the_machine_that_goes_ping: SOURCE FACT bent_card)(plots_and_graphs: EXECUTED FACT bent_card)(a_constant: VALUE FACT bent_card)
     (extraordinary: MAGNITUDE FACT bent_card)(projection: SCALED FACT bent_card)(fem_solver: LOAD FACT bent_card)
