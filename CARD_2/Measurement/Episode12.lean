@@ -1750,6 +1750,146 @@ theorem the_speed_is_below_light :
 #print axioms every_closed_walk_turns_evenly
 #print axioms the_speed_is_below_light
 
+--| TWO READINGS OF ONE TURNING.  Read a walk's crossings two ways.  Subdivided, every crossing is half a turn and the
+--| count is the crossings themselves: nothing is left over, because nothing is rounded.  Counted in whole turns, the walk
+--| winds `the_winding k` and leaves a residue, k % 2, the half turn no whole count can hold.  The two readings agree up to
+--| that residue, always.  A closed walk is exact: it crosses evenly, the residue is zero, and the whole count is the
+--| subdivided count halved -- one number read twice.  A walk between the coins is never exact: it leaves half a turn.
+--| Whole turns start at zero and each full turn is one more, the successor; two exact walks joined wind the sum of their
+--| windings, which is Stokes on a graph: the count around the boundary is the sum of the counts of its parts.  Where the
+--| walk is exact, the agreement is rfl.
+def the_residue (crossings : Nat) : Nat := crossings % 2
+
+theorem the_two_readings (k : Nat) : k = 2 * the_winding k + the_residue k := by
+  unfold the_winding the_residue; omega
+
+theorem every_closed_walk_is_exact (n k : Nat) (a : Bool) (walked : the_crossings n a a k ≠ 0) :
+    the_residue k = 0 ∧ k = 2 * the_winding k := by
+  unfold the_residue the_winding
+  rcases Nat.mod_two_eq_zero_or_one k with h | h
+  · refine ⟨h, ?_⟩; clear walked; omega
+  · exact absurd (every_closed_walk_crosses_evenly n k a h) walked
+
+theorem every_walk_between_the_coins_leaves_half_a_turn (n k : Nat) (a : Bool) (walked : the_crossings n a (!a) k ≠ 0) :
+    the_residue k = 1 := by
+  unfold the_residue
+  rcases Nat.mod_two_eq_zero_or_one k with h | h
+  · exact absurd (the_crossings_keep_parity n a (!a) k (by cases a <;> simp [h])) walked
+  · exact h
+
+theorem the_winding_starts_at_zero : the_winding 0 = 0 := rfl
+
+theorem one_more_turn_is_the_successor (k : Nat) : the_winding (k + 2) = the_winding k + 1 := by
+  unfold the_winding; omega
+
+theorem the_windings_add (j k : Nat) (hj : the_residue j = 0) (hk : the_residue k = 0) :
+    the_winding (j + k) = the_winding j + the_winding k := by
+  unfold the_winding; unfold the_residue at hj hk; omega
+
+theorem once_around_is_exact : (2 * the_winding 2, the_residue 2) = (2, 0) := rfl
+#print axioms the_two_readings
+#print axioms every_closed_walk_is_exact
+#print axioms every_walk_between_the_coins_leaves_half_a_turn
+#print axioms the_windings_add
+#print axioms once_around_is_exact
+
+--| THE CARRIER, APPARENTLY.  Three finite readings, each one evaluated, and no limit taken: the limit is the argument's,
+--| never this file's.
+--| First, the readings fix the table up to gauge.  Rescale the coin T by a and the coin F by b, and the arm from T to F is
+--| multiplied by a/b, the arm back by b/a, and every closed walk is unchanged: that rescaling is a gauge, and the squeeze
+--| between the orientations was one.  Keep the agreeing arms at eighteen and read any table twice around: equal readings
+--| leave only a gauge between the tables.  The other orientation, five and eighteen exchanged, is a gauge copy of this one.
+def the_walks_on (w : Bool → Bool → Nat) : Nat → Bool → Bool → Nat
+  | 0,     a, b => if a = b then 1 else 0
+  | n + 1, a, b => w a true * the_walks_on w n true b + w a false * the_walks_on w n false b
+def the_closed_walks_on (w : Bool → Bool → Nat) (n : Nat) : Nat := the_walks_on w n true true + the_walks_on w n false false
+
+theorem the_device_walks_on_its_table : ∀ (n : Nat) (a b : Bool), the_walks_on the_arm_weight n a b = the_walks n a b
+  | 0, _, _ => rfl
+  | n + 1, a, b => by simp only [the_walks_on, the_walks, the_device_walks_on_its_table n]
+
+theorem the_closed_walks_twice_around (w : Bool → Bool → Nat) :
+    the_closed_walks_on w 2 = w true true * w true true + w false false * w false false + 2 * (w true false * w false true) := by
+  simp only [the_closed_walks_on, the_walks_on, if_pos, Bool.true_eq_false, Bool.false_eq_true, ite_false, Nat.mul_one,
+    Nat.mul_zero, Nat.add_zero, Nat.zero_add]
+  rw [Nat.mul_comm (w false true) (w true false)]; omega
+
+theorem the_readings_fix_the_gauge (w v : Bool → Bool → Nat)
+    (dw : w true true = 18 ∧ w false false = 18) (dv : v true true = 18 ∧ v false false = 18)
+    (pw : 0 < w true false) (pv : 0 < v true false) (same : the_closed_walks_on v 2 = the_closed_walks_on w 2) :
+    ∃ a b : Nat, 0 < a ∧ 0 < b ∧ b * v true false = a * w true false ∧ a * v false true = b * w false true := by
+  rw [the_closed_walks_twice_around, the_closed_walks_twice_around, dw.1, dw.2, dv.1, dv.2] at same
+  refine ⟨v true false, w true false, pv, pw, Nat.mul_comm _ _, ?_⟩
+  generalize v true false * v false true = p at same ⊢
+  generalize w true false * w false true = q at same ⊢
+  omega
+
+theorem the_other_orientation_is_a_gauge_copy :
+    ∃ a b : Nat, 0 < a ∧ 0 < b ∧ b * the_arm_weight false true = a * the_arm_weight true false
+      ∧ a * the_arm_weight true false = b * the_arm_weight false true :=
+  the_readings_fix_the_gauge the_arm_weight (fun a b => the_arm_weight b a) ⟨rfl, rfl⟩ ⟨rfl, rfl⟩ (by decide) (by decide)
+    (by decide)
+
+--| Second, the seam carries curvature, and its charge is whole.  Lay a turning on every edge of the seam -- A across, B up,
+--| counted in half turns -- and the curl of each of the thirty-six squares is the turning around it.  The seam is closed,
+--| so every edge borders two squares, once each way, and the curls sum to nothing: no net flux, for every connection.
+--| Read each square's curl the two ways, whole turns and residue, and the residues must pay back the whole turns: the
+--| residues pair into an integer, the charge of the seam.  One edge carrying the half turn a walk between the coins leaves
+--| is one charge.
+def the_total : List Int → Int
+  | [] => 0
+  | k :: ks => k + the_total ks
+def the_curl (A B : Nat → Nat → Int) (x y : Nat) : Int := A x y + B ((x + 1) % 6) y - A x ((y + 1) % 6) - B x y
+def the_seam_flux (A B : Nat → Nat → Int) : List Int := (List.range 36).map fun i => the_curl A B (i % 6) (i / 6)
+def the_whole_turns (L : List Int) : Int := the_total (L.map (· / 2))
+def the_residues (L : List Int) : Int := the_total (L.map (· % 2))
+def the_seam_charge (A B : Nat → Nat → Int) : Int := - the_whole_turns (the_seam_flux A B)
+
+theorem the_closed_seam_carries_no_net_flux (A B : Nat → Nat → Int) : the_total (the_seam_flux A B) = 0 := by
+  simp only [the_seam_flux, List.range, List.range.loop, List.map, the_total, the_curl, Nat.reduceMod, Nat.reduceDiv,
+    Nat.reduceAdd]
+  omega
+
+theorem the_two_readings_of_a_surface : ∀ L : List Int, the_total L = 2 * the_whole_turns L + the_residues L
+  | [] => rfl
+  | k :: ks => by
+    have := the_two_readings_of_a_surface ks
+    simp only [the_whole_turns, the_residues, List.map, the_total] at this ⊢
+    omega
+
+theorem the_residues_pair_into_the_charge (A B : Nat → Nat → Int) :
+    the_residues (the_seam_flux A B) = 2 * the_seam_charge A B := by
+  have h1 := the_closed_seam_carries_no_net_flux A B
+  have h2 := the_two_readings_of_a_surface (the_seam_flux A B)
+  unfold the_seam_charge; omega
+
+def the_half_turn_edge (x y : Nat) : Int := if x = 0 ∧ y = 0 then 1 else 0
+theorem one_half_turn_is_one_charge :
+    (the_seam_charge the_half_turn_edge (fun _ _ => 0), the_residues (the_seam_flux the_half_turn_edge (fun _ _ => 0)))
+      = (1, 2) := by decide
+
+--| Third, subdividing adds no residue.  Halve every edge, so each coarse arm is two fine ones, and the curl of a coarse
+--| square is the sum of the curls of the four fine squares inside it: the inner edges are crossed once each way and
+--| cancel.  What the coarse seam reads, the fine seam reads, square by square, with nothing left over.  Each level is a
+--| finite reading and is evaluated here; that the levels approach a field is not written in this file.
+def the_plaquette (A B : Nat → Nat → Int) (x y : Nat) : Int := A x y + B (x + 1) y - A x (y + 1) - B x y
+def the_coarse_across (A : Nat → Nat → Int) (x y : Nat) : Int := A (2 * x) (2 * y) + A (2 * x + 1) (2 * y)
+def the_coarse_up (B : Nat → Nat → Int) (x y : Nat) : Int := B (2 * x) (2 * y) + B (2 * x) (2 * y + 1)
+
+theorem subdividing_adds_no_residue (A B : Nat → Nat → Int) (x y : Nat) :
+    the_plaquette (the_coarse_across A) (the_coarse_up B) x y
+      = the_plaquette A B (2 * x) (2 * y) + the_plaquette A B (2 * x + 1) (2 * y)
+        + the_plaquette A B (2 * x) (2 * y + 1) + the_plaquette A B (2 * x + 1) (2 * y + 1) := by
+  simp only [the_plaquette, the_coarse_across, the_coarse_up, Nat.mul_add, Nat.mul_one, Nat.add_assoc, Nat.reduceAdd]
+  omega
+#print axioms the_device_walks_on_its_table
+#print axioms the_readings_fix_the_gauge
+#print axioms the_other_orientation_is_a_gauge_copy
+#print axioms the_closed_seam_carries_no_net_flux
+#print axioms the_residues_pair_into_the_charge
+#print axioms one_half_turn_is_one_charge
+#print axioms subdividing_adds_no_residue
+
 --| ALL TRUE, AND THE CLOCK RUNS.  Reletter any tape to the one coin, T T T T ..., and it reads the closed walks of its length,
 --| because the reader keeps the length and nothing else.  Thirteen cells deep, the walks that cross T=F and come back are
 --| there, and the walks that never cross are under one part in a hundred of the count.  The tape says only TRUE; the clock is
