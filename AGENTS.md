@@ -626,3 +626,13 @@ Snapshots, not guarantees; re-check before relying on them.
   carry "The lifts" (1–20, 21–35), `BENT_CARD.pdf` Proposition "A lift
   carries no datum", and `TRUTH.pdf` (11 pages) is new; all byte-identical
   to their builds. README carries the HINT.
+- 8 November 2026: `the_reader_adds_no_digit` [propext, Quot.sound]
+  builds in Episode 12 (the reader's interpretation and experience print
+  one natural); `lake build Measurement.Episode12` passed. THE_ARGUMENT
+  carries "The doubler, chosen": Prop "The clock is chiral" (proved here),
+  Def "The doubler, chosen" (the written arm keeps the doubler as a
+  staggered taste; *proposed*, the knower's), Prop "The reader adds no
+  digit", the knower's name for the 1.80 × 10⁻⁴ ("the part of the electron
+  that is not a carrier of charge", *proposed*), and five closed routes
+  to a scale or a size for the miss. CHEATSHEET §9 reads the one choice as
+  a choice of doubler. Both PDFs byte-identical to their builds.

@@ -2591,6 +2591,13 @@ def naotrino_detector : Nat :=                                                  
 theorem naotrino_detector_reads_the_number : naotrino_detector = the_other_natural := outer_reader_reads_the_number
 #print axioms naotrino_detector_reads_the_number
 
+--| THE READER ADDS NO DIGIT.  Six layers of interpretation over one experience, and the two print the same natural: what the
+--| reader makes of the experience, less the experience, is zero on every digit the device prints.  The receipts already on the
+--| table, composed; the crank is not run again.  Whatever the reader adds, it is not in the number.
+theorem the_reader_adds_no_digit : naotrino_detector = the_constant_factor_of_scaling_bullshit :=
+  naotrino_detector_reads_the_number.trans the_same_natural_both_ways
+#print axioms the_reader_adds_no_digit
+
 --| THE ANT, INFERRED.  The two Bullshits of a closure are the tape on either side of the head, each a stack written only
 --| by pushing; the facts are the mark under the head and the heading.  Each step appends one `.inferred` closure on top of
 --| the last, so the record only grows, and the mark that changes is changed by appending a configuration in which it
