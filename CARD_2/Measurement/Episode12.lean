@@ -32,7 +32,7 @@ import Measurement.Episode11
 open Lean Elab Command Term Meta
 
 namespace Measurement
-open THE_GOSPEL
+open «springer-verlag» THE_GOSPEL
 --| The readings are not in the device.  They are reached for, once, here.
 
 /-!
@@ -1272,6 +1272,107 @@ def theTop : TYPESET.{0,0,0} (CarrierProcess FACT) the_representation.the_card_b
 --| thirty-six, handed down through every reviewer, arriving as the page of the top rung.
 def theTopTrace : ThePreprint.{0} := theTop.the_page
 
+--| THE REVIEW, WITH THE REVIEWERS.  The gimmicked card above hands every page the manuscript and asks nobody.  Here the
+--| reviewers are asked.  Each of Episode 10's thirty-six pages is applied by hand on the first card, its checklist filled
+--| from Episode 9's ladder, rung k in slot k; the ledger is the Truth; the two routes of page 32 are the nowtrino's path and
+--| zero distance; the base page is handed the same manuscript.  The slots that search fills are filled by the device's own
+--| models, the causal theory and this way and that way in FACT.  Two pages carry universe seats that no argument names;
+--| they are pinned at zero, as Closure's are.  Then Episode 11 is asked for its top, by search, standing on the
+--| reviewers.  No hand-typeset bottom: the first page is set from the first review.  The ascent and the descent meet.
+namespace the_review_on_the_ledger
+open the_representation
+attribute [local instance high] rung01
+noncomputable def page36 : REVIEWED FACT the_first_card 36 := REVIEWER_2_ASKS_WHERE_THE_RECORD_BEGINS FACT the_first_card theManuscript
+noncomputable def page35 : REVIEWED FACT the_first_card 35 :=
+  REVIEWER_2_ASKS_WHAT_THE_ANSWER_WAS_ANSWERING? FACT the_first_card FACT.Truth rung01 (argument := page36)
+noncomputable def page34 : REVIEWED FACT the_first_card 34 :=
+  REVIEWER_2_ASSERTS_COMPILING_IS_NOT_EVIDENCE_OF_THE_DESCRIPTION_OF_TWO_DIFFERENT_THINGS.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} FACT the_first_card (flying_spaghetti_monster := A_NOWTRINO_MODEL_OF_FACT) (naotrino := this_way_in_FACT) (commuter_pass := that_way_in_FACT) rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35 (argument := page35)
+noncomputable def page33 : REVIEWED FACT the_first_card 33 :=
+  REVIEWER_2_ASSERTS_THAT_BOTH_SIDES_ARE_IDENTICAL FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 FACT.Truth (argument := page34)
+noncomputable def page32 : REVIEWED FACT the_first_card 32 :=
+  REVIEWER_2_ASSERTS_THERE_IS_EVIDENCE_OF_DECEPTION FACT the_first_card the_nowtrino_path zero_distance (argument := page33)
+noncomputable def page31 : REVIEWED FACT the_first_card 31 :=
+  REVIEWER_2_ASSERTS_THE_COMPILER_CANNOT_TELL_THE_SYMBOLS_APART FACT the_first_card  (argument := page32)
+noncomputable def page30 : REVIEWED FACT the_first_card 30 :=
+  REVIEWER_2_ASSERTS_THE_COMPILER_MEANING_IS_THE_SAME FACT the_first_card  (argument := page31)
+noncomputable def page29 : REVIEWED FACT the_first_card 29 :=
+  REVIEWER_2_UNDERSTANDS_THEY_DESCRIBE_THE_SAME_DEVICE.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} FACT the_first_card (flying_spaghetti_monster := A_NOWTRINO_MODEL_OF_FACT) rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 (argument := page30)
+noncomputable def page28 : REVIEWED FACT the_first_card 28 :=
+  REVIEWER_2_ASSERTS_THERE_ISNT_A_RELATIVISTIC_TRANSFORMATION_OF_VELOCITY_BASED_ON_DISTANCE_FROM_OBSERVER FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung28 (argument := page29)
+noncomputable def page27 : REVIEWED FACT the_first_card 27 :=
+  REVIEWER_2_DEMANDS_CONSISTENCY_WITH_EVIDENCE FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 FACT.Truth (argument := page28)
+noncomputable def page26 : REVIEWED FACT the_first_card 26 :=
+  REVIEWER_2_REQUIRES_A_CONSISTENT_LAW_THAT_EXPLAINS_WHAT_WE_SEE FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung26 (argument := page27)
+noncomputable def page25 : REVIEWED FACT the_first_card 25 :=
+  REVIEWER_2_REQUIRES_THE_LAW_SURVIVE_GEOMETRIC_INTERPRETATION FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 FACT.Truth (argument := page26)
+noncomputable def page24 : REVIEWED FACT the_first_card 24 := REVIEWER_2_ASKS_WHAT_IS_THE_MEANING_OF_SYMBOLS_IN_ORDER? FACT the_first_card  (argument := page25)
+noncomputable def page23 : REVIEWED FACT the_first_card 23 :=
+  REVIEWER_2_SUSPECTS_INADEQUACY_IN_THE_NAMING_OF_OBJECTS FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 FACT.Truth (argument := page24)
+noncomputable def page22 : REVIEWED FACT the_first_card 22 :=
+  REVIEWER_2_ASKS_TO_DESCRIBE_THE_POLYNOMIAL_OF_THE_DEVICE_OF_THE_POLYNOMIAL FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 FACT.Truth (argument := page23)
+noncomputable def page21 : REVIEWED FACT the_first_card 21 :=
+  REVIEWER_2_WARNS_OF_EXTRAPOLATION_PITFALLS FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 FACT.Truth (argument := page22)
+noncomputable def page20 : REVIEWED FACT the_first_card 20 :=
+  REVIEWER_2_REQUIRES_SCALE_FOR_AREA_TO_RECONCILE_MULTIPLICATION FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 FACT.Truth (argument := page21)
+noncomputable def page19 : REVIEWED FACT the_first_card 19 :=
+  REVIEWER_2_ASKS_WHATS_THE_FOURTH_THING? FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 FACT.Truth (argument := page20)
+noncomputable def page18 : REVIEWED FACT the_first_card 18 :=
+  REVIEWER_2_POINTS_OUT_THE_OBVIOUS_FACTS FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung18 (argument := page19)
+noncomputable def page17 : REVIEWED FACT the_first_card 17 :=
+  REVIEWER_2_NOTICES_THE_FENCEPOSTS FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 FACT.Truth (argument := page18)
+noncomputable def page16 : REVIEWED FACT the_first_card 16 :=
+  REVIEWER_2_REFUSES_TO_ENTERTAIN_ABSURD_SOURCES_OF_NOISE FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 (argument := page17)
+noncomputable def page15 : REVIEWED FACT the_first_card 15 :=
+  REVIEWER_2_MAKES_THE_JOKE_PAY_ITS_EVIDENTIARY_BILL FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 FACT.Truth (argument := page16)
+noncomputable def page14 : REVIEWED FACT the_first_card 14 :=
+  REVIEWER_2_ASKS_IF_THE_CLOCK_IS_OBSERVABLE_OR_ASSERTED FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 FACT.Truth (argument := page15)
+noncomputable def page13 : REVIEWED FACT the_first_card 13 :=
+  REVIEWER_2_ASKS_WHERE_PRESENCE_ACCUMULATES FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 FACT.Truth (argument := page14)
+noncomputable def page12 : REVIEWED FACT the_first_card 12 :=
+  REVIEWER_2_ASKS_IF_OBSERVATION_HAS_A_RECORDED_DIMENSION FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 FACT.Truth (argument := page13)
+noncomputable def page11 : REVIEWED FACT the_first_card 11 :=
+  REVIEWER_2_ASKS_WHAT_MAKES_COMPARISON_MORE_THAN_PARALLEL_NAMING FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 FACT.Truth (argument := page12)
+noncomputable def page10 : REVIEWED FACT the_first_card 10 :=
+  REVIEWER_2_REQUIRES_THE_PHYSICAL_CLAIM_TO_SHOW_ITS_BASE_FACT FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung10 (argument := page11)
+noncomputable def page09 : REVIEWED FACT the_first_card 9 :=
+  REVIEWER_2_ASKS_IF_REPRESENTATION_HAS_A_CARRIER_OR_A_NOTATION FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 FACT.Truth (argument := page10)
+noncomputable def page08 : REVIEWED FACT the_first_card 8 :=
+  REVIEWER_2_ASKS_WHERE_THE_NUMBER_ACTUALLY_COUNTS FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung08 (argument := page09)
+noncomputable def page07 : REVIEWED FACT the_first_card 7 :=
+  REVIEWER_2_ASKS_IF_REPETITION_REPEATS_THE_EXPERIMENT_OR_THE_SENTENCE FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 FACT.Truth (argument := page08)
+noncomputable def page06 : REVIEWED FACT the_first_card 6 :=
+  REVIEWER_2_ASKS_WHERE_THE_MISSING_EXHIBIT_WENT FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung06 (argument := page07)
+noncomputable def page05 : REVIEWED FACT the_first_card 5 :=
+  REVIEWER_2_ASKS_IF_RESIDUE_IS_A_RECORD_OR_A_LEFTOVER_STORY FACT the_first_card rung01 rung02 rung03 rung04 rung05 FACT.Truth (argument := page06)
+noncomputable def page04 : REVIEWED FACT the_first_card 4 :=
+  REVIEWER_2_ASKS_IF_ENCODING_KEEPS_A_READ_PATH_TO_THE_MARK FACT the_first_card rung01 rung02 rung03 rung04 FACT.Truth (argument := page05)
+noncomputable def page03 : REVIEWED FACT the_first_card 3 :=
+  REVIEWER_2_ASKS_IF_COUNTING_COUNTS_A_CARRIER_OR_NAMES_A_CLASS FACT the_first_card rung01 rung02 rung03 FACT.Truth (argument := page04)
+noncomputable def page02 : REVIEWED FACT the_first_card 2 :=
+  REVIEWER_2_ASKS_WHO_ADMITTED_THE_MARK FACT the_first_card rung01 rung02 FACT.Truth (argument := page03)
+noncomputable def page01 : REVIEWED FACT the_first_card 1 :=
+  REVIEWER_2_ASKS_IF_IT_ALL_RESTS_ON_A_MARK_OR_ON_CONFIDENCE FACT the_first_card rung01 (argument := page02)
+attribute [local instance] page01 page02 page03 page04 page05 page06 page07 page08 page09 page10 page11 page12 page13 page14 page15
+  page16 page17 page18 page19 page20 page21 page22 page23 page24 page25 page26 page27 page28 page29 page30 page31 page32 page33
+  page34 page35 page36
+--| THE ASCENT, ON THE REVIEWS.  The same thirty-six rungs as `theTop`, found by search, on the first card.
+noncomputable def theTopOfTheLedger : TYPESET.{0,0,0} FACT the_first_card 36 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (Number)))))))))))))))))))))))))))))))))))) := inferInstance
+--| THE SEAT NOBODY SEES.  Pages 29 and 34 were pinned at zero above.  The pin was a frame chosen for something that has
+--| none: the seats belong to the device's own models in the search slots, the causal theory on both pages and the naotrino
+--| on 34, and no argument fixes their level.  Leave the seats free and ask whether the review can tell.  It cannot: at every
+--| level the page is the pinned page, by `rfl`.  A naotrino click.  Haven't seen a naotrino yet.
+noncomputable def page29_at.{a,b,c,d} : REVIEWED FACT the_first_card 29 :=
+  REVIEWER_2_UNDERSTANDS_THEY_DESCRIBE_THE_SAME_DEVICE.{0,d,c,0,0,0,0,0,0,0,0,0,0,b,0,0,0,0,0,0,0,0,0,0,a,0,0,0,0,0,0,0,0,0,0,1,c,0,0,0,0,0,0,0,0,0,0,d,0,0,0,0,0,0,0,0,0,0,c,0,0,0,0,0,0,0,0,0,0,d,0,0,0,0,0,0,0,0,0,0,c,0,0,0,0,0,0,0,0,0,0,d,0,0,0,0,0,0,0,0,0,0,c,0,0,0,0,0,0,0,0,0,0,d,0,0,0,0,0,0,0,0,0,0} FACT the_first_card (flying_spaghetti_monster := A_NOWTRINO_MODEL_OF_FACT) rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 (argument := page30)
+theorem page29_the_seat_is_invisible.{a,b,c,d} : page29_at.{a,b,c,d} = page29 := rfl
+#print axioms page29_the_seat_is_invisible
+noncomputable def page34_at.{a,b,c,d,e,f,g,h,j,k,l} : REVIEWED FACT the_first_card 34 :=
+  REVIEWER_2_ASSERTS_COMPILING_IS_NOT_EVIDENCE_OF_THE_DESCRIPTION_OF_TWO_DIFFERENT_THINGS.{0,l,k,0,0,0,0,0,0,0,0,0,0,g,0,0,0,0,0,0,0,0,0,0,f,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0,k,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0,k,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0,k,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0,k,k,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0,k,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0,k,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,k,l,k,0,l,0,j,h,l,k,l,k,l,k,l,k,k,0,e,l,k,l,k,l,k,l,l,k,0,0,d,c,l,k,l,k,l,k,k,l,k,0,0,b,l,k,l,k,l,l,k,l,k,0,0,0,a,0,0,k,0,0,0,0,1,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0} FACT the_first_card (flying_spaghetti_monster := A_NOWTRINO_MODEL_OF_FACT) (naotrino := this_way_in_FACT) (commuter_pass := that_way_in_FACT) rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35 (argument := page35)
+theorem page34_the_seat_is_invisible.{a,b,c,d,e,f,g,h,j,k,l} : page34_at.{a,b,c,d,e,f,g,h,j,k,l} = page34 := rfl
+#print axioms page34_the_seat_is_invisible
+#print axioms page01
+#print axioms theTopOfTheLedger
+end the_review_on_the_ledger
+
 /-!
 ### THE CORRESPONDENCE, AND WHICH ∀ IT IS
 
@@ -1426,6 +1527,20 @@ def the_other_natural : Nat := the_other_pair.1 * all_possible_variables / the_o
 set_option maxRecDepth 100000 in
 theorem the_same_natural_both_ways : the_other_natural = the_constant_factor_of_scaling_bullshit := rfl
 --#print axioms the_same_natural_both_ways
+
+--| THE POST AT ZERO.  Lean declares `n / 0 = 0`; a wheel would make it a point of its own; the fractions leave it out.  The
+--| device never has to choose: every denominator it divides by is the length of a tape it wrote, and a written tape is one
+--| fence section at least.  Here is the receipt, read off the crank once by the kernel and then carried by the receipts
+--| already on the table, not run again.  The naturals the device stands on start at one.  The zero is the fencepost.
+set_option maxRecDepth 100000 in
+theorem the_post_at_zero_is_never_read : arrange_the_information_appropriately.2 ≠ 0 := by decide +kernel
+theorem the_other_machine_never_reads_it : the_other_pair.2 ≠ 0 := by
+  rw [the_other_machine_agrees]; exact the_post_at_zero_is_never_read
+theorem the_walls_never_read_it :
+    the_first_step_of_the_proof_is_to_eschew_the_naturals_unless_proven_to_exist_without_peano.2 ≠ 0 := by decide +kernel
+#print axioms the_post_at_zero_is_never_read
+#print axioms the_other_machine_never_reads_it
+#print axioms the_walls_never_read_it
 
 def what_would_you_call_this_number? : String :=
   let digits := Nat.toDigits the_free_variable_count the_other_natural
@@ -1634,6 +1749,160 @@ theorem the_speed_is_below_light :
 #print axioms every_closed_walk_crosses_evenly
 #print axioms every_closed_walk_turns_evenly
 #print axioms the_speed_is_below_light
+
+--| ALL TRUE, AND THE CLOCK RUNS.  Reletter any tape to the one coin, T T T T ..., and it reads the closed walks of its length,
+--| because the reader keeps the length and nothing else.  Thirteen cells deep, the walks that cross T=F and come back are
+--| there, and the walks that never cross are under one part in a hundred of the count.  The tape says only TRUE; the clock is
+--| in the table it is read on.  Counted, not clicked.
+theorem every_true_tape_reads_the_closed_walks (tape : List FACT) :
+    the_closed_words (relettered tape) = (the_closed_walks tape.length, the_closed_walks (tape.length + 1)) := by
+  rw [the_closed_words_are_closed_walks]; simp [relettered]
+theorem the_true_tape_crosses : 0 < the_crossings 13 true true 2 := by decide
+theorem the_clock_is_in_the_count : 2 * 18 ^ 13 < the_closed_walks 13 := by decide
+#print axioms every_true_tape_reads_the_closed_walks
+#print axioms the_true_tape_crosses
+#print axioms the_clock_is_in_the_count
+
+--| THE LAST PROOF: THE EXISTENCE OF 5.  Write down a record -- a fact, or a fact on a record -- and the kernel hands back
+--| Peano without being asked: zero is never a successor, the successor is injective, and induction is the recursor.  No `Nat`
+--| goes in and no axiom is billed.  Read by length, a description is a natural number: each successor reads one more, and
+--| every natural is written in TRUTH, one fencepost past its count.  The description of the device is a tape, and so are
+--| the descriptions of the receipts, the programs and the proofs; as descriptions all four are isomorphic to the naturals.
+--| The objects they describe are not constructed here.  What exists is a truncated finite run of Lean, and the description
+--| is all of it that is written down.  Now run the diagonal on any listing of the descriptions.  Flip the n-th cell of the n-th line: the
+--| result is on no line of the list, and at every cell it disagrees with the line it was read from.  Nothing on the diagonal
+--| clicks.  Where the line said TRUE the diagonal writes FALSE, the arm T=F, and that arm weighs the frame and nothing else.
+--| The coefficient tape is gone and five is left.  The rule that weighs it is the bent card; the five is counted.
+theorem zero_is_never_a_successor (f g : FACT) (n : Number) : Number.zero f ≠ Number.one g n := Number.noConfusion
+theorem the_successor_forgets_nothing (f g : FACT) (m n : Number) (h : Number.one f m = Number.one g n) : m = n :=
+  (Number.one.inj h).2
+def the_naturals_written_in_truth : Nat → Number := Nat.rec (.zero FACT.Truth) fun _ n => .one FACT.Truth n
+theorem the_successor_is_read_as_one_more (f : FACT) (n : Number) :
+    (Number.one f n).peano.length = n.peano.length + 1 := rfl
+theorem every_natural_is_written (k : Nat) : (the_naturals_written_in_truth k).peano.length = k + 1 := by
+  induction k with
+  | zero => rfl
+  | succ k ih => exact congrArg (· + 1) ih
+def the_diagonal (listing : Nat → Nat → Bool) : Nat → Bool := fun n => !listing n n
+theorem the_diagonal_never_clicks (listing : Nat → Nat → Bool) (n : Nat) : listing n n ≠ the_diagonal listing n := by
+  unfold the_diagonal; cases listing n n <;> decide
+theorem the_diagonal_is_not_listed (listing : Nat → Nat → Bool) (n : Nat) : listing n ≠ the_diagonal listing :=
+  fun h => the_diagonal_never_clicks listing n (congrFun h n)
+theorem the_diagonal_weighs_the_frame (listing : Nat → Nat → Bool) (n : Nat) (h : listing n n = true) :
+    the_arm_weight (listing n n) (the_diagonal listing n) = the_dimensions_of_universe := by
+  unfold the_diagonal; rw [h]; rfl
+theorem the_frame_is_five : the_dimensions_of_universe = 5 := rfl
+#print axioms zero_is_never_a_successor
+#print axioms the_successor_forgets_nothing
+#print axioms every_natural_is_written
+#print axioms the_diagonal_is_not_listed
+#print axioms the_diagonal_weighs_the_frame
+#print axioms the_frame_is_five
+
+--| THE RESIDUE NEVER CLOSES.  A finite run reads the ratio of two successive closed-walk counts; the procedure that never
+--| finishes reads the root of x² − trace·x + determinant.  Their distance, in whole numbers, is the arms crossed times the
+--| determinant to the depth: 4·18·5·234ⁿ, and it is never zero.  It is the part on the eigenvector whose T and F halves have
+--| opposite signs, contracting at every step by (√18 − √5)/(√18 + √5) ≈ 0.3097 and never gone.  Every truncated run carries
+--| TFTF.  Only the run that never finishes is rid of it.
+theorem the_residue_never_closes : ∀ n : Nat,
+    the_closed_walks (n + 1) * the_closed_walks (n + 1) + the_determinant * (the_closed_walks n * the_closed_walks n)
+      + 4 * the_arm_weight true true * the_arm_weight true false * the_determinant ^ n
+      = the_trace * (the_closed_walks (n + 1) * the_closed_walks n)
+  | 0 => rfl
+  | n + 1 => by
+    have ih := the_residue_never_closes n
+    have h := the_closed_walks_obey_the_table n
+    rw [show the_determinant = 234 from rfl, show the_trace = 36 from rfl,
+      show the_arm_weight true true = 18 from rfl, show the_arm_weight true false = 5 from rfl] at *
+    generalize the_closed_walks n = a at *
+    generalize the_closed_walks (n + 1) = b at *
+    generalize the_closed_walks (n + 2) = c at *
+    have hc : c * c + 234 * (a * c) = 36 * (b * c) := by
+      have := congrArg (· * c) h; simp only [Nat.add_mul] at this; rwa [Nat.mul_assoc, Nat.mul_assoc] at this
+    have ha : a * c + 234 * (a * a) = 36 * (a * b) := by
+      have := congrArg (· * a) h; simp only [Nat.add_mul] at this
+      rwa [Nat.mul_assoc, Nat.mul_assoc, Nat.mul_comm c a, Nat.mul_comm b a] at this
+    rw [Nat.pow_succ, Nat.mul_comm c b, Nat.mul_comm b a] at *
+    omega
+--| THE FLIP LOSES NOTHING.  (18 + 5)² = 4·18·5 + 13².  Read in ℚ(√10) it is the norm of the contraction: flip the sign of
+--| √10 and the ratio becomes its own inverse, so the two readings multiply to one.  Each sees the opposite of the other, and
+--| between them nothing is lost.  The thirteen is the difference of the arms.
+theorem the_flip_loses_nothing :
+    (the_arm_weight true true + the_arm_weight true false) ^ 2
+      = 4 * the_arm_weight true true * the_arm_weight true false + readers_experience.bent_card ^ 2 := rfl
+--| Only the arm that cannot click weighs the frame alone.
+theorem the_frame_alone_is_the_arm_that_cannot_click (a b : Bool) :
+    the_arm_weight a b = the_dimensions_of_universe ↔ the_arm_stores_a_fact_that_can_click a b = false := by
+  cases a <;> cases b <;> decide
+--| EVERY DESCRIPTION IS NUMBERED.  Write a description in the two marks, read it as a number in base two with no zero digit,
+--| and read the number back.  Both ways round are the identity.  Anything written in the two marks -- the description of the
+--| device, of a receipt, of a program, of a proof -- is a natural number, and every natural number is one of them.  What
+--| they describe is not here.
+def the_description_number : List Bool → Nat
+  | [] => 0
+  | b :: rest => 2 * the_description_number rest + (if b then 2 else 1)
+def the_description_of : Nat → List Bool
+  | 0 => []
+  | n + 1 => (n % 2 == 1) :: the_description_of (n / 2)
+theorem every_description_is_numbered : ∀ d : List Bool, the_description_of (the_description_number d) = d
+  | [] => by simp [the_description_number, the_description_of]
+  | b :: rest => by
+    cases b
+    · show the_description_of (2 * the_description_number rest + 1) = false :: rest
+      rw [the_description_of]; simp only [Nat.mul_mod_right, show 2 * the_description_number rest / 2 = the_description_number rest by omega, every_description_is_numbered rest]; rfl
+    · show the_description_of (2 * the_description_number rest + 1 + 1) = true :: rest
+      rw [the_description_of]
+      simp only [show (2 * the_description_number rest + 1) % 2 = 1 by omega,
+        show (2 * the_description_number rest + 1) / 2 = the_description_number rest by omega, every_description_is_numbered rest]; rfl
+theorem every_number_is_a_description : ∀ n : Nat, the_description_number (the_description_of n) = n
+  | 0 => by simp [the_description_number, the_description_of]
+  | n + 1 => by
+    have ih := every_number_is_a_description (n / 2)
+    rw [the_description_of, the_description_number, ih]
+    rcases Nat.mod_two_eq_zero_or_one n with h | h
+    · rw [show (n % 2 == 1) = false by rw [h]; rfl]; show 2 * (n / 2) + 1 = n + 1; omega
+    · rw [show (n % 2 == 1) = true by rw [h]; rfl]; show 2 * (n / 2) + 2 = n + 1; omega
+--| THE ANT'S HIGHWAY, HANDED IN.  One period of Langton's ant past step 9977 from the empty grid, black written TRUE.  The
+--| tape is read from a run outside this file and handed in: a declaration, not a computation.  Around the cycle it crosses
+--| T=F twenty-four times and F=T twenty-four times.  The length reader reads it as it reads any tape of 104 cells, the closed
+--| walks of 104 and of 105: the fencepost again.  The ant is in the marks and the length forgets the marks.  That the ant's
+--| step is a step of this device is not shown here.
+def the_highway : List Bool := [true, false, true, true, false, false, false, false, true, true, false, true, true, false, false, false, false, true, true, false, false, false, false, true, true, false, true, false, false, false, false, true, false, true, true, true, true, false, false, false, false, true, false, false, true, false, false, false, false, true, true, true, true, false, true, false, false, false, false, true, false, false, false, false, true, true, true, true, false, true, false, false, false, false, true, false, true, true, false, false, true, true, true, true, false, false, true, true, false, false, false, false, true, true, false, false, true, false, true, true, false, true, true, false]
+theorem the_highway_is_one_period : the_highway.length = 104 := rfl
+def the_highway_arms : List (Bool × Bool) := the_highway.zip (the_highway.rotateLeft 1)
+theorem the_highway_crosses_evenly :
+    (the_highway_arms.count (true, false), the_highway_arms.count (false, true),
+     the_highway_arms.count (true, true), the_highway_arms.count (false, false)) = (24, 24, 22, 34) := by decide
+theorem the_length_reader_cannot_see_the_ant :
+    the_closed_words (the_highway.map bitFACT) = (the_closed_walks 104, the_closed_walks 105) := by
+  rw [the_closed_words_are_closed_walks, List.length_map, the_highway_is_one_period]
+#print axioms the_residue_never_closes
+#print axioms the_flip_loses_nothing
+#print axioms every_description_is_numbered
+#print axioms every_number_is_a_description
+#print axioms the_highway_crosses_evenly
+#print axioms the_length_reader_cannot_see_the_ant
+
+--| THE BOOST BETWEEN THE ORIENTATIONS.  Weigh each coin by the arm that arrives at it from the other: TRUE by F=T, eighteen,
+--| FALSE by T=F, five.  Then every arm read forward weighs what it weighs read backward: the table is reversible, and its two
+--| orientations are one table seen from two frames.  The frame change is a squeeze, a Lorentz boost written on the light
+--| cone, of velocity (18 − 5)/(18 + 5): the thirteen over twenty-three.  Half of it lands on the symmetric table and has
+--| velocity (√18 − √5)/(√18 + √5), the residue's ratio.  And the orientations do not commute: 18² = 5² + 23·13, so N·Nᵀ and
+--| Nᵀ·N differ by 299 on the diagonal, with opposite signs.  The boost is the squeeze that carries one onto the other.
+def the_coin_weight (a : Bool) : Nat := if a then the_arm_weight false true else the_arm_weight true false
+theorem the_table_is_reversible (a b : Bool) :
+    the_coin_weight a * the_arm_weight a b = the_coin_weight b * the_arm_weight b a := by
+  cases a <;> cases b <;> rfl
+theorem the_boost_between_the_orientations :
+    (the_coin_weight true - the_coin_weight false, the_coin_weight true + the_coin_weight false)
+      = (readers_experience.bent_card, 23) := rfl
+theorem the_orientations_do_not_commute :
+    the_arm_weight false true * the_arm_weight false true
+      = the_arm_weight true false * the_arm_weight true false
+        + (the_arm_weight false true + the_arm_weight true false) * readers_experience.bent_card := rfl
+#print axioms the_table_is_reversible
+#print axioms the_boost_between_the_orientations
+#print axioms the_orientations_do_not_commute
 
 --| EXACT UP TO ACCELERATION.  The residual the crank solves is r(y) = A·y² − B·y + C, and its second derivative is the constant
 --| 2A = 2·thirteen.  Newton's step is the first variation, y − r/r', exact for any r with no second derivative, and its whole
@@ -1988,12 +2257,49 @@ noncomputable def the_clicks : List FACT :=
    IT_COMPILES _ rung38,
    IT_COMPILES _ the_crossing_between,
    IT_COMPILES _ admitted_between,
-   IT_COMPILES _ theTop]
+   IT_COMPILES _ theTop,
+   IT_COMPILES _ the_review_on_the_ledger.page36,
+   IT_COMPILES _ the_review_on_the_ledger.page35,
+   IT_COMPILES _ the_review_on_the_ledger.page34,
+   IT_COMPILES _ the_review_on_the_ledger.page33,
+   IT_COMPILES _ the_review_on_the_ledger.page32,
+   IT_COMPILES _ the_review_on_the_ledger.page31,
+   IT_COMPILES _ the_review_on_the_ledger.page30,
+   IT_COMPILES _ the_review_on_the_ledger.page29,
+   IT_COMPILES _ the_review_on_the_ledger.page28,
+   IT_COMPILES _ the_review_on_the_ledger.page27,
+   IT_COMPILES _ the_review_on_the_ledger.page26,
+   IT_COMPILES _ the_review_on_the_ledger.page25,
+   IT_COMPILES _ the_review_on_the_ledger.page24,
+   IT_COMPILES _ the_review_on_the_ledger.page23,
+   IT_COMPILES _ the_review_on_the_ledger.page22,
+   IT_COMPILES _ the_review_on_the_ledger.page21,
+   IT_COMPILES _ the_review_on_the_ledger.page20,
+   IT_COMPILES _ the_review_on_the_ledger.page19,
+   IT_COMPILES _ the_review_on_the_ledger.page18,
+   IT_COMPILES _ the_review_on_the_ledger.page17,
+   IT_COMPILES _ the_review_on_the_ledger.page16,
+   IT_COMPILES _ the_review_on_the_ledger.page15,
+   IT_COMPILES _ the_review_on_the_ledger.page14,
+   IT_COMPILES _ the_review_on_the_ledger.page13,
+   IT_COMPILES _ the_review_on_the_ledger.page12,
+   IT_COMPILES _ the_review_on_the_ledger.page11,
+   IT_COMPILES _ the_review_on_the_ledger.page10,
+   IT_COMPILES _ the_review_on_the_ledger.page09,
+   IT_COMPILES _ the_review_on_the_ledger.page08,
+   IT_COMPILES _ the_review_on_the_ledger.page07,
+   IT_COMPILES _ the_review_on_the_ledger.page06,
+   IT_COMPILES _ the_review_on_the_ledger.page05,
+   IT_COMPILES _ the_review_on_the_ledger.page04,
+   IT_COMPILES _ the_review_on_the_ledger.page03,
+   IT_COMPILES _ the_review_on_the_ledger.page02,
+   IT_COMPILES _ the_review_on_the_ledger.page01,
+   IT_COMPILES _ the_review_on_the_ledger.theTopOfTheLedger]
 theorem every_rung_clicks : the_clicks.all the_click = true := rfl
 theorem every_rung_is_the_truth : ∀ f ∈ the_clicks, Quot.mk same_click f = Quot.mk same_click FACT.Truth := by
   intro f hf
   exact Quot.sound (List.all_eq_true.mp every_rung_clicks f hf)
-theorem the_clicks_count : the_clicks.length = 41 := rfl
+theorem the_clicks_count : the_clicks.length = 78 := rfl
 #print axioms every_rung_clicks
 #print axioms every_rung_is_the_truth
 --| The clicks' own cost, apart from the rungs: a compiled term of any type, minted and identified.
@@ -2012,6 +2318,9 @@ def the_click_natural : Nat := the_click_pair.1 * all_possible_variables / the_c
 set_option maxRecDepth 100000 in
 theorem the_clicks_read_the_number : the_click_natural = the_other_natural := rfl
 #print axioms the_clicks_read_the_number
+theorem the_clicks_never_read_it : the_click_pair.2 ≠ 0 := by
+  rw [the_clicks_agree]; exact the_post_at_zero_is_never_read
+#print axioms the_clicks_never_read_it
 
 end all_the_clicks
 
@@ -2047,6 +2356,10 @@ theorem outer_reader_reads_the_number :
 #print axioms read_past_quarter_is_length
 #print axioms outer_reader_agrees
 #print axioms outer_reader_reads_the_number
+theorem the_card_between_never_reads_it :
+    (bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_between) all_possible_variables).2 ≠ 0 := by
+  rw [outer_reader_agrees]; exact the_post_at_zero_is_never_read
+#print axioms the_card_between_never_reads_it
 
 --| THE CUT.  INFERRED carries two closures: the conclusion its sameness reaches, and α, which ends on FACT.SAME.  Read out,
 --| one is a cell and the other is three.  Deal each as the quarter of a card marked SAME_DIFFERENCE and hand it to the review
@@ -2137,6 +2450,141 @@ def naotrino_detector : Nat :=                                                  
     / (bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_between) all_possible_variables).2
 theorem naotrino_detector_reads_the_number : naotrino_detector = the_other_natural := outer_reader_reads_the_number
 #print axioms naotrino_detector_reads_the_number
+
+--| THE ANT, INFERRED.  The two Bullshits of a closure are the tape on either side of the head, each a stack written only
+--| by pushing; the facts are the mark under the head and the heading.  Each step appends one `.inferred` closure on top of
+--| the last, so the record only grows, and the mark that changes is changed by appending a configuration in which it
+--| differs.  On a line the ant turns back on white and keeps on black, flips the mark, and moves.  Read the closure as two
+--| lists and two bits and the step commutes with the ant run on the lists: the square closes on every configuration.
+--| From the empty line it settles, after one step, into a highway of period three.
+def push (f : FACT) (stack : Bullshit) : Bullshit := .one f another_zero the_satire the_satire stack
+def pop : Bullshit → FACT × Bullshit
+  | .one f _ _ _ rest => (f, rest)
+  | stack => (bitFACT false, stack)
+def the_ant_steps : Closure → Closure
+  | c@(.inferred here heading behind ahead _ _) =>
+    let going := if here.bit then heading.bit else !heading.bit
+    let written := bitFACT (!here.bit)
+    if going then
+      let (next, ahead') := pop ahead
+      .inferred next (bitFACT going) (push written behind) ahead' (some next.truth) c
+    else
+      let (next, behind') := pop behind
+      .inferred next (bitFACT going) behind' (push written ahead) (some next.truth) c
+  | c => c
+def the_stack_read : Bullshit → List Bool
+  | .one f _ _ _ rest => f.bit :: the_stack_read rest
+  | _ => []
+def the_ant_read : Closure → Bool × Bool × List Bool × List Bool
+  | .inferred here heading behind ahead _ _ => (here.bit, heading.bit, the_stack_read behind, the_stack_read ahead)
+  | _ => (false, true, [], [])
+def the_list_pop : List Bool → Bool × List Bool
+  | [] => (false, [])
+  | b :: rest => (b, rest)
+def the_ant_on_a_line : Bool × Bool × List Bool × List Bool → Bool × Bool × List Bool × List Bool
+  | (here, heading, behind, ahead) =>
+    let going := if here then heading else !heading
+    if going then ((the_list_pop ahead).1, going, (!here) :: behind, (the_list_pop ahead).2)
+    else ((the_list_pop behind).1, going, (the_list_pop behind).2, (!here) :: ahead)
+theorem the_stack_pops_what_it_reads (s : Bullshit) :
+    ((pop s).1.bit, the_stack_read (pop s).2) = the_list_pop (the_stack_read s) := by
+  cases s <;> rfl
+theorem the_ant_commutes (here heading : FACT) (behind ahead : Bullshit) (p : Option Prop) (c : Closure) :
+    the_ant_read (the_ant_steps (.inferred here heading behind ahead p c))
+      = the_ant_on_a_line (the_ant_read (.inferred here heading behind ahead p c)) := by
+  have hb := the_stack_pops_what_it_reads behind
+  have ha := the_stack_pops_what_it_reads ahead
+  simp only [the_ant_steps, the_ant_read, the_ant_on_a_line, push]
+  cases here.bit <;> cases heading.bit <;> simp_all [Prod.ext_iff, bit_bitFACT, the_stack_read]
+#print axioms the_ant_commutes
+def the_start : Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} := .inferred (bitFACT false) (bitFACT true) (.zero (bitFACT false)) (.zero (bitFACT false)) none the_only_logical_inconsistency
+def the_run : Nat → Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+  | 0 => the_start
+  | n + 1 => the_ant_steps (the_run n)
+#eval (List.range 12).map fun n => let (h, g, b, a) := the_ant_read (the_run n); (h, g, b, a)
+
+--| THE ANT ON THE SEAM.  The plane is too big for two stacks, so lay the ant on the frinkahedron's seam: thirty-six cells,
+--| two six-position clocks.  The closure keeps the heading in its two facts, a quarter-turn clock of two bits; the two
+--| clocks in one Bullshit, each a Number written in TRUTH; and the thirty-six marks in the other, one stack read and
+--| rewritten by walking down it.  Each step appends a closure.  Read the closure as a heading, two clock hands and a list
+--| of thirty-six bits, and the step commutes with the ant run on that list: the square closes on every configuration.
+--| From the blank seam it comes back to the blank seam at the origin, facing where it started, after 4592 steps: no
+--| transient, because a reversible step on a finite set is a permutation.  The commutation is a receipt; the 4592 is a run.
+def the_stack_get : Bullshit → Nat → FACT
+  | .one f _ _ _ _, 0 => f
+  | .one _ _ _ _ rest, i + 1 => the_stack_get rest i
+  | _, _ => bitFACT false
+def the_stack_set : Bullshit → Nat → FACT → Bullshit
+  | .one _ n p q rest, 0, g => .one g n p q rest
+  | .one f n p q rest, i + 1, g => .one f n p q (the_stack_set rest i g)
+  | s, _, _ => s
+theorem the_stack_get_reads : ∀ (s : Bullshit) (i : Nat), (the_stack_get s i).bit = (the_stack_read s).getD i false
+  | .zero _, _ => rfl
+  | .rest_call .., _ => rfl
+  | .one _ _ _ _ _, 0 => rfl
+  | .one _ _ _ _ rest, i + 1 => the_stack_get_reads rest i
+theorem the_stack_set_reads : ∀ (s : Bullshit) (i : Nat) (g : FACT),
+    the_stack_read (the_stack_set s i g) = (the_stack_read s).set i g.bit
+  | .zero _, _, _ => rfl
+  | .rest_call .., _, _ => rfl
+  | .one _ _ _ _ _, 0, _ => rfl
+  | .one f _ _ _ rest, i + 1, g => by
+    simp only [the_stack_set, the_stack_read, List.set_cons_succ, the_stack_set_reads rest i g]
+def the_heading (a b : FACT) : Nat := 2 * (if a.bit then 1 else 0) + (if b.bit then 1 else 0)
+def the_move : Nat → Nat → Nat → Nat × Nat
+  | 0, x, y => (x, (y + 1) % 6)
+  | 1, x, y => ((x + 1) % 6, y)
+  | 2, x, y => (x, (y + 5) % 6)
+  | _, x, y => ((x + 5) % 6, y)
+def the_ant_on_the_torus : Nat × Nat × Nat × List Bool → Nat × Nat × Nat × List Bool
+  | (h, x, y, cells) =>
+    let here := cells.getD (6 * x + y) false
+    let turned := if here then (h + 3) % 4 else (h + 1) % 4
+    ( turned, (the_move turned x y).1, (the_move turned x y).2, cells.set (6 * x + y) (!here))
+def the_clocks (x y : Nat) : Bullshit :=
+  .rest_call (bitFACT false) (bitFACT false) True (the_naturals_written_in_truth x) (the_naturals_written_in_truth y)
+    another_zero the_satire the_satire (.zero (bitFACT false)) (.zero (bitFACT false))
+def the_clock_read : Bullshit → Nat × Nat
+  | .rest_call _ _ _ x y _ _ _ _ _ => (x.peano.length - 1, y.peano.length - 1)
+  | _ => (0, 0)
+def the_torus_ant_steps : Closure → Closure
+  | c@(.inferred a b clocks grid _ _) =>
+    let x := (the_clock_read clocks).1
+    let y := (the_clock_read clocks).2
+    let here := the_stack_get grid (6 * x + y)
+    let turned := if here.bit then (the_heading a b + 3) % 4 else (the_heading a b + 1) % 4
+    .inferred (bitFACT (turned / 2 == 1)) (bitFACT (turned % 2 == 1))
+      (the_clocks (the_move turned x y).1 (the_move turned x y).2)
+      (the_stack_set grid (6 * x + y) (bitFACT (!here.bit))) (some here.truth) c
+  | c => c
+def the_torus_read : Closure → Nat × Nat × Nat × List Bool
+  | .inferred a b clocks grid _ _ => (the_heading a b, (the_clock_read clocks).1, (the_clock_read clocks).2, the_stack_read grid)
+  | _ => (0, 0, 0, [])
+theorem the_heading_is_written : ∀ k, k < 4 → the_heading (bitFACT (k / 2 == 1)) (bitFACT (k % 2 == 1)) = k
+  | 0, _ => rfl
+  | 1, _ => rfl
+  | 2, _ => rfl
+  | 3, _ => rfl
+  | _ + 4, h => absurd h (by omega)
+theorem the_clocks_are_read (x y : Nat) : the_clock_read (the_clocks x y) = (x, y) := by
+  simp only [the_clocks, the_clock_read, every_natural_is_written, Nat.add_sub_cancel]
+theorem the_torus_ant_commutes (a b : FACT) (clocks grid : Bullshit) (p : Option Prop) (c : Closure) :
+    the_torus_read (the_torus_ant_steps (.inferred a b clocks grid p c))
+      = the_ant_on_the_torus (the_torus_read (.inferred a b clocks grid p c)) := by
+  simp only [the_torus_ant_steps, the_torus_read, the_ant_on_the_torus, the_clocks_are_read, the_stack_set_reads,
+    the_stack_get_reads, bit_bitFACT]
+  split <;> rw [the_heading_is_written _ (by omega)]
+#print axioms the_torus_ant_commutes
+def the_blank_torus : Bullshit := (List.replicate 36 (bitFACT false)).foldr push (.zero (bitFACT false))
+def the_torus_start : Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} :=
+  .inferred (bitFACT false) (bitFACT false) (the_clocks 0 0) the_blank_torus none the_only_logical_inconsistency
+def the_first_return : Nat → Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} → Nat → Option Nat
+  | 0, _, _ => none
+  | fuel + 1, c, k =>
+    let next := the_torus_ant_steps c
+    if the_torus_read next == the_torus_read the_torus_start then some (k + 1) else the_first_return fuel next (k + 1)
+#eval the_first_return 10000 the_torus_start 0
+#eval (the_torus_read the_torus_start).2.2.2.length
 end readers_interpretation_of_the_experience
 
 end Measurement

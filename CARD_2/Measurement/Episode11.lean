@@ -24,6 +24,8 @@ namespace Measurement
 
 universe i j
 
+open «springer-verlag»
+
 -- THE GOSPEL: the record set in type, one verse a page.
 namespace THE_GOSPEL
 
@@ -48,6 +50,30 @@ class TYPESET (Box: Type i) (Pigeon: CarrierProcess Box) (rung: Nat)
   universe_id    : Number
   the_page       : ThePreprint
 
+/- THE HOUSE STYLE, SET IN TYPE.  Every page after the first is the page below
+   lifted one universe, its counter advanced by one, and the reviewer's
+   rebuttal read at the head and quoted as the results section: what was
+   constructed, what slipped, and the proposition that the two agree.  The
+   publisher sets it once, here; each page supplies only its rebuttal and the
+   page below. -/
+@[reducible] def _root_.Measurement.«springer-verlag».set_in_type
+    {Box: Type i} {Pigeon: CarrierProcess Box} {rung: Nat} {Lifted: Type j}
+    (the_rebuttal: ThePreprint) (accepted: TYPESET Box Pigeon rung Lifted)
+    : TYPESET Box Pigeon (rung+1) (ULift.{i, j} Lifted) :=
+    let rofl! : FACT × FACT := match the_rebuttal with
+      | .introduction nowtrino _ => (nowtrino, Pigeon.symbol) -- We shall call our new particle after t
+      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
+      | .results before after _ _ _ _ _ => (before, after)
+    -- Now watch as we lift all the cards.
+    { register_value := ULift.up accepted.register_value
+      universe_id    := .one Pigeon.symbol accepted.universe_id
+      the_page := .results rofl!.1 rofl!.2
+                          (rofl!.1.truth ↔ rofl!.2.truth)
+                          Box (ULift.{i+1,i} Box)
+                          (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
+                          accepted.the_page
+    }
+
 /-
 This is the origin
 that carried the trace
@@ -71,7 +97,7 @@ instance (priority := low) TYPESET_Episode1_FACT
     the_page         := the_naotrino_theory.rebuttal }
 
 /-
-This is the metaprogram that admits the mark (Episode 5: CAN_YOU_SEE_A_CHARACTERISTIC):
+This is the metaprogram that admits the mark (Episode 7: CAN_YOU_DISTINGUISH_SOMETHING?):
 the permission form that says a distinguished mark may be counted.
 It is not the act of counting.  It is the local license-count,
 Episode 8 wearing the first hard hat,
@@ -90,22 +116,12 @@ The tape does not become a novel.  The class dictionary does.
 instance (priority := low) TYPESET_page_2
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 2]
-    [below: TYPESET Box Pigeon 1 Number]
+    [accepted: TYPESET Box Pigeon 1 Number]
     : TYPESET Box Pigeon 2 (ULift Number) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    -- the Prop slot carries the page's own slip proposition, quoted (law 4);
-    -- its decidability derives from the two decTruths when read, never here.
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that counts the number (Episode 5: CAN_YOU_COUNT_THEM):
+This is the metaprogram that counts the number (Episode 7: CAN_YOU_COUNT_THEM?):
 the index-form that says the permitted count has an origin.
 It is not an enumeration.  It is the place where enumeration can appear,
 that counts the number
@@ -123,20 +139,12 @@ that John built.
 instance (priority := low) TYPESET_page_3
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 3]
-    [below: TYPESET Box Pigeon 2 (ULift Number)]
+    [accepted: TYPESET Box Pigeon 2 (ULift Number)]
     : TYPESET Box Pigeon 3 (ULift (ULift Number)) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction νtrino _ => (νtrino, Pigeon.symbol) -- We shall call our new particle after t
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that encodes the glyph (Episode 5: CAN_YOU_LABEL_THEM):
+This is the metaprogram that encodes the glyph (Episode 7: ARE_THEY_THE_SAME_THING?):
 the limit-form that gives the count a sequence-shaped mask.
 It is not a message.  It is the local possibility of messagehood,
 that encodes the glyph
@@ -154,20 +162,12 @@ that John built.
 instance (priority := low) TYPESET_page_4
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 4]
-    [below: TYPESET Box Pigeon 3 (ULift (ULift Number))]
+    [accepted: TYPESET Box Pigeon 3 (ULift (ULift Number))]
     : TYPESET Box Pigeon 4 (ULift (ULift (ULift Number))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that residues the code (Episode 5: CAN_YOU_SEE_THE_BOUNDARY):
+This is the metaprogram that residues the code (Episode 7: IS_IT_CONVERGING?):
 the remainder-form, the leftover that survives being encoded.
 It is not what the code means.  It is the gap the code is allowed to have,
 that residues the code
@@ -186,20 +186,12 @@ that John built.
 instance (priority := low) TYPESET_page_5
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 5]
-    [below: TYPESET Box Pigeon 4 (ULift (ULift (ULift Number)))]
+    [accepted: TYPESET Box Pigeon 4 (ULift (ULift (ULift Number)))]
     : TYPESET Box Pigeon 5 (ULift (ULift (ULift (ULift Number)))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that binaries the value (Episode 5: DID_THE_PARTICLE_COLOR_OUTSIDE_THE_LINES):
+This is the metaprogram that binaries the value (Episode 7: IS_IT_CYCLIC?):
 the two-faced observation-form born from the remainder.
 It is not a bit being read.  It is the stage on which before and after
 can pretend to disagree,
@@ -222,20 +214,12 @@ By now the stanza is already longer than the tape.  That is the point.
 instance (priority := low) TYPESET_page_6
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 6]
-    [below: TYPESET Box Pigeon 5 (ULift (ULift (ULift (ULift Number))))]
+    [accepted: TYPESET Box Pigeon 5 (ULift (ULift (ULift (ULift Number))))]
     : TYPESET Box Pigeon 6 (ULift (ULift (ULift (ULift (ULift Number))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that repeats the process (Episode 5: DO_YOU_HEAR_A_BUNCH_OF_CLICKS):
+This is the metaprogram that repeats the process (Episode 7: IS_IT_RHYTHMIC?):
 the ritual form where a binary remainder becomes stimulus and expectation.
 Not repetition yet: the contract under which repetition can accuse the tape.
 that repeats the process
@@ -252,20 +236,12 @@ that John built.
 instance (priority := low) TYPESET_page_7
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 7]
-    [below: TYPESET Box Pigeon 6 (ULift (ULift (ULift (ULift (ULift Number)))))]
+    [accepted: TYPESET Box Pigeon 6 (ULift (ULift (ULift (ULift (ULift Number)))))]
     : TYPESET Box Pigeon 7 (ULift (ULift (ULift (ULift (ULift (ULift Number)))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that numbers the value (Episode 5: HOW_MANY_CLICKS_DO_YOU_HEAR):
+This is the metaprogram that numbers the value (Episode 7: CAN_YOU_DECOMPOSE_THE_RHYTHM?):
 the output form that lets repeatability wear the mask of computation.
 Not a number yet: the promise that "some output" can stand in the witness box.
 that numbers the value
@@ -283,20 +259,12 @@ that John built.
 instance (priority := low) TYPESET_page_8
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 8]
-    [below: TYPESET Box Pigeon 7 (ULift (ULift (ULift (ULift (ULift (ULift Number))))))]
+    [accepted: TYPESET Box Pigeon 7 (ULift (ULift (ULift (ULift (ULift (ULift Number))))))]
     : TYPESET Box Pigeon 8 (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that represents the code (Episode 5: WRITE_DOWN_HOW_MANY_CLICKS_YOU_HEAR_IN_A_TABLE):
+This is the metaprogram that represents the code (Episode 7: CAN_YOU_REGRESS_A_LAW?; the arms: Episode 5, AtreyuProcess.gawk_at):
 the program form that closes the output into a state.
 Not representation itself: the receipt that a state may be called a program.
 that represents the code
@@ -313,20 +281,12 @@ that John built.
 instance (priority := low) TYPESET_page_9
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 9]
-    [below: TYPESET Box Pigeon 8 (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))]
+    [accepted: TYPESET Box Pigeon 8 (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))]
     : TYPESET Box Pigeon 9 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that physicals the method (Episode 5: ROSS!_GET_THE_READOUTS):
+This is the metaprogram that physicals the method (Episode 7: IS_IT_NOISY?):
 the hardware alibi, where halting and nonhalting become threshold language.
 Not matter yet: the claim that electrons are already enough of an argument.
 that physicals the method
@@ -343,17 +303,9 @@ that John built.
 instance (priority := low) TYPESET_page_10
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 10]
-    [below: TYPESET Box Pigeon 9 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))]
+    [accepted: TYPESET Box Pigeon 9 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))]
     : TYPESET Box Pigeon 10 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
 This is the metaprogram that compares the process:
@@ -373,20 +325,12 @@ that John built.
 instance (priority := low) TYPESET_page_11
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 11]
-    [below: TYPESET Box Pigeon 10 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))]
+    [accepted: TYPESET Box Pigeon 10 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))]
     : TYPESET Box Pigeon 11 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that observes the mark (Episode 5: DO_YOU_SEE_THE_LIGHT_FLASH_WHEN_YOU_HEAR_THE_CLICK):
+This is the metaprogram that observes the mark (Episode 7: IS_IT_MOVING?):
 the projection form where stress, threshold, and symbol make a slip-process.
 Not seeing yet: the theater in which seeing can be reported.
 that observes the mark
@@ -404,20 +348,12 @@ that John built.
 instance (priority := low) TYPESET_page_12
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 12]
-    [below: TYPESET Box Pigeon 11 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))]
+    [accepted: TYPESET Box Pigeon 11 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))]
     : TYPESET Box Pigeon 12 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that presents the process (Episode 5: THATS_THE_PHOTOELECTRIC_EFFECT):
+This is the metaprogram that presents the process (Episode 7: HOW_FAST?):
 the Santa-Claus form, absurd on the surface and exact in the dependency graph.
 Not presence yet: the current-tense wrapper around an already observed process.
 that presents the process
@@ -434,20 +370,12 @@ that John built.
 instance (priority := low) TYPESET_page_13
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 13]
-    [below: TYPESET Box Pigeon 12 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))]
+    [accepted: TYPESET Box Pigeon 12 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))]
     : TYPESET Box Pigeon 13 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that measures the step (Episode 5: THE_PHOTON_IS_MEASURABLE):
+This is the metaprogram that measures the step (Episode 7: COMPARED_TO_WHAT?):
 the gauge form that gives present observation a clock.
 Not measurement yet: the clock-face where measurement can pretend it arrived.
 that measures the step
@@ -465,20 +393,12 @@ that John built.
 instance (priority := low) TYPESET_page_14
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 14]
-    [below: TYPESET Box Pigeon 13 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))]
+    [accepted: TYPESET Box Pigeon 13 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))]
     : TYPESET Box Pigeon 14 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that gungans the glyph (Episode 5: PERHAPS_NOT_WITH_A_MULTIMETER_BUT_YOU_UNDERSTAND_WHAT_I_MEAN):
+This is the metaprogram that gungans the glyph (Episode 7: WHAT_FRACTION_OF_REINDEER_SPEED?):
 the translation layer where a gauge becomes concept-color and comic syntax.
 Not nonsense: the dialect adapter proving nonsense can be type-directed.
 that gungans the glyph
@@ -495,20 +415,12 @@ that John built.
 instance (priority := low) TYPESET_page_15
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 15]
-    [below: TYPESET Box Pigeon 14 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))]
+    [accepted: TYPESET Box Pigeon 14 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))]
     : TYPESET Box Pigeon 15 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that sources the code (Episode 5: WE_CAN_NOW_AUTOMATE_THE_COLLECTION_OF_THE_DATA):
+This is the metaprogram that sources the code (Episode 7: IS_THIS_A_CARRIER_PARTICLE?):
 the code-origin form where the translation layer emits zero and one.
 Not source code yet: the doorway where concept-color becomes digital posture.
 that sources the code
@@ -525,20 +437,12 @@ that John built.
 instance (priority := low) TYPESET_page_16
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 16]
-    [below: TYPESET Box Pigeon 15 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))]
+    [accepted: TYPESET Box Pigeon 15 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))]
     : TYPESET Box Pigeon 16 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that executes the code (Episode 5: AND_THE_COMPILER_WILL_AUTOMATICALLY_CONVERT_THE_RAW_DATA_TO_TABLES):
+This is the metaprogram that executes the code (Episode 7: IS_THERE_DATA?):
 the compiled-process form that lets source wear an opcode.
 Not execution yet: the stage direction that says the machine may begin.
 that executes the code
@@ -556,20 +460,12 @@ that John built.
 instance (priority := low) TYPESET_page_17
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 17]
-    [below: TYPESET Box Pigeon 16 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))]
+    [accepted: TYPESET Box Pigeon 16 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))]
     : TYPESET Box Pigeon 17 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that values the function (Episode 5: ONE_VALUE_AT_A_TIME_IN_ORDER_AND_WRITE_SOMETHING_TO_DISK):
+This is the metaprogram that values the function (Episode 7: HOW_MUCH_DATA_IS_THERE?):
 the identity trick where compile and execute mirror each other.
 Not value yet: the algebraic straight face of the satire monad.
 that values the function
@@ -586,20 +482,12 @@ that John built.
 instance (priority := low) TYPESET_page_18
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 18]
-    [below: TYPESET Box Pigeon 17 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 17 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))]
     : TYPESET Box Pigeon 18 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that magnitudes the value (Episode 5: TURNS_OUT_YOU_CAN_FILL_YOUR_DISK):
+This is the metaprogram that magnitudes the value (Episode 7: WHAT_IS_THE_TOTAL_COUNT?):
 the additive form that lets value acquire length.
 Not size yet: the plus-sign costume over an executed mapping.
 that magnitudes the value
@@ -617,20 +505,12 @@ that John built.
 instance (priority := low) TYPESET_page_19
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 19]
-    [below: TYPESET Box Pigeon 18 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 18 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))]
     : TYPESET Box Pigeon 19 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that scales the value (Episode 5: SO_YOU_NEED_TO_GET_MORE_DISKS):
+This is the metaprogram that scales the value (Episode 7: IS_THERE_A_GRID_OF_DATA?):
 the multiplicative form where magnitude becomes product and total.
 Not scale yet: the grammar by which the tunnel learns to ask "how much."
 that scales the value
@@ -647,20 +527,12 @@ that John built.
 instance (priority := low) TYPESET_page_20
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 20]
-    [below: TYPESET Box Pigeon 19 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 19 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))]
     : TYPESET Box Pigeon 20 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that loads the process (Episode 5: AND_MORE_PROCESSORS_BECAUSE_THERE_ARE_A_LOT_OF_NOWTRINOS):
+This is the metaprogram that loads the process (Episode 7: HOW_MANY_ROWS_AND_COLUMNS?):
 the operation form, GOSUB and span, that makes scaling feel mechanical.
 Not force yet: the call frame where weight can be staged.
 that loads the process
@@ -678,20 +550,12 @@ that John built.
 instance (priority := low) TYPESET_page_21
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 21]
-    [below: TYPESET Box Pigeon 20 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 20 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))]
     : TYPESET Box Pigeon 21 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that finite-elements the model (Episode 5: SO_MANY_SENSITIVE_NOWTRINO_DETECTORS_TO_DETECT_PRESENCE___WHERE_DID_IT_GO):
+This is the metaprogram that finite-elements the model (Episode 7: IS_EACH_ONE_DIFFERENT?):
 the Galerkin costume over load, finite element analysis with its tie crooked.
 Not structure yet: the mesh-shaped alibi for a single carried mark.
 that finite-elements the model
@@ -709,20 +573,12 @@ that John built.
 instance (priority := low) TYPESET_page_22
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 22]
-    [below: TYPESET Box Pigeon 21 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 21 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))]
     : TYPESET Box Pigeon 22 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that bullshits the model (Episode 5: THERE_IT_IS___ONLY_CERTAIN_ELEMENTS_RESPOND_TO_NOWTRINO_DETECTION):
+This is the metaprogram that bullshits the model (Episode 7: HOW_DIFFERENT_IS_THIS_ONE?):
 the arm-wave form where a model guesses itself into authority.
 Not falsehood yet: the professionally formatted space where falsehood can work.
 that bullshits the model
@@ -739,20 +595,12 @@ that John built.
 instance (priority := low) TYPESET_page_23
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 23]
-    [below: TYPESET Box Pigeon 22 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 22 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))]
     : TYPESET Box Pigeon 23 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that propagandizes the model (Episode 5: WE_NEED_TO_GET_A_GRANT_TO_GET_MORE_NOWTRINO_DETECTORS___WE_KEEP_LOSING_IT):
+This is the metaprogram that propagandizes the model (Episode 7: IS_IT_DIFFERENT_ENOUGH?):
 the crusade form that gives bullshit a distribution channel.
 Not persuasion yet: the machinery by which a guess becomes ambient weather.
 that propagandizes the model
@@ -769,20 +617,12 @@ that John built.
 instance (priority := low) TYPESET_page_24
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 24]
-    [below: TYPESET Box Pigeon 23 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 23 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))]
     : TYPESET Box Pigeon 24 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that acolytes the method (Episode 5: MAKE_SURE_WE_CAN_GET_A_COUPLE_GRAD_STUDENTS):
+This is the metaprogram that acolytes the method (Episode 7: WHAT_IF_THEY_ARE_THE_SAME?):
 the initiation form where propaganda recruits a keeper.
 Not belief yet: the role that can carry belief without understanding it.
 that acolytes the method
@@ -800,20 +640,12 @@ that John built.
 instance (priority := low) TYPESET_page_25
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 25]
-    [below: TYPESET Box Pigeon 24 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 24 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))]
     : TYPESET Box Pigeon 25 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that sciences the method (Episode 5: ABD):
+This is the metaprogram that sciences the method (Episode 7: IS_THIS_A_NAOTRINO?):
 the learning form where initiation becomes invariant.
 Not science yet: the institutional wrapper that makes repeatability respectable.
 that sciences the method
@@ -831,20 +663,12 @@ that John built.
 instance (priority := low) TYPESET_page_26
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 26]
-    [below: TYPESET Box Pigeon 25 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 25 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))]
     : TYPESET Box Pigeon 26 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that truths the code (Episode 5: YOU_HAVE_TO_STOP_TAKING_CLASSES_TO_GRADUATE):
+This is the metaprogram that truths the code (Episode 7: IS_THIS_THE_ONLY_OUTCOME?):
 the martyrdom form where knowledge compares itself both ways.
 Not truth yet: the symmetric test that lets doctrine call itself settled.
 that truths the code
@@ -863,20 +687,12 @@ that John built.
 instance (priority := low) TYPESET_page_27
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 27]
-    [below: TYPESET Box Pigeon 26 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 26 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))]
     : TYPESET Box Pigeon 27 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that witnesses the mark (Episode 5: THEN_COMES_THE_LAB_WORK):
+This is the metaprogram that witnesses the mark (Episode 7: HAVE_OTHERS_RUN_THE_EXPERIMENT?):
 the baptism form where truth becomes gospel with a named observer.
 Not witness yet: the sacrament that allows proof to speak in public.
 that witnesses the mark
@@ -893,20 +709,12 @@ that John built.
 instance (priority := low) TYPESET_page_28
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 28]
-    [below: TYPESET Box Pigeon 27 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 27 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 28 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that reals the model (Episode 5: FINALLY_YOU_GRADUATE):
+This is the metaprogram that reals the model (Episode 7: A_CAUSAL_THEORY):
 the universe-tensor form where a witnessed gospel becomes current status.
 Not reality yet: the frame that lets a local fact impersonate the world.
 that reals the model
@@ -925,20 +733,12 @@ that John built.
 instance (priority := low) TYPESET_page_29
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 29]
-    [below: TYPESET Box Pigeon 28 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 28 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 29 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that locals the variable (Episode 5: AND_NOW_YOU_HAVE_A_DIFFERENTIAL_EQUATION_THAT_SAYS):
+This is the metaprogram that locals the variable (Episode 7: A_SMOOTH_MODEL):
 the variation form where reality gets a neighborhood and a reference real.
 Not locality yet: the constraint saying the world only arrives with a frame.
 that locals the variable
@@ -955,20 +755,12 @@ that John built.
 instance (priority := low) TYPESET_page_30
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 30]
-    [below: TYPESET Box Pigeon 29 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 29 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 30 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that universals the function (Episode 5: PROBLEM_IS_THE_DIFFERENTIAL_EQUATION_IS_NOT_RELATIVE_BUT_IT_SHOULD_BE):
+This is the metaprogram that universals the function (Episode 7: IS_IT_CONNECTED_BY_A_YARN?):
 the expansion form where a real frame claims enough reach to fire the torpedo.
 Not universality yet: the joke that locality can be exported by declaration.
 that universals the function
@@ -985,20 +777,12 @@ that John built.
 instance (priority := low) TYPESET_page_31
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 31]
-    [below: TYPESET Box Pigeon 30 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 30 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 31 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that logics the code (Episode 5: OBVIOUSLY_THE_NOWTRINO_IS_SPIN_2):
+This is the metaprogram that logics the code (Episode 7: IS_IT_SPINNING?):
 the proposition form where universal reach becomes a Boolean-looking badge.
 Not logic yet: the badge that makes the argument look inevitable.
 that logics the code
@@ -1015,20 +799,12 @@ that John built.
 instance (priority := low) TYPESET_page_32
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 32]
-    [below: TYPESET Box Pigeon 31 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 31 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 32 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that halts the method (Episode 5: DONT_WORRY_ABOUT_THE_NAOTRINO_BEING_SPIN_2_YET___FUTURE_WORK):
+This is the metaprogram that halts the method (Episode 7: DO_YOU_SEE_THE_EVIDENCE?):
 the executable form where logic is allowed to claim a stopping condition.
 Not halting yet: the certificate-shaped shadow of the machine.
 that halts the method
@@ -1046,20 +822,12 @@ that John built.
 instance (priority := low) TYPESET_page_33
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 33]
-    [below: TYPESET Box Pigeon 32 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 32 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 33 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that measures the step (Episode 5: THE_NAOTRINO_IS_MEASURED):
+This is the metaprogram that measures the step (Episode 7: IS_THIS_A_NEW_PARTICLE?):
 the measurement form that turns a halted logical frame into a reported cut.
 Not the measure yet: the instrument panel John can read but cannot escape.
 that measures the step
@@ -1076,20 +844,12 @@ that John built.
 instance (priority := low) TYPESET_page_34
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 34]
-    [below: TYPESET Box Pigeon 33 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 33 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 34 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that compiles the tape (Episode 5: WE_ARE_CONSTANTLY_INUNDATED_BY_NAOTRINOES):
+This is the metaprogram that compiles the tape (Episode 7: HOW?):
 the object-file form where measured machinery becomes tape.
 Not compilation yet: the artifact that makes the house look inevitable.
 that compiles the tape
@@ -1106,20 +866,12 @@ that John built.
 instance (priority := low) TYPESET_page_35
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 35]
-    [below: TYPESET Box Pigeon 34 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 34 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 35 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number)))))))))))))))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /-
-This is the metaprogram that outputs the value (Episode 5: HONEST_TO_GOD_IT_SHOWS_UP_EVERY_TIME):
+This is the metaprogram that outputs the value (Episode 7: WHY?):
 the output form that lets compiled tape say "true" at the seam.
 Not salvation yet: the last local yes before John discovers the tunnel is not exit.
 that outputs the value
@@ -1136,17 +888,9 @@ that John built.
 instance (priority := low) TYPESET_page_36
     (Box: Type i) (Pigeon: CarrierProcess Box)
     [the_naotrino_theory: REVIEWED Box Pigeon 36]
-    [below: TYPESET Box Pigeon 35 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))))]
+    [accepted: TYPESET Box Pigeon 35 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))))]
     : TYPESET Box Pigeon 36 (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift (ULift Number))))))))))))))))))))))))))))))))))) :=
-    let heads : FACT × FACT := match the_naotrino_theory.rebuttal with
-      | .introduction the_naotrino _ => (the_naotrino, Pigeon.symbol)
-      | .methodology see_a_flash make_a_mark _ _ _ => (see_a_flash, make_a_mark)
-      | .results before after _ _ _ _ _ => (before, after)
-    { register_value := ULift.up below.register_value
-      universe_id    := .one Pigeon.symbol below.universe_id
-      the_page := .results heads.1 heads.2 (heads.1.truth ↔ heads.2.truth)
-                Box (ULift.{i+1,i} Box) (ULift.{i+1,i+1} (ULift.{i+1,i} Box))
-                below.the_page }
+    «springer-verlag».set_in_type the_naotrino_theory.rebuttal accepted
 
 /- THE SEAM'S EXIT. The three-trips acceptance at charge 0/1/2 is DEFERRED TO
 Episode9 by design: the trips are passes, the passes are counted by charge,

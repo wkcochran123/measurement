@@ -78,8 +78,8 @@ Two senses of "lift" meet here; keep them apart.
   supplying the identification for them. THE_ARGUMENT never does, and
   neither do you.
 - **A lift** (Episode 11's construction) is the passage from page k to page
-  k + 1 of the typeset record: the register carried one universe level
-  higher. Lowering after lifting is the identity, so a lift carries no datum
+  k + 1 of the typeset record: the register lifted to a universe at least as
+  high. Lowering after lifting is the identity, so a lift carries no datum
   (TRUTH, Proposition "A lift carries no datum"). It *points* to the step
   between two pages, and the step's mathematics is performed at the pointer.
   Thirty-five lifts separate the thirty-six pages.
@@ -494,6 +494,15 @@ missing, use what is there and say so.
    standard (proved here, standard, measured, recorded, proposed,
    predicted), the way an instrument's reading is fixed against its
    standard. It is not a score or a verdict on the statement's worth.
+   *Proposed* has a precise sense: there exists an isomorphism to the
+   natural numbers here that the machine can exploit as a computation. The
+   construction's descriptions are numbered (a receipt); the reference
+   arrives as a finite record (a value and its uncertainty, or a stated
+   structure); so the identification is a statement the machine can
+   evaluate, a corner case that could be false, and the comparison that
+   revises it is that evaluation. What stays the knower's is that the
+   reference's finite record stands for what it records, as a finite halt
+   stands for its limit.
    `CARD_3.pdf`'s reading note defines it: a quantity or statement reported
    with its admitted inputs, its operation of reading, its reference, and
    the allowance or criterion of comparison. Provenance stays distinct
