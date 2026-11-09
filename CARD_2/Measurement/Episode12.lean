@@ -1560,6 +1560,25 @@ set_option maxRecDepth 100000 in
 theorem relettering_is_free : the_relettered_pair = arrange_the_information_appropriately := rfl
 --#print axioms relettering_is_free
 
+--| A REPRESENTATIVE IS A CHOICE, IN THE KERNEL.  The Quarter proves it on paper; here is the finite part.  Every reader of
+--| the family is some function of a tape's length.  A tape with a false cell and its relettering differ cell by cell, and
+--| no reader of the family can tell them apart.  So whatever names one of the two is not a reader of the family: it steps
+--| outside.  That is the selection the representation of the number needs and no record makes.
+theorem no_length_reader_sees_the_relettering {α : Sort u} (g : Nat → α) (tape : List FACT) :
+    g (relettered tape).length = g tape.length := by
+  simp only [relettered, List.length_map]
+def the_tape_with_a_false_cell : List FACT := [bitFACT false]
+theorem the_relettering_changes_the_cells :
+    the_tape_with_a_false_cell.map FACT.bit ≠ (relettered the_tape_with_a_false_cell).map FACT.bit := by decide
+theorem a_representative_is_a_choice :
+    ∃ t u : List FACT, t.map FACT.bit ≠ u.map FACT.bit ∧
+      ∀ g : Nat → Bool, ¬ (g t.length = true ∧ g u.length = false) :=
+  ⟨the_tape_with_a_false_cell, relettered the_tape_with_a_false_cell, the_relettering_changes_the_cells,
+    fun g ⟨ht, hu⟩ => by rw [no_length_reader_sees_the_relettering g, ht] at hu; exact Bool.noConfusion hu⟩
+#print axioms no_length_reader_sees_the_relettering
+#print axioms the_relettering_changes_the_cells
+#print axioms a_representative_is_a_choice
+
 --| FOR ALL.  The particular re-lettering above was free.  The universal statement -- ANY way of counting that agrees with the
 --| lengths gives the same pair -- costs exactly one thing: turning "agrees on every tape" into "is the same function," which
 --| is `funext`, which is `Quot.sound`.  So here is the fork the device has been pointing at all along.  A symbol identity is
@@ -1784,6 +1803,95 @@ theorem the_round_trip_reverses_twice :
 #print axioms the_reversal_is_the_crossing_sign
 #print axioms the_reversals_telescope
 #print axioms the_round_trip_reverses_twice
+
+--| THE TABLE, NON-ABELIAN.  Read the table's crossing part as a matrix, the clock, and its other orientation as the
+--| transpose.  They do not commute, and their bracket lands exactly on the sign of the coin -- the sign that anticommutes
+--| with the clock -- scaled by the bent card times the sum of the arms, thirteen times twenty-three.  The sign brackets each
+--| clock back into the span of the two, with whole coefficients over two hundred ninety-nine, and the three are traceless
+--| and independent: a non-abelian algebra of boosts, read off counted weights.  Lay the full table on the edges of a
+--| square: the adjugate undoes a table up to its determinant, the trace of a square's holonomy is gauge invariant up to the
+--| determinant of the gauge, a square with every edge the same table is flat, and one edge turned the other way curves it.
+abbrev Table := Bool → Bool → Int
+def the_table_product (A B : Table) : Table := fun a b => A a true * B true b + A a false * B false b
+def the_table_bracket (A B : Table) : Table := fun a b => the_table_product A B a b - the_table_product B A a b
+def the_clock_table : Table := fun a b => if a = b then 0 else (the_arm_weight a b : Int)
+def the_other_clock : Table := fun a b => the_clock_table b a
+def the_sign_table : Table := fun a b => if a = b then the_coin_sign a else 0
+def the_table_trace (A : Table) : Int := A true true + A false false
+def the_table_determinant (A : Table) : Int := A true true * A false false - A true false * A false true
+def the_adjugate (A : Table) : Table := fun a b => if a = b then A (!a) (!a) else - A a b
+def the_full_table : Table := fun a b => (the_arm_weight a b : Int)
+theorem the_orientations_bracket_onto_the_sign (a b : Bool) :
+    the_table_bracket the_clock_table the_other_clock a b
+      = - ((readers_experience.bent_card : Int) * (the_arm_weight true true + the_arm_weight true false : Nat)) * the_sign_table a b := by
+  cases a <;> cases b <;> rfl
+theorem the_sign_brackets_the_clock_back (a b : Bool) :
+    299 * the_table_bracket the_sign_table the_clock_table a b = -698 * the_clock_table a b + 360 * the_other_clock a b := by
+  cases a <;> cases b <;> rfl
+theorem the_sign_brackets_the_other_clock_back (a b : Bool) :
+    299 * the_table_bracket the_sign_table the_other_clock a b = -360 * the_clock_table a b + 698 * the_other_clock a b := by
+  cases a <;> cases b <;> rfl
+theorem the_three_are_traceless :
+    (the_table_trace the_clock_table, the_table_trace the_other_clock, the_table_trace the_sign_table) = (0, 0, 0) := rfl
+theorem the_three_are_independent (x y z : Int)
+    (h : ∀ a b, x * the_clock_table a b + y * the_other_clock a b + z * the_sign_table a b = 0) :
+    x = 0 ∧ y = 0 ∧ z = 0 := by
+  have h1 := h true true; have h2 := h true false; have h3 := h false true
+  have c1 : the_clock_table true true = 0 := rfl
+  have c2 : the_clock_table true false = 5 := rfl
+  have c3 : the_clock_table false true = 18 := rfl
+  have o1 : the_other_clock true true = 0 := rfl
+  have o2 : the_other_clock true false = 18 := rfl
+  have o3 : the_other_clock false true = 5 := rfl
+  have s1 : the_sign_table true true = 1 := rfl
+  have s2 : the_sign_table true false = 0 := rfl
+  have s3 : the_sign_table false true = 0 := rfl
+  simp only [c1, c2, c3, o1, o2, o3, s1, s2, s3] at h1 h2 h3
+  refine ⟨?_, ?_, ?_⟩ <;> omega
+theorem the_adjugate_inverts (A : Table) (a b : Bool) :
+    the_table_product A (the_adjugate A) a b = if a = b then the_table_determinant A else 0 := by
+  cases a <;> cases b <;>
+    simp only [the_table_product, the_adjugate, the_table_determinant, Bool.not_true, Bool.not_false, Bool.true_eq_false, Bool.false_eq_true, ite_true, ite_false,
+      Int.mul_neg] <;> ac_nf <;> omega
+theorem the_wilson_loop_is_gauge_invariant (g P : Table) :
+    the_table_trace (the_table_product (the_table_product g P) (the_adjugate g))
+      = the_table_determinant g * the_table_trace P := by
+  simp only [the_table_trace, the_table_product, the_adjugate, the_table_determinant, Bool.not_true, Bool.not_false, Bool.true_eq_false, Bool.false_eq_true, ite_true, ite_false,
+    Int.mul_neg, Int.add_mul, Int.mul_add, Int.sub_mul]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+def the_holonomy (bottom right top left : Table) : Table :=
+  the_table_product (the_table_product (the_table_product bottom right) (the_adjugate top)) (the_adjugate left)
+def the_scaled_identity (k : Int) : Table := fun a b => if a = b then k else 0
+theorem the_uniform_square_is_flat (a b : Bool) :
+    the_holonomy the_full_table the_full_table the_full_table the_full_table a b = the_scaled_identity (234 * 234) a b := by
+  cases a <;> cases b <;> rfl
+def the_full_other_table : Table := fun a b => the_full_table b a
+theorem one_turned_edge_curves_the_square :
+    the_holonomy the_full_other_table the_full_table the_full_table the_full_table true false ≠ 0 := by decide
+#print axioms the_adjugate_inverts
+#print axioms the_wilson_loop_is_gauge_invariant
+#print axioms the_uniform_square_is_flat
+#print axioms one_turned_edge_curves_the_square
+#print axioms the_orientations_bracket_onto_the_sign
+#print axioms the_sign_brackets_the_clock_back
+#print axioms the_three_are_independent
+--| THE QUARTER TURN IS IN THE TABLE.  Take the clock less its other orientation: what is left is the antisymmetric part,
+--| and it is the bent card times a quarter turn, the table that squares to minus the identity.  Its exponential is rotation,
+--| the compact U(1), already inside the real algebra of boosts; and the sign of the coin reverses it, as it reverses the
+--| clock.  The electron's group is not missing.  It is the part of the table that does not agree with its own transpose.
+def the_quarter_turn : Table := fun a b => if a = b then 0 else if a then -1 else 1
+theorem the_antisymmetric_part_is_the_quarter_turn (a b : Bool) :
+    the_clock_table a b - the_other_clock a b = (readers_experience.bent_card : Int) * the_quarter_turn a b := by
+  cases a <;> cases b <;> rfl
+theorem the_quarter_turn_squares_to_minus_one (a b : Bool) :
+    the_table_product the_quarter_turn the_quarter_turn a b = - the_scaled_identity 1 a b := by
+  cases a <;> cases b <;> rfl
+theorem the_sign_reverses_the_quarter_turn (a b : Bool) :
+    the_table_product (the_table_product the_sign_table the_quarter_turn) the_sign_table a b = - the_quarter_turn a b := by
+  cases a <;> cases b <;> rfl
+#print axioms the_antisymmetric_part_is_the_quarter_turn
+#print axioms the_quarter_turn_squares_to_minus_one
+#print axioms the_sign_reverses_the_quarter_turn
 
 --| TWO READINGS OF ONE TURNING.  Read a walk's crossings two ways.  Subdivided, every crossing is half a turn and the
 --| count is the crossings themselves: nothing is left over, because nothing is rounded.  Counted in whole turns, the walk
@@ -2091,6 +2199,37 @@ theorem the_orientations_do_not_commute :
 def the_residual (N D : Nat) : Nat × Nat :=
   (an_exact_polynomial_description * (N * N) + the_number_of_symbols_that_must_be_written_to_express_this * (D * D), the_trace_of_truth_in_the_device * (N * D))
 def the_first_derivative (N D : Nat) : Nat × Nat := (2 * an_exact_polynomial_description * N, the_trace_of_truth_in_the_device * D)
+
+--| EQUALITY IS A MIRROR, PAID.  The residual, read at one cell of denominator, is a scalar, and a scalar residual is always
+--| the first variation of a cubic: move the point by h and the action moves by six h times the residual, a square term,
+--| and a cube term, and then nothing -- the fourth variation is not small, it is absent.  Doubled and tripled so no
+--| fraction is ever written.  The coefficients are the three counts the residual already uses; the receipt says so.
+def the_mirror_residual (x : Int) : Int :=
+  (an_exact_polynomial_description : Int) * x * x - (the_trace_of_truth_in_the_device : Int) * x
+    + (the_number_of_symbols_that_must_be_written_to_express_this : Int)
+def the_cubic_action (x : Int) : Int :=
+  2 * (an_exact_polynomial_description : Int) * x * x * x - 3 * (the_trace_of_truth_in_the_device : Int) * x * x
+    + 6 * (the_number_of_symbols_that_must_be_written_to_express_this : Int) * x
+theorem the_mirror_is_the_device_residual (N : Nat) :
+    ((the_residual N 1).1 : Int) - (the_residual N 1).2 = the_mirror_residual N := by
+  simp only [the_residual, the_mirror_residual, Nat.mul_one, Int.natCast_add, Int.natCast_mul]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem the_residual_is_the_derivative_of_the_action (x h : Int) :
+    the_cubic_action (x + h) - the_cubic_action x
+      = 6 * h * the_mirror_residual x
+        + h * h * (6 * (an_exact_polynomial_description : Int) * x - 3 * (the_trace_of_truth_in_the_device : Int))
+        + 2 * (an_exact_polynomial_description : Int) * h * h * h := by
+  have a : (an_exact_polynomial_description : Int) = 13 := rfl
+  have t : (the_trace_of_truth_in_the_device : Int) = 36 := rfl
+  have c : (the_number_of_symbols_that_must_be_written_to_express_this : Int) = 18 := rfl
+  simp only [the_cubic_action, the_mirror_residual, a, t, c, Int.add_mul, Int.mul_add, Int.mul_sub]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem the_mirror_coefficients_are_counted :
+    (an_exact_polynomial_description, the_trace_of_truth_in_the_device,
+      the_number_of_symbols_that_must_be_written_to_express_this) = (13, 36, 18) := rfl
+#print axioms the_mirror_is_the_device_residual
+#print axioms the_residual_is_the_derivative_of_the_action
+#print axioms the_mirror_coefficients_are_counted
 
 -- the squares, expanded once by hand so the tally only ever sees literal coefficients on N·N, N·D, D·D
 theorem step_sq (N D : Nat) : (N + D) * (N + D) = N * N + 2 * (N * D) + D * D := by
@@ -2768,6 +2907,125 @@ def the_first_return : Nat → Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 #eval the_first_return 10000 the_torus_start 0
 #eval (the_torus_read the_torus_start).2.2.2.length
 end readers_interpretation_of_the_experience
+
+--| THE READER'S INTERPRETATION, CARRYING A PAIR.  The same experience dealt on a box that holds two carriers at once, the
+--| Cartesian product of two FACT cards.  The card is the same face, the mark is marked field for field, and the crossing
+--| deals rung 1 by `rfl`: nothing in the record cares how many carriers the box holds.  Read through the slot it deducts,
+--| the pair prints the one number, the same natural as the single card -- two carriers, one number, read not run again.
+--| And the tally the pair carries can sit in either carrier: swap them and every reader of the tally reads the same.  Which
+--| carrier holds the count is a choice no reader of the count can make.
+namespace readers_interpretation_of_the_pair
+open the_representation assembly_instructions readers_experience
+abbrev TwoCarriers := CarrierProcess FACT × CarrierProcess FACT
+def the_pair_between : CarrierProcess TwoCarriers := { symbol := FACT.Truth, quarter := .zero FACT.Truth }
+instance the_mark_on_the_pair : DISTINGUISHABLE TwoCarriers the_pair_between :=
+  { fact := a_distinct_truth.fact, symbol := a_distinct_truth.symbol, different? := a_distinct_truth.different?, not_the_same := a_distinct_truth.not_the_same }
+instance : Inhabited (DISTINGUISHABLE.symbol the_pair_between) := instInhabitedProp
+noncomputable def the_crossing_on_the_pair :=
+  STEP1_NAME_THE_LEDGER_AND_MARK_IT_WITH_THE_SYMBOL_OF_THE_NOWTRINO TwoCarriers the_pair_between the_first_card FACT.Truth
+theorem the_pair_deals_rung01 : the_crossing_on_the_pair = rung01 := rfl
+noncomputable def nowtrino          := the_mark_on_the_pair
+noncomputable def nowtrino_model    := A_CAUSAL_THEORY TwoCarriers the_pair_between
+noncomputable def nowtrino_detector := the_crossing_on_the_pair
+noncomputable def naotrino          := A_SMOOTH_MODEL TwoCarriers the_pair_between
+def read_past_the_pair (C : CarrierProcess TwoCarriers) (tape : List FACT) : Nat :=
+  (tape.foldr Number.one C.quarter).peano.length - C.quarter.peano.length
+theorem read_past_the_pair_is_length (C : CarrierProcess TwoCarriers) (t : List FACT) :
+    read_past_the_pair C t = t.length := by
+  unfold read_past_the_pair; rw [peano_fold, List.length_append, Nat.add_sub_cancel]
+def naotrino_detector : Nat :=
+  (bent_card.fenceposts_must_be_preserved Nat (read_past_the_pair the_pair_between) all_possible_variables).1 * all_possible_variables
+    / (bent_card.fenceposts_must_be_preserved Nat (read_past_the_pair the_pair_between) all_possible_variables).2
+theorem two_carriers_print_one_number :
+    naotrino_detector = readers_interpretation_of_the_experience.naotrino_detector := by
+  unfold naotrino_detector readers_interpretation_of_the_experience.naotrino_detector
+  rw [show read_past_the_pair the_pair_between = List.length from funext (read_past_the_pair_is_length _),
+    show read_past_quarter the_card_between = List.length from funext (read_past_quarter_is_length _)]
+theorem the_pair_reads_the_number : naotrino_detector = the_other_natural :=
+  two_carriers_print_one_number.trans readers_interpretation_of_the_experience.naotrino_detector_reads_the_number
+def the_tally (p : TwoCarriers) : Nat := p.1.quarter.peano.length + p.2.quarter.peano.length
+def the_tally_on_the_left : TwoCarriers := ({ symbol := FACT.Truth, quarter := .one FACT.Truth (.zero FACT.Truth) }, the_first_card)
+def the_tally_on_the_right : TwoCarriers := the_tally_on_the_left.swap
+theorem the_tally_moved_sides :
+    the_tally_on_the_left.1.quarter.peano.length ≠ the_tally_on_the_right.1.quarter.peano.length := by decide
+theorem no_reader_of_the_tally_sees_which_carrier {α : Sort u} (g : Nat → α) (p : TwoCarriers) :
+    g (the_tally p.swap) = g (the_tally p) := by
+  unfold the_tally; rw [Prod.fst_swap, Prod.snd_swap, Nat.add_comm]
+theorem which_carrier_is_a_choice :
+    the_tally_on_the_left.1.quarter.peano.length ≠ the_tally_on_the_right.1.quarter.peano.length ∧
+      ∀ g : Nat → Bool, ¬ (g (the_tally the_tally_on_the_left) = true ∧ g (the_tally the_tally_on_the_right) = false) :=
+  ⟨the_tally_moved_sides, fun g ⟨hl, hr⟩ => by
+    rw [show the_tally_on_the_right = the_tally_on_the_left.swap from rfl, no_reader_of_the_tally_sees_which_carrier g, hl] at hr
+    exact Bool.noConfusion hr⟩
+#print axioms the_pair_deals_rung01
+#print axioms the_pair_reads_the_number
+#print axioms two_carriers_print_one_number
+#print axioms which_carrier_is_a_choice
+--| (CLICK, CLICK), THROUGH THE CARRIERS.  Each carrier in the pair is a card the experience can be read through: deduct its
+--| quarter, whatever it holds, and read the number.  Read through the left carrier and through the right, the pair clicks
+--| twice, and the two clicks are the two other machines: the click machine's natural and the other machine's natural.  For
+--| every pair of carriers, the tally carried or not.  Read, not run again: each side is rewritten to the card between.
+def read_past_the_carrier (c : CarrierProcess FACT) (tape : List FACT) : Nat :=
+  (tape.foldr Number.one c.quarter).peano.length - c.quarter.peano.length
+theorem read_past_the_carrier_is_length (c : CarrierProcess FACT) (t : List FACT) :
+    read_past_the_carrier c t = t.length := by
+  unfold read_past_the_carrier; rw [peano_fold, List.length_append, Nat.add_sub_cancel]
+def the_click_through (c : CarrierProcess FACT) : Nat :=
+  (bent_card.fenceposts_must_be_preserved Nat (read_past_the_carrier c) all_possible_variables).1 * all_possible_variables
+    / (bent_card.fenceposts_must_be_preserved Nat (read_past_the_carrier c) all_possible_variables).2
+theorem each_carrier_reads_the_card_between (c : CarrierProcess FACT) :
+    the_click_through c = readers_interpretation_of_the_experience.naotrino_detector := by
+  unfold the_click_through readers_interpretation_of_the_experience.naotrino_detector
+  rw [show read_past_the_carrier c = List.length from funext (read_past_the_carrier_is_length c),
+    show read_past_quarter the_card_between = List.length from funext (read_past_quarter_is_length _)]
+theorem click_click_through_the_carriers (p : TwoCarriers) :
+    (the_click_through p.1, the_click_through p.2) = (the_click_natural, the_other_natural) := by
+  rw [each_carrier_reads_the_card_between, each_carrier_reads_the_card_between,
+    readers_interpretation_of_the_experience.naotrino_detector_reads_the_number, the_clicks_read_the_number]
+theorem click_click_on_the_tally : (the_click_through the_tally_on_the_left.1, the_click_through the_tally_on_the_left.2)
+    = (the_click_through the_tally_on_the_right.1, the_click_through the_tally_on_the_right.2) := by
+  rw [click_click_through_the_carriers, click_click_through_the_carriers]
+#print axioms click_click_through_the_carriers
+#print axioms click_click_on_the_tally
+--| THE ISOMORPHISM TO THE NATURALS.  Call two tapes the same tally when they are the same length, and take the quotient.
+--| Going one way is reading the tally; going back is writing the numeral, the one truth n times.  Read the numeral and you
+--| get n back; write the tally and you get the class back.  So the tallies are the naturals, and the numeral of a tape is its
+--| relettering: the canonical card in each fibre.  Every carrier reads a tape as its tally, and the number is computed from
+--| tallies alone.  That is the sense of "proposed": the numbering exists, and the machine computes with it.
+--| What the tally counts are naotrinos.  Every cell of a tape is a FACT carried as its own description, the particle that
+--| carries itself; the tally counts them and no reader looks at one.  That is why relettering is free: swap every naotrino
+--| for the one truth and the count is the same.  The naturals are how many naotrinos; which naotrinos is the choice.
+--| And what a naotrino is, the record says by name: every typeset page of Episode 11 takes `the_naotrino_theory`, a
+--| REVIEWED page, one of thirty-six arguments, each a rebuttal about the page beside it; lifted and lowered it comes back
+--| exactly, the lift its own inverse undone.  A bit of code arguing about one of thirty-six arguments, and the cell is the
+--| fact it carries.
+def the_same_tally (t u : List FACT) : Prop := t.length = u.length
+def the_tallies : Type := Quot the_same_tally
+def the_tally_of : the_tallies → Nat := Quot.lift List.length (fun _ _ h => h)
+def the_numeral (n : Nat) : the_tallies := Quot.mk _ (List.replicate n FACT.Truth)
+theorem the_tally_of_the_numeral (n : Nat) : the_tally_of (the_numeral n) = n := List.length_replicate
+theorem the_numeral_of_the_tally (q : the_tallies) : the_numeral (the_tally_of q) = q := by
+  induction q using Quot.ind with
+  | mk t => exact Quot.sound (List.length_replicate)
+theorem the_numeral_is_the_relettering (t : List FACT) : relettered t = List.replicate t.length FACT.Truth := by
+  induction t with
+  | nil => rfl
+  | cons _ t ih => simp only [relettered, List.map_cons, List.length_cons, List.replicate_succ] at ih ⊢; rw [ih]
+theorem every_carrier_reads_a_natural (c : CarrierProcess FACT) (t : List FACT) :
+    read_past_the_carrier c t = the_tally_of (Quot.mk _ t) := read_past_the_carrier_is_length c t
+theorem the_number_is_computed_from_naturals (c : CarrierProcess FACT) :
+    the_click_through c
+      = (bent_card.fenceposts_must_be_preserved Nat (fun t => the_tally_of (Quot.mk the_same_tally t)) all_possible_variables).1
+          * all_possible_variables
+        / (bent_card.fenceposts_must_be_preserved Nat (fun t => the_tally_of (Quot.mk the_same_tally t)) all_possible_variables).2 := by
+  unfold the_click_through
+  rw [show read_past_the_carrier c = (fun t => the_tally_of (Quot.mk the_same_tally t)) from funext (every_carrier_reads_a_natural c)]
+#print axioms the_tally_of_the_numeral
+#print axioms the_numeral_of_the_tally
+#print axioms the_numeral_is_the_relettering
+#print axioms every_carrier_reads_a_natural
+#print axioms the_number_is_computed_from_naturals
+end readers_interpretation_of_the_pair
 
 end Measurement
 

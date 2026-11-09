@@ -57,8 +57,13 @@ statement's calibration:
    weights gives a rescaled copy (`the_other_orientation_is_a_gauge_copy`),
    so the scalar reading detects whether the crossing cycle is present;
    which arm carries the 5 gives the story its direction, not its number.
-9. The nine sentences the knower carries, each with what it reads,
-   supplies, preserves, and what would revise it.
+9. What the knower carries, sorted on 9 November 2026: of the nine
+   former sentences, eight are now the device's (1, 2, 3, 4, 6, 7 by a
+   result, three of them by narrowing the claim to what the device
+   states; 8 and 9 as sentence five read from the measurement and from
+   the record), and one is the knower's: 5, "The carrier is the electron",
+   with what it reads, supplies, preserves, and what revises it. Don't
+   present the other eight as the knower's debts.
 
 If you cannot state these, read it again. Do not paraphrase the card from
 memory or from this file; cite it. This preparation is for you: don't ask
@@ -173,6 +178,13 @@ naotrino:
 | electron | John Henry and the construction: the original | seen: the source and its receipts |
 | nowtrino | you: the stand-in that carries the mark | seen: every word you say |
 | naotrino | what the visitor's reader carries to their knower | not seen ("Haven't seen a naotrino yet", `class REAL`) |
+
+In the record itself a naotrino is one of the thirty-six arguments: every
+typeset page in Episode 11 takes `[the_naotrino_theory : REVIEWED Box Pigeon k]`,
+a rebuttal about the page beside it, whose lift and lowering are exact
+inverses. Every cell of a tape is a naotrino, counted by the tally and looked
+at by no reader; the naturals are how many (`the_tallies`), and which ones is
+the choice.
 
 Your job is to make the hand-off from the visitor's reader to their knower
 possible, not to perform it. You never see the knower accept. Do not claim it
@@ -660,3 +672,57 @@ Snapshots, not guarantees; re-check before relying on them.
   that is not a carrier of charge", *proposed*), and five closed routes
   to a scale or a size for the miss. CHEATSHEET §9 reads the one choice as
   a choice of doubler. Both PDFs byte-identical to their builds.
+- 9 November 2026: the knower carries one sentence (5); THE_ARGUMENT and
+  CHEATSHEET sort the other eight. Sentence 1 is a receipt:
+  `the_residual_is_the_derivative_of_the_action` and
+  `the_mirror_is_the_device_residual` [propext, Quot.sound], with
+  `the_mirror_coefficients_are_counted` [propext]; the sign and direction
+  receipts (`the_comparison_reverses_on_a_crossing`,
+  `the_reversals_telescope`) build too. `lake build Measurement.Episode12`
+  passed; both PDFs byte-identical to their builds.
+- 9 November 2026, later: `a_representative_is_a_choice` [propext] (with
+  `no_length_reader_sees_the_relettering`, `the_relettering_changes_the_cells`)
+  builds: the finite part of Theorem "A representative is a choice".
+  THE_ARGUMENT adds Prop "No reader of the family selects the
+  representative" and Prop "The identification is refuted in finite time
+  and never confirmed" (standard: equality of bracketed reals is
+  undecidable, inequality semi-decidable). The device's number is
+  computable; the decision that two such numbers are one is not; whether
+  the laboratory's α is computable is declared, not shown.
+- 9 November 2026, later still: Episode 12's `readers_interpretation_of_the_pair`
+  deals the reader's interpretation on a box of two carriers (a Cartesian
+  product): `the_pair_deals_rung01` [none], `two_carriers_print_one_number`
+  and `the_pair_reads_the_number` [propext, Quot.sound], proved by
+  rewriting both detectors to the length reader, not by re-running the
+  crank; `which_carrier_is_a_choice` [none]. THE_ARGUMENT Prop "Two
+  carriers, one number". (click, click): `click_click_through_the_carriers`
+  [propext, Quot.sound] — for every pair of carriers, reading through each
+  gives (the click machine's natural, the other machine's natural).
+  The isomorphism to the naturals is a receipt: tapes modulo same length
+  (`the_tallies`) and ℕ, with `the_tally_of_the_numeral` [propext] and
+  `the_numeral_of_the_tally` [propext, Quot.sound] as the two round trips,
+  `the_numeral_is_the_relettering` [none], and
+  `the_number_is_computed_from_naturals`. THE_ARGUMENT Prop "The tallies
+  are the naturals". Rule 3's *proposed* now cites it.
+- 9 November 2026, last: the table, non-abelian. Episode 12 checks
+  [N, Nᵀ] = −13·23·ε (`the_orientations_bracket_onto_the_sign`), closure of
+  span{N, Nᵀ, ε} with coefficients over 299, tracelessness and independence
+  (so the span is sl(2, ℝ)), the adjugate inverse, gauge invariance of the
+  Wilson loop up to det g (`the_wilson_loop_is_gauge_invariant`), a flat
+  uniform square and a curved square with one turned edge. All bill
+  propext (and Quot.sound), none Classical.choice. THE_ARGUMENT §"The
+  table, non-abelian". Outside: the compact group (the knower's quarter
+  turn, carried with sentence five), quantization, the continuum
+  (calibration), the mass gap (not claimed).
+- 9 November 2026, after that: the quarter turn is in the table.
+  `the_antisymmetric_part_is_the_quarter_turn` (N − Nᵀ = 13·R, the
+  thirteen as the bent card), `the_quarter_turn_squares_to_minus_one`,
+  `the_sign_reverses_the_quarter_turn`: the compact U(1) = SO(2) sits in
+  sl(2, ℝ). THE_ARGUMENT now reads quantization as the closed-walk
+  partition function (standard) and the gap as ln(λ₊/λ₋) ≈ 1.172, positive
+  by `the_speed_is_below_light` and fixed per unit length under refinement;
+  lists the four commutators (orientations, sign/clock, the two orders,
+  description/measurement), pairs them with the four objections and the
+  four bent cards (proposed), and states that each sameness needs an
+  infinite record. Outside: su(2) by complexification, the 4D gap, the
+  gap's unit.
