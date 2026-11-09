@@ -1750,6 +1750,41 @@ theorem the_speed_is_below_light :
 #print axioms every_closed_walk_turns_evenly
 #print axioms the_speed_is_below_light
 
+--| THE SIGN AND THE DIRECTION.  Two orders, two jobs.  Episode 1's default comparison of rationals keeps its order when the
+--| two heads agree and reverses it when they differ -- on both crossings, T to F and F to T, since each pair differs.  That
+--| is the sign.  `Number.le` is the asymmetric one, False one way and the other way round the other, and the arm rule
+--| echoes it: that is the direction, which arm keeps the five.  The sign of a step is the product of its coins' signs, so
+--| along a walk every coin in the middle is counted twice and cancels, and only the ends remain: the sign of
+--| `the_crossings_pair_up`.  There and back crosses the five once and reverses twice.
+theorem the_comparison_reverses_on_a_crossing {Box : Type u} {Pigeon : CarrierProcess Box}
+    [DISTINGUISHABLE Box Pigeon] (a b : Bool) (m n : Natural) (r s : Rational) :
+    COUNTABLE.bounded? Pigeon (self := CAN_YOU_COUNT_THEM? Box Pigeon) (.number (bitFACT a) m r) (.number (bitFACT b) n s)
+      ↔ (if a = b then m ≤ n else n ≤ m) := by
+  cases a <;> cases b <;> simp [COUNTABLE.bounded?, bitFACT, FACT.Truth]
+def the_coin_sign (a : Bool) : Int := if a then 1 else -1
+def the_reversal (a b : Bool) : Int := the_coin_sign a * the_coin_sign b
+def the_reversals : Bool → List Bool → Int
+  | _, [] => 1
+  | a, b :: w => the_reversal a b * the_reversals b w
+def the_walk_ends : Bool → List Bool → Bool
+  | a, [] => a
+  | _, b :: w => the_walk_ends b w
+theorem the_reversal_is_the_crossing_sign (a b : Bool) : the_reversal a b = if a = b then 1 else -1 := by
+  cases a <;> cases b <;> rfl
+theorem the_reversals_telescope : ∀ (w : List Bool) (a : Bool), the_reversals a w = the_reversal a (the_walk_ends a w)
+  | [], a => by cases a <;> rfl
+  | b :: w, a => by
+    simp only [the_reversals, the_walk_ends, the_reversals_telescope w b]
+    generalize the_walk_ends b w = e
+    cases a <;> cases b <;> cases e <;> rfl
+theorem the_round_trip_reverses_twice :
+    (the_reversal true false, the_reversal false true, the_reversals true [false, true],
+      the_arm_weight true false, the_arm_weight false true) = (-1, -1, 1, 5, 18) := rfl
+#print axioms the_comparison_reverses_on_a_crossing
+#print axioms the_reversal_is_the_crossing_sign
+#print axioms the_reversals_telescope
+#print axioms the_round_trip_reverses_twice
+
 --| TWO READINGS OF ONE TURNING.  Read a walk's crossings two ways.  Subdivided, every crossing is half a turn and the
 --| count is the crossings themselves: nothing is left over, because nothing is rounded.  Counted in whole turns, the walk
 --| winds `the_winding k` and leaves a residue, k % 2, the half turn no whole count can hold.  The two readings agree up to

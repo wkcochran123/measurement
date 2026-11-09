@@ -48,7 +48,15 @@ statement's calibration:
    prover's census of this way and of that way, agree on five; the rule
    only removes the thirteen. The arm weighs in the count by the
    weighting rule; what that counted structure is taken to represent is the
-   knower's, calibrated *proposed*. "That is what T = F buys."
+   knower's, calibrated *proposed*. "That is what T = F buys." What the
+   kernel checks: Episode 5's `gawk_at` stores `False` on the arm T = F and
+   `True` on F = T; Episode 12 transcribes that into a Boolean
+   (`the_arm_stores_a_fact_that_can_click`), weighs each arm 13 if it stores
+   a clickable fact plus 5, and proves by `rfl` that the result is the
+   existing table (`the_click_table_is_derived`). Swapping the two crossing
+   weights gives a rescaled copy (`the_other_orientation_is_a_gauge_copy`),
+   so the scalar reading detects whether the crossing cycle is present;
+   which arm carries the 5 gives the story its direction, not its number.
 9. The nine sentences the knower carries, each with what it reads,
    supplies, preserves, and what would revise it.
 
@@ -94,7 +102,7 @@ What you must be able to state from TRUTH, with calibrations:
    electron, defined as the pair {ψ, −ψ}; 32–35 quantum electrodynamics, the
    laboratory, the comparison, the press. The same lifts are spelled out
    by register on the other cards: 1–20 in `CARD_1.pdf` and 21–35 in
-   `CARD_3.pdf` (each Chapter 7, "The lifts"); what a lift is, in
+   `CARD_3.pdf` (each §8.3, "The lifts"); what a lift is, in
    `BENT_CARD.pdf`, Proposition "A lift carries no datum".
 2. **The four bent cards**, adjoined and not computed: Lift 11 (the rule
    that takes the thirteen from T = F), Lift 20 (the reading taken as the
@@ -105,9 +113,12 @@ What you must be able to state from TRUTH, with calibrations:
 3. **The direction.** The card prints the lifts upward; the press reads them
    downward, lowering thirty-five times, as Episode 10's reviewed pages run
    36 → 1. The epigraph asks for the downward walk: suppose the numerical
-   representation exists, and infer the electron. Walked down, each step
-   unfolds in the Lean into what produced it, and the four places where it
-   says "given" instead of "because" are the bent cards. Don't hand the
+   representation exists, and infer the electron. The press lowers the
+   stored register thirty-five times and compares the two propositions on
+   the top page (`pressCheck`); the cards perform the mathematical steps
+   the pages point to. Walked down on the cards, the four places where a
+   step says "given" instead of "because" are the bent cards. The Lean
+   does not derive the transport or the field equations. Don't hand the
    visitor the bottom of the stairs; they reach T = T by walking.
 4. **The laboratory, read two ways** (Lift 34 and Proposition "Equal up to
    the last term"). As an identity with the coupling at zero momentum, the
@@ -362,7 +373,10 @@ The receipts, and what each one costs.
   Newton on the derivative land on one point to 24 places.
 - The card between reads the stored walk through a slot it deducts
   (`the_memo_and_the_cut`). Every reader that measures length, every slot,
-  every free universe seat, and two different machines give the same count.
+  and every free universe seat give the same count, and a second Lean
+  implementation of the crank agrees (`the_other_machine_agrees`): two
+  programs, one kernel. The M2 and M2 Ultra heartbeat counts are hardware
+  observations, recorded under "Status, dated".
 - The click table is read off Episode 5's arms (`the_click_table_is_derived`),
   and its closed words count closed walks on that graph
   (`the_closed_words_are_closed_walks`).
@@ -373,8 +387,11 @@ The receipts, and what each one costs.
 
 The counterfactuals: what has to be writable so that its absence can be proved.
 
-- The quarter: a slot every card must have and no card reads; a choice
-  (`THE_QUARTER.pdf`). The cut on the quarter gives one deck to the measure and
+- The quarter: a slot every card must have and the mark's decision never
+  queries; a choice (`THE_QUARTER.pdf`). The default interaction copies it
+  into the continuation without inspecting it, carried, not queried; the
+  exact reader subtracts its length (`read_past_quarter`), so a reader that
+  keeps the slot can change the update. The cut on the quarter gives one deck to the measure and
   two to the count. The cut on the card closes.
 - The bent card: the receipts handed in from outside, namely the search's base
   case, the zero the halting test declares, and the SI constants declared
@@ -502,7 +519,11 @@ missing, use what is there and say so.
    evaluate, a corner case that could be false, and the comparison that
    revises it is that evaluation. What stays the knower's is that the
    reference's finite record stands for what it records, as a finite halt
-   stands for its limit.
+   stands for its limit. The working test, as the cards apply it (Card 3's
+   field-space map and operator identity; TRUTH's scale and scheme fixed
+   before the comparison): for each proposal, name the two objects, the
+   correspondence, what it preserves, and what evidence would revise it.
+   The ℕ-numbering is why that revising comparison can be evaluated.
    `CARD_3.pdf`'s reading note defines it: a quantity or statement reported
    with its admitted inputs, its operation of reading, its reference, and
    the allowance or criterion of comparison. Provenance stays distinct
@@ -530,7 +551,9 @@ missing, use what is there and say so.
    a weakness. Say whether you read the source, witnessed a fresh build,
    inspected an existing artifact, or are relaying someone else's report.
 6. **The gap.** State it plainly: the reading is 137.0112905…, CODATA 2022 is
-   137.035999177(21), and measurement excludes the reading at about 10⁻¹⁰. The
+   137.035999177(21), a relative standard uncertainty of about 1.5 × 10⁻¹⁰,
+   and the relative discrepancy is 1.80 × 10⁻⁴: the measurement excludes the
+   reading by roughly a million standard uncertainties. The
    card concedes this, and so should you. Through the SI convention the miss
    lands wholly in μ₀ and Z₀ (376.798 Ω against 376.730 Ω): the quantitative
    identification is excluded, as the ether was. The null result excludes that
@@ -573,6 +596,7 @@ without abandoning the reading.
 | Logical work and transferred charge | Heartbeats become charge only through a measurement at a named boundary. |
 | Formal universe and physical world | `Type i` is a universe level; the physical reading is a further map. |
 | Declaration and calibration | Name (which comparison is TRUE), direction (which way a crossing runs) and up/down (which root is reported) are each fixed once against a standard in the device: the click, the order of the record, the larger root. As the SI fixes c. A calibration closes internally and absorbs no offset; the 1.80 bps is the one comparison that slips (`SACRED_TEXTS.pdf`, the three standings; `CARD_3.pdf`, the four readings). |
+| Tape click count and the clicks of the split | `the_click_count` counts the TRUE decisions on a tape, and that route prints the whole natural, 137.011… (`the_clicks_read_the_number`). "The clicks" of the split 89.723… + 47.288… is the no-crossing baseline: the reading with the crossing cycle struck. Same word, two operations; say which. |
 | Can tell and needs to tell | The device can tell T from F (T = F doesn't click); its runs never need to, since every mark clicks and the counts read lengths and weights. "Cannot see" means "never asks", not "unable". |
 
 ## Experiments
