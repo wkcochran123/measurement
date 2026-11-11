@@ -1349,6 +1349,19 @@ def holy_shit :=
 
 end readers_experience
 
+namespace Measurement
+open Lean Elab Term Meta
+--| THE EKG, SET.  The crank is defined here, so the meter is set here.  It reads what elaborating a term costs, and draws a
+--| blank in the same breath: the click of the truth, the least the meter can read.  It cannot read the ladder yet; the ladder
+--| is written in the episodes to come.  Episode 12 hands it the ladder, rung by rung, and keeps both numbers.
+def the_ekg_reads (t : TSyntax `term) : TermElabM (Nat × Nat) := do
+  let (_, blank) ← withHeartbeats do
+    let e ← elabTerm (← `(FACT.Truth.click)) none; let _ ← whnf e; pure ()
+  let (_, beat) ← withHeartbeats do
+    let e ← elabTerm t none; let _ ← whnf e; pure ()
+  pure (beat, blank)
+end Measurement
+
 #eval readers_experience.holy_shit
 #print axioms readers_experience.the_constant_can_be_inferred
 #print axioms readers_experience.the_constant_factor_of_scaling_bullshit

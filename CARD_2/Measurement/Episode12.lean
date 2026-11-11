@@ -1272,6 +1272,32 @@ def theTop : TYPESET.{0,0,0} (CarrierProcess FACT) the_representation.the_card_b
 --| thirty-six, handed down through every reviewer, arriving as the page of the top rung.
 def theTopTrace : ThePreprint.{0} := theTop.the_page
 
+--| THE LADDER, READ ON EPISODE 8'S METER.  Ask for each rung of the typeset ladder by search, one through thirty-six, each
+--| on a place to stand one universe lower, and read on the meter set in Episode 8 what each search costs, against the blank
+--| drawn beside it.  Kept raw and kept blank; the differences are taken in Int, where a decrease may be one.  This is the
+--| walk read as the ladder elaborates, rung over rung: a measurement on this machine, not a receipt.
+elab "read_the_ladder " raw:ident blanks:ident : command => do
+  let (hs, bs) ← liftTermElabM do
+    let mut hs : Array Nat := #[]
+    let mut bs : Array Nat := #[]
+    for k in [1:37] do
+      let mut ty ← `(Number)
+      for _ in [1:k] do
+        ty ← `(ULift $ty)
+      let stx ← `((inferInstance : TYPESET.{0,0,0} (CarrierProcess FACT) the_representation.the_card_between $(Lean.quote k) $ty))
+      let (h, b) ← the_ekg_reads stx
+      hs := hs.push h
+      bs := bs.push b
+    pure (hs, bs)
+  elabCommand (← `(def $raw : List Nat := $(Lean.quote hs.toList)))
+  elabCommand (← `(def $blanks : List Nat := $(Lean.quote bs.toList)))
+
+read_the_ladder theLadderRaw theLadderBlank
+def theLadderSizes : List Int := corrected theLadderRaw theLadderBlank
+def theLadderSteps : List Int := signedSteps theLadderSizes
+--#eval theLadderSizes
+--#eval theLadderSteps
+
 --| THE REVIEW, WITH THE REVIEWERS.  The gimmicked card above hands every page the manuscript and asks nobody.  Here the
 --| reviewers are asked.  Each of Episode 10's thirty-six pages is applied by hand on the first card, its checklist filled
 --| from Episode 9's ladder, rung k in slot k; the ledger is the Truth; the two routes of page 32 are the nowtrino's path and
@@ -1892,6 +1918,1163 @@ theorem the_sign_reverses_the_quarter_turn (a b : Bool) :
 #print axioms the_antisymmetric_part_is_the_quarter_turn
 #print axioms the_quarter_turn_squares_to_minus_one
 #print axioms the_sign_reverses_the_quarter_turn
+--| THE ACTION ON THE SQUARE.  How far is a square's holonomy from flat, without the square root of its determinant?  Read
+--| the discriminant: the trace squared less four times the determinant, the squared difference of the two growth rates.  A
+--| flat square, any multiple of the identity, reads nothing; a gauge change scales it by the determinant squared; one turned
+--| edge reads something.  Along any direction it stops at the second order, so its first variation is exact, and the holonomy
+--| is linear in each link, so varying one link is varying the action on the square.  A flat square is stationary for every
+--| direction: the uniform square solves the lattice field equation.  The quarter turn reads minus four and the clock reads
+--| three hundred sixty: rotation and boost, on opposite sides of nothing.
+def the_plaquette_action (H : Table) : Int := the_table_trace H * the_table_trace H - 4 * the_table_determinant H
+def the_first_variation_of_the_plaquette (H Y : Table) : Int :=
+  2 * the_table_trace H * the_table_trace Y - 4 * the_table_trace (the_table_product (the_adjugate H) Y)
+def the_varied_table (H Y : Table) (t : Int) : Table := fun a b => H a b + t * Y a b
+theorem the_plaquette_action_stops_at_second_order (H Y : Table) (t : Int) :
+    the_plaquette_action (the_varied_table H Y t)
+      = the_plaquette_action H + t * the_first_variation_of_the_plaquette H Y + t * t * the_plaquette_action Y := by
+  simp only [the_plaquette_action, the_first_variation_of_the_plaquette, the_varied_table, the_table_trace,
+    the_table_determinant, the_table_product, the_adjugate, Bool.not_true, Bool.not_false, ite_true, ite_false,
+    Bool.true_eq_false, Bool.false_eq_true, Int.mul_add, Int.add_mul, Int.mul_sub, Int.mul_neg, Int.neg_mul]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem a_scalar_square_is_stationary (c : Int) (Y : Table) :
+    the_first_variation_of_the_plaquette (the_scaled_identity c) Y = 0 := by
+  simp only [the_first_variation_of_the_plaquette, the_scaled_identity, the_table_trace, the_table_product, the_adjugate,
+    Bool.not_true, Bool.not_false, ite_true, ite_false, Bool.true_eq_false, Bool.false_eq_true, Int.zero_mul,
+    Int.add_zero, Int.zero_add, Int.neg_zero, Int.mul_add, Int.add_mul]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem a_scalar_square_has_no_action (c : Int) : the_plaquette_action (the_scaled_identity c) = 0 := by
+  simp only [the_plaquette_action, the_scaled_identity, the_table_trace, the_table_determinant, ite_true, ite_false,
+    Bool.true_eq_false, Bool.false_eq_true, Int.zero_mul, Int.sub_zero, Int.add_mul, Int.mul_add]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem the_plaquette_action_is_gauge_covariant (g H : Table) :
+    the_plaquette_action (the_table_product (the_table_product g H) (the_adjugate g))
+      = the_table_determinant g * the_table_determinant g * the_plaquette_action H := by
+  simp only [the_plaquette_action, the_table_trace, the_table_determinant, the_table_product, the_adjugate,
+    Bool.not_true, Bool.not_false, ite_true, ite_false, Bool.true_eq_false, Bool.false_eq_true,
+    Int.mul_add, Int.add_mul, Int.mul_sub, Int.sub_mul, Int.mul_neg, Int.neg_mul]
+  ac_nf; omega
+theorem the_holonomy_is_linear_in_its_bottom_link (B X R T L : Table) (t : Int) (a b : Bool) :
+    the_holonomy (the_varied_table B X t) R T L a b = the_varied_table (the_holonomy B R T L) (the_holonomy X R T L) t a b := by
+  cases a <;> cases b <;>
+  simp only [the_holonomy, the_varied_table, the_table_product, the_adjugate, Bool.not_true, Bool.not_false, ite_true, ite_false,
+    Bool.true_eq_false, Bool.false_eq_true, Int.mul_add, Int.add_mul, Int.mul_neg, Int.neg_mul] <;> ac_nf <;> omega
+theorem the_bottom_link_varies_the_action (B X R T L : Table) (t : Int) :
+    the_plaquette_action (the_holonomy (the_varied_table B X t) R T L)
+      = the_plaquette_action (the_holonomy B R T L)
+        + t * the_first_variation_of_the_plaquette (the_holonomy B R T L) (the_holonomy X R T L)
+        + t * t * the_plaquette_action (the_holonomy X R T L) := by
+  rw [show the_holonomy (the_varied_table B X t) R T L = the_varied_table (the_holonomy B R T L) (the_holonomy X R T L) t from
+    funext fun a => funext fun b => the_holonomy_is_linear_in_its_bottom_link B X R T L t a b]
+  exact the_plaquette_action_stops_at_second_order _ _ _
+theorem the_uniform_square_has_no_action :
+    the_plaquette_action (the_holonomy the_full_table the_full_table the_full_table the_full_table) = 0 := by
+  rw [show the_holonomy the_full_table the_full_table the_full_table the_full_table = the_scaled_identity (234 * 234) from
+    funext fun a => funext fun b => the_uniform_square_is_flat a b]
+  exact a_scalar_square_has_no_action _
+theorem the_turned_square_has_action :
+    the_plaquette_action (the_holonomy the_full_other_table the_full_table the_full_table the_full_table) ≠ 0 := by decide
+theorem the_uniform_square_is_a_lattice_solution (X : Table) :
+    the_first_variation_of_the_plaquette (the_holonomy the_full_table the_full_table the_full_table the_full_table)
+      (the_holonomy X the_full_table the_full_table the_full_table) = 0 := by
+  rw [show the_holonomy the_full_table the_full_table the_full_table the_full_table = the_scaled_identity (234 * 234) from
+    funext fun a => funext fun b => the_uniform_square_is_flat a b]
+  exact a_scalar_square_is_stationary _ _
+theorem the_rotation_and_the_boost_read_opposite_signs :
+    (the_plaquette_action the_quarter_turn, the_plaquette_action the_clock_table) = (-4, 360) := rfl
+#print axioms the_plaquette_action_stops_at_second_order
+#print axioms a_scalar_square_is_stationary
+#print axioms the_plaquette_action_is_gauge_covariant
+#print axioms the_holonomy_is_linear_in_its_bottom_link
+#print axioms the_turned_square_has_action
+#print axioms the_bottom_link_varies_the_action
+#print axioms the_uniform_square_is_a_lattice_solution
+#print axioms the_rotation_and_the_boost_read_opposite_signs
+--| THE SQUARES, TILED.  Lay four squares on a two-by-two torus: eight links, each the edge of two squares, read once by each.
+--| The holonomy is linear in every link, bottom, right, top and left, so varying one link varies each square that holds it
+--| along one direction, and a flat square moves only at the second order.  A lattice whose squares are all flat is stationary
+--| on every link: the lattice field equation holds.  The uniform lattice, every link the full table, is flat, has no action,
+--| and solves it.  Turn one link the other way and the lattice has action.
+theorem the_holonomy_is_linear_in_its_right_link (B X R T L : Table) (t : Int) (a b : Bool) :
+    the_holonomy B (the_varied_table R X t) T L a b = the_varied_table (the_holonomy B R T L) (the_holonomy B X T L) t a b := by
+  cases a <;> cases b <;>
+  simp only [the_holonomy, the_varied_table, the_table_product, the_adjugate, Bool.not_true, Bool.not_false, ite_true, ite_false,
+    Bool.true_eq_false, Bool.false_eq_true, Int.mul_add, Int.add_mul, Int.mul_neg, Int.neg_mul] <;> ac_nf <;> omega
+theorem the_holonomy_is_linear_in_its_top_link (B X R T L : Table) (t : Int) (a b : Bool) :
+    the_holonomy B R (the_varied_table T X t) L a b = the_varied_table (the_holonomy B R T L) (the_holonomy B R X L) t a b := by
+  cases a <;> cases b <;>
+  simp only [the_holonomy, the_varied_table, the_table_product, the_adjugate, Bool.not_true, Bool.not_false, ite_true, ite_false,
+    Bool.true_eq_false, Bool.false_eq_true, Int.mul_add, Int.add_mul, Int.mul_neg, Int.neg_mul, Int.neg_add] <;> ac_nf <;> omega
+theorem the_holonomy_is_linear_in_its_left_link (B X R T L : Table) (t : Int) (a b : Bool) :
+    the_holonomy B R T (the_varied_table L X t) a b = the_varied_table (the_holonomy B R T L) (the_holonomy B R T X) t a b := by
+  cases a <;> cases b <;>
+  simp only [the_holonomy, the_varied_table, the_table_product, the_adjugate, Bool.not_true, Bool.not_false, ite_true, ite_false,
+    Bool.true_eq_false, Bool.false_eq_true, Int.mul_add, Int.add_mul, Int.mul_neg, Int.neg_mul, Int.neg_add] <;> ac_nf <;> omega
+theorem the_unvaried_table (H : Table) (t : Int) (a b : Bool) : H a b = the_varied_table H (the_scaled_identity 0) t a b := by
+  cases a <;> cases b <;> simp [the_varied_table, the_scaled_identity]
+abbrev Lattice := Bool → Bool → Bool → Table
+def the_square (U : Lattice) (i j : Bool) : Table := the_holonomy (U false i j) (U true (!i) j) (U false i (!j)) (U true i j)
+def the_lattice_action (U : Lattice) : Int :=
+  the_plaquette_action (the_square U false false) + the_plaquette_action (the_square U false true)
+    + the_plaquette_action (the_square U true false) + the_plaquette_action (the_square U true true)
+def the_varied_lattice (U : Lattice) (d i j : Bool) (X : Table) (t : Int) : Lattice :=
+  fun d' i' j' => if d' = d ∧ i' = i ∧ j' = j then the_varied_table (U d i j) X t else U d' i' j'
+theorem the_variation_leaves_the_square (B X R T L : Table) (t : Int) :
+    (the_holonomy (the_varied_table B X t) R T L = the_varied_table (the_holonomy B R T L) (the_holonomy X R T L) t) ∧
+    (the_holonomy B (the_varied_table R X t) T L = the_varied_table (the_holonomy B R T L) (the_holonomy B X T L) t) ∧
+    (the_holonomy B R (the_varied_table T X t) L = the_varied_table (the_holonomy B R T L) (the_holonomy B R X L) t) ∧
+    (the_holonomy B R T (the_varied_table L X t) = the_varied_table (the_holonomy B R T L) (the_holonomy B R T X) t) :=
+  ⟨funext fun a => funext fun b => the_holonomy_is_linear_in_its_bottom_link B X R T L t a b,
+   funext fun a => funext fun b => the_holonomy_is_linear_in_its_right_link B X R T L t a b,
+   funext fun a => funext fun b => the_holonomy_is_linear_in_its_top_link B X R T L t a b,
+   funext fun a => funext fun b => the_holonomy_is_linear_in_its_left_link B X R T L t a b⟩
+theorem each_square_holds_a_link_once (U : Lattice) (d i j : Bool) (X : Table) (t : Int) (i' j' : Bool) :
+    ∃ Y, the_square (the_varied_lattice U d i j X t) i' j' = the_varied_table (the_square U i' j') Y t := by
+  cases d <;> cases i <;> cases j <;> cases i' <;> cases j' <;>
+    simp (config := { decide := true }) only [the_square, the_varied_lattice, if_true, if_false, Bool.not_false, Bool.not_true,
+      (the_variation_leaves_the_square _ _ _ _ _ _).1, (the_variation_leaves_the_square _ _ _ _ _ _).2.1,
+      (the_variation_leaves_the_square _ _ _ _ _ _).2.2.1, (the_variation_leaves_the_square _ _ _ _ _ _).2.2.2] <;>
+    first
+    | exact ⟨_, rfl⟩
+    | exact ⟨_, funext fun a => funext fun b => the_unvaried_table _ t a b⟩
+theorem a_flat_square_moves_at_second_order (H Y : Table) (c t : Int) (h : H = the_scaled_identity c) :
+    the_plaquette_action (the_varied_table H Y t) = the_plaquette_action H + t * t * the_plaquette_action Y := by
+  rw [the_plaquette_action_stops_at_second_order, h, a_scalar_square_is_stationary, Int.mul_zero, Int.add_zero]
+theorem a_flat_lattice_is_stationary (U : Lattice) (flat : ∀ i j, ∃ c, the_square U i j = the_scaled_identity c)
+    (d i j : Bool) (X : Table) (t : Int) :
+    ∃ q, the_lattice_action (the_varied_lattice U d i j X t) = the_lattice_action U + t * t * q := by
+  have each : ∀ i' j', ∃ q, the_plaquette_action (the_square (the_varied_lattice U d i j X t) i' j')
+      = the_plaquette_action (the_square U i' j') + t * t * q := by
+    intro i' j'
+    obtain ⟨Y, hY⟩ := each_square_holds_a_link_once U d i j X t i' j'
+    obtain ⟨c, hc⟩ := flat i' j'
+    exact ⟨_, hY ▸ a_flat_square_moves_at_second_order _ Y c t hc⟩
+  obtain ⟨q1, h1⟩ := each false false
+  obtain ⟨q2, h2⟩ := each false true
+  obtain ⟨q3, h3⟩ := each true false
+  obtain ⟨q4, h4⟩ := each true true
+  refine ⟨q1 + q2 + q3 + q4, ?_⟩
+  simp only [the_lattice_action, h1, h2, h3, h4, Int.mul_add]
+  omega
+def the_uniform_lattice : Lattice := fun _ _ _ => the_full_table
+theorem the_uniform_lattice_is_flat (i j : Bool) : ∃ c, the_square the_uniform_lattice i j = the_scaled_identity c :=
+  ⟨234 * 234, funext fun a => funext fun b => the_uniform_square_is_flat a b⟩
+theorem the_uniform_lattice_has_no_action : the_lattice_action the_uniform_lattice = 0 := by
+  simp only [the_lattice_action, the_square, the_uniform_lattice, the_uniform_square_has_no_action]; rfl
+theorem the_uniform_lattice_solves_the_lattice_equation (d i j : Bool) (X : Table) (t : Int) :
+    ∃ q, the_lattice_action (the_varied_lattice the_uniform_lattice d i j X t) = t * t * q := by
+  obtain ⟨q, h⟩ := a_flat_lattice_is_stationary _ the_uniform_lattice_is_flat d i j X t
+  exact ⟨q, by rw [h, the_uniform_lattice_has_no_action, Int.zero_add]⟩
+def the_turned_lattice : Lattice := fun d i j => if d = false ∧ i = false ∧ j = false then the_full_other_table else the_full_table
+theorem the_turned_lattice_has_action : the_lattice_action the_turned_lattice ≠ 0 := by decide
+#print axioms each_square_holds_a_link_once
+#print axioms a_flat_lattice_is_stationary
+#print axioms the_uniform_lattice_has_no_action
+#print axioms the_uniform_lattice_solves_the_lattice_equation
+#print axioms the_turned_lattice_has_action
+--| THE THREE TURNS.  The quarter turn is i, and the table has two more readings that need it.  The clock's symmetric part is
+--| the swap, scaled by the sum of the arms, as its antisymmetric part is the quarter turn scaled by the bent card.  Lay the
+--| tables in a box of four, an outer table over an inner one, and read three turns: the swap turned by i, the quarter turn
+--| outside, the sign turned by i.  Each squares to minus one; each two compose to the third, around the circle; their
+--| brackets are twice the third; and they are independent.  That is the compact algebra su(2), the quaternions' imaginary
+--| units, from the sign, the swap and the quarter turn.  The box is the pair's four by four box; whose spin it carries is
+--| not written here.
+def the_swap : Table := fun a b => if a = b then 0 else 1
+theorem the_symmetric_part_is_the_swap (a b : Bool) :
+    the_clock_table a b + the_other_clock a b = ((the_arm_weight true false + the_arm_weight false true : Nat) : Int) * the_swap a b := by
+  cases a <;> cases b <;> rfl
+abbrev Box4 := Bool → Bool → Bool → Bool → Int
+def the_box (A B : Table) : Box4 := fun a b c d => A a b * B c d
+def the_box_product (X Y : Box4) : Box4 := fun a b c d =>
+  X a true c true * Y true b true d + X a true c false * Y true b false d
+    + X a false c true * Y false b true d + X a false c false * Y false b false d
+def the_box_bracket (X Y : Box4) : Box4 := fun a b c d => the_box_product X Y a b c d - the_box_product Y X a b c d
+def the_box_identity : Box4 := the_box (the_scaled_identity 1) (the_scaled_identity 1)
+def the_turn_of_the_swap : Box4 := the_box the_swap the_quarter_turn
+def the_turn_of_the_quarter : Box4 := the_box the_quarter_turn (the_scaled_identity 1)
+def the_turn_of_the_sign : Box4 := the_box the_sign_table the_quarter_turn
+theorem the_three_turns_square_to_minus_one (a b c d : Bool) :
+    (the_box_product the_turn_of_the_swap the_turn_of_the_swap a b c d,
+     the_box_product the_turn_of_the_quarter the_turn_of_the_quarter a b c d,
+     the_box_product the_turn_of_the_sign the_turn_of_the_sign a b c d)
+      = (- the_box_identity a b c d, - the_box_identity a b c d, - the_box_identity a b c d) := by
+  cases a <;> cases b <;> cases c <;> cases d <;> rfl
+theorem the_turns_compose_around_the_circle (a b c d : Bool) :
+    (the_box_product the_turn_of_the_swap the_turn_of_the_quarter a b c d,
+     the_box_product the_turn_of_the_quarter the_turn_of_the_sign a b c d,
+     the_box_product the_turn_of_the_sign the_turn_of_the_swap a b c d)
+      = (the_turn_of_the_sign a b c d, the_turn_of_the_swap a b c d, the_turn_of_the_quarter a b c d) := by
+  cases a <;> cases b <;> cases c <;> cases d <;> rfl
+theorem the_turns_bracket_around_the_circle (a b c d : Bool) :
+    (the_box_bracket the_turn_of_the_swap the_turn_of_the_quarter a b c d,
+     the_box_bracket the_turn_of_the_quarter the_turn_of_the_sign a b c d,
+     the_box_bracket the_turn_of_the_sign the_turn_of_the_swap a b c d)
+      = (2 * the_turn_of_the_sign a b c d, 2 * the_turn_of_the_swap a b c d, 2 * the_turn_of_the_quarter a b c d) := by
+  cases a <;> cases b <;> cases c <;> cases d <;> rfl
+theorem the_three_turns_are_independent (x y z : Int)
+    (h : ∀ a b c d, x * the_turn_of_the_swap a b c d + y * the_turn_of_the_quarter a b c d + z * the_turn_of_the_sign a b c d = 0) :
+    x = 0 ∧ y = 0 ∧ z = 0 := by
+  have h1 := h true false true false; have h2 := h true false true true; have h3 := h true true true false
+  have w1 : the_turn_of_the_swap true false true false = -1 := rfl
+  have w2 : the_turn_of_the_quarter true false true false = 0 := rfl
+  have w3 : the_turn_of_the_sign true false true false = 0 := rfl
+  have q1 : the_turn_of_the_swap true false true true = 0 := rfl
+  have q2 : the_turn_of_the_quarter true false true true = -1 := rfl
+  have q3 : the_turn_of_the_sign true false true true = 0 := rfl
+  have s1 : the_turn_of_the_swap true true true false = 0 := rfl
+  have s2 : the_turn_of_the_quarter true true true false = 0 := rfl
+  have s3 : the_turn_of_the_sign true true true false = -1 := rfl
+  simp only [w1, w2, w3, q1, q2, q3, s1, s2, s3] at h1 h2 h3
+  refine ⟨?_, ?_, ?_⟩ <;> omega
+#print axioms the_symmetric_part_is_the_swap
+#print axioms the_three_turns_square_to_minus_one
+#print axioms the_turns_compose_around_the_circle
+#print axioms the_turns_bracket_around_the_circle
+#print axioms the_three_turns_are_independent
+--| LANCZOS, NEWTON, BISECTION.  Square the table and it is thirty-six of itself less two hundred thirty-four: its trace and
+--| its determinant, nothing more.  So two more steps of any walk are thirty-six of one step less two hundred thirty-four of
+--| none, and the closed walks keep a three-term recurrence.  Rescale the coins so the crossing arms match and the table is the
+--| tridiagonal Lanczos leaves, eighteen on the diagonal and root ninety off it: the clicks and the clock.  Its recurrence,
+--| the step less eighteen squared less the round trip, ends at the table's own polynomial, and at thirteen y that is thirteen
+--| times the residual.  Newton on that quadratic is the conjugate gradient; the signs of the recurrence are the bisection.
+theorem the_table_satisfies_its_own_polynomial (a b : Bool) :
+    the_table_product the_full_table the_full_table a b
+      = the_table_trace the_full_table * the_full_table a b - the_table_determinant the_full_table * the_scaled_identity 1 a b := by
+  cases a <;> cases b <;> rfl
+def the_table_power : Nat → Table
+  | 0 => the_scaled_identity 1
+  | n + 1 => the_table_product (the_table_power n) the_full_table
+theorem two_more_steps (A : Table) (a b : Bool) :
+    the_table_product (the_table_product A the_full_table) the_full_table a b
+      = 36 * the_table_product A the_full_table a b - 234 * A a b := by
+  have h1 : the_full_table true true = 18 := rfl
+  have h2 : the_full_table true false = 5 := rfl
+  have h3 : the_full_table false true = 18 := rfl
+  have h4 : the_full_table false false = 18 := rfl
+  cases a <;> cases b <;> simp only [the_table_product, h1, h2, h3, h4] <;> omega
+theorem the_walks_keep_a_three_term_recurrence (n : Nat) :
+    the_table_trace (the_table_power (n + 2))
+      = 36 * the_table_trace (the_table_power (n + 1)) - 234 * the_table_trace (the_table_power n) := by
+  simp only [the_table_trace, the_table_power, two_more_steps]
+  omega
+theorem the_lanczos_recurrence_ends_at_the_table (z : Int) :
+    (z - 18) * (z - 18) - (the_arm_weight true false : Int) * (the_arm_weight false true : Int)
+      = z * z - the_table_trace the_full_table * z + the_table_determinant the_full_table := by
+  have t : the_table_trace the_full_table = 36 := rfl
+  have d : the_table_determinant the_full_table = 234 := rfl
+  have r : (the_arm_weight true false : Int) * (the_arm_weight false true : Int) = 90 := rfl
+  rw [t, d, r]; simp only [Int.sub_mul, Int.mul_sub]; omega
+theorem the_lanczos_polynomial_is_the_residual (y : Int) :
+    (13 * y) * (13 * y) - the_table_trace the_full_table * (13 * y) + the_table_determinant the_full_table
+      = 13 * (13 * (y * y) - 36 * y + 18) := by
+  have t : the_table_trace the_full_table = 36 := rfl
+  have d : the_table_determinant the_full_table = 234 := rfl
+  rw [t, d]; simp only [Int.mul_assoc, Int.mul_left_comm y 13]; omega
+#print axioms the_table_satisfies_its_own_polynomial
+#print axioms the_walks_keep_a_three_term_recurrence
+#print axioms the_lanczos_recurrence_ends_at_the_table
+#print axioms the_lanczos_polynomial_is_the_residual
+--| IN LETTERS.  No list is measured here.  Any table squares to its trace times itself less its determinant.  Any table with
+--| a on the diagonal and b, f on the crossings is the quarter turn times f less b, and the swap times b plus f, about a.  Its
+--| two roots are a plus and a minus the root of the round trip b f, both solving its polynomial, and its trace and
+--| determinant are two a and a squared less b f.  The polynomial is carried and never read: only its roots are seen.
+theorem every_table_satisfies_its_own_polynomial (A : Table) (a b : Bool) :
+    the_table_product A A a b = the_table_trace A * A a b - the_table_determinant A * the_scaled_identity 1 a b := by
+  cases a <;> cases b <;>
+  simp only [the_table_product, the_table_trace, the_table_determinant, the_scaled_identity, ite_true, ite_false,
+    Bool.true_eq_false, Bool.false_eq_true, Int.mul_one, Int.mul_zero, Int.sub_zero, Int.add_mul] <;> ac_nf <;> omega
+def the_table_of (a b f : Int) : Table := fun x y => if x = y then a else if x then b else f
+theorem the_crossings_are_a_quarter_turn_and_a_swap (a b f : Int) (x y : Bool) :
+    the_table_of a b f x y - the_table_of a b f y x = (f - b) * the_quarter_turn x y
+      ∧ the_table_of a b f x y + the_table_of a b f y x - 2 * the_scaled_identity a x y = (b + f) * the_swap x y := by
+  cases x <;> cases y <;>
+  simp only [the_table_of, the_quarter_turn, the_swap, the_scaled_identity, ite_true, ite_false, Bool.true_eq_false,
+    Bool.false_eq_true] <;> constructor <;> omega
+def the_root_ring_product (r : Int) (p q : Int × Int) : Int × Int := (p.1 * q.1 + r * p.2 * q.2, p.1 * q.2 + p.2 * q.1)
+theorem both_roots_solve_any_table (a b f : Int) :
+    let r := b * f
+    let up := ((a : Int), (1 : Int)); let dn := ((a : Int), (-1 : Int))
+    (the_root_ring_product r up up).1 - 2 * a * up.1 + (a * a - r) = 0 ∧ (the_root_ring_product r up up).2 - 2 * a * up.2 = 0
+      ∧ (the_root_ring_product r dn dn).1 - 2 * a * dn.1 + (a * a - r) = 0 ∧ (the_root_ring_product r dn dn).2 - 2 * a * dn.2 = 0
+      ∧ the_table_trace (the_table_of a b f) = 2 * a ∧ the_table_determinant (the_table_of a b f) = a * a - r := by
+  simp only [the_root_ring_product, the_table_trace, the_table_determinant, the_table_of, ite_true, ite_false,
+    Bool.true_eq_false, Bool.false_eq_true]
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩ <;> (try simp only [Int.mul_one, Int.mul_neg, Int.neg_mul, Int.neg_neg, Int.one_mul]) <;>
+    (try ac_nf) <;> (try simp only [← Int.mul_assoc]) <;> omega
+#print axioms every_table_satisfies_its_own_polynomial
+#print axioms the_crossings_are_a_quarter_turn_and_a_swap
+#print axioms both_roots_solve_any_table
+--| THE REFINEMENT OPERATOR, VARIED.  Read the table, matched, as the operator that takes a walk one level up, and ask of a
+--| direction p, q how much the operator stretches it: a times the square of its length, plus root r times twice p q.  Twice
+--| p q never leaves the band from minus to plus the square of the length, and it touches each edge on a diagonal.  So the
+--| stretch runs from a less root r to a plus root r, top and bottom reached on the two diagonals: the two roots, as the
+--| stationary values of the operator's own quotient, and no polynomial is written.
+theorem a_square_is_never_negative (x : Int) : 0 ≤ x * x := by
+  rcases Int.le_total 0 x with h | h
+  · exact Int.mul_nonneg h h
+  · have := Int.mul_nonneg (Int.neg_nonneg_of_nonpos h) (Int.neg_nonneg_of_nonpos h)
+    rwa [Int.neg_mul_neg] at this
+theorem the_rayleigh_quotient_lies_between_the_roots (p q : Int) :
+    - (p * p + q * q) ≤ p * q + p * q ∧ p * q + p * q ≤ p * p + q * q := by
+  have h1 := a_square_is_never_negative (p - q)
+  have h2 := a_square_is_never_negative (p + q)
+  simp only [Int.sub_mul, Int.mul_sub, Int.add_mul, Int.mul_add] at h1 h2
+  constructor <;> (ac_nf at h1 h2 ⊢; omega)
+theorem the_roots_are_reached_on_the_diagonals (p : Int) :
+    p * p + p * p = p * p + p * p ∧ p * (-p) + p * (-p) = - (p * p + (-p) * (-p)) := by
+  refine ⟨rfl, ?_⟩
+  rw [Int.mul_neg, Int.neg_mul_neg]; omega
+#print axioms the_rayleigh_quotient_lies_between_the_roots
+#print axioms the_roots_are_reached_on_the_diagonals
+--| THE TURNS ON THE LINKS.  Write a link as four whole numbers, a whole part and one for each turn, and its box is the sum:
+--| the box reads the product of two links as the product of their boxes, and the conjugate as the transpose, so every link
+--| is a rotation scaled by its length.  The action on a square is the sum of the squares of its holonomy's three turns:
+--| never negative, nothing on a whole turn, and exact at the second order.  The holonomy is linear in every link.  Tile the
+--| torus again and every flat lattice of turns is stationary on every link.  Every link the turn of the swap: the square goes
+--| once around and comes back whole, and solves the equation.  Turn one link to the quarter turn and the lattice reads two.
+abbrev Turns := Int × Int × Int × Int
+def the_box_of (q : Turns) : Box4 := fun a b c d =>
+  q.1 * the_box_identity a b c d + q.2.1 * the_turn_of_the_swap a b c d
+    + q.2.2.1 * the_turn_of_the_quarter a b c d + q.2.2.2 * the_turn_of_the_sign a b c d
+def the_turns_product (p q : Turns) : Turns :=
+  (p.1 * q.1 - p.2.1 * q.2.1 - p.2.2.1 * q.2.2.1 - p.2.2.2 * q.2.2.2,
+   p.1 * q.2.1 + p.2.1 * q.1 + p.2.2.1 * q.2.2.2 - p.2.2.2 * q.2.2.1,
+   p.1 * q.2.2.1 + p.2.2.1 * q.1 + p.2.2.2 * q.2.1 - p.2.1 * q.2.2.2,
+   p.1 * q.2.2.2 + p.2.2.2 * q.1 + p.2.1 * q.2.2.1 - p.2.2.1 * q.2.1)
+def the_turns_conjugate (q : Turns) : Turns := (q.1, -q.2.1, -q.2.2.1, -q.2.2.2)
+theorem the_box_reads_the_product (p q : Turns) (a b c d : Bool) :
+    the_box_of (the_turns_product p q) a b c d = the_box_product (the_box_of p) (the_box_of q) a b c d := by
+  cases a <;> cases b <;> cases c <;> cases d <;>
+  simp only [the_box_of, the_turns_product, the_box_product, the_box_identity, the_turn_of_the_swap, the_turn_of_the_quarter,
+    the_turn_of_the_sign, the_box, the_swap, the_quarter_turn, the_sign_table, the_scaled_identity, the_coin_sign,
+    ite_true, ite_false, Bool.true_eq_false, Bool.false_eq_true, Int.mul_zero, Int.zero_mul, Int.mul_one,
+    Int.add_zero, Int.zero_add, Int.mul_neg, Int.neg_mul, Int.neg_neg, Int.mul_add, Int.add_mul] <;>
+  ac_nf <;> omega
+theorem the_conjugate_is_the_transpose (q : Turns) (a b c d : Bool) :
+    the_box_of (the_turns_conjugate q) a b c d = the_box_of q b a d c := by
+  cases a <;> cases b <;> cases c <;> cases d <;>
+  simp only [the_box_of, the_turns_conjugate, the_box_identity, the_turn_of_the_swap, the_turn_of_the_quarter,
+    the_turn_of_the_sign, the_box, the_swap, the_quarter_turn, the_sign_table, the_scaled_identity, the_coin_sign,
+    ite_true, ite_false, Bool.true_eq_false, Bool.false_eq_true] <;> omega
+def the_varied_turns (q y : Turns) (t : Int) : Turns := (q.1 + t * y.1, q.2.1 + t * y.2.1, q.2.2.1 + t * y.2.2.1, q.2.2.2 + t * y.2.2.2)
+def the_turns_action (q : Turns) : Int := q.2.1 * q.2.1 + q.2.2.1 * q.2.2.1 + q.2.2.2 * q.2.2.2
+def the_turns_dot (q y : Turns) : Int := q.2.1 * y.2.1 + q.2.2.1 * y.2.2.1 + q.2.2.2 * y.2.2.2
+def the_first_variation_of_the_turns (q y : Turns) : Int := the_turns_dot q y + the_turns_dot y q
+def the_whole_turn (c : Int) : Turns := (c, 0, 0, 0)
+theorem the_turns_action_stops_at_second_order (q y : Turns) (t : Int) :
+    the_turns_action (the_varied_turns q y t)
+      = the_turns_action q + t * the_first_variation_of_the_turns q y + t * t * the_turns_action y := by
+  simp only [the_turns_action, the_varied_turns, the_first_variation_of_the_turns, the_turns_dot, Int.mul_add, Int.add_mul]
+  ac_nf
+theorem the_turns_action_vanishes_on_a_whole_turn (c : Int) : the_turns_action (the_whole_turn c) = 0 := rfl
+theorem a_whole_turn_is_stationary (c : Int) (y : Turns) : the_first_variation_of_the_turns (the_whole_turn c) y = 0 := by
+  simp only [the_first_variation_of_the_turns, the_turns_dot, the_whole_turn, Int.zero_mul, Int.add_zero, Int.mul_zero]
+theorem the_turns_action_is_never_negative (q : Turns) : 0 ≤ the_turns_action q := by
+  simp only [the_turns_action]
+  have sq : ∀ x : Int, 0 ≤ x * x := fun x => by
+    rcases Int.le_total 0 x with h | h
+    · exact Int.mul_nonneg h h
+    · have := Int.mul_nonneg (Int.neg_nonneg_of_nonpos h) (Int.neg_nonneg_of_nonpos h)
+      rwa [Int.neg_mul_neg] at this
+  have h1 := sq q.2.1; have h2 := sq q.2.2.1; have h3 := sq q.2.2.2
+  omega
+theorem the_product_is_linear_on_the_left (p y q : Turns) (t : Int) :
+    the_turns_product (the_varied_turns p y t) q = the_varied_turns (the_turns_product p q) (the_turns_product y q) t := by
+  simp only [the_turns_product, the_varied_turns, Prod.mk.injEq, Int.mul_add, Int.add_mul, Int.mul_sub]
+  refine ⟨?_, ?_, ?_, ?_⟩ <;> ac_nf <;> omega
+theorem the_product_is_linear_on_the_right (p q y : Turns) (t : Int) :
+    the_turns_product p (the_varied_turns q y t) = the_varied_turns (the_turns_product p q) (the_turns_product p y) t := by
+  simp only [the_turns_product, the_varied_turns, Prod.mk.injEq, Int.mul_add, Int.mul_sub]
+  refine ⟨?_, ?_, ?_, ?_⟩ <;> ac_nf <;> omega
+theorem the_conjugate_is_linear (q y : Turns) (t : Int) :
+    the_turns_conjugate (the_varied_turns q y t) = the_varied_turns (the_turns_conjugate q) (the_turns_conjugate y) t := by
+  simp only [the_turns_conjugate, the_varied_turns, Int.neg_add, Int.mul_neg]
+def the_turns_holonomy (bottom right top left : Turns) : Turns :=
+  the_turns_product (the_turns_product (the_turns_product bottom right) (the_turns_conjugate top)) (the_turns_conjugate left)
+theorem the_turns_holonomy_is_linear_in_each_link (B R T L X : Turns) (t : Int) :
+    the_turns_holonomy (the_varied_turns B X t) R T L = the_varied_turns (the_turns_holonomy B R T L) (the_turns_holonomy X R T L) t ∧
+    the_turns_holonomy B (the_varied_turns R X t) T L = the_varied_turns (the_turns_holonomy B R T L) (the_turns_holonomy B X T L) t ∧
+    the_turns_holonomy B R (the_varied_turns T X t) L = the_varied_turns (the_turns_holonomy B R T L) (the_turns_holonomy B R X L) t ∧
+    the_turns_holonomy B R T (the_varied_turns L X t) = the_varied_turns (the_turns_holonomy B R T L) (the_turns_holonomy B R T X) t := by
+  refine ⟨?_, ?_, ?_, ?_⟩ <;>
+  simp only [the_turns_holonomy, the_conjugate_is_linear, the_product_is_linear_on_the_left, the_product_is_linear_on_the_right]
+theorem the_unvaried_turns (q : Turns) (t : Int) : q = the_varied_turns q (the_whole_turn 0) t := by
+  simp only [the_varied_turns, the_whole_turn, Int.mul_zero, Int.add_zero]
+abbrev TurnsLattice := Bool → Bool → Bool → Turns
+def the_turns_square (U : TurnsLattice) (i j : Bool) : Turns :=
+  the_turns_holonomy (U false i j) (U true (!i) j) (U false i (!j)) (U true i j)
+def the_turns_lattice_action (U : TurnsLattice) : Int :=
+  the_turns_action (the_turns_square U false false) + the_turns_action (the_turns_square U false true)
+    + the_turns_action (the_turns_square U true false) + the_turns_action (the_turns_square U true true)
+def the_varied_turns_lattice (U : TurnsLattice) (d i j : Bool) (X : Turns) (t : Int) : TurnsLattice :=
+  fun d' i' j' => if d' = d ∧ i' = i ∧ j' = j then the_varied_turns (U d i j) X t else U d' i' j'
+theorem each_turns_square_holds_a_link_once (U : TurnsLattice) (d i j : Bool) (X : Turns) (t : Int) (i' j' : Bool) :
+    ∃ Y, the_turns_square (the_varied_turns_lattice U d i j X t) i' j' = the_varied_turns (the_turns_square U i' j') Y t := by
+  cases d <;> cases i <;> cases j <;> cases i' <;> cases j' <;>
+    simp (config := { decide := true }) only [the_turns_square, the_varied_turns_lattice, if_true, if_false, Bool.not_false, Bool.not_true,
+      (the_turns_holonomy_is_linear_in_each_link _ _ _ _ _ _).1, (the_turns_holonomy_is_linear_in_each_link _ _ _ _ _ _).2.1,
+      (the_turns_holonomy_is_linear_in_each_link _ _ _ _ _ _).2.2.1, (the_turns_holonomy_is_linear_in_each_link _ _ _ _ _ _).2.2.2] <;>
+    first
+    | with_reducible exact ⟨_, rfl⟩
+    | with_reducible exact ⟨_, the_unvaried_turns _ t⟩
+theorem a_flat_turns_lattice_is_stationary (U : TurnsLattice) (flat : ∀ i j, ∃ c, the_turns_square U i j = the_whole_turn c)
+    (d i j : Bool) (X : Turns) (t : Int) :
+    ∃ q, the_turns_lattice_action (the_varied_turns_lattice U d i j X t) = the_turns_lattice_action U + t * t * q := by
+  have each : ∀ i' j', ∃ q, the_turns_action (the_turns_square (the_varied_turns_lattice U d i j X t) i' j')
+      = the_turns_action (the_turns_square U i' j') + t * t * q := by
+    intro i' j'
+    obtain ⟨Y, hY⟩ := each_turns_square_holds_a_link_once U d i j X t i' j'
+    obtain ⟨c, hc⟩ := flat i' j'
+    refine ⟨the_turns_action Y, ?_⟩
+    rw [hY, the_turns_action_stops_at_second_order, hc, a_whole_turn_is_stationary, Int.mul_zero, Int.add_zero]
+  obtain ⟨q1, h1⟩ := each false false
+  obtain ⟨q2, h2⟩ := each false true
+  obtain ⟨q3, h3⟩ := each true false
+  obtain ⟨q4, h4⟩ := each true true
+  refine ⟨q1 + q2 + q3 + q4, ?_⟩
+  simp only [the_turns_lattice_action, h1, h2, h3, h4, Int.mul_add]
+  omega
+def the_swap_turn : Turns := (0, 1, 0, 0)
+def the_quarter_turn_turn : Turns := (0, 0, 1, 0)
+def the_swap_lattice : TurnsLattice := fun _ _ _ => the_swap_turn
+theorem the_swap_lattice_is_flat (i j : Bool) : ∃ c, the_turns_square the_swap_lattice i j = the_whole_turn c := ⟨1, rfl⟩
+theorem the_swap_lattice_has_no_action : the_turns_lattice_action the_swap_lattice = 0 := by decide
+theorem the_swap_lattice_solves_the_lattice_equation (d i j : Bool) (X : Turns) (t : Int) :
+    ∃ q, the_turns_lattice_action (the_varied_turns_lattice the_swap_lattice d i j X t) = t * t * q := by
+  obtain ⟨q, h⟩ := a_flat_turns_lattice_is_stationary _ the_swap_lattice_is_flat d i j X t
+  exact ⟨q, by rw [h, the_swap_lattice_has_no_action, Int.zero_add]⟩
+def the_turned_turns_lattice : TurnsLattice :=
+  fun d i j => if d = false ∧ i = false ∧ j = false then the_quarter_turn_turn else the_swap_turn
+theorem the_turned_turns_lattice_has_action : the_turns_lattice_action the_turned_turns_lattice = 2 := by decide
+#print axioms the_box_reads_the_product
+#print axioms the_conjugate_is_the_transpose
+#print axioms the_turns_action_stops_at_second_order
+#print axioms the_turns_action_is_never_negative
+#print axioms the_turns_holonomy_is_linear_in_each_link
+#print axioms each_turns_square_holds_a_link_once
+#print axioms a_flat_turns_lattice_is_stationary
+#print axioms the_swap_lattice_solves_the_lattice_equation
+#print axioms the_turned_turns_lattice_has_action
+--| THE GAUGE ON THE LINKS.  The length of a link is the sum of its four squares, and the length of a product is the product of the lengths:
+--| Euler's four squares.  Turn a holonomy by any link and its whole part is kept, scaled by the length; so its action is
+--| scaled by the length twice, and a link of length one leaves it alone.  Put a turn of length one at every site of the
+--| torus and carry each link from its start to its end: around every square the turns cancel at three corners and close on
+--| the fourth, and the lattice reads the same.  The action is gauge invariant.
+def the_turns_norm (q : Turns) : Int := q.1 * q.1 + q.2.1 * q.2.1 + q.2.2.1 * q.2.2.1 + q.2.2.2 * q.2.2.2
+theorem the_action_is_the_norm_less_the_whole_part (q : Turns) : the_turns_action q = the_turns_norm q - q.1 * q.1 := by
+  simp only [the_turns_action, the_turns_norm]; omega
+theorem the_norm_is_multiplicative (p q : Turns) :
+    the_turns_norm (the_turns_product p q) = the_turns_norm p * the_turns_norm q := by
+  simp only [the_turns_norm, the_turns_product, Int.mul_add, Int.add_mul, Int.mul_sub, Int.sub_mul]
+  ac_nf; omega
+theorem the_conjugate_keeps_the_norm (q : Turns) : the_turns_norm (the_turns_conjugate q) = the_turns_norm q := by
+  simp only [the_turns_norm, the_turns_conjugate, Int.neg_mul_neg]
+theorem the_whole_part_is_kept (g q : Turns) :
+    (the_turns_product (the_turns_product g q) (the_turns_conjugate g)).1 = the_turns_norm g * q.1 := by
+  simp only [the_turns_norm, the_turns_product, the_turns_conjugate, Int.add_mul, Int.sub_mul, Int.mul_neg]
+  ac_nf; omega
+theorem the_turns_action_is_gauge_covariant (g q : Turns) :
+    the_turns_action (the_turns_product (the_turns_product g q) (the_turns_conjugate g))
+      = the_turns_norm g * the_turns_norm g * the_turns_action q := by
+  rw [the_action_is_the_norm_less_the_whole_part, the_action_is_the_norm_less_the_whole_part, the_whole_part_is_kept,
+    the_norm_is_multiplicative, the_norm_is_multiplicative, the_conjugate_keeps_the_norm]
+  simp only [Int.mul_sub]
+  ac_nf
+theorem a_unit_turn_leaves_the_action (g q : Turns) (h : the_turns_norm g = 1) :
+    the_turns_action (the_turns_product (the_turns_product g q) (the_turns_conjugate g)) = the_turns_action q := by
+  rw [the_turns_action_is_gauge_covariant, h, Int.one_mul, Int.one_mul]
+theorem the_product_is_associative (p q r : Turns) :
+    the_turns_product (the_turns_product p q) r = the_turns_product p (the_turns_product q r) := by
+  simp only [the_turns_product, Prod.mk.injEq, Int.mul_add, Int.add_mul, Int.mul_sub, Int.sub_mul]
+  refine ⟨?_, ?_, ?_, ?_⟩ <;> ac_nf <;> omega
+theorem the_conjugate_reverses_the_product (p q : Turns) :
+    the_turns_conjugate (the_turns_product p q) = the_turns_product (the_turns_conjugate q) (the_turns_conjugate p) := by
+  simp only [the_turns_conjugate, the_turns_product, Prod.mk.injEq, Int.mul_neg, Int.neg_mul, Int.neg_neg]
+  refine ⟨?_, ?_, ?_, ?_⟩ <;> ac_nf <;> omega
+theorem the_conjugate_returns (q : Turns) : the_turns_conjugate (the_turns_conjugate q) = q := by
+  simp only [the_turns_conjugate, Int.neg_neg]
+theorem a_unit_turn_cancels (g X : Turns) (h : the_turns_norm g = 1) :
+    the_turns_product (the_turns_conjugate g) (the_turns_product g X) = X := by
+  rw [← the_product_is_associative]
+  have hg : the_turns_product (the_turns_conjugate g) g = the_whole_turn 1 := by
+    rw [← h]; simp only [the_turns_product, the_turns_conjugate, the_whole_turn, the_turns_norm, Prod.mk.injEq, Int.neg_mul]
+    refine ⟨?_, ?_, ?_, ?_⟩ <;> ac_nf <;> omega
+  rw [hg]; simp only [the_turns_product, the_whole_turn, Int.one_mul, Int.zero_mul, Int.sub_zero, Int.add_zero]
+theorem the_gauged_holonomy (g0 g1 g2 g3 B R T L : Turns)
+    (h1 : the_turns_norm g1 = 1) (h2 : the_turns_norm g2 = 1) (h3 : the_turns_norm g3 = 1) :
+    the_turns_holonomy
+        (the_turns_product (the_turns_product g0 B) (the_turns_conjugate g1))
+        (the_turns_product (the_turns_product g1 R) (the_turns_conjugate g2))
+        (the_turns_product (the_turns_product g3 T) (the_turns_conjugate g2))
+        (the_turns_product (the_turns_product g0 L) (the_turns_conjugate g3))
+      = the_turns_product (the_turns_product g0 (the_turns_holonomy B R T L)) (the_turns_conjugate g0) := by
+  simp only [the_turns_holonomy, the_conjugate_reverses_the_product, the_conjugate_returns, the_product_is_associative,
+    a_unit_turn_cancels _ _ h1, a_unit_turn_cancels _ _ h2, a_unit_turn_cancels _ _ h3]
+def the_end_of_the_link (d i j : Bool) : Bool × Bool := if d then (i, !j) else (!i, j)
+def the_gauged_lattice (U : TurnsLattice) (g : Bool → Bool → Turns) : TurnsLattice := fun d i j =>
+  the_turns_product (the_turns_product (g i j) (U d i j))
+    (the_turns_conjugate (g (the_end_of_the_link d i j).1 (the_end_of_the_link d i j).2))
+theorem the_gauged_square (U : TurnsLattice) (g : Bool → Bool → Turns) (unit : ∀ i j, the_turns_norm (g i j) = 1) (i j : Bool) :
+    the_turns_square (the_gauged_lattice U g) i j
+      = the_turns_product (the_turns_product (g i j) (the_turns_square U i j)) (the_turns_conjugate (g i j)) := by
+  simp only [the_turns_square, the_gauged_lattice, the_end_of_the_link, if_true, Bool.not_not]
+  exact the_gauged_holonomy _ _ _ _ _ _ _ _ (unit _ _) (unit _ _) (unit _ _)
+theorem the_lattice_action_is_gauge_invariant (U : TurnsLattice) (g : Bool → Bool → Turns)
+    (unit : ∀ i j, the_turns_norm (g i j) = 1) :
+    the_turns_lattice_action (the_gauged_lattice U g) = the_turns_lattice_action U := by
+  simp only [the_turns_lattice_action, the_gauged_square U g unit, a_unit_turn_leaves_the_action _ _ (unit _ _)]
+#print axioms the_norm_is_multiplicative
+#print axioms the_whole_part_is_kept
+#print axioms the_turns_action_is_gauge_covariant
+#print axioms a_unit_turn_leaves_the_action
+#print axioms the_product_is_associative
+#print axioms the_gauged_holonomy
+#print axioms the_lattice_action_is_gauge_invariant
+--| THE GAMMAS.  Four tables on the box, each two of them anticommuting: the quarter turn outside, which squares to minus one,
+--| and the swap, the sign over the swap, the sign over the sign, which square to one.  That is the Clifford algebra of a
+--| metric with one minus and three plus, real, on the pair's four by four box.  Their product, the fifth, squares to minus
+--| one and anticommutes with all four.  The products of two space gammas square to minus one and compose around the circle,
+--| the other way: a second set of turns, the spin, and every one of them commutes with the three turns of the links.  The
+--| time gamma is the quarter turn of the links, the same table.  Whose spin, and which way time runs, is not written here.
+def the_box_anticommutator (X Y : Box4) : Box4 := fun a b c d => the_box_product X Y a b c d + the_box_product Y X a b c d
+def the_zero_box : Box4 := fun _ _ _ _ => 0
+def the_time_gamma : Box4 := the_turn_of_the_quarter
+def the_first_gamma : Box4 := the_box the_swap (the_scaled_identity 1)
+def the_second_gamma : Box4 := the_box the_sign_table the_swap
+def the_third_gamma : Box4 := the_box the_sign_table the_sign_table
+theorem the_gammas_square_to_the_metric (a b c d : Bool) :
+    (the_box_product the_time_gamma the_time_gamma a b c d, the_box_product the_first_gamma the_first_gamma a b c d,
+     the_box_product the_second_gamma the_second_gamma a b c d, the_box_product the_third_gamma the_third_gamma a b c d)
+      = (- the_box_identity a b c d, the_box_identity a b c d, the_box_identity a b c d, the_box_identity a b c d) := by
+  cases a <;> cases b <;> cases c <;> cases d <;> rfl
+theorem the_gammas_anticommute (a b c d : Bool) :
+    (the_box_anticommutator the_time_gamma the_first_gamma a b c d, the_box_anticommutator the_time_gamma the_second_gamma a b c d,
+     the_box_anticommutator the_time_gamma the_third_gamma a b c d, the_box_anticommutator the_first_gamma the_second_gamma a b c d,
+     the_box_anticommutator the_first_gamma the_third_gamma a b c d, the_box_anticommutator the_second_gamma the_third_gamma a b c d)
+      = (0, 0, 0, 0, 0, 0) := by
+  cases a <;> cases b <;> cases c <;> cases d <;> rfl
+def the_fifth_gamma : Box4 :=
+  the_box_product (the_box_product (the_box_product the_time_gamma the_first_gamma) the_second_gamma) the_third_gamma
+theorem the_fifth_gamma_squares_to_minus_one_and_anticommutes (a b c d : Bool) :
+    (the_box_product the_fifth_gamma the_fifth_gamma a b c d,
+     the_box_anticommutator the_fifth_gamma the_time_gamma a b c d, the_box_anticommutator the_fifth_gamma the_first_gamma a b c d,
+     the_box_anticommutator the_fifth_gamma the_second_gamma a b c d, the_box_anticommutator the_fifth_gamma the_third_gamma a b c d)
+      = (- the_box_identity a b c d, 0, 0, 0, 0) := by
+  cases a <;> cases b <;> cases c <;> cases d <;> rfl
+def the_spin_one : Box4 := the_box_product the_second_gamma the_third_gamma
+def the_spin_two : Box4 := the_box_product the_third_gamma the_first_gamma
+def the_spin_three : Box4 := the_box_product the_first_gamma the_second_gamma
+theorem the_spin_is_a_second_set_of_turns (a b c d : Bool) :
+    (the_box_product the_spin_one the_spin_one a b c d, the_box_product the_spin_two the_spin_two a b c d,
+     the_box_product the_spin_three the_spin_three a b c d,
+     the_box_product the_spin_one the_spin_two a b c d, the_box_product the_spin_two the_spin_three a b c d,
+     the_box_product the_spin_three the_spin_one a b c d)
+      = (- the_box_identity a b c d, - the_box_identity a b c d, - the_box_identity a b c d,
+         - the_spin_three a b c d, - the_spin_one a b c d, - the_spin_two a b c d) := by
+  cases a <;> cases b <;> cases c <;> cases d <;> rfl
+theorem the_spin_commutes_with_the_turns (a b c d : Bool) :
+    (the_box_bracket the_spin_one the_turn_of_the_swap a b c d, the_box_bracket the_spin_one the_turn_of_the_quarter a b c d,
+     the_box_bracket the_spin_one the_turn_of_the_sign a b c d,
+     the_box_bracket the_spin_two the_turn_of_the_swap a b c d, the_box_bracket the_spin_two the_turn_of_the_quarter a b c d,
+     the_box_bracket the_spin_two the_turn_of_the_sign a b c d,
+     the_box_bracket the_spin_three the_turn_of_the_swap a b c d, the_box_bracket the_spin_three the_turn_of_the_quarter a b c d,
+     the_box_bracket the_spin_three the_turn_of_the_sign a b c d) = (0, 0, 0, 0, 0, 0, 0, 0, 0) := by
+  cases a <;> cases b <;> cases c <;> cases d <;> rfl
+#print axioms the_gammas_square_to_the_metric
+#print axioms the_gammas_anticommute
+#print axioms the_fifth_gamma_squares_to_minus_one_and_anticommutes
+#print axioms the_spin_is_a_second_set_of_turns
+#print axioms the_spin_commutes_with_the_turns
+--| EVERY TORUS.  Not two by two: any number of sites around, one included, where a square's bottom and top are one link.
+--| Vary one link and each square moves along one direction, however many of its edges that link is, because the variations
+--| add.  So every flat torus is stationary on every link, at every size, and every torus is gauge invariant under turns of
+--| length one at its sites.  The torus whose every link is the turn of the swap is flat at every size and solves the equation.
+--| A family, not a limit: the continuum is not written here.
+theorem the_variations_add (H Y Z : Turns) (t : Int) :
+    the_varied_turns (the_varied_turns H Y t) Z t = the_varied_turns H (the_varied_turns Y Z 1) t := by
+  simp only [the_varied_turns, Int.one_mul, Int.mul_add, Int.add_assoc]
+theorem a_square_varies_along_one_direction (B R T L X : Turns) (t : Int) (cB cR cT cL : Bool) :
+    ∃ W, the_turns_holonomy (if cB then the_varied_turns B X t else B) (if cR then the_varied_turns R X t else R)
+                            (if cT then the_varied_turns T X t else T) (if cL then the_varied_turns L X t else L)
+      = the_varied_turns (the_turns_holonomy B R T L) W t := by
+  cases cB <;> cases cR <;> cases cT <;> cases cL <;>
+    simp only [if_true, if_false, Bool.false_eq_true,
+      (the_turns_holonomy_is_linear_in_each_link _ _ _ _ _ _).1, (the_turns_holonomy_is_linear_in_each_link _ _ _ _ _ _).2.1,
+      (the_turns_holonomy_is_linear_in_each_link _ _ _ _ _ _).2.2.1, (the_turns_holonomy_is_linear_in_each_link _ _ _ _ _ _).2.2.2,
+      the_variations_add] <;>
+    first
+    | exact ⟨_, rfl⟩
+    | exact ⟨_, the_unvaried_turns _ t⟩
+abbrev Torus (n : Nat) := Bool → Fin (n+1) → Fin (n+1) → Turns
+def the_torus_square {n : Nat} (U : Torus n) (i j : Fin (n+1)) : Turns :=
+  the_turns_holonomy (U false i j) (U true (i+1) j) (U false i (j+1)) (U true i j)
+def the_sum : List Int → Int
+  | [] => 0
+  | a :: l => a + the_sum l
+def the_torus_action {n : Nat} (U : Torus n) : Int :=
+  the_sum ((List.finRange (n+1)).map fun i => the_sum ((List.finRange (n+1)).map fun j =>
+    the_turns_action (the_torus_square U i j)))
+def the_varied_torus {n : Nat} (U : Torus n) (d : Bool) (i j : Fin (n+1)) (X : Turns) (t : Int) : Torus n :=
+  fun d' i' j' => if d' = d ∧ i' = i ∧ j' = j then the_varied_turns (U d i j) X t else U d' i' j'
+theorem the_torus_square_varies_along_one_direction {n : Nat} (U : Torus n) (d : Bool) (i j : Fin (n+1)) (X : Turns) (t : Int)
+    (i' j' : Fin (n+1)) :
+    ∃ W, the_torus_square (the_varied_torus U d i j X t) i' j' = the_varied_turns (the_torus_square U i' j') W t := by
+  have e : ∀ d'' i'' j'', the_varied_torus U d i j X t d'' i'' j''
+      = if decide (d'' = d ∧ i'' = i ∧ j'' = j) then the_varied_turns (U d'' i'' j'') X t else U d'' i'' j'' := by
+    intro d'' i'' j''
+    simp only [the_varied_torus]
+    by_cases h : d'' = d ∧ i'' = i ∧ j'' = j
+    · obtain ⟨rfl, rfl, rfl⟩ := h; simp
+    · simp [h]
+  simp only [the_torus_square, e]
+  exact a_square_varies_along_one_direction _ _ _ _ _ _ _ _ _ _
+theorem the_sums_move_at_second_order {α : Type} (l : List α) (f f' : α → Int) (t : Int)
+    (h : ∀ x, ∃ q, f' x = f x + t * t * q) :
+    ∃ Q, the_sum (l.map f') = the_sum (l.map f) + t * t * Q := by
+  induction l with
+  | nil => exact ⟨0, by simp [the_sum]⟩
+  | cons a l ih =>
+    obtain ⟨q, hq⟩ := h a
+    obtain ⟨Q, hQ⟩ := ih
+    refine ⟨q + Q, ?_⟩
+    simp only [List.map_cons, the_sum, hq, hQ, Int.mul_add]
+    omega
+theorem a_flat_torus_is_stationary {n : Nat} (U : Torus n) (flat : ∀ i j, ∃ c, the_torus_square U i j = the_whole_turn c)
+    (d : Bool) (i j : Fin (n+1)) (X : Turns) (t : Int) :
+    ∃ q, the_torus_action (the_varied_torus U d i j X t) = the_torus_action U + t * t * q := by
+  apply the_sums_move_at_second_order
+  intro i'
+  apply the_sums_move_at_second_order
+  intro j'
+  obtain ⟨W, hW⟩ := the_torus_square_varies_along_one_direction U d i j X t i' j'
+  obtain ⟨c, hc⟩ := flat i' j'
+  refine ⟨the_turns_action W, ?_⟩
+  rw [hW, the_turns_action_stops_at_second_order, hc, a_whole_turn_is_stationary, Int.mul_zero, Int.add_zero]
+def the_gauged_torus {n : Nat} (U : Torus n) (g : Fin (n+1) → Fin (n+1) → Turns) : Torus n := fun d i j =>
+  the_turns_product (the_turns_product (g i j) (U d i j)) (the_turns_conjugate (if d then g i (j+1) else g (i+1) j))
+theorem the_gauged_torus_square {n : Nat} (U : Torus n) (g : Fin (n+1) → Fin (n+1) → Turns)
+    (unit : ∀ i j, the_turns_norm (g i j) = 1) (i j : Fin (n+1)) :
+    the_torus_square (the_gauged_torus U g) i j
+      = the_turns_product (the_turns_product (g i j) (the_torus_square U i j)) (the_turns_conjugate (g i j)) := by
+  simp only [the_torus_square, the_gauged_torus, if_true, if_false, Bool.false_eq_true]
+  exact the_gauged_holonomy _ _ _ _ _ _ _ _ (unit _ _) (unit _ _) (unit _ _)
+theorem every_torus_is_gauge_invariant {n : Nat} (U : Torus n) (g : Fin (n+1) → Fin (n+1) → Turns)
+    (unit : ∀ i j, the_turns_norm (g i j) = 1) :
+    the_torus_action (the_gauged_torus U g) = the_torus_action U := by
+  simp only [the_torus_action, the_gauged_torus_square U g unit, a_unit_turn_leaves_the_action _ _ (unit _ _)]
+def the_swap_torus (n : Nat) : Torus n := fun _ _ _ => the_swap_turn
+theorem the_swap_torus_is_flat (n : Nat) (i j : Fin (n+1)) : ∃ c, the_torus_square (the_swap_torus n) i j = the_whole_turn c :=
+  ⟨1, rfl⟩
+theorem the_sum_of_nothing {α : Type} (l : List α) : the_sum (l.map fun _ => (0 : Int)) = 0 := by
+  induction l with
+  | nil => rfl
+  | cons a l ih => simp only [List.map_cons, the_sum, ih, Int.add_zero]
+theorem the_swap_torus_has_no_action (n : Nat) : the_torus_action (the_swap_torus n) = 0 := by
+  have h : ∀ i j : Fin (n+1), the_turns_action (the_torus_square (the_swap_torus n) i j) = 0 := fun _ _ => rfl
+  simp only [the_torus_action, h, the_sum_of_nothing]
+theorem every_swap_torus_solves_the_lattice_equation (n : Nat) (d : Bool) (i j : Fin (n+1)) (X : Turns) (t : Int) :
+    ∃ q, the_torus_action (the_varied_torus (the_swap_torus n) d i j X t) = t * t * q := by
+  obtain ⟨q, h⟩ := a_flat_torus_is_stationary _ (the_swap_torus_is_flat n) d i j X t
+  exact ⟨q, by rw [h, the_swap_torus_has_no_action, Int.zero_add]⟩
+#print axioms a_square_varies_along_one_direction
+#print axioms the_torus_square_varies_along_one_direction
+#print axioms a_flat_torus_is_stationary
+#print axioms every_torus_is_gauge_invariant
+#print axioms every_swap_torus_solves_the_lattice_equation
+--| FOUR DIRECTIONS.  Sites with four coordinates, four directions, and a square for every pair of them, six at each site and
+--| the same square counted both ways.  The steps commute.  Turn every site by a turn of length one: the action is unchanged,
+--| at every size.  Vary one link: a torus whose squares are all whole moves only at the second order.  Four is counted here.
+abbrev Site4 (n : Nat) := (Fin (n+1) × Fin (n+1)) × (Fin (n+1) × Fin (n+1))
+abbrev Direction := Bool × Bool
+def the_step {n : Nat} (μ : Direction) (x : Site4 n) : Site4 n :=
+  if μ.1 then (if μ.2 then (x.1, (x.2.1, x.2.2 + 1)) else (x.1, (x.2.1 + 1, x.2.2)))
+  else (if μ.2 then ((x.1.1, x.1.2 + 1), x.2) else ((x.1.1 + 1, x.1.2), x.2))
+theorem the_steps_commute {n : Nat} (μ ν : Direction) (x : Site4 n) : the_step ν (the_step μ x) = the_step μ (the_step ν x) := by
+  obtain ⟨⟨a, b⟩, ⟨c, d⟩⟩ := x; obtain ⟨m1, m2⟩ := μ; obtain ⟨n1, n2⟩ := ν
+  cases m1 <;> cases m2 <;> cases n1 <;> cases n2 <;> rfl
+abbrev Torus4 (n : Nat) := Direction → Site4 n → Turns
+def the_square4 {n : Nat} (U : Torus4 n) (μ ν : Direction) (x : Site4 n) : Turns :=
+  the_turns_holonomy (U μ x) (U ν (the_step μ x)) (U μ (the_step ν x)) (U ν x)
+def the_directions : List Direction := [(false, false), (false, true), (true, false), (true, true)]
+def the_sites4 (n : Nat) : List (Site4 n) :=
+  (List.finRange (n+1)).flatMap fun a => (List.finRange (n+1)).flatMap fun b =>
+    (List.finRange (n+1)).flatMap fun c => (List.finRange (n+1)).map fun d => ((a, b), (c, d))
+def the_action4 {n : Nat} (U : Torus4 n) : Int :=
+  the_sum (the_directions.map fun μ => the_sum (the_directions.map fun ν =>
+    the_sum ((the_sites4 n).map fun x => the_turns_action (the_square4 U μ ν x))))
+def the_gauged_torus4 {n : Nat} (U : Torus4 n) (g : Site4 n → Turns) : Torus4 n := fun μ x =>
+  the_turns_product (the_turns_product (g x) (U μ x)) (the_turns_conjugate (g (the_step μ x)))
+theorem the_gauged_square4 {n : Nat} (U : Torus4 n) (g : Site4 n → Turns) (unit : ∀ x, the_turns_norm (g x) = 1)
+    (μ ν : Direction) (x : Site4 n) :
+    the_square4 (the_gauged_torus4 U g) μ ν x
+      = the_turns_product (the_turns_product (g x) (the_square4 U μ ν x)) (the_turns_conjugate (g x)) := by
+  simp only [the_square4, the_gauged_torus4, the_steps_commute ν μ x]
+  exact the_gauged_holonomy _ _ _ _ _ _ _ _ (unit _) (unit _) (unit _)
+theorem every_four_torus_is_gauge_invariant {n : Nat} (U : Torus4 n) (g : Site4 n → Turns) (unit : ∀ x, the_turns_norm (g x) = 1) :
+    the_action4 (the_gauged_torus4 U g) = the_action4 U := by
+  simp only [the_action4, the_gauged_square4 U g unit, a_unit_turn_leaves_the_action _ _ (unit _)]
+def the_varied_torus4 {n : Nat} (U : Torus4 n) (μ₀ : Direction) (x₀ : Site4 n) (X : Turns) (t : Int) : Torus4 n :=
+  fun μ x => if μ = μ₀ ∧ x = x₀ then the_varied_turns (U μ₀ x₀) X t else U μ x
+theorem the_square4_varies_along_one_direction {n : Nat} (U : Torus4 n) (μ₀ : Direction) (x₀ : Site4 n) (X : Turns) (t : Int)
+    (μ ν : Direction) (x : Site4 n) :
+    ∃ W, the_square4 (the_varied_torus4 U μ₀ x₀ X t) μ ν x = the_varied_turns (the_square4 U μ ν x) W t := by
+  have e : ∀ μ' x', the_varied_torus4 U μ₀ x₀ X t μ' x'
+      = if decide (μ' = μ₀ ∧ x' = x₀) then the_varied_turns (U μ' x') X t else U μ' x' := by
+    intro μ' x'
+    simp only [the_varied_torus4]
+    by_cases h : μ' = μ₀ ∧ x' = x₀
+    · obtain ⟨rfl, rfl⟩ := h; simp
+    · simp [h]
+  simp only [the_square4, e]
+  exact a_square_varies_along_one_direction _ _ _ _ _ _ _ _ _ _
+theorem a_flat_four_torus_is_stationary {n : Nat} (U : Torus4 n)
+    (flat : ∀ μ ν x, ∃ c, the_square4 U μ ν x = the_whole_turn c) (μ₀ : Direction) (x₀ : Site4 n) (X : Turns) (t : Int) :
+    ∃ q, the_action4 (the_varied_torus4 U μ₀ x₀ X t) = the_action4 U + t * t * q := by
+  apply the_sums_move_at_second_order; intro μ
+  apply the_sums_move_at_second_order; intro ν
+  apply the_sums_move_at_second_order; intro x
+  obtain ⟨W, hW⟩ := the_square4_varies_along_one_direction U μ₀ x₀ X t μ ν x
+  obtain ⟨c, hc⟩ := flat μ ν x
+  refine ⟨the_turns_action W, ?_⟩
+  rw [hW, the_turns_action_stops_at_second_order, hc, a_whole_turn_is_stationary, Int.mul_zero, Int.add_zero]
+def the_swap_torus4 (n : Nat) : Torus4 n := fun _ _ => the_swap_turn
+theorem the_swap_torus4_is_flat (n : Nat) (μ ν : Direction) (x : Site4 n) :
+    ∃ c, the_square4 (the_swap_torus4 n) μ ν x = the_whole_turn c := ⟨1, rfl⟩
+theorem the_four_directions_are_four : the_directions.length = 4 := rfl
+#print axioms the_steps_commute
+#print axioms every_four_torus_is_gauge_invariant
+#print axioms a_flat_four_torus_is_stationary
+#print axioms the_swap_torus4_is_flat
+--| THE BOX OF EIGHT.  Lay the box of four over one more table, and let the quarter turn of that table be i.  It squares to
+--| minus one and commutes with every gamma, so the phase it turns is inside the Dirac algebra and is not the time gamma.
+--| Multiply each gamma by it and the metric turns over: one plus and three minus, the convention of the complex Dirac
+--| matrices, each two still anticommuting, and i commutes with these too.  The i comes from the quaternions' quarter turn,
+--| written on its own factor.  That this phase is the electron's charge is not written here.
+abbrev Box8 := Bool → Bool → Bool → Bool → Bool → Bool → Int
+def the_big_box (X : Box4) (A : Table) : Box8 := fun a b c d e f => X a b c d * A e f
+def the_big_product (X Y : Box8) : Box8 := fun a b c d e f =>
+  X a true c true e true * Y true b true d true f + X a true c true e false * Y true b true d false f
+  + X a true c false e true * Y true b false d true f + X a true c false e false * Y true b false d false f
+  + X a false c true e true * Y false b true d true f + X a false c true e false * Y false b true d false f
+  + X a false c false e true * Y false b false d true f + X a false c false e false * Y false b false d false f
+def the_big_anticommutator (X Y : Box8) : Box8 := fun a b c d e f => the_big_product X Y a b c d e f + the_big_product Y X a b c d e f
+def the_big_bracket (X Y : Box8) : Box8 := fun a b c d e f => the_big_product X Y a b c d e f - the_big_product Y X a b c d e f
+def the_big_identity : Box8 := the_big_box the_box_identity (the_scaled_identity 1)
+def the_i : Box8 := the_big_box the_box_identity the_quarter_turn
+def the_real_gamma (g : Box4) : Box8 := the_big_box g (the_scaled_identity 1)
+def the_complex_gamma (g : Box4) : Box8 := the_big_box g the_quarter_turn
+theorem the_i_squares_to_minus_one (a b c d e f : Bool) :
+    the_big_product the_i the_i a b c d e f = - the_big_identity a b c d e f := by
+  cases a <;> cases b <;> cases c <;> cases d <;> cases e <;> cases f <;> rfl
+theorem the_i_commutes_with_every_gamma (a b c d e f : Bool) :
+    (the_big_bracket the_i (the_real_gamma the_time_gamma) a b c d e f,
+     the_big_bracket the_i (the_real_gamma the_first_gamma) a b c d e f,
+     the_big_bracket the_i (the_real_gamma the_second_gamma) a b c d e f,
+     the_big_bracket the_i (the_real_gamma the_third_gamma) a b c d e f) = (0, 0, 0, 0) := by
+  cases a <;> cases b <;> cases c <;> cases d <;> cases e <;> cases f <;> rfl
+theorem the_i_turns_the_metric_over (a b c d e f : Bool) :
+    (the_big_product (the_complex_gamma the_time_gamma) (the_complex_gamma the_time_gamma) a b c d e f,
+     the_big_product (the_complex_gamma the_first_gamma) (the_complex_gamma the_first_gamma) a b c d e f,
+     the_big_product (the_complex_gamma the_second_gamma) (the_complex_gamma the_second_gamma) a b c d e f,
+     the_big_product (the_complex_gamma the_third_gamma) (the_complex_gamma the_third_gamma) a b c d e f)
+      = (the_big_identity a b c d e f, - the_big_identity a b c d e f, - the_big_identity a b c d e f,
+         - the_big_identity a b c d e f) := by
+  cases a <;> cases b <;> cases c <;> cases d <;> cases e <;> cases f <;> rfl
+theorem the_turned_gammas_anticommute (a b c d e f : Bool) :
+    (the_big_anticommutator (the_complex_gamma the_time_gamma) (the_complex_gamma the_first_gamma) a b c d e f,
+     the_big_anticommutator (the_complex_gamma the_time_gamma) (the_complex_gamma the_second_gamma) a b c d e f,
+     the_big_anticommutator (the_complex_gamma the_time_gamma) (the_complex_gamma the_third_gamma) a b c d e f,
+     the_big_anticommutator (the_complex_gamma the_first_gamma) (the_complex_gamma the_second_gamma) a b c d e f,
+     the_big_anticommutator (the_complex_gamma the_first_gamma) (the_complex_gamma the_third_gamma) a b c d e f,
+     the_big_anticommutator (the_complex_gamma the_second_gamma) (the_complex_gamma the_third_gamma) a b c d e f)
+      = (0, 0, 0, 0, 0, 0) := by
+  cases a <;> cases b <;> cases c <;> cases d <;> cases e <;> cases f <;> rfl
+theorem the_i_commutes_with_the_turned_gammas (a b c d e f : Bool) :
+    (the_big_bracket the_i (the_complex_gamma the_time_gamma) a b c d e f,
+     the_big_bracket the_i (the_complex_gamma the_first_gamma) a b c d e f,
+     the_big_bracket the_i (the_complex_gamma the_second_gamma) a b c d e f,
+     the_big_bracket the_i (the_complex_gamma the_third_gamma) a b c d e f) = (0, 0, 0, 0) := by
+  cases a <;> cases b <;> cases c <;> cases d <;> cases e <;> cases f <;> rfl
+theorem the_i_is_not_the_time_gamma : the_i true true true true true false ≠ the_complex_gamma the_time_gamma true true true true true false := by decide
+#print axioms the_i_squares_to_minus_one
+#print axioms the_i_commutes_with_every_gamma
+#print axioms the_i_turns_the_metric_over
+#print axioms the_turned_gammas_anticommute
+#print axioms the_i_commutes_with_the_turned_gammas
+#print axioms the_i_is_not_the_time_gamma
+--| THE TRAIN LINE.  Put a spinor at every station, eight whole numbers on the box of eight, and a phase on every link, two
+--| whole numbers read as x + y·i.  Read the spinor through the time gamma and turn it by i: the current of a direction is i
+--| times the time gamma times that direction's gamma, and it is antisymmetric, so riding a link forward less riding it back
+--| is the derivative.  Ride each link once, uptown: the spinor here against the current of the phase times the spinor there.
+--| Read backward, downtown, with the conjugate phase, the link turns over: the line runs one way.  No station needs its
+--| predecessor.  Turn every station by a phase of length one and carry each link from its start to its end: the phases
+--| cancel at the far station, the current commutes with them, and the dot of two turned spinors is the length times the
+--| dot.  The Dirac action, mass and hops, is gauge invariant on every torus.  The coupling that scales the phase is not
+--| written here.  (An earlier line read each link both ways with the gamma alone; the dot kept only the gamma's symmetric
+--| part, and the space hop was nothing.  The current is the repair.)
+abbrev Vec8 := Bool → Bool → Bool → Int
+def the_i_on (v : Vec8) : Vec8 := fun a c e => if e then - v a c false else v a c true
+def the_phase_on (z : Int × Int) (v : Vec8) : Vec8 := fun a c e => z.1 * v a c e + z.2 * the_i_on v a c e
+def the_gamma_on (g : Box4) (v : Vec8) : Vec8 := fun a c e =>
+  g a true c true * v true true e + g a true c false * v true false e + g a false c true * v false true e + g a false c false * v false false e
+def the_turned_gamma_on (g : Box4) (v : Vec8) : Vec8 := the_gamma_on g (the_i_on v)
+def the_dot (v w : Vec8) : Int :=
+  v true true true * w true true true + v true true false * w true true false + v true false true * w true false true
+  + v true false false * w true false false + v false true true * w false true true + v false true false * w false true false
+  + v false false true * w false false true + v false false false * w false false false
+def the_phase_product (z w : Int × Int) : Int × Int := (z.1 * w.1 - z.2 * w.2, z.1 * w.2 + z.2 * w.1)
+def the_phase_conjugate (z : Int × Int) : Int × Int := (z.1, -z.2)
+def the_phase_norm (z : Int × Int) : Int := z.1 * z.1 + z.2 * z.2
+theorem the_turned_gamma_is_the_complex_gamma (g : Box4) (v : Vec8) (a c e : Bool) :
+    the_turned_gamma_on g v a c e
+      = the_complex_gamma g a true c true e true * v true true true + the_complex_gamma g a true c true e false * v true true false
+        + the_complex_gamma g a true c false e true * v true false true + the_complex_gamma g a true c false e false * v true false false
+        + the_complex_gamma g a false c true e true * v false true true + the_complex_gamma g a false c true e false * v false true false
+        + the_complex_gamma g a false c false e true * v false false true + the_complex_gamma g a false c false e false * v false false false := by
+  cases e <;> simp only [the_turned_gamma_on, the_gamma_on, the_i_on, the_complex_gamma, the_big_box, the_quarter_turn,
+    ite_true, ite_false, Bool.true_eq_false, Bool.false_eq_true, Int.mul_zero, Int.mul_one, Int.mul_neg,
+    Int.neg_mul] <;> omega
+theorem the_phases_compose (z w : Int × Int) (v : Vec8) :
+    the_phase_on z (the_phase_on w v) = the_phase_on (the_phase_product z w) v := by
+  funext a c e
+  cases e <;> simp only [the_phase_on, the_i_on, the_phase_product, ite_true, ite_false, Bool.false_eq_true,
+    Int.mul_add, Int.add_mul, Int.mul_neg, Int.neg_add, Int.sub_mul] <;> ac_nf <;> omega
+theorem the_gamma_commutes_with_the_phase (g : Box4) (z : Int × Int) (v : Vec8) :
+    the_turned_gamma_on g (the_phase_on z v) = the_phase_on z (the_turned_gamma_on g v) := by
+  funext a c e
+  cases e <;> simp only [the_turned_gamma_on, the_gamma_on, the_phase_on, the_i_on, ite_true, ite_false,
+    Bool.false_eq_true, Int.mul_add, Int.mul_neg, Int.neg_add] <;> ac_nf <;> omega
+theorem the_dot_of_two_phases (z : Int × Int) (v w : Vec8) :
+    the_dot (the_phase_on z v) (the_phase_on z w) = the_phase_norm z * the_dot v w := by
+  simp only [the_dot, the_phase_on, the_i_on, the_phase_norm, ite_true, ite_false, Bool.false_eq_true,
+    Int.mul_add, Int.add_mul, Int.mul_neg, Int.neg_mul]
+  ac_nf; omega
+theorem the_conjugate_cancels (x b : Int × Int) :
+    the_phase_product (the_phase_product x (the_phase_conjugate b)) b = (x.1 * the_phase_norm b, x.2 * the_phase_norm b) := by
+  simp only [the_phase_product, the_phase_conjugate, the_phase_norm, Prod.mk.injEq, Int.mul_add, Int.add_mul, Int.sub_mul,
+    Int.mul_neg, Int.neg_mul]
+  constructor <;> ac_nf <;> omega
+theorem the_carried_phase (a U b : Int × Int) (w : Vec8) (hb : the_phase_norm b = 1) :
+    the_phase_on (the_phase_product (the_phase_product a U) (the_phase_conjugate b)) (the_phase_on b w)
+      = the_phase_on a (the_phase_on U w) := by
+  rw [the_phases_compose, the_phases_compose, the_conjugate_cancels, hb, Int.mul_one, Int.mul_one]
+theorem the_conjugate_of_a_carried_link (a U b : Int × Int) :
+    the_phase_conjugate (the_phase_product (the_phase_product a U) (the_phase_conjugate b))
+      = the_phase_product (the_phase_product b (the_phase_conjugate U)) (the_phase_conjugate a) := by
+  simp only [the_phase_product, the_phase_conjugate, Prod.mk.injEq, Int.add_mul, Int.sub_mul,
+    Int.mul_neg, Int.neg_mul, Int.neg_neg, Int.neg_add, Int.neg_sub]
+  constructor <;> ac_nf <;> omega
+def the_current_on (g : Box4) (v : Vec8) : Vec8 := the_i_on (the_turned_gamma_on the_time_gamma (the_turned_gamma_on g v))
+def the_hop (v : Vec8) (U : Int × Int) (w : Vec8) (g : Box4) : Int := the_dot v (the_current_on g (the_phase_on U w))
+theorem the_i_is_a_phase (v : Vec8) : the_i_on v = the_phase_on (0, 1) v := by
+  funext a c e; cases e <;> simp only [the_phase_on, the_i_on, ite_true, ite_false, Bool.false_eq_true] <;> omega
+theorem the_current_commutes_with_the_phase (g : Box4) (z : Int × Int) (v : Vec8) :
+    the_current_on g (the_phase_on z v) = the_phase_on z (the_current_on g v) := by
+  simp only [the_current_on, the_gamma_commutes_with_the_phase, the_i_is_a_phase, the_phases_compose]
+  congr 1; simp only [the_phase_product, Int.zero_mul, Int.one_mul, Int.mul_zero, Int.mul_one, Int.zero_sub,
+    Int.zero_add, Int.add_zero]
+theorem the_phase_moves_across_the_dot (U : Int × Int) (x y : Vec8) :
+    the_dot x (the_phase_on (the_phase_conjugate U) y) = the_dot (the_phase_on U x) y := by
+  simp only [the_dot, the_phase_on, the_phase_conjugate, the_i_on, ite_true, ite_false, Bool.false_eq_true,
+    Int.mul_add, Int.add_mul, Int.mul_neg, Int.neg_mul]
+  ac_nf; omega
+theorem the_time_current_is_antisymmetric (v w : Vec8) :
+    the_dot v (the_current_on the_time_gamma w) = - the_dot w (the_current_on the_time_gamma v) := by
+  simp only [the_dot, the_current_on, the_turned_gamma_on, the_gamma_on, the_i_on, the_time_gamma, the_turn_of_the_quarter,
+    the_box, the_quarter_turn, the_scaled_identity, ite_true, ite_false, Bool.false_eq_true, Bool.true_eq_false]
+  simp only [Int.zero_mul, Int.mul_zero, Int.one_mul, Int.mul_one, Int.neg_mul, Int.mul_neg, Int.neg_neg, Int.add_zero,
+    Int.zero_add, Int.neg_zero, Int.neg_add]
+  ac_nf
+theorem the_space_current_is_antisymmetric (v w : Vec8) :
+    the_dot v (the_current_on the_first_gamma w) = - the_dot w (the_current_on the_first_gamma v) := by
+  simp only [the_dot, the_current_on, the_turned_gamma_on, the_gamma_on, the_i_on, the_time_gamma, the_first_gamma,
+    the_turn_of_the_quarter, the_box, the_quarter_turn, the_swap, the_scaled_identity, ite_true, ite_false, Bool.false_eq_true,
+    Bool.true_eq_false]
+  simp only [Int.zero_mul, Int.mul_zero, Int.one_mul, Int.mul_one, Int.neg_mul, Int.mul_neg, Int.neg_neg, Int.add_zero,
+    Int.zero_add, Int.neg_zero, Int.neg_add]
+  ac_nf
+theorem the_link_read_backward_turns_over (v w : Vec8) (U : Int × Int) (g : Box4)
+    (anti : ∀ x y, the_dot x (the_current_on g y) = - the_dot y (the_current_on g x)) :
+    the_hop w (the_phase_conjugate U) v g = - the_hop v U w g := by
+  simp only [the_hop]
+  rw [the_current_commutes_with_the_phase, the_phase_moves_across_the_dot, anti]
+theorem the_gauged_hop (v w : Vec8) (U gs gn : Int × Int) (g : Box4)
+    (hs : the_phase_norm gs = 1) (hn : the_phase_norm gn = 1) :
+    the_hop (the_phase_on gs v) (the_phase_product (the_phase_product gs U) (the_phase_conjugate gn)) (the_phase_on gn w) g
+      = the_hop v U w g := by
+  simp only [the_hop]
+  rw [the_carried_phase _ _ _ _ hn, the_current_commutes_with_the_phase, the_dot_of_two_phases, hs, Int.one_mul]
+def the_dirac_action {n : Nat} (U : Bool → Fin (n+1) → Fin (n+1) → Int × Int) (ψ : Fin (n+1) → Fin (n+1) → Vec8) (m : Int) : Int :=
+  the_sum ((List.finRange (n+1)).map fun i => the_sum ((List.finRange (n+1)).map fun j =>
+    m * the_dot (ψ i j) (ψ i j) + the_hop (ψ i j) (U false i j) (ψ (i+1) j) the_time_gamma
+      + the_hop (ψ i j) (U true i j) (ψ i (j+1)) the_first_gamma))
+def the_gauged_links {n : Nat} (U : Bool → Fin (n+1) → Fin (n+1) → Int × Int) (g : Fin (n+1) → Fin (n+1) → Int × Int) :
+    Bool → Fin (n+1) → Fin (n+1) → Int × Int := fun d i j =>
+  the_phase_product (the_phase_product (g i j) (U d i j)) (the_phase_conjugate (if d then g i (j+1) else g (i+1) j))
+def the_gauged_spinors {n : Nat} (ψ : Fin (n+1) → Fin (n+1) → Vec8) (g : Fin (n+1) → Fin (n+1) → Int × Int) :
+    Fin (n+1) → Fin (n+1) → Vec8 := fun i j => the_phase_on (g i j) (ψ i j)
+theorem the_dirac_action_is_gauge_invariant {n : Nat} (U : Bool → Fin (n+1) → Fin (n+1) → Int × Int)
+    (ψ : Fin (n+1) → Fin (n+1) → Vec8) (m : Int) (g : Fin (n+1) → Fin (n+1) → Int × Int) (unit : ∀ i j, the_phase_norm (g i j) = 1) :
+    the_dirac_action (the_gauged_links U g) (the_gauged_spinors ψ g) m = the_dirac_action U ψ m := by
+  simp only [the_dirac_action, the_gauged_links, the_gauged_spinors, if_true, if_false, Bool.false_eq_true,
+    the_gauged_hop _ _ _ _ _ _ (unit _ _) (unit _ _), the_dot_of_two_phases, unit, Int.one_mul]
+#print axioms the_turned_gamma_is_the_complex_gamma
+#print axioms the_phases_compose
+#print axioms the_gamma_commutes_with_the_phase
+#print axioms the_dot_of_two_phases
+#print axioms the_gauged_hop
+#print axioms the_current_commutes_with_the_phase
+#print axioms the_time_current_is_antisymmetric
+#print axioms the_space_current_is_antisymmetric
+#print axioms the_link_read_backward_turns_over
+#print axioms the_dirac_action_is_gauge_invariant
+--| THE WHOLE ACTION.  A phase is a turn with one imaginary part: written as a turn, its products and conjugates are the turns'
+--| own, and its length is the turn's length.  So the phases on the links are a torus of turns, and a square of phases reads
+--| the square of its turned part.  Weigh the squares by a whole number β and add the train line: the whole action of light and
+--| matter on the torus, and it is gauge invariant under a phase of length one at every station, at every size.  β is left
+--| free.  What it is, one over the square of the coupling, and that the device's reading fixes it, is not written here.
+def the_phase_as_turns (z : Int × Int) : Turns := (z.1, 0, z.2, 0)
+theorem the_phase_product_is_the_turns_product (z w : Int × Int) :
+    the_phase_as_turns (the_phase_product z w) = the_turns_product (the_phase_as_turns z) (the_phase_as_turns w) := by
+  simp only [the_phase_as_turns, the_phase_product, the_turns_product, Int.mul_zero, Int.zero_mul, Int.sub_zero,
+    Int.add_zero]
+theorem the_phase_conjugate_is_the_turns_conjugate (z : Int × Int) :
+    the_phase_as_turns (the_phase_conjugate z) = the_turns_conjugate (the_phase_as_turns z) := by
+  simp only [the_phase_as_turns, the_phase_conjugate, the_turns_conjugate, Int.neg_zero]
+theorem the_phase_norm_is_the_turns_norm (z : Int × Int) :
+    the_turns_norm (the_phase_as_turns z) = the_phase_norm z := by
+  simp only [the_turns_norm, the_phase_as_turns, the_phase_norm, Int.mul_zero, Int.add_zero]
+def the_phase_torus {n : Nat} (U : Bool → Fin (n+1) → Fin (n+1) → Int × Int) : Torus n :=
+  fun d i j => the_phase_as_turns (U d i j)
+theorem the_phase_torus_of_the_gauged_links {n : Nat} (U : Bool → Fin (n+1) → Fin (n+1) → Int × Int)
+    (g : Fin (n+1) → Fin (n+1) → Int × Int) :
+    the_phase_torus (the_gauged_links U g) = the_gauged_torus (the_phase_torus U) (fun i j => the_phase_as_turns (g i j)) := by
+  funext d i j
+  cases d <;> simp only [the_phase_torus, the_gauged_links, the_gauged_torus, the_phase_product_is_the_turns_product,
+    the_phase_conjugate_is_the_turns_conjugate, if_true, if_false, Bool.false_eq_true]
+def the_whole_action {n : Nat} (β : Int) (U : Bool → Fin (n+1) → Fin (n+1) → Int × Int) (ψ : Fin (n+1) → Fin (n+1) → Vec8)
+    (m : Int) : Int :=
+  β * the_torus_action (the_phase_torus U) + the_dirac_action U ψ m
+theorem the_whole_action_is_gauge_invariant {n : Nat} (β : Int) (U : Bool → Fin (n+1) → Fin (n+1) → Int × Int)
+    (ψ : Fin (n+1) → Fin (n+1) → Vec8) (m : Int) (g : Fin (n+1) → Fin (n+1) → Int × Int)
+    (unit : ∀ i j, the_phase_norm (g i j) = 1) :
+    the_whole_action β (the_gauged_links U g) (the_gauged_spinors ψ g) m = the_whole_action β U ψ m := by
+  have unit' : ∀ i j, the_turns_norm (the_phase_as_turns (g i j)) = 1 := fun i j => by
+    rw [the_phase_norm_is_the_turns_norm]; exact unit i j
+  simp only [the_whole_action, the_phase_torus_of_the_gauged_links, every_torus_is_gauge_invariant _ _ unit',
+    the_dirac_action_is_gauge_invariant U ψ m g unit]
+theorem the_square_of_a_phase_reads_its_turned_part (z : Int × Int) :
+    the_turns_action (the_phase_as_turns z) = z.2 * z.2 := by
+  simp only [the_turns_action, the_phase_as_turns, Int.mul_zero, Int.zero_add, Int.add_zero]
+#print axioms the_phase_product_is_the_turns_product
+#print axioms the_phase_torus_of_the_gauged_links
+#print axioms the_whole_action_is_gauge_invariant
+#print axioms the_square_of_a_phase_reads_its_turned_part
+--| THE DOUBLERS.  Ride a circle of stations with every phase one.  On two stations the line cannot tell uptown from downtown:
+--| each link is ridden both ways and turns over, and the line reads nothing for every spinor.  On four, the line's response
+--| to any probe is blind to two fields: the field that is the same at every station, and the field that alternates, plus,
+--| minus, plus, minus, at every step.  A field that turns a quarter per station is seen.  Two tastes for one line, the one
+--| that keeps still and the one that keeps time.  Which taste is the electron's is not written here.
+theorem the_phase_one_is_nothing (v : Vec8) : the_phase_on (1, 0) v = v := by
+  funext a c e; simp only [the_phase_on, Int.one_mul, Int.zero_mul, Int.add_zero]
+def the_line {n : Nat} (ψ : Fin (n+1) → Vec8) (g : Box4) : Int :=
+  the_sum ((List.finRange (n+1)).map fun s => the_hop (ψ s) (1, 0) (ψ (s+1)) g)
+def the_line_response {n : Nat} (ψ φ : Fin (n+1) → Vec8) (g : Box4) : Int :=
+  the_sum ((List.finRange (n+1)).map fun s => the_hop (ψ s) (1, 0) (φ (s+1)) g + the_hop (φ s) (1, 0) (ψ (s+1)) g)
+def the_neg (v : Vec8) : Vec8 := fun a c e => - v a c e
+theorem two_stations_cannot_tell_uptown_from_downtown (ψ : Fin 2 → Vec8) (g : Box4)
+    (anti : ∀ x y, the_dot x (the_current_on g y) = - the_dot y (the_current_on g x)) :
+    the_line ψ g = 0 := by
+  have h := anti (ψ 0) (ψ 1)
+  simp only [the_line]
+  rw [show List.finRange 2 = [0, 1] from rfl]
+  simp only [List.map_cons, List.map_nil, the_sum, the_hop, the_phase_one_is_nothing]
+  have e0 : (0 : Fin 2) + 1 = 1 := rfl
+  have e1 : (1 : Fin 2) + 1 = 0 := rfl
+  rw [e0, e1]; omega
+theorem the_constant_field_is_a_doubler (χ : Vec8) (φ : Fin 4 → Vec8) (g : Box4)
+    (anti : ∀ x y, the_dot x (the_current_on g y) = - the_dot y (the_current_on g x)) :
+    the_line_response (fun _ => χ) φ g = 0 := by
+  simp only [the_line_response]
+  rw [show List.finRange 4 = [0, 1, 2, 3] from rfl]
+  simp only [List.map_cons, List.map_nil, the_sum, the_hop, the_phase_one_is_nothing]
+  have e0 : (0 : Fin 4) + 1 = 1 := rfl
+  have e1 : (1 : Fin 4) + 1 = 2 := rfl
+  have e2 : (2 : Fin 4) + 1 = 3 := rfl
+  have e3 : (3 : Fin 4) + 1 = 0 := rfl
+  rw [e0, e1, e2, e3, anti (φ 0) χ, anti (φ 1) χ, anti (φ 2) χ, anti (φ 3) χ]
+  omega
+theorem the_neg_is_a_phase (v : Vec8) : the_neg v = the_phase_on (-1, 0) v := by
+  funext a c e; simp only [the_neg, the_phase_on, Int.zero_mul, Int.add_zero]; omega
+theorem the_dot_of_a_neg (x y : Vec8) : the_dot (the_neg x) y = - the_dot x y := by
+  simp only [the_dot, the_neg, Int.neg_mul]; omega
+theorem the_dot_against_a_neg (x y : Vec8) : the_dot x (the_neg y) = - the_dot x y := by
+  simp only [the_dot, the_neg, Int.mul_neg]; omega
+theorem the_current_of_a_neg (g : Box4) (v : Vec8) : the_current_on g (the_neg v) = the_neg (the_current_on g v) := by
+  rw [the_neg_is_a_phase, the_neg_is_a_phase, the_current_commutes_with_the_phase]
+def the_alternating_field (χ : Vec8) : Fin 4 → Vec8 := fun s => if s.val % 2 = 0 then χ else the_neg χ
+theorem the_alternating_field_is_a_doubler (χ : Vec8) (φ : Fin 4 → Vec8) (g : Box4)
+    (anti : ∀ x y, the_dot x (the_current_on g y) = - the_dot y (the_current_on g x)) :
+    the_line_response (the_alternating_field χ) φ g = 0 := by
+  simp only [the_line_response]
+  rw [show List.finRange 4 = [0, 1, 2, 3] from rfl]
+  simp only [List.map_cons, List.map_nil, the_sum, the_hop, the_phase_one_is_nothing]
+  have e0 : (0 : Fin 4) + 1 = 1 := rfl
+  have e1 : (1 : Fin 4) + 1 = 2 := rfl
+  have e2 : (2 : Fin 4) + 1 = 3 := rfl
+  have e3 : (3 : Fin 4) + 1 = 0 := rfl
+  have a0 : the_alternating_field χ 0 = χ := rfl
+  have a1 : the_alternating_field χ 1 = the_neg χ := rfl
+  have a2 : the_alternating_field χ 2 = χ := rfl
+  have a3 : the_alternating_field χ 3 = the_neg χ := rfl
+  rw [e0, e1, e2, e3, a0, a1, a2, a3]
+  simp only [the_dot_of_a_neg, the_current_of_a_neg, the_dot_against_a_neg]
+  rw [anti (φ 0) χ, anti (φ 1) χ, anti (φ 2) χ, anti (φ 3) χ]
+  omega
+def the_probe_here : Vec8 := fun a c e => (if a then 3 else 1) + (if c then 5 else 2) * (if e then 7 else -1)
+def the_probe_there : Vec8 := fun a c e => (if a then -2 else 4) + (if c then 1 else 6) * (if e then 2 else 3)
+def the_quarter_field : Fin 4 → Vec8 := fun s =>
+  if s.val = 0 then the_probe_here else if s.val = 1 then the_probe_there else if s.val = 2 then the_neg the_probe_here
+  else the_neg the_probe_there
+theorem the_quarter_field_is_seen : the_line the_quarter_field the_first_gamma ≠ 0 := by decide
+#print axioms two_stations_cannot_tell_uptown_from_downtown
+#print axioms the_constant_field_is_a_doubler
+#print axioms the_alternating_field_is_a_doubler
+#print axioms the_quarter_field_is_seen
+--| WHAT IS LEFT, CLOSED.  The torus with one link turned is not a second solution: vary that link along the quarter turn and
+--| the action reads eight one way and nothing the other, so it leans, and no whole number makes it stand still at three.  The
+--| gauge needs links of length one, and the device has them: the three turns are each of length one, and turning every site
+--| of any torus by the turn of the swap leaves its action alone.  No normalization is handed in.
+theorem the_turned_lattice_is_not_stationary :
+    ¬ (∀ t : Int, ∃ q, the_turns_lattice_action (the_varied_turns_lattice the_turned_turns_lattice false false false (0, 0, 1, 0) t)
+        = the_turns_lattice_action the_turned_turns_lattice + t * t * q) := by
+  intro h
+  obtain ⟨q, hq⟩ := h 3
+  have h3 : the_turns_lattice_action (the_varied_turns_lattice the_turned_turns_lattice false false false (0, 0, 1, 0) 3) = 32 := by decide
+  rw [h3, the_turned_turns_lattice_has_action] at hq
+  omega
+theorem the_turned_lattice_leans_one_way :
+    (the_turns_lattice_action (the_varied_turns_lattice the_turned_turns_lattice false false false (0, 0, 1, 0) 1),
+     the_turns_lattice_action (the_varied_turns_lattice the_turned_turns_lattice false false false (0, 0, 1, 0) (-1))) = (8, 0) := by decide
+theorem the_three_turns_have_length_one :
+    (the_turns_norm (0, 1, 0, 0), the_turns_norm (0, 0, 1, 0), the_turns_norm (0, 0, 0, 1)) = (1, 1, 1) := rfl
+theorem the_device_supplies_its_own_gauge {n : Nat} (U : Torus n) :
+    the_torus_action (the_gauged_torus U (fun _ _ => the_swap_turn)) = the_torus_action U :=
+  every_torus_is_gauge_invariant U _ (fun _ _ => rfl)
+#print axioms the_turned_lattice_is_not_stationary
+#print axioms the_turned_lattice_leans_one_way
+#print axioms the_three_turns_have_length_one
+#print axioms the_device_supplies_its_own_gauge
+--| TWO WAYS THE CLOCK CANCELS.  The clock's irrational part is the square root of its round trip, ninety.  Any table whose
+--| round trip is ninety has the same clock squared, so against the device's table the two clocks cancel and the difference
+--| of the growth rates is the difference of the clicks, whole -- the swapped table, clicks five and outlier eighteen, among
+--| them.  And the table cancels its own clock against its other root: the two roots add to the trace and multiply to the
+--| determinant, thirty-six and two hundred thirty-four, both whole.  The second is the doubler.  Both, of course.
+def the_clock_of (b f : Int) : Table := fun x y => if x = y then 0 else if x then f else b
+theorem the_device_clock_is_the_clock_of : ∀ x y, the_clock_table x y = the_clock_of 18 5 x y := by
+  intro x y; cases x <;> cases y <;> rfl
+theorem the_same_round_trip_is_the_same_clock (b f : Int) (h : b * f = 90) (x y : Bool) :
+    the_table_product (the_clock_of b f) (the_clock_of b f) x y = the_table_product the_clock_table the_clock_table x y := by
+  have e : f * b = 90 := by rw [Int.mul_comm]; exact h
+  cases x <;> cases y <;> simp only [the_table_product, the_clock_of, the_clock_table, Bool.true_eq_false, Bool.false_eq_true,
+    ite_true, ite_false, Int.mul_zero, Int.zero_mul, Int.add_zero, Int.zero_add, h, e] <;> rfl
+theorem the_swapped_table_shares_the_clock (x y : Bool) :
+    the_table_product (the_clock_of 5 18) (the_clock_of 5 18) x y = the_table_product the_clock_table the_clock_table x y :=
+  the_same_round_trip_is_the_same_clock 5 18 rfl x y
+theorem the_conjugate_roots_are_rational :
+    (the_table_trace the_full_table, the_table_determinant the_full_table) = (36, 234) := rfl
+#print axioms the_same_round_trip_is_the_same_clock
+#print axioms the_swapped_table_shares_the_clock
+#print axioms the_conjugate_roots_are_rational
+--| THE TORUS AND THE BOOST.  Read the table as a torus: the major radius is the clicks, eighteen; the tube's radius is the
+--| clock, the square root of the round trip.  The outer equator is the larger root and the hole is the smaller; they add to
+--| the trace and multiply to the determinant, which is the interval, eighteen squared less the round trip.  Fatten the tube to
+--| the major radius and the hole closes at the origin -- the speed of light, which the clock never reaches.  A boost keeps
+--| away from it: nineteen and two, whose interval is one, multiplies the torus without changing its interval, so the hole
+--| shrinks and never shuts.  Written with the round trip as the square of the surd, in whole numbers, no root taken.
+def the_round_trip : Int := (the_arm_weight true false : Int) * (the_arm_weight false true : Int)
+def the_surd_product (p q : Int × Int) : Int × Int :=
+  (p.1 * q.1 + the_round_trip * p.2 * q.2, p.1 * q.2 + p.2 * q.1)
+def the_interval (p : Int × Int) : Int := p.1 * p.1 - the_round_trip * p.2 * p.2
+def the_outer_radius : Int × Int := (18, 1)
+def the_hole : Int × Int := (18, -1)
+def the_boost : Int × Int := (19, 2)
+theorem the_round_trip_is_ninety : the_round_trip = 90 := rfl
+theorem the_outer_and_the_hole :
+    (the_outer_radius.1 + the_hole.1, the_outer_radius.2 + the_hole.2) = (36, 0)
+      ∧ the_surd_product the_outer_radius the_hole = (234, 0) := by decide
+theorem the_interval_is_the_determinant :
+    the_interval the_outer_radius = the_table_determinant the_full_table := rfl
+theorem the_boost_has_unit_interval : the_interval the_boost = 1 := by decide
+theorem the_boost_preserves_the_interval (p : Int × Int) :
+    the_interval (the_surd_product p the_boost) = the_interval p := by
+  have r : the_round_trip = 90 := rfl
+  simp only [the_interval, the_surd_product, the_boost, r, Int.add_mul, Int.mul_add]
+  ac_nf; omega
+theorem the_hole_stays_open (p : Int × Int) (h : the_interval p = 234) :
+    the_round_trip * p.2 * p.2 < p.1 * p.1 := by
+  unfold the_interval at h; omega
+theorem the_boosted_torus :
+    the_surd_product the_outer_radius the_boost = (522, 55) ∧ the_interval (522, 55) = 234 := by decide
+#print axioms the_outer_and_the_hole
+#print axioms the_boost_preserves_the_interval
+#print axioms the_hole_stays_open
+#print axioms the_boosted_torus
+--| THE SECOND VARIATION ON THE SEAM.  Put a phase on each of the thirty-six cells.  Its first variation is the step across
+--| each edge, taken after the cell and before it; its second variation, the seam's thirty-six by thirty-six Laplacian, is the
+--| step before less the step after, in each direction -- two first variations, one before and one after, fix the second.  And
+--| its frequencies are whole: the plane waves of sixths of a turn, written in whole numbers, are thirty-six independent
+--| eigenvectors, and each one's frequency is a whole number from nought to eight.  The FFT of the seam, no cosine taken.
+def the_step_after (f : Nat → Nat → Int) (x y : Nat) : Int × Int :=
+  (f ((x + 1) % 6) y - f x y, f x ((y + 1) % 6) - f x y)
+def the_step_before (f : Nat → Nat → Int) (x y : Nat) : Int × Int :=
+  (f x y - f ((x + 5) % 6) y, f x y - f x ((y + 5) % 6))
+def the_seam_laplacian (f : Nat → Nat → Int) (x y : Nat) : Int :=
+  4 * f x y - f ((x + 1) % 6) y - f ((x + 5) % 6) y - f x ((y + 1) % 6) - f x ((y + 5) % 6)
+theorem the_second_variation_is_before_less_after (f : Nat → Nat → Int) (x y : Nat) :
+    the_seam_laplacian f x y
+      = ((the_step_before f x y).1 - (the_step_after f x y).1) + ((the_step_before f x y).2 - (the_step_after f x y).2) := by
+  simp only [the_seam_laplacian, the_step_before, the_step_after]; omega
+def the_sixths : List (List Int) :=
+  [[2, 2, 2, 2, 2, 2], [2, 1, -1, -2, -1, 1], [0, 1, 1, 0, -1, -1],
+   [2, -1, -1, 2, -1, -1], [0, 1, -1, 0, 1, -1], [2, -2, 2, -2, 2, -2]]
+def the_frequency : List Int := [0, 1, 1, 3, 3, 4]
+def the_mode (a : Nat) (x : Nat) : Int := (the_sixths.getD a []).getD (x % 6) 0
+def the_plane_wave (a b : Nat) : Nat → Nat → Int := fun x y => the_mode a x * the_mode b y
+theorem the_plane_waves_are_the_frequencies :
+    ∀ a < 6, ∀ b < 6, ∀ x < 6, ∀ y < 6,
+      the_seam_laplacian (the_plane_wave a b) x y
+        = (the_frequency.getD a 0 + the_frequency.getD b 0) * the_plane_wave a b x y := by decide
+def the_overlap (a b c d : Nat) : Int :=
+  ((List.range 36).map fun i => the_plane_wave a b (i % 6) (i / 6) * the_plane_wave c d (i % 6) (i / 6)).foldl (· + ·) 0
+theorem the_plane_waves_are_independent :
+    ∀ a < 6, ∀ b < 6, ∀ c < 6, ∀ d < 6, (a = c ∧ b = d) ∨ the_overlap a b c d = 0 := by decide
+#print axioms the_plane_waves_are_independent
+#print axioms the_second_variation_is_before_less_after
+#print axioms the_plane_waves_are_the_frequencies
+--| WHERE THE UNDESCRIBABLE DIGITS COME IN.  Strike the arm and the reading is the clicks alone, eighteen times the gain: a
+--| fraction, and its digits after the first settle into six that repeat forever, two three oh seven six nine -- a finite
+--| record describes every one of them.  Write the arm and the clock comes in as the square root of five times eighteen, and
+--| five times eighteen is no square, so the reading is no fraction and its digits never settle into any pattern.  Every digit
+--| no finite pattern writes comes in with the five.
+def the_struck_numerator : Nat := 18 * 324
+def the_struck_denominator : Nat := 5 * 13
+def the_struck_remainder (k : Nat) : Nat := the_struck_numerator * 10 ^ k % the_struck_denominator
+def the_struck_digit (k : Nat) : Nat := the_struck_numerator * 10 ^ k / the_struck_denominator % 10
+theorem the_struck_reading_is_a_fraction :
+    (the_struck_numerator, the_struck_denominator) = (5832, 65) := rfl
+theorem the_struck_digits_repeat_every_six :
+    ∀ k < 36, the_struck_remainder (k + 7) = the_struck_remainder (k + 1)
+      ∧ the_struck_digit (k + 8) = the_struck_digit (k + 2) := by decide
+theorem the_struck_digits_are_two_three_oh_seven_six_nine :
+    (List.range 6).map (fun k => the_struck_digit (k + 2)) = [2, 3, 0, 7, 6, 9] := by decide
+theorem the_round_trip_is_not_a_square (n : Nat) : n * n ≠ 5 * 18 := by
+  rcases Nat.lt_or_ge n 10 with h | h
+  · have : ∀ m < 10, m * m ≠ 90 := by decide
+    exact this n h
+  · have := Nat.mul_le_mul h h; omega
+#print axioms the_struck_digits_repeat_every_six
+#print axioms the_struck_digits_are_two_three_oh_seven_six_nine
+#print axioms the_round_trip_is_not_a_square
 
 --| TWO READINGS OF ONE TURNING.  Read a walk's crossings two ways.  Subdivided, every crossing is half a turn and the
 --| count is the crossings themselves: nothing is left over, because nothing is rounded.  Counted in whole turns, the walk
@@ -2230,6 +3413,342 @@ theorem the_mirror_coefficients_are_counted :
 #print axioms the_mirror_is_the_device_residual
 #print axioms the_residual_is_the_derivative_of_the_action
 #print axioms the_mirror_coefficients_are_counted
+
+--| THE QUARTIC THAT CLOSES THE FILE.  t²(c−t)x² − 2ctr²x + cr⁴: linear in c, quadratic in x, cubic in t, quartic in r, and every
+--| term five in all.  Scale all four by k and the quartic scales by k five times: the five, checked, not counted.  It factors
+--| through any s with c·s·s = t into two quadratics in r, one for each sign of s, and the product never reads which sign.
+--| The sign is the bit the knower names; read across time it selects the factor that carries the reading.
+def the_closing_quartic (c t x r : Int) : Int := t * t * (c - t) * x * x - 2 * c * t * r * r * x + c * r * r * r * r
+def the_closing_factor (t x r s : Int) : Int := r * r - t * x * (1 - s)
+theorem the_quartic_is_homogeneous_of_degree_five (k c t x r : Int) :
+    the_closing_quartic (k * c) (k * t) (k * x) (k * r) = k * k * k * k * k * the_closing_quartic c t x r := by
+  simp only [the_closing_quartic, Int.mul_sub, Int.sub_mul, Int.mul_add]
+  ac_nf
+theorem the_quartic_less_its_factors (c t x r s : Int) :
+    c * the_closing_factor t x r s * the_closing_factor t x r (-s)
+      = the_closing_quartic c t x r + t * t * x * x * (t - c * s * s) := by
+  simp only [the_closing_factor, the_closing_quartic, Int.mul_sub, Int.sub_mul, Int.mul_add, Int.sub_neg, Int.mul_one]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem the_quartic_factors (c t x r s : Int) (h : c * s * s = t) :
+    c * the_closing_factor t x r s * the_closing_factor t x r (-s) = the_closing_quartic c t x r := by
+  rw [the_quartic_less_its_factors, h, Int.sub_self, Int.mul_zero, Int.add_zero]
+theorem the_quartic_does_not_read_the_sign (c t x r s : Int) :
+    c * the_closing_factor t x r s * the_closing_factor t x r (-s)
+      = c * the_closing_factor t x r (-s) * the_closing_factor t x r (-(-s)) := by
+  rw [Int.neg_neg, Int.mul_assoc, Int.mul_comm (the_closing_factor t x r s), ← Int.mul_assoc]
+#print axioms the_quartic_is_homogeneous_of_degree_five
+#print axioms the_quartic_factors
+#print axioms the_quartic_does_not_read_the_sign
+--| THE COUNTED QUARTIC.  Feed the quartic the three counted readings, c eighteen, t five, r eighteen.  Thirteen times it is a
+--| quadratic in sixty-five x, and the root is five thousand eight hundred thirty-two plus three hundred twenty-four root
+--| ninety: three hundred twenty-four times the outer radius, eighteen plus root ninety.  Over sixty-five, that is the
+--| reading.  The factors want c s squared to be t, and five over eighteen is no square: they do not split in whole numbers.
+theorem the_counted_quartic (x : Int) :
+    13 * the_closing_quartic 18 5 x 18 = 4225 * (x * x) - 758160 * x + 24564384 := by
+  simp only [the_closing_quartic]
+  simp only [Int.mul_assoc]
+  omega
+theorem the_reading_solves_the_counted_quartic :
+    (the_surd_product (5832, 324) (5832, 324)).1 - 11664 * 5832 + 24564384 = 0 ∧
+    (the_surd_product (5832, 324) (5832, 324)).2 - 11664 * 324 = 0 ∧
+    ((5832 : Int), (324 : Int)) = (324 * the_outer_radius.1, 324 * the_outer_radius.2) := by decide
+#print axioms the_counted_quartic
+#print axioms the_reading_solves_the_counted_quartic
+--| THE OTHER ROOT.  The counted quartic has two roots, and the hole is the other: five thousand eight hundred thirty-two less
+--| three hundred twenty-four root ninety, three hundred twenty-four times eighteen less root ninety.  The two add to the
+--| quadratic's middle count and multiply to its last, whole.  The reader reports the outer one; which the knower gives true
+--| is not written here.
+theorem the_conjugate_solves_the_counted_quartic :
+    (the_surd_product (5832, -324) (5832, -324)).1 - 11664 * 5832 + 24564384 = 0 ∧
+    (the_surd_product (5832, -324) (5832, -324)).2 - 11664 * (-324) = 0 ∧
+    ((5832 : Int), (-324 : Int)) = (324 * the_hole.1, 324 * the_hole.2) := by decide
+theorem the_two_roots_are_the_counts :
+    (5832 : Int) + 5832 = 11664 ∧ the_surd_product (5832, 324) (5832, -324) = (24564384, 0) := by decide
+#print axioms the_conjugate_solves_the_counted_quartic
+#print axioms the_two_roots_are_the_counts
+--| THE HEXADECIMAL CIRCLE, AND β.  The circle comes in as its hexadecimal digits: sum, over k, of one sixteenth to the k
+--| times a whole quadratic over a whole quartic, and every term after the twenty-fourth together weighs less than seven
+--| hundred fifty-two over two hundred twenty-five sixteenths to the twenty-fourth.  The two walls print the same twenty-four
+--| places.  Root ninety comes in between two whole numbers whose squares straddle it.  Then β is the reading over four
+--| circles, the weight of the squares against the line, and its walls print the same twenty-four places: ten point nine
+--| zero three zero one two for the reader's root, three point three seven six eight five nine for the knower's, and half of
+--| each on the device's square.  The knower holds c and t and the roots' shape with them; the reader's r only rescales.
+def the_hex_term (k : Nat) : Nat × Nat :=
+  (120 * k * k + 151 * k + 47, (512 * k ^ 4 + 1024 * k ^ 3 + 712 * k * k + 194 * k + 15) * 16 ^ k)
+def the_fraction_sum (p q : Nat × Nat) : Nat × Nat := (p.1 * q.2 + q.1 * p.2, p.2 * q.2)
+def the_hex_pi (N : Nat) : Nat × Nat := (List.range N).foldl (fun acc k => the_fraction_sum acc (the_hex_term k)) (0, 1)
+def the_hex_tail (N : Nat) : Nat × Nat := (752, 225 * 16 ^ N)
+def the_low_pi : Nat × Nat := the_hex_pi 24
+def the_high_pi : Nat × Nat := the_fraction_sum the_low_pi (the_hex_tail 24)
+def the_places : Nat := 10 ^ 24
+def the_reads (p : Nat × Nat) : Nat := p.1 * the_places / p.2
+theorem the_hex_digits_print_pi :
+    the_reads the_low_pi = 3141592653589793238462643 ∧ the_reads the_high_pi = 3141592653589793238462643 := by decide +kernel
+def the_root_ninety_below : Nat := 9486832980505137995996680633298
+theorem the_root_of_ninety_is_bracketed :
+    the_root_ninety_below * the_root_ninety_below ≤ 90 * 10 ^ 60
+      ∧ 90 * 10 ^ 60 < (the_root_ninety_below + 1) * (the_root_ninety_below + 1) := by decide +kernel
+def the_low_reading : Nat × Nat := (324 * (18 * 10 ^ 30 + the_root_ninety_below), 65 * 10 ^ 30)
+def the_high_reading : Nat × Nat := (324 * (18 * 10 ^ 30 + the_root_ninety_below + 1), 65 * 10 ^ 30)
+def the_low_conjugate : Nat × Nat := (324 * (18 * 10 ^ 30 - (the_root_ninety_below + 1)), 65 * 10 ^ 30)
+def the_high_conjugate : Nat × Nat := (324 * (18 * 10 ^ 30 - the_root_ninety_below), 65 * 10 ^ 30)
+def the_beta_of (reading pi : Nat × Nat) (turns : Nat) : Nat × Nat := (reading.1 * pi.2, reading.2 * turns * pi.1)
+theorem the_readers_beta :
+    the_reads (the_beta_of the_low_reading the_high_pi 4) = 10903012075134981375048166
+      ∧ the_reads (the_beta_of the_high_reading the_low_pi 4) = 10903012075134981375048166 := by decide +kernel
+theorem the_knowers_beta :
+    the_reads (the_beta_of the_low_conjugate the_high_pi 4) = 3376859126587073981938450
+      ∧ the_reads (the_beta_of the_high_conjugate the_low_pi 4) = 3376859126587073981938450 := by decide +kernel
+theorem the_betas_on_the_device_square :
+    the_reads (the_beta_of the_low_reading the_high_pi 8) = 5451506037567490687524083
+      ∧ the_reads (the_beta_of the_high_reading the_low_pi 8) = 5451506037567490687524083
+      ∧ the_reads (the_beta_of the_low_conjugate the_high_pi 8) = 1688429563293536990969225
+      ∧ the_reads (the_beta_of the_high_conjugate the_low_pi 8) = 1688429563293536990969225 := by decide +kernel
+theorem the_reader_only_rescales_the_roots (c t r X : Int) :
+    the_closing_quartic c t (r * r * X) r = r * r * r * r * the_closing_quartic c t X 1 := by
+  simp only [the_closing_quartic, Int.mul_one, Int.mul_sub, Int.sub_mul, Int.mul_add]
+  ac_nf
+#print axioms the_hex_digits_print_pi
+#print axioms the_root_of_ninety_is_bracketed
+#print axioms the_readers_beta
+#print axioms the_knowers_beta
+#print axioms the_betas_on_the_device_square
+#print axioms the_reader_only_rescales_the_roots
+--| THE QUARTIC'S FOUR, READ.  The factors want c s squared to be t.  With the counted c eighteen and t five, s squared is five
+--| over eighteen, which is ninety over eighteen squared: the clock over the clicks, squared, the torus's velocity below light.
+--| So the sign the quartic does not read is the sign of a velocity, and its factors are r squared less t x times one less or
+--| one more than that velocity.
+theorem the_quartic_sign_is_the_velocity :
+    (5 : Int) * (18 * 18) = 18 * 90 ∧ (90 : Int) < 18 * 18 := by decide
+#print axioms the_quartic_sign_is_the_velocity
+--| THE BOOST, AGAIN AND AGAIN; THE TWO ROOTS' RATIO; SCHWINGER'S TERM.  Boost the outer radius any number of times: the interval
+--| stays two hundred thirty-four and the hole never closes.  The outer root squared times the hole is two hundred thirty-four
+--| times the outer root: the ratio of the roots is the boost there and back.  And the electron's first loop, the coupling over
+--| two circles, read from the reading and the circle's hexadecimal digits, both walls to twenty-four places.
+def the_boosted : Nat → Int × Int
+  | 0 => the_outer_radius
+  | k + 1 => the_surd_product (the_boosted k) the_boost
+theorem every_boost_keeps_the_interval (k : Nat) : the_interval (the_boosted k) = 234 := by
+  induction k with
+  | zero => decide
+  | succ k ih => simp only [the_boosted, the_boost_preserves_the_interval, ih]
+theorem the_hole_never_closes (k : Nat) :
+    the_round_trip * (the_boosted k).2 * (the_boosted k).2 < (the_boosted k).1 * (the_boosted k).1 :=
+  the_hole_stays_open _ (every_boost_keeps_the_interval k)
+theorem the_ratio_of_the_roots_is_twice_the_boost :
+    the_surd_product (the_surd_product the_outer_radius the_outer_radius) the_hole
+      = (234 * the_outer_radius.1, 234 * the_outer_radius.2) := by decide
+def the_schwinger_of (reading pi : Nat × Nat) : Nat × Nat := (reading.2 * pi.2, 2 * reading.1 * pi.1)
+theorem the_schwinger_term_from_the_reading :
+    the_reads (the_schwinger_of the_high_reading the_high_pi) = 1161619180829479589123
+      ∧ the_reads (the_schwinger_of the_low_reading the_low_pi) = 1161619180829479589123 := by decide +kernel
+#print axioms every_boost_keeps_the_interval
+#print axioms the_hole_never_closes
+#print axioms the_ratio_of_the_roots_is_twice_the_boost
+#print axioms the_schwinger_term_from_the_reading
+--| THE ELECTRON FOUR WAYS, AND THE DERIVATIVE OF ITSELF.  The refinement is linear, so its whole derivative at every point is
+--| itself, with no remainder: step the field by any amount and the refinement steps by the refinement of that amount.  The
+--| action it carries varies by the operator twice, the number read once and again, and leaves only the action of the step.
+--| On the whole numbers with the round trip's root, the refinement is a product, and it commutes with every boost: the
+--| space it acts on keeps its interval and its operator under every change of frame.  And only the round trip is read: two
+--| tables whose crossings multiply to the same round trip are one table seen through two clocks, the one-way split a
+--| choice of synchrony.  The speed comes out only as the gap of the two stationary values over their sum, the multipliers
+--| that hold the field to its length.
+def the_refinement_table (a b f : Int) : Table := fun x y => if x = y then a else if x then b else f
+def the_one_way_clocks (b b' : Int) : Table := fun x y => if x = y then (if x then b else b') else 0
+theorem the_one_way_split_is_a_change_of_clocks (a b f b' f' : Int) (h : b * f = b' * f') (x y : Bool) :
+    the_table_product (the_refinement_table a b f) (the_one_way_clocks b b') x y
+      = the_table_product (the_one_way_clocks b b') (the_refinement_table a b' f') x y := by
+  have h' : f * b = b' * f' := by rw [Int.mul_comm]; exact h
+  cases x <;> cases y <;> simp [the_table_product, the_refinement_table, the_one_way_clocks, Int.mul_comm, h']
+def the_refine (A : Table) (v : Bool → Int) : Bool → Int := fun x => A x true * v true + A x false * v false
+theorem the_refinement_is_its_own_derivative (A : Table) (v h : Bool → Int) (x : Bool) :
+    the_refine A (fun y => v y + h y) x - the_refine A v x = the_refine A h x := by
+  simp only [the_refine, Int.mul_add]; omega
+def the_action_of (A : Table) (v : Bool → Int) : Int := v true * the_refine A v true + v false * the_refine A v false
+theorem the_action_varies_by_the_operator_twice (A : Table) (sym : A true false = A false true) (v h : Bool → Int) :
+    the_action_of A (fun y => v y + h y) - the_action_of A v
+      = (h true * the_refine A v true + h false * the_refine A v false)
+        + (h true * the_refine A v true + h false * the_refine A v false) + the_action_of A h := by
+  simp only [the_action_of, the_refine, sym, Int.mul_add, Int.add_mul]
+  simp only [Int.mul_comm, Int.mul_left_comm]
+  omega
+theorem the_surd_products_commute (p q o : Int × Int) :
+    the_surd_product (the_surd_product p o) q = the_surd_product (the_surd_product p q) o := by
+  simp only [the_surd_product, Int.mul_add, Int.add_mul]
+  simp only [Int.mul_comm, Int.mul_left_comm]
+  refine Prod.ext ?_ ?_ <;> dsimp only <;> omega
+theorem the_refinement_commutes_with_every_boost (p q : Int × Int) :
+    the_surd_product (the_surd_product p the_outer_radius) q = the_surd_product (the_surd_product p q) the_outer_radius :=
+  the_surd_products_commute p q the_outer_radius
+theorem the_speed_is_read_from_the_multipliers :
+    (the_outer_radius.1 - the_hole.1, the_outer_radius.2 - the_hole.2) = (0, 2)
+      ∧ (the_outer_radius.1 + the_hole.1, the_outer_radius.2 + the_hole.2) = (36, 0) := by decide
+#print axioms the_one_way_split_is_a_change_of_clocks
+#print axioms the_refinement_is_its_own_derivative
+#print axioms the_action_varies_by_the_operator_twice
+#print axioms the_refinement_commutes_with_every_boost
+#print axioms the_speed_is_read_from_the_multipliers
+--| THE CHARGE, THROUGH EULER.  A link's phase is the turn by an angle, and the angle is the charge times the field: the quarter
+--| turn is the turn by half the circle's half, and two of them are the turn by the circle's half, minus one.  So the charge is
+--| the root of four circles over the reading, one over the root of β.  No root is taken: a whole number of twenty-four places
+--| is found whose square sits between the walls.  Point three zero two eight four nine four two five for the reader's root,
+--| point five four four one eight one one nine for the knower's.
+def the_readers_charge : Nat := 302849425021801185772755
+def the_knowers_charge : Nat := 544181192849948845712632
+theorem the_readers_charge_is_bracketed :
+    the_readers_charge * the_readers_charge * the_low_pi.2 * the_high_reading.1
+        ≤ 4 * the_low_pi.1 * the_high_reading.2 * 10 ^ 48
+      ∧ 4 * the_high_pi.1 * the_low_reading.2 * 10 ^ 48
+        < (the_readers_charge + 1) * (the_readers_charge + 1) * the_high_pi.2 * the_low_reading.1 := by decide +kernel
+theorem the_knowers_charge_is_bracketed :
+    the_knowers_charge * the_knowers_charge * the_low_pi.2 * the_high_conjugate.1
+        ≤ 4 * the_low_pi.1 * the_high_conjugate.2 * 10 ^ 48
+      ∧ 4 * the_high_pi.1 * the_low_conjugate.2 * 10 ^ 48
+        < (the_knowers_charge + 1) * (the_knowers_charge + 1) * the_high_pi.2 * the_low_conjugate.1 := by decide +kernel
+#print axioms the_readers_charge_is_bracketed
+#print axioms the_knowers_charge_is_bracketed
+--| GALERKIN AROUND THE SEMI-NORM, AND THE SOLVER.  On a ring of four stations, measure a field by the squares of its central
+--| differences, the step ahead less the step behind.  That length is never negative, and it sees nothing exactly on the fields
+--| that repeat every two stations: the still field and the alternating one, the two doublers.  Project them out.  On the two
+--| fields that turn, the central difference is twice the quarter turn, and the Galerkin matrix is eight times the identity:
+--| the problem there has one solution.  Then the solver: the difference of the residual across a step is the derivative times
+--| the step plus the bent card times the step squared, exactly; and one Newton step taken with that difference, from the top
+--| wall of the reading's bracket, lands between the walls.  Jacobian-free Newton, Krylov on the turning fields.
+abbrev Ring4 := Int × Int × Int × Int
+def the_central_difference (ψ : Ring4) : Ring4 :=
+  (ψ.2.1 - ψ.2.2.2, ψ.2.2.1 - ψ.1, ψ.2.2.2 - ψ.2.1, ψ.1 - ψ.2.2.1)
+def the_ring_dot (u v : Ring4) : Int := u.1 * v.1 + u.2.1 * v.2.1 + u.2.2.1 * v.2.2.1 + u.2.2.2 * v.2.2.2
+def the_semi_norm (ψ : Ring4) : Int := the_ring_dot (the_central_difference ψ) (the_central_difference ψ)
+theorem a_nonzero_square_is_positive (x : Int) (h : x ≠ 0) : 0 < x * x := by
+  rcases Int.lt_or_gt_of_ne h with h | h
+  · exact Int.mul_pos_of_neg_of_neg h h
+  · exact Int.mul_pos h h
+theorem the_semi_norm_is_never_negative (ψ : Ring4) : 0 ≤ the_semi_norm ψ := by
+  simp only [the_semi_norm, the_ring_dot, the_central_difference]
+  have h1 := a_square_is_never_negative (ψ.2.1 - ψ.2.2.2); have h2 := a_square_is_never_negative (ψ.2.2.1 - ψ.1)
+  have h3 := a_square_is_never_negative (ψ.2.2.2 - ψ.2.1); have h4 := a_square_is_never_negative (ψ.1 - ψ.2.2.1)
+  omega
+theorem the_semi_norm_sees_nothing_exactly_on_the_doublers (ψ : Ring4) :
+    the_semi_norm ψ = 0 ↔ (ψ.1 = ψ.2.2.1 ∧ ψ.2.1 = ψ.2.2.2) := by
+  constructor
+  · intro h
+    simp only [the_semi_norm, the_ring_dot, the_central_difference] at h
+    have h1 := a_square_is_never_negative (ψ.2.1 - ψ.2.2.2); have h2 := a_square_is_never_negative (ψ.2.2.1 - ψ.1)
+    have h3 := a_square_is_never_negative (ψ.2.2.2 - ψ.2.1); have h4 := a_square_is_never_negative (ψ.1 - ψ.2.2.1)
+    constructor
+    · by_cases hne : ψ.2.2.1 - ψ.1 = 0
+      · omega
+      · have := a_nonzero_square_is_positive (ψ.2.2.1 - ψ.1) hne; omega
+    · by_cases hne : ψ.2.1 - ψ.2.2.2 = 0
+      · omega
+      · have := a_nonzero_square_is_positive (ψ.2.1 - ψ.2.2.2) hne; omega
+  · rintro ⟨h1, h2⟩
+    simp only [the_semi_norm, the_ring_dot, the_central_difference, h1, h2, Int.sub_self, Int.mul_zero, Int.add_zero]
+theorem the_still_and_the_alternating_are_its_kernel (c d : Int) :
+    the_semi_norm (c, c, c, c) = 0 ∧ the_semi_norm (d, -d, d, -d) = 0 := by
+  constructor <;> simp only [the_semi_norm, the_ring_dot, the_central_difference, Int.sub_self, Int.mul_zero, Int.add_zero] <;> omega
+def the_first_turning_field : Ring4 := (1, 0, -1, 0)
+def the_second_turning_field : Ring4 := (0, 1, 0, -1)
+theorem on_the_turning_fields_the_derivative_is_twice_the_quarter_turn :
+    the_central_difference the_first_turning_field = (0, -2, 0, 2)
+      ∧ the_central_difference the_second_turning_field = (2, 0, -2, 0) := by decide
+theorem the_galerkin_matrix_is_invertible :
+    let g11 := the_semi_norm the_first_turning_field
+    let g12 := the_ring_dot (the_central_difference the_first_turning_field) (the_central_difference the_second_turning_field)
+    let g22 := the_semi_norm the_second_turning_field
+    (g11, g12, g22) = (8, 0, 8) ∧ g11 * g22 - g12 * g12 ≠ 0 := by decide
+def the_residual_at (y : Int) : Int := 13 * y * y - 36 * y + 18
+theorem the_jacobian_free_difference_is_exact (y h : Int) :
+    the_residual_at (y + h) - the_residual_at y = (26 * y - 36) * h + 13 * (h * h) := by
+  simp only [the_residual_at, Int.mul_add, Int.add_mul, Int.sub_mul]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+def the_low_root : Int := 18 * 10 ^ 30 + the_root_ninety_below
+def the_high_root : Int := the_low_root + 1
+def the_denominator : Int := 13 * 10 ^ 30
+def the_scaled_residual (y : Int) : Int := 13 * y * y - 36 * y * the_denominator + 18 * the_denominator * the_denominator
+def the_secant_slope : Int := 13 * (the_low_root + the_high_root) - 36 * the_denominator
+theorem one_jacobian_free_newton_step_stays_in_the_bracket :
+    the_scaled_residual the_low_root < 0 ∧ 0 < the_scaled_residual the_high_root ∧ 0 < the_secant_slope
+      ∧ the_scaled_residual the_high_root ≤ the_secant_slope := by decide +kernel
+#print axioms the_semi_norm_is_never_negative
+#print axioms the_semi_norm_sees_nothing_exactly_on_the_doublers
+#print axioms the_still_and_the_alternating_are_its_kernel
+#print axioms on_the_turning_fields_the_derivative_is_twice_the_quarter_turn
+#print axioms the_galerkin_matrix_is_invertible
+#print axioms the_jacobian_free_difference_is_exact
+#print axioms one_jacobian_free_newton_step_stays_in_the_bracket
+--| THE SEMI-NORM FROM THE COMPARISON.  Compare the station ahead with the station behind, one way, in the naturals: the step
+--| after less before, plus before less after, floors to the size of the step.  Square it, sum it around the ring, and it is the
+--| Galerkin semi-norm exactly.  Compare both ways, in a ring, and the step is nothing: the comparison measures nothing at all.
+--| The knower's length is the comparison read one way.
+def the_one_way_step (after before : Nat) : Nat := (after - before) + (before - after)
+theorem the_one_way_step_squared (a b : Nat) :
+    ((the_one_way_step a b : Nat) : Int) * ((the_one_way_step a b : Nat) : Int) = ((a : Int) - b) * ((a : Int) - b) := by
+  simp only [the_one_way_step]
+  rcases Nat.le_total b a with h | h
+  · have e : (((a - b) + (b - a) : Nat) : Int) = (a : Int) - b := by omega
+    rw [e]
+  · have e : (((a - b) + (b - a) : Nat) : Int) = (b : Int) - a := by omega
+    rw [e, show (b : Int) - a = -((a : Int) - b) by omega, Int.neg_mul_neg]
+def the_semi_norm_from_the_comparison (ψ : Nat × Nat × Nat × Nat) : Nat :=
+  the_one_way_step ψ.2.1 ψ.2.2.2 * the_one_way_step ψ.2.1 ψ.2.2.2
+    + the_one_way_step ψ.2.2.1 ψ.1 * the_one_way_step ψ.2.2.1 ψ.1
+    + the_one_way_step ψ.2.2.2 ψ.2.1 * the_one_way_step ψ.2.2.2 ψ.2.1
+    + the_one_way_step ψ.1 ψ.2.2.1 * the_one_way_step ψ.1 ψ.2.2.1
+theorem the_semi_norm_is_the_comparison_read_one_way (ψ : Nat × Nat × Nat × Nat) :
+    ((the_semi_norm_from_the_comparison ψ : Nat) : Int)
+      = the_semi_norm ((ψ.1 : Int), (ψ.2.1 : Int), (ψ.2.2.1 : Int), (ψ.2.2.2 : Int)) := by
+  simp only [the_semi_norm_from_the_comparison, the_semi_norm, the_ring_dot, the_central_difference, Int.natCast_add, Int.natCast_mul,
+    the_one_way_step_squared]
+def the_semi_norm_read_both_ways (ψ : Int × Int × Int × Int) : Int :=
+  ((ψ.2.1 - ψ.2.2.2) + (ψ.2.2.2 - ψ.2.1)) * ((ψ.2.1 - ψ.2.2.2) + (ψ.2.2.2 - ψ.2.1))
+    + ((ψ.2.2.1 - ψ.1) + (ψ.1 - ψ.2.2.1)) * ((ψ.2.2.1 - ψ.1) + (ψ.1 - ψ.2.2.1))
+theorem read_both_ways_the_comparison_measures_nothing (ψ : Int × Int × Int × Int) :
+    the_semi_norm_read_both_ways ψ = 0 := by
+  have step : ∀ p q : Int, (p - q) + (q - p) = 0 := fun p q => by omega
+  simp only [the_semi_norm_read_both_ways, step, Int.mul_zero, Int.add_zero]
+#print axioms the_one_way_step_squared
+#print axioms the_semi_norm_is_the_comparison_read_one_way
+#print axioms read_both_ways_the_comparison_measures_nothing
+
+--| ONE WAY AND BOTH WAYS, IN THE CRANK.  Episode 8's guard is (x·y' − x'·y) + (x'·y − x·y'): p − q plus q − p, with p = x·y' and
+--| q = x'·y.  Read one way, in the naturals, each subtraction floors at zero and the sum is the size of the step, whichever way
+--| it went.  Read both ways, in a ring, the two halves cancel and the sum is nothing: the guard fires on every turn, and the
+--| crank never leaves its seed.  The certificate has the same shape.  The box read both ways has one point, so every k is
+--| certified, and what picks the printed one is the floor of a division, one way again.  The number is what the floor leaves.
+theorem the_floor_reads_the_step (p q : Nat) : (p - q) + (q - p) = if q ≤ p then p - q else q - p := by
+  split <;> omega
+theorem both_ways_the_step_is_zero (p q : Int) : (p - q) + (q - p) = 0 := by omega
+theorem both_ways_the_guard_always_stops (p q s f g : Int) :
+    ((p - q) + (q - p)) * s * f < g ↔ 0 < g := by
+  rw [both_ways_the_step_is_zero, Int.zero_mul, Int.zero_mul]
+theorem one_way_the_guard_reads_the_step (p q s f g : Nat) (h : q ≤ p) :
+    ((p - q) + (q - p)) * s * f < g ↔ (p - q) * s * f < g := by
+  rw [Nat.sub_eq_zero_of_le h, Nat.add_zero]
+theorem every_k_is_certified (k : Nat) :
+    (Quot.mk the_rational_idea_of_relativity (arrange_the_information_appropriately.2 * k, arrange_the_information_appropriately.2)
+        : Quot the_rational_idea_of_relativity)
+      = Quot.mk the_rational_idea_of_relativity
+          (arrange_the_information_appropriately.1 * all_possible_variables, arrange_the_information_appropriately.2) :=
+  the_box_has_one_point _ _
+#print axioms the_floor_reads_the_step
+#print axioms both_ways_the_step_is_zero
+#print axioms both_ways_the_guard_always_stops
+#print axioms one_way_the_guard_reads_the_step
+#print axioms every_k_is_certified
+--| The freeze, on the device's own step.  Episode 8's step is written for any Term; dealt at Int, with any counting function, the
+--| guard's left side is nothing, so the step never reads its scale: the crank at Int is the crank with no tolerance at all.
+theorem at_Int_the_scale_is_never_read (lambda : List FACT → Int) (s s' : Int) (p : Int × Int) :
+    bent_card.the_device_computing_the_next_configuration Int lambda s p
+      = bent_card.the_device_computing_the_next_configuration Int lambda s' p := by
+  simp only [bent_card.the_device_computing_the_next_configuration, both_ways_the_step_is_zero, Int.zero_mul]
+theorem at_Int_the_tolerance_is_zero (lambda : List FACT → Int) (s : Int) (p : Int × Int) :
+    bent_card.the_device_computing_the_next_configuration Int lambda s p
+      = bent_card.the_device_computing_the_next_configuration Int lambda 0 p :=
+  at_Int_the_scale_is_never_read lambda s 0 p
+#print axioms at_Int_the_scale_is_never_read
+#print axioms at_Int_the_tolerance_is_zero
 
 -- the squares, expanded once by hand so the tally only ever sees literal coefficients on N·N, N·D, D·D
 theorem step_sq (N D : Nat) : (N + D) * (N + D) = N * N + 2 * (N * D) + D * D := by
@@ -2620,6 +4139,78 @@ theorem the_clicks_count : the_clicks.length = 78 := rfl
 theorem a_compile_is_the_truth (α : Sort u) (t : α) :
     Quot.mk same_click (IT_COMPILES α t) = Quot.mk same_click FACT.Truth := Quot.sound rfl
 #print axioms a_compile_is_the_truth
+--| The inferences, as clicks: the quartic, one way and both ways, and the freeze on the device's own step, each minted the way
+--| a rung is minted, and each the same account as the truth.
+def the_inferences : List FACT :=
+  [IT_COMPILES _ the_quartic_is_homogeneous_of_degree_five,
+   IT_COMPILES _ the_quartic_less_its_factors,
+   IT_COMPILES _ the_quartic_factors,
+   IT_COMPILES _ the_quartic_does_not_read_the_sign,
+   IT_COMPILES _ the_floor_reads_the_step,
+   IT_COMPILES _ both_ways_the_step_is_zero,
+   IT_COMPILES _ both_ways_the_guard_always_stops,
+   IT_COMPILES _ one_way_the_guard_reads_the_step,
+   IT_COMPILES _ every_k_is_certified,
+   IT_COMPILES _ at_Int_the_scale_is_never_read,
+   IT_COMPILES _ at_Int_the_tolerance_is_zero]
+theorem every_inference_clicks : the_inferences.all the_click = true := rfl
+theorem every_inference_is_the_truth : ∀ f ∈ the_inferences, Quot.mk same_click f = Quot.mk same_click FACT.Truth := by
+  intro f hf
+  exact Quot.sound (List.all_eq_true.mp every_inference_clicks f hf)
+theorem the_inferences_count : the_inferences.length = 11 := rfl
+#print axioms every_inference_clicks
+#print axioms every_inference_is_the_truth
+--| THE INTERPRETATION EXPERIMENT.  The experience was read on the meter, in heartbeats, noisy.  The interpretation is read here,
+--| by click: each proposal the knower is asked to take is minted with the comparison under it, and the device decides the
+--| comparison.  What clicks is the comparison; that the proposal is that comparison is the knower's.  A click is not a proof
+--| of the proposal.  It is the device saying yes to the finite thing the proposal stands on.  Nine click.  One does not: the
+--| reading set beside the laboratory's band.  The slip itself clicks.
+def IT_CLICKS (P : Prop) [Decidable P] : FACT := { truth := P, click := inferInstance }
+def the_laboratory : Nat := 137035999177  --| CODATA 2022, in billionths; its standard uncertainty is twenty-one of them.
+def the_proposals : List FACT :=
+  [ --| The Hubble sphere is the pole the torus goes around: outer and hole add to the trace and multiply to the interval.
+    IT_CLICKS ((the_outer_radius.1 + the_hole.1, the_outer_radius.2 + the_hole.2) = (36, 0)
+      ∧ the_surd_product the_outer_radius the_hole = (234, 0)),
+    --| c is a fraction of the speed of light: t over c is the clock over the clicks, squared, and below one.
+    IT_CLICKS ((5 : Int) * (18 * 18) = 18 * 90 ∧ (90 : Int) < 18 * 18),
+    --| The boost of the reader: nineteen and two, interval one.
+    IT_CLICKS (the_interval the_boost = 1),
+    --| The ratio of the roots is the boost there and back.
+    IT_CLICKS (the_surd_product (the_surd_product the_outer_radius the_outer_radius) the_hole
+      = (234 * the_outer_radius.1, 234 * the_outer_radius.2)),
+    --| The knower's root, given true, is the inferred mass gap: it solves the counted quartic too.
+    IT_CLICKS ((the_surd_product (5832, -324) (5832, -324)).1 - 11664 * 5832 + 24564384 = 0
+      ∧ (the_surd_product (5832, -324) (5832, -324)).2 - 11664 * (-324) = 0),
+    --| β is the reading over four circles.
+    IT_CLICKS (the_reads (the_beta_of the_low_reading the_high_pi 4) = 10903012075134981375048166
+      ∧ the_reads (the_beta_of the_high_reading the_low_pi 4) = 10903012075134981375048166),
+    --| The charge, through Euler.
+    IT_CLICKS (the_readers_charge * the_readers_charge * the_low_pi.2 * the_high_reading.1
+        ≤ 4 * the_low_pi.1 * the_high_reading.2 * 10 ^ 48
+      ∧ 4 * the_high_pi.1 * the_low_reading.2 * 10 ^ 48
+        < (the_readers_charge + 1) * (the_readers_charge + 1) * the_high_pi.2 * the_low_reading.1),
+    --| The electron's first loop.
+    IT_CLICKS (the_reads (the_schwinger_of the_high_reading the_high_pi) = 1161619180829479589123
+      ∧ the_reads (the_schwinger_of the_low_reading the_low_pi) = 1161619180829479589123),
+    --| The part of the electron that is not a carrier of charge: the slip, between one point eight and one point eight one
+    --| parts in ten thousand of the laboratory's value.
+    IT_CLICKS (180 * the_laboratory * the_high_reading.2
+        ≤ (the_laboratory * the_high_reading.2 - the_high_reading.1 * 10 ^ 9) * 10 ^ 6
+      ∧ (the_laboratory * the_low_reading.2 - the_low_reading.1 * 10 ^ 9) * 10 ^ 6
+        < 181 * the_laboratory * the_low_reading.2)]
+--| The identity at zero momentum: the reading inside the laboratory's band of one standard uncertainty.
+def the_identity_with_the_laboratory : FACT :=
+  IT_CLICKS ((the_laboratory - 21) * the_high_reading.2 ≤ the_high_reading.1 * 10 ^ 9
+    ∧ the_low_reading.1 * 10 ^ 9 ≤ (the_laboratory + 21) * the_low_reading.2)
+theorem every_proposal_clicks : the_proposals.all the_click = true := by decide +kernel
+theorem every_proposal_is_the_truth : ∀ f ∈ the_proposals, Quot.mk same_click f = Quot.mk same_click FACT.Truth := by
+  intro f hf
+  exact Quot.sound (List.all_eq_true.mp every_proposal_clicks f hf)
+theorem the_proposals_count : the_proposals.length = 9 := rfl
+theorem the_identity_does_not_click : the_click the_identity_with_the_laboratory = false := by decide +kernel
+#print axioms every_proposal_clicks
+#print axioms every_proposal_is_the_truth
+#print axioms the_identity_does_not_click
 
 --| THE NUMBER, FROM THE CLICKS.  The last device reads nothing but whether each cell clicked.  Count the clicks on every tape
 --| instead of the cells, crank the same fenceposts, and divide once: the same number, on propext alone.  It agrees with the
@@ -2714,6 +4305,53 @@ theorem two_decks_to_the_count : deck_one.quarter.peano.length ≠ deck_two.quar
 #print axioms the_alpha_is_three_cells
 #print axioms one_deck_to_the_measure
 #print axioms two_decks_to_the_count
+
+--| SAME DIFFERENCE.  INFERRED compares its two closures by `inferred?`, which is `≤`: the interpretation, inferred from the
+--| pair (the constant, the gawk at it), against α, constant ≤ real.  Dealt on rung 37 the comparison clicks, and it clicks
+--| back: every cell of the constant clicks, so the order never flips, and the slips are True and True.  The device reads
+--| the order both ways.  That the ≤ runs one way is the knower's.
+set_option maxHeartbeats 400000 in
+theorem the_knower_reads_one_way : the_knower.inferred? the_conclusion the_alpha := by
+  show Closure.le the_conclusion the_alpha
+  unfold the_conclusion the_alpha the_representation.rung37
+  simp only [assembly_instructions.«ITS_YOU_!!», Closure.le]
+  refine Or.inl ⟨Or.inl trivial, (trivial : True), ?_, id⟩
+  show Bullshit.le _ _
+  conv => arg 1; whnf
+  conv => arg 2; whnf
+  conv => whnf
+  exact ⟨rfl, rfl, id, (trivial : True), (trivial : True), (trivial : True)⟩
+set_option maxHeartbeats 400000 in
+theorem the_device_reads_it_back : the_knower.inferred? the_alpha the_conclusion := by
+  show Closure.le the_alpha the_conclusion
+  unfold the_conclusion the_alpha the_representation.rung37
+  simp only [assembly_instructions.«ITS_YOU_!!», Closure.le]
+  refine Or.inl ⟨Or.inl trivial, (trivial : True), ?_, id⟩
+  show Bullshit.le _ _
+  conv => arg 1; whnf
+  conv => arg 2; whnf
+  conv => whnf
+  exact ⟨rfl, rfl, id, (trivial : True), (trivial : True), (trivial : True)⟩
+theorem the_two_closures_click :
+    [IT_COMPILES _ the_knower_reads_one_way, IT_COMPILES _ the_device_reads_it_back].all the_click = true := rfl
+#print axioms the_knower_reads_one_way
+#print axioms the_device_reads_it_back
+#print axioms the_two_closures_click
+--| THE INFERRED MASS GAP.  The knower's conclusion on rung 37 has no defining equation; it is one cell, and the device reads
+--| its order against α both ways.  Name it.  The whole action of light and matter moves with the knower only through β: two
+--| knowers who choose two βs read the same matter, the same squares, and actions that differ by the difference of the βs times
+--| the squares, nothing else.  What β is, the knower infers.
+noncomputable def the_inferred_mass_gap : Closure := the_conclusion
+theorem the_inferred_mass_gap_is_one_cell : the_inferred_mass_gap.infer.length = 1 := the_conclusion_is_one_cell
+theorem the_knower_infers_the_slot : the_knower.inferred? the_inferred_mass_gap the_alpha := the_knower_reads_one_way
+theorem the_whole_action_moves_only_with_β {n : Nat} (β β' : Int) (U : Bool → Fin (n+1) → Fin (n+1) → Int × Int)
+    (ψ : Fin (n+1) → Fin (n+1) → Vec8) (m : Int) :
+    the_whole_action β U ψ m - the_whole_action β' U ψ m = (β - β') * the_torus_action (the_phase_torus U) := by
+  simp only [the_whole_action, Int.sub_mul]
+  omega
+#print axioms the_inferred_mass_gap_is_one_cell
+#print axioms the_knower_infers_the_slot
+#print axioms the_whole_action_moves_only_with_β
 
 --| THE CUT ON THE CARD.  Now leave the quarter alone and cut the face instead: the conclusion's fact on one card, α's last
 --| fact, FACT.SAME, on the other, the same one-cell quarter under both.  The measure reads one walk.  The count reads one
@@ -2906,6 +4544,24 @@ def the_first_return : Nat → Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
     if the_torus_read next == the_torus_read the_torus_start then some (k + 1) else the_first_return fuel next (k + 1)
 #eval the_first_return 10000 the_torus_start 0
 #eval (the_torus_read the_torus_start).2.2.2.length
+--| COOK AND LEVIN, IN THE EXPERIENCE.  The reader's model of the naotrino is the top of the typeset record, and its page is
+--| a trace: a tableau with time down the pages and the facts across them.  Cook's theorem for this device is already proved
+--| for every trace; here it is dealt on the reader's own.  And it is demonstrated, not only stated: seed the manuscript
+--| true, false, true and the formula built from the trace is satisfied; seed five falses and it is not; and the verdicts are
+--| the steps.  The proof of the general theorem, for any machine, is on the card.
+theorem cook_levin_on_the_readers_interpretation :
+    THEORY.traceSat naotrino_model.the_page = naotrino_model.the_page.stepOK :=
+  cook_levin_the_description _
+def the_accepting_seed : ThePreprint.{0} := decodeBits [true, false, true]
+def the_rejecting_seed : ThePreprint.{0} := decodeBits [false, false, false, false, false]
+theorem the_formula_accepts_and_rejects :
+    (THEORY.traceSat the_accepting_seed, THEORY.traceSat the_rejecting_seed) = (true, false) := by decide
+theorem the_verdicts_are_the_steps :
+    (the_accepting_seed.stepOK, the_rejecting_seed.stepOK) = (true, false) := by
+  rw [← cook_levin_the_description, ← cook_levin_the_description]; exact the_formula_accepts_and_rejects
+#print axioms cook_levin_on_the_readers_interpretation
+#print axioms the_formula_accepts_and_rejects
+#print axioms the_verdicts_are_the_steps
 end readers_interpretation_of_the_experience
 
 --| THE READER'S INTERPRETATION, CARRYING A PAIR.  The same experience dealt on a box that holds two carriers at once, the

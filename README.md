@@ -21,6 +21,7 @@ The Lean episodes are Card 2. The PDFs at the root are the rest of the table:
 - `THE_QUARTER.pdf`: *The Quarter*: the number every record carries only as a projection.
 - `BENT_CARD.pdf`: *The Infinite Looop Considered Harmless*: the motion of the universe never seems to cease.
 - `CHEATSHEET.pdf`: *A Knower's Guide to Orbital Mechanics*: what the device shows in finite steps, and what the knower carries past them.
+- `THE_DERIVATION.pdf`: *A Projection with a Residue*: the refinement operator, derived in letters; the counts arrive only at the end.
 
 ## The Puzzle Box Residue
 ```
