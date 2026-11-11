@@ -3589,6 +3589,213 @@ theorem the_speed_is_read_from_the_multipliers :
 #print axioms the_action_varies_by_the_operator_twice
 #print axioms the_refinement_commutes_with_every_boost
 #print axioms the_speed_is_read_from_the_multipliers
+--| THE RING, QUANTIZED; THE PANELS; THE QUARTIC BACK.  The quarter turn walks the four labels and is home on the fourth step,
+--| every fourth step, perfectly.  Any other whole phase keeps a residue: three and four over five carries three and four
+--| modulo five at every step, so it never lands on a label, and its length stays a power of five, on the ring.  Between two
+--| readings is a panel.  On a panel the straight line through its posts leaves an error orthogonal to it, so the step's
+--| energy is the line's plus the error's: the line is the least, exact in the first-order sense.  Split a panel and the
+--| line's energy can only rise: refinement is an order, and the energies climb under it toward the curve's.  And the
+--| second difference taken twice is the stencil one, four, six, four, one: the line's operator squared, the quartic back.
+def the_gaussian_product (p q : Int × Int) : Int × Int := (p.1 * q.1 - p.2 * q.2, p.1 * q.2 + p.2 * q.1)
+def the_gaussian_norm (p : Int × Int) : Int := p.1 * p.1 + p.2 * p.2
+def the_phase_walk (z : Int × Int) : Nat → Int × Int
+  | 0 => (1, 0)
+  | n + 1 => the_gaussian_product (the_phase_walk z n) z
+def the_quarter_phase : Int × Int := (0, 1)
+def the_rational_phase : Int × Int := (3, 4)
+theorem the_four_labels_walk_perfectly :
+    the_phase_walk the_quarter_phase 1 = (0, 1) ∧ the_phase_walk the_quarter_phase 2 = (-1, 0)
+      ∧ the_phase_walk the_quarter_phase 3 = (0, -1) ∧ the_phase_walk the_quarter_phase 4 = (1, 0) := by decide
+theorem the_quarter_walk_repeats_every_four (n : Nat) :
+    the_phase_walk the_quarter_phase (n + 4) = the_phase_walk the_quarter_phase n := by
+  induction n with
+  | zero => decide
+  | succ n ih => show the_gaussian_product (the_phase_walk the_quarter_phase (n + 4)) the_quarter_phase = _; rw [ih]; rfl
+def the_residue_witness : Nat → Int × Int
+  | 0 => (0, 0)
+  | n + 1 => (-2 + 3 * (the_residue_witness n).1 - 4 * (the_residue_witness n).2,
+              4 + 4 * (the_residue_witness n).1 + 3 * (the_residue_witness n).2)
+theorem the_other_phase_keeps_its_residue (n : Nat) :
+    the_phase_walk the_rational_phase (n + 1)
+      = (3 + 5 * (the_residue_witness n).1, 4 + 5 * (the_residue_witness n).2) := by
+  induction n with
+  | zero => decide
+  | succ n ih =>
+    show the_gaussian_product (the_phase_walk the_rational_phase (n + 1)) the_rational_phase = _
+    rw [ih]
+    simp only [the_gaussian_product, the_rational_phase, the_residue_witness]
+    refine Prod.ext ?_ ?_ <;> dsimp only <;> omega
+theorem the_other_phase_never_lands_on_a_label (n : Nat) :
+    (the_phase_walk the_rational_phase (n + 1)).1 ≠ 0 ∧ (the_phase_walk the_rational_phase (n + 1)).2 ≠ 0 := by
+  rw [the_other_phase_keeps_its_residue]; dsimp only
+  exact ⟨fun h => by omega, fun h => by omega⟩
+theorem the_norm_of_a_product (p q : Int × Int) :
+    the_gaussian_norm (the_gaussian_product p q) = the_gaussian_norm p * the_gaussian_norm q := by
+  simp only [the_gaussian_norm, the_gaussian_product, Int.mul_add, Int.add_mul, Int.mul_sub, Int.sub_mul]
+  simp only [Int.mul_comm, Int.mul_left_comm]
+  omega
+theorem the_other_phase_stays_on_the_ring (n : Nat) :
+    the_gaussian_norm (the_phase_walk the_rational_phase n) = 25 ^ n := by
+  induction n with
+  | zero => decide
+  | succ n ih =>
+    show the_gaussian_norm (the_gaussian_product (the_phase_walk the_rational_phase n) the_rational_phase) = _
+    rw [the_norm_of_a_product, ih, Int.pow_succ]; rfl
+def the_panel_sum (f : Int → Int) : List Int → Int
+  | [] => 0
+  | d :: l => f d + the_panel_sum f l
+def the_rise (l : List Int) : Int := the_panel_sum (fun d => d) l
+theorem the_panel_cross (K D : Int) : ∀ l : List Int,
+    the_panel_sum (fun d => (K * d - D) * D) l = D * (K * the_rise l) - (l.length : Int) * (D * D)
+  | [] => by simp [the_panel_sum, the_rise]
+  | d :: l => by
+    have ih := the_panel_cross K D l
+    simp only [the_panel_sum, the_rise] at ih ⊢
+    rw [ih]; simp only [List.length_cons, Int.natCast_add, Int.mul_add, Int.add_mul, Int.sub_mul]
+    simp only [Int.mul_comm, Int.mul_left_comm]; omega
+theorem the_panel_error_is_orthogonal_to_the_line (l : List Int) :
+    the_panel_sum (fun d => ((l.length : Int) * d - the_rise l) * the_rise l) l = 0 := by
+  rw [the_panel_cross]; simp only [Int.mul_assoc, Int.mul_comm]; omega
+theorem the_panel_energy_splits (K D : Int) : ∀ l : List Int,
+    the_panel_sum (fun d => (K * d) * (K * d)) l
+      = the_panel_sum (fun d => (K * d - D) * (K * d - D)) l + the_panel_sum (fun d => (K * d - D) * D) l
+        + the_panel_sum (fun d => (K * d - D) * D) l + (l.length : Int) * (D * D)
+  | [] => by simp [the_panel_sum]
+  | d :: l => by
+    have ih := the_panel_energy_splits K D l
+    simp only [the_panel_sum] at ih ⊢
+    rw [ih]; simp only [List.length_cons, Int.natCast_add, Int.add_mul, Int.mul_sub, Int.sub_mul]
+    simp only [Int.mul_comm, Int.mul_left_comm]; omega
+theorem the_line_is_the_least_energy (l : List Int) :
+    the_panel_sum (fun d => ((l.length : Int) * d) * ((l.length : Int) * d)) l
+      = the_panel_sum (fun d => ((l.length : Int) * d - the_rise l) * ((l.length : Int) * d - the_rise l)) l
+        + (l.length : Int) * (the_rise l * the_rise l) := by
+  rw [the_panel_energy_splits _ (the_rise l), the_panel_error_is_orthogonal_to_the_line]; omega
+def the_second_difference (f : Int → Int) (x : Int) : Int := f (x + 1) - 2 * f x + f (x - 1)
+theorem the_line_squared_is_the_quartic (f : Int → Int) (x : Int) :
+    the_second_difference (the_second_difference f) x
+      = f (x + 2) - 4 * f (x + 1) + 6 * f x - 4 * f (x - 1) + f (x - 2) := by
+  simp only [the_second_difference]
+  have a : x + 1 + 1 = x + 2 := by omega
+  have b : x + 1 - 1 = x := by omega
+  have c : x - 1 + 1 = x := by omega
+  have d : x - 1 - 1 = x - 2 := by omega
+  rw [a, b, c, d]; omega
+theorem refining_a_panel_splits_the_energy (n₁ n₂ S₁ S₂ : Int) :
+    (n₁ + n₂) * (n₂ * (S₁ * S₁) + n₁ * (S₂ * S₂))
+      = n₁ * n₂ * ((S₁ + S₂) * (S₁ + S₂)) + (n₂ * S₁ - n₁ * S₂) * (n₂ * S₁ - n₁ * S₂) := by
+  simp only [Int.mul_add, Int.add_mul, Int.mul_sub, Int.sub_mul]
+  simp only [Int.mul_comm, Int.mul_left_comm]
+  omega
+theorem refining_a_panel_never_lowers_the_line (n₁ n₂ S₁ S₂ : Int) :
+    n₁ * n₂ * ((S₁ + S₂) * (S₁ + S₂)) ≤ (n₁ + n₂) * (n₂ * (S₁ * S₁) + n₁ * (S₂ * S₂)) := by
+  rw [refining_a_panel_splits_the_energy]
+  have := a_square_is_never_negative (n₂ * S₁ - n₁ * S₂); omega
+#print axioms refining_a_panel_never_lowers_the_line
+#print axioms the_four_labels_walk_perfectly
+#print axioms the_quarter_walk_repeats_every_four
+#print axioms the_other_phase_never_lands_on_a_label
+#print axioms the_other_phase_stays_on_the_ring
+#print axioms the_panel_error_is_orthogonal_to_the_line
+#print axioms the_line_is_the_least_energy
+#print axioms the_line_squared_is_the_quartic
+--| THE HOLONOMY AND WILSON.  Half a turn a crossing: two crossings turn the phase over, so a closed walk, which crosses
+--| evenly, comes home with the sign of half its crossings.  And on a link of length one the device's square action is
+--| Wilson's term times one more than the whole part: twice Wilson's term less its square.
+theorem two_crossings_turn_the_phase_over (n : Nat) :
+    the_phase_walk the_quarter_phase (n + 2)
+      = (- (the_phase_walk the_quarter_phase n).1, - (the_phase_walk the_quarter_phase n).2) := by
+  show the_gaussian_product (the_gaussian_product (the_phase_walk the_quarter_phase n) the_quarter_phase) the_quarter_phase = _
+  simp only [the_gaussian_product, the_quarter_phase]
+  refine Prod.ext ?_ ?_ <;> dsimp only <;> omega
+theorem the_device_square_is_twice_wilson_less_its_square (q : Turns) (unit : the_turns_norm q = 1) :
+    the_turns_action q = (1 - q.1) * (1 + q.1)
+      ∧ the_turns_action q = 2 * (1 - q.1) - (1 - q.1) * (1 - q.1) := by
+  simp only [the_turns_norm] at unit
+  simp only [the_turns_action, Int.sub_mul, Int.mul_sub, Int.mul_add, Int.one_mul, Int.mul_one]
+  constructor <;> omega
+#print axioms two_crossings_turn_the_phase_over
+#print axioms the_device_square_is_twice_wilson_less_its_square
+--| THE CURL OF A GRADIENT.  Measure a field one step along a direction and subtract: the difference.  The differences along
+--| two directions commute, because the steps do, so the mixed partials agree exactly, and the curl of any gradient is
+--| nothing.  The derivative of an action lies in the kernel of the curl, on every torus of four directions.
+def the_difference {n : Nat} (μ : Direction) (f : Site4 n → Int) : Site4 n → Int := fun x => f (the_step μ x) - f x
+def the_gradient {n : Nat} (f : Site4 n → Int) : Direction → Site4 n → Int := fun μ => the_difference μ f
+def the_curl_on {n : Nat} (A : Direction → Site4 n → Int) (μ ν : Direction) : Site4 n → Int :=
+  fun x => the_difference μ (A ν) x - the_difference ν (A μ) x
+theorem the_mixed_differences_commute {n : Nat} (f : Site4 n → Int) (μ ν : Direction) (x : Site4 n) :
+    the_difference μ (the_difference ν f) x = the_difference ν (the_difference μ f) x := by
+  simp only [the_difference, the_steps_commute μ ν x]; omega
+theorem the_curl_of_a_gradient_is_nothing {n : Nat} (f : Site4 n → Int) (μ ν : Direction) (x : Site4 n) :
+    the_curl_on (the_gradient f) μ ν x = 0 := by
+  show the_difference μ (the_difference ν f) x - the_difference ν (the_difference μ f) x = 0
+  rw [the_mixed_differences_commute]; omega
+#print axioms the_mixed_differences_commute
+#print axioms the_curl_of_a_gradient_is_nothing
+--| THE ARGUMENT, COUNTED FROM THE INFERRED END.  Thirty-eight steps, a hundred and six cells.  Read back four steps, the
+--| length of Stokes's path, and the tape is thirteen: the bent card.  Read back five, Gauss's five stations, and it is
+--| eighteen: the macguffin, thirteen and five.  Read back thirteen and it is forty-two, eighteen of them the memory and the
+--| other twenty-four the express stations, the places printed.  One cell is the fencepost bug; the other hundred and five
+--| are the steps the crank takes past it.
+theorem the_argument_counted_from_the_inferred_end :
+    the_steps_of_the_argument.length = 38 ∧ episode8_description.length = 106
+      ∧ the_coordinate_system.gauss.length = 5 ∧ the_nowtrino_path.stokes.length = 4
+      ∧ (readers_experience.from_the_inferred_end 4).length = 13
+      ∧ (readers_experience.from_the_inferred_end 5).length = 18
+      ∧ (readers_experience.from_the_inferred_end 13).length = 42
+      ∧ readers_experience.the_express_route_station_count = 24
+      ∧ readers_experience.the_fencepost_bug = 1
+      ∧ episode8_description.length - readers_experience.the_fencepost_bug = 105 := by
+  refine ⟨rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl⟩
+#print axioms the_argument_counted_from_the_inferred_end
+--| THE QUARTIC, DEFLATED.  Read the closing quartic in r.  Take one of its roots out, the knower's: what is left is a cubic,
+--| and the cubic is c times the root's mirror times the other pair, r squared less twice t x less the root squared.  Three
+--| roots stay: the mirror of the one taken out, and the two of the other factor.
+def the_deflated_cubic (c t x ρ r : Int) : Int :=
+  c * r * r * r + c * ρ * r * r + (c * ρ * ρ - 2 * c * t * x) * r + (c * ρ * ρ * ρ - 2 * c * t * x * ρ)
+theorem the_quartic_deflates (c t x ρ r : Int) :
+    the_closing_quartic c t x r - the_closing_quartic c t x ρ = (r - ρ) * the_deflated_cubic c t x ρ r := by
+  simp only [the_closing_quartic, the_deflated_cubic, Int.mul_sub, Int.sub_mul, Int.mul_add]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem the_deflated_cubic_factors (c t x ρ r : Int) :
+    the_deflated_cubic c t x ρ r = c * (r + ρ) * (r * r - (2 * t * x - ρ * ρ)) := by
+  simp only [the_deflated_cubic, Int.mul_sub, Int.sub_mul, Int.mul_add, Int.add_mul]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem a_root_deflates_to_the_cubic (c t x ρ r : Int) (root : the_closing_quartic c t x ρ = 0) :
+    the_closing_quartic c t x r = (r - ρ) * (c * (r + ρ) * (r * r - (2 * t * x - ρ * ρ))) := by
+  have h := the_quartic_deflates c t x ρ r
+  rw [root, Int.sub_zero, the_deflated_cubic_factors] at h; exact h
+#print axioms the_quartic_deflates
+#print axioms the_deflated_cubic_factors
+#print axioms a_root_deflates_to_the_cubic
+--| THE SEMI-NORM FROM THE FRAME.  A frame is a direction u with interval one, the boost nineteen and two among them.  Its
+--| rest-space length of a direction v is the square of their product less the interval of v: ninety times the square of
+--| the cross of u and v.  Never negative, and nothing exactly along u: a semi-norm, and the frame alone fixes it.
+def the_dot_of_the_interval (u v : Int × Int) : Int := u.1 * v.1 - 90 * u.2 * v.2
+def the_rest_length (u v : Int × Int) : Int := the_dot_of_the_interval u v * the_dot_of_the_interval u v - the_dot_of_the_interval v v
+theorem the_frame_gives_the_semi_norm (u v : Int × Int) (unit : the_dot_of_the_interval u u = 1) :
+    the_rest_length u v = 90 * ((u.1 * v.2 - u.2 * v.1) * (u.1 * v.2 - u.2 * v.1)) := by
+  have key : the_dot_of_the_interval u v * the_dot_of_the_interval u v
+      - the_dot_of_the_interval v v * the_dot_of_the_interval u u
+      = 90 * ((u.1 * v.2 - u.2 * v.1) * (u.1 * v.2 - u.2 * v.1)) := by
+    simp only [the_dot_of_the_interval, Int.mul_sub, Int.sub_mul]
+    ac_nf; simp only [← Int.mul_assoc]; omega
+  rw [unit, Int.mul_one] at key; exact key
+theorem the_rest_length_is_never_negative (u v : Int × Int) (unit : the_dot_of_the_interval u u = 1) :
+    0 ≤ the_rest_length u v := by
+  rw [the_frame_gives_the_semi_norm u v unit]
+  have := a_square_is_never_negative (u.1 * v.2 - u.2 * v.1); omega
+theorem the_frame_cannot_see_itself (u : Int × Int) (k : Int) (unit : the_dot_of_the_interval u u = 1) :
+    the_rest_length u (k * u.1, k * u.2) = 0 := by
+  rw [the_frame_gives_the_semi_norm u _ unit]; dsimp only
+  have : u.1 * (k * u.2) - u.2 * (k * u.1) = 0 := by
+    simp only [Int.mul_left_comm u.1 k, Int.mul_left_comm u.2 k, Int.mul_comm u.1 u.2]; omega
+  rw [this]; rfl
+theorem the_boost_is_a_frame : the_dot_of_the_interval the_boost the_boost = 1 := by decide
+#print axioms the_frame_gives_the_semi_norm
+#print axioms the_rest_length_is_never_negative
+#print axioms the_frame_cannot_see_itself
+#print axioms the_boost_is_a_frame
 --| THE CHARGE, THROUGH EULER.  A link's phase is the turn by an angle, and the angle is the charge times the field: the quarter
 --| turn is the turn by half the circle's half, and two of them are the turn by the circle's half, minus one.  So the charge is
 --| the root of four circles over the reading, one over the root of β.  No root is taken: a whole number of twenty-four places
@@ -4216,6 +4423,40 @@ theorem the_identity_does_not_click : the_click the_identity_with_the_laboratory
 --| instead of the cells, crank the same fenceposts, and divide once: the same number, on propext alone.  It agrees with the
 --| lengths because every fact the device recorded clicked; a fact that clicked false would read lower here than by length.
 def the_click_count (tape : List FACT) : Nat := (tape.filter the_click).length
+--| THE TRUES THAT MEAN FALSE.  Every input clicks.  A mark that means false, the statement that false is not, clicks true
+--| like any other, and is the same account as the truth.  So a tape with any number of them in any places reads its length,
+--| and two clicking tapes of one length read alike: no reader counts how many trues in a row mean false.  The falses are
+--| read in, never read off.
+def a_false_meaning_true : FACT := IT_CLICKS (¬ False)
+theorem a_false_meaning_true_clicks : the_click a_false_meaning_true = true := rfl
+theorem the_truth_clicks : the_click FACT.Truth = true := rfl
+theorem every_click_survives (f : FACT) (hf : the_click f = true) (n : Nat) :
+    (List.replicate n f).filter the_click = List.replicate n f := by
+  induction n with
+  | zero => rfl
+  | succ n ih => simp [List.replicate_succ, hf, ih]
+theorem the_knower_cannot_count_the_false_meaning_trues (k m : Nat) :
+    the_click_count (List.replicate k a_false_meaning_true ++ List.replicate m FACT.Truth)
+      = the_click_count (List.replicate (k + m) FACT.Truth) := by
+  simp only [the_click_count, List.filter_append, every_click_survives _ a_false_meaning_true_clicks,
+    every_click_survives _ the_truth_clicks, List.length_append, List.length_replicate]
+theorem a_false_meaning_true_is_the_truth :
+    Quot.mk same_click a_false_meaning_true = Quot.mk same_click FACT.Truth := Quot.sound rfl
+theorem every_clicking_tape_reads_its_length : ∀ tape : List FACT,
+    (∀ f ∈ tape, the_click f = true) → the_click_count tape = tape.length
+  | [] , _ => rfl
+  | f :: tape, h => by
+    have hf : the_click f = true := h f (List.mem_cons_self ..)
+    have ih := every_clicking_tape_reads_its_length tape (fun g hg => h g (List.mem_cons_of_mem f hg))
+    simp only [the_click_count, List.filter_cons, hf, if_true, List.length_cons] at ih ⊢
+    rw [ih]
+theorem no_reader_counts_the_false_meaning_trues (t u : List FACT)
+    (ht : ∀ f ∈ t, the_click f = true) (hu : ∀ f ∈ u, the_click f = true) (same : t.length = u.length) :
+    the_click_count t = the_click_count u := by
+  rw [every_clicking_tape_reads_its_length t ht, every_clicking_tape_reads_its_length u hu, same]
+#print axioms no_reader_counts_the_false_meaning_trues
+#print axioms the_knower_cannot_count_the_false_meaning_trues
+#print axioms a_false_meaning_true_is_the_truth
 def the_click_pair : Nat × Nat := bent_card.fenceposts_must_be_preserved Nat the_click_count all_possible_variables
 set_option maxRecDepth 100000 in
 theorem the_clicks_agree : the_click_pair = arrange_the_information_appropriately := rfl

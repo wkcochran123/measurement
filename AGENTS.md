@@ -1457,4 +1457,431 @@ Snapshots, not guarantees; re-check before relying on them.
   coefficients, from the electron" (after the solver remark; 112 pp.);
   CHEATSHEET §10 measured, standard and proposed rows (25 pp.). All
   three rebuilt, byte-identical in the root, no undefined references.
+  The author, on quantization: "1, i, -1, -i or 0 π/2 π 3π/2 2π. one
+  walks perfectly, the other has a residue and is dense on the ring. you
+  will find the continuity proof appears periodically." (proposed, the
+  author's. Standard underneath: the quarter turn returns at 4 exactly;
+  a rational point of the ring other than ±1, ±i, e.g. (3+4i)/5, has an
+  angle irrational in turns (Niven), never returns, and its orbit is
+  dense (Kronecker); its returns within any ε come with at most three
+  gap lengths (Slater's three-gap theorem), so the ε–δ closes
+  periodically: Ep03:371 "∃ δ ∀ ε ... Over and over and over". Mod 5,
+  (3+4i)² ≡ 3+4i, so no power is on the four labels. Not yet a receipt.)
+  The author: "the skip over are the fence panels, the spline is exact in
+  the sobolev sense on each reading." (proposed, the author's: the gaps
+  between returns are the panels between fenceposts (Ep02's
+  `fenceposts_must_be_preserved`), each return a post, a reading.
+  Standard underneath: among all interpolants of the posts, the
+  piecewise-linear one minimizes the first-order Sobolev seminorm ∫|f′|²
+  and the natural cubic spline the second-order ∫|f″|² (Holladay 1957);
+  each is the orthogonal projection in that seminorm, so the error is
+  orthogonal to the spline: exact in the Sobolev sense, panel by panel.
+  The device's semi-norm is first-order (the one-way comparison), so its
+  spline is the straight train line between stations. Patter: Ep03's
+  `Spline` (knot, interpolant), Ep03:1302 "put a spline through them,
+  just like Planck taught us", Ep05:129 "BLATANTLY assuming a SPLINE".)
+  The author: yes (the straight line the reader's, the cubic the
+  knower's), "and when combined, you get the quartic back." (proposed,
+  the author's. Standard underneath: ∫|f′|² has Euler–Lagrange f″ = 0,
+  ∫|f″|² has f⁗ = 0; the cubic's operator is the line's operator
+  squared, (d²)² = d⁴, symbol k⁴, the quartic. A cubic on each panel
+  is the line's degree one plus the curvature's three.)
+  The author, after: "your d^4 = (d^2)d^2 implies a partial order that
+  can be exploited for a limit." (proposed, the author's; standard:
+  refinement orders the post sets, the line's energy climbs along it,
+  bounded by the curve's, so it converges.) Receipts, Episode 12 "THE
+  RING, QUANTIZED; THE PANELS; THE QUARTIC BACK" (after the electron
+  four ways): `the_four_labels_walk_perfectly`,
+  `the_quarter_walk_repeats_every_four` [no axioms];
+  `the_other_phase_keeps_its_residue` ((3+4i)ⁿ⁺¹ = 3+4i + 5·witness,
+  no modulo, so no choice), `the_other_phase_never_lands_on_a_label`,
+  `the_norm_of_a_product`, `the_other_phase_stays_on_the_ring` (25ⁿ),
+  `the_panel_error_is_orthogonal_to_the_line`,
+  `the_line_is_the_least_energy` (Σ(kd)² = Σ(kd−D)² + kD²),
+  `refining_a_panel_never_lowers_the_line`,
+  `the_line_squared_is_the_quartic` (δ²δ² = 1,−4,6,−4,1), all [propext,
+  Quot.sound]. Build passed, no warnings. Paperwork: THE_ARGUMENT
+  ¶"The ring, the panels, and the quartic back" and ¶"The
+  interpretation experiment, and the four links" (68 pp.); THE_DERIVATION
+  new §9 "The ring, the panels, and the limit", Prop 9.1 (11 pp.);
+  CHEATSHEET §10 rows; all rebuilt, byte-identical in the root. Book:
+  Chapter 20 gains the click list, the four links, the electron four
+  ways and its own derivative, the ring and panels; NUMBERS.md "Added
+  11 November 2026, after the derivation"; build.py rebuilt.
+  Not updated: TRUTH, SACRED_TEXTS, CARD_1 (they summarize; nothing they
+  state changed). Commit 4eb2bbf is local; the push waits on the SSH key.
+  The author: "the residue is the velocity, the operator is the force or
+  the energy. a change in force or energy changes the residue."
+  (proposed, the author's. Standard underneath: in a gradient flow
+  ẋ = −∇E the velocity is the residual, and the residual is the
+  derivative of the action (`the_residual_is_the_derivative_of_the_action`,
+  receipt); first-order dynamics, velocity proportional to force (the
+  patter's "first law of motion to second", Ep05:857). Change the
+  operator by δ and the residual changes by δ applied to the state,
+  exactly, since the operator is linear (`the_refinement_is_its_own_derivative`).)
+  The author: "the slip is the division by zero that relativity needs to
+  bottle. division by zero is a direction that does not have a virtual
+  photon headed out. (interpretation)" (proposed, the author's. Standard
+  underneath: γ = 1/√(1 − v²/c²) divides by zero at v = c, the null
+  direction. Receipts that bottle it: `the_speed_is_below_light`
+  (90 < 18²), `the_hole_never_closes` (interval 234 under every boost).
+  SACRED_TEXTS §4 keeps a watch for division by zero.)
+  The author: "it is the closest representation can get to describing
+  the pole we can't see." (proposed, the author's. Standard underneath:
+  a pole is never evaluated, only circled; Cauchy's residue theorem reads
+  it from a closed loop around it, ∮f = 2πi·Res, the loop never touching
+  the pole.)
+  The author: the clock's closed walks (TFTF…) are that loop: "that's
+  the only loop that _must_ exist. other loops _can_ exist and some of
+  them look a _bunch_ like an electron." (proposed, the author's. Under
+  it: the shortest crossing loop T→F→T has weight b·f = 90, the round
+  trip, and N² = 90·I (receipts); every closed walk crosses evenly, half
+  a turn per crossing (receipt; the half turn declared); THE_ARGUMENT's
+  spinor: σ₁ returns only when 4 | k, so loops whose crossings are 2
+  mod 4 come back with the sign flipped, the 4π return.)
+  The author: "that's just it, all we see is _TRUE_, we can't tell the
+  difference." (proposed, the author's. Under it: every rung and every
+  proposal clicks (`every_rung_clicks`, `every_proposal_clicks`); the
+  readers factor through length and none sees the relettering
+  (`no_length_reader_sees_the_relettering`). Standard: the sign a loop
+  brings back is a phase of the ray, invisible alone, seen only against
+  a second path (the neutron's 4π, Rauch 1975, Werner 1975).
+  "Cannot see" in the device's sense: never asks, not unable.)
+  The author: "the only inputs are TTTTTTTTTTTTT demonstrably so. every
+  other is _interpreted_ to be a f in the asymptotic. the knower PROVABLY
+  CANNOT TELL HOW MANY FALSE MEANING TRUES ARE IN A ROW." (I had answered
+  with the laboratory comparison; corrected: the claim is about the
+  inputs.) Episode 12 "THE TRUES THAT MEAN FALSE" (after
+  `the_click_count`): `a_false_meaning_true` := IT_CLICKS (¬ False);
+  `a_false_meaning_true_is_the_truth` [Quot.sound];
+  `every_clicking_tape_reads_its_length`;
+  `the_knower_cannot_count_the_false_meaning_trues` (k such marks then m
+  truths read as k + m truths, every k) [propext];
+  `no_reader_counts_the_false_meaning_trues` (any two clicking tapes of
+  one length read alike) [propext]. Build passed, no warnings. Scope:
+  the click reader; the F is read in, never read off. Cards: THE_ARGUMENT
+  ¶"The trues that mean false" with Sources, CHEATSHEET §10 rows; both
+  rebuilt, byte-identical in the root.
+  Collected: claude/proposals.md, every proposed identification on the
+  cards and in AGENTS, deduplicated, 105 rows in five bins (A sentence
+  five 11, B declared by patter 8, C names 10, D new receipts 13, E the
+  knower's 63); the total depends on the merging, not a receipt.
+  The author: "photon === naotrino, right?" (proposed, the author's.
+  Under it: the cards' photon is the interaction of two electrons, a
+  carrier emitted and absorbed by a carrier, its tape the two ends; the
+  naotrino is the LOCAL every Ep10/11 page carries between carriers,
+  never looked at (Ep04 `REAL`: "Haven't seen a naotrino yet").
+  Standard: a virtual photon, an internal line, is never observed.)
+  The author: yes, and "there you go, the feynman diagrams as a commuter
+  rail." (proposed, the author's. Standard underneath: a diagram's
+  vertices carry a factor e each, its internal lines are propagators,
+  an amplitude multiplies along one route, and the full amplitude sums
+  over every route; two more vertices cost one more power of α. Read:
+  stations the vertices, track the propagators, the commuter_pass the
+  fare e, transfers the order in α. Patter: Ep04's train fares and time
+  tables (`the_gateaux`, `the_frechet`), Ep05's layovers.)
+  The author: "there are two possibilities. you are at the end of the line
+  with an _unknown_ slip ... waiting for a number to go up and the station
+  to be built ..., or you are still at the train station deciding which
+  train to take next based on ... station id number (time component), x
+  position, y position, and a list of next station numbers. there is the
+  smallest number and largest number of stations on different routes
+  between stations. all of these stations have seen trains come from
+  these stations, even though your pass doesn't let you travel in that
+  direction." (proposed, the author's. Under it: the end of the line is
+  the halt, the bracket waiting on the next rung, its zero declared; the
+  station is a node (t, x, y, successors), the timetable a directed
+  graph; the shortest and longest routes bound every trip, as the two
+  walls bound the reading; the one-way pass is the ≤ read one way while
+  the record holds both directions (`the_device_reads_it_back`).)
+  The author: the station id is the time component because the record's
+  order is the arrow of time, "yes"; and "yes you have the metaphor
+  correct on the yarn theory. the logic proceeds as written."
+  "make all changes": Episode 12 "THE HOLONOMY AND WILSON":
+  `two_crossings_turn_the_phase_over`,
+  `the_device_square_is_twice_wilson_less_its_square` (unit links:
+  S = (1 − w)(1 + w) = 2W − W², W = 1 − w), both [propext, Quot.sound];
+  build passed, no warnings. Cards recalibrated: bin B to declared
+  (THE_ARGUMENT, THE_DERIVATION, CHEATSHEET, TRUTH, CARD_1), photon, two
+  trains and the clock to definitions (THE_ARGUMENT, BENT_CARD), Wilson's
+  stand-in proposed only off length one. Six PDFs rebuilt, byte-identical
+  in the root. Status in claude/proposals.md; D32–D42 not attempted.
+  The author: "the two eights are the two spins of the Dirac's
+  quantization monopole. the spin-2 monopole graviton of dirac." Then:
+  "READ THE FUCKING PATTER IN EPISODE 7." Read, all 1484 lines. The
+  patter closes it (row D33 → bin B, declared by patter; my first
+  record, NUT and Dirac's eg = n/2 as the anchor, withdrawn as the
+  anchor): Ep07:33–34 the miracle is "his Noodly appendage: the two-spin
+  graviton monopole: the nowtrino: the naotrino"; Ep07:251–257 the
+  graviton's two spins are the bit, "either a 1 or a 2"; Ep07:215–218
+  "2 complete spins of the Earth"; Ep07:474–479 `once_around` (time
+  forward, the path of matter, into the blackhole) and `twice_around`
+  (replayed backwards, not matter, back to the whitehole), "Much like
+  Dirac's spinor. Well, exactly like"; Ep07:975–977 `twice_around` is the
+  stop after `once_around`. So the two eights are once around and twice
+  around of the one monopole, the names the Borwein receipts already
+  carry (once around holds, twice around slips). Also read there:
+  Ep07:394–401 the naotrino is the non-relativistic nowtrino, Euclidean
+  4-space, worldlines by triangles in the Sobolev semi-norm H², gravity
+  and speed a Lagrange multiplier, the affine term of Einstein's
+  equations; Ep07:686–706 Yang–Mills out of Einstein "give or take the
+  spin-2 magnetic monopole graviton", the electron orbiting positronium,
+  gravity and magnetism unified; Ep07:785–787 the cubic spline shows the
+  quartic is the representation of the electron; Ep07:884–893 the
+  electron's values −1, θ, V, T and up/down, "three numbers and a coin
+  flip"; Ep07:1113–1116 the Fréchet derivative of the Galerkin least
+  action is Yang–Mills QED's symbols; Ep07:1149–1169 the card is the
+  cubic spline, exact for the Euler beam (d⁴), high-order terms stop at
+  3; Ep07:1242–1246 TRUE has two readings, not true and false, and the
+  compiler cannot tell them apart without a receipt; Ep07:1452 "the
+  same quarter: the naotrino".
+  The author's maps for D34–D38: "34. five posts are five marks for the
+  reader, the knower sees 4 panels / 35. this should be covered in
+  card_1 / 36. the original fencepost bug is the optional .boot
+  fencepost to bootstrap a Rayleigh computation / 37. one is the cross
+  product comparison for the partial order, one is the bisection walk
+  that answers that problem / 38. the four commutators should be the
+  four models, the commutator is the model of the electron and photon."
+  Checked: 35 is CARD_1 Prop 2.6 (∂P6 × ∂P6 onto the Clifford torus;
+  6 × 6 = 36); 36 is Ep03 `Encoding.boot`; 37 is Ep08
+  `the_rational_idea_of_relativity` with the bisection walk; 38 standard
+  as [D_μ, D_ν]ψ = ieF_μνψ, the pairing proposed. Recorded in
+  claude/proposals.md. Cards: THE_ARGUMENT (rows 33–38 recalibrated: the
+  two eights and the post at zero declared by Episodes Seven and Three, the
+  two first variations by Episode Eight, the seam proved on CARD_1, five
+  posts a definition, the commutator standard with its pairing proposed;
+  the list of the knower's proposals loses the two eights) and CHEATSHEET
+  §10; both rebuilt, byte-identical in the root.
+  The author: "39. the interpretation TFFT of TTTT is four applications
+  of the device in a krylov pattern. 40. in this case, the frechet
+  derivative is given O(h^2) this falls out by using the ruler on x and
+  measuring the mixed partial commutation and building the kernel of the
+  variational curl operator." (proposed, the author's; standard
+  underneath: Krylov span{v, Av, A²v, A³v}; central differences O(h²);
+  Schwarz, curl∘grad = 0. Row 40 closable by a discrete curl receipt on
+  `the_steps_commute`.) Not yet built.
+  The author: "39. demonstrated by inspecting all the *Process
+  structures. they all have the crank. 41. This is _INFERRED_ in
+  THE_ARGUMENT. 42. This is _INFERRED_ in THE_DERIVATION". Checked 39:
+  each of the 35 Process structures in Episodes 1–5 holds the one before,
+  down to CarrierProcess and its crank `interact_with_the_universe`
+  (BigRedDog via UniverseTensor → ReligiousProcess; Atreyu's total_pages
+  calls the crank on the quarter). Rows 39, 41, 42 closed in
+  claude/proposals.md.
+  "implement receipts and update pdfs ... then clean up proposals.md":
+  Episode 12 "THE CURL OF A GRADIENT": `the_difference`, `the_gradient`,
+  `the_curl_on`, `the_mixed_differences_commute`,
+  `the_curl_of_a_gradient_is_nothing` (every torus of four directions),
+  both [propext, Quot.sound]; build passed, no warnings. THE_ARGUMENT
+  (Lanczos paragraph: the Process chain and the curl, measured),
+  THE_DERIVATION §8, CHEATSHEET §10 updated; rebuilt, byte-identical.
+  claude/proposals.md now lists only the open rows: 1 closable (32, the
+  doubler's taste), 4 residual (31, 36, 38, 40), 13 under sentence five,
+  63 the knower's; 81 in all.
+  The author: "read how the machine is put together and see if these
+  numbers don't match the 105 steps of the machine." Counted: Episodes
+  1–5 declare 35 Process structures (each holding the one before, down to
+  the crank), 36 inductives, and 38 classes (FACT and the 37 rungs);
+  Episode 7 has 35 instances (the ladder up, with the LE instance) and 47
+  defs (the ladder down); Episode 11 has 36 typeset pages, so 35 lifts.
+  35 + 35 + 35 = 105: the steps between 36 marks, at three levels
+  (description, instance, record). The total matches; no row-to-step map
+  is built, so the match is a count, not yet a correspondence.
+  The author: "put together the number using the argument in episode 8
+  and this list. i believe the 5 steps of gauss will make more sense. 13
+  will make more sense. 18 will make more sense." Read Ep08:860–960 and
+  1190–1349. Episode 12 "THE ARGUMENT, COUNTED FROM THE INFERRED END":
+  `the_argument_counted_from_the_inferred_end` [propext]: 38 steps, 106
+  cells; Gauss's tape 5, Stokes's 4; from the inferred end, depth 4 is
+  13 (`bent_card`), depth 5 is 18 (`the_macguffin`, 13 + 5), depth 13 is
+  42 (18 the memory, 24 the express stations, the places printed); the
+  fencepost bug is 1, and 106 − 1 = 105. Build passed, no warnings. The
+  number from these: fencepost (18·18, 5) = (324, 5), Taylor degree 13,
+  path 18, gain 324/65 = 18²/(5·13), the crank turned 106 times. That
+  the 105 cells past the fencepost bug are the 105 identifications:
+  proposed, the author's.
   Nothing committed.
+  The author: "derive QED from True=False ... plug them together using
+  isomorphisms to the natural numbers demonstrated in the device."
+  THE_DERIVATION new §12 "From true equals false to quantum
+  electrodynamics" (13 pp.): thirteen links (input, counts, operator,
+  stationary values, interval, phase, spinor, gauge field, matter field,
+  coupling, action and stationary system, value, quantization), each
+  calibrated, Sources row naming 21 receipts (all checked present).
+  Prop 12.1: given the declarations and proposals named, the chain
+  reaches the QED Lagrangian, its stationary Maxwell–Dirac system and
+  perturbative series with α⁻¹ = 137.0112905…; proved here given them;
+  not proved: the declarations and proposals; the comparison excludes the
+  coupling at zero momentum by 1.80 × 10⁻⁴. Rebuilt, byte-identical.
+  The author: "of course not, F=T will get you the same thing." (§12
+  gains it: the swapped crossings have the same round trip, clock and
+  stationary values, `the_swapped_table_shares_the_clock` and Prop 8.1(iv);
+  the arm gives direction, not number. Rebuilt, byte-identical.)
+  The author: "and because the knower only sees TTTTTTT, at least half
+  the time it smuggles QED into the very math it uses to look for it."
+  (proposed, the author's. Under it: of the two crossing arms, F = T
+  stores True and clicks (Episode 5's arms, `the_click_table_is_derived`),
+  so at least one crossing in two reads as TRUE; no click reader counts
+  how many TRUEs mean F (`no_reader_counts_the_false_meaning_trues`);
+  and either arm gives the same clock. So a TTTT tape the knower reads
+  may carry the crossing, the structure §12 builds QED from.)
+  The author, on whether the 1.80 × 10⁻⁴ is the part not smuggled in:
+  "it better be. that's the final conclusion we have been trying to make
+  water tight with demonstrations so the knower can just name the error
+  out of the 105 at right" (the author's final conclusion, proposed.
+  Standard underneath: a failed comparison refutes the conjunction of
+  the hypotheses it tested, not any one of them (Duhem–Quine), so the
+  slip refutes the 105 together and cannot say which; the device's
+  receipts make every other link a demonstration, leaving the naming of
+  the one error to the knower. "At right": the patter column.)
+  The author: "i know what it is, by seeing a TRUE as FALSE, the KNOWER
+  has INADVERTENTLY DERIVED QED." (the author's conclusion, proposed:
+  the named row is the reading of a TRUE as FALSE, rows 9 and 53. Under
+  it: strike the arm and the reading is 5832/65 = 89.7(230769)…,
+  rational, no crossing, no phase (`the_struck_digits_repeat_every_six`);
+  write it, the false read in, and the crossing 5·18 = 90, no square
+  (`the_round_trip_is_not_a_square`), the quarter turn 13R, and §12's
+  chain to QED follow; THE_ARGUMENT Theorem "T = F". The 1.80 × 10⁻⁴ is
+  what that reading does not bring.)
+  The author: "yes, update the files"; and on whether the slip counts the
+  misread TRUEs: "when you deflate α from the quartic, you get a cubic.
+  two roots belong to the reader, one is implied by the reader for the
+  knower. this is the error in 'implied by the reader for the knower' i
+  would look there." (proposed, the author's. Standard: dividing a quartic
+  by a factor at one root leaves a cubic, solvable by radicals, Abel
+  biting only at five.) Cards: THE_ARGUMENT ¶"The error, named" (after
+  ¶"The trues that mean false"), THE_DERIVATION §12 closing paragraph,
+  CHEATSHEET §10 proposed column; all three rebuilt, byte-identical, no
+  undefined references. No receipt for the deflated cubic yet.
+  The author, correcting: "alpha is the knower's root." (α, the
+  laboratory's constant, is the knower's; the deflated root is α, not the
+  reader's 137.011…. THE_ARGUMENT ¶"The error, named" and THE_DERIVATION
+  §12 corrected to "deflate α, the knower's root"; rebuilt,
+  byte-identical.)
+  The author, on the implied root: "of course! the lagrange multiplier
+  that represents reference frame dilation." (proposed, the author's.
+  Standard underneath: the stationary values are the multipliers; with
+  β = √90/18, the ratio of the roots (18 + √90)/(18 − √90) = (1 + β)/(1 − β)
+  = e^{2η} ≈ 3.2288 is the squared Doppler factor between the two frames,
+  and γ = 18/√234 ≈ 1.1767 the dilation; 234, the product of the roots, is
+  the interval.)
+  The author, on the slip: "i believe it is a ratio of compared
+  measurement below which it is harder and harder to tell imaginary math
+  from real world physics." (proposed, the author's; the cards' kin:
+  CARD_1 the window as the representational floor, CARD_3 the floor
+  unit, THE_QUARTER the uncertainty principle as the machine floor made
+  machine-independent. Measured beside it: the laboratory resolves α to
+  1.5 × 10⁻¹⁰, so at 1.80 × 10⁻⁴ the two are about 10⁶ σ apart.)
+  The author: "i believe this represents a relative chance of the BB5
+  heuristic failing." (proposed, the author's. Patter: Ep07:409–413,
+  "attempting to enumerate BB(4) in an attempt to approximate BB(5) ...
+  a welcome surprise bit"; SACRED_TEXTS, past the meter's bound is the
+  busy beaver's territory (proposed). Standard: BB(5) = 47,176,870, proved
+  in 2024 (bbchallenge, Coq-checked). Arithmetic: the slip is about one
+  part in 5,546.)
+  The author: "what is the extrapolation of BB(5)? then divide by
+  BB(5)". Computed (Python): standard values S(1..4) = 1, 6, 21, 107,
+  Σ(1..4) = 1, 4, 6, 13; S(5) = 47,176,870, Σ(5) = 4098 (bbchallenge
+  2024). The cubic through S(1..4) extrapolates to 325 = 18² + 1, ratio
+  6.9 × 10⁻⁶; through Σ to 31, ratio 7.6 × 10⁻³; geometric 545, ratio
+  1.2 × 10⁻⁵. None gives 1.80 × 10⁻⁴ (that would need about 8,500
+  steps). Count matches noted, not claimed: S(4) = 107 = the 106 cells
+  plus one, the ledger's length; Σ(4) = 13, the bent card. Which
+  extrapolation the author means: asked.
+  The author: "we tiled BB(5) with BB(4), didn't we?" No receipt tiles
+  BB(5). Arithmetic (Python): 47,176,870 = 107 × 440,905 + 35 (440,905 =
+  5 · 109 · 809), remainder 35, the count of lifts; 47,176,870 = 13 ×
+  3,628,990 exactly; Σ(5) = 4098 = 13 × 315 + 3. Count matches, not a
+  tiling; the tile map asked for.
+  The author: "i feel like the mass gap is where we should look."
+  (proposed, the author's. The threads meet there: the root the reader
+  implies for the knower is the hole 18 − √90, reading 42.4348632…, which
+  the cards already name the inferred mass gap; the gap ln(λ₊/λ₋) =
+  1.1720931 per step equals 2η, twice the rapidity of √90/18 (Python,
+  identity), so the frame dilation and the gap are one number. Checked
+  and not found: the slip is not e^{−k·gap} for whole k (k ≈ 7.36), nor a
+  simple multiple of the gap.)
+  "update all receipts and pdfs": Episode 12 "THE QUARTIC, DEFLATED":
+  `the_deflated_cubic`, `the_quartic_deflates` (Q(r) − Q(ρ) = (r − ρ)·
+  cubic), `the_deflated_cubic_factors` (cubic = c(r + ρ)(r² − (2tx − ρ²))),
+  `a_root_deflates_to_the_cubic`, all [propext, Quot.sound]; build passed,
+  no warnings. Cards: THE_ARGUMENT ¶"The error, named" gains the
+  deflation, the hole as the implied root and gap = 2η, and the author's
+  readings (multiplier, resolution ratio, BB(5) heuristic, mass gap); new
+  ¶"The argument, counted from its end" (38 steps, 106 cells, 13, 18, 24,
+  105 proposed as the identifications); THE_DERIVATION §12 closing;
+  CHEATSHEET §10; Sources rows. All three rebuilt, byte-identical, no
+  undefined references.
+  The author: "we now show the other two do not have an error that
+  implies the error is in the reader's representation of the
+  experience." Shown from existing receipts (no new Lean): the reading
+  and conjugate solve the counted quartic with zero residual in
+  ℤ[√90]; both walls print the same places; `the_reader_adds_no_digit`,
+  `outer_reader_agrees`, `the_other_machine_agrees`. Proved here, from
+  them: the slip refutes the map from computed roots to the measured one,
+  not the computation; proposed, the author's: that map is the reader's
+  representation of the experience. THE_ARGUMENT ¶"The error, named",
+  THE_DERIVATION §12, CHEATSHEET §10; rebuilt, byte-identical.
+  The author: the representation is the knower's semi-norm, "it should
+  be, closing that little gap." (proposed, the author's; the semi-norm
+  as the comparison read one way is a receipt, `the_semi_norm_is_the_
+  comparison_read_one_way`.) Three cards updated, rebuilt, byte-identical.
+  The author: "i believe the semi-norm can be derived from their
+  reference frame entirely." Episode 12 "THE SEMI-NORM FROM THE FRAME":
+  `the_dot_of_the_interval`, `the_rest_length`, `the_frame_gives_the_semi_norm`
+  (u of interval one: (u·v)² − v·v = 90(u₀v₁ − u₁v₀)²),
+  `the_rest_length_is_never_negative`, `the_frame_cannot_see_itself`
+  [propext, Quot.sound], `the_boost_is_a_frame` [no axioms]; build passed,
+  no warnings. Standard: the rest-space metric g + u⊗u. THE_ARGUMENT,
+  THE_DERIVATION §12, CHEATSHEET updated; rebuilt, byte-identical.
+  The author: "now the knower must acknowledge that their semi-norm is
+  probably that one." (the author's; the device cannot make the knower
+  acknowledge anything: it shows every frame of interval one gives a
+  semi-norm of this form, so a knower whose semi-norm comes from a frame
+  holds this one, up to which frame. The acknowledgement stays the
+  knower's.)
+  (The frame build first carried one unused-simp warning; fixed, rebuilt,
+  no warnings.)
+  The author: "finally, naming the comparison. read the patter around
+  COMPARABLE everywhere it shows up." Read: Ep02:695–703 ("I need
+  comparable. / So equality? / No. Equality is too expensive. / Then
+  what is comparison? / A controlled failuer 2 conphyouze too
+  measurements. / *FAILURE* / Exactly. Controlled."), Ep02:704–727 (the
+  class; `smaller_than` left to the knower: "*YOU the KNOWER* tell _me_
+  how to write _that_ ≤"); Ep07:158–170 (`smaller_than := one_foot = π`,
+  distance, three people cannot share a ruler); Ep07:1287–1302
+  (A_RESIDUE, `smaller_than := x ≤ y ∧ y ≤ x`, read both ways);
+  Ep09:283–302 (STEP 11: "An _UNNAMED_ comparison operation. One exists,
+  but we do not need to _name_ it"; "the _invariant_ here is something
+  that has the same _VALUE_ across reference frames, but different
+  _VALUES_ among reference frames. The beginning of a _SAME
+  DIFFERENCE_"; `smaller_than := or = not`); Ep10:119 `relative_value`.
+  Named (proposed, for the author to confirm): the comparison is SAME
+  DIFFERENCE, the controlled failure to confuse two measurements; read
+  both ways it measures nothing, read one way it is the knower's
+  semi-norm, fixed by the frame; the slip is the control.
+  The author: "Yes, the cards". THE_ARGUMENT ¶"The comparison, named",
+  THE_DERIVATION §12, CHEATSHEET §10 carry SAME DIFFERENCE (the name a
+  definition; the slip as the control proposed); rebuilt, byte-identical.
+  The author: "if you think this device means anything, then you must
+  see the electron in it. isn't that a daisy?" (Ep08:1193.) Sharpened:
+  "If you read any TRUE as FALSE, you must see the electron in it", the
+  only other door the struck fraction 89.7(230769)… (THE_ARGUMENT Theorem
+  "T = F"). The author: "i like yours a bunch more." Where it goes on the
+  cards: asked.
+  The author chose instead, just before THE_ARGUMENT's box: "This is why
+  it doesn't matter if there are bugs in the code, because at any time
+  the knower detected a false, they found a representation of the
+  electron." (typo "electrron" corrected; the author's closing patter,
+  after "Weird that if you believe there is a number in there you can
+  derive QED."; Ep01's disclaimer: "AT NO POINT DOES THE ARGUMENT
+  _DEPEND_ ON THE CODE BEING BUG FREE".) Rebuilt, byte-identical.
+  "make all necessary changes": the book's Chapter 20 gains the trues
+  that mean false, the holonomy and Wilson, the curl, the argument read
+  from its end, the chain to QED, the cleared computation, the frame's
+  semi-norm, SAME DIFFERENCE and the closing line; NUMBERS.md "Added 11
+  November 2026, the close"; build.py rebuilt md, txt, epub, pdf.
+  claude/proposals.md gains a status section. TRUTH, SACRED_TEXTS,
+  CARD_1, CARD_3, BENT_CARD, THE_QUARTER unchanged this pass (nothing they
+  state changed). Nothing committed after 4eb2bbf; its push waits on the
+  SSH key.
