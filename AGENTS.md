@@ -140,7 +140,12 @@ statement's calibration:
    As of 12 November 2026 the author reduces sentence five to one choice,
    to believe the electron is represented or not, with both answers
    receipts and the choice shown not to matter (*proposed*); the causal
-   theory stays declared.
+   theory stays declared. As of 14 November 2026 the knower fixes the
+   orientation of the two trinos: the nowtrino (the counted mark) is the
+   photon and the naotrino (read only through the number) is the
+   electron (*declared*), so sentence five reads "what the carrier carries
+   is the electron"; THE_DERIVATION is rewritten on it (the other cards
+   still state the earlier form).
 
 If you cannot state these, read it again. Do not paraphrase the card from
 memory or from this file; cite it. This preparation is for you: don't ask
@@ -150,7 +155,8 @@ on the question it boxes.
 
 Alongside it, read `THE_DERIVATION.pdf`, *A Projection with a Residue*:
 the same chain written as one operator, in letters, with the counts
-entering only at the end. THE_ARGUMENT argues each construction;
+entering only at the end, now a monograph on the carrier and the carried,
+with the device's readings on machines and the choice of root. THE_ARGUMENT argues each construction;
 THE_DERIVATION derives it for every weight and shows where the numbers
 are a projection with a residue.
 
@@ -541,8 +547,13 @@ question the reader has to solve.
     **Required reading, in full, before anything else** (see the top of
     this file). It carries the transport chain to the Maxwell–Dirac
     stationary system, the clock, and the closing theorem "T = F".
-  - `THE_DERIVATION.pdf`, *A Projection with a Residue: the refinement
-    operator, derived in letters*: the device as a consuming iterator on
+  - `THE_DERIVATION.pdf`, *A Projection with a Residue: the carrier and
+    the carried* (a monograph, 65 pp., 14 November 2026): Part III derives
+    the orientation (nowtrino the photon, counted and detected at the
+    crossing; naotrino the electron, read through the number; the window
+    and the head; the crossing as the vertex), Part VI the readings
+    (001, 002, the box), Part VII the three observers and the root picked;
+    and, as before, the device as a consuming iterator on
     the inverse of the refinement operator; the roots as the stationary
     values of its quotient (the polynomial never seen); the one-way
     semi-norm, Galerkin and the Jacobian-free Newton–Krylov solver; the
@@ -2304,3 +2315,13 @@ Snapshots, not guarantees; re-check before relying on them.
   Open: the pointer (three readings on machines to orient the pick); the
   measurements wait until the device is finished ("the device will tell us
   what to do").
+  THE_DERIVATION rewritten and expanded into a monograph (report class,
+  65 pp., seven parts, 25 chapters, rows 115–121 ranked in), on the
+  knower's orientation: nowtrino the photon, naotrino the electron
+  (declared); sentence five restated as "what the carrier carries is the
+  electron". New chapters: the carrier and the carried (the six trino
+  layers and two detectors), the window and the head, the crossing as the
+  vertex, the readings, beats and the box, three observers and the root
+  picked. Built by make, byte-identical in the root, no undefined
+  references. Not yet carried to the other cards, AGENTS' representation
+  table or the book.
