@@ -4847,6 +4847,127 @@ theorem the_knower_may_believe_or_not :
       ∧ naotrino_detector = the_constant_factor_of_scaling_bullshit :=
   ⟨the_struck_digits_repeat_every_six, the_written_reading_is_not_a_ratio, every_finding_clicks, the_reader_adds_no_digit⟩
 #print axioms the_knower_may_believe_or_not
+--| THE WRITER'S POINT.  The polynomial is in the device: the table satisfies its own polynomial, every table's two roots
+--| solve it, the counted quartic is solved by the reading and by the conjugate, the two add and multiply to its counts, and
+--| its factors do not read the sign.  Both roots, held at once; which one is meant is not written in the polynomial.
+def the_writers_point : List FACT :=
+  [IT_COMPILES _ the_table_satisfies_its_own_polynomial,
+   IT_COMPILES _ both_roots_solve_any_table,
+   IT_COMPILES _ the_counted_quartic,
+   IT_COMPILES _ the_reading_solves_the_counted_quartic,
+   IT_COMPILES _ the_conjugate_solves_the_counted_quartic,
+   IT_COMPILES _ the_two_roots_are_the_counts,
+   IT_COMPILES _ the_quartic_does_not_read_the_sign]
+theorem the_writers_point_clicks : the_writers_point.all the_representation.the_click = true := rfl
+theorem the_writers_point_count : the_writers_point.length = 7 := rfl
+#print axioms the_writers_point_clicks
+--| RAPIDITIES ADD.  The interval of a product is the product of the intervals, so boosts of interval one compose into a
+--| boost of interval one, and the product is associative.  A boost raised to j and then to k is the boost raised to j plus
+--| k: in whole numbers with the round trip's root, rapidities add by multiplying.
+theorem the_interval_is_multiplicative (p q : Int × Int) :
+    the_interval (the_surd_product p q) = the_interval p * the_interval q := by
+  have r : the_round_trip = 90 := rfl
+  simp only [the_interval, the_surd_product, r, Int.add_mul, Int.mul_add, Int.sub_mul, Int.mul_sub]
+  ac_nf; omega
+theorem the_boosts_compose (p q : Int × Int) (hp : the_interval p = 1) (hq : the_interval q = 1) :
+    the_interval (the_surd_product p q) = 1 := by
+  rw [the_interval_is_multiplicative, hp, hq]; rfl
+theorem the_surd_product_is_associative (p q o : Int × Int) :
+    the_surd_product (the_surd_product p q) o = the_surd_product p (the_surd_product q o) := by
+  have r : the_round_trip = 90 := rfl
+  simp only [the_surd_product, r, Int.mul_add, Int.add_mul]
+  refine Prod.ext ?_ ?_ <;> dsimp only <;> ac_nf <;> omega
+def the_boost_power : Nat → Int × Int
+  | 0 => (1, 0)
+  | k + 1 => the_surd_product (the_boost_power k) the_boost
+theorem the_rapidities_add (j k : Nat) :
+    the_boost_power (j + k) = the_surd_product (the_boost_power j) (the_boost_power k) := by
+  induction k with
+  | zero =>
+    show the_boost_power j = the_surd_product (the_boost_power j) (1, 0)
+    have r : the_round_trip = 90 := rfl
+    simp only [the_surd_product, r]; refine Prod.ext ?_ ?_ <;> dsimp only <;> omega
+  | succ k ih =>
+    show the_surd_product (the_boost_power (j + k)) the_boost
+      = the_surd_product (the_boost_power j) (the_surd_product (the_boost_power k) the_boost)
+    rw [ih, the_surd_product_is_associative]
+theorem every_boost_power_is_a_boost (k : Nat) : the_interval (the_boost_power k) = 1 := by
+  induction k with
+  | zero => rfl
+  | succ k ih => exact the_boosts_compose _ _ ih the_boost_has_unit_interval
+#print axioms the_interval_is_multiplicative
+#print axioms the_rapidities_add
+#print axioms every_boost_power_is_a_boost
+--| THREE POINTS FIX THE SIGN.  Two observers give a difference and no orientation; three give a signed area, and swapping
+--| any two turns it over.  Let the sign of that area choose the sign the quartic's factors carry: the product of the two
+--| factors does not read it, but the factor picked does, and the two picks differ by twice t x s.  On the device's own three
+--| points, the outer root, the hole and the boost, the area is two: positive.
+def the_orientation (a b c : Int × Int) : Int := (b.1 - a.1) * (c.2 - a.2) - (b.2 - a.2) * (c.1 - a.1)
+theorem the_orientation_turns_over (a b c : Int × Int) : the_orientation b a c = - the_orientation a b c := by
+  simp only [the_orientation, Int.mul_sub, Int.sub_mul]
+  ac_nf; omega
+theorem the_orientation_turns_over_again (a b c : Int × Int) : the_orientation a c b = - the_orientation a b c := by
+  simp only [the_orientation]
+  ac_nf; omega
+def the_picked_factor (a b c : Int × Int) (t x r s : Int) : Int :=
+  the_closing_factor t x r ((the_orientation a b c).sign * s)
+theorem a_swap_picks_the_other_factor (a b c : Int × Int) (t x r s : Int) :
+    the_picked_factor b a c t x r s = the_closing_factor t x r (-((the_orientation a b c).sign * s)) := by
+  unfold the_picked_factor
+  rw [the_orientation_turns_over, Int.sign_neg, Int.neg_mul]
+theorem the_two_picks_differ (a b c : Int × Int) (t x r s : Int) :
+    the_picked_factor a b c t x r s - the_picked_factor b a c t x r s
+      = 2 * (t * x * ((the_orientation a b c).sign * s)) := by
+  rw [a_swap_picks_the_other_factor a b c]
+  unfold the_picked_factor the_closing_factor
+  simp only [Int.mul_sub, Int.mul_one, Int.mul_neg]
+  omega
+theorem the_product_of_the_picks_is_the_quartic (a b c : Int × Int) (cc t x r s : Int)
+    (h : cc * ((the_orientation a b c).sign * s) * ((the_orientation a b c).sign * s) = t) :
+    cc * the_picked_factor a b c t x r s * the_picked_factor b a c t x r s = the_closing_quartic cc t x r := by
+  rw [a_swap_picks_the_other_factor a b c]
+  exact the_quartic_factors cc t x r _ h
+theorem the_devices_three_points_are_oriented :
+    the_orientation the_outer_radius the_hole the_boost = 2
+      ∧ the_orientation the_hole the_outer_radius the_boost = -2 := by decide
+#print axioms the_orientation_turns_over
+#print axioms the_two_picks_differ
+#print axioms the_product_of_the_picks_is_the_quartic
+#print axioms the_devices_three_points_are_oriented
+--| YOU'RE A DAISY IF YOU DO.  The final choice of root, named: hand it the knower's pick and it hands back a root, the
+--| reader's (eighteen plus root ninety, times three hundred twenty-four) on true, the knower's (eighteen less root ninety) on
+--| false.  Either way the root solves the counted quartic, with nothing left over; the device does not prefer one.
+def you_re_a_daisy_if_you_do (you_do : Bool) : Int × Int := if you_do then (5832, 324) else (5832, -324)
+theorem you_re_a_daisy_either_way (you_do : Bool) :
+    (the_surd_product (you_re_a_daisy_if_you_do you_do) (you_re_a_daisy_if_you_do you_do)).1
+        - 11664 * (you_re_a_daisy_if_you_do you_do).1 + 24564384 = 0
+      ∧ (the_surd_product (you_re_a_daisy_if_you_do you_do) (you_re_a_daisy_if_you_do you_do)).2
+        - 11664 * (you_re_a_daisy_if_you_do you_do).2 = 0
+      ∧ (you_re_a_daisy_if_you_do true).2 = - (you_re_a_daisy_if_you_do false).2 := by
+  cases you_do <;> decide
+#print axioms you_re_a_daisy_either_way
+--| PICK A ROOT.  The knower's one choice, restated: not whether the electron is represented, but which root.  Both roots solve
+--| the counted quartic, each is carried through to its β and its charge, the polynomial does not prefer either, and an
+--| oriented triangle of three readings picks one factor where two readings cannot.  Either root is a complete account; which
+--| the knower picks goes through you_re_a_daisy_if_you_do, and is what the triangle's sign would point to, once there are
+--| three readings to take it from.
+theorem the_knower_may_pick_either_root :
+    ((the_surd_product (5832, 324) (5832, 324)).1 - 11664 * 5832 + 24564384 = 0
+        ∧ (the_surd_product (5832, -324) (5832, -324)).1 - 11664 * 5832 + 24564384 = 0)
+      ∧ (the_reads (the_beta_of the_low_reading the_high_pi 4) = 10903012075134981375048166
+        ∧ the_reads (the_beta_of the_low_conjugate the_high_pi 4) = 3376859126587073981938450)
+      ∧ (∀ c t x r s : Int, c * the_closing_factor t x r s * the_closing_factor t x r (-s)
+          = c * the_closing_factor t x r (-s) * the_closing_factor t x r (-(-s)))
+      ∧ (∀ (a b c : Int × Int) (t x r s : Int), the_picked_factor a b c t x r s - the_picked_factor b a c t x r s
+          = 2 * (t * x * ((the_orientation a b c).sign * s)))
+      ∧ the_writers_point.all the_representation.the_click = true
+      ∧ (∀ you_do : Bool, (the_surd_product (you_re_a_daisy_if_you_do you_do) (you_re_a_daisy_if_you_do you_do)).1
+          - 11664 * (you_re_a_daisy_if_you_do you_do).1 + 24564384 = 0) :=
+  ⟨⟨the_reading_solves_the_counted_quartic.1, the_conjugate_solves_the_counted_quartic.1⟩,
+   ⟨the_readers_beta.1, the_knowers_beta.1⟩,
+   the_quartic_does_not_read_the_sign, the_two_picks_differ, the_writers_point_clicks,
+   fun you_do => (you_re_a_daisy_either_way you_do).1⟩
+#print axioms the_knower_may_pick_either_root
 
 --| THE ANT, INFERRED.  The two Bullshits of a closure are the tape on either side of the head, each a stack written only
 --| by pushing; the facts are the mark under the head and the heading.  Each step appends one `.inferred` closure on top of

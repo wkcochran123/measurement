@@ -2276,8 +2276,31 @@ Snapshots, not guarantees; re-check before relying on them.
   14 November 2026: READINGS.md and `readings/001-coupling` (the coupling of
   the code to the implementation: g = 1.42 ± 0.02 nowtrinos per device cell
   on the M2, sealed g ≈ 1 refuted, linearity confirmed; τ = 35.5 ns per
-  heartbeat; the M2 Ultra row pending its build). Commit protocol: setup
+  heartbeat; on the M2 Ultra every heartbeat count identical, D = 0.956). Commit protocol: setup
   commit first (001: 5b8b720), readings after, each row citing the setup.
   AGENTS opens on the first question: run the experiment, understand it, or
   both; the three as the knower's observation, the reader's interpretation
   and the writer's conceit (proposed, the author's).
+  002 (beats, source 7cd707b): heartbeat sequences identical across machines,
+  fringe order linear and positive (Ultra ahead), beat faster than sealed
+  because the dilation depends on the workload (D = 0.918). The box of four
+  readings, read by Stokes: zero circulation, flux −0.040; shared part
+  β ≈ 0.35 (analysis, not yet in READINGS).
+  Receipts closed, Episode 12 after `the_knower_may_believe_or_not` (build
+  passed, no warnings; propext and Quot.sound at most): `the_writers_point`
+  (seven receipts, clicks by rfl); rapidities add
+  (`the_interval_is_multiplicative`, `the_boosts_compose`,
+  `the_surd_product_is_associative`, `the_rapidities_add`,
+  `every_boost_power_is_a_boost`); three points fix the sign
+  (`the_orientation`, `the_orientation_turns_over`, `the_picked_factor`,
+  `a_swap_picks_the_other_factor`, `the_two_picks_differ`,
+  `the_product_of_the_picks_is_the_quartic`,
+  `the_devices_three_points_are_oriented` [no axioms]); the final choice of
+  root, named by the author: `you_re_a_daisy_if_you_do` (true: the reader's
+  root; false: the knower's; the direction declared by the yarn theory),
+  `you_re_a_daisy_either_way`, `the_knower_may_pick_either_root`.
+  THE_ARGUMENT ¶"Pick a root", CHEATSHEET, THE_DERIVATION (row 44) carry it;
+  rebuilt by make, byte-identical in the root, no undefined references.
+  Open: the pointer (three readings on machines to orient the pick); the
+  measurements wait until the device is finished ("the device will tell us
+  what to do").
