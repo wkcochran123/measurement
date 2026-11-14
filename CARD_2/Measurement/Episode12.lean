@@ -3748,6 +3748,147 @@ theorem the_argument_counted_from_the_inferred_end :
       ∧ episode8_description.length - readers_experience.the_fencepost_bug = 105 := by
   refine ⟨rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl⟩
 #print axioms the_argument_counted_from_the_inferred_end
+--| THE LAST RESIDUE AND THE READING.  Lay the cells along the constructs of Episodes 1 to 5, three to a rung (the class, the
+--| inductive, the structure), thirty-seven rungs and a hundred and eleven places, with the computer program the inductive after
+--| LOGICAL.  The residue after thirty-seven steps is a hundred and three, the press; the last reading, the inferred end, is three;
+--| together a hundred and six, the first place of the thirty-sixth rung: COMPILED, where the comparison will not take ≤.  On the
+--| slip, and not past it.  Leave the computer program out and the same hundred and six is one place past.
+theorem the_last_residue_and_reading_land_on_the_slip :
+    ((the_steps_of_the_argument.take 37).flatten).length = 103
+      ∧ the_only_logical_inconsistency.infer.length = 3
+      ∧ episode8_description.length = 103 + 3
+      ∧ episode8_description.length = 3 * 35 + 1
+      ∧ 3 * 37 = 111 := by
+  refine ⟨rfl, rfl, rfl, rfl, rfl⟩
+#print axioms the_last_residue_and_reading_land_on_the_slip
+--| THE FLIP BIT.  The rungs close on the third rotation; the quarter turn closes on the fourth.  Read the hundred and six
+--| places three to a rung and the pointer opens a rung; read them as quarter turns and it is half a turn, minus one.  The
+--| computer program's place, ninety-eight, is minus one too.  The inferred place, a hundred and twelve, is the first where
+--| both come home.
+theorem the_quarter_walk_repeats_every_four_times (n k : Nat) :
+    the_phase_walk the_quarter_phase (n + 4 * k) = the_phase_walk the_quarter_phase n := by
+  induction k with
+  | zero => rfl
+  | succ k ih => rw [show n + 4 * (k + 1) = (n + 4 * k) + 4 by omega, the_quarter_walk_repeats_every_four, ih]
+theorem the_slip_is_the_flip_bit :
+    106 % 3 = 1 ∧ the_phase_walk the_quarter_phase 106 = (-1, 0)
+      ∧ the_phase_walk the_quarter_phase 98 = (-1, 0)
+      ∧ 112 % 3 = 1 ∧ the_phase_walk the_quarter_phase 112 = (1, 0) := by
+  refine ⟨rfl, ?_, ?_, rfl, ?_⟩
+  · exact (the_quarter_walk_repeats_every_four_times 2 26).trans the_four_labels_walk_perfectly.2.1
+  · exact (the_quarter_walk_repeats_every_four_times 2 24).trans the_four_labels_walk_perfectly.2.1
+  · exact (the_quarter_walk_repeats_every_four_times 0 28).trans rfl
+#print axioms the_quarter_walk_repeats_every_four_times
+#print axioms the_slip_is_the_flip_bit
+--| THE HEAD, GIVEN MASS.  The head stays on eighteen cells, the clicks: its energy.  The symbols run underneath it through the
+--| round trip, ninety, the clock: its momentum squared.  Its speed is the one over the other, below light.  Its mass squared is
+--| the energy squared less the momentum squared, eighteen squared less ninety: two hundred and thirty-four, the interval, the
+--| determinant, the product of the two roots.  Boost the tape any number of times and the mass is the same.
+theorem the_head_has_mass :
+    the_outer_radius = (18, 1) ∧ the_round_trip = 90
+      ∧ the_interval the_outer_radius = 18 * 18 - 90
+      ∧ the_interval the_outer_radius = 234
+      ∧ the_round_trip * 1 * 1 < 18 * 18
+      ∧ (∀ k, the_interval (the_boosted k) = 234) :=
+  ⟨rfl, rfl, by decide, by decide, by decide, every_boost_keeps_the_interval⟩
+#print axioms the_head_has_mass
+--| THE ASYMPTOTE.  Boost the head again and again.  The interval stays two hundred and thirty-four and the energy climbs
+--| without bound, at least one more each time, so one less the speed squared, the interval over the energy squared, runs to
+--| nothing: the speed comes as close to light as anyone likes and never arrives.  The hole never closes.  That is the shape the
+--| farthest light has: every image a finite boost, the edge never imaged.
+theorem the_boosts_climb (k : Nat) :
+    0 < (the_boosted k).2 ∧ (k : Int) + 18 ≤ (the_boosted k).1 := by
+  induction k with
+  | zero => decide
+  | succ k ih =>
+    obtain ⟨hb, ha⟩ := ih
+    have r : the_round_trip = 90 := rfl
+    simp only [the_boosted, the_surd_product, the_boost, r]
+    constructor <;> omega
+theorem the_asymptote_is_the_edge (k : Nat) :
+    the_interval (the_boosted k) = 234
+      ∧ the_round_trip * (the_boosted k).2 * (the_boosted k).2 < (the_boosted k).1 * (the_boosted k).1
+      ∧ (k : Int) + 18 ≤ (the_boosted k).1 :=
+  ⟨every_boost_keeps_the_interval k, the_hole_never_closes k, (the_boosts_climb k).2⟩
+#print axioms the_boosts_climb
+#print axioms the_asymptote_is_the_edge
+--| NO TOTAL ORDER ON THE TRUTHS.  Read a coin two ways, as heads and as tails.  Neither reading yields the other: heads does
+--| not imply tails, and tails does not imply heads.  Entailment on the readings is not total.  A measurement sorts, so a total
+--| order has to be supplied from outside: the one-way order, read one way.
+theorem the_coins_are_incomparable :
+    ¬ (∀ b : Bool, b = true → b = false) ∧ ¬ (∀ b : Bool, b = false → b = true) := by decide
+#print axioms the_coins_are_incomparable
+--| PYTHAGORAS.  The head's triangle: energy the long side, eighteen; its legs the mass and the momentum, the roots of two
+--| hundred and thirty-four and of ninety.  The squares close in whole numbers, eighteen squared is two hundred and thirty-four
+--| and ninety, while neither leg is a whole number: the gap Pythagoras found in the parts, which Episode One defines to be zero.
+--| And the zero before the fact is found the same way, by difference: the slip's place less the argument's cells.
+theorem pythagoras_closes_the_head :
+    18 * 18 = 234 + 90
+      ∧ (∀ n : Nat, n * n ≠ 90) ∧ (∀ n : Nat, n * n ≠ 234)
+      ∧ 106 - episode8_description.length = 0 := by
+  have small : ∀ k : Nat, k < 16 ∨ 256 ≤ k * k := by
+    intro k
+    by_cases c : k < 16
+    · exact Or.inl c
+    · exact Or.inr (Nat.mul_le_mul (Nat.le_of_not_lt c) (Nat.le_of_not_lt c))
+  have sq90 : ∀ m : Fin 16, m.val * m.val ≠ 90 := by decide
+  have sq234 : ∀ m : Fin 16, m.val * m.val ≠ 234 := by decide
+  refine ⟨rfl, ?_, ?_, rfl⟩
+  · intro n h
+    rcases small n with hn | hn
+    · exact sq90 ⟨n, hn⟩ h
+    · omega
+  · intro n h
+    rcases small n with hn | hn
+    · exact sq234 ⟨n, hn⟩ h
+    · omega
+#print axioms pythagoras_closes_the_head
+--| TWO NORMS, TWO DEGREES OF FREEDOM.  The head's norm splits into position, thirteen eighteenths of it, and velocity, five
+--| eighteenths: the bent card and Gauss's five out of the macguffin.  The gain that turns a stationary value into the reading is
+--| one over the product of the two fractions, three hundred and twenty-four over sixty-five.  Strike the arm and the round trip is
+--| nothing: the two stationary values are one, eighteen, and the curvature never changes.
+theorem the_two_norms_split_the_head :
+    234 = 13 * 18 ∧ 90 = 5 * 18 ∧ 13 + 5 = 18
+      ∧ 234 * 90 = 65 * 324
+      ∧ 18 * 324 = 5832 := by
+  decide
+#print axioms the_two_norms_split_the_head
+--| THE READER'S TEST.  Strike the arm and the reading repeats every six digits: the slip was not caught.  Write it and the
+--| round trip is ninety, the root of five times the root of two times three, and no ratio of whole numbers squares to ninety
+--| times a square: halve both sides as long as they are even, and they always are, so there is no smallest.  The written
+--| reading is a whole number shift and scale of that root, so it is no ratio either, and its digits never repeat.
+theorem an_even_square_has_an_even_root {p : Nat} (h : (p * p) % 2 = 0) : p % 2 = 0 := by
+  rcases Nat.mod_two_eq_zero_or_one p with h0 | h1
+  · exact h0
+  · rw [Nat.mul_mod, h1] at h; simp at h
+theorem the_root_of_ninety_is_not_a_ratio : ∀ q p : Nat, 0 < q → p * p ≠ 90 * (q * q) := by
+  intro q
+  induction q using Nat.strongRecOn with
+  | _ q ih =>
+    intro p hq h
+    have hp : p % 2 = 0 := an_even_square_has_an_even_root (by rw [h, Nat.mul_mod]; simp)
+    obtain ⟨a, rfl⟩ : ∃ a, p = 2 * a := ⟨p / 2, by omega⟩
+    have h1 : (2 * a) * (2 * a) = (2 * 2) * (a * a) := Nat.mul_mul_mul_comm 2 a 2 a
+    have h2 : 2 * (a * a) = 45 * (q * q) := by omega
+    have hq2 : q % 2 = 0 := by
+      apply an_even_square_has_an_even_root
+      rcases Nat.mod_two_eq_zero_or_one (q * q) with e | o
+      · exact e
+      · exfalso; omega
+    obtain ⟨b, rfl⟩ : ∃ b, q = 2 * b := ⟨q / 2, by omega⟩
+    have h3 : (2 * b) * (2 * b) = (2 * 2) * (b * b) := Nat.mul_mul_mul_comm 2 b 2 b
+    have h4 : a * a = 90 * (b * b) := by omega
+    exact ih b (by omega) a (by omega) h4
+#print axioms the_root_of_ninety_is_not_a_ratio
+theorem the_written_reading_is_not_a_ratio (p : Int) (q : Nat) (hq : 0 < q) :
+    (65 * p - 5832 * q) * (65 * p - 5832 * q) ≠ 90 * ((324 * q : Int) * (324 * q)) := by
+  intro h
+  apply the_root_of_ninety_is_not_a_ratio (324 * q) (65 * p - 5832 * q).natAbs (by omega)
+  have e : (((65 * p - 5832 * q).natAbs * (65 * p - 5832 * q).natAbs : Nat) : Int)
+      = (((90 * (324 * q * (324 * q))) : Nat) : Int) := by
+    rw [Int.natAbs_mul_self, h]; simp [Int.natCast_mul]
+  exact Int.ofNat.inj e
+#print axioms the_written_reading_is_not_a_ratio
 --| THE QUARTIC, DEFLATED.  Read the closing quartic in r.  Take one of its roots out, the knower's: what is left is a cubic,
 --| and the cubic is c times the root's mirror times the other pair, r squared less twice t x less the root squared.  Three
 --| roots stay: the mirror of the one taken out, and the two of the other factor.
@@ -4418,6 +4559,49 @@ theorem the_identity_does_not_click : the_click the_identity_with_the_laboratory
 #print axioms every_proposal_clicks
 #print axioms every_proposal_is_the_truth
 #print axioms the_identity_does_not_click
+--| FOUND A BUG.  The compiled rung's comparison will not take ≤: the two numbers must be different, the output less than the
+--| expectation.  Here it is with the tolerance written in.  The reading's upper wall sits below the laboratory's band, a whole
+--| standard uncertainty down from its value: strictly less, so not the constant.  There is a bug in the code, demonstrably.
+theorem the_output_is_less_than_the_expectation :
+    the_high_reading.1 * 10 ^ 9 < (the_laboratory - 21) * the_high_reading.2 := by decide +kernel
+#print axioms the_output_is_less_than_the_expectation
+--| THE SLIP, FOUND.  The day's receipts, minted as rungs are minted: the tapes laid on the constructs, the flip bit, the head
+--| and its mass, the asymptote, the coins that do not compare, Pythagoras, the two norms, the reader's test, and the bug.
+def the_slip_found : List FACT :=
+  [IT_COMPILES _ the_last_residue_and_reading_land_on_the_slip,
+   IT_COMPILES _ the_quarter_walk_repeats_every_four_times,
+   IT_COMPILES _ the_slip_is_the_flip_bit,
+   IT_COMPILES _ the_head_has_mass,
+   IT_COMPILES _ the_boosts_climb,
+   IT_COMPILES _ the_asymptote_is_the_edge,
+   IT_COMPILES _ the_coins_are_incomparable,
+   IT_COMPILES _ pythagoras_closes_the_head,
+   IT_COMPILES _ the_two_norms_split_the_head,
+   IT_COMPILES _ @an_even_square_has_an_even_root,
+   IT_COMPILES _ the_root_of_ninety_is_not_a_ratio,
+   IT_COMPILES _ the_written_reading_is_not_a_ratio,
+   IT_COMPILES _ the_output_is_less_than_the_expectation]
+theorem every_finding_clicks : the_slip_found.all the_click = true := rfl
+theorem every_finding_is_the_truth : ∀ f ∈ the_slip_found, Quot.mk same_click f = Quot.mk same_click FACT.Truth := by
+  intro f hf
+  exact Quot.sound (List.all_eq_true.mp every_finding_clicks f hf)
+theorem the_findings_count : the_slip_found.length = 13 := rfl
+--| THE SLIP ACROSS THE OPERANDS.  One slip, read through each operand at its own power: the reading carries it whole, the
+--| radius and the charge through a square, so half of it each.  A square doubles a small change: grow the side by d and the
+--| square grows by twice the side times d, and a remainder d squared.  The reader's radius only rescales the roots; the
+--| charge is bracketed from the reading; the output is strictly less than the expectation.  Same difference.
+theorem a_square_doubles_the_share (r d : Int) : (r + d) * (r + d) - r * r = 2 * r * d + d * d := by
+  rw [Int.add_mul, Int.mul_add, Int.mul_add, Int.mul_comm d r, Int.mul_assoc 2 r d]; omega
+def the_slip_across_the_operands : List FACT :=
+  [IT_COMPILES _ the_reader_only_rescales_the_roots,
+   IT_COMPILES _ a_square_doubles_the_share,
+   IT_COMPILES _ the_readers_charge_is_bracketed,
+   IT_COMPILES _ the_output_is_less_than_the_expectation]
+theorem every_operand_clicks : the_slip_across_the_operands.all the_click = true := rfl
+#print axioms a_square_doubles_the_share
+#print axioms every_operand_clicks
+#print axioms every_finding_clicks
+#print axioms every_finding_is_the_truth
 
 --| THE NUMBER, FROM THE CLICKS.  The last device reads nothing but whether each cell clicked.  Count the clicks on every tape
 --| instead of the cells, crank the same fenceposts, and divide once: the same number, on propext alone.  It agrees with the
@@ -4650,6 +4834,19 @@ theorem naotrino_detector_reads_the_number : naotrino_detector = the_other_natur
 theorem the_reader_adds_no_digit : naotrino_detector = the_constant_factor_of_scaling_bullshit :=
   naotrino_detector_reads_the_number.trans the_same_natural_both_ways
 #print axioms the_reader_adds_no_digit
+--| BELIEVE IT OR NOT.  All the knower has left is to believe the electron is represented, or not.  Not: every true is read
+--| as true, the arm is struck, and the reading repeats every six digits.  So: one true is read as false, the arm is written,
+--| and the reading is no ratio, never repeating.  Either way the day's receipts all click, and the reader adds no digit to
+--| the number the device prints.  Both doors are demonstrated; which one the knower walks through does not matter to the device.
+theorem the_knower_may_believe_or_not :
+    (∀ k < 36, the_struck_remainder (k + 7) = the_struck_remainder (k + 1)
+        ∧ the_struck_digit (k + 8) = the_struck_digit (k + 2))
+      ∧ (∀ (p : Int) (q : Nat), 0 < q →
+          (65 * p - 5832 * q) * (65 * p - 5832 * q) ≠ 90 * ((324 * q : Int) * (324 * q)))
+      ∧ the_slip_found.all the_click = true
+      ∧ naotrino_detector = the_constant_factor_of_scaling_bullshit :=
+  ⟨the_struck_digits_repeat_every_six, the_written_reading_is_not_a_ratio, every_finding_clicks, the_reader_adds_no_digit⟩
+#print axioms the_knower_may_believe_or_not
 
 --| THE ANT, INFERRED.  The two Bullshits of a closure are the tape on either side of the head, each a stack written only
 --| by pushing; the facts are the mark under the head and the heading.  Each step appends one `.inferred` closure on top of
@@ -4923,6 +5120,297 @@ theorem the_number_is_computed_from_naturals (c : CarrierProcess FACT) :
 #print axioms every_carrier_reads_a_natural
 #print axioms the_number_is_computed_from_naturals
 end readers_interpretation_of_the_pair
+--| THE CONSTRUCTS, AS DATA.  The hundred and twelve constructs of Episodes One to Five, three to a rung, the computer program the
+--| logical rung's data type, the inferred rung last.  Each name below is resolved against the declaration it names when this
+--| file is read, so a name that does not exist cannot be written here.  The places are then checked: the fact first, the computer
+--| program ninety-eighth, the press a hundred and third, the compiled rung a hundred and sixth, the inferred rung last.
+def the_constructs : List Lean.Name :=
+  [``Measurement.FACT,
+   ``Measurement.Number,
+   ``Measurement.CarrierProcess,
+   ``Measurement.DISTINGUISHABLE,
+   ``Measurement.Natural,
+   ``Measurement.CountingProcess,
+   ``Measurement.ADMISSIBLE,
+   ``Measurement.Rational,
+   ``Measurement.IndexingProcess,
+   ``Measurement.COUNTABLE,
+   ``Measurement.Sequence,
+   ``Measurement.LimitProcess,
+   ``Measurement.ENCODED,
+   ``Measurement.Limit,
+   ``Measurement.CauchyProcess,
+   ``Measurement.RESIDUE,
+   ``Measurement.Sample,
+   ``Measurement.ObservationProcess,
+   ``Measurement.BINARY,
+   ``Measurement.Trial,
+   ``Measurement.RepeatableProcess,
+   ``Measurement.REPEATABLE,
+   ``Measurement.Study,
+   ``Measurement.ComputationalProcess,
+   ``Measurement.NUMERIC,
+   ``Measurement.Computation,
+   ``Measurement.TuringProcess,
+   ``Measurement.REPRESENTABLE,
+   ``Measurement.ChaitinsNumberSequence,
+   ``Measurement.NoisyProcess,
+   ``Measurement.PHYSICAL,
+   ``Measurement.Metavariable,
+   ``Measurement.PhysicalProcess,
+   ``Measurement.COMPARABLE,
+   ``Measurement.Sophism,
+   ``Measurement.SlipProcess,
+   ``Measurement.OBSERVED,
+   ``Measurement.Area,
+   ``Measurement.SensingProcess,
+   ``Measurement.PRESENT,
+   ``Measurement.PigeonHole,
+   ``Measurement.GaugeProcess,
+   ``Measurement.MEASURABLE,
+   ``Measurement.Jar,
+   ``Measurement.MeesaProcess,
+   ``Measurement.GUNGAN,
+   ``Measurement.Equivalation,
+   ``Measurement.DigitalProcess,
+   ``Measurement.SOURCE,
+   ``Measurement.Encoding,
+   ``Measurement.CompiledProcess,
+   ``Measurement.EXECUTED,
+   ``Measurement.Abstraction,
+   ``Measurement.MathematicalProcess,
+   ``Measurement.VALUE,
+   ``Measurement.Sum,
+   ``Measurement.AddingProcess,
+   ``Measurement.MAGNITUDE,
+   ``Measurement.Product,
+   ``Measurement.MultiplyingProcess,
+   ``Measurement.SCALED,
+   ``Measurement.Basis,
+   ``Measurement.BASICProcess,
+   ``Measurement.LOAD,
+   ``Measurement.Polynomial,
+   ``Measurement.JordanProcess,
+   ``Measurement.OF,
+   ``Measurement.Spline,
+   ``Measurement.ArmWaveProcess,
+   ``Measurement.BULLSHIT,
+   ``Measurement.Diatribe,
+   ``Measurement.CrusadeProcess,
+   ``Measurement.PROPAGANDA,
+   ``Measurement.Cult,
+   ``Measurement.InitiationProcess,
+   ``Measurement.ACOLYTE,
+   ``Measurement.Science,
+   ``Measurement.LearningProcess,
+   ``Measurement.SCIENTIFIC,
+   ``Measurement.Knowledge,
+   ``Measurement.ScientificProcess,
+   ``Measurement.TRUTH,
+   ``Measurement.Gospel,
+   ``Measurement.ReligiousProcess,
+   ``Measurement.WITNESSED,
+   ``Measurement.Truth,
+   ``Measurement.UniverseTensor,
+   ``Measurement.REAL,
+   ``Measurement.Variation,
+   ``Measurement.BigRedDogProcess,
+   ``Measurement.LOCAL,
+   ``Measurement.SpaceTimePath,
+   ``Measurement.CalculusProcess,
+   ``Measurement.UNIVERSAL,
+   ``Measurement.YarnTheory,
+   ``Measurement.HeartbeatProcess,
+   ``Measurement.LOGICAL,
+   ``Measurement.ComputerProgram,
+   ``Measurement.ElaborationProcess,
+   ``Measurement.HALTED,
+   ``Measurement.Measurement,
+   ``Measurement.LeanProcess,
+   ``Measurement.MEASURED,
+   ``Measurement.ThePreprint,
+   ``Measurement.CompilerOutput,
+   ``Measurement.COMPILED,
+   ``Measurement.Bullshit,
+   ``Measurement.AtreyuProcess,
+   ``Measurement.A_TRUTH_ABOUT,
+   ``Measurement.Closure,
+   ``Measurement.EquivalenceProcess,
+   ``Measurement.INFERRED]
+theorem the_constructs_are_laid_three_to_a_rung :
+    the_constructs.length = 112
+      ∧ the_constructs[0]? = some ``Measurement.FACT
+      ∧ the_constructs[97]? = some ``Measurement.ComputerProgram
+      ∧ the_constructs[102]? = some ``Measurement.MEASURED
+      ∧ the_constructs[105]? = some ``Measurement.COMPILED
+      ∧ the_constructs[111]? = some ``Measurement.INFERRED := by
+  refine ⟨rfl, rfl, rfl, rfl, rfl, rfl⟩
+--| ROW AND CELL.  The hundred and five rows laid on the hundred and five cells past the fencepost, in order: row k on place k + 1.
+--| The first row meets the number, the last the compiled rung.  A count, written down; what a row says about its cell is not checked.
+def the_rows_on_the_cells : List (Nat × Lean.Name) :=
+  (List.range 105).map fun k => (k + 1, the_constructs.getD (k + 1) .anonymous)
+theorem the_rows_meet_the_cells :
+    the_rows_on_the_cells.length = 105
+      ∧ the_rows_on_the_cells[0]? = some (1, ``Measurement.Number)
+      ∧ the_rows_on_the_cells[104]? = some (105, ``Measurement.COMPILED) := by
+  refine ⟨rfl, rfl, rfl⟩
+--| THE DOUBLER IS THE KNOWER'S DIAGONAL.  The alternating field steps from a value to its negative: the diagonal p = -q, where the
+--| quotient is least, the knower's root; and the train line cannot see it.
+theorem the_doubler_is_the_knowers_diagonal (χ : Vec8) (φ : Fin 4 → Vec8) (g : Box4)
+    (anti : ∀ x y, the_dot x (the_current_on g y) = - the_dot y (the_current_on g x)) (p : Int) :
+    the_alternating_field χ 0 = χ ∧ the_alternating_field χ 1 = the_neg χ
+      ∧ the_line_response (the_alternating_field χ) φ g = 0
+      ∧ p * (-p) + p * (-p) = - (p * p + (-p) * (-p)) :=
+  ⟨by simp [the_alternating_field], by simp [the_alternating_field],
+   the_alternating_field_is_a_doubler χ φ g anti, (the_roots_are_reached_on_the_diagonals p).2⟩
+--| ON THE DEVICE'S OWN LINKS.  The three turns the device supplies have length one, and on each the square action is Wilson's twice
+--| less its square, exactly.
+theorem on_the_devices_links_the_square_is_wilsons :
+    ∀ q ∈ ([(0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)] : List Turns),
+      the_turns_action q = 2 * (1 - q.1) - (1 - q.1) * (1 - q.1) := by
+  intro q hq
+  simp only [List.mem_cons, List.mem_nil_iff, or_false] at hq
+  rcases hq with rfl | rfl | rfl <;> exact (the_device_square_is_twice_wilson_less_its_square _ rfl).2
+#print axioms the_constructs_are_laid_three_to_a_rung
+#print axioms the_rows_meet_the_cells
+#print axioms the_doubler_is_the_knowers_diagonal
+#print axioms on_the_devices_links_the_square_is_wilsons
+--| THE SLIP, PLACED.  The argument's cells, a hundred and six, land on the place of that number in the list: the compiled rung.
+theorem the_slip_is_placed_by_receipt :
+    episode8_description.length = 106
+      ∧ the_constructs[episode8_description.length - 1]? = some ``Measurement.COMPILED := by
+  refine ⟨rfl, rfl⟩
+#print axioms the_slip_is_placed_by_receipt
+--| ONE FACT, COMPILED AND EXECUTED.  The same fact read as a satire, compiled, and executed.  Compiled and executed, it writes the
+--| same tape; the order between them runs one way, compile before execute, strictly.  The stack at the bottom of the proof is the
+--| satire about zero, one cell: the fencepost.  Same tape, different value, strict order: same difference in one data type.
+theorem one_fact_compiled_and_executed :
+    (Abstraction.compile zero δδxᵢ carefully_chosen_variable_names).equivalation
+        = (Abstraction.execute zero δδxᵢ carefully_chosen_variable_names).equivalation
+      ∧ Abstraction.lt opaque_wall_of_math (Abstraction.execute zero δδxᵢ carefully_chosen_variable_names)
+      ∧ ¬ Abstraction.le (Abstraction.execute zero δδxᵢ carefully_chosen_variable_names) opaque_wall_of_math
+      ∧ the_proof.equivalation = [zero, zero, zero]
+      ∧ carefully_chosen_variable_names.equivalation.length = 1 := by
+  refine ⟨rfl, ?_, ?_, rfl, rfl⟩
+  · simp [Abstraction.lt, opaque_wall_of_math]
+  · simp [Abstraction.le, opaque_wall_of_math]
+--| THE FRAME IS FREE OF THE SLIP.  The reader's radius rescales both roots by its square, so their ratio, the frame between the
+--| reader and the knower, does not move.
+theorem the_frame_is_slip_free (r x y : Int) : (r * r * x) * y = (r * r * y) * x := by
+  rw [Int.mul_assoc (r * r) x y, Int.mul_assoc (r * r) y x, Int.mul_comm x y]
+#print axioms one_fact_compiled_and_executed
+#print axioms the_frame_is_slip_free
+--| THE TRIAL OF JARS.  The rung that compares jars by their colors only is dealt and clicks with the rest (every_rung_clicks,
+--| rung 15); the jars sorted by it:
+--| one fact compiled and executed, the frame unmoved, the square that halves the slip.
+def the_trial_of_jars : List FACT :=
+  [IT_COMPILES _ one_fact_compiled_and_executed,
+   IT_COMPILES _ the_frame_is_slip_free,
+   IT_COMPILES _ a_square_doubles_the_share]
+theorem the_jar_of_the_jars_clicks : the_trial_of_jars.all the_representation.the_click = true := rfl
+#print axioms the_jar_of_the_jars_clicks
+--| OUT TO SAME DIFFERENCE, BY CLICKS.  Same difference is itself a fact, and it clicks.  Every jar of the trial clicks.  Two facts
+--| that click alike are one account.  So every jar of the trial is the same account as same difference: the way out is a click.
+theorem same_difference_is_a_click : the_representation.the_click the_representation.SAME_DIFFERENCE = true := rfl
+theorem the_trial_of_jars_reaches_same_difference :
+    ∀ f ∈ the_trial_of_jars,
+      Quot.mk the_representation.same_click f = Quot.mk the_representation.same_click the_representation.SAME_DIFFERENCE := by
+  intro f hf
+  exact Quot.sound ((List.all_eq_true.mp the_jar_of_the_jars_clicks f hf).trans same_difference_is_a_click.symm)
+#print axioms the_trial_of_jars_reaches_same_difference
+--| FOUND A BUG, CALLED.  The compiled rung's comparison is the order on preprints, and nothing called it.  Call it.  The device's
+--| preprint is the satire: a result whose stimulus and response are both the fact zero.  The laboratory's preprint is a result
+--| whose response is the identity with the laboratory, the one fact that clicks false, and whose proposition is the output less
+--| than the expectation.  Read through the order on preprints: the satire comes before the laboratory, and the laboratory
+--| before the satire, so the order holds both ways and the strict order fails; with ≤ the bug is found, with < it is not.  And
+--| against itself the satire finds nothing: every true response is the same fact.
+def the_laboratorys_preprint : ThePreprint.{0} :=
+  .results zero the_identity_with_the_laboratory
+    (the_high_reading.1 * 10 ^ 9 < (the_laboratory - 21) * the_high_reading.2) Prop Type Type
+    (.methodology zero zero Prop Type (.introduction zero Prop))
+theorem zero_is_not_the_identity : zero ≠ the_identity_with_the_laboratory := by
+  intro h
+  have h1 : the_representation.the_click zero = true := rfl
+  rw [h, the_identity_does_not_click] at h1
+  exact Bool.false_ne_true h1
+theorem the_bug_is_found :
+    ThePreprint.le the_satire the_laboratorys_preprint
+      ∧ ThePreprint.le the_laboratorys_preprint the_satire
+      ∧ ¬ ThePreprint.lt the_satire the_laboratorys_preprint := by
+  refine ⟨⟨rfl, zero_is_not_the_identity⟩, ⟨rfl, fun h => zero_is_not_the_identity h.symm⟩, ?_⟩
+  intro ⟨_, h⟩
+  exact h ⟨rfl, fun e => zero_is_not_the_identity e.symm⟩
+theorem no_bug_against_the_satire : ¬ ThePreprint.le the_satire the_satire := by
+  intro ⟨_, h⟩; exact h rfl
+#print axioms the_bug_is_found
+#print axioms no_bug_against_the_satire
+def the_bug_called : List FACT :=
+  [IT_COMPILES _ the_bug_is_found, IT_COMPILES _ no_bug_against_the_satire]
+theorem the_bug_clicks : the_bug_called.all the_representation.the_click = true := rfl
+#print axioms the_bug_clicks
+--| THE ONE DISAGREEMENT, READ BY THE MACHINE.  Of all the clicks, one disagrees: the identity with the laboratory clicks false.
+--| Lay it on the computer program and read it back: the machine hooks each fact's truth to the cell below, erases the contents,
+--| and reads every cell as the truth.  The zero and the identity read back the same, and both click.  The knower's click says
+--| they cannot be the same; the machine's says they are.
+theorem the_machine_clicks_both :
+    (ComputerProgram.ofTape [zero]).read = (ComputerProgram.ofTape [the_identity_with_the_laboratory]).read
+      ∧ (ComputerProgram.ofTape [the_identity_with_the_laboratory]).read.all the_representation.the_click = true
+      ∧ (ComputerProgram.ofTape [zero]).read.all the_representation.the_click = true
+      ∧ the_representation.the_click the_identity_with_the_laboratory = false := by
+  refine ⟨rfl, rfl, rfl, the_identity_does_not_click⟩
+#print axioms the_machine_clicks_both
+--| EVERY DISAGREEMENT IS ONE DISAGREEMENT.  The computer program reads every fact as the truth, so its reading and the direct
+--| reading part exactly where a fact clicks false.  The identity with the laboratory, the arm T = F, the rejected seed: one false
+--| fact read two ways.  And static friction: lay any number of true cells before the identity, more and more of the same, and the
+--| machine still reads every cell as true while the identity alone still clicks false.  Below the threshold nothing moves; the
+--| reader adds more of the same until it slips, and only the comparison with the threshold no record writes shows it.
+open the_representation in
+theorem the_machine_reads_every_fact_as_true (f : FACT) :
+    (ComputerProgram.ofTape [f]).read = [FACT.Truth] := rfl
+open the_representation in
+theorem the_readings_disagree_exactly_on_a_false_click (f : FACT) :
+    ((ComputerProgram.ofTape [f]).read.all the_click ≠ [f].all the_click) ↔ the_click f = false := by
+  rw [the_machine_reads_every_fact_as_true]
+  have t : the_click FACT.Truth = true := rfl
+  cases h : the_click f <;> simp [List.all_cons, List.all_nil, h, t]
+theorem the_machine_reads_a_tape_as_truths (tape : List FACT) :
+    (ComputerProgram.ofTape tape).read = List.replicate tape.length FACT.Truth := by
+  induction tape with
+  | nil => rfl
+  | cons f rest ih => exact congrArg (FACT.Truth :: ·) ih
+open the_representation in
+theorem adding_bullshit_moves_nothing (n : Nat) :
+    (ComputerProgram.ofTape (List.replicate n zero ++ [the_identity_with_the_laboratory])).read.all the_click = true
+      ∧ the_click the_identity_with_the_laboratory = false := by
+  refine ⟨?_, the_identity_does_not_click⟩
+  rw [the_machine_reads_a_tape_as_truths]
+  have t : the_click FACT.Truth = true := rfl
+  simp [t]
+#print axioms the_readings_disagree_exactly_on_a_false_click
+#print axioms adding_bullshit_moves_nothing
+def the_static_friction : List FACT :=
+  [IT_COMPILES _ the_machine_reads_every_fact_as_true,
+   IT_COMPILES _ the_readings_disagree_exactly_on_a_false_click,
+   IT_COMPILES _ the_machine_reads_a_tape_as_truths,
+   IT_COMPILES _ adding_bullshit_moves_nothing]
+theorem the_friction_clicks : the_static_friction.all the_representation.the_click = true := rfl
+#print axioms the_friction_clicks
+--| THE THRESHOLD MUST EXIST.  No laboratory is needed.  The device writes its own false: the arm T = F, a coin dealt false, which
+--| does not click.  On it, as on every false fact, the machine's reading and the direct reading part.  So there is a threshold:
+--| proved, from the device alone.  What it is, the laboratory's constant, the electron's, Leonardo's friction, is the suggestion.
+theorem the_threshold_must_exist :
+    ∃ f : FACT, (ComputerProgram.ofTape [f]).read.all the_representation.the_click
+      ≠ [f].all the_representation.the_click :=
+  ⟨the_representation.dealt false, (the_readings_disagree_exactly_on_a_false_click _).mpr rfl⟩
+theorem the_device_writes_its_own_false :
+    the_representation.the_click (the_representation.dealt false) = false
+      ∧ the_representation.middle_table true false = false := ⟨rfl, rfl⟩
+#print axioms the_threshold_must_exist
+#print axioms the_device_writes_its_own_false
+def light_it_up : List FACT :=
+  [IT_COMPILES _ the_threshold_must_exist, IT_COMPILES _ the_device_writes_its_own_false]
+theorem how_is_that_for_a_daisy : light_it_up.all the_representation.the_click = true := rfl
+#print axioms how_is_that_for_a_daisy
 
 end Measurement
 

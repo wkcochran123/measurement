@@ -805,7 +805,7 @@ class COMPILED
   a_truth_about_the_world: CompilerOutput Box Pigeon number another_number ----+ A truth about the world is that facts and truths are neither
   a_demonstration_of_a_constant: ThePreprint --                                | one-to-one or onto. That shouldn't come as a surprise to most.
 
-  found_a_bug?: ThePreprint → ThePreprint → Prop := fun a b => a < b --+ Perhaps the most unfortunate truth of all is that I am unaware of how to
+  found_a_bug?: ThePreprint → ThePreprint → Prop := fun a b => a <= b --+ Perhaps the most unfortunate truth of all is that I am unaware of how to
 --                                                                     | show this code is bug free. I am having a serious time just trying to
 -- +-------------------------------------------------------------------+ explain the logic to someone else. I make small changes to the code and
 -- | sometimes this number changes, sometimes that number changes. They don't seem to change together, but they never seem to wander apart.
