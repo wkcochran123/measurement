@@ -17,6 +17,7 @@ its files match the source commit.
 |---|---|---|---|---|
 | 001 | `readings/001-coupling` | heartbeats per device cell (the coupling g) and wall time per heartbeat (the dilation D) across machines | `5b8b720` | M2 and M2 Ultra read |
 | 002 | `readings/002-beats` | the third clock inferred from two: the envelope extremes of the two machines' summed clocks, counted as a fringe order | `7cd707b` | M2 and M2 Ultra read |
+| 003 | `readings/003-calibration` | heartbeats to seconds: the device's registered floor as one Compton time; each machine's clock against the electron's; the step's horizon | `41fd3f2` | done on both machines |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -171,6 +172,53 @@ dilation that changes with the work done is not what a relative velocity does
 machines as frames in relative motion (*proposed*, the author's) has to
 account for this: either the frame is the machine *and* the workload, or the
 dilation includes a part that is not kinematic.
+
+## Experiment 003: the calibration, heartbeats to seconds
+
+**Rule** (sealed before any value was computed; *declared*, the author's: "compton time is rfl"):
+the device's unit of work is its registered noise floor, the heartbeats of elaborating the
+nowtrino's click, read at build time where calibration lives, outside the instrument. One floor
+is one Compton time of the electron, t_C = ħ/(m_e c²) = ƛ_C/c. Since the count is the same on
+every machine (001, 002), one heartbeat is t_C/floor on every machine. The step's rapidity is
+the device's own boost (19, 2), η = ln(19 + 2√90). Source `41fd3f2`.
+
+**The floor.** 3,016 heartbeats, read three times on each machine's own build: identical on both
+(*measured*). The same click costs 4,148 to 4,152 inside Episode 12's probes, where more is in
+scope; the registered floor is the device's unit, the richer environment's cost is not.
+
+**Applied** (ƛ_C = 3.8615926744 × 10⁻¹³ m, CODATA 2022; c exact):
+
+| | value |
+|---|---|
+| one floor = one Compton time | 1.2880886665 × 10⁻²¹ s |
+| one heartbeat, every machine | 4.270851 × 10⁻²⁵ s |
+| M2, first workload: Γ = τ / (t_C / floor) | 8.31 × 10¹⁶ (rapidity 39.652) |
+| M2 Ultra, first workload | 7.95 × 10¹⁶ (rapidity 39.608) |
+| M2, second workload | 9.08 × 10¹⁶ (rapidity 39.741) |
+| M2 Ultra, second workload | 8.34 × 10¹⁶ (rapidity 39.656) |
+| step rapidity η | 3.636893 |
+| horizon distance ƛ_C/η | 1.061783 × 10⁻¹³ m = 0.274960 ƛ_C |
+| acceleration c η / t_C | 8.46 × 10²⁹ m/s² |
+
+**What the calibration corrects.** Against a common frame, the electron's clock, both machines
+are dilated by about 10¹⁷, and the ratio of their clocks is a ratio of two dilations, not a
+relative γ. Collinear rapidities subtract, so the relative rapidity of two machines is |ln D|:
+
+| | ln D | relative rapidity | β |
+|---|---|---|---|
+| first workload | −0.0446 | 0.0446 | 0.045 |
+| second workload | −0.0850 | 0.0850 | 0.085 |
+| box, shared part | −0.0648 | 0.0648 | 0.065 |
+| box, half the flux | ±0.0202 | | |
+
+The earlier readings γ = 1/D (β ≈ 0.29 for the first workload, 0.35 for the box's shared part)
+treated one machine's clock as proper time; the calibration shows neither is, and those values are
+superseded. If the frames are not collinear, |ln D| is a lower bound on their relative rapidity
+(the triangle inequality for rapidities, *standard*); a third machine tests which.
+
+**Standing.** The floor and the τ are *measured*; the conversion is the sealed rule applied
+(*computed*); that one floor is one Compton time is *declared*, the author's; reading Γ as the
+machine's dilation against the electron's clock is *proposed*. No measured constant is compared.
 
 ## The study: hardware
 
