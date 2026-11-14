@@ -16,6 +16,7 @@ its files match the source commit.
 | No. | Experiment | What it asks | Source (setup commit) | Status |
 |---|---|---|---|---|
 | 001 | `readings/001-coupling` | heartbeats per device cell (the coupling g) and wall time per heartbeat (the dilation D) across machines | `5b8b720` | M2 and M2 Ultra read |
+| 002 | `readings/002-beats` | the third clock inferred from two: the envelope extremes of the two machines' summed clocks, counted as a fringe order | `7cd707b` | M2 and M2 Ultra read |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -117,6 +118,59 @@ The two machines share a core design at nearly the same clock, so D close to 1
 is expected: in the reading of the study, two frames almost at rest relative
 to each other. A third machine of a different design is needed to give the
 triangle size.
+
+## Experiment 002: beats, the third clock inferred from two
+
+**Question.** Two clocks at rates f₁ and f₂, summed, make a carrier at the mean
+rate and an envelope whose extremes recur at the beat rate |f₁ − f₂|: the
+moments both frames read the same phase. That is a clock neither machine
+carries. Count its extremes.
+
+**Method.** Each machine elaborates the same 400 device decisions (8 cells
+each, every term new, so every reading is cold) and logs heartbeats and wall
+time per step on Episode 8's meter. The heartbeat count is each clock's phase.
+At equal wall time, the fringe order is F(t) = H_Ultra(t) − H_M2(t): each
+whole number passed is one envelope extreme. One sample per step (about
+130,000 heartbeats) cannot resolve a single fringe; F is the fringe count, as
+an interferometer's counter reads it. Five runs per machine, run at the same
+time. Source `7cd707b`; files in `readings/002-beats/`.
+
+**Sealed prediction** (from 001, before any run): (a) identical heartbeat
+sequences; (b) F linear, R² > 0.99; (c) F positive, the Ultra ahead; (d) one
+extreme per 22 M2 heartbeats, within 13 to 52.
+
+**Results.**
+
+| | M2 | M2 Ultra |
+|---|---|---|
+| heartbeats, 400 steps | 53,977,724 | 53,977,724 |
+| median time | 2,094 ms | 1,924 ms |
+| τ (ns / heartbeat) | 38.80 | 35.64 |
+
+- (a) **Confirmed.** The heartbeat sequence is identical across all ten runs
+  and both machines, step by step.
+- (b) **Confirmed.** F grows linearly with time, R² = 0.99916: the beat rate
+  is steady along the whole run.
+- (c) **Confirmed.** F is positive: the Ultra is ahead, by about 4.3 million
+  extremes by the end. The sign is the direction two ratios could not give.
+- (d) **Refuted.** One extreme per **11.6** M2 heartbeats (over the 25 run
+  pairings: median 10.1, interquartile 9.6 to 11.1), outside 13 to 52. The beat
+  rate is 2.30 MHz.
+
+**Why (d) failed.** On this workload D = 0.918 (pairings: median 0.908,
+interquartile 0.905 to 0.917), against 0.956 in 001, outside 001's range. The
+dilation between the two machines depends on the workload: 002 includes the
+elaboration of each new term, 001 mostly its reduction. The heartbeats per
+extreme follow D exactly (1/(1/D − 1) = 11.3), so the fringe count carries the
+same information as D, plus its sign and its steadiness. *Measured.*
+
+**What it does and doesn't establish.** The third clock exists in the data:
+the two machines' phases separate at a steady rate in one direction. But a
+dilation that changes with the work done is not what a relative velocity does
+(in relativity γ doesn't depend on what the clock is doing). Reading the
+machines as frames in relative motion (*proposed*, the author's) has to
+account for this: either the frame is the machine *and* the workload, or the
+dilation includes a part that is not kinematic.
 
 ## The study: hardware
 
