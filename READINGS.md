@@ -15,7 +15,7 @@ its files match the source commit.
 
 | No. | Experiment | What it asks | Source (setup commit) | Status |
 |---|---|---|---|---|
-| 001 | `readings/001-coupling` | heartbeats per device cell (the coupling g) and wall time per heartbeat (the dilation D) across machines | `5b8b720` | M2 read; M2 Ultra building |
+| 001 | `readings/001-coupling` | heartbeats per device cell (the coupling g) and wall time per heartbeat (the dilation D) across machines | `5b8b720` | M2 and M2 Ultra read |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -82,7 +82,10 @@ interleaved repeats of n = 64 and n = 1, device and control.
    subtracted. **g ≈ 1: refuted**; g = 1.42 ± 0.02.
 2. *(Sealed 14 November 2026, before the second machine was read; sha256 c7047aa8….)* The
    heartbeat counts, N, H(n), C(n) and g, are identical on every machine that
-   runs the same source on the same toolchain; only τ differs. *Result: pending.*
+   runs the same source on the same toolchain; only τ differs. **Heartbeats:
+   confirmed.** All fourteen sweep readings and all timed readings on the M2
+   Ultra are identical to the M2's, to the heartbeat. **τ differs:** D = 0.956
+   (0.93 to 0.98 from the interquartile ranges).
 
 ## Results on the reference machine (Apple M2)
 
@@ -102,6 +105,19 @@ Timing, ten repeats: H(64) median 18.20 ms, C(64) median 4.70 ms; the device
 cells, 379,926 heartbeats, take 13.49 ms: **τ = 35.5 ns per heartbeat** (spread
 32.9 to 37.6).
 
+## Results on the M2 Ultra
+
+Built from a copy checked file by file against `5b8b720` (build: 22 min 56 s,
+14 jobs, no errors). Sweep: every N, H(n) and C(n) identical to the M2's.
+Timing, ten repeats: H(64) median 17.48 ms, C(64) median 4.57 ms; the device
+cells take 12.90 ms: **τ = 33.95 ns per heartbeat** (interquartile 33.8 to
+34.2, tighter than the M2's 34.8 to 36.4). Against the M2: **D = 0.956**.
+
+The two machines share a core design at nearly the same clock, so D close to 1
+is expected: in the reading of the study, two frames almost at rest relative
+to each other. A third machine of a different design is needed to give the
+triangle size.
+
 ## The study: hardware
 
 One row per machine. The reference frame is the first row (D = 1). Add a row by
@@ -114,7 +130,7 @@ before it was committed; the M2 Ultra's copy was checked file by file against
 | Exp. | Source | Machine | Chip | Cores (P + E) | Memory | macOS | Toolchain | N | g | H − C at 64 | τ (ns/heartbeat) | D |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 001 | `5b8b720` | MacBook Pro | Apple M2 | 8 (4 + 4) | 8 GB | 26.6.2 | v4.27.0-rc1 | 4,152 | 1.42 | 379,926 | 35.5 | 1 |
-| 001 | `5b8b720` | Mac Studio | Apple M2 Ultra | 24 (16 + 8) | 64 GB | 26.6.2 | v4.27.0-rc1 | pending | pending | pending | pending | pending |
+| 001 | `5b8b720` | Mac Studio | Apple M2 Ultra | 24 (16 + 8) | 64 GB | 26.6.2 | v4.27.0-rc1 | 4,152 | 1.42 | 379,926 | 33.95 | 0.956 |
 
 Earlier readings, kept for comparison: a forced T = T cost 4,286.1 heartbeats on
 both the M2 and the M2 Ultra (0.08% apart), with different wall times (AGENTS,
