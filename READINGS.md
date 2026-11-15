@@ -20,6 +20,7 @@ its files match the source commit.
 | 003 | `readings/003-calibration` | heartbeats to seconds: the device's registered floor as one Compton time; each machine's clock against the electron's; the step's horizon | `41fd3f2` | done on both machines |
 | 004 | `readings/004-relative-time` | the four rulers (universe level, heartbeats, time) combined into relative time through the field equations' weak-field limit | `03e888c` | M2 and M2 Ultra read |
 | 005 | `readings/005-two-variations` | the two representations of the first variation, time-like (local) and space-like (the potential), and the convective term that joins them | `96a1898` | M2 and M2 Ultra read |
+| 006 | `readings/006-frames` | frames as points: the M2 Ultra's performance and efficiency cores and the M2, on three workloads; the triangle's signed area; the convective term at thirty runs | `5a555d6` | read on the M2 Ultra (P and E); the M2 from 001, 002, 005 |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -292,6 +293,55 @@ u·Δu, on these readings.
 
 **Standing.** Counts and times *measured*; the fits *computed*; that the local and integrated fits are
 the time-like and space-like first variations, and that a fluid law joins them, *proposed*, the author's.
+
+## Experiment 006: frames as points
+
+**Why.** A triangle of single clock ratios cannot fail: ln(τ₁/τ₂) + ln(τ₂/τ₃) = ln(τ₁/τ₃) always, zero
+circulation again. So each frame is read on several workloads and becomes a point, (ln τ_W1, ln τ_W3),
+and three frames have a signed area, the quantity Episode 12's `the_orientation` reads. Frames: the M2
+Ultra on its performance cores (P), on its efficiency cores (E, `taskpolicy -c background`, a different
+core design), and the M2 (its readings of the same probes in 001, 002, 005). Workloads: W1 = 001's 64
+cells net of control, W2 = 002's 400 steps, W3 = 005's growing steps. Source `5a555d6`. Run on the Ultra
+alone, one frame after the other.
+
+**Results:**
+
+| frame | τ, W1 | τ, W2 | τ, W3 (ns per heartbeat) |
+|---|---|---|---|
+| Ultra P | 33.74 | 35.55 | 35.33 |
+| Ultra E | 231.95 | 244.61 | 242.18 |
+| M2 | 35.50 | 39.28 | 37.10 |
+
+| | prediction | result |
+|---|---|---|
+| (a) | every count identical across frames | **confirmed**: W1 494,198 (beat + blank), W2 53,977,724, W3 12,149,451 on all three frames |
+| (b) | E a distinct frame, beyond ten spreads of P | **confirmed**: ln(τ_E/τ_P) = 1.928, 1.929, 1.925 on the three workloads, against ten spreads of 0.32, 0.08, 0.33 |
+| (c) | the frames' signed area excludes zero | **refuted**: −0.0034, 95% bootstrap interval −0.063 to +0.140: collinear within the noise, so no orientation from these three |
+| (d) | the convective term at thirty runs, r ≥ +0.3 | **refuted**: r = +0.006 |
+
+**What it shows.**
+- **The efficiency cores dilate the clock by one factor for every workload**: 6.875, 6.881 and 6.855,
+  within 0.4% of each other. On one machine, a change of frame multiplies the time of every kind of
+  work alike, as a Lorentz factor does: γ does not depend on what the clock is doing.
+- **The workload dependence sits in the M2's row.** The 3 × 3 interaction (double-centered ln τ) is
+  +0.005, −0.012, +0.007 for Ultra P; +0.006, −0.010, +0.004 for Ultra E; and −0.011, +0.022, −0.011 for
+  the M2, its largest entry on W2, the beats run made with both machines working at once. The flux the
+  box attributed to the work (002, the box, the reading of a medium) is, on this evidence, mostly the
+  M2's: a noisy laptop, not a property of the work. On the clean machine the frames differ by a pure
+  dilation.
+- **No orientation yet.** Because the clean frames differ by one factor, their points lie on a line,
+  and the triangle has no area to read. A pointer needs frames that differ by more than a factor.
+- **No convective term.** At thirty runs on the steadiest clock, the local fit's residual is
+  uncorrelated with u·Δu (r = +0.006).
+
+**A note on the run.** On macOS `seq 1 0` counts down (1, then 0), so the convective pass also ran two
+repeats each of W1 and W2; they are in the raw file and unused. The first analysis took a W2 run as a
+W3 run and failed; the fix, reading only W3 runs, is in the committed analysis. The predictions are
+unchanged.
+
+**Standing.** Counts and times *measured*; the fits, the interval and the interaction *computed*; that a
+workload-independent dilation is a Lorentz factor, and that frames as points give the knower's
+orientation, *proposed*.
 
 ## The study: hardware
 

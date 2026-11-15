@@ -55,8 +55,10 @@ if len(a)>6:
     T=parse(a[6])[2]  # per-run W3 taus not enough; recompute per step medians
     runs=[];cur=None
     for l in open(a[6]):
-        if l.startswith('RUN'): cur={};runs.append(cur)
-        elif l.startswith('STEP'):
+        if l.startswith('RUN'):
+            cur={} if l.startswith('RUN W3') else None
+            if cur is not None: runs.append(cur)
+        elif l.startswith('STEP') and cur is not None:
             _,k,c,h,b,ns=l.split(); cur[int(k)]=(int(h)+int(b),int(ns))
     ks=sorted(runs[0]); H={k:runs[0][k][0] for k in ks}; tau={k:st.median(r[k][1] for r in runs)/H[k] for k in ks}
     L=[k for k in ks if k>=4]
