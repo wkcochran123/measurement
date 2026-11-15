@@ -2376,3 +2376,25 @@ Snapshots, not guarantees; re-check before relying on them.
   trino is which or state sentence five: nothing to flip. AGENTS: the
   representation table, the stand-in line, the cells line, item 9. Both
   PDFs rebuilt, byte-identical in the root, no undefined references.
+  Readings 007 (source 4e5bb93, results 3f1534a), the author's "5 block
+  fencepost": relative time on the ladder, read by a continuous
+  piecewise-linear spline, fits best with knots on the posts 6, 11, …, 31
+  (36 = 7·5 + 1), R² 0.985, 19% below the next shift (confirmed; the
+  residual rises with the shift, so a grid shifted the other way is the
+  next seal).
+  The author: "card_1 should supply your lattice condition assumptions that
+  allow you to claim the geometry and topology in card 3." Done (row 123,
+  closed by derivation): CARD_3's periodic domain, single potential on a
+  trivial bundle, stable refinement, compact phase group, stable reading
+  and comparison of representations are each proved on CARD_1 (the seam
+  torus and Heegaard splitting; the torus complex's harmonic part, gap 6,
+  period recovery γ = 1/√3; the a⁻¹-Lipschitz lift, Hölder ½ at the
+  silhouette; the circle actions and the order-18 sector subgroup;
+  complete observation, exact finite recovery; the common-reading bound).
+  CARD_3 ch. 2 gains the remark "The lattice conditions, from the geometric
+  card" (113 pp.); THE_DERIVATION row 123 (71 pp.). Closed from the
+  "outside the deck" list: lattices beyond 2×2, maps between tori, the
+  continuum limit in the interior, the compact phase group. Still outside:
+  quantization (Lift 32), the four-dimensional mass gap, row 31.
+  Proposed: CARD_1's fundamental class (H₃(F; ℤ) ≅ ℤ) and the sheet receipt
+  are the orientation the pointer needs, from inside the device.
