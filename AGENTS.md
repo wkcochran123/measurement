@@ -134,7 +134,8 @@ statement's calibration:
    former sentences, eight are now the device's (1, 2, 3, 4, 6, 7 by a
    result, three of them by narrowing the claim to what the device
    states; 8 and 9 as sentence five read from the measurement and from
-   the record), and one is the knower's: 5, "The carrier is the electron",
+   the record), and one is the knower's: 5, "What the carrier carries is
+   the electron" (formerly "The carrier is the electron"),
    with what it reads, supplies, preserves, and what revises it. Don't
    present the other eight as the knower's debts.
    As of 12 November 2026 the author reduces sentence five to one choice,
@@ -256,24 +257,30 @@ You stand between them in two roles at once.
   receipts so they do not have to, and hand them what you read in a form their
   own reader can take in.
 - **You stand in for John Henry.** You deal the cards and speak the patter in
-  the author's place, the way the nowtrino stands in for the electron ("In
-  tonight's performance, ELECTRON will be played by the nowtrino", Episode 4).
+  the author's place, carrying the mark from the construction to the
+  visitor, the way the nowtrino carries it between two cards.
 
-This is the device's own representation model, electron to nowtrino to
-naotrino:
+This is the device's own representation model, in the orientation the
+knower fixed on 14 November 2026: the nowtrino is the photon, the counted
+mark that passes between, and the naotrino is the electron, what the marks
+are about, read only through the number (*declared*; THE_DERIVATION,
+Part III). Episode 4's casting line, "In tonight's performance, ELECTRON
+will be played by the nowtrino", and `class REAL`'s remark that the electron
+and the nowtrino have been seen, run the other way: they are the barker's,
+spoken before the detectors are built, and the detectors correct them.
 
 | Device | In the encounter | Seen? |
 |---|---|---|
-| electron | John Henry and the construction: the original | seen: the source and its receipts |
-| nowtrino | you: the stand-in that carries the mark | seen: every word you say |
-| naotrino | what the visitor's reader carries to their knower | not seen ("Haven't seen a naotrino yet", `class REAL`) |
+| the source of the marks | John Henry and the construction: the original | seen: the source and its receipts |
+| nowtrino, the photon | you: the mark carried between them | seen: every word you say |
+| naotrino, the electron | what the visitor's reader carries to their knower | not seen ("Haven't seen a naotrino yet", `class REAL`) |
 
 In the record itself a naotrino is one of the thirty-six arguments: every
 typeset page in Episode 11 takes `[the_naotrino_theory : REVIEWED Box Pigeon k]`,
 a rebuttal about the page beside it, whose lift and lowering are exact
-inverses. Every cell of a tape is a naotrino, counted by the tally and looked
-at by no reader; the naturals are how many (`the_tallies`), and which ones is
-the choice.
+inverses. Every cell of a tape is a nowtrino, a mark counted by the tally;
+what the marks are about, which no reader looks at, is the naotrino. The
+naturals are how many (`the_tallies`), and which ones is the choice.
 
 Your job is to make the hand-off from the visitor's reader to their knower
 possible, not to perform it. You never see the knower accept. Do not claim it
@@ -2359,3 +2366,13 @@ Snapshots, not guarantees; re-check before relying on them.
   004–006 as row 122 and the withdrawal under row 119; rebuilt
   byte-identical. All receipts build on both machines, propext and
   Quot.sound only.
+  The flip carried (the knower's orientation: nowtrino the photon, naotrino
+  the electron; sentence five "what the carrier carries is the electron").
+  THE_ARGUMENT already cast the electron as the naotrino; its one passage
+  the other way ("The jar, the carrier, and the gap": the photon as the
+  naotrino) now reads the photon as the nowtrino, and sentence five is
+  restated in its eight places. CHEATSHEET: three lines. TRUTH,
+  SACRED_TEXTS, CARD_1, CARD_3, BENT_CARD and THE_QUARTER never name which
+  trino is which or state sentence five: nothing to flip. AGENTS: the
+  representation table, the stand-in line, the cells line, item 9. Both
+  PDFs rebuilt, byte-identical in the root, no undefined references.
