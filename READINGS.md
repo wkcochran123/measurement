@@ -19,6 +19,7 @@ its files match the source commit.
 | 002 | `readings/002-beats` | the third clock inferred from two: the envelope extremes of the two machines' summed clocks, counted as a fringe order | `7cd707b` | M2 and M2 Ultra read |
 | 003 | `readings/003-calibration` | heartbeats to seconds: the device's registered floor as one Compton time; each machine's clock against the electron's; the step's horizon | `41fd3f2` | done on both machines |
 | 004 | `readings/004-relative-time` | the four rulers (universe level, heartbeats, time) combined into relative time through the field equations' weak-field limit | `03e888c` | M2 and M2 Ultra read |
+| 005 | `readings/005-two-variations` | the two representations of the first variation, time-like (local) and space-like (the potential), and the convective term that joins them | `96a1898` | M2 and M2 Ultra read |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -259,6 +260,38 @@ field. That is a candidate for a sealed prediction in the next experiment, not a
 receipt; that heartbeats per level are an energy density and universe levels a height, and that
 the rise is gravitational time dilation, is *proposed*, the author's. The weak-field relations are
 *standard*.
+
+## Experiment 005: two first variations, and the convective term
+
+**Question** (the author's): the first variation has two representations, time-like (along the clock
+at a place: the local rate) and space-like (across places at one time: the difference between levels,
+summed into a potential). A fluid law joins them in the material derivative, the time-like variation
+plus the convective term u·∇u. **Receipts** (Episode 12, propext and Quot.sound): `a_boost_keeps_the_kind`,
+`time_like_stays_time_like`, `space_like_stays_space_like` (the kind of a variation is the same in every
+frame); `one_variation_two_representations` (along a step one tick and one level, either order gives the
+whole, and the orders meet in the mixed difference); `the_convective_term` (2ud = (u+d)² − u² − d²).
+Source `96a1898`.
+
+**Method.** A new workload, so 004's data could not pass it: step k = 0…47 decides k + 1 cells, every
+term new. H_k = heartbeats, τ_k = t_k / H_k, u_k = 1/τ_k, ln R_k = ln(τ_k / τ_4), steps 0–3 warm-up.
+Five runs per machine, at once.
+
+**Against the seal:**
+
+| | prediction | result |
+|---|---|---|
+| (a) | H_k identical across runs and machines | **confirmed**, all 48 steps, all ten runs |
+| (b) | the time-like representation fits better than the space-like | **confirmed**: R² local 0.928 vs potential 0.826 (M2); 0.978 vs 0.846 (Ultra) |
+| (c) | the local fit's residual correlates with u_k(u_{k+1} − u_{k−1}), same sign, \|r\| ≥ 0.3 | **refuted**: same sign, but r = +0.044 (M2) and +0.040 (Ultra) |
+
+τ rises from 32.6 to 39.3 ns per heartbeat on the M2 and from 32.3 to 37.0 on the Ultra over the 48
+steps. The time-like reading, a clock that follows the work at its own step, now holds as a sealed
+prediction on a second workload, not only after the fact. The convective term does not show at this
+resolution: whatever joins the two representations is below the clock's noise, or is not of the form
+u·Δu, on these readings.
+
+**Standing.** Counts and times *measured*; the fits *computed*; that the local and integrated fits are
+the time-like and space-like first variations, and that a fluid law joins them, *proposed*, the author's.
 
 ## The study: hardware
 
