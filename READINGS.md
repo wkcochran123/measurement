@@ -21,7 +21,8 @@ its files match the source commit.
 | 004 | `readings/004-relative-time` | the four rulers (universe level, heartbeats, time) combined into relative time through the field equations' weak-field limit | `03e888c` | M2 and M2 Ultra read |
 | 005 | `readings/005-two-variations` | the two representations of the first variation, time-like (local) and space-like (the potential), and the convective term that joins them | `96a1898` | M2 and M2 Ultra read |
 | 006 | `readings/006-frames` | frames as points: the M2 Ultra's performance and efficiency cores and the M2, on three workloads; the triangle's signed area; the convective term at thirty runs | `5a555d6` | read on the M2 Ultra (P and E); the M2 from 001, 002, 005 |
-| 007 | `readings/007-fenceposts` | the five-block fencepost: does relative time on the ladder break at the posts 6, 11, …, 31 (seven panels of five, one post over)? | `4e5bb93` | read on the M2 Ultra |
+| 007 | `readings/007-fenceposts` | the five-block fencepost: does relative time on the ladder break at the posts 6, 11, …, 31 (seven panels of five, one post over)? | `4e5bb93` | read on the M2 Ultra; superseded by 007b |
+| 007b | `readings/007b-fenceposts-both-ways` | the fencepost read both ways: do the posts beat the knot grid shifted backward as well as forward? | `a3ee8f2` | read on the M2 Ultra: refuted |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -370,6 +371,32 @@ separate the posts from that trend; that is the next seal.
 **Standing.** *Measured*: counts and times; *computed*: the fits. *Proposed*, the author's: the
 ladder's relative time is read in panels of five between fenceposts, the Sobolev-exact panels of the
 spline.
+
+## Experiment 007b: the fencepost read both ways
+
+**Why.** 007's residual rose steadily with the forward shift, so a trend toward earlier breaks was not
+excluded. 007b adds the backward shifts. Sealed before any run; source `a3ee8f2`; ten fresh runs of
+004's ladder probe on the M2 Ultra.
+
+| shift | knots | residual (RSS) |
+|---|---|---|
+| −3 | 3, 8, …, 28 | **4.62 × 10⁻⁴** |
+| −2 | 4, 9, …, 29 | 1.83 × 10⁻³ |
+| −1 | 5, 10, …, 30 | 3.45 × 10⁻³ |
+| 0 (the posts) | 6, 11, …, 31 | 4.96 × 10⁻³ |
+| 1 | 7, 12, …, 32 | 6.10 × 10⁻³ |
+| 2 | 8, 13, …, 33 | 7.12 × 10⁻³ |
+| 3 | 9, 14, …, 34 | 7.59 × 10⁻³ |
+| 4 | 10, 15, …, 35 | 8.00 × 10⁻³ |
+
+- (a) **confirmed**: counts identical across the ten runs and equal to 004's.
+- (b) **refuted**: the residual falls steadily as the knots move earlier; shift −3 fits ten times better
+  than the posts. 007's result was the trend it could not exclude.
+
+**What it shows.** Relative time dips over the first levels before it rises (τ falls from level 2 to
+about level 5 on both machines in 004), and a knot near level 3 takes up that dip. The five-level panels
+between posts are not what the clock shows; the shared rise up the ladder stands, its shape not settled.
+Shift −4 was left out by the seal: its first knot sits on level 2, where it is collinear with the line.
 
 ## The study: hardware
 
