@@ -2509,3 +2509,14 @@ Snapshots, not guarantees; re-check before relying on them.
   word), 007's other-way seal (a reading), the four-dimensional
   identification of the gap (proposed); by design, the order of reading and
   the causal theory.
+  The two quick ones, closed. Row 31 moot by the author's word: the device
+  makes only unit links (`the_device_supplies_its_own_gauge`), where its
+  square is Wilson's. Readings 007b (source a3ee8f2, results 022aa1b): the
+  fencepost read both ways, refuted; the residual falls as the knots move
+  earlier (shift −3 ten times better than the posts), so 007's result was
+  the trend; relative time dips over the first levels, then rises; the
+  five-block reading withdrawn from all nine cards, THE_DERIVATION and the
+  book. The author suggests the knower grant the causal theory as
+  insurmountable; recorded in THE_ARGUMENT, CHEATSHEET and THE_DERIVATION
+  (row 44) and the book. With it granted, the one open question is the
+  daisy: which way the knower reads.
