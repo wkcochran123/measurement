@@ -35,60 +35,7 @@ namespace Measurement
 open «springer-verlag» THE_GOSPEL
 --| The readings are not in the device.  They are reached for, once, here.
 
-/-!
-### YOU CANNOT GO ALL THE WAY
 
-`.same` is the arm the spec always marked _converged, which is exact in logic_.  Exact in
-LOGIC.  Episode 8 reaches it, and reaches it honestly, by `rfl` on the ground floor where
-both stanzas are `zero` and `click` is `isTrue rfl`.  Nothing was measured.
-
-A meter can never get there.  A meter has a floor, and the floor is the slip -- the same
-slip Episode 11 pays climbing past OBSERVED, the `projection` with no upstream source that
-whoever climbs must supply.  Below the floor the instrument is not reading the world, it is
-reading itself.  So the metered turn stops one arm short, on this side of the slip, and
-what it stops at is `.different` -- which is not a failure to converge, it is the shape the
-answer actually has.  Look at what `Closure.le` calls that constructor's two `Bullshit`
-slots and the device has been saying so since Episode 5:
-
-    .different stanza lower_bound slip_bound _
-
-Lower bound and SLIP bound.  A bracket, and the far wall is named after the thing that
-stops you reaching it.  `.same` collapses a bracket to a point; only logic may do that.
--/
-
---| THE FROZEN OPERATOR, AND THE BRACKET IT CARRIES.  Episode 8 showed the jar's two walls
---| are Newton iterates 0 and 1: from 1296/10 the step is exactly -8.1, and 81 is tange to
---| the fourth.  Frozen, it stops the iteration chasing its own tail -- a preconditioner may
---| change the iteration, never the answer.
-
---| THE SLIP, IN THE ONLY UNITS THAT MATTER.  The bracket is eight hundred and ten wide at
---| the meter's scale.  The floor is three thousand and seventeen.  The bracket is already
---| finer than the instrument that would narrow it, so there is nothing left to do: you are
---| on this side of the slip point, and you stop.  Not because the crank converged.  Because
---| turning it again would be reading the noise and calling it a digit.
---| THE STIFFNESS VERDICT.  A bracket already finer than the instrument that would narrow it is what "stiff" means numerically:
---| the constraint is being carried exactly, and the step that would relax it costs more than the resolution it would buy.
---| Episode 5 named the two ends of this in the vocabulary before the physics had a word for them: `Closure.same` is the
---| constraint met exactly -- the multiplier, elliptic, instantaneous, incompressible -- and `Closure.different lower_bound
---| slip_bound` is the bracket a penalty leaves -- finite signal speed, hyperbolic, compressible.  Same equations, one
---| parameter, and the parameter is a wave speed (Ep4's Λ-for-c).  This Bool is which side of it the meter is standing on.
---| THE ONE DIMENSIONLESS MEASUREMENT.  The device has two counters.  Cells: constructor depth, the tape, the resolution in
---| space, and it cannot resolve finer than one.  Heartbeats: the elaborator's own count of itself, the resolution in time,
---| handed back by a command because the kernel cannot see it, and it cannot resolve finer than one.  This line used to compare
---| the bracket in cells to the floor in heartbeats with a `<`, which every reader flagged as a dimensional error, and it was.
---| The honest object is their ratio.  Heartbeats per cell is dimensionless, a Courant number, the time step over the space
---| step, and it is the ONLY dimensionless number this device produces from a real measurement rather than a reading.  It is
---| a pair and not a theorem, because the floor is this machine's and the next machine's will differ: that is what makes it a
---| measurement.  (On this build it sits near R/T, the wave speed.  Do not read into that.  The floor moves; R/T does not.)
---#eval theCourant
-
---| THE BLANK.  The meter drifts.  Elaborate the same term twice and the second reading is
---| the larger, because the environment it was measured in grew in between.  An uncorrected
---| ladder therefore "converges" by warming up, which is a measurement of nothing at all.
---| So every sample is drawn against a blank taken in the same breath and the reading is the
---| difference.  Oldest trick in the lab, and the only reason the numbers below mean
---| anything -- the blank sits flat while the sample climbs, which is how you learn the
---| climb was structure and not the apparatus.
 private def blank : TermElabM Nat := do
   let stx ← `(FACT.Truth.click)
   let (_, hb) ← withHeartbeats do
@@ -1623,7 +1570,8 @@ theorem any_count_of_the_lengths (count : List FACT → Nat) (h : ∀ tape, coun
 --| product is lower times slip, T times C, and a symmetric table is the degenerate `.same` case.  That argument lives in the
 --| vocabulary three episodes before the polynomial.  The table is now a definition from the arms, with its agreement a theorem
 --| by `rfl`.  What stays open is the rule's reason: why storing `False` removes exactly the thirteen.  The rule is transcribed,
---| not derived.  That is the open obligation, and the only-if lives there.
+--| not derived.  That is the open obligation, and the only-if lives there.  Where to look is Episode 3: see THE ARMS ARE THE
+--| TICK, below.
 --| THE ZETA PROCESS.  Not a zeta function -- nothing here is evaluated at s.  A zeta PROCESS: the device is a two-symbol shift,
 --| the two coins, and the click table is its transition matrix.  Agreeing arms on the diagonal, disagreeing arms off it:
 --|
@@ -1662,6 +1610,15 @@ theorem the_discriminant_is_the_clock_times_the_coupling :
 --| chain, reversible, one half on each coin, so no normalized run can see the choice.  Only raw tape does: start on T and
 --| one step writes C + T cells one way, 2·C the other.  That step crosses a disagreeing arm, which no run reaches.
 --| The source makes the choice: T=F is the arm that answers before the end, so the orientation is the direction of reading.
+--| THE ARMS ARE THE TICK.  Episode 3 names the two quanta: `Equivalation.zero_like`, which carries a FACT, and
+--| `Equivalation.one_like`, which carries a Prop.  Measure one against the other and there are four ways, 0-0, 0-1, 1-0 and
+--| 1-1: T=T, T=F, F=T and F=F.  The terms are identical in all four and only the meaning differs (below, compiled and executed
+--| write one tape: `one_fact_compiled_and_executed`).  `DigitalProcess.tick` is the walk between the two quanta: from
+--| `zero_like` it writes `.one_like False zero zero`, and from `one_like` it writes `.zero_like FACT.Truth zero`.  Those are the
+--| two crossing arms as `gawk_at` stores them, `False` on T=F and `True` on F=T, written two episodes before `gawk_at` and
+--| from this and that alone.  So the arm that loses the thirteen is the tick's step from zero to one: a Prop and two zeros,
+--| and no FACT to click.  This is read side by side in the source.  It is not yet a theorem, and until it is the rule
+--| stays transcribed.
 def the_arm_stores_a_fact_that_can_click : Bool → Bool → Bool
   | true,  false => false    -- T=F: `gawk_at` stores `False`
   | _,     _     => true     -- T=T and F=F store a comparison; F=T stores `True`

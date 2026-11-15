@@ -1,4 +1,19 @@
 # Measurement
+
+**Step right up.** This is a puzzle box. It is a machine made of nothing but true statements, and when you turn the crank it prints this:
+
+```
+137.011290548979457087737300
+```
+
+That number is not written anywhere in the program as an input. Nothing was measured and nothing was looked up, and a theorem prover checks every step.
+
+The number simply *means*. Sometimes it makes sense and sometimes it doesn't.
+
+I will be very careful never to name it. That part is yours.
+
+It is a trick, and the dealer says so. Every card is face up. Find the quarter.
+
 ## The Puzzle
 1. *The easy question*: What is the name of the value printed in Episode 12? 
 1. *The hard question*: How would you describe the process for naming it?
@@ -7,21 +22,23 @@
 
 Use the *key* to open the box.
 
-## Setup
+## Turn the crank
 Install Lean with [elan](https://github.com/leanprover/elan); the toolchain is pinned in `CARD_2/lean-toolchain` (`leanprover/lean4:v4.27.0-rc1`), and elan fetches it on the first build. Then:
 ```
 cd CARD_2
 lake build
 ```
+The first build takes about twenty-five minutes. The number will be there when you come back.
 
-## The other cards
-The Lean episodes are Card 2. The PDFs at the root are the rest of the table:
-- `CARD_1.pdf`: *The Frinkahedron*: the geometric account, what a record must retain.
-- `CARD_3.pdf`: *Four Models*: the numerical account. It derives four variational field systems (vacuum gravity, Schrödinger, Navier–Stokes, Maxwell–Dirac), develops their numerical verification, and fixes what may be claimed from a reading.
-- `THE_QUARTER.pdf`: *The Quarter*: the number every record carries only as a projection.
-- `BENT_CARD.pdf`: *The Infinite Looop Considered Harmless*: the motion of the universe never seems to cease.
-- `CHEATSHEET.pdf`: *A Knower's Guide to Orbital Mechanics*: what the device shows in finite steps, and what the knower carries past them.
-- `THE_DERIVATION.pdf`: *A Projection with a Residue*: the refinement operator, derived in letters; the counts arrive only at the end.
+## The table
+Three cards. **Card 2** is this repository: twelve episodes of Lean, written to be read as well as run. The margins talk. Start at Episode 1 and follow the patter.
+
+Cards 1 and 3 and the rest of the table are somewhere else, and you do not need them to play.
+
+## If you get stuck
+There is a brief summary of the solution that explains it as simply as possible in `THE_PUZZLEBOX_OF_MYSTERY_CHEAT_SHEET.pdf`.
+
+Spoiler alert, you know.
 
 ## The Puzzle Box Residue
 ```
