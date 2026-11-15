@@ -5036,6 +5036,54 @@ theorem both_ways_clicks_as_equality (j k : Nat) :
 #print axioms the_ids_compare_as_naturals
 #print axioms both_ways_is_equality
 #print axioms both_ways_clicks_as_equality
+--| THE SHAPE FUNCTIONS.  The order read both ways gives the identity; the product comes from a shape function.  The hat on
+--| a panel, its two ends the posts, gives the product of the line: two parts for each end with itself and one for the two
+--| together, symmetric, never negative, zero only at zero, and it keeps the parallelogram, so polarization gives an inner
+--| product.  The Mexican hat, minus the second difference of a binomial bump, gives the product of what the line cannot
+--| see: it reads every straight line as nothing and a parabola as minus thirty-two.  The line is the reader's; the
+--| curvature, the knower's.
+def the_hat_product (x y u v : Int) : Int := x * u + x * u + x * v + y * u + y * v + y * v
+theorem the_hat_product_is_symmetric (x y u v : Int) : the_hat_product x y u v = the_hat_product u v x y := by
+  simp only [the_hat_product]
+  rw [Int.mul_comm u x, Int.mul_comm v x, Int.mul_comm u y, Int.mul_comm v y]; omega
+theorem the_hat_norm_is_three_squares (x y : Int) :
+    the_hat_product x y x y = x * x + y * y + (x + y) * (x + y) := by
+  simp only [the_hat_product, Int.add_mul, Int.mul_add]; rw [Int.mul_comm y x]; omega
+theorem the_hat_norm_vanishes_only_at_zero (x y : Int) (h : the_hat_product x y x y = 0) : x = 0 ∧ y = 0 := by
+  rw [the_hat_norm_is_three_squares] at h
+  have hx := a_square_is_never_negative x
+  have hy := a_square_is_never_negative y
+  have hxy := a_square_is_never_negative (x + y)
+  have h1 : x * x = 0 := by omega
+  have h2 : y * y = 0 := by omega
+  exact ⟨(Int.mul_eq_zero.mp h1).elim id id, (Int.mul_eq_zero.mp h2).elim id id⟩
+theorem the_hat_keeps_the_parallelogram (x y u v : Int) :
+    the_hat_product (x + u) (y + v) (x + u) (y + v) + the_hat_product (x - u) (y - v) (x - u) (y - v)
+      = 2 * the_hat_product x y x y + 2 * the_hat_product u v u v := by
+  simp only [the_hat_product, Int.add_mul, Int.mul_add, Int.sub_mul, Int.mul_sub]
+  rw [Int.mul_comm u x, Int.mul_comm v x, Int.mul_comm u y, Int.mul_comm v y, Int.mul_comm y x, Int.mul_comm v u]; omega
+def the_mexican_hat_reads (f : Int → Int) : Int :=
+  - f (-3) - 2 * f (-2) + f (-1) + 4 * f 0 + f 1 - 2 * f 2 - f 3
+def the_binomial_bump (i : Int) : Int :=
+  if i = -2 then 1 else if i = -1 then 4 else if i = 0 then 6 else if i = 1 then 4 else if i = 2 then 1 else 0
+theorem the_mexican_hat_is_the_bump_bent_twice :
+    [-3, -2, -1, 0, 1, 2, 3].map (fun i => -(the_binomial_bump (i + 1) - 2 * the_binomial_bump i + the_binomial_bump (i - 1)))
+      = [-1, -2, 1, 4, 1, -2, -1] := by decide
+theorem the_mexican_hat_cannot_see_a_line (a b : Int) : the_mexican_hat_reads (fun i => a + b * i) = 0 := by
+  simp only [the_mexican_hat_reads]; omega
+theorem the_mexican_hat_sees_curvature : the_mexican_hat_reads (fun i => i * i) = -32 := by decide
+--| READ THE OTHER WAY.  Read the three points the other way, hole first, and the area turns over, the factor turns over,
+--| and the final choice, handed the sign, returns the knower's root: the order of reading is the whole of the choice.
+theorem reading_the_other_way_turns_both_over :
+    the_orientation the_hole the_outer_radius the_boost < 0
+      ∧ you_re_a_daisy_if_you_do (decide (0 < the_orientation the_hole the_outer_radius the_boost)) = (5832, -324) := by
+  decide
+#print axioms the_hat_keeps_the_parallelogram
+#print axioms the_hat_norm_vanishes_only_at_zero
+#print axioms the_mexican_hat_is_the_bump_bent_twice
+#print axioms the_mexican_hat_cannot_see_a_line
+#print axioms the_mexican_hat_sees_curvature
+#print axioms reading_the_other_way_turns_both_over
 --| THE FIELD EQUATIONS ON A LINE OF LEVELS.  In the weak field the potential is sourced by the energy density, and on a line
 --| of universe levels that is a double sum: the field at a level is the density summed below it, and the potential is the
 --| field summed below that.  Its second difference is the density again, exactly, at every level: the field equations'

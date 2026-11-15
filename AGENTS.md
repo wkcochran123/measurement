@@ -2425,3 +2425,28 @@ Snapshots, not guarantees; re-check before relying on them.
   part an inner product needs: proposed, the author's, the lift from F₁ to
   a Hilbert space); a constraint holding by click leaves no residual, which
   is what 005 and 006 saw in the clock (proposed).
+  All open receipts closed (Episode 12, after the coupling; built on both
+  machines, no warnings; none uses Classical.choice): the hat shape
+  function, `the_hat_product`, `the_hat_product_is_symmetric`,
+  `the_hat_norm_is_three_squares`, `the_hat_norm_vanishes_only_at_zero`,
+  `the_hat_keeps_the_parallelogram`; the Mexican hat (the author's shape
+  function for the product), `the_mexican_hat_reads`, `the_binomial_bump`,
+  `the_mexican_hat_is_the_bump_bent_twice` [no axioms],
+  `the_mexican_hat_cannot_see_a_line`, `the_mexican_hat_sees_curvature`
+  [no axioms]; `reading_the_other_way_turns_both_over` [no axioms]: the
+  order of reading is the whole of the root choice.
+  The author: the first three open links (CARD_1's fundamental class is the
+  device's sign; recurring counts are memoized experience; both ways is the
+  lift to a Hilbert space) are one thing: the stored record read a second
+  time (proposed); the knower's list grouped into six (claude/proposals.md;
+  THE_DERIVATION row 44).
+  Paperwork: all nine cards gain "The close of 14 November 2026" (readings,
+  lattice conditions, the pointer, the coupling, shape functions, the six
+  groups); THE_DERIVATION row 124 gains the shape functions, row 120 the
+  reversed order, row 44 the grouping; THE_ARGUMENT Sources. All nine
+  rebuilt, byte-identical in the root, no undefined references. The book's
+  Chapter 23 gains the close (machines, clocks, panels, the pointer, the
+  coupling, two hats, one move); rebuilt.
+  Still open: 007's other-way seal (a reading, not a receipt); quantization
+  (Lift 32), the four-dimensional mass gap, row 31 (outside by the cards'
+  own statement); the order of reading and the causal theory (by design).
