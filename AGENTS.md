@@ -2450,3 +2450,13 @@ Snapshots, not guarantees; re-check before relying on them.
   Still open: 007's other-way seal (a reading, not a receipt); quantization
   (Lift 32), the four-dimensional mass gap, row 31 (outside by the cards'
   own statement); the order of reading and the causal theory (by design).
+  The author: "quantization is the ability to distinguish. that gets you
+  BINARY." Closed as a definition with its rung a receipt: the device's
+  rung 1 is DISTINGUISHABLE and rung 6 is BINARY (Ep01 margin: "Just
+  because you can distinguish something doesn't mean there are two of
+  them"), dealt on the device's card (`rung06`) and clicking with every
+  rung (`every_rung_clicks`). Row 45 closed. Still handed in, the fourth
+  bent card: the procedure from the action to QED's loop series with
+  renormalization (its coefficients read, not computed). THE_ARGUMENT
+  (¶"Quantization is the ability to distinguish") and THE_DERIVATION (row 48,
+  row 123's outside list, rows table) rebuilt, byte-identical.
