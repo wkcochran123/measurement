@@ -18,6 +18,7 @@ its files match the source commit.
 | 001 | `readings/001-coupling` | heartbeats per device cell (the coupling g) and wall time per heartbeat (the dilation D) across machines | `5b8b720` | M2 and M2 Ultra read |
 | 002 | `readings/002-beats` | the third clock inferred from two: the envelope extremes of the two machines' summed clocks, counted as a fringe order | `7cd707b` | M2 and M2 Ultra read |
 | 003 | `readings/003-calibration` | heartbeats to seconds: the device's registered floor as one Compton time; each machine's clock against the electron's; the step's horizon | `41fd3f2` | done on both machines |
+| 004 | `readings/004-relative-time` | the four rulers (universe level, heartbeats, time) combined into relative time through the field equations' weak-field limit | `03e888c` | M2 and M2 Ultra read |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -219,6 +220,45 @@ superseded. If the frames are not collinear, |ln D| is a lower bound on their re
 **Standing.** The floor and the τ are *measured*; the conversion is the sealed rule applied
 (*computed*); that one floor is one Compton time is *declared*, the author's; reading Γ as the
 machine's dilation against the electron's clock is *proposed*. No measured constant is compared.
+
+## Experiment 004: relative time from the four rulers
+
+**Question** (the author's four rulers): universe levels, heartbeats and time, combined to compute
+relative time through the Einstein field equations. In the weak field a clock at potential Φ runs at
+1 + Φ/c² (*standard*), and the potential is sourced by the energy density. On a line of universe
+levels the potential is a double sum of the density, whose second difference is the density: now a
+kernel receipt, `the_second_difference_of_the_potential_is_the_density`, with
+`a_nonnegative_density_bends_the_potential_up` and `the_potentials_superpose` (Episode 12,
+propext and Quot.sound). Source `03e888c`.
+
+**Method.** At each level k = 1…36 the typeset ladder is searched for rung k on a place one universe
+lower, on Episode 8's meter, with wall time. H_k = heartbeats (beat + blank), τ_k = t_k / H_k,
+relative time R_k = τ_k / τ_2 (level 1, the cold start, excluded), density ρ_k = H_k, potential Φ_k
+the double sum of ρ below k. Five runs per machine, both machines at once.
+
+**Against the seal:**
+
+| | prediction | result |
+|---|---|---|
+| (a) | H_k identical across runs and machines | **confirmed**: all 36 levels, all ten runs, from 16,026 to 626,925 heartbeats |
+| (b) | D_k = τ_k(Ultra)/τ_k(M2) constant within the M2's run-to-run spread (0.051); no trend in Φ | **refuted** as sealed: D_k spans 0.887 to 0.983 (spread 0.10, median 0.954); **no trend**: R² = 0.11 |
+| (c) | ln R_k linear in Φ_k, R² > 0.9; the two slopes within 20% | **mixed**: M2 R² = 0.859 (fails), Ultra 0.905 (holds); slopes 3.94 × 10⁻⁹ and 3.67 × 10⁻⁹ per heartbeat², 7% apart (holds) |
+
+Relative time rises up the ladder on both machines: τ goes from 33.5 to 40.0 ns per heartbeat on the
+M2, and from 31.5 to 37.2 on the Ultra, between levels 2 and 36. The two machines' ratio has no trend
+with height, so the rise is shared. Its scatter is the M2's clock (one level, 12, reads 10% slow on
+the M2 alone).
+
+**After the fact, not sealed:** ln R_k tracks the local density H_k better than the potential Φ_k.
+From level 5 on, R² against H_k is 0.955 (M2) and 0.991 (Ultra), against Φ_k 0.886 and 0.932,
+against the field (single sum) 0.929 and 0.970. A clock that reads the work at its own level
+rather than the potential below it is what 002's workload dependence suggested: a medium, not a
+field. That is a candidate for a sealed prediction in the next experiment, not a result here.
+
+**Standing.** The counts and times are *measured*; the potential is *computed* from the counts by the
+receipt; that heartbeats per level are an energy density and universe levels a height, and that
+the rise is gravitational time dilation, is *proposed*, the author's. The weak-field relations are
+*standard*.
 
 ## The study: hardware
 
