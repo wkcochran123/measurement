@@ -2460,3 +2460,19 @@ Snapshots, not guarantees; re-check before relying on them.
   renormalization (its coefficients read, not computed). THE_ARGUMENT
   (¶"Quantization is the ability to distinguish") and THE_DERIVATION (row 48,
   row 123's outside list, rows table) rebuilt, byte-identical.
+  The author: "the mass gap is the value of the fourth order when the cubic
+  is not exact"; "this allows you to talk about fifth order, sixth order,
+  seventh order, which is just a polynomial in the machine"; "voila
+  weierstrauss". Episode 12 (after the reversed-order receipt; built on
+  both machines, no warnings, propext and Quot.sound; a first draft with
+  `grind` pulled in Classical.choice and was redone by hand):
+  `the_fourth_difference`, `a_quartic_leaves_its_fourth_order` (24 × the
+  leading count), `a_cubic_is_exact`, `the_closing_quartic_as_a_quartic`,
+  `the_closing_quartic_leaves_the_gap` (24c for every c, t, x, r),
+  `the_counted_gap` (432 on the counts). Higher orders: n! × leading
+  coefficient (120, 720, 5040), standard; from the fifth no radicals
+  (Abel), where the ring stops. Weierstrass (standard): the machine's
+  polynomials reach any continuous description on the compact interior;
+  Ep03's Polynomial margin anticipates it. Row 57 recalibrated: value
+  measured, identification with the four-dimensional gauge mass gap
+  proposed. THE_ARGUMENT and THE_DERIVATION rebuilt, byte-identical.

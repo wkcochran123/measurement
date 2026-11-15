@@ -5084,6 +5084,41 @@ theorem reading_the_other_way_turns_both_over :
 #print axioms the_mexican_hat_cannot_see_a_line
 #print axioms the_mexican_hat_sees_curvature
 #print axioms reading_the_other_way_turns_both_over
+--| THE MASS GAP: THE FOURTH ORDER WHEN THE CUBIC IS NOT EXACT.  The fourth difference, one, minus four, six, minus four,
+--| one, is the line's operator taken twice.  On every cubic it reads nothing: where the representation is cubic, it is
+--| exact, and no fourth order is left.  On a quartic it reads twenty-four times the leading count, the same at every
+--| place: a value that does not close.  The closing quartic, read in its phase r, leaves twenty-four times c; on the
+--| counts, c is eighteen, and the fourth order is four hundred thirty-two.
+def the_fourth_difference (f : Int → Int) (r : Int) : Int :=
+  f (r + 1 + 1) - (f (r + 1) + f (r + 1) + f (r + 1) + f (r + 1))
+    + (f r + f r + f r + f r + f r + f r) - (f (r - 1) + f (r - 1) + f (r - 1) + f (r - 1)) + f (r - 1 - 1)
+theorem a_quartic_leaves_its_fourth_order (e a b c d r : Int) :
+    the_fourth_difference (fun y => e * (y * y * y * y) + a + b * y + c * (y * y) + d * (y * y * y)) r = 24 * e := by
+  simp only [the_fourth_difference, Int.mul_add, Int.add_mul, Int.mul_sub, Int.sub_mul, Int.mul_one, Int.one_mul]
+  simp only [Int.mul_comm]
+  omega
+theorem a_cubic_is_exact (a b c d r : Int) :
+    the_fourth_difference (fun y => a + b * y + c * (y * y) + d * (y * y * y)) r = 0 := by
+  have h := a_quartic_leaves_its_fourth_order 0 a b c d r
+  simp only [Int.zero_mul, Int.zero_add, Int.mul_zero] at h
+  exact h
+theorem the_closing_quartic_as_a_quartic (c t x y : Int) :
+    the_closing_quartic c t x y
+      = c * (y * y * y * y) + t * t * (c - t) * x * x + 0 * y + (-(2 * c * t * x)) * (y * y) + 0 * (y * y * y) := by
+  simp only [the_closing_quartic, Int.zero_mul, Int.add_zero, Int.neg_mul]
+  ac_nf; omega
+theorem the_closing_quartic_leaves_the_gap (c t x r : Int) :
+    the_fourth_difference (fun y => the_closing_quartic c t x y) r = 24 * c := by
+  rw [show (fun y => the_closing_quartic c t x y)
+        = (fun y => c * (y * y * y * y) + t * t * (c - t) * x * x + 0 * y + (-(2 * c * t * x)) * (y * y) + 0 * (y * y * y))
+        from funext (the_closing_quartic_as_a_quartic c t x)]
+  exact a_quartic_leaves_its_fourth_order c _ 0 _ 0 r
+theorem the_counted_gap (r : Int) : the_fourth_difference (fun y => the_closing_quartic 18 5 324 y) r = 432 :=
+  the_closing_quartic_leaves_the_gap 18 5 324 r
+#print axioms a_cubic_is_exact
+#print axioms a_quartic_leaves_its_fourth_order
+#print axioms the_closing_quartic_leaves_the_gap
+#print axioms the_counted_gap
 --| THE FIELD EQUATIONS ON A LINE OF LEVELS.  In the weak field the potential is sourced by the energy density, and on a line
 --| of universe levels that is a double sum: the field at a level is the density summed below it, and the potential is the
 --| field summed below that.  Its second difference is the density again, exactly, at every level: the field equations'
