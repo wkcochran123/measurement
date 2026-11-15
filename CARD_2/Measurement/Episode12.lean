@@ -4968,6 +4968,35 @@ theorem the_knower_may_pick_either_root :
    the_quartic_does_not_read_the_sign, the_two_picks_differ, the_writers_point_clicks,
    fun you_do => (you_re_a_daisy_either_way you_do).1⟩
 #print axioms the_knower_may_pick_either_root
+--| THE FIELD EQUATIONS ON A LINE OF LEVELS.  In the weak field the potential is sourced by the energy density, and on a line
+--| of universe levels that is a double sum: the field at a level is the density summed below it, and the potential is the
+--| field summed below that.  Its second difference is the density again, exactly, at every level: the field equations'
+--| Newtonian limit, with no coupling written.  A density never negative bends the potential only upward, and two densities
+--| give the sum of their potentials.  Which density is the device's, the heartbeats spent at each level, is read on machines.
+def the_field_of (ρ : Nat → Int) : Nat → Int
+  | 0 => 0
+  | n + 1 => the_field_of ρ n + ρ n
+def the_potential_of (ρ : Nat → Int) : Nat → Int := the_field_of (the_field_of ρ)
+theorem the_second_difference_of_the_potential_is_the_density (ρ : Nat → Int) (n : Nat) :
+    the_potential_of ρ (n + 2) - 2 * the_potential_of ρ (n + 1) + the_potential_of ρ n = ρ n := by
+  simp only [the_potential_of, the_field_of]; omega
+theorem a_nonnegative_density_bends_the_potential_up (ρ : Nat → Int) (h : ∀ n, 0 ≤ ρ n) (n : Nat) :
+    0 ≤ the_potential_of ρ (n + 2) - 2 * the_potential_of ρ (n + 1) + the_potential_of ρ n := by
+  rw [the_second_difference_of_the_potential_is_the_density]; exact h n
+theorem the_fields_superpose (ρ σ : Nat → Int) (n : Nat) :
+    the_field_of (fun k => ρ k + σ k) n = the_field_of ρ n + the_field_of σ n := by
+  induction n with
+  | zero => rfl
+  | succ n ih => simp only [the_field_of, ih]; omega
+theorem the_potentials_superpose (ρ σ : Nat → Int) (n : Nat) :
+    the_potential_of (fun k => ρ k + σ k) n = the_potential_of ρ n + the_potential_of σ n := by
+  simp only [the_potential_of]
+  rw [show the_field_of (fun k => ρ k + σ k) = fun k => the_field_of ρ k + the_field_of σ k from
+        funext (the_fields_superpose ρ σ)]
+  exact the_fields_superpose _ _ n
+#print axioms the_second_difference_of_the_potential_is_the_density
+#print axioms a_nonnegative_density_bends_the_potential_up
+#print axioms the_potentials_superpose
 
 --| THE ANT, INFERRED.  The two Bullshits of a closure are the tape on either side of the head, each a stack written only
 --| by pushing; the facts are the mark under the head and the heading.  Each step appends one `.inferred` closure on top of
