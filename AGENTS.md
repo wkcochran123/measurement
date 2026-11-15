@@ -2325,3 +2325,37 @@ Snapshots, not guarantees; re-check before relying on them.
   picked. Built by make, byte-identical in the root, no undefined
   references. Not yet carried to the other cards, AGENTS' representation
   table or the book.
+  The author confirms the design of `you_re_a_daisy_if_you_do`: yes
+  returns the reader's root (declared). The calibration, finished
+  (readings 003, source 41fd3f2, results f69a563): the device's
+  registered floor (`Calibration.measuredFloor`, the nowtrino's click) is
+  3,016 heartbeats on both machines' own builds; one floor is one Compton
+  time (declared, the author's), so one heartbeat is 4.270851e-25 s on
+  every machine; each machine's clock runs about 1e17 slower than the
+  electron's (Γ, rapidity ≈ 39.6); the step's horizon is ƛ_C/η =
+  0.275 ƛ_C = 1.06e-13 m. Against that common frame the machines' relative
+  rapidity is |ln D| (β ≈ 0.045 first workload, 0.065 the box's shared
+  part), superseding the γ = 1/D readings (0.29, 0.35). THE_DERIVATION
+  carries it (66 pp.), rebuilt byte-identical. Still open in the
+  calibration: the ladder's four rulers.
+  Readings 004 (source 03e888c, results 15aa962): the four rulers
+  (universe levels, heartbeats, time → relative time through the field
+  equations' weak-field limit). Receipts: `the_field_of`,
+  `the_potential_of`, `the_second_difference_of_the_potential_is_the_density`,
+  `a_nonnegative_density_bends_the_potential_up`, `the_fields_superpose`,
+  `the_potentials_superpose`. Counts identical at 36 levels; relative time
+  rises alike on both machines; the potential fit mixed.
+  Readings 005 (96a1898, c4c9d21): two first variations, time-like and
+  space-like. Receipts: `a_boost_keeps_the_kind`, `time_like_stays_time_like`,
+  `space_like_stays_space_like`, `one_variation_two_representations`,
+  `the_convective_term`. The time-like (local) reading wins on both
+  machines; the convective term does not show (r ≈ 0.04).
+  Readings 006 (5a555d6, 177aaf2), on the M2 Ultra: frames as points (P
+  cores, E cores, the M2). Counts identical; E cores dilate every workload
+  by one factor (6.86–6.88, a pure dilation); the triangle is collinear
+  (no orientation from hardware frames); convective term absent at 30 runs
+  (r = +0.006). The workload dependence of 002 and the box sits in the M2's
+  row: the medium reading is withdrawn. THE_DERIVATION (69 pp.) carries
+  004–006 as row 122 and the withdrawal under row 119; rebuilt
+  byte-identical. All receipts build on both machines, propext and
+  Quot.sound only.
