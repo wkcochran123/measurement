@@ -21,6 +21,7 @@ its files match the source commit.
 | 004 | `readings/004-relative-time` | the four rulers (universe level, heartbeats, time) combined into relative time through the field equations' weak-field limit | `03e888c` | M2 and M2 Ultra read |
 | 005 | `readings/005-two-variations` | the two representations of the first variation, time-like (local) and space-like (the potential), and the convective term that joins them | `96a1898` | M2 and M2 Ultra read |
 | 006 | `readings/006-frames` | frames as points: the M2 Ultra's performance and efficiency cores and the M2, on three workloads; the triangle's signed area; the convective term at thirty runs | `5a555d6` | read on the M2 Ultra (P and E); the M2 from 001, 002, 005 |
+| 007 | `readings/007-fenceposts` | the five-block fencepost: does relative time on the ladder break at the posts 6, 11, …, 31 (seven panels of five, one post over)? | `4e5bb93` | read on the M2 Ultra |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -342,6 +343,33 @@ unchanged.
 **Standing.** Counts and times *measured*; the fits, the interval and the interaction *computed*; that a
 workload-independent dilation is a Lorentz factor, and that frames as points give the knower's
 orientation, *proposed*.
+
+## Experiment 007: the five-block fencepost
+
+**Question** (the author's reading of 004's mixed fit: "5 block fencepost"). The 36 levels are seven
+panels of five with one post over, 36 = 7·5 + 1: the thirty-five lifts and the fencepost. Read panel
+by panel, relative time should break at the posts. Sealed before any run, and 004's data were not
+refitted. Source `4e5bb93`; ten runs of 004's ladder probe on the M2 Ultra's performance cores.
+
+| shift | interior knots | residual (RSS) |
+|---|---|---|
+| **0 (the posts)** | 6, 11, 16, 21, 26, 31 | **4.63 × 10⁻³** |
+| 1 | 7, 12, …, 32 | 5.69 × 10⁻³ |
+| 2 | 8, 13, …, 33 | 6.71 × 10⁻³ |
+| 3 | 9, 14, …, 34 | 7.36 × 10⁻³ |
+| 4 | 10, 15, …, 35 | 7.75 × 10⁻³ |
+
+- (a) **confirmed**: the counts are identical across the ten runs and equal to 004's at every level.
+- (b) **confirmed**: the spline with knots on the posts has the smallest residual, 19% below the best
+  shifted grid; R² = 0.985 with six knots, against 0.905 for the potential in 004.
+
+**Caveat.** The residual rises steadily with the shift, so a reading in which earlier breaks simply fit
+better is not excluded by this test. Grids shifted the other way (5, 10, …, 30; 4, 9, …, 29) would
+separate the posts from that trend; that is the next seal.
+
+**Standing.** *Measured*: counts and times; *computed*: the fits. *Proposed*, the author's: the
+ladder's relative time is read in panels of five between fenceposts, the Sobolev-exact panels of the
+spline.
 
 ## The study: hardware
 
