@@ -4983,6 +4983,59 @@ theorem the_orientation_points_to_the_readers_root :
       ∧ you_re_a_daisy_if_you_do (decide (0 < the_orientation the_outer_radius the_hole the_boost)) = (5832, 324) := by
   decide
 #print axioms the_orientation_points_to_the_readers_root
+--| EVERY ≤ CLICKS, AND BOTH WAYS IS EQUALITY.  The universe id is a Number, and the only thing the device gives a Number is
+--| its ≤.  That ≤ is decided by its own cases: zero is below everything, one is never below zero, and two ones compare by
+--| their clicks, counting when both click, reversing when neither does, deciding at once when one does.  The id of universe
+--| k is a tape of k + 1 truths, and on the ids the ≤ is the order of the naturals.  Read both ways, the comparison agrees
+--| exactly when the two ids are one: (a ≤ b) = (b ≤ a) is a = b, as clicks.  An order alone, read both ways, gives the
+--| identity, the symmetric part a product needs.
+def the_number_order : (a b : Number) → Decidable (Number.le a b)
+  | .zero _, _ => isTrue trivial
+  | .one _ _, .zero _ => isFalse id
+  | .one f1 n1, .one f2 n2 => by
+      unfold Number.le
+      cases f1.click <;> cases f2.click
+      · exact match the_number_order n1 n2 with
+          | isTrue h => isFalse (fun k => k h)
+          | isFalse h => isTrue h
+      · exact isTrue trivial
+      · exact isFalse id
+      · exact the_number_order n1 n2
+def the_universe_id (k : Nat) : Number := tapeNumber (List.replicate (k + 1) FACT.Truth)
+theorem the_universe_id_steps (k : Nat) :
+    the_universe_id (k + 1) = .one FACT.Truth (the_universe_id k) := by
+  simp only [the_universe_id, List.replicate_succ]
+  cases k <;> rfl
+theorem the_ids_compare_as_naturals : ∀ (j k : Nat),
+    Number.le (the_universe_id j) (the_universe_id k) ↔ j ≤ k
+  | 0, _ => ⟨fun _ => Nat.zero_le _, fun _ => trivial⟩
+  | j + 1, 0 => ⟨fun h => absurd h id, fun h => absurd h (Nat.not_succ_le_zero j)⟩
+  | j + 1, k + 1 => by
+      rw [the_universe_id_steps j, the_universe_id_steps k]
+      exact (the_ids_compare_as_naturals j k).trans ⟨Nat.succ_le_succ, Nat.le_of_succ_le_succ⟩
+theorem both_ways_is_equality (j k : Nat) :
+    (Number.le (the_universe_id j) (the_universe_id k) ↔ Number.le (the_universe_id k) (the_universe_id j)) ↔ j = k := by
+  rw [the_ids_compare_as_naturals, the_ids_compare_as_naturals]
+  constructor
+  · intro h
+    rcases Nat.le_total j k with hjk | hkj
+    · exact Nat.le_antisymm hjk (h.mp hjk)
+    · exact Nat.le_antisymm (h.mpr hkj) hkj
+  · intro h; subst h; exact Iff.rfl
+theorem every_order_clicks (j k : Nat) :
+    @decide (Number.le (the_universe_id j) (the_universe_id k)) (the_number_order _ _) = decide (j ≤ k) :=
+  @decide_eq_decide _ _ (the_number_order _ _) _ |>.mpr (the_ids_compare_as_naturals j k)
+theorem both_ways_clicks_as_equality (j k : Nat) :
+    (@decide (Number.le (the_universe_id j) (the_universe_id k)) (the_number_order _ _)
+      == @decide (Number.le (the_universe_id k) (the_universe_id j)) (the_number_order _ _)) = decide (j = k) := by
+  rw [every_order_clicks, every_order_clicks]
+  rcases Nat.lt_trichotomy j k with h | h | h
+  · rw [decide_eq_true (Nat.le_of_lt h), decide_eq_false (Nat.not_le_of_lt h), decide_eq_false (Nat.ne_of_lt h)]; rfl
+  · subst h; rw [decide_eq_true (Nat.le_refl j), decide_eq_true rfl]; rfl
+  · rw [decide_eq_false (Nat.not_le_of_lt h), decide_eq_true (Nat.le_of_lt h), decide_eq_false (Nat.ne_of_gt h)]; rfl
+#print axioms the_ids_compare_as_naturals
+#print axioms both_ways_is_equality
+#print axioms both_ways_clicks_as_equality
 --| THE FIELD EQUATIONS ON A LINE OF LEVELS.  In the weak field the potential is sourced by the energy density, and on a line
 --| of universe levels that is a double sum: the field at a level is the density summed below it, and the potential is the
 --| field summed below that.  Its second difference is the density again, exactly, at every level: the field equations'

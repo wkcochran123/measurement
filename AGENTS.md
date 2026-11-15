@@ -2412,3 +2412,16 @@ Snapshots, not guarantees; re-check before relying on them.
   (anchor: `the_memo_and_the_cut`). THE_DERIVATION row 120 closed
   (measured, given the declared order), row 123's counts paragraph;
   THE_ARGUMENT "Pick a root". Rebuilt, byte-identical.
+  The coupling (the author: "you are looking for the device's ≤, the only
+  thing you get for the universe id, which is the Number"; "all of the ≤
+  have to click"; "((a ≤ b) = (b ≤ a)) = (a = b), this is the lift from F_1
+  to a Hilbert space"). Episode 12, after the orientation receipt:
+  `the_number_order` (the device's ≤ on Number, decided by its own cases),
+  `the_universe_id` (k + 1 true cells), `the_universe_id_steps`,
+  `the_ids_compare_as_naturals`, `both_ways_is_equality`,
+  `every_order_clicks`, `both_ways_clicks_as_equality` [propext only];
+  built on both machines, no warnings. THE_DERIVATION row 124 (73 pp.):
+  the coupling is the order; read both ways it is equality (the symmetric
+  part an inner product needs: proposed, the author's, the lift from F₁ to
+  a Hilbert space); a constraint holding by click leaves no residual, which
+  is what 005 and 006 saw in the clock (proposed).
