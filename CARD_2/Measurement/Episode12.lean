@@ -4968,6 +4968,21 @@ theorem the_knower_may_pick_either_root :
    the_quartic_does_not_read_the_sign, the_two_picks_differ, the_writers_point_clicks,
    fun you_do => (you_re_a_daisy_either_way you_do).1⟩
 #print axioms the_knower_may_pick_either_root
+--| THE ORIENTATION POINTS TO THE READER'S ROOT.  The device's own three points, the outer root, the hole and the boost, read
+--| in the order the record runs, have signed area two: positive.  A positive sign picks the factor r squared less t x times
+--| one less s, and with s the round trip's root over eighteen that factor vanishes at the reading: five times the reading
+--| times eighteen less root ninety is sixty-five times eighteen times eighteen squared, times sixty-five to keep it whole.
+--| The other factor vanishes at the hole's reading.  So the sign the device carries picks the reader's root, the one
+--| the final choice returns on yes; the order of the three points is the theory of yarns'.
+theorem the_orientation_points_to_the_readers_root :
+    0 < the_orientation the_outer_radius the_hole the_boost
+      ∧ 5 * (the_surd_product (5832, 324) (18, -1)).1 = 65 * (18 * (18 * 18))
+      ∧ (the_surd_product (5832, 324) (18, -1)).2 = 0
+      ∧ 5 * (the_surd_product (5832, -324) (18, 1)).1 = 65 * (18 * (18 * 18))
+      ∧ (the_surd_product (5832, -324) (18, 1)).2 = 0
+      ∧ you_re_a_daisy_if_you_do (decide (0 < the_orientation the_outer_radius the_hole the_boost)) = (5832, 324) := by
+  decide
+#print axioms the_orientation_points_to_the_readers_root
 --| THE FIELD EQUATIONS ON A LINE OF LEVELS.  In the weak field the potential is sourced by the energy density, and on a line
 --| of universe levels that is a double sum: the field at a level is the density summed below it, and the potential is the
 --| field summed below that.  Its second difference is the density again, exactly, at every level: the field equations'

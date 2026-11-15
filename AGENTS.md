@@ -2398,3 +2398,17 @@ Snapshots, not guarantees; re-check before relying on them.
   quantization (Lift 32), the four-dimensional mass gap, row 31.
   Proposed: CARD_1's fundamental class (H₃(F; ℤ) ≅ ℤ) and the sheet receipt
   are the orientation the pointer needs, from inside the device.
+  Orientation, closed: `the_orientation_points_to_the_readers_root`
+  [propext], built on both machines. The device's own three points (outer
+  root, hole, boost), read in the record's order, have signed area 2; the
+  factor a positive sign picks, r² − tx(1 − s) with s = √90/18, vanishes at
+  the reader's root (5·x₊·(18 − √90) = 18·18², scaled by 65), the other at
+  the hole's; and `you_re_a_daisy_if_you_do` handed that sign returns the
+  reader's root. The pointer is the device's, not the hardware's (006:
+  frames are a pure dilation). Declared: the order of reading (the yarn
+  theory). Proposed: that this sign and CARD_1's fundamental class are one
+  orientation. The author: recurring counts (36 vertices, order 18, index 2)
+  are memoized experience, the stored walk read again, not coincidence
+  (anchor: `the_memo_and_the_cut`). THE_DERIVATION row 120 closed
+  (measured, given the declared order), row 123's counts paragraph;
+  THE_ARGUMENT "Pick a root". Rebuilt, byte-identical.
