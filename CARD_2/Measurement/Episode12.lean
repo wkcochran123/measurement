@@ -4997,6 +4997,36 @@ theorem the_potentials_superpose (ρ σ : Nat → Int) (n : Nat) :
 #print axioms the_second_difference_of_the_potential_is_the_density
 #print axioms a_nonnegative_density_bends_the_potential_up
 #print axioms the_potentials_superpose
+--| TWO FIRST VARIATIONS, AND THE CONVECTIVE TERM.  A step is time-like when its interval is positive and space-like when
+--| negative, and a boost of interval one keeps the kind: what is time-like in one frame is time-like in every frame.  On a
+--| field over ticks and levels, one first variation has two representations, along the clock at a level and across the
+--| levels at a tick; along a step that moves one tick and one level, either order gives the whole, and the two orders
+--| meet in the mixed difference.  Where they are joined is the convective term: twice the velocity times its own
+--| difference is the difference of its square less the square of its difference.
+theorem a_boost_keeps_the_kind (p b : Int × Int) (hb : the_interval b = 1) :
+    the_interval (the_surd_product p b) = the_interval p := by
+  rw [the_interval_is_multiplicative, hb, Int.mul_one]
+theorem time_like_stays_time_like (p b : Int × Int) (hb : the_interval b = 1) (h : 0 < the_interval p) :
+    0 < the_interval (the_surd_product p b) := by
+  rw [a_boost_keeps_the_kind p b hb]; exact h
+theorem space_like_stays_space_like (p b : Int × Int) (hb : the_interval b = 1) (h : the_interval p < 0) :
+    the_interval (the_surd_product p b) < 0 := by
+  rw [a_boost_keeps_the_kind p b hb]; exact h
+def the_time_like_variation (u : Nat → Nat → Int) (n k : Nat) : Int := u (n + 1) k - u n k
+def the_space_like_variation (u : Nat → Nat → Int) (n k : Nat) : Int := u n (k + 1) - u n k
+theorem one_variation_two_representations (u : Nat → Nat → Int) (n k : Nat) :
+    the_time_like_variation u n (k + 1) + the_space_like_variation u n k = u (n + 1) (k + 1) - u n k
+      ∧ the_space_like_variation u (n + 1) k + the_time_like_variation u n k = u (n + 1) (k + 1) - u n k
+      ∧ the_time_like_variation u n (k + 1) - the_time_like_variation u n k
+          = the_space_like_variation u (n + 1) k - the_space_like_variation u n k := by
+  simp only [the_time_like_variation, the_space_like_variation]
+  refine ⟨?_, ?_, ?_⟩ <;> omega
+theorem the_convective_term (u d : Int) :
+    2 * (u * d) = ((u + d) * (u + d) - u * u) - d * d := by
+  simp only [Int.add_mul, Int.mul_add]; rw [Int.mul_comm d u]; omega
+#print axioms time_like_stays_time_like
+#print axioms one_variation_two_representations
+#print axioms the_convective_term
 
 --| THE ANT, INFERRED.  The two Bullshits of a closure are the tape on either side of the head, each a stack written only
 --| by pushing; the facts are the mark under the head and the heading.  Each step appends one `.inferred` closure on top of
