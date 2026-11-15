@@ -5119,6 +5119,39 @@ theorem the_counted_gap (r : Int) : the_fourth_difference (fun y => the_closing_
 #print axioms a_quartic_leaves_its_fourth_order
 #print axioms the_closing_quartic_leaves_the_gap
 #print axioms the_counted_gap
+--| THE GAP, AS RATIOS.  Four numbers carry the gap, and each is the pair of roots read one way: their sum, twelve times
+--| which is the fourth order; their product, the head's mass squared; their ratio, the transfer matrix's gap; and the
+--| smaller root, read, the knower's.  Only their ratios are the device's, and the ratios are exact: the fourth order over
+--| the mass is twenty-four over thirteen; the knower's reading over the mass is the gain over the reader's root, and the
+--| reader's over the mass the gain over the hole; the ratio of the roots is the reader's root squared over the mass.
+theorem the_gap_ratios_are_exact :
+    12 * (the_outer_radius.1 + the_hole.1) = 432 ∧ the_outer_radius.2 + the_hole.2 = 0
+      ∧ the_surd_product the_outer_radius the_hole = (234, 0)
+      ∧ 13 * 432 = 24 * 234
+      ∧ the_surd_product (5832, -324) the_outer_radius = (324 * 234, 0)
+      ∧ the_surd_product (5832, 324) the_hole = (324 * 234, 0)
+      ∧ the_surd_product (the_surd_product the_outer_radius the_outer_radius) the_hole
+          = (234 * the_outer_radius.1, 234 * the_outer_radius.2) := by
+  decide
+--| THE BAKER'S TRANSFORM.  Two tapes: move the first bit of one onto the front of the other.  The move undoes, and the
+--| total count is kept, so on tapes of any fixed length it is a permutation: the measure is kept and nothing is lost.
+def the_bakers_transform : List Bool × List Bool → List Bool × List Bool
+  | (b :: x, y) => (x, b :: y)
+  | ([], y) => ([], y)
+def the_bakers_inverse : List Bool × List Bool → List Bool × List Bool
+  | (x, b :: y) => (b :: x, y)
+  | (x, []) => (x, [])
+theorem the_bakers_transform_undoes (b : Bool) (x y : List Bool) :
+    the_bakers_inverse (the_bakers_transform (b :: x, y)) = (b :: x, y)
+      ∧ the_bakers_transform (the_bakers_inverse (x, b :: y)) = (x, b :: y) := ⟨rfl, rfl⟩
+theorem the_bakers_transform_keeps_the_count (x y : List Bool) :
+    (the_bakers_transform (x, y)).1.length + (the_bakers_transform (x, y)).2.length = x.length + y.length := by
+  cases x with
+  | nil => rfl
+  | cons b x => simp only [the_bakers_transform, List.length_cons]; omega
+#print axioms the_gap_ratios_are_exact
+#print axioms the_bakers_transform_undoes
+#print axioms the_bakers_transform_keeps_the_count
 --| THE FIELD EQUATIONS ON A LINE OF LEVELS.  In the weak field the potential is sourced by the energy density, and on a line
 --| of universe levels that is a double sum: the field at a level is the density summed below it, and the potential is the
 --| field summed below that.  Its second difference is the density again, exactly, at every level: the field equations'

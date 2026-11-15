@@ -2476,3 +2476,18 @@ Snapshots, not guarantees; re-check before relying on them.
   Ep03's Polynomial margin anticipates it. Row 57 recalibrated: value
   measured, identification with the four-dimensional gauge mass gap
   proposed. THE_ARGUMENT and THE_DERIVATION rebuilt, byte-identical.
+  The author: the gap numbers are four coefficients of the
+  four-dimensional YM mass gap, read as ratios of each other; "this gives
+  the bisection to the cauchy ball, the cauchy ball to circle map, the
+  circle to interval map, so that the Baker's transform implies the
+  existence of the Hilbert space." Four (the fourth, 234, proposed by me):
+  ln(λ₊/λ₋) = 1.172, gain·λ₋ = 42.435, 12(λ₊ + λ₋) = 432, λ₊λ₋ = 234.
+  Episode 12: `the_gap_ratios_are_exact` [propext] (432·13 = 24·234; the
+  knower's reading × λ₊ = gain × 234; the reader's × λ₋ likewise; λ₊²λ₋ =
+  234λ₊); the Baker's transform on two tapes, `the_bakers_transform`,
+  `the_bakers_inverse`, `the_bakers_transform_undoes` [no axioms],
+  `the_bakers_transform_keeps_the_count`: a permutation on tapes of fixed
+  length. Built on both machines, no warnings. THE_DERIVATION (row 57
+  restated, row 125 the chain), THE_ARGUMENT, CHEATSHEET (its "mass gap:
+  open" line now the fourth order, the ratios, quantization as the binary
+  rung, Weierstrass, the Baker route) rebuilt, byte-identical.
