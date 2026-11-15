@@ -2491,3 +2491,21 @@ Snapshots, not guarantees; re-check before relying on them.
   restated, row 125 the chain), THE_ARGUMENT, CHEATSHEET (its "mass gap:
   open" line now the fourth order, the ratios, quantization as the binary
   rung, Weierstrass, the Baker route) rebuilt, byte-identical.
+  Receipts and paperwork brought up to date: `the_bakers_transform_is_one_to_one`
+  [propext] (an injective self-map of a finite set is a permutation and
+  keeps the counting product: unitary on finite tapes, standard once
+  injectivity is a receipt); built on both machines, no warnings. TRUTH,
+  SACRED_TEXTS, CARD_1, CARD_3, BENT_CARD and THE_QUARTER gain "The gap and
+  the space" (quantization as the binary rung, the mass gap as the fourth
+  order, the four coefficients as exact ratios, higher orders, Weierstrass,
+  the Baker route to the Hilbert space); all nine cards rebuilt,
+  byte-identical, no undefined references. The author: "this constructs
+  the Hilbert space without the continuum hypothesis." Calibrated in
+  THE_ARGUMENT and THE_DERIVATION: a separable Hilbert space never needs CH
+  (standard); what is the device's is that it starts from countable finite
+  data and every receipt is choice-free, the only limit the completion. The
+  book's Chapter 23 gains the gap and the space (5,086 words); rebuilt.
+  Left: row 31 (moot by the device's unit links, awaiting the author's
+  word), 007's other-way seal (a reading), the four-dimensional
+  identification of the gap (proposed); by design, the order of reading and
+  the causal theory.

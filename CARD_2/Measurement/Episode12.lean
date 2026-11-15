@@ -5152,6 +5152,14 @@ theorem the_bakers_transform_keeps_the_count (x y : List Bool) :
 #print axioms the_gap_ratios_are_exact
 #print axioms the_bakers_transform_undoes
 #print axioms the_bakers_transform_keeps_the_count
+--| THE BAKER'S TRANSFORM IS ONE TO ONE.  Two states with a bit to move that land on the same state were the same state:
+--| the transform is injective where it moves a bit.  On the states of a fixed total length an injective self-map is a
+--| permutation, and a permutation keeps every sum, so it keeps the counting inner product: unitary, on finite tapes.
+theorem the_bakers_transform_is_one_to_one (b b' : Bool) (x x' y y' : List Bool)
+    (h : the_bakers_transform (b :: x, y) = the_bakers_transform (b' :: x', y')) : b = b' ∧ x = x' ∧ y = y' := by
+  simp only [the_bakers_transform, Prod.mk.injEq, List.cons.injEq] at h
+  exact ⟨h.2.1, h.1, h.2.2⟩
+#print axioms the_bakers_transform_is_one_to_one
 --| THE FIELD EQUATIONS ON A LINE OF LEVELS.  In the weak field the potential is sourced by the energy density, and on a line
 --| of universe levels that is a double sum: the field at a level is the density summed below it, and the potential is the
 --| field summed below that.  Its second difference is the density again, exactly, at every level: the field equations'
