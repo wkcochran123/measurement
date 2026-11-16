@@ -24,6 +24,7 @@ its files match the source commit.
 | 007 | `readings/007-fenceposts` | the five-block fencepost: does relative time on the ladder break at the posts 6, 11, …, 31 (seven panels of five, one post over)? | `4e5bb93` | read on the M2 Ultra; superseded by 007b |
 | 007b | `readings/007b-fenceposts-both-ways` | the fencepost read both ways: do the posts beat the knot grid shifted backward as well as forward? | `a3ee8f2` | read on the M2 Ultra: refuted |
 | 008 | `readings/008-two-routes` | two routes to one number: the crank (the derivative) and the halving (the sign only), each turn on the meter; do their total costs agree? | `3f797dc` | read on the M2: the heartbeat meter reads its floor for both routes; wall time separates them by 3.1 |
+| 008b | `readings/008b-boot-count` | the boot count: what the first turn of a third loop reads (13, 18 or 8), whether the one heartbeat a turn is the meter's own post, and whether a loop with no device boots the same | the setup commit that adds the folder | sealed, not run |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
