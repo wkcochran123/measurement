@@ -23,6 +23,7 @@ its files match the source commit.
 | 006 | `readings/006-frames` | frames as points: the M2 Ultra's performance and efficiency cores and the M2, on three workloads; the triangle's signed area; the convective term at thirty runs | `5a555d6` | read on the M2 Ultra (P and E); the M2 from 001, 002, 005 |
 | 007 | `readings/007-fenceposts` | the five-block fencepost: does relative time on the ladder break at the posts 6, 11, …, 31 (seven panels of five, one post over)? | `4e5bb93` | read on the M2 Ultra; superseded by 007b |
 | 007b | `readings/007b-fenceposts-both-ways` | the fencepost read both ways: do the posts beat the knot grid shifted backward as well as forward? | `a3ee8f2` | read on the M2 Ultra: refuted |
+| 008 | `readings/008-two-routes` | two routes to one number: the crank (the derivative) and the halving (the sign only), each turn on the meter; do their total costs agree? | the setup commit that adds the folder | sealed, not run |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -397,6 +398,24 @@ excluded. 007b adds the backward shifts. Sealed before any run; source `a3ee8f2`
 about level 5 on both machines in 004), and a knot near level 3 takes up that dip. The five-level panels
 between posts are not what the clock shows; the shared rise up the ladder stands, its shape not settled.
 Shift −4 was left out by the seal: its first knot sits on level 2, where it is collinear with the line.
+
+## Experiment 008: two routes to one number
+
+The ladder read down (Episode 12, `THE LADDER, READ DOWN`) says two versions of the computation agree at every rung
+and that what separates them is conserved and can be measured. The device has two routes to its number that share no
+step: the crank, which uses the derivative, and the halving, which uses only the sign of the residual. That they meet
+is a receipt (`the_reading_with_its_receipt`, minted as `THE_CH_VERSION_IS_THE_NON_CH_VERSION`).
+
+**What is measured.** Heartbeats and wall time for every turn of each route, one turn per cell of the strip, in one
+fresh process; once with the halving first and once with the crank first; five runs of each.
+
+**The seal** (`readings/008-two-routes/SEALED_PREDICTION.txt`). (a) Counts identical across runs and orders. (b) Both
+routes end on the build's own bracket and point. Then two accounts that exclude each other: (c) the totals agree
+within one per cent (conservation read strictly; the operational reading is proposed and the author may replace it
+before the run), or (d3) they differ by more. Also (d1) the halving's heartbeats per turn are flat, and (d2) its wall
+time per turn grows.
+
+**Status.** Sealed, not run. Each probe was executed once to check that it compiles, with its output discarded unread.
 
 ## The study: hardware
 

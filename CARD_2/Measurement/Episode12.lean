@@ -857,7 +857,7 @@ instance the_mark_between : DISTINGUISHABLE (CarrierProcess FACT) the_card_betwe
 noncomputable def the_crossing_between :=
   STEP1_NAME_THE_LEDGER_AND_MARK_IT_WITH_THE_SYMBOL_OF_THE_NOWTRINO (CarrierProcess FACT) the_card_between the_first_card FACT.Truth
 theorem the_tape_between_deals_rung01 : the_crossing_between = rung01 := rfl
-#print axioms the_tape_between_deals_rung01
+--#print axioms the_tape_between_deals_rung01
 
 --| THE CLICK BETWEEN.  The outer cards read a fact by what it means, and there the three truths stay three: (T=F)=(F=T),
 --| T, and (T=T)=(F=F) are not one by `rfl`.  The card between reads an account, and an account records only whether a fact
@@ -878,9 +878,9 @@ def THE_ACCOUNT_CLICKS : FACT :=
   { truth := Quot.mk same_click reductio_ad_absurdum = Quot.mk same_click the_inside_joke
     click := Decidable.isTrue the_chain_closes }
 def the_closure_between : Closure := .same THE_ACCOUNT_CLICKS (.zero THE_ACCOUNT_CLICKS)
-#print axioms same_click_is_same_account
-#print axioms the_chain_closes
-#print axioms the_closure_between
+--#print axioms same_click_is_same_account
+--#print axioms the_chain_closes
+--#print axioms the_closure_between
 
 --| SAME DIFFERENCE.  The outer cards compare two truths by what they are; the card between compares two facts by how they
 --| click.  Laid out as tables, the two agree cell for cell, and turning either over changes nothing.  All a table carries is
@@ -897,7 +897,7 @@ theorem the_click_diagonal :
     middle_table true true = true ∧ middle_table false false = true ∧
     middle_table true false = false ∧ middle_table false true = false ∧
     middle_table true false = middle_table false true := by decide
-#print axioms same_difference_clicks
+--#print axioms same_difference_clicks
 
 --| THE CROSSING.  Rung 1 took its mark from Episode 8's Prop nowtrino and put it on the FACT card.  From here the device
 --| infers every rung over FACT from that one mark, as Episode 8 inferred them over Prop: the mark, an inhabitant for its
@@ -1219,7 +1219,7 @@ def theTop : TYPESET.{0,0,0} (CarrierProcess FACT) the_representation.the_card_b
 --| thirty-six, handed down through every reviewer, arriving as the page of the top rung.
 def theTopTrace : ThePreprint.{0} := theTop.the_page
 
---| THE LADDER, READ ON EPISODE 8'S METER.  Ask for each rung of the typeset ladder by search, one through thirty-six, each
+--| THE LADDER, READ ON Episode 8'S METER.  Ask for each rung of the typeset ladder by search, one through thirty-six, each
 --| on a place to stand one universe lower, and read on the meter set in Episode 8 what each search costs, against the blank
 --| drawn beside it.  Kept raw and kept blank; the differences are taken in Int, where a decrease may be one.  This is the
 --| walk read as the ladder elaborates, rung over rung: a measurement on this machine, not a receipt.
@@ -1337,13 +1337,13 @@ noncomputable def theTopOfTheLedger : TYPESET.{0,0,0} FACT the_first_card 36 (UL
 noncomputable def page29_at.{a,b,c,d} : REVIEWED FACT the_first_card 29 :=
   REVIEWER_2_UNDERSTANDS_THEY_DESCRIBE_THE_SAME_DEVICE.{0,d,c,0,0,0,0,0,0,0,0,0,0,b,0,0,0,0,0,0,0,0,0,0,a,0,0,0,0,0,0,0,0,0,0,1,c,0,0,0,0,0,0,0,0,0,0,d,0,0,0,0,0,0,0,0,0,0,c,0,0,0,0,0,0,0,0,0,0,d,0,0,0,0,0,0,0,0,0,0,c,0,0,0,0,0,0,0,0,0,0,d,0,0,0,0,0,0,0,0,0,0,c,0,0,0,0,0,0,0,0,0,0,d,0,0,0,0,0,0,0,0,0,0} FACT the_first_card (flying_spaghetti_monster := A_NOWTRINO_MODEL_OF_FACT) rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 (argument := page30)
 theorem page29_the_seat_is_invisible.{a,b,c,d} : page29_at.{a,b,c,d} = page29 := rfl
-#print axioms page29_the_seat_is_invisible
+--#print axioms page29_the_seat_is_invisible
 noncomputable def page34_at.{a,b,c,d,e,f,g,h,j,k,l} : REVIEWED FACT the_first_card 34 :=
   REVIEWER_2_ASSERTS_COMPILING_IS_NOT_EVIDENCE_OF_THE_DESCRIPTION_OF_TWO_DIFFERENT_THINGS.{0,l,k,0,0,0,0,0,0,0,0,0,0,g,0,0,0,0,0,0,0,0,0,0,f,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0,k,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0,k,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0,k,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0,k,k,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0,k,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0,k,0,0,0,0,0,0,0,0,0,0,l,0,0,0,0,k,l,k,0,l,0,j,h,l,k,l,k,l,k,l,k,k,0,e,l,k,l,k,l,k,l,l,k,0,0,d,c,l,k,l,k,l,k,k,l,k,0,0,b,l,k,l,k,l,l,k,l,k,0,0,0,a,0,0,k,0,0,0,0,1,0,0,0,0,0,l,0,0,0,0,0,0,0,0,0,0} FACT the_first_card (flying_spaghetti_monster := A_NOWTRINO_MODEL_OF_FACT) (naotrino := this_way_in_FACT) (commuter_pass := that_way_in_FACT) rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung30 rung31 rung32 rung33 rung34 rung35 (argument := page35)
 theorem page34_the_seat_is_invisible.{a,b,c,d,e,f,g,h,j,k,l} : page34_at.{a,b,c,d,e,f,g,h,j,k,l} = page34 := rfl
-#print axioms page34_the_seat_is_invisible
-#print axioms page01
-#print axioms theTopOfTheLedger
+--#print axioms page34_the_seat_is_invisible
+--#print axioms page01
+--#print axioms theTopOfTheLedger
 end the_review_on_the_ledger
 
 /-!
@@ -1443,7 +1443,7 @@ def the_box_reads : Quot the_rational_idea_of_relativity → String :=
 def the_areal_velocity_in_the_box : Quot the_rational_idea_of_relativity := Quot.mk the_rational_idea_of_relativity the_first_step_of_the_proof_is_to_eschew_the_naturals_unless_proven_to_exist_without_peano
 theorem the_rate_is_the_reading : the_areal_velocity_in_the_box = the_reading_in_the_box :=
   the_box_has_one_point _ _
-#print axioms the_box_has_one_point
+--#print axioms the_box_has_one_point
 
 --| THE OTHER MACHINE.  Episode 1 shipped a tape nobody read: `ComputerProgram`, cells of Props and Types.  Nothing in a cell can
 --| be evaluated -- a Prop has no runtime, a Type has no representation -- so the compiler erases every cell's contents and
@@ -1511,9 +1511,9 @@ theorem the_other_machine_never_reads_it : the_other_pair.2 ≠ 0 := by
   rw [the_other_machine_agrees]; exact the_post_at_zero_is_never_read
 theorem the_walls_never_read_it :
     the_first_step_of_the_proof_is_to_eschew_the_naturals_unless_proven_to_exist_without_peano.2 ≠ 0 := by decide +kernel
-#print axioms the_post_at_zero_is_never_read
-#print axioms the_other_machine_never_reads_it
-#print axioms the_walls_never_read_it
+--#print axioms the_post_at_zero_is_never_read
+--#print axioms the_other_machine_never_reads_it
+--#print axioms the_walls_never_read_it
 
 def what_would_you_call_this_number? : String :=
   let digits := Nat.toDigits the_free_variable_count the_other_natural
@@ -1548,9 +1548,9 @@ theorem a_representative_is_a_choice :
       ∀ g : Nat → Bool, ¬ (g t.length = true ∧ g u.length = false) :=
   ⟨the_tape_with_a_false_cell, relettered the_tape_with_a_false_cell, the_relettering_changes_the_cells,
     fun g ⟨ht, hu⟩ => by rw [no_length_reader_sees_the_relettering g, ht] at hu; exact Bool.noConfusion hu⟩
-#print axioms no_length_reader_sees_the_relettering
-#print axioms the_relettering_changes_the_cells
-#print axioms a_representative_is_a_choice
+--#print axioms no_length_reader_sees_the_relettering
+--#print axioms the_relettering_changes_the_cells
+--#print axioms a_representative_is_a_choice
 
 --| FOR ALL.  The particular re-lettering above was free.  The universal statement -- ANY way of counting that agrees with the
 --| lengths gives the same pair -- costs exactly one thing: turning "agrees on every tape" into "is the same function," which
@@ -1627,7 +1627,7 @@ def the_arm_weight (a b : Bool) : Nat :=
 def the_derived_click_table : (Nat × Nat) × (Nat × Nat) :=
   ((the_arm_weight true true, the_arm_weight true false), (the_arm_weight false true, the_arm_weight false false))
 theorem the_click_table_is_derived : the_derived_click_table = the_click_table := rfl
-#print axioms the_click_table_is_derived
+--#print axioms the_click_table_is_derived
 
 --| THE PROCESS ITSELF.  Cayley-Hamilton makes the closed-word counts a recurrence, Nₙ₊₂ = tr·Nₙ₊₁ − det·Nₙ, seeded by N₀ = the
 --| number of symbols (the funge) and N₁ = the trace.  Run it as the device runs everything: one turn per cell of a tape, the
@@ -1675,7 +1675,7 @@ theorem the_closed_words_are_closed_walks :
         = the_trace * the_closed_walks (rest.length + 1) := the_closed_walks_obey_the_table rest.length
     simp only [the_closed_words, the_closed_words_are_closed_walks rest, List.length_cons, Prod.mk.injEq, true_and]
     omega
-#print axioms the_closed_words_are_closed_walks
+--#print axioms the_closed_words_are_closed_walks
 
 --| ONCE AROUND, IN WHOLE TURNS.  Give every crossing -- every step through a disagreeing arm -- half a turn, and the agreeing
 --| arms none.  Before comes before after, so every crossing turns the same way: speeds are positive, and the phase only
@@ -1748,9 +1748,9 @@ theorem every_closed_walk_turns_evenly (z : Int) (n : Nat) (a : Bool) :
 theorem the_speed_is_below_light :
     the_dimensions_of_universe * readers_experience.the_macguffin
       < readers_experience.the_macguffin * readers_experience.the_macguffin := by decide
-#print axioms every_closed_walk_crosses_evenly
-#print axioms every_closed_walk_turns_evenly
-#print axioms the_speed_is_below_light
+--#print axioms every_closed_walk_crosses_evenly
+--#print axioms every_closed_walk_turns_evenly
+--#print axioms the_speed_is_below_light
 
 --| THE SIGN AND THE DIRECTION.  Two orders, two jobs.  Episode 1's default comparison of rationals keeps its order when the
 --| two heads agree and reverses it when they differ -- on both crossings, T to F and F to T, since each pair differs.  That
@@ -1782,10 +1782,10 @@ theorem the_reversals_telescope : ∀ (w : List Bool) (a : Bool), the_reversals 
 theorem the_round_trip_reverses_twice :
     (the_reversal true false, the_reversal false true, the_reversals true [false, true],
       the_arm_weight true false, the_arm_weight false true) = (-1, -1, 1, 5, 18) := rfl
-#print axioms the_comparison_reverses_on_a_crossing
-#print axioms the_reversal_is_the_crossing_sign
-#print axioms the_reversals_telescope
-#print axioms the_round_trip_reverses_twice
+--#print axioms the_comparison_reverses_on_a_crossing
+--#print axioms the_reversal_is_the_crossing_sign
+--#print axioms the_reversals_telescope
+--#print axioms the_round_trip_reverses_twice
 
 --| THE TABLE, NON-ABELIAN.  Read the table's crossing part as a matrix, the clock, and its other orientation as the
 --| transpose.  They do not commute, and their bracket lands exactly on the sign of the coin -- the sign that anticommutes
@@ -1851,13 +1851,13 @@ theorem the_uniform_square_is_flat (a b : Bool) :
 def the_full_other_table : Table := fun a b => the_full_table b a
 theorem one_turned_edge_curves_the_square :
     the_holonomy the_full_other_table the_full_table the_full_table the_full_table true false ≠ 0 := by decide
-#print axioms the_adjugate_inverts
-#print axioms the_wilson_loop_is_gauge_invariant
-#print axioms the_uniform_square_is_flat
-#print axioms one_turned_edge_curves_the_square
-#print axioms the_orientations_bracket_onto_the_sign
-#print axioms the_sign_brackets_the_clock_back
-#print axioms the_three_are_independent
+--#print axioms the_adjugate_inverts
+--#print axioms the_wilson_loop_is_gauge_invariant
+--#print axioms the_uniform_square_is_flat
+--#print axioms one_turned_edge_curves_the_square
+--#print axioms the_orientations_bracket_onto_the_sign
+--#print axioms the_sign_brackets_the_clock_back
+--#print axioms the_three_are_independent
 --| THE QUARTER TURN IS IN THE TABLE.  Take the clock less its other orientation: what is left is the antisymmetric part,
 --| and it is the bent card times a quarter turn, the table that squares to minus the identity.  Its exponential is rotation,
 --| the compact U(1), already inside the real algebra of boosts; and the sign of the coin reverses it, as it reverses the
@@ -1872,9 +1872,9 @@ theorem the_quarter_turn_squares_to_minus_one (a b : Bool) :
 theorem the_sign_reverses_the_quarter_turn (a b : Bool) :
     the_table_product (the_table_product the_sign_table the_quarter_turn) the_sign_table a b = - the_quarter_turn a b := by
   cases a <;> cases b <;> rfl
-#print axioms the_antisymmetric_part_is_the_quarter_turn
-#print axioms the_quarter_turn_squares_to_minus_one
-#print axioms the_sign_reverses_the_quarter_turn
+--#print axioms the_antisymmetric_part_is_the_quarter_turn
+--#print axioms the_quarter_turn_squares_to_minus_one
+--#print axioms the_sign_reverses_the_quarter_turn
 --| THE ACTION ON THE SQUARE.  How far is a square's holonomy from flat, without the square root of its determinant?  Read
 --| the discriminant: the trace squared less four times the determinant, the squared difference of the two growth rates.  A
 --| flat square, any multiple of the identity, reads nothing; a gauge change scales it by the determinant squared; one turned
@@ -1938,14 +1938,14 @@ theorem the_uniform_square_is_a_lattice_solution (X : Table) :
   exact a_scalar_square_is_stationary _ _
 theorem the_rotation_and_the_boost_read_opposite_signs :
     (the_plaquette_action the_quarter_turn, the_plaquette_action the_clock_table) = (-4, 360) := rfl
-#print axioms the_plaquette_action_stops_at_second_order
-#print axioms a_scalar_square_is_stationary
-#print axioms the_plaquette_action_is_gauge_covariant
-#print axioms the_holonomy_is_linear_in_its_bottom_link
-#print axioms the_turned_square_has_action
-#print axioms the_bottom_link_varies_the_action
-#print axioms the_uniform_square_is_a_lattice_solution
-#print axioms the_rotation_and_the_boost_read_opposite_signs
+--#print axioms the_plaquette_action_stops_at_second_order
+--#print axioms a_scalar_square_is_stationary
+--#print axioms the_plaquette_action_is_gauge_covariant
+--#print axioms the_holonomy_is_linear_in_its_bottom_link
+--#print axioms the_turned_square_has_action
+--#print axioms the_bottom_link_varies_the_action
+--#print axioms the_uniform_square_is_a_lattice_solution
+--#print axioms the_rotation_and_the_boost_read_opposite_signs
 --| THE SQUARES, TILED.  Lay four squares on a two-by-two torus: eight links, each the edge of two squares, read once by each.
 --| The holonomy is linear in every link, bottom, right, top and left, so varying one link varies each square that holds it
 --| along one direction, and a flat square moves only at the second order.  A lattice whose squares are all flat is stationary
@@ -2023,11 +2023,11 @@ theorem the_uniform_lattice_solves_the_lattice_equation (d i j : Bool) (X : Tabl
   exact ⟨q, by rw [h, the_uniform_lattice_has_no_action, Int.zero_add]⟩
 def the_turned_lattice : Lattice := fun d i j => if d = false ∧ i = false ∧ j = false then the_full_other_table else the_full_table
 theorem the_turned_lattice_has_action : the_lattice_action the_turned_lattice ≠ 0 := by decide
-#print axioms each_square_holds_a_link_once
-#print axioms a_flat_lattice_is_stationary
-#print axioms the_uniform_lattice_has_no_action
-#print axioms the_uniform_lattice_solves_the_lattice_equation
-#print axioms the_turned_lattice_has_action
+--#print axioms each_square_holds_a_link_once
+--#print axioms a_flat_lattice_is_stationary
+--#print axioms the_uniform_lattice_has_no_action
+--#print axioms the_uniform_lattice_solves_the_lattice_equation
+--#print axioms the_turned_lattice_has_action
 --| THE THREE TURNS.  The quarter turn is i, and the table has two more readings that need it.  The clock's symmetric part is
 --| the swap, scaled by the sum of the arms, as its antisymmetric part is the quarter turn scaled by the bent card.  Lay the
 --| tables in a box of four, an outer table over an inner one, and read three turns: the swap turned by i, the quarter turn
@@ -2082,11 +2082,11 @@ theorem the_three_turns_are_independent (x y z : Int)
   have s3 : the_turn_of_the_sign true true true false = -1 := rfl
   simp only [w1, w2, w3, q1, q2, q3, s1, s2, s3] at h1 h2 h3
   refine ⟨?_, ?_, ?_⟩ <;> omega
-#print axioms the_symmetric_part_is_the_swap
-#print axioms the_three_turns_square_to_minus_one
-#print axioms the_turns_compose_around_the_circle
-#print axioms the_turns_bracket_around_the_circle
-#print axioms the_three_turns_are_independent
+--#print axioms the_symmetric_part_is_the_swap
+--#print axioms the_three_turns_square_to_minus_one
+--#print axioms the_turns_compose_around_the_circle
+--#print axioms the_turns_bracket_around_the_circle
+--#print axioms the_three_turns_are_independent
 --| LANCZOS, NEWTON, BISECTION.  Square the table and it is thirty-six of itself less two hundred thirty-four: its trace and
 --| its determinant, nothing more.  So two more steps of any walk are thirty-six of one step less two hundred thirty-four of
 --| none, and the closed walks keep a three-term recurrence.  Rescale the coins so the crossing arms match and the table is the
@@ -2126,10 +2126,10 @@ theorem the_lanczos_polynomial_is_the_residual (y : Int) :
   have t : the_table_trace the_full_table = 36 := rfl
   have d : the_table_determinant the_full_table = 234 := rfl
   rw [t, d]; simp only [Int.mul_assoc, Int.mul_left_comm y 13]; omega
-#print axioms the_table_satisfies_its_own_polynomial
-#print axioms the_walks_keep_a_three_term_recurrence
-#print axioms the_lanczos_recurrence_ends_at_the_table
-#print axioms the_lanczos_polynomial_is_the_residual
+--#print axioms the_table_satisfies_its_own_polynomial
+--#print axioms the_walks_keep_a_three_term_recurrence
+--#print axioms the_lanczos_recurrence_ends_at_the_table
+--#print axioms the_lanczos_polynomial_is_the_residual
 --| IN LETTERS.  No list is measured here.  Any table squares to its trace times itself less its determinant.  Any table with
 --| a on the diagonal and b, f on the crossings is the quarter turn times f less b, and the swap times b plus f, about a.  Its
 --| two roots are a plus and a minus the root of the round trip b f, both solving its polynomial, and its trace and
@@ -2157,9 +2157,9 @@ theorem both_roots_solve_any_table (a b f : Int) :
     Bool.true_eq_false, Bool.false_eq_true]
   refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩ <;> (try simp only [Int.mul_one, Int.mul_neg, Int.neg_mul, Int.neg_neg, Int.one_mul]) <;>
     (try ac_nf) <;> (try simp only [← Int.mul_assoc]) <;> omega
-#print axioms every_table_satisfies_its_own_polynomial
-#print axioms the_crossings_are_a_quarter_turn_and_a_swap
-#print axioms both_roots_solve_any_table
+--#print axioms every_table_satisfies_its_own_polynomial
+--#print axioms the_crossings_are_a_quarter_turn_and_a_swap
+--#print axioms both_roots_solve_any_table
 --| THE REFINEMENT OPERATOR, VARIED.  Read the table, matched, as the operator that takes a walk one level up, and ask of a
 --| direction p, q how much the operator stretches it: a times the square of its length, plus root r times twice p q.  Twice
 --| p q never leaves the band from minus to plus the square of the length, and it touches each edge on a diagonal.  So the
@@ -2180,8 +2180,8 @@ theorem the_roots_are_reached_on_the_diagonals (p : Int) :
     p * p + p * p = p * p + p * p ∧ p * (-p) + p * (-p) = - (p * p + (-p) * (-p)) := by
   refine ⟨rfl, ?_⟩
   rw [Int.mul_neg, Int.neg_mul_neg]; omega
-#print axioms the_rayleigh_quotient_lies_between_the_roots
-#print axioms the_roots_are_reached_on_the_diagonals
+--#print axioms the_rayleigh_quotient_lies_between_the_roots
+--#print axioms the_roots_are_reached_on_the_diagonals
 --| THE TURNS ON THE LINKS.  Write a link as four whole numbers, a whole part and one for each turn, and its box is the sum:
 --| the box reads the product of two links as the product of their boxes, and the conjugate as the transpose, so every link
 --| is a rotation scaled by its length.  The action on a square is the sum of the squares of its holonomy's three turns:
@@ -2302,15 +2302,15 @@ theorem the_swap_lattice_solves_the_lattice_equation (d i j : Bool) (X : Turns) 
 def the_turned_turns_lattice : TurnsLattice :=
   fun d i j => if d = false ∧ i = false ∧ j = false then the_quarter_turn_turn else the_swap_turn
 theorem the_turned_turns_lattice_has_action : the_turns_lattice_action the_turned_turns_lattice = 2 := by decide
-#print axioms the_box_reads_the_product
-#print axioms the_conjugate_is_the_transpose
-#print axioms the_turns_action_stops_at_second_order
-#print axioms the_turns_action_is_never_negative
-#print axioms the_turns_holonomy_is_linear_in_each_link
-#print axioms each_turns_square_holds_a_link_once
-#print axioms a_flat_turns_lattice_is_stationary
-#print axioms the_swap_lattice_solves_the_lattice_equation
-#print axioms the_turned_turns_lattice_has_action
+--#print axioms the_box_reads_the_product
+--#print axioms the_conjugate_is_the_transpose
+--#print axioms the_turns_action_stops_at_second_order
+--#print axioms the_turns_action_is_never_negative
+--#print axioms the_turns_holonomy_is_linear_in_each_link
+--#print axioms each_turns_square_holds_a_link_once
+--#print axioms a_flat_turns_lattice_is_stationary
+--#print axioms the_swap_lattice_solves_the_lattice_equation
+--#print axioms the_turned_turns_lattice_has_action
 --| THE GAUGE ON THE LINKS.  The length of a link is the sum of its four squares, and the length of a product is the product of the lengths:
 --| Euler's four squares.  Turn a holonomy by any link and its whole part is kept, scaled by the length; so its action is
 --| scaled by the length twice, and a link of length one leaves it alone.  Put a turn of length one at every site of the
@@ -2379,13 +2379,13 @@ theorem the_lattice_action_is_gauge_invariant (U : TurnsLattice) (g : Bool → B
     (unit : ∀ i j, the_turns_norm (g i j) = 1) :
     the_turns_lattice_action (the_gauged_lattice U g) = the_turns_lattice_action U := by
   simp only [the_turns_lattice_action, the_gauged_square U g unit, a_unit_turn_leaves_the_action _ _ (unit _ _)]
-#print axioms the_norm_is_multiplicative
-#print axioms the_whole_part_is_kept
-#print axioms the_turns_action_is_gauge_covariant
-#print axioms a_unit_turn_leaves_the_action
-#print axioms the_product_is_associative
-#print axioms the_gauged_holonomy
-#print axioms the_lattice_action_is_gauge_invariant
+--#print axioms the_norm_is_multiplicative
+--#print axioms the_whole_part_is_kept
+--#print axioms the_turns_action_is_gauge_covariant
+--#print axioms a_unit_turn_leaves_the_action
+--#print axioms the_product_is_associative
+--#print axioms the_gauged_holonomy
+--#print axioms the_lattice_action_is_gauge_invariant
 --| THE GAMMAS.  Four tables on the box, each two of them anticommuting: the quarter turn outside, which squares to minus one,
 --| and the swap, the sign over the swap, the sign over the sign, which square to one.  That is the Clifford algebra of a
 --| metric with one minus and three plus, real, on the pair's four by four box.  Their product, the fifth, squares to minus
@@ -2436,11 +2436,11 @@ theorem the_spin_commutes_with_the_turns (a b c d : Bool) :
      the_box_bracket the_spin_three the_turn_of_the_swap a b c d, the_box_bracket the_spin_three the_turn_of_the_quarter a b c d,
      the_box_bracket the_spin_three the_turn_of_the_sign a b c d) = (0, 0, 0, 0, 0, 0, 0, 0, 0) := by
   cases a <;> cases b <;> cases c <;> cases d <;> rfl
-#print axioms the_gammas_square_to_the_metric
-#print axioms the_gammas_anticommute
-#print axioms the_fifth_gamma_squares_to_minus_one_and_anticommutes
-#print axioms the_spin_is_a_second_set_of_turns
-#print axioms the_spin_commutes_with_the_turns
+--#print axioms the_gammas_square_to_the_metric
+--#print axioms the_gammas_anticommute
+--#print axioms the_fifth_gamma_squares_to_minus_one_and_anticommutes
+--#print axioms the_spin_is_a_second_set_of_turns
+--#print axioms the_spin_commutes_with_the_turns
 --| EVERY TORUS.  Not two by two: any number of sites around, one included, where a square's bottom and top are one link.
 --| Vary one link and each square moves along one direction, however many of its edges that link is, because the variations
 --| add.  So every flat torus is stationary on every link, at every size, and every torus is gauge invariant under turns of
@@ -2532,11 +2532,11 @@ theorem every_swap_torus_solves_the_lattice_equation (n : Nat) (d : Bool) (i j :
     ∃ q, the_torus_action (the_varied_torus (the_swap_torus n) d i j X t) = t * t * q := by
   obtain ⟨q, h⟩ := a_flat_torus_is_stationary _ (the_swap_torus_is_flat n) d i j X t
   exact ⟨q, by rw [h, the_swap_torus_has_no_action, Int.zero_add]⟩
-#print axioms a_square_varies_along_one_direction
-#print axioms the_torus_square_varies_along_one_direction
-#print axioms a_flat_torus_is_stationary
-#print axioms every_torus_is_gauge_invariant
-#print axioms every_swap_torus_solves_the_lattice_equation
+--#print axioms a_square_varies_along_one_direction
+--#print axioms the_torus_square_varies_along_one_direction
+--#print axioms a_flat_torus_is_stationary
+--#print axioms every_torus_is_gauge_invariant
+--#print axioms every_swap_torus_solves_the_lattice_equation
 --| FOUR DIRECTIONS.  Sites with four coordinates, four directions, and a square for every pair of them, six at each site and
 --| the same square counted both ways.  The steps commute.  Turn every site by a turn of length one: the action is unchanged,
 --| at every size.  Vary one link: a torus whose squares are all whole moves only at the second order.  Four is counted here.
@@ -2597,10 +2597,10 @@ def the_swap_torus4 (n : Nat) : Torus4 n := fun _ _ => the_swap_turn
 theorem the_swap_torus4_is_flat (n : Nat) (μ ν : Direction) (x : Site4 n) :
     ∃ c, the_square4 (the_swap_torus4 n) μ ν x = the_whole_turn c := ⟨1, rfl⟩
 theorem the_four_directions_are_four : the_directions.length = 4 := rfl
-#print axioms the_steps_commute
-#print axioms every_four_torus_is_gauge_invariant
-#print axioms a_flat_four_torus_is_stationary
-#print axioms the_swap_torus4_is_flat
+--#print axioms the_steps_commute
+--#print axioms every_four_torus_is_gauge_invariant
+--#print axioms a_flat_four_torus_is_stationary
+--#print axioms the_swap_torus4_is_flat
 --| THE BOX OF EIGHT.  Lay the box of four over one more table, and let the quarter turn of that table be i.  It squares to
 --| minus one and commutes with every gamma, so the phase it turns is inside the Dirac algebra and is not the time gamma.
 --| Multiply each gamma by it and the metric turns over: one plus and three minus, the convention of the complex Dirac
@@ -2652,12 +2652,12 @@ theorem the_i_commutes_with_the_turned_gammas (a b c d e f : Bool) :
      the_big_bracket the_i (the_complex_gamma the_third_gamma) a b c d e f) = (0, 0, 0, 0) := by
   cases a <;> cases b <;> cases c <;> cases d <;> cases e <;> cases f <;> rfl
 theorem the_i_is_not_the_time_gamma : the_i true true true true true false ≠ the_complex_gamma the_time_gamma true true true true true false := by decide
-#print axioms the_i_squares_to_minus_one
-#print axioms the_i_commutes_with_every_gamma
-#print axioms the_i_turns_the_metric_over
-#print axioms the_turned_gammas_anticommute
-#print axioms the_i_commutes_with_the_turned_gammas
-#print axioms the_i_is_not_the_time_gamma
+--#print axioms the_i_squares_to_minus_one
+--#print axioms the_i_commutes_with_every_gamma
+--#print axioms the_i_turns_the_metric_over
+--#print axioms the_turned_gammas_anticommute
+--#print axioms the_i_commutes_with_the_turned_gammas
+--#print axioms the_i_is_not_the_time_gamma
 --| THE TRAIN LINE.  Put a spinor at every station, eight whole numbers on the box of eight, and a phase on every link, two
 --| whole numbers read as x + y·i.  Read the spinor through the time gamma and turn it by i: the current of a direction is i
 --| times the time gamma times that direction's gamma, and it is antisymmetric, so riding a link forward less riding it back
@@ -2774,16 +2774,16 @@ theorem the_dirac_action_is_gauge_invariant {n : Nat} (U : Bool → Fin (n+1) �
     the_dirac_action (the_gauged_links U g) (the_gauged_spinors ψ g) m = the_dirac_action U ψ m := by
   simp only [the_dirac_action, the_gauged_links, the_gauged_spinors, if_true, if_false, Bool.false_eq_true,
     the_gauged_hop _ _ _ _ _ _ (unit _ _) (unit _ _), the_dot_of_two_phases, unit, Int.one_mul]
-#print axioms the_turned_gamma_is_the_complex_gamma
-#print axioms the_phases_compose
-#print axioms the_gamma_commutes_with_the_phase
-#print axioms the_dot_of_two_phases
-#print axioms the_gauged_hop
-#print axioms the_current_commutes_with_the_phase
-#print axioms the_time_current_is_antisymmetric
-#print axioms the_space_current_is_antisymmetric
-#print axioms the_link_read_backward_turns_over
-#print axioms the_dirac_action_is_gauge_invariant
+--#print axioms the_turned_gamma_is_the_complex_gamma
+--#print axioms the_phases_compose
+--#print axioms the_gamma_commutes_with_the_phase
+--#print axioms the_dot_of_two_phases
+--#print axioms the_gauged_hop
+--#print axioms the_current_commutes_with_the_phase
+--#print axioms the_time_current_is_antisymmetric
+--#print axioms the_space_current_is_antisymmetric
+--#print axioms the_link_read_backward_turns_over
+--#print axioms the_dirac_action_is_gauge_invariant
 --| THE WHOLE ACTION.  A phase is a turn with one imaginary part: written as a turn, its products and conjugates are the turns'
 --| own, and its length is the turn's length.  So the phases on the links are a torus of turns, and a square of phases reads
 --| the square of its turned part.  Weigh the squares by a whole number β and add the train line: the whole action of light and
@@ -2822,10 +2822,10 @@ theorem the_whole_action_is_gauge_invariant {n : Nat} (β : Int) (U : Bool → F
 theorem the_square_of_a_phase_reads_its_turned_part (z : Int × Int) :
     the_turns_action (the_phase_as_turns z) = z.2 * z.2 := by
   simp only [the_turns_action, the_phase_as_turns, Int.mul_zero, Int.zero_add, Int.add_zero]
-#print axioms the_phase_product_is_the_turns_product
-#print axioms the_phase_torus_of_the_gauged_links
-#print axioms the_whole_action_is_gauge_invariant
-#print axioms the_square_of_a_phase_reads_its_turned_part
+--#print axioms the_phase_product_is_the_turns_product
+--#print axioms the_phase_torus_of_the_gauged_links
+--#print axioms the_whole_action_is_gauge_invariant
+--#print axioms the_square_of_a_phase_reads_its_turned_part
 --| THE DOUBLERS.  Ride a circle of stations with every phase one.  On two stations the line cannot tell uptown from downtown:
 --| each link is ridden both ways and turns over, and the line reads nothing for every spinor.  On four, the line's response
 --| to any probe is blind to two fields: the field that is the same at every station, and the field that alternates, plus,
@@ -2893,10 +2893,10 @@ def the_quarter_field : Fin 4 → Vec8 := fun s =>
   if s.val = 0 then the_probe_here else if s.val = 1 then the_probe_there else if s.val = 2 then the_neg the_probe_here
   else the_neg the_probe_there
 theorem the_quarter_field_is_seen : the_line the_quarter_field the_first_gamma ≠ 0 := by decide
-#print axioms two_stations_cannot_tell_uptown_from_downtown
-#print axioms the_constant_field_is_a_doubler
-#print axioms the_alternating_field_is_a_doubler
-#print axioms the_quarter_field_is_seen
+--#print axioms two_stations_cannot_tell_uptown_from_downtown
+--#print axioms the_constant_field_is_a_doubler
+--#print axioms the_alternating_field_is_a_doubler
+--#print axioms the_quarter_field_is_seen
 --| WHAT IS LEFT, CLOSED.  The torus with one link turned is not a second solution: vary that link along the quarter turn and
 --| the action reads eight one way and nothing the other, so it leans, and no whole number makes it stand still at three.  The
 --| gauge needs links of length one, and the device has them: the three turns are each of length one, and turning every site
@@ -2917,10 +2917,10 @@ theorem the_three_turns_have_length_one :
 theorem the_device_supplies_its_own_gauge {n : Nat} (U : Torus n) :
     the_torus_action (the_gauged_torus U (fun _ _ => the_swap_turn)) = the_torus_action U :=
   every_torus_is_gauge_invariant U _ (fun _ _ => rfl)
-#print axioms the_turned_lattice_is_not_stationary
-#print axioms the_turned_lattice_leans_one_way
-#print axioms the_three_turns_have_length_one
-#print axioms the_device_supplies_its_own_gauge
+--#print axioms the_turned_lattice_is_not_stationary
+--#print axioms the_turned_lattice_leans_one_way
+--#print axioms the_three_turns_have_length_one
+--#print axioms the_device_supplies_its_own_gauge
 --| TWO WAYS THE CLOCK CANCELS.  The clock's irrational part is the square root of its round trip, ninety.  Any table whose
 --| round trip is ninety has the same clock squared, so against the device's table the two clocks cancel and the difference
 --| of the growth rates is the difference of the clicks, whole -- the swapped table, clicks five and outlier eighteen, among
@@ -2939,9 +2939,9 @@ theorem the_swapped_table_shares_the_clock (x y : Bool) :
   the_same_round_trip_is_the_same_clock 5 18 rfl x y
 theorem the_conjugate_roots_are_rational :
     (the_table_trace the_full_table, the_table_determinant the_full_table) = (36, 234) := rfl
-#print axioms the_same_round_trip_is_the_same_clock
-#print axioms the_swapped_table_shares_the_clock
-#print axioms the_conjugate_roots_are_rational
+--#print axioms the_same_round_trip_is_the_same_clock
+--#print axioms the_swapped_table_shares_the_clock
+--#print axioms the_conjugate_roots_are_rational
 --| THE TORUS AND THE BOOST.  Read the table as a torus: the major radius is the clicks, eighteen; the tube's radius is the
 --| clock, the square root of the round trip.  The outer equator is the larger root and the hole is the smaller; they add to
 --| the trace and multiply to the determinant, which is the interval, eighteen squared less the round trip.  Fatten the tube to
@@ -2972,10 +2972,10 @@ theorem the_hole_stays_open (p : Int × Int) (h : the_interval p = 234) :
   unfold the_interval at h; omega
 theorem the_boosted_torus :
     the_surd_product the_outer_radius the_boost = (522, 55) ∧ the_interval (522, 55) = 234 := by decide
-#print axioms the_outer_and_the_hole
-#print axioms the_boost_preserves_the_interval
-#print axioms the_hole_stays_open
-#print axioms the_boosted_torus
+--#print axioms the_outer_and_the_hole
+--#print axioms the_boost_preserves_the_interval
+--#print axioms the_hole_stays_open
+--#print axioms the_boosted_torus
 --| THE SECOND VARIATION ON THE SEAM.  Put a phase on each of the thirty-six cells.  Its first variation is the step across
 --| each edge, taken after the cell and before it; its second variation, the seam's thirty-six by thirty-six Laplacian, is the
 --| step before less the step after, in each direction -- two first variations, one before and one after, fix the second.  And
@@ -3005,9 +3005,9 @@ def the_overlap (a b c d : Nat) : Int :=
   ((List.range 36).map fun i => the_plane_wave a b (i % 6) (i / 6) * the_plane_wave c d (i % 6) (i / 6)).foldl (· + ·) 0
 theorem the_plane_waves_are_independent :
     ∀ a < 6, ∀ b < 6, ∀ c < 6, ∀ d < 6, (a = c ∧ b = d) ∨ the_overlap a b c d = 0 := by decide
-#print axioms the_plane_waves_are_independent
-#print axioms the_second_variation_is_before_less_after
-#print axioms the_plane_waves_are_the_frequencies
+--#print axioms the_plane_waves_are_independent
+--#print axioms the_second_variation_is_before_less_after
+--#print axioms the_plane_waves_are_the_frequencies
 --| WHERE THE UNDESCRIBABLE DIGITS COME IN.  Strike the arm and the reading is the clicks alone, eighteen times the gain: a
 --| fraction, and its digits after the first settle into six that repeat forever, two three oh seven six nine -- a finite
 --| record describes every one of them.  Write the arm and the clock comes in as the square root of five times eighteen, and
@@ -3029,9 +3029,88 @@ theorem the_round_trip_is_not_a_square (n : Nat) : n * n ≠ 5 * 18 := by
   · have : ∀ m < 10, m * m ≠ 90 := by decide
     exact this n h
   · have := Nat.mul_le_mul h h; omega
-#print axioms the_struck_digits_repeat_every_six
-#print axioms the_struck_digits_are_two_three_oh_seven_six_nine
-#print axioms the_round_trip_is_not_a_square
+--#print axioms the_struck_digits_repeat_every_six
+--#print axioms the_struck_digits_are_two_three_oh_seven_six_nine
+--#print axioms the_round_trip_is_not_a_square
+--| THE ZERO, MOVED INTO THE LIMIT.  The slope of a table's polynomial, squared, less four of the polynomial, is four times the
+--| round trip: at a root the slope is twice the clock.  Strike the arm and the round trip is nothing: the polynomial is a
+--| square, the slope is nothing exactly at the root, and Newton's step there is nothing over nothing.  Off the root the step
+--| is half the distance, so the walk arrives only in the limit, though the root is a fraction any record writes.  Write the
+--| arm and the slope at the root squares to three hundred sixty: never nothing, and no fraction.  The five takes the nothing
+--| out from under the division and puts it at the end of the digits.  The floor this device divides with gives nothing over
+--| nothing as nothing: neither a pole nor a refusal, a declaration.
+def the_table_polynomial (a r z : Int) : Int := z * z - 2 * a * z + (a * a - r)
+def the_table_slope (a z : Int) : Int := 2 * z - 2 * a
+theorem the_slope_squared_less_four_of_the_polynomial_is_the_round_trip (a r z : Int) :
+    the_table_slope a z * the_table_slope a z - 4 * the_table_polynomial a r z = 4 * r := by
+  simp only [the_table_slope, the_table_polynomial, Int.sub_mul, Int.mul_sub, Int.mul_add]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem struck_the_polynomial_is_a_square (z : Int) :
+    the_table_polynomial 18 (0 * 18) z = (z - 18) * (z - 18) ∧ the_table_slope 18 18 = 0 := by
+  refine ⟨?_, rfl⟩
+  simp only [the_table_polynomial, Int.sub_mul, Int.mul_sub]; omega
+theorem struck_the_step_is_half_the_distance (z : Int) :
+    2 * the_table_polynomial 18 (0 * 18) z = (z - 18) * the_table_slope 18 z := by
+  simp only [the_table_polynomial, the_table_slope, Int.sub_mul, Int.mul_sub]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem the_slope_at_the_roots_is_twice_the_clock (r : Int) :
+    the_root_ring_product r (0, 2) (0, 2) = (4 * r, 0) ∧ the_root_ring_product r (0, -2) (0, -2) = (4 * r, 0) := by
+  simp only [the_root_ring_product, Prod.mk.injEq]
+  refine ⟨⟨?_, ?_⟩, ?_, ?_⟩ <;> omega
+theorem struck_the_slope_squares_to_nothing_and_written_to_three_hundred_sixty :
+    the_root_ring_product (0 * 18) (0, 2) (0, 2) = (0, 0) ∧ the_root_ring_product (5 * 18) (0, 2) (0, 2) = (360, 0) := by decide
+theorem the_floor_of_a_division_by_nothing_is_nothing (n : Nat) : n / 0 = 0 ∧ 0 * (n / 0) ≤ n := by
+  refine ⟨Nat.div_zero n, ?_⟩; omega
+--#print axioms the_slope_squared_less_four_of_the_polynomial_is_the_round_trip
+--#print axioms struck_the_polynomial_is_a_square
+--#print axioms struck_the_step_is_half_the_distance
+--#print axioms the_slope_at_the_roots_is_twice_the_clock
+--#print axioms struck_the_slope_squares_to_nothing_and_written_to_three_hundred_sixty
+--#print axioms the_floor_of_a_division_by_nothing_is_nothing
+--| THE GAP, IN FOUR ARMS.  Give each arm its own weight: true on true, true on false, false on true, false on false.  The
+--| square of the distance between the table's two roots is the two stays' difference squared, plus four times the round
+--| trip.  Every arm moves it.  It reads the two crossings only through their product, and it scales with the table, so four
+--| arms carry it through two numbers.  With no arm negative it closes only when the stays are level and a crossing is
+--| struck.  On the counts it is three hundred sixty: the slope at the root, squared.  The gap is what Newton divides by.
+def the_table_of_four_arms (tt tf ft ff : Int) : Table := fun x y => if x then (if y then tt else tf) else (if y then ft else ff)
+def the_gap_squared (A : Table) : Int := the_table_trace A * the_table_trace A - 4 * the_table_determinant A
+theorem the_four_arms_are_the_table (x y : Bool) : the_table_of_four_arms 18 5 18 18 x y = the_full_table x y := by
+  cases x <;> cases y <;> rfl
+theorem the_gap_squared_in_four_arms (tt tf ft ff : Int) :
+    the_gap_squared (the_table_of_four_arms tt tf ft ff) = (tt - ff) * (tt - ff) + 4 * (tf * ft) := by
+  simp only [the_gap_squared, the_table_trace, the_table_determinant, the_table_of_four_arms, ite_true, ite_false,
+    Bool.false_eq_true, Int.sub_mul, Int.mul_sub, Int.add_mul, Int.mul_add]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem the_counted_gap_squared : the_gap_squared the_full_table = 360 := rfl
+theorem each_arm_moves_the_gap :
+    the_gap_squared (the_table_of_four_arms 19 5 18 18) = 361 ∧ the_gap_squared (the_table_of_four_arms 18 6 18 18) = 432
+      ∧ the_gap_squared (the_table_of_four_arms 18 5 19 18) = 380 ∧ the_gap_squared (the_table_of_four_arms 18 5 18 19) = 361 := by
+  decide
+theorem the_gap_closes_only_level_and_struck (tt tf ft ff : Int) (hb : 0 ≤ tf) (hf : 0 ≤ ft)
+    (h : the_gap_squared (the_table_of_four_arms tt tf ft ff) = 0) : tt = ff ∧ tf * ft = 0 := by
+  rw [the_gap_squared_in_four_arms] at h
+  have h1 := a_square_is_never_negative (tt - ff)
+  have h2 := Int.mul_nonneg hb hf
+  have h3 : (tt - ff) * (tt - ff) = 0 := by omega
+  have h4 : tt - ff = 0 := by
+    rcases Int.mul_eq_zero.mp h3 with h | h <;> exact h
+  constructor <;> omega
+theorem the_gap_reads_the_crossings_through_the_round_trip (tt ff b f b' f' : Int) (h : b * f = b' * f') :
+    the_gap_squared (the_table_of_four_arms tt b f ff) = the_gap_squared (the_table_of_four_arms tt b' f' ff) := by
+  rw [the_gap_squared_in_four_arms, the_gap_squared_in_four_arms, h]
+theorem the_gap_scales_with_the_table (t tt tf ft ff : Int) :
+    the_gap_squared (the_table_of_four_arms (t * tt) (t * tf) (t * ft) (t * ff))
+      = (t * t) * the_gap_squared (the_table_of_four_arms tt tf ft ff) := by
+  rw [the_gap_squared_in_four_arms, the_gap_squared_in_four_arms]
+  simp only [Int.sub_mul, Int.mul_sub, Int.mul_add]
+  ac_nf
+--#print axioms the_four_arms_are_the_table
+--#print axioms the_gap_squared_in_four_arms
+--#print axioms the_counted_gap_squared
+--#print axioms each_arm_moves_the_gap
+--#print axioms the_gap_closes_only_level_and_struck
+--#print axioms the_gap_reads_the_crossings_through_the_round_trip
+--#print axioms the_gap_scales_with_the_table
 
 --| TWO READINGS OF ONE TURNING.  Read a walk's crossings two ways.  Subdivided, every crossing is half a turn and the
 --| count is the crossings themselves: nothing is left over, because nothing is rounded.  Counted in whole turns, the walk
@@ -3070,11 +3149,11 @@ theorem the_windings_add (j k : Nat) (hj : the_residue j = 0) (hk : the_residue 
   unfold the_winding; unfold the_residue at hj hk; omega
 
 theorem once_around_is_exact : (2 * the_winding 2, the_residue 2) = (2, 0) := rfl
-#print axioms the_two_readings
-#print axioms every_closed_walk_is_exact
-#print axioms every_walk_between_the_coins_leaves_half_a_turn
-#print axioms the_windings_add
-#print axioms once_around_is_exact
+--#print axioms the_two_readings
+--#print axioms every_closed_walk_is_exact
+--#print axioms every_walk_between_the_coins_leaves_half_a_turn
+--#print axioms the_windings_add
+--#print axioms once_around_is_exact
 
 --| THE CARRIER, APPARENTLY.  Three finite readings, each one evaluated, and no limit taken: the limit is the argument's,
 --| never this file's.
@@ -3165,13 +3244,13 @@ theorem subdividing_adds_no_residue (A B : Nat → Nat → Int) (x y : Nat) :
         + the_plaquette A B (2 * x) (2 * y + 1) + the_plaquette A B (2 * x + 1) (2 * y + 1) := by
   simp only [the_plaquette, the_coarse_across, the_coarse_up, Nat.mul_add, Nat.mul_one, Nat.add_assoc, Nat.reduceAdd]
   omega
-#print axioms the_device_walks_on_its_table
-#print axioms the_readings_fix_the_gauge
-#print axioms the_other_orientation_is_a_gauge_copy
-#print axioms the_closed_seam_carries_no_net_flux
-#print axioms the_residues_pair_into_the_charge
-#print axioms one_half_turn_is_one_charge
-#print axioms subdividing_adds_no_residue
+--#print axioms the_device_walks_on_its_table
+--#print axioms the_readings_fix_the_gauge
+--#print axioms the_other_orientation_is_a_gauge_copy
+--#print axioms the_closed_seam_carries_no_net_flux
+--#print axioms the_residues_pair_into_the_charge
+--#print axioms one_half_turn_is_one_charge
+--#print axioms subdividing_adds_no_residue
 
 --| ALL TRUE, AND THE CLOCK RUNS.  Reletter any tape to the one coin, T T T T ..., and it reads the closed walks of its length,
 --| because the reader keeps the length and nothing else.  Thirteen cells deep, the walks that cross T=F and come back are
@@ -3182,9 +3261,9 @@ theorem every_true_tape_reads_the_closed_walks (tape : List FACT) :
   rw [the_closed_words_are_closed_walks]; simp [relettered]
 theorem the_true_tape_crosses : 0 < the_crossings 13 true true 2 := by decide
 theorem the_clock_is_in_the_count : 2 * 18 ^ 13 < the_closed_walks 13 := by decide
-#print axioms every_true_tape_reads_the_closed_walks
-#print axioms the_true_tape_crosses
-#print axioms the_clock_is_in_the_count
+--#print axioms every_true_tape_reads_the_closed_walks
+--#print axioms the_true_tape_crosses
+--#print axioms the_clock_is_in_the_count
 
 --| THE LAST PROOF: THE EXISTENCE OF 5.  Write down a record -- a fact, or a fact on a record -- and the kernel hands back
 --| Peano without being asked: zero is never a successor, the successor is injective, and induction is the recursor.  No `Nat`
@@ -3215,12 +3294,12 @@ theorem the_diagonal_weighs_the_frame (listing : Nat → Nat → Bool) (n : Nat)
     the_arm_weight (listing n n) (the_diagonal listing n) = the_dimensions_of_universe := by
   unfold the_diagonal; rw [h]; rfl
 theorem the_frame_is_five : the_dimensions_of_universe = 5 := rfl
-#print axioms zero_is_never_a_successor
-#print axioms the_successor_forgets_nothing
-#print axioms every_natural_is_written
-#print axioms the_diagonal_is_not_listed
-#print axioms the_diagonal_weighs_the_frame
-#print axioms the_frame_is_five
+--#print axioms zero_is_never_a_successor
+--#print axioms the_successor_forgets_nothing
+--#print axioms every_natural_is_written
+--#print axioms the_diagonal_is_not_listed
+--#print axioms the_diagonal_weighs_the_frame
+--#print axioms the_frame_is_five
 
 --| THE RESIDUE NEVER CLOSES.  A finite run reads the ratio of two successive closed-walk counts; the procedure that never
 --| finishes reads the root of x² − trace·x + determinant.  Their distance, in whole numbers, is the arms crossed times the
@@ -3299,12 +3378,12 @@ theorem the_highway_crosses_evenly :
 theorem the_length_reader_cannot_see_the_ant :
     the_closed_words (the_highway.map bitFACT) = (the_closed_walks 104, the_closed_walks 105) := by
   rw [the_closed_words_are_closed_walks, List.length_map, the_highway_is_one_period]
-#print axioms the_residue_never_closes
-#print axioms the_flip_loses_nothing
-#print axioms every_description_is_numbered
-#print axioms every_number_is_a_description
-#print axioms the_highway_crosses_evenly
-#print axioms the_length_reader_cannot_see_the_ant
+--#print axioms the_residue_never_closes
+--#print axioms the_flip_loses_nothing
+--#print axioms every_description_is_numbered
+--#print axioms every_number_is_a_description
+--#print axioms the_highway_crosses_evenly
+--#print axioms the_length_reader_cannot_see_the_ant
 
 --| THE BOOST BETWEEN THE ORIENTATIONS.  Weigh each coin by the arm that arrives at it from the other: TRUE by F=T, eighteen,
 --| FALSE by T=F, five.  Then every arm read forward weighs what it weighs read backward: the table is reversible, and its two
@@ -3323,9 +3402,9 @@ theorem the_orientations_do_not_commute :
     the_arm_weight false true * the_arm_weight false true
       = the_arm_weight true false * the_arm_weight true false
         + (the_arm_weight false true + the_arm_weight true false) * readers_experience.bent_card := rfl
-#print axioms the_table_is_reversible
-#print axioms the_boost_between_the_orientations
-#print axioms the_orientations_do_not_commute
+--#print axioms the_table_is_reversible
+--#print axioms the_boost_between_the_orientations
+--#print axioms the_orientations_do_not_commute
 
 --| EXACT UP TO ACCELERATION.  The residual the crank solves is r(y) = A·y² − B·y + C, and its second derivative is the constant
 --| 2A = 2·thirteen.  Newton's step is the first variation, y − r/r', exact for any r with no second derivative, and its whole
@@ -3367,9 +3446,9 @@ theorem the_residual_is_the_derivative_of_the_action (x h : Int) :
 theorem the_mirror_coefficients_are_counted :
     (an_exact_polynomial_description, the_trace_of_truth_in_the_device,
       the_number_of_symbols_that_must_be_written_to_express_this) = (13, 36, 18) := rfl
-#print axioms the_mirror_is_the_device_residual
-#print axioms the_residual_is_the_derivative_of_the_action
-#print axioms the_mirror_coefficients_are_counted
+--#print axioms the_mirror_is_the_device_residual
+--#print axioms the_residual_is_the_derivative_of_the_action
+--#print axioms the_mirror_coefficients_are_counted
 
 --| THE QUARTIC THAT CLOSES THE FILE.  t²(c−t)x² − 2ctr²x + cr⁴: linear in c, quadratic in x, cubic in t, quartic in r, and every
 --| term five in all.  Scale all four by k and the quartic scales by k five times: the five, checked, not counted.  It factors
@@ -3393,9 +3472,9 @@ theorem the_quartic_does_not_read_the_sign (c t x r s : Int) :
     c * the_closing_factor t x r s * the_closing_factor t x r (-s)
       = c * the_closing_factor t x r (-s) * the_closing_factor t x r (-(-s)) := by
   rw [Int.neg_neg, Int.mul_assoc, Int.mul_comm (the_closing_factor t x r s), ← Int.mul_assoc]
-#print axioms the_quartic_is_homogeneous_of_degree_five
-#print axioms the_quartic_factors
-#print axioms the_quartic_does_not_read_the_sign
+--#print axioms the_quartic_is_homogeneous_of_degree_five
+--#print axioms the_quartic_factors
+--#print axioms the_quartic_does_not_read_the_sign
 --| THE COUNTED QUARTIC.  Feed the quartic the three counted readings, c eighteen, t five, r eighteen.  Thirteen times it is a
 --| quadratic in sixty-five x, and the root is five thousand eight hundred thirty-two plus three hundred twenty-four root
 --| ninety: three hundred twenty-four times the outer radius, eighteen plus root ninety.  Over sixty-five, that is the
@@ -3409,8 +3488,8 @@ theorem the_reading_solves_the_counted_quartic :
     (the_surd_product (5832, 324) (5832, 324)).1 - 11664 * 5832 + 24564384 = 0 ∧
     (the_surd_product (5832, 324) (5832, 324)).2 - 11664 * 324 = 0 ∧
     ((5832 : Int), (324 : Int)) = (324 * the_outer_radius.1, 324 * the_outer_radius.2) := by decide
-#print axioms the_counted_quartic
-#print axioms the_reading_solves_the_counted_quartic
+--#print axioms the_counted_quartic
+--#print axioms the_reading_solves_the_counted_quartic
 --| THE OTHER ROOT.  The counted quartic has two roots, and the hole is the other: five thousand eight hundred thirty-two less
 --| three hundred twenty-four root ninety, three hundred twenty-four times eighteen less root ninety.  The two add to the
 --| quadratic's middle count and multiply to its last, whole.  The reader reports the outer one; which the knower gives true
@@ -3421,8 +3500,8 @@ theorem the_conjugate_solves_the_counted_quartic :
     ((5832 : Int), (-324 : Int)) = (324 * the_hole.1, 324 * the_hole.2) := by decide
 theorem the_two_roots_are_the_counts :
     (5832 : Int) + 5832 = 11664 ∧ the_surd_product (5832, 324) (5832, -324) = (24564384, 0) := by decide
-#print axioms the_conjugate_solves_the_counted_quartic
-#print axioms the_two_roots_are_the_counts
+--#print axioms the_conjugate_solves_the_counted_quartic
+--#print axioms the_two_roots_are_the_counts
 --| THE HEXADECIMAL CIRCLE, AND β.  The circle comes in as its hexadecimal digits: sum, over k, of one sixteenth to the k
 --| times a whole quadratic over a whole quartic, and every term after the twenty-fourth together weighs less than seven
 --| hundred fifty-two over two hundred twenty-five sixteenths to the twenty-fourth.  The two walls print the same twenty-four
@@ -3465,19 +3544,19 @@ theorem the_reader_only_rescales_the_roots (c t r X : Int) :
     the_closing_quartic c t (r * r * X) r = r * r * r * r * the_closing_quartic c t X 1 := by
   simp only [the_closing_quartic, Int.mul_one, Int.mul_sub, Int.sub_mul, Int.mul_add]
   ac_nf
-#print axioms the_hex_digits_print_pi
-#print axioms the_root_of_ninety_is_bracketed
-#print axioms the_readers_beta
-#print axioms the_knowers_beta
-#print axioms the_betas_on_the_device_square
-#print axioms the_reader_only_rescales_the_roots
+--#print axioms the_hex_digits_print_pi
+--#print axioms the_root_of_ninety_is_bracketed
+--#print axioms the_readers_beta
+--#print axioms the_knowers_beta
+--#print axioms the_betas_on_the_device_square
+--#print axioms the_reader_only_rescales_the_roots
 --| THE QUARTIC'S FOUR, READ.  The factors want c s squared to be t.  With the counted c eighteen and t five, s squared is five
 --| over eighteen, which is ninety over eighteen squared: the clock over the clicks, squared, the torus's velocity below light.
 --| So the sign the quartic does not read is the sign of a velocity, and its factors are r squared less t x times one less or
 --| one more than that velocity.
 theorem the_quartic_sign_is_the_velocity :
     (5 : Int) * (18 * 18) = 18 * 90 ∧ (90 : Int) < 18 * 18 := by decide
-#print axioms the_quartic_sign_is_the_velocity
+--#print axioms the_quartic_sign_is_the_velocity
 --| THE BOOST, AGAIN AND AGAIN; THE TWO ROOTS' RATIO; SCHWINGER'S TERM.  Boost the outer radius any number of times: the interval
 --| stays two hundred thirty-four and the hole never closes.  The outer root squared times the hole is two hundred thirty-four
 --| times the outer root: the ratio of the roots is the boost there and back.  And the electron's first loop, the coupling over
@@ -3499,10 +3578,10 @@ def the_schwinger_of (reading pi : Nat × Nat) : Nat × Nat := (reading.2 * pi.2
 theorem the_schwinger_term_from_the_reading :
     the_reads (the_schwinger_of the_high_reading the_high_pi) = 1161619180829479589123
       ∧ the_reads (the_schwinger_of the_low_reading the_low_pi) = 1161619180829479589123 := by decide +kernel
-#print axioms every_boost_keeps_the_interval
-#print axioms the_hole_never_closes
-#print axioms the_ratio_of_the_roots_is_twice_the_boost
-#print axioms the_schwinger_term_from_the_reading
+--#print axioms every_boost_keeps_the_interval
+--#print axioms the_hole_never_closes
+--#print axioms the_ratio_of_the_roots_is_twice_the_boost
+--#print axioms the_schwinger_term_from_the_reading
 --| THE ELECTRON FOUR WAYS, AND THE DERIVATIVE OF ITSELF.  The refinement is linear, so its whole derivative at every point is
 --| itself, with no remainder: step the field by any amount and the refinement steps by the refinement of that amount.  The
 --| action it carries varies by the operator twice, the number read once and again, and leaves only the action of the step.
@@ -3541,11 +3620,11 @@ theorem the_refinement_commutes_with_every_boost (p q : Int × Int) :
 theorem the_speed_is_read_from_the_multipliers :
     (the_outer_radius.1 - the_hole.1, the_outer_radius.2 - the_hole.2) = (0, 2)
       ∧ (the_outer_radius.1 + the_hole.1, the_outer_radius.2 + the_hole.2) = (36, 0) := by decide
-#print axioms the_one_way_split_is_a_change_of_clocks
-#print axioms the_refinement_is_its_own_derivative
-#print axioms the_action_varies_by_the_operator_twice
-#print axioms the_refinement_commutes_with_every_boost
-#print axioms the_speed_is_read_from_the_multipliers
+--#print axioms the_one_way_split_is_a_change_of_clocks
+--#print axioms the_refinement_is_its_own_derivative
+--#print axioms the_action_varies_by_the_operator_twice
+--#print axioms the_refinement_commutes_with_every_boost
+--#print axioms the_speed_is_read_from_the_multipliers
 --| THE RING, QUANTIZED; THE PANELS; THE QUARTIC BACK.  The quarter turn walks the four labels and is home on the fourth step,
 --| every fourth step, perfectly.  Any other whole phase keeps a residue: three and four over five carries three and four
 --| modulo five at every step, so it never lands on a label, and its length stays a power of five, on the ring.  Between two
@@ -3648,14 +3727,14 @@ theorem refining_a_panel_never_lowers_the_line (n₁ n₂ S₁ S₂ : Int) :
     n₁ * n₂ * ((S₁ + S₂) * (S₁ + S₂)) ≤ (n₁ + n₂) * (n₂ * (S₁ * S₁) + n₁ * (S₂ * S₂)) := by
   rw [refining_a_panel_splits_the_energy]
   have := a_square_is_never_negative (n₂ * S₁ - n₁ * S₂); omega
-#print axioms refining_a_panel_never_lowers_the_line
-#print axioms the_four_labels_walk_perfectly
-#print axioms the_quarter_walk_repeats_every_four
-#print axioms the_other_phase_never_lands_on_a_label
-#print axioms the_other_phase_stays_on_the_ring
-#print axioms the_panel_error_is_orthogonal_to_the_line
-#print axioms the_line_is_the_least_energy
-#print axioms the_line_squared_is_the_quartic
+--#print axioms refining_a_panel_never_lowers_the_line
+--#print axioms the_four_labels_walk_perfectly
+--#print axioms the_quarter_walk_repeats_every_four
+--#print axioms the_other_phase_never_lands_on_a_label
+--#print axioms the_other_phase_stays_on_the_ring
+--#print axioms the_panel_error_is_orthogonal_to_the_line
+--#print axioms the_line_is_the_least_energy
+--#print axioms the_line_squared_is_the_quartic
 --| THE HOLONOMY AND WILSON.  Half a turn a crossing: two crossings turn the phase over, so a closed walk, which crosses
 --| evenly, comes home with the sign of half its crossings.  And on a link of length one the device's square action is
 --| Wilson's term times one more than the whole part: twice Wilson's term less its square.
@@ -3671,8 +3750,8 @@ theorem the_device_square_is_twice_wilson_less_its_square (q : Turns) (unit : th
   simp only [the_turns_norm] at unit
   simp only [the_turns_action, Int.sub_mul, Int.mul_sub, Int.mul_add, Int.one_mul, Int.mul_one]
   constructor <;> omega
-#print axioms two_crossings_turn_the_phase_over
-#print axioms the_device_square_is_twice_wilson_less_its_square
+--#print axioms two_crossings_turn_the_phase_over
+--#print axioms the_device_square_is_twice_wilson_less_its_square
 --| THE CURL OF A GRADIENT.  Measure a field one step along a direction and subtract: the difference.  The differences along
 --| two directions commute, because the steps do, so the mixed partials agree exactly, and the curl of any gradient is
 --| nothing.  The derivative of an action lies in the kernel of the curl, on every torus of four directions.
@@ -3687,8 +3766,8 @@ theorem the_curl_of_a_gradient_is_nothing {n : Nat} (f : Site4 n → Int) (μ ν
     the_curl_on (the_gradient f) μ ν x = 0 := by
   show the_difference μ (the_difference ν f) x - the_difference ν (the_difference μ f) x = 0
   rw [the_mixed_differences_commute]; omega
-#print axioms the_mixed_differences_commute
-#print axioms the_curl_of_a_gradient_is_nothing
+--#print axioms the_mixed_differences_commute
+--#print axioms the_curl_of_a_gradient_is_nothing
 --| THE ARGUMENT, COUNTED FROM THE INFERRED END.  Thirty-eight steps, a hundred and six cells.  Read back four steps, the
 --| length of Stokes's path, and the tape is thirteen: the bent card.  Read back five, Gauss's five stations, and it is
 --| eighteen: the macguffin, thirteen and five.  Read back thirteen and it is forty-two, eighteen of them the memory and the
@@ -3704,7 +3783,7 @@ theorem the_argument_counted_from_the_inferred_end :
       ∧ readers_experience.the_fencepost_bug = 1
       ∧ episode8_description.length - readers_experience.the_fencepost_bug = 105 := by
   refine ⟨rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl⟩
-#print axioms the_argument_counted_from_the_inferred_end
+--#print axioms the_argument_counted_from_the_inferred_end
 --| THE LAST RESIDUE AND THE READING.  Lay the cells along the constructs of Episodes 1 to 5, three to a rung (the class, the
 --| inductive, the structure), thirty-seven rungs and a hundred and eleven places, with the computer program the inductive after
 --| LOGICAL.  The residue after thirty-seven steps is a hundred and three, the press; the last reading, the inferred end, is three;
@@ -3717,7 +3796,7 @@ theorem the_last_residue_and_reading_land_on_the_slip :
       ∧ episode8_description.length = 3 * 35 + 1
       ∧ 3 * 37 = 111 := by
   refine ⟨rfl, rfl, rfl, rfl, rfl⟩
-#print axioms the_last_residue_and_reading_land_on_the_slip
+--#print axioms the_last_residue_and_reading_land_on_the_slip
 --| THE FLIP BIT.  The rungs close on the third rotation; the quarter turn closes on the fourth.  Read the hundred and six
 --| places three to a rung and the pointer opens a rung; read them as quarter turns and it is half a turn, minus one.  The
 --| computer program's place, ninety-eight, is minus one too.  The inferred place, a hundred and twelve, is the first where
@@ -3735,8 +3814,8 @@ theorem the_slip_is_the_flip_bit :
   · exact (the_quarter_walk_repeats_every_four_times 2 26).trans the_four_labels_walk_perfectly.2.1
   · exact (the_quarter_walk_repeats_every_four_times 2 24).trans the_four_labels_walk_perfectly.2.1
   · exact (the_quarter_walk_repeats_every_four_times 0 28).trans rfl
-#print axioms the_quarter_walk_repeats_every_four_times
-#print axioms the_slip_is_the_flip_bit
+--#print axioms the_quarter_walk_repeats_every_four_times
+--#print axioms the_slip_is_the_flip_bit
 --| THE HEAD, GIVEN MASS.  The head stays on eighteen cells, the clicks: its energy.  The symbols run underneath it through the
 --| round trip, ninety, the clock: its momentum squared.  Its speed is the one over the other, below light.  Its mass squared is
 --| the energy squared less the momentum squared, eighteen squared less ninety: two hundred and thirty-four, the interval, the
@@ -3748,7 +3827,7 @@ theorem the_head_has_mass :
       ∧ the_round_trip * 1 * 1 < 18 * 18
       ∧ (∀ k, the_interval (the_boosted k) = 234) :=
   ⟨rfl, rfl, by decide, by decide, by decide, every_boost_keeps_the_interval⟩
-#print axioms the_head_has_mass
+--#print axioms the_head_has_mass
 --| THE ASYMPTOTE.  Boost the head again and again.  The interval stays two hundred and thirty-four and the energy climbs
 --| without bound, at least one more each time, so one less the speed squared, the interval over the energy squared, runs to
 --| nothing: the speed comes as close to light as anyone likes and never arrives.  The hole never closes.  That is the shape the
@@ -3767,14 +3846,14 @@ theorem the_asymptote_is_the_edge (k : Nat) :
       ∧ the_round_trip * (the_boosted k).2 * (the_boosted k).2 < (the_boosted k).1 * (the_boosted k).1
       ∧ (k : Int) + 18 ≤ (the_boosted k).1 :=
   ⟨every_boost_keeps_the_interval k, the_hole_never_closes k, (the_boosts_climb k).2⟩
-#print axioms the_boosts_climb
-#print axioms the_asymptote_is_the_edge
+--#print axioms the_boosts_climb
+--#print axioms the_asymptote_is_the_edge
 --| NO TOTAL ORDER ON THE TRUTHS.  Read a coin two ways, as heads and as tails.  Neither reading yields the other: heads does
 --| not imply tails, and tails does not imply heads.  Entailment on the readings is not total.  A measurement sorts, so a total
 --| order has to be supplied from outside: the one-way order, read one way.
 theorem the_coins_are_incomparable :
     ¬ (∀ b : Bool, b = true → b = false) ∧ ¬ (∀ b : Bool, b = false → b = true) := by decide
-#print axioms the_coins_are_incomparable
+--#print axioms the_coins_are_incomparable
 --| PYTHAGORAS.  The head's triangle: energy the long side, eighteen; its legs the mass and the momentum, the roots of two
 --| hundred and thirty-four and of ninety.  The squares close in whole numbers, eighteen squared is two hundred and thirty-four
 --| and ninety, while neither leg is a whole number: the gap Pythagoras found in the parts, which Episode One defines to be zero.
@@ -3799,7 +3878,7 @@ theorem pythagoras_closes_the_head :
     rcases small n with hn | hn
     · exact sq234 ⟨n, hn⟩ h
     · omega
-#print axioms pythagoras_closes_the_head
+--#print axioms pythagoras_closes_the_head
 --| TWO NORMS, TWO DEGREES OF FREEDOM.  The head's norm splits into position, thirteen eighteenths of it, and velocity, five
 --| eighteenths: the bent card and Gauss's five out of the macguffin.  The gain that turns a stationary value into the reading is
 --| one over the product of the two fractions, three hundred and twenty-four over sixty-five.  Strike the arm and the round trip is
@@ -3809,7 +3888,7 @@ theorem the_two_norms_split_the_head :
       ∧ 234 * 90 = 65 * 324
       ∧ 18 * 324 = 5832 := by
   decide
-#print axioms the_two_norms_split_the_head
+--#print axioms the_two_norms_split_the_head
 --| THE READER'S TEST.  Strike the arm and the reading repeats every six digits: the slip was not caught.  Write it and the
 --| round trip is ninety, the root of five times the root of two times three, and no ratio of whole numbers squares to ninety
 --| times a square: halve both sides as long as they are even, and they always are, so there is no smallest.  The written
@@ -3836,7 +3915,7 @@ theorem the_root_of_ninety_is_not_a_ratio : ∀ q p : Nat, 0 < q → p * p ≠ 9
     have h3 : (2 * b) * (2 * b) = (2 * 2) * (b * b) := Nat.mul_mul_mul_comm 2 b 2 b
     have h4 : a * a = 90 * (b * b) := by omega
     exact ih b (by omega) a (by omega) h4
-#print axioms the_root_of_ninety_is_not_a_ratio
+--#print axioms the_root_of_ninety_is_not_a_ratio
 theorem the_written_reading_is_not_a_ratio (p : Int) (q : Nat) (hq : 0 < q) :
     (65 * p - 5832 * q) * (65 * p - 5832 * q) ≠ 90 * ((324 * q : Int) * (324 * q)) := by
   intro h
@@ -3845,7 +3924,7 @@ theorem the_written_reading_is_not_a_ratio (p : Int) (q : Nat) (hq : 0 < q) :
       = (((90 * (324 * q * (324 * q))) : Nat) : Int) := by
     rw [Int.natAbs_mul_self, h]; simp [Int.natCast_mul]
   exact Int.ofNat.inj e
-#print axioms the_written_reading_is_not_a_ratio
+--#print axioms the_written_reading_is_not_a_ratio
 --| THE QUARTIC, DEFLATED.  Read the closing quartic in r.  Take one of its roots out, the knower's: what is left is a cubic,
 --| and the cubic is c times the root's mirror times the other pair, r squared less twice t x less the root squared.  Three
 --| roots stay: the mirror of the one taken out, and the two of the other factor.
@@ -3863,9 +3942,9 @@ theorem a_root_deflates_to_the_cubic (c t x ρ r : Int) (root : the_closing_quar
     the_closing_quartic c t x r = (r - ρ) * (c * (r + ρ) * (r * r - (2 * t * x - ρ * ρ))) := by
   have h := the_quartic_deflates c t x ρ r
   rw [root, Int.sub_zero, the_deflated_cubic_factors] at h; exact h
-#print axioms the_quartic_deflates
-#print axioms the_deflated_cubic_factors
-#print axioms a_root_deflates_to_the_cubic
+--#print axioms the_quartic_deflates
+--#print axioms the_deflated_cubic_factors
+--#print axioms a_root_deflates_to_the_cubic
 --| THE SEMI-NORM FROM THE FRAME.  A frame is a direction u with interval one, the boost nineteen and two among them.  Its
 --| rest-space length of a direction v is the square of their product less the interval of v: ninety times the square of
 --| the cross of u and v.  Never negative, and nothing exactly along u: a semi-norm, and the frame alone fixes it.
@@ -3890,10 +3969,10 @@ theorem the_frame_cannot_see_itself (u : Int × Int) (k : Int) (unit : the_dot_o
     simp only [Int.mul_left_comm u.1 k, Int.mul_left_comm u.2 k, Int.mul_comm u.1 u.2]; omega
   rw [this]; rfl
 theorem the_boost_is_a_frame : the_dot_of_the_interval the_boost the_boost = 1 := by decide
-#print axioms the_frame_gives_the_semi_norm
-#print axioms the_rest_length_is_never_negative
-#print axioms the_frame_cannot_see_itself
-#print axioms the_boost_is_a_frame
+--#print axioms the_frame_gives_the_semi_norm
+--#print axioms the_rest_length_is_never_negative
+--#print axioms the_frame_cannot_see_itself
+--#print axioms the_boost_is_a_frame
 --| THE CHARGE, THROUGH EULER.  A link's phase is the turn by an angle, and the angle is the charge times the field: the quarter
 --| turn is the turn by half the circle's half, and two of them are the turn by the circle's half, minus one.  So the charge is
 --| the root of four circles over the reading, one over the root of β.  No root is taken: a whole number of twenty-four places
@@ -3911,8 +3990,8 @@ theorem the_knowers_charge_is_bracketed :
         ≤ 4 * the_low_pi.1 * the_high_conjugate.2 * 10 ^ 48
       ∧ 4 * the_high_pi.1 * the_low_conjugate.2 * 10 ^ 48
         < (the_knowers_charge + 1) * (the_knowers_charge + 1) * the_high_pi.2 * the_low_conjugate.1 := by decide +kernel
-#print axioms the_readers_charge_is_bracketed
-#print axioms the_knowers_charge_is_bracketed
+--#print axioms the_readers_charge_is_bracketed
+--#print axioms the_knowers_charge_is_bracketed
 --| GALERKIN AROUND THE SEMI-NORM, AND THE SOLVER.  On a ring of four stations, measure a field by the squares of its central
 --| differences, the step ahead less the step behind.  That length is never negative, and it sees nothing exactly on the fields
 --| that repeat every two stations: the still field and the alternating one, the two doublers.  Project them out.  On the two
@@ -3976,13 +4055,13 @@ def the_secant_slope : Int := 13 * (the_low_root + the_high_root) - 36 * the_den
 theorem one_jacobian_free_newton_step_stays_in_the_bracket :
     the_scaled_residual the_low_root < 0 ∧ 0 < the_scaled_residual the_high_root ∧ 0 < the_secant_slope
       ∧ the_scaled_residual the_high_root ≤ the_secant_slope := by decide +kernel
-#print axioms the_semi_norm_is_never_negative
-#print axioms the_semi_norm_sees_nothing_exactly_on_the_doublers
-#print axioms the_still_and_the_alternating_are_its_kernel
-#print axioms on_the_turning_fields_the_derivative_is_twice_the_quarter_turn
-#print axioms the_galerkin_matrix_is_invertible
-#print axioms the_jacobian_free_difference_is_exact
-#print axioms one_jacobian_free_newton_step_stays_in_the_bracket
+--#print axioms the_semi_norm_is_never_negative
+--#print axioms the_semi_norm_sees_nothing_exactly_on_the_doublers
+--#print axioms the_still_and_the_alternating_are_its_kernel
+--#print axioms on_the_turning_fields_the_derivative_is_twice_the_quarter_turn
+--#print axioms the_galerkin_matrix_is_invertible
+--#print axioms the_jacobian_free_difference_is_exact
+--#print axioms one_jacobian_free_newton_step_stays_in_the_bracket
 --| THE SEMI-NORM FROM THE COMPARISON.  Compare the station ahead with the station behind, one way, in the naturals: the step
 --| after less before, plus before less after, floors to the size of the step.  Square it, sum it around the ring, and it is the
 --| Galerkin semi-norm exactly.  Compare both ways, in a ring, and the step is nothing: the comparison measures nothing at all.
@@ -4013,9 +4092,9 @@ theorem read_both_ways_the_comparison_measures_nothing (ψ : Int × Int × Int �
     the_semi_norm_read_both_ways ψ = 0 := by
   have step : ∀ p q : Int, (p - q) + (q - p) = 0 := fun p q => by omega
   simp only [the_semi_norm_read_both_ways, step, Int.mul_zero, Int.add_zero]
-#print axioms the_one_way_step_squared
-#print axioms the_semi_norm_is_the_comparison_read_one_way
-#print axioms read_both_ways_the_comparison_measures_nothing
+--#print axioms the_one_way_step_squared
+--#print axioms the_semi_norm_is_the_comparison_read_one_way
+--#print axioms read_both_ways_the_comparison_measures_nothing
 
 --| ONE WAY AND BOTH WAYS, IN THE CRANK.  Episode 8's guard is (x·y' − x'·y) + (x'·y − x·y'): p − q plus q − p, with p = x·y' and
 --| q = x'·y.  Read one way, in the naturals, each subtraction floors at zero and the sum is the size of the step, whichever way
@@ -4037,11 +4116,11 @@ theorem every_k_is_certified (k : Nat) :
       = Quot.mk the_rational_idea_of_relativity
           (arrange_the_information_appropriately.1 * all_possible_variables, arrange_the_information_appropriately.2) :=
   the_box_has_one_point _ _
-#print axioms the_floor_reads_the_step
-#print axioms both_ways_the_step_is_zero
-#print axioms both_ways_the_guard_always_stops
-#print axioms one_way_the_guard_reads_the_step
-#print axioms every_k_is_certified
+--#print axioms the_floor_reads_the_step
+--#print axioms both_ways_the_step_is_zero
+--#print axioms both_ways_the_guard_always_stops
+--#print axioms one_way_the_guard_reads_the_step
+--#print axioms every_k_is_certified
 --| The freeze, on the device's own step.  Episode 8's step is written for any Term; dealt at Int, with any counting function, the
 --| guard's left side is nothing, so the step never reads its scale: the crank at Int is the crank with no tolerance at all.
 theorem at_Int_the_scale_is_never_read (lambda : List FACT → Int) (s s' : Int) (p : Int × Int) :
@@ -4052,8 +4131,8 @@ theorem at_Int_the_tolerance_is_zero (lambda : List FACT → Int) (s : Int) (p :
     bent_card.the_device_computing_the_next_configuration Int lambda s p
       = bent_card.the_device_computing_the_next_configuration Int lambda 0 p :=
   at_Int_the_scale_is_never_read lambda s 0 p
-#print axioms at_Int_the_scale_is_never_read
-#print axioms at_Int_the_tolerance_is_zero
+--#print axioms at_Int_the_scale_is_never_read
+--#print axioms at_Int_the_tolerance_is_zero
 
 -- the squares, expanded once by hand so the tally only ever sees literal coefficients on N·N, N·D, D·D
 theorem step_sq (N D : Nat) : (N + D) * (N + D) = N * N + 2 * (N * D) + D * D := by
@@ -4438,12 +4517,12 @@ theorem every_rung_is_the_truth : ∀ f ∈ the_clicks, Quot.mk same_click f = Q
   intro f hf
   exact Quot.sound (List.all_eq_true.mp every_rung_clicks f hf)
 theorem the_clicks_count : the_clicks.length = 78 := rfl
-#print axioms every_rung_clicks
-#print axioms every_rung_is_the_truth
+--#print axioms every_rung_clicks
+--#print axioms every_rung_is_the_truth
 --| The clicks' own cost, apart from the rungs: a compiled term of any type, minted and identified.
 theorem a_compile_is_the_truth (α : Sort u) (t : α) :
     Quot.mk same_click (IT_COMPILES α t) = Quot.mk same_click FACT.Truth := Quot.sound rfl
-#print axioms a_compile_is_the_truth
+--#print axioms a_compile_is_the_truth
 --| The inferences, as clicks: the quartic, one way and both ways, and the freeze on the device's own step, each minted the way
 --| a rung is minted, and each the same account as the truth.
 def the_inferences : List FACT :=
@@ -4463,8 +4542,8 @@ theorem every_inference_is_the_truth : ∀ f ∈ the_inferences, Quot.mk same_cl
   intro f hf
   exact Quot.sound (List.all_eq_true.mp every_inference_clicks f hf)
 theorem the_inferences_count : the_inferences.length = 11 := rfl
-#print axioms every_inference_clicks
-#print axioms every_inference_is_the_truth
+--#print axioms every_inference_clicks
+--#print axioms every_inference_is_the_truth
 --| THE INTERPRETATION EXPERIMENT.  The experience was read on the meter, in heartbeats, noisy.  The interpretation is read here,
 --| by click: each proposal the knower is asked to take is minted with the comparison under it, and the device decides the
 --| comparison.  What clicks is the comparison; that the proposal is that comparison is the knower's.  A click is not a proof
@@ -4513,15 +4592,15 @@ theorem every_proposal_is_the_truth : ∀ f ∈ the_proposals, Quot.mk same_clic
   exact Quot.sound (List.all_eq_true.mp every_proposal_clicks f hf)
 theorem the_proposals_count : the_proposals.length = 9 := rfl
 theorem the_identity_does_not_click : the_click the_identity_with_the_laboratory = false := by decide +kernel
-#print axioms every_proposal_clicks
-#print axioms every_proposal_is_the_truth
-#print axioms the_identity_does_not_click
+--#print axioms every_proposal_clicks
+--#print axioms every_proposal_is_the_truth
+--#print axioms the_identity_does_not_click
 --| FOUND A BUG.  The compiled rung's comparison will not take ≤: the two numbers must be different, the output less than the
 --| expectation.  Here it is with the tolerance written in.  The reading's upper wall sits below the laboratory's band, a whole
 --| standard uncertainty down from its value: strictly less, so not the constant.  There is a bug in the code, demonstrably.
 theorem the_output_is_less_than_the_expectation :
     the_high_reading.1 * 10 ^ 9 < (the_laboratory - 21) * the_high_reading.2 := by decide +kernel
-#print axioms the_output_is_less_than_the_expectation
+--#print axioms the_output_is_less_than_the_expectation
 --| THE SLIP, FOUND.  The day's receipts, minted as rungs are minted: the tapes laid on the constructs, the flip bit, the head
 --| and its mass, the asymptote, the coins that do not compare, Pythagoras, the two norms, the reader's test, and the bug.
 def the_slip_found : List FACT :=
@@ -4555,10 +4634,10 @@ def the_slip_across_the_operands : List FACT :=
    IT_COMPILES _ the_readers_charge_is_bracketed,
    IT_COMPILES _ the_output_is_less_than_the_expectation]
 theorem every_operand_clicks : the_slip_across_the_operands.all the_click = true := rfl
-#print axioms a_square_doubles_the_share
-#print axioms every_operand_clicks
-#print axioms every_finding_clicks
-#print axioms every_finding_is_the_truth
+--#print axioms a_square_doubles_the_share
+--#print axioms every_operand_clicks
+--#print axioms every_finding_clicks
+--#print axioms every_finding_is_the_truth
 
 --| THE NUMBER, FROM THE CLICKS.  The last device reads nothing but whether each cell clicked.  Count the clicks on every tape
 --| instead of the cells, crank the same fenceposts, and divide once: the same number, on propext alone.  It agrees with the
@@ -4595,19 +4674,19 @@ theorem no_reader_counts_the_false_meaning_trues (t u : List FACT)
     (ht : ∀ f ∈ t, the_click f = true) (hu : ∀ f ∈ u, the_click f = true) (same : t.length = u.length) :
     the_click_count t = the_click_count u := by
   rw [every_clicking_tape_reads_its_length t ht, every_clicking_tape_reads_its_length u hu, same]
-#print axioms no_reader_counts_the_false_meaning_trues
-#print axioms the_knower_cannot_count_the_false_meaning_trues
-#print axioms a_false_meaning_true_is_the_truth
+--#print axioms no_reader_counts_the_false_meaning_trues
+--#print axioms the_knower_cannot_count_the_false_meaning_trues
+--#print axioms a_false_meaning_true_is_the_truth
 def the_click_pair : Nat × Nat := bent_card.fenceposts_must_be_preserved Nat the_click_count all_possible_variables
 set_option maxRecDepth 100000 in
 theorem the_clicks_agree : the_click_pair = arrange_the_information_appropriately := rfl
 def the_click_natural : Nat := the_click_pair.1 * all_possible_variables / the_click_pair.2
 set_option maxRecDepth 100000 in
 theorem the_clicks_read_the_number : the_click_natural = the_other_natural := rfl
-#print axioms the_clicks_read_the_number
+--#print axioms the_clicks_read_the_number
 theorem the_clicks_never_read_it : the_click_pair.2 ≠ 0 := by
   rw [the_clicks_agree]; exact the_post_at_zero_is_never_read
-#print axioms the_clicks_never_read_it
+--#print axioms the_clicks_never_read_it
 
 end all_the_clicks
 
@@ -4639,14 +4718,14 @@ theorem outer_reader_reads_the_number :
       / (bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_between) all_possible_variables).2
       = the_other_natural := by
   rw [outer_reader_agrees, ← the_other_machine_agrees]; rfl
-#print axioms peano_fold
-#print axioms read_past_quarter_is_length
-#print axioms outer_reader_agrees
-#print axioms outer_reader_reads_the_number
+--#print axioms peano_fold
+--#print axioms read_past_quarter_is_length
+--#print axioms outer_reader_agrees
+--#print axioms outer_reader_reads_the_number
 theorem the_card_between_never_reads_it :
     (bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_between) all_possible_variables).2 ≠ 0 := by
   rw [outer_reader_agrees]; exact the_post_at_zero_is_never_read
-#print axioms the_card_between_never_reads_it
+--#print axioms the_card_between_never_reads_it
 
 --| THE CUT.  INFERRED carries two closures: the conclusion its sameness reaches, and α, which ends on FACT.SAME.  Read out,
 --| one is a cell and the other is three.  Deal each as the quarter of a card marked SAME_DIFFERENCE and hand it to the review
@@ -4684,9 +4763,9 @@ theorem deck_one_is_one_cell : deck_one.quarter.peano.length = 1 := rfl
 theorem deck_two_is_three_cells : deck_two.quarter.peano.length = 3 := rfl
 theorem two_decks_to_the_count : deck_one.quarter.peano.length ≠ deck_two.quarter.peano.length := by
   rw [deck_one_is_one_cell, deck_two_is_three_cells]; decide
-#print axioms the_alpha_is_three_cells
-#print axioms one_deck_to_the_measure
-#print axioms two_decks_to_the_count
+--#print axioms the_alpha_is_three_cells
+--#print axioms one_deck_to_the_measure
+--#print axioms two_decks_to_the_count
 
 --| SAME DIFFERENCE.  INFERRED compares its two closures by `inferred?`, which is `≤`: the interpretation, inferred from the
 --| pair (the constant, the gawk at it), against α, constant ≤ real.  Dealt on rung 37 the comparison clicks, and it clicks
@@ -4716,9 +4795,9 @@ theorem the_device_reads_it_back : the_knower.inferred? the_alpha the_conclusion
   exact ⟨rfl, rfl, id, (trivial : True), (trivial : True), (trivial : True)⟩
 theorem the_two_closures_click :
     [IT_COMPILES _ the_knower_reads_one_way, IT_COMPILES _ the_device_reads_it_back].all the_click = true := rfl
-#print axioms the_knower_reads_one_way
-#print axioms the_device_reads_it_back
-#print axioms the_two_closures_click
+--#print axioms the_knower_reads_one_way
+--#print axioms the_device_reads_it_back
+--#print axioms the_two_closures_click
 --| THE INFERRED MASS GAP.  The knower's conclusion on rung 37 has no defining equation; it is one cell, and the device reads
 --| its order against α both ways.  Name it.  The whole action of light and matter moves with the knower only through β: two
 --| knowers who choose two βs read the same matter, the same squares, and actions that differ by the difference of the βs times
@@ -4731,9 +4810,9 @@ theorem the_whole_action_moves_only_with_β {n : Nat} (β β' : Int) (U : Bool �
     the_whole_action β U ψ m - the_whole_action β' U ψ m = (β - β') * the_torus_action (the_phase_torus U) := by
   simp only [the_whole_action, Int.sub_mul]
   omega
-#print axioms the_inferred_mass_gap_is_one_cell
-#print axioms the_knower_infers_the_slot
-#print axioms the_whole_action_moves_only_with_β
+--#print axioms the_inferred_mass_gap_is_one_cell
+--#print axioms the_knower_infers_the_slot
+--#print axioms the_whole_action_moves_only_with_β
 
 --| THE CUT ON THE CARD.  Now leave the quarter alone and cut the face instead: the conclusion's fact on one card, α's last
 --| fact, FACT.SAME, on the other, the same one-cell quarter under both.  The measure reads one walk.  The count reads one
@@ -4759,9 +4838,9 @@ theorem one_click_on_both_faces : the_click card_one.symbol = the_click card_two
 theorem one_truth_on_both_faces : card_one.symbol.truth = card_two.symbol.truth :=
   propext ⟨fun _ => @of_decide_eq_true _ card_two.symbol.click card_two_clicks,
            fun _ => @of_decide_eq_true _ card_one.symbol.click card_one_clicks⟩
-#print axioms one_quarter_under_both
-#print axioms one_click_on_both_faces
-#print axioms one_truth_on_both_faces
+--#print axioms one_quarter_under_both
+--#print axioms one_click_on_both_faces
+--#print axioms one_truth_on_both_faces
 end the_memo_and_the_cut
 
 --| THE READER'S INTERPRETATION OF THE EXPERIENCE.  Episode 8 gave the reader an experience; this is what the reader makes of
@@ -4783,14 +4862,14 @@ def naotrino_detector : Nat :=                                                  
   (bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_between) all_possible_variables).1 * all_possible_variables
     / (bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_between) all_possible_variables).2
 theorem naotrino_detector_reads_the_number : naotrino_detector = the_other_natural := outer_reader_reads_the_number
-#print axioms naotrino_detector_reads_the_number
+--#print axioms naotrino_detector_reads_the_number
 
 --| THE READER ADDS NO DIGIT.  Six layers of interpretation over one experience, and the two print the same natural: what the
 --| reader makes of the experience, less the experience, is zero on every digit the device prints.  The receipts already on the
 --| table, composed; the crank is not run again.  Whatever the reader adds, it is not in the number.
 theorem the_reader_adds_no_digit : naotrino_detector = the_constant_factor_of_scaling_bullshit :=
   naotrino_detector_reads_the_number.trans the_same_natural_both_ways
-#print axioms the_reader_adds_no_digit
+--#print axioms the_reader_adds_no_digit
 --| BELIEVE IT OR NOT.  All the knower has left is to believe the electron is represented, or not.  Not: every true is read
 --| as true, the arm is struck, and the reading repeats every six digits.  So: one true is read as false, the arm is written,
 --| and the reading is no ratio, never repeating.  Either way the day's receipts all click, and the reader adds no digit to
@@ -4803,7 +4882,7 @@ theorem the_knower_may_believe_or_not :
       ∧ the_slip_found.all the_click = true
       ∧ naotrino_detector = the_constant_factor_of_scaling_bullshit :=
   ⟨the_struck_digits_repeat_every_six, the_written_reading_is_not_a_ratio, every_finding_clicks, the_reader_adds_no_digit⟩
-#print axioms the_knower_may_believe_or_not
+--#print axioms the_knower_may_believe_or_not
 --| THE WRITER'S POINT.  The polynomial is in the device: the table satisfies its own polynomial, every table's two roots
 --| solve it, the counted quartic is solved by the reading and by the conjugate, the two add and multiply to its counts, and
 --| its factors do not read the sign.  Both roots, held at once; which one is meant is not written in the polynomial.
@@ -4817,7 +4896,7 @@ def the_writers_point : List FACT :=
    IT_COMPILES _ the_quartic_does_not_read_the_sign]
 theorem the_writers_point_clicks : the_writers_point.all the_representation.the_click = true := rfl
 theorem the_writers_point_count : the_writers_point.length = 7 := rfl
-#print axioms the_writers_point_clicks
+--#print axioms the_writers_point_clicks
 --| RAPIDITIES ADD.  The interval of a product is the product of the intervals, so boosts of interval one compose into a
 --| boost of interval one, and the product is associative.  A boost raised to j and then to k is the boost raised to j plus
 --| k: in whole numbers with the round trip's root, rapidities add by multiplying.
@@ -4852,9 +4931,9 @@ theorem every_boost_power_is_a_boost (k : Nat) : the_interval (the_boost_power k
   induction k with
   | zero => rfl
   | succ k ih => exact the_boosts_compose _ _ ih the_boost_has_unit_interval
-#print axioms the_interval_is_multiplicative
-#print axioms the_rapidities_add
-#print axioms every_boost_power_is_a_boost
+--#print axioms the_interval_is_multiplicative
+--#print axioms the_rapidities_add
+--#print axioms every_boost_power_is_a_boost
 --| THREE POINTS FIX THE SIGN.  Two observers give a difference and no orientation; three give a signed area, and swapping
 --| any two turns it over.  Let the sign of that area choose the sign the quartic's factors carry: the product of the two
 --| factors does not read it, but the factor picked does, and the two picks differ by twice t x s.  On the device's own three
@@ -4887,10 +4966,10 @@ theorem the_product_of_the_picks_is_the_quartic (a b c : Int × Int) (cc t x r s
 theorem the_devices_three_points_are_oriented :
     the_orientation the_outer_radius the_hole the_boost = 2
       ∧ the_orientation the_hole the_outer_radius the_boost = -2 := by decide
-#print axioms the_orientation_turns_over
-#print axioms the_two_picks_differ
-#print axioms the_product_of_the_picks_is_the_quartic
-#print axioms the_devices_three_points_are_oriented
+--#print axioms the_orientation_turns_over
+--#print axioms the_two_picks_differ
+--#print axioms the_product_of_the_picks_is_the_quartic
+--#print axioms the_devices_three_points_are_oriented
 --| YOU'RE A DAISY IF YOU DO.  The final choice of root, named: hand it the knower's pick and it hands back a root, the
 --| reader's (eighteen plus root ninety, times three hundred twenty-four) on true, the knower's (eighteen less root ninety) on
 --| false.  Either way the root solves the counted quartic, with nothing left over; the device does not prefer one.
@@ -4902,7 +4981,7 @@ theorem you_re_a_daisy_either_way (you_do : Bool) :
         - 11664 * (you_re_a_daisy_if_you_do you_do).2 = 0
       ∧ (you_re_a_daisy_if_you_do true).2 = - (you_re_a_daisy_if_you_do false).2 := by
   cases you_do <;> decide
-#print axioms you_re_a_daisy_either_way
+--#print axioms you_re_a_daisy_either_way
 --| PICK A ROOT.  The knower's one choice, restated: not whether the electron is represented, but which root.  Both roots solve
 --| the counted quartic, each is carried through to its β and its charge, the polynomial does not prefer either, and an
 --| oriented triangle of three readings picks one factor where two readings cannot.  Either root is a complete account; which
@@ -4924,7 +5003,7 @@ theorem the_knower_may_pick_either_root :
    ⟨the_readers_beta.1, the_knowers_beta.1⟩,
    the_quartic_does_not_read_the_sign, the_two_picks_differ, the_writers_point_clicks,
    fun you_do => (you_re_a_daisy_either_way you_do).1⟩
-#print axioms the_knower_may_pick_either_root
+--#print axioms the_knower_may_pick_either_root
 --| THE ORIENTATION POINTS TO THE READER'S ROOT.  The device's own three points, the outer root, the hole and the boost, read
 --| in the order the record runs, have signed area two: positive.  A positive sign picks the factor r squared less t x times
 --| one less s, and with s the round trip's root over eighteen that factor vanishes at the reading: five times the reading
@@ -4939,7 +5018,7 @@ theorem the_orientation_points_to_the_readers_root :
       ∧ (the_surd_product (5832, -324) (18, 1)).2 = 0
       ∧ you_re_a_daisy_if_you_do (decide (0 < the_orientation the_outer_radius the_hole the_boost)) = (5832, 324) := by
   decide
-#print axioms the_orientation_points_to_the_readers_root
+--#print axioms the_orientation_points_to_the_readers_root
 --| EVERY ≤ CLICKS, AND BOTH WAYS IS EQUALITY.  The universe id is a Number, and the only thing the device gives a Number is
 --| its ≤.  That ≤ is decided by its own cases: zero is below everything, one is never below zero, and two ones compare by
 --| their clicks, counting when both click, reversing when neither does, deciding at once when one does.  The id of universe
@@ -4990,9 +5069,9 @@ theorem both_ways_clicks_as_equality (j k : Nat) :
   · rw [decide_eq_true (Nat.le_of_lt h), decide_eq_false (Nat.not_le_of_lt h), decide_eq_false (Nat.ne_of_lt h)]; rfl
   · subst h; rw [decide_eq_true (Nat.le_refl j), decide_eq_true rfl]; rfl
   · rw [decide_eq_false (Nat.not_le_of_lt h), decide_eq_true (Nat.le_of_lt h), decide_eq_false (Nat.ne_of_gt h)]; rfl
-#print axioms the_ids_compare_as_naturals
-#print axioms both_ways_is_equality
-#print axioms both_ways_clicks_as_equality
+--#print axioms the_ids_compare_as_naturals
+--#print axioms both_ways_is_equality
+--#print axioms both_ways_clicks_as_equality
 --| THE SHAPE FUNCTIONS.  The order read both ways gives the identity; the product comes from a shape function.  The hat on
 --| a panel, its two ends the posts, gives the product of the line: two parts for each end with itself and one for the two
 --| together, symmetric, never negative, zero only at zero, and it keeps the parallelogram, so polarization gives an inner
@@ -5035,12 +5114,12 @@ theorem reading_the_other_way_turns_both_over :
     the_orientation the_hole the_outer_radius the_boost < 0
       ∧ you_re_a_daisy_if_you_do (decide (0 < the_orientation the_hole the_outer_radius the_boost)) = (5832, -324) := by
   decide
-#print axioms the_hat_keeps_the_parallelogram
-#print axioms the_hat_norm_vanishes_only_at_zero
-#print axioms the_mexican_hat_is_the_bump_bent_twice
-#print axioms the_mexican_hat_cannot_see_a_line
-#print axioms the_mexican_hat_sees_curvature
-#print axioms reading_the_other_way_turns_both_over
+--#print axioms the_hat_keeps_the_parallelogram
+--#print axioms the_hat_norm_vanishes_only_at_zero
+--#print axioms the_mexican_hat_is_the_bump_bent_twice
+--#print axioms the_mexican_hat_cannot_see_a_line
+--#print axioms the_mexican_hat_sees_curvature
+--#print axioms reading_the_other_way_turns_both_over
 --| THE MASS GAP: THE FOURTH ORDER WHEN THE CUBIC IS NOT EXACT.  The fourth difference, one, minus four, six, minus four,
 --| one, is the line's operator taken twice.  On every cubic it reads nothing: where the representation is cubic, it is
 --| exact, and no fourth order is left.  On a quartic it reads twenty-four times the leading count, the same at every
@@ -5072,10 +5151,10 @@ theorem the_closing_quartic_leaves_the_gap (c t x r : Int) :
   exact a_quartic_leaves_its_fourth_order c _ 0 _ 0 r
 theorem the_counted_gap (r : Int) : the_fourth_difference (fun y => the_closing_quartic 18 5 324 y) r = 432 :=
   the_closing_quartic_leaves_the_gap 18 5 324 r
-#print axioms a_cubic_is_exact
-#print axioms a_quartic_leaves_its_fourth_order
-#print axioms the_closing_quartic_leaves_the_gap
-#print axioms the_counted_gap
+--#print axioms a_cubic_is_exact
+--#print axioms a_quartic_leaves_its_fourth_order
+--#print axioms the_closing_quartic_leaves_the_gap
+--#print axioms the_counted_gap
 --| THE GAP, AS RATIOS.  Four numbers carry the gap, and each is the pair of roots read one way: their sum, twelve times
 --| which is the fourth order; their product, the head's mass squared; their ratio, the transfer matrix's gap; and the
 --| smaller root, read, the knower's.  Only their ratios are the device's, and the ratios are exact: the fourth order over
@@ -5106,9 +5185,9 @@ theorem the_bakers_transform_keeps_the_count (x y : List Bool) :
   cases x with
   | nil => rfl
   | cons b x => simp only [the_bakers_transform, List.length_cons]; omega
-#print axioms the_gap_ratios_are_exact
-#print axioms the_bakers_transform_undoes
-#print axioms the_bakers_transform_keeps_the_count
+--#print axioms the_gap_ratios_are_exact
+--#print axioms the_bakers_transform_undoes
+--#print axioms the_bakers_transform_keeps_the_count
 --| THE BAKER'S TRANSFORM IS ONE TO ONE.  Two states with a bit to move that land on the same state were the same state:
 --| the transform is injective where it moves a bit.  On the states of a fixed total length an injective self-map is a
 --| permutation, and a permutation keeps every sum, so it keeps the counting inner product: unitary, on finite tapes.
@@ -5116,7 +5195,62 @@ theorem the_bakers_transform_is_one_to_one (b b' : Bool) (x x' y y' : List Bool)
     (h : the_bakers_transform (b :: x, y) = the_bakers_transform (b' :: x', y')) : b = b' ∧ x = x' ∧ y = y' := by
   simp only [the_bakers_transform, Prod.mk.injEq, List.cons.injEq] at h
   exact ⟨h.2.1, h.1, h.2.2⟩
-#print axioms the_bakers_transform_is_one_to_one
+--#print axioms the_bakers_transform_is_one_to_one
+--| THE BAKER RUNS AS LONG AS THE RECORD.  Run the transform and it moves one mark a step until the first tape is empty: as
+--| many steps as the record is long, and then it stands still.  A step further needs a mark further.  The tapes of a length
+--| are twice the tapes one shorter, each cell split in two: the grid halves with every mark, and is only as fine as the
+--| record is long.  The clock's root, read by continued quotients, comes back to itself in two: nine, then two, eighteen,
+--| two, eighteen.  One number, closed in one reading and never closing in another.
+def the_bakers_run : Nat → List Bool × List Bool → List Bool × List Bool
+  | 0, s => s
+  | n + 1, s => the_bakers_run n (the_bakers_transform s)
+theorem the_baker_runs_out_with_the_record (x y : List Bool) :
+    the_bakers_run x.length (x, y) = ([], x.reverse ++ y) := by
+  induction x generalizing y with
+  | nil => rfl
+  | cons b x ih =>
+    simp only [List.length_cons, the_bakers_run, the_bakers_transform, ih, List.reverse_cons, List.append_assoc,
+      List.singleton_append]
+theorem the_baker_then_stands_still (n : Nat) (y : List Bool) : the_bakers_run n ([], y) = ([], y) := by
+  induction n with
+  | zero => rfl
+  | succ n ih => simp only [the_bakers_run, the_bakers_transform, ih]
+def the_tapes_of_length : Nat → List (List Bool)
+  | 0 => [[]]
+  | n + 1 => (the_tapes_of_length n).map (true :: ·) ++ (the_tapes_of_length n).map (false :: ·)
+theorem the_grid_doubles_with_every_mark (n : Nat) : (the_tapes_of_length n).length = 2 ^ n := by
+  induction n with
+  | zero => rfl
+  | succ n ih => simp only [the_tapes_of_length, List.length_append, List.length_map, ih, Nat.pow_succ]; omega
+theorem every_cell_splits_in_two (n : Nat) (t : List Bool) (h : t ∈ the_tapes_of_length n) :
+    (true :: t) ∈ the_tapes_of_length (n + 1) ∧ (false :: t) ∈ the_tapes_of_length (n + 1) := by
+  simp only [the_tapes_of_length, List.mem_append, List.mem_map]
+  exact ⟨Or.inl ⟨t, h, rfl⟩, Or.inr ⟨t, h, rfl⟩⟩
+theorem the_clock_returns_in_two_quotients :
+    9 * 9 ≤ 90 ∧ 90 < 10 * 10
+      ∧ the_root_ring_product 90 (-9, 1) (9, 1) = (9, 0)
+      ∧ (9, 1) = ((2 * 9 + -9 : Int), (1 : Int))
+      ∧ (9, 1) = ((18 + -9 : Int), (1 : Int)) := by decide
+--| THE SAMPLED TEST.  Draw pairs inside the ball and ask of each whether the values differ by less than the allowance.  One
+--| pair that fails refutes, and no pair drawn before or after can take it back.  Pairs that pass prove nothing: a step passes
+--| five and fails the sixth.  The test can say no and can never say yes.
+def the_sampled_test (f : Int → Int) (ε : Int) (pairs : List (Int × Int)) : Bool :=
+  pairs.all fun p => decide ((f p.1 - f p.2) * (f p.1 - f p.2) < ε * ε)
+theorem one_failing_pair_refutes_for_good (f : Int → Int) (ε : Int) (before after : List (Int × Int)) (p : Int × Int)
+    (h : the_sampled_test f ε [p] = false) : the_sampled_test f ε (before ++ p :: after) = false := by
+  simp only [the_sampled_test, List.all_append, List.all_cons, List.all_nil, Bool.and_true] at h ⊢
+  simp only [h, Bool.false_and, Bool.and_false]
+def the_step_at_eight (x : Int) : Int := if x < 8 then 0 else 100
+theorem passing_pairs_prove_nothing :
+    the_sampled_test the_step_at_eight 1 [(0, 1), (2, 3), (5, 6), (10, 11), (40, 41)] = true
+      ∧ the_sampled_test the_step_at_eight 1 [(7, 8)] = false := by decide
+--#print axioms the_baker_runs_out_with_the_record
+--#print axioms the_baker_then_stands_still
+--#print axioms the_grid_doubles_with_every_mark
+--#print axioms every_cell_splits_in_two
+--#print axioms the_clock_returns_in_two_quotients
+--#print axioms one_failing_pair_refutes_for_good
+--#print axioms passing_pairs_prove_nothing
 --| THE FIELD EQUATIONS ON A LINE OF LEVELS.  In the weak field the potential is sourced by the energy density, and on a line
 --| of universe levels that is a double sum: the field at a level is the density summed below it, and the potential is the
 --| field summed below that.  Its second difference is the density again, exactly, at every level: the field equations'
@@ -5143,9 +5277,9 @@ theorem the_potentials_superpose (ρ σ : Nat → Int) (n : Nat) :
   rw [show the_field_of (fun k => ρ k + σ k) = fun k => the_field_of ρ k + the_field_of σ k from
         funext (the_fields_superpose ρ σ)]
   exact the_fields_superpose _ _ n
-#print axioms the_second_difference_of_the_potential_is_the_density
-#print axioms a_nonnegative_density_bends_the_potential_up
-#print axioms the_potentials_superpose
+--#print axioms the_second_difference_of_the_potential_is_the_density
+--#print axioms a_nonnegative_density_bends_the_potential_up
+--#print axioms the_potentials_superpose
 --| TWO FIRST VARIATIONS, AND THE CONVECTIVE TERM.  A step is time-like when its interval is positive and space-like when
 --| negative, and a boost of interval one keeps the kind: what is time-like in one frame is time-like in every frame.  On a
 --| field over ticks and levels, one first variation has two representations, along the clock at a level and across the
@@ -5173,9 +5307,9 @@ theorem one_variation_two_representations (u : Nat → Nat → Int) (n k : Nat) 
 theorem the_convective_term (u d : Int) :
     2 * (u * d) = ((u + d) * (u + d) - u * u) - d * d := by
   simp only [Int.add_mul, Int.mul_add]; rw [Int.mul_comm d u]; omega
-#print axioms time_like_stays_time_like
-#print axioms one_variation_two_representations
-#print axioms the_convective_term
+--#print axioms time_like_stays_time_like
+--#print axioms one_variation_two_representations
+--#print axioms the_convective_term
 
 --| THE ANT, INFERRED.  The two Bullshits of a closure are the tape on either side of the head, each a stack written only
 --| by pushing; the facts are the mark under the head and the heading.  Each step appends one `.inferred` closure on top of
@@ -5222,7 +5356,7 @@ theorem the_ant_commutes (here heading : FACT) (behind ahead : Bullshit) (p : Op
   have ha := the_stack_pops_what_it_reads ahead
   simp only [the_ant_steps, the_ant_read, the_ant_on_a_line, push]
   cases here.bit <;> cases heading.bit <;> simp_all [Prod.ext_iff, bit_bitFACT, the_stack_read]
-#print axioms the_ant_commutes
+--#print axioms the_ant_commutes
 def the_start : Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} := .inferred (bitFACT false) (bitFACT true) (.zero (bitFACT false)) (.zero (bitFACT false)) none the_only_logical_inconsistency
 def the_run : Nat → Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
   | 0 => the_start
@@ -5300,7 +5434,7 @@ theorem the_torus_ant_commutes (a b : FACT) (clocks grid : Bullshit) (p : Option
   simp only [the_torus_ant_steps, the_torus_read, the_ant_on_the_torus, the_clocks_are_read, the_stack_set_reads,
     the_stack_get_reads, bit_bitFACT]
   split <;> rw [the_heading_is_written _ (by omega)]
-#print axioms the_torus_ant_commutes
+--#print axioms the_torus_ant_commutes
 def the_blank_torus : Bullshit := (List.replicate 36 (bitFACT false)).foldr push (.zero (bitFACT false))
 def the_torus_start : Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} :=
   .inferred (bitFACT false) (bitFACT false) (the_clocks 0 0) the_blank_torus none the_only_logical_inconsistency
@@ -5326,9 +5460,9 @@ theorem the_formula_accepts_and_rejects :
 theorem the_verdicts_are_the_steps :
     (the_accepting_seed.stepOK, the_rejecting_seed.stepOK) = (true, false) := by
   rw [← cook_levin_the_description, ← cook_levin_the_description]; exact the_formula_accepts_and_rejects
-#print axioms cook_levin_on_the_readers_interpretation
-#print axioms the_formula_accepts_and_rejects
-#print axioms the_verdicts_are_the_steps
+--#print axioms cook_levin_on_the_readers_interpretation
+--#print axioms the_formula_accepts_and_rejects
+--#print axioms the_verdicts_are_the_steps
 end readers_interpretation_of_the_experience
 
 --| THE READER'S INTERPRETATION, CARRYING A PAIR.  The same experience dealt on a box that holds two carriers at once, the
@@ -5380,10 +5514,10 @@ theorem which_carrier_is_a_choice :
   ⟨the_tally_moved_sides, fun g ⟨hl, hr⟩ => by
     rw [show the_tally_on_the_right = the_tally_on_the_left.swap from rfl, no_reader_of_the_tally_sees_which_carrier g, hl] at hr
     exact Bool.noConfusion hr⟩
-#print axioms the_pair_deals_rung01
-#print axioms the_pair_reads_the_number
-#print axioms two_carriers_print_one_number
-#print axioms which_carrier_is_a_choice
+--#print axioms the_pair_deals_rung01
+--#print axioms the_pair_reads_the_number
+--#print axioms two_carriers_print_one_number
+--#print axioms which_carrier_is_a_choice
 --| (CLICK, CLICK), THROUGH THE CARRIERS.  Each carrier in the pair is a card the experience can be read through: deduct its
 --| quarter, whatever it holds, and read the number.  Read through the left carrier and through the right, the pair clicks
 --| twice, and the two clicks are the two other machines: the click machine's natural and the other machine's natural.  For
@@ -5408,8 +5542,8 @@ theorem click_click_through_the_carriers (p : TwoCarriers) :
 theorem click_click_on_the_tally : (the_click_through the_tally_on_the_left.1, the_click_through the_tally_on_the_left.2)
     = (the_click_through the_tally_on_the_right.1, the_click_through the_tally_on_the_right.2) := by
   rw [click_click_through_the_carriers, click_click_through_the_carriers]
-#print axioms click_click_through_the_carriers
-#print axioms click_click_on_the_tally
+--#print axioms click_click_through_the_carriers
+--#print axioms click_click_on_the_tally
 --| THE ISOMORPHISM TO THE NATURALS.  Call two tapes the same tally when they are the same length, and take the quotient.
 --| Going one way is reading the tally; going back is writing the numeral, the one truth n times.  Read the numeral and you
 --| get n back; write the tally and you get the class back.  So the tallies are the naturals, and the numeral of a tape is its
@@ -5443,11 +5577,11 @@ theorem the_number_is_computed_from_naturals (c : CarrierProcess FACT) :
         / (bent_card.fenceposts_must_be_preserved Nat (fun t => the_tally_of (Quot.mk the_same_tally t)) all_possible_variables).2 := by
   unfold the_click_through
   rw [show read_past_the_carrier c = (fun t => the_tally_of (Quot.mk the_same_tally t)) from funext (every_carrier_reads_a_natural c)]
-#print axioms the_tally_of_the_numeral
-#print axioms the_numeral_of_the_tally
-#print axioms the_numeral_is_the_relettering
-#print axioms every_carrier_reads_a_natural
-#print axioms the_number_is_computed_from_naturals
+--#print axioms the_tally_of_the_numeral
+--#print axioms the_numeral_of_the_tally
+--#print axioms the_numeral_is_the_relettering
+--#print axioms every_carrier_reads_a_natural
+--#print axioms the_number_is_computed_from_naturals
 end readers_interpretation_of_the_pair
 --| THE CONSTRUCTS, AS DATA.  The hundred and twelve constructs of Episodes One to Five, three to a rung, the computer program the
 --| logical rung's data type, the inferred rung last.  Each name below is resolved against the declaration it names when this
@@ -5583,6 +5717,71 @@ theorem the_rows_meet_the_cells :
       ∧ the_rows_on_the_cells[0]? = some (1, ``Measurement.Number)
       ∧ the_rows_on_the_cells[104]? = some (105, ``Measurement.COMPILED) := by
   refine ⟨rfl, rfl, rfl⟩
+--| THE LADDER, READ DOWN.  The author's, 16 November 2026:
+--|   the knower can choose to be a daisy because
+--|   the reader says the continuous and discrete models return the same thing because
+--|   INFERRED THE_CH_VERSION = THE_NON_CH_VERSION (clicks) because
+--|   A_TRUTH_ABOUT THE_CH_VERSION = A_TRUTH_ABOUT THE_NON_CH_VERSION because
+--|   COMPILED CODE = COMPILED CODE because
+--|   MEASURED OUTPUT = MEASURED OUTPUT because
+--|   HALTED PROGRAMS = HALTED PROGRAMS because
+--|   LOGICAL CONCLUSIONS = LOGICAL CONCLUSIONS because
+--|   UNIVERSAL FACTS = UNIVERSAL FACTS because
+--|   LOCAL OBSERVATIONS = LOCAL OBSERVATIONS because
+--|   REAL RESULTS = REAL RESULTS because
+--|   WITNESSED PHENOMENA = WITNESSED PHENOMENA because
+--|   TRUTH = TRUTH AND SCIENTIFIC RIGOR because
+--|   ACOLYTE TRUTH = ACOLYTE SCIENCE because
+--|   PROPAGANDA of TRUTH = PROPAGANDA of SCIENCE but!
+--|   BULLSHIT IS STRICTLY CONSERVED because
+--|   OF LOAD and SCALE we can measure the
+--|   MAGNITUDE OF BULLSHIT to get the VALUE OF the EXECUTED COMPILED CODE by the WITNESSED SOURCE of the MEASURABLE GUNGAN,
+--|   OBSERVED and PRESENT, make it
+--|   PHYSICALLY COMPARABLE to a REPRESENTABLE NUMERIC REPEATABLE BINARY RESIDUE ENCODED with COUNTABLE ADMISSIBLE symbols
+--|   that are DISTINGUISHABLE.
+--| Thirty-seven rungs, every one, from the inferred end down to the first, and the fact beneath them unspoken.  Fourteen
+--| rungs of the same, then the turn at the fifteenth, then twenty-two of the meter.  Spoken, three pairs are turned for the
+--| grammar.  The first line is paid: the crank's point lies in the halving's bracket, under one place.  A thing is the
+--| same as itself by rfl.  Where the two sides part, at truth and science, nothing here is claimed.
+def the_ladder_read_down : List Lean.Name :=
+  [``Measurement.INFERRED, ``Measurement.A_TRUTH_ABOUT, ``Measurement.COMPILED, ``Measurement.MEASURED, ``Measurement.HALTED,
+   ``Measurement.LOGICAL, ``Measurement.UNIVERSAL, ``Measurement.LOCAL, ``Measurement.REAL, ``Measurement.WITNESSED,
+   ``Measurement.TRUTH, ``Measurement.SCIENTIFIC, ``Measurement.ACOLYTE, ``Measurement.PROPAGANDA, ``Measurement.BULLSHIT,
+   ``Measurement.OF, ``Measurement.LOAD, ``Measurement.SCALED, ``Measurement.MAGNITUDE, ``Measurement.VALUE,
+   ``Measurement.EXECUTED, ``Measurement.SOURCE, ``Measurement.GUNGAN, ``Measurement.MEASURABLE, ``Measurement.PRESENT,
+   ``Measurement.OBSERVED, ``Measurement.COMPARABLE, ``Measurement.PHYSICAL, ``Measurement.REPRESENTABLE, ``Measurement.NUMERIC,
+   ``Measurement.REPEATABLE, ``Measurement.BINARY, ``Measurement.RESIDUE, ``Measurement.ENCODED, ``Measurement.COUNTABLE,
+   ``Measurement.ADMISSIBLE, ``Measurement.DISTINGUISHABLE]
+def the_ladder_as_spoken : List Lean.Name :=
+  [``Measurement.INFERRED, ``Measurement.A_TRUTH_ABOUT, ``Measurement.COMPILED, ``Measurement.MEASURED, ``Measurement.HALTED,
+   ``Measurement.LOGICAL, ``Measurement.UNIVERSAL, ``Measurement.LOCAL, ``Measurement.REAL, ``Measurement.WITNESSED,
+   ``Measurement.TRUTH, ``Measurement.SCIENTIFIC, ``Measurement.ACOLYTE, ``Measurement.PROPAGANDA, ``Measurement.BULLSHIT,
+   ``Measurement.OF, ``Measurement.LOAD, ``Measurement.SCALED, ``Measurement.MAGNITUDE, ``Measurement.VALUE,
+   ``Measurement.EXECUTED, ``Measurement.SOURCE, ``Measurement.MEASURABLE, ``Measurement.GUNGAN, ``Measurement.OBSERVED,
+   ``Measurement.PRESENT, ``Measurement.PHYSICAL, ``Measurement.COMPARABLE, ``Measurement.REPRESENTABLE, ``Measurement.NUMERIC,
+   ``Measurement.REPEATABLE, ``Measurement.BINARY, ``Measurement.RESIDUE, ``Measurement.ENCODED, ``Measurement.COUNTABLE,
+   ``Measurement.ADMISSIBLE, ``Measurement.DISTINGUISHABLE]
+def the_rungs_of_the_constructs : List Lean.Name := (List.range 38).filterMap fun k => the_constructs[3 * k]?
+theorem the_ladder_read_down_is_the_rungs_reversed :
+    the_ladder_read_down ++ [``Measurement.FACT] = the_rungs_of_the_constructs.reverse := by decide
+theorem the_turn_is_at_bullshit :
+    the_ladder_read_down.length = 37 ∧ the_ladder_read_down[14]? = some ``Measurement.BULLSHIT
+      ∧ (the_ladder_read_down.drop 15).length = 22 := ⟨rfl, rfl, rfl⟩
+theorem the_ladder_is_spoken_with_three_pairs_turned :
+    the_ladder_as_spoken.length = 37
+      ∧ the_ladder_as_spoken.all (the_ladder_read_down.contains ·) = true
+      ∧ the_ladder_read_down.all (the_ladder_as_spoken.contains ·) = true
+      ∧ ((the_ladder_as_spoken.zip the_ladder_read_down).filter fun p => p.1 != p.2).length = 6 := by decide
+def THE_CH_VERSION_IS_THE_NON_CH_VERSION : FACT :=
+  { truth := in_the_bracket theNewtonPoint ∧ under_one_place
+    click := Decidable.isTrue the_reading_with_its_receipt.property }
+theorem the_two_versions_click : the_representation.the_click THE_CH_VERSION_IS_THE_NON_CH_VERSION = true := rfl
+theorem the_same_is_the_same {α : Sort u} (x : α) : the_representation.the_click (IT_COMPILES (x = x) rfl) = true := rfl
+--#print axioms the_ladder_read_down_is_the_rungs_reversed
+--#print axioms the_turn_is_at_bullshit
+--#print axioms the_ladder_is_spoken_with_three_pairs_turned
+--#print axioms the_two_versions_click
+--#print axioms the_same_is_the_same
 --| THE DOUBLER IS THE KNOWER'S DIAGONAL.  The alternating field steps from a value to its negative: the diagonal p = -q, where the
 --| quotient is least, the knower's root; and the train line cannot see it.
 theorem the_doubler_is_the_knowers_diagonal (χ : Vec8) (φ : Fin 4 → Vec8) (g : Box4)
@@ -5600,16 +5799,16 @@ theorem on_the_devices_links_the_square_is_wilsons :
   intro q hq
   simp only [List.mem_cons, List.mem_nil_iff, or_false] at hq
   rcases hq with rfl | rfl | rfl <;> exact (the_device_square_is_twice_wilson_less_its_square _ rfl).2
-#print axioms the_constructs_are_laid_three_to_a_rung
-#print axioms the_rows_meet_the_cells
-#print axioms the_doubler_is_the_knowers_diagonal
-#print axioms on_the_devices_links_the_square_is_wilsons
+--#print axioms the_constructs_are_laid_three_to_a_rung
+--#print axioms the_rows_meet_the_cells
+--#print axioms the_doubler_is_the_knowers_diagonal
+--#print axioms on_the_devices_links_the_square_is_wilsons
 --| THE SLIP, PLACED.  The argument's cells, a hundred and six, land on the place of that number in the list: the compiled rung.
 theorem the_slip_is_placed_by_receipt :
     episode8_description.length = 106
       ∧ the_constructs[episode8_description.length - 1]? = some ``Measurement.COMPILED := by
   refine ⟨rfl, rfl⟩
-#print axioms the_slip_is_placed_by_receipt
+--#print axioms the_slip_is_placed_by_receipt
 --| ONE FACT, COMPILED AND EXECUTED.  The same fact read as a satire, compiled, and executed.  Compiled and executed, it writes the
 --| same tape; the order between them runs one way, compile before execute, strictly.  The stack at the bottom of the proof is the
 --| satire about zero, one cell: the fencepost.  Same tape, different value, strict order: same difference in one data type.
@@ -5627,8 +5826,8 @@ theorem one_fact_compiled_and_executed :
 --| reader and the knower, does not move.
 theorem the_frame_is_slip_free (r x y : Int) : (r * r * x) * y = (r * r * y) * x := by
   rw [Int.mul_assoc (r * r) x y, Int.mul_assoc (r * r) y x, Int.mul_comm x y]
-#print axioms one_fact_compiled_and_executed
-#print axioms the_frame_is_slip_free
+--#print axioms one_fact_compiled_and_executed
+--#print axioms the_frame_is_slip_free
 --| THE TRIAL OF JARS.  The rung that compares jars by their colors only is dealt and clicks with the rest (every_rung_clicks,
 --| rung 15); the jars sorted by it:
 --| one fact compiled and executed, the frame unmoved, the square that halves the slip.
@@ -5637,7 +5836,7 @@ def the_trial_of_jars : List FACT :=
    IT_COMPILES _ the_frame_is_slip_free,
    IT_COMPILES _ a_square_doubles_the_share]
 theorem the_jar_of_the_jars_clicks : the_trial_of_jars.all the_representation.the_click = true := rfl
-#print axioms the_jar_of_the_jars_clicks
+--#print axioms the_jar_of_the_jars_clicks
 --| OUT TO SAME DIFFERENCE, BY CLICKS.  Same difference is itself a fact, and it clicks.  Every jar of the trial clicks.  Two facts
 --| that click alike are one account.  So every jar of the trial is the same account as same difference: the way out is a click.
 theorem same_difference_is_a_click : the_representation.the_click the_representation.SAME_DIFFERENCE = true := rfl
@@ -5646,7 +5845,7 @@ theorem the_trial_of_jars_reaches_same_difference :
       Quot.mk the_representation.same_click f = Quot.mk the_representation.same_click the_representation.SAME_DIFFERENCE := by
   intro f hf
   exact Quot.sound ((List.all_eq_true.mp the_jar_of_the_jars_clicks f hf).trans same_difference_is_a_click.symm)
-#print axioms the_trial_of_jars_reaches_same_difference
+--#print axioms the_trial_of_jars_reaches_same_difference
 --| FOUND A BUG, CALLED.  The compiled rung's comparison is the order on preprints, and nothing called it.  Call it.  The device's
 --| preprint is the satire: a result whose stimulus and response are both the fact zero.  The laboratory's preprint is a result
 --| whose response is the identity with the laboratory, the one fact that clicks false, and whose proposition is the output less
@@ -5671,12 +5870,12 @@ theorem the_bug_is_found :
   exact h ⟨rfl, fun e => zero_is_not_the_identity e.symm⟩
 theorem no_bug_against_the_satire : ¬ ThePreprint.le the_satire the_satire := by
   intro ⟨_, h⟩; exact h rfl
-#print axioms the_bug_is_found
-#print axioms no_bug_against_the_satire
+--#print axioms the_bug_is_found
+--#print axioms no_bug_against_the_satire
 def the_bug_called : List FACT :=
   [IT_COMPILES _ the_bug_is_found, IT_COMPILES _ no_bug_against_the_satire]
 theorem the_bug_clicks : the_bug_called.all the_representation.the_click = true := rfl
-#print axioms the_bug_clicks
+--#print axioms the_bug_clicks
 --| THE ONE DISAGREEMENT, READ BY THE MACHINE.  Of all the clicks, one disagrees: the identity with the laboratory clicks false.
 --| Lay it on the computer program and read it back: the machine hooks each fact's truth to the cell below, erases the contents,
 --| and reads every cell as the truth.  The zero and the identity read back the same, and both click.  The knower's click says
@@ -5687,7 +5886,7 @@ theorem the_machine_clicks_both :
       ∧ (ComputerProgram.ofTape [zero]).read.all the_representation.the_click = true
       ∧ the_representation.the_click the_identity_with_the_laboratory = false := by
   refine ⟨rfl, rfl, rfl, the_identity_does_not_click⟩
-#print axioms the_machine_clicks_both
+--#print axioms the_machine_clicks_both
 --| EVERY DISAGREEMENT IS ONE DISAGREEMENT.  The computer program reads every fact as the truth, so its reading and the direct
 --| reading part exactly where a fact clicks false.  The identity with the laboratory, the arm T = F, the rejected seed: one false
 --| fact read two ways.  And static friction: lay any number of true cells before the identity, more and more of the same, and the
@@ -5715,15 +5914,15 @@ theorem adding_bullshit_moves_nothing (n : Nat) :
   rw [the_machine_reads_a_tape_as_truths]
   have t : the_click FACT.Truth = true := rfl
   simp [t]
-#print axioms the_readings_disagree_exactly_on_a_false_click
-#print axioms adding_bullshit_moves_nothing
+--#print axioms the_readings_disagree_exactly_on_a_false_click
+--#print axioms adding_bullshit_moves_nothing
 def the_static_friction : List FACT :=
   [IT_COMPILES _ the_machine_reads_every_fact_as_true,
    IT_COMPILES _ the_readings_disagree_exactly_on_a_false_click,
    IT_COMPILES _ the_machine_reads_a_tape_as_truths,
    IT_COMPILES _ adding_bullshit_moves_nothing]
 theorem the_friction_clicks : the_static_friction.all the_representation.the_click = true := rfl
-#print axioms the_friction_clicks
+--#print axioms the_friction_clicks
 --| THE THRESHOLD MUST EXIST.  No laboratory is needed.  The device writes its own false: the arm T = F, a coin dealt false, which
 --| does not click.  On it, as on every false fact, the machine's reading and the direct reading part.  So there is a threshold:
 --| proved, from the device alone.  What it is, the laboratory's constant, the electron's, Leonardo's friction, is the suggestion.
@@ -5734,12 +5933,12 @@ theorem the_threshold_must_exist :
 theorem the_device_writes_its_own_false :
     the_representation.the_click (the_representation.dealt false) = false
       ∧ the_representation.middle_table true false = false := ⟨rfl, rfl⟩
-#print axioms the_threshold_must_exist
-#print axioms the_device_writes_its_own_false
+--#print axioms the_threshold_must_exist
+--#print axioms the_device_writes_its_own_false
 def light_it_up : List FACT :=
   [IT_COMPILES _ the_threshold_must_exist, IT_COMPILES _ the_device_writes_its_own_false]
 theorem how_is_that_for_a_daisy : light_it_up.all the_representation.the_click = true := rfl
-#print axioms how_is_that_for_a_daisy
+--#print axioms how_is_that_for_a_daisy
 
 end Measurement
 
@@ -5830,7 +6029,7 @@ def life_the_universe_and_everything : Nat :=
   (the_trace_of_truth_in_the_device * R * all_possible_variables / (an_exact_polynomial_description * T) - the_other_natural)
     / all_possible_variables
 #eval life_the_universe_and_everything
-#print axioms life_the_universe_and_everything
+--#print axioms life_the_universe_and_everything
 
 --| I'm expecting the Vogon constructor fleet any day now.
 
