@@ -19,7 +19,7 @@ Observable: heartbeats, per turn. Boundary: `withHeartbeats` around one turn. Ba
 What tells the readings apart: the first turn of the third loop (13, 18 or 8), and whether a loop with no device boots
 the same.
 
-Source: the setup commit that adds this folder; the Lean it imports is unchanged since `3f797dc`. Status: sealed, not run.
+Source: `16b2d0e`; the Lean it imports is unchanged since `3f797dc`. Status: read on the M2 (`raw/M2/`); see READINGS, Experiment 008b.
 
 ## The seal
 

@@ -1,0 +1,25 @@
+readings/008b-boot-count/raw/M2/loops.out
+  runs: 5, heartbeat counts identical across runs: True
+  blanks: [7]
+  loop 1 HALVING  turns 106, first turn 28, later turns [1], total 133
+  loop 2 CRANK    turns 106, first turn 18, later turns [1], total 123
+  loop 3 EMPTY    turns 106, first turn 18, later turns [1], total 123
+  loop 4 HALVING  turns 106, first turn 1, later turns [1], total 106
+readings/008b-boot-count/raw/M2/blanks.out
+  runs: 5, heartbeat counts identical across runs: True
+  blanks: [7, 1, 1, 1, 1, 1, 1]
+  loop 1 HALVING  turns 106, first turn 28, later turns [1], total 133
+  loop 2 CRANK    turns 106, first turn 18, later turns [1], total 123
+  loop 3 EMPTY    turns 106, first turn 18, later turns [1], total 123
+readings/008b-boot-count/raw/M2/empty.out
+  runs: 5, heartbeat counts identical across runs: True
+  blanks: [7]
+  loop 1 EMPTY    turns 106, first turn 28, later turns [1], total 133
+  loop 2 EMPTY    turns 106, first turn 1, later turns [1], total 106
+  loop 3 EMPTY    turns 106, first turn 1, later turns [1], total 106
+readings/008b-boot-count/raw/M2/bare.out
+  runs: 5, heartbeat counts identical across runs: True
+  blanks: [7]
+  loop 1 EMPTY    turns 106, first turn 28, later turns [1], total 133
+  loop 2 EMPTY    turns 106, first turn 1, later turns [1], total 106
+  loop 3 EMPTY    turns 106, first turn 1, later turns [1], total 106

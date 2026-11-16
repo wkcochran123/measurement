@@ -24,7 +24,7 @@ its files match the source commit.
 | 007 | `readings/007-fenceposts` | the five-block fencepost: does relative time on the ladder break at the posts 6, 11, …, 31 (seven panels of five, one post over)? | `4e5bb93` | read on the M2 Ultra; superseded by 007b |
 | 007b | `readings/007b-fenceposts-both-ways` | the fencepost read both ways: do the posts beat the knot grid shifted backward as well as forward? | `a3ee8f2` | read on the M2 Ultra: refuted |
 | 008 | `readings/008-two-routes` | two routes to one number: the crank (the derivative) and the halving (the sign only), each turn on the meter; do their total costs agree? | `3f797dc` | read on the M2: the heartbeat meter reads its floor for both routes; wall time separates them by 3.1 |
-| 008b | `readings/008b-boot-count` | the boot count: what the first turn of a third loop reads (13, 18 or 8), whether the one heartbeat a turn is the meter's own post, and whether a loop with no device boots the same | the setup commit that adds the folder | sealed, not run |
+| 008b | `readings/008b-boot-count` | the boot count: what the first turn of a third loop reads (13, 18 or 8), whether the one heartbeat a turn is the meter's own post, and whether a loop with no device boots the same | `16b2d0e` | read on the M2: the one heartbeat a turn is the meter's own post; the boot is Lean's, not the device's; the third loop reads 18 |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -443,13 +443,56 @@ Against the seal:
 What the reading shows is narrower than either account. The difference of ten heartbeats belongs to the position in the
 process and not to the route: at the same position the two routes have exactly equal totals. And they are equal because
 the meter reads its floor, one heartbeat a turn, for both. On this workload the heartbeat count does not see the
-arithmetic of either route. So the reading neither supports nor refutes conservation of cost between the routes; it
+arithmetic of either route. (008b shows the one is the meter's own post: each turn cost no heartbeats.) So the reading neither supports nor refutes conservation of cost between the routes; it
 shows this meter cannot weigh them. The seal's choice of the first run of one probe as the comparison was a flaw in the
 seal, and the second probe is what exposed it.
 
 Wall time does separate the routes. The crank takes 3.1 times as long as the halving, in either order (3.07 and 3.10).
 The crank's time per turn is level across all 106 turns, including the turns after it has halted; the halving's grows
 as its numbers grow.
+
+**Status.** Read on the M2. Not read on the M2 Ultra.
+
+## Experiment 008b: the boot count
+
+008 left three boot readings: 7 for the meter around nothing, 28 for the first turn of the first loop and 18 for the
+first turn of the second, with 1 on every other turn. This experiment asks what a third loop reads, whether the 1 is
+the meter's own, and whether any of it belongs to the device.
+
+**Result on the M2** (source `16b2d0e`; the Lean it imports is unchanged since `3f797dc`; raw output and analysis in
+`readings/008b-boot-count/raw/M2/`). Four probes, five runs each; every count identical across the five runs.
+
+| Probe | Blanks | First turn of each loop, in order | Later turns |
+|---|---|---|---|
+| loops: halving, crank, empty, halving again | 7 | 28, 18, 18, 1 | 1 |
+| blanks: five blanks, then halving, blank, crank, blank, empty | 7, 1, 1, 1, 1, then 1, 1 | 28, 18, 18 | 1 |
+| empty: the device imported, never touched; three empty loops | 7 | 28, 1, 1 | 1 |
+| bare: nothing imported but Lean; three empty loops | 7 | 28, 1, 1 | 1 |
+
+Against the seal:
+
+- S1, loops 1 and 2 reproduce 008: confirmed.
+- S2, the first turn of the third loop: it reads 18. The author's reading as taken (13, fives 4, 2, 1) is **refuted**;
+  the third rule (8) is refuted; the value sealed under Claude's rule is confirmed. The rule itself (one per loop, plus
+  one for the first) is wrong all the same: the fourth loop, the halving run again, reads 1, and S5 fails.
+- S3, the blanks read 7, 1, 1, 1, 1: confirmed.
+- S4, a blank before a loop changes nothing: confirmed.
+- S5, an empty loop boots 28, 18, 18: **refuted**. It reads 28, 1, 1.
+- S6, the bare probe reads as sealed in S5: **refuted** as sealed. It reads exactly what the empty probe reads.
+
+What the readings show:
+
+1. The one heartbeat a turn is the meter's own post. A warmed meter around nothing reads 1. So in 008 each turn of
+   either route cost no heartbeats at all: the meter does not see the routes. The author's "boot turn might have a
+   fencepost" is right in this respect.
+2. The boot is paid once for each new body of code, not once for each loop. The first loop in the process reads 28. A
+   later loop reads 18 the first time its body is one not yet run (the crank after the halving, the empty loop after
+   both) and 1 when its body has run before (the halving again; the second and third empty loops).
+3. None of it is the device's. With nothing imported but Lean the readings are 7 and 28, the same as with the device.
+   The fives in 7, 17, 27 are the elaborator's.
+
+These offsets, a post of 1 and a boot of at most 28, are negligible against the thousands of heartbeats read in 001 to
+007, which measured elaboration and not compiled arithmetic. They are the whole of what 008 read.
 
 **Status.** Read on the M2. Not read on the M2 Ultra.
 
