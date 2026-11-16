@@ -24,7 +24,7 @@ What tells the accounts apart: whether the two totals agree within one per cent.
 The probes run compiled definitions in the elaborator, as the build's own `frechet_walk` does. Nothing is unfolded in the
 kernel.
 
-Source: the setup commit that adds this folder. Status: sealed, not run.
+Source: `3f797dc`. Status: read on the M2 (`raw/M2/`); see READINGS, Experiment 008.
 
 ## The seal
 

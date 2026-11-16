@@ -1,0 +1,37 @@
+Experiment 008, Apple M2 (MacBook Pro, 8 cores, 8 GB, macOS 26.6.2, Lean v4.27.0-rc1), source 3f797dc.
+Five runs of each probe, one fresh process per run, 106 turns per route.
+
+Heartbeats per turn, every run:
+  halving first  HALVING  identical across runs: True; turn 0 = 28; turns 1..105 all = {1}; total 133
+  halving first  CRANK    identical across runs: True; turn 0 = 18; turns 1..105 all = {1}; total 123
+  crank first    HALVING  identical across runs: True; turn 0 = 18; turns 1..105 all = {1}; total 123
+  crank first    CRANK    identical across runs: True; turn 0 = 28; turns 1..105 all = {1}; total 133
+  blank (the meter around nothing): {7} heartbeats in every run
+
+So: the route that runs first reads 28 on its first turn and the route that runs second reads 18, whichever route it is.
+Every other turn of both routes reads 1. By position the totals are 133 and 123; by route, at the same position, they are equal.
+
+Wall time per route, turns 1..105 (ns), median of five runs [min, max]:
+  halving first  HALVING    295876  [289959, 1548665]
+  halving first  CRANK      907289  [888795, 951708]
+  crank first    HALVING    287367  [277290, 308747]
+  crank first    CRANK      891377  [854246, 952589]
+  crank / halving: 3.07 (halving first), 3.10 (crank first)
+
+Wall time per turn (ns), median over runs, averaged over a range of turns:
+  halving first  HALVING  turns 1-7:    1601   8-35:    2376   36-70:    3031   71-105:    3088
+  halving first  CRANK    turns 1-7:    8899   8-35:    8857   36-70:    8464   71-105:    8488
+  crank first    HALVING  turns 1-7:    1423   8-35:    2253   36-70:    2968   71-105:    3058
+  crank first    CRANK    turns 1-7:    8964   8-35:    8348   36-70:    8174   71-105:    8040
+
+MEET: {('true', 'true')}
+
+Against the seal:
+ (a) identical across runs: yes. Independent of order: NO. Refuted as sealed: the first-turn count follows the position.
+ (b) both routes end on the build's bracket and point: confirmed.
+ (c) account A as sealed (first run, halving first): 133 against 123, 7.5 per cent apart: refuted as sealed.
+ (d3) account B as sealed: confirmed as sealed.
+     Both (c) and (d3) turn on the order effect alone. Route for route at the same position the totals are equal exactly,
+     and they are equal because the meter reads its floor, one heartbeat a turn, for both.
+ (d1) halving heartbeats flat: confirmed, trivially (all 1).
+ (d2) halving wall time per turn grows: see the profile above.

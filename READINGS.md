@@ -23,7 +23,7 @@ its files match the source commit.
 | 006 | `readings/006-frames` | frames as points: the M2 Ultra's performance and efficiency cores and the M2, on three workloads; the triangle's signed area; the convective term at thirty runs | `5a555d6` | read on the M2 Ultra (P and E); the M2 from 001, 002, 005 |
 | 007 | `readings/007-fenceposts` | the five-block fencepost: does relative time on the ladder break at the posts 6, 11, …, 31 (seven panels of five, one post over)? | `4e5bb93` | read on the M2 Ultra; superseded by 007b |
 | 007b | `readings/007b-fenceposts-both-ways` | the fencepost read both ways: do the posts beat the knot grid shifted backward as well as forward? | `a3ee8f2` | read on the M2 Ultra: refuted |
-| 008 | `readings/008-two-routes` | two routes to one number: the crank (the derivative) and the halving (the sign only), each turn on the meter; do their total costs agree? | the setup commit that adds the folder | sealed, not run |
+| 008 | `readings/008-two-routes` | two routes to one number: the crank (the derivative) and the halving (the sign only), each turn on the meter; do their total costs agree? | `3f797dc` | read on the M2: the heartbeat meter reads its floor for both routes; wall time separates them by 3.1 |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -415,7 +415,42 @@ within one per cent (conservation read strictly; the operational reading is prop
 before the run), or (d3) they differ by more. Also (d1) the halving's heartbeats per turn are flat, and (d2) its wall
 time per turn grows.
 
-**Status.** Sealed, not run. Each probe was executed once to check that it compiles, with its output discarded unread.
+**Result on the M2** (MacBook Pro, Apple M2, 8 cores, 8 GB, macOS 26.6.2, Lean v4.27.0-rc1; source `3f797dc`; raw
+output and analysis in `readings/008-two-routes/raw/M2/`). Five runs of each probe.
+
+| | Halving | Crank |
+|---|---|---|
+| Heartbeats, turn 0, when run first | 28 | 28 |
+| Heartbeats, turn 0, when run second | 18 | 18 |
+| Heartbeats, each of turns 1 to 105 | 1 | 1 |
+| Total heartbeats, run first / run second | 133 / 123 | 133 / 123 |
+| Wall time, turns 1 to 105, median (ms) | 0.29 | 0.90 |
+| Wall time per turn, early / late (µs) | 1.5 / 3.1 | 8.9 / 8.3 |
+
+The meter around nothing reads 7. Every count is identical in all ten runs.
+
+Against the seal:
+
+- (a) Identical across runs: confirmed. Independent of order: **refuted**. The first turn reads 28 for whichever route
+  runs first and 18 for whichever runs second.
+- (b) Both routes end on the build's own bracket and point: confirmed.
+- (c) Account A as sealed, 133 against 123, 7.5 per cent apart: **refuted as sealed**. (d3) Account B: confirmed as
+  sealed.
+- (d1) The halving's heartbeats are flat: confirmed, trivially. (d2) Its wall time per turn grows: confirmed, from about
+  1.5 to 3.1 microseconds.
+
+What the reading shows is narrower than either account. The difference of ten heartbeats belongs to the position in the
+process and not to the route: at the same position the two routes have exactly equal totals. And they are equal because
+the meter reads its floor, one heartbeat a turn, for both. On this workload the heartbeat count does not see the
+arithmetic of either route. So the reading neither supports nor refutes conservation of cost between the routes; it
+shows this meter cannot weigh them. The seal's choice of the first run of one probe as the comparison was a flaw in the
+seal, and the second probe is what exposed it.
+
+Wall time does separate the routes. The crank takes 3.1 times as long as the halving, in either order (3.07 and 3.10).
+The crank's time per turn is level across all 106 turns, including the turns after it has halted; the halving's grows
+as its numbers grow.
+
+**Status.** Read on the M2. Not read on the M2 Ultra.
 
 ## The study: hardware
 
