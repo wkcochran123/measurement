@@ -1,0 +1,8 @@
+probe_epsilon.lean
+probe_gauss.lean
+probe_coefficient.lean
+probe_reading.lean
+probe_memory.lean
+probe_description.lean
+probe_one_blank.lean
+probe_no_tape.lean

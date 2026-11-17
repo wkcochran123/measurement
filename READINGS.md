@@ -25,6 +25,7 @@ its files match the source commit.
 | 007b | `readings/007b-fenceposts-both-ways` | the fencepost read both ways: do the posts beat the knot grid shifted backward as well as forward? | `a3ee8f2` | read on the M2 Ultra: refuted |
 | 008 | `readings/008-two-routes` | two routes to one number: the crank (the derivative) and the halving (the sign only), each turn on the meter; do their total costs agree? | `3f797dc` | read on the M2: the heartbeat meter reads its floor for both routes; wall time separates them by 3.1 |
 | 008b | `readings/008b-boot-count` | the boot count: what the first turn of a third loop reads (13, 18 or 8), whether the one heartbeat a turn is the meter's own post, and whether a loop with no device boots the same | `16b2d0e` | read on the M2: the one heartbeat a turn is the meter's own post; the boot is Lean's, not the device's; the third loop reads 18 |
+| 010 | `readings/010-the-value-from-nanoseconds` | the value from the nanoseconds: each count of the polynomial replaced by a timed reading of its tape over one blank; does it read slightly high? | (this commit) | set up; not yet read |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
