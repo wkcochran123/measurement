@@ -598,6 +598,51 @@ separate those. One machine, one toolchain, four facts.
 
 **Status.** Read on the M2. Not read on the M2 Ultra.
 
+## Experiment 009c: the clock and the quarter
+
+**Setup:** `b3ff7c3` (`readings/009c-the-clock-and-the-quarter/`). **Source:** `2c5e844`. **Read:** Apple M2,
+17 November 2026, five runs per probe, one fresh process per run; `raw/M2/`. All ten probes compiled as sealed.
+
+**The clock.** Eight clicks in a row in one process, in heartbeats:
+
+| Probe | Ticks 0 to 7 |
+|---|---|
+| the device's truth, a false, turn about | 2,189, 1,339, 2,162, 1,142, 2,162, 1,142, 2,162, 1,142 |
+| the device's truth every time | 2,189, 2,162, 2,162, 2,162, 2,162, 2,162, 2,162, 2,162 |
+| a false every time | 1,364, 1,141, 1,141, 1,141, 1,141, 1,141, 1,141, 1,141 |
+| a true that is not the device's truth, a false, turn about | 1,365, 1,339, 1,141, 1,142, 1,141, 1,142, 1,141, 1,142 |
+
+**The quarter.** Three cards with one face; under card a the quarter stands on a false, under card b on the device's
+truth, under card c on a true that is not the device's truth. Second readings:
+
+| | card a | card b | card c |
+|---|---|---|---|
+| the card defined beforehand and read by its name | 2,080 | 2,080 | 2,080 |
+| the card written out in the term that is read | 8,593 | 9,589 | 8,581 |
+
+**Against the seal.**
+
+- **S1, confirmed.** Every probe's five runs are identical.
+- **S2, refuted by one heartbeat.** The alternating clock reads 2,162 on the truth as sealed, and 1,142 on the false,
+  where 1,141 was sealed. It alternates from the third tick on.
+- **S3, confirmed.** Still, the truth reads 2,162 every time and the false 1,141 every time, from the second tick.
+- **S4, refuted.** Sealed: every reading 1,141, no clock. Read: 1,141 and 1,142 turn about. A true that is not the
+  device's truth does keep time against a false, by one heartbeat.
+- **S5, CLAUDE holds; AUTHOR (as Claude rendered it) refuted.** Read by name, the three cards read alike, 2,080.
+- **S6, refuted as stated.** Written out, card b reads more than the others, but by 996 and 1,008, not by 1,021, and
+  cards a and c do not read alike: they are 12 apart.
+
+**What it says.** The meter keeps a clock that the logic does not. Against a false, the device's truth ticks 2,162
+and 1,142. Any change of term costs one heartbeat: the false reads 1,141 when it is repeated and 1,142 when it
+follows something else, and that one heartbeat is the whole of the clock between a plain true and a false. And the
+meter does not find the quarter under a card that is read by its name. It reads about a thousand more for the card
+with the device's truth under it only when what is under the card is written in the term that is read.
+
+**What it does not say.** Why the step is paid where the truth is named; why the written-out step is 996 or 1,008
+and not 1,021; or anything about another machine or toolchain.
+
+**Status.** Read on the M2. Not read on the M2 Ultra.
+
 ## The study: hardware
 
 One row per machine. The reference frame is the first row (D = 1). Add a row by

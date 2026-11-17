@@ -17,7 +17,7 @@ three cards the quarter is under.
 Observable: heartbeats of elaborating a term and reducing it to weak head normal form, read by `the_ekg_reads`
 (Episode 8). Baseline: the blank drawn in the same call.
 
-Source: `2c5e844`. Status: set up; not yet run.
+Source: `2c5e844`. Status: read on the M2 (`raw/M2/`); see READINGS, Experiment 009c. All probes compiled as sealed.
 
 ## The seal
 
