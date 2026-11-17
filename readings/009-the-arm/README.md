@@ -20,7 +20,7 @@ Observable: heartbeats of elaborating a term and reducing it to weak head normal
 What tells the readings apart: which arm, if any, reads apart from the others on its second reading.
 
 Source: `2c5e844` (Episodes 1 to 8 as committed; the probes import `Measurement.Episode08` and nothing later).
-Status: set up; not yet run.
+Status: read on the M2 (`raw/M2/`); see READINGS, Experiment 009. All probes compiled as sealed.
 
 ## The seal
 

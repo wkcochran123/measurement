@@ -447,6 +447,16 @@ arithmetic of either route. (008b shows the one is the meter's own post: each tu
 shows this meter cannot weigh them. The seal's choice of the first run of one probe as the comparison was a flaw in the
 seal, and the second probe is what exposed it.
 
+**Correction, 16 November 2026 (later).** "This meter cannot weigh them" is the wrong conclusion. A heartbeat is the
+count of small memory allocations in a thread (the Lean reference, `IO.getNumHeartbeats`); the toolchain only ever
+increments it, on an allocation, and never decrements it when memory is freed. It is a one-way count of marks written.
+The probes ran each route in place, overwriting its own state, so the routes wrote nothing and the meter read nothing.
+The reading shows that a computation that keeps no record costs nothing on this meter. It does not show that the meter
+cannot weigh the routes: the device weighs them by their ledgers, which the build writes and the kernel checks
+(`frechet_walk`). The ledgers are one length, 107 states each (`the_two_ledgers_are_one_length`); the halving writes a
+new state at every turn and the crank writes seven and then repeats (`the_halving_writes_a_new_state_every_turn`,
+`the_crank_writes_seven_and_then_repeats`).
+
 Wall time does separate the routes. The crank takes 3.1 times as long as the halving, in either order (3.07 and 3.10).
 The crank's time per turn is level across all 106 turns, including the turns after it has halted; the halving's grows
 as its numbers grow.
@@ -483,8 +493,9 @@ Against the seal:
 What the readings show:
 
 1. The one heartbeat a turn is the meter's own post. A warmed meter around nothing reads 1. So in 008 each turn of
-   either route cost no heartbeats at all: the meter does not see the routes. The author's "boot turn might have a
-   fencepost" is right in this respect.
+   either route cost no heartbeats at all. The author's "boot turn might have a fencepost" is right in this respect.
+   (Corrected, later the same day: not "the meter does not see the routes". The routes, run in place, wrote no marks,
+   and the meter counts marks written. See the correction under 008.)
 2. The boot is paid once for each new body of code, not once for each loop. The first loop in the process reads 28. A
    later loop reads 18 the first time its body is one not yet run (the crank after the halving, the empty loop after
    both) and 1 when its body has run before (the halving again; the second and third empty loops).
@@ -493,6 +504,57 @@ What the readings show:
 
 These offsets, a post of 1 and a boot of at most 28, are negligible against the thousands of heartbeats read in 001 to
 007, which measured elaboration and not compiled arithmetic. They are the whole of what 008 read.
+
+**Status.** Read on the M2. Not read on the M2 Ultra.
+
+## Experiment 009: the arm
+
+**Setup:** `c09cbe0` (`readings/009-the-arm/`). **Source:** `2c5e844`; the probes import Episode 8 and nothing
+later. **Read:** Apple M2, 17 November 2026, five runs per probe, one fresh process per run; `raw/M2/`.
+All fifteen probes compiled as sealed; no probe was repaired.
+
+**What was read.** The device's own meter, `the_ekg_reads`, on two of the device's own orders, arm by arm:
+`Number.le` on the four arms of two one-cell numbers whose facts are the true and the false, and
+`Abstraction.le` on the four pairs of compile and execute. Each read gives the heartbeats of the arm and the
+blank drawn with it.
+
+| Arm | First reading in a fresh process | Second reading | Blank (first, second) |
+|---|---|---|---|
+| `Number.le` T,T | 20,111 | 17,712 | 4,148, 3,735 |
+| `Number.le` T,F | 18,866 | 16,691 | 4,148, 3,735 |
+| `Number.le` F,T | 18,867 | 16,691 | 4,148, 3,735 |
+| `Number.le` F,F | 17,858 | 15,670 | 4,148, 3,735 |
+| `Abstraction.le` C,C | 14,679 | 13,058 | 4,148, 3,735 |
+| `Abstraction.le` C,E | 14,706 | 13,058 | 4,148, 3,735 |
+| `Abstraction.le` E,C | 14,704 | 13,058 | 4,148, 3,735 |
+| `Abstraction.le` E,E | 14,681 | 13,058 | 4,148, 3,735 |
+
+The meter around nothing read 7 in every process.
+
+**Against the seal.**
+
+- **S1, confirmed.** Every probe's five runs are identical.
+- **S2, all four rules refuted.** The second readings of `Number.le` are three values, not one, two or four:
+  F,F reads 15,670; T,F and F,T both read 16,691; T,T reads 17,712. The steps are equal: 1,021 and 1,021.
+  AUTHOR (as Claude rendered it) is refuted: T,F is not the least, and T,F and F,T read alike. CLAUDE is refuted:
+  T,T is the greatest, but the other three do not read alike. PAIRS is refuted: the two sames differ. NULL is
+  refuted. The arrangement found is none of the four and is reported as found.
+- **S3, refuted.** The first reading exceeds the second by 2,399 (T,T), 2,175 (T,F), 2,176 (F,T) and 2,188 (F,F):
+  not one amount. The order of the arms is the same on first readings as on second.
+- **S4, confirmed.** In all three order probes each arm's second-pass reading is its single-arm second reading.
+- **S5, CLAUDE refuted; NULL holds.** All four pairs of `Abstraction.le` read 13,058 on the second reading. Their
+  first readings in a fresh process differ by at most 27.
+- **S6, confirmed.** No arm reads the blank.
+
+**What it says.** On this meter the reading of an arm of `Number.le` is 15,670 and 1,021 for each coin that is the
+true: none, one, two. The two arms with one true coin, which the order itself sends to opposite verdicts, are not
+told apart. So the meter separates three things by two equal steps, and it does so by the coins, not by the arm.
+`Abstraction.le` is not told apart at all once the process is warm.
+
+**What it does not say.** The true and the false are different terms here (`FACT.Truth` of Episode 1, and a false
+fact defined in the probe), so the step of 1,021 may be the cost of the true as a term and not of anything the order
+does with it; the experiment cannot separate the two. It does not say which arm is a, b or c of the author's
+formula: no single arm is set apart. One machine, one toolchain.
 
 **Status.** Read on the M2. Not read on the M2 Ultra.
 
