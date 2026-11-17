@@ -699,6 +699,27 @@ longer, in the median, than one blank, and the spread of a single probe is sever
 probes. Rule D, the heartbeats net of no tape, is the nearest to the counts on the long tapes (16.7, 14.5, 16.7
 against 18, 13, 18) and the farthest on the short ones.
 
+**After the run, the author's.** "see, you can distinguish a number. qed", and, of the prediction: "'slightly high'
+is the fact that the actual time cannot be measured, only bounded from below." Both were said after the readings were
+in, and neither is the sealed prediction, which was about the value and was taken wrongly; they are *declared*. What
+the readings show of the second: in ten runs of each tape, the readings other than the least lay above it, on one
+side.
+
+| Tape | Least, ns | Median over least | Greatest over least |
+|---|---|---|---|
+| no tape | 2,202,250 | 1.28 | 3.2 |
+| one blank | 2,230,000 | 1.10 | 4.8 |
+| the basis' reading | 2,385,667 | 1.17 | 2.5 |
+| Gauss's | 2,669,000 | 2.10 | 6.9 |
+| the coefficient tape | 4,899,750 | 1.03 | 5.1 |
+| the memory tape | 5,094,917 | 1.05 | 4.8 |
+| the epsilon tape | 5,201,708 | 1.06 | 7.6 |
+| the description | 37,892,500 | 1.06 | 1.25 |
+
+With the least of each tape in place of the median, rule A still gives no value (*computed*; recorded, not sealed).
+The demonstration is now also in line: `Episode13.lean` reads the five tapes and one blank at every elaboration and
+prints the value on the count, on the heartbeats and on the clock.
+
 **Standing.** The heartbeats and nanoseconds are *measured*, on one machine. The values are *computed* by the sealed
 rules. That the experiment the author meant is the one run here is Claude's reading, and the author may correct it:
 the unit, the workload that reads a tape, and which counts are replaced were all chosen in the setup. A different
