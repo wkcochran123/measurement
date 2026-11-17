@@ -558,6 +558,46 @@ formula: no single arm is set apart. One machine, one toolchain.
 
 **Status.** Read on the M2. Not read on the M2 Ultra.
 
+## Experiment 009b: true from false
+
+**Setup:** `d9e0ab3` (`readings/009b-true-from-false/`). **Source:** `2c5e844`. **Read:** Apple M2, 17 November
+2026, five runs per probe, one fresh process per run; `raw/M2/`. All twenty probes compiled as sealed.
+
+**What was read.** Four facts, a true and a false built each of two ways. T0 is the device's own truth, `FACT.Truth`
+of Episode 1, whose statement is the boolean true. F1 is a false built the same way. F0 is the false of 009, whose
+statement is `False`. T1 is a true built the same way, whose statement is `True`. The meter read the click of each
+alone, and `Number.le` on each of the sixteen ordered pairs.
+
+Second readings, in heartbeats. The click alone: T0 2,162; T1 1,141; F0 1,141; F1 1,141. The sixteen arms:
+
+| first \ second | T0 | T1 | F0 | F1 |
+|---|---|---|---|---|
+| **T0** | 17,712 | 16,691 | 16,691 | 16,691 |
+| **T1** | 16,691 | 15,670 | 15,670 | 15,670 |
+| **F0** | 16,691 | 15,670 | 15,670 | 15,670 |
+| **F1** | 16,691 | 15,670 | 15,670 | 15,670 |
+
+**Against the seal.**
+
+- **S1, confirmed.** Every probe's five runs are identical.
+- **S2, confirmed.** The four arms of 009 read as they did: 17,712, 16,691, 16,691, 15,670.
+- **S3 (additive), confirmed.** Every arm reads 15,670 plus one number for each of its two facts. The number is 1,021
+  for T0 and nothing for T1, F0 and F1.
+- **S4, both rules refuted.** AUTHOR: a true's number is not greater than a false's, since T1 reads as the falses do.
+  CLAUDE: the facts with a boolean statement do not read more, since F1 reads as F0 does. Found: one fact of the
+  four carries the step, the device's own truth.
+- **S5, both rules refuted,** the same way: the click of T0 reads 2,162 and the other three read 1,141.
+
+**What it says.** The step of 1,021 in 009 belongs neither to truth nor to the way the statement is written. It
+belongs to `FACT.Truth`. A fact that is true and is not the device's truth reads as a false reads. So the meter does
+not tell true from false; it tells the device's one truth from every other fact, true or false.
+
+**What it does not say.** Why. `FACT.Truth` differs from the other three in being defined in Episode 1 and named
+through its namespace, where the others are defined in the probe and named plainly; the experiment does not
+separate those. One machine, one toolchain, four facts.
+
+**Status.** Read on the M2. Not read on the M2 Ultra.
+
 ## The study: hardware
 
 One row per machine. The reference frame is the first row (D = 1). Add a row by

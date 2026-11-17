@@ -15,7 +15,7 @@ Observable: heartbeats of elaborating a term and reducing it to weak head normal
 (Episode 8). Baseline: the blank drawn in the same call.
 What tells the readings apart: whether the numbers order by truth or by how the fact was built.
 
-Source: `2c5e844`. Status: set up; not yet run.
+Source: `2c5e844`. Status: read on the M2 (`raw/M2/`); see READINGS, Experiment 009b. All probes compiled as sealed.
 
 ## The seal
 
