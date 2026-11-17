@@ -15,7 +15,7 @@ polynomial directly with each count replaced by a measured ratio to one blank.
 Observable: nanoseconds and heartbeats of elaborating a term and reducing it to weak head normal form, by the two lines
 of `the_ekg_reads` (Episode 8), on the term alone.
 
-Source: `10a1184`. Status: set up; not yet read.
+Source: `10a1184`. Status: read on the M2 (`raw/M2/`); see READINGS, Experiment 010. All probes compiled as sealed.
 
 ## The seal
 

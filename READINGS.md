@@ -25,7 +25,10 @@ its files match the source commit.
 | 007b | `readings/007b-fenceposts-both-ways` | the fencepost read both ways: do the posts beat the knot grid shifted backward as well as forward? | `a3ee8f2` | read on the M2 Ultra: refuted |
 | 008 | `readings/008-two-routes` | two routes to one number: the crank (the derivative) and the halving (the sign only), each turn on the meter; do their total costs agree? | `3f797dc` | read on the M2: the heartbeat meter reads its floor for both routes; wall time separates them by 3.1 |
 | 008b | `readings/008b-boot-count` | the boot count: what the first turn of a third loop reads (13, 18 or 8), whether the one heartbeat a turn is the meter's own post, and whether a loop with no device boots the same | `16b2d0e` | read on the M2: the one heartbeat a turn is the meter's own post; the boot is Lean's, not the device's; the third loop reads 18 |
-| 010 | `readings/010-the-value-from-nanoseconds` | the value from the nanoseconds: each count of the polynomial replaced by a timed reading of its tape over one blank; does it read slightly high? | (this commit) | set up; not yet read |
+| 009 | `readings/009-the-arm` | the arm: what the meter reads for the device's first order on each of the four arms | `c09cbe0` | read on the M2 |
+| 009b | `readings/009b-true-from-false` | true from false: whether the meter's step belongs to a true or to the device's own truth | `d9e0ab3` | read on the M2 |
+| 009c | `readings/009c-the-clock-and-the-quarter` | the clock and the quarter: eight clicks in a row, and three cards with one face | `b3ff7c3` | read on the M2 |
+| 010 | `readings/010-the-value-from-nanoseconds` | the value from the nanoseconds: each count of the polynomial replaced by a timed reading of its tape over one blank; does it read slightly high? | `89b1909` | read on the M2: no real value; the author's prediction refuted as taken |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -643,6 +646,63 @@ with the device's truth under it only when what is under the card is written in 
 and not 1,021; or anything about another machine or toolchain.
 
 **Status.** Read on the M2. Not read on the M2 Ultra.
+
+## Experiment 010: the value from the nanoseconds
+
+**Setup:** `89b1909` (`readings/010-the-value-from-nanoseconds/`). **Source:** `10a1184`. **Read:** Apple M2,
+17 November 2026, ten interleaved runs, one fresh process per reading; `raw/M2/readings.out`. All eight probes compiled
+as sealed.
+
+**The author's statement:** "the experiment is to use the nanoseconds to compute the value using the polynomial
+directly. that should read _slightly_ high." Taken, with "the length is one blank", as: replace each count the
+polynomial uses by the time to read its tape over the time to read one blank.
+
+**Read.** Each tape with every cell clicked once, on the EKG's two lines:
+
+| Tape | Cells | Heartbeats (all ten runs) | Nanoseconds, median (least to greatest) |
+|---|---|---|---|
+| no tape | 0 | 18,711 | 2,814,020 (2,202,250 to 7,077,250) |
+| one blank | 1 | 23,215 | 2,447,375 (2,230,000 to 10,711,666) |
+| the basis' reading | 2 | 22,442 | 2,793,188 (2,385,667 to 6,033,791) |
+| Gauss's | 5 | 29,636 | 5,604,396 (2,669,000 to 18,284,375) |
+| the coefficient tape | 13 | 84,018 | 5,050,750 (4,899,750 to 24,981,125) |
+| the memory tape | 18 | 93,908 | 5,358,875 (5,094,917 to 24,326,625) |
+| the epsilon tape | 18 | 93,949 | 5,519,104 (5,201,708 to 39,732,375) |
+| the description | 106 | 1,085,049 | 40,203,021 (37,892,500 to 47,293,166) |
+
+**The value, by each rule** (with the counts the formula gives 137.011291, discriminant 360):
+
+| Rule | e, g, a, b, m | Discriminant | Value |
+|---|---|---|---|
+| A, nanoseconds over one blank | 2.255, 2.290, 2.064, 1.141, 2.190 | −11.8 | none |
+| B, heartbeats over one blank | 4.047, 1.277, 3.619, 0.967, 4.045 | −43.3 | none |
+| C, nanoseconds net of no tape (recorded) | −7.38, −7.61, −6.10, 0.06, −6.94 | −169 | none |
+| D, heartbeats net of no tape (recorded) | 16.70, 2.43, 14.50, 0.83, 16.70 | −777 | none |
+
+Rule A run by run: a value in two runs of ten (129.922 and 9.578), none in the other eight.
+
+**Against the seal.**
+
+- S1, heartbeats identical across runs: **confirmed**, all eight probes.
+- S2, rule A. AUTHOR (slightly high, within one part in a hundred above): **refuted, as taken**. CLAUDE (no value, or
+  more than one part in a hundred away): **confirmed**; the discriminant is negative.
+- S3, rule B: **confirmed**; the discriminant is negative.
+- S4, the heartbeats are not in the ratio of the cells: **confirmed**.
+
+**What it says.** A clock in the reader's seat does not return the counts, and the polynomial is not forgiving of
+that: it has a real root only while the readings stay within about fifteen parts in a hundred of the counts together.
+Three things keep the readings away. The one blank is dear: one cell of the device's truth costs 4,504 heartbeats
+over no tape, and two cells of the basis' reading cost less than that one. The cost per cell is not one number: over
+no tape it is about 1,870 a cell for the basis' reading, 2,190 for Gauss's, 5,020 for the coefficient tape, 4,180 for
+the memory tape and 10,060 for the description. And at these sizes the clock is not reading the tape: no tape took
+longer, in the median, than one blank, and the spread of a single probe is several times the difference between
+probes. Rule D, the heartbeats net of no tape, is the nearest to the counts on the long tapes (16.7, 14.5, 16.7
+against 18, 13, 18) and the farthest on the short ones.
+
+**Standing.** The heartbeats and nanoseconds are *measured*, on one machine. The values are *computed* by the sealed
+rules. That the experiment the author meant is the one run here is Claude's reading, and the author may correct it:
+the unit, the workload that reads a tape, and which counts are replaced were all chosen in the setup. A different
+choice of any of them is a different experiment and needs its own seal.
 
 ## The study: hardware
 
