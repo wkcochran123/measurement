@@ -1,0 +1,10 @@
+probe_clock_alternating.lean
+probe_clock_still_true.lean
+probe_clock_still_false.lean
+probe_clock_plain.lean
+probe_card_defined_a.lean
+probe_card_defined_b.lean
+probe_card_defined_c.lean
+probe_card_named_a.lean
+probe_card_named_b.lean
+probe_card_named_c.lean
