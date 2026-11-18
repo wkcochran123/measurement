@@ -6951,6 +6951,67 @@ theorem a_difference_summed_is_the_end_less_the_first (reading : Nat → Int) :
     simp only [summed_along, a_difference_summed_is_the_end_less_the_first reading steps, the_difference_along]; omega
 end three_bridges_on_the_row_of_steps
 
+
+section four_gawks_and_three_closures
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+  rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
+
+--| FOUR GAWKS AND THREE CLOSURES.  The author's, 18 November 2026: starting from the zero that is the same-difference
+--| quantum, the knower's interpretation of the reader's interpretation of the experience, call the Atreyu process's gawk
+--| four times; that makes three closures (declared).  Here it is, on the processes written out from the bottom.
+
+--| The quantum: a zero on the same difference.
+def the_same_difference_quantum : Bullshit.{0,0,0,0} := .zero SAME_DIFFERENCE
+
+--| Gawked at once, twice, three times and four.
+noncomputable def gawked_at_once : Bullshit.{0,0,0,0} := the_atreyu_process.gawk_at the_same_difference_quantum
+noncomputable def gawked_at_twice : Bullshit.{0,0,0,0} := the_atreyu_process.gawk_at gawked_at_once
+noncomputable def gawked_at_three_times : Bullshit.{0,0,0,0} := the_atreyu_process.gawk_at gawked_at_twice
+noncomputable def gawked_at_four_times : Bullshit.{0,0,0,0} := the_atreyu_process.gawk_at gawked_at_three_times
+
+--| Once, it is the first page: a one.
+theorem gawked_at_once_it_is_the_first_page :
+    ∃ (fact : FACT) (page : Number) (proof book : ThePreprint) (constant : Bullshit),
+      gawked_at_once = .one fact page proof book constant := ⟨_, _, _, _, _, rfl⟩
+
+--| Twice, three times, four: each is the rest of the call.
+theorem gawked_at_again_it_is_the_rest_of_the_call :
+    (∃ f g p a b c s t x y, gawked_at_twice = Bullshit.rest_call f g p a b c s t x y)
+      ∧ (∃ f g p a b c s t x y, gawked_at_three_times = Bullshit.rest_call f g p a b c s t x y)
+      ∧ (∃ f g p a b c s t x y, gawked_at_four_times = Bullshit.rest_call f g p a b c s t x y) :=
+  ⟨⟨_, _, _, _, _, _, _, _, _, _, rfl⟩, ⟨_, _, _, _, _, _, _, _, _, _, rfl⟩, ⟨_, _, _, _, _, _, _, _, _, _, rfl⟩⟩
+
+--| Four gawks, and three places between them.  At each the equivalence process is asked whether it believes the one
+--| against the next: three closures.
+noncomputable def the_first_closure : Closure := the_equivalence_process.do_you_believe_it? gawked_at_once gawked_at_twice
+noncomputable def the_second_closure : Closure :=
+  the_equivalence_process.do_you_believe_it? gawked_at_twice gawked_at_three_times
+noncomputable def the_third_closure : Closure :=
+  the_equivalence_process.do_you_believe_it? gawked_at_three_times gawked_at_four_times
+
+--| Each is a difference, with the proposition that the one is under the next.
+theorem the_three_closures_are_differences :
+    (∃ fact, the_first_closure = .different fact gawked_at_once gawked_at_twice (some (gawked_at_once < gawked_at_twice)))
+      ∧ (∃ fact, the_second_closure
+          = .different fact gawked_at_twice gawked_at_three_times (some (gawked_at_twice < gawked_at_three_times)))
+      ∧ (∃ fact, the_third_closure
+          = .different fact gawked_at_three_times gawked_at_four_times
+              (some (gawked_at_three_times < gawked_at_four_times))) :=
+  ⟨⟨_, rfl⟩, ⟨_, rfl⟩, ⟨_, rfl⟩⟩
+
+--| And each reads as one cell: three closures, three cells.
+theorem three_closures_three_cells :
+    the_first_closure.infer.length + the_second_closure.infer.length + the_third_closure.infer.length = 3 := rfl
+--| What each holds, read all the way down: the quantum one fact, the first gawk twenty-two, and then thirty-nine,
+--| thirty-eight, thirty-nine.  After the second gawk it goes down one and up one.
+set_option maxRecDepth 100000 in
+theorem what_the_four_gawks_hold :
+    [the_same_difference_quantum, gawked_at_once, gawked_at_twice, gawked_at_three_times, gawked_at_four_times].map
+        (fun gawk => gawk.all_the_way_down.length)
+      = [1, 22, 39, 38, 39] := by decide
+end four_gawks_and_three_closures
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.

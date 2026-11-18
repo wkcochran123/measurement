@@ -1174,6 +1174,45 @@ names the number.
   for each number 1 to 36, where it is used as a count and where as a
   page. Update it whenever a receipt or a declaration uses a new one, and
   do not count a number as used because a page of that number exists.
+- One number, one page (the author, 18 November 2026, declared): it is
+  expected that Episode 10's four fencepost pages and Part VI's four bent
+  cards are on different pages; "this is the minimal argument, so each is
+  used exactly once for each one number one page. those are the two
+  encodings for each number ... the readers experience and interpretation
+  that can then be combined and carried into the knowers interpretation of
+  the readers interpretation of the experience. that should be the QED in
+  the cards." The running account (`claude/thirty-six-numbers.md`) keeps
+  the two columns, count and page. Which column is the experience and
+  which the interpretation the author has not said; do not assign them.
+  Nothing shows yet that each number is used exactly once.
+- The proposed marks, placed (18 November 2026). Of 67 plain marks in the
+  volume's sources, 52 are now filed: under the fourth, 36; under the
+  first, 3; the second, 1; the third, 2; "between the first and the
+  fourth", 5 (the field-map identity); "between the four", 5 (which model
+  is of which kind). The 15 left plain are the calibration being defined
+  or spoken of. The Preface says so, and says a mark "between" joins two
+  proposals and is not a fifth. The filing is Claude's, at the author's
+  "go"; a filed mark is filing, not proof, as before.
+- The Lovelock bridges as two readings (Card 3, "The bridges, as two
+  readings"). Card 3 now reads each of the three row-of-steps receipts as
+  one statement read two ways: by parts (the difference on one reading or
+  against the other), the shift and the turn (itself or owed), the end and
+  the first. That these are the covariant and contravariant readings the
+  author means is Card 3's reading, for the author to correct.
+- Four gawks and three closures (`Episode13.lean`, section
+  `four_gawks_and_three_closures`). The author's (declared): starting from
+  `Bullshit.zero`, the same-difference quantum, the knower's interpretation
+  of the reader's interpretation of the experience, call the Atreyu
+  process's `gawk_at` four times; that makes three closures. Receipts, on
+  the processes Episode 13 wrote out from the bottom: the zero on
+  `SAME_DIFFERENCE` gawked at once is a `one` (the first page); twice,
+  three times and four is each a `rest_call`; the equivalence process's
+  `do_you_believe_it?` between consecutive gawks gives three closures, each
+  a `different` holding the proposition that the one is under the next,
+  each one cell; read all the way down the five hold 1, 22, 39, 38, 39
+  facts (`what_the_four_gawks_hold`). Not shown: that any of the three
+  propositions holds; the closure stores it and does not decide it. Why
+  the count goes 39, 38, 39 is not explained; do not offer a reason.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
