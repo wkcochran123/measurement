@@ -5380,6 +5380,501 @@ end the_ladder_of_twos
 --#print axioms sixteen_of_the_phrases_say_something_false
 --#print axioms eight_cannot_click_and_the_eight_between_are_false_on_true
 
+--| THE PLAN, CARRIED OUT.  The author's, 18 November 2026: proceed with full implementation.  What follows is the finite
+--| part: the device's residual, table, action and step on its own inductives, each with the reading that recovers it.
+section the_variation_of_the_residual
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area the_area.Account
+attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+  rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
+
+--| THE VARIATION OF THE RESIDUAL.  Episode 4's `Variation` has three constructors, named for Newton, for Gateaux and for
+--| Frechet, holding one, two and three statements.  Its own order sets a Newton's statement against the second statement
+--| of the other two, so the second seat is the first variation; the first is the place, and the third the second
+--| variation.  Three statements about the device's residual, each a receipt already or here.
+
+--| The place: the residual steps by its slope and the coefficient by the step squared, at every place and for every step.
+def the_first_variation_of_the_residual : Prop :=
+  ∀ y h : Account, the_same (the_residual_on_the_account (y + h) - the_residual_on_the_account y)
+    (the_slope_on_the_account y * h + holding the_coefficient * (h * h))
+--| Here: the slope steps by twice the coefficient by the step.
+def the_slope_of_the_residual_steps : Prop :=
+  ∀ y h : Account, the_same (the_slope_on_the_account (y + h) - the_slope_on_the_account y) (holding twice_the_coefficient * h)
+--| The second variation: the step by one, taken after a step by another and taken before it, differ by twice the
+--| coefficient by the two steps.
+def the_second_variation_of_the_residual : Prop :=
+  ∀ y h k : Account,
+    the_same ((the_residual_on_the_account (y + k + h) - the_residual_on_the_account (y + k))
+                - (the_residual_on_the_account (y + h) - the_residual_on_the_account y))
+             (holding twice_the_coefficient * k * h)
+
+theorem the_first_variation_of_the_residual_holds : the_first_variation_of_the_residual :=
+  the_residual_steps_by_its_slope_exactly
+theorem the_slope_of_the_residual_steps_holds : the_slope_of_the_residual_steps :=
+  the_slope_steps_by_twice_the_coefficient_exactly
+theorem the_second_variation_of_the_residual_holds : the_second_variation_of_the_residual := by
+  intro y h k
+  have e1 := (the_same_is_the_same_balance _ _).1 (the_residual_steps_by_its_slope_exactly (y + k) h)
+  have e2 := (the_same_is_the_same_balance _ _).1 (the_residual_steps_by_its_slope_exactly y h)
+  have e3 := (the_same_is_the_same_balance _ _).1 (the_slope_steps_by_twice_the_coefficient_exactly y k)
+  rw [the_same_is_the_same_balance]
+  simp only [balance_of_beside, balance_of_less, balance_of_each_for_each] at e1 e2 e3 ⊢
+  have e4 := congrArg (fun z => z * balance h) e3
+  simp only [Int.sub_mul] at e4
+  omega
+
+--| The three, in the three constructors, on one gospel.
+def the_gospel_of_the_residual : Gospel := .the_proof the_first_variation_of_the_residual
+def the_newton_of_the_residual : Variation :=
+  .the_newton the_gospel_of_the_residual the_first_variation_of_the_residual
+def the_gateaux_of_the_residual : Variation :=
+  .the_gateaux the_gospel_of_the_residual the_slope_of_the_residual_steps the_first_variation_of_the_residual
+    the_newton_of_the_residual
+def the_frechet_of_the_residual : Variation :=
+  .the_frechet the_gospel_of_the_residual the_slope_of_the_residual_steps the_first_variation_of_the_residual
+    the_second_variation_of_the_residual the_gateaux_of_the_residual the_newton_of_the_residual
+
+--| Every statement held is true.
+theorem every_statement_the_three_hold_is_true :
+    the_first_variation_of_the_residual ∧ the_slope_of_the_residual_steps ∧ the_second_variation_of_the_residual :=
+  ⟨the_first_variation_of_the_residual_holds, the_slope_of_the_residual_steps_holds,
+   the_second_variation_of_the_residual_holds⟩
+
+--| Episode 8's two readers read the shape and not the statements: one, two and three by Newton's; one, two and four by
+--| Krylov's, who follows both branches.
+theorem the_two_readers_read_the_shape :
+    (the_newton_of_the_residual.newton.length, the_gateaux_of_the_residual.newton.length,
+        the_frechet_of_the_residual.newton.length) = (1, 2, 3)
+      ∧ (the_newton_of_the_residual.krylov.length, the_gateaux_of_the_residual.krylov.length,
+        the_frechet_of_the_residual.krylov.length) = (1, 2, 4) := ⟨rfl, rfl⟩
+
+--| THE PROCESS KEEPS THE STEP.  The process that steps a variation is the big red dog's.  Handed the Newton of the residual
+--| it gives a Gateaux on the same gospel whose second statement is still the residual's first variation; handed that, a
+--| Frechet whose second statement is still it.  What the readers forget, the process keeps.
+theorem the_process_keeps_the_first_variation :
+    (∃ (place : Prop), the_big_red_dog_process.transmute the_newton_of_the_residual
+        = .the_gateaux the_gospel_of_the_residual place the_first_variation_of_the_residual the_big_red_dog_process.Du)
+      ∧ the_big_red_dog_process.transmute the_gateaux_of_the_residual
+        = .the_frechet the_gospel_of_the_residual the_slope_of_the_residual_steps the_first_variation_of_the_residual
+            (the_slope_of_the_residual_steps ∧ ¬ the_first_variation_of_the_residual) the_newton_of_the_residual
+            the_big_red_dog_process.Du :=
+  ⟨⟨_, rfl⟩, rfl⟩
+
+--| And the third statement the process writes for itself, the first and not the second, is false: it is a truth read as a
+--| falsehood, since the second is true.
+theorem what_the_process_writes_third_is_false :
+    ¬ (the_slope_of_the_residual_steps ∧ ¬ the_first_variation_of_the_residual) :=
+  fun both => both.2 the_first_variation_of_the_residual_holds
+--| IN THE ORDER.  Episode 4's order puts a Newton under a Gateaux or a Frechet exactly when they are on one gospel and the
+--| Newton's statement is their second.
+theorem a_newton_is_under_a_gateaux_exactly_when_its_statement_is_second (model statement place seat : Prop)
+    (tail : Variation) :
+    Variation.le (.the_newton (.the_proof model) statement) (.the_gateaux (.the_proof model) place seat tail)
+      ↔ statement = seat := by
+  simp only [Variation.le, Gospel.le, true_and]
+theorem a_newton_is_under_a_frechet_exactly_when_its_statement_is_second (model statement place seat third : Prop)
+    (this that : Variation) :
+    Variation.le (.the_newton (.the_proof model) statement) (.the_frechet (.the_proof model) place seat third this that)
+      ↔ statement = seat := by
+  simp only [Variation.le, Gospel.le, true_and]
+
+theorem the_newton_is_under_the_other_two :
+    Variation.le the_newton_of_the_residual the_gateaux_of_the_residual
+      ∧ Variation.le the_newton_of_the_residual the_frechet_of_the_residual :=
+  ⟨(a_newton_is_under_a_gateaux_exactly_when_its_statement_is_second _ _ _ _ _).2 rfl,
+   (a_newton_is_under_a_frechet_exactly_when_its_statement_is_second _ _ _ _ _ _ _).2 rfl⟩
+
+--| TURNED AGAIN.  What three turns of the process make of the Newton of the residual.
+theorem three_turns_of_the_process :
+    ∃ (place : Prop),
+      the_big_red_dog_process.transmute the_newton_of_the_residual
+          = .the_gateaux the_gospel_of_the_residual place the_first_variation_of_the_residual the_big_red_dog_process.Du
+        ∧ the_big_red_dog_process.transmute (the_big_red_dog_process.transmute the_newton_of_the_residual)
+          = .the_frechet the_gospel_of_the_residual place the_first_variation_of_the_residual
+              (place ∧ ¬ the_first_variation_of_the_residual) the_big_red_dog_process.Du the_big_red_dog_process.Du
+        ∧ the_big_red_dog_process.transmute (the_big_red_dog_process.transmute
+            (the_big_red_dog_process.transmute the_newton_of_the_residual))
+          = .the_gateaux the_gospel_of_the_residual (place ∧ place)
+              (the_first_variation_of_the_residual = (place ∧ ¬ the_first_variation_of_the_residual))
+              the_big_red_dog_process.Du :=
+  ⟨_, rfl, rfl, rfl⟩
+
+--| Two turns keep the first variation in the seat the order reads.
+theorem two_turns_of_the_process_keep_the_first_variation :
+    Variation.le the_newton_of_the_residual (the_big_red_dog_process.transmute the_newton_of_the_residual)
+      ∧ Variation.le the_newton_of_the_residual
+          (the_big_red_dog_process.transmute (the_big_red_dog_process.transmute the_newton_of_the_residual)) := by
+  obtain ⟨place, one, two, _⟩ := three_turns_of_the_process
+  rw [two, one]
+  exact ⟨(a_newton_is_under_a_gateaux_exactly_when_its_statement_is_second _ _ _ _ _).2 rfl,
+         (a_newton_is_under_a_frechet_exactly_when_its_statement_is_second _ _ _ _ _ _ _).2 rfl⟩
+
+--| The third turn does not.  The process writes into that seat that the first variation is the same statement as the
+--| place and not the first variation; and that is false.  Three turns, and the slip is on the third.
+theorem the_third_turn_of_the_process_does_not_keep_it :
+    ¬ Variation.le the_newton_of_the_residual
+        (the_big_red_dog_process.transmute (the_big_red_dog_process.transmute
+          (the_big_red_dog_process.transmute the_newton_of_the_residual))) := by
+  obtain ⟨place, _, _, three⟩ := three_turns_of_the_process
+  rw [three]
+  intro under
+  have the_seat := (a_newton_is_under_a_gateaux_exactly_when_its_statement_is_second _ _ _ _ _).1 under
+  have it_holds := the_first_variation_of_the_residual_holds
+  have the_same_statement := Eq.mp the_seat it_holds
+  exact (Eq.mp the_same_statement it_holds).2 it_holds
+end the_variation_of_the_residual
+section the_two_directions_of_the_table
+open readers_experience
+
+--| THE TWO DIRECTIONS.  A direction is five on the first coin and a whole number on the second.  The table takes it to
+--| eighteen and that number of itself, exactly on the first coin, and on the second short by ninety less the number
+--| squared.  Ninety is the round trip.  No whole number squares to ninety, so no whole direction is carried exactly; the
+--| defect is stated, not hidden.
+def the_direction (s : Int) : Bool → Int := fun coin => if coin then 5 else s
+
+theorem the_table_carries_a_direction_but_for_the_round_trip (s : Int) :
+    the_refine the_full_table (the_direction s) true = (18 + s) * the_direction s true
+      ∧ the_refine the_full_table (the_direction s) false = (18 + s) * the_direction s false + (90 - s * s) := by
+  constructor
+  · show (18 : Int) * 5 + 5 * s = (18 + s) * 5; omega
+  · show (18 : Int) * 5 + 18 * s = (18 + s) * s + (90 - s * s); rw [Int.add_mul]; omega
+
+--| The pairing of the two coins, eighteen and five.  A direction against itself is four hundred and fifty and five of its
+--| square; against the direction turned over, five of the same defect.
+def the_pairing (u v : Bool → Int) : Int := 18 * (u true * v true) + 5 * (u false * v false)
+
+theorem the_two_directions_are_square_but_for_the_round_trip (s : Int) :
+    the_pairing (the_direction s) (the_direction s) = 450 + 5 * (s * s)
+      ∧ the_pairing (the_direction s) (the_direction (-s)) = 5 * (90 - s * s) := by
+  constructor
+  · show (18 : Int) * (5 * 5) + 5 * (s * s) = 450 + 5 * (s * s); omega
+  · show (18 : Int) * (5 * 5) + 5 * (s * -s) = 5 * (90 - s * s); rw [Int.mul_neg]; omega
+
+--| The same directions carry the table taken from the same, with the same defect by the second number.
+theorem the_table_taken_from_the_same_carries_a_direction (N D s : Int) :
+    the_refine (the_table_taken_from_the_same N D) (the_direction s) true = (13 * N - D * (18 + s)) * the_direction s true
+      ∧ the_refine (the_table_taken_from_the_same N D) (the_direction s) false
+          = (13 * N - D * (18 + s)) * the_direction s false - D * (90 - s * s) := by
+  obtain ⟨h1, h2, h3, h4⟩ := what_the_table_taken_from_the_same_holds N D
+  constructor
+  · show the_table_taken_from_the_same N D true true * 5 + the_table_taken_from_the_same N D true false * s
+        = (13 * N - D * (18 + s)) * 5
+    have e1 : -(5 * D) * s = -(5 * (D * s)) := by rw [Int.neg_mul, Int.mul_assoc]
+    have e2 : D * (18 + s) = 18 * D + D * s := by rw [Int.mul_add, Int.mul_comm D 18]
+    rw [h1, h3, e1, e2]; omega
+  · show the_table_taken_from_the_same N D false true * 5 + the_table_taken_from_the_same N D false false * s
+        = (13 * N - D * (18 + s)) * s - D * (90 - s * s)
+    rw [h4, h2, Int.sub_mul, Int.sub_mul, Int.mul_add, Int.mul_sub, Int.add_mul, Int.mul_assoc 18 D s,
+      Int.mul_assoc 13 N s, Int.mul_assoc D s s]
+    have e : D * 18 * s = 18 * (D * s) := by rw [Int.mul_comm D 18, Int.mul_assoc]
+    rw [e]; omega
+end the_two_directions_of_the_table
+
+section the_multiplier
+open readers_experience
+
+--| THE MULTIPLIER.  The action of the weighed table taken from the same is, in the place, a multiple of the weighed square
+--| of what it acts on.  Step the place and the action steps by thirteen of the step by that square, and by nothing else.
+--| So the place is the multiplier of the condition that the weighed square is held.
+def the_weighed_square (v : Bool → Int) : Int := 18 * (v true * v true) + 5 * (v false * v false)
+
+theorem the_action_of_two_tables_is_the_two_actions (this that : Table) (v : Bool → Int) :
+    the_action_of (fun a b => this a b + that a b) v = the_action_of this v + the_action_of that v := by
+  simp only [the_action_of, the_refine, Int.add_mul, Int.mul_add]; omega
+
+def the_weighed_same (number : Int) : Table := fun a b => if a = b then (if a then 18 * number else 5 * number) else 0
+
+theorem the_action_of_the_weighed_same_is_the_weighed_square (number : Int) (v : Bool → Int) :
+    the_action_of (the_weighed_same number) v = number * the_weighed_square v := by
+  show v true * (18 * number * v true + 0 * v false) + v false * (0 * v true + 5 * number * v false)
+      = number * (18 * (v true * v true) + 5 * (v false * v false))
+  rw [Int.zero_mul, Int.zero_mul, Int.add_zero, Int.zero_add, Int.mul_add]
+  have e1 : v true * (18 * number * v true) = number * (18 * (v true * v true)) := by ac_nf
+  have e2 : v false * (5 * number * v false) = number * (5 * (v false * v false)) := by ac_nf
+  rw [e1, e2]
+
+theorem stepping_the_place_steps_the_table_by_the_weighed_same (N D step : Int) (a b : Bool) :
+    weighed_by_its_coin (the_table_taken_from_the_same (N + step) D) a b
+      = weighed_by_its_coin (the_table_taken_from_the_same N D) a b + the_weighed_same (13 * step) a b := by
+  obtain ⟨h1, h2, h3, h4⟩ := what_the_table_taken_from_the_same_holds N D
+  obtain ⟨k1, k2, k3, k4⟩ := what_the_table_taken_from_the_same_holds (N + step) D
+  cases a <;> cases b
+  · show (5 : Int) * the_table_taken_from_the_same (N + step) D false false
+        = 5 * the_table_taken_from_the_same N D false false + 5 * (13 * step); rw [h2, k2]; omega
+  · show (5 : Int) * the_table_taken_from_the_same (N + step) D false true
+        = 5 * the_table_taken_from_the_same N D false true + 0; rw [h4, k4]; omega
+  · show (18 : Int) * the_table_taken_from_the_same (N + step) D true false
+        = 18 * the_table_taken_from_the_same N D true false + 0; rw [h3, k3]; omega
+  · show (18 : Int) * the_table_taken_from_the_same (N + step) D true true
+        = 18 * the_table_taken_from_the_same N D true true + 18 * (13 * step); rw [h1, k1]; omega
+
+theorem the_place_is_the_multiplier_of_the_weighed_square (N D step : Int) (v : Bool → Int) :
+    the_action_of (weighed_by_its_coin (the_table_taken_from_the_same (N + step) D)) v
+        - the_action_of (weighed_by_its_coin (the_table_taken_from_the_same N D)) v
+      = 13 * step * the_weighed_square v := by
+  rw [show weighed_by_its_coin (the_table_taken_from_the_same (N + step) D)
+        = fun a b => weighed_by_its_coin (the_table_taken_from_the_same N D) a b + the_weighed_same (13 * step) a b from
+      funext fun a => funext fun b => stepping_the_place_steps_the_table_by_the_weighed_same N D step a b,
+    the_action_of_two_tables_is_the_two_actions, the_action_of_the_weighed_same_is_the_weighed_square]
+  omega
+
+--| THREE CONDITIONS, KEPT APART.  Reading the pair as a place needs the second number; reading the inverse needs the
+--| residual; the crank's turn needs the trace.  They fail in different places.  At eighteen over thirteen the trace is
+--| nothing and the residual is not, so the table has an inverse and the crank has no turn.
+theorem where_the_trace_is_nothing_the_residual_is_not :
+    the_table_trace (the_adjugate (the_table_taken_from_the_same 18 13)) = 0
+      ∧ the_residual_of_the_pair 18 13 = -1170
+      ∧ the_table_determinant (the_table_taken_from_the_same 18 13) ≠ 0 := by decide
+end the_multiplier
+section around_a_closed_walk
+
+--| AROUND A CLOSED WALK.  A walk of some number of steps, read at whole-number places.  What a reading is summed to along
+--| it; and what a difference sums to: the far end less the near.  On a closed walk the ends are one place.
+def summed_along : Nat → (Nat → Int) → Int
+  | 0, _ => 0
+  | steps + 1, reading => summed_along steps reading + reading steps
+
+theorem two_readings_summed_are_the_two_sums (steps : Nat) (this that : Nat → Int) :
+    summed_along steps (fun place => this place + that place) = summed_along steps this + summed_along steps that := by
+  induction steps with
+  | zero => rfl
+  | succ steps ih => simp only [summed_along, ih]; omega
+
+theorem a_difference_summed_is_the_far_end_less_the_near (steps : Nat) (reading : Nat → Int) :
+    summed_along steps (fun place => reading (place + 1) - reading place) = reading steps - reading 0 := by
+  induction steps with
+  | zero => show (0 : Int) = reading 0 - reading 0; omega
+  | succ steps ih => simp only [summed_along, ih]; omega
+
+theorem around_a_closed_walk_a_difference_sums_to_nothing (steps : Nat) (reading : Nat → Int)
+    (closed : reading steps = reading 0) :
+    summed_along steps (fun place => reading (place + 1) - reading place) = 0 := by
+  rw [a_difference_summed_is_the_far_end_less_the_near, closed]; omega
+
+--| So on a closed walk a reading summed one step on is the reading summed.
+theorem around_a_closed_walk_the_sum_does_not_mind_a_step (steps : Nat) (reading : Nat → Int)
+    (closed : reading steps = reading 0) :
+    summed_along steps (fun place => reading (place + 1)) = summed_along steps reading := by
+  have h := around_a_closed_walk_a_difference_sums_to_nothing steps reading closed
+  have e : (fun place => reading (place + 1)) = fun place => (reading (place + 1) - reading place) + reading place :=
+    funext fun place => by omega
+  rw [e, two_readings_summed_are_the_two_sums, h]; omega
+
+--| THE DIFFERENCE OF A PRODUCT, WITH NOTHING OVER.  The first read one step on, by the difference of the second; and the
+--| second, by the difference of the first.  The remainder is in where the first is read.
+theorem the_difference_of_a_product_with_nothing_over (this that : Nat → Int) (place : Nat) :
+    this (place + 1) * that (place + 1) - this place * that place
+      = this (place + 1) * (that (place + 1) - that place) + that place * (this (place + 1) - this place) := by
+  rw [Int.mul_sub, Int.mul_sub, Int.mul_comm (that place) (this (place + 1)), Int.mul_comm (that place) (this place)]
+  omega
+
+--| SUMMATION BY PARTS.  Around a closed walk, one reading one step on against the difference of another is the other
+--| against the difference of the one, owed.
+theorem summation_by_parts_around_a_closed_walk (steps : Nat) (this that : Nat → Int)
+    (this_closes : this steps = this 0) (that_closes : that steps = that 0) :
+    summed_along steps (fun place => this (place + 1) * (that (place + 1) - that place))
+      = - summed_along steps (fun place => that place * (this (place + 1) - this place)) := by
+  have closed : (fun place => this place * that place) steps = (fun place => this place * that place) 0 := by
+    show this steps * that steps = this 0 * that 0; rw [this_closes, that_closes]
+  have h := around_a_closed_walk_a_difference_sums_to_nothing steps (fun place => this place * that place) closed
+  have e : (fun place => this (place + 1) * that (place + 1) - this place * that place)
+      = fun place => this (place + 1) * (that (place + 1) - that place) + that place * (this (place + 1) - this place) :=
+    funext fun place => the_difference_of_a_product_with_nothing_over this that place
+  rw [show (fun place => (fun place => this place * that place) (place + 1) - (fun place => this place * that place) place)
+        = fun place => this (place + 1) * that (place + 1) - this place * that place from rfl, e,
+      two_readings_summed_are_the_two_sums] at h
+  omega
+
+--| THE REMAINDER DOES NOT SUM AWAY ALONE.  Written with the first read in place, the product rule has a third term, the two
+--| differences one by the other.  Around a closed walk the three together sum to nothing.
+theorem around_a_closed_walk_the_three_terms_sum_to_nothing (steps : Nat) (this that : Nat → Int)
+    (this_closes : this steps = this 0) (that_closes : that steps = that 0) :
+    summed_along steps (fun place => this place * (that (place + 1) - that place))
+      + summed_along steps (fun place => that place * (this (place + 1) - this place))
+      + summed_along steps (fun place => (this (place + 1) - this place) * (that (place + 1) - that place)) = 0 := by
+  have h := summation_by_parts_around_a_closed_walk steps this that this_closes that_closes
+  have e : (fun place => this (place + 1) * (that (place + 1) - that place))
+      = fun place => this place * (that (place + 1) - that place)
+          + (this (place + 1) - this place) * (that (place + 1) - that place) :=
+    funext fun place => by rw [Int.sub_mul]; omega
+  rw [e, two_readings_summed_are_the_two_sums] at h
+  omega
+
+--| And the third does not sum to nothing alone.  A walk of two steps, nothing, one, nothing: the differences are one and
+--| one owed, and their squares sum to two.
+def nothing_one_nothing : Nat → Int := fun place => if place = 1 then 1 else 0
+theorem the_remainder_alone_sums_to_two :
+    nothing_one_nothing 2 = nothing_one_nothing 0
+      ∧ summed_along 2 (fun place => (nothing_one_nothing (place + 1) - nothing_one_nothing place)
+          * (nothing_one_nothing (place + 1) - nothing_one_nothing place)) = 2 := by decide
+end around_a_closed_walk
+
+section the_same_on_the_torus
+
+--| On the torus of four directions the same rule holds at every site: the first read one step on.
+theorem the_difference_of_a_product_on_the_torus_with_nothing_over {n : Nat} (f g : Site4 n → Int) (way : Direction)
+    (x : Site4 n) :
+    the_difference way (fun y => f y * g y) x
+      = f (the_step way x) * the_difference way g x + g x * the_difference way f x := by
+  simp only [the_difference]
+  rw [Int.mul_sub, Int.mul_sub, Int.mul_comm (g x) (f (the_step way x)), Int.mul_comm (g x) (f x)]
+  omega
+end the_same_on_the_torus
+
+section a_step_that_keeps_the_length
+
+--| A STEP THAT KEEPS THE LENGTH.  A state at every site, a turn of length one on every link.  The step: the state at the far
+--| end of the link, carried back along it.  At every site the carried state is as long as the state it came from.
+def the_state_one_step_on {n : Nat} (state : Site4 n → Turns) (U : Torus4 n) (way : Direction) : Site4 n → Turns :=
+  fun x => the_turns_product (U way x) (state (the_step way x))
+
+theorem the_step_keeps_the_length_at_every_site {n : Nat} (state : Site4 n → Turns) (U : Torus4 n) (way : Direction)
+    (unit : ∀ x, the_turns_norm (U way x) = 1) (x : Site4 n) :
+    the_turns_norm (the_state_one_step_on state U way x) = the_turns_norm (state (the_step way x)) := by
+  rw [the_state_one_step_on, the_norm_is_multiplicative, unit, Int.one_mul]
+
+--| Around a closed walk the lengths summed are kept: the step moves every length one place and loses none.
+theorem around_a_closed_walk_the_step_keeps_the_summed_length (steps : Nat) (state link : Nat → Turns)
+    (closed : state steps = state 0) (unit : ∀ place, the_turns_norm (link place) = 1) :
+    summed_along steps (fun place => the_turns_norm (the_turns_product (link place) (state (place + 1))))
+      = summed_along steps (fun place => the_turns_norm (state place)) := by
+  have e : (fun place => the_turns_norm (the_turns_product (link place) (state (place + 1))))
+      = fun place => (fun place => the_turns_norm (state place)) (place + 1) :=
+    funext fun place => by rw [the_norm_is_multiplicative, unit, Int.one_mul]
+  rw [e]
+  exact around_a_closed_walk_the_sum_does_not_mind_a_step steps (fun place => the_turns_norm (state place))
+    (by show the_turns_norm (state steps) = the_turns_norm (state 0); rw [closed])
+end a_step_that_keeps_the_length
+
+section one_table_three_ways
+
+--| ONE TABLE, THREE WAYS.  Episode 12's table of a stay and two crossings.  Its gap squared is four of the two crossings,
+--| one by the other, whatever the stay.
+theorem the_gap_squared_is_four_of_the_crossings (stay out back : Int) :
+    the_gap_squared (the_refinement_table stay out back) = 4 * (out * back) := by
+  show (stay + stay) * (stay + stay) - 4 * (stay * stay - out * back) = 4 * (out * back)
+  rw [Int.add_mul, Int.mul_add, Int.mul_sub]; omega
+
+--| The device's table is the stay eighteen, out five, back eighteen.  Keep both crossings; strike the one out; or turn
+--| the one back over.  The gap squared is over nothing, nothing, and under nothing.
+theorem the_devices_table_is_that_table (a b : Bool) : the_refinement_table 18 5 18 a b = the_full_table a b := by
+  cases a <;> cases b <;> rfl
+
+theorem kept_struck_and_turned_over :
+    the_gap_squared (the_refinement_table 18 5 18) = 360
+      ∧ the_gap_squared (the_refinement_table 18 0 18) = 0
+      ∧ the_gap_squared (the_refinement_table 18 5 (-18)) = -360 := by decide
+end one_table_three_ways
+
+--#print axioms the_second_variation_of_the_residual_holds
+--#print axioms the_two_readers_read_the_shape
+--#print axioms the_process_keeps_the_first_variation
+--#print axioms what_the_process_writes_third_is_false
+--#print axioms the_newton_is_under_the_other_two
+--#print axioms three_turns_of_the_process
+--#print axioms two_turns_of_the_process_keep_the_first_variation
+--#print axioms the_third_turn_of_the_process_does_not_keep_it
+--#print axioms the_table_carries_a_direction_but_for_the_round_trip
+--#print axioms the_two_directions_are_square_but_for_the_round_trip
+--#print axioms the_table_taken_from_the_same_carries_a_direction
+--#print axioms the_place_is_the_multiplier_of_the_weighed_square
+--#print axioms where_the_trace_is_nothing_the_residual_is_not
+--#print axioms around_a_closed_walk_the_sum_does_not_mind_a_step
+--#print axioms summation_by_parts_around_a_closed_walk
+--#print axioms around_a_closed_walk_the_three_terms_sum_to_nothing
+--#print axioms the_remainder_alone_sums_to_two
+--#print axioms the_difference_of_a_product_on_the_torus_with_nothing_over
+--#print axioms the_step_keeps_the_length_at_every_site
+--#print axioms around_a_closed_walk_the_step_keeps_the_summed_length
+--#print axioms the_gap_squared_is_four_of_the_crossings
+--#print axioms kept_struck_and_turned_over
+
+section the_two_directions_exactly
+open readers_experience
+
+--| THE TWO DIRECTIONS, EXACTLY.  Episode 12 writes a whole number and a number of the round trip's root as a pair, and
+--| multiplies pairs with the round trip for the root's square: no root is taken.  Its outer radius, eighteen and one, and
+--| its hole, eighteen and one owed, add to the trace and multiply to the determinant.  In those pairs the two directions
+--| are five on the first coin and the root, or the root owed, on the second; and the table carries each exactly, the one
+--| by the outer radius and the other by the hole.
+def the_direction_up : Bool → Int × Int := fun coin => if coin then (5, 0) else (0, 1)
+def the_direction_down : Bool → Int × Int := fun coin => if coin then (5, 0) else (0, -1)
+def refined_in_pairs (table : Table) (v : Bool → Int × Int) (coin : Bool) : Int × Int :=
+  (the_refine table (fun c => (v c).1) coin, the_refine table (fun c => (v c).2) coin)
+
+theorem the_table_carries_the_two_directions_exactly :
+    (∀ coin, refined_in_pairs the_full_table the_direction_up coin
+        = the_surd_product the_outer_radius (the_direction_up coin))
+      ∧ (∀ coin, refined_in_pairs the_full_table the_direction_down coin
+        = the_surd_product the_hole (the_direction_down coin)) := by decide
+
+--| In the pairing of the two coins each direction against itself is nine hundred, and the one against the other is
+--| nothing: they are square to each other, with nothing over.
+def the_pairing_in_pairs (u v : Bool → Int × Int) : Int × Int :=
+  ((18 : Int) * (the_surd_product (u true) (v true)).1 + 5 * (the_surd_product (u false) (v false)).1,
+   (18 : Int) * (the_surd_product (u true) (v true)).2 + 5 * (the_surd_product (u false) (v false)).2)
+
+theorem the_two_directions_are_square_to_each_other :
+    the_pairing_in_pairs the_direction_up the_direction_up = (900, 0)
+      ∧ the_pairing_in_pairs the_direction_down the_direction_down = (900, 0)
+      ∧ the_pairing_in_pairs the_direction_up the_direction_down = (0, 0) := by decide
+
+--| The same two carry the table taken from the same, for every pair: by thirteen of the first less the second of the
+--| outer radius, and of the hole.
+theorem the_table_taken_from_the_same_carries_them_exactly (N D : Int) :
+    (∀ coin, refined_in_pairs (the_table_taken_from_the_same N D) the_direction_up coin
+        = the_surd_product (13 * N - 18 * D, - D) (the_direction_up coin))
+      ∧ (∀ coin, refined_in_pairs (the_table_taken_from_the_same N D) the_direction_down coin
+        = the_surd_product (13 * N - 18 * D, D) (the_direction_down coin)) := by
+  obtain ⟨h1, h2, h3, h4⟩ := what_the_table_taken_from_the_same_holds N D
+  have ninety := the_round_trip_is_ninety
+  refine ⟨fun coin => ?_, fun coin => ?_⟩ <;> cases coin <;> refine Prod.ext ?_ ?_
+  · show the_table_taken_from_the_same N D false true * 5 + the_table_taken_from_the_same N D false false * 0
+        = (13 * N - 18 * D) * 0 + the_round_trip * (- D) * 1
+    rw [h4, h2, ninety]; omega
+  · show the_table_taken_from_the_same N D false true * 0 + the_table_taken_from_the_same N D false false * 1
+        = (13 * N - 18 * D) * 1 + (- D) * 0
+    rw [h4, h2]; omega
+  · show the_table_taken_from_the_same N D true true * 5 + the_table_taken_from_the_same N D true false * 0
+        = (13 * N - 18 * D) * 5 + the_round_trip * (- D) * 0
+    rw [h1, h3, ninety]; omega
+  · show the_table_taken_from_the_same N D true true * 0 + the_table_taken_from_the_same N D true false * 1
+        = (13 * N - 18 * D) * 0 + (- D) * 5
+    rw [h1, h3]; omega
+  · show the_table_taken_from_the_same N D false true * 5 + the_table_taken_from_the_same N D false false * 0
+        = (13 * N - 18 * D) * 0 + the_round_trip * D * (-1)
+    rw [h4, h2, ninety]; omega
+  · show the_table_taken_from_the_same N D false true * 0 + the_table_taken_from_the_same N D false false * (-1)
+        = (13 * N - 18 * D) * (-1) + D * 0
+    rw [h4, h2]; omega
+  · show the_table_taken_from_the_same N D true true * 5 + the_table_taken_from_the_same N D true false * 0
+        = (13 * N - 18 * D) * 5 + the_round_trip * D * 0
+    rw [h1, h3, ninety]; omega
+  · show the_table_taken_from_the_same N D true true * 0 + the_table_taken_from_the_same N D true false * (-1)
+        = (13 * N - 18 * D) * 0 + D * 5
+    rw [h1, h3]; omega
+
+--| And what the two carry it by, one by the other, is the determinant: thirteen residuals, with no part of the root.
+theorem the_two_it_is_carried_by_multiply_to_thirteen_residuals (N D : Int) :
+    the_surd_product (13 * N - 18 * D, - D) (13 * N - 18 * D, D) = (13 * the_residual_of_the_pair N D, 0) := by
+  have ninety := the_round_trip_is_ninety
+  refine Prod.ext ?_ ?_
+  · show (13 * N - 18 * D) * (13 * N - 18 * D) + the_round_trip * (- D) * D = 13 * the_residual_of_the_pair N D
+    rw [ninety, the_residual_of_the_pair, Int.sub_mul, Int.mul_sub, Int.mul_sub, Int.mul_neg, Int.neg_mul]
+    have e1 : 13 * N * (13 * N) = 13 * 13 * (N * N) := two_by_two_is_one_by_one_twice 13 N 13 N
+    have e2 : 18 * D * (13 * N) = 18 * 13 * (N * D) := by rw [two_by_two_is_one_by_one_twice, Int.mul_comm D N]
+    have e3 : 13 * N * (18 * D) = 13 * 18 * (N * D) := two_by_two_is_one_by_one_twice 13 N 18 D
+    have e4 : 18 * D * (18 * D) = 18 * 18 * (D * D) := two_by_two_is_one_by_one_twice 18 D 18 D
+    have e5 : (90 : Int) * D * D = 90 * (D * D) := Int.mul_assoc 90 D D
+    rw [e1, e2, e3, e4, e5]; omega
+  · show (13 * N - 18 * D) * D + (- D) * (13 * N - 18 * D) = 0
+    rw [Int.neg_mul, Int.mul_comm D (13 * N - 18 * D)]; omega
+end the_two_directions_exactly
+
+--#print axioms the_table_carries_the_two_directions_exactly
+--#print axioms the_two_directions_are_square_to_each_other
+--#print axioms the_table_taken_from_the_same_carries_them_exactly
+--#print axioms the_two_it_is_carried_by_multiply_to_thirteen_residuals
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.

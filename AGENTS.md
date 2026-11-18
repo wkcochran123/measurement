@@ -428,11 +428,11 @@ names the number.
   from this device.
 - The bills, counted again on 18 November 2026 over every theorem constant
   the kernel holds for the built episodes (Episode 6 is built apart and is
-  not counted), compiler auxiliaries included: 3,430; no axiom, 1,445;
-  `propext`, 778; `propext` and `Quot.sound`, 1,198; `Quot.sound` alone, 7;
+  not counted), compiler auxiliaries included: 3,526; no axiom, 1,468;
+  `propext`, 783; `propext` and `Quot.sound`, 1,266; `Quot.sound` alone, 7;
   and `Classical.choice` in two, `compatibility_form` and its auxiliary.
-  Leaving auxiliaries out: 1,800; 655; 506; 632; 6; 1. (The count of 17
-  November was 2,138: 1,051; 558; 523; 5; 1.) The one, `compatibility_form`
+  (The count of 17 November was 2,138: 1,051; 558; 523; 5; 1.) The one,
+  `compatibility_form`
   (`Episode12.lean`, used by nothing), bills `Classical.choice` through
   `omega`. If a visitor asks whether the device uses choice, say exactly
   that, and then say where the choice really is. In Lean, choice is what
@@ -777,6 +777,35 @@ names the number.
   calibrated *proposed* against the four is in
   `claude/to-fix-proposals-2026-11-18.md` (123 outside the four); the
   volume has not been changed to match.
+- The plan, carried out (`Episode13.lean`, sections
+  `the_variation_of_the_residual`, `the_two_directions_of_the_table`,
+  `the_multiplier`, `around_a_closed_walk`, `the_same_on_the_torus`,
+  `a_step_that_keeps_the_length`, `one_table_three_ways`; Card 3, "On the
+  middle card's own inductives"). The finite part of the plan agreed with
+  the author and GPT on 18 November 2026. `Variation` holds the residual's
+  exact step (second seat, the one `Variation.le` compares), the slope's
+  step (first) and the mixed second difference (third); all three hold;
+  Episode 8's readers read only the shape; `BigRedDogProcess.transmute`
+  keeps the first variation in the compared seat for two turns and loses it
+  on the third (`the_third_turn_of_the_process_does_not_keep_it`). The
+  table carries the direction (5, s) to (18 + s) times itself with defect
+  90 − s² on the second coin, for every integer s; no integer has s² = 90,
+  so in whole numbers this is a stated defect. In Episode 12's own pairs
+  (`the_surd_product`, with `the_outer_radius` = (18, 1) and `the_hole` =
+  (18, −1)) it is exact (section `the_two_directions_exactly`): the
+  directions (5, ±root) are carried by the outer radius and by the hole,
+  are orthogonal in the coin pairing with 900 on the diagonal, and carry
+  the shifted table by two pairs whose product is 13·R with no root part.
+  That arithmetic was already in the device; nothing new was added. The place N is the
+  multiplier of the weighed square 18v₁² + 5v₂². Sums are around a closed
+  walk at whole-number places: a difference sums to nothing, summation by
+  parts holds, the product rule's three terms sum to nothing together and
+  the third alone does not (it sums to 2 on a two-step walk). The gap
+  squared of the table (stay, out, back) is 4·out·back: 360, 0, −360 for
+  kept, struck, turned over. Not done: `Polynomial` is not instantiated
+  (nothing reads a `Basis` as a direction); sums over the sites of the
+  four-torus; the tie of the three ways to the three arms; all of Phase B.
+  Do not say the remainder "sums away"; say the exact statement.
 - The promise of the return (`Episode13.lean`, section
   `the_promise_of_the_return`). The author asked whether the promise of the
   return photon, "the path nothing takes", is visible in the math. It is the
