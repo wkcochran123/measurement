@@ -969,10 +969,9 @@ names the number.
   inductives has a reading); the eight responses are the 8 configurations
   of the 4 proposals; the parabolic step is from the before bent card to
   the after bent card (the second one); the four numerical maps the source
-  selects are the maps meant. Undecided by the author: whether the promise
-  is the 13. Not said by the author, so do not supply: which counted area
-  is which (the arm's weight has scale 1 and no shift; one fencepost has
-  scale 23/2 and shift 13/2); what "at right angles" is on the device; the
+  selects are the maps meant. Since decided (see "Decisions confirmed"): the promise is the 13,
+  and which counted area is which. Not said by the author, so do not
+  supply: what "at right angles" is on the device; the
   third appearance of 3, 4, 5 (`five_three_four` among the null directions
   is a candidate only). Measured beside it: the one place off the
   frinkahedron is (false, false), where neither Sample holds a bracket
@@ -1029,9 +1028,95 @@ names the number.
   Claude's reading of "semi-norm" on the arms; Episode 8's
   `the_sobolev_norm` is a `Product` on zeros and is not joined to it. A
   constant is in the kernel of every semi-norm, so the right angle could
-  not have failed. Which counted area is the one with the pole the author
-  has not said in terms of the device; 18 = 13 + 5 as the two parts and the
-  whole is a candidate only.
+  not have failed. Since confirmed by the author (see "Decisions confirmed"): the pole is
+  the fencepost, and 18 = 13 + 5 is the whole and its parts.
+- Decisions confirmed (the author, 18 November 2026; all declared). Rows
+  are T=T and F=F; columns are T=F and F=T; those are the arms and the
+  hypothesis and two coins with two faces on each coin. (This agrees with
+  `the_coin_that_holds_is_whether_the_arm_is_level`: the coin that holds
+  separates the level arms from the crossings.) 18 = 13 + 5 is the whole
+  and its parts, and "the reading pattern for the clock". "The pole is the
+  fencepost": so the simplicial area is one fencepost on every arm (scale
+  23/2, shift 13/2 by the metric) and the spatial area is the arm's weight
+  (scale 1, no shift). The promise is the 13: "13 is the carrier of the
+  empty carrier". And: "compiling is exit 0 ... take it as assumed true
+  that this compiles. it doesn't have a subjunctive false. that is the one
+  that doesn't click." Asked whether the timer's one sighting of the
+  decision (Experiment 014, first evaluation) counts as in the compile:
+  "it compiles is something you can assume true since it compiles." Beside
+  these: `IT_COMPILES` mints a FACT only for
+  what compiled. Claude asked how a compile with no subjunctive false is the arm
+  that does not click, and whether Experiment 014's first-evaluation
+  difference is readable; the author: "these are the same thing. the lean
+  compiles so the reader can take it as given that it compiles"
+  (declared). And why it does not click: "it doesn't click because it is
+  still compiling and can't click until too late. again the arrow of time
+  deflation" (declared). So the reader's given is that it compiles, and no more.
+  Claude's reading, not the author's: a difference of 14 heartbeats is a
+  comparison with the other decision's compile, which the reader of one
+  compile does not have; Experiment 014 put both decisions in one compile
+  from outside. None of this makes
+  23/2 or 13 a derived coupling or a derived constant.
+- The third 3, 4, 5 (the author, 18 November 2026, declared): "3 is 3SAT,
+  4 is the number of models, 5 is the limit of infinite symbols necessary
+  to axiomatize all four things of mathematics because they surround a
+  complex pole with assumptions." Beside it, already in the device: the
+  knower's triple is four clauses of three literals; there are four arms
+  and four proposals; and 5 is the limit, the frame on every arm and "Fact
+  number 5" in Episode 1's margin. So the three appearances are the
+  inductives (Rational, Sequence, Limit), the cell counts (3 reached, 5 on
+  the bit), and this one. `five_three_four` among the null directions was
+  Claude's candidate and is not the author's third. The author, further
+  (declared): "it is a statement of finite 3SAT up to 36 triples, the 36
+  subjunctive equalities given a variant and covariant interpretation";
+  and all 36 should be findable in the yarn theories explained in the
+  cards. That search has not been made. Say nothing about
+  hardness: the search is over eight assignments, and Episode 12 says its
+  reduction is not yet Cook's.
+- The reviewer's named rung (`Episode13.lean`, section
+  `the_reviewers_named_rung`). The author's (declared): the 36 subjunctive
+  equalities are Episode 10's reviewer's named rungs; "the fencepost here
+  is four not five"; "this is the difference between the counting up and
+  counting down fencepost. this is the same_difference of the quantum."
+  Read in Episode 10: 36 `REVIEWED` pages; page 36 is the manuscript
+  handed in and 35 are made by `rebut planted polynomial argument`, two
+  facts and the page before; three of the 35 name one fact twice
+  (`Pigeon.symbol`), so 32 name two; every page cites Card 1 and Card 3
+  (old page numbers, not checked against the volume); no citation names a
+  yarn. Receipts: a page read all the way down is its two facts and the
+  page before; 35 rebuttals are 36 pages and 71 facts
+  (`thirty_five_rebuttals_are_thirty_six_pages`); counted up is counted
+  down and the fencepost. The author then said which four: "32 subjunctives are inferred. 4 are
+  the fencepost" (declared). Read in the source, and Claude's count: the
+  four are the manuscript handed in and the three pages that name one
+  fact twice; the 32 are the rebuttals that name two. That count is from
+  the text of Episode 10, not a Lean receipt: any two true facts are equal
+  by `propext`, so Lean cannot be asked which pages name two. Not shown: that a
+  rebuttal is a triple under a parity in the knower's sense; that page k
+  reviewed is page k typeset.
+- Counted down and counted up (`Episode13.lean`, section
+  `counted_down_and_counted_up`; table in
+  `claude/reviewers-rung-2026-11-18.md`). Episode 10 counts down: a page is
+  made from the page after it and holds two facts. Episode 11 counts up: a
+  page is set in type on the page below, from the reviewer's page of the
+  same number. Receipts, no axiom: set in type, a reviewer's page is its
+  two facts and the proposition that the two agree
+  (`set_in_type_a_rebuttal_is_its_two_facts_and_that_they_agree`); the
+  count goes up by one; read all the way down a page counted up is three
+  facts and counted down two, the third being the truth that stands for
+  the agreement; one fact twice agrees with itself and nothing is inferred;
+  two facts need not agree; two that hold do. Read in the sources: the 36
+  pages are 4 fencepost (page 36, the manuscript; pages 24, 30, 31, one
+  fact twice) and 32 inferred, of which 4 (pages 12, 21, 27, 33) are where
+  Part VI's four bent cards enter. The two fours are not the same pages;
+  do not say they are. The mathematics of each page is Part VI's lift into
+  it: by Part VI's own calibrations, 22 proved on the page, 5 measured, 3
+  standard, 6 carrying something declared or proposed. Limits to state:
+  the glue is general and is not instantiated on Episode 10's 36
+  instances; "proved here" in Part VI is a proof on the page, not a Lean
+  receipt; the reviewer's question and the verse on a page are joined by
+  the page number only; no citation on the 36 pages names a yarn theory,
+  and their page numbers are the cards' of October.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
@@ -1066,8 +1151,8 @@ names the number.
   `every_closed_walk_crosses_evenly` (Episode 12): what goes out by it comes
   back by the other. As a path step it is a black hole holding "true =
   false", and `stokes` returns nothing for it. That the 13 owed on that arm
-  is the promise is Card 3's reading of the author's sentence, for the
-  author to correct.
+  is the promise was Card 3's reading; the author has since confirmed it:
+  "13 is the carrier of the empty carrier" (declared).
 - Gibbs and Boltzmann. The author believes they are the covariant and
   contravariant readings, in that order (declared, as a belief).
   `gibbs_and_boltzmann_are_one_ratio_turned_over`: half the level, and the

@@ -6686,6 +6686,93 @@ theorem the_weight_by_its_differences_is_three_bent_cards_squared :
     by_their_differences the_weight_on_the_arm the_weight_on_the_arm = 3 * ((bent_card : Int) * bent_card) := by decide
 end the_two_areas_at_right_angles
 
+
+section the_reviewers_named_rung
+open readers_experience the_area
+
+--| THE REVIEWER'S NAMED RUNG.  The author's, 18 November 2026: the thirty-six subjunctive equalities are the reviewer's
+--| named rungs of Episode 10; it is a statement of finite 3SAT up to thirty-six triples; the fencepost here is four and
+--| not five; and that is the difference between the fencepost counting up and the fencepost counting down, the same
+--| difference of the quantum (declared).  Episode 10 makes a page by `rebut planted polynomial argument`: two facts and the
+--| page before.  The page it makes is a methodology, which holds those two facts, two boxes, and the page before.
+
+--| A page read all the way down is its two facts and then the page before.
+theorem a_page_is_two_facts_and_the_page_before (planted polynomial : FACT) (the_page_before : ThePreprint.{0}) :
+    (ThePreprint.methodology planted polynomial Prop Type the_page_before).all_the_way_down
+      = [planted, polynomial] ++ the_page_before.all_the_way_down := rfl
+
+--| Dealt from a tape, a preprint read all the way down is two facts a page and one more.
+theorem two_facts_a_page_and_one_more (tape : List FACT) :
+    (the_preprint_a_list_indicates tape).all_the_way_down.length = 2 * tape.length + 1 := by
+  induction tape with
+  | nil => rfl
+  | cons fact rest ih =>
+    simp only [the_preprint_a_list_indicates, ThePreprint.all_the_way_down, List.length_append, List.length_cons,
+      List.length_nil, ih]
+    omega
+
+--| Thirty-five rebuttals are thirty-six pages: the page handed in is the fencepost.  And they are seventy-one facts.
+theorem thirty_five_rebuttals_are_thirty_six_pages :
+    (the_preprint_a_list_indicates (List.replicate 35 FACT.Truth)).the_model.length = 36
+      ∧ (the_preprint_a_list_indicates (List.replicate 35 FACT.Truth)).all_the_way_down.length = 71 := by
+  rw [the_preprint_reads_back, two_facts_a_page_and_one_more]; simp only [List.length_replicate]; decide
+
+--| Counted up there is one more than counted down: the pages are the rebuttals and the fencepost.
+theorem counted_up_is_counted_down_and_the_fencepost (tape : List FACT) :
+    (the_preprint_a_list_indicates tape).the_model.length = tape.length + the_fencepost_bug := by
+  rw [the_preprint_reads_back]; show 1 * tape.length + 1 = tape.length + 1; omega
+end the_reviewers_named_rung
+
+
+section counted_down_and_counted_up
+open readers_experience «springer-verlag» THE_GOSPEL
+
+--| COUNTED DOWN AND COUNTED UP.  Episode 10 counts down: a page is made from the page after it, by `rebut`, and holds two
+--| facts, the one handed in and the one searched for.  Episode 11 counts up: a page is set in type on the page below it, and
+--| what it sets is the reviewer's page of the same number.  Here is what is set: the two facts, and the proposition that
+--| the two agree.  That proposition is the subjunctive equality.
+
+--| What the reviewer's page holds: the two facts, the box, the box lifted, and the page it answers.
+theorem what_a_rebuttal_holds {Box : Type} {Pigeon : CarrierProcess Box} {page next_page : Nat}
+    (planted polynomial : FACT) (argument : REVIEWED Box Pigeon next_page) :
+    (rebut (page := page) planted polynomial argument).rebuttal
+      = .methodology planted polynomial Box (ULift.{1, 0} Box) argument.rebuttal := rfl
+
+--| Set in type, the page is the two facts and the proposition that the two agree, on the page below.
+theorem set_in_type_a_rebuttal_is_its_two_facts_and_that_they_agree
+    {Box : Type} {Pigeon : CarrierProcess Box} {page next_page rung : Nat} {Lifted : Type}
+    (planted polynomial : FACT) (argument : REVIEWED Box Pigeon next_page) (accepted : TYPESET Box Pigeon rung Lifted) :
+    (set_in_type (rebut (page := page) planted polynomial argument).rebuttal accepted).the_page
+      = .results planted polynomial (planted.truth ↔ polynomial.truth) Box (ULift.{1, 0} Box)
+          (ULift.{1, 1} (ULift.{1, 0} Box)) accepted.the_page := rfl
+
+--| And the count goes up by one: the universe id of the page is one more on the page below's.
+theorem set_in_type_the_count_goes_up_by_one
+    {Box : Type} {Pigeon : CarrierProcess Box} {rung : Nat} {Lifted : Type}
+    (the_rebuttal : ThePreprint) (accepted : TYPESET Box Pigeon rung Lifted) :
+    (set_in_type the_rebuttal accepted).universe_id = .one Pigeon.symbol accepted.universe_id := rfl
+
+--| THREE AND TWO.  Read all the way down, a page counted down is two facts and a page counted up is three: the two, and
+--| the truth standing for the proposition that they agree.  The third is the one that is taken as given.
+theorem counted_up_a_page_is_three_facts_and_counted_down_two
+    (planted polynomial : FACT) (agree : Prop) (below : ThePreprint.{0}) :
+    (ThePreprint.results planted polynomial agree Prop Type Type below).all_the_way_down
+        = [planted, polynomial, FACT.Truth] ++ below.all_the_way_down
+      ∧ (ThePreprint.methodology planted polynomial Prop Type below).all_the_way_down
+        = [planted, polynomial] ++ below.all_the_way_down := ⟨rfl, rfl⟩
+
+--| THE FENCEPOST.  A page that names one fact twice sets a proposition that holds of itself: nothing is inferred.
+theorem one_fact_twice_agrees_and_nothing_is_inferred (fact : FACT) : fact.truth ↔ fact.truth := Iff.rfl
+
+--| A page that names two facts sets a proposition that the two facts must supply: there are two facts that do not agree.
+theorem two_facts_need_not_agree : ∃ planted polynomial : FACT, ¬ (planted.truth ↔ polynomial.truth) :=
+  ⟨{ truth := True, click := .isTrue trivial }, { truth := False, click := .isFalse id }, fun agree => agree.mp trivial⟩
+
+--| And where both hold, they agree: the equality is inferred from the two facts.
+theorem two_facts_that_hold_agree (planted polynomial : FACT) (the_one : planted.truth) (the_other : polynomial.truth) :
+    planted.truth ↔ polynomial.truth := ⟨fun _ => the_other, fun _ => the_one⟩
+end counted_down_and_counted_up
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
