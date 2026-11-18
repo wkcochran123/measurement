@@ -17,7 +17,7 @@ its files match the source commit.
 |---|---|---|---|---|
 | 001 | `readings/001-coupling` | heartbeats per device cell (the coupling g) and wall time per heartbeat (the dilation D) across machines | `5b8b720` | M2 and M2 Ultra read |
 | 002 | `readings/002-beats` | the third clock inferred from two: the envelope extremes of the two machines' summed clocks, counted as a fringe order | `7cd707b` | M2 and M2 Ultra read |
-| 003 | `readings/003-calibration` | heartbeats to seconds: the device's registered floor as one Compton time; each machine's clock against the electron's; the step's horizon | `41fd3f2` | done on both machines |
+| 003 | `readings/003-calibration` | heartbeats to seconds: the device's registered floor as one Compton time; each machine's clock against the electron's; the step's horizon | `41fd3f2` | done on both machines; the calibration withdrawn by the author, 18 November 2026 |
 | 004 | `readings/004-relative-time` | the four rulers (universe level, heartbeats, time) combined into relative time through the field equations' weak-field limit | `03e888c` | M2 and M2 Ultra read |
 | 005 | `readings/005-two-variations` | the two representations of the first variation, time-like (local) and space-like (the potential), and the convective term that joins them | `96a1898` | M2 and M2 Ultra read |
 | 006 | `readings/006-frames` | frames as points: the M2 Ultra's performance and efficiency cores and the M2, on three workloads; the triangle's signed area; the convective term at thirty runs | `5a555d6` | read on the M2 Ultra (P and E); the M2 from 001, 002, 005 |
@@ -186,6 +186,13 @@ account for this: either the frame is the machine *and* the workload, or the
 dilation includes a part that is not kinematic.
 
 ## Experiment 003: the calibration, heartbeats to seconds
+
+**Withdrawn, 18 November 2026.** The author withdrew the rule this experiment applies, that one floor is one Compton
+time of the electron. The section below is kept as it was read and computed, because it was sealed and run; nothing in
+it is asserted any longer. The floor, 3,016 heartbeats on both machines, and each machine's τ are measurements and
+stand. Every value computed from the rule (seconds per heartbeat, Γ, the rapidities against the electron's clock, the
+horizon distance, the acceleration) is withdrawn. The machines' relative rapidity |ln D| does not depend on which common
+frame is taken and stands as a reading under the assumption that there is one.
 
 **Rule** (sealed before any value was computed; *declared*, the author's: "compton time is rfl"):
 the device's unit of work is its registered noise floor, the heartbeats of elaborating the
@@ -727,6 +734,10 @@ the unit, the workload that reads a tape, and which counts are replaced were all
 choice of any of them is a different experiment and needs its own seal.
 
 ## Experiment 011: the throw
+
+**Note, 18 November 2026.** The sentence this experiment took up, that the Compton time is the time it takes to throw a
+bent card, went with the Compton identification when the author withdrew it. The readings below stand as what one
+application of `Quot.sound` and of `propext` cost on the meter. They are no longer read against a physical time.
 
 **Setup:** `25dc6e3` (`readings/011-the-throw/`). **Source:** `cc347cb`. **Read:** Apple M2, 17 November 2026, five runs
 per probe, one fresh process per run; `raw/M2/`. All six probes compiled as sealed.
