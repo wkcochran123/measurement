@@ -6566,6 +6566,126 @@ theorem the_place_off_the_frinkahedron_holds_no_bracket :
     (the_arms.filter fun place => !on_the_frinkahedron place) = [(false, false)] := by decide
 end the_mirror_the_turn_and_the_spinor
 
+
+section eight_expressions_to_check
+open readers_experience the_area the_area.Account
+
+--| EIGHT EXPRESSIONS TO CHECK.  The author's, 18 November 2026: one choice, two hypotheses, four proposals, eight logical
+--| expressions to check; each proposal under each hypothesis (declared).  The device's eight are the clocks of the
+--| connected steps, and a clock is a coin and an arm.
+
+--| The eight, in order: the two coins by the four arms.
+theorem the_eight_are_a_coin_and_an_arm :
+    the_connected_steps.map the_clock_of_a_step
+      = the_two_coins.flatMap fun coin => the_arms.map fun arm => (coin, arm.1, arm.2) := by decide
+
+--| What the knower's triple says of a clock, under each parity.
+def the_clock_holds_when_an_odd_number_are_true (clock : Bool × Bool × Bool) : Bool :=
+  (the_knowers_triple.holds (assignFrom [clock.1, clock.2.1, clock.2.2]) an_odd_number_are_true 0).1
+def the_clock_holds_when_an_even_number_are_true (clock : Bool × Bool × Bool) : Bool :=
+  (the_knowers_triple.holds (assignFrom [clock.1, clock.2.1, clock.2.2]) an_even_number_are_true 0).1
+
+--| Four hold and four do not, under either parity, and what holds under the one does not under the other.
+theorem four_of_the_eight_hold_and_four_do_not :
+    ((the_connected_steps.map the_clock_of_a_step).filter the_clock_holds_when_an_odd_number_are_true).length = 4
+      ∧ ((the_connected_steps.map the_clock_of_a_step).filter the_clock_holds_when_an_even_number_are_true).length = 4
+      ∧ ∀ clock ∈ the_connected_steps.map the_clock_of_a_step,
+          the_clock_holds_when_an_odd_number_are_true clock = !the_clock_holds_when_an_even_number_are_true clock := by
+  decide
+
+--| For every arm, one coin holds and the other does not.
+theorem for_every_arm_one_coin_holds :
+    ∀ arm ∈ the_arms,
+      the_clock_holds_when_an_odd_number_are_true (true, arm.1, arm.2)
+        = !the_clock_holds_when_an_odd_number_are_true (false, arm.1, arm.2) := by decide
+
+--| Which: when an odd number are true, the coin that holds is true where the arm's two coins are the same.
+theorem the_coin_that_holds_is_whether_the_arm_is_level :
+    the_arms.map (fun arm => the_clock_holds_when_an_odd_number_are_true (true, arm.1, arm.2))
+      = the_arms.map (fun arm => arm.1 == arm.2) := by decide
+end eight_expressions_to_check
+
+section the_turn_in_space_and_the_turn_in_time
+open readers_experience the_area the_area.Account
+
+--| THE TURN IN SPACE AND THE TURN IN TIME.  The author's, 18 November 2026: you can turn the coin spatially, you cannot
+--| turn the coin temporally; that is the arrow of time deflated (declared).  On a connected step there are two things to
+--| do.  Turn every coin over: the turn in space.  Read the step from its end, the after clause backwards and then the
+--| before clause backwards: the turn in time.
+
+def turned_in_space (step : (Bool × Bool) × (Bool × Bool)) : (Bool × Bool) × (Bool × Bool) :=
+  ((!step.1.1, !step.1.2), (!step.2.1, !step.2.2))
+def turned_in_time (step : (Bool × Bool) × (Bool × Bool)) : (Bool × Bool) × (Bool × Bool) :=
+  ((step.2.2, step.2.1), (step.1.2, step.1.1))
+
+--| What execute counts less what compile builds: nothing where the step is level, the bent card where it is over, the
+--| bent card owed where it is short.
+def over_or_short (step : (Bool × Bool) × (Bool × Bool)) : Int :=
+  (cells (what_execute_counts step) : Int) - cells (what_compile_builds step)
+
+--| Either way turned, a connected step is a connected step.
+theorem turned_either_way_a_connected_step_is_connected :
+    ((the_connected_steps.map turned_in_space).all fun step => the_connected_steps.contains step) = true
+      ∧ ((the_connected_steps.map turned_in_time).all fun step => the_connected_steps.contains step) = true := by decide
+
+--| The clock and its complement: true, false, true and false, true, false.  The one is over by the bent card and the other
+--| short by it.
+def the_clock_step : (Bool × Bool) × (Bool × Bool) := ((true, false), (false, true))
+def the_complement_step : (Bool × Bool) × (Bool × Bool) := ((false, true), (true, false))
+
+theorem the_clock_is_over_by_the_bent_card_and_its_complement_is_short :
+    over_or_short the_clock_step = bent_card ∧ over_or_short the_complement_step = - (bent_card : Int) := by decide
+
+--| Turned in space the clock is its complement, and the bent card is owed.
+theorem turned_in_space_the_clock_is_its_complement :
+    turned_in_space the_clock_step = the_complement_step ∧ turned_in_space the_complement_step = the_clock_step
+      ∧ over_or_short (turned_in_space the_clock_step) = - over_or_short the_clock_step := by decide
+
+--| Turned in time the clock is the clock.  Nothing is owed and nothing has changed places.
+theorem turned_in_time_the_clock_is_the_clock :
+    turned_in_time the_clock_step = the_clock_step ∧ turned_in_time the_complement_step = the_complement_step := by decide
+
+--| And only these two, of the steps that are over or short, are left as they were by the turn in time.
+theorem the_turn_in_time_leaves_what_is_read_only_of_the_clock_and_its_complement :
+    (the_connected_steps.filter fun step =>
+        over_or_short step != 0 && over_or_short (turned_in_time step) == over_or_short step)
+      = [the_clock_step, the_complement_step] := by decide
+end the_turn_in_space_and_the_turn_in_time
+
+section the_two_areas_at_right_angles
+open readers_experience
+
+--| THE TWO AREAS.  The author's, 18 November 2026: there are two areas, at right angles; the spatial area is a circle with
+--| no pole and the simplicial area has the torus pole in it; at right angles in the inner product inferred from the Sobolev
+--| semi-norm with natural boundary conditions (declared).  A semi-norm reads differences.  On the four arms: every pair of
+--| arms, the difference of the one reading by the difference of the other.
+
+def the_pairs_of_arms : List (Direction × Direction) :=
+  [((true, true), (true, false)), ((true, true), (false, true)), ((true, true), (false, false)),
+   ((true, false), (false, true)), ((true, false), (false, false)), ((false, true), (false, false))]
+def by_their_differences (this that : Direction → Int) : Int :=
+  (the_pairs_of_arms.map fun pair => (this pair.1 - this pair.2) * (that pair.1 - that pair.2)).foldl (· + ·) 0
+
+--| The two areas' rises: the weight the arm stores, and one fencepost on every arm.
+def the_weight_on_the_arm (arm : Direction) : Int := the_arm_weight arm.1 arm.2
+def one_fencepost_on_the_arm (_ : Direction) : Int := 1
+
+--| One fencepost on every arm has no differences: against itself it reads nothing, and against the weight nothing.
+theorem one_fencepost_on_every_arm_is_at_right_angles_to_the_weight :
+    by_their_differences one_fencepost_on_the_arm the_weight_on_the_arm = 0
+      ∧ by_their_differences one_fencepost_on_the_arm one_fencepost_on_the_arm = 0 := by decide
+
+--| And against anything: it has no differences to read.
+theorem one_fencepost_on_every_arm_is_at_right_angles_to_everything (that : Direction → Int) :
+    by_their_differences one_fencepost_on_the_arm that = 0 := by
+  simp only [by_their_differences, the_pairs_of_arms, one_fencepost_on_the_arm, List.map, List.foldl]
+  omega
+
+--| The weight against itself is three bent cards squared: the three arms that click, each over the fourth by the bent card.
+theorem the_weight_by_its_differences_is_three_bent_cards_squared :
+    by_their_differences the_weight_on_the_arm the_weight_on_the_arm = 3 * ((bent_card : Int) * bent_card) := by decide
+end the_two_areas_at_right_angles
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.

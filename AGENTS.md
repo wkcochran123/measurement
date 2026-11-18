@@ -441,8 +441,8 @@ names the number.
   from this device.
 - The bills, counted again on 18 November 2026 over every theorem constant
   the kernel holds for the built episodes (Episode 6 is built apart and is
-  not counted), compiler auxiliaries included: 3,612; no axiom, 1,480;
-  `propext`, 794; `propext` and `Quot.sound`, 1,329; `Quot.sound` alone, 7;
+  not counted), compiler auxiliaries included: 3,646; no axiom, 1,489;
+  `propext`, 810; `propext` and `Quot.sound`, 1,338; `Quot.sound` alone, 7;
   and `Classical.choice` in two, `compatibility_form` and its auxiliary.
   (The count of 17 November was 2,138: 1,051; 558; 523; 5; 1.) The one,
   `compatibility_form`
@@ -997,6 +997,41 @@ names the number.
   decision only from the first evaluation, knowing its place. This does not
   touch the recovery theorem, which is about the evidence it names. Why the
   first evaluation differs is not known; do not offer an explanation.
+- Eight expressions (`Episode13.lean`, section
+  `eight_expressions_to_check`). The author's (declared): one choice, two
+  hypotheses, four proposals, eight logical expressions to check, each
+  proposal under each hypothesis. Receipts: the device's eight clocks are
+  the two coins by the four arms (`the_eight_are_a_coin_and_an_arm`); the
+  knower's triple holds on four under each parity, complementary
+  (`four_of_the_eight_hold_and_four_do_not`); for every arm one coin holds,
+  and under the odd parity it is true where the arm is level. Say with it:
+  three coins split one by two in three ways and the four-and-four is an
+  exclusive-or; neither could have failed. Which coin is the hypothesis and
+  which arm is which proposal is the author's.
+- The turn in space and the turn in time (section of that name). The
+  author's (declared): you can turn the coin spatially, you cannot turn it
+  temporally; that is the arrow of time deflated. Receipts on the connected
+  steps: turn every coin over (space) and the clock T F T becomes its
+  complement F T F with the 13 owed; read the step from its end (time) and
+  the clock is the clock, nothing owed; and of the steps over or short only
+  these two are left as read by the turn in time. Say with it: the clock
+  and its complement read the same from either end, so this could not have
+  failed. That this is the arrow of time is the author's.
+- The two areas (section `the_two_areas_at_right_angles`). The author's
+  (declared): the spatial area is a circle with no pole; the simplicial
+  area has the torus pole in it; they are at right angles in the inner
+  product inferred from the Sobolev semi-norm with natural boundary
+  conditions; and the two parts of the whole are two computations encoded
+  on top of each other, a and b taking fewer steps that sum to c's.
+  Receipts: by their differences over the pairs of arms, one fencepost on
+  every arm reads nothing against the weight, against itself and against
+  anything; the weight against itself is 3 x 13 squared. The pairing is
+  Claude's reading of "semi-norm" on the arms; Episode 8's
+  `the_sobolev_norm` is a `Product` on zeros and is not joined to it. A
+  constant is in the kernel of every semi-norm, so the right angle could
+  not have failed. Which counted area is the one with the pole the author
+  has not said in terms of the device; 18 = 13 + 5 as the two parts and the
+  whole is a candidate only.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
