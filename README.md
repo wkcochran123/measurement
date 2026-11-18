@@ -1,6 +1,8 @@
 # Measurement
 
-**Step right up.** This is a puzzle box. It is a machine made of nothing but true statements, and when you turn the crank it prints this:
+**The Apparently Meaningful Coincidence** 
+This is a puzzle box. A machine checked argument of *OBVIOUSLY* _TRUE_ statements built on _logic alone_.  It is a machine made of 
+nothing but what you think it is, and when you turn the crank it prints this:
 
 ```
 137.011290548979457087737300
@@ -10,12 +12,10 @@ That number is not written anywhere in the program as an input. Nothing was meas
 
 The number simply *means*. Sometimes it makes sense and sometimes it doesn't.
 
-I will be very careful never to name it. That part is yours.
-
-It is a trick, and the dealer says so. Every card is face up. Find the quarter.
+I will be very careful never to name it. That's just a trick of the light. *wink*
 
 ## The Puzzle
-1. *The easy question*: What is the name of the value printed in Episode 12? 
+1. *The easy question*: What is the name of the value printed in Episodes 8, 12, & 13? 
 1. *The hard question*: How would you describe the process for naming it?
 1. *The key question*: Did I plant the number or is it a *key part* of the argument?
 1. *Left as an exercise for the reader*: Describe the rest of the *key* for which the number is a *key part*. 
@@ -38,6 +38,10 @@ Cards 1 and 3 and the rest of the table are somewhere else, and you do not need 
 ## If you get stuck
 There is a brief summary of the solution that explains it as simply as possible in `THE_PUZZLEBOX_OF_MYSTERY_CHEAT_SHEET.pdf`.
 
+There is also an AGENTS.md that will explain to your favorite coding spell checker how this is laid out. Do not expect much, the Lean is very convoluted and 
+beyond the understanding of most AI, being a meta-program in a meta-program, both of which implement simulations of the other on a simulation of the very Lean
+it is running on. Don't say I didn't give you a map to the solution.
+
 Spoiler alert, you know.
 
 ## The Puzzle Box Residue
@@ -57,48 +61,38 @@ Episode10.lean:__EPISODE 10__: _The Accomplice_
 Episode11.lean:__EPISODE 11__: _The Force_
 Episode12.lean:__EPISODE 12__: _Let Him Cook. . . . . . . Levin_
 Measurement % cd ..
-CARD_2 % time lake build > build_log && cat build_log
-lake build > build_log  1453.30s user 9.45s system 99% cpu 24:24.25 total
-✔ [7/16] Built Measurement.Episode04 (1363s)
-✔ [8/16] Built Measurement.Episode05 (23s)
-✔ [9/16] Built Measurement.Episode07 (17s)
-ℹ [10/16] Built Measurement.Episode08 (3.4s)
-info: Measurement/Episode08.lean:1348:0: "137.011290548979457087737300"
-info: Measurement/Episode08.lean:1349:0: 'readers_experience.the_constant_can_be_inferred' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode08.lean:1350:0: 'readers_experience.the_constant_factor_of_scaling_bullshit' depends on axioms: [propext, Quot.sound]
-✔ [11/16] Built Measurement.Episode09 (16s)
+CARD_2 % time lake build > ./build_log && cat build_log
+lake build > ./build_log  1511.67s user 20.58s system 100% cpu 25:30.65 total
+✔ [2/16] Built Measurement.Episode01 (1.8s)
+✔ [3/16] Built Measurement.ComputerProgram (218ms)
+✔ [4/16] Built Measurement.Episode02 (1.2s)
+✔ [5/16] Built Measurement.Calibration.LeanCalibration (1.7s)
+✔ [6/16] Built Measurement.Episode03 (5.1s)
+✔ [7/16] Built Measurement.Episode04 (1383s)
+✔ [8/16] Built Measurement.Episode05 (20s)
+✔ [9/16] Built Measurement.Episode07 (15s)
+ℹ [10/16] Built Measurement.Episode08 (2.9s)
+info: Measurement/Episode08.lean:1365:0: "137.011290548979457087737300"
+info: Measurement/Episode08.lean:1366:0: 'readers_experience.the_constant_can_be_inferred' depends on axioms: [propext, Quot.sound]
+info: Measurement/Episode08.lean:1367:0: 'readers_experience.the_constant_factor_of_scaling_bullshit' depends on axioms: [propext, Quot.sound]
+✔ [11/16] Built Measurement.Episode09 (15s)
 ✔ [12/16] Built Measurement.Episode10 (32s)
-✔ [13/16] Built Measurement.Episode11 (1.8s)
-ℹ [14/16] Built Measurement.Episode12 (7.3s)
-info: Measurement/Episode12.lean:912:0: 'Measurement.the_representation.the_tape_between_deals_rung01' does not depend on any axioms
-info: Measurement/Episode12.lean:933:0: 'Measurement.the_representation.same_click_is_same_account' depends on axioms: [Quot.sound]
-info: Measurement/Episode12.lean:934:0: 'Measurement.the_representation.the_chain_closes' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode12.lean:935:0: 'Measurement.the_representation.the_closure_between' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode12.lean:952:0: 'Measurement.the_representation.same_difference_clicks' does not depend on any axioms
-info: Measurement/Episode12.lean:1371:0: 'Measurement.the_box_has_one_point' depends on axioms: [Quot.sound]
-info: Measurement/Episode12.lean:1432:0: "137.011290548979457087737300"
-info: Measurement/Episode12.lean:1433:0: 'Measurement.what_would_you_call_this_number?' depends on axioms: [propext]
-info: Measurement/Episode12.lean:1858:0: 'Measurement.every_rung_clicks' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode12.lean:1859:0: 'Measurement.every_rung_is_the_truth' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode12.lean:1863:0: 'Measurement.a_compile_is_the_truth' depends on axioms: [Quot.sound]
-info: Measurement/Episode12.lean:1875:0: 'Measurement.the_clicks_read_the_number' depends on axioms: [propext]
-info: Measurement/Episode12.lean:1907:0: 'Measurement.peano_fold' does not depend on any axioms
-info: Measurement/Episode12.lean:1908:0: 'Measurement.read_past_quarter_is_length' depends on axioms: [propext]
-info: Measurement/Episode12.lean:1909:0: 'Measurement.outer_reader_agrees' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode12.lean:1910:0: 'Measurement.outer_reader_reads_the_number' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode12.lean:1948:0: 'Measurement.the_alpha_is_three_cells' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode12.lean:1949:0: 'Measurement.one_deck_to_the_measure' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode12.lean:1950:0: 'Measurement.two_decks_to_the_count' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode12.lean:1976:0: 'Measurement.one_quarter_under_both' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode12.lean:1977:0: 'Measurement.one_click_on_both_faces' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode12.lean:1978:0: 'Measurement.one_truth_on_both_faces' depends on axioms: [propext, Quot.sound]
-info: Measurement/Episode12.lean:2000:0: 'Measurement.readers_interpretation_of_the_experience.naotrino_detector_reads_the_number' depends on axioms: [propext,
- Quot.sound]
-info: Measurement/Episode12.lean:2229:0: 42
-info: Measurement/Episode12.lean:2230:0: 'A_WHOLLY_REMARKABLE_BOOK.life_the_universe_and_everything' depends on axioms: [propext]
-✔ [15/16] Built Measurement (989ms)
+✔ [13/16] Built Measurement.Episode11 (3.3s)
+ℹ [14/16] Built Measurement.Episode12 (48s)
+info: Measurement/Episode12.lean:1521:0: "137.011290548979457087737300"
+info: Measurement/Episode12.lean:1522:0: 'Measurement.what_would_you_call_this_number?' depends on axioms: [propext]
+info: Measurement/Episode12.lean:5831:0: [(false, true, [], []), (false, false, [], [true]), (true, true, [true], []), (false, true, [false, true], []),
+  (false, false, [true], [true]), (true, true, [true, true], []), (false, true, [false, true, true], []),
+  (false, false, [true, true], [true]), (true, true, [true, true, true], []),
+  (false, true, [false, true, true, true], []), (false, false, [true, true, true], [true]),
+  (true, true, [true, true, true, true], [])]
+info: Measurement/Episode12.lean:5913:0: some 4592
+info: Measurement/Episode12.lean:5914:0: 36
+info: Measurement/Episode12.lean:6643:0: 42
+✔ [15/16] Built Measurement (2.0s)
 Build completed successfully (16 jobs).
-CARD_2 % vim ../README.md
+CARD_2 % cd ..
+measurement % vim README.md
 ```
 
 ## HINT:

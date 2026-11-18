@@ -3111,6 +3111,473 @@ theorem the_gap_scales_with_the_table (t tt tf ft ff : Int) :
 --#print axioms the_gap_closes_only_level_and_struck
 --#print axioms the_gap_reads_the_crossings_through_the_round_trip
 --#print axioms the_gap_scales_with_the_table
+--| THE GAP, AS A CONE.  The gap squared is two squares less one: the stays' difference, the crossings' sum, less the
+--| crossings' difference.  So where it is nothing is a cone, and with no crossing negative only the cone's tip is reached.
+--| The stays cannot narrow the gap below the round trip: the device, level, sits at the least.  And there the gap squared
+--| over the trace squared is five over eighteen: the same five over eighteen the closing quartic factors by.
+theorem the_gap_is_two_squares_less_one (tt tf ft ff : Int) :
+    the_gap_squared (the_table_of_four_arms tt tf ft ff)
+      = (tt - ff) * (tt - ff) + (tf + ft) * (tf + ft) - (tf - ft) * (tf - ft) := by
+  rw [the_gap_squared_in_four_arms]
+  simp only [Int.sub_mul, Int.mul_sub, Int.add_mul, Int.mul_add]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem the_stays_cannot_narrow_the_gap (tt tf ft ff : Int) :
+    4 * (tf * ft) ≤ the_gap_squared (the_table_of_four_arms tt tf ft ff) := by
+  rw [the_gap_squared_in_four_arms]
+  have h := a_square_is_never_negative (tt - ff)
+  omega
+theorem the_device_sits_at_five_eighteenths :
+    18 * the_gap_squared the_full_table = 5 * (the_table_trace the_full_table * the_table_trace the_full_table) := rfl
+--#print axioms the_gap_is_two_squares_less_one
+--#print axioms the_stays_cannot_narrow_the_gap
+--#print axioms the_device_sits_at_five_eighteenths
+--| SIXTEEN READINGS OF THE ARMS.  Four arms, and each clicks or does not: sixteen ways to read them, each weighed by the one rule,
+--| thirteen for a click and the frame of five.  The device is one of the sixteen, the arm true on false unclicked.  Five have
+--| a gap: the device and its converse, equality, and, and neither.  Six have none, and they are exactly the six that
+--| ignore a coin: always, never, the first coin, the second, and their noes.  Five go under, a root below nothing.  The
+--| converse always has the same gap.  Read as equality the roots are twenty-three and thirteen.
+def the_weight_of_an_arm_that (clicks : Bool) : Int :=
+  ((if clicks then readers_experience.bent_card else 0) + the_dimensions_of_universe : Nat)
+def the_table_read_as (tt tf ft ff : Bool) : Table :=
+  the_table_of_four_arms (the_weight_of_an_arm_that tt) (the_weight_of_an_arm_that tf)
+    (the_weight_of_an_arm_that ft) (the_weight_of_an_arm_that ff)
+def the_sixteen : List (Bool × Bool × Bool × Bool) :=
+  [true, false].flatMap fun tt => [true, false].flatMap fun tf => [true, false].flatMap fun ft =>
+    [true, false].map fun ff => (tt, tf, ft, ff)
+def the_arms_read_as (i : Bool × Bool × Bool × Bool) : Table := the_table_read_as i.1 i.2.1 i.2.2.1 i.2.2.2
+theorem the_device_is_one_of_the_sixteen (x y : Bool) :
+    the_table_read_as true false true true x y = the_full_table x y := by
+  cases x <;> cases y <;> rfl
+theorem there_are_sixteen : the_sixteen.length = 16 := rfl
+theorem five_have_a_gap_six_have_none_five_go_under :
+    (the_sixteen.filter fun i => decide (0 < the_table_determinant (the_arms_read_as i))).length = 5
+      ∧ (the_sixteen.filter fun i => decide (the_table_determinant (the_arms_read_as i) = 0)).length = 6
+      ∧ (the_sixteen.filter fun i => decide (the_table_determinant (the_arms_read_as i) < 0)).length = 5 := by decide
+theorem no_gap_exactly_when_a_coin_is_ignored :
+    ∀ tt tf ft ff : Bool, the_table_determinant (the_table_read_as tt tf ft ff) = 0
+      ↔ ((tt = tf ∧ ft = ff) ∨ (tt = ft ∧ tf = ff)) := by decide
+theorem the_five_with_a_gap :
+    (the_sixteen.filter fun i => decide (0 < the_table_determinant (the_arms_read_as i)))
+      = [(true, true, false, true), (true, false, true, true), (true, false, false, true),
+         (true, false, false, false), (false, false, false, true)] := by decide
+theorem the_converse_has_the_same_gap :
+    ∀ tt tf ft ff : Bool, the_gap_squared (the_table_read_as tt tf ft ff) = the_gap_squared (the_table_read_as tt ft tf ff) := by
+  decide
+theorem equality_reads_twenty_three_and_thirteen :
+    the_table_trace (the_table_read_as true false false true) = 23 + 13
+      ∧ the_table_determinant (the_table_read_as true false false true) = 23 * 13
+      ∧ the_table_determinant (the_table_read_as true false false false) = 5 * 13
+      ∧ the_table_determinant (the_table_read_as false false false true) = 5 * 13 := by decide
+theorem the_sixteen_gaps :
+    (the_sixteen.map fun i => the_gap_squared (the_arms_read_as i))
+      = [1296, 1465, 360, 529, 360, 529, 100, 269, 1465, 1296, 529, 360, 529, 360, 269, 100] := by decide
+--#print axioms the_device_is_one_of_the_sixteen
+--#print axioms there_are_sixteen
+--#print axioms five_have_a_gap_six_have_none_five_go_under
+--#print axioms no_gap_exactly_when_a_coin_is_ignored
+--#print axioms the_five_with_a_gap
+--#print axioms the_converse_has_the_same_gap
+--#print axioms equality_reads_twenty_three_and_thirteen
+--#print axioms the_sixteen_gaps
+--| SIXTEEN INTERPRETATIONS, EIGHT READINGS.  Those sixteen are every way the arms can click.  The device's own sixteen are
+--| Cook's: the step is two clauses, and each clause is read under one of the four signatures.  Four times four.  But west and
+--| east turn only at every fourth slot, and the second clause sits in slots two and three, where west reads as negated and
+--| east as euclidean.  So the sixteen are eight, each twice.  The eight read: either, different, different, not both, the
+--| first, not the second, the second, not the first.  Seven, since different comes both ways round.  Four ignore a coin and
+--| four go under: none of the eight has a gap, and neither the click table's reading nor equality is among them.  The step
+--| the formula checks and the table the walks count are not yet one relation.  The obligation noted above, made exact.
+def the_signatures : List Signature := [.euclidean, .negated, .west, .east]
+def a_signature_for_each_clause (first second : Signature) : Schedule := fun k => if k / 2 == 0 then first else second
+def the_sixteen_schedules : List (Signature × Signature) :=
+  the_signatures.flatMap fun first => the_signatures.map fun second => (first, second)
+def the_row_under (s : Signature × Signature) : List Bool := xorRow (a_signature_for_each_clause s.1 s.2)
+def the_eight_schedules : List (Signature × Signature) :=
+  the_signatures.flatMap fun first => [Signature.euclidean, Signature.negated].map fun second => (first, second)
+theorem there_are_sixteen_schedules : the_sixteen_schedules.length = 16 := rfl
+theorem on_the_second_clause_west_is_negated_and_east_is_euclidean :
+    the_signatures.all (fun first =>
+      the_row_under (first, .west) == the_row_under (first, .negated)
+        && the_row_under (first, .east) == the_row_under (first, .euclidean)) = true := by decide
+theorem the_eight_readings :
+    the_eight_schedules.map the_row_under
+      = [[true, true, true, false], [false, true, true, false], [false, true, true, false], [false, true, true, true],
+         [true, true, false, false], [false, true, false, true], [true, false, true, false], [false, false, true, true]] := by
+  decide
+theorem the_difference_is_reached_both_ways :
+    the_row_under (.euclidean, .negated) = xorTarget ∧ the_row_under (.negated, .euclidean) = xorTarget := by decide
+theorem the_eight_are_seven : ((the_eight_schedules.map the_row_under).eraseDups).length = 7 := by decide
+def the_table_of_a_row (r : List Bool) : Table :=
+  the_table_read_as (r.getD 0 false) (r.getD 1 false) (r.getD 2 false) (r.getD 3 false)
+theorem none_of_the_eight_has_a_gap :
+    (the_eight_schedules.map the_row_under).all (fun r => decide (the_table_determinant (the_table_of_a_row r) ≤ 0)) = true
+      ∧ ((the_eight_schedules.map the_row_under).filter fun r => decide (the_table_determinant (the_table_of_a_row r) = 0)).length = 4 := by
+  decide
+theorem the_click_table_is_not_among_the_eight :
+    (the_eight_schedules.map the_row_under).contains [true, false, true, true] = false
+      ∧ (the_eight_schedules.map the_row_under).contains [true, false, false, true] = false := by decide
+--#print axioms there_are_sixteen_schedules
+--#print axioms on_the_second_clause_west_is_negated_and_east_is_euclidean
+--#print axioms the_eight_readings
+--#print axioms the_difference_is_reached_both_ways
+--#print axioms the_eight_are_seven
+--#print axioms none_of_the_eight_has_a_gap
+--#print axioms the_click_table_is_not_among_the_eight
+--| THE COMPARISON, READ BY GALERKIN.  Four arms, four readings square to one another: the same, the sign, the different, and
+--| the quarter turn.  Twice any table is so much of each: the stays' sum of the same, their difference of the sign, the
+--| crossings' sum of the different, their difference of the turn.  Twice the device's table is thirty-six of the same,
+--| twenty-three of the different and thirteen of the turn.  The step the formula checks is the different: it reads no turn
+--| at all.  The table reads thirteen of it, the bent card.  Take from the table everything the step can write and what is
+--| left is the turn, thirteen of it, square to all the rest.  That is Galerkin: the residual is square to the test space.
+--| The comparison between the machine's step and the table is the one-way part.  And the gap squared is the different
+--| squared less the turn squared.  The obligation above is not closed by this; it is measured.
+def the_table_dot (A B : Table) : Int :=
+  A true true * B true true + A true false * B true false + A false true * B false true + A false false * B false false
+def the_four_readings : List Table := [the_scaled_identity 1, the_sign_table, the_swap, the_quarter_turn]
+theorem the_four_readings_are_square_to_each_other :
+    (the_four_readings.map fun A => the_four_readings.map fun B => the_table_dot A B)
+      = [[2, 0, 0, 0], [0, 2, 0, 0], [0, 0, 2, 0], [0, 0, 0, 2]] := by decide
+theorem twice_any_table_in_the_four_readings (tt tf ft ff : Int) (x y : Bool) :
+    2 * the_table_of_four_arms tt tf ft ff x y
+      = (tt + ff) * the_scaled_identity 1 x y + (tt - ff) * the_sign_table x y
+        + (tf + ft) * the_swap x y + (ft - tf) * the_quarter_turn x y := by
+  cases x <;> cases y <;>
+    simp only [the_table_of_four_arms, the_scaled_identity, the_sign_table, the_coin_sign, the_swap, the_quarter_turn,
+      ite_true, ite_false, Bool.true_eq_false, Bool.false_eq_true] <;> omega
+theorem twice_the_table_is_the_same_the_different_and_the_turn (x y : Bool) :
+    2 * the_full_table x y
+      = 36 * the_scaled_identity 1 x y + 23 * the_swap x y + 13 * the_quarter_turn x y := by
+  cases x <;> cases y <;> rfl
+def the_step_table : Table := the_table_of_a_row xorTarget
+theorem the_step_reads_no_turn_and_the_table_reads_thirteen :
+    the_table_dot the_step_table the_quarter_turn = 0
+      ∧ the_table_dot the_full_table the_quarter_turn = (readers_experience.bent_card : Int)
+      ∧ the_table_dot the_full_table the_swap = 23 ∧ the_table_dot the_step_table the_swap = 36 := by decide
+def the_table_less_what_the_step_can_write : Table :=
+  fun x y => 2 * the_full_table x y - (36 * the_scaled_identity 1 x y + 23 * the_swap x y)
+theorem the_residual_is_the_turn_and_is_square_to_the_rest :
+    (∀ x y, the_table_less_what_the_step_can_write x y = 13 * the_quarter_turn x y)
+      ∧ the_table_dot the_table_less_what_the_step_can_write (the_scaled_identity 1) = 0
+      ∧ the_table_dot the_table_less_what_the_step_can_write the_swap = 0
+      ∧ the_table_dot the_table_less_what_the_step_can_write the_sign_table = 0 := by decide
+theorem the_gap_is_the_different_squared_less_the_turn_squared :
+    the_gap_squared the_full_table = 23 * 23 - 13 * 13 := rfl
+--#print axioms the_four_readings_are_square_to_each_other
+--#print axioms twice_any_table_in_the_four_readings
+--#print axioms twice_the_table_is_the_same_the_different_and_the_turn
+--#print axioms the_step_reads_no_turn_and_the_table_reads_thirteen
+--#print axioms the_residual_is_the_turn_and_is_square_to_the_rest
+--#print axioms the_gap_is_the_different_squared_less_the_turn_squared
+--| THE PROCESS.  What the step can write has a gap of its own, the crossings' sum: twenty-three.  The table's gap, the turn
+--| and that one close a triangle: twenty-three squared is the gap squared and thirteen squared.  The trial space takes the
+--| crossings' middle by adding; the table takes it by multiplying; the turn is the difference between the two middles.
+--| The crank's quadratic has the gap squared for its discriminant, so the crank is taking the root of the gap.  Start that
+--| step at the trial gap and what is left is the turn squared; one turn of the crank squares what is left, and again, and
+--| again: thirteen squared, thirteen to the fourth.  Never nothing.  The crank the device runs starts elsewhere.
+theorem the_trial_gap_the_gap_and_the_turn_close_a_triangle (tt tf ft : Int) :
+    (tf + ft) * (tf + ft) = the_gap_squared (the_table_of_four_arms tt tf ft tt) + (ft - tf) * (ft - tf) := by
+  rw [the_gap_squared_in_four_arms]
+  simp only [Int.sub_self, Int.sub_mul, Int.mul_sub, Int.add_mul, Int.mul_add, Int.zero_mul]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem twenty_three_squared_is_the_gap_and_thirteen_squared :
+    (23 : Int) * 23 = the_gap_squared the_full_table + 13 * 13 := rfl
+theorem the_cranks_discriminant_is_the_gap :
+    ((the_trace_of_truth_in_the_device * the_trace_of_truth_in_the_device
+        - 4 * an_exact_polynomial_description * the_number_of_symbols_that_must_be_written_to_express_this : Nat) : Int)
+      = the_gap_squared the_full_table := by decide
+theorem one_turn_of_the_crank_squares_what_is_left (x c : Int) :
+    (x * x + c) * (x * x + c) - c * ((2 * x) * (2 * x)) = (x * x - c) * (x * x - c) := by
+  simp only [Int.sub_mul, Int.mul_sub, Int.add_mul, Int.mul_add]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem from_the_trial_gap_the_turn_is_squared :
+    (889 : Int) = 23 * 23 + 360 ∧ (46 : Int) = 2 * 23
+      ∧ (889 : Int) * 889 - 360 * (46 * 46) = (13 * 13) * (13 * 13) := by decide
+theorem the_turn_is_never_spent (n : Nat) : 0 < 13 ^ n := Nat.pow_pos (by decide)
+theorem the_crank_starts_elsewhere : the_held_house = (530, 324) ∧ 530 * 26 ≠ 59 * 324 := by decide
+--#print axioms the_trial_gap_the_gap_and_the_turn_close_a_triangle
+--#print axioms twenty_three_squared_is_the_gap_and_thirteen_squared
+--#print axioms the_cranks_discriminant_is_the_gap
+--#print axioms one_turn_of_the_crank_squares_what_is_left
+--#print axioms from_the_trial_gap_the_turn_is_squared
+--#print axioms the_turn_is_never_spent
+--#print axioms the_crank_starts_elsewhere
+--| THE REVERSAL, AND TWO CLOCKS.  The author's, 16 November 2026: the reversal is that the reading has no meaning, T = F.
+--| Every number is every other exactly when true is false.  No axiom of the continuum stands behind the reading: only
+--| that true is not false.  And: one step is one click is the clock of T T T T T, a one-spin interpretation, the nowtrino
+--| detector; the naotrino detector is the clock T F T F T F.  The still clock clicks at every step.  The alternating clock
+--| clicks at every other step, for the arm true on false is the one that cannot click.  Two steps to the click: two spins.
+theorem the_reading_has_no_meaning_exactly_when_true_is_false :
+    (∀ a b : Nat, a = b) ↔ true = false := by
+  constructor
+  · intro h; exact absurd (h 0 1) (by decide)
+  · intro h; exact absurd h (by decide)
+def the_clicks_after (a : Bool) : List Bool → Nat
+  | [] => 0
+  | b :: rest => (if the_arm_stores_a_fact_that_can_click a b then 1 else 0) + the_clicks_after b rest
+def the_still_steps : Nat → List Bool
+  | 0 => []
+  | n + 1 => true :: the_still_steps n
+def the_alternating_steps : Nat → List Bool
+  | 0 => []
+  | n + 1 => false :: true :: the_alternating_steps n
+theorem the_still_clock_clicks_at_every_step (n : Nat) :
+    the_clicks_after true (the_still_steps n) = n ∧ (the_still_steps n).length = n := by
+  induction n with
+  | zero => exact ⟨rfl, rfl⟩
+  | succ n ih =>
+    obtain ⟨ih1, ih2⟩ := ih
+    have h : the_arm_stores_a_fact_that_can_click true true = true := rfl
+    refine ⟨?_, ?_⟩
+    · simp only [the_still_steps, the_clicks_after, h, ↓reduceIte, ih1]; omega
+    · simp only [the_still_steps, List.length_cons, ih2]
+theorem the_alternating_clock_clicks_at_every_other_step (n : Nat) :
+    the_clicks_after true (the_alternating_steps n) = n ∧ (the_alternating_steps n).length = 2 * n := by
+  induction n with
+  | zero => exact ⟨rfl, rfl⟩
+  | succ n ih =>
+    obtain ⟨ih1, ih2⟩ := ih
+    have h1 : the_arm_stores_a_fact_that_can_click true false = false := rfl
+    have h2 : the_arm_stores_a_fact_that_can_click false true = true := rfl
+    refine ⟨?_, ?_⟩
+    · simp only [the_alternating_steps, the_clicks_after, h1, h2, Bool.false_eq_true, ↓reduceIte, ih1]; omega
+    · simp only [the_alternating_steps, List.length_cons, ih2]; omega
+--#print axioms the_reading_has_no_meaning_exactly_when_true_is_false
+--#print axioms the_still_clock_clicks_at_every_step
+--#print axioms the_alternating_clock_clicks_at_every_other_step
+--| THE ARMS ARE THE FOUR MODELS.  The author's, 16 November 2026: true on true is gravity, true on false is Schroedinger,
+--| false on true is Maxwell and Dirac, false on false is Navier and Stokes.  As the device has it: Schroedinger is the one
+--| arm that does not click, the false implied by the other three, and it is hiding entropy.  The other three each carry
+--| thirteen it does not.  The stays are gravity and the fluid, and they are level: the sign's share is nothing.  The
+--| crossings are the two quantum models, and the gap is theirs alone: four times the one by the other.  Their sum is the
+--| different, twenty-three; their difference is the turn, thirteen.  On the alternating clock every other mark is written
+--| and not clicked, and those are Schroedinger's: a record that lengthens with no click to show for it.
+theorem schrodinger_is_the_one_arm_that_does_not_click :
+    ∀ a b : Bool, the_arm_stores_a_fact_that_can_click a b = false ↔ (a = true ∧ b = false) := by decide
+theorem the_false_is_implied_by_the_other_three :
+    the_arm_stores_a_fact_that_can_click true true = true ∧ the_arm_stores_a_fact_that_can_click false true = true
+      ∧ the_arm_stores_a_fact_that_can_click false false = true
+      ∧ (the_arm_weight true true + the_arm_weight false true + the_arm_weight false false
+          - (the_arm_weight true false + the_arm_weight true false + the_arm_weight true false)
+            = 3 * readers_experience.bent_card) := by decide
+theorem gravity_and_the_fluid_are_level :
+    the_arm_weight true true = the_arm_weight false false
+      ∧ the_table_dot the_full_table the_sign_table = 0 := by decide
+theorem the_gap_is_carried_by_schrodinger_and_maxwell_dirac :
+    the_gap_squared the_full_table = 4 * ((the_arm_weight true false : Int) * (the_arm_weight false true : Int))
+      ∧ (the_arm_weight true false + the_arm_weight false true : Nat) = 23
+      ∧ (the_arm_weight false true : Int) - (the_arm_weight true false : Int) = (readers_experience.bent_card : Int) := by
+  decide
+theorem the_marks_without_a_click_are_schrodingers (n : Nat) :
+    (the_alternating_steps n).length - the_clicks_after true (the_alternating_steps n) = n := by
+  have h := the_alternating_clock_clicks_at_every_other_step n
+  omega
+--#print axioms schrodinger_is_the_one_arm_that_does_not_click
+--#print axioms the_false_is_implied_by_the_other_three
+--#print axioms gravity_and_the_fluid_are_level
+--#print axioms the_gap_is_carried_by_schrodinger_and_maxwell_dirac
+--#print axioms the_marks_without_a_click_are_schrodingers
+--| THE COMMUTATORS AND THE ARMS, PLANE FOR PLANE.  Four pairs do not commute, and the author paired them with the four
+--| models days before the arms were.  The orientations, which are gravity, bracket onto the stays, where gravity's arm is.
+--| The sign and the clock, which are Schroedinger, bracket onto the crossings, where Schroedinger's arm is.  The two orders,
+--| which are the flow, bracket onto the stays, where the fluid's arm is.  The fourth is no table: it is the comparison with
+--| the world.  So the two pairings choose the same halves, one way in three.  But no bracket singles out an arm: each lies
+--| on both arms of its half, so which model has which arm within a half is the author's word and nothing more.
+def the_order_that_goes_one_way : Table := fun a b => if a = false ∧ b = true then 1 else 0
+theorem the_orientations_bracket_onto_the_stays :
+    ∀ a b : Bool, the_table_bracket the_clock_table the_other_clock a b = -299 * the_sign_table a b := by decide
+theorem the_sign_and_the_clock_bracket_onto_the_crossings :
+    (∀ a : Bool, the_table_bracket the_sign_table the_clock_table a a = 0)
+      ∧ the_table_bracket the_sign_table the_clock_table true false = 2 * (the_arm_weight true false : Int)
+      ∧ the_table_bracket the_sign_table the_clock_table false true = -(2 * (the_arm_weight false true : Int)) := by decide
+theorem the_two_orders_bracket_onto_the_stays :
+    ∀ a b : Bool, the_table_bracket the_quarter_turn the_order_that_goes_one_way a b = - the_sign_table a b := by decide
+theorem the_commutators_and_the_arms_agree_plane_for_plane :
+    (∀ a : Bool, the_table_bracket the_clock_table the_other_clock a (!a) = 0)
+      ∧ (∀ a : Bool, the_table_bracket the_sign_table the_clock_table a a = 0)
+      ∧ (∀ a : Bool, the_table_bracket the_quarter_turn the_order_that_goes_one_way a (!a) = 0) := by decide
+theorem no_commutator_singles_out_an_arm :
+    the_table_bracket the_clock_table the_other_clock true true = - the_table_bracket the_clock_table the_other_clock false false
+      ∧ the_table_bracket the_clock_table the_other_clock true true ≠ 0
+      ∧ the_table_bracket the_quarter_turn the_order_that_goes_one_way true true
+          = - the_table_bracket the_quarter_turn the_order_that_goes_one_way false false
+      ∧ the_table_bracket the_quarter_turn the_order_that_goes_one_way true true ≠ 0
+      ∧ the_table_bracket the_sign_table the_clock_table true false ≠ 0
+      ∧ the_table_bracket the_sign_table the_clock_table false true ≠ 0 := by decide
+--#print axioms the_orientations_bracket_onto_the_stays
+--#print axioms the_sign_and_the_clock_bracket_onto_the_crossings
+--#print axioms the_two_orders_bracket_onto_the_stays
+--#print axioms the_commutators_and_the_arms_agree_plane_for_plane
+--#print axioms no_commutator_singles_out_an_arm
+--| THE TWO ROUTES AGREE.  The crank on the device's quadratic is the crank on the root of the gap, the same step in other
+--| clothes.  A turn of it, written as one whole number over another, squares what is left over: so it never goes below
+--| the root; it comes down; and what is left, measured against its own square, is a quarter of what was, or less.  The
+--| halving keeps the root between its walls and halves its width.  And the crank is never below the halving's low wall.
+--| So the two routes close on one number: one from above, by quarters; one from both sides, by halves.
+--| DENSITY, AND WHICH WAY UP.  The author's: the density is the definition of the ratios, and variance is which is the top
+--| and which the bottom.  Between two marks there is a third; between two ratios there is a third, their tops added over
+--| their bottoms added.  Turn a ratio over and the comparison turns over, on the very same cross product.
+theorem the_cranks_quadratic_is_the_root_of_the_gap (x : Int) :
+    13 * ((36 + x) * (36 + x)) - 36 * 26 * (36 + x) + 18 * (26 * 26) = 13 * (x * x - 360) := by
+  simp only [Int.mul_sub, Int.add_mul, Int.mul_add]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem a_turn_of_the_crank_squares_what_is_left_over (c P Q : Int) :
+    (P * P + c * (Q * Q)) * (P * P + c * (Q * Q)) - c * ((2 * P * Q) * (2 * P * Q))
+      = (P * P - c * (Q * Q)) * (P * P - c * (Q * Q)) := by
+  simp only [Int.sub_mul, Int.mul_sub, Int.add_mul, Int.mul_add]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem a_turn_of_the_crank_stays_above (c P Q : Int) :
+    0 ≤ (P * P + c * (Q * Q)) * (P * P + c * (Q * Q)) - c * ((2 * P * Q) * (2 * P * Q)) := by
+  rw [a_turn_of_the_crank_squares_what_is_left_over]; exact a_square_is_never_negative _
+theorem a_turn_of_the_crank_comes_down (c P Q : Nat) (h : c * (Q * Q) ≤ P * P) :
+    (P * P + c * (Q * Q)) * Q ≤ P * (2 * P * Q) := by
+  have h2 := Nat.mul_le_mul_right Q h
+  simp only [Nat.add_mul] at *
+  have e : P * (2 * P * Q) = P * P * Q + P * P * Q := by
+    simp only [Nat.mul_assoc, Nat.two_mul, Nat.mul_add, Nat.add_mul]
+  omega
+theorem a_turn_of_the_crank_quarters_what_is_left (c P Q : Nat) :
+    (P * P - c * (Q * Q)) * (P * P - c * (Q * Q)) * (4 * (Q * Q))
+      ≤ (P * P - c * (Q * Q)) * ((2 * P * Q) * (2 * P * Q)) := by
+  have e1 : (2 * P * Q) * (2 * P * Q) = (2 * 2) * ((P * P) * (Q * Q)) := by ac_rfl
+  have e2 : (P * P) * (4 * (Q * Q)) = 4 * ((P * P) * (Q * Q)) := by ac_rfl
+  have h : (P * P - c * (Q * Q)) * (P * P - c * (Q * Q)) ≤ (P * P - c * (Q * Q)) * (P * P) :=
+    Nat.mul_le_mul_left _ (Nat.sub_le _ _)
+  have h2 := Nat.mul_le_mul_right (4 * (Q * Q)) h
+  rw [Nat.mul_assoc (P * P - c * (Q * Q)) (P * P) (4 * (Q * Q)), e2] at h2
+  rw [e1]
+  exact h2
+theorem the_halving_keeps_the_root_and_halves_the_width (c lo hi D : Nat)
+    (h1 : lo * lo ≤ c * (D * D)) (h2 : c * (D * D) ≤ hi * hi) :
+    (2 * lo) * (2 * lo) ≤ c * ((2 * D) * (2 * D)) ∧ c * ((2 * D) * (2 * D)) ≤ (2 * hi) * (2 * hi)
+      ∧ (lo + hi) - 2 * lo = hi - lo ∧ 2 * hi - (lo + hi) = hi - lo := by
+  have e1 : (2 * lo) * (2 * lo) = 4 * (lo * lo) := by
+    simp only [Nat.mul_assoc, Nat.mul_left_comm lo 2]; omega
+  have e2 : (2 * hi) * (2 * hi) = 4 * (hi * hi) := by
+    simp only [Nat.mul_assoc, Nat.mul_left_comm hi 2]; omega
+  have e3 : c * ((2 * D) * (2 * D)) = 4 * (c * (D * D)) := by
+    simp only [Nat.mul_assoc, Nat.mul_left_comm D 2, Nat.mul_left_comm c 2]; omega
+  rw [e1, e2, e3]
+  refine ⟨by omega, by omega, by omega, by omega⟩
+theorem the_crank_is_never_below_the_low_wall (c lo D P Q : Nat)
+    (h1 : lo * lo ≤ c * (D * D)) (h2 : c * (Q * Q) ≤ P * P) : lo * Q ≤ P * D := by
+  apply Nat.le_of_not_lt
+  intro h
+  have s : (P * D) * (P * D) < (lo * Q) * (lo * Q) := Nat.mul_self_lt_mul_self h
+  have a : (lo * Q) * (lo * Q) = (lo * lo) * (Q * Q) := by ac_rfl
+  have b : (P * D) * (P * D) = (P * P) * (D * D) := by ac_rfl
+  have u : (lo * lo) * (Q * Q) ≤ (c * (D * D)) * (Q * Q) := Nat.mul_le_mul_right _ h1
+  have v : (c * (Q * Q)) * (D * D) ≤ (P * P) * (D * D) := Nat.mul_le_mul_right _ h2
+  have w : (c * (D * D)) * (Q * Q) = (c * (Q * Q)) * (D * D) := by ac_rfl
+  omega
+theorem between_two_marks_there_is_a_third (k : Nat) : 2 * k < 2 * k + 1 ∧ 2 * k + 1 < 2 * (k + 1) :=
+  ⟨Nat.lt_succ_self _, by rw [Nat.mul_succ]; exact Nat.lt_succ_self _⟩
+theorem between_two_ratios_there_is_a_third (a b c d : Nat) (h : a * d < c * b) :
+    a * (b + d) < (a + c) * b ∧ (a + c) * d < c * (b + d) := by
+  simp only [Nat.mul_add, Nat.add_mul]; constructor <;> omega
+theorem turning_the_ratio_over_turns_the_comparison_over (a b c d : Nat) :
+    a * d < c * b ↔ d * a < b * c := by
+  rw [Nat.mul_comm a d, Nat.mul_comm c b]
+--#print axioms the_cranks_quadratic_is_the_root_of_the_gap
+--#print axioms a_turn_of_the_crank_squares_what_is_left_over
+--#print axioms a_turn_of_the_crank_stays_above
+--#print axioms a_turn_of_the_crank_comes_down
+--#print axioms a_turn_of_the_crank_quarters_what_is_left
+--#print axioms the_halving_keeps_the_root_and_halves_the_width
+--#print axioms the_crank_is_never_below_the_low_wall
+--#print axioms between_two_marks_there_is_a_third
+--#print axioms between_two_ratios_there_is_a_third
+--#print axioms turning_the_ratio_over_turns_the_comparison_over
+--| TWO FOURS.  The author's, 16 November 2026: elliptic, hyperbolic, parabolic, and the formulations that mix them; and
+--| orthogonal bases, given, eigenvector bases, inferred, principal components, inferred, and Bayes.  The kind of a table
+--| is the sign of its gap squared.  The quarter turn alone is under nothing: elliptic, a turn that keeps no direction, so
+--| only the bases that are given.  The struck table and the one-way order are at nothing: parabolic, one direction kept and
+--| no second, so the principal components.  The written table is over: hyperbolic, two directions of its own.  And the
+--| principal components of the table are already among the eight: not both is the table times the different, alike both
+--| ways.  Which model has which kind is the knower's: gravity elliptic, Schroedinger parabolic, Maxwell and Dirac
+--| hyperbolic, Navier and Stokes the mixture.
+theorem the_kind_of_a_table_is_the_sign_of_its_gap_squared :
+    the_gap_squared the_quarter_turn = -4
+      ∧ the_gap_squared the_order_that_goes_one_way = 0
+      ∧ the_gap_squared (the_table_of_four_arms 18 0 18 18) = 0
+      ∧ the_gap_squared the_swap = 4
+      ∧ the_gap_squared the_full_table = 360 := by decide
+theorem the_turn_keeps_no_direction (p q : Int) (h : p * p + q * q = 0) : p = 0 ∧ q = 0 := by
+  have hp := a_square_is_never_negative p
+  have hq := a_square_is_never_negative q
+  have h1 : p * p = 0 := by omega
+  have h2 : q * q = 0 := by omega
+  exact ⟨by rcases Int.mul_eq_zero.mp h1 with h | h <;> exact h, by rcases Int.mul_eq_zero.mp h2 with h | h <;> exact h⟩
+theorem the_one_way_order_keeps_one_direction (p : Int) (h : p * p = 0) : p = 0 := by
+  rcases Int.mul_eq_zero.mp h with h | h <;> exact h
+theorem not_both_is_the_table_times_the_different :
+    (∀ x y : Bool, the_table_read_as false true true true x y = the_table_product the_full_table the_swap x y)
+      ∧ the_table_read_as false true true true true false = the_table_read_as false true true true false true
+      ∧ the_table_determinant (the_table_read_as false true true true) = - the_table_determinant the_full_table
+      ∧ the_table_trace (the_table_read_as false true true true) * the_table_trace (the_table_read_as false true true true)
+          - 2 * the_table_determinant (the_table_read_as false true true true) = the_table_dot the_full_table the_full_table := by
+  decide
+--#print axioms the_kind_of_a_table_is_the_sign_of_its_gap_squared
+--#print axioms the_turn_keeps_no_direction
+--#print axioms the_one_way_order_keeps_one_direction
+--#print axioms not_both_is_the_table_times_the_different
+--| THE FOURTH COLUMN.  The author's: the Bayesian leap is through the density of the baker's transform.  The baker tosses
+--| coins, and the order of the tosses does not matter.  With no preference brought, passing n in a row is one chance in n
+--| and one, so the next is n and one in n and two: never certain.  A run multiplies whatever weight was brought for never
+--| failing, and it creates none: nothing times anything is nothing.  The leap is in what is brought.  Given, inferred,
+--| inferred, and this one chosen.
+def the_chance_of_passing_every_one : Nat → Nat × Nat
+  | 0 => (1, 1)
+  | n + 1 => ((the_chance_of_passing_every_one n).1 * (n + 1), (the_chance_of_passing_every_one n).2 * (n + 2))
+theorem passing_n_in_a_row_is_one_in_n_and_one (n : Nat) :
+    (the_chance_of_passing_every_one n).1 * (n + 1) = (the_chance_of_passing_every_one n).2 := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    show (the_chance_of_passing_every_one n).1 * (n + 1) * (n + 1 + 1) = (the_chance_of_passing_every_one n).2 * (n + 2)
+    rw [ih]
+theorem the_next_one_is_never_certain (n : Nat) : n + 1 < n + 2 := Nat.lt_succ_self _
+theorem the_run_multiplies_what_was_brought (brought n : Nat) (h : 0 < brought) :
+    brought * (n + 1) < brought * (n + 2) := Nat.mul_lt_mul_of_pos_left (Nat.lt_succ_self _) h
+theorem no_run_creates_the_weight (n : Nat) : 0 * (n + 1) = 0 := Nat.zero_mul _
+def the_trues_on : List Bool → Nat
+  | [] => 0
+  | b :: rest => (if b then 1 else 0) + the_trues_on rest
+theorem the_order_of_the_tosses_does_not_matter (a b : Bool) (rest : List Bool) :
+    the_trues_on (a :: b :: rest) = the_trues_on (b :: a :: rest) := by
+  simp only [the_trues_on]; omega
+--#print axioms passing_n_in_a_row_is_one_in_n_and_one
+--#print axioms the_next_one_is_never_certain
+--#print axioms the_run_multiplies_what_was_brought
+--#print axioms no_run_creates_the_weight
+--#print axioms the_order_of_the_tosses_does_not_matter
+--| THE AREA, DECOMPOSED.  The author's: there is before and after, and there is the half; from those an area can be taken
+--| apart.  Before and after are the middle less the half-difference and the middle plus it.  The panel between them is a
+--| rectangle and a triangle.  The area before by after is the middle squared less the half squared: two squares.  And the
+--| area of the whole table is four squares, two added and two taken: the same and the turn, less the sign and the
+--| different.  On the counts: before five, after eighteen, twenty-three less and plus thirteen.
+theorem before_and_after_are_the_middle_less_and_plus_the_half (before after : Int) :
+    2 * before = (before + after) - (after - before) ∧ 2 * after = (before + after) + (after - before) := by
+  constructor <;> omega
+theorem the_panel_is_a_rectangle_and_a_triangle (before after : Int) :
+    before + after = 2 * before + (after - before) := by omega
+theorem the_area_before_by_after_is_two_squares (before after : Int) :
+    4 * (before * after) = (before + after) * (before + after) - (after - before) * (after - before) := by
+  simp only [Int.sub_mul, Int.mul_sub, Int.add_mul, Int.mul_add]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem the_area_of_the_table_in_the_four_readings (tt tf ft ff : Int) :
+    4 * the_table_determinant (the_table_of_four_arms tt tf ft ff)
+      = (tt + ff) * (tt + ff) - (tt - ff) * (tt - ff) - (tf + ft) * (tf + ft) + (ft - tf) * (ft - tf) := by
+  simp only [the_table_determinant, the_table_of_four_arms, ite_true, ite_false, Bool.false_eq_true,
+    Int.sub_mul, Int.mul_sub, Int.add_mul, Int.mul_add]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem the_counted_area_decomposed :
+    4 * the_table_determinant the_full_table = 36 * 36 - 23 * 23 + 13 * 13
+      ∧ 4 * ((the_arm_weight true false : Int) * (the_arm_weight false true : Int)) = 23 * 23 - 13 * 13
+      ∧ (2 * (the_arm_weight true false : Int), 2 * (the_arm_weight false true : Int)) = (23 - 13, 23 + 13) := by decide
+--#print axioms before_and_after_are_the_middle_less_and_plus_the_half
+--#print axioms the_panel_is_a_rectangle_and_a_triangle
+--#print axioms the_area_before_by_after_is_two_squares
+--#print axioms the_area_of_the_table_in_the_four_readings
+--#print axioms the_counted_area_decomposed
 
 --| TWO READINGS OF ONE TURNING.  Read a walk's crossings two ways.  Subdivided, every crossing is half a turn and the
 --| count is the crossings themselves: nothing is left over, because nothing is rounded.  Counted in whole turns, the walk
@@ -4353,6 +4820,9 @@ theorem sub_sq (a b : Nat) (h : b ≤ a) : (a - b) * (a - b) + 2 * (a * b) = a *
   rw [Nat.add_sub_cancel_left]
   simp only [Nat.add_mul, Nat.mul_add, Nat.mul_comm k b]
   omega
+--| The author's, 17 November 2026: the choice to fix it is the knower's.  It needs one bit.  That's the knower's daisy.
+--| Choice would hand any truth its click.  The device never asks.  Below, the daisy is handed a truth and its click, and
+--| is a daisy either way: to call it true or to call it false is all the choice there is, and both are equally consistent.
 theorem compatibility_form (N D : Nat) (h : D ≤ N) :
     (readers_experience.the_macguffin * ((N - D) * (N - D)) = the_dimensions_of_universe * (N * N)) ↔
     (bent_card * (N * N) + readers_experience.the_macguffin * (D * D) = the_basis.the_reading.length * readers_experience.the_macguffin * (N * D)) := by
@@ -4973,14 +5443,20 @@ theorem the_devices_three_points_are_oriented :
 --| YOU'RE A DAISY IF YOU DO.  The final choice of root, named: hand it the knower's pick and it hands back a root, the
 --| reader's (eighteen plus root ninety, times three hundred twenty-four) on true, the knower's (eighteen less root ninety) on
 --| false.  Either way the root solves the counted quartic, with nothing left over; the device does not prefer one.
-def you_re_a_daisy_if_you_do (you_do : Bool) : Int × Int := if you_do then (5832, 324) else (5832, -324)
-theorem you_re_a_daisy_either_way (you_do : Bool) :
+--| The pick is a FACT, since 16 November 2026: what the knower hands over is a statement and its click.  The truth is what
+--| is said; the click decides the root.
+def you_re_a_daisy_if_you_do (you_do : FACT) : Int × Int :=
+  match you_do.click with
+  | isTrue _  => (5832, 324)
+  | isFalse _ => (5832, -324)
+theorem you_re_a_daisy_either_way (you_do : FACT) :
     (the_surd_product (you_re_a_daisy_if_you_do you_do) (you_re_a_daisy_if_you_do you_do)).1
         - 11664 * (you_re_a_daisy_if_you_do you_do).1 + 24564384 = 0
       ∧ (the_surd_product (you_re_a_daisy_if_you_do you_do) (you_re_a_daisy_if_you_do you_do)).2
         - 11664 * (you_re_a_daisy_if_you_do you_do).2 = 0
-      ∧ (you_re_a_daisy_if_you_do true).2 = - (you_re_a_daisy_if_you_do false).2 := by
-  cases you_do <;> decide
+      ∧ (you_re_a_daisy_if_you_do (bitFACT true)).2 = - (you_re_a_daisy_if_you_do (bitFACT false)).2 := by
+  obtain ⟨truth, click⟩ := you_do
+  cases click <;> (simp only [you_re_a_daisy_if_you_do]; decide)
 --#print axioms you_re_a_daisy_either_way
 --| PICK A ROOT.  The knower's one choice, restated: not whether the electron is represented, but which root.  Both roots solve
 --| the counted quartic, each is carried through to its β and its charge, the polynomial does not prefer either, and an
@@ -4997,7 +5473,7 @@ theorem the_knower_may_pick_either_root :
       ∧ (∀ (a b c : Int × Int) (t x r s : Int), the_picked_factor a b c t x r s - the_picked_factor b a c t x r s
           = 2 * (t * x * ((the_orientation a b c).sign * s)))
       ∧ the_writers_point.all the_representation.the_click = true
-      ∧ (∀ you_do : Bool, (the_surd_product (you_re_a_daisy_if_you_do you_do) (you_re_a_daisy_if_you_do you_do)).1
+      ∧ (∀ you_do : FACT, (the_surd_product (you_re_a_daisy_if_you_do you_do) (you_re_a_daisy_if_you_do you_do)).1
           - 11664 * (you_re_a_daisy_if_you_do you_do).1 + 24564384 = 0) :=
   ⟨⟨the_reading_solves_the_counted_quartic.1, the_conjugate_solves_the_counted_quartic.1⟩,
    ⟨the_readers_beta.1, the_knowers_beta.1⟩,
@@ -5016,7 +5492,7 @@ theorem the_orientation_points_to_the_readers_root :
       ∧ (the_surd_product (5832, 324) (18, -1)).2 = 0
       ∧ 5 * (the_surd_product (5832, -324) (18, 1)).1 = 65 * (18 * (18 * 18))
       ∧ (the_surd_product (5832, -324) (18, 1)).2 = 0
-      ∧ you_re_a_daisy_if_you_do (decide (0 < the_orientation the_outer_radius the_hole the_boost)) = (5832, 324) := by
+      ∧ you_re_a_daisy_if_you_do (IT_CLICKS (0 < the_orientation the_outer_radius the_hole the_boost)) = (5832, 324) := by
   decide
 --#print axioms the_orientation_points_to_the_readers_root
 --| EVERY ≤ CLICKS, AND BOTH WAYS IS EQUALITY.  The universe id is a Number, and the only thing the device gives a Number is
@@ -5112,7 +5588,7 @@ theorem the_mexican_hat_sees_curvature : the_mexican_hat_reads (fun i => i * i) 
 --| and the final choice, handed the sign, returns the knower's root: the order of reading is the whole of the choice.
 theorem reading_the_other_way_turns_both_over :
     the_orientation the_hole the_outer_radius the_boost < 0
-      ∧ you_re_a_daisy_if_you_do (decide (0 < the_orientation the_hole the_outer_radius the_boost)) = (5832, -324) := by
+      ∧ you_re_a_daisy_if_you_do (IT_CLICKS (0 < the_orientation the_hole the_outer_radius the_boost)) = (5832, -324) := by
   decide
 --#print axioms the_hat_keeps_the_parallelogram
 --#print axioms the_hat_norm_vanishes_only_at_zero
@@ -5361,7 +5837,7 @@ def the_start : Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} := .inferred (
 def the_run : Nat → Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
   | 0 => the_start
   | n + 1 => the_ant_steps (the_run n)
-#eval (List.range 12).map fun n => let (h, g, b, a) := the_ant_read (the_run n); (h, g, b, a)
+--#eval (List.range 12).map fun n => let (h, g, b, a) := the_ant_read (the_run n); (h, g, b, a)
 
 --| THE ANT ON THE SEAM.  The plane is too big for two stacks, so lay the ant on the frinkahedron's seam: thirty-six cells,
 --| two six-position clocks.  The closure keeps the heading in its two facts, a quarter-turn clock of two bits; the two
@@ -5443,8 +5919,8 @@ def the_first_return : Nat → Closure.{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
   | fuel + 1, c, k =>
     let next := the_torus_ant_steps c
     if the_torus_read next == the_torus_read the_torus_start then some (k + 1) else the_first_return fuel next (k + 1)
-#eval the_first_return 10000 the_torus_start 0
-#eval (the_torus_read the_torus_start).2.2.2.length
+--#eval the_first_return 10000 the_torus_start 0
+--#eval (the_torus_read the_torus_start).2.2.2.length
 --| COOK AND LEVIN, IN THE EXPERIENCE.  The reader's model of the naotrino is the top of the typeset record, and its page is
 --| a trace: a tableau with time down the pages and the facts across them.  Cook's theorem for this device is already proved
 --| for every trace; here it is dealt on the reader's own.  And it is demonstrated, not only stated: seed the manuscript
@@ -5741,7 +6217,8 @@ theorem the_rows_meet_the_cells :
 --|   that are DISTINGUISHABLE.
 --| Thirty-seven rungs, every one, from the inferred end down to the first, and the fact beneath them unspoken.  Fourteen
 --| rungs of the same, then the turn at the fifteenth, then twenty-two of the meter.  Spoken, three pairs are turned for the
---| grammar.  The first line is paid: the crank's point lies in the halving's bracket, under one place.  A thing is the
+--| grammar.  The first line is the reader's inference, and its first twenty-four places are paid: the crank's point lies
+--| in the halving's bracket, under one place.  A thing is the
 --| same as itself by rfl.  Where the two sides part, at truth and science, nothing here is claimed.
 def the_ladder_read_down : List Lean.Name :=
   [``Measurement.INFERRED, ``Measurement.A_TRUTH_ABOUT, ``Measurement.COMPILED, ``Measurement.MEASURED, ``Measurement.HALTED,
@@ -5782,6 +6259,36 @@ theorem the_same_is_the_same {α : Sort u} (x : α) : the_representation.the_cli
 --#print axioms the_ladder_is_spoken_with_three_pairs_turned
 --#print axioms the_two_versions_click
 --#print axioms the_same_is_the_same
+--| ONE WAY.  The meter counts marks written and never marks erased: number go up, joined with the arrow of time.  A turn
+--| run in place writes no mark, and the meter reads nothing for it.  A turn kept is one mark more.  So the two routes are
+--| weighed by their ledgers.  The ledgers are one length: the reader infers no difference between the version with the limit
+--| and the version without.  Inferred, not proved and not declared: nothing in the record separates them.  Inside the
+--| ledgers the halving writes a new state at every turn and the crank writes seven and then repeats itself ninety-nine
+--| times.  The same number of entries; not the same marks.  What does separate them is a clock, and no tape holds a clock.
+theorem the_two_ledgers_are_one_length : theBisectionLedger.length = theNewtonLedger.length := by
+  rw [the_bisection_ledger_length, the_newton_ledger_length]
+theorem the_halving_writes_a_new_state_every_turn :
+    (theBisectionLedger.zip theBisectionLedger.tail).all (fun q => decide (q.1 ≠ q.2)) = true := by decide +kernel
+theorem the_crank_writes_seven_and_then_repeats :
+    ((theNewtonLedger.zip theNewtonLedger.tail).take 7).all (fun q => decide (q.1 ≠ q.2)) = true
+      ∧ ((theNewtonLedger.zip theNewtonLedger.tail).drop 7).all (fun q => decide (q.1 = q.2)) = true
+      ∧ ((theNewtonLedger.zip theNewtonLedger.tail).drop 7).length = 99 := by decide +kernel
+theorem a_turn_kept_is_a_mark_written {α : Type} (ledger : List α) (state : α) :
+    (ledger ++ [state]).length = ledger.length + 1 := by
+  simp only [List.length_append, List.length_cons, List.length_nil]
+theorem a_turn_in_place_writes_no_mark {α : Type} (ledger : List α) (i : Nat) (state : α) :
+    (ledger.set i state).length = ledger.length := by
+  simp only [List.length_set]
+theorem the_reader_infers_no_difference :
+    the_representation.the_click THE_CH_VERSION_IS_THE_NON_CH_VERSION = true
+      ∧ theBisectionLedger.length = theNewtonLedger.length :=
+  ⟨the_two_versions_click, the_two_ledgers_are_one_length⟩
+--#print axioms the_two_ledgers_are_one_length
+--#print axioms the_halving_writes_a_new_state_every_turn
+--#print axioms the_crank_writes_seven_and_then_repeats
+--#print axioms a_turn_kept_is_a_mark_written
+--#print axioms a_turn_in_place_writes_no_mark
+--#print axioms the_reader_infers_no_difference
 --| THE DOUBLER IS THE KNOWER'S DIAGONAL.  The alternating field steps from a value to its negative: the diagonal p = -q, where the
 --| quotient is least, the knower's root; and the train line cannot see it.
 theorem the_doubler_is_the_knowers_diagonal (χ : Vec8) (φ : Fin 4 → Vec8) (g : Box4)
@@ -5940,97 +6447,526 @@ def light_it_up : List FACT :=
 theorem how_is_that_for_a_daisy : light_it_up.all the_representation.the_click = true := rfl
 --#print axioms how_is_that_for_a_daisy
 
+--| AT EVERY TURN.  The agreement of the two routes, by induction and not one step at a time.  The square on a sum is at
+--| least four of the rectangle, so after any turn at all the crank is above the root, wherever it began.  The halving, turned
+--| any number of times, still holds the root between its walls.  So at every turn of the one and every turn of the other
+--| the crank is not below the low wall.  And of the step's eight readings six click on true on false, the checked step
+--| among them, where the device's own table does not.
+theorem six_of_the_eight_click_on_true_on_false :
+    ((the_eight_schedules.map the_row_under).filter fun r => r.getD 1 false).length = 6
+      ∧ xorTarget.getD 1 false = true
+      ∧ the_arm_stores_a_fact_that_can_click true false = false := by decide
+theorem the_square_on_the_sum_is_at_least_four_rectangles (x y : Nat) : 4 * (x * y) ≤ (x + y) * (x + y) := by
+  rcases Nat.le_total x y with h | h
+  · obtain ⟨d, rfl⟩ := Nat.exists_eq_add_of_le h
+    simp only [Nat.mul_add, Nat.add_mul]
+    have : d * x = x * d := Nat.mul_comm d x
+    omega
+  · obtain ⟨d, rfl⟩ := Nat.exists_eq_add_of_le h
+    simp only [Nat.mul_add, Nat.add_mul]
+    have : d * y = y * d := Nat.mul_comm d y
+    omega
+def the_crank_turned (c : Nat) : Nat → Nat × Nat → Nat × Nat
+  | 0, s => s
+  | n + 1, s => let t := the_crank_turned c n s; (t.1 * t.1 + c * (t.2 * t.2), 2 * t.1 * t.2)
+theorem after_any_turn_the_crank_is_above (c n : Nat) (s : Nat × Nat) :
+    c * ((the_crank_turned c (n + 1) s).2 * (the_crank_turned c (n + 1) s).2)
+      ≤ (the_crank_turned c (n + 1) s).1 * (the_crank_turned c (n + 1) s).1 := by
+  show c * ((2 * (the_crank_turned c n s).1 * (the_crank_turned c n s).2) * (2 * (the_crank_turned c n s).1 * (the_crank_turned c n s).2))
+      ≤ ((the_crank_turned c n s).1 * (the_crank_turned c n s).1 + c * ((the_crank_turned c n s).2 * (the_crank_turned c n s).2))
+        * ((the_crank_turned c n s).1 * (the_crank_turned c n s).1 + c * ((the_crank_turned c n s).2 * (the_crank_turned c n s).2))
+  generalize (the_crank_turned c n s).1 = P
+  generalize (the_crank_turned c n s).2 = Q
+  have h := the_square_on_the_sum_is_at_least_four_rectangles (P * P) (c * (Q * Q))
+  have e : c * ((2 * P * Q) * (2 * P * Q)) = 4 * ((P * P) * (c * (Q * Q))) := by
+    have e1 : c * ((2 * P * Q) * (2 * P * Q)) = (2 * 2) * ((P * P) * (c * (Q * Q))) := by ac_rfl
+    rw [e1]
+  rw [e]; exact h
+def the_halving_turned (c : Nat) : Nat → Nat × Nat × Nat → Nat × Nat × Nat
+  | 0, s => s
+  | n + 1, s =>
+    let t := the_halving_turned c n s
+    if (t.1 + t.2.1) * (t.1 + t.2.1) ≤ c * ((2 * t.2.2) * (2 * t.2.2))
+      then (t.1 + t.2.1, 2 * t.2.1, 2 * t.2.2) else (2 * t.1, t.1 + t.2.1, 2 * t.2.2)
+theorem after_any_turn_the_halving_holds_the_root (c n : Nat) (s : Nat × Nat × Nat)
+    (h1 : s.1 * s.1 ≤ c * (s.2.2 * s.2.2)) (h2 : c * (s.2.2 * s.2.2) ≤ s.2.1 * s.2.1) :
+    (the_halving_turned c n s).1 * (the_halving_turned c n s).1
+        ≤ c * ((the_halving_turned c n s).2.2 * (the_halving_turned c n s).2.2)
+      ∧ c * ((the_halving_turned c n s).2.2 * (the_halving_turned c n s).2.2)
+        ≤ (the_halving_turned c n s).2.1 * (the_halving_turned c n s).2.1 := by
+  induction n with
+  | zero => exact ⟨h1, h2⟩
+  | succ n ih =>
+    obtain ⟨i1, i2⟩ := ih
+    have k := the_halving_keeps_the_root_and_halves_the_width c _ _ _ i1 i2
+    simp only [the_halving_turned]
+    split
+    · next hc => exact ⟨hc, k.2.1⟩
+    · next hc => exact ⟨k.1, Nat.le_of_lt (Nat.lt_of_not_le hc)⟩
+theorem at_every_turn_the_crank_is_not_below_the_low_wall (c m n : Nat) (s : Nat × Nat) (w : Nat × Nat × Nat)
+    (h1 : w.1 * w.1 ≤ c * (w.2.2 * w.2.2)) (h2 : c * (w.2.2 * w.2.2) ≤ w.2.1 * w.2.1) :
+    (the_halving_turned c n w).1 * (the_crank_turned c (m + 1) s).2
+      ≤ (the_crank_turned c (m + 1) s).1 * (the_halving_turned c n w).2.2 :=
+  the_crank_is_never_below_the_low_wall c _ _ _ _
+    (after_any_turn_the_halving_holds_the_root c n w h1 h2).1 (after_any_turn_the_crank_is_above c m s)
+--#print axioms six_of_the_eight_click_on_true_on_false
+--#print axioms the_square_on_the_sum_is_at_least_four_rectangles
+--#print axioms after_any_turn_the_crank_is_above
+--#print axioms after_any_turn_the_halving_holds_the_root
+--#print axioms at_every_turn_the_crank_is_not_below_the_low_wall
+--| THE FOURTH COMMUTATOR.  The author's, 16 November 2026: the fourth commutator is the order of the interpretation, the
+--| inferred rung's same difference, the knower's constant compared to the experience.  The order of the two coins is the
+--| click table itself.  It is the same and one way: the stays, and the arm false on true.  Read both ways it is the same
+--| and nothing else.  One way and not back is false on true alone: the arm of Maxwell and Dirac.  Back and not one way is
+--| true on false alone: the arm of Schroedinger, the one that is false.  In the device the order reads both ways, so the
+--| fourth commutator is nothing there.  Against the world it runs one way, and that is where the reading is less than
+--| the laboratory's.  The slip is on the arm false on true.  Of the four, this is the one that names an arm.
+def the_order_of_the_coins (a b : Bool) : Bool := !a || b
+theorem the_click_table_is_the_order_of_the_coins :
+    ∀ a b : Bool, the_arm_stores_a_fact_that_can_click a b = the_order_of_the_coins a b := by decide
+theorem the_order_is_the_same_and_one_way :
+    ∀ a b : Bool, (if the_order_of_the_coins a b then (1 : Int) else 0)
+      = the_scaled_identity 1 a b + the_order_that_goes_one_way a b := by decide
+theorem read_both_ways_the_order_is_the_same :
+    ∀ a b : Bool, (the_order_of_the_coins a b && the_order_of_the_coins b a) = (a == b) := by decide
+theorem one_way_and_not_back_is_false_on_true :
+    ∀ a b : Bool, (the_order_of_the_coins a b && !the_order_of_the_coins b a) = true ↔ (a = false ∧ b = true) := by decide
+theorem back_and_not_one_way_is_true_on_false :
+    ∀ a b : Bool, (the_order_of_the_coins b a && !the_order_of_the_coins a b) = true ↔ (a = true ∧ b = false) := by decide
+theorem in_the_device_the_order_reads_both_ways :
+    the_knower.inferred? the_conclusion the_alpha ∧ the_knower.inferred? the_alpha the_conclusion :=
+  ⟨the_knower_reads_one_way, the_device_reads_it_back⟩
+theorem against_the_world_the_order_runs_one_way :
+    the_high_reading.fst * 10 ^ 9 < (the_laboratory - 21) * the_high_reading.snd := the_output_is_less_than_the_expectation
+--#print axioms the_click_table_is_the_order_of_the_coins
+--#print axioms the_order_is_the_same_and_one_way
+--#print axioms read_both_ways_the_order_is_the_same
+--#print axioms one_way_and_not_back_is_false_on_true
+--#print axioms back_and_not_one_way_is_true_on_false
+--#print axioms in_the_device_the_order_reads_both_ways
+--#print axioms against_the_world_the_order_runs_one_way
+--| GRAVITY AGAINST THE FLOW.  The author's, 16 November 2026: false on false is closed by rfl, so the device cannot detect
+--| it, and it is excluded by not being included in the trick; this is the piece of information the knower brings.  Both
+--| stays are closed by rfl, and neither crossing is.  The device cannot tell the stays apart: one weight, one click, no
+--| share of the sign, one place in the order.  The trick deals true on true and the two crossings; false on false is not
+--| dealt.  Which stay is gravity and which the flow is not in the device.  The knower brings it.
+theorem both_stays_are_closed_by_rfl : (true = true) ∧ (false = false) := ⟨rfl, rfl⟩
+theorem the_device_cannot_tell_the_stays_apart :
+    the_arm_weight true true = the_arm_weight false false
+      ∧ the_arm_stores_a_fact_that_can_click true true = the_arm_stores_a_fact_that_can_click false false
+      ∧ the_table_dot the_full_table the_sign_table = 0
+      ∧ the_order_of_the_coins true true = the_order_of_the_coins false false := by decide
+theorem neither_crossing_is_closed_by_rfl : ¬ (true = false) ∧ ¬ (false = true) := by decide
+--#print axioms both_stays_are_closed_by_rfl
+--#print axioms the_device_cannot_tell_the_stays_apart
+--#print axioms neither_crossing_is_closed_by_rfl
+--| THE DERIVATION THAT WAS MISSING.  The author's, 16 November 2026: the device is implementing something that shares a
+--| description with Navier and Stokes and with the electron.  The action is a cube, and its slope is the residual.  Take
+--| the residual as a rate and write y as less u-prime over thirteen u: what is left is a line, u-double-prime and thirty-six
+--| u-prime and two hundred thirty-four u, the table's own trace and determinant.  The residual and the table are one
+--| equation.  That change is the one that makes a flow into heat.  The clock is a root of the round trip: an operator of the
+--| first order whose square is a number, as Dirac asked.  And the arm without the thirteen is the action without the cube.
+--| The form is shared.  The numbers are counted here and not derived from a flow or an electron.
+theorem the_action_is_cubic_and_its_slope_is_the_residual (y h : Int) :
+    (13 * ((y + h) * (y + h) * (y + h)) - 54 * ((y + h) * (y + h)) + 54 * (y + h)) - (13 * (y * y * y) - 54 * (y * y) + 54 * y)
+      = 3 * h * (13 * (y * y) - 36 * y + 18) + h * h * (39 * y - 54) + 13 * (h * h * h) := by
+  simp only [Int.mul_sub, Int.add_mul, Int.mul_add]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem the_residual_as_a_rate_is_the_table_as_a_line (u v w : Int) :
+    (v * v - w * u) - (v * v + 36 * (u * v) + 234 * (u * u)) = - (u * (w + 36 * v + 234 * u)) := by
+  simp only [Int.mul_add]
+  ac_nf; simp only [← Int.mul_assoc]; omega
+theorem the_line_has_the_tables_own_numbers :
+    the_table_trace the_full_table = 36 ∧ the_table_determinant the_full_table = 234
+      ∧ (readers_experience.bent_card : Int) * 18 = 234 := by decide
+theorem the_clock_is_a_root_of_the_round_trip :
+    ∀ a b : Bool, the_table_product the_clock_table the_clock_table a b = the_scaled_identity 90 a b := by decide
+theorem the_arm_without_the_thirteen_is_the_action_without_the_cube :
+    (the_arm_weight true false = the_dimensions_of_universe)
+      ∧ (the_arm_weight true true = readers_experience.bent_card + the_dimensions_of_universe)
+      ∧ (the_arm_weight false true = readers_experience.bent_card + the_dimensions_of_universe)
+      ∧ (the_arm_weight false false = readers_experience.bent_card + the_dimensions_of_universe)
+      ∧ (readers_experience.bent_card = an_exact_polynomial_description) := by decide
+--#print axioms the_action_is_cubic_and_its_slope_is_the_residual
+--#print axioms the_residual_as_a_rate_is_the_table_as_a_line
+--#print axioms the_line_has_the_tables_own_numbers
+--#print axioms the_clock_is_a_root_of_the_round_trip
+--#print axioms the_arm_without_the_thirteen_is_the_action_without_the_cube
+--| THE DETECTOR, AND THE BOOT.  The author's: the blanks are the nowtrinos, closed by rfl whatever they mean, and the length
+--| of the list is their detector; and the crank starts where it does because of the boot.  The length does not read the
+--| meaning.  The crank starts at five for each cell of the description, over eighteen squared.
+theorem the_length_does_not_read_the_meaning {α β : Type} (meaning : α → β) (tape : List α) :
+    (tape.map meaning).length = tape.length := List.length_map ..
+theorem the_crank_starts_at_the_boot :
+    the_held_house = (the_dimensions_of_universe * episode8_description.length, the_arm_weight true true * the_arm_weight true true)
+      ∧ the_held_house = (530, 324) ∧ episode8_description.length = 106 := by decide
+--#print axioms the_length_does_not_read_the_meaning
+--#print axioms the_crank_starts_at_the_boot
+--| THE DESCENT.  Sixteen, eight, four, two, one.  The step is two clauses, a before and an after.  The after reads two
+--| ways and not four, and that is the first halving: given.  The author's, 16 November 2026: what halves eight is before
+--| and after, the frinkahedron again, just bigger; it is the separation of true on false from false on true, side by
+--| side.  The before clause under its four signatures forbids one arm each, and tells the two crossings apart; the after
+--| clause cannot.  Keep the before and the eight are four.  The before clause under east is the click table.  And what
+--| halves four is the frinkahedron: the spatial decomposition, true on true, what is in the machine.  Two coins, each
+--| inside or on the edge; the boundary drops the inside and leaves the before, one in and one on the edge, and the after,
+--| both on the edge.  And two are one by the second variation, before less after.  The clicks and the clock again.
+def the_one_clause : Sum := .add cookFACT varA varB (.zero True varA)
+def the_clause_at (slot : Nat) (g : Signature) : List Bool :=
+  [ (the_one_clause.holds (assign true true) (uniform g) slot).1, (the_one_clause.holds (assign true false) (uniform g) slot).1,
+    (the_one_clause.holds (assign false true) (uniform g) slot).1, (the_one_clause.holds (assign false false) (uniform g) slot).1 ]
+theorem the_before_clause_under_the_four_signatures :
+    the_signatures.map (the_clause_at 0)
+      = [[true, true, true, false], [false, true, true, true], [true, true, false, true], [true, false, true, true]] := by decide
+theorem each_reading_of_the_before_clause_forbids_one_arm :
+    (the_signatures.map (the_clause_at 0)).all (fun r => (r.filter fun b => !b).length == 1) = true := by decide
+theorem the_after_clause_reads_two_ways :
+    the_signatures.map (the_clause_at 2)
+      = [[true, true, true, false], [false, true, true, true], [false, true, true, true], [true, true, true, false]] := by decide
+theorem every_interpretation_is_a_before_and_an_after :
+    the_sixteen_schedules.all (fun s =>
+      the_row_under s == List.zipWith (· && ·) (the_clause_at 0 s.1) (the_clause_at 2 s.2)) = true := by decide
+theorem the_click_table_is_the_before_clause_under_east :
+    the_clause_at 0 .east
+      = [the_arm_stores_a_fact_that_can_click true true, the_arm_stores_a_fact_that_can_click true false,
+         the_arm_stores_a_fact_that_can_click false true, the_arm_stores_a_fact_that_can_click false false] := by decide
+theorem sixteen_eight_four_two :
+    the_sixteen_schedules.length = 16
+      ∧ ((the_sixteen_schedules.map fun s => (the_clause_at 0 s.1, the_clause_at 2 s.2)).eraseDups).length = 8
+      ∧ ((the_signatures.map (the_clause_at 0)).eraseDups).length = 4
+      ∧ ((the_signatures.map (the_clause_at 2)).eraseDups).length = 2 := by decide
+theorem the_after_clause_cannot_tell_the_crossings_apart :
+    (the_signatures.map (the_clause_at 2)).all (fun r => r.getD 1 false == r.getD 2 false) = true := by decide
+theorem the_before_clause_tells_the_crossings_apart :
+    (the_clause_at 0 .west).getD 1 false ≠ (the_clause_at 0 .west).getD 2 false
+      ∧ (the_clause_at 0 .east).getD 1 false ≠ (the_clause_at 0 .east).getD 2 false
+      ∧ (the_clause_at 0 .west).getD 1 false = (the_clause_at 0 .east).getD 2 false := by decide
+def the_four_places : List (Bool × Bool) := [(false, false), (false, true), (true, false), (true, true)]
+theorem the_frinkahedron_drops_the_inside :
+    (the_four_places.filter fun p => p.1 || p.2).length = 3
+      ∧ (the_four_places.filter fun p => p.1 != p.2).length = 2
+      ∧ (the_four_places.filter fun p => p.1 && p.2).length = 1
+      ∧ (the_four_places.filter fun p => !(p.1 || p.2)) = [(false, false)] := by decide
+--#print axioms the_before_clause_under_the_four_signatures
+--#print axioms each_reading_of_the_before_clause_forbids_one_arm
+--#print axioms the_after_clause_reads_two_ways
+--#print axioms every_interpretation_is_a_before_and_an_after
+--#print axioms the_click_table_is_the_before_clause_under_east
+--#print axioms sixteen_eight_four_two
+--#print axioms the_after_clause_cannot_tell_the_crossings_apart
+--#print axioms the_before_clause_tells_the_crossings_apart
+--#print axioms the_frinkahedron_drops_the_inside
+--| EVERY BRACKET.  What is left after a turn of the crank is the square of what was left, and against its own width it
+--| falls by quarters, turn after turn, link by link.  So take any wall that stands above the root, however close.  There
+--| is a turn after which the crank is at or under it.  With the halving holding the root from both sides and the crank
+--| never under the low wall, the two routes close on one place, for every bracket, by receipt.
+def what_is_left (c : Nat) (t : Nat × Nat) : Nat := t.1 * t.1 - c * (t.2 * t.2)
+theorem the_crank_keeps_its_feet (c : Nat) (s : Nat × Nat) (hP : 0 < s.1) (hQ : 0 < s.2) (n : Nat) :
+    0 < (the_crank_turned c n s).1 ∧ 0 < (the_crank_turned c n s).2 := by
+  induction n with
+  | zero => exact ⟨hP, hQ⟩
+  | succ n ih =>
+    obtain ⟨i1, i2⟩ := ih
+    show 0 < (the_crank_turned c n s).1 * (the_crank_turned c n s).1 + c * ((the_crank_turned c n s).2 * (the_crank_turned c n s).2)
+        ∧ 0 < 2 * (the_crank_turned c n s).1 * (the_crank_turned c n s).2
+    exact ⟨Nat.lt_of_lt_of_le (Nat.mul_pos i1 i1) (Nat.le_add_right _ _), Nat.mul_pos (Nat.mul_pos (by decide) i1) i2⟩
+theorem what_is_left_is_squared (c P Q : Nat) (h : c * (Q * Q) ≤ P * P) :
+    (P * P + c * (Q * Q)) * (P * P + c * (Q * Q)) - c * ((2 * P * Q) * (2 * P * Q))
+      = (P * P - c * (Q * Q)) * (P * P - c * (Q * Q)) := by
+  obtain ⟨e, he⟩ := Nat.exists_eq_add_of_le h
+  have e1 : c * ((2 * P * Q) * (2 * P * Q)) = (2 * 2) * ((P * P) * (c * (Q * Q))) := by ac_rfl
+  rw [e1, he, Nat.add_sub_cancel_left]
+  generalize c * (Q * Q) = x
+  have e2 : (x + e + x) * (x + e + x) = 2 * 2 * ((x + e) * x) + e * e := by
+    simp only [Nat.mul_add, Nat.add_mul]
+    have : e * x = x * e := Nat.mul_comm e x
+    omega
+  rw [e2, Nat.add_sub_cancel_left]
+theorem one_link_of_the_chain (a B d F g H k : Nat) (hB : 0 < B) (q : a * (4 * B) ≤ g * H) (ih : g * d * F ≤ k * B) :
+    a * (d * 4) * F ≤ k * H := by
+  have h1 := Nat.mul_le_mul_right (d * F) q
+  have h2 := Nat.mul_le_mul_right H ih
+  have e1 : a * (4 * B) * (d * F) = (a * (d * 4) * F) * B := by ac_rfl
+  have e2 : g * H * (d * F) = g * d * F * H := by ac_rfl
+  have e3 : k * B * H = (k * H) * B := by ac_rfl
+  rw [e1, e2] at h1
+  rw [e3] at h2
+  exact Nat.le_of_mul_le_mul_right (Nat.le_trans h1 h2) hB
+theorem one_turn_quarters_what_is_left (c P Q : Nat) (h : c * (Q * Q) ≤ P * P) :
+    what_is_left c (P * P + c * (Q * Q), 2 * P * Q) * (4 * (Q * Q))
+      ≤ what_is_left c (P, Q) * ((2 * P * Q) * (2 * P * Q)) := by
+  show ((P * P + c * (Q * Q)) * (P * P + c * (Q * Q)) - c * ((2 * P * Q) * (2 * P * Q))) * (4 * (Q * Q))
+      ≤ (P * P - c * (Q * Q)) * ((2 * P * Q) * (2 * P * Q))
+  rw [what_is_left_is_squared c P Q h]
+  exact a_turn_of_the_crank_quarters_what_is_left c P Q
+theorem what_is_left_falls_by_quarters (c : Nat) (s : Nat × Nat) (hP : 0 < s.1) (hQ : 0 < s.2) (m : Nat) :
+    what_is_left c (the_crank_turned c (m + 1) s) * 4 ^ m * ((the_crank_turned c 1 s).2 * (the_crank_turned c 1 s).2)
+      ≤ what_is_left c (the_crank_turned c 1 s) * ((the_crank_turned c (m + 1) s).2 * (the_crank_turned c (m + 1) s).2) := by
+  induction m with
+  | zero => simp only [Nat.pow_zero, Nat.mul_one]; exact Nat.le_refl _
+  | succ m ih =>
+    have above := after_any_turn_the_crank_is_above c m s
+    have feet := (the_crank_keeps_its_feet c s hP hQ (m + 1)).2
+    have q := one_turn_quarters_what_is_left c (the_crank_turned c (m + 1) s).1 (the_crank_turned c (m + 1) s).2 above
+    rw [Nat.pow_succ]
+    exact one_link_of_the_chain _ _ _ _ _ _ _ (Nat.mul_pos feet feet) q ih
+theorem the_last_step_into_the_bracket (c P Q E E1 D hi F N : Nat)
+    (hPP : P * P = c * (Q * Q) + E) (hg : c * (D * D) < hi * hi)
+    (chain : E * N * F ≤ E1 * (Q * Q)) (hN : E1 * (D * D) < N) (hF : 0 < F) (hQ : 0 < Q) :
+    P * D ≤ hi * Q := by
+  apply Nat.le_of_not_lt
+  intro h
+  have s : (hi * Q) * (hi * Q) < (P * D) * (P * D) := Nat.mul_self_lt_mul_self h
+  have a : (hi * Q) * (hi * Q) = (hi * hi) * (Q * Q) := by ac_rfl
+  have b : (P * D) * (P * D) = (P * P) * (D * D) := by ac_rfl
+  rw [a, b, hPP, Nat.add_mul] at s
+  have g1 : (c * (D * D) + 1) * (Q * Q) ≤ (hi * hi) * (Q * Q) := Nat.mul_le_mul_right _ hg
+  rw [Nat.add_mul, Nat.one_mul] at g1
+  have e1 : c * (D * D) * (Q * Q) = c * (Q * Q) * (D * D) := by ac_rfl
+  have lt1 : Q * Q < E * (D * D) := by omega
+  have QQpos : 0 < Q * Q := Nat.mul_pos hQ hQ
+  have Npos : 0 < N := Nat.lt_of_le_of_lt (Nat.zero_le _) hN
+  have c1 := Nat.mul_le_mul_right (D * D) chain
+  have c2 : (Q * Q) * (N * F) < (E * (D * D)) * (N * F) := Nat.mul_lt_mul_of_pos_right lt1 (Nat.mul_pos Npos hF)
+  have c3 : E1 * (D * D) * (Q * Q) < N * (Q * Q) := Nat.mul_lt_mul_of_pos_right hN QQpos
+  have c4 : N * (Q * Q) ≤ N * (Q * Q) * F := Nat.le_mul_of_pos_right _ hF
+  have r1 : E * N * F * (D * D) = (E * (D * D)) * (N * F) := by ac_rfl
+  have r2 : E1 * (Q * Q) * (D * D) = E1 * (D * D) * (Q * Q) := by ac_rfl
+  have r3 : N * (Q * Q) * F = (Q * Q) * (N * F) := by ac_rfl
+  rw [r1, r2] at c1
+  rw [r3] at c4
+  omega
+theorem for_every_bracket_there_is_a_turn (c : Nat) (s : Nat × Nat) (hP : 0 < s.1) (hQ : 0 < s.2) (hi D : Nat)
+    (hg : c * (D * D) < hi * hi) :
+    ∃ m, (the_crank_turned c m s).1 * D ≤ hi * (the_crank_turned c m s).2 := by
+  refine ⟨what_is_left c (the_crank_turned c 1 s) * (D * D) + 1, ?_⟩
+  have chain := what_is_left_falls_by_quarters c s hP hQ (what_is_left c (the_crank_turned c 1 s) * (D * D))
+  have above := after_any_turn_the_crank_is_above c (what_is_left c (the_crank_turned c 1 s) * (D * D)) s
+  have feet := the_crank_keeps_its_feet c s hP hQ
+  have hN : what_is_left c (the_crank_turned c 1 s) * (D * D) < 4 ^ (what_is_left c (the_crank_turned c 1 s) * (D * D)) :=
+    Nat.lt_of_lt_of_le Nat.lt_two_pow_self (Nat.pow_le_pow_left (by decide) _)
+  exact the_last_step_into_the_bracket c _ _ _ _ D hi _ _ (Nat.add_sub_of_le above).symm hg chain hN
+    (Nat.mul_pos (feet 1).2 (feet 1).2) (feet _).2
+theorem the_crank_enters_every_bracket_above_the_gap (hi D : Nat) (hg : 360 * (D * D) < hi * hi) :
+    ∃ m, (the_crank_turned 360 m (23, 1)).1 * D ≤ hi * (the_crank_turned 360 m (23, 1)).2 :=
+  for_every_bracket_there_is_a_turn 360 (23, 1) (by decide) (by decide) hi D hg
+--#print axioms the_crank_keeps_its_feet
+--#print axioms what_is_left_is_squared
+--#print axioms one_link_of_the_chain
+--#print axioms one_turn_quarters_what_is_left
+--#print axioms what_is_left_falls_by_quarters
+--#print axioms the_last_step_into_the_bracket
+--#print axioms for_every_bracket_there_is_a_turn
+--#print axioms the_crank_enters_every_bracket_above_the_gap
+--| THE SLIP, TRACKED DOWN AND MEASURED.  The slip is in the comparison, not the computation.  It runs one way: the reading
+--| is the lesser.  One way and not back is the arm false on true.  So hold the gain and the stays and the frame, and ask
+--| what round trip would print the laboratory's number.  Its root is a ratio of whole numbers, and its square is over
+--| ninety: ninety and ninety-four thousandths.  Put all of it on the arm false on true and that arm would weigh eighteen
+--| and nineteen thousandths: more than a fifty-fourth of a mark over, and less than a fifty-third.  That is the slip, in
+--| marks, on the arm where it is.
+def the_root_the_laboratory_asks_for : Nat × Nat := (65 * the_laboratory - 18 * 324 * 10 ^ 9, 324 * 10 ^ 9)
+theorem the_laboratory_asks_for_a_longer_round_trip :
+    the_root_the_laboratory_asks_for = (3075339946505, 324000000000)
+      ∧ 90 * (the_root_the_laboratory_asks_for.2 * the_root_the_laboratory_asks_for.2)
+          < the_root_the_laboratory_asks_for.1 * the_root_the_laboratory_asks_for.1 := by decide +kernel
+theorem the_round_trip_the_laboratory_asks_for_is_bracketed :
+    900940 * (the_root_the_laboratory_asks_for.2 * the_root_the_laboratory_asks_for.2)
+        < 10000 * (the_root_the_laboratory_asks_for.1 * the_root_the_laboratory_asks_for.1)
+      ∧ 10000 * (the_root_the_laboratory_asks_for.1 * the_root_the_laboratory_asks_for.1)
+        < 900941 * (the_root_the_laboratory_asks_for.2 * the_root_the_laboratory_asks_for.2) := by decide +kernel
+theorem the_arm_false_on_true_would_weigh_this_much_more :
+    5 * 18018815 * (the_root_the_laboratory_asks_for.2 * the_root_the_laboratory_asks_for.2)
+        < 1000000 * (the_root_the_laboratory_asks_for.1 * the_root_the_laboratory_asks_for.1)
+      ∧ 1000000 * (the_root_the_laboratory_asks_for.1 * the_root_the_laboratory_asks_for.1)
+        < 5 * 18018816 * (the_root_the_laboratory_asks_for.2 * the_root_the_laboratory_asks_for.2) := by decide +kernel
+theorem the_slip_is_between_a_fifty_fourth_and_a_fifty_third_of_a_mark :
+    5 * (the_root_the_laboratory_asks_for.2 * the_root_the_laboratory_asks_for.2)
+        < 54 * (the_root_the_laboratory_asks_for.1 * the_root_the_laboratory_asks_for.1
+                - 90 * (the_root_the_laboratory_asks_for.2 * the_root_the_laboratory_asks_for.2))
+      ∧ 53 * (the_root_the_laboratory_asks_for.1 * the_root_the_laboratory_asks_for.1
+                - 90 * (the_root_the_laboratory_asks_for.2 * the_root_the_laboratory_asks_for.2))
+        < 5 * (the_root_the_laboratory_asks_for.2 * the_root_the_laboratory_asks_for.2) := by decide +kernel
+--#print axioms the_laboratory_asks_for_a_longer_round_trip
+--#print axioms the_round_trip_the_laboratory_asks_for_is_bracketed
+--#print axioms the_arm_false_on_true_would_weigh_this_much_more
+--#print axioms the_slip_is_between_a_fifty_fourth_and_a_fifty_third_of_a_mark
+--| THREE ZEROS HELD.  The author's, 16 November 2026: there are three zeros to hold constant to find the fourth, which is one
+--| of the inferred constant's representations: nothing, one, the reading and the other root.  Hold nothing, one and the
+--| other root, and let the fourth go to the laboratory's number.  Then the slip is the fourth zero's alone, and it splits in
+--| two equal parts: half on the middle of the two roots, which is the clicks, and half on their half-distance, which is the
+--| clock.  With the gain held, the stays would weigh eighteen and two and a half thousandths, and the arm false on true
+--| eighteen and nine thousandths: more than a hundred-and-seventh of a mark over, and less than a hundred-and-sixth.  Half
+--| of what it was with only the round trip let go.
+theorem with_three_zeros_held_the_slip_splits_in_half (the_reading the_other_root the_asked : Int) :
+    (the_asked + the_other_root) - (the_reading + the_other_root) = the_asked - the_reading
+      ∧ (the_asked - the_other_root) - (the_reading - the_other_root) = the_asked - the_reading := by
+  constructor <;> omega
+def the_clock_low : Nat := the_root_the_laboratory_asks_for.1 * 10 ^ 30 + the_root_the_laboratory_asks_for.2 * the_root_ninety_below
+def the_clock_high : Nat := the_root_the_laboratory_asks_for.1 * 10 ^ 30 + the_root_the_laboratory_asks_for.2 * (the_root_ninety_below + 1)
+def the_clock_scale : Nat := the_root_the_laboratory_asks_for.2 * 10 ^ 30
+theorem with_three_zeros_held_the_arm_false_on_true_would_weigh :
+    20 * 18009406 * (the_clock_scale * the_clock_scale) < 1000000 * (the_clock_low * the_clock_low)
+      ∧ 1000000 * (the_clock_high * the_clock_high) < 20 * 18009407 * (the_clock_scale * the_clock_scale) := by decide +kernel
+theorem with_three_zeros_held_the_slip_is_one_mark_in_a_hundred_and_six :
+    106 * (the_clock_high * the_clock_high - 360 * (the_clock_scale * the_clock_scale)) < 20 * (the_clock_scale * the_clock_scale)
+      ∧ 20 * (the_clock_scale * the_clock_scale) < 107 * (the_clock_low * the_clock_low - 360 * (the_clock_scale * the_clock_scale)) := by
+  decide +kernel
+theorem with_three_zeros_held_the_stays_would_weigh :
+    2478 * (2 * the_clock_scale)
+        < 1000000 * (the_root_the_laboratory_asks_for.1 * 10 ^ 30 - the_root_the_laboratory_asks_for.2 * (the_root_ninety_below + 1))
+      ∧ 1000000 * (the_root_the_laboratory_asks_for.1 * 10 ^ 30 - the_root_the_laboratory_asks_for.2 * the_root_ninety_below)
+        < 2479 * (2 * the_clock_scale) := by decide +kernel
+--#print axioms with_three_zeros_held_the_slip_splits_in_half
+--#print axioms with_three_zeros_held_the_arm_false_on_true_would_weigh
+--#print axioms with_three_zeros_held_the_slip_is_one_mark_in_a_hundred_and_six
+--#print axioms with_three_zeros_held_the_stays_would_weigh
+--| THE ONE THAT IS A NOTHING.  The author's, 16 November 2026: the uncomputable one that is a nothing that is always
+--| approached is the limit you are looking for.  From the trial gap, what is left after any number of turns is thirteen to
+--| a power of two: a whole number, and never less than one.  Against its own width it falls by quarters and goes to
+--| nothing.  One, always; nothing, in the limit; and no turn at which the one becomes the nothing.
+theorem what_is_left_is_a_power_of_thirteen (m : Nat) :
+    what_is_left 360 (the_crank_turned 360 m (23, 1)) = 13 ^ (2 ^ (m + 1)) := by
+  induction m with
+  | zero => decide
+  | succ m ih =>
+    have above : 360 * ((the_crank_turned 360 m (23, 1)).2 * (the_crank_turned 360 m (23, 1)).2)
+        ≤ (the_crank_turned 360 m (23, 1)).1 * (the_crank_turned 360 m (23, 1)).1 := by
+      cases m with
+      | zero => decide
+      | succ k => exact after_any_turn_the_crank_is_above 360 k (23, 1)
+    have sq := what_is_left_is_squared 360 (the_crank_turned 360 m (23, 1)).1 (the_crank_turned 360 m (23, 1)).2 above
+    have ih' : (the_crank_turned 360 m (23, 1)).1 * (the_crank_turned 360 m (23, 1)).1
+        - 360 * ((the_crank_turned 360 m (23, 1)).2 * (the_crank_turned 360 m (23, 1)).2) = 13 ^ (2 ^ (m + 1)) := ih
+    rw [ih', ← Nat.pow_add] at sq
+    have e : 2 ^ (m + 1) + 2 ^ (m + 1) = 2 ^ (m + 1 + 1) := by rw [Nat.pow_succ 2 (m + 1)]; omega
+    rw [e] at sq
+    exact sq
+theorem the_one_that_is_always_left (m : Nat) : 1 ≤ what_is_left 360 (the_crank_turned 360 m (23, 1)) := by
+  rw [what_is_left_is_a_power_of_thirteen]; exact Nat.pow_pos (by decide)
+--#print axioms what_is_left_is_a_power_of_thirteen
+--#print axioms the_one_that_is_always_left
+--| AREA, TRACKED DOWN.  The author's, 16 November 2026: the three numbers of the residual are inductives of the device;
+--| thirty-six is Closure, and thirteen and eighteen are Area and Abstraction; Area is just a count of counts.  Of the
+--| thirty-six inductives of the five episodes, in the order of the rungs, Area stands thirteenth, Abstraction eighteenth
+--| and Closure last.  And the thirteen is a count of counts.  Take as many tapes from the inferred end as Stokes's tape is
+--| long, four; their lengths are three, five, three and two; a tape of tapes is as long as its lengths summed; thirteen.
+--| An area: so many panels, each so high.  Area's own reading, the Riemann sum, counts its cells the same way.
+def the_inductives_of_the_five_episodes : List Lean.Name :=
+  ((List.range 37).filterMap fun k => the_constructs[3 * k + 1]?).filter (· != ``Measurement.ComputerProgram)
+theorem area_abstraction_and_closure_stand_thirteenth_eighteenth_and_thirty_sixth :
+    the_inductives_of_the_five_episodes.length = 36
+      ∧ the_inductives_of_the_five_episodes[12]? = some ``Measurement.Area
+      ∧ the_inductives_of_the_five_episodes[17]? = some ``Measurement.Abstraction
+      ∧ the_inductives_of_the_five_episodes[35]? = some ``Measurement.Closure := by decide
+theorem a_tape_of_tapes_is_as_long_as_its_lengths_summed (tapes : List (List FACT)) :
+    tapes.flatten.length = (tapes.map List.length).sum := List.length_flatten ..
+theorem the_thirteen_is_a_count_of_counts :
+    (the_steps_of_the_argument.reverse.take the_orbital_data_points).map List.length = [3, 5, 3, 2]
+      ∧ the_orbital_data_points = the_nowtrino_path.stokes.length
+      ∧ bent_card = ((the_steps_of_the_argument.reverse.take the_orbital_data_points).map List.length).sum
+      ∧ bent_card = 13 := by decide
+theorem areas_reading_is_a_count_of_its_cells : ast₁.riemann_integrate.length = 2 ∧ ast₀.riemann_integrate.length = 1 := by decide
+--#print axioms area_abstraction_and_closure_stand_thirteenth_eighteenth_and_thirty_sixth
+--#print axioms a_tape_of_tapes_is_as_long_as_its_lengths_summed
+--#print axioms the_thirteen_is_a_count_of_counts
+--#print axioms areas_reading_is_a_count_of_its_cells
+--| THE WALK OUT.  The author's, 16 November 2026: now Area is List.length, see?  We can walk the device out from here.  The
+--| bent card is written for any reader of a tape, and the device hands it one: the length.  From that one reader, all of it.
+--| The tapes: Stokes's four, Gauss's five, the basis's two, the coefficient's thirteen, the memory's eighteen, the
+--| description's hundred and six.  The numbers: thirteen is the coefficient tape; eighteen the memory tape; thirty-six the
+--| basis by the memory, two eighteens.  The fencepost: the memory squared, and Gauss's five.  The start: the description by
+--| Gauss's, over the memory squared, which is the boot.  One turn: thirteen x squared less eighteen y squared, over twenty-six
+--| x y less thirty-six y squared, which is Newton's.  As many turns as the description is long.  Then the fencepost again.
+theorem the_walk_out_from_the_length :
+    an_exact_polynomial_description = the_coefficient_tape.length
+      ∧ the_number_of_symbols_that_must_be_written_to_express_this = the_memory_tape.length
+      ∧ the_trace_of_truth_in_the_device = the_basis.the_reading.length * the_memory_tape.length
+      ∧ the_first_step_of_the_proof_is_to_eschew_the_naturals_unless_proven_to_exist_without_peano
+          = (the_epsilon_tape.length * the_epsilon_tape.length, the_coordinate_system.gauss.length)
+      ∧ the_held_house = (episode8_description.length * the_coordinate_system.gauss.length,
+                          the_epsilon_tape.length * the_epsilon_tape.length) := ⟨rfl, rfl, rfl, rfl, rfl⟩
+theorem the_lengths_on_the_walk :
+    (the_nowtrino_path.stokes.length, the_coordinate_system.gauss.length, the_basis.the_reading.length,
+      the_coefficient_tape.length, the_memory_tape.length, episode8_description.length) = (4, 5, 2, 13, 18, 106) := by decide
+theorem one_turn_of_the_devices_own_crank (scale x y : Nat) :
+    let next := bent_card.the_device_computing_the_next_configuration Nat List.length scale (x, y)
+    next = (x, y) ∨ next = (13 * x * x - 18 * y * y, 2 * 13 * x * y - 36 * y * y) := by
+  simp only [bent_card.the_device_computing_the_next_configuration]
+  split
+  · exact Or.inl rfl
+  · exact Or.inr rfl
+--#print axioms the_walk_out_from_the_length
+--#print axioms the_lengths_on_the_walk
+--#print axioms one_turn_of_the_devices_own_crank
+--| ABSTRACTION, TRACKED DOWN.  The author's, 16 November 2026: abstraction is the idea that you can have two things next to
+--| each other on the tape that do a similar process and get the same answer.  It is the cross product, with compile before
+--| execute.  The two can be next to each other or doubly encoded, depending on variance: adjacent, or indistinct.  Adjacent:
+--| before comes before after in a total order; the first is the compile and the second the execute.  Indistinct: compile and
+--| execute run the same code, the first element covariant and the second contravariant.  The device has both.  Adjacent: the
+--| memory tape is the coefficient tape with Gauss's next to it, thirteen and five, eighteen.  The cross: Abstraction has two
+--| arms of one signature, and of their four pairs three hold and one fails, execute before compile.  Read execute as true
+--| and compile as false and those are the arms: three weigh the memory, and true on false weighs Gauss's alone.  Indistinct:
+--| Gauss's tape is on the memory twice, once as the count of tapes taken and once as the last tape taken.
+theorem the_memory_is_the_coefficient_with_gauss_next_to_it :
+    the_memory_tape = the_coefficient_tape ++ the_coordinate_system.gauss := rfl
+theorem compile_comes_before_execute_and_not_back (f g : FACT) (e d : Encoding) (a b : Abstraction) :
+    (Abstraction.compile f e a ≤ Abstraction.compile g d b)
+      ∧ (Abstraction.compile f e a ≤ Abstraction.execute g d b)
+      ∧ (Abstraction.execute f e a ≤ Abstraction.execute g d b)
+      ∧ ¬ (Abstraction.execute f e a ≤ Abstraction.compile g d b) := by
+  refine ⟨?_, ?_, ?_, ?_⟩ <;> simp [LE.le, Abstraction.le]
+theorem the_order_of_abstraction_is_the_click_table :
+    (the_arm_weight false false, the_arm_weight false true, the_arm_weight true true, the_arm_weight true false)
+      = (the_memory_tape.length, the_memory_tape.length, the_memory_tape.length, the_coordinate_system.gauss.length) := by decide
+theorem gauss_is_on_the_memory_twice_as_the_count_and_as_the_tape :
+    the_memory_tape = from_the_inferred_end the_coordinate_system.gauss.length
+      ∧ (the_steps_of_the_argument.reverse.take the_coordinate_system.gauss.length).getLast? = some the_coordinate_system.gauss :=
+  ⟨rfl, rfl⟩
+--#print axioms the_memory_is_the_coefficient_with_gauss_next_to_it
+--#print axioms compile_comes_before_execute_and_not_back
+--#print axioms the_order_of_abstraction_is_the_click_table
+--#print axioms gauss_is_on_the_memory_twice_as_the_count_and_as_the_tape
+--| The author's, the same day: the patter around Abstraction should show you the models on the arms.  Read it, Episode 3.
+--| Compile on compile, false on false, the fluid: the margin on that very line is the water hammer, hitting the sign
+--| convention.  Execute on execute, true on true, gravity: the margin above says source code has a property very much like
+--| upness.  Compile then execute, false on true, the electron: the patter opens on electrons from the wall, and this is the
+--| one pair that is strictly in order.  Execute then compile, true on false, the wave equation: it doesn't have to compile,
+--| it always seems to execute; in theory it could be false; and the compile line models a likelihood.  The strict order has
+--| the arms of the number's: nothing on the first, yes on the third, go on to the tails on true on true, no on true on false.
+theorem strictly_only_compile_then_execute_and_execute_goes_on (f g : FACT) (e d : Encoding) (a b : Abstraction) :
+    ¬ (Abstraction.compile f e a < Abstraction.compile g d b)
+      ∧ (Abstraction.compile f e a < Abstraction.execute g d b)
+      ∧ ((Abstraction.execute f e a < Abstraction.execute g d b) = (a < b))
+      ∧ ¬ (Abstraction.execute f e a < Abstraction.compile g d b) := by
+  refine ⟨?_, ?_, ?_, ?_⟩ <;> simp [LT.lt, Abstraction.lt]
+--#print axioms strictly_only_compile_then_execute_and_execute_goes_on
+--| CLOSURE, TRACKED DOWN.  The author's, 16 November 2026: the closure is that (T=F) = (F=T) ≤ (T=T) = (T=T).  Three times
+--| over.  As statements: true on false is false on true, both being false; true on true is true on true, by rfl; and the
+--| first implies the second.  That is the first deal of the game.  As weights: the two different arms weigh five and
+--| eighteen, twenty-three; the same arm twice weighs thirty-six, the trace; and what is to spare is the bent card, thirteen.
+--| As Closure's own order: one arm, different, stands for the T=F or F=T stanza, and it carries two bounds where same
+--| carries one.  A different stanza on a false fact closes under a same stanza on a true one, whatever the bounds, and not
+--| back.  So thirty-six is the same written twice, and it closes over the different with an Area left.
+theorem true_on_false_is_false_on_true_and_implies_true_on_true :
+    ((true = false) = (false = true)) ∧ ((true = true) = (true = true)) ∧ ((true = false) = (false = true) → (true = true) = (true = true)) :=
+  ⟨by decide, rfl, fun _ => rfl⟩
+theorem the_two_different_arms_weigh_no_more_than_the_same_arm_twice :
+    the_arm_weight true false + the_arm_weight false true ≤ the_arm_weight true true + the_arm_weight true true
+      ∧ the_arm_weight true true + the_arm_weight true true = the_trace_of_truth_in_the_device
+      ∧ the_arm_weight true true + the_arm_weight true true
+          = the_arm_weight true false + the_arm_weight false true + bent_card := by decide
+theorem a_different_stanza_closes_under_a_same_one_and_not_back (lower slip value : Bullshit) (p : Option Prop) :
+    (Closure.different (bitFACT false) lower slip p ≤ Closure.same (bitFACT true) value)
+      ∧ ¬ (Closure.same (bitFACT true) value ≤ Closure.different (bitFACT false) lower slip p) := by
+  have truth_is_not_false : (bitFACT false).truth ≠ (bitFACT true).truth := fun h => cast h.symm (rfl : true = true)
+  constructor
+  · show Closure.le _ _
+    unfold Closure.le
+    exact Or.inl truth_is_not_false
+  · show ¬ Closure.le _ _
+    unfold Closure.le
+    exact fun h => truth_is_not_false h.1.symm
+--#print axioms true_on_false_is_false_on_true_and_implies_true_on_true
+--#print axioms the_two_different_arms_weigh_no_more_than_the_same_arm_twice
+--#print axioms a_different_stanza_closes_under_a_same_one_and_not_back
+
 end Measurement
-
---| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
-
---| I would say “demonstrated,” but I can’t verify that this proof is bug-free. That's why I say *reached*. This is the end of the worldline for
---| this particular nowtrino. In fact, I believe the nowtrino has been officially absorbed.
-
---| The fact is, I know I'm right. That's one more fact about math that the device cannot prove. Only demonstrate, over and over again, problem after
---| problem, on the two Turing machines facing off inside **YOU**:  *YOU the READER* and *YOU the KNOWER*.  I cannot explain this any plainer
---| without violating the rules of symbolic manipulation. More simply, all **YOU** have to do is _believe_ me, I have generated the counter of every
---| outcome for **YOU**, both Turing machines, perfectly complementary and completely identical, just interpreted both ways. We can turn the knob over
---| and over while the Turing machines slowly iterate through all the arguments. But we don't need to. That won't prove anything. There is nothing
---| left to *prove* --- only *demonstrate*. Does the mechanism demonstrating this proof look like an electron to **YOU**? Because I think we can all
---| agree that this is a verified fact of running on a computer.
-
---| That's my tragedy.  It doesn't matter at all if **YOU** believe it or not, it is an undeniable trick of the light. Or, I can just show you the
---| other machine that explains how it is a trick of the fabric. Just provide the _NAME_ of the logical argument *YOU* wish countered as defined above
---| and the machine should generate the appropriate argument that demonstrates the correct way to reason about the device. The compiler cannot
---| reason about truth. It can only reason about itself, in whatever demonstrably _opaque_ way it needs to.
-
---| Do the logical conclusions of one mathematical theory have to imply the logical conclusions of another mathematical theory? Turns out, it
---| doesn't matter. It's only matter when they do. It's only matter when we measure it and the measurement matches some innate sense of existence.
---| It's only matter when it _matters_. When the compiler can determine the quantitative difference and **YOU** are looking, the true-ness of the idea
---| _clicks_ with **YOU** at the same time it _clicks_ with the compiler. That click is the change in the local measurement we called a fact before we
---| knew how to count one. The description was the device; the fact of the matter is that it clicked. For this is what the device _does_, not what it
---| means.
-
---| What the chain establishes, with its bill.  The number is read from a tape by lengths; the same number is read by a second
---| machine that holds only Props and Types; re-lettering every cell leaves it fixed; each reading is the kernel's, on propext.
---| The instrument is Newton, halted at its seventh turn; the receipt is bisection, a hundred and six halvings, one per cell of
---| the description; both are ledgers checked line by line, and the number itself spends no value axiom: every value identity,
---| "the fold is the ledger" among them, is spent beside the number and billed where it is spent,
---| and the two land inside one bracket, above the vertex, straddling one sign change, narrower than one place. Two errors,
---| kept apart: the RESIDUAL error is what the quadratic is not satisfied by, under one place at the reading and printed as
---| the digits past 360; the READING error is the bracket's width, under one place, with both walls truncating to the same
---| integer. What is not established is written where it fails to be: the table is written down and not yet forced; the
---| census is computed from the seats PRESENT forces, and agrees with the hand count on every rung; Cook's step is exclusive-or within a cell. The polynomial is primitive and irreducible, and that is
---| the whole of "fundamental" claimed.
-
---|                                                        t²(c−t)x²  −  2ctr²x  +  cr⁴  =  0
-
---| Linear in c, quadratic in x, cubic in t, quartic in r. Is this the quarter that makes *YOUR* trick work? Or, did the argument not click? ∎ *wink*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---|                                                           ** The Compiler's Epilogue **
-
-namespace A_WHOLLY_REMARKABLE_BOOK
-
-open Measurement readers_experience in
-def life_the_universe_and_everything : Nat :=
-  let (R, T) := the_first_step_of_the_proof_is_to_eschew_the_naturals_unless_proven_to_exist_without_peano
-  (the_trace_of_truth_in_the_device * R * all_possible_variables / (an_exact_polynomial_description * T) - the_other_natural)
-    / all_possible_variables
-#eval life_the_universe_and_everything
---#print axioms life_the_universe_and_everything
-
---| I'm expecting the Vogon constructor fleet any day now.
-
-end A_WHOLLY_REMARKABLE_BOOK
