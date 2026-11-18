@@ -12,7 +12,7 @@ evaluation took and how long many took.
 
 Observable: `IO.monoNanosNow` and `withHeartbeats`, both inside the elaboration.
 
-Source: `40da726`. Status: sealed, not yet read.
+Source: `40da726`. Status: read on the M2 (`raw/M2/`); see READINGS, Experiment 013. Every sealed statement confirmed.
 
 ## The seal
 

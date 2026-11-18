@@ -977,6 +977,16 @@ names the number.
   is a candidate only). Measured beside it: the one place off the
   frinkahedron is (false, false), where neither Sample holds a bracket
   (`the_place_off_the_frinkahedron_holds_no_bracket`).
+- What a reader may read (the author, 18 November 2026, declared): the
+  reader can only read what is in the compile. This is the rule that the
+  reader-language theorem is conditional on; it is not a theorem.
+  Experiment 013 (`READINGS.md`, "number go up") puts the timer in the
+  code: around 1, 10, 100 and 1000 evaluations the heartbeats and the
+  nanoseconds both increase at every step in all five runs; the heartbeats
+  are identical run to run and the nanoseconds are not. All sealed
+  statements confirmed, on one machine. It shows that time is in the
+  compile for a reader to read. It does not show that such a reader
+  recovers the knower's decision.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,

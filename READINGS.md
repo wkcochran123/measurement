@@ -839,6 +839,44 @@ changed, and on the meter the floor does. In blanks the floor is 4.72, not one.
 the device's truth, each clicked once, is the meter's reading of the temperature at that rise and level is Claude's
 choice of workload, and the author may correct it.
 
+## Experiment 013: number go up
+
+**Setup:** `4bd969e` (`readings/013-number-go-up/`). **Source:** `40da726`. **Read:** Apple M2, 18 November 2026, five
+runs, one fresh process each; `raw/M2/readings.out`. The probe compiled as sealed (after one repair made before the
+seal and recorded in it).
+
+**The author's statement:** "the reader can only read what is in the compile. so make an experiment with the timer in
+the code that demonstrates that the time does increase between a single evaluation and lots of evaluations. that's all
+you need, number go up."
+
+**Read.** One evaluation is the device's truth, one cell, clicked once, elaborated and reduced to weak head normal
+form. The clock and the heartbeats were read inside the elaboration, around 1, 10, 100 and 1000 evaluations:
+
+| Evaluations | Heartbeats (all five runs) | Nanoseconds, least | Nanoseconds, greatest |
+|---|---|---|---|
+| 1 | 23,248 | 2,153,042 | 4,756,167 |
+| 10 | 221,480 | 5,583,917 | 6,943,833 |
+| 100 | 2,219,187 | 56,350,458 | 60,601,750 |
+| 1000 | 22,236,787 | 571,582,875 | 679,980,708 |
+
+**Against the seal.**
+
+- S1 (the author's), a thousand evaluations take more nanoseconds than one, in every run: **confirmed**. The least
+  ratio is 120 and the greatest 314.
+- S2, the nanoseconds increase at every step in every run: **confirmed**.
+- S3, the heartbeats increase at every step and are identical across runs; the nanoseconds are not: **confirmed**.
+- S4, the first evaluation costs more than a later one: **confirmed**. One evaluation alone read 2.2 to 4.8 million
+  nanoseconds; a thousand read 0.57 to 0.68 million each.
+- S5 (recorded): heartbeats an evaluation are 23,248; 22,148; 22,192; 22,237 at the four counts.
+
+**What it says.** Number go up. A reader of the compile reads, in the compile's own output, that many evaluations
+took longer than one, on both meters. The heartbeats say the same thing every run; the nanoseconds say more every
+time and a different amount each run. The heartbeats an evaluation are not constant: the first costs about 1,100
+more than a later one, and the later ones rise slightly with the count. That is recorded and not explained.
+
+**Standing.** The readings are *measured*, on one machine. That the reader can only read what is in the compile is
+the author's (*declared*). What an evaluation is, here, is Claude's choice of workload, and the author may correct it.
+
 ## The study: hardware
 
 One row per machine. The reference frame is the first row (D = 1). Add a row by
