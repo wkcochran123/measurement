@@ -171,6 +171,7 @@ Hilbert meant, and it is the visitor's to make.
 | `CARD_2/Measurement/Episode01.lean` to `Episode12.lean` | The device: twelve episodes of Lean 4 with no imports, written to be read as well as run. The comments in the margins are the patter and are part of the work. |
 | `CARD_2/Measurement/Episode13.lean` | The device handed back to itself: the bent card on the device's own inductives, a second ladder dealt from a number distinguished, and the epilogue. `Measurement.lean` imports it, so `lake build` builds it; `lake build Measurement.Episode13` builds it alone. It prints one line from a clock that differs at every elaboration. Episode 6 is built apart and imported by nothing. |
 | `INSTRUCTIONS.pdf` | *Three Card Monte: A High-Level Pamphlet on Orbital Dymnamics for the Absolute Beginner* (the spelling on the title page is the author's), one volume of about 490 pages. It is the solution, and it is a spoiler. |
+| `CARD_2/Experiments/ReaderLanguage.lean` | Not the device. A language of readers of the evidence kept of a decision, written for the review of Episode 13's recovery theorem. Built apart: `lake build Experiments.ReaderLanguage`. Namespace `Review`. Nothing in `Measurement` imports it. |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
 The volume has a Preface, an "Introduction to John Henry's Device", and eight
@@ -887,6 +888,30 @@ names the number.
   permitted readers is a further theorem, not made; the Bool is not tied to
   the source's two declarations by any command; nothing here says which
   decision identifies a physical quantity.
+- The reader language (`CARD_2/Experiments/ReaderLanguage.lean`, outside
+  the device; GPT's specification). `Review.Reader` has six constructors:
+  input, constant, apply (any fixed total function), pair, branch,
+  iterate. `Review.every_reader_returns_the_same_on_the_two_decisions` and
+  `Review.no_reader_returns_the_decision`. Say what it is: the language is
+  exactly the functions of the evidence
+  (`Review.every_function_of_the_evidence_is_a_reader`), so the theorem is
+  the recovery obstruction restated, provable in one line by congruence;
+  the constructor-by-constructor proof is there because it was asked for
+  and proves no more. It does not show the evidence is everything an
+  account may inspect: the device takes the decision as an input, and
+  clocks, heartbeats, declaration text and unbounded search are not in the
+  language. The adequacy of the interface is GPT's open obligation.
+- The common construction (the author, 18 November 2026, declared): one
+  underlying construction over the single element; three model readings;
+  and a fourth, deflated dimension that is inferred as a full one. An
+  inspection of what the source selects is in
+  `claude/common-construction-2026-11-18.md`. In short: the source has the
+  tape and its three readers (tally, register, click count; Part VII) with
+  what each keeps and forgets proved; it has "deflated" in exactly one
+  place, Episode 12's quartic with the knower's root taken out; it has
+  five other places with three of a kind and a fourth of another; and it
+  does not say which is the fourth dimension meant, nor give a reader from
+  the tape to any model's equations. Do not supply those identifications.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
