@@ -72,10 +72,17 @@ Theorem G has three parts, and you must not pass one off as another:
   `no_reader_of_the_tally_sees_which_carrier` in `Episode12.lean`), but the
   general statement is not a Lean theorem.
 - *An action of degree at most three has no variation past the third.*
-  Receipt for the fourth difference: `a_cubic_is_exact` in `Episode12.lean`.
-- *Whether a halted value equals a given limit is refuted in finite time when
-  false and confirmed at no finite time when true.* Standard: it is the
-  halting problem, cited to Turing. It is not in the Lean.
+  Derivation, Card 3 (the degree is in the action's fields). The receipt
+  `a_cubic_is_exact` in `Episode12.lean` is a different statement: a cubic
+  in the place has no fourth difference. Do not offer the one as the
+  receipt for the other.
+- *No one procedure decides, for every pair of numbers given by shrinking
+  brackets, whether they are equal; an inequality shows at a finite stage,
+  and no finite stage shows an equality.* Standard: it is the halting
+  problem, cited to Turing, with the reduction now written out in Part VIII.
+  It is not in the Lean. It is a uniform statement. It does not say a
+  particular equality cannot be proved; the device's receipts are
+  equalities proved.
 
 So: the device is machine-checked; the shape of the table is machine-checked
 for any weights; the openness is rigorously derived and rests in one part on
@@ -129,6 +136,11 @@ people's work and is not addressed.
 
 **"Was the number planted?"** Every receipt holds on either answer. Follow
 "Planted or found" below.
+
+**"A finite record does not force every reader to see only its tally."**
+Granted. Link 2 is about a reader that respects the gauge. That hypothesis
+is not implied by finiteness, and Part VIII's paragraph on Hilbert now says
+so. A reader that does not respect the gauge reads what it was handed.
 
 **"What would refute this?"** Name it: a finite gauge that computes the
 comparison; an error in Theorem G; a system with two truth values and an
@@ -428,8 +440,8 @@ names the number.
   from this device.
 - The bills, counted again on 18 November 2026 over every theorem constant
   the kernel holds for the built episodes (Episode 6 is built apart and is
-  not counted), compiler auxiliaries included: 3,526; no axiom, 1,468;
-  `propext`, 783; `propext` and `Quot.sound`, 1,266; `Quot.sound` alone, 7;
+  not counted), compiler auxiliaries included: 3,574; no axiom, 1,473;
+  `propext`, 791; `propext` and `Quot.sound`, 1,301; `Quot.sound` alone, 7;
   and `Classical.choice` in two, `compatibility_form` and its auxiliary.
   (The count of 17 November was 2,138: 1,051; 558; 523; 5; 1.) The one,
   `compatibility_form`
@@ -783,8 +795,30 @@ names the number.
   the device (`true_on_false_is_false_on_true_and_implies_true_on_true`);
   what is proposed is its reading, and of that reading the volume has only
   the classical part, nothing quantized. The distinct claims still open,
-  28 of them, with parent, warrant and missing bridge, are in
-  `claude/ledger-proposals-2026-11-18.md`. With
+  31 of them (6 bridges between the four, 25 others), with parent, warrant
+  and missing bridge, are in `claude/ledger-proposals-2026-11-18.md`. The
+  ledger keeps two columns apart: the original assertion, and a narrower
+  replacement. As of the third pass no original is established. Narrower
+  replacements are: the table is the Galerkin operator of an exhibited
+  problem (Card 3, Proposition "A variational problem whose Galerkin
+  operator is the table"; chosen to realize the table, not shown to be any
+  of the four models); the symmetrized table's rows sum to the outer
+  radius and a turn shrinks the difference of two numbers by hole over
+  outer radius (not an entropy); two closed-walk counts are needed and
+  three are not; the gap squared is a symbol's discriminant (the
+  assignment of models to kinds is not shown). Say "replacement", not
+  "closed", for these. Since then: the closed counts are fixed by the two
+  before at every length and the 2×2 minor is 360·234ⁿ, never zero
+  (`the_square_of_three_is_never_nothing`); the three ways are three maps
+  (`kept`, `struck`, `turned_over`), the struck map moving only the arm
+  that does not click and the turned map only false-on-true
+  (`which_arm_each_map_moves`); and Card 3 has Proposition "No map built
+  from the metric alone": about flat spacetime, in metric variables, a
+  Lorentz- and translation-covariant map of order ≤ 2 from potentials to
+  symmetric tensors built from the metric alone pulls the linearized
+  Einstein operator back to −3b²∂ᵥ□(∂·A), never to Maxwell's. That rules
+  out a class; it does not refute the identification, whose map must use
+  the background, be of higher order, or break the symmetries. With
   a visitor, still do not fill the blank or name the number first. Receipts: lists of 2, 4, 8 and 16; each step is two comparisons, so
   32 phrases; read for what they say, 16 are false; read for the click, 8
   cannot; the 8 between are all false-on-true. That these are the author's
@@ -821,6 +855,20 @@ names the number.
   (nothing reads a `Basis` as a direction); sums over the sites of the
   four-torus; the tie of the three ways to the three arms; all of Phase B.
   Do not say the remainder "sums away"; say the exact statement.
+- The same evidence, two identifications (`Episode13.lean`, section
+  `the_same_evidence_and_two_identifications`). Three pairs the device
+  already had, stated for what is allowed to be read:
+  `the_knowers_bit_is_not_fixed_by_what_is_read` (the solver finds a witness
+  either way, both roots satisfy the quartic's receipts, and the two roots
+  differ); `every_reader_of_the_closures_reads_the_two_ladders_alike` (any
+  function of the two top closures returns the same on Episode 12's ladder
+  and on the other); `the_record_and_the_tally_do_not_fix_it`. These are
+  three instances, each for its own readers. They are not the general
+  theorem (two admissible physical interpretations with identical complete
+  evidence, for a stated class of axiomatizations), which is still an
+  argument on the page. Note that the two ladders' first facts are equal by
+  `propext`, so Lean cannot be asked to prove them different; that they
+  differ in what they say is by definition, outside the logic.
 - The promise of the return (`Episode13.lean`, section
   `the_promise_of_the_return`). The author asked whether the promise of the
   return photon, "the path nothing takes", is visible in the math. It is the

@@ -5875,6 +5875,246 @@ end the_two_directions_exactly
 --#print axioms the_table_taken_from_the_same_carries_them_exactly
 --#print axioms the_two_it_is_carried_by_multiply_to_thirteen_residuals
 
+section the_ledgers_first_rows
+open readers_experience
+
+--| THE TABLE AS THE MATRIX OF A VARIATIONAL PROBLEM.  Weighed by its coins the table is the same turned over.  More: its
+--| action on any pair is ninety of the two together squared and two hundred and thirty-four of the first squared.  Ninety
+--| is the round trip and two hundred and thirty-four the determinant.  So the action is never under nothing, and is nothing
+--| only on nothing: the weighed table is a stiffness, and the two coins are its mass.
+theorem the_weighed_action_is_two_squares (v : Bool → Int) :
+    the_action_of (weighed_by_its_coin the_full_table) v
+      = 90 * ((v true + v false) * (v true + v false)) + 234 * (v true * v true) := by
+  show v true * (18 * 18 * v true + 18 * 5 * v false) + v false * (5 * 18 * v true + 5 * 18 * v false)
+      = 90 * ((v true + v false) * (v true + v false)) + 234 * (v true * v true)
+  have e1 : v true * (18 * 18 * v true) = 18 * 18 * (v true * v true) := Int.mul_left_comm _ _ _
+  have e2 : v true * (18 * 5 * v false) = 18 * 5 * (v true * v false) := Int.mul_left_comm _ _ _
+  have e3 : v false * (5 * 18 * v true) = 5 * 18 * (v true * v false) := by
+    rw [Int.mul_left_comm, Int.mul_comm (v false) (v true)]
+  have e4 : v false * (5 * 18 * v false) = 5 * 18 * (v false * v false) := Int.mul_left_comm _ _ _
+  have left : v true * (18 * 18 * v true + 18 * 5 * v false) + v false * (5 * 18 * v true + 5 * 18 * v false)
+      = 324 * (v true * v true) + 180 * (v true * v false) + 90 * (v false * v false) := by
+    rw [Int.mul_add (v true), Int.mul_add (v false), e1, e2, e3, e4]; omega
+  have right : (v true + v false) * (v true + v false)
+      = v true * v true + 2 * (v true * v false) + v false * v false := by
+    rw [Int.add_mul, Int.mul_add, Int.mul_add, Int.mul_comm (v false) (v true)]; omega
+  rw [left, right]; omega
+
+theorem a_square_is_never_under_nothing (x : Int) : 0 ≤ x * x := by
+  rcases Int.le_total 0 x with h | h
+  · exact Int.mul_nonneg h h
+  · have := Int.mul_nonneg (Int.neg_nonneg_of_nonpos h) (Int.neg_nonneg_of_nonpos h)
+    rwa [Int.neg_mul_neg] at this
+
+theorem the_weighed_action_is_never_under_nothing (v : Bool → Int) :
+    0 ≤ the_action_of (weighed_by_its_coin the_full_table) v := by
+  rw [the_weighed_action_is_two_squares]
+  have a := a_square_is_never_under_nothing (v true + v false)
+  have b := a_square_is_never_under_nothing (v true)
+  omega
+
+--| THE TABLE MADE THE SAME BOTH WAYS.  In Episode 12's pairs, put the root on both crossings: eighteen on the stays and
+--| the root between.  Each row adds to the outer radius.  It carries the two coins together by the outer radius and the
+--| two coins against each other by the hole.  And its two rows are not one row: where it is tells what comes next.
+def the_table_the_same_both_ways (a b : Bool) : Int × Int := if a = b then (18, 0) else (0, 1)
+
+theorem each_row_adds_to_the_outer_radius (a : Bool) :
+    ((the_table_the_same_both_ways a true).1 + (the_table_the_same_both_ways a false).1,
+     (the_table_the_same_both_ways a true).2 + (the_table_the_same_both_ways a false).2) = the_outer_radius := by
+  cases a <;> rfl
+
+theorem together_by_the_outer_radius_and_against_by_the_hole :
+    (∀ a, ((the_table_the_same_both_ways a true).1 - (the_table_the_same_both_ways a false).1,
+           (the_table_the_same_both_ways a true).2 - (the_table_the_same_both_ways a false).2)
+        = the_surd_product the_hole (if a then (1, 0) else (-1, 0)))
+      ∧ the_table_the_same_both_ways true ≠ the_table_the_same_both_ways false := by
+  refine ⟨by decide, fun same => ?_⟩
+  have h := congrFun same true
+  exact absurd h (by decide)
+
+--| WHAT IS SPREAD.  Two whole numbers on the two coins, taken through that table: what they come to together is the outer
+--| radius of what they were together, and how far apart they are is the hole of how far apart they were.  The hole is
+--| under the outer radius, so every turn the two are nearer level.  Nothing is said here of an entropy.
+theorem a_turn_spreads_the_two (first second : Int) :
+    the_surd_product (18, 0) (first, 0) = (18 * first, 0)
+      ∧ ((18 * first + 0 * second) + (0 * first + 18 * second), (0 * first + 1 * second) + (1 * first + 0 * second))
+          = the_surd_product the_outer_radius (first + second, 0)
+      ∧ ((18 * first + 0 * second) - (0 * first + 18 * second), (0 * first + 1 * second) - (1 * first + 0 * second))
+          = the_surd_product the_hole (first - second, 0) := by
+  have ninety := the_round_trip_is_ninety
+  refine ⟨?_, ?_, ?_⟩ <;> refine Prod.ext ?_ ?_
+  · show (18 : Int) * first + the_round_trip * 0 * 0 = 18 * first; rw [ninety]; omega
+  · show (18 : Int) * 0 + 0 * first = 0; omega
+  · show (18 * first + 0 * second) + (0 * first + 18 * second) = 18 * (first + second) + the_round_trip * 1 * 0
+    rw [ninety]; omega
+  · show (0 * first + 1 * second) + (1 * first + 0 * second) = 18 * 0 + 1 * (first + second); omega
+  · show (18 * first + 0 * second) - (0 * first + 18 * second) = 18 * (first - second) + the_round_trip * (-1) * 0
+    rw [ninety]; omega
+  · show (0 * first + 1 * second) - (1 * first + 0 * second) = 18 * 0 + (-1) * (first - second); omega
+
+--| TWO, AND NO MORE.  The closed walks of the table, counted by length.  Any two in a row do not fix the next by a ratio:
+--| the square of them against their neighbours is three hundred and sixty, the gap squared.  Any three in a row do fix
+--| the next: the cube of them is nothing.  A reader that is to say what comes next needs two numbers and no third.
+theorem two_closed_counts_are_needed_and_three_are_not :
+    (the_closed_walks 0 : Int) * the_closed_walks 2 - (the_closed_walks 1 : Int) * the_closed_walks 1 = 360
+      ∧ (the_closed_walks 0 : Int) * ((the_closed_walks 2 : Int) * the_closed_walks 4 - (the_closed_walks 3 : Int) * the_closed_walks 3)
+          - (the_closed_walks 1 : Int) * ((the_closed_walks 1 : Int) * the_closed_walks 4 - (the_closed_walks 3 : Int) * the_closed_walks 2)
+          + (the_closed_walks 2 : Int) * ((the_closed_walks 1 : Int) * the_closed_walks 3 - (the_closed_walks 2 : Int) * the_closed_walks 2)
+        = 0 := by decide
+
+--| THE GAP SQUARED IS A SYMBOL'S DISCRIMINANT.  For any table: the difference of the stays squared and four of the
+--| crossings, one by the other.  That is the discriminant of the form with the one crossing on the first squared, the
+--| difference of the stays on the two together, and the other crossing owed on the second squared.
+theorem the_gap_squared_is_the_discriminant_of_the_symbol (table : Table) :
+    the_gap_squared table
+      = (table true true - table false false) * (table true true - table false false)
+        + 4 * (table true false * table false true) := by
+  show (table true true + table false false) * (table true true + table false false)
+        - 4 * (table true true * table false false - table true false * table false true) = _
+  rw [Int.add_mul, Int.mul_add, Int.mul_add, Int.sub_mul, Int.mul_sub, Int.mul_sub, Int.mul_sub,
+    Int.mul_comm (table false false) (table true true)]
+  omega
+end the_ledgers_first_rows
+
+--#print axioms the_weighed_action_is_two_squares
+--#print axioms the_weighed_action_is_never_under_nothing
+--#print axioms each_row_adds_to_the_outer_radius
+--#print axioms together_by_the_outer_radius_and_against_by_the_hole
+--#print axioms a_turn_spreads_the_two
+--#print axioms two_closed_counts_are_needed_and_three_are_not
+--#print axioms the_gap_squared_is_the_discriminant_of_the_symbol
+
+section the_same_evidence_and_two_identifications
+open readers_experience readers_interpretation_of_the_experience readers_interpretation_of_the_pair the_area
+
+universe any
+
+--| THE SAME EVIDENCE, AND TWO IDENTIFICATIONS.  Three pairs the device already has, set side by side, and each stated for
+--| what is allowed to be read.  They are not one theorem about every description; each says what its own readers cannot
+--| tell.
+
+--| THE KNOWER'S BIT.  What is read: the triple's solver, and the quartic's two receipts.  The solver finds a witness with
+--| the bit one way and with it the other; the receipts hold for the root given on a yes and for the root given on a no;
+--| and the two roots are not one root.  The evidence is the same and the identification is not.
+theorem the_knowers_bit_is_not_fixed_by_what_is_read :
+    (satSearch the_knowers_triple an_odd_number_are_true 3 = true
+        ∧ satSearch the_knowers_triple an_even_number_are_true 3 = true)
+      ∧ (∀ you_do : FACT,
+          (the_surd_product (you_re_a_daisy_if_you_do you_do) (you_re_a_daisy_if_you_do you_do)).1
+              - 11664 * (you_re_a_daisy_if_you_do you_do).1 + 24564384 = 0
+            ∧ (the_surd_product (you_re_a_daisy_if_you_do you_do) (you_re_a_daisy_if_you_do you_do)).2
+              - 11664 * (you_re_a_daisy_if_you_do you_do).2 = 0)
+      ∧ you_re_a_daisy_if_you_do (bitFACT true) ≠ you_re_a_daisy_if_you_do (bitFACT false) :=
+  ⟨the_solver_finds_a_witness_either_way,
+   fun you_do => ⟨(you_re_a_daisy_either_way you_do).1, (you_re_a_daisy_either_way you_do).2.1⟩,
+   by decide⟩
+
+--| THE TWO LADDERS.  What is read: the closures at the top, by any reader whatever.  Episode 12's ladder begins on the
+--| truth and the other on a number distinguished, and the knower's alpha of each begins on its own first fact.  Every
+--| reader of the two closures returns the same for the one ladder as for the other.
+theorem every_reader_of_the_closures_reads_the_two_ladders_alike {what_is_read : Sort any} (reader : Closure → what_is_read) :
+    reader the_other_conclusion = reader the_conclusion ∧ reader the_other_alpha = reader the_alpha :=
+  ⟨congrArg reader asked_only_whether_it_is_true_the_two_ladders_carry_the_same_closures.1,
+   congrArg reader asked_only_whether_it_is_true_the_two_ladders_carry_the_same_closures.2⟩
+
+--| THE RECORD.  What is read: the readings at the places looked at.  For any finite list of places and any model there is
+--| another that reads the same at every one of them and is not the same model.  And what is read of a tally is the same
+--| for either carrier.
+theorem the_record_and_the_tally_do_not_fix_it (places : List Nat) (the_model : Nat → Nat × Nat) :
+    (∃ another_model : Nat → Nat × Nat,
+        (∀ place, place ∈ places → another_model place = the_model place) ∧ another_model ≠ the_model)
+      ∧ (∀ (reader : Nat → Bool) (carriers : TwoCarriers),
+          reader (the_tally carriers.swap) = reader (the_tally carriers)) :=
+  ⟨the_value_and_the_velocity_do_not_tell places the_model,
+   fun reader carriers => no_reader_of_the_tally_sees_which_carrier reader carriers⟩
+end the_same_evidence_and_two_identifications
+
+--#print axioms the_knowers_bit_is_not_fixed_by_what_is_read
+--#print axioms every_reader_of_the_closures_reads_the_two_ladders_alike
+--#print axioms the_record_and_the_tally_do_not_fix_it
+
+section two_counts_and_no_third
+open readers_experience
+
+--| TWO COUNTS, AT EVERY LENGTH.  Episode 12 has that the closed walks obey the table: each count is the trace of the one
+--| before less the determinant of the one before that.  So two in a row always fix the next.  And two are always needed:
+--| the square of three in a row, the outer two less the middle squared, is three hundred and sixty at the start and is
+--| multiplied by the determinant at every step, so it is never nothing.
+def the_square_of_three_in_a_row (n : Nat) : Int :=
+  (the_closed_walks n : Int) * the_closed_walks (n + 2) - (the_closed_walks (n + 1) : Int) * the_closed_walks (n + 1)
+
+theorem the_next_count_is_fixed_by_the_two_before (n : Nat) :
+    (the_closed_walks (n + 2) : Int) = 36 * the_closed_walks (n + 1) - 234 * the_closed_walks n := by
+  have h := the_closed_walks_obey_the_table n
+  have t : the_trace = 36 := rfl
+  have d : the_determinant = 234 := rfl
+  rw [t, d] at h; omega
+
+theorem the_square_of_three_is_multiplied_by_the_determinant (n : Nat) :
+    the_square_of_three_in_a_row (n + 1) = 234 * the_square_of_three_in_a_row n := by
+  have hc := the_next_count_is_fixed_by_the_two_before n
+  have hd := the_next_count_is_fixed_by_the_two_before (n + 1)
+  simp only [the_square_of_three_in_a_row]
+  have e1 : (the_closed_walks (n + 2) : Int) * the_closed_walks (n + 2)
+      = 36 * ((the_closed_walks (n + 1) : Int) * the_closed_walks (n + 2))
+        - 234 * ((the_closed_walks n : Int) * the_closed_walks (n + 2)) := by
+    have := congrArg (fun z => z * (the_closed_walks (n + 2) : Int)) hc
+    simp only [Int.sub_mul, Int.mul_assoc] at this; exact this
+  have e2 : (the_closed_walks (n + 1) : Int) * the_closed_walks (n + 1 + 2)
+      = 36 * ((the_closed_walks (n + 1) : Int) * the_closed_walks (n + 2))
+        - 234 * ((the_closed_walks (n + 1) : Int) * the_closed_walks (n + 1)) := by
+    rw [hd, Int.mul_sub, Int.mul_left_comm, Int.mul_left_comm (the_closed_walks (n + 1) : Int) 234]
+  rw [show n + 1 + 1 = n + 2 from rfl, e2, e1]; omega
+
+theorem the_square_of_three_is_never_nothing : ∀ n : Nat, 0 < the_square_of_three_in_a_row n
+  | 0 => by decide
+  | n + 1 => by
+    rw [the_square_of_three_is_multiplied_by_the_determinant]
+    have := the_square_of_three_is_never_nothing n; omega
+end two_counts_and_no_third
+
+section three_ways_as_three_maps
+
+--| THREE WAYS, AS THREE MAPS.  One table goes in.  Kept: it comes out as it went in.  Struck: the arm that does not click
+--| is set to nothing.  Turned over: the arm that clicks on a falsehood, false on true, is owed.  On a table of a stay and
+--| two crossings the three give the table itself, the table with nothing out, and the table with the way back owed.
+def kept (table : Table) : Table := table
+def struck (table : Table) : Table := fun a b => if a = true ∧ b = false then 0 else table a b
+def turned_over (table : Table) : Table := fun a b => if a = false ∧ b = true then - table a b else table a b
+
+theorem the_three_maps_on_a_stay_and_two_crossings (stay out back : Int) (a b : Bool) :
+    struck (the_refinement_table stay out back) a b = the_refinement_table stay 0 back a b
+      ∧ turned_over (the_refinement_table stay out back) a b = the_refinement_table stay out (- back) a b := by
+  cases a <;> cases b <;> exact ⟨rfl, rfl⟩
+
+--| And the gap squared of the three: four of the crossings, one by the other; nothing; and the same owed.  Where the
+--| crossings are of one sign that is over nothing, nothing, and under nothing.
+theorem the_gap_squared_of_the_three_ways (stay out back : Int) :
+    the_gap_squared (kept (the_refinement_table stay out back)) = 4 * (out * back)
+      ∧ the_gap_squared (struck (the_refinement_table stay out back)) = 0
+      ∧ the_gap_squared (turned_over (the_refinement_table stay out back)) = - (4 * (out * back)) := by
+  refine ⟨the_gap_squared_is_four_of_the_crossings stay out back, ?_, ?_⟩
+  · rw [show struck (the_refinement_table stay out back) = the_refinement_table stay 0 back from
+        funext fun a => funext fun b => (the_three_maps_on_a_stay_and_two_crossings stay out back a b).1,
+      the_gap_squared_is_four_of_the_crossings, Int.zero_mul]; rfl
+  · rw [show turned_over (the_refinement_table stay out back) = the_refinement_table stay out (- back) from
+        funext fun a => funext fun b => (the_three_maps_on_a_stay_and_two_crossings stay out back a b).2,
+      the_gap_squared_is_four_of_the_crossings, Int.mul_neg, Int.mul_neg]
+
+--| The struck map moves only the arm that does not click, and the turned map only the arm that clicks on a falsehood.
+theorem which_arm_each_map_moves (table : Table) (a b : Bool) :
+    (struck table a b ≠ table a b → the_arm_stores_a_fact_that_can_click a b = false)
+      ∧ (turned_over table a b ≠ table a b → a = false ∧ b = true) := by
+  cases a <;> cases b <;> simp [struck, turned_over, the_arm_stores_a_fact_that_can_click]
+end three_ways_as_three_maps
+
+--#print axioms the_next_count_is_fixed_by_the_two_before
+--#print axioms the_square_of_three_is_multiplied_by_the_determinant
+--#print axioms the_square_of_three_is_never_nothing
+--#print axioms the_three_maps_on_a_stay_and_two_crossings
+--#print axioms the_gap_squared_of_the_three_ways
+--#print axioms which_arm_each_map_moves
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
