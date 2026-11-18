@@ -6520,6 +6520,52 @@ theorem the_triple_does_not_read_which_way_the_arm_crosses :
           = (the_knowers_triple.holds (assignFrom [a, false, true]) an_even_number_are_true 0).1 := by decide
 end two_reversals
 
+
+section the_mirror_the_turn_and_the_spinor
+open readers_experience
+
+--| THE MIRROR, THE TURN AND THE SPINOR.  Asked how the two reversals are paired, the author answered with three things
+--| done: the mirror projection, the rotation in two dimensions, and the spinor's rotation, the last being the arrow of
+--| time.  The first is the table turned over.  The second is the table carried by the quarter turn.  The third is the sign
+--| the table does not see.
+
+--| The table carried by the quarter turn: the quarter turn, the table, and the quarter turn back.
+def carried_by_the_quarter_turn (A : Table) : Table :=
+  fun a b => - the_table_product (the_table_product the_quarter_turn A) the_quarter_turn a b
+
+--| Carried, it reads as it did.
+theorem carried_by_the_quarter_turn_the_table_reads_the_same :
+    the_table_trace (carried_by_the_quarter_turn the_full_table) = 36
+      ∧ the_table_determinant (carried_by_the_quarter_turn the_full_table) = 234
+      ∧ the_gap_squared (carried_by_the_quarter_turn the_full_table) = 360 := by decide
+
+--| What it is: the table turned over, with both crossings owed.
+theorem carried_by_the_quarter_turn_it_is_turned_over_and_the_crossings_are_owed :
+    ∀ a b : Bool, carried_by_the_quarter_turn the_full_table a b
+      = if a = b then the_full_other_table a b else - the_full_other_table a b := by decide
+
+--| Carried twice, it is back.  On the table the quarter turn is done twice and nothing is owed.
+theorem carried_twice_the_table_is_back :
+    ∀ a b : Bool, carried_by_the_quarter_turn (carried_by_the_quarter_turn the_full_table) a b = the_full_table a b := by
+  decide
+
+--| In the turns it is not back.  The quarter turn twice is the whole turn owed, and the quarter turn turned over is itself
+--| owed.  This is the sign the table does not see.
+theorem in_the_turns_the_quarter_turn_twice_is_the_whole_turn_owed :
+    the_turns_product the_quarter_turn_turn the_quarter_turn_turn = the_whole_turn (-1)
+      ∧ the_turns_conjugate the_quarter_turn_turn
+          = the_turns_product (the_whole_turn (-1)) the_quarter_turn_turn := by decide
+
+--| It is not the roots changing places.  Owed whole, the outer radius is not the hole: the eighteen is owed with it.
+theorem the_outer_radius_owed_is_not_the_hole :
+    (- the_outer_radius.1, - the_outer_radius.2) ≠ the_hole
+      ∧ (the_outer_radius.1, - the_outer_radius.2) = the_hole := by decide
+
+--| The place that is not on the frinkahedron is the one where neither sample holds a bracket.
+theorem the_place_off_the_frinkahedron_holds_no_bracket :
+    (the_arms.filter fun place => !on_the_frinkahedron place) = [(false, false)] := by decide
+end the_mirror_the_turn_and_the_spinor
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.

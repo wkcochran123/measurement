@@ -724,7 +724,7 @@ names the number.
   these actions, so the two readings differ by projection, not by
   derivative; the field map along which QED would be the pulled-back
   derivative of the gravity residual is proposed in Card 3 and not
-  exhibited; which two scalings are meant is not settled (a candidate with a receipt
+  exhibited; which two scalings are meant: the author has since said the two areas (see "The author's decisions"); earlier (a candidate with a receipt
   and no declaration: the exact root against one Newton turn from the mass,
   `one_turn_from_the_mass_is_over_by_the_momentum_squared_squared`). The
   integer identities are tied to Episode 12's natural-number crank where
@@ -772,7 +772,7 @@ names the number.
   `the_gateaux`, `the_frechet`, holding one, two and three statements; from
   `Polynomial.monomial` on, base cases hold a bare `Prop` where earlier
   inductives hold a `FACT` (a statement with its click). Equivalation and
-  Encoding have no reading.
+  Encoding were read later the same day (see "The author's decisions").
 - The ladder and the four proposals (`Episode13.lean`, section
   `the_ladder_of_twos`). The author's (declared): 1 decision; 2 hypotheses
   (the continuum, true or false); 4 proposals; 8 responses for equality; 16
@@ -942,6 +942,41 @@ names the number.
   (same or opposite) that the source does not supply; that pairing is the
   identification's. That the table's direction is the sign of Card 1's
   dropped coordinate is not shown.
+- The mirror, the turn and the spinor (`Episode13.lean`, section
+  `the_mirror_the_turn_and_the_spinor`). Asked how the two signs are paired,
+  the author (18 November 2026, declared): it does the mirror projection,
+  the 2-d rotation and the spinor rotation; the last is the arrow of time.
+  Receipts: the table carried by the quarter turn reads 36, 234, 360, is
+  the table turned over with both crossings owed, and carried twice is
+  back; in Episode 12's turns the quarter turn twice is the whole turn owed
+  (−1), the sign the table does not see
+  (`in_the_turns_the_quarter_turn_twice_is_the_whole_turn_owed`). Not
+  shown: that this sign is the roots changing places
+  (`the_outer_radius_owed_is_not_the_hole`: owed whole, the 18 is owed
+  too). So the spinor's sign has an object; its tie to the root's sign is
+  the author's.
+- The author's decisions, 18 November 2026 (all declared; do not promote):
+  two areas at right angles, one the spatial description and one the
+  simplicial integrator of the exact cubic; the two areas are the two
+  scalings, linear, so they scale and shift (this withdraws the Newton-turn
+  candidate for the scalings); the signature the other way gives QM; the
+  knower's same difference is QED == Navier-Stokes; only the outside
+  projection of the frinkahedron is available and that is F=F, the internal
+  face that separates the bent card from before is T=T, and T=F is handled
+  by all the other faces; 3, 4, 5 are both the inductives and the cell
+  counts and show up three times; Encoding is the face-down cards and
+  Equivalation is the naming of the electron (so every one of the 37
+  inductives has a reading); the eight responses are the 8 configurations
+  of the 4 proposals; the parabolic step is from the before bent card to
+  the after bent card (the second one); the four numerical maps the source
+  selects are the maps meant. Undecided by the author: whether the promise
+  is the 13. Not said by the author, so do not supply: which counted area
+  is which (the arm's weight has scale 1 and no shift; one fencepost has
+  scale 23/2 and shift 13/2); what "at right angles" is on the device; the
+  third appearance of 3, 4, 5 (`five_three_four` among the null directions
+  is a candidate only). Measured beside it: the one place off the
+  frinkahedron is (false, false), where neither Sample holds a bracket
+  (`the_place_off_the_frinkahedron_holds_no_bracket`).
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
