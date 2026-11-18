@@ -987,6 +987,16 @@ names the number.
   statements confirmed, on one machine. It shows that time is in the
   compile for a reader to read. It does not show that such a reader
   recovers the knower's decision.
+- Experiment 014, the two decisions (`READINGS.md`). The timer around the
+  device's root for each decision, in both orders. Heartbeats identical run
+  to run. A thousand evaluations cost the same for either decision in the
+  same place in the compile (2,952,063 first, 2,952,093 second); only the
+  first evaluation differs, the decision true costing 14 or 16 heartbeats
+  more; the nanoseconds do not separate them. Two of Claude's three sealed
+  statements were refuted; say so. So a reader of the timer recovers the
+  decision only from the first evaluation, knowing its place. This does not
+  touch the recovery theorem, which is about the evidence it names. Why the
+  first evaluation differs is not known; do not offer an explanation.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,

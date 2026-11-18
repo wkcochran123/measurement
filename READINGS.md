@@ -877,6 +877,49 @@ more than a later one, and the later ones rise slightly with the count. That is 
 **Standing.** The readings are *measured*, on one machine. That the reader can only read what is in the compile is
 the author's (*declared*). What an evaluation is, here, is Claude's choice of workload, and the author may correct it.
 
+## Experiment 014: the two decisions
+
+**Setup:** `a3abd0f` (`readings/014-the-two-decisions/`). **Source:** `fe5cf5d`. **Read:** Apple M2, 18 November 2026,
+five runs, two probes (one for each order), one fresh process per probe per run; `raw/M2/readings.out`. Both probes
+compiled as sealed (after one repair made before the seal and recorded in it).
+
+**The author's statement:** "the reader can only read what is in the compile."
+
+**Read.** One evaluation is the device's root for a decision, `you_re_a_daisy_if_you_do (bitFACT decision)`,
+elaborated and reduced to weak head normal form. In each compile: a blank, then one decision once and a thousand
+times, then the other once and a thousand times. Heartbeats, identical in all five runs:
+
+| | Decision true | Decision false |
+|---|---|---|
+| Evaluated first, once | 3,930 | 3,916 |
+| Evaluated first, a thousand times | 2,952,063 | 2,952,063 |
+| Evaluated second, once | 3,736 | 3,720 |
+| Evaluated second, a thousand times | 2,952,093 | 2,952,093 |
+
+The blank read 4,186 every time. Nanoseconds at a thousand evaluations: decision true, 60,069,166 to 64,129,708;
+decision false, 60,022,500 to 63,384,042.
+
+**Against the seal.**
+
+- S1, at a thousand evaluations the heartbeats of the two decisions are not equal, and each is identical across
+  runs and orders: **refuted**. In the same place in the compile they are equal, 2,952,063 first and 2,952,093
+  second, whichever decision it is; and they are not the same across the two orders. They are identical across runs.
+- S2, the decision true costs more heartbeats: **refuted** at a thousand, where they are equal. At one evaluation it
+  does: 14 more when evaluated first, 16 more when evaluated second.
+- S3, the nanoseconds at a thousand do not separate the decisions: **confirmed**; the two ranges overlap.
+- S4 (recorded): an evaluation among a thousand costs 2,952 heartbeats, either decision.
+
+**What it says.** The timer tells the two decisions apart only on the first evaluation of each, by 14 or 16
+heartbeats in about 3,900. After that it does not: a thousand evaluations of one decision cost exactly what a
+thousand of the other cost in the same place. Where in the compile an evaluation stands moves the reading far more
+than the decision does (about 190 at one evaluation, 30 at a thousand). The nanoseconds do not tell them apart at
+all. So a reader of the timer can recover the decision only if it catches the first evaluation and knows its place.
+Why the first evaluation differs and the later ones do not is not known.
+
+**Standing.** The readings are *measured*, on one machine. Two of Claude's three sealed statements were refuted.
+This does not touch Episode 13's theorem, which is about the evidence it names; it says the timer is not in that
+evidence, and that on the first evaluation the timer reads more.
+
 ## The study: hardware
 
 One row per machine. The reference frame is the first row (D = 1). Add a row by

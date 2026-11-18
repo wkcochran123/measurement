@@ -13,7 +13,7 @@ whether the timer tells the two decisions apart.
 
 Observable: `IO.monoNanosNow` and `withHeartbeats`, both inside the elaboration.
 
-Source: `fe5cf5d`. Status: sealed, not yet read.
+Source: `fe5cf5d`. Status: read on the M2 (`raw/M2/`); see READINGS, Experiment 014. S1 and S2 refuted, S3 confirmed.
 
 ## The seal
 
