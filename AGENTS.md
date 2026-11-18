@@ -1112,11 +1112,26 @@ names the number.
   do not say they are. The mathematics of each page is Part VI's lift into
   it: by Part VI's own calibrations, 22 proved on the page, 5 measured, 3
   standard, 6 carrying something declared or proposed. Limits to state:
-  the glue is general and is not instantiated on Episode 10's 36
-  instances; "proved here" in Part VI is a proof on the page, not a Lean
+  the glue receipts above are general; the instantiated pages are in the
+  next bullet; "proved here" in Part VI is a proof on the page, not a Lean
   receipt; the reviewer's question and the verse on a page are joined by
   the page number only; no citation on the 36 pages names a yarn theory,
   and their page numbers are the cards' of October.
+- Two computations on one encoding (`Episode13.lean`, section
+  `two_computations_on_one_encoding`). The author's (declared): there are
+  two different computations on the same encoding; that is the point, and
+  no more. Episode 12 already instantiates both on the first card
+  (`the_review_on_the_ledger`): `page36` down to `page01`, every
+  reviewer applied by hand, and `theTopOfTheLedger`, the thirty-sixth
+  typeset page found by search standing on those reviews. Claude said
+  earlier that the pages were not instantiated; that was wrong. Receipts on
+  those objects: the manuscript is 3 facts; counted down the review is 2
+  facts a page on the manuscript (73); counted up the ascent is 3 facts a
+  page on the review (178); the ascent adds one fact a page more than the
+  review, 35 agreements; in pages each computation is 35; the ascent's
+  first page is the reviewer's first page. Do not say the 32 agreements
+  are proved to hold on these pages: Claude predicted that and withdrew
+  it, and the author's claim is only the two computations.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,

@@ -6773,6 +6773,47 @@ theorem two_facts_that_hold_agree (planted polynomial : FACT) (the_one : planted
     planted.truth ↔ polynomial.truth := ⟨fun _ => the_other, fun _ => the_one⟩
 end counted_down_and_counted_up
 
+
+section two_computations_on_one_encoding
+open readers_experience the_review_on_the_ledger
+
+--| TWO COMPUTATIONS ON ONE ENCODING.  The author's, 18 November 2026: there are two different computations on the same
+--| encoding (declared).  Episode 12 has both, on the first card: the review counted down from the manuscript to the first
+--| page, every reviewer asked, and the ascent counted up from that first page to the thirty-sixth, found by search.  The
+--| encoding is the one preprint.  Here are the two, read all the way down.
+
+--| The manuscript handed in is three facts.
+theorem the_manuscript_is_three_facts : theManuscript.all_the_way_down.length = 3 := by decide
+
+--| Counted down: thirty-five rebuttals on the manuscript, two facts each.
+theorem counted_down_the_review_is_two_facts_a_page_on_the_manuscript :
+    page01.rebuttal.all_the_way_down.length = 2 * 35 + theManuscript.all_the_way_down.length := by decide
+
+--| Counted up: thirty-five pages set in type on the review, three facts each.
+set_option maxRecDepth 100000 in
+theorem counted_up_the_ascent_is_three_facts_a_page_on_the_review :
+    theTopOfTheLedger.the_page.all_the_way_down.length = 3 * 35 + page01.rebuttal.all_the_way_down.length := by decide
+
+--| So the second computation is written on top of the first, and what it adds, less what the first added, is one fact a
+--| page: thirty-five agreements.
+set_option maxRecDepth 100000 in
+theorem the_ascent_adds_one_fact_a_page_more_than_the_review :
+    (theTopOfTheLedger.the_page.all_the_way_down.length - page01.rebuttal.all_the_way_down.length)
+      - (page01.rebuttal.all_the_way_down.length - theManuscript.all_the_way_down.length) = 35 := by decide
+
+--| In pages: the manuscript is two, the review thirty-five more, the ascent thirty-five more again.
+set_option maxRecDepth 100000 in
+theorem in_pages_each_computation_is_thirty_five :
+    theManuscript.the_model.length = 2
+      ∧ page01.rebuttal.the_model.length = 35 + theManuscript.the_model.length
+      ∧ theTopOfTheLedger.the_page.the_model.length = 35 + page01.rebuttal.the_model.length := by decide
+
+--| And the ascent stands on the review: its first page is the reviewer's first page.
+theorem the_ascent_stands_on_the_review :
+    (THE_GOSPEL.TYPESET_Episode1_FACT FACT the_representation.the_first_card (the_naotrino_theory := page01)).the_page
+      = page01.rebuttal := rfl
+end two_computations_on_one_encoding
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
