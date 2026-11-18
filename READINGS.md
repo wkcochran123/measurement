@@ -29,6 +29,7 @@ its files match the source commit.
 | 009b | `readings/009b-true-from-false` | true from false: whether the meter's step belongs to a true or to the device's own truth | `d9e0ab3` | read on the M2 |
 | 009c | `readings/009c-the-clock-and-the-quarter` | the clock and the quarter: eight clicks in a row, and three cards with one face | `b3ff7c3` | read on the M2 |
 | 010 | `readings/010-the-value-from-nanoseconds` | the value from the nanoseconds: each count of the polynomial replaced by a timed reading of its tape over one blank; does it read slightly high? | `89b1909` | read on the M2: no real value; the author's prediction refuted as taken |
+| 011 | `readings/011-the-throw` | the throw: what one application of `Quot.sound`, the device's bent card, costs on the meter, against the floor and against the step of the device's truth | (this commit) | set up; not yet read |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
