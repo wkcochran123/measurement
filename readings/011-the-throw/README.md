@@ -15,7 +15,7 @@ costs the floor, the step that belongs to the device's truth, or neither.
 Observable: heartbeats of elaborating a term and reducing it to weak head normal form, read by `the_ekg_reads`
 (Episode 8). Baseline: the blank drawn in the same call.
 
-Source: `cc347cb`. Status: set up; not yet read.
+Source: `cc347cb`. Status: read on the M2 (`raw/M2/`); see READINGS, Experiment 011. All probes compiled as sealed.
 
 ## The seal
 

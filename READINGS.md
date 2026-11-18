@@ -29,7 +29,7 @@ its files match the source commit.
 | 009b | `readings/009b-true-from-false` | true from false: whether the meter's step belongs to a true or to the device's own truth | `d9e0ab3` | read on the M2 |
 | 009c | `readings/009c-the-clock-and-the-quarter` | the clock and the quarter: eight clicks in a row, and three cards with one face | `b3ff7c3` | read on the M2 |
 | 010 | `readings/010-the-value-from-nanoseconds` | the value from the nanoseconds: each count of the polynomial replaced by a timed reading of its tape over one blank; does it read slightly high? | `89b1909` | read on the M2: no real value; the author's prediction refuted as taken |
-| 011 | `readings/011-the-throw` | the throw: what one application of `Quot.sound`, the device's bent card, costs on the meter, against the floor and against the step of the device's truth | (this commit) | set up; not yet read |
+| 011 | `readings/011-the-throw` | the throw: what one application of `Quot.sound`, the device's bent card, costs on the meter, against the floor and against the step of the device's truth | `25dc6e3` | read on the M2: 23,752 heartbeats, 5.64 blanks; all three sealed rules refuted |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -725,6 +725,56 @@ prints the value on the count, on the heartbeats and on the clock.
 rules. That the experiment the author meant is the one run here is Claude's reading, and the author may correct it:
 the unit, the workload that reads a tape, and which counts are replaced were all chosen in the setup. A different
 choice of any of them is a different experiment and needs its own seal.
+
+## Experiment 011: the throw
+
+**Setup:** `25dc6e3` (`readings/011-the-throw/`). **Source:** `cc347cb`. **Read:** Apple M2, 17 November 2026, five runs
+per probe, one fresh process per run; `raw/M2/`. All six probes compiled as sealed.
+
+**The author's statement:** "compton time is the time it takes to throw a bent card." With one floor as one Compton
+time (003) and `Quot.sound` as the device's bent card, taken as: one application of `Quot.sound` costs, on the meter,
+one floor; or, the other way it can be taken, the step of 1,021 that belongs to the device's truth.
+
+**Read**, in heartbeats, each term read twice in one process beside its blank:
+
+| Probe | First reading (blank) | Second reading (blank) |
+|---|---|---|
+| `Quot.sound` applied once | 53,771 (4,626) | 50,707 (4,213) |
+| the same statement by `rfl` | 27,846 (4,626) | 26,955 (4,213) |
+| `propext` applied once | 17,342 (4,626) | 17,302 (4,213) |
+| the same statement by `rfl` | 11,535 (4,626) | 11,529 (4,213) |
+| the device's truth, as a term | 4,213 (4,626) | 4,202 (4,213) |
+| Episode 8's own throw, by name | 3,101 (4,630) | 2,255 (4,213) |
+
+**The throws,** on the second reading, each net of its control:
+
+| | Heartbeats | In blanks (4,213) | In steps (1,021) |
+|---|---|---|---|
+| `Quot.sound` | 23,752 | 5.64 | 23.3 |
+| `propext` | 5,773 | 1.37 | 5.65 |
+
+**Against the seal.**
+
+- S1, heartbeats identical across runs: **confirmed**, all six probes.
+- S2, the throw of the bent card. AUTHOR-FLOOR (within one part in ten of the blank): **refuted, as taken**; it is 5.64
+  blanks. AUTHOR-STEP (1,021 to within 50): **refuted, as taken**. CLAUDE (under 500): **refuted**; it is 23,752. None
+  of the three; reported as found.
+- S3, propext's throw under 500 and within 300 of the sound's: **refuted** on both counts; it is 5,773, a quarter of
+  the sound's.
+- S4, the throw read by its name costs less than the throw written out: **confirmed**, 2,255 against 50,707.
+
+**What it says.** Throwing the bent card is not free and is not one floor. Written out, one application of `Quot.sound`
+costs the meter 23,752 heartbeats over the same statement proved with nothing thrown, between five and six times what
+the device's truth costs to click beside it; `propext` costs 5,773, about a quarter as much. So the meter does tell the
+two axioms apart, by a factor of 4.11, which Claude's rule said it would not. Read by its name the throw costs almost
+nothing, as 009c found of cards: the cost is paid where the throw is written. Two ratios are recorded and not
+explained: the sound's throw over propext's is 4.114, and the blank over the step is 4.126; and so the sound's throw
+in blanks, 5.64, is nearly propext's throw in steps, 5.65.
+
+**Standing.** The heartbeats are *measured*, on one machine. That a throw is `Quot.sound` applied once to a statement of
+Episode 8's box, read net of the same statement by `rfl`, is Claude's reading of the author's sentence, and the author
+may correct it: the statement thrown, the control, and which reading is taken were chosen in the setup. The author's
+sentence stands as *declared*; as taken here it is not borne out.
 
 ## The study: hardware
 
