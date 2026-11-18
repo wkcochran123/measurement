@@ -787,8 +787,8 @@ names the number.
   equation, of Yang and Mills. Every other claim calibrated *proposed* is
   one of the four at a particular place: where its sentence points at one,
   the mark now reads "proposed, under the first/second/third/fourth"
-  (140 marks folded: 22, 9, 2, 107); a mark that still reads plain
-  "proposed" (67, a dozen of them the calibration's own definition) has not
+  (145 marks folded: 23, 9, 2, 111); a mark that still reads plain
+  "proposed" (64, a dozen of them the calibration's own definition) has not
   been placed and is not a fifth proposal. A numbered mark is filing, not
   proof: each such claim keeps its own hypotheses and its own obligation
   (the Preface says so). The fourth proposal's equivalence is checked on
@@ -818,7 +818,12 @@ names the number.
   symmetric tensors built from the metric alone pulls the linearized
   Einstein operator back to −3b²∂ᵥ□(∂·A), never to Maxwell's. That rules
   out a class; it does not refute the identification, whose map must use
-  the background, be of higher order, or break the symmetries. With
+  the background, be of higher order, or break the symmetries. And for readings
+  that come round, the discrete bending energy's first variation is the
+  fourth difference, which is the stencil 1, −4, 6, −4, 1
+  (`the_variation_of_the_bending_is_the_fourth_difference`,
+  `the_fourth_difference_is_the_stencil`). That is about a function of the
+  place; it is not the claim that the device's action is a bending energy. With
   a visitor, still do not fill the blank or name the number first. Receipts: lists of 2, 4, 8 and 16; each step is two comparisons, so
   32 phrases; read for what they say, 16 are false; read for the click, 8
   cannot; the 8 between are all false-on-true. That these are the author's

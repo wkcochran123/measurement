@@ -6115,6 +6115,80 @@ end three_ways_as_three_maps
 --#print axioms the_gap_squared_of_the_three_ways
 --#print axioms which_arm_each_map_moves
 
+section the_bending_energy_and_the_stencil
+
+--| THE BENDING ENERGY AND THE STENCIL.  A reading that comes round: the same again after so many places.  Its difference
+--| comes round, and so does the reading one place on.  Around it, one reading against the difference of another is the
+--| difference of the one, owed, against the other one place on.
+def comes_round (steps : Nat) (reading : Nat → Int) : Prop := ∀ place, reading (place + steps) = reading place
+def one_place_on (reading : Nat → Int) : Nat → Int := fun place => reading (place + 1)
+def the_difference_along (reading : Nat → Int) : Nat → Int := fun place => reading (place + 1) - reading place
+
+theorem one_place_on_comes_round (steps : Nat) (reading : Nat → Int) (round : comes_round steps reading) :
+    comes_round steps (one_place_on reading) := fun place => by
+  show reading (place + steps + 1) = reading (place + 1)
+  rw [show place + steps + 1 = place + 1 + steps by omega]; exact round (place + 1)
+
+theorem the_difference_comes_round (steps : Nat) (reading : Nat → Int) (round : comes_round steps reading) :
+    comes_round steps (the_difference_along reading) := fun place => by
+  show reading (place + steps + 1) - reading (place + steps) = reading (place + 1) - reading place
+  rw [show place + steps + 1 = place + 1 + steps by omega, round (place + 1), round place]
+
+theorem what_comes_round_closes (steps : Nat) (reading : Nat → Int) (round : comes_round steps reading) :
+    reading steps = reading 0 := by
+  have h := round 0; rwa [Nat.zero_add] at h
+
+theorem by_parts_for_what_comes_round (steps : Nat) (this that : Nat → Int)
+    (this_round : comes_round steps this) (that_round : comes_round steps that) :
+    summed_along steps (fun place => this place * the_difference_along that place)
+      = - summed_along steps (fun place => the_difference_along this place * one_place_on that place) := by
+  have h := summation_by_parts_around_a_closed_walk steps that this
+    (what_comes_round_closes steps that that_round) (what_comes_round_closes steps this this_round)
+  have e1 : (fun place => that (place + 1) * (this (place + 1) - this place))
+      = fun place => the_difference_along this place * one_place_on that place :=
+    funext fun place => Int.mul_comm _ _
+  have e2 : (fun place => this place * (that (place + 1) - that place))
+      = fun place => this place * the_difference_along that place := rfl
+  rw [e1, e2] at h; omega
+
+--| THE FIRST VARIATION.  The bending energy of a reading is its second difference squared, summed.  Its first variation
+--| against another reading is the two second differences one by the other, summed.  Around what comes round, that is the
+--| fourth difference of the first against the second two places on.
+theorem the_variation_of_the_bending_is_the_fourth_difference (steps : Nat) (bent other : Nat → Int)
+    (bent_round : comes_round steps bent) (other_round : comes_round steps other) :
+    summed_along steps (fun place =>
+        the_difference_along (the_difference_along bent) place * the_difference_along (the_difference_along other) place)
+      = summed_along steps (fun place =>
+          the_difference_along (the_difference_along (the_difference_along (the_difference_along bent))) place
+            * one_place_on (one_place_on other) place) := by
+  have d1 := the_difference_comes_round steps bent bent_round
+  have d2 := the_difference_comes_round steps _ d1
+  have d3 := the_difference_comes_round steps _ d2
+  have o1 := the_difference_comes_round steps other other_round
+  have s1 := one_place_on_comes_round steps other other_round
+  have first := by_parts_for_what_comes_round steps (the_difference_along (the_difference_along bent))
+    (the_difference_along other) d2 o1
+  have second := by_parts_for_what_comes_round steps
+    (the_difference_along (the_difference_along (the_difference_along bent))) (one_place_on other) d3 s1
+  have same : (fun place => the_difference_along (the_difference_along (the_difference_along bent)) place
+        * one_place_on (the_difference_along other) place)
+      = fun place => the_difference_along (the_difference_along (the_difference_along bent)) place
+        * the_difference_along (one_place_on other) place := rfl
+  rw [same] at first
+  omega
+
+--| And the fourth difference is the stencil: one, four owed, six, four owed, one.
+theorem the_fourth_difference_is_the_stencil (reading : Nat → Int) (place : Nat) :
+    the_difference_along (the_difference_along (the_difference_along (the_difference_along reading))) place
+      = reading (place + 4) - 4 * reading (place + 3) + 6 * reading (place + 2) - 4 * reading (place + 1)
+        + reading place := by
+  simp only [the_difference_along, Nat.add_assoc, Nat.reduceAdd]; omega
+end the_bending_energy_and_the_stencil
+
+--#print axioms by_parts_for_what_comes_round
+--#print axioms the_variation_of_the_bending_is_the_fourth_difference
+--#print axioms the_fourth_difference_is_the_stencil
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
