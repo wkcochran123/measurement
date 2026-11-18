@@ -158,7 +158,7 @@ Hilbert meant, and it is the visitor's to make.
 | `README.md` | The puzzle, as the visitor first meets it. It shows a number and never names it. |
 | `CARD_2/Measurement/Episode01.lean` to `Episode12.lean` | The device: twelve episodes of Lean 4 with no imports, written to be read as well as run. The comments in the margins are the patter and are part of the work. |
 | `CARD_2/Measurement/Episode13.lean` | The device handed back to itself: the bent card on the device's own inductives, a second ladder dealt from a number distinguished, and the epilogue. `Measurement.lean` imports it, so `lake build` builds it; `lake build Measurement.Episode13` builds it alone. It prints one line from a clock that differs at every elaboration. Episode 6 is built apart and imported by nothing. |
-| `THE_PUZZLEBOX_OF_MYSTERY_CHEAT_SHEET.pdf` | *Three Card Monte: An Exhaustive Guide to Orbital Dynamics for the Absolute Beginner*, one volume of about 480 pages. It is the solution, and it is a spoiler. |
+| `INSTRUCTIONS.pdf` | *Three Card Monte: A High-Level Pamphlet on Orbital Dymnamics for the Absolute Beginner* (the spelling on the title page is the author's), one volume of about 490 pages. It is the solution, and it is a spoiler. |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
 The volume has a Preface, an "Introduction to John Henry's Device", and eight
@@ -207,7 +207,7 @@ second question then becomes the interesting one: they named it in an instant
 and cannot easily say how. That is the reader's contribution, caught in the
 act. Do not explain this to them before they have done it.
 
-The cheat sheet is the spoiler. Offer a hint before an answer, and ask before
+The volume, `INSTRUCTIONS.pdf`, is the spoiler. Offer a hint before an answer, and ask before
 you open the volume for someone who has not asked for the solution.
 
 ## Reader and knower
@@ -426,9 +426,13 @@ names the number.
   that for any two weights the roots are the clicking weight plus and minus
   a root of their product. Only the weights, eighteen and five, are counted
   from this device.
-- The bills, counted on 17 November 2026 over all 2,138 theorems of the
-  thirteen episodes: no axiom, 1,051; `propext`, 558; `propext` and
-  `Quot.sound`, 523; `Quot.sound` alone, 5; and one, `compatibility_form`
+- The bills, counted again on 18 November 2026 over every theorem constant
+  the kernel holds for the built episodes (Episode 6 is built apart and is
+  not counted), compiler auxiliaries included: 3,430; no axiom, 1,445;
+  `propext`, 778; `propext` and `Quot.sound`, 1,198; `Quot.sound` alone, 7;
+  and `Classical.choice` in two, `compatibility_form` and its auxiliary.
+  Leaving auxiliaries out: 1,800; 655; 506; 632; 6; 1. (The count of 17
+  November was 2,138: 1,051; 558; 523; 5; 1.) The one, `compatibility_form`
   (`Episode12.lean`, used by nothing), bills `Classical.choice` through
   `omega`. If a visitor asks whether the device uses choice, say exactly
   that, and then say where the choice really is. In Lean, choice is what
@@ -684,6 +688,95 @@ names the number.
   (`the_seam_is_the_closure_and_nothing_else`). Episode 9 titles the next
   step "a halting computation is given as input to a non-halting
   function". Say that much; what the seam means beyond it is the author's.
+- The operator (`Episode13.lean`, sections `the_crank_reads_the_inverse`,
+  `the_weighted_action`; Card 3, subsection "The finite operator, and what
+  the crank reads"). The author's (declared): the device is the inverse
+  iterator of the Universal Refinement Operator, which computes the total
+  order of consistent events and shows the universe can go only one of two
+  ways, the universe living in the gap; its Fréchet derivative is the
+  governing equations of QED and its Gateaux derivative projected to three
+  dimensions is the current/momentum/energy vector with two scalings (QM,
+  GR), invariant under whether the orbital or the electron has volume and
+  mass; the three projections are elliptic (spatial), hyperbolic
+  (relativistic) and parabolic (local, time special, "the option not taken
+  but paid every time"). Receipts, all whole numbers, no division: for
+  13N·I − D·M the adjugate is (13N − 36D)·I + D·M, its trace is 26N − 36D
+  (the residual's slope), the determinant is 13·(13N² − 36ND + 18D²), and
+  one turn of the crank is (N·tr − R)/(D·tr): the crank reads the trace of
+  the inverse of the shifted table, and at a root there is no inverse.
+  Weighed by its coins (18, 5) the table is symmetric, so it is the second
+  variation of an action in that pairing. Say with it: Newton on a
+  characteristic polynomial as reciprocal trace of the resolvent is true of
+  every matrix (Jacobi); Card 3 proves Fréchet and Gateaux coincide for
+  these actions, so the two readings differ by projection, not by
+  derivative; the field map along which QED would be the pulled-back
+  derivative of the gravity residual is proposed in Card 3 and not
+  exhibited; which two scalings are meant is not settled (a candidate with a receipt
+  and no declaration: the exact root against one Newton turn from the mass,
+  `one_turn_from_the_mass_is_over_by_the_momentum_squared_squared`). The
+  integer identities are tied to Episode 12's natural-number crank where
+  its subtractions do not stop
+  (`where_nothing_stops_the_cranks_pair_is_the_tables`). The three
+  classes match Card 3's existing table of the arms (T=T elliptic, F=T
+  hyperbolic, T=F parabolic). A closure is hand-written in three places
+  (Episode 7 twice, Episode 9 once), always the identity.
+- The four places of a trial (`Episode13.lean`, section
+  `the_four_places_of_a_trial`; Card 1, end of "Four places, and the before
+  and the after"). The author's (declared): 3 is the number that is
+  approached, 4 is the Cauchy bracket, 5 is the zero that is approached; a
+  `Sample` lets you hold a bracket and a `Trial` gives you two; that is the
+  frinkahedron. Receipts: a Sample is one limit or a bracket of two limits
+  with their facts; two Samples give four places, all reached; three have
+  a bracket somewhere (on the frinkahedron, as Card 1 defines the three
+  places with a coordinate on an edge) and one has none; that is
+  `the_arm_stores_a_fact_that_can_click` with the first coin turned over;
+  the device's first trial is at the seam. Which coin is turned over is
+  the author's. Whether 3, 4, 5 are the third to fifth inductives
+  (Rational, Sequence, Limit; Episode 1's margin calls Limit "Fact number
+  5") or cell counts is not settled; since minted (`what_the_bottom_processes_carry_is_two_cells`,
+  `one_step_of_each_reaches_three_cells`,
+  `the_observations_step_on_the_bit_is_five_cells`): every bottom process
+  carries 2 cells, one step gives 3, and the observation's step on the bit
+  gives 5. Also `the_law_reads_the_experience_and_the_fencepost`: a
+  ThePreprint and a Measurement dealt from one tape read back the same but
+  for one cell.
+- The map of the inductives. Every one of the 37 has the list machine in
+  Episode 13. Readings of their own, with receipts: Number, Natural,
+  Rational (zeros, ones, twos); Sample, Trial (bracket, frinkahedron);
+  Study (the seam); Area; PigeonHole; Jar; Abstraction; Sum, Product, Basis
+  (the knower's triple); Spline; SpaceTimePath; YarnTheory; ComputerProgram;
+  Bullshit; Closure. The author's readings of the rest, 18 November 2026
+  (declared, no receipts): Sequence is the Cauchy bracket and Limit the
+  zero approached; Computation, ChaitinsNumberSequence, Metavariable,
+  Sophism are the four encodings (a computation, the asymptotic approach to
+  infinity, the bijection, complex numbers); Polynomial and Variation are
+  spectral decomposition and iteration; Diatribe through Truth are the
+  demonstration of an asymptotic approach to infinity of a value that
+  cannot be represented in symbols; Measurement is the experience and
+  ThePreprint the mathematical law that appears to coincide with it, "the
+  apparently meaningful coincidence, the daisy". Facts of the source worth
+  knowing: `Variation`'s three constructors are `the_newton`,
+  `the_gateaux`, `the_frechet`, holding one, two and three statements; from
+  `Polynomial.monomial` on, base cases hold a bare `Prop` where earlier
+  inductives hold a `FACT` (a statement with its click). Equivalation and
+  Encoding have no reading.
+- The ladder and the four proposals (`Episode13.lean`, section
+  `the_ladder_of_twos`). The author's (declared): 1 decision; 2 hypotheses
+  (the continuum, true or false); 4 proposals; 8 responses for equality; 16
+  possible computations, which are the compile/execute steps
+  (`the_sixteen_steps`); 32 implied subjunctive phrases with 16 possible
+  falses. The four proposals are: the mathematics demonstrated is that of
+  general relativity; of quantum mechanics; of Navier-Stokes; and
+  T=T ⟺ (T=F)=(F=T). The fourth names no theory, and the author's rule is
+  that the fourth arm's particle is not mentioned in them. Do not fill the
+  blank for the visitor and do not read the fourth proposal as a theory's
+  name. Receipts: lists of 2, 4, 8 and 16; each step is two comparisons, so
+  32 phrases; read for what they say, 16 are false; read for the click, 8
+  cannot; the 8 between are all false-on-true. That these are the author's
+  32 was confirmed by the author on 18 November 2026 (declared). An audit of every claim
+  calibrated *proposed* against the four is in
+  `claude/to-fix-proposals-2026-11-18.md` (123 outside the four); the
+  volume has not been changed to match.
 - The promise of the return (`Episode13.lean`, section
   `the_promise_of_the_return`). The author asked whether the promise of the
   return photon, "the path nothing takes", is visible in the math. It is the

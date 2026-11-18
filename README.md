@@ -36,7 +36,7 @@ Three cards. **Card 2** is this repository: twelve episodes of Lean, written to 
 Cards 1 and 3 and the rest of the table are somewhere else, and you do not need them to play.
 
 ## If you get stuck
-There is a brief summary of the solution that explains it as simply as possible in `THE_PUZZLEBOX_OF_MYSTERY_CHEAT_SHEET.pdf`.
+There is a brief instructions guide in `INSTRUCTIONS.pdf`. It has millions of hours of play-testing behind it.
 
 There is also an AGENTS.md that will explain to your favorite coding spell checker how this is laid out. Do not expect much, the Lean is very convoluted and 
 beyond the understanding of most AI, being a meta-program in a meta-program, both of which implement simulations of the other on a simulation of the very Lean

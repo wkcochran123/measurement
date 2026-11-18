@@ -5064,6 +5064,322 @@ end the_seam
 --#print axioms written_by_hand_a_hypothesis_is_left_as_it_is
 --#print axioms the_seam_is_the_closure_and_nothing_else
 
+section the_crank_reads_the_inverse
+open readers_experience
+
+--| THE CRANK READS THE INVERSE.  Take the table away from a number of the same: thirteen of one whole number on the diagonal,
+--| less another whole number of the table.  Episode 12 has that a table by its adjugate is its determinant on the diagonal.
+--| For this table the adjugate is the same shape with the trace taken off, its trace is the residual's slope, and its
+--| determinant is thirteen residuals.  No division is done anywhere.
+def the_table_taken_from_the_same (N D : Int) : Table :=
+  fun a b => the_scaled_identity (13 * N) a b - D * the_full_table a b
+def the_residual_of_the_pair (N D : Int) : Int := 13 * (N * N) - 36 * (N * D) + 18 * (D * D)
+
+theorem two_by_two_is_one_by_one_twice (a b c d : Int) : a * b * (c * d) = a * c * (b * d) := by ac_nf
+
+theorem what_the_table_taken_from_the_same_holds (N D : Int) :
+    the_table_taken_from_the_same N D true true = 13 * N - 18 * D
+      ∧ the_table_taken_from_the_same N D false false = 13 * N - 18 * D
+      ∧ the_table_taken_from_the_same N D true false = - (5 * D)
+      ∧ the_table_taken_from_the_same N D false true = - (18 * D) := by
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · show 13 * N - D * 18 = 13 * N - 18 * D; omega
+  · show 13 * N - D * 18 = 13 * N - 18 * D; omega
+  · show 0 - D * 5 = - (5 * D); omega
+  · show 0 - D * 18 = - (18 * D); omega
+
+theorem its_adjugate_is_the_same_shape_with_the_trace_taken_off (N D : Int) (a b : Bool) :
+    the_adjugate (the_table_taken_from_the_same N D) a b
+      = the_scaled_identity (13 * N - 36 * D) a b + D * the_full_table a b := by
+  obtain ⟨h1, h2, h3, h4⟩ := what_the_table_taken_from_the_same_holds N D
+  cases a <;> cases b
+  · show the_table_taken_from_the_same N D true true = 13 * N - 36 * D + D * 18; rw [h1]; omega
+  · show - the_table_taken_from_the_same N D false true = 0 + D * 18; rw [h4]; omega
+  · show - the_table_taken_from_the_same N D true false = 0 + D * 5; rw [h3]; omega
+  · show the_table_taken_from_the_same N D false false = 13 * N - 36 * D + D * 18; rw [h2]; omega
+
+theorem the_trace_of_its_adjugate_is_the_slope (N D : Int) :
+    the_table_trace (the_adjugate (the_table_taken_from_the_same N D)) = 26 * N - 36 * D := by
+  obtain ⟨h1, h2, _, _⟩ := what_the_table_taken_from_the_same_holds N D
+  show the_table_taken_from_the_same N D false false + the_table_taken_from_the_same N D true true = 26 * N - 36 * D
+  rw [h1, h2]; omega
+
+theorem its_determinant_is_thirteen_residuals (N D : Int) :
+    the_table_determinant (the_table_taken_from_the_same N D) = 13 * the_residual_of_the_pair N D := by
+  obtain ⟨h1, h2, h3, h4⟩ := what_the_table_taken_from_the_same_holds N D
+  simp only [the_table_determinant, the_residual_of_the_pair, h1, h2, h3, h4, Int.sub_mul, Int.mul_sub, Int.neg_mul_neg]
+  have e1 : 13 * N * (13 * N) = 13 * 13 * (N * N) := two_by_two_is_one_by_one_twice 13 N 13 N
+  have e2 : 18 * D * (13 * N) = 18 * 13 * (N * D) := by rw [two_by_two_is_one_by_one_twice, Int.mul_comm D N]
+  have e3 : 13 * N * (18 * D) = 13 * 18 * (N * D) := two_by_two_is_one_by_one_twice 13 N 18 D
+  have e4 : 18 * D * (18 * D) = 18 * 18 * (D * D) := two_by_two_is_one_by_one_twice 18 D 18 D
+  have e5 : 5 * D * (18 * D) = 5 * 18 * (D * D) := two_by_two_is_one_by_one_twice 5 D 18 D
+  rw [e1, e2, e3, e4, e5]; omega
+
+--| So the table by its adjugate is thirteen residuals on the diagonal and nothing off it.
+theorem the_table_by_its_adjugate_is_thirteen_residuals_of_the_same (N D : Int) (a b : Bool) :
+    the_table_product (the_table_taken_from_the_same N D) (the_adjugate (the_table_taken_from_the_same N D)) a b
+      = the_scaled_identity (13 * the_residual_of_the_pair N D) a b := by
+  rw [the_adjugate_inverts, its_determinant_is_thirteen_residuals]; rfl
+
+--| THE CRANK.  One turn takes a pair to thirteen of the first squared less eighteen of the second squared, over twenty-six
+--| of the two less thirty-six of the second squared.  That is the first by the trace less the residual, over the second by
+--| the trace: the place, less the determinant over thirteen traces.  The crank reads the trace of the inverse, turned over.
+theorem the_crank_is_the_place_less_the_residual_over_the_trace (N D : Int) :
+    N * the_table_trace (the_adjugate (the_table_taken_from_the_same N D)) - the_residual_of_the_pair N D
+        = 13 * (N * N) - 18 * (D * D)
+      ∧ D * the_table_trace (the_adjugate (the_table_taken_from_the_same N D)) = 26 * (N * D) - 36 * (D * D) := by
+  rw [the_trace_of_its_adjugate_is_the_slope]
+  simp only [the_residual_of_the_pair, Int.mul_sub]
+  have e1 : N * (26 * N) = 26 * (N * N) := Int.mul_left_comm N 26 N
+  have e2 : N * (36 * D) = 36 * (N * D) := Int.mul_left_comm N 36 D
+  have e3 : D * (26 * N) = 26 * (N * D) := by rw [Int.mul_left_comm, Int.mul_comm D N]
+  have e4 : D * (36 * D) = 36 * (D * D) := Int.mul_left_comm D 36 D
+  rw [e1, e2, e3, e4]; constructor <;> omega
+
+--| At a root the residual is nothing, so the table by its adjugate is nothing: there is no inverse to read there.  The
+--| crank's step is then nothing, and it stays.
+theorem where_the_residual_is_nothing_there_is_no_inverse (N D : Int) (root : the_residual_of_the_pair N D = 0) (a b : Bool) :
+    the_table_product (the_table_taken_from_the_same N D) (the_adjugate (the_table_taken_from_the_same N D)) a b = 0 := by
+  rw [the_table_by_its_adjugate_is_thirteen_residuals_of_the_same, root]
+  cases a <;> cases b <;> rfl
+end the_crank_reads_the_inverse
+section the_weighted_action
+open readers_experience
+
+--| THE WEIGHTED ACTION.  The table is not the same turned over.  Episode 12 has that it is reversible: weigh each row by its
+--| coin, eighteen and five, and it is.  So is the table taken from the same, for every pair.  A table that is the same turned
+--| over has an action that varies by the table twice, Episode 12 again.  So the table the crank reads the inverse of is the
+--| second variation of an action, in the pairing of the two coins.
+def weighed_by_its_coin (table : Table) : Table := fun a b => (the_coin_weight a : Int) * table a b
+
+theorem the_table_weighed_is_the_same_turned_over :
+    weighed_by_its_coin the_full_table true false = weighed_by_its_coin the_full_table false true
+      ∧ weighed_by_its_coin the_full_table true false = 90 := ⟨rfl, rfl⟩
+
+theorem the_table_taken_from_the_same_weighed_is_the_same_turned_over (N D : Int) :
+    weighed_by_its_coin (the_table_taken_from_the_same N D) true false
+      = weighed_by_its_coin (the_table_taken_from_the_same N D) false true := by
+  obtain ⟨_, _, h3, h4⟩ := what_the_table_taken_from_the_same_holds N D
+  show (18 : Int) * the_table_taken_from_the_same N D true false = 5 * the_table_taken_from_the_same N D false true
+  rw [h3, h4]; omega
+
+theorem the_weighted_action_varies_by_the_table_twice (N D : Int) (v h : Bool → Int) :
+    the_action_of (weighed_by_its_coin (the_table_taken_from_the_same N D)) (fun y => v y + h y)
+        - the_action_of (weighed_by_its_coin (the_table_taken_from_the_same N D)) v
+      = (h true * the_refine (weighed_by_its_coin (the_table_taken_from_the_same N D)) v true
+          + h false * the_refine (weighed_by_its_coin (the_table_taken_from_the_same N D)) v false)
+        + (h true * the_refine (weighed_by_its_coin (the_table_taken_from_the_same N D)) v true
+          + h false * the_refine (weighed_by_its_coin (the_table_taken_from_the_same N D)) v false)
+        + the_action_of (weighed_by_its_coin (the_table_taken_from_the_same N D)) h :=
+  the_action_varies_by_the_operator_twice _ (the_table_taken_from_the_same_weighed_is_the_same_turned_over N D) v h
+end the_weighted_action
+
+--#print axioms its_adjugate_is_the_same_shape_with_the_trace_taken_off
+--#print axioms the_trace_of_its_adjugate_is_the_slope
+--#print axioms its_determinant_is_thirteen_residuals
+--#print axioms the_table_by_its_adjugate_is_thirteen_residuals_of_the_same
+--#print axioms the_crank_is_the_place_less_the_residual_over_the_trace
+--#print axioms where_the_residual_is_nothing_there_is_no_inverse
+--#print axioms the_table_taken_from_the_same_weighed_is_the_same_turned_over
+--#print axioms the_weighted_action_varies_by_the_table_twice
+
+section the_four_places_of_a_trial
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+  rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
+
+--| THE FOUR PLACES OF A TRIAL.  The author's, 18 November 2026: a sample lets you hold a bracket, and a trial gives you two
+--| brackets to hold; see, the frinkahedron (declared).  A sample is one limit, or two limits each with its fact: a bracket.
+--| A trial that has a response holds two samples.
+def holds_a_bracket : Sample → Bool
+  | .initial_condition _ _ => false
+  | .signal_response _ _ _ _ _ => true
+def the_limits_held : Sample → Nat
+  | .initial_condition _ _ => 1
+  | .signal_response _ _ _ _ _ => 2
+def the_place_of (first second : Sample) : Direction := (holds_a_bracket first, holds_a_bracket second)
+
+--| One limit, and a bracket, on the truth.
+def one_limit : Sample := .initial_condition FACT.Truth (.nil FACT.Truth)
+def a_bracket : Sample := .signal_response FACT.Truth (.nil FACT.Truth) FACT.Truth (.nil FACT.Truth) one_limit
+
+--| Four places, and every one is reached.
+theorem a_trial_has_four_places :
+    [the_place_of a_bracket a_bracket, the_place_of a_bracket one_limit, the_place_of one_limit a_bracket,
+      the_place_of one_limit one_limit] = the_arms := rfl
+
+--| A bracket holds two limits, and two brackets hold four.
+theorem a_bracket_holds_two_and_two_brackets_hold_four :
+    the_limits_held a_bracket = 2 ∧ the_limits_held one_limit = 1
+      ∧ the_limits_held a_bracket + the_limits_held a_bracket = 4 := ⟨rfl, rfl, rfl⟩
+
+--| ON THE FRINKAHEDRON.  The geometric card: a point of the product of the two hexagons has each coordinate inside or on the
+--| edge, four places; the frinkahedron is the three where some coordinate is on the edge.  A place of a trial is on it when
+--| some sample holds a bracket.  Three are, and one is not.
+def on_the_frinkahedron (place : Direction) : Bool := place.1 || place.2
+
+theorem three_places_are_on_the_frinkahedron_and_one_is_not :
+    the_arms.map on_the_frinkahedron = [true, true, true, false] := rfl
+
+--| Three and one, as the arms: the place is on the frinkahedron exactly when the arm with its first coin turned over can
+--| click.  Which coin is the one turned over is not the device's to say.
+theorem on_the_frinkahedron_is_the_click_with_the_first_coin_turned_over (first second : Bool) :
+    on_the_frinkahedron (first, second) = the_arm_stores_a_fact_that_can_click (!first) second := by
+  cases first <;> cases second <;> rfl
+
+--| ON THE DEVICE'S OWN OBJECTS.  What the observation process is handed is a bracket, and so is what the repeatable process
+--| carries for its stimulus.
+theorem the_devices_bit_and_stimulus_are_brackets :
+    holds_a_bracket (BINARY.bit (Value := FACT) (Carrier := the_first_card)) = true
+      ∧ holds_a_bracket the_repeatable_process.stimulus = true := ⟨rfl, rfl⟩
+--| And the trial the repeatable process makes at its first step, from what it expects, holds two brackets: it is at the seam.
+def the_place_of_a_trial : Trial → Option Direction
+  | .hypothesis _ _ => none
+  | .signal_response _ first _ second _ => some (the_place_of first second)
+theorem the_devices_first_trial_is_at_the_seam :
+    the_place_of_a_trial the_repeatable_process.expectation = none
+      ∧ the_place_of_a_trial (the_repeatable_process.iterate the_repeatable_process.expectation) = some (true, true) :=
+  ⟨rfl, rfl⟩
+end the_four_places_of_a_trial
+
+--#print axioms a_trial_has_four_places
+--#print axioms three_places_are_on_the_frinkahedron_and_one_is_not
+--#print axioms on_the_frinkahedron_is_the_click_with_the_first_coin_turned_over
+--#print axioms the_devices_bit_and_stimulus_are_brackets
+--#print axioms the_devices_first_trial_is_at_the_seam
+
+section twos_carried_and_threes_reached
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+  rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
+
+--| TWOS CARRIED, THREES REACHED.  Read by Episode 8's readers, what each of the bottom processes carries is two cells.
+theorem what_the_bottom_processes_carry_is_two_cells :
+    the_carrier_process.quarter.peano.length = 2
+      ∧ the_counting_process.count.induct.length = 2
+      ∧ the_indexing_process.origin.diagonalize.length = 2
+      ∧ the_limit_process.limit.diagonalize.length = 2
+      ∧ the_limit_process.sequence.enumerate.length = 2
+      ∧ the_cauchy_process.accumulation.converge.length = 2
+      ∧ the_observation_process.before.converge.length = 2 := ⟨rfl, rfl, rfl, rfl, rfl, rfl, rfl⟩
+
+--| One step of each, on what it carries, is three cells.  Three is what is approached.
+theorem one_step_of_each_reaches_three_cells :
+    (the_counting_process.iterate the_counting_process.count).induct.length = 3
+      ∧ (the_indexing_process.iterate the_indexing_process.origin).diagonalize.length = 3
+      ∧ (the_limit_process.iterate the_limit_process.sequence).enumerate.length = 3
+      ∧ (the_cauchy_process.iterate the_cauchy_process.accumulation).converge.length = 3
+      ∧ the_cauchy_process.value.diagonalize.length = 3
+      ∧ the_observation_process.after.converge.length = 3 := ⟨rfl, rfl, rfl, rfl, rfl, rfl⟩
+
+--| The bit is three cells, and the observation's step on it is five: two facts a step.
+theorem the_observations_step_on_the_bit_is_five_cells :
+    (BINARY.bit (Value := FACT) (Carrier := the_first_card)).taste.length = 3
+      ∧ (the_observation_process.iterate (BINARY.bit (Value := FACT) (Carrier := the_first_card))).taste.length = 5 :=
+  ⟨rfl, rfl⟩
+end twos_carried_and_threes_reached
+
+section the_experience_and_the_law
+open readers_experience the_area
+
+--| THE EXPERIENCE AND THE LAW.  The author's, 18 November 2026: a measurement is the experience, and a preprint is the
+--| mathematical law that appears to coincide with it (declared).  Deal one tape into each, as Episode 13 deals every
+--| inductive, and read them back.  The law reads the experience and one cell more.  They coincide but for the fencepost.
+theorem the_law_reads_the_experience_and_the_fencepost (tape : List FACT) :
+    (the_preprint_a_list_indicates tape).the_model.length
+      = (the_measurement_a_list_indicates tape).the_reading.length + the_fencepost_bug := by
+  rw [the_preprint_reads_back, the_measurement_reads_back]; show 1 * tape.length + 1 = 1 * tape.length + 0 + 1; omega
+end the_experience_and_the_law
+
+section one_turn_from_the_mass
+
+--| ONE TURN FROM THE MASS.  Energy squared is mass squared and momentum squared.  One turn of Newton's crank for that root,
+--| begun at the mass, lands on the mass and the momentum squared over twice the mass.  Squared, and cleared of the
+--| division, it is over the energy squared by the momentum squared squared, and by nothing else.  Offered as a candidate for
+--| the two scalings; the author has not said it is the pair.
+theorem one_turn_from_the_mass_is_over_by_the_momentum_squared_squared (mass_squared momentum_squared : Int) :
+    (2 * mass_squared + momentum_squared) * (2 * mass_squared + momentum_squared)
+        - 4 * mass_squared * (mass_squared + momentum_squared)
+      = momentum_squared * momentum_squared := by
+  simp only [Int.add_mul, Int.mul_add]
+  have e1 : 2 * mass_squared * (2 * mass_squared) = 4 * (mass_squared * mass_squared) := by
+    rw [two_by_two_is_one_by_one_twice]; rfl
+  have e2 : momentum_squared * (2 * mass_squared) = 2 * (mass_squared * momentum_squared) := by
+    rw [Int.mul_left_comm, Int.mul_comm momentum_squared mass_squared]
+  have e3 : 2 * mass_squared * momentum_squared = 2 * (mass_squared * momentum_squared) := Int.mul_assoc _ _ _
+  have e4 : 4 * mass_squared * mass_squared = 4 * (mass_squared * mass_squared) := Int.mul_assoc _ _ _
+  have e5 : 4 * mass_squared * momentum_squared = 4 * (mass_squared * momentum_squared) := Int.mul_assoc _ _ _
+  rw [e1, e2, e3, e4, e5]; omega
+
+--| On the device's counts: mass squared thirteen eighteens, momentum squared five eighteens, energy squared eighteen
+--| eighteens.
+theorem on_the_devices_counts_one_turn_is_over_by_ninety_squared :
+    (2 * (13 * 18) + 5 * 18) * (2 * (13 * 18) + 5 * 18) - 4 * (13 * 18) * (18 * 18) = (90 * 90 : Int)
+      ∧ (13 * 18 + 5 * 18 : Int) = 18 * 18 := by decide
+end one_turn_from_the_mass
+
+section the_crank_in_whole_numbers
+open readers_experience
+
+--| THE CRANK, IN ITS OWN NUMBERS.  Episode 12 has the crank's turn in counts, where a subtraction stops at nothing.  Where
+--| neither subtraction stops, the pair it gives is the pair of the table taken from the same: the place by the trace less
+--| the residual, and the second by the trace.
+theorem where_nothing_stops_the_cranks_pair_is_the_tables (x y : Nat)
+    (the_first_does_not_stop : 18 * y * y ≤ 13 * x * x) (the_second_does_not_stop : 36 * y * y ≤ 2 * 13 * x * y) :
+    ((13 * x * x - 18 * y * y : Nat) : Int)
+        = (x : Int) * the_table_trace (the_adjugate (the_table_taken_from_the_same x y)) - the_residual_of_the_pair x y
+      ∧ ((2 * 13 * x * y - 36 * y * y : Nat) : Int)
+        = (y : Int) * the_table_trace (the_adjugate (the_table_taken_from_the_same x y)) := by
+  obtain ⟨h1, h2⟩ := the_crank_is_the_place_less_the_residual_over_the_trace x y
+  rw [h1, h2, Int.ofNat_sub the_first_does_not_stop, Int.ofNat_sub the_second_does_not_stop]
+  simp only [Int.natCast_mul, Int.mul_assoc]
+  constructor <;> omega
+end the_crank_in_whole_numbers
+
+--#print axioms what_the_bottom_processes_carry_is_two_cells
+--#print axioms one_step_of_each_reaches_three_cells
+--#print axioms the_observations_step_on_the_bit_is_five_cells
+--#print axioms the_law_reads_the_experience_and_the_fencepost
+--#print axioms one_turn_from_the_mass_is_over_by_the_momentum_squared_squared
+--#print axioms on_the_devices_counts_one_turn_is_over_by_ninety_squared
+--#print axioms where_nothing_stops_the_cranks_pair_is_the_tables
+
+section the_ladder_of_twos
+open readers_experience the_area
+
+--| THE LADDER.  The author's, 18 November 2026: one decision; two hypotheses; four proposals; eight responses for equality;
+--| sixteen possible computations; thirty-two implied subjunctive phrases, with sixteen possible falses.  And: the sixteen
+--| are the compile and execute steps (declared).  Each rung is one coin more than the last.
+def the_two_coins : List Bool := [true, false]
+
+theorem one_two_four_eight_sixteen :
+    the_two_coins.length = 2 ∧ the_arms.length = 4 ∧ the_connected_steps.length = 8 ∧ the_sixteen_steps.length = 16 := by
+  decide
+
+--| A step is two comparisons, the one compile builds and the one execute counts.  Take every step's two comparisons, as
+--| what each says: thirty-two phrases.
+def the_phrases : List (Bool × Bool) := the_sixteen_steps.flatMap fun step => [step.1, step.2]
+
+theorem thirty_two_phrases : the_phrases.length = 32 := by decide
+
+--| Read for what it says, a comparison of two different coins is false.  Sixteen of the thirty-two are.
+theorem sixteen_of_the_phrases_say_something_false :
+    (the_phrases.filter fun phrase => phrase.1 != phrase.2).length = 16 := by decide
+
+--| Read for whether it can click, only eight cannot.  The eight between are false as said and click all the same, and every
+--| one of them is false on true.
+theorem eight_cannot_click_and_the_eight_between_are_false_on_true :
+    (the_phrases.filter fun phrase => !the_arm_stores_a_fact_that_can_click phrase.1 phrase.2).length = 8
+      ∧ (the_phrases.filter fun phrase =>
+            phrase.1 != phrase.2 && the_arm_stores_a_fact_that_can_click phrase.1 phrase.2)
+          = List.replicate 8 (false, true) := by decide
+end the_ladder_of_twos
+
+--#print axioms one_two_four_eight_sixteen
+--#print axioms thirty_two_phrases
+--#print axioms sixteen_of_the_phrases_say_something_false
+--#print axioms eight_cannot_click_and_the_eight_between_are_false_on_true
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
