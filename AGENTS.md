@@ -775,8 +775,16 @@ names the number.
   equation, of Yang and Mills. Every other claim calibrated *proposed* is
   one of the four at a particular place: where its sentence points at one,
   the mark now reads "proposed, under the first/second/third/fourth"
-  (115 marks folded: 17, 5, 2, 91); a mark that still reads plain
-  "proposed" (92) has not been placed and is not a fifth proposal. With
+  (140 marks folded: 22, 9, 2, 107); a mark that still reads plain
+  "proposed" (67, a dozen of them the calibration's own definition) has not
+  been placed and is not a fifth proposal. A numbered mark is filing, not
+  proof: each such claim keeps its own hypotheses and its own obligation
+  (the Preface says so). The fourth proposal's equivalence is checked on
+  the device (`true_on_false_is_false_on_true_and_implies_true_on_true`);
+  what is proposed is its reading, and of that reading the volume has only
+  the classical part, nothing quantized. The distinct claims still open,
+  28 of them, with parent, warrant and missing bridge, are in
+  `claude/ledger-proposals-2026-11-18.md`. With
   a visitor, still do not fill the blank or name the number first. Receipts: lists of 2, 4, 8 and 16; each step is two comparisons, so
   32 phrases; read for what they say, 16 are false; read for the click, 8
   cannot; the 8 between are all false-on-true. That these are the author's
