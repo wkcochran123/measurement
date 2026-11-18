@@ -440,8 +440,8 @@ names the number.
   from this device.
 - The bills, counted again on 18 November 2026 over every theorem constant
   the kernel holds for the built episodes (Episode 6 is built apart and is
-  not counted), compiler auxiliaries included: 3,574; no axiom, 1,473;
-  `propext`, 791; `propext` and `Quot.sound`, 1,301; `Quot.sound` alone, 7;
+  not counted), compiler auxiliaries included: 3,612; no axiom, 1,480;
+  `propext`, 794; `propext` and `Quot.sound`, 1,329; `Quot.sound` alone, 7;
   and `Classical.choice` in two, `compatibility_form` and its auxiliary.
   (The count of 17 November was 2,138: 1,051; 558; 523; 5; 1.) The one,
   `compatibility_form`
@@ -823,7 +823,14 @@ names the number.
   fourth difference, which is the stencil 1, −4, 6, −4, 1
   (`the_variation_of_the_bending_is_the_fourth_difference`,
   `the_fourth_difference_is_the_stencil`). That is about a function of the
-  place; it is not the claim that the device's action is a bending energy. With
+  place; it is not the claim that the device's action is a bending energy. The
+  assembly is complete: E(u + t·h) = E(u) + 2t·B(u,h) + t²·E(h)
+  (`the_bending_energy_of_a_reading_moved`), and stationarity against every
+  periodic reading gives the stencil at every place
+  (`stationary_against_all_that_comes_round_is_the_stencil_nothing`). Keep
+  two statements apart: a cubic in the place satisfies the stencil locally;
+  the variational statement is for periodic readings, and a climbing
+  reading is not periodic (`a_reading_that_climbs_does_not_come_round`). With
   a visitor, still do not fill the blank or name the number first. Receipts: lists of 2, 4, 8 and 16; each step is two comparisons, so
   32 phrases; read for what they say, 16 are false; read for the click, 8
   cannot; the 8 between are all false-on-true. That these are the author's
@@ -860,6 +867,34 @@ names the number.
   (nothing reads a `Basis` as a direction); sums over the sites of the
   four-torus; the tie of the three ways to the three arms; all of Phase B.
   Do not say the remainder "sums away"; say the exact statement.
+- What can be recovered (`Episode13.lean`, section `what_can_be_recovered`;
+  the form is GPT's). `recovers admissible what_is_kept identify reader`
+  means the reader returns the identification for every admissible case;
+  `can_be_recovered` means some reader does.
+  `the_same_kept_and_two_identifications_cannot_be_recovered`: two
+  admissible cases with equal evidence and unequal identifications admit no
+  recovering reader. No axiom; no computability. Instances:
+  `the_knowers_decision_cannot_be_recovered` (evidence: the triple, the
+  solver's verdict under the decision's parity, the values of the quartic's
+  two receipts on the returned root, and the root's whole part; not the
+  decision, not the root's other part) with
+  `the_two_decisions_return_two_roots`; and
+  `the_name_of_the_first_rung_cannot_be_recovered` (evidence: the FACT a
+  Bool names). Limits to state: the evidence type must hold the content,
+  not a "passed" mark; that the kept evidence is complete for a class of
+  permitted readers is a further theorem, not made; the Bool is not tied to
+  the source's two declarations by any command; nothing here says which
+  decision identifies a physical quantity.
+- Located in the source, for the ledger. S1: Episode 12's margin "THE
+  UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
+  13 (PRESENT's quantum, one universe above the box); elaborator-computed,
+  not a theorem. Numerical maps the source already selects: N4,
+  `the_areal_velocity_in_the_box` and `the_rate_is_the_reading` (Episode
+  12); N5, Episode 5's margin (`.same` the multiplier, `.different` the
+  bracket a penalty leaves) and Episode 11's "VELOCITY IS THE PENALTY
+  PARAMETER"; N6, `the_sobolev_norm` and `finite_bullshit_analysis`
+  (Episode 8); N2, the Hermite shape functions of Card 3's beam element.
+  Whether each is the map the proposal means is the author's.
 - The same evidence, two identifications (`Episode13.lean`, section
   `the_same_evidence_and_two_identifications`). Three pairs the device
   already had, stated for what is allowed to be read:

@@ -6189,6 +6189,224 @@ end the_bending_energy_and_the_stencil
 --#print axioms the_variation_of_the_bending_is_the_fourth_difference
 --#print axioms the_fourth_difference_is_the_stencil
 
+section the_bending_energy_assembled
+
+--| THE BENDING ENERGY, ASSEMBLED.  The energy of a reading is its second difference squared, summed.  Of two readings, the
+--| two second differences one by the other, summed.  Move a reading by a number of another: the energy moves by twice
+--| that number of the two, and that number squared of the other's energy, and by nothing else.  The two belongs to the
+--| energy; half the energy has the two together for its first variation.
+def the_bending_energy (steps : Nat) (bent : Nat → Int) : Int :=
+  summed_along steps fun place =>
+    the_difference_along (the_difference_along bent) place * the_difference_along (the_difference_along bent) place
+def the_bending_of_two (steps : Nat) (bent other : Nat → Int) : Int :=
+  summed_along steps fun place =>
+    the_difference_along (the_difference_along bent) place * the_difference_along (the_difference_along other) place
+
+theorem a_number_of_a_reading_summed (steps : Nat) (number : Int) (reading : Nat → Int) :
+    summed_along steps (fun place => number * reading place) = number * summed_along steps reading := by
+  induction steps with
+  | zero => show (0 : Int) = number * 0; omega
+  | succ steps ih => simp only [summed_along, ih, Int.mul_add]
+
+theorem the_second_difference_of_a_reading_moved (bent other : Nat → Int) (number : Int) (place : Nat) :
+    the_difference_along (the_difference_along fun p => bent p + number * other p) place
+      = the_difference_along (the_difference_along bent) place
+        + number * the_difference_along (the_difference_along other) place := by
+  simp only [the_difference_along, Int.mul_sub]; omega
+
+theorem a_sum_squared (a number b : Int) :
+    (a + number * b) * (a + number * b) = a * a + 2 * (number * (a * b)) + number * number * (b * b) := by
+  rw [Int.add_mul, Int.mul_add, Int.mul_add]
+  have e1 : a * (number * b) = number * (a * b) := Int.mul_left_comm _ _ _
+  have e2 : number * b * a = number * (a * b) := by rw [Int.mul_assoc, Int.mul_comm b a]
+  have e3 : number * b * (number * b) = number * number * (b * b) := two_by_two_is_one_by_one_twice _ _ _ _
+  rw [e1, e2, e3]; omega
+
+theorem the_bending_energy_of_a_reading_moved (steps : Nat) (bent other : Nat → Int) (number : Int) :
+    the_bending_energy steps (fun place => bent place + number * other place)
+      = the_bending_energy steps bent + 2 * (number * the_bending_of_two steps bent other)
+        + number * number * the_bending_energy steps other := by
+  simp only [the_bending_energy, the_bending_of_two]
+  have pointwise : (fun place =>
+        the_difference_along (the_difference_along fun p => bent p + number * other p) place
+          * the_difference_along (the_difference_along fun p => bent p + number * other p) place)
+      = fun place =>
+        (the_difference_along (the_difference_along bent) place * the_difference_along (the_difference_along bent) place
+          + 2 * (number * (the_difference_along (the_difference_along bent) place
+              * the_difference_along (the_difference_along other) place)))
+        + number * number * (the_difference_along (the_difference_along other) place
+            * the_difference_along (the_difference_along other) place) :=
+    funext fun place => by rw [the_second_difference_of_a_reading_moved, a_sum_squared]
+  rw [pointwise, two_readings_summed_are_the_two_sums, two_readings_summed_are_the_two_sums,
+    a_number_of_a_reading_summed steps (number * number), a_number_of_a_reading_summed steps 2,
+    a_number_of_a_reading_summed steps number]
+
+--| WHAT COMES ROUND, AND WHAT CLIMBS.  The stencil is nothing on a cubic in the place, at every place: that is Episode
+--| 12's, and it is about one place and its neighbours.  The energy above is summed round a walk, and a reading that climbs
+--| does not come round.  They are two statements and are kept two.
+theorem a_reading_that_climbs_does_not_come_round (steps : Nat) (round : comes_round steps (fun place => (place : Int))) :
+    steps = 0 := by
+  have h := round 0
+  simp only [Nat.zero_add] at h
+  omega
+
+--| STATIONARY, AT EVERY PLACE.  Let a reading come round a walk of some steps, and let the two together be nothing against
+--| every reading that comes round.  Then its fourth difference, the stencil, is nothing at every place.
+theorem what_comes_round_comes_round_again (steps : Nat) (reading : Nat → Int) (round : comes_round steps reading) :
+    ∀ (times place : Nat), reading (place + times * steps) = reading place
+  | 0, place => by rw [Nat.zero_mul, Nat.add_zero]
+  | times + 1, place => by
+    rw [Nat.succ_mul, ← Nat.add_assoc, round, what_comes_round_comes_round_again steps reading round times place]
+
+theorem squares_summed_are_never_under_nothing (steps : Nat) (reading : Nat → Int) :
+    0 ≤ summed_along steps (fun place => reading place * reading place) := by
+  induction steps with
+  | zero => exact Int.le_refl 0
+  | succ steps ih =>
+    have sq := a_square_is_never_under_nothing (reading steps)
+    simp only [summed_along]; omega
+
+theorem squares_that_sum_to_nothing_are_each_nothing (steps : Nat) (reading : Nat → Int)
+    (nothing : summed_along steps (fun place => reading place * reading place) = 0) :
+    ∀ place, place < steps → reading place = 0 := by
+  induction steps with
+  | zero => intro place h; omega
+  | succ steps ih =>
+    have before := squares_summed_are_never_under_nothing steps reading
+    have sq := a_square_is_never_under_nothing (reading steps)
+    simp only [summed_along] at nothing
+    have last : reading steps * reading steps = 0 := by omega
+    have rest : summed_along steps (fun place => reading place * reading place) = 0 := by omega
+    intro place h
+    rcases Nat.lt_succ_iff_lt_or_eq.mp h with below | here
+    · exact ih rest place below
+    · rw [here]; rcases Int.mul_eq_zero.mp last with z | z <;> exact z
+
+theorem stationary_against_all_that_comes_round_is_the_stencil_nothing (steps : Nat) (positive : 0 < steps)
+    (bent : Nat → Int) (bent_round : comes_round steps bent)
+    (stationary : ∀ other, comes_round steps other → the_bending_of_two steps bent other = 0) :
+    ∀ place, the_difference_along (the_difference_along (the_difference_along (the_difference_along bent))) place = 0 := by
+  have d4 := the_difference_comes_round steps _ (the_difference_comes_round steps _
+    (the_difference_comes_round steps _ (the_difference_comes_round steps bent bent_round)))
+  let fourth := the_difference_along (the_difference_along (the_difference_along (the_difference_along bent)))
+  let other : Nat → Int := fun place => fourth (place + (2 * steps - 2))
+  have other_round : comes_round steps other := fun place => by
+    show fourth (place + steps + (2 * steps - 2)) = fourth (place + (2 * steps - 2))
+    rw [show place + steps + (2 * steps - 2) = place + (2 * steps - 2) + steps by omega]; exact d4 _
+  have two_on : ∀ place, one_place_on (one_place_on other) place = fourth place := fun place => by
+    show fourth (place + 1 + 1 + (2 * steps - 2)) = fourth place
+    rw [show place + 1 + 1 + (2 * steps - 2) = place + 2 * steps by omega]
+    exact what_comes_round_comes_round_again steps fourth d4 2 place
+  have h := stationary other other_round
+  rw [the_bending_of_two, the_variation_of_the_bending_is_the_fourth_difference steps bent other bent_round other_round] at h
+  have squares : summed_along steps (fun place => fourth place * fourth place) = 0 := by
+    have same : (fun place => the_difference_along (the_difference_along (the_difference_along (the_difference_along bent))) place
+          * one_place_on (one_place_on other) place) = fun place => fourth place * fourth place :=
+      funext fun place => by rw [two_on]
+    rw [same] at h; exact h
+  have inside := squares_that_sum_to_nothing_are_each_nothing steps fourth squares
+  intro place
+  have again := what_comes_round_comes_round_again steps fourth d4 (place / steps) (place % steps)
+  rw [Nat.mul_comm, Nat.mod_add_div] at again
+  rw [show the_difference_along (the_difference_along (the_difference_along (the_difference_along bent))) place
+        = fourth place from rfl, again]
+  exact inside _ (Nat.mod_lt _ positive)
+end the_bending_energy_assembled
+
+--#print axioms the_bending_energy_of_a_reading_moved
+--#print axioms a_reading_that_climbs_does_not_come_round
+--#print axioms stationary_against_all_that_comes_round_is_the_stencil_nothing
+
+section what_can_be_recovered
+open readers_experience readers_interpretation_of_the_experience the_area
+
+universe cases evidences identifications
+
+--| WHAT CAN BE RECOVERED.  Cases, some of them admissible.  What is kept of a case: the evidence.  What is to be got back:
+--| the identification.  A reader of the evidence recovers the identification when it returns it for every admissible case.
+--| The identification can be recovered when some reader does.  Nothing is asked of the reader but that it is a function.
+def recovers {Case : Sort cases} {Evidence : Sort evidences} {Identification : Sort identifications}
+    (admissible : Case → Prop) (what_is_kept : Case → Evidence) (identify : Case → Identification)
+    (reader : Evidence → Identification) : Prop :=
+  ∀ case, admissible case → reader (what_is_kept case) = identify case
+def can_be_recovered {Case : Sort cases} {Evidence : Sort evidences} {Identification : Sort identifications}
+    (admissible : Case → Prop) (what_is_kept : Case → Evidence) (identify : Case → Identification) : Prop :=
+  ∃ reader, recovers admissible what_is_kept identify reader
+
+--| THE OBSTRUCTION.  Two admissible cases of which the same is kept, and which are identified differently: then no reader
+--| of what is kept recovers the identification.  The reader is handed one thing twice and cannot return two.
+theorem the_same_kept_and_two_identifications_cannot_be_recovered
+    {Case : Sort cases} {Evidence : Sort evidences} {Identification : Sort identifications}
+    (admissible : Case → Prop) (what_is_kept : Case → Evidence) (identify : Case → Identification)
+    (this that : Case) (this_is_admissible : admissible this) (that_is_admissible : admissible that)
+    (the_same_is_kept : what_is_kept this = what_is_kept that) (identified_apart : identify this ≠ identify that) :
+    ¬ can_be_recovered admissible what_is_kept identify := by
+  intro ⟨reader, it_recovers⟩
+  have here := it_recovers this this_is_admissible
+  have there := it_recovers that that_is_admissible
+  rw [the_same_is_kept] at here
+  exact identified_apart (here.symm.trans there)
+
+--| THE KNOWER'S BIT.  The cases are the two decisions.  What is kept of a decision: the triple itself, with its clauses;
+--| what the solver says of it under that decision's parity; what the quartic's two receipts come to on the root that
+--| decision returns; and the whole part of that root.  Not kept: the decision, and the root's other part.  The same is
+--| kept of both decisions.  So the decision cannot be recovered from what is kept.
+def what_is_kept_of_a_decision (decision : Bool) : Basis × Bool × (Int × Int) × Int :=
+  (the_knowers_triple,
+   satSearch the_knowers_triple (if decision then an_odd_number_are_true else an_even_number_are_true) 3,
+   ((the_surd_product (you_re_a_daisy_if_you_do (bitFACT decision)) (you_re_a_daisy_if_you_do (bitFACT decision))).1
+        - 11664 * (you_re_a_daisy_if_you_do (bitFACT decision)).1 + 24564384,
+    (the_surd_product (you_re_a_daisy_if_you_do (bitFACT decision)) (you_re_a_daisy_if_you_do (bitFACT decision))).2
+        - 11664 * (you_re_a_daisy_if_you_do (bitFACT decision)).2),
+   (you_re_a_daisy_if_you_do (bitFACT decision)).1)
+
+theorem the_same_is_kept_of_both_decisions :
+    what_is_kept_of_a_decision true = what_is_kept_of_a_decision false := by
+  have the_solver : satSearch the_knowers_triple an_odd_number_are_true 3
+      = satSearch the_knowers_triple an_even_number_are_true 3 := by decide
+  have the_receipts :
+      ((the_surd_product (you_re_a_daisy_if_you_do (bitFACT true)) (you_re_a_daisy_if_you_do (bitFACT true))).1
+            - 11664 * (you_re_a_daisy_if_you_do (bitFACT true)).1 + 24564384,
+        (the_surd_product (you_re_a_daisy_if_you_do (bitFACT true)) (you_re_a_daisy_if_you_do (bitFACT true))).2
+            - 11664 * (you_re_a_daisy_if_you_do (bitFACT true)).2)
+      = ((the_surd_product (you_re_a_daisy_if_you_do (bitFACT false)) (you_re_a_daisy_if_you_do (bitFACT false))).1
+            - 11664 * (you_re_a_daisy_if_you_do (bitFACT false)).1 + 24564384,
+        (the_surd_product (you_re_a_daisy_if_you_do (bitFACT false)) (you_re_a_daisy_if_you_do (bitFACT false))).2
+            - 11664 * (you_re_a_daisy_if_you_do (bitFACT false)).2) := by decide
+  have the_whole_part : (you_re_a_daisy_if_you_do (bitFACT true)).1 = (you_re_a_daisy_if_you_do (bitFACT false)).1 := by
+    decide
+  show (the_knowers_triple, satSearch the_knowers_triple an_odd_number_are_true 3, _, _)
+      = (the_knowers_triple, satSearch the_knowers_triple an_even_number_are_true 3, _, _)
+  rw [the_solver, the_receipts, the_whole_part]
+
+theorem the_knowers_decision_cannot_be_recovered :
+    ¬ can_be_recovered (fun _ : Bool => True) what_is_kept_of_a_decision (fun decision => decision) :=
+  the_same_kept_and_two_identifications_cannot_be_recovered _ _ _ true false trivial trivial
+    the_same_is_kept_of_both_decisions (by decide)
+
+--| And the two decisions return two roots.
+theorem the_two_decisions_return_two_roots :
+    you_re_a_daisy_if_you_do (bitFACT true) ≠ you_re_a_daisy_if_you_do (bitFACT false) := by decide
+
+--| THE TWO FIRST RUNGS.  The cases are two names, the old rung and the new.  What is kept of a name is the fact it names:
+--| the truth, or a number distinguished.  The two facts are one fact, asked only whether it is true.  So the name cannot
+--| be recovered from the fact, nor from anything read off the fact.
+def the_fact_a_name_names (the_old_rung : Bool) : FACT :=
+  if the_old_rung then FACT.Truth else a_number_is_distinguished
+
+theorem the_name_of_the_first_rung_cannot_be_recovered :
+    ¬ can_be_recovered (fun _ : Bool => True) the_fact_a_name_names (fun the_old_rung => the_old_rung) :=
+  the_same_kept_and_two_identifications_cannot_be_recovered _ _ _ true false trivial trivial
+    (show FACT.Truth = a_number_is_distinguished from asked_only_whether_it_is_true_the_number_is_the_truth.symm)
+    (by decide)
+end what_can_be_recovered
+
+--#print axioms the_same_kept_and_two_identifications_cannot_be_recovered
+--#print axioms the_same_is_kept_of_both_decisions
+--#print axioms the_knowers_decision_cannot_be_recovered
+--#print axioms the_two_decisions_return_two_roots
+--#print axioms the_name_of_the_first_rung_cannot_be_recovered
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
