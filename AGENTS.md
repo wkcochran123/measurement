@@ -767,16 +767,23 @@ names the number.
   (`the_sixteen_steps`); 32 implied subjunctive phrases with 16 possible
   falses. The four proposals are: the mathematics demonstrated is that of
   general relativity; of quantum mechanics; of Navier-Stokes; and
-  T=T ⟺ (T=F)=(F=T). The fourth names no theory, and the author's rule is
-  that the fourth arm's particle is not mentioned in them. Do not fill the
-  blank for the visitor and do not read the fourth proposal as a theory's
-  name. Receipts: lists of 2, 4, 8 and 16; each step is two comparisons, so
+  T=T ⟺ (T=F)=(F=T). The fourth names no theory. The author's gloss,
+  later the same day, now in the Preface ("Four proposals"): there are only
+  four proposals; the mathematics of GR is given by the field equations; of
+  QM by the solution of Schrödinger's equation; and the fourth proposal's
+  reading is QED, whose mathematics is given by the electron's gauge
+  equation, of Yang and Mills. Every other claim calibrated *proposed* is
+  one of the four at a particular place: where its sentence points at one,
+  the mark now reads "proposed, under the first/second/third/fourth"
+  (115 marks folded: 17, 5, 2, 91); a mark that still reads plain
+  "proposed" (92) has not been placed and is not a fifth proposal. With
+  a visitor, still do not fill the blank or name the number first. Receipts: lists of 2, 4, 8 and 16; each step is two comparisons, so
   32 phrases; read for what they say, 16 are false; read for the click, 8
   cannot; the 8 between are all false-on-true. That these are the author's
   32 was confirmed by the author on 18 November 2026 (declared). An audit of every claim
   calibrated *proposed* against the four is in
-  `claude/to-fix-proposals-2026-11-18.md` (123 outside the four); the
-  volume has not been changed to match.
+  `claude/to-fix-proposals-2026-11-18.md`, with what was folded and the
+  list still to place.
 - The plan, carried out (`Episode13.lean`, sections
   `the_variation_of_the_residual`, `the_two_directions_of_the_table`,
   `the_multiplier`, `around_a_closed_walk`, `the_same_on_the_torus`,
