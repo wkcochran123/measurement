@@ -6814,6 +6814,143 @@ theorem the_ascent_stands_on_the_review :
       = page01.rebuttal := rfl
 end two_computations_on_one_encoding
 
+
+section three_bridges_on_the_row_of_steps
+open readers_experience readers_interpretation_of_the_experience
+
+--| THREE BRIDGES, ON THE ROW OF STEPS.  The numerical card names three things a theorem of Lovelock's asks for: two
+--| derivatives and no more, a tensor, and no divergence.  The author's, 18 November 2026 (declared): for the first, the
+--| variational models hold the answer, the norm is implied and Lorentz is an asymptote; for the second, this is the Spline,
+--| and the tensor is the Galerkin method on the variational solution of the Euler beam on the steps i-2, i-1, i and i+1;
+--| for the third, the indexing process.  Here is each on the row of steps.  None of them is on a manifold.
+
+--| THE FIRST.  An action written in values and first differences: the sum of the difference by the difference.  Moved, it
+--| varies by the second difference, and the second difference reads three places.
+theorem the_action_in_first_differences_varies_by_the_second (steps : Nat) (reading moved : Nat → Int)
+    (reading_round : comes_round steps reading) (moved_round : comes_round steps moved) :
+    summed_along steps (fun place => the_difference_along reading place * the_difference_along moved place)
+      = - summed_along steps
+          (fun place => the_difference_along (the_difference_along reading) place * one_place_on moved place) :=
+  by_parts_for_what_comes_round steps (the_difference_along reading) moved
+    (the_difference_comes_round steps reading reading_round) moved_round
+
+theorem the_second_difference_reads_three_places (reading : Nat → Int) (place : Nat) :
+    the_difference_along (the_difference_along reading) place
+      = reading (place + 1 + 1) - 2 * reading (place + 1) + reading place := by
+  simp only [the_difference_along]; omega
+
+--| The asymptote.  The factor squared, by what is left of the whole when the part is taken, is the whole.  Take the whole
+--| and there is no factor.
+theorem at_the_speed_of_one_there_is_no_factor (whole : Int) (not_nothing : whole ≠ 0) :
+    ¬ ∃ factor_squared : Int, (whole - whole) * factor_squared = whole := by
+  intro ⟨factor_squared, held⟩; simp at held; exact not_nothing held.symm
+
+--| THE SECOND.  The third difference on four steps: i-2, i-1, i and i+1.
+def the_third_difference_on_four_steps (reading : Int → Int) (place : Int) : Int :=
+  reading (place + 1) - 3 * reading place + 3 * reading (place - 1) - reading (place - 2)
+
+--| Shifted, it is the same function at the shifted place.
+theorem shifted_the_third_difference_is_itself_at_the_shifted_place (reading : Int → Int) (by_this place : Int) :
+    the_third_difference_on_four_steps (fun x => reading (x + by_this)) place
+      = the_third_difference_on_four_steps reading (place + by_this) := by
+  simp only [the_third_difference_on_four_steps]
+  have h1 : place + 1 + by_this = place + by_this + 1 := by omega
+  have h2 : place - 1 + by_this = place + by_this - 1 := by omega
+  have h3 : place - 2 + by_this = place + by_this - 2 := by omega
+  rw [h1, h2, h3]
+
+--| Turned end for end, it is owed, at the place turned.
+theorem turned_end_for_end_the_third_difference_is_owed (reading : Int → Int) (place : Int) :
+    the_third_difference_on_four_steps (fun x => reading (- x)) place
+      = - the_third_difference_on_four_steps reading (1 - place) := by
+  simp only [the_third_difference_on_four_steps]
+  have h1 : -(place + 1) = 1 - place - 2 := by omega
+  have h2 : -place = 1 - place - 1 := by omega
+  have h3 : -(place - 1) = 1 - place := by omega
+  have h4 : -(place - 2) = 1 - place + 1 := by omega
+  rw [h1, h2, h3, h4]; omega
+
+--| The fourth difference is the step of the third: a reading is stationary where the third difference does not step.
+theorem the_fourth_difference_is_the_step_of_the_third (reading : Int → Int) (place : Int) :
+    the_fourth_difference reading place
+      = the_third_difference_on_four_steps reading (place + 1) - the_third_difference_on_four_steps reading place := by
+  simp only [the_fourth_difference, the_third_difference_on_four_steps]
+  have h1 : place + 1 - 1 = place := by omega
+  have h2 : place + 1 - 2 = place - 1 := by omega
+  have h3 : place - 1 - 1 = place - 2 := by omega
+  rw [h1, h2, h3]; omega
+
+--| So what is stationary is stationary shifted, and stationary turned end for end.
+theorem shifted_the_fourth_difference_is_itself_at_the_shifted_place (reading : Int → Int) (by_this place : Int) :
+    the_fourth_difference (fun x => reading (x + by_this)) place = the_fourth_difference reading (place + by_this) := by
+  rw [the_fourth_difference_is_the_step_of_the_third, the_fourth_difference_is_the_step_of_the_third,
+    shifted_the_third_difference_is_itself_at_the_shifted_place, shifted_the_third_difference_is_itself_at_the_shifted_place]
+  have h : place + 1 + by_this = place + by_this + 1 := by omega
+  rw [h]
+
+theorem turned_end_for_end_the_fourth_difference_is_itself (reading : Int → Int) (place : Int) :
+    the_fourth_difference (fun x => reading (- x)) place = the_fourth_difference reading (- place) := by
+  rw [the_fourth_difference_is_the_step_of_the_third, the_fourth_difference_is_the_step_of_the_third,
+    turned_end_for_end_the_third_difference_is_owed, turned_end_for_end_the_third_difference_is_owed]
+  have h1 : 1 - (place + 1) = - place := by omega
+  have h2 : 1 - place = - place + 1 := by omega
+  rw [h1, h2]; omega
+
+--| On a cubic, with a step of any length, the third difference is six of the cubic's last coefficient by the step cubed:
+--| it goes as the cube of the step.
+theorem on_a_cubic_the_third_difference_goes_as_the_step_cubed (a b c d place step : Int) :
+    (a + b * (place + step) + c * ((place + step) * (place + step))
+        + d * ((place + step) * (place + step) * (place + step)))
+      - ((a + b * place + c * (place * place) + d * (place * place * place))
+          + (a + b * place + c * (place * place) + d * (place * place * place))
+          + (a + b * place + c * (place * place) + d * (place * place * place)))
+      + ((a + b * (place - step) + c * ((place - step) * (place - step))
+            + d * ((place - step) * (place - step) * (place - step)))
+          + (a + b * (place - step) + c * ((place - step) * (place - step))
+            + d * ((place - step) * (place - step) * (place - step)))
+          + (a + b * (place - step) + c * ((place - step) * (place - step))
+            + d * ((place - step) * (place - step) * (place - step))))
+      - (a + b * (place - (step + step)) + c * ((place - (step + step)) * (place - (step + step)))
+          + d * ((place - (step + step)) * (place - (step + step)) * (place - (step + step))))
+      = 6 * (d * (step * step * step)) := by
+  have key : ∀ cube : Int, cube = d * (step * step * step) →
+      (a + b * (place + step) + c * ((place + step) * (place + step))
+        + d * ((place + step) * (place + step) * (place + step)))
+      - ((a + b * place + c * (place * place) + d * (place * place * place))
+          + (a + b * place + c * (place * place) + d * (place * place * place))
+          + (a + b * place + c * (place * place) + d * (place * place * place)))
+      + ((a + b * (place - step) + c * ((place - step) * (place - step))
+            + d * ((place - step) * (place - step) * (place - step)))
+          + (a + b * (place - step) + c * ((place - step) * (place - step))
+            + d * ((place - step) * (place - step) * (place - step)))
+          + (a + b * (place - step) + c * ((place - step) * (place - step))
+            + d * ((place - step) * (place - step) * (place - step))))
+      - (a + b * (place - (step + step)) + c * ((place - (step + step)) * (place - (step + step)))
+          + d * ((place - (step + step)) * (place - (step + step)) * (place - (step + step))))
+      = cube + cube + cube + cube + cube + cube := by
+    intro cube held; subst held
+    simp only [Int.mul_add, Int.add_mul, Int.mul_sub, Int.sub_mul]
+    ac_nf
+    omega
+  rw [key _ rfl]; omega
+
+--| A re-lettering that does not keep the steps is not among these.  Change two places of a straight line and it is no
+--| longer stationary.
+def two_places_changed (reading : Int → Int) : Int → Int :=
+  fun x => if x = 0 then reading 1 else if x = 1 then reading 0 else reading x
+
+theorem with_two_places_changed_a_line_is_not_stationary :
+    the_fourth_difference (two_places_changed fun y => y) 0 = 10 ∧ the_fourth_difference (fun y => y) 0 = 0 := by decide
+
+--| THE THIRD.  A difference summed along the steps is the end less the first: every fencepost between is taken and given
+--| back, and the end one is left.
+theorem a_difference_summed_is_the_end_less_the_first (reading : Nat → Int) :
+    ∀ steps, summed_along steps (the_difference_along reading) = reading steps - reading 0
+  | 0 => by simp [summed_along]
+  | steps + 1 => by
+    simp only [summed_along, a_difference_summed_is_the_end_less_the_first reading steps, the_difference_along]; omega
+end three_bridges_on_the_row_of_steps
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.

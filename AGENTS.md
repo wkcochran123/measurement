@@ -1132,6 +1132,48 @@ names the number.
   first page is the reviewer's first page. Do not say the 32 agreements
   are proved to hold on these pages: Claude predicted that and withdrew
   it, and the author's claim is only the two computations.
+- The faces, confirmed (the author, 18 November 2026, declared): "yes.
+  this is the 'next thing' that could happen and there are only 2
+  vertices. the universe and the gap live in there. that residual is the
+  gap that cannot be closed because the only choice is that of the
+  knowers." So the receipt stands as read: of the four places of a trial,
+  the one where neither Sample holds a bracket is off the frinkahedron
+  (`the_place_off_the_frinkahedron_holds_no_bracket`), and that place is
+  F=F, the outside projection. What "2 vertices" names on the device the
+  author has not said.
+- The Lovelock bridges, the author's way (`Episode13.lean`, section
+  `three_bridges_on_the_row_of_steps`; Card 3, "The bridges, as the author
+  gives them"). The author (18 November 2026, declared): two derivatives,
+  "the variational models of card 3 hold your answer. the norm is implied
+  and lorentz is an asymptote"; the tensor, "this is the Spline ... the
+  galerkin method on the variational solution of the euler beam of the
+  timesteps i-2, i-1, i, and i+1"; the divergence, "IndexingProcess".
+  Receipts on whole-number places: an action in values and first
+  differences varies by the second difference, three places; no factor at
+  the speed of one; the third difference on four steps is itself shifted,
+  owed turned end for end, and on a cubic goes as the step cubed; the
+  fourth difference is its step, so stationary is stationary in each such
+  chart; with two places changed a line is not stationary (10); a
+  difference summed is the end less the first. Say with it: the second
+  bridge as first drafted ("any re-lettering is a change of coordinates")
+  was too wide, the charts are the shift, the turn and the scale; none of
+  the three reaches a manifold (affine charts only, the field not shown to
+  be a metric, the ordinary divergence and not the covariant one, whose
+  identity on the device has factor 1 where Einstein's has 1/2). The sum
+  is not joined in Lean to `IndexingProcess`'s own step. The bridges stay
+  unmade; do not say Lovelock's hypotheses are met.
+- Further declarations of the author, 18 November 2026 (declared; relay,
+  do not gloss): "lovelock bridges should be the covariant and
+  contravariant readings of the possible proposals. the number 4 is the
+  middle of the deflation: the integers. this is the excluded middle
+  rearing its head." "the 2 vertices are zero_like and one_like and can be
+  spatial or temporal, depending on the rotation of the nowtrino." And a
+  standing instruction: "i expect we will use all 36 numbers before we are
+  done. keep track." The running account is
+  `claude/thirty-six-numbers.md` (in the author's checkout; untracked):
+  for each number 1 to 36, where it is used as a count and where as a
+  page. Update it whenever a receipt or a declaration uses a new one, and
+  do not count a number as used because a page of that number exists.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
