@@ -6409,6 +6409,64 @@ end what_can_be_recovered
 --#print axioms the_two_decisions_return_two_roots
 --#print axioms the_name_of_the_first_rung_cannot_be_recovered
 
+section the_quartic_factors_at_the_devices_weights
+open readers_experience
+
+--| THE QUARTIC, FACTORED WHERE THE DEVICE STANDS.  Episode 12 has that the closing quartic is two factors, one for a number
+--| and one for that number owed, whenever eighteen of the number squared is five.  No whole number is such a number, so
+--| at the device's own weights that receipt says nothing.  In Episode 12's pairs it does.  Eighteen of such a number is
+--| the root of the round trip.  Eighteen of the quartic is a pair by the same pair with its second part owed, and the
+--| product has no part of the root.  Which of the two pairs is which is not read by the product.
+theorem the_quartic_at_the_devices_weights (x r : Int) :
+    the_closing_quartic 18 5 x r = 325 * (x * x) - 180 * (r * r * x) + 18 * (r * r * (r * r)) := by
+  show (5 : Int) * 5 * (18 - 5) * x * x - 2 * 18 * 5 * r * r * x + 18 * r * r * r * r = _
+  have e1 : (5 : Int) * 5 * (18 - 5) * x * x = 325 * (x * x) := by
+    rw [show (5 : Int) * 5 * (18 - 5) = 325 from rfl]; ac_nf
+  have e2 : (2 : Int) * 18 * 5 * r * r * x = 180 * (r * r * x) := by
+    rw [show (2 : Int) * 18 * 5 = 180 from rfl]; ac_nf
+  have e3 : (18 : Int) * r * r * r * r = 18 * (r * r * (r * r)) := by ac_nf
+  rw [e1, e2, e3]
+
+theorem eighteen_of_the_quartic_is_a_pair_by_itself_turned_over (x r : Int) :
+    the_surd_product (18 * (r * r - 5 * x), 5 * x) (18 * (r * r - 5 * x), - (5 * x))
+      = (18 * the_closing_quartic 18 5 x r, 0) := by
+  have ninety := the_round_trip_is_ninety
+  refine Prod.ext ?_ ?_
+  · show 18 * (r * r - 5 * x) * (18 * (r * r - 5 * x)) + the_round_trip * (5 * x) * (- (5 * x))
+        = 18 * the_closing_quartic 18 5 x r
+    rw [ninety, the_quartic_at_the_devices_weights, Int.mul_neg]
+    have a1 : 18 * (r * r - 5 * x) * (18 * (r * r - 5 * x))
+        = 18 * 18 * ((r * r - 5 * x) * (r * r - 5 * x)) := two_by_two_is_one_by_one_twice _ _ _ _
+    have a2 : (r * r - 5 * x) * (r * r - 5 * x)
+        = r * r * (r * r) - 10 * (r * r * x) + 25 * (x * x) := by
+      rw [Int.sub_mul, Int.mul_sub, Int.mul_sub]
+      have b1 : r * r * (5 * x) = 5 * (r * r * x) := Int.mul_left_comm _ _ _
+      have b2 : 5 * x * (r * r) = 5 * (r * r * x) := by rw [Int.mul_assoc, Int.mul_comm x (r * r)]
+      have b3 : 5 * x * (5 * x) = 5 * 5 * (x * x) := two_by_two_is_one_by_one_twice _ _ _ _
+      rw [b1, b2, b3]; omega
+    have a3 : (90 : Int) * (5 * x) * (5 * x) = 90 * (5 * 5 * (x * x)) := by
+      rw [Int.mul_assoc, two_by_two_is_one_by_one_twice]
+    rw [a1, a2, a3]; omega
+  · show 18 * (r * r - 5 * x) * (- (5 * x)) + 5 * x * (18 * (r * r - 5 * x)) = 0
+    rw [Int.mul_neg, Int.mul_comm (5 * x) (18 * (r * r - 5 * x))]; omega
+
+--| Turned over, the two pairs change places and the product is the same.
+theorem the_two_pairs_change_places_and_the_product_stays (x r : Int) :
+    the_surd_product (18 * (r * r - 5 * x), - (5 * x)) (18 * (r * r - 5 * x), 5 * x)
+      = the_surd_product (18 * (r * r - 5 * x), 5 * x) (18 * (r * r - 5 * x), - (5 * x)) := by
+  refine Prod.ext ?_ ?_
+  · show 18 * (r * r - 5 * x) * (18 * (r * r - 5 * x)) + the_round_trip * (- (5 * x)) * (5 * x)
+        = 18 * (r * r - 5 * x) * (18 * (r * r - 5 * x)) + the_round_trip * (5 * x) * (- (5 * x))
+    rw [Int.mul_neg, Int.neg_mul, Int.mul_neg]
+  · show 18 * (r * r - 5 * x) * (5 * x) + - (5 * x) * (18 * (r * r - 5 * x))
+        = 18 * (r * r - 5 * x) * (- (5 * x)) + 5 * x * (18 * (r * r - 5 * x))
+    rw [Int.mul_neg, Int.neg_mul, Int.mul_comm (5 * x) (18 * (r * r - 5 * x))]; omega
+end the_quartic_factors_at_the_devices_weights
+
+--#print axioms the_quartic_at_the_devices_weights
+--#print axioms eighteen_of_the_quartic_is_a_pair_by_itself_turned_over
+--#print axioms the_two_pairs_change_places_and_the_product_stays
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.

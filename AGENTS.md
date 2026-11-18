@@ -912,6 +912,24 @@ names the number.
   five other places with three of a kind and a fourth of another; and it
   does not say which is the fourth dimension meant, nor give a reader from
   the tape to any model's equations. Do not supply those identifications.
+  The author's answer on the fourth (declared): it is all three (the
+  quartic's root taken out, the fourth arm, Card 1's dropped coordinate)
+  plus the arrow of time. The source ties them at one number s with
+  c·s² = t: the quartic factors through ±s and does not read the sign
+  (`the_quartic_factors`, `the_quartic_does_not_read_the_sign`); the device
+  uses c = 18, t = 5, so s² = 5/18 is the fourth arm over the others; that
+  is the radius squared at which Card 1's stretch is 18/13; and it is the
+  speed squared. Be exact about three things (GPT's corrections): the sign
+  of s is representable (a Bool; the second component of a surd pair); it
+  is the magnitude that is not an integer, and the ratio fixes s² without
+  fixing the sign. `the_quartic_factors` is vacuous at 18 and 5; the
+  nonvacuous form is `eighteen_of_the_quartic_is_a_pair_by_itself_turned_over`
+  in the surd pairs. And the radius has no sign; the projection forgets the
+  sign of the dropped coordinate, whose square is 13/18 there, and nothing
+  relates it to the sign of s. That the four share 5/18 is measured. That
+  supplying one sign undoes all three losses is NOT shown: it needs a
+  reversal in each construction and maps between them, and the maps are not
+  in the source. That the four are one is the author's.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
