@@ -13,7 +13,7 @@ under the reading change with the rise?
 Observable: heartbeats of elaborating a term and reducing it to weak head normal form, read by `the_ekg_reads`
 (Episode 8). Baseline: the blank drawn in the same call.
 
-Source: `101f871`. Status: set up; not yet read.
+Source: `101f871`. Status: read on the M2 (`raw/M2/`); see READINGS, Experiment 012. All probes compiled as sealed.
 
 ## The seal
 

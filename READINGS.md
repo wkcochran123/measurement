@@ -30,7 +30,7 @@ its files match the source commit.
 | 009c | `readings/009c-the-clock-and-the-quarter` | the clock and the quarter: eight clicks in a row, and three cards with one face | `b3ff7c3` | read on the M2 |
 | 010 | `readings/010-the-value-from-nanoseconds` | the value from the nanoseconds: each count of the polynomial replaced by a timed reading of its tape over one blank; does it read slightly high? | `89b1909` | read on the M2: no real value; the author's prediction refuted as taken |
 | 011 | `readings/011-the-throw` | the throw: what one application of `Quot.sound`, the device's bent card, costs on the meter, against the floor and against the step of the device's truth | `25dc6e3` | read on the M2: 23,752 heartbeats, 5.64 blanks; all three sealed rules refuted |
-| 012 | `readings/012-the-enumeration` | the enumeration: rises 1 to 4 by levels 0 to 6 on the meter; does the floor under the reading change with the rise? | (this commit) | set up; not yet read |
+| 012 | `readings/012-the-enumeration` | the enumeration: rises 1 to 4 by levels 0 to 6 on the meter; does the floor under the reading change with the rise? | `c21c5c9` | read on the M2: the slope scales with the rise and the floor does not; all sealed rules confirmed |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -787,6 +787,57 @@ in blanks, 5.64, is nearly propext's throw in steps, 5.65.
 Episode 8's box, read net of the same statement by `rfl`, is Claude's reading of the author's sentence, and the author
 may correct it: the statement thrown, the control, and which reading is taken were chosen in the setup. The author's
 sentence stands as *declared*; as taken here it is not borne out.
+
+## Experiment 012: the enumeration
+
+**Setup:** `c21c5c9` (`readings/012-the-enumeration/`). **Source:** `101f871`. **Read:** Apple M2, 18 November 2026, three
+runs, one fresh process per reading; `raw/M2/readings.out`. All twenty-eight probes compiled as sealed.
+
+**The author's statements:** "the meter's floor is also known, the input is finite, the run is finite, the tape is
+finite. simple lba enumeration will provide the scaling." And: "\hbar = 1 all constants are 1 blank in size".
+
+**Read**, in heartbeats; the blank beside every reading was 4,626. Each tape has rise × level(level+1)/2 cells of the
+device's truth, every cell clicked once:
+
+| Level | Rise 1 | Rise 2 | Rise 3 | Rise 4 |
+|---|---|---|---|---|
+| 0 | 21,259 | 21,259 | 21,259 | 21,259 |
+| 1 | 24,055 | 25,988 | 27,933 | 29,878 |
+| 2 | 27,933 | 33,778 | 39,622 | 45,467 |
+| 3 | 33,778 | 45,467 | 57,147 | 68,826 |
+| 4 | 41,572 | 61,041 | 80,505 | 99,982 |
+| 5 | 51,304 | 80,505 | 109,717 | 138,921 |
+| 6 | 62,987 | 103,876 | 144,751 | 185,639 |
+
+**Fitted** against the area under the levels, n(n+1)/2, for each rise:
+
+| Rise | Floor | Floor in blanks | Slope | Slope over rise | R² |
+|---|---|---|---|---|---|
+| 1 | 21,832 | 4.719 | 1,965.5 | 1,965.5 | 0.99966 |
+| 2 | 21,830 | 4.719 | 3,912.6 | 1,956.3 | 0.99991 |
+| 3 | 21,830 | 4.719 | 5,859.3 | 1,953.1 | 0.99996 |
+| 4 | 21,831 | 4.719 | 7,806.4 | 1,951.6 | 0.99998 |
+
+**Against the seal.**
+
+- S1, every reading identical across runs, so the scaling is definite: **confirmed**.
+- S2, the slope scales with the rise (slope over rise the same to two parts in a hundred): **confirmed**; they agree to
+  seven parts in a thousand.
+- S3, the floor does not scale with the rise: **confirmed**. The four floors agree to one part in ten thousand, and each
+  is within three parts in a hundred of the reading at level 0.
+- S4, a straight line in the area at each rise: **confirmed**, R² above 0.9996 throughout.
+- S5 (recorded): the floor is 4.72 blanks.
+
+**What it says.** The enumeration provides the scaling, as the author said it would. On the meter the reading is a
+floor and a slope; the slope goes as the rise and the floor does not move. Two tapes with the same number of cells read
+the same whatever rise and level made them (27,933 at rise 1 level 2 and at rise 3 level 1; 33,778 at rise 1 level 3
+and at rise 2 level 2), so the reading is a function of the cells alone: about 21,260 for no cells, some 850 more for
+the first, and about 1,950 a cell after. So on the count nothing of the temperature stays behind when the rise is
+changed, and on the meter the floor does. In blanks the floor is 4.72, not one.
+
+**Standing.** The heartbeats are *measured*, on one machine; the fits are *computed*. That a tape of that many cells of
+the device's truth, each clicked once, is the meter's reading of the temperature at that rise and level is Claude's
+choice of workload, and the author may correct it.
 
 ## The study: hardware
 
