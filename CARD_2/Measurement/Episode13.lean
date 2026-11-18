@@ -6467,6 +6467,59 @@ end the_quartic_factors_at_the_devices_weights
 --#print axioms eighteen_of_the_quartic_is_a_pair_by_itself_turned_over
 --#print axioms the_two_pairs_change_places_and_the_product_stays
 
+
+section two_reversals
+open readers_experience
+
+--| TWO REVERSALS.  The device has two things that can be turned over, each with a number that changes sign.  The roots:
+--| the outer radius and the hole change places, and the part by the root of the round trip changes sign.  The table: it
+--| is turned over, the crossings change places, and the bent card by the quarter turn changes sign.  Each leaves what is
+--| read of the table as it was, and neither moves the other.
+
+--| Turned over, the table has the trace, the determinant and the gap squared it had.
+theorem the_table_turned_over_reads_the_same :
+    the_table_trace the_full_other_table = the_table_trace the_full_table
+      ∧ the_table_determinant the_full_other_table = the_table_determinant the_full_table
+      ∧ the_gap_squared the_full_other_table = the_gap_squared the_full_table
+      ∧ the_gap_squared the_full_table = 360 := by decide
+
+--| And what changes sign is the bent card by the quarter turn: the arm's thirteen, with a direction.
+theorem turned_over_the_bent_card_by_the_quarter_turn_is_owed (a b : Bool) :
+    the_full_other_table a b - the_full_table a b = - ((bent_card : Int) * the_quarter_turn a b) := by
+  cases a <;> cases b <;> decide
+
+--| The roots in either order add to the trace and multiply to the determinant.
+theorem the_roots_changed_places_read_the_same :
+    the_surd_product the_hole the_outer_radius = the_surd_product the_outer_radius the_hole
+      ∧ the_surd_product the_outer_radius the_hole = (234, 0)
+      ∧ (the_hole.1 + the_outer_radius.1, the_hole.2 + the_outer_radius.2) = (36, 0)
+      ∧ the_hole.2 = - the_outer_radius.2 := by decide
+
+--| FOUR STATES, ONE READING.  A root first and a table: four ways.  What is read of each, the trace, the determinant and
+--| the gap squared of the table and the sum and the product of the two roots, is the same for all four.
+def the_four_signed_states : List (Bool × Bool) := [(true, true), (true, false), (false, true), (false, false)]
+def what_is_read_of_a_signed_state (state : Bool × Bool) : Int × Int × Int × (Int × Int) × (Int × Int) :=
+  let table := if state.2 then the_full_table else the_full_other_table
+  let first := if state.1 then the_outer_radius else the_hole
+  let second := if state.1 then the_hole else the_outer_radius
+  (the_table_trace table, the_table_determinant table, the_gap_squared table,
+   (first.1 + second.1, first.2 + second.2), the_surd_product first second)
+
+theorem the_four_signed_states_read_alike :
+    the_four_signed_states.map what_is_read_of_a_signed_state
+      = List.replicate 4 (36, 234, 360, (36, 0), (234, 0)) := by decide
+
+--| THE ONE CONSTRAINT THERE IS.  The knower's triple sets the knower's coin against whether the arm's two coins differ.
+--| It does not read which way they differ: true on false and false on true are one to it, under either parity.  So it
+--| ties the knower's coin to a crossing, and not to the crossing's direction.
+theorem the_triple_does_not_read_which_way_the_arm_crosses :
+    ∀ a : Bool,
+      (the_knowers_triple.holds (assignFrom [a, true, false]) an_odd_number_are_true 0).1
+          = (the_knowers_triple.holds (assignFrom [a, false, true]) an_odd_number_are_true 0).1
+        ∧ (the_knowers_triple.holds (assignFrom [a, true, false]) an_even_number_are_true 0).1
+          = (the_knowers_triple.holds (assignFrom [a, false, true]) an_even_number_are_true 0).1 := by decide
+end two_reversals
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.

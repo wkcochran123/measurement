@@ -930,6 +930,18 @@ names the number.
   supplying one sign undoes all three losses is NOT shown: it needs a
   reversal in each construction and maps between them, and the maps are not
   in the source. That the four are one is the author's.
+- One sign or two, tested (`Episode13.lean`, section `two_reversals`; GPT's
+  test). The device has two reversals: the roots changing places (the part
+  by the root of the round trip changes sign) and the table turned over
+  (13 · quarter turn changes sign). Each leaves trace 36, determinant 234,
+  gap squared 360 and the roots' sum and product; all four combinations
+  read alike (`the_four_signed_states_read_alike`); and the knower's triple
+  does not read which way the arm crosses
+  (`the_triple_does_not_read_which_way_the_arm_crosses`). So the source has
+  two independent signs, and reducing them to one choice needs a pairing
+  (same or opposite) that the source does not supply; that pairing is the
+  identification's. That the table's direction is the sign of Card 1's
+  dropped coordinate is not shown.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
