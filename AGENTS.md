@@ -876,8 +876,10 @@ names the number.
   recovering reader. No axiom; no computability. Instances:
   `the_knowers_decision_cannot_be_recovered` (evidence: the triple, the
   solver's verdict under the decision's parity, the values of the quartic's
-  two receipts on the returned root, and the root's whole part; not the
-  decision, not the root's other part) with
+  two receipts on the returned root, and the first component of the root's
+  surd pair, i.e. its rational component, which is not the integer part of
+  the root; not kept: the decision, which parity schedule was used, and the
+  pair's second component) with
   `the_two_decisions_return_two_roots`; and
   `the_name_of_the_first_rung_cannot_be_recovered` (evidence: the FACT a
   Bool names). Limits to state: the evidence type must hold the content,

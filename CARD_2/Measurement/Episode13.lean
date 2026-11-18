@@ -6349,8 +6349,10 @@ theorem the_same_kept_and_two_identifications_cannot_be_recovered
 
 --| THE KNOWER'S BIT.  The cases are the two decisions.  What is kept of a decision: the triple itself, with its clauses;
 --| what the solver says of it under that decision's parity; what the quartic's two receipts come to on the root that
---| decision returns; and the whole part of that root.  Not kept: the decision, and the root's other part.  The same is
---| kept of both decisions.  So the decision cannot be recovered from what is kept.
+--| decision returns; and the first of that root's pair, the part with no root of ninety in it.  Not kept: the decision;
+--| which parity the solver was given; and the pair's other part.  The triple is one for both, and its reading by a parity
+--| is another thing and is not kept.  The first of the pair is not the whole number under the root: those differ.  The
+--| same is kept of both decisions.  So the decision cannot be recovered from what is kept.
 def what_is_kept_of_a_decision (decision : Bool) : Basis × Bool × (Int × Int) × Int :=
   (the_knowers_triple,
    satSearch the_knowers_triple (if decision then an_odd_number_are_true else an_even_number_are_true) 3,
@@ -6373,11 +6375,11 @@ theorem the_same_is_kept_of_both_decisions :
             - 11664 * (you_re_a_daisy_if_you_do (bitFACT false)).1 + 24564384,
         (the_surd_product (you_re_a_daisy_if_you_do (bitFACT false)) (you_re_a_daisy_if_you_do (bitFACT false))).2
             - 11664 * (you_re_a_daisy_if_you_do (bitFACT false)).2) := by decide
-  have the_whole_part : (you_re_a_daisy_if_you_do (bitFACT true)).1 = (you_re_a_daisy_if_you_do (bitFACT false)).1 := by
+  have the_first_of_the_pair : (you_re_a_daisy_if_you_do (bitFACT true)).1 = (you_re_a_daisy_if_you_do (bitFACT false)).1 := by
     decide
   show (the_knowers_triple, satSearch the_knowers_triple an_odd_number_are_true 3, _, _)
       = (the_knowers_triple, satSearch the_knowers_triple an_even_number_are_true 3, _, _)
-  rw [the_solver, the_receipts, the_whole_part]
+  rw [the_solver, the_receipts, the_first_of_the_pair]
 
 theorem the_knowers_decision_cannot_be_recovered :
     ¬ can_be_recovered (fun _ : Bool => True) what_is_kept_of_a_decision (fun decision => decision) :=
