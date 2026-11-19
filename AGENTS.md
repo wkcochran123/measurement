@@ -1317,6 +1317,83 @@ names the number.
   classical, on a lattice, with turns for states; it is not Dirac's
   action, and it is not joined to Episode 13's weighted action on the
   table. Verse 28 now has a Lean receipt; 27, 31 and 32 do not.
+- The list, wired up (the author, 18 November 2026, declared): "the Type
+  that is necessary for this machine is the (Type i → List). this is the
+  list.length getting wired up"; and of the four list machines that do not
+  read back as the length and one, "the four non-commuting structures
+  where the covariant and contravariant cannot be co-encoded and needed to
+  be encoded side by side." Read in the source: Episode 8's bent card is
+  over a `Term : Type` with four operations, a reader
+  `lambda : List FACT → Term` and a scale; Episode 8 hands it the naturals
+  and `List.length`, Episode 13 the Area and `the_area_of_a_tape`. Every
+  one of the 37 inductives is dealt from a list and read back as a
+  multiple of the tape's length and a constant: 33 as the length and one;
+  Sample, Trial and Closure as twice the length and one; Measurement as
+  the length and nothing. In the three, each cell is dealt with its fact
+  in two slots side by side (`signal_response fact _ fact _ _`,
+  `inferred fact fact _ _ _ _`); in Measurement the fact is once and two
+  numbers are side by side, and its reader counts no fencepost. That these
+  four are the non-commuting structures is the author's. They are not
+  Part VII's four commutators, which stand at four lifts; do not run the
+  two fours together. The `Term` of the bent card is at `Type`, not
+  `Type i`.
+- The posts and the panels (the author, 18 November 2026, declared): "the
+  37 are the fence posts, the 36 are the fence panels. you should be able
+  to compute the polynomial now"; and "this is the bridge where you can
+  equate the Equivalation.physics with the contravariant reading of
+  (t=f)=(f=t) that does not click. this is the 4 member fencepost." Read
+  first in the source as a count from the text, and since a receipt
+  (`Episode13.lean`, section `the_posts_and_the_panels`): Episode 8's
+  `the_steps_of_the_argument` lists the number read three times and then
+  one reading for every kind after it, in the order of declaration; with
+  the first two set aside there are 36 steps, and the 5th, 13th, 18th and
+  36th are the readings of a Limit, an Area, an Abstraction and a Closure
+  (`the_fifth_thirteenth_eighteenth_and_thirty_sixth`); the four after the
+  13th are a PigeonHole's, a Jar's, an Equivalation's and an Encoding's.
+  Counted from the back, as Episode 8 does (tapes of the last steps laid
+  end to end), the same four numbers come out
+  (`counted_from_the_back_the_same_four_numbers`). So in
+  the order Episodes 1 to 5 declare their inductives, Limit is the 5th, Area
+  the 13th, Abstraction the 18th and Closure the 36th. Those are the
+  device's four counts, so the residual 13y² − 36y + 18 is Area, Closure,
+  Abstraction; 18 = 13 + 5; 36 = 2 × 18. Between Area and Abstraction
+  stand four posts, PigeonHole, Jar, Equivalation, Encoding, and five
+  panels: the 5 the arm that does not click carries. That those four are
+  the author's "4 member fencepost" is Claude's reading. Told that
+  PigeonHole was the one of the four without a reading, the author: "this
+  is einstein's spooky action at a distance" (declared; Claude takes "this"
+  to be PigeonHole, and the author has not confirmed which). And: "it is
+  also hawking radiation and dark energy, but not as easy to see"
+  (declared; no receipt, and none attempted). And: "the arm that does not
+  click can be inflated by the excluded middle twice. the first goes half
+  way (we covered this). the second time gives rational numbers, not
+  reals. and the reals are only ever described by a process of
+  completion" (declared). Beside it, already receipts: whole numbers (the
+  table and its counts); halves (`any_such_table_is_its_half_sum_and_its_half_difference_by_the_metric`,
+  the 23/2 and 13/2); ratios (5/18, 18/13, 324/65, and every turn of the
+  crank a ratio); and the root reached by no finite number of turns
+  (`the_galerkin_process_finished`, the distance left squaring each turn).
+  That these are the two inflations and the completion is Claude's
+  placing of the receipts beside the sentence. Episode 8 takes
+  13 and 18 from the other end of the same list (the last four tapes are
+  13 marks, the last five 18, the fifth from the end being the
+  coordinate system's 5). That the count from the front and the count from
+  the back give the same numbers is checked; that they must is not shown:
+  each is a fact about this list as it was written. This bears on "planted or found"; show both
+  routes and leave the answer with the visitor.
+- Inflated twice (`Episode13.lean`, section `inflated_twice`). The
+  author's (declared): the arm that does not click can be inflated by the
+  excluded middle twice; "the first inflation is one quadratic in the
+  quartic. the second inflation is the other quadratic"; the second gives
+  ratios and not reals, and the reals are only ever described by a process
+  of completion; "i think we are getting very close." Receipts, on the
+  quartic at the device's weights written as two pairs: the one quadratic
+  has a part by the root, 5x; the one by the other is 18 of the quartic
+  with nothing by the root; the other is the one with its root part owed,
+  and either order gives the same. These rest on
+  `eighteen_of_the_quartic_is_a_pair_by_itself_turned_over`, minted
+  earlier. That the two factors are two uses of the excluded middle is the
+  author's.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,

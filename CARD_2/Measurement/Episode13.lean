@@ -7188,6 +7188,75 @@ theorem the_physics_and_the_two_on_it_read_one_two_and_three :
       ∧ one_like_on_the_constant.vanish.length = 3 := ⟨rfl, rfl, rfl⟩
 end the_constant_as_physics
 
+
+section the_posts_and_the_panels
+open readers_experience
+
+--| THE POSTS AND THE PANELS.  The author's, 18 November 2026: the thirty-seven are the fence posts and the thirty-six the
+--| fence panels, and the polynomial can be computed from them; the four posts past the Area are the four-member fencepost,
+--| the bridge to the arm that does not click (declared).  Episode 8 wrote the steps of its argument as a list: the number
+--| read three times, and then one reading for every kind of thing after it, in the order the kinds were made.  Set the
+--| first two aside, so that the number is counted once.
+
+--| Thirty-six steps, one for each kind.
+def the_steps_one_for_each_kind : List (List FACT) := the_steps_of_the_argument.drop 2
+
+theorem there_are_thirty_six_kinds : the_steps_one_for_each_kind.length = 36 := rfl
+
+--| COUNTED FROM THE FRONT.  The fifth step is the reading of a limit, the thirteenth of an Area, the eighteenth of an
+--| Abstraction, the thirty-sixth of a Closure.
+theorem the_fifth_thirteenth_eighteenth_and_thirty_sixth :
+    the_steps_one_for_each_kind[4]? = some ε₁.converge
+      ∧ the_steps_one_for_each_kind[12]? = some ast₁.riemann_integrate
+      ∧ the_steps_one_for_each_kind[17]? = some the_proof.equivalation
+      ∧ the_steps_one_for_each_kind[35]? = some the_only_logical_inconsistency.infer := ⟨rfl, rfl, rfl, rfl⟩
+
+--| THE FOUR BETWEEN.  Past the Area and short of the Abstraction stand four: a pigeonhole, a jar, an equivalation and an
+--| encoding.  Four posts and five panels.
+theorem the_four_posts_between_the_area_and_the_abstraction :
+    (the_steps_one_for_each_kind.drop 13).take 4
+      = [the_galerkin_method.solve, the_photon_worldline.classify, t₁.vanish, δδxᵢ.decode] := rfl
+
+--| COUNTED FROM THE BACK.  Episode 8 took its numbers from the other end: the tapes of the last steps, laid end to end.
+--| Five for the frame, thirteen for the coefficient, eighteen for the memory, and twice the memory for the trace.
+theorem counted_from_the_back_the_same_four_numbers :
+    the_coordinate_system.gauss.length = 5 ∧ the_coefficient_tape.length = 13 ∧ the_memory_tape.length = 18
+      ∧ the_trace_of_truth_in_the_device = 36 := by decide
+
+--| So the place of the Area from the front is the length of the coefficient from the back, and so for the others: two
+--| counts of one fence, from its two ends.
+theorem the_polynomial_from_either_end :
+    an_exact_polynomial_description = 13 ∧ the_trace_of_truth_in_the_device = 36
+      ∧ the_number_of_symbols_that_must_be_written_to_express_this = 18
+      ∧ 13 + the_coordinate_system.gauss.length = 18 ∧ 2 * 18 = 36 := by decide
+end the_posts_and_the_panels
+
+section inflated_twice
+open readers_experience readers_interpretation_of_the_experience
+
+--| INFLATED TWICE.  The author's, 18 November 2026: the arm that does not click can be inflated by the excluded middle
+--| twice; the first inflation is one quadratic in the quartic and the second is the other; the second gives ratios and not
+--| reals, and the reals are only ever described by a process of completion (declared).  The quartic at the device's
+--| weights is two quadratics, written as pairs: a whole part, and a part by the root of the round trip.
+def the_one_quadratic (x r : Int) : Int × Int := (18 * (r * r - 5 * x), 5 * x)
+def the_other_quadratic (x r : Int) : Int × Int := (18 * (r * r - 5 * x), - (5 * x))
+
+--| Inflated once: the one quadratic.  It has a part by the root, and that part is the frame by the place.
+theorem inflated_once_there_is_a_part_by_the_root (x r : Int) : (the_one_quadratic x r).2 = 5 * x := rfl
+
+--| Inflated twice: the one by the other.  Eighteen of the quartic, and nothing by the root.  What is left is whole.
+theorem inflated_twice_nothing_is_left_by_the_root (x r : Int) :
+    the_surd_product (the_one_quadratic x r) (the_other_quadratic x r) = (18 * the_closing_quartic 18 5 x r, 0) :=
+  eighteen_of_the_quartic_is_a_pair_by_itself_turned_over x r
+
+--| The other is the one with its part by the root owed, and either order gives the same.
+theorem the_other_quadratic_is_the_one_turned_over (x r : Int) :
+    the_other_quadratic x r = ((the_one_quadratic x r).1, - (the_one_quadratic x r).2)
+      ∧ the_surd_product (the_other_quadratic x r) (the_one_quadratic x r)
+          = the_surd_product (the_one_quadratic x r) (the_other_quadratic x r) :=
+  ⟨rfl, the_two_pairs_change_places_and_the_product_stays x r⟩
+end inflated_twice
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
