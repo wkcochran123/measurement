@@ -7557,6 +7557,258 @@ theorem the_tapes_by_their_length :
 theorem set_beside_one_another : 47 + 90 = 137 ∧ 42 + 47 = 89 ∧ 137 + 42 = 179 := by decide
 end the_running_count_from_each_end
 
+
+section the_list_says_how_deep_to_cut
+open readers_experience
+
+--| THE LIST SAYS HOW DEEP TO CUT.  Episode 8 takes the coefficient from the last four tapes and the memory from the last
+--| five.  The four and the five are themselves the lengths of two tapes in the list: the path's, the thirty-first kind's,
+--| and the coordinate system's, the thirty-second's.  So the list is cut at depths it holds.
+theorem the_depths_are_two_of_the_tapes :
+    the_orbital_data_points = 4 ∧ the_dimensions_of_universe = 5
+      ∧ the_lengths_of_the_tapes[30]? = some the_orbital_data_points
+      ∧ the_lengths_of_the_tapes[31]? = some the_dimensions_of_universe := by decide
+
+--| Between the area and the abstraction: the tapes of the four posts and of the abstraction are eighteen marks, the
+--| count from twenty-nine to forty-seven.  And the first five tapes and the last three are eleven each, which is why
+--| ninety is reached from either end.
+theorem what_lies_between_the_counts :
+    ((the_lengths_of_the_tapes.drop 13).take 5).foldl (· + ·) 0 = 18 ∧ 29 + 18 = 47
+      ∧ (the_lengths_of_the_tapes.take 5).foldl (· + ·) 0 = 11
+      ∧ (the_lengths_of_the_tapes.reverse.take 3).foldl (· + ·) 0 = 11 ∧ 101 - 11 = 90 := by decide
+end the_list_says_how_deep_to_cut
+
+section a_hexagon_of_the_pairs
+open readers_experience
+
+--| A HEXAGON OF THE PAIRS.  The first card's frinkahedron is a hexagon by a hexagon: thirty-six vertices, the pairs of
+--| six by six, in two sectors of eighteen by whether the two numbers add to an even number.  The six pairs of arms can be
+--| set round a hexagon so that each shares an arm with the next, and so that every second one has the arm that does not
+--| click.  This is one such way round; there are others, and the choice is not the device's.
+def the_pairs_round_a_hexagon : List (Direction × Direction) :=
+  [((true, true), (true, false)), ((true, true), (false, true)), ((true, false), (false, true)),
+   ((false, true), (false, false)), ((true, false), (false, false)), ((true, true), (false, false))]
+
+def has_the_arm_out (pair : Direction × Direction) : Bool := pair.1 == (true, false) || pair.2 == (true, false)
+def share_an_arm (this that : Direction × Direction) : Bool :=
+  this.1 == that.1 || this.1 == that.2 || this.2 == that.1 || this.2 == that.2
+
+--| They are the six pairs; every second one has the arm out; and each shares an arm with the next, the last with the first.
+theorem round_the_hexagon :
+    (the_pairs_of_arms.all fun pair => the_pairs_round_a_hexagon.contains pair) = true
+      ∧ the_pairs_round_a_hexagon.length = 6
+      ∧ the_pairs_round_a_hexagon.map has_the_arm_out = [true, false, true, false, true, false]
+      ∧ ((the_pairs_round_a_hexagon.zip (the_pairs_round_a_hexagon.drop 1 ++ the_pairs_round_a_hexagon.take 1)).all
+          fun both => share_an_arm both.1 both.2) = true := by decide
+
+--| So the six by six falls into two sectors of eighteen, by whether the two places round the hexagon add to an even
+--| number; and the six that are not nothing, a pair with itself, are all in the even one.
+def the_places_round (j k : Nat) : (Direction × Direction) × (Direction × Direction) :=
+  (the_pairs_round_a_hexagon.getD j ((true, true), (true, true)), the_pairs_round_a_hexagon.getD k ((true, true), (true, true)))
+
+theorem two_sectors_of_eighteen :
+    (((List.range 6).flatMap fun j => (List.range 6).map fun k => (j, k)).filter fun place => (place.1 + place.2) % 2 == 0).length
+        = 18
+      ∧ (((List.range 6).flatMap fun j => (List.range 6).map fun k => (j, k)).filter
+          fun place => the_source_across (the_places_round place.1 place.2) != 0)
+        = (List.range 6).map fun j => (j, j) := by decide
+end a_hexagon_of_the_pairs
+
+section the_residual_at_the_zero_and_at_the_one
+open readers_experience readers_interpretation_of_the_experience
+
+--| THE RESIDUAL AT THE ZERO AND AT THE ONE.  The author's, 18 November 2026: going down it is the zero and on the way back
+--| the other root, one; these will be scaled later (declared).  Set beside it: the residual of the pair, read at nothing
+--| over one, at one over one, and at one over nothing.
+theorem the_residual_at_the_zero_the_one_and_past_it :
+    the_residual_of_the_pair 0 1 = 18 ∧ the_residual_of_the_pair 1 1 = -5 ∧ the_residual_of_the_pair 1 0 = 13
+      ∧ the_residual_of_the_pair 0 1 + the_residual_of_the_pair 1 1 = 13
+      ∧ the_residual_of_the_pair 0 1 - the_residual_of_the_pair 1 1 = 23 := by decide
+end the_residual_at_the_zero_and_at_the_one
+
+
+section the_residue_is_the_comparison
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+  rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
+
+--| THE RESIDUE IS THE COMPARISON.  The author's, 19 November 2026: the coincidences are being moved round the device until
+--| they all fall on the same comparison fact; there are four models and four blockers that do not commute, and these need
+--| only an ordering; the circle does one model, then the next, then the next; and the residue is the comparison operator
+--| necessary to separate the two values (declared).  Episode 5 has a residue: asked of two values, it returns the
+--| proposition that the one, looked at, is under the other, looked at.  Its margin says it is the comparison operator that
+--| had been missing.
+
+--| ONE FACT.  The four closures hold one and the same fact.  They differ in the two values and in what stands between.
+theorem the_four_closures_hold_one_fact :
+    the_second_closure.infer = the_first_closure.infer ∧ the_third_closure.infer = the_first_closure.infer
+      ∧ the_fourth_closure.infer = the_first_closure.infer := ⟨rfl, rfl, rfl⟩
+
+--| AN ORDERING.  The residue of one pair is what the next closure stores: each closure's comparison is the residue of the
+--| one before.  Round it goes, one and then the next and then the next.
+theorem the_residue_of_one_is_the_comparison_of_the_next :
+    the_atreyu_process.residue? gawked_at_once gawked_at_twice = some (gawked_at_twice < gawked_at_three_times)
+      ∧ the_atreyu_process.residue? gawked_at_twice gawked_at_three_times
+          = some (gawked_at_three_times < gawked_at_four_times)
+      ∧ the_atreyu_process.residue? gawked_at_three_times gawked_at_four_times
+          = some (gawked_at_four_times < gawked_at_five_times) := ⟨rfl, rfl, rfl⟩
+
+--| And it comes round to itself: at the fixed point the residue is the comparison it already was.
+theorem at_the_fixed_point_the_residue_is_its_own_comparison :
+    the_atreyu_process.residue? gawked_at_four_times gawked_at_five_times
+      = the_atreyu_process.residue? gawked_at_three_times gawked_at_four_times := rfl
+
+--| Two values with nothing to separate them have no residue: of two zeros it returns nothing at all.
+theorem two_zeros_have_no_residue :
+    the_atreyu_process.residue? the_same_difference_quantum the_same_difference_quantum = none := rfl
+end the_residue_is_the_comparison
+
+
+section sixteen_abstractions_of_the_integer
+open readers_experience the_area
+
+--| SIXTEEN ABSTRACTIONS OF THE INTEGER.  The author's, 19 November 2026: there should be sixteen possible devices from
+--| Episode 8; there are sixteen possible abstractions of the integer (declared).  The bent card asks its term for four
+--| things: beside, each for each, taken away, and less.  Episode 8's margin: these could be implemented differently, giving
+--| different interpretations.  Take each as written, or turned over.  Sixteen devices, on the naturals, at Episode 8's scale.
+def the_device_with (beside_as_written each_for_each_as_written taken_away_as_written less_as_written : Bool) : Nat × Nat :=
+  let plus : Add Nat := ⟨fun a b => if beside_as_written then a + b else b + a⟩
+  let times : Mul Nat := ⟨fun a b => if each_for_each_as_written then a * b else b * a⟩
+  let minus : Sub Nat := ⟨fun a b => if taken_away_as_written then a - b else b - a⟩
+  match less_as_written with
+  | true => @bent_card.fenceposts_must_be_preserved Nat plus times minus ⟨fun a b => a < b⟩ (fun a b => Nat.decLt a b)
+              List.length all_possible_variables
+  | false => @bent_card.fenceposts_must_be_preserved Nat plus times minus ⟨fun a b => b < a⟩ (fun a b => Nat.decLt b a)
+              List.length all_possible_variables
+
+--| What a device reads: the first of its pair by the scale over the second, where there is a second.
+def what_a_device_reads (pair : Nat × Nat) : Option Nat :=
+  if pair.2 = 0 then none else some (pair.1 * all_possible_variables / pair.2)
+
+def the_sixteen_devices : List (Option Nat) :=
+  [true, false].flatMap fun b => [true, false].flatMap fun e => [true, false].flatMap fun t => [true, false].map fun l =>
+    what_a_device_reads (the_device_with b e t l)
+
+--| Three things are read.  With taken away and less as written, Episode 8's number, four times: beside and each for each
+--| read the same turned over.  With less turned over, the number of turns of the crank and the scale, four times: the device
+--| never leaves the house.  With taken away turned over, nothing, eight times.
+set_option maxRecDepth 100000 in
+theorem the_sixteen_devices_read_three_things :
+    the_sixteen_devices
+      = [some the_constant_factor_of_scaling_bullshit, some (episode8_description.length * all_possible_variables), none, none,
+         some the_constant_factor_of_scaling_bullshit, some (episode8_description.length * all_possible_variables), none, none,
+         some the_constant_factor_of_scaling_bullshit, some (episode8_description.length * all_possible_variables), none, none,
+         some the_constant_factor_of_scaling_bullshit, some (episode8_description.length * all_possible_variables), none, none] := by
+  decide
+
+--| THE ONE BETWEEN.  The author's: that value can be put into an equivalation; it is the universe between the zero-like
+--| and the one-like (declared).  Of the three things read, nothing is the zero and Episode 8's number is the constant
+--| nobody can write.  The one between, the number of turns, can be written: the Area of the tape of turns.  Put it in a
+--| jar, and the jar under the physics.
+def the_turns_in_a_jar : Jar := .color zero (the_area_of_a_tape episode8_description)
+def the_physics_of_the_turns : Equivalation := .physics zero the_turns_in_a_jar
+
+theorem the_jar_holds_as_many_cells_as_the_crank_has_turns :
+    cells (what_the_jar_holds the_turns_in_a_jar) = episode8_description.length ∧ episode8_description.length = 106 :=
+  ⟨the_area_of_a_tape_has_the_tapes_length episode8_description, by decide⟩
+
+--| And it stands between: the zero-like on it and the one-like on it, read, are two facts and three, and it is one.
+theorem the_physics_of_the_turns_stands_between :
+    the_physics_of_the_turns.vanish.length = 1
+      ∧ (Equivalation.zero_like zero the_physics_of_the_turns).vanish.length = 2
+      ∧ (Equivalation.one_like (episode8_description.length = 106) the_physics_of_the_turns
+            the_physics_of_the_turns).vanish.length = 3 := ⟨rfl, rfl, rfl⟩
+end sixteen_abstractions_of_the_integer
+
+
+section one_across_or_two_from_the_middle
+open readers_experience the_area
+
+--| ONE ACROSS, OR TWO FROM THE MIDDLE.  The author's, 19 November 2026: spooky action at a distance means you cannot tell
+--| the difference between a photon originating at the source and an entangled pair being fired at both from the middle
+--| (declared).  Two cases.  One thing goes across whole: the two halves set beside each other and read as one.  Or two
+--| things come out of the middle: the halves read apart.  What is kept is the count.
+def what_is_counted (one_half other_half : Area) (from_the_source : Bool) : Nat :=
+  if from_the_source then cells (one_half + other_half) else cells one_half + cells other_half
+
+theorem the_same_is_counted_either_way (one_half other_half : Area) :
+    what_is_counted one_half other_half true = what_is_counted one_half other_half false :=
+  beside_adds one_half other_half
+
+--| So no reader of the count returns which it was.
+theorem which_it_was_cannot_be_recovered_from_the_count (one_half other_half : Area) :
+    ¬ can_be_recovered (fun _ : Bool => True) (what_is_counted one_half other_half) (fun from_the_source => from_the_source) :=
+  the_same_kept_and_two_identifications_cannot_be_recovered _ _ _ true false trivial trivial
+    (the_same_is_counted_either_way one_half other_half) (by decide)
+end one_across_or_two_from_the_middle
+
+section the_four_ways_that_can_be_run
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+  rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
+
+--| THE FOUR WAYS THAT CAN BE RUN.  The gawk branches on the first page's fact, and again on the rest of the call's second
+--| fact, each against the nowtrino's.  On this process the nowtrino's fact clicks, so of the sixteen ways four can be run:
+--| each of the two facts called true or called false.  Two were run before, on the first page.  Here are the other two.
+noncomputable def with_its_second_fact_called_false (rest : Bullshit.{0,0,0,0}) : Bullshit.{0,0,0,0} :=
+  match rest with
+  | .rest_call fact _ held last here total one other this that =>
+      .rest_call fact (bitFACT false) held last here total one other this that
+  | other => other
+
+noncomputable def true_then_false_gawked_at_once : Bullshit.{0,0,0,0} :=
+  the_atreyu_process.gawk_at (with_its_second_fact_called_false gawked_at_twice)
+noncomputable def true_then_false_gawked_at_twice : Bullshit.{0,0,0,0} :=
+  the_atreyu_process.gawk_at true_then_false_gawked_at_once
+noncomputable def false_then_false_gawked_at_once : Bullshit.{0,0,0,0} :=
+  the_atreyu_process.gawk_at (with_its_second_fact_called_false called_false_and_gawked_at_once)
+noncomputable def false_then_false_gawked_at_twice : Bullshit.{0,0,0,0} :=
+  the_atreyu_process.gawk_at false_then_false_gawked_at_once
+
+--| All four stop in one place, and stay there.
+theorem the_four_ways_stop_in_one_place :
+    true_then_false_gawked_at_twice = gawked_at_four_times
+      ∧ false_then_false_gawked_at_twice = gawked_at_four_times
+      ∧ called_false_and_gawked_at_three_times = gawked_at_four_times
+      ∧ the_atreyu_process.gawk_at true_then_false_gawked_at_twice = true_then_false_gawked_at_twice
+      ∧ the_atreyu_process.gawk_at false_then_false_gawked_at_twice = false_then_false_gawked_at_twice :=
+  ⟨rfl, rfl, after_one_step_the_two_branches_are_one.2.1, rfl, rfl⟩
+
+--| And on the way each holds what the others hold: thirty-eight facts and then thirty-nine.
+set_option maxRecDepth 100000 in
+theorem the_two_new_ways_hold_thirty_eight_and_thirty_nine :
+    [true_then_false_gawked_at_once, true_then_false_gawked_at_twice, false_then_false_gawked_at_once,
+      false_then_false_gawked_at_twice].map (fun gawk => gawk.all_the_way_down.length) = [38, 39, 38, 39] := by decide
+end the_four_ways_that_can_be_run
+
+section sixteen_names_and_sixteen_devices
+open readers_experience the_area the_area.Account
+
+--| SIXTEEN NAMES AND SIXTEEN DEVICES.  The author's, 19 November 2026: the word is its name; sixteen names from four
+--| marks; these are the opcodes; and all use the one sort order found at the level that is sixteen wide (declared).  A
+--| name is a mark and a mark: what compile builds and what execute counts.  A device is four things as written or turned
+--| over: beside and each for each, taken away and less.  Give the device its four from the name's four coins.
+def the_device_of_a_name (step : (Bool × Bool) × (Bool × Bool)) : Option Nat :=
+  what_a_device_reads (the_device_with step.1.1 step.1.2 step.2.1 step.2.2)
+
+--| The sixteen names in their order are the sixteen devices in theirs.
+theorem the_sixteen_names_are_the_sixteen_devices :
+    the_sixteen_steps.map the_device_of_a_name = the_sixteen_devices := rfl
+
+--| What a name reads is settled by its second mark alone, the one execute counts.  True on true reads Episode 8's number.
+--| True on false, the mark that does not click, reads the turns of the crank.  The other two read nothing.
+def what_the_second_mark_reads (mark : Bool × Bool) : Option Nat :=
+  match mark with
+  | (true, true) => some the_constant_factor_of_scaling_bullshit
+  | (true, false) => some (episode8_description.length * all_possible_variables)
+  | _ => none
+
+set_option maxRecDepth 100000 in
+theorem a_name_reads_what_its_second_mark_reads :
+    the_sixteen_steps.map the_device_of_a_name = the_sixteen_steps.map (fun step => what_the_second_mark_reads step.2) := by
+  decide
+end sixteen_names_and_sixteen_devices
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.

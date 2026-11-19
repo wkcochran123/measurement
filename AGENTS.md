@@ -1572,6 +1572,153 @@ names the number.
   the visitor. These running counts are not Claude's earlier guesses,
   which were about meanings; the author has not said which meaning goes
   with which count.
+- Three more receipts, 19 November 2026 (`Episode13.lean`, sections
+  `the_list_says_how_deep_to_cut`, `a_hexagon_of_the_pairs`,
+  `the_residual_at_the_zero_and_at_the_one`). The depths: Episode 8 cuts
+  its list four and five tapes from the end, and the four and the five
+  are the lengths of two tapes in that list, the path's (31st kind) and
+  the coordinate system's (32nd); the five tapes from the 14th to the
+  18th kind are 18 marks, which is the running count's 29 to 47; and the
+  first five tapes and the last three are 11 each, which is why 90 is
+  reached from either end. A hexagon of the pairs: the six pairs of arms
+  set round so that each shares an arm with the next and every second one
+  has the arm that does not click; then the six by six falls into two
+  sectors of 18 by parity, as Card 1's does, and the six entries that are
+  not nothing are all in the even one. That way round is one of several
+  and the choice is Claude's; it is a map with Card 1's counts, not a
+  proof that it is Card 1's map. The residual read at nothing over one is
+  18, at one over one −5, at one over nothing 13; the first two add to 13
+  and differ by 23. That is set beside "these will be scaled later" and
+  is not the scaling. None of this forces the running counts to fall
+  where they do.
+- The apparently meaningful coincidence (the author, 19 November 2026,
+  declared): "you have been collecting coincidences that we have been
+  figuring out how to move around the device so the coincidences all fall
+  on the same comparison fact. There are 4 models, and 4 noncommuting
+  blockers you run into in the device. These just need an ordering. There
+  may be a particular ordering of the 4 models, but you see that the
+  circle does one model, then the next, then the next. The residue is
+  comparison operator necessary to separate the two values." Applied
+  (`Episode13.lean`, section `the_residue_is_the_comparison`): the four
+  closures hold one and the same fact and differ only in their two values
+  and what stands between; Episode 5's `residue?`, asked of one pair of
+  gawks, returns exactly the proposition the next closure stores, three
+  times in a row (`the_residue_of_one_is_the_comparison_of_the_next`),
+  and at the fixed point it is its own; and of two zeros it returns
+  nothing. Episode 5's margin on `residue?`: "only if we provide the
+  comparison operator we have been missing for 4 episodes". So on the
+  device the residue of one step is the comparison of the next, round to a
+  fixed point: an ordering. That the four closures are the four models,
+  and that the collected coincidences are one comparison, are the
+  author's. The receipts do not say which model is which closure, and do
+  not make any coincidence forced. The author, further: "there are sixteen
+  ways to do this, there is another sixteen to wire in" (declared). Beside
+  it, read in the source: `gawk_at` branches four ways on a first page
+  (the clicks of the page's fact and of the nowtrino's) and four ways
+  again on a rest of the call; Episode 13 has tried two of those ways, the
+  first fact called true and called false. The sixteen have not been
+  enumerated.
+- The last four (the author, 19 November 2026, declared): "the last four
+  is the (distance, velocity, bullshit, inferred mass)." Read against the
+  row: the last four kinds are Measurement, ThePreprint, Bullshit and
+  Closure, the 33rd to the 36th, and their tapes are 2, 3, 5 and 3 marks,
+  13 in all: Episode 8's coefficient, the bent card
+  (`the_tapes_kind_by_kind`, `the_running_count_from_the_back`). Taken in
+  that order: distance is the measurement, velocity the preprint, bullshit
+  the bullshit, and the inferred mass the closure. That order of pairing
+  is Claude's reading of the sentence. It replaces Claude's earlier
+  placing of the three terms on Measurement's own constructors
+  (`origin`, `distance_to`, `speed`), which the author did not confirm;
+  the receipt for those (2, 5, 11) stands as a count and no longer as the
+  three-term machine. And: "these all use the same sorting order,
+  whatever is computed by the thing that figures out sorting (the 16-wide
+  level figures out sort order)"; "bullshit == 5: there is your
+  fencepost" (declared). Beside it: the Bullshit's tape is 5 marks
+  (Episode 8, `the_most_basic_of_conclusions.meter.length = 5`), one of
+  the two tapes of five, the other being the coordinate system's, which
+  is the frame; every kind has its own `le`; and the level of sixteen is
+  the compile and execute steps (`the_sixteen_steps`). That one sort
+  order is computed there and used by all has no receipt. And: "the sixteen
+  ways enumerated are the 32 inferred T/F bits, but not the fencepost"
+  (declared). Beside it: `the_sixteen_steps` are two coins and two coins,
+  and `the_phrases` takes each step's two comparisons, 32 of them, 16
+  saying something false; `gawk_at` branches on two clicks for a first
+  page and two for a rest of the call, the same shape; and the 36 pages
+  are 32 inferred and 4 the fencepost. On the device's own process the
+  nowtrino's fact clicks, so only four of the sixteen ways can be run
+  there without another nowtrino; two have been. And: "there is your
+  native int in Lean: the 32 inferred bits" (declared). The device itself
+  uses `Nat` and `Int`, which have no fixed width; nothing in it is a
+  32-bit word. And: "the word is its name. you get 16 names. from 4
+  marks: (T=F) (F=T) (T=T) (F=F). these are the opcodes" (declared).
+  Beside it: a step is an arm and an arm, four by four, sixteen
+  (`the_sixteen_steps`); and Episode 5's own margin in `gawk_at`, on the
+  branch true on false, reads "the opcode for the inner Turing machine?".
+- Sixteen devices (the author, 19 November 2026, declared): "there should
+  be 16 possible devices from ep8 now"; "there are 16 possible
+  abstractions of the integer." Episode 8's bent card asks a `Term` for
+  four things: beside, each for each, taken away, and less. Its own margin:
+  "four variable functions ... these could be implemented differently
+  giving different interpretations". Measured in scratch on the naturals,
+  not minted: take each of the four as written or turned over (b + a,
+  b × a, b − a, b < a), sixteen devices, and run Episode 8's crank at its
+  scale. Four print the digits Episode 8 prints (beside and each-for-each
+  turned over change nothing, since they commute). Four, with less turned
+  over, print 106 followed by twenty-four zeros; 106 is the number of
+  turns of the crank. Eight, with taken-away turned over, have no reading
+  (the second of the pair is nothing). So the sixteen fall 4, 4 and 8,
+  into three outcomes. Since minted (`Episode13.lean`, section
+  `sixteen_abstractions_of_the_integer`,
+  `the_sixteen_devices_read_three_things`, by `decide`). The author then:
+  "i think you can put that value into Equivalation now right? that is
+  the universe between zero-like and one-like" (declared). Done as read:
+  of the three things the sixteen read, nothing is the zero, Episode 8's
+  number is the constant nobody can write, and the one between, the
+  number of turns, can be written: the Area of the tape of turns, 106
+  cells, in a jar under a `physics`
+  (`the_jar_holds_as_many_cells_as_the_crank_has_turns`); with the
+  zero-like and the one-like on it, read as two facts and three. That
+  "that value" is the 106 and not the reading is Claude's reading of the
+  sentence; the constant was put under a `physics` the day before.
+- Spooky action, said exactly (the author, 19 November 2026, declared):
+  "spooky action at a distance means you can't tell the difference between
+  a photon originating at the source or an entangled photon pair being
+  fired at both from the middle." That is the form of Episode 13's
+  recovery theorem: two cases, the same thing kept, two identifications,
+  and no reader that returns which
+  (`the_same_kept_and_two_identifications_cannot_be_recovered`). Beside
+  it on the device, not yet stated for this: a reader that counts cannot
+  tell one Area from two set beside each other (`beside_adds`), and the
+  running count reaches 90 from either end of the one list. No receipt
+  states the two histories of a photon; nothing on the device is a photon.
+- Three closed, and six answered (19 November 2026). Receipts
+  (`Episode13.lean`, sections `one_across_or_two_from_the_middle`,
+  `the_four_ways_that_can_be_run`, `sixteen_names_and_sixteen_devices`).
+  One: one thing across whole, or two halves out of the middle, count the
+  same, so no reader of the count returns which
+  (`which_it_was_cannot_be_recovered_from_the_count`); it is the recovery
+  theorem on `beside_adds`, about a reader that counts and nothing about
+  photons. Two: of the gawk's sixteen ways the four that can be run on
+  this process (each of the two facts called true or false) all stop at
+  the one fixed point and stay, holding 38 and then 39 facts on the way
+  (`the_four_ways_stop_in_one_place`). Three: the sixteen names in their
+  order are the sixteen devices in theirs, and what a name reads is
+  settled by its second mark alone, the one execute counts: true on true
+  reads Episode 8's number, true on false reads the turns of the crank,
+  the other two read nothing (`a_name_reads_what_its_second_mark_reads`).
+  So the mark that does not click is the device that never leaves the
+  house. The author's answers, all declared: "the naotrino is a continuous
+  model where the threshold is passed, but slip isn't observed. it has
+  been inferred" (on running all sixteen ways); "there are two machines
+  that are identical up to daisy: (a × (−c × b)) and (−a × (c × −b))" (on
+  joining the gawk to the lattice); the stretch "is the horizon model
+  provided by the naotrino, it is inferred"; "the four blockers are the
+  four proposals ... we cannot get by them"; the earlier machine, "let's
+  come back to this"; and of the running counts 13, 18, 29, 42, 47, 90,
+  "you just found the jar that contains the proposals." So the other
+  twelve ways, the stretch and the forcing of the counts are not gaps to
+  close on the device: the first two are inferred and the third is where
+  the proposals are kept.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
