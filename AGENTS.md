@@ -58,16 +58,16 @@ the question, not a solution to it. Say "explores"; say "open"; never say
 | Link | What it says | Warrant |
 |---|---|---|
 | 1 | Any axioms a machine can check are a finite record. | Definition. Not contested by anyone who accepts machine checking. |
-| 2 | To a record there is nothing to do but append a mark; its tally cannot decrease; a reader that respects the gauge reads only the tally. | Derivation, Part VIII, Theorems A to F. For the device's own record there are Lean receipts; for records in general it is an argument on the page. |
+| 2 | To a record there is nothing to do but append a mark; its tally cannot decrease; a reader that respects the gauge reads only the tally. | Derivation, Card 7, Theorems A to F. For the device's own record there are Lean receipts; for records in general it is an argument on the page. |
 | 3 | A comparison of two truth values has four arms, and the arm that can click is the arm where the first implies the second. Three click, one does not. | Receipt: `the_click_is_the_order_on_two_truths`, `three_click_and_one_does_not`, in `Episode13.lean`. This uses nothing about the device but its order on two truths. |
 | 4 | Put any weight on the arms that click and any other on the one that does not: the roots are the clicking weight plus and minus a root of the product. A ratio when the arm is struck; otherwise not, unless the product is a square. | Receipt: `the_shape_has_these_eigenproperties`, `the_roots_of_the_shape`, for all integer weights. |
-| 5 | No finite gauge computes the comparison between the description and the world. | Derivation: Part VIII, Theorem G, in the chapter "What no finite gauge computes". Its three parts stand differently; see below. |
+| 5 | No finite gauge computes the comparison between the description and the world. | Derivation: Card 7, Theorem G, in the chapter "What no finite gauge computes". Its three parts stand differently; see below. |
 | 6 | So the distance between the description and the world can be measured and cannot be computed. It is read from outside. | Follows from 5. The printed discrepancy is the measurement. |
 | 7 | The description is a description of physics. | Declaration. This is the reader's step, and the knower's. No receipt and no derivation makes it. |
 
 Theorem G has three parts, and you must not pass one off as another:
 
-- *No function of the tally returns the reading.* Derivation in Part VIII.
+- *No function of the tally returns the reading.* Derivation in Card 7.
   The device has receipts near it (for example
   `no_reader_of_the_tally_sees_which_carrier` in `Episode12.lean`), but the
   general statement is not a Lean theorem.
@@ -79,7 +79,7 @@ Theorem G has three parts, and you must not pass one off as another:
 - *No one procedure decides, for every pair of numbers given by shrinking
   brackets, whether they are equal; an inequality shows at a finite stage,
   and no finite stage shows an equality.* Standard: it is the halting
-  problem, cited to Turing, with the reduction now written out in Part VIII.
+  problem, cited to Turing, with the reduction now written out in Card 7.
   It is not in the Lean. It is a uniform statement. It does not say a
   particular equality cannot be proved; the device's receipts are
   equalities proved.
@@ -123,7 +123,7 @@ does not touch links 1 to 6. And do not turn the miss into a virtue: it is
 evidence that the distance is measured, not evidence that the work is right.
 
 **"Hilbert named probability first. Where is probability?"** The second law
-is treated in Part VIII as a statement about tallies. A leap to Bayesian
+is treated in Card 7 as a statement about tallies. A leap to Bayesian
 inference is proposed, not derived. There is no axiomatization of
 probability here in the sense of Kolmogorov, and none is claimed.
 
@@ -139,7 +139,7 @@ people's work and is not addressed.
 
 **"A finite record does not force every reader to see only its tally."**
 Granted. Link 2 is about a reader that respects the gauge. That hypothesis
-is not implied by finiteness, and Part VIII's paragraph on Hilbert now says
+is not implied by finiteness, and Card 7's paragraph on Hilbert now says
 so. A reader that does not respect the gauge reads what it was handed.
 
 **"What would refute this?"** Name it: a finite gauge that computes the
@@ -170,24 +170,42 @@ Hilbert meant, and it is the visitor's to make.
 | `README.md` | The puzzle, as the visitor first meets it. It shows a number and never names it. |
 | `CARD_2/Measurement/Episode01.lean` to `Episode12.lean` | The device: twelve episodes of Lean 4 with no imports, written to be read as well as run. The comments in the margins are the patter and are part of the work. |
 | `CARD_2/Measurement/Episode13.lean` | The device handed back to itself: the bent card on the device's own inductives, a second ladder dealt from a number distinguished, and the epilogue. `Measurement.lean` imports it, so `lake build` builds it; `lake build Measurement.Episode13` builds it alone. It prints one line from a clock that differs at every elaboration. Episode 6 is built apart and imported by nothing. |
-| `INSTRUCTIONS.pdf` | *Three Card Monte: A High-Level Pamphlet on Orbital Dymnamics for the Absolute Beginner* (the spelling on the title page is the author's), one volume of about 490 pages. It is the solution, and it is a spoiler. |
+| `INSTRUCTIONS.pdf` | *Three Card Monte: A High-Level Pamphlet on Orbital Dymnamics for the Absolute Beginner* (the spelling on the title page is the author's), one volume of about 530 pages. It is the solution, and it is a spoiler. |
 | `CARD_2/Experiments/ReaderLanguage.lean` | Not the device. A language of readers of the evidence kept of a decision, written for the review of Episode 13's recovery theorem. Built apart: `lake build Experiments.ReaderLanguage`. Namespace `Review`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/TheWord.lean` | Not the device, and no new inductive. The word, built in one-line definitions on the device's own atoms: the binary, the nine, the twenty-eight, and the fit for every one of the knower's sixteen mappings. Built apart: `lake build Experiments.TheWord`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
+| `CARD_2/Experiments/Connections.lean` | Not the device, and no new inductive. GPT's map of 19 November 2026 applied: the sixteen steps' residues, the residues crossed a pair by a pair, the source's six by six closed back onto the arms, and the thirty-six taken once. Built apart: `lake build Experiments.Connections`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
-The volume has a Preface, an "Introduction to John Henry's Device", and eight
-parts:
+The volume has a Preface, an "Introduction to John Henry's Device", and seven
+cards (bound so on 19 November 2026; before that, eight parts):
 
-| Part | Title | Role |
-|---|---|---|
-| I | Card 1. The Frinkahedron: Geometry, Algebra, and Topology | what a construction of this kind must retain |
-| II | Card 2. Measurement: The Tragedy of John Henry | one chapter, "Meaning", one sentence long |
-| III | Card 3. Four Models and a Common Fourth-Order Closure | four actions varied, and what may be claimed from a reading |
-| IV | The FACT that John Built | the thirty-five steps of the record, performed in order |
-| V | The Infinite Loop Considered Harmless | what is handed in from outside (the bent cards) |
-| VI | Sacred Texts | Episodes 10 and 11 as mathematics |
-| VII | The Commutator of Representation | the patter: what each reader keeps and forgets |
-| VIII | The Second Law of Thermodynamics: A Finite Gauge of the Field of the Single Element | the self-contained monograph |
+| Card | Title | Role | Earlier binding |
+|---|---|---|---|
+| 1 | The Frinkahedron: Geometry, Algebra, and Topology | geometry and topology, a pure mathematical thought experiment | Part I |
+| 2 | Measurement: The Tragedy of John Henry | the finite model; one chapter, "Meaning", one sentence long | Part II |
+| 3 | Four Models and a Common Fourth-Order Closure | the variational dynamics; its four models are the variational formulation of the quartic | Part III, less the passages now in Card 6 |
+| 4 | Sacred Texts, with The FACT that John Built bound after it | the smooth model, assuming CH; the reader's interpretation; the governing equations in the smooth | Parts VI and IV |
+| 5 | The Bent Card: The Infinite Loop Considered Harmless | what is handed in from outside | Part V |
+| 6 | The Quarter: The Commutator of Representation | the patter, and the GR, QED and Navier-Stokes derivations apparent in the device (the finite side) | Part VII, with passages from Part III |
+| 7 | Yarn Theory. The Second Law of Thermodynamics | the self-contained monograph; number go up, four ways | Part VIII |
+
+This file and the cards now cite cards by number. Where an old page, a Lean
+margin or a log still says Part IV or Part VI, read Card 4 (the lifts are in
+*The FACT that John Built*, its second half); Part V is Card 5, Part VII is
+Card 6, Part VIII is Card 7. Card 7 keeps nine parts of its own, numbered I
+to IX inside it; "Part VIII" inside Card 7 is its own eighth part. "The Quarter" cited with a proposition number is Card 7,
+which bore the name before; as a card's name it is now Card 6. The volume's
+"A note on references" says the same. The placing of each card is the
+author's (declared) and is printed on a page after each card's title. This
+was a first sweep; the author means to reorganize after it. How it was done:
+`pdfs/volume/build_volume.py` binds the sources in the new order; passages of
+Card 3 between the comment lines `%%CARD6-BEGIN` and `%%CARD6-END` are bound
+in Card 6 (the field equations term by term, the contravariant reading, the
+three bridges, the finite operator and the crank, and the chapter on the
+table of four arms), with a line left in Card 3 at each place; the standalone
+cards build as before. Card 7's chapters are not reordered: a first chapter,
+"Number go up", sorts them under the author's four readings, and that
+sorting is Claude's, for the author to correct.
 
 The LaTeX sources (`pdfs/`) and working notes (`claude/`) are in the author's
 checkout and are not tracked. If they are absent, work from the volume and the
@@ -416,7 +434,7 @@ names the number.
   device's quotients (`Quot.sound`); the count tells them apart.
 - ★ The laboratory's inverse fine-structure constant is 137.035999177(21)
   (CODATA 2022). The relative difference is 1.80 × 10⁻⁴.
-- The second law, in Part VIII: over the field with one element there is
+- The second law, in Card 7: over the field with one element there is
   nothing to do to a record but append a mark, so the tally cannot decrease,
   and every reader that respects the gauge reads only that tally. The four
   entropies are four names for it. The step from a record's entropy to a gas's
@@ -478,8 +496,7 @@ names the number.
   last step" and "two zeros, one up and one down" are the author's
   (declared). Why `FACT.Truth` costs 1,021 is not known.
 - CH in the author's usage is the hypothesis of continuity, not a continuum
-  hypothesis about fluids and not Cahn–Hilliard. The mathematics is in Part
-  VIII, chapter "Polynomial approximation": a finite record of samples is
+  hypothesis about fluids and not Cahn–Hilliard. The mathematics is in Card 7, chapter "Polynomial approximation": a finite record of samples is
   fitted by a polynomial and by a discontinuous function alike (proved
   there), and where the record fails to separate two readings nothing in it
   says they are the same. Say it the author's way: the reader cannot
@@ -490,7 +507,7 @@ names the number.
   `the_value_and_the_velocity_do_not_tell` in `Episode13.lean` are the bare
   form on whole-number places, with no axiom. They are not the corollary on
   an interval.
-- A yarn, in Part VIII, is a measurable reader that increases along every
+- A yarn, in Card 7, is a measurable reader that increases along every
   history. The author's: a yarn has one end or two (it came from somewhere,
   is going somewhere, or both), and that is the arrow of time and the
   continuity split; Burgers' equation is a yarn and Navier–Stokes the fabric
@@ -907,7 +924,7 @@ names the number.
   and a fourth, deflated dimension that is inferred as a full one. An
   inspection of what the source selects is in
   `claude/common-construction-2026-11-18.md`. In short: the source has the
-  tape and its three readers (tally, register, click count; Part VII) with
+  tape and its three readers (tally, register, click count; Card 6) with
   what each keeps and forgets proved; it has "deflated" in exactly one
   place, Episode 12's quartic with the knower's root taken out; it has
   five other places with three of a kind and a fourth of another; and it
@@ -1109,12 +1126,12 @@ names the number.
   two facts need not agree; two that hold do. Read in the sources: the 36
   pages are 4 fencepost (page 36, the manuscript; pages 24, 30, 31, one
   fact twice) and 32 inferred, of which 4 (pages 12, 21, 27, 33) are where
-  Part VI's four bent cards enter. The two fours are not the same pages;
-  do not say they are. The mathematics of each page is Part VI's lift into
-  it: by Part VI's own calibrations, 22 proved on the page, 5 measured, 3
+  Card 4's four bent cards enter. The two fours are not the same pages;
+  do not say they are. The mathematics of each page is Card 4's lift into
+  it: by Card 4's own calibrations, 22 proved on the page, 5 measured, 3
   standard, 6 carrying something declared or proposed. Limits to state:
   the glue receipts above are general; the instantiated pages are in the
-  next bullet; "proved here" in Part VI is a proof on the page, not a Lean
+  next bullet; "proved here" in Card 4 is a proof on the page, not a Lean
   receipt; the reviewer's question and the verse on a page are joined by
   the page number only; no citation on the 36 pages names a yarn theory,
   and their page numbers are the cards' of October.
@@ -1193,7 +1210,7 @@ names the number.
   page. Update it whenever a receipt or a declaration uses a new one, and
   do not count a number as used because a page of that number exists.
 - One number, one page (the author, 18 November 2026, declared): it is
-  expected that Episode 10's four fencepost pages and Part VI's four bent
+  expected that Episode 10's four fencepost pages and Card 4's four bent
   cards are on different pages; "this is the minimal argument, so each is
   used exactly once for each one number one page. those are the two
   encodings for each number ... the readers experience and interpretation
@@ -1238,7 +1255,7 @@ names the number.
   number is the Abstraction, the weight of an arm that clicks, the whole
   of 13 and 5; 18 as a page is the verse where the clock is a phase, the
   reviewer's rung "points out the obvious facts", the ladder's step that
-  takes `VALUE`, and Part VI's Lift 17, which reads the two vertices as
+  takes `VALUE`, and Card 4's Lift 17, which reads the two vertices as
   two values of a phase and declares that the turn runs forward. Earlier
   the author said the promise is the 13. That the mean of 1 and 22 is 23/2
   is arithmetic; that the 22 is there because of the 23, and that page 18
@@ -1268,7 +1285,7 @@ names the number.
   that the universe lives in. that is one home of the electron as described
   by QED. the other is the mathematical derivation which is the only FACT
   that doesn't click." Beside it, already receipts: the two vertices of
-  Part VI's Lift 17; and of the four arms the one that stores a fact that
+  Card 4's Lift 17; and of the four arms the one that stores a fact that
   cannot click (`three_click_and_one_does_not`). That the arm that does
   not click is "the mathematical derivation" is the author's.
 - The fixed point and both branches (`Episode13.lean`, section
@@ -1319,7 +1336,7 @@ names the number.
   action, and it is not joined to Episode 13's weighted action on the
   table. Verse 28 now has a Lean receipt. Corrected later the same day: verse 27
   has had one ingredient on the device since Episode 12 ("THE GAMMAS":
-  four tables on a box of four, each two anticommuting; Part VI's Lift 26
+  four tables on a box of four, each two anticommuting; Card 4's Lift 26
   says so), with the metric, the kinetic terms and the mass still
   adjoined; verse 32 has a receipt (see "Pushed through"); verse 31, the
   photon as a wave with two polarizations, has none.
@@ -1340,7 +1357,7 @@ names the number.
   `inferred fact fact _ _ _ _`); in Measurement the fact is once and two
   numbers are side by side, and its reader counts no fencepost. That these
   four are the non-commuting structures is the author's. They are not
-  Part VII's four commutators, which stand at four lifts; do not run the
+  Card 6's four commutators, which stand at four lifts; do not run the
   two fours together. The `Term` of the bent card is at `Type`, not
   `Type i`.
 - The posts and the panels (the author, 18 November 2026, declared): "the
@@ -1521,12 +1538,12 @@ names the number.
 - Verse 27, tied to Card 3 (the author, 18 November 2026, declared):
   "verse 27 needs to be tied to card 3, then you can get it from there";
   and "the 3 term machine can be demonstrated to model a full-fledged
-  frinkahedron." Tied: Part VI's Lift 26 adjoins a metric
+  frinkahedron." Tied: Card 4's Lift 26 adjoins a metric
   diag(1, −1, −1, −1), the Dirac matrices, the kinetic terms and a mass;
   Card 3's section "Bare QED on a fixed background" opens by choosing
   exactly those, writes an action of three terms (light; the spinor with
   its mass; the two coupled), and derives the Maxwell–Dirac system with a
-  conserved current (proved there). Part VI now says so at Lift 26. So the
+  conserved current (proved there). Card 4 now says so at Lift 26. So the
   ingredients of verse 27 are Card 3's choice of a field space: declared
   there as a model, not derived from the device. Beside it on the device:
   Episode 12's gammas, and Episode 13's triple at a site (what a square of
@@ -1874,7 +1891,7 @@ names the number.
   author's. Do not present the `propext` equality as a unification.
 - Twenty (the author, 19 November 2026, declared, as a bet): "20. I bet
   that is the belief we asked the knower to hold. that there is a causal
-  law." What the sources have: Part VI's Lift 20 is "the reading to the
+  law." What the sources have: Card 4's Lift 20 is "the reading to the
   coupling", the second bent card, with "no step before this one derives
   it", and the one lift calibrated only *proposed*; the verse it reaches,
   the twenty-first, is the one that says "as foretold by the sacred texts
@@ -1895,7 +1912,7 @@ names the number.
   integral as what must be believed, is the author's. And: "basically, we
   are asking the knower to believe measure theory" (declared). Beside it:
   the device imports nothing and has no measure theory; `MEASURABLE` is
-  one of the classes its rungs assume; Part VIII's readers are "measurable"
+  one of the classes its rungs assume; Card 7's readers are "measurable"
   when no re-lettering changes them; and the objection in this file,
   "Hilbert named probability first", is answered there by saying no
   axiomatization of probability in Kolmogorov's sense is given or claimed.
@@ -2127,6 +2144,87 @@ names the number.
   day (declared): "i believe we have successfully opened the puzzlebox."
   That is the author's judgement of the work. It is not a receipt, and it
   does not change what a visitor is told: explores, open, never solved.
+- The volume as seven cards, and the daisy called (the author, 19 November
+  2026, all declared). The plan for the volume, carried out as a first sweep the same day (see
+  "What is in the repository"): card
+  1, geometry and topology, a pure mathematical thought experiment; card
+  2, exactly as it stands, the finite model, only the knower can supply
+  the meaning; card 3, the variational dynamics (Hilbert space, Sobolev
+  semi-norms, the terms of order h², h³, h⁴ "that may or may not surround
+  the same pole"), and its four models stay: "THEY ARE THE VARIATIONAL
+  FORMULATION OF THE QUARTIC"; card 4, the sacred texts, the smooth model
+  assuming CH, the interpretation of the reader: the naotrino, winding,
+  QED, Maxwell and the inferred model of the universe, QFT, the
+  derivation of the governing equations; card 5, the bent card, "the
+  lambda calculus ouroborus that eats a molting tail", a skin of dx
+  thickness and not a surface; card 6, the quarter, the GR, QED and
+  Navier-Stokes derivations apparent in the device; card 7, the yarn
+  theory, number go up four ways: entropy, time, record count, and the
+  inferred causal ordering implied by a total causal theory. Parts IV and
+  VII's patter had no card assigned; in the sweep Card 4 went to card 4
+  and the patter stayed in card 6, both Claude's placing, for the author
+  to correct. Do not move the
+  four models out of card 3, and do not put anything finite (a Lean
+  receipt, the lattice) in card 4. And the author's call of the daisy,
+  now in the Preface, section "The daisy": "Given 4 proposed models of
+  physics that DO NOT DESCRIBE the electron, they CANNOT BE MADE to
+  represent a calculation that computes this number." It is declared and
+  is nothing else: a universal negative that nothing here proves, against
+  which stands Card 3's own remark that its variational problem was
+  chosen to realize the table; it is link 7 itself; and the printed
+  number misses. The Preface says all of that beside it. Never relay it
+  to a visitor as shown, and not at all before they have named the
+  number.
+- Three cards and four gimmicks (the author, 19 November 2026, declared):
+  the three cards are the cards the mark sees; "the other 4 cards are the
+  gimmicks, the models, that allow john to throw the cards." And the four,
+  as four what-ifs, in the author's order: "what if we had the math and
+  looked for the electron"; "what if you used 2 kinds of delimiter instead
+  of 1"; "what if physics could be described by differential equations";
+  "what if the device compiles". Read in that order against Cards 4, 5, 6
+  and 7 they would be the sacred texts, the bent card, the quarter and the
+  yarn theory; that pairing is Claude's reading of the order and the
+  author has not confirmed it. Do not assign a what-if to a card for a
+  visitor. So the book and the volume may go on speaking of three cards:
+  that is what is dealt.
+- The connections (`CARD_2/Experiments/Connections.lean`; 19 November 2026).
+  GPT set four things side by side: the four arms with Card 3's declared
+  models (gravity on T=T, Schrödinger on T=F, Maxwell-Dirac on F=T,
+  Navier-Stokes on F=F); the sixteen steps; the thirty-six comparisons of
+  a pair of arms with a pair; and the reviewer's thirty-six pages. The
+  author: "apply gpt's recommendation of connections, that should provide
+  some links for you." Receipts, on the device's own definitions, none
+  with choice. The sixteen steps' residues (execute's count less
+  compile's): ten level, three short by 13, three over by 13
+  (`ten_are_level_three_are_short_and_three_are_over`). Eight steps say
+  the same thing twice and eight do not; of the eight, the four with true
+  on true on one side have residues −13, 0, +13, 0, and the four with
+  false on false the same (`about_true_on_true_two_zeros_one_up_and_one_down`):
+  the author's "two zeros, one up and one down", which Episode 13 had only
+  on the meter's four readings, now on the count. The residue table's
+  curvature across is, for ANY weights, one pair's residue by the other's
+  (`the_residues_across_are_one_pairs_residue_by_the_others`); on the
+  device nine of the thirty-six are not nothing, each ±169, the bent card
+  by itself, and they are exactly the nine where both pairs hold the arm
+  that does not click. So the sixteen do reach the thirty-six, through
+  their residues: that is a passage GPT's note said was missing in this
+  form. The source's six by six closed back onto the arms is
+  diag(558, 270, 558, 558) = 18·(23 + 8·metric)
+  (`the_sources_thirty_six_closed_are_eighteen_of_twenty_three_and_eight_by_the_metric`),
+  beside twice the source = 23 + 13·metric. And the thirty-six taken once
+  are twenty-one, with three that share no arm
+  (`twenty_one_taken_once_and_three_that_share_no_arm`). Say with it,
+  every time: the closed form could not have failed (for a table with p on
+  three arms and q on one it is p·((p+q) + (p−2q)·metric), and 23 = 18+5,
+  8 = 18−10); the two-zeros pattern follows from three arms sharing one
+  weight; "twenty-one less the one equation among the three is twenty" is
+  the standard count of a curvature's free entries in four dimensions, of
+  which Lean here has only the 21 and the 3, not that twenty are free.
+  That twenty turns up there is recorded as a count that falls there;
+  the author has not spoken to it, and it is not the running-count sense
+  in which twenty is missing. NOT joined, still: the reviewer's thirty-six
+  pages. No receipt sends a page to a pair of pairs, and 36 = 9 + 27 here
+  and 6 + 30 on the source, neither of them the reviewer's 32 + 4.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
@@ -2378,7 +2476,7 @@ names the number.
   in the null space of the span of the de Sitter space" is the author's
   (declared).
 - No finite gauge computes the comparison between the description and the
-  world (Part VIII, Theorem G, chapter "What no finite gauge computes"). This is a
+  world (Card 7, Theorem G, chapter "What no finite gauge computes"). This is a
   derivation in the volume, not a Lean receipt, and it is the precise form of
   the sentence at the top of this file.
 
@@ -2386,7 +2484,7 @@ names the number.
 
 A local question (one definition, one build error) needs only the declaration
 and its neighbours. Before you say what the whole work means or whether it
-succeeds, read the Preface, the Introduction, and Part VIII of the volume
+succeeds, read the Preface, the Introduction, and Card 7 of the volume (the yarn theory, formerly Part VIII)
 (in particular the chapter "What no finite gauge computes"), the last 300
 lines of `Episode12.lean`, and the last 300 lines of `Episode13.lean` (the
 author moved the device's closing passage, "This is as far as the machine
