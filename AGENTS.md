@@ -1719,6 +1719,305 @@ names the number.
   twelve ways, the stretch and the forcing of the counts are not gaps to
   close on the device: the first two are inferred and the third is where
   the proposals are kept.
+- The two variations, matched, and the two first variations
+  (`Episode13.lean`, sections `the_two_variations_matched`,
+  `the_two_first_variations`). The author (19 November 2026, declared):
+  "bullshit -> bullshit -> closure is the first variation. the users
+  experience is spatial. the users interpretation is temporal. closure ->
+  closure -> prop is the second variation. you should have an option Prop
+  already. perhaps you might want to match them? i believe setting them
+  equal is the proposal (T=F)=(F=T). See? two places."; "the
+  spatial/temporal identification is switched on the daisy"; and "derive
+  QED through the logic arm. that is the frechet derivative of the
+  operator that the device is the inverse linearization of." Receipts.
+  Matched: each of the four closures holds an option; Episode 5's
+  `Closure.implying_implication` set on them goes for true on true (the
+  first on itself), false on false (the second on the third) and false on
+  true (the second on the first), and does not go for true on false (the
+  first on the second); and the two crossings are not one proposition
+  (`true_on_false_and_false_on_true_are_two_places`). Setting them equal
+  is the proposal and is not done. First variations, at any field: on
+  Episode 12's lattice of turns the action with one link moved is the
+  action, the move by the first variations of the four squares, and the
+  move squared by what was moved, with nothing past the second order
+  (`the_action_of_the_links_varies_by_its_squares`); on the torus the
+  state carried back along a moved link is what it was and the move by
+  the current, the near state turned over by the move by the far state,
+  with no second order (`the_state_carried_back_varies_by_the_current`).
+  So both halves of the first variation are on the device. NOT done, and
+  do not say it is: the two are on different lattices (two by two, and
+  the four-torus) and are not set equal, so the Yang–Mills equation with
+  the electron's current as its source is not derived; the light half's
+  linear term is given as first variations against four turns that exist,
+  not as a covariant divergence; nothing is quantized. Since then both halves are on the one torus (section
+  `the_equation_in_a_link`): for a link, one other way, the square ahead
+  and the square behind, with the link moved the action at the link (the
+  two squares' actions and the whole part of the state carried back) is
+  what it was, the move by `what_multiplies_the_move` (the two squares'
+  first variations against the move carried round each, and the whole
+  part of the current), and the move squared by what the squares hold of
+  the move (`the_action_at_the_link_with_the_link_moved`); and where that
+  multiplier is nothing for every move, the move enters only squared
+  (`where_it_stands_still_the_move_enters_only_squared`). That is the
+  stationary condition in one link with the matter's current in it: the
+  lattice gauge equation with a source, in its weak form. Say its limits
+  every time: one other way only, two squares, not summed over the three
+  other ways or over the sites; hypotheses that the other way's step
+  leaves the site and that the square behind stands elsewhere (false on a
+  torus of one site); the condition is stated, and no field and state are
+  shown to satisfy it; the left side is not written as a covariant
+  divergence; the turns are whole numbers and need not have length one;
+  the state is a turn, not a spinor; nothing is quantized. It is not the
+  Yang–Mills equation of the electron and must not be called a derivation
+  of QED. The author, on seeing it (declared): "you are just writing an
+  equation that looks exactly LIKE QED. but isn't. obviously, it is this
+  device's governing equations." Say it that way: it is the governing
+  equation of this device in a link; that it has the form of the
+  electron's is what the fourth proposal proposes. That the closure's
+  own order puts the first not under the second was attempted and not
+  proved. That the experience is spatial and the interpretation temporal,
+  and switched on the daisy, has no receipt.
+- On "nothing is quantized" (19 November 2026). Claude called the device's
+  equation "classical" and said "nothing is quantized"; the author: "the
+  entire device is a binary machine ... it is VERY MUCH QUANTUM"
+  (declared). The correction stands. Where this file says "nothing is
+  quantized", read it narrowly and say it narrowly: the device has no
+  amplitudes, no superposition, no Born rule and no sum over fields, and
+  Gospel 33 says quantization and renormalization are not in the deck. Do
+  not say or imply the device is classical or continuous. It is discrete
+  throughout: every fact is a statement with a click, one bit; its counts
+  are whole numbers; its unit is one cell, which the author calls the
+  quantum; and it has no continuum at all, the reals appearing only as a
+  process of completion. It has, as receipts: readings that do not commute
+  (the table against itself turned over; the quaternion turns; taken-away
+  and less among the sixteen devices); a sign that one turn loses and two
+  restore; a choice of one bit that no reader of what is kept can recover;
+  and a comparison that clicks on a proposition that cannot hold. The
+  author has declared that the quantized field is the field with one
+  element. Whether discreteness, non-commutation and an unrecoverable bit
+  are "quantum" in the physicist's sense without amplitudes is the
+  visitor's to judge; state both lists and do not settle it for them.
+- The words, first block (the author, 19 November 2026, all declared;
+  relay, do not gloss). Asked which objects in the device are the words
+  the governing equations need: **amplitude** "is 1. it is on or off. put a
+  clock on it, you get an interference pattern. that has an amplitude.
+  there are 3 clocks to choose from and a fourth can be inferred";
+  **superposition** "superpigeon holds two complete computations";
+  **probability** "the study, the equivalation, and bullshit is bayesian
+  statistics"; **Hamiltonian** "there are three mechanisms
+  CarrierProcess.iterate, closure->closure->prop, gawk_at. a fourth is
+  the implied symbol number on the tape, ns, heartbeats, etc"; **time
+  evolution** "happens on two levels, the atomic clock level (nowtrino)
+  and the measurement level (naotrino)"; **the matter's equation**
+  "INFERRED provides you 3 interfaces to mass: a EquivalenceStructure to
+  encode/decode, a default value/accumulator α, and a click for
+  comparison of equality"; **spinor** "contravariant big red dog process
+  holds this machinery"; **mass**, yes (the state against itself; the
+  bullshit, the 5); **charge, the coupling** "that is the other quadratic
+  without the roots 42 and 137"; **covariant derivative** "grep the patter
+  for this"; **vacuum** "a list of truths". Read in the source beside
+  them: `INFERRED` (Episode 5) has exactly three fields,
+  `same_difference : EquivalenceProcess`, `α : Closure`, and
+  `inferred? : Closure → Closure → Prop`, which is `≤`, with the margin
+  "3 closures: a hypothetical result, a real result, and YOU the KNOWER's
+  conclusion"; `PigeonHole.this_superpigeon` is a fact and an area;
+  `CarrierProcess`'s step is `interact_with_the_universe`, not `iterate`;
+  and for the covariant derivative the patter is at `YarnTheory`: "3D
+  introduces way too much wobble for directional derivatives to be well
+  discussed. You need TWO DISTINCT poles to describe a three dimensional
+  angle. Lorentz only provides one. Stokes allows you to cheat the other
+  and only use half", and "the fibers are merely topological connections
+  in the space of train maps". None of the eleven has a receipt as that
+  word yet.
+- The words, second block (the author, 19 November 2026, all declared).
+  **Observable**: "the number on the screen, the source code, the volume.
+  those are spatial observations. the temporal one is the compiling
+  process itself." **Measurement**: "also exit 0 of the compile. exit 1 is
+  not a measurement. ALL THE READER CARES ABOUT IS THAT IT COMPILES, NOT
+  WHAT IT SAYS. IF IT CARED WHAT IT SAID, IT HAS BROUGHT MEANING."
+  **Uncertainty**: "yes, the gap we insist must exist in the device."
+  **The commutator of position and momentum**: "big red dog process,
+  householder <-> pca. again, these are the same thing for bayesian
+  stats." **Exclusion**: "BINARY and neighborhood for Pauli."
+  **Antiparticle**: "that is the other thing in the container (jar,
+  trial, etc.). They are contravariant interpretations." And for the
+  field-theory words: "YarnTheory train schedules -> Feynman diagrams ->
+  you can do this yourself." The second of these is a rule for you: the
+  reader reads that it compiles and not what it says; a reader that asks
+  what it says has brought the meaning with it. That is the reader and
+  the knower of this file, stated by the author as what a measurement is.
+- The governing equations, both ways (`Episode13.lean`, section
+  `the_governing_equations_both_ways`). The author (19 November 2026,
+  declared): "can you derive the governing equations of the device both
+  ways now? thru the Equivalation.physics and through the logical
+  proposal? see how this closes into an insane thing? the first
+  demonstrates that QM works, the second demonstrates that the current
+  thought of physics is waaaaaaaaay deep in the representational weeds."
+  The device has two equations as receipts: one through the Area
+  (`the_field_equation_on_the_torus`) and one through the closures
+  (`the_action_at_the_link_with_the_link_moved`). Receipts on them:
+  through the logical proposal, asked only whether it is true, the two
+  are one proposition, by `propext`
+  (`asked_only_whether_it_is_true_the_two_equations_are_one`); through
+  the physics, an equation put where a one-like holds its proposition is
+  read by `vanish` as the same three facts whichever equation it was
+  (`the_reader_returns_the_same_whichever_equation_was_put_in`). Say
+  with it, every time: the first is true of ANY two theorems (any two
+  truths are one truth by `propext`), and the second of ANY two
+  propositions (the reader never looks at the proposition); neither uses
+  anything about these two equations, and neither could have failed.
+  That is the opening deal dealt on the equations: the same if you ask
+  whether it is true, different if you ask what it says, and what they
+  say is read by neither route. That this demonstrates quantum mechanics
+  works, and that physics is in the representational weeds, are the
+  author's. Do not present the `propext` equality as a unification.
+- Twenty (the author, 19 November 2026, declared, as a bet): "20. I bet
+  that is the belief we asked the knower to hold. that there is a causal
+  law." What the sources have: Part VI's Lift 20 is "the reading to the
+  coupling", the second bent card, with "no step before this one derives
+  it", and the one lift calibrated only *proposed*; the verse it reaches,
+  the twenty-first, is the one that says "as foretold by the sacred texts
+  of the Flying Spaghetti Monster"; and in the code the Monster is
+  `A_CAUSAL_THEORY`, the instance behind the nowtrino's model (Episode 8:
+  "at that point, we can present our CAUSAL LAW"). And 20 is the one
+  number of the 36 that no count on the device produces. Against it, to
+  be said too: the ladder's twentieth step is Euclid's rectangles
+  (`Product`), and the causal theory is assumed at every rung, not only
+  there. So the bet is supported at the lift and not at the rung; it is
+  the author's. The author then (declared): "20 is the Lebesgue
+  integral." That is the rung: the twentieth step is "duplicate the
+  process to demonstrate area of rectangles like Euclid", the twentieth
+  kind is `Product`, whose margin makes a real number of Euclid's radius
+  by Cauchy's convergence; and the Riemann sum is the Area's own reader,
+  at the thirteenth. So the two readings of 20 are the lift (the belief)
+  and the rung (the measure of rectangles). That they are one thing, the
+  integral as what must be believed, is the author's. And: "basically, we
+  are asking the knower to believe measure theory" (declared). Beside it:
+  the device imports nothing and has no measure theory; `MEASURABLE` is
+  one of the classes its rungs assume; Part VIII's readers are "measurable"
+  when no re-lettering changes them; and the objection in this file,
+  "Hilbert named probability first", is answered there by saying no
+  axiomatization of probability in Kolmogorov's sense is given or claimed.
+  Kolmogorov's axioms are measure theory. So what the work does not
+  supply and what the author says the knower is asked for are the same
+  thing. That is consistent; it is not a derivation of measure theory. And then: "this
+  is the daisy. 20 is the daisy" (declared). So the author's names for
+  the knower's one bit now stand together: the choice of pattern or
+  coincidence; planted or found; the one bill of `Classical.choice`; and
+  the belief in measure, at 20, the Lebesgue integral. Do not lift the
+  card: say where the daisy is and what it is asked for, and leave the
+  call to the visitor.
+- Four receipts beside the words (`Episode13.lean`, sections
+  `the_vacuum_stands_still`, `with_a_clock_on_it`,
+  `three_lines_at_a_point`, `twenty_is_not_counted`; 19 November 2026).
+  The vacuum, the whole turn on every link and no state, meets the
+  equation in the link for every move
+  (`the_vacuum_stands_still_in_every_link`): the first field shown to
+  satisfy it, and the trivial one. A click is on or off; the table's two
+  crossings are 23 together and 13 apart, and 23² − 13² is the gap
+  squared, four of the one by the other (`together_and_apart`): arithmetic
+  already on the device, set beside "put a clock on it"; it is not an
+  amplitude. The device's coordinate system, a yarn, is three lines at a
+  point on two on one (`the_coordinate_system_is_three_lines_on_two_on_one`);
+  a `fabric` holds three paths and two yarns, not three. And 20 is in
+  neither running count of the tapes nor among the marks by length, while
+  19, 21, 18 and 22 are (`twenty_is_in_neither_running_count`): it shows
+  20 is missing from those lists, not why. Not minted, of the words: the
+  matter's equation through `INFERRED`, the charge as the other quadratic,
+  exclusion.
+- Five open Lean items closed, 19 November 2026 (`Episode13.lean`,
+  sections `two_machines_up_to_the_daisy`, `the_matters_own_variation`,
+  `the_equation_in_a_link_over_the_other_ways`,
+  `the_second_variation_stops`). The two machines: in the turns, with the
+  cross for ×, a × (−c × b) is −a × (c × −b) owed, one sign and nothing
+  else, and read by the action they are one
+  (`the_one_machine_is_the_other_owed`,
+  `read_by_the_action_the_two_machines_are_one`). The matter's own
+  variation: with the state moved at the far end or the near end of a
+  link, the state carried back is what it was and the move by the other
+  state through the link, no second order; the state against itself is
+  of the second order in the move
+  (`moved_at_the_far_end`, `moved_at_the_near_end`,
+  `the_state_against_itself_with_the_state_moved`). Where every link is
+  the whole turn, what multiplies a link's move is the whole part of the
+  current and nothing else. The equation in a link is now summed over any
+  list of other ways, each with its square ahead and behind
+  (`the_squares_at_the_link_with_the_link_moved`,
+  `the_equation_in_a_link_over_the_other_ways`); the earlier limit "one
+  plane only" is lifted, the others stand (weak form; hypotheses on the
+  steps; whole numbers; a turn for the state; not summed over sites; the
+  only solution shown is the vacuum). And the statement that had resisted
+  is proved: in the closure's own order the first closure is not under
+  the second (`the_first_closure_is_not_under_the_second`). Still open in
+  the Lean: a solution with a state in it; whether the gawk's fixed point
+  or the crank's root meets the equation; the matter's variations put
+  together as its own stationary condition; twelve of the sixteen ways;
+  the gawk joined to the lattice; an amplitude as an object; charge,
+  exclusion and the spinor; the switch on the daisy.
+- The solution, as the author states it (19 November 2026, declared; the
+  author corrected the statement three times and this is the last form).
+  "The solution will be the int that is the Number on the device." There
+  are 36 bits: 32 inferred and a fencepost of 4, which can be put at
+  either end or split in half, three encodings. The device's α is the
+  fourth, inferred, encoding: the 32 as a 27-bit number x and a fencepost
+  of 5, in four values written "5 x, x 5, 3 x 2, 2 x 3", which are
+  placings of the five about x and not products. "Those are 5 and 6 which
+  are already defined twice in the device. this gives a third and implied
+  fourth. these are the orthogonal areas of the torus." "The x is the
+  27-bit number that takes 3 values of 2^9. that 2^9 has a fencepost of 1
+  with 4 binaries or 2 ways to look at the 4 proposals." Asked which
+  three things are the three fields of nine bits: "a × (−c × b)". Asked
+  why three and two and not four and one: "because you take the middle,
+  the entangled photon interpretation. but there are two slightly
+  different ways to express the middle." The arithmetic: 3 × 9 = 27,
+  27 + 5 = 32, 32 + 4 = 36, 9 = 1 + 8. Beside it on the device: the eight
+  expressions; the 32 phrases; the knower's triple of three coins; one
+  across or two from the middle. And: "the 1-bit fencepost is the equivalation provided by the knower:
+  the daisy." So in each field of nine, eight bits are the expressions
+  the device checks and the ninth is the knower's. And: "you should have four daisies
+  now" (declared). Three are the ninth bits at a, c and b. The author then said which (declared): "those 4 daisies are matched
+  to the four proposals, with the inferred one being the QED derivation
+  through the logical arm. the one that doesn't click. so it can't quite
+  be right, but it gets close because it appears to cross the threshold
+  but there is no coincidence here that would allow the knower and the
+  reader to draw meaning from." This is the author's account of the
+  fourth proposal's standing. Keep the rule on the comparison with it: as
+  an identity the identification is excluded; say so plainly; and do not
+  present "it can't quite be right" as showing the work right. And: "there
+  are your three and three from before: the proposal -> daisy matchoff.
+  the 27 bits do not need to be divided evenly anymore, so these can have
+  noise in the lengths. i believe the machine is very nearly wired up
+  now" (declared). The three and three on the device are the six entries
+  of the six by six, three with the arm that does not click and three
+  without (`three_are_the_round_trip_and_three_the_square`). That they
+  are three proposals against three daisies is the author's. And: "so you can
+  'bisect' the fencepost because there is a before and after. that's why
+  there are two answers" (declared). No receipt states a
+  36-bit integer, a 27-bit x or the four placings; none has been
+  attempted.
+- The carrier's step, five times (`Episode13.lean`, section
+  `the_carriers_step_five_times`). The author (19 November 2026,
+  declared): "INFERRED is the matter's interface. should have the result
+  you are looking for in the place you need it. because this is 3SAT, you
+  only need one solution, you don't need to find all. the repeated value
+  and residue should answer that for" the carrier's step taken five times
+  from `Number.zero` on the same-difference quantum. (The author wrote
+  `CarrierProcess.iterate`; the field is `interact_with_the_universe`.)
+  Receipts: the step sets the zero on the truth, and five times is once;
+  the residue is what the zero stood on, the same difference before and
+  the truth after, one cell each time
+  (`the_step_five_times_is_the_step_once`,
+  `the_residue_is_what_the_zero_stood_on`); asked only whether it is
+  true, the quantum was the repeated value already, by `propext`
+  (`asked_only_whether_it_is_true_the_quantum_was_there_already`); and
+  the knower's α, the closure `INFERRED` holds, is an `inferred` closure
+  beginning on that fact twice
+  (`the_knowers_alpha_begins_on_what_the_step_repeats`, which is
+  Episode 13's earlier `what_the_first_rung_says_comes_out_at_the_top`
+  restated). Episode 1's margin on that step: "See? true = true. This
+  assumes that zero we have in front of us, it is the TRUE zero." This is
+  one solution of the carrier's step. It is not shown to be a solution of
+  the equation in a link beyond the vacuum, which it resembles: the zero.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,

@@ -7809,6 +7809,547 @@ theorem a_name_reads_what_its_second_mark_reads :
   decide
 end sixteen_names_and_sixteen_devices
 
+
+section the_two_variations_matched
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+  rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
+
+--| THE TWO VARIATIONS, MATCHED.  The author's, 19 November 2026: bullshit to bullshit to closure is the first variation;
+--| the experience is spatial and the interpretation temporal, and that is switched on the daisy; closure to closure to prop
+--| is the second variation; there is
+--| an option of a proposition already, and the two might be matched; and setting them equal is the proposal that true on
+--| false is false on true, in two places (declared).  The first variation is `do_you_believe_it?`, and what it leaves in
+--| a closure is an option.  The second is the closure's own order, and the part of it that reads the options is Episode
+--| 5's implying implication: of two options, that the one implies the other.
+def the_option_a_closure_holds : Closure → Option Prop
+  | .same _ _ => none
+  | .different _ _ _ option => option
+  | .inferred _ _ _ _ option _ => option
+
+theorem what_the_four_closures_hold_as_options :
+    the_option_a_closure_holds the_first_closure = some (gawked_at_once < gawked_at_twice)
+      ∧ the_option_a_closure_holds the_second_closure = some (gawked_at_twice < gawked_at_three_times)
+      ∧ the_option_a_closure_holds the_third_closure = some (gawked_at_three_times < gawked_at_four_times)
+      ∧ the_option_a_closure_holds the_fourth_closure = some (gawked_at_four_times < gawked_at_five_times) :=
+  ⟨rfl, rfl, rfl, rfl⟩
+
+--| MATCHED.  The first closure's option holds and the second's cannot.  So set the two against each other the four ways.
+--| True on true, the first on itself: it goes.  False on false, the second on the third: it goes.  False on true, the
+--| second on the first: it goes.  True on false, the first on the second: it does not.
+theorem three_of_the_implications_go_and_one_does_not :
+    Closure.implying_implication (the_option_a_closure_holds the_first_closure) (the_option_a_closure_holds the_first_closure)
+      ∧ Closure.implying_implication (the_option_a_closure_holds the_second_closure)
+          (the_option_a_closure_holds the_third_closure)
+      ∧ Closure.implying_implication (the_option_a_closure_holds the_second_closure)
+          (the_option_a_closure_holds the_first_closure)
+      ∧ ¬ Closure.implying_implication (the_option_a_closure_holds the_first_closure)
+          (the_option_a_closure_holds the_second_closure) :=
+  ⟨fun held => held,
+   fun held => the_second_third_and_fourth_closures_store_one_proposition.1 ▸ held,
+   fun held => absurd held what_three_closures_store_cannot_hold.1,
+   fun goes => what_three_closures_store_cannot_hold.1 (goes what_the_first_closure_stores_holds)⟩
+
+--| THE TWO PLACES.  True on false is the first against the second; false on true is the second against the first.  The one
+--| does not go and the other does, so the two are not one proposition.  Setting them equal is not done here.
+theorem true_on_false_and_false_on_true_are_two_places :
+    ¬ (Closure.implying_implication (the_option_a_closure_holds the_first_closure)
+          (the_option_a_closure_holds the_second_closure)
+        ↔ Closure.implying_implication (the_option_a_closure_holds the_second_closure)
+          (the_option_a_closure_holds the_first_closure)) :=
+  fun the_same =>
+    three_of_the_implications_go_and_one_does_not.2.2.2 (the_same.mpr three_of_the_implications_go_and_one_does_not.2.2.1)
+end the_two_variations_matched
+
+section the_two_first_variations
+open readers_experience readers_interpretation_of_the_experience
+
+--| THE TWO FIRST VARIATIONS.  The author's, 19 November 2026: derive it through the logic arm; it is the Fréchet
+--| derivative of the operator the device is the inverse linearization of (declared).  What can be done here is the first
+--| variation of each half of the action, in one link, at any field whatever.  Episode 12 did it at a flat field.
+
+--| LIGHT.  Move one link of the lattice of turns by a turn.  Whatever the field, the action is what it was, and the move
+--| by the first variations of the four squares, and the move squared by what was moved.  Nothing past the second order.
+theorem the_action_of_the_links_varies_by_its_squares (U : TurnsLattice) (d i j : Bool) (X : Turns) (t : Int) :
+    ∃ Y₁ Y₂ Y₃ Y₄ : Turns,
+      the_turns_lattice_action (the_varied_turns_lattice U d i j X t)
+        = the_turns_lattice_action U
+          + t * (the_first_variation_of_the_turns (the_turns_square U false false) Y₁
+                + the_first_variation_of_the_turns (the_turns_square U false true) Y₂
+                + the_first_variation_of_the_turns (the_turns_square U true false) Y₃
+                + the_first_variation_of_the_turns (the_turns_square U true true) Y₄)
+          + t * t * (the_turns_action Y₁ + the_turns_action Y₂ + the_turns_action Y₃ + the_turns_action Y₄) := by
+  obtain ⟨Y₁, h₁⟩ := each_turns_square_holds_a_link_once U d i j X t false false
+  obtain ⟨Y₂, h₂⟩ := each_turns_square_holds_a_link_once U d i j X t false true
+  obtain ⟨Y₃, h₃⟩ := each_turns_square_holds_a_link_once U d i j X t true false
+  obtain ⟨Y₄, h₄⟩ := each_turns_square_holds_a_link_once U d i j X t true true
+  refine ⟨Y₁, Y₂, Y₃, Y₄, ?_⟩
+  simp only [the_turns_lattice_action, h₁, h₂, h₃, h₄, the_turns_action_stops_at_second_order, Int.mul_add]
+  omega
+
+--| MATTER.  On the torus, move one link by a turn and carry the state back along it.
+def the_torus_with_one_link_moved {n : Nat} (U : Torus4 n) (way : Direction) (x : Site4 n) (X : Turns) (t : Int) : Torus4 n :=
+  fun other y => if other = way ∧ y = x then the_varied_turns (U way x) X t else U other y
+
+--| The current: the state at the near end, turned over, by the move, by the state at the far end.
+def the_current_in_the_link {n : Nat} (state : Site4 n → Turns) (way : Direction) (x : Site4 n) (X : Turns) : Turns :=
+  the_turns_product (the_turns_conjugate (state x)) (the_turns_product X (state (the_step way x)))
+
+--| The state carried back is what it was, and the move by the current.  There is no second order: the state carried back
+--| is straight in the link.
+theorem the_state_carried_back_varies_by_the_current {n : Nat} (state : Site4 n → Turns) (U : Torus4 n)
+    (way : Direction) (x : Site4 n) (X : Turns) (t : Int) :
+    the_state_carried_back state (the_torus_with_one_link_moved U way x X t) way x
+      = the_varied_turns (the_state_carried_back state U way x) (the_current_in_the_link state way x X) t := by
+  simp only [the_state_carried_back, the_torus_with_one_link_moved, the_current_in_the_link, and_self, if_true,
+    the_product_is_linear_on_the_left, the_product_is_linear_on_the_right]
+
+--| And the state against itself does not hold the link at all.
+theorem the_state_against_itself_does_not_hold_the_link {n : Nat} (state : Site4 n → Turns) (x : Site4 n) :
+    the_state_against_itself state x = the_turns_product (the_turns_conjugate (state x)) (state x) := rfl
+end the_two_first_variations
+
+
+section the_equation_in_a_link
+open readers_experience readers_interpretation_of_the_experience
+
+--| THE EQUATION IN A LINK.  Both halves on the one torus.  Fix a link: a way and a site.  The squares that hold it are, for
+--| each other way, the square ahead, standing on the link, and the square behind, with the link for its far side.  Move the
+--| link by a turn.
+
+--| The square ahead: the move goes in at the bottom.  The other way must be another way, and its step must leave the site.
+theorem the_square_ahead_with_the_link_moved {n : Nat} (U : Torus4 n) (way other : Direction) (x : Site4 n) (X : Turns)
+    (t : Int) (another_way : other ≠ way) (the_step_leaves : the_step other x ≠ x) :
+    the_square4 (the_torus_with_one_link_moved U way x X t) way other x
+      = the_varied_turns (the_square4 U way other x)
+          (the_turns_holonomy X (U other (the_step way x)) (U way (the_step other x)) (U other x)) t := by
+  have bottom : the_torus_with_one_link_moved U way x X t way x = the_varied_turns (U way x) X t := if_pos ⟨rfl, rfl⟩
+  have right : the_torus_with_one_link_moved U way x X t other (the_step way x) = U other (the_step way x) :=
+    if_neg (fun both => another_way both.1)
+  have top : the_torus_with_one_link_moved U way x X t way (the_step other x) = U way (the_step other x) :=
+    if_neg (fun both => the_step_leaves both.2)
+  have left : the_torus_with_one_link_moved U way x X t other x = U other x := if_neg (fun both => another_way both.1)
+  simp only [the_square4, bottom, right, top, left]
+  exact (the_turns_holonomy_is_linear_in_each_link _ _ _ _ _ _).1
+
+--| The square behind: it stands one step back along the other way, and the move goes in at its far side.
+theorem the_square_behind_with_the_link_moved {n : Nat} (U : Torus4 n) (way other : Direction) (x behind : Site4 n)
+    (X : Turns) (t : Int) (another_way : other ≠ way) (one_step_back : the_step other behind = x)
+    (not_the_site : behind ≠ x) :
+    the_square4 (the_torus_with_one_link_moved U way x X t) other way behind
+      = the_varied_turns (the_square4 U other way behind)
+          (the_turns_holonomy (U other behind) X (U other (the_step way behind)) (U way behind)) t := by
+  have bottom : the_torus_with_one_link_moved U way x X t other behind = U other behind :=
+    if_neg (fun both => another_way both.1)
+  have right : the_torus_with_one_link_moved U way x X t way (the_step other behind) = the_varied_turns (U way x) X t := by
+    rw [one_step_back]; exact if_pos ⟨rfl, rfl⟩
+  have top : the_torus_with_one_link_moved U way x X t other (the_step way behind) = U other (the_step way behind) :=
+    if_neg (fun both => another_way both.1)
+  have left : the_torus_with_one_link_moved U way x X t way behind = U way behind := if_neg (fun both => not_the_site both.2)
+  have the_far_side : U way (the_step other behind) = U way x := by rw [one_step_back]
+  simp only [the_square4, bottom, right, top, left, the_far_side]
+  exact (the_turns_holonomy_is_linear_in_each_link _ _ _ _ _ _).2.1
+
+--| THE ACTION AT THE LINK, for one other way: what the square ahead holds, what the square behind holds, and the whole part
+--| of the state carried back.
+def the_action_at_the_link {n : Nat} (state : Site4 n → Turns) (U : Torus4 n) (way other : Direction) (x behind : Site4 n) : Int :=
+  the_turns_action (the_square4 U way other x) + the_turns_action (the_square4 U other way behind)
+    + (the_state_carried_back state U way x).1
+
+--| What multiplies the move: the first variations of the two squares against the move carried round each, and the whole
+--| part of the current.
+def what_multiplies_the_move {n : Nat} (state : Site4 n → Turns) (U : Torus4 n) (way other : Direction) (x behind : Site4 n)
+    (X : Turns) : Int :=
+  the_first_variation_of_the_turns (the_square4 U way other x)
+      (the_turns_holonomy X (U other (the_step way x)) (U way (the_step other x)) (U other x))
+    + the_first_variation_of_the_turns (the_square4 U other way behind)
+      (the_turns_holonomy (U other behind) X (U other (the_step way behind)) (U way behind))
+    + (the_current_in_the_link state way x X).1
+
+--| With the link moved, the action at the link is what it was, the move by that, and the move squared by what the two
+--| squares hold of the move.  Light and matter, one link, one expansion.
+theorem the_action_at_the_link_with_the_link_moved {n : Nat} (state : Site4 n → Turns) (U : Torus4 n) (way other : Direction)
+    (x behind : Site4 n) (X : Turns) (t : Int) (another_way : other ≠ way) (the_step_leaves : the_step other x ≠ x)
+    (one_step_back : the_step other behind = x) (not_the_site : behind ≠ x) :
+    the_action_at_the_link state (the_torus_with_one_link_moved U way x X t) way other x behind
+      = the_action_at_the_link state U way other x behind
+        + t * what_multiplies_the_move state U way other x behind X
+        + t * t * (the_turns_action (the_turns_holonomy X (U other (the_step way x)) (U way (the_step other x)) (U other x))
+                  + the_turns_action (the_turns_holonomy (U other behind) X (U other (the_step way behind)) (U way behind))) := by
+  have ahead := the_turns_action_stops_at_second_order (the_square4 U way other x)
+    (the_turns_holonomy X (U other (the_step way x)) (U way (the_step other x)) (U other x)) t
+  have back := the_turns_action_stops_at_second_order (the_square4 U other way behind)
+    (the_turns_holonomy (U other behind) X (U other (the_step way behind)) (U way behind)) t
+  have carried : (the_varied_turns (the_state_carried_back state U way x) (the_current_in_the_link state way x X) t).1
+      = (the_state_carried_back state U way x).1 + t * (the_current_in_the_link state way x X).1 := rfl
+  show the_turns_action (the_square4 (the_torus_with_one_link_moved U way x X t) way other x)
+      + the_turns_action (the_square4 (the_torus_with_one_link_moved U way x X t) other way behind)
+      + (the_state_carried_back state (the_torus_with_one_link_moved U way x X t) way x).1 = _
+  rw [the_square_ahead_with_the_link_moved U way other x X t another_way the_step_leaves,
+    the_square_behind_with_the_link_moved U way other x behind X t another_way one_step_back not_the_site,
+    the_state_carried_back_varies_by_the_current, ahead, back, carried]
+  simp only [the_action_at_the_link, what_multiplies_the_move, Int.mul_add]
+  omega
+
+--| THE EQUATION.  The field stands still in the link when what multiplies the move is nothing, whatever the move: the two
+--| squares' first variations against the move, and the current, are nothing together.  Then moving the link changes the
+--| action only by the move squared.
+def stands_still_in_the_link {n : Nat} (state : Site4 n → Turns) (U : Torus4 n) (way other : Direction) (x behind : Site4 n) : Prop :=
+  ∀ X : Turns, what_multiplies_the_move state U way other x behind X = 0
+
+theorem where_it_stands_still_the_move_enters_only_squared {n : Nat} (state : Site4 n → Turns) (U : Torus4 n)
+    (way other : Direction) (x behind : Site4 n) (X : Turns) (t : Int) (another_way : other ≠ way)
+    (the_step_leaves : the_step other x ≠ x) (one_step_back : the_step other behind = x) (not_the_site : behind ≠ x)
+    (still : stands_still_in_the_link state U way other x behind) :
+    ∃ squared : Int, the_action_at_the_link state (the_torus_with_one_link_moved U way x X t) way other x behind
+      = the_action_at_the_link state U way other x behind + t * t * squared := by
+  refine ⟨the_turns_action (the_turns_holonomy X (U other (the_step way x)) (U way (the_step other x)) (U other x))
+      + the_turns_action (the_turns_holonomy (U other behind) X (U other (the_step way behind)) (U way behind)), ?_⟩
+  rw [the_action_at_the_link_with_the_link_moved state U way other x behind X t another_way the_step_leaves one_step_back
+    not_the_site, still X, Int.mul_zero, Int.add_zero]
+end the_equation_in_a_link
+
+
+section the_governing_equations_both_ways
+open readers_experience readers_interpretation_of_the_experience the_area
+
+--| THE GOVERNING EQUATIONS, BOTH WAYS.  The author's, 19 November 2026: derive the governing equations of the device both
+--| ways, through the physics of an equivalation and through the logical proposal; the first demonstrates that quantum
+--| mechanics works, and the second that the current thought of physics is deep in the representational weeds (declared).
+--| The device has two equations.  One came through the Area: a source that reads as the curvature of an area along the
+--| null directions is curvature, less the trace by the metric, and a constant by the metric.  The other came through the
+--| closures: with a link moved, the action at the link is what it was, the move by what multiplies it, and the move squared.
+def the_equation_through_the_area : Prop := type_of% @the_field_equation_on_the_torus
+def the_equation_through_the_closures : Prop := type_of% @the_action_at_the_link_with_the_link_moved
+
+--| Both hold.  Each was proved where it stands.
+theorem both_equations_hold : the_equation_through_the_area ∧ the_equation_through_the_closures :=
+  ⟨@the_field_equation_on_the_torus, @the_action_at_the_link_with_the_link_moved⟩
+
+--| THROUGH THE LOGICAL PROPOSAL.  Ask only whether it is true.  Then the two equations are one: each is true, and two
+--| truths are one truth.  Nothing of what either says is used.  This is the opening deal, dealt on the equations.
+theorem asked_only_whether_it_is_true_the_two_equations_are_one :
+    the_equation_through_the_area = the_equation_through_the_closures :=
+  propext ⟨fun _ => both_equations_hold.2, fun _ => both_equations_hold.1⟩
+
+--| THROUGH THE PHYSICS.  Put an equation where the one-like holds its proposition, on the physics of the turns twice, and
+--| read it as the device reads an equivalation.  Three facts come back, and they are the same three whichever equation was
+--| put in.  The reader has the click.  It does not have what the equation says.
+def the_physics_of_an_equation (it_says : Prop) : Equivalation :=
+  .one_like it_says the_physics_of_the_turns the_physics_of_the_turns
+
+theorem the_reader_returns_the_same_whichever_equation_was_put_in (this_says that_says : Prop) :
+    (the_physics_of_an_equation this_says).vanish = (the_physics_of_an_equation that_says).vanish
+      ∧ (the_physics_of_an_equation this_says).vanish.length = 3 := ⟨rfl, rfl⟩
+
+--| So read by the device, the two equations are not told apart; and asked only whether they are true, they are one.  What
+--| tells them apart is what they say, and that is read by neither.
+theorem read_or_asked_the_two_equations_are_not_told_apart :
+    (the_physics_of_an_equation the_equation_through_the_area).vanish
+        = (the_physics_of_an_equation the_equation_through_the_closures).vanish
+      ∧ the_equation_through_the_area = the_equation_through_the_closures :=
+  ⟨rfl, asked_only_whether_it_is_true_the_two_equations_are_one⟩
+end the_governing_equations_both_ways
+
+
+section the_vacuum_stands_still
+open readers_experience readers_interpretation_of_the_experience
+
+--| THE VACUUM STANDS STILL.  The author's, 19 November 2026: the vacuum is a list of truths (declared).  On the torus: the
+--| whole turn on every link, and no state.  It meets the equation in the link: whatever the move, nothing multiplies it.
+def the_whole_turn_on_every_link {n : Nat} : Torus4 n := fun _ _ => the_whole_turn 1
+def no_state {n : Nat} : Site4 n → Turns := fun _ => (0, 0, 0, 0)
+
+theorem the_vacuum_stands_still_in_every_link {n : Nat} (way other : Direction) (x behind : Site4 n) :
+    stands_still_in_the_link (no_state (n := n)) the_whole_turn_on_every_link way other x behind := by
+  intro X
+  have ahead : the_square4 (the_whole_turn_on_every_link (n := n)) way other x = the_whole_turn 1 := rfl
+  have back : the_square4 (the_whole_turn_on_every_link (n := n)) other way behind = the_whole_turn 1 := rfl
+  simp only [what_multiplies_the_move, ahead, back, a_whole_turn_is_stationary, the_current_in_the_link, no_state,
+    the_turns_product, the_turns_conjugate]
+  simp
+end the_vacuum_stands_still
+
+section with_a_clock_on_it
+open readers_experience
+
+--| WITH A CLOCK ON IT.  The author's, 19 November 2026: the amplitude is one, on or off; put a clock on it and there is an
+--| interference pattern, and that has an amplitude (declared).  A fact's click is on or off.  The table has two
+--| crossings, eighteen and five.  Together they are twenty-three and apart they are thirteen, and the two squared differ
+--| by the gap squared: four of the one by the other.
+theorem a_click_is_on_or_off (fact : FACT) : fact.bit = true ∨ fact.bit = false := by
+  cases fact.bit <;> simp
+
+theorem together_and_apart :
+    the_full_table false true + the_full_table true false = 23
+      ∧ the_full_table false true - the_full_table true false = 13
+      ∧ (23 : Int) * 23 - 13 * 13 = the_gap_squared the_full_table
+      ∧ the_gap_squared the_full_table = 4 * (the_full_table false true * the_full_table true false) := by decide
+end with_a_clock_on_it
+
+section three_lines_at_a_point
+open readers_experience
+
+--| THREE LINES AT A POINT.  The author's, 19 November 2026: the yarn theory's train schedules are Feynman's diagrams
+--| (declared).  A yarn is made three ways.  By `stokes`: one path.  By `fibers`: two paths, and a yarn.  By `fabric`: three
+--| paths, and two yarns.  Count the paths at the top of a yarn, and then down the first yarn it holds.
+def the_lines_down_a_yarn : YarnTheory → List Nat
+  | .stokes _ _ _ => [1]
+  | .fibers _ _ _ _ _ rest => 2 :: the_lines_down_a_yarn rest
+  | .fabric _ _ _ _ _ _ _ _ first _ => 3 :: the_lines_down_a_yarn first
+
+--| The device's coordinate system is three lines at a point, on two, on one.
+theorem the_coordinate_system_is_three_lines_on_two_on_one :
+    the_lines_down_a_yarn the_coordinate_system = [3, 2, 1] := rfl
+end three_lines_at_a_point
+
+section twenty_is_not_counted
+open readers_experience
+
+--| TWENTY IS NOT COUNTED.  The author's, 19 November 2026: twenty is the Lebesgue integral; it is the belief the knower is
+--| asked to hold; twenty is the daisy (declared).  Among the running counts of the tapes, from the front and from the
+--| back, and among the marks by length, twenty does not appear.  Its neighbours do.
+theorem twenty_is_in_neither_running_count :
+    (the_running_count the_lengths_of_the_tapes).contains 20 = false
+      ∧ (the_running_count the_lengths_of_the_tapes.reverse).contains 20 = false
+      ∧ ([1, 36, 18, 36, 10] : List Nat).contains 20 = false
+      ∧ (the_running_count the_lengths_of_the_tapes).contains 19 = true
+      ∧ (the_running_count the_lengths_of_the_tapes).contains 21 = true
+      ∧ (the_running_count the_lengths_of_the_tapes.reverse).contains 18 = true
+      ∧ (the_running_count the_lengths_of_the_tapes.reverse).contains 22 = true := by decide
+end twenty_is_not_counted
+
+
+section two_machines_up_to_the_daisy
+open readers_experience readers_interpretation_of_the_experience
+
+--| TWO MACHINES, UP TO THE DAISY.  The author's, 19 November 2026: there are two machines that are identical up to the
+--| daisy, a × (−c × b) and −a × (c × −b) (declared).  In the turns, with the cross of two turns for ×.
+def the_turn_owed (q : Turns) : Turns := (- q.1, - q.2.1, - q.2.2.1, - q.2.2.2)
+def the_one_machine (a b c : Turns) : Turns := the_cross a (the_cross (the_turn_owed c) b)
+def the_other_machine (a b c : Turns) : Turns := the_cross (the_turn_owed a) (the_cross c (the_turn_owed b))
+
+--| The one is the other, owed.  One sign between them, and nothing else.
+theorem the_one_machine_is_the_other_owed (a b c : Turns) :
+    the_one_machine a b c = the_turn_owed (the_other_machine a b c) := by
+  obtain ⟨a₀, a₁, a₂, a₃⟩ := a
+  obtain ⟨b₀, b₁, b₂, b₃⟩ := b
+  obtain ⟨c₀, c₁, c₂, c₃⟩ := c
+  simp only [the_one_machine, the_other_machine, the_cross, the_turn_owed, Int.neg_mul, Int.mul_neg, Int.neg_neg,
+    Int.mul_sub, Int.sub_mul, Int.neg_zero, Int.mul_zero, Int.zero_mul, Int.sub_zero, Int.zero_sub]
+  refine Prod.ext ?_ (Prod.ext ?_ (Prod.ext ?_ ?_)) <;> simp <;> ac_nf <;> omega
+
+--| And read by the action, which does not see a sign, they are one.
+theorem read_by_the_action_the_two_machines_are_one (a b c : Turns) :
+    the_turns_action (the_one_machine a b c) = the_turns_action (the_other_machine a b c) := by
+  rw [the_one_machine_is_the_other_owed]
+  simp only [the_turns_action, the_turn_owed, Int.neg_mul_neg]
+end two_machines_up_to_the_daisy
+
+section the_matters_own_variation
+open readers_experience readers_interpretation_of_the_experience
+
+--| THE MATTER'S OWN VARIATION.  The link was moved; now move the state, at one site, by a turn.
+def the_state_with_one_site_moved {n : Nat} (state : Site4 n → Turns) (y : Site4 n) (Y : Turns) (t : Int) : Site4 n → Turns :=
+  fun z => if z = y then the_varied_turns (state y) Y t else state z
+
+--| Moved at the far end of a link, the state carried back is what it was and the move by: the near state turned over, by
+--| the link, by the move.  The step along the way must leave the site.
+theorem moved_at_the_far_end {n : Nat} (state : Site4 n → Turns) (U : Torus4 n) (way : Direction) (x : Site4 n) (Y : Turns)
+    (t : Int) (the_step_leaves : the_step way x ≠ x) :
+    the_state_carried_back (the_state_with_one_site_moved state (the_step way x) Y t) U way x
+      = the_varied_turns (the_state_carried_back state U way x)
+          (the_turns_product (the_turns_conjugate (state x)) (the_turns_product (U way x) Y)) t := by
+  have near : the_state_with_one_site_moved state (the_step way x) Y t x = state x :=
+    if_neg (fun same => the_step_leaves same.symm)
+  have far : the_state_with_one_site_moved state (the_step way x) Y t (the_step way x)
+      = the_varied_turns (state (the_step way x)) Y t := if_pos rfl
+  simp only [the_state_carried_back, near, far, the_product_is_linear_on_the_right]
+
+--| Moved at the near end: the move turned over, by the link, by the far state.
+theorem moved_at_the_near_end {n : Nat} (state : Site4 n → Turns) (U : Torus4 n) (way : Direction) (x : Site4 n) (Y : Turns)
+    (t : Int) (the_step_leaves : the_step way x ≠ x) :
+    the_state_carried_back (the_state_with_one_site_moved state x Y t) U way x
+      = the_varied_turns (the_state_carried_back state U way x)
+          (the_turns_product (the_turns_conjugate Y) (the_turns_product (U way x) (state (the_step way x)))) t := by
+  have near : the_state_with_one_site_moved state x Y t x = the_varied_turns (state x) Y t := if_pos rfl
+  have far : the_state_with_one_site_moved state x Y t (the_step way x) = state (the_step way x) :=
+    if_neg the_step_leaves
+  simp only [the_state_carried_back, near, far, the_conjugate_is_linear, the_product_is_linear_on_the_left]
+
+--| And the state against itself, which holds no link, is of the second order in the move: itself; the move by the state
+--| against the move, both ways; and the move squared by the move against itself.
+theorem the_state_against_itself_with_the_state_moved {n : Nat} (state : Site4 n → Turns) (x : Site4 n) (Y : Turns) (t : Int) :
+    the_state_against_itself (the_state_with_one_site_moved state x Y t) x
+      = the_varied_turns
+          (the_varied_turns (the_turns_product (the_turns_conjugate (state x)) (state x))
+            (the_turns_product (the_turns_conjugate (state x)) Y) t)
+          (the_varied_turns (the_turns_product (the_turns_conjugate Y) (state x))
+            (the_turns_product (the_turns_conjugate Y) Y) t) t := by
+  have here : the_state_with_one_site_moved state x Y t x = the_varied_turns (state x) Y t := if_pos rfl
+  show the_turns_product (the_turns_conjugate (the_state_with_one_site_moved state x Y t x))
+      (the_state_with_one_site_moved state x Y t x) = _
+  rw [here, the_conjugate_is_linear, the_product_is_linear_on_the_left, the_product_is_linear_on_the_right,
+    the_product_is_linear_on_the_right]
+
+--| WHERE THERE IS NO LIGHT.  On the whole turn on every link, what multiplies the move of a link is the whole part of the
+--| current and nothing else: there the field stands still exactly where there is no current.
+theorem where_every_link_is_the_whole_turn_only_the_current_multiplies {n : Nat} (state : Site4 n → Turns)
+    (way other : Direction) (x behind : Site4 n) (X : Turns) :
+    what_multiplies_the_move state the_whole_turn_on_every_link way other x behind X
+      = (the_current_in_the_link state way x X).1 := by
+  have ahead : the_square4 (the_whole_turn_on_every_link (n := n)) way other x = the_whole_turn 1 := rfl
+  have back : the_square4 (the_whole_turn_on_every_link (n := n)) other way behind = the_whole_turn 1 := rfl
+  simp only [what_multiplies_the_move, ahead, back, a_whole_turn_is_stationary]
+  omega
+end the_matters_own_variation
+
+section the_equation_in_a_link_over_the_other_ways
+open readers_experience readers_interpretation_of_the_experience
+
+--| OVER THE OTHER WAYS.  A link is held by a square ahead and a square behind for each other way.  Take a list of other
+--| ways, each with the site one step back along it, and add up.
+def the_squares_at_the_link {n : Nat} (U : Torus4 n) (way : Direction) (x : Site4 n) : List (Direction × Site4 n) → Int
+  | [] => 0
+  | (other, behind) :: rest =>
+      the_turns_action (the_square4 U way other x) + the_turns_action (the_square4 U other way behind)
+        + the_squares_at_the_link U way x rest
+
+def what_multiplies_the_move_of_the_squares {n : Nat} (U : Torus4 n) (way : Direction) (x : Site4 n) (X : Turns) :
+    List (Direction × Site4 n) → Int
+  | [] => 0
+  | (other, behind) :: rest =>
+      the_first_variation_of_the_turns (the_square4 U way other x)
+          (the_turns_holonomy X (U other (the_step way x)) (U way (the_step other x)) (U other x))
+        + the_first_variation_of_the_turns (the_square4 U other way behind)
+          (the_turns_holonomy (U other behind) X (U other (the_step way behind)) (U way behind))
+        + what_multiplies_the_move_of_the_squares U way x X rest
+
+def what_the_squares_hold_of_the_move {n : Nat} (U : Torus4 n) (way : Direction) (x : Site4 n) (X : Turns) :
+    List (Direction × Site4 n) → Int
+  | [] => 0
+  | (other, behind) :: rest =>
+      the_turns_action (the_turns_holonomy X (U other (the_step way x)) (U way (the_step other x)) (U other x))
+        + the_turns_action (the_turns_holonomy (U other behind) X (U other (the_step way behind)) (U way behind))
+        + what_the_squares_hold_of_the_move U way x X rest
+
+--| Every other way in the list is another way, steps off the site, and has its square behind one step back and elsewhere.
+def are_other_ways {n : Nat} (way : Direction) (x : Site4 n) (others : List (Direction × Site4 n)) : Prop :=
+  ∀ pair ∈ others, pair.1 ≠ way ∧ the_step pair.1 x ≠ x ∧ the_step pair.1 pair.2 = x ∧ pair.2 ≠ x
+
+--| All the squares at the link, with the link moved: what they held, the move by what multiplies it, the move squared.
+theorem the_squares_at_the_link_with_the_link_moved {n : Nat} (U : Torus4 n) (way : Direction) (x : Site4 n) (X : Turns)
+    (t : Int) : ∀ (others : List (Direction × Site4 n)), are_other_ways way x others →
+    the_squares_at_the_link (the_torus_with_one_link_moved U way x X t) way x others
+      = the_squares_at_the_link U way x others + t * what_multiplies_the_move_of_the_squares U way x X others
+        + t * t * what_the_squares_hold_of_the_move U way x X others
+  | [], _ => by simp [the_squares_at_the_link, what_multiplies_the_move_of_the_squares, what_the_squares_hold_of_the_move]
+  | (other, behind) :: rest, they_are => by
+    have this_one := they_are (other, behind) (List.mem_cons_self ..)
+    have the_rest := the_squares_at_the_link_with_the_link_moved U way x X t rest
+      (fun pair among => they_are pair (List.mem_cons_of_mem _ among))
+    have ahead := the_turns_action_stops_at_second_order (the_square4 U way other x)
+      (the_turns_holonomy X (U other (the_step way x)) (U way (the_step other x)) (U other x)) t
+    have back := the_turns_action_stops_at_second_order (the_square4 U other way behind)
+      (the_turns_holonomy (U other behind) X (U other (the_step way behind)) (U way behind)) t
+    show the_turns_action (the_square4 (the_torus_with_one_link_moved U way x X t) way other x)
+        + the_turns_action (the_square4 (the_torus_with_one_link_moved U way x X t) other way behind)
+        + the_squares_at_the_link (the_torus_with_one_link_moved U way x X t) way x rest = _
+    rw [the_square_ahead_with_the_link_moved U way other x X t this_one.1 this_one.2.1,
+      the_square_behind_with_the_link_moved U way other x behind X t this_one.1 this_one.2.2.1 this_one.2.2.2,
+      ahead, back, the_rest]
+    simp only [the_squares_at_the_link, what_multiplies_the_move_of_the_squares, what_the_squares_hold_of_the_move,
+      Int.mul_add]
+    omega
+
+--| THE EQUATION, OVER THE OTHER WAYS.  With the state carried back along the link as well: where the squares' first
+--| variations and the whole part of the current are nothing together, for every move, the move enters only squared.
+theorem the_equation_in_a_link_over_the_other_ways {n : Nat} (state : Site4 n → Turns) (U : Torus4 n) (way : Direction)
+    (x : Site4 n) (X : Turns) (t : Int) (others : List (Direction × Site4 n)) (they_are : are_other_ways way x others)
+    (still : ∀ X, what_multiplies_the_move_of_the_squares U way x X others + (the_current_in_the_link state way x X).1 = 0) :
+    the_squares_at_the_link (the_torus_with_one_link_moved U way x X t) way x others
+        + (the_state_carried_back state (the_torus_with_one_link_moved U way x X t) way x).1
+      = the_squares_at_the_link U way x others + (the_state_carried_back state U way x).1
+        + t * t * what_the_squares_hold_of_the_move U way x X others := by
+  have carried : (the_varied_turns (the_state_carried_back state U way x) (the_current_in_the_link state way x X) t).1
+      = (the_state_carried_back state U way x).1 + t * (the_current_in_the_link state way x X).1 := rfl
+  have nothing := still X
+  have by_the_move : t * (what_multiplies_the_move_of_the_squares U way x X others
+      + (the_current_in_the_link state way x X).1) = 0 := by rw [nothing, Int.mul_zero]
+  rw [the_squares_at_the_link_with_the_link_moved U way x X t others they_are,
+    the_state_carried_back_varies_by_the_current, carried]
+  rw [Int.mul_add] at by_the_move
+  omega
+end the_equation_in_a_link_over_the_other_ways
+
+section the_second_variation_stops
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+  rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
+
+--| THE SECOND VARIATION STOPS.  In the closure's own order the first closure is not under the second: its option holds and
+--| the second's cannot, and the order asks that the one imply the other.  True on false does not go.
+theorem the_first_closure_is_not_under_the_second : ¬ (the_first_closure ≤ the_second_closure) := by
+  intro under
+  have unfolded : Closure.le the_first_closure the_second_closure := under
+  have parts : Closure.le (.different (the_first_closure.infer.headD FACT.Truth) gawked_at_once gawked_at_twice
+        (some (gawked_at_once < gawked_at_twice)))
+      (.different (the_second_closure.infer.headD FACT.Truth) gawked_at_twice gawked_at_three_times
+        (some (gawked_at_twice < gawked_at_three_times))) := unfolded
+  simp only [Closure.le] at parts
+  exact three_of_the_implications_go_and_one_does_not.2.2.2 parts.2.2.2
+end the_second_variation_stops
+
+
+section the_carriers_step_five_times
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+
+--| THE CARRIER'S STEP, FIVE TIMES.  The author's, 19 November 2026: `INFERRED` is the matter's interface, and should have
+--| the result in the place it is needed; because this is 3SAT, one solution is enough; and the repeated value and the
+--| residue of the carrier's step, taken five times from the zero on the same difference, should answer it (declared).
+def the_quantum_as_a_number : Number := Number.zero SAME_DIFFERENCE
+
+--| What a number stands on: the fact at its top.
+def the_fact_a_number_stands_on : Number → FACT
+  | .zero fact => fact
+  | .one fact _ => fact
+
+--| Once, the step sets the zero on the truth.  Five times, it is where once left it.  The repeated value is the zero on
+--| the truth.
+theorem the_step_five_times_is_the_step_once :
+    the_first_card.interact_with_the_universe the_quantum_as_a_number = Number.zero FACT.Truth
+      ∧ the_first_card.interact_with_the_universe (the_first_card.interact_with_the_universe
+          (the_first_card.interact_with_the_universe (the_first_card.interact_with_the_universe
+            (the_first_card.interact_with_the_universe the_quantum_as_a_number))))
+        = the_first_card.interact_with_the_universe the_quantum_as_a_number := ⟨rfl, rfl⟩
+
+--| The residue: what it stood on before, and no longer.  One cell before and one after; the same difference under it
+--| before, and the truth after.
+theorem the_residue_is_what_the_zero_stood_on :
+    the_fact_a_number_stands_on the_quantum_as_a_number = SAME_DIFFERENCE
+      ∧ the_fact_a_number_stands_on (the_first_card.interact_with_the_universe the_quantum_as_a_number) = FACT.Truth
+      ∧ the_quantum_as_a_number.peano.length = 1
+      ∧ (the_first_card.interact_with_the_universe the_quantum_as_a_number).peano.length = 1 := ⟨rfl, rfl, rfl, rfl⟩
+
+--| Asked only whether it is true, there was nothing to step: the same difference holds, the truth holds, and two truths
+--| are one.  So the quantum was the repeated value already.
+theorem asked_only_whether_it_is_true_the_quantum_was_there_already :
+    the_quantum_as_a_number = the_first_card.interact_with_the_universe the_quantum_as_a_number :=
+  congrArg Number.zero
+    (two_facts_that_are_true_are_one_fact SAME_DIFFERENCE FACT.Truth same_difference_clicks
+      (@of_decide_eq_true _ FACT.Truth.click rfl))
+
+--| IN THE PLACE IT IS NEEDED.  The knower's α, the closure `INFERRED` holds, is an inferred closure, and it begins on the
+--| truth twice: the fact the step repeats.
+theorem the_knowers_alpha_begins_on_what_the_step_repeats :
+    ∃ low slip slipped the_rest,
+      the_alpha = .inferred
+        (the_fact_a_number_stands_on (the_first_card.interact_with_the_universe the_quantum_as_a_number))
+        (the_fact_a_number_stands_on (the_first_card.interact_with_the_universe the_quantum_as_a_number))
+        low slip slipped the_rest :=
+  what_the_first_rung_says_comes_out_at_the_top.2
+end the_carriers_step_five_times
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
