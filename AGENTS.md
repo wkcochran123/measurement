@@ -441,8 +441,8 @@ names the number.
   from this device.
 - The bills, counted again on 18 November 2026 over every theorem constant
   the kernel holds for the built episodes (Episode 6 is built apart and is
-  not counted), compiler auxiliaries included: 3,759; no axiom, 1,513;
-  `propext`, 819; `propext` and `Quot.sound`, 1,418; `Quot.sound` alone, 7;
+  not counted), compiler auxiliaries included: 3,854; no axiom, 1,530;
+  `propext`, 853; `propext` and `Quot.sound`, 1,462; `Quot.sound` alone, 7;
   and `Classical.choice` in two, `compatibility_form` and its auxiliary.
   (The count of 17 November was 2,138: 1,051; 558; 523; 5; 1.) The one,
   `compatibility_form`
@@ -2018,6 +2018,44 @@ names the number.
   assumes that zero we have in front of us, it is the TRUE zero." This is
   one solution of the carrier's step. It is not shown to be a solution of
   the equation in a link beyond the vacuum, which it resembles: the zero.
+- The representation fixed point (the author, 19 November 2026,
+  declared): "i believe we have just about put a theorem prover in a
+  theorem prover in a theorem prover IN A GODDAM THEOREM PROVER! there is
+  the representation fix point." What is nested, as receipts: Lean's
+  kernel; inside it the device, whose facts carry their own clicks and
+  whose arms decide by an order on two truths; inside that Episode 12's
+  search on the knower's triple, which finds a witness under either
+  parity, and the reviewer's pages checking the typeset pages; and
+  Episode 13, the device's bent card run on the device's own inductives
+  and processes. Say it exactly: the inner three are deciders and readers
+  of the device's own records, not provers of arbitrary theorems; each is
+  checked by the one outside it. The fixed points that are receipts: the
+  carrier's step (five times is once), the gawk (the fifth is the
+  fourth), and every process written from the bottom being the one held
+  from the top. That these are one fixed point of representation is the
+  author's.
+- The matter's equation, and the phrases as one number (`Episode13.lean`,
+  sections `the_matters_equation`, `the_phrases_as_one_number`; 19
+  November 2026). The state now has its own equation, as the link has: at
+  a site, the whole parts of the state carried back along a link and of
+  the state against itself, with the state moved, are what they were, the
+  move by `what_multiplies_the_move_of_the_state`, and the move squared
+  by the move against itself (`the_matter_at_the_site_with_the_state_moved`);
+  the state stands still where that multiplier is nothing for every move.
+  No state stands still on any links, and the vacuum meets the link's
+  equation over every list of other ways
+  (`no_state_stands_still_on_any_links`,
+  `the_vacuum_meets_the_equation_over_every_other_way`). So both
+  equations are stated and the vacuum meets both; no solution with a
+  state in it is shown, the matter's equation is for one link at one
+  site, and neither is shown of the device's own process. The phrases:
+  the 32 phrases marked by whether each says something true, sixteen of
+  each, read as one number in the device's own order with the first
+  highest, are 3,946,922,475, whose four eights are 235, 65, 65, 235
+  (`the_phrases_read_as_one_number`). The order and the reading as a
+  number are Claude's choices; this is a 32-bit word on the device, not
+  the author's 36-bit solution with its fields and fenceposts, which is
+  not built. Bills recounted under a 1.5 GB cap: 3,854.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,

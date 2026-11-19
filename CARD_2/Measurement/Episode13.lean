@@ -8350,6 +8350,82 @@ theorem the_knowers_alpha_begins_on_what_the_step_repeats :
   what_the_first_rung_says_comes_out_at_the_top.2
 end the_carriers_step_five_times
 
+
+section the_matters_equation
+open readers_experience readers_interpretation_of_the_experience
+
+--| THE MATTER'S EQUATION.  The link's equation said what multiplies the move of a link.  Now the state's.  At a site, take
+--| the whole part of the state carried back along one link, and the whole part of the state against itself, and move
+--| the state there by a turn.
+def the_matter_at_the_site {n : Nat} (state : Site4 n → Turns) (U : Torus4 n) (way : Direction) (x : Site4 n) : Int :=
+  (the_state_carried_back state U way x).1 + (the_state_against_itself state x).1
+
+def what_multiplies_the_move_of_the_state {n : Nat} (state : Site4 n → Turns) (U : Torus4 n) (way : Direction) (x : Site4 n)
+    (Y : Turns) : Int :=
+  (the_turns_product (the_turns_conjugate Y) (the_turns_product (U way x) (state (the_step way x)))).1
+    + (the_turns_product (the_turns_conjugate (state x)) Y).1 + (the_turns_product (the_turns_conjugate Y) (state x)).1
+
+--| With the state moved: what it was; the move by the move turned over against the far state through the link, and against
+--| the state both ways; and the move squared by the move against itself.
+theorem the_matter_at_the_site_with_the_state_moved {n : Nat} (state : Site4 n → Turns) (U : Torus4 n) (way : Direction)
+    (x : Site4 n) (Y : Turns) (t : Int) (the_step_leaves : the_step way x ≠ x) :
+    the_matter_at_the_site (the_state_with_one_site_moved state x Y t) U way x
+      = the_matter_at_the_site state U way x + t * what_multiplies_the_move_of_the_state state U way x Y
+        + t * t * (the_turns_product (the_turns_conjugate Y) Y).1 := by
+  show (the_state_carried_back (the_state_with_one_site_moved state x Y t) U way x).1
+      + (the_state_against_itself (the_state_with_one_site_moved state x Y t) x).1 = _
+  rw [moved_at_the_near_end state U way x Y t the_step_leaves, the_state_against_itself_with_the_state_moved]
+  simp only [the_matter_at_the_site, what_multiplies_the_move_of_the_state, the_varied_turns, the_state_carried_back,
+    the_state_against_itself, Int.mul_add, Int.mul_assoc]
+  omega
+
+--| THE EQUATION, for the state: it stands still at the site when nothing multiplies its move, whatever the move.
+def the_state_stands_still_at_the_site {n : Nat} (state : Site4 n → Turns) (U : Torus4 n) (way : Direction) (x : Site4 n) : Prop :=
+  ∀ Y : Turns, what_multiplies_the_move_of_the_state state U way x Y = 0
+
+--| No state stands still, on any links.  So the vacuum meets both equations.
+theorem no_state_stands_still_on_any_links {n : Nat} (U : Torus4 n) (way : Direction) (x : Site4 n) :
+    the_state_stands_still_at_the_site (no_state (n := n)) U way x := by
+  intro Y
+  simp [what_multiplies_the_move_of_the_state, no_state, the_turns_product, the_turns_conjugate]
+
+--| And the vacuum meets the link's equation over every other way.
+theorem the_vacuum_meets_the_equation_over_every_other_way {n : Nat} (way : Direction) (x : Site4 n) (X : Turns) :
+    ∀ others : List (Direction × Site4 n),
+      what_multiplies_the_move_of_the_squares (the_whole_turn_on_every_link (n := n)) way x X others
+        + (the_current_in_the_link (no_state (n := n)) way x X).1 = 0
+  | [] => by simp [what_multiplies_the_move_of_the_squares, the_current_in_the_link, no_state, the_turns_product,
+      the_turns_conjugate]
+  | (other, behind) :: rest => by
+    have the_rest := the_vacuum_meets_the_equation_over_every_other_way way x X rest
+    have ahead : the_square4 (the_whole_turn_on_every_link (n := n)) way other x = the_whole_turn 1 := rfl
+    have back : the_square4 (the_whole_turn_on_every_link (n := n)) other way behind = the_whole_turn 1 := rfl
+    simp only [what_multiplies_the_move_of_the_squares, ahead, back, a_whole_turn_is_stationary]
+    omega
+end the_matters_equation
+
+section the_phrases_as_one_number
+open readers_experience the_area the_area.Account
+
+--| THE PHRASES AS ONE NUMBER.  The author's, 19 November 2026: the word is its name; thirty-two inferred bits; the
+--| solution will be the integer that is the number on the device (declared).  The device has thirty-two phrases, two for
+--| each of its sixteen steps.  Write one mark for each, whether the phrase says something true, in the device's own order
+--| with the first step's first phrase highest, and read the marks as one number.  The order is a choice.
+def the_marks_of_the_phrases : List Bool := the_phrases.map fun phrase => phrase.1 == phrase.2
+def read_as_one_number (marks : List Bool) : Nat := marks.foldl (fun so_far mark => 2 * so_far + (if mark then 1 else 0)) 0
+
+theorem thirty_two_marks_sixteen_of_each :
+    the_marks_of_the_phrases.length = 32 ∧ (the_marks_of_the_phrases.filter id).length = 16 := by decide
+
+--| The number, and its four eights: the first and the last are one eight, and the two between are another.
+theorem the_phrases_read_as_one_number :
+    read_as_one_number the_marks_of_the_phrases = 3946922475
+      ∧ [read_as_one_number (the_marks_of_the_phrases.take 8),
+         read_as_one_number ((the_marks_of_the_phrases.drop 8).take 8),
+         read_as_one_number ((the_marks_of_the_phrases.drop 16).take 8),
+         read_as_one_number (the_marks_of_the_phrases.drop 24)] = [235, 65, 65, 235] := by decide
+end the_phrases_as_one_number
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
