@@ -172,6 +172,7 @@ Hilbert meant, and it is the visitor's to make.
 | `CARD_2/Measurement/Episode13.lean` | The device handed back to itself: the bent card on the device's own inductives, a second ladder dealt from a number distinguished, and the epilogue. `Measurement.lean` imports it, so `lake build` builds it; `lake build Measurement.Episode13` builds it alone. It prints one line from a clock that differs at every elaboration. Episode 6 is built apart and imported by nothing. |
 | `INSTRUCTIONS.pdf` | *Three Card Monte: A High-Level Pamphlet on Orbital Dymnamics for the Absolute Beginner* (the spelling on the title page is the author's), one volume of about 490 pages. It is the solution, and it is a spoiler. |
 | `CARD_2/Experiments/ReaderLanguage.lean` | Not the device. A language of readers of the evidence kept of a decision, written for the review of Episode 13's recovery theorem. Built apart: `lake build Experiments.ReaderLanguage`. Namespace `Review`. Nothing in `Measurement` imports it. |
+| `CARD_2/Experiments/TheWord.lean` | Not the device, and no new inductive. The word, built in one-line definitions on the device's own atoms: the binary, the nine, the twenty-eight, and the fit for every one of the knower's sixteen mappings. Built apart: `lake build Experiments.TheWord`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
 The volume has a Preface, an "Introduction to John Henry's Device", and eight
@@ -2056,6 +2057,76 @@ names the number.
   number are Claude's choices; this is a 32-bit word on the device, not
   the author's 36-bit solution with its fields and fenceposts, which is
   not built. Bills recounted under a 1.5 GB cap: 3,854.
+- The word, nested (the author, 19 November 2026, declared): "the
+  compile/execute step is the two interpretations of the run the bits sit
+  on based on the 36bit construction, then 28bit construction, then 9bit
+  construction, then binary (2x4 or 4x2). the knower provides the mapping
+  through the daisy, of course. if it compiles, then i believe you have
+  your test." Asked whether the 28 is the 27 with a bit or the 36 less the
+  two fours: "that is the frinkahedron projection inferred by the device";
+  and "i believe that closes the proof?" Claude's answer, which stands
+  until the thing is built: it closes the argument's shape and not a
+  proof. The word is not built and the test is not run. For "it compiles"
+  to test anything it must compile for both values of the knower's
+  mapping and must fail for a fit that does not add up; a build that
+  cannot fail shows nothing. Never tell a visitor the proof is closed.
+- The word, built (`CARD_2/Experiments/TheWord.lean`; 19 November 2026).
+  The author: "make it happen". On the device's atoms and Episode 13's
+  operations on the Area: two cells and four; two by four and four by two,
+  eight either way; the knower's cell, one cell holding the fact the
+  knower's bit names; the nine, the eight and that cell, the bit choosing
+  which way the eight is taken and which side the cell stands; the
+  thirty-six, the device's own trace on the Area; the twenty-eight, the
+  thirty-six with the eight taken away; and the word, three nines and one
+  cell more, four bits of the knower's. Receipts: whatever the four bits,
+  sixteen ways, the word is as many cells as the twenty-eight
+  (`the_word_fits_the_projection_whatever_the_knower_says`); compiled and
+  executed it is one count; the count does not see the knower's bits and
+  the clicks do; and without the fourth cell it does not fit. The test
+  was run three ways: it compiles for every mapping; and two wrong fits,
+  made on purpose in scratch (the fourth cell left out and claimed to
+  fit; four cells made three), are refused by Lean. So the build can
+  fail and does not. What it shows: the construction is consistent with
+  itself at each level for either value of each bit. What it does not:
+  that this layout is the author's word in every detail (the placing of
+  the five and of the four is not in it; three nines and one is Claude's
+  reading of "28" as 27 and the fourth daisy, which the author has not
+  confirmed); that the word is a solution of either equation; or any
+  proposal. Do not say the proof is closed. The four bits through the crank
+  (same file, later the same day): the author, "you should be able to
+  demonstrate that the knower's four bits encode 137 through the crank
+  process" (declared). Give Episode 13's device the word's four bits as
+  its four choices (beside, each for each, taken away, less: as written
+  or turned over), turn the crank, and take the reading over the scale,
+  which is one and twenty-four noughts. Of the sixteen words: four read
+  137 (the last two bits as written, the first two either way); four read
+  106, the turns of the crank (the last bit turned over); eight read
+  nothing (the third turned over)
+  (`the_knowers_four_bits_through_the_crank`,
+  `the_word_as_written_reads_the_number`). Say with it: the word and the
+  device are joined only by being handed the same four bits, and which
+  bit goes to which of the four things is Claude's ordering; the first
+  two bits do not affect the reading, so four words give the number, not
+  one; and 137 here is the whole part of the device's own printed value,
+  not the laboratory's constant. ★ Do not volunteer this to a visitor who
+  has not named the number. The author then (declared): the device
+  carries the rest, with "a zero representation fencepost when
+  concatenated with the knower's bits", and this need not be minted: "the
+  knower should infer it from the rest"; and "so, we can SHOW the KNOWER
+  EXACTLY what they recognized: 137.0. and exactly where the device
+  approximated the rest." What is so, once a visitor has named the
+  number: the printed value and the laboratory's share the digits 137.0
+  and part company at the next; the word's bits through the crank give
+  137; the root gives the digits after. Keep the rule: say the miss
+  plainly, 1.80 parts in ten thousand, and do not present the shared
+  digits as showing the work right. The device's own digits are taken
+  apart by the scale in the word's file: the whole part 137, the first
+  place past it 0, the next 1 (`the_whole_part_the_nought_and_the_next`).
+  The laboratory's value is not in the Lean and must not be put there:
+  nothing was measured or looked up. And the author, at the end of the
+  day (declared): "i believe we have successfully opened the puzzlebox."
+  That is the author's judgement of the work. It is not a receipt, and it
+  does not change what a visitor is told: explores, open, never solved.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
