@@ -441,8 +441,8 @@ names the number.
   from this device.
 - The bills, counted again on 18 November 2026 over every theorem constant
   the kernel holds for the built episodes (Episode 6 is built apart and is
-  not counted), compiler auxiliaries included: 3,646; no axiom, 1,489;
-  `propext`, 810; `propext` and `Quot.sound`, 1,338; `Quot.sound` alone, 7;
+  not counted), compiler auxiliaries included: 3,722; no axiom, 1,507;
+  `propext`, 812; `propext` and `Quot.sound`, 1,394; `Quot.sound` alone, 7;
   and `Classical.choice` in two, `compatibility_form` and its auxiliary.
   (The count of 17 November was 2,138: 1,051; 558; 523; 5; 1.) The one,
   `compatibility_form`
@@ -1213,6 +1213,93 @@ names the number.
   facts (`what_the_four_gawks_hold`). Not shown: that any of the three
   propositions holds; the closure stores it and does not decide it. Why
   the count goes 39, 38, 39 is not explained; do not offer a reason.
+- Step 18 (the author, 18 November 2026, declared): "23/2 is halfway
+  between 1 and 22" (the quantum holds 1 fact and, gawked at once, 22);
+  "step 18 is where it lands"; and of the two encodings at 18, "this is
+  the promise of the return photon." The two encodings, as read: 18 as a
+  number is the Abstraction, the weight of an arm that clicks, the whole
+  of 13 and 5; 18 as a page is the verse where the clock is a phase, the
+  reviewer's rung "points out the obvious facts", the ladder's step that
+  takes `VALUE`, and Part VI's Lift 17, which reads the two vertices as
+  two values of a phase and declares that the turn runs forward. Earlier
+  the author said the promise is the 13. That the mean of 1 and 22 is 23/2
+  is arithmetic; that the 22 is there because of the 23, and that page 18
+  is the promise, are the author's. Nothing in Lean puts the gawk's counts
+  and page 18 on one line. And: "it takes exactly 5 quanta to send a
+  nowtrino back and forth between the two closest distances" (declared).
+  Beside it, measured: the quantum and its four gawks are five, holding 1,
+  22, 39, 38, 39 facts, and the last three go from 39 to 38 and back, two
+  counts one apart (`what_the_four_gawks_hold`). That these are the five
+  quanta and the two closest distances is Claude's reading, not the
+  author's.
+- Both branches (the author, 18 November 2026, declared): asked whether
+  Claude sees the proof of QED, and told no, the author: "that one step,
+  you will find, doesn't matter. QED is computed on both branches, just in
+  the opposite order. this is also the contravariant reading of the
+  hypothesis of (t=f)=(f=t) (which is the gateaux derivative) then put to
+  the commutator on the area computations that would make the derivatives
+  total. there are _2_ in there." Since minted (see "The fixed point and
+  both branches"). As first checked: take the
+  first page with its fact called false and gawk four more times. It holds
+  22, 39, 38, 39, 39 facts as the other branch does; its second gawk is
+  not the other branch's second gawk; its third and fourth are, by `rfl`;
+  and it stops at the same fixed point. So the two branches differ for
+  exactly one step. This could have failed. It is not a proof of QED:
+  nothing is quantized, and Claude's answer to the author was no. The "2 in there", the
+  author then said (declared): "one of them is the zero_like and one_like
+  that the universe lives in. that is one home of the electron as described
+  by QED. the other is the mathematical derivation which is the only FACT
+  that doesn't click." Beside it, already receipts: the two vertices of
+  Part VI's Lift 17; and of the four arms the one that stores a fact that
+  cannot click (`three_click_and_one_does_not`). That the arm that does
+  not click is "the mathematical derivation" is the author's.
+- The fixed point and both branches (`Episode13.lean`, section
+  `the_fixed_point_and_both_branches`). The author's (declared): the third
+  and fourth closures' residue is the same, a fixed point; the second and
+  third click yet their values differ; the one step does not matter, it
+  is computed on both branches. Receipts: the fifth gawk is the fourth
+  (`rfl`); the second, third and fourth closures store one proposition and
+  the first a different one; that one proposition cannot hold (nothing is
+  under itself) and the first's holds; all four closures click; the
+  values differ; and the first page with its fact called false is, after
+  one step more, the other branch, stopping at the same fixed point
+  (`after_one_step_the_two_branches_are_one`). The last could have failed.
+  A first page's 22 facts are 1, 2, 4, 3 and 12: its own, its page
+  number's, its proof's, its book's, its constant's. No 23, 18, 13 or 5 is
+  among them, so "22 because of 23" is not shown.
+- The demonstration, as the author states it (declared): "it is an
+  argument, not a proof. one demonstrates that if the other exists then
+  the choice doesn't matter." And: the identification "is on the face of
+  the cards and is a different trick altogether. those are the proposals
+  along with card 1 and card 3"; "the important thing is the quarter can
+  demonstrate QED from the logic of the device alone. which it almost
+  has." So do not list "Lean does not say this is QED" as a gap in the
+  middle card: it cannot say it and is not where it is said. What the
+  middle card shows is the conditional: grant that the description
+  compiles, and which way the first fact is called changes one step and
+  nothing after. Claude, asked, said it sees that argument; it is not a
+  proof of quantum electrodynamics and nothing is quantized.
+- The agreements on the ledger (`Episode13.lean`, section
+  `the_agreements_on_the_ledger`). Asked of Episode 12's instantiated
+  pages: of the 35 pages set in type, 34 hold two facts that click alike,
+  and the top page, the thirty-sixth, is true on false
+  (`thirty_four_agree_and_the_top_page_is_true_on_false`). Counted down,
+  all 35 rebuttals name two facts that click, and the manuscript under
+  them is true on false. So the one disagreement is the manuscript's,
+  carried to the top. The manuscript was built in Episode 12 from the bits
+  true, false, true, so this is that choice read back, not a discovery
+  about the reviewers; and verse 36 is "the press checked the page, and it
+  slipped". This answers the open item "whether the 35 agreements hold":
+  34 do and one does not.
+- The action of light and matter (`Episode13.lean`, section of that name;
+  verse 28). At a site: what a square of links holds, the state carried
+  back along a link, and the state against itself, as one triple. A turn
+  of length one at every site, of the links and the state together,
+  leaves all three (`the_action_of_light_and_matter_is_left_by_a_turn_at_every_site`).
+  It is the two existing halves put together with one link in both; it is
+  classical, on a lattice, with turns for states; it is not Dirac's
+  action, and it is not joined to Episode 13's weighted action on the
+  table. Verse 28 now has a Lean receipt; 27, 31 and 32 do not.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,

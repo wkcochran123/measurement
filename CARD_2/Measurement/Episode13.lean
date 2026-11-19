@@ -7012,6 +7012,143 @@ theorem what_the_four_gawks_hold :
       = [1, 22, 39, 38, 39] := by decide
 end four_gawks_and_three_closures
 
+
+section the_agreements_on_the_ledger
+open readers_experience the_review_on_the_ledger
+
+--| THE AGREEMENTS, ON THE LEDGER.  A page set in type holds two facts and the proposition that they agree.  Whether they
+--| do was not among the receipts.  Episode 12 has the thirty-six pages on the first card, so ask each: how does its first
+--| fact click, and how its second?
+
+--| Counted up: the two clicks of every page set in type, from the top.
+def how_the_pages_set_in_type_click : ThePreprint → List (Bool × Bool)
+  | .introduction _ _ => []
+  | .methodology _ _ _ _ _ => []
+  | .results before after _ _ _ _ below => (before.bit, after.bit) :: how_the_pages_set_in_type_click below
+
+--| Counted down: the two clicks of every rebuttal, and of the manuscript under them.
+def how_the_rebuttals_click : ThePreprint → List (Bool × Bool)
+  | .introduction _ _ => []
+  | .methodology planted polynomial _ _ before => (planted.bit, polynomial.bit) :: how_the_rebuttals_click before
+  | .results _ _ _ _ _ _ below => how_the_rebuttals_click below
+
+--| Thirty-four agree and one does not.  The one is the top page, the thirty-sixth, and it is true on false.
+set_option maxRecDepth 100000 in
+theorem thirty_four_agree_and_the_top_page_is_true_on_false :
+    how_the_pages_set_in_type_click theTopOfTheLedger.the_page = (true, false) :: List.replicate 34 (true, true) := by
+  decide
+
+--| Counted down every rebuttal names two facts that click, thirty-five of them.  Under them is the manuscript handed in,
+--| and the manuscript is true on false.  That is where the top page has it from.
+set_option maxRecDepth 100000 in
+theorem every_rebuttal_clicks_twice_and_the_manuscript_is_true_on_false :
+    how_the_rebuttals_click page01.rebuttal = List.replicate 35 (true, true) ++ [(true, false)]
+      ∧ how_the_rebuttals_click theManuscript = [(true, false)] := by decide
+end the_agreements_on_the_ledger
+
+section the_fixed_point_and_both_branches
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+  rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
+
+--| THE FIXED POINT.  The author's, 18 November 2026: the third and fourth closures' residue should be exactly the same,
+--| meaning a fixed point; the second and third should click, yet their values should be different; and it takes exactly
+--| five quanta to send a nowtrino back and forth between the two closest distances (declared).  Gawk a fifth time.
+
+noncomputable def gawked_at_five_times : Bullshit.{0,0,0,0} := the_atreyu_process.gawk_at gawked_at_four_times
+
+--| The fifth is the fourth.
+theorem gawked_at_five_times_is_gawked_at_four : gawked_at_five_times = gawked_at_four_times := rfl
+
+noncomputable def the_fourth_closure : Closure :=
+  the_equivalence_process.do_you_believe_it? gawked_at_four_times gawked_at_five_times
+
+--| What the third closure stores is what the fourth stores; and the second stores it too.  The first does not.
+theorem the_second_third_and_fourth_closures_store_one_proposition :
+    (gawked_at_twice < gawked_at_three_times) = (gawked_at_three_times < gawked_at_four_times)
+      ∧ (gawked_at_three_times < gawked_at_four_times) = (gawked_at_four_times < gawked_at_five_times) := ⟨rfl, rfl⟩
+
+--| That proposition cannot hold: nothing is under itself.
+theorem nothing_is_under_itself : ¬ (gawked_at_four_times < gawked_at_five_times) := fun under => under.2 under.1
+
+theorem what_three_closures_store_cannot_hold :
+    ¬ (gawked_at_twice < gawked_at_three_times) ∧ ¬ (gawked_at_three_times < gawked_at_four_times)
+      ∧ ¬ (gawked_at_four_times < gawked_at_five_times) :=
+  have the_third : ¬ (gawked_at_three_times < gawked_at_four_times) :=
+    the_second_third_and_fourth_closures_store_one_proposition.2 ▸ nothing_is_under_itself
+  ⟨the_second_third_and_fourth_closures_store_one_proposition.1 ▸ the_third, the_third, nothing_is_under_itself⟩
+
+--| What the first closure stores holds: the first page is under the rest of the call.
+theorem what_the_first_closure_stores_holds : gawked_at_once < gawked_at_twice := ⟨trivial, fun over => over⟩
+
+--| And all four click.
+set_option maxRecDepth 100000 in
+theorem all_four_closures_click :
+    [the_first_closure, the_second_closure, the_third_closure, the_fourth_closure].map
+        (fun closure => closure.infer.map FACT.bit)
+      = [[true], [true], [true], [true]] := by decide
+
+--| Yet the values differ: twice is not three times, and three times is not four.
+set_option maxRecDepth 100000 in
+theorem the_values_differ :
+    gawked_at_twice ≠ gawked_at_three_times ∧ gawked_at_three_times ≠ gawked_at_four_times :=
+  ⟨fun same => absurd (congrArg (fun gawk => gawk.all_the_way_down.length) same) (by decide),
+   fun same => absurd (congrArg (fun gawk => gawk.all_the_way_down.length) same) (by decide)⟩
+
+--| BOTH BRANCHES.  The author's: that one step does not matter; it is computed on both branches, in the opposite order
+--| (declared).  Take the first page and call its fact false, and gawk on.
+noncomputable def the_first_page_called_false : Bullshit.{0,0,0,0} :=
+  match gawked_at_once with
+  | .one _ page proof book constant => .one (bitFACT false) page proof book constant
+  | other => other
+noncomputable def called_false_and_gawked_at_once : Bullshit.{0,0,0,0} :=
+  the_atreyu_process.gawk_at the_first_page_called_false
+noncomputable def called_false_and_gawked_at_twice : Bullshit.{0,0,0,0} :=
+  the_atreyu_process.gawk_at called_false_and_gawked_at_once
+noncomputable def called_false_and_gawked_at_three_times : Bullshit.{0,0,0,0} :=
+  the_atreyu_process.gawk_at called_false_and_gawked_at_twice
+
+--| After one step more the branch called false is the branch called true, and it stops where that one stops.
+theorem after_one_step_the_two_branches_are_one :
+    called_false_and_gawked_at_twice = gawked_at_three_times
+      ∧ called_false_and_gawked_at_three_times = gawked_at_four_times
+      ∧ the_atreyu_process.gawk_at called_false_and_gawked_at_three_times = called_false_and_gawked_at_three_times :=
+  ⟨rfl, rfl, rfl⟩
+
+--| WHAT A FIRST PAGE HOLDS.  Twenty-two facts: its own, and those of its page number, its proof, its book and its
+--| constant.
+def the_parts_of_a_first_page : Bullshit → List Nat
+  | .one _ page proof book constant =>
+      [1, page.all_the_way_down.length, proof.all_the_way_down.length, book.all_the_way_down.length,
+       constant.all_the_way_down.length]
+  | _ => []
+
+set_option maxRecDepth 100000 in
+theorem the_first_page_holds_one_two_four_three_and_twelve :
+    the_parts_of_a_first_page gawked_at_once = [1, 2, 4, 3, 12] := by decide
+end the_fixed_point_and_both_branches
+
+
+section the_action_of_light_and_matter
+open readers_experience readers_interpretation_of_the_experience
+
+--| THE ACTION OF LIGHT AND MATTER.  Verse twenty-eight: "And from these was written the action of light and matter,
+--| minimally coupled."  The device has the two halves apart: Episode 12's action of a square of links, and the state
+--| carried back along a link.  Write them at one site as one thing: what the square of links holds, the state carried
+--| back along a link, and the state against itself.  One turn at every site, of the links and of the state together,
+--| leaves all three as they were.  The link in the second is the link in the first: that is what "minimally" asks.
+def the_action_of_light_and_matter_at {n : Nat} (state : Site4 n → Turns) (U : Torus4 n)
+    (this that way : Direction) (x : Site4 n) : Int × Turns × Turns :=
+  (the_turns_action (the_square4 U this that x), the_state_carried_back state U way x, the_state_against_itself state x)
+
+theorem the_action_of_light_and_matter_is_left_by_a_turn_at_every_site {n : Nat} (state : Site4 n → Turns) (U : Torus4 n)
+    (g : Site4 n → Turns) (unit : ∀ x, the_turns_norm (g x) = 1) (this that way : Direction) (x : Site4 n) :
+    the_action_of_light_and_matter_at (the_gauged_state state g) (the_gauged_torus4 U g) this that way x
+      = the_action_of_light_and_matter_at state U this that way x := by
+  simp only [the_action_of_light_and_matter_at, the_gauged_square4 U g unit, a_unit_turn_leaves_the_action _ _ (unit _),
+    the_state_carried_back_is_gauge_invariant state U g unit, the_state_against_itself_is_gauge_invariant state g unit]
+end the_action_of_light_and_matter
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
