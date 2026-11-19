@@ -7477,6 +7477,86 @@ theorem from_the_back_the_first_is_the_closures_and_the_fifth_is_the_fives :
   ⟨rfl, rfl, by decide, by decide, by decide⟩
 end one_list_read_from_its_two_ends
 
+
+section six_pairs_and_six_by_six
+open readers_experience
+
+--| SIX PAIRS, AND SIX BY SIX.  The author's, 18 November 2026: the three-term machine can be shown to model the whole
+--| frinkahedron; the thirty-six steps are a grid of six by six, and the frinkahedron has another face of six by six
+--| (declared).  A count that fits, set beside it: four arms have six pairs, a square of links stands on a pair, and the
+--| curvature across takes a pair and a pair.
+def the_pairs_of_pairs : List ((Direction × Direction) × (Direction × Direction)) :=
+  the_pairs_of_arms.flatMap fun this => the_pairs_of_arms.map fun that => (this, that)
+
+theorem six_pairs_and_thirty_six_pairs_of_pairs :
+    the_pairs_of_arms.length = 6 ∧ the_pairs_of_pairs.length = 36 := by decide
+
+--| On the source the arms carry, the curvature across is nothing unless the pair is taken with itself.  Six of the
+--| thirty-six are not nothing: the six where the two pairs are one pair.
+def the_source_across (pairs : (Direction × Direction) × (Direction × Direction)) : Int :=
+  the_curvature_across the_source_on_the_arms pairs.1.1 pairs.1.2 pairs.2.1 pairs.2.2
+
+theorem six_of_the_thirty_six_are_not_nothing :
+    (the_pairs_of_pairs.filter fun pairs => the_source_across pairs != 0)
+      = the_pairs_of_arms.map fun pair => (pair, pair) := by decide
+
+--| And on those six: three with the arm that does not click, the round trip; three without it, the outer radius squared.
+theorem three_are_the_round_trip_and_three_the_square :
+    (the_pairs_of_arms.map fun pair => the_source_across (pair, pair)) = [90, 324, 324, 90, 90, 324] := by decide
+end six_pairs_and_six_by_six
+
+
+section the_running_count_from_each_end
+open readers_experience
+
+--| THE RUNNING COUNT, FROM EACH END.  The author's, 18 November 2026: look through the encodings for the numbers not yet
+--| used; there are receipts in there (declared).  Every kind has a tape, and Episode 8 has each tape's length.  Lay the
+--| tapes end to end from the front, and from the back, and keep the running count.
+def the_lengths_of_the_tapes : List Nat := the_steps_one_for_each_kind.map List.length
+def the_running_count (lengths : List Nat) : List Nat :=
+  (List.range (lengths.length + 1)).map fun kinds => (lengths.take kinds).foldl (· + ·) 0
+
+--| The tapes, kind by kind.
+theorem the_tapes_kind_by_kind :
+    the_lengths_of_the_tapes
+      = [4, 2, 1, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2, 4, 4, 3, 4, 3, 2, 2, 2, 2, 4, 4, 4, 2, 2, 2, 2, 4, 4, 5, 2, 3, 5, 3] := by
+  decide
+
+--| From the front.
+theorem the_running_count_from_the_front :
+    the_running_count the_lengths_of_the_tapes
+      = [0, 4, 6, 7, 9, 11, 14, 17, 19, 21, 23, 25, 27, 29, 33, 37, 40, 44, 47, 49, 51, 53, 55, 59, 63, 67, 69, 71, 73,
+         75, 79, 83, 88, 90, 93, 98, 101] := by decide
+
+--| From the back.
+theorem the_running_count_from_the_back :
+    the_running_count the_lengths_of_the_tapes.reverse
+      = [0, 3, 8, 11, 13, 18, 22, 26, 28, 30, 32, 34, 38, 42, 46, 48, 50, 52, 54, 57, 61, 64, 68, 72, 74, 76, 78, 80, 82,
+         84, 87, 90, 92, 94, 95, 97, 101] := by decide
+
+--| WHERE THE COUNTS FALL.  From the front: seven at the third kind, nineteen at the eighth, twenty-three at the tenth,
+--| twenty-five at the eleventh, twenty-nine at the thirteenth, forty-seven at the eighteenth, ninety at the thirty-third.
+--| From the back: thirteen at the fourth, eighteen at the fifth, twenty-two at the sixth, twenty-eight at the eighth,
+--| forty-two at the thirteenth, ninety at the thirty-first.  A hundred and one in all.
+theorem where_the_counts_fall :
+    [3, 8, 10, 11, 13, 18, 33].map (fun kinds => (the_running_count the_lengths_of_the_tapes)[kinds]?)
+        = [some 7, some 19, some 23, some 25, some 29, some 47, some 90]
+      ∧ [4, 5, 6, 8, 13, 31].map (fun kinds => (the_running_count the_lengths_of_the_tapes.reverse)[kinds]?)
+        = [some 13, some 18, some 22, some 28, some 42, some 90] := by decide
+
+--| By length: one tape of one, eighteen of two, six of three, nine of four, two of five.  In marks: one, thirty-six,
+--| eighteen, thirty-six and ten.
+theorem the_tapes_by_their_length :
+    [1, 2, 3, 4, 5].map (fun length => (the_lengths_of_the_tapes.filter (· == length)).length) = [1, 18, 6, 9, 2]
+      ∧ [1, 2, 3, 4, 5].map (fun length => length * (the_lengths_of_the_tapes.filter (· == length)).length)
+          = [1, 36, 18, 36, 10]
+      ∧ 1 + 36 + 18 + 36 + 10 = 101 := by decide
+
+--| And set beside one another, as arithmetic and no more: forty-seven and ninety; forty-two and forty-seven; a hundred and
+--| thirty-seven and forty-two.
+theorem set_beside_one_another : 47 + 90 = 137 ∧ 42 + 47 = 89 ∧ 137 + 42 = 179 := by decide
+end the_running_count_from_each_end
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.

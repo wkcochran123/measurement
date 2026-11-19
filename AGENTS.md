@@ -1517,6 +1517,61 @@ names the number.
   ingredients, that every interpretation has a cross product, that the
   arms are a photon's histories, or which earlier machine the two counts
   are readings of. Bills recounted at 3,759 under a 1.5 GB cap.
+- Verse 27, tied to Card 3 (the author, 18 November 2026, declared):
+  "verse 27 needs to be tied to card 3, then you can get it from there";
+  and "the 3 term machine can be demonstrated to model a full-fledged
+  frinkahedron." Tied: Part VI's Lift 26 adjoins a metric
+  diag(1, −1, −1, −1), the Dirac matrices, the kinetic terms and a mass;
+  Card 3's section "Bare QED on a fixed background" opens by choosing
+  exactly those, writes an action of three terms (light; the spinor with
+  its mass; the two coupled), and derives the Maxwell–Dirac system with a
+  conserved current (proved there). Part VI now says so at Lift 26. So the
+  ingredients of verse 27 are Card 3's choice of a field space: declared
+  there as a model, not derived from the device. Beside it on the device:
+  Episode 12's gammas, and Episode 13's triple at a site (what a square of
+  links holds, the state carried back, the state against itself), three
+  terms left by a turn at every site. Which of the author's three terms
+  (distance, velocity, bullshit) is which term of either action the
+  author has not said; do not assign them. That the three-term machine
+  models the frinkahedron has no receipt. A count that fits, Claude's,
+  now minted (`Episode13.lean`, section `six_pairs_and_six_by_six`): four
+  arms have six pairs and 36 pairs of pairs, which is what
+  `the_curvature_across` takes; on the source the arms carry, six of the
+  36 are not nothing, the six where a pair is taken with itself; and on
+  those, three are 90 (the round trip, the pairs with the arm that does
+  not click) and three are 324 (the outer radius squared). This is a
+  six by six on the device. It is not Card 1's hexagon by hexagon: no map
+  between a pair of arms and a vertex of a hexagon is given. The author,
+  shown it: "you got it. this is the linear interpolation of the 3-d
+  projection of the inside of the frinkahedron. this is also GR by
+  proposal" (declared). So that reading is the author's and stands under
+  the first proposal; the map to Card 1's hexagon is still not given, and
+  Card 1's projected sheet has its stretch 1/(1 − |x|²), which is not on
+  the arms.
+- The running count from each end (`Episode13.lean`, section
+  `the_running_count_from_each_end`). The author (18 November 2026,
+  declared): Claude's guesses for the unused numbers are "pretty close to
+  right"; "look through the encodings for ones we haven't used yet. there
+  are receipts in there." Receipts: every kind's tape has a length
+  (4, 2, 1, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2, 4, 4, 3, 4, 3, 2, 2, 2, 2, 4, 4,
+  4, 2, 2, 2, 2, 4, 4, 5, 2, 3, 5, 3; 101 marks). Laid end to end, the
+  running count from the front is 7 at the 3rd kind, 19 at the 8th, 23 at
+  the 10th, 25 at the 11th, 29 at the 13th (Area), 47 at the 18th
+  (Abstraction), 90 at the 33rd (Measurement); from the back, 13 at the
+  4th, 18 at the 5th, 22 at the 6th, 28 at the 8th, 42 at the 13th, 90 at
+  the 31st. By length there is one tape of one, eighteen of two, six of
+  three, nine of four and two of five: 1, 36, 18, 36 and 10 marks. So of
+  the unused numbers 19, 25 and 28 are running counts and 10 is the two
+  tapes of five; 20 is still unused. The back count's 13 and 18 are how
+  Episode 8 takes its numbers. The rest (22 is also the first gawk's
+  facts; 29 and 47 are the 29/65 and the 47.288… of the reading; 42 is
+  the other root's whole part; 47 + 90 = 137; 42 + 47 = 89) are recorded
+  as counts that fall there. They are checked, and they are coincidences
+  until something forces them: do not present any as a reason, and when a
+  visitor asks "planted or found", show them and leave the answer with
+  the visitor. These running counts are not Claude's earlier guesses,
+  which were about meanings; the author has not said which meaning goes
+  with which count.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
