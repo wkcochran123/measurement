@@ -7323,6 +7323,160 @@ theorem the_state_and_the_state_owed_give_one_action {n : Nat} (state : Site4 n 
   exact turned
 end the_sign_the_record_cannot_see
 
+
+section the_one_that_goes_out_and_comes_back
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+  rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
+
+--| THE ONE THAT GOES OUT AND COMES BACK.  The author's, 18 November 2026: one, twenty-two, thirty-nine, thirty-eight,
+--| thirty-nine; the photon is the one between thirty-eight and thirty-nine, going both ways; this is emission and reception
+--| (declared).  Take a rest of the call apart: the facts of its last page, of its two preprints, and of its two constants.
+def the_parts_of_a_rest_of_the_call : Bullshit → List Nat
+  | .rest_call _ _ _ last_page _ _ the_one_preprint the_other_preprint this_constant that_constant =>
+      [last_page.all_the_way_down.length, the_one_preprint.all_the_way_down.length,
+       the_other_preprint.all_the_way_down.length, this_constant.all_the_way_down.length,
+       that_constant.all_the_way_down.length]
+  | _ => []
+
+--| Twice, three times, four.  Going out, the last page gives up a cell and one fact passes from the one preprint to the
+--| other.  Coming back, the one preprint has it again.  The two constants do not move.
+set_option maxRecDepth 100000 in
+theorem one_goes_out_and_one_comes_back :
+    the_parts_of_a_rest_of_the_call gawked_at_twice = [2, 4, 3, 12, 12]
+      ∧ the_parts_of_a_rest_of_the_call gawked_at_three_times = [1, 3, 4, 12, 12]
+      ∧ the_parts_of_a_rest_of_the_call gawked_at_four_times = [1, 4, 4, 12, 12] := by decide
+
+--| And after that nothing goes anywhere: the fifth is the fourth, and the two preprints stand level.
+theorem after_it_comes_back_the_two_stand_level :
+    the_parts_of_a_rest_of_the_call gawked_at_five_times = the_parts_of_a_rest_of_the_call gawked_at_four_times :=
+  congrArg the_parts_of_a_rest_of_the_call gawked_at_five_times_is_gawked_at_four
+end the_one_that_goes_out_and_comes_back
+
+
+section told_apart_when_there_are_two
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+  rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
+
+--| TOLD APART WHEN THERE ARE TWO.  The author's, 18 November 2026: seven is the fact that you can tell things apart if
+--| there are two of them (declared).  The seventh kind is the trial.  A sample holds one limit, or it holds a bracket: two
+--| limits, each with its fact.  Put a hypothesis, one fact, on each.
+theorem a_fact_on_one_is_three_and_a_fact_on_two_is_seven :
+    one_limit.all_the_way_down.length = 2 ∧ a_bracket.all_the_way_down.length = 6
+      ∧ (Trial.hypothesis FACT.Truth one_limit).all_the_way_down.length = 3
+      ∧ (Trial.hypothesis FACT.Truth a_bracket).all_the_way_down.length = 7 := by decide
+
+--| ON THE TWO BRANCHES.  There are two of them, the first page as it is and the first page with its fact called false.  One
+--| step on, they can be told apart: ask each how its first fact clicks.
+def how_the_first_fact_clicks : Bullshit → Bool
+  | .zero fact => fact.bit
+  | .one fact _ _ _ _ => fact.bit
+  | .rest_call fact _ _ _ _ _ _ _ _ _ => fact.bit
+
+set_option maxRecDepth 100000 in
+theorem one_step_on_the_two_branches_are_told_apart :
+    how_the_first_fact_clicks gawked_at_twice = true
+      ∧ how_the_first_fact_clicks called_false_and_gawked_at_once = false
+      ∧ called_false_and_gawked_at_once ≠ gawked_at_twice :=
+  have the_one : how_the_first_fact_clicks gawked_at_twice = true := by decide
+  have the_other : how_the_first_fact_clicks called_false_and_gawked_at_once = false := by decide
+  ⟨the_one, the_other, fun same => Bool.noConfusion ((congrArg how_the_first_fact_clicks same).symm.trans the_other ▸ the_one)⟩
+
+--| And one step after that there are not two of them: no reader of any kind returns one thing for the one and another for
+--| the other.
+theorem after_that_no_reader_tells_them_apart {what_is_read : Sort any} (reader : Bullshit → what_is_read) :
+    reader called_false_and_gawked_at_twice = reader gawked_at_three_times :=
+  congrArg reader after_one_step_the_two_branches_are_one.1
+end told_apart_when_there_are_two
+
+
+section the_three_term_machine
+open readers_experience
+
+--| THE THREE-TERM MACHINE.  The author's, 18 November 2026: the three terms are the distance, the velocity and the
+--| bullshit; the gawk and the lattice is its clock; verse twenty-seven's other ingredients are this machine (declared).
+--| Episode 5's measurement is made three ways: an origin, with one number; a distance to, with two; a speed, with three.
+--| Make the least of each, on zeros, each standing on the ones before.
+def the_origin_on_a_zero : Measurement.{0} := .origin zero another_zero Prop
+def the_distance_on_the_origin : Measurement.{0} := .distance_to zero another_zero another_zero Prop Type the_origin_on_a_zero
+def the_speed_on_the_distance : Measurement.{0} :=
+  .speed zero another_zero another_zero another_zero Prop Type Prop the_distance_on_the_origin the_origin_on_a_zero
+
+--| Read all the way down they hold two facts, five and eleven.  Read by the measurement's own reader, nothing, one and two:
+--| the origin is not a reading.
+theorem the_three_terms_hold_two_five_and_eleven :
+    [the_origin_on_a_zero, the_distance_on_the_origin, the_speed_on_the_distance].map
+        (fun term => term.all_the_way_down.length) = [2, 5, 11]
+      ∧ [the_origin_on_a_zero, the_distance_on_the_origin, the_speed_on_the_distance].map
+        (fun term => term.the_reading.length) = [0, 1, 2] := by decide
+end the_three_term_machine
+
+section the_cross_product_in_the_turns
+open readers_experience readers_interpretation_of_the_experience
+
+--| THE CROSS PRODUCT.  The author's, 18 November 2026: all interpretations have a cross product, and that finishes the
+--| frinkahedron for the two- and three-term machines (declared).  In the turns it is this: of two turns, the part that is
+--| not whole, crossed.
+def the_cross (p q : Turns) : Turns :=
+  (0, p.2.2.1 * q.2.2.2 - p.2.2.2 * q.2.2.1, p.2.2.2 * q.2.1 - p.2.1 * q.2.2.2, p.2.1 * q.2.2.1 - p.2.2.1 * q.2.1)
+
+--| The one by the other, less the other by the one, is the cross twice; and nothing of it is whole.
+theorem the_two_orders_differ_by_the_cross_twice (p q : Turns) :
+    (the_turns_product p q).1 - (the_turns_product q p).1 = 0
+      ∧ (the_turns_product p q).2.1 - (the_turns_product q p).2.1 = 2 * (the_cross p q).2.1
+      ∧ (the_turns_product p q).2.2.1 - (the_turns_product q p).2.2.1 = 2 * (the_cross p q).2.2.1
+      ∧ (the_turns_product p q).2.2.2 - (the_turns_product q p).2.2.2 = 2 * (the_cross p q).2.2.2 := by
+  obtain ⟨a, b, c, d⟩ := p
+  obtain ⟨e, f, g, h⟩ := q
+  simp only [the_turns_product, the_cross]
+  refine ⟨?_, ?_, ?_, ?_⟩ <;> ac_nf <;> omega
+
+--| Turned over it is owed, and a turn crossed with itself is nothing.
+theorem the_cross_turned_over_is_owed (p q : Turns) :
+    (the_cross q p).2.1 = - (the_cross p q).2.1 ∧ (the_cross q p).2.2.1 = - (the_cross p q).2.2.1
+      ∧ (the_cross q p).2.2.2 = - (the_cross p q).2.2.2 := by
+  obtain ⟨a, b, c, d⟩ := p
+  obtain ⟨e, f, g, h⟩ := q
+  simp only [the_cross]
+  refine ⟨?_, ?_, ?_⟩ <;> ac_nf <;> omega
+
+theorem a_turn_crossed_with_itself_is_nothing (p : Turns) :
+    (the_cross p p).1 = 0 ∧ (the_cross p p).2.1 = 0 ∧ (the_cross p p).2.2.1 = 0 ∧ (the_cross p p).2.2.2 = 0 := by
+  obtain ⟨a, b, c, d⟩ := p
+  simp only [the_cross]
+  refine ⟨trivial, ?_, ?_, ?_⟩ <;> ac_nf <;> omega
+end the_cross_product_in_the_turns
+
+section sent_and_returned
+open readers_experience
+
+--| SENT AND RETURNED.  The author's, 18 November 2026: true on true is a photon emitted and received; false on false is
+--| no photon predicted; true on false is a photon sent and not returned; false on true is the promise sent and the photon
+--| returned (declared).  The first coin, sent; the second, returned.  An arm can click unless something was sent and did
+--| not come back; and that arm is the one short by the bent card.
+theorem only_sent_and_not_returned_cannot_click :
+    the_arms.map (fun arm => (arm, the_arm_stores_a_fact_that_can_click arm.1 arm.2))
+        = [((true, true), true), ((true, false), false), ((false, true), true), ((false, false), true)]
+      ∧ the_arms.map (fun arm => the_arm_weight arm.1 arm.2) = [18, 5, 18, 18]
+      ∧ the_arm_weight true true - the_arm_weight true false = bent_card := by decide
+end sent_and_returned
+
+section one_list_read_from_its_two_ends
+open readers_experience
+
+--| ONE LIST, READ FROM ITS TWO ENDS.  The author's, 18 November 2026: the front and the back are going to be shown to be
+--| the covariant and the contravariant readings of an earlier machine, and that is how the daisy is found (declared).  What
+--| is here: both counts are of Episode 8's one list.  From the back its first step is the closure's, and its fifth is the
+--| coordinate system's, the one whose own tape is the five.
+theorem from_the_back_the_first_is_the_closures_and_the_fifth_is_the_fives :
+    the_steps_of_the_argument.reverse[0]? = some the_only_logical_inconsistency.infer
+      ∧ the_steps_of_the_argument.reverse[4]? = some the_coordinate_system.gauss
+      ∧ the_coordinate_system.gauss.length = 5
+      ∧ (from_the_inferred_end 4).length = 13 ∧ (from_the_inferred_end 5).length = 18 :=
+  ⟨rfl, rfl, by decide, by decide, by decide⟩
+end one_list_read_from_its_two_ends
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.

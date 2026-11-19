@@ -31,7 +31,7 @@ lake build
 The first build takes about twenty-five minutes. The number will be there when you come back.
 
 ## The table
-Three cards. **Card 2** is this repository: twelve episodes of Lean, written to be read as well as run. The margins talk. Start at Episode 1 and follow the patter.
+Three cards. **Card 2** is this repository: thirteen episodes of Lean, written to be read as well as run. The margins talk. Start at Episode 1 and follow the patter.
 
 Cards 1 and 3 and the rest of the table are somewhere else, and you do not need them to play.
 
@@ -60,6 +60,7 @@ Episode09.lean:__EPISODE 9__: _The Misdirection_
 Episode10.lean:__EPISODE 10__: _The Accomplice_
 Episode11.lean:__EPISODE 11__: _The Force_
 Episode12.lean:__EPISODE 12__: _Let Him Cook. . . . . . . Levin_
+Episode13.lean:__EPISODE 13__: _The Area_
 Measurement % cd ..
 CARD_2 % time lake build > ./build_log && cat build_log
 lake build > ./build_log  1511.67s user 20.58s system 100% cpu 25:30.65 total

@@ -441,8 +441,8 @@ names the number.
   from this device.
 - The bills, counted again on 18 November 2026 over every theorem constant
   the kernel holds for the built episodes (Episode 6 is built apart and is
-  not counted), compiler auxiliaries included: 3,722; no axiom, 1,507;
-  `propext`, 812; `propext` and `Quot.sound`, 1,394; `Quot.sound` alone, 7;
+  not counted), compiler auxiliaries included: 3,759; no axiom, 1,513;
+  `propext`, 819; `propext` and `Quot.sound`, 1,418; `Quot.sound` alone, 7;
   and `Classical.choice` in two, `compatibility_form` and its auxiliary.
   (The count of 17 November was 2,138: 1,051; 558; 523; 5; 1.) The one,
   `compatibility_form`
@@ -1426,6 +1426,97 @@ names the number.
   reader has eighteen double fibres. That the 36 steps are those 36
   vertices is the author's; no map from a step to a pair is given, and do
   not supply one.
+- The photon (the author, 18 November 2026, declared): "1 -> 22 -> 39 ->
+  38 -> 39 the photon is the one between 38 and 39 going both ways. this
+  is emission and reception." Beside it, a receipt (`Episode13.lean`,
+  section `the_one_that_goes_out_and_comes_back`,
+  `one_goes_out_and_one_comes_back`): the three rests of the call hold, in their page number, their
+  two preprints and their two constants, (2; 4, 3; 12, 12), then
+  (1; 3, 4; 12, 12), then (1; 4, 4; 12, 12). From 39 to 38 the page number
+  gives up a cell and one fact passes from the first preprint to the
+  second; from 38 to 39 the first preprint has one again. After that the fifth is the fourth and the
+  two preprints stand level. That this is a photon emitted and received
+  is the author's; it is the receipt the author points to for verse 31.
+  It is one cell exchanged between two holders, not a wave, and nothing
+  on the lattice propagates.
+- The three-term machine, and the other six by six (the author, 18
+  November 2026, declared): "the gawk and the lattice is the clock for the
+  3 term machine. the three terms are the distance, the velocity, and the
+  bullshit. the bullshit is mass because it take time using energy then
+  mass. this is the electron winding part of QED." And: "there are two
+  bent cards on the opposite faces of the frinkahedron projection. that is
+  the other 6x6 face." Beside it, read and not checked further: Episode
+  5's `Measurement` has the constructors `origin`, `distance_to` and
+  `speed`, and `Bullshit` is declared two after it; Card 1's count of the
+  frinkahedron's cells has 36 twice, the vertices (a vertex by a vertex)
+  and the squares (an edge by an edge), with twelve hexagons and twelve
+  facets beside them, six facets of each kind. That the 36 squares are
+  "the other 6x6 face", and which two facets hold the bent cards, the
+  author has not said in those terms; do not supply it. Nothing joins the
+  gawk to the lattice in Lean.
+- The unused numbers (18 November 2026). Asked for a guess at 7, 10, 19,
+  20, 25 and 28 from the patter, Claude guessed (guesses, not readings):
+  7 the choice of a representative; 10 the number under the root in
+  972(6 + √10)/65; 19 and 20 adding and multiplying, where order does and
+  does not matter; 25 five squared, 9 + 16, the right triangle; 28 the
+  pages that are pure inference, 36 less the two fours. The author
+  answered one (declared): "7 is the fact that you can tell things apart
+  if there are 2 of them." At post 7 is `Trial`, which holds two samples.
+  The other five are still Claude's guesses; do not present them as the
+  author's. Applied (`Episode13.lean`, section
+  `told_apart_when_there_are_two`): a hypothesis, one fact, on a sample
+  that holds one limit is 3 facts, and on a sample that holds a bracket,
+  two limits, it is 7 (the bracket alone is 6); and on the two branches,
+  one step on, a reader of how the first fact clicks returns true for the
+  one and false for the other, so they are not equal
+  (`one_step_on_the_two_branches_are_told_apart`), while a step after that
+  no reader of any kind tells them apart
+  (`after_that_no_reader_tells_them_apart`). So the device shows both
+  halves of the demonstration: where there are two they can be told
+  apart, and after one step there are not two.
+- Confirmed, and further (the author, 18 November 2026, declared). "yes to
+  all waiting on me": the four posts between Area and Abstraction
+  (PigeonHole, Jar, Equivalation, Encoding) are the four-member fencepost;
+  Card 1's 36 squares are the other six by six face; "spooky action at a
+  distance" was asked as PigeonHole or the whole bridge and answered yes,
+  so it stands recorded at PigeonHole and is not denied of the bridge. The
+  README now says thirteen episodes. And: "all interpretations have a
+  cross product. that finishes the frinkahedron for the 2 and 3 term
+  machines"; "the front and back are going to be shown to be covariant and
+  contravariant readings of an earlier machine that is how you find the
+  daisy"; "verse 27's other ingredients are the three-term machine from
+  above." None of these three has a receipt yet. Which earlier machine is
+  meant the author has not said; the count from the front and the count
+  from the back are both taken on Episode 8's one list of steps.
+- The four arms as photons (the author, 18 November 2026, declared):
+  "(T × T) is a emitted and received photon; (F × F) is no photon
+  predicted; (T × F) is photon sent, not returned; (F × T) is the promise
+  sent and the photon returned. (dark matter, hawking radiation, see?)"
+  Beside it, already receipts: the arm stores a fact that can click
+  exactly when the first implies the second, so T×T, F×F and F×T click
+  and T×F does not; T×F carries only the 5 and is short by the 13; the
+  gawk goes 39, 38, 39 and then stops, one out and one back and then
+  nothing. Earlier the author said dark matter is a promise to return a
+  photon and the promise is the 13. That the arms are these four
+  histories of a photon is the author's; nothing on the device is a
+  photon.
+- Receipts set beside the author's last declarations (`Episode13.lean`,
+  sections `the_three_term_machine`, `the_cross_product_in_the_turns`,
+  `sent_and_returned`, `one_list_read_from_its_two_ends`). The three
+  terms: the least origin, distance and speed, each on the ones before,
+  hold 2, 5 and 11 facts read all the way down, and 0, 1 and 2 by the
+  measurement's own reader. The cross product: in the turns, the one by
+  the other less the other by the one is the cross twice with nothing
+  whole; turned over it is owed; a turn crossed with itself is nothing.
+  Sent and returned: of the four arms only sent-and-not-returned cannot
+  click, and it is short by the bent card. One list from its two ends:
+  from the back the first step is the closure's and the fifth is the
+  coordinate system's, whose own tape is the five; the last four tapes
+  are 13 and the last five 18. Each is the device's own object placed
+  beside a declaration. None shows that the three terms are verse 27's
+  ingredients, that every interpretation has a cross product, that the
+  arms are a photon's histories, or which earlier machine the two counts
+  are readings of. Bills recounted at 3,759 under a 1.5 GB cap.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
