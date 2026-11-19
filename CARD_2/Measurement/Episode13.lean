@@ -7257,6 +7257,72 @@ theorem the_other_quadratic_is_the_one_turned_over (x r : Int) :
   ⟨rfl, the_two_pairs_change_places_and_the_product_stays x r⟩
 end inflated_twice
 
+
+section pushed_through_the_sixteenth_page
+open «springer-verlag» the_representation readers_experience the_area the_review_on_the_ledger
+attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
+
+--| PUSHED THROUGH.  The author's, 18 November 2026: push the missed number back through the stack; on the way back it is
+--| the other root, one; these will be scaled later (declared).  The reviewer's sixteenth page is the page that draws a fact
+--| out of an equivalation: out of a physics its fact, out of a zero-like its fact, out of a one-like the carrier's symbol.
+--| It asks its source for the equivalation.  So hand it a source whose one is the physics of the constant, and then the
+--| zero-like on it, and then the one-like on it, and see what page comes back.
+noncomputable def the_source_with_the_physics : type_of% rung16 := { rung16 with one := the_physics_of_the_constant }
+noncomputable def the_source_with_the_zero_like : type_of% rung16 := { rung16 with one := zero_like_on_the_constant }
+noncomputable def the_source_with_the_one_like : type_of% rung16 := { rung16 with one := one_like_on_the_constant }
+
+noncomputable def the_sixteenth_page_on_the_physics : REVIEWED FACT the_first_card 16 :=
+  REVIEWER_2_REFUSES_TO_ENTERTAIN_ABSURD_SOURCES_OF_NOISE FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 the_source_with_the_physics (argument := page17)
+noncomputable def the_sixteenth_page_on_the_zero_like : REVIEWED FACT the_first_card 16 :=
+  REVIEWER_2_REFUSES_TO_ENTERTAIN_ABSURD_SOURCES_OF_NOISE FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 the_source_with_the_zero_like (argument := page17)
+noncomputable def the_sixteenth_page_on_the_one_like : REVIEWED FACT the_first_card 16 :=
+  REVIEWER_2_REFUSES_TO_ENTERTAIN_ABSURD_SOURCES_OF_NOISE FACT the_first_card rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15 the_source_with_the_one_like (argument := page17)
+
+--| The same page, all three times.  The constant went in and the page did not move: the jar vanished on the way.
+theorem pushed_through_the_page_is_the_page :
+    the_sixteenth_page_on_the_physics = page16 ∧ the_sixteenth_page_on_the_zero_like = page16
+      ∧ the_sixteenth_page_on_the_one_like = page16 := ⟨rfl, rfl, rfl⟩
+
+--| What it drew: from the physics and the zero-like, the zero; from the one-like, the carrier's symbol.  On this card the
+--| two are one fact.
+theorem what_the_page_drew_is_the_zero_and_the_symbol :
+    the_sixteenth_page_on_the_physics.rebuttal.all_the_way_down.take 1 = [zero]
+      ∧ the_sixteenth_page_on_the_one_like.rebuttal.all_the_way_down.take 1 = [the_first_card.symbol] := ⟨rfl, rfl⟩
+end pushed_through_the_sixteenth_page
+
+section the_sign_the_record_cannot_see
+open readers_experience readers_interpretation_of_the_experience
+
+--| THE SIGN THE RECORD CANNOT SEE.  Verse thirty-two: "And the electron was dealt, and its sign was a coin the record
+--| cannot see."  On the lattice: owe the state at every site, the whole of it, and leave the links alone.  What a square of
+--| links holds, the state carried back along a link, and the state against itself are as they were.
+def the_state_owed {n : Nat} (state : Site4 n → Turns) : Site4 n → Turns :=
+  fun x => the_turns_product (the_whole_turn (-1)) (state x)
+
+--| The whole turn owed is a turn of length one, and it leaves every link where it was.
+theorem the_whole_turn_owed_has_length_one : the_turns_norm (the_whole_turn (-1)) = 1 := by decide
+
+theorem the_whole_turn_owed_at_every_site_leaves_the_links {n : Nat} (U : Torus4 n) :
+    the_gauged_torus4 U (fun _ => the_whole_turn (-1)) = U := by
+  funext way x
+  show the_turns_product (the_turns_product (the_whole_turn (-1)) (U way x)) (the_turns_conjugate (the_whole_turn (-1)))
+      = U way x
+  generalize U way x = link
+  obtain ⟨a, b, c, d⟩ := link
+  simp only [the_turns_product, the_turns_conjugate, the_whole_turn]
+  refine Prod.ext ?_ (Prod.ext ?_ (Prod.ext ?_ ?_)) <;> simp
+
+--| So the state and the state owed give one action.  The record of the action cannot tell them apart.
+theorem the_state_and_the_state_owed_give_one_action {n : Nat} (state : Site4 n → Turns) (U : Torus4 n)
+    (this that way : Direction) (x : Site4 n) :
+    the_action_of_light_and_matter_at (the_state_owed state) U this that way x
+      = the_action_of_light_and_matter_at state U this that way x := by
+  have turned := the_action_of_light_and_matter_is_left_by_a_turn_at_every_site state U (fun _ => the_whole_turn (-1))
+    (fun _ => the_whole_turn_owed_has_length_one) this that way x
+  rw [the_whole_turn_owed_at_every_site_leaves_the_links] at turned
+  exact turned
+end the_sign_the_record_cannot_see
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.

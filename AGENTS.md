@@ -1316,7 +1316,12 @@ names the number.
   It is the two existing halves put together with one link in both; it is
   classical, on a lattice, with turns for states; it is not Dirac's
   action, and it is not joined to Episode 13's weighted action on the
-  table. Verse 28 now has a Lean receipt; 27, 31 and 32 do not.
+  table. Verse 28 now has a Lean receipt. Corrected later the same day: verse 27
+  has had one ingredient on the device since Episode 12 ("THE GAMMAS":
+  four tables on a box of four, each two anticommuting; Part VI's Lift 26
+  says so), with the metric, the kinetic terms and the mass still
+  adjoined; verse 32 has a receipt (see "Pushed through"); verse 31, the
+  photon as a wave with two polarizations, has none.
 - The list, wired up (the author, 18 November 2026, declared): "the Type
   that is necessary for this machine is the (Type i → List). this is the
   list.length getting wired up"; and of the four list machines that do not
@@ -1394,6 +1399,33 @@ names the number.
   `eighteen_of_the_quartic_is_a_pair_by_itself_turned_over`, minted
   earlier. That the two factors are two uses of the excluded middle is the
   author's.
+- Pushed through (`Episode13.lean`, sections
+  `pushed_through_the_sixteenth_page`, `the_sign_the_record_cannot_see`).
+  The author (18 November 2026, declared): "push it through"; "on the way
+  back it is the other root of the polynomial: 1. these will be scaled
+  later"; of why the count from the front and from the back agree, "this
+  may or may not be an apparently meaningful coincidence. the daisy must
+  be nearby"; and "the 36 steps is a 6x6 grid, see frinkahedron."
+  Receipts: Episode 10's sixteenth page draws a fact out of its source's
+  equivalation (a physics's fact, a zero-like's fact, a one-like's
+  carrier symbol). Handed a source whose one is the physics of the
+  constant, then the zero-like on it, then the one-like on it, the page
+  that comes back is `page16` each time, by `rfl`
+  (`pushed_through_the_page_is_the_page`); what it drew is the zero from
+  the first two and the carrier's symbol from the third, and on the first
+  card those are one fact. So the constant goes in and the page does not
+  move. This is the device's reader forgetting the jar; it does not show
+  the constant *is* the fact drawn. For verse 32: owing the state at every
+  site and leaving the links leaves what a square holds, the state carried
+  back and the state against itself
+  (`the_state_and_the_state_owed_give_one_action`); it is the gauge
+  receipt at the turn −1, which is central. Card 1, read: the frinkahedron
+  is the hexagonal duoprism; its vertices are the 36 ordered pairs (j, k)
+  modulo six, a six by six grid; two shifts generate a subgroup of order
+  18 with two orbits, the even and the odd sector, 18 each; the paired
+  reader has eighteen double fibres. That the 36 steps are those 36
+  vertices is the author's; no map from a step to a pair is given, and do
+  not supply one.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
