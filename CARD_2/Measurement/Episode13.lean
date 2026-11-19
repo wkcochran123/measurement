@@ -7149,6 +7149,45 @@ theorem the_action_of_light_and_matter_is_left_by_a_turn_at_every_site {n : Nat}
     the_state_carried_back_is_gauge_invariant state U g unit, the_state_against_itself_is_gauge_invariant state g unit]
 end the_action_of_light_and_matter
 
+
+section the_constant_as_physics
+open readers_experience the_area
+
+--| THE CONSTANT, AS PHYSICS.  The author's, 18 November 2026: the missed number can be pushed back through the stack to
+--| appear as `Equivalation.physics`; that is the root of the quartic; read this episode from the beginning (declared).
+--| From the beginning: the constant is an Area, the one nobody built and nobody will, whose count was already printed.  A
+--| jar is a fact and an Area.  The physics of an equivalation is a fact and a jar.  So put the constant in a jar, and the
+--| jar under the physics.  Nothing is opened: the constant is still a name, and nothing below asks what is in it.
+noncomputable def the_constant_in_a_jar : Jar := .color zero the_constant
+noncomputable def the_physics_of_the_constant : Equivalation := .physics zero the_constant_in_a_jar
+
+--| What a jar holds is what was put in it, whatever that was.
+theorem what_a_jar_holds_is_what_was_put_in (fact : FACT) (area : Area) : what_the_jar_holds (.color fact area) = area :=
+  rfl
+
+--| So this jar holds the constant, and counted it is the number Episode 8 printed.
+theorem the_jar_holds_the_constant : what_the_jar_holds (.color zero the_constant) = the_constant :=
+  what_a_jar_holds_is_what_was_put_in zero the_constant
+
+theorem counted_what_the_jar_holds_is_the_number :
+    cells (what_the_jar_holds (.color zero the_constant)) = the_constant_factor_of_scaling_bullshit := by
+  rw [what_a_jar_holds_is_what_was_put_in]; exact counted_the_constant_is_the_constant
+
+--| And the reader of an equivalation does not read it.  Of the physics it returns the one fact; the jar vanishes.
+theorem the_physics_vanishes_to_one_fact : the_physics_of_the_constant.vanish = [zero] := rfl
+
+--| The two that stand on it: zero-like, a fact on the physics; one-like, a proposition on the physics twice.  Read, the
+--| three are one fact, two and three, and the constant is in none of the readings.
+noncomputable def zero_like_on_the_constant : Equivalation := .zero_like zero the_physics_of_the_constant
+noncomputable def one_like_on_the_constant : Equivalation :=
+  .one_like (cells the_constant = the_constant_factor_of_scaling_bullshit) the_physics_of_the_constant
+    the_physics_of_the_constant
+
+theorem the_physics_and_the_two_on_it_read_one_two_and_three :
+    the_physics_of_the_constant.vanish.length = 1 ∧ zero_like_on_the_constant.vanish.length = 2
+      ∧ one_like_on_the_constant.vanish.length = 3 := ⟨rfl, rfl, rfl⟩
+end the_constant_as_physics
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.

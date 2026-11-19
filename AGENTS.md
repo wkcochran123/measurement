@@ -1140,7 +1140,24 @@ names the number.
   the one where neither Sample holds a bracket is off the frinkahedron
   (`the_place_off_the_frinkahedron_holds_no_bracket`), and that place is
   F=F, the outside projection. What "2 vertices" names on the device the
-  author has not said.
+  author then said (zero-like and one-like), and the source has them by
+  name: `Equivalation` (Episode 3) has three constructors, `physics` (a
+  fact and a jar), `zero_like` and `one_like`. The author, later: "you
+  should be able to push the missed number back thru the stack soon to
+  appear as Equivalation.physics. neat how that name lined up" (declared).
+  Episode 10's page 16 draws its fact out of a `.physics`. Then: "that's
+  the root of the quartic, read ep13 from the beginning." From its
+  beginning Episode 13 has the constant as an Area that is named and never
+  opened (`the_constant`, `counted_the_constant_is_the_constant`). Section
+  `the_constant_as_physics` puts it in a jar and the jar under a
+  `physics`: what a jar holds is what was put in; counted, this jar holds
+  the number Episode 8 printed; Episode 8's reader of an equivalation
+  (`vanish`) returns the one fact and not the jar; and the physics, a
+  zero-like on it and a one-like on it read as one, two and three facts,
+  the constant in none of them. The fact on the jar and on the physics is
+  the device's `zero`; that choice is Claude's. This is the constant
+  placed, not pushed back through the 36 pages: no page of Episode 10 is
+  shown to draw this physics.
 - The Lovelock bridges, the author's way (`Episode13.lean`, section
   `three_bridges_on_the_row_of_steps`; Card 3, "The bridges, as the author
   gives them"). The author (18 November 2026, declared): two derivatives,
@@ -1578,7 +1595,12 @@ A cold build takes about 25 minutes, nearly all of it in Episode 4. Episode 13
 is a separate target, `lake build Measurement.Episode13`, about two seconds
 once Episode 12 is built. When checking Episode 13 by hand, cap Lean's memory
 (`lake env lean -M 6000 …`): a proof that opens its sealed crank at the
-concrete scale goes looking for an Area of more than 10²⁶ cells. Say so
+concrete scale goes looking for an Area of more than 10²⁶ cells. The cap must
+be well under the machine's memory: on the author's 8 GB laptop a cap of
+6000 was no cap, and a probe took the machine down (18 November 2026). Use
+`-M 1500` there, a kill timer of about a minute, and one probe at a time. A
+statement that sets something beside `the_constant` by `rfl` is enough to
+open it; state such things for any Area and then apply them. Say so
 before you start, run it in the background, and never block on it. Build only
 when asked or after a relevant edit. Do not report an old build log as a fresh
 check. Do not ask the kernel to re-run a walk the device has already stored;
