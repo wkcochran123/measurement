@@ -95,6 +95,10 @@ interleaved repeats of n = 64 and n = 1, device and control.
 1. *(Sealed 14 November 2026, 16:33, before any run; sha256 a07e81c5…)* The cost
    is linear in n, and g ≈ 1. **Linear: confirmed** once the control is
    subtracted. **g ≈ 1: refuted**; g = 1.42 ± 0.02.
+   *Erratum, 19 November 2026.* The sealed file says what would refute the second half: "g far from 1 (outside
+   0.5..2)". The reading, 1.42, is inside that range. By the seal's own criterion the second half is **not refuted**.
+   What is measured is that g is 1.42 and not 1. The verdict above was written stricter than the seal and is corrected
+   here, not erased.
 2. *(Sealed 14 November 2026, before the second machine was read; sha256 c7047aa8….)* The
    heartbeat counts, N, H(n), C(n) and g, are identical on every machine that
    runs the same source on the same toolchain; only τ differs. **Heartbeats:
@@ -863,6 +867,9 @@ form. The clock and the heartbeats were read inside the elaboration, around 1, 1
 
 - S1 (the author's), a thousand evaluations take more nanoseconds than one, in every run: **confirmed**. The least
   ratio is 120 and the greatest 314.
+  *Erratum, 19 November 2026.* The statement is about each run. From `raw/M2/readings.out` the five ratios of a
+  thousand evaluations to one, run by run, are 120, 231, 132, 267 and 269. The least is 120 and the greatest is 269.
+  The 314 was one run's thousand over another run's one and should not have been given. S1 is confirmed as before.
 - S2, the nanoseconds increase at every step in every run: **confirmed**.
 - S3, the heartbeats increase at every step and are identical across runs; the nanoseconds are not: **confirmed**.
 - S4, the first evaluation costs more than a later one: **confirmed**. One evaluation alone read 2.2 to 4.8 million

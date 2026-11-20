@@ -174,6 +174,11 @@ Hilbert meant, and it is the visitor's to make.
 | `CARD_2/Experiments/ReaderLanguage.lean` | Not the device. A language of readers of the evidence kept of a decision, written for the review of Episode 13's recovery theorem. Built apart: `lake build Experiments.ReaderLanguage`. Namespace `Review`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/TheWord.lean` | Not the device, and no new inductive. The word, built in one-line definitions on the device's own atoms: the binary, the nine, the twenty-eight, and the fit for every one of the knower's sixteen mappings. Built apart: `lake build Experiments.TheWord`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Connections.lean` | Not the device, and no new inductive. GPT's map of 19 November 2026 applied: the sixteen steps' residues, the residues crossed a pair by a pair, the source's six by six closed back onto the arms, and the thirty-six taken once. Built apart: `lake build Experiments.Connections`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
+| `CARD_2/Experiments/Restated.lean` | Not the device, and no new inductive. The author's restatement of the logical argument as one equivalation, on the device's constructors, and the number taken out of two counts in one line with no crank. Built apart: `lake build Experiments.Restated`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
+| `CARD_2/Experiments/Bridges.lean` | Not the device, and no new inductive. What could be made at once of GPT's seven bridges: an obstruction to a state that stands still, twenty numbers on the pairs of arms, the word's bits read back, the hexagon's limit, and two things supplied. Built apart: `lake build Experiments.Bridges`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
+| `CARD_2/Experiments/OneElement.lean` | Not the device, and no new inductive. The single element counted two ways on the Area: collecting marks, and adding marks to an element; where they meet, where they part, and the one identity that joins them. Built apart: `lake build Experiments.OneElement`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
+| `CARD_2/Experiments/Common.lean` | Not the device, and no new inductive. One action on the four-torus (links, the state carried back, the state against itself), moved in every link and state at once with its first variation written out; fields that stand still; one square presented in the third degree; a cubic whose slope is the residual. Built apart: `lake build Experiments.Common`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
+| `CARD_2/Experiments/RoundTheTorus.lean` | Not the device, and no new inductive. The sum over the sites of the torus is unmoved by a step; the equation at a site taken out of the common action; one state at every site with the mass at four owed. Built apart: `lake build Experiments.RoundTheTorus`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
 The volume has a Preface, an "Introduction to John Henry's Device", and seven
@@ -2225,6 +2230,241 @@ names the number.
   in which twenty is missing. NOT joined, still: the reviewer's thirty-six
   pages. No receipt sends a page to a pair of pairs, and 36 = 9 + 27 here
   and 6 + 30 on the source, neither of them the reviewer's 32 + 4.
+- Experience, interpretation, and the three letters (the author, 19
+  November 2026, all declared). "the experience was the photon in the
+  middle, the interpretation is a round trip photon and a carrier of empty
+  carriers (either way chosen by the daisy), the interpretation of the
+  interpretation is GR via Einstein." "a = Navier Stokes, c = QM and b =
+  GR", for the a × (−c × b) of the knower's triple and the word's three
+  fields of nine; with the earlier declaration that the fourth, inferred
+  daisy is QED through the logical arm, the four daisies now each have a
+  proposal. "experience is the readers experience in ep 8": the
+  `readers_experience` of Episode 8, whose reader of a list is its length.
+  Beside these, already receipts: one across or two from the middle count
+  the same (`which_it_was_cannot_be_recovered_from_the_count`); the arm
+  out is short by the 13, which the author calls the carrier of the empty
+  carrier; Episode 8's reader's experience and reader's interpretation
+  print one number. That the tracker's count column is therefore the
+  experience and its page column the interpretation is Claude's reading
+  and not the author's sentence. None of this is a receipt that a field of
+  nine bits is a theory. Errata the same day, at the author's "fix
+  errata": `READINGS.md` now carries dated corrections that Experiment
+  001's coupling, 1.42, was not refuted by its own seal (which set the
+  line at outside 0.5 to 2), and that Experiment 013's greatest within-run
+  ratio is 269, not 314. The original lines are kept.
+- One box, the vacuum and the state (the author, 19 November 2026, all
+  declared). Told that the vacuum is the only field shown to satisfy the
+  device's two equations: "the device only has 1 box"; "the interpretation
+  of the readers experience is the vacuum and the interpretation of the
+  interpretation of the readers experience is the state. one box,
+  represented two ways"; "the state is the daisy"; "the daisy should be
+  used around 32-36 times"; and "the daisy is the 0-length bent card
+  between all the truths, F=F, as it were for (F=T) = (T=F), the
+  offdiagonals ignored by the trace." So the author does not hold the
+  missing non-vacuum solution to be a gap: the state is the knower's bit,
+  standing between the truths of the vacuum's list. Claude guessed that
+  the two representations are swapped by the daisy and was corrected: the
+  daisy is the state, not the swap; what swaps them the author has not
+  said. Beside it, measured, none of it a receipt for the sentence: the
+  trace, 36, reads only the diagonal and is the same with the arm kept,
+  struck or turned over, while the gap squared is 360, 0, −360; of the 37
+  kinds' list machines 36 read back with one more than the tape (33 as
+  the length and one, 3 as twice the length and one) and one, Measurement,
+  with nothing more; a typeset page adds one proposition that its two
+  facts agree, 35 of them on the ledger, 34 holding; 32 pages are
+  inferred and 4 are the fencepost. Which of these, if any, is the
+  author's "32 to 36 uses" is not settled. In the code the fact named
+  `SAME_DIFFERENCE` is used 13 times, so it is not a count of that name.
+  Do not tell a visitor the gap is closed: no receipt exhibits the state
+  on the one box or shows it meets the equations.
+  And then (declared): "if you assume that the fence post can take one of
+  four configurations, f x, x f, floor(f/2) x ceil(f/2), ceil(f/2) x
+  floor(f/2), then these are the implied subjunctives." Arithmetic beside
+  it, Claude's and not minted: the four placings are all different only
+  when f is odd and at least three; an even f of two or more gives three
+  (the two halves are one); f of one gives two (a half of nothing is the
+  post at an end); f of nothing gives one. That reproduces the author's
+  earlier numbers: the fencepost of four has three encodings, the five has
+  four values (5 x, x 5, 3 x 2, 2 x 3), the one-cell daisy has two, and a
+  post of no size leaves no choice. Which f and which x make the 32 has
+  not been said; eight expressions by four placings is thirty-two, and
+  that pairing is Claude's guess.
+- ★ The argument, restated (`CARD_2/Experiments/Restated.lean`; 19 November
+  2026). The author (declared): "starting at Equivilation physics
+  FACT.same_difference (Jar.bang (FACT.different (Area.tree FACT.Truth)
+  (Area.tree FACT.SAME))), I do believe that effectively restates the
+  logical argument. you should be able to get the number out of that in
+  very short order." On the device's own constructors:
+  `the_truth_and_the_same_are_different`, a FACT whose truth is that the
+  tree on `FACT.Truth` is not the tree on the device's SAME
+  (`the_same_inferred_from_the_experience`), and whose click is no, because
+  two true facts are one fact; `the_argument_in_a_jar`, that fact banged on
+  a jar; `the_argument_restated`, the physics of that jar on
+  `SAME_DIFFERENCE`. Read by the device's own readers it vanishes to the
+  same difference, and the jar holds the tree on the same, which is the
+  tree on the truth. So the restatement is the opening deal as one object:
+  a fact that says "different" and does not click. The number: what the
+  device's SAME says is that nothing (the gap of the interpretation, true
+  on true less false on false) and the bent card (the gap of the
+  experience, false on true less true on false, thirteen cells) are one.
+  From that thirteen and the frame's five and nothing else, with p = 18
+  their sum: (p³ + 3073)/(5·13) = 137 with nothing over, 3073 the whole
+  root of p⁴·(p·5) (`the_whole_part_in_one_line`); and at the device's
+  scale (p³·10²⁴ + R)/(5·13), R the whole root written out and checked
+  (`it_is_the_whole_root`), is Episode 8's printed number to the last
+  place (`the_number_in_one_line`). No crank is turned. That last equality
+  could have failed: it sets a closed form's twenty-seven digits beside
+  what a hundred and six turns of the crank left. It shows the crank had
+  arrived at the root to the places it prints. Say with it: the author's
+  expression is not well-formed on the device as written (`Jar.bang` wants
+  a jar under it, and there is no `FACT.different`); the jar it stands on
+  and the reader that takes the number out are choices made in the
+  writing, not the author's; the five is the device's frame and is not
+  named in the expression; and that this "restates the logical argument"
+  is the author's. Do not volunteer before the visitor names the number.
+- The bridges (`CARD_2/Experiments/Bridges.lean`; 19 November 2026). GPT
+  sorted the open items into seven bridges (common finite action; process
+  realization; typed representation maps; observables and statistics;
+  metric geometry; transport between models; observation adequacy) and
+  the author said to apply all of it. Applied, with receipts billing
+  `propext` and `Quot.sound` only. (1) An obstruction: where the state
+  stands still at a site the link carries the far state to minus twice the
+  near one, so the link's norm by the far state's is four of the near
+  state's; along links of length one, around any walk one way that comes
+  back, a state that stands still at every site is nothing
+  (`around_a_walk_that_comes_back_no_state_stands_still`). The link
+  length is doing the work: with the whole turn −2 on every link the state
+  1 at every site stands still everywhere
+  (`on_links_of_two_owed_a_state_stands_still`), and there the link's
+  equation is not met with no squares counted. So on the matter's equation
+  as Episode 13 has it (one link out of each site) the vacuum's being the
+  only solution shown is, under the unit-length hypothesis, forced. Say
+  the limits: it is not a statement about a globally varied action, which
+  would have incoming links too; and with squares counted the −2 case is
+  not checked. (2) Twenty: a table on six things that is symmetric and
+  bound once is fixed by twenty entries, and any twenty are attainable
+  (`the_twenty_are_all`, `the_twenty_are_free`); this is the ambient
+  count, and the device's residue table has rank one. (3) The word's four
+  bits are read back from its clicks at places 8, 17, 26, 27 for all
+  sixteen (`the_knowers_bits_come_back_out_of_the_word`); neither the
+  count nor the crank's reading can return them. (4) Every pair of arms
+  shares an arm with four others, so no hexagon keeps all sharing as
+  adjacency. (5) Supplied, not found: the norm of two turns together; and
+  a raising table that is nothing twice, with the anticommutator the
+  identity (`not_twice`). Do not say the device has exclusion: that table
+  was written here. Corrections taken from GPT: the abstract recovery
+  obstruction in Episode 13 is general, and what is unproved is that a
+  physical observer reads only through the named evidence; Episode 12
+  already has a summed spinor-and-link action (`the_whole_action`) in two
+  dimensions, not joined to Episode 13's four-way lattice; the lattice
+  action is of degree eight in its links, so Theorem G's part (ii), which
+  is about degree at most three, does not apply to it as written (Card 7
+  now says so in a remark). NOT begun: the common action, its cubic
+  presentation, the realization map from the crank or gawk into fields,
+  the two interpretation maps and what swaps them, a current from the
+  common action, a metric and connection, the transports. The 31 ledger
+  rows are filed under the seven bridges in the ledger's fourth pass;
+  filing proves none.
+- The one element, counted two ways (`CARD_2/Experiments/OneElement.lean`;
+  20 November 2026). The author (declared): "it's time that we bring F_1
+  in"; "you need the 'counting' map from F_1 to regular fields. There are
+  two. One leads to addition, one leads to multiplication. 1) adding things
+  to the element (multiplication) 2) collecting elements (addition ->
+  multiplication). the device is that these two routes _SHOULD_ be equal to
+  multiplication. these are how the two routes divide from the truth." On
+  the device both were already there: collecting is the reader of a tape
+  (`the_area_of_a_tape`, a cell a mark) and adding to an element is
+  `raised`, by which Episode 13 makes its scale. Receipts, `propext` and
+  `Quot.sound` only: one tape after another is beside when collected and
+  each for each when added; a tape collected once for every mark of another
+  is each for each (addition reaching multiplication); added to and added
+  to again is added to once along that product
+  (`added_to_and_added_to_again_is_added_to_along_the_product`); with no
+  mark the one has nothing and the other one cell; over an element of one
+  cell every tape added is one cell, so five truths are five collected and
+  one added and any two tapes read alike; and the join,
+  `added_is_the_element_less_one_by_the_collected_and_one_more`: added is
+  (element less one) by the tape collected as the element counts it, and
+  one more, which over the one element is nothing by the marks and one.
+  The two are equal as numbers with one mark, and at two cells and two
+  marks, and not at two and three. Claude first wrote that none of this
+  could have failed; the author: "show me in the code where i did ANY MATH
+  WHATSOEVER?!?!?!? ALL OF THIS COULD FAIL" (declared), and the correction
+  stands. Episode 8's bent card asks a `Term` for four operations and
+  assumes no law of them; the Area's four are recursions on `tree` and
+  `dt`; that they add, multiply and raise is a theorem about them under
+  one reader, `cells`. Under the Area's own reader, which counts the tree
+  (`the_riemann_sum_counts_the_tree_too`), beside is one short of the sum;
+  and twelve of the sixteen devices do not print the number. So do not
+  say these receipts could not have failed. That
+  `collected` and `added_to` are the author's two maps is Claude's reading.
+  It is not GPT's common action, and no map into a model's fields is made.
+  The book's close (one truth, or a set of truths) now has a receipt on
+  the count; that the knower decides between them is still the author's.
+- One action, moved (`CARD_2/Experiments/Common.lean`; 20 November 2026;
+  the author: "can you finish gpt's suggestions now?"). Not finished: three
+  of the seven bridges are made in part and four are not begun. Receipts,
+  `propext` and `Quot.sound` only. Bridge 1: `the_common_action` is
+  Episode 12's `the_action4`, the whole part of Episode 13's state carried
+  back over every link, and a mass by the state against itself over every
+  site; it is left by a unit turn at every site; moved along any direction
+  in all links and states at once it is what it was, the number by
+  `the_first_variation_of_the_common_action`, and the number squared by
+  something over (`the_common_action_moves_by_its_first_variation`, every
+  torus, no hypothesis on the steps); that multiplier is unique
+  (`what_multiplies_the_move_is_one_thing`). One turn on every link and no
+  state stands still for every turn and mass
+  (`one_turn_on_every_link_and_no_state_stands_still`), so the vacuum does,
+  and so does twice the table as a turn, (36, 23, 13, 0), which is neither
+  whole nor of length one. Bridge 5, in part: with no state moved, what
+  the carried-back term moves by is Episode 13's `the_current_in_the_link`.
+  Bridge 2, in one square: `the_square_presented` with three turns more
+  and three multipliers is the square's action where the three are what
+  they say, and is a cubic along every line in the ten turns. Bridge 2
+  toward the device: `three_of_the_cranks_action`, a cubic in one place
+  whose slope is three of `the_residual_at` and whose third part is 13.
+  Limits to say every time: the state is a turn, not a spinor, and Episode
+  12's gammas are not joined; the first variation is a sum and is not
+  turned into site-by-site equations (that needs a sum over the torus to
+  be unmoved by a step, not proved), so Episode 13's equations in a link
+  and at a site are NOT derived from it; no field with a state in it is
+  shown to stand still; the constant field's standing still holds for any
+  turn at all and says nothing special of the table; the presented square
+  is one square, and that its stationary points are the original's is not
+  proved; the crank's cubic was written to fit. Not begun: a realization
+  map from the crank or the gawk into the fields (the lattice has an
+  action and no update); the interpretation maps and what swaps them (the
+  author's to say); a metric and connection; the transports between
+  models. Do not say GPT's bridges are finished.
+- Round the torus (`CARD_2/Experiments/RoundTheTorus.lean`; 20 November
+  2026, at the author's "Yes, prove it"). This amends the bullet above:
+  the equation at a site IS now taken out of the common action, and a
+  field with a state in it is shown. Receipts, `propext` and `Quot.sound`
+  only. `round_the_torus_the_sum_is_unmoved_by_a_step`: summed over the
+  sites, a count read one step on is the count, for each of the four
+  ways. `a_step_on_and_a_step_back`.
+  `the_first_variation_in_the_states_is_a_sum_over_the_sites`: with no
+  link moved, the first variation is the sum over sites of
+  `what_multiplies_the_states_move_in_the_common_action` on the move
+  there: every way out, every way in, and the mass.
+  `where_every_site_has_nothing_the_states_stand_still`. This equation is
+  not Episode 13's `what_multiplies_the_move_of_the_state`, which has one
+  way out, no way in and mass one; so the obstruction in `Bridges.lean`
+  is about Episode 13's equation and not about the common action's.
+  `one_state_at_every_site_and_four_owed`: on the whole turn on every
+  link, one turn s at every site, mass −4, the first variation along any
+  move of all states and links is norm(s) by the summed whole parts of
+  the links' moves; so it stands still against every move of the states
+  and every move of the links with no whole part, and reads 4 on the
+  one-site torus against the whole turn. It meets the site equation at
+  every site. Say with it: the mass −4 was chosen (four ways out); the
+  state is a turn, not a spinor; it is not stationary against every link
+  move; the converse of the site equation is not proved; the link
+  equation is not taken out site by site; and whether moves with no whole
+  part are the right moves of the links (they keep a unit link's length
+  to first order) is Claude's remark, not a receipt. Do not say this is
+  the electron, or that the missing solution "with a state in it" for
+  Episode 13's own equations has been found: it has not.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
