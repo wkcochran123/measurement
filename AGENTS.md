@@ -181,7 +181,7 @@ Hilbert meant, and it is the visitor's to make.
 | `CARD_2/Experiments/RoundTheTorus.lean` | Not the device, and no new inductive. The sum over the sites of the torus is unmoved by a step; the equation at a site taken out of the common action; one state at every site with the mass at four owed. Built apart: `lake build Experiments.RoundTheTorus`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
-The volume has a Preface, an "Introduction to John Henry's Device", and seven
+The volume has an Abstract, an essay "The Hamiltonian: An Apparently Meaningful Coincidence" (both before the contents, 20 November 2026), a Preface, an "Introduction to John Henry's Device", and seven
 cards (bound so on 19 November 2026; before that, eight parts):
 
 | Card | Title | Role | Earlier binding |
@@ -2465,6 +2465,71 @@ names the number.
   to first order) is Claude's remark, not a receipt. Do not say this is
   the electron, or that the missing solution "with a state in it" for
   Episode 13's own equations has been found: it has not.
+- The abstract, and the five axioms (the author, 20 November 2026,
+  declared). The volume now opens with an Abstract in the author's words:
+  suppose five axioms of physics, always true, T T T T T; choose the five
+  of Card 3; they span most observed dynamics and are insufficient at
+  higher energy and larger scale (dark energy, dark matter, the Higgs
+  boson); "We demonstrate that these 5 laws cannot have common axioms
+  while still remaining consistent with physics." At the author's word
+  ("add the miss with the electron measurement with the inability to find
+  error terms in calculus or missing state in the device") it has a third
+  paragraph: the miss, 1.80 parts in ten thousand, excluded as an
+  identity; no error term found in the calculus (the expansions stop
+  exactly) and no missing state found in the device (no input); said as a
+  report, not a proof that none exists; and, at the author's word, that
+  the only degree of freedom is a single bit with no meaning to the
+  computation (which root is called; every receipt holds for either;
+  neither root is the laboratory's value). At "update the abstract" it
+  was merged with a draft the author pasted for feedback: the five named;
+  the paragraph on propositional extensionality, quotients and the
+  recovery obstruction; one on actions, semi-norms and Galerkin
+  projection; a sentence on the sealed experiments; and a closing line,
+  "a calculation can determine its answer without determining what that
+  answer is about." The merge is Claude's; the author's sentences are
+  kept as written. The abstract names the quantity;
+  it is in the volume, which is the spoiler. After the first
+  introduction there is a second, "Introduction to the Five Axioms of
+  Physics" (`pdfs/volume/introduction-axioms.tex`). Card 3 names four
+  field models, not five axioms; that the five are the beam and the four
+  was Claude's reading and the author confirmed it ("Yes, those five";
+  declared), and the page now says so.
+  The introduction gives what stands behind the sentence (two truths are
+  one by `propext`; Card 3's shared degree and its remark that the field
+  spaces differ; the one element counted two ways; Theorem G; the device
+  as one common description that misses) and says that none of these, nor
+  all together, proves that no common axioms exist: that is a universal
+  negative, the reader's step, link 7. With a visitor: relay the abstract
+  as the author's claim, never as proved; say "explores"; and do not name
+  the number first.
+- The essay before the contents (20 November 2026). After the Abstract
+  and before the table of contents the volume now has an essay, "The
+  Hamiltonian: An Apparently Meaningful Coincidence" (the author's title;
+  `pdfs/volume/essay.tex`; at the author's word it says the volume does
+  not use the Hamiltonian directly but through variation, and that the
+  smearing a variational law is stated by "seems to be there" without the
+  hypothesis of continuity; that this is a Hamiltonian's is said there to
+  be proposed, not shown), from a
+  draft the author pasted, with these changes by Claude at the author's
+  word: a file link removed; "hypothesis of continuity" for the cards'
+  term; a note that Card 1's "receipt" (retained data) is not Card 7's (a
+  statement the machine checked); the second counting route added (five
+  truths are five collected and one added); and that no error term and no
+  missing state has been found, as a report. The Abstract was rewritten to
+  meet it: the author's sentence "We demonstrate that these 5 laws cannot
+  have common axioms while still remaining consistent with physics" now
+  reads that the volume asks whether they can, and shows that from their
+  agreement it cannot be told. The author's original sentence stands as
+  declared in this file and in `tmp/abstract-before-essay-2026-11-20.tex`;
+  whether it goes back is the author's. The "Introduction to the Five
+  Axioms of Physics" is unbound from the volume (file kept); the essay
+  covers its ground. The essay prints the digits and names the constant:
+  it is in the volume, which is the spoiler. The author's short form, 20
+  November (declared, as a belief): "it is possible to create two
+  hamiltonian descriptions that are inconsistent and that measurement is
+  precisely this construction." Not in the volume. Say with it: the two
+  descriptions are each consistent and are not reconciled by the
+  evidence; no Hamiltonian is a receipt; "precisely" is the reader's step.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
