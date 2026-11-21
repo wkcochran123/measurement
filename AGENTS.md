@@ -2922,6 +2922,29 @@ names the number.
   Open after it: no strength is set against the laboratory; nothing is
   predicted and sealed; the first strength's number (1.42) is Claude's
   suggestion.
+- Experiments 015, 016, 017 (`READINGS.md`; setup `7508385`; read on the M2,
+  21 November 2026; sealed predictions Claude's, the author having said
+  only that they would show "something interesting that you haven't seen
+  yet"). 015, the coupling on other work: Experiment 001's g is 1.40 on
+  its own cell (reproduced to the heartbeat), 0.98 with the outer table
+  alone, 1.41 with the middle table on both sides, 0.77 on an arm's
+  weight. So g depends on the work and is not one coefficient; that g is
+  the strength between the naotrino and the nowtrino, the same on any
+  work, is refuted as stated. Two of Claude's ranges were refuted. Not
+  explained: why the outer table's cell is so near one blank and why a
+  second use of the middle table costs nothing more. 016, the depth of a
+  carrier: five boxes at one depth read within 20 heartbeats; two deep is
+  87 over and three deep 150 over, with the same contents and the same
+  number read. So the meter reads the depth the count does not. The
+  first rung costs 9,127, 11,688 and 13,135 from one, two and three deep,
+  but the three use different marks. Two of Claude's four statements
+  refuted. 017, does one count move the other: a second bottom with one
+  wrapper more has a bracket of 26; Episode 8's eighteen and the table do
+  not move; the classes and rungs do not refer to Episode 8's tapes. All
+  four statements confirmed: the two routes to eighteen and five are two
+  constructions the build finds equal, and neither is built from the
+  other. One machine. Do not offer explanations for the particular
+  numbers.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,

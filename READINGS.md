@@ -31,9 +31,9 @@ its files match the source commit.
 | 010 | `readings/010-the-value-from-nanoseconds` | the value from the nanoseconds: each count of the polynomial replaced by a timed reading of its tape over one blank; does it read slightly high? | `89b1909` | read on the M2: no real value; the author's prediction refuted as taken |
 | 011 | `readings/011-the-throw` | the throw: what one application of `Quot.sound`, the device's bent card, costs on the meter, against the floor and against the step of the device's truth | `25dc6e3` | read on the M2: 23,752 heartbeats, 5.64 blanks; all three sealed rules refuted |
 | 012 | `readings/012-the-enumeration` | the enumeration: rises 1 to 4 by levels 0 to 6 on the meter; does the floor under the reading change with the rise? | `c21c5c9` | read on the M2: the slope scales with the rise and the floor does not; all sealed rules confirmed |
-| 015 | `readings/015-the-coupling-on-other-work` | the coupling on other work: is Experiment 001's g, heartbeats per cell over the blank, the same when the cells do other work | `7508385` | sealed, not yet read |
-| 016 | `readings/016-the-depth-of-a-carrier` | the depth of a carrier: what a reader and a first rung cost on the meter on cards one, two and three deep and over four boxes | `7508385` | sealed, not yet read |
-| 017 | `readings/017-does-one-count-move-the-other` | does one count move the other: a second bottom with one wrapper more, and whether Episode 8's eighteen moves | `7508385` | sealed, not yet read |
+| 015 | `readings/015-the-coupling-on-other-work` | the coupling on other work: is Experiment 001's g, heartbeats per cell over the blank, the same when the cells do other work | `7508385` | read on the M2, 21 November 2026 |
+| 016 | `readings/016-the-depth-of-a-carrier` | the depth of a carrier: what a reader and a first rung cost on the meter on cards one, two and three deep and over four boxes | `7508385` | read on the M2, 21 November 2026 |
+| 017 | `readings/017-does-one-count-move-the-other` | does one count move the other: a second bottom with one wrapper more, and whether Episode 8's eighteen moves | `7508385` | read on the M2, 21 November 2026 |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -975,7 +975,28 @@ It read 1.42. The author has since said there is a strength between the naotrino
 as a candidate. If g is that strength it should not depend on what work the cells do. Four kinds of cell, n = 4 and
 8, two repeats. Seal: `readings/015-the-coupling-on-other-work/SEALED_PREDICTION.txt`, sha256 d14806b87ec2cbc2….
 
-RESULT15
+**Read:** Apple M2, 21 November 2026; raw in `readings/015-the-coupling-on-other-work/raw/M2/`. Blank N = 4,152. Both
+repeats identical to the heartbeat.
+
+| Work | H(4) | H(8) | marginal per cell, net of control | g |
+|---|---|---|---|---|
+| control (every cell True) | 5,600 | 11,127 | | |
+| w0: outer table against middle table (Experiment 001's) | 30,549 | 59,392 | 5,829 | 1.40 |
+| w1: outer table against itself, coins exchanged | 23,385 | 45,116 | 4,051 | 0.98 |
+| w2: middle table against itself, coins exchanged | 30,573 | 59,485 | 5,846 | 1.41 |
+| w3: an arm's weight against itself | 91,225 | 109,480 | 3,182 | 0.77 |
+
+Against the seal. P1 (w0 reproduces 001, 1.35 to 1.45): **confirmed**, 1.40, and the two readings are Experiment 001's
+to the heartbeat. P2 as a whole (g is not one number): **confirmed**; w1 and w3 are far from w0. P2's ranges: w1 in
+0.05 to 0.60: **refuted**, it is 0.98. w2 in 2.2 to 3.4: **refuted**, it is 1.41, the same as w0 to within 0.01. w3 in
+0.05 to 1.0: **confirmed**, 0.77. P3 (repeats identical): **confirmed**.
+
+What is measured. g depends on the work. It is not one coefficient. With the outer table alone a cell costs very
+nearly one blank (0.98); with the middle table in the cell, on one side or on both, it costs 1.40 to 1.41. The middle
+table used twice costs what it costs used once (5,846 against 5,829). So Experiment 001's 1.42 is not a strength of
+the device as such: it is the cost of that cell. Not explained here: why the outer table's cell is so near one blank,
+and why a second use of the middle table is free. The reading under test, that g is the strength between the
+naotrino and the nowtrino and so the same on any work, is **refuted as stated**.
 
 ### 016. The depth of a carrier
 
@@ -984,7 +1005,35 @@ The cards one, two and three deep, and over four boxes, hold the same contents a
 cards, and the first rung dealt from one, two and three deep; two repeats. Seal:
 `readings/016-the-depth-of-a-carrier/SEALED_PREDICTION.txt`, sha256 cae299b112ba7efc….
 
-RESULT16
+**Read:** Apple M2, 21 November 2026; raw in `readings/016-the-depth-of-a-carrier/raw/M2/`. Both repeats identical to
+the heartbeat.
+
+| Reader past the quarter, on | Depth | Heartbeats | Over the first card |
+|---|---|---|---|
+| the first card (a fact) | 1 | 55,538 | |
+| Episode 8's card (a proposition) | 1 | 55,549 | 11 |
+| a carrier of an empty box | 1 | 55,542 | 4 |
+| a carrier of an Area | 1 | 55,535 | −3 |
+| a carrier of an equivalation | 1 | 55,555 | 17 |
+| the card between | 2 | 55,625 | 87 |
+| the card on the card between | 3 | 55,688 | 150 |
+
+| First rung dealt from | Heartbeats | Over the one before |
+|---|---|---|
+| one deep (Episode 8's card) | 9,127 | |
+| two deep (the card between) | 11,688 | 2,561 |
+| three deep | 13,135 | 1,447 |
+
+Against the seal. P1 (the seven cards within 50 of one another): **refuted**; the five cards one deep are within 20,
+but two deep is 87 over and three deep 150 over. P2 (the rung's cost rises with depth): **confirmed**. P3 (the two
+increments each between 50 and 2,000 and within 20 percent of each other): **refuted**; they are 2,561 and 1,447. P4
+(repeats identical): **confirmed**.
+
+What is measured. The box costs nothing to speak of: five different boxes at one depth read within 20 heartbeats.
+The depth costs: each wrapper adds to the reader's cost, 87 for the second and 63 for the third, though the contents
+are the same and the number read is the same. So the meter reads the depth that the count does not. The rung's
+increments are not equal and are not clean: the three rungs use three different marks, one of them defined beside
+the device, so part of the difference may be the mark and not the depth. One machine.
 
 ### 017. Does one count move the other?
 
@@ -993,4 +1042,17 @@ Does changing one change the other? No meter: a second bottom with one wrapper m
 refuses, and a search of the classes and rungs for references to Episode 8's tapes. Seal:
 `readings/017-does-one-count-move-the-other/SEALED_PREDICTION.txt`, sha256 bf7e6145b8375d2f….
 
-RESULT17
+**Read:** 21 November 2026; raw in `readings/017-does-one-count-move-the-other/raw/M2/`.
+
+The second bottom, with one wrapper more on the accumulation, has a bracket of 26. The bottom's own is 18. Episode 8's
+number is 18 and the weight of the arm that clicks is 18. Line A (Episode 8's eighteen is eighteen) is accepted. Line
+B (the arm that clicks is the other bracket) is refused. The search of Episodes 1 to 7 and 9 to 11 finds no reference
+to Episode 8's tapes or counts. An arm's weight is defined in Episode 12 from Episode 8's two counts.
+
+Against the seal. P1 (the other bracket is not eighteen): **confirmed**, 26. P2 (Line A accepted): **confirmed**. P3
+(Line B refused): **confirmed**. P4 (no reference; the weight is from Episode 8's counts): **confirmed**.
+
+What is shown. The two routes to eighteen and five are two constructions. The build finds them equal; neither is
+built from the other, and changing the bottom does not move Episode 8's number or the table. So that they agree is a
+fact about how each was written, which is what the author means by "planted". This does not touch the author's
+point that there is one build and that inside it the equality is the kernel's judgment.

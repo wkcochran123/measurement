@@ -1,0 +1,11 @@
+26
+18
+18
+18
+/Users/williamcochran/Desktop/measurement/CARD_2/../readings/017-does-one-count-move-the-other/probe.lean:28:58: error: Type mismatch
+  rfl
+has type
+  ?m.3 = ?m.3
+but is expected to have type
+  the_arm_weight true true = the_other_bracket
+exit 1

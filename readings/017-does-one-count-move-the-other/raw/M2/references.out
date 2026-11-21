@@ -1,0 +1,5 @@
+References in Episodes 1 to 7 and 9 to 11 (the classes and the rungs) to Episode 8's tapes and counts:
+(end)
+Definition of an arm's weight in Episode 12:
+1625:def the_arm_weight (a b : Bool) : Nat :=
+1626-  (if the_arm_stores_a_fact_that_can_click a b then readers_experience.bent_card else 0) + the_dimensions_of_universe

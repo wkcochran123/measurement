@@ -1,0 +1,14 @@
+import Measurement.Episode12
+open Lean Elab Term Meta Measurement
+def cellA (i : Nat) : Bool := i % 2 == 0
+def cellB (i : Nat) : Bool := (i / 2) % 2 == 0
+def probe : FACT :=
+  { truth := ∀ i : Fin 4, the_representation.middle_table (cellA i.val) (cellB i.val) = the_representation.middle_table (cellB i.val) (cellA i.val)
+    click := inferInstance }
+elab "cold" : command => do
+  Command.liftTermElabM do
+    let (h, b) ← the_ekg_reads (← `(probe.click))
+    let w ← whnf (← elabTerm (← `(probe.click)) none)
+    logInfo m!"READ work=w2 n=4 raw={h} blank={b} net={(h:Int)-b} head={w.getAppFn}"
+cold
+
