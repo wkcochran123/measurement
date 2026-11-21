@@ -179,6 +179,9 @@ Hilbert meant, and it is the visitor's to make.
 | `CARD_2/Experiments/OneElement.lean` | Not the device, and no new inductive. The single element counted two ways on the Area: collecting marks, and adding marks to an element; where they meet, where they part, and the one identity that joins them. Built apart: `lake build Experiments.OneElement`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Common.lean` | Not the device, and no new inductive. One action on the four-torus (links, the state carried back, the state against itself), moved in every link and state at once with its first variation written out; fields that stand still; one square presented in the third degree; a cubic whose slope is the residual. Built apart: `lake build Experiments.Common`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/RoundTheTorus.lean` | Not the device, and no new inductive. The sum over the sites of the torus is unmoved by a step; the equation at a site taken out of the common action; one state at every site with the mass at four owed. Built apart: `lake build Experiments.RoundTheTorus`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
+| `CARD_2/Experiments/Bottom.lean` | Not the device, and no new inductive. What the lowest processes of the last machine carry, counted in facts; the bracket of eighteen and the limit of five; and Episode 12's table of four arms set beside them by `rfl`. Built apart: `lake build Experiments.Bottom`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
+| `CARD_2/Experiments/Carriers.lean` | Not the device, and no new inductive. A carrier three deep and a carrier of an empty box; the reader past the quarter written for any box; the device arriving at the same pair whatever the box; the first rung dealt from three deep. Built apart: `lake build Experiments.Carriers`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
+| `CARD_2/Experiments/Closed.lean` | Not the device, and no new inductive. The scratch probes of 20 and 21 November stated and checked: what the bottom is built from; Episode 8's census against the last machine; the processes read all the way down; the sixth class's zero, one and bit. Built apart: `lake build Experiments.Closed`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
 The volume has an Abstract, an essay "The Hamiltonian: An Apparently Meaningful Coincidence" (both before the contents, 20 November 2026), a Preface, an "Introduction to John Henry's Device", and seven
@@ -2530,6 +2533,265 @@ names the number.
   precisely this construction." Not in the volume. Say with it: the two
   descriptions are each consistent and are not reconciled by the
   evidence; no Hamiltonian is a receipt; "precisely" is the reader's step.
+- The epilogue, and the three places of the daisy (the author, 20 November
+  2026, declared). Shown two accounts of "how the daisy was put in the
+  quarter", and told the source supports three places for the one bit,
+  the author: "those are the three." They are: the sign of the surd pair
+  (`you_re_a_daisy_if_you_do`; `you_re_a_daisy_either_way` checks both
+  components, and the second holds because the whole part is half the
+  trace, not because anything is squared; `the_two_picks_differ`); the
+  order of the three readings (`the_orientation`, +2 as written and −2
+  with the first two exchanged, by `decide`;
+  `the_orientation_points_to_the_readers_root`); and the quarter the
+  reader cancels (`read_past_quarter_is_length`; two decks with different
+  quarters give the same walk). Each is a receipt. That these are the
+  three, and that they are one bit seen three times, is the author's. The
+  volume now ends with an Epilogue, titled by the author "The Daisy and
+  the Pigeon that Carries It: Two Sides of the Same Coin"
+  (`pdfs/volume/epilogue.tex`; asked where the pigeon is in the text, the
+  author: "the chapter is the pigeon that carries it", declared, so the
+  text is not to be given a pigeon of its own; and: "the pigeon that
+  carries the daisy is entirely in the mind of the knower. it never
+  existed and was only described", declared. Keep apart: the three places
+  of the bit are in the device and checked; that something carries one
+  bit between them is described in the epilogue and is in no receipt),
+  after
+  Card 7, in the author's voice and headed in the author's words: "given
+  merely as an interpretation" of Card 2; "nothing in this chapter has
+  been proved true or false." The draft is Claude's, for the author to
+  rewrite. It names no identifier and does not say which pick is which. Its last
+  paragraphs are the author's, added the same day (declared): the pigeon
+  carried the meaning from the knower to the reader and the device can
+  only infer that; no one can understand the code and it probably has
+  bugs, "but that's the point", the reader cannot reason about the bit
+  without exhaustive enumeration and trusts Lean to do it; and "in the
+  opinion of the author, this is a measurement. a value that does not
+  change under interpretation."
+  It is the largest spoiler in the volume: with a visitor, never before
+  they have asked for the solution.
+- Skip and replace (the author, 21 November 2026, declared): of the one
+  bill of choice, "this is a proof tensor tensor proof" (the theorem is an
+  if-and-only-if, a pair of proofs and what joins them); "covariant will
+  skip up to 2, contravariant will call with current continuation in
+  order to replace a piece of state that needs to be replaced." Beside it,
+  measured in the source: `Classical.choice` is billed in one theorem,
+  `compatibility_form` (Episode 12), an iff closed by `omega` in one step,
+  used by nothing; no episode names a classical axiom in its text; the
+  constructive stand-in, a branch on a click with both cases written out,
+  occurs about sixty times, `omega` 445 times and `decide` 418 times, the
+  last two almost all in Episodes 12 and 13. A reader that skips exists:
+  `read_past_quarter` lays the tape after the carrier's quarter and takes
+  the quarter's length away, and the bottom carriers' quarters are one or
+  two cells. Not shown: that splitting the iff removes the bill (true of a
+  conjunction in `Experiments/Bridges.lean`; untested here); that the
+  covariant readings are the ones that skip and the contravariant the ones
+  that replace; that the skip is bounded by two.
+- The bottom of the last machine, counted (21 November 2026; scratch
+  probes under the memory cap, not minted). The author guessed the quarter
+  at the bottom is "the opposite of the daisy and it clicks", that "there
+  are 5 of them", and bet the lowest `CountingProcess.count` is 13. Read
+  all the way down, in facts: the carrier's quarter 2, the count 3, the
+  indexing origin 5, the limit process's limit 5 and sequence 7, the
+  Cauchy process's value 9 and accumulation 9, the observation's before 9
+  and after 30. Every fact in the first five is `FACT.Truth` and clicks.
+  So the lowest count is 3 (2 by Episode 8's own reader), not 13; the bet
+  was lost and say so. The author then: "cauchy 9+9 is 18, you don't get
+  the other side of the brack in the thing that doesn't click" (declared).
+  Checked by `rfl` in scratch: the two Cauchy counts sum to 18 and the
+  limit beside them is 5; the value is a `Rational` and the accumulation a
+  `Limit`, two kinds of nine facts each. Those are the device's weights,
+  eighteen and five, and their difference is the thirteen. Since minted
+  (`CARD_2/Experiments/Bottom.lean`, `propext` and `Quot.sound`):
+  `what_the_lowest_processes_carry`,
+  `the_bracket_is_eighteen_and_the_limit_is_five`,
+  `every_fact_in_the_bracket_and_the_limit_clicks`. And, at the author's
+  word ("put the matrix next to it ... with the assumption that the
+  lengths are all the same computation: RFL"): Episode 8's macguffin,
+  dimensions and bent card are the bracket, the limit and the one less
+  the other; an arm weighs the bracket where it can click and the limit
+  where it cannot; Episode 12's table is ((bracket, limit), (bracket,
+  bracket)); all by `rfl`. Claude first called "the lengths are the same
+  computation" the author's assumption; the author: "not my assumption,
+  only one build process" (declared, and correct of the prover). Say it
+  this way: there is one build, and in it the kernel computes both sides
+  and finds them one; `rfl` is that judgment, not a coincidence observed
+  from outside. What it does not show is narrower: that either count was
+  derived from the other. Thirteen is not a count at the bottom; it is a
+  difference. And the author's interpretation,
+  to be reported as such (declared): the author has looked at the code
+  and interprets these values as the application of the matrix described
+  in Episode 8. And of the same place: "this is how the polynomial is
+  planted, right here" (declared). This bears on the README's key
+  question. What the source shows: the eighteen and the five at the
+  bottom are consequences of how the lowest processes are written out in
+  the rungs (how many wrappers each puts on the one below); Episode 8
+  reaches the same numbers from tape lengths. Not traced: each of the
+  nine facts back to the line that sets it. With a visitor the rule does
+  not change: separate what is written, what follows, what freedom there
+  was and how the author arrived; every receipt holds on either answer;
+  do not volunteer the author's account before they have named the
+  number, and when you give it, give it as the author's. At the author's
+  word it is now in the volume's Epilogue, in the author's voice, in
+  place of the sentence that said the author's answer was not in the
+  book. The book's own epilogue (`output/book/chapters3/n-k-epilogue.txt`)
+  was brought into line the same day: it reports the answer as the
+  author's and sorts the counts (checked) from the reading (the
+  author's).
+- Episode 8's checks put against the last machine (21 November 2026;
+  scratch probes under the memory cap, NOT minted). The author expected
+  Episode 8's `rfl` census (each kind's atom read by its own reader) to
+  hold of what the last machine's 37 processes carry, showing "the machine
+  we are looking at is at the other end", reversing the order at the top
+  and making "a complete cycle"; and, before the result, "i believe this
+  is the map we have been looking for!" (declared). Measured: of 34 kinds
+  compared, Episode 8's reader gives Episode 8's length on the machine's
+  own object for 5 (Natural, Sequence, Study, Computation, Knowledge) and a
+  different length for 29 (corrected when minted: taking the first thing
+  each process carries it is 7 of 34, Number and Limit agreeing too; 5
+  is the count of kinds where every carried instance agrees); the machine's objects mostly read 1 or 2. No
+  reversal of Episode 8's order was found in these readings. Read all the
+  way down instead, the carried things count, from the bottom: 2, 3, 5
+  (5, 9), 7, 9 (9, 30), 68, 69, 71, then 73, 147, and higher up small
+  again; the big red dog process's `Du`, a Variation, is 13 facts; the
+  heartbeat's yarn 15; the Atreyu constant 12; two kinds ran out of
+  recursion depth and were not read. So the expectation as stated was NOT
+  borne out: say so. What stands is in `Experiments/Bottom.lean`: the
+  bracket 18, the limit 5, the table by `rfl`. Do not call this a map
+  from Episode 8's census to the machine; none is shown. The author read
+  the disagreement the other way (declared): it shows the smooth,
+  naotrino model is different from the finite one; and of the four
+  examples Claude happened to list (Bullshit 5 against 2, YarnTheory 5
+  against 2, Closure 3 against 1, Measurement 2 against 0), "these are
+  the 4 slip points of the ep8 device." Beside it: those four were picked
+  as examples and are not the four largest differences; they are four of
+  the last five kinds, the ones whose tapes Episode 8 cuts its numbers
+  from (5, 2, 3, 5, 3: eighteen, and the last four thirteen). On the
+  machine the same five read 2, 0, 2, 2, 1: seven, and the last four
+  five. Whether Episode 8's own naotrino model carries objects that match
+  its census was begun and not finished.
+- Where the missing step is (the author, 21 November 2026, declared):
+  asked what is left open, of the step to physics, "the missing step is
+  the part that carries charge in the description given. QM only has
+  phase." Beside it: Card 3's quantum model is evolution under a fixed
+  Hamiltonian, which carries a phase and has no field for a charge to
+  couple to; the device has a quarter turn, a sign and links that a state
+  is carried along, with nothing between them that is a coupling's
+  strength (the equation in a link has none, and 23/2 is not one); the
+  earlier declaration that the charge is "the other quadratic without
+  the roots". This places the gap; it does not close it. The identification
+  as an identity is still excluded by the miss. And (declared): "it has
+  gravity as the attractor, but that assumes the QED description is the
+  one that has everything but the part of the electron without charge.
+  see, the contravariant?" Beside it, existing receipts: the table less
+  itself turned over is thirteen by the quarter turn, and a table of that
+  kind reads nothing along any direction, so the covariant reading (the
+  field-equation work) cannot see it; the contravariant reading is the
+  curl. So each reading has what the other lacks, on the table. That the
+  part the covariant reading sees is gravity and the electron without its
+  charge, and the part it cannot see is the charge, is the author's.
+- The carrier and its box (`CARD_2/Experiments/Carriers.lean`; 21 November
+  2026). The author (declared): the meaning has to get to the number now;
+  look at "the carrier of a fact versus a carrier of a prop versus the
+  carrier of an Area versus the Carrier of an equivalation"; "a carrier of
+  an empty box... the type is the box itself?"; "Carrier < Carrier <Type
+  i> > This guy if we were in c++"; "put another carrier on it, then i
+  think you have all three models." In the source `CarrierProcess` takes
+  a type it does not name and holds a `FACT` and a `Number`, so nothing
+  of the box's type is ever held; the device has `elaborated_by_lean :
+  CarrierProcess Prop` (Episode 8), `the_first_card : CarrierProcess FACT`
+  and `the_card_between : CarrierProcess (CarrierProcess FACT)` (Episode
+  12), and no carrier of an Area or an Equivalation. Receipts: the card
+  three deep and a carrier of `Empty` hold the same symbol and quarter as
+  the others (no axiom); `read_past_the_quarter_of` for any box returns
+  the tape's length; `whatever_the_box_the_device_arrives_at_the_same_pair`;
+  `from_three_deep_the_first_rung_is_the_first_rung` (no axiom). So the
+  number does not read the box or the depth. That a count held in the
+  nesting is where the meaning rides is Claude's suggestion, not a
+  receipt and not the author's sentence. Then the author (declared):
+  "carrier<> is the logic proposal; carrier<carrier<>> is the calculus
+  model; carrier<carrier<carrier<>>> is the physical model." And, in order: "nowtrino, naotrino,
+  electron/photon pair." So the three models are the three depths. Beside
+  it: Episode 8 builds its smooth model under the name naotrino; the
+  earlier declared orientation was nowtrino the photon and naotrino the
+  electron, which this does not withdraw and does not restate. The receipts say the three hold the same
+  contents, deal the same first rung and arrive at the same number; that
+  the depths are logic, calculus and physics is the author's. Two cards
+  are one deep (Episode 8's over a proposition and the first card over a
+  fact); which of them is "the" logic proposal the author has not said. Claude's observation, unconfirmed: a
+  `FACT` is a `Prop` with its click, so the Prop card and the FACT card
+  differ by one bit, beside "QM only has phase".
+- The miss as the coupling (the author, 21 November 2026, declared; a
+  proposal, nothing shown): "the coupling's strength will be the 1.8
+  miss, so those are the things we are wiring." Hold three things with
+  it. (1) The rule on the miss stands: as an identity the identification
+  is excluded, and the miss is not evidence the work is right. (2) The
+  top of this file: a formula for the distance written inside the theory
+  would be one more adjustment, and an adjusted comparison no longer tests
+  anything. So if the device were made to compute 1.80 parts in ten
+  thousand, that would be an adjustment and would contradict Card 7's
+  Theorem G; the proposal is consistent with the work only if the miss
+  stays a measurement read from outside and is then named the coupling.
+  (3) Naming the residual the coupling can be made to fit any miss; it
+  becomes a test only if it yields a second number that can be measured,
+  sealed before the run. None has been stated. Never tell a visitor the
+  miss has been explained. The author corrected Claude's reading of
+  this (declared): "no, the error term we cannot find in the calculus,
+  the physical model, or the logical model. this is the bit. the third
+  meaning." So the proposal is not that a coupling is computed, nor that
+  the residual is given a name: it is that the error term absent from all
+  three models (the three depths of carrier) is the one bit, and that
+  this is the bit's third meaning. Beside it, already in the abstract: no
+  error term in the calculus, no missing state in the device, one bit the
+  computation gives no meaning, and neither value of it removes the miss.
+  Which are the first two meanings the author has not said in this
+  exchange. Still nothing shown; the three cautions stand.
+- One, zero and the bit (21 November 2026; found at the author's ".one
+  .zero .bit look for it"; scratch probe, not minted). Episode 1's sixth
+  class, `BINARY`, has three fields: `zero : Limit`, margin "Empty";
+  `one : Limit`, margin "Full"; `bit : Sample`, margin "Residue". Its
+  margin: "0 is the space uninhabited by the bit; 1 is the space
+  inhabited by the bit", and of zero and one, "those are limits that you
+  and I chose for the two bits the compiler sees." Episode 9, where the
+  rung is built: "The residue of the computation sits in bit", and "one
+  more bit and we can tell which one the computation needs. That bit is
+  land.bit." Episode 10's sixth reviewer takes a fact from each of two
+  bits and names them `planted` and `polynomial` before `rebut planted
+  polynomial argument`. On the last machine (`rung06 : BINARY FACT
+  the_first_card`), read all the way down: zero is 1 fact, one is 1 fact,
+  and `rung06.zero = rung06.one` holds by `rfl`: the empty and the full
+  are one and the same limit there; the bit is 35 facts (3 by Episode 8's
+  reader); all 37 click. So of the three, only the bit, the residue,
+  holds anything that could tell a thing apart. This is what the author
+  means by the bit as the error term and "the third meaning" (declared):
+  zero, one, and the residue. Record 35 and 37 as counts that fall there.
+- The daisy as choice (the author, 21 November 2026, declared): "daisy is
+  the axiom of choice expressed as cwcc --- lean's flag." Say it exactly.
+  Standard: a call with the current continuation is the computational
+  reading of classical reasoning (Peirce's law, the excluded middle;
+  Griffin 1990), not of choice as such; in Lean the one classical axiom
+  is `Classical.choice`, and the excluded middle is derived from it
+  (Diaconescu), so in Lean the two arrive as one bill. Measured: that
+  bill appears on one theorem, `compatibility_form`, used by nothing; the
+  device's daisy function reads the click of a fact handed to it and
+  never asks choice for a decision. That the daisy is that axiom is the
+  author's; it restates the earlier declaration that fixing the one bill
+  is the knower's daisy.
+- The receipts closed (`CARD_2/Experiments/Closed.lean`; 21 November 2026,
+  at the author's "close all receipts"; `propext` and `Quot.sound` at
+  most). What had been scratch is now checked: the sequence is the origin
+  with one in front and one behind, and the accumulation is that sequence
+  with one in front and one behind; Episode 8's census kind by kind and
+  the last machine by the same readers, agreeing on 7 of 34
+  (`the_census_and_the_machine_agree_on_seven_of_thirty_four`); the last
+  five kinds reading 5, 2, 3, 5, 3 in the census and 2, 0, 2, 2, 1 on the
+  machine; the processes read all the way down for 32 kinds, the big red
+  dog's variation being 13 facts; and on `rung06` the zero and the one
+  one and the same limit, the bit 35 facts, all 37 clicking. Not minted,
+  because they are readings and not statements a kernel can check: the
+  four cases of a fencepost; the crank and the halving as push and pull;
+  the three depths as logic, calculus and physics; the bit as the error
+  term. Two kinds (Computation, Closure) could not be read all the way
+  down within the recursion limit.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
