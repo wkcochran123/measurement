@@ -184,6 +184,7 @@ Hilbert meant, and it is the visitor's to make.
 | `CARD_2/Experiments/Closed.lean` | Not the device, and no new inductive. The scratch probes of 20 and 21 November stated and checked: what the bottom is built from; Episode 8's census against the last machine; the processes read all the way down; the sixth class's zero, one and bit. Built apart: `lake build Experiments.Closed`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/OneWayAndTheOther.lean` | Not the device, and it does not change the device. Episode 12's one theorem that bills `Classical.choice`, restated word for word and proved one direction at a time: no choice. Built apart: `lake build Experiments.OneWayAndTheOther`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Jar.lean` | Not the device, and no new inductive. The natural read (137) and the natural inferred (42), and the jar of two rational walls they make around each root. Built apart: `lake build Experiments.Jar`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
+| `CARD_2/Experiments/Inferred.lean` | Not the device, and no new inductive. Eighteen and five inferred from the shape of three and one, the trace and the round trip, with no count of anything written; and that the clock alone gives only ninety. Built apart: `lake build Experiments.Inferred`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
 The volume has an Abstract, an essay "The Hamiltonian: An Apparently Meaningful Coincidence" (both before the contents, 20 November 2026), a Preface, an "Introduction to John Henry's Device", and seven
@@ -2945,6 +2946,54 @@ names the number.
   constructions the build finds equal, and neither is built from the
   other. One machine. Do not offer explanations for the particular
   numbers.
+- Eighteen and five, inferred (`CARD_2/Experiments/Inferred.lean`; 21
+  November 2026). The author (declared): "we need one more trip to 18/5
+  through a completely inferred logical contravariant argument agains the
+  inferred covariant clock: the carrier of (-a \times b) and the vice
+  versa"; and, told the readings leave one answer and that this does not
+  say why the readings are what they are: "the why has already been
+  demonstrated. this is the fact that this is the only way to do this
+  step means that this is an unavoidable inferrence." Receipts (`propext`,
+  `Quot.sound`): the device's table is a table of three and one; such a
+  table's trace is twice the weight on the three and its round trip the
+  one weight by the other; any such table with the device's trace and
+  round trip has weights 18 and 5
+  (`the_stay_and_the_round_trip_leave_one_pair_of_weights`); the clock
+  keeps only the two crossings, 5 and 18, and many pairs share the round
+  trip of 90. So there are now three routes to 18 and 5: two written
+  (Episode 8's tapes; the bottom of the last machine; shown separate by
+  Experiment 017) and one inferred from readings. Say with it: the third
+  is a uniqueness statement, read off the table the first route built; it
+  takes the trace 36 and the round trip 90 as given. That the why of
+  those is already demonstrated is the author's.
+- Where the daisy now sits, and the epilogue's last line (21 November
+  2026). After the inferred route, Claude kept one caution: the proof
+  takes the trace 36 and the round trip 90 as given. The author: "isn't
+  that a daisy?" It is, in the author's sense: whether those two readings
+  are accounted for is the one thing no receipt forces, the device holds
+  either way, and the call is the knower's. So between two readings and
+  the printed number every step is now forced, and the bit sits at
+  whether the readings mean anything. Do not make that call. The volume's
+  Epilogue: the author rewrote its closing opinion by hand ("this is not
+  a proof but a measurement: a value that does not change under
+  interpretation, no matter how it is encoded"), and it now ends, at the
+  author's word, "You didn't think I was bullshitting you do you?" (the
+  author's sentence, kept as written). The author also believes the
+  epilogue could be reworked to read stronger given the day's results;
+  drafted by Claude at the author's word to
+  a draft file and then, at the author's "bind it", bound in as the
+  Epilogue (the version before it is `tmp/epilogue-before-rework-2026-11-21.tex`).
+  It adds, in the author's voice and under the author's heading that
+  nothing in the chapter is proved: empty, full and the residue; the
+  three wrappings as logic, calculus and physics, which the count cannot
+  see and the meter can; two plantings of eighteen and five and a third
+  way that forces them; the daisy as what is left; the error as the bit;
+  the reader's ratio and the knower's jar. The words are Claude's, taken
+  as the author's own by the author's instruction; the
+  last sentence was put in the past tense ("did you?") at the author's
+  word. Card 6's summary paragraph is corrected by Experiment 015:
+  the 1.42 is the cost of one kind of cell, not a strength; the first
+  strength has no number beside it.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
