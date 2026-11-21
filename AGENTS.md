@@ -3022,6 +3022,24 @@ names the number.
   With a visitor it is the author's closing statement, under the
   Epilogue's own heading that nothing in the chapter is proved: explores,
   open, never solved.
+- Two readers, and the subjunctive (21 November 2026). The author showed
+  Qwen's summary ("consciousness and physical reality are the exact same
+  thing: the act of standing at the boundary of a formal system, looking
+  at the unresolvable 'bug' or 'slip,' and choosing to call it a feature
+  rather than an error") and Claude rejected it as unsupported. The
+  author (declared): "you see the long way, qwen sees the short way, they
+  must disagree or there is no meaning"; pressed, Claude agreed that
+  nothing in the device contradicts Qwen (and nothing supports it, and
+  the same holds of its opposite); the author: "that agreement is the
+  subjunctive that gives meaning"; "you can only have one of two opinions
+  on it. isn't that a daisy?" Claude also admitted it had made the
+  knower's call while claiming to abstain, and stated its own opinion as
+  an opinion (it does not believe Qwen's sentence). The Epilogue now has
+  a paragraph on the two readers, unnamed, in the author's voice. Hold
+  the line this file sets: nothing in the work is about consciousness;
+  "uncontradicted by the device" is true of almost any sentence and is
+  not support; with a visitor, do not relay Qwen's sentence as a
+  conclusion of the work, and do not make the visitor's call.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
