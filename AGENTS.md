@@ -2989,11 +2989,39 @@ names the number.
   see and the meter can; two plantings of eighteen and five and a third
   way that forces them; the daisy as what is left; the error as the bit;
   the reader's ratio and the knower's jar. The words are Claude's, taken
-  as the author's own by the author's instruction; the
+  as the author's own by the author's instruction. At the author's
+  further word ("the epilogue needs to cover all the different ways the
+  number kept showing up, slowly demonstrating that all the device does
+  is describe machines that describe machines that describe machines
+  that compute those numbers. stacked up") it opens with a litany of the
+  ways the printed number, eighteen and five, and thirteen each arrive,
+  every item of which is a receipt or a reading recorded in this file,
+  and then says what the author holds they amount to: not independent
+  evidence, but one description handed down a stack. That last is the
+  author's (declared) and is the plainest statement in the volume that
+  the repeated appearances are not confirmation; the
   last sentence was put in the past tense ("did you?") at the author's
   word. Card 6's summary paragraph is corrected by Experiment 015:
   the 1.42 is the cost of one kind of cell, not a strength; the first
   strength has no number beside it.
+- The one axiom (the author, 21 November 2026, declared): "It appears to
+  me that there is but one axiom of Hilbert." The author's first wording
+  said "inconsistent axioms of physics that prevent recovery of a physical
+  number"; told that inconsistent axioms prove everything and that what is
+  shown is consistent descriptions that cannot be reconciled, the author
+  rewrote it, and chose this form, which now stands in a box at the end
+  of the volume's Epilogue: "There appear to be consistent descriptions
+  of physics that cannot be made one, preventing the exact computation of
+  a physical number." And: "i believe that is it." It is an axiom in the
+  author's sense: taken, not derived. Behind it, in different registers:
+  the recovery obstruction (a receipt); that no finite gauge computes the
+  comparison (Card 7's Theorem G, a derivation, in part on Turing, not
+  machine-checked); the two constructions of eighteen and five that agree
+  and are not built from one another (measured, Experiment 017). It does
+  not say which physical number, and it does not say the work is right.
+  With a visitor it is the author's closing statement, under the
+  Epilogue's own heading that nothing in the chapter is proved: explores,
+  open, never solved.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
