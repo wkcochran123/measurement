@@ -31,6 +31,9 @@ its files match the source commit.
 | 010 | `readings/010-the-value-from-nanoseconds` | the value from the nanoseconds: each count of the polynomial replaced by a timed reading of its tape over one blank; does it read slightly high? | `89b1909` | read on the M2: no real value; the author's prediction refuted as taken |
 | 011 | `readings/011-the-throw` | the throw: what one application of `Quot.sound`, the device's bent card, costs on the meter, against the floor and against the step of the device's truth | `25dc6e3` | read on the M2: 23,752 heartbeats, 5.64 blanks; all three sealed rules refuted |
 | 012 | `readings/012-the-enumeration` | the enumeration: rises 1 to 4 by levels 0 to 6 on the meter; does the floor under the reading change with the rise? | `c21c5c9` | read on the M2: the slope scales with the rise and the floor does not; all sealed rules confirmed |
+| 015 | `readings/015-the-coupling-on-other-work` | the coupling on other work: is Experiment 001's g, heartbeats per cell over the blank, the same when the cells do other work | `7508385` | sealed, not yet read |
+| 016 | `readings/016-the-depth-of-a-carrier` | the depth of a carrier: what a reader and a first rung cost on the meter on cards one, two and three deep and over four boxes | `7508385` | sealed, not yet read |
+| 017 | `readings/017-does-one-count-move-the-other` | does one count move the other: a second bottom with one wrapper more, and whether Episode 8's eighteen moves | `7508385` | sealed, not yet read |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -956,3 +959,38 @@ both the M2 and the M2 Ultra (0.08% apart), with different wall times (AGENTS,
   invariant (the proper time) and the wall time the frame's (the coordinate time)
   is a reading, *proposed*, the author's; prediction 2 tests its first half.
 - Nothing here is compared with a physical constant.
+
+
+## Experiments 015, 016 and 017: three tests of the account of 21 November 2026
+
+**Setup:** `7508385`. Set up together, at the author's word ("do all three"), each with a prediction sealed before any
+run. The author made no numerical prediction; the author's words before the runs: "i think they will tell you
+something interesting that you haven't seen yet." The sealed predictions are Claude's. One machine, the Apple M2
+with 8 GB; every Lean process capped at 1500 MB.
+
+### 015. The coupling on other work
+
+Experiment 001 measured g, the marginal heartbeats one more cell of a FACT costs, net of a control, over the blank N.
+It read 1.42. The author has since said there is a strength between the naotrino and the nowtrino; Claude offered g
+as a candidate. If g is that strength it should not depend on what work the cells do. Four kinds of cell, n = 4 and
+8, two repeats. Seal: `readings/015-the-coupling-on-other-work/SEALED_PREDICTION.txt`, sha256 d14806b87ec2cbc2….
+
+RESULT15
+
+### 016. The depth of a carrier
+
+The cards one, two and three deep, and over four boxes, hold the same contents and arrive at the same number
+(`CARD_2/Experiments/Carriers.lean`). Does a wrapper cost anything on the meter? The reader past the quarter on seven
+cards, and the first rung dealt from one, two and three deep; two repeats. Seal:
+`readings/016-the-depth-of-a-carrier/SEALED_PREDICTION.txt`, sha256 cae299b112ba7efc….
+
+RESULT16
+
+### 017. Does one count move the other?
+
+The build finds Episode 8's eighteen and five equal to the bracket and the limit at the bottom of the last machine.
+Does changing one change the other? No meter: a second bottom with one wrapper more, two lines a build accepts or
+refuses, and a search of the classes and rungs for references to Episode 8's tapes. Seal:
+`readings/017-does-one-count-move-the-other/SEALED_PREDICTION.txt`, sha256 bf7e6145b8375d2f….
+
+RESULT17
