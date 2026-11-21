@@ -170,9 +170,45 @@ theorem every_fact_in_the_zero_the_one_and_the_bit_clicks :
 
 end zero_one_and_the_bit
 
+section the_knowers_clock
+open the_area the_area.Account readers_experience
+
+--| THE KNOWER'S CLOCK, TWO READINGS.  Episode 13 has the knower's interpretation on three coins in a row.  The alternating
+--| clock, set beside its complement, is the bent card.  The still clock, set beside its complement, is nothing.  And both
+--| clocks print one number.  The author's, 21 November 2026 (declared, as a belief): one of the two readings is the zero of
+--| the physical model and the other is the second strength, and which is which is the last use of the knower's bit.
+theorem the_knowers_clock_reads_the_bent_card_and_nothing_and_prints_one_number :
+    the_same (the_knowers_interpretation true false true + the_knowers_interpretation false true false) (holding the_coefficient)
+      ∧ the_same (the_knowers_interpretation true true true + the_knowers_interpretation false false false) nothing_held
+      ∧ the_knowers_pair true = the_knowers_pair false :=
+  ⟨the_alternating_clock_reads_the_bent_card_and_the_still_clock_reads_nothing.1,
+   the_alternating_clock_reads_the_bent_card_and_the_still_clock_reads_nothing.2, both_clocks_print_one_number⟩
+
+--| In whole numbers: five owed and eighteen held are thirteen; eighteen owed and eighteen held are nothing.
+theorem the_two_readings_counted :
+    balance (the_knowers_interpretation true false true) + balance (the_knowers_interpretation false true false) = 13
+      ∧ balance (the_knowers_interpretation true true true) + balance (the_knowers_interpretation false false false) = 0 := by
+  obtain ⟨a, b, c, d⟩ := the_knowers_interpretation_of_the_clocks
+  rw [a, b, c, d]; exact ⟨rfl, rfl⟩
+
+--| THE SAME BENT CARD IS WHAT THE LINEAR STEP LEAVES.  Take the step that the slope says takes the residual away.  What is
+--| left is the bent card by the step squared, with nothing past it.  The bent card there and the bent card the alternating
+--| clock reads are one Area.
+theorem what_the_linear_step_leaves_is_the_alternating_clocks_reading (y h : Account)
+    (the_slope_takes_the_residual_away : the_same (the_slope_on_the_account y * h + the_residual_on_the_account y) nothing_held) :
+    the_same (the_residual_on_the_account (y + h)) (holding the_coefficient * (h * h))
+      ∧ the_same (the_knowers_interpretation true false true + the_knowers_interpretation false true false)
+          (holding the_coefficient) :=
+  ⟨the_step_leaves_the_bent_card_by_the_step_squared y h the_slope_takes_the_residual_away,
+   the_alternating_clock_reads_the_bent_card_and_the_still_clock_reads_nothing.1⟩
+
+end the_knowers_clock
+
 --#print axioms the_census_and_the_machine_agree_on_seven_of_thirty_four
 --#print axioms what_the_processes_carry_all_the_way_down
 --#print axioms the_zero_and_the_one_are_one_limit_and_the_bit_is_thirty_five_facts
 --#print axioms every_fact_in_the_zero_the_one_and_the_bit_clicks
+--#print axioms the_knowers_clock_reads_the_bent_card_and_nothing_and_prints_one_number
+--#print axioms what_the_linear_step_leaves_is_the_alternating_clocks_reading
 
 end Measurement

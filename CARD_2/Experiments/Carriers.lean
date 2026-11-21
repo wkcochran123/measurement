@@ -91,10 +91,38 @@ noncomputable def the_crossing_from_three_deep :=
 theorem from_three_deep_the_first_rung_is_the_first_rung :
     the_crossing_from_three_deep = rung01 ∧ the_crossing_from_three_deep = the_crossing_between := ⟨rfl, rfl⟩
 
+--| A CARRIER OF AN AREA, AND A CARRIER OF AN EQUIVALATION.  The author named four: of a fact, of a proposition, of an Area
+--| and of an equivalation.  The device has the first two.  Here are the other two.  They hold what the others hold.
+def a_carrier_of_an_area : CarrierProcess Area := { symbol := FACT.Truth, quarter := .zero FACT.Truth }
+def a_carrier_of_an_equivalation : CarrierProcess Equivalation := { symbol := FACT.Truth, quarter := .zero FACT.Truth }
+
+theorem the_four_carriers_hold_one_symbol_and_one_quarter :
+    the_first_card.symbol = elaborated_by_lean.symbol ∧ elaborated_by_lean.symbol = a_carrier_of_an_area.symbol
+      ∧ a_carrier_of_an_area.symbol = a_carrier_of_an_equivalation.symbol
+      ∧ the_first_card.quarter = elaborated_by_lean.quarter ∧ elaborated_by_lean.quarter = a_carrier_of_an_area.quarter
+      ∧ a_carrier_of_an_area.quarter = a_carrier_of_an_equivalation.quarter := ⟨rfl, rfl, rfl, rfl, rfl, rfl⟩
+
+--| And the device arrives at the same pair from each of the four.
+theorem from_each_of_the_four_carriers_the_device_arrives_alike :
+    bent_card.fenceposts_must_be_preserved Nat (read_past_the_quarter_of the_first_card) all_possible_variables
+        = arrange_the_information_appropriately
+      ∧ bent_card.fenceposts_must_be_preserved Nat (read_past_the_quarter_of elaborated_by_lean) all_possible_variables
+        = arrange_the_information_appropriately
+      ∧ bent_card.fenceposts_must_be_preserved Nat (read_past_the_quarter_of a_carrier_of_an_area) all_possible_variables
+        = arrange_the_information_appropriately
+      ∧ bent_card.fenceposts_must_be_preserved Nat (read_past_the_quarter_of a_carrier_of_an_equivalation) all_possible_variables
+        = arrange_the_information_appropriately :=
+  ⟨whatever_the_box_the_device_arrives_at_the_same_pair _, whatever_the_box_the_device_arrives_at_the_same_pair _,
+   whatever_the_box_the_device_arrives_at_the_same_pair _, whatever_the_box_the_device_arrives_at_the_same_pair _⟩
+
+--| THE LOGIC'S ZERO.  Episode 8 defines a zero, and it is the truth.
+theorem the_logics_zero_is_the_truth : zero = FACT.Truth := rfl
+
 end another_carrier_on_it
 
 --#print axioms whatever_the_box_the_device_arrives_at_the_same_pair
 --#print axioms the_cards_hold_one_symbol_and_one_quarter
 --#print axioms from_three_deep_the_first_rung_is_the_first_rung
+--#print axioms from_each_of_the_four_carriers_the_device_arrives_alike
 
 end Measurement

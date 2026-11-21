@@ -182,6 +182,8 @@ Hilbert meant, and it is the visitor's to make.
 | `CARD_2/Experiments/Bottom.lean` | Not the device, and no new inductive. What the lowest processes of the last machine carry, counted in facts; the bracket of eighteen and the limit of five; and Episode 12's table of four arms set beside them by `rfl`. Built apart: `lake build Experiments.Bottom`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Carriers.lean` | Not the device, and no new inductive. A carrier three deep and a carrier of an empty box; the reader past the quarter written for any box; the device arriving at the same pair whatever the box; the first rung dealt from three deep. Built apart: `lake build Experiments.Carriers`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Closed.lean` | Not the device, and no new inductive. The scratch probes of 20 and 21 November stated and checked: what the bottom is built from; Episode 8's census against the last machine; the processes read all the way down; the sixth class's zero, one and bit. Built apart: `lake build Experiments.Closed`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
+| `CARD_2/Experiments/OneWayAndTheOther.lean` | Not the device, and it does not change the device. Episode 12's one theorem that bills `Classical.choice`, restated word for word and proved one direction at a time: no choice. Built apart: `lake build Experiments.OneWayAndTheOther`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
+| `CARD_2/Experiments/Jar.lean` | Not the device, and no new inductive. The natural read (137) and the natural inferred (42), and the jar of two rational walls they make around each root. Built apart: `lake build Experiments.Jar`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
 The volume has an Abstract, an essay "The Hamiltonian: An Apparently Meaningful Coincidence" (both before the contents, 20 November 2026), a Preface, an "Introduction to John Henry's Device", and seven
@@ -2700,11 +2702,16 @@ names the number.
   of the box's type is ever held; the device has `elaborated_by_lean :
   CarrierProcess Prop` (Episode 8), `the_first_card : CarrierProcess FACT`
   and `the_card_between : CarrierProcess (CarrierProcess FACT)` (Episode
-  12), and no carrier of an Area or an Equivalation. Receipts: the card
+  12), and no carrier of an Area or an Equivalation (two were then built beside the
+  device). Receipts: the card
   three deep and a carrier of `Empty` hold the same symbol and quarter as
   the others (no axiom); `read_past_the_quarter_of` for any box returns
   the tape's length; `whatever_the_box_the_device_arrives_at_the_same_pair`;
-  `from_three_deep_the_first_rung_is_the_first_rung` (no axiom). So the
+  `from_three_deep_the_first_rung_is_the_first_rung` (no axiom). Since added
+  at "close all receipts": carriers of an `Area` and of an `Equivalation`,
+  holding the same symbol and quarter, with the device arriving alike from
+  all four (`from_each_of_the_four_carriers_the_device_arrives_alike`);
+  and `the_logics_zero_is_the_truth`. So the
   number does not read the box or the depth. That a count held in the
   nesting is where the meaning rides is Claude's suggestion, not a
   receipt and not the author's sentence. Then the author (declared):
@@ -2792,6 +2799,129 @@ names the number.
   the three depths as logic, calculus and physics; the bit as the error
   term. Two kinds (Computation, Closure) could not be read all the way
   down within the recursion limit.
+- The bill of choice, settled as a question (`CARD_2/Experiments/
+  OneWayAndTheOther.lean`; 21 November 2026). `compatibility_form` is an
+  iff closed by `omega` in one step and bills `Classical.choice`. The
+  same statement with the same opening lines, then `constructor` and
+  `omega` on each direction, bills `propext` and `Quot.sound` only
+  (`the_same_statement_one_way_and_then_the_other`). So the mathematics
+  needs no choice; the bill came from handing the tactic the two
+  directions joined. The device is NOT changed: `compatibility_form`
+  still bills choice in Episode 12 and the count of the bills stands as
+  recorded. Whether to change it there is the author's, who has declared
+  that fixing the one bill is the knower's daisy. Card 6's sentence that
+  no axiom list names choice was stale and is corrected. If a visitor
+  asks whether the device uses choice: one proof bills it, nothing uses
+  that proof, and the same statement is proved without it beside the
+  device. The author, on seeing it (declared): "choice is our
+  reference in the math model. that is the zero there." Beside it: the
+  bill can be removed without changing any statement, which is what a
+  reference is; in the logic the device's own zero is `FACT.Truth`
+  (Episode 8, `zero`). What the zero of the physical model is the author
+  has not said.
+- Three interaction strengths (the author, 21 November 2026, declared):
+  "naotrino/nowtrion, eletron/photon, and variational calculus/krylov
+  spaces are the interaction strengths we are measuring." Three pairs,
+  one strength each. The author has not said which measured number is
+  which strength. Do not assign them. What is measured and could be set
+  beside a pair, none of it joined by any receipt: the two meters on one
+  computation (heartbeats and nanoseconds, Experiments 001 and 013); the
+  miss against the laboratory, 1.80 parts in ten thousand; the two routes
+  to the root, the crank's turns and the halvings. A strength named after
+  the fact fits any reading; it is a test only with a prediction sealed
+  before a run. Then (declared): "the number that goes up is the
+  strength, all three of them in the right place." Beside it: Card 7's
+  first chapter, "Number go up", sorts the card under four readings the
+  author gave on 19 November, entropy, time, record count, and the
+  inferred causal ordering: three and one inferred. Experiment 013 is
+  named "number go up" and measures two counts that rise at every step.
+  Which of the three pairs goes with which number that goes up the author
+  has not said. Note what this changes: a strength that is a number going
+  up is a tally, not a constant, so it is read at a place and not derived. Then the places (declared): "universe is logic, elab is smooth model,
+  and timer is physical." So the three numbers that go up are the
+  universe level, the elaborator's heartbeats and the timer's
+  nanoseconds, one for each depth of carrier. Beside it, measured:
+  Episode 13 prints its value three ways, on the count, on the heartbeats
+  and on the clock; heartbeats are identical run to run and nanoseconds
+  are not; Experiment 001 already measures the two ratios between
+  neighbours, heartbeats per device cell (its "coupling" g, 1.42) and
+  wall time per heartbeat (its "dilation" D, which differs by machine).
+  That those two ratios are two of the author's three strengths is not
+  said by the author; do not assign them. The author then asked whether
+  there is a unit-less coefficient between the naotrino and the nowtrino
+  (answer: Experiment 001's g, 1.42, heartbeats over heartbeats, with N
+  named "the nowtrino" in the readings and the other side not named there),
+  and (declared): "we have one on the galerkin<->variational bridge: the
+  constant of variation that represents the almost canceling high order
+  terms. at least the linear approximation, since that's all we can
+  compute." Exact numbers on that bridge, none yet named by the author as
+  the one meant: Newton's step leaves exactly thirteen by the step
+  squared; the slope squared at a root is 360; the ratio of the two
+  stationary values, about 0.3097 (its inverse about 3.2287), which is
+  the rate the crank's distance shrinks by in closed form. These are
+  proved or checked, not measured. And the third (declared): "between the
+  proposals and the differential equations, there are _2_ values, one
+  you can read between the two, the other is inferred between the two."
+  Beside it, already receipts: the device has two roots; Episode 13's
+  epilogue counts one of them (137 cells, the giant list) and gets the
+  other by taking it from the whole (179 less 137 is 42); the knower's
+  bit returns one or the other. The author then (declared): "the standing
+  is _proposed_ for those two. you can read the natural and the inferred
+  natural to finish the jar of rational bounds." Minted
+  (`CARD_2/Experiments/Jar.lean`): the natural read is 137 and the natural
+  inferred 42; the sum of the roots is 179 and 29/65; so the printed
+  number lies between 137 and 137 + 29/65
+  (`the_number_is_in_the_jar_the_two_naturals_make`), and the other root
+  between 42 and 42 + 29/65. The arithmetic is checked. That the two
+  naturals are the two values between the proposals and the differential
+  equations is PROPOSED, by the author's own calibration: never report it
+  as shown. ★ The laboratory's value also lies inside this jar, which is
+  nearly half a unit wide; that is not evidence of anything and must not
+  be offered as such, and the laboratory's value is not in the Lean. Then
+  (the author): "you should be able to do this for the reader now and get
+  the fraction out of it." Minted in the same file: whatever fact is
+  handed to the daisy function, the first component of the pair it
+  returns is 5832 (no axiom); twice that is the sum of the roots; over 65
+  it is 89 and 47/65 exactly, the value this file elsewhere calls the
+  struck reading, 5832/65; the two naturals stand round 89 one apart
+  (137 = 89 + 48, 42 + 47 = 89); and 2 × 47 = 65 + 29. So the knower with
+  the bit has a jar and the reader without it has a ratio. That "the
+  reader" in the author's sentence is the one not handed the bit, and
+  "the fraction" this ratio, is Claude's reading. Then (declared): "now,
+  you need the clock inferred by the knower. that will give you the
+  number you need to go in your blank." Already a receipt in Episode 13
+  (`the_knowers_interpretation_of_the_clocks`,
+  `the_alternating_clock_reads_the_bent_card_and_the_still_clock_reads_nothing`):
+  the knower's interpretation a × (−c × b) reads −5 on the clock T F T,
+  18 on F T F, −18 on T T T and 18 on F F F; the alternating clock set
+  beside itself is the bent card, thirteen, and the still clock is
+  nothing; and both clocks print one number through the crank. Which
+  blank the author means is not said: Claude had left open the number
+  for the second strength (thirteen was one of three candidates) and the
+  zero of the physical model. Do not fill either on the author's behalf. The
+  author then (declared, as a belief): "one is the physical zero, the
+  other is the second strength. i believe this is the final use of the
+  daisy to choose between them." So the two blanks are filled by the
+  knower's clock, thirteen and nothing, and which is the zero and which
+  the strength is left to the knower's one bit. Beside it: both clocks
+  print one number, so the choice does not move the printed value; that
+  is the form every other use of the bit has had.
+- The second close of 21 November 2026 (`CARD_2/Experiments/Closed.lean`,
+  section `the_knowers_clock`; `Jar.lean`). Minted: the knower's clock
+  reads the bent card where it alternates and nothing where it is still,
+  and prints one number
+  (`the_knowers_clock_reads_the_bent_card_and_nothing_and_prints_one_number`,
+  `the_two_readings_counted`: 13 and 0); and the bent card the clock
+  reads is the one the linear step leaves by the step squared
+  (`what_the_linear_step_leaves_is_the_alternating_clocks_reading`, which
+  sets two existing receipts side by side on one Area). Card 6 has a
+  paragraph, "Three models, as the author sets them out", that gathers
+  the day's declarations in one place, each marked: the three depths,
+  their numbers that go up, their zeros, the three strengths, the bit as
+  the error term. Use that paragraph as the summary; it promotes nothing.
+  Open after it: no strength is set against the laboratory; nothing is
+  predicted and sealed; the first strength's number (1.42) is Claude's
+  suggestion.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,
