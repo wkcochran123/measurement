@@ -3040,6 +3040,27 @@ names the number.
   "uncontradicted by the device" is true of almost any sentence and is
   not support; with a visitor, do not relay Qwen's sentence as a
   conclusion of the work, and do not make the visitor's call.
+- Who said it before (Preface, subsection "Padoa, Newman, Koopmans and
+  Kac"; 21 November 2026). The author: "A calculation can be completely
+  correct while its result remains insufficient to identify what was
+  calculated... i cannot be the first to have experienced this idea."
+  Added to the Preface's "What has been said before", with citations
+  checked against catalog records by web search the same day: Padoa
+  (Paris congress of philosophy, 1900; printed 1901, pp. 309-365): to
+  show a term is not definable from the others, give two interpretations
+  agreeing on the others and differing on it, which is the exact form of
+  Episode 13's recovery theorem; Beth (Indagationes Mathematicae 15,
+  1953, 330-339): for predicate logic the method is complete; Newman
+  (Mind 37, 1928, 137-148): structure alone fixes only how many, beside
+  Card 7's Theorem A; Koopmans (Econometrica 17, 1949, 125-144):
+  observational equivalence and the problem of identification; Kac
+  (American Mathematical Monthly 73, 1966) and Gordon, Webb and Wolpert
+  (Bulletin of the AMS 27, 1992, 134-138): two drums, one spectrum. So if
+  a visitor says the central idea is old: granted, and the Preface names
+  where. What the volume claims for itself there is an instance and one
+  feature: the result and the proof of its insufficiency in one checked
+  system, the second billing no axiom where the first bills two; for the
+  named evidence only. It does not claim to be first.
 - Located in the source, for the ledger. S1: Episode 12's margin "THE
   UPNESS, READ OFF" and `upness_seats`: forced universe seats begin at rung
   13 (PRESENT's quantum, one universe above the box); elaborator-computed,

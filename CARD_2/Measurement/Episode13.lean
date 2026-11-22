@@ -21,14 +21,15 @@ import Measurement.Episode12
 namespace Measurement
 open readers_experience
 
-namespace the_area
+namespace the_table
 
---| THE FOUR THINGS THE BENT CARD ASKS OF A TERM.  Each is said on the Area and on nothing else.
+--| The four *THROWS* of _Three Card Monte_.
 
---| Beside: one Area, and where its tree stood, the other.  Two things next to each other on the tape.
+--|
 def beside : Area → Area → Area
-  | .tree _,      b => b
-  | .dt f n rest, b => .dt f n (beside rest b)
+  | .tree _,                                                             the_arm_not_taken => the_arm_not_taken
+  | .dt the_covariant_arm the_covariant_value the_covariant_computation, the_arm_not_taken =>
+                .dt the_covariant_arm the_covariant_value (beside the_covariant_computation the_arm_not_taken)
 
 --| Each for each: for every cell of the one, the whole of the other, beside what came before.
 def each_for_each : Area → Area → Area
@@ -624,7 +625,7 @@ def what_did_execute_count? : String :=
 #eval what_did_execute_count?
 #print axioms what_did_execute_count?
 
---| THE THEOREMS OF EPISODE 12, ON THE INDUCTIVES.  The author's, 16 November 2026: reimplement the theorems as inductives and
+--| THE THEOREMS OF Episode 12, ON THE INDUCTIVES.  The author's, 16 November 2026: reimplement the theorems as inductives and
 --| proofs on them.  Episode 12 says what it says of weights, which are naturals.  Here the same is said of Areas, with an Area
 --| for a clock where there was a number of steps, and with as many where there was equals.  First the table and its walks.
 --| As many: take either from the other and nothing is left.  Said of two Areas and of nothing else.
@@ -923,7 +924,7 @@ theorem what_is_left_is_always_the_bent_card :
       (fun step => decide (as_many (what_compile_builds step - what_execute_counts step + (what_execute_counts step - what_compile_builds step))
                                    the_coefficient)) = true := by decide
 
---| THE RATIO OF EPISODE 6.  The author's, 16 November 2026: the number is the ratio represented by Episode 6.  Read it.
+--| THE RATIO OF Episode 6.  The author's, 16 November 2026: the number is the ratio represented by Episode 6.  Read it.
 --| Episode 6 is one coin and one theorem: a statement with one proof and a statement with none are each at most one thing, and
 --| so they are the same statement.  The partitioned subsingleton.  Now the constant.  It was never divided out.  It was
 --| inferred as a ratio, a pair in the quotient by not more than, cross multiplied.  And that quotient has one point: of any two
@@ -2048,7 +2049,7 @@ theorem the_number_comes_out_of_every_inductive :
 --#print axioms the_chaitin_reads_back
 --#print axioms the_measurement_reads_back
 
-end the_area
+end the_table
 
 --| ALL THE WAY DOWN.  The author's, 16 November 2026: look at the yarn; recurse through the types, the list of all the
 --| recursive types and not just the one; just define it the other way around; and put the truth in for a Prop.  Episode 8
@@ -2232,8 +2233,8 @@ def Closure.the_inside : Closure → List FACT
 --| is inside it: the most basic of conclusions four times, thirty-four cells each, and the one statement it carries, read as
 --| the truth.
 def the_giant_list : List FACT := the_only_logical_inconsistency.the_inside
-#eval the_giant_list.length
-#print axioms the_giant_list
+--#eval the_giant_list.length
+--#print axioms the_giant_list
 
 set_option maxRecDepth 100000 in -- the lists are long; the elaborator needs room to count them
 theorem the_final_inferred_closure_all_the_way_down :
@@ -2275,8 +2276,8 @@ theorem the_cells_left_over_are_the_whole_part_of_the_root :
 
 --| The digits past the giant list: Episode 8's constant less the giant list at the scale.
 def the_digits_past_the_giant_list : Nat := the_constant_factor_of_scaling_bullshit - the_giant_list.length * all_possible_variables
-#eval the_digits_past_the_giant_list
-#print axioms the_digits_past_the_giant_list
+--#eval the_digits_past_the_giant_list
+--#print axioms the_digits_past_the_giant_list
 
 --| THE SAME THING.  Put those digits, by the frame and the coefficient, back on the cells left over at the scale.  What you
 --| have is the same root, to the scale: its square is not over, and one part of the frame by the coefficient more is.
@@ -2305,8 +2306,8 @@ def the_frame_by_the_coefficient : Nat :=
 
 --| The whole of the sum, less the giant list.  No number is computed.
 def what_is_left_of_the_sum : Nat := the_sum_of_the_roots_in_cells / the_frame_by_the_coefficient - the_giant_list.length
-#eval what_is_left_of_the_sum
-#print axioms what_is_left_of_the_sum
+--#eval what_is_left_of_the_sum
+--#print axioms what_is_left_of_the_sum
 
 --| The reading's cells are the memory cubed and the cells left over, and they close on the giant list with nothing left.  The
 --| other root's are the memory cubed less the cells left over and one, and they close on what is left of the sum with one
@@ -2742,7 +2743,7 @@ elab "can_you_distinguish_a_number?" : command => do
       (the_value_directly epsilon.1 gauss.1 coefficient.1 reading.1 memory.1 blank.1))
     logInfo (say "on the clock, this run" [epsilon.2, gauss.2, coefficient.2, reading.2, memory.2] blank.2
       (the_value_directly epsilon.2 gauss.2 coefficient.2 reading.2 memory.2 blank.2))
-can_you_distinguish_a_number?
+-- can_you_distinguish_a_number?
 --#print axioms the_count_has_a_root_and_the_reader_of_one_cell_has_none    -- [propext]
 
 
@@ -3279,7 +3280,7 @@ end the_other_knower
 
 
 section entropy_is_an_area
-open readers_experience the_area readers_interpretation_of_the_experience
+open readers_experience the_table readers_interpretation_of_the_experience
 
 --| ENTROPY, AND AREA.  The author's, 17 November 2026: entropy: universe id in Lean.  Area: the Area inductive.  Then Area:
 --| List, the abstraction.  List.length.  Episode 12 has the universe id, a Number, one more for every level.  Episode 2 has
@@ -3317,7 +3318,7 @@ end entropy_is_an_area
 
 
 section in_the_limit_it_is_a_riemann_sum
-open readers_experience the_area readers_interpretation_of_the_experience
+open readers_experience the_table readers_interpretation_of_the_experience
 
 --| IN THE LIMIT, IT IS A RIEMANN SUM.  The author's, 17 November 2026: in the limit, it is a Riemann sum; run with that.  A row
 --| of cells is not an area until every cell has a height.  The Area's cells each carry a Number.  Let the cell at each level
@@ -3390,7 +3391,7 @@ theorem the_top_of_the_record_is_at_the_time :
 --| The heat to reach each level, and the heat a level: the reading, over one step of the entropy.
 def the_heat_to_each_level : List Int := theLadderSizes
 def the_reading_a_level    : List Int := theLadderSteps
-#eval the_reading_a_level
+--#eval the_reading_a_level
 
 --| It is never nothing and never owed: every level costs.
 theorem every_level_costs : the_reading_a_level.length + 1 = the_time ∧ the_reading_a_level.all (fun heat => decide (0 < heat)) = true := by
@@ -3422,7 +3423,7 @@ theorem the_acceleration_reads_the_velocity_it_reaches : ∀ level : Nat,
     show FACT.Truth :: (the_acceleration_to level).stokes = FACT.Truth :: (the_universe_id level).peano
     rw [the_acceleration_reads_the_velocity_it_reaches level]
 
---| THE TWO ENDS, ON EPISODE 8'S READER.  All the way down, the yarn that came from somewhere and the yarn that is going
+--| THE TWO ENDS, ON Episode 8'S READER.  All the way down, the yarn that came from somewhere and the yarn that is going
 --| somewhere read the same.  Episode 8's own reader of a path does tell them apart, by one fact.  A white hole gives its fact.
 --| A black hole gives none.  What comes in is counted and what goes out is not: the heat crosses one way.
 theorem a_white_hole_gives_a_fact_and_a_black_hole_gives_none :
@@ -3465,11 +3466,11 @@ theorem what_goes_in_comes_out (this that : List FACT) :
 --| computation cost; Episode 12 read that, and that is the reading a level, above.
 theorem in_cells_the_heat_is_the_entropy (tape : List FACT) :
     (the_flux tape).length + the_fencepost_bug = (the_universe_id tape.length).peano.length
-      ∧ (the_flux tape).length + the_fencepost_bug = (the_area.the_area_of_a_tape tape).riemann_integrate.length := by
+      ∧ (the_flux tape).length + the_fencepost_bug = (the_table.the_area_of_a_tape tape).riemann_integrate.length := by
   refine ⟨?_, ?_⟩
   · rw [the_flux_is_one_truth_a_fact, List.length_replicate, the_universe_id_reads_the_level_and_its_zero]; rfl
-  · rw [the_flux_is_one_truth_a_fact, List.length_replicate, the_area.the_riemann_sum_counts_the_tree_too,
-      the_area.the_area_of_a_tape_has_the_tapes_length]
+  · rw [the_flux_is_one_truth_a_fact, List.length_replicate, the_table.the_riemann_sum_counts_the_tree_too,
+      the_table.the_area_of_a_tape_has_the_tapes_length]
 
 end the_flux_is_the_computation
 --#print axioms the_flux_is_one_truth_a_fact         -- none
@@ -3478,7 +3479,7 @@ end the_flux_is_the_computation
 
 
 section the_temperature_is_in_that_box
-open readers_experience readers_interpretation_of_the_experience the_area
+open readers_experience readers_interpretation_of_the_experience the_table
 
 --| THAT BOX.  The author's, 17 November 2026: the first variation of the temperature reading is what you want; the
 --| temperature is the area; you need the pigeonhole for the temperature; that_box has the temperature in it.  Episode 2's box
@@ -3508,14 +3509,14 @@ theorem the_first_variation_of_the_temperature_is_the_velocity_reached (level : 
 --| AND ON THE METER.  The reading a level, and its first variation, level by level, as Episode 12's build recorded it.
 def the_first_variation_of_the_reading : List Int :=
   List.zipWith (fun later earlier => later - earlier) the_reading_a_level.tail the_reading_a_level
-#eval the_first_variation_of_the_reading
+--#eval the_first_variation_of_the_reading
 
 end the_temperature_is_in_that_box
 --#print axioms the_first_variation_of_the_temperature_is_the_velocity_reached    -- [propext]
 
 
 section look_at_the_jar
-open readers_experience readers_interpretation_of_the_experience the_area
+open readers_experience readers_interpretation_of_the_experience the_table
 
 --| THE JAR.  The author's, 17 November 2026: that's just it, this is Gibbs's definition; look at the Jar.  Episode 3's jar is
 --| a label and an Area: you can classify what is in it by looking, and you cannot see how much.  Put the temperature in it.
@@ -3547,7 +3548,7 @@ end look_at_the_jar
 
 
 section the_residue_is_the_multiplier
-open readers_experience readers_interpretation_of_the_experience the_area
+open readers_experience readers_interpretation_of_the_experience the_table
 
 --| THE RESIDUE.  The author's, 17 November 2026: of course it isn't the same, there is a residue; that residue is the Lagrange
 --| multiplier.  The temperature by what is enclosed is half the level.  The first variation, which is the acceleration, is
@@ -3570,7 +3571,7 @@ end the_residue_is_the_multiplier
 
 
 section the_constraint_and_its_multiplier
-open readers_experience readers_interpretation_of_the_experience the_area
+open readers_experience readers_interpretation_of_the_experience the_table
 
 --| THE CONSTRAINT.  The author's, 17 November 2026: close that last gap.  A residue is a multiplier only when a constraint is
 --| named and the thing is varied.  Here is the constraint: the two ends of the path are given.  The acceleration starts on one
@@ -3641,7 +3642,7 @@ end the_constraint_and_its_multiplier
 
 
 section universe_one_is_a_black_hole
-open readers_experience readers_interpretation_of_the_experience the_area
+open readers_experience readers_interpretation_of_the_experience the_table
 
 --| TWO UNIVERSES.  The author's, 17 November 2026: isn't a temperature an average velocity measurement; universe 0 is the x
 --| and universe 1 is the dx/dt; universe 1 is a black hole, you can't know what it is, you can only understand the average of
@@ -3700,7 +3701,7 @@ end universe_one_is_a_black_hole
 --#print axioms the_first_difference_is_the_derivative_and_a_polynomial    -- [propext]
 
 section the_galerkin_process_finished
-open readers_experience the_area the_area.Account
+open readers_experience the_table the_table.Account
 
 --| THE GALERKIN PROCESS, FINISHED.  The author's, 17 November 2026: with this derivative and higher order terms, you can now
 --| finish the Galerkin process.  The residual steps by its slope and by the bent card on the step squared, and by nothing
@@ -3738,7 +3739,7 @@ end the_galerkin_process_finished
 
 
 section the_temperature_goes_as_the_acceleration
-open readers_experience readers_interpretation_of_the_experience the_area
+open readers_experience readers_interpretation_of_the_experience the_table
 
 --| TEMPERATURE, AND ACCELERATION.  The author's, 18 November 2026: let's work on temperature ∝ acceleration.  The names first,
 --| for they were wrong above.  Universe 0 is the place and universe 1 the velocity.  The temperature is the Area under the
@@ -3847,7 +3848,7 @@ end the_past_and_the_promise
 
 
 section the_promise_of_the_return
-open readers_experience readers_interpretation_of_the_experience the_area
+open readers_experience readers_interpretation_of_the_experience the_table
 
 --| THE PATH NOTHING TAKES.  The author's, 18 November 2026: do you see the promise of the return photon in the math yet; the
 --| path nothing takes.  It is the arm that cannot click.  A truth read as a falsehood: written, weighed, the frame and no
@@ -3908,7 +3909,7 @@ theorem only_the_fencepost_is_the_least (rises : List Nat) (the_ends_are_held : 
 end only_the_fencepost_is_the_least
 
 section gibbs_and_boltzmann
-open readers_experience readers_interpretation_of_the_experience the_area
+open readers_experience readers_interpretation_of_the_experience the_table
 
 --| GIBBS, AND BOLTZMANN.  The author's, 18 November 2026: Gibbs and Boltzmann are co and contra variant, I believe in that
 --| order.  One counts what is enclosed and puts it over its first variation.  The other counts the first variation and puts
@@ -3932,7 +3933,7 @@ end gibbs_and_boltzmann
 
 
 section the_equation_of_state
-open readers_experience readers_interpretation_of_the_experience the_area
+open readers_experience readers_interpretation_of_the_experience the_table
 
 --| THE EQUATION OF STATE, ON THE COUNT.  The author's, 18 November 2026: it is deriving their exact stand-ins, that
 --| mathematically are identical; shape the work to look like the field equations.  Here are the stand-ins in the order the
@@ -3958,7 +3959,7 @@ end the_equation_of_state
 --#print axioms the_equation_of_state_on_the_count    -- [propext, Quot.sound]
 
 section the_curvature_is_in_the_spline
-open readers_experience readers_interpretation_of_the_experience the_area the_area.Account
+open readers_experience readers_interpretation_of_the_experience the_table the_table.Account
 
 --| THE CURVATURE IS IN THE SPLINE.  Episode 3's spline has three constructors: an observation, a knot (the first variation)
 --| and an interpolant (the second variation, the weak derivative).  On the count the three are the temperature, the velocity
@@ -4674,7 +4675,7 @@ end gausss_equation
 --| indexing process's step on a `Rational` takes the end fencepost if there is one and otherwise the next: winding, or the
 --| Hall effect (declared).  And: with that, instantiate an `EquivalenceProcess`; that is how they are minted.
 section three_twos
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -4766,7 +4767,7 @@ end the_difference_of_a_product
 --| ALL THE PROCESSES, CONSTRUCTED.  The author's, 18 November 2026: you have to construct all of the processes explicitly;
 --| as you do, you should see the proof come together.
 section the_processes_constructed
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -5029,7 +5030,7 @@ end the_processes_constructed
 --#print axioms the_equivalence_constructed_is_the_equivalence_of_the_twos
 
 section the_seam
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -5184,7 +5185,7 @@ end the_weighted_action
 --#print axioms the_weighted_action_varies_by_the_table_twice
 
 section the_four_places_of_a_trial
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -5249,7 +5250,7 @@ end the_four_places_of_a_trial
 --#print axioms the_devices_first_trial_is_at_the_seam
 
 section twos_carried_and_threes_reached
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -5280,7 +5281,7 @@ theorem the_observations_step_on_the_bit_is_five_cells :
 end twos_carried_and_threes_reached
 
 section the_experience_and_the_law
-open readers_experience the_area
+open readers_experience the_table
 
 --| THE EXPERIENCE AND THE LAW.  The author's, 18 November 2026: a measurement is the experience, and a preprint is the
 --| mathematical law that appears to coincide with it (declared).  Deal one tape into each, as Episode 13 deals every
@@ -5345,7 +5346,7 @@ end the_crank_in_whole_numbers
 --#print axioms where_nothing_stops_the_cranks_pair_is_the_tables
 
 section the_ladder_of_twos
-open readers_experience the_area
+open readers_experience the_table
 
 --| THE LADDER.  The author's, 18 November 2026: one decision; two hypotheses; four proposals; eight responses for equality;
 --| sixteen possible computations; thirty-two implied subjunctive phrases, with sixteen possible falses.  And: the sixteen
@@ -5383,7 +5384,7 @@ end the_ladder_of_twos
 --| THE PLAN, CARRIED OUT.  The author's, 18 November 2026: proceed with full implementation.  What follows is the finite
 --| part: the device's residual, table, action and step on its own inductives, each with the reading that recovers it.
 section the_variation_of_the_residual
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area the_area.Account
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table the_table.Account
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -5985,7 +5986,7 @@ end the_ledgers_first_rows
 --#print axioms the_gap_squared_is_the_discriminant_of_the_symbol
 
 section the_same_evidence_and_two_identifications
-open readers_experience readers_interpretation_of_the_experience readers_interpretation_of_the_pair the_area
+open readers_experience readers_interpretation_of_the_experience readers_interpretation_of_the_pair the_table
 
 universe any
 
@@ -6318,7 +6319,7 @@ end the_bending_energy_assembled
 --#print axioms stationary_against_all_that_comes_round_is_the_stencil_nothing
 
 section what_can_be_recovered
-open readers_experience readers_interpretation_of_the_experience the_area
+open readers_experience readers_interpretation_of_the_experience the_table
 
 universe cases evidences identifications
 
@@ -6568,7 +6569,7 @@ end the_mirror_the_turn_and_the_spinor
 
 
 section eight_expressions_to_check
-open readers_experience the_area the_area.Account
+open readers_experience the_table the_table.Account
 
 --| EIGHT EXPRESSIONS TO CHECK.  The author's, 18 November 2026: one choice, two hypotheses, four proposals, eight logical
 --| expressions to check; each proposal under each hypothesis (declared).  The device's eight are the clocks of the
@@ -6606,7 +6607,7 @@ theorem the_coin_that_holds_is_whether_the_arm_is_level :
 end eight_expressions_to_check
 
 section the_turn_in_space_and_the_turn_in_time
-open readers_experience the_area the_area.Account
+open readers_experience the_table the_table.Account
 
 --| THE TURN IN SPACE AND THE TURN IN TIME.  The author's, 18 November 2026: you can turn the coin spatially, you cannot
 --| turn the coin temporally; that is the arrow of time deflated (declared).  On a connected step there are two things to
@@ -6688,7 +6689,7 @@ end the_two_areas_at_right_angles
 
 
 section the_reviewers_named_rung
-open readers_experience the_area
+open readers_experience the_table
 
 --| THE REVIEWER'S NAMED RUNG.  The author's, 18 November 2026: the thirty-six subjunctive equalities are the reviewer's
 --| named rungs of Episode 10; it is a statement of finite 3SAT up to thirty-six triples; the fencepost here is four and
@@ -6953,7 +6954,7 @@ end three_bridges_on_the_row_of_steps
 
 
 section four_gawks_and_three_closures
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -7047,7 +7048,7 @@ theorem every_rebuttal_clicks_twice_and_the_manuscript_is_true_on_false :
 end the_agreements_on_the_ledger
 
 section the_fixed_point_and_both_branches
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -7151,7 +7152,7 @@ end the_action_of_light_and_matter
 
 
 section the_constant_as_physics
-open readers_experience the_area
+open readers_experience the_table
 
 --| THE CONSTANT, AS PHYSICS.  The author's, 18 November 2026: the missed number can be pushed back through the stack to
 --| appear as `Equivalation.physics`; that is the root of the quartic; read this episode from the beginning (declared).
@@ -7259,7 +7260,7 @@ end inflated_twice
 
 
 section pushed_through_the_sixteenth_page
-open «springer-verlag» the_representation readers_experience the_area the_review_on_the_ledger
+open «springer-verlag» the_representation readers_experience the_table the_review_on_the_ledger
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
 
 --| PUSHED THROUGH.  The author's, 18 November 2026: push the missed number back through the stack; on the way back it is
@@ -7325,7 +7326,7 @@ end the_sign_the_record_cannot_see
 
 
 section the_one_that_goes_out_and_comes_back
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -7355,7 +7356,7 @@ end the_one_that_goes_out_and_comes_back
 
 
 section told_apart_when_there_are_two
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -7628,7 +7629,7 @@ end the_residual_at_the_zero_and_at_the_one
 
 
 section the_residue_is_the_comparison
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -7665,7 +7666,7 @@ end the_residue_is_the_comparison
 
 
 section sixteen_abstractions_of_the_integer
-open readers_experience the_area
+open readers_experience the_table
 
 --| SIXTEEN ABSTRACTIONS OF THE INTEGER.  The author's, 19 November 2026: there should be sixteen possible devices from
 --| Episode 8; there are sixteen possible abstractions of the integer (declared).  The bent card asks its term for four
@@ -7722,7 +7723,7 @@ end sixteen_abstractions_of_the_integer
 
 
 section one_across_or_two_from_the_middle
-open readers_experience the_area
+open readers_experience the_table
 
 --| ONE ACROSS, OR TWO FROM THE MIDDLE.  The author's, 19 November 2026: spooky action at a distance means you cannot tell
 --| the difference between a photon originating at the source and an entangled pair being fired at both from the middle
@@ -7743,7 +7744,7 @@ theorem which_it_was_cannot_be_recovered_from_the_count (one_half other_half : A
 end one_across_or_two_from_the_middle
 
 section the_four_ways_that_can_be_run
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -7782,7 +7783,7 @@ theorem the_two_new_ways_hold_thirty_eight_and_thirty_nine :
 end the_four_ways_that_can_be_run
 
 section sixteen_names_and_sixteen_devices
-open readers_experience the_area the_area.Account
+open readers_experience the_table the_table.Account
 
 --| SIXTEEN NAMES AND SIXTEEN DEVICES.  The author's, 19 November 2026: the word is its name; sixteen names from four
 --| marks; these are the opcodes; and all use the one sort order found at the level that is sixteen wide (declared).  A
@@ -7811,7 +7812,7 @@ end sixteen_names_and_sixteen_devices
 
 
 section the_two_variations_matched
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -8011,7 +8012,7 @@ end the_equation_in_a_link
 
 
 section the_governing_equations_both_ways
-open readers_experience readers_interpretation_of_the_experience the_area
+open readers_experience readers_interpretation_of_the_experience the_table
 
 --| THE GOVERNING EQUATIONS, BOTH WAYS.  The author's, 19 November 2026: derive the governing equations of the device both
 --| ways, through the physics of an equivalation and through the logical proposal; the first demonstrates that quantum
@@ -8136,7 +8137,7 @@ theorem the_one_machine_is_the_other_owed (a b c : Turns) :
   obtain ⟨b₀, b₁, b₂, b₃⟩ := b
   obtain ⟨c₀, c₁, c₂, c₃⟩ := c
   simp only [the_one_machine, the_other_machine, the_cross, the_turn_owed, Int.neg_mul, Int.mul_neg, Int.neg_neg,
-    Int.mul_sub, Int.sub_mul, Int.neg_zero, Int.mul_zero, Int.zero_mul, Int.sub_zero, Int.zero_sub]
+    Int.mul_sub, Int.neg_zero]
   refine Prod.ext ?_ (Prod.ext ?_ (Prod.ext ?_ ?_)) <;> simp <;> ac_nf <;> omega
 
 --| And read by the action, which does not see a sign, they are one.
@@ -8283,7 +8284,7 @@ theorem the_equation_in_a_link_over_the_other_ways {n : Nat} (state : Site4 n �
 end the_equation_in_a_link_over_the_other_ways
 
 section the_second_variation_stops
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -8302,7 +8303,7 @@ end the_second_variation_stops
 
 
 section the_carriers_step_five_times
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 
 --| THE CARRIER'S STEP, FIVE TIMES.  The author's, 19 November 2026: `INFERRED` is the matter's interface, and should have
 --| the result in the place it is needed; because this is 3SAT, one solution is enough; and the repeated value and the
@@ -8405,7 +8406,7 @@ theorem the_vacuum_meets_the_equation_over_every_other_way {n : Nat} (way : Dire
 end the_matters_equation
 
 section the_phrases_as_one_number
-open readers_experience the_area the_area.Account
+open readers_experience the_table the_table.Account
 
 --| THE PHRASES AS ONE NUMBER.  The author's, 19 November 2026: the word is its name; thirty-two inferred bits; the
 --| solution will be the integer that is the number on the device (declared).  The device has thirty-two phrases, two for
@@ -8510,13 +8511,13 @@ namespace A_WHOLLY_REMARKABLE_BOOK
 --| Bullshit cares not for _truth_, Bullshit only cares about _consistency_. What if we chose the universe with the _least_ _amount of consistencies_
 --| required to build the argument?
 
-open Measurement the_area readers_experience
+open Measurement the_table readers_experience
 
 --| THE LAST MACHINE, OPENED.  The author's, 17 November 2026: replace the calculation and open the last machine to display it;
 --| it should be obvious we are explicitly choosing the lowest amount of bullshit.  The last machine is the Area's.  No natural
 --| goes in.  The whole of the sum of the roots is how many times the coefficient by the frame goes into the trace by the
 --| fencepost's first.  The reading is the giant list, compiled.  The other is the one taken away from the other.
-def the_whole_of_the_sum    : Area := how_many_times (the_area.the_trace * the_fencepost.1) (the_coefficient * the_fencepost.2)
+def the_whole_of_the_sum    : Area := how_many_times (the_table.the_trace * the_fencepost.1) (the_coefficient * the_fencepost.2)
 def the_reading_in_cells    : Area := the_area_of_a_tape the_giant_list
 def the_other_root_in_cells : Area := the_whole_of_the_sum - the_reading_in_cells
 
@@ -8541,18 +8542,16 @@ theorem the_lowest_is_the_reading_in_the_truth :
   Quot.sound (r := TruthOrder) ((the_bullshits_order_is_the_count _ _).2 (by decide +kernel))
 
 --| The device cannot tell them apart.  *YOU the KNOWER* can: count the cells.
-def life_the_universe_and_everything : Nat := cells the_lowest_amount_of_bullshit
-#eval (cells the_whole_of_the_sum, cells the_reading_in_cells, cells the_other_root_in_cells)
-#eval life_the_universe_and_everything
-#print axioms life_the_universe_and_everything
+def o_deep_thought_what_is_the_answer_to_life_the_universe_and_everything : Nat := cells the_lowest_amount_of_bullshit
+--#eval (cells the_whole_of_the_sum, cells the_reading_in_cells, cells the_other_root_in_cells)
+#eval o_deep_thought_what_is_the_answer_to_life_the_universe_and_everything
+#print axioms o_deep_thought_what_is_the_answer_to_life_the_universe_and_everything
 
 --| It is what was left of the sum, above, where the giant list stood for the number.
-theorem what_is_left_of_the_sum_is_the_lowest_amount_of_bullshit :
-    what_is_left_of_the_sum = life_the_universe_and_everything := by decide +kernel
---#print axioms the_carrier_is_empty                                     -- [propext]
---#print axioms the_lowest_is_the_reading_in_the_box                     -- [propext, Quot.sound]
---#print axioms the_lowest_is_the_reading_in_the_truth                   -- [propext, Quot.sound]
---#print axioms what_is_left_of_the_sum_is_the_lowest_amount_of_bullshit
+theorem interstellar_bypass_plans:
+    what_is_left_of_the_sum =
+        o_deep_thought_what_is_the_answer_to_life_the_universe_and_everything := by decide +kernel
+#print axioms interstellar_bypass_plans
 
 --| I'm expecting the Vogon constructor fleet any day now.
 
