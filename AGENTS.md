@@ -185,7 +185,7 @@ Hilbert meant, and it is the visitor's to make.
 | `CARD_2/Experiments/OneWayAndTheOther.lean` | Not the device, and it does not change the device. Episode 12's one theorem that bills `Classical.choice`, restated word for word and proved one direction at a time: no choice. Built apart: `lake build Experiments.OneWayAndTheOther`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Jar.lean` | Not the device, and no new inductive. The natural read (137) and the natural inferred (42), and the jar of two rational walls they make around each root. Built apart: `lake build Experiments.Jar`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Inferred.lean` | Not the device, and no new inductive. Eighteen and five inferred from the shape of three and one, the trace and the round trip, with no count of anything written; and that the clock alone gives only ninety. Built apart: `lake build Experiments.Inferred`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
-| `CARD_2/Meanings.lean`, `CARD_2/Meanings/` | Not the device. What a reading is taken to mean, as interfaces, in core Lean and nothing else; it names nothing of the device. `Correspondence` (a way there and a way back that undo each other: core Lean has no `Equiv`); `CountedAsNat` and `BalancedAsInt` (a reader, a deal it undoes, and the operations carried over; the kind up to its reader then corresponds to `Nat` or `Int`); `Ratioed` (pairs from anything balanced, alike when the cross-products are one integer, correspond to `Rat`); `Least` (least and largest with the click and without it); `Real` (the reals with no choice: a real is a bracket of two fractions of naturals at every stage, rising, falling and narrowing to one part in n and one; the root of ninety and eighteen and it built by halving, e from the factorial series; nothing bills choice); `Norm` (a two-unknown form is never negative when its first coefficient is positive and the cross coefficient squared is not past the product of the other two; so a bound on a weighed square); `Reciprocal` (one over a real handed a stage where it is past nothing, and over; the least such stage found by looking); `Difference` (one real less another handed a stage where it is not past; one over a signed real, a complex number and a quaternion apart from nothing; one over is one thing). Library `Meanings`; `lake build Meanings`. Episode 13 imports it and meets the interfaces; nothing else in `Measurement` does. |
+| `CARD_2/Meanings.lean`, `CARD_2/Meanings/` | Not the device. What a reading is taken to mean, as interfaces, in core Lean and nothing else; it names nothing of the device. `Correspondence` (a way there and a way back that undo each other: core Lean has no `Equiv`); `CountedAsNat` and `BalancedAsInt` (a reader, a deal it undoes, and the operations carried over; the kind up to its reader then corresponds to `Nat` or `Int`); `Ratioed` (pairs from anything balanced, alike when the cross-products are one integer, correspond to `Rat`); `Least` (least and largest with the click and without it); `Real` (the reals with no choice: a real is a bracket of two fractions of naturals at every stage, rising, falling and narrowing to one part in n and one; the root of ninety and eighteen and it built by halving, e from the factorial series; nothing bills choice); `Norm` (a two-unknown form is never negative when its first coefficient is positive and the cross coefficient squared is not past the product of the other two; so a bound on a weighed square); `Reciprocal` (one over a real handed a stage where it is past nothing, and over; the least such stage found by looking); `Quarters` (Σθᵏ/k! split by k in fours, four reals with no choice, checked at a stage against cosine, sine and e); `Difference` (one real less another handed a stage where it is not past; one over a signed real, a complex number and a quaternion apart from nothing; one over is one thing). Library `Meanings`; `lake build Meanings`. Episode 13 imports it and meets the interfaces; nothing else in `Measurement` does. |
 | `CARD_2/Calibrate/` | Not the device: a package of its own, so that no build of the device resolves or sees Mathlib. It requires the device's package by path and Mathlib at the rev CARD_2's manifest already pins. Mathlib is fetched (23 November 2026; 7.1 GB in `CARD_2/Calibrate/.lake`, git-ignored) and its toolchain is the device's, v4.27.0-rc1. `cd CARD_2/Calibrate && lake build` builds it in seconds. Written: `Calibrate/Readings.lean` (each Meanings correspondence handed to Mathlib as `≃+*`) and `Calibrate/Device.lean` (`the_area_as_the_naturals : ReadAsNat Area ≃+* ℕ`, `the_account_as_the_integers : ReadAsInt Account ≃+* ℤ`, both `propext`, `Quot.sound`; `two_accounts_as_the_ratios : ReadAsRat Account ≃+* Rat`, which adds `Classical.choice`), and `ekg_meets`, which elaborates a term on Episode 8's EKG and logs the heartbeats; an interface not met is an error and nothing is read (negative control, in scratch: the Account asked to be counted as the naturals fails for want of an order, Lean exits 1). Readings on the M2, 23 November 2026: about 26,300 to 26,900 heartbeats each against a blank near 3,900 to 4,000, differing by a few to fifteen heartbeats between two builds (measured; not explained). A smoke test importing a Mathlib module beside `Measurement.Episode13` elaborated with no clash, at 1.3 GB resident under `-M 1500`; heavier Mathlib imports may need more. Also written: `Calibrate/Norm.lean` (the coins weighed by 18 and 5 carried to the Euclidean plane by the roots of the weights; the device's table carried across is ((18, √90), (√90, 18)); `the_operator_norm_of_the_table : ‖theOperator‖ = 18 + √90`; `the_table_on_the_coins_is_never_past`, for every real pair; `the_norm_squared_is_between_the_walls`, 755 < ‖M‖² ≤ 756, which are Episode 13's whole-number walls; all bill `Classical.choice`, because Mathlib's reals do) and `Calibrate/Hilbert.lean` (the plane met as `Module ℝ`, `InnerProductSpace ℝ` and `CompleteSpace`, and the norm and walls, each on `ekg_meets`: 204,475; 166,446; 19,577; 484,601; 634,613 heartbeats, blanks near 2,200 to 2,300, one build on the M2). |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
@@ -3835,6 +3835,39 @@ names the number.
   and the bisection give one real for the printed number. Not shown: that
   the printed digits lie inside every bracket; and anything about what
   the number is of.
+- The four quarters of the exponential (`Meanings/Quarters.lean`; 23
+  November 2026). The author (declared): the four real numbers of the
+  quaternion are the roots of the quartic, which for the quaternion is
+  the first terms of the Taylor series of e^{iθ}; "this is number e ^ i
+  number"; the polar form gives the real and imaginary at once, and the
+  infinite polynomial at θ = 0 in the convergence implied by compile.
+  Claude's suggestion, taken up by the author: split Σ θᵏ/k! by k counted
+  in fours, S₀ to S₃. Receipts, `propext` and `Quot.sound` at most: each
+  `quarter p q hq hp j` is a real with no choice for θ = p/q not past
+  one (terms never under nothing; twice a term four places on is not
+  past the term, `twice_four_places_on`, so twice the next term bounds
+  the tail). Checked as the circle is, at the third stage by the kernel,
+  the brackets of the two sides holding each other: cosine beside S₂
+  holds S₀ and sine beside S₃ holds S₁, at θ one and a half
+  (`cosine_beside_the_third_quarter_holds_the_first`,
+  `sine_beside_the_fourth_quarter_holds_the_second`); the four beside
+  each other hold e at θ one (`the_four_quarters_beside_each_other_hold_e`);
+  at θ nothing S₀ is one and the rest nothing
+  (`at_nothing_the_quarters_are_one_and_three_nothings`). Negative
+  controls (S₁ in place of S₀; S₀ alone against e) are refused. These are
+  readings at a stage, not `Same` at every stage. Compared with the
+  device's quartic (asked by the author): they do not look like its
+  roots. At the printed reading the closing quartic in r has four real
+  roots in two signed pairs, ±18 and ±32.34, the squares in the ratio
+  (18 + √90)/(18 − √90) ≈ 3.229; the quarters are four positive numbers,
+  falling, with no signed pairs (at θ one 1.0417, 1.0083, 0.5014,
+  0.1669). The quartic the quarters belong to is λ⁴ = 1 (each quarter's
+  first variation is the one before, round in four: standard, not in the
+  Lean), whose roots are the four powers of the quarter turn. So three
+  biquadratic quartics stand side by side with three invariants b²/(ac):
+  the device's 72/13, the cut-off cosine's 6, the quarters' 0. Shape
+  shared, identity not. That one of them is the other is the author's to
+  say; nothing here makes it so.
 - Cosine and sine at a rational angle (`Meanings/Trigonometry.lean`;
   `Episode13.lean`, section `the_turn_by_a_rational_angle`; 23 November
   2026). Receipts, `propext`, `Quot.sound`: a series of nonnegative steps
