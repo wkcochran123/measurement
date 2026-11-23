@@ -12,3 +12,4 @@ import Meanings.Quaternion       -- the quaternions: the order of a product is s
 import Meanings.Continuity       -- continuity: a modulus with the click, and the choice without it
 import Meanings.Trigonometry     -- cosine and sine at a rational angle: alternating series as reals
 import Meanings.Laws             -- the laws: reals a commutative semiring; signed and complex commutative rings; quaternions a ring, up to being one
+import Meanings.Reciprocal       -- one over a real past nothing at a stage handed in, and over; found by looking

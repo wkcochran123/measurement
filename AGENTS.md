@@ -185,7 +185,7 @@ Hilbert meant, and it is the visitor's to make.
 | `CARD_2/Experiments/OneWayAndTheOther.lean` | Not the device, and it does not change the device. Episode 12's one theorem that bills `Classical.choice`, restated word for word and proved one direction at a time: no choice. Built apart: `lake build Experiments.OneWayAndTheOther`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Jar.lean` | Not the device, and no new inductive. The natural read (137) and the natural inferred (42), and the jar of two rational walls they make around each root. Built apart: `lake build Experiments.Jar`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Inferred.lean` | Not the device, and no new inductive. Eighteen and five inferred from the shape of three and one, the trace and the round trip, with no count of anything written; and that the clock alone gives only ninety. Built apart: `lake build Experiments.Inferred`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
-| `CARD_2/Meanings.lean`, `CARD_2/Meanings/` | Not the device. What a reading is taken to mean, as interfaces, in core Lean and nothing else; it names nothing of the device. `Correspondence` (a way there and a way back that undo each other: core Lean has no `Equiv`); `CountedAsNat` and `BalancedAsInt` (a reader, a deal it undoes, and the operations carried over; the kind up to its reader then corresponds to `Nat` or `Int`); `Ratioed` (pairs from anything balanced, alike when the cross-products are one integer, correspond to `Rat`); `Least` (least and largest with the click and without it); `Real` (the reals with no choice: a real is a bracket of two fractions of naturals at every stage, rising, falling and narrowing to one part in n and one; the root of ninety and eighteen and it built by halving, e from the factorial series; nothing bills choice); `Norm` (a two-unknown form is never negative when its first coefficient is positive and the cross coefficient squared is not past the product of the other two; so a bound on a weighed square). Library `Meanings`; `lake build Meanings`. Episode 13 imports it and meets the interfaces; nothing else in `Measurement` does. |
+| `CARD_2/Meanings.lean`, `CARD_2/Meanings/` | Not the device. What a reading is taken to mean, as interfaces, in core Lean and nothing else; it names nothing of the device. `Correspondence` (a way there and a way back that undo each other: core Lean has no `Equiv`); `CountedAsNat` and `BalancedAsInt` (a reader, a deal it undoes, and the operations carried over; the kind up to its reader then corresponds to `Nat` or `Int`); `Ratioed` (pairs from anything balanced, alike when the cross-products are one integer, correspond to `Rat`); `Least` (least and largest with the click and without it); `Real` (the reals with no choice: a real is a bracket of two fractions of naturals at every stage, rising, falling and narrowing to one part in n and one; the root of ninety and eighteen and it built by halving, e from the factorial series; nothing bills choice); `Norm` (a two-unknown form is never negative when its first coefficient is positive and the cross coefficient squared is not past the product of the other two; so a bound on a weighed square); `Reciprocal` (one over a real handed a stage where it is past nothing, and over; the least such stage found by looking). Library `Meanings`; `lake build Meanings`. Episode 13 imports it and meets the interfaces; nothing else in `Measurement` does. |
 | `CARD_2/Calibrate/` | Not the device: a package of its own, so that no build of the device resolves or sees Mathlib. It requires the device's package by path and Mathlib at the rev CARD_2's manifest already pins. Mathlib is fetched (23 November 2026; 7.1 GB in `CARD_2/Calibrate/.lake`, git-ignored) and its toolchain is the device's, v4.27.0-rc1. `cd CARD_2/Calibrate && lake build` builds it in seconds. Written: `Calibrate/Readings.lean` (each Meanings correspondence handed to Mathlib as `≃+*`) and `Calibrate/Device.lean` (`the_area_as_the_naturals : ReadAsNat Area ≃+* ℕ`, `the_account_as_the_integers : ReadAsInt Account ≃+* ℤ`, both `propext`, `Quot.sound`; `two_accounts_as_the_ratios : ReadAsRat Account ≃+* Rat`, which adds `Classical.choice`), and `ekg_meets`, which elaborates a term on Episode 8's EKG and logs the heartbeats; an interface not met is an error and nothing is read (negative control, in scratch: the Account asked to be counted as the naturals fails for want of an order, Lean exits 1). Readings on the M2, 23 November 2026: about 26,300 to 26,900 heartbeats each against a blank near 3,900 to 4,000, differing by a few to fifteen heartbeats between two builds (measured; not explained). A smoke test importing a Mathlib module beside `Measurement.Episode13` elaborated with no clash, at 1.3 GB resident under `-M 1500`; heavier Mathlib imports may need more. Also written: `Calibrate/Norm.lean` (the coins weighed by 18 and 5 carried to the Euclidean plane by the roots of the weights; the device's table carried across is ((18, √90), (√90, 18)); `the_operator_norm_of_the_table : ‖theOperator‖ = 18 + √90`; `the_table_on_the_coins_is_never_past`, for every real pair; `the_norm_squared_is_between_the_walls`, 755 < ‖M‖² ≤ 756, which are Episode 13's whole-number walls; all bill `Classical.choice`, because Mathlib's reals do) and `Calibrate/Hilbert.lean` (the plane met as `Module ℝ`, `InnerProductSpace ℝ` and `CompleteSpace`, and the norm and walls, each on `ekg_meets`: 204,475; 166,446; 19,577; 484,601; 634,613 heartbeats, blanks near 2,200 to 2,300, one build on the M2). |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
@@ -3915,9 +3915,38 @@ names the number.
   three complex numbers, some conjugated, the same four in another order
   because the complex numbers commute; it rests on the conjugate going
   through a product (`ComplexReal.conjugate_mul`) and through beside and
-  turning over by `rfl`. Not shown: a reciprocal, and so division (for
-  the quaternions that would make a division ring); the conjugate of a
-  quaternion product; and any order on the signed reals.
+  turning over by `rfl`. Not shown: the conjugate of a quaternion
+  product; and any order on the signed reals. A reciprocal is since
+  written for the positive reals (next bullet).
+- The reciprocal (`Meanings/Reciprocal.lean`; `Episode13.lean`, section
+  `the_lower_root_as_a_real`; `Experiments/Jar.lean`,
+  `the_other_reals_walls_are_this_jars`; 23 November 2026, at the
+  author's "Yes, reciprocal"). Receipts, `propext` and `Quot.sound` at
+  most. `Bracketed.reciprocal x k pos` is one over a real, handed a stage
+  k where its low wall is past nothing: the walls are one over the walls
+  (`Fraction.recip`, which turns the order over), read at stage
+  k + (n+1)q², q the low wall's under at k, so the width still narrows to
+  1/(n+1) (`the_reciprocal_narrows`). A real does not say of itself that
+  it is apart from nothing: being past nothing shows at a finite stage,
+  and no finite stage shows a real is nothing, so the stage is an
+  argument, not found. Laws: `mul_reciprocal` (x by one over x is one),
+  `reciprocal_same` (whatever stages were handed in), `div` and
+  `div_mul`; and `reciprocalFound`, given only that some stage shows it,
+  takes the least by `findByLooking` with the click, no choice. On the
+  device: the table's lower root, written with the root owed in the
+  signed reals, is written held as 234 (the determinant) over the norm
+  (`the_lower_root_as_a_real`, the norm handed in as past nothing at
+  stage 10); the two roots multiply to 234 at every pair of stages
+  (`the_two_roots_multiply_to_the_determinant`); and 324/65 of it has
+  both walls inside the other root's jar, 2730/65 and 2759/65 (42 and
+  42 + 29/65), at every stage (`the_other_low_wall_is_never_under_its_jar`,
+  `the_other_high_wall_is_never_over_its_jar`), from the walls at stage
+  10 decided by the kernel and one over's walls never moving outward of
+  them; Jar.lean joins those walls to the jar's own. Not shown: one over
+  a signed, complex or quaternion number (each wants the difference of
+  two reals as a real, held past owed at a stage, not yet written); and
+  that the lower root here is `Same` as the signed reals' 18 with √90
+  owed.
   Standard, and the author's next step:
   continuity with a modulus (a δ handed over for each ε) needs no choice,
   while that sequential continuity gives ε–δ continuity uses countable

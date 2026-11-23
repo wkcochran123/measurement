@@ -67,6 +67,18 @@ theorem the_reals_walls_are_this_jars :
           + the_sum_of_the_roots_in_cells % the_frame_by_the_coefficient
       ∧ the_jars_high_wall.under = the_frame_by_the_coefficient := by decide
 
+--| THE OTHER ROOT, AS A REAL, IN ITS JAR.  Episode 13 writes the lower root as the determinant over the norm, with no
+--| choice, and shows three hundred and twenty-four sixty-fifths of it inside two fractions over sixty-five at every stage
+--| (`the_other_low_wall_is_never_under_its_jar`, `the_other_high_wall_is_never_over_its_jar`).  Those are this jar's other
+--| walls: sixty-five naturals inferred, and that and the twenty-nine, over the sixty-five.
+set_option maxRecDepth 100000 in
+theorem the_other_reals_walls_are_this_jars :
+    the_other_jars_low_wall.over = the_frame_by_the_coefficient * what_is_left_of_the_sum
+      ∧ the_other_jars_low_wall.under = the_frame_by_the_coefficient
+      ∧ the_other_jars_high_wall.over = the_frame_by_the_coefficient * what_is_left_of_the_sum
+          + the_sum_of_the_roots_in_cells % the_frame_by_the_coefficient
+      ∧ the_other_jars_high_wall.under = the_frame_by_the_coefficient := by decide
+
 section for_the_reader
 open readers_interpretation_of_the_experience
 
@@ -104,6 +116,7 @@ end for_the_reader
 --#print axioms the_natural_read_and_the_natural_inferred
 --#print axioms the_reader_is_handed_one_first_part_whatever_the_knower_called
 --#print axioms the_reals_walls_are_this_jars
+--#print axioms the_other_reals_walls_are_this_jars
 --#print axioms the_readers_fraction_is_eighty_nine_and_forty_seven_sixty_fifths
 
 end Measurement

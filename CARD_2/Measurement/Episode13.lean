@@ -9569,6 +9569,66 @@ theorem the_printed_number_is_one_with_the_halvings :
       eighteen_beside_the_root_is_the_norm)
 end the_printed_number_as_a_real
 
+section the_lower_root_as_a_real
+open readers_experience
+
+--| THE LOWER ROOT, OVER.  With the reciprocal (Meanings, `Bracketed.reciprocal`), what the naturals could not write and the
+--| signed reals wrote with the root owed is written held: the table's lower root is its determinant, two hundred and
+--| thirty-four, over its norm, eighteen and the root of ninety.  The norm is past nothing at the tenth stage, and that stage
+--| is handed in; nothing is found by choice.  What is checked: the norm by this real is two hundred and thirty-four at every
+--| pair of stages, the two roots multiplying to the determinant; and three hundred and twenty-four sixty-fifths of it has
+--| both walls inside the other root's jar, two thousand seven hundred and thirty sixty-fifths (the natural inferred, forty-two)
+--| and two thousand seven hundred and fifty-nine sixty-fifths (that and the twenty-nine), at every stage.  The walls are not
+--| read off; one over reads the norm far on, so the jar is shown from the walls at the tenth stage, decided by the kernel,
+--| and the walls of one over never moving outward of them.
+
+theorem the_norm_is_past_nothing_at_the_tenth_stage : 0 < (Meanings.theNorm.bracketed.low 10).over := by decide
+
+def the_lower_root_as_a_real : Meanings.Bracketed :=
+  (Meanings.Bracketed.ofNat 234).mul (Meanings.theNorm.bracketed.reciprocal 10 the_norm_is_past_nothing_at_the_tenth_stage)
+
+--| THE TWO ROOTS MULTIPLY TO THE DETERMINANT.
+theorem the_two_roots_multiply_to_the_determinant :
+    (Meanings.theNorm.bracketed.mul the_lower_root_as_a_real).Same (Meanings.Bracketed.ofNat 234) :=
+  Meanings.Bracketed.same_trans (Meanings.Bracketed.same_symm (Meanings.Bracketed.mul_assoc _ _ _))
+    (Meanings.Bracketed.same_trans
+      (Meanings.Bracketed.mul_same (Meanings.Bracketed.mul_comm _ _) (Meanings.Bracketed.same_refl _))
+      (Meanings.Bracketed.same_trans (Meanings.Bracketed.mul_assoc _ _ _)
+        (Meanings.Bracketed.same_trans
+          (Meanings.Bracketed.mul_same (Meanings.Bracketed.same_refl _) (Meanings.Bracketed.mul_reciprocal _ _ _))
+          (Meanings.Bracketed.mul_one _))))
+
+--| THE OTHER ROOT, PRINTED: three hundred and twenty-four sixty-fifths of the lower root.
+def the_other_printed_root_as_a_real : Meanings.Bracketed :=
+  (Meanings.Bracketed.ofFraction ⟨324, 65, by decide⟩).mul the_lower_root_as_a_real
+
+def the_other_jars_low_wall : Meanings.Fraction := ⟨2730, 65, by decide⟩
+def the_other_jars_high_wall : Meanings.Fraction := ⟨2759, 65, by decide⟩
+
+--| At the tenth stage of the norm, one over its walls, by two hundred and thirty-four and the fraction, is inside the jar.
+theorem at_the_tenth_stage_the_other_walls_are_in_the_jar :
+    the_other_jars_low_wall.le ((⟨324, 65, by decide⟩ : Meanings.Fraction).mul ((⟨234, 1, Nat.one_pos⟩ : Meanings.Fraction).mul
+        ((Meanings.theNorm.bracketed.high 10).recip
+          (Meanings.theNorm.bracketed.high_pos 10 the_norm_is_past_nothing_at_the_tenth_stage (Nat.le_refl 10)))))
+      ∧ ((⟨324, 65, by decide⟩ : Meanings.Fraction).mul ((⟨234, 1, Nat.one_pos⟩ : Meanings.Fraction).mul
+          ((Meanings.theNorm.bracketed.low 10).recip the_norm_is_past_nothing_at_the_tenth_stage))).le
+          the_other_jars_high_wall := by
+  decide +kernel
+
+theorem the_other_low_wall_is_never_under_its_jar (n : Nat) :
+    the_other_jars_low_wall.le (the_other_printed_root_as_a_real.low n) :=
+  Meanings.Fraction.le_trans at_the_tenth_stage_the_other_walls_are_in_the_jar.1
+    (Meanings.Fraction.mul_le_mul (Meanings.Fraction.le_refl _)
+      (Meanings.Fraction.mul_le_mul (Meanings.Fraction.le_refl _) (Meanings.Bracketed.reciprocal_low_is_past _ _ _ _)))
+
+theorem the_other_high_wall_is_never_over_its_jar (n : Nat) :
+    (the_other_printed_root_as_a_real.high n).le the_other_jars_high_wall :=
+  Meanings.Fraction.le_trans
+    (Meanings.Fraction.mul_le_mul (Meanings.Fraction.le_refl _)
+      (Meanings.Fraction.mul_le_mul (Meanings.Fraction.le_refl _) (Meanings.Bracketed.reciprocal_high_is_under _ _ _ _)))
+    at_the_tenth_stage_the_other_walls_are_in_the_jar.2
+end the_lower_root_as_a_real
+
 section the_turn_by_a_rational_angle
 open readers_experience
 
