@@ -3884,8 +3884,23 @@ names the number.
   (`mul_comm`, `mul_assoc`, `one_mul`, `mul_add`); less is beside the other
   turned over by `rfl` (`sub_is_add_neg`). So the signed reals up to
   `Same` have the laws of a commutative ring; all `propext`, `Quot.sound`.
-  Not shown: the laws for the complex and quaternion layers (which would
-  follow the same pattern); a reciprocal, and so division; and any order
+  Then, at the author's "Complex laws next" (Laws.lean now imports
+  Complex): on the complex numbers (along and across), `ComplexReal.Same`
+  is an equivalence, beside, turned over and each for each keep `Same`,
+  beside commutes, associates, keeps nothing and `z + -z` is nothing, and
+  each for each commutes, associates, keeps one and spreads over beside
+  (`ComplexReal.mul_same`, `add_comm`, `add_assoc`, `zero_add`, `add_neg`,
+  `mul_comm`, `mul_assoc`, `one_mul`, `mul_add`); so the complex numbers
+  up to `Same` have the laws of a commutative ring, all `propext`,
+  `Quot.sound`. Associativity is the one long step: each side spreads
+  into four products of three with their signs, and the same four come
+  out in another order (`SignedReal.regroup`). Found on the way: stating
+  a law with `x - y` where the proof gives `x + -y`, or `-(x + y)` where it
+  gives `-x + -y`, is true by `rfl` but makes the unifier exhaust its
+  heartbeats while unknowns are open; the laws are stated in the `+ -`
+  form, with `rfl` lemmas (`ComplexReal.mul_along`, `neg_add_same`) that
+  expose the parts first. Not shown: the laws for the quaternions (whose
+  product does not commute); a reciprocal, and so division; and any order
   on the signed reals.
   Standard, and the author's next step:
   continuity with a modulus (a δ handed over for each ε) needs no choice,

@@ -17,9 +17,12 @@ Then the signed reals, held and owed, at the end of this file: being one is an e
 third away), and beside and each for each have the laws of a commutative ring, every signed real beside itself turned over
 being nothing.
 
-Not here: the laws for the complex and quaternion layers; a reciprocal, and so division.
+Then the complex numbers, along and across: the laws of a commutative ring, up to being one.
+
+Not here: the laws for the quaternions; a reciprocal, and so division.
 -/
 import Meanings.Trigonometry
+import Meanings.Complex
 namespace Meanings
 
 --| Every low wall is under every high wall.
@@ -367,6 +370,156 @@ theorem mul_same_right (x : SignedReal) {y y' : SignedReal} (hy : y.Same y') : (
 theorem mul_same {x x' y y' : SignedReal} (hx : x.Same x') (hy : y.Same y') : (x * y).Same (x' * y') :=
   same_trans (mul_same_left hx y) (mul_same_right x' hy)
 
+--| What the complex numbers lean on.  Nothing on the right; four beside each other regrouped; nothing for each is nothing;
+--| spreading from the right; and the owed carried through each for each.
+theorem add_zero (x : SignedReal) : (x + ofNat 0).Same x := same_trans (add_comm _ _) (zero_add x)
+
+theorem swap_middle (a b c d : SignedReal) : ((a + b) + (c + d)).Same ((a + c) + (b + d)) :=
+  of_parts (Bracketed.swap_middle _ _ _ _) (Bracketed.swap_middle _ _ _ _)
+
+theorem regroup (a b c d : SignedReal) : ((a + b) + (c + d)).Same ((a + c) + (d + b)) :=
+  same_trans (swap_middle a b c d) (add_same (same_refl _) (add_comm _ _))
+
+theorem zero_mul (x : SignedReal) : (ofNat 0 * x).Same (ofNat 0) :=
+  of_parts (Bracketed.same_trans (Bracketed.add_same (Bracketed.zero_mul _) (Bracketed.zero_mul _)) (Bracketed.zero_add _))
+    (Bracketed.same_trans (Bracketed.add_same (Bracketed.zero_mul _) (Bracketed.zero_mul _)) (Bracketed.zero_add _))
+
+theorem add_mul (x y z : SignedReal) : ((x + y) * z).Same (x * z + y * z) :=
+  same_trans (mul_comm _ _) (same_trans (mul_add z x y) (add_same (mul_comm _ _) (mul_comm _ _)))
+
+theorem neg_add (x y : SignedReal) : -(x + y) = -x + -y := rfl
+
+theorem mul_neg (x y : SignedReal) : x * -y = -(x * y) := rfl
+
+theorem neg_add_same (x y : SignedReal) : (-(x + y)).Same (-x + -y) := by rw [neg_add]; exact same_refl _
+
+theorem neg_mul (x y : SignedReal) : ((-x) * y).Same (-(x * y)) :=
+  of_parts (Bracketed.add_comm _ _) (Bracketed.add_comm _ _)
+
+theorem neg_zero : -(ofNat 0) = ofNat 0 := rfl
+
+--| Less, written as beside the other turned over, through each for each.
+theorem sub_mul (x y z : SignedReal) : ((x + -y) * z).Same (x * z + -(y * z)) :=
+  same_trans (add_mul x (-y) z) (add_same (same_refl _) (neg_mul y z))
+
+theorem mul_sub (x y z : SignedReal) : (x * (y + -z)).Same (x * y + -(x * z)) := by
+  have h := mul_add x y (-z)
+  rw [mul_neg] at h
+  exact h
+
 end SignedReal
+
+/-
+The complex numbers: along and across, two signed reals.  Two are one when along is one with along and across with
+across.  Beside commutes, associates, keeps nothing, and a complex number beside itself turned over is nothing.  Each for
+each commutes, associates, keeps one and spreads over beside; and both keep being one.  So the complex numbers here, up
+to being one, have the laws of a commutative ring, with no choice.  Each for each associating is the one long step: each
+side spreads into four products of three, with their signs, and the same four come out in another order.
+-/
+namespace ComplexReal
+
+--| The parts of beside, turned over and each for each, read off; less written as beside the other turned over.
+theorem add_along (z w : ComplexReal) : (z + w).along = z.along + w.along := rfl
+theorem add_across (z w : ComplexReal) : (z + w).across = z.across + w.across := rfl
+theorem neg_along (z : ComplexReal) : (-z).along = -z.along := rfl
+theorem neg_across (z : ComplexReal) : (-z).across = -z.across := rfl
+theorem mul_along (z w : ComplexReal) : (z * w).along = z.along * w.along + -(z.across * w.across) := rfl
+theorem mul_across (z w : ComplexReal) : (z * w).across = z.along * w.across + z.across * w.along := rfl
+theorem ofNat_along (k : Nat) : (ofNat k).along = SignedReal.ofNat k := rfl
+theorem ofNat_across (k : Nat) : (ofNat k).across = SignedReal.ofNat 0 := rfl
+theorem sub_is_add_neg (z w : ComplexReal) : z - w = z + -w := rfl
+
+theorem same_refl (z : ComplexReal) : z.Same z := ⟨SignedReal.same_refl _, SignedReal.same_refl _⟩
+
+theorem same_symm {z w : ComplexReal} (h : z.Same w) : w.Same z := ⟨SignedReal.same_symm h.1, SignedReal.same_symm h.2⟩
+
+theorem same_trans {z w v : ComplexReal} (h1 : z.Same w) (h2 : w.Same v) : z.Same v :=
+  ⟨SignedReal.same_trans h1.1 h2.1, SignedReal.same_trans h1.2 h2.2⟩
+
+--| BESIDE AND TURNED OVER KEEP BEING ONE.
+theorem add_same {z z' w w' : ComplexReal} (hz : z.Same z') (hw : w.Same w') : (z + w).Same (z' + w') := by
+  constructor <;> simp only [add_along, add_across]
+  · exact SignedReal.add_same hz.1 hw.1
+  · exact SignedReal.add_same hz.2 hw.2
+
+theorem neg_same {z w : ComplexReal} (h : z.Same w) : (-z).Same (-w) := by
+  constructor <;> simp only [neg_along, neg_across]
+  · exact SignedReal.neg_same h.1
+  · exact SignedReal.neg_same h.2
+
+--| EACH FOR EACH KEEPS BEING ONE.
+theorem mul_same {z z' w w' : ComplexReal} (hz : z.Same z') (hw : w.Same w') : (z * w).Same (z' * w') := by
+  constructor <;> simp only [mul_along, mul_across]
+  · exact SignedReal.add_same (SignedReal.mul_same hz.1 hw.1) (SignedReal.neg_same (SignedReal.mul_same hz.2 hw.2))
+  · exact SignedReal.add_same (SignedReal.mul_same hz.1 hw.2) (SignedReal.mul_same hz.2 hw.1)
+
+--| BESIDE COMMUTES, ASSOCIATES, KEEPS NOTHING, AND A NUMBER BESIDE ITSELF TURNED OVER IS NOTHING.
+theorem add_comm (z w : ComplexReal) : (z + w).Same (w + z) := by
+  constructor <;> simp only [add_along, add_across]
+  · exact SignedReal.add_comm _ _
+  · exact SignedReal.add_comm _ _
+
+theorem add_assoc (z w v : ComplexReal) : ((z + w) + v).Same (z + (w + v)) := by
+  constructor <;> simp only [add_along, add_across]
+  · exact SignedReal.add_assoc _ _ _
+  · exact SignedReal.add_assoc _ _ _
+
+theorem zero_add (z : ComplexReal) : (ofNat 0 + z).Same z := by
+  constructor <;> simp only [add_along, add_across, ofNat_along, ofNat_across]
+  · exact SignedReal.zero_add _
+  · exact SignedReal.zero_add _
+
+theorem add_neg (z : ComplexReal) : (z + -z).Same (ofNat 0) := by
+  constructor <;> simp only [add_along, add_across, neg_along, neg_across, ofNat_along, ofNat_across]
+  · exact SignedReal.add_neg _
+  · exact SignedReal.add_neg _
+
+--| EACH FOR EACH COMMUTES.
+theorem mul_comm (z w : ComplexReal) : (z * w).Same (w * z) := by
+  constructor <;> simp only [mul_along, mul_across]
+  · exact SignedReal.add_same (SignedReal.mul_comm _ _) (SignedReal.neg_same (SignedReal.mul_comm _ _))
+  · exact SignedReal.same_trans (SignedReal.add_same (SignedReal.mul_comm _ _) (SignedReal.mul_comm _ _)) (SignedReal.add_comm _ _)
+
+--| ONE FOR EACH OF A COMPLEX NUMBER IS IT.
+theorem one_mul (z : ComplexReal) : (ofNat 1 * z).Same z := by
+  constructor <;> simp only [mul_along, mul_across, ofNat_along, ofNat_across]
+  · exact SignedReal.same_trans (SignedReal.add_same (SignedReal.one_mul _) (SignedReal.neg_same (SignedReal.zero_mul _)))
+      (SignedReal.add_zero _)
+  · exact SignedReal.same_trans (SignedReal.add_same (SignedReal.one_mul _) (SignedReal.zero_mul _)) (SignedReal.add_zero _)
+
+--| EACH FOR EACH SPREADS OVER BESIDE.
+theorem mul_add (z w v : ComplexReal) : (z * (w + v)).Same (z * w + z * v) := by
+  constructor <;> simp only [mul_along, mul_across, add_along, add_across]
+  · exact SignedReal.same_trans
+      (SignedReal.add_same (SignedReal.mul_add _ _ _)
+        (SignedReal.same_trans (SignedReal.neg_same (SignedReal.mul_add _ _ _)) (SignedReal.neg_add_same _ _)))
+      (SignedReal.swap_middle _ _ _ _)
+  · exact SignedReal.same_trans (SignedReal.add_same (SignedReal.mul_add _ _ _) (SignedReal.mul_add _ _ _))
+      (SignedReal.swap_middle _ _ _ _)
+
+--| EACH FOR EACH ASSOCIATES.  Along: (ac − bd)e − (ad + bc)f and a(ce − df) − b(cf + de), four products of three each.
+--| Across: (ac − bd)f + (ad + bc)e and a(cf + de) + b(ce − df).
+theorem mul_assoc (z w v : ComplexReal) : ((z * w) * v).Same (z * (w * v)) := by
+  obtain ⟨a, b⟩ := z
+  obtain ⟨c, d⟩ := w
+  obtain ⟨e, f⟩ := v
+  constructor <;> simp only [mul_along, mul_across]
+  · refine SignedReal.same_trans (SignedReal.add_same (SignedReal.sub_mul _ _ _)
+      (SignedReal.same_trans (SignedReal.neg_same (SignedReal.add_mul _ _ _)) (SignedReal.neg_add_same _ _))) ?_
+    refine SignedReal.same_trans (SignedReal.add_same
+      (SignedReal.add_same (SignedReal.mul_assoc a c e) (SignedReal.neg_same (SignedReal.mul_assoc b d e)))
+      (SignedReal.add_same (SignedReal.neg_same (SignedReal.mul_assoc a d f)) (SignedReal.neg_same (SignedReal.mul_assoc b c f)))) ?_
+    refine SignedReal.same_trans (SignedReal.regroup _ _ _ _) ?_
+    exact SignedReal.same_symm (SignedReal.add_same (SignedReal.mul_sub _ _ _)
+      (SignedReal.same_trans (SignedReal.neg_same (SignedReal.mul_add _ _ _)) (SignedReal.neg_add_same _ _)))
+  · refine SignedReal.same_trans (SignedReal.add_same (SignedReal.sub_mul _ _ _) (SignedReal.add_mul _ _ _)) ?_
+    refine SignedReal.same_trans (SignedReal.add_same
+      (SignedReal.add_same (SignedReal.mul_assoc a c f) (SignedReal.neg_same (SignedReal.mul_assoc b d f)))
+      (SignedReal.add_same (SignedReal.mul_assoc a d e) (SignedReal.mul_assoc b c e))) ?_
+    refine SignedReal.same_trans (SignedReal.regroup _ _ _ _) ?_
+    exact SignedReal.same_symm (SignedReal.add_same (SignedReal.mul_add _ _ _) (SignedReal.mul_sub _ _ _))
+
+end ComplexReal
+
 
 end Meanings
