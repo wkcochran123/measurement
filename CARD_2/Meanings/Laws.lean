@@ -17,12 +17,13 @@ Then the signed reals, held and owed, at the end of this file: being one is an e
 third away), and beside and each for each have the laws of a commutative ring, every signed real beside itself turned over
 being nothing.
 
-Then the complex numbers, along and across: the laws of a commutative ring, up to being one.
+Then the complex numbers, along and across: the laws of a commutative ring, up to being one.  And the quaternions, a first
+and a second: the laws of a ring that is not commutative.
 
-Not here: the laws for the quaternions; a reciprocal, and so division.
+Not here: a reciprocal, and so division.
 -/
 import Meanings.Trigonometry
-import Meanings.Complex
+import Meanings.Quaternion
 namespace Meanings
 
 --| Every low wall is under every high wall.
@@ -393,6 +394,9 @@ theorem mul_neg (x y : SignedReal) : x * -y = -(x * y) := rfl
 
 theorem neg_add_same (x y : SignedReal) : (-(x + y)).Same (-x + -y) := by rw [neg_add]; exact same_refl _
 
+theorem neg_mul_neg (x y : SignedReal) : ((-x) * (-y)).Same (x * y) :=
+  of_parts (Bracketed.add_comm _ _) (Bracketed.add_comm _ _)
+
 theorem neg_mul (x y : SignedReal) : ((-x) * y).Same (-(x * y)) :=
   of_parts (Bracketed.add_comm _ _) (Bracketed.add_comm _ _)
 
@@ -519,7 +523,234 @@ theorem mul_assoc (z w v : ComplexReal) : ((z * w) * v).Same (z * (w * v)) := by
     refine SignedReal.same_trans (SignedReal.regroup _ _ _ _) ?_
     exact SignedReal.same_symm (SignedReal.add_same (SignedReal.mul_add _ _ _) (SignedReal.mul_sub _ _ _))
 
+
+--| What the quaternions lean on.  Nothing and one on the other side; spreading from the right; the owed through each for
+--| each; and the conjugate, turned across the line, through beside and each for each.
+instance : @Trans ComplexReal ComplexReal ComplexReal Same Same Same := ⟨same_trans⟩
+
+theorem add_zero (z : ComplexReal) : (z + ofNat 0).Same z := same_trans (add_comm _ _) (zero_add z)
+
+theorem mul_one (z : ComplexReal) : (z * ofNat 1).Same z := same_trans (mul_comm _ _) (one_mul z)
+
+theorem zero_mul (z : ComplexReal) : (ofNat 0 * z).Same (ofNat 0) := by
+  constructor <;> simp only [mul_along, mul_across, ofNat_along, ofNat_across]
+  · exact SignedReal.same_trans (SignedReal.add_same (SignedReal.zero_mul _) (SignedReal.neg_same (SignedReal.zero_mul _)))
+      (SignedReal.add_neg _)
+  · exact SignedReal.same_trans (SignedReal.add_same (SignedReal.zero_mul _) (SignedReal.zero_mul _)) (SignedReal.zero_add _)
+
+theorem mul_zero (z : ComplexReal) : (z * ofNat 0).Same (ofNat 0) := same_trans (mul_comm _ _) (zero_mul z)
+
+theorem add_mul (z w v : ComplexReal) : ((z + w) * v).Same (z * v + w * v) :=
+  same_trans (mul_comm _ _) (same_trans (mul_add v z w) (add_same (mul_comm _ _) (mul_comm _ _)))
+
+theorem neg_add (z w : ComplexReal) : -(z + w) = -z + -w := rfl
+
+theorem neg_add_same (z w : ComplexReal) : (-(z + w)).Same (-z + -w) := by rw [neg_add]; exact same_refl _
+
+theorem mul_neg (z w : ComplexReal) : z * -w = -(z * w) := rfl
+
+theorem neg_mul (z w : ComplexReal) : ((-z) * w).Same (-(z * w)) :=
+  same_trans (mul_comm _ _) (by rw [mul_neg]; exact neg_same (mul_comm w z))
+
+theorem sub_mul (z w v : ComplexReal) : ((z + -w) * v).Same (z * v + -(w * v)) :=
+  same_trans (add_mul z (-w) v) (add_same (same_refl _) (neg_mul w v))
+
+theorem mul_sub (z w v : ComplexReal) : (z * (w + -v)).Same (z * w + -(z * v)) := by
+  have h := mul_add z w (-v)
+  rw [mul_neg] at h
+  exact h
+
+theorem swap_middle (a b c d : ComplexReal) : ((a + b) + (c + d)).Same ((a + c) + (b + d)) :=
+  ⟨SignedReal.swap_middle _ _ _ _, SignedReal.swap_middle _ _ _ _⟩
+
+theorem regroup (a b c d : ComplexReal) : ((a + b) + (c + d)).Same ((a + c) + (d + b)) :=
+  same_trans (swap_middle a b c d) (add_same (same_refl _) (add_comm _ _))
+
+--| Three each for each, the last two exchanged.
+theorem swap_last (x y z : ComplexReal) : (x * y * z).Same (x * z * y) :=
+  same_trans (mul_assoc _ _ _) (same_trans (mul_same (same_refl _) (mul_comm _ _)) (same_symm (mul_assoc _ _ _)))
+
+theorem conjugate_along (z : ComplexReal) : z.conjugate.along = z.along := rfl
+theorem conjugate_across (z : ComplexReal) : z.conjugate.across = -z.across := rfl
+theorem conjugate_add (z w : ComplexReal) : (z + w).conjugate = z.conjugate + w.conjugate := rfl
+theorem conjugate_neg (z : ComplexReal) : (-z).conjugate = -z.conjugate := rfl
+theorem conjugate_conjugate (z : ComplexReal) : z.conjugate.conjugate = z := rfl
+theorem conjugate_zero : (ofNat 0).conjugate = ofNat 0 := rfl
+theorem conjugate_one : (ofNat 1).conjugate = ofNat 1 := rfl
+
+--| THE CONJUGATE KEEPS BEING ONE, AND GOES THROUGH EACH FOR EACH.
+theorem conjugate_same {z w : ComplexReal} (h : z.Same w) : z.conjugate.Same w.conjugate := ⟨h.1, SignedReal.neg_same h.2⟩
+
+theorem conjugate_mul (z w : ComplexReal) : (z * w).conjugate.Same (z.conjugate * w.conjugate) := by
+  constructor <;> simp only [conjugate_along, conjugate_across, mul_along, mul_across, SignedReal.mul_neg]
+  · exact SignedReal.add_same (SignedReal.same_refl _) (SignedReal.neg_same (SignedReal.same_symm (SignedReal.neg_mul_neg _ _)))
+  · exact SignedReal.same_trans (SignedReal.neg_add_same _ _)
+      (SignedReal.add_same (SignedReal.same_refl _) (SignedReal.same_symm (SignedReal.neg_mul _ _)))
+
+theorem conjugate_mul_conjugate (z w : ComplexReal) : (z * w.conjugate).conjugate.Same (z.conjugate * w) := by
+  have h := conjugate_mul z w.conjugate
+  rw [conjugate_conjugate] at h
+  exact h
+
+theorem conjugate_conjugate_mul (z w : ComplexReal) : (z.conjugate * w).conjugate.Same (z * w.conjugate) := by
+  have h := conjugate_mul z.conjugate w
+  rw [conjugate_conjugate] at h
+  exact h
+
 end ComplexReal
+
+
+local infix:50 " ≋ " => ComplexReal.Same
+
+/-
+The quaternions: a first and a second complex number, doubled the way the complex numbers doubled the signed reals.  Two
+are one when first is one with first and second with second.  Beside commutes, associates, keeps nothing, and a
+quaternion beside itself turned over is nothing.  Each for each keeps one on either side, spreads over beside on either
+side, and associates; and both keep being one.  It does not commute (`i_by_j_is_not_j_by_i`).  So the quaternions here,
+up to being one, have the laws of a ring that is not commutative, with no choice.  Associating is the long step again:
+each side's first and second spread into four products of three complex numbers, some turned across the line, and since
+the complex numbers commute the same four come out in another order.
+-/
+namespace QuaternionReal
+
+theorem first_add (p q : QuaternionReal) : (p + q).first = p.first + q.first := rfl
+theorem second_add (p q : QuaternionReal) : (p + q).second = p.second + q.second := rfl
+theorem first_neg (p : QuaternionReal) : (-p).first = -p.first := rfl
+theorem second_neg (p : QuaternionReal) : (-p).second = -p.second := rfl
+theorem first_mul (p q : QuaternionReal) : (p * q).first = p.first * q.first + -(q.second.conjugate * p.second) := rfl
+theorem second_mul (p q : QuaternionReal) : (p * q).second = q.second * p.first + p.second * q.first.conjugate := rfl
+theorem first_ofNat (k : Nat) : (ofNat k).first = ComplexReal.ofNat k := rfl
+theorem second_ofNat (k : Nat) : (ofNat k).second = ComplexReal.ofNat 0 := rfl
+theorem sub_is_add_neg (p q : QuaternionReal) : p - q = p + -q := rfl
+
+theorem same_refl (p : QuaternionReal) : p.Same p := ⟨ComplexReal.same_refl _, ComplexReal.same_refl _⟩
+
+theorem same_symm {p q : QuaternionReal} (h : p.Same q) : q.Same p := ⟨ComplexReal.same_symm h.1, ComplexReal.same_symm h.2⟩
+
+theorem same_trans {p q r : QuaternionReal} (h1 : p.Same q) (h2 : q.Same r) : p.Same r :=
+  ⟨ComplexReal.same_trans h1.1 h2.1, ComplexReal.same_trans h1.2 h2.2⟩
+
+--| BESIDE AND TURNED OVER KEEP BEING ONE.
+theorem add_same {p p' q q' : QuaternionReal} (hp : p.Same p') (hq : q.Same q') : (p + q).Same (p' + q') := by
+  constructor <;> simp only [first_add, second_add]
+  · exact ComplexReal.add_same hp.1 hq.1
+  · exact ComplexReal.add_same hp.2 hq.2
+
+theorem neg_same {p q : QuaternionReal} (h : p.Same q) : (-p).Same (-q) := by
+  constructor <;> simp only [first_neg, second_neg]
+  · exact ComplexReal.neg_same h.1
+  · exact ComplexReal.neg_same h.2
+
+--| EACH FOR EACH KEEPS BEING ONE.
+theorem mul_same {p p' q q' : QuaternionReal} (hp : p.Same p') (hq : q.Same q') : (p * q).Same (p' * q') := by
+  constructor <;> simp only [first_mul, second_mul]
+  · exact ComplexReal.add_same (ComplexReal.mul_same hp.1 hq.1)
+      (ComplexReal.neg_same (ComplexReal.mul_same (ComplexReal.conjugate_same hq.2) hp.2))
+  · exact ComplexReal.add_same (ComplexReal.mul_same hq.2 hp.1) (ComplexReal.mul_same hp.2 (ComplexReal.conjugate_same hq.1))
+
+--| BESIDE COMMUTES, ASSOCIATES, KEEPS NOTHING, AND A QUATERNION BESIDE ITSELF TURNED OVER IS NOTHING.
+theorem add_comm (p q : QuaternionReal) : (p + q).Same (q + p) := by
+  constructor <;> simp only [first_add, second_add]
+  · exact ComplexReal.add_comm _ _
+  · exact ComplexReal.add_comm _ _
+
+theorem add_assoc (p q r : QuaternionReal) : ((p + q) + r).Same (p + (q + r)) := by
+  constructor <;> simp only [first_add, second_add]
+  · exact ComplexReal.add_assoc _ _ _
+  · exact ComplexReal.add_assoc _ _ _
+
+theorem zero_add (p : QuaternionReal) : (ofNat 0 + p).Same p := by
+  constructor <;> simp only [first_add, second_add, first_ofNat, second_ofNat]
+  · exact ComplexReal.zero_add _
+  · exact ComplexReal.zero_add _
+
+theorem add_neg (p : QuaternionReal) : (p + -p).Same (ofNat 0) := by
+  constructor <;> simp only [first_add, second_add, first_neg, second_neg, first_ofNat, second_ofNat]
+  · exact ComplexReal.add_neg _
+  · exact ComplexReal.add_neg _
+
+--| ONE FOR EACH, ON EITHER SIDE, IS THE QUATERNION.
+theorem one_mul (q : QuaternionReal) : (ofNat 1 * q).Same q := by
+  constructor <;> simp only [first_mul, second_mul, first_ofNat, second_ofNat]
+  · exact ComplexReal.same_trans
+      (ComplexReal.add_same (ComplexReal.one_mul q.first) (ComplexReal.neg_same (ComplexReal.mul_zero q.second.conjugate)))
+      (ComplexReal.add_zero q.first)
+  · exact ComplexReal.same_trans
+      (ComplexReal.add_same (ComplexReal.mul_one q.second) (ComplexReal.zero_mul q.first.conjugate))
+      (ComplexReal.add_zero q.second)
+
+theorem mul_one (p : QuaternionReal) : (p * ofNat 1).Same p := by
+  constructor <;> simp only [first_mul, second_mul, first_ofNat, second_ofNat, ComplexReal.conjugate_zero,
+    ComplexReal.conjugate_one]
+  · exact ComplexReal.same_trans
+      (ComplexReal.add_same (ComplexReal.mul_one p.first) (ComplexReal.neg_same (ComplexReal.zero_mul p.second)))
+      (ComplexReal.add_zero p.first)
+  · exact ComplexReal.same_trans
+      (ComplexReal.add_same (ComplexReal.zero_mul p.first) (ComplexReal.mul_one p.second))
+      (ComplexReal.zero_add p.second)
+
+--| EACH FOR EACH SPREADS OVER BESIDE, ON EITHER SIDE.
+theorem mul_add (p q r : QuaternionReal) : (p * (q + r)).Same (p * q + p * r) := by
+  constructor <;> simp only [first_mul, second_mul, first_add, second_add, ComplexReal.conjugate_add]
+  · exact ComplexReal.same_trans
+      (ComplexReal.add_same (ComplexReal.mul_add _ _ _)
+        (ComplexReal.same_trans (ComplexReal.neg_same (ComplexReal.add_mul _ _ _)) (ComplexReal.neg_add_same _ _)))
+      (ComplexReal.swap_middle _ _ _ _)
+  · exact ComplexReal.same_trans (ComplexReal.add_same (ComplexReal.add_mul _ _ _) (ComplexReal.mul_add _ _ _))
+      (ComplexReal.swap_middle _ _ _ _)
+
+theorem add_mul (p q r : QuaternionReal) : ((p + q) * r).Same (p * r + q * r) := by
+  constructor <;> simp only [first_mul, second_mul, first_add, second_add]
+  · exact ComplexReal.same_trans
+      (ComplexReal.add_same (ComplexReal.add_mul _ _ _)
+        (ComplexReal.same_trans (ComplexReal.neg_same (ComplexReal.mul_add _ _ _)) (ComplexReal.neg_add_same _ _)))
+      (ComplexReal.swap_middle _ _ _ _)
+  · exact ComplexReal.same_trans (ComplexReal.add_same (ComplexReal.mul_add _ _ _) (ComplexReal.add_mul _ _ _))
+      (ComplexReal.swap_middle _ _ _ _)
+
+--| EACH FOR EACH ASSOCIATES.  With p = (a, b), q = (c, d), r = (e, f) and a bar for the conjugate:
+--| first: (ac − d̄b)e − f̄(da + bc̄) and a(ce − f̄d) − (fc + dē)‾b;
+--| second: f(ac − d̄b) + (da + bc̄)ē and (fc + dē)a + b(ce − f̄d)‾.
+theorem mul_assoc (p q r : QuaternionReal) : ((p * q) * r).Same (p * (q * r)) := by
+  obtain ⟨a, b⟩ := p
+  obtain ⟨c, d⟩ := q
+  obtain ⟨e, f⟩ := r
+  constructor
+  · show (a * c + -(d.conjugate * b)) * e + -(f.conjugate * (d * a + b * c.conjugate))
+        ≋ a * (c * e + -(f.conjugate * d)) + -(((f * c).conjugate + (d * e.conjugate).conjugate) * b)
+    calc (a * c + -(d.conjugate * b)) * e + -(f.conjugate * (d * a + b * c.conjugate))
+        ≋ (a * c * e + -(d.conjugate * b * e)) + (-(f.conjugate * (d * a)) + -(f.conjugate * (b * c.conjugate))) :=
+          ComplexReal.add_same (ComplexReal.sub_mul _ _ _) (ComplexReal.same_trans (ComplexReal.neg_same (ComplexReal.mul_add _ _ _)) (ComplexReal.neg_add_same _ _))
+      _ ≋ (a * (c * e) + -(d.conjugate * e * b)) + (-(a * (f.conjugate * d)) + -(f.conjugate * c.conjugate * b)) :=
+          ComplexReal.add_same (ComplexReal.add_same (ComplexReal.mul_assoc _ _ _) (ComplexReal.neg_same (ComplexReal.swap_last _ _ _)))
+            (ComplexReal.add_same (ComplexReal.neg_same (ComplexReal.same_trans (ComplexReal.same_symm (ComplexReal.mul_assoc _ _ _)) (ComplexReal.mul_comm _ _)))
+              (ComplexReal.neg_same (ComplexReal.same_trans (ComplexReal.mul_same (ComplexReal.same_refl _) (ComplexReal.mul_comm _ _)) (ComplexReal.same_symm (ComplexReal.mul_assoc _ _ _)))))
+      _ ≋ (a * (c * e) + -(a * (f.conjugate * d))) + (-(f.conjugate * c.conjugate * b) + -(d.conjugate * e * b)) :=
+          ComplexReal.regroup _ _ _ _
+      _ ≋ a * (c * e + -(f.conjugate * d)) + -(((f * c).conjugate + (d * e.conjugate).conjugate) * b) :=
+          ComplexReal.same_symm (ComplexReal.add_same (ComplexReal.mul_sub _ _ _)
+            (ComplexReal.same_trans (ComplexReal.neg_same (ComplexReal.add_mul _ _ _)) (ComplexReal.same_trans (ComplexReal.neg_add_same _ _)
+              (ComplexReal.add_same (ComplexReal.neg_same (ComplexReal.mul_same (ComplexReal.conjugate_mul f c) (ComplexReal.same_refl b)))
+                (ComplexReal.neg_same (ComplexReal.mul_same (ComplexReal.conjugate_mul_conjugate d e) (ComplexReal.same_refl b)))))))
+  · show f * (a * c + -(d.conjugate * b)) + (d * a + b * c.conjugate) * e.conjugate
+        ≋ (f * c + d * e.conjugate) * a + b * ((c * e).conjugate + -((f.conjugate * d).conjugate))
+    calc f * (a * c + -(d.conjugate * b)) + (d * a + b * c.conjugate) * e.conjugate
+        ≋ (f * (a * c) + -(f * (d.conjugate * b))) + (d * a * e.conjugate + b * c.conjugate * e.conjugate) :=
+          ComplexReal.add_same (ComplexReal.mul_sub _ _ _) (ComplexReal.add_mul _ _ _)
+      _ ≋ (f * c * a + -(b * (f * d.conjugate))) + (d * e.conjugate * a + b * (c.conjugate * e.conjugate)) :=
+          ComplexReal.add_same
+            (ComplexReal.add_same (ComplexReal.same_trans (ComplexReal.mul_same (ComplexReal.same_refl _) (ComplexReal.mul_comm _ _)) (ComplexReal.same_symm (ComplexReal.mul_assoc _ _ _)))
+              (ComplexReal.neg_same (ComplexReal.same_trans (ComplexReal.same_symm (ComplexReal.mul_assoc _ _ _)) (ComplexReal.mul_comm _ _))))
+            (ComplexReal.add_same (ComplexReal.swap_last _ _ _) (ComplexReal.mul_assoc _ _ _))
+      _ ≋ (f * c * a + d * e.conjugate * a) + (b * (c.conjugate * e.conjugate) + -(b * (f * d.conjugate))) :=
+          ComplexReal.regroup _ _ _ _
+      _ ≋ (f * c + d * e.conjugate) * a + b * ((c * e).conjugate + -((f.conjugate * d).conjugate)) :=
+          ComplexReal.same_symm (ComplexReal.add_same (ComplexReal.add_mul _ _ _)
+            (ComplexReal.same_trans (ComplexReal.mul_sub _ _ _)
+              (ComplexReal.add_same (ComplexReal.mul_same (ComplexReal.same_refl b) (ComplexReal.conjugate_mul c e))
+                (ComplexReal.neg_same (ComplexReal.mul_same (ComplexReal.same_refl b) (ComplexReal.conjugate_conjugate_mul f d))))))
+
+end QuaternionReal
 
 
 end Meanings

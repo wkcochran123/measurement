@@ -3899,9 +3899,25 @@ names the number.
   gives `-x + -y`, is true by `rfl` but makes the unifier exhaust its
   heartbeats while unknowns are open; the laws are stated in the `+ -`
   form, with `rfl` lemmas (`ComplexReal.mul_along`, `neg_add_same`) that
-  expose the parts first. Not shown: the laws for the quaternions (whose
-  product does not commute); a reciprocal, and so division; and any order
-  on the signed reals.
+  expose the parts first. Then, at the author's "Quaternion laws next"
+  (Laws.lean now imports Quaternion): on the quaternions (a first and a
+  second complex number, product (a, b)(c, d) = (ac − d̄b, da + bc̄)),
+  `QuaternionReal.Same` is an equivalence, beside, turned over and each
+  for each keep `Same`, beside commutes, associates, keeps nothing and
+  `p + -p` is nothing, and each for each keeps one on either side,
+  spreads over beside on either side and associates
+  (`QuaternionReal.mul_same`, `add_comm`, `add_assoc`, `zero_add`,
+  `add_neg`, `one_mul`, `mul_one`, `mul_add`, `add_mul`, `mul_assoc`);
+  with `i_by_j_is_not_j_by_i` (Quaternion.lean) it does not commute. So
+  the quaternions up to `Same` have the laws of a ring that is not
+  commutative; all `propext`, `Quot.sound`. Associativity is written as
+  two `calc` chains, each side's part spreading into four products of
+  three complex numbers, some conjugated, the same four in another order
+  because the complex numbers commute; it rests on the conjugate going
+  through a product (`ComplexReal.conjugate_mul`) and through beside and
+  turning over by `rfl`. Not shown: a reciprocal, and so division (for
+  the quaternions that would make a division ring); the conjugate of a
+  quaternion product; and any order on the signed reals.
   Standard, and the author's next step:
   continuity with a modulus (a δ handed over for each ε) needs no choice,
   while that sequential continuity gives ε–δ continuity uses countable
