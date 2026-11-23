@@ -34,7 +34,7 @@ its files match the source commit.
 | 015 | `readings/015-the-coupling-on-other-work` | the coupling on other work: is Experiment 001's g, heartbeats per cell over the blank, the same when the cells do other work | `7508385` | read on the M2, 21 November 2026 |
 | 016 | `readings/016-the-depth-of-a-carrier` | the depth of a carrier: what a reader and a first rung cost on the meter on cards one, two and three deep and over four boxes | `7508385` | read on the M2, 21 November 2026 |
 | 017 | `readings/017-does-one-count-move-the-other` | does one count move the other: a second bottom with one wrapper more, and whether Episode 8's eighteen moves | `7508385` | read on the M2, 21 November 2026 |
-| 018 | `readings/018-the-fourth-and-fifth-wrappers` | the fourth and fifth wrappers: the author's predictions that one more carrier gives the Fréchet derivative and one more is invariant, read on the meter at depths one to five | (this commit) | sealed, not yet read |
+| 018 | `readings/018-the-fourth-and-fifth-wrappers` | the fourth and fifth wrappers: the author's predictions that one more carrier gives the Fréchet derivative and one more is invariant, read on the meter at depths one to five | `af3cede` | read on the M2, 23 November 2026: the fourth wrapper costs (P2 confirmed); the fifth costs too (P3 refuted); the step does not read the depth |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -1068,4 +1068,25 @@ the predictions there, made before any run: five cards written alike, one to fiv
 the device's step twice, at each depth, two repeats. Seal: `readings/018-the-fourth-and-fifth-wrappers/SEALED_PREDICTION.txt`,
 sha256 064eae7917772cae….
 
-**Read:** not yet.
+**Read:** Apple M2, 23 November 2026; raw in `readings/018-the-fourth-and-fifth-wrappers/raw/M2/`. Both repeats
+identical to the heartbeat. Source: `af3cede`.
+
+| Depth | Reader past the quarter | Over the one before | Step twice | Over depth one |
+|---|---|---|---|---|
+| 1 | 42,896 | | 23,009 | |
+| 2 | 42,942 | 46 | 23,015 | 6 |
+| 3 | 43,021 | 79 | 23,018 | 9 |
+| 4 | 43,074 | 53 | 23,017 | 8 |
+| 5 | 43,142 | 68 | 23,021 | 12 |
+
+Against the seal. P1 (the reader rises by more than 20 from one to two and from two to three): **confirmed**, 46 and
+79. P2 (the fourth wrapper is not free, more than 20): **confirmed**, 53. P3 (the fifth wrapper is free, within 20):
+**refuted**; it costs 68, more than the fourth. P4 (the step within 50 at all depths): **confirmed**, a range of 12.
+P5 (repeats identical): **confirmed**.
+
+What is measured. Every wrapper costs the reader something, between 46 and 79 heartbeats, and the costs do not
+shrink or settle: 46, 79, 53, 68. Nothing on this meter stops at five, so "invariant at five", read as the fifth
+wrapper being free, is refuted as sealed. The step, which the receipts say is a projection at every depth, reads
+within 12 heartbeats at all five depths: the meter barely sees the depth there, where the reader sees it every time.
+With the cards written alike, the increments are not those of Experiment 016 (87 and 63), whose cards were written
+differently. One machine. Why the increments alternate is not known; no explanation is offered.
