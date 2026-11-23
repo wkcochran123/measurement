@@ -9627,6 +9627,85 @@ theorem the_other_high_wall_is_never_over_its_jar (n : Nat) :
     (Meanings.Fraction.mul_le_mul (Meanings.Fraction.le_refl _)
       (Meanings.Fraction.mul_le_mul (Meanings.Fraction.le_refl _) (Meanings.Bracketed.reciprocal_high_is_under _ _ _ _)))
     at_the_tenth_stage_the_other_walls_are_in_the_jar.2
+
+--| EIGHTEEN LESS THE ROOT.  With the difference (Meanings, `Bracketed.difference`), the lower root is also eighteen less the
+--| root of ninety, the root's high wall at the first stage, ten, not past eighteen.  By the laws it is the same real as the
+--| determinant over the norm: eighteen less the root by eighteen and the root is three hundred and twenty-four less ninety,
+--| two hundred and thirty-four, the root by itself being ninety and what is beside both sides taken away.  So the signed
+--| reals' lower root, eighteen held and the root owed, is one with the determinant over the norm, held.
+theorem the_root_is_not_past_eighteen :
+    (Meanings.theRootOfNinety.bracketed.high 0).le ((Meanings.Bracketed.ofNat 18).low 0) := by decide
+
+def eighteen_less_the_root : Meanings.Bracketed :=
+  (Meanings.Bracketed.ofNat 18).difference Meanings.theRootOfNinety.bracketed 0 the_root_is_not_past_eighteen
+
+local infix:50 " ≐ " => Meanings.Bracketed.Same
+
+theorem eighteen_less_the_root_by_eighteen_and_the_root_is_the_determinant :
+    eighteen_less_the_root.mul ((Meanings.Bracketed.ofNat 18).add Meanings.theRootOfNinety.bracketed)
+      ≐ Meanings.Bracketed.ofNat 234 := by
+  have rM : Meanings.theRootOfNinety.bracketed.mul ((Meanings.Bracketed.ofNat 18).add Meanings.theRootOfNinety.bracketed)
+      ≐ ((Meanings.Bracketed.ofNat 18).mul Meanings.theRootOfNinety.bracketed).add (Meanings.Bracketed.ofNat 90) :=
+    Meanings.Bracketed.same_trans (Meanings.Bracketed.mul_add _ _ _)
+      (Meanings.Bracketed.add_same (Meanings.Bracketed.mul_comm _ _) Meanings.the_root_by_itself_is_ninety)
+  have eM : (Meanings.Bracketed.ofNat 18).mul ((Meanings.Bracketed.ofNat 18).add Meanings.theRootOfNinety.bracketed)
+      ≐ (Meanings.Bracketed.ofNat 234).add
+          (((Meanings.Bracketed.ofNat 18).mul Meanings.theRootOfNinety.bracketed).add (Meanings.Bracketed.ofNat 90)) :=
+    calc (Meanings.Bracketed.ofNat 18).mul ((Meanings.Bracketed.ofNat 18).add Meanings.theRootOfNinety.bracketed)
+        ≐ ((Meanings.Bracketed.ofNat 18).mul (Meanings.Bracketed.ofNat 18)).add
+            ((Meanings.Bracketed.ofNat 18).mul Meanings.theRootOfNinety.bracketed) := Meanings.Bracketed.mul_add _ _ _
+      _ ≐ (Meanings.Bracketed.ofNat 324).add ((Meanings.Bracketed.ofNat 18).mul Meanings.theRootOfNinety.bracketed) :=
+          Meanings.Bracketed.add_same (Meanings.Bracketed.ofNat_mul 18 18) (Meanings.Bracketed.same_refl _)
+      _ ≐ ((Meanings.Bracketed.ofNat 234).add (Meanings.Bracketed.ofNat 90)).add
+            ((Meanings.Bracketed.ofNat 18).mul Meanings.theRootOfNinety.bracketed) :=
+          Meanings.Bracketed.add_same (Meanings.Bracketed.same_symm (Meanings.Bracketed.ofNat_add 234 90))
+            (Meanings.Bracketed.same_refl _)
+      _ ≐ (Meanings.Bracketed.ofNat 234).add
+            ((Meanings.Bracketed.ofNat 90).add ((Meanings.Bracketed.ofNat 18).mul Meanings.theRootOfNinety.bracketed)) :=
+          Meanings.Bracketed.add_assoc _ _ _
+      _ ≐ (Meanings.Bracketed.ofNat 234).add
+            (((Meanings.Bracketed.ofNat 18).mul Meanings.theRootOfNinety.bracketed).add (Meanings.Bracketed.ofNat 90)) :=
+          Meanings.Bracketed.add_same (Meanings.Bracketed.same_refl _) (Meanings.Bracketed.add_comm _ _)
+  apply Meanings.Bracketed.add_cancel
+    (c := ((Meanings.Bracketed.ofNat 18).mul Meanings.theRootOfNinety.bracketed).add (Meanings.Bracketed.ofNat 90))
+  calc (eighteen_less_the_root.mul ((Meanings.Bracketed.ofNat 18).add Meanings.theRootOfNinety.bracketed)).add
+          (((Meanings.Bracketed.ofNat 18).mul Meanings.theRootOfNinety.bracketed).add (Meanings.Bracketed.ofNat 90))
+      ≐ (eighteen_less_the_root.mul ((Meanings.Bracketed.ofNat 18).add Meanings.theRootOfNinety.bracketed)).add
+          (Meanings.theRootOfNinety.bracketed.mul ((Meanings.Bracketed.ofNat 18).add Meanings.theRootOfNinety.bracketed)) :=
+        Meanings.Bracketed.add_same (Meanings.Bracketed.same_refl _) (Meanings.Bracketed.same_symm rM)
+    _ ≐ (eighteen_less_the_root.add Meanings.theRootOfNinety.bracketed).mul
+          ((Meanings.Bracketed.ofNat 18).add Meanings.theRootOfNinety.bracketed) :=
+        Meanings.Bracketed.same_symm (Meanings.Bracketed.add_mul _ _ _)
+    _ ≐ (Meanings.Bracketed.ofNat 18).mul ((Meanings.Bracketed.ofNat 18).add Meanings.theRootOfNinety.bracketed) :=
+        Meanings.Bracketed.mul_same (Meanings.Bracketed.difference_add _ _ _ _) (Meanings.Bracketed.same_refl _)
+    _ ≐ _ := eM
+
+--| EIGHTEEN LESS THE ROOT IS THE DETERMINANT OVER THE NORM.
+theorem eighteen_less_the_root_is_the_lower_root : eighteen_less_the_root ≐ the_lower_root_as_a_real :=
+  calc eighteen_less_the_root
+      ≐ eighteen_less_the_root.mul (Meanings.Bracketed.ofNat 1) := Meanings.Bracketed.same_symm (Meanings.Bracketed.mul_one _)
+    _ ≐ eighteen_less_the_root.mul (Meanings.theNorm.bracketed.mul
+          (Meanings.theNorm.bracketed.reciprocal 10 the_norm_is_past_nothing_at_the_tenth_stage)) :=
+        Meanings.Bracketed.mul_same (Meanings.Bracketed.same_refl _)
+          (Meanings.Bracketed.same_symm (Meanings.Bracketed.mul_reciprocal _ _ _))
+    _ ≐ (eighteen_less_the_root.mul Meanings.theNorm.bracketed).mul
+          (Meanings.theNorm.bracketed.reciprocal 10 the_norm_is_past_nothing_at_the_tenth_stage) :=
+        Meanings.Bracketed.same_symm (Meanings.Bracketed.mul_assoc _ _ _)
+    _ ≐ (eighteen_less_the_root.mul ((Meanings.Bracketed.ofNat 18).add Meanings.theRootOfNinety.bracketed)).mul
+          (Meanings.theNorm.bracketed.reciprocal 10 the_norm_is_past_nothing_at_the_tenth_stage) :=
+        Meanings.Bracketed.mul_same
+          (Meanings.Bracketed.mul_same (Meanings.Bracketed.same_refl _)
+            (Meanings.Bracketed.same_symm eighteen_beside_the_root_is_the_norm))
+          (Meanings.Bracketed.same_refl _)
+    _ ≐ the_lower_root_as_a_real :=
+        Meanings.Bracketed.mul_same eighteen_less_the_root_by_eighteen_and_the_root_is_the_determinant
+          (Meanings.Bracketed.same_refl _)
+
+--| THE SIGNED REALS' LOWER ROOT, EIGHTEEN HELD AND THE ROOT OWED, IS THE DETERMINANT OVER THE NORM, HELD.
+theorem the_lower_root_owed_and_over_are_one :
+    Meanings.theLowerRoot.Same (Meanings.SignedReal.ofReal the_lower_root_as_a_real) :=
+  Meanings.SignedReal.same_trans (Meanings.theLowerRoot.is_its_difference_held 0 the_root_is_not_past_eighteen)
+    (Meanings.SignedReal.ofReal_same eighteen_less_the_root_is_the_lower_root)
 end the_lower_root_as_a_real
 
 section the_turn_by_a_rational_angle

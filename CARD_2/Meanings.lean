@@ -13,3 +13,4 @@ import Meanings.Continuity       -- continuity: a modulus with the click, and th
 import Meanings.Trigonometry     -- cosine and sine at a rational angle: alternating series as reals
 import Meanings.Laws             -- the laws: reals a commutative semiring; signed and complex commutative rings; quaternions a ring, up to being one
 import Meanings.Reciprocal       -- one over a real past nothing at a stage handed in, and over; found by looking
+import Meanings.Difference       -- the difference of two reals, and one over a signed real apart from nothing
