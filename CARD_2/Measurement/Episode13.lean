@@ -8806,6 +8806,69 @@ theorem at_the_root_the_direction_up_meets_the_weak_form :
   fun coin => (the_table_carries_the_two_directions_exactly.1 coin).symm
 end the_gateaux_derivative_and_the_weak_form
 
+section a_native_implementation_or_the_device
+open readers_experience the_table the_table.Account
+
+--| A NATIVE IMPLEMENTATION OR THE DEVICE.  The author's, 23 November 2026: show that the math needed to compute Card 3's
+--| Navier-Stokes exists so that Lean cannot tell a native implementation from the device (declared).  What is checked.
+--| A formula of whole numbers is built from places, whole numbers, beside, less and each for each.  Evaluated on the
+--| device's Accounts and read by the balance, or evaluated on Lean's own integers, it is one number, for every formula and
+--| every filling of its places.  So no reader of the number can tell which way it was computed.  Card 3's momentum residual
+--| on a periodic row, and its response action, which is cubic, are such formulas.
+inductive Formula where
+  | place : Nat → Formula
+  | whole : Int → Formula
+  | beside : Formula → Formula → Formula
+  | less : Formula → Formula → Formula
+  | eachForEach : Formula → Formula → Formula
+
+def Formula.native (env : Nat → Int) : Formula → Int
+  | .place i => env i
+  | .whole z => z
+  | .beside a b => a.native env + b.native env
+  | .less a b => a.native env - b.native env
+  | .eachForEach a b => a.native env * b.native env
+
+def Formula.onTheDevice (env : Nat → Account) : Formula → Account
+  | .place i => env i
+  | .whole z => an_account_of z
+  | .beside a b => a.onTheDevice env + b.onTheDevice env
+  | .less a b => a.onTheDevice env - b.onTheDevice env
+  | .eachForEach a b => a.onTheDevice env * b.onTheDevice env
+
+theorem the_device_computes_what_lean_computes (env : Nat → Account) (f : Formula) :
+    balance (f.onTheDevice env) = f.native (fun i => balance (env i)) := by
+  induction f with
+  | place i => rfl
+  | whole z => exact an_account_of_balances z
+  | beside a b iha ihb => show balance (_ + _) = _; rw [balance_of_palm_the_middle_card, iha, ihb]; rfl
+  | less a b iha ihb => show balance (_ - _) = _; rw [balance_of_less, iha, ihb]; rfl
+  | eachForEach a b iha ihb => show balance (_ * _) = _; rw [balance_of_false_shuffle, iha, ihb]; rfl
+
+theorem no_reader_tells_the_native_from_the_device {α : Sort _} (reader : Int → α) (env : Nat → Account) (f : Formula) :
+    reader (balance (f.onTheDevice env)) = reader (f.native (fun i => balance (env i))) := by
+  rw [the_device_computes_what_lean_computes]
+
+--| CARD 3'S RESIDUAL AND ACTION ON A PERIODIC ROW.  Places: 0 the velocity here, 1 ahead, 2 behind, 3 the velocity one
+--| step on, 4 the pressure ahead, 5 behind, 6 the force, 7 the viscosity, 8 the response velocity, 9 the response pressure.
+--| The residual: the step, less viscosity by the second difference, the velocity by its central difference, the pressure's
+--| central difference, less the force.  The action: the response velocity by the residual, and the response pressure by
+--| the velocity's central difference.  Each for each three deep: cubic.
+def the_momentum_residual : Formula :=
+  .less (.beside (.beside (.less (.less (.place 3) (.place 0))
+      (.eachForEach (.place 7) (.beside (.less (.place 1) (.place 0)) (.less (.place 2) (.place 0)))))
+      (.eachForEach (.place 0) (.less (.place 1) (.place 2))))
+      (.less (.place 4) (.place 5)))
+    (.place 6)
+
+def the_response_action : Formula :=
+  .beside (.eachForEach (.place 8) the_momentum_residual) (.eachForEach (.place 9) (.less (.place 1) (.place 2)))
+
+theorem cards_three_action_is_computed_alike_on_the_device (env : Nat → Account) :
+    balance (the_response_action.onTheDevice env) = the_response_action.native (fun i => balance (env i)) :=
+  the_device_computes_what_lean_computes env the_response_action
+end a_native_implementation_or_the_device
+
 section the_quartic_in_disguise
 open readers_experience
 

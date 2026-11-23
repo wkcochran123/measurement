@@ -3697,6 +3697,23 @@ names the number.
   difference summed along a row is the first difference at its end less at
   its start (`the_second_variation_summed_is_the_first_at_the_ends`). That
   the three rows are those three derivatives is the author's.
+- A native implementation or the device (`Episode13.lean`, section
+  `a_native_implementation_or_the_device`; 23 November 2026). The author
+  (declared): show that the math needed to compute Card 3's Navier-Stokes
+  exists so that Lean cannot tell a native implementation from the device.
+  Receipts: a `Formula` (places, whole numbers, beside, less, each for
+  each) evaluated on the device's Accounts and read by `balance` is the
+  same integer as its evaluation on `Int`, for every formula and filling
+  (`the_device_computes_what_lean_computes`), so no reader tells them apart
+  (`no_reader_tells_the_native_from_the_device`); Card 3's momentum
+  residual on a periodic row (`the_momentum_residual`: the step, viscosity
+  by the second difference, the velocity by its central difference, the
+  pressure's central difference, the force) and its response action
+  (`the_response_action`, cubic) are such formulas
+  (`cards_three_action_is_computed_alike_on_the_device`). Say with it: this
+  is about evaluating the formulas, in whole numbers, one component on a
+  row; it does not solve the equations, and the d = 2, 3 incompressible
+  system with its projection and lift is Card 3's on the page.
 - The convergence is exact (`Episode13.lean`, section
   `the_convergence_is_exact`; 23 November 2026). The author (declared): the
   second variation is the Fréchet variation, and it should show the
