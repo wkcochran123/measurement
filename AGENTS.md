@@ -3744,7 +3744,28 @@ names the number.
   the other side of the vertex, is never reached. Together with the exact
   squaring this decides the direction; the limit itself, that the falling
   pairs come all the way, is a completion and is the reader's (Calibrate
-  or the choice-free brackets could supply it; not done).
+  or the choice-free brackets could supply it; done since, below).
+- The limit, as the device's own (`Episode13.lean`, section
+  `the_limit_as_the_devices_own`; 23 November 2026). Receipts, `propext`,
+  `Quot.sound` at most: from the house's first turn the crank's distance to
+  the upper root is a whole part and a part by √90, both naturals
+  (`the_crank_distance`, tied to the crank by
+  `the_crank_distance_is_the_cranks`), each turn sending (a, D) to
+  (a² + 90D², 2aD); the whole part over the other stays at or above √90
+  (`the_crank_distance_stays_above`); the gap a² − 90D² squares each turn
+  (`the_gap_of_the_next`) and against a·D at least halves
+  (`the_gap_of_the_next_halves`, telescoped in
+  `the_gap_falls_by_halves`); four turns on, the bracket [90D/a, a/D] is no
+  wider than 1/(n+1) at stage n (`the_gap_narrows`). So
+  `the_root_by_the_crank` is a choice-free real, and
+  `the_crank_and_the_halving_are_one_root`: it is `Same` as the halving's
+  √90 (`theRootOfNinety`) at every pair of stages. The crank and the
+  bisection name one number; the limit is that real and is not handed in.
+  Lemmas used, lettered: `two_products_under_two_squares`,
+  `a_turn_stays_above`, `the_gap_squares`, `the_gap_halves`. Found on the
+  way: the AC simp set (`Nat.mul_comm`, `Nat.mul_left_comm`) normalizes
+  products where `ac_nf` puts numerals inside atoms that `omega` cannot
+  match.
   Standard, and the author's next step:
   continuity with a modulus (a δ handed over for each ε) needs no choice,
   while that sequential continuity gives ε–δ continuity uses countable

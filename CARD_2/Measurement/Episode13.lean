@@ -9160,6 +9160,207 @@ theorem from_the_first_turn_on_it_is_above_the_root_and_falls (k : Nat) :
   exact ⟨above, above_the_root_a_turn_falls _ (every_turn_from_the_house_is_on_the_upper_side (k + 1)) above⟩
 end the_roots_direction
 
+section the_limit_as_the_devices_own
+open readers_experience
+
+--| THE LIMIT, AS THE DEVICE'S OWN.  The author's, 23 November 2026: the limit (declared, as the next step).  What is
+--| checked.  From the house's first turn, the crank's distance to the upper root is a whole part and a part by the root of
+--| ninety, both whole numbers, and each turn takes them to the first squared and ninety of the second squared, and twice
+--| their product.  The whole part over the other is never under the root of ninety, and ninety over it never above: a
+--| bracket.  The gap, the whole part squared less ninety of the other squared, squares each turn, and against the two
+--| parts' product it at least halves.  Taken four turns on, at every stage the bracket is no wider than one part in the
+--| stage and one: the crank's brackets are a real, with no choice.  And they are the same real as the halving's root of
+--| ninety, at every pair of stages: the crank and the bisection name one number.  The limit the crank goes to is not handed
+--| in; it is this real.  That the bracket is a number on a line is still the reader's.
+
+--| The crank's distance to the upper root, in naturals: a whole part and a part owed by the root, after the first turn.
+def the_crank_distance : Nat → Nat × Nat
+  | 0 => (10567204, 685584)
+  | k + 1 => ((the_crank_distance k).1 * (the_crank_distance k).1 + 90 * ((the_crank_distance k).2 * (the_crank_distance k).2),
+             2 * ((the_crank_distance k).1 * (the_crank_distance k).2))
+
+theorem the_crank_distance_is_the_cranks (k : Nat) :
+    the_distance_to_the_upper_root (turns_of_the_crank the_house_as_a_pair (k + 1))
+      = (((the_crank_distance k).1 : Int), - ((the_crank_distance k).2 : Int)) := by
+  induction k with
+  | zero => decide
+  | succ k ih =>
+    show the_distance_to_the_upper_root (a_turn_of_the_crank _) = _
+    rw [(a_turn_squares_the_distance _).1, ih]
+    have rt : the_round_trip = 90 := by decide
+    simp only [the_surd_product, the_crank_distance, rt]
+    refine Prod.ext ?_ ?_ <;> dsimp only
+    · rw [Int.mul_assoc, Int.neg_mul_neg, Int.natCast_add, Int.natCast_mul, Int.natCast_mul, Int.natCast_mul]; rfl
+    · rw [Int.mul_neg, Int.neg_mul, ← Int.neg_add, Int.natCast_mul, Int.natCast_mul]
+      congr 1; rw [Int.mul_comm ((the_crank_distance k).2 : Int)]; omega
+
+theorem two_products_under_two_squares (X Y : Nat) : X * Y + X * Y ≤ X * X + Y * Y := by
+  rcases Nat.le_total X Y with h | h
+  · obtain ⟨d, rfl⟩ := Nat.exists_eq_add_of_le h
+    simp only [Nat.mul_add, Nat.add_mul, Nat.mul_comm d X]; omega
+  · obtain ⟨d, rfl⟩ := Nat.exists_eq_add_of_le h
+    simp only [Nat.mul_add, Nat.add_mul, Nat.mul_comm d Y]; omega
+
+theorem a_turn_stays_above (ρ a D : Nat) :
+    ρ * ((2 * (a * D)) * (2 * (a * D))) ≤ (a * a + ρ * (D * D)) * (a * a + ρ * (D * D)) := by
+  have h := two_products_under_two_squares (a * a) (ρ * (D * D))
+  simp only [Nat.two_mul, Nat.mul_add, Nat.add_mul] at h ⊢
+  simp only [Nat.mul_comm, Nat.mul_left_comm] at h ⊢
+  omega
+
+theorem the_gap_squares (ρ a D g : Nat) (h : a * a = ρ * (D * D) + g) :
+    (a * a + ρ * (D * D)) * (a * a + ρ * (D * D)) = ρ * ((2 * (a * D)) * (2 * (a * D))) + g * g := by
+  have e : ρ * ((2 * (a * D)) * (2 * (a * D))) = (a * a) * (ρ * (D * D)) + (a * a) * (ρ * (D * D))
+      + ((a * a) * (ρ * (D * D)) + (a * a) * (ρ * (D * D))) := by
+    simp only [Nat.two_mul, Nat.mul_add, Nat.add_mul]
+    simp only [Nat.mul_comm, Nat.mul_left_comm]
+  rw [e, h]
+  simp only [Nat.mul_add, Nat.add_mul]
+  simp only [Nat.mul_comm, Nat.mul_left_comm]
+  omega
+
+theorem the_gap_halves (ρ a D g : Nat) (h : a * a = ρ * (D * D) + g) :
+    2 * (g * g) * (D * a) ≤ g * ((2 * (a * D)) * (a * a + ρ * (D * D))) := by
+  have le : g ≤ a * a + ρ * (D * D) := by omega
+  have := Nat.mul_le_mul_left (2 * g * (D * a)) le
+  have e1 : 2 * (g * g) * (D * a) = 2 * g * (D * a) * g := by
+    simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+  have e2 : g * ((2 * (a * D)) * (a * a + ρ * (D * D))) = 2 * g * (D * a) * (a * a + ρ * (D * D)) := by
+    simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+  rw [e1, e2]; exact this
+
+def the_whole_part_at (k : Nat) : Nat := (the_crank_distance k).1
+def the_part_by_the_root_at (k : Nat) : Nat := (the_crank_distance k).2
+def the_gap (k : Nat) : Nat := the_whole_part_at k * the_whole_part_at k - 90 * (the_part_by_the_root_at k * the_part_by_the_root_at k)
+
+theorem the_crank_distance_stays_above (k : Nat) : 0 < the_whole_part_at k ∧ 0 < the_part_by_the_root_at k ∧ 90 * (the_part_by_the_root_at k * the_part_by_the_root_at k) ≤ the_whole_part_at k * the_whole_part_at k := by
+  induction k with
+  | zero => exact ⟨by decide, by decide, by decide⟩
+  | succ k ih =>
+    obtain ⟨ha, hd, h⟩ := ih
+    refine ⟨?_, ?_, ?_⟩
+    · show 0 < the_whole_part_at k * the_whole_part_at k + 90 * (the_part_by_the_root_at k * the_part_by_the_root_at k); have := Nat.mul_pos ha ha; omega
+    · show 0 < 2 * (the_whole_part_at k * the_part_by_the_root_at k); have := Nat.mul_pos ha hd; omega
+    · exact a_turn_stays_above 90 (the_whole_part_at k) (the_part_by_the_root_at k)
+
+theorem the_gap_of_the_next (k : Nat) : the_gap (k + 1) = the_gap k * the_gap k := by
+  have h : the_whole_part_at k * the_whole_part_at k = 90 * (the_part_by_the_root_at k * the_part_by_the_root_at k) + the_gap k := by
+    have := (the_crank_distance_stays_above k).2.2; unfold the_gap; omega
+  have sq := the_gap_squares 90 (the_whole_part_at k) (the_part_by_the_root_at k) (the_gap k) h
+  show (the_whole_part_at k * the_whole_part_at k + 90 * (the_part_by_the_root_at k * the_part_by_the_root_at k)) * (the_whole_part_at k * the_whole_part_at k + 90 * (the_part_by_the_root_at k * the_part_by_the_root_at k)) - 90 * ((2 * (the_whole_part_at k * the_part_by_the_root_at k)) * (2 * (the_whole_part_at k * the_part_by_the_root_at k))) = _
+  omega
+
+theorem the_gap_of_the_next_halves (k : Nat) :
+    2 * the_gap (k + 1) * (the_part_by_the_root_at k * the_whole_part_at k) ≤ the_gap k * (the_part_by_the_root_at (k + 1) * the_whole_part_at (k + 1)) := by
+  have h : the_whole_part_at k * the_whole_part_at k = 90 * (the_part_by_the_root_at k * the_part_by_the_root_at k) + the_gap k := by
+    have := (the_crank_distance_stays_above k).2.2; unfold the_gap; omega
+  rw [the_gap_of_the_next]
+  exact the_gap_halves 90 (the_whole_part_at k) (the_part_by_the_root_at k) (the_gap k) h
+
+theorem a_telescope_step (g g' g0 Yk Yk1 P X0 : Nat) (half : 2 * g' * Yk ≤ g * Yk1) (ih : g * P * X0 ≤ g0 * Yk)
+    (pos : 0 < Yk) : g' * (P * 2) * X0 ≤ g0 * Yk1 := by
+  apply Nat.le_of_mul_le_mul_right _ pos
+  calc g' * (P * 2) * X0 * Yk = (2 * g' * Yk) * (P * X0) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+    _ ≤ (g * Yk1) * (P * X0) := Nat.mul_le_mul_right _ half
+    _ = (g * P * X0) * Yk1 := by simp only [Nat.mul_comm, Nat.mul_left_comm]
+    _ ≤ (g0 * Yk) * Yk1 := Nat.mul_le_mul_right _ ih
+    _ = g0 * Yk1 * Yk := by simp only [Nat.mul_comm, Nat.mul_left_comm]
+
+theorem the_gap_falls_by_halves (k : Nat) :
+    the_gap k * 2 ^ k * (the_part_by_the_root_at 0 * the_whole_part_at 0) ≤ the_gap 0 * (the_part_by_the_root_at k * the_whole_part_at k) := by
+  induction k with
+  | zero => simp
+  | succ k ih =>
+    rw [Nat.pow_succ]
+    obtain ⟨ha, hd, _⟩ := the_crank_distance_stays_above k
+    exact a_telescope_step _ _ _ _ _ _ _ (the_gap_of_the_next_halves k) ih (Nat.mul_pos hd ha)
+
+theorem the_first_gap_is_under_sixteen : the_gap 0 ≤ 16 * (the_part_by_the_root_at 0 * the_whole_part_at 0) := by decide
+
+theorem the_gap_narrows (n : Nat) : the_gap (n + 4) * (n + 1) ≤ the_part_by_the_root_at (n + 4) * the_whole_part_at (n + 4) := by
+  have tel := the_gap_falls_by_halves (n + 4)
+  have first := the_first_gap_is_under_sixteen
+  have two := (Nat.lt_two_pow_self : n < 2 ^ n)
+  have pos : 0 < 16 * (the_part_by_the_root_at 0 * the_whole_part_at 0) := by decide
+  apply Nat.le_of_mul_le_mul_right _ pos
+  rw [Nat.pow_add, show (2 : Nat) ^ 4 = 16 by rfl] at tel
+  calc the_gap (n + 4) * (n + 1) * (16 * (the_part_by_the_root_at 0 * the_whole_part_at 0))
+        ≤ the_gap (n + 4) * 2 ^ n * (16 * (the_part_by_the_root_at 0 * the_whole_part_at 0)) :=
+          Nat.mul_le_mul_right _ (Nat.mul_le_mul_left _ two)
+    _ = the_gap (n + 4) * (2 ^ n * 16) * (the_part_by_the_root_at 0 * the_whole_part_at 0) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+    _ ≤ the_gap 0 * (the_part_by_the_root_at (n + 4) * the_whole_part_at (n + 4)) := tel
+    _ ≤ 16 * (the_part_by_the_root_at 0 * the_whole_part_at 0) * (the_part_by_the_root_at (n + 4) * the_whole_part_at (n + 4)) := Nat.mul_le_mul_right _ first
+    _ = the_part_by_the_root_at (n + 4) * the_whole_part_at (n + 4) * (16 * (the_part_by_the_root_at 0 * the_whole_part_at 0)) := Nat.mul_comm _ _
+
+theorem the_low_wall_rises_by_the_crank (ρ a D : Nat) (above : ρ * (D * D) ≤ a * a) :
+    ρ * D * (a * a + ρ * (D * D)) ≤ ρ * (2 * (a * D)) * a := by
+  have := Nat.mul_le_mul_left (ρ * D) above
+  simp only [Nat.two_mul, Nat.mul_add, Nat.add_mul] at this ⊢
+  simp only [Nat.mul_comm, Nat.mul_left_comm] at this ⊢
+  omega
+
+theorem the_high_wall_falls_by_the_crank (ρ a D : Nat) (above : ρ * (D * D) ≤ a * a) :
+    (a * a + ρ * (D * D)) * D ≤ a * (2 * (a * D)) := by
+  have := Nat.mul_le_mul_right D above
+  simp only [Nat.two_mul, Nat.mul_add, Nat.add_mul] at this ⊢
+  simp only [Nat.mul_comm, Nat.mul_left_comm] at this ⊢
+  omega
+
+--| THE ROOT OF NINETY, BY THE CRANK.  Below: ninety by the second over the first; above: the first over the second.
+def the_root_by_the_crank : Meanings.Bracketed where
+  low n := ⟨90 * the_part_by_the_root_at (n + 4), the_whole_part_at (n + 4), (the_crank_distance_stays_above _).1⟩
+  high n := ⟨the_whole_part_at (n + 4), the_part_by_the_root_at (n + 4), (the_crank_distance_stays_above _).2.1⟩
+  ordered n := by
+    show 90 * the_part_by_the_root_at (n + 4) * the_part_by_the_root_at (n + 4) ≤ the_whole_part_at (n + 4) * the_whole_part_at (n + 4)
+    rw [Nat.mul_assoc]; exact (the_crank_distance_stays_above _).2.2
+  low_rises n := by
+    show 90 * the_part_by_the_root_at (n + 4) * the_whole_part_at (n + 1 + 4) ≤ 90 * the_part_by_the_root_at (n + 1 + 4) * the_whole_part_at (n + 4)
+    rw [show n + 1 + 4 = n + 4 + 1 by omega]
+    exact the_low_wall_rises_by_the_crank 90 (the_whole_part_at (n + 4)) (the_part_by_the_root_at (n + 4)) (the_crank_distance_stays_above _).2.2
+  high_falls n := by
+    show the_whole_part_at (n + 1 + 4) * the_part_by_the_root_at (n + 4) ≤ the_whole_part_at (n + 4) * the_part_by_the_root_at (n + 1 + 4)
+    rw [show n + 1 + 4 = n + 4 + 1 by omega]
+    exact the_high_wall_falls_by_the_crank 90 (the_whole_part_at (n + 4)) (the_part_by_the_root_at (n + 4)) (the_crank_distance_stays_above _).2.2
+  narrows n := by
+    show the_whole_part_at (n + 4) * the_whole_part_at (n + 4) * (n + 1) ≤ 90 * the_part_by_the_root_at (n + 4) * the_part_by_the_root_at (n + 4) * (n + 1) + the_part_by_the_root_at (n + 4) * the_whole_part_at (n + 4)
+    have h : the_whole_part_at (n + 4) * the_whole_part_at (n + 4) = 90 * (the_part_by_the_root_at (n + 4) * the_part_by_the_root_at (n + 4)) + the_gap (n + 4) := by
+      have := (the_crank_distance_stays_above (n + 4)).2.2; unfold the_gap; omega
+    have g := the_gap_narrows n
+    rw [h, Nat.add_mul, Nat.mul_assoc 90 (the_part_by_the_root_at (n + 4))]
+    omega
+
+theorem the_crank_and_the_halving_are_one_root :
+    the_root_by_the_crank.Same Meanings.theRootOfNinety.bracketed := by
+  intro n m
+  have above_n := (the_crank_distance_stays_above (n + 4)).2.2
+  have above_m := (the_crank_distance_stays_above (m + 4)).2.2
+  have four : ∀ j : Nat, 4 ^ j = 2 ^ j * 2 ^ j := fun j => by rw [← Nat.mul_pow]
+  have holds_m := Meanings.theRootOfNinety_holds_the_root m
+  have holds_n := Meanings.theRootOfNinety_holds_the_root n
+  rw [four] at holds_m holds_n
+  constructor
+  · show 90 * the_part_by_the_root_at (n + 4) * 2 ^ m ≤ (Meanings.theRootOfNinety.cut m + 1) * the_whole_part_at (n + 4)
+    apply Nat.mul_self_le_mul_self_iff.1
+    have big := Nat.mul_le_mul above_n (Nat.le_of_lt holds_m.2)
+    calc 90 * the_part_by_the_root_at (n + 4) * 2 ^ m * (90 * the_part_by_the_root_at (n + 4) * 2 ^ m)
+          = 90 * (the_part_by_the_root_at (n + 4) * the_part_by_the_root_at (n + 4)) * (90 * (2 ^ m * 2 ^ m)) := by
+            simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+      _ ≤ the_whole_part_at (n + 4) * the_whole_part_at (n + 4) * ((Meanings.theRootOfNinety.cut m + 1) * (Meanings.theRootOfNinety.cut m + 1)) := big
+      _ = (Meanings.theRootOfNinety.cut m + 1) * the_whole_part_at (n + 4) * ((Meanings.theRootOfNinety.cut m + 1) * the_whole_part_at (n + 4)) := by
+            simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+  · show Meanings.theRootOfNinety.cut n * the_part_by_the_root_at (m + 4) ≤ the_whole_part_at (m + 4) * 2 ^ n
+    apply Nat.mul_self_le_mul_self_iff.1
+    have big := Nat.mul_le_mul holds_n.1 (Nat.le_refl (the_part_by_the_root_at (m + 4) * the_part_by_the_root_at (m + 4)))
+    have big2 := Nat.mul_le_mul_left (2 ^ n * 2 ^ n) above_m
+    calc Meanings.theRootOfNinety.cut n * the_part_by_the_root_at (m + 4) * (Meanings.theRootOfNinety.cut n * the_part_by_the_root_at (m + 4))
+          = Meanings.theRootOfNinety.cut n * Meanings.theRootOfNinety.cut n * (the_part_by_the_root_at (m + 4) * the_part_by_the_root_at (m + 4)) := by
+            simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+      _ ≤ 90 * (2 ^ n * 2 ^ n) * (the_part_by_the_root_at (m + 4) * the_part_by_the_root_at (m + 4)) := big
+      _ = 2 ^ n * 2 ^ n * (90 * (the_part_by_the_root_at (m + 4) * the_part_by_the_root_at (m + 4))) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+      _ ≤ 2 ^ n * 2 ^ n * (the_whole_part_at (m + 4) * the_whole_part_at (m + 4)) := big2
+      _ = the_whole_part_at (m + 4) * 2 ^ n * (the_whole_part_at (m + 4) * 2 ^ n) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+end the_limit_as_the_devices_own
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
