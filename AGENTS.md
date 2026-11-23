@@ -3868,8 +3868,8 @@ names the number.
   associates (`mul_assoc`) and spreads over the sum (`mul_add`), each from
   a law of fractions (`Fraction.mul_regroup`, `spread`, `gather`) carried
   to every pair of stages by `low_under_high`. So these reals, up to
-  `Same`, satisfy the laws of a commutative semiring, with no choice. Not
-  shown: zero and one as laws (that 0 + x and 1·x are `Same` as x), and
+  `Same`, have the commutative-semiring laws of sum and product, with no
+  choice. Not shown: zero and one as laws (that 0 + x and 1·x are `Same` as x), and
   the laws for the signed, complex and quaternion layers (which would
   follow the same pattern).
   Standard, and the author's next step:

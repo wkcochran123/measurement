@@ -9,7 +9,8 @@ is nothing.  Then the sum commutes and associates, and the product commutes, eac
 And the sum and the product keep being one: put a real one with another in place of it, beside or each for each, and
 what comes out is one with what came out before.  The product associates, and it spreads over the sum.  Each is a law of
 the walls of fractions of naturals, carried to every pair of stages because every low wall is under every high wall.
-So the reals here, up to being one, are a commutative semiring, with no choice.
+So the reals here, up to being one, have the laws of a commutative semiring for the sum and the product, with no choice;
+the nothing and the one as laws are not yet written.
 
 Not here: negatives as laws (the signed, complex and quaternion layers), and a one and a nothing as laws.
 -/
