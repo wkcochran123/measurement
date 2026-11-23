@@ -3766,6 +3766,26 @@ names the number.
   way: the AC simp set (`Nat.mul_comm`, `Nat.mul_left_comm`) normalizes
   products where `ac_nf` puts numerals inside atoms that `omega` cannot
   match.
+- Cosine and sine at a rational angle (`Meanings/Trigonometry.lean`;
+  `Episode13.lean`, section `the_turn_by_a_rational_angle`; 23 November
+  2026). Receipts, `propext`, `Quot.sound`: a series of nonnegative steps
+  with a falling tail bound is a choice-free real (`StepsAndTail.bracketed`);
+  any falling sequence of nonnegative terms, taken with alternating signs,
+  is one (`FallingTerms.bracketed`, via `Fraction.sub_then_add_is_not_past`);
+  `cosine p q` and `sine p q`, for p ≤ q, are the even and odd powers of
+  p/q over their factorials, each falling to the one two places on
+  (`powerTerm_falls_by_two`). At θ = 1 they read 0.540302… and 0.841470…
+  from both walls by stage 3. `the_circle_at_one_holds_one`,
+  `the_circle_at_a_half_holds_one`: at stage 3, cos² + sin² lies between
+  the low walls squared and the high walls squared, and that bracket holds
+  one (kernel-decided). In Episode 13 `the_turn_by_a_rational_angle` is
+  cosine along and sine across, and
+  `the_turn_by_a_rational_angle_stays_on_the_circle`. Not shown: cos² +
+  sin² = 1 at every stage (a series identity), angles past one, and π.
+  Found on the way: `Bracketed.mul` reads its factors as far on as their
+  first high wall's numerator, which for fractions of factorials (never
+  reduced) is far too far; the circle is checked on the walls at one stage
+  instead.
   Standard, and the author's next step:
   continuity with a modulus (a δ handed over for each ε) needs no choice,
   while that sequential continuity gives ε–δ continuity uses countable

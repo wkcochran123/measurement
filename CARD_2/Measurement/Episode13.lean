@@ -9361,6 +9361,25 @@ theorem the_crank_and_the_halving_are_one_root :
       _ = the_whole_part_at (m + 4) * 2 ^ n * (the_whole_part_at (m + 4) * 2 ^ n) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
 end the_limit_as_the_devices_own
 
+section the_turn_by_a_rational_angle
+open readers_experience
+
+--| THE TURN BY A RATIONAL ANGLE.  The author's, 23 November 2026: after the quaternions, the exponentials, r and θ both
+--| rationals (declared).  What is checked.  For an angle p over q, not past one, cosine and sine are reals with no choice,
+--| each the alternating series of its powers, and the turn by that angle is cosine along and sine across.  At the third
+--| stage, at the angle one and at a half, cosine squared and sine squared beside each other hold one: the turn stays on the
+--| circle, to the stage.  With a rational r beside it, r and θ are both rationals, and the number they make is r times this.
+def the_turn_by_a_rational_angle (p q : Nat) (hq : 0 < q) (hp : p ≤ q) : Meanings.ComplexReal :=
+  ⟨Meanings.SignedReal.ofReal (Meanings.cosine p q hq hp), Meanings.SignedReal.ofReal (Meanings.sine p q hq hp)⟩
+
+theorem the_turn_by_a_rational_angle_stays_on_the_circle :
+    ((Meanings.theLowCircle 1 1 (by decide) (by decide) 3).le ⟨1, 1, by decide⟩
+      ∧ (⟨1, 1, by decide⟩ : Meanings.Fraction).le (Meanings.theHighCircle 1 1 (by decide) (by decide) 3))
+    ∧ ((Meanings.theLowCircle 1 2 (by decide) (by decide) 3).le ⟨1, 1, by decide⟩
+      ∧ (⟨1, 1, by decide⟩ : Meanings.Fraction).le (Meanings.theHighCircle 1 2 (by decide) (by decide) 3)) :=
+  ⟨Meanings.the_circle_at_one_holds_one, Meanings.the_circle_at_a_half_holds_one⟩
+end the_turn_by_a_rational_angle
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
