@@ -8972,6 +8972,36 @@ theorem the_stencil_reads_nothing_on_a_steady_row (a d : Int) : a - 2 * (a + d) 
 theorem the_second_difference_twice_is_the_fourth (f : Int → Int) (x : Int) :
     (f x - 2 * f (x + 1) + f (x + 2)) - 2 * (f (x + 1) - 2 * f (x + 2) + f (x + 3)) + (f (x + 2) - 2 * f (x + 3) + f (x + 4))
       = f x - 4 * f (x + 1) + 6 * f (x + 2) - 4 * f (x + 3) + f (x + 4) := by omega
+
+--| THE TRIPLE.  The author's, 23 November 2026: in a·(c×b), a is the vector derivative, c the completed Frechet derivative
+--| and b the inferred phase (declared).  What is checked: with c and b two steady rows, first variations, a row read
+--| against their cross is the cross of their starts and steps times the row's second difference.  So the triple is nothing
+--| exactly where the row has no second variation, and three first variations make nothing.
+theorem the_triple_reads_the_second_difference (f₁ f₂ f₃ a d b e : Int) :
+    f₁ * (the_turns_product (a_steady_row a d) (a_steady_row b e)).2.1
+      + f₂ * (the_turns_product (a_steady_row a d) (a_steady_row b e)).2.2.1
+      + f₃ * (the_turns_product (a_steady_row a d) (a_steady_row b e)).2.2.2
+      = (a * e - b * d) * (f₁ - f₂ - f₂ + f₃) := by
+  rw [the_cross_of_two_steady_rows_is_the_second_difference]
+  dsimp only
+  generalize a * e - b * d = k
+  simp only [Int.mul_sub, Int.mul_add, Int.mul_neg]
+  ac_nf; omega
+
+theorem three_first_variations_make_nothing (c s a d b e : Int) :
+    c * (the_turns_product (a_steady_row a d) (a_steady_row b e)).2.1
+      + (c + s) * (the_turns_product (a_steady_row a d) (a_steady_row b e)).2.2.1
+      + (c + s + s) * (the_turns_product (a_steady_row a d) (a_steady_row b e)).2.2.2 = 0 := by
+  rw [the_triple_reads_the_second_difference]
+  rw [show c - (c + s) - (c + s) + (c + s + s) = 0 by omega, Int.mul_zero]
+
+--| INTEGRATED, THE CROSS GIVES BACK THE FIRST VARIATIONS.  The author's, 23 November 2026: integrate and back out the
+--| variational cross product (declared).  The second difference summed along a row is the first difference at its end
+--| less the first difference at its start: what the cross reads, added up, is the two first variations at the ends.
+theorem the_second_variation_summed_is_the_first_at_the_ends (reading : Nat → Int) (steps : Nat) :
+    summed_along steps (the_difference_along (the_difference_along reading))
+      = the_difference_along reading steps - the_difference_along reading 0 :=
+  a_difference_summed_is_the_end_less_the_first (the_difference_along reading) steps
 end two_first_variations_crossed
 
 section the_convergence_is_exact

@@ -3687,6 +3687,16 @@ names the number.
   vectors in it is its normal, which is the second difference. 3, 4, 5 and
   13, 14, 15 are both Heronian triples (areas 6 and 84); that is recorded
   as a coincidence and not used.
+  Then (declared): in a·(c×b), a is the vector derivative, c the completed
+  Fréchet derivative, b the inferred phase; and "integrate and back out
+  the variational cross product". Receipts: with c and b steady rows, a
+  row read against their cross is (ae − bd) times the row's second
+  difference (`the_triple_reads_the_second_difference`), so three first
+  variations make nothing (`three_first_variations_make_nothing`): the
+  equation a·(c×b) = 0 says a has no second variation; and the second
+  difference summed along a row is the first difference at its end less at
+  its start (`the_second_variation_summed_is_the_first_at_the_ends`). That
+  the three rows are those three derivatives is the author's.
 - The convergence is exact (`Episode13.lean`, section
   `the_convergence_is_exact`; 23 November 2026). The author (declared): the
   second variation is the Fréchet variation, and it should show the
