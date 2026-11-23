@@ -16,3 +16,4 @@ import Meanings.Reciprocal       -- one over a real past nothing at a stage hand
 import Meanings.Difference       -- the difference of two reals, and one over a signed real apart from nothing
 import Meanings.Quarters         -- the four quarters of the exponential, by k counted in fours
 import Meanings.Order            -- not past: reflexive, transitive, one both ways; beside keeps it; not total without a click
+import Meanings.Pi               -- the arctangent, a real by a whole number, the half turn by Machin; the cut-off cosine past the quarter turn
