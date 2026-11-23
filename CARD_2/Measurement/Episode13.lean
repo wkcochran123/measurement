@@ -2,21 +2,44 @@
 __Measurement: The Tragedy of John Henry__
 __A Satire in Look Ahead Backus-Naur Form__
 
-_This is a gentle reminder that things can only get so meta and still be consistent._
+_This is a gentle reminder that I'm only in it for the fame and fortune._
 
-(c) 2026
+(c) 2026 All rights reserved. What rights? What does this _EVEN MEAN_ when I am about to demonstrate that there really is only _1_ meaning?!
 
-"stat rosa pristina nomine, nomina nuda tenemus"
+"Pete and Repeat were sitting on a fence. Pete fell off, who was left?"
+                                                    -- Old-school meme
 
-__EPISODE 13__: _The Area_
+"And the green grass grew all around and around, and the green grass grew all around."
+                                                    -- More Disney property
 
-Episode 12 walked the device out from one reader of a tape, its length.  The bent card of Episode 8 was written for any
-reader, and any Term the reader lands in that can be set beside, taken each for each, taken away, and compared.  Episode 8
-handed it the naturals.  This episode hands it the Area of Episode 2, and no natural is handed in.
+lake build --stack=5 --D_UNROLL_LOOPS_=1
 
-The Area is the tape.  A tree is the end of it.  A dt is one more cell.  That is all an Area ever was.
+__EPISODE 13__: _The Prestige_
+
+So *YOU the KNOWER* _think_ *YOU the READER* can still help you figure this out?  Watch carefully as I slowly dismantle all meaning that could have
+already been established and replace it with a quartic polynomial over and over and over again. I could do this forever. No, seriously, if the
+math is to be believed, I can do this forever.  This machine describes the way to make another machine in a higher level formalism.
+
+_WHAT DOES THAT EVEN MEAN?!?!_
+
+It means only one thing: with this mechanism, number can only go up if it is logically consistent for it to.
 -/
 import Measurement.Episode12
+
+--| I will now very carefully show that the polynomial that *YOU the READER* found under any one of the cards on the table, is not the only way that
+--| polynomial comes out of that device. In fact, the challenge is to get something else to fall out instead. *YOU the KNOWER* is quite confident at
+--| at this point we cannot build a finite element description of the Yang-Mills formulation of the bare electron from just the pieces of logic
+--| in front of us.
+
+--| This will require understand multigrid-accelerated JFNK solvers used in tightly coupled physics simulations. We will be coupling just a handful
+--| of physics to see how tight that coupling can be made.
+
+
+--| Keeping me honest, I will now ask for a volunteer from the audience to help me demonstrate that what I am talking about is, indeed, mathematics.
+--| Welcome to the stage, Mr. Mathlib!
+import Meanings
+--| I promise not to cheat, but just to let Mr. Mathlib inspect pieces of the device to check for shenanigans. Just some ordinary mathematician we
+--| can ask to see if I am telling the _TRUTH_ or _NOT_.
 
 namespace Measurement
 open readers_experience
@@ -26,256 +49,263 @@ namespace the_table
 --| The four *THROWS* of _Three Card Monte_.
 
 --|
-def beside : Area → Area → Area
+def palm_the_middle_card : Area → Area → Area
   | .tree _,                                                             the_arm_not_taken => the_arm_not_taken
   | .dt the_covariant_arm the_covariant_value the_covariant_computation, the_arm_not_taken =>
-                .dt the_covariant_arm the_covariant_value (beside the_covariant_computation the_arm_not_taken)
+                .dt the_covariant_arm the_covariant_value (palm_the_middle_card the_covariant_computation the_arm_not_taken)
 
---| Each for each: for every cell of the one, the whole of the other, beside what came before.
-def each_for_each : Area → Area → Area
+--| Each for each: for every cell of the one, the whole of the other, palm_the_middle_card what came before.
+def false_shuffle : Area → Area → Area
   | .tree f,      _ => .tree f
-  | .dt _ _ rest, b => beside b (each_for_each rest b)
+  | .dt _ _ the_rest, b => palm_the_middle_card b (false_shuffle the_rest b)
 
 --| Taken away: a cell from each until one of them is down to its tree.  The tree never leaves the Area.
-def taken_away : Area → Area → Area
+def the_double_lift : Area → Area → Area
   | .tree f,    _         => .tree f
   | a,          .tree _   => a
-  | .dt _ _ a,  .dt _ _ b => taken_away a b
+  | .dt _ _ a,  .dt _ _ b => the_double_lift a b
 
---| Something left: is there a cell, or only the tree?
-def something_is_left : Area → Bool
+--| The square root of the argument: are we able to make a bound on the value?
+def coin_flip : Area → Bool
   | .tree _   => false
   | .dt _ _ _ => true
 
-instance : Add Area := ⟨beside⟩
-instance : Mul Area := ⟨each_for_each⟩
-instance : Sub Area := ⟨taken_away⟩
+instance : Add Area := ⟨palm_the_middle_card⟩
+instance : Mul Area := ⟨false_shuffle⟩
+instance : Sub Area := ⟨the_double_lift⟩
 --| Less: take the one away from the other, and something is left.
-instance : LT Area := ⟨fun a b => something_is_left (b - a) = true⟩
-instance : DecidableRel (α := Area) (· < ·) := fun a b => inferInstanceAs (Decidable (something_is_left (b - a) = true))
+instance : LT Area := ⟨fun a b => coin_flip (b - a) = true⟩
+instance : DecidableRel (α := Area) (· < ·) := fun a b => inferInstanceAs (Decidable (coin_flip (b - a) = true))
 
 --| THE ABSTRACTION.  The author's, 16 November 2026: instead of a List, the Abstraction is the thing we want.  Compile builds
 --| the Area.  Execute counts the size.  Episode 8 has all three kinds already: the carefully chosen variable names, a satire;
 --| the opaque wall of math, a compile on top of it; the proof, an execute on top of that.  A tape is written the same way: a
 --| compile for every fact, on the names; then an execute for every fact, on the wall.  Compile comes before execute.
-def the_wall_for : List FACT → Abstraction
+def eval_elab_and_time : List FACT → Abstraction
   | []        => carefully_chosen_variable_names
-  | _ :: rest => .compile zero δδxᵢ (the_wall_for rest)
-def the_proof_over (wall : Abstraction) : List FACT → Abstraction
-  | []        => wall
-  | _ :: rest => .execute zero δδxᵢ (the_proof_over wall rest)
-def the_abstraction_of_a_tape (tape : List FACT) : Abstraction := the_proof_over (the_wall_for tape) tape
+  | _ :: the_rest => .compile zero δδxᵢ (eval_elab_and_time the_rest)
+def delimite_with_this (blank : Abstraction) : List FACT → Abstraction
+  | []        => blank
+  | _ :: the_rest => .execute zero δδxᵢ (delimite_with_this blank the_rest)
+def an_interleaved (tape : List FACT) : Abstraction := delimite_with_this (eval_elab_and_time tape) tape
 
 --| Compile builds the Area: the tree of Episode 8, ast₀, under the names, and one cell of ast₁'s kind for every compile.  An
 --| execute builds nothing.  What the fact was is not kept.  The contents of the cells are the symmetry; the count is the charge.
-def compiled : Abstraction → Area
+def compute_verification_receipt_ast_of : Abstraction → Area
   | .satire_about _    => ast₀
-  | .compile _ _ rest  => .dt zero another_zero (compiled rest)
-  | .execute _ _ rest  => compiled rest
+  | .compile _ _ the_rest  => .dt zero another_zero (compute_verification_receipt_ast_of the_rest)
+  | .execute _ _ the_rest  => compute_verification_receipt_ast_of the_rest
 
 --| Execute counts the size: one for every execute.  A compile counts for nothing.
-def executed : Abstraction → Nat
+def compute_the_so_called_area_of : Abstraction → Nat
   | .satire_about _    => 0
-  | .compile _ _ rest  => executed rest
-  | .execute _ _ rest  => executed rest + 1
+  | .compile _ _ the_rest  => compute_the_so_called_area_of the_rest
+  | .execute _ _ the_rest  => compute_the_so_called_area_of the_rest + 1
 
 --| THE READER.  A tape, written as an Abstraction, and compiled.
-def the_area_of_a_tape (tape : List FACT) : Area := compiled (the_abstraction_of_a_tape tape)
+def the_area_of_a_tape_in_blanks_is (tape : List FACT) : Area := compute_verification_receipt_ast_of (an_interleaved tape)
 
 --| THE DEVICE, ON THE AREA.  The same section of Episode 8, word for word, with the Area where the naturals stood.
-def the_fencepost               := bent_card.fencepost Area the_area_of_a_tape
-def the_coefficient             := bent_card.the_exact_Taylor_series_degree Area the_area_of_a_tape
-def the_memory                  := bent_card.the_length_of_the_path_from_here_to_there Area the_area_of_a_tape
-def the_trace                   := bent_card.the_measurement_degrees_of_freedom Area the_area_of_a_tape
-def the_house                   := bent_card.the_device_as_linear_operator_mapped_identity Area the_area_of_a_tape
-def one_turn                    := bent_card.the_device_computing_the_next_configuration Area the_area_of_a_tape
-def the_crank                   := bent_card.proportional_laws_accumulate_commutation_projections_called_TERM_LAMBDAS Area the_area_of_a_tape
-def the_crank_and_the_fencepost := bent_card.fenceposts_must_be_preserved Area the_area_of_a_tape
+def the_fencepost               := bent_card.fencepost Area the_area_of_a_tape_in_blanks_is
+def the_coefficient             := bent_card.the_exact_Taylor_series_degree Area the_area_of_a_tape_in_blanks_is
+def the_memory                  := bent_card.the_length_of_the_path_from_here_to_there Area the_area_of_a_tape_in_blanks_is
+def the_trace                   := bent_card.the_measurement_degrees_of_freedom Area the_area_of_a_tape_in_blanks_is
+def the_house                   := bent_card.the_device_as_linear_operator_mapped_identity Area the_area_of_a_tape_in_blanks_is
+def simulate_this_way          := bent_card.the_device_computing_the_next_configuration Area the_area_of_a_tape_in_blanks_is
+def the_crank                   := bent_card.proportional_laws_accumulate_commutation_projections_called_TERM_LAMBDAS Area the_area_of_a_tape_in_blanks_is
+def the_crank_and_the_fencepost := bent_card.fenceposts_must_be_preserved Area the_area_of_a_tape_in_blanks_is
 
 --| THE COUNT.  This is the only place a natural appears, and it is not handed to the device.  It is how *YOU the READER*
 --| read an Area: so many cells.  The tree counts for nothing.  Area's own reading, the Riemann sum, counts the tree too;
 --| that is the fencepost.
-def cells : Area → Nat
+def compute_the_area_of : Area → Nat
   | .tree _      => 0
-  | .dt _ _ rest => cells rest + 1
-def read (pair : Area × Area) : Nat × Nat := (cells pair.1, cells pair.2)
+  | .dt _ _ the_rest => compute_the_area_of the_rest + 1
+def some_quartic_called (pair : Area × Area) : Nat × Nat := (compute_the_area_of pair.1, compute_the_area_of pair.2)
 
-theorem the_riemann_sum_counts_the_tree_too (a : Area) : a.riemann_integrate.length = cells a + the_fencepost_bug := by
-  induction a with
+theorem the_riemann_sum_is_indistinguisahble_from_the_bent_card_with_an_extra_fencepost_of_blanks (a_card : Area) :
+        a_card.riemann_integrate.length = compute_the_area_of a_card + the_fencepost_bug := by
+  induction a_card with
   | tree _ => rfl
-  | dt _ _ rest ih => simp only [Area.riemann_integrate, List.length_cons, cells, ih]; omega
+  | dt _ _ _ the_rest => simp only [Area.riemann_integrate, List.length_cons, compute_the_area_of, the_rest]; omega
 
 --| The reader is the length.  Area is List.length.  And execute counts what compile built.
-theorem the_proof_builds_nothing_more (wall : Abstraction) (tape : List FACT) : compiled (the_proof_over wall tape) = compiled wall := by
+theorem tape_of_symbols_that_verify (a_card : Abstraction) (tape : List FACT) :
+                     compute_verification_receipt_ast_of (delimite_with_this a_card tape) = compute_verification_receipt_ast_of a_card := by
   induction tape with
   | nil => rfl
-  | cons _ _ ih => simp only [the_proof_over, compiled, ih]
+  | cons _ _ the_rest => simp only [delimite_with_this, compute_verification_receipt_ast_of, the_rest]
 
-theorem the_wall_has_a_cell_for_every_fact (tape : List FACT) : cells (compiled (the_wall_for tape)) = tape.length := by
+theorem the_tape_has_a_cell_for_every_fact (tape : List FACT) :
+                      compute_the_area_of (compute_verification_receipt_ast_of (eval_elab_and_time tape)) = tape.length := by
   induction tape with
   | nil => rfl
-  | cons _ _ ih => simp only [the_wall_for, compiled, cells, ih, List.length_cons]
+  | cons _ _ the_rest => simp only [eval_elab_and_time, compute_verification_receipt_ast_of, compute_the_area_of, the_rest, List.length_cons]
 
-theorem the_area_of_a_tape_has_the_tapes_length (tape : List FACT) : cells (the_area_of_a_tape tape) = tape.length := by
-  simp only [the_area_of_a_tape, the_abstraction_of_a_tape, the_proof_builds_nothing_more, the_wall_has_a_cell_for_every_fact]
+theorem the_area_of_a_tape_in_blanks_is_the_tapes_length (tape : List FACT) :
+            compute_the_area_of (the_area_of_a_tape_in_blanks_is tape) = tape.length := by
+  simp only [the_area_of_a_tape_in_blanks_is, an_interleaved, tape_of_symbols_that_verify, the_tape_has_a_cell_for_every_fact]
 
-theorem the_wall_executes_nothing (tape : List FACT) : executed (the_wall_for tape) = 0 := by
+theorem the_tape_of_symbols_has_no_ast (tape : List FACT) : compute_the_so_called_area_of (eval_elab_and_time tape) = 0 := by
   induction tape with
   | nil => rfl
-  | cons _ _ ih => simp only [the_wall_for, executed, ih]
+  | cons _ _ the_rest => simp only [eval_elab_and_time, compute_the_so_called_area_of, the_rest]
 
-theorem the_proof_counts_every_fact (wall : Abstraction) (tape : List FACT) :
-    executed (the_proof_over wall tape) = executed wall + tape.length := by
+theorem the_proof_counts_every_fact (a_card : Abstraction) (tape : List FACT) :
+    compute_the_so_called_area_of (delimite_with_this a_card tape) = compute_the_so_called_area_of a_card + tape.length := by
   induction tape with
   | nil => rfl
-  | cons _ _ ih => simp only [the_proof_over, executed, ih, List.length_cons]; omega
+  | cons _ _ the_rest => simp only [delimite_with_this, compute_the_so_called_area_of, the_rest, List.length_cons]; omega
 
 theorem execute_counts_what_compile_built (tape : List FACT) :
-    executed (the_abstraction_of_a_tape tape) = cells (compiled (the_abstraction_of_a_tape tape)) := by
-  rw [show compiled (the_abstraction_of_a_tape tape) = the_area_of_a_tape tape from rfl, the_area_of_a_tape_has_the_tapes_length]
-  simp only [the_abstraction_of_a_tape, the_proof_counts_every_fact, the_wall_executes_nothing, Nat.zero_add]
+    compute_the_so_called_area_of (an_interleaved tape) = compute_the_area_of (compute_verification_receipt_ast_of (an_interleaved tape)) := by
+  rw [show compute_verification_receipt_ast_of (an_interleaved tape) = the_area_of_a_tape_in_blanks_is tape from rfl, the_area_of_a_tape_in_blanks_is_the_tapes_length]
+  simp only [an_interleaved, the_proof_counts_every_fact, the_tape_of_symbols_has_no_ast, Nat.zero_add]
 
 --| Episode 8's own three are the first of them: the proof is the abstraction of a tape of one.
-theorem the_proof_of_episode_eight_is_the_abstraction_of_one_fact : the_abstraction_of_a_tape [zero] = the_proof := rfl
+theorem the_proof_of_episode_eight_is_the_abstraction_of_one_fact : an_interleaved [zero] = the_proof := rfl
 
 --| Written this way a tape is on the page twice, once compiled and once executed, and once more for the names: the fencepost.
 --| For the memory tape that is two eighteens and one.  Thirty-six is Closure's.
 theorem an_abstraction_is_twice_its_tape_and_the_names (tape : List FACT) :
-    (the_abstraction_of_a_tape tape).equivalation.length = tape.length + tape.length + the_fencepost_bug := by
-  have wall : ∀ t : List FACT, (the_wall_for t).equivalation.length = t.length + the_fencepost_bug := by
+    (an_interleaved tape).equivalation.length = tape.length + tape.length + the_fencepost_bug := by
+  have wall : ∀ t : List FACT, (eval_elab_and_time t).equivalation.length = t.length + the_fencepost_bug := by
     intro t
     induction t with
     | nil => rfl
-    | cons _ _ ih => simp only [the_wall_for, Abstraction.equivalation, List.length_cons, ih]; omega
-  have proof : ∀ (w : Abstraction) (t : List FACT), (the_proof_over w t).equivalation.length = w.equivalation.length + t.length := by
+    | cons _ _ ih => simp only [eval_elab_and_time, Abstraction.equivalation, List.length_cons, ih]; omega
+  have proof : ∀ (w : Abstraction) (t : List FACT), (delimite_with_this w t).equivalation.length = w.equivalation.length + t.length := by
     intro w t
     induction t with
     | nil => rfl
-    | cons _ _ ih => simp only [the_proof_over, Abstraction.equivalation, List.length_cons, ih]; omega
-  simp only [the_abstraction_of_a_tape, proof, wall]; omega
+    | cons _ _ ih => simp only [delimite_with_this, Abstraction.equivalation, List.length_cons, ih]; omega
+  simp only [an_interleaved, proof, wall]; omega
 
 theorem the_memory_written_as_an_abstraction_is_the_trace_and_the_fencepost :
-    (the_abstraction_of_a_tape the_memory_tape).equivalation.length = the_trace_of_truth_in_the_device + the_fencepost_bug := by
+    (an_interleaved the_memory_tape).equivalation.length = the_trace_of_truth_in_the_device + the_fencepost_bug := by
   rw [an_abstraction_is_twice_its_tape_and_the_names]; rfl
 
 --| Compile comes before execute, and not back: the wall is strictly under the abstraction, whenever there is a fact.
 theorem the_wall_comes_before_the_abstraction (fact : FACT) (rest : List FACT) :
-    the_wall_for (fact :: rest) < the_abstraction_of_a_tape (fact :: rest)
-      ∧ ¬ (the_abstraction_of_a_tape (fact :: rest) ≤ the_wall_for (fact :: rest)) :=
+    eval_elab_and_time (fact :: rest) < an_interleaved (fact :: rest)
+      ∧ ¬ (an_interleaved (fact :: rest) ≤ eval_elab_and_time (fact :: rest)) :=
   ⟨rfl, fun h => Bool.noConfusion h⟩
 
---| The four things, counted.  Beside adds.  Each for each multiplies.  Taken away subtracts, and stops at the tree.  Less is less.
-theorem beside_adds (a b : Area) : cells (a + b) = cells a + cells b := by
-  show cells (beside a b) = _
+--| The four things, counted.  palm_the_middle_card adds.  Each for each multiplies.  Taken away subtracts, and stops at the tree.  Less is less.
+theorem palm_the_middle_card_adds (a b : Area) : compute_the_area_of (a + b) = compute_the_area_of a + compute_the_area_of b := by
+  show compute_the_area_of (palm_the_middle_card a b) = _
   induction a with
-  | tree _ => simp only [beside, cells, Nat.zero_add]
-  | dt _ _ rest ih => simp only [beside, cells, ih]; omega
+  | tree _ => simp only [palm_the_middle_card, compute_the_area_of, Nat.zero_add]
+  | dt _ _ _ the_rest => simp only [palm_the_middle_card, compute_the_area_of, the_rest]; omega
 
-theorem each_for_each_multiplies (a b : Area) : cells (a * b) = cells a * cells b := by
-  show cells (each_for_each a b) = _
+theorem false_shuffle_multiplies (a b : Area) : compute_the_area_of (a * b) = compute_the_area_of a * compute_the_area_of b := by
+  show compute_the_area_of (false_shuffle a b) = _
   induction a with
-  | tree _ => simp only [each_for_each, cells, Nat.zero_mul]
-  | dt _ _ rest ih =>
-    simp only [each_for_each, cells]
-    rw [show beside b (each_for_each rest b) = b + each_for_each rest b from rfl, beside_adds, ih, Nat.succ_mul]; omega
+  | tree _ => simp only [false_shuffle, compute_the_area_of, Nat.zero_mul]
+  | dt _ _ the_rest_of_the_ast the_rest_of_the_proof =>
+    simp only [false_shuffle, compute_the_area_of]
+    rw [show palm_the_middle_card b (false_shuffle the_rest_of_the_ast b) = b + false_shuffle the_rest_of_the_ast b
+                    from rfl, palm_the_middle_card_adds, the_rest_of_the_proof, Nat.succ_mul]; omega
 
-theorem taken_away_subtracts (a b : Area) : cells (a - b) = cells a - cells b := by
-  show cells (taken_away a b) = _
+theorem the_double_lift_subtracts (a b : Area) : compute_the_area_of (a - b) = compute_the_area_of a - compute_the_area_of b := by
+  show compute_the_area_of (the_double_lift a b) = _
   induction a generalizing b with
-  | tree _ => simp only [taken_away, cells, Nat.zero_sub]
-  | dt _ _ rest ih =>
+  | tree _ => simp only [the_double_lift, compute_the_area_of, Nat.zero_sub]
+  | dt _ _ _ the_rest_of_the_ast =>
     cases b with
-    | tree _ => simp only [taken_away, cells, Nat.sub_zero]
-    | dt _ _ b' => simp only [taken_away, cells, ih, Nat.add_sub_add_right]
+    | tree _ => simp only [the_double_lift, compute_the_area_of, Nat.sub_zero]
+    | dt _ _ the_rest_of_the_proof => simp only [the_double_lift, compute_the_area_of, the_rest_of_the_ast, Nat.add_sub_add_right]
 
-theorem something_is_left_when_there_is_a_cell (a : Area) : something_is_left a = true ↔ 0 < cells a := by
+theorem coin_flip_when_there_is_a_cell (a : Area) : coin_flip a = true ↔ 0 < compute_the_area_of a := by
   cases a with
   | tree _ => exact ⟨fun h => Bool.noConfusion h, fun h => absurd h (Nat.lt_irrefl 0)⟩
   | dt _ _ rest => exact ⟨fun _ => Nat.succ_pos _, fun _ => rfl⟩
 
-theorem less_is_less (a b : Area) : a < b ↔ cells a < cells b := by
-  show something_is_left (b - a) = true ↔ _
-  rw [something_is_left_when_there_is_a_cell, taken_away_subtracts]; exact Nat.sub_pos_iff_lt
+theorem obviously_bigger (a b : Area) : a < b ↔ compute_the_area_of a < compute_the_area_of b := by
+  show coin_flip (b - a) = true ↔ _
+  rw [coin_flip_when_there_is_a_cell, the_double_lift_subtracts]; exact Nat.sub_pos_iff_lt
 
 --| THE WALK, ON THE AREA.  Counted, the fencepost, the coefficient, the memory, the trace and the house of this episode are
 --| those of Episode 8.
-theorem counted_the_walk_is_the_walk :
-    read the_fencepost = bent_card.fencepost Nat List.length
-      ∧ cells the_coefficient = an_exact_polynomial_description
-      ∧ cells the_memory = the_number_of_symbols_that_must_be_written_to_express_this
-      ∧ cells the_trace = the_trace_of_truth_in_the_device
-      ∧ read the_house = the_held_house := by
-  simp only [read, the_fencepost, the_coefficient, the_memory, the_trace, the_house, an_exact_polynomial_description,
+--| the_reader_has_noticed_a_few_coincidences:w
+theorem the_walk_is_the_walk :
+    some_quartic_called the_fencepost = bent_card.fencepost Nat List.length
+      ∧ compute_the_area_of the_coefficient = an_exact_polynomial_description
+      ∧ compute_the_area_of the_memory = the_number_of_symbols_that_must_be_written_to_express_this
+      ∧ compute_the_area_of the_trace = the_trace_of_truth_in_the_device
+      ∧ some_quartic_called the_house = the_held_house := by
+  simp only [some_quartic_called, the_fencepost, the_coefficient, the_memory, the_trace, the_house, an_exact_polynomial_description,
     the_number_of_symbols_that_must_be_written_to_express_this, the_trace_of_truth_in_the_device, the_held_house,
     bent_card.fencepost, bent_card.the_exact_Taylor_series_degree, bent_card.the_length_of_the_path_from_here_to_there,
     bent_card.the_measurement_degrees_of_freedom, bent_card.the_device_as_linear_operator_mapped_identity,
-    each_for_each_multiplies, the_area_of_a_tape_has_the_tapes_length, and_self]
+    false_shuffle_multiplies, the_area_of_a_tape_in_blanks_is_the_tapes_length, and_self]
 
 --| ONE TURN.  Turn the crank on the Area and count, or count and turn Episode 8's crank.  The same.
-theorem counted_one_turn_is_one_turn (scale : Area) (here : Area × Area) :
-    read (one_turn scale here)
-      = bent_card.the_device_computing_the_next_configuration Nat List.length (cells scale) (read here) := by
-  obtain ⟨x, y⟩ := here
-  simp only [one_turn, read, bent_card.the_device_computing_the_next_configuration, bent_card.the_exact_Taylor_series_degree,
+theorem counted_simulate_is_simulate (quantum : Area) (here_and_now: Area × Area) :
+    some_quartic_called (simulate_this_way quantum here_and_now)
+      = bent_card.the_device_computing_the_next_configuration Nat List.length (compute_the_area_of quantum) (some_quartic_called here_and_now) := by
+  obtain ⟨_, _⟩ := here_and_now
+  simp only [simulate_this_way, some_quartic_called, bent_card.the_device_computing_the_next_configuration, bent_card.the_exact_Taylor_series_degree,
     bent_card.the_length_of_the_path_from_here_to_there, bent_card.the_measurement_degrees_of_freedom, bent_card.fencepost]
   split
   · rename_i h
-    have h' := (less_is_less _ _).1 h
-    simp only [beside_adds, each_for_each_multiplies, taken_away_subtracts, the_area_of_a_tape_has_the_tapes_length] at h'
+    have h' := (obviously_bigger _ _).1 h
+    simp only [palm_the_middle_card_adds, false_shuffle_multiplies, the_double_lift_subtracts, the_area_of_a_tape_in_blanks_is_the_tapes_length] at h'
     rw [if_pos h']
   · rename_i h
-    have h' : ¬ _ := fun g => h ((less_is_less _ _).2 g)
-    simp only [beside_adds, each_for_each_multiplies, taken_away_subtracts, the_area_of_a_tape_has_the_tapes_length] at h'
+    have h' : ¬ _ := fun g => h ((obviously_bigger _ _).2 g)
+    simp only [palm_the_middle_card_adds, false_shuffle_multiplies, the_double_lift_subtracts, the_area_of_a_tape_in_blanks_is_the_tapes_length] at h'
     rw [if_neg h']
-    simp only [each_for_each_multiplies, taken_away_subtracts, the_area_of_a_tape_has_the_tapes_length]
+    simp only [false_shuffle_multiplies, the_double_lift_subtracts, the_area_of_a_tape_in_blanks_is_the_tapes_length]
 
 --| EVERY TURN.  As many turns as there are marks on any tape of turns.
-theorem counted_any_number_of_turns_is_as_many_turns (scale : Area) (turns : List Unit) (here : Area × Area) :
-    read (turns.foldl (fun x _ => one_turn scale x) here)
-      = turns.foldl (fun x _ => bent_card.the_device_computing_the_next_configuration Nat List.length (cells scale) x) (read here) := by
-  induction turns generalizing here with
+theorem counted_any_number_of_turns_is_as_many_turns (quantum : Area) (turns : List Unit) (here_and_now : Area × Area) :
+    some_quartic_called (turns.foldl (fun computation _ => simulate_this_way quantum computation) here_and_now)
+      = turns.foldl (fun blank _ => bent_card.the_device_computing_the_next_configuration Nat List.length
+                                                           (compute_the_area_of quantum) blank) (some_quartic_called here_and_now) := by
+  induction turns generalizing here_and_now with
   | nil => rfl
-  | cons _ rest ih => simp only [List.foldl_cons, ih, counted_one_turn_is_one_turn]
+  | cons _ rest ih => simp only [List.foldl_cons, ih, counted_simulate_is_simulate]
 
 --| THE CRANK.  All hundred and six turns from the house, on the Area; counted, they are Episode 8's.  Nobody turned them here.
 --| An Area of that many cells is not a thing to be written out.  It does not have to be.
 theorem counted_the_crank_is_the_crank (scale : Area) :
-    read (the_crank scale)
-      = bent_card.proportional_laws_accumulate_commutation_projections_called_TERM_LAMBDAS Nat List.length (cells scale) := by
-  have house := counted_the_walk_is_the_walk.2.2.2.2
+    some_quartic_called (the_crank scale)
+      = bent_card.proportional_laws_accumulate_commutation_projections_called_TERM_LAMBDAS Nat List.length (compute_the_area_of scale) := by
+  have house := the_walk_is_the_walk.2.2.2.2
   simp only [the_house, the_held_house] at house
   simp only [the_crank, bent_card.proportional_laws_accumulate_commutation_projections_called_TERM_LAMBDAS]
   exact (counted_any_number_of_turns_is_as_many_turns scale _ _).trans (by rw [house])
 
 theorem counted_the_crank_and_the_fencepost_are_the_crank_and_the_fencepost (scale : Area) :
-    read (the_crank_and_the_fencepost scale) = bent_card.fenceposts_must_be_preserved Nat List.length (cells scale) := by
+   some_quartic_called (the_crank_and_the_fencepost scale) = bent_card.fenceposts_must_be_preserved Nat List.length (compute_the_area_of scale) := by
   have crank := counted_the_crank_is_the_crank scale
-  simp only [the_crank, read] at crank
-  simp only [the_crank_and_the_fencepost, read, bent_card.fenceposts_must_be_preserved, bent_card.fencepost,
-    each_for_each_multiplies, the_area_of_a_tape_has_the_tapes_length]
+  simp only [the_crank, some_quartic_called] at crank
+  simp only [the_crank_and_the_fencepost, some_quartic_called, bent_card.fenceposts_must_be_preserved, bent_card.fencepost,
+    false_shuffle_multiplies, the_area_of_a_tape_in_blanks_is_the_tapes_length]
   rw [← crank]
 
 --| THE NUMBER.  Hand the Area's device any Area with as many cells as Episode 8's scale.  Count what comes back.  It is the
 --| pair Episode 8 arranged, and so the same digits.  No natural went in.  One came out, and only because *YOU the READER* counted.
-theorem the_area_arrives_at_the_same_pair (scale : Area) (as_many_cells_as_the_scale : cells scale = all_possible_variables) :
-    read (the_crank_and_the_fencepost scale) = arrange_the_information_appropriately := by
+theorem the_area_arrives_at_the_same_pair (scale : Area) (as_many_cells_as_the_scale : compute_the_area_of scale = all_possible_variables) :
+   some_quartic_called (the_crank_and_the_fencepost scale) = arrange_the_information_appropriately := by
   rw [counted_the_crank_and_the_fencepost_are_the_crank_and_the_fencepost, as_many_cells_as_the_scale]; rfl
 
-theorem the_area_arrives_at_the_same_number (scale : Area) (as_many_cells_as_the_scale : cells scale = all_possible_variables) :
-    (read (the_crank_and_the_fencepost scale)).1 * all_possible_variables / (read (the_crank_and_the_fencepost scale)).2
+theorem the_area_arrives_at_the_same_number (scale : Area) (as_many_cells_as_the_scale : compute_the_area_of scale = all_possible_variables) :
+    (some_quartic_called (the_crank_and_the_fencepost scale)).1 * all_possible_variables / (some_quartic_called (the_crank_and_the_fencepost scale)).2
       = the_constant_factor_of_scaling_bullshit := by
   rw [the_area_arrives_at_the_same_pair scale as_many_cells_as_the_scale]; rfl
 
 --| And there is such an Area: the tape of that many truths, read by the reader.
 theorem there_is_an_area_with_as_many_cells_as_the_scale :
-    cells (the_area_of_a_tape (List.replicate all_possible_variables zero)) = all_possible_variables := by
-  rw [the_area_of_a_tape_has_the_tapes_length, List.length_replicate]
+    compute_the_area_of (the_area_of_a_tape_in_blanks_is (List.replicate all_possible_variables zero)) = all_possible_variables := by
+  rw [the_area_of_a_tape_in_blanks_is_the_tapes_length, List.length_replicate]
 
 --| THE CONSTANT, ON THE AREA.  Episode 8 is the guide, line for line.  First the free variables: the basis by the dimensions.
-def the_free_variables := the_area_of_a_tape the_basis.the_reading * the_area_of_a_tape the_coordinate_system.gauss
+def the_free_variables := the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_area_of_a_tape_in_blanks_is the_coordinate_system.gauss
 
 --| Then the express route: the tape from the inferred end as deep as the bent card, less the memory.
-def the_express_route := the_area_of_a_tape (from_the_inferred_end bent_card) - the_memory
+def the_express_route := the_area_of_a_tape_in_blanks_is (from_the_inferred_end bent_card) - the_memory
 
 --| Raised: the one Area each for each with itself, once for every cell of the other.  With no cell, the one cell, ast₁.
 def raised : Area → Area → Area
@@ -295,55 +325,55 @@ def taking_until_less : Area → Area → Area → Area
   | .tree _,          _,        _       => ast₀
   | .dt _ _ patience, the_rest, the_one => if the_rest < the_one then ast₀ else ast₁ + taking_until_less patience (the_rest - the_one) the_one
 def how_many_times (the_whole the_one : Area) : Area :=
-  if something_is_left the_one = true then taking_until_less the_whole the_whole the_one else ast₀
+  if coin_flip the_one = true then taking_until_less the_whole the_whole the_one else ast₀
 
 --| The rational idea of relativity, on the Area.  Not more: take the one away from the other and nothing is left.
 @[reducible] def the_rational_idea_of_relativity_on_the_area (x y : Area × Area) : Prop := ¬ (y.1 * x.2 < x.1 * y.2)
 
-theorem raised_raises (b e : Area) : cells (raised b e) = cells b ^ cells e := by
+theorem raised_raises (b e : Area) : compute_the_area_of (raised b e) = compute_the_area_of b ^ compute_the_area_of e := by
   induction e with
   | tree _ => rfl
-  | dt _ _ rest ih => simp only [raised, cells, each_for_each_multiplies, ih, Nat.pow_succ, Nat.mul_comm]
+  | dt _ _ rest ih => simp only [raised, compute_the_area_of, false_shuffle_multiplies, ih, Nat.pow_succ, Nat.mul_comm]
 
-theorem taking_until_less_divides (the_one : Area) (there_is_one : 0 < cells the_one) (patience the_rest : Area)
-    (patience_enough : cells the_rest ≤ cells patience) :
-    cells (taking_until_less patience the_rest the_one) = cells the_rest / cells the_one := by
+theorem taking_until_less_divides (the_one : Area) (there_is_one : 0 < compute_the_area_of the_one) (patience the_rest : Area)
+    (patience_enough : compute_the_area_of the_rest ≤ compute_the_area_of patience) :
+    compute_the_area_of (taking_until_less patience the_rest the_one) = compute_the_area_of the_rest / compute_the_area_of the_one := by
   induction patience generalizing the_rest with
   | tree _ =>
-    have nothing : cells the_rest = 0 := Nat.le_zero.mp patience_enough
+    have nothing : compute_the_area_of the_rest = 0 := Nat.le_zero.mp patience_enough
     simp only [taking_until_less, nothing, Nat.zero_div]; rfl
   | dt _ _ patience ih =>
     simp only [taking_until_less]
     split
     · rename_i h
-      rw [Nat.div_eq_of_lt ((less_is_less _ _).1 h)]; rfl
+      rw [Nat.div_eq_of_lt ((obviously_bigger _ _).1 h)]; rfl
     · rename_i h
-      have not_less : cells the_one ≤ cells the_rest := Nat.le_of_not_lt (fun g => h ((less_is_less _ _).2 g))
-      have still_enough : cells (the_rest - the_one) ≤ cells patience := by
-        rw [taken_away_subtracts]; simp only [cells] at patience_enough; omega
-      rw [beside_adds, ih _ still_enough, taken_away_subtracts, Nat.div_eq_sub_div there_is_one not_less, Nat.add_comm]; rfl
+      have not_less : compute_the_area_of the_one ≤ compute_the_area_of the_rest := Nat.le_of_not_lt (fun g => h ((obviously_bigger _ _).2 g))
+      have still_enough : compute_the_area_of (the_rest - the_one) ≤ compute_the_area_of patience := by
+        rw [the_double_lift_subtracts]; simp only [compute_the_area_of] at patience_enough; omega
+      rw [palm_the_middle_card_adds, ih _ still_enough, the_double_lift_subtracts, Nat.div_eq_sub_div there_is_one not_less, Nat.add_comm]; rfl
 
-theorem how_many_times_divides (the_whole the_one : Area) : cells (how_many_times the_whole the_one) = cells the_whole / cells the_one := by
+theorem how_many_times_divides (the_whole the_one : Area) : compute_the_area_of (how_many_times the_whole the_one) = compute_the_area_of the_whole / compute_the_area_of the_one := by
   simp only [how_many_times]
   split
   · rename_i h
-    exact taking_until_less_divides the_one ((something_is_left_when_there_is_a_cell _).1 h) _ _ (Nat.le_refl _)
+    exact taking_until_less_divides the_one ((coin_flip_when_there_is_a_cell _).1 h) _ _ (Nat.le_refl _)
   · rename_i h
-    have no_cell : cells the_one = 0 := Nat.le_zero.mp (Nat.le_of_not_lt (fun g => h ((something_is_left_when_there_is_a_cell _).2 g)))
+    have no_cell : compute_the_area_of the_one = 0 := Nat.le_zero.mp (Nat.le_of_not_lt (fun g => h ((coin_flip_when_there_is_a_cell _).2 g)))
     rw [no_cell, Nat.div_zero]; rfl
 
 --| Counted, the free variables, the express route and the scale are Episode 8's.
 theorem counted_the_scale_is_the_scale :
-    cells the_free_variables = the_free_variable_count
-      ∧ cells the_express_route = the_express_route_station_count
-      ∧ cells the_scale = all_possible_variables := by
-  have free : cells the_free_variables = the_free_variable_count := by
-    simp only [the_free_variables, each_for_each_multiplies, the_area_of_a_tape_has_the_tapes_length]; rfl
-  have express : cells the_express_route = the_express_route_station_count := by
-    simp only [the_express_route, taken_away_subtracts, the_area_of_a_tape_has_the_tapes_length, counted_the_walk_is_the_walk.2.2.1]; rfl
+    compute_the_area_of the_free_variables = the_free_variable_count
+      ∧ compute_the_area_of the_express_route = the_express_route_station_count
+      ∧ compute_the_area_of the_scale = all_possible_variables := by
+  have free : compute_the_area_of the_free_variables = the_free_variable_count := by
+    simp only [the_free_variables, false_shuffle_multiplies, the_area_of_a_tape_in_blanks_is_the_tapes_length]; rfl
+  have express : compute_the_area_of the_express_route = the_express_route_station_count := by
+    simp only [the_express_route, the_double_lift_subtracts, the_area_of_a_tape_in_blanks_is_the_tapes_length, the_walk_is_the_walk.2.2.1]; rfl
   exact ⟨free, express, by simp only [the_scale, raised_raises, free, express]; rfl⟩
 
-theorem counted_the_arrangement_is_the_arrangement : read arranged = arrange_the_information_appropriately :=
+theorem counted_the_arrangement_is_the_arrangement : some_quartic_called arranged = arrange_the_information_appropriately :=
   the_area_arrives_at_the_same_pair the_scale counted_the_scale_is_the_scale.2.2
 
 --| THE CONSTANT CAN BE INFERRED.  Episode 8's statement, with the Area where the naturals stood: there is an Area which, each
@@ -355,10 +385,10 @@ theorem a_partitioning_of_quotients_on_the_area (numerator denominator : Area) :
   Quot.sound (r := the_rational_idea_of_relativity_on_the_area) (by
     show ¬ (numerator * denominator < denominator * how_many_times numerator denominator * denominator)
     intro more
-    have more' := (less_is_less _ _).1 more
-    simp only [each_for_each_multiplies, how_many_times_divides] at more'
+    have more' := (obviously_bigger _ _).1 more
+    simp only [false_shuffle_multiplies, how_many_times_divides] at more'
     exact Nat.lt_irrefl _ (Nat.lt_of_lt_of_le more'
-      (Nat.mul_le_mul_right (cells denominator) (the_constant_is_at_least_true (cells numerator) (cells denominator)))))
+      (Nat.mul_le_mul_right (compute_the_area_of denominator) (the_constant_is_at_least_true (compute_the_area_of numerator) (compute_the_area_of denominator)))))
 
 --| THE SEAL.  From here on the crank, the raising and the taking away are names and are not opened.  What is known of them is
 --| what was counted above.  Open one and the machine goes looking for an Area nobody can write.
@@ -376,16 +406,16 @@ def the_constant_inferred_at (scale : Area) :
 
 --| The division, counted, of three names.  No Area is looked into.
 theorem counted_the_division_is_the_division (numerator denominator scale : Area) (n d s : Nat)
-    (the_numerator : cells numerator = n) (the_denominator : cells denominator = d) (the_scale_of_it : cells scale = s) :
-    cells (how_many_times (numerator * scale) denominator) = n * s / d := by
-  rw [how_many_times_divides, each_for_each_multiplies, the_numerator, the_denominator, the_scale_of_it]
+    (the_numerator : compute_the_area_of numerator = n) (the_denominator : compute_the_area_of denominator = d) (the_scale_of_it : compute_the_area_of scale = s) :
+    compute_the_area_of (how_many_times (numerator * scale) denominator) = n * s / d := by
+  rw [how_many_times_divides, false_shuffle_multiplies, the_numerator, the_denominator, the_scale_of_it]
 
 theorem episode_eights_constant_is_its_own_division :
     arrange_the_information_appropriately.1 * all_possible_variables / arrange_the_information_appropriately.2
       = the_constant_factor_of_scaling_bullshit := rfl
 
-theorem counted_the_constant_at_any_such_scale (scale : Area) (as_many_cells_as_the_scale : cells scale = all_possible_variables) :
-    cells (the_constant_inferred_at scale).val = the_constant_factor_of_scaling_bullshit :=
+theorem counted_the_constant_at_any_such_scale (scale : Area) (as_many_cells_as_the_scale : compute_the_area_of scale = all_possible_variables) :
+    compute_the_area_of (the_constant_inferred_at scale).val = the_constant_factor_of_scaling_bullshit :=
   (counted_the_division_is_the_division _ _ _ _ _ _
     (congrArg Prod.fst (the_area_arrives_at_the_same_pair scale as_many_cells_as_the_scale))
     (congrArg Prod.snd (the_area_arrives_at_the_same_pair scale as_many_cells_as_the_scale))
@@ -402,13 +432,13 @@ def the_constant := (the_constant_inferred_at the_scale).val
 --| THE CONSTANT IS AN AREA.  Counted, it is Episode 8's constant, the one whose glyphs Episode 8 and Episode 12 print.  Nobody
 --| built this Area and nobody will.  It has a definition, the definition has a count, and the count was already printed.
 theorem counted_the_constant_is_the_constant :
-    cells (the_constant_inferred_at the_scale).val = the_constant_factor_of_scaling_bullshit :=
+    compute_the_area_of (the_constant_inferred_at the_scale).val = the_constant_factor_of_scaling_bullshit :=
   counted_the_constant_at_any_such_scale the_scale counted_the_scale_is_the_scale.2.2
 
 --| FOUR BULLSHIT VALUES.  The author's, 16 November 2026: you should now be able to get four bullshit values out.  The
 --| constant is an Area nobody can write.  These four can be written, and are.  Episode 8 has the two ends: no presents, the
 --| zero; and no Santa, one on top of it.  An Area is read out the same way, a no Santa for every cell.
---| Each cell carries the number of the cells under it, where Bullshit's order looks.  Without that the order cannot tell six
+--| Each cell carries the number of the compute_the_area_of under it, where Bullshit's order looks.  Without that the order cannot tell six
 --| from nineteen: it reads the top number and nothing else.
 def the_number_of : Area → Number
   | .tree _      => another_zero
@@ -417,7 +447,7 @@ def the_bullshit_of : Area → Bullshit.{0,0}
   | .tree _      => no_presents
   | .dt _ _ rest => .one zero (the_number_of rest) the_satire the_satire (the_bullshit_of rest)
 
---| The frame is Gauss's, the second of the fencepost.  An arm that can click is the coefficient beside the frame.  The arm
+--| The frame is Gauss's, the second of the fencepost.  An arm that can click is the coefficient palm_the_middle_card the frame.  The arm
 --| that cannot is the frame alone.
 def the_frame := the_fencepost.2
 def the_arm (this that : Bool) : Area :=
@@ -433,7 +463,7 @@ theorem one_cell_is_no_santa : the_bullshit_of ast₁ = no_santa := rfl
 --| The arms, counted, are the arms of Episode 12: the memory three times, and Gauss's once.  Abstraction, abstraction,
 --| abstraction, limit.
 theorem counted_the_arms_are_the_arms :
-    [cells (the_arm true true), cells (the_arm true false), cells (the_arm false true), cells (the_arm false false)]
+    [compute_the_area_of (the_arm true true), compute_the_area_of (the_arm true false), compute_the_area_of (the_arm false true), compute_the_area_of (the_arm false false)]
       = [the_arm_weight true true, the_arm_weight true false, the_arm_weight false true, the_arm_weight false false] := by decide
 
 --| And on Episode 8's own meter each reads one over, for the zero it stands on: the fencepost.
@@ -445,7 +475,7 @@ theorem the_four_on_the_meter :
 --| THE EXPERIENCE AND THE INTERPRETATION.  The author's, 16 November 2026: the experience and the interpretation are
 --| represented by those four bullshit values; put them together.  First, the order.  The number's order on these is the count,
 --| and so is Bullshit's.
-theorem the_numbers_order_is_the_count (a b : Area) : Number.le (the_number_of a) (the_number_of b) ↔ cells a ≤ cells b := by
+theorem the_numbers_order_is_the_count (a b : Area) : Number.le (the_number_of a) (the_number_of b) ↔ compute_the_area_of a ≤ compute_the_area_of b := by
   induction a generalizing b with
   | tree _ => exact ⟨fun _ => Nat.zero_le _, fun _ => by simp only [the_number_of, another_zero, Number.le]⟩
   | dt fa na ra ih =>
@@ -456,7 +486,7 @@ theorem the_numbers_order_is_the_count (a b : Area) : Number.le (the_number_of a
         simp only [the_number_of, Number.le, zero, FACT.Truth]
       rw [step, ih]; exact Nat.succ_le_succ_iff.symm
 
-theorem the_bullshits_order_is_the_count (a b : Area) : the_bullshit_of a ≤ the_bullshit_of b ↔ cells a ≤ cells b := by
+theorem the_bullshits_order_is_the_count (a b : Area) : the_bullshit_of a ≤ the_bullshit_of b ↔ compute_the_area_of a ≤ compute_the_area_of b := by
   show Bullshit.le _ _ ↔ _
   cases a with
   | tree _ =>
@@ -505,7 +535,7 @@ def the_gap_of_the_experience     := the_arm false true - the_arm true false
 theorem the_interpretation_has_no_gap_and_the_experiences_is_the_bent_card :
     the_bullshit_of the_gap_of_the_interpretation = no_presents
       ∧ the_gap_of_the_experience = the_coefficient
-      ∧ cells the_gap_of_the_experience = bent_card := ⟨rfl, rfl, by decide⟩
+      ∧ compute_the_area_of the_gap_of_the_experience = bent_card := ⟨rfl, rfl, by decide⟩
 
 theorem the_gap_is_the_same_difference :
     (Quot.mk TruthOrder (the_bullshit_of the_gap_of_the_interpretation) : Quot TruthOrder)
@@ -603,18 +633,18 @@ end the_reading
 --| Area is sealed.  Execute counts, and nothing has called it.  Call it.  Episode 12 routed the count through another machine
 --| and handed it to Episode 8's crank.  The other machine here is the Abstraction: write the tape, count the executes.  The
 --| pair that comes out is the pair Episode 8 arranged, and it is the Area's pair, counted.  Then read off the glyphs.
-def the_executed_count (tape : List FACT) : Nat := executed (the_abstraction_of_a_tape tape)
+def the_executed_count (tape : List FACT) : Nat := compute_the_so_called_area_of (an_interleaved tape)
 
 theorem the_executed_count_is_the_length : the_executed_count = List.length := by
   funext tape
-  simp only [the_executed_count, the_abstraction_of_a_tape, the_proof_counts_every_fact, the_wall_executes_nothing, Nat.zero_add]
+  simp only [the_executed_count, an_interleaved, the_proof_counts_every_fact, the_tape_of_symbols_has_no_ast, Nat.zero_add]
 
 def the_executed_pair : Nat × Nat := bent_card.fenceposts_must_be_preserved Nat the_executed_count all_possible_variables
 
 theorem the_executed_pair_is_the_arrangement : the_executed_pair = arrange_the_information_appropriately := by
   unfold the_executed_pair; rw [the_executed_count_is_the_length]; rfl
 
-theorem the_executed_pair_is_the_area_counted : the_executed_pair = read arranged :=
+theorem the_executed_pair_is_the_area_counted : the_executed_pair = some_quartic_called arranged :=
   the_executed_pair_is_the_arrangement.trans counted_the_arrangement_is_the_arrangement.symm
 
 def the_executed_natural : Nat := the_executed_pair.1 * all_possible_variables / the_executed_pair.2
@@ -629,47 +659,47 @@ def what_did_execute_count? : String :=
 --| proofs on them.  Episode 12 says what it says of weights, which are naturals.  Here the same is said of Areas, with an Area
 --| for a clock where there was a number of steps, and with as many where there was equals.  First the table and its walks.
 --| As many: take either from the other and nothing is left.  Said of two Areas and of nothing else.
-def as_many (a b : Area) : Prop := something_is_left (a - b) = false ∧ something_is_left (b - a) = false
+def as_many (a b : Area) : Prop := coin_flip (a - b) = false ∧ coin_flip (b - a) = false
 instance (a b : Area) : Decidable (as_many a b) := inferInstanceAs (Decidable (_ ∧ _))
 
-theorem nothing_is_left_when_there_is_no_cell (a : Area) : something_is_left a = false ↔ cells a = 0 := by
+theorem nothing_is_left_when_there_is_no_cell (a : Area) : coin_flip a = false ↔ compute_the_area_of a = 0 := by
   cases a with
   | tree _ => exact ⟨fun _ => rfl, fun _ => rfl⟩
   | dt _ _ rest => exact ⟨fun h => Bool.noConfusion h, fun h => absurd h (Nat.succ_ne_zero _)⟩
 
-theorem as_many_is_the_same_count (a b : Area) : as_many a b ↔ cells a = cells b := by
-  simp only [as_many, nothing_is_left_when_there_is_no_cell, taken_away_subtracts]
+theorem as_many_is_the_same_count (a b : Area) : as_many a b ↔ compute_the_area_of a = compute_the_area_of b := by
+  simp only [as_many, nothing_is_left_when_there_is_no_cell, the_double_lift_subtracts]
   exact ⟨fun h => Nat.le_antisymm (Nat.sub_eq_zero_iff_le.mp h.1) (Nat.sub_eq_zero_iff_le.mp h.2),
          fun h => ⟨Nat.sub_eq_zero_iff_le.mpr (Nat.le_of_eq h), Nat.sub_eq_zero_iff_le.mpr (Nat.le_of_eq h.symm)⟩⟩
 
 --| One more cell, of ast₁'s kind.
 def one_more (a : Area) : Area := .dt zero another_zero a
 
-theorem counted_an_arm_is_its_weight (this that : Bool) : cells (the_arm this that) = the_arm_weight this that := by
+theorem counted_an_arm_is_its_weight (this that : Bool) : compute_the_area_of (the_arm this that) = the_arm_weight this that := by
   cases this <;> cases that <;> decide
 
 --| THE TABLE, ON THE AREA.  Episode 12's click table, its trace and its determinant, with the arms where the weights stood.
 def the_trace_of_the_arms       : Area := the_arm true true + the_arm false false
 def the_determinant_of_the_arms : Area := the_arm true true * the_arm false false - the_arm true false * the_arm false true
 
-theorem counted_the_trace_of_the_arms_is_the_trace : cells the_trace_of_the_arms = Measurement.the_trace := by
-  simp only [the_trace_of_the_arms, beside_adds, counted_an_arm_is_its_weight]; rfl
-theorem counted_the_determinant_of_the_arms_is_the_determinant : cells the_determinant_of_the_arms = the_determinant := by
-  simp only [the_determinant_of_the_arms, taken_away_subtracts, each_for_each_multiplies, counted_an_arm_is_its_weight]; rfl
+theorem counted_the_trace_of_the_arms_is_the_trace : compute_the_area_of the_trace_of_the_arms = Measurement.the_trace := by
+  simp only [the_trace_of_the_arms, palm_the_middle_card_adds, counted_an_arm_is_its_weight]; rfl
+theorem counted_the_determinant_of_the_arms_is_the_determinant : compute_the_area_of the_determinant_of_the_arms = the_determinant := by
+  simp only [the_determinant_of_the_arms, the_double_lift_subtracts, false_shuffle_multiplies, counted_an_arm_is_its_weight]; rfl
 
 theorem the_trace_of_the_arms_is_the_middle_coefficient : as_many the_trace_of_the_arms the_trace := by
-  rw [as_many_is_the_same_count, counted_the_trace_of_the_arms_is_the_trace, counted_the_walk_is_the_walk.2.2.2.1]; rfl
+  rw [as_many_is_the_same_count, counted_the_trace_of_the_arms_is_the_trace, the_walk_is_the_walk.2.2.2.1]; rfl
 theorem the_determinant_of_the_arms_is_the_outer_coefficients : as_many the_determinant_of_the_arms (the_coefficient * the_memory) := by
-  rw [as_many_is_the_same_count, counted_the_determinant_of_the_arms_is_the_determinant, each_for_each_multiplies,
-    counted_the_walk_is_the_walk.2.1, counted_the_walk_is_the_walk.2.2.1]; rfl
+  rw [as_many_is_the_same_count, counted_the_determinant_of_the_arms_is_the_determinant, false_shuffle_multiplies,
+    the_walk_is_the_walk.2.1, the_walk_is_the_walk.2.2.1]; rfl
 theorem the_discriminant_of_the_arms_is_the_clock_times_the_coupling :
     as_many (the_trace_of_the_arms * the_trace_of_the_arms
-               - the_area_of_a_tape the_basis.the_reading * the_area_of_a_tape the_basis.the_reading * the_determinant_of_the_arms)
-            (the_area_of_a_tape the_basis.the_reading * the_area_of_a_tape the_basis.the_reading * the_memory * the_frame) := by
+               - the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_determinant_of_the_arms)
+            (the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_memory * the_frame) := by
   rw [as_many_is_the_same_count]
-  simp only [taken_away_subtracts, each_for_each_multiplies, counted_the_trace_of_the_arms_is_the_trace,
-    counted_the_determinant_of_the_arms_is_the_determinant, the_area_of_a_tape_has_the_tapes_length,
-    counted_the_walk_is_the_walk.2.2.1, the_frame, the_fencepost, bent_card.fencepost]
+  simp only [the_double_lift_subtracts, false_shuffle_multiplies, counted_the_trace_of_the_arms_is_the_trace,
+    counted_the_determinant_of_the_arms_is_the_determinant, the_area_of_a_tape_in_blanks_is_the_tapes_length,
+    the_walk_is_the_walk.2.2.1, the_frame, the_fencepost, bent_card.fencepost]
   rfl
 theorem the_arms_are_the_memory_and_the_frame :
     the_arm true true = the_memory ∧ the_arm true false = the_frame ∧ the_arm false true = the_memory ∧ the_arm false false = the_memory :=
@@ -683,11 +713,11 @@ def the_closed_walks_on_the_area (clock : Area) : Area :=
   the_walks_on_the_area clock true true + the_walks_on_the_area clock false false
 
 theorem counted_the_walks_are_the_walks (clock : Area) (a b : Bool) :
-    cells (the_walks_on_the_area clock a b) = the_walks (cells clock) a b := by
+    compute_the_area_of (the_walks_on_the_area clock a b) = the_walks (compute_the_area_of clock) a b := by
   induction clock generalizing a b with
   | tree _ => cases a <;> cases b <;> rfl
   | dt _ _ rest ih =>
-    simp only [the_walks_on_the_area, cells, the_walks, beside_adds, each_for_each_multiplies, ih, counted_an_arm_is_its_weight]
+    simp only [the_walks_on_the_area, compute_the_area_of, the_walks, palm_the_middle_card_adds, false_shuffle_multiplies, ih, counted_an_arm_is_its_weight]
 
 theorem the_walks_on_the_area_obey_the_table (clock : Area) (a b : Bool) :
     as_many (the_walks_on_the_area (one_more (one_more clock)) a b + the_determinant_of_the_arms * the_walks_on_the_area clock a b)
@@ -695,8 +725,8 @@ theorem the_walks_on_the_area_obey_the_table (clock : Area) (a b : Bool) :
   rw [as_many_is_the_same_count]
   have trace := counted_the_trace_of_the_arms_is_the_trace
   have determinant := counted_the_determinant_of_the_arms_is_the_determinant
-  simp only [beside_adds, each_for_each_multiplies, counted_the_walks_are_the_walks, one_more, cells, trace, determinant]
-  exact the_walks_obey_the_table (cells clock) a b
+  simp only [palm_the_middle_card_adds, false_shuffle_multiplies, counted_the_walks_are_the_walks, one_more, compute_the_area_of, trace, determinant]
+  exact the_walks_obey_the_table (compute_the_area_of clock) a b
 
 theorem the_closed_walks_on_the_area_obey_the_table (clock : Area) :
     as_many (the_closed_walks_on_the_area (one_more (one_more clock)) + the_determinant_of_the_arms * the_closed_walks_on_the_area clock)
@@ -704,9 +734,9 @@ theorem the_closed_walks_on_the_area_obey_the_table (clock : Area) :
   rw [as_many_is_the_same_count]
   have trace := counted_the_trace_of_the_arms_is_the_trace
   have determinant := counted_the_determinant_of_the_arms_is_the_determinant
-  simp only [the_closed_walks_on_the_area, beside_adds, each_for_each_multiplies, counted_the_walks_are_the_walks, one_more, cells,
+  simp only [the_closed_walks_on_the_area, palm_the_middle_card_adds, false_shuffle_multiplies, counted_the_walks_are_the_walks, one_more, compute_the_area_of,
     trace, determinant]
-  exact the_closed_walks_obey_the_table (cells clock)
+  exact the_closed_walks_obey_the_table (compute_the_area_of clock)
 
 --| THE ACCOUNT.  The author's, 16 November 2026: a pair of Areas.  An Area cannot go below its tree, so what Episode 12 says
 --| of signed numbers is said here of two Areas kept side by side: what is held, and what is owed.  Nothing is ever taken away.
@@ -715,45 +745,107 @@ structure Account where
   owed : Area
 
 namespace Account
---| Beside: held with held, owed with owed.
+--| palm_the_middle_card: held with held, owed with owed.
 instance : Add Account := ⟨fun p q => ⟨p.held + q.held, p.owed + q.owed⟩⟩
 --| Turned over: what was held is owed.
 instance : Neg Account := ⟨fun p => ⟨p.owed, p.held⟩⟩
---| Less: beside the other turned over.
+--| Less: palm_the_middle_card the other turned over.
 instance : Sub Account := ⟨fun p q => ⟨p.held + q.owed, p.owed + q.held⟩⟩
 --| Each for each: like with like is held, unlike is owed.
 instance : Mul Account := ⟨fun p q => ⟨p.held * q.held + p.owed * q.owed, p.held * q.owed + p.owed * q.held⟩⟩
 --| An Area, held, with nothing owed.
 def holding (a : Area) : Account := ⟨a, ast₀⟩
---| The same: each one's held beside the other's owed are as many.
+--| The same: each one's held palm_the_middle_card the other's owed are as many.
 def the_same (p q : Account) : Prop := as_many (p.held + q.owed) (q.held + p.owed)
 instance (p q : Account) : Decidable (the_same p q) := inferInstanceAs (Decidable (as_many _ _))
 
 --| The balance.  The reader's, and not the device's: an integer is read off an account the way a count is read off an Area.
-def balance (p : Account) : Int := (cells p.held : Int) - (cells p.owed : Int)
+def balance (p : Account) : Int := (compute_the_area_of p.held : Int) - (compute_the_area_of p.owed : Int)
 
-theorem balance_of_beside (p q : Account) : balance (p + q) = balance p + balance q := by
-  show ((cells (p.held + q.held) : Nat) : Int) - ((cells (p.owed + q.owed) : Nat) : Int) = _
-  simp only [beside_adds, balance]; omega
+theorem balance_of_palm_the_middle_card (p q : Account) : balance (p + q) = balance p + balance q := by
+  show ((compute_the_area_of (p.held + q.held) : Nat) : Int) - ((compute_the_area_of (p.owed + q.owed) : Nat) : Int) = _
+  simp only [palm_the_middle_card_adds, balance]; omega
 theorem balance_turned_over (p : Account) : balance (-p) = - balance p := by
-  show ((cells p.owed : Nat) : Int) - ((cells p.held : Nat) : Int) = _
+  show ((compute_the_area_of p.owed : Nat) : Int) - ((compute_the_area_of p.held : Nat) : Int) = _
   simp only [balance]; omega
 theorem balance_of_less (p q : Account) : balance (p - q) = balance p - balance q := by
-  show ((cells (p.held + q.owed) : Nat) : Int) - ((cells (p.owed + q.held) : Nat) : Int) = _
-  simp only [beside_adds, balance]; omega
-theorem balance_of_each_for_each (p q : Account) : balance (p * q) = balance p * balance q := by
-  show ((cells (p.held * q.held + p.owed * q.owed) : Nat) : Int) - ((cells (p.held * q.owed + p.owed * q.held) : Nat) : Int) = _
-  simp only [beside_adds, each_for_each_multiplies, balance, Int.natCast_add, Int.natCast_mul, Int.sub_mul, Int.mul_sub]
+  show ((compute_the_area_of (p.held + q.owed) : Nat) : Int) - ((compute_the_area_of (p.owed + q.held) : Nat) : Int) = _
+  simp only [palm_the_middle_card_adds, balance]; omega
+theorem balance_of_false_shuffle (p q : Account) : balance (p * q) = balance p * balance q := by
+  show ((compute_the_area_of (p.held * q.held + p.owed * q.owed) : Nat) : Int) - ((compute_the_area_of (p.held * q.owed + p.owed * q.held) : Nat) : Int) = _
+  simp only [palm_the_middle_card_adds, false_shuffle_multiplies, balance, Int.natCast_add, Int.natCast_mul, Int.sub_mul, Int.mul_sub]
   omega
-theorem balance_of_holding (a : Area) : balance (holding a) = (cells a : Int) := by
-  show ((cells a : Nat) : Int) - ((cells ast₀ : Nat) : Int) = _
-  rw [show cells ast₀ = 0 from rfl]; omega
+theorem balance_of_holding (a : Area) : balance (holding a) = (compute_the_area_of a : Int) := by
+  show ((compute_the_area_of a : Nat) : Int) - ((compute_the_area_of ast₀ : Nat) : Int) = _
+  rw [show compute_the_area_of ast₀ = 0 from rfl]; omega
 theorem the_same_is_the_same_balance (p q : Account) : the_same p q ↔ balance p = balance q := by
-  simp only [the_same, as_many_is_the_same_count, beside_adds, balance]
+  simp only [the_same, as_many_is_the_same_count, palm_the_middle_card_adds, balance]
   constructor <;> intro h <;> omega
 end Account
 
 open Account
+
+--| THE MEANINGS, MET.  Meanings says what it is to be counted as the naturals and balanced as the integers, and names nothing
+--| of the device.  The Area and the Account meet those interfaces with the receipts already above.  Were one missing, this
+--| would not compile.  Dealt: a tape of that many truths, read by the reader; owed: the same, turned over.
+def a_tape_of_truths (n : Nat) : Area := the_area_of_a_tape_in_blanks_is (List.replicate n zero)
+
+theorem a_tape_of_truths_is_as_long_as_asked (n : Nat) : compute_the_area_of (a_tape_of_truths n) = n := by
+  rw [a_tape_of_truths, the_area_of_a_tape_in_blanks_is_the_tapes_length, List.length_replicate]
+
+instance : Meanings.CountedAsNat Area where
+  count      := compute_the_area_of
+  deal       := a_tape_of_truths
+  count_deal := a_tape_of_truths_is_as_long_as_asked
+  adds       := palm_the_middle_card_adds
+  multiplies := false_shuffle_multiplies
+  subtracts  := the_double_lift_subtracts
+  less       := obviously_bigger
+
+def an_account_of (z : Int) : Account :=
+  match z with
+  | .ofNat n   => holding (a_tape_of_truths n)
+  | .negSucc n => - holding (a_tape_of_truths (n + 1))
+
+theorem an_account_of_balances (z : Int) : balance (an_account_of z) = z := by
+  cases z with
+  | ofNat n   => rw [an_account_of, balance_of_holding, a_tape_of_truths_is_as_long_as_asked]; rfl
+  | negSucc n => rw [an_account_of, balance_turned_over, balance_of_holding, a_tape_of_truths_is_as_long_as_asked]; rfl
+
+instance : Meanings.BalancedAsInt Account where
+  balance      := balance
+  deal         := an_account_of
+  balance_deal := an_account_of_balances
+  adds         := balance_of_palm_the_middle_card
+  negates      := balance_turned_over
+  subtracts    := balance_of_less
+  multiplies   := balance_of_false_shuffle
+
+--| So, up to what the reader keeps: the Area is the naturals, the Account the integers, and a pair of Accounts the ratios.
+def the_area_read_as_the_naturals := Meanings.CountedAsNat.correspondence (α := Area)
+def the_account_read_as_the_integers := Meanings.BalancedAsInt.correspondence (α := Account)
+def two_accounts_read_as_the_ratios := Meanings.BalancedAsInt.ratioCorrespondence (α := Account)
+
+--| THE CHOICE IS THE CLICK.  A zero is not the naturals; one more is.  There is always one more Area, and no walk down the
+--| Areas goes on forever, and neither costs anything.  The first Area where a statement holds is found by looking, and
+--| looking needs the statement to click.  A FACT carries its click, so the first Area where a FACT holds is found with no
+--| choice.  A bare statement has to be handed a click, and the only one Lean keeps is choice.  Ask to see that, and it is billed.
+theorem there_is_always_one_more_area (a : Area) : ∃ b, a < b :=
+  Meanings.CountedAsNat.nothing_counted_is_largest a
+
+theorem no_walk_down_the_areas_goes_on_forever : WellFounded (fun a b : Area => a < b) :=
+  Meanings.CountedAsNat.less_is_well_founded
+
+theorem the_first_area_where_a_fact_holds (the_fact : Area → FACT)
+    (read_alike : Meanings.CountedAsNat.ReadAlike (fun a => (the_fact a).truth)) (a : Area) (holds : (the_fact a).truth) :
+    ∃ b, (the_fact b).truth ∧ ∀ c, c < b → ¬ (the_fact c).truth :=
+  @Meanings.CountedAsNat.the_least_counted_with_the_click Area _ _ _ _ _ (fun b => (the_fact b).truth)
+    (fun b => (the_fact b).click) read_alike a holds
+
+theorem the_first_area_where_a_statement_holds (the_statement : Area → Prop)
+    (read_alike : Meanings.CountedAsNat.ReadAlike the_statement) (a : Area) (holds : the_statement a) :
+    ∃ b, the_statement b ∧ ∀ c, c < b → ¬ the_statement c :=
+  Meanings.CountedAsNat.the_least_counted_without_the_click the_statement read_alike a holds
 
 --| THE RESIDUAL, ON THE ACCOUNT.  Thirteen y squared less thirty-six y and eighteen, with no thirteen, thirty-six or eighteen
 --| written: the coefficient, the trace and the memory, held.
@@ -762,21 +854,21 @@ def the_residual_on_the_account (y : Account) : Account :=
 
 theorem the_balance_of_the_residual_is_the_residual (y : Account) :
     balance (the_residual_on_the_account y) = the_residual_at (balance y) := by
-  simp only [the_residual_on_the_account, balance_of_beside, balance_of_less, balance_of_each_for_each, balance_of_holding,
-    counted_the_walk_is_the_walk.2.1, counted_the_walk_is_the_walk.2.2.1, counted_the_walk_is_the_walk.2.2.2.1, the_residual_at]
+  simp only [the_residual_on_the_account, balance_of_palm_the_middle_card, balance_of_less, balance_of_false_shuffle, balance_of_holding,
+    the_walk_is_the_walk.2.1, the_walk_is_the_walk.2.2.1, the_walk_is_the_walk.2.2.2.1, the_residual_at]
   rfl
 
 --| Twice the coefficient: the basis each for each with it.
-def twice_the_coefficient : Area := the_area_of_a_tape the_basis.the_reading * the_coefficient
+def twice_the_coefficient : Area := the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_coefficient
 
 --| The difference of the residual, exact: no slope is taken and none is needed.
 theorem the_jacobian_free_difference_is_exact_on_the_account (y h : Account) :
     the_same (the_residual_on_the_account (y + h) - the_residual_on_the_account y)
              ((holding twice_the_coefficient * y - holding the_trace) * h + holding the_coefficient * (h * h)) := by
   rw [the_same_is_the_same_balance]
-  simp only [balance_of_beside, balance_of_less, balance_of_each_for_each, balance_of_holding, the_balance_of_the_residual_is_the_residual,
-    twice_the_coefficient, each_for_each_multiplies, the_area_of_a_tape_has_the_tapes_length,
-    counted_the_walk_is_the_walk.2.1, counted_the_walk_is_the_walk.2.2.2.1]
+  simp only [balance_of_palm_the_middle_card, balance_of_less, balance_of_false_shuffle, balance_of_holding, the_balance_of_the_residual_is_the_residual,
+    twice_the_coefficient, false_shuffle_multiplies, the_area_of_a_tape_in_blanks_is_the_tapes_length,
+    the_walk_is_the_walk.2.1, the_walk_is_the_walk.2.2.2.1]
   exact the_jacobian_free_difference_is_exact (balance y) (balance h)
 
 --| The residual as a rate is the table as a line: the trace and the determinant of the arms where thirty-six and two
@@ -785,7 +877,7 @@ theorem the_residual_as_a_rate_is_the_table_as_a_line_on_the_account (u v w : Ac
     the_same ((v * v - w * u) - (v * v + holding the_trace_of_the_arms * (u * v) + holding the_determinant_of_the_arms * (u * u)))
              (- (u * (w + holding the_trace_of_the_arms * v + holding the_determinant_of_the_arms * u))) := by
   rw [the_same_is_the_same_balance]
-  simp only [balance_of_beside, balance_of_less, balance_of_each_for_each, balance_of_holding, balance_turned_over,
+  simp only [balance_of_palm_the_middle_card, balance_of_less, balance_of_false_shuffle, balance_of_holding, balance_turned_over,
     counted_the_trace_of_the_arms_is_the_trace, counted_the_determinant_of_the_arms_is_the_determinant]
   exact the_residual_as_a_rate_is_the_table_as_a_line (balance u) (balance v) (balance w)
 
@@ -793,18 +885,18 @@ theorem the_residual_as_a_rate_is_the_table_as_a_line_on_the_account (u v w : Ac
 --| nothing, the basis for two, the inference for three, the basis twice over for four, the basis by the inference for six, and
 --| the memory for eighteen.
 def nothing_held    : Account := holding ast₀
-def the_basis_held  : Account := holding (the_area_of_a_tape the_basis.the_reading)
-def the_inference_held : Account := holding (the_area_of_a_tape the_only_logical_inconsistency.infer)
-def the_basis_twice_held : Account := holding (the_area_of_a_tape the_basis.the_reading * the_area_of_a_tape the_basis.the_reading)
+def the_basis_held  : Account := holding (the_area_of_a_tape_in_blanks_is the_basis.the_reading)
+def the_inference_held : Account := holding (the_area_of_a_tape_in_blanks_is the_only_logical_inconsistency.infer)
+def the_basis_twice_held : Account := holding (the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_area_of_a_tape_in_blanks_is the_basis.the_reading)
 def the_basis_by_the_inference_held : Account :=
-  holding (the_area_of_a_tape the_basis.the_reading * the_area_of_a_tape the_only_logical_inconsistency.infer)
+  holding (the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_area_of_a_tape_in_blanks_is the_only_logical_inconsistency.infer)
 def the_memory_held : Account := holding the_memory
 
 theorem the_small_accounts_balance :
     balance nothing_held = 0 ∧ balance the_basis_held = 2 ∧ balance the_inference_held = 3 ∧ balance the_basis_twice_held = 4
       ∧ balance the_basis_by_the_inference_held = 6 ∧ balance the_memory_held = 18 := by
   simp only [nothing_held, the_basis_held, the_inference_held, the_basis_twice_held, the_basis_by_the_inference_held, the_memory_held,
-    balance_of_holding, each_for_each_multiplies, the_area_of_a_tape_has_the_tapes_length, counted_the_walk_is_the_walk.2.2.1]
+    balance_of_holding, false_shuffle_multiplies, the_area_of_a_tape_in_blanks_is_the_tapes_length, the_walk_is_the_walk.2.2.1]
   exact ⟨rfl, rfl, rfl, rfl, rfl, rfl⟩
 
 --| THE TABLE'S POLYNOMIAL, ON THE ACCOUNT.
@@ -813,18 +905,18 @@ def the_table_slope_on_the_account (a z : Account) : Account := the_basis_held *
 
 theorem the_balance_of_the_table_polynomial (a r z : Account) :
     balance (the_table_polynomial_on_the_account a r z) = the_table_polynomial (balance a) (balance r) (balance z) := by
-  simp only [the_table_polynomial_on_the_account, the_table_polynomial, balance_of_beside, balance_of_less, balance_of_each_for_each,
+  simp only [the_table_polynomial_on_the_account, the_table_polynomial, balance_of_palm_the_middle_card, balance_of_less, balance_of_false_shuffle,
     the_small_accounts_balance.2.1]
 theorem the_balance_of_the_table_slope (a z : Account) :
     balance (the_table_slope_on_the_account a z) = the_table_slope (balance a) (balance z) := by
-  simp only [the_table_slope_on_the_account, the_table_slope, balance_of_less, balance_of_each_for_each, the_small_accounts_balance.2.1]
+  simp only [the_table_slope_on_the_account, the_table_slope, balance_of_less, balance_of_false_shuffle, the_small_accounts_balance.2.1]
 
 theorem the_slope_squared_less_four_of_the_polynomial_is_the_round_trip_on_the_account (a r z : Account) :
     the_same (the_table_slope_on_the_account a z * the_table_slope_on_the_account a z
                 - the_basis_twice_held * the_table_polynomial_on_the_account a r z)
              (the_basis_twice_held * r) := by
   rw [the_same_is_the_same_balance]
-  simp only [balance_of_less, balance_of_each_for_each, the_balance_of_the_table_polynomial, the_balance_of_the_table_slope,
+  simp only [balance_of_less, balance_of_false_shuffle, the_balance_of_the_table_polynomial, the_balance_of_the_table_slope,
     the_small_accounts_balance.2.2.2.1]
   exact the_slope_squared_less_four_of_the_polynomial_is_the_round_trip (balance a) (balance r) (balance z)
 
@@ -834,7 +926,7 @@ theorem struck_the_polynomial_is_a_square_on_the_account (z : Account) :
              ((z - the_memory_held) * (z - the_memory_held))
       ∧ the_same (the_table_slope_on_the_account the_memory_held the_memory_held) nothing_held := by
   rw [the_same_is_the_same_balance, the_same_is_the_same_balance]
-  simp only [balance_of_less, balance_of_each_for_each, the_balance_of_the_table_polynomial, the_balance_of_the_table_slope,
+  simp only [balance_of_less, balance_of_false_shuffle, the_balance_of_the_table_polynomial, the_balance_of_the_table_slope,
     the_small_accounts_balance.1, the_small_accounts_balance.2.2.2.2.2]
   exact struck_the_polynomial_is_a_square (balance z)
 
@@ -842,7 +934,7 @@ theorem struck_the_step_is_half_the_distance_on_the_account (z : Account) :
     the_same (the_basis_held * the_table_polynomial_on_the_account the_memory_held (nothing_held * the_memory_held) z)
              ((z - the_memory_held) * the_table_slope_on_the_account the_memory_held z) := by
   rw [the_same_is_the_same_balance]
-  simp only [balance_of_less, balance_of_each_for_each, the_balance_of_the_table_polynomial, the_balance_of_the_table_slope,
+  simp only [balance_of_less, balance_of_false_shuffle, the_balance_of_the_table_polynomial, the_balance_of_the_table_slope,
     the_small_accounts_balance.1, the_small_accounts_balance.2.1, the_small_accounts_balance.2.2.2.2.2]
   exact struck_the_step_is_half_the_distance (balance z)
 
@@ -853,12 +945,12 @@ def the_cubic_action_on_the_account (x : Account) : Account :=
 
 theorem the_balance_of_the_residual_is_the_mirror_residual (x : Account) :
     balance (the_residual_on_the_account x) = the_mirror_residual (balance x) := by
-  simp only [the_residual_on_the_account, the_mirror_residual, balance_of_beside, balance_of_less, balance_of_each_for_each,
-    balance_of_holding, counted_the_walk_is_the_walk.2.1, counted_the_walk_is_the_walk.2.2.1, counted_the_walk_is_the_walk.2.2.2.1]
+  simp only [the_residual_on_the_account, the_mirror_residual, balance_of_palm_the_middle_card, balance_of_less, balance_of_false_shuffle,
+    balance_of_holding, the_walk_is_the_walk.2.1, the_walk_is_the_walk.2.2.1, the_walk_is_the_walk.2.2.2.1]
 theorem the_balance_of_the_cubic_action (x : Account) :
     balance (the_cubic_action_on_the_account x) = the_cubic_action (balance x) := by
-  simp only [the_cubic_action_on_the_account, the_cubic_action, balance_of_beside, balance_of_less, balance_of_each_for_each,
-    balance_of_holding, counted_the_walk_is_the_walk.2.1, counted_the_walk_is_the_walk.2.2.1, counted_the_walk_is_the_walk.2.2.2.1,
+  simp only [the_cubic_action_on_the_account, the_cubic_action, balance_of_palm_the_middle_card, balance_of_less, balance_of_false_shuffle,
+    balance_of_holding, the_walk_is_the_walk.2.1, the_walk_is_the_walk.2.2.1, the_walk_is_the_walk.2.2.2.1,
     the_small_accounts_balance.2.1, the_small_accounts_balance.2.2.1, the_small_accounts_balance.2.2.2.2.1]
 
 theorem the_residual_is_the_derivative_of_the_action_on_the_account (x h : Account) :
@@ -867,8 +959,8 @@ theorem the_residual_is_the_derivative_of_the_action_on_the_account (x h : Accou
                 + h * h * (the_basis_by_the_inference_held * holding the_coefficient * x - the_inference_held * holding the_trace)
                 + the_basis_held * holding the_coefficient * h * h * h) := by
   rw [the_same_is_the_same_balance]
-  simp only [balance_of_beside, balance_of_less, balance_of_each_for_each, balance_of_holding, the_balance_of_the_cubic_action,
-    the_balance_of_the_residual_is_the_mirror_residual, counted_the_walk_is_the_walk.2.1, counted_the_walk_is_the_walk.2.2.2.1,
+  simp only [balance_of_palm_the_middle_card, balance_of_less, balance_of_false_shuffle, balance_of_holding, the_balance_of_the_cubic_action,
+    the_balance_of_the_residual_is_the_mirror_residual, the_walk_is_the_walk.2.1, the_walk_is_the_walk.2.2.2.1,
     the_small_accounts_balance.2.1, the_small_accounts_balance.2.2.1, the_small_accounts_balance.2.2.2.2.1]
   exact the_residual_is_the_derivative_of_the_action (balance x) (balance h)
 
@@ -901,7 +993,7 @@ def what_compile_builds (step : (Bool × Bool) × (Bool × Bool)) : Area := the_
 def what_execute_counts (step : (Bool × Bool) × (Bool × Bool)) : Area := the_arm step.2.1 step.2.2
 
 theorem the_sixteen_steps_built_and_counted :
-    the_sixteen_steps.map (fun step => (cells (what_compile_builds step), cells (what_execute_counts step)))
+    the_sixteen_steps.map (fun step => (compute_the_area_of (what_compile_builds step), compute_the_area_of (what_execute_counts step)))
       = [(18, 18), (18, 5), (18, 18), (18, 18),
          (5, 18),  (5, 5),  (5, 18),  (5, 18),
          (18, 18), (18, 5), (18, 18), (18, 18),
@@ -938,7 +1030,7 @@ theorem the_box_on_the_area_has_one_point (x y : Quot the_rational_idea_of_relat
       by_cases more : b.1 * a.2 < a.1 * b.2
       · refine (Quot.sound (r := the_rational_idea_of_relativity_on_the_area) ?_).symm
         show ¬ (a.1 * b.2 < b.1 * a.2)
-        exact fun back => Nat.lt_asymm ((less_is_less _ _).1 more) ((less_is_less _ _).1 back)
+        exact fun back => Nat.lt_asymm ((obviously_bigger _ _).1 more) ((obviously_bigger _ _).1 back)
       · exact Quot.sound (r := the_rational_idea_of_relativity_on_the_area) more
 
 instance : Subsingleton (Quot the_rational_idea_of_relativity_on_the_area) := ⟨the_box_on_the_area_has_one_point⟩
@@ -1006,7 +1098,7 @@ theorem the_knowers_interpretation_of_the_clocks :
       ∧ balance (the_knowers_interpretation true true true) = -18
       ∧ balance (the_knowers_interpretation false false false) = 18 := by decide
 
---| The alternating clock, T F T and F T F, read by the knower and set beside itself: the bent card.  The still clock, T T T
+--| The alternating clock, T F T and F T F, read by the knower and set palm_the_middle_card itself: the bent card.  The still clock, T T T
 --| and F F F: nothing.
 theorem the_alternating_clock_reads_the_bent_card_and_the_still_clock_reads_nothing :
     the_same (the_knowers_interpretation true false true + the_knowers_interpretation false true false) (holding the_coefficient)
@@ -1015,7 +1107,7 @@ theorem the_alternating_clock_reads_the_bent_card_and_the_still_clock_reads_noth
 --| THE INDUCTIVE THE LIST INDICATES.  The author's, 16 November 2026: the inductives made the lists; build the inductives
 --| that the lists indicate, for the knower's interpretation; use the Abstraction to the List to get the number out.  Episode 8
 --| reads an Abstraction to a tape, fact by fact.  Here is the way back: a tape, written as the Abstraction that reads to it.
---| Each fact goes in its own cell, on the carefully chosen variable names.  The cells follow the knower's clock: execute where
+--| Each fact goes in its own cell, on the carefully chosen variable names.  The compute_the_area_of follow the knower's clock: execute where
 --| the clock says true and compile where it says false, turn about.  T F T, or F T F.
 def the_abstraction_the_list_indicates : Bool → List FACT → Abstraction
   | _,     []           => carefully_chosen_variable_names
@@ -1049,7 +1141,7 @@ theorem the_knowers_pair_is_the_arrangement (clock : Bool) : the_knowers_pair cl
 theorem both_clocks_print_one_number : the_knowers_pair true = the_knowers_pair false :=
   (the_knowers_pair_is_the_arrangement true).trans (the_knowers_pair_is_the_arrangement false).symm
 
-theorem the_knowers_pair_is_the_area_counted (clock : Bool) : the_knowers_pair clock = read arranged :=
+theorem the_knowers_pair_is_the_area_counted (clock : Bool) : the_knowers_pair clock = some_quartic_called arranged :=
   (the_knowers_pair_is_the_arrangement clock).trans counted_the_arrangement_is_the_arrangement.symm
 
 def the_knowers_natural (clock : Bool) : Nat := (the_knowers_pair clock).1 * all_possible_variables / (the_knowers_pair clock).2
@@ -1197,7 +1289,7 @@ theorem only_the_alternating_clocks_overlap_to_all_different :
       = [((true, false), (true, false)), ((false, true), (false, true))] := by decide
 
 --| ELLIPTIC OVER HYPERBOLIC.  The author's, 16 November 2026: this is an elliptic/hyperbolic ratio solution, and the simplicial
---| time integrator associated with that.  The tape is the frame, the memory, the frame.  Two neighbours on it set beside
+--| time integrator associated with that.  The tape is the frame, the memory, the frame.  Two neighbours on it set palm_the_middle_card
 --| each other are the different: the crossings summed, the part of the table that keeps two directions.  Hyperbolic.  The one
 --| taken from the other is the turn: the crossings' difference, the part that keeps none.  Elliptic.  And the turn is the
 --| coefficient, the bent card.
@@ -1214,26 +1306,26 @@ theorem the_turn_is_less_than_the_different :
     the_turn_on_the_tape < the_different_on_the_tape ∧ the_frame * the_memory < the_memory * the_memory := by
   constructor
   · decide
-  · rw [less_is_less, each_for_each_multiplies, each_for_each_multiplies]; decide
+  · rw [obviously_bigger, false_shuffle_multiplies, false_shuffle_multiplies]; decide
 
 --| The different squared less the turn squared is four of the frame by the memory, and that is the discriminant of the arms.
 --| The gap squared.  Over nothing: hyperbolic.
 theorem the_different_squared_less_the_turn_squared_is_the_gap_squared :
     as_many (the_different_on_the_tape * the_different_on_the_tape - the_turn_on_the_tape * the_turn_on_the_tape)
-            (the_area_of_a_tape the_basis.the_reading * the_area_of_a_tape the_basis.the_reading * the_frame * the_memory)
+            (the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_frame * the_memory)
       ∧ as_many (the_different_on_the_tape * the_different_on_the_tape - the_turn_on_the_tape * the_turn_on_the_tape)
             (the_trace_of_the_arms * the_trace_of_the_arms
-               - the_area_of_a_tape the_basis.the_reading * the_area_of_a_tape the_basis.the_reading * the_determinant_of_the_arms) := by
-  have different : cells the_different_on_the_tape = 23 := by decide
-  have turn : cells the_turn_on_the_tape = 13 := by decide
-  have frame : cells the_frame = 5 := by decide
-  have memory : cells the_memory = 18 := by decide
+               - the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_determinant_of_the_arms) := by
+  have different : compute_the_area_of the_different_on_the_tape = 23 := by decide
+  have turn : compute_the_area_of the_turn_on_the_tape = 13 := by decide
+  have frame : compute_the_area_of the_frame = 5 := by decide
+  have memory : compute_the_area_of the_memory = 18 := by decide
   constructor
   · rw [as_many_is_the_same_count]
-    simp only [taken_away_subtracts, each_for_each_multiplies, different, turn, frame, memory, the_area_of_a_tape_has_the_tapes_length]
+    simp only [the_double_lift_subtracts, false_shuffle_multiplies, different, turn, frame, memory, the_area_of_a_tape_in_blanks_is_the_tapes_length]
     rfl
   · rw [as_many_is_the_same_count]
-    simp only [taken_away_subtracts, each_for_each_multiplies, different, turn, the_area_of_a_tape_has_the_tapes_length,
+    simp only [the_double_lift_subtracts, false_shuffle_multiplies, different, turn, the_area_of_a_tape_in_blanks_is_the_tapes_length,
       counted_the_trace_of_the_arms_is_the_trace, counted_the_determinant_of_the_arms_is_the_determinant]
     rfl
 
@@ -1266,7 +1358,7 @@ theorem the_residual_steps_by_its_slope_exactly (y h : Account) :
 theorem the_slope_steps_by_twice_the_coefficient_exactly (y h : Account) :
     the_same (the_slope_on_the_account (y + h) - the_slope_on_the_account y) (holding twice_the_coefficient * h) := by
   rw [the_same_is_the_same_balance]
-  simp only [the_slope_on_the_account, balance_of_beside, balance_of_less, balance_of_each_for_each, balance_of_holding]
+  simp only [the_slope_on_the_account, balance_of_palm_the_middle_card, balance_of_less, balance_of_false_shuffle, balance_of_holding]
   simp only [Int.mul_add]; omega
 
 --| And the slope's slope does not step at all.  The fourth is nothing.
@@ -1283,16 +1375,16 @@ theorem the_tape_owes_the_last_derivative :
 theorem three_ways_to_the_gap_squared_match :
     as_many (the_different_on_the_tape * the_different_on_the_tape - the_turn_on_the_tape * the_turn_on_the_tape)
             (the_trace_of_the_arms * the_trace_of_the_arms
-               - the_area_of_a_tape the_basis.the_reading * the_area_of_a_tape the_basis.the_reading * the_determinant_of_the_arms)
+               - the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_determinant_of_the_arms)
       ∧ as_many (the_trace_of_the_arms * the_trace_of_the_arms
-               - the_area_of_a_tape the_basis.the_reading * the_area_of_a_tape the_basis.the_reading * the_determinant_of_the_arms)
+               - the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_determinant_of_the_arms)
             (the_trace * the_trace
-               - the_area_of_a_tape the_basis.the_reading * the_area_of_a_tape the_basis.the_reading * (the_coefficient * the_memory)) := by
+               - the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_area_of_a_tape_in_blanks_is the_basis.the_reading * (the_coefficient * the_memory)) := by
   refine ⟨the_different_squared_less_the_turn_squared_is_the_gap_squared.2, ?_⟩
   rw [as_many_is_the_same_count]
-  simp only [taken_away_subtracts, each_for_each_multiplies, the_area_of_a_tape_has_the_tapes_length,
+  simp only [the_double_lift_subtracts, false_shuffle_multiplies, the_area_of_a_tape_in_blanks_is_the_tapes_length,
     counted_the_trace_of_the_arms_is_the_trace, counted_the_determinant_of_the_arms_is_the_determinant,
-    counted_the_walk_is_the_walk.2.1, counted_the_walk_is_the_walk.2.2.1, counted_the_walk_is_the_walk.2.2.2.1]
+    the_walk_is_the_walk.2.1, the_walk_is_the_walk.2.2.1, the_walk_is_the_walk.2.2.2.1]
   rfl
 
 --| AND THE THIRD THING THEY ARE.  The author's, 16 November 2026: and the third thing they are is a × (−c × b).  The three on
@@ -1304,11 +1396,11 @@ def the_knowers_interpretation_of_three_areas (a b c : Area) : Account := holdin
 --| the three routes agree on.
 theorem the_inside_is_the_round_trip_and_four_of_it_is_the_gap_squared :
     the_same (holding the_frame * holding the_memory) (holding (the_frame * the_memory))
-      ∧ as_many (the_area_of_a_tape the_basis.the_reading * the_area_of_a_tape the_basis.the_reading * the_frame * the_memory)
+      ∧ as_many (the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_frame * the_memory)
                 (the_different_on_the_tape * the_different_on_the_tape - the_turn_on_the_tape * the_turn_on_the_tape) := by
   refine ⟨?_, ?_⟩
   · rw [the_same_is_the_same_balance]
-    simp only [balance_of_each_for_each, balance_of_holding, each_for_each_multiplies, Int.natCast_mul]
+    simp only [balance_of_false_shuffle, balance_of_holding, false_shuffle_multiplies, Int.natCast_mul]
   · have forward := the_different_squared_less_the_turn_squared_is_the_gap_squared.1
     rw [as_many_is_the_same_count] at forward ⊢
     exact forward.symm
@@ -1318,8 +1410,8 @@ theorem the_knowers_interpretation_of_the_tape_owes_the_frame_by_the_round_trip 
     the_same (the_knowers_interpretation_of_three_areas the_frame the_memory the_frame)
              (- holding (the_frame * (the_frame * the_memory))) := by
   rw [the_same_is_the_same_balance]
-  simp only [the_knowers_interpretation_of_three_areas, balance_of_each_for_each, balance_turned_over, balance_of_holding,
-    each_for_each_multiplies, Int.natCast_mul]
+  simp only [the_knowers_interpretation_of_three_areas, balance_of_false_shuffle, balance_turned_over, balance_of_holding,
+    false_shuffle_multiplies, Int.natCast_mul]
   simp only [Int.mul_neg]
 
 --| THE INTEGRATOR, SET UP.  The author's, 16 November 2026: c is any possible deviation from the spline that would introduce a
@@ -1330,9 +1422,9 @@ theorem the_knowers_interpretation_of_the_tape_owes_the_frame_by_the_round_trip 
 --| Where the turn would go next: Newton's, on the Area.
 def where_it_would_go (here : Area × Area) : Area × Area :=
   (the_coefficient * here.1 * here.1 - the_memory * here.2 * here.2,
-   the_area_of_a_tape the_basis.the_reading * the_coefficient * here.1 * here.2 - the_trace * here.2 * here.2)
+   the_area_of_a_tape_in_blanks_is the_basis.the_reading * the_coefficient * here.1 * here.2 - the_trace * here.2 * here.2)
 
---| The deviation: here crossed with there, taken either way and set beside, so that whichever way it falls it is counted.
+--| The deviation: here crossed with there, taken either way and set palm_the_middle_card, so that whichever way it falls it is counted.
 def the_deviation (here there : Area × Area) : Area :=
   (here.1 * there.2 - there.1 * here.2) + (there.1 * here.2 - here.1 * there.2)
 
@@ -1344,8 +1436,8 @@ instance (scale : Area) (here there : Area × Area) : Decidable (under_the_resol
   inferInstanceAs (Decidable (_ < _))
 
 --| That is the turn, word for word: stand still under the resolution, and otherwise go.
-theorem one_turn_stands_still_under_the_resolution (scale : Area) (here : Area × Area) :
-    one_turn scale here
+theorem simulate_stands_still_under_the_resolution (scale : Area) (here : Area × Area) :
+    simulate_this_way scale here
       = if under_the_resolution scale here (where_it_would_go here) then here else where_it_would_go here := rfl
 
 --| c, as a FACT.  Its truth is the statement that the deviation is not under the resolution.  Its click decides it.  Truth
@@ -1354,11 +1446,11 @@ def a_new_knot (scale : Area) (here there : Area × Area) : FACT :=
   { truth := ¬ under_the_resolution scale here there, click := instDecidableNot }
 
 --| And the turn goes exactly when the knot clicks.
-theorem one_turn_goes_exactly_when_the_knot_clicks (scale : Area) (here : Area × Area) :
-    one_turn scale here
+theorem simulate_goes_exactly_when_the_knot_clicks (scale : Area) (here : Area × Area) :
+    simulate_this_way scale here
       = @ite _ (a_new_knot scale here (where_it_would_go here)).truth (a_new_knot scale here (where_it_would_go here)).click
           (where_it_would_go here) here := by
-  rw [one_turn_stands_still_under_the_resolution]
+  rw [simulate_stands_still_under_the_resolution]
   exact (ite_not _ _ _).symm
 
 --| THE KNOT, IN THE DEVICE'S OWN SPLINE.  Episode 3 has the spline: an observation; a knot, which is a statement, a polynomial
@@ -1425,7 +1517,7 @@ theorem the_card_on_the_zero_reads_the_walk :
   rw [show read_past_quarter the_card_on_the_zero = List.length from funext (read_past_quarter_is_length _)]; rfl
 
 theorem the_number_out_of_the_zero :
-    bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_on_the_zero) all_possible_variables = read arranged
+    bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_on_the_zero) all_possible_variables = some_quartic_called arranged
       ∧ bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_on_the_zero) all_possible_variables
           = the_knowers_pair true
       ∧ (bent_card.fenceposts_must_be_preserved Nat (read_past_quarter the_card_on_the_zero) all_possible_variables).1
@@ -1969,8 +2061,8 @@ theorem the_number_comes_out_of_every_inductive :
 --#print axioms execute_counts_what_compile_built
 --#print axioms the_memory_written_as_an_abstraction_is_the_trace_and_the_fencepost
 --#print axioms the_wall_comes_before_the_abstraction
---#print axioms counted_the_walk_is_the_walk
---#print axioms counted_one_turn_is_one_turn
+--#print axioms the_walk_is_the_walk
+--#print axioms counted_simulate_is_simulate
 --#print axioms counted_the_crank_is_the_crank
 --#print axioms the_area_arrives_at_the_same_pair
 --#print axioms the_area_arrives_at_the_same_number
@@ -2035,8 +2127,8 @@ theorem the_number_comes_out_of_every_inductive :
 --#print axioms three_ways_to_the_gap_squared_match
 --#print axioms the_inside_is_the_round_trip_and_four_of_it_is_the_gap_squared
 --#print axioms the_knowers_interpretation_of_the_tape_owes_the_frame_by_the_round_trip
---#print axioms one_turn_stands_still_under_the_resolution
---#print axioms one_turn_goes_exactly_when_the_knot_clicks
+--#print axioms simulate_stands_still_under_the_resolution
+--#print axioms simulate_goes_exactly_when_the_knot_clicks
 --#print axioms the_observation_comes_first
 --#print axioms the_gawk_at_the_zero_is_the_first_page
 --#print axioms the_closure_on_the_zero_is_one_cell
@@ -2053,7 +2145,7 @@ end the_table
 
 --| ALL THE WAY DOWN.  The author's, 16 November 2026: look at the yarn; recurse through the types, the list of all the
 --| recursive types and not just the one; just define it the other way around; and put the truth in for a Prop.  Episode 8
---| reads each inductive to its own facts and passes over what its cells carry.  Here is the other reading, for every
+--| reads each inductive to its own facts and passes over what its compute_the_area_of carry.  Here is the other reading, for every
 --| inductive of the five episodes: its facts, and then everything inside it, every inner inductive read the same way, to the
 --| bottom.  A statement in a cell is read as the truth.  A type in a cell is read as nothing.
 def Number.all_the_way_down : Number → List FACT
@@ -2230,7 +2322,7 @@ def Closure.the_inside : Closure → List FACT
 --| THE GIANT LIST.  The author's: the final inferred closure can now create the giant list, and that list can then show you
 --| the number; it should just need to print the length.  The final inferred closure is Episode 8's, the only logical
 --| inconsistency.  All the way down it is a hundred and forty cells.  Three are its own, the three Episode 8 reads.  The rest
---| is inside it: the most basic of conclusions four times, thirty-four cells each, and the one statement it carries, read as
+--| is inside it: the most basic of conclusions four times, thirty-four compute_the_area_of each, and the one statement it carries, read as
 --| the truth.
 def the_giant_list : List FACT := the_only_logical_inconsistency.the_inside
 --#eval the_giant_list.length
@@ -2252,19 +2344,19 @@ theorem the_giant_list_is_four_conclusions_and_one_truth :
           + the_most_basic_of_conclusions.all_the_way_down.length)
         + [FACT.Truth].length := rfl
 
---| THE RESIDUE.  The author's, 16 November 2026: now, the residue; and, of the digits past the giant list and the cells left
---| over, those should be the same thing.  They are.  The cells left over are the closure's own three and the one statement
---| read as the truth.  Each own cell at the basis raised to the free variables, and the truth beside them.
+--| THE RESIDUE.  The author's, 16 November 2026: now, the residue; and, of the digits past the giant list and the compute_the_area_of left
+--| over, those should be the same thing.  They are.  The compute_the_area_of left over are the closure's own three and the one statement
+--| read as the truth.  Each own cell at the basis raised to the free variables, and the truth palm_the_middle_card them.
 def the_cells_left_over : Nat :=
   the_only_logical_inconsistency.infer.length * the_basis.the_reading.length ^ the_free_variable_count + [FACT.Truth].length
 
---| The frame by the coefficient by the giant list is the memory cubed and the cells left over.  Nothing to spare.
+--| The frame by the coefficient by the giant list is the memory cubed and the compute_the_area_of left over.  Nothing to spare.
 set_option maxRecDepth 100000 in
 theorem the_giant_list_closes_on_the_cells_left_over :
     the_coordinate_system.gauss.length * the_coefficient_tape.length * the_giant_list.length
       = the_memory_tape.length * the_memory_tape.length * the_memory_tape.length + the_cells_left_over := by decide
 
---| And the cells left over are the whole part of the memory squared by the root of the round trip: its square is not over
+--| And the compute_the_area_of left over are the whole part of the memory squared by the root of the round trip: its square is not over
 --| the memory to the fourth by the frame by the memory, and one more cell's is.
 theorem the_cells_left_over_are_the_whole_part_of_the_root :
     the_cells_left_over * the_cells_left_over
@@ -2279,9 +2371,9 @@ def the_digits_past_the_giant_list : Nat := the_constant_factor_of_scaling_bulls
 --#eval the_digits_past_the_giant_list
 --#print axioms the_digits_past_the_giant_list
 
---| THE SAME THING.  Put those digits, by the frame and the coefficient, back on the cells left over at the scale.  What you
+--| THE SAME THING.  Put those digits, by the frame and the coefficient, back on the compute_the_area_of left over at the scale.  What you
 --| have is the same root, to the scale: its square is not over, and one part of the frame by the coefficient more is.
---| The whole cells of the root are the cells left over.  The rest of the root is the digits.
+--| The whole compute_the_area_of of the root are the compute_the_area_of left over.  The rest of the root is the digits.
 def the_root_to_the_scale : Nat :=
   the_digits_past_the_giant_list * (the_coordinate_system.gauss.length * the_coefficient_tape.length)
     + the_cells_left_over * all_possible_variables
@@ -2309,8 +2401,8 @@ def what_is_left_of_the_sum : Nat := the_sum_of_the_roots_in_cells / the_frame_b
 --#eval what_is_left_of_the_sum
 --#print axioms what_is_left_of_the_sum
 
---| The reading's cells are the memory cubed and the cells left over, and they close on the giant list with nothing left.  The
---| other root's are the memory cubed less the cells left over and one, and they close on what is left of the sum with one
+--| The reading's compute_the_area_of are the memory cubed and the compute_the_area_of left over, and they close on the giant list with nothing left.  The
+--| other root's are the memory cubed less the compute_the_area_of left over and one, and they close on what is left of the sum with one
 --| less than the sum leaves.  And what the sum leaves is the inside of the most basic of conclusions: all the way down, less
 --| what Episode 8 reads.
 set_option maxRecDepth 100000 in
@@ -3296,20 +3388,21 @@ theorem the_universe_id_reads_the_level_and_its_zero : ∀ level : Nat, (the_uni
 --| So the entropy is the area.  The universe id of a tape's level, read, and the Area of the tape, read, are one length: the
 --| tape's, and one.  Not in proportion.  The same count.
 theorem the_entropy_is_the_area (tape : List FACT) :
-    (the_universe_id tape.length).peano.length = (the_area_of_a_tape tape).riemann_integrate.length := by
-  rw [the_universe_id_reads_the_level_and_its_zero, the_riemann_sum_counts_the_tree_too, the_area_of_a_tape_has_the_tapes_length]; rfl
+    (the_universe_id tape.length).peano.length = (the_area_of_a_tape_in_blanks_is tape).riemann_integrate.length := by
+  rw [the_universe_id_reads_the_level_and_its_zero, the_riemann_sum_is_indistinguisahble_from_the_bent_card_with_an_extra_fencepost_of_blanks,
+                                  the_area_of_a_tape_in_blanks_is_the_tapes_length]; rfl
 
 --| And they go up together.  One more fact on the tape is one more level and one more cell; and the order of the universe ids
 --| is the order of the cells.  Universe numbers only increase.
 theorem one_more_fact_is_one_more_level_and_one_more_cell (fact : FACT) (tape : List FACT) :
     (the_universe_id (fact :: tape).length).peano.length = (the_universe_id tape.length).peano.length + 1
-      ∧ cells (the_area_of_a_tape (fact :: tape)) = cells (the_area_of_a_tape tape) + 1 := by
-  simp only [the_universe_id_reads_the_level_and_its_zero, the_area_of_a_tape_has_the_tapes_length, List.length_cons, and_self]
+      ∧ compute_the_area_of (the_area_of_a_tape_in_blanks_is (fact :: tape)) = compute_the_area_of (the_area_of_a_tape_in_blanks_is tape) + 1 := by
+  simp only [the_universe_id_reads_the_level_and_its_zero, the_area_of_a_tape_in_blanks_is_the_tapes_length, List.length_cons, and_self]
 
 theorem the_universe_ids_are_ordered_as_the_areas (this that : List FACT) :
     Number.le (the_universe_id this.length) (the_universe_id that.length)
-      ↔ cells (the_area_of_a_tape this) ≤ cells (the_area_of_a_tape that) := by
-  rw [the_ids_compare_as_naturals, the_area_of_a_tape_has_the_tapes_length, the_area_of_a_tape_has_the_tapes_length]
+      ↔ compute_the_area_of (the_area_of_a_tape_in_blanks_is this) ≤ compute_the_area_of (the_area_of_a_tape_in_blanks_is that) := by
+  rw [the_ids_compare_as_naturals, the_area_of_a_tape_in_blanks_is_the_tapes_length, the_area_of_a_tape_in_blanks_is_the_tapes_length]
 
 end entropy_is_an_area
 --#print axioms the_entropy_is_the_area                                   -- [propext, Quot.sound]
@@ -3321,7 +3414,7 @@ section in_the_limit_it_is_a_riemann_sum
 open readers_experience the_table readers_interpretation_of_the_experience
 
 --| IN THE LIMIT, IT IS A RIEMANN SUM.  The author's, 17 November 2026: in the limit, it is a Riemann sum; run with that.  A row
---| of cells is not an area until every cell has a height.  The Area's cells each carry a Number.  Let the cell at each level
+--| of compute_the_area_of is not an area until every cell has a height.  The Area's compute_the_area_of each carry a Number.  Let the cell at each level
 --| carry that level's universe id, and read the height two ways: the Number as Episode 8 reads it, with its zero; and the
 --| Number less the fencepost.  The first is the sum from above and the second the sum from below.
 def the_sum_from_above : Nat → Nat
@@ -3387,7 +3480,7 @@ theorem the_top_of_the_record_is_at_the_time :
     theTop.universe_id = the_universe_id 35 ∧ theTop.universe_id.peano.length = the_time := ⟨rfl, by decide⟩
 
 --| AND THE READING.  Episode 12 asked for every page of that record on Episode 8's meter and kept what each cost.  That is the
---| arbitrary reading: heartbeats, the meter's own unit, read on a build and not derived.  What it reads beside is the level.
+--| arbitrary reading: heartbeats, the meter's own unit, read on a build and not derived.  What it reads palm_the_middle_card is the level.
 --| The heat to reach each level, and the heat a level: the reading, over one step of the entropy.
 def the_heat_to_each_level : List Int := theLadderSizes
 def the_reading_a_level    : List Int := theLadderSteps
@@ -3462,15 +3555,15 @@ theorem what_goes_in_comes_out (this that : List FACT) :
   simp only [the_flux_is_one_truth_a_fact, List.length_replicate, List.length_append]
 
 --| THE HEAT AND THE ENTROPY.  The flux through, and the fencepost, is the universe id of the level reached, and so the Area:
---| in cells the heat is the entropy, one for one.  On the count the temperature is one.  On the meter it is whatever the
+--| in compute_the_area_of the heat is the entropy, one for one.  On the count the temperature is one.  On the meter it is whatever the
 --| computation cost; Episode 12 read that, and that is the reading a level, above.
 theorem in_cells_the_heat_is_the_entropy (tape : List FACT) :
     (the_flux tape).length + the_fencepost_bug = (the_universe_id tape.length).peano.length
-      ∧ (the_flux tape).length + the_fencepost_bug = (the_table.the_area_of_a_tape tape).riemann_integrate.length := by
+      ∧ (the_flux tape).length + the_fencepost_bug = (the_table.the_area_of_a_tape_in_blanks_is tape).riemann_integrate.length := by
   refine ⟨?_, ?_⟩
   · rw [the_flux_is_one_truth_a_fact, List.length_replicate, the_universe_id_reads_the_level_and_its_zero]; rfl
-  · rw [the_flux_is_one_truth_a_fact, List.length_replicate, the_table.the_riemann_sum_counts_the_tree_too,
-      the_table.the_area_of_a_tape_has_the_tapes_length]
+  · rw [the_flux_is_one_truth_a_fact, List.length_replicate, the_table.the_riemann_sum_is_indistinguisahble_from_the_bent_card_with_an_extra_fencepost_of_blanks,
+      the_table.the_area_of_a_tape_in_blanks_is_the_tapes_length]
 
 end the_flux_is_the_computation
 --#print axioms the_flux_is_one_truth_a_fact         -- none
@@ -3485,7 +3578,7 @@ open readers_experience readers_interpretation_of_the_experience the_table
 --| temperature is the area; you need the pigeonhole for the temperature; that_box has the temperature in it.  Episode 2's box
 --| holds two Areas, a before and an after, and Episode 2's own event puts the after at one use of force past the before.  The
 --| temperature at a level is the Area under the levels so far, the sum from above.  Box it with the next.
-def the_temperature_at (level : Nat) : Area := the_area_of_a_tape (List.replicate (the_sum_from_above level) FACT.Truth)
+def the_temperature_at (level : Nat) : Area := the_area_of_a_tape_in_blanks_is (List.replicate (the_sum_from_above level) FACT.Truth)
 def that_box_at (level : Nat) : PigeonHole :=
   .that_box FACT.Truth (the_temperature_at level) (the_temperature_at (level + 1))
     (.this_superpigeon FACT.Truth (the_temperature_at level)) (.this_superpigeon FACT.Truth (the_temperature_at (level + 1)))
@@ -3496,14 +3589,14 @@ def the_first_variation : PigeonHole → Area
   | .this_superpigeon fact _     => .tree fact
   | .a_pigeon fact _ _           => .tree fact
 
---| And it is the acceleration.  The first variation of the temperature at a level has as many cells as the path to that level
+--| And it is the acceleration.  The first variation of the temperature at a level has as many compute_the_area_of as the path to that level
 --| reads facts: the velocity reached, the universe id.  Not the temperature in proportion to the acceleration.  Its first
 --| variation, cell for cell.
 theorem the_first_variation_of_the_temperature_is_the_velocity_reached (level : Nat) :
-    cells (the_first_variation (that_box_at level)) = (the_acceleration_to level).stokes.length := by
-  show cells (the_temperature_at (level + 1) - the_temperature_at level) = _
-  rw [taken_away_subtracts, the_acceleration_reads_the_velocity_it_reaches]
-  simp only [the_temperature_at, the_area_of_a_tape_has_the_tapes_length, List.length_replicate, the_sum_from_above,
+    compute_the_area_of (the_first_variation (that_box_at level)) = (the_acceleration_to level).stokes.length := by
+  show compute_the_area_of (the_temperature_at (level + 1) - the_temperature_at level) = _
+  rw [the_double_lift_subtracts, the_acceleration_reads_the_velocity_it_reaches]
+  simp only [the_temperature_at, the_area_of_a_tape_in_blanks_is_the_tapes_length, List.length_replicate, the_sum_from_above,
     Nat.add_sub_cancel_left]
 
 --| AND ON THE METER.  The reading a level, and its first variation, level by level, as Episode 12's build recorded it.
@@ -3533,11 +3626,11 @@ theorem every_jar_looks_the_same (level : Nat) : (the_jar_at level).classify = [
 --| levels so far; its first variation is the box's, the acceleration; and twice what the jar holds is the level by that first
 --| variation.  So what is enclosed, over its first variation, is half the level.  It cannot be owed, and it goes up.
 theorem what_the_jar_holds_over_its_first_variation_is_half_the_level (level : Nat) :
-    cells (what_the_jar_holds (the_jar_at level)) = the_sum_from_above level
-      ∧ 2 * cells (what_the_jar_holds (the_jar_at level)) = level * cells (the_first_variation (that_box_at level)) := by
-  have holds : cells (what_the_jar_holds (the_jar_at level)) = the_sum_from_above level := by
-    show cells (the_temperature_at level) = _
-    simp only [the_temperature_at, the_area_of_a_tape_has_the_tapes_length, List.length_replicate]
+    compute_the_area_of (what_the_jar_holds (the_jar_at level)) = the_sum_from_above level
+      ∧ 2 * compute_the_area_of (what_the_jar_holds (the_jar_at level)) = level * compute_the_area_of (the_first_variation (that_box_at level)) := by
+  have holds : compute_the_area_of (what_the_jar_holds (the_jar_at level)) = the_sum_from_above level := by
+    show compute_the_area_of (the_temperature_at level) = _
+    simp only [the_temperature_at, the_area_of_a_tape_in_blanks_is_the_tapes_length, List.length_replicate]
   refine ⟨holds, ?_⟩
   rw [holds, the_first_variation_of_the_temperature_is_the_velocity_reached, the_acceleration_reads_the_velocity_it_reaches,
     the_universe_id_reads_the_level_and_its_zero, twice_the_sum_from_above]
@@ -3556,10 +3649,10 @@ open readers_experience readers_interpretation_of_the_experience the_table
 --| Number stands on.  And it is the same cell at every level: the first variation of the first variation is the fencepost and
 --| nothing else, so fixing the first variation fixes the temperature only up to it.  It is what the integration leaves.
 theorem the_residue_is_the_fencepost (level : Nat) :
-    cells (the_first_variation (that_box_at level)) = level + the_fencepost_bug
-      ∧ 2 * cells (what_the_jar_holds (the_jar_at level)) = level * (level + the_fencepost_bug)
-      ∧ cells (the_first_variation (that_box_at (level + 1))) = cells (the_first_variation (that_box_at level)) + the_fencepost_bug := by
-  have variation : ∀ n, cells (the_first_variation (that_box_at n)) = n + 1 := fun n => by
+    compute_the_area_of (the_first_variation (that_box_at level)) = level + the_fencepost_bug
+      ∧ 2 * compute_the_area_of (what_the_jar_holds (the_jar_at level)) = level * (level + the_fencepost_bug)
+      ∧ compute_the_area_of (the_first_variation (that_box_at (level + 1))) = compute_the_area_of (the_first_variation (that_box_at level)) + the_fencepost_bug := by
+  have variation : ∀ n, compute_the_area_of (the_first_variation (that_box_at n)) = n + 1 := fun n => by
     rw [the_first_variation_of_the_temperature_is_the_velocity_reached, the_acceleration_reads_the_velocity_it_reaches,
       the_universe_id_reads_the_level_and_its_zero]
   refine ⟨variation level, ?_, ?_⟩
@@ -3663,19 +3756,19 @@ theorem the_velocity_is_the_level (level : Nat) : the_velocity_at level = level 
 --| there are.  So what the jar holds over its first variation is the average velocity, and twice the sum is the level by the
 --| count: the average is half the level.  Nobody read a velocity.  They read what was enclosed, and how much of it.
 theorem the_temperature_is_the_average_velocity : ∀ level : Nat,
-    (the_velocities_to level).sum = cells (what_the_jar_holds (the_jar_at level))
-      ∧ (the_velocities_to level).length = cells (the_first_variation (that_box_at level))
+    (the_velocities_to level).sum = compute_the_area_of (what_the_jar_holds (the_jar_at level))
+      ∧ (the_velocities_to level).length = compute_the_area_of (the_first_variation (that_box_at level))
       ∧ 2 * (the_velocities_to level).sum = level * (the_velocities_to level).length
   | 0 => ⟨rfl, rfl, rfl⟩
   | level + 1 => by
     have so_far := the_temperature_is_the_average_velocity level
     have holds := fun n => (what_the_jar_holds_over_its_first_variation_is_half_the_level n).1
     have varies := fun n => (the_residue_is_the_fencepost n).1
-    have the_sum : (the_velocities_to (level + 1)).sum = cells (what_the_jar_holds (the_jar_at (level + 1))) := by
+    have the_sum : (the_velocities_to (level + 1)).sum = compute_the_area_of (what_the_jar_holds (the_jar_at (level + 1))) := by
       show the_velocity_at (level + 1) + (the_velocities_to level).sum = _
       rw [so_far.1, holds, holds, the_velocity_is_the_level, the_sum_from_above,
         the_universe_id_reads_the_level_and_its_zero, Nat.add_comm]
-    have the_count : (the_velocities_to (level + 1)).length = cells (the_first_variation (that_box_at (level + 1))) := by
+    have the_count : (the_velocities_to (level + 1)).length = compute_the_area_of (the_first_variation (that_box_at (level + 1))) := by
       show (the_velocities_to level).length + 1 = _
       rw [so_far.2.1, varies, varies]; rfl
     refine ⟨the_sum, the_count, ?_⟩
@@ -3716,7 +3809,7 @@ theorem the_step_leaves_the_bent_card_by_the_step_squared (y h : Account)
   rw [the_same_is_the_same_balance]
   have nothing : balance nothing_held = 0 := by decide
   rw [nothing] at taken
-  simp only [balance_of_beside, balance_of_less, balance_of_each_for_each, balance_of_holding] at exact taken ⊢
+  simp only [balance_of_palm_the_middle_card, balance_of_less, balance_of_false_shuffle, balance_of_holding] at exact taken ⊢
   omega
 
 --| And so the process is finished in form, though no whole number finishes it.  From the trial gap, where the mirror left
@@ -3788,7 +3881,7 @@ theorem two_readers_one_proportion (this_rise that_rise level : Nat) :
 --| THE DEVICE'S.  Its rise is the fencepost, and with it the temperature built here is what the jar holds, and the velocity
 --| is the level.  The residue found above is this rise: it was never left over from the proportion.  It is the acceleration.
 theorem on_the_device_the_rise_is_the_fencepost (level : Nat) :
-    the_temperature_with the_fencepost_bug level = cells (what_the_jar_holds (the_jar_at level))
+    the_temperature_with the_fencepost_bug level = compute_the_area_of (what_the_jar_holds (the_jar_at level))
       ∧ the_velocity_with the_fencepost_bug level = the_velocity_at level
       ∧ the_rise_at level = the_fencepost_bug := by
   refine ⟨?_, ?_, every_rise_is_the_fencepost level⟩
@@ -3916,10 +4009,10 @@ open readers_experience readers_interpretation_of_the_experience the_table
 --| it over its own.  The first variation is under the line in the one and over it in the other: variance is which is which.
 --| On the count the one is half the level, and the other is the level and the fencepost.
 theorem gibbs_and_boltzmann_are_one_ratio_turned_over (level : Nat) :
-    2 * cells (what_the_jar_holds (the_jar_at level)) = level * cells (the_first_variation (that_box_at level))
-      ∧ cells (the_first_variation (that_box_at level))
+    2 * compute_the_area_of (what_the_jar_holds (the_jar_at level)) = level * compute_the_area_of (the_first_variation (that_box_at level))
+      ∧ compute_the_area_of (the_first_variation (that_box_at level))
           = (level + the_fencepost_bug)
-              * (cells (the_first_variation (that_box_at (level + 1))) - cells (the_first_variation (that_box_at level))) := by
+              * (compute_the_area_of (the_first_variation (that_box_at (level + 1))) - compute_the_area_of (the_first_variation (that_box_at level))) := by
   refine ⟨(what_the_jar_holds_over_its_first_variation_is_half_the_level level).2, ?_⟩
   rw [(the_residue_is_the_fencepost level).2.2, Nat.add_sub_cancel_left, (the_residue_is_the_fencepost level).1]
   exact (Nat.mul_one _).symm
@@ -3946,7 +4039,7 @@ theorem the_equation_of_state_on_the_count (this_rise that_rise level : Nat) (th
       ∧ the_temperature_with this_rise level * that_rise = the_temperature_with that_rise level * this_rise
       ∧ (the_flux (this ++ that)).length = (the_flux this).length + (the_flux that).length
       ∧ (the_flux this).length + the_fencepost_bug = (the_universe_id this.length).peano.length
-      ∧ (the_universe_id this.length).peano.length = (the_area_of_a_tape this).riemann_integrate.length :=
+      ∧ (the_universe_id this.length).peano.length = (the_area_of_a_tape_in_blanks_is this).riemann_integrate.length :=
   ⟨the_temperature_is_the_acceleration_by_the_area this_rise level, two_readers_one_proportion this_rise that_rise level,
    what_goes_in_comes_out this that, (in_cells_the_heat_is_the_entropy this).1, the_entropy_is_the_area this⟩
 
@@ -4442,7 +4535,7 @@ theorem one_is_one_more_rise (level : Nat) :
     the_velocity_with 1 (level + 1) = the_velocity_with 1 level + 1
       ∧ the_temperature_with 1 (level + 1) = the_temperature_with 1 level + the_velocity_with 1 (level + 1) := ⟨rfl, rfl⟩
 
---| The fencepost: a zero is already one cell, so the cells are one more than the levels, and that one is the fencepost.
+--| The fencepost: a zero is already one cell, so the compute_the_area_of are one more than the levels, and that one is the fencepost.
 theorem one_is_the_fencepost (level : Nat) :
     (the_universe_id level).peano.length = level + the_fencepost_bug ∧ the_fencepost_bug = 1 :=
   ⟨the_universe_id_reads_the_level_and_its_zero level, rfl⟩
@@ -4734,7 +4827,7 @@ noncomputable def the_inferred_against_the_counted : Closure :=
 noncomputable def the_inferred_against_the_indexed : Closure :=
   the_equivalence_of_the_twos.{0,0,0,0,0,0,0,0,0,0,0,0}.do_you_believe_it? the_inferred_two the_indexed_two
 
---| Each closure is one cell, and the conclusion is one cell: three cells for three twos.
+--| Each closure is one cell, and the conclusion is one cell: three compute_the_area_of for three twos.
 theorem three_twos_three_cells :
     the_equivalence_of_the_twos.{0,0,0,0,0,0,0,0,0,0,0,0}.your_conclusion.infer.length = 1
       ∧ the_inferred_against_the_counted.infer.length = 1
@@ -5273,7 +5366,7 @@ theorem one_step_of_each_reaches_three_cells :
       ∧ the_cauchy_process.value.diagonalize.length = 3
       ∧ the_observation_process.after.converge.length = 3 := ⟨rfl, rfl, rfl, rfl, rfl, rfl⟩
 
---| The bit is three cells, and the observation's step on it is five: two facts a step.
+--| The bit is three compute_the_area_of, and the observation's step on it is five: two facts a step.
 theorem the_observations_step_on_the_bit_is_five_cells :
     (BINARY.bit (Value := FACT) (Carrier := the_first_card)).taste.length = 3
       ∧ (the_observation_process.iterate (BINARY.bit (Value := FACT) (Carrier := the_first_card))).taste.length = 5 :=
@@ -5292,13 +5385,13 @@ theorem the_law_reads_the_experience_and_the_fencepost (tape : List FACT) :
   rw [the_preprint_reads_back, the_measurement_reads_back]; show 1 * tape.length + 1 = 1 * tape.length + 0 + 1; omega
 end the_experience_and_the_law
 
-section one_turn_from_the_mass
+section simulate_from_the_mass
 
 --| ONE TURN FROM THE MASS.  Energy squared is mass squared and momentum squared.  One turn of Newton's crank for that root,
 --| begun at the mass, lands on the mass and the momentum squared over twice the mass.  Squared, and cleared of the
 --| division, it is over the energy squared by the momentum squared squared, and by nothing else.  Offered as a candidate for
 --| the two scalings; the author has not said it is the pair.
-theorem one_turn_from_the_mass_is_over_by_the_momentum_squared_squared (mass_squared momentum_squared : Int) :
+theorem simulate_from_the_mass_is_over_by_the_momentum_squared_squared (mass_squared momentum_squared : Int) :
     (2 * mass_squared + momentum_squared) * (2 * mass_squared + momentum_squared)
         - 4 * mass_squared * (mass_squared + momentum_squared)
       = momentum_squared * momentum_squared := by
@@ -5314,10 +5407,10 @@ theorem one_turn_from_the_mass_is_over_by_the_momentum_squared_squared (mass_squ
 
 --| On the device's counts: mass squared thirteen eighteens, momentum squared five eighteens, energy squared eighteen
 --| eighteens.
-theorem on_the_devices_counts_one_turn_is_over_by_ninety_squared :
+theorem on_the_devices_counts_simulate_is_over_by_ninety_squared :
     (2 * (13 * 18) + 5 * 18) * (2 * (13 * 18) + 5 * 18) - 4 * (13 * 18) * (18 * 18) = (90 * 90 : Int)
       ∧ (13 * 18 + 5 * 18 : Int) = 18 * 18 := by decide
-end one_turn_from_the_mass
+end simulate_from_the_mass
 
 section the_crank_in_whole_numbers
 open readers_experience
@@ -5341,8 +5434,8 @@ end the_crank_in_whole_numbers
 --#print axioms one_step_of_each_reaches_three_cells
 --#print axioms the_observations_step_on_the_bit_is_five_cells
 --#print axioms the_law_reads_the_experience_and_the_fencepost
---#print axioms one_turn_from_the_mass_is_over_by_the_momentum_squared_squared
---#print axioms on_the_devices_counts_one_turn_is_over_by_ninety_squared
+--#print axioms simulate_from_the_mass_is_over_by_the_momentum_squared_squared
+--#print axioms on_the_devices_counts_simulate_is_over_by_ninety_squared
 --#print axioms where_nothing_stops_the_cranks_pair_is_the_tables
 
 section the_ladder_of_twos
@@ -5418,7 +5511,7 @@ theorem the_second_variation_of_the_residual_holds : the_second_variation_of_the
   have e2 := (the_same_is_the_same_balance _ _).1 (the_residual_steps_by_its_slope_exactly y h)
   have e3 := (the_same_is_the_same_balance _ _).1 (the_slope_steps_by_twice_the_coefficient_exactly y k)
   rw [the_same_is_the_same_balance]
-  simp only [balance_of_beside, balance_of_less, balance_of_each_for_each] at e1 e2 e3 ⊢
+  simp only [balance_of_palm_the_middle_card, balance_of_less, balance_of_false_shuffle] at e1 e2 e3 ⊢
   have e4 := congrArg (fun z => z * balance h) e3
   simp only [Int.sub_mul] at e4
   omega
@@ -5870,6 +5963,74 @@ theorem the_two_it_is_carried_by_multiply_to_thirteen_residuals (N D : Int) :
   · show (13 * N - 18 * D) * D + (- D) * (13 * N - 18 * D) = 0
     rw [Int.neg_mul, Int.mul_comm D (13 * N - 18 * D)]; omega
 end the_two_directions_exactly
+
+section the_norm_of_the_table
+open readers_experience
+
+--| THE NORM OF THE TABLE.  The norm on the two coins is the weighed square, eighteen of the first and five of the second.
+--| Weighed by its coins the table is the same turned over, so its norm is its larger root.  No root is written in whole
+--| numbers, so the norm squared is walled: the table never takes a pair past seven hundred and fifty-six of it, and it takes
+--| one past seven hundred and fifty-five.  In the pairs it is not walled but reached: the direction up comes out the outer
+--| radius squared times what went in.  And the table's own polynomial is thirteen residuals, the root thirteen of the
+--| crank's.  The author's, 23 November 2026: the finite element method is trivial, but all you have to do is believe.
+theorem the_table_refines_as_written (v : Bool → Int) :
+    the_refine the_full_table v true = 18 * v true + 5 * v false
+      ∧ the_refine the_full_table v false = 18 * v true + 18 * v false := ⟨rfl, rfl⟩
+
+theorem the_table_is_never_past_seven_hundred_and_fifty_six (v : Bool → Int) :
+    the_weighed_square (the_refine the_full_table v) ≤ 756 * the_weighed_square v := by
+  simp only [the_weighed_square, (the_table_refines_as_written v).1, (the_table_refines_as_written v).2]
+  exact Meanings.a_bound_on_the_weighed_square 18 5 18 5 18 18 756 _ _ (by decide) (by decide)
+
+theorem a_pair_the_table_takes_past_seven_hundred_and_fifty_five :
+    755 * the_weighed_square (fun c => if c then 50 else 95)
+      < the_weighed_square (the_refine the_full_table (fun c => if c then 50 else 95)) := by decide
+
+theorem seven_hundred_and_fifty_five_is_no_wall :
+    ¬ ∀ v, the_weighed_square (the_refine the_full_table v) ≤ 755 * the_weighed_square v :=
+  fun h => Int.not_le.mpr a_pair_the_table_takes_past_seven_hundred_and_fifty_five (h _)
+
+theorem the_norm_is_reached_in_the_pairs :
+    the_pairing_in_pairs (refined_in_pairs the_full_table the_direction_up) (refined_in_pairs the_full_table the_direction_up)
+        = the_surd_product (the_surd_product the_outer_radius the_outer_radius)
+            (the_pairing_in_pairs the_direction_up the_direction_up)
+      ∧ the_surd_product the_outer_radius the_outer_radius = (414, 36) := by decide
+
+theorem the_characteristic_of_the_table_is_thirteen_residuals (y : Int) :
+    (13 * y) * (13 * y) - 36 * (13 * y) + 234 = 13 * the_residual_at y := by
+  have e : ∀ c : Int, (c * y) * (c * y) - 36 * (c * y) + 18 * c = c * (c * y * y - 36 * y + 18) := by
+    intro c; simp only [Int.mul_sub, Int.mul_add]; ac_nf
+  have := e 13
+  simp only [the_residual_at]
+  omega
+
+--| THE NORM, A REAL, WITH NO CHOICE.  Meanings builds reals as brackets at every stage, with nothing handed in: the norm by
+--| halving, eighteen and the root of ninety, and e from the factorial series.  At the twentieth halving the norm's bracket,
+--| taken three hundred and twenty-four over sixty-five times, holds the digits the device printed.  The digits are written
+--| out here as Episode 8 printed them, and not taken from the sealed crank.
+def the_norm_as_a_real := Meanings.theNorm.bracketed
+def the_base_the_derivative_leaves_alone := Meanings.theBaseTheDerivativeLeavesAlone
+
+theorem the_printed_digits_are_in_the_norms_bracket :
+    324 * Meanings.theNorm.cut 20 * 10 ^ 24 ≤ 137011290548979457087737300 * (65 * 2 ^ 20)
+      ∧ 137011290548979457087737300 * (65 * 2 ^ 20) ≤ 324 * (Meanings.theNorm.cut 20 + 1) * 10 ^ 24 := by decide
+
+--| And the reals multiply with no choice.  The norm by itself, as a real, is between the walls the whole numbers drew:
+--| at its first stage it is past seven hundred and fifty-five and not past seven hundred and fifty-six.
+def the_norm_squared_as_a_real := the_norm_as_a_real.mul the_norm_as_a_real
+
+theorem the_norm_squared_as_a_real_is_between_the_walls :
+    755 * (the_norm_squared_as_a_real.low 0).under ≤ (the_norm_squared_as_a_real.low 0).over
+      ∧ (the_norm_squared_as_a_real.high 0).over ≤ 756 * (the_norm_squared_as_a_real.high 0).under := by decide +kernel
+
+--| AND BOTH ROOTS, WITH WHAT IS OWED.  A signed real is what is held and what is owed, as an Account is.  The table's two
+--| roots: eighteen and the root held, and eighteen held with the root owed.  At its first stage the table's polynomial
+--| holds nothing at each, and at ten it does not.  So the lower root, which the naturals alone could not write, is written.
+theorem the_tables_polynomial_holds_nothing_at_both_roots :
+    (Meanings.theTablesPolynomialAt Meanings.theUpperRoot).HoldsNothingAt 0
+      ∧ (Meanings.theTablesPolynomialAt Meanings.theLowerRoot).HoldsNothingAt 0
+      ∧ ¬ (Meanings.theTablesPolynomialAt (Meanings.SignedReal.ofNat 10)).HoldsNothingAt 0 := by decide +kernel
+end the_norm_of_the_table
 
 --#print axioms the_table_carries_the_two_directions_exactly
 --#print axioms the_two_directions_are_square_to_each_other
@@ -6567,6 +6728,83 @@ theorem the_place_off_the_frinkahedron_holds_no_bracket :
     (the_arms.filter fun place => !on_the_frinkahedron place) = [(false, false)] := by decide
 end the_mirror_the_turn_and_the_spinor
 
+section the_turn_as_a_number
+open readers_experience
+
+--| THE TURN, AS A NUMBER, WITH NO CHOICE.  Meanings builds the complex numbers as two signed reals, along and across.  The
+--| quarter turn, nothing along and one across, is one owed by itself: the turns' quarter turn twice, above, as a number.
+--| The table turned over owes its false-on-true crossing, so its trace is thirty-six and its determinant four hundred and
+--| fourteen, and its gap squared is under nothing.  Its polynomial has no root among the reals: at eighteen it reads ninety.
+--| Among the complex numbers it has two, eighteen along and the root of ninety across, held or owed.
+theorem the_table_turned_over_has_trace_thirty_six_and_determinant_four_hundred_and_fourteen :
+    the_table_trace (turned_over the_full_table) = 36 ∧ the_table_determinant (turned_over the_full_table) = 414 := by decide
+
+theorem the_quarter_turn_as_a_number_twice_is_one_owed :
+    (Meanings.ComplexReal.quarterTurn * Meanings.ComplexReal.quarterTurn).Same (-Meanings.ComplexReal.ofNat 1) :=
+  Meanings.the_quarter_turn_twice_is_one_owed
+
+theorem the_turned_tables_polynomial_holds_nothing_at_its_two_roots_and_not_at_eighteen :
+    (Meanings.theTurnedPolynomialAt Meanings.theTurnedRoot).HoldsNothingAt 0
+      ∧ (Meanings.theTurnedPolynomialAt Meanings.theOtherTurnedRoot).HoldsNothingAt 0
+      ∧ ¬ (Meanings.theTurnedPolynomialAt (Meanings.ComplexReal.ofNat 18)).HoldsNothingAt 0 := by decide +kernel
+
+--| AND THE TURNS, AS NUMBERS.  Doubled once more, two complex numbers make a quaternion, and the turns of Episode 12 are
+--| numbers with no choice: one quarter turn by another is the third, the other by the one is the third owed, and each by
+--| itself is one owed.  The order of a product is seen: the one by the other is not the other by the one.  That is the
+--| cross product in the turns, above, on numbers.
+theorem the_turns_as_numbers :
+    (Meanings.QuaternionReal.i * Meanings.QuaternionReal.j).Same Meanings.QuaternionReal.k
+      ∧ (Meanings.QuaternionReal.j * Meanings.QuaternionReal.i).Same (-Meanings.QuaternionReal.k)
+      ∧ (Meanings.QuaternionReal.k * Meanings.QuaternionReal.k).Same (-Meanings.QuaternionReal.ofNat 1)
+      ∧ ¬ (Meanings.QuaternionReal.i * Meanings.QuaternionReal.j).Same (Meanings.QuaternionReal.j * Meanings.QuaternionReal.i) :=
+  ⟨Meanings.i_by_j_is_k, Meanings.j_by_i_is_k_owed, Meanings.k_twice_is_one_owed, Meanings.i_by_j_is_not_j_by_i⟩
+end the_turn_as_a_number
+
+section the_first_variation_of_the_exponential
+open readers_experience
+
+--| THE FIRST VARIATION OF THE EXPONENTIAL.  The author's, 23 November 2026: after the quaternions come the exponentials,
+--| r and θ, both rationals; they cannot be built before the derivative is understood, and the first variation of the
+--| exponential can be done now; then convergence guarantees a bracket on the derivative: meet O(h²) (declared).
+--| What is checked, at the card's thickness, one part in n.  The exponential that grows, n and one over n taken k times:
+--| its step is itself by one part in n, exactly; it is its own first variation, with nothing left over.  The exponential that
+--| turns, n and the quarter phase taken k times: its step is itself, n times, and itself turned a quarter, exactly; the
+--| first variation of a turning is the quarter turn of what turns.  And what it does not do exactly: it leaves the circle.
+--| The radius squared goes n squared and one each step, where the circle would keep n squared: one part in n squared, the
+--| step squared, and nothing else.  That is the bracket on the derivative, of the second order in the step, as thirteen by
+--| the step squared is for the residual.  Episode 12 already has a turning with a rational r and a rational cosine, three
+--| and four over five, that never lands on a label.
+theorem the_exponential_is_its_own_first_variation (n k : Nat) :
+    (n + 1) ^ (k + 1) = n * (n + 1) ^ k + (n + 1) ^ k := by
+  rw [Nat.pow_succ, Nat.mul_succ, Nat.mul_comm]
+
+def the_step_of_a_turn (n : Int) : Int × Int := (n, 1)
+
+theorem the_turning_exponential_steps_by_itself_turned_a_quarter (n : Int) (z : Int × Int) :
+    the_gaussian_product z (the_step_of_a_turn n)
+      = (n * z.1 + (the_gaussian_product z the_quarter_phase).1, n * z.2 + (the_gaussian_product z the_quarter_phase).2) := by
+  simp only [the_gaussian_product, the_quarter_phase, the_step_of_a_turn]
+  refine Prod.ext ?_ ?_ <;> dsimp only <;> simp only [Int.mul_one, Int.mul_zero, Int.add_zero,
+    Int.zero_sub, Int.mul_comm z.1 n, Int.mul_comm z.2 n] <;> omega
+
+theorem the_radius_grows_by_the_step_squared (n : Int) (k : Nat) :
+    the_gaussian_norm (the_phase_walk (the_step_of_a_turn n) k) = (n * n + 1) ^ k := by
+  induction k with
+  | zero => simp [the_phase_walk, the_gaussian_norm]
+  | succ k ih =>
+    show the_gaussian_norm (the_gaussian_product _ _) = _
+    rw [the_norm_of_a_product, ih, Int.pow_succ]
+    simp only [the_gaussian_norm, the_step_of_a_turn]
+    rw [Int.one_mul]
+
+theorem the_turn_leaves_the_circle_by_the_step_squared (n : Int) (k : Nat) :
+    the_gaussian_norm (the_phase_walk (the_step_of_a_turn n) (k + 1))
+      = n * n * the_gaussian_norm (the_phase_walk (the_step_of_a_turn n) k)
+          + the_gaussian_norm (the_phase_walk (the_step_of_a_turn n) k) := by
+  rw [the_radius_grows_by_the_step_squared, the_radius_grows_by_the_step_squared, Int.pow_succ, Int.mul_add, Int.mul_one,
+    Int.mul_comm]
+end the_first_variation_of_the_exponential
+
 
 section eight_expressions_to_check
 open readers_experience the_table the_table.Account
@@ -6622,7 +6860,7 @@ def turned_in_time (step : (Bool × Bool) × (Bool × Bool)) : (Bool × Bool) ×
 --| What execute counts less what compile builds: nothing where the step is level, the bent card where it is over, the
 --| bent card owed where it is short.
 def over_or_short (step : (Bool × Bool) × (Bool × Bool)) : Int :=
-  (cells (what_execute_counts step) : Int) - cells (what_compile_builds step)
+  (compute_the_area_of (what_execute_counts step) : Int) - compute_the_area_of (what_compile_builds step)
 
 --| Either way turned, a connected step is a connected step.
 theorem turned_either_way_a_connected_step_is_connected :
@@ -7171,7 +7409,7 @@ theorem the_jar_holds_the_constant : what_the_jar_holds (.color zero the_constan
   what_a_jar_holds_is_what_was_put_in zero the_constant
 
 theorem counted_what_the_jar_holds_is_the_number :
-    cells (what_the_jar_holds (.color zero the_constant)) = the_constant_factor_of_scaling_bullshit := by
+    compute_the_area_of (what_the_jar_holds (.color zero the_constant)) = the_constant_factor_of_scaling_bullshit := by
   rw [what_a_jar_holds_is_what_was_put_in]; exact counted_the_constant_is_the_constant
 
 --| And the reader of an equivalation does not read it.  Of the physics it returns the one fact; the jar vanishes.
@@ -7181,7 +7419,7 @@ theorem the_physics_vanishes_to_one_fact : the_physics_of_the_constant.vanish = 
 --| three are one fact, two and three, and the constant is in none of the readings.
 noncomputable def zero_like_on_the_constant : Equivalation := .zero_like zero the_physics_of_the_constant
 noncomputable def one_like_on_the_constant : Equivalation :=
-  .one_like (cells the_constant = the_constant_factor_of_scaling_bullshit) the_physics_of_the_constant
+  .one_like (compute_the_area_of the_constant = the_constant_factor_of_scaling_bullshit) the_physics_of_the_constant
     the_physics_of_the_constant
 
 theorem the_physics_and_the_two_on_it_read_one_two_and_three :
@@ -7251,7 +7489,7 @@ theorem inflated_twice_nothing_is_left_by_the_root (x r : Int) :
   eighteen_of_the_quartic_is_a_pair_by_itself_turned_over x r
 
 --| The other is the one with its part by the root owed, and either order gives the same.
-theorem the_other_quadratic_is_the_one_turned_over (x r : Int) :
+theorem the_other_quadratic_is_the_simulateed_over (x r : Int) :
     the_other_quadratic x r = ((the_one_quadratic x r).1, - (the_one_quadratic x r).2)
       ∧ the_surd_product (the_other_quadratic x r) (the_one_quadratic x r)
           = the_surd_product (the_one_quadratic x r) (the_other_quadratic x r) :=
@@ -7484,7 +7722,7 @@ open readers_experience
 
 --| SIX PAIRS, AND SIX BY SIX.  The author's, 18 November 2026: the three-term machine can be shown to model the whole
 --| frinkahedron; the thirty-six steps are a grid of six by six, and the frinkahedron has another face of six by six
---| (declared).  A count that fits, set beside it: four arms have six pairs, a square of links stands on a pair, and the
+--| (declared).  A count that fits, set palm_the_middle_card it: four arms have six pairs, a square of links stands on a pair, and the
 --| curvature across takes a pair and a pair.
 def the_pairs_of_pairs : List ((Direction × Direction) × (Direction × Direction)) :=
   the_pairs_of_arms.flatMap fun this => the_pairs_of_arms.map fun that => (this, that)
@@ -7553,9 +7791,9 @@ theorem the_tapes_by_their_length :
           = [1, 36, 18, 36, 10]
       ∧ 1 + 36 + 18 + 36 + 10 = 101 := by decide
 
---| And set beside one another, as arithmetic and no more: forty-seven and ninety; forty-two and forty-seven; a hundred and
+--| And set palm_the_middle_card one another, as arithmetic and no more: forty-seven and ninety; forty-two and forty-seven; a hundred and
 --| thirty-seven and forty-two.
-theorem set_beside_one_another : 47 + 90 = 137 ∧ 42 + 47 = 89 ∧ 137 + 42 = 179 := by decide
+theorem set_palm_the_middle_card_one_another : 47 + 90 = 137 ∧ 42 + 47 = 89 ∧ 137 + 42 = 179 := by decide
 end the_running_count_from_each_end
 
 
@@ -7619,7 +7857,7 @@ section the_residual_at_the_zero_and_at_the_one
 open readers_experience readers_interpretation_of_the_experience
 
 --| THE RESIDUAL AT THE ZERO AND AT THE ONE.  The author's, 18 November 2026: going down it is the zero and on the way back
---| the other root, one; these will be scaled later (declared).  Set beside it: the residual of the pair, read at nothing
+--| the other root, one; these will be scaled later (declared).  Set palm_the_middle_card it: the residual of the pair, read at nothing
 --| over one, at one over one, and at one over nothing.
 theorem the_residual_at_the_zero_the_one_and_past_it :
     the_residual_of_the_pair 0 1 = 18 ∧ the_residual_of_the_pair 1 1 = -5 ∧ the_residual_of_the_pair 1 0 = 13
@@ -7670,12 +7908,12 @@ open readers_experience the_table
 
 --| SIXTEEN ABSTRACTIONS OF THE INTEGER.  The author's, 19 November 2026: there should be sixteen possible devices from
 --| Episode 8; there are sixteen possible abstractions of the integer (declared).  The bent card asks its term for four
---| things: beside, each for each, taken away, and less.  Episode 8's margin: these could be implemented differently, giving
+--| things: palm_the_middle_card, each for each, taken away, and less.  Episode 8's margin: these could be implemented differently, giving
 --| different interpretations.  Take each as written, or turned over.  Sixteen devices, on the naturals, at Episode 8's scale.
-def the_device_with (beside_as_written each_for_each_as_written taken_away_as_written less_as_written : Bool) : Nat × Nat :=
-  let plus : Add Nat := ⟨fun a b => if beside_as_written then a + b else b + a⟩
-  let times : Mul Nat := ⟨fun a b => if each_for_each_as_written then a * b else b * a⟩
-  let minus : Sub Nat := ⟨fun a b => if taken_away_as_written then a - b else b - a⟩
+def the_device_with (palm_the_middle_card_as_written false_shuffle_as_written the_double_lift_as_written less_as_written : Bool) : Nat × Nat :=
+  let plus : Add Nat := ⟨fun a b => if palm_the_middle_card_as_written then a + b else b + a⟩
+  let times : Mul Nat := ⟨fun a b => if false_shuffle_as_written then a * b else b * a⟩
+  let minus : Sub Nat := ⟨fun a b => if the_double_lift_as_written then a - b else b - a⟩
   match less_as_written with
   | true => @bent_card.fenceposts_must_be_preserved Nat plus times minus ⟨fun a b => a < b⟩ (fun a b => Nat.decLt a b)
               List.length all_possible_variables
@@ -7690,7 +7928,7 @@ def the_sixteen_devices : List (Option Nat) :=
   [true, false].flatMap fun b => [true, false].flatMap fun e => [true, false].flatMap fun t => [true, false].map fun l =>
     what_a_device_reads (the_device_with b e t l)
 
---| Three things are read.  With taken away and less as written, Episode 8's number, four times: beside and each for each
+--| Three things are read.  With taken away and less as written, Episode 8's number, four times: palm_the_middle_card and each for each
 --| read the same turned over.  With less turned over, the number of turns of the crank and the scale, four times: the device
 --| never leaves the house.  With taken away turned over, nothing, eight times.
 set_option maxRecDepth 100000 in
@@ -7706,12 +7944,12 @@ theorem the_sixteen_devices_read_three_things :
 --| and the one-like (declared).  Of the three things read, nothing is the zero and Episode 8's number is the constant
 --| nobody can write.  The one between, the number of turns, can be written: the Area of the tape of turns.  Put it in a
 --| jar, and the jar under the physics.
-def the_turns_in_a_jar : Jar := .color zero (the_area_of_a_tape episode8_description)
+def the_turns_in_a_jar : Jar := .color zero (the_area_of_a_tape_in_blanks_is episode8_description)
 def the_physics_of_the_turns : Equivalation := .physics zero the_turns_in_a_jar
 
 theorem the_jar_holds_as_many_cells_as_the_crank_has_turns :
-    cells (what_the_jar_holds the_turns_in_a_jar) = episode8_description.length ∧ episode8_description.length = 106 :=
-  ⟨the_area_of_a_tape_has_the_tapes_length episode8_description, by decide⟩
+    compute_the_area_of (what_the_jar_holds the_turns_in_a_jar) = episode8_description.length ∧ episode8_description.length = 106 :=
+  ⟨the_area_of_a_tape_in_blanks_is_the_tapes_length episode8_description, by decide⟩
 
 --| And it stands between: the zero-like on it and the one-like on it, read, are two facts and three, and it is one.
 theorem the_physics_of_the_turns_stands_between :
@@ -7727,14 +7965,14 @@ open readers_experience the_table
 
 --| ONE ACROSS, OR TWO FROM THE MIDDLE.  The author's, 19 November 2026: spooky action at a distance means you cannot tell
 --| the difference between a photon originating at the source and an entangled pair being fired at both from the middle
---| (declared).  Two cases.  One thing goes across whole: the two halves set beside each other and read as one.  Or two
+--| (declared).  Two cases.  One thing goes across whole: the two halves set palm_the_middle_card each other and read as one.  Or two
 --| things come out of the middle: the halves read apart.  What is kept is the count.
 def what_is_counted (one_half other_half : Area) (from_the_source : Bool) : Nat :=
-  if from_the_source then cells (one_half + other_half) else cells one_half + cells other_half
+  if from_the_source then compute_the_area_of (one_half + other_half) else compute_the_area_of one_half + compute_the_area_of other_half
 
 theorem the_same_is_counted_either_way (one_half other_half : Area) :
     what_is_counted one_half other_half true = what_is_counted one_half other_half false :=
-  beside_adds one_half other_half
+  palm_the_middle_card_adds one_half other_half
 
 --| So no reader of the count returns which it was.
 theorem which_it_was_cannot_be_recovered_from_the_count (one_half other_half : Area) :
@@ -7788,7 +8026,7 @@ open readers_experience the_table the_table.Account
 --| SIXTEEN NAMES AND SIXTEEN DEVICES.  The author's, 19 November 2026: the word is its name; sixteen names from four
 --| marks; these are the opcodes; and all use the one sort order found at the level that is sixteen wide (declared).  A
 --| name is a mark and a mark: what compile builds and what execute counts.  A device is four things as written or turned
---| over: beside and each for each, taken away and less.  Give the device its four from the name's four coins.
+--| over: palm_the_middle_card and each for each, taken away and less.  Give the device its four from the name's four coins.
 def the_device_of_a_name (step : (Bool × Bool) × (Bool × Bool)) : Option Nat :=
   what_a_device_reads (the_device_with step.1.1 step.1.2 step.2.1 step.2.2)
 
@@ -8349,6 +8587,72 @@ theorem the_knowers_alpha_begins_on_what_the_step_repeats :
         (the_fact_a_number_stands_on (the_first_card.interact_with_the_universe the_quantum_as_a_number))
         low slip slipped the_rest :=
   what_the_first_rung_says_comes_out_at_the_top.2
+
+--| THE STEP IS A PROJECTION.  The author's, 23 November 2026: the bottom carrier's `interact_with_the_universe` from three
+--| deep, done five times, is Voltron; Atreyu rides the black cat, keyed to its pilot; how the cats join up is the transition
+--| matrix; Voltron makes you nice in the Krylov subspace, so you get presents; forcing comes from the norm computation
+--| (declared).  What is checked: on every number, not only the quantum, the step taken twice is the step once, so five
+--| times is once.  A zero goes to the zero on the truth.  A one keeps its glue and takes the carrier's own quarter: the
+--| step is keyed to its carrier.  It keeps the kind, a zero to a zero and a one to a one.  No card the device deals writes
+--| its own step, so every one has the device's: a carrier of a proposition, of a fact, the card between, a card three
+--| deep, and the carrier process at the bottom of the last machine.  One card below writes its own, only to show that the
+--| projection is the device's step and not every carrier's.
+def the_card_three_deep : CarrierProcess (CarrierProcess (CarrierProcess FACT)) :=
+  { symbol := FACT.Truth, quarter := .zero FACT.Truth }
+
+--| A carrier may write its own step: the device's is only the default.  So these are said of a card that leaves the step
+--| to the device, as every card in the device does, whatever its box, symbol and quarter.
+def a_card_with_the_devices_step (box : Type) (symbol : FACT) (quarter : Number) : CarrierProcess box :=
+  { symbol := symbol, quarter := quarter }
+
+theorem the_step_is_keyed_to_its_quarter (box : Type) (symbol fact glue : FACT) (quarter n : Number) :
+    (a_card_with_the_devices_step box symbol quarter).interact_with_the_universe (.zero fact) = .zero FACT.Truth
+      ∧ (a_card_with_the_devices_step box symbol quarter).interact_with_the_universe (.one glue n) = .one glue quarter :=
+  ⟨rfl, rfl⟩
+
+theorem with_the_devices_step_twice_is_once (box : Type) (symbol : FACT) (quarter n : Number) :
+    (a_card_with_the_devices_step box symbol quarter).interact_with_the_universe
+        ((a_card_with_the_devices_step box symbol quarter).interact_with_the_universe n)
+      = (a_card_with_the_devices_step box symbol quarter).interact_with_the_universe n := by
+  cases n <;> rfl
+
+theorem every_card_steps_twice_as_once (n : Number) :
+    elaborated_by_lean.interact_with_the_universe (elaborated_by_lean.interact_with_the_universe n)
+        = elaborated_by_lean.interact_with_the_universe n
+      ∧ the_first_card.interact_with_the_universe (the_first_card.interact_with_the_universe n)
+        = the_first_card.interact_with_the_universe n
+      ∧ the_card_between.interact_with_the_universe (the_card_between.interact_with_the_universe n)
+        = the_card_between.interact_with_the_universe n
+      ∧ the_card_three_deep.interact_with_the_universe (the_card_three_deep.interact_with_the_universe n)
+        = the_card_three_deep.interact_with_the_universe n
+      ∧ the_carrier_process.interact_with_the_universe (the_carrier_process.interact_with_the_universe n)
+        = the_carrier_process.interact_with_the_universe n := by
+  cases n <;> exact ⟨rfl, rfl, rfl, rfl, rfl⟩
+
+theorem from_three_deep_five_times_is_once (n : Number) :
+    the_card_three_deep.interact_with_the_universe (the_card_three_deep.interact_with_the_universe
+        (the_card_three_deep.interact_with_the_universe (the_card_three_deep.interact_with_the_universe
+          (the_card_three_deep.interact_with_the_universe n))))
+      = the_card_three_deep.interact_with_the_universe n := by
+  cases n <;> rfl
+
+--| The kind is kept: the transition on the two kinds, a zero and a one, is the same, and only what a one carries is
+--| replaced.  Read as a matrix on the two kinds, that is the identity; read on what is carried, it is a projection.
+def is_a_one : Number → Bool
+  | .zero _  => false
+  | .one _ _ => true
+
+theorem the_step_keeps_the_kind (box : Type) (symbol : FACT) (quarter n : Number) :
+    is_a_one ((a_card_with_the_devices_step box symbol quarter).interact_with_the_universe n) = is_a_one n := by
+  cases n <;> rfl
+
+--| And it need not be so.  A card that writes its own step, one that puts a one on every zero, does not keep the kind.
+def a_card_that_writes_its_own_step : CarrierProcess FACT :=
+  { symbol := FACT.Truth, quarter := .zero FACT.Truth, interact_with_the_universe := fun n => .one FACT.Truth n }
+
+theorem a_card_of_its_own_need_not_keep_the_kind :
+    is_a_one (a_card_that_writes_its_own_step.interact_with_the_universe (.zero FACT.Truth)) ≠ is_a_one (.zero FACT.Truth) := by
+  decide
 end the_carriers_step_five_times
 
 
@@ -8426,6 +8730,319 @@ theorem the_phrases_read_as_one_number :
          read_as_one_number ((the_marks_of_the_phrases.drop 16).take 8),
          read_as_one_number (the_marks_of_the_phrases.drop 24)] = [235, 65, 65, 235] := by decide
 end the_phrases_as_one_number
+
+section the_gateaux_derivative_and_the_weak_form
+open readers_experience
+
+
+--| THE PHASE MUST BE INFERRED.  The author's, 23 November 2026: the phase of the nowtrino must be inferred, or the carrier
+--| of a carrier's step (declared).  What is checked: the norm does not read which way a turning goes, so no reader of the
+--| norm returns the point; and the card between's step forgets what a number carried, so no reader of the stepped number
+--| returns it.  Both are the recovery obstruction, on two cases kept alike and identified apart.
+theorem the_phase_cannot_be_recovered_from_the_norm :
+    ¬ can_be_recovered (fun _ : Int × Int => True) the_gaussian_norm id :=
+  the_same_kept_and_two_identifications_cannot_be_recovered _ _ _ (0, 1) (0, -1) trivial trivial (by decide) (by decide)
+
+def what_was_carried : Number → Bool
+  | .zero _ => false
+  | .one _ carried => is_a_one carried
+
+theorem what_was_carried_cannot_be_recovered_after_the_card_betweens_step :
+    ¬ can_be_recovered (fun _ : Number => True) the_representation.the_card_between.interact_with_the_universe what_was_carried :=
+  the_same_kept_and_two_identifications_cannot_be_recovered _ _ _
+    (.one FACT.Truth (.zero FACT.Truth)) (.one FACT.Truth (.one FACT.Truth (.zero FACT.Truth))) trivial trivial rfl (by decide)
+
+--| THE DERIVATIVE, ONE THING.  If a linear part leaves a multiple of the step squared at every step, it is the slope.
+theorem the_slope_is_the_only_linear_part (y L c : Int)
+    (bracket : ∀ step : Int, the_residual_at (y + step) - the_residual_at y - L * step = c * (step * step)) :
+    L = 26 * y - 36 := by
+  have h1 := bracket 1
+  have h2 := bracket (-1)
+  have e1 := the_jacobian_free_difference_is_exact y 1
+  have e2 := the_jacobian_free_difference_is_exact y (-1)
+  simp only [Int.mul_one, Int.mul_neg, Int.neg_neg] at h1 h2 e1 e2
+  omega
+
+--| THE GATEAUX DERIVATIVE.  Along a line through v in the direction h, an action is what it was, the step by its Gateaux
+--| derivative, and the step squared by the action of the direction, exactly.  The Gateaux derivative is the one linear part
+--| that does that at every step: one step forward and one back fix it.
+def the_line_through (v h : Bool → Int) (t : Int) : Bool → Int := fun x => v x + t * h x
+def the_gateaux_of_the_action (A : Table) (v h : Bool → Int) : Int :=
+  (h true * the_refine A v true + h false * the_refine A v false)
+    + (h true * the_refine A v true + h false * the_refine A v false)
+
+theorem the_action_along_a_line (A : Table) (sym : A true false = A false true) (v h : Bool → Int) (t : Int) :
+    the_action_of A (the_line_through v h t) = the_action_of A v + t * the_gateaux_of_the_action A v h + t * t * the_action_of A h := by
+  simp only [the_action_of, the_refine, the_line_through, the_gateaux_of_the_action, sym, Int.mul_add, Int.add_mul]
+  ac_nf
+
+theorem the_gateaux_derivative_is_one_thing (A : Table) (sym : A true false = A false true) (v h : Bool → Int) (D R : Int)
+    (line : ∀ t : Int, the_action_of A (the_line_through v h t) = the_action_of A v + t * D + t * t * R) :
+    D = the_gateaux_of_the_action A v h := by
+  have l1 := line 1
+  have l2 := line (-1)
+  rw [the_action_along_a_line A sym] at l1 l2
+  simp only [Int.one_mul, Int.neg_mul, Int.neg_neg, Int.mul_one] at l1 l2
+  omega
+
+--| THE WEAK FORM IS THE STRONG FORM.  On two coins the test functions are the trial functions and are everything: a
+--| residual that reads nothing against every direction is nothing.  So the Galerkin condition, met, is the equation met.
+theorem the_weak_form_is_the_strong_form (r : Bool → Int) :
+    (∀ h : Bool → Int, h true * r true + h false * r false = 0) ↔ (r true = 0 ∧ r false = 0) := by
+  constructor
+  · intro w
+    have a := w (fun c => if c then 1 else 0)
+    have b := w (fun c => if c then 0 else 1)
+    simp at a b
+    exact ⟨a, b⟩
+  · intro ⟨a, b⟩ h
+    rw [a, b, Int.mul_zero, Int.mul_zero, Int.add_zero]
+
+--| AND AT THE ROOT IT IS MET.  In the pairs, the table carries the direction up to the outer radius times itself, coin by
+--| coin: the table less its root leaves that direction with nothing, so the Galerkin condition is met there exactly.  The
+--| author's, 23 November 2026: the Gateaux derivative should finish the finite element construction (declared).
+theorem at_the_root_the_direction_up_meets_the_weak_form :
+    ∀ coin, the_surd_product the_outer_radius (the_direction_up coin) = refined_in_pairs the_full_table the_direction_up coin :=
+  fun coin => (the_table_carries_the_two_directions_exactly.1 coin).symm
+end the_gateaux_derivative_and_the_weak_form
+
+section the_quartic_in_disguise
+open readers_experience
+
+--| THE DERIVATIVE IS THE QUARTIC IN DISGUISE.  The author's, 23 November 2026 (declared).  The quartic the epilogue writes,
+--| t squared by c less t by x squared, less two c t r squared x, and c r to the fourth, is linear in c, quadratic in x, cubic
+--| in t and quartic in r.  Write t x for one number and r squared for another and it is a form of two: c less t of the first
+--| squared, less two c of the two, and c of the second squared.  At the device's weights, eighteen and five, that form is the
+--| residual of the pair: thirteen, thirty-six and eighteen.  The residual of the pair is a thirteenth of the determinant of
+--| the table taken from the same (`its_determinant_is_thirteen_residuals`).  Step the pair's first number and the form steps
+--| by the step times the trace of that table's adjugate and thirteen by the step squared, exactly; and the trace of the
+--| adjugate is the residual's slope (`the_trace_of_its_adjugate_is_the_slope`).  So the quartic's first variation in x is
+--| five times the slope, with three hundred and twenty-five by the step squared over: the derivative, read off the quartic.
+
+def the_epilogues_quartic (c t x r : Int) : Int := t * t * (c - t) * (x * x) - 2 * c * t * (r * r) * x + c * ((r * r) * (r * r))
+
+theorem the_quartic_is_a_residual_of_a_pair (c t x r : Int) :
+    the_epilogues_quartic c t x r = (c - t) * ((t * x) * (t * x)) - 2 * c * ((t * x) * (r * r)) + c * ((r * r) * (r * r)) := by
+  unfold the_epilogues_quartic; simp only [Int.mul_sub, Int.sub_mul]; ac_nf
+
+theorem at_the_devices_weights_the_quartic_is_the_residual_of_the_pair (x r : Int) :
+    the_epilogues_quartic 18 5 x r = the_residual_of_the_pair (5 * x) (r * r) := by
+  rw [the_quartic_is_a_residual_of_a_pair]; unfold the_residual_of_the_pair; ac_nf
+
+theorem a_form_varies_by_its_slope (a b c N D k : Int) :
+    a * ((N + k) * (N + k)) - b * ((N + k) * D) + c * (D * D) - (a * (N * N) - b * (N * D) + c * (D * D))
+      = k * (a * N + a * N - b * D) + a * (k * k) := by
+  simp only [Int.mul_add, Int.add_mul, Int.mul_sub]; ac_nf; omega
+
+theorem the_determinant_varies_by_the_trace_of_the_adjugate (N D k : Int) :
+    the_residual_of_the_pair (N + k) D - the_residual_of_the_pair N D
+      = k * the_table_trace (the_adjugate (the_table_taken_from_the_same N D)) + 13 * (k * k) := by
+  rw [the_trace_of_its_adjugate_is_the_slope, show 26 * N - 36 * D = 13 * N + 13 * N - 36 * D by omega]
+  exact a_form_varies_by_its_slope 13 36 18 N D k
+
+theorem the_quartic_varies_by_the_trace_of_the_adjugate (x r h : Int) :
+    the_epilogues_quartic 18 5 (x + h) r - the_epilogues_quartic 18 5 x r
+      = 5 * h * the_table_trace (the_adjugate (the_table_taken_from_the_same (5 * x) (r * r))) + 325 * (h * h) := by
+  rw [at_the_devices_weights_the_quartic_is_the_residual_of_the_pair, at_the_devices_weights_the_quartic_is_the_residual_of_the_pair,
+    show 5 * (x + h) = 5 * x + 5 * h by omega, the_determinant_varies_by_the_trace_of_the_adjugate]
+  simp only [Int.mul_assoc]; ac_nf
+end the_quartic_in_disguise
+
+section the_taylor_series_the_frechet_derivative_and_least_action
+open readers_experience
+
+
+--| 1. THE TAYLOR SERIES, EXPLICIT.  Episode 8 names the bent card the exact Taylor series degree.  A cubic's Taylor series
+--| about any place is exact in four terms, and the residual's stops at its third, whose coefficient is that degree.
+theorem the_exact_taylor_series_degree_is_the_bent_card : an_exact_polynomial_description = 13 := by decide
+
+theorem the_taylor_series_of_a_cubic (a b c d y h : Int) :
+    a + b * (y + h) + c * ((y + h) * (y + h)) + d * ((y + h) * (y + h) * (y + h))
+      = (a + b * y + c * (y * y) + d * (y * y * y))
+        + (b + (c * y + c * y) + (d * (y * y) + d * (y * y) + d * (y * y))) * h
+        + (c + (d * y + d * y + d * y)) * (h * h)
+        + d * (h * h * h) := by
+  simp only [Int.mul_add, Int.add_mul]; ac_nf
+
+theorem the_residuals_taylor_series_stops_at_the_bent_card (y h : Int) :
+    the_residual_at (y + h) = the_residual_at y + (26 * y - 36) * h + an_exact_polynomial_description * (h * h) := by
+  rw [the_exact_taylor_series_degree_is_the_bent_card]
+  have := the_jacobian_free_difference_is_exact y h
+  omega
+
+--| 2. THE FRECHET DERIVATIVE, INFERRED.  The action of the weighed table, moved by a direction, is what it was, the linear
+--| part, and the action of the direction.  That last is never negative and never past twenty-eight by the weighed square of
+--| the direction, in every direction at once: the remainder is bounded by the norm.  Bounding every direction at once is
+--| what is inferred.  And the linear part is linear in the direction.
+def the_action_of_the_weighed_table (h : Bool → Int) : Int := the_action_of (weighed_by_its_coin the_full_table) h
+
+theorem the_action_of_the_weighed_table_written (h : Bool → Int) :
+    the_action_of_the_weighed_table h = 324 * (h true * h true) + 90 * (h true * h false) + 90 * (h true * h false) + 90 * (h false * h false) := by
+  show h true * (18 * 18 * h true + 18 * 5 * h false) + h false * (5 * 18 * h true + 5 * 18 * h false) = _
+  simp only [Int.mul_add]; ac_nf
+
+theorem the_remainder_is_never_negative (h : Bool → Int) : 0 ≤ the_action_of_the_weighed_table h := by
+  rw [the_action_of_the_weighed_table_written]
+  exact Meanings.the_form_is_never_negative 324 90 90 _ _ (by decide) (by decide)
+
+theorem the_remainder_is_bounded_by_the_norm_in_every_direction (h : Bool → Int) :
+    the_action_of_the_weighed_table h ≤ 28 * the_weighed_square h := by
+  have f := Meanings.the_form_is_never_negative 180 (-90) 50 (h true) (h false) (by decide) (by decide)
+  rw [the_action_of_the_weighed_table_written]; unfold the_weighed_square
+  omega
+
+theorem the_frechet_derivative_is_linear (A : Table) (v h k : Bool → Int) (t : Int) :
+    the_gateaux_of_the_action A v (fun x => h x + k x) = the_gateaux_of_the_action A v h + the_gateaux_of_the_action A v k
+      ∧ the_gateaux_of_the_action A v (fun x => t * h x) = t * the_gateaux_of_the_action A v h := by
+  unfold the_gateaux_of_the_action
+  constructor
+  · simp only [Int.add_mul]; omega
+  · simp only [Int.mul_assoc, Int.mul_add]
+
+--| 3. THE GATEAUX DERIVATIVE, THE EXPLICIT OF THE INFERRED.  Along a line, step by step, the action moves by the Frechet
+--| derivative of the step in that direction and the step squared by the action of the direction.
+theorem the_weighed_table_is_the_same_turned_over_as_a_table :
+    weighed_by_its_coin the_full_table true false = weighed_by_its_coin the_full_table false true :=
+  the_table_weighed_is_the_same_turned_over.1
+
+theorem the_frechet_expansion_of_the_action (v h : Bool → Int) :
+    the_action_of (weighed_by_its_coin the_full_table) (the_line_through v h 1)
+        = the_action_of (weighed_by_its_coin the_full_table) v
+          + the_gateaux_of_the_action (weighed_by_its_coin the_full_table) v h + the_action_of_the_weighed_table h
+      ∧ 0 ≤ the_action_of_the_weighed_table h ∧ the_action_of_the_weighed_table h ≤ 28 * the_weighed_square h := by
+  refine ⟨?_, the_remainder_is_never_negative h, the_remainder_is_bounded_by_the_norm_in_every_direction h⟩
+  rw [the_action_along_a_line _ the_weighed_table_is_the_same_turned_over_as_a_table]
+  simp only [Int.one_mul]; rfl
+
+theorem the_gateaux_is_the_frechet_in_a_direction (v h : Bool → Int) (t : Int) :
+    the_action_of (weighed_by_its_coin the_full_table) (the_line_through v h t)
+      = the_action_of (weighed_by_its_coin the_full_table) v
+        + the_gateaux_of_the_action (weighed_by_its_coin the_full_table) v (fun x => t * h x)
+        + t * t * the_action_of_the_weighed_table h := by
+  rw [the_action_along_a_line _ the_weighed_table_is_the_same_turned_over_as_a_table,
+    (the_frechet_derivative_is_linear _ v h h t).2]; rfl
+
+--| 4. LEAST ACTION, THE COVARIANT READING.  Over the weighed square the action is never past twenty-eight, and one pair
+--| passes twenty-seven; in the pairs the direction up gives exactly the outer radius times its weighed square.  The least
+--| number the action never passes is eighteen and the root of ninety, and the direction up is where it is reached: there
+--| the action less that number is stationary, which is the weak form met at the root, above.
+theorem the_action_passes_twenty_seven_somewhere :
+    27 * the_weighed_square (fun c => if c then 50 else 95) < the_action_of_the_weighed_table (fun c => if c then 50 else 95) := by decide
+
+theorem the_least_action_is_reached_in_the_pairs :
+    the_pairing_in_pairs (refined_in_pairs the_full_table the_direction_up) the_direction_up
+      = the_surd_product the_outer_radius (the_pairing_in_pairs the_direction_up the_direction_up) := by decide
+
+--| 5. AND THE CONTRAVARIANT READING.  The table is its part that is the same turned over, which the action reads, and its
+--| part that is owed turned over, which is the bent card by the quarter turn
+--| (`the_table_less_itself_turned_over_is_the_bent_card_by_the_quarter_turn`) and which no action reads.  The author's, 23
+--| November 2026 (declared): least action is the covariant reading of the inferred inferred device, and QED the
+--| contravariant; build it in this order.  What is checked is the split and the readings of the first part; that the
+--| second part is QED is the author's.
+theorem the_table_is_its_covariant_part_and_its_contravariant_part (a b : Bool) :
+    2 * the_full_table a b = (the_full_table a b + the_full_table b a) + (the_full_table a b - the_full_table b a) := by omega
+end the_taylor_series_the_frechet_derivative_and_least_action
+
+section two_first_variations_crossed
+open readers_experience
+
+--| TWO FIRST VARIATIONS CROSSED ARE THE SECOND.  The author's, 23 November 2026: thirteen, fourteen, fifteen as the first
+--| variation; three, four as the other; combined they make the second variation, the cross product (declared).  What is
+--| checked: a steady row, a start and a step, is a first variation held at three places.  Two steady rows crossed, in the
+--| turns, give the second difference, one, two owed, one, by the cross of their starts and steps; thirteen, fourteen,
+--| fifteen across three, four, five is ten of it.  The steady rows fill a plane, and the second difference is the one
+--| direction that reads nothing on every steady row: the cross product is that direction.  And the second difference
+--| taken twice is one, four owed, six, four owed, one: the fourth difference, the beam's stencil.
+
+--| A steady row: a start and a step, three places.
+def a_steady_row (start step : Int) : Turns := (0, start, start + step, start + step + step)
+
+theorem the_cross_of_two_steady_rows_is_the_second_difference (a d b e : Int) :
+    (the_turns_product (a_steady_row a d) (a_steady_row b e)).2
+      = (a * e - b * d, -(a * e - b * d) - (a * e - b * d), a * e - b * d) := by
+  simp only [the_turns_product, a_steady_row]
+  refine Prod.ext ?_ (Prod.ext ?_ ?_) <;> dsimp only <;> simp only [Int.mul_add, Int.add_mul, Int.zero_mul, Int.mul_zero] <;> ac_nf <;> omega
+
+theorem thirteen_fourteen_fifteen_across_three_four_five :
+    (the_turns_product (a_steady_row 13 1) (a_steady_row 3 1)).2 = (10, -20, 10) := by decide
+
+--| The second difference reads nothing on a steady row.
+theorem the_stencil_reads_nothing_on_a_steady_row (a d : Int) : a - 2 * (a + d) + (a + d + d) = 0 := by omega
+
+theorem the_second_difference_twice_is_the_fourth (f : Int → Int) (x : Int) :
+    (f x - 2 * f (x + 1) + f (x + 2)) - 2 * (f (x + 1) - 2 * f (x + 2) + f (x + 3)) + (f (x + 2) - 2 * f (x + 3) + f (x + 4))
+      = f x - 4 * f (x + 1) + 6 * f (x + 2) - 4 * f (x + 3) + f (x + 4) := by omega
+end two_first_variations_crossed
+
+section the_convergence_is_exact
+open readers_experience
+
+--| THE CONVERGENCE IS EXACT.  The author's, 23 November 2026: the second variation is the Frechet variation, and it should
+--| show the convergence is exact (declared).  What is checked.  Write the distance of a pair from each root as a whole part
+--| and a part by the root of the round trip: thirteen of the first less eighteen of the second, and the second owed or
+--| held.  One turn of the crank squares each distance, exactly, in the pairs: the second variation is all that is left, and
+--| it is the square.  So after any number of turns the distance is the first distance squared that many times, its power
+--| two to the turns, for every number of turns and with nothing estimated.  The only fact used about the numbers is that
+--| the round trip, ninety, is eighteen squared less thirteen by eighteen: half the trace squared less the coefficient by
+--| the memory.  Which root the crank goes to is the one whose distance is the smaller to begin with; that comparison needs
+--| the size of the root of ninety, and the device leaves it to the reader.  This is the induction Card 3 does on the page.
+
+--| A turn of the crank on a pair, for a residual c N² − 2t N D + m D².
+def a_turn_of_the_crank_for (c t m : Int) (p : Int × Int) : Int × Int :=
+  (c * (p.1 * p.1) - m * (p.2 * p.2), (c + c) * (p.1 * p.2) - (t + t) * (p.2 * p.2))
+--| The distance to each root, as a whole part and a part by the root of the round trip.
+def the_distance_up_for (c t : Int) (p : Int × Int) : Int × Int := (c * p.1 - t * p.2, - p.2)
+def the_distance_down_for (c t : Int) (p : Int × Int) : Int × Int := (c * p.1 - t * p.2, p.2)
+
+theorem a_turn_squares_the_distance_for (c t m ρ : Int) (round_trip : ρ = t * t - c * m) (p : Int × Int) :
+    the_distance_up_for c t (a_turn_of_the_crank_for c t m p)
+        = ((the_distance_up_for c t p).1 * (the_distance_up_for c t p).1 + ρ * (the_distance_up_for c t p).2 * (the_distance_up_for c t p).2,
+           (the_distance_up_for c t p).1 * (the_distance_up_for c t p).2 + (the_distance_up_for c t p).2 * (the_distance_up_for c t p).1)
+      ∧ the_distance_down_for c t (a_turn_of_the_crank_for c t m p)
+        = ((the_distance_down_for c t p).1 * (the_distance_down_for c t p).1 + ρ * (the_distance_down_for c t p).2 * (the_distance_down_for c t p).2,
+           (the_distance_down_for c t p).1 * (the_distance_down_for c t p).2 + (the_distance_down_for c t p).2 * (the_distance_down_for c t p).1) := by
+  obtain ⟨N, D⟩ := p
+  subst round_trip
+  simp only [the_distance_up_for, the_distance_down_for, a_turn_of_the_crank_for]
+  refine ⟨Prod.ext ?_ ?_, Prod.ext ?_ ?_⟩ <;> dsimp only <;>
+    simp only [Int.mul_add, Int.add_mul, Int.mul_sub, Int.sub_mul, Int.neg_mul, Int.mul_neg, Int.neg_neg] <;> ac_nf <;> omega
+
+theorem the_round_trip_is_the_trace_half_squared_less_the_coefficient_by_the_memory : the_round_trip = 18 * 18 - 13 * 18 := by decide
+
+def a_turn_of_the_crank : Int × Int → Int × Int := a_turn_of_the_crank_for 13 18 18
+def the_distance_to_the_upper_root : Int × Int → Int × Int := the_distance_up_for 13 18
+def the_distance_to_the_lower_root : Int × Int → Int × Int := the_distance_down_for 13 18
+
+theorem a_turn_squares_the_distance (p : Int × Int) :
+    the_distance_to_the_upper_root (a_turn_of_the_crank p)
+        = the_surd_product (the_distance_to_the_upper_root p) (the_distance_to_the_upper_root p)
+      ∧ the_distance_to_the_lower_root (a_turn_of_the_crank p)
+        = the_surd_product (the_distance_to_the_lower_root p) (the_distance_to_the_lower_root p) := by
+  have h := a_turn_squares_the_distance_for 13 18 18 the_round_trip the_round_trip_is_the_trace_half_squared_less_the_coefficient_by_the_memory p
+  rw [Int.mul_assoc, Int.mul_assoc] at h
+  simp only [the_surd_product, Int.mul_assoc]
+  exact h
+
+def turns_of_the_crank (start : Int × Int) : Nat → Int × Int
+  | 0 => start
+  | k + 1 => a_turn_of_the_crank (turns_of_the_crank start k)
+
+def squared_again (z : Int × Int) : Nat → Int × Int
+  | 0 => z
+  | k + 1 => the_surd_product (squared_again z k) (squared_again z k)
+
+theorem after_any_number_of_turns_the_distance_is_squared_that_many_times (start : Int × Int) (k : Nat) :
+    the_distance_to_the_upper_root (turns_of_the_crank start k) = squared_again (the_distance_to_the_upper_root start) k
+      ∧ the_distance_to_the_lower_root (turns_of_the_crank start k) = squared_again (the_distance_to_the_lower_root start) k := by
+  induction k with
+  | zero => exact ⟨rfl, rfl⟩
+  | succ k ih =>
+    obtain ⟨u, l⟩ := ih
+    show the_distance_to_the_upper_root (a_turn_of_the_crank _) = the_surd_product _ _
+      ∧ the_distance_to_the_lower_root (a_turn_of_the_crank _) = the_surd_product _ _
+    rw [(a_turn_squares_the_distance _).1, (a_turn_squares_the_distance _).2, u, l]
+    exact ⟨rfl, rfl⟩
+end the_convergence_is_exact
 
 end Measurement
 
@@ -8518,7 +9135,7 @@ open Measurement the_table readers_experience
 --| goes in.  The whole of the sum of the roots is how many times the coefficient by the frame goes into the trace by the
 --| fencepost's first.  The reading is the giant list, compiled.  The other is the one taken away from the other.
 def the_whole_of_the_sum    : Area := how_many_times (the_table.the_trace * the_fencepost.1) (the_coefficient * the_fencepost.2)
-def the_reading_in_cells    : Area := the_area_of_a_tape the_giant_list
+def the_reading_in_cells    : Area := the_area_of_a_tape_in_blanks_is the_giant_list
 def the_other_root_in_cells : Area := the_whole_of_the_sum - the_reading_in_cells
 
 --| THE CHOICE.  Two amounts of bullshit.  Take the lower.
@@ -8528,7 +9145,7 @@ def the_lowest_amount_of_bullshit : Area :=
 --| The author's: the demonstration of the Area crank demonstrates that they are the same, Quot.sound; Quot.sound carrying,
 --| carrying an empty carrier.  Take the reading away from the lowest and nothing is left but the tree.  That is all the sound
 --| of the quotient is handed, and with it the two are one: in the box of ratios, and in the order of the truth.
-theorem the_carrier_is_empty : something_is_left (the_lowest_amount_of_bullshit - the_reading_in_cells) = false := by decide +kernel
+theorem the_carrier_is_empty : coin_flip (the_lowest_amount_of_bullshit - the_reading_in_cells) = false := by decide +kernel
 
 theorem the_lowest_is_the_reading_in_the_box :
     (Quot.mk the_rational_idea_of_relativity_on_the_area (the_lowest_amount_of_bullshit, ast₁)
@@ -8542,8 +9159,8 @@ theorem the_lowest_is_the_reading_in_the_truth :
   Quot.sound (r := TruthOrder) ((the_bullshits_order_is_the_count _ _).2 (by decide +kernel))
 
 --| The device cannot tell them apart.  *YOU the KNOWER* can: count the cells.
-def o_deep_thought_what_is_the_answer_to_life_the_universe_and_everything : Nat := cells the_lowest_amount_of_bullshit
---#eval (cells the_whole_of_the_sum, cells the_reading_in_cells, cells the_other_root_in_cells)
+def o_deep_thought_what_is_the_answer_to_life_the_universe_and_everything : Nat := compute_the_area_of the_lowest_amount_of_bullshit
+--#eval (compute_the_area_of the_whole_of_the_sum, compute_the_area_of the_reading_in_cells, compute_the_area_of the_other_root_in_cells)
 #eval o_deep_thought_what_is_the_answer_to_life_the_universe_and_everything
 #print axioms o_deep_thought_what_is_the_answer_to_life_the_universe_and_everything
 

@@ -1,0 +1,18 @@
+name = "calibrate"
+defaultTargets = ["Calibrate"]
+
+# Calibrate is a package of its own so that the device never resolves, clones or sees Mathlib.
+# It reaches the device's package by path and imports Meanings; Measurement imports nothing from here.
+
+[[require]]
+name = "measurement"
+path = ".."
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+# The rev CARD_2's own lake-manifest.json already pins, beside Cli at v4.27.0-rc1.
+rev = "53871e289b791ecfd306724db39cb6c4f97a865e"
+
+[[lean_lib]]
+name = "Calibrate"

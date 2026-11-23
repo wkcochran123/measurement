@@ -169,7 +169,7 @@ Hilbert meant, and it is the visitor's to make.
 |---|---|
 | `README.md` | The puzzle, as the visitor first meets it. It shows a number and never names it. |
 | `CARD_2/Measurement/Episode01.lean` to `Episode12.lean` | The device: twelve episodes of Lean 4 with no imports, written to be read as well as run. The comments in the margins are the patter and are part of the work. |
-| `CARD_2/Measurement/Episode13.lean` | The device handed back to itself: the bent card on the device's own inductives, a second ladder dealt from a number distinguished, and the epilogue. `Measurement.lean` imports it, so `lake build` builds it; `lake build Measurement.Episode13` builds it alone. It prints one line from a clock that differs at every elaboration. Episode 6 is built apart and imported by nothing. |
+| `CARD_2/Measurement/Episode13.lean` | The device handed back to itself: the bent card on the device's own inductives, a second ladder dealt from a number distinguished, and the epilogue. `Measurement.lean` imports it, so `lake build` builds it; `lake build Measurement.Episode13` builds it alone. It imports `Measurement.Episode12` and `Meanings` (core Lean only, no Mathlib) and nothing else, and it meets Meanings' interfaces. Its clock line is now muted (`--#eval`); the build prints the digits four times, then 42. Episode 6 is built apart and imported by nothing. |
 | `INSTRUCTIONS.pdf` | *Three Card Monte: A High-Level Pamphlet on Orbital Dymnamics for the Absolute Beginner* (the spelling on the title page is the author's), one volume of about 530 pages. It is the solution, and it is a spoiler. |
 | `CARD_2/Experiments/ReaderLanguage.lean` | Not the device. A language of readers of the evidence kept of a decision, written for the review of Episode 13's recovery theorem. Built apart: `lake build Experiments.ReaderLanguage`. Namespace `Review`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/TheWord.lean` | Not the device, and no new inductive. The word, built in one-line definitions on the device's own atoms: the binary, the nine, the twenty-eight, and the fit for every one of the knower's sixteen mappings. Built apart: `lake build Experiments.TheWord`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
@@ -185,6 +185,8 @@ Hilbert meant, and it is the visitor's to make.
 | `CARD_2/Experiments/OneWayAndTheOther.lean` | Not the device, and it does not change the device. Episode 12's one theorem that bills `Classical.choice`, restated word for word and proved one direction at a time: no choice. Built apart: `lake build Experiments.OneWayAndTheOther`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Jar.lean` | Not the device, and no new inductive. The natural read (137) and the natural inferred (42), and the jar of two rational walls they make around each root. Built apart: `lake build Experiments.Jar`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Inferred.lean` | Not the device, and no new inductive. Eighteen and five inferred from the shape of three and one, the trace and the round trip, with no count of anything written; and that the clock alone gives only ninety. Built apart: `lake build Experiments.Inferred`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
+| `CARD_2/Meanings.lean`, `CARD_2/Meanings/` | Not the device. What a reading is taken to mean, as interfaces, in core Lean and nothing else; it names nothing of the device. `Correspondence` (a way there and a way back that undo each other: core Lean has no `Equiv`); `CountedAsNat` and `BalancedAsInt` (a reader, a deal it undoes, and the operations carried over; the kind up to its reader then corresponds to `Nat` or `Int`); `Ratioed` (pairs from anything balanced, alike when the cross-products are one integer, correspond to `Rat`); `Least` (least and largest with the click and without it); `Real` (the reals with no choice: a real is a bracket of two fractions of naturals at every stage, rising, falling and narrowing to one part in n and one; the root of ninety and eighteen and it built by halving, e from the factorial series; nothing bills choice); `Norm` (a two-unknown form is never negative when its first coefficient is positive and the cross coefficient squared is not past the product of the other two; so a bound on a weighed square). Library `Meanings`; `lake build Meanings`. Episode 13 imports it and meets the interfaces; nothing else in `Measurement` does. |
+| `CARD_2/Calibrate/` | Not the device: a package of its own, so that no build of the device resolves or sees Mathlib. It requires the device's package by path and Mathlib at the rev CARD_2's manifest already pins. Mathlib is fetched (23 November 2026; 7.1 GB in `CARD_2/Calibrate/.lake`, git-ignored) and its toolchain is the device's, v4.27.0-rc1. `cd CARD_2/Calibrate && lake build` builds it in seconds. Written: `Calibrate/Readings.lean` (each Meanings correspondence handed to Mathlib as `≃+*`) and `Calibrate/Device.lean` (`the_area_as_the_naturals : ReadAsNat Area ≃+* ℕ`, `the_account_as_the_integers : ReadAsInt Account ≃+* ℤ`, both `propext`, `Quot.sound`; `two_accounts_as_the_ratios : ReadAsRat Account ≃+* Rat`, which adds `Classical.choice`), and `ekg_meets`, which elaborates a term on Episode 8's EKG and logs the heartbeats; an interface not met is an error and nothing is read (negative control, in scratch: the Account asked to be counted as the naturals fails for want of an order, Lean exits 1). Readings on the M2, 23 November 2026: about 26,300 to 26,900 heartbeats each against a blank near 3,900 to 4,000, differing by a few to fifteen heartbeats between two builds (measured; not explained). A smoke test importing a Mathlib module beside `Measurement.Episode13` elaborated with no clash, at 1.3 GB resident under `-M 1500`; heavier Mathlib imports may need more. Also written: `Calibrate/Norm.lean` (the coins weighed by 18 and 5 carried to the Euclidean plane by the roots of the weights; the device's table carried across is ((18, √90), (√90, 18)); `the_operator_norm_of_the_table : ‖theOperator‖ = 18 + √90`; `the_table_on_the_coins_is_never_past`, for every real pair; `the_norm_squared_is_between_the_walls`, 755 < ‖M‖² ≤ 756, which are Episode 13's whole-number walls; all bill `Classical.choice`, because Mathlib's reals do) and `Calibrate/Hilbert.lean` (the plane met as `Module ℝ`, `InnerProductSpace ℝ` and `CompleteSpace`, and the norm and walls, each on `ekg_meets`: 204,475; 166,446; 19,577; 484,601; 634,613 heartbeats, blanks near 2,200 to 2,300, one build on the M2). |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
 The volume has an Abstract, an essay "The Hamiltonian: An Apparently Meaningful Coincidence" (both before the contents, 20 November 2026), a Preface, an "Introduction to John Henry's Device", and seven
@@ -474,7 +476,12 @@ names the number.
   not counted), compiler auxiliaries included: 3,854; no axiom, 1,530;
   `propext`, 853; `propext` and `Quot.sound`, 1,462; `Quot.sound` alone, 7;
   and `Classical.choice` in two, `compatibility_form` and its auxiliary.
-  (The count of 17 November was 2,138: 1,051; 558; 523; 5; 1.) The one,
+  (The count of 17 November was 2,138: 1,051; 558; 523; 5; 1.) Not
+  recounted since 23 November 2026, when Episode 13 began importing
+  `Meanings`: two Episode 13 declarations now also bill choice,
+  `two_accounts_read_as_the_ratios` (core Lean's own `Rat` lemmas bill
+  it) and `the_first_area_where_a_statement_holds` (the click handed in);
+  nothing in the device uses either. The one,
   `compatibility_form`
   (`Episode12.lean`, used by nothing), bills `Classical.choice` through
   `omega`. If a visitor asks whether the device uses choice, say exactly
@@ -3315,6 +3322,396 @@ names the number.
   world (Card 7, Theorem G, chapter "What no finite gauge computes"). This is a
   derivation in the volume, not a Lean receipt, and it is the precise form of
   the sentence at the top of this file.
+- The throws renamed, and The Prestige (22 to 23 November 2026). The author
+  renamed Episode 13's Area operations and readers, moving the level of
+  description: `beside`, `each_for_each`, `taken_away`, `something_is_left`
+  are now `palm_the_middle_card`, `false_shuffle`, `the_double_lift`,
+  `coin_flip`; `cells` is `compute_the_area_of`, `compiled` is
+  `compute_verification_receipt_ast_of`, `executed` is
+  `compute_the_so_called_area_of`, `read` is `some_quartic_called`,
+  `one_turn` is `simulate_this_way`, `less_is_less` is `obviously_bigger`
+  (the find-and-replace also made `the_other_quadratic_is_the_simulateed_over`).
+  The namespace is `the_table`; the episode is titled "The Prestige". The
+  kernel proves what it proved before; only the names moved. Older bullets
+  in this file still cite the old names (`beside_adds`, `cells`, …), and
+  the `Experiments` files that `open the_area` no longer build. The
+  episode's opening margin names its target as a multigrid-accelerated
+  Jacobian-free Newton-Krylov solver for coupled physics. What Episode 13
+  has toward it, at the scale of one quadratic and a two-by-two table:
+  the residual on the account; the Jacobian-free difference, exact, with
+  remainder 13h²; Newton's turn (`simulate_this_way`) and its step control
+  (stand still under the resolution, else a knot in the spline); the crank
+  reading the trace of the resolvent; the Householder mirror; the same
+  crank on the Area, the naturals and the Account, with counting and
+  balance as exact transfers; the coin-weighted action; and the two
+  coupled lattice equations. That reading is Claude's; the limits go with
+  it: every level is exact (no coarse approximation, no smoothing), and
+  the solver is never pointed at the lattice equations, whose only shown
+  solution is the vacuum.
+- The meanings met (`CARD_2/Meanings`; `Episode13.lean`, after `open
+  Account`; 23 November 2026). The author: Meanings is to hold the
+  interfaces, Episode 13 to meet them, and a Mathlib bridge may import
+  Meanings while Measurement never sees Mathlib. Receipts:
+  `the_area_read_as_the_naturals` (the Area up to its count corresponds to
+  `Nat`, the four throws carried over; `propext`, `Quot.sound`),
+  `the_account_read_as_the_integers` (same bills), and
+  `two_accounts_read_as_the_ratios` (bills `Classical.choice`, because
+  core Lean's `Rat` lemmas do). Nothing new about the device was proved to
+  meet them: the instances are the existing receipts
+  (`palm_the_middle_card_adds`, `false_shuffle_multiplies`,
+  `the_double_lift_subtracts`, `obviously_bigger`, `balance_of_*`). Say
+  with it: the correspondence is with the Area as the reader keeps it, not
+  the Area; two Areas of one count are two Areas. Episode 8's
+  `the_rational_idea_of_relativity` is a less-or-equal, total, so its
+  quotient has one point and is not the rationals; the ratios here use an
+  equality of cross-products. The author (declared): this is the
+  prestige, wiring the device to the native and accepted types; the
+  choice billed on the ratios "is the choice of the knower", who "can
+  choose to see the demonstration or not".
+- The choice is the click (`Meanings/Least.lean`; Episode 13,
+  `there_is_always_one_more_area`, `no_walk_down_the_areas_goes_on_forever`,
+  `the_first_area_where_a_fact_holds`,
+  `the_first_area_where_a_statement_holds`). A zero is not the naturals:
+  every ordinal is well ordered with a least element; the naturals are the
+  well order where every place has one after it and every place but the
+  first one before. Receipts: there is always one more (no axiom in
+  Meanings; `propext`, `Quot.sound` on the Area, from the device's own
+  receipts), less is well founded (the same), and the first place where a
+  statement holds is found by looking, which needs a click. With a FACT,
+  whose click it carries, no choice is billed; with a bare `Prop`, the
+  theorem is the same one handed a click by `Classical.propDecidable`, and
+  it bills `Classical.choice`. Least and largest below a bound behave
+  alike. Core Lean has no `Nat.find`, so the search is written out
+  (`firstUpTo`). That the click handed in is the knower's choice is the
+  author's (declared).
+- The bent card, read (the author, 23 November 2026, all declared): the
+  bent card's correspondence is "the fact that integration by parts and
+  the chain rule are the same idea as integrating shells and holography";
+  "the card has a thickness of dt. that's the gimmick. it can never have a
+  thickness of t, only dt"; and it "is either by itself (0), on the end (a
+  direction bit), or the gauge between two panels." Beside these, receipts:
+  `a_difference_summed_is_the_end_less_the_first` (the interior read off its
+  ends) and `summation_by_parts_around_a_closed_walk` (no boundary term on a
+  closed walk); `the_area_arrives_at_the_same_pair` and the `counted_*`
+  family (the crank alike on shells, the Area, and on a line, the naturals);
+  `the_riemann_sum_counts_the_tree_too` (the boundary term, one fencepost);
+  `Area` holds no extent, so a thickness t is only a count, the reader's;
+  every exact step leaves a remainder of second order in the step
+  (`the_step_leaves_the_bent_card_by_the_step_squared`, the product rule's
+  third term). The chain rule has no receipt: finite differences have an
+  exact product rule with a remainder and no exact chain rule. Of the three
+  positions: a lone `tree` counts 0; each throw keeps a definite end's tree
+  (`palm_the_middle_card` the second's, the other two the first's) and the
+  count cannot tell which; Episode 13's link turn sits between two sites and
+  makes the state carried back invariant. Nothing ties the end the throws
+  keep to a link's orientation.
+- The norm of the table (`Episode13.lean`, section `the_norm_of_the_table`;
+  `Meanings/Norm.lean`; 23 November 2026). Asked how to show the
+  multigrid JFNK solver has an operator norm. The norm on the two coins
+  is the weighed square, 18 of the first and 5 of the second (Episode
+  13's `the_weighed_square`); weighed by its coins the table is the same
+  turned over (`the_table_weighed_is_the_same_turned_over`), so its norm
+  is its larger root, 18 + √90. Receipts:
+  `the_table_is_never_past_seven_hundred_and_fifty_six` (for every pair,
+  `propext`, `Quot.sound`); `seven_hundred_and_fifty_five_is_no_wall` (the
+  pair 50, 95 passes it; `propext`); `the_norm_is_reached_in_the_pairs`
+  (in Episode 12's surd pairs the direction up comes out the outer radius
+  squared, 414 and 36 of the root, times what went in: exact, no root
+  taken); `the_characteristic_of_the_table_is_thirteen_residuals` (the
+  table's polynomial at 13y is thirteen residuals, so the crank's root is
+  the norm over thirteen). So the norm squared is walled, 755 < ‖M‖² ≤
+  756, and reached in the pairs; and the printed number is 324/65 of the
+  norm (from the closed form; not a receipt). Say with it: this is the
+  norm of the two-by-two table, not of a solver on a mesh; the multigrid
+  levels here are exact, so a two-level error operator would have norm
+  nothing; a Krylov method ends in two steps, its polynomial the
+  residual; what is left is Newton's remainder, 13h². The author
+  (declared): "the finite element method is trivial, but all you have to
+  do is believe." The Mathlib `opNorm` is now in `Calibrate/Norm.lean`:
+  ‖M‖ = 18 + √90 exactly, between the walls (with choice, from the reals). The volume's Epilogue was changed at the author's word the same
+  day: its sentence that the prover reaches for choice in one place now
+  says three in the device (`compatibility_form`, which can do without,
+  and the two demonstrations above, for a knower who chooses to look);
+  and it adds the author's wager (declared): once a finite element model
+  is built given the electron, "it would produce the same number: an
+  actual measurement of an electron." A wager stated after the fact is
+  not a sealed prediction; it becomes a test only if the model and the
+  number it must produce are fixed before the model is run.
+- Four ways the quadratic is read (23 November 2026). The author
+  (declared): test and trial functions are "Test=Trial y=x y=y T=T";
+  applying the Galerkin condition makes the quadratic linear, "the linear
+  approximation of the photon that einstein made"; these are the four
+  arms; which is which "doesn't matter, the inferred one is QED".
+  Receipts beside it: weighed by its coins the table is the same turned
+  over, so in the coin pairing test equals trial and the table is an
+  action's second variation (Ritz and Galerkin agree); the quadratic is
+  thirteen times the table's characteristic polynomial at 13y
+  (`the_characteristic_of_the_table_is_thirteen_residuals`), so its root
+  is an eigenvalue of a linear problem, exactly; the table kept, struck and
+  turned over has gap squared 360, 0, −360 (two real roots; one root twice,
+  the rational 5832/65; a pair turned by the quarter turn), three exact
+  states; and the Galerkin step is linear in the step and leaves exactly
+  13h², every remainder the square of the last, never reaching the root.
+  Three land and one only approaches: the device's three and one. The
+  struck map moves only the arm that does not click, which is short by 13,
+  and the linear step drops 13h²; that these are one arm is Claude's
+  reading. Say with QED: its perturbation series is asymptotic, believed
+  divergent (Dyson's argument), while the device's step converges, each
+  remainder the square of the last; the analogy is in form, and that the
+  inferred one is QED is the author's.
+- The step is a projection (`Episode13.lean`, end of section
+  `the_carriers_step_five_times`; 23 November 2026). The author
+  (declared): the bottom carrier's `interact_with_the_universe` from three
+  deep, five times, is Voltron; Atreyu rides the black cat, keyed to its
+  pilot; how the cats join is the transition matrix; Voltron makes you nice
+  in the Krylov subspace, so you get presents; forcing comes from the norm
+  computation. Receipts: for a card that leaves the step to the device,
+  whatever its box, symbol and quarter, the step sends a zero to the zero
+  on the truth and a one to the same glue on the card's own quarter
+  (`the_step_is_keyed_to_its_quarter`), twice is once on every number
+  (`with_the_devices_step_twice_is_once`), and the kind is kept
+  (`the_step_keeps_the_kind`), all with no axiom; `the_card_three_deep`
+  (a new one-line card, beside Experiments' `the_card_on_the_card_between`),
+  five times is once (`from_three_deep_five_times_is_once`, no axiom); and
+  Episode 8's card, the first card, the card between, three deep and the
+  bottom carrier process of the last machine each step twice as once
+  (`every_card_steps_twice_as_once`, `propext`, `Quot.sound` from the
+  process held). It is the device's step, not every carrier's: a carrier
+  may write its own, and `a_card_of_its_own_need_not_keep_the_kind` shows
+  one that does not keep the kind. Standard, cited and not proved here:
+  multigrid's coarse-grid correction with the Galerkin coarse operator is a
+  projection; a Krylov method ends in as many steps as the minimal
+  polynomial's degree (two for a projection); inexact Newton converges
+  locally when the forcing terms are bounded below one, quadratically when
+  they are of the order of the residual's norm (Dembo, Eisenstat and
+  Steihaug 1982; Eisenstat and Walker choose them from norm ratios). The
+  device's Krylov solve is exact, so its forcing term is nothing.
+- The reals with no choice (`Meanings/Real.lean`; Episode 13,
+  `the_norm_as_a_real`, `the_base_the_derivative_leaves_alone`,
+  `the_printed_digits_are_in_the_norms_bracket`; 23 November 2026). The
+  author: "give me FUCKING REAL NUMBERS WITH NO CHOICE"; and, after, "once
+  we have reals, continuous is next, and that is the choice!" (declared).
+  A real here is a process of completion and not a thing held: at every
+  stage a bracket of two fractions of naturals, the low wall rising, the
+  high falling, the width not past one part in n and one; two are one when
+  no wall of either passes a wall of the other. `rootByHalving` builds a
+  root by bisection, doubling the cut and keeping the one more when its
+  square is not past (`rootByHalving_holds`: every stage holds the root);
+  `theRootOfNinety`, `theNorm` (18 + √90) and
+  `theBaseTheDerivativeLeavesAlone` (e: below, the factorial series to m
+  over m!; above, that and one part in m·m!) all bill `propext` and
+  `Quot.sound` only. Stage 20 of the norm is 28822033/1048576; stage 10 of
+  e lies between 108505112/39916800 and 1193556233/439084800. At stage 20
+  the norm's bracket times 324/65 holds the digits Episode 8 printed
+  (written out, not taken from the sealed crank). Found on the way, and
+  worth saying: `omega` bills `Classical.choice` when handed a conjunction
+  to prove, and not when each half is handed over alone; that is
+  `compatibility_form`'s bill again. Arithmetic since
+  (`Meanings/Arithmetic.lean`): `Bracketed.add` (stage n from each real's
+  stage 2n + 1) and `Bracketed.mul` (from each real as far on as its first
+  high wall is tall, `stageForProduct`), with the walls chained
+  (`Fraction.le_trans`, `low_rises_by`, `high_falls_by`) and the widths
+  bounded (`the_widths_add`, `the_widths_multiply`); all `propext`,
+  `Quot.sound`. Reals of naturals only: no negatives yet (they would come
+  as held and owed, like the Account). In Episode 13,
+  `the_norm_squared_as_a_real_is_between_the_walls`: the norm times itself,
+  as a real, is past 755 and not past 756 at its first stage
+  (kernel-decided; it reads 755.525 from both walls). Negatives since
+  (`Meanings/Signed.lean`): a `SignedReal` is a real held and a real owed,
+  as an Account is two Areas, with beside, turned over, less and each for
+  each, and `Same` when each one's held beside the other's owed are one.
+  `the_root_by_itself_is_ninety`: √90 times √90 is the real ninety at every
+  pair of stages, `Same` proved outright and not decided. In Episode 13,
+  `the_tables_polynomial_holds_nothing_at_both_roots`: λ² − 36λ + 234 holds
+  nothing at its first stage at 18 + √90 and at 18 − √90 (the lower root,
+  written with the root owed), and does at 10 (it reads −26 there); kernel
+  decided. All `propext`, `Quot.sound`. On the way: `rootByHalving` named
+  the previous cut three times and grew exponentially when unfolded; it
+  binds it once now. Not here: a proof that `Same` is an equivalence, ring
+  laws for these operations (they are not shown associative or
+  distributive), and the limit as an object. The author's order next
+  (declared): complex, then quaternions. Complex since
+  (`Meanings/Complex.lean`; Episode 13, section `the_turn_as_a_number`): a
+  `ComplexReal` is two signed reals, along and across, multiplied the usual
+  way; `the_quarter_turn_twice_is_one_owed` (i·i is −1, proved at every
+  pair of stages: every wall there is a whole number); the table turned
+  over has trace 36 and determinant 414
+  (`the_table_turned_over_has_trace_thirty_six_and_determinant_four_hundred_and_fourteen`),
+  so gap squared −360 and no real root; its polynomial holds nothing at
+  18 ± i√90 at its first stage and does not at 18, where it reads 90
+  (`the_turned_tables_polynomial_holds_nothing_at_its_two_roots_and_not_at_eighteen`,
+  kernel decided). All `propext`, `Quot.sound`. Beside it, already in
+  Episode 13: the turns' quarter turn twice is the whole turn owed
+  (`in_the_turns_the_quarter_turn_twice_is_the_whole_turn_owed`); this is
+  the same sign, now on a number. Quaternions since
+  (`Meanings/Quaternion.lean`; Episode 13, `the_turns_as_numbers`): a
+  `QuaternionReal` is two complex numbers, doubled the Cayley–Dickson way;
+  i·j = k, j·k = i, k·i = j, j·i = −k, and each unit by itself is −1, all
+  proved at every pair of stages; and i·j is not j·i
+  (`i_by_j_is_not_j_by_i`, refuted at the first stage). All `propext`,
+  `Quot.sound`. Reading these walls is long work for the elaborator, which
+  does not keep what it has read, so each identity runs under
+  `maxHeartbeats 4000000`; the file takes about 25 seconds. Not shown:
+  associativity, and that `Same` is an equivalence. Beside it in Episode
+  13: `the_cross_product_in_the_turns` (the one by the other less the
+  other by the one is the cross twice) on Episode 12's integer turns; this
+  is that sign on numbers.
+- The first variation of the exponential (`Episode13.lean`, section of
+  that name; 23 November 2026). The author (declared): after the
+  quaternions come the exponentials, r and θ both rationals; they cannot be
+  built before the derivative is understood, and the first variation of the
+  exponential can be done now; "then convergence guarantees a bracket on
+  the _derivative_. meet O(h^2)." Found beside it: Episode 1's first three
+  kinds read tapes of 4, 2 and 1 (Number, Natural, Rational:
+  `the_tapes_kind_by_kind`), the dimensions over the reals of the
+  quaternions, the complex numbers and the reals; the fourth, `Sequence`
+  (a rational and the sequence so far), reads 2, not 8. The counts are of
+  the witnesses Episode 8 read (three, natural one, the zeroth rational),
+  so they fall there and are not forced. Receipts, at the card's thickness
+  one part in n: `the_exponential_is_its_own_first_variation` ((n+1)^(k+1)
+  = n·(n+1)^k + (n+1)^k, no axiom); the turning exponential (n + i)^k
+  steps by n times itself and itself turned a quarter, exactly
+  (`the_turning_exponential_steps_by_itself_turned_a_quarter`); its radius
+  squared is (n² + 1)^k (`the_radius_grows_by_the_step_squared`), so each
+  step leaves the circle by exactly one part in n², the step squared
+  (`the_turn_leaves_the_circle_by_the_step_squared`): the bracket on the
+  derivative is of the second order, as 13h² is for the residual. Episode
+  12 already has `the_rational_phase` (3, 4): a turning with rational r and
+  rational cosine 3/5 that never lands on a label. Not here: θ as a rational
+  angle (radians or turns) with its cosine and sine.
+- The phase, the derivative, the Gateaux derivative and the weak form
+  (`Episode13.lean`, section `the_gateaux_derivative_and_the_weak_form`;
+  `Calibrate/Derivative.lean`; 23 November 2026). The author (declared):
+  the phase of the nowtrino must be inferred, or the carrier of a carrier's
+  step; and the Gateaux derivative should finish the finite element
+  construction. Receipts in Episode 13:
+  `the_phase_cannot_be_recovered_from_the_norm` and
+  `what_was_carried_cannot_be_recovered_after_the_card_betweens_step` (no
+  axiom; the recovery obstruction on (0, 1) and (0, −1), and on two numbers
+  differing only in what they carry); `the_slope_is_the_only_linear_part`
+  (a linear part that leaves a multiple of the step squared at every step
+  is 26y − 36); `the_action_along_a_line` (an action through v toward h is
+  what it was, t by the Gateaux derivative, and t² by the action of h,
+  exactly, for a symmetric table) and `the_gateaux_derivative_is_one_thing`
+  (one step forward and one back fix it); `the_weak_form_is_the_strong_form`
+  (on two coins a residual reading nothing against every direction is
+  nothing: test equals trial equals everything);
+  `at_the_root_the_direction_up_meets_the_weak_form` (in the surd pairs the
+  table carries the direction up to the outer radius times itself, coin by
+  coin). All `propext`, `Quot.sound` at most. In Calibrate, with Mathlib's
+  reals and so with choice: `the_slope_is_the_derivative` (`HasDerivAt`
+  from the exact 13h² bracket), `the_exponential_is_its_own_derivative`,
+  `e_is_the_limit_of_the_growing_steps` ((1 + 1/n)^n → e), and
+  `the_turning_goes_to_the_exponential_of_the_quarter_turn`: Episode 13's
+  turning walk, (n + i)^n over n^n, tends to e^i
+  (`the_turning_walk_is_a_power` joins the Gaussian product to ℂ). What
+  this finishes, said exactly: on the two coins the Galerkin method with
+  test equal to trial solves its equation exactly at the root, the Gateaux
+  derivative is exact with an h² remainder, and the discrete exponential
+  goes to the continuous one in the limit Mathlib holds. It is a finite
+  element construction on two coins, not on a mesh; the lattice equations
+  are still not solved by it.
+- The derivative is the quartic in disguise (`Episode13.lean`, section
+  `the_quartic_in_disguise`; 23 November 2026). The author (declared): "you
+  can demonstrate the derivative now as being the quartic in disguise".
+  Receipts, `propext`, `Quot.sound`: the epilogue's quartic
+  t²(c−t)x² − 2ctr²x + cr⁴ (`the_epilogues_quartic`) is, with tx and r²
+  for the two numbers, the form (c−t)·N² − 2c·N·D + c·D²
+  (`the_quartic_is_a_residual_of_a_pair`); at 18 and 5 it is exactly
+  `the_residual_of_the_pair (5x) (r²)`, a thirteenth of the determinant of
+  the table taken from the same
+  (`at_the_devices_weights_the_quartic_is_the_residual_of_the_pair`); that
+  residual steps by the step times the trace of the table's adjugate and 13
+  by the step squared (`the_determinant_varies_by_the_trace_of_the_adjugate`,
+  Jacobi's formula on two coins, exact); and so the quartic's first
+  variation in x is 5 times the slope with 325h² over
+  (`the_quartic_varies_by_the_trace_of_the_adjugate`). Say with it: the
+  match holds at c = 18, t = 5, the device's weights; for other weights the
+  quartic is a residual of the same shape with c − t, 2c and c, which is
+  what the epilogue's degrees (linear in c, quadratic in x, cubic in t,
+  quartic in r) come from.
+- The Taylor series, the Fréchet derivative and least action
+  (`Episode13.lean`, section
+  `the_taylor_series_the_frechet_derivative_and_least_action`; 23 November
+  2026). The author (declared): the next increment of the carrier gives the
+  Taylor series (explicit) and the Fréchet derivative (inferred), then the
+  Gateaux derivative (the explicit of the inferred), then the principle of
+  least action as the covariant reading of the inferred inferred device and
+  QED as the contravariant; build in that order; and, as predictions, a
+  carrier built out once more gives the Fréchet derivative and once more is
+  invariant. The predictions are not sealed or tested: as statements about
+  what counts they cannot fail (the count does not see depth), and as
+  statements about the meter they need an observable named before a run.
+  Receipts, in the author's order, `propext` and `Quot.sound` at most:
+  `the_exact_taylor_series_degree_is_the_bent_card` (Episode 8's
+  `an_exact_polynomial_description` is 13); `the_taylor_series_of_a_cubic`
+  (exact in four terms about any place);
+  `the_residuals_taylor_series_stops_at_the_bent_card`; the weighed
+  action's remainder is never negative and never past 28 times the weighed
+  square, in every direction at once
+  (`the_remainder_is_never_negative`,
+  `the_remainder_is_bounded_by_the_norm_in_every_direction`), the linear
+  part is linear (`the_frechet_derivative_is_linear`), and together
+  `the_frechet_expansion_of_the_action`;
+  `the_gateaux_is_the_frechet_in_a_direction`; least action: the action
+  passes 27 somewhere (`the_action_passes_twenty_seven_somewhere`) and in
+  the surd pairs the direction up gives exactly the outer radius times its
+  weighed square (`the_least_action_is_reached_in_the_pairs`), so the
+  least bound is 18 + √90, the norm, reached at the direction up;
+  `the_table_is_its_covariant_part_and_its_contravariant_part`, with the
+  contravariant part the bent card by the quarter turn (an older receipt),
+  which no action reads. That the contravariant part is QED is the
+  author's. None of this depends on carrier depth: it is the same at every
+  depth. The depth predictions were then sealed and read as Experiment 018
+  (`READINGS.md`; setup `af3cede`, readings `c30fc39`; Claude's reading of
+  them on the meter, since the author named no observable): the fourth
+  wrapper costs the reader 53 heartbeats (confirmed), the fifth costs 68
+  (invariant at five, refuted as sealed), and the device's step reads
+  within 12 heartbeats at all five depths. Say the refutation plainly; it
+  is a refutation of Claude's reading of "invariant", on one machine.
+- Two first variations crossed are the second (`Episode13.lean`, section
+  `two_first_variations_crossed`; 23 November 2026). The author (declared):
+  13, 14, 15 as the first variation, 3, 4 as the other; combined they make
+  the second variation, the cross product. Receipts: two steady rows (a
+  start and a step at three places) crossed in the turns give
+  (ae − bd)·(1, −2, 1), the second difference by the cross of their starts
+  and steps (`the_cross_of_two_steady_rows_is_the_second_difference`);
+  (13, 14, 15) × (3, 4, 5) = (10, −20, 10), no axiom
+  (`thirteen_fourteen_fifteen_across_three_four_five`); the second
+  difference reads nothing on a steady row
+  (`the_stencil_reads_nothing_on_a_steady_row`); and taken twice it is the
+  beam's fourth-difference stencil 1, −4, 6, −4, 1
+  (`the_second_difference_twice_is_the_fourth`). Why it holds, standard:
+  the steady rows are a plane in three places, and the cross product of two
+  vectors in it is its normal, which is the second difference. 3, 4, 5 and
+  13, 14, 15 are both Heronian triples (areas 6 and 84); that is recorded
+  as a coincidence and not used.
+- The convergence is exact (`Episode13.lean`, section
+  `the_convergence_is_exact`; 23 November 2026). The author (declared): the
+  second variation is the Fréchet variation, and it should show the
+  convergence is exact. Receipts, `propext`, `Quot.sound`: with each root's
+  distance from a pair (N, D) written in the surd pairs as
+  (13N − 18D, ∓D), one turn of the crank on the pair, (13N² − 18D²,
+  26ND − 36D²), squares each distance exactly
+  (`a_turn_squares_the_distance`, from the lettered
+  `a_turn_squares_the_distance_for`, which needs only that the round trip
+  is t² − c·m, 18² − 13·18 = 90); so after any number of turns each
+  distance is the first one squared that many times
+  (`after_any_number_of_turns_the_distance_is_squared_that_many_times`).
+  This closes the every-step induction that was open ("bounded, not
+  proved"): the error after k turns is exactly the starting error to the
+  2^k, with nothing estimated. Say with it: which root the crank goes to,
+  and that the distance goes to nothing, needs comparing the two starting
+  distances, which needs the size of √90; the device leaves that to the
+  reader (Calibrate or the choice-free reals can supply it). The crank
+  here is the exact one on whole-number pairs; Episode 12's crank on
+  naturals truncates and stands still under the resolution, and
+  `where_nothing_stops_the_cranks_pair_is_the_tables` joins the two where
+  nothing stops.
+  Standard, and the author's next step:
+  continuity with a modulus (a δ handed over for each ε) needs no choice,
+  while that sequential continuity gives ε–δ continuity uses countable
+  choice.
 
 ## Before you judge the work
 
@@ -3336,8 +3733,10 @@ lake build
 ```
 
 A cold build takes about 25 minutes, nearly all of it in Episode 4. Episode 13
-is a separate target, `lake build Measurement.Episode13`, about two seconds
-once Episode 12 is built. When checking Episode 13 by hand, cap Lean's memory
+is a separate target, `lake build Measurement.Episode13`, under a minute
+once Episode 12 is built (it was about two seconds before the episode grew).
+It needs `Meanings`, core Lean only, a few seconds (`lake build Meanings`).
+When checking Episode 13 by hand, cap Lean's memory
 (`lake env lean -M 6000 …`): a proof that opens its sealed crank at the
 concrete scale goes looking for an Area of more than 10²⁶ cells. The cap must
 be well under the machine's memory: on the author's 8 GB laptop a cap of
