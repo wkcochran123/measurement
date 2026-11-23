@@ -3727,6 +3727,24 @@ names the number.
   k some m" to a function is countable choice; that sequential continuity
   gives ε–δ continuity uses it. So the choice is exactly the step from
   that-there-is to where, and the click is what makes the step free.
+- The root's direction (`Episode13.lean`, section `the_roots_direction`;
+  23 November 2026). Which root the crank goes to, decided with no choice.
+  Receipts, `propext`, `Quot.sound` at most: one turn squares the residual
+  of the pair by 13 (`a_turn_squares_the_residual_for`), so after any turn
+  it is never negative (`after_a_turn_never_below_the_upper_root`); one turn
+  keeps the pair past the vertex 18/13 (`a_turn_keeps_the_upper_side`:
+  13N′ − 18D′ = (13N − 18D)² + 90D²); above the root a turn moves the pair
+  down by D·R (`a_turn_moves_by_the_residual_for`,
+  `above_the_root_a_turn_falls`). Episode 8's crank starts at the house,
+  530/324 (evaluated): past the vertex and under the upper root
+  (`the_house_is_on_the_upper_side_below_the_root`, no axiom); so every turn
+  is on the upper side (`every_turn_from_the_house_is_on_the_upper_side`)
+  and from the first turn on it is above the root and falls
+  (`from_the_first_turn_on_it_is_above_the_root_and_falls`). The lower root,
+  the other side of the vertex, is never reached. Together with the exact
+  squaring this decides the direction; the limit itself, that the falling
+  pairs come all the way, is a completion and is the reader's (Calibrate
+  or the choice-free brackets could supply it; not done).
   Standard, and the author's next step:
   continuity with a modulus (a δ handed over for each ε) needs no choice,
   while that sequential continuity gives ε–δ continuity uses countable

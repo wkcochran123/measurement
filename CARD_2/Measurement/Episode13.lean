@@ -9061,6 +9061,105 @@ theorem a_modulus_from_statements (serves : Nat → Nat → Prop) (continuous : 
   Meanings.a_modulus_without_the_click serves continuous
 end continuity_and_the_choice
 
+section the_roots_direction
+open readers_experience
+
+--| THE ROOT'S DIRECTION.  Which root the crank goes to.  The two roots stand either side of the vertex, eighteen over
+--| thirteen, half their sum.  One turn squares the residual of the pair, by thirteen: after any turn it is never under
+--| nothing, so the pair is never under the upper root.  One turn keeps the pair past the vertex, since thirteen of the
+--| first less eighteen of the second becomes that squared and ninety of the second squared.  And above the root a turn
+--| moves the pair down by the second by the residual.  Episode 8's crank starts at the house, five hundred and thirty over
+--| three hundred and twenty-four: past the vertex and under the upper root.  So the first turn throws it over the upper
+--| root, and from there every turn falls toward it and none crosses the vertex.  The lower root is never reached: it is
+--| on the other side of the vertex.  That the falling pairs come to the upper root and not to something above it is the
+--| exact squaring of the distance, above; that it comes all the way is a limit, and the limit is the reader's.
+
+def the_residual_for (c t m N D : Int) : Int := c * (N * N) - (t + t) * (N * D) + m * (D * D)
+
+theorem a_turn_squares_the_residual_for (c t m : Int) (p : Int × Int) :
+    the_residual_for c t m (a_turn_of_the_crank_for c t m p).1 (a_turn_of_the_crank_for c t m p).2
+      = c * (the_residual_for c t m p.1 p.2 * the_residual_for c t m p.1 p.2) := by
+  obtain ⟨N, D⟩ := p
+  simp only [the_residual_for, a_turn_of_the_crank_for]
+  simp only [Int.mul_add, Int.add_mul, Int.mul_sub, Int.sub_mul]; ac_nf; omega
+
+theorem a_turn_moves_by_the_residual_for (c t m : Int) (p : Int × Int) :
+    (a_turn_of_the_crank_for c t m p).1 * p.2 - p.1 * (a_turn_of_the_crank_for c t m p).2
+      = - (p.2 * the_residual_for c t m p.1 p.2) := by
+  obtain ⟨N, D⟩ := p
+  simp only [the_residual_for, a_turn_of_the_crank_for]
+  simp only [Int.mul_add, Int.add_mul, Int.mul_sub, Int.sub_mul, Int.neg_add, Int.neg_sub]; ac_nf; omega
+
+theorem a_turns_second_is_twice_the_second_by_the_distance_for (c t m : Int) (p : Int × Int) :
+    (a_turn_of_the_crank_for c t m p).2 = (p.2 + p.2) * (c * p.1 - t * p.2) := by
+  obtain ⟨N, D⟩ := p
+  simp only [a_turn_of_the_crank_for]
+  simp only [Int.add_mul, Int.mul_sub]; ac_nf
+
+--| The upper side: the second more than nothing, and the place past the vertex, eighteen over thirteen.
+def on_the_upper_side (p : Int × Int) : Prop := 0 < p.2 ∧ 18 * p.2 < 13 * p.1
+
+theorem the_residual_of_the_pair_is_the_residual_for (N D : Int) :
+    the_residual_of_the_pair N D = the_residual_for 13 18 18 N D := by
+  unfold the_residual_of_the_pair the_residual_for; omega
+
+theorem a_turn_keeps_the_upper_side (p : Int × Int) (side : on_the_upper_side p) :
+    on_the_upper_side (a_turn_of_the_crank p) := by
+  obtain ⟨d, a⟩ := side
+  have second := a_turns_second_is_twice_the_second_by_the_distance_for 13 18 18 p
+  have sq := congrArg Prod.fst (a_turn_squares_the_distance p).1
+  simp only [the_distance_to_the_upper_root, the_distance_up_for, the_surd_product] at sq
+  have rt : the_round_trip = 90 := by decide
+  rw [rt] at sq
+  have nn := Meanings.a_square_is_never_negative (13 * p.1 - 18 * p.2)
+  have dd : 0 < p.2 * p.2 := Int.mul_pos d d
+  have negneg : 90 * -p.2 * -p.2 = 90 * (p.2 * p.2) := by rw [Int.mul_assoc, Int.neg_mul_neg]
+  rw [negneg] at sq
+  refine ⟨?_, ?_⟩
+  · show 0 < (a_turn_of_the_crank_for 13 18 18 p).2
+    rw [second]; exact Int.mul_pos (by omega) (by omega)
+  · show 18 * (a_turn_of_the_crank_for 13 18 18 p).2 < 13 * (a_turn_of_the_crank_for 13 18 18 p).1
+    have : 13 * (a_turn_of_the_crank_for 13 18 18 p).1 - 18 * (a_turn_of_the_crank_for 13 18 18 p).2
+        = (13 * p.1 - 18 * p.2) * (13 * p.1 - 18 * p.2) + 90 * (p.2 * p.2) := sq
+    omega
+
+theorem after_a_turn_never_below_the_upper_root (p : Int × Int) :
+    0 ≤ the_residual_of_the_pair (a_turn_of_the_crank p).1 (a_turn_of_the_crank p).2 := by
+  rw [the_residual_of_the_pair_is_the_residual_for]
+  show 0 ≤ the_residual_for 13 18 18 (a_turn_of_the_crank_for 13 18 18 p).1 (a_turn_of_the_crank_for 13 18 18 p).2
+  rw [a_turn_squares_the_residual_for]
+  exact Int.mul_nonneg (by decide) (Meanings.a_square_is_never_negative _)
+
+theorem above_the_root_a_turn_falls (p : Int × Int) (side : on_the_upper_side p)
+    (above : 0 ≤ the_residual_of_the_pair p.1 p.2) :
+    (a_turn_of_the_crank p).1 * p.2 ≤ p.1 * (a_turn_of_the_crank p).2 := by
+  have mv := a_turn_moves_by_the_residual_for 13 18 18 p
+  rw [the_residual_of_the_pair_is_the_residual_for] at above
+  have : 0 ≤ p.2 * the_residual_for 13 18 18 p.1 p.2 := Int.mul_nonneg (Int.le_of_lt side.1) above
+  show (a_turn_of_the_crank_for 13 18 18 p).1 * p.2 ≤ p.1 * (a_turn_of_the_crank_for 13 18 18 p).2
+  omega
+
+--| FROM THE HOUSE.  Episode 8's crank starts at the house, five hundred and thirty over three hundred and twenty-four.
+def the_house_as_a_pair : Int × Int := (530, 324)
+
+theorem the_house_is_on_the_upper_side_below_the_root :
+    on_the_upper_side the_house_as_a_pair ∧ the_residual_of_the_pair 530 324 < 0 :=
+  ⟨⟨by decide, by decide⟩, by decide⟩
+
+theorem every_turn_from_the_house_is_on_the_upper_side (k : Nat) :
+    on_the_upper_side (turns_of_the_crank the_house_as_a_pair k) := by
+  induction k with
+  | zero => exact the_house_is_on_the_upper_side_below_the_root.1
+  | succ k ih => exact a_turn_keeps_the_upper_side _ ih
+
+theorem from_the_first_turn_on_it_is_above_the_root_and_falls (k : Nat) :
+    0 ≤ the_residual_of_the_pair (turns_of_the_crank the_house_as_a_pair (k + 1)).1 (turns_of_the_crank the_house_as_a_pair (k + 1)).2
+      ∧ (turns_of_the_crank the_house_as_a_pair (k + 2)).1 * (turns_of_the_crank the_house_as_a_pair (k + 1)).2
+        ≤ (turns_of_the_crank the_house_as_a_pair (k + 1)).1 * (turns_of_the_crank the_house_as_a_pair (k + 2)).2 := by
+  have above := after_a_turn_never_below_the_upper_root (turns_of_the_crank the_house_as_a_pair k)
+  exact ⟨above, above_the_root_a_turn_falls _ (every_turn_from_the_house_is_on_the_upper_side (k + 1)) above⟩
+end the_roots_direction
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
