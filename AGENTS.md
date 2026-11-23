@@ -3864,8 +3864,16 @@ names the number.
   each other hold e at θ one (`the_four_quarters_beside_each_other_hold_e`);
   at θ nothing S₀ is one and the rest nothing
   (`at_nothing_the_quarters_are_one_and_three_nothings`). Negative
-  controls (S₁ in place of S₀; S₀ alone against e) are refused. These are
-  readings at a stage, not `Same` at every stage. Compared with the
+  controls (S₁ in place of S₀; S₀ alone against e) are refused. Since
+  then, the first two at every stage and every θ = p/q not past one:
+  `cosine_beside_the_third_quarter_is_the_first`,
+  `sine_beside_the_fourth_quarter_is_the_second`, `Same`, from an exact
+  identity on partial sums at every length (an alternating series of
+  falling terms beside its odd terms summed is its even terms summed,
+  `the_alternating_and_the_odd_are_the_even`) and
+  `Bracketed.same_of_each_stage` (brackets holding each other at every
+  single stage are one). The four beside each other against e, and the
+  circle, are still readings at one stage. Compared with the
   device's quartic (asked by the author): they do not look like its
   roots. At the printed reading the closing quartic in r has four real
   roots in two signed pairs, ±18 and ±32.34, the squares in the ratio

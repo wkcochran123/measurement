@@ -9,10 +9,11 @@ past one.
 
 Cosine is the first quarter less the third, sine the second less the fourth; all four beside each other are the base the
 derivative leaves alone, raised to θ; and at θ nothing they are one and three nothings.  What is checked here of those is
-what the circle check checks: at the third stage, at θ one and θ a half, the brackets of the two sides hold each other.
-That is a reading at a stage, decided by the kernel, not the sameness at every stage.
+what the circle check checks: at the third stage, at θ one and θ a half, the brackets of the two sides hold each other,
+decided by the kernel.  The first two are then proved one at every stage, for every θ = p over q not past one, from an
+exact identity on the partial sums; the four against e stays a reading at a stage.
 -/
-import Meanings.Trigonometry
+import Meanings.Difference
 
 namespace Meanings
 
@@ -113,5 +114,75 @@ theorem at_nothing_the_quarters_are_one_and_three_nothings :
       ∧ (walls (quarter 0 1 (by decide) (by decide) 2) 3).2.over = 0
       ∧ (walls (quarter 0 1 (by decide) (by decide) 3) 3).2.over = 0 := by
   decide +kernel
+
+/-
+THE IDENTITIES AT EVERY STAGE.  Two reals whose brackets hold each other at every single stage are one, because walls only
+move inward: any two stages are compared at their sum.  An alternating series of falling terms, beside its odd terms
+summed, is its even terms summed, exactly, at every length; so cosine beside the third quarter is the first, and sine
+beside the fourth is the second, for every θ = p over q not past one.
+-/
+
+--| Holding each other at every stage is being one.
+theorem Bracketed.same_of_each_stage {x y : Bracketed}
+    (h : ∀ k, (x.low k).le (y.high k) ∧ (y.low k).le (x.high k)) : x.Same y := fun n m =>
+  ⟨Fraction.le_trans (x.low_le_of_le (Nat.le_add_right n m))
+    (Fraction.le_trans (h (n + m)).1 (y.high_le_of_le (Nat.le_add_left m n))),
+   Fraction.le_trans (y.low_le_of_le (Nat.le_add_right n m))
+    (Fraction.le_trans (h (n + m)).2 (x.high_le_of_le (Nat.le_add_left m n)))⟩
+
+--| A term less the next, beside the next, is the term, both ways.
+theorem Fraction.sub_add_self_le (a b : Fraction) (h : b.le a) : ((a.sub b).add b).le a :=
+  Fraction.sub_then_add_is_not_past a b b (Fraction.le_refl b) h
+
+theorem Fraction.le_sub_add_self (a b : Fraction) (h : b.le a) : a.le ((a.sub b).add b) :=
+  Fraction.le_sub_add h (Fraction.le_refl a) (Fraction.le_refl b)
+
+--| THE ALTERNATING SUM AND THE ODD SUM ARE THE EVEN SUM, at every length.
+theorem the_alternating_and_the_odd_are_the_even (t : FallingTerms) (E O : StepsAndTail)
+    (hE : ∀ j, E.step j = t.term (2 * j)) (hO : ∀ j, O.step j = t.term (2 * j + 1)) (M : Nat) :
+    ((t.stepsAndTail.partial M).add (O.partial M)).le (E.partial M)
+      ∧ (E.partial M).le ((t.stepsAndTail.partial M).add (O.partial M)) := by
+  induction M with
+  | zero =>
+    show (((t.term (2 * 0)).sub (t.term (2 * 0 + 1))).add (O.step 0)).le (E.step 0)
+      ∧ (E.step 0).le (((t.term (2 * 0)).sub (t.term (2 * 0 + 1))).add (O.step 0))
+    rw [hE, hO]
+    exact ⟨Fraction.sub_add_self_le _ _ (t.falls _), Fraction.le_sub_add_self _ _ (t.falls _)⟩
+  | succ M ih =>
+    show (((t.stepsAndTail.partial M).add ((t.term (2 * (M + 1))).sub (t.term (2 * (M + 1) + 1)))).add
+          ((O.partial M).add (O.step (M + 1)))).le ((E.partial M).add (E.step (M + 1)))
+      ∧ ((E.partial M).add (E.step (M + 1))).le
+          (((t.stepsAndTail.partial M).add ((t.term (2 * (M + 1))).sub (t.term (2 * (M + 1) + 1)))).add
+            ((O.partial M).add (O.step (M + 1))))
+    rw [hE, hO]
+    exact ⟨Fraction.le_trans (Fraction.swap_middle _ _ _ _)
+        (Fraction.add_le_add ih.1 (Fraction.sub_add_self_le _ _ (t.falls _))),
+      Fraction.le_trans (Fraction.add_le_add ih.2 (Fraction.le_sub_add_self _ _ (t.falls _)))
+        (Fraction.swap_middle _ _ _ _)⟩
+
+--| From the partial sums to the reals: the alternating real beside the odd real is the even real.
+theorem the_alternating_beside_the_odd_is_the_even (t : FallingTerms) (E O : StepsAndTail)
+    (hE : ∀ j, E.step j = t.term (2 * j)) (hO : ∀ j, O.step j = t.term (2 * j + 1)) :
+    (t.bracketed.add O.bracketed).Same E.bracketed :=
+  Bracketed.same_of_each_stage fun k =>
+    ⟨Fraction.le_trans (the_alternating_and_the_odd_are_the_even t E O hE hO (2 * k + 1)).1
+        (E.bracketed.low_under_high (2 * k + 1) k),
+     Fraction.le_trans (E.bracketed.low_le_of_le (show k ≤ 2 * k + 1 by omega))
+      (Fraction.le_trans (the_alternating_and_the_odd_are_the_even t E O hE hO (2 * k + 1)).2
+        (Fraction.add_le_add (t.bracketed.ordered _) (O.bracketed.ordered _)))⟩
+
+--| COSINE BESIDE THE THIRD QUARTER IS THE FIRST, at every stage.
+theorem cosine_beside_the_third_quarter_is_the_first (p q : Nat) (hq : 0 < q) (hp : p ≤ q) :
+    ((cosine p q hq hp).add (quarter p q hq hp 2)).Same (quarter p q hq hp 0) :=
+  the_alternating_beside_the_odd_is_the_even (theTermsOfTheCosine p q hq hp) _ _
+    (fun j => by show powerTerm p q hq (4 * j + 0) = powerTerm p q hq (2 * (2 * j)); congr 1; omega)
+    (fun j => by show powerTerm p q hq (4 * j + 2) = powerTerm p q hq (2 * (2 * j + 1)); congr 1; omega)
+
+--| SINE BESIDE THE FOURTH QUARTER IS THE SECOND, at every stage.
+theorem sine_beside_the_fourth_quarter_is_the_second (p q : Nat) (hq : 0 < q) (hp : p ≤ q) :
+    ((sine p q hq hp).add (quarter p q hq hp 3)).Same (quarter p q hq hp 1) :=
+  the_alternating_beside_the_odd_is_the_even (theTermsOfTheSine p q hq hp) _ _
+    (fun j => by show powerTerm p q hq (4 * j + 1) = powerTerm p q hq (2 * (2 * j) + 1); congr 1; omega)
+    (fun j => by show powerTerm p q hq (4 * j + 3) = powerTerm p q hq (2 * (2 * j + 1) + 1); congr 1; omega)
 
 end Meanings
