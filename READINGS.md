@@ -34,6 +34,7 @@ its files match the source commit.
 | 015 | `readings/015-the-coupling-on-other-work` | the coupling on other work: is Experiment 001's g, heartbeats per cell over the blank, the same when the cells do other work | `7508385` | read on the M2, 21 November 2026 |
 | 016 | `readings/016-the-depth-of-a-carrier` | the depth of a carrier: what a reader and a first rung cost on the meter on cards one, two and three deep and over four boxes | `7508385` | read on the M2, 21 November 2026 |
 | 017 | `readings/017-does-one-count-move-the-other` | does one count move the other: a second bottom with one wrapper more, and whether Episode 8's eighteen moves | `7508385` | read on the M2, 21 November 2026 |
+| 018 | `readings/018-the-fourth-and-fifth-wrappers` | the fourth and fifth wrappers: the author's predictions that one more carrier gives the Fréchet derivative and one more is invariant, read on the meter at depths one to five | (this commit) | sealed, not yet read |
 
 ## The experiment: the coupling of the code to the implementation, and the dilation between machines
 
@@ -1056,3 +1057,15 @@ What is shown. The two routes to eighteen and five are two constructions. The bu
 built from the other, and changing the bottom does not move Episode 8's number or the table. So that they agree is a
 fact about how each was written, which is what the author means by "planted". This does not touch the author's
 point that there is one build and that inside it the equality is the kernel's judgment.
+
+## Experiment 018: the fourth and fifth wrappers
+
+The author's predictions, 23 November 2026: "build the carrier out one more time, and you get the frechet derivative.
+build it out again and it is invariant"; and "the next increment gets you two things: the taylor series (explicit) and
+the frechet derivative (inferred)". On the count these cannot fail: the reader reads the tape's length and the step is a
+projection at every depth (receipts). The author named no observable on the meter, so the seal is Claude's reading of
+the predictions there, made before any run: five cards written alike, one to five deep; the reader past the quarter and
+the device's step twice, at each depth, two repeats. Seal: `readings/018-the-fourth-and-fifth-wrappers/SEALED_PREDICTION.txt`,
+sha256 064eae7917772cae….
+
+**Read:** not yet.
