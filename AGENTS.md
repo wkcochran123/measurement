@@ -3786,6 +3786,16 @@ names the number.
   first high wall's numerator, which for fractions of factorials (never
   reduced) is far too far; the circle is checked on the walls at one stage
   instead.
+- The laws (`Meanings/Laws.lean`; 23 November 2026). Receipts, `propext`,
+  `Quot.sound`: every low wall is under every high wall
+  (`Bracketed.low_under_high`); `Same` is reflexive, symmetric and
+  transitive (`same_refl`, `same_symm`, `same_trans`), transitivity through
+  the middle real's narrowing (`through_the_middle`) and Archimedes
+  (`not_past_by_any_part`: past by no more than 1/k for every k is not
+  past); the sum commutes and associates and the product commutes, up to
+  `Same` (`Bracketed.add_comm`, `add_assoc`, `mul_comm`). Not shown: the
+  product associating, distributivity, and the laws for the signed,
+  complex and quaternion layers (which would follow the same pattern).
   Standard, and the author's next step:
   continuity with a modulus (a δ handed over for each ε) needs no choice,
   while that sequential continuity gives ε–δ continuity uses countable
