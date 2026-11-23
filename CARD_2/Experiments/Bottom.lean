@@ -21,7 +21,7 @@ import Measurement.Episode13
 namespace Measurement
 
 section the_bottom_of_the_last_machine
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -73,7 +73,7 @@ theorem every_fact_in_the_bracket_and_the_limit_clicks :
 end the_bottom_of_the_last_machine
 
 section the_table_beside_it
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 

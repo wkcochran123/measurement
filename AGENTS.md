@@ -762,7 +762,7 @@ names the number.
   derivative of the gravity residual is proposed in Card 3 and not
   exhibited; which two scalings are meant: the author has since said the two areas (see "The author's decisions"); earlier (a candidate with a receipt
   and no declaration: the exact root against one Newton turn from the mass,
-  `one_turn_from_the_mass_is_over_by_the_momentum_squared_squared`). The
+  `simulate_from_the_mass_is_over_by_the_momentum_squared_squared`). The
   integer identities are tied to Episode 12's natural-number crank where
   its subtractions do not stop
   (`where_nothing_stops_the_cranks_pair_is_the_tables`). The three
@@ -1366,7 +1366,7 @@ names the number.
   be encoded side by side." Read in the source: Episode 8's bent card is
   over a `Term : Type` with four operations, a reader
   `lambda : List FACT → Term` and a scale; Episode 8 hands it the naturals
-  and `List.length`, Episode 13 the Area and `the_area_of_a_tape`. Every
+  and `List.length`, Episode 13 the Area and `the_area_of_a_tape_in_blanks_is`. Every
   one of the 37 inductives is dealt from a list and read back as a
   multiple of the tape's length and a constant: 33 as the length and one;
   Sample, Trial and Closure as twice the length and one; Measurement as
@@ -1724,7 +1724,7 @@ names the number.
   and no reader that returns which
   (`the_same_kept_and_two_identifications_cannot_be_recovered`). Beside
   it on the device, not yet stated for this: a reader that counts cannot
-  tell one Area from two set beside each other (`beside_adds`), and the
+  tell one Area from two set beside each other (`palm_the_middle_card_adds`), and the
   running count reaches 90 from either end of the one list. No receipt
   states the two histories of a photon; nothing on the device is a photon.
 - Three closed, and six answered (19 November 2026). Receipts
@@ -1733,7 +1733,7 @@ names the number.
   One: one thing across whole, or two halves out of the middle, count the
   same, so no reader of the count returns which
   (`which_it_was_cannot_be_recovered_from_the_count`); it is the recovery
-  theorem on `beside_adds`, about a reader that counts and nothing about
+  theorem on `palm_the_middle_card_adds`, about a reader that counts and nothing about
   photons. Two: of the gawk's sixteen ways the four that can be run on
   this process (each of the two facts called true or false) all stop at
   the one fixed point and stay, holding 38 and then 39 facts on the way
@@ -2386,7 +2386,7 @@ names the number.
   multiplication). the device is that these two routes _SHOULD_ be equal to
   multiplication. these are how the two routes divide from the truth." On
   the device both were already there: collecting is the reader of a tape
-  (`the_area_of_a_tape`, a cell a mark) and adding to an element is
+  (`the_area_of_a_tape_in_blanks_is`, a cell a mark) and adding to an element is
   `raised`, by which Episode 13 makes its scale. Receipts, `propext` and
   `Quot.sound` only: one tape after another is beside when collected and
   each for each when added; a tape collected once for every mark of another
@@ -2406,8 +2406,8 @@ names the number.
   stands. Episode 8's bent card asks a `Term` for four operations and
   assumes no law of them; the Area's four are recursions on `tree` and
   `dt`; that they add, multiply and raise is a theorem about them under
-  one reader, `cells`. Under the Area's own reader, which counts the tree
-  (`the_riemann_sum_counts_the_tree_too`), beside is one short of the sum;
+  one reader, `compute_the_area_of`. Under the Area's own reader, which counts the tree
+  (`the_riemann_sum_is_indistinguisahble_from_the_bent_card_with_an_extra_fencepost_of_blanks`), beside is one short of the sum;
   and twelve of the sixteen devices do not print the number. So do not
   say these receipts could not have failed. That
   `collected` and `added_to` are the author's two maps is Claude's reading.
@@ -3324,17 +3324,18 @@ names the number.
   the sentence at the top of this file.
 - The throws renamed, and The Prestige (22 to 23 November 2026). The author
   renamed Episode 13's Area operations and readers, moving the level of
-  description: `beside`, `each_for_each`, `taken_away`, `something_is_left`
+  description: beside, each_for_each, taken_away, something_is_left
   are now `palm_the_middle_card`, `false_shuffle`, `the_double_lift`,
-  `coin_flip`; `cells` is `compute_the_area_of`, `compiled` is
-  `compute_verification_receipt_ast_of`, `executed` is
-  `compute_the_so_called_area_of`, `read` is `some_quartic_called`,
-  `one_turn` is `simulate_this_way`, `less_is_less` is `obviously_bigger`
-  (the find-and-replace also made `the_other_quadratic_is_the_simulateed_over`).
+  `coin_flip`; cells is `compute_the_area_of`, compiled is
+  `compute_verification_receipt_ast_of`, executed is
+  `compute_the_so_called_area_of`, read is `some_quartic_called`,
+  one_turn is `simulate_this_way`, less_is_less is `obviously_bigger`
+  (the find-and-replace also made the_other_quadratic_is_the_simulateed_over,
+  since restored to `the_other_quadratic_is_the_one_turned_over`).
   The namespace is `the_table`; the episode is titled "The Prestige". The
-  kernel proves what it proved before; only the names moved. Older bullets
-  in this file still cite the old names (`beside_adds`, `cells`, …), and
-  the `Experiments` files that `open the_area` no longer build. The
+  kernel proves what it proved before; only the names moved. The citations
+  in this file and the `Experiments` files were brought to the new names on
+  23 November 2026 (code only; the prose margins keep their English). The
   episode's opening margin names its target as a multigrid-accelerated
   Jacobian-free Newton-Krylov solver for coupled physics. What Episode 13
   has toward it, at the scale of one quadratic and a two-by-two table:
@@ -3394,7 +3395,7 @@ names the number.
   ends) and `summation_by_parts_around_a_closed_walk` (no boundary term on a
   closed walk); `the_area_arrives_at_the_same_pair` and the `counted_*`
   family (the crank alike on shells, the Area, and on a line, the naturals);
-  `the_riemann_sum_counts_the_tree_too` (the boundary term, one fencepost);
+  `the_riemann_sum_is_indistinguisahble_from_the_bent_card_with_an_extra_fencepost_of_blanks` (the boundary term, one fencepost);
   `Area` holds no extent, so a thickness t is only a count, the reader's;
   every exact step leaves a remainder of second order in the step
   (`the_step_leaves_the_bent_card_by_the_step_squared`, the product rule's

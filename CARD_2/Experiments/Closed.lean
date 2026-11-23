@@ -18,7 +18,7 @@ import Experiments.Bottom
 namespace Measurement
 
 section what_the_bottom_is_built_from
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -34,7 +34,7 @@ theorem the_accumulation_is_the_sequence_with_one_in_front_and_one_behind :
 end what_the_bottom_is_built_from
 
 section episode_eights_census_against_the_machine
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -104,7 +104,7 @@ theorem the_last_five_kinds_on_each :
 end episode_eights_census_against_the_machine
 
 section all_the_way_down
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 attribute [local instance high] rung01 rung02 rung03 rung04 rung05 rung06 rung07 rung08 rung09 rung10 rung11 rung12 rung13 rung14 rung15
   rung16 rung17 rung18 rung19 rung20 rung21 rung22 rung23 rung24 rung25 rung26 rung27 rung28 rung29 rung32 rung33 rung34 rung35 a_truth_about_the_experience
 
@@ -153,7 +153,7 @@ theorem what_the_big_red_dog_carries_is_thirteen_facts :
 end all_the_way_down
 
 section zero_one_and_the_bit
-open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_area
+open «springer-verlag» THE_GOSPEL the_representation assembly_instructions readers_experience the_table
 
 --| THE SIXTH CLASS ON THE LAST MACHINE.  Episode 1 gives it a zero, margin "Empty"; a one, margin "Full"; and a bit, margin
 --| "Residue".  On the first card the zero and the one are one and the same limit, one fact.  The bit is thirty-five facts.
@@ -171,7 +171,7 @@ theorem every_fact_in_the_zero_the_one_and_the_bit_clicks :
 end zero_one_and_the_bit
 
 section the_knowers_clock
-open the_area the_area.Account readers_experience
+open the_table the_table.Account readers_experience
 
 --| THE KNOWER'S CLOCK, TWO READINGS.  Episode 13 has the knower's interpretation on three coins in a row.  The alternating
 --| clock, set beside its complement, is the bent card.  The still clock, set beside its complement, is nothing.  And both

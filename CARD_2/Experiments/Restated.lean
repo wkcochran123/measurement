@@ -14,7 +14,7 @@ and the reader that takes the number out is written here.
 import Measurement.Episode13
 
 namespace Measurement
-open readers_experience the_area
+open readers_experience the_table
 open «springer-verlag» THE_GOSPEL the_representation assembly_instructions
 
 --| THE FACT THAT THEY ARE DIFFERENT.  A tree on the truth and a tree on the same.  What it says: they are two.  Asked only
@@ -45,13 +45,13 @@ theorem the_jar_holds_the_same_and_it_is_the_truth :
 --| count, the bent card, and the device has one more, the frame every arm carries.  From those two and nothing else:
 --| the arm that clicks is the two together; the number is that arm cubed and the whole root, over the frame by the bent
 --| card.  No crank is turned.
-def the_bent_card_counted : Nat := cells the_gap_of_the_experience
-def the_frame_counted : Nat := cells the_frame
+def the_bent_card_counted : Nat := compute_the_area_of the_gap_of_the_experience
+def the_frame_counted : Nat := compute_the_area_of the_frame
 def the_arm_that_clicks_counted : Nat := the_bent_card_counted + the_frame_counted
 
 theorem thirteen_five_and_eighteen :
     the_bent_card_counted = 13 ∧ the_frame_counted = 5 ∧ the_arm_that_clicks_counted = 18
-      ∧ cells the_gap_of_the_interpretation = 0 := by decide
+      ∧ compute_the_area_of the_gap_of_the_interpretation = 0 := by decide
 
 --| The whole part: the arm cubed and the whole root of the arm to the fourth by the round trip, over the frame by the bent
 --| card.  One hundred and thirty-seven, with nothing over.

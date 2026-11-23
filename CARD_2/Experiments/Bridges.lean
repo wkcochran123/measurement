@@ -13,7 +13,7 @@ where it stands.
 import Experiments.TheWord
 
 namespace Measurement
-open readers_experience the_area readers_interpretation_of_the_experience
+open readers_experience the_table readers_interpretation_of_the_experience
 
 --| THE OBSTRUCTION.  Where the state stands still at a site, the link carries the far state to twice the near one, owed.
 theorem where_the_state_stands_still_the_link_carries_the_far_state_to_twice_the_near_owed {n : Nat}

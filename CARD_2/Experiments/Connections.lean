@@ -12,11 +12,11 @@ pages.  The first three are joined here.  The fourth is not: no line of this fil
 import Measurement.Episode13
 
 namespace Measurement
-open readers_experience the_area
+open readers_experience the_table
 
 --| THE RESIDUE OF A STEP.  What execute counts, less what compile built.
 def the_residue_of_a_step (step : (Bool × Bool) × (Bool × Bool)) : Int :=
-  (cells (what_execute_counts step) : Int) - (cells (what_compile_builds step) : Int)
+  (compute_the_area_of (what_execute_counts step) : Int) - (compute_the_area_of (what_compile_builds step) : Int)
 
 --| Ten are level.  Three are short by the bent card and three are over by it.
 theorem ten_are_level_three_are_short_and_three_are_over :

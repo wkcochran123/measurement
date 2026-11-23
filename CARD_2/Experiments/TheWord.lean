@@ -12,7 +12,7 @@ by two; the knower provides the mapping through the daisy; and if it compiles, t
 import Measurement.Episode13
 
 namespace Measurement
-open readers_experience the_area
+open readers_experience the_table
 
 --| THE BINARY.  Two cells, and four.  Two for each of four, or four for each of two: eight either way.
 def two_cells : Area := ast₁ + ast₁
@@ -20,7 +20,7 @@ def four_cells : Area := two_cells + two_cells
 def two_by_four : Area := two_cells * four_cells
 def four_by_two : Area := four_cells * two_cells
 
-theorem the_binary_is_eight_either_way : cells two_by_four = 8 ∧ cells four_by_two = 8 := by decide
+theorem the_binary_is_eight_either_way : compute_the_area_of two_by_four = 8 ∧ compute_the_area_of four_by_two = 8 := by decide
 
 --| THE DAISY.  One cell, and what it holds is the knower's: the fact the knower's bit names.
 def the_knowers_cell (daisy : Bool) : Area := .dt (bitFACT daisy) another_zero ast₀
@@ -30,15 +30,15 @@ def the_knowers_cell (daisy : Bool) : Area := .dt (bitFACT daisy) another_zero a
 def the_nine (daisy : Bool) : Area :=
   if daisy then the_knowers_cell daisy + two_by_four else four_by_two + the_knowers_cell daisy
 
-theorem the_nine_is_nine_either_way : ∀ daisy : Bool, cells (the_nine daisy) = 9 := by decide
+theorem the_nine_is_nine_either_way : ∀ daisy : Bool, compute_the_area_of (the_nine daisy) = 9 := by decide
 
 --| THE THIRTY-SIX.  The device's own trace, on the Area: the reading for each of the memory.
-theorem the_trace_is_thirty_six : cells the_area.the_trace = 36 := by decide
+theorem the_trace_is_thirty_six : compute_the_area_of the_table.the_trace = 36 := by decide
 
 --| THE TWENTY-EIGHT.  The thirty-six with the eight taken away: the projection.
-def the_twenty_eight : Area := the_area.the_trace - two_by_four
+def the_twenty_eight : Area := the_table.the_trace - two_by_four
 
-theorem the_twenty_eight_is_twenty_eight : cells the_twenty_eight = 28 := by decide
+theorem the_twenty_eight_is_twenty_eight : compute_the_area_of the_twenty_eight = 28 := by decide
 
 --| THE WORD.  Three nines, one for each of a, c and b, and one cell more: four daisies, the fourth by itself.
 def the_word (a c b the_fourth : Bool) : Area :=
@@ -47,25 +47,25 @@ def the_word (a c b the_fourth : Bool) : Area :=
 --| THE FIT.  Whatever the knower's four bits, the word is as many cells as the twenty-eight.  Sixteen ways, and it fits
 --| in every one.
 theorem the_word_fits_the_projection_whatever_the_knower_says :
-    ∀ a c b the_fourth : Bool, cells (the_word a c b the_fourth) = cells the_twenty_eight := by decide
+    ∀ a c b the_fourth : Bool, compute_the_area_of (the_word a c b the_fourth) = compute_the_area_of the_twenty_eight := by decide
 
 --| COMPILE AND EXECUTE.  Read the word out as a tape and write the tape as an abstraction: a compile for every fact and
 --| then an execute for every fact.  What execute counts is what compile built, whatever the knower's four bits.
 theorem compiled_and_executed_the_word_is_one_count (a c b the_fourth : Bool) :
-    executed (the_abstraction_of_a_tape (the_word a c b the_fourth).riemann_integrate)
-      = cells (compiled (the_abstraction_of_a_tape (the_word a c b the_fourth).riemann_integrate)) :=
+    compute_the_so_called_area_of (an_interleaved (the_word a c b the_fourth).riemann_integrate)
+      = compute_the_area_of (compute_verification_receipt_ast_of (an_interleaved (the_word a c b the_fourth).riemann_integrate)) :=
   execute_counts_what_compile_built _
 
 --| WHAT IT SAYS.  The count does not see the knower's bits.  The word does hold them: read by its clicks, the four cells
 --| the knower supplied click as the knower said.  Two words with different bits are the same in count and not in clicks.
 theorem the_count_does_not_see_the_daisies_and_the_clicks_do :
-    cells (the_word true true true true) = cells (the_word false false false false)
+    compute_the_area_of (the_word true true true true) = compute_the_area_of (the_word false false false false)
       ∧ (the_word true true true true).riemann_integrate.map FACT.bit
           ≠ (the_word false false false false).riemann_integrate.map FACT.bit := by decide
 
 --| A FIT THAT DOES NOT HOLD.  Leave out the fourth cell and the word is one short of the projection.
 theorem without_the_fourth_it_does_not_fit :
-    ∀ a c b : Bool, cells (the_nine a + the_nine c + the_nine b) ≠ cells the_twenty_eight := by decide
+    ∀ a c b : Bool, compute_the_area_of (the_nine a + the_nine c + the_nine b) ≠ compute_the_area_of the_twenty_eight := by decide
 
 
 --| THE FOUR BITS, THROUGH THE CRANK.  The author's, 19 November 2026: the knower's four bits encode the number through

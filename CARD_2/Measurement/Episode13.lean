@@ -7489,7 +7489,7 @@ theorem inflated_twice_nothing_is_left_by_the_root (x r : Int) :
   eighteen_of_the_quartic_is_a_pair_by_itself_turned_over x r
 
 --| The other is the one with its part by the root owed, and either order gives the same.
-theorem the_other_quadratic_is_the_simulateed_over (x r : Int) :
+theorem the_other_quadratic_is_the_one_turned_over (x r : Int) :
     the_other_quadratic x r = ((the_one_quadratic x r).1, - (the_one_quadratic x r).2)
       ∧ the_surd_product (the_other_quadratic x r) (the_one_quadratic x r)
           = the_surd_product (the_one_quadratic x r) (the_other_quadratic x r) :=
