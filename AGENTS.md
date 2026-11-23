@@ -3714,6 +3714,12 @@ names the number.
   is about evaluating the formulas, in whole numbers, one component on a
   row; it does not solve the equations, and the d = 2, 3 incompressible
   system with its projection and lift is Card 3's on the page.
+  Then (the author: "now, you have FACT.Same"):
+  `the_native_and_the_device_are_one env` is that sameness as a FACT, and
+  `the_native_and_the_device_are_the_truth`: it is `FACT.Truth`, by
+  `two_facts_that_are_true_are_one_fact`; Episode 5's "one glyph". Say with
+  it: any true fact is `FACT.Truth` by `propext`, so this identifies the
+  fact, not the two computations; the computations are one integer, read.
 - The convergence is exact (`Episode13.lean`, section
   `the_convergence_is_exact`; 23 November 2026). The author (declared): the
   second variation is the Fréchet variation, and it should show the

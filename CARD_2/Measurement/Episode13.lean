@@ -8867,6 +8867,18 @@ def the_response_action : Formula :=
 theorem cards_three_action_is_computed_alike_on_the_device (env : Nat → Account) :
     balance (the_response_action.onTheDevice env) = the_response_action.native (fun i => balance (env i)) :=
   the_device_computes_what_lean_computes env the_response_action
+
+--| ONE GLYPH.  Episode 5: to be the SAME is that there is but one glyph to represent the concept.  The native computation and
+--| the device's, of Card 3's action, as a FACT: its truth is that the two are one integer, its click decides it, and it holds.
+--| A fact that holds is the truth itself: one glyph.
+def the_native_and_the_device_are_one (env : Nat → Account) : FACT :=
+  { truth := balance (the_response_action.onTheDevice env) = the_response_action.native (fun i => balance (env i)),
+    click := inferInstance }
+
+theorem the_native_and_the_device_are_the_truth (env : Nat → Account) :
+    the_native_and_the_device_are_one env = FACT.Truth :=
+  two_facts_that_are_true_are_one_fact _ _ (cards_three_action_is_computed_alike_on_the_device env)
+    (@of_decide_eq_true _ FACT.Truth.click rfl)
 end a_native_implementation_or_the_device
 
 section the_quartic_in_disguise
