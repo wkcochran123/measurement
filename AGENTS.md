@@ -3709,6 +3709,24 @@ names the number.
   naturals truncates and stands still under the resolution, and
   `where_nothing_stops_the_cranks_pair_is_the_tables` joins the two where
   nothing stops.
+- Continuity, and where the choice is (`Meanings/Continuity.lean`;
+  `Episode13.lean`, section `continuity_and_the_choice`; 23 November 2026).
+  The author (declared): "once we have reals, continuous is next, and that
+  is the choice!" Receipts: `findByLooking`, the least place a clicking
+  statement holds, given only a proof that it holds somewhere (the proof is
+  leaned on for the looking to end, never opened), no axiom;
+  `a_modulus_with_the_click`: from "for every k some m serves", with
+  serving decidable, a modulus function giving the least m, no axiom;
+  `a_modulus_without_the_click`: the same for bare statements, handed a
+  click by choice, bills `Classical.choice`. In Episode 13,
+  `a_modulus_from_facts` (no axiom) and `a_modulus_from_statements`
+  (choice). And `the_sum_carries_its_modulus`,
+  `the_product_carries_its_modulus`: the choice-free reals' operations
+  already say at which stage they read their arguments, which is why
+  nothing in them needed choice. Standard, beside it: going from "for every
+  k some m" to a function is countable choice; that sequential continuity
+  gives ε–δ continuity uses it. So the choice is exactly the step from
+  that-there-is to where, and the click is what makes the step free.
   Standard, and the author's next step:
   continuity with a modulus (a δ handed over for each ε) needs no choice,
   while that sequential continuity gives ε–δ continuity uses countable

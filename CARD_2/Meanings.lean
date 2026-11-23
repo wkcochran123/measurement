@@ -9,3 +9,4 @@ import Meanings.Arithmetic       -- the sum and the product of two reals, with n
 import Meanings.Signed           -- negatives: what is held and what is owed
 import Meanings.Complex          -- the complex numbers: along and across
 import Meanings.Quaternion       -- the quaternions: the order of a product is seen
+import Meanings.Continuity       -- continuity: a modulus with the click, and the choice without it

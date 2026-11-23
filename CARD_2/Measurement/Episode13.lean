@@ -9044,6 +9044,23 @@ theorem after_any_number_of_turns_the_distance_is_squared_that_many_times (start
     exact ⟨rfl, rfl⟩
 end the_convergence_is_exact
 
+section continuity_and_the_choice
+open readers_experience
+
+--| CONTINUITY, AND WHERE THE CHOICE IS.  The author's, 23 November 2026: once there are reals, continuous is next, and that
+--| is the choice (declared).  What is checked.  Continuity as a statement, for every k some m, is not yet a modulus, a
+--| function giving the m.  Where whether an m serves is a FACT, its click lets the least m be found by looking, and the
+--| modulus comes with no axiom at all.  Where it is a bare statement, the same theorem is handed a click by choice, and
+--| bills it.  The reals Meanings builds carry their moduli already, which is why nothing in them needed choice.
+theorem a_modulus_from_facts (serves : Nat → Nat → FACT) (continuous : ∀ k, ∃ m, (serves k m).truth) :
+    ∃ modulus : Nat → Nat, ∀ k, (serves k (modulus k)).truth ∧ ∀ m, m < modulus k → ¬ (serves k m).truth :=
+  @Meanings.a_modulus_with_the_click (fun k m => (serves k m).truth) (fun k m => (serves k m).click) continuous
+
+theorem a_modulus_from_statements (serves : Nat → Nat → Prop) (continuous : ∀ k, ∃ m, serves k m) :
+    ∃ modulus : Nat → Nat, ∀ k, serves k (modulus k) ∧ ∀ m, m < modulus k → ¬ serves k m :=
+  Meanings.a_modulus_without_the_click serves continuous
+end continuity_and_the_choice
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
