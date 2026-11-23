@@ -9567,6 +9567,80 @@ theorem the_printed_number_is_one_with_the_halvings :
     (Meanings.Bracketed.same_trans
       (Meanings.Bracketed.add_same (Meanings.Bracketed.same_refl _) the_crank_and_the_halving_are_one_root)
       eighteen_beside_the_root_is_the_norm)
+
+--| THE PRINTED DIGITS ARE THE REAL'S FLOOR.  Episode 8 prints twenty-seven digits, twenty-four past the point.  At every
+--| stage the real lies between those digits and those digits and one in the last place: its low wall is never past the one
+--| and its high wall never under the other.  So the digits are the real's floor at the twenty-fourth place, at every stage,
+--| not at one.  No root is taken: every low wall of the crank's root of ninety is under any fraction whose square is past
+--| ninety, and every high wall past any fraction whose square is under it.
+theorem the_cranks_low_wall_is_under_any_square_past_ninety (V : Meanings.Fraction)
+    (hV : 90 * (V.under * V.under) ≤ V.over * V.over) (j : Nat) : (the_root_by_the_crank.low j).le V := by
+  show 90 * the_part_by_the_root_at (j + 4) * V.under ≤ V.over * the_whole_part_at (j + 4)
+  apply Nat.mul_self_le_mul_self_iff.1
+  have s := (the_crank_distance_stays_above (j + 4)).2.2
+  generalize the_part_by_the_root_at (j + 4) = D at *
+  generalize the_whole_part_at (j + 4) = a at *
+  have m1 := Nat.mul_le_mul_right (90 * (V.under * V.under)) s
+  have m2 := Nat.mul_le_mul_left (a * a) hV
+  calc 90 * D * V.under * (90 * D * V.under) = 90 * (D * D) * (90 * (V.under * V.under)) := by
+        simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+    _ ≤ a * a * (90 * (V.under * V.under)) := m1
+    _ ≤ a * a * (V.over * V.over) := m2
+    _ = V.over * a * (V.over * a) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+
+theorem the_cranks_high_wall_is_past_any_square_under_ninety (W : Meanings.Fraction)
+    (hW : W.over * W.over ≤ 90 * (W.under * W.under)) (j : Nat) : W.le (the_root_by_the_crank.high j) := by
+  show W.over * the_part_by_the_root_at (j + 4) ≤ the_whole_part_at (j + 4) * W.under
+  apply Nat.mul_self_le_mul_self_iff.1
+  have s := (the_crank_distance_stays_above (j + 4)).2.2
+  generalize the_part_by_the_root_at (j + 4) = D at *
+  generalize the_whole_part_at (j + 4) = a at *
+  have m1 := Nat.mul_le_mul_right (D * D) hW
+  have m2 := Nat.mul_le_mul_left (W.under * W.under) s
+  calc W.over * D * (W.over * D) = W.over * W.over * (D * D) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+    _ ≤ 90 * (W.under * W.under) * (D * D) := m1
+    _ = W.under * W.under * (90 * (D * D)) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+    _ ≤ W.under * W.under * (a * a) := m2
+    _ = a * W.under * (a * W.under) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+
+--| The digits, and the digits and one in the last place, over the scale.
+def the_printed_digits : Meanings.Fraction := ⟨137011290548979457087737300, 10 ^ 24, by decide⟩
+def the_printed_digits_and_one : Meanings.Fraction :=
+  ⟨137011290548979457087737301, 10 ^ 24, by decide⟩
+
+--| What the root of ninety must be not past, and not under, for the fraction by eighteen and it to be the digits.
+def the_root_the_digits_and_one_ask : Meanings.Fraction :=
+  ⟨65 * 137011290548979457087737301 - 18 * 324 * 10 ^ 24, 324 * 10 ^ 24, by decide⟩
+def the_root_the_digits_ask : Meanings.Fraction :=
+  ⟨65 * 137011290548979457087737300 - 18 * 324 * 10 ^ 24, 324 * 10 ^ 24, by decide⟩
+
+theorem the_digits_ask_a_root_past_and_under_ninety :
+    90 * (the_root_the_digits_and_one_ask.under * the_root_the_digits_and_one_ask.under)
+        ≤ the_root_the_digits_and_one_ask.over * the_root_the_digits_and_one_ask.over
+      ∧ the_root_the_digits_ask.over * the_root_the_digits_ask.over
+        ≤ 90 * (the_root_the_digits_ask.under * the_root_the_digits_ask.under) := by
+  decide
+
+theorem the_fraction_by_eighteen_and_what_the_digits_ask_is_the_digits :
+    ((⟨324, 65, by decide⟩ : Meanings.Fraction).mul
+        ((⟨18, 1, Nat.one_pos⟩ : Meanings.Fraction).add the_root_the_digits_and_one_ask)).le the_printed_digits_and_one
+      ∧ the_printed_digits.le ((⟨324, 65, by decide⟩ : Meanings.Fraction).mul
+        ((⟨18, 1, Nat.one_pos⟩ : Meanings.Fraction).add the_root_the_digits_ask)) := by
+  decide
+
+--| AT EVERY STAGE THE REAL IS BETWEEN THE DIGITS AND THE DIGITS AND ONE.
+theorem the_printed_digits_are_the_reals_floor (n : Nat) :
+    the_printed_digits.le (the_printed_number_as_a_real.high n)
+      ∧ (the_printed_number_as_a_real.low n).le the_printed_digits_and_one :=
+  ⟨Meanings.Fraction.le_trans the_fraction_by_eighteen_and_what_the_digits_ask_is_the_digits.2
+    (Meanings.Fraction.mul_le_mul (Meanings.Fraction.le_refl _)
+      (Meanings.Fraction.add_le_add (Meanings.Fraction.le_refl _)
+        (the_cranks_high_wall_is_past_any_square_under_ninety _ the_digits_ask_a_root_past_and_under_ninety.2 _))),
+   Meanings.Fraction.le_trans
+    (Meanings.Fraction.mul_le_mul (Meanings.Fraction.le_refl _)
+      (Meanings.Fraction.add_le_add (Meanings.Fraction.le_refl _)
+        (the_cranks_low_wall_is_under_any_square_past_ninety _ the_digits_ask_a_root_past_and_under_ninety.1 _)))
+    the_fraction_by_eighteen_and_what_the_digits_ask_is_the_digits.1⟩
 end the_printed_number_as_a_real
 
 section the_lower_root_as_a_real

@@ -3832,9 +3832,19 @@ names the number.
   (`the_printed_number_is_one_with_the_halvings`, through
   `eighteen_beside_the_root_is_the_norm`, the crank's root being the
   halving's, and `Bracketed.add_same`, `Bracketed.mul_same`): the crank
-  and the bisection give one real for the printed number. Not shown: that
-  the printed digits lie inside every bracket; and anything about what
-  the number is of.
+  and the bisection give one real for the printed number. And Episode 8's
+  digits are the real's floor at the twenty-fourth place, at every stage:
+  the low wall is never past the digits and one in the last place, the
+  high wall never under the digits
+  (`the_printed_digits_are_the_reals_floor`, `propext`, `Quot.sound`). No
+  root is taken: every crank low wall is under any fraction whose square
+  is past ninety and every high wall past any whose square is under it
+  (`the_cranks_low_wall_is_under_any_square_past_ninety`,
+  `the_cranks_high_wall_is_past_any_square_under_ninety`), and the
+  kernel decides the two squares the digits ask for. One place either
+  way the square condition fails (checked in scratch), so the digits are
+  exactly the floor, not a bracket that could have been wider. Not shown:
+  anything about what the number is of.
 - The four quarters of the exponential (`Meanings/Quarters.lean`; 23
   November 2026). The author (declared): the four real numbers of the
   quaternion are the roots of the quartic, which for the quaternion is
