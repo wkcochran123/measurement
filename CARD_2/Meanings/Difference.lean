@@ -15,7 +15,9 @@ Which way it goes is handed in with the stage; a signed real does not say of its
 And one over a complex number: its conjugate by one over its norm squared, the norm squared handed in held past owed at a
 stage.  One over is one thing, for signed reals and complex numbers alike.
 
-Not here: one over a quaternion, and an order on the signed reals.
+And one over a quaternion, the conjugate by one over its norm squared, on either side; one over is one thing there too.
+
+Not here: an order on the signed reals.
 -/
 import Meanings.Reciprocal
 
@@ -316,5 +318,127 @@ theorem ofSigned_mul (x y : SignedReal) : (ofSigned x * ofSigned y).Same (ofSign
     exact SignedReal.same_trans (SignedReal.add_same (SignedReal.mul_zero _) (SignedReal.zero_mul _)) (SignedReal.zero_add _)
 
 end ComplexReal
+
+/-
+One over a quaternion: the conjugate, the first turned across the line and the second owed, by one over the norm squared,
+the first's norm squared beside the second's.  The product does not commute, so one over is shown on both sides; and then
+one over is one thing: whatever makes one when the quaternion is put before it is the quaternion's one over.
+-/
+namespace ComplexReal
+
+theorem neg_neg (z : ComplexReal) : -(-z) = z := rfl
+
+theorem ofSigned_add (x y : SignedReal) : (ofSigned x + ofSigned y).Same (ofSigned (x + y)) :=
+  ⟨SignedReal.same_refl _, SignedReal.zero_add _⟩
+
+theorem conjugate_ofSigned (x : SignedReal) : (ofSigned x).conjugate = ofSigned x := rfl
+
+--| The conjugate by the number is the number's norm squared too.
+theorem conjugate_mul_self (z : ComplexReal) : (z.conjugate * z).Same (ofSigned z.normSquared) :=
+  same_trans (mul_comm _ _) (mul_conjugate z)
+
+end ComplexReal
+
+namespace QuaternionReal
+
+def normSquared (p : QuaternionReal) : SignedReal := p.first.normSquared + p.second.normSquared
+
+theorem neg_neg (p : QuaternionReal) : -(-p) = p := rfl
+
+--| ONE OVER A QUATERNION, from a stage where its norm squared is held past owed.
+def reciprocal (p : QuaternionReal) (k : Nat) (strict : (p.normSquared.owed.high k).lt (p.normSquared.held.low k)) :
+    QuaternionReal :=
+  ⟨p.first.conjugate * ComplexReal.ofSigned (p.normSquared.reciprocalHeld k strict),
+   -(p.second * ComplexReal.ofSigned (p.normSquared.reciprocalHeld k strict))⟩
+
+--| The two norms squared, along, by one over their sum, along, is one.
+theorem the_norms_by_one_over (x y r : SignedReal) (key : ((x + y) * r).Same (SignedReal.ofNat 1)) :
+    ((ComplexReal.ofSigned x + ComplexReal.ofSigned y) * ComplexReal.ofSigned r).Same (ComplexReal.ofNat 1) :=
+  ComplexReal.same_trans (ComplexReal.mul_same (ComplexReal.ofSigned_add x y) (ComplexReal.same_refl _))
+    (ComplexReal.same_trans (ComplexReal.ofSigned_mul _ _) (ComplexReal.ofSigned_same key))
+
+--| A QUATERNION BY ONE OVER ITSELF IS ONE.
+theorem mul_reciprocal (p : QuaternionReal) (k : Nat) (strict : (p.normSquared.owed.high k).lt (p.normSquared.held.low k)) :
+    (p * p.reciprocal k strict).Same (ofNat 1) := by
+  have key := SignedReal.mul_reciprocalHeld p.normSquared k strict
+  unfold QuaternionReal.reciprocal
+  generalize p.normSquared.reciprocalHeld k strict = r at key ⊢
+  unfold QuaternionReal.normSquared at key
+  obtain ⟨a, b⟩ := p
+  constructor
+  · show (a * (a.conjugate * ComplexReal.ofSigned r) + -((-(b * ComplexReal.ofSigned r)).conjugate * b)).Same
+      (ComplexReal.ofNat 1)
+    simp only [ComplexReal.conjugate_neg]
+    refine ComplexReal.same_trans (ComplexReal.add_same (ComplexReal.same_refl _)
+      (ComplexReal.neg_same (ComplexReal.neg_mul _ _))) ?_
+    rw [ComplexReal.neg_neg]
+    refine ComplexReal.same_trans (ComplexReal.add_same (ComplexReal.same_symm (ComplexReal.mul_assoc _ _ _))
+      (ComplexReal.mul_same (ComplexReal.conjugate_mul b (ComplexReal.ofSigned r)) (ComplexReal.same_refl b))) ?_
+    rw [ComplexReal.conjugate_ofSigned]
+    refine ComplexReal.same_trans (ComplexReal.add_same (ComplexReal.same_refl _) (ComplexReal.swap_last _ _ _)) ?_
+    refine ComplexReal.same_trans (ComplexReal.same_symm (ComplexReal.add_mul _ _ _)) ?_
+    exact ComplexReal.same_trans
+      (ComplexReal.mul_same (ComplexReal.add_same (ComplexReal.mul_conjugate a) (ComplexReal.conjugate_mul_self b))
+        (ComplexReal.same_refl _))
+      (the_norms_by_one_over _ _ _ key)
+  · show ((-(b * ComplexReal.ofSigned r)) * a + b * (a.conjugate * ComplexReal.ofSigned r).conjugate).Same
+      (ComplexReal.ofNat 0)
+    have conj : (a.conjugate * ComplexReal.ofSigned r).conjugate.Same (a * ComplexReal.ofSigned r) :=
+      ComplexReal.conjugate_conjugate_mul a (ComplexReal.ofSigned r)
+    have swap : ((b * ComplexReal.ofSigned r) * a).Same (b * (a * ComplexReal.ofSigned r)) :=
+      ComplexReal.same_trans (ComplexReal.mul_assoc _ _ _) (ComplexReal.mul_same (ComplexReal.same_refl b) (ComplexReal.mul_comm _ _))
+    exact ComplexReal.same_trans
+      (ComplexReal.add_same (ComplexReal.same_trans (ComplexReal.neg_mul _ _) (ComplexReal.neg_same swap))
+        (ComplexReal.mul_same (ComplexReal.same_refl b) conj))
+      (ComplexReal.same_trans (ComplexReal.add_comm _ _) (ComplexReal.add_neg _))
+
+--| ONE OVER A QUATERNION BY THE QUATERNION IS ONE: one over works from the other side too.
+theorem reciprocal_mul (p : QuaternionReal) (k : Nat) (strict : (p.normSquared.owed.high k).lt (p.normSquared.held.low k)) :
+    (p.reciprocal k strict * p).Same (ofNat 1) := by
+  have key := SignedReal.mul_reciprocalHeld p.normSquared k strict
+  unfold QuaternionReal.reciprocal
+  generalize p.normSquared.reciprocalHeld k strict = r at key ⊢
+  unfold QuaternionReal.normSquared at key
+  obtain ⟨a, b⟩ := p
+  constructor
+  · show (a.conjugate * ComplexReal.ofSigned r * a + -(b.conjugate * -(b * ComplexReal.ofSigned r))).Same
+      (ComplexReal.ofNat 1)
+    rw [ComplexReal.mul_neg, ComplexReal.neg_neg]
+    refine ComplexReal.same_trans (ComplexReal.add_same (ComplexReal.swap_last _ _ _)
+      (ComplexReal.same_symm (ComplexReal.mul_assoc _ _ _))) ?_
+    refine ComplexReal.same_trans (ComplexReal.same_symm (ComplexReal.add_mul _ _ _)) ?_
+    exact ComplexReal.same_trans
+      (ComplexReal.mul_same (ComplexReal.add_same (ComplexReal.conjugate_mul_self a) (ComplexReal.conjugate_mul_self b))
+        (ComplexReal.same_refl _))
+      (the_norms_by_one_over _ _ _ key)
+  · show (b * (a.conjugate * ComplexReal.ofSigned r) + (-(b * ComplexReal.ofSigned r)) * a.conjugate).Same
+      (ComplexReal.ofNat 0)
+    have swap : ((b * ComplexReal.ofSigned r) * a.conjugate).Same (b * (a.conjugate * ComplexReal.ofSigned r)) :=
+      ComplexReal.same_trans (ComplexReal.mul_assoc _ _ _) (ComplexReal.mul_same (ComplexReal.same_refl b) (ComplexReal.mul_comm _ _))
+    exact ComplexReal.same_trans
+      (ComplexReal.add_same (ComplexReal.same_refl _) (ComplexReal.same_trans (ComplexReal.neg_mul _ _) (ComplexReal.neg_same swap)))
+      (ComplexReal.add_neg _)
+
+--| THE TURN OWED THROUGH A PRODUCT: a quaternion by one owed is the product owed.
+theorem mul_neg (p q : QuaternionReal) : (p * -q).Same (-(p * q)) := by
+  obtain ⟨a, b⟩ := p
+  obtain ⟨c, d⟩ := q
+  constructor
+  · show (a * -c + -((-d).conjugate * b)).Same (-(a * c) + -(-(d.conjugate * b)))
+    simp only [ComplexReal.mul_neg, ComplexReal.conjugate_neg]
+    exact ComplexReal.add_same (ComplexReal.same_refl _) (ComplexReal.neg_same (ComplexReal.neg_mul _ _))
+  · show ((-d) * a + b * (-c).conjugate).Same (-(d * a) + -(b * c.conjugate))
+    simp only [ComplexReal.conjugate_neg, ComplexReal.mul_neg]
+    exact ComplexReal.add_same (ComplexReal.neg_mul _ _) (ComplexReal.same_refl _)
+
+--| ONE OVER IS ONE THING: whatever the quaternion put before it makes one is its one over.
+theorem reciprocal_unique (p : QuaternionReal) (k : Nat) (strict : (p.normSquared.owed.high k).lt (p.normSquared.held.low k))
+    {v : QuaternionReal} (hv : (p * v).Same (ofNat 1)) : v.Same (p.reciprocal k strict) :=
+  same_trans (same_symm (one_mul v))
+    (same_trans (mul_same (same_symm (p.reciprocal_mul k strict)) (same_refl v))
+      (same_trans (mul_assoc _ _ _)
+        (same_trans (mul_same (same_refl _) hv) (mul_one _))))
+
+end QuaternionReal
 
 end Meanings

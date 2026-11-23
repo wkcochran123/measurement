@@ -9762,6 +9762,40 @@ theorem one_over_the_turned_root_is_the_other_over_the_determinant :
             (Meanings.SignedReal.ofReal_same four_hundred_and_fourteen_over_itself))))))
 end the_turned_root_over
 
+section one_over_a_quarter_turn
+open readers_experience
+
+--| ONE OVER A QUARTER TURN IS THE TURN OWED.  With one over a quaternion (Meanings, `QuaternionReal.reciprocal`): each of
+--| the three quarter turns, by itself, is one owed (Meanings, `i_twice_is_one_owed` and the others); so a turn by the turn
+--| owed is one, and, one over being one thing, the turn owed is one over the turn.  Each turn's norm squared is handed in
+--| past nothing at the first stage, decided by the kernel.
+
+theorem i_is_past_nothing : (Meanings.QuaternionReal.i.normSquared.owed.high 0).lt (Meanings.QuaternionReal.i.normSquared.held.low 0) := by
+  decide +kernel
+theorem j_is_past_nothing : (Meanings.QuaternionReal.j.normSquared.owed.high 0).lt (Meanings.QuaternionReal.j.normSquared.held.low 0) := by
+  decide +kernel
+theorem k_is_past_nothing : (Meanings.QuaternionReal.k.normSquared.owed.high 0).lt (Meanings.QuaternionReal.k.normSquared.held.low 0) := by
+  decide +kernel
+
+theorem one_over_i_is_i_owed : (-Meanings.QuaternionReal.i).Same (Meanings.QuaternionReal.i.reciprocal 0 i_is_past_nothing) := by
+  have h := Meanings.QuaternionReal.neg_same Meanings.i_twice_is_one_owed
+  rw [Meanings.QuaternionReal.neg_neg] at h
+  exact Meanings.QuaternionReal.reciprocal_unique _ _ _
+    (Meanings.QuaternionReal.same_trans (Meanings.QuaternionReal.mul_neg Meanings.QuaternionReal.i Meanings.QuaternionReal.i) h)
+
+theorem one_over_j_is_j_owed : (-Meanings.QuaternionReal.j).Same (Meanings.QuaternionReal.j.reciprocal 0 j_is_past_nothing) := by
+  have h := Meanings.QuaternionReal.neg_same Meanings.j_twice_is_one_owed
+  rw [Meanings.QuaternionReal.neg_neg] at h
+  exact Meanings.QuaternionReal.reciprocal_unique _ _ _
+    (Meanings.QuaternionReal.same_trans (Meanings.QuaternionReal.mul_neg Meanings.QuaternionReal.j Meanings.QuaternionReal.j) h)
+
+theorem one_over_k_is_k_owed : (-Meanings.QuaternionReal.k).Same (Meanings.QuaternionReal.k.reciprocal 0 k_is_past_nothing) := by
+  have h := Meanings.QuaternionReal.neg_same Meanings.k_twice_is_one_owed
+  rw [Meanings.QuaternionReal.neg_neg] at h
+  exact Meanings.QuaternionReal.reciprocal_unique _ _ _
+    (Meanings.QuaternionReal.same_trans (Meanings.QuaternionReal.mul_neg Meanings.QuaternionReal.k Meanings.QuaternionReal.k) h)
+end one_over_a_quarter_turn
+
 section the_turn_by_a_rational_angle
 open readers_experience
 
