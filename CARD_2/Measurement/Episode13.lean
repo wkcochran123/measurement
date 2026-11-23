@@ -9708,6 +9708,60 @@ theorem the_lower_root_owed_and_over_are_one :
     (Meanings.SignedReal.ofReal_same eighteen_less_the_root_is_the_lower_root)
 end the_lower_root_as_a_real
 
+section the_turned_root_over
+open readers_experience
+
+--| ONE OVER THE TURNED ROOT.  The table turned over has the roots eighteen and the root of ninety across, held or owed
+--| (Meanings, `theTurnedRoot`, `theOtherTurnedRoot`).  With one over a complex number (Meanings, `ComplexReal.reciprocal`):
+--| the turned root's norm squared, eighteen by eighteen beside the root by itself, is four hundred and fourteen, the turned
+--| table's determinant; so the two turned roots multiply to the determinant, as the two roots of the table do to theirs; and
+--| one over the turned root is the other turned root over four hundred and fourteen.  The norm squared is handed in held past
+--| owed at the first stage, decided by the kernel.
+
+theorem the_turned_roots_norm_squared_is_the_determinant :
+    Meanings.theTurnedRoot.normSquared.Same (Meanings.SignedReal.ofNat 414) := by
+  show (Meanings.SignedReal.ofReal (Meanings.Bracketed.ofNat 18) * Meanings.SignedReal.ofReal (Meanings.Bracketed.ofNat 18)
+      + Meanings.SignedReal.ofReal Meanings.theRootOfNinety.bracketed
+        * Meanings.SignedReal.ofReal Meanings.theRootOfNinety.bracketed).Same
+    (Meanings.SignedReal.ofReal (Meanings.Bracketed.ofNat 414))
+  exact Meanings.SignedReal.same_trans
+    (Meanings.SignedReal.add_same (Meanings.SignedReal.ofReal_mul _ _) (Meanings.SignedReal.ofReal_mul _ _))
+    (Meanings.SignedReal.same_trans
+      (Meanings.SignedReal.add_same (Meanings.SignedReal.ofReal_same (Meanings.Bracketed.ofNat_mul 18 18))
+        (Meanings.SignedReal.ofReal_same Meanings.the_root_by_itself_is_ninety))
+      (Meanings.SignedReal.same_trans (Meanings.SignedReal.ofReal_add _ _)
+        (Meanings.SignedReal.ofReal_same (Meanings.Bracketed.ofNat_add 324 90))))
+
+--| THE TWO TURNED ROOTS MULTIPLY TO THE TURNED TABLE'S DETERMINANT.
+theorem the_turned_roots_multiply_to_the_determinant :
+    (Meanings.theTurnedRoot * Meanings.theOtherTurnedRoot).Same (Meanings.ComplexReal.ofNat 414) :=
+  Meanings.ComplexReal.same_trans (Meanings.ComplexReal.mul_conjugate _)
+    (Meanings.ComplexReal.ofSigned_same the_turned_roots_norm_squared_is_the_determinant)
+
+theorem the_turned_roots_norm_squared_is_past_nothing :
+    (Meanings.theTurnedRoot.normSquared.owed.high 0).lt (Meanings.theTurnedRoot.normSquared.held.low 0) := by
+  decide +kernel
+
+def one_over_the_turned_root : Meanings.ComplexReal :=
+  Meanings.theTurnedRoot.reciprocal 0 the_turned_roots_norm_squared_is_past_nothing
+
+theorem four_hundred_and_fourteen_over_itself :
+    ((Meanings.Bracketed.ofNat 414).mul (Meanings.Bracketed.ofFraction ⟨1, 414, by decide⟩)).Same (Meanings.Bracketed.ofNat 1) :=
+  fun _ _ => ⟨Nat.le_of_ble_eq_true rfl, Nat.le_of_ble_eq_true rfl⟩
+
+--| ONE OVER THE TURNED ROOT IS THE OTHER TURNED ROOT OVER THE DETERMINANT.
+theorem one_over_the_turned_root_is_the_other_over_the_determinant :
+    one_over_the_turned_root.Same (Meanings.theOtherTurnedRoot
+      * Meanings.ComplexReal.ofSigned (Meanings.SignedReal.ofReal (Meanings.Bracketed.ofFraction ⟨1, 414, by decide⟩))) :=
+  Meanings.ComplexReal.reciprocal_unique (Meanings.ComplexReal.mul_reciprocal _ _ _)
+    (Meanings.ComplexReal.same_trans (Meanings.ComplexReal.same_symm (Meanings.ComplexReal.mul_assoc _ _ _))
+      (Meanings.ComplexReal.same_trans
+        (Meanings.ComplexReal.mul_same the_turned_roots_multiply_to_the_determinant (Meanings.ComplexReal.same_refl _))
+        (Meanings.ComplexReal.same_trans (Meanings.ComplexReal.ofSigned_mul (Meanings.SignedReal.ofNat 414) _)
+          (Meanings.ComplexReal.ofSigned_same (Meanings.SignedReal.same_trans (Meanings.SignedReal.ofReal_mul _ _)
+            (Meanings.SignedReal.ofReal_same four_hundred_and_fourteen_over_itself))))))
+end the_turned_root_over
+
 section the_turn_by_a_rational_angle
 open readers_experience
 

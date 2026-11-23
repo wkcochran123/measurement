@@ -12,8 +12,10 @@ stage is one with the difference held and nothing owed; and one over it is one o
 is past the held, one over it is one over the other difference, owed.  Either way, a signed real by one over itself is one.
 Which way it goes is handed in with the stage; a signed real does not say of itself which side of nothing it is on.
 
-Not here: one over a complex number or a quaternion (one over the square of the norm, which wants the norm squared shown
-past nothing at a stage), and an order on the signed reals.
+And one over a complex number: its conjugate by one over its norm squared, the norm squared handed in held past owed at a
+stage.  One over is one thing, for signed reals and complex numbers alike.
+
+Not here: one over a quaternion, and an order on the signed reals.
 -/
 import Meanings.Reciprocal
 
@@ -45,6 +47,8 @@ theorem Fraction.lt_le_trans {p q r : Fraction} (h1 : p.lt q) (h2 : q.le r) : p.
     _ = r.over * p.under * q.under := by ac_rfl
 
 theorem Fraction.le_of_lt {p q : Fraction} (h : p.lt q) : p.le q := Nat.le_of_lt h
+
+instance (p q : Fraction) : Decidable (p.lt q) := inferInstanceAs (Decidable (_ < _))
 
 --| LESS, for fractions (`Fraction.sub`, written with the series): over by under less over by under, under by under.  It runs
 --| past nothing only when asked to.
@@ -221,5 +225,96 @@ theorem mul_reciprocalOwed (x : SignedReal) (k : Nat) (strict : (x.held.high k).
     (same_trans (neg_mul_neg _ _) (same_trans (ofReal_mul _ _) (ofReal_same (Bracketed.mul_reciprocal _ _ _))))
 
 end SignedReal
+
+namespace SignedReal
+
+instance : @Trans SignedReal SignedReal SignedReal Same Same Same := ⟨same_trans⟩
+
+theorem neg_neg (x : SignedReal) : -(-x) = x := rfl
+
+theorem mul_one (x : SignedReal) : (x * ofNat 1).Same x := same_trans (mul_comm _ _) (one_mul x)
+
+theorem mul_zero (x : SignedReal) : (x * ofNat 0).Same (ofNat 0) := same_trans (mul_comm _ _) (zero_mul x)
+
+--| A real held beside a real held is their sum held.
+theorem ofReal_add (a b : Bracketed) : (ofReal a + ofReal b).Same (ofReal (a.add b)) :=
+  of_parts (Bracketed.same_refl _) (Bracketed.zero_add _)
+
+--| ONE OVER IS ONE THING: two that each make one with the same signed real are one.
+theorem reciprocal_unique {x u v : SignedReal} (hu : (x * u).Same (ofNat 1)) (hv : (x * v).Same (ofNat 1)) : u.Same v :=
+  same_trans (same_symm (mul_one u))
+    (same_trans (mul_same_right u (same_symm hv))
+      (same_trans (same_symm (mul_assoc _ _ _))
+        (same_trans (mul_same_left (mul_comm _ _) v)
+          (same_trans (mul_same_left hu v) (one_mul v)))))
+
+end SignedReal
+
+/-
+One over a complex number: the conjugate, by one over the norm squared.  The norm squared, along by along beside across by
+across, is a signed real, and it is handed in held past owed at a stage, as for any signed real.  Then the complex number
+by one over itself is one; and one over is one thing.
+-/
+namespace ComplexReal
+
+def normSquared (z : ComplexReal) : SignedReal := z.along * z.along + z.across * z.across
+
+--| ONE OVER A COMPLEX NUMBER, from a stage where its norm squared is held past owed.
+def reciprocal (z : ComplexReal) (k : Nat) (strict : (z.normSquared.owed.high k).lt (z.normSquared.held.low k)) :
+    ComplexReal :=
+  ⟨z.along * z.normSquared.reciprocalHeld k strict, -(z.across * z.normSquared.reciprocalHeld k strict)⟩
+
+theorem ofSigned_same {x y : SignedReal} (h : x.Same y) : (ofSigned x).Same (ofSigned y) := ⟨h, SignedReal.same_refl _⟩
+
+--| A complex number by its conjugate is its norm squared, along.
+theorem mul_conjugate (z : ComplexReal) : (z * z.conjugate).Same (ofSigned z.normSquared) := by
+  constructor
+  · show (z.along * z.along + -(z.across * -z.across)).Same (z.along * z.along + z.across * z.across)
+    simp only [SignedReal.mul_neg, SignedReal.neg_neg]
+    exact SignedReal.same_refl _
+  · show (z.along * -z.across + z.across * z.along).Same (SignedReal.ofNat 0)
+    simp only [SignedReal.mul_neg]
+    exact SignedReal.same_trans (SignedReal.add_same (SignedReal.neg_same (SignedReal.mul_comm _ _)) (SignedReal.same_refl _))
+      (SignedReal.same_trans (SignedReal.add_comm _ _) (SignedReal.add_neg _))
+
+--| A COMPLEX NUMBER BY ONE OVER ITSELF IS ONE.
+theorem mul_reciprocal (z : ComplexReal) (k : Nat) (strict : (z.normSquared.owed.high k).lt (z.normSquared.held.low k)) :
+    (z * z.reciprocal k strict).Same (ofNat 1) := by
+  have key := SignedReal.mul_reciprocalHeld z.normSquared k strict
+  unfold ComplexReal.reciprocal
+  generalize z.normSquared.reciprocalHeld k strict = r at key ⊢
+  unfold ComplexReal.normSquared at key
+  constructor
+  · show (z.along * (z.along * r) + -(z.across * -(z.across * r))).Same (SignedReal.ofNat 1)
+    simp only [SignedReal.mul_neg, SignedReal.neg_neg]
+    exact SignedReal.same_trans
+      (SignedReal.add_same (SignedReal.same_symm (SignedReal.mul_assoc _ _ _)) (SignedReal.same_symm (SignedReal.mul_assoc _ _ _)))
+      (SignedReal.same_trans (SignedReal.same_symm (SignedReal.add_mul _ _ _)) key)
+  · show (z.along * -(z.across * r) + z.across * (z.along * r)).Same (SignedReal.ofNat 0)
+    simp only [SignedReal.mul_neg]
+    have swap : (z.along * (z.across * r)).Same (z.across * (z.along * r)) :=
+      SignedReal.same_trans (SignedReal.same_symm (SignedReal.mul_assoc _ _ _))
+        (SignedReal.same_trans (SignedReal.mul_same_left (SignedReal.mul_comm _ _) r) (SignedReal.mul_assoc _ _ _))
+    exact SignedReal.same_trans (SignedReal.add_same (SignedReal.neg_same swap) (SignedReal.same_refl _))
+      (SignedReal.same_trans (SignedReal.add_comm _ _) (SignedReal.add_neg _))
+
+--| ONE OVER IS ONE THING.
+theorem reciprocal_unique {z u v : ComplexReal} (hu : (z * u).Same (ofNat 1)) (hv : (z * v).Same (ofNat 1)) : u.Same v :=
+  same_trans (same_symm (mul_one u))
+    (same_trans (mul_same (same_refl u) (same_symm hv))
+      (same_trans (same_symm (mul_assoc _ _ _))
+        (same_trans (mul_same (mul_comm _ _) (same_refl v))
+          (same_trans (mul_same hu (same_refl v)) (one_mul v)))))
+
+--| Signed reals along, each for each, are their product along.
+theorem ofSigned_mul (x y : SignedReal) : (ofSigned x * ofSigned y).Same (ofSigned (x * y)) := by
+  constructor
+  · show (x * y + -(SignedReal.ofNat 0 * SignedReal.ofNat 0)).Same (x * y)
+    exact SignedReal.same_trans (SignedReal.add_same (SignedReal.same_refl _) (SignedReal.neg_same (SignedReal.zero_mul _)))
+      (SignedReal.add_zero _)
+  · show (x * SignedReal.ofNat 0 + SignedReal.ofNat 0 * y).Same (SignedReal.ofNat 0)
+    exact SignedReal.same_trans (SignedReal.add_same (SignedReal.mul_zero _) (SignedReal.zero_mul _)) (SignedReal.zero_add _)
+
+end ComplexReal
 
 end Meanings
