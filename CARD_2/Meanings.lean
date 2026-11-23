@@ -15,3 +15,4 @@ import Meanings.Laws             -- the laws: reals a commutative semiring; sign
 import Meanings.Reciprocal       -- one over a real past nothing at a stage handed in, and over; found by looking
 import Meanings.Difference       -- the difference of two reals, and one over a signed real apart from nothing
 import Meanings.Quarters         -- the four quarters of the exponential, by k counted in fours
+import Meanings.Order            -- not past: reflexive, transitive, one both ways; beside keeps it; not total without a click
