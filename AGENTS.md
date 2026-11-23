@@ -3910,8 +3910,13 @@ names the number.
   falling terms beside its odd terms summed is its even terms summed,
   `the_alternating_and_the_odd_are_the_even`) and
   `Bracketed.same_of_each_stage` (brackets holding each other at every
-  single stage are one). The four beside each other against e, and the
-  circle, are still readings at one stage. Compared with the
+  single stage are one). And the four beside each other are e at every
+  stage, at θ one (`the_four_quarters_beside_each_other_are_e`), from two
+  exact identities at every length: the four quarters' partial sums,
+  regrouped, are the one series' (`the_four_quarters_are_the_series`),
+  and at θ one that series is e's own `seriesByFactorial` over the
+  factorial (`e_is_the_series_at_one`). The circle (cos² + sin² = 1) is
+  still a reading at one stage, and e^{−θ} is not built. Compared with the
   device's quartic (asked by the author): they do not look like its
   roots. At the printed reading the closing quartic in r has four real
   roots in two signed pairs, ±18 and ±32.34, the squares in the ratio

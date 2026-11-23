@@ -11,7 +11,7 @@ Cosine is the first quarter less the third, sine the second less the fourth; all
 derivative leaves alone, raised to θ; and at θ nothing they are one and three nothings.  What is checked here of those is
 what the circle check checks: at the third stage, at θ one and θ a half, the brackets of the two sides hold each other,
 decided by the kernel.  The first two are then proved one at every stage, for every θ = p over q not past one, from an
-exact identity on the partial sums; the four against e stays a reading at a stage.
+exact identity on the partial sums; and the four against e, at θ one, likewise at every stage.
 -/
 import Meanings.Difference
 
@@ -184,5 +184,128 @@ theorem sine_beside_the_fourth_quarter_is_the_second (p q : Nat) (hq : 0 < q) (h
   the_alternating_beside_the_odd_is_the_even (theTermsOfTheSine p q hq hp) _ _
     (fun j => by show powerTerm p q hq (4 * j + 1) = powerTerm p q hq (2 * (2 * j) + 1); congr 1; omega)
     (fun j => by show powerTerm p q hq (4 * j + 3) = powerTerm p q hq (2 * (2 * j + 1) + 1); congr 1; omega)
+
+/-
+ALL FOUR BESIDE EACH OTHER ARE e, AT EVERY STAGE.  The four quarters' partial sums, regrouped, are the one series' partial
+sum, exactly, at every length; and at θ one that series is e's own, the series by the factorial over the factorial.
+-/
+
+--| The one series, θ to the k over k factorial, summed to n.
+def expPartial (p q : Nat) (hq : 0 < q) : Nat → Fraction
+  | 0 => powerTerm p q hq 0
+  | n + 1 => (expPartial p q hq n).add (powerTerm p q hq (n + 1))
+
+theorem expPartial_rises (p q : Nat) (hq : 0 < q) (n : Nat) : ∀ d, (expPartial p q hq n).le (expPartial p q hq (n + d))
+  | 0 => Fraction.le_refl _
+  | d + 1 => Fraction.le_trans (expPartial_rises p q hq n d) (Fraction.le_add_right _ _)
+
+theorem expPartial_mono (p q : Nat) (hq : 0 < q) {n N : Nat} (h : n ≤ N) : (expPartial p q hq n).le (expPartial p q hq N) := by
+  obtain ⟨d, rfl⟩ := Nat.exists_eq_add_of_le h; exact expPartial_rises p q hq n d
+
+--| Beside, regrouped, four ways, both ways.
+theorem four_on_one_le (E A B C D : Fraction) :
+    ((((E.add A).add B).add C).add D).le (E.add (((A.add B).add C).add D)) :=
+  Fraction.le_trans (Fraction.add_le_add (Fraction.add_le_add (Fraction.add_regroup E A B) (Fraction.le_refl C)) (Fraction.le_refl D))
+    (Fraction.le_trans (Fraction.add_le_add (Fraction.add_regroup E (A.add B) C) (Fraction.le_refl D))
+      (Fraction.add_regroup E ((A.add B).add C) D))
+
+theorem four_on_one_ge (E A B C D : Fraction) :
+    (E.add (((A.add B).add C).add D)).le ((((E.add A).add B).add C).add D) :=
+  Fraction.le_trans (Fraction.add_regroup_back E ((A.add B).add C) D)
+    (Fraction.le_trans (Fraction.add_le_add (Fraction.add_regroup_back E (A.add B) C) (Fraction.le_refl D))
+      (Fraction.add_le_add (Fraction.add_le_add (Fraction.add_regroup_back E A B) (Fraction.le_refl C)) (Fraction.le_refl D)))
+
+theorem two_pairs_le (a A b B c C d D : Fraction) :
+    (((a.add A).add (b.add B)).add ((c.add C).add (d.add D))).le
+      (((a.add b).add (c.add d)).add (((A.add B).add C).add D)) :=
+  Fraction.le_trans (Fraction.add_le_add (Fraction.swap_middle a A b B) (Fraction.swap_middle c C d D))
+    (Fraction.le_trans (Fraction.swap_middle _ _ _ _)
+      (Fraction.add_le_add (Fraction.le_refl _) (Fraction.add_regroup_back (A.add B) C D)))
+
+theorem two_pairs_ge (a A b B c C d D : Fraction) :
+    (((a.add b).add (c.add d)).add (((A.add B).add C).add D)).le
+      (((a.add A).add (b.add B)).add ((c.add C).add (d.add D))) :=
+  Fraction.le_trans (Fraction.add_le_add (Fraction.le_refl _) (Fraction.add_regroup (A.add B) C D))
+    (Fraction.le_trans (Fraction.swap_middle _ _ _ _)
+      (Fraction.add_le_add (Fraction.swap_middle a b A B) (Fraction.swap_middle c d C D)))
+
+def fourQuartersPartial (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (M : Nat) : Fraction :=
+  (((theQuarterSteps p q hq hp 0).partial M).add ((theQuarterSteps p q hq hp 1).partial M)).add
+    (((theQuarterSteps p q hq hp 2).partial M).add ((theQuarterSteps p q hq hp 3).partial M))
+
+theorem quarter_step (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (j M : Nat) :
+    (theQuarterSteps p q hq hp j).step (M + 1) = powerTerm p q hq (4 * M + 3 + (j + 1)) := by
+  show powerTerm p q hq (4 * (M + 1) + j) = _; congr 1; omega
+
+--| THE FOUR QUARTERS' PARTIAL SUMS ARE THE ONE SERIES' PARTIAL SUM, at every length.
+theorem the_four_quarters_are_the_series (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (M : Nat) :
+    (fourQuartersPartial p q hq hp M).le (expPartial p q hq (4 * M + 3))
+      ∧ (expPartial p q hq (4 * M + 3)).le (fourQuartersPartial p q hq hp M) := by
+  induction M with
+  | zero => exact ⟨Fraction.add_regroup_back _ _ _, Fraction.add_regroup _ _ _⟩
+  | succ M ih =>
+    have e : expPartial p q hq (4 * (M + 1) + 3)
+        = (((((expPartial p q hq (4 * M + 3)).add (powerTerm p q hq (4 * M + 3 + 1))).add
+            (powerTerm p q hq (4 * M + 3 + 2))).add (powerTerm p q hq (4 * M + 3 + 3))).add
+            (powerTerm p q hq (4 * M + 3 + 4))) := by
+      rw [show 4 * (M + 1) + 3 = 4 * M + 3 + 1 + 1 + 1 + 1 by omega]; rfl
+    have g : fourQuartersPartial p q hq hp (M + 1)
+        = ((((theQuarterSteps p q hq hp 0).partial M).add (powerTerm p q hq (4 * M + 3 + 1))).add
+            (((theQuarterSteps p q hq hp 1).partial M).add (powerTerm p q hq (4 * M + 3 + 2)))).add
+          ((((theQuarterSteps p q hq hp 2).partial M).add (powerTerm p q hq (4 * M + 3 + 3))).add
+            (((theQuarterSteps p q hq hp 3).partial M).add (powerTerm p q hq (4 * M + 3 + 4)))) := by
+      show (((((theQuarterSteps p q hq hp 0).partial M).add ((theQuarterSteps p q hq hp 0).step (M + 1))).add
+            (((theQuarterSteps p q hq hp 1).partial M).add ((theQuarterSteps p q hq hp 1).step (M + 1)))).add
+          ((((theQuarterSteps p q hq hp 2).partial M).add ((theQuarterSteps p q hq hp 2).step (M + 1))).add
+            (((theQuarterSteps p q hq hp 3).partial M).add ((theQuarterSteps p q hq hp 3).step (M + 1))))) = _
+      rw [quarter_step, quarter_step, quarter_step, quarter_step]
+    rw [e, g]
+    exact ⟨Fraction.le_trans (two_pairs_le _ _ _ _ _ _ _ _)
+        (Fraction.le_trans (Fraction.add_le_add ih.1 (Fraction.le_refl _)) (four_on_one_ge _ _ _ _ _)),
+      Fraction.le_trans (four_on_one_le _ _ _ _ _)
+        (Fraction.le_trans (Fraction.add_le_add ih.2 (Fraction.le_refl _)) (two_pairs_ge _ _ _ _ _ _ _ _))⟩
+
+--| AT θ ONE THE SERIES IS e's OWN: the series by the factorial, over the factorial.
+theorem e_is_the_series_at_one (m : Nat) :
+    (⟨seriesByFactorial m, factorial m, factorial_pos m⟩ : Fraction).le (expPartial 1 1 (by decide) m)
+      ∧ (expPartial 1 1 (by decide) m).le ⟨seriesByFactorial m, factorial m, factorial_pos m⟩ := by
+  induction m with
+  | zero => exact ⟨Nat.le_refl _, Nat.le_refl _⟩
+  | succ m ih =>
+    have v : (⟨seriesByFactorial (m + 1), factorial (m + 1), factorial_pos _⟩ : Fraction).le
+          ((⟨seriesByFactorial m, factorial m, factorial_pos m⟩ : Fraction).add (powerTerm 1 1 (by decide) (m + 1)))
+        ∧ ((⟨seriesByFactorial m, factorial m, factorial_pos m⟩ : Fraction).add (powerTerm 1 1 (by decide) (m + 1))).le
+          ⟨seriesByFactorial (m + 1), factorial (m + 1), factorial_pos _⟩ := by
+      unfold Fraction.le Fraction.add powerTerm
+      simp only [seriesByFactorial, factorial, Nat.one_pow, Nat.one_mul]
+      constructor <;> apply Nat.le_of_eq <;> simp only [Nat.add_mul, Nat.mul_add, Nat.one_mul] <;> ac_rfl
+    exact ⟨Fraction.le_trans v.1 (Fraction.add_le_add ih.1 (Fraction.le_refl _)),
+      Fraction.le_trans (Fraction.add_le_add ih.2 (Fraction.le_refl _)) v.2⟩
+
+--| ALL FOUR QUARTERS BESIDE EACH OTHER ARE e, AT EVERY STAGE.
+def theFourQuartersAtOne : Bracketed :=
+  ((quarter 1 1 (by decide) (by decide) 0).add (quarter 1 1 (by decide) (by decide) 1)).add
+    ((quarter 1 1 (by decide) (by decide) 2).add (quarter 1 1 (by decide) (by decide) 3))
+
+theorem theFourQuartersAtOne_low (k : Nat) :
+    theFourQuartersAtOne.low k = fourQuartersPartial 1 1 (by decide) (by decide) (2 * (2 * k + 1) + 1) := rfl
+
+theorem theBase_low (n : Nat) :
+    theBaseTheDerivativeLeavesAlone.low n = ⟨seriesByFactorial (n + 1), factorial (n + 1), factorial_pos _⟩ := rfl
+
+theorem the_four_quarters_beside_each_other_are_e : theFourQuartersAtOne.Same theBaseTheDerivativeLeavesAlone := by
+  apply Bracketed.same_of_each_stage
+  intro k
+  have hq := the_four_quarters_are_the_series 1 1 (by decide) (by decide) (2 * (2 * k + 1) + 1)
+  have he := e_is_the_series_at_one (4 * (2 * (2 * k + 1) + 1) + 2 + 1)
+  have he' := e_is_the_series_at_one (k + 1)
+  have mono := expPartial_mono 1 1 (by decide) (show k + 1 ≤ 4 * (2 * (2 * k + 1) + 1) + 3 by omega)
+  have lh := theBaseTheDerivativeLeavesAlone.low_under_high (4 * (2 * (2 * k + 1) + 1) + 2) k
+  have ord := theFourQuartersAtOne.ordered k
+  rw [theBase_low] at lh
+  rw [theFourQuartersAtOne_low] at ord ⊢
+  rw [theBase_low]
+  exact ⟨Fraction.le_trans hq.1 (Fraction.le_trans he.2 lh),
+    Fraction.le_trans he'.1 (Fraction.le_trans mono (Fraction.le_trans hq.2 ord))⟩
 
 end Meanings
