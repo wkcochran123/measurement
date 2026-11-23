@@ -3799,6 +3799,39 @@ names the number.
   way: the AC simp set (`Nat.mul_comm`, `Nat.mul_left_comm`) normalizes
   products where `ac_nf` puts numerals inside atoms that `omega` cannot
   match.
+- The printed number as a real (`Episode13.lean`, section
+  `the_printed_number_as_a_real`; `Meanings/Signed.lean`,
+  `Bracketed.ofFraction`; `Experiments/Jar.lean`,
+  `the_reals_walls_are_this_jars`; 23 November 2026). The author
+  (declared): "since we have the jar at compile, the next is h->0"; and
+  the compile provides the bounds. `the_printed_number_as_a_real` is
+  324/65, as a real, by eighteen as a real beside `the_root_by_the_crank`:
+  the closed form of Episode 8's number with no choice. Receipts,
+  `propext` and `Quot.sound` at most: it is a `Bracketed`, so at stage n
+  its bracket is no wider than 1/(n+1)
+  (`the_printed_number_narrows_at_every_stage`: that is h going to
+  nothing, a stated theorem that compiles); and at every stage its low
+  wall is not under 8905/65 and its high wall not over 8934/65
+  (`the_low_wall_is_never_under_the_jar`,
+  `the_high_wall_is_never_over_the_jar`, together with the narrowing in
+  `the_printed_number_is_in_the_jar_and_narrows`), which are the jar's
+  walls, 137 and 137 + 29/65 (`the_reals_walls_are_this_jars`). How, said
+  exactly: the product's walls are NOT evaluated; `Bracketed.mul` would
+  read the crank as far on as the first high wall's numerator, a number of
+  some 232 digits, which no machine can turn. Instead the crank's walls
+  never move outward, and at its first stage (four turns from the house,
+  numbers of 116 digits) the kernel decides that 324/65 of eighteen and
+  each wall lies inside the jar
+  (`at_the_cranks_first_stage_the_walls_are_in_the_jar`); monotonicity of
+  the walls under beside and each for each carries that to every stage.
+  Say with it: the jar is half a unit wide and the first stage already
+  reads 137.0112905, so lying inside it could hardly have failed; what is
+  new is that the number is a real whose walls narrow, not a ratio of
+  whole numbers set beside the jar. Not shown: that this real is `Same`
+  as the halving's (324/65)(18 + √90) (that needs the product and the sum
+  to respect `Same`, which `Meanings/Laws.lean` does not yet have); that
+  the printed digits lie inside every bracket; and anything about what
+  the number is of.
 - Cosine and sine at a rational angle (`Meanings/Trigonometry.lean`;
   `Episode13.lean`, section `the_turn_by_a_rational_angle`; 23 November
   2026). Receipts, `propext`, `Quot.sound`: a series of nonnegative steps

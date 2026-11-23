@@ -19,6 +19,15 @@ def Bracketed.ofNat (k : Nat) : Bracketed where
   high_falls _ := Nat.le_refl _
   narrows _ := Nat.le_add_right _ _
 
+--| A fraction, as a real: the same fraction for a wall on both sides, at every stage.
+def Bracketed.ofFraction (p : Fraction) : Bracketed where
+  low _ := p
+  high _ := p
+  ordered _ := Nat.le_refl _
+  low_rises _ := Nat.le_refl _
+  high_falls _ := Nat.le_refl _
+  narrows _ := Nat.le_add_right _ _
+
 instance (p q : Fraction) : Decidable (p.le q) := inferInstanceAs (Decidable (_ ≤ _))
 
 --| HELD AND OWED.

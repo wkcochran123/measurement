@@ -56,6 +56,17 @@ theorem the_other_roots_walls :
       ∧ the_frame_by_the_coefficient * what_is_left_of_the_sum
           + the_sum_of_the_roots_in_cells % the_frame_by_the_coefficient = 2759 := by decide
 
+--| THE PRINTED NUMBER, AS A REAL, IN THIS JAR.  Episode 13 makes the printed number a real with no choice and shows both
+--| walls inside two fractions over sixty-five at every stage (`the_printed_number_is_in_the_jar_and_narrows`).  Those two
+--| fractions are this jar's walls: sixty-five naturals read, and that and the twenty-nine, over the sixty-five.
+set_option maxRecDepth 100000 in
+theorem the_reals_walls_are_this_jars :
+    the_jars_low_wall.over = the_frame_by_the_coefficient * the_giant_list.length
+      ∧ the_jars_low_wall.under = the_frame_by_the_coefficient
+      ∧ the_jars_high_wall.over = the_frame_by_the_coefficient * the_giant_list.length
+          + the_sum_of_the_roots_in_cells % the_frame_by_the_coefficient
+      ∧ the_jars_high_wall.under = the_frame_by_the_coefficient := by decide
+
 section for_the_reader
 open readers_interpretation_of_the_experience
 
@@ -92,6 +103,7 @@ end for_the_reader
 --#print axioms the_number_is_in_the_jar_the_two_naturals_make
 --#print axioms the_natural_read_and_the_natural_inferred
 --#print axioms the_reader_is_handed_one_first_part_whatever_the_knower_called
+--#print axioms the_reals_walls_are_this_jars
 --#print axioms the_readers_fraction_is_eighty_nine_and_forty_seven_sixty_fifths
 
 end Measurement

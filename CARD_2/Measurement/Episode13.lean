@@ -9466,6 +9466,74 @@ theorem the_crank_and_the_halving_are_one_root :
       _ = the_whole_part_at (m + 4) * 2 ^ n * (the_whole_part_at (m + 4) * 2 ^ n) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
 end the_limit_as_the_devices_own
 
+section the_printed_number_as_a_real
+open readers_experience
+
+--| THE PRINTED NUMBER, AS A REAL.  The author's, 23 November 2026: "since we have the jar at compile, the next is h->0"
+--| (declared).  What is checked.  The number Episode 8 prints is, in closed form, three hundred and twenty-four sixty-fifths
+--| of eighteen and the root of ninety.  Here it is a real with no choice: the fraction as a real, by eighteen as a real beside
+--| the crank's own root of ninety.  It is a real by construction, so at the n-th stage its bracket is no wider than one part
+--| in n and one: that is the step going to nothing, and the compile is what provides it.  And at every stage both walls are
+--| inside the jar, eight thousand nine hundred and five sixty-fifths (the natural read, a hundred and thirty-seven) and eight
+--| thousand nine hundred and thirty-four sixty-fifths (that and the twenty-nine).  The walls of the product are not read off:
+--| the product reads its factors as far on as their first high wall is tall, and that is more turns of the crank than can be
+--| turned.  So the jar is shown at every stage from two things: the crank's walls never move outward, and at its first stage,
+--| four turns on, the kernel decides that the product of the walls is inside.  That the bracket is a number on a line is
+--| still the reader's.
+
+--| A FRACTION, AS A REAL, BY EIGHTEEN AND THE CRANK'S ROOT.
+def the_printed_number_as_a_real : Meanings.Bracketed :=
+  (Meanings.Bracketed.ofFraction ⟨324, 65, by decide⟩).mul ((Meanings.Bracketed.ofNat 18).add the_root_by_the_crank)
+
+--| THE STEP GOES TO NOTHING.  At the n-th stage the high wall is past the low by no more than one part in n and one.
+theorem the_printed_number_narrows_at_every_stage (n : Nat) :
+    (the_printed_number_as_a_real.high n).over * (the_printed_number_as_a_real.low n).under * (n + 1)
+      ≤ (the_printed_number_as_a_real.low n).over * (the_printed_number_as_a_real.high n).under * (n + 1)
+        + (the_printed_number_as_a_real.high n).under * (the_printed_number_as_a_real.low n).under :=
+  the_printed_number_as_a_real.narrows n
+
+--| The crank's walls never move outward: every low wall is past the first, every high wall under it.
+theorem the_cranks_low_wall_is_past_its_first (j : Nat) : (the_root_by_the_crank.low 0).le (the_root_by_the_crank.low j) := by
+  have h := the_root_by_the_crank.low_rises_by 0 j
+  rwa [Nat.zero_add] at h
+
+theorem the_cranks_high_wall_is_under_its_first (j : Nat) : (the_root_by_the_crank.high j).le (the_root_by_the_crank.high 0) := by
+  have h := the_root_by_the_crank.high_falls_by 0 j
+  rwa [Nat.zero_add] at h
+
+--| THE WALLS OF THE JAR, as fractions over sixty-five.
+def the_jars_low_wall : Meanings.Fraction := ⟨8905, 65, by decide⟩
+def the_jars_high_wall : Meanings.Fraction := ⟨8934, 65, by decide⟩
+
+--| At the crank's first stage, four turns on, the product of the walls is inside the jar: decided by the kernel.
+theorem at_the_cranks_first_stage_the_walls_are_in_the_jar :
+    the_jars_low_wall.le ((⟨324, 65, by decide⟩ : Meanings.Fraction).mul ((⟨18, 1, Nat.one_pos⟩ : Meanings.Fraction).add (the_root_by_the_crank.low 0)))
+      ∧ ((⟨324, 65, by decide⟩ : Meanings.Fraction).mul ((⟨18, 1, Nat.one_pos⟩ : Meanings.Fraction).add (the_root_by_the_crank.high 0))).le the_jars_high_wall := by
+  decide +kernel
+
+--| THE LOW WALL IS NEVER UNDER THE JAR, at any stage.
+theorem the_low_wall_is_never_under_the_jar (n : Nat) : the_jars_low_wall.le (the_printed_number_as_a_real.low n) :=
+  Meanings.Fraction.le_trans at_the_cranks_first_stage_the_walls_are_in_the_jar.1
+    (Meanings.Fraction.mul_le_mul (Meanings.Fraction.le_refl _)
+      (Meanings.Fraction.add_le_add (Meanings.Fraction.le_refl _) (the_cranks_low_wall_is_past_its_first _)))
+
+--| THE HIGH WALL IS NEVER OVER THE JAR, at any stage.
+theorem the_high_wall_is_never_over_the_jar (n : Nat) : (the_printed_number_as_a_real.high n).le the_jars_high_wall :=
+  Meanings.Fraction.le_trans
+    (Meanings.Fraction.mul_le_mul (Meanings.Fraction.le_refl _)
+      (Meanings.Fraction.add_le_add (Meanings.Fraction.le_refl _) (the_cranks_high_wall_is_under_its_first _)))
+    at_the_cranks_first_stage_the_walls_are_in_the_jar.2
+
+--| AT EVERY STAGE, INSIDE THE JAR AND NARROWING.
+theorem the_printed_number_is_in_the_jar_and_narrows (n : Nat) :
+    the_jars_low_wall.le (the_printed_number_as_a_real.low n)
+      ∧ (the_printed_number_as_a_real.high n).le the_jars_high_wall
+      ∧ (the_printed_number_as_a_real.high n).over * (the_printed_number_as_a_real.low n).under * (n + 1)
+          ≤ (the_printed_number_as_a_real.low n).over * (the_printed_number_as_a_real.high n).under * (n + 1)
+            + (the_printed_number_as_a_real.high n).under * (the_printed_number_as_a_real.low n).under :=
+  ⟨the_low_wall_is_never_under_the_jar n, the_high_wall_is_never_over_the_jar n, the_printed_number_narrows_at_every_stage n⟩
+end the_printed_number_as_a_real
+
 section the_turn_by_a_rational_angle
 open readers_experience
 
