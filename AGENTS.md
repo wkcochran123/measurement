@@ -3869,9 +3869,24 @@ names the number.
   a law of fractions (`Fraction.mul_regroup`, `spread`, `gather`) carried
   to every pair of stages by `low_under_high`. So these reals, up to
   `Same`, have the commutative-semiring laws of sum and product, with no
-  choice. Not shown: zero and one as laws (that 0 + x and 1·x are `Same` as x), and
-  the laws for the signed, complex and quaternion layers (which would
-  follow the same pattern).
+  choice. Then, at the author's "yes ... then do addition, etc.": zero and
+  one (`Bracketed.zero_add`, `add_zero`, `one_mul`, `zero_mul`), so a
+  commutative semiring up to `Same`; and cancellation
+  (`Bracketed.add_cancel`: a real beside both sides can be taken away,
+  proved by Archimedes through the narrowing of the real taken away,
+  `cancel_by_the_width`, `fewer_parts`). On the signed reals (held and
+  owed): `SignedReal.Same` is an equivalence (`same_refl`, `same_symm`,
+  `same_trans`, the last by cancellation); beside and each for each keep
+  `Same` (`add_same`, `neg_same`, `mul_same`); beside commutes,
+  associates, keeps nothing, and a signed real beside itself turned over
+  is nothing (`add_comm`, `add_assoc`, `zero_add`, `add_neg`); each for
+  each commutes, associates, keeps one and spreads over beside
+  (`mul_comm`, `mul_assoc`, `one_mul`, `mul_add`); less is beside the other
+  turned over by `rfl` (`sub_is_add_neg`). So the signed reals up to
+  `Same` have the laws of a commutative ring; all `propext`, `Quot.sound`.
+  Not shown: the laws for the complex and quaternion layers (which would
+  follow the same pattern); a reciprocal, and so division; and any order
+  on the signed reals.
   Standard, and the author's next step:
   continuity with a modulus (a δ handed over for each ε) needs no choice,
   while that sequential continuity gives ε–δ continuity uses countable
