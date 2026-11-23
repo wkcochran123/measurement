@@ -3827,9 +3827,12 @@ names the number.
   Say with it: the jar is half a unit wide and the first stage already
   reads 137.0112905, so lying inside it could hardly have failed; what is
   new is that the number is a real whose walls narrow, not a ratio of
-  whole numbers set beside the jar. Not shown: that this real is `Same`
-  as the halving's (324/65)(18 + √90) (that needs the product and the sum
-  to respect `Same`, which `Meanings/Laws.lean` does not yet have); that
+  whole numbers set beside the jar. And, since the laws below: it is
+  `Same` as 324/65 of the halving's norm
+  (`the_printed_number_is_one_with_the_halvings`, through
+  `eighteen_beside_the_root_is_the_norm`, the crank's root being the
+  halving's, and `Bracketed.add_same`, `Bracketed.mul_same`): the crank
+  and the bisection give one real for the printed number. Not shown: that
   the printed digits lie inside every bracket; and anything about what
   the number is of.
 - Cosine and sine at a rational angle (`Meanings/Trigonometry.lean`;
@@ -3859,9 +3862,16 @@ names the number.
   the middle real's narrowing (`through_the_middle`) and Archimedes
   (`not_past_by_any_part`: past by no more than 1/k for every k is not
   past); the sum commutes and associates and the product commutes, up to
-  `Same` (`Bracketed.add_comm`, `add_assoc`, `mul_comm`). Not shown: the
-  product associating, distributivity, and the laws for the signed,
-  complex and quaternion layers (which would follow the same pattern).
+  `Same` (`Bracketed.add_comm`, `add_assoc`, `mul_comm`). Since, at the
+  author's "update Laws.lean": the sum and the product keep `Same`
+  (`Bracketed.add_same`, `mul_same`: a congruence), the product
+  associates (`mul_assoc`) and spreads over the sum (`mul_add`), each from
+  a law of fractions (`Fraction.mul_regroup`, `spread`, `gather`) carried
+  to every pair of stages by `low_under_high`. So these reals, up to
+  `Same`, satisfy the laws of a commutative semiring, with no choice. Not
+  shown: zero and one as laws (that 0 + x and 1·x are `Same` as x), and
+  the laws for the signed, complex and quaternion layers (which would
+  follow the same pattern).
   Standard, and the author's next step:
   continuity with a modulus (a δ handed over for each ε) needs no choice,
   while that sequential continuity gives ε–δ continuity uses countable

@@ -6,7 +6,12 @@ itself, because every low wall is under every high wall; one with another both w
 third narrows: what the first is past the last by is never more than one part in any number, and Archimedes says that
 is nothing.  Then the sum commutes and associates, and the product commutes, each up to being one.
 
-Not here: the product associating, and the product spreading over the sum.
+And the sum and the product keep being one: put a real one with another in place of it, beside or each for each, and
+what comes out is one with what came out before.  The product associates, and it spreads over the sum.  Each is a law of
+the walls of fractions of naturals, carried to every pair of stages because every low wall is under every high wall.
+So the reals here, up to being one, are a commutative semiring, with no choice.
+
+Not here: negatives as laws (the signed, complex and quaternion layers), and a one and a nothing as laws.
 -/
 import Meanings.Trigonometry
 namespace Meanings
@@ -91,5 +96,49 @@ theorem Bracketed.add_assoc (x y z : Bracketed) : ((x.add y).add z).Same (x.add 
 theorem Bracketed.mul_comm (x y : Bracketed) : (x.mul y).Same (y.mul x) := fun _ _ =>
   ⟨Fraction.le_trans (Fraction.mul_le_mul (x.low_under_high _ _) (y.low_under_high _ _)) (Fraction.mul_comm_le _ _),
    Fraction.le_trans (Fraction.mul_le_mul (y.low_under_high _ _) (x.low_under_high _ _)) (Fraction.mul_comm_le _ _)⟩
+
+--| THE SUM KEEPS BEING ONE.  Each in place of one it is one with, beside.
+theorem Bracketed.add_same {x x' y y' : Bracketed} (hx : x.Same x') (hy : y.Same y') : (x.add y).Same (x'.add y') :=
+  fun _ _ => ⟨Fraction.add_le_add (hx _ _).1 (hy _ _).1, Fraction.add_le_add (hx _ _).2 (hy _ _).2⟩
+
+--| THE PRODUCT KEEPS BEING ONE.  Each in place of one it is one with, each for each.
+theorem Bracketed.mul_same {x x' y y' : Bracketed} (hx : x.Same x') (hy : y.Same y') : (x.mul y).Same (x'.mul y') :=
+  fun _ _ => ⟨Fraction.mul_le_mul (hx _ _).1 (hy _ _).1, Fraction.mul_le_mul (hx _ _).2 (hy _ _).2⟩
+
+theorem Fraction.mul_regroup (a b c : Fraction) : ((a.mul b).mul c).le (a.mul (b.mul c)) := by
+  unfold Fraction.le Fraction.mul; apply Nat.le_of_eq; dsimp only; ac_rfl
+
+theorem Fraction.mul_regroup_back (a b c : Fraction) : (a.mul (b.mul c)).le ((a.mul b).mul c) := by
+  unfold Fraction.le Fraction.mul; apply Nat.le_of_eq; dsimp only; ac_rfl
+
+--| Each for a sum is the sum of each for each, and back.
+theorem Fraction.spread (a b c : Fraction) : (a.mul (b.add c)).le ((a.mul b).add (a.mul c)) := by
+  unfold Fraction.le Fraction.mul Fraction.add; apply Nat.le_of_eq; dsimp only
+  simp only [Nat.add_mul, Nat.mul_add]
+  simp only [Nat.mul_comm, Nat.mul_left_comm]
+
+theorem Fraction.gather (a b c : Fraction) : ((a.mul b).add (a.mul c)).le (a.mul (b.add c)) := by
+  unfold Fraction.le Fraction.mul Fraction.add; apply Nat.le_of_eq; dsimp only
+  simp only [Nat.add_mul, Nat.mul_add]
+  simp only [Nat.mul_comm, Nat.mul_left_comm]
+
+--| THE PRODUCT ASSOCIATES.
+theorem Bracketed.mul_assoc (x y z : Bracketed) : ((x.mul y).mul z).Same (x.mul (y.mul z)) := fun _ _ =>
+  ⟨Fraction.le_trans
+    (Fraction.mul_le_mul (Fraction.mul_le_mul (x.low_under_high _ _) (y.low_under_high _ _)) (z.low_under_high _ _))
+    (Fraction.mul_regroup _ _ _),
+   Fraction.le_trans
+    (Fraction.mul_le_mul (x.low_under_high _ _) (Fraction.mul_le_mul (y.low_under_high _ _) (z.low_under_high _ _)))
+    (Fraction.mul_regroup_back _ _ _)⟩
+
+--| THE PRODUCT SPREADS OVER THE SUM.
+theorem Bracketed.mul_add (x y z : Bracketed) : (x.mul (y.add z)).Same ((x.mul y).add (x.mul z)) := fun _ _ =>
+  ⟨Fraction.le_trans (Fraction.spread _ _ _)
+    (Fraction.add_le_add (Fraction.mul_le_mul (x.low_under_high _ _) (y.low_under_high _ _))
+      (Fraction.mul_le_mul (x.low_under_high _ _) (z.low_under_high _ _))),
+   Fraction.le_trans
+    (Fraction.add_le_add (Fraction.mul_le_mul (x.low_under_high _ _) (y.low_under_high _ _))
+      (Fraction.mul_le_mul (x.low_under_high _ _) (z.low_under_high _ _)))
+    (Fraction.gather _ _ _)⟩
 
 end Meanings

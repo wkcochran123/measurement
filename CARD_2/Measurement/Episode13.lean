@@ -9478,8 +9478,8 @@ open readers_experience
 --| thousand nine hundred and thirty-four sixty-fifths (that and the twenty-nine).  The walls of the product are not read off:
 --| the product reads its factors as far on as their first high wall is tall, and that is more turns of the crank than can be
 --| turned.  So the jar is shown at every stage from two things: the crank's walls never move outward, and at its first stage,
---| four turns on, the kernel decides that the product of the walls is inside.  That the bracket is a number on a line is
---| still the reader's.
+--| four turns on, the kernel decides that the product of the walls is inside.  And by the laws it is one with the halving's
+--| norm, by the same fraction.  That the bracket is a number on a line is still the reader's.
 
 --| A FRACTION, AS A REAL, BY EIGHTEEN AND THE CRANK'S ROOT.
 def the_printed_number_as_a_real : Meanings.Bracketed :=
@@ -9532,6 +9532,41 @@ theorem the_printed_number_is_in_the_jar_and_narrows (n : Nat) :
           ≤ (the_printed_number_as_a_real.low n).over * (the_printed_number_as_a_real.high n).under * (n + 1)
             + (the_printed_number_as_a_real.high n).under * (the_printed_number_as_a_real.low n).under :=
   ⟨the_low_wall_is_never_under_the_jar n, the_high_wall_is_never_over_the_jar n, the_printed_number_narrows_at_every_stage n⟩
+--| ONE WITH THE HALVING'S.  The laws say the sum and the product keep being one.  Eighteen beside the halving's root of
+--| ninety is the halving's norm; the crank's root is the halving's; so the printed number as a real is one with three
+--| hundred and twenty-four sixty-fifths of the halving's norm, at every pair of stages.  Two processes, the crank and the
+--| bisection, and one real.
+theorem eighteen_beside_the_root_is_the_norm :
+    ((Meanings.Bracketed.ofNat 18).add Meanings.theRootOfNinety.bracketed).Same Meanings.theNorm.bracketed := by
+  intro n m
+  constructor
+  · have hr := Meanings.theRootOfNinety.bracketed.low_under_high (2 * n + 1) m
+    unfold Meanings.Fraction.le at hr ⊢
+    show (18 * 2 ^ (2 * n + 1) + Meanings.theRootOfNinety.cut (2 * n + 1) * 1) * 2 ^ m
+      ≤ (18 * 2 ^ m + Meanings.theRootOfNinety.cut m + 1) * (1 * 2 ^ (2 * n + 1))
+    change Meanings.theRootOfNinety.cut (2 * n + 1) * 2 ^ m ≤ (Meanings.theRootOfNinety.cut m + 1) * 2 ^ (2 * n + 1) at hr
+    generalize 2 ^ (2 * n + 1) = A at *
+    generalize 2 ^ m = B at *
+    simp only [Nat.add_mul, Nat.mul_one, Nat.one_mul] at hr ⊢
+    simp only [Nat.mul_comm, Nat.mul_left_comm] at hr ⊢
+    omega
+  · have hr := Meanings.theRootOfNinety.bracketed.low_under_high n (2 * m + 1)
+    unfold Meanings.Fraction.le at hr ⊢
+    show (18 * 2 ^ n + Meanings.theRootOfNinety.cut n) * (1 * 2 ^ (2 * m + 1))
+      ≤ (18 * 2 ^ (2 * m + 1) + (Meanings.theRootOfNinety.cut (2 * m + 1) + 1) * 1) * 2 ^ n
+    change Meanings.theRootOfNinety.cut n * 2 ^ (2 * m + 1) ≤ (Meanings.theRootOfNinety.cut (2 * m + 1) + 1) * 2 ^ n at hr
+    generalize 2 ^ (2 * m + 1) = A at *
+    generalize 2 ^ n = B at *
+    simp only [Nat.add_mul, Nat.mul_one, Nat.one_mul] at hr ⊢
+    simp only [Nat.mul_comm, Nat.mul_left_comm] at hr ⊢
+    omega
+
+theorem the_printed_number_is_one_with_the_halvings :
+    the_printed_number_as_a_real.Same ((Meanings.Bracketed.ofFraction ⟨324, 65, by decide⟩).mul Meanings.theNorm.bracketed) :=
+  Meanings.Bracketed.mul_same (Meanings.Bracketed.same_refl _)
+    (Meanings.Bracketed.same_trans
+      (Meanings.Bracketed.add_same (Meanings.Bracketed.same_refl _) the_crank_and_the_halving_are_one_root)
+      eighteen_beside_the_root_is_the_norm)
 end the_printed_number_as_a_real
 
 section the_turn_by_a_rational_angle
