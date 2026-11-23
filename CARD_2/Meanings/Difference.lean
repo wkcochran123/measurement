@@ -333,6 +333,11 @@ theorem ofSigned_add (x y : SignedReal) : (ofSigned x + ofSigned y).Same (ofSign
 
 theorem conjugate_ofSigned (x : SignedReal) : (ofSigned x).conjugate = ofSigned x := rfl
 
+theorem neg_mul_neg (z w : ComplexReal) : ((-z) * (-w)).Same (z * w) := by
+  have h := neg_mul z (-w)
+  rw [mul_neg z w, neg_neg (z * w)] at h
+  exact h
+
 --| The conjugate by the number is the number's norm squared too.
 theorem conjugate_mul_self (z : ComplexReal) : (z.conjugate * z).Same (ofSigned z.normSquared) :=
   same_trans (mul_comm _ _) (mul_conjugate z)
@@ -430,6 +435,27 @@ theorem mul_neg (p q : QuaternionReal) : (p * -q).Same (-(p * q)) := by
   · show ((-d) * a + b * (-c).conjugate).Same (-(d * a) + -(b * c.conjugate))
     simp only [ComplexReal.conjugate_neg, ComplexReal.mul_neg]
     exact ComplexReal.add_same (ComplexReal.neg_mul _ _) (ComplexReal.same_refl _)
+
+--| THE CONJUGATE OF A QUATERNION: the first turned across the line, the second owed.
+def conjugate (p : QuaternionReal) : QuaternionReal := ⟨p.first.conjugate, -p.second⟩
+
+--| THE CONJUGATE OF A PRODUCT IS THE PRODUCT OF THE CONJUGATES, THE OTHER WAY ROUND.
+theorem conjugate_mul (p q : QuaternionReal) : (p * q).conjugate.Same (q.conjugate * p.conjugate) := by
+  obtain ⟨a, b⟩ := p
+  obtain ⟨c, d⟩ := q
+  constructor
+  · show (a * c + -(d.conjugate * b)).conjugate.Same (c.conjugate * a.conjugate + -((-b).conjugate * (-d)))
+    rw [ComplexReal.conjugate_add, ComplexReal.conjugate_neg, ComplexReal.conjugate_neg]
+    exact ComplexReal.same_trans
+      (ComplexReal.add_same (ComplexReal.conjugate_mul a c) (ComplexReal.neg_same (ComplexReal.conjugate_conjugate_mul d b)))
+      (ComplexReal.same_trans
+        (ComplexReal.add_same (ComplexReal.mul_comm _ _) (ComplexReal.neg_same (ComplexReal.mul_comm _ _)))
+        (ComplexReal.add_same (ComplexReal.same_refl _)
+          (ComplexReal.neg_same (ComplexReal.same_symm (ComplexReal.neg_mul_neg _ _)))))
+  · show (-(d * a + b * c.conjugate)).Same ((-b) * c.conjugate + (-d) * a.conjugate.conjugate)
+    rw [ComplexReal.neg_add, ComplexReal.conjugate_conjugate]
+    exact ComplexReal.same_trans (ComplexReal.add_comm _ _)
+      (ComplexReal.add_same (ComplexReal.same_symm (ComplexReal.neg_mul _ _)) (ComplexReal.same_symm (ComplexReal.neg_mul _ _)))
 
 --| ONE OVER IS ONE THING: whatever the quaternion put before it makes one is its one over.
 theorem reciprocal_unique (p : QuaternionReal) (k : Nat) (strict : (p.normSquared.owed.high k).lt (p.normSquared.held.low k))

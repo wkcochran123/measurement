@@ -4074,8 +4074,10 @@ names the number.
   first fixes it. So up to `Same` the reals, signed reals, complex
   numbers and quaternions each have one over for whatever is handed in as
   apart from nothing, and the quaternions are a division ring in that
-  sense. Not shown: an order on the signed reals; and anything about
-  what these numbers are of.
+  sense. Since: the conjugate of a quaternion product is the product of
+  the conjugates the other way round (`QuaternionReal.conjugate_mul`,
+  `propext`, `Quot.sound`), and the order is in `Meanings/Order.lean`.
+  Not shown: anything about what these numbers are of.
   Standard, and the author's next step:
   continuity with a modulus (a δ handed over for each ε) needs no choice,
   while that sequential continuity gives ε–δ continuity uses countable
