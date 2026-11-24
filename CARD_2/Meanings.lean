@@ -22,3 +22,4 @@ import Meanings.Circle           -- the circle at every stage: cosine squared be
 import Meanings.Baker            -- the baker's transform on records: doubling forgets a bit, the baker keeps it, there and back exactly
 import Meanings.TheEighthTurn      -- the eighth turn by the series: where cosine and sine cross, Machin in the window, and the error past nothing
 import Meanings.Gap              -- the gap: parted shows at a finite stage for free; where they part, from not one, is choice
+import Meanings.Diagonal         -- the diagonal, with no choice: from any list of reals, one that is none of them

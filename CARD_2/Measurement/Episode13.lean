@@ -10787,6 +10787,44 @@ theorem the_gap_is_closed_only_by_a_choice_handed_in (x y : Meanings.Bracketed) 
 
 end cheap_in_length_dear_in_symbols
 
+section the_diagonal_and_the_fourth_proposal
+
+--| THE DIAGONAL, AND HOW IT CLICKS WITH THE QED MODEL.  The author's, 24 November 2026: the thing constructed is
+--| (F=T) = (T=F), the other side of the pincers; build the diagonal and show that it clicks with the QED model; and the
+--| fourth proposal, (T=F) = (F=T), is QED's (declared).  What is checked.  In Meanings, from any list of reals, with no
+--| choice, a real that is none of them (`the_diagonal_is_none_of_them`): at the n-th step the n-th real lies wholly above
+--| it or wholly below it.  That is a crossing, one or the other, never level.  Episode 12's middle table reads the two
+--| crossings alike, T=F is F=T, and the fourth proposal's equivalence holds; so the diagonal needs only that it lands on a
+--| crossing, and the model it clicks with does not ask which.  And the diagonal, compiled, is a fact that clicks, one
+--| account with SAME_DIFFERENCE by the click and one fact with it by extensionality.  Say with it, every time: any true
+--| fact clicks alike and is one with any other by extensionality, so that part could not have failed; the crossing is the
+--| part with content.
+theorem the_diagonal_lands_on_a_crossing_and_the_crossings_read_alike (f : Nat → Meanings.Bracketed) (n : Nat) :
+    (((Meanings.Diagonal.theDiagonal f).high (n + 1)).lt ((f n).low (3 ^ (n + 1)))
+      ∨ ((f n).high (3 ^ (n + 1))).lt ((Meanings.Diagonal.theDiagonal f).low (n + 1)))
+    ∧ the_representation.middle_table true false = the_representation.middle_table false true
+    ∧ ((true = false) = (false = true)) :=
+  ⟨Meanings.Diagonal.the_diagonal_crosses f n, the_representation.the_click_diagonal.2.2.2.2,
+   true_on_false_is_false_on_true_and_implies_true_on_true.1⟩
+
+def the_diagonal_compiles (f : Nat → Meanings.Bracketed) : FACT :=
+  IT_COMPILES _ (fun n => Meanings.Diagonal.the_diagonal_is_none_of_them f n)
+
+theorem the_diagonal_clicks (f : Nat → Meanings.Bracketed) :
+    the_representation.the_click (the_diagonal_compiles f) = true := rfl
+
+theorem the_diagonal_clicks_as_same_difference (f : Nat → Meanings.Bracketed) :
+    Quot.mk the_representation.same_click (the_diagonal_compiles f)
+      = Quot.mk the_representation.same_click the_representation.SAME_DIFFERENCE :=
+  Quot.sound ((the_diagonal_clicks f).trans same_difference_is_a_click.symm)
+
+theorem asked_only_whether_it_is_true_the_diagonal_is_same_difference (f : Nat → Meanings.Bracketed) :
+    the_diagonal_compiles f = the_representation.SAME_DIFFERENCE :=
+  two_facts_that_are_true_are_one_fact _ _ ⟨fun n => Meanings.Diagonal.the_diagonal_is_none_of_them f n⟩
+    the_representation.same_difference_clicks
+
+end the_diagonal_and_the_fourth_proposal
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
