@@ -4004,7 +4004,16 @@ names the number.
   reading drops: shown. That this branch is the author's (F=T) = (T=F),
   the branch never taken, is the author's identification and is not
   shown; the arm that does not click is a fact about two truth values,
-  and these are the higher terms of a series.
+  and these are the higher terms of a series. The author, then
+  (declared): "that is SAME_DIFFERENCE." What `SAME_DIFFERENCE` is
+  (Episode 12): the fact that the outer table, which compares two truths
+  by what they are, and the middle table, which compares them by how they
+  click, agree cell for cell and are each unchanged turned over (T=F is
+  F=T); proved by its own click, billing nothing. Beside it here: two
+  readings of one turn, the linear and the series, agree on the turns
+  themselves (the Gaussian identity, which reads no angle) and differ in
+  the number by exactly the branch, which beside the angle is the step.
+  No receipt joins the two; that they are one fact is the author's.
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past
