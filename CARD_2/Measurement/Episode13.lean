@@ -10252,6 +10252,45 @@ theorem machins_steps_are_on_the_circle :
     ∧ (((Meanings.theStepCosine 239 (by decide)).mul (Meanings.theStepCosine 239 (by decide))).add
       ((Meanings.theStepSine 239 (by decide)).mul (Meanings.theStepSine 239 (by decide)))).Same (Meanings.Bracketed.ofNat 1) :=
   ⟨Meanings.every_step_is_on_the_circle 5 _, Meanings.every_step_is_on_the_circle 239 _⟩
+
+--| THE STEP AT A FIFTH, DOUBLED.  With the addition law for turns read through their norms (Meanings, `the_turns_add`): the
+--| step (5, 1) by itself is (24, 10), whose norm squared is 676, twenty-six squared; its radius is the step's radius squared,
+--| twenty-six; its cosine, by the law, beside the step's sine squared is the step's cosine squared, and is twelve thirteenths;
+--| its sine is the two crossed products, and is five thirteenths.  The step doubled is the five, twelve, thirteen triangle.
+def the_doubled_steps_radius : Meanings.Bracketed :=
+  Meanings.theRootOf ((5 * 5 - 1 * 1) * (5 * 5 - 1 * 1) + (5 * 1 + 1 * 5) * (5 * 1 + 1 * 5)) 26 (by decide) (by decide)
+
+theorem the_step_at_a_fifth_doubled :
+    the_doubled_steps_radius.Same ((Meanings.theStepRadius 5 (by decide)).mul (Meanings.theStepRadius 5 (by decide)))
+      ∧ (((Meanings.Bracketed.ofNat (5 * 5 - 1 * 1)).mul (the_doubled_steps_radius.reciprocal 0 (by decide))).add
+          ((Meanings.theStepSine 5 (by decide)).mul (Meanings.theStepSine 5 (by decide)))).Same
+          ((Meanings.theStepCosine 5 (by decide)).mul (Meanings.theStepCosine 5 (by decide)))
+      ∧ ((Meanings.Bracketed.ofNat (5 * 1 + 1 * 5)).mul (the_doubled_steps_radius.reciprocal 0 (by decide))).Same
+          (((Meanings.theStepCosine 5 (by decide)).mul (Meanings.theStepSine 5 (by decide))).add
+            ((Meanings.theStepSine 5 (by decide)).mul (Meanings.theStepCosine 5 (by decide)))) :=
+  Meanings.the_turns_add 5 1 5 1 (by decide) _ _ _ 0 0 0 (by decide) (by decide) (by decide)
+    (Meanings.theRootOf_by_itself _ _ _ _) (Meanings.theRootOf_by_itself _ _ _ _) (Meanings.theRootOf_by_itself _ _ _ _)
+
+theorem the_doubled_steps_radius_is_twenty_six : the_doubled_steps_radius.Same (Meanings.Bracketed.ofNat 26) :=
+  Meanings.Bracketed.same_of_squares_same
+    (Meanings.Bracketed.same_trans (Meanings.theRootOf_by_itself _ _ _ _) (Meanings.Bracketed.same_symm (Meanings.Bracketed.ofNat_mul 26 26)))
+
+theorem one_over_the_doubled_steps_radius :
+    (the_doubled_steps_radius.reciprocal 0 (by decide)).Same (Meanings.Bracketed.ofFraction ⟨1, 26, by decide⟩) :=
+  Meanings.Bracketed.reciprocal_unique (the_doubled_steps_radius.mul_reciprocal 0 (by decide))
+    (Meanings.Bracketed.same_trans (Meanings.Bracketed.mul_same the_doubled_steps_radius_is_twenty_six (Meanings.Bracketed.same_refl _))
+      (Meanings.Bracketed.ofNat_by_one_over 26 (by decide)))
+
+--| THE STEP DOUBLED IS THE FIVE, TWELVE, THIRTEEN TURN: cosine twelve thirteenths, sine five thirteenths.
+theorem the_step_doubled_is_five_twelve_thirteen :
+    ((Meanings.Bracketed.ofNat (5 * 5 - 1 * 1)).mul (the_doubled_steps_radius.reciprocal 0 (by decide))).Same
+        (Meanings.Bracketed.ofFraction ⟨12, 13, by decide⟩)
+      ∧ ((Meanings.Bracketed.ofNat (5 * 1 + 1 * 5)).mul (the_doubled_steps_radius.reciprocal 0 (by decide))).Same
+        (Meanings.Bracketed.ofFraction ⟨5, 13, by decide⟩) :=
+  ⟨Meanings.Bracketed.same_trans (Meanings.Bracketed.mul_same (Meanings.Bracketed.same_refl _) one_over_the_doubled_steps_radius)
+      (fun _ _ => ⟨Nat.le_of_ble_eq_true rfl, Nat.le_of_ble_eq_true rfl⟩),
+   Meanings.Bracketed.same_trans (Meanings.Bracketed.mul_same (Meanings.Bracketed.same_refl _) one_over_the_doubled_steps_radius)
+      (fun _ _ => ⟨Nat.le_of_ble_eq_true rfl, Nat.le_of_ble_eq_true rfl⟩)⟩
 end the_turn_through_its_norm
 
 section the_turn_by_a_rational_angle

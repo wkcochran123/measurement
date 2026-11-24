@@ -4083,10 +4083,24 @@ names the number.
   (`machins_cosine_squared_is_one_half`, `machins_turn_is_on_the_circle`);
   Machin's two steps are on the circle. A wrong fraction (17/23) is
   refused. Not given by the norm: any of these angles as a number.
-  Next, not built: that two reals not under nothing with one square are
-  one (root uniqueness); with it, the cosine of a product of turns is the
-  cosines' product less the sines', the addition law for turns read
-  through their norms, which is not the series' addition law.
+  Since built (same file): two reals whose squares are one are one
+  (`Bracketed.same_of_squares_same`; squares of nonnegative walls keep the
+  order and walls only move inward), one over is one thing for reals
+  (`Bracketed.reciprocal_unique`), Brahmagupta's identity in whole
+  numbers (`brahmagupta`), and the addition law for turns read through
+  their norms (`the_turns_add`): for whole parts with the product's along
+  not under nothing, the radius of a product is the product of the
+  radii, cos(zw) beside sin z·sin w is cos z·cos w, and sin(zw) is
+  cos z·sin w beside sin z·cos w. All `propext`, `Quot.sound`. This is
+  not the series' addition law (cos² + sin² = 1 for the series, which
+  stays unwritten): it passes through no series. On the device
+  (`the_step_at_a_fifth_doubled`, `the_doubled_steps_radius_is_twenty_six`,
+  `the_step_doubled_is_five_twelve_thirteen`): the step (5, 1) by itself is
+  (24, 10), radius 26, the step's radius squared; its cosine is 12/13 and
+  its sine 5/13, the five, twelve, thirteen triangle; and the double-angle
+  laws hold for it. A wrong cosine (11/13) is refused. Not built: turns
+  with parts owed (Machin's step back, (239, −1)), which want the signed
+  reals; and any angle as a number.
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past

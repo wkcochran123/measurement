@@ -124,4 +124,101 @@ theorem a_root_part_over_the_radius_squared {b r : Bracketed} {M N k : Nat} {pos
     (Bracketed.same_trans (Bracketed.mul_same hb (one_over_the_radius_squared hr hN))
       (fun _ _ => ⟨by show M * 1 * N ≤ M * (1 * N); simp, by show M * (1 * N) ≤ M * 1 * N; simp⟩))
 
+/-
+THE ADDITION LAW FOR TURNS, THROUGH THEIR NORMS.  Two reals whose squares are one are one: squares of walls never under
+nothing keep the order, and walls only move inward.  So the radius of a product of turns is the product of the radii, and
+one over it is the product of the one-overs.  Then, for turns with whole parts and the along of the product not under
+nothing, the cosine of the product beside the sines' product is the cosines' product, and the sine of the product is the
+crossed products beside each other.  This is the addition law for turns read through their norms: it rests on
+Brahmagupta's identity in whole numbers, and passes through no series.
+-/
+
+theorem Fraction.le_of_squares_le {p q : Fraction} (h : (p.mul p).le (q.mul q)) : p.le q := by
+  unfold Fraction.le Fraction.mul at *
+  dsimp only at h
+  apply Nat.mul_self_le_mul_self_iff.1
+  calc p.over * q.under * (p.over * q.under) = p.over * p.over * (q.under * q.under) := by ac_rfl
+    _ ≤ q.over * q.over * (p.under * p.under) := h
+    _ = q.over * p.under * (q.over * p.under) := by ac_rfl
+
+theorem Bracketed.le_stageForProduct (x y : Bracketed) (n : Nat) : n ≤ x.stageForProduct y n := by
+  unfold Bracketed.stageForProduct
+  exact Nat.le_trans (Nat.le_mul_of_pos_left n (Nat.succ_pos _)) (Nat.le_add_right _ _)
+
+--| TWO REALS WHOSE SQUARES ARE ONE ARE ONE.
+theorem Bracketed.same_of_squares_same {x y : Bracketed} (h : (x.mul x).Same (y.mul y)) : x.Same y := fun n m =>
+  ⟨Fraction.le_of_squares_le (Fraction.le_trans
+      (Fraction.mul_le_mul (x.low_le_of_le (Bracketed.le_stageForProduct x x n))
+        (x.low_le_of_le (Bracketed.le_stageForProduct x x n)))
+      (Fraction.le_trans (h n m).1
+        (Fraction.mul_le_mul (y.high_le_of_le (Bracketed.le_stageForProduct y y m))
+          (y.high_le_of_le (Bracketed.le_stageForProduct y y m))))),
+   Fraction.le_of_squares_le (Fraction.le_trans
+      (Fraction.mul_le_mul (y.low_le_of_le (Bracketed.le_stageForProduct y y n))
+        (y.low_le_of_le (Bracketed.le_stageForProduct y y n)))
+      (Fraction.le_trans (h n m).2
+        (Fraction.mul_le_mul (x.high_le_of_le (Bracketed.le_stageForProduct x x m))
+          (x.high_le_of_le (Bracketed.le_stageForProduct x x m)))))⟩
+
+--| ONE OVER IS ONE THING, for reals.
+theorem Bracketed.reciprocal_unique {x u v : Bracketed} (hu : (x.mul u).Same (Bracketed.ofNat 1))
+    (hv : (x.mul v).Same (Bracketed.ofNat 1)) : u.Same v :=
+  Bracketed.same_trans (Bracketed.same_symm (Bracketed.mul_one u))
+    (Bracketed.same_trans (Bracketed.mul_same (Bracketed.same_refl u) (Bracketed.same_symm hv))
+      (Bracketed.same_trans (Bracketed.same_symm (Bracketed.mul_assoc _ _ _))
+        (Bracketed.same_trans (Bracketed.mul_same (Bracketed.mul_comm u x) (Bracketed.same_refl v))
+          (Bracketed.same_trans (Bracketed.mul_same hu (Bracketed.same_refl v)) (Bracketed.one_mul v)))))
+
+--| BRAHMAGUPTA, IN WHOLE NUMBERS: the parts of a product of turns, squared and beside each other, are the norms' product.
+theorem brahmagupta (a b c d e : Nat) (hac : a * c = b * d + e) :
+    e * e + (a * d + b * c) * (a * d + b * c) = (a * a + b * b) * (c * c + d * d) := by
+  have m1 := congrArg (fun z => z * z) hac
+  have m2 := congrArg (fun z => z * (b * d)) hac
+  simp only [Nat.add_mul, Nat.mul_add] at m1 m2 ⊢
+  simp only [Nat.mul_comm, Nat.mul_left_comm] at m1 m2 ⊢
+  omega
+
+--| THE ADDITION LAW FOR TURNS.
+theorem the_turns_add (a b c d : Nat) (hbd : b * d ≤ a * c) (rz rw rzw : Bracketed) (kz kw kzw : Nat)
+    (pz : 0 < (rz.low kz).over) (pw : 0 < (rw.low kw).over) (pzw : 0 < (rzw.low kzw).over)
+    (hz : (rz.mul rz).Same (Bracketed.ofNat (a * a + b * b))) (hw : (rw.mul rw).Same (Bracketed.ofNat (c * c + d * d)))
+    (hzw : (rzw.mul rzw).Same (Bracketed.ofNat ((a * c - b * d) * (a * c - b * d) + (a * d + b * c) * (a * d + b * c)))) :
+    rzw.Same (rz.mul rw)
+      ∧ (((Bracketed.ofNat (a * c - b * d)).mul (rzw.reciprocal kzw pzw)).add
+          (((Bracketed.ofNat b).mul (rz.reciprocal kz pz)).mul ((Bracketed.ofNat d).mul (rw.reciprocal kw pw)))).Same
+          (((Bracketed.ofNat a).mul (rz.reciprocal kz pz)).mul ((Bracketed.ofNat c).mul (rw.reciprocal kw pw)))
+      ∧ ((Bracketed.ofNat (a * d + b * c)).mul (rzw.reciprocal kzw pzw)).Same
+          ((((Bracketed.ofNat a).mul (rz.reciprocal kz pz)).mul ((Bracketed.ofNat d).mul (rw.reciprocal kw pw))).add
+            (((Bracketed.ofNat b).mul (rz.reciprocal kz pz)).mul ((Bracketed.ofNat c).mul (rw.reciprocal kw pw)))) := by
+  have norm : (a * c - b * d) * (a * c - b * d) + (a * d + b * c) * (a * d + b * c) = (a * a + b * b) * (c * c + d * d) :=
+    brahmagupta a b c d _ (Nat.add_sub_of_le hbd).symm
+  have radius : rzw.Same (rz.mul rw) := by
+    apply Bracketed.same_of_squares_same
+    rw [norm] at hzw
+    exact Bracketed.same_trans hzw
+      (Bracketed.same_trans (Bracketed.same_symm (Bracketed.ofNat_mul _ _))
+        (Bracketed.same_trans (Bracketed.mul_same (Bracketed.same_symm hz) (Bracketed.same_symm hw))
+          (Bracketed.mul_swap_middle _ _ _ _)))
+  have over : (rzw.reciprocal kzw pzw).Same ((rz.reciprocal kz pz).mul (rw.reciprocal kw pw)) :=
+    Bracketed.reciprocal_unique (rzw.mul_reciprocal kzw pzw)
+      (Bracketed.same_trans (Bracketed.mul_same radius (Bracketed.same_refl _))
+        (Bracketed.same_trans (Bracketed.mul_swap_middle _ _ _ _)
+          (Bracketed.same_trans (Bracketed.mul_same (rz.mul_reciprocal kz pz) (rw.mul_reciprocal kw pw))
+            (Bracketed.one_mul _))))
+  have part : ∀ x y : Nat, (((Bracketed.ofNat x).mul (rz.reciprocal kz pz)).mul ((Bracketed.ofNat y).mul (rw.reciprocal kw pw))).Same
+      ((Bracketed.ofNat (x * y)).mul (rzw.reciprocal kzw pzw)) := fun x y =>
+    Bracketed.same_trans (Bracketed.mul_swap_middle _ _ _ _)
+      (Bracketed.mul_same (Bracketed.ofNat_mul x y) (Bracketed.same_symm over))
+  refine ⟨radius, ?_, ?_⟩
+  · have sum : ((Bracketed.ofNat (a * c - b * d)).add (Bracketed.ofNat (b * d))).Same (Bracketed.ofNat (a * c)) := by
+      have h := Bracketed.ofNat_add (a * c - b * d) (b * d)
+      rw [Nat.sub_add_cancel hbd] at h
+      exact h
+    exact Bracketed.same_trans (Bracketed.add_same (Bracketed.same_refl _) (part b d))
+      (Bracketed.same_trans (Bracketed.same_symm (Bracketed.add_mul _ _ _))
+        (Bracketed.same_trans (Bracketed.mul_same sum (Bracketed.same_refl _)) (Bracketed.same_symm (part a c))))
+  · exact Bracketed.same_trans (Bracketed.mul_same (Bracketed.same_symm (Bracketed.ofNat_add _ _)) (Bracketed.same_refl _))
+      (Bracketed.same_trans (Bracketed.add_mul _ _ _)
+        (Bracketed.add_same (Bracketed.same_symm (part a d)) (Bracketed.same_symm (part b c))))
+
 end Meanings
