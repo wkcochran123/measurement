@@ -4041,7 +4041,21 @@ names the number.
   (`the_miss_is_the_branch_never_taken`); and the click of the branch at
   every stage is inferred, handed in by the compile (`IT_COMPILES`), not
   decided. No receipt makes these three one logic; that they are is the
-  author's.
+  author's. Asked to read the Lean and say what it shows, Claude found
+  one precise place, since minted at the author's word
+  (`Episode13.lean`, section `the_order_through_the_missing_branch`, no
+  axiom): the device's ≤ on a Natural has a covariant arm (one truth,
+  numbers as they are) and a contravariant arm (different truths, numbers
+  the other way round, which Episode 1's margin calls "the missing
+  branch"); two contravariant steps give the order turned over, so the
+  device's order is not transitive across two truths
+  (`the_order_is_not_transitive_across_two_truths`: a true larger natural
+  under a false smaller one, that under a true smaller one, and the first
+  not under the last). In Meanings two turnings over give the order back;
+  in the device they do not, and the failing path is exactly the one
+  through the missing branch twice. Say with it: this is a property of
+  how the device defines ≤, checked; that it is where the gap lives, and
+  the logic of the three, is the author's.
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past

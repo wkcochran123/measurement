@@ -10136,6 +10136,43 @@ theorem at_the_first_stages_the_miss_and_the_branch_click_alike :
       ∧ ((the_branch_of_the_half_turn.low 0).le (the_linear_miss.high 0))) = true := by decide +kernel
 end the_branch_never_taken
 
+section the_order_through_the_missing_branch
+open readers_experience
+
+--| THE ORDER THROUGH THE MISSING BRANCH.  The author's: this should be the logic of the contravariant contravariant ≤, the
+--| crank and the inferred click (declared).  What the device's order does, read in Episode 1: ≤ on a Natural has two arms,
+--| the covariant, when the two facts have one truth, comparing the numbers as they are, and the contravariant, when the
+--| truths differ, comparing them the other way round, "the missing branch".  Two contravariant steps do not give the order
+--| back: they give it turned over.  A natural true and larger is under one false and smaller, that one is under one true and
+--| smaller, and the first is not under the last.  So the device's order is not transitive across two truths, and the path
+--| that fails is exactly the one through the missing branch twice.  No axiom.  In Meanings two turnings over do give the
+--| order back (one over twice is the fraction; a thing taken away twice is added); here they do not.  That this is the logic
+--| of the three is the author's.
+def a_fact_that_is_false : FACT := { truth := False, click := Decidable.isFalse id }
+
+def a_true_larger_natural : Natural := .number FACT.Truth (.one FACT.Truth (.zero FACT.Truth)) (.zero FACT.Truth)
+def a_false_smaller_natural : Natural := .number a_fact_that_is_false (.zero FACT.Truth) (.zero FACT.Truth)
+def a_true_smaller_natural : Natural := .number FACT.Truth (.zero FACT.Truth) (.zero FACT.Truth)
+
+theorem the_true_larger_is_under_the_false_smaller : Natural.le a_true_larger_natural a_false_smaller_natural :=
+  Or.inr ⟨fun h => cast h (rfl : true = true), True.intro⟩
+
+theorem the_false_smaller_is_under_the_true_smaller : Natural.le a_false_smaller_natural a_true_smaller_natural :=
+  Or.inr ⟨fun h => cast h.symm (rfl : true = true), True.intro⟩
+
+theorem the_true_larger_is_not_under_the_true_smaller : ¬ Natural.le a_true_larger_natural a_true_smaller_natural := by
+  intro h
+  rcases h with ⟨_, h⟩ | ⟨ne, _⟩
+  · exact h
+  · exact ne rfl
+
+--| THE ORDER IS NOT TRANSITIVE ACROSS TWO TRUTHS: through the missing branch twice, it is turned over.
+theorem the_order_is_not_transitive_across_two_truths :
+    ∃ x y z : Natural, Natural.le x y ∧ Natural.le y z ∧ ¬ Natural.le x z :=
+  ⟨_, _, _, the_true_larger_is_under_the_false_smaller, the_false_smaller_is_under_the_true_smaller,
+    the_true_larger_is_not_under_the_true_smaller⟩
+end the_order_through_the_missing_branch
+
 section the_turn_by_a_rational_angle
 open readers_experience
 
