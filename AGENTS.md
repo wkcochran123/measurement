@@ -4493,7 +4493,10 @@ names the number.
   confirmed but one (the elaborator at m = 8 stopped on recursion depth).
   Say with it: fixed cost plus a cost a unit is a common shape, so this is
   a modest confirmation; the operational reading was Claude's; the
-  particular numbers are not explained. Kernel work is counted.
+  particular numbers are not explained. Kernel work is counted. Read
+  again on the M2 Ultra (24 November 2026, a clean clone on the author's
+  Mac Studio over ssh): identical to the heartbeat, every probe, the
+  recursion-depth stop included; measured, not sealed.
 - Three paths and five options (the author, 24 November 2026, all
   declared): "the choice of path of limit is always _provided_"; the
   three paths to the one root are "delta/epsilon, topological ball, _and_

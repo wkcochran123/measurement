@@ -1180,5 +1180,13 @@ held is a modest confirmation; the operational reading of the author's words (th
 was Claude's, fixed before the run; and the line through m = 5 to 8 does not reach back to the readings seen before
 sealing (at m = 1 it gives about 71,000 over the blank where 53,228 was read, against a blank not then measured).
 Why a way costs about 6,000 heartbeats, and the fixed part about 65,000, is not known; no explanation is offered. So
-the kernel's work is on the meter: Claude's claim that it is not, already withdrawn after 019, is refuted. One machine.
+the kernel's work is on the meter: Claude's claim that it is not, already withdrawn after 019, is refuted.
+
+**Read again:** Apple M2 Ultra (64 GB), 24 November 2026; raw in `readings/019b-the-borwein-receipts-metered/raw/M2Ultra/`.
+A clean clone at `1456979` (Episode 13 and the probes as at the setup, `1897ed1`), the device built there in 23 minutes,
+the same run script with a Perl alarm for the 300 s limit (the Ultra has no `timeout`; a first attempt without it took no
+reading). Every reading is identical to the M2's to the heartbeat, both repeats, the blank and both routes, and the
+elaborator at m = 8 stops on the same recursion depth. No seal predicted this; it is measured, on two machines of one
+family. So the six thousand a way and the fixed part are the computation's, not the M2's: heartbeats count allocations,
+which on these two machines did not depend on the machine.
 
