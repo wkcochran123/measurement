@@ -1153,5 +1153,32 @@ answered that two points did not show proportion. Seal (the author's prediction 
 cost per added way, and the reading per way falling, read high; and Claude's): `readings/019b-the-borwein-receipts-metered/SEALED_PREDICTION.txt`,
 sha256 7562095588e6c452….
 
-**Read:** not yet.
+**Read:** Apple M2, 24 November 2026; raw in `readings/019b-the-borwein-receipts-metered/raw/M2/`. Both repeats
+identical to the heartbeat. Source: `1897ed1`. Blank 2,914.
+
+| m | Ways | Kernel | Over the blank D | Per added way | D per way | Elaborator |
+|---|---|---|---|---|---|---|
+| 5 | 16 | 162,461 | 159,547 | | 9,972 | 414,335 |
+| 6 | 32 | 261,177 | 258,263 | 6,170 | 8,071 | 733,672 |
+| 7 | 64 | 454,311 | 451,397 | 6,035 | 7,053 | 1,359,409 |
+| 8 | 128 | 836,850 | 833,936 | 5,977 | 6,515 | did not finish |
+
+Against the author's seal, in Claude's reading. A1 (a single cost per added way on the kernel route, within 10%):
+**confirmed**; 6,170, 6,035 and 5,977, within 2% of their mean, 6,061. A2 (reading high: the reading per way falls at
+every step): **confirmed**; 9,972, 8,071, 7,053, 6,515. A3 (A1 on the elaborator route, where it finishes): **confirmed**;
+19,959 and 19,554 a way, within 1%. Against Claude's seal. C1 (repeats identical): **confirmed**. C2 (the kernel route
+grows at every step): **confirmed**. C3 (each doubling multiplies D by 1.5 to 2.3): **confirmed**; 1.62, 1.75, 1.85.
+C4 (the raw coefficient is not single, max over min above 1.22): **confirmed**; 1.53. C5 (the elaborator above the kernel
+where it finishes): **confirmed**. C6 (every elaborator probe finishes): **refuted**; at m = 8 it stopped on Lean's maximum
+recursion depth, both repeats.
+
+What is measured. With the proof on the meter, the kernel route costs a fixed part and about six thousand heartbeats a
+way: a line through the four readings is about 65,000 and 6,014 a way, off by under 1,700 at each. The fixed part is why
+the reading per way falls, the author's "read high". The elaborator route costs about 20,000 a way, three times the
+kernel's. Say with it: a fixed cost and a cost a unit of work is the shape most computations have, so that the shape
+held is a modest confirmation; the operational reading of the author's words (the ways as the number that goes up; 10%)
+was Claude's, fixed before the run; and the line through m = 5 to 8 does not reach back to the readings seen before
+sealing (at m = 1 it gives about 71,000 over the blank where 53,228 was read, against a blank not then measured).
+Why a way costs about 6,000 heartbeats, and the fixed part about 65,000, is not known; no explanation is offered. So
+the kernel's work is on the meter: Claude's claim that it is not, already withdrawn after 019, is refuted. One machine.
 

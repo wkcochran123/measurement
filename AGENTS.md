@@ -4466,8 +4466,20 @@ names the number.
   asynchronous elaboration off: kernel route 56,142 at m = 1 and 110,895
   at m = 4, elaborator 77,440 and 249,092; so the claim that kernel work
   is not counted is not supported, and these readings suggest the
-  opposite. Do not report P2's "confirmed" as about the kernel. A fixed
-  test needs a new seal; m = 5 to 8 with the meter fixed are unread.
+  opposite. Do not report P2's "confirmed" as about the kernel. Then
+  Experiment 019b, the meter fixed (asynchronous elaboration off), sealed
+  on unread m = 5 to 8. The author (declared): "number go up
+  proportionally"; "you are about to estimate the most efficient, least
+  action solution to the computation ... there will be excess code in
+  ep13, so you will read high." In Claude's operational reading, sealed:
+  a single cost per added way, and the reading per way falling. Both
+  confirmed: about 6,000 heartbeats a way on the kernel route (6,170,
+  6,035, 5,977), about 20,000 on the elaborator route, over a fixed part
+  near 65,000; per way 9,972 falling to 6,515. Claude's seal: all
+  confirmed but one (the elaborator at m = 8 stopped on recursion depth).
+  Say with it: fixed cost plus a cost a unit is a common shape, so this is
+  a modest confirmation; the operational reading was Claude's; the
+  particular numbers are not explained. Kernel work is counted.
 - The laws (`Meanings/Laws.lean`; 23 November 2026). Receipts, `propext`,
   `Quot.sound`: every low wall is under every high wall
   (`Bracketed.low_under_high`); `Same` is reflexive, symmetric and

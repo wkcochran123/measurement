@@ -1,0 +1,36 @@
+REP 1 READ kind=blank m=1 beats=2914
+REP 1 READ kind=kernel m=5 beats=162461
+REP 1 DONE kind=kernel m=5 exit=0
+REP 1 READ kind=kernel m=6 beats=261177
+REP 1 DONE kind=kernel m=6 exit=0
+REP 1 READ kind=kernel m=7 beats=454311
+REP 1 DONE kind=kernel m=7 exit=0
+REP 1 READ kind=kernel m=8 beats=836850
+REP 1 DONE kind=kernel m=8 exit=0
+REP 1 READ kind=elaborator m=5 beats=414335
+REP 1 DONE kind=elaborator m=5 exit=0
+REP 1 READ kind=elaborator m=6 beats=733672
+REP 1 DONE kind=elaborator m=6 exit=0
+REP 1 READ kind=elaborator m=7 beats=1359409
+REP 1 DONE kind=elaborator m=7 exit=0
+REP 1 /Users/williamcochran/Desktop/measurement/readings/019b-the-borwein-receipts-metered/probes/elaborator_8.lean:8:0: error: maximum recursion depth has been reached
+REP 1 READ kind=elaborator m=8 beats=1008994
+REP 1 DONE kind=elaborator m=8 exit=0
+REP 2 READ kind=blank m=1 beats=2914
+REP 2 READ kind=kernel m=5 beats=162461
+REP 2 DONE kind=kernel m=5 exit=0
+REP 2 READ kind=kernel m=6 beats=261177
+REP 2 DONE kind=kernel m=6 exit=0
+REP 2 READ kind=kernel m=7 beats=454311
+REP 2 DONE kind=kernel m=7 exit=0
+REP 2 READ kind=kernel m=8 beats=836850
+REP 2 DONE kind=kernel m=8 exit=0
+REP 2 READ kind=elaborator m=5 beats=414335
+REP 2 DONE kind=elaborator m=5 exit=0
+REP 2 READ kind=elaborator m=6 beats=733672
+REP 2 DONE kind=elaborator m=6 exit=0
+REP 2 READ kind=elaborator m=7 beats=1359409
+REP 2 DONE kind=elaborator m=7 exit=0
+REP 2 /Users/williamcochran/Desktop/measurement/readings/019b-the-borwein-receipts-metered/probes/elaborator_8.lean:8:0: error: maximum recursion depth has been reached
+REP 2 READ kind=elaborator m=8 beats=1008994
+REP 2 DONE kind=elaborator m=8 exit=0
