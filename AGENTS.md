@@ -4014,6 +4014,22 @@ names the number.
   themselves (the Gaussian identity, which reads no angle) and differ in
   the number by exactly the branch, which beside the angle is the step.
   No receipt joins the two; that they are one fact is the author's.
+  Then (the author): "you can check by seeing how it clicks against the
+  first SAME_DIFFERENCE." Checked, in Episode 12's own terms: the
+  branch never taken, compiled (`IT_COMPILES`), clicks
+  (`the_branch_never_taken_clicks`), so it is the same account as
+  `SAME_DIFFERENCE` by the click
+  (`the_branch_never_taken_clicks_as_same_difference`, `Quot.sound`, as
+  `the_trial_of_jars_reaches_same_difference` does), and, both true, the
+  same fact (`asked_only_whether_it_is_true_the_branch_is_same_difference`,
+  `propext`). Say with it, every time: any true fact clicks alike and is
+  one with any other by extensionality, so this check could not have
+  failed; it is the opening deal, the same if asked whether it is true.
+  How each clicks differs: `SAME_DIFFERENCE`'s click is decided (its four
+  cells read); the branch's sameness at every stage is decided at no
+  finite stage, so its click is the compile handed in; at one pair of
+  stages it is decided by the kernel
+  (`at_the_first_stages_the_miss_and_the_branch_click_alike`).
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past

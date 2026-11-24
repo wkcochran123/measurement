@@ -10110,6 +10110,30 @@ theorem the_miss_is_the_branch_never_taken : the_linear_miss ≐ the_branch_of_t
 theorem the_miss_squared_is_the_branch_squared :
     the_miss_squared ≐ the_branch_of_the_half_turn.mul the_branch_of_the_half_turn :=
   Meanings.Bracketed.mul_same the_miss_is_the_branch_never_taken the_miss_is_the_branch_never_taken
+
+--| HOW IT CLICKS AGAINST THE FIRST SAME DIFFERENCE.  The author's: check by seeing how it clicks against the first
+--| SAME_DIFFERENCE (declared).  The branch never taken, compiled, is a fact; it clicks, as same difference clicks; so the two
+--| are one account by the click (Episode 12's `same_click`), and, both true, one fact.  Say with it what the check cannot
+--| tell: any true fact clicks alike and is one with any other by extensionality; this is the opening deal, the same if asked
+--| whether it is true.  And how each clicks differs: same difference's click is decided, its four cells read; the branch's
+--| click at every stage is handed in by the compile, since sameness at every stage is decided at no finite stage.  At one
+--| pair of stages it is decided: at the first stages the two brackets hold each other, read by the kernel.
+def the_branch_never_taken_compiles : FACT := IT_COMPILES _ the_miss_is_the_branch_never_taken
+
+theorem the_branch_never_taken_clicks : the_representation.the_click the_branch_never_taken_compiles = true := rfl
+
+theorem the_branch_never_taken_clicks_as_same_difference :
+    Quot.mk the_representation.same_click the_branch_never_taken_compiles
+      = Quot.mk the_representation.same_click the_representation.SAME_DIFFERENCE :=
+  Quot.sound (the_branch_never_taken_clicks.trans same_difference_is_a_click.symm)
+
+theorem asked_only_whether_it_is_true_the_branch_is_same_difference :
+    the_branch_never_taken_compiles = the_representation.SAME_DIFFERENCE :=
+  two_facts_that_are_true_are_one_fact _ _ ⟨the_miss_is_the_branch_never_taken⟩ the_representation.same_difference_clicks
+
+theorem at_the_first_stages_the_miss_and_the_branch_click_alike :
+    decide (((the_linear_miss.low 0).le (the_branch_of_the_half_turn.high 0))
+      ∧ ((the_branch_of_the_half_turn.low 0).le (the_linear_miss.high 0))) = true := by decide +kernel
 end the_branch_never_taken
 
 section the_turn_by_a_rational_angle
