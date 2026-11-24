@@ -3962,7 +3962,21 @@ names the number.
   outside. That this is the same situation as the printed number's miss
   is the author's. Not shown: sine and cosine of a step as reals (the
   triangle gives them as n and 1 over √(n² + 1); no root of a real is
-  built).
+  built). Then (the author, declared): "square the miss using
+  multiplication. you will find a very interesting number." Minted:
+  `the_linear_miss`, the linear half turn less the series' as a real (a
+  difference), and `the_miss_squared` by the product; at every stage the
+  square lies between 0.0017364676352 and 0.0017364676361, and past 1/576
+  = 1/24² by between 2.0535 and 2.0536 parts in ten thousand
+  (`the_miss_squared_is_just_past_one_over_twenty_four_squared`,
+  `propext`, `Quot.sound`; exactly 1/576 is refused). So the miss is
+  almost 1/24 (its reciprocal 23.9975), and 24 is 4!, the denominator of
+  the cut-off cosine's fourth term. Say with it: the miss's leading term
+  is 16/(3·5³) = 1/23.44, and the higher terms bring it to within one
+  part in ten thousand of 1/24; nothing here forces 24, so it is recorded
+  as a number that falls there, not a reason. The excess, 2.05 parts in
+  ten thousand, is not the printed number's miss (1.80 parts in ten
+  thousand); do not set the two side by side as one.
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past

@@ -9959,6 +9959,64 @@ theorem the_eighth_turn_read_linearly_is_four_steps_and_one_back :
       ∧ ((⟨4, 5, by decide⟩ : Meanings.Fraction).sub ⟨1, 239, by decide⟩).over * 4 = the_linear_half_turn.over
       ∧ ((⟨4, 5, by decide⟩ : Meanings.Fraction).sub ⟨1, 239, by decide⟩).under = the_linear_half_turn.under := by
   decide
+
+--| THE MISS SQUARED.  The author's: square the miss using multiplication, and a very interesting number is found (declared).
+--| The miss as a real, the linear half turn less the series' half turn, and its square by the product.  At every stage the
+--| square lies between 0.0017364676352 and 0.0017364676361; and it is past one in five hundred and seventy-six, one over
+--| twenty-four squared, by between 2.0535 and 2.0536 parts in ten thousand of it.  Twenty-four is four factorial, the
+--| fourth term's denominator.  The walls are not read off the product, which reads far on; they come from the half turn's
+--| walls and the order.
+theorem the_half_turn_is_under_the_linear_half_turn : (Meanings.theHalfTurn.high 0).le
+    ((Meanings.Bracketed.ofFraction the_linear_half_turn).low 0) :=
+  Meanings.Fraction.le_trans (Meanings.the_half_turn_is_between 0).2
+    (by decide : Meanings.theHalfTurnsHighWall.le the_linear_half_turn)
+
+def the_linear_miss : Meanings.Bracketed :=
+  (Meanings.Bracketed.ofFraction the_linear_half_turn).difference Meanings.theHalfTurn 0
+    the_half_turn_is_under_the_linear_half_turn
+
+def the_miss_squared : Meanings.Bracketed := the_linear_miss.mul the_linear_miss
+
+def the_miss_at_least : Meanings.Fraction := the_linear_half_turn.sub Meanings.theHalfTurnsHighWall
+def the_miss_at_most : Meanings.Fraction := the_linear_half_turn.sub Meanings.theHalfTurnsLowWall
+
+theorem the_linear_miss_is_between (n : Nat) :
+    the_miss_at_least.le (the_linear_miss.low n) ∧ (the_linear_miss.high n).le the_miss_at_most :=
+  ⟨Meanings.Fraction.sub_le_sub (by decide : Meanings.theHalfTurnsHighWall.le the_linear_half_turn)
+      (Meanings.Fraction.le_trans (Meanings.the_half_turn_is_between _).2
+        (by decide : Meanings.theHalfTurnsHighWall.le the_linear_half_turn))
+      (Meanings.Fraction.le_refl _) (Meanings.the_half_turn_is_between _).2,
+   Meanings.Fraction.sub_le_sub
+      (Meanings.Fraction.le_trans (Meanings.theHalfTurn.ordered _)
+        (Meanings.Fraction.le_trans (Meanings.the_half_turn_is_between _).2
+          (by decide : Meanings.theHalfTurnsHighWall.le the_linear_half_turn)))
+      (by decide : Meanings.theHalfTurnsLowWall.le the_linear_half_turn)
+      (Meanings.Fraction.le_refl _) (Meanings.the_half_turn_is_between _).1⟩
+
+def the_square_at_least : Meanings.Fraction := ⟨17364676352, 10 ^ 13, by decide⟩
+def the_square_at_most : Meanings.Fraction := ⟨17364676361, 10 ^ 13, by decide⟩
+def one_over_576_and_20535_parts : Meanings.Fraction := ⟨100000000 + 20535, 576 * 100000000, by decide⟩
+def one_over_576_and_20536_parts : Meanings.Fraction := ⟨100000000 + 20536, 576 * 100000000, by decide⟩
+
+theorem the_walls_of_the_miss_squared :
+    the_square_at_least.le (the_miss_at_least.mul the_miss_at_least)
+      ∧ (the_miss_at_most.mul the_miss_at_most).le the_square_at_most
+      ∧ one_over_576_and_20535_parts.le (the_miss_at_least.mul the_miss_at_least)
+      ∧ (the_miss_at_most.mul the_miss_at_most).le one_over_576_and_20536_parts := by decide
+
+--| THE MISS SQUARED IS JUST PAST ONE OVER TWENTY-FOUR SQUARED, at every stage.
+theorem the_miss_squared_is_just_past_one_over_twenty_four_squared (n : Nat) :
+    the_square_at_least.le (the_miss_squared.low n) ∧ (the_miss_squared.high n).le the_square_at_most
+      ∧ one_over_576_and_20535_parts.le (the_miss_squared.low n)
+      ∧ (the_miss_squared.high n).le one_over_576_and_20536_parts :=
+  have lo : (the_miss_at_least.mul the_miss_at_least).le (the_miss_squared.low n) :=
+    Meanings.Fraction.mul_le_mul (the_linear_miss_is_between _).1 (the_linear_miss_is_between _).1
+  have hi : (the_miss_squared.high n).le (the_miss_at_most.mul the_miss_at_most) :=
+    Meanings.Fraction.mul_le_mul (the_linear_miss_is_between _).2 (the_linear_miss_is_between _).2
+  ⟨Meanings.Fraction.le_trans the_walls_of_the_miss_squared.1 lo,
+   Meanings.Fraction.le_trans hi the_walls_of_the_miss_squared.2.1,
+   Meanings.Fraction.le_trans the_walls_of_the_miss_squared.2.2.1 lo,
+   Meanings.Fraction.le_trans hi the_walls_of_the_miss_squared.2.2.2⟩
 end the_linear_reading_of_the_turn
 
 section the_turn_by_a_rational_angle
