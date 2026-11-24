@@ -3940,6 +3940,29 @@ names the number.
   device: a metric field, a connection, a geodesic equation. That the
   inferred bend is spacetime's and its geodesics are free fall is the
   author's, under the first proposal.
+- The linear reading of the turn (`Episode13.lean`, section
+  `the_linear_reading_of_the_turn`; 23 November 2026). The author, on
+  Machin's formula read as Newton's step and correction (declared): "show
+  that the bracket on the real for sin and cosine is the same and the
+  convergent number is the same, but the number is wrong." As minted
+  (Claude's reading of the sentence): the turns are one object whichever
+  way their angle is read; four steps of (5, 1) and one back of (239, 1)
+  land on the eighth turn exactly in the Gaussian product, which reads no
+  angle, and the linear eighth turn 4/5 − 1/239 is a quarter of the
+  linear half turn (`the_eighth_turn_read_linearly_is_four_steps_and_one_back`,
+  no axiom). Read linearly, each step's angle the step itself, the half
+  turn is 16/5 − 4/239 = 3804/1195 (`the_linear_half_turn_is`); at every
+  stage it is past the series' half turn by between 0.04167 and 0.04168
+  (`the_linear_half_turn_misses`, `propext`, `Quot.sound`; a miss of
+  0.04168 or more is refused). The two readings agree to first order in
+  each step and part at the third (`the_step_angle_is_between`). Say with
+  it: here the reader knows which reading is the angle (arc length is the
+  series, standard), so "wrong" is measured against a known standard; in
+  the device's own case the standard is the laboratory's, read from
+  outside. That this is the same situation as the printed number's miss
+  is the author's. Not shown: sine and cosine of a step as reals (the
+  triangle gives them as n and 1 over √(n² + 1); no root of a real is
+  built).
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past

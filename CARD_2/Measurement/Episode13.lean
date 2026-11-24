@@ -9922,6 +9922,45 @@ theorem the_half_turn_is_written_with_the_two_step_angles :
       ∧ Meanings.fourArctan239th = (the_step_angle 239 (by decide)).scale 4 := ⟨rfl, rfl⟩
 end the_step_angle
 
+section the_linear_reading_of_the_turn
+open readers_experience
+
+--| THE LINEAR READING OF THE TURN.  The author's, 23 November 2026: show that the bracket on the real for sine and cosine is
+--| the same and the convergent number is the same, but the number is wrong (declared).  As read here: the turns are one
+--| object whichever way their angle is read.  A step (n, 1) has the same sine and cosine whether its angle is taken as the
+--| step itself, one part in n, the linear reading, Newton's, or as the arctangent of one part in n, the series; and four
+--| steps of (5, 1) and one back of (239, 1) land on the eighth turn exactly, in the Gaussian product, which reads no angle
+--| (`four_steps_of_a_fifth_and_one_back_of_239_are_the_eighth_turn`).  What differs is the number read off.  Read linearly,
+--| the half turn is sixteen fifths less four in two hundred and thirty-nine, 3804/1195; at every stage it is past the series'
+--| half turn by between 0.04167 and 0.04168.  The two readings agree to the first order in each step and part at the third
+--| (`the_step_angle_is_between`).  The miss is measured against the series, from outside the linear reading.
+def the_linear_half_turn : Meanings.Fraction := (⟨16, 5, by decide⟩ : Meanings.Fraction).sub ⟨4, 239, by decide⟩
+
+theorem the_linear_half_turn_is : the_linear_half_turn.over = 3804 ∧ the_linear_half_turn.under = 1195 := by decide
+
+def the_linear_miss_low : Meanings.Fraction := ⟨4167, 100000, by decide⟩
+def the_linear_miss_high : Meanings.Fraction := ⟨4168, 100000, by decide⟩
+
+--| THE NUMBER IS WRONG: the linear half turn is past the series' half turn by between 0.04167 and 0.04168, at every stage.
+theorem the_linear_half_turn_misses (n : Nat) :
+    ((Meanings.theHalfTurn.high n).add the_linear_miss_low).le the_linear_half_turn
+      ∧ the_linear_half_turn.le ((Meanings.theHalfTurn.low n).add the_linear_miss_high) :=
+  ⟨Meanings.Fraction.le_trans
+    (Meanings.Fraction.add_le_add (Meanings.the_half_turn_is_between n).2 (Meanings.Fraction.le_refl _))
+    (by decide : (Meanings.theHalfTurnsHighWall.add the_linear_miss_low).le the_linear_half_turn),
+   Meanings.Fraction.le_trans
+    (by decide : the_linear_half_turn.le (Meanings.theHalfTurnsLowWall.add the_linear_miss_high))
+    (Meanings.Fraction.add_le_add (Meanings.the_half_turn_is_between n).1 (Meanings.Fraction.le_refl _))⟩
+
+--| And the eighth turn read linearly, four fifths less one in two hundred and thirty-nine, is the same object as four steps
+--| and one back: the steps are the same, their angles read two ways.
+theorem the_eighth_turn_read_linearly_is_four_steps_and_one_back :
+    the_gaussian_product (the_phase_walk (5, 1) 4) (239, -1) = (114244, 114244)
+      ∧ ((⟨4, 5, by decide⟩ : Meanings.Fraction).sub ⟨1, 239, by decide⟩).over * 4 = the_linear_half_turn.over
+      ∧ ((⟨4, 5, by decide⟩ : Meanings.Fraction).sub ⟨1, 239, by decide⟩).under = the_linear_half_turn.under := by
+  decide
+end the_linear_reading_of_the_turn
+
 section the_turn_by_a_rational_angle
 open readers_experience
 
