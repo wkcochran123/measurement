@@ -4029,7 +4029,19 @@ names the number.
   cells read); the branch's sameness at every stage is decided at no
   finite stage, so its click is the compile handed in; at one pair of
   stages it is decided by the kernel
-  (`at_the_first_stages_the_miss_and_the_branch_click_alike`).
+  (`at_the_first_stages_the_miss_and_the_branch_click_alike`). The
+  author, then (declared): "this should be the logic of the contravariant
+  contravariant leq, crank, and inferred click." Beside each of the three,
+  a receipt already in hand: one over turns the order over
+  (`Fraction.recip_le_recip`), and one over twice is the fraction again,
+  so the order turned over twice is the order; the linear reading is the
+  crank's first step, the step kept and the rest left over, as Newton's
+  turn leaves 13h² (`the_step_leaves_the_bent_card_by_the_step_squared`)
+  and the linear half turn leaves the branch
+  (`the_miss_is_the_branch_never_taken`); and the click of the branch at
+  every stage is inferred, handed in by the compile (`IT_COMPILES`), not
+  decided. No receipt makes these three one logic; that they are is the
+  author's.
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past
