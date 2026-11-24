@@ -3900,6 +3900,19 @@ names the number.
   it: the step (n, 1) is a right triangle with legs n and 1, its leg over
   leg the step dt = 1/n and its angle dθ; the step back (n, −1) is the
   same angle owed, and Machin's one step back is such a signed step.
+  The author, last (declared): "there it is dt goes as O(1/h). we are
+  done." Say it exactly. Standard, not in the Lean: dt = tan(dφ), and
+  within h of the quarter turn tan is cot h, 1/h less h/3, so dt goes as
+  one over the distance to the quarter turn: the pole the tangent has and
+  the arctangent does not. On the device it is the step turned on its
+  side, (1, n): its leg over leg is n, and its angle is the quarter turn
+  less dθ = arctan(1/n), which the receipts above put between 1/n −
+  1/(3n³) and 1/n; so h is about 1/n while dt is n. That the quarter turn
+  less arctan(1/n) is arctan(n) is standard and not written. "We are
+  done" is the author's judgement of the work, not a receipt; with a
+  visitor nothing changes: explores, open, never solved. Still open in
+  the reals: the circle as cos² + sin² = 1 and e^θ·e^{−θ} = 1 (the
+  addition law), the tangent, and the turned root's angle as a number.
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past
