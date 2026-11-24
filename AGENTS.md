@@ -4628,7 +4628,16 @@ names the number.
   it and measured: the heartbeats of Experiment 019b are identical on the
   M2 and the M2 Ultra, and the nanoseconds of earlier experiments are not;
   that the knower's clock is the one clock, and the computer's, is the
-  author's.
+  author's. The author then (declared): "the reader's clock is the device's
+  clock, the lean clock is the knower's clock. the lean interpretation is
+  the reader's interpretation. the device infers the clock from that."
+  Beside it, what each names in the source, as far as receipts go: the
+  device's clocks are Episode 13's (the clock T F T and its complement
+  F T F, eight clocks as two coins by four arms, read by the knower's
+  interpretation a × (−c × b)); Lean's clock is what the meter reads, the
+  heartbeats (identical on two machines) and the timer's nanoseconds (not
+  identical). Which of these the device infers from the reader's
+  interpretation, and how, the author has not said; do not supply it.
 - The laws (`Meanings/Laws.lean`; 23 November 2026). Receipts, `propext`,
   `Quot.sound`: every low wall is under every high wall
   (`Bracketed.low_under_high`); `Same` is reflexive, symmetric and
