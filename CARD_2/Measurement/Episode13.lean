@@ -10923,6 +10923,75 @@ theorem cutting_a_strand_that_parts_the_net_keeps_the_holes (v e c : Nat) : hole
 
 end the_count_subdivision_keeps
 
+section isnt_that_a_daisy
+open readers_experience readers_interpretation_of_the_experience readers_interpretation_of_the_pair the_table
+
+--| ISN'T THAT A DAISY.  The author's, 24 November 2026: the last theorem, where every place choice could enter clicks with
+--| the knower's bit, and the opposite is computed (declared).  What is checked.  The device bills choice in five theorem
+--| constants: compatibility_form and its auxiliary, the first area where a statement holds, a modulus from statements, and
+--| the gap closed only by a choice handed in, which spends it twice, on where two reals part and on whether they are one.
+--| That there are five is the count of the bills, read from outside the kernel; no theorem can say a list of places is all
+--| of them.  Every one but compatibility_form has a twin handed a click, and the twin bills no choice: the root takes one
+--| bit; whether two reals are one takes one bit; where they part takes one bit, on whether there is such a place; the first
+--| area and the modulus take a bit at every place they look.  compatibility_form's bill is omega's, handed an iff to close
+--| in one step; nothing is decided there, and the same statement proved one way and then the other bills none (beside the
+--| device, OneWayAndTheOther).  At every place a bit is handed in, the device computes the opposite, the knower's own
+--| statement turned over, and it clicks the other way; the root comes out for the opposite as for the bit, with its sign
+--| turned over.  Only true in the machine; the choice is a bit handed in; and what comes back is not what was chosen.
+
+--| WHERE THEY PART, WITH THE CLICK.  Handed a decision of whether there is a stage where they part, the stage comes from
+--| that they are not one, with no choice: Markov's principle is the click on the existence, not the search.
+theorem where_they_part_with_the_click (x y : Meanings.Bracketed) [parted : Decidable (∃ n m, x.PartedAt y n m)]
+    (not_one : ¬ x.Same y) : ∃ n m, x.PartedAt y n m :=
+  match parted with
+  | isTrue h => h
+  | isFalse nowhere => absurd (fun n m =>
+      ⟨Nat.not_lt.mp fun lt => nowhere ⟨n, m, Or.inl (Nat.not_le.mpr lt)⟩,
+       Nat.not_lt.mp fun lt => nowhere ⟨n, m, Or.inr (Nat.not_le.mpr lt)⟩⟩) not_one
+
+--| THE ROOT OF THE OPPOSITE.  Handed the opposite of the knower's bit, the daisy returns the other root: the part by the
+--| root turned over.
+theorem the_root_of_the_opposite (k : FACT) :
+    (you_re_a_daisy_if_you_do (the_opposite k)).2 = - (you_re_a_daisy_if_you_do k).2 := by
+  obtain ⟨t, c⟩ := k
+  cases c <;> rfl
+
+--| ISN'T THAT A DAISY.  The knower hands in a bit for the root, a click on whether two reals are one, a click on whether
+--| they part anywhere, a fact at every area and a fact at every pair a modulus looks at.  Every place choice would enter
+--| is closed by those clicks, and at every one the device computes the opposite, which clicks the other way.
+theorem isnt_that_a_daisy (k : FACT)
+    (x y : Meanings.Bracketed) [one : Decidable (x.Same y)] [parted : Decidable (∃ n m, x.PartedAt y n m)]
+    (the_fact : Area → FACT) (read_alike : Meanings.CountedAsNat.ReadAlike (fun a => (the_fact a).truth))
+    (a : Area) (holds : (the_fact a).truth)
+    (serves : Nat → Nat → FACT) (continuous : ∀ k, ∃ m, (serves k m).truth) :
+    -- the root: from the bit and from its opposite, each a root of the counted quartic, the sign turned over
+    ((the_surd_product (you_re_a_daisy_if_you_do k) (you_re_a_daisy_if_you_do k)).1
+        - 11664 * (you_re_a_daisy_if_you_do k).1 + 24564384 = 0
+      ∧ (the_surd_product (you_re_a_daisy_if_you_do (the_opposite k)) (you_re_a_daisy_if_you_do (the_opposite k))).1
+        - 11664 * (you_re_a_daisy_if_you_do (the_opposite k)).1 + 24564384 = 0
+      ∧ (you_re_a_daisy_if_you_do (the_opposite k)).2 = - (you_re_a_daisy_if_you_do k).2
+      ∧ the_representation.the_click (the_opposite k) ≠ the_representation.the_click k)
+    -- one or not, and its opposite
+    ∧ ((x.Same y ∨ ¬ x.Same y)
+      ∧ the_representation.the_click (the_opposite ⟨x.Same y, one⟩) ≠ the_representation.the_click ⟨x.Same y, one⟩)
+    -- where they part, and its opposite
+    ∧ ((¬ x.Same y → ∃ n m, x.PartedAt y n m)
+      ∧ the_representation.the_click (the_opposite ⟨_, parted⟩) ≠ the_representation.the_click ⟨_, parted⟩)
+    -- the first area, and the opposite at every area
+    ∧ ((∃ b, (the_fact b).truth ∧ ∀ c, c < b → ¬ (the_fact c).truth)
+      ∧ ∀ b, the_representation.the_click (the_opposite (the_fact b)) ≠ the_representation.the_click (the_fact b))
+    -- the modulus, and the opposite at every pair
+    ∧ ((∃ modulus : Nat → Nat, ∀ k, (serves k (modulus k)).truth ∧ ∀ m, m < modulus k → ¬ (serves k m).truth)
+      ∧ ∀ k m, the_representation.the_click (the_opposite (serves k m)) ≠ the_representation.the_click (serves k m)) :=
+  ⟨⟨(you_re_a_daisy_either_way k).1, (you_re_a_daisy_either_way (the_opposite k)).1, the_root_of_the_opposite k,
+     whatever_they_choose_they_get_the_other k⟩,
+   ⟨Meanings.Bracketed.same_or_not_with_the_click x y, whatever_they_choose_they_get_the_other _⟩,
+   ⟨where_they_part_with_the_click x y, whatever_they_choose_they_get_the_other _⟩,
+   ⟨the_first_area_where_a_fact_holds the_fact read_alike a holds, fun _ => whatever_they_choose_they_get_the_other _⟩,
+   ⟨a_modulus_from_facts serves continuous, fun _ _ => whatever_they_choose_they_get_the_other _⟩⟩
+
+end isnt_that_a_daisy
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.

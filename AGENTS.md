@@ -492,7 +492,11 @@ names the number.
   `Classical.choice` in the same four. Since then one more, by design:
   `the_gap_is_closed_only_by_a_choice_handed_in` (Episode 13), which
   bundles the gap's two choice receipts; five in all, nothing in the
-  device using any. The Meanings library, counted the
+  device using any. Recounted again at the end of 24 November, after the
+  diagonal, the opposite of the knower's bit and the fencepost: 4,253; no
+  axiom, 1,619; `propext`, 883; `propext` and `Quot.sound`, 1,739;
+  `Quot.sound` alone, 7; `Classical.choice` in the five. This is the
+  figure the volume now uses. The Meanings library, counted the
   same way the same day: 1,036 theorems; no axiom, 171; `propext`, 40;
   `propext` and `Quot.sound`, 787; `Quot.sound` alone, 20;
   `Classical.choice` in 18, every one the ratios through core Lean's
@@ -4682,6 +4686,31 @@ names the number.
   graph, standard; the net theorems are arithmetic on the counts, not a
   graph built on the device; what is the device's own is that posts less
   spans is its fencepost and subdivision keeps it.
+- Isn't that a daisy (`Episode13.lean`, section `isnt_that_a_daisy`, the
+  last section of `namespace Measurement`, before the closing passage and
+  the compiler's epilogue; 24 November 2026). The author (declared): the
+  last theorem in Measurement, where every place choice could enter clicks
+  with the knower's bit and the opposite is computed. `isnt_that_a_daisy`,
+  `propext` and `Quot.sound` only (the Area's first place brings them):
+  handed a FACT for the root, a click on whether two reals are one, a
+  click on whether there is a stage where they part, a FACT at every Area
+  and a FACT at every pair a modulus looks at, it gives the root from the
+  bit and from its opposite (each a root of the counted quartic, the part
+  by the root turned over, `the_root_of_the_opposite`, no axiom), one or
+  not, the stage where they part from that they are not one
+  (`where_they_part_with_the_click`, no axiom: Markov's principle as a
+  click on the existence), the first Area and the modulus; and at every
+  place a bit is handed in, the opposite clicks the other way. Say with
+  it: that choice is billed in five theorem constants is the count of the
+  bills, read from outside by `collectAxioms`; no theorem says a list of
+  places is all of them. `compatibility_form` is not among the twins: its
+  bill is `omega`'s, handed an iff, nothing is decided there, and its
+  choice-free form is beside the device (`OneWayAndTheOther`), which
+  Measurement does not import. The root and the sameness take one bit
+  each; the first Area and the modulus take a bit at every place they
+  look, so "the knower's bit" there means a FACT at every place. The
+  twins existed before; the theorem gathers them with the opposite, and
+  could not have failed once they did. Bills not recounted since.
 - The laws (`Meanings/Laws.lean`; 23 November 2026). Receipts, `propext`,
   `Quot.sound`: every low wall is under every high wall
   (`Bracketed.low_under_high`); `Same` is reflexive, symmetric and
