@@ -14,6 +14,8 @@ and the device's own package does not require Mathlib, so no build of the device
   `Hilbert`   the plane met as a module, an inner-product space and a complete space, and the norm, on the EKG.
   `Derivative` the slope as the derivative, from the exact bracket; the exponential its own derivative; e as the limit
               of the growing steps; and the device's turning walk going to the exponential of the quarter turn.
+  `TheOtherSide` the device's reals, up to being one, ordered by not past, are the non-negative reals; the signed reals
+              are all of them; sums and products go across; and any two ring isomorphisms onto ℕ, ℤ or ℝ are one.
 
 The reals and the completion are Mathlib's.  They are handed in here, and nowhere in the device.
 -/
@@ -22,3 +24,4 @@ import Calibrate.Device
 import Calibrate.Norm
 import Calibrate.Hilbert
 import Calibrate.Derivative
+import Calibrate.TheOtherSide
