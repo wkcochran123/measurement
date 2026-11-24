@@ -22,15 +22,15 @@ open readers_experience the_table
 
 --| THE TWO ROUTES.  A tape of marks is handed in.  Collected: a cell for every mark.  Added to an element: the element each
 --| for each with itself, once for every mark.
-def collected (tape : List FACT) : Area := the_area_of_a_tape_in_blanks_is tape
-def added_to (element : Area) (tape : List FACT) : Area := raised element (the_area_of_a_tape_in_blanks_is tape)
+def collected (tape : List FACT) : Area := the_number_of_marks tape
+def added_to (element : Area) (tape : List FACT) : Area := raised element (the_number_of_marks tape)
 
 theorem collected_is_the_length (tape : List FACT) : compute_the_area_of (collected tape) = tape.length :=
-  the_area_of_a_tape_in_blanks_is_the_tapes_length tape
+  the_number_of_marks_the_tapes_length tape
 
 theorem added_to_is_the_element_raised_to_the_length (element : Area) (tape : List FACT) :
     compute_the_area_of (added_to element tape) = compute_the_area_of element ^ tape.length := by
-  rw [added_to, raised_raises, the_area_of_a_tape_in_blanks_is_the_tapes_length]
+  rw [added_to, raised_raises, the_number_of_marks_the_tapes_length]
 
 --| ONE TAPE AFTER ANOTHER.  Collected, the two are beside each other: addition.  Added to the element, the two are each for
 --| each: multiplication.  The same thing done to the tape, and two things done to the count.

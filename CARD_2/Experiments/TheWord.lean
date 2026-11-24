@@ -52,8 +52,8 @@ theorem the_word_fits_the_projection_whatever_the_knower_says :
 --| COMPILE AND EXECUTE.  Read the word out as a tape and write the tape as an abstraction: a compile for every fact and
 --| then an execute for every fact.  What execute counts is what compile built, whatever the knower's four bits.
 theorem compiled_and_executed_the_word_is_one_count (a c b the_fourth : Bool) :
-    compute_the_so_called_area_of (an_interleaved (the_word a c b the_fourth).riemann_integrate)
-      = compute_the_area_of (compute_verification_receipt_ast_of (an_interleaved (the_word a c b the_fourth).riemann_integrate)) :=
+    compute_the_so_called_area_of (the_marks (the_word a c b the_fourth).riemann_integrate)
+      = compute_the_area_of (count_up (the_marks (the_word a c b the_fourth).riemann_integrate)) :=
   execute_counts_what_compile_built _
 
 --| WHAT IT SAYS.  The count does not see the knower's bits.  The word does hold them: read by its clicks, the four cells
