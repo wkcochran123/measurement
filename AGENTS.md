@@ -3864,7 +3864,19 @@ names the number.
   past the quarter turn, decided at a finite stage, as a strict
   inequality must be. By how much (about 0.0217) is measured, not
   checked. Controls (a wall one in the last place tighter; five in place
-  of six) are refused.
+  of six) are refused. The author, asked what "the circle" meant
+  (declared): "the circle is the bracketing of pi between 22/7 and
+  221/71." Minted: at every stage the half turn lies between 223/71 and
+  22/7, Archimedes' walls from the polygons of ninety-six sides
+  (`the_half_turn_is_between_archimedes_walls`), and so between 221/71,
+  as the author wrote it, and 22/7
+  (`the_half_turn_is_between_221_over_71_and_22_over_7`); `propext`,
+  `Quot.sound`. Say with it: Archimedes' lower wall is 223/71 (three and
+  ten seventy-firsts); 221/71 is lower and also holds. Archimedes' walls
+  are standard and are not drawn here as polygons; this checks that
+  Machin's half turn lies between them. That the circle is this
+  bracketing is the author's reading; cos² + sin² = 1 for the series
+  stays unwritten.
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past

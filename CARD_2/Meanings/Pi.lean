@@ -98,6 +98,24 @@ theorem the_half_turn_is_between (n : Nat) :
   ⟨Fraction.le_trans at_its_first_stage_the_half_turn_is_between.1 (theHalfTurn.low_le_of_le (Nat.zero_le n)),
    Fraction.le_trans (theHalfTurn.high_le_of_le (Nat.zero_le n)) at_its_first_stage_the_half_turn_is_between.2⟩
 
+--| ARCHIMEDES' WALLS.  The polygons of ninety-six sides drawn inside and outside the circle bracket the half turn between
+--| three and ten seventy-firsts and three and a seventh: 223/71 and 22/7.  At every stage the half turn here lies between
+--| them; and so between 221/71 and 22/7, as the author wrote it.  The walls are Archimedes' (standard); that the half turn
+--| is between them is decided from the first stage and carried to every stage by the walls only moving inward.
+def archimedesLowWall : Fraction := ⟨223, 71, by decide⟩
+def archimedesHighWall : Fraction := ⟨22, 7, by decide⟩
+def theAuthorsLowWall : Fraction := ⟨221, 71, by decide⟩
+
+theorem the_half_turn_is_between_archimedes_walls (n : Nat) :
+    archimedesLowWall.le (theHalfTurn.low n) ∧ (theHalfTurn.high n).le archimedesHighWall :=
+  ⟨Fraction.le_trans (by decide : archimedesLowWall.le theHalfTurnsLowWall) (the_half_turn_is_between n).1,
+   Fraction.le_trans (the_half_turn_is_between n).2 (by decide : theHalfTurnsHighWall.le archimedesHighWall)⟩
+
+theorem the_half_turn_is_between_221_over_71_and_22_over_7 (n : Nat) :
+    theAuthorsLowWall.le (theHalfTurn.low n) ∧ (theHalfTurn.high n).le archimedesHighWall :=
+  ⟨Fraction.le_trans (by decide : theAuthorsLowWall.le archimedesLowWall) (the_half_turn_is_between_archimedes_walls n).1,
+   (the_half_turn_is_between_archimedes_walls n).2⟩
+
 --| THE ROOT OF THREE, BY HALVING.
 def theRootOfThree : DyadicCut where
   cut := rootByHalving 3 1
