@@ -9870,6 +9870,58 @@ theorem one_over_k_is_k_owed : (-Meanings.QuaternionReal.k).Same (Meanings.Quate
     (Meanings.QuaternionReal.same_trans (Meanings.QuaternionReal.mul_neg Meanings.QuaternionReal.k Meanings.QuaternionReal.k) h)
 end one_over_a_quarter_turn
 
+section the_step_angle
+open readers_experience
+
+--| dθ.  The author's, 23 November 2026: "you should be able to get dθ now" (declared).  The device's turning walk steps by
+--| n and the quarter phase, (n, 1), at the card's thickness of one part in n (section `the_first_variation_of_the_exponential`).
+--| The angle of that step is the arctangent of one part in n, which is now a real with no choice: dθ.  What is checked: dθ is
+--| at every stage between one part in n less a third of the step cubed and one part in n; so the step turns by less than it
+--| is long, short by the step cubed over three, where its radius was long by the step squared.  And Machin's formula, which
+--| the half turn is written by, is on the device's own turns: four steps of (5, 1) and one step back of (239, 1) land exactly
+--| on the eighth turn, 114244 by (1, 1), in the Gaussian product.  That the arctangent of one part in n is the angle of
+--| (n, 1) is standard; the device has no angle function, and the identity is on the turns, not on the angles.
+
+def the_step_angle (n : Nat) (hn : 0 < n) : Meanings.Bracketed := Meanings.arctan 1 n hn (by omega)
+
+--| dθ IS BETWEEN THE STEP LESS A THIRD OF ITS CUBE AND THE STEP, at every stage.
+theorem the_step_angle_is_between (n : Nat) (hn : 0 < n) (k : Nat) :
+    ((Meanings.arctanTerm 1 n hn 0).sub (Meanings.arctanTerm 1 n hn 1)).le ((the_step_angle n hn).low k)
+      ∧ ((the_step_angle n hn).high k).le (Meanings.arctanTerm 1 n hn 0) :=
+  ⟨(the_step_angle n hn).low_le_of_le (Nat.zero_le k),
+   Meanings.Fraction.le_trans ((the_step_angle n hn).high_le_of_le (Nat.zero_le k))
+     (Meanings.Fraction.sub_then_add_is_not_past _ _ _ (Meanings.arctanTerm_falls 1 n hn (by omega) 1)
+       (Meanings.arctanTerm_falls 1 n hn (by omega) 0))⟩
+
+--| The step, and a third of its cube: one part in n, and one part in three n cubed.
+theorem the_step_and_a_third_of_its_cube (n : Nat) (hn : 0 < n) :
+    (Meanings.arctanTerm 1 n hn 0).over = 1 ∧ (Meanings.arctanTerm 1 n hn 0).under = n
+      ∧ (Meanings.arctanTerm 1 n hn 1).over = 1 ∧ (Meanings.arctanTerm 1 n hn 1).under = 3 * (n * n * n) := by
+  refine ⟨Nat.one_pow _, ?_, Nat.one_pow _, ?_⟩
+  · show n ^ 1 * 1 = n; simp
+  · show n ^ 3 * 3 = 3 * (n * n * n); rw [Nat.mul_comm]; simp [Nat.pow_succ]
+
+--| dθ AT A FIFTH: under 0.19740 at every stage, and past 0.19739 from the first stage on (at the stage before, the low
+--| wall is only the step less a third of its cube, 0.19733).
+theorem the_step_angle_of_five_is_between (k : Nat) :
+    ((the_step_angle 5 (by decide)).high k).le ⟨19740, 100000, by decide⟩
+      ∧ (1 ≤ k → (⟨19739, 100000, by decide⟩ : Meanings.Fraction).le ((the_step_angle 5 (by decide)).low k)) := by
+  have at0 : ((the_step_angle 5 (by decide)).high 0).le ⟨19740, 100000, by decide⟩ := by decide +kernel
+  have at1 : (⟨19739, 100000, by decide⟩ : Meanings.Fraction).le ((the_step_angle 5 (by decide)).low 1) := by
+    decide +kernel
+  exact ⟨Meanings.Fraction.le_trans ((the_step_angle 5 _).high_le_of_le (Nat.zero_le k)) at0,
+    fun h => Meanings.Fraction.le_trans at1 ((the_step_angle 5 _).low_le_of_le h)⟩
+
+--| MACHIN ON THE TURNS.  Four steps of (5, 1), and one step back of (239, 1), are 114244 by the eighth turn (1, 1).
+theorem four_steps_of_a_fifth_and_one_back_of_239_are_the_eighth_turn :
+    the_gaussian_product (the_phase_walk (5, 1) 4) (239, -1) = (114244, 114244) := by decide
+
+--| And the half turn is written with these two step angles: sixteen of the one, less four of the other.
+theorem the_half_turn_is_written_with_the_two_step_angles :
+    Meanings.sixteenArctanFifth = (the_step_angle 5 (by decide)).scale 16
+      ∧ Meanings.fourArctan239th = (the_step_angle 239 (by decide)).scale 4 := ⟨rfl, rfl⟩
+end the_step_angle
+
 section the_turn_by_a_rational_angle
 open readers_experience
 

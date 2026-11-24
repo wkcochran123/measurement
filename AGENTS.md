@@ -3876,7 +3876,30 @@ names the number.
   are standard and are not drawn here as polygons; this checks that
   Machin's half turn lies between them. That the circle is this
   bracketing is the author's reading; cos² + sin² = 1 for the series
-  stays unwritten.
+  stays unwritten. Then (the author, declared): "you should be able to
+  get dθ now." Minted (`Episode13.lean`, section `the_step_angle`):
+  `the_step_angle n`, dθ = arctan(1/n), the angle of the turning walk's
+  step (n, 1) at the card's thickness one part in n, a real with no
+  choice; at every stage it lies between one part in n less a third of
+  the step cubed and one part in n (`the_step_angle_is_between`,
+  `the_step_and_a_third_of_its_cube`): the step turns by less than it is
+  long, short by the cube over three, where its radius was long by the
+  square (`the_turn_leaves_the_circle_by_the_step_squared`). At a fifth
+  it is under 0.19740 at every stage and past 0.19739 from the first on
+  (`the_step_angle_of_five_is_between`). Machin's formula, by which the
+  half turn is written, is on the device's own turns: four steps of (5,
+  1) and one step back of (239, 1) are 114244 by the eighth turn (1, 1)
+  in the Gaussian product, no axiom
+  (`four_steps_of_a_fifth_and_one_back_of_239_are_the_eighth_turn`), and
+  the half turn is sixteen of the one step angle less four of the other
+  (`the_half_turn_is_written_with_the_two_step_angles`, by `rfl`). That
+  arctan(1/n) is the angle of (n, 1) is standard; the device has no angle
+  function, and the identity is on the turns. The author, further
+  (declared, as a belief): "the contravariant reading is the signed dφ,
+  from which you can use a triangle to construct dt." Not minted. Beside
+  it: the step (n, 1) is a right triangle with legs n and 1, its leg over
+  leg the step dt = 1/n and its angle dθ; the step back (n, −1) is the
+  same angle owed, and Machin's one step back is such a signed step.
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past
