@@ -1143,3 +1143,15 @@ kernel route does grow, which is the opposite. A test would need a new seal with
 above have now been seen. A seal for m = 5 to 8 would be about readings not yet taken. At m = 8 the statement carries
 a 22-digit numeral where the others carry 0; whether that is the 19 to 21 heartbeats is not tested. One machine.
 
+## Experiment 019b: the Borwein receipts, with the proof on the meter
+
+Experiment 019's meter read only the statement. This is the same test with asynchronous elaboration off, on readings not
+taken before: m = 5 to 8 on both routes, and the blank. The author, after 019: "i'll take that as i was right. number go
+up proportionally. seal and run"; and, before the seal: "you are about to estimate the most efficient, least action
+solution to the computation. in which case, there will be excess code in ep13, so you will read high" (declared). Claude
+answered that two points did not show proportion. Seal (the author's prediction in Claude's operational reading: a single
+cost per added way, and the reading per way falling, read high; and Claude's): `readings/019b-the-borwein-receipts-metered/SEALED_PREDICTION.txt`,
+sha256 7562095588e6c452….
+
+**Read:** not yet.
+
