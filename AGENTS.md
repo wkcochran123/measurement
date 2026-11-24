@@ -3913,6 +3913,17 @@ names the number.
   visitor nothing changes: explores, open, never solved. Still open in
   the reals: the circle as cos² + sin² = 1 and e^θ·e^{−θ} = 1 (the
   addition law), the tangent, and the turned root's angle as a number.
+  And (declared): "that's just it, we now have a volume for the card,
+  making it the 3-d projection of a frinkahedron." Beside it, receipts:
+  one step of the turning walk now has three measures, its length dt =
+  1/n, its angle dθ (bracketed, `the_step_angle_is_between`) and its
+  radius squared 1 + dt² (`the_radius_grows_by_the_step_squared`), with
+  the half turn walled (`the_half_turn_is_between`). Earlier, the author
+  read the six by six of pairs of arms as "the linear interpolation of
+  the 3-d projection of the inside of the frinkahedron" (declared). Not
+  given: which product of these measures is the card's volume, and any
+  map from a step to Card 1's hexagonal duoprism or its projection. That
+  the card is that projection is the author's.
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past
