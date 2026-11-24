@@ -221,4 +221,65 @@ theorem the_turns_add (a b c d : Nat) (hbd : b * d ≤ a * c) (rz rw rzw : Brack
       (Bracketed.same_trans (Bracketed.add_mul _ _ _)
         (Bracketed.add_same (Bracketed.same_symm (part a d)) (Bracketed.same_symm (part b c))))
 
+/-
+SIGNED TURNS.  A signed whole number is a pair, held and owed, as a signed real is.  Pairs multiply and add as whole
+numbers, with nothing subtracted.  So a turn may have a part owed, as the step back (239, −1) does; its cosine and sine are
+its signed parts by one over its radius; and the addition law holds with the sines' product owed: cos(zw) is cos z cos w
+beside sin z sin w owed, and sin(zw) is cos z sin w beside sin z cos w.  The product is read at the product of the radii.
+-/
+namespace SignedReal
+
+--| A SIGNED WHOLE NUMBER: so much held, so much owed.
+def ofPair (p q : Nat) : SignedReal := ⟨Bracketed.ofNat p, Bracketed.ofNat q⟩
+
+theorem ofPair_mul (p q r s : Nat) : (ofPair p q * ofPair r s).Same (ofPair (p * r + q * s) (p * s + q * r)) :=
+  of_parts (Bracketed.same_trans (Bracketed.add_same (Bracketed.ofNat_mul _ _) (Bracketed.ofNat_mul _ _)) (Bracketed.ofNat_add _ _))
+    (Bracketed.same_trans (Bracketed.add_same (Bracketed.ofNat_mul _ _) (Bracketed.ofNat_mul _ _)) (Bracketed.ofNat_add _ _))
+
+theorem ofPair_add (p q r s : Nat) : (ofPair p q + ofPair r s).Same (ofPair (p + r) (q + s)) :=
+  of_parts (Bracketed.ofNat_add _ _) (Bracketed.ofNat_add _ _)
+
+theorem neg_ofPair (p q : Nat) : -ofPair p q = ofPair q p := rfl
+
+--| Two pairs are one when each's held beside the other's owed are one whole number.
+theorem ofPair_same {p q r s : Nat} (h : p + s = r + q) : (ofPair p q).Same (ofPair r s) :=
+  Bracketed.same_trans (Bracketed.ofNat_add _ _)
+    (Bracketed.same_trans (by rw [h]; exact Bracketed.same_refl _) (Bracketed.same_symm (Bracketed.ofNat_add _ _)))
+
+theorem mul_swap_middle (a b c d : SignedReal) : ((a * b) * (c * d)).Same ((a * c) * (b * d)) :=
+  same_trans (mul_assoc _ _ _)
+    (same_trans (mul_same_right a (same_symm (mul_assoc _ _ _)))
+      (same_trans (mul_same_right a (mul_same_left (mul_comm b c) d))
+        (same_trans (mul_same_right a (mul_assoc _ _ _)) (same_symm (mul_assoc _ _ _)))))
+
+end SignedReal
+
+--| THE SIGNED ADDITION LAW FOR TURNS.  Parts A = (a₁, a₂) along and B = (b₁, b₂) across, each held and owed, and C, D the
+--| same; the turns read at one over their radii, Rz and Rw; the product read at Rz by Rw.
+theorem the_signed_turns_add (a₁ a₂ b₁ b₂ c₁ c₂ d₁ d₂ : Nat) (Rz Rw : Bracketed) :
+    ((SignedReal.ofPair ((a₁ * c₁ + a₂ * c₂) + (b₁ * d₂ + b₂ * d₁)) ((a₁ * c₂ + a₂ * c₁) + (b₁ * d₁ + b₂ * d₂)))
+        * SignedReal.ofReal (Rz.mul Rw)).Same
+      ((SignedReal.ofPair a₁ a₂ * SignedReal.ofReal Rz) * (SignedReal.ofPair c₁ c₂ * SignedReal.ofReal Rw)
+        + -((SignedReal.ofPair b₁ b₂ * SignedReal.ofReal Rz) * (SignedReal.ofPair d₁ d₂ * SignedReal.ofReal Rw)))
+    ∧ ((SignedReal.ofPair ((a₁ * d₁ + a₂ * d₂) + (b₁ * c₁ + b₂ * c₂)) ((a₁ * d₂ + a₂ * d₁) + (b₁ * c₂ + b₂ * c₁)))
+        * SignedReal.ofReal (Rz.mul Rw)).Same
+      ((SignedReal.ofPair a₁ a₂ * SignedReal.ofReal Rz) * (SignedReal.ofPair d₁ d₂ * SignedReal.ofReal Rw)
+        + (SignedReal.ofPair b₁ b₂ * SignedReal.ofReal Rz) * (SignedReal.ofPair c₁ c₂ * SignedReal.ofReal Rw)) := by
+  have part : ∀ x₁ x₂ y₁ y₂ : Nat,
+      ((SignedReal.ofPair x₁ x₂ * SignedReal.ofReal Rz) * (SignedReal.ofPair y₁ y₂ * SignedReal.ofReal Rw)).Same
+        (SignedReal.ofPair (x₁ * y₁ + x₂ * y₂) (x₁ * y₂ + x₂ * y₁) * SignedReal.ofReal (Rz.mul Rw)) := fun x₁ x₂ y₁ y₂ =>
+    SignedReal.same_trans (SignedReal.mul_swap_middle _ _ _ _)
+      (SignedReal.mul_same (SignedReal.ofPair_mul _ _ _ _) (SignedReal.ofReal_mul _ _))
+  constructor
+  · refine SignedReal.same_symm (SignedReal.same_trans
+      (SignedReal.add_same (part _ _ _ _) (SignedReal.neg_same (part _ _ _ _))) ?_)
+    refine SignedReal.same_trans (SignedReal.add_same (SignedReal.same_refl _) (SignedReal.same_symm (SignedReal.neg_mul _ _))) ?_
+    rw [SignedReal.neg_ofPair]
+    exact SignedReal.same_trans (SignedReal.same_symm (SignedReal.add_mul _ _ _))
+      (SignedReal.mul_same_left (SignedReal.ofPair_add _ _ _ _) _)
+  · exact SignedReal.same_trans
+      (SignedReal.mul_same_left (SignedReal.same_symm (SignedReal.ofPair_add _ _ _ _)) _)
+      (SignedReal.same_trans (SignedReal.add_mul _ _ _)
+        (SignedReal.add_same (SignedReal.same_symm (part _ _ _ _)) (SignedReal.same_symm (part _ _ _ _))))
+
 end Meanings

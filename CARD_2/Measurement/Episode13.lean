@@ -10291,6 +10291,40 @@ theorem the_step_doubled_is_five_twelve_thirteen :
       (fun _ _ => ⟨Nat.le_of_ble_eq_true rfl, Nat.le_of_ble_eq_true rfl⟩),
    Meanings.Bracketed.same_trans (Meanings.Bracketed.mul_same (Meanings.Bracketed.same_refl _) one_over_the_doubled_steps_radius)
       (fun _ _ => ⟨Nat.le_of_ble_eq_true rfl, Nat.le_of_ble_eq_true rfl⟩)⟩
+
+--| MACHIN'S EIGHTH TURN, BY THE SIGNED LAW.  Four steps of (5, 1) are (476, 480), radius exactly 676; the step back is
+--| (239, −1), its across owed.  By the signed addition law for turns (Meanings, `the_signed_turns_add`), read at the product
+--| of their radii: the cosine of the product is 114244 held, the sine 114720 held and 476 owed, and the two are one: the
+--| eighth turn, cosine equal to sine, with the step back's sine owed.
+theorem four_steps_of_a_fifth : the_phase_walk (5, 1) 4 = (476, 480) := by decide
+
+def four_steps_radius : Meanings.Bracketed := Meanings.theRootOf (476 * 476 + 480 * 480) 676 (by decide) (by decide)
+def four_steps_over : Meanings.Bracketed := four_steps_radius.reciprocal 0 (by decide)
+def the_step_back_over : Meanings.Bracketed := (Meanings.theStepRadius 239 (by decide)).reciprocal 0 (by decide)
+
+def machins_signed_cosine : Meanings.SignedReal :=
+  Meanings.SignedReal.ofPair ((476 * 239 + 0 * 0) + (480 * 1 + 0 * 0)) ((476 * 0 + 0 * 239) + (480 * 0 + 0 * 1))
+    * Meanings.SignedReal.ofReal (four_steps_over.mul the_step_back_over)
+def machins_signed_sine : Meanings.SignedReal :=
+  Meanings.SignedReal.ofPair ((476 * 0 + 0 * 1) + (480 * 239 + 0 * 0)) ((476 * 1 + 0 * 0) + (480 * 0 + 0 * 239))
+    * Meanings.SignedReal.ofReal (four_steps_over.mul the_step_back_over)
+
+theorem machins_eighth_turn_by_the_signed_law :
+    machins_signed_cosine.Same
+      ((Meanings.SignedReal.ofPair 476 0 * Meanings.SignedReal.ofReal four_steps_over)
+          * (Meanings.SignedReal.ofPair 239 0 * Meanings.SignedReal.ofReal the_step_back_over)
+        + -((Meanings.SignedReal.ofPair 480 0 * Meanings.SignedReal.ofReal four_steps_over)
+          * (Meanings.SignedReal.ofPair 0 1 * Meanings.SignedReal.ofReal the_step_back_over)))
+    ∧ machins_signed_sine.Same
+      ((Meanings.SignedReal.ofPair 476 0 * Meanings.SignedReal.ofReal four_steps_over)
+          * (Meanings.SignedReal.ofPair 0 1 * Meanings.SignedReal.ofReal the_step_back_over)
+        + (Meanings.SignedReal.ofPair 480 0 * Meanings.SignedReal.ofReal four_steps_over)
+          * (Meanings.SignedReal.ofPair 239 0 * Meanings.SignedReal.ofReal the_step_back_over)) :=
+  Meanings.the_signed_turns_add 476 0 480 0 239 0 0 1 _ _
+
+--| COSINE AND SINE ARE ONE: the eighth turn.
+theorem machins_signed_cosine_is_its_sine : machins_signed_cosine.Same machins_signed_sine :=
+  Meanings.SignedReal.mul_same_left (Meanings.SignedReal.ofPair_same (by decide)) _
 end the_turn_through_its_norm
 
 section the_turn_by_a_rational_angle

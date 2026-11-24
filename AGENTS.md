@@ -4098,9 +4098,21 @@ names the number.
   `the_step_doubled_is_five_twelve_thirteen`): the step (5, 1) by itself is
   (24, 10), radius 26, the step's radius squared; its cosine is 12/13 and
   its sine 5/13, the five, twelve, thirteen triangle; and the double-angle
-  laws hold for it. A wrong cosine (11/13) is refused. Not built: turns
-  with parts owed (Machin's step back, (239, −1)), which want the signed
-  reals; and any angle as a number.
+  laws hold for it. A wrong cosine (11/13) is refused. Then, at the
+  author's "Yes, signed turns": a signed whole number as a pair, held
+  and owed (`SignedReal.ofPair`), multiplying and adding as whole numbers
+  with nothing subtracted (`ofPair_mul`, `ofPair_add`, `ofPair_same`); and
+  the signed addition law for turns with any parts held or owed, read at
+  the product of the radii (`the_signed_turns_add`): cos(zw) is cos z cos w
+  beside sin z sin w owed, sin(zw) is cos z sin w beside sin z cos w. On
+  the device: four steps of (5, 1) are (476, 480), radius exactly 676
+  (`four_steps_of_a_fifth`, no axiom); with the step back (239, −1), its
+  across owed, the law gives Machin's product a cosine of 114244 held and
+  a sine of 114720 held and 476 owed, and the two are one
+  (`machins_eighth_turn_by_the_signed_law`,
+  `machins_signed_cosine_is_its_sine`): the eighth turn, by the signed law.
+  `propext`, `Quot.sound`; a sine one off (475 owed) is refused. Still not
+  given: any angle as a number.
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past
