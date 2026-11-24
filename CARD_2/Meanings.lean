@@ -21,3 +21,4 @@ import Meanings.Turns            -- a turn read through its norm: the root of a 
 import Meanings.Circle           -- the circle at every stage: cosine squared beside sine squared is one, for θ not past one
 import Meanings.Baker            -- the baker's transform on records: doubling forgets a bit, the baker keeps it, there and back exactly
 import Meanings.TheEighthTurn      -- the eighth turn by the series: where cosine and sine cross, Machin in the window, and the error past nothing
+import Meanings.Gap              -- the gap: parted shows at a finite stage for free; where they part, from not one, is choice

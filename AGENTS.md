@@ -185,7 +185,7 @@ Hilbert meant, and it is the visitor's to make.
 | `CARD_2/Experiments/OneWayAndTheOther.lean` | Not the device, and it does not change the device. Episode 12's one theorem that bills `Classical.choice`, restated word for word and proved one direction at a time: no choice. Built apart: `lake build Experiments.OneWayAndTheOther`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Jar.lean` | Not the device, and no new inductive. The natural read (137) and the natural inferred (42), and the jar of two rational walls they make around each root. Built apart: `lake build Experiments.Jar`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Inferred.lean` | Not the device, and no new inductive. Eighteen and five inferred from the shape of three and one, the trace and the round trip, with no count of anything written; and that the clock alone gives only ninety. Built apart: `lake build Experiments.Inferred`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
-| `CARD_2/Meanings.lean`, `CARD_2/Meanings/` | Not the device. What a reading is taken to mean, as interfaces, in core Lean and nothing else; it names nothing of the device. `Correspondence` (a way there and a way back that undo each other: core Lean has no `Equiv`); `CountedAsNat` and `BalancedAsInt` (a reader, a deal it undoes, and the operations carried over; the kind up to its reader then corresponds to `Nat` or `Int`); `Ratioed` (pairs from anything balanced, alike when the cross-products are one integer, correspond to `Rat`); `Least` (least and largest with the click and without it); `Real` (the reals with no choice: a real is a bracket of two fractions of naturals at every stage, rising, falling and narrowing to one part in n and one; the root of ninety and eighteen and it built by halving, e from the factorial series; nothing bills choice); `Norm` (a two-unknown form is never negative when its first coefficient is positive and the cross coefficient squared is not past the product of the other two; so a bound on a weighed square); `Reciprocal` (one over a real handed a stage where it is past nothing, and over; the least such stage found by looking); `Pi` (the arctangent, a real by a whole number, the half turn by Machin, the branch never taken); `Turns` (the root of a whole number; a turn read through its norm, on the circle); `Order` (not past, for reals and signed reals; not total without a click); `Quarters` (Σθᵏ/k! split by k in fours, four reals with no choice, checked at a stage against cosine, sine and e); `Difference` (one real less another handed a stage where it is not past; one over a signed real, a complex number and a quaternion apart from nothing; one over is one thing); `Circle` (cosine squared beside sine squared is one at every pair of stages, for θ = p/q not past one); `TheEighthTurn` (where the series cosine and sine cross, Machin's half turn in that window, the error at each side past nothing, the slip, the halving handed the gap, and the baker on its record); `Baker` (a record of a number between nothing and one; doubling forgets the top bit; the baker keeps it, a `Correspondence` of pairs of records). Library `Meanings`; `lake build Meanings`. Episode 13 imports it and meets the interfaces; nothing else in `Measurement` does. |
+| `CARD_2/Meanings.lean`, `CARD_2/Meanings/` | Not the device. What a reading is taken to mean, as interfaces, in core Lean and nothing else; it names nothing of the device. `Correspondence` (a way there and a way back that undo each other: core Lean has no `Equiv`); `CountedAsNat` and `BalancedAsInt` (a reader, a deal it undoes, and the operations carried over; the kind up to its reader then corresponds to `Nat` or `Int`); `Ratioed` (pairs from anything balanced, alike when the cross-products are one integer, correspond to `Rat`); `Least` (least and largest with the click and without it); `Real` (the reals with no choice: a real is a bracket of two fractions of naturals at every stage, rising, falling and narrowing to one part in n and one; the root of ninety and eighteen and it built by halving, e from the factorial series; nothing bills choice); `Norm` (a two-unknown form is never negative when its first coefficient is positive and the cross coefficient squared is not past the product of the other two; so a bound on a weighed square); `Reciprocal` (one over a real handed a stage where it is past nothing, and over; the least such stage found by looking); `Pi` (the arctangent, a real by a whole number, the half turn by Machin, the branch never taken); `Turns` (the root of a whole number; a turn read through its norm, on the circle); `Order` (not past, for reals and signed reals; not total without a click); `Quarters` (Σθᵏ/k! split by k in fours, four reals with no choice, checked at a stage against cosine, sine and e); `Difference` (one real less another handed a stage where it is not past; one over a signed real, a complex number and a quaternion apart from nothing; one over is one thing); `Circle` (cosine squared beside sine squared is one at every pair of stages, for θ = p/q not past one); `TheEighthTurn` (where the series cosine and sine cross, Machin's half turn in that window, the error at each side past nothing, the slip, the halving handed the gap, and the baker on its record); `Baker` (a record of a number between nothing and one; doubling forgets the top bit; the baker keeps it, a `Correspondence` of pairs of records); `Gap` (parted at a stage is not one, with nothing handed in; from not one to the stage where they part, and one-or-not for any two reals, bill choice). Library `Meanings`; `lake build Meanings`. Episode 13 imports it and meets the interfaces; nothing else in `Measurement` does. |
 | `CARD_2/Calibrate/` | Not the device: a package of its own, so that no build of the device resolves or sees Mathlib. It requires the device's package by path and Mathlib at the rev CARD_2's manifest already pins. Mathlib is fetched (23 November 2026; 7.1 GB in `CARD_2/Calibrate/.lake`, git-ignored) and its toolchain is the device's, v4.27.0-rc1. `cd CARD_2/Calibrate && lake build` builds it in seconds. Written: `Calibrate/Readings.lean` (each Meanings correspondence handed to Mathlib as `≃+*`) and `Calibrate/Device.lean` (`the_area_as_the_naturals : ReadAsNat Area ≃+* ℕ`, `the_account_as_the_integers : ReadAsInt Account ≃+* ℤ`, both `propext`, `Quot.sound`; `two_accounts_as_the_ratios : ReadAsRat Account ≃+* Rat`, which adds `Classical.choice`), and `ekg_meets`, which elaborates a term on Episode 8's EKG and logs the heartbeats; an interface not met is an error and nothing is read (negative control, in scratch: the Account asked to be counted as the naturals fails for want of an order, Lean exits 1). Readings on the M2, 23 November 2026: about 26,300 to 26,900 heartbeats each against a blank near 3,900 to 4,000, differing by a few to fifteen heartbeats between two builds (measured; not explained). A smoke test importing a Mathlib module beside `Measurement.Episode13` elaborated with no clash, at 1.3 GB resident under `-M 1500`; heavier Mathlib imports may need more. Also written: `Calibrate/Norm.lean` (the coins weighed by 18 and 5 carried to the Euclidean plane by the roots of the weights; the device's table carried across is ((18, √90), (√90, 18)); `the_operator_norm_of_the_table : ‖theOperator‖ = 18 + √90`; `the_table_on_the_coins_is_never_past`, for every real pair; `the_norm_squared_is_between_the_walls`, 755 < ‖M‖² ≤ 756, which are Episode 13's whole-number walls; all bill `Classical.choice`, because Mathlib's reals do) and `Calibrate/Hilbert.lean` (the plane met as `Module ℝ`, `InnerProductSpace ℝ` and `CompleteSpace`, and the norm and walls, each on `ekg_meets`: 204,475; 166,446; 19,577; 484,601; 634,613 heartbeats, blanks near 2,200 to 2,300, one build on the M2). |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
@@ -489,7 +489,10 @@ names the number.
   rule (script in the session scratchpad, `collectAxioms` on each theorem
   constant of a `Measurement` module): 4,223; no axiom, 1,613; `propext`,
   880; `propext` and `Quot.sound`, 1,719; `Quot.sound` alone, 7;
-  `Classical.choice` in the same four. The Meanings library, counted the
+  `Classical.choice` in the same four. Since then one more, by design:
+  `the_gap_is_closed_only_by_a_choice_handed_in` (Episode 13), which
+  bundles the gap's two choice receipts; five in all, nothing in the
+  device using any. The Meanings library, counted the
   same way the same day: 1,036 theorems; no axiom, 171; `propext`, 40;
   `propext` and `Quot.sound`, 787; `Quot.sound` alone, 20;
   `Classical.choice` in 18, every one the ratios through core Lean's
@@ -4517,6 +4520,36 @@ names the number.
   crank and δ/ε the halving is Claude's pairing and could be argued the
   other way; that the fifth is the fencepost (four spans and the post
   they leave off, Episode 8's `count_up_to`) is the author's.
+- The gap, closed (`Meanings/Gap.lean`; `Episode13.lean`, section
+  `cheap_in_length_dear_in_symbols`; 24 November 2026). The author
+  (declared): "you cannot avoid seeing the electron in the device"; "we
+  are almost done showing that gap MUST ALWAYS BE THERE"; "the gap
+  requires 1/h->0 => n->infty in SYMBOLS, not length"; "can you close the
+  book on this". Claude's line, kept: two claims, one finishable. Not
+  finishable: that the gap is never zero (a description could land
+  exactly; for the eighth turn it is π's irrationality, Lambert's).
+  Finished: that nothing computed from the walls closes it. Receipts:
+  parted at a pair of stages, two reals are not one, with no axiom
+  (`parted_is_not_same`); from only that they are not one, the pair of
+  stages where they part is produced by choice, Markov's principle
+  (`not_same_is_parted`, bills `Classical.choice`); one-or-not for two
+  reals is free with the click handed in (`same_or_not_with_the_click`,
+  no axiom) and is choice itself for any two (`same_or_not_by_choice`).
+  And symbols against length: each turn of the crank at least squares
+  the whole part the walls are written over
+  (`a_turn_at_least_squares_the_whole_part`), so after k turns it is at
+  least 10567204^(2^k) and 2^(23·2^k)
+  (`the_whole_part_grows_as_a_power_of_a_power`,
+  `the_symbols_double_with_every_turn`): at stage n the bracket need only
+  narrow as 1/(n+1) while its walls need at least 23·2^(n+4) binary
+  digits (`cheap_in_length_dear_in_symbols`), all `propext` and
+  `Quot.sound` at most. Bundled: `the_gap_is_closed_only_by_a_choice_handed_in`.
+  Say with it: that no computable procedure decides the sameness of every
+  pair is a statement about computable functions (Turing; Theorem G's
+  third part) and cannot be proved inside Lean, whose logic includes
+  choice and so has a decider; what is checked is that every decider for
+  all pairs bills choice and that showing a gap open is free. That the
+  choice handed in is the knower's is the work's reading, declared.
 - The laws (`Meanings/Laws.lean`; 23 November 2026). Receipts, `propext`,
   `Quot.sound`: every low wall is under every high wall
   (`Bracketed.low_under_high`); `Same` is reflexive, symmetric and

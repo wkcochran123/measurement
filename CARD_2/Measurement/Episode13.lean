@@ -10744,6 +10744,49 @@ theorem the_slip_against_the_half_turn :
 
 end the_borwein_integral
 
+section cheap_in_length_dear_in_symbols
+
+--| CHEAP IN LENGTH, DEAR IN SYMBOLS.  The author's, 24 November 2026: the gap requires 1/h → 0, so n → ∞, in symbols, not
+--| length (declared).  What is checked.  The crank's root is a few lines of description, finite in symbols, and at stage n
+--| its bracket need only be one part in n and one wide: n is a modest length.  But each turn at least squares the whole part
+--| the walls are written in, so after k turns it is at least the first whole part to the power two to the k, and at least two
+--| to the twenty-three times two to the k: the symbols needed double with every turn.  A difference shows in finitely many
+--| symbols; to show the bracket closed would take every stage, and so symbols without end.  And the gap itself, in
+--| Meanings: parted at a stage is not one, with nothing handed in; from not one to the stage where they part is choice.
+theorem a_turn_at_least_squares_the_whole_part (k : Nat) :
+    the_whole_part_at k * the_whole_part_at k ≤ the_whole_part_at (k + 1) := by
+  show _ ≤ the_whole_part_at k * the_whole_part_at k + 90 * (the_part_by_the_root_at k * the_part_by_the_root_at k)
+  exact Nat.le_add_right _ _
+
+theorem the_whole_part_grows_as_a_power_of_a_power (k : Nat) : 10567204 ^ (2 ^ k) ≤ the_whole_part_at k := by
+  induction k with
+  | zero => exact Nat.le_refl _
+  | succ k ih =>
+    rw [Nat.pow_succ 2 k, Nat.pow_mul, Nat.pow_two]
+    exact Nat.le_trans (Nat.mul_le_mul ih ih) (a_turn_at_least_squares_the_whole_part k)
+
+--| THE SYMBOLS DOUBLE WITH EVERY TURN.  At least twenty-three times two to the k binary digits after k turns.
+theorem the_symbols_double_with_every_turn (k : Nat) : 2 ^ (23 * 2 ^ k) ≤ the_whole_part_at k := by
+  rw [Nat.pow_mul]
+  exact Nat.le_trans (Nat.pow_le_pow_left (by decide : 2 ^ 23 ≤ 10567204) _) (the_whole_part_grows_as_a_power_of_a_power k)
+
+--| CHEAP IN LENGTH, DEAR IN SYMBOLS, AT EVERY STAGE.  The crank's real at stage n: its bracket narrows as one part in n
+--| and one, while the whole part it is written over needs at least twenty-three times two to the n and four binary digits.
+theorem cheap_in_length_dear_in_symbols (n : Nat) :
+    (the_root_by_the_crank.high n).over * (the_root_by_the_crank.low n).under * (n + 1)
+        ≤ (the_root_by_the_crank.low n).over * (the_root_by_the_crank.high n).under * (n + 1)
+          + (the_root_by_the_crank.high n).under * (the_root_by_the_crank.low n).under
+      ∧ 2 ^ (23 * 2 ^ (n + 4)) ≤ (the_root_by_the_crank.low n).under :=
+  ⟨the_root_by_the_crank.narrows n, the_symbols_double_with_every_turn (n + 4)⟩
+
+--| THE GAP, SET BESIDE IT.  A difference from a stage is free; the stage from a difference is choice; and of any two reals,
+--| one or not, decided for every pair, is choice.
+theorem the_gap_is_closed_only_by_a_choice_handed_in (x y : Meanings.Bracketed) :
+    ((∃ n m, x.PartedAt y n m) → ¬ x.Same y) ∧ (¬ x.Same y → ∃ n m, x.PartedAt y n m) ∧ (x.Same y ∨ ¬ x.Same y) :=
+  ⟨Meanings.Bracketed.parted_is_not_same, Meanings.Bracketed.not_same_is_parted, Meanings.Bracketed.same_or_not_by_choice x y⟩
+
+end cheap_in_length_dear_in_symbols
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
