@@ -485,7 +485,18 @@ names the number.
   auxiliary, `the_first_area_where_a_statement_holds` (the click handed
   in), and `a_modulus_from_statements` (a modulus for bare statements,
   handed a click by choice, written to show where choice enters). Nothing
-  in the device uses any of the four. `two_accounts_read_as_the_ratios`,
+  in the device uses any of the four. Recounted 24 November 2026 by the same
+  rule (script in the session scratchpad, `collectAxioms` on each theorem
+  constant of a `Measurement` module): 4,223; no axiom, 1,613; `propext`,
+  880; `propext` and `Quot.sound`, 1,719; `Quot.sound` alone, 7;
+  `Classical.choice` in the same four. The Meanings library, counted the
+  same way the same day: 1,036 theorems; no axiom, 171; `propext`, 40;
+  `propext` and `Quot.sound`, 787; `Quot.sound` alone, 20;
+  `Classical.choice` in 18, every one the ratios through core Lean's
+  `Rat` or a demonstration "without the click" (`the_least_without_the_click`,
+  `the_largest_without_the_click`, `the_least_counted_without_the_click`,
+  `a_modulus_without_the_click`). Nothing else in Meanings bills it: not
+  the reals, the circle, the eighth turn, the baker. `two_accounts_read_as_the_ratios`,
   said earlier to bill choice through core Lean's `Rat`, is a definition,
   not a theorem constant, and so is not in this count; the Meanings
   library is not in it either. The one,
@@ -4480,6 +4491,32 @@ names the number.
   Say with it: fixed cost plus a cost a unit is a common shape, so this is
   a modest confirmation; the operational reading was Claude's; the
   particular numbers are not explained. Kernel work is counted.
+- Three paths and five options (the author, 24 November 2026, all
+  declared): "the choice of path of limit is always _provided_"; the
+  three paths to the one root are "delta/epsilon, topological ball, _and_
+  the variational solution of a quadratic functional"; "the knower can say
+  continuous or not. the reader then chooses between topological ball or
+  delta epsilon and the machine infers the variational. the device has
+  all 5 options enumerated"; "the reader does not have a discrete choice
+  as that is just the static transform. that static transform needs two
+  options to match the two topological. so you get static transform and
+  the variational"; and, of the fifth, "meet the fencepost". As Claude
+  read it, and the author let stand: (1) the ball, continuous: the crank
+  as a real (`the_root_by_the_crank`); (2) δ/ε, continuous: the halving as
+  a real; (3) and (4) the static transform in the ball's form and in
+  δ/ε's: the crank on whole-number pairs, the distance squared exactly a
+  turn (`the_crank_distance`, `the_crank_distance_is_the_cranks`), and
+  the halving's dyadic record (`DyadicCut`); (5) the variational: the
+  table's powers, climbing to the maximum of the weighed action, reached
+  at the direction up (`the_least_action_is_reached_in_the_pairs`). The
+  three continuous paths are `Same` (`the_three_models_of_one_root`); the
+  value does not depend on the path, and which root is reached does (the
+  crank from the house reaches only the upper). Every path is handed its
+  start: the bracket, the house, the vector (1, 1); and where continuity
+  would enter, the gap or the click is handed in. That the ball is the
+  crank and δ/ε the halving is Claude's pairing and could be argued the
+  other way; that the fifth is the fencepost (four spans and the post
+  they leave off, Episode 8's `count_up_to`) is the author's.
 - The laws (`Meanings/Laws.lean`; 23 November 2026). Receipts, `propext`,
   `Quot.sound`: every low wall is under every high wall
   (`Bracketed.low_under_high`); `Same` is reflexive, symmetric and
