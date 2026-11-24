@@ -1109,5 +1109,37 @@ number that goes up as the ways of holding or owing, 2^(m−1), and a single coe
 divided by it staying within 10% of one value on each route. Seal:
 `readings/019-the-borwein-receipts/SEALED_PREDICTION_AUTHOR.txt`, sha256 1ffa35f50643a0f1….
 
-**Read:** not yet.
+**Read:** Apple M2, 24 November 2026; raw in `readings/019-the-borwein-receipts/raw/M2/`. Both repeats identical to
+the heartbeat. Source: `a32434c` (seals `a32434c`, `bf45ffd`).
+
+| m | Ways | Kernel | Over the blank | Elaborator |
+|---|---|---|---|---|
+| blank | | 1,467 | | |
+| 1 | 1 | 17,796 | 16,329 | 17,796 |
+| 2 | 2 | 17,792 | 16,325 | 17,792 |
+| 3 | 4 | 17,794 | 16,327 | 17,794 |
+| 4 | 8 | 17,794 | 16,327 | 17,794 |
+| 5 | 16 | 17,793 | 16,326 | |
+| 6 | 32 | 17,794 | 16,327 | |
+| 7 | 64 | 17,792 | 16,325 | |
+| 8 | 128 | 17,813 | 16,346 | |
+
+Against Claude's seal, as sealed. P1 (repeats identical): **confirmed**. P2 (kernel route flat, spread at most 500):
+**confirmed**, a spread of 21. P3 (within 2,000 of the blank): **refuted**, 16,325 to 16,346 over it. P4 (the elaborator
+route grows, and reads above the kernel): **refuted**, it reads the same as the kernel to the heartbeat. P5 (the elaborator
+probes finish): **confirmed**. Against the author's seal, in Claude's reading: A1 and A2 (a single coefficient over the
+ways, within 10%): **refuted**; the reading over the blank divided by the ways falls from 2,041 at m = 4 to 128 at m = 8
+on the kernel route, and from 16,329 to 2,041 on the elaborator route, because the readings do not move.
+
+**The instrument failed, and that voids the run as a test.** That the elaborator route read the kernel's to the heartbeat
+was the sign. In this Lean (v4.27.0-rc1) a theorem's proof is elaborated asynchronously, after the command returns, so the
+meter around the command read the statement and not the proof. Checked after the run, not sealed, once each, with
+asynchronous elaboration turned off (`raw/M2/after_the_run_with_async_off.out`): kernel route 56,142 at m = 1 and 110,895
+at m = 4; elaborator route 77,440 and 249,092. So with the proof on the meter both routes grow, and the elaborator's
+faster. The verdicts above are about elaborating the statement. They do not test what either seal was about: whether the
+kernel's work is counted, or whether one coefficient scales the heartbeats. Claude's P2 and the claim in `AGENTS.md`
+that kernel work is not counted are not supported: the meter did not see the kernel. The checks after the run suggest the
+kernel route does grow, which is the opposite. A test would need a new seal with the meter fixed, and the four readings
+above have now been seen. A seal for m = 5 to 8 would be about readings not yet taken. At m = 8 the statement carries
+a 22-digit numeral where the others carry 0; whether that is the 19 to 21 heartbeats is not tested. One machine.
 

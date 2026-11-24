@@ -4456,7 +4456,18 @@ names the number.
   (name the computation, commit the prediction and its refutation rule,
   then run), with Claude's candidate seal that the heartbeats of the
   Borwein receipts stay flat, near the blank, as the sign patterns double.
-  Sealed as Experiment 019 (`READINGS.md`); not yet run.
+  Sealed as Experiment 019 (`READINGS.md`), with the author's single
+  coefficient sealed beside it in Claude's reading (the number that goes
+  up taken as the ways, 2^(m−1)). Run: the instrument failed. Lean v4.27
+  elaborates a theorem's proof asynchronously, so the meter around the
+  command read only the statement (about 16,330 over the blank, flat in
+  m, the elaborator route equal to the kernel's). The run is void as a
+  test of either seal. Checked after the run, not sealed, with
+  asynchronous elaboration off: kernel route 56,142 at m = 1 and 110,895
+  at m = 4, elaborator 77,440 and 249,092; so the claim that kernel work
+  is not counted is not supported, and these readings suggest the
+  opposite. Do not report P2's "confirmed" as about the kernel. A fixed
+  test needs a new seal; m = 5 to 8 with the meter fixed are unread.
 - The laws (`Meanings/Laws.lean`; 23 November 2026). Receipts, `propext`,
   `Quot.sound`: every low wall is under every high wall
   (`Bracketed.low_under_high`); `Same` is reflexive, symmetric and

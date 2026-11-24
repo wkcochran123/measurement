@@ -1,0 +1,6 @@
+# Not sealed.  Run once each, after the sealed run, to check the meter: the same probes with
+# "set_option Elab.async false" added after "set_option maxHeartbeats 0".  M2, 24 November 2026.
+READ kind=kernel m=1 beats=56142
+READ kind=kernel m=4 beats=110895
+READ kind=elaborator m=1 beats=77440
+READ kind=elaborator m=4 beats=249092
