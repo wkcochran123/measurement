@@ -1090,3 +1090,19 @@ wrapper being free, is refuted as sealed. The step, which the receipts say is a 
 within 12 heartbeats at all five depths: the meter barely sees the depth there, where the reader sees it every time.
 With the cards written alike, the increments are not those of Experiment 016 (87 and 63), whose cards were written
 differently. One machine. Why the increments alternate is not known; no explanation is offered.
+
+## Experiment 019: the Borwein receipts
+
+The author, 24 November 2026, after Episode 13's section `the_borwein_integral`: "i believe you might be able to predict
+the total number of heartbeats in the computation now"; and "you can predict it from the number that go up. you can put
+a lower and upper bound on the number of heartbeats necessary to demonstrate this, you just need to understand how the
+number and heartbeats are related" (declared). Claude gave no number and offered a sealed test instead, which the author
+approved ("Yes, seal it"). For m = 1 to 8 sincs after the first (1 to 128 ways of holding or owing), one fresh process
+elaborates the theorem the_borwein_scale m − the_borwein_sum m = c and reads the heartbeats around the command: by
+`decide +kernel` (the receipts' route), by `decide` (m = 1 to 4), and a blank, two repeats each. Seal:
+`readings/019-the-borwein-receipts/SEALED_PREDICTION.txt`, sha256 c2d2c2ddfb469b98…. Its P2 (the kernel route flat) is sealed as
+offered, with Claude's note that its confidence fell before sealing. A second seal, the author's lower and upper bounds,
+may be added before the run.
+
+**Read:** not yet.
+

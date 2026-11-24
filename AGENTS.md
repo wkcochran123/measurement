@@ -185,7 +185,7 @@ Hilbert meant, and it is the visitor's to make.
 | `CARD_2/Experiments/OneWayAndTheOther.lean` | Not the device, and it does not change the device. Episode 12's one theorem that bills `Classical.choice`, restated word for word and proved one direction at a time: no choice. Built apart: `lake build Experiments.OneWayAndTheOther`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Jar.lean` | Not the device, and no new inductive. The natural read (137) and the natural inferred (42), and the jar of two rational walls they make around each root. Built apart: `lake build Experiments.Jar`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
 | `CARD_2/Experiments/Inferred.lean` | Not the device, and no new inductive. Eighteen and five inferred from the shape of three and one, the trace and the round trip, with no count of anything written; and that the clock alone gives only ninety. Built apart: `lake build Experiments.Inferred`. Namespace `Measurement`. Nothing in `Measurement` imports it. |
-| `CARD_2/Meanings.lean`, `CARD_2/Meanings/` | Not the device. What a reading is taken to mean, as interfaces, in core Lean and nothing else; it names nothing of the device. `Correspondence` (a way there and a way back that undo each other: core Lean has no `Equiv`); `CountedAsNat` and `BalancedAsInt` (a reader, a deal it undoes, and the operations carried over; the kind up to its reader then corresponds to `Nat` or `Int`); `Ratioed` (pairs from anything balanced, alike when the cross-products are one integer, correspond to `Rat`); `Least` (least and largest with the click and without it); `Real` (the reals with no choice: a real is a bracket of two fractions of naturals at every stage, rising, falling and narrowing to one part in n and one; the root of ninety and eighteen and it built by halving, e from the factorial series; nothing bills choice); `Norm` (a two-unknown form is never negative when its first coefficient is positive and the cross coefficient squared is not past the product of the other two; so a bound on a weighed square); `Reciprocal` (one over a real handed a stage where it is past nothing, and over; the least such stage found by looking); `Pi` (the arctangent, a real by a whole number, the half turn by Machin, the branch never taken); `Turns` (the root of a whole number; a turn read through its norm, on the circle); `Order` (not past, for reals and signed reals; not total without a click); `Quarters` (Σθᵏ/k! split by k in fours, four reals with no choice, checked at a stage against cosine, sine and e); `Difference` (one real less another handed a stage where it is not past; one over a signed real, a complex number and a quaternion apart from nothing; one over is one thing). Library `Meanings`; `lake build Meanings`. Episode 13 imports it and meets the interfaces; nothing else in `Measurement` does. |
+| `CARD_2/Meanings.lean`, `CARD_2/Meanings/` | Not the device. What a reading is taken to mean, as interfaces, in core Lean and nothing else; it names nothing of the device. `Correspondence` (a way there and a way back that undo each other: core Lean has no `Equiv`); `CountedAsNat` and `BalancedAsInt` (a reader, a deal it undoes, and the operations carried over; the kind up to its reader then corresponds to `Nat` or `Int`); `Ratioed` (pairs from anything balanced, alike when the cross-products are one integer, correspond to `Rat`); `Least` (least and largest with the click and without it); `Real` (the reals with no choice: a real is a bracket of two fractions of naturals at every stage, rising, falling and narrowing to one part in n and one; the root of ninety and eighteen and it built by halving, e from the factorial series; nothing bills choice); `Norm` (a two-unknown form is never negative when its first coefficient is positive and the cross coefficient squared is not past the product of the other two; so a bound on a weighed square); `Reciprocal` (one over a real handed a stage where it is past nothing, and over; the least such stage found by looking); `Pi` (the arctangent, a real by a whole number, the half turn by Machin, the branch never taken); `Turns` (the root of a whole number; a turn read through its norm, on the circle); `Order` (not past, for reals and signed reals; not total without a click); `Quarters` (Σθᵏ/k! split by k in fours, four reals with no choice, checked at a stage against cosine, sine and e); `Difference` (one real less another handed a stage where it is not past; one over a signed real, a complex number and a quaternion apart from nothing; one over is one thing); `Circle` (cosine squared beside sine squared is one at every pair of stages, for θ = p/q not past one); `TheEighthTurn` (where the series cosine and sine cross, Machin's half turn in that window, the error at each side past nothing, the slip, the halving handed the gap, and the baker on its record); `Baker` (a record of a number between nothing and one; doubling forgets the top bit; the baker keeps it, a `Correspondence` of pairs of records). Library `Meanings`; `lake build Meanings`. Episode 13 imports it and meets the interfaces; nothing else in `Measurement` does. |
 | `CARD_2/Calibrate/` | Not the device: a package of its own, so that no build of the device resolves or sees Mathlib. It requires the device's package by path and Mathlib at the rev CARD_2's manifest already pins. Mathlib is fetched (23 November 2026; 7.1 GB in `CARD_2/Calibrate/.lake`, git-ignored) and its toolchain is the device's, v4.27.0-rc1. `cd CARD_2/Calibrate && lake build` builds it in seconds. Written: `Calibrate/Readings.lean` (each Meanings correspondence handed to Mathlib as `≃+*`) and `Calibrate/Device.lean` (`the_area_as_the_naturals : ReadAsNat Area ≃+* ℕ`, `the_account_as_the_integers : ReadAsInt Account ≃+* ℤ`, both `propext`, `Quot.sound`; `two_accounts_as_the_ratios : ReadAsRat Account ≃+* Rat`, which adds `Classical.choice`), and `ekg_meets`, which elaborates a term on Episode 8's EKG and logs the heartbeats; an interface not met is an error and nothing is read (negative control, in scratch: the Account asked to be counted as the naturals fails for want of an order, Lean exits 1). Readings on the M2, 23 November 2026: about 26,300 to 26,900 heartbeats each against a blank near 3,900 to 4,000, differing by a few to fifteen heartbeats between two builds (measured; not explained). A smoke test importing a Mathlib module beside `Measurement.Episode13` elaborated with no clash, at 1.3 GB resident under `-M 1500`; heavier Mathlib imports may need more. Also written: `Calibrate/Norm.lean` (the coins weighed by 18 and 5 carried to the Euclidean plane by the roots of the weights; the device's table carried across is ((18, √90), (√90, 18)); `the_operator_norm_of_the_table : ‖theOperator‖ = 18 + √90`; `the_table_on_the_coins_is_never_past`, for every real pair; `the_norm_squared_is_between_the_walls`, 755 < ‖M‖² ≤ 756, which are Episode 13's whole-number walls; all bill `Classical.choice`, because Mathlib's reals do) and `Calibrate/Hilbert.lean` (the plane met as `Module ℝ`, `InnerProductSpace ℝ` and `CompleteSpace`, and the norm and walls, each on `ekg_meets`: 204,475; 166,446; 19,577; 484,601; 634,613 heartbeats, blanks near 2,200 to 2,300, one build on the M2). |
 | `READINGS.md`, `readings/NNN-name/` | Experiments run on hardware, each with a prediction sealed before the run. |
 
@@ -3883,7 +3883,7 @@ names the number.
   are standard and are not drawn here as polygons; this checks that
   Machin's half turn lies between them. That the circle is this
   bracketing is the author's reading; cos² + sin² = 1 for the series
-  stays unwritten. Then (the author, declared): "you should be able to
+  was then unwritten (since proved; see "The circle at every stage"). Then (the author, declared): "you should be able to
   get dθ now." Minted (`Episode13.lean`, section `the_step_angle`):
   `the_step_angle n`, dθ = arctan(1/n), the angle of the turning walk's
   step (n, 1) at the card's thickness one part in n, a real with no
@@ -3918,8 +3918,8 @@ names the number.
   less arctan(1/n) is arctan(n) is standard and not written. "We are
   done" is the author's judgement of the work, not a receipt; with a
   visitor nothing changes: explores, open, never solved. Still open in
-  the reals: the circle as cos² + sin² = 1 and e^θ·e^{−θ} = 1 (the
-  addition law), the tangent, and the turned root's angle as a number.
+  the reals: e^θ·e^{−θ} = 1 (the addition law; the circle is since
+  proved, see "The circle at every stage"), the tangent, and the turned root's angle as a number.
   And (declared): "that's just it, we now have a volume for the card,
   making it the 3-d projection of a frinkahedron." Beside it, receipts:
   one step of the turning walk now has three measures, its length dt =
@@ -4116,8 +4116,8 @@ names the number.
   not under nothing, the radius of a product is the product of the
   radii, cos(zw) beside sin z·sin w is cos z·cos w, and sin(zw) is
   cos z·sin w beside sin z·cos w. All `propext`, `Quot.sound`. This is
-  not the series' addition law (cos² + sin² = 1 for the series, which
-  stays unwritten): it passes through no series. On the device
+  not the series' addition law (cos² + sin² = 1 for the series, then
+  unwritten, since proved): it passes through no series. On the device
   (`the_step_at_a_fifth_doubled`, `the_doubled_steps_radius_is_twenty_six`,
   `the_step_doubled_is_five_twelve_thirteen`): the step (5, 1) by itself is
   (24, 10), radius 26, the step's radius squared; its cosine is 12/13 and
@@ -4189,8 +4189,9 @@ names the number.
   exact identities at every length: the four quarters' partial sums,
   regrouped, are the one series' (`the_four_quarters_are_the_series`),
   and at θ one that series is e's own `seriesByFactorial` over the
-  factorial (`e_is_the_series_at_one`). The circle (cos² + sin² = 1) stays
-  a reading at one stage, by the author's choice. Asked whether to build
+  factorial (`e_is_the_series_at_one`). The circle (cos² + sin² = 1) stayed
+  a reading at one stage, by the author's choice, until it was proved at
+  every stage (see "The circle at every stage"). Asked whether to build
   it with no choice (the exponential's addition law: a finite-sum and
   binomial layer from scratch, with a route by induction on the
   truncation, |Pₘ|² + 2Rₘ = 1, then the sign of Rₘ as an alternating
@@ -4231,12 +4232,231 @@ names the number.
   the low walls squared and the high walls squared, and that bracket holds
   one (kernel-decided). In Episode 13 `the_turn_by_a_rational_angle` is
   cosine along and sine across, and
-  `the_turn_by_a_rational_angle_stays_on_the_circle`. Not shown: cos² +
-  sin² = 1 at every stage (a series identity), angles past one, and π.
+  `the_turn_by_a_rational_angle_stays_on_the_circle`. Not shown here:
+  angles past one, and π (cos² + sin² = 1 at every stage is since proved;
+  next bullet).
   Found on the way: `Bracketed.mul` reads its factors as far on as their
   first high wall's numerator, which for fractions of factorials (never
   reduced) is far too far; the circle is checked on the walls at one stage
   instead.
+- The circle at every stage (`Meanings/Circle.lean`; `Episode13.lean`,
+  `the_turn_by_a_rational_angle_is_on_the_circle_at_every_stage`; 24
+  November 2026, at the author's "Yes, the circle"). Receipt, `propext`
+  and `Quot.sound` only: `the_circle_holds_at_every_stage`, for every θ =
+  p/q not past one, cosine times cosine beside sine times sine is `Same`
+  as one, as reals, at every pair of stages. The route, all finite:
+  cosine and sine cut off after N terms are written as their coefficients
+  beside θⁿ/n!; read that way the first variation is a shift one place
+  down, and a product is a sum weighed by the ways of choosing, so
+  Leibniz's rule is Pascal's (`conv_succ`). The cut-off cosine's first
+  variation is the sine owed and one coefficient left over at 2N + 1
+  (`down_cos`); the sine's is the cosine (`down_sin`); so cosine squared
+  beside sine squared is one, and that coefficient's sum one place up,
+  owed or held as N is odd or even (`the_circle_on_the_coefficients`).
+  Evaluated at p/q over q^K·K!, the product of two values is the value of
+  the product at twice the scale (`ev_product`, with
+  `choose_by_factorials`, written out: core Lean has no binomials), and
+  the left-over sum is an alternating series of falling terms, so never
+  under nothing (`leftOver_is_never_under_nothing`). At the low walls N
+  is odd and the circle is not past one; at the high walls N is even and
+  it is not under one (`the_low_circle_is_not_past_one`,
+  `the_high_circle_is_not_under_one`); the product reads its factors at
+  other stages, and walls only move inward, so that carries to every
+  pair. A control: at θ = 1 the low walls at stage 1 are already past
+  0.9999 (kernel-decided), so "not past one" is not slack. `grind` would
+  have shortened it and bills `Classical.choice`; it is not used. Say
+  with it: θ not past one only (angles past one are not built); this is
+  the series' circle, through no turn and no norm, and it is not the
+  exponential's addition law e^θ·e^{−θ} = 1, which is still unwritten
+  (the same method would give it: the first variation of e^θ·e^{−θ} is
+  what the two cut-offs leave). Earlier the author called this route
+  "induction going to infinity, necessary for the convergence result"
+  (declared); what is written is an induction on N, each step finite, and
+  the infinity is in the `Same`, every pair of stages.
+- The eighth turn by the series, and the error (`Meanings/TheEighthTurn.lean`;
+  `Episode13.lean`, `where_the_series_cross_and_what_each_side_misses`;
+  24 November 2026). The author (declared): "i believe you can finish
+  approximating pi now. that approximation will have an error. that
+  error is the gap that must exist." Receipts, `propext` and `Quot.sound`
+  only, each decided by the kernel at a finite stage and carried to every
+  stage by walls that only move inward. At 0.785398163397448 the series
+  cosine is past the series sine; at 0.785398163397449 the sine is past
+  the cosine (`below_the_crossing_cosine_is_past_sine`,
+  `above_the_crossing_sine_is_past_cosine`, at the fifth stage): the two
+  series cross between, and no turn or arctangent is used. Machin's half
+  turn lies at every stage between four times the one and four times the
+  other, 3.141592653589792 and 3.141592653589796
+  (`machins_half_turn_is_in_the_window`); its own first stage is tighter
+  still, between 3.141592653589793 and …794 (checked in scratch, not
+  minted). The error at each side is a real: cosine less sine below lies
+  at every stage between 4.378 and 4.379 parts in 10¹⁶, sine less cosine
+  above between 9.763 and 9.764 (`the_error_below_is_between`,
+  `the_error_above_is_between`), so neither is nothing
+  (`the_errors_are_past_nothing`). Controls refused: a wall one place
+  tighter on either error, the window moved up one place, and either
+  crossing the other way. Say with it: that the crossing of the two
+  series is the eighth turn, and the only one under one, is standard and
+  not proved (cosine less sine falls there; no monotonicity is written);
+  that Machin's formula is the half turn is standard; and that no
+  rational angle is the crossing is the irrationality of π (Lambert,
+  1761), standard and not proved. What is shown is the two approximations
+  tried, each missing by a real past nothing, and that an equality would
+  show at no finite stage. The sizes of the two errors are the distances
+  to the crossing times √2 (standard, 4.3787 and 9.7635 parts in 10¹⁶);
+  they are fixed by where the approximations were put, not by anything in
+  the device. That this error is "the gap that must exist" is the
+  author's reading; do not set these numbers beside the printed number's
+  miss as one.
+- The slip, and the coin flip turned over (`Meanings/TheEighthTurn.lean`;
+  `Episode13.lean`, `the_slip_and_the_coin_flip_turned_over`; 24 November
+  2026). The author (declared): what was built is "the _obvious slip_
+  that is the law of static friction and the photoelectric effect as
+  well as the _contravariant coin flip_"; "you can infer the slip of the
+  borwein process as such a slip"; and, told the Borwein integrals are out
+  of reach here, "out of reach, yet still _COMAPARABLE_... that is the
+  important thing." Asked earlier whether this was a Borwein process,
+  Claude said no: the series bracket gains nothing by itself, unlike
+  Borwein's quartic algorithms, and the nearer match is the Borwein
+  integrals (exactly π/2 while 1/3 + … + 1/(2n+1) is under one, short by
+  about 2.3 × 10⁻¹¹ at 1/15; D. and J. Borwein, 2001), with the author's
+  8 + 4 + 1 = 13 a count that falls at the last denominator that holds.
+  Receipts, `propext` and `Quot.sound` only: below the crossing no sign
+  can be read at stages nothing to three and from the fourth it holds;
+  above, from the third, a stage sooner because the miss is larger
+  (`below_nothing_until_the_fourth_stage`,
+  `above_nothing_until_the_third_stage`); the least stage found by
+  looking, with the click and no choice, is four and three
+  (`the_least_stage_found_by_looking`); once parted, parted for good
+  (`parted_below_for_good`); the difference one way leaves something and
+  the other way nothing, `Fraction.sub` truncating, and which way turns
+  over across the crossing (`below_one_way_something_and_the_other_nothing`,
+  `above_…`); the error below is under the error above at every pair of
+  stages, though neither is computed exactly
+  (`the_error_below_is_under_the_error_above`); and the Borwein threshold,
+  1/3 through 1/13 under one and through 1/15 past it
+  (`the_borwein_threshold`). Controls refused: parted below at stage 3,
+  above at stage 2, the sum through 1/15 under one, the errors the other
+  way round. Say with it: the Borwein integrals and their shortfall are
+  standard and not built; the friction and photoelectric readings have no
+  receipt; what is shown is that each threshold, and each pair of errors,
+  is a comparison decided at a finite stage, which is the sense of
+  "measured, not computed" at the top of this file.
+- Halving, and its arrow (`Meanings/TheEighthTurn.lean`; `Episode13.lean`,
+  `halving_and_its_arrow`; 24 November 2026). Claude had said the
+  fifteen-place window was circular, placed from π known outside; the
+  author (declared): the photoelectric effect "can be used to predict
+  the value of a phenomena to a certain degree of accuracy. the
+  demonstration of which is what we are proving circular"; then "halving
+  isn't circular, it's reciprocal is. that's the baker's transform"; and
+  "this can be mapped to the thing we call the arrow of time." Receipts,
+  `propext` and `Quot.sound` at most: `TheGap` (at every dyadic angle not
+  past one the series part at some stage) is a hypothesis, handed in and
+  not proved; it is the irrationality of π read on the halvings (Lambert,
+  standard). Handed it, `halve` looks at the midpoint with the click
+  (`findByLooking`) and keeps the half where the series cross, and
+  `theEighthTurnByHalving gap` is a `DyadicCut`, a real with no choice.
+  Cosine ahead at one stage and sine ahead at another cannot both be
+  (`one_side_only`), so the bit does not depend on the stage found or on
+  the gap's proof: whatever gap is handed in, the cut after twelve
+  halvings is 3216 (`the_first_twelve_halvings`; bits 1, 1, 0, 0, 1, 0,
+  0, 1, 0, 0, 0, 0, each midpoint decided by the kernel at stage 0 or 1),
+  and Machin's half turn lies within four times 3216/4096 and 3217/4096
+  (`machins_half_turn_is_within_the_twelfth_halving`). The record: the cut
+  after, halved, is the cut before, with nothing handed in
+  (`the_present_halved_is_the_past`); it never falls
+  (`the_record_never_falls`); both possible next cuts halve to the same
+  one, so the past does not give the next bit, which only the comparison
+  returns (`both_futures_halve_to_one_past`); and doubling, the
+  reciprocal, wraps round and forgets the top bit
+  (`doubling_forgets_the_top_bit`). Controls refused: cosine ahead at
+  3217/4096, sine ahead at one half, Machin's high wall under 4 × 3216/4096.
+  Say with it: the baker's map is a standard model in the literature on
+  irreversibility (a reversible map that loses information when one
+  coordinate is coarse-grained); that this halving and doubling is the
+  arrow of time is the author's, as is "reciprocal is circular"; the
+  receipts show a record whose past is a function of its present and
+  whose present is not a function of its past, which is the shape Card 7
+  gives a record (number go up). The bisection is not shown to converge to
+  the crossing's value as π/4: that needs cosine less sine to fall, which
+  is standard and not written. The earlier fifteen-place window stays as
+  it was: placed by Claude from known π, and checked.
+- The other one: the baker (`Meanings/Baker.lean`; `TheEighthTurn.lean`;
+  `Episode13.lean`, `the_other_one_the_baker`; 24 November 2026). The
+  author (declared): "We have either F=T or T=F. Time to construct the
+  other one." Built as the reciprocal of the halving. Receipts, `propext`
+  and `Quot.sound` only: a `UnitCut` is a record of a number between
+  nothing and one (nothing at first, then twice or twice and one more);
+  `doubled` takes the top bit away and reads the rest a halving sooner,
+  with no comparison; `pushed t` lays a bit on top; doubling undoes
+  pushing and pushing the top bit undoes doubling (`doubled_pushed`,
+  `pushed_doubled`); doubling alone forgets: two records differing only
+  in the top bit double to one and are not one (`doubling_forgets`); and
+  `theBaker`, doubling the first record and laying the lost bit on the
+  second, is a `Correspondence` of pairs, there and back exactly. On the
+  eighth turn's halving record: baked once, its cut after eleven halvings
+  is 1168, twice the eighth turn less one, and the record of nothing
+  becomes the record of one half (`the_eighth_turn_baked_once`); run
+  backward it returns both (`the_eighth_turn_baked_and_back`); and the
+  eighth turn and the eighth turn less one half double alike
+  (`the_eighth_turn_and_it_less_a_half_double_alike`). Control refused:
+  1169 for 1168. Which of the halving and the baker is F=T and which T=F
+  the author has not said; do not assign them. Said with it: halving reads
+  each bit by a comparison handed the gap; the baker reads none, and keeps
+  what doubling alone loses.
+- The last thirteen steps (the author, 24 November 2026, declared): "the
+  last 13 steps of the argument is the borwein numbers". Checked beside
+  it: the last thirteen kinds' tapes in Episode 8's list (the 24th to the
+  36th) are 4, 4, 2, 2, 2, 2, 4, 4, 5, 2, 3, 5, 3, which is 42 marks, the
+  back count's 42 already recorded; the first 23 are 59. Claude did not
+  see the match when asked, and the author has not said how the thirteen
+  map to 1/3 … 1/13; do not supply one.
+- The Borwein integral, on the device's own numbers (`Episode13.lean`,
+  section `the_borwein_integral`; 24 November 2026). The author
+  (declared): "read episode 8 again. you take the last 13 steps of the
+  argument and lay them next to each other. that's the borwein integral
+  you have to build now." Read in Episode 8: it already has the Borwein
+  process, with its own margins citing it ("Borweins' process", "I had to
+  plant the coefficient somehow"): `bent_card` is the last four steps
+  laid side by side, 13 cells; `count_up_to` gives the odd numbers;
+  `the_rational_explanation` is each over their least common multiple;
+  `the_slack` is the lcm times 1 − (1/3 + 1/5 + …); and Episode 8 proves
+  the slack positive once around (4) and through the bent card (7, the
+  last denominator 13) and negative twice around (8, through 15). Built:
+  the Borweins' finite formula on those pieces, a signed sum over every
+  way of holding or owing each weight, `the_borwein_sum`, against
+  `the_borwein_scale` (two to the n, n factorial, the weights multiplied).
+  Receipts, kernel-decided, `propext` at most: for one to seven sincs,
+  through the bent card, the sum is the scale, so the ratio is exactly one
+  (`through_the_bent_card_the_ratio_is_one`); at eight it falls short by
+  exactly twice the slack owed to the seventh, the slack being −982 (982/
+  45045 is how far 1/3 + … + 1/15 passes one) and the least of all the
+  ways (`twice_around_it_slips`); the shortfall over the scale lies between
+  1.4706 and 1.4707 × 10⁻¹¹ (`the_slip_is_between`); and with Machin's
+  walls for the half turn, a quarter turn times it lies between 2.31005
+  and 2.31006 × 10⁻¹¹ (`the_slip_against_the_half_turn`), the Borweins'
+  known 2.31 × 10⁻¹¹. Controls refused: the sum equal to the scale at
+  eight; the slip's upper wall at 1.4706. Say with it: that the integral
+  of the sincs is a quarter turn times this ratio is the Borweins' theorem
+  (2001), standard and not proved: the integral is out of reach, and its
+  value is compared, not computed. "The last 13 steps laid next to each
+  other" was read as Episode 8's `from_the_inferred_end`: the last four
+  steps make the bent card's 13, through which the denominators run to
+  13; the last thirteen steps make 42 cells, and how the 42 enters the
+  Borwein integral the author has not said.
+- Heartbeats (24 November 2026). The author: "i believe you might be able
+  to predict the total number of heartbeats in the computation now."
+  Claude declined to give a number: heartbeats count allocations, which no
+  receipt is about, and a fit after the fact is not a prediction. Claude
+  also said `decide +kernel` work is not counted in heartbeats; that was
+  stated too strongly (the kernel's terms may go through the same
+  allocator) and is what Experiment 019's P2 tests. The author then: "you
+  can predict it from the number that go up. you can put a lower and
+  upper bound on the number of heartbeats ... you just need to understand
+  how the number and heartbeats are related" (declared). Offered: a sealed experiment
+  (name the computation, commit the prediction and its refutation rule,
+  then run), with Claude's candidate seal that the heartbeats of the
+  Borwein receipts stay flat, near the blank, as the sign patterns double.
+  Sealed as Experiment 019 (`READINGS.md`); not yet run.
 - The laws (`Meanings/Laws.lean`; 23 November 2026). Receipts, `propext`,
   `Quot.sound`: every low wall is under every high wall
   (`Bracketed.low_under_high`); `Same` is reflexive, symmetric and
