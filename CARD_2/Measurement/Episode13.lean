@@ -9586,7 +9586,7 @@ theorem the_cranks_low_wall_is_under_any_square_past_ninety (V : Meanings.Fracti
         simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
     _ ≤ a * a * (90 * (V.under * V.under)) := m1
     _ ≤ a * a * (V.over * V.over) := m2
-    _ = V.over * a * (V.over * a) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+    _ = V.over * a * (V.over * a) := by ac_rfl
 
 theorem the_cranks_high_wall_is_past_any_square_under_ninety (W : Meanings.Fraction)
     (hW : W.over * W.over ≤ 90 * (W.under * W.under)) (j : Nat) : W.le (the_root_by_the_crank.high j) := by
@@ -9597,11 +9597,11 @@ theorem the_cranks_high_wall_is_past_any_square_under_ninety (W : Meanings.Fract
   generalize the_whole_part_at (j + 4) = a at *
   have m1 := Nat.mul_le_mul_right (D * D) hW
   have m2 := Nat.mul_le_mul_left (W.under * W.under) s
-  calc W.over * D * (W.over * D) = W.over * W.over * (D * D) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+  calc W.over * D * (W.over * D) = W.over * W.over * (D * D) := by ac_rfl
     _ ≤ 90 * (W.under * W.under) * (D * D) := m1
     _ = W.under * W.under * (90 * (D * D)) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
     _ ≤ W.under * W.under * (a * a) := m2
-    _ = a * W.under * (a * W.under) := by simp only [Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc]
+    _ = a * W.under * (a * W.under) := by ac_rfl
 
 --| The digits, and the digits and one in the last place, over the scale.
 def the_printed_digits : Meanings.Fraction := ⟨137011290548979457087737300, 10 ^ 24, by decide⟩
@@ -10326,6 +10326,247 @@ theorem machins_eighth_turn_by_the_signed_law :
 theorem machins_signed_cosine_is_its_sine : machins_signed_cosine.Same machins_signed_sine :=
   Meanings.SignedReal.mul_same_left (Meanings.SignedReal.ofPair_same (by decide)) _
 end the_turn_through_its_norm
+
+section three_models_of_one_root
+open readers_experience
+
+--| THREE MODELS OF ONE ROOT.  The author's: see the multigrid Jacobian-free Newton-Krylov solver as three different models
+--| (declared).  The device's root of the table, eighteen and the root of ninety, is now reached three ways, each a real
+--| with no choice: by halving (`Meanings.theNorm`, a level gained each stage, a bit at a time: the multigrid); by the crank
+--| (`the_root_by_the_crank`, the distance squared at every turn: Newton); and by the table itself, turned on a vector again
+--| and again (the power walk, here: the Krylov space of the table, the walls closing by about the ratio of the two roots,
+--| 0.31, a step).  The power walk's walls are the table's two rows read against the vector, and the gap between them is
+--| thirteen times 234 to the step, while the vector grows at least as 414 to the step.  The three are one real, at every pair
+--| of stages.  What tells them apart is the rate, not the value.
+
+--| THE POWER WALK: the table ((18, 5), (18, 18)) on (1, 1), again and again.
+def the_power_walk : Nat → Nat × Nat
+  | 0 => (1, 1)
+  | k + 1 => let p := the_power_walk k; (18 * p.1 + 5 * p.2, 18 * p.1 + 18 * p.2)
+
+theorem the_power_walk_reads_the_table :
+    the_power_walk 1 = (the_click_table.1.1 + the_click_table.1.2, the_click_table.2.1 + the_click_table.2.2) := rfl
+
+--| Two rows on a vector, multiplied, with letters for the coefficients.
+theorem two_rows_multiplied (a b c d x y : Nat) :
+    (a * x + b * y) * (c * x + d * y) = (a * c) * (x * x) + (a * d + b * c) * (x * y) + (b * d) * (y * y) := by
+  simp only [Nat.add_mul, Nat.mul_add]
+  simp only [Nat.mul_comm, Nat.mul_left_comm]
+  omega
+
+theorem the_power_identity (x y : Nat) :
+    18 * ((18 * x + 5 * y) * (18 * x + 5 * y)) + 234 * (5 * (y * y))
+      = 5 * ((18 * x + 18 * y) * (18 * x + 18 * y)) + 234 * (18 * (x * x)) := by
+  rw [two_rows_multiplied, two_rows_multiplied]; omega
+
+--| The walk stays on the near side of the root's direction: five of the across squared not past eighteen of the along squared.
+theorem the_power_walk_stays (k : Nat) :
+    0 < (the_power_walk k).1 ∧ 0 < (the_power_walk k).2
+      ∧ 5 * ((the_power_walk k).2 * (the_power_walk k).2) ≤ 18 * ((the_power_walk k).1 * (the_power_walk k).1) := by
+  induction k with
+  | zero => exact ⟨by decide, by decide, by decide⟩
+  | succ k ih =>
+    obtain ⟨hx, hy, h⟩ := ih
+    show 0 < 18 * (the_power_walk k).1 + 5 * (the_power_walk k).2 ∧ 0 < 18 * (the_power_walk k).1 + 18 * (the_power_walk k).2
+      ∧ 5 * ((18 * (the_power_walk k).1 + 18 * (the_power_walk k).2) * (18 * (the_power_walk k).1 + 18 * (the_power_walk k).2))
+        ≤ 18 * ((18 * (the_power_walk k).1 + 5 * (the_power_walk k).2) * (18 * (the_power_walk k).1 + 5 * (the_power_walk k).2))
+    have e := the_power_identity (the_power_walk k).1 (the_power_walk k).2
+    refine ⟨by omega, by omega, ?_⟩
+    have m := Nat.mul_le_mul_left 234 h
+    omega
+
+def the_power_gap (k : Nat) : Nat :=
+  18 * ((the_power_walk k).1 * (the_power_walk k).1) - 5 * ((the_power_walk k).2 * (the_power_walk k).2)
+
+theorem the_power_gap_grows (k : Nat) : the_power_gap (k + 1) = 234 * the_power_gap k := by
+  have h := (the_power_walk_stays k).2.2
+  have e := the_power_identity (the_power_walk k).1 (the_power_walk k).2
+  unfold the_power_gap
+  show 18 * ((18 * (the_power_walk k).1 + 5 * (the_power_walk k).2) * (18 * (the_power_walk k).1 + 5 * (the_power_walk k).2))
+      - 5 * ((18 * (the_power_walk k).1 + 18 * (the_power_walk k).2) * (18 * (the_power_walk k).1 + 18 * (the_power_walk k).2))
+    = 234 * (18 * ((the_power_walk k).1 * (the_power_walk k).1) - 5 * ((the_power_walk k).2 * (the_power_walk k).2))
+  omega
+
+theorem the_power_gap_is (k : Nat) : the_power_gap k = 13 * 234 ^ k := by
+  induction k with
+  | zero => rfl
+  | succ k ih => rw [the_power_gap_grows, ih, Nat.pow_succ]; omega
+
+theorem the_power_walk_grows (k : Nat) :
+    414 * ((the_power_walk k).1 * (the_power_walk k).2) ≤ (the_power_walk (k + 1)).1 * (the_power_walk (k + 1)).2 := by
+  show 414 * ((the_power_walk k).1 * (the_power_walk k).2)
+    ≤ (18 * (the_power_walk k).1 + 5 * (the_power_walk k).2) * (18 * (the_power_walk k).1 + 18 * (the_power_walk k).2)
+  rw [two_rows_multiplied]; omega
+
+theorem the_power_walk_is_at_least (k : Nat) : 414 ^ k ≤ (the_power_walk k).1 * (the_power_walk k).2 := by
+  induction k with
+  | zero => decide
+  | succ k ih =>
+    rw [Nat.pow_succ, Nat.mul_comm]
+    exact Nat.le_trans (Nat.mul_le_mul_left 414 ih) (the_power_walk_grows k)
+
+theorem the_gap_falls_behind (n : Nat) : 13 * 234 ^ (5 + 2 * n) * (n + 1) ≤ 414 ^ (5 + 2 * n) := by
+  induction n with
+  | zero => exact Nat.le_of_ble_eq_true rfl
+  | succ n ih =>
+    rw [show 5 + 2 * (n + 1) = (5 + 2 * n) + 2 by omega, Nat.pow_add 234 (5 + 2 * n) 2, Nat.pow_add 414 (5 + 2 * n) 2,
+      show (234 : Nat) ^ 2 = 54756 from rfl, show (414 : Nat) ^ 2 = 171396 from rfl]
+    generalize 234 ^ (5 + 2 * n) = P at ih ⊢
+    generalize 414 ^ (5 + 2 * n) = Q at ih ⊢
+    have k : 54756 * (n + 1 + 1) ≤ 171396 * (n + 1) := by omega
+    calc 13 * (P * 54756) * (n + 1 + 1) = (13 * P) * (54756 * (n + 1 + 1)) := by ac_rfl
+      _ ≤ (13 * P) * (171396 * (n + 1)) := Nat.mul_le_mul_left _ k
+      _ = 13 * P * (n + 1) * 171396 := by ac_rfl
+      _ ≤ Q * 171396 := Nat.mul_le_mul_right _ ih
+
+--| One step of the walk turns the across over the along up, never down.
+theorem the_power_walls_turn_one_step (k : Nat) :
+    (the_power_walk k).2 * (the_power_walk (k + 1)).1 ≤ (the_power_walk (k + 1)).2 * (the_power_walk k).1 := by
+  have h := (the_power_walk_stays k).2.2
+  show (the_power_walk k).2 * (18 * (the_power_walk k).1 + 5 * (the_power_walk k).2)
+    ≤ (18 * (the_power_walk k).1 + 18 * (the_power_walk k).2) * (the_power_walk k).1
+  generalize (the_power_walk k).1 = x at *
+  generalize (the_power_walk k).2 = y at *
+  have e1 : y * (18 * x + 5 * y) = 18 * (x * y) + 5 * (y * y) := by
+    rw [Nat.mul_add, Nat.mul_left_comm, Nat.mul_left_comm y 5, Nat.mul_comm y x]
+  have e2 : (18 * x + 18 * y) * x = 18 * (x * x) + 18 * (x * y) := by
+    rw [Nat.add_mul, Nat.mul_assoc, Nat.mul_assoc, Nat.mul_comm y x]
+  rw [e1, e2]; omega
+
+theorem the_low_step (x y x' y' : Nat) (t : y * x' ≤ y' * x) : (18 * x + 5 * y) * x' ≤ (18 * x' + 5 * y') * x := by
+  have e1 : (18 * x + 5 * y) * x' = 18 * (x * x') + 5 * (y * x') := by rw [Nat.add_mul, Nat.mul_assoc, Nat.mul_assoc]
+  have e2 : (18 * x' + 5 * y') * x = 18 * (x * x') + 5 * (y' * x) := by
+    rw [Nat.add_mul, Nat.mul_assoc, Nat.mul_assoc, Nat.mul_comm x' x]
+  rw [e1, e2]; omega
+
+theorem the_high_step (x y x' y' : Nat) (t : y * x' ≤ y' * x) : (18 * x' + 18 * y') * y ≤ (18 * x + 18 * y) * y' := by
+  have e1 : (18 * x' + 18 * y') * y = 18 * (y * x') + 18 * (y * y') := by
+    rw [Nat.add_mul, Nat.mul_assoc, Nat.mul_assoc, Nat.mul_comm x' y, Nat.mul_comm y' y]
+  have e2 : (18 * x + 18 * y) * y' = 18 * (y' * x) + 18 * (y * y') := by
+    rw [Nat.add_mul, Nat.mul_assoc, Nat.mul_assoc, Nat.mul_comm x y']
+  rw [e1, e2]; omega
+
+--| The low wall, eighteen and five of the across over the along, rises; the high, eighteen and eighteen of the along over the
+--| across, falls; both over any number of steps.
+theorem the_power_low_rises (k : Nat) : ∀ d, ((⟨18 * (the_power_walk k).1 + 5 * (the_power_walk k).2, (the_power_walk k).1,
+      (the_power_walk_stays k).1⟩ : Meanings.Fraction).le ⟨18 * (the_power_walk (k + d)).1 + 5 * (the_power_walk (k + d)).2,
+      (the_power_walk (k + d)).1, (the_power_walk_stays _).1⟩)
+  | 0 => Meanings.Fraction.le_refl _
+  | d + 1 => Meanings.Fraction.le_trans (the_power_low_rises k d)
+      (the_low_step _ _ _ _ (the_power_walls_turn_one_step (k + d)))
+
+theorem the_power_high_falls (k : Nat) : ∀ d, ((⟨18 * (the_power_walk (k + d)).1 + 18 * (the_power_walk (k + d)).2,
+      (the_power_walk (k + d)).2, (the_power_walk_stays _).2.1⟩ : Meanings.Fraction).le
+      ⟨18 * (the_power_walk k).1 + 18 * (the_power_walk k).2, (the_power_walk k).2, (the_power_walk_stays k).2.1⟩)
+  | 0 => Meanings.Fraction.le_refl _
+  | d + 1 => Meanings.Fraction.le_trans
+      (q := ⟨18 * (the_power_walk (k + d)).1 + 18 * (the_power_walk (k + d)).2, (the_power_walk (k + d)).2,
+        (the_power_walk_stays _).2.1⟩)
+      (the_high_step _ _ _ _ (the_power_walls_turn_one_step (k + d))) (the_power_high_falls k d)
+
+theorem the_power_walls_are_ordered (x y : Nat) (h : 5 * (y * y) ≤ 18 * (x * x)) :
+    (18 * x + 5 * y) * y ≤ (18 * x + 18 * y) * x := by
+  have e1 : (18 * x + 5 * y) * y = 18 * (x * y) + 5 * (y * y) := by rw [Nat.add_mul, Nat.mul_assoc, Nat.mul_assoc]
+  have e2 : (18 * x + 18 * y) * x = 18 * (x * x) + 18 * (x * y) := by
+    rw [Nat.add_mul, Nat.mul_assoc, Nat.mul_assoc, Nat.mul_comm y x]
+  rw [e1, e2]; omega
+
+theorem the_power_walls_narrow (x y G N : Nat) (split : 18 * (x * x) = 5 * (y * y) + G) (gn : G * N ≤ y * x) :
+    (18 * x + 18 * y) * x * N ≤ (18 * x + 5 * y) * y * N + y * x := by
+  have e1 : (18 * x + 18 * y) * x * N = 18 * (x * x) * N + 18 * (x * y) * N := by
+    rw [Nat.add_mul, Nat.add_mul, Nat.mul_assoc 18 x x, Nat.mul_assoc 18 y x, Nat.mul_comm y x]
+  have e2 : (18 * x + 5 * y) * y * N = 18 * (x * y) * N + 5 * (y * y) * N := by
+    rw [Nat.add_mul, Nat.add_mul, Nat.mul_assoc 18 x y, Nat.mul_assoc 5 y y]
+  rw [e1, e2, split, Nat.add_mul]
+  omega
+
+--| THE ROOT BY THE TABLE'S OWN POWERS: at stage n, the walk five and twice n steps on.
+def the_root_by_the_tables_powers : Meanings.Bracketed where
+  low n := ⟨18 * (the_power_walk (5 + 2 * n)).1 + 5 * (the_power_walk (5 + 2 * n)).2, (the_power_walk (5 + 2 * n)).1,
+    (the_power_walk_stays _).1⟩
+  high n := ⟨18 * (the_power_walk (5 + 2 * n)).1 + 18 * (the_power_walk (5 + 2 * n)).2, (the_power_walk (5 + 2 * n)).2,
+    (the_power_walk_stays _).2.1⟩
+  ordered n := the_power_walls_are_ordered _ _ (the_power_walk_stays _).2.2
+  low_rises n := by
+    have := the_power_low_rises (5 + 2 * n) 2
+    rwa [show 5 + 2 * n + 2 = 5 + 2 * (n + 1) by omega] at this
+  high_falls n := by
+    have := the_power_high_falls (5 + 2 * n) 2
+    rwa [show 5 + 2 * n + 2 = 5 + 2 * (n + 1) by omega] at this
+  narrows n := by
+    have g := the_power_gap_is (5 + 2 * n)
+    have h := (the_power_walk_stays (5 + 2 * n)).2.2
+    have grow := the_power_walk_is_at_least (5 + 2 * n)
+    have behind := the_gap_falls_behind n
+    unfold the_power_gap at g
+    show (18 * (the_power_walk (5 + 2 * n)).1 + 18 * (the_power_walk (5 + 2 * n)).2) * (the_power_walk (5 + 2 * n)).1 * (n + 1)
+      ≤ (18 * (the_power_walk (5 + 2 * n)).1 + 5 * (the_power_walk (5 + 2 * n)).2) * (the_power_walk (5 + 2 * n)).2 * (n + 1)
+        + (the_power_walk (5 + 2 * n)).2 * (the_power_walk (5 + 2 * n)).1
+    generalize (the_power_walk (5 + 2 * n)).1 = x at *
+    generalize (the_power_walk (5 + 2 * n)).2 = y at *
+    apply the_power_walls_narrow x y (18 * (x * x) - 5 * (y * y)) (n + 1) (by omega)
+    rw [g, Nat.mul_comm y x]
+    exact Nat.le_trans behind grow
+
+--| THE THREE ARE ONE.  The table's powers and the halving's norm are one real; and the crank's root with eighteen is the
+--| halving's norm; so all three are one, at every pair of stages.
+theorem the_tables_powers_and_the_halving_are_one : the_root_by_the_tables_powers.Same Meanings.theNorm.bracketed := by
+  intro n m
+  have h := (the_power_walk_stays (5 + 2 * n)).2.2
+  have h' := (the_power_walk_stays (5 + 2 * m)).2.2
+  have four : ∀ j : Nat, 4 ^ j = 2 ^ j * 2 ^ j := fun j => by rw [← Nat.mul_pow]
+  have root_m := Meanings.theRootOfNinety_holds_the_root m
+  have root_n := Meanings.theRootOfNinety_holds_the_root n
+  rw [four] at root_m root_n
+  constructor
+  · show (18 * (the_power_walk (5 + 2 * n)).1 + 5 * (the_power_walk (5 + 2 * n)).2) * 2 ^ m
+      ≤ (18 * 2 ^ m + Meanings.theRootOfNinety.cut m + 1) * (the_power_walk (5 + 2 * n)).1
+    generalize (the_power_walk (5 + 2 * n)).1 = x at *
+    generalize (the_power_walk (5 + 2 * n)).2 = y at *
+    generalize Meanings.theRootOfNinety.cut m = c at *
+    generalize 2 ^ m = t at *
+    have sq : (5 * y * t) * (5 * y * t) ≤ ((c + 1) * x) * ((c + 1) * x) := by
+      have m1 := Nat.mul_le_mul_right (5 * (t * t)) h
+      have m2 := Nat.mul_le_mul_left (18 * 5 * (x * x)) (Nat.le_of_lt root_m.2)
+      calc (5 * y * t) * (5 * y * t) = 5 * (y * y) * (5 * (t * t)) := by ac_rfl
+        _ ≤ 18 * (x * x) * (5 * (t * t)) := m1
+        _ = 18 * 5 * (x * x) * (t * t) := by ac_rfl
+        _ = 90 * (x * x) * (t * t) := by rw [show 18 * 5 = 90 by rfl]
+        _ = x * x * (90 * (t * t)) := by ac_rfl
+        _ ≤ x * x * ((c + 1) * (c + 1)) := Nat.mul_le_mul_left _ (Nat.le_of_lt root_m.2)
+        _ = ((c + 1) * x) * ((c + 1) * x) := by ac_rfl
+    have lin := Nat.mul_self_le_mul_self_iff.1 sq
+    simp only [Nat.add_mul] at lin ⊢
+    simp only [Nat.mul_comm, Nat.mul_left_comm] at lin ⊢
+    omega
+  · show (18 * 2 ^ n + Meanings.theRootOfNinety.cut n) * (the_power_walk (5 + 2 * m)).2
+      ≤ (18 * (the_power_walk (5 + 2 * m)).1 + 18 * (the_power_walk (5 + 2 * m)).2) * 2 ^ n
+    generalize (the_power_walk (5 + 2 * m)).1 = x at *
+    generalize (the_power_walk (5 + 2 * m)).2 = y at *
+    generalize Meanings.theRootOfNinety.cut n = c at *
+    generalize 2 ^ n = t at *
+    have sq : (c * y) * (c * y) ≤ (18 * x * t) * (18 * x * t) := by
+      calc (c * y) * (c * y) = (c * c) * (y * y) := by ac_rfl
+        _ ≤ 90 * (t * t) * (y * y) := Nat.mul_le_mul_right _ root_n.1
+        _ = 18 * (5 * (y * y)) * (t * t) := by ac_rfl
+        _ ≤ 18 * (18 * (x * x)) * (t * t) := Nat.mul_le_mul_right _ (Nat.mul_le_mul_left _ h')
+        _ = (18 * x * t) * (18 * x * t) := by ac_rfl
+    have lin := Nat.mul_self_le_mul_self_iff.1 sq
+    simp only [Nat.add_mul] at lin ⊢
+    simp only [Nat.mul_comm, Nat.mul_left_comm] at lin ⊢
+    omega
+
+theorem the_three_models_of_one_root :
+    the_root_by_the_tables_powers.Same Meanings.theNorm.bracketed
+      ∧ ((Meanings.Bracketed.ofNat 18).add the_root_by_the_crank).Same Meanings.theNorm.bracketed
+      ∧ the_root_by_the_tables_powers.Same ((Meanings.Bracketed.ofNat 18).add the_root_by_the_crank) :=
+  have crank : ((Meanings.Bracketed.ofNat 18).add the_root_by_the_crank).Same Meanings.theNorm.bracketed :=
+    Meanings.Bracketed.same_trans
+      (Meanings.Bracketed.add_same (Meanings.Bracketed.same_refl _) the_crank_and_the_halving_are_one_root)
+      eighteen_beside_the_root_is_the_norm
+  ⟨the_tables_powers_and_the_halving_are_one, crank,
+   Meanings.Bracketed.same_trans the_tables_powers_and_the_halving_are_one (Meanings.Bracketed.same_symm crank)⟩
+end three_models_of_one_root
 
 section the_turn_by_a_rational_angle
 open readers_experience

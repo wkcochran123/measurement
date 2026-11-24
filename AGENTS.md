@@ -476,12 +476,19 @@ names the number.
   not counted), compiler auxiliaries included: 3,854; no axiom, 1,530;
   `propext`, 853; `propext` and `Quot.sound`, 1,462; `Quot.sound` alone, 7;
   and `Classical.choice` in two, `compatibility_form` and its auxiliary.
-  (The count of 17 November was 2,138: 1,051; 558; 523; 5; 1.) Not
-  recounted since 23 November 2026, when Episode 13 began importing
-  `Meanings`: two Episode 13 declarations now also bill choice,
-  `two_accounts_read_as_the_ratios` (core Lean's own `Rat` lemmas bill
-  it) and `the_first_area_where_a_statement_holds` (the click handed in);
-  nothing in the device uses either. The one,
+  (The count of 17 November was 2,138: 1,051; 558; 523; 5; 1.) Recounted
+  at the end of 23 November 2026, by the same rule (theorem constants
+  only, from the Measurement modules, Episode 6 excluded; script in the
+  session scratchpad, `Lean.collectAxioms` on each): 4,205; no axiom,
+  1,604; `propext`, 877; `propext` and `Quot.sound`, 1,713; `Quot.sound`
+  alone, 7; `Classical.choice` in four: `compatibility_form` and its
+  auxiliary, `the_first_area_where_a_statement_holds` (the click handed
+  in), and `a_modulus_from_statements` (a modulus for bare statements,
+  handed a click by choice, written to show where choice enters). Nothing
+  in the device uses any of the four. `two_accounts_read_as_the_ratios`,
+  said earlier to bill choice through core Lean's `Rat`, is a definition,
+  not a theorem constant, and so is not in this count; the Meanings
+  library is not in it either. The one,
   `compatibility_form`
   (`Episode12.lean`, used by nothing), bills `Classical.choice` through
   `omega`. If a visitor asks whether the device uses choice, say exactly
@@ -4056,6 +4063,23 @@ names the number.
   through the missing branch twice. Say with it: this is a property of
   how the device defines ≤, checked; that it is where the gap lives, and
   the logic of the three, is the author's.
+- Three models of one root (`Episode13.lean`, section
+  `three_models_of_one_root`; 23 November 2026). The author (declared):
+  "you should see the multigrid jfnk solver as three _different_ models";
+  then "update all receipts". Minted: `the_root_by_the_tables_powers`,
+  the table ((18, 5), (18, 18)) turned on (1, 1) again and again (the
+  power walk, read off Episode 12's `the_click_table`), its walls the
+  two rows read against the vector, a real with no choice; the gap
+  between the walls is 13·234ᵏ and the vector grows at least as 414ᵏ,
+  so the walls close by about the ratio of the two roots, 0.31, a step.
+  It is `Same` as the halving's norm, and the crank's root with eighteen
+  is too (`the_three_models_of_one_root`): one root, 18 + √90, by halving
+  (a bit a stage: multigrid's levels), by the crank (the distance squared
+  a turn: Newton) and by the table's own powers (the Krylov space). All
+  `propext`, `Quot.sound`. Say with it: the three are told apart by rate,
+  not by value; nothing read from the value returns which model computed
+  it. On the device all three are exact and two by two; no solver runs on
+  a mesh. That they are three proposals' models is the author's, if meant.
 - A turn through its norm (`Meanings/Turns.lean`; `Episode13.lean`,
   section `the_turn_through_its_norm`; 23 November 2026). The author,
   of the square root of a real (declared): "doesn't the norm compute
