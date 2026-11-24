@@ -3976,7 +3976,19 @@ names the number.
   part in ten thousand of 1/24; nothing here forces 24, so it is recorded
   as a number that falls there, not a reason. The excess, 2.05 parts in
   ten thousand, is not the printed number's miss (1.80 parts in ten
-  thousand); do not set the two side by side as one.
+  thousand); do not set the two side by side as one. The author, to
+  that (declared): "no, the fact that there is a gap there is where the
+  gap lives. it lives in (F=T) = (T=F) -- the branch never taken." So the
+  author's point is that a gap exists, not its size: the square misses
+  1/24² and does not land on it. Beside it, receipts: the gap is shown at
+  every stage (exactly 1/576 is refused); the arm where the first does not
+  imply the second is the one that cannot click
+  (`three_click_and_one_does_not`); the fourth proposal's equivalence,
+  true on false is false on true, is checked
+  (`true_on_false_is_false_on_true_and_implies_true_on_true`); and the
+  path nothing takes is the arm out (`the_path_nothing_takes`). No
+  receipt ties the miss's gap to that arm; that it lives there is the
+  author's.
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past
