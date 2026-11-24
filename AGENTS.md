@@ -4604,6 +4604,31 @@ names the number.
   content, and that the crossing the diagonal needs is the fourth
   proposal's, and that proposal QED's, is the author's. The diagonal
   succeeds; it shows the reals uncountable, as they must be to be ℝ.
+- The opposite of the knower's bit (`Episode13.lean`, section
+  `the_opposite_of_the_knowers_bit`; 24 November 2026). The author
+  (declared): "the device computes the _opposite_ of the _knower's_ bit,
+  even though there isn't a single false in the machine. and we can hand
+  them back their bit as \not what they chose, no matter what they
+  choose, even though there is only TRUE in the machine. the knower's
+  clock is the only clock in the whole device. it just so happens that it
+  is the same clock as the computers." Receipts: the device's own facts
+  all click true (`every_rung_clicks`, `every_inference_clicks`, and
+  `every_proposal_clicks` beside them); handed any fact, the device
+  returns `the_opposite`, built from that fact's own statement by Lean's
+  not, whose click is the other way (`the_opposite_clicks_the_other_way`),
+  so whatever is chosen, the other comes back
+  (`whatever_they_choose_they_get_the_other`); on rows of the knower's
+  bits, the opposite of the diagonal is none of the rows
+  (`the_opposite_diagonal_is_none_of_the_rows`), the diagonal of the reals
+  one bit at a time; all three with no axiom. Control refused: handed
+  true, true back. Say with it: the device mints no false fact; the false
+  it hands back is the knower's own statement turned over by ¬, which in
+  Lean is a statement implying False, so "no false in the machine" means
+  no false fact of the device's, not no False in Lean. On the clock, beside
+  it and measured: the heartbeats of Experiment 019b are identical on the
+  M2 and the M2 Ultra, and the nanoseconds of earlier experiments are not;
+  that the knower's clock is the one clock, and the computer's, is the
+  author's.
 - The laws (`Meanings/Laws.lean`; 23 November 2026). Receipts, `propext`,
   `Quot.sound`: every low wall is under every high wall
   (`Bracketed.low_under_high`); `Same` is reflexive, symmetric and

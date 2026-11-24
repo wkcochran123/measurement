@@ -10825,6 +10825,49 @@ theorem asked_only_whether_it_is_true_the_diagonal_is_same_difference (f : Nat �
 
 end the_diagonal_and_the_fourth_proposal
 
+section the_opposite_of_the_knowers_bit
+
+--| THE OPPOSITE OF THE KNOWER'S BIT.  The author's, 24 November 2026: the device computes the opposite of the knower's bit,
+--| though there is not a single false in the machine; it hands them back their bit as not what they chose, whatever they
+--| choose, though there is only TRUE in the machine; and the knower's clock is the only clock in the device, the same clock
+--| as the computer's (declared).  What is checked.  The device's own facts all click true: every rung, every inference,
+--| every proposal.  Handed the knower's fact, the device returns its opposite, built from the knower's own statement by
+--| Lean's not, and its click is the other way, whichever way the knower's clicked: the device mints no false fact; the
+--| false is the knower's, turned over.  And on rows of the knower's bits the opposite of the diagonal is none of the rows:
+--| the diagonal of the reals, one bit at a time.
+def the_opposite (k : FACT) : FACT := { truth := ¬ k.truth, click := @instDecidableNot _ k.click }
+
+theorem the_opposite_clicks_the_other_way (k : FACT) :
+    the_representation.the_click (the_opposite k) = ! the_representation.the_click k := by
+  obtain ⟨t, c⟩ := k
+  cases c <;> rfl
+
+theorem whatever_they_choose_they_get_the_other (k : FACT) :
+    the_representation.the_click (the_opposite k) ≠ the_representation.the_click k := by
+  rw [the_opposite_clicks_the_other_way]
+  cases the_representation.the_click k <;> decide
+
+theorem the_two_choices_handed_back :
+    the_representation.the_click (the_opposite (the_representation.dealt true)) = false
+      ∧ the_representation.the_click (the_opposite (the_representation.dealt false)) = true := by decide
+
+--| THE DIAGONAL OF THE KNOWER'S ROWS.  The opposite of the n-th bit of the n-th row, at every n, is none of the rows.
+def the_opposite_diagonal (rows : Nat → Nat → FACT) (n : Nat) : FACT := the_opposite (rows n n)
+
+theorem the_opposite_diagonal_is_none_of_the_rows (rows : Nat → Nat → FACT) (n : Nat) :
+    (fun m => the_representation.the_click (the_opposite_diagonal rows m))
+      ≠ (fun m => the_representation.the_click (rows n m)) := fun h =>
+  whatever_they_choose_they_get_the_other (rows n n) (congrFun h n)
+
+--| ONLY TRUE IN THE MACHINE, AND THE OPPOSITE HANDED BACK.
+theorem only_true_in_the_machine_and_the_opposite_handed_back (k : FACT) :
+    the_clicks.all the_representation.the_click = true
+      ∧ the_inferences.all the_representation.the_click = true
+      ∧ the_representation.the_click (the_opposite k) = ! the_representation.the_click k :=
+  ⟨every_rung_clicks, every_inference_clicks, the_opposite_clicks_the_other_way k⟩
+
+end the_opposite_of_the_knowers_bit
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
