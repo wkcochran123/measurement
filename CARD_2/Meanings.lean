@@ -23,3 +23,4 @@ import Meanings.Baker            -- the baker's transform on records: doubling f
 import Meanings.TheEighthTurn      -- the eighth turn by the series: where cosine and sine cross, Machin in the window, and the error past nothing
 import Meanings.Gap              -- the gap: parted shows at a finite stage for free; where they part, from not one, is choice
 import Meanings.Diagonal         -- the diagonal, with no choice: from any list of reals, one that is none of them
+import Meanings.Exponential      -- e to the θ by e to the θ owed is one at every stage; the tangent

@@ -18,6 +18,8 @@ import Mathlib.Data.Real.Archimedean
 import Mathlib.Data.NNReal.Defs
 import Mathlib.Data.Real.Sqrt
 import Mathlib.Data.Real.CompleteField
+import Mathlib.Data.Complex.Basic
+import Mathlib.Algebra.Quaternion
 import Meanings
 
 namespace Calibrate
@@ -251,6 +253,117 @@ theorem only_one_way_onto_the_reals {R : Type*} [NonAssocSemiring R] (e₁ e₂ 
   have := h (e₁ r)
   rw [RingEquiv.symm_apply_apply] at this
   exact this.symm
+
+/-! The signed product, and the complex numbers and quaternions, carried across. -/
+
+theorem toReal_ofNat (k : ℕ) : toReal (Bracketed.ofNat k) = k :=
+  toReal_eq_of_between _ _ fun _ => by
+    show ofFraction ⟨k, 1, Nat.one_pos⟩ ≤ _ ∧ _ ≤ ofFraction ⟨k, 1, Nat.one_pos⟩
+    unfold ofFraction; simp
+
+theorem toRealSigned_ofNat (k : ℕ) : toRealSigned (SignedReal.ofNat k) = k := by
+  unfold toRealSigned; show toReal (Bracketed.ofNat k) - toReal (Bracketed.ofNat 0) = k
+  rw [toReal_ofNat, toReal_ofNat]; simp
+
+theorem toRealSigned_add (x y : SignedReal) : toRealSigned (x + y) = toRealSigned x + toRealSigned y := by
+  unfold toRealSigned; show toReal (x.held.add y.held) - toReal (x.owed.add y.owed) = _
+  rw [toReal_add, toReal_add]; ring
+
+theorem toRealSigned_neg (x : SignedReal) : toRealSigned (-x) = - toRealSigned x := by
+  unfold toRealSigned; show toReal x.owed - toReal x.held = _; ring
+
+theorem toRealSigned_sub (x y : SignedReal) : toRealSigned (x - y) = toRealSigned x - toRealSigned y := by
+  unfold toRealSigned; show toReal (x.held.add y.owed) - toReal (x.owed.add y.held) = _
+  rw [toReal_add, toReal_add]; ring
+
+--| THE SIGNED PRODUCT GOES ACROSS.
+theorem toRealSigned_mul (x y : SignedReal) : toRealSigned (x * y) = toRealSigned x * toRealSigned y := by
+  unfold toRealSigned
+  show toReal ((x.held.mul y.held).add (x.owed.mul y.owed)) - toReal ((x.held.mul y.owed).add (x.owed.mul y.held)) = _
+  rw [toReal_add, toReal_add, toReal_mul, toReal_mul, toReal_mul, toReal_mul]; ring
+
+--| THE COMPLEX NUMBERS.
+def toComplex (z : ComplexReal) : ℂ := ⟨toRealSigned z.along, toRealSigned z.across⟩
+
+theorem complex_same_iff (z w : ComplexReal) : z.Same w ↔ toComplex z = toComplex w := by
+  unfold ComplexReal.Same
+  rw [signed_same_iff, signed_same_iff, Complex.ext_iff]
+  rfl
+
+theorem toComplex_add (z w : ComplexReal) : toComplex (z + w) = toComplex z + toComplex w := by
+  apply Complex.ext <;> simp [toComplex] <;> first
+    | exact toRealSigned_add z.along w.along
+    | exact toRealSigned_add z.across w.across
+
+theorem toComplex_mul (z w : ComplexReal) : toComplex (z * w) = toComplex z * toComplex w := by
+  apply Complex.ext
+  · show toRealSigned (z.along * w.along - z.across * w.across) = _
+    rw [toRealSigned_sub, toRealSigned_mul, toRealSigned_mul]; simp [toComplex]
+  · show toRealSigned (z.along * w.across + z.across * w.along) = _
+    rw [toRealSigned_add, toRealSigned_mul, toRealSigned_mul]; simp [toComplex]
+
+theorem toComplex_conjugate (z : ComplexReal) : toComplex z.conjugate = (starRingEnd ℂ) (toComplex z) := by
+  apply Complex.ext
+  · rfl
+  · show toRealSigned (-z.across) = _; rw [toRealSigned_neg]; simp [toComplex]
+
+theorem the_quarter_turn_is_i : toComplex ComplexReal.quarterTurn = Complex.I := by
+  apply Complex.ext
+  · show toRealSigned (SignedReal.ofNat 0) = 0; rw [toRealSigned_ofNat]; simp
+  · show toRealSigned (SignedReal.ofNat 1) = 1; rw [toRealSigned_ofNat]; simp
+
+theorem every_complex_number_is_reached (c : ℂ) : ∃ z : ComplexReal, toComplex z = c := by
+  refine ⟨⟨⟨(theFloors (max c.re 0) (le_max_right _ _)).bracketed, (theFloors (max (-c.re) 0) (le_max_right _ _)).bracketed⟩,
+    ⟨(theFloors (max c.im 0) (le_max_right _ _)).bracketed, (theFloors (max (-c.im) 0) (le_max_right _ _)).bracketed⟩⟩, ?_⟩
+  apply Complex.ext
+  · exact every_number_is_reached_signed c.re
+  · exact every_number_is_reached_signed c.im
+
+--| THE QUATERNIONS.  A first complex number and a second, the second by j.
+def toQuaternion (p : QuaternionReal) : Quaternion ℝ :=
+  ⟨toRealSigned p.first.along, toRealSigned p.first.across, toRealSigned p.second.along, toRealSigned p.second.across⟩
+
+theorem quaternion_same_iff (p r : QuaternionReal) : p.Same r ↔ toQuaternion p = toQuaternion r := by
+  unfold QuaternionReal.Same ComplexReal.Same
+  rw [signed_same_iff, signed_same_iff, signed_same_iff, signed_same_iff, Quaternion.ext_iff]
+  simp only [toQuaternion]
+  tauto
+
+theorem toQuaternion_mul (p r : QuaternionReal) : toQuaternion (p * r) = toQuaternion p * toQuaternion r := by
+  have m : ∀ z w : ComplexReal, toRealSigned (z * w).along = toRealSigned z.along * toRealSigned w.along
+      - toRealSigned z.across * toRealSigned w.across := fun z w => by
+    show toRealSigned (z.along * w.along - z.across * w.across) = _
+    rw [toRealSigned_sub, toRealSigned_mul, toRealSigned_mul]
+  have m' : ∀ z w : ComplexReal, toRealSigned (z * w).across = toRealSigned z.along * toRealSigned w.across
+      + toRealSigned z.across * toRealSigned w.along := fun z w => by
+    show toRealSigned (z.along * w.across + z.across * w.along) = _
+    rw [toRealSigned_add, toRealSigned_mul, toRealSigned_mul]
+  have ca : ∀ z : ComplexReal, toRealSigned z.conjugate.along = toRealSigned z.along := fun z => rfl
+  have cx : ∀ z : ComplexReal, toRealSigned z.conjugate.across = - toRealSigned z.across := fun z => toRealSigned_neg _
+  have sa : ∀ z w : ComplexReal, toRealSigned (z - w).along = toRealSigned z.along - toRealSigned w.along :=
+    fun z w => toRealSigned_sub _ _
+  have sx : ∀ z w : ComplexReal, toRealSigned (z - w).across = toRealSigned z.across - toRealSigned w.across :=
+    fun z w => toRealSigned_sub _ _
+  have pa : ∀ z w : ComplexReal, toRealSigned (z + w).along = toRealSigned z.along + toRealSigned w.along :=
+    fun z w => toRealSigned_add _ _
+  have px : ∀ z w : ComplexReal, toRealSigned (z + w).across = toRealSigned z.across + toRealSigned w.across :=
+    fun z w => toRealSigned_add _ _
+  apply Quaternion.ext
+  · show toRealSigned (p.first * r.first - r.second.conjugate * p.second).along = _
+    rw [sa, m, m, ca, cx]; simp [toQuaternion, Quaternion.mul_re]; ring
+  · show toRealSigned (p.first * r.first - r.second.conjugate * p.second).across = _
+    rw [sx, m', m', ca, cx]; simp [toQuaternion, Quaternion.mul_imI]; ring
+  · show toRealSigned (r.second * p.first + p.second * r.first.conjugate).along = _
+    rw [pa, m, m, ca, cx]; simp [toQuaternion, Quaternion.mul_imJ]; ring
+  · show toRealSigned (r.second * p.first + p.second * r.first.conjugate).across = _
+    rw [px, m', m', ca, cx]; simp [toQuaternion, Quaternion.mul_imK]; ring
+
+theorem the_three_turns_go_to_i_j_k :
+    toQuaternion QuaternionReal.i = ⟨0, 1, 0, 0⟩ ∧ toQuaternion QuaternionReal.j = ⟨0, 0, 1, 0⟩
+      ∧ toQuaternion QuaternionReal.k = ⟨0, 0, 0, 1⟩ := by
+  refine ⟨?_, ?_, ?_⟩ <;>
+    simp only [toQuaternion, QuaternionReal.i, QuaternionReal.j, QuaternionReal.k, ComplexReal.quarterTurn,
+      ComplexReal.ofNat, ComplexReal.ofSigned, toRealSigned_ofNat] <;> norm_num
 
 end
 end Calibrate
