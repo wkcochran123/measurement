@@ -3923,7 +3923,23 @@ names the number.
   the 3-d projection of the inside of the frinkahedron" (declared). Not
   given: which product of these measures is the card's volume, and any
   map from a step to Card 1's hexagonal duoprism or its projection. That
-  the card is that projection is the author's.
+  the card is that projection is the author's. And (declared): "it's a
+  bent card. so the card is local flat, but bent. we can't see the bend
+  locally. however, if we infer the bend, we can compute what happens if
+  we are on a geodesic. einstein field equations have entered the chat."
+  Beside it, receipts: every exact step here is flat to first order and
+  shows its departure only at second order or later (the residual's step
+  leaves 13h², the turn leaves the circle by the step squared, the step's
+  angle falls short by the cube over three), which is the standard shape
+  of curvature in normal coordinates: flat at a point, bent at second
+  order. And the field-equation work already filed (Card 3; the bullets
+  above on the field equations, Gauss's equation and the curvature table
+  from the links) with its status unchanged: the thermodynamic half exact
+  on the count, the curvature table built from the links, the area whose
+  rises it holds handed in, the Lovelock bridges unmade. Not on the
+  device: a metric field, a connection, a geodesic equation. That the
+  inferred bend is spacetime's and its geodesics are free fall is the
+  author's, under the first proposal.
 - The order (`Meanings/Order.lean`; 23 November 2026, at the author's
   "start knocking down the reals work"). Receipts, `propext` and
   `Quot.sound` at most. `Bracketed.NotPast a b`: no low wall of a is past
