@@ -1102,7 +1102,12 @@ elaborates the theorem the_borwein_scale m − the_borwein_sum m = c and reads t
 `decide +kernel` (the receipts' route), by `decide` (m = 1 to 4), and a blank, two repeats each. Seal:
 `readings/019-the-borwein-receipts/SEALED_PREDICTION.txt`, sha256 c2d2c2ddfb469b98…. Its P2 (the kernel route flat) is sealed as
 offered, with Claude's note that its confidence fell before sealing. A second seal, the author's lower and upper bounds,
-may be added before the run.
+may be added before the run. It was: the author's, "the 22 minute build in episode 4 only climbs 4 universes up, but it
+fully climbs those backwards. the number keeps increasing while it looks. i like my odds of a nice single coefficient of
+scaling bullshit" (declared). The author named no number; Claude's operational reading, fixed before the run, takes the
+number that goes up as the ways of holding or owing, 2^(m−1), and a single coefficient as the heartbeats over the blank
+divided by it staying within 10% of one value on each route. Seal:
+`readings/019-the-borwein-receipts/SEALED_PREDICTION_AUTHOR.txt`, sha256 1ffa35f50643a0f1….
 
 **Read:** not yet.
 
