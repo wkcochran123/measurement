@@ -11,7 +11,9 @@ Cosine is the first quarter less the third, sine the second less the fourth; all
 derivative leaves alone, raised to θ; and at θ nothing they are one and three nothings.  What is checked here of those is
 what the circle check checks: at the third stage, at θ one and θ a half, the brackets of the two sides hold each other,
 decided by the kernel.  The first two are then proved one at every stage, for every θ = p over q not past one, from an
-exact identity on the partial sums; and the four against e, at θ one, likewise at every stage.
+exact identity on the partial sums; and the four against e, at θ one, likewise at every stage.  The circle stays a
+reading at a stage.  And e to the θ owed, the one series alternated, is a real; beside the second and fourth quarters it
+is the first and third, at every stage.
 -/
 import Meanings.Difference
 
@@ -307,5 +309,137 @@ theorem the_four_quarters_beside_each_other_are_e : theFourQuartersAtOne.Same th
   rw [theBase_low]
   exact ⟨Fraction.le_trans hq.1 (Fraction.le_trans he.2 lh),
     Fraction.le_trans he'.1 (Fraction.le_trans mono (Fraction.le_trans hq.2 ord))⟩
+
+/-
+THE EXPONENTIAL OWED.  The one series with its signs alternating, θ to the k over k factorial taken owed at every odd k,
+is an alternating series of falling terms for θ not past one: e to the θ owed, a real with no choice.  Beside the second
+and fourth quarters it is the first and third, at every stage.
+-/
+
+theorem powerTerm_falls_by_one (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (k : Nat) :
+    (powerTerm p q hq (k + 1)).le (powerTerm p q hq k) := by
+  show p ^ (k + 1) * (q ^ k * factorial k) ≤ p ^ k * (q ^ (k + 1) * factorial (k + 1))
+  have f : factorial (k + 1) = (k + 1) * factorial k := rfl
+  rw [f, Nat.pow_succ, Nat.pow_succ]
+  have m := Nat.mul_le_mul_left (p ^ k * q ^ k * factorial k) (Nat.mul_le_mul hp (show 1 ≤ k + 1 by omega))
+  calc p ^ k * p * (q ^ k * factorial k) = p ^ k * q ^ k * factorial k * (p * 1) := by ac_rfl
+    _ ≤ p ^ k * q ^ k * factorial k * (q * (k + 1)) := m
+    _ = p ^ k * (q ^ k * q * ((k + 1) * factorial k)) := by ac_rfl
+
+def theTermsOfTheExponentialOwed (p q : Nat) (hq : 0 < q) (hp : p ≤ q) : FallingTerms where
+  term := powerTerm p q hq
+  falls := powerTerm_falls_by_one p q hq hp
+  narrows n := powerTerm_narrows p q hq hp n (2 * n + 2) (by omega)
+
+--| e TO THE θ OWED.
+def eToTheOwed (p q : Nat) (hq : 0 < q) (hp : p ≤ q) : Bracketed := (theTermsOfTheExponentialOwed p q hq hp).bracketed
+
+theorem owed_step (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (M : Nat) :
+    (theTermsOfTheExponentialOwed p q hq hp).stepsAndTail.step (2 * M + 2)
+        = (powerTerm p q hq (4 * M + 3 + 1)).sub (powerTerm p q hq (4 * M + 3 + 2))
+      ∧ (theTermsOfTheExponentialOwed p q hq hp).stepsAndTail.step (2 * M + 3)
+        = (powerTerm p q hq (4 * M + 3 + 3)).sub (powerTerm p q hq (4 * M + 3 + 4)) := by
+  constructor
+  · show (powerTerm p q hq (2 * (2 * M + 2))).sub (powerTerm p q hq (2 * (2 * M + 2) + 1)) = _
+    rw [show 2 * (2 * M + 2) = 4 * M + 3 + 1 by omega, show 4 * M + 3 + 1 + 1 = 4 * M + 3 + 2 by omega]
+  · show (powerTerm p q hq (2 * (2 * M + 3))).sub (powerTerm p q hq (2 * (2 * M + 3) + 1)) = _
+    rw [show 2 * (2 * M + 3) = 4 * M + 3 + 3 by omega, show 4 * M + 3 + 3 + 1 = 4 * M + 3 + 4 by omega]
+
+--| THE OWED SERIES BESIDE THE SECOND AND FOURTH QUARTERS IS THE FIRST AND THIRD, at every length.
+theorem the_owed_and_the_odd_quarters_are_the_even (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (M : Nat) :
+    (((theTermsOfTheExponentialOwed p q hq hp).stepsAndTail.partial (2 * M + 1)).add
+        (((theQuarterSteps p q hq hp 1).partial M).add ((theQuarterSteps p q hq hp 3).partial M))).le
+      (((theQuarterSteps p q hq hp 0).partial M).add ((theQuarterSteps p q hq hp 2).partial M))
+    ∧ (((theQuarterSteps p q hq hp 0).partial M).add ((theQuarterSteps p q hq hp 2).partial M)).le
+      (((theTermsOfTheExponentialOwed p q hq hp).stepsAndTail.partial (2 * M + 1)).add
+        (((theQuarterSteps p q hq hp 1).partial M).add ((theQuarterSteps p q hq hp 3).partial M))) := by
+  have f := powerTerm_falls_by_one p q hq hp
+  induction M with
+  | zero =>
+    show ((((powerTerm p q hq 0).sub (powerTerm p q hq 1)).add ((powerTerm p q hq 2).sub (powerTerm p q hq 3))).add
+          ((powerTerm p q hq 1).add (powerTerm p q hq 3))).le ((powerTerm p q hq 0).add (powerTerm p q hq 2))
+      ∧ ((powerTerm p q hq 0).add (powerTerm p q hq 2)).le
+          ((((powerTerm p q hq 0).sub (powerTerm p q hq 1)).add ((powerTerm p q hq 2).sub (powerTerm p q hq 3))).add
+            ((powerTerm p q hq 1).add (powerTerm p q hq 3)))
+    exact ⟨Fraction.le_trans (Fraction.swap_middle _ _ _ _)
+        (Fraction.add_le_add (Fraction.sub_add_self_le _ _ (f 0)) (Fraction.sub_add_self_le _ _ (f 2))),
+      Fraction.le_trans (Fraction.add_le_add (Fraction.le_sub_add_self _ _ (f 0)) (Fraction.le_sub_add_self _ _ (f 2)))
+        (Fraction.swap_middle _ _ _ _)⟩
+  | succ M ih =>
+    have e : (theTermsOfTheExponentialOwed p q hq hp).stepsAndTail.partial (2 * (M + 1) + 1)
+        = (((theTermsOfTheExponentialOwed p q hq hp).stepsAndTail.partial (2 * M + 1)).add
+            ((powerTerm p q hq (4 * M + 3 + 1)).sub (powerTerm p q hq (4 * M + 3 + 2)))).add
+            ((powerTerm p q hq (4 * M + 3 + 3)).sub (powerTerm p q hq (4 * M + 3 + 4))) := by
+      rw [show 2 * (M + 1) + 1 = 2 * M + 3 by omega]
+      show (((theTermsOfTheExponentialOwed p q hq hp).stepsAndTail.partial (2 * M + 1)).add
+            ((theTermsOfTheExponentialOwed p q hq hp).stepsAndTail.step (2 * M + 2))).add
+            ((theTermsOfTheExponentialOwed p q hq hp).stepsAndTail.step (2 * M + 3)) = _
+      rw [(owed_step p q hq hp M).1, (owed_step p q hq hp M).2]
+    have g : ∀ j, (theQuarterSteps p q hq hp j).partial (M + 1)
+        = ((theQuarterSteps p q hq hp j).partial M).add (powerTerm p q hq (4 * M + 3 + (j + 1))) := fun j => by
+      show ((theQuarterSteps p q hq hp j).partial M).add ((theQuarterSteps p q hq hp j).step (M + 1)) = _
+      rw [quarter_step]
+    rw [e, g 0, g 1, g 2, g 3]
+    have hAB := f (4 * M + 3 + 1)
+    have hCD := f (4 * M + 3 + 3)
+    exact ⟨Fraction.le_trans (Fraction.add_le_add (Fraction.add_regroup _ _ _) (Fraction.swap_middle _ _ _ _))
+        (Fraction.le_trans (Fraction.swap_middle _ _ _ _)
+          (Fraction.le_trans (Fraction.add_le_add ih.1 (Fraction.swap_middle _ _ _ _))
+            (Fraction.le_trans
+              (Fraction.add_le_add (Fraction.le_refl _)
+                (Fraction.add_le_add (Fraction.sub_add_self_le _ _ hAB) (Fraction.sub_add_self_le _ _ hCD)))
+              (Fraction.swap_middle _ _ _ _)))),
+      Fraction.le_trans (Fraction.swap_middle _ _ _ _)
+        (Fraction.le_trans
+          (Fraction.add_le_add (Fraction.le_refl _)
+            (Fraction.add_le_add (Fraction.le_sub_add_self _ _ hAB) (Fraction.le_sub_add_self _ _ hCD)))
+          (Fraction.le_trans (Fraction.add_le_add ih.2 (Fraction.swap_middle _ _ _ _))
+            (Fraction.le_trans (Fraction.swap_middle _ _ _ _)
+              (Fraction.add_le_add (Fraction.add_regroup_back _ _ _) (Fraction.swap_middle _ _ _ _)))))⟩
+
+def theOwedAndTheOddQuarters (p q : Nat) (hq : 0 < q) (hp : p ≤ q) : Bracketed :=
+  (eToTheOwed p q hq hp).add ((quarter p q hq hp 1).add (quarter p q hq hp 3))
+
+def theEvenQuarters (p q : Nat) (hq : 0 < q) (hp : p ≤ q) : Bracketed :=
+  (quarter p q hq hp 0).add (quarter p q hq hp 2)
+
+theorem quarter_low (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (j n : Nat) :
+    (quarter p q hq hp j).low n = (theQuarterSteps p q hq hp j).partial n := rfl
+
+theorem eToTheOwed_low (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (n : Nat) :
+    (eToTheOwed p q hq hp).low n = (theTermsOfTheExponentialOwed p q hq hp).stepsAndTail.partial n := rfl
+
+theorem theOwedAndTheOddQuarters_low (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (k : Nat) :
+    (theOwedAndTheOddQuarters p q hq hp).low k
+      = ((eToTheOwed p q hq hp).low (2 * k + 1)).add
+          (((quarter p q hq hp 1).low (2 * (2 * k + 1) + 1)).add ((quarter p q hq hp 3).low (2 * (2 * k + 1) + 1))) := rfl
+
+theorem theOwedAndTheOddQuarters_high (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (k : Nat) :
+    (theOwedAndTheOddQuarters p q hq hp).high k
+      = ((eToTheOwed p q hq hp).high (2 * k + 1)).add
+          (((quarter p q hq hp 1).high (2 * (2 * k + 1) + 1)).add ((quarter p q hq hp 3).high (2 * (2 * k + 1) + 1))) := rfl
+
+theorem theEvenQuarters_low (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (k : Nat) :
+    (theEvenQuarters p q hq hp).low k = ((quarter p q hq hp 0).low (2 * k + 1)).add ((quarter p q hq hp 2).low (2 * k + 1)) := rfl
+
+--| e TO THE θ OWED, BESIDE THE SECOND AND FOURTH QUARTERS, IS THE FIRST AND THIRD, at every stage: S₀ − S₁ + S₂ − S₃.
+theorem e_owed_beside_the_odd_quarters_is_the_even (p q : Nat) (hq : 0 < q) (hp : p ≤ q) :
+    (theOwedAndTheOddQuarters p q hq hp).Same (theEvenQuarters p q hq hp) := by
+  apply Bracketed.same_of_each_stage
+  intro k
+  have id := the_owed_and_the_odd_quarters_are_the_even p q hq hp (2 * (2 * k + 1) + 1)
+  rw [← eToTheOwed_low, ← quarter_low, ← quarter_low, ← quarter_low, ← quarter_low] at id
+  have rise := (eToTheOwed p q hq hp).low_le_of_le (show 2 * k + 1 ≤ 2 * (2 * (2 * k + 1) + 1) + 1 by omega)
+  have top := (eToTheOwed p q hq hp).low_under_high (2 * (2 * (2 * k + 1) + 1) + 1) (2 * k + 1)
+  have r0 := (quarter p q hq hp 0).low_le_of_le (show 2 * k + 1 ≤ 2 * (2 * k + 1) + 1 by omega)
+  have r2 := (quarter p q hq hp 2).low_le_of_le (show 2 * k + 1 ≤ 2 * (2 * k + 1) + 1 by omega)
+  have lh := (theEvenQuarters p q hq hp).low_under_high (2 * k + 1) k
+  rw [theEvenQuarters_low] at lh
+  have o1 := (quarter p q hq hp 1).ordered (2 * (2 * k + 1) + 1)
+  have o3 := (quarter p q hq hp 3).ordered (2 * (2 * k + 1) + 1)
+  rw [theOwedAndTheOddQuarters_low, theOwedAndTheOddQuarters_high, theEvenQuarters_low]
+  exact ⟨Fraction.le_trans (Fraction.add_le_add rise (Fraction.le_refl _)) (Fraction.le_trans id.1 lh),
+    Fraction.le_trans (Fraction.add_le_add r0 r2)
+      (Fraction.le_trans id.2 (Fraction.add_le_add top (Fraction.add_le_add o1 o3)))⟩
 
 end Meanings

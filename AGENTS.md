@@ -3880,9 +3880,11 @@ names the number.
   that of two reals one is not past the other. Being past shows at a
   finite stage and not being past at none, so the order is not total;
   that is the work's own point about comparison (Card 7, Theorem G, third
-  part, which this does not prove). Also not shown: that a product of two
-  signed reals not under nothing is not under nothing (it needs the
-  walls' difference at a stage).
+  part, which this does not prove). And a product of two signed reals
+  not under nothing is not under nothing
+  (`SignedReal.mul_not_under_nothing`), with no stage handed in: at the
+  walls it is a rearrangement, crossing never gains
+  (`crossing_never_gains`, `Fraction.rearrange`, `Bracketed.rearrange`).
 - The four quarters of the exponential (`Meanings/Quarters.lean`; 23
   November 2026). The author (declared): the four real numbers of the
   quaternion are the roots of the quartic, which for the quaternion is
@@ -3915,8 +3917,22 @@ names the number.
   exact identities at every length: the four quarters' partial sums,
   regrouped, are the one series' (`the_four_quarters_are_the_series`),
   and at θ one that series is e's own `seriesByFactorial` over the
-  factorial (`e_is_the_series_at_one`). The circle (cos² + sin² = 1) is
-  still a reading at one stage, and e^{−θ} is not built. Compared with the
+  factorial (`e_is_the_series_at_one`). The circle (cos² + sin² = 1) stays
+  a reading at one stage, by the author's choice. Asked whether to build
+  it with no choice (the exponential's addition law: a finite-sum and
+  binomial layer from scratch, with a route by induction on the
+  truncation, |Pₘ|² + 2Rₘ = 1, then the sign of Rₘ as an alternating
+  series), the author (declared): "this is induction going to infinity,
+  necessary for the convergence result." Say it exactly: each step of
+  that route is finite and the open item is a theorem not yet written;
+  that it is the convergence result itself, induction to infinity, is
+  the author's reading. e^{−θ} is since built (`eToTheOwed`, the one
+  series alternated, a real with no choice for θ = p/q not past one), and
+  beside the second and fourth quarters it is the first and third at
+  every stage (`e_owed_beside_the_odd_quarters_is_the_even`: S₀ − S₁ +
+  S₂ − S₃), from an exact regrouping at every length
+  (`the_owed_and_the_odd_quarters_are_the_even`). That e^θ by e^{−θ} is
+  one is the same addition law as the circle and is not written. Compared with the
   device's quartic (asked by the author): they do not look like its
   roots. At the printed reading the closing quartic in r has four real
   roots in two signed pairs, ±18 and ±32.34, the squares in the ratio

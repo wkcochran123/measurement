@@ -10,6 +10,8 @@ A signed real is not past another when what the first holds beside what the seco
 beside what the first owes.  It is reflexive and transitive, the middle taken away from both sides; two signed reals each
 not past the other are one; being one keeps it; and beside keeps it.
 
+A product of two signed reals not under nothing is not under nothing: crossing never gains.
+
 What is not here, and cannot be without a click: that of two reals one is not past the other.  Whether a real is past
 another shows at a finite stage; that it is not past shows at no finite stage.  So the order is not total here, and the
 reader who wants it total is handed the comparison, or chooses.
@@ -94,6 +96,56 @@ theorem zero_notPast_ofReal (a : Bracketed) : (ofNat 0).NotPast (ofReal a) :=
 
 theorem neg_ofReal_notPast_zero (a : Bracketed) : (-ofReal a).NotPast (ofNat 0) :=
   Bracketed.add_notPast (Bracketed.notPast_refl _) (Bracketed.zero_notPast a)
+
+end SignedReal
+
+/-
+A PRODUCT OF TWO NOT UNDER NOTHING IS NOT UNDER NOTHING.  What a signed real holds is not under what it owes; then the
+product holds, like by like, not under what it owes, unlike by unlike.  At the walls this is a rearrangement: with the one
+not past the other, crossing the pairs never gains.  It needs no stage handed in.
+-/
+
+--| Crossing never gains: u by t and v by s are not past u by s and v by t, when v is not past u and t not past s.
+theorem crossing_never_gains (u v s t : Nat) (hvu : v ≤ u) (hts : t ≤ s) : u * t + v * s ≤ u * s + v * t := by
+  obtain ⟨e, rfl⟩ := Nat.exists_eq_add_of_le hvu
+  obtain ⟨f, rfl⟩ := Nat.exists_eq_add_of_le hts
+  simp only [Nat.add_mul, Nat.mul_add]
+  simp only [Nat.mul_comm]
+  omega
+
+theorem Fraction.rearrange {A B C D : Fraction} (hBA : B.le A) (hDC : D.le C) :
+    ((A.mul D).add (B.mul C)).le ((A.mul C).add (B.mul D)) := by
+  unfold Fraction.le Fraction.add Fraction.mul at *
+  dsimp only
+  have core := crossing_never_gains (A.over * B.under) (B.over * A.under) (C.over * D.under) (D.over * C.under) hBA hDC
+  have m := Nat.mul_le_mul_right (A.under * B.under * C.under * D.under) core
+  generalize A.over = a at *; generalize A.under = a' at *; generalize B.over = b at *; generalize B.under = b' at *
+  generalize C.over = c at *; generalize C.under = c' at *; generalize D.over = d at *; generalize D.under = d' at *
+  simp only [Nat.add_mul] at m ⊢
+  simp only [Nat.mul_comm, Nat.mul_left_comm] at m ⊢
+  omega
+
+theorem Bracketed.rearrange {a b c d : Bracketed} (hba : b.NotPast a) (hdc : d.NotPast c) :
+    ((a.mul d).add (b.mul c)).NotPast ((a.mul c).add (b.mul d)) := fun _ m =>
+  Fraction.le_trans
+    (Fraction.add_le_add (Fraction.mul_le_mul (a.low_under_high _ (a.stageForProduct c (2 * m + 1))) (Fraction.le_refl _))
+      (Fraction.mul_le_mul (Fraction.le_refl _) (c.low_under_high _ (a.stageForProduct c (2 * m + 1)))))
+    (Fraction.le_trans (Fraction.rearrange (hba _ _) (hdc _ _))
+      (Fraction.add_le_add (Fraction.le_refl _)
+        (Fraction.mul_le_mul (b.low_under_high _ _) (d.low_under_high _ _))))
+
+namespace SignedReal
+
+theorem held_not_under_owed {x : SignedReal} (hx : (ofNat 0).NotPast x) : x.owed.NotPast x.held :=
+  Bracketed.notPast_trans (Bracketed.notPast_of_same (Bracketed.same_symm (Bracketed.zero_add _)))
+    (Bracketed.notPast_trans hx (Bracketed.notPast_of_same (Bracketed.add_zero _)))
+
+--| A PRODUCT OF TWO SIGNED REALS NOT UNDER NOTHING IS NOT UNDER NOTHING.
+theorem mul_not_under_nothing {x y : SignedReal} (hx : (ofNat 0).NotPast x) (hy : (ofNat 0).NotPast y) :
+    (ofNat 0).NotPast (x * y) :=
+  Bracketed.notPast_trans (Bracketed.notPast_of_same (Bracketed.zero_add _))
+    (Bracketed.notPast_trans (Bracketed.rearrange (held_not_under_owed hx) (held_not_under_owed hy))
+      (Bracketed.notPast_of_same (Bracketed.same_symm (Bracketed.add_zero _))))
 
 end SignedReal
 
