@@ -17,3 +17,4 @@ import Meanings.Difference       -- the difference of two reals, and one over a 
 import Meanings.Quarters         -- the four quarters of the exponential, by k counted in fours
 import Meanings.Order            -- not past: reflexive, transitive, one both ways; beside keeps it; not total without a click
 import Meanings.Pi               -- the arctangent, a real by a whole number, the half turn by Machin; the cut-off cosine past the quarter turn
+import Meanings.Turns            -- a turn read through its norm: the root of a whole number, cosine and sine, on the circle

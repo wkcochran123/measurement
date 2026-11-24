@@ -10173,6 +10173,87 @@ theorem the_order_is_not_transitive_across_two_truths :
     the_true_larger_is_not_under_the_true_smaller⟩
 end the_order_through_the_missing_branch
 
+section the_turn_through_its_norm
+open readers_experience
+
+--| THE TURN THROUGH ITS NORM.  The author's: doesn't the norm compute this; go as far as you can (declared).  It does, for
+--| every turn with whole-number parts, or parts whose squares are whole: the norm squared is a whole number, the radius its
+--| root by halving, and cosine and sine the parts over the radius (Meanings, `Turns`).  So: the turned root, eighteen along
+--| and the root of ninety across, has radius the root of four hundred and fourteen, cosine squared 18/23 and sine squared
+--| 5/23, on the circle, and is its radius by its turn.  Machin's four steps and one back, 114244 along and across, read
+--| through its norm has cosine squared one half: the eighth turn, as a turn, with no angle read.  The steps (5, 1) and
+--| (239, 1) are on the circle.  What the norm does not give is any of these angles as a number.
+
+def the_turned_radius : Meanings.Bracketed := Meanings.theRootOf 414 20 (by decide) (by decide)
+
+theorem the_turned_radius_by_itself : (the_turned_radius.mul the_turned_radius).Same (Meanings.Bracketed.ofNat 414) :=
+  Meanings.theRootOf_by_itself _ _ _ _
+
+def the_turned_cosine : Meanings.Bracketed :=
+  (Meanings.Bracketed.ofNat 18).mul (the_turned_radius.reciprocal 0 (by decide))
+def the_turned_sine : Meanings.Bracketed :=
+  Meanings.theRootOfNinety.bracketed.mul (the_turned_radius.reciprocal 0 (by decide))
+
+theorem the_turned_parts_squared_are_the_norm_squared :
+    (((Meanings.Bracketed.ofNat 18).mul (Meanings.Bracketed.ofNat 18)).add
+      (Meanings.theRootOfNinety.bracketed.mul Meanings.theRootOfNinety.bracketed)).Same (Meanings.Bracketed.ofNat 414) :=
+  Meanings.Bracketed.same_trans
+    (Meanings.Bracketed.add_same (Meanings.Bracketed.ofNat_mul 18 18) Meanings.the_root_by_itself_is_ninety)
+    (Meanings.Bracketed.ofNat_add _ _)
+
+--| THE TURNED ROOT IS ON THE CIRCLE.
+theorem the_turned_root_is_on_the_circle :
+    ((the_turned_cosine.mul the_turned_cosine).add (the_turned_sine.mul the_turned_sine)).Same (Meanings.Bracketed.ofNat 1) :=
+  Meanings.the_turn_through_its_norm_is_on_the_circle _ _ _ 414 0 (by decide)
+    the_turned_parts_squared_are_the_norm_squared the_turned_radius_by_itself
+
+--| ITS COSINE SQUARED IS 18/23 AND ITS SINE SQUARED 5/23: the two weights over their sum.
+theorem the_turned_cosine_squared_is_eighteen_twenty_thirds :
+    (the_turned_cosine.mul the_turned_cosine).Same (Meanings.Bracketed.ofFraction ⟨18, 23, by decide⟩) :=
+  Meanings.Bracketed.same_trans (Meanings.a_whole_part_over_the_radius_squared 18 the_turned_radius_by_itself (by decide))
+    (Meanings.Bracketed.ofFraction_same (by decide) (by decide))
+
+theorem the_turned_sine_squared_is_five_twenty_thirds :
+    (the_turned_sine.mul the_turned_sine).Same (Meanings.Bracketed.ofFraction ⟨5, 23, by decide⟩) :=
+  Meanings.Bracketed.same_trans
+    (Meanings.a_root_part_over_the_radius_squared Meanings.the_root_by_itself_is_ninety the_turned_radius_by_itself (by decide))
+    (Meanings.Bracketed.ofFraction_same (by decide) (by decide))
+
+--| THE TURNED ROOT IS ITS RADIUS BY ITS TURN: the radius by the cosine is eighteen, by the sine the root of ninety.
+theorem the_turned_root_is_its_radius_by_its_turn :
+    (the_turned_radius.mul the_turned_cosine).Same (Meanings.Bracketed.ofNat 18)
+      ∧ (the_turned_radius.mul the_turned_sine).Same Meanings.theRootOfNinety.bracketed :=
+  ⟨Meanings.the_radius_by_a_part_over_it _ _ _ _, Meanings.the_radius_by_a_part_over_it _ _ _ _⟩
+
+--| MACHIN'S TURN, THROUGH ITS NORM.  Four steps of (5, 1) and one back of (239, 1) are 114244 along and across; the norm
+--| squared is twice 114244 squared; read through it, the cosine squared is one half: the eighth turn.
+def machins_radius : Meanings.Bracketed :=
+  Meanings.theRootOf (114244 * 114244 + 114244 * 114244) 161565 (by decide) (by decide)
+
+def machins_cosine : Meanings.Bracketed := (Meanings.Bracketed.ofNat 114244).mul (machins_radius.reciprocal 0 (by decide))
+
+theorem machins_turn_is_on_the_circle :
+    ((machins_cosine.mul machins_cosine).add (machins_cosine.mul machins_cosine)).Same (Meanings.Bracketed.ofNat 1) :=
+  Meanings.the_turn_through_its_norm_is_on_the_circle _ _ _ _ 0 (by decide)
+    (Meanings.Bracketed.same_trans
+      (Meanings.Bracketed.add_same (Meanings.Bracketed.ofNat_mul _ _) (Meanings.Bracketed.ofNat_mul _ _))
+      (Meanings.Bracketed.ofNat_add _ _))
+    (Meanings.theRootOf_by_itself _ _ _ _)
+
+theorem machins_cosine_squared_is_one_half :
+    (machins_cosine.mul machins_cosine).Same (Meanings.Bracketed.ofFraction ⟨1, 2, by decide⟩) :=
+  Meanings.Bracketed.same_trans (Meanings.a_whole_part_over_the_radius_squared 114244 (Meanings.theRootOf_by_itself _ _ _ _) (by decide))
+    (Meanings.Bracketed.ofFraction_same (by decide) (by decide))
+
+--| AND THE TWO STEPS MACHIN USES ARE ON THE CIRCLE.
+theorem machins_steps_are_on_the_circle :
+    (((Meanings.theStepCosine 5 (by decide)).mul (Meanings.theStepCosine 5 (by decide))).add
+      ((Meanings.theStepSine 5 (by decide)).mul (Meanings.theStepSine 5 (by decide)))).Same (Meanings.Bracketed.ofNat 1)
+    ∧ (((Meanings.theStepCosine 239 (by decide)).mul (Meanings.theStepCosine 239 (by decide))).add
+      ((Meanings.theStepSine 239 (by decide)).mul (Meanings.theStepSine 239 (by decide)))).Same (Meanings.Bracketed.ofNat 1) :=
+  ⟨Meanings.every_step_is_on_the_circle 5 _, Meanings.every_step_is_on_the_circle 239 _⟩
+end the_turn_through_its_norm
+
 section the_turn_by_a_rational_angle
 open readers_experience
 
