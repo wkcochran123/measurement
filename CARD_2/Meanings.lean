@@ -18,3 +18,6 @@ import Meanings.Quarters         -- the four quarters of the exponential, by k c
 import Meanings.Order            -- not past: reflexive, transitive, one both ways; beside keeps it; not total without a click
 import Meanings.Pi               -- the arctangent, a real by a whole number, the half turn by Machin; the cut-off cosine past the quarter turn
 import Meanings.Turns            -- a turn read through its norm: the root of a whole number, cosine and sine, on the circle
+import Meanings.Circle           -- the circle at every stage: cosine squared beside sine squared is one, for θ not past one
+import Meanings.Baker            -- the baker's transform on records: doubling forgets a bit, the baker keeps it, there and back exactly
+import Meanings.TheEighthTurn      -- the eighth turn by the series: where cosine and sine cross, Machin in the window, and the error past nothing

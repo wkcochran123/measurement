@@ -10585,7 +10585,164 @@ theorem the_turn_by_a_rational_angle_stays_on_the_circle :
     ∧ ((Meanings.theLowCircle 1 2 (by decide) (by decide) 3).le ⟨1, 1, by decide⟩
       ∧ (⟨1, 1, by decide⟩ : Meanings.Fraction).le (Meanings.theHighCircle 1 2 (by decide) (by decide) 3)) :=
   ⟨Meanings.the_circle_at_one_holds_one, Meanings.the_circle_at_a_half_holds_one⟩
+
+--| ON THE CIRCLE AT EVERY STAGE.  For every angle p over q not past one, cosine squared beside sine squared is one, at
+--| every pair of stages: not a reading at one stage but a statement about all of them.  Read on the coefficients, the
+--| first variation is a shift, and cosine squared beside sine squared moves only by what the cut-off leaves: an
+--| alternating series of falling terms, never under nothing, owed at the low walls and held at the high.
+theorem the_turn_by_a_rational_angle_is_on_the_circle_at_every_stage (p q : Nat) (hq : 0 < q) (hp : p ≤ q) :
+    (((Meanings.cosine p q hq hp).mul (Meanings.cosine p q hq hp)).add
+      ((Meanings.sine p q hq hp).mul (Meanings.sine p q hq hp))).Same (Meanings.Bracketed.ofNat 1) :=
+  Meanings.the_circle_holds_at_every_stage p q hq hp
+
+--| THE EIGHTH TURN, BY THE SERIES, AND WHAT EACH SIDE MISSES.  The author's, 24 November 2026: the approximation of the
+--| half turn will have an error, and that error is the gap that must exist (declared).  What is checked.  Fifteen places
+--| below the eighth turn the series cosine is past the series sine; fifteen places above, the sine is past the cosine; so
+--| the two series cross between, with no turn and no arctangent used.  Machin's half turn lies at every stage between four
+--| times the one and four times the other.  And at each of the two angles the difference of cosine and sine is a real
+--| past nothing at every stage: neither approximation is the crossing.  That no rational angle is (Lambert) is standard
+--| and not proved; an equality would show at no finite stage.
+theorem where_the_series_cross_and_what_each_side_misses (n : Nat) :
+    ((Meanings.EighthTurn.sineBelow.high 5).lt (Meanings.EighthTurn.cosineBelow.low 5)
+      ∧ (Meanings.EighthTurn.cosineAbove.high 5).lt (Meanings.EighthTurn.sineAbove.low 5))
+    ∧ (Meanings.EighthTurn.theWindowsLowWall.le (Meanings.theHalfTurn.low n)
+      ∧ (Meanings.theHalfTurn.high n).le Meanings.EighthTurn.theWindowsHighWall)
+    ∧ (0 < (Meanings.EighthTurn.theErrorBelow.low n).over ∧ 0 < (Meanings.EighthTurn.theErrorAbove.low n).over) :=
+  ⟨⟨Meanings.EighthTurn.below_the_crossing_cosine_is_past_sine, Meanings.EighthTurn.above_the_crossing_sine_is_past_cosine⟩,
+   Meanings.EighthTurn.machins_half_turn_is_in_the_window n, Meanings.EighthTurn.the_errors_are_past_nothing n⟩
+
+--| THE SLIP, AND THE COIN FLIP TURNED OVER.  The author's, 24 November 2026: this is the obvious slip, the law of static
+--| friction and the photoelectric effect, and the contravariant coin flip; the slip of the Borwein process is such a slip;
+--| out of reach, yet comparable, is the important thing (declared).  What is checked.  Below the crossing no sign can be
+--| read before the fourth stage and from it the sign holds for good; above, from the third; found by looking, with the
+--| click and no choice.  Once parted, the difference one way leaves something and the other way nothing, turned over
+--| across the crossing.  The error below is under the error above at every pair of stages, though neither is computed.
+--| And the Borwein threshold: one third through one thirteenth is under one, through one fifteenth past it.  The
+--| integrals that slip there are standard and are not here.
+theorem the_slip_and_the_coin_flip_turned_over (n m : Nat) (h : 4 ≤ n) :
+    (Meanings.findByLooking Meanings.EighthTurn.partedBelow
+        ⟨4, Meanings.EighthTurn.below_nothing_until_the_fourth_stage.2⟩).1 = 4
+    ∧ (Meanings.findByLooking Meanings.EighthTurn.partedAbove
+        ⟨3, Meanings.EighthTurn.above_nothing_until_the_third_stage.2⟩).1 = 3
+    ∧ (0 < ((Meanings.EighthTurn.cosineBelow.low n).sub (Meanings.EighthTurn.sineBelow.high n)).over
+      ∧ ((Meanings.EighthTurn.sineBelow.high n).sub (Meanings.EighthTurn.cosineBelow.low n)).over = 0)
+    ∧ (0 < ((Meanings.EighthTurn.sineAbove.low n).sub (Meanings.EighthTurn.cosineAbove.high n)).over
+      ∧ ((Meanings.EighthTurn.cosineAbove.high n).sub (Meanings.EighthTurn.sineAbove.low n)).over = 0)
+    ∧ (Meanings.EighthTurn.theErrorBelow.high n).lt (Meanings.EighthTurn.theErrorAbove.low m)
+    ∧ ((Meanings.EighthTurn.borweinSum 6).lt Meanings.EighthTurn.theOne
+      ∧ Meanings.EighthTurn.theOne.lt (Meanings.EighthTurn.borweinSum 7)) :=
+  ⟨Meanings.EighthTurn.the_least_stage_found_by_looking.1, Meanings.EighthTurn.the_least_stage_found_by_looking.2,
+   Meanings.EighthTurn.below_one_way_something_and_the_other_nothing h,
+   Meanings.EighthTurn.above_one_way_something_and_the_other_nothing (by omega),
+   Meanings.EighthTurn.the_error_below_is_under_the_error_above n m, Meanings.EighthTurn.the_borwein_threshold⟩
+
+--| HALVING, AND ITS ARROW.  The author's, 24 November 2026: halving is not circular, its reciprocal is, and that is the
+--| baker's transform; and this maps to what we call the arrow of time (declared).  What is checked.  Handed the gap (that
+--| at every halving's midpoint the two series part at some stage, which is not proved here), the eighth turn found a bit
+--| at a time is a real with no choice, and whatever gap was handed, its first twelve halvings give 3216 over 4096.  The
+--| cut after, halved, is the cut before, with nothing handed in; the record never falls; both next bits halve to the same
+--| cut, so the past does not give the bit after; and doubling, the reciprocal, wraps round and forgets the top bit.
+theorem halving_and_its_arrow (gap : Meanings.EighthTurn.TheGap) (n c d : Nat) :
+    (Meanings.EighthTurn.cutOf gap 12).1 = 3216
+    ∧ (Meanings.EighthTurn.cutOf gap (n + 1)).1 / 2 = (Meanings.EighthTurn.cutOf gap n).1
+    ∧ (Meanings.EighthTurn.cutOf gap n).1 ≤ (Meanings.EighthTurn.cutOf gap (n + 1)).1
+    ∧ ((2 * c) / 2 = c ∧ (2 * c + 1) / 2 = c)
+    ∧ (2 * (c + 2 ^ d)) % 2 ^ (d + 1) = (2 * c) % 2 ^ (d + 1) :=
+  ⟨Meanings.EighthTurn.the_first_twelve_halvings gap, Meanings.EighthTurn.the_present_halved_is_the_past gap n,
+   Meanings.EighthTurn.the_record_never_falls gap n, Meanings.EighthTurn.both_futures_halve_to_one_past c,
+   Meanings.EighthTurn.doubling_forgets_the_top_bit c d⟩
+
+--| THE OTHER ONE: THE BAKER.  The author's, 24 November 2026: we have either F=T or T=F; time to construct the other one
+--| (declared).  Halving read each new bit by a comparison handed the gap.  Its reciprocal reads the bit off the record
+--| with no comparison: doubling takes the top bit away and forgets it, so the eighth turn and the eighth turn less one
+--| half double to one record and are not one; the baker lays the forgotten bit on a second record, and run backward takes
+--| it off again, so the pair goes there and back exactly.  Baked once, the eighth turn's record after eleven halvings is
+--| 1168, twice the eighth turn less one, and the record of nothing becomes the record of one half.  Which of the two is
+--| F=T and which T=F the author has not said.
+theorem the_other_one_the_baker (gap : Meanings.EighthTurn.TheGap) :
+    ((Meanings.UnitCut.bake (Meanings.EighthTurn.theEighthTurnsRecord gap, Meanings.UnitCut.nothing)).1.cut 11 = 1168
+      ∧ ∀ n, (Meanings.UnitCut.bake (Meanings.EighthTurn.theEighthTurnsRecord gap, Meanings.UnitCut.nothing)).2.cut (n + 1)
+        = 2 ^ n)
+    ∧ Meanings.UnitCut.unbake (Meanings.UnitCut.bake (Meanings.EighthTurn.theEighthTurnsRecord gap, Meanings.UnitCut.nothing))
+      = (Meanings.EighthTurn.theEighthTurnsRecord gap, Meanings.UnitCut.nothing)
+    ∧ (Meanings.UnitCut.doubled (Meanings.UnitCut.pushed 0 (by decide)
+          (Meanings.UnitCut.doubled (Meanings.EighthTurn.theEighthTurnsRecord gap)))
+        = Meanings.UnitCut.doubled (Meanings.EighthTurn.theEighthTurnsRecord gap)
+      ∧ Meanings.UnitCut.pushed 0 (by decide) (Meanings.UnitCut.doubled (Meanings.EighthTurn.theEighthTurnsRecord gap))
+        ≠ Meanings.EighthTurn.theEighthTurnsRecord gap) :=
+  ⟨Meanings.EighthTurn.the_eighth_turn_baked_once gap, Meanings.EighthTurn.the_eighth_turn_baked_and_back gap,
+   Meanings.EighthTurn.the_eighth_turn_and_it_less_a_half_double_alike gap⟩
 end the_turn_by_a_rational_angle
+
+section the_borwein_integral
+open readers_experience
+
+--| THE BORWEIN INTEGRAL, ON THE DEVICE'S OWN NUMBERS.  The author's, 24 November 2026: take the last steps of the argument,
+--| lay them next to each other, and that is the Borwein integral to build (declared).  Episode 8 lays the last four steps
+--| side by side for the bent card, thirteen cells; through the bent card are seven odd numbers, one to thirteen; and its
+--| rational explanation is each over the least common multiple, 1 over 1, 1 over 3, and so on, in whole numbers.  The
+--| Borweins' formula (D. and J. Borwein, 2001; standard, not proved here) gives the integral of the product of the sincs as
+--| a quarter turn times a ratio of whole numbers: a sum, over every way of holding or owing each weight after the first,
+--| of the weights beside the first, to the power of how many there are, signed by the pattern and by which side of nothing
+--| it lands; over two to that power, its factorial, and the weights multiplied.  Below are the sum and the scale, built on
+--| Episode 8's own explanation.
+
+--| Every way of holding or owing each weight: what it comes to, and its sign.
+def every_way_held_or_owed : List Int → List (Int × Int)
+  | [] => [(0, 1)]
+  | w :: ws => (every_way_held_or_owed ws).flatMap fun (b, e) => [(b + w, e), (b - w, -e)]
+
+--| To the power n, owed if it landed under nothing.
+def to_the_power_on_its_side (b : Int) (n : Nat) : Int := if b < 0 then - b ^ n else b ^ n
+
+def the_borwein_sum (m : Nat) : Int :=
+  ((every_way_held_or_owed (the_rational_explanation m).tail).map fun (b, e) =>
+    e * to_the_power_on_its_side ((the_rational_explanation m).head! + b) ((the_rational_explanation m).length - 1)).sum
+
+def the_borwein_scale (m : Nat) : Int :=
+  2 ^ ((the_rational_explanation m).length - 1) * (Meanings.factorial ((the_rational_explanation m).length - 1) : Int)
+    * (the_rational_explanation m).tail.foldl (· * ·) 1
+
+theorem through_the_bent_card_is_seven_and_twice_around_is_eight :
+    through_the_bent_card = 7 ∧ twice_around_the_integral = 8 ∧ bent_card = 13 := by decide
+
+--| THROUGH THE BENT CARD, EXACTLY A QUARTER TURN.  For one sinc to seven, the last denominator thirteen, the ratio is one:
+--| the sum is the scale.
+theorem through_the_bent_card_the_ratio_is_one :
+    ∀ m, m < through_the_bent_card + 1 → 0 < m → the_borwein_sum m = the_borwein_scale m := by decide +kernel
+
+--| TWICE AROUND, IT SLIPS.  At eight, the last denominator fifteen, the sum falls short of the scale by twice the slack,
+--| owed, to the seventh: Episode 8's slack, the way with every weight owed, is the one that landed under nothing.
+theorem twice_around_it_slips :
+    the_borwein_scale twice_around_the_integral - the_borwein_sum twice_around_the_integral
+      = 2 * (- the_slack twice_around_the_integral) ^ 7
+    ∧ the_slack twice_around_the_integral = -982
+    ∧ ((every_way_held_or_owed (the_rational_explanation twice_around_the_integral).tail).map
+        fun p => (the_rational_explanation twice_around_the_integral).head! + p.1).min? = some (the_slack twice_around_the_integral) := by
+  decide +kernel
+
+--| THE SLIP, READ.  The shortfall over the scale lies between 1.4706 and 1.4707 parts in a hundred thousand million.
+theorem the_slip_is_between :
+    14706 * the_borwein_scale twice_around_the_integral
+      ≤ 10 ^ 15 * (the_borwein_scale twice_around_the_integral - the_borwein_sum twice_around_the_integral)
+    ∧ 10 ^ 15 * (the_borwein_scale twice_around_the_integral - the_borwein_sum twice_around_the_integral)
+      < 14707 * the_borwein_scale twice_around_the_integral := by decide +kernel
+
+--| THE SLIP AGAINST THE DEVICE'S OWN HALF TURN.  A quarter turn times the shortfall: with Machin's walls for the half turn,
+--| between 2.31005 and 2.31006 parts in a hundred thousand million.  That the integral falls short of the quarter turn by
+--| exactly this is the Borweins' theorem, standard, and out of reach here; that the shortfall is this ratio is checked.
+def the_shortfall_ratio : Meanings.Fraction := ⟨1761207029433090695936, 2 * 119758828728402036135746784000000, by decide⟩
+
+theorem the_shortfall_ratio_is_the_slip :
+    (2 * 119758828728402036135746784000000 : Int) = 2 * the_borwein_scale twice_around_the_integral
+    ∧ (1761207029433090695936 : Int) = the_borwein_scale twice_around_the_integral - the_borwein_sum twice_around_the_integral := by
+  decide +kernel
+
+theorem the_slip_against_the_half_turn :
+    (⟨231005, 10 ^ 16, by decide⟩ : Meanings.Fraction).le (Meanings.theHalfTurnsLowWall.mul the_shortfall_ratio)
+    ∧ (Meanings.theHalfTurnsHighWall.mul the_shortfall_ratio).le ⟨231006, 10 ^ 16, by decide⟩ := by decide +kernel
+
+end the_borwein_integral
 
 end Measurement
 
