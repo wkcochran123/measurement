@@ -10019,6 +10019,99 @@ theorem the_miss_squared_is_just_past_one_over_twenty_four_squared (n : Nat) :
    Meanings.Fraction.le_trans hi the_walls_of_the_miss_squared.2.2.2⟩
 end the_linear_reading_of_the_turn
 
+section the_branch_never_taken
+open readers_experience
+
+local infix:50 " ≐ " => Meanings.Bracketed.Same
+
+--| THE BRANCH NEVER TAKEN.  Claude's, taken up by the author ("run with your idea"): the linear reading keeps each step's
+--| first term; what it drops, the cube over three and on, is a real (Meanings, `theBranchNeverTaken`), and the angle beside
+--| it is the step (`the_angle_beside_the_branch_never_taken_is_the_step`).  So the miss is exactly the branch the linear
+--| reading never takes: the linear half turn less the series' is one with sixteen branches at a fifth less four at one in
+--| two hundred and thirty-nine, at every stage; and the miss squared, past one over twenty-four squared, is that branch
+--| squared.  The gap is carried wholly by the terms the linear reading drops.  That this branch is (F=T) = (T=F), the
+--| author's branch never taken, is the author's.
+
+def the_branch_at_a_fifth : Meanings.Bracketed := Meanings.theBranchNeverTaken 1 5 (by decide) (by decide)
+def the_branch_at_239 : Meanings.Bracketed := Meanings.theBranchNeverTaken 1 239 (by decide) (by decide)
+
+theorem the_branches_are_apart : ((the_branch_at_239.scale 4).high 0).le ((the_branch_at_a_fifth.scale 16).low 0) := by
+  decide +kernel
+
+--| THE BRANCH OF THE HALF TURN: sixteen branches at a fifth less four at one in two hundred and thirty-nine.
+def the_branch_of_the_half_turn : Meanings.Bracketed :=
+  (the_branch_at_a_fifth.scale 16).difference (the_branch_at_239.scale 4) 0 the_branches_are_apart
+
+def sixteen_fifths : Meanings.Fraction := ⟨16 * 1 ^ 1, 5 ^ 1 * (2 * 0 + 1), by decide⟩
+def four_in_239 : Meanings.Fraction := ⟨4 * 1 ^ 1, 239 ^ 1 * (2 * 0 + 1), by decide⟩
+
+theorem the_angle_and_the_branch_at_a_fifth_are_sixteen_fifths :
+    (Meanings.sixteenArctanFifth.add (the_branch_at_a_fifth.scale 16)) ≐ Meanings.Bracketed.ofFraction sixteen_fifths :=
+  Meanings.Bracketed.same_trans (Meanings.Bracketed.same_symm (Meanings.Bracketed.scale_add 16 _ _))
+    (Meanings.Bracketed.same_trans
+      (Meanings.Bracketed.scale_same 16 (Meanings.the_angle_beside_the_branch_never_taken_is_the_step 1 5 (by decide) (by decide)))
+      (Meanings.Bracketed.scale_ofFraction 16 _))
+
+theorem the_angle_and_the_branch_at_239_are_four_in_239 :
+    (Meanings.fourArctan239th.add (the_branch_at_239.scale 4)) ≐ Meanings.Bracketed.ofFraction four_in_239 :=
+  Meanings.Bracketed.same_trans (Meanings.Bracketed.same_symm (Meanings.Bracketed.scale_add 4 _ _))
+    (Meanings.Bracketed.same_trans
+      (Meanings.Bracketed.scale_same 4 (Meanings.the_angle_beside_the_branch_never_taken_is_the_step 1 239 (by decide) (by decide)))
+      (Meanings.Bracketed.scale_ofFraction 4 _))
+
+theorem the_linear_half_turn_and_four_in_239_are_sixteen_fifths :
+    ((Meanings.Bracketed.ofFraction the_linear_half_turn).add (Meanings.Bracketed.ofFraction four_in_239))
+      ≐ Meanings.Bracketed.ofFraction sixteen_fifths :=
+  Meanings.Bracketed.same_trans (Meanings.Bracketed.ofFraction_add _ _)
+    (Meanings.Bracketed.ofFraction_same (by decide) (by decide))
+
+--| THE MISS IS THE BRANCH NEVER TAKEN, at every stage.
+theorem the_miss_is_the_branch_never_taken : the_linear_miss ≐ the_branch_of_the_half_turn := by
+  have hM : (the_linear_miss.add Meanings.theHalfTurn) ≐ Meanings.Bracketed.ofFraction the_linear_half_turn :=
+    Meanings.Bracketed.difference_add _ _ _ _
+  have hB : (the_branch_of_the_half_turn.add (the_branch_at_239.scale 4)) ≐ (the_branch_at_a_fifth.scale 16) :=
+    Meanings.Bracketed.difference_add _ _ _ _
+  have hπ : (Meanings.theHalfTurn.add Meanings.fourArctan239th) ≐ Meanings.sixteenArctanFifth :=
+    Meanings.Bracketed.difference_add _ _ _ _
+  -- the linear half turn beside the branch at 239 is the branch at a fifth beside the half turn
+  have both : ((Meanings.Bracketed.ofFraction the_linear_half_turn).add (the_branch_at_239.scale 4))
+      ≐ ((the_branch_at_a_fifth.scale 16).add Meanings.theHalfTurn) := by
+    apply Meanings.Bracketed.add_cancel (c := Meanings.fourArctan239th)
+    calc ((Meanings.Bracketed.ofFraction the_linear_half_turn).add (the_branch_at_239.scale 4)).add Meanings.fourArctan239th
+        ≐ (Meanings.Bracketed.ofFraction the_linear_half_turn).add ((the_branch_at_239.scale 4).add Meanings.fourArctan239th) :=
+          Meanings.Bracketed.add_assoc _ _ _
+      _ ≐ (Meanings.Bracketed.ofFraction the_linear_half_turn).add (Meanings.fourArctan239th.add (the_branch_at_239.scale 4)) :=
+          Meanings.Bracketed.add_same (Meanings.Bracketed.same_refl _) (Meanings.Bracketed.add_comm _ _)
+      _ ≐ (Meanings.Bracketed.ofFraction the_linear_half_turn).add (Meanings.Bracketed.ofFraction four_in_239) :=
+          Meanings.Bracketed.add_same (Meanings.Bracketed.same_refl _) the_angle_and_the_branch_at_239_are_four_in_239
+      _ ≐ Meanings.Bracketed.ofFraction sixteen_fifths := the_linear_half_turn_and_four_in_239_are_sixteen_fifths
+      _ ≐ Meanings.sixteenArctanFifth.add (the_branch_at_a_fifth.scale 16) :=
+          Meanings.Bracketed.same_symm the_angle_and_the_branch_at_a_fifth_are_sixteen_fifths
+      _ ≐ (the_branch_at_a_fifth.scale 16).add Meanings.sixteenArctanFifth := Meanings.Bracketed.add_comm _ _
+      _ ≐ (the_branch_at_a_fifth.scale 16).add (Meanings.theHalfTurn.add Meanings.fourArctan239th) :=
+          Meanings.Bracketed.add_same (Meanings.Bracketed.same_refl _) (Meanings.Bracketed.same_symm hπ)
+      _ ≐ ((the_branch_at_a_fifth.scale 16).add Meanings.theHalfTurn).add Meanings.fourArctan239th :=
+          Meanings.Bracketed.same_symm (Meanings.Bracketed.add_assoc _ _ _)
+  apply Meanings.Bracketed.add_cancel (c := Meanings.theHalfTurn.add (the_branch_at_239.scale 4))
+  calc the_linear_miss.add (Meanings.theHalfTurn.add (the_branch_at_239.scale 4))
+      ≐ (the_linear_miss.add Meanings.theHalfTurn).add (the_branch_at_239.scale 4) :=
+        Meanings.Bracketed.same_symm (Meanings.Bracketed.add_assoc _ _ _)
+    _ ≐ (Meanings.Bracketed.ofFraction the_linear_half_turn).add (the_branch_at_239.scale 4) :=
+        Meanings.Bracketed.add_same hM (Meanings.Bracketed.same_refl _)
+    _ ≐ (the_branch_at_a_fifth.scale 16).add Meanings.theHalfTurn := both
+    _ ≐ (the_branch_of_the_half_turn.add (the_branch_at_239.scale 4)).add Meanings.theHalfTurn :=
+        Meanings.Bracketed.add_same (Meanings.Bracketed.same_symm hB) (Meanings.Bracketed.same_refl _)
+    _ ≐ the_branch_of_the_half_turn.add ((the_branch_at_239.scale 4).add Meanings.theHalfTurn) :=
+        Meanings.Bracketed.add_assoc _ _ _
+    _ ≐ the_branch_of_the_half_turn.add (Meanings.theHalfTurn.add (the_branch_at_239.scale 4)) :=
+        Meanings.Bracketed.add_same (Meanings.Bracketed.same_refl _) (Meanings.Bracketed.add_comm _ _)
+
+--| AND THE MISS SQUARED IS THE BRANCH SQUARED.
+theorem the_miss_squared_is_the_branch_squared :
+    the_miss_squared ≐ the_branch_of_the_half_turn.mul the_branch_of_the_half_turn :=
+  Meanings.Bracketed.mul_same the_miss_is_the_branch_never_taken the_miss_is_the_branch_never_taken
+end the_branch_never_taken
+
 section the_turn_by_a_rational_angle
 open readers_experience
 

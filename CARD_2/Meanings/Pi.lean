@@ -12,7 +12,7 @@ squared over two and θ to the fourth over twenty-four, has its first root at th
 the quarter turn squared is under that, decided at the first stages: the cut-off cosine has not yet reached nothing at the
 quarter turn.  A root past another shows at a finite stage, and here it shows.
 -/
-import Meanings.Order
+import Meanings.Quarters
 
 namespace Meanings
 
@@ -116,6 +116,28 @@ theorem the_half_turn_is_between_221_over_71_and_22_over_7 (n : Nat) :
   ⟨Fraction.le_trans (by decide : theAuthorsLowWall.le archimedesLowWall) (the_half_turn_is_between_archimedes_walls n).1,
    (the_half_turn_is_between_archimedes_walls n).2⟩
 
+--| A real by a whole number keeps being one, and spreads over beside; a fraction, as a real, by a whole number is the
+--| fraction so many times; and fractions as reals add as fractions.
+theorem Bracketed.scale_same {x y : Bracketed} (c : Nat) (h : x.Same y) : (x.scale c).Same (y.scale c) :=
+  Bracketed.same_trans (Bracketed.scale_same_mul c x)
+    (Bracketed.same_trans (Bracketed.mul_same (Bracketed.same_refl _) h) (Bracketed.same_symm (Bracketed.scale_same_mul c y)))
+
+theorem Bracketed.scale_add (c : Nat) (x y : Bracketed) : ((x.add y).scale c).Same ((x.scale c).add (y.scale c)) :=
+  Bracketed.same_trans (Bracketed.scale_same_mul c _)
+    (Bracketed.same_trans (Bracketed.mul_add _ _ _)
+      (Bracketed.add_same (Bracketed.same_symm (Bracketed.scale_same_mul c x)) (Bracketed.same_symm (Bracketed.scale_same_mul c y))))
+
+theorem Bracketed.scale_ofFraction (c : Nat) (a : Fraction) :
+    ((Bracketed.ofFraction a).scale c).Same (Bracketed.ofFraction ⟨c * a.over, a.under, a.under_pos⟩) :=
+  fun _ _ => ⟨Fraction.le_refl _, Fraction.le_refl _⟩
+
+theorem Bracketed.ofFraction_add (a b : Fraction) :
+    ((Bracketed.ofFraction a).add (Bracketed.ofFraction b)).Same (Bracketed.ofFraction (a.add b)) :=
+  fun _ _ => ⟨Fraction.le_refl _, Fraction.le_refl _⟩
+
+theorem Bracketed.ofFraction_same {a b : Fraction} (h1 : a.le b) (h2 : b.le a) :
+    (Bracketed.ofFraction a).Same (Bracketed.ofFraction b) := fun _ _ => ⟨h1, h2⟩
+
 --| THE ROOT OF THREE, BY HALVING.
 def theRootOfThree : DyadicCut where
   cut := rootByHalving 3 1
@@ -129,5 +151,122 @@ theorem the_quarter_turn_is_under_the_cut_off_cosines_first_root :
     ((((theHalfTurn.high 0).mul (theHalfTurn.high 0)).mul ⟨1, 4, by decide⟩).add
         ((⟨2, 1, by decide⟩ : Fraction).mul (theRootOfThree.bracketed.high 20))).lt ⟨6, 1, by decide⟩ := by
   decide +kernel
+
+/-
+THE BRANCH NEVER TAKEN.  Read linearly, a step's angle is its first term, θ itself.  What that reading drops is the rest of
+the arctangent, θ cubed over three less θ to the fifth over five and on: an alternating series of falling terms, a real.
+The angle beside the branch never taken is the step, exactly, at every stage: the two series telescope.
+-/
+
+theorem arctanTerm_le_first (p q : Nat) (hq : 0 < q) (hp : p ≤ q) : ∀ k, (arctanTerm p q hq k).le (arctanTerm p q hq 0)
+  | 0 => Fraction.le_refl _
+  | k + 1 => Fraction.le_trans (arctanTerm_falls p q hq hp k) (arctanTerm_le_first p q hq hp k)
+
+def theTermsNeverTaken (p q : Nat) (hq : 0 < q) (hp : p ≤ q) : FallingTerms where
+  term k := arctanTerm p q hq (k + 1)
+  falls k := arctanTerm_falls p q hq hp (k + 1)
+  narrows n := by
+    show p ^ (2 * (2 * n + 2 + 1) + 1) * (n + 1) ≤ q ^ (2 * (2 * n + 2 + 1) + 1) * (2 * (2 * n + 2 + 1) + 1)
+    exact Nat.mul_le_mul (Nat.pow_le_pow_left hp _) (by omega)
+
+--| THE BRANCH NEVER TAKEN: θ cubed over three, less θ to the fifth over five, and on.
+def theBranchNeverTaken (p q : Nat) (hq : 0 < q) (hp : p ≤ q) : Bracketed := (theTermsNeverTaken p q hq hp).bracketed
+
+--| A difference beside the next difference is the whole difference, both ways.
+theorem the_differences_telescope (ao au bo bu co cu X Y Z : Nat)
+    (hX : bo * au + X = ao * bu) (hY : co * bu + Y = bo * cu) (hZ : co * au + Z = ao * cu) :
+    (X * (bu * cu) + Y * (au * bu)) * (au * cu) = Z * ((au * bu) * (bu * cu)) := by
+  have z : Z * bu = X * cu + Y * au := by
+    have m1 := congrArg (· * cu) hX
+    have m2 := congrArg (· * au) hY
+    have m3 := congrArg (· * bu) hZ
+    simp only [Nat.add_mul] at m1 m2 m3
+    simp only [Nat.mul_comm, Nat.mul_left_comm] at m1 m2 m3 ⊢
+    omega
+  have m := congrArg (· * (bu * (au * cu))) z
+  simp only [Nat.add_mul] at m ⊢
+  simp only [Nat.mul_comm, Nat.mul_left_comm] at m ⊢
+  omega
+
+theorem Fraction.sub_add_sub (a b c : Fraction) (hcb : c.le b) (hba : b.le a) :
+    ((a.sub b).add (b.sub c)).le (a.sub c) ∧ (a.sub c).le ((a.sub b).add (b.sub c)) := by
+  have hca : c.le a := Fraction.le_trans hcb hba
+  unfold Fraction.le at hcb hba hca
+  have e := the_differences_telescope a.over a.under b.over b.under c.over c.under _ _ _
+    (Nat.add_sub_of_le hba) (Nat.add_sub_of_le hcb) (Nat.add_sub_of_le hca)
+  unfold Fraction.le Fraction.add Fraction.sub
+  dsimp only
+  exact ⟨Nat.le_of_eq e, Nat.le_of_eq e.symm⟩
+
+theorem arctan_partial (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (M : Nat) :
+    (theTermsOfTheArctangent p q hq hp).stepsAndTail.partial (M + 1)
+      = ((theTermsOfTheArctangent p q hq hp).stepsAndTail.partial M).add
+          ((arctanTerm p q hq (2 * M + 2)).sub (arctanTerm p q hq (2 * M + 3))) := by
+  show _ = _
+  show ((theTermsOfTheArctangent p q hq hp).stepsAndTail.partial M).add
+      ((arctanTerm p q hq (2 * (M + 1))).sub (arctanTerm p q hq (2 * (M + 1) + 1))) = _
+  rw [show 2 * (M + 1) = 2 * M + 2 by omega, show 2 * M + 2 + 1 = 2 * M + 3 by omega]
+
+theorem never_taken_partial (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (M : Nat) :
+    (theTermsNeverTaken p q hq hp).stepsAndTail.partial (M + 1)
+      = ((theTermsNeverTaken p q hq hp).stepsAndTail.partial M).add
+          ((arctanTerm p q hq (2 * M + 3)).sub (arctanTerm p q hq (2 * M + 4))) := by
+  show ((theTermsNeverTaken p q hq hp).stepsAndTail.partial M).add
+      ((arctanTerm p q hq (2 * (M + 1) + 1)).sub (arctanTerm p q hq (2 * (M + 1) + 1 + 1))) = _
+  rw [show 2 * (M + 1) + 1 = 2 * M + 3 by omega, show 2 * M + 3 + 1 = 2 * M + 4 by omega]
+
+--| THE ANGLE AND THE BRANCH NEVER TAKEN, SUMMED TO M, ARE THE STEP LESS THE TERM 2M AND TWO ON, both ways.
+theorem the_angle_and_the_branch_telescope (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (M : Nat) :
+    (((theTermsOfTheArctangent p q hq hp).stepsAndTail.partial M).add
+        ((theTermsNeverTaken p q hq hp).stepsAndTail.partial M)).le
+      ((arctanTerm p q hq 0).sub (arctanTerm p q hq (2 * M + 2)))
+    ∧ ((arctanTerm p q hq 0).sub (arctanTerm p q hq (2 * M + 2))).le
+      (((theTermsOfTheArctangent p q hq hp).stepsAndTail.partial M).add
+        ((theTermsNeverTaken p q hq hp).stepsAndTail.partial M)) := by
+  have f := arctanTerm_falls p q hq hp
+  have first := arctanTerm_le_first p q hq hp
+  induction M with
+  | zero =>
+    show (((arctanTerm p q hq 0).sub (arctanTerm p q hq 1)).add ((arctanTerm p q hq 1).sub (arctanTerm p q hq 2))).le
+        ((arctanTerm p q hq 0).sub (arctanTerm p q hq 2))
+      ∧ ((arctanTerm p q hq 0).sub (arctanTerm p q hq 2)).le
+        (((arctanTerm p q hq 0).sub (arctanTerm p q hq 1)).add ((arctanTerm p q hq 1).sub (arctanTerm p q hq 2)))
+    exact Fraction.sub_add_sub _ _ _ (f 1) (f 0)
+  | succ M ih =>
+    rw [arctan_partial, never_taken_partial, show 2 * (M + 1) + 2 = 2 * M + 4 by omega]
+    have t1 := Fraction.sub_add_sub _ _ _ (f (2 * M + 3)) (f (2 * M + 2))
+    have t2 := Fraction.sub_add_sub (arctanTerm p q hq 0) (arctanTerm p q hq (2 * M + 2)) (arctanTerm p q hq (2 * M + 4))
+      (Fraction.le_trans (f (2 * M + 3)) (f (2 * M + 2))) (first _)
+    exact ⟨Fraction.le_trans (Fraction.swap_middle _ _ _ _)
+        (Fraction.le_trans (Fraction.add_le_add ih.1 t1.1) t2.1),
+      Fraction.le_trans t2.2
+        (Fraction.le_trans (Fraction.add_le_add ih.2 t1.2) (Fraction.swap_middle _ _ _ _))⟩
+
+theorem arctan_low (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (n : Nat) :
+    (arctan p q hq hp).low n = (theTermsOfTheArctangent p q hq hp).stepsAndTail.partial n := rfl
+theorem arctan_high (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (n : Nat) :
+    (arctan p q hq hp).high n
+      = ((theTermsOfTheArctangent p q hq hp).stepsAndTail.partial n).add (arctanTerm p q hq (2 * n + 2)) := rfl
+theorem branch_low (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (n : Nat) :
+    (theBranchNeverTaken p q hq hp).low n = (theTermsNeverTaken p q hq hp).stepsAndTail.partial n := rfl
+theorem branch_high (p q : Nat) (hq : 0 < q) (hp : p ≤ q) (n : Nat) :
+    (theBranchNeverTaken p q hq hp).high n
+      = ((theTermsNeverTaken p q hq hp).stepsAndTail.partial n).add (arctanTerm p q hq (2 * n + 2 + 1)) := rfl
+
+--| THE ANGLE BESIDE THE BRANCH NEVER TAKEN IS THE STEP, at every stage.
+theorem the_angle_beside_the_branch_never_taken_is_the_step (p q : Nat) (hq : 0 < q) (hp : p ≤ q) :
+    ((arctan p q hq hp).add (theBranchNeverTaken p q hq hp)).Same (Bracketed.ofFraction (arctanTerm p q hq 0)) := by
+  apply Bracketed.same_of_each_stage
+  intro k
+  have t := the_angle_and_the_branch_telescope p q hq hp (2 * k + 1)
+  have last := arctanTerm_le_first p q hq hp (2 * (2 * k + 1) + 2)
+  show (((arctan p q hq hp).low (2 * k + 1)).add ((theBranchNeverTaken p q hq hp).low (2 * k + 1))).le (arctanTerm p q hq 0)
+    ∧ (arctanTerm p q hq 0).le (((arctan p q hq hp).high (2 * k + 1)).add ((theBranchNeverTaken p q hq hp).high (2 * k + 1)))
+  rw [arctan_low, branch_low, arctan_high, branch_high]
+  exact ⟨Fraction.le_trans t.1 (Fraction.le_trans (Fraction.le_add_right _ _) (Fraction.sub_add_self_le _ _ last)),
+    Fraction.le_trans (Fraction.le_sub_add_self _ _ last)
+      (Fraction.le_trans (Fraction.add_le_add t.2 (Fraction.le_refl _))
+        (Fraction.le_trans (Fraction.le_add_right _ _)
+          (Fraction.le_trans (Fraction.add_regroup _ _ _) (Fraction.swap_middle _ _ _ _))))⟩
 
 end Meanings
