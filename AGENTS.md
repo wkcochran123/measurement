@@ -4660,6 +4660,28 @@ names the number.
   crossing of the series is the eighth turn, and the halving's limit π/4
   (that needs cosine less sine to fall, a monotonicity not written); and
   π's irrationality, which the gap amounts to (Lambert; out of reach).
+- The count subdivision keeps (`Episode13.lean`, section
+  `the_count_subdivision_keeps`; 24 November 2026). The author
+  (declared): "like if you cut a hole in a net, it has fewer holes"; "the
+  question: does subdivision increase the count!" Claude's answer: of
+  cells, yes; of holes, no; and the count it keeps is the fencepost.
+  Receipts, `propext` and `Quot.sound` only: an Area's spans are what the
+  reader counts (`compute_the_area_of`) and its posts what its own Riemann
+  sum counts, the tree too; posts are spans and the fencepost, one
+  (`posts_less_spans_is_the_fencepost`, from the existing
+  `the_riemann_sum_is_indistinguisahble_from_the_bent_card_with_an_extra_fencepost_of_blanks`);
+  a cell laid in anywhere on a tape adds a span and a post and keeps
+  posts less spans (`subdivision_adds_a_span_and_a_post_and_keeps_the_fencepost`);
+  a tape cut at a cell, the span taken out, leaves two pieces and posts
+  less spans two (`cutting_at_a_cell_leaves_two_fenceposts`); on a net,
+  holes = strands + pieces − knots: subdividing a strand keeps them, cutting
+  a strand that leaves one piece takes one away, cutting one that parts
+  the net keeps them (`subdividing_a_strand_keeps_the_holes`, and the two
+  beside it). Control refused: a subdivision that loses a hole. Say with
+  it: holes = strands + pieces − knots is the first Betti number of a
+  graph, standard; the net theorems are arithmetic on the counts, not a
+  graph built on the device; what is the device's own is that posts less
+  spans is its fencepost and subdivision keeps it.
 - The laws (`Meanings/Laws.lean`; 23 November 2026). Receipts, `propext`,
   `Quot.sound`: every low wall is under every high wall
   (`Bracketed.low_under_high`); `Same` is reflexive, symmetric and

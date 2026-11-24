@@ -10868,6 +10868,61 @@ theorem only_true_in_the_machine_and_the_opposite_handed_back (k : FACT) :
 
 end the_opposite_of_the_knowers_bit
 
+section the_count_subdivision_keeps
+open the_table
+
+--| THE COUNT SUBDIVISION KEEPS.  The author's, 24 November 2026: if you cut a hole in a net, it has fewer holes; and the
+--| question, does subdivision increase the count? (declared).  What is checked.  An Area read by the reader counts its
+--| cells, the spans; read by its own Riemann sum it counts the tree too, the posts; posts less spans is the fencepost, one.
+--| Subdivide, a cell laid in anywhere on the tape, and posts and spans both go up by one: the count of cells increases and
+--| the fencepost does not move.  Cut the tape at a cell, the span taken out, and the two pieces have two fenceposts: posts
+--| less spans is the number of pieces.  On a net, holes are strands and pieces less knots: subdividing a strand adds a knot
+--| and a strand and keeps the holes; cutting a strand that leaves the net in one piece takes a hole away; cutting one that
+--| parts it keeps them.  So subdivision increases the count of cells and never the count of holes.
+def posts (a : Area) : Nat := a.riemann_integrate.length
+def spans (a : Area) : Nat := compute_the_area_of a
+
+theorem posts_less_spans_is_the_fencepost (a : Area) : posts a = spans a + the_fencepost_bug :=
+  the_riemann_sum_is_indistinguisahble_from_the_bent_card_with_an_extra_fencepost_of_blanks a
+
+theorem the_fencepost_is_one : the_fencepost_bug = 1 := rfl
+
+--| A TAPE'S POSTS AND SPANS.
+theorem a_tapes_spans (t : List FACT) : spans (the_area_of_a_tape_in_blanks_is t) = t.length :=
+  the_area_of_a_tape_in_blanks_is_the_tapes_length t
+
+theorem a_tapes_posts (t : List FACT) : posts (the_area_of_a_tape_in_blanks_is t) = t.length + 1 := by
+  rw [posts_less_spans_is_the_fencepost, a_tapes_spans, the_fencepost_is_one]
+
+--| SUBDIVISION.  A cell laid in anywhere: one more span and one more post, the fencepost kept.
+theorem subdivision_adds_a_span_and_a_post_and_keeps_the_fencepost (t₁ t₂ : List FACT) (f : FACT) :
+    spans (the_area_of_a_tape_in_blanks_is (t₁ ++ f :: t₂)) = spans (the_area_of_a_tape_in_blanks_is (t₁ ++ t₂)) + 1
+      ∧ posts (the_area_of_a_tape_in_blanks_is (t₁ ++ f :: t₂)) = posts (the_area_of_a_tape_in_blanks_is (t₁ ++ t₂)) + 1
+      ∧ posts (the_area_of_a_tape_in_blanks_is (t₁ ++ f :: t₂)) - spans (the_area_of_a_tape_in_blanks_is (t₁ ++ f :: t₂))
+        = posts (the_area_of_a_tape_in_blanks_is (t₁ ++ t₂)) - spans (the_area_of_a_tape_in_blanks_is (t₁ ++ t₂)) := by
+  simp only [a_tapes_spans, a_tapes_posts, List.length_append, List.length_cons]
+  exact ⟨by omega, by omega, by omega⟩
+
+--| CUTTING.  The tape cut at a cell, the span taken out: two pieces, and posts less spans is two.
+theorem cutting_at_a_cell_leaves_two_fenceposts (t₁ t₂ : List FACT) :
+    (posts (the_area_of_a_tape_in_blanks_is t₁) + posts (the_area_of_a_tape_in_blanks_is t₂))
+      - (spans (the_area_of_a_tape_in_blanks_is t₁) + spans (the_area_of_a_tape_in_blanks_is t₂)) = 2 := by
+  simp only [a_tapes_spans, a_tapes_posts]; omega
+
+--| THE NET.  Holes are strands and pieces less knots.
+def holes (knots strands pieces : Nat) : Int := (strands : Int) + pieces - knots
+
+theorem subdividing_a_strand_keeps_the_holes (v e c : Nat) : holes (v + 1) (e + 1) c = holes v e c := by
+  unfold holes; push_cast; omega
+
+theorem cutting_a_strand_that_keeps_one_piece_takes_a_hole (v e c : Nat) : holes v e c = holes v (e + 1) c - 1 := by
+  unfold holes; push_cast; omega
+
+theorem cutting_a_strand_that_parts_the_net_keeps_the_holes (v e c : Nat) : holes v e (c + 1) = holes v (e + 1) c := by
+  unfold holes; push_cast; omega
+
+end the_count_subdivision_keeps
+
 end Measurement
 
 --| This is as far as the machine can go, demonstration of itself. It appears we have reached a physical limit of symbolic manipulation itself.
